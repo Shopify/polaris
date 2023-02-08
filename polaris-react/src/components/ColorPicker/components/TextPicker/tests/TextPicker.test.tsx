@@ -29,7 +29,7 @@ describe('<TextPicker />', () => {
       const textField = textPicker.find(TextField);
       const expectedHex = '#FF0000';
 
-      expect(textField.prop('value')).toBe(expectedHex);
+      expect(textField!.prop('value')).toBe(expectedHex);
     });
   });
 
@@ -51,9 +51,10 @@ describe('<TextPicker />', () => {
       const colorValue = 'white';
       const expectedHex = nameToHex(normalizeColorString(colorValue));
 
-      (textField.find('input').getDOMNode() as HTMLInputElement).value =
+      (textField!.find('input')!.domNode as HTMLInputElement).value =
         colorValue;
-      textField.find('input').simulate('change').simulate('blur');
+      textField!.find('input')!.trigger('onChange');
+      textField!.find('input')!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
@@ -67,9 +68,10 @@ describe('<TextPicker />', () => {
       const colorValue = 'rgb(255, 255, 255)';
       const expectedHex = rgbStringToHex(normalizeColorString(colorValue));
 
-      (textField.find('input').getDOMNode() as HTMLInputElement).value =
+      (textField!.find('input')!.domNode as HTMLInputElement).value =
         colorValue;
-      textField.find('input').simulate('change').simulate('blur');
+      textField!.find('input')!.trigger('onChange');
+      textField!.find('input')!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
@@ -83,9 +85,10 @@ describe('<TextPicker />', () => {
       const colorValue = 'ffffff';
       const expectedHex = expandHex(`#${normalizeColorString(colorValue)}`);
 
-      (textField.find('input').getDOMNode() as HTMLInputElement).value =
+      (textField!.find('input')!.domNode as HTMLInputElement).value =
         colorValue;
-      textField.find('input').simulate('change').simulate('blur');
+      textField!.find('input')!.trigger('onChange');
+      textField!.find('input')!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
@@ -99,9 +102,10 @@ describe('<TextPicker />', () => {
       const colorValue = '#fff';
       const expectedHex = expandHex(normalizeColorString(colorValue));
 
-      (textField.find('input').getDOMNode() as HTMLInputElement).value =
+      (textField!.find('input')!.domNode as HTMLInputElement).value =
         colorValue;
-      textField.find('input').simulate('change').simulate('blur');
+      textField!.find('input')!.trigger('onChange');
+      textField!.find('input')!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
@@ -115,9 +119,10 @@ describe('<TextPicker />', () => {
       const colorValue = 'fff';
       const expectedHex = expandHex(`#${normalizeColorString(colorValue)}`);
 
-      (textField.find('input').getDOMNode() as HTMLInputElement).value =
+      (textField!.find('input')!.domNode as HTMLInputElement).value =
         colorValue;
-      textField.find('input').simulate('change').simulate('blur');
+      textField!.find('input')!.trigger('onChange');
+      textField!.find('input')!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
@@ -130,9 +135,10 @@ describe('<TextPicker />', () => {
       const textField = textPicker.find(TextField);
       const colorValue = '#00000z';
 
-      (textField.find('input').getDOMNode() as HTMLInputElement).value =
+      (textField!.find('input')!.domNode as HTMLInputElement).value =
         colorValue;
-      textField.find('input').simulate('change').simulate('blur');
+      textField!.find('input')!.trigger('onChange');
+      textField!.find('input')!.trigger('onBlur');
 
       expect(onChangeSpy).not.toHaveBeenCalled();
     });
