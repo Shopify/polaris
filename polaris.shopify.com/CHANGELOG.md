@@ -1,5 +1,17 @@
 # polaris.shopify.com
 
+## 0.33.0
+
+### Minor Changes
+
+- [#8279](https://github.com/Shopify/polaris/pull/8279) [`a3cf2f103`](https://github.com/Shopify/polaris/commit/a3cf2f1033d1e31fa5ede883504f96850b488a14) Thanks [@laurkim](https://github.com/laurkim)! - Updated status badge color and banner for Alpha components
+
+### Patch Changes
+
+- Updated dependencies [[`0961fab02`](https://github.com/Shopify/polaris/commit/0961fab02959c0a4ea8a8a7407ad39cab1d9e106), [`a0f29cd4f`](https://github.com/Shopify/polaris/commit/a0f29cd4fa3e8f03f12e78dbbd7b2730ae2245e2), [`9eb9e47b9`](https://github.com/Shopify/polaris/commit/9eb9e47b9154f2df770916a4d94bd0e630ee261a), [`8fb998772`](https://github.com/Shopify/polaris/commit/8fb998772f788947bf4324c065b57705c87133c4)]:
+  - @shopify/polaris@10.27.0
+  - @shopify/polaris-icons@6.11.1
+
 ## 0.32.0
 
 ### Minor Changes
