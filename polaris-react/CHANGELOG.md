@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.27.2
+
+### Patch Changes
+
+- [#8290](https://github.com/Shopify/polaris/pull/8290) [`24a2ef38a`](https://github.com/Shopify/polaris/commit/24a2ef38a14a5904e739a38c1421e3f7f5db81bc) Thanks [@LauraAubin](https://github.com/LauraAubin)! - Updated the `IndexTable` `heading.tooltipContent` type to a `ReactNode`
+
 ## 10.27.1
 
 ### Patch Changes
