@@ -21,29 +21,40 @@ export function Footer({
 }: FooterProps) {
   const primaryActionButton =
     (primaryAction && buttonsFrom(primaryAction, {primary: true})) || null;
+
   const secondaryActionButtons =
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
-  const actions =
+
+  const actionMarkup =
     primaryActionButton || secondaryActionButtons ? (
-      <Inline gap="2">
+      <Inline align="end" gap="2" wrap={false}>
         {secondaryActionButtons}
         {primaryActionButton}
       </Inline>
     ) : null;
 
+  const customMarkup = children ? (
+    <Box width={!actionMarkup ? '100%' : undefined}>{children}</Box>
+  ) : null;
+
   return (
-    <Inline gap="4" blockAlign="center">
-      <Box
-        borderBlockStart="divider"
-        minHeight="var(--p-space-16)"
-        padding="4"
-        width="100%"
+    <Box
+      borderBlockStart="divider"
+      paddingBlockStart="4"
+      paddingBlockEnd="4"
+      paddingInlineStart="5"
+      paddingInlineEnd="5"
+      width="100%"
+    >
+      <Inline
+        wrap={false}
+        gap="4"
+        blockAlign="center"
+        align={actionMarkup && customMarkup ? 'space-between' : 'end'}
       >
-        <Inline gap="4" blockAlign="center" align="space-between">
-          <Box>{children}</Box>
-          {actions}
-        </Inline>
-      </Box>
-    </Inline>
+        {customMarkup}
+        {actionMarkup}
+      </Inline>
+    </Box>
   );
 }
