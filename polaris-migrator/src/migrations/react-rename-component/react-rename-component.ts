@@ -40,6 +40,10 @@ export default function reactRenameComponent(
     return fileInfo.source;
   }
 
+  if (!options.renameFrom || !options.renameTo) {
+    throw new Error('Missing required options: renameFrom and renameTo');
+  }
+
   const sourcePaths = normalizeImportSourcePaths(j, source, {
     relative: options.relative,
     from: options.renameFrom,
