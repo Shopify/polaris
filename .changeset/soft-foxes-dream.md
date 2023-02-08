@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Updated IndexTable's heading.tooltipContent type to a React Node
+Updated the `IndexTable` `heading.tooltipContent` type to a `ReactNode`
