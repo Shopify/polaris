@@ -1,5 +1,16 @@
 # Changelog
 
+## 10.27.1
+
+### Patch Changes
+
+- [#8285](https://github.com/Shopify/polaris/pull/8285) [`e70f70862`](https://github.com/Shopify/polaris/commit/e70f7086261b7f036b90550a432bf9d72e7ed8a4) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed contrast issue on alpha status badge
+  Added default value to prop documentation for AlphaStack
+
+* [#8280](https://github.com/Shopify/polaris/pull/8280) [`20bb1a668`](https://github.com/Shopify/polaris/commit/20bb1a668dcde8fcb87da35d5caaef2f0e387c01) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `EmptyState` `illustration` rendering below content and actions when rendered outside of a content container
+
+- [#8286](https://github.com/Shopify/polaris/pull/8286) [`f335aaf99`](https://github.com/Shopify/polaris/commit/f335aaf9968ff87b38559572f51a92b413f8aecd) Thanks [@chloerice](https://github.com/chloerice)! - Reverted Modal footer layout bug fix shipped in [#8253](https://github.com/Shopify/polaris/pull/8253)
+
 ## 10.27.0
 
 ### Minor Changes
