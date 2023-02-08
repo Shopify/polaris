@@ -1,12 +1,12 @@
-import {Card, SkeletonTabs} from '@shopify/polaris';
+import {LegacyCard, SkeletonTabs} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function SkeletonExample() {
   return (
-    <Card>
+    <LegacyCard>
       <SkeletonTabs count={4} />
-    </Card>
+    </LegacyCard>
   );
 }
 
