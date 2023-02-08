@@ -22,7 +22,7 @@ export const ToastManager = memo(function ToastManager({
   const toastNodes: React.RefObject<HTMLDivElement>[] = [];
 
   const updateToasts = useDeepCallback(() => {
-    let yPosition = 0;
+    let yPosition = 25;
     toastMessages.forEach((_, index) => {
       const currentToast = toastNodes[index];
       if (!currentToast.current) return;

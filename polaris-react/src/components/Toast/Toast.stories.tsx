@@ -12,7 +12,15 @@ export function Default() {
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   const toastMarkup = active ? (
-    <Toast content="Message sent" onDismiss={toggleActive} />
+    <Toast
+      title="New feature available"
+      content="You can now set your preferred language in your profile"
+      onDismiss={toggleActive}
+      action={{
+        content: 'Update now',
+        onAction: () => {},
+      }}
+    />
   ) : null;
 
   return (
@@ -55,7 +63,7 @@ export function Info() {
 
   const toastMarkup = active ? (
     <Toast
-      content="Transfer will take about 2-3 days"
+      content="Transfer will take 2-3 days"
       onDismiss={toggleActive}
       type="info"
     />
@@ -80,7 +88,7 @@ export function Success() {
 
   const toastMarkup = active ? (
     <Toast
-      content="Transfer will take about 2-3 days"
+      content="Transfer completed"
       onDismiss={toggleActive}
       type="success"
     />

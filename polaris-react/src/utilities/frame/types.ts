@@ -54,6 +54,8 @@ export interface ContextualSaveBarProps {
 // Toast
 
 export interface ToastProps {
+  title?: string;
+
   /** The content that should appear in the toast message */
   content: string;
   /**

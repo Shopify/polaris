@@ -25,6 +25,7 @@ export const DEFAULT_TOAST_DURATION = 5000;
 export const DEFAULT_TOAST_DURATION_WITH_ACTION = 10000;
 
 export function Toast({
+  title,
   content,
   onDismiss,
   duration,
@@ -116,11 +117,17 @@ export function Toast({
       />
       <div className={styles.ToastContent}>
         {leadingIconMarkup}
+
         <div className={`${styles.ToastText}`}>
-          <Text as="span" variant="bodyMd" fontWeight="medium">
-            {content}
-          </Text>
+          {title && <div className={styles.ToastTitle}>{title}</div>}
+
+          <div>
+            <Text as="span" variant="bodyMd" fontWeight="medium">
+              {content}
+            </Text>
+          </div>
         </div>
+
         {actionMarkup}
         {dismissMarkup}
       </div>
