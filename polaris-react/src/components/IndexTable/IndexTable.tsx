@@ -49,7 +49,7 @@ interface IndexTableHeadingBase {
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
-  tooltipContent?: string;
+  tooltipContent?: React.ReactNode;
   tooltipWidth?: Width;
   tooltipPersistsOnClick?: boolean;
 }
