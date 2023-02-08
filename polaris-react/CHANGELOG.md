@@ -1,5 +1,103 @@
 # Changelog
 
+## 10.27.0
+
+### Minor Changes
+
+- [#8277](https://github.com/Shopify/polaris/pull/8277) [`a0f29cd4f`](https://github.com/Shopify/polaris/commit/a0f29cd4fa3e8f03f12e78dbbd7b2730ae2245e2) Thanks [@LauraAubin](https://github.com/LauraAubin)! - 1. Added persist on click and underline to Tooltip.
+  2. Added IndexTable header props to support Tooltip content, width, and persist on click.
+
+### Patch Changes
+
+- [#8250](https://github.com/Shopify/polaris/pull/8250) [`0961fab02`](https://github.com/Shopify/polaris/commit/0961fab02959c0a4ea8a8a7407ad39cab1d9e106) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `SkeletonPage` `primaryAction` height not matching `Button` height
+
+* [#8253](https://github.com/Shopify/polaris/pull/8253) [`8fb998772`](https://github.com/Shopify/polaris/commit/8fb998772f788947bf4324c065b57705c87133c4) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Modal` without actions not stretching `footer` to full width
+
+* Updated dependencies [[`9eb9e47b9`](https://github.com/Shopify/polaris/commit/9eb9e47b9154f2df770916a4d94bd0e630ee261a)]:
+  - @shopify/polaris-icons@6.11.1
+
+## 10.26.0
+
+### Minor Changes
+
+- [#8240](https://github.com/Shopify/polaris/pull/8240) [`31abdab37`](https://github.com/Shopify/polaris/commit/31abdab377fb0c6ceb79d6aa0cd46d730b100447) Thanks [@laurkim](https://github.com/laurkim)! - Added `LegacyStack` component
+
+* [#8238](https://github.com/Shopify/polaris/pull/8238) [`bb8b551d4`](https://github.com/Shopify/polaris/commit/bb8b551d44b021584bb113c023f481c91207229a) Thanks [@laurkim](https://github.com/laurkim)! - Added `LegacyCard` component
+
+### Patch Changes
+
+- [#8256](https://github.com/Shopify/polaris/pull/8256) [`43776be71`](https://github.com/Shopify/polaris/commit/43776be71635454192aa3985a5f364f84177ddeb) Thanks [@aveline](https://github.com/aveline)! - - Fixed `Bleed` width behavior
+  - Fixed `Banner` content width
+
+* [#8244](https://github.com/Shopify/polaris/pull/8244) [`0ee432500`](https://github.com/Shopify/polaris/commit/0ee43250031ddaa03ffab06ae24197c91c2328d9) Thanks [@samrose3](https://github.com/samrose3)! - Disallow text-transform property in Stylelint Polaris
+
+* Updated dependencies [[`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd)]:
+  - @shopify/polaris-tokens@6.4.0
+
+## 10.25.0
+
+### Minor Changes
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Tabs` component to use layout primitives
+
+* [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `OptionList` to use new layout primitives
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Popover` to use new layout primitives
+
+### Patch Changes
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Remove unused class in Page Header
+
+* [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Rebuilt Page Header with layout components
+
+- [#8237](https://github.com/Shopify/polaris/pull/8237) [`17fa970db`](https://github.com/Shopify/polaris/commit/17fa970db66213fe659ee231e750f7054a72dc97) Thanks [@loic-d](https://github.com/loic-d)! - Fixed Backdrop onClick callback when setClosing is missing
+
+## 10.24.2
+
+### Patch Changes
+
+- [#8209](https://github.com/Shopify/polaris/pull/8209) [`d1a332963`](https://github.com/Shopify/polaris/commit/d1a3329634a1f4cd02f0d97b8239bbedad7cf889) Thanks [@aveline](https://github.com/aveline)! - Updated `Bleed` to take up full width of container
+
+* [#8224](https://github.com/Shopify/polaris/pull/8224) [`e30d1f51b`](https://github.com/Shopify/polaris/commit/e30d1f51b205c6875c0e712291081d836e851d97) Thanks [@peterlazzarino](https://github.com/peterlazzarino)! - Repair styling for Checkbox when indeterminate and disabled
+
+## 10.24.1
+
+### Patch Changes
+
+- [#8166](https://github.com/Shopify/polaris/pull/8166) [`ec0e2f671`](https://github.com/Shopify/polaris/commit/ec0e2f671487e167ee43326372ad2367b3e7f4a6) Thanks [@rjur11](https://github.com/rjur11)! - Fixed focus not returning to the `Popover` `activator` on keypress of Escape
+
+- Updated dependencies [[`977e70a84`](https://github.com/Shopify/polaris/commit/977e70a847cdc446c28c2b06dc771e5970aa0f4f)]:
+  - @shopify/polaris-icons@6.11.0
+
+## 10.24.0
+
+### Minor Changes
+
+- [#8083](https://github.com/Shopify/polaris/pull/8083) [`18991daf1`](https://github.com/Shopify/polaris/commit/18991daf16362fa4e0bef6a11c3e9040baa7dd95) Thanks [@krithikajanakiraman](https://github.com/krithikajanakiraman)! - Adding an oprtional headerContent prop to ResourceList
+
+* [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Rebuilt `ActionList` to use layout primitives
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Refactored `SkeletonPage` to use primitive Layout components
+  Removed `max-width` on children in `AlphaStack`
+  Added `narrowWidth` and `fullWidth` examples to `AlphaStack` stories
+
+### Patch Changes
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Updated `SkeletonPage` title and body layout
+
+* [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Refactored `SkeletonPage` title layout
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Fixed `ResourceList` header alignment
+
+* [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Rebuilt `ResourceItem` with layout components
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Fixed IndexTable checkbox alignment
+
+* [#8099](https://github.com/Shopify/polaris/pull/8099) [`a3605c855`](https://github.com/Shopify/polaris/commit/a3605c855ae4b83653450dbbbb362fdbf6136bb7) Thanks [@AndrewMusgrave](https://github.com/AndrewMusgrave)! - Fixed `BulkActions` causing `IndexTable` & `ResourceList` to ignore pointer events
+
+* Updated dependencies [[`a0c6e467b`](https://github.com/Shopify/polaris/commit/a0c6e467b71be484e708d4c06d4172e3890b5a15), [`0ca0b7899`](https://github.com/Shopify/polaris/commit/0ca0b7899d480ca7bf87e7dfca24bc5721b0775c)]:
+  - @shopify/polaris-icons@6.10.0
+
 ## 10.23.0
 
 ### Minor Changes

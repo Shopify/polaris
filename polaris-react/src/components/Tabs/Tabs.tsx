@@ -6,6 +6,7 @@ import {Icon} from '../Icon';
 import {Popover} from '../Popover';
 import {Text} from '../Text';
 import {useI18n} from '../../utilities/i18n';
+import {Box} from '../Box';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
@@ -153,7 +154,11 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
     return (
       <div>
-        <div className={styles.Wrapper}>
+        <Box
+          borderBlockEnd="divider"
+          paddingInlineStart="2"
+          paddingInlineEnd="2"
+        >
           <TabMeasurer
             tabToFocus={tabToFocus}
             activator={activator}
@@ -188,7 +193,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
               </Popover>
             </li>
           </ul>
-        </div>
+        </Box>
         {panelMarkup}
       </div>
     );

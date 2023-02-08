@@ -1,5 +1,32 @@
 # Changelog
 
+## 5.2.0
+
+### Minor Changes
+
+- [#8244](https://github.com/Shopify/polaris/pull/8244) [`0ee432500`](https://github.com/Shopify/polaris/commit/0ee43250031ddaa03ffab06ae24197c91c2328d9) Thanks [@samrose3](https://github.com/samrose3)! - Disallow text-transform property in Stylelint Polaris
+
+### Patch Changes
+
+- Updated dependencies [[`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd)]:
+  - @shopify/polaris-tokens@6.4.0
+
+## 5.1.3
+
+### Patch Changes
+
+- [#8208](https://github.com/Shopify/polaris/pull/8208) [`69d27dbf6`](https://github.com/Shopify/polaris/commit/69d27dbf63d360a7cb3722fa8cd16e605288b3b9) Thanks [@qt314](https://github.com/qt314)! - Re-enable non layout component related layout rules
+
+## 5.1.2
+
+### Patch Changes
+
+- [#8167](https://github.com/Shopify/polaris/pull/8167) [`07669075a`](https://github.com/Shopify/polaris/commit/07669075a3ea9c0aeac3bf9ff645df1a6f2938b5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Temporarily disable layout category
+
+* [#8162](https://github.com/Shopify/polaris/pull/8162) [`74a75a473`](https://github.com/Shopify/polaris/commit/74a75a4731b3f67d408ccb985708d6056819d4f8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Allow SCSS namespaces with Polaris breakpoints
+
+- [#8168](https://github.com/Shopify/polaris/pull/8168) [`f8f9eecd5`](https://github.com/Shopify/polaris/commit/f8f9eecd5abe900581efa5032d5f4ee80228e4d4) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Ignored needless disables for layout category and added meta URL to error message
+
 ## 5.1.1
 
 ### Patch Changes

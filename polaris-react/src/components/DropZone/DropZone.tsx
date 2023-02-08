@@ -14,7 +14,6 @@ import {debounce} from '../../utilities/debounce';
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
-import {Stack} from '../Stack';
 import {Text} from '../Text';
 import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
@@ -22,6 +21,7 @@ import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
+import {AlphaStack} from '../AlphaStack';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
@@ -419,14 +419,14 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   ) {
     return (
       <div className={styles.Overlay}>
-        <Stack vertical spacing="tight">
+        <AlphaStack gap="2" align="center">
           {size === 'small' && <Icon source={icon} color={color} />}
           {(size === 'medium' || size === 'large') && (
             <Text variant="bodySm" as="p" fontWeight="bold">
               {text}
             </Text>
           )}
-        </Stack>
+        </AlphaStack>
       </div>
     );
   }

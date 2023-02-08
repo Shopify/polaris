@@ -84,6 +84,15 @@ function ruleListMarkdown(): string {
         content[category] = ['', `## ${category}`, ''];
       }
 
+      // Temporary removal of layout rules until it is re-enabled
+      // https://github.com/Shopify/polaris/issues/8188
+      if (
+        title.includes('layout/declaration-property-value-disallowed-list') ||
+        title.includes('layout/property-disallowed-list')
+      ) {
+        return;
+      }
+
       content[category].push(`- [${title}](${url}): ${description}`);
     }
   });

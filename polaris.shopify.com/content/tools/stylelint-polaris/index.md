@@ -3,7 +3,7 @@ title: Stylelint Polaris
 description: A configuration of Stylelint rules that promote adoption of the Polaris design system in consuming apps.
 icon: WandMajor
 collapseChildren: true
-order: 3
+order: 4
 keywords:
   - stylelint
   - dev tools
@@ -19,6 +19,11 @@ keywords:
 ---
 
 [<img src="https://img.shields.io/npm/v/@shopify/stylelint-polaris.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style="width: 95px" />](https://www.npmjs.com/package/@shopify/stylelint-polaris/)
+
+<picture>
+  <source srcset="/images/tools/stylelint-polaris/stylelint-demo.png" media="(prefers-reduced-motion: reduce)"></source> 
+  <img srcset="/images/tools/stylelint-polaris/stylelint-demo.gif" alt="Demo of Stylelint Polaris">
+</picture>
 
 ## Installation
 
@@ -117,7 +122,7 @@ module.exports = {
 ### Build custom rules
 
 1. Refer to the [Writing plugins](https://stylelint.io/developer-guide/plugins) guide of the Stylelint documentation
-1. Create your rule in the [plugins](plugins) directory
+1. Create your rule in the [plugins](https://github.com/shopify/polaris/tree/main/stylelint-polaris/plugins) directory
 1. Validate your plugin with [tests](https://github.com/stylelint/jest-preset-stylelint#usage) (reference sibling plugins for examples)
 1. Refer to the [Add new rules](#add-new-rules) section to add your custom rule to the `stylelint-polaris` config
 

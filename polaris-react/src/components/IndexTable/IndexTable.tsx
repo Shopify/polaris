@@ -34,6 +34,12 @@ import {
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
+import type {
+  BorderRadius,
+  Padding,
+  Width,
+  TooltipOverlayProps,
+} from '../Tooltip';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -43,6 +49,9 @@ interface IndexTableHeadingBase {
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
+  tooltipContent?: string;
+  tooltipWidth?: Width;
+  tooltipPersistsOnClick?: boolean;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -842,6 +851,21 @@ function IndexTableBase({
   function renderHeadingContent(heading: IndexTableHeading, index: number) {
     let headingContent;
 
+    const defaultTooltipProps = {
+      width: heading.tooltipWidth ?? 'default',
+      activatorWrapper: 'div',
+      dismissOnMouseOut: true,
+      persistOnClick: heading.tooltipPersistsOnClick,
+    };
+
+    const defaultHeaderTooltipProps = {
+      ...defaultTooltipProps,
+      padding: '4' as Padding,
+      borderRadius: '2' as BorderRadius,
+      content: heading.tooltipContent,
+      preferredPosition: 'above' as TooltipOverlayProps['preferredPosition'],
+    };
+
     if (heading.new) {
       headingContent = (
         <Stack wrap={false} alignment="center">
@@ -891,38 +915,91 @@ function IndexTableBase({
         </span>
       );
 
-      const sortMarkup = (
-        <UnstyledButton
-          onClick={() => handleSortHeadingClick(index, newDirection)}
-          className={styles.TableHeadingSortButton}
-          tabIndex={selectMode ? -1 : 0}
-        >
-          {iconMarkup}
+      const defaultSortButtonProps = {
+        onClick: () => handleSortHeadingClick(index, newDirection),
+        className: styles.TableHeadingSortButton,
+        tabIndex: selectMode ? -1 : 0,
+      };
 
-          {headingContent}
+      const sortMarkup = (
+        <UnstyledButton {...defaultSortButtonProps}>
+          {iconMarkup}
+          <span
+            className={classNames(
+              sortToggleLabels &&
+                selectMode &&
+                heading.tooltipContent &&
+                styles.TableHeadingTooltipUnderlinePlaceholder,
+            )}
+          >
+            {headingContent}
+          </span>
         </UnstyledButton>
       );
 
       if (!sortToggleLabels || selectMode) {
-        return sortMarkup;
+        return (
+          <div className={styles.SortableTableHeadingWithCustomMarkup}>
+            {sortMarkup}
+          </div>
+        );
       }
 
       const tooltipDirection = isCurrentlySorted
         ? sortDirection!
         : defaultSortDirection;
 
-      const tooltipContent = sortToggleLabels[index][tooltipDirection];
+      const sortTooltipContent = sortToggleLabels[index][tooltipDirection];
 
+      if (!heading.tooltipContent) {
+        return (
+          // Regular header with sort icon and sort direction tooltip
+          <Tooltip {...defaultTooltipProps} content={sortTooltipContent}>
+            {sortMarkup}
+          </Tooltip>
+        );
+      }
+
+      if (heading.tooltipContent) {
+        return (
+          // Header text and sort icon have separate tooltips
+          <div className={styles.SortableTableHeadingWithCustomMarkup}>
+            <UnstyledButton {...defaultSortButtonProps}>
+              <Tooltip {...defaultHeaderTooltipProps}>
+                <span className={styles.TableHeadingUnderline}>
+                  {headingContent}
+                </span>
+              </Tooltip>
+
+              <Tooltip
+                {...defaultTooltipProps}
+                content={sortTooltipContent}
+                preferredPosition="above"
+              >
+                {iconMarkup}
+              </Tooltip>
+            </UnstyledButton>
+          </div>
+        );
+      }
+    }
+
+    if (heading.tooltipContent) {
       return (
-        <Tooltip
-          content={tooltipContent}
-          activatorWrapper="div"
-          dismissOnMouseOut
-        >
-          {sortMarkup}
+        // Non-sortable header with tooltip
+        <Tooltip {...defaultHeaderTooltipProps} activatorWrapper="span">
+          <span
+            className={classNames(
+              styles.TableHeadingUnderline,
+              styles.SortableTableHeaderWrapper,
+            )}
+          >
+            {headingContent}
+          </span>
         </Tooltip>
       );
     }
+
     return headingContent;
   }
 

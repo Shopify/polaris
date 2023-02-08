@@ -1,5 +1,27 @@
 # Changelog
 
+## 6.11.1
+
+### Patch Changes
+
+- [#8276](https://github.com/Shopify/polaris/pull/8276) [`9eb9e47b9`](https://github.com/Shopify/polaris/commit/9eb9e47b9154f2df770916a4d94bd0e630ee261a) Thanks [@leileu](https://github.com/leileu)! - Corrected some types with Metaobjects and Metafields
+
+## 6.11.0
+
+### Minor Changes
+
+- [#8159](https://github.com/Shopify/polaris/pull/8159) [`977e70a84`](https://github.com/Shopify/polaris/commit/977e70a847cdc446c28c2b06dc771e5970aa0f4f) Thanks [@kmeleta](https://github.com/kmeleta)! - Added Rows2Major icon
+
+## 6.10.0
+
+### Minor Changes
+
+- [#8150](https://github.com/Shopify/polaris/pull/8150) [`a0c6e467b`](https://github.com/Shopify/polaris/commit/a0c6e467b71be484e708d4c06d4172e3890b5a15) Thanks [@leileu](https://github.com/leileu)! - Adding two metaobject icons: Metaobject and Metaobject Reference.
+
+### Patch Changes
+
+- [#8148](https://github.com/Shopify/polaris/pull/8148) [`0ca0b7899`](https://github.com/Shopify/polaris/commit/0ca0b7899d480ca7bf87e7dfca24bc5721b0775c) Thanks [@zecarlostorre](https://github.com/zecarlostorre)! - Updated clipboard icon
+
 ## 6.9.0
 
 ### Minor Changes

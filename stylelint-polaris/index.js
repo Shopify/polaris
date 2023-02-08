@@ -97,6 +97,7 @@ const stylelintPolarisCoverageOptions = {
           'line-height': ['px', 'rem', 'em'],
         },
       ],
+      'property-disallowed-list': ['text-transform'],
       'function-disallowed-list': [
         'font-family',
         'font-size',
@@ -142,42 +143,42 @@ const stylelintPolarisCoverageOptions = {
   ],
   layout: [
     {
-      'declaration-property-value-disallowed-list': [
-        {
-          top: [/(?!var\(--p-).+$/],
-          bottom: [/(?!var\(--p-).+$/],
-          left: [/(?!var\(--p-).+$/],
-          right: [/(?!var\(--p-).+$/],
-          '/^width/': [/(?!var\(--p-).+$/],
-          '/^height/': [/(?!var\(--p-).+$/],
-        },
-        {severity: 'warning'},
-      ],
-      'property-disallowed-list': [
-        [
-          'position',
-          'grid',
-          'flex',
-          'flex-grow',
-          'flex-shrink',
-          'flex-basis',
-          'justify-content',
-          'align-items',
-          'grid-row',
-          'grid-row-start',
-          'grid-row-end',
-          'grid-column',
-          'grid-column-start',
-          'grid-column-end',
-          'grid-template',
-          'grid-template-areas',
-          'grid-template-rows',
-          'grid-template-columns',
-          'grid-area',
-          'display',
-        ],
-        {severity: 'warning'},
-      ],
+      // 'declaration-property-value-disallowed-list': [
+      //   {
+      //     top: [/(?!var\(--p-).+$/],
+      //     bottom: [/(?!var\(--p-).+$/],
+      //     left: [/(?!var\(--p-).+$/],
+      //     right: [/(?!var\(--p-).+$/],
+      //     '/^width/': [/(?!var\(--p-).+$/],
+      //     '/^height/': [/(?!var\(--p-).+$/],
+      //   },
+      //   {severity: 'warning'},
+      // ],
+      // 'property-disallowed-list': [
+      //   [
+      //     'position',
+      //     'grid',
+      //     'flex',
+      //     'flex-grow',
+      //     'flex-shrink',
+      //     'flex-basis',
+      //     'justify-content',
+      //     'align-items',
+      //     'grid-row',
+      //     'grid-row-start',
+      //     'grid-row-end',
+      //     'grid-column',
+      //     'grid-column-start',
+      //     'grid-column-end',
+      //     'grid-template',
+      //     'grid-template-areas',
+      //     'grid-template-rows',
+      //     'grid-template-columns',
+      //     'grid-area',
+      //     'display',
+      //   ],
+      //   {severity: 'warning'},
+      // ],
       'function-disallowed-list': [
         'nav-min-window-corrected',
         'control-height',
@@ -371,7 +372,9 @@ const stylelintPolarisCoverageOptions = {
         allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
         allowedScssInterpolations: [
           // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
-          /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
+          matchNameRegExp(
+            String.raw`\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)`,
+          ),
         ],
       },
       // Legacy functions
@@ -470,7 +473,15 @@ const stylelintPolarisCoverageOptions = {
 /** @type {import('stylelint').Config} */
 module.exports = {
   customSyntax: 'postcss-scss',
-  reportDescriptionlessDisables: true,
+  reportNeedlessDisables: [
+    true,
+    {
+      // Report needless disables for all rules except layout coverage rules
+      // Note: This doesn't affect the default Stylelint behavior/reporting
+      // and is only need because we dynamically create these rule names
+      except: ['all', /^polaris\/layout\/.+$/],
+    },
+  ],
   reportInvalidScopeDisables: [
     true,
     {

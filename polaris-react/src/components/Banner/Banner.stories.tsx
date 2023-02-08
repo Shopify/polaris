@@ -1,12 +1,15 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
+  AlphaStack,
   Banner,
   Button,
   Card,
+  Inline,
   Link,
   List,
   Modal,
+  Text,
   TextContainer,
 } from '@shopify/polaris';
 
@@ -184,5 +187,23 @@ export function InACard() {
         <p>View a summary of your online store’s performance.</p>
       </TextContainer>
     </Card>
+  );
+}
+
+export function WithEndJustifiedContent() {
+  return (
+    <Banner status="critical">
+      <AlphaStack gap="1" fullWidth>
+        <Inline align="space-between">
+          <Text variant="headingMd" fontWeight="semibold" as="h3">
+            Deployment failed in 5min
+          </Text>
+          <Link external url="https://example.com">
+            Logs
+          </Link>
+        </Inline>
+        <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+      </AlphaStack>
+    </Banner>
   );
 }

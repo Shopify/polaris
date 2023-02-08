@@ -6,9 +6,9 @@ import type {ComplexAction} from '../../types';
 import {Box} from '../Box';
 import {buttonFrom} from '../Button';
 import {Image} from '../Image';
-import {Stack} from '../Stack';
-import {TextContainer} from '../TextContainer';
 import {Text} from '../Text';
+import {AlphaStack} from '../AlphaStack';
+import {Inline} from '../Inline';
 
 import styles from './EmptyState.scss';
 
@@ -48,19 +48,16 @@ export function EmptyState({
   footerContent,
 }: EmptyStateProps) {
   const withinContentContainer = useContext(WithinContentContext);
-  const className = classNames(
-    styles.EmptyState,
-    fullWidth && styles.fullWidth,
+  const imageContainedClass = classNames(
     imageContained && styles.imageContained,
-    withinContentContainer && styles.withinContentContainer,
   );
 
   const imageMarkup = largeImage ? (
     <Image
       alt=""
       role="presentation"
-      className={styles.Image}
       source={largeImage}
+      className={imageContainedClass}
       sourceSet={[
         {source: image, descriptor: '568w'},
         {source: largeImage, descriptor: '1136w'},
@@ -68,7 +65,12 @@ export function EmptyState({
       sizes="(max-width: 568px) 60vw"
     />
   ) : (
-    <Image role="presentation" alt="" className={styles.Image} source={image} />
+    <Image
+      className={imageContainedClass}
+      role="presentation"
+      alt=""
+      source={image}
+    />
   );
 
   const secondaryActionMarkup = secondaryAction
@@ -77,7 +79,7 @@ export function EmptyState({
 
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="4">
-      <Text as="span" variant="bodyMd" color="subdued">
+      <Text as="span" variant="bodyMd" color="subdued" alignment="center">
         {footerContent}
       </Text>
     </Box>
@@ -90,56 +92,57 @@ export function EmptyState({
     : null;
 
   const headingMarkup = heading ? (
-    <Text variant={headingSize} as="p">
-      {heading}
-    </Text>
+    <Box paddingBlockEnd="4">
+      <Text variant={headingSize} as="p" alignment="center">
+        {heading}
+      </Text>
+    </Box>
   ) : null;
 
   const childrenMarkup = children ? (
-    <div className={styles.Content}>
-      <Text as="span" variant="bodyMd" color="subdued">
-        {children}
-      </Text>
-    </div>
+    <Text as="span" variant="bodyMd" color="subdued" alignment="center">
+      {children}
+    </Text>
   ) : null;
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <TextContainer>
+      <Box paddingBlockEnd="6">
         {headingMarkup}
         {childrenMarkup}
-      </TextContainer>
+      </Box>
     ) : null;
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <div className={styles.Actions}>
-        <Stack alignment="center" distribution="center" spacing="tight">
-          {secondaryActionMarkup}
-          {primaryActionMarkup}
-        </Stack>
-      </div>
+      <Inline align="center" gap="2">
+        {secondaryActionMarkup}
+        {primaryActionMarkup}
+      </Inline>
     ) : null;
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
-      <div className={styles.DetailsContainer}>
-        <div className={styles.Details}>
+      <Box maxWidth={fullWidth ? '100%' : '400px'}>
+        <AlphaStack align="center" gap="0">
           {textContentMarkup}
           {actionsMarkup}
           {footerContentMarkup}
-        </div>
-      </div>
-    ) : (
-      <div className={styles.DetailsContainer} />
-    );
+        </AlphaStack>
+      </Box>
+    ) : null;
 
   return (
-    <div className={className}>
-      <div className={styles.Section}>
+    <Box
+      paddingInlineStart="0"
+      paddingInlineEnd="0"
+      paddingBlockStart="5"
+      paddingBlockEnd="16"
+    >
+      <AlphaStack align="center" gap="0">
+        {imageMarkup}
         {detailsMarkup}
-        <div className={styles.ImageContainer}>{imageMarkup}</div>
-      </div>
-    </div>
+      </AlphaStack>
+    </Box>
   );
 }
