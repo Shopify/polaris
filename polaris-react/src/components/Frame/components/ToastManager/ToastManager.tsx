@@ -22,20 +22,23 @@ export const ToastManager = memo(function ToastManager({
   const toastNodes: React.RefObject<HTMLDivElement>[] = [];
 
   const updateToasts = useDeepCallback(() => {
-    let targetInPos = 0;
+    let yPosition = 0;
     toastMessages.forEach((_, index) => {
       const currentToast = toastNodes[index];
       if (!currentToast.current) return;
-      targetInPos += currentToast.current.clientWidth;
-      console.log(targetInPos);
+      if (index > 0) {
+        yPosition += currentToast.current.clientHeight;
+      }
+      const targetInPos = currentToast.current.clientWidth;
       currentToast.current.style.setProperty(
         '--pc-toast-manager-translate-x-in',
         `-${targetInPos}px`,
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-translate-x-out',
-        `${-targetInPos + 150}px`,
+        `-${targetInPos}px`,
       );
+      currentToast.current.style.setProperty('top', `${yPosition}px`);
     });
   }, [toastMessages, toastNodes]);
 
