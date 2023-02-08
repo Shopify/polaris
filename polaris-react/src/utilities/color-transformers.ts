@@ -1,4 +1,5 @@
 import {clamp} from './clamp';
+import {names} from './color-map';
 import type {
   RGBColor,
   RGBAColor,
@@ -9,6 +10,11 @@ import type {
   HSBLAColor,
 } from './color-types';
 import {roundNumberToDecimalPlaces} from './roundNumberToDecimalPlaces';
+
+const nameHexMap: {[key: string]: string} = names;
+
+const RGB_STRING_TO_HEX_REGEX =
+  /^rgb[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i;
 
 export function rgbString(color: RGBColor | RGBAColor) {
   const {red, green, blue} = color;
@@ -283,6 +289,14 @@ function hslToObject(color: string): HSLAColor {
   return objColor;
 }
 
+export function hsbToString(hsbColor: HSBColor | string) {
+  if (typeof hsbColor === 'string') {
+    return hsbColor;
+  }
+
+  return rgbString(hsbToRgb(hsbColor));
+}
+
 export function colorToHsla(color: string): HSLAColor {
   const type = getColorType(color);
   switch (type) {
@@ -300,4 +314,39 @@ export function colorToHsla(color: string): HSLAColor {
         'Accepted color formats are: hex, rgb, rgba, hsl and hsla',
       );
   }
+}
+
+export function normalizeColorString(value: string) {
+  return value.toLowerCase().replace(/\s/g, '');
+}
+
+export function hexToHsb(hex: string): HSBColor {
+  return rgbToHsb(hexToRgb(hex));
+}
+
+export function expandHex(hex: string) {
+  if (hex.length === 4) {
+    return `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`;
+  }
+  return hex;
+}
+
+export function nameToHex(value: string) {
+  const hex = nameHexMap[normalizeColorString(value)];
+  return expandHex(`#${hex}`);
+}
+
+export function rgbStringToHex(value: string) {
+  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
+  const rgb = normalizeColorString(value).match(RGB_STRING_TO_HEX_REGEX) || [
+    undefined,
+    '0',
+    '0',
+    '0',
+  ];
+  return rgbToHex({
+    red: parseInt(rgb[1]!, 10),
+    green: parseInt(rgb[2]!, 10),
+    blue: parseInt(rgb[3]!, 10),
+  });
 }

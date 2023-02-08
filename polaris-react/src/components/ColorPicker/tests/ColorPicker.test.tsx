@@ -83,12 +83,12 @@ describe('<ColorPicker />', () => {
   });
 
   describe('id', () => {
-    it('is passed down to the first child', () => {
+    it("is passed down to the first child's first child", () => {
       const id = 'MyID';
       const colorPicker = mountWithApp(
         <ColorPicker id={id} color={red} onChange={jest.fn()} />,
       );
-      expect(colorPicker.children[0]).toHaveReactProps({id});
+      expect(colorPicker.children[0].children[0]).toHaveReactProps({id});
     });
   });
 

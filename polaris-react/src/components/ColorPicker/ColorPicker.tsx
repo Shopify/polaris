@@ -3,12 +3,19 @@ import React, {PureComponent} from 'react';
 import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
-import {hsbToRgb} from '../../utilities/color-transformers';
+import {hsbToRgb, hexToHsb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
-import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
+import {
+  AlphaField,
+  AlphaPicker,
+  HuePicker,
+  Slidable,
+  SlidableProps,
+  TextPicker,
+} from './components';
 import styles from './ColorPicker.scss';
 
 interface State {
@@ -114,26 +121,48 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       />
     ) : null;
 
+    const hexPickerMarkup = (
+      <TextPicker
+        color={color}
+        allowAlpha={allowAlpha}
+        onChange={this.handleHexChange}
+      />
+    );
+    const alphaFieldMarkup = allowAlpha ? (
+      <AlphaField alpha={alpha} onChange={this.handleAlphaChange} />
+    ) : null;
+
     const className = classNames(
       styles.ColorPicker,
       fullWidth && styles.fullWidth,
     );
 
+    const colorNodeClassName = classNames(
+      styles.MainColor,
+      allowAlpha && styles.AlphaAllowed,
+    );
+
     return (
-      <div className={className} id={id} onMouseDown={this.handlePickerDrag}>
-        <div ref={this.setColorNode} className={styles.MainColor}>
-          <div
-            className={styles.ColorLayer}
-            style={{backgroundColor: colorString}}
-          />
-          <Slidable
-            onChange={this.handleDraggerMove}
-            draggerX={draggerX}
-            draggerY={draggerY}
-          />
+      <div>
+        <div className={className} id={id} onMouseDown={this.handlePickerDrag}>
+          <div ref={this.setColorNode} className={colorNodeClassName}>
+            <div
+              className={styles.ColorLayer}
+              style={{backgroundColor: colorString}}
+            />
+            <Slidable
+              onChange={this.handleDraggerMove}
+              draggerX={draggerX}
+              draggerY={draggerY}
+            />
+          </div>
+          <HuePicker hue={hue} onChange={this.handleHueChange} />
+          {alphaSliderMarkup}
         </div>
-        <HuePicker hue={hue} onChange={this.handleHueChange} />
-        {alphaSliderMarkup}
+        <div className={styles.TextFields}>
+          {hexPickerMarkup}
+          {alphaFieldMarkup}
+        </div>
         <EventListener event="resize" handler={this.handleResize} />
       </div>
     );
@@ -157,6 +186,15 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       onChange,
     } = this.props;
     onChange({hue, brightness, saturation, alpha});
+  };
+
+  private handleHexChange = (hex: string) => {
+    const {
+      color: {alpha = 1},
+      onChange,
+    } = this.props;
+    const newColor = hexToHsb(hex);
+    onChange({...newColor, alpha});
   };
 
   private handleDraggerMove: SlidableProps['onChange'] = ({x, y}) => {
