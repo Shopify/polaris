@@ -7,6 +7,7 @@ import {
 import {useThrottle} from '../../utils/hooks';
 import styles from './GlobalSearch.module.scss';
 import {useRouter} from 'next/router';
+import {MagicMajor} from '@shopify/polaris-icons';
 import IconGrid from '../IconGrid';
 import Grid from '../Grid';
 import TokenList from '../TokenList';
@@ -400,7 +401,7 @@ function Search({
         placeholder="Search"
       />
       <button className={styles.SearchModeToggle} onClick={onSearchModeToggle}>
-        Try AI prompt ✨
+        Try AI prompt <MagicMajor />
       </button>
       <button className={styles.MobileCloseButton} onClick={onClose}>
         Close
@@ -430,7 +431,9 @@ function AIPrompt({
 }) {
   return (
     <div className={styles.Header}>
-      <div className={styles.AIPromptIcon}>✨</div>
+      <div className={styles.AIPromptIcon}>
+        <MagicMajor />
+      </div>
       <input
         type="search"
         value={value}

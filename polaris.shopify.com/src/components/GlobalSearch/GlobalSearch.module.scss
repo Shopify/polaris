@@ -66,8 +66,10 @@
     left: 1.5rem;
     width: 24px;
     height: 24px;
-    opacity: 0.5;
     transform: translateY(1px);
+  }
+  .AIPromptIcon svg {
+    fill: #cd3ec1;
   }
 
   input {
@@ -91,6 +93,9 @@
 
   .SearchModeToggle {
     position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     top: 0;
     right: 1.5rem;
     bottom: 0;
@@ -101,6 +106,11 @@
     padding: 0.25rem 0.5rem;
     border-radius: var(--border-radius-400);
     cursor: pointer;
+
+    svg {
+      width: 24px;
+      fill: #cd3ec1;
+    }
 
     @media screen and (max-width: $breakpointTablet) {
       display: none;
