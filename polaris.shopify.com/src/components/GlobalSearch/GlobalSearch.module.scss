@@ -57,6 +57,19 @@
     transform: translateY(1px);
   }
 
+  .AIPromptIcon {
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 1.5rem;
+    width: 24px;
+    height: 24px;
+    opacity: 0.5;
+    transform: translateY(1px);
+  }
+
   input {
     display: block;
     width: 100%;
@@ -73,6 +86,42 @@
 
     &:focus-visible {
       box-shadow: none;
+    }
+  }
+
+  .SearchModeToggle {
+    position: absolute;
+    top: 0;
+    right: 1.5rem;
+    bottom: 0;
+    max-height: 48px;
+    margin: auto;
+    background-color: transparent;
+    font-size: var(--font-size-400);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-400);
+    cursor: pointer;
+
+    @media screen and (max-width: $breakpointTablet) {
+      display: none;
+    }
+  }
+
+  .AskButton {
+    position: absolute;
+    top: 0;
+    right: 9.5rem;
+    bottom: 0;
+    max-height: 48px;
+    margin: auto;
+    background-color: transparent;
+    font-size: var(--font-size-400);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-400);
+    cursor: pointer;
+
+    @media screen and (max-width: $breakpointTablet) {
+      display: none;
     }
   }
 
