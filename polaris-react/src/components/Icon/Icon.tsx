@@ -76,12 +76,16 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
   );
 
   const SourceComponent = source;
+  const iconName = (source as React.FunctionComponent)?.name
+    ?.replace('Svg', '')
+    .replace(/\d+$/, '');
   const contentMarkup = {
     function: (
       <SourceComponent
         className={styles.Svg}
         focusable="false"
         aria-hidden="true"
+        data-icon-name={iconName}
       />
     ),
     placeholder: <div className={styles.Placeholder} />,
