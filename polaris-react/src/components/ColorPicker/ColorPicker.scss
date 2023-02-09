@@ -12,7 +12,6 @@
   // stylelint-disable -- Polaris component custom properties
   --pc-color-picker-size: 160px;
   --pc-color-picker-dragger-size: 18px;
-  --pc-color-picker-with-alpha-width: 194px;
   --pc-color-picker-z-index: 10;
   --pc-color-picker-adjustments: 20;
   --pc-color-picker-dragger: 30;
@@ -37,8 +36,7 @@
   width: var(--pc-color-picker-size);
 
   &.AlphaAllowed {
-    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
-    width: var(--pc-color-picker-with-alpha-width);
+    width: 194px;
   }
 
   .fullWidth & {
@@ -226,12 +224,10 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .TextPicker {
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
   width: 192px;
   margin-top: var(--p-space-2);
 
   &.AlphaAllowed {
-    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
     width: 160px;
   }
 }
@@ -241,7 +237,6 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
   height: 20px;
   margin-left: -(var(--p-space-1));
   border-radius: 50%;
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
   box-shadow: inset rgba(0, 0, 0, 0.07) 0 0 0 1px,
     inset rgba(0, 0, 0, 0.15) 0 1px 3px 0;
 
@@ -258,7 +253,6 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .AlphaField {
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
   width: 90px;
   margin: var(--p-space-2) 0 0 var(--p-space-2);
 }
