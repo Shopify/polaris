@@ -23,16 +23,17 @@ export const ToastManager = memo(function ToastManager({
 
   const updateToasts = useDeepCallback(() => {
     let yPosition = 25;
+    const screenEdgeXMargin = 25;
     toastMessages.forEach((_, index) => {
       const currentToast = toastNodes[index];
       if (!currentToast.current) return;
       if (index > 0) {
         yPosition += currentToast.current.clientHeight;
       }
-      const targetInPos = currentToast.current.clientWidth;
+      const targetInPos: number = currentToast.current.clientWidth;
       currentToast.current.style.setProperty(
         '--pc-toast-manager-translate-x-in',
-        `-${targetInPos}px`,
+        `-${targetInPos + screenEdgeXMargin}px`,
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-translate-x-out',

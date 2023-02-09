@@ -20,7 +20,6 @@ export function Default() {
         content: 'Update now',
         onAction: () => {},
       }}
-      duration={30000} // TODO: Remove
     />
   ) : null;
 
@@ -173,9 +172,9 @@ export function WithCustomDuration() {
 
   const toastMarkup = active ? (
     <Toast
-      content="Message sent lorem ipsum dolor sit amet "
+      content="This will be shown for 30 seconds"
       onDismiss={toggleActive}
-      duration={10000000}
+      duration={30000}
     />
   ) : null;
 
@@ -199,8 +198,40 @@ export function WithAction() {
   const toastMarkup = active ? (
     <Toast
       content="Image deleted"
+      type="success"
       action={{
         content: 'Undo',
+        onAction: () => {},
+      }}
+      duration={10000}
+      onDismiss={toggleActive}
+    />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function WithTitleAndAction() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast
+      title="Page created"
+      content="Your new web page has been created."
+      type="success"
+      action={{
+        content: 'View page',
         onAction: () => {},
       }}
       duration={10000}

@@ -29,6 +29,7 @@ $errorColor: var(--p-icon-critical);
 
 .ToastContent {
   display: flex;
+  align-items: center;
   width: 100%;
   padding-right: var(--p-space-2) var(--p-space-3);
 
@@ -105,6 +106,7 @@ $errorColor: var(--p-icon-critical);
   // @include recolor-icon(currentColor);
   margin-right: var(--p-space-2);
   height: 20px;
+  align-self: flex-start;
 }
 
 .LeadingIconInfo {
