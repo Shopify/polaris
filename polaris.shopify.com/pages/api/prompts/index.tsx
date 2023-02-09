@@ -118,7 +118,7 @@ export default async function handler(
       stop: null,
     });
 
-    return res.status(200).json({data: response.choices[0].text.trim()});
+    return res.status(200).json({data: response.data.choices[0].text.trim()});
   } catch (error) {
     console.error(error);
     res.status(400).send(error);
