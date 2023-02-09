@@ -44,8 +44,8 @@ export function AlphaField({alpha, onChange}: AlphaFieldProps) {
     (value: string) => {
       const updatedPercentage = parseInt(value, 10);
 
-      const activeElementRole =
-        document.activeElement && document.activeElement.role;
+      const activeElementRole = document?.activeElement?.getAttribute('role');
+
       if (activeElementRole === 'button') {
         onChange(updatedPercentage / 100);
       } else {
