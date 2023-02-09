@@ -4,14 +4,16 @@ const {messages, ruleName} = require('.');
 
 const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
 
-// For external usage:
-// -p-* Tokens are reserved for usage by polaris-tokens.
-//   - Defining custom properties with this prefix is disallowed
-//   - Usage of them is allowed
-// -pc-* Tokens are reserved for usage by components in polaris-react
-//  - Defining custom properties with this prefix is disallowed
-//  - Usage of them is disallowed
-// Any other tokens can be freely defined and used
+/*
+ -p-* Tokens are to be defined in polaris-tokens.
+   - Defining custom properties with this prefix anywhere else is disallowed
+   - Usage of them is allowed
+ -pc-* Tokens are reserved for usage by components in polaris-react
+  - Defining custom properties with this prefix is disallowed
+  - Any new usage of them is disallowed in polaris-react
+  - Tokens with this prefix should be contributed to and/or replaced with polaris-tokens
+*/
+
 const externalUserDefinedCustomPropertyNames = /--(?!pc?-).+/;
 const externalConfig = [
   {
@@ -25,14 +27,6 @@ const externalConfig = [
   },
 ];
 
-// For internal usage:
-// -p-* Tokens are reserved for usage by polaris-tokens.
-//   - Defining custom properties with this prefix is disallowed
-//   - Usage of them is allowed
-// -pc-* Tokens are reserved for usage by components in polaris-react
-//  - Defining custom properties with this prefix is allowed
-//  - Usage of them is allowed
-// Any other tokens should not be defined or used
 const internalPolarisComponentCustomProperties = /--pc-.+/;
 const internalConfig = [
   {

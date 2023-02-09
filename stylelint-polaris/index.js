@@ -344,16 +344,15 @@ const stylelintPolarisCoverageOptions = {
   conventions: [
     {
       'polaris/custom-property-allowed-list': {
-        // Allow any custom property not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
+        // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
         allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
+        // Allows use of custom properties prefixed with `--p-` that are valid Polaris tokens
         allowedValues: {
           '/.+/': [
-            // Note: Order is important.
-            // The first pattern validates `--p-*`
-            // custom properties are valid Polaris tokens
+            // Note: Order is important
+            // This pattern allows use of `--p-*` custom properties that are valid Polaris tokens
             ...getCustomPropertyNames(tokens),
-            // and the second pattern flags unknown `--p-*` custom properties
-            // or usages of our "private" `--pc-*` custom properties
+            // This pattern flags unknown `--p-*` custom properties or usage of `--pc-*` custom properties private to polaris-react
             /--(?!(p|pc)-).+/,
           ],
         },

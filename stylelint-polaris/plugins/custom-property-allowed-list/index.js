@@ -15,18 +15,19 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
    * @type {stylelint.RuleMessageFunc}
    */
-  rejected: (prop, value, invalidProperty, invalidValue) => {
-    const invalidPropertyMessage = invalidProperty
-      ? `Unexpected custom property "${prop}"`
+  rejected: (prop, value, prefix, isInvalidProp, invalidValues) => {
+    const invalidDefinition = isInvalidProp
+      ? `Unexpected prefix "${prefix}" for defined custom property "${prop}"`
       : null;
 
-    const invalidValueMessage = invalidValue
-      ? `Unexpected value "var(${invalidValue})" for property "${prop}"`
-      : null;
+    const invalidUse =
+      invalidValues?.length > 0
+        ? `Unexpected value${
+            invalidValues.length > 1 ? 's' : ''
+          } "${value}" for property "${prop}"`
+        : null;
 
-    return [invalidPropertyMessage, invalidValueMessage]
-      .filter(Boolean)
-      .join(' ');
+    return [invalidDefinition, invalidUse].filter(Boolean).join(' ');
   },
 });
 
@@ -70,30 +71,47 @@ const {rule} = stylelint.createPlugin(
         const prop = decl.prop;
         const value = decl.value;
 
-        const invalidProperty = validateCustomProperties(
+        const invalidProperty = !isAllowedCustomPropertyName(
           allowedProperties,
           prop,
         );
 
-        const invalidValues = validateCustomPropertyValues(
+        const invalidValues = isValidCustomPropertyValue(
           allowedValues,
           prop,
           value,
         );
 
-        if (!invalidValues && !invalidProperty) return;
+        if (!invalidProperty && invalidValues.length === 0) return;
 
-        stylelint.utils.report({
-          message: messages.rejected(
-            prop,
-            value,
-            /** @type {string} */ (invalidProperty),
-            /** @type {string} */ (invalidValues?.join(', ')),
-          ),
-          node: decl,
-          result,
-          ruleName,
-        });
+        if (invalidProperty) {
+          stylelint.utils.report({
+            message: messages.rejected(
+              prop,
+              value,
+              prop.split('-')[0],
+              invalidProperty,
+            ),
+            node: decl,
+            result,
+            ruleName,
+          });
+        }
+
+        if (invalidValues.length > 0) {
+          stylelint.utils.report({
+            message: messages.rejected(
+              prop,
+              value,
+              undefined,
+              undefined,
+              invalidValues,
+            ),
+            node: decl,
+            result,
+            ruleName,
+          });
+        }
       });
     };
   },
@@ -103,25 +121,25 @@ const {rule} = stylelint.createPlugin(
  * @param {NonNullable<PrimaryOptions['allowedProperties']>} allowedProperties
  * @param {string} prop
  */
-function validateCustomProperties(allowedProperties, prop) {
+function isAllowedCustomPropertyName(allowedProperties, prop) {
   if (!isCustomProperty(prop)) return;
 
-  const isValid = allowedProperties.some((allowedProperty) => {
+  const isValidName = allowedProperties.some((allowedProperty) => {
     return matchesStringOrRegExp(prop, allowedProperty);
   });
 
-  if (isValid) return;
+  if (isValidName) true;
 
-  return prop;
+  return false;
 }
 
 /**
  * @param {NonNullable<PrimaryOptions['allowedValues']>} allowedValues
  * @param {string} prop
  * @param {string} value
+ * @returns {string[]}
  */
-function validateCustomPropertyValues(allowedValues, prop, value) {
-  /** @type {string[]} */
+function isValidCustomPropertyValue(allowedValues, prop, value) {
   const invalidValues = [];
 
   const unprefixedProp = vendorUnprefixed(prop);
@@ -146,8 +164,6 @@ function validateCustomPropertyValues(allowedValues, prop, value) {
       invalidValues.push(node.value);
     }
   });
-
-  if (!invalidValues.length) return;
 
   return invalidValues;
 }
