@@ -43,6 +43,7 @@
   width: var(--pc-color-picker-size);
 
   &.AlphaAllowed {
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
     width: var(--pc-color-picker-with-alpha-width);
   }
 
@@ -231,19 +232,24 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .TextPicker {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
   width: var(--pc-color-picker-text-picker-width);
-  margin-top: spacing(tight);
+  margin-top: var(--p-space-2);
 
   &.AlphaAllowed {
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
     width: var(--pc-color-picker-text-picker-with-alpha-width);
   }
 }
 
 .TextFieldSwatch {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
   width: var(--pc-color-picker-swatch-size);
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
   height: var(--pc-color-picker-swatch-size);
-  margin-left: -(spacing(extra-tight));
+  margin-left: -(var(--p-space-1));
   border-radius: 50%;
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
   box-shadow: var(--pc-color-picker-swatch-shadow);
 
   &.AlphaAllowed {
@@ -259,6 +265,7 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .AlphaField {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list
   width: var(--pc-color-picker-alpha-size);
-  margin: spacing(tight) 0 0 spacing(tight);
+  margin: var(--p-space-2) 0 0 var(--p-space-2);
 }

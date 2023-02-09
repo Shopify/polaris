@@ -25,9 +25,35 @@ export function AlphaField({alpha, onChange}: AlphaFieldProps) {
     setPercentage(Math.round(alpha * 100));
   }, [alpha]);
 
-  const handleTextChange = useCallback((value: string) => {
-    setPercentage(parseInt(value, 10));
-  }, []);
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLElement>) => {
+      const {key, shiftKey} = event;
+      const step = shiftKey ? 0.05 : 0.01;
+      if (key === 'ArrowUp') {
+        event.preventDefault();
+        onChange(clamp(alpha + step, 0, 1));
+      } else if (key === 'ArrowDown') {
+        event.preventDefault();
+        onChange(clamp(alpha - step, 0, 1));
+      }
+    },
+    [alpha, onChange],
+  );
+
+  const handleTextChange = useCallback(
+    (value: string) => {
+      const updatedPercentage = parseInt(value, 10);
+
+      const activeElementRole =
+        document.activeElement && document.activeElement.role;
+      if (activeElementRole === 'button') {
+        onChange(updatedPercentage / 100);
+      } else {
+        setPercentage(updatedPercentage);
+      }
+    },
+    [onChange],
+  );
 
   const handleBlur = useCallback(() => {
     const normalizedPercentage = clamp(percentage, 0, 100);
@@ -44,7 +70,11 @@ export function AlphaField({alpha, onChange}: AlphaFieldProps) {
   }, [alpha, onChange, percentage]);
 
   return (
-    <div className={styles.AlphaField}>
+    <div
+      id="AlphaFieldWrapper"
+      onKeyDown={handleKeyDown}
+      className={styles.AlphaField}
+    >
       <TextField
         suffix="%"
         value={percentage.toString()}

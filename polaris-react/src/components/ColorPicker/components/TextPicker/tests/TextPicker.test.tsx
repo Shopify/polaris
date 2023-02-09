@@ -37,7 +37,11 @@ describe('<TextPicker />', () => {
     it('renders color swatch', () => {
       const textPicker = mountWithApp(<TextPicker {...mockProps} />);
 
-      expect(textPicker.find('div.TextFieldSwatch')).toHaveLength(1);
+      expect(textPicker).toContainReactComponent(TextField, {
+        prefix: expect.objectContaining({
+          props: expect.objectContaining({className: 'TextFieldSwatch'}),
+        }),
+      });
     });
   });
 
@@ -47,31 +51,39 @@ describe('<TextPicker />', () => {
       const textPicker = mountWithApp(
         <TextPicker {...mockProps} onChange={onChangeSpy} />,
       );
-      const textField = textPicker.find(TextField);
       const colorValue = 'white';
       const expectedHex = nameToHex(normalizeColorString(colorValue));
 
-      (textField!.find('input')!.domNode as HTMLInputElement).value =
-        colorValue;
-      textField!.find('input')!.trigger('onChange');
-      textField!.find('input')!.trigger('onBlur');
+      textPicker
+        .find(TextField)!
+        .find('input')!
+        .trigger('onChange', {
+          currentTarget: {
+            value: colorValue,
+          },
+        });
+      textPicker.find(TextField)!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
 
-    it('calls onChange with #ffffff when rgb(255, 255, 255) is entered', () => {
+    it('calls onChange with #ff00ff when rgb(255, 0, 255) is entered', () => {
       const onChangeSpy = jest.fn();
       const textPicker = mountWithApp(
         <TextPicker {...mockProps} onChange={onChangeSpy} />,
       );
-      const textField = textPicker.find(TextField);
-      const colorValue = 'rgb(255, 255, 255)';
+      const colorValue = 'rgb(255, 0, 255)';
       const expectedHex = rgbStringToHex(normalizeColorString(colorValue));
 
-      (textField!.find('input')!.domNode as HTMLInputElement).value =
-        colorValue;
-      textField!.find('input')!.trigger('onChange');
-      textField!.find('input')!.trigger('onBlur');
+      textPicker
+        .find(TextField)!
+        .find('input')!
+        .trigger('onChange', {
+          currentTarget: {
+            value: colorValue,
+          },
+        });
+      textPicker.find(TextField)!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
@@ -81,14 +93,18 @@ describe('<TextPicker />', () => {
       const textPicker = mountWithApp(
         <TextPicker {...mockProps} onChange={onChangeSpy} />,
       );
-      const textField = textPicker.find(TextField);
       const colorValue = 'ffffff';
       const expectedHex = expandHex(`#${normalizeColorString(colorValue)}`);
 
-      (textField!.find('input')!.domNode as HTMLInputElement).value =
-        colorValue;
-      textField!.find('input')!.trigger('onChange');
-      textField!.find('input')!.trigger('onBlur');
+      textPicker
+        .find(TextField)!
+        .find('input')!
+        .trigger('onChange', {
+          currentTarget: {
+            value: colorValue,
+          },
+        });
+      textPicker.find(TextField)!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
@@ -98,31 +114,39 @@ describe('<TextPicker />', () => {
       const textPicker = mountWithApp(
         <TextPicker {...mockProps} onChange={onChangeSpy} />,
       );
-      const textField = textPicker.find(TextField);
       const colorValue = '#fff';
       const expectedHex = expandHex(normalizeColorString(colorValue));
 
-      (textField!.find('input')!.domNode as HTMLInputElement).value =
-        colorValue;
-      textField!.find('input')!.trigger('onChange');
-      textField!.find('input')!.trigger('onBlur');
+      textPicker
+        .find(TextField)!
+        .find('input')!
+        .trigger('onChange', {
+          currentTarget: {
+            value: colorValue,
+          },
+        });
+      textPicker.find(TextField)!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
 
-    it('calls onChange with #ffffff when fff is entered', () => {
+    it('calls onChange with #00ffff when 0ff is entered', () => {
       const onChangeSpy = jest.fn();
       const textPicker = mountWithApp(
         <TextPicker {...mockProps} onChange={onChangeSpy} />,
       );
-      const textField = textPicker.find(TextField);
-      const colorValue = 'fff';
+      const colorValue = '0ff';
       const expectedHex = expandHex(`#${normalizeColorString(colorValue)}`);
 
-      (textField!.find('input')!.domNode as HTMLInputElement).value =
-        colorValue;
-      textField!.find('input')!.trigger('onChange');
-      textField!.find('input')!.trigger('onBlur');
+      textPicker
+        .find(TextField)!
+        .find('input')!
+        .trigger('onChange', {
+          currentTarget: {
+            value: colorValue,
+          },
+        });
+      textPicker.find(TextField)!.trigger('onBlur');
 
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
@@ -132,13 +156,17 @@ describe('<TextPicker />', () => {
       const textPicker = mountWithApp(
         <TextPicker {...mockProps} onChange={onChangeSpy} />,
       );
-      const textField = textPicker.find(TextField);
       const colorValue = '#00000z';
 
-      (textField!.find('input')!.domNode as HTMLInputElement).value =
-        colorValue;
-      textField!.find('input')!.trigger('onChange');
-      textField!.find('input')!.trigger('onBlur');
+      textPicker
+        .find(TextField)!
+        .find('input')!
+        .trigger('onChange', {
+          currentTarget: {
+            value: colorValue,
+          },
+        });
+      textPicker.find(TextField)!.trigger('onBlur');
 
       expect(onChangeSpy).not.toHaveBeenCalled();
     });
