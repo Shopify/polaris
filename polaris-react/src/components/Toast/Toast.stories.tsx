@@ -20,6 +20,7 @@ export function Default() {
         content: 'Update now',
         onAction: () => {},
       }}
+      duration={30000} // TODO: Remove
     />
   ) : null;
 
