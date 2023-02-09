@@ -4,7 +4,6 @@ import {mountWithApp} from 'tests/utilities';
 import {
   expandHex,
   rgbStringToHex,
-  nameToHex,
   normalizeColorString,
 } from '../../../../../utilities/color-transformers';
 import {TextPicker} from '../TextPicker';
@@ -46,27 +45,6 @@ describe('<TextPicker />', () => {
   });
 
   describe('onChange()', () => {
-    it("calls onChange with #FFFFFF when 'white' is entered", () => {
-      const onChangeSpy = jest.fn();
-      const textPicker = mountWithApp(
-        <TextPicker {...mockProps} onChange={onChangeSpy} />,
-      );
-      const colorValue = 'white';
-      const expectedHex = nameToHex(normalizeColorString(colorValue));
-
-      textPicker
-        .find(TextField)!
-        .find('input')!
-        .trigger('onChange', {
-          currentTarget: {
-            value: colorValue,
-          },
-        });
-      textPicker.find(TextField)!.trigger('onBlur');
-
-      expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
-    });
-
     it('calls onChange with #ff00ff when rgb(255, 0, 255) is entered', () => {
       const onChangeSpy = jest.fn();
       const textPicker = mountWithApp(

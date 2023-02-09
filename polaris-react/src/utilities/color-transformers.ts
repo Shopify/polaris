@@ -1,5 +1,4 @@
 import {clamp} from './clamp';
-import {names} from './color-map';
 import type {
   RGBColor,
   RGBAColor,
@@ -10,8 +9,6 @@ import type {
   HSBLAColor,
 } from './color-types';
 import {roundNumberToDecimalPlaces} from './roundNumberToDecimalPlaces';
-
-const nameHexMap: {[key: string]: string} = names;
 
 const RGB_STRING_TO_HEX_REGEX =
   /^rgb[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i;
@@ -329,11 +326,6 @@ export function expandHex(hex: string) {
     return `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`;
   }
   return hex;
-}
-
-export function nameToHex(value: string) {
-  const hex = nameHexMap[normalizeColorString(value)];
-  return expandHex(`#${hex}`);
 }
 
 export function rgbStringToHex(value: string) {

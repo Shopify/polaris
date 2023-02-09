@@ -1,13 +1,10 @@
-import {names} from './color-map';
 import type {RGBColor, RGBAColor} from './color-types';
 import {
   normalizeColorString,
   expandHex,
   rgbStringToHex,
-  nameToHex,
 } from './color-transformers';
 
-const nameHexMap: {[key: string]: string} = names;
 const SIX_DIGIT_HEX = '[0-9A-F]{6}$';
 const THREE_DIGIT_HEX = '[0-9A-F]{3}$';
 const HEX_REGEX = new RegExp(
@@ -27,10 +24,6 @@ export function isLight({red, green, blue}: RGBColor | RGBAColor): boolean {
 
 export function isDark(color: RGBColor | RGBAColor): boolean {
   return !isLight(color);
-}
-
-export function isColorName(value: string) {
-  return Boolean(nameHexMap[value]);
 }
 
 export function isHexString(value: string) {
@@ -54,5 +47,4 @@ export function coerceToValidUserInput(value: string) {
   else if (isHashlessHex(normalizedValue))
     return expandHex(`#${normalizedValue}`);
   else if (isRgbString(normalizedValue)) return rgbStringToHex(normalizedValue);
-  else if (isColorName(normalizedValue)) return nameToHex(normalizedValue);
 }
