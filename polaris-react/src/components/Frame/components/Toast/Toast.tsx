@@ -125,7 +125,10 @@ export function Toast({
   return (
     <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-      <div className={`${styles.ToastStatusIndicator} ${toastIndicatorClass}`}>
+      <div className={`${styles.ToastStatusIndicator}`}>
+        <div
+          className={`${styles.ToastStatusPercentCompleteIndicator} ${toastIndicatorClass}`}
+        />
         <CSSTransition
           nodeRef={nodeRef}
           appear

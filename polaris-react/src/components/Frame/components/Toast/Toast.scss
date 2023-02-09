@@ -39,6 +39,7 @@ $errorColor: var(--p-icon-critical);
 
 .Action {
   display: flex;
+  flex-direction: column;
   margin-left: var(--p-space-2);
 }
 
@@ -48,8 +49,13 @@ $errorColor: var(--p-icon-critical);
 }
 
 .ToastStatusIndicator {
+  display: flex;
   width: 100%;
   height: 7px;
+}
+
+.ToastStatusPercentCompleteIndicator {
+  flex-grow: 1;
 }
 
 .ProgressIndicator {
