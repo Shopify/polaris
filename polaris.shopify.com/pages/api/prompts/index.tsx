@@ -17,17 +17,14 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-// const response = await openai.createCompletion({
-//   model: 'text-davinci-003',
-//   prompt: 'Say this is a test',
-//   temperature: 0,
-//   max_tokens: 7,
-// });
-
 interface CSVRow {
   text: string;
   numberOfTokens: number;
   embeddings: number[];
+}
+
+interface DataframeRow extends CSVRow {
+  distance: number;
 }
 
 /**
@@ -66,12 +63,10 @@ const createContext = async (question: string, maxLenght = 1800) => {
     const {embedding} = questionEmbedding.data[0];
 
     // Get the distances from the embeddings
-    const dataframe = csvRows.map((row) => {
-      return {
-        ...row,
-        distance: distance(embedding, row.embeddings),
-      };
-    });
+    const dataframe: DataframeRow[] = csvRows.map((row) => ({
+      ...row,
+      distance: distance(embedding, row.embeddings),
+    }));
 
     // Sort by distance
     dataframe.sort((a, b) => a.distance - b.distance);
@@ -98,26 +93,34 @@ const createContext = async (question: string, maxLenght = 1800) => {
   }
 };
 
-const answerQuestion = async () => {};
-
-const getAnswers = async (query?: string) => {
-  if (!query) return [];
-
-  const context = await createContext(query);
-
-  return context;
-};
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   // Is this ever an array?
-  const query = Array.isArray(req.query.p)
+  const question = Array.isArray(req.query.p)
     ? req.query.p.join(' ')
     : req.query.p;
 
-  const answers = await getAnswers(query);
+  if (!question) return res.status(400).send('A question must be provided');
 
-  return res.status(200).json({data: answers});
+  const context = await createContext(question);
+
+  try {
+    const response = await openai.createCompletion({
+      model: 'text-davinci-003',
+      prompt: `Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: ${context}\n\n---\n\nQuestion: ${question}\nAnswer:`,
+      temperature: 0,
+      max_tokens: 150,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+      stop: null,
+    });
+
+    return res.status(200).json({data: response.choices[0].text.trim()});
+  } catch (error) {
+    console.error(error);
+    res.status(400).send(error);
+  }
 }
