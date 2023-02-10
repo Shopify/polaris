@@ -750,6 +750,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     styles.ResourceListWrapper,
     Boolean(bulkActionsMarkup) &&
       selectMode &&
+      bulkActions &&
       styles.ResourceListWrapperWithBulkActions,
   );
 
