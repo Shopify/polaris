@@ -1,4 +1,4 @@
-type PaletteScale =
+type ColorScale =
   | '50'
   | '100'
   | '200'
@@ -10,11 +10,11 @@ type PaletteScale =
   | '800'
   | '900';
 
-type Palette = {
-  [Scale in PaletteScale]: string;
+type Color = {
+  [Scale in ColorScale]: string;
 };
 
-export const gray: Palette = {
+export const gray: Color = {
   50: 'rgba(255, 255, 255, 1)',
   100: 'rgba(249, 250, 251, 1)',
   200: 'rgba(241, 242, 244, 1)',
@@ -27,7 +27,7 @@ export const gray: Palette = {
   900: 'rgba(31, 33, 36, 1)',
 };
 
-export const green: Palette = {
+export const green: Color = {
   50: 'rgba(240, 253, 248, 1)',
   100: 'rgba(224, 248, 238, 1)',
   200: 'rgba(192, 242, 221, 1)',
@@ -40,7 +40,7 @@ export const green: Palette = {
   900: 'rgba(12, 59, 47, 1)',
 };
 
-export const blue: Palette = {
+export const blue: Color = {
   50: 'rgba(240, 245, 253, 1)',
   100: 'rgba(220, 233, 252, 1)',
   200: 'rgba(187, 212, 247, 1)',
@@ -53,7 +53,7 @@ export const blue: Palette = {
   900: 'rgba(16, 41, 76, 1)',
 };
 
-export const red: Palette = {
+export const red: Color = {
   50: 'rgba(254, 243, 241, 1)',
   100: 'rgba(253, 226, 221, 1)',
   200: 'rgba(251, 197, 188, 1)',
@@ -66,7 +66,7 @@ export const red: Palette = {
   900: 'rgba(67, 14, 4, 1)',
 };
 
-export const yellow: Palette = {
+export const yellow: Color = {
   50: 'rgba(254, 248, 236, 1)',
   100: 'rgba(254, 248, 236, 1)',
   200: 'rgba(250, 229, 178, 1)',
@@ -78,7 +78,7 @@ export const yellow: Palette = {
   800: 'rgba(135, 92, 8, 1)',
   900: 'rgba(77, 46, 5, 1)',
 };
-export const teal: Palette = {
+export const teal: Color = {
   50: 'rgba(238, 250, 251, 1)',
   100: 'rgba(222, 245, 247, 1)',
   200: 'rgba(184, 233, 239, 1)',
@@ -91,7 +91,7 @@ export const teal: Palette = {
   900: 'rgba(16, 65, 71, 1)',
 };
 
-export const orange: Palette = {
+export const orange: Color = {
   50: 'rgba(254, 243, 236, 1)',
   100: 'rgba(253, 231, 217, 1)',
   200: 'rgba(250, 201, 168, 1)',
