@@ -1,0 +1,15 @@
+.misc {
+  display: var(--p-override-none);
+  flex: var(--p-override-one);
+  overflow: var(--p-override-visible);
+  padding: var(--p-override-zero);
+  background-color: var(--p-override-transparent);
+  width: var(--p-icon-size);
+  scale: var(--p-range-slider-thumb-scale);
+  mix-blend-mode: var(--p-badge-mix-blend-mode);
+  margin: var(--p-frame-offset);
+}
+
+&::before {
+  content: var(--p-non-null-content);
+}
