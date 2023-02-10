@@ -49,6 +49,18 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
     setText(lastValidValue.current);
   }, [color, lastValidValue, onChange, text]);
 
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLElement>) => {
+      const {key} = event;
+
+      if (key === 'Enter') {
+        event.preventDefault();
+        handleBlur();
+      }
+    },
+    [handleBlur],
+  );
+
   useEffect(() => {
     const newValue = hsbToHex(color);
     if (newValue !== hsbToHex(hexToHsb(lastValidValue.current))) {
@@ -79,7 +91,7 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
   );
 
   return (
-    <div className={className}>
+    <div id="TextPickerWrapper" onKeyDown={handleKeyDown} className={className}>
       <TextField
         prefix={prefixMarkup}
         value={valueForDisplay}

@@ -129,6 +129,34 @@ describe('<TextPicker />', () => {
       expect(onChangeSpy).toHaveBeenCalledWith(expectedHex);
     });
 
+    it("calls onChange when valid value is entered and 'Enter' is pressed", () => {
+      const onChangeSpy = jest.fn();
+      const textPicker = mountWithApp(
+        <TextPicker {...mockProps} onChange={onChangeSpy} />,
+      );
+      const colorValue = '000';
+
+      textPicker
+        .find(TextField)!
+        .find('input')!
+        .trigger('onChange', {
+          currentTarget: {
+            value: colorValue,
+          },
+        });
+
+      const wrapper = textPicker.find('div', {
+        id: 'TextPickerWrapper',
+      });
+      const event = new KeyboardEvent('keydown', {
+        key: 'Enter',
+      });
+
+      wrapper?.trigger('onKeyDown', event);
+
+      expect(onChangeSpy).toHaveBeenCalled();
+    });
+
     it('does not call onChange when invalid value is entered', () => {
       const onChangeSpy = jest.fn();
       const textPicker = mountWithApp(
