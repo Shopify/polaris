@@ -110,9 +110,9 @@ export default async function handler(
   try {
     const response = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: `Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: ${context}\n\n---\n\nQuestion: ${question}\nAnswer:`,
+      prompt: `You are a helpful expert of the Shopify Polaris design system. Answer the question based on the context below. Be as detailed as you can and try to help the user understand the answer fully. If the question can't be answered based on the context, say \"I don't know\"\n\nQuestion: What color should I use for a page background?\n\nAnswer: The color token --p-background can be used as the background colors for components like Page and Frame.\n\nContext: ${context}\n\n---\n\nQuestion: ${question}\nAnswer:`,
       temperature: 0,
-      max_tokens: 150,
+      max_tokens: 400,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,

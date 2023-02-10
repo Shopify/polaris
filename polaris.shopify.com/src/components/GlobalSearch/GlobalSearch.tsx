@@ -235,6 +235,11 @@ function GlobalSearch() {
                   currentItemId={currentItemId}
                 />
               )}
+              {searchMode === 'ai' && promptResults.length < 1 && (
+                <h3 className={styles.PromptAnswer}>
+                  <span className={styles.BlinkingCursor}>|</span>
+                </h3>
+              )}
               {searchMode === 'ai' && promptResults.length > 0 && (
                 <>
                   {promptResults.map(
@@ -242,7 +247,7 @@ function GlobalSearch() {
                       <>
                         {/* <p>{question}</p> */}
                         <h3 key={idx} className={styles.PromptAnswer}>
-                          {answer}
+                          <TypingAnimation message={answer} />
                         </h3>
                         {searchResults && (
                           <SearchResults
@@ -262,6 +267,45 @@ function GlobalSearch() {
     </>
   );
 }
+
+const TypingAnimation = ({message}) => {
+  const [text, setText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const messageSplit = message.split(' ');
+  console.log(message);
+
+  useEffect(() => {
+    let intervalId = null;
+
+    if (isTyping) {
+      intervalId = setInterval(() => {
+        setText(
+          (text) =>
+            text +
+            (messageSplit[text.split(' ').length] === undefined
+              ? ''
+              : messageSplit[text.length == 0 ? 0 : text.split(' ').length] +
+                ' '),
+        );
+        if (text.length === message.length) {
+          setIsTyping(false);
+        }
+        console.log('text', text);
+      }, 150);
+    } else {
+      clearInterval(intervalId);
+    }
+    return () => clearInterval(intervalId);
+  }, [isTyping, text, currentIndex, message]);
+
+  return (
+    <span>
+      {text}
+      <span className={styles.BlinkingCursor}>|</span>
+    </span>
+  );
+};
 
 function SearchResults({
   searchResults,
