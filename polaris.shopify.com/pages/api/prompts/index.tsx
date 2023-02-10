@@ -87,7 +87,7 @@ const createContext = async (question: string, maxLenght = 1800) => {
     }
 
     // Return the context
-    return '\n\n###\n\n' + returns.join('. ');
+    return returns.join('\n\n###\n\n');
   } catch (error) {
     console.error(error);
   }
