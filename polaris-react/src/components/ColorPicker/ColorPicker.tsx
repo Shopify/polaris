@@ -39,7 +39,7 @@ export interface ColorPickerProps {
   allowAlpha?: boolean;
   /** Allow HuePicker to take the full width */
   fullWidth?: boolean;
-  /** Show text fields for entering values for color and alpha */
+  /** Show text fields for entering color and alpha values */
   textEditor?: boolean;
   /** Callback when color is selected */
   onChange(color: HSBAColor): void;

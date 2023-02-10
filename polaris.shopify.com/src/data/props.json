@@ -11727,6 +11727,14 @@
         },
         {
           "filePath": "polaris-react/src/components/ColorPicker/ColorPicker.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "textEditor",
+          "value": "boolean",
+          "description": "Show text fields for entering color and alpha values",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ColorPicker/ColorPicker.tsx",
           "syntaxKind": "MethodSignature",
           "name": "onChange",
           "value": "(color: HSBAColor) => void",
