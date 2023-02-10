@@ -74,6 +74,9 @@ function GlobalSearch() {
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
 
   const [prompt, setPrompt] = useState('');
+  const [promptResults, setPromptResults] = useState<
+    {question: string; answer: string}[]
+  >([]);
 
   const router = useRouter();
 
@@ -140,6 +143,10 @@ function GlobalSearch() {
         .then((json) => {
           const {data} = json;
           console.log(data);
+          setPromptResults((prev) => [
+            {question: prompt, answer: data},
+            ...prev,
+          ]);
         });
     }
   };
@@ -205,7 +212,7 @@ function GlobalSearch() {
                 value={prompt}
                 onChange={(evt) => setPrompt(evt.target.value)}
                 onKeyUp={handleKeyboardNavigation}
-                searchResultsCount={searchResultsCount}
+                searchResultsCount={promptResults.length}
                 currentItemId={currentItemId}
                 onSearchModeToggle={() => setSearchMode('search')}
                 onClose={() => setIsOpen(false)}
@@ -218,11 +225,21 @@ function GlobalSearch() {
               role="listbox"
               aria-label="Search results"
             >
-              {searchResults && (
+              {searchMode === 'search' && searchResults && (
                 <SearchResults
                   searchResults={searchResults}
                   currentItemId={currentItemId}
                 />
+              )}
+              {searchMode === 'ai' && promptResults.length > 0 && (
+                <ul>
+                  {promptResults.map(({question, answer}, idx) => (
+                    <li key={idx}>
+                      <p>{question}</p>
+                      <p>{answer}</p>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
           </Dialog.Panel>
