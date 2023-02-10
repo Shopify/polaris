@@ -257,6 +257,6 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .AlphaField {
-  width: 100px;
+  flex: 0 0 100px;
   margin: var(--p-space-2) 0 0 var(--p-space-2);
 }
