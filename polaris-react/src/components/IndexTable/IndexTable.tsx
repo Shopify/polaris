@@ -90,7 +90,7 @@ export interface IndexTableBaseProps {
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
   sortable?: boolean[];
   /**
-   * The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.
+   * The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to descending.
    * @default 'descending'
    */
   defaultSortDirection?: IndexTableSortDirection;
