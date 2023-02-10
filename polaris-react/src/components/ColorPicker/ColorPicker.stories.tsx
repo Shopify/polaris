@@ -43,3 +43,45 @@ export function WithTransparentValueFullWidth() {
 
   return <ColorPicker fullWidth onChange={setColor} color={color} allowAlpha />;
 }
+
+export function WithTextFields() {
+  const [color, setColor] = useState({
+    hue: 120,
+    brightness: 1,
+    saturation: 1,
+  });
+
+  return <ColorPicker onChange={setColor} color={color} textEditor />;
+}
+
+export function WithTransparentValueAndTextFields() {
+  const [color, setColor] = useState({
+    hue: 300,
+    brightness: 1,
+    saturation: 0.7,
+    alpha: 0.7,
+  });
+
+  return (
+    <ColorPicker onChange={setColor} color={color} allowAlpha textEditor />
+  );
+}
+
+export function WithTransparentValueAndTextFieldsFullWidth() {
+  const [color, setColor] = useState({
+    hue: 300,
+    brightness: 1,
+    saturation: 0.7,
+    alpha: 0.7,
+  });
+
+  return (
+    <ColorPicker
+      onChange={setColor}
+      color={color}
+      allowAlpha
+      fullWidth
+      textEditor
+    />
+  );
+}

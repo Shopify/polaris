@@ -39,6 +39,8 @@ export interface ColorPickerProps {
   allowAlpha?: boolean;
   /** Allow HuePicker to take the full width */
   fullWidth?: boolean;
+  /** Show text fields for entering values for color and alpha */
+  textEditor?: boolean;
   /** Callback when color is selected */
   onChange(color: HSBAColor): void;
 }
@@ -99,7 +101,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   }
 
   render() {
-    const {id, color, allowAlpha, fullWidth} = this.props;
+    const {id, color, allowAlpha, fullWidth, textEditor} = this.props;
     const {hue, saturation, brightness, alpha: providedAlpha} = color;
     const {pickerSize} = this.state;
 
@@ -128,14 +130,17 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
         onChange={this.handleHexChange}
       />
     );
+
     const alphaFieldMarkup = allowAlpha ? (
       <AlphaField alpha={alpha} onChange={this.handleAlphaChange} />
     ) : null;
 
-    const className = classNames(
-      styles.ColorPicker,
-      fullWidth && styles.fullWidth,
-    );
+    const textFieldsMarkup = textEditor ? (
+      <div className={styles.TextFields}>
+        {hexPickerMarkup}
+        {alphaFieldMarkup}
+      </div>
+    ) : null;
 
     const colorNodeClassName = classNames(
       styles.MainColor,
@@ -143,8 +148,12 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
     );
 
     return (
-      <div>
-        <div className={className} id={id} onMouseDown={this.handlePickerDrag}>
+      <div className={classNames(fullWidth && styles.fullWidth)}>
+        <div
+          className={styles.ColorPicker}
+          id={id}
+          onMouseDown={this.handlePickerDrag}
+        >
           <div ref={this.setColorNode} className={colorNodeClassName}>
             <div
               className={styles.ColorLayer}
@@ -159,10 +168,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
           <HuePicker hue={hue} onChange={this.handleHueChange} />
           {alphaSliderMarkup}
         </div>
-        <div className={styles.TextFields}>
-          {hexPickerMarkup}
-          {alphaFieldMarkup}
-        </div>
+        {textFieldsMarkup}
         <EventListener event="resize" handler={this.handleResize} />
       </div>
     );

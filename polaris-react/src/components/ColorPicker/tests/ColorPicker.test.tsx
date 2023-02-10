@@ -3,7 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
-import {Slidable, AlphaPicker} from '../components';
+import {Slidable, AlphaPicker, TextPicker, AlphaField} from '../components';
 import {ColorPicker} from '../ColorPicker';
 
 const red = {
@@ -78,6 +78,50 @@ describe('<ColorPicker />', () => {
 
         window.dispatchEvent(new Event('mousemove'));
         expect(spy).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('Text fields', () => {
+    it('renders TextPicker when textEditor prop is true', () => {
+      const spy = jest.fn();
+      const colorPicker = mountWithApp(
+        <ColorPicker color={red} onChange={spy} textEditor />,
+      );
+
+      expect(colorPicker).toContainReactComponent(TextPicker);
+    });
+
+    it('renders AlphaField when allowAlpha and textEditor props are true', () => {
+      const spy = jest.fn();
+      const colorPicker = mountWithApp(
+        <ColorPicker color={red} onChange={spy} allowAlpha textEditor />,
+      );
+
+      expect(colorPicker).toContainReactComponent(AlphaField);
+    });
+
+    describe('onChange', () => {
+      it("is called when TextPicker's onChange is triggered", () => {
+        const spy = jest.fn();
+        const colorPicker = mountWithApp(
+          <ColorPicker color={red} onChange={spy} textEditor />,
+        );
+
+        colorPicker.find(TextPicker)!.trigger('onChange', '#000000');
+
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it("is called when AlphaField's onChange is triggered", () => {
+        const spy = jest.fn();
+        const colorPicker = mountWithApp(
+          <ColorPicker color={red} onChange={spy} allowAlpha textEditor />,
+        );
+
+        colorPicker.find(AlphaField)!.trigger('onChange', 0.1);
+
+        expect(spy).toHaveBeenCalled();
       });
     });
   });

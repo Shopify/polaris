@@ -228,13 +228,18 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
   margin-top: var(--p-space-2);
 
   &.AlphaAllowed {
-    width: 160px;
+    width: 150px;
+  }
+
+  .fullWidth & {
+    width: auto;
+    flex-grow: 1;
   }
 }
 
 .TextFieldSwatch {
-  width: 20px;
-  height: 20px;
+  width: var(--p-space-5);
+  height: var(--p-space-5);
   margin-left: -(var(--p-space-1));
   border-radius: 50%;
   box-shadow: inset rgba(0, 0, 0, 0.07) 0 0 0 1px,
@@ -253,6 +258,6 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .AlphaField {
-  width: 90px;
+  width: 100px;
   margin: var(--p-space-2) 0 0 var(--p-space-2);
 }
