@@ -12,7 +12,7 @@ const replacementMaps = {
   },
 };
 
-export default function stylesReplaceCustomPropertyBorder(
+export default function stylesReplaceCustomPropertyShape(
   fileInfo: FileInfo,
   _: API,
 ) {
