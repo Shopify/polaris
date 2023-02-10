@@ -142,13 +142,19 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       </div>
     ) : null;
 
+    const wrapperClassName = classNames(
+      allowAlpha && styles.AlphaAllowed,
+      fullWidth && styles.fullWidth,
+      textEditor && styles.TextAllowed,
+    );
+
     const colorNodeClassName = classNames(
       styles.MainColor,
       allowAlpha && styles.AlphaAllowed,
     );
 
     return (
-      <div className={classNames(fullWidth && styles.fullWidth)}>
+      <div className={wrapperClassName}>
         <div
           className={styles.ColorPicker}
           id={id}
