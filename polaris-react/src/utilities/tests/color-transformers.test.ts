@@ -1,11 +1,15 @@
 import {
-  hsbToString,
   hsbToRgb,
   rgbToHex,
   rgbToHsb,
   rgbString,
   hsbToHex,
   colorToHsla,
+  hsbToString,
+  normalizeColorString,
+  hexToHsb,
+  expandHex,
+  rgbStringToHex,
 } from '../color-transformers';
 
 describe('colorUtilities', () => {
@@ -20,19 +24,6 @@ describe('colorUtilities', () => {
       expect(rgbString({red: 132, green: 11, blue: 2, alpha: 0.2})).toMatch(
         'rgba(132, 11, 2, 0.2)',
       );
-    });
-  });
-
-  describe('hsbToString()', () => {
-    it('returns rgba string with corresponding value for hsb', () => {
-      expect(hsbToString({hue: 300, saturation: 0.7, brightness: 1})).toMatch(
-        'rgba(255, 77, 255, 1)',
-      );
-    });
-
-    it('returns same string when hsb string used', () => {
-      const hsbString = 'hsb(300, 0.7, 1)';
-      expect(hsbString).toMatch(hsbString);
     });
   });
 
@@ -213,6 +204,61 @@ describe('colorUtilities', () => {
         lightness: 50,
         saturation: 100,
       });
+    });
+  });
+
+  describe('hsbToString()', () => {
+    it('returns rgba string with corresponding value for hsb', () => {
+      expect(hsbToString({hue: 300, saturation: 0.7, brightness: 1})).toMatch(
+        'rgba(255, 77, 255, 1)',
+      );
+    });
+
+    it('returns same string when hsb string used', () => {
+      const hsbString = 'hsb(300, 0.7, 1)';
+      expect(hsbString).toMatch(hsbString);
+    });
+  });
+
+  describe('normalizeColorString', () => {
+    it('removes whitespace and changes the case to lower case', () => {
+      const normalizedSting = normalizeColorString('  #DDDDDD  ');
+      expect(normalizedSting).toBe('#dddddd');
+    });
+  });
+
+  describe('hexToHsb', () => {
+    it('removes whitespace and changes the case to lower case', () => {
+      const {hue, saturation, brightness} = hexToHsb('#123123');
+      expect(hue).toBe(152.9);
+      expect(saturation).toBe(0.6327);
+      expect(brightness).toBe(0.1922);
+    });
+  });
+
+  describe('expandHex', () => {
+    it('returns the 6-digit hax value when a 3-digit hex value is passed as an argument', () => {
+      const expandedHexValue = expandHex('#123');
+      expect(expandedHexValue).toBe('#112233');
+    });
+
+    it('returns the value it was passed if an invalid value is passed as an argument', () => {
+      const invalidValue = 'invalid';
+      const expandedHexValue = expandHex(invalidValue);
+      expect(expandedHexValue).toBe(invalidValue);
+    });
+  });
+
+  describe('rgbStringToHex', () => {
+    it('returns a hex value equivalent to the rgb value passed as an argument', () => {
+      const hexValue = rgbStringToHex('rgb(222, 202, 222)');
+      expect(hexValue).toBe('#decade');
+    });
+
+    it('returns #000000 if an invalid value is passed as an argument', () => {
+      const invalidValue = 'invalid';
+      const expandedHexValue = rgbStringToHex(invalidValue);
+      expect(expandedHexValue).toBe('#000000');
     });
   });
 });
