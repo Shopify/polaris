@@ -154,6 +154,14 @@
   }
 }
 
+.PromptAnswer {
+  position: relative;
+  margin-top: 2.5rem;
+  left: 1.5rem;
+  font-size: var(--font-size-500);
+  font-weight: var(--font-weight-400);
+}
+
 .Results {
   position: fixed;
   top: 3rem;

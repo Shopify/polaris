@@ -1,4 +1,5 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
+import {getSearchResults} from '../search/v0';
 
 const fs = require('fs');
 const path = require('path');
@@ -118,7 +119,10 @@ export default async function handler(
       stop: null,
     });
 
-    return res.status(200).json({data: response.data.choices[0].text.trim()});
+    const answer = response.data.choices[0].text.trim();
+    const searchResults = getSearchResults(answer);
+
+    return res.status(200).json({data: {answer, searchResults}});
   } catch (error) {
     console.error(error);
     res.status(400).send(error);

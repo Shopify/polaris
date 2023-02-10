@@ -75,7 +75,7 @@ function GlobalSearch() {
 
   const [prompt, setPrompt] = useState('');
   const [promptResults, setPromptResults] = useState<
-    {question: string; answer: string}[]
+    {question: string; answer: string; searchResults: GroupedSearchResults}[]
   >([]);
 
   const router = useRouter();
@@ -144,7 +144,11 @@ function GlobalSearch() {
           const {data} = json;
           console.log(data);
           setPromptResults((prev) => [
-            {question: prompt, answer: data},
+            {
+              question: prompt,
+              answer: data.answer,
+              searchResults: data.searchResults,
+            },
             ...prev,
           ]);
         });
@@ -180,7 +184,7 @@ function GlobalSearch() {
   };
 
   const currentItemId = resultsInRenderedOrder[currentResultIndex]?.id || '';
-
+  console.log(searchResults);
   return (
     <>
       <button
@@ -232,14 +236,24 @@ function GlobalSearch() {
                 />
               )}
               {searchMode === 'ai' && promptResults.length > 0 && (
-                <ul>
-                  {promptResults.map(({question, answer}, idx) => (
-                    <li key={idx}>
-                      <p>{question}</p>
-                      <p>{answer}</p>
-                    </li>
-                  ))}
-                </ul>
+                <>
+                  {promptResults.map(
+                    ({question, answer, searchResults}, idx) => (
+                      <>
+                        {/* <p>{question}</p> */}
+                        <h3 key={idx} className={styles.PromptAnswer}>
+                          {answer}
+                        </h3>
+                        {searchResults && (
+                          <SearchResults
+                            searchResults={searchResults}
+                            currentItemId={currentItemId}
+                          />
+                        )}
+                      </>
+                    ),
+                  )}
+                </>
               )}
             </div>
           </Dialog.Panel>
