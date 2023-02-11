@@ -1,5 +1,38 @@
 # Changelog
 
+## 10.27.2
+
+### Patch Changes
+
+- [#8290](https://github.com/Shopify/polaris/pull/8290) [`24a2ef38a`](https://github.com/Shopify/polaris/commit/24a2ef38a14a5904e739a38c1421e3f7f5db81bc) Thanks [@LauraAubin](https://github.com/LauraAubin)! - Updated the `IndexTable` `heading.tooltipContent` type to a `ReactNode`
+
+## 10.27.1
+
+### Patch Changes
+
+- [#8285](https://github.com/Shopify/polaris/pull/8285) [`e70f70862`](https://github.com/Shopify/polaris/commit/e70f7086261b7f036b90550a432bf9d72e7ed8a4) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed contrast issue on alpha status badge
+  Added default value to prop documentation for AlphaStack
+
+* [#8280](https://github.com/Shopify/polaris/pull/8280) [`20bb1a668`](https://github.com/Shopify/polaris/commit/20bb1a668dcde8fcb87da35d5caaef2f0e387c01) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `EmptyState` `illustration` rendering below content and actions when rendered outside of a content container
+
+- [#8286](https://github.com/Shopify/polaris/pull/8286) [`f335aaf99`](https://github.com/Shopify/polaris/commit/f335aaf9968ff87b38559572f51a92b413f8aecd) Thanks [@chloerice](https://github.com/chloerice)! - Reverted Modal footer layout bug fix shipped in [#8253](https://github.com/Shopify/polaris/pull/8253)
+
+## 10.27.0
+
+### Minor Changes
+
+- [#8277](https://github.com/Shopify/polaris/pull/8277) [`a0f29cd4f`](https://github.com/Shopify/polaris/commit/a0f29cd4fa3e8f03f12e78dbbd7b2730ae2245e2) Thanks [@LauraAubin](https://github.com/LauraAubin)! - 1. Added persist on click and underline to Tooltip.
+  2. Added IndexTable header props to support Tooltip content, width, and persist on click.
+
+### Patch Changes
+
+- [#8250](https://github.com/Shopify/polaris/pull/8250) [`0961fab02`](https://github.com/Shopify/polaris/commit/0961fab02959c0a4ea8a8a7407ad39cab1d9e106) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `SkeletonPage` `primaryAction` height not matching `Button` height
+
+* [#8253](https://github.com/Shopify/polaris/pull/8253) [`8fb998772`](https://github.com/Shopify/polaris/commit/8fb998772f788947bf4324c065b57705c87133c4) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Modal` without actions not stretching `footer` to full width
+
+* Updated dependencies [[`9eb9e47b9`](https://github.com/Shopify/polaris/commit/9eb9e47b9154f2df770916a4d94bd0e630ee261a)]:
+  - @shopify/polaris-icons@6.11.1
+
 ## 10.26.0
 
 ### Minor Changes
