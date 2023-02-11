@@ -1,5 +1,41 @@
 # Changelog
 
+## 10.26.0
+
+### Minor Changes
+
+- [#8240](https://github.com/Shopify/polaris/pull/8240) [`31abdab37`](https://github.com/Shopify/polaris/commit/31abdab377fb0c6ceb79d6aa0cd46d730b100447) Thanks [@laurkim](https://github.com/laurkim)! - Added `LegacyStack` component
+
+* [#8238](https://github.com/Shopify/polaris/pull/8238) [`bb8b551d4`](https://github.com/Shopify/polaris/commit/bb8b551d44b021584bb113c023f481c91207229a) Thanks [@laurkim](https://github.com/laurkim)! - Added `LegacyCard` component
+
+### Patch Changes
+
+- [#8256](https://github.com/Shopify/polaris/pull/8256) [`43776be71`](https://github.com/Shopify/polaris/commit/43776be71635454192aa3985a5f364f84177ddeb) Thanks [@aveline](https://github.com/aveline)! - - Fixed `Bleed` width behavior
+  - Fixed `Banner` content width
+
+* [#8244](https://github.com/Shopify/polaris/pull/8244) [`0ee432500`](https://github.com/Shopify/polaris/commit/0ee43250031ddaa03ffab06ae24197c91c2328d9) Thanks [@samrose3](https://github.com/samrose3)! - Disallow text-transform property in Stylelint Polaris
+
+* Updated dependencies [[`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd)]:
+  - @shopify/polaris-tokens@6.4.0
+
+## 10.25.0
+
+### Minor Changes
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Tabs` component to use layout primitives
+
+* [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `OptionList` to use new layout primitives
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Popover` to use new layout primitives
+
+### Patch Changes
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Remove unused class in Page Header
+
+* [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Rebuilt Page Header with layout components
+
+- [#8237](https://github.com/Shopify/polaris/pull/8237) [`17fa970db`](https://github.com/Shopify/polaris/commit/17fa970db66213fe659ee231e750f7054a72dc97) Thanks [@loic-d](https://github.com/loic-d)! - Fixed Backdrop onClick callback when setClosing is missing
+
 ## 10.24.2
 
 ### Patch Changes

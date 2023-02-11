@@ -97,6 +97,7 @@ const stylelintPolarisCoverageOptions = {
           'line-height': ['px', 'rem', 'em'],
         },
       ],
+      'property-disallowed-list': ['text-transform'],
       'function-disallowed-list': [
         'font-family',
         'font-size',
