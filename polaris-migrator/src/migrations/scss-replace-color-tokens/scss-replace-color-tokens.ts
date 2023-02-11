@@ -1,59 +1,6 @@
-import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
-import valueParser from 'postcss-value-parser';
+import type {FileInfo, API} from 'jscodeshift';
 
-import {isSassFunction} from '../../utilities/sass';
-import {isKeyOf} from '../../utilities/type-guards';
-
-export default function scssReplaceColorTokens(
-  file: FileInfo,
-  _: API,
-  options: Options,
-) {
-  return postcss(plugin(options)).process(file.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
-
-const processed = Symbol('processed');
-
-interface PluginOptions extends Options {}
-
-function plugin(_options: PluginOptions = {}): Plugin {
-  return {
-    postcssPlugin: 'scss-replace-color-tokens',
-    Declaration(decl) {
-      // @ts-expect-error - Skip if processed so we don't process it again
-      if (decl[processed]) return;
-
-      if (!isKeyOf(propertyMaps, decl.prop)) return;
-
-      const replacementMap = propertyMaps[decl.prop];
-      const parsed = valueParser(decl.value);
-
-      parsed.walk((node) => {
-        if (!isSassFunction('var', node)) return;
-
-        for (const argNode of node.nodes) {
-          if (
-            argNode.type !== 'word' ||
-            !argNode.value.startsWith('--p-') ||
-            !isKeyOf(replacementMap, argNode.value)
-          ) {
-            continue;
-          }
-
-          argNode.value = replacementMap[argNode.value];
-        }
-      });
-
-      decl.value = parsed.toString();
-
-      // @ts-expect-error - Mark the declaration as processed
-      decl[processed] = true;
-    },
-  };
-}
+import stylesReplaceCustomProperty from '../styles-replace-custom-property/styles-replace-custom-property';
 
 const colorMap = {
   '--p-text': '--p-color-text',
@@ -65,7 +12,7 @@ const colorMap = {
 
 // const fillColorMap = {};
 
-const propertyMaps = {
+const replacementMaps = {
   color: colorMap,
   // background: backgroundColorMap,
   // 'background-color': backgroundColorMap,
@@ -73,6 +20,10 @@ const propertyMaps = {
   // 'border-color': borderColorMap,
   // fill: fillColorMap,
 };
+
+export default function scssReplaceColorTokens(fileInfo: FileInfo, _: API) {
+  return stylesReplaceCustomProperty(fileInfo, _, {replacementMaps});
+}
 
 export const unCategorizedMaps = {
   '--p-background': '--p-color-bg-app',
