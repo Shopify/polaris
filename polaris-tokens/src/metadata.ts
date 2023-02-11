@@ -4,7 +4,6 @@ import {breakpoints} from './token-groups/breakpoints';
 import {depth} from './token-groups/depth';
 import {font} from './token-groups/font';
 import {legacy} from './token-groups/legacy';
-import {color} from './token-groups/color';
 import {colors} from './token-groups/colors';
 import {motion} from './token-groups/motion';
 import {shape} from './token-groups/shape';
@@ -13,7 +12,6 @@ import {zIndex} from './token-groups/zIndex';
 
 export const metadata = createMetadata({
   breakpoints: tokensToRems(breakpoints),
-  color,
   colors,
   depth,
   font: tokensToRems(font),
