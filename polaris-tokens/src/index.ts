@@ -48,12 +48,11 @@ export type {
 } from './token-groups/motion';
 
 export type {
-  ShapeTokenGroup,
-  ShapeTokenName,
-  ShapeBorderRadiusScale,
-  ShapeBorderRadiusAlias,
-  ShapeBorderWidthScale,
-} from './token-groups/shape';
+  BorderTokenGroup,
+  BorderTokenName,
+  BorderRadiusScale,
+  BorderWidthScale,
+} from './token-groups/border';
 
 export type {
   SpacingTokenGroup,

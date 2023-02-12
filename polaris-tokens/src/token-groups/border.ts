@@ -1,6 +1,6 @@
 import type {TokenGroup} from '../types';
 
-export const shape = {
+export const border = {
   'border-radius-05': {
     value: '2px',
   },
@@ -22,14 +22,8 @@ export const shape = {
   'border-radius-6': {
     value: '30px',
   },
-  'border-radius-base': {
-    value: '3px',
-  },
-  'border-radius-large': {
-    value: '6px',
-  },
-  'border-radius-half': {
-    value: '50%',
+  'border-radius-full': {
+    value: '9999px',
   },
   'border-width-1': {
     value: '1px',
@@ -63,10 +57,10 @@ export const shape = {
   },
 };
 
-export type ShapeTokenGroup = TokenGroup<typeof shape>;
-export type ShapeTokenName = keyof ShapeTokenGroup;
+export type BorderTokenGroup = TokenGroup<typeof border>;
+export type BorderTokenName = keyof BorderTokenGroup;
 
-export const shapeBorderRadiusScale = [
+export const borderRadiusScale = [
   '05',
   '1',
   '2',
@@ -74,11 +68,9 @@ export const shapeBorderRadiusScale = [
   '4',
   '5',
   '6',
+  'full',
 ] as const;
-export type ShapeBorderRadiusScale = typeof shapeBorderRadiusScale[number];
+export type BorderRadiusScale = typeof borderRadiusScale[number];
 
-export const shapeBorderRadiusAlias = ['base', 'large', 'half'] as const;
-export type ShapeBorderRadiusAlias = typeof shapeBorderRadiusAlias[number];
-
-export const shapeBorderWidthScale = ['1', '2', '3', '4', '5'] as const;
-export type ShapeBorderWidthScale = typeof shapeBorderWidthScale[number];
+export const borderWidthScale = ['1', '2', '3', '4', '5'] as const;
+export type BorderWidthScale = typeof borderWidthScale[number];

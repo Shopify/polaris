@@ -1,22 +1,10 @@
 import {isKeyOf} from '../../src/utilities';
-import {
-  shape,
-  shapeBorderRadiusScale,
-  shapeBorderRadiusAlias,
-} from '../../src/token-groups/shape';
+import {border, borderRadiusScale} from '../../src/token-groups/border';
 
-describe('ShapeBorderRadiusScale', () => {
-  it('has a shape token for each border radius scale', () => {
-    for (const scale of shapeBorderRadiusScale) {
-      expect(isKeyOf(shape, `border-radius-${scale}`)).toBe(true);
-    }
-  });
-});
-
-describe('ShapeBorderRadiusAlias', () => {
-  it('has a shape token for each border radius alias', () => {
-    for (const alias of shapeBorderRadiusAlias) {
-      expect(isKeyOf(shape, `border-radius-${alias}`)).toBe(true);
+describe('BorderRadiusScale', () => {
+  it('has a border token for each border radius scale', () => {
+    for (const scale of borderRadiusScale) {
+      expect(isKeyOf(border, `border-radius-${scale}`)).toBe(true);
     }
   });
 });
