@@ -58,9 +58,7 @@ export type BorderRadiusTokenScale =
   | '4'
   | '5'
   | '6'
-  | 'base'
-  | 'large'
-  | 'half';
+  | 'full';
 
 export type BackgroundColors =
   | ColorsBackdropTokenAlias
