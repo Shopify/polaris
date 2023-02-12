@@ -10,5 +10,5 @@ status:
 examples:
   - fileName: divider-with-border-styles.tsx
     title: Style
-    description: Divider border style can be adjusted using the [Shape tokens](https://polaris.shopify.com/tokens/shape).
+    description: Divider border style can be adjusted using the [Border tokens](https://polaris.shopify.com/tokens/border).
 ---

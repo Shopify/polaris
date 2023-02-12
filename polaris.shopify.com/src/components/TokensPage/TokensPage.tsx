@@ -14,7 +14,7 @@ interface Props {
     | 'depth'
     | 'font'
     | 'motion'
-    | 'shape'
+    | 'border'
     | 'spacing'
     | 'zIndex';
 }
@@ -36,8 +36,8 @@ const navItems: NavItem[] = [
     url: `/tokens/font`,
   },
   {
-    title: 'Shape',
-    url: `/tokens/shape`,
+    title: 'Border',
+    url: `/tokens/border`,
   },
   {
     title: 'Spacing',
@@ -84,7 +84,7 @@ function TokensPage({tokenGroup}: Props) {
     depth: tokensToFilteredArray(filter, allTokens.depth),
     font: tokensToFilteredArray(filter, allTokens.font),
     motion: tokensToFilteredArray(filter, allTokens.motion),
-    shape: tokensToFilteredArray(filter, allTokens.shape),
+    border: tokensToFilteredArray(filter, allTokens.border),
     spacing: tokensToFilteredArray(filter, allTokens.spacing),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };

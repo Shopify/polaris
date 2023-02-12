@@ -89,7 +89,7 @@ There are over 40 rules configured in Stylelint Polaris to help you avoid errors
 - [Legacy](/tools/stylelint-polaris/rules#legacy)
 - [Media queries](/tools/stylelint-polaris/rules#media-queries)
 - [Motion](/tools/stylelint-polaris/rules#motion)
-- [Shape](/tools/stylelint-polaris/rules#shape)
+- [Border](/tools/stylelint-polaris/rules#border)
 - [Spacing](/tools/stylelint-polaris/rules#spacing)
 - [Typography](/tools/stylelint-polaris/rules#typography)
 - [Z-index](/tools/stylelint-polaris/rules#z-index)

@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef, useCallback} from 'react';
 import type {
-  ShapeBorderRadiusScale,
+  BorderRadiusScale,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
@@ -15,7 +15,7 @@ import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpacingSpaceScale, '4'>;
-export type BorderRadius = Extract<ShapeBorderRadiusScale, '1' | '2'>;
+export type BorderRadius = Extract<BorderRadiusScale, '1' | '2'>;
 
 export interface TooltipProps {
   /** The element that will activate to tooltip */

@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import type {ColorsTokenName, ShapeTokenName} from '@shopify/polaris-tokens';
+import type {ColorsTokenName, BorderTokenName} from '@shopify/polaris-tokens';
 
 import {Box} from '..';
 import type {
@@ -33,19 +33,16 @@ type BackgroundColorTokenScale = Extract<
 
 type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
 
-type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
+type BorderTokenScale = BorderTokenName extends `border-${infer Scale}`
   ? Scale
   : never;
 type BorderTokenAlias = Exclude<
-  BorderShapeTokenScale,
+  BorderTokenScale,
   `radius-${string}` | `width-${string}`
 >;
 
 type BorderRadiusTokenScale = Extract<
-  Exclude<
-    BorderShapeTokenScale,
-    'radius-half' | 'radius-base' | 'radius-large'
-  >,
+  Exclude<BorderTokenScale>,
   `radius-${string}`
 > extends `radius-${infer Scale}`
   ? Scale

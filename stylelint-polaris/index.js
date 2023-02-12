@@ -244,7 +244,7 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris spacing token',
     },
   ],
-  shape: [
+  border: [
     {
       'function-disallowed-list': [
         'border-radius',
@@ -275,9 +275,10 @@ const stylelintPolarisCoverageOptions = {
         /\$border-width-data/,
         /\$borders-data/,
         // Legacy custom properties
-        // /--p-border-radius-base/,
+        /--p-border-radius-base/,
+        /--p-border-radius-large/,
+        /--p-border-radius-half/,
         /--p-border-radius-wide/,
-        // /--p-border-radius-full/,
         /--p-control-border-width/,
         /--p-thin-border-subdued/,
         /--p-banner-border-default/,
@@ -290,7 +291,7 @@ const stylelintPolarisCoverageOptions = {
       ],
     },
     {
-      message: 'Please use a Polaris shape token',
+      message: 'Please use a Polaris border token',
     },
   ],
   depth: [

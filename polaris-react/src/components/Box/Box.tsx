@@ -5,7 +5,7 @@ import type {
   ColorsBackgroundTokenAlias,
   ColorsOverlayTokenAlias,
   ColorsSurfaceTokenAlias,
-  ShapeBorderWidthScale,
+  BorderWidthScale,
   DepthShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
@@ -96,15 +96,15 @@ export interface BoxProps extends React.AriaAttributes {
   /** Vertical start horizontal end border radius */
   borderRadiusStartEnd?: BorderRadiusTokenScale;
   /** Border width */
-  borderWidth?: ShapeBorderWidthScale;
+  borderWidth?: BorderWidthScale;
   /** Vertical start border width */
-  borderBlockStartWidth?: ShapeBorderWidthScale;
+  borderBlockStartWidth?: BorderWidthScale;
   /** Vertical end border width */
-  borderBlockEndWidth?: ShapeBorderWidthScale;
+  borderBlockEndWidth?: BorderWidthScale;
   /** Horizontal start border width */
-  borderInlineStartWidth?: ShapeBorderWidthScale;
+  borderInlineStartWidth?: BorderWidthScale;
   /** Horizontal end border width */
-  borderInlineEndWidth?: ShapeBorderWidthScale;
+  borderInlineEndWidth?: BorderWidthScale;
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
