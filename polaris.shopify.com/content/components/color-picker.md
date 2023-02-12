@@ -7,6 +7,8 @@ keywords:
   - HuePicker
   - AlphaPicker
   - Slidable
+  - TextPicker
+  - AlphaField
   - Choose color
   - Select color
   - Pick color
@@ -24,8 +26,18 @@ examples:
   - fileName: color-picker-with-transparent-value-full-width.tsx
     title: With transparent value full width
     description: Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
+  - fileName: color-picker-with-text-fields.tsx
+    title: With text fields
+    description: Use when you want users to be able to enter colors using the keyboard.
+  - fileName: color-picker-with-transparent-value-and-text-fields.tsx
+    title: With transparent value and text fields
+    description: Use when you want users to be able to enter colors using the keyboard and to allow the designated object to have a transparent background that allows underlying objects to show through.
+  - fileName: color-picker-with-transparent-value-and-text-fields-full-width.tsx
+    title: With transparent value and text fields full width
+    description: Use when you want users to be able to enter colors using the keyboard and to allow the designated object to have a transparent background that allows underlying objects to show through.
 ---
 
 ## Best practices
 
 - Use the alpha slider if you want to allow merchants to be able to select a transparent color
+- Use the text fields if you want the user to be able to enter the color values manually
