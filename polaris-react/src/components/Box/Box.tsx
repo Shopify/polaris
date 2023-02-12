@@ -59,7 +59,6 @@ export type BorderRadiusTokenScale =
   | '5'
   | '6'
   | 'full'
-  | 'base'
   | 'large';
 
 export type BackgroundColors =

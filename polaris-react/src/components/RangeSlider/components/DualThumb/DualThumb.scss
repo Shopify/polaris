@@ -194,7 +194,7 @@ $range-output-size: 32px;
   height: $range-output-size;
   background-color: var(--p-surface);
   box-shadow: var(--p-shadow-popover);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   transition-property: transform;
   transition-duration: var(--p-duration-150);
   transition-timing-function: var(--p-ease);
