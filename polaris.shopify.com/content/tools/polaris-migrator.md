@@ -102,7 +102,7 @@ npx @shopify/polaris-migrator scss-replace-breakpoints <path>
 
 ### `scss-replace-border`
 
-Replace usage of the legacy SCSS `border()`) function in `border` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+Replace usage of the legacy SCSS `border()`) function in `border` declarations with corresponding Polaris [border](https://polaris.shopify.com/tokens/border) token.
 
 ```diff
 - border: border();
@@ -120,7 +120,7 @@ npx @shopify/polaris-migrator scss-replace-border <path>
 
 ### `scss-replace-border-radius`
 
-Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` declarations with corresponding Polaris [border](https://polaris.shopify.com/tokens/border) tokens.
 
 ```diff
 - border-radius: border-radius();
@@ -138,7 +138,7 @@ npx @shopify/polaris-migrator scss-replace-border-radius <path>
 
 ### `scss-replace-border-width`
 
-Replace usage of the legacy SCSS `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+Replace usage of the legacy SCSS `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [border](https://polaris.shopify.com/tokens/border) tokens.
 
 ```diff
 - border-width: border-width();
@@ -396,7 +396,7 @@ npx @shopify/polaris-migrator styles-tokenize-motion <path>
 
 ### `styles-tokenize-shape`
 
-Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [border](https://polaris.shopify.com/tokens/border) token.
 
 ```diff
 - border: 1px solid transparent;
