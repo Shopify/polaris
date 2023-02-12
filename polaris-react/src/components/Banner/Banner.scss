@@ -158,6 +158,11 @@
   // stylelint-enable selector-max-class, selector-max-specificity
 }
 
+.ContentWrapper {
+  margin-top: calc(-1 * var(--p-space-05));
+  flex: 1 1 auto;
+}
+
 .withinContentContainer {
   padding: var(--p-space-4);
 

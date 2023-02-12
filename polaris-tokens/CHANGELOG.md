@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.4.0
+
+### Minor Changes
+
+- [#8245](https://github.com/Shopify/polaris/pull/8245) [`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd) Thanks [@lgriffee](https://github.com/lgriffee)! - Added new z-index tokens that will be the default in v7.0.0
+
 ## 6.3.0
 
 ### Minor Changes
