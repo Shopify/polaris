@@ -86,7 +86,7 @@ module.exports = {
             name: 'react',
             importNames: ['useLayoutEffect'],
             message:
-              'Please use useIsomorphicLayoutEffect from the utilities director instead',
+              'Please use useIsomorphicLayoutEffect from the utilities directory instead',
           },
         ],
       },
