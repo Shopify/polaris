@@ -68,6 +68,6 @@ Provide merchants with cues as to what the interface will do if they interact wi
 
 **Use feedback indicators** like the [progress bar](https://polaris.shopify.com/components/progress-bar) component or the [spinner](https://polaris.shopify.com/components/spinner) component to let them know that the interface received their request. If appropriate, you can also provide added information about what or how long it will take to complete.
 
-**For non-disruptive feedback** on the outcome of an action, use the [toast](https://polaris.shopify.com/components/toast) component.
+**For non-disruptive feedback** on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
 
-**For an unsuccessful completion** that requires the merchant to take action, provide information about what prevented the action from completing successfully and what the merchant can do to fix the problem. For example, use the validation error state of the [text field](https://polaris.shopify.com/components/text-field) component.
+**For an unsuccessful completion** that requires the merchant to take action, provide information about what prevented the action from completing successfully and what the merchant can do to fix the problem. For example, use the validation error state of the [text field](https://polaris.shopify.com/components/selection-and-input/text-field) component.

@@ -86,7 +86,7 @@ Alt text should always be written in plain text.
 
 ### Icons
 
-[Icons](/components/icon) that could be misinterpreted need an explanation, so use the `aria-label` attribute.
+[Icons](/components/images-and-icons/icon) that could be misinterpreted need an explanation, so use the `aria-label` attribute.
 
 ```html
 <button aria-label="Close" onclick="myDialog.close()">X</button>
