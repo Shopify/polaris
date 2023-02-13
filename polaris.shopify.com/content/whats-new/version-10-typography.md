@@ -160,6 +160,6 @@ Don’t worry, we’ll also provide a timeline and guidance for migration.
 
 ## Resources
 
-- [Text component](http://polaris.shopify.com/components/text)
+- [Text component](http://polaris.shopify.com/components/typography/text)
 - [Figma text styles](https://www.figma.com/file/tbm3yEIZsOuHS7xJu9zy6Q/text-styles?node-id=5457%3A5710)
 - [Figma guides](https://www.figma.com/file/tbm3yEIZsOuHS7xJu9zy6Q/text-styles?node-id=5523%3A51)
