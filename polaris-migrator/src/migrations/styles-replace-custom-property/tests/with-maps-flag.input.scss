@@ -1,0 +1,25 @@
+.basic {
+  color: var(--p-text);
+  color: var(--p-black);
+
+  animation-duration: var(--p-duration-200);
+  animation-delay: var(--p-fast);
+}
+
+.with-fallback-var {
+  color: var(--p-text, var(--p-text));
+  color: var(--p-text, var(--p-black));
+  color: var(--p-black, var(--p-text));
+
+  animation-duration: var(--p-duration-200, var(--p-duration-200));
+  animation-delay: var(--p-duration-200, var(--p-fast));
+  animation-delay: var(--p-fast, var(--p-duration-200));
+}
+
+.with-fallback-value {
+  color: var(--p-text, #000);
+  color: var(--p-black, #111);
+
+  animation-duration: var(--p-duration-200, 200ms);
+  animation-delay: var(--p-fast, 100ms);
+}
