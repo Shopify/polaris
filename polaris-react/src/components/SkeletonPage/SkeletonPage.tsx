@@ -41,7 +41,7 @@ export function SkeletonPage({
         background="surface-neutral"
         minWidth="120px"
         minHeight="28px"
-        borderRadius="base"
+        borderRadius="1"
       />
     </div>
   );

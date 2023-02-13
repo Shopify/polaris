@@ -95,6 +95,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     path.resolve(process.cwd(), 'content/*.md'),
     path.resolve(process.cwd(), 'content/**/*.md'),
     path.resolve(process.cwd(), 'content/**/**/*.md'),
+    path.resolve(process.cwd(), 'content/**/**/**/*.md'),
   ];
   const paths = globby
     .sync(globPath)

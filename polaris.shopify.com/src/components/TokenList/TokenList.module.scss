@@ -193,3 +193,23 @@
     right: 0;
   }
 }
+
+.Frame {
+  background: var(--text);
+  opacity: 0.1;
+  position: absolute;
+  min-height: 0%;
+  width: 4%;
+  padding-bottom: 4%;
+  border-radius: 50%;
+  animation-fill-mode: backwards;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  animation-name: slide;
+}
+
+.Playhead {
+  opacity: 1;
+  animation-play-state: running;
+  outline: 1px solid var(--surface);
+}

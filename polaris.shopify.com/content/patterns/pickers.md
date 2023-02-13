@@ -33,7 +33,7 @@ Introduce advanced features only when needed. Scale picker experiences consisten
 
 The order the options are sorted in should help merchants find and pick from the options quickly so they can focus on the action they need to take on the page.
 
-- Sort in the unique logical order relevant to the options the picker contains. [Date pickers](/components/date-picker) present options by month. [Color pickers](/components/color-picker) present options by hue.
+- Sort in the unique logical order relevant to the options the picker contains. [Date pickers](/components/selection-and-input/date-picker) present options by month. [Color pickers](/components/selection-and-input/color-picker) present options by hue.
 - Sort alphabetically if the picker contains text options that are most scannable by the content they contain, like customer names or locations.
 - Sort by most recently or frequently created, updated, or used if the picker contains options that were created in the context in which they are being picked, or are accessed or used repetitively. Products and collections benefit from being sorted by creation date, while customer segments are best sorted by date last edited.
 
@@ -50,9 +50,9 @@ Pinning the most relevant options to the top of the picker helps merchants work 
 
 ![Searchable listbox pattern disected to illustrate how it's composed using the text field, listbox, listbox option, and listbox action components.](/images/foundations/patterns/pickers/searchable-listbox.png)
 
-The primary building block of resource picking experiences is the searchable listbox pattern. Searchable listboxes are composed of the [listbox](/components/listbox) and [text field](/components/text-field) components and can be displayed differently depending on what merchant problem you’re solving.
+The primary building block of resource picking experiences is the searchable listbox pattern. Searchable listboxes are composed of the [listbox](/components/lists/listbox) and [text field](/components/selection-and-input/text-field) components and can be displayed differently depending on what merchant problem you’re solving.
 
-The components are used directly inside of a container on the page if picking is part of the primary action merchants need to take, such as completing a form. The components may instead be hidden or revealed with an overlay, such as a [popover](/components/popover) or [modal](/components/modal), to progressively disclose the list when merchants take an action on the page. Use progressive disclosure if the purpose of the picker is secondary to the action merchants are taking on the page, such as navigation or list filtering. We'll look at customer segment and location picking patterns for examples of context specific implementation.
+The components are used directly inside of a container on the page if picking is part of the primary action merchants need to take, such as completing a form. The components may instead be hidden or revealed with an overlay, such as a [popover](/components/overlays/popover) or [modal](/components/overlays/modal), to progressively disclose the list when merchants take an action on the page. Use progressive disclosure if the purpose of the picker is secondary to the action merchants are taking on the page, such as navigation or list filtering. We'll look at customer segment and location picking patterns for examples of context specific implementation.
 
 ### Locations
 
@@ -93,7 +93,7 @@ When a merchant has 11 or more locations:
 
 Location data can be fetched, created, or updated using the Shopify Admin [GraphQL API](https://shopify.dev/api/admin-graphql/2022-07/queries/locations) or the [Rest API](https://shopify.dev/api/admin-rest/2022-07/resources/location).
 
-Location pickers are composed using the [button](/components/button), [icon](/components/icon), [listbox](/components/listbox), [popover](/components/popover), and [text field](/components/text-field) components. Reference the `Listbox` "With search" and `Popover` "With searchable listbox" composition examples for React component code snippets.
+Location pickers are composed using the [button](/components/actions/button), [icon](/components/images-and-icons/icon), [listbox](/components/lists/listbox), [popover](/components/overlays/popover), and [text field](/components/selection-and-input/text-field) components. Reference the `Listbox` "With search" and `Popover` "With searchable listbox" composition examples for React component code snippets.
 
 ### Customer segments
 
@@ -134,4 +134,4 @@ Shopify Flow is an automation app that helps merchants build workflows to automa
 
 Customer segment data can be fetched, created, or updated using the Shopify Admin [GraphQL API](https://shopify.dev/api/admin-graphql/2022-07/objects/Segment). Customer segments replace saved search in the customers section of the Admin. Check out the [Segmentation guide](https://shopify.dev/api/examples/customer-segments) for an overview of how to query segment members.
 
-Segment pickers are composed using the [listbox](/components/listbox) and [text field](/components/text-field) components to implement a searchable listbox. The searchable listbox is displayed inside of a [popover](/components/popover) component activated by a [button](/components/button) component, or inside of a [sheet](/components/sheet) component triggered by selecting a segment workflow template or by creating a custom workflow action. Get started by referencing the `Listbox` "With search", `Popover` "With searchable listbox", and `Sheet` "With searchable listbox" composition examples for React component code snippets.
+Segment pickers are composed using the [listbox](/components/lists/listbox) and [text field](/components/selection-and-input/text-field) components to implement a searchable listbox. The searchable listbox is displayed inside of a [popover](/components/overlays/popover) component activated by a [button](/components/actions/button) component, or inside of a [sheet](/components/deprecated/sheet) component triggered by selecting a segment workflow template or by creating a custom workflow action. Get started by referencing the `Listbox` "With search", `Popover` "With searchable listbox", and `Sheet` "With searchable listbox" composition examples for React component code snippets.

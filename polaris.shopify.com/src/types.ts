@@ -52,6 +52,7 @@ export interface SearchResult {
       title: string;
       description: string;
       status?: Status;
+      group?: string;
     };
     foundations: {
       title: string;
@@ -155,4 +156,5 @@ export interface NavItem {
   newSection?: true;
   status?: Status;
   children?: NavJSON;
+  expanded?: boolean;
 }

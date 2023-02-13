@@ -68,13 +68,13 @@ yarn stylelint **/*.scss
 ### Lint the TextContainer.scss file
 
 ```
-yarn stylelint src/components/TextContainer/TextContainer.scss
+yarn stylelint src/components/typography/textContainer/TextContainer.scss
 ```
 
 e.x. output
 
 ```
-src/components/TextContainer/TextContainer.scss
+src/components/typography/textContainer/TextContainer.scss
   4:3  ✖  Unexpected custom property [--p-text-container-spacing].        polaris/custom-property-allowed-list
   6:5  ✖  Invalid custom properties [--p-text-container-spacing].         polaris/custom-property-allowed-list
  15:3  ✖  Unexpected custom property [--p-text-container-spacing].        polaris/custom-property-allowed-list

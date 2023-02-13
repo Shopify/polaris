@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
 
 import type {
   ActionListItemDescriptor,
@@ -18,6 +12,7 @@ import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
 import {SecondaryAction} from '../SecondaryAction';
 import {useEventListener} from '../../../../utilities/use-event-listener';
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
 import styles from './Actions.scss';
 
@@ -177,7 +172,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
 
   useEventListener('resize', handleResize);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!actionsLayoutRef.current) return;
 
     availableWidthRef.current = actionsLayoutRef.current.offsetWidth;

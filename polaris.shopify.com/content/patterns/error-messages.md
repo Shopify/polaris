@@ -244,7 +244,7 @@ Don’t use when:
 
 ### Component
 
-- [Text field](/components/text-field)
+- [Text field](/components/selection-and-input/text-field)
 
 ### Content
 
@@ -294,7 +294,7 @@ Don’t use when:
 
 ### Component
 
-- [Banner](/components/banner#navigation)
+- [Banner](/components/feedback-indicators/banner#navigation)
 
 And one or more of the following:
 
@@ -313,7 +313,7 @@ Banner heading
 
 Banner body text
 
-- Use the [list component](/components/list#navigation) to itemize the errors
+- Use the [list component](/components/lists/list#navigation) to itemize the errors
 - Start each list item with the label of the field that isn't valid, and describe the action needed to fix it
 
 Individual field error messages:
@@ -375,7 +375,7 @@ Tip: Explore ways to prevent the warning message from showing at all. Look for o
 
 ### Component
 
-- [Banner](/components/banner) without title
+- [Banner](/components/feedback-indicators/banner) without title
 
 ### Content
 
@@ -428,7 +428,7 @@ Page-level banner errors should explain:
 
 ### Component
 
-- [Banner](/components/banner)
+- [Banner](/components/feedback-indicators/banner)
 
 ### Content
 
@@ -468,7 +468,7 @@ Don’t use when:
 
 ### Component
 
-- [Banner](/components/banner#navigation)
+- [Banner](/components/feedback-indicators/banner#navigation)
 
 ### Variant
 
@@ -500,7 +500,7 @@ Don’t use when:
 
 ### Component
 
-- [Exception list](/components/exception-list)
+- [Exception list](/components/feedback-indicators/exception-list)
 
 Variant
 
@@ -641,7 +641,7 @@ Don’t use internal language in error messages and avoid using question formats
 
 ### Component:
 
-- [Empty state](/components/empty-state)
+- [Empty state](/components/layout-and-structure/empty-state)
 
 ### Content
 
