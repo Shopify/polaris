@@ -1,5 +1,75 @@
 # polaris.shopify.com
 
+## 0.33.2
+
+### Patch Changes
+
+- Updated dependencies [[`24a2ef38a`](https://github.com/Shopify/polaris/commit/24a2ef38a14a5904e739a38c1421e3f7f5db81bc)]:
+  - @shopify/polaris@10.27.2
+
+## 0.33.1
+
+### Patch Changes
+
+- [#8285](https://github.com/Shopify/polaris/pull/8285) [`e70f70862`](https://github.com/Shopify/polaris/commit/e70f7086261b7f036b90550a432bf9d72e7ed8a4) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed contrast issue on alpha status badge
+  Added default value to prop documentation for AlphaStack
+- Updated dependencies [[`e70f70862`](https://github.com/Shopify/polaris/commit/e70f7086261b7f036b90550a432bf9d72e7ed8a4), [`20bb1a668`](https://github.com/Shopify/polaris/commit/20bb1a668dcde8fcb87da35d5caaef2f0e387c01), [`f335aaf99`](https://github.com/Shopify/polaris/commit/f335aaf9968ff87b38559572f51a92b413f8aecd)]:
+  - @shopify/polaris@10.27.1
+
+## 0.33.0
+
+### Minor Changes
+
+- [#8279](https://github.com/Shopify/polaris/pull/8279) [`a3cf2f103`](https://github.com/Shopify/polaris/commit/a3cf2f1033d1e31fa5ede883504f96850b488a14) Thanks [@laurkim](https://github.com/laurkim)! - Updated status badge color and banner for Alpha components
+
+### Patch Changes
+
+- Updated dependencies [[`0961fab02`](https://github.com/Shopify/polaris/commit/0961fab02959c0a4ea8a8a7407ad39cab1d9e106), [`a0f29cd4f`](https://github.com/Shopify/polaris/commit/a0f29cd4fa3e8f03f12e78dbbd7b2730ae2245e2), [`9eb9e47b9`](https://github.com/Shopify/polaris/commit/9eb9e47b9154f2df770916a4d94bd0e630ee261a), [`8fb998772`](https://github.com/Shopify/polaris/commit/8fb998772f788947bf4324c065b57705c87133c4)]:
+  - @shopify/polaris@10.27.0
+  - @shopify/polaris-icons@6.11.1
+
+## 0.32.0
+
+### Minor Changes
+
+- [#8240](https://github.com/Shopify/polaris/pull/8240) [`31abdab37`](https://github.com/Shopify/polaris/commit/31abdab377fb0c6ceb79d6aa0cd46d730b100447) Thanks [@laurkim](https://github.com/laurkim)! - Added `LegacyStack` component
+
+* [#8238](https://github.com/Shopify/polaris/pull/8238) [`bb8b551d4`](https://github.com/Shopify/polaris/commit/bb8b551d44b021584bb113c023f481c91207229a) Thanks [@laurkim](https://github.com/laurkim)! - Added `LegacyCard` component
+
+### Patch Changes
+
+- Updated dependencies [[`43776be71`](https://github.com/Shopify/polaris/commit/43776be71635454192aa3985a5f364f84177ddeb), [`31abdab37`](https://github.com/Shopify/polaris/commit/31abdab377fb0c6ceb79d6aa0cd46d730b100447), [`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd), [`0ee432500`](https://github.com/Shopify/polaris/commit/0ee43250031ddaa03ffab06ae24197c91c2328d9), [`bb8b551d4`](https://github.com/Shopify/polaris/commit/bb8b551d44b021584bb113c023f481c91207229a)]:
+  - @shopify/polaris@10.26.0
+  - @shopify/polaris-tokens@6.4.0
+
+## 0.31.1
+
+### Patch Changes
+
+- [#8235](https://github.com/Shopify/polaris/pull/8235) [`5fbe75461`](https://github.com/Shopify/polaris/commit/5fbe75461499eb84940fd8b668bdd56c7a7e3073) Thanks [@laurkim](https://github.com/laurkim)! - Updated Patterns/Typography copy to include suggestions for uppercase typography styles
+
+- Updated dependencies [[`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`17fa970db`](https://github.com/Shopify/polaris/commit/17fa970db66213fe659ee231e750f7054a72dc97)]:
+  - @shopify/polaris@10.25.0
+
+## 0.31.0
+
+### Minor Changes
+
+- [#8223](https://github.com/Shopify/polaris/pull/8223) [`de7987c42`](https://github.com/Shopify/polaris/commit/de7987c426174b73d67e54eacf197da9490c76ec) Thanks [@samrose3](https://github.com/samrose3)! - Renamed Polaris CLI package and add docs to website
+
+### Patch Changes
+
+- Updated dependencies [[`d1a332963`](https://github.com/Shopify/polaris/commit/d1a3329634a1f4cd02f0d97b8239bbedad7cf889), [`e30d1f51b`](https://github.com/Shopify/polaris/commit/e30d1f51b205c6875c0e712291081d836e851d97)]:
+  - @shopify/polaris@10.24.2
+
+## 0.30.2
+
+### Patch Changes
+
+- Updated dependencies [[`ec0e2f671`](https://github.com/Shopify/polaris/commit/ec0e2f671487e167ee43326372ad2367b3e7f4a6), [`977e70a84`](https://github.com/Shopify/polaris/commit/977e70a847cdc446c28c2b06dc771e5970aa0f4f)]:
+  - @shopify/polaris@10.24.1
+  - @shopify/polaris-icons@6.11.0
+
 ## 0.30.1
 
 ### Patch Changes

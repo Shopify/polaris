@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-import {SkeletonDisplayText} from '../SkeletonDisplayText';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
@@ -48,9 +47,13 @@ export function SkeletonPage({
   );
 
   const primaryActionMarkup = primaryAction ? (
-    <div className={styles.PrimaryAction}>
-      <SkeletonDisplayText size="large" />
-    </div>
+    <Box
+      id="SkeletonPage-PrimaryAction"
+      borderRadius="1"
+      background="surface-neutral"
+      minHeight="2.25rem"
+      minWidth="6.25rem"
+    />
   ) : null;
 
   const breadcrumbMarkup = breadcrumbs ? (

@@ -9,11 +9,11 @@ import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
-import {Box} from '../Box';
+import {Box, BoxProps} from '../Box';
 import {Text} from '../Text';
+import {Bleed} from '../Bleed';
 
 import {Option} from './components';
-import styles from './OptionList.scss';
 
 type Alignment = 'top' | 'center' | 'bottom';
 
@@ -130,24 +130,30 @@ export function OptionList({
           });
 
         return (
-          <li key={title || `noTitle-${sectionIndex}`}>
+          <Box
+            key={title || `noTitle-${sectionIndex}`}
+            as="li"
+            paddingBlockStart={isFirstOption ? undefined : '2'}
+          >
             {titleMarkup}
-            <ul
-              className={styles.Options}
-              id={`${id}-${sectionIndex}`}
-              role={role}
-            >
-              {optionsMarkup}
-            </ul>
-          </li>
+            <Bleed marginBlockStart={title ? undefined : '05'} marginInline="0">
+              <Box
+                as="ul"
+                id={`${id}-${sectionIndex}`}
+                role={role as BoxProps['role']}
+              >
+                {optionsMarkup}
+              </Box>
+            </Bleed>
+          </Box>
         );
       })
     : null;
 
   return (
-    <ul className={styles.OptionList} role={role}>
+    <Box as="ul" role={role as BoxProps['role']} padding="2">
       {optionsMarkup}
-    </ul>
+    </Box>
   );
 }
 

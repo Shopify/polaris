@@ -1,5 +1,22 @@
 # Changelog
 
+## 5.2.0
+
+### Minor Changes
+
+- [#8244](https://github.com/Shopify/polaris/pull/8244) [`0ee432500`](https://github.com/Shopify/polaris/commit/0ee43250031ddaa03ffab06ae24197c91c2328d9) Thanks [@samrose3](https://github.com/samrose3)! - Disallow text-transform property in Stylelint Polaris
+
+### Patch Changes
+
+- Updated dependencies [[`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd)]:
+  - @shopify/polaris-tokens@6.4.0
+
+## 5.1.3
+
+### Patch Changes
+
+- [#8208](https://github.com/Shopify/polaris/pull/8208) [`69d27dbf6`](https://github.com/Shopify/polaris/commit/69d27dbf63d360a7cb3722fa8cd16e605288b3b9) Thanks [@qt314](https://github.com/qt314)! - Re-enable non layout component related layout rules
+
 ## 5.1.2
 
 ### Patch Changes

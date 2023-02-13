@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Item} from '../Item';
 import type {TabDescriptor} from '../../types';
-import styles from '../../Tabs.scss';
+import {Box} from '../../../Box';
 
 export interface ListProps {
   focusIndex: number;
@@ -32,9 +32,11 @@ export function List({
   });
 
   return (
-    <ul className={styles.List} onKeyDown={handleKeyDown} onKeyUp={onKeyPress}>
-      {tabs}
-    </ul>
+    <div onKeyDown={handleKeyDown} onKeyUp={onKeyPress}>
+      <Box as="ul" padding="2">
+        {tabs}
+      </Box>
+    </div>
   );
 }
 

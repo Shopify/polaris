@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "10.24.0",
+  "version": "10.27.2",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -11,7 +11,7 @@
     "url": "https://github.com/Shopify/polaris/issues"
   },
   "engines": {
-    "node": "^16.16.0 || ^18.13.0"
+    "node": "^16.17.0 || >=18.12.0"
   },
   "publishConfig": {
     "access": "public",
@@ -39,18 +39,10 @@
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
   "esnext": "build/esnext/index.esnext",
-  "types": "build/ts/latest/src/index.d.ts",
-  "typesVersions": {
-    "<4.0": {
-      "build/types/latest/*": [
-        "build/ts/3.4/*"
-      ]
-    }
-  },
+  "types": "build/ts/src/index.d.ts",
   "scripts": {
-    "build": "run-s build:types build:types-downlevel build:js build:validate",
+    "build": "run-s build:types build:js build:validate",
     "build:types": "tsc -b",
-    "build:types-downlevel": "downlevel-dts './build/ts/latest' './build/ts/3.4'",
     "build:js": "rollup -c",
     "build:validate": "node scripts/build-validate.js",
     "dev": "yarn run storybook",
@@ -65,8 +57,8 @@
     "preversion": "node ./scripts/readme-update-version"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^6.10.0",
-    "@shopify/polaris-tokens": "^6.3.0",
+    "@shopify/polaris-icons": "^6.11.1",
+    "@shopify/polaris-tokens": "^6.4.0",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",

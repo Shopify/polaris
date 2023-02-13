@@ -36,7 +36,9 @@ export interface AlphaStackProps extends React.AriaAttributes {
   gap?: Gap;
   /** HTML id attribute */
   id?: string;
-  /** Toggle order of child items */
+  /** Reverse the render order of child items
+   * @default false
+   */
   reverseOrder?: boolean;
 }
 

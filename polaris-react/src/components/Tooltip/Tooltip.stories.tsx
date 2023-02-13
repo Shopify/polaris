@@ -232,3 +232,23 @@ export function ActivatorAsDiv() {
     </Tooltip>
   );
 }
+
+export function HasUnderline() {
+  return (
+    <Tooltip active content="This tooltip has an underline" hasUnderline>
+      <Text variant="bodyLg" fontWeight="bold" as="span">
+        Order #1001
+      </Text>
+    </Tooltip>
+  );
+}
+
+export function PersistOnClick() {
+  return (
+    <Tooltip content="This tooltip can be clicked to stay open" persistOnClick>
+      <Text variant="bodyLg" fontWeight="bold" as="span">
+        Order #1001
+      </Text>
+    </Tooltip>
+  );
+}

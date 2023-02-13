@@ -26,7 +26,6 @@
   font-size: 13px;
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-font-line-height-1);
-  text-transform: uppercase;
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-75);
@@ -38,8 +37,6 @@
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-font-line-height-3);
   border: none;
-
-  text-transform: initial;
   letter-spacing: initial;
 
   @media #{$p-breakpoints-md-up} {
@@ -52,8 +49,6 @@
   font-size: 15px;
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-font-line-height-2);
-
-  text-transform: initial;
   letter-spacing: initial;
 
   @media #{$p-breakpoints-md-up} {
@@ -66,8 +61,6 @@
   font-size: 15px;
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-1);
-
-  text-transform: initial;
   letter-spacing: initial;
 
   @media #{$p-breakpoints-md-up} {
@@ -80,8 +73,6 @@
   font-size: 17px;
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-2);
-
-  text-transform: initial;
   letter-spacing: initial;
 
   @media #{$p-breakpoints-md-up} {
