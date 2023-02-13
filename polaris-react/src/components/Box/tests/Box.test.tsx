@@ -42,7 +42,10 @@ type BorderTokenAlias = Exclude<
 >;
 
 type BorderRadiusTokenScale = Extract<
-  BorderShapeTokenScale,
+  Exclude<
+    BorderShapeTokenScale,
+    'radius-half' | 'radius-base' | 'radius-large'
+  >,
   `radius-${string}`
 > extends `radius-${infer Scale}`
   ? Scale

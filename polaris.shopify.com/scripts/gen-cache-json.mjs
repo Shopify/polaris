@@ -23,6 +23,10 @@ const genNavJson = (mardownFiles) => {
       color,
       url,
       status,
+      expanded,
+      groups,
+      componentDescriptions,
+      relatedResources,
     } = md.frontMatter;
     const {slug} = md;
 
@@ -38,6 +42,10 @@ const genNavJson = (mardownFiles) => {
       hideChildren,
       color: color ? color.replace(/\\/g, '') : undefined,
       status,
+      expanded,
+      groups,
+      componentDescriptions,
+      relatedResources,
     });
   });
 

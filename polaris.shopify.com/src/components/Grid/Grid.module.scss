@@ -8,6 +8,10 @@
   gap: 1.75rem 1rem;
 }
 
+.condensed {
+  grid-template-columns: repeat(auto-fill, minmax(min(14.5rem, 100%), 1fr));
+}
+
 .GridItem {
   position: relative;
 

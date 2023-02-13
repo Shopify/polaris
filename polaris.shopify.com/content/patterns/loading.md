@@ -46,7 +46,7 @@ The content that is visible in the viewport is the content that merchants will l
 
 ### Limit page content
 
-Pages with a lot of content take longer to load. By limiting the page to meaningful content that merchants will need, we can speed up the loading and declutter the page. Use progressive disclosure to give merchants more content when they need it, and use [pagination](/components/pagination) to limit long lists. Remember to prefetch the data so that it's readily available.
+Pages with a lot of content take longer to load. By limiting the page to meaningful content that merchants will need, we can speed up the loading and declutter the page. Use progressive disclosure to give merchants more content when they need it, and use [pagination](/components/navigation/pagination) to limit long lists. Remember to prefetch the data so that it's readily available.
 
 ## Make good use of time
 
@@ -72,7 +72,7 @@ Controls can often be rendered active even when the data behind it hasn’t fini
 
 ### Give hints with recognizable placeholders
 
-Placeholders let merchants anticipate content type and location. Use placeholders for visually distinct elements, such as lists, images, controls, text, and data visualizations. This is the most important job [skeleton content](/components/skeleton-body-text) can do. Don’t use placeholders for content that could be rendered.
+Placeholders let merchants anticipate content type and location. Use placeholders for visually distinct elements, such as lists, images, controls, text, and data visualizations. This is the most important job [skeleton content](/components/feedback-indicators/skeleton-body-text) can do. Don’t use placeholders for content that could be rendered.
 
 Avoid details in the placeholder that may not appear. We don't want to draw attention to it and set false expectations.
 

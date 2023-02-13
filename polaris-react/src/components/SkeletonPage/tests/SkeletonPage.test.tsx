@@ -4,7 +4,6 @@ import {mountWithApp} from 'tests/utilities';
 import {Card} from '../../Card';
 import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
-import {SkeletonDisplayText} from '../../SkeletonDisplayText';
 import {SkeletonPage} from '../SkeletonPage';
 import {Box} from '../../Box';
 
@@ -72,11 +71,13 @@ describe('<SkeletonPage />', () => {
   });
 
   describe('primaryAction', () => {
-    it('renders SkeletonDisplayText if true', () => {
+    it('renders if true', () => {
       const skeletonPage = mountWithApp(
         <SkeletonPage title="Title" primaryAction />,
       );
-      expect(skeletonPage).toContainReactComponent(SkeletonDisplayText);
+      expect(skeletonPage).toContainReactComponent(Box, {
+        id: 'SkeletonPage-PrimaryAction',
+      });
     });
   });
 });

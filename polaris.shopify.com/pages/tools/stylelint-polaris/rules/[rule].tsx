@@ -31,7 +31,7 @@ const resourceLinks = {
   colors: 'Polaris [color tokens](/tokens/colors)',
   motion: 'Polaris [motion tokens](/tokens/motion)',
   typography:
-    'the [text component](/components/text) or [font tokens](/tokens/font)',
+    'the [text component](/components/typography/text) or [font tokens](/tokens/font)',
   shape: 'Polaris [shape tokens](/tokens/shape)',
   spacing: 'Polaris [spacking tokens](/tokens/spacing)',
   depth: 'Polaris [depth tokens](/tokens/depth)',

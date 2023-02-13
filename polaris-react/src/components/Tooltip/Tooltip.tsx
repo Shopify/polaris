@@ -57,6 +57,10 @@ export interface TooltipProps {
   borderRadius?: BorderRadius;
   /** Override on the default z-index of 400 */
   zIndexOverride?: number;
+  /** Whether to render a dotted underline underneath the tooltip's activator */
+  hasUnderline?: boolean;
+  /** Whether the tooltip's content remains open after clicking the activator */
+  persistOnClick?: boolean;
   /* Callback fired when the tooltip is activated */
   onOpen?(): void;
   /* Callback fired when the tooltip is dismissed */
@@ -76,6 +80,8 @@ export function Tooltip({
   padding = 'default',
   borderRadius = '1',
   zIndexOverride,
+  hasUnderline,
+  persistOnClick,
   onOpen,
   onClose,
 }: TooltipProps) {
@@ -85,6 +91,11 @@ export function Tooltip({
     setTrue: handleFocus,
     setFalse: handleBlur,
   } = useToggle(Boolean(originalActive));
+
+  const {value: persist, toggle: togglePersisting} = useToggle(
+    Boolean(originalActive) && Boolean(persistOnClick),
+  );
+
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
   const id = useUniqueId('TooltipContent');
@@ -118,8 +129,9 @@ export function Tooltip({
       if (event.key !== 'Escape') return;
       onClose?.();
       handleBlur();
+      persistOnClick && togglePersisting();
     },
-    [handleBlur, onClose],
+    [handleBlur, onClose, persistOnClick, togglePersisting],
   );
 
   const portal = activatorNode ? (
@@ -144,6 +156,7 @@ export function Tooltip({
 
   const wrapperClassNames = classNames(
     activatorWrapper === 'div' && styles.TooltipContainer,
+    hasUnderline && styles.HasUnderline,
   );
 
   return (
@@ -155,9 +168,11 @@ export function Tooltip({
       onBlur={() => {
         onClose?.();
         handleBlur();
+        persistOnClick && togglePersisting();
       }}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
+      onMouseDown={persistOnClick && togglePersisting}
       ref={setActivator}
       onKeyUp={handleKeyUp}
       className={wrapperClassNames}
@@ -202,7 +217,10 @@ export function Tooltip({
 
     mouseEntered.current = false;
     onClose?.();
-    handleBlur();
+
+    if (!persist) {
+      handleBlur();
+    }
   }
 
   // https://github.com/facebook/react/issues/10109
