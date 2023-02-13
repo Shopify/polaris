@@ -89,7 +89,7 @@ $icon-size: 20px;
   margin-left: calc(var(--p-space-2) + var(--p-space-05));
   margin-right: var(--p-space-2);
   padding: var(--p-space-2);
-  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-1);
   fill: var(--p-icon); // Icon will inherit this fill
   transition: var(--p-duration-150) fill var(--p-ease) var(--p-duration-50);
 
