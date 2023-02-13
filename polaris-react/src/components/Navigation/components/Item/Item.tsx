@@ -5,9 +5,9 @@ import React, {
   MouseEvent,
   ReactNode,
   useRef,
-  useLayoutEffect,
 } from 'react';
 
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
@@ -119,7 +119,7 @@ export function Item({
     }
   }, [expanded, isNavigationCollapsed, onToggleExpandedState]);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const navTextNode = navTextRef.current;
     if (truncateText && navTextNode) {
       setIsTruncated(navTextNode.scrollHeight > navTextNode.clientHeight);
