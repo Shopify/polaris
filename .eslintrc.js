@@ -78,6 +78,19 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/no-noninteractive-element-to-interactive-role': 'off',
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: 'react',
+            importNames: ['useLayoutEffect'],
+            message:
+              'Please use useIsomorphicLayoutEffect from the utilities director instead',
+          },
+        ],
+      },
+    ],
   },
   overrides: [
     ...packages.map((packageDir) => noExtraneousDependenciesConfig(packageDir)),
