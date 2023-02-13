@@ -32,7 +32,7 @@ export const PatternsPage = () => (
             <p>
               We are making changes to the patterns section. Expect changes to
               happen here and{' '}
-              <a href="https://github.com/Shopify/polaris/discussions/8218">
+              <a href="https://github.com/Shopify/polaris/discussions/categories/pattern-documentation">
                 join the discussion
               </a>{' '}
               to make it better.
