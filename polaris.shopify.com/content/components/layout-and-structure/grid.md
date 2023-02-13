@@ -15,7 +15,7 @@ keywords:
   - css grid
 status:
   value: Alpha
-  message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
+  message: This component is slated to be deprecated in v11. Please consider using alternate layout primitive components such as Columns, Inline, or AlphaStack.
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
