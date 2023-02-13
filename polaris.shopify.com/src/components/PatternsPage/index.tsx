@@ -2,8 +2,7 @@ import Page from '../Page';
 import PageMeta from '../PageMeta';
 import Longform from '../Longform';
 import {Grid, GridItem} from '../Grid';
-import StatusBadge from '../StatusBadge';
-import {StatusName, Status} from '../../types';
+import {Status} from '../../types';
 import {FlagMajor} from '@shopify/polaris-icons';
 import Icon from '../Icon';
 import styles from './PatternsPage.module.scss';
@@ -21,9 +20,7 @@ export const PatternsPage = () => (
       <div className={styles.Stack} data-gap="8">
         <div>
           <Longform>
-            <h1 className={styles.Header}>
-              Patterns{' '}
-            </h1>
+            <h1 className={styles.Header}>Patterns </h1>
             <p>{description}</p>
           </Longform>
           <div className={styles.Banner}>
