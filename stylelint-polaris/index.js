@@ -93,8 +93,8 @@ const stylelintPolarisCoverageOptions = {
       },
       'declaration-property-unit-disallowed-list': [
         {
-          '/^font/': ['px', 'rem', 'em'],
-          'line-height': ['px', 'rem', 'em'],
+          '/^font/': ['px', 'rem', 'em', '%'],
+          'line-height': ['px', 'rem', 'em', '%'],
         },
       ],
       'property-disallowed-list': ['text-transform'],
@@ -224,9 +224,9 @@ const stylelintPolarisCoverageOptions = {
       ),
       'declaration-property-unit-disallowed-list': [
         {
-          '/^padding/': ['px', 'rem', 'em'],
-          '/^margin/': ['px', 'rem', 'em'],
-          '/^gap/': ['px', 'rem', 'em'],
+          '/^padding/': ['px', 'rem', 'em', '%'],
+          '/^margin/': ['px', 'rem', 'em', '%'],
+          '/^gap/': ['px', 'rem', 'em', '%'],
         },
       ],
       'polaris/global-disallowed-list': [
@@ -253,11 +253,11 @@ const stylelintPolarisCoverageOptions = {
       ].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
-          'border-width': ['px', 'rem', 'em'],
-          border: ['px', 'rem', 'em'],
-          'border-radius': ['px', 'rem', 'em'],
-          'outline-offset': ['px', 'rem', 'em'],
-          outline: ['px', 'rem', 'em'],
+          'border-width': ['px', 'rem', 'em', '%'],
+          border: ['px', 'rem', 'em', '%'],
+          'border-radius': ['px', 'rem', 'em', '%'],
+          'outline-offset': ['px', 'rem', 'em', '%'],
+          outline: ['px', 'rem', 'em', '%'],
         },
       ],
       'polaris/at-rule-disallowed-list': {
@@ -298,7 +298,7 @@ const stylelintPolarisCoverageOptions = {
       'function-disallowed-list': ['shadow'].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
-          'box-shadow': ['px', 'rem', 'em'],
+          'box-shadow': ['px', 'rem', 'em', '%'],
         },
       ],
       'property-disallowed-list': ['text-shadow'],
