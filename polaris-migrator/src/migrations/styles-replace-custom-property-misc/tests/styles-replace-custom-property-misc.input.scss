@@ -8,8 +8,8 @@
   scale: var(--p-range-slider-thumb-scale);
   mix-blend-mode: var(--p-badge-mix-blend-mode);
   margin: var(--p-frame-offset);
-}
 
-&::before {
-  content: var(--p-non-null-content);
+  &::before {
+    content: var(--p-non-null-content);
+  }
 }

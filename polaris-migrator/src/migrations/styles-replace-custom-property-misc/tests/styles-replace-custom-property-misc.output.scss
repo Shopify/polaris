@@ -8,8 +8,8 @@
   scale: 1.5;
   mix-blend-mode: luminosity;
   margin: 0;
-}
 
-&::before {
-  content: '';
+  &::before {
+    content: '';
+  }
 }
