@@ -39,18 +39,26 @@ export const motion = {
   },
   ease: {
     value: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+    description:
+      'Responds quickly and finishes with control. A great default for any user interaction.',
   },
   'ease-in': {
     value: 'cubic-bezier(0.42, 0, 1, 1)',
+    description: 'Starts slowly and finishes at top speed. Use sparingly.',
   },
   'ease-out': {
     value: 'cubic-bezier(0, 0, 0.58, 1)',
+    description: 'Starts at top speed and finishes slowly. Use sparingly.',
   },
   'ease-in-out': {
     value: 'cubic-bezier(0.42, 0, 0.58, 1)',
+    description:
+      'Starts and finishes with equal speed. A good default for transitions triggered by the system.',
   },
   linear: {
     value: 'cubic-bezier(0, 0, 1, 1)',
+    description:
+      'Moves with constant speed. Use for continuous and mechanical animations, such as rotating spinners.',
   },
   'keyframes-bounce': {
     value:
