@@ -124,7 +124,7 @@ export function EmptyState({
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
       <Box maxWidth={fullWidth ? '100%' : '400px'}>
-        <AlphaStack align="center" gap="0">
+        <AlphaStack align="center">
           {textContentMarkup}
           {actionsMarkup}
           {footerContentMarkup}
@@ -133,13 +133,8 @@ export function EmptyState({
     ) : null;
 
   return (
-    <Box
-      paddingInlineStart="0"
-      paddingInlineEnd="0"
-      paddingBlockStart="5"
-      paddingBlockEnd="16"
-    >
-      <AlphaStack align="center" gap="0">
+    <Box paddingBlockStart="5" paddingBlockEnd="16">
+      <AlphaStack align="center">
         {imageMarkup}
         {detailsMarkup}
       </AlphaStack>

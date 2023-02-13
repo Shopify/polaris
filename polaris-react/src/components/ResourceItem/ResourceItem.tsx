@@ -289,21 +289,14 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         paddingInlineEnd={{xs: '4', sm: '5'}}
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <Columns columns={{xs: '1fr auto'}} gap="0">
+        <Columns columns={{xs: '1fr auto'}}>
           <Columns
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
             gap="5"
           >
             {ownedMarkup}
             <Inline blockAlign={getAlignment(verticalAlignment)}>
-              <Box
-                width="100%"
-                padding="0"
-                paddingInlineStart="0"
-                paddingInlineEnd="0"
-              >
-                {children}
-              </Box>
+              <Box width="100%">{children}</Box>
             </Inline>
           </Columns>
           {actionsMarkup}

@@ -65,7 +65,6 @@ export function SkeletonPage({
   return (
     <AlphaStack align="center" fullWidth>
       <Box
-        padding="0"
         paddingInlineStart={{sm: '6'}}
         paddingInlineEnd={{sm: '6'}}
         maxWidth="var(--pc-skeleton-page-max-width)"
@@ -78,7 +77,7 @@ export function SkeletonPage({
           maxWidth: 'none',
         })}
       >
-        <AlphaStack gap="0" fullWidth>
+        <AlphaStack fullWidth>
           <Box
             paddingBlockStart={{xs: '4', md: '5'}}
             paddingBlockEnd={{xs: '4', md: '5'}}
