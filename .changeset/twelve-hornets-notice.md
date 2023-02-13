@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': patch
 ---
 
-Updated the yml set to lowercase minor
+Fixed typo in set type for ContentMinor
