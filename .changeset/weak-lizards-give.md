@@ -2,4 +2,4 @@
 '@shopify/stylelint-polaris': minor
 ---
 
-Disallows percentage as a unit
+Disallows percentage and other CSS values as a unit
