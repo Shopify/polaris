@@ -83,7 +83,7 @@ $breakpointNav: $breakpointTablet;
         }
 
         + ul > li:last-child {
-          padding-bottom: 0.5rem;
+          padding-bottom: 1rem;
         }
 
         > a {
@@ -108,11 +108,27 @@ $breakpointNav: $breakpointTablet;
           padding-left: 2.25rem;
 
           > a {
-            color: var(--text);
+            color: var(--text-strong);
           }
 
           &.isCurrent > a {
             color: var(--primary);
+          }
+        }
+
+        > ul > li {
+          > .NavItem {
+            font-size: var(--font-size-200);
+            letter-spacing: var(--letter-spacing-300);
+            padding-left: 2.75rem;
+
+            > a {
+              color: var(--text);
+            }
+
+            &.isCurrent > a {
+              color: var(--primary);
+            }
           }
         }
       }

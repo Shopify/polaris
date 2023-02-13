@@ -29,7 +29,7 @@ The app frame is the outer UI of the application. It holds global features like 
 
 ![Screen highlighting the top of the page content and the side margins of the page](/images/foundations/patterns/page-layouts/page-frame-diagram@2x.png)
 
-The [page component](/components/page):
+The [page component](/components/layout-and-structure/page):
 
 - Acts as a container for the content of each specific page
 - Controls the horizontal margins of the content area
@@ -44,7 +44,7 @@ Page component variations:
 
 ![Admin screen highlighting a typical layout](/images/foundations/patterns/page-layouts/page-layout-diagram@2x.png)
 
-Within the page, the [layout component](/components/layout) groups the content into sections. Sections control how the content flows into columns. Each section can be:
+Within the page, the [layout component](/components/layout-and-structure/layout) groups the content into sections. Sections control how the content flows into columns. Each section can be:
 
 - Full-width
 - Primary (2/3 width)
@@ -55,21 +55,21 @@ Within the page, the [layout component](/components/layout) groups the content i
 
 ![Screen highlighting a layout with: page-level banner up top, primary and secondary sections in the middle, and footer actions below](/images/foundations/patterns/page-layouts/cards-in-layout-diagram@2x.png)
 
-Place page-level [banners](/components/banner) in a full-width section at the top of the page.
+Place page-level [banners](/components/feedback-indicators/banner) in a full-width section at the top of the page.
 
-Stack [cards](/components/card) in sections to separate the screen’s main content into meaningful groups.
+Stack [cards](/components/layout-and-structure/alpha-card) in sections to separate the screen’s main content into meaningful groups.
 
 For screens that represent an individual resource like a product or order, place
-[page actions](/components/page-actions) in a full-width section at the bottom of the page.
+[page actions](/components/actions/page-actions) in a full-width section at the bottom of the page.
 
 For pages that don’t have footer actions, the
-[footer help component](/components/footer-help) can offer a link to documentation about the current screen.
+[footer help component](/components/navigation/footer-help) can offer a link to documentation about the current screen.
 
 ### Layout in a card
 
 ![Diagram showing the anatomy of a card component, showing the card title and header actions at the top, two sections in the middle, and footer below](/images/foundations/patterns/page-layouts/card-layout-diagram@2x.png)
 
-[Cards](/components/card) have a similar structure to the page as a whole.
+[Cards](/components/layout-and-structure/alpha-card) have a similar structure to the page as a whole.
 
 - Cards often have a header, with a title and card-level actions on the right.
 - Cards can have footer actions.
@@ -77,7 +77,7 @@ For pages that don’t have footer actions, the
 - Sections often have a subheader with a title on the left and section-level actions on the right.
 
 For more details, including when to use header and footer actions, see the
-[card component](/components/card).
+[card component](/components/layout-and-structure/alpha-card).
 
 ---
 
@@ -85,7 +85,7 @@ For more details, including when to use header and footer actions, see the
 
 The structure described above applies to most screens in the Shopify admin, but other types of screens exist.
 
-**Embedded Shopify apps**, including sales channels, are contained within the normal app frame. However, they display the [page component](/components/page) differently.
+**Embedded Shopify apps**, including sales channels, are contained within the normal app frame. However, they display the [page component](/components/layout-and-structure/page) differently.
 
 ![Typical embedded app settings screen, showing the embedded page header with app icon and breadcrumb.](/images/foundations/patterns/page-layouts/embedded-page-diagram@2x.png)
 
@@ -229,7 +229,7 @@ Think of layout components a set of “shelves” into which other components ca
 
 ## Small-scale layout
 
-The [stack](/components/stack) component is useful for small-scale layout. It lets you arrange arbitrary components in a horizontal row or vertical stack. It’s also a useful component for applying
+The [stack](/components/layout-and-structure/alpha-stack) component is useful for small-scale layout. It lets you arrange arbitrary components in a horizontal row or vertical stack. It’s also a useful component for applying
 [standard spacing](/design/space).
 
 ![A text label, text value and badge arranged in a row with space between](/images/foundations/patterns/page-layouts/stack-horizontal@2x.png)
@@ -255,7 +255,7 @@ Organizing actions is as important as organizing content.
 If an action applies to the entire page:
 
 - Place it in the page header as a primary or secondary action
-- Use the [page actions](/components/page-actions) component for page-level delete and save actions
+- Use the [page actions](/components/actions/page-actions) component for page-level delete and save actions
 
 If an action applies to something more specific, place it at the level of the content it affects. For example, if an action applies to the contents of a card:
 

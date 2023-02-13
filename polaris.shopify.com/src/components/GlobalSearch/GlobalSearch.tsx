@@ -270,7 +270,7 @@ function SearchResults({
                 <Grid>
                   {results.map(({id, url, meta}) => {
                     if (!meta.components) return null;
-                    const {title, description, status} = meta.components;
+                    const {title, description, status, group} = meta.components;
                     return (
                       <SearchContext.Provider
                         key={id}
@@ -282,7 +282,7 @@ function SearchResults({
                           title={title}
                           status={status}
                           renderPreview={() => (
-                            <ComponentThumbnail title={title} />
+                            <ComponentThumbnail title={title} group={group} />
                           )}
                         />
                       </SearchContext.Provider>
