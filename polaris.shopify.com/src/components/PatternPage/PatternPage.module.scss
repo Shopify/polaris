@@ -9,11 +9,13 @@
 .TabGroup {
   --tab-background: var(--p-surface-subdued);
   --tab-background-pressed: rgba(250, 250, 250, 1);
+  --tab-background-hover: rgba(241, 241, 241, 1);
   --tab-border: 1px solid #c9cccf;
   @include dark-mode {
     --tab-background: #18181d;
     --tab-background-pressed: var(--tab-background);
     --tab-border: 1px solid rgba(55, 55, 55, 1);
+    --tab-background-hover: rgba(41, 41, 41, 1);
   }
   border-color: var(--tab-border-color);
   isolation: isolate;
@@ -97,7 +99,7 @@
       border-bottom: 0;
     }
     &:hover {
-      background-color: rgba(241, 241, 241, 1);
+      background-color: var(--tab-background-hover);
     }
 
     &:focus,
