@@ -71,7 +71,7 @@ function TokenList({
                 transform: rotate(0deg);
               }
               to {
-                transform: rotate(1turn);
+                transform: rotate(360deg);
               }
             }
           `}
@@ -109,10 +109,10 @@ function getFigmaUsageForToken(
     const spacing = parseFloat(value) * REM;
     usage = `Use a spacing of ${spacing} pixels`;
   } else if (name.includes('duration')) {
-    usage = `Set duration to ${value.replace('ms', '')} ms`;
+    usage = `Set duration to ${value.slice(0, -2)} ms`;
   } else if (name.includes('ease')) {
     let easing = value;
-    easing = easing.slice(13, -1).replace('cubic-bezier(', '').replace(')', '');
+    easing = easing.slice(13, -1);
     usage = `Set custom bezier to ${easing}`;
   } else if (name.includes('linear')) {
     usage = `Set easing to Linear`;
