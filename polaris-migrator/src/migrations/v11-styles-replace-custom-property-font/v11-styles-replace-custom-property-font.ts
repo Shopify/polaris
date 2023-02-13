@@ -4,11 +4,12 @@ import stylesReplaceCustomProperty from '../styles-replace-custom-property/style
 
 const replacementMaps = {
   '/.+/': {
-    '--p-space-0': '0',
+    '--p-badge-font-weight': '--p-font-weight-regular',
+    '--p-button-font-weight': '--p-font-weight-medium',
   },
 };
 
-export default function stylesReplaceCustomPropertySpacing(
+export default function v11StylesReplaceCustomPropertyFont(
   fileInfo: FileInfo,
   _: API,
 ) {

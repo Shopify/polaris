@@ -73,7 +73,7 @@ export default {
 
 <br />
 
-#### `styles-replace-custom-property-depth`
+#### `v11-styles-replace-custom-property-depth`
 
 Replace deprecated depth CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
 
@@ -88,12 +88,12 @@ Replace deprecated depth CSS custom properties with corresponding replacement va
 <br />
 
 ```sh
-npx @shopify/polaris-migrator styles-replace-custom-property-depth <path>
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-depth <path>
 ```
 
 <br />
 
-#### `styles-replace-custom-property-font`
+#### `v11-styles-replace-custom-property-font`
 
 Replace deprecated font CSS custom properties with corresponding Polaris custom property replacement values.
 
@@ -105,12 +105,12 @@ Replace deprecated font CSS custom properties with corresponding Polaris custom 
 <br />
 
 ```sh
-npx @shopify/polaris-migrator styles-replace-custom-property-font <path>
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-font <path>
 ```
 
 <br />
 
-#### `styles-replace-custom-property-motion`
+#### `v11-styles-replace-custom-property-motion`
 
 Replace deprecated motion CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
 
@@ -125,12 +125,12 @@ Replace deprecated motion CSS custom properties with corresponding replacement v
 <br />
 
 ```sh
-npx @shopify/polaris-migrator styles-replace-custom-property-motion <path>
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-motion <path>
 ```
 
 <br />
 
-#### `styles-replace-custom-property-shape`
+#### `v11-styles-replace-custom-property-shape`
 
 Replace deprecated shape CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
 
@@ -145,12 +145,12 @@ Replace deprecated shape CSS custom properties with corresponding replacement va
 <br />
 
 ```sh
-npx @shopify/polaris-migrator styles-replace-custom-property-shape <path>
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-shape <path>
 ```
 
 <br />
 
-#### `styles-replace-custom-property-spacing`
+#### `v11-styles-replace-custom-property-spacing`
 
 Replace deprecated spacing CSS custom properties with corresponding replacement static values.
 
@@ -162,12 +162,12 @@ Replace deprecated spacing CSS custom properties with corresponding replacement 
 <br />
 
 ```sh
-npx @shopify/polaris-migrator styles-replace-custom-property-spacing <path>
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-spacing <path>
 ```
 
 <br />
 
-#### `styles-replace-custom-property-zindex`
+#### `v11-styles-replace-custom-property-zindex`
 
 Replace deprecated z-index CSS custom properties with corresponding Polaris custom property replacement values.
 
@@ -179,12 +179,12 @@ Replace deprecated z-index CSS custom properties with corresponding Polaris cust
 <br />
 
 ```sh
-npx @shopify/polaris-migrator styles-replace-custom-property-zindex <path>
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
 ```
 
 <br />
 
-#### `styles-replace-custom-property-misc`
+#### `v11-styles-replace-custom-property-misc`
 
 Replace deprecated miscellaneous CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
 
@@ -199,7 +199,7 @@ Replace deprecated miscellaneous CSS custom properties with corresponding replac
 <br />
 
 ```sh
-npx @shopify/polaris-migrator styles-replace-custom-property-misc <path>
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-misc <path>
 ```
 
 <br />

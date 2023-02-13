@@ -10,7 +10,7 @@ const replacementMaps = {
   },
 };
 
-export default function stylesReplaceCustomPropertyMotion(
+export default function v11StylesReplaceCustomPropertyMotion(
   fileInfo: FileInfo,
   _: API,
 ) {

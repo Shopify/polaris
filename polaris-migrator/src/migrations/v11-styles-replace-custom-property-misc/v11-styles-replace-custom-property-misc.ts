@@ -17,7 +17,7 @@ const replacementMaps = {
   },
 };
 
-export default function stylesReplaceCustomPropertyMisc(
+export default function v11StylesReplaceCustomPropertyMisc(
   fileInfo: FileInfo,
   _: API,
 ) {

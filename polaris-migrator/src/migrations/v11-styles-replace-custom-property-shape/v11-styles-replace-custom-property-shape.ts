@@ -13,7 +13,7 @@ const replacementMaps = {
   },
 };
 
-export default function stylesReplaceCustomPropertyShape(
+export default function v11StylesReplaceCustomPropertyShape(
   fileInfo: FileInfo,
   _: API,
 ) {

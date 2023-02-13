@@ -19,7 +19,7 @@ const replacementMaps = {
   },
 };
 
-export default function stylesReplaceCustomPropertyZindex(
+export default function v11StylesReplaceCustomPropertyZindex(
   fileInfo: FileInfo,
   _: API,
 ) {

@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'styles-replace-custom-property-misc';
-const fixtures = ['styles-replace-custom-property-misc'];
+const migration = 'v11-styles-replace-custom-property-font';
+const fixtures = ['v11-styles-replace-custom-property-font'];
 
 for (const fixture of fixtures) {
   check(__dirname, {
