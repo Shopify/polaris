@@ -23,7 +23,6 @@ export const PatternsPage = () => (
           <Longform>
             <h1 className={styles.Header}>
               Patterns{' '}
-              <StatusBadge status={{value: StatusName.Beta, message: ''}} />
             </h1>
             <p>{description}</p>
           </Longform>
