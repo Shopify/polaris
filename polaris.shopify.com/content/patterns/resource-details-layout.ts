@@ -32,7 +32,7 @@ const pattern: SingleVariantPattern = {
   |Arrange content in order of importance.|![](/images/patterns/resource-detail-usage-5.png)|`,
   relatedResources: `* The [Resource index layout](/patterns/resource-index-layout) pattern is a complement to the resource detail layout pattern.
 * Learn about the meaning of “resources” on the [Resource list](/components/resource-list) component page
-* Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) the app design guidelines.
+* Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
 * Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.`,
   example: {
     relatedComponents: [

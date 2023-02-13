@@ -28,7 +28,7 @@ const pattern: SingleVariantPattern = {
   relatedResources: `* The [Resource detail layout](/patterns/resource-details-layout) pattern is a complement to the resource index layout pattern.
 * Use the [Empty state component](/components/empty-state) when the resource index is empty.
 * Learn about the meaning of “resources” on the [Resource list](/components/resource-list) component page
-* Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) the app design guidelines.
+* Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
 * Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.`,
   example: {
     relatedComponents: [
