@@ -19,15 +19,9 @@ const fixtures = [
     },
   },
   {
-    name: 'with-maps-flag-basic',
+    name: 'with-maps-flag',
     options: {
-      maps: 'src/migrations/styles-replace-custom-property/tests/replacement-maps-basic',
-    },
-  },
-  {
-    name: 'with-maps-flag-regexp',
-    options: {
-      maps: 'src/migrations/styles-replace-custom-property/tests/replacement-maps-regexp',
+      maps: 'src/migrations/styles-replace-custom-property/tests/replacement-maps',
     },
   },
   {
