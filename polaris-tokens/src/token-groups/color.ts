@@ -99,6 +99,7 @@ export type ColorIconTokenAlias = typeof colorIconTokenAlias[number];
 
 export const colorIconTokenAlias = [
   'icon',
+  'icon-active',
   'icon-caution',
   'icon-critical',
   'icon-disabled',
@@ -495,6 +496,10 @@ export const color: {
   },
   'color-icon': {
     value: colors.gray[800],
+    description: '',
+  },
+  'color-icon-active': {
+    value: colors.gray[900],
     description: '',
   },
   'color-icon-subdued': {

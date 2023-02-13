@@ -78,6 +78,7 @@ export const yellow: Color = {
   800: 'rgba(135, 92, 8, 1)',
   900: 'rgba(77, 46, 5, 1)',
 };
+
 export const teal: Color = {
   50: 'rgba(238, 250, 251, 1)',
   100: 'rgba(222, 245, 247, 1)',
