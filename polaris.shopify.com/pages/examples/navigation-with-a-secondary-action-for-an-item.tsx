@@ -24,7 +24,7 @@ function NavigationExample() {
               label: 'Orders',
               icon: OrdersMinor,
               secondaryAction: {
-                url: '/admin/orders/add',
+                url: '#',
                 accessibilityLabel: 'Add an order',
                 icon: CirclePlusOutlineMinor,
                 tooltip: {

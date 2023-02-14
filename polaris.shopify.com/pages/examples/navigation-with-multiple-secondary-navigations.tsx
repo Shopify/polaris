@@ -26,13 +26,13 @@ function NavigationExample() {
               badge: '15',
               subNavigationItems: [
                 {
-                  url: '/admin/orders/collections',
+                  url: '#',
                   disabled: false,
                   selected: false,
                   label: 'Collections',
                 },
                 {
-                  url: '/admin/orders/inventory',
+                  url: '#',
                   disabled: false,
                   label: 'Inventory',
                 },
@@ -45,32 +45,32 @@ function NavigationExample() {
               badge: '15',
               subNavigationItems: [
                 {
-                  url: '/admin/analytics/collections',
+                  url: '#',
                   disabled: false,
                   selected: false,
                   label: 'Reports',
                 },
                 {
-                  url: '/admin/analytics/inventory',
+                  url: '#',
                   disabled: false,
                   label: 'Live view',
                 },
               ],
             },
             {
-              url: '/admin/products',
+              url: '#',
               label: 'Products',
               icon: ProductsMinor,
               selected: true,
               subNavigationItems: [
                 {
-                  url: '/?path=/story/all-components-navigation--navigation-with-multiple-secondary-navigations',
+                  url: '#',
                   disabled: false,
                   selected: false,
                   label: 'Collections',
                 },
                 {
-                  url: '/admin/products/inventory',
+                  url: '#',
                   disabled: false,
                   selected: true,
                   label: 'Inventory',

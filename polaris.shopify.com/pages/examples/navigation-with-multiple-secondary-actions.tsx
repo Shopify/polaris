@@ -28,7 +28,7 @@ function NavigationExample() {
               badge: '2',
               secondaryActions: [
                 {
-                  url: '/admin/products/add',
+                  url: '#',
                   accessibilityLabel: 'Add a product',
                   icon: CirclePlusOutlineMinor,
                   tooltip: {
@@ -43,7 +43,7 @@ function NavigationExample() {
               icon: ProductsMinor,
               secondaryActions: [
                 {
-                  url: '/admin/products/add',
+                  url: '#',
                   accessibilityLabel: 'Add a product',
                   icon: CirclePlusOutlineMinor,
                   tooltip: {

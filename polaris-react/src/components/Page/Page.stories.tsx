@@ -55,7 +55,7 @@ export function Default() {
 export function WithCustomPrimaryAction() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      breadcrumbs={[{content: 'Settings', url: '#'}]}
       title="General"
       primaryAction={
         <Button
@@ -79,7 +79,7 @@ export function WithCustomPrimaryAction() {
 export function WithoutPrimaryActionInHeader() {
   return (
     <Page
-      breadcrumbs={[{content: 'Orders', url: '/orders'}]}
+      breadcrumbs={[{content: 'Orders', url: '#'}]}
       title="#1085"
       secondaryActions={[
         {content: 'Print'},
@@ -195,7 +195,7 @@ export function WithExternalLink() {
 export function WithoutPagination() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      breadcrumbs={[{content: 'Settings', url: '#'}]}
       title="General"
       primaryAction={{content: 'Save'}}
     >
@@ -228,7 +228,7 @@ export function NarrowWidth() {
   return (
     <Page
       narrowWidth
-      breadcrumbs={[{content: 'Orders', url: '/orders'}]}
+      breadcrumbs={[{content: 'Orders', url: '#'}]}
       title="Add payment method"
       primaryAction={{content: 'Save', disabled: true}}
     >
@@ -305,7 +305,7 @@ export function WithContentAfterTitle() {
 export function WithDivider() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      breadcrumbs={[{content: 'Settings', url: '#'}]}
       title="General"
       divider
     >

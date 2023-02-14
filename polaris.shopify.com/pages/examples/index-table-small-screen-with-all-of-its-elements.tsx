@@ -14,7 +14,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
   const customers = [
     {
       id: '3418',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -22,7 +22,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
     },
     {
       id: '2568',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,

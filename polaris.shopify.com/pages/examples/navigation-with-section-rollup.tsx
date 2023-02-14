@@ -29,7 +29,7 @@ function NavigationExample() {
             after: 2,
             view: 'view',
             hide: 'hide',
-            activePath: '/',
+            activePath: '#',
           }}
         />
       </Navigation>

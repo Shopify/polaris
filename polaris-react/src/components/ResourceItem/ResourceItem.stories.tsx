@@ -117,7 +117,7 @@ export function WithShortcutActions() {
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
             location: 'Gwangju, South Korea',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {
@@ -168,7 +168,7 @@ export function WithPersistedShortcutActions() {
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
             location: 'Gwangju, South Korea',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {

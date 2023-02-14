@@ -22,19 +22,19 @@ function NavigationExample() {
               badge: '15',
             },
             {
-              url: '/admin/products',
+              url: '#',
               label: 'Products',
               icon: ProductsMinor,
               selected: true,
               subNavigationItems: [
                 {
-                  url: '/admin/products/collections',
+                  url: '#',
                   disabled: false,
                   selected: false,
                   label: 'Collections',
                 },
                 {
-                  url: '/admin/products/inventory',
+                  url: '#',
                   disabled: false,
                   label: 'Inventory',
                 },

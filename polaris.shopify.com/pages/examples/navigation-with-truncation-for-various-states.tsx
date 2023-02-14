@@ -33,7 +33,7 @@ function NavigationExample() {
               icon: OrdersMinor,
               selected: false,
               secondaryAction: {
-                url: '/admin/orders/add',
+                url: '#',
                 accessibilityLabel: 'Add an order',
                 icon: CirclePlusOutlineMinor,
                 tooltip: {
@@ -42,20 +42,20 @@ function NavigationExample() {
               },
             },
             {
-              url: '/admin/products',
+              url: '#',
               label: 'Truncated secondary navigation item on truncated label',
               icon: ProductsMinor,
               selected: true,
               truncateText: true,
               subNavigationItems: [
                 {
-                  url: '/admin/products/collections',
+                  url: '#',
                   disabled: false,
                   label:
                     'Something longer than inventory so it can be truncated',
                 },
                 {
-                  url: '/admin/products/inventory',
+                  url: '#',
                   disabled: false,
                   label: 'Inventoy',
                 },

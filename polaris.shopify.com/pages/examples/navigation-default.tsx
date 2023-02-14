@@ -10,7 +10,7 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/',
+              url: '#',
               label: 'Home',
               icon: HomeMinor,
             },
