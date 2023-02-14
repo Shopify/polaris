@@ -9,7 +9,9 @@ export function App() {
       <div className={styles.Card}>hello</div>
       <Card>hello</Card>
       <MyCard>hello</MyCard>
+      <Card content="hello" />
       <Card>
+        <Card.Header title="hello" />
         <Card.Header>hello</Card.Header>
         <Card.Section>hello</Card.Section>
         <Card.Subsection>world</Card.Subsection>

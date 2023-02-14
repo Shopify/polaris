@@ -48,8 +48,7 @@ export default function reactRenameComponent(
 
   if (!sourcePaths) return;
 
-  // If the Card component is not imported, exit
-
+  // If renameFrom component name is not imported, exit
   if (
     !hasImportSpecifier(j, source, options.renameFrom, sourcePaths.from) &&
     !hasImportSpecifier(j, source, options.renamePropsFrom, sourcePaths.from)
@@ -60,7 +59,7 @@ export default function reactRenameComponent(
   let hasExistingJsx = false;
   let hasExistingIdentifier = false;
 
-  // If local `LegacyCard` is already used in the file, exit
+  // If local renameTo is already used in the file, exit
   source.findJSXElements(options.renameTo).forEach((element) => {
     insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
     hasExistingJsx = true;
@@ -68,7 +67,7 @@ export default function reactRenameComponent(
 
   if (hasExistingJsx) return source.toSource();
 
-  // If `LegacyCard` is already used as an identifier, exit
+  // If renameTo is already used as an identifier, exit
   source
     .find(j.Identifier)
     .filter(
@@ -96,9 +95,17 @@ export default function reactRenameComponent(
     sourcePaths.from,
   );
 
-  // Find all JSX elements and compound elements that are named `Card` and
-  // replace them with `LegacyCard`
   source.find(j.JSXElement).forEach((element) => {
+    // Handle self-closing elements
+    if (
+      element.node.openingElement.selfClosing === true &&
+      element.node.openingElement.name.type === 'JSXIdentifier' &&
+      element.node.openingElement.name.name === localElementName
+    ) {
+      element.node.openingElement.name.name = options.renameTo;
+    }
+
+    // Handle simple elements
     if (
       element.node.openingElement.name.type === 'JSXIdentifier' &&
       element.node.openingElement.name.name === localElementName
@@ -107,6 +114,17 @@ export default function reactRenameComponent(
       return;
     }
 
+    // Handle self-closing compound elements
+    if (
+      element.node.openingElement.selfClosing === true &&
+      element.node.openingElement.name.type === 'JSXMemberExpression' &&
+      element.node.openingElement.name.object.type === 'JSXIdentifier' &&
+      element.node.openingElement.name.object.name === localElementName
+    ) {
+      element.node.openingElement.name.object.name = options.renameTo;
+    }
+
+    // Handle compound elements
     if (
       element.node.openingElement.name.type === 'JSXMemberExpression' &&
       element.node.openingElement.name.object.type === 'JSXIdentifier' &&
@@ -120,7 +138,7 @@ export default function reactRenameComponent(
     }
   });
 
-  // Find all references to the `Card` component and replace them with `LegacyCard`
+  // Find all references to the renameFrom component and replace them with renameTo
   source
     .find(j.Identifier)
     .filter(
@@ -157,12 +175,12 @@ export default function reactRenameComponent(
     }
   }
 
-  // Remove the `Card` import
+  // Remove the renameFrom import
   if (hasImportSpecifier(j, source, options.renameFrom, sourcePaths.from)) {
     removeImportSpecifier(j, source, options.renameFrom, sourcePaths.from);
   }
 
-  // Remove the `CardProps` import
+  // Remove the renamePropsFrom import
   if (!hasImportSpecifiers(j, source, sourcePaths.from)) {
     removeImportDeclaration(j, source, sourcePaths.from);
   }
