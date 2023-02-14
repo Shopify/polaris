@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: center;
   background: var(--surface-subdued);
+  border-radius: var(--border-radius-600);
+  overflow: hidden;
 
   svg {
     opacity: 0.7;

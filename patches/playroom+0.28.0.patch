@@ -36,6 +36,174 @@ index 56defa7..1e7cf3b 100644
        },
      },
      module: {
+diff --git a/node_modules/playroom/src/Playroom/Frame.tsx b/node_modules/playroom/src/Playroom/Frame.tsx
+index b175d74..ce3e7ef 100644
+--- a/node_modules/playroom/src/Playroom/Frame.tsx
++++ b/node_modules/playroom/src/Playroom/Frame.tsx
+@@ -1,9 +1,9 @@
+-import React from 'react';
+-import { useParams } from '../utils/params';
++import React, { useEffect, useState } from 'react';
+ // @ts-ignore
+ import CatchErrors from './CatchErrors/CatchErrors';
+ // @ts-ignore
+ import RenderCode from './RenderCode/RenderCode';
++import { INCOMING_CODE, READY_TO_RECEIVE } from './constants';
+ 
+ interface FrameProps {
+   themes: Record<string, any>;
+@@ -18,11 +18,21 @@ export default function Frame({
+   components,
+   FrameComponent,
+ }: FrameProps) {
+-  const { themeName, code } = useParams((rawParams) => ({
+-    themeName:
+-      typeof rawParams.themeName === 'string' ? rawParams.themeName : '',
+-    code: typeof rawParams.code === 'string' ? rawParams.code : '',
+-  }));
++  const [code, setCode] = useState(`/*#__PURE__*/
++  React.createElement(React.Fragment, null);`);
++  const [themeName, setThemeName] = useState('');
++  useEffect(() => {
++    const listener = (e: any) => {
++      if (e.data && e.data.type === INCOMING_CODE ) {
++        setCode(e.data.code);
++        setThemeName(e.data.themeName);
++      };
++
++    }
++    window.addEventListener('message', listener);
++    window.parent.postMessage({ type: READY_TO_RECEIVE, ready: true }, window.origin);
++    return () => window.removeEventListener('message', listener);
++  }, []);
+ 
+   const resolvedThemeName =
+     themeName === '__PLAYROOM__NO_THEME__' ? null : themeName;
+diff --git a/node_modules/playroom/src/Playroom/Frames/Frames.tsx b/node_modules/playroom/src/Playroom/Frames/Frames.tsx
+index 5b4af43..3bb2615 100644
+--- a/node_modules/playroom/src/Playroom/Frames/Frames.tsx
++++ b/node_modules/playroom/src/Playroom/Frames/Frames.tsx
+@@ -6,7 +6,6 @@ import { PlayroomProps } from '../Playroom';
+ import { Strong } from '../Strong/Strong';
+ import { Text } from '../Text/Text';
+ import playroomConfig from '../../config';
+-import frameSrc from './frameSrc';
+ 
+ import * as styles from './Frames.css';
+ 
+@@ -44,10 +43,9 @@ export default function Frames({ code, themes, widths }: FramesProps) {
+             <div className={styles.frameBorder} />
+             <Iframe
+               intersectionRootRef={scrollingPanelRef}
+-              src={frameSrc(
+-                { themeName: frame.theme, code: renderCode },
+-                playroomConfig
+-              )}
++              code={renderCode}
++              themeName={frame.theme}
++              src={`${playroomConfig.baseUrl}frame.html`}
+               className={styles.frame}
+               style={{ width: frame.width }}
+               data-testid="previewFrame"
+diff --git a/node_modules/playroom/src/Playroom/Frames/Iframe.tsx b/node_modules/playroom/src/Playroom/Frames/Iframe.tsx
+index 9285b94..cd57b41 100644
+--- a/node_modules/playroom/src/Playroom/Frames/Iframe.tsx
++++ b/node_modules/playroom/src/Playroom/Frames/Iframe.tsx
+@@ -6,22 +6,29 @@ import React, {
+   MutableRefObject,
+ } from 'react';
+ import { useIntersection } from 'react-use';
++import { READY_TO_RECEIVE, INCOMING_CODE } from '../constants';
+ 
+ import playroomConfig from '../../config';
+ 
+ interface IframeProps extends AllHTMLAttributes<HTMLIFrameElement> {
+   src: string;
++  code: string;
++  themeName: string;
+   intersectionRootRef: MutableRefObject<Element | null>;
+ }
+ 
++
+ export default function Iframe({
+   intersectionRootRef,
++  code,
++  themeName,
+   style,
+   src,
+   ...restProps
+ }: IframeProps) {
+   const [loaded, setLoaded] = useState(false);
+-  const [renderedSrc, setRenderedSrc] = useState<string | null>(null);
++  const [renderedSrc, setRenderedSrc] = useState<string | undefined>(undefined);
++  const [readyToPost, setReadyToPost] = useState(false);
+   const iframeRef = useRef<HTMLIFrameElement | null>(null);
+   const intersection = useIntersection(iframeRef, {
+     root: intersectionRootRef.current,
+@@ -32,35 +39,42 @@ export default function Iframe({
+   const intersectionRatio = intersection?.intersectionRatio ?? null;
+ 
+   useEffect(() => {
+-    if (intersectionRatio === null) {
+-      return;
++    if (intersectionRatio === null) return;
++    const listener = (e: any) => {
++      if (e.data.type === READY_TO_RECEIVE && e.source === iframeRef.current?.contentWindow) {
++        console.log(e);
++        setReadyToPost(true);
++        const contentWindow = iframeRef.current?.contentWindow;
++        if (contentWindow) {
++          contentWindow.postMessage({ type: INCOMING_CODE,  themeName, code }, window.origin);
++        }
++      }
+     }
++    window.addEventListener('message', listener);
+ 
+     if (intersectionRatio > 0 && src !== renderedSrc) {
+       setRenderedSrc(src);
+     }
++    return () => window.removeEventListener('message', listener);
+   }, [intersectionRatio, src, renderedSrc]);
+ 
+   useEffect(() => {
+-    if (renderedSrc !== null) {
+-      const location = iframeRef.current?.contentWindow?.location;
+-
+-      if (location) {
+-        location.replace(renderedSrc);
++    if (readyToPost) {
++      const contentWindow = iframeRef.current?.contentWindow;
++      if (contentWindow) {
++        contentWindow.postMessage({ type: INCOMING_CODE,  themeName, code }, window.origin);
+       }
+     }
+-  }, [renderedSrc]);
++  }, [readyToPost, code])
++
++
+ 
+   return (
+     <iframe
+       ref={iframeRef}
+       sandbox={playroomConfig.iframeSandbox}
+       onLoad={() => setLoaded(true)}
+-      onMouseEnter={() => {
+-        if (src !== renderedSrc) {
+-          setRenderedSrc(src);
+-        }
+-      }}
++      src={renderedSrc}
+       style={{
+         ...style,
+         transition: 'opacity .3s ease',
+diff --git a/node_modules/playroom/src/Playroom/constants.ts b/node_modules/playroom/src/Playroom/constants.ts
+new file mode 100644
+index 0000000..90c35d0
+--- /dev/null
++++ b/node_modules/playroom/src/Playroom/constants.ts
+@@ -0,0 +1,2 @@
++export const READY_TO_RECEIVE = "PLAYROOM_READY_TO_RECEIVE";
++export const INCOMING_CODE = "PLAYROOM_INCOMING_CODE";
 diff --git a/node_modules/playroom/src/utils/compileJsx.ts b/node_modules/playroom/src/utils/compileJsx.ts
 index dadea77..82d080c 100644
 --- a/node_modules/playroom/src/utils/compileJsx.ts
