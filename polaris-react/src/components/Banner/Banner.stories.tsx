@@ -4,7 +4,7 @@ import {
   AlphaStack,
   Banner,
   Button,
-  Card,
+  LegacyCard,
   Inline,
   Link,
   List,
@@ -175,7 +175,7 @@ export function WithFocus() {
 
 export function InACard() {
   return (
-    <Card title="Online store dashboard" sectioned>
+    <LegacyCard title="Online store dashboard" sectioned>
       <TextContainer>
         <Banner onDismiss={() => {}}>
           <p>
@@ -186,7 +186,7 @@ export function InACard() {
 
         <p>View a summary of your online store’s performance.</p>
       </TextContainer>
-    </Card>
+    </LegacyCard>
   );
 }
 

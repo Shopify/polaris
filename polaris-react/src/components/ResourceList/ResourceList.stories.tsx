@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   Avatar,
   Button,
-  Card,
+  LegacyCard,
   EmptyState,
   Filters,
   Layout,
@@ -20,7 +20,7 @@ export default {
 
 export function Default() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -58,7 +58,7 @@ export function Default() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -94,7 +94,7 @@ export function WithEmptyState() {
     <Page title="Files">
       <Layout>
         <Layout.Section>
-          <Card>
+          <LegacyCard>
             <ResourceList
               emptyState={emptyStateMarkup}
               items={items}
@@ -102,7 +102,7 @@ export function WithEmptyState() {
               filterControl={filterControl}
               resourceName={{singular: 'file', plural: 'files'}}
             />
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -133,7 +133,7 @@ export function WithSelectionAndNoBulkActions() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -142,7 +142,7 @@ export function WithSelectionAndNoBulkActions() {
         onSelectionChange={setSelectedItems}
         selectable
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -213,7 +213,7 @@ export function WithBulkActions() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -223,7 +223,7 @@ export function WithBulkActions() {
         promotedBulkActions={promotedBulkActions}
         bulkActions={bulkActions}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -290,7 +290,7 @@ export function WithBulkActionsAndManyItems() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -300,7 +300,7 @@ export function WithBulkActionsAndManyItems() {
         promotedBulkActions={promotedBulkActions}
         bulkActions={bulkActions}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -371,7 +371,7 @@ export function WithLoadingState() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -382,7 +382,7 @@ export function WithLoadingState() {
         bulkActions={bulkActions}
         loading
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -409,7 +409,7 @@ export function WithLoadingState() {
 
 export function WithTotalCount() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -449,13 +449,13 @@ export function WithTotalCount() {
         showHeader
         totalItemsCount={50}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithHeaderContent() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         headerContent="Customer details shown below"
         items={[
@@ -494,7 +494,7 @@ export function WithHeaderContent() {
         }}
         showHeader
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -522,7 +522,7 @@ export function WithSorting() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -537,7 +537,7 @@ export function WithSorting() {
           console.log(`Sort option changed to ${selected}.`);
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -584,14 +584,14 @@ export function WithAlternateTool() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         items={items}
         renderItem={renderItem}
         resourceName={resourceName}
         alternateTool={<Button>Email customers</Button>}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -694,14 +694,14 @@ export function WithFiltering() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
         renderItem={renderItem}
         filterControl={filterControl}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -806,7 +806,7 @@ export function WithACustomEmptySearchResultState() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -814,7 +814,7 @@ export function WithACustomEmptySearchResultState() {
         filterControl={filterControl}
         emptySearchState={<div>This is a custom empty state</div>}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -853,7 +853,7 @@ export function WithACustomEmptySearchResultState() {
 
 export function WithItemShortcutActions() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -903,13 +903,13 @@ export function WithItemShortcutActions() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithPersistentItemShortcutActions() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -960,7 +960,7 @@ export function WithPersistentItemShortcutActions() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1034,7 +1034,7 @@ export function WithMultiselect() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -1045,7 +1045,7 @@ export function WithMultiselect() {
         bulkActions={bulkActions}
         resolveItemId={resolveItemIds}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item, _, index) {
@@ -1183,7 +1183,7 @@ export function WithAllOfItsElements() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -1203,7 +1203,7 @@ export function WithAllOfItsElements() {
         }}
         filterControl={filterControl}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
