@@ -8,7 +8,7 @@ import {useThrottle} from '../../utils/hooks';
 import styles from './GlobalSearch.module.scss';
 import {useRouter} from 'next/router';
 import IconGrid from '../IconGrid';
-import Grid from '../Grid';
+import {Grid, GridItem} from '../Grid';
 import TokenList from '../TokenList';
 import {Dialog} from '@headlessui/react';
 import {KeyboardEventHandler} from 'react';
@@ -246,7 +246,7 @@ function SearchResults({
                         key={title}
                         value={{currentItemId, id}}
                       >
-                        <Grid.Item
+                        <GridItem
                           title={title}
                           description={description}
                           url={url}
@@ -276,7 +276,7 @@ function SearchResults({
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <Grid.Item
+                        <GridItem
                           url={url}
                           description={description}
                           title={title}

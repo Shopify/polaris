@@ -28,8 +28,8 @@ const CatchAllTemplate: NextPage<Props> = ({
       <PageMeta title={title} description={description} />
 
       <Longform>
-        {description ? <Markdown text={description} /> : null}
-        <Markdown text={readme} />
+        {description ? <Markdown>{description}</Markdown> : null}
+        <Markdown>{readme}</Markdown>
       </Longform>
     </Page>
   );
@@ -86,6 +86,7 @@ function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
     !path.startsWith('/components') &&
     !path.includes('/tools/stylelint-polaris/rules') &&
+    !path.startsWith('/patterns') &&
     !catchAllTemplateExcludeList.includes(path)
   );
 }

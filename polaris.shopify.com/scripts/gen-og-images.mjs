@@ -57,14 +57,15 @@ const generateHTML = async (url, slug) => {
     const mdFilePath = path.join(process.cwd(), `content${url}.md`);
     const markdownContent = await readFile(mdFilePath, 'utf-8');
     const {data} = matter(markdownContent);
-    if (!data.icon) return;
-    const iconFilePath = path.join(
-      process.cwd(),
-      `../polaris-icons/dist/svg/${data.icon}.svg`,
-    );
-    const iconData = await readFile(iconFilePath);
+    if (data.icon) {
+      const iconFilePath = path.join(
+        process.cwd(),
+        `../polaris-icons/dist/svg/${data.icon}.svg`,
+      );
+      const iconData = await readFile(iconFilePath);
 
-    htmlImg = `<div class="polaris-icon">${iconData}</div>`;
+      htmlImg = `<div class="polaris-icon">${iconData}</div>`;
+    }
   }
 
   const html = `

@@ -2,8 +2,7 @@ import Page from '../Page';
 import PageMeta from '../PageMeta';
 import styles from './FoundationsPage.module.scss';
 import Longform from '../Longform';
-import Grid from '../Grid';
-import {GridItemProps} from '../Grid/Grid';
+import {Grid, GridItem, type GridItemProps} from '../Grid';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 
 export interface FoundationsProps {
@@ -34,7 +33,7 @@ function FoundationsPage({title, description, items}: FoundationsProps) {
             .map((item) => {
               if (!item.url) return null;
               return (
-                <Grid.Item
+                <GridItem
                   key={item.title}
                   {...item}
                   renderPreview={() => (
