@@ -22,7 +22,7 @@ const easingMap = {
 const deprecatedEasingFuncs = ['anticipate', 'excite', 'overshoot'];
 
 export default v9ScssReplaceEasing(
-  'scss-replace-easing',
+  'v9-scss-replace-easing',
   (_, {methods, options}, context) => {
     const namespacedEasing = namespace('easing', options);
 
