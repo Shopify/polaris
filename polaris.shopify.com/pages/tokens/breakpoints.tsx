@@ -66,7 +66,7 @@ const Components: NextPage = () => {
 
       <Container>
         <Longform>
-          <Markdown text={breakpointsUsage} />
+          <Markdown>{breakpointsUsage}</Markdown>
         </Longform>
         <br />
         <br />

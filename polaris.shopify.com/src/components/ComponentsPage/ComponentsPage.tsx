@@ -7,7 +7,7 @@ import {
 import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
-import Grid from '../Grid';
+import {Grid, GridItem} from '../Grid';
 import Page from '../Page';
 import ComponentThumbnail from '../ComponentThumbnail';
 
@@ -44,7 +44,7 @@ export default function ComponentsPage() {
                       description = '',
                     } = pages[slug].frontMatter;
                     return (
-                      <Grid.Item
+                      <GridItem
                         key={title}
                         title={title}
                         description={stripMarkdownLinks(description)}

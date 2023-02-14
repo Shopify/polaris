@@ -1,0 +1,19 @@
+@import '../../styles/mixins.scss';
+.InlinePill {
+  --inline-pill-background: #f2f7fe;
+  --inline-pill-border-color: #103262;
+  --inline-pill-color: #103262;
+  @include dark-mode {
+    --inline-pill-background: #002852;
+    --inline-pill-border-color: #b5c9fa;
+    --inline-pill-color: #b5c9fa;
+  }
+  display: inline-block;
+  padding: 0px 5px;
+  background: var(--inline-pill-background);
+  border: 0.5px solid var(--inline-pill-border-color);
+  border-radius: 3px;
+  color: var(--inline-pill-color);
+  vertical-align: bottom;
+  font-size: var(--font-size-100);
+}
