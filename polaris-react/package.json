@@ -65,10 +65,6 @@
     "react-fast-compare": "^3.2.0",
     "react-transition-group": "^4.4.2"
   },
-  "peerDependencies": {
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
-  },
   "devDependencies": {
     "@changesets/get-release-plan": "^3.0.13",
     "@shopify/browserslist-config": "^3.0.0",
