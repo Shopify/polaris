@@ -1,6 +1,6 @@
 import {
   TextField,
-  Card,
+  LegacyCard,
   ResourceList,
   Filters,
   Button,
@@ -79,7 +79,7 @@ function DisableSomeFiltersExample() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -134,7 +134,7 @@ function DisableSomeFiltersExample() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 

@@ -1,5 +1,9 @@
 import siteJson from '../../../.cache/site.json';
-import {getComponentCategories, stripMarkdownLinks} from '../../utils/various';
+import {
+  getComponentCategories,
+  slugify,
+  stripMarkdownLinks,
+} from '../../utils/various';
 import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
@@ -47,7 +51,10 @@ export default function ComponentsPage() {
                         url={`/${slug}`}
                         status={status as Status}
                         renderPreview={() => (
-                          <ComponentThumbnail title={title} />
+                          <ComponentThumbnail
+                            title={title}
+                            group={slugify(category)}
+                          />
                         )}
                       />
                     );

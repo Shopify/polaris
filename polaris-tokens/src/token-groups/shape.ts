@@ -22,6 +22,9 @@ export const shape = {
   'border-radius-6': {
     value: '30px',
   },
+  'border-radius-full': {
+    value: '9999px',
+  },
   'border-radius-base': {
     value: '3px',
   },
@@ -74,6 +77,7 @@ export const shapeBorderRadiusScale = [
   '4',
   '5',
   '6',
+  'full',
 ] as const;
 export type ShapeBorderRadiusScale = typeof shapeBorderRadiusScale[number];
 

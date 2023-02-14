@@ -1,10 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Card} from '../../Card';
+import {LegacyCard} from '../../LegacyCard';
 import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
-import {SkeletonDisplayText} from '../../SkeletonDisplayText';
 import {SkeletonPage} from '../SkeletonPage';
 import {Box} from '../../Box';
 
@@ -14,12 +13,12 @@ describe('<SkeletonPage />', () => {
       return (
         <Layout>
           <Layout.Section>
-            <Card sectioned>
+            <LegacyCard sectioned>
               <SkeletonBodyText />
-            </Card>
-            <Card sectioned title="Variants">
+            </LegacyCard>
+            <LegacyCard sectioned title="Variants">
               <SkeletonBodyText />
-            </Card>
+            </LegacyCard>
           </Layout.Section>
         </Layout>
       );
@@ -72,11 +71,13 @@ describe('<SkeletonPage />', () => {
   });
 
   describe('primaryAction', () => {
-    it('renders SkeletonDisplayText if true', () => {
+    it('renders if true', () => {
       const skeletonPage = mountWithApp(
         <SkeletonPage title="Title" primaryAction />,
       );
-      expect(skeletonPage).toContainReactComponent(SkeletonDisplayText);
+      expect(skeletonPage).toContainReactComponent(Box, {
+        id: 'SkeletonPage-PrimaryAction',
+      });
     });
   });
 });

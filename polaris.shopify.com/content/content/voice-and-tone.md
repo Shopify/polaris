@@ -201,7 +201,7 @@ While we don’t need to celebrate the accomplishment, we should recognize that 
 
 #### Do
 
-If this is a task people do regularly, make it clear that the step is complete in a simple and non-intrusive way, like a [toast](/components/toast). Consider ways to confirm completion without words or messaging.
+If this is a task people do regularly, make it clear that the step is complete in a simple and non-intrusive way, like a [toast](/components/feedback-indicators/toast). Consider ways to confirm completion without words or messaging.
 
 _Product saved_
 

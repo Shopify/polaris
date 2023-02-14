@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.1
+
+### Patch Changes
+
+- [#8276](https://github.com/Shopify/polaris/pull/8276) [`9eb9e47b9`](https://github.com/Shopify/polaris/commit/9eb9e47b9154f2df770916a4d94bd0e630ee261a) Thanks [@leileu](https://github.com/leileu)! - Corrected some types with Metaobjects and Metafields
+
 ## 6.11.0
 
 ### Minor Changes
