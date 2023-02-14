@@ -155,6 +155,7 @@ We recommend running tests as well as trying your build of a package in a real p
 
 - `yarn test` will run tests for all packages
 - `yarn turbo run test --filter="[HEAD^1]"` will test any package that has changed in the last commit
+- Run visual testing via adding the `/vistest` comment in a PR
 
 You can test your changes in another project locally by creating a [snapshot release](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md#snapshot-release).
 
