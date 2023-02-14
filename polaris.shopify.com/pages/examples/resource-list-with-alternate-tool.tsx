@@ -1,5 +1,5 @@
 import {
-  Card,
+  LegacyCard,
   ResourceList,
   Button,
   Avatar,
@@ -31,14 +31,14 @@ function ResourceListWithAlternateToolExample() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         items={items}
         renderItem={renderItem}
         resourceName={resourceName}
         alternateTool={<Button>Email customers</Button>}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {

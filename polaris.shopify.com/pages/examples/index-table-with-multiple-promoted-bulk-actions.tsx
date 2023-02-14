@@ -1,4 +1,4 @@
-import {IndexTable, Card, useIndexResourceState, Text} from '@shopify/polaris';
+import {IndexTable, LegacyCard, useIndexResourceState, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -97,7 +97,7 @@ function IndexTableWithMultiplePromotedBulkActionsExample() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -116,7 +116,7 @@ function IndexTableWithMultiplePromotedBulkActionsExample() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 

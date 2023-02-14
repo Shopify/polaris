@@ -139,9 +139,9 @@ export function EmptyState({
       paddingBlockStart="5"
       paddingBlockEnd="16"
     >
-      <AlphaStack align="center" gap="0" reverseOrder={withinContentContainer}>
-        {detailsMarkup}
+      <AlphaStack align="center" gap="0">
         {imageMarkup}
+        {detailsMarkup}
       </AlphaStack>
     </Box>
   );

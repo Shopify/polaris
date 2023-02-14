@@ -3,7 +3,7 @@ title: Stylelint Polaris
 description: A configuration of Stylelint rules that promote adoption of the Polaris design system in consuming apps.
 icon: WandMajor
 collapseChildren: true
-order: 3
+order: 4
 keywords:
   - stylelint
   - dev tools

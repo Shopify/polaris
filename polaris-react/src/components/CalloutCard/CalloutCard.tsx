@@ -3,7 +3,7 @@ import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
-import {Card} from '../Card';
+import {LegacyCard} from '../LegacyCard';
 import {TextContainer} from '../TextContainer';
 import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
@@ -71,10 +71,10 @@ export function CalloutCard({
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div className={containerClassName}>
         {dismissButton}
-        <Card.Section>
+        <LegacyCard.Section>
           <div className={styles.CalloutCard}>
             <div className={styles.Content}>
               <div className={styles.Title}>
@@ -88,8 +88,8 @@ export function CalloutCard({
 
             <Image alt="" className={imageClassName} source={illustration} />
           </div>
-        </Card.Section>
+        </LegacyCard.Section>
       </div>
-    </Card>
+    </LegacyCard>
   );
 }

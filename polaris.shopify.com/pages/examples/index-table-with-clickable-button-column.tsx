@@ -1,6 +1,6 @@
 import {
   IndexTable,
-  Card,
+  LegacyCard,
   Button,
   useIndexResourceState,
   Text,
@@ -62,7 +62,7 @@ function ClickThroughButtonIndexTableExample() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -79,7 +79,7 @@ function ClickThroughButtonIndexTableExample() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 

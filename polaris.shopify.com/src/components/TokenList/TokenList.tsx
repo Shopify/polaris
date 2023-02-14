@@ -61,6 +61,11 @@ function TokenList({
         </table>
         <style jsx>
           {`
+            @keyframes slide {
+              to {
+                transform: translateX(2400%);
+              }
+            }
             @keyframes spin {
               from {
                 transform: rotate(0deg);
@@ -85,7 +90,7 @@ function getFigmaUsageForToken(
   const REM = 16;
 
   if (value.startsWith('rgba')) {
-    usage = figmaColorNames[name] ? `Use ${figmaColorNames[name]}` : '—';
+    usage = figmaColorNames[name] ? `Use ${figmaColorNames[name]}` : '-';
   } else if (name.startsWith('shadow')) {
     usage = 'Use shadow styles from UI kit';
   } else if (name.includes('breakpoint')) {
@@ -103,6 +108,14 @@ function getFigmaUsageForToken(
   } else if (name.includes('space')) {
     const spacing = parseFloat(value) * REM;
     usage = `Use a spacing of ${spacing} pixels`;
+  } else if (name.includes('duration')) {
+    usage = `Set duration to ${value.slice(0, -2)} ms`;
+  } else if (name.includes('ease')) {
+    let easing = value;
+    easing = easing.slice(13, -1);
+    usage = `Set custom bezier to ${easing}`;
+  } else if (name.includes('linear')) {
+    usage = `Set easing to Linear`;
   }
 
   return usage;
@@ -454,22 +467,44 @@ function TokenPreview({name, value}: TokenPreviewProps) {
 
   // Easing
   else if (name.includes('ease') || name.includes('linear')) {
+    const fps = 60;
+    const duration = 600;
+    const easing = value;
+    const delayIncrement = -1000 / fps;
+    const count = (duration / 1000) * fps + 1;
+    const lastPosition = -(duration - 0.000001);
+    const frames = Array.from({length: count});
+
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: 'flex',
+          position: 'relative',
           background: 'transparent',
+          marginBottom: '3%', //TODO figure out best spacing method
         }}
       >
+        {frames.map((_, i) => (
+          //TODO replace with component
+          <div
+            className={styles.Frame}
+            key={i}
+            style={{
+              animationName: 'slide',
+              animationDuration: duration + 'ms',
+              animationTimingFunction: easing,
+              animationDelay:
+                (i === frames.length - 1 ? lastPosition : delayIncrement * i) +
+                'ms',
+            }}
+          ></div>
+        ))}
         <div
+          className={`${styles.Frame} ${styles.Playhead}`}
           style={{
-            minHeight: '0%',
-            width: '10%',
-            paddingBottom: '10%',
-            background: 'var(--text)',
-            boxShadow: value,
-            animation: `spin 1s ${value} infinite both`,
+            animationName: 'slide',
+            animationDuration: duration + 'ms',
+            animationTimingFunction: easing,
           }}
         ></div>
       </div>

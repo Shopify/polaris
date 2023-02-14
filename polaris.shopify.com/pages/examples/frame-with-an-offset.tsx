@@ -1,7 +1,7 @@
 import {
   ActionList,
   AppProvider,
-  Card,
+  LegacyCard,
   ContextualSaveBar,
   FormLayout,
   Frame,
@@ -222,7 +222,7 @@ function FrameExample() {
           title="Account details"
           description="Jaded Pixel will use this as your account information."
         >
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Full name"
@@ -238,7 +238,7 @@ function FrameExample() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
@@ -248,12 +248,12 @@ function FrameExample() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </SkeletonPage>

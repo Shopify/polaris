@@ -1,12 +1,15 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
+  AlphaStack,
   Banner,
   Button,
-  Card,
+  LegacyCard,
+  Inline,
   Link,
   List,
   Modal,
+  Text,
   TextContainer,
 } from '@shopify/polaris';
 
@@ -172,7 +175,7 @@ export function WithFocus() {
 
 export function InACard() {
   return (
-    <Card title="Online store dashboard" sectioned>
+    <LegacyCard title="Online store dashboard" sectioned>
       <TextContainer>
         <Banner onDismiss={() => {}}>
           <p>
@@ -183,6 +186,24 @@ export function InACard() {
 
         <p>View a summary of your online store’s performance.</p>
       </TextContainer>
-    </Card>
+    </LegacyCard>
+  );
+}
+
+export function WithEndJustifiedContent() {
+  return (
+    <Banner status="critical">
+      <AlphaStack gap="1" fullWidth>
+        <Inline align="space-between">
+          <Text variant="headingMd" fontWeight="semibold" as="h3">
+            Deployment failed in 5min
+          </Text>
+          <Link external url="https://example.com">
+            Logs
+          </Link>
+        </Inline>
+        <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+      </AlphaStack>
+    </Banner>
   );
 }
