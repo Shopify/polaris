@@ -23,7 +23,7 @@ const durationMap = {
 };
 
 export default v9ScssReplaceDuration(
-  'replace-sass-transition',
+  'v9-replace-sass-transition',
   (_, {methods, options}, context) => {
     const namespacedDuration = namespace('duration', options);
 
