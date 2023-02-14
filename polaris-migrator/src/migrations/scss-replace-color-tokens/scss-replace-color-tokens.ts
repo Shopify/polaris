@@ -85,7 +85,7 @@ const backgroundColorMap = {
   '--p-action-critical-pressed': '--p-color-bg-critical-strong-active',
   '--p-action-critical-depressed': '--p-color-bg-critical-strong-active',
   '--p-interactive-critical': '--p-color-bg-critical',
-  '--p-surface-warning': '--p-color-bg-caution',
+  '--p-surface-warning': '--p-color-bg-warning',
   '--p-surface-warning-subdued': '--p-color-bg-caution-subdued',
   '--p-surface-warning-subdued-hovered': '--p-color-bg-caution-subdued-hover',
   '--p-surface-warning-subdued-pressed': '--p-color-bg-caution-subdued-active',
