@@ -157,28 +157,8 @@ const deprecated = [
     permanent: false,
   },
   {
-    source: '/components/card',
-    destination: '/components/deprecated/card',
-    permanent: false,
-  },
-  {
-    source: '/components/choice-list',
-    destination: '/components/deprecated/choice-list',
-    permanent: false,
-  },
-  {
     source: '/components/display-text',
     destination: '/components/deprecated/display-text',
-    permanent: false,
-  },
-  {
-    source: '/components/form-layout',
-    destination: '/components/deprecated/form-layout',
-    permanent: false,
-  },
-  {
-    source: '/components/grid',
-    destination: '/components/deprecated/grid',
     permanent: false,
   },
   {
@@ -192,18 +172,8 @@ const deprecated = [
     permanent: false,
   },
   {
-    source: '/components/stack',
-    destination: '/components/deprecated/stack',
-    permanent: false,
-  },
-  {
     source: '/components/subheading',
     destination: '/components/deprecated/subheading',
-    permanent: false,
-  },
-  {
-    source: '/components/text-container',
-    destination: '/components/deprecated/text-container',
     permanent: false,
   },
   {
@@ -331,6 +301,11 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
+    source: '/components/card',
+    destination: '/components/layout-and-structure/card',
+    permanent: false,
+  },
+  {
     source: '/components/callout-card',
     destination: '/components/layout-and-structure/callout-card',
     permanent: false,
@@ -348,6 +323,16 @@ const layoutAndStructure = [
   {
     source: '/components/empty-state',
     destination: '/components/layout-and-structure/empty-state',
+    permanent: false,
+  },
+  {
+    source: '/components/form-layout',
+    destination: '/components/layout-and-structure/form-layout',
+    permanent: false,
+  },
+  {
+    source: '/components/grid',
+    destination: '/components/layout-and-structure/grid',
     permanent: false,
   },
   {
@@ -378,6 +363,16 @@ const layoutAndStructure = [
   {
     source: '/components/page',
     destination: '/components/layout-and-structure/page',
+    permanent: false,
+  },
+  {
+    source: '/components/stack',
+    destination: '/components/layout-and-structure/stack',
+    permanent: false,
+  },
+  {
+    source: '/components/text-container',
+    destination: '/components/layout-and-structure/text-container',
     permanent: false,
   },
 ];
@@ -485,6 +480,11 @@ const selectionAndInput = [
   {
     source: '/components/checkbox',
     destination: '/components/selection-and-input/checkbox',
+    permanent: false,
+  },
+  {
+    source: '/components/choice-list',
+    destination: '/components/selection-and-input/choice-list',
     permanent: false,
   },
   {
