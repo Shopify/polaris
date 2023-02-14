@@ -63,7 +63,7 @@ const Components = ({
       <PageMeta title={title} description={description} />
 
       <Longform>
-        <Markdown text={description} />
+        <Markdown>{description}</Markdown>
         {typedStatus && <StatusBanner status={typedStatus} />}
         {componentExamples}
       </Longform>
@@ -71,7 +71,7 @@ const Components = ({
       {propsTable}
 
       <Longform firstParagraphIsLede={false}>
-        <Markdown text={readme.body} />
+        <Markdown>{readme.body}</Markdown>
       </Longform>
     </Page>
   );

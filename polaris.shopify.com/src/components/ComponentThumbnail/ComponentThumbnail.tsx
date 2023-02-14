@@ -14,6 +14,10 @@ function ComponentThumbnail({title, group}: Props) {
     <div
       style={{
         filter: 'brightness(97%)',
+        borderRadius: 'var(--border-radius-600)',
+        borderBottomRightRadius: 0,
+        borderBottomLeftRadius: 0,
+        overflow: 'hidden',
       }}
     >
       <Image
