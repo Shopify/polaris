@@ -2,7 +2,7 @@ import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
-  LegacyCard,
+  Card,
   FormLayout,
   Text,
   Layout,
@@ -22,9 +22,9 @@ export function OneColumn() {
     <Page fullWidth>
       <Layout>
         <Layout.Section>
-          <LegacyCard title="Online store dashboard" sectioned>
+          <Card title="Online store dashboard" sectioned>
             <p>View a summary of your online store’s performance.</p>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>
@@ -36,19 +36,19 @@ export function TwoColumnsWithPrimaryAndSecondaryWidths() {
     <Page fullWidth>
       <Layout>
         <Layout.Section>
-          <LegacyCard title="Order details" sectioned>
+          <Card title="Order details" sectioned>
             <p>
               Use to follow a normal section with a secondary section to create
               a 2/3 + 1/3 layout on detail pages (such as individual product or
               order pages). Can also be used on any page that needs to structure
               a lot of content. This layout stacks the columns on small screens.
             </p>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
         <Layout.Section secondary>
-          <LegacyCard title="Tags" sectioned>
+          <Card title="Tags" sectioned>
             <p>Add tags to your order.</p>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>
@@ -60,13 +60,13 @@ export function TwoColumnsWithEqualWidth() {
     <Page fullWidth>
       <Layout>
         <Layout.Section oneHalf>
-          <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
-            <LegacyCard.Section>
+          <Card title="Florida" actions={[{content: 'Manage'}]}>
+            <Card.Section>
               <Text variant="bodyMd" color="subdued" as="span">
                 455 units available
               </Text>
-            </LegacyCard.Section>
-            <LegacyCard.Section title="Items">
+            </Card.Section>
+            <Card.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
@@ -118,17 +118,17 @@ export function TwoColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
         <Layout.Section oneHalf>
-          <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
-            <LegacyCard.Section>
+          <Card title="Nevada" actions={[{content: 'Manage'}]}>
+            <Card.Section>
               <Text variant="bodyMd" color="subdued" as="span">
                 301 units available
               </Text>
-            </LegacyCard.Section>
-            <LegacyCard.Section title="Items">
+            </Card.Section>
+            <Card.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
@@ -180,8 +180,8 @@ export function TwoColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>
@@ -193,13 +193,13 @@ export function ThreeColumnsWithEqualWidth() {
     <Page fullWidth>
       <Layout>
         <Layout.Section oneThird>
-          <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
-            <LegacyCard.Section>
+          <Card title="Florida" actions={[{content: 'Manage'}]}>
+            <Card.Section>
               <Text variant="bodyMd" color="subdued" as="span">
                 455 units available
               </Text>
-            </LegacyCard.Section>
-            <LegacyCard.Section title="Items">
+            </Card.Section>
+            <Card.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
@@ -251,17 +251,17 @@ export function ThreeColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
         <Layout.Section oneThird>
-          <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
-            <LegacyCard.Section>
+          <Card title="Nevada" actions={[{content: 'Manage'}]}>
+            <Card.Section>
               <Text variant="bodyMd" color="subdued" as="span">
                 301 units available
               </Text>
-            </LegacyCard.Section>
-            <LegacyCard.Section title="Items">
+            </Card.Section>
+            <Card.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
@@ -313,17 +313,17 @@ export function ThreeColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
         <Layout.Section oneThird>
-          <LegacyCard title="Minneapolis" actions={[{content: 'Manage'}]}>
-            <LegacyCard.Section>
+          <Card title="Minneapolis" actions={[{content: 'Manage'}]}>
+            <Card.Section>
               <Text variant="bodyMd" color="subdued" as="span">
                 1931 units available
               </Text>
-            </LegacyCard.Section>
-            <LegacyCard.Section title="Items">
+            </Card.Section>
+            <Card.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
@@ -375,8 +375,8 @@ export function ThreeColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>
@@ -392,7 +392,7 @@ export function Annotated() {
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
-          <LegacyCard sectioned>
+          <Card sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -406,7 +406,7 @@ export function Annotated() {
                 autoComplete="email"
               />
             </FormLayout>
-          </LegacyCard>
+          </Card>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
@@ -427,7 +427,7 @@ export function AnnotatedWithBannerAtTheTop() {
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
-          <LegacyCard sectioned>
+          <Card sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -441,7 +441,7 @@ export function AnnotatedWithBannerAtTheTop() {
                 autoComplete="email"
               />
             </FormLayout>
-          </LegacyCard>
+          </Card>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>

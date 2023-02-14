@@ -4,7 +4,7 @@ import {
   FormLayout,
   TextField,
   Button,
-  LegacyCard,
+  Card,
   Tabs,
 } from '@shopify/polaris';
 import {useState, useEffect, useCallback, useRef} from 'react';
@@ -69,13 +69,13 @@ function SpinnerWithFocusManagement() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <Tabs tabs={tabs.current} selected={selected} onSelect={handleTabChange}>
-        <LegacyCard.Section title={tabs.current[selected].content}>
+        <Card.Section title={tabs.current[selected].content}>
           {sectionMarkup}
-        </LegacyCard.Section>
+        </Card.Section>
       </Tabs>
-    </LegacyCard>
+    </Card>
   );
 }
 

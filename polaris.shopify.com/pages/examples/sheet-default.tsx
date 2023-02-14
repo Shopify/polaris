@@ -2,7 +2,7 @@ import {
   List,
   Button,
   Page,
-  LegacyCard,
+  Card,
   Sheet,
   Scrollable,
   ChoiceList,
@@ -76,13 +76,14 @@ function SheetExample() {
 
   return (
     <Page narrowWidth>
-      <LegacyCard
+      <Card
         sectioned
         subdued
         title="Product availability"
-        actions={salesChannelAction}>
+        actions={salesChannelAction}
+      >
         {salesChannelsCardMarkup}
-      </LegacyCard>
+      </Card>
       <Sheet
         open={sheetActive}
         onClose={toggleSheetActive}

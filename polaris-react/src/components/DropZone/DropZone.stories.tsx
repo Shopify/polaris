@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
   Text,
-  LegacyCard,
+  Card,
   DropZone,
   List,
   Page,
@@ -337,12 +337,12 @@ export function Nested() {
 
   return (
     <DropZone outline={false} onDrop={handleDrop}>
-      <LegacyCard sectioned>
+      <Card sectioned>
         <DropZone onClick={handleDropZoneClick}>
           {uploadedFiles}
           {fileUpload}
         </DropZone>
-      </LegacyCard>
+      </Card>
     </DropZone>
   );
 }
@@ -457,7 +457,7 @@ export function WithCustomFileDialogTrigger() {
   );
 
   return (
-    <LegacyCard
+    <Card
       sectioned
       title="Product Images"
       actions={[
@@ -474,6 +474,6 @@ export function WithCustomFileDialogTrigger() {
       >
         {uploadedFiles}
       </DropZone>
-    </LegacyCard>
+    </Card>
   );
 }

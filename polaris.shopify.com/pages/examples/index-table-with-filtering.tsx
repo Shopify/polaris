@@ -1,7 +1,7 @@
 import {
   TextField,
   IndexTable,
-  LegacyCard,
+  Card,
   Filters,
   Select,
   useIndexResourceState,
@@ -106,7 +106,7 @@ function IndexTableWithFilteringExample() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
           <Filters
@@ -144,7 +144,7 @@ function IndexTableWithFilteringExample() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 
   function disambiguateLabel(key, value) {

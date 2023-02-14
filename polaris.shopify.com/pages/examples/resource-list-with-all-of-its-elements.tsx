@@ -2,7 +2,7 @@ import {
   TextField,
   Filters,
   Button,
-  LegacyCard,
+  Card,
   ResourceList,
   Avatar,
   ResourceItem,
@@ -119,7 +119,7 @@ function ResourceListExample() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -139,7 +139,7 @@ function ResourceListExample() {
         }}
         filterControl={filterControl}
       />
-    </LegacyCard>
+    </Card>
   );
 
   function renderItem(item) {

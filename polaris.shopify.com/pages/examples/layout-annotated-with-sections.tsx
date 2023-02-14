@@ -1,7 +1,7 @@
 import {
   Page,
   Layout,
-  LegacyCard,
+  Card,
   FormLayout,
   TextField,
   TextContainer,
@@ -28,7 +28,7 @@ function LayoutExample() {
           </div>
         </Layout.Section>
         <Layout.Section>
-          <LegacyCard sectioned>
+          <Card sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -42,7 +42,7 @@ function LayoutExample() {
                 autoComplete="email"
               />
             </FormLayout>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>

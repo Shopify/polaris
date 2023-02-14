@@ -41,7 +41,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 
 ```js
 import enTranslations from '@shopify/polaris/locales/en.json';
-import {AppProvider, Page, LegacyCard, Button} from '@shopify/polaris';
+import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 ```
 
 3.  Tell React to render the element in the DOM:
@@ -50,9 +50,9 @@ import {AppProvider, Page, LegacyCard, Button} from '@shopify/polaris';
 ReactDOM.render(
   <AppProvider i18n={enTranslations}>
     <Page title="Example app">
-      <LegacyCard sectioned>
+      <Card sectioned>
         <Button onClick={() => alert('Button clicked!')}>Example button</Button>
-      </LegacyCard>
+      </Card>
     </Page>
   </AppProvider>,
   document.querySelector('#app'),

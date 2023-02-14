@@ -1,4 +1,4 @@
-import {LegacyCard, RangeSlider} from '@shopify/polaris';
+import {Card, RangeSlider} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -16,7 +16,7 @@ function RangeSliderWithPrefixAndSuffixExample() {
   };
 
   return (
-    <LegacyCard sectioned title="Text color">
+    <Card sectioned title="Text color">
       <RangeSlider
         output
         label="Hue color mix"
@@ -27,7 +27,7 @@ function RangeSliderWithPrefixAndSuffixExample() {
         prefix={<p>Hue</p>}
         suffix={<p style={suffixStyles}>{rangeValue}</p>}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 

@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  LegacyCard,
+  Card,
   Collapsible,
   Link,
   Stack,
@@ -20,7 +20,7 @@ export function Default() {
 
   return (
     <div style={{height: '200px'}}>
-      <LegacyCard sectioned>
+      <Card sectioned>
         <Stack vertical>
           <Button
             onClick={handleToggle}
@@ -48,7 +48,7 @@ export function Default() {
             </TextContainer>
           </Collapsible>
         </Stack>
-      </LegacyCard>
+      </Card>
     </div>
   );
 }

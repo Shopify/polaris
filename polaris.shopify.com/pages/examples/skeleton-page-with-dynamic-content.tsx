@@ -1,7 +1,7 @@
 import {
   SkeletonPage,
   Layout,
-  LegacyCard,
+  Card,
   SkeletonBodyText,
   TextContainer,
   SkeletonDisplayText,
@@ -14,45 +14,45 @@ function SkeletonExample() {
     <SkeletonPage primaryAction>
       <Layout>
         <Layout.Section>
-          <LegacyCard sectioned>
+          <Card sectioned>
             <SkeletonBodyText />
-          </LegacyCard>
-          <LegacyCard sectioned>
+          </Card>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
             </TextContainer>
-          </LegacyCard>
-          <LegacyCard sectioned>
+          </Card>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
             </TextContainer>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
         <Layout.Section secondary>
-          <LegacyCard>
-            <LegacyCard.Section>
+          <Card>
+            <Card.Section>
               <TextContainer>
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
               </TextContainer>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={1} />
-            </LegacyCard.Section>
-          </LegacyCard>
-          <LegacyCard subdued>
-            <LegacyCard.Section>
+            </Card.Section>
+          </Card>
+          <Card subdued>
+            <Card.Section>
               <TextContainer>
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
               </TextContainer>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={2} />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
       </Layout>
     </SkeletonPage>

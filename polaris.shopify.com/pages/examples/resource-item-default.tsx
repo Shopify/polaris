@@ -1,4 +1,4 @@
-import {LegacyCard, ResourceList, ResourceItem, Text} from '@shopify/polaris';
+import {Card, ResourceList, ResourceItem, Text} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,7 +6,7 @@ function ResourceItemExample() {
   const [selectedItems, setSelectedItems] = useState([]);
 
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={{singular: 'blog post', plural: 'blog posts'}}
         items={[
@@ -38,7 +38,7 @@ function ResourceItemExample() {
           );
         }}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 

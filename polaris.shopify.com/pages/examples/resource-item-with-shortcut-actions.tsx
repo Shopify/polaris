@@ -1,10 +1,10 @@
-import {LegacyCard, ResourceList, ResourceItem, Avatar, Text} from '@shopify/polaris';
+import {Card, ResourceList, ResourceItem, Avatar, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceItemExample() {
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -48,7 +48,7 @@ function ResourceItemExample() {
           );
         }}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 

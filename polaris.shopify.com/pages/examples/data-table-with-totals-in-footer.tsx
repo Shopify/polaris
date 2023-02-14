@@ -1,4 +1,4 @@
-import {Page, LegacyCard, DataTable} from '@shopify/polaris';
+import {Page, Card, DataTable} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -17,7 +17,7 @@ function DataTableExample() {
 
   return (
     <Page title="Sales by product">
-      <LegacyCard>
+      <Card>
         <DataTable
           columnContentTypes={[
             'text',
@@ -37,7 +37,7 @@ function DataTableExample() {
           totals={['', '', '', 255, '$155,830.00']}
           showTotalsInFooter
         />
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }

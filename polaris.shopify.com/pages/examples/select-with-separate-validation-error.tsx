@@ -4,7 +4,7 @@ import {
   TextField,
   Select,
   InlineError,
-  LegacyCard,
+  Card,
   Link,
   Text,
 } from '@shopify/polaris';
@@ -47,7 +47,7 @@ function SeparateValidationErrorExample() {
     </Stack>
   );
 
-  return <LegacyCard sectioned>{formGroupMarkup}</LegacyCard>;
+  return <Card sectioned>{formGroupMarkup}</Card>;
 
   function generateErrorMessage() {
     const weightError =

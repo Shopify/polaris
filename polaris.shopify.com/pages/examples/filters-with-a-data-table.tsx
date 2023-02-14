@@ -1,7 +1,7 @@
 import {
   ChoiceList,
   TextField,
-  LegacyCard,
+  Card,
   Filters,
   DataTable,
 } from '@shopify/polaris';
@@ -127,8 +127,8 @@ function DataTableFiltersExample() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
-        <LegacyCard.Section>
+      <Card>
+        <Card.Section>
           <Filters
             queryValue={queryValue}
             filters={filters}
@@ -137,7 +137,7 @@ function DataTableFiltersExample() {
             onQueryClear={handleQueryValueRemove}
             onClearAll={handleFiltersClearAll}
           />
-        </LegacyCard.Section>
+        </Card.Section>
         <DataTable
           columnContentTypes={[
             'text',
@@ -166,7 +166,7 @@ function DataTableFiltersExample() {
           ]}
           totals={['', '', '', 255, '$155,830.00']}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 

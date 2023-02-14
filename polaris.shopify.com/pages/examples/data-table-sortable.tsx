@@ -1,4 +1,4 @@
-import {Page, LegacyCard, DataTable} from '@shopify/polaris';
+import {Page, Card, DataTable} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -25,7 +25,7 @@ function SortableDataTableExample() {
 
   return (
     <Page title="Sales by product">
-      <LegacyCard>
+      <Card>
         <DataTable
           columnContentTypes={[
             'text',
@@ -48,7 +48,7 @@ function SortableDataTableExample() {
           initialSortColumnIndex={4}
           onSort={handleSort}
         />
-      </LegacyCard>
+      </Card>
     </Page>
   );
 

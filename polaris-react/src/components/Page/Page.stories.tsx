@@ -1,13 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  Badge,
-  Button,
-  LegacyCard,
-  Page,
-  PageActions,
-  Stack,
-} from '@shopify/polaris';
+import {Badge, Button, Card, Page, PageActions, Stack} from '@shopify/polaris';
 import {PlusMinor, ArrowDownMinor, ExternalMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -52,9 +45,9 @@ export function Default() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -76,9 +69,9 @@ export function WithCustomPrimaryAction() {
         </Button>
       }
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -98,14 +91,14 @@ export function WithoutPrimaryActionInHeader() {
         hasNext: true,
       }}
     >
-      <LegacyCard sectioned title="Fulfill order">
+      <Card sectioned title="Fulfill order">
         <Stack alignment="center">
           <Stack.Item fill>
             <p>Buy postage and ship remaining 2 items</p>
           </Stack.Item>
           <Button primary>Continue</Button>
         </Stack>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -156,9 +149,9 @@ export function WithToolTipAction() {
         },
       ]}
     >
-      <LegacyCard title="Product X" sectioned>
+      <Card title="Product X" sectioned>
         <p>Product X information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -171,9 +164,9 @@ export function WithSubtitle() {
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -192,9 +185,9 @@ export function WithExternalLink() {
         },
       ]}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -206,9 +199,9 @@ export function WithoutPagination() {
       title="General"
       primaryAction={{content: 'Save'}}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -224,9 +217,9 @@ export function FullWidth() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -239,9 +232,9 @@ export function NarrowWidth() {
       title="Add payment method"
       primaryAction={{content: 'Save', disabled: true}}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
       <PageActions
         primaryAction={{content: 'Save', disabled: true}}
         secondaryActions={[{content: 'Delete'}]}
@@ -279,9 +272,9 @@ export function WithActionGroups() {
         },
       ]}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -302,9 +295,9 @@ export function WithContentAfterTitle() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -316,9 +309,9 @@ export function WithDivider() {
       title="General"
       divider
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
