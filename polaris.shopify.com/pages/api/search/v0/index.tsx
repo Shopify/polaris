@@ -43,18 +43,28 @@ const getSearchResults = (query?: string) => {
 
   // Add components
   componentSlugs.forEach((slug) => {
-    const {status, title, description = ''} = pages[slug].frontMatter;
+    const {
+      status,
+      title,
+      description = '',
+      category = '',
+    } = pages[slug].frontMatter;
+
+    const url = category
+      ? `/components/${slugify(category)}/${slugify(title)}`
+      : `/components/${slugify(title)}`;
 
     results.push({
       id: slugify(`components ${title}`),
       category: 'components',
       score: 0,
-      url: `/components/${slugify(title)}`,
+      url,
       meta: {
         components: {
           title,
           description: stripMarkdownLinks(description),
           status: status as Status,
+          group: slugify(category),
         },
       },
     });

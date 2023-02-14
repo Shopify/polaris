@@ -25,6 +25,7 @@ The New badge should be used on features that have all of these 3 characteristic
 - It’s worth distracting our merchants from their current workflow to inform them about a whole new part of Shopify
 
 Example:
+
 - To signify an entirely new page in the Settings nav
 
 Note: Using the New badge in the Settings nav to draw attention to a new feature must be reviewed and approved by UX management on a case by case basis.
@@ -32,6 +33,7 @@ Note: Using the New badge in the Settings nav to draw attention to a new feature
 Consider how the admin would look if it was cluttered with New badges or features of varying importance—overusing the badge creates unnecessary distraction and lessens its impact.
 
 ### When not to use the New badge
+
 - Should never be used in the primary [navigation](/components/navigation) menu of the Shopify admin
 
 ## How long to use the New badge
@@ -44,9 +46,9 @@ New badges should have a short lifespan. The badge should disappear:
 
 ### What the New badge should look like
 
-- Use the [informational badge variant](https://polaris.shopify.com/components/badge) to achieve the correct styling and color
+- Use the [informational badge variant](https://polaris.shopify.com/components/feedback-indicators/badge) to achieve the correct styling and color
 - the badge should be right aligned or placed to the right of text
-- the [page component](https://polaris.shopify.com/components/page) in Polaris already places badges to the right of headings, so following this logic adds to the consistency of [New] badge use in the admin.
+- the [page component](https://polaris.shopify.com/components/layout-and-structure/page) in Polaris already places badges to the right of headings, so following this logic adds to the consistency of [New] badge use in the admin.
 
 ## Pips
 

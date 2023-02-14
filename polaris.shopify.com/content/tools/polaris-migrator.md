@@ -25,6 +25,58 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ## Migrations
 
+### v11
+
+#### `styles-replace-custom-property`
+
+A generic codemod to replace CSS custom properties with mapped values (either a different Polaris custom property or a static value).
+
+```diff
+- color: var(--p-text);
++ color: var(--p-color-text);
+
+- animation-duration: var(--p-fast);
++ animation-duration: 100ms;
+```
+
+<br />
+
+This migration can be run in two ways:
+
+1. Using a combination of `--decl`, `--from`, and `--to` flags to replace a single custom property, or
+2. Using a `--maps` flag which points to a file defining replacements for multiple custom properties
+
+<br />
+
+Option 1:
+
+```sh
+npx @shopify/polaris-migrator styles-replace-custom-property \
+  --decl="<name>" --from="<prop>" --to="<prop>" <path>
+```
+
+Option 2:
+
+```sh
+npx @shopify/polaris-migrator styles-replace-custom-property \
+  --maps="<replacement-maps>" <path>
+```
+
+Example `replacement-maps.js` (with option 2):
+
+```js
+export default {
+  color: {
+    '--p-text': '--p-color-text',
+  },
+  '/^animation/': {
+    '--p-fast': '100ms',
+  },
+};
+```
+
+<br />
+
 ### v10
 
 #### `styles-insert-stylelint-disable`
