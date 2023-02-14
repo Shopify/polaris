@@ -13,18 +13,18 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Products',
               icon: ProductsMinor,
             },

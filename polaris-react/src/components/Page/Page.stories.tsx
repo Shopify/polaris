@@ -10,7 +10,7 @@ export default {
 export function Default() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      breadcrumbs={[{content: 'Products', url: '#'}]}
       title="3/4 inch Leather pet collar"
       titleMetadata={<Badge status="success">Paid</Badge>}
       subtitle="Perfect for any pet"
@@ -159,7 +159,7 @@ export function WithToolTipAction() {
 export function WithSubtitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      breadcrumbs={[{content: 'Products', url: '#'}]}
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
@@ -282,7 +282,7 @@ export function WithActionGroups() {
 export function WithContentAfterTitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      breadcrumbs={[{content: 'Products', url: '#'}]}
       title="Jar With Lock-Lid"
       titleMetadata={<Badge status="attention">Verified</Badge>}
       primaryAction={{content: 'Save', disabled: true}}

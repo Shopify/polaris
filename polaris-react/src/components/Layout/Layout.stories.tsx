@@ -72,7 +72,7 @@ export function TwoColumnsWithEqualWidth() {
                 items={[
                   {
                     id: '341',
-                    url: 'produdcts/341',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '254',
@@ -85,7 +85,7 @@ export function TwoColumnsWithEqualWidth() {
                   },
                   {
                     id: '256',
-                    url: 'produdcts/256',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -134,7 +134,7 @@ export function TwoColumnsWithEqualWidth() {
                 items={[
                   {
                     id: '342',
-                    url: 'produdcts/342',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '100',
@@ -147,7 +147,7 @@ export function TwoColumnsWithEqualWidth() {
                   },
                   {
                     id: '257',
-                    url: 'produdcts/257',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -205,7 +205,7 @@ export function ThreeColumnsWithEqualWidth() {
                 items={[
                   {
                     id: '343',
-                    url: 'produdcts/343',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '254',
@@ -218,7 +218,7 @@ export function ThreeColumnsWithEqualWidth() {
                   },
                   {
                     id: '258',
-                    url: 'produdcts/258',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -267,7 +267,7 @@ export function ThreeColumnsWithEqualWidth() {
                 items={[
                   {
                     id: '344',
-                    url: 'produdcts/344',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '100',
@@ -280,7 +280,7 @@ export function ThreeColumnsWithEqualWidth() {
                   },
                   {
                     id: '259',
-                    url: 'produdcts/259',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -329,7 +329,7 @@ export function ThreeColumnsWithEqualWidth() {
                 items={[
                   {
                     id: '345',
-                    url: 'produdcts/345',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '1230',
@@ -342,7 +342,7 @@ export function ThreeColumnsWithEqualWidth() {
                   },
                   {
                     id: '260',
-                    url: 'produdcts/260',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '701',

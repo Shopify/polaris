@@ -15,17 +15,17 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Orders',
               icon: OrdersMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Products',
               icon: ProductsMinor,
             },
@@ -34,7 +34,7 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Online Store',
               icon: OnlineStoreMinor,
             },

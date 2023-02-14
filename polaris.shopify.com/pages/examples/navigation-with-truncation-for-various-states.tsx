@@ -16,19 +16,19 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'One Stop Ramen Order Application Premium',
               truncateText: true,
               icon: MarketingMinor,
               selected: false,
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Products',
               icon: ProductsMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Lengthy non-truncated label with secondary action',
               icon: OrdersMinor,
               selected: false,
@@ -51,7 +51,8 @@ function NavigationExample() {
                 {
                   url: '/admin/products/collections',
                   disabled: false,
-                  label: 'Something longer than inventory so it can be truncated',
+                  label:
+                    'Something longer than inventory so it can be truncated',
                 },
                 {
                   url: '/admin/products/inventory',

@@ -15,13 +15,13 @@ function NavigationExample() {
               icon: HomeMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Products',
               icon: ProductsMinor,
             },

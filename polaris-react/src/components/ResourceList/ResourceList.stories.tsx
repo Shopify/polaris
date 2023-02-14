@@ -26,13 +26,13 @@ export function Default() {
         items={[
           {
             id: 100,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
             id: 200,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },
@@ -120,13 +120,13 @@ export function WithSelectionAndNoBulkActions() {
   const items = [
     {
       id: 101,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 201,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -178,13 +178,13 @@ export function WithBulkActions() {
   const items = [
     {
       id: 103,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 203,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -259,7 +259,7 @@ export function WithBulkActionsAndManyItems() {
   const items = Array.from({length: 50}, (_, num) => {
     return {
       id: `${num}`,
-      url: '/customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -336,13 +336,13 @@ export function WithLoadingState() {
   const items = [
     {
       id: 104,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 204,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -415,13 +415,13 @@ export function WithTotalCount() {
         items={[
           {
             id: 105,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
             id: 205,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },
@@ -461,13 +461,13 @@ export function WithHeaderContent() {
         items={[
           {
             id: 105,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
             id: 205,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },
@@ -509,13 +509,13 @@ export function WithSorting() {
   const items = [
     {
       id: 106,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 206,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -571,13 +571,13 @@ export function WithAlternateTool() {
   const items = [
     {
       id: 107,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 207,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -639,13 +639,13 @@ export function WithFiltering() {
   const items = [
     {
       id: 108,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 208,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -859,17 +859,17 @@ export function WithItemShortcutActions() {
         items={[
           {
             id: 109,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
           {
             id: 209,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
-            latestOrderUrl: 'orders/1457',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {
@@ -915,17 +915,17 @@ export function WithPersistentItemShortcutActions() {
         items={[
           {
             id: 110,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
           {
             id: 210,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
-            latestOrderUrl: 'orders/1457',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {
@@ -975,37 +975,37 @@ export function WithMultiselect() {
   const items = [
     {
       id: 111,
-      url: 'customers/231',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 211,
-      url: 'customers/246',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
     {
       id: 311,
-      url: 'customers/276',
+      url: '#',
       name: 'Joe Smith',
       location: 'Arizona, USA',
     },
     {
       id: 411,
-      url: 'customers/349',
+      url: '#',
       name: 'Haden Jerado',
       location: 'Decatur, USA',
     },
     {
       id: 511,
-      url: 'customers/419',
+      url: '#',
       name: 'Tom Thommas',
       location: 'Florida, USA',
     },
     {
       id: 611,
-      url: 'customers/516',
+      url: '#',
       name: 'Emily Amrak',
       location: 'Texas, USA',
     },
@@ -1104,17 +1104,17 @@ export function WithAllOfItsElements() {
   const items = [
     {
       id: 112,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
-      latestOrderUrl: 'orders/1456',
+      latestOrderUrl: '#',
     },
     {
       id: 212,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
-      latestOrderUrl: 'orders/1457',
+      latestOrderUrl: '#',
     },
   ];
 

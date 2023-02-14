@@ -25,7 +25,7 @@ export function Default() {
         items={[
           {
             id: '6',
-            url: 'posts/6',
+            url: '#',
             title: 'How To Get Value From Wireframes',
             author: 'Jonathan Mangrove',
           },
@@ -65,7 +65,7 @@ export function WithMedia() {
         items={[
           {
             id: '145',
-            url: 'customers/145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
@@ -112,7 +112,7 @@ export function WithShortcutActions() {
         items={[
           {
             id: '145',
-            url: 'customers/145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
@@ -163,7 +163,7 @@ export function WithPersistedShortcutActions() {
         items={[
           {
             id: '145',
-            url: 'customers/145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
@@ -216,7 +216,7 @@ export function WithVerticalAlignment() {
         items={[
           {
             id: '145',
-            url: 'customers/145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',

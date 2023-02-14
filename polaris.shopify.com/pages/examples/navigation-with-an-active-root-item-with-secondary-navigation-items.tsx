@@ -11,12 +11,12 @@ function NavigationExample() {
           duplicateRootItem
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
