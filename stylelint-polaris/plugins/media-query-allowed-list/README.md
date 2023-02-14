@@ -73,13 +73,13 @@ yarn stylelint **/*.scss
 ### Lint the TextContainer.scss file
 
 ```
-yarn stylelint src/components/TextContainer/TextContainer.scss
+yarn stylelint src/components/typography/textContainer/TextContainer.scss
 ```
 
 e.x. output
 
 ```
-src/components/TextContainer/TextContainer.scss
+src/components/typography/textContainer/TextContainer.scss
   4:3  ✖  Invalid media query [(min-width: 0px)].              polaris/media-query-allowed-list
   6:5  ✖  Invalid media query [print and (min-width: 0px)].    polaris/media-query-allowed-list
 ```

@@ -158,6 +158,11 @@
   // stylelint-enable selector-max-class, selector-max-specificity
 }
 
+.ContentWrapper {
+  margin-top: calc(-1 * var(--p-space-05));
+  flex: 1 1 auto;
+}
+
 .withinContentContainer {
   padding: var(--p-space-4);
 
@@ -178,7 +183,7 @@
 }
 
 .withinPage {
-  border-radius: 0 0 var(--p-border-radius-base) var(--p-border-radius-base);
+  border-radius: 0 0 var(--p-border-radius-1) var(--p-border-radius-1);
   padding: var(--p-space-5);
 
   @include banner-variants(true);
