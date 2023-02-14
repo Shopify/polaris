@@ -1,4 +1,4 @@
-import {LegacyCard, OptionList} from '@shopify/polaris';
+import {Card, OptionList} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,7 +6,7 @@ function MultipleOptionListExample() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <LegacyCard>
+    <Card>
       <OptionList
         title="Manage sales channels availability"
         onChange={setSelected}
@@ -20,7 +20,7 @@ function MultipleOptionListExample() {
         selected={selected}
         allowMultiple
       />
-    </LegacyCard>
+    </Card>
   );
 }
 

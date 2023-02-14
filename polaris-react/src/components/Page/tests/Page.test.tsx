@@ -4,7 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import type {ActionMenuProps} from '../../ActionMenu';
 import {Badge} from '../../Badge';
-import {LegacyCard} from '../../LegacyCard';
+import {Card} from '../../Card';
 import {Page, PageProps} from '../Page';
 import {Header} from '../components';
 
@@ -33,9 +33,9 @@ describe('<Page />', () => {
 
   describe('children', () => {
     it('renders its children', () => {
-      const card = <LegacyCard />;
+      const card = <Card />;
       const page = mountWithApp(<Page {...mockProps}>{card}</Page>);
-      expect(page).toContainReactComponent(LegacyCard);
+      expect(page).toContainReactComponent(Card);
     });
   });
 

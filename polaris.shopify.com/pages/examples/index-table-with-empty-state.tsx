@@ -1,7 +1,7 @@
 import {
   EmptySearchResult,
   IndexTable,
-  LegacyCard,
+  Card,
   useIndexResourceState,
   Text,
 } from '@shopify/polaris';
@@ -47,7 +47,7 @@ function IndexTableWithCustomEmptyStateExample() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -65,7 +65,7 @@ function IndexTableWithCustomEmptyStateExample() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 

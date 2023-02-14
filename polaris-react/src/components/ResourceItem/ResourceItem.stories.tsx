@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Avatar,
-  LegacyCard,
+  Card,
   ResourceItem,
   ResourceList,
   ResourceListProps,
@@ -19,7 +19,7 @@ export function Default() {
   >([]);
 
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={{singular: 'blog post', plural: 'blog posts'}}
         items={[
@@ -53,13 +53,13 @@ export function Default() {
           );
         }}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function WithMedia() {
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -100,13 +100,13 @@ export function WithMedia() {
           );
         }}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function WithShortcutActions() {
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -151,13 +151,13 @@ export function WithShortcutActions() {
           );
         }}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function WithPersistedShortcutActions() {
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -204,13 +204,13 @@ export function WithPersistedShortcutActions() {
           );
         }}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function WithVerticalAlignment() {
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -253,6 +253,6 @@ export function WithVerticalAlignment() {
           );
         }}
       />
-    </LegacyCard>
+    </Card>
   );
 }

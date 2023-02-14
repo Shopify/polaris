@@ -3,7 +3,7 @@ import {
   Stack,
   Icon,
   Page,
-  LegacyCard,
+  Card,
   Layout,
   Button,
   Popover,
@@ -247,7 +247,7 @@ function ListboxWithSearchExample() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <div
         style={{
           alignItems: 'stretch',
@@ -278,7 +278,7 @@ function ListboxWithSearchExample() {
           {listboxMarkup}
         </Scrollable>
       </div>
-    </LegacyCard>
+    </Card>
   );
 }
 

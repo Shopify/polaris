@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
-  LegacyCard,
+  Card,
   ContextualSaveBar,
   Layout,
   Page,
@@ -39,7 +39,7 @@ export function Default() {
       }}
     >
       <Page>
-        <LegacyCard>
+        <Card>
           <ResourceList
             showHeader
             items={[
@@ -72,7 +72,7 @@ export function Default() {
               );
             }}
           />
-        </LegacyCard>
+        </Card>
       </Page>
     </AppProvider>
   );
@@ -99,7 +99,7 @@ export function WithI18n() {
       }}
     >
       <Page>
-        <LegacyCard>
+        <Card>
           <ResourceList
             showHeader
             items={[
@@ -132,7 +132,7 @@ export function WithI18n() {
               );
             }}
           />
-        </LegacyCard>
+        </Card>
       </Page>
     </AppProvider>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  LegacyCard,
+  Card,
   FormLayout,
   Heading,
   TextField,
@@ -14,7 +14,7 @@ export default {
 
 export function Default() {
   return (
-    <LegacyCard sectioned>
+    <Card sectioned>
       <VisuallyHidden>
         <Heading>Title and description</Heading>
       </VisuallyHidden>
@@ -32,7 +32,7 @@ export function Default() {
           autoComplete="off"
         />
       </FormLayout>
-    </LegacyCard>
+    </Card>
   );
 }
 

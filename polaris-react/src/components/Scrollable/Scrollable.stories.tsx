@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, Scrollable} from '@shopify/polaris';
+import {Card, Scrollable} from '@shopify/polaris';
 
 export default {
   component: Scrollable,
@@ -8,7 +8,7 @@ export default {
 
 export function Default() {
   return (
-    <LegacyCard title="Terms of service" sectioned>
+    <Card title="Terms of service" sectioned>
       <Scrollable shadow style={{height: '200px'}} focusable>
         <p>
           By signing up for the Shopify service (“Service”) or any of the
@@ -56,7 +56,7 @@ export function Default() {
           from time to time for any updates or changes that may impact you.
         </p>
       </Scrollable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -156,7 +156,7 @@ export function WithHorizonalScrollPrevention() {
 
 export function ScrollToChildComponent() {
   return (
-    <LegacyCard title="Terms of service" sectioned>
+    <Card title="Terms of service" sectioned>
       <Scrollable shadow style={{height: '200px'}}>
         <ol>
           <li>Account Terms</li>
@@ -443,13 +443,13 @@ export function ScrollToChildComponent() {
           credit card information is always encrypted.
         </p>
       </Scrollable>
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function WithScrollHint() {
   return (
-    <LegacyCard title="Terms of service" sectioned>
+    <Card title="Terms of service" sectioned>
       <Scrollable hint shadow style={{height: '200px'}} focusable>
         <p>
           By signing up for the Shopify service (“Service”) or any of the
@@ -497,13 +497,13 @@ export function WithScrollHint() {
           from time to time for any updates or changes that may impact you.
         </p>
       </Scrollable>
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function OnScrolledToBottom() {
   return (
-    <LegacyCard title="Terms of service" sectioned>
+    <Card title="Terms of service" sectioned>
       <Scrollable
         focusable
         style={{height: '200px'}}
@@ -555,6 +555,6 @@ export function OnScrolledToBottom() {
           from time to time for any updates or changes that may impact you.
         </p>
       </Scrollable>
-    </LegacyCard>
+    </Card>
   );
 }

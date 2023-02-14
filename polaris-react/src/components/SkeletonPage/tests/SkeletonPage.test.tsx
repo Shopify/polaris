@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {LegacyCard} from '../../LegacyCard';
+import {Card} from '../../Card';
 import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
 import {SkeletonPage} from '../SkeletonPage';
@@ -13,12 +13,12 @@ describe('<SkeletonPage />', () => {
       return (
         <Layout>
           <Layout.Section>
-            <LegacyCard sectioned>
+            <Card sectioned>
               <SkeletonBodyText />
-            </LegacyCard>
-            <LegacyCard sectioned title="Variants">
+            </Card>
+            <Card sectioned title="Variants">
               <SkeletonBodyText />
-            </LegacyCard>
+            </Card>
           </Layout.Section>
         </Layout>
       );

@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, EmptyState, Link} from '@shopify/polaris';
+import {Card, EmptyState, Link} from '@shopify/polaris';
 
 export default {
   component: EmptyState,
@@ -8,7 +8,7 @@ export default {
 
 export function Default() {
   return (
-    <LegacyCard sectioned>
+    <Card sectioned>
       <EmptyState
         heading="Manage your inventory transfers"
         action={{content: 'Add transfer'}}
@@ -20,13 +20,13 @@ export function Default() {
       >
         <p>Track and receive your incoming inventory from suppliers.</p>
       </EmptyState>
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function WithSubduedFooterContext() {
   return (
-    <LegacyCard sectioned>
+    <Card sectioned>
       <EmptyState
         heading="Manage your inventory transfers"
         action={{content: 'Add transfer'}}
@@ -48,13 +48,13 @@ export function WithSubduedFooterContext() {
       >
         <p>Track and receive your incoming inventory from suppliers.</p>
       </EmptyState>
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function WithFullWidthLayout() {
   return (
-    <LegacyCard sectioned>
+    <Card sectioned>
       <EmptyState
         heading="Upload a file to get started"
         action={{content: 'Upload files'}}
@@ -67,7 +67,7 @@ export function WithFullWidthLayout() {
           full width.
         </p>
       </EmptyState>
-    </LegacyCard>
+    </Card>
   );
 }
 

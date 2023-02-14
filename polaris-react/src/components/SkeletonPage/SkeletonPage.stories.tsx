@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  LegacyCard,
+  Card,
   Layout,
   SkeletonBodyText,
   SkeletonDisplayText,
@@ -18,45 +18,45 @@ export function WithDynamicContent() {
     <SkeletonPage primaryAction>
       <Layout>
         <Layout.Section>
-          <LegacyCard sectioned>
+          <Card sectioned>
             <SkeletonBodyText />
-          </LegacyCard>
-          <LegacyCard sectioned>
+          </Card>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
             </TextContainer>
-          </LegacyCard>
-          <LegacyCard sectioned>
+          </Card>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
             </TextContainer>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
         <Layout.Section secondary>
-          <LegacyCard>
-            <LegacyCard.Section>
+          <Card>
+            <Card.Section>
               <TextContainer>
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
               </TextContainer>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={1} />
-            </LegacyCard.Section>
-          </LegacyCard>
-          <LegacyCard subdued>
-            <LegacyCard.Section>
+            </Card.Section>
+          </Card>
+          <Card subdued>
+            <Card.Section>
               <TextContainer>
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
               </TextContainer>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={2} />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -68,33 +68,33 @@ export function WithStaticContent() {
     <SkeletonPage title="Products" primaryAction>
       <Layout>
         <Layout.Section>
-          <LegacyCard sectioned>
+          <Card sectioned>
             <SkeletonBodyText />
-          </LegacyCard>
-          <LegacyCard sectioned title="Images">
+          </Card>
+          <Card sectioned title="Images">
             <SkeletonBodyText />
-          </LegacyCard>
-          <LegacyCard sectioned title="Variants">
+          </Card>
+          <Card sectioned title="Variants">
             <SkeletonBodyText />
-          </LegacyCard>
+          </Card>
         </Layout.Section>
         <Layout.Section secondary>
-          <LegacyCard title="Sales channels">
-            <LegacyCard.Section>
+          <Card title="Sales channels">
+            <Card.Section>
               <SkeletonBodyText lines={2} />
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={1} />
-            </LegacyCard.Section>
-          </LegacyCard>
-          <LegacyCard title="Organization" subdued>
-            <LegacyCard.Section>
+            </Card.Section>
+          </Card>
+          <Card title="Organization" subdued>
+            <Card.Section>
               <SkeletonBodyText lines={2} />
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={2} />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -106,45 +106,45 @@ export function WithNarrowWidth() {
     <SkeletonPage primaryAction narrowWidth>
       <Layout>
         <Layout.Section>
-          <LegacyCard sectioned>
+          <Card sectioned>
             <SkeletonBodyText />
-          </LegacyCard>
-          <LegacyCard sectioned>
+          </Card>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
             </TextContainer>
-          </LegacyCard>
-          <LegacyCard sectioned>
+          </Card>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
             </TextContainer>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
         <Layout.Section secondary>
-          <LegacyCard>
-            <LegacyCard.Section>
+          <Card>
+            <Card.Section>
               <TextContainer>
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
               </TextContainer>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={1} />
-            </LegacyCard.Section>
-          </LegacyCard>
-          <LegacyCard subdued>
-            <LegacyCard.Section>
+            </Card.Section>
+          </Card>
+          <Card subdued>
+            <Card.Section>
               <TextContainer>
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
               </TextContainer>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={2} />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -156,45 +156,45 @@ export function WithFullWidth() {
     <SkeletonPage primaryAction fullWidth>
       <Layout>
         <Layout.Section>
-          <LegacyCard sectioned>
+          <Card sectioned>
             <SkeletonBodyText />
-          </LegacyCard>
-          <LegacyCard sectioned>
+          </Card>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
             </TextContainer>
-          </LegacyCard>
-          <LegacyCard sectioned>
+          </Card>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
             </TextContainer>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
         <Layout.Section secondary>
-          <LegacyCard>
-            <LegacyCard.Section>
+          <Card>
+            <Card.Section>
               <TextContainer>
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
               </TextContainer>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={1} />
-            </LegacyCard.Section>
-          </LegacyCard>
-          <LegacyCard subdued>
-            <LegacyCard.Section>
+            </Card.Section>
+          </Card>
+          <Card subdued>
+            <Card.Section>
               <TextContainer>
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
               </TextContainer>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
+            </Card.Section>
+            <Card.Section>
               <SkeletonBodyText lines={2} />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
       </Layout>
     </SkeletonPage>

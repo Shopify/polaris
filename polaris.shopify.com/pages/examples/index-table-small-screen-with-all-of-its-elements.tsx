@@ -1,7 +1,7 @@
 import {
   TextField,
   IndexTable,
-  LegacyCard,
+  Card,
   Filters,
   Select,
   useIndexResourceState,
@@ -128,7 +128,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
 
   return (
     <div style={{width: '430px'}}>
-      <LegacyCard>
+      <Card>
         <div style={{padding: '16px', display: 'flex'}}>
           <div style={{flex: 1}}>
             <Filters
@@ -170,7 +170,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
         >
           {rowMarkup}
         </IndexTable>
-      </LegacyCard>
+      </Card>
     </div>
   );
 

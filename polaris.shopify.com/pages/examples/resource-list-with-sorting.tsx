@@ -1,4 +1,4 @@
-import {LegacyCard, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
+import {Card, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -26,7 +26,7 @@ function ResourceListWithSortingExample() {
   ];
 
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -41,7 +41,7 @@ function ResourceListWithSortingExample() {
           console.log(`Sort option changed to ${selected}.`);
         }}
       />
-    </LegacyCard>
+    </Card>
   );
 
   function renderItem(item) {

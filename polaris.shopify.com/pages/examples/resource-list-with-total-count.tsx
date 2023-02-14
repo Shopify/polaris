@@ -1,10 +1,10 @@
-import {LegacyCard, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
+import {Card, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithTotalItemsCount() {
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -42,7 +42,7 @@ function ResourceListWithTotalItemsCount() {
         showHeader
         totalItemsCount={50}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
