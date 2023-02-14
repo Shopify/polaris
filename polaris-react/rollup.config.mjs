@@ -53,7 +53,7 @@ function generateConfig({output, targets, stylesConfig}) {
 /** @type {import('rollup').RollupOptions} */
 export default [
   generateConfig({
-    targets: pkg.targets,
+    targets: pkg.browserslist,
     stylesConfig: {
       mode: 'standalone',
       output: 'styles.css',
