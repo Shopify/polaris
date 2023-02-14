@@ -1,7 +1,7 @@
 import type {SingleVariantPattern} from '../../src/types';
 
 const pattern: SingleVariantPattern = {
-  title: 'Resource detail layout',
+  title: 'Resource details layout',
   description:
     'Lets merchants effectively create, view, and edit any resource object.',
   howItHelps: `![A labeled diagram of a resource detail layout.](/images/patterns/resource-detail-cover-image.png)
