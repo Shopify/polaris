@@ -34,7 +34,7 @@ $vertical-motion-offset: -5px;
 .PopoverOverlay-exiting {
   opacity: 1;
   transform: translateY(0);
-  transition-duration: var(--p-duration-0);
+  transition-duration: 0ms;
 }
 
 .measuring:not(.PopoverOverlay-exiting) {
