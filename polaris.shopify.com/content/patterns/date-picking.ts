@@ -32,7 +32,7 @@ const pattern: MultiVariantPattern = {
 | | |
 |-|-|
 |Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.|![Date input labeled “Expiry date”](/images/patterns/single-list-usage-1.png)|
-|This pattern can be duplicated to allow users to add an end date or time.|![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox.](/images/patterns/single-list-usage-2.png)|
+|This pattern can be duplicated to allow users to add an end date or time.|![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/single-list-usage-2.png)|
 `,
       example: {
         relatedComponents: [
@@ -226,7 +226,7 @@ const pattern: MultiVariantPattern = {
       title: 'Date range',
       slug: 'date-range',
       description: 'This enables merchants to select a date range.',
-      howItHelps: `![Date range picker with three numbered zones.](/images/patterns/date-range-cover-image.png)
+      howItHelps: `![Date range picker with three numbered zones](/images/patterns/date-range-cover-image.png)
 
 1. Providing multiple ways to select a date range gives merchants full flexibility. The list provides quick access to common options, the text input makes it easier to set large custom ranges, and the calendar is an intuitive way to set a more narrow scope.
 2. Displaying two months makes it easier for merchants to select date ranges that span across both.
@@ -823,7 +823,7 @@ const pattern: MultiVariantPattern = {
       slug: 'date-list',
       description:
         'This enables merchants to select a date or a date range from a list of preset dates.',
-      howItHelps: `![Option list with common suggested dates, such as “Today” and “Last 30 days.”](/images/patterns/date-list-cover-image.png)
+      howItHelps: `![Option list with common suggested dates, such as “Today” and “Last 30 days”](/images/patterns/date-list-cover-image.png)
 
 1. The date list provides merchants with suggested dates. This makes date picking simpler when useful dates are predictable and custom dates aren’t necessary.
 
