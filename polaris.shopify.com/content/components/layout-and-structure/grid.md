@@ -15,11 +15,7 @@ keywords:
   - css grid
 status:
   value: Alpha
-<<<<<<< HEAD:polaris.shopify.com/content/components/grid.md
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [Component lifecycle](/getting-started/components-lifecycle).
-=======
   message: This component is slated to be deprecated in v11. Please consider using alternate layout primitive components such as Columns, Inline, or AlphaStack.
->>>>>>> 52e9b80ea5f82382bc5cb7104b3582a32d210c32:polaris.shopify.com/content/components/layout-and-structure/grid.md
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
