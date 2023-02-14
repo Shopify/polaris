@@ -73,6 +73,26 @@ export default {
 
 <br />
 
+#### `v11-styles-replace-custom-property-border`
+
+Replace deprecated border CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
+- border-radius: var(--p-border-radius-base);
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: var(--p-text-field-focus-ring-border-radius);
++ border-radius: 7px;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-border <path>
+```
+
+<br />
+
 #### `v11-styles-replace-custom-property-depth`
 
 Replace deprecated depth CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
@@ -126,26 +146,6 @@ Replace deprecated motion CSS custom properties with corresponding replacement v
 
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-motion <path>
-```
-
-<br />
-
-#### `v11-styles-replace-custom-property-shape`
-
-Replace deprecated shape CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
-
-```diff
-- border-radius: var(--p-border-radius-base);
-+ border-radius: var(--p-border-radius-1);
-
-- border-radius: var(--p-text-field-focus-ring-border-radius);
-+ border-radius: 7px;
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator v11-styles-replace-custom-property-shape <path>
 ```
 
 <br />
