@@ -31,7 +31,8 @@ export const PatternsPage = () => (
               <a href="https://github.com/Shopify/polaris/discussions/categories/pattern-documentation">
                 join the discussion
               </a>{' '}
-              to make it better.
+              to make it better.{' '}
+              <a href="/patterns-legacy">See old patterns here</a>
             </p>
           </div>
         </div>
