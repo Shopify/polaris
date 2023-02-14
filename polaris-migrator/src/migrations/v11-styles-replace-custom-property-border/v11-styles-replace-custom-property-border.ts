@@ -13,7 +13,7 @@ const replacementMaps = {
   },
 };
 
-export default function v11StylesReplaceCustomPropertyShape(
+export default function v11StylesReplaceCustomPropertyBorder(
   fileInfo: FileInfo,
   _: API,
 ) {
