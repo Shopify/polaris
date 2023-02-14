@@ -11,43 +11,45 @@ const navJsonFile = `${cacheDir}/nav.json`;
 const genNavJson = (mardownFiles) => {
   let nav = {};
 
-  mardownFiles.forEach((md) => {
-    const {
-      title,
-      navTitle,
-      icon,
-      description,
-      order,
-      newSection,
-      hideChildren,
-      color,
-      url,
-      status,
-      expanded,
-      groups,
-      componentDescriptions,
-      relatedResources,
-    } = md.frontMatter;
-    const {slug} = md;
+  mardownFiles
+    .filter((md) => md && !md.frontMatter?.hideFromNav)
+    .forEach((md) => {
+      const {
+        title,
+        navTitle,
+        icon,
+        description,
+        order,
+        newSection,
+        hideChildren,
+        color,
+        url,
+        status,
+        expanded,
+        groups,
+        componentDescriptions,
+        relatedResources,
+      } = md.frontMatter;
+      const {slug} = md;
 
-    const path = `children.${slug.replace(/\//g, '.children.')}`;
+      const path = `children.${slug.replace(/\//g, '.children.')}`;
 
-    set(nav, path, {
-      title: navTitle || title,
-      icon,
-      description,
-      order,
-      slug: url || `/${slug}`,
-      newSection,
-      hideChildren,
-      color: color ? color.replace(/\\/g, '') : undefined,
-      status,
-      expanded,
-      groups,
-      componentDescriptions,
-      relatedResources,
+      set(nav, path, {
+        title: navTitle || title,
+        icon,
+        description,
+        order,
+        slug: url || `/${slug}`,
+        newSection,
+        hideChildren,
+        color: color ? color.replace(/\\/g, '') : undefined,
+        status,
+        expanded,
+        groups,
+        componentDescriptions,
+        relatedResources,
+      });
     });
-  });
 
   writeFileSync(navJsonFile, JSON.stringify(nav), 'utf-8');
 };
