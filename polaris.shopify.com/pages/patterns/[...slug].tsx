@@ -72,6 +72,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .map(readFrontMatter)
     .map(({url} = {}) => url)
     .filter(Boolean);
+
   return {
     paths,
     fallback: false,
