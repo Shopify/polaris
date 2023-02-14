@@ -77,6 +77,7 @@ const catchAllTemplateExcludeList = [
   '/design',
   '/content',
   '/patterns',
+  '/patterns-legacy',
   '/tools',
   '/tokens',
   '/sandbox',
@@ -86,7 +87,8 @@ function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
     !path.startsWith('/components') &&
     !path.includes('/tools/stylelint-polaris/rules') &&
-    !path.startsWith('/patterns') &&
+    // We want to render legacy pages but not new pattern pages.
+    !(path.startsWith('/patterns') && !path.startsWith('/patterns-legacy')) &&
     !catchAllTemplateExcludeList.includes(path)
   );
 }
