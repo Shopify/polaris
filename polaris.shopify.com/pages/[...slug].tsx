@@ -4,15 +4,18 @@ import path from 'path';
 import globby from 'globby';
 
 import Page from '../src/components/Page';
+import StatusBanner from '../src/components/StatusBanner';
 import Longform from '../src/components/Longform';
 import Markdown from '../src/components/Markdown';
 import PageMeta from '../src/components/PageMeta';
 import {parseMarkdown} from '../src/utils/markdown.mjs';
-import {MarkdownFile} from '../src/types';
+import {MarkdownFile, Status} from '../src/types';
 
 interface Props {
   readme: MarkdownFile['readme'];
   title: string;
+  noIndex?: boolean;
+  status?: Status;
   description?: string;
   editPageLinkPath: string;
 }
@@ -20,15 +23,24 @@ interface Props {
 const CatchAllTemplate: NextPage<Props> = ({
   readme,
   title,
+  status,
+  noIndex,
   description,
   editPageLinkPath,
 }: Props) => {
+  const typedStatus: Status | undefined = status
+    ? {
+        value: status.value.toLowerCase() as Status['value'],
+        message: status.message,
+      }
+    : undefined;
+
   return (
     <Page title={title} editPageLinkPath={editPageLinkPath}>
-      <PageMeta title={title} description={description} />
-
+      <PageMeta title={title} description={description} noIndex={noIndex} />
       <Longform>
         {description ? <Markdown>{description}</Markdown> : null}
+        {typedStatus && <StatusBanner status={typedStatus} />}
         <Markdown>{readme}</Markdown>
       </Longform>
     </Page>
@@ -56,11 +68,13 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
     const {readme, frontMatter}: MarkdownFile = parseMarkdown(markdown);
-    const {title, description} = frontMatter;
+    const {title, description, status, noIndex} = frontMatter;
     const props: Props = {
       title,
+      status: status || null,
       description: description || null,
       readme,
+      noIndex: noIndex || false,
       editPageLinkPath,
     };
 
@@ -77,6 +91,7 @@ const catchAllTemplateExcludeList = [
   '/design',
   '/content',
   '/patterns',
+  '/patterns-legacy',
   '/tools',
   '/tokens',
   '/sandbox',
@@ -86,7 +101,8 @@ function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
     !path.startsWith('/components') &&
     !path.includes('/tools/stylelint-polaris/rules') &&
-    !path.startsWith('/patterns') &&
+    // We want to render legacy pages but not new pattern pages.
+    !(path.startsWith('/patterns') && !path.startsWith('/patterns-legacy')) &&
     !catchAllTemplateExcludeList.includes(path)
   );
 }

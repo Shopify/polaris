@@ -2,6 +2,10 @@
 title: Loading
 description: Navigating the Shopify admin should be fast, meaningful, and focused. Intentional loading states deliver a continuous flow for merchants.
 icon: RefreshMajor
+noIndex: true
+status:
+  value: Deprecated
+  message: This pattern is no longer supported.
 keywords:
   - page loading
   - loading
