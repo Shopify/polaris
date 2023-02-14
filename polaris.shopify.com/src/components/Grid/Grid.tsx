@@ -74,7 +74,7 @@ export const GridItem = forwardRef(
           <h4>
             {title} {status && <StatusBadge status={status} />}
           </h4>
-          <p>{stripMarkdownLinks(description || "")}</p>
+          <p>{stripMarkdownLinks(description || '')}</p>
         </Link>
         {deepLinks && (
           <ul className={styles.DeepLinks}>

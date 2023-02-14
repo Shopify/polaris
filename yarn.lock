@@ -3369,6 +3369,24 @@
     "@shopify/cli-kit" "3.10.1"
     "@shopify/ngrok" "^4.3.2"
 
+"@shopify/polaris-icons@^6.7.0":
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-6.7.0.tgz#1feb60ecab1a94211f4290eebc6d607d778eeaf9"
+  integrity sha512-4tlMQvZlaTvp4uYWo5zZq7NSvD1IIxS13/anRWXwcCD/HPLj7wnyYfwveHQOwo1iyrVV4Z2+hTJYTFVe3CBR0g==
+
+"@shopify/polaris@^10.16.0":
+  version "10.16.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-10.16.0.tgz#274e9ebbe66eed131109c13217566fe87377d55e"
+  integrity sha512-py36+7kEHe87DNRLj2KjjJeKmwfXqFZyTazqDImMKS/bmgfEa/lknUJYi0b971yP9Y917+GfVybhmqhcopbjnQ==
+  dependencies:
+    "@shopify/polaris-icons" "^6.7.0"
+    "@shopify/polaris-tokens" "^6.3.0"
+    "@types/react" "^18.0.15"
+    "@types/react-dom" "^18.0.6"
+    "@types/react-transition-group" "^4.4.2"
+    react-fast-compare "^3.2.0"
+    react-transition-group "^4.4.2"
+
 "@shopify/postcss-plugin@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@shopify/postcss-plugin/-/postcss-plugin-5.0.1.tgz#2926cc11ef5ca456b8ac6586810c0f284136fc17"
