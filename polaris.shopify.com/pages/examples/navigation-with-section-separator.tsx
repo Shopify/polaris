@@ -16,16 +16,19 @@ function NavigationExample() {
           items={[
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
             },
@@ -35,6 +38,7 @@ function NavigationExample() {
           items={[
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Online Store',
               icon: OnlineStoreMinor,
             },

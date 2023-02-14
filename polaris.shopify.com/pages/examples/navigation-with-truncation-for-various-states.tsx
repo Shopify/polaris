@@ -17,6 +17,7 @@ function NavigationExample() {
           items={[
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'One Stop Ramen Order Application Premium',
               truncateText: true,
               icon: MarketingMinor,
@@ -24,6 +25,7 @@ function NavigationExample() {
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
             },
@@ -50,12 +52,14 @@ function NavigationExample() {
               subNavigationItems: [
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label:
                     'Something longer than inventory so it can be truncated',
                 },
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Inventoy',
                 },

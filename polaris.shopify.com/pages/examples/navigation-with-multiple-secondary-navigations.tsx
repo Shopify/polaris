@@ -16,23 +16,26 @@ function NavigationExample() {
           items={[
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
               subNavigationItems: [
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Inventory',
                 },
@@ -40,18 +43,20 @@ function NavigationExample() {
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Marketing',
               icon: MarketingMinor,
               badge: '15',
               subNavigationItems: [
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Reports',
                 },
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Live view',
                 },
@@ -65,14 +70,13 @@ function NavigationExample() {
               subNavigationItems: [
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
                   url: '#',
                   disabled: false,
-                  selected: true,
                   label: 'Inventory',
                 },
               ],

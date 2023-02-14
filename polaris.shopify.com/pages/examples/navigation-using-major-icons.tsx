@@ -16,22 +16,26 @@ function NavigationExample() {
           items={[
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMajor,
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMajor,
               badge: '15',
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMajor,
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Customers',
               icon: CustomersMajor,
             },

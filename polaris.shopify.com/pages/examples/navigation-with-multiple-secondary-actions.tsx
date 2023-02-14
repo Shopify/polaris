@@ -17,12 +17,14 @@ function NavigationExample() {
           items={[
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
               selected: false,
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
               badge: '2',
@@ -39,6 +41,7 @@ function NavigationExample() {
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
               secondaryActions: [

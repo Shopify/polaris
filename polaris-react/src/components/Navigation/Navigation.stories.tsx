@@ -764,7 +764,6 @@ export function WithVariousStatesAndSecondaryElements() {
               subNavigationItems: [
                 {
                   url: window.location.href,
-                  matchPaths: [window.location.href],
                   selected: true,
                   disabled: false,
                   label: 'Selected sub item',

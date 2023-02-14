@@ -12,11 +12,13 @@ function NavigationExample() {
           items={[
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
             },
             {
               url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
@@ -29,12 +31,13 @@ function NavigationExample() {
               subNavigationItems: [
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
                   url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Inventory',
                 },
