@@ -13,6 +13,7 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function NavigationExample() {
+  const location = typeof window !== 'undefined' ? window.location.href : '';
   return (
     <Frame>
       <Navigation location="/">
@@ -68,13 +69,13 @@ function NavigationExample() {
               },
             },
             {
-              url: window.location.href,
+              url: location,
               label: 'Active item with sub navigation',
               icon: ProductsMinor,
               selected: true,
               subNavigationItems: [
                 {
-                  url: window.location.href,
+                  url: location,
                   selected: true,
                   disabled: false,
                   label: 'Selected sub item',
