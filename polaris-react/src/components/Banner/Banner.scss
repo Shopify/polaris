@@ -206,10 +206,10 @@
   }
 
   @media #{$p-breakpoints-sm-down} {
-    border-radius: 0;
     box-shadow: none;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+    border-radius: 0;
+    border-style: solid;
+    border-width: var(--p-border-width-1) 0;
 
     &.statusCritical {
       border-color: var(--p-border-critical-subdued);
