@@ -13,7 +13,7 @@ import {
 import {isKeyOf} from '../../utilities/type-guards';
 
 export default v9StylesTokenizeSpace(
-  'v10-styles-tokenize-space',
+  'v9-styles-tokenize-space',
   (_, {methods, options}, context) => {
     const namespacedRem = namespace('rem', options);
 
