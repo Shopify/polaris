@@ -1,5 +1,5 @@
 .motion {
   transition: transform var(--p-duration-100) var(--p-ease);
   transition: transform var(--p-duration-150) var(--p-ease);
-  transition: transform 0 var(--p-ease);
+  transition: transform 0ms var(--p-ease);
 }

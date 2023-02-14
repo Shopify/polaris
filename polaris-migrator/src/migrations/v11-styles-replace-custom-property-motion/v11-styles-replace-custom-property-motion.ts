@@ -6,7 +6,7 @@ const replacementMaps = {
   '/.+/': {
     '--p-duration-1-0-0': '--p-duration-100',
     '--p-duration-1-5-0': '--p-duration-150',
-    '--p-duration-0': '0',
+    '--p-duration-0': '0ms',
   },
 };
 
