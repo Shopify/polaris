@@ -1,5 +1,14 @@
 # polaris.shopify.com
 
+## 0.34.1
+
+### Patch Changes
+
+- [#8344](https://github.com/Shopify/polaris/pull/8344) [`61f4e9254`](https://github.com/Shopify/polaris/commit/61f4e9254dc63c4ae1936ba15e66efa64d410f90) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed broken links in storybook and documentation examples
+
+- Updated dependencies [[`684881b68`](https://github.com/Shopify/polaris/commit/684881b681c7acc8adb8f64991b862869874d929), [`61f4e9254`](https://github.com/Shopify/polaris/commit/61f4e9254dc63c4ae1936ba15e66efa64d410f90)]:
+  - @shopify/polaris@10.28.1
+
 ## 0.34.0
 
 ### Minor Changes
