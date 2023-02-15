@@ -1,9 +1,6 @@
 import type {TokenGroup} from '../types';
 
 export const motion = {
-  'duration-0': {
-    value: '0ms',
-  },
   'duration-50': {
     value: '50ms',
   },
@@ -80,7 +77,6 @@ export type MotionTokenGroup = TokenGroup<typeof motion>;
 export type MotionTokenName = keyof MotionTokenGroup;
 
 export const motionDurationScale = [
-  '0',
   '50',
   '100',
   '150',

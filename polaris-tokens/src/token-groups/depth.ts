@@ -1,9 +1,6 @@
 import type {TokenGroup} from '../types';
 
 export const depth = {
-  'shadow-transparent': {
-    value: '0 0 0 0 transparent',
-  },
   'shadow-faint': {
     value: '0 1px 0 0 rgba(22, 29, 37, 0.05)',
   },
@@ -47,7 +44,6 @@ export type DepthTokenName = keyof DepthTokenGroup;
 
 export const depthShadowAlias = [
   'base',
-  'transparent',
   'faint',
   'deep',
   'button',

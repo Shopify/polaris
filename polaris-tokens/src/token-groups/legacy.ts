@@ -57,9 +57,6 @@ export const legacy = {
   'range-slider-thumb-size-active': {
     value: '24px',
   },
-  'frame-offset': {
-    value: '0px',
-  },
 };
 
 export type LegacyTokenGroup = TokenGroup<typeof legacy>;
