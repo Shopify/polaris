@@ -8,14 +8,14 @@ status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: bleed-vertical.tsx
-    title: Vertical
-    description: >-
-      Content will bleed vertically into the surrounding layout using the vertical prop.
   - fileName: bleed-horizontal.tsx
     title: Horizontal
     description: >-
       Content will bleed horizontally into the surrounding layout using the horizontal prop.
+  - fileName: bleed-vertical.tsx
+    title: Vertical
+    description: >-
+      Content will bleed vertically into the surrounding layout using the vertical prop.
   - fileName: bleed-specific-direction.tsx
     title: Specific direction
     description: >-
