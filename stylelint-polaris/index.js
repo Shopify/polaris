@@ -4,35 +4,6 @@ const {
   tokens,
 } = require('@shopify/polaris-tokens');
 
-const disallowedUnits = [
-  'px',
-  'rem',
-  'em',
-  '%',
-  'ex',
-  'ch',
-  'lh',
-  'rlh',
-  'vw',
-  'vh',
-  'vmin',
-  'vmax',
-  'vb',
-  'vi',
-  'svw',
-  'svh',
-  'lvw',
-  'lvh',
-  'dvw',
-  'dvh',
-  'cm',
-  'mm',
-  'Q',
-  'in',
-  'pc',
-  'pt',
-];
-
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -122,8 +93,8 @@ const stylelintPolarisCoverageOptions = {
       },
       'declaration-property-unit-disallowed-list': [
         {
-          '/^font/': disallowedUnits,
-          'line-height': disallowedUnits,
+          '/^font/': ['px', 'rem', 'em'],
+          'line-height': ['px', 'rem', 'em'],
         },
       ],
       'property-disallowed-list': ['text-transform'],
@@ -253,9 +224,9 @@ const stylelintPolarisCoverageOptions = {
       ),
       'declaration-property-unit-disallowed-list': [
         {
-          '/^padding/': disallowedUnits,
-          '/^margin/': disallowedUnits,
-          '/^gap/': disallowedUnits,
+          '/^padding/': ['px', 'rem', 'em'],
+          '/^margin/': ['px', 'rem', 'em'],
+          '/^gap/': ['px', 'rem', 'em'],
         },
       ],
       'polaris/global-disallowed-list': [
@@ -282,11 +253,11 @@ const stylelintPolarisCoverageOptions = {
       ].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
-          'border-width': disallowedUnits,
-          border: disallowedUnits,
-          'border-radius': disallowedUnits,
-          'outline-offset': disallowedUnits,
-          outline: disallowedUnits,
+          'border-width': ['px', 'rem', 'em'],
+          border: ['px', 'rem', 'em'],
+          'border-radius': ['px', 'rem', 'em'],
+          'outline-offset': ['px', 'rem', 'em'],
+          outline: ['px', 'rem', 'em'],
         },
       ],
       'polaris/at-rule-disallowed-list': {
@@ -327,7 +298,7 @@ const stylelintPolarisCoverageOptions = {
       'function-disallowed-list': ['shadow'].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
-          'box-shadow': disallowedUnits,
+          'box-shadow': ['px', 'rem', 'em'],
         },
       ],
       'property-disallowed-list': ['text-shadow'],
