@@ -11,7 +11,7 @@ examples:
   - fileName: bleed-horizontal.tsx
     title: Horizontal
     description: >-
-      Content will bleed horizontally into the surrounding layout using the horizontal prop.
+      Content will bleed horizontally into the surrounding layout using the `marginInline` prop.
   - fileName: bleed-vertical.tsx
     title: Vertical
     description: >-
