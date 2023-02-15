@@ -3,14 +3,14 @@ import {FlagMajor} from '@shopify/polaris-icons';
 import Icon from '../Icon';
 
 interface Props {
-  update?: string;
+  updateBanner?: string;
 }
 
-function UpdateBanner({update}: Props) {
+function UpdateBanner({updateBanner}: Props) {
   return (
     <div className={styles.Banner}>
       <Icon source={FlagMajor} width={20} height={20} />
-      <p>{update}</p>
+      <p>{updateBanner}</p>
     </div>
   );
 }
