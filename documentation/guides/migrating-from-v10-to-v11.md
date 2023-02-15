@@ -14,6 +14,10 @@ Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 NodeJS version 14 is no longer supported. NodeJS 18 is recommended and 16 is the minimum supported version.
 
+## React support
+
+React version 16 and 17 is no longer supported. React 18 is the minimum supported version.
+
 ## TypeScript
 
 Built types in `@shopify/polaris` have moved from `build/ts/latest` to `build/ts`.
