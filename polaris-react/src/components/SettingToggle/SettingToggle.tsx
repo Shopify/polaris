@@ -22,7 +22,6 @@ export function SettingToggle({enabled, action, children}: SettingToggleProps) {
 
   const actionMarkup = action
     ? buttonFrom(action, {
-        primary: !enabled,
         role: 'switch',
         id,
         ariaChecked: enabled ? 'true' : 'false',
