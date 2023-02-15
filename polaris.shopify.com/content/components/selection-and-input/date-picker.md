@@ -60,4 +60,4 @@ If you use the date picker within a [popover component](/components/overlays/pop
 
 ## Related Patterns
 
-- [Date Picking](polaris.shopify.com/content/patterns/date-picking.ts)
+- [Date Picking](../../../content/patterns/date-picking.md)
