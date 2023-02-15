@@ -11,7 +11,6 @@ import {
   Modal,
   Text,
   TextContainer,
-  Box,
 } from '@shopify/polaris';
 
 export default {
