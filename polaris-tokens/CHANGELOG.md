@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.5.1
+
+### Patch Changes
+
+- [#8384](https://github.com/Shopify/polaris/pull/8384) [`7a9977b4d`](https://github.com/Shopify/polaris/commit/7a9977b4dfe29217279d4988a60cf056d8404419) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improved token group types and fixed typo in `color` alias types
+
 ## 6.5.0
 
 ### Minor Changes
