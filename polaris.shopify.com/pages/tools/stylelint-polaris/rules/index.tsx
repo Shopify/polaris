@@ -24,7 +24,7 @@ const FoundationsCategory = ({title, description, content}: RulesProps) => {
         <Longform>
           <h1>{title}</h1>
           <p>{description}</p>
-          <Markdown text={content} />
+          <Markdown>{content}</Markdown>
         </Longform>
       </Page>
     </>

@@ -111,7 +111,7 @@ export default function GroupPage({
                 key={resource}
                 style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
               >
-                <Markdown text={resource} />
+                <Markdown>{resource}</Markdown>
               </li>
             ))}
           </ul>
