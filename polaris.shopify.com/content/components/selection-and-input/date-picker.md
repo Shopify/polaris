@@ -57,3 +57,7 @@ If you use the date picker within a [popover component](/components/overlays/pop
 - Press the <kbd>tab</kbd> key to move forward and <kbd>shift</kbd> + <kbd>tab</kbd> to move backward through the previous button, next button, and the calendar
 - When focus is in the calendar, move keyboard focus between the dates using the arrow keys
 - To select a date that has focus, press the <kbd>enter</kbd>/<kbd>return</kbd> key
+
+## Related Patterns
+
+- [Date Picking](polaris.shopify.com/content/patterns/date-picking.ts)
