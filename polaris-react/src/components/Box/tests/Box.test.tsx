@@ -1,13 +1,11 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import type {ColorsTokenName, BorderTokenName} from '@shopify/polaris-tokens';
+import type {ColorsTokenName} from '@shopify/polaris-tokens';
 
 import {Box} from '..';
 import type {
   BackgroundColors as BoxBackgroundColorTokenScale,
   ColorTokenScale as BoxColorTokenScale,
-  BorderTokenAlias as BoxBorderTokenAlias,
-  BorderRadiusTokenScale as BoxBorderRadiusTokenScale,
 } from '..';
 
 // Test that type passed in is true
@@ -33,29 +31,12 @@ type BackgroundColorTokenScale = Extract<
 
 type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
 
-type BorderTokenScale = BorderTokenName extends `border-${infer Scale}`
-  ? Scale
-  : never;
-type BorderTokenAlias = Exclude<
-  BorderTokenScale,
-  `radius-${string}` | `width-${string}`
->;
-
-type BorderRadiusTokenScale = Extract<
-  BorderTokenScale,
-  `radius-${string}`
-> extends `radius-${infer Scale}`
-  ? Scale
-  : never;
-
 // Test type aliases to ensure they are valid values from our token groups
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 type cases = [
   Expect<Equal<BackgroundColorTokenScale, BoxBackgroundColorTokenScale>>,
   Expect<Equal<ColorTokenScale, BoxColorTokenScale>>,
-  Expect<Equal<BorderTokenAlias, BoxBorderTokenAlias>>,
-  Expect<Equal<BorderRadiusTokenScale, BoxBorderRadiusTokenScale>>,
 ];
 
 const text = 'This is a box';

@@ -1,11 +1,13 @@
 import React, {createElement, forwardRef} from 'react';
 import type {
+  BorderRadiusScale,
+  BorderWidthScale,
+  ColorBorderTokenAlias,
   ColorsActionTokenAlias,
   ColorsBackdropTokenAlias,
   ColorsBackgroundTokenAlias,
   ColorsOverlayTokenAlias,
   ColorsSurfaceTokenAlias,
-  BorderWidthScale,
   DepthShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
@@ -41,24 +43,7 @@ export type ColorTokenScale =
   | 'text-success'
   | 'text-warning';
 
-export type BorderTokenAlias =
-  | 'base'
-  | 'dark'
-  | 'divider'
-  | 'divider-on-dark'
-  | 'transparent';
-
 type Spacing = ResponsiveProp<SpacingSpaceScale>;
-
-export type BorderRadiusTokenScale =
-  | '05'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | 'full';
 
 export type BackgroundColors =
   | ColorsBackdropTokenAlias
@@ -75,28 +60,24 @@ export interface BoxProps extends React.AriaAttributes {
   as?: Element;
   /** Background color */
   background?: BackgroundColors;
-  /** Border style */
-  border?: BorderTokenAlias;
-  /** Vertical end border style */
-  borderBlockEnd?: BorderTokenAlias;
-  /** Horizontal start border style */
-  borderInlineStart?: BorderTokenAlias;
-  /** Horizontal end border style */
-  borderInlineEnd?: BorderTokenAlias;
-  /** Vertical start border style */
-  borderBlockStart?: BorderTokenAlias;
+
   /** Border radius */
-  borderRadius?: BorderRadiusTokenScale;
-  /** Vertical end horizontal start border radius */
-  borderRadiusEndStart?: BorderRadiusTokenScale;
-  /** Vertical end horizontal end border radius */
-  borderRadiusEndEnd?: BorderRadiusTokenScale;
-  /** Vertical start horizontal start border radius */
-  borderRadiusStartStart?: BorderRadiusTokenScale;
-  /** Vertical start horizontal end border radius */
-  borderRadiusStartEnd?: BorderRadiusTokenScale;
+  borderColor?: ColorBorderTokenAlias;
   /** Border width */
   borderWidth?: BorderWidthScale;
+  /** Border radius */
+  borderRadius?: BorderRadiusScale;
+  borderStyle?: 'solid' | 'dashed' | 'dotted';
+
+  /** Vertical end horizontal start border radius */
+  borderRadiusEndStart?: BorderRadiusScale;
+  /** Vertical end horizontal end border radius */
+  borderRadiusEndEnd?: BorderRadiusScale;
+  /** Vertical start horizontal start border radius */
+  borderRadiusStartStart?: BorderRadiusScale;
+  /** Vertical start horizontal end border radius */
+  borderRadiusStartEnd?: BorderRadiusScale;
+
   /** Vertical start border width */
   borderBlockStartWidth?: BorderWidthScale;
   /** Vertical end border width */
@@ -105,6 +86,7 @@ export interface BoxProps extends React.AriaAttributes {
   borderInlineStartWidth?: BorderWidthScale;
   /** Horizontal end border width */
   borderInlineEndWidth?: BorderWidthScale;
+
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
@@ -174,7 +156,7 @@ export interface BoxProps extends React.AriaAttributes {
   /** Opacity of box */
   opacity?: string;
   /** Outline style */
-  outline?: BorderTokenAlias;
+  outline?: BorderWidthScale;
   /** Visually hide the contents during print */
   printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
@@ -188,17 +170,14 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     {
       as = 'div',
       background,
-      border,
-      borderBlockEnd,
-      borderInlineStart,
-      borderInlineEnd,
-      borderBlockStart,
-      borderWidth,
       borderBlockStartWidth,
       borderBlockEndWidth,
       borderInlineStartWidth,
       borderInlineEndWidth,
+      borderColor,
+      borderWidth,
       borderRadius,
+      borderStyle,
       borderRadiusEndStart,
       borderRadiusEndEnd,
       borderRadiusStartStart,
@@ -237,19 +216,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     const style = {
       '--pc-box-color': color ? `var(--p-${color})` : undefined,
       '--pc-box-background': background ? `var(--p-${background})` : undefined,
-      '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
-      '--pc-box-border-block-end': borderBlockEnd
-        ? `var(--p-border-${borderBlockEnd})`
+      '--pc-box-border-color': borderColor
+        ? `var(--p-color-${borderColor})`
         : undefined,
-      '--pc-box-border-inline-start': borderInlineStart
-        ? `var(--p-border-${borderInlineStart})`
-        : undefined,
-      '--pc-box-border-inline-end': borderInlineEnd
-        ? `var(--p-border-${borderInlineEnd})`
-        : undefined,
-      '--pc-box-border-block-start': borderBlockStart
-        ? `var(--p-border-${borderBlockStart})`
-        : undefined,
+      '--pc-box-border-style': borderStyle,
       '--pc-box-border-radius': borderRadius
         ? `var(--p-border-radius-${borderRadius})`
         : undefined,
