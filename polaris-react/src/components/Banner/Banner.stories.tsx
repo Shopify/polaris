@@ -11,6 +11,7 @@ import {
   Modal,
   Text,
   TextContainer,
+  Box,
 } from '@shopify/polaris';
 
 export default {
@@ -208,15 +209,14 @@ export function WithEndJustifiedContent() {
   );
 }
 
-export function WithNoIcon() {
+export function WithoutIcon() {
   return (
-    <Card title="Online store dashboard" sectioned>
-      <Banner hideIcon>
-        <p>
-          Use your finance report to get detailed information about your
-          business. <Link url="">Let us know what you think</Link>
-        </p>
-      </Banner>
-    </Card>
+    <Box width="360px">
+      <Card title="Shipping address" actions={[{content: 'Edit'}]} sectioned>
+        <Banner status="warning" hideIcon>
+          <p>This order doesn't have a shipping address.</p>
+        </Banner>
+      </Card>
+    </Box>
   );
 }

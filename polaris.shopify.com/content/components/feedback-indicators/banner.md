@@ -55,6 +55,9 @@ examples:
   - fileName: banner-in-a-card.tsx
     title: In a card
     description: Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
+  - fileName: banner-without-icon.tsx
+    title: Without icon
+    description: Use when the icon takes up too much space, such as very small breakpoints or in side navigation cards.
 ---
 
 ## Best practices
@@ -65,7 +68,8 @@ Banners should:
 - Not be used to call attention to what a merchant needs to do in the UI instead of making the action clear in the UI itself.
 - Not be the primary entry point to information or actions merchants need on a regular basis.
 - Be dismissible unless they contain critical information or an important step merchants need to take.
-- Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](https://polaris.shopify.com/design/icons#using-icons-in-your-designs).
+- Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major icons](https://polaris.shopify.com/design/icons#major-icons-20-20).
+- Remove the icon only in scenarios where it takes up too much space, such as very small breakpoints or in side navigation cards.
 
 ### Placement
 
