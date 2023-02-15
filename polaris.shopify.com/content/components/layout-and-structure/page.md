@@ -19,6 +19,7 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
+  updateBannerMessage: We are [adding patterns](/patterns) to our documentation. Check out related patterns, expect changes to happen, and [join the discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better!
 examples:
   - fileName: page-default.tsx
     title: Default
@@ -158,3 +159,8 @@ Add a menu item
 - To lay out the content within a page, use the [layout component](https://polaris.shopify.com/components/layout-and-structure/layout)
 - To add pagination within the context of a list or other page content, use the [pagination component](https://polaris.shopify.com/components/navigation/pagination)
 - To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/actions/page-actions)
+
+## Related Patterns
+
+- [App Settings](/patterns/app-settings)
+- [Resource Details](/patterns/resource-details)
