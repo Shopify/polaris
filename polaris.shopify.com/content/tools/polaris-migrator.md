@@ -510,7 +510,7 @@ $ plop
   typescript-migration
 ```
 
-Next, provide the name of your migration. For example; `scss-replace-function`:
+Next, provide the name of your migration. For example; `v9-scss-replace-function`:
 
 ```sh
 ? [PLOP] Please choose a generator. sass-migration
@@ -521,12 +521,12 @@ The generator will create the following files in the `migrations` folder:
 
 ```
 migrations
-└── scss-replace-function
-    ├── scss-replace-function.ts
+└── v9-scss-replace-function
+    ├── v9-scss-replace-function.ts
     └── tests
-        ├── scss-replace-function.input.scss
-        ├── scss-replace-function.output.scss
-        └── scss-replace-function.test.ts
+        ├── v9-scss-replace-function.input.scss
+        ├── v9-scss-replace-function.output.scss
+        └── v9-scss-replace-function.test.ts
 ```
 
 #### The SCSS migration function
@@ -540,7 +540,7 @@ Continuing the example, here is what the migration may look like if our goal is 
 import {
   isSassFunction,
   StopWalkingFunctionNodes,
-  createSassMigrator,
+  createSassMigrator as v9ReplaceHelloWorld,
 } from '../../utilities/sass';
 import type {PolarisMigrator} from '../../utilities/sass';
 
@@ -571,7 +571,7 @@ const replaceHelloWorld: PolarisMigrator = (_, {methods}, context) => {
   };
 };
 
-export default createSassMigrator('replace-hello-world', replaceHelloWorld);
+export default v9ReplaceHelloWorld('replace-hello-world', replaceHelloWorld);
 ```
 
 A more complete example can be seen in [`styles-tokenize-space.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/styles-tokenize-space/styles-tokenize-space.ts).
@@ -580,9 +580,9 @@ A more complete example can be seen in [`styles-tokenize-space.ts`](https://gith
 
 The template will also generate starting test files you can use to test your migration. In your migrations `tests` folder, you can see 3 files:
 
-- `scss-replace-function.test.ts` – Runs the fixtures and sets up additional migration options
-- `scss-replace-function.input.scss` – The starting source input
-- `scss-replace-function.output.scss` – The expected output after migration
+- `v9-scss-replace-function.test.ts` – Runs the fixtures and sets up additional migration options
+- `v9-scss-replace-function.input.scss` – The starting source input
+- `v9-scss-replace-function.output.scss` – The expected output after migration
 
 The main test file will load the input/output fixtures to test your migration against. You can configure additional fixtures and test migration options (see the `replace-sass-spacing.test.ts` as an example).
 
@@ -591,7 +591,7 @@ The main test file will load the input/output fixtures to test your migration ag
 Run tests locally from workspace root by filtering to the migrations package:
 
 ```sh
-npx turbo run test --filter=polaris-migrator -- scss-replace-function
+npx turbo run test --filter=polaris-migrator -- v9-scss-replace-function
 ```
 
 ### Testing in another codebase
@@ -602,7 +602,7 @@ In your PR, you can add a comment with the text `/snapit` to create a new [snaps
 
 ```sh
 # example snapshot release
-npx @shopify/polaris-migrator@0.0.0-snapshot-release-20220919213536 scss-replace-function "./app/**/*.scss"
+npx @shopify/polaris-migrator@0.0.0-snapshot-release-20220919213536 v9-scss-replace-function "./app/**/*.scss"
 ```
 
 ### Linting and formatting migrations
