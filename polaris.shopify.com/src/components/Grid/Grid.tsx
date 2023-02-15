@@ -10,6 +10,7 @@ import StatusBadge from '../StatusBadge';
 import {Box, type WithAsProp} from '../Box';
 
 export interface GridProps {
+  condensed?: boolean;
   /* Set default values for both x & y gap values. */
   gap?: SpacingSpaceScale;
   /* Set value for x gaps. Will overwrite any `gap` value set. */
@@ -25,7 +26,16 @@ export interface GridProps {
 
 export const Grid = forwardRef(
   (
-    {as = 'ul', gap, gapX = gap, gapY = gap, itemMinWidth, className, ...props},
+    {
+      as = 'ul',
+      gap,
+      gapX = gap,
+      gapY = gap,
+      itemMinWidth,
+      condensed,
+      className,
+      ...props
+    },
     ref,
   ) => (
     <Box
@@ -41,7 +51,7 @@ export const Grid = forwardRef(
           typeof gapY !== 'undefined' ? `var(--p-space-${gapY})` : undefined,
         '--props-grid-item-min-width': itemMinWidth,
       }}
-      className={[styles.Grid, className]}
+      className={[styles.Grid, condensed && styles.condensed, className]}
       {...props}
     />
   ),

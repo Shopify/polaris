@@ -2,7 +2,7 @@ import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
 import {AlphaStack, Text} from '@shopify/polaris';
-import Grid from '../../../src/components/Grid';
+import {Grid, GridItem} from '../../../src/components/Grid';
 import Page from '../../../src/components/Page';
 import TipBanner from '../../../src/components/TipBanner/TipBanner';
 import ComponentThumbnail from '../../../src/components/ComponentThumbnail';
@@ -58,7 +58,7 @@ export default function GroupPage({
             ? `/components/${group}/${componentSlug}`
             : `/components/${componentSlug}`;
           return (
-            <Grid.Item
+            <GridItem
               key={component}
               title={component}
               description={stripMarkdownLinks(
@@ -83,7 +83,7 @@ export default function GroupPage({
           ? `/components/${group}/${component}`
           : `/components/${component}`;
         return (
-          <Grid.Item
+          <GridItem
             key={component}
             title={capitalize(component.replace(/-/g, ' '))}
             description={stripMarkdownLinks(
