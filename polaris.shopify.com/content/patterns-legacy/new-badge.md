@@ -18,7 +18,7 @@ keywords:
 
 There’s opportunity to expand on this documentation. If you’d like to share ideas, or evolve the guidance, join the [Github discussion](https://github.com/Shopify/polaris/discussions/6751) or jump straight to updating the [documentation](https://polaris.shopify.com/contributing/documentation).
 
-![Card with the new badge aligned to the right of the card heading](/images/foundations/patterns/new-badge/new-badge@2x.png)
+![Card with the new badge aligned to the right of the card heading](/images/foundations/patterns-legacy/new-badge/new-badge@2x.png)
 
 ## When to use the New badge
 

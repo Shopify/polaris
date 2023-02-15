@@ -26,23 +26,23 @@ const pattern: SingleVariantPattern = {
   |Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.|![“Add product” primary action button on a resource index page](/images/patterns/resource-index-usage-2.png)|
   |Set the page width to normal if the index doesn’t need full width.|![Index page with margins on either side of the main content](/images/patterns/resource-index-usage-3.png)|`,
   relatedResources: `* The [Resource detail layout](/patterns/resource-details-layout) pattern is a complement to the resource index layout pattern.
-* Use the [Empty state component](/components/empty-state) when the resource index is empty.
-* Learn about the meaning of “resources” on the [Resource list](/components/resource-list) component page
+* Use the [Empty state component](/components/layout-and-structure/empty-state) when the resource index is empty.
+* Learn about the meaning of “resources” on the [Resource list](/components/lists/resource-list) component page
 * Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
 * Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.`,
   example: {
     relatedComponents: [
       {
         label: 'Layout',
-        url: '/components/layout',
+        url: '/components/layout-and-structure/layout',
       },
       {
         label: 'Page',
-        url: '/components/page',
+        url: '/components/layout-and-structure/page',
       },
       {
         label: 'Card',
-        url: '/components/card',
+        url: '/components/layout-and-structure/card',
       },
     ],
     context: `
