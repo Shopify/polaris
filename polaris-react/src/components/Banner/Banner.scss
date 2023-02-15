@@ -1,9 +1,6 @@
 @import '../../styles/common';
 
 @mixin banner-variants($in-page) {
-  transition: border var(--p-duration-200) var(--p-ease);
-  transition-delay: var(--p-duration-100);
-  outline: var(--p-border-width-1) solid transparent;
   border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
   background-color: var(--p-background);
 
