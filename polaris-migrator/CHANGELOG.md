@@ -1,5 +1,16 @@
 # @shopify/polaris-migrator
 
+## 0.13.0
+
+### Minor Changes
+
+- [#8337](https://github.com/Shopify/polaris/pull/8337) [`8a15048e3`](https://github.com/Shopify/polaris/commit/8a15048e333a5e01ddf4352cf07b6d806bcc05f0) Thanks [@alex-page](https://github.com/alex-page)! - Rename migrations so they are prefixed with the relevant version number
+
+### Patch Changes
+
+- Updated dependencies [[`fd28b3a7a`](https://github.com/Shopify/polaris/commit/fd28b3a7ae0b81bb33f0497c65c348e5b04f7040)]:
+  - @shopify/stylelint-polaris@6.0.0
+
 ## 0.12.0
 
 ### Minor Changes

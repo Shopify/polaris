@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- [#8360](https://github.com/Shopify/polaris/pull/8360) [`fd28b3a7a`](https://github.com/Shopify/polaris/commit/fd28b3a7ae0b81bb33f0497c65c348e5b04f7040) Thanks [@alex-page](https://github.com/alex-page)! - Disallows percentage and other CSS values as a unit
+
 ## 5.2.1
 
 ### Patch Changes
