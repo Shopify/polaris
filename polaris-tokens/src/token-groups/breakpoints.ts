@@ -1,6 +1,16 @@
-import type {TokenGroup} from '../types';
+import type {MetadataProperties} from '../types';
 
-export const breakpoints = {
+export type BreakpointsAlias = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+export type BreakpointsTokenName = `breakpoints-${BreakpointsAlias}`;
+
+export type BreakpointsTokenGroup = {
+  [TokenName in BreakpointsTokenName]: string;
+};
+
+export const breakpoints: {
+  [TokenName in BreakpointsTokenName]: MetadataProperties;
+} = {
   'breakpoints-xs': {
     value: '0px',
     description:
@@ -27,9 +37,3 @@ export const breakpoints = {
       'Commonly used for sizing containers (e.g. max-width). See below for media query usage.',
   },
 };
-
-export type BreakpointsTokenGroup = TokenGroup<typeof breakpoints>;
-export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
-
-export const breakpointsAlias = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
-export type BreakpointsAlias = typeof breakpointsAlias[number];
