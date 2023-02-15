@@ -30,10 +30,13 @@ const pattern: SingleVariantPattern = {
 * Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.`,
   example: {
     relatedComponents: [
-      {label: 'AlphaStack', url: '/components/alpha-stack'},
-      {label: 'AlphaCard', url: '/components/alpha-card'},
-      {label: 'Columns', url: '/components/columns'},
-      {label: 'Box', url: '/components/box'},
+      {
+        label: 'AlphaStack',
+        url: '/components/layout-and-structure/alpha-stack',
+      },
+      {label: 'AlphaCard', url: '/components/layout-and-structure/alpha-card'},
+      {label: 'Columns', url: '/components/layout-and-structure/columns'},
+      {label: 'Box', url: '//components/layout-and-structure/box'},
     ],
     context: `
       <div style={{ paddingBottom: '2rem' }}>

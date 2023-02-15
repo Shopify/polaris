@@ -36,13 +36,13 @@ const pattern: MultiVariantPattern = {
 `,
       example: {
         relatedComponents: [
-          {label: 'Alpha Card', url: '/components/alpha-card'},
+          {label: 'Alpha Card', url: '/components/layout-and-structure/alpha-card'},
           {
             label: 'Date picker',
-            url: '/components/date-picker',
+            url: '/components/selection-and-input/date-picker',
           },
-          {label: 'Popover', url: '/components/popover'},
-          {label: 'Text field', url: '/components/text-field'},
+          {label: 'Popover', url: '/components/overlays/popover'},
+          {label: 'Text field', url: '/components/selection-and-input/text-field'},
         ],
         code: `
         {(function DatePickerExample() {
@@ -252,18 +252,18 @@ const pattern: MultiVariantPattern = {
 `,
       example: {
         relatedComponents: [
-          {label: 'Alpha stack', url: '/components/alpha-stack'},
-          {label: 'Box', url: '/components/box'},
-          {label: 'Button', url: '/components/button'},
-          {label: 'Columns', url: '/components/columns'},
+          {label: 'Alpha stack', url: '/components/layout-and-structure/alpha-stack'},
+          {label: 'Box', url: '/components/layout-and-structure/box'},
+          {label: 'Button', url: '/components/actions/button'},
+          {label: 'Columns', url: '/components/layout-and-structure/columns'},
           {
             label: 'Date picker',
-            url: '/components/date-picker',
+            url: '/components/selection-and-input/date-picker',
           },
-          {label: 'Inline', url: '/components/inline'},
-          {label: 'Option list', url: '/components/option-list'},
-          {label: 'Popover', url: '/components/popover'},
-          {label: 'Text field', url: '/components/text-field'},
+          {label: 'Inline', url: '/components/layout-and-structure/inline'},
+          {label: 'Option list', url: '/components/lists/option-list'},
+          {label: 'Popover', url: '/components/overlays/popover'},
+          {label: 'Text field', url: '/components/selection-and-input/text-field'},
         ],
         snippetCode: `
         function DateRangePicker() {

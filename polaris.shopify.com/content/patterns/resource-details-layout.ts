@@ -31,26 +31,26 @@ const pattern: SingleVariantPattern = {
   |Put supporting information such as status, metadata, and summaries in the secondary column.|![Product details page with the secondary column outlined](/images/patterns/resource-detail-usage-4.png)|
   |Arrange content in order of importance.|![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-detail-usage-5.png)|`,
   relatedResources: `* The [Resource index layout](/patterns/resource-index-layout) pattern is a complement to the resource detail layout pattern.
-* Learn about the meaning of “resources” on the [Resource list](/components/resource-list) component page
+* Learn about the meaning of “resources” on the [Resource list](/components/lists/resource-list) component page
 * Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
 * Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.`,
   example: {
     relatedComponents: [
       {
         label: 'AlphaCard',
-        url: '/components/alpha-card',
+        url: '/components/layout-and-structure/alpha-card',
       },
       {
         label: 'AlphaStack',
-        url: '/components/alpha-stack',
+        url: '/components/layout-and-structure/alpha-stack',
       },
       {
         label: 'Columns',
-        url: '/components/columns',
+        url: '/components/layout-and-structure/columns',
       },
       {
         label: 'Page',
-        url: '/components/page',
+        url: '/components/layout-and-structure/page',
       },
     ],
     snippetCode: `
