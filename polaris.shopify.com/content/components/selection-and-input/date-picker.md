@@ -16,9 +16,7 @@ keywords:
   - date selector
   - date range picker
   - date range selector
-  status:
-  value: Alert
-  message: We are adding patterns to components pages. Check out related patterns, expect changes to happen, and join the discussion to make it better!
+update: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [Component lifecycle](/getting-started/components-lifecycle).
 examples:
   - fileName: date-picker-default.tsx
     title: Default
