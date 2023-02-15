@@ -14,7 +14,7 @@ type Align = 'start' | 'end' | 'center';
 
 type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
-type Gap = ResponsiveProp<SpacingSpaceScale>;
+type Gap = ResponsiveProp<SpacingSpaceScale | '0'>;
 
 export interface AlphaStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
@@ -47,7 +47,7 @@ export const AlphaStack = ({
   children,
   align = 'start',
   fullWidth = false,
-  gap = '4',
+  gap,
   id,
   reverseOrder = false,
   ...restProps

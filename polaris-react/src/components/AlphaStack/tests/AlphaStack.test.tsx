@@ -19,7 +19,7 @@ describe('<AlphaStack />', () => {
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-stack-align': 'start',
-        '--pc-stack-gap-xs': 'var(--p-space-4)',
+        '--pc-stack-gap-xs': 'none',
       }) as React.CSSProperties,
     });
   });
