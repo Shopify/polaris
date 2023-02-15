@@ -43,7 +43,7 @@
     "remark-directive": "^2.0.1",
     "remark-directive-rehype": "^0.4.2",
     "remark-gfm": "^3.0.1",
-    "react-syntax-highlighter": "^15.5.6",
+    "react-syntax-highlighter": "^15.5.0",
     "remark-unwrap-images": "^3.0.1",
     "use-dark-mode": "^2.3.1"
   },
