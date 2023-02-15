@@ -6,22 +6,32 @@ import type {
 
 import {
   getResponsiveProps,
+  getResponsiveValue,
   sanitizeCustomProperties,
+  ResponsiveValue,
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
-type Columns = {
-  [Breakpoint in BreakpointsAlias]?: number | string;
-};
+type ColumnWidths = 'oneThird' | 'oneHalf' | 'twoThirds';
+type ColumnTypes = number | string | ColumnWidths[];
+
+type Columns =
+  | ColumnTypes
+  | {
+      [Breakpoint in BreakpointsAlias]?: ColumnTypes;
+    };
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface ColumnsProps {
   children?: React.ReactNode;
-  /** The number of columns to display
+  /** The number of columns to display. Accepts either a single value or an object of values for different screen sizes.
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
+   * @example
+   * columns={6}
+   * columns={{xs: 1, sm: 1, md: 3, lg: 6, xl: 6}}
    */
   columns?: Columns;
   /** The spacing between children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
@@ -35,11 +45,11 @@ export interface ColumnsProps {
 
 export function Columns({children, columns, gap = '4'}: ColumnsProps) {
   const style = {
-    '--pc-columns-xs': formatColumns(columns?.xs || 6),
-    '--pc-columns-sm': formatColumns(columns?.sm),
-    '--pc-columns-md': formatColumns(columns?.md),
-    '--pc-columns-lg': formatColumns(columns?.lg),
-    '--pc-columns-xl': formatColumns(columns?.xl),
+    ...getResponsiveValue(
+      'columns',
+      'grid-template-columns',
+      formatColumns(columns),
+    ),
     ...getResponsiveProps('columns', 'gap', 'space', gap),
   } as React.CSSProperties;
 
@@ -50,10 +60,43 @@ export function Columns({children, columns, gap = '4'}: ColumnsProps) {
   );
 }
 
-function formatColumns(columns?: number | string) {
+function formatColumns(columns?: Columns): ResponsiveValue {
+  if (
+    typeof columns === 'object' &&
+    columns !== null &&
+    !Array.isArray(columns)
+  ) {
+    return Object.fromEntries(
+      Object.entries(columns).map(([breakpointAlias, breakpointColumns]) => [
+        breakpointAlias,
+        getColumnValue(breakpointColumns),
+      ]),
+    );
+  }
+
+  return getColumnValue(columns);
+}
+
+function getColumnValue(columns?: ColumnTypes) {
   if (!columns) return undefined;
 
-  return typeof columns === 'number'
-    ? `repeat(${columns}, minmax(0, 1fr))`
-    : columns;
+  if (typeof columns === 'string') return columns;
+
+  if (typeof columns === 'number') {
+    return `repeat(${columns}, minmax(0, 1fr))`;
+  }
+
+  return columns
+    .map((column) => {
+      switch (column) {
+        case 'oneThird':
+        case 'oneHalf':
+          return 'minmax(0, 1fr)';
+        case 'twoThirds':
+          return 'minmax(0, 2fr)';
+        default:
+          return column;
+      }
+    })
+    .join(' ');
 }
