@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-cli",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Commands for building Shopify Apps with Polaris",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@oclif/core": "^1.13.10",
-    "@shopify/polaris-migrator": "^0.13.0"
+    "@shopify/polaris-migrator": "^0.13.1"
   },
   "devDependencies": {
     "typescript": "^4.7.4"
