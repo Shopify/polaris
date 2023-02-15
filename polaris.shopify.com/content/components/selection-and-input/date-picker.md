@@ -16,6 +16,9 @@ keywords:
   - date selector
   - date range picker
   - date range selector
+  status:
+  value: New
+  message: We are adding patterns to components pages. Check out related patterns, expect changes to happen, and join the discussion to make it better!
 examples:
   - fileName: date-picker-default.tsx
     title: Default
@@ -60,4 +63,4 @@ If you use the date picker within a [popover component](/components/overlays/pop
 
 ## Related Patterns
 
-- [Date Picking](../../../content/patterns/date-picking.md)
+- [Date Picking](/patterns/date-picking)
