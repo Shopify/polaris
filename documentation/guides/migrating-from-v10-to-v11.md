@@ -35,3 +35,23 @@ We've removed the following deprecated prop from the Collapsible component:
 We are removing low usage components from Polaris. We love fun but we also want to ensure we are shipping exactly what our users need. If you want to use this in your project feel free to copy the [component sourcecode](https://github.com/Shopify/polaris/blob/%40shopify/polaris%4010.24.0/polaris-react/src/components/KonamiCode/KonamiCode.tsx).
 
 ## Tokens
+
+The following tokens have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents.
+
+| Deprecated Token         | Replacement Value     |
+| ------------------------ | --------------------- |
+| `--p-shadow-transparent` | `0 0 0 0 transparent` |
+| `--p-duration-0`         | `0ms`                 |
+| `--p-space-0`            | `0`                   |
+| `--p-z-1`                | `--p-z-index-1`       |
+| `--p-z-2`                | `--p-z-index-2`       |
+| `--p-z-3`                | `--p-z-index-3`       |
+| `--p-z-4`                | `--p-z-index-4`       |
+| `--p-z-5`                | `--p-z-index-5`       |
+| `--p-z-6`                | `--p-z-index-6`       |
+| `--p-z-7`                | `--p-z-index-7`       |
+| `--p-z-8`                | `--p-z-index-8`       |
+| `--p-z-9`                | `--p-z-index-9`       |
+| `--p-z-10`               | `--p-z-index-10`      |
+| `--p-z-11`               | `--p-z-index-11`      |
+| `--p-z-12`               | `--p-z-index-12`      |
