@@ -59,8 +59,8 @@ const StylelintRulePage: NextPage<Props> = ({
     <Page title={title} editPageLinkPath={editPageLinkPath}>
       <PageMeta title={title} description={description} />
       <Longform>
-        {description ? <Markdown text={description} /> : null}
-        <Markdown text={readme} />
+        {description ? <Markdown>{description}</Markdown> : null}
+        <Markdown>{readme}</Markdown>
       </Longform>
     </Page>
   );
