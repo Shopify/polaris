@@ -208,15 +208,3 @@ export function WithEndJustifiedContent() {
     </Banner>
   );
 }
-
-export function WithoutIcon() {
-  return (
-    <Box width="360px">
-      <Card title="Shipping address" actions={[{content: 'Edit'}]} sectioned>
-        <Banner status="warning" hideIcon>
-          <p>This order doesn't have a shipping address.</p>
-        </Banner>
-      </Card>
-    </Box>
-  );
-}

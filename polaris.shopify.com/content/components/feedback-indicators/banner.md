@@ -55,9 +55,6 @@ examples:
   - fileName: banner-in-a-card.tsx
     title: In a card
     description: Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
-  - fileName: banner-without-icon.tsx
-    title: Without icon
-    description: Use when the icon takes up too much space, such as very small breakpoints or in side navigation cards.
 ---
 
 ## Best practices
