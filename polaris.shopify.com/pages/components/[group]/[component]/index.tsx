@@ -12,6 +12,7 @@ import {toPascalCase} from '../../../../src/utils/various';
 import PageMeta from '../../../../src/components/PageMeta';
 import {Status, FilteredTypes, AllTypes} from '../../../../src/types';
 import StatusBanner from '../../../../src/components/StatusBanner';
+import UpdateBanner from '../../../../src/components/UpdateBanner';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
 
@@ -32,6 +33,7 @@ interface Props {
   };
   type: FilteredTypes;
   editPageLinkPath: string;
+  updateBannerMessage?: string;
 }
 
 const Components = ({
@@ -41,6 +43,7 @@ const Components = ({
   readme,
   status,
   type,
+  updateBannerMessage,
   editPageLinkPath,
 }: Props) => {
   const typedStatus: Status | undefined = status
@@ -65,6 +68,7 @@ const Components = ({
       <Longform>
         <Markdown>{description}</Markdown>
         {typedStatus && <StatusBanner status={typedStatus} />}
+        {updateBannerMessage && <UpdateBanner message={updateBannerMessage} />}
         {componentExamples}
       </Longform>
 

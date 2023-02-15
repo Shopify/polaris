@@ -16,7 +16,7 @@ keywords:
   - date selector
   - date range picker
   - date range selector
-update: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [Component lifecycle](/getting-started/components-lifecycle).
+updateBannerMessage: We are [adding patterns](/patterns) to our documentation. Check out related patterns, expect changes to happen, and [join the discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better!
 examples:
   - fileName: date-picker-default.tsx
     title: Default

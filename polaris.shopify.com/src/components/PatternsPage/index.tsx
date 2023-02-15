@@ -8,6 +8,7 @@ import Icon from '../Icon';
 import styles from './PatternsPage.module.scss';
 import Preview from '../PatternThumbnailPreview';
 import {patterns} from '../../utils/various';
+import UpdateBanner from '../UpdateBanner';
 
 const description =
   'Preferred solutions to common merchant goals in the admin.';
@@ -23,18 +24,12 @@ export const PatternsPage = () => (
             <h1 className={styles.Header}>Patterns </h1>
             <p>{description}</p>
           </Longform>
-          <div className={styles.Banner}>
-            <Icon source={FlagMajor} width={20} height={20} />
-            <p>
-              We are making changes to the patterns section. Expect changes to
-              happen here and{' '}
-              <a href="https://github.com/Shopify/polaris/discussions/categories/pattern-documentation">
-                join the discussion
-              </a>{' '}
-              to make it better.{' '}
-              <a href="/patterns-legacy">See old patterns here</a>
-            </p>
-          </div>
+          <UpdateBanner
+            message={`We are making changes to the patterns section. Expect changes to
+              happen here and [join the discussion]("https://github.com/Shopify/polaris/discussions/categories/pattern-documentation)
+              to make it better. [See old patterns here]("/patterns-legacy").`}
+            width="50%"
+          />
         </div>
         <Grid>
           {Object.values(patterns).map(({frontMatter: pattern}, index) => (
