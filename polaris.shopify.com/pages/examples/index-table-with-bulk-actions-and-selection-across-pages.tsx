@@ -1,4 +1,4 @@
-import {IndexTable, LegacyCard, useIndexResourceState, Text} from '@shopify/polaris';
+import {IndexTable, Card, useIndexResourceState, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,7 +6,7 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
   const customers = [
     {
       id: '3414',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -14,7 +14,7 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
     },
     {
       id: '2564',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -71,7 +71,7 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -91,7 +91,7 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 

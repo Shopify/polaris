@@ -1,7 +1,7 @@
 import {
   TextField,
   IndexTable,
-  LegacyCard,
+  Card,
   Filters,
   Select,
   useIndexResourceState,
@@ -14,7 +14,7 @@ function IndexTableWithAllElementsExample() {
   const customers = [
     {
       id: '3417',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -22,7 +22,7 @@ function IndexTableWithAllElementsExample() {
     },
     {
       id: '2567',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -127,7 +127,7 @@ function IndexTableWithAllElementsExample() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
           <Filters
@@ -169,7 +169,7 @@ function IndexTableWithAllElementsExample() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 
   function disambiguateLabel(key, value) {

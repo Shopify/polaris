@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, LegacyCard, Tabs} from '@shopify/polaris';
+import {Badge, Card, Tabs} from '@shopify/polaris';
 
 export default {
   component: Tabs,
@@ -39,13 +39,13 @@ export function Default() {
   ];
 
   return (
-    <LegacyCard>
+    <Card>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
-        <LegacyCard.Section title={tabs[selected].content}>
+        <Card.Section title={tabs[selected].content}>
           <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
+        </Card.Section>
       </Tabs>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -72,13 +72,13 @@ export function Fitted() {
   ];
 
   return (
-    <LegacyCard>
+    <Card>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
-        <LegacyCard.Section title={tabs[selected].content}>
+        <Card.Section title={tabs[selected].content}>
           <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
+        </Card.Section>
       </Tabs>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -113,13 +113,13 @@ export function WithBadgeContent() {
   ];
 
   return (
-    <LegacyCard>
+    <Card>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
-        <LegacyCard.Section title={tabs[selected].content}>
+        <Card.Section title={tabs[selected].content}>
           <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
+        </Card.Section>
       </Tabs>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -156,17 +156,17 @@ export function WithCustomDisclosure() {
   ];
 
   return (
-    <LegacyCard>
+    <Card>
       <Tabs
         tabs={tabs}
         selected={selected}
         onSelect={handleTabChange}
         disclosureText="More views"
       >
-        <LegacyCard.Section title={tabs[selected].content}>
+        <Card.Section title={tabs[selected].content}>
           <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
+        </Card.Section>
       </Tabs>
-    </LegacyCard>
+    </Card>
   );
 }

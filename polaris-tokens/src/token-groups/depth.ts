@@ -1,6 +1,30 @@
-import type {TokenGroup} from '../types';
+import type {MetadataProperties} from '../types';
 
-export const depth = {
+export type DepthShadowAlias =
+  | 'base'
+  | 'transparent'
+  | 'faint'
+  | 'deep'
+  | 'button'
+  | 'top-bar'
+  | 'card'
+  | 'popover'
+  | 'layer'
+  | 'modal';
+
+type DepthShadowsAlias = 'inset-button' | 'inset-button-pressed';
+
+export type DepthTokenName =
+  | `shadow-${DepthShadowAlias}`
+  | `shadows-${DepthShadowsAlias}`;
+
+export type DepthTokenGroup = {
+  [TokenName in DepthTokenName]: string;
+};
+
+export const depth: {
+  [TokenName in DepthTokenName]: MetadataProperties;
+} = {
   'shadow-transparent': {
     value: '0 0 0 0 transparent',
   },
@@ -41,20 +65,3 @@ export const depth = {
     value: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
   },
 };
-
-export type DepthTokenGroup = TokenGroup<typeof depth>;
-export type DepthTokenName = keyof DepthTokenGroup;
-
-export const depthShadowAlias = [
-  'base',
-  'transparent',
-  'faint',
-  'deep',
-  'button',
-  'top-bar',
-  'card',
-  'popover',
-  'layer',
-  'modal',
-] as const;
-export type DepthShadowAlias = typeof depthShadowAlias[number];

@@ -2,7 +2,7 @@ import {
   ChoiceList,
   TextField,
   RangeSlider,
-  LegacyCard,
+  Card,
   ResourceList,
   Filters,
   Avatar,
@@ -134,7 +134,7 @@ function ResourceListFiltersExample() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -152,13 +152,13 @@ function ResourceListFiltersExample() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -182,7 +182,7 @@ function ResourceListFiltersExample() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 

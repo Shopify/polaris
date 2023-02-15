@@ -1,13 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  Badge,
-  Button,
-  LegacyCard,
-  Page,
-  PageActions,
-  Stack,
-} from '@shopify/polaris';
+import {Badge, Button, Card, Page, PageActions, Stack} from '@shopify/polaris';
 import {PlusMinor, ArrowDownMinor, ExternalMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -17,7 +10,7 @@ export default {
 export function Default() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      breadcrumbs={[{content: 'Products', url: '#'}]}
       title="3/4 inch Leather pet collar"
       titleMetadata={<Badge status="success">Paid</Badge>}
       subtitle="Perfect for any pet"
@@ -52,9 +45,9 @@ export function Default() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -62,7 +55,7 @@ export function Default() {
 export function WithCustomPrimaryAction() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      breadcrumbs={[{content: 'Settings', url: '#'}]}
       title="General"
       primaryAction={
         <Button
@@ -76,9 +69,9 @@ export function WithCustomPrimaryAction() {
         </Button>
       }
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -86,7 +79,7 @@ export function WithCustomPrimaryAction() {
 export function WithoutPrimaryActionInHeader() {
   return (
     <Page
-      breadcrumbs={[{content: 'Orders', url: '/orders'}]}
+      breadcrumbs={[{content: 'Orders', url: '#'}]}
       title="#1085"
       secondaryActions={[
         {content: 'Print'},
@@ -98,14 +91,14 @@ export function WithoutPrimaryActionInHeader() {
         hasNext: true,
       }}
     >
-      <LegacyCard sectioned title="Fulfill order">
+      <Card sectioned title="Fulfill order">
         <Stack alignment="center">
           <Stack.Item fill>
             <p>Buy postage and ship remaining 2 items</p>
           </Stack.Item>
           <Button primary>Continue</Button>
         </Stack>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -156,9 +149,9 @@ export function WithToolTipAction() {
         },
       ]}
     >
-      <LegacyCard title="Product X" sectioned>
+      <Card title="Product X" sectioned>
         <p>Product X information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -166,14 +159,14 @@ export function WithToolTipAction() {
 export function WithSubtitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      breadcrumbs={[{content: 'Products', url: '#'}]}
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -192,9 +185,9 @@ export function WithExternalLink() {
         },
       ]}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -202,13 +195,13 @@ export function WithExternalLink() {
 export function WithoutPagination() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      breadcrumbs={[{content: 'Settings', url: '#'}]}
       title="General"
       primaryAction={{content: 'Save'}}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -224,9 +217,9 @@ export function FullWidth() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -235,13 +228,13 @@ export function NarrowWidth() {
   return (
     <Page
       narrowWidth
-      breadcrumbs={[{content: 'Orders', url: '/orders'}]}
+      breadcrumbs={[{content: 'Orders', url: '#'}]}
       title="Add payment method"
       primaryAction={{content: 'Save', disabled: true}}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
       <PageActions
         primaryAction={{content: 'Save', disabled: true}}
         secondaryActions={[{content: 'Delete'}]}
@@ -279,9 +272,9 @@ export function WithActionGroups() {
         },
       ]}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -289,7 +282,7 @@ export function WithActionGroups() {
 export function WithContentAfterTitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      breadcrumbs={[{content: 'Products', url: '#'}]}
       title="Jar With Lock-Lid"
       titleMetadata={<Badge status="attention">Verified</Badge>}
       primaryAction={{content: 'Save', disabled: true}}
@@ -302,9 +295,9 @@ export function WithContentAfterTitle() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }
@@ -312,13 +305,13 @@ export function WithContentAfterTitle() {
 export function WithDivider() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      breadcrumbs={[{content: 'Settings', url: '#'}]}
       title="General"
       divider
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }

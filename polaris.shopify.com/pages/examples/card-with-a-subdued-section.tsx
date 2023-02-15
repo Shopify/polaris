@@ -11,6 +11,7 @@ function CardExample() {
           <List.Item>Ezequiel Manno</List.Item>
         </List>
       </Card.Section>
+
       <Card.Section subdued title="Deactivated staff accounts">
         <List>
           <List.Item>Felix Crafford</List.Item>

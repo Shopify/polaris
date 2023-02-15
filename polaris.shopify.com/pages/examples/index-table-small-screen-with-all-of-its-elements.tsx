@@ -1,7 +1,7 @@
 import {
   TextField,
   IndexTable,
-  LegacyCard,
+  Card,
   Filters,
   Select,
   useIndexResourceState,
@@ -14,7 +14,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
   const customers = [
     {
       id: '3418',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -22,7 +22,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
     },
     {
       id: '2568',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -128,7 +128,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
 
   return (
     <div style={{width: '430px'}}>
-      <LegacyCard>
+      <Card>
         <div style={{padding: '16px', display: 'flex'}}>
           <div style={{flex: 1}}>
             <Filters
@@ -170,7 +170,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
         >
           {rowMarkup}
         </IndexTable>
-      </LegacyCard>
+      </Card>
     </div>
   );
 

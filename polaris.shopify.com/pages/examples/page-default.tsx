@@ -1,11 +1,11 @@
-import {Page, Badge, LegacyCard} from '@shopify/polaris';
+import {Page, Badge, Card} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      breadcrumbs={[{content: 'Products', url: '#'}]}
       title="3/4 inch Leather pet collar"
       titleMetadata={<Badge status="success">Paid</Badge>}
       subtitle="Perfect for any pet"
@@ -40,9 +40,9 @@ function PageExample() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
+      <Card title="Credit card" sectioned>
         <p>Credit card information</p>
-      </LegacyCard>
+      </Card>
     </Page>
   );
 }

@@ -1,162 +1,149 @@
 import type {MetadataProperties} from '../types';
 import * as colors from '../colors';
 
-export type ColorBackgroundTokenAlias =
-  typeof colorBackgroundTokenAlias[number];
+export type ColorBackgroundAlias =
+  | 'bg'
+  | 'bg-active'
+  | 'bg-app'
+  | 'bg-app-hover'
+  | 'bg-app-selected'
+  | 'bg-caution'
+  | 'bg-caution-strong'
+  | 'bg-caution-subdued'
+  | 'bg-caution-subdued-active'
+  | 'bg-caution-subdued-hover'
+  | 'bg-critical-strong'
+  | 'bg-critical-strong-active'
+  | 'bg-critical-strong-hover'
+  | 'bg-critical-subdued'
+  | 'bg-critical-subdued-active'
+  | 'bg-critical-subdued-hover'
+  | 'bg-critical'
+  | 'bg-disabled'
+  | 'bg-hover'
+  | 'bg-info'
+  | 'bg-info-strong'
+  | 'bg-info-subdued'
+  | 'bg-info-subdued-active'
+  | 'bg-info-subdued-hover'
+  | 'bg-input'
+  | 'bg-inset'
+  | 'bg-inset-strong'
+  | 'bg-interactive'
+  | 'bg-interactive-active'
+  | 'bg-interactive-disabled'
+  | 'bg-interactive-hover'
+  | 'bg-interactive-selected'
+  | 'bg-interactive-subdued'
+  | 'bg-interactive-subdued-active'
+  | 'bg-interactive-subdued-hover'
+  | 'bg-inverse'
+  | 'bg-inverse-active'
+  | 'bg-inverse-hover'
+  | 'bg-primary'
+  | 'bg-primary-active'
+  | 'bg-primary-hover'
+  | 'bg-primary-subdued'
+  | 'bg-primary-subdued-active'
+  | 'bg-primary-subdued-hover'
+  | 'bg-primary-subdued-selected'
+  | 'bg-strong'
+  | 'bg-strong-active'
+  | 'bg-strong-hover'
+  | 'bg-subdued'
+  | 'bg-subdued-active'
+  | 'bg-subdued-hover'
+  | 'bg-success'
+  | 'bg-success-strong'
+  | 'bg-success-subdued'
+  | 'bg-success-subdued-active'
+  | 'bg-success-subdued-hover'
+  | 'bg-warning';
 
-export const colorBackgroundTokenAlias = [
-  'bg',
-  'bg-active',
-  'bg-app',
-  'bg-app-hover',
-  'bg-app-selected',
-  'bg-caution',
-  'bg-caution-strong',
-  'bg-caution-subdued',
-  'bg-caution-subdued-active',
-  'bg-caution-subdued-hover',
-  'bg-critical-strong',
-  'bg-critical-strong-active',
-  'bg-critical-strong-hover',
-  'bg-critical-subdued',
-  'bg-critical-subdued-active',
-  'bg-critical-subdued-hover',
-  'bg-critical',
-  'bg-disabled',
-  'bg-hover',
-  'bg-info',
-  'bg-info-strong',
-  'bg-info-subdued',
-  'bg-info-subdued-active',
-  'bg-info-subdued-hover',
-  'bg-input',
-  'bg-inset',
-  'bg-inset-strong',
-  'bg-interactive',
-  'bg-interactive-active',
-  'bg-interactive-disabled',
-  'bg-interactive-hover',
-  'bg-interactive-selected',
-  'bg-interactive-subdued',
-  'bg-interactive-subdued-active',
-  'bg-interactive-subdued-hover',
-  'bg-inverse',
-  'bg-inverse-active',
-  'bg-inverse-hover',
-  'bg-primary',
-  'bg-primary-active',
-  'bg-primary-hover',
-  'bg-primary-subdued',
-  'bg-primary-subdued-active',
-  'bg-primary-subdued-hover',
-  'bg-primary-subdued-selected',
-  'bg-strong',
-  'bg-strong-active',
-  'bg-strong-hover',
-  'bg-subdued',
-  'bg-subdued-active',
-  'bg-subdued-hover',
-  'bg-success',
-  'bg-success-strong',
-  'bg-success-subdued',
-  'bg-success-subdued-active',
-  'bg-success-subdued-hover',
-  'bg-warning',
-] as const;
+export type ColorBorderAlias =
+  | 'border'
+  | 'border-caution'
+  | 'border-caution-subdued'
+  | 'border-critical'
+  | 'border-critical-active'
+  | 'border-critical-hover'
+  | 'border-critical-subdued'
+  | 'border-disabled'
+  | 'border-hover'
+  | 'border-info'
+  | 'border-info-subdued'
+  | 'border-input'
+  | 'border-input-hover'
+  | 'border-interactive'
+  | 'border-interactive-active'
+  | 'border-interactive-disabled'
+  | 'border-interactive-focus'
+  | 'border-interactive-hover'
+  | 'border-interactive-subdued'
+  | 'border-inverse'
+  | 'border-primary'
+  | 'border-strong'
+  | 'border-strong-hover'
+  | 'border-subdued'
+  | 'border-success'
+  | 'border-success-subdued';
 
-export type ColorBorderTokenAlias = typeof ColorBorderTokenAlias[number];
+export type ColorIconAlias =
+  | 'icon'
+  | 'icon-active'
+  | 'icon-caution'
+  | 'icon-critical'
+  | 'icon-disabled'
+  | 'icon-hover'
+  | 'icon-info'
+  | 'icon-interactive'
+  | 'icon-interactive-active'
+  | 'icon-interactive-disabled'
+  | 'icon-interactive-hover'
+  | 'icon-interactive-inverse'
+  | 'icon-inverse'
+  | 'icon-on-color'
+  | 'icon-primary'
+  | 'icon-subdued'
+  | 'icon-success'
+  | 'icon-warning';
 
-export const ColorBorderTokenAlias = [
-  'border',
-  'border-caution',
-  'border-caution-subdued',
-  'border-critical',
-  'border-critical-active',
-  'border-critical-hover',
-  'border-critical-subdued',
-  'border-disabled',
-  'border-hover',
-  'border-info',
-  'border-info-subdued',
-  'border-input',
-  'border-input-hover',
-  'border-interactive',
-  'border-interactive-active',
-  'border-interactive-disabled',
-  'border-interactive-focus',
-  'border-interactive-hover',
-  'border-interactive-subdued',
-  'border-inverse',
-  'border-primary',
-  'border-strong',
-  'border-strong-hover',
-  'border-subdued',
-  'border-success',
-  'border-success-subdued',
-] as const;
-
-export type ColorIconTokenAlias = typeof colorIconTokenAlias[number];
-
-export const colorIconTokenAlias = [
-  'icon',
-  'icon-active',
-  'icon-caution',
-  'icon-critical',
-  'icon-disabled',
-  'icon-hover',
-  'icon-info',
-  'icon-interactive',
-  'icon-interactive-active',
-  'icon-interactive-disabled',
-  'icon-interactive-hover',
-  'icon-interactive-inverse',
-  'icon-inverse',
-  'icon-on-color',
-  'icon-primary',
-  'icon-subdued',
-  'icon-success',
-  'icon-warning',
-] as const;
-
-export type ColorTextTokenAlias = typeof colorTextTokenAlias[number];
-
-export const colorTextTokenAlias = [
-  'text',
-  'text-caution',
-  'text-caution-strong',
-  'text-critical',
-  'text-critical-active',
-  'text-critical-strong',
-  'text-disabled',
-  'text-info',
-  'text-info-strong',
-  'text-interactive',
-  'text-interactive-active',
-  'text-interactive-disabled',
-  'text-interactive-hover',
-  'text-interactive-inverse',
-  'text-inverse',
-  'text-inverse-subdued',
-  'text-on-color',
-  'text-primary',
-  'text-subdued',
-  'text-success',
-  'text-success-strong',
-  'text-warning-strong',
-] as const;
+export type ColorTextAlias =
+  | 'text'
+  | 'text-caution'
+  | 'text-caution-strong'
+  | 'text-critical'
+  | 'text-critical-active'
+  | 'text-critical-strong'
+  | 'text-disabled'
+  | 'text-info'
+  | 'text-info-strong'
+  | 'text-interactive'
+  | 'text-interactive-active'
+  | 'text-interactive-disabled'
+  | 'text-interactive-hover'
+  | 'text-interactive-inverse'
+  | 'text-inverse'
+  | 'text-inverse-subdued'
+  | 'text-on-color'
+  | 'text-primary'
+  | 'text-subdued'
+  | 'text-success'
+  | 'text-success-strong'
+  | 'text-warning-strong';
 
 export type ColorTokenName =
-  | ColorBackgroundTokenAlias
-  | ColorBorderTokenAlias
-  | ColorIconTokenAlias
-  | ColorTextTokenAlias;
+  | `color-${ColorBackgroundAlias}`
+  | `color-${ColorBorderAlias}`
+  | `color-${ColorIconAlias}`
+  | `color-${ColorTextAlias}`;
 
 export type ColorTokenGroup = {
-  [TokenName in ColorTokenName as `color-${TokenName}`]: string;
+  [TokenName in ColorTokenName]: string;
 };
 
 export const color: {
-  [TokenName in ColorTokenName as `color-${TokenName}`]: MetadataProperties;
+  [TokenName in ColorTokenName]: MetadataProperties;
 } = {
   'color-bg-inverse': {
     value: colors.gray[900],

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  LegacyCard,
+  Card,
   EmptySearchResult,
   Scrollable,
   TextField,
@@ -314,7 +314,7 @@ export function WithSearch() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <div
         style={{
           alignItems: 'stretch',
@@ -344,6 +344,6 @@ export function WithSearch() {
           {listboxMarkup}
         </Scrollable>
       </div>
-    </LegacyCard>
+    </Card>
   );
 }

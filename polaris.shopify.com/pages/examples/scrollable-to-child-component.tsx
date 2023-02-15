@@ -1,10 +1,10 @@
-import {LegacyCard, Scrollable} from '@shopify/polaris';
+import {Card, Scrollable} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ScrollableExample() {
   return (
-    <LegacyCard title="Terms of service" sectioned>
+    <Card title="Terms of service" sectioned>
       <Scrollable shadow style={{height: '100px'}}>
         <ol>
           <li>Account Terms</li>
@@ -291,7 +291,7 @@ function ScrollableExample() {
           credit card information is always encrypted.
         </p>
       </Scrollable>
-    </LegacyCard>
+    </Card>
   );
 }
 export default withPolarisExample(ScrollableExample);

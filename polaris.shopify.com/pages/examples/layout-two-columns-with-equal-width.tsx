@@ -1,7 +1,7 @@
 import {
   Page,
   Layout,
-  LegacyCard,
+  Card,
   ResourceList,
   Thumbnail,
   Text,
@@ -14,19 +14,19 @@ function LayoutExample() {
     <Page fullWidth>
       <Layout>
         <Layout.Section oneHalf>
-          <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
-            <LegacyCard.Section>
+          <Card title="Florida" actions={[{content: 'Manage'}]}>
+            <Card.Section>
               <Text variant="bodyMd" color="subdued" as="span">
                 455 units available
               </Text>
-            </LegacyCard.Section>
-            <LegacyCard.Section title="Items">
+            </Card.Section>
+            <Card.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
                     id: 341,
-                    url: 'produdcts/341',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '254',
@@ -39,7 +39,7 @@ function LayoutExample() {
                   },
                   {
                     id: 256,
-                    url: 'produdcts/256',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -70,23 +70,23 @@ function LayoutExample() {
                   );
                 }}
               />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
         <Layout.Section oneHalf>
-          <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
-            <LegacyCard.Section>
+          <Card title="Nevada" actions={[{content: 'Manage'}]}>
+            <Card.Section>
               <Text variant="bodyMd" color="subdued" as="span">
                 301 units available
               </Text>
-            </LegacyCard.Section>
-            <LegacyCard.Section title="Items">
+            </Card.Section>
+            <Card.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
                     id: 342,
-                    url: 'produdcts/342',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '100',
@@ -99,7 +99,7 @@ function LayoutExample() {
                   },
                   {
                     id: 257,
-                    url: 'produdcts/257',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -130,8 +130,8 @@ function LayoutExample() {
                   );
                 }}
               />
-            </LegacyCard.Section>
-          </LegacyCard>
+            </Card.Section>
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>

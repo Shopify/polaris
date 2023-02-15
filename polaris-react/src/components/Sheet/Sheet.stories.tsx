@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  LegacyCard,
+  Card,
   ChoiceList,
   Text,
   List,
@@ -87,14 +87,14 @@ export function Default() {
 
   return (
     <Page narrowWidth>
-      <LegacyCard
+      <Card
         sectioned
         subdued
         title="Product availability"
         actions={salesChannelAction}
       >
         {salesChannelsCardMarkup}
-      </LegacyCard>
+      </Card>
       <Sheet
         open={sheetActive}
         onClose={toggleSheetActive}

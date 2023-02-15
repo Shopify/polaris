@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, RangeSlider, Stack, TextField} from '@shopify/polaris';
+import {Card, RangeSlider, Stack, TextField} from '@shopify/polaris';
 
 export default {
   component: RangeSlider,
@@ -15,14 +15,14 @@ export function Default() {
   );
 
   return (
-    <LegacyCard sectioned title="Background color">
+    <Card sectioned title="Background color">
       <RangeSlider
         label="Opacity percentage"
         value={rangeValue}
         onChange={handleRangeSliderChange}
         output
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -35,7 +35,7 @@ export function WithMinAndMax() {
   );
 
   return (
-    <LegacyCard sectioned title="Navigation branding">
+    <Card sectioned title="Navigation branding">
       <RangeSlider
         output
         label="Logo offset"
@@ -44,7 +44,7 @@ export function WithMinAndMax() {
         value={rangeValue}
         onChange={handleRangeSliderChange}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -57,7 +57,7 @@ export function WithSteps() {
   );
 
   return (
-    <LegacyCard sectioned title="Navigation branding">
+    <Card sectioned title="Navigation branding">
       <RangeSlider
         output
         label="Logo offset"
@@ -67,7 +67,7 @@ export function WithSteps() {
         value={rangeValue}
         onChange={handleRangeSliderChange}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -85,7 +85,7 @@ export function WithPrefixAndSuffix() {
   };
 
   return (
-    <LegacyCard sectioned title="Text color">
+    <Card sectioned title="Text color">
       <RangeSlider
         output
         label="Hue color mix"
@@ -96,7 +96,7 @@ export function WithPrefixAndSuffix() {
         prefix={<p>Hue</p>}
         suffix={<p style={suffixStyles}>{rangeValue}</p>}
       />
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -169,7 +169,7 @@ export function WithDualThumb() {
       : intermediateTextFieldValue[1];
 
   return (
-    <LegacyCard sectioned title="Minimum requirements">
+    <Card sectioned title="Minimum requirements">
       <div onKeyDown={handleEnterKeyPress}>
         <RangeSlider
           output
@@ -208,6 +208,6 @@ export function WithDualThumb() {
           />
         </Stack>
       </div>
-    </LegacyCard>
+    </Card>
   );
 }

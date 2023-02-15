@@ -53,12 +53,12 @@ function LegacyCardExample() {
             {
               sales: 'Orders',
               amount: 'USD$0.00',
-              url: 'reports/orders',
+              url: '#',
             },
             {
               sales: 'Returns',
               amount: '-USD$250.00',
-              url: 'reports/returns',
+              url: '#',
             },
           ]}
           renderItem={(item) => {

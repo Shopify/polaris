@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   AppProvider,
-  LegacyCard,
+  Card,
   ContextualSaveBar,
   FormLayout,
   Frame,
@@ -238,7 +238,7 @@ export function InAnApplication() {
           title="Account details"
           description="Jaded Pixel will use this as your account information."
         >
-          <LegacyCard sectioned>
+          <Card sectioned>
             <FormLayout>
               <TextField
                 label="Full name"
@@ -254,7 +254,7 @@ export function InAnApplication() {
                 autoComplete="email"
               />
             </FormLayout>
-          </LegacyCard>
+          </Card>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
@@ -264,12 +264,12 @@ export function InAnApplication() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <LegacyCard sectioned>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -313,7 +313,7 @@ export function InAnApplication() {
       'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
     contextualSaveBarSource:
       'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    url: 'http://jadedpixel.com',
+    url: '#',
     accessibilityLabel: 'Jaded Pixel',
   };
 
@@ -577,7 +577,7 @@ export function WithAnOffset() {
           title="Account details"
           description="Jaded Pixel will use this as your account information."
         >
-          <LegacyCard sectioned>
+          <Card sectioned>
             <FormLayout>
               <TextField
                 label="Full name"
@@ -593,7 +593,7 @@ export function WithAnOffset() {
                 autoComplete="email"
               />
             </FormLayout>
-          </LegacyCard>
+          </Card>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
@@ -603,12 +603,12 @@ export function WithAnOffset() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <LegacyCard sectioned>
+          <Card sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </LegacyCard>
+          </Card>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -652,7 +652,7 @@ export function WithAnOffset() {
       'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
     contextualSaveBarSource:
       'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    url: 'http://jadedpixel.com',
+    url: '#',
     accessibilityLabel: 'Jaded Pixel',
   };
 

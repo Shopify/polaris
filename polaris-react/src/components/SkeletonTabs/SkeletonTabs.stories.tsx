@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, SkeletonTabs} from '@shopify/polaris';
+import {Card, SkeletonTabs} from '@shopify/polaris';
 
 export default {
   component: SkeletonTabs,
@@ -8,16 +8,16 @@ export default {
 
 export function Default() {
   return (
-    <LegacyCard>
+    <Card>
       <SkeletonTabs />
-    </LegacyCard>
+    </Card>
   );
 }
 
 export function WithACustomCount() {
   return (
-    <LegacyCard>
+    <Card>
       <SkeletonTabs count={4} />
-    </LegacyCard>
+    </Card>
   );
 }

@@ -2,7 +2,7 @@ import {
   TextField,
   Filters,
   Button,
-  LegacyCard,
+  Card,
   ResourceList,
   Avatar,
   ResourceItem,
@@ -34,13 +34,13 @@ function ResourceListWithFilteringExample() {
   const items = [
     {
       id: 108,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 208,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -89,14 +89,14 @@ function ResourceListWithFilteringExample() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <ResourceList
         resourceName={resourceName}
         items={items}
         renderItem={renderItem}
         filterControl={filterControl}
       />
-    </LegacyCard>
+    </Card>
   );
 
   function renderItem(item) {

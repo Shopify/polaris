@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  LegacyCard,
+  Card,
   EmptySearchResult,
   Filters,
   IndexTable,
@@ -22,7 +22,7 @@ export function Default() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -30,7 +30,7 @@ export function Default() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -66,7 +66,7 @@ export function Default() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -83,7 +83,7 @@ export function Default() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -91,7 +91,7 @@ export function Flush() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -99,7 +99,7 @@ export function Flush() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -135,7 +135,7 @@ export function Flush() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -152,7 +152,7 @@ export function Flush() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -160,7 +160,7 @@ export function SmallScreen() {
   const customers = [
     {
       id: '3412',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -168,7 +168,7 @@ export function SmallScreen() {
     },
     {
       id: '2562',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -207,7 +207,7 @@ export function SmallScreen() {
 
   return (
     <div style={{width: '430px'}}>
-      <LegacyCard>
+      <Card>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -225,7 +225,7 @@ export function SmallScreen() {
         >
           {rowMarkup}
         </IndexTable>
-      </LegacyCard>
+      </Card>
     </div>
   );
 }
@@ -234,7 +234,7 @@ export function SmallScreenLoading() {
   const customers = [
     {
       id: '3412',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -242,7 +242,7 @@ export function SmallScreenLoading() {
     },
     {
       id: '2562',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -281,7 +281,7 @@ export function SmallScreenLoading() {
 
   return (
     <div style={{width: '430px'}}>
-      <LegacyCard>
+      <Card>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -300,7 +300,7 @@ export function SmallScreenLoading() {
         >
           {rowMarkup}
         </IndexTable>
-      </LegacyCard>
+      </Card>
     </div>
   );
 }
@@ -344,7 +344,7 @@ export function WithEmptyState() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -362,7 +362,7 @@ export function WithEmptyState() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -370,7 +370,7 @@ export function WithBulkActions() {
   const customers = [
     {
       id: '3413',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -378,7 +378,7 @@ export function WithBulkActions() {
     },
     {
       id: '2563',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -435,7 +435,7 @@ export function WithBulkActions() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -454,7 +454,7 @@ export function WithBulkActions() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -462,7 +462,7 @@ export function WithMultiplePromotedBulkActions() {
   const customers = [
     {
       id: '3413',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -470,7 +470,7 @@ export function WithMultiplePromotedBulkActions() {
     },
     {
       id: '2563',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -553,7 +553,7 @@ export function WithMultiplePromotedBulkActions() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -572,7 +572,7 @@ export function WithMultiplePromotedBulkActions() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -580,7 +580,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   const customers = Array.from({length: 50}, (_, num) => {
     return {
       id: `${num}`,
-      url: '/customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -649,7 +649,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     <div
       style={{padding: 'var(--p-space-4) var(--p-space-4) var(--p-space-10)'}}
     >
-      <LegacyCard>
+      <Card>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -669,7 +669,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
         >
           {rowMarkup}
         </IndexTable>
-      </LegacyCard>
+      </Card>
     </div>
   );
 }
@@ -678,7 +678,7 @@ export function WithLoadingState() {
   const customers = [
     {
       id: '3415',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -686,7 +686,7 @@ export function WithLoadingState() {
     },
     {
       id: '2565',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -722,7 +722,7 @@ export function WithLoadingState() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -740,7 +740,7 @@ export function WithLoadingState() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -748,7 +748,7 @@ export function WithFiltering() {
   const customers = [
     {
       id: '3416',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -756,7 +756,7 @@ export function WithFiltering() {
     },
     {
       id: '2566',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -840,7 +840,7 @@ export function WithFiltering() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
           <Filters
@@ -878,7 +878,7 @@ export function WithFiltering() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 
   function disambiguateLabel(key, value) {
@@ -903,7 +903,7 @@ export function WithRowStatus() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -912,7 +912,7 @@ export function WithRowStatus() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -950,7 +950,7 @@ export function WithRowStatus() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -967,7 +967,7 @@ export function WithRowStatus() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -975,7 +975,7 @@ export function WithStickyLastColumn() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -987,7 +987,7 @@ export function WithStickyLastColumn() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -1044,7 +1044,7 @@ export function WithStickyLastColumn() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1066,7 +1066,7 @@ export function WithStickyLastColumn() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -1074,7 +1074,7 @@ export function WithRowNavigationLink() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -1082,7 +1082,7 @@ export function WithRowNavigationLink() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -1124,7 +1124,7 @@ export function WithRowNavigationLink() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1141,7 +1141,7 @@ export function WithRowNavigationLink() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -1149,7 +1149,7 @@ export function WithClickableButtonColumn() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -1157,7 +1157,7 @@ export function WithClickableButtonColumn() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -1199,7 +1199,7 @@ export function WithClickableButtonColumn() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1216,7 +1216,7 @@ export function WithClickableButtonColumn() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -1224,7 +1224,7 @@ export function WithoutCheckboxes() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -1232,7 +1232,7 @@ export function WithoutCheckboxes() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -1260,7 +1260,7 @@ export function WithoutCheckboxes() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1274,7 +1274,7 @@ export function WithoutCheckboxes() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -1282,7 +1282,7 @@ export function WithAllOfItsElements() {
   const customers = [
     {
       id: '3417',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -1290,7 +1290,7 @@ export function WithAllOfItsElements() {
     },
     {
       id: '2567',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -1395,7 +1395,7 @@ export function WithAllOfItsElements() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
           <Filters
@@ -1437,7 +1437,7 @@ export function WithAllOfItsElements() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 
   function disambiguateLabel(key, value) {
@@ -1476,7 +1476,7 @@ export function WithSortableHeadings() {
   const initialRows = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       date: '2022-02-04',
       location: 'Decatur, USA',
@@ -1488,7 +1488,7 @@ export function WithSortableHeadings() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       date: '2022-01-19',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -1500,7 +1500,7 @@ export function WithSortableHeadings() {
     },
     {
       id: '1245',
-      url: 'customers/123',
+      url: '#',
       date: '2021-12-12',
       name: 'Anne-Marie Johnson',
       location: 'Portland, USA',
@@ -1512,7 +1512,7 @@ export function WithSortableHeadings() {
     },
     {
       id: '8741',
-      url: 'customers/543',
+      url: '#',
       date: '2022-05-11',
       name: 'Bradley Stevens',
       location: 'Hialeah, USA',
@@ -1595,7 +1595,7 @@ export function WithSortableHeadings() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={rows.length}
@@ -1622,7 +1622,7 @@ export function WithSortableHeadings() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -1644,7 +1644,7 @@ export function WithSortableCustomHeadings() {
   const initialRows = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       date: '2022-02-04',
       location: 'Decatur, USA',
@@ -1656,7 +1656,7 @@ export function WithSortableCustomHeadings() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       date: '2022-01-19',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -1668,7 +1668,7 @@ export function WithSortableCustomHeadings() {
     },
     {
       id: '1245',
-      url: 'customers/123',
+      url: '#',
       date: '2021-12-12',
       name: 'Anne-Marie Johnson',
       location: 'Portland, USA',
@@ -1680,7 +1680,7 @@ export function WithSortableCustomHeadings() {
     },
     {
       id: '8741',
-      url: 'customers/543',
+      url: '#',
       date: '2022-05-11',
       name: 'Bradley Stevens',
       location: 'Hialeah, USA',
@@ -1763,7 +1763,7 @@ export function WithSortableCustomHeadings() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={rows.length}
@@ -1799,7 +1799,7 @@ export function WithSortableCustomHeadings() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -1807,7 +1807,7 @@ export function WithCustomTooltips() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -1815,7 +1815,7 @@ export function WithCustomTooltips() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -1851,7 +1851,7 @@ export function WithCustomTooltips() {
   );
 
   return (
-    <LegacyCard>
+    <Card>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1876,7 +1876,7 @@ export function WithCustomTooltips() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -1884,7 +1884,7 @@ export function SmallScreenWithAllOfItsElements() {
   const customers = [
     {
       id: '3418',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -1892,7 +1892,7 @@ export function SmallScreenWithAllOfItsElements() {
     },
     {
       id: '2568',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -2000,7 +2000,7 @@ export function SmallScreenWithAllOfItsElements() {
 
   return (
     <div style={{width: '430px'}}>
-      <LegacyCard>
+      <Card>
         <div style={{padding: '16px', display: 'flex'}}>
           <div style={{flex: 1}}>
             <Filters
@@ -2042,7 +2042,7 @@ export function SmallScreenWithAllOfItsElements() {
         >
           {rowMarkup}
         </IndexTable>
-      </LegacyCard>
+      </Card>
     </div>
   );
 
