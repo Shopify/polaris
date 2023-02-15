@@ -34,8 +34,8 @@ const stylelintConfig = {
     'polaris/custom-property-allowed-list': {
       allowedProperties: ['/--pc-.+/'],
       allowedValues: {
-        width: ['--p-space-0', '--p-space-1' /* etc... */],
-        '/.+/': ['/--pc-.+/', '--p-space-0', '--p-space-1' /* etc... */],
+        width: ['--p-space-1', '--p-space-2' /* etc... */],
+        '/.+/': ['/--pc-.+/', '--p-space-1', '--p-space-2' /* etc... */],
       },
     },
   },
