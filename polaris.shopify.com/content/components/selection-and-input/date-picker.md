@@ -59,6 +59,6 @@ If you use the date picker within a [popover component](/components/overlays/pop
 - When focus is in the calendar, move keyboard focus between the dates using the arrow keys
 - To select a date that has focus, press the <kbd>enter</kbd>/<kbd>return</kbd> key
 
-## Related Patterns
+## Related patterns
 
 - [Date Picking](/patterns/date-picking)
