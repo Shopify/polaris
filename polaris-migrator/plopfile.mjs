@@ -19,7 +19,7 @@ export default async function run(plop) {
         {
           name: 'migrationName',
           message: 'Name of the migration',
-          suffix: ' (e.g. scss-replace-function)',
+          suffix: ' (e.g. v9-scss-replace-function)',
           validate: (input) => validateMigrationName(plop, input),
         },
       ],
@@ -36,7 +36,7 @@ export default async function run(plop) {
         {
           name: 'migrationName',
           message: 'Name of the migration',
-          suffix: ' (e.g. component-replace-prop)',
+          suffix: ' (e.g. v9-component-replace-prop)',
           validate: (input) => validateMigrationName(plop, input),
         },
       ],
