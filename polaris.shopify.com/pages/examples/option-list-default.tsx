@@ -1,4 +1,4 @@
-import {Card, OptionList} from '@shopify/polaris';
+import {LegacyCard, OptionList} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,7 +6,7 @@ function OptionListExample() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <Card>
+    <LegacyCard>
       <OptionList
         title="Inventory Location"
         onChange={setSelected}
@@ -19,7 +19,7 @@ function OptionListExample() {
         ]}
         selected={selected}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

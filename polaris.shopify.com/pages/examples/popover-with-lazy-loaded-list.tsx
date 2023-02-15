@@ -1,4 +1,4 @@
-import {Button, Card, Popover, ResourceList, Avatar} from '@shopify/polaris';
+import {Button, LegacyCard, Popover, ResourceList, Avatar} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -55,7 +55,7 @@ function PopoverLazyLoadExample() {
   }));
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <div style={{height: '280px'}}>
         <Popover
           sectioned
@@ -69,7 +69,7 @@ function PopoverLazyLoadExample() {
           </Popover.Pane>
         </Popover>
       </div>
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem({name, initials}) {

@@ -1,10 +1,10 @@
-import {Card, EmptyState} from '@shopify/polaris';
+import {LegacyCard, EmptyState} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function EmptyStateExample() {
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <EmptyState
         heading="Upload a file to get started"
         action={{content: 'Upload files'}}
@@ -17,7 +17,7 @@ function EmptyStateExample() {
           full width.
         </p>
       </EmptyState>
-    </Card>
+    </LegacyCard>
   );
 }
 

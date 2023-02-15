@@ -1,4 +1,4 @@
-import {Card, RangeSlider} from '@shopify/polaris';
+import {LegacyCard, RangeSlider} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -11,14 +11,14 @@ function RangeSliderExample() {
   );
 
   return (
-    <Card sectioned title="Background color">
+    <LegacyCard sectioned title="Background color">
       <RangeSlider
         label="Opacity percentage"
         value={rangeValue}
         onChange={handleRangeSliderChange}
         output
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

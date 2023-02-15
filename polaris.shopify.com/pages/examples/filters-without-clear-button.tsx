@@ -1,6 +1,6 @@
 import {
   TextField,
-  Card,
+  LegacyCard,
   ResourceList,
   Filters,
   Button,
@@ -61,7 +61,7 @@ function Playground() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -116,7 +116,7 @@ function Playground() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 

@@ -2,7 +2,7 @@ import {
   TextField,
   Filters,
   Button,
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   ResourceItem,
@@ -79,7 +79,7 @@ function ResourceListWithFilteringExample() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -87,7 +87,7 @@ function ResourceListWithFilteringExample() {
         filterControl={filterControl}
         emptySearchState={<div>This is a custom empty state</div>}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
