@@ -12,7 +12,7 @@ function ClickThroughLinkIndexTableExample() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -20,7 +20,7 @@ function ClickThroughLinkIndexTableExample() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,

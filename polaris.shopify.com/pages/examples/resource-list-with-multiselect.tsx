@@ -13,37 +13,37 @@ function ResourceListExample() {
   const items = [
     {
       id: 111,
-      url: 'customers/231',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 211,
-      url: 'customers/246',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
     {
       id: 311,
-      url: 'customers/276',
+      url: '#',
       name: 'Joe Smith',
       location: 'Arizona, USA',
     },
     {
       id: 411,
-      url: 'customers/349',
+      url: '#',
       name: 'Haden Jerado',
       location: 'Decatur, USA',
     },
     {
       id: 511,
-      url: 'customers/419',
+      url: '#',
       name: 'Tom Thommas',
       location: 'Florida, USA',
     },
     {
       id: 611,
-      url: 'customers/516',
+      url: '#',
       name: 'Emily Amrak',
       location: 'Texas, USA',
     },

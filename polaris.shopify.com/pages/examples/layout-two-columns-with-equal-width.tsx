@@ -26,7 +26,7 @@ function LayoutExample() {
                 items={[
                   {
                     id: 341,
-                    url: 'produdcts/341',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '254',
@@ -39,7 +39,7 @@ function LayoutExample() {
                   },
                   {
                     id: 256,
-                    url: 'produdcts/256',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -86,7 +86,7 @@ function LayoutExample() {
                 items={[
                   {
                     id: 342,
-                    url: 'produdcts/342',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '100',
@@ -99,7 +99,7 @@ function LayoutExample() {
                   },
                   {
                     id: 257,
-                    url: 'produdcts/257',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
