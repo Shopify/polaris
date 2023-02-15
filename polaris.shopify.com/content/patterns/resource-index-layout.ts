@@ -4,7 +4,7 @@ const pattern: SingleVariantPattern = {
   title: 'Resource index layout',
   description:
     'Lets merchants effectively view, manage, and take action on resource objects.',
-  howItHelps: `![A labeled diagram of an app settings page layout. The left column is labeled "1" it contains glanceable labels and descriptions. The right column is labeled "2" and contains a list of cards.](/images/patterns/resource-index-cover-image.png)
+  howItHelps: `![Products index page](/images/patterns/resource-index-cover-image.png)
 
 1. The resource index layout is based on a single column to create a clear top-to-bottom hierarchy of tasks and to provide horizontal space for resource data.
 2. At the top of the page, merchants find the page title and actions that affect the index as a whole.
@@ -22,9 +22,9 @@ const pattern: SingleVariantPattern = {
   usefulToKnow: `
   | | |
   |-|-|
-  |Use the resource type as page title.|![](/images/patterns/resource-index-usage-1.png)|
-  |Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.|![](/images/patterns/resource-index-usage-2.png)|
-  |Set the page width to normal if the index doesn’t need full width.|![](/images/patterns/resource-index-usage-3.png)|`,
+  |Use the resource type as page title.|![“Orders” and “Gift cards” pages](/images/patterns/resource-index-usage-1.png)|
+  |Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.|![“Add product” primary action button on a resource index page](/images/patterns/resource-index-usage-2.png)|
+  |Set the page width to normal if the index doesn’t need full width.|![Index page with margins on either side of the main content](/images/patterns/resource-index-usage-3.png)|`,
   relatedResources: `* The [Resource detail layout](/patterns/resource-details-layout) pattern is a complement to the resource index layout pattern.
 * Use the [Empty state component](/components/empty-state) when the resource index is empty.
 * Learn about the meaning of “resources” on the [Resource list](/components/resource-list) component page

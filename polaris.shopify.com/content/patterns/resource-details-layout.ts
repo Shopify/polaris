@@ -4,7 +4,7 @@ const pattern: SingleVariantPattern = {
   title: 'Resource details layout',
   description:
     'Lets merchants effectively create, view, and edit any resource object.',
-  howItHelps: `![A labeled diagram of a resource detail layout.](/images/patterns/resource-detail-cover-image.png)
+  howItHelps: `![Product details page](/images/patterns/resource-detail-cover-image.png)
 
 1. The page header provides easy access to actions and navigation. It spans the full width of the page to show merchants that these actions represent the page as a whole.
 2. The main content is split in two columns, primary content to the left and secondary content to the right. The primary content occupies two thirds of the page to give more space to what’s most important most of the time.
@@ -25,11 +25,11 @@ const pattern: SingleVariantPattern = {
   usefulToKnow: `
   | | |
   |-|-|
-  |Always use the default width. Full width tends to waste space and make the page harder to parse.|![](/images/patterns/resource-detail-usage-1.png)|
-  |Group similar content in the same card.|![](/images/patterns/resource-detail-usage-2.png)|
-  |Put information that defines the resource object in the primary column.|![](/images/patterns/resource-detail-usage-3.png)|,
-  |Put supporting information such as status, metadata, and summaries in the secondary column.|![](/images/patterns/resource-detail-usage-4.png)|
-  |Arrange content in order of importance.|![](/images/patterns/resource-detail-usage-5.png)|`,
+  |Always use the default width. Full width tends to waste space and make the page harder to parse.|![Details page with margins on either side of the main content](/images/patterns/resource-detail-usage-1.png)|
+  |Group similar content in the same card.|![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-detail-usage-2.png)|
+  |Put information that defines the resource object in the primary column.|![Product detail example](/images/patterns/resource-detail-usage-3.png)|,
+  |Put supporting information such as status, metadata, and summaries in the secondary column.|![Product details page with the secondary column outlined](/images/patterns/resource-detail-usage-4.png)|
+  |Arrange content in order of importance.|![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-detail-usage-5.png)|`,
   relatedResources: `* The [Resource index layout](/patterns/resource-index-layout) pattern is a complement to the resource detail layout pattern.
 * Learn about the meaning of “resources” on the [Resource list](/components/resource-list) component page
 * Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.

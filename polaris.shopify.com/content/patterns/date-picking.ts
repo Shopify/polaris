@@ -12,7 +12,7 @@ const pattern: MultiVariantPattern = {
       slug: 'single-date',
       description:
         'This enables merchants to type a specific date or pick it from a calendar.',
-      howItHelps: `![A labeled diagram of an active input field displaying a calendar beneath it. The input field is labeled "1". The calendar is labeled "2".](/images/patterns/single-list-cover-image.png)
+      howItHelps: `![Date text input and a single-month calendar](/images/patterns/single-list-cover-image.png)
 
 1. The text input gives merchants the option to use the keyboard to enter a date.
 2. A single month calendar allows merchants to select a date while seeing its relationship to other days.
@@ -31,8 +31,8 @@ const pattern: MultiVariantPattern = {
       usefulToKnow: `
 | | |
 |-|-|
-|Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.|![](/images/patterns/single-list-usage-1.png)|
-|This pattern can be duplicated to allow users to add an end date or time.|![](/images/patterns/single-list-usage-2.png)|
+|Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.|![Date input labeled “Expiry date”](/images/patterns/single-list-usage-1.png)|
+|This pattern can be duplicated to allow users to add an end date or time.|![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/single-list-usage-2.png)|
 `,
       example: {
         relatedComponents: [
@@ -226,7 +226,7 @@ const pattern: MultiVariantPattern = {
       title: 'Date range',
       slug: 'date-range',
       description: 'This enables merchants to select a date range.',
-      howItHelps: `![](/images/patterns/date-range-cover-image.png)
+      howItHelps: `![Date range picker with three numbered zones](/images/patterns/date-range-cover-image.png)
 
 1. Providing multiple ways to select a date range gives merchants full flexibility. The list provides quick access to common options, the text input makes it easier to set large custom ranges, and the calendar is an intuitive way to set a more narrow scope.
 2. Displaying two months makes it easier for merchants to select date ranges that span across both.
@@ -246,9 +246,9 @@ const pattern: MultiVariantPattern = {
       usefulToKnow: `
 | | |
 |-|-|
-|Pin any relevant, merchant-specific dates to the top of the option list.|![](/images/patterns/date-range-usage-1.png)|
-|If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors)|![](/images/patterns/date-range-usage-2.png)|
-|If a merchant enters a nonexistent date, revert to the previously selected date.|![](/images/patterns/date-range-usage-3.png)|
+|Pin any relevant, merchant-specific dates to the top of the option list.|![List of date options such as “BFCM (2023)”](/images/patterns/date-range-usage-1.png)|
+|If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors)|![Single-month calendar with a range of unselectable dates](/images/patterns/date-range-usage-2.png)|
+|If a merchant enters a nonexistent date, revert to the previously selected date.|![Calendar with date inputs reading an incorrect date](/images/patterns/date-range-usage-3.png)|
 `,
       example: {
         relatedComponents: [
@@ -823,7 +823,7 @@ const pattern: MultiVariantPattern = {
       slug: 'date-list',
       description:
         'This enables merchants to select a date or a date range from a list of preset dates.',
-      howItHelps: `![](/images/patterns/date-list-cover-image.png)
+      howItHelps: `![Option list with common suggested dates, such as “Today” and “Last 30 days”](/images/patterns/date-list-cover-image.png)
 
 1. The date list provides merchants with suggested dates. This makes date picking simpler when useful dates are predictable and custom dates aren’t necessary.
 
@@ -838,9 +838,9 @@ const pattern: MultiVariantPattern = {
       usefulToKnow: `
 | | |
 |-|-|
-|In the button preview, set a default date range that a merchant will most likely use.|![](/images/patterns/date-list-usage-1.png)|
-|Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.|![](/images/patterns/date-list-usage-2.png)|
-|A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.|![](/images/patterns/date-list-usage-3.png)|
+|In the button preview, set a default date range that a merchant will most likely use.|![Button showing a calendar icon labeled “Today”](/images/patterns/date-list-usage-1.png)|
+|Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.|![Option list with common suggested dates followed by ranges](/images/patterns/date-list-usage-2.png)|
+|A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.|![Customer segment editor with a date list showing common ranges and related code snippets](/images/patterns/date-list-usage-3.png)|
 `,
       example: {
         relatedComponents: [
