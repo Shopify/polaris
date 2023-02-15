@@ -64,7 +64,7 @@ export function ProgressBar({
 
   const progressBarDuration = hasAppearAnimation
     ? motion['duration-500']
-    : motion['duration-0'];
+    : '0ms';
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (
