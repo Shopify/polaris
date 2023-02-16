@@ -79,10 +79,22 @@ const PatternsExample = ({
     }
   };
   const formatCodeSnippet = (code: string) => {
-    const prettifiedCode = format(code, {
-      parser: 'babel',
-      plugins: [babel],
-    });
+    let prettifiedCode;
+
+    try {
+      prettifiedCode = format(code, {
+        parser: 'babel',
+        plugins: [babel],
+      });
+    } catch (error) {
+      if (process.env.NODE_ENV === 'production') {
+        console.error(error);
+        // proceed gracefully
+        prettifiedCode = code;
+      } else {
+        throw error;
+      }
+    }
 
     // We trim and call a custom replace here
     // Because prettier appends a semi-colon at the end of the detected JSX phrase for some reason.
