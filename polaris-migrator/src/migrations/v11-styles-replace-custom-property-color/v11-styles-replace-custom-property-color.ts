@@ -163,7 +163,10 @@ const replacementMaps = {
   fill: fillColorMap,
 };
 
-export default function scssReplaceColorTokens(fileInfo: FileInfo, _: API) {
+export default function v11StylesReplaceCustomPropertyColor(
+  fileInfo: FileInfo,
+  _: API,
+) {
   return stylesReplaceCustomProperty(fileInfo, _, {replacementMaps});
 }
 

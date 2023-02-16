@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'scss-replace-color-tokens';
-const fixtures = ['scss-replace-color-tokens'];
+const migration = 'v11-styles-replace-custom-property-color';
+const fixtures = ['v11-styles-replace-custom-property-color'];
 
 for (const fixture of fixtures) {
   check(__dirname, {
