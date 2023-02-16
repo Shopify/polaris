@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextContainer, Text} from '@shopify/polaris';
+import {Text, TextContainer} from '@shopify/polaris';
 
 export function App() {
   return (
