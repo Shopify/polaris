@@ -2,7 +2,7 @@ import type {API, FileInfo, Options} from 'jscodeshift';
 
 import {renameProps} from '../../utilities/jsx';
 
-export default function v10ReactRenameComponentProp(
+export default function reactRenameComponentProp(
   file: FileInfo,
   {jscodeshift: j}: API,
   options: Options,
