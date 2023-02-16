@@ -18,11 +18,7 @@ export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpacingSpaceScale, '4'>;
 export type BorderRadius = Extract<ShapeBorderRadiusScale, '1' | '2'>;
 
-export type TooltipMode = 'icon';
-
 export interface TooltipProps {
-  /** Dictates how the Tooltip behaves */
-  mode?: TooltipMode;
   /** The element that will activate to tooltip */
   children?: React.ReactNode;
   /** The content to display within the tooltip */
@@ -77,7 +73,6 @@ export interface TooltipProps {
 const HOVER_OUT_TIMEOUT = 150;
 
 export function Tooltip({
-  mode,
   children,
   content,
   dismissOnMouseOut,
@@ -117,6 +112,8 @@ export function Tooltip({
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  // console.log('presence', presenceList.tooltip);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
@@ -181,7 +178,6 @@ export function Tooltip({
         borderRadius={borderRadius}
         zIndexOverride={zIndexOverride}
         instant={!shouldAnimate}
-        mode={mode}
         keyboardShortcut={keyboardShortcut}
       >
         {content}
@@ -197,11 +193,11 @@ export function Tooltip({
   return (
     <WrapperComponent
       onFocus={() => {
-        handleOpen?.();
+        handleOpen();
         handleFocus();
       }}
       onBlur={() => {
-        handleClose?.();
+        handleClose();
         handleBlur();
         persistOnClick && togglePersisting();
       }}
@@ -235,11 +231,11 @@ export function Tooltip({
     mouseEntered.current = true;
     if (hoverDelay && !presenceList.tooltip) {
       hoverDelayTimeout.current = setTimeout(() => {
-        handleOpen?.();
+        handleOpen();
         handleFocus();
       }, hoverDelay);
     } else {
-      handleOpen?.();
+      handleOpen();
       handleFocus();
     }
   }
@@ -251,7 +247,7 @@ export function Tooltip({
     }
 
     mouseEntered.current = false;
-    handleClose?.();
+    handleClose();
 
     if (!persist) {
       handleBlur();

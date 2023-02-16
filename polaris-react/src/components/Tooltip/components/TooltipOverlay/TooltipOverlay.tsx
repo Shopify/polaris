@@ -7,7 +7,7 @@ import {
   PositionedOverlay,
 } from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
-import type {Width, Padding, BorderRadius, TooltipMode} from '../../Tooltip';
+import type {Width, Padding, BorderRadius} from '../../Tooltip';
 import {Text} from '../../../Text';
 import {Inline} from '../../../Inline';
 
@@ -27,7 +27,6 @@ export interface TooltipOverlayProps {
   zIndexOverride?: number;
   onClose(): void;
   instant?: boolean;
-  mode?: TooltipMode;
   keyboardShortcut?: string;
 }
 
@@ -44,7 +43,6 @@ export function TooltipOverlay({
   borderRadius,
   zIndexOverride,
   instant,
-  mode,
   keyboardShortcut,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
@@ -64,14 +62,14 @@ export function TooltipOverlay({
   function renderTooltip(
     overlayDetails: Parameters<PositionedOverlayProps['render']>[0],
   ) {
-    const {measuring, desiredHeight, positioning} = overlayDetails;
+    const {measuring, desiredHeight, positioning, chevronOffset} =
+      overlayDetails;
 
     const containerClassName = classNames(
       styles.TooltipOverlay,
       measuring && styles.measuring,
       !measuring && styles.measured,
-      instant && mode === 'icon' && styles.instant,
-      mode === 'icon' && styles.hasMode,
+      instant && styles.instant,
       positioning === 'above' && styles.positionedAbove,
     );
 
@@ -80,6 +78,7 @@ export function TooltipOverlay({
     const contentStyles = measuring ? undefined : {minHeight: desiredHeight};
 
     const style = {
+      '--pc-tooltip-chevron-x-pos': `${chevronOffset}px`,
       '--pc-tooltip-border-radius': borderRadius
         ? `var(--p-border-radius-${borderRadius})`
         : undefined,

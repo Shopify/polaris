@@ -422,47 +422,73 @@ describe('<Tooltip />', () => {
     });
   });
 
-  describe('with mode="icon"', () => {
-    it('passes the mode prop down to the TooltipOverlay', () => {
-      const mode = 'icon';
-      const tooltip = mountWithApp(
-        <Tooltip content="Inner content" mode={mode}>
-          <Link>link content</Link>
-        </Tooltip>,
-      );
+  it('will not pass the instant prop when no tooltip is currently present', () => {
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
 
-      findWrapperComponent(tooltip)!.trigger('onMouseOver');
-      expect(tooltip).toContainReactComponent(TooltipOverlay, {
-        mode,
-      });
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: false,
     });
+  });
 
-    it('will not pass the instant prop when no tooltip is currently present', () => {
-      const mode = 'icon';
-      const tooltip = mountWithApp(
-        <Tooltip content="Inner content" mode={mode}>
-          <Link>link content</Link>
-        </Tooltip>,
-      );
+  it('will pass the instant prop when immediately re-entering the activator', () => {
+    jest.useFakeTimers();
 
-      findWrapperComponent(tooltip)!.trigger('onMouseOver');
-      expect(tooltip).toContainReactComponent(TooltipOverlay, {
-        instant: false,
-      });
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    tooltip.act(() => jest.advanceTimersByTime(5));
+
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+    tooltip.act(() => jest.advanceTimersByTime(5));
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: true,
     });
+  });
 
+  it('will remove the instant prop when re-entering the activator after a delay', () => {
+    jest.useFakeTimers();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    tooltip.act(() => jest.advanceTimersByTime(5));
+
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+    tooltip.act(() => jest.advanceTimersByTime(150));
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: false,
+    });
+  });
+
+  describe('overriding hover delay', () => {
     it('will pass the instant prop when immediately re-entering the activator', () => {
       jest.useFakeTimers();
 
-      const mode = 'icon';
       const tooltip = mountWithApp(
-        <Tooltip content="Inner content" mode={mode}>
+        <Tooltip content="Inner content" hoverDelay={1000}>
           <Link>link content</Link>
         </Tooltip>,
       );
 
       findWrapperComponent(tooltip)!.trigger('onMouseOver');
-      tooltip.act(() => jest.advanceTimersByTime(5));
+      tooltip.act(() => jest.advanceTimersByTime(1010));
 
       findWrapperComponent(tooltip)!.trigger('onMouseLeave');
 
@@ -472,63 +498,6 @@ describe('<Tooltip />', () => {
         instant: true,
       });
     });
-
-    it('will remove the instant prop when re-entering the activator after a delay', () => {
-      jest.useFakeTimers();
-
-      const mode = 'icon';
-      const tooltip = mountWithApp(
-        <Tooltip content="Inner content" mode={mode}>
-          <Link>link content</Link>
-        </Tooltip>,
-      );
-
-      findWrapperComponent(tooltip)!.trigger('onMouseOver');
-      tooltip.act(() => jest.advanceTimersByTime(5));
-
-      findWrapperComponent(tooltip)!.trigger('onMouseLeave');
-
-      tooltip.act(() => jest.advanceTimersByTime(150));
-      findWrapperComponent(tooltip)!.trigger('onMouseOver');
-      expect(tooltip).toContainReactComponent(TooltipOverlay, {
-        instant: false,
-      });
-    });
-
-    describe('overriding hover delay', () => {
-      it('will pass the instant prop when immediately re-entering the activator', () => {
-        jest.useFakeTimers();
-
-        const mode = 'icon';
-        const tooltip = mountWithApp(
-          <Tooltip content="Inner content" hoverDelay={1000} mode={mode}>
-            <Link>link content</Link>
-          </Tooltip>,
-        );
-
-        findWrapperComponent(tooltip)!.trigger('onMouseOver');
-        tooltip.act(() => jest.advanceTimersByTime(1010));
-
-        findWrapperComponent(tooltip)!.trigger('onMouseLeave');
-
-        tooltip.act(() => jest.advanceTimersByTime(5));
-        findWrapperComponent(tooltip)!.trigger('onMouseOver');
-        expect(tooltip).toContainReactComponent(TooltipOverlay, {
-          instant: true,
-        });
-      });
-    });
-
-    // mockEphemeralPresenceManager({
-    //   presenceList: {
-    //     tooltip: false
-    //   },
-    //   presenceCounter: {
-    //     tooltip: 0
-    //   },
-    //   addPresence: jest.fn(),
-    //   removePresence: jest.fn()
-    // });
   });
 });
 

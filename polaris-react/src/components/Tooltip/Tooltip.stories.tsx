@@ -234,32 +234,26 @@ export function ActivatorAsDiv() {
   );
 }
 
-export function IconTooltips() {
+export function WithKeyboardShortcuts() {
   return (
     <Box padding="16">
       <Stack>
         <ButtonGroup segmented fullWidth>
-          <Tooltip
-            content="Bold"
-            mode="icon"
-            keyboardShortcut="⌘B"
-            activatorWrapper="div"
-          >
+          <Tooltip content="Bold" keyboardShortcut="⌘B" activatorWrapper="div">
             <Button>B</Button>
           </Tooltip>
-          <Tooltip content="Italic" mode="icon" keyboardShortcut="⌘I">
+          <Tooltip content="Italic" keyboardShortcut="⌘I">
             <Button>I</Button>
           </Tooltip>
-          <Tooltip content="Underline" mode="icon" keyboardShortcut="⌘U">
+          <Tooltip content="Underline" keyboardShortcut="⌘U">
             <Button>U</Button>
           </Tooltip>
-          <Tooltip content="Strikethrough" mode="icon" keyboardShortcut="⌘S">
+          <Tooltip content="Strikethrough" keyboardShortcut="⌘S">
             <Button>S</Button>
           </Tooltip>
           <Tooltip
             content="Bold"
             preferredPosition="above"
-            mode="icon"
             keyboardShortcut="⌘B"
           >
             <Button>B</Button>
@@ -267,7 +261,6 @@ export function IconTooltips() {
           <Tooltip
             content="Italic"
             preferredPosition="above"
-            mode="icon"
             keyboardShortcut="⌘U"
           >
             <Button>I</Button>
@@ -275,7 +268,6 @@ export function IconTooltips() {
           <Tooltip
             content="Underline"
             preferredPosition="above"
-            mode="icon"
             keyboardShortcut="⌘U"
           >
             <Button>U</Button>
@@ -283,10 +275,50 @@ export function IconTooltips() {
           <Tooltip
             content="Strikethrough"
             preferredPosition="above"
-            mode="icon"
             keyboardShortcut="⌘S"
           >
             <Button>S</Button>
+          </Tooltip>
+        </ButtonGroup>
+      </Stack>
+    </Box>
+  );
+}
+
+export function Alignment() {
+  return (
+    <Box padding="0">
+      <Stack>
+        <ButtonGroup segmented fullWidth>
+          <Tooltip
+            content="Content is longer than the activator"
+            keyboardShortcut="⌘B"
+          >
+            <Button>Bold</Button>
+          </Tooltip>
+          <Tooltip content="Italic" keyboardShortcut="⌘I">
+            <Button>Italic</Button>
+          </Tooltip>
+          <Tooltip content="Underline" keyboardShortcut="⌘U">
+            <Button>Activator is longer than the Tooltip</Button>
+          </Tooltip>
+          <Tooltip
+            content="Content is longer than the activator"
+            keyboardShortcut="⌘S"
+          >
+            <Button>Strikethrough</Button>
+          </Tooltip>
+          <Tooltip
+            content="Content is longer than the activator"
+            keyboardShortcut="⌘S"
+          >
+            <Button>Strikethrough</Button>
+          </Tooltip>
+          <Tooltip
+            content="Content is longer than the activator"
+            keyboardShortcut="⌘S"
+          >
+            <Button>Strikethrough</Button>
           </Tooltip>
         </ButtonGroup>
       </Stack>
