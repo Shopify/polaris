@@ -30,7 +30,7 @@ export interface AlphaStackProps extends React.AriaAttributes {
    * @default false
    */
   fullWidth?: boolean;
-  /** The spacing between children*/
+  /** The spacing between children */
   gap?: Gap;
   /** HTML id attribute */
   id?: string;
