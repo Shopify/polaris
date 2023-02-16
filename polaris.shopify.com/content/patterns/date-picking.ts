@@ -351,7 +351,7 @@ const pattern: MultiVariantPattern = {
             year: activeDateRange.period.since.getFullYear(),
           });
           const datePickerRef = useRef(null);
-          const VALID_YYYY_MM_DD_DATE_REGEX = /^\d{4}-\d{1,2}-\d{1,2}$/;
+          const VALID_YYYY_MM_DD_DATE_REGEX = /^\\d{4}-\\d{1,2}-\\d{1,2}$/;
           function isDate(date) {
             return !isNaN(new Date(date).getDate());
           }
@@ -687,7 +687,7 @@ const pattern: MultiVariantPattern = {
             year: activeDateRange.period.since.getFullYear(),
           });
           const datePickerRef = useRef(null);
-          const VALID_YYYY_MM_DD_DATE_REGEX = /^\d{4}-\d{1,2}-\d{1,2}$/;
+          const VALID_YYYY_MM_DD_DATE_REGEX = /^\\d{4}-\\d{1,2}-\\d{1,2}$/;
           function isDate(date) {
             return !isNaN(new Date(date).getDate());
           }
