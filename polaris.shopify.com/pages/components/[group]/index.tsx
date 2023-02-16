@@ -45,7 +45,7 @@ export default function GroupPage({
   const relatedResources = frontMatter?.relatedResources;
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
-      <AlphaStack>
+      <AlphaStack gap="4">
         <Text as="h4" variant="headingLg">
           {title}
         </Text>
@@ -101,7 +101,7 @@ export default function GroupPage({
 
   const relatedResourcesMarkup = relatedResources
     ? relatedResources && (
-        <AlphaStack>
+        <AlphaStack gap="4">
           <Text as="h4" variant="headingLg">
             Related Resources
           </Text>
@@ -126,7 +126,7 @@ export default function GroupPage({
         description={frontMatter?.description}
       />
       <AlphaStack gap="16">
-        <AlphaStack>
+        <AlphaStack gap="4">
           <Longform firstParagraphIsLede>
             <p>{frontMatter?.description}</p>
           </Longform>

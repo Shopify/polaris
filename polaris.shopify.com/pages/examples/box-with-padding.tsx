@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithPaddingExample() {
   return (
-    <AlphaStack>
+    <AlphaStack gap="4">
       <div style={{backgroundColor: '#986BFF'}}>
         <Box padding="4" width="586px">
           <Placeholder label="All side padding" childAlign="center" />
