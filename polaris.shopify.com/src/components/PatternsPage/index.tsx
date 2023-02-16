@@ -8,6 +8,7 @@ import Icon from '../Icon';
 import styles from './PatternsPage.module.scss';
 import Preview from '../PatternThumbnailPreview';
 import {patterns} from '../../utils/various';
+import Link from 'next/link';
 
 const description =
   'Preferred solutions to common merchant goals in the admin.';
@@ -32,7 +33,7 @@ export const PatternsPage = () => (
                 join the discussion
               </a>{' '}
               to make it better.{' '}
-              <a href="/patterns-legacy">See old patterns here</a>
+              <Link href="/patterns-legacy">See old patterns here</Link>
             </p>
           </div>
         </div>
