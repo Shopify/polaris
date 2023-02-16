@@ -52,18 +52,6 @@ const pattern: MultiVariantPattern = {
         ],
         code: `
         {(function DatePickerExample() {
-          function formatDateToYearMonthDayDateString(date) {
-            const year = String(date.getFullYear());
-            let month = String(date.getMonth() + 1);
-            let day = String(date.getDate());
-            if (month.length < 2) {
-              month = String(month).padStart(2, "0");
-            }
-            if (day.length < 2) {
-              day = String(day).padStart(2, "0");
-            }
-            return [year, month, day].join("-");
-          }
           function nodeContainsDescendant(rootNode, descendant) {
             if (rootNode === descendant) {
               return true;
@@ -83,7 +71,7 @@ const pattern: MultiVariantPattern = {
             month: selectedDate.getMonth(),
             year: selectedDate.getFullYear(),
           });
-          const formattedValue = formatDateToYearMonthDayDateString(selectedDate);
+          const formattedValue = selectedDate.toISOString().slice(0,10);
           const datePickerRef = useRef(null);
           function isNodeWithinPopover(node) {
             return datePickerRef?.current
@@ -153,18 +141,6 @@ const pattern: MultiVariantPattern = {
 `,
         snippetCode: `
         function DatePickerExample() {
-          function formatDateToYearMonthDayDateString(date) {
-            const year = String(date.getFullYear());
-            let month = String(date.getMonth() + 1);
-            let day = String(date.getDate());
-            if (month.length < 2) {
-              month = String(month).padStart(2, "0");
-            }
-            if (day.length < 2) {
-              day = String(day).padStart(2, "0");
-            }
-            return [year, month, day].join("-");
-          }
           function nodeContainsDescendant(rootNode, descendant) {
             if (rootNode === descendant) {
               return true;
@@ -184,7 +160,7 @@ const pattern: MultiVariantPattern = {
             month: selectedDate.getMonth(),
             year: selectedDate.getFullYear(),
           });
-          const formattedValue = formatDateToYearMonthDayDateString(selectedDate);
+          const formattedValue = selectedDate.toISOString().slice(0,10);
           const datePickerRef = useRef(null);
           function isNodeWithinPopover(node) {
             return datePickerRef?.current
