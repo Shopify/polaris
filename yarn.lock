@@ -3323,11 +3323,6 @@
     babel-plugin-react-test-id "^1.0.2"
     babel-plugin-transform-inline-environment-variables "^0.4.3"
 
-"@shopify/browserslist-config@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/browserslist-config/-/browserslist-config-3.0.0.tgz#fedfef0dedc97155a60432c152eff50df88e13d2"
-  integrity sha512-NzZTZ8EEG6xmM1ApSsQFDqW6C5CmByNhXyLxwWjVX08GzHxkhMc10MSY7WGvTCzd1lQuZEp8Ko/jOCBTQQsEGg==
-
 "@shopify/cli-kit@3.10.1":
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/@shopify/cli-kit/-/cli-kit-3.10.1.tgz#deaf0ead4989ad4d7645a00b7f4b9cbeb8052993"
