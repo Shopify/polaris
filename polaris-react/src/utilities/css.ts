@@ -39,27 +39,15 @@ export function getResponsiveProps(
   if (!responsiveProp) return {};
 
   if (typeof responsiveProp === 'string') {
-    if (responsiveProp === '0') {
-      return {
-        [`--pc-${componentName}-${componentProp}-xs`]: 0,
-      };
-    } else {
-      return {
-        [`--pc-${componentName}-${componentProp}-xs`]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
-      };
-    }
+    return {
+      [`--pc-${componentName}-${componentProp}-xs`]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
+    };
   }
 
   return Object.fromEntries(
-    Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => {
-      if (aliasOrScale === '0') {
-        return [`--pc-${componentName}-${componentProp}-${breakpointAlias}`, 0];
-      } else {
-        return [
-          `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
-          `var(--p-${tokenSubgroup}-${aliasOrScale})`,
-        ];
-      }
-    }),
+    Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => [
+      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
+      `var(--p-${tokenSubgroup}-${aliasOrScale})`,
+    ]),
   );
 }
