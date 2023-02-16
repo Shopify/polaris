@@ -607,7 +607,7 @@ const pattern: MultiVariantPattern = {
               </Popover.Pane>
             </Popover>
           );
-        })
+        }
         `,
         context: `<div style={{
           paddingLeft: "2rem",

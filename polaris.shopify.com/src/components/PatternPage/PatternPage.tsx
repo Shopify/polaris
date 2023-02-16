@@ -168,7 +168,13 @@ function PatternPageContent({
 }
 
 export default function PatternPage({pattern, ...props}: Props) {
-  const [showCode, toggleCode] = useState(false);
+  const [showCode, toggleCode] = useState(true);
+  useEffect(() => {
+    // When rendering a new pattern, default the code to visible.
+    // However, when moving between variants within a pattern, retain the
+    // current code toggle setting.
+    toggleCode(true);
+  }, [pattern]);
   return (
     <>
       <PageMeta title={props.title} description={pattern.description} />
