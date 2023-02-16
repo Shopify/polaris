@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.13.2
+
+### Patch Changes
+
+- [#8393](https://github.com/Shopify/polaris/pull/8393) [`40ff13451`](https://github.com/Shopify/polaris/commit/40ff1345148a6f77ced213b92137269711925ae2) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed version from generic migrations
+
 ## 0.13.1
 
 ### Patch Changes

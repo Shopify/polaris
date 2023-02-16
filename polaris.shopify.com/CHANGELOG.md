@@ -1,5 +1,16 @@
 # polaris.shopify.com
 
+## 0.34.3
+
+### Patch Changes
+
+- [#8404](https://github.com/Shopify/polaris/pull/8404) [`5d4c2c12d`](https://github.com/Shopify/polaris/commit/5d4c2c12dbb13552e2e5e09a78a2f78a28daf6f1) Thanks [@laurkim](https://github.com/laurkim)! - Fixed broken image urls for component pages
+
+* [#8393](https://github.com/Shopify/polaris/pull/8393) [`40ff13451`](https://github.com/Shopify/polaris/commit/40ff1345148a6f77ced213b92137269711925ae2) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed version from generic migrations
+
+* Updated dependencies [[`955832a3b`](https://github.com/Shopify/polaris/commit/955832a3bb653a334d782edd396b9519625134c1), [`160d9c15b`](https://github.com/Shopify/polaris/commit/160d9c15b433bf01370c1244c5d725808562c673)]:
+  - @shopify/polaris@10.29.0
+
 ## 0.34.2
 
 ### Patch Changes
