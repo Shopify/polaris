@@ -104,6 +104,36 @@ const nextConfig = {
         destination: 'https://github.com/Shopify/polaris/blob/main/LICENSE.md',
         permanent: true,
       },
+      {
+        source: '/patterns/error-messages',
+        destination: '/content/error-messages',
+        permanent: true,
+      },
+      {
+        source: '/patterns/help-content',
+        destination: '/content/help-content',
+        permanent: true,
+      },
+      {
+        source: '/patterns/loading',
+        destination: '/patterns-legacy/loading',
+        permanent: true,
+      },
+      {
+        source: '/patterns/new-badge',
+        destination: '/patterns-legacy/new-badge',
+        permanent: true,
+      },
+      {
+        source: '/patterns/pickers',
+        destination: '/patterns-legacy/pickers',
+        permanent: true,
+      },
+      {
+        source: '/patterns/text-fields',
+        destination: '/patterns-legacy/text-fields',
+        permanent: true,
+      },
       ...actions,
       ...deprecated,
       ...feedbackIndicators,
