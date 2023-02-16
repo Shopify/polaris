@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.29.0
+
+### Minor Changes
+
+- [#8383](https://github.com/Shopify/polaris/pull/8383) [`955832a3b`](https://github.com/Shopify/polaris/commit/955832a3bb653a334d782edd396b9519625134c1) Thanks [@chazdean](https://github.com/chazdean)! - Remove default spacing from `AlphaStack`
+
+* [#8349](https://github.com/Shopify/polaris/pull/8349) [`160d9c15b`](https://github.com/Shopify/polaris/commit/160d9c15b433bf01370c1244c5d725808562c673) Thanks [@qt314](https://github.com/qt314)! - Add hideIcon prop to Banner and update Banner styles for mobile web
+
 ## 10.28.2
 
 ### Patch Changes
