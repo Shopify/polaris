@@ -13,3 +13,9 @@ export function useEphemeralPresenceManager() {
 
   return ephemeralPresenceManager;
 }
+
+export function useReadOnlyEphemeralPresenceManager() {
+  const {presenceList, presenceCounter} = useEphemeralPresenceManager();
+
+  return {presenceList, presenceCounter};
+}
