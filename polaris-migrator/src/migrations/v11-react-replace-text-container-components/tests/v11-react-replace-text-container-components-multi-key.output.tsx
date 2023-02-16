@@ -1,5 +1,5 @@
 import React from 'react';
-import {AlphaStack, Text} from '@shopify/polaris';
+import {Text, AlphaStack} from '@shopify/polaris';
 
 const words = ['hello', 'world'];
 
