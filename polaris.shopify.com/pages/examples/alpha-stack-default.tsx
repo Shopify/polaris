@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackExample() {
   return (
-    <AlphaStack gap="4">
+    <AlphaStack>
       <Placeholder width="320px" label="Stack child" />
       <Placeholder width="320px" />
       <Placeholder width="320px" />
