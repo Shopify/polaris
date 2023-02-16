@@ -2,7 +2,7 @@ name: polaris
 up:
   - node:
       yarn: v1.22.18
-      version: v16.13.0 # to be kept in sync with .nvmrc and .github/workflows/ci.yml
+      version: v18.12.0 # to be kept in sync with .nvmrc and .github/workflows/ci.yml
   - custom:
       name: Build monorepo
       met?: yarn build --output-logs=none

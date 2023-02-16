@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "^14.17.0 || ^16.13.0"
+    "node": "^16.17.0 || >=18.12.0"
   },
   "workspaces": {
     "packages": [
@@ -44,21 +44,22 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/node": "^7.14.9",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-typescript": "^7.18.6",
     "@changesets/changelog-github": "^0.4.4",
     "@changesets/cli": "^2.23.0",
     "@changesets/get-release-plan": "^3.0.14",
     "@next/eslint-plugin-next": "^12.1.4",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-commonjs": "^21.1.0",
-    "@rollup/plugin-image": "^2.0.5",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.2.1",
-    "@rollup/plugin-replace": "^2.3.3",
-    "@rollup/plugin-virtual": "^2.0.3",
-    "@rollup/pluginutils": "^4.1.0",
-    "@shopify/babel-preset": "^24.1.2",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-image": "^3.0.2",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-virtual": "^3.0.1",
+    "@rollup/pluginutils": "^5.0.2",
+    "@shopify/babel-preset": "^25.0.0",
     "@shopify/cli": "^3.10.1",
     "@shopify/eslint-plugin": "^42.0.1",
     "@shopify/prettier-config": "^1.1.2",
@@ -66,7 +67,8 @@
     "@shopify/typescript-configs": "^5.1.0",
     "@size-limit/preset-small-lib": "^5.0.3",
     "@types/jest": "^27.5.1",
-    "downlevel-dts": "^0.6.0",
+    "@types/node": "^18.11.18",
+    "babel-loader": "^9.1.2",
     "eslint": "^8.3.0",
     "execa": "^5.0.0",
     "jest": "^27.5.1",
@@ -76,13 +78,13 @@
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.5.0",
-    "rollup": "^2.70.2",
-    "rollup-plugin-node-externals": "^4.0.0",
+    "rollup": "^3.12.0",
+    "rollup-plugin-node-externals": "^5.1.0",
     "size-limit": "^5.0.3",
     "stylelint": "^14.15.0",
     "ts-node": "^10.7.0",
     "turbo": "^1.2.8",
-    "typescript": "^4.6.3"
+    "typescript": "^4.9.3"
   },
   "prettier": "@shopify/prettier-config",
   "size-limit": [

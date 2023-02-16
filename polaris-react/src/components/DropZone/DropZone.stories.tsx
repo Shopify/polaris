@@ -39,8 +39,7 @@ export function Default() {
               alt={file.name}
               source={
                 validImageTypes.includes(file.type)
-                  ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                    window.URL.createObjectURL(file)
+                  ? window.URL.createObjectURL(file)
                   : NoteMinor
               }
             />
@@ -93,7 +92,6 @@ export function WithImageFileUpload() {
           <Thumbnail
             size="small"
             alt={file.name}
-            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
@@ -152,8 +150,7 @@ export function WithSingleFileUpload() {
         alt={file.name}
         source={
           validImageTypes.includes(file.type)
-            ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-              window.URL.createObjectURL(file)
+            ? window.URL.createObjectURL(file)
             : NoteMinor
         }
       />
@@ -194,8 +191,7 @@ export function WithDropOnPage() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -254,7 +250,6 @@ export function AcceptsOnlySVGFiles() {
           <Thumbnail
             size="small"
             alt={file.name}
-            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
@@ -319,8 +314,7 @@ export function Nested() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -391,8 +385,7 @@ export function WithCustomFileUploadText() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -440,8 +433,7 @@ export function WithCustomFileDialogTrigger() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />

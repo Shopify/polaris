@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-unsupported-features/node-builtins
 const assert = require('assert').strict;
 const fs = require('fs');
 
@@ -83,9 +82,7 @@ function validateEsNextBuild() {
 }
 
 function validateAncillaryOutput() {
-  assert.ok(fs.existsSync('./build/ts/latest/src/index.d.ts'));
-  // Downleveled for consumers on older TypeScript versions
-  assert.ok(fs.existsSync('./build/ts/3.4/src/index.d.ts'));
+  assert.ok(fs.existsSync('./build/ts/src/index.d.ts'));
 }
 
 function validateVersionReplacement() {
