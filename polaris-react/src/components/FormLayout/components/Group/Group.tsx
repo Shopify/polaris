@@ -1,8 +1,7 @@
-import React, {Children} from 'react';
+import React, {Children, useId} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {Box} from '../../../Box';
 import {Item} from '../Item';
 import styles from '../../FormLayout.scss';
@@ -17,7 +16,7 @@ export interface GroupProps {
 export function Group({children, condensed, title, helpText}: GroupProps) {
   const className = classNames(condensed ? styles.condensed : styles.grouped);
 
-  const id = useUniqueId('FormLayoutGroup');
+  const id = useId();
 
   let helpTextElement = null;
   let helpTextID: undefined | string;

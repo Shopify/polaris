@@ -6,6 +6,7 @@ import React, {
   FunctionComponent,
   useMemo,
   useEffect,
+  useId,
   Component,
 } from 'react';
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
@@ -18,7 +19,6 @@ import {Text} from '../Text';
 import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
 import {AlphaStack} from '../AlphaStack';
@@ -315,7 +315,9 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     adjustSize();
   });
 
-  const id = useUniqueId('DropZone', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
+
   const typeSuffix = capitalize(type);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);
 

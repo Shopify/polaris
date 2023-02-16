@@ -1,6 +1,4 @@
-import React from 'react';
-
-import {useUniqueId} from '../../utilities/unique-id';
+import React, {useId} from 'react';
 
 import type {RangeSliderProps, RangeSliderValue, DualValue} from './types';
 import {SingleThumb, DualThumb} from './components';
@@ -20,7 +18,7 @@ export function RangeSlider({
   value,
   ...rest
 }: Props) {
-  const id = useUniqueId('RangeSlider');
+  const id = useId();
 
   const sharedProps = {
     id,

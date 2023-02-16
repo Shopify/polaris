@@ -1,4 +1,4 @@
-import React, {Component, createRef, useContext} from 'react';
+import React, {Component, createRef, useContext, useId} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'react-fast-compare';
 
@@ -20,7 +20,6 @@ import {
   BreakpointsDirectionAlias,
 } from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
-import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
 import {
   ResourceListContext,
@@ -94,11 +93,6 @@ interface State {
 
 type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
 
-const getUniqueCheckboxID = globalIdGeneratorFactory(
-  'ResourceListItemCheckbox',
-);
-const getUniqueOverlayID = globalIdGeneratorFactory('ResourceListItemOverlay');
-
 class BaseResourceItem extends Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
@@ -118,8 +112,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   };
 
   private node: HTMLDivElement | null = null;
-  private checkboxId = getUniqueCheckboxID();
-  private overlayId = getUniqueOverlayID();
+  private checkboxId = useId();
+  private overlayId = useId();
   private buttonOverlay = createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
