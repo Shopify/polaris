@@ -43,12 +43,12 @@ export function Clickable() {
 }
 
 export function WithLink() {
-  return <Tag url="/collections/wholesale">Wholesale</Tag>;
+  return <Tag url="#">Wholesale</Tag>;
 }
 
 export function WithCustomContent() {
   return (
-    <Tag url="/collections/wholesale">
+    <Tag url="#">
       <Stack spacing="extraTight">
         <Icon source={WandMinor} />
         <span>Wholesale</span>
@@ -75,7 +75,7 @@ export function RemovableWithLink() {
   );
 
   const tagMarkup = selectedTags.map((option) => (
-    <Tag key={option} onRemove={removeTag(option)} url="/collections/wholesale">
+    <Tag key={option} onRemove={removeTag(option)} url="#">
       {option}
     </Tag>
   ));

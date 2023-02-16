@@ -13,13 +13,13 @@ function ResourceListWithSelectionExample() {
   const items = [
     {
       id: 101,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 201,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },

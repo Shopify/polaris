@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TagExample() {
   return (
-    <Tag url="/collections/wholesale">
+    <Tag url="#">
       <Stack spacing="extraTight">
         <Icon source={WandMinor} />
         <span>Wholesale</span>

@@ -10,13 +10,13 @@ function ResourceListExample() {
         items={[
           {
             id: 100,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
             id: 200,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },

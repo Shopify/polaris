@@ -10,13 +10,13 @@ function ResourceListWithTotalItemsCount() {
         items={[
           {
             id: 105,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
             id: 205,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },

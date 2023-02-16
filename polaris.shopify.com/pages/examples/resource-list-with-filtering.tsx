@@ -34,13 +34,13 @@ function ResourceListWithFilteringExample() {
   const items = [
     {
       id: 108,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 208,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },

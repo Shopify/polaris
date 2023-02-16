@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.2
+
+### Patch Changes
+
+- [#8320](https://github.com/Shopify/polaris/pull/8320) [`29e9004ff`](https://github.com/Shopify/polaris/commit/29e9004ff8a5e5e2feaaf13b7d37963a1db206fd) Thanks [@leileu](https://github.com/leileu)! - Fixed typo in set type for ContentMinor
+
 ## 6.11.1
 
 ### Patch Changes
