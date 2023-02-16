@@ -1,3 +1,25 @@
 .legacy {
+  z-index: var(--p-z-index-6);
+  width: 20px;
+  width: 8px;
+  width: 20px;
+  margin: var(--p-space-025);
+  border-width: var(--p-border-radius-05);
+  box-shadow: inset 0 1px 0 0 var(--p-border-strong),
+    inset 0 0 0 1px var(--p-border-strong);
+  box-shadow: inset 0 1px 0 0 var(--p-border-success-subdued),
+    inset 0 0 0 1px var(--p-border-success-subdued);
+  box-shadow: inset 0 1px 0 0 var(--p-border-info-subdued),
+    inset 0 0 0 1px var(--p-border-info-subdued);
+  box-shadow: inset 0 1px 0 0 var(--p-border-caution-subdued),
+    inset 0 0 0 1px var(--p-border-caution-subdued);
+  box-shadow: inset 0 1px 0 0 var(--p-border-critical-subdued),
+    inset 0 0 0 1px var(--p-border-critical-subdued);
+  border: var(--p-border-base);
+  margin: 2px;
+  margin: -4px;
+  padding: calc(-1 * var(--p-space-025));
+  width: 16px;
+  width: 24px;
   margin: 0;
 }
