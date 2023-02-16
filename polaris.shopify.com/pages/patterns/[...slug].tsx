@@ -5,6 +5,7 @@ import globby from 'globby';
 import matter from 'gray-matter';
 
 import PatternPage from '../../src/components/PatternPage';
+import ComingSoon from '../../src/components/ComingSoon';
 import {Pattern, PatternFrontMatter} from '../../src/types';
 
 interface Props extends PatternFrontMatter {
@@ -61,6 +62,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   return {
     props: {
       ...data,
+      draft: data.draft || false,
       pattern,
     },
   };
@@ -80,6 +82,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const PatternsPage: NextPage<Props> = (props: Props) => {
+  if (props.draft && process.env.NODE_ENV === 'production')
+    return <ComingSoon />;
   return <PatternPage {...props} />;
 };
 

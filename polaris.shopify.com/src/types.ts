@@ -57,6 +57,7 @@ export interface FrontMatter {
 export interface PatternFrontMatter extends FrontMatter {
   previewImg?: string;
   order?: number;
+  draft: boolean;
   githubDiscussionsLink?: string;
   contentFile: string;
 }

@@ -6,4 +6,7 @@ previewImg: /images/patterns/pattern-thumbnail-resource-index.png
 order: 10
 githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/8215
 contentFile: 'resource-index-layout.ts'
+hideFromNav: true
+draft: true
+noIndex: true
 ---

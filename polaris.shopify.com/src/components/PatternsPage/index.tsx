@@ -9,6 +9,7 @@ import styles from './PatternsPage.module.scss';
 import Preview from '../PatternThumbnailPreview';
 import {patterns} from '../../utils/various';
 import UpdateBanner from '../UpdateBanner';
+import Link from 'next/link';
 
 const description =
   'Preferred solutions to common merchant goals in the admin.';
