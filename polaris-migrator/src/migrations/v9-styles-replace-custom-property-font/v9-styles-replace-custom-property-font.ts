@@ -9,7 +9,7 @@ const replacementMaps = {
   },
 };
 
-export default function v11StylesReplaceCustomPropertyFont(
+export default function v9StylesReplaceCustomPropertyFont(
   fileInfo: FileInfo,
   _: API,
 ) {

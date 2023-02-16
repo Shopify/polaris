@@ -13,11 +13,10 @@ const replacementMaps = {
     '--p-icon-size': '--p-icon-size-small',
     '--p-range-slider-thumb-scale': '1.5',
     '--p-badge-mix-blend-mode': 'luminosity',
-    '--p-frame-offset': '0',
   },
 };
 
-export default function v11StylesReplaceCustomPropertyMisc(
+export default function v9StylesReplaceCustomPropertyLegacy(
   fileInfo: FileInfo,
   _: API,
 ) {

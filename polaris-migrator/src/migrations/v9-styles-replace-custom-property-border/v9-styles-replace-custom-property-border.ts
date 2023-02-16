@@ -5,12 +5,13 @@ import stylesReplaceCustomProperty from '../styles-replace-custom-property/style
 const replacementMaps = {
   '/.+/': {
     '--p-border-radius-base': '--p-border-radius-1',
-    '--p-border-radius-large': '--p-border-radius-2',
-    '--p-border-radius-half': '--p-border-radius-full',
+    '--p-border-radius-full': '--p-border-radius-half',
+    '--p-border-radius-slim': '--p-border-radius-05',
+    '--p-border-radius-wide': '--p-border-radius-2',
   },
 };
 
-export default function v11StylesReplaceCustomPropertyBorder(
+export default function v9StylesReplaceCustomPropertyBorder(
   fileInfo: FileInfo,
   _: API,
 ) {

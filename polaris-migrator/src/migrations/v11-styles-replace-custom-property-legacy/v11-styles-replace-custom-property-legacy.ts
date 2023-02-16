@@ -4,11 +4,11 @@ import stylesReplaceCustomProperty from '../styles-replace-custom-property/style
 
 const replacementMaps = {
   '/.+/': {
-    '--p-space-0': '0',
+    '--p-frame-offset': '0',
   },
 };
 
-export default function v11StylesReplaceCustomPropertySpacing(
+export default function v11StylesReplaceCustomPropertyLegacy(
   fileInfo: FileInfo,
   _: API,
 ) {

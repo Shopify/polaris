@@ -1,4 +1,4 @@
-.misc {
+.legacy {
   display: none;
   flex: 1;
   overflow: visible;
@@ -7,7 +7,6 @@
   width: var(--p-icon-size-small);
   scale: 1.5;
   mix-blend-mode: luminosity;
-  margin: 0;
 
   &::before {
     content: '';
