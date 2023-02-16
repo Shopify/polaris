@@ -503,7 +503,6 @@ const pattern: MultiVariantPattern = {
               }
               onClose={() => setPopoverActive(false)}
             >
-              {/* <Box padding={{ xs: 2 }} maxWidth={"728px"}> */}
               <Popover.Pane fixed>
                 <Columns
                   columns={{
@@ -845,7 +844,6 @@ const pattern: MultiVariantPattern = {
               }
               onClose={() => setPopoverActive(false)}
             >
-              {/* <Box padding={{ xs: 2 }} maxWidth={"728px"}> */}
               <Popover.Pane fixed>
                 <Columns
                   columns={{
