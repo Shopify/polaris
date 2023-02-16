@@ -373,6 +373,26 @@ export const color: {
     value: colors.orange[200],
     description: '',
   },
+  'color-bg-magic-strong': {
+    value: colors.purple[500],
+    description: '',
+  },
+  'color-bg-magic-hover': {
+    value: colors.purple[200],
+    description: '',
+  },
+  'color-bg-magic': {
+    value: colors.purple[100],
+    description: '',
+  },
+  'color-bg-magic-subdued-hover': {
+    value: colors.purple[100],
+    description: '',
+  },
+  'color-bg-magic-subdued': {
+    value: colors.purple[50],
+    description: '',
+  },
   'color-border-input-hover': {
     value: colors.gray[800],
     description: '',
@@ -477,6 +497,14 @@ export const color: {
     value: colors.blue[200],
     description: '',
   },
+  'color-border-magic-strong': {
+    value: colors.purple[500],
+    description: '',
+  },
+  'color-border-magic': {
+    value: colors.purple[400],
+    description: '',
+  },
   'color-icon-hover': {
     value: colors.gray[900],
     description: '',
@@ -547,6 +575,10 @@ export const color: {
   },
   'color-icon-interactive-inverse': {
     value: colors.blue[400],
+    description: '',
+  },
+  'color-icon-magic': {
+    value: colors.purple[600],
     description: '',
   },
   'color-text': {
@@ -636,6 +668,14 @@ export const color: {
   },
   'color-text-interactive-inverse': {
     value: colors.blue[400],
+    description: '',
+  },
+  'color-text-magic-strong': {
+    value: colors.purple[800],
+    description: '',
+  },
+  'color-text-magic': {
+    value: colors.purple[600],
     description: '',
   },
 };
