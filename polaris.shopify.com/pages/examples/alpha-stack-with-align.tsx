@@ -13,14 +13,14 @@ function AlphaStackWithAlignExample() {
           <Placeholder width="320px" childAlign="start" />
         </AlphaStack>
 
-        <AlphaStack align="center">
+        <AlphaStack gap="4" align="center">
           <AlphaStack>
             <Placeholder width="320px" label="Center" childAlign="center" />
             <Placeholder width="320px" childAlign="center" />
             <Placeholder width="320px" childAlign="center" />
           </AlphaStack>
         </AlphaStack>
-        <AlphaStack align="end">
+        <AlphaStack gap="4" align="end">
           <Placeholder width="320px" label="End" childAlign="end" />
           <Placeholder width="320px" childAlign="center" />
           <Placeholder width="320px" childAlign="center" />
