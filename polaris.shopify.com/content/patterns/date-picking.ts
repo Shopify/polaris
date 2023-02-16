@@ -554,18 +554,20 @@ const pattern: MultiVariantPattern = {
                         options={ranges.map(({ alias, title }) => title || alias)}
                       />
                     ) : (
-                      <OptionList
-                        options={ranges.map((range) => ({
-                          value: range.alias,
-                          label: range.title,
-                        }))}
-                        selected={activeDateRange.alias}
-                        onChange={(value) => {
-                          setActiveDateRange(
-                            ranges.find((range) => range.alias === value[0])
-                          );
-                        }}
-                      />
+                      <Scrollable style={{height: "334px"}}>
+                        <OptionList
+                          options={ranges.map((range) => ({
+                            value: range.alias,
+                            label: range.title,
+                          }))}
+                          selected={activeDateRange.alias}
+                          onChange={(value) => {
+                            setActiveDateRange(
+                              ranges.find((range) => range.alias === value[0])
+                            );
+                          }}
+                        />
+                      </Scrollable>
                     )}
                   </Box>
                   <Box padding={{ xs: 5 }} maxWidth={mdDown ? "320px" : "516px"}>
@@ -890,18 +892,20 @@ const pattern: MultiVariantPattern = {
                         options={ranges.map(({ alias, title }) => title || alias)}
                       />
                     ) : (
-                      <OptionList
-                        options={ranges.map((range) => ({
-                          value: range.alias,
-                          label: range.title,
-                        }))}
-                        selected={activeDateRange.alias}
-                        onChange={(value) => {
-                          setActiveDateRange(
-                            ranges.find((range) => range.alias === value[0])
-                          );
-                        }}
-                      />
+                      <Scrollable style={{height: "334px"}}>
+                        <OptionList
+                          options={ranges.map((range) => ({
+                            value: range.alias,
+                            label: range.title,
+                          }))}
+                          selected={activeDateRange.alias}
+                          onChange={(value) => {
+                            setActiveDateRange(
+                              ranges.find((range) => range.alias === value[0])
+                            );
+                          }}
+                        />
+                      </Scrollable>
                     )}
                   </Box>
                   <Box padding={{ xs: 5 }} maxWidth={mdDown ? "320px" : "516px"}>
