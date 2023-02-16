@@ -1,6 +1,6 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'v11-styles-replace-custom-property';
+const migration = 'styles-replace-custom-property';
 const fixtures = [
   {
     name: 'with-from-to-flags-basic',
@@ -21,7 +21,7 @@ const fixtures = [
   {
     name: 'with-maps-flag',
     options: {
-      maps: 'src/migrations/v11-styles-replace-custom-property/tests/replacement-maps',
+      maps: 'src/migrations/styles-replace-custom-property/tests/replacement-maps',
     },
   },
   {

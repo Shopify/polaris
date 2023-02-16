@@ -24,7 +24,7 @@ interface PluginOptions extends Options {
   replacementMaps?: ReplacementMaps;
 }
 
-export default function v11StylesReplaceCustomProperty(
+export default function stylesReplaceCustomProperty(
   file: FileInfo,
   _: API,
   options: PluginOptions,
@@ -64,7 +64,7 @@ function plugin(options: PluginOptions = {}): Plugin {
   const replacementMapsKeys = Object.keys(replacementMaps);
 
   return {
-    postcssPlugin: 'v11-styles-replace-custom-property',
+    postcssPlugin: 'styles-replace-custom-property',
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed] || !replacementMaps) return;
