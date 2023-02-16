@@ -596,7 +596,7 @@ Don't use "OK". "OK" is an exclamation, not an action. When merchants click the 
 
 #### Do
 
-![modal with Close button](/images/content/actionable-language/ok@2x.png)
+![modal with Close button](/images/content/actionable-language/modal-with-close@2x.png)
 
 #### Don’t
 
