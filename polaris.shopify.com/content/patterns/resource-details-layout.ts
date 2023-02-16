@@ -70,19 +70,25 @@ const pattern: SingleVariantPattern = {
         <Page
           breadcrumbs={[{ content: "Products", url: "/products" }]}
           title="Product"
-          actionGroups={[
-            {
-              title: "More actions",
-              accessibilityLabel: "More actions",
-              actions: [
-                {
-                  content: "Share on Mastodon",
-                  accessibilityLabel: "Individual action label",
-                  onAction: () => alert("Share on Mastodon action"),
-                },
-              ],
-            },
-          ]}
+          secondaryActions={[{
+            content: 'Duplicate',
+            icon: DuplicateMinor,
+            accessibilityLabel: 'Secondary action label',
+            onAction: () => alert('Duplicate action'),
+          },
+          {
+            content: 'Archive',
+            icon: ArchiveMinor,
+            accessibilityLabel: 'Secondary action label',
+            onAction: () => alert('Archive action'),
+          },
+          {
+            content: 'Delete',
+            icon: DeleteMinor,
+            destructive: true,
+            accessibilityLabel: 'Secondary action label',
+            onAction: () => alert('Delete action'),
+          }]}
           pagination={{
             hasPrevious: true,
             hasNext: true,
@@ -158,19 +164,25 @@ const pattern: SingleVariantPattern = {
         <Page
           breadcrumbs={[{ content: "Products", url: "/products" }]}
           title="Product"
-          actionGroups={[
-            {
-              title: "More actions",
-              accessibilityLabel: "More actions",
-              actions: [
-                {
-                  content: "Share on Mastodon",
-                  accessibilityLabel: "Individual action label",
-                  onAction: () => alert("Share on Mastodon action"),
-                },
-              ],
-            },
-          ]}
+          secondaryActions={[{
+            content: 'Duplicate',
+            icon: DuplicateMinor,
+            accessibilityLabel: 'Secondary action label',
+            onAction: () => alert('Duplicate action'),
+          },
+          {
+            content: 'Archive',
+            icon: ArchiveMinor,
+            accessibilityLabel: 'Secondary action label',
+            onAction: () => alert('Archive action'),
+          },
+          {
+            content: 'Delete',
+            icon: DeleteMinor,
+            destructive: true,
+            accessibilityLabel: 'Secondary action label',
+            onAction: () => alert('Delete action'),
+          }]}
           pagination={{
             hasPrevious: true,
             hasNext: true,
