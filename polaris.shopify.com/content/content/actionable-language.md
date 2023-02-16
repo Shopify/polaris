@@ -586,18 +586,21 @@ Use the adjective “Done” for datepickers.
 
 ---
 
-## OK vs. accept
+## Close vs. accept
 
-Use the adjective “OK” when merchants need to confirm they’ve read something, but aren’t required to legally accept terms of service before continuing. For example, use “OK” when presenting a security notification in a modal or sheet.
+Use the adjective “Close” when merchants need to confirm they’ve read something, but aren’t required to legally accept terms of service before continuing. For example, use “Close” when presenting a security notification in a modal or sheet.
+
+Don't use "OK". "OK" is an exclamation, not an action. When merchants click the "Close" button, they’re not saying “OK”, they’re doing a specific action.
 
 <!-- dodont -->
 
 #### Do
 
-![modal with okay button spelled with capitalized letter O and K, no punctuation](/images/content/actionable-language/ok@2x.png)
+![modal with Close button](/images/content/actionable-language/ok@2x.png)
 
 #### Don’t
 
+- OK
 - Ok
 - O.k.
 - Okay
@@ -619,6 +622,7 @@ Accept
 
 - Ok
 - Done
+- Close
 - Continue
 
 <!-- end -->
