@@ -468,7 +468,6 @@ const pattern: MultiVariantPattern = {
                   month: activeDateRange.period.until.getMonth()
                 }
               );
-
               if (monthDifference > 1 || monthDifference < 0) {
                 setDate({
                   month: activeDateRange.period.until.getMonth(),
@@ -809,7 +808,6 @@ const pattern: MultiVariantPattern = {
                   month: activeDateRange.period.until.getMonth()
                 }
               );
-
               if (monthDifference > 1 || monthDifference < 0) {
                 setDate({
                   month: activeDateRange.period.until.getMonth(),
