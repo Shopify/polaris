@@ -452,25 +452,29 @@ const pattern: MultiVariantPattern = {
             if (activeDateRange) {
               setInputValues({
                 since: formatDate(activeDateRange.period.since),
-                until: formatDate(activeDateRange.period.until),
+                until: formatDate(activeDateRange.period.until)
               });
-              if (activeDateRange.period.since === activeDateRange.period.until) {
-                return;
+              function monthDiff(referenceDate, newDate) {
+                return (
+                  newDate.month -
+                  referenceDate.month +
+                  12 * (referenceDate.year - newDate.year)
+                );
               }
-              const clonedDate = new Date(activeDateRange.period.until);
-              clonedDate.setMonth(clonedDate.getMonth() - 1);
-              if (activeDateRange.period.since.getMonth() === month) {
-                if (
-                  activeDateRange.period.since.getMonth() ===
-                  activeDateRange.period.until.getMonth()
-                ) {
-                  clonedDate.setMonth(clonedDate.getMonth() + 1);
+              const monthDifference = monthDiff(
+                { year, month },
+                {
+                  year: activeDateRange.period.until.getFullYear(),
+                  month: activeDateRange.period.until.getMonth()
                 }
+              );
+
+              if (monthDifference > 1 || monthDifference < 0) {
+                setDate({
+                  month: activeDateRange.period.until.getMonth(),
+                  year: activeDateRange.period.until.getFullYear()
+                });
               }
-              setDate({
-                month: clonedDate.getMonth(),
-                year: clonedDate.getFullYear(),
-              });
             }
           }, [activeDateRange]);
           const buttonValue =
@@ -790,25 +794,29 @@ const pattern: MultiVariantPattern = {
             if (activeDateRange) {
               setInputValues({
                 since: formatDate(activeDateRange.period.since),
-                until: formatDate(activeDateRange.period.until),
+                until: formatDate(activeDateRange.period.until)
               });
-              if (activeDateRange.period.since === activeDateRange.period.until) {
-                return;
+              function monthDiff(referenceDate, newDate) {
+                return (
+                  newDate.month -
+                  referenceDate.month +
+                  12 * (referenceDate.year - newDate.year)
+                );
               }
-              const clonedDate = new Date(activeDateRange.period.until);
-              clonedDate.setMonth(clonedDate.getMonth() - 1);
-              if (activeDateRange.period.since.getMonth() === month) {
-                if (
-                  activeDateRange.period.since.getMonth() ===
-                  activeDateRange.period.until.getMonth()
-                ) {
-                  clonedDate.setMonth(clonedDate.getMonth() + 1);
+              const monthDifference = monthDiff(
+                { year, month },
+                {
+                  year: activeDateRange.period.until.getFullYear(),
+                  month: activeDateRange.period.until.getMonth()
                 }
+              );
+
+              if (monthDifference > 1 || monthDifference < 0) {
+                setDate({
+                  month: activeDateRange.period.until.getMonth(),
+                  year: activeDateRange.period.until.getFullYear()
+                });
               }
-              setDate({
-                month: clonedDate.getMonth(),
-                year: clonedDate.getFullYear(),
-              });
             }
           }, [activeDateRange]);
           const buttonValue =
