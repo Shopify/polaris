@@ -370,28 +370,22 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris z-index token',
     },
   ],
-  conventions: [
-    {
-      'polaris/custom-property-allowed-list': {
-        // Allow any custom property not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
-        allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
-        allowedValues: {
-          '/.+/': [
-            // Note: Order is important.
-            // The first pattern validates `--p-*`
-            // custom properties are valid Polaris tokens
-            ...getCustomPropertyNames(tokens),
-            // and the second pattern flags unknown `--p-*` custom properties
-            // or usages of our "private" `--pc-*` custom properties
-            /--(?!(p|pc)-).+/,
-          ],
-        },
+  conventions: {
+    'polaris/custom-property-allowed-list': {
+      // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
+      allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
+      // Allows use of custom properties prefixed with `--p-` that are valid Polaris tokens
+      allowedValues: {
+        '/.+/': [
+          // Note: Order is important
+          // This pattern allows use of `--p-*` custom properties that are valid Polaris tokens
+          ...getCustomPropertyNames(tokens),
+          // This pattern flags unknown `--p-*` custom properties or usage of deprecated `--pc-*` custom properties private to polaris-react
+          /--(?!(p|pc)-).+/,
+        ],
       },
     },
-    {
-      message: 'Please use a Polaris token or component',
-    },
-  ],
+  },
   'media-queries': [
     {
       'polaris/media-query-allowed-list': {
