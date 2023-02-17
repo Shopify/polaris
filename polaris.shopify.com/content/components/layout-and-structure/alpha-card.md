@@ -26,6 +26,8 @@ status:
 examples:
   - fileName: alpha-card-default.tsx
     title: Default
+    description: >-
+      By default, Card has an 8px border radius and uses --p-surface as the background and --p-shadow-card as the shadow. There is padding of `space-5` (20px) around children and `space-4` (16px) for small screens.
   - fileName: alpha-card-with-subdued-background.tsx
     title: With subdued background
     description: >-
@@ -33,11 +35,11 @@ examples:
   - fileName: alpha-card-with-varying-padding.tsx
     title: With varying padding
     description: >-
-      Use the `padding` property to adjust the spacing within a card. You can also specify spacing values at different breakpoints.
+      Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
   - fileName: alpha-card-with-rounded-corners.tsx
     title: Rounded corners
     description: >-
-      Cards have an 8px border radius by default. Rounding may also be applied responsively with the roundedAbove prop. This enables cards to be softened on larger screens, but squared off when they are full bleed on smaller devices.
+      Cards can have a border radius applied responsively with the `roundedAbove` prop.
 ---
 
 ## Best practices
