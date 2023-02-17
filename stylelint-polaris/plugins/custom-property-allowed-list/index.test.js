@@ -5,13 +5,13 @@ const {messages, ruleName} = require('.');
 const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
 
 /*
- -p-* Tokens are to be defined in polaris-tokens.
+ --p-* Tokens are to be defined in polaris-tokens.
    - Defining custom properties with this prefix anywhere else is disallowed
    - Usage of them is allowed
- -pc-* Tokens are reserved for usage by components in polaris-react
+ --pc-* Tokens are reserved for usage by components in polaris-react
   - Defining custom properties with this prefix is disallowed
-  - Any new usage of them is disallowed in polaris-react
-  - Tokens with this prefix should be contributed to and/or replaced with polaris-tokens
+  - Usage and definition of them is deprecated in polaris-react
+  - Existing tokens with this prefix should be contributed to and/or replaced with polaris-tokens
 */
 
 const allowedCustomPropertyNames = /--(?!(p|pc|polaris-version)-).+/;
