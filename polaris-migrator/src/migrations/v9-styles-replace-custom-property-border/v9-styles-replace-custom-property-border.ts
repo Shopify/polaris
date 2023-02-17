@@ -8,6 +8,7 @@ const replacementMaps = {
     '--p-border-radius-full': '--p-border-radius-half',
     '--p-border-radius-slim': '--p-border-radius-05',
     '--p-border-radius-wide': '--p-border-radius-2',
+    '--p-text-field-focus-ring-border-radius': '7px',
   },
 };
 
