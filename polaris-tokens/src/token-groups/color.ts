@@ -136,6 +136,8 @@ export type ColorTextAlias =
   | 'text-magic'
   | 'text-magic-strong'
   | 'text-on-color'
+  | 'text-magic'
+  | 'text-magic-strong'
   | 'text-primary'
   | 'text-subdued'
   | 'text-success'
