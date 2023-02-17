@@ -590,7 +590,7 @@ npx @shopify/polaris-migrator v9-styles-replace-custom-property-motion <path>
 
 #### `v9-styles-replace-custom-property-legacy`
 
-Replace deprecated miscellaneous CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+Replace deprecated legacy CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
 
 ```diff
 - width: var(--p-icon-size);
