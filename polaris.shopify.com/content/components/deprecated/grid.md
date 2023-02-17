@@ -16,8 +16,8 @@ keywords:
 status:
   value: Deprecated
   message: >-
-    Grid was built before we had primitive layout tools like Columns, Inline, and AlphaStack. It is difficult to learn, document, and understand its usage in a codebase.
-    The new layout primitives should be used in combination to achieve similar results to Grid.
+    Grid was built prior to layout primitives like columns, inline, and alpha stack. Comparatively, grid is difficult to learn, document, and understand its usage in a codebase.
+    The new layout primitives should be used in combination to achieve similar results to grid.
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
