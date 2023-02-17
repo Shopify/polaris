@@ -14,8 +14,10 @@ keywords:
   - full width containers
   - css grid
 status:
-  value: Alpha
-  message: This component is slated to be deprecated in v11. Please consider using alternate layout primitive components such as Columns, Inline, or AlphaStack.
+  value: Deprecated
+  message: >-
+    Grid was built before we had primitive layout tools like Columns, Inline, and AlphaStack. It is difficult to learn, document, and understand its usage in a codebase.
+    The new layout primitives should be used in combination to achieve similar results to Grid.
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
