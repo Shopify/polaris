@@ -82,12 +82,27 @@ const {rule} = stylelint.createPlugin(
           value,
         );
 
-        if (isInvalidProperty || invalidValues) {
+        if (isInvalidProperty) {
           stylelint.utils.report({
             message: messages.rejected(
               prop,
               value,
-              isInvalidProperty ? getCustomPropertyPrefix(prop) : undefined,
+              getCustomPropertyPrefix(prop),
+              isInvalidProperty,
+              invalidValues,
+            ),
+            node: decl,
+            result,
+            ruleName,
+          });
+        }
+
+        if (invalidValues) {
+          stylelint.utils.report({
+            message: messages.rejected(
+              prop,
+              value,
+              undefined,
               isInvalidProperty,
               invalidValues,
             ),
