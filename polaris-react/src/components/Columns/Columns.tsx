@@ -48,7 +48,7 @@ export function Columns({children, columns, gap = '4'}: ColumnsProps) {
     ...getResponsiveValue(
       'columns',
       'grid-template-columns',
-      formatColumns(columns),
+      formatColumns(columns || 6),
     ),
     ...getResponsiveProps('columns', 'gap', 'space', gap),
   } as React.CSSProperties;
