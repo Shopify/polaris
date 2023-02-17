@@ -1,0 +1,60 @@
+.LayerList {
+  padding: 1rem;
+
+  .Layer {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.25rem;
+
+    &[data-is-hovered="true"] > span {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &[data-is-selected="true"] {
+      background: rgba(102, 0, 255, 0.339);
+    }
+
+    &[data-is-selected="true"][data-is-hovered="true"] > span {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    > span {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      font-weight: 500;
+
+      button {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.25);
+        color: white;
+      }
+    }
+  }
+}
+
+.AddChild {
+  border-radius: 100px;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.7rem;
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.Children {
+  padding: 0.75rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

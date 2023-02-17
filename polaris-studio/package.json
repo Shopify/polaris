@@ -1,0 +1,39 @@
+{
+  "name": "polaris-blueprint",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "create-component": "generact --root components components/Template/Template.tsx",
+    "app": "electron main.js",
+    "import-props": "tsc scripts/convertProps2.ts --resolveJsonModule --esModuleInterop && node scripts/convertProps2.js && rm scripts/convertProps2.js",
+    "import-component-usage": "tsc scripts/importComponentUsage.ts --resolveJsonModule --esModuleInterop && node scripts/importComponentUsage.js && rm scripts/importComponentUsage.js"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.7",
+    "@next/font": "13.1.5",
+    "@shopify/polaris": "^10.23.0",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "eslint": "8.32.0",
+    "eslint-config-next": "13.1.5",
+    "generact": "^0.4.0",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
+    "next": "13.1.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-tooltip": "^5.7.5",
+    "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "@types/lodash.get": "^4.4.7",
+    "@types/lodash.set": "^4.3.7",
+    "electron": "^22.2.0",
+    "sass": "^1.57.1"
+  }
+}
