@@ -80,7 +80,7 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
 
 #### `v11-styles-replace-custom-property-legacy`
 
-Replace deprecated miscellaneous CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+Replace deprecated legacy CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
 
 ```diff
 - z-index: var(--p-override-loading-z-index);
