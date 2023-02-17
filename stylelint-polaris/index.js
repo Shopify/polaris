@@ -358,9 +358,6 @@ const stylelintPolarisCoverageOptions = {
         },
       },
     },
-    {
-      message: 'Please use a Polaris token or component',
-    },
   ],
   'media-queries': [
     {
