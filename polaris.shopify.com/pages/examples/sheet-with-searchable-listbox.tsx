@@ -194,7 +194,7 @@ function SheetWithSearchableListboxExample() {
       style={{
         padding: 'var(--p-space-4) var(--p-space-2)',
         position: 'sticky',
-        zIndex: 'var(--p-z-12)',
+        zIndex: 'var(--p-z-index-12)',
         width: '100%',
         background: 'var(--p-surface)',
       }}
