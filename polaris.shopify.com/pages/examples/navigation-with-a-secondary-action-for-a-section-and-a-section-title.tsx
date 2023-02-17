@@ -16,17 +16,20 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
             },
@@ -36,7 +39,8 @@ function NavigationExample() {
           title="Sales channels"
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Online Store',
               icon: OnlineStoreMinor,
             },

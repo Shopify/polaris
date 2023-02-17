@@ -31,7 +31,7 @@ export function Default() {
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
     <div style={{padding: '0'}}>
-      <AlphaStack>
+      <AlphaStack gap="4">
         {files.map((file, index) => (
           <Inline align="center" key={index}>
             <Thumbnail
@@ -87,7 +87,7 @@ export function WithImageFileUpload() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack>
+    <AlphaStack gap="4">
       {files.map((file, index) => (
         <Inline align="center" key={index}>
           <Thumbnail
@@ -123,7 +123,7 @@ export function WithImageFileUpload() {
   );
 
   return (
-    <AlphaStack fullWidth>
+    <AlphaStack gap="4" fullWidth>
       {errorMessage}
       <DropZone accept="image/*" type="image" onDrop={handleDrop}>
         {uploadedFiles}
@@ -186,7 +186,7 @@ export function WithDropOnPage() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack>
+    <AlphaStack gap="4">
       {files.map((file, index) => (
         <Inline align="center" key={index}>
           <Thumbnail
@@ -248,7 +248,7 @@ export function AcceptsOnlySVGFiles() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack>
+    <AlphaStack gap="4">
       {files.map((file, index) => (
         <Inline align="center" key={index}>
           <Thumbnail
@@ -284,7 +284,7 @@ export function AcceptsOnlySVGFiles() {
   );
 
   return (
-    <AlphaStack fullWidth>
+    <AlphaStack gap="4" fullWidth>
       {errorMessage}
       <DropZone
         accept="image/svg+xml"
@@ -311,7 +311,7 @@ export function Nested() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack>
+    <AlphaStack gap="4">
       {files.map((file, index) => (
         <Inline align="center" key={index}>
           <Thumbnail
@@ -383,7 +383,7 @@ export function WithCustomFileUploadText() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack>
+    <AlphaStack gap="4">
       {files.map((file, index) => (
         <Inline align="center" key={index}>
           <Thumbnail
@@ -432,7 +432,7 @@ export function WithCustomFileDialogTrigger() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack>
+    <AlphaStack gap="4">
       {files.map((file, index) => (
         <Inline align="center" key={index}>
           <Thumbnail
