@@ -139,7 +139,10 @@ function getMeta(category, stylelintRuleName) {
     'https://polaris.shopify.com/tools/stylelint-polaris/rules';
 
   return {
-    url: `${baseMetaUrl}/${category}-${stylelintRuleName.replace('/', '-')}`,
+    url: `${baseMetaUrl}/${category}-${stylelintRuleName.replace(
+      'polaris/',
+      '',
+    )}`,
   };
 }
 
