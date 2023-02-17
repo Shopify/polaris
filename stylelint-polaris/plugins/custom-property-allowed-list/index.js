@@ -16,14 +16,17 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
    * @type {stylelint.RuleMessageFunc}
    */
   rejected: (prop, value, prefix, isInvalidProp, invalidValues) => {
-    if (isInvalidProp && !invalidValues) {
-      return `Unexpected prefix "${prefix}" for defined custom property "${prop}. Prefixes "--p-" or "--pc-" cannot be used outside of Polaris."`;
+    if (isInvalidProp) {
+      return `Unexpected prefix "${prefix}" for defined custom property "${prop}" - Properties with prefixes "--p-" or "--pc-" cannot be defined outside of Polaris."`;
     }
 
     if (invalidValues) {
-      return `Unexpected value${
-        invalidValues.length > 1 ? 's' : ''
-      } "${invalidValues.join(', ')}" for property "${prop}"`;
+      const plural = invalidValues.length > 1;
+      return `Unexpected value ${value} for property "${prop}" - Token${
+        plural ? 's' : ''
+      } ${invalidValues.join(', ')} ${
+        plural ? 'are' : 'is'
+      } either private or do not exist.`;
     }
   },
 });
