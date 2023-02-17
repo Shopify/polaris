@@ -2,7 +2,35 @@ import type {FileInfo, API} from 'jscodeshift';
 
 import stylesReplaceCustomProperty from '../styles-replace-custom-property/styles-replace-custom-property';
 
-const ColorMap = {
+const allMap = {
+  '--p-backdrop': 'rgba(0, 0, 0, 0.5)',
+  '--p-overlay': 'rgba(255, 255, 255, 0.5)',
+  '--p-shadow-color-picker': 'rgba(0, 0, 0, 0.5)',
+  '--p-shadow-color-picker-dragger': 'rgba(33, 43, 54, 0.32)',
+  '--p-hint-from-direct-light': 'rgba(0, 0, 0, 0.15)',
+  /**
+   * Decorative colors are being converted to hard-coded values
+   * since they are only used for Avatar.
+   */
+  '--p-decorative-one-icon': 'rgba(126, 87, 0, 1)',
+  '--p-decorative-one-surface': 'rgba(255, 201, 107, 1)',
+  '--p-decorative-one-text': 'rgba(61, 40, 0, 1)',
+  '--p-decorative-two-icon': 'rgba(175, 41, 78, 1)',
+  '--p-decorative-two-surface': 'rgba(255, 196, 176, 1)',
+  '--p-decorative-two-text': 'rgba(73, 11, 28, 1)',
+  '--p-decorative-three-icon': 'rgba(0, 109, 65, 1)',
+  '--p-decorative-three-surface': 'rgba(146, 230, 181, 1)',
+  '--p-decorative-three-text': 'rgba(0, 47, 25, 1)',
+  '--p-decorative-four-icon': 'rgba(0, 106, 104, 1)',
+  '--p-decorative-four-surface': 'rgba(145, 224, 214, 1)',
+  '--p-decorative-four-text': 'rgba(0, 45, 45, 1)',
+  '--p-decorative-five-icon': 'rgba(174, 43, 76, 1)',
+  '--p-decorative-five-surface': 'rgba(253, 201, 208, 1)',
+  '--p-decorative-five-text': 'rgba(79, 14, 31, 1)',
+};
+
+const colorMap = {
+  ...allMap,
   '--p-text': '--p-color-text',
   '--p-text-on-dark': '--p-color-text-inverse',
   '--p-text-disabled': '--p-color-text-disabled',
@@ -31,6 +59,7 @@ const ColorMap = {
 };
 
 const backgroundColorMap = {
+  ...allMap,
   '--p-background': '--p-color-bg-app',
   '--p-background-hovered': '--p-color-bg-app-hover',
   '--p-background-pressed': '--p-color-bg-app-active',
@@ -103,6 +132,7 @@ const backgroundColorMap = {
 };
 
 const borderColorMap = {
+  ...allMap,
   '--p-border': '--p-color-border',
   '--p-border-on-dark': '--p-color-border-inverse',
   '--p-border-neutral-subdued': '--p-color-border-strong',
@@ -132,6 +162,7 @@ const borderColorMap = {
 };
 
 const fillColorMap = {
+  ...allMap,
   '--p-icon': '--p-color-icon',
   '--p-icon-on-dark': '--p-color-icon-inverse',
   '--p-icon-hovered': '--p-color-icon-hover',
@@ -155,12 +186,13 @@ const fillColorMap = {
 };
 
 const replacementMaps = {
-  color: ColorMap,
+  color: colorMap,
   background: backgroundColorMap,
   'background-color': backgroundColorMap,
   border: borderColorMap,
   'border-color': borderColorMap,
   fill: fillColorMap,
+  '/.+/': allMap,
 };
 
 export default function v11StylesReplaceCustomPropertyColor(
@@ -169,28 +201,3 @@ export default function v11StylesReplaceCustomPropertyColor(
 ) {
   return stylesReplaceCustomProperty(fileInfo, _, {replacementMaps});
 }
-
-export const unCategorizedMaps = {
-  '--p-backdrop': '--p-color-bg-backdrop', // I think we removed this token all together. Alex had brought it up in a previoius PR
-  '--p-overlay': '--p-color-bg-overlay', // I think we removed this token all together. Alex had brought it up in a previoius PR
-  '--p-shadow-color-picker': '--p-color-shadow-color-picker', // shadow-inset-sm
-  '--p-shadow-color-picker-dragger': '--p-color-shadow-color-picker-dragger', // shadow-sm
-  '--p-hint-from-direct-light': '--p-color-hint-from-direct-light', // rgba(0, 0, 0, 0.15)
-
-  // Decorative colors are being converted to hard-coded values since they are only used for Avatar
-  '--p-decorative-one-icon': '--p-color-decorative-one-icon', // rgba(126, 87, 0, 1)
-  '--p-decorative-one-surface': '--p-color-decorative-one-surface', // rgba(255, 201, 107, 1)
-  '--p-decorative-one-text': '--p-color-decorative-one-text', // rgba(61, 40, 0, 1)
-  '--p-decorative-two-icon': '--p-color-decorative-two-icon', // rgba(175, 41, 78, 1)
-  '--p-decorative-two-surface': '--p-color-decorative-two-surface', // rgba(255, 196, 176, 1)
-  '--p-decorative-two-text': '--p-color-decorative-two-text', // rgba(73, 11, 28, 1)
-  '--p-decorative-three-icon': '--p-color-decorative-three-icon', // rgba(0, 109, 65, 1)
-  '--p-decorative-three-surface': '--p-color-decorative-three-surface', // rgba(146, 230, 181, 1)
-  '--p-decorative-three-text': '--p-color-decorative-three-text', // rgba(0, 47, 25, 1)
-  '--p-decorative-four-icon': '--p-color-decorative-four-icon', // rgba(0, 106, 104, 1)
-  '--p-decorative-four-surface': '--p-color-decorative-four-surface', // rgba(145, 224, 214, 1)
-  '--p-decorative-four-text': '--p-color-decorative-four-text', // rgba(0, 45, 45, 1)
-  '--p-decorative-five-icon': '--p-color-decorative-five-icon', // rgba(174, 43, 76, 1)
-  '--p-decorative-five-surface': '--p-color-decorative-five-surface', // rgba(253, 201, 208, 1)
-  '--p-decorative-five-text': '--p-color-decorative-five-text', // rgba(79, 14, 31, 1)
-};
