@@ -75,14 +75,11 @@ export default {
 
 #### `v11-styles-replace-custom-property-border`
 
-Replace deprecated border CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+Replace deprecated border CSS custom properties with corresponding Polaris custom property replacement values.
 
 ```diff
 - border-radius: var(--p-border-radius-base);
 + border-radius: var(--p-border-radius-1);
-
-- border-radius: var(--p-text-field-focus-ring-border-radius);
-+ border-radius: 7px;
 ```
 
 <br />
@@ -95,74 +92,17 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-border <path>
 
 #### `v11-styles-replace-custom-property-depth`
 
-Replace deprecated depth CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+Replace deprecated depth CSS custom properties with corresponding replacement static values.
 
 ```diff
-- box-shadow: var(--p-button-drop-shadow);
-+ box-shadow: var(--p-shadow-button);
-
-- box-shadow: 1px 1px var(--p-shadow-from-ambient-light);
-+ box-shadow: 1px 1px rgba(23, 24, 24, 0.05);
+- box-shadow: var(--p-shadow-transparent);
++ box-shadow: 0 0 0 0 transparent;
 ```
 
 <br />
 
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-depth <path>
-```
-
-<br />
-
-#### `v11-styles-replace-custom-property-font`
-
-Replace deprecated font CSS custom properties with corresponding Polaris custom property replacement values.
-
-```diff
-- font-weight: var(--p-badge-font-weight);
-+ font-weight: var(--p-font-weight-regular);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator v11-styles-replace-custom-property-font <path>
-```
-
-<br />
-
-#### `v11-styles-replace-custom-property-motion`
-
-Replace deprecated motion CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
-
-```diff
-- transition: transform var(--p-duration-1-0-0) var(--p-ease);
-+ transition: transform var(--p-duration-100) var(--p-ease);
-
-- transition: transform var(--p-duration-0) var(--p-ease);
-+ transition: transform 0 var(--p-ease);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator v11-styles-replace-custom-property-motion <path>
-```
-
-<br />
-
-#### `v11-styles-replace-custom-property-spacing`
-
-Replace deprecated spacing CSS custom properties with corresponding replacement static values.
-
-```diff
-- padding: var(--p-space-0);
-+ padding: 0;
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator v11-styles-replace-custom-property-spacing <path>
 ```
 
 <br />
@@ -184,22 +124,22 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
 
 <br />
 
-#### `v11-styles-replace-custom-property-misc`
+#### `v11-styles-replace-custom-property-legacy`
 
 Replace deprecated miscellaneous CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
 
 ```diff
-- width: var(--p-icon-size);
-+ width: var(--p-icon-size-small);
+- z-index: var(--p-override-loading-z-index);
++ z-index: var(--p-z-index-6);
 
-- display: var(--p-override-none);
-+ display: none;
+- width: var(--p-choice-size);
++ width: 20px;
 ```
 
 <br />
 
 ```sh
-npx @shopify/polaris-migrator v11-styles-replace-custom-property-misc <path>
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-legacy <path>
 ```
 
 <br />
@@ -653,6 +593,100 @@ Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations 
 
 ```sh
 npx @shopify/polaris-migrator styles-tokenize-space <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-border`
+
+Replace deprecated border CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
+- border-radius: var(--p-border-radius-base);
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: var(--p-text-field-focus-ring-border-radius);
++ border-radius: 7px;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-border <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-depth`
+
+Replace deprecated depth CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
+- box-shadow: var(--p-button-drop-shadow);
++ box-shadow: var(--p-shadow-button);
+
+- box-shadow: 1px 1px var(--p-shadow-from-ambient-light);
++ box-shadow: 1px 1px rgba(23, 24, 24, 0.05);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-depth <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-font`
+
+Replace deprecated font CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- font-weight: var(--p-badge-font-weight);
++ font-weight: var(--p-font-weight-regular);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-font <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-motion`
+
+Replace deprecated motion CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- transition: transform var(--p-duration-1-0-0) var(--p-ease);
++ transition: transform var(--p-duration-100) var(--p-ease);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-motion <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-legacy`
+
+Replace deprecated miscellaneous CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
+- width: var(--p-icon-size);
++ width: var(--p-icon-size-small);
+
+- display: var(--p-override-none);
++ display: none;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-legacy <path>
 ```
 
 <br />
