@@ -40,6 +40,11 @@ export type ColorBackgroundAlias =
   | 'bg-inverse'
   | 'bg-inverse-active'
   | 'bg-inverse-hover'
+  | 'bg-magic'
+  | 'bg-magic-hover'
+  | 'bg-magic-strong'
+  | 'bg-magic-subdued'
+  | 'bg-magic-subdued-hover'
   | 'bg-primary'
   | 'bg-primary-active'
   | 'bg-primary-hover'
@@ -81,6 +86,8 @@ export type ColorBorderAlias =
   | 'border-interactive-hover'
   | 'border-interactive-subdued'
   | 'border-inverse'
+  | 'border-magic'
+  | 'border-magic-strong'
   | 'border-primary'
   | 'border-strong'
   | 'border-strong-hover'
@@ -102,6 +109,7 @@ export type ColorIconAlias =
   | 'icon-interactive-hover'
   | 'icon-interactive-inverse'
   | 'icon-inverse'
+  | 'icon-magic'
   | 'icon-on-color'
   | 'icon-primary'
   | 'icon-subdued'
@@ -125,6 +133,8 @@ export type ColorTextAlias =
   | 'text-interactive-inverse'
   | 'text-inverse'
   | 'text-inverse-subdued'
+  | 'text-magic'
+  | 'text-magic-strong'
   | 'text-on-color'
   | 'text-primary'
   | 'text-subdued'
@@ -373,6 +383,26 @@ export const color: {
     value: colors.orange[200],
     description: '',
   },
+  'color-bg-magic-strong': {
+    value: colors.purple[500],
+    description: '',
+  },
+  'color-bg-magic-hover': {
+    value: colors.purple[200],
+    description: '',
+  },
+  'color-bg-magic': {
+    value: colors.purple[100],
+    description: '',
+  },
+  'color-bg-magic-subdued-hover': {
+    value: colors.purple[100],
+    description: '',
+  },
+  'color-bg-magic-subdued': {
+    value: colors.purple[50],
+    description: '',
+  },
   'color-border-input-hover': {
     value: colors.gray[800],
     description: '',
@@ -477,6 +507,14 @@ export const color: {
     value: colors.blue[200],
     description: '',
   },
+  'color-border-magic-strong': {
+    value: colors.purple[500],
+    description: '',
+  },
+  'color-border-magic': {
+    value: colors.purple[400],
+    description: '',
+  },
   'color-icon-hover': {
     value: colors.gray[900],
     description: '',
@@ -547,6 +585,10 @@ export const color: {
   },
   'color-icon-interactive-inverse': {
     value: colors.blue[400],
+    description: '',
+  },
+  'color-icon-magic': {
+    value: colors.purple[600],
     description: '',
   },
   'color-text': {
@@ -636,6 +678,14 @@ export const color: {
   },
   'color-text-interactive-inverse': {
     value: colors.blue[400],
+    description: '',
+  },
+  'color-text-magic-strong': {
+    value: colors.purple[800],
+    description: '',
+  },
+  'color-text-magic': {
+    value: colors.purple[600],
     description: '',
   },
 };
