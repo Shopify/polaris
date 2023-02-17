@@ -16,6 +16,7 @@ keywords:
   - date selector
   - date range picker
   - date range selector
+updateBannerMessage: We are [adding patterns](/patterns) to our documentation. Check out related patterns, expect changes to happen, and [join the discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better!
 examples:
   - fileName: date-picker-default.tsx
     title: Default
@@ -57,3 +58,7 @@ If you use the date picker within a [popover component](/components/overlays/pop
 - Press the <kbd>tab</kbd> key to move forward and <kbd>shift</kbd> + <kbd>tab</kbd> to move backward through the previous button, next button, and the calendar
 - When focus is in the calendar, move keyboard focus between the dates using the arrow keys
 - To select a date that has focus, press the <kbd>enter</kbd>/<kbd>return</kbd> key
+
+## Related patterns
+
+- [Date Picking](/patterns/date-picking)

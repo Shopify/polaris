@@ -10,12 +10,14 @@ import Markdown from '../src/components/Markdown';
 import PageMeta from '../src/components/PageMeta';
 import {parseMarkdown} from '../src/utils/markdown.mjs';
 import {MarkdownFile, Status} from '../src/types';
+import UpdateBanner from '../src/components/UpdateBanner';
 
 interface Props {
   readme: MarkdownFile['readme'];
   title: string;
   noIndex?: boolean;
   status?: Status;
+  update?: string;
   description?: string;
   editPageLinkPath: string;
 }
@@ -27,6 +29,7 @@ const CatchAllTemplate: NextPage<Props> = ({
   noIndex,
   description,
   editPageLinkPath,
+  update,
 }: Props) => {
   const typedStatus: Status | undefined = status
     ? {
@@ -41,6 +44,7 @@ const CatchAllTemplate: NextPage<Props> = ({
       <Longform>
         {description ? <Markdown>{description}</Markdown> : null}
         {typedStatus && <StatusBanner status={typedStatus} />}
+        {update && <UpdateBanner update={update} />}
         <Markdown>{readme}</Markdown>
       </Longform>
     </Page>
