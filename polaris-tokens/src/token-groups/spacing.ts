@@ -1,6 +1,9 @@
 import type {TokenGroup} from '../types';
 
 export const spacing = {
+  'space-0': {
+    value: '0',
+  },
   'space-025': {
     value: '1px',
   },
@@ -55,6 +58,7 @@ export type SpacingTokenGroup = TokenGroup<typeof spacing>;
 export type SpacingTokenName = keyof SpacingTokenGroup;
 
 export const spacingSpaceScale = [
+  '0',
   '025',
   '05',
   '1',

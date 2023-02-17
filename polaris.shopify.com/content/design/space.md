@@ -65,6 +65,7 @@ All measurements used across the experience (space, width, height, etc) must ref
 
 | Value        | Space         | px value | rem value |
 | ------------ | ------------- | -------- | --------- |
+| 0            | --p-space-0   | 0        | 0         |
 | 0.25         | --p-space-025 | 1        | 0.0625    |
 | 0.5          | --p-space-05  | 2        | 0.125     |
 | **1 (base)** | --p-space-1   | 4        | 0.25      |
