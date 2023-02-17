@@ -16,19 +16,21 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
               selected: false,
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
               badge: '2',
               secondaryActions: [
                 {
-                  url: '/admin/products/add',
+                  url: '#',
                   accessibilityLabel: 'Add a product',
                   icon: CirclePlusOutlineMinor,
                   tooltip: {
@@ -38,12 +40,13 @@ function NavigationExample() {
               ],
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
               secondaryActions: [
                 {
-                  url: '/admin/products/add',
+                  url: '#',
                   accessibilityLabel: 'Add a product',
                   icon: CirclePlusOutlineMinor,
                   tooltip: {

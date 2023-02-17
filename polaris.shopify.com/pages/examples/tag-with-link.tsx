@@ -3,7 +3,7 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TagExample() {
-  return <Tag url="/collections/wholesale">Wholesale</Tag>;
+  return <Tag url="#">Wholesale</Tag>;
 }
 
 export default withPolarisExample(TagExample);

@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function PageExample() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      breadcrumbs={[{content: 'Products', url: '#'}]}
       title="Jar With Lock-Lid"
       titleMetadata={<Badge status="attention">Verified</Badge>}
       primaryAction={{content: 'Save', disabled: true}}

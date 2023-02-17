@@ -1,5 +1,38 @@
 # Changelog
 
+## 10.28.2
+
+### Patch Changes
+
+- Updated dependencies [[`7a9977b4d`](https://github.com/Shopify/polaris/commit/7a9977b4dfe29217279d4988a60cf056d8404419)]:
+  - @shopify/polaris-tokens@6.5.1
+
+## 10.28.1
+
+### Patch Changes
+
+- [#8373](https://github.com/Shopify/polaris/pull/8373) [`684881b68`](https://github.com/Shopify/polaris/commit/684881b681c7acc8adb8f64991b862869874d929) Thanks [@laurkim](https://github.com/laurkim)! - Added support for `LegacyCard` in `Card` classes
+
+* [#8344](https://github.com/Shopify/polaris/pull/8344) [`61f4e9254`](https://github.com/Shopify/polaris/commit/61f4e9254dc63c4ae1936ba15e66efa64d410f90) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed broken links in storybook and documentation examples
+
+## 10.28.0
+
+### Minor Changes
+
+- [#8305](https://github.com/Shopify/polaris/pull/8305) [`4bff95206`](https://github.com/Shopify/polaris/commit/4bff95206877cc24c261f1103589464314ca8cb7) Thanks [@alex-page](https://github.com/alex-page)! - Created a new token --p-border-radius-full that replaces --p-border-radius-half
+
+* [#8306](https://github.com/Shopify/polaris/pull/8306) [`cf2f7ebeb`](https://github.com/Shopify/polaris/commit/cf2f7ebebb4f1b6a00628652a50c5f170b19c66c) Thanks [@alex-page](https://github.com/alex-page)! - Replace usage of border-radius-base with border-radius-1
+
+### Patch Changes
+
+- [#8325](https://github.com/Shopify/polaris/pull/8325) [`e934ff711`](https://github.com/Shopify/polaris/commit/e934ff711ada01965e0f44583407972aa704c692) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Use useIsomorphicLayoutEffect to prevent warnings during SSR
+
+* [#8273](https://github.com/Shopify/polaris/pull/8273) [`d263caac9`](https://github.com/Shopify/polaris/commit/d263caac9af2ae24a97c8e39d6bf63586c2e147c) Thanks [@eric-blue](https://github.com/eric-blue)! - corrects js-doc comment about conflicting IndexTable defaultSortDirection prop
+
+* Updated dependencies [[`60ef0dffc`](https://github.com/Shopify/polaris/commit/60ef0dffc9f6064d1d42793f5d2bd96f35b14489), [`4bff95206`](https://github.com/Shopify/polaris/commit/4bff95206877cc24c261f1103589464314ca8cb7), [`29e9004ff`](https://github.com/Shopify/polaris/commit/29e9004ff8a5e5e2feaaf13b7d37963a1db206fd)]:
+  - @shopify/polaris-tokens@6.5.0
+  - @shopify/polaris-icons@6.11.2
+
 ## 10.27.2
 
 ### Patch Changes

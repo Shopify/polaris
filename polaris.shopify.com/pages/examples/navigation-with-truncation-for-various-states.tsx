@@ -16,24 +16,26 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'One Stop Ramen Order Application Premium',
               truncateText: true,
               icon: MarketingMinor,
               selected: false,
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
               label: 'Lengthy non-truncated label with secondary action',
               icon: OrdersMinor,
               selected: false,
               secondaryAction: {
-                url: '/admin/orders/add',
+                url: '#',
                 accessibilityLabel: 'Add an order',
                 icon: CirclePlusOutlineMinor,
                 tooltip: {
@@ -42,19 +44,22 @@ function NavigationExample() {
               },
             },
             {
-              url: '/admin/products',
+              url: '#',
               label: 'Truncated secondary navigation item on truncated label',
               icon: ProductsMinor,
               selected: true,
               truncateText: true,
               subNavigationItems: [
                 {
-                  url: '/admin/products/collections',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  label: 'Something longer than inventory so it can be truncated',
+                  label:
+                    'Something longer than inventory so it can be truncated',
                 },
                 {
-                  url: '/admin/products/inventory',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Inventoy',
                 },

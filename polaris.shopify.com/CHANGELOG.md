@@ -1,5 +1,45 @@
 # polaris.shopify.com
 
+## 0.34.2
+
+### Patch Changes
+
+- Updated dependencies [[`7a9977b4d`](https://github.com/Shopify/polaris/commit/7a9977b4dfe29217279d4988a60cf056d8404419)]:
+  - @shopify/polaris-tokens@6.5.1
+  - @shopify/polaris@10.28.2
+
+## 0.34.1
+
+### Patch Changes
+
+- [#8344](https://github.com/Shopify/polaris/pull/8344) [`61f4e9254`](https://github.com/Shopify/polaris/commit/61f4e9254dc63c4ae1936ba15e66efa64d410f90) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed broken links in storybook and documentation examples
+
+- Updated dependencies [[`684881b68`](https://github.com/Shopify/polaris/commit/684881b681c7acc8adb8f64991b862869874d929), [`61f4e9254`](https://github.com/Shopify/polaris/commit/61f4e9254dc63c4ae1936ba15e66efa64d410f90)]:
+  - @shopify/polaris@10.28.1
+
+## 0.34.0
+
+### Minor Changes
+
+- [#8225](https://github.com/Shopify/polaris/pull/8225) [`a2ade0785`](https://github.com/Shopify/polaris/commit/a2ade07857be8de25b5f86cfef25960f3a28a7f6) Thanks [@yurm04](https://github.com/yurm04)! - Updated alpha component warning banner to include link to components lifecycle
+
+* [#8025](https://github.com/Shopify/polaris/pull/8025) [`8c95095fc`](https://github.com/Shopify/polaris/commit/8c95095fcf0be92ce5e6caec37a8845a09523de4) Thanks [@kyledurand](https://github.com/kyledurand)! - Grouped component navigation by type
+
+- [#8265](https://github.com/Shopify/polaris/pull/8265) [`f5afc40d2`](https://github.com/Shopify/polaris/commit/f5afc40d2bed7dd63d771f1f8ee87ceb7ff9d05b) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Create generic codemod to replace custom properties
+
+### Patch Changes
+
+- [#8323](https://github.com/Shopify/polaris/pull/8323) [`21718fa0e`](https://github.com/Shopify/polaris/commit/21718fa0ecea2196698733b386ab060ff0491b32) Thanks [@aveline](https://github.com/aveline)! - Updated docs for `Grid` to warn of upcoming deprecation
+
+* [#8296](https://github.com/Shopify/polaris/pull/8296) [`6f13e7783`](https://github.com/Shopify/polaris/commit/6f13e7783df339fbf201407ba7827b7bcab4384d) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed required text from documentation
+
+- [#8341](https://github.com/Shopify/polaris/pull/8341) [`ab47e7372`](https://github.com/Shopify/polaris/commit/ab47e7372499354a8c26fe5ccfea808576dbc627) Thanks [@laurkim](https://github.com/laurkim)! - Fixed redirect URLs for grouped component pages
+
+- Updated dependencies [[`60ef0dffc`](https://github.com/Shopify/polaris/commit/60ef0dffc9f6064d1d42793f5d2bd96f35b14489), [`e934ff711`](https://github.com/Shopify/polaris/commit/e934ff711ada01965e0f44583407972aa704c692), [`d263caac9`](https://github.com/Shopify/polaris/commit/d263caac9af2ae24a97c8e39d6bf63586c2e147c), [`4bff95206`](https://github.com/Shopify/polaris/commit/4bff95206877cc24c261f1103589464314ca8cb7), [`cf2f7ebeb`](https://github.com/Shopify/polaris/commit/cf2f7ebebb4f1b6a00628652a50c5f170b19c66c), [`29e9004ff`](https://github.com/Shopify/polaris/commit/29e9004ff8a5e5e2feaaf13b7d37963a1db206fd)]:
+  - @shopify/polaris-tokens@6.5.0
+  - @shopify/polaris@10.28.0
+  - @shopify/polaris-icons@6.11.2
+
 ## 0.33.2
 
 ### Patch Changes

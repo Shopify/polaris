@@ -10,7 +10,7 @@ export default {
 export function Default() {
   return (
     <Page
-      breadcrumb={{content: 'Products', url: '/products'}}
+      breadcrumb={[{content: 'Products', url: '#'}]}
       title="3/4 inch Leather pet collar"
       titleMetadata={<Badge status="success">Paid</Badge>}
       subtitle="Perfect for any pet"
@@ -54,7 +54,7 @@ export function Default() {
 export function WithCustomPrimaryAction() {
   return (
     <Page
-      breadcrumb={{content: 'Settings', url: '/settings'}}
+      breadcrumb={[{content: 'Settings', url: '#'}]}
       title="General"
       primaryAction={
         <Button
@@ -78,7 +78,7 @@ export function WithCustomPrimaryAction() {
 export function WithoutPrimaryActionInHeader() {
   return (
     <Page
-      breadcrumb={{content: 'Orders', url: '/orders'}}
+      breadcrumb={[{content: 'Orders', url: '#'}]}
       title="#1085"
       secondaryActions={[
         {content: 'Print'},
@@ -158,7 +158,7 @@ export function WithToolTipAction() {
 export function WithSubtitle() {
   return (
     <Page
-      breadcrumb={{content: 'Products', url: '/products'}}
+      breadcrumb={[{content: 'Products', url: '#'}]}
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
@@ -194,7 +194,7 @@ export function WithExternalLink() {
 export function WithoutPagination() {
   return (
     <Page
-      breadcrumb={{content: 'Settings', url: '/settings'}}
+      breadcrumb={[{content: 'Settings', url: '#'}]}
       title="General"
       primaryAction={{content: 'Save'}}
     >
@@ -227,7 +227,7 @@ export function NarrowWidth() {
   return (
     <Page
       narrowWidth
-      breadcrumb={{content: 'Orders', url: '/orders'}}
+      breadcrumb={[{content: 'Orders', url: '#'}]}
       title="Add payment method"
       primaryAction={{content: 'Save', disabled: true}}
     >
@@ -281,7 +281,7 @@ export function WithActionGroups() {
 export function WithContentAfterTitle() {
   return (
     <Page
-      breadcrumb={{content: 'Products', url: '/products'}}
+      breadcrumb={[{content: 'Products', url: '#'}]}
       title="Jar With Lock-Lid"
       titleMetadata={<Badge status="attention">Verified</Badge>}
       primaryAction={{content: 'Save', disabled: true}}
@@ -304,7 +304,7 @@ export function WithContentAfterTitle() {
 export function WithDivider() {
   return (
     <Page
-      breadcrumb={{content: 'Settings', url: '/settings'}}
+      breadcrumb={[{content: 'Settings', url: '#'}]}
       title="General"
       divider
     >

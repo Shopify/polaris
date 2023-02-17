@@ -20,7 +20,7 @@ function RemovableTagWithLinkExample() {
   );
 
   const tagMarkup = selectedTags.map((option) => (
-    <Tag key={option} onRemove={removeTag(option)} url="/collections/wholesale">
+    <Tag key={option} onRemove={removeTag(option)} url="#">
       {option}
     </Tag>
   ));

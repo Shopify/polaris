@@ -1,5 +1,25 @@
 # Changelog
 
+## 6.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`7a9977b4d`](https://github.com/Shopify/polaris/commit/7a9977b4dfe29217279d4988a60cf056d8404419)]:
+  - @shopify/polaris-tokens@6.5.1
+
+## 6.0.0
+
+### Major Changes
+
+- [#8360](https://github.com/Shopify/polaris/pull/8360) [`fd28b3a7a`](https://github.com/Shopify/polaris/commit/fd28b3a7ae0b81bb33f0497c65c348e5b04f7040) Thanks [@alex-page](https://github.com/alex-page)! - Disallows percentage and other CSS values as a unit
+
+## 5.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`60ef0dffc`](https://github.com/Shopify/polaris/commit/60ef0dffc9f6064d1d42793f5d2bd96f35b14489), [`4bff95206`](https://github.com/Shopify/polaris/commit/4bff95206877cc24c261f1103589464314ca8cb7)]:
+  - @shopify/polaris-tokens@6.5.0
+
 ## 5.2.0
 
 ### Minor Changes
