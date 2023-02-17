@@ -15,7 +15,7 @@ const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
 */
 
 const allowedCustomPropertyNames = /--(?!(p|pc|polaris-version)-).+/;
-const invalidOrDeprecatedPrivateCustomPropertyNames = /--(p|pc)-.+/;
+const invalidOrDeprecatedPrivateCustomPropertyNames = /--(?!(p|pc)-).+/;
 const config = [
   {
     allowedProperties: [allowedCustomPropertyNames],

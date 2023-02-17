@@ -68,22 +68,24 @@ const {rule} = stylelint.createPlugin(
         const prop = decl.prop;
         const value = decl.value;
 
-        const isInvalidProp = isInvalidCustomProperty(allowedProperties, prop);
+        const isInvalidProperty = isInvalidCustomProperty(
+          allowedProperties,
+          prop,
+        );
+
         const invalidValues = getInvalidCustomPropertyValues(
           allowedValues,
           prop,
           value,
         );
 
-        console.log(isInvalidProp, prop, invalidValues);
-
-        if (isInvalidProp || invalidValues) {
+        if (isInvalidProperty || invalidValues) {
           stylelint.utils.report({
             message: messages.rejected(
               prop,
               value,
-              isInvalidProp ? getCustomPropertyPrefix(prop) : undefined,
-              isInvalidProp,
+              isInvalidProperty ? getCustomPropertyPrefix(prop) : undefined,
+              isInvalidProperty,
               invalidValues,
             ),
             node: decl,
