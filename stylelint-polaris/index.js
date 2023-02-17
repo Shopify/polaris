@@ -352,7 +352,7 @@ const stylelintPolarisCoverageOptions = {
             // Note: Order is important
             // This pattern allows use of `--p-*` custom properties that are valid Polaris tokens
             ...getCustomPropertyNames(tokens),
-            // This pattern flags unknown `--p-*` custom properties or usage of `--pc-*` custom properties private to polaris-react
+            // This pattern flags unknown `--p-*` custom properties or usage of deprecated `--pc-*` custom properties private to polaris-react
             /--(?!(p|pc)-).+/,
           ],
         },

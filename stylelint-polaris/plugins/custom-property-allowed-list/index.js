@@ -16,18 +16,15 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
    * @type {stylelint.RuleMessageFunc}
    */
   rejected: (prop, value, prefix, isInvalidProp, invalidValues) => {
-    const invalidDefinition = isInvalidProp
-      ? `Unexpected prefix "${prefix}" for defined custom property "${prop}"`
-      : null;
+    if (isInvalidProp && !invalidValues) {
+      return `Unexpected prefix "${prefix}" for defined custom property "${prop}. Prefixes "--p-" or "--pc-" cannot be used outside of Polaris."`;
+    }
 
-    const invalidUse =
-      invalidValues?.length > 0
-        ? `Unexpected value${
-            invalidValues.length > 1 ? 's' : ''
-          } "${value}" for property "${prop}"`
-        : null;
-
-    return [invalidDefinition, invalidUse].filter(Boolean).join(' ');
+    if (invalidValues) {
+      return `Unexpected value${
+        invalidValues.length > 1 ? 's' : ''
+      } "${invalidValues.join(', ')}" for property "${prop}"`;
+    }
   },
 });
 
@@ -61,7 +58,7 @@ const {rule} = stylelint.createPlugin(
 
       if (!validOptions) {
         throw new Error(
-          `Invalid options were provided to the [${ruleName}] stylelint plugin.\n`,
+          `Invalid options were provided to the [${ruleName}] rule in your Stylelint config.\n`,
         );
       }
 
@@ -71,40 +68,22 @@ const {rule} = stylelint.createPlugin(
         const prop = decl.prop;
         const value = decl.value;
 
-        const invalidProperty = !isAllowedCustomPropertyName(
-          allowedProperties,
-          prop,
-        );
-
-        const invalidValues = isValidCustomPropertyValue(
+        const isInvalidProp = isInvalidCustomProperty(allowedProperties, prop);
+        const invalidValues = getInvalidCustomPropertyValues(
           allowedValues,
           prop,
           value,
         );
 
-        if (!invalidProperty && invalidValues.length === 0) return;
+        console.log(isInvalidProp, prop, invalidValues);
 
-        if (invalidProperty) {
+        if (isInvalidProp || invalidValues) {
           stylelint.utils.report({
             message: messages.rejected(
               prop,
               value,
-              prop.split('-')[0],
-              invalidProperty,
-            ),
-            node: decl,
-            result,
-            ruleName,
-          });
-        }
-
-        if (invalidValues.length > 0) {
-          stylelint.utils.report({
-            message: messages.rejected(
-              prop,
-              value,
-              undefined,
-              undefined,
+              isInvalidProp ? getCustomPropertyPrefix(prop) : undefined,
+              isInvalidProp,
               invalidValues,
             ),
             node: decl,
@@ -118,28 +97,35 @@ const {rule} = stylelint.createPlugin(
 );
 
 /**
- * @param {NonNullable<PrimaryOptions['allowedProperties']>} allowedProperties
- * @param {string} prop
+ * Returns the prefix of a custom property.
+ * @param {string} property
+ * @returns {string}
  */
-function isAllowedCustomPropertyName(allowedProperties, prop) {
-  if (!isCustomProperty(prop)) return;
+function getCustomPropertyPrefix(property) {
+  return `--${property.split('-')[2]}-`;
+}
 
-  const isValidName = allowedProperties.some((allowedProperty) => {
-    return matchesStringOrRegExp(prop, allowedProperty);
+/**
+ * @param {NonNullable<PrimaryOptions['allowedProperties']>} allowedProperties
+ * @param {string} property
+ */
+function isInvalidCustomProperty(allowedProperties, property) {
+  if (!isCustomProperty(property)) return false;
+
+  const isValid = allowedProperties.some((allowedProperty) => {
+    return matchesStringOrRegExp(property, allowedProperty);
   });
 
-  if (isValidName) true;
-
-  return false;
+  return !isValid;
 }
 
 /**
  * @param {NonNullable<PrimaryOptions['allowedValues']>} allowedValues
  * @param {string} prop
  * @param {string} value
- * @returns {string[]}
+ * @returns {string[] | undefined}
  */
-function isValidCustomPropertyValue(allowedValues, prop, value) {
+function getInvalidCustomPropertyValues(allowedValues, prop, value) {
   const invalidValues = [];
 
   const unprefixedProp = vendorUnprefixed(prop);
@@ -165,7 +151,7 @@ function isValidCustomPropertyValue(allowedValues, prop, value) {
     }
   });
 
-  return invalidValues;
+  if (invalidValues.length > 0) return invalidValues;
 }
 
 module.exports = {
