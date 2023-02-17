@@ -9,7 +9,7 @@ describe('Columns', () => {
 
     expect(columns).toContainReactComponent('div', {
       style: {
-        '--pc-columns-xs': 'repeat(6, minmax(0, 1fr))',
+        '--pc-columns-grid-template-columns-xs': 'repeat(6, minmax(0, 1fr))',
         '--pc-columns-gap-xs': 'var(--p-space-4)',
       } as React.CSSProperties,
     });
@@ -20,7 +20,7 @@ describe('Columns', () => {
 
     expect(columns).toContainReactComponent('div', {
       style: {
-        '--pc-columns-xs': 'repeat(6, minmax(0, 1fr))',
+        '--pc-columns-grid-template-columns-xs': 'repeat(6, minmax(0, 1fr))',
         '--pc-columns-gap-md': 'var(--p-space-1)',
       } as React.CSSProperties,
     });
@@ -33,8 +33,8 @@ describe('Columns', () => {
 
     expect(columns).toContainReactComponent('div', {
       style: {
-        '--pc-columns-xs': '1fr 1fr',
-        '--pc-columns-lg': '1.5fr 0.5fr',
+        '--pc-columns-grid-template-columns-xs': '1fr 1fr',
+        '--pc-columns-grid-template-columns-lg': '1.5fr 0.5fr',
         '--pc-columns-gap-xs': 'var(--p-space-4)',
       } as React.CSSProperties,
     });
@@ -45,8 +45,8 @@ describe('Columns', () => {
 
     expect(columns).toContainReactComponent('div', {
       style: {
-        '--pc-columns-xs': 'repeat(1, minmax(0, 1fr))',
-        '--pc-columns-md': 'repeat(4, minmax(0, 1fr))',
+        '--pc-columns-grid-template-columns-xs': 'repeat(1, minmax(0, 1fr))',
+        '--pc-columns-grid-template-columns-md': 'repeat(4, minmax(0, 1fr))',
         '--pc-columns-gap-xs': 'var(--p-space-4)',
       } as React.CSSProperties,
     });
