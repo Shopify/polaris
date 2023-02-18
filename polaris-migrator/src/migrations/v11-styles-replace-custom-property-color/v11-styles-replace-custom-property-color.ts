@@ -8,6 +8,7 @@ const allMap = {
   '--p-shadow-color-picker': 'rgba(0, 0, 0, 0.5)',
   '--p-shadow-color-picker-dragger': 'rgba(33, 43, 54, 0.32)',
   '--p-hint-from-direct-light': 'rgba(0, 0, 0, 0.15)',
+  '--p-background-pressed': 'rgba(237, 238, 239, 1)',
   /**
    * Decorative colors are being converted to hard-coded values
    * since they are only used for Avatar.
@@ -62,7 +63,6 @@ const backgroundColorMap = {
   ...allMap,
   '--p-background': '--p-color-bg-app',
   '--p-background-hovered': '--p-color-bg-app-hover',
-  '--p-background-pressed': '--p-color-bg-app-active',
   '--p-background-selected': '--p-color-bg-app-selected',
   '--p-surface': '--p-color-bg',
   '--p-surface-dark': '--p-color-bg-inverse',
