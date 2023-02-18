@@ -12,13 +12,13 @@ export type ColorBackgroundAlias =
   | 'bg-caution-subdued'
   | 'bg-caution-subdued-active'
   | 'bg-caution-subdued-hover'
+  | 'bg-critical'
   | 'bg-critical-strong'
   | 'bg-critical-strong-active'
   | 'bg-critical-strong-hover'
   | 'bg-critical-subdued'
   | 'bg-critical-subdued-active'
   | 'bg-critical-subdued-hover'
-  | 'bg-critical'
   | 'bg-disabled'
   | 'bg-hover'
   | 'bg-info'
@@ -63,6 +63,7 @@ export type ColorBackgroundAlias =
   | 'bg-success-subdued'
   | 'bg-success-subdued-active'
   | 'bg-success-subdued-hover'
+  | 'bg-success-subdued-pressed'
   | 'bg-warning';
 
 export type ColorBorderAlias =
@@ -273,6 +274,10 @@ export const color: {
   },
   'color-bg-success-subdued-hover': {
     value: colors.green[50],
+    description: '',
+  },
+  'color-bg-success-subdued-pressed': {
+    value: colors.green[200],
     description: '',
   },
   'color-bg-primary-subdued': {
