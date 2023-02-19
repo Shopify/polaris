@@ -138,6 +138,7 @@ export type ColorTextAlias =
   | 'text-magic-strong'
   | 'text-on-color'
   | 'text-primary'
+  | 'text-primary-hover'
   | 'text-subdued'
   | 'text-success'
   | 'text-success-strong'
@@ -628,13 +629,16 @@ export const color: {
     value: colors.green[900],
     description: '',
   },
-
   'color-text-success': {
     value: colors.green[700],
     description: '',
   },
   'color-text-primary': {
     value: colors.green[700],
+    description: '',
+  },
+  'color-text-primary-hover': {
+    value: colors.green[800],
     description: '',
   },
   'color-text-critical-strong': {
