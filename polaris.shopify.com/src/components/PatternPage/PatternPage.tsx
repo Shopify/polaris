@@ -178,7 +178,7 @@ export default function PatternPage({pattern, ...props}: Props) {
   return (
     <>
       <PageMeta title={props.title} description={pattern.description} />
-      <Page showTOC={true}>
+      <Page isContentPage>
         <Stack gap="8">
           <Stack gap="4">
             <Heading as="h1">

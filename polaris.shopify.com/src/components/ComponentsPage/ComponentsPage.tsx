@@ -27,7 +27,7 @@ export default function ComponentsPage() {
         description="Components are reusable building blocks made of interface elements and styles, packaged through code. Piece them together, improve them, and create new ones to solve merchant problems."
       />
 
-      <Page title="Components" showTOC={false}>
+      <Page title="Components">
         {componentCategories.map((category) => {
           return (
             <div key={category} className={styles.Category}>

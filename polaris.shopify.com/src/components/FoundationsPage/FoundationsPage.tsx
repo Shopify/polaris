@@ -35,7 +35,7 @@ function FoundationsPage({
     <div className={styles.FoundationsPage}>
       <PageMeta description={description} />
 
-      <Page showTOC={false}>
+      <Page>
         <Longform>
           <h1>{title}</h1>
 
