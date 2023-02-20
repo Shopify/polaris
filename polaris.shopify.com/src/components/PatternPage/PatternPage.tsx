@@ -40,22 +40,6 @@ interface PatternTabsProps {
 function PatternTabs({pattern, children}: PatternTabsProps) {
   const [exampleIndex, setExampleIndex] = useState(0);
   const {query, replace, isReady} = useRouter();
-  const isClickFocus = useRef(false);
-  const handleOnClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    isClickFocus.current = true;
-  };
-  const handleOnFocus: React.FocusEventHandler<HTMLButtonElement> = (e) => {
-    if (!tabListRef.current) return;
-    if (!isClickFocus.current) {
-      document.body.scrollIntoView({
-        block: 'end',
-        inline: 'nearest',
-        behavior: 'smooth',
-      });
-    }
-    isClickFocus.current = false;
-  };
-  const tabListRef = useRef<HTMLDivElement | null>(null);
   const onTabChange = (index: number) => {
     setExampleIndex(index);
     replace(
@@ -91,17 +75,9 @@ function PatternTabs({pattern, children}: PatternTabsProps) {
       onChange={onTabChange}
     >
       <div className={styles.TabGroup} data-selected={exampleIndex}>
-        <Tab.List
-          ref={tabListRef}
-          className={styles.ExamplesList}
-          id="examples"
-        >
+        <Tab.List className={styles.ExamplesList} id="examples">
           {pattern.variants.map((variant) => (
-            <Tab
-              key={`${variant.slug}-tab`}
-              onClick={handleOnClick}
-              onFocus={handleOnFocus}
-            >
+            <Tab key={`${variant.slug}-tab`}>
               <span>{variant.title}</span>
             </Tab>
           ))}

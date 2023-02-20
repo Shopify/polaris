@@ -6,7 +6,13 @@
   margin-right: auto;
   max-width: $pageMaxWidth;
   padding: 0 1.5rem;
-
+  // The header is always a fixed height
+  // This is added in order to ensure native browser scroll-snap behaviour in our content area
+  // Also accounts for the height of the header element.
+  // See https://css-tricks.com/almanac/properties/s/scroll-margin/
+  *:focus {
+    scroll-margin-top: var(--header-height);
+  }
   @media screen and (max-width: $breakpointTablet) {
     padding: 0 1.25rem;
   }
