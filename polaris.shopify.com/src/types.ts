@@ -75,6 +75,7 @@ export interface TokenPropertiesWithName extends MetadataProperties {
 export const searchResultCategories = [
   'foundations',
   'components',
+  'patterns',
   'tokens',
   'icons',
 ] as const;
@@ -92,6 +93,11 @@ export interface SearchResult {
       description: string;
       status?: Status;
       group?: string;
+    };
+    patterns: {
+      title: string;
+      description: string;
+      previewImg?: string;
     };
     foundations: {
       title: string;

@@ -13,10 +13,12 @@ import TokenList from '../TokenList';
 import {Dialog} from '@headlessui/react';
 import {KeyboardEventHandler} from 'react';
 import FoundationsThumbnail from '../FoundationsThumbnail';
+import PatternThumbnail from '../PatternThumbnail';
 import ComponentThumbnail from '../ComponentThumbnail';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
   foundations: 'Foundations',
+  patterns: 'Patterns',
   tokens: 'Tokens',
   icons: 'Icons',
 };
@@ -263,6 +265,34 @@ function SearchResults({
                 </Grid>
               </ResultsGroup>
             );
+
+          case 'patterns': {
+            return (
+              <ResultsGroup category={category} key={category}>
+                <Grid>
+                  {results.map(({id, url, meta}) => {
+                    if (!meta.patterns) return null;
+                    const {title, description, previewImg} = meta.patterns;
+                    return (
+                      <SearchContext.Provider
+                        key={id}
+                        value={{currentItemId, id}}
+                      >
+                        <GridItem
+                          url={url}
+                          description={description}
+                          title={title}
+                          renderPreview={() => (
+                            <PatternThumbnail title={title} img={previewImg} />
+                          )}
+                        />
+                      </SearchContext.Provider>
+                    );
+                  })}
+                </Grid>
+              </ResultsGroup>
+            );
+          }
 
           case 'components': {
             return (
