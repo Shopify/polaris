@@ -1,7 +1,8 @@
-import {Modal, TextField} from '@shopify/polaris';
+import React from 'react';
+import {mountWithApp} from 'tests/utilities';
 
-import {mountWithAppContext} from 'tests/modern';
-
+import {Modal} from '../../../../../../Modal';
+import {TextField} from '../../../../../../TextField';
 import {DuplicateViewModal} from '..';
 import type {DuplicateViewModalProps} from '..';
 
@@ -17,19 +18,17 @@ describe('DuplicateViewModal', () => {
         viewNames: ['Foo'],
       };
 
-      const wrapper = await mountWithAppContext(
-        <DuplicateViewModal {...props} />,
-      );
+      const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+      wrapper.find(TextField)!.trigger('onChange', 'Bar');
 
       await wrapper.act(async () => {
-        await wrapper.find(TextField)!.trigger('onChange', 'Bar');
         await wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
       });
 
       expect(props.onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('fires on the secondary action', async () => {
+    it('fires on the secondary action', () => {
       const props: DuplicateViewModalProps = {
         onClose: jest.fn(),
         open: true,
@@ -37,11 +36,9 @@ describe('DuplicateViewModal', () => {
         onPrimaryAction: jest.fn(),
         onSecondaryAction: jest.fn(),
       };
-      const wrapper = await mountWithAppContext(
-        <DuplicateViewModal {...props} />,
-      );
+      const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
-      await wrapper.act(async () => {
+      wrapper.act(() => {
         wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
       });
 
@@ -58,19 +55,17 @@ describe('DuplicateViewModal', () => {
       onSecondaryAction: jest.fn(),
       viewNames: ['Foo'],
     };
-    const wrapper = await mountWithAppContext(
-      <DuplicateViewModal {...props} />,
-    );
+    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+    wrapper.find(TextField)!.trigger('onChange', 'Bar');
 
     await wrapper.act(async () => {
-      await wrapper.find(TextField)!.trigger('onChange', 'Bar');
       await wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
     expect(props.onPrimaryAction).toHaveBeenCalledTimes(1);
   });
 
-  it('will change the value of the TextField when changed', async () => {
+  it('will change the value of the TextField when changed', () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -78,15 +73,13 @@ describe('DuplicateViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(
-      <DuplicateViewModal {...props} />,
-    );
+    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
     expect(wrapper).toContainReactComponent(TextField, {
       value: 'Foo',
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'new value');
     });
 
@@ -95,7 +88,7 @@ describe('DuplicateViewModal', () => {
     });
   });
 
-  it('fires the onPrimaryAction with the changed value', async () => {
+  it('fires the onPrimaryAction with the changed value', () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -103,14 +96,12 @@ describe('DuplicateViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(
-      <DuplicateViewModal {...props} />,
-    );
+    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'Foo Bar');
     });
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
@@ -125,11 +116,9 @@ describe('DuplicateViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(
-      <DuplicateViewModal {...props} />,
-    );
+    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'new value');
     });
 
@@ -138,7 +127,7 @@ describe('DuplicateViewModal', () => {
     });
 
     await wrapper.act(async () => {
-      wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
+      await wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
     expect(wrapper).toContainReactComponent(TextField, {
@@ -146,7 +135,7 @@ describe('DuplicateViewModal', () => {
     });
   });
 
-  it('fires onSecondaryAction on the secondary action', async () => {
+  it('fires onSecondaryAction on the secondary action', () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -154,18 +143,16 @@ describe('DuplicateViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(
-      <DuplicateViewModal {...props} />,
-    );
+    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
     });
 
     expect(props.onSecondaryAction).toHaveBeenCalledTimes(1);
   });
 
-  it('shows and error when the view name is already in use; protects against case sensitivity and whitespace', async () => {
+  it('shows and error when the view name is already in use; protects against case sensitivity and whitespace', () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -174,11 +161,9 @@ describe('DuplicateViewModal', () => {
       onSecondaryAction: jest.fn(),
       viewNames: ['Foo', 'Bar', 'Baz'],
     };
-    const wrapper = await mountWithAppContext(
-      <DuplicateViewModal {...props} />,
-    );
+    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'Foo');
     });
 
@@ -188,7 +173,7 @@ describe('DuplicateViewModal', () => {
         'A view with this name already exists. Please choose a different name.',
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'foo');
     });
 
@@ -198,7 +183,7 @@ describe('DuplicateViewModal', () => {
         'A view with this name already exists. Please choose a different name.',
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'bar ');
     });
 
@@ -209,7 +194,7 @@ describe('DuplicateViewModal', () => {
     });
   });
 
-  it('resets the value in the TextField to the name prop once the onSecondaryAction has been invoked', async () => {
+  it('resets the value in the TextField to the name prop once the onSecondaryAction has been invoked', () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -217,11 +202,9 @@ describe('DuplicateViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(
-      <DuplicateViewModal {...props} />,
-    );
+    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'new value');
     });
 
@@ -229,7 +212,7 @@ describe('DuplicateViewModal', () => {
       value: 'new value',
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
     });
 

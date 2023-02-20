@@ -156,7 +156,12 @@
       "done": "Done",
       "clearAllFilters": "Clear all filters",
       "clear": "Clear",
-      "clearLabel": "Clear {filterName}"
+      "clearLabel": "Clear {filterName}",
+      "addFilter": "Add filter",
+      "clearFilters": "Clear all"
+    },
+    "FilterPill": {
+      "clear": "Clear"
     },
     "IndexProvider": {
       "defaultItemSingular": "Item",

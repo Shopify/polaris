@@ -1,28 +1,39 @@
-import {Icon, Tooltip} from '@shopify/polaris';
-import {mountWithAppContext} from 'tests/modern';
+import React from 'react';
+import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
+import {Icon} from '../../Icon';
+import {Tooltip} from '../../Tooltip';
 import type {TabOptionsList} from '../types';
 import {Tabs} from '..';
 import {Tab, CreateViewModal, TabMeasurer} from '../components';
 
 describe('Tabs', () => {
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
+  });
+
   const noop = () => {};
-  const items = [
+  const tabs = [
     {
-      name: 'All',
+      content: 'All',
       id: 'all',
       index: 0,
       onAction: noop,
     },
     {
-      name: 'Unpaid',
+      content: 'Unpaid',
       id: 'unpaid',
       index: 1,
       onAction: noop,
       permission: ['rename'] as TabOptionsList,
     },
     {
-      name: 'Paid',
+      content: 'Paid',
       id: 'paid',
       index: 2,
       onAction: noop,
@@ -30,19 +41,19 @@ describe('Tabs', () => {
     },
   ];
   const defaultProps = {
-    items,
+    tabs,
     onSelect: jest.fn(),
     selected: 0,
     newViewAccessibilityLabel: 'create a new label',
     onSaveNewViewModal: jest.fn(),
-    viewNames: items.map(({name}) => name),
+    viewNames: tabs.map(({content}) => content),
     showNewTab: true,
   };
 
-  it('passes the isActive prop to the Tab correctly', async () => {
-    const wrapper = await mountWithAppContext(<Tabs {...defaultProps} />);
+  it('passes the isActive prop to the Tab correctly', () => {
+    const wrapper = mountWithApp(<Tabs {...defaultProps} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TabMeasurer)!.trigger('handleMeasurement', {
         hiddenTabWidths: [82, 160, 150],
         containerWidth: 500,
@@ -53,9 +64,9 @@ describe('Tabs', () => {
     expect(wrapper!.find('ul')!.findAll(Tab)[0]!.prop('isActive')).toBe(true);
   });
 
-  it('does not show a tooltip if disabled is false', async () => {
+  it('does not show a tooltip if disabled is false', () => {
     const message = 'I am not disabled';
-    const wrapper = await mountWithAppContext(
+    const wrapper = mountWithApp(
       <Tabs
         {...defaultProps}
         disabled={false}
@@ -66,17 +77,17 @@ describe('Tabs', () => {
     expect(wrapper).not.toContainReactComponent(Tooltip, {content: message});
   });
 
-  it('does not show a tooltip if the tooltip message is undefined', async () => {
-    const wrapper = await mountWithAppContext(
+  it('does not show a tooltip if the tooltip message is undefined', () => {
+    const wrapper = mountWithApp(
       <Tabs {...defaultProps} disabled disabledTooltipMessage={undefined} />,
     );
 
     expect(wrapper).not.toContainReactComponent(Tooltip, {content: undefined});
   });
 
-  it('shows a tooltip if disabled is true and there is a message', async () => {
+  it('shows a tooltip if disabled is true and there is a message', () => {
     const message = 'I am not disabled';
-    const wrapper = await mountWithAppContext(
+    const wrapper = mountWithApp(
       <Tabs {...defaultProps} disabled disabledTooltipMessage={message} />,
     );
 
@@ -84,20 +95,20 @@ describe('Tabs', () => {
   });
 
   describe('callback', () => {
-    it('fires onSelect callback when Tab is clicked', async () => {
+    it('fires onSelect callback when Tab is clicked', () => {
       const onSelect = jest.fn();
-      const wrapper = await mountWithAppContext(
+      const wrapper = mountWithApp(
         <Tabs {...defaultProps} onSelect={onSelect} />,
       );
 
-      await wrapper.act(async () => {
+      wrapper.act(() => {
         wrapper.find(TabMeasurer)!.trigger('handleMeasurement', {
           hiddenTabWidths: [82, 160, 150],
           containerWidth: 500,
           disclosureWidth: 0,
         });
       });
-      await wrapper.act(async () => {
+      wrapper.act(() => {
         wrapper.find('ul')!.findAll(Tab)[0].trigger('onAction', 0);
       });
 
@@ -106,23 +117,21 @@ describe('Tabs', () => {
   });
 
   describe('newTab', () => {
-    it('does not render the new tab Tab if showNewTab=false', async () => {
-      const wrapper = await mountWithAppContext(
+    it('does not render the new tab Tab if showNewTab=false', () => {
+      const wrapper = mountWithApp(
         <Tabs {...defaultProps} showNewTab={false} />,
       );
 
       expect(wrapper).not.toContainReactComponent(Tab, {
-        name: defaultProps.newViewAccessibilityLabel,
+        content: defaultProps.newViewAccessibilityLabel,
       });
     });
 
-    it('renders the new tab Tab if showNewTab=true', async () => {
-      const wrapper = await mountWithAppContext(
-        <Tabs {...defaultProps} showNewTab />,
-      );
+    it('renders the new tab Tab if showNewTab=true', () => {
+      const wrapper = mountWithApp(<Tabs {...defaultProps} showNewTab />);
 
       expect(wrapper).toContainReactComponent(Tab, {
-        name: defaultProps.newViewAccessibilityLabel,
+        content: defaultProps.newViewAccessibilityLabel,
       });
       expect(wrapper).toContainReactComponent(Icon, {
         accessibilityLabel: defaultProps.newViewAccessibilityLabel,
@@ -130,19 +139,19 @@ describe('Tabs', () => {
     });
   });
 
-  it('onSaveNewViewModal gets called correctly', async () => {
+  it('onSaveNewViewModal gets called correctly', () => {
     const onSaveNewViewModal = jest.fn();
-    const wrapper = await mountWithAppContext(
+    const wrapper = mountWithApp(
       <Tabs
         {...defaultProps}
         showNewTab
         onSaveNewViewModal={onSaveNewViewModal}
       />,
     );
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper
         .find(Tab, {
-          name: defaultProps.newViewAccessibilityLabel,
+          content: defaultProps.newViewAccessibilityLabel,
         })
         ?.trigger('onAction');
     });
@@ -151,7 +160,7 @@ describe('Tabs', () => {
       open: true,
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(CreateViewModal)!.trigger('onPrimaryAction', 'foo');
     });
 

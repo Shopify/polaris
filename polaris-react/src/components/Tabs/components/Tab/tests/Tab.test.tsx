@@ -1,25 +1,19 @@
-import {
-  UnstyledButton,
-  Popover,
-  ActionList,
-  Modal,
-  UnstyledLink,
-} from '@shopify/polaris';
-import {mockI18n} from '@shopify/react-i18n-next';
+import React from 'react';
+import {mountWithApp} from 'tests/utilities';
 
-import {mountWithAppContext} from 'tests/modern';
-
-import enTranslations from '../translations/en.json';
+import {UnstyledButton} from '../../../../UnstyledButton';
+import {Popover} from '../../../../Popover';
+import {ActionList} from '../../../../ActionList';
+import {Modal} from '../../../../Modal';
+import {UnstyledLink} from '../../../../UnstyledLink';
 import type {TabProps, TabOptionsList} from '../../../types';
 import {Tab} from '..';
-
-const i18n = mockI18n([enTranslations]);
 
 describe('Tab', () => {
   const defaultProps: TabProps = {
     id: 'tab-test',
     permissions: ['rename', 'edit', 'duplicate', 'delete'],
-    name: 'Unfulfilled',
+    content: 'Unfulfilled',
     isActive: false,
     onAction: jest.fn(),
     onActiveAction: jest.fn(),
@@ -31,21 +25,21 @@ describe('Tab', () => {
     jest.clearAllMocks();
   });
 
-  it('renders <Tab />', async () => {
-    const wrapper = await mountWithAppContext(<Tab {...defaultProps} />);
+  it('renders <Tab />', () => {
+    const wrapper = mountWithApp(<Tab {...defaultProps} />);
 
-    expect(wrapper).toContainReactText(defaultProps.name);
+    expect(wrapper).toContainReactText(defaultProps.content);
   });
 
-  it('renders an UnstyledButton if active=false', async () => {
-    const wrapper = await mountWithAppContext(<Tab {...defaultProps} />);
+  it('renders an UnstyledButton if active=false', () => {
+    const wrapper = mountWithApp(<Tab {...defaultProps} />);
 
     expect(wrapper).toContainReactComponent(UnstyledButton);
     expect(wrapper).not.toContainReactComponent(Popover);
   });
 
-  it('renders an UnstyledButton if active=true and no permissions', async () => {
-    const wrapper = await mountWithAppContext(
+  it('renders an UnstyledButton if active=true and no permissions', () => {
+    const wrapper = mountWithApp(
       <Tab {...defaultProps} isActive permissions={[]} />,
     );
 
@@ -53,8 +47,8 @@ describe('Tab', () => {
     expect(wrapper).not.toContainReactComponent(Popover);
   });
 
-  it('renders an UnstyledButton if active=true and undefined permissions', async () => {
-    const wrapper = await mountWithAppContext(
+  it('renders an UnstyledButton if active=true and undefined permissions', () => {
+    const wrapper = mountWithApp(
       <Tab {...defaultProps} isActive permissions={undefined} />,
     );
 
@@ -62,39 +56,33 @@ describe('Tab', () => {
     expect(wrapper).not.toContainReactComponent(Popover);
   });
 
-  it('renders an UnstyledLink if url is present', async () => {
+  it('renders an UnstyledLink if url is present', () => {
     const url = 'https://shopify.com';
-    const wrapper = await mountWithAppContext(
-      <Tab {...defaultProps} url={url} />,
-    );
+    const wrapper = mountWithApp(<Tab {...defaultProps} url={url} />);
 
     expect(wrapper).toContainReactComponent(UnstyledLink, {
       url,
     });
   });
 
-  it('renders the icon prop over the name prop if present', async () => {
+  it('renders the icon prop over the name prop if present', () => {
     const icon = 'foo';
-    const wrapper = await mountWithAppContext(
-      <Tab {...defaultProps} icon={icon} />,
-    );
+    const wrapper = mountWithApp(<Tab {...defaultProps} icon={icon} />);
 
     expect(wrapper.find(UnstyledButton)).toContainReactText(icon);
   });
 
-  it('renders a Popover if active=true and we have permissions', async () => {
-    const wrapper = await mountWithAppContext(
-      <Tab {...defaultProps} isActive />,
-    );
+  it('renders a Popover if active=true and we have permissions', () => {
+    const wrapper = mountWithApp(<Tab {...defaultProps} isActive />);
 
     expect(wrapper).toContainReactComponent(Popover);
   });
 
   describe('callbacks', () => {
-    it('fires an onAction callback if isActive is false', async () => {
+    it('fires an onAction callback if isActive is false', () => {
       const onAction = jest.fn();
       const onActiveAction = jest.fn();
-      const wrapper = await mountWithAppContext(
+      const wrapper = mountWithApp(
         <Tab
           {...defaultProps}
           onAction={onAction}
@@ -110,10 +98,10 @@ describe('Tab', () => {
       expect(onActiveAction).toHaveBeenCalledTimes(0);
     });
 
-    it('fires an onActiveAction callback if isActive is true', async () => {
+    it('fires an onActiveAction callback if isActive is true', () => {
       const onAction = jest.fn();
       const onActiveAction = jest.fn();
-      const wrapper = await mountWithAppContext(
+      const wrapper = mountWithApp(
         <Tab
           {...defaultProps}
           isActive
@@ -144,8 +132,8 @@ describe('Tab', () => {
         },
       ];
 
-      it('renders an ActionList with default props for simple action types', async () => {
-        const wrapper = await mountWithAppContext(
+      it('renders an ActionList with default props for simple action types', () => {
+        const wrapper = mountWithApp(
           <Tab {...defaultProps} permissions={simpleOptions} isActive />,
         );
 
@@ -156,22 +144,22 @@ describe('Tab', () => {
         expect(wrapper).toContainReactComponent(ActionList, {
           items: [
             {
-              content: i18n.translate('rename'),
+              content: 'Rename view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
             },
             {
-              content: i18n.translate('edit'),
+              content: 'Edit view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
             },
             {
-              content: i18n.translate('duplicate'),
+              content: 'Duplicate view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
             },
             {
-              content: i18n.translate('delete'),
+              content: 'Delete view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
               destructive: true,
@@ -180,8 +168,8 @@ describe('Tab', () => {
         });
       });
 
-      it('renders an ActionList with additional ActionListDescriptor props for complex action types', async () => {
-        const wrapper = await mountWithAppContext(
+      it('renders an ActionList with additional ActionListDescriptor props for complex action types', () => {
+        const wrapper = mountWithApp(
           <Tab {...defaultProps} permissions={complexOptions} isActive />,
         );
 
@@ -192,7 +180,7 @@ describe('Tab', () => {
         expect(wrapper).toContainReactComponent(ActionList, {
           items: [
             {
-              content: i18n.translate('edit'),
+              content: 'Edit view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
               disabled: true,
@@ -201,8 +189,8 @@ describe('Tab', () => {
         });
       });
 
-      it('renders an ActionList with either default props or additional ActionListDescriptor props for mixed action types', async () => {
-        const wrapper = await mountWithAppContext(
+      it('renders an ActionList with either default props or additional ActionListDescriptor props for mixed action types', () => {
+        const wrapper = mountWithApp(
           <Tab
             {...defaultProps}
             permissions={['rename', ...complexOptions, 'duplicate', 'delete']}
@@ -217,23 +205,23 @@ describe('Tab', () => {
         expect(wrapper).toContainReactComponent(ActionList, {
           items: [
             {
-              content: i18n.translate('rename'),
+              content: 'Rename view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
             },
             {
-              content: i18n.translate('edit'),
+              content: 'Edit view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
               disabled: true,
             },
             {
-              content: i18n.translate('duplicate'),
+              content: 'Duplicate view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
             },
             {
-              content: i18n.translate('delete'),
+              content: 'Delete view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
               destructive: true,
@@ -242,9 +230,9 @@ describe('Tab', () => {
         });
       });
 
-      it('invokes the onConfirmDeleteView callback when the delete modal is confirmed', async () => {
+      it('invokes the onConfirmDeleteView callback when the delete modal is confirmed', () => {
         const onConfirmDeleteView = jest.fn();
-        const wrapper = await mountWithAppContext(
+        const wrapper = mountWithApp(
           <Tab
             {...defaultProps}
             isActive
@@ -282,9 +270,9 @@ describe('Tab', () => {
         expect(onConfirmDeleteView).toHaveBeenCalledTimes(1);
       });
 
-      it('invokes the onConfirmDuplicateView callback when the delete modal is confirmed', async () => {
+      it('invokes the onConfirmDuplicateView callback when the delete modal is confirmed', () => {
         const onConfirmDuplicateView = jest.fn();
-        const wrapper = await mountWithAppContext(
+        const wrapper = mountWithApp(
           <Tab
             {...defaultProps}
             isActive
@@ -330,12 +318,12 @@ describe('Tab', () => {
       ['onClickDeleteView', 'Delete view'],
     ])(
       'fires an on%s callback when clicking on the %s action list item',
-      async (callbackName, actionListItemText) => {
+      (callbackName, actionListItemText) => {
         const spy = jest.fn();
         const testProps = {
           [`${callbackName}`]: spy,
         };
-        const wrapper = await mountWithAppContext(
+        const wrapper = mountWithApp(
           <Tab {...defaultProps} {...testProps} isActive />,
         );
 

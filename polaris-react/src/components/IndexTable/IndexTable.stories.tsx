@@ -4,7 +4,7 @@ import {
   Button,
   LegacyCard,
   EmptySearchResult,
-  Filters,
+  LegacyFilters,
   IndexTable,
   Link,
   Select,
@@ -985,7 +985,7 @@ export function WithFiltering() {
     <LegacyCard>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
-          <Filters
+          <LegacyFilters
             queryValue={queryValue}
             filters={filters}
             appliedFilters={appliedFilters}
@@ -1637,7 +1637,7 @@ export function WithAllOfItsElements() {
     <LegacyCard>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
-          <Filters
+          <LegacyFilters
             queryValue={queryValue}
             filters={filters}
             appliedFilters={appliedFilters}
@@ -2752,7 +2752,7 @@ export function SmallScreenWithAllOfItsElements() {
       <LegacyCard>
         <div style={{padding: '16px', display: 'flex'}}>
           <div style={{flex: 1}}>
-            <Filters
+            <LegacyFilters
               queryValue={queryValue}
               filters={filters}
               appliedFilters={appliedFilters}

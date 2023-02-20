@@ -25,6 +25,8 @@ export type {
   MenuGroupDescriptor,
   ConnectedDisclosure,
   CheckboxHandles,
+  AppliedFilterInterface,
+  FilterInterface,
 } from './types';
 
 // AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)

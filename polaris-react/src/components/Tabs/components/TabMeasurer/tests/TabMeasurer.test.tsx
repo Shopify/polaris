@@ -1,4 +1,5 @@
-import {mountWithAppContext} from 'tests/modern';
+import React from 'react';
+import {mountWithApp} from 'tests/utilities';
 
 import {TabMeasurer} from '../TabMeasurer';
 import {Tab} from '../../Tab';
@@ -32,42 +33,38 @@ describe('<TabMeasurer />', () => {
     tabs: [
       {
         id: 'repeat-customers',
-        name: 'repeat-customers',
+        content: 'repeat-customers',
       },
       {
         id: 'prospects',
-        name: 'prospects',
+        content: 'prospects',
       },
     ],
     siblingTabHasFocus: false,
     handleMeasurement: noop,
   };
 
-  it('calls setTimeout in development to delay measurements', async () => {
+  it('calls setTimeout in development to delay measurements', () => {
     process.env.NODE_ENV = 'development';
-    await mountWithAppContext(<TabMeasurer {...mockProps} tabToFocus={0} />);
-
-    // The second invocation is from the react scheduler
-    // https://github.com/facebook/react/blob/0cf22a56a18790ef34c71bef14f64695c0498619/packages/scheduler/src/forks/SchedulerHostConfig.default.js#L53
-    expect(setTimeoutSpy).toHaveBeenCalledTimes(2);
+    mountWithApp(<TabMeasurer {...mockProps} tabToFocus={0} />);
+    expect(setTimeoutSpy).toHaveBeenCalled();
   });
 
   describe('tabToFocus', () => {
     const tabToFocus = 0;
 
-    it('passes focused value of 0 to Tab', async () => {
-      const tabMeasurer = await mountWithAppContext(
+    it('passes focused value of 0 to Tab', () => {
+      const tabMeasurer = mountWithApp(
         <TabMeasurer {...mockProps} tabToFocus={tabToFocus} />,
       );
-
       expect(tabMeasurer).toContainReactComponent(Tab, {
         id: 'repeat-customersMeasurer',
         focused: true,
       });
     });
 
-    it('does not pass wrong focused value to Tab', async () => {
-      const tabMeasurer = await mountWithAppContext(
+    it('does not pass wrong focused value to Tab', () => {
+      const tabMeasurer = mountWithApp(
         <TabMeasurer {...mockProps} tabToFocus={tabToFocus} />,
       );
 
@@ -79,9 +76,9 @@ describe('<TabMeasurer />', () => {
   });
 
   describe('siblingTabHasFocus', () => {
-    it('gets passedTabtton', async () => {
+    it('gets passed to Tab', () => {
       const siblingTabHasFocus = true;
-      const tabMeasurer = await mountWithAppContext(
+      const tabMeasurer = mountWithApp(
         <TabMeasurer {...mockProps} siblingTabHasFocus={siblingTabHasFocus} />,
       );
 
@@ -93,12 +90,11 @@ describe('<TabMeasurer />', () => {
   });
 
   describe('activator', () => {
-    it('renders activator', async () => {
+    it('renders activator', () => {
       const activator = <Item id="id" focused />;
-      const tabMeasurer = await mountWithAppContext(
+      const tabMeasurer = mountWithApp(
         <TabMeasurer {...mockProps} activator={activator} />,
       );
-
       expect(tabMeasurer).toContainReactComponent(Item, {
         id: 'id',
       });
@@ -106,21 +102,20 @@ describe('<TabMeasurer />', () => {
   });
 
   describe('selected', () => {
-    it('passes selected to Tab', async () => {
+    it('passes selected to Tab', () => {
       const selected = 1;
-      const tabMeasurer = await mountWithAppContext(
+      const tabMeasurer = mountWithApp(
         <TabMeasurer {...mockProps} selected={selected} />,
       );
-
       expect(tabMeasurer).toContainReactComponent(Tab, {
         id: 'prospectsMeasurer',
         selected: true,
       });
     });
 
-    it('does not pass the wrong selected to Tab', async () => {
+    it('does not pass the wrong selected to Tab', () => {
       const selected = 1;
-      const tabMeasurer = await mountWithAppContext(
+      const tabMeasurer = mountWithApp(
         <TabMeasurer {...mockProps} selected={selected} />,
       );
 
@@ -132,18 +127,18 @@ describe('<TabMeasurer />', () => {
   });
 
   describe('tabs', () => {
-    it('renders a Tab for each item in tabs', async () => {
+    it('renders a Tab for each item in tabs', () => {
       const tabs = [
         {
           id: 'repeat-customers',
-          name: 'repeat-customers',
+          content: 'repeat-customers',
         },
         {
           id: 'prospects',
-          name: 'prospects',
+          content: 'prospects',
         },
       ];
-      const tabMeasurer = await mountWithAppContext(
+      const tabMeasurer = mountWithApp(
         <TabMeasurer {...mockProps} tabs={tabs} />,
       );
 

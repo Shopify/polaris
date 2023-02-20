@@ -1,7 +1,8 @@
-import {Modal, TextField} from '@shopify/polaris';
+import React from 'react';
+import {mountWithApp} from 'tests/utilities';
 
-import {mountWithAppContext} from 'tests/modern';
-
+import {Modal} from '../../../../../../Modal';
+import {TextField} from '../../../../../../TextField';
 import {RenameViewModal} from '..';
 import type {RenameViewModalProps} from '..';
 
@@ -17,17 +18,17 @@ describe('RenameViewModal', () => {
         viewNames: ['Foo'],
       };
 
-      const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+      const wrapper = mountWithApp(<RenameViewModal {...props} />);
+      wrapper.find(TextField)!.trigger('onChange', 'Bar');
 
       await wrapper.act(async () => {
-        await wrapper.find(TextField)!.trigger('onChange', 'Bar');
         await wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
       });
 
       expect(props.onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('fires on the secondary action', async () => {
+    it('fires on the secondary action', () => {
       const props: RenameViewModalProps = {
         onClose: jest.fn(),
         open: true,
@@ -35,9 +36,9 @@ describe('RenameViewModal', () => {
         onPrimaryAction: jest.fn(),
         onSecondaryAction: jest.fn(),
       };
-      const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+      const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
-      await wrapper.act(async () => {
+      wrapper.act(() => {
         wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
       });
 
@@ -49,22 +50,23 @@ describe('RenameViewModal', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
-      name: 'Foo',
+      name: 'Baz',
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
       viewNames: ['Foo'],
     };
-    const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+    const wrapper = mountWithApp(<RenameViewModal {...props} />);
+
+    wrapper.find(TextField)!.trigger('onChange', 'Bar');
 
     await wrapper.act(async () => {
-      await wrapper.find(TextField)!.trigger('onChange', 'Bar');
       await wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
     expect(props.onPrimaryAction).toHaveBeenCalledTimes(1);
   });
 
-  it('will change the value of the TextField when changed', async () => {
+  it('will change the value of the TextField when changed', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -72,13 +74,13 @@ describe('RenameViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+    const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
     expect(wrapper).toContainReactComponent(TextField, {
       value: 'Foo',
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'new value');
     });
 
@@ -87,7 +89,7 @@ describe('RenameViewModal', () => {
     });
   });
 
-  it('fires the onPrimaryAction with the changed value', async () => {
+  it('fires the onPrimaryAction with the changed value', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -95,12 +97,12 @@ describe('RenameViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+    const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'Foo Bar');
     });
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
@@ -115,9 +117,9 @@ describe('RenameViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+    const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'new value');
     });
 
@@ -126,7 +128,7 @@ describe('RenameViewModal', () => {
     });
 
     await wrapper.act(async () => {
-      wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
+      await wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
     expect(wrapper).toContainReactComponent(TextField, {
@@ -134,7 +136,7 @@ describe('RenameViewModal', () => {
     });
   });
 
-  it('fires onSecondaryAction on the secondary action', async () => {
+  it('fires onSecondaryAction on the secondary action', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -142,16 +144,16 @@ describe('RenameViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+    const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
     });
 
     expect(props.onSecondaryAction).toHaveBeenCalledTimes(1);
   });
 
-  it('shows an error when the view name is already in use; protects againsts case sensitivity and whitespace', async () => {
+  it('shows an error when the view name is already in use; protects againsts case sensitivity and whitespace', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -160,9 +162,9 @@ describe('RenameViewModal', () => {
       onSecondaryAction: jest.fn(),
       viewNames: ['Foo', 'Foo Bar'],
     };
-    const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+    const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'Foo ');
     });
 
@@ -171,7 +173,7 @@ describe('RenameViewModal', () => {
         'A view with this name already exists. Please choose a different name.',
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'foo');
     });
 
@@ -180,7 +182,7 @@ describe('RenameViewModal', () => {
         'A view with this name already exists. Please choose a different name.',
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'foo ');
     });
 
@@ -190,7 +192,7 @@ describe('RenameViewModal', () => {
     });
   });
 
-  it('resets the value in the TextField to the name prop once the onSecondaryAction has been invoked', async () => {
+  it('resets the value in the TextField to the name prop once the onSecondaryAction has been invoked', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
@@ -198,9 +200,9 @@ describe('RenameViewModal', () => {
       onPrimaryAction: jest.fn(),
       onSecondaryAction: jest.fn(),
     };
-    const wrapper = await mountWithAppContext(<RenameViewModal {...props} />);
+    const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'new value');
     });
 
@@ -208,7 +210,7 @@ describe('RenameViewModal', () => {
       value: 'new value',
     });
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
     });
 

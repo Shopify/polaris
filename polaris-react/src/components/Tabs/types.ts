@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react';
-import type {ActionListItemDescriptor} from '@shopify/polaris';
+
+import type {ActionListItemDescriptor} from '../../types';
 
 const VIEW_BUTTON_ACTION_TYPES = [
   'rename',

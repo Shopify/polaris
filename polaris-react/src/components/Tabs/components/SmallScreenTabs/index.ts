@@ -1,1 +1,1 @@
-export * from './SmallScreenTabs';
+export {SmallScreenTabs} from './SmallScreenTabs';
