@@ -40,7 +40,6 @@ interface PatternTabsProps {
 function PatternTabs({pattern, children}: PatternTabsProps) {
   const [exampleIndex, setExampleIndex] = useState(0);
   const {query, replace, isReady} = useRouter();
-  const tabListRef = useRef<HTMLDivElement | null>(null);
   const onTabChange = (index: number) => {
     setExampleIndex(index);
     replace(
@@ -76,23 +75,9 @@ function PatternTabs({pattern, children}: PatternTabsProps) {
       onChange={onTabChange}
     >
       <div className={styles.TabGroup} data-selected={exampleIndex}>
-        <Tab.List
-          ref={tabListRef}
-          className={styles.ExamplesList}
-          id="examples"
-        >
+        <Tab.List className={styles.ExamplesList} id="examples">
           {pattern.variants.map((variant) => (
-            <Tab
-              key={`${variant.slug}-tab`}
-              onFocus={() => {
-                if (!tabListRef.current) return;
-                tabListRef.current.scrollIntoView({
-                  block: 'end',
-                  inline: 'nearest',
-                  behavior: 'smooth',
-                });
-              }}
-            >
+            <Tab key={`${variant.slug}-tab`}>
               <span>{variant.title}</span>
             </Tab>
           ))}
