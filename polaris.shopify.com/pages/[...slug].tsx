@@ -44,7 +44,7 @@ const CatchAllTemplate: NextPage<Props> = ({
       <Longform>
         {description ? <Markdown>{description}</Markdown> : null}
         {typedStatus && <StatusBanner status={typedStatus} />}
-        {update && <UpdateBanner update={update} />}
+        {update && <UpdateBanner message={update} />}
         <Markdown>{readme}</Markdown>
       </Longform>
     </Page>
