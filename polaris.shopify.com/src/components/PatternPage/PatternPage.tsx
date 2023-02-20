@@ -46,8 +46,8 @@ function PatternTabs({pattern, children}: PatternTabsProps) {
   };
   const handleOnFocus: React.FocusEventHandler<HTMLButtonElement> = (e) => {
     if (!tabListRef.current) return;
-    if (!isClickFocus) {
-      tabListRef.current.scrollIntoView({
+    if (!isClickFocus.current) {
+      document.body.scrollIntoView({
         block: 'end',
         inline: 'nearest',
         behavior: 'smooth',
