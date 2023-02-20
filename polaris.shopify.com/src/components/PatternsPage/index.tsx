@@ -18,7 +18,7 @@ export const PatternsPage = () => (
   <>
     <PageMeta title="Patterns" description={description} />
 
-    <Page showTOC={false}>
+    <Page>
       <div className={styles.Stack} data-gap="8">
         <div>
           <Longform>

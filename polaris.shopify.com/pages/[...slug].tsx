@@ -39,7 +39,7 @@ const CatchAllTemplate: NextPage<Props> = ({
     : undefined;
 
   return (
-    <Page title={title} editPageLinkPath={editPageLinkPath}>
+    <Page title={title} editPageLinkPath={editPageLinkPath} isContentPage>
       <PageMeta title={title} description={description} noIndex={noIndex} />
       <Longform>
         {description ? <Markdown>{description}</Markdown> : null}
