@@ -38,8 +38,12 @@ export const HowItHelps = ({children}: {children: string}) => (
             <Image fill src={src} alt={alt ?? ''} />
           </div>
         ) : null,
-      ol: (props) => <Stack as="ol" gap="2" {...props} />,
-      li: (props) => <li {...props} />,
+      ol: ({children}) => (
+        <Stack as="ol" gap="2">
+          {children}
+        </Stack>
+      ),
+      li: ({children}) => <li>{children}</li>,
       dl: (props) => (
         <Box as="dl" className={styles.DefinitionList}>
           {props.children}
@@ -48,7 +52,7 @@ export const HowItHelps = ({children}: {children: string}) => (
       dt: (props) => <dt>{props.children}</dt>,
       dd: (props) => <dd>{props.children}</dd>,
       // @ts-expect-error react-markdown doesn't know about the extra data
-      customtable: ({children, ...props}) => {
+      customtable: ({children}) => {
         return <div className={styles.CustomTable}>{children}</div>;
       },
       strong: ({children}) => (
@@ -72,8 +76,12 @@ export const UsefulToKnow = ({children}: {children: string}) => (
             <Image fill src={src} alt={alt ?? ''} />
           </div>
         ) : null,
-      ol: (props) => <Stack as="ol" gap="2" {...props} />,
-      li: (props) => <li {...props} />,
+      ol: ({children}) => (
+        <Stack as="ol" gap="2">
+          {children}
+        </Stack>
+      ),
+      li: ({children}) => <li>{children}</li>,
       // We're using table as a handy shortcut for rendering a CSS grid
       // But that grid is actually rendered as an unordered list of items!
       // Should probably just be MDX at this point...
