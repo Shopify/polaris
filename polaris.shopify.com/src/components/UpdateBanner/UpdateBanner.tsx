@@ -2,7 +2,7 @@ import styles from './UpdateBanner.module.scss';
 import {FlagMajor} from '@shopify/polaris-icons';
 import Icon from '../Icon';
 import Markdown from '../Markdown';
-import {Box, Text} from '@shopify/polaris';
+import {Box} from '@shopify/polaris';
 
 interface Props {
   message?: string;
