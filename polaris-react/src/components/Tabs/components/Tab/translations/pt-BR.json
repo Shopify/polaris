@@ -1,0 +1,14 @@
+{
+  "rename": "Renomear visualização",
+  "duplicate": "Duplicar visualização",
+  "edit": "Editar visualização",
+  "editColumns": "Editar colunas",
+  "delete": "Excluir visualização",
+  "deleteModal": {
+    "title": "Excluir visualização?",
+    "description": "Essa ação não pode ser desfeita. A visualização da aba {viewName} não estará mais disponível no admin.",
+    "cancel": "Cancelar",
+    "delete": "Excluir visualização"
+  },
+  "copy": "Cópia de {name}"
+}

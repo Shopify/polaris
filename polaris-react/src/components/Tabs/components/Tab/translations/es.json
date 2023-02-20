@@ -1,0 +1,14 @@
+{
+  "rename": "Cambiar nombre de vista",
+  "duplicate": "Duplicar vista",
+  "edit": "Editar vista",
+  "editColumns": "Editar columnas",
+  "delete": "Eliminar vista",
+  "deleteModal": {
+    "title": "¿Eliminar vista?",
+    "description": "Esta acción no puede deshacerse. La vista {viewName} ya no estará disponible en tu panel de control.",
+    "cancel": "Cancelar",
+    "delete": "Eliminar vista"
+  },
+  "copy": "Copia de {name}"
+}

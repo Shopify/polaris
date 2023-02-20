@@ -236,7 +236,50 @@
       "loadingLabel": "Page loading"
     },
     "Tabs": {
-      "toggleTabsLabel": "More tabs"
+      "newViewAccessibilityLabel": "Create new view",
+      "newViewTooltip": "Create view",
+      "toggleTabsLabel": "More views",
+      "Tab": {
+        "rename": "Rename view",
+        "duplicate": "Duplicate view",
+        "edit": "Edit view",
+        "editColumns": "Edit columns",
+        "delete": "Delete view",
+        "copy": "Copy of {name}",
+        "deleteModal": {
+          "title": "Delete view?",
+          "description": "This can’t be undone. {viewName} view will no longer be available in your admin.",
+          "cancel": "Cancel",
+          "delete": "Delete view"
+        }
+      },
+      "RenameViewModal": {
+        "title": "Rename view",
+        "label": "Name",
+        "cancel": "Cancel",
+        "create": "Save",
+        "errors": {
+          "sameName": "A view with this name already exists. Please choose a different name."
+        }
+      },
+      "DuplicateViewModal": {
+        "title": "Duplicate view",
+        "label": "Name",
+        "cancel": "Cancel",
+        "create": "Create view",
+        "errors": {
+          "sameName": "A view with this name already exists. Please choose a different name."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Create new view",
+        "label": "Name",
+        "cancel": "Cancel",
+        "create": "Create view",
+        "errors": {
+          "sameName": "A view with this name already exists. Please choose a different name."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Remove {children}"

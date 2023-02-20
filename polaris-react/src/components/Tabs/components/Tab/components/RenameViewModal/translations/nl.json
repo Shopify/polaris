@@ -1,0 +1,9 @@
+{
+  "title": "Naam van weergave wijzigen",
+  "label": "Naam",
+  "cancel": "Annuleren",
+  "create": "Opslaan",
+  "errors": {
+    "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
+  }
+}

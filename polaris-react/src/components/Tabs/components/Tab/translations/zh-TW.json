@@ -1,0 +1,14 @@
+{
+  "rename": "重新命名檢視畫面",
+  "duplicate": "複製檢視畫面",
+  "edit": "編輯檢視畫面",
+  "editColumns": "編輯欄",
+  "delete": "刪除檢視畫面",
+  "deleteModal": {
+    "title": "是否要刪除檢視畫面？",
+    "description": "此動作無法復原。{viewName} 檢視畫面已無法在您的管理介面中使用。",
+    "cancel": "取消",
+    "delete": "刪除檢視畫面"
+  },
+  "copy": "{name}的副本"
+}

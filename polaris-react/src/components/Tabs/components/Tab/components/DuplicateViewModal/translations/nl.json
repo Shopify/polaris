@@ -1,0 +1,9 @@
+{
+  "title": "Weergave dupliceren",
+  "label": "Naam",
+  "cancel": "Annuleren",
+  "create": "Weergave aanmaken",
+  "errors": {
+    "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
+  }
+}

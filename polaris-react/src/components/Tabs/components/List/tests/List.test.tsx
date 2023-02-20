@@ -1,5 +1,4 @@
-import React from 'react';
-import {mountWithApp} from 'tests/utilities';
+import {mountWithAppContext} from 'tests/modern';
 
 import {List} from '../List';
 import {Item} from '../../Item';
@@ -10,36 +9,39 @@ describe('<List />', () => {
     disclosureTabs: [
       {
         id: 'repeat-customers',
-        content: 'Repeat customers',
+        name: 'Repeat customers',
       },
       {
         id: 'prospects',
-        content: 'Prospects',
+        name: 'Prospects',
       },
     ],
   };
 
-  it('renders an unordered list', () => {
-    const list = mountWithApp(<List {...mockProps} />);
+  it('renders an unordered list', async () => {
+    const list = await mountWithAppContext(<List {...mockProps} />);
+
     expect(list).toContainReactComponent('ul');
   });
 
   describe('focusIndex', () => {
-    it('does not pass focusIndex to last Item', () => {
+    it('does not pass focusIndex to last Item', async () => {
       const focusIndex = 1;
-      const list = mountWithApp(
+      const list = await mountWithAppContext(
         <List {...mockProps} focusIndex={focusIndex} />,
       );
+
       expect(list).toContainReactComponent(Item, {
         focused: false,
       });
     });
 
-    it('passes focusIndex to first Item', () => {
+    it('passes focusIndex to first Item', async () => {
       const focusIndex = 1;
-      const list = mountWithApp(
+      const list = await mountWithAppContext(
         <List {...mockProps} focusIndex={focusIndex} />,
       );
+
       expect(list).toContainReactComponent(Item, {
         focused: true,
       });
@@ -50,25 +52,27 @@ describe('<List />', () => {
     const disclosureTabs = [
       {
         id: 'repeat-customers',
-        content: 'Repeat customers',
+        name: 'Repeat customers',
       },
       {
         id: 'prospects',
-        content: 'Prospects',
+        name: 'Prospects',
       },
     ];
 
-    it('renders a button for each item in disclosureTabs', () => {
-      const list = mountWithApp(
+    it('renders a button for each item in disclosureTabs', async () => {
+      const list = await mountWithAppContext(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
+
       expect(list).toContainReactComponentTimes('button', 2);
     });
 
-    it('passes the id to the button', () => {
-      const list = mountWithApp(
+    it('passes the id to the button', async () => {
+      const list = await mountWithAppContext(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
+
       expect(list).toContainReactComponent('button', {
         id: 'repeat-customers',
       });
@@ -79,25 +83,27 @@ describe('<List />', () => {
     const disclosureTabs = [
       {
         id: 'repeat-customers',
-        content: 'Repeat customers',
+        name: 'Repeat customers',
       },
       {
         id: 'prospects',
-        content: 'Prospects',
+        name: 'Prospects',
       },
     ];
 
-    it('renders an Item for each item in disclosureTabs', () => {
-      const list = mountWithApp(
+    it('renders an Item for each item in disclosureTabs', async () => {
+      const list = await mountWithAppContext(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
+
       expect(list).toContainReactComponentTimes(Item, 2);
     });
 
-    it('renders the provided content', () => {
-      const list = mountWithApp(
+    it('renders the provided content', async () => {
+      const list = await mountWithAppContext(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
+
       expect(list.find(Item)).toContainReactText('Repeat customers');
     });
   });

@@ -1,0 +1,14 @@
+{
+  "rename": "重命名视图",
+  "duplicate": "复制视图",
+  "edit": "编辑视图",
+  "editColumns": "编辑列",
+  "delete": "删除视图",
+  "deleteModal": {
+    "title": "删除视图？",
+    "description": "此操作无法撤销。您的后台中将不再提供 {viewName} 视图。",
+    "cancel": "取消",
+    "delete": "删除视图"
+  },
+  "copy": "{name} 的副本"
+}

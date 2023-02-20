@@ -1,0 +1,9 @@
+{
+  "title": "Cambiar nombre de vista",
+  "label": "Nombre",
+  "cancel": "Cancelar",
+  "create": "Guardar",
+  "errors": {
+    "sameName": "Ya existe una vista con este nombre. Elige otro."
+  }
+}

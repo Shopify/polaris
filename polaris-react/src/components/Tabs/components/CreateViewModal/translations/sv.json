@@ -1,0 +1,9 @@
+{
+  "title": "Skapa nu vy",
+  "label": "Namn",
+  "cancel": "Avbryt",
+  "create": "Skapa vy",
+  "errors": {
+    "sameName": "En vy med detta namn finns redan. Välj ett annat namn."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Renomear visualização",
+  "label": "Nome",
+  "cancel": "Cancelar",
+  "create": "Salvar",
+  "errors": {
+    "sameName": "Uma visualização com esse nome já existe. Escolha um nome diferente."
+  }
+}

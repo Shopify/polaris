@@ -1,0 +1,14 @@
+{
+  "rename": "Đổi tên chế độ xem",
+  "duplicate": "Sao chép chế độ xem",
+  "edit": "Chỉnh sửa chế độ xem",
+  "editColumns": "Sửa cột",
+  "delete": "Xóa chế độ xem",
+  "deleteModal": {
+    "title": "Xóa chế độ xem?",
+    "description": "Thao tác này không thể hoàn tác. Chế độ xem {viewName} sẽ không còn trong trang quản trị nữa.",
+    "cancel": "Hủy",
+    "delete": "Xóa chế độ xem"
+  },
+  "copy": "Bản sao của {name}"
+}

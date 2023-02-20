@@ -1,0 +1,14 @@
+{
+  "rename": "Rename view",
+  "duplicate": "Duplicate view",
+  "edit": "Edit view",
+  "editColumns": "Edit columns",
+  "delete": "Delete view",
+  "copy": "Copy of {name}",
+  "deleteModal": {
+    "title": "Delete view?",
+    "description": "This can’t be undone. {viewName} view will no longer be available in your admin.",
+    "cancel": "Cancel",
+    "delete": "Delete view"
+  }
+}

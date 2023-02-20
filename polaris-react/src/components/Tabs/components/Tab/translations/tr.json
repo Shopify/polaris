@@ -1,0 +1,14 @@
+{
+  "rename": "Görünümü yeniden adlandır",
+  "duplicate": "Görünümü çoğalt",
+  "edit": "Görünümü düzenle",
+  "editColumns": "Sütunları düzenle",
+  "delete": "Görünümü sil",
+  "deleteModal": {
+    "title": "Görünüm silinsin mi?",
+    "description": "Bu işlem geri alınamaz. {viewName} görünümü artık yöneticinizde kullanılamayacak.",
+    "cancel": "İptal",
+    "delete": "Görünümü sil"
+  },
+  "copy": "{name} kopyası"
+}

@@ -1,0 +1,14 @@
+{
+  "rename": "Zmień nazwę widoku",
+  "duplicate": "Duplikuj widok",
+  "edit": "Edytuj widok",
+  "editColumns": "Edytuj kolumny",
+  "delete": "Usuń widok",
+  "deleteModal": {
+    "title": "Czy usunąć widok?",
+    "description": "Nie można tego cofnąć. Widok {viewName} nie będzie już dostępny w Twoim panelu administracyjnym.",
+    "cancel": "Anuluj",
+    "delete": "Usuń widok"
+  },
+  "copy": "Kopia {name}"
+}

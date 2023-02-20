@@ -1,0 +1,9 @@
+{
+  "title": "Ansicht duplizieren",
+  "label": "Name",
+  "cancel": "Abbrechen",
+  "create": "Ansicht erstellen",
+  "errors": {
+    "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus."
+  }
+}

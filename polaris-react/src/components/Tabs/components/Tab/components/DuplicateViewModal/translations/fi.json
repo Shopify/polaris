@@ -1,0 +1,9 @@
+{
+  "title": "Kopioi näkymä",
+  "label": "Nimi",
+  "cancel": "Peruuta",
+  "create": "Luo näkymä",
+  "errors": {
+    "sameName": "Tämän niminen näkymä on jo olemassa. Valitse toinen nimi."
+  }
+}

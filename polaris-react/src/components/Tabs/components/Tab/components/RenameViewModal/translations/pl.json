@@ -1,0 +1,9 @@
+{
+  "title": "Zmień nazwę widoku",
+  "label": "Nazwa",
+  "cancel": "Anuluj",
+  "create": "Zapisz",
+  "errors": {
+    "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę."
+  }
+}

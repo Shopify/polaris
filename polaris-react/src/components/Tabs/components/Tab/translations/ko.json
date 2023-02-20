@@ -1,0 +1,14 @@
+{
+  "rename": "보기 이름 바꾸기",
+  "duplicate": "보기 복제",
+  "edit": "보기 편집",
+  "editColumns": "열 편집",
+  "delete": "보기 삭제",
+  "deleteModal": {
+    "title": "보기를 삭제하시겠습니까?",
+    "description": "이 작업은 취소할 수 없습니다. 관리자에서 더 이상 {viewName} 보기를 사용할 수 없습니다.",
+    "cancel": "취소",
+    "delete": "보기 삭제"
+  },
+  "copy": "{name}의 사본"
+}

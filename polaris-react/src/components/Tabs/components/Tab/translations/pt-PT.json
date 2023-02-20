@@ -1,0 +1,14 @@
+{
+  "rename": "Renomear vista",
+  "duplicate": "Duplicar vista",
+  "edit": "Editar vista",
+  "editColumns": "Editar colunas",
+  "delete": "Eliminar vista",
+  "deleteModal": {
+    "title": "Eliminar vista?",
+    "description": "Esta ação não pode ser anulada. A vista de {viewName} deixará de estar disponível no seu admin.",
+    "cancel": "Cancelar",
+    "delete": "Eliminar vista"
+  },
+  "copy": "Cópia de {name}"
+}

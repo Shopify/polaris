@@ -1,0 +1,9 @@
+{
+  "title": "Duplica vista",
+  "label": "Nome",
+  "cancel": "Annulla",
+  "create": "Crea vista",
+  "errors": {
+    "sameName": "Esiste già una vista con questo nome. Scegli un nome diverso."
+  }
+}

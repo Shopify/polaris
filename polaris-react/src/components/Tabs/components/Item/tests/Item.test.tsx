@@ -1,7 +1,7 @@
-import React from 'react';
-import {mountWithApp} from 'tests/utilities';
+import {UnstyledLink} from '@shopify/polaris';
 
-import {UnstyledLink} from '../../../../UnstyledLink';
+import {mountWithAppContext} from 'tests/modern';
+
 import {Item} from '../Item';
 
 describe('<Item />', () => {
@@ -10,17 +10,19 @@ describe('<Item />', () => {
     focused: false,
   };
 
-  it('renders UnstyledLink when item has url', () => {
+  it('renders UnstyledLink when item has url', async () => {
     const url = 'http://shopify.com';
 
-    const item = mountWithApp(<Item {...mockProps} url={url} />);
+    const item = await mountWithAppContext(<Item {...mockProps} url={url} />);
 
     expect(item).toContainReactComponent(UnstyledLink);
     expect(item).not.toContainReactComponent('button');
   });
 
-  it('renders button when item does not have url', () => {
-    const item = mountWithApp(<Item {...mockProps} url={undefined} />);
+  it('renders button when item does not have url', async () => {
+    const item = await mountWithAppContext(
+      <Item {...mockProps} url={undefined} />,
+    );
 
     expect(item).not.toContainReactComponent(UnstyledLink);
     expect(item).toContainReactComponent('button');

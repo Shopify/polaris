@@ -1,0 +1,9 @@
+{
+  "title": "Créer une nouvelle vue",
+  "label": "Nom",
+  "cancel": "Annuler",
+  "create": "Créer une vue",
+  "errors": {
+    "sameName": "Une vue portant ce nom existe déjà. Veuillez choisir un nom différent."
+  }
+}

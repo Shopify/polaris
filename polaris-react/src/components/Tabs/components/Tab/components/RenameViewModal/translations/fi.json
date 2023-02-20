@@ -1,0 +1,9 @@
+{
+  "title": "Nimeä näkymä uudelleen",
+  "label": "Nimi",
+  "cancel": "Peruuta",
+  "create": "Tallenna",
+  "errors": {
+    "sameName": "Tämän niminen näkymä on jo olemassa. Valitse toinen nimi."
+  }
+}

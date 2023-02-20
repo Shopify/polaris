@@ -1,82 +1,60 @@
-import React, {PureComponent} from 'react';
+import type {ReactNode, ReactElement, MutableRefObject} from 'react';
+import React, {memo, useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {FeaturesContext} from '../../../../utilities/features';
-import styles from '../../Tabs.scss';
 import {UnstyledLink} from '../../../UnstyledLink';
+import styles from '../../Tabs.scss';
 
 export interface ItemProps {
   id: string;
   focused: boolean;
-  panelID?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   url?: string;
   accessibilityLabel?: string;
   onClick?(): void;
 }
+export const Item = memo(function Item({
+  id,
+  focused,
+  children,
+  url,
+  accessibilityLabel,
+  onClick = noop,
+}: ItemProps) {
+  const focusedNode = useRef<HTMLButtonElement | ReactElement | null>(null);
 
-export class Item extends PureComponent<ItemProps, never> {
-  static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
-
-  private focusedNode: HTMLElement | React.ReactElement | null = null;
-
-  componentDidMount() {
-    const {focusedNode} = this;
-    const {focused} = this.props;
-
+  useEffect(() => {
     if (focusedNode && focusedNode instanceof HTMLElement && focused) {
       focusedNode.focus();
     }
-  }
+  }, [focusedNode, focused]);
 
-  componentDidUpdate() {
-    const {focusedNode} = this;
-    const {focused} = this.props;
+  const classname = classNames(styles.Item);
 
-    if (focusedNode && focusedNode instanceof HTMLElement && focused) {
-      focusedNode.focus();
-    }
-  }
-
-  render() {
-    const {
-      id,
-      panelID,
-      children,
-      url,
-      accessibilityLabel,
-      onClick = noop,
-    } = this.props;
-
-    const classname = classNames(styles.Item);
-
-    const sharedProps = {
-      id,
-      ref: this.setFocusedNode,
-      onClick,
-      className: classname,
-      'aria-controls': panelID,
-      'aria-selected': false,
-      'aria-label': accessibilityLabel,
-    };
-
-    const markup = url ? (
-      <UnstyledLink {...sharedProps} url={url}>
-        {children}
-      </UnstyledLink>
-    ) : (
-      <button {...sharedProps} type="button">
-        {children}
-      </button>
-    );
-
-    return <li>{markup}</li>;
-  }
-
-  private setFocusedNode = (node: HTMLElement | React.ReactElement | null) => {
-    this.focusedNode = node;
+  const sharedProps = {
+    id,
+    ref: focusedNode,
+    onClick,
+    className: classname,
+    'aria-selected': false,
+    'aria-label': accessibilityLabel,
   };
-}
+
+  const markup = url ? (
+    <UnstyledLink {...sharedProps} url={url}>
+      {children}
+    </UnstyledLink>
+  ) : (
+    <button
+      {...sharedProps}
+      ref={focusedNode as MutableRefObject<HTMLButtonElement>}
+      type="button"
+    >
+      {children}
+    </button>
+  );
+
+  return <li>{markup}</li>;
+});
 
 function noop() {}

@@ -1,0 +1,14 @@
+{
+  "rename": "Rinomina vista",
+  "duplicate": "Duplica vista",
+  "edit": "Modifica vista",
+  "editColumns": "Modifica colonne",
+  "delete": "Elimina vista",
+  "deleteModal": {
+    "title": "Eliminare la vista?",
+    "description": "L'operazione non può essere annullata. La vista {viewName} non sarà più disponibile nel pannello di controllo.",
+    "cancel": "Annulla",
+    "delete": "Elimina vista"
+  },
+  "copy": "Copia di {name}"
+}

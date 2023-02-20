@@ -1,0 +1,14 @@
+{
+  "rename": "Přejmenovat zobrazení",
+  "duplicate": "Duplikovat zobrazení",
+  "edit": "Upravit zobrazení",
+  "editColumns": "Upravit sloupce",
+  "delete": "Odstranit zobrazení",
+  "deleteModal": {
+    "title": "Chcete zobrazení odstranit?",
+    "description": "Tato akce je nevratná. Zobrazení {viewName} už nebude k dispozici ve vašem administrátorovi.",
+    "cancel": "Zrušit",
+    "delete": "Odstranit zobrazení"
+  },
+  "copy": "{name} – kopie"
+}

@@ -1,0 +1,14 @@
+{
+  "rename": "Gi visning nytt navn",
+  "duplicate": "Dupliser visning",
+  "edit": "Rediger visning",
+  "editColumns": "Rediger kolonner",
+  "delete": "Slett visning",
+  "deleteModal": {
+    "title": "Slett visning?",
+    "description": "Dette kan ikke omgjøres i ettertid. {viewName}-visningen vil ikke lenger være tilgjengelig i administrator.",
+    "cancel": "Avbryt",
+    "delete": "Slett visning"
+  },
+  "copy": "Kopi av {name}"
+}
