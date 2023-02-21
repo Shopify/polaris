@@ -74,9 +74,6 @@ const stylelintPolarisCoverageOptions = {
         /\$polaris-colors/,
         /\$color-filter-palette-data/,
         /\$color-palette-data/,
-        // Legacy custom properties
-        /--p-override-transparent/,
-        /--p-badge-mix-blend-mode/,
       ],
     },
     {
@@ -106,9 +103,6 @@ const stylelintPolarisCoverageOptions = {
         /\$polaris-duration-map/,
         /\$skeleton-shimmer-duration/,
         /\$easing-data/,
-        // Legacy custom properties
-        /--p-duration-1-0-0/,
-        /--p-duration-1-5-0/,
       ],
     },
     {
@@ -161,9 +155,6 @@ const stylelintPolarisCoverageOptions = {
         /\$font-family-data/,
         /\$font-size-data/,
         /\$default-browser-font-size/,
-        // Legacy custom properties
-        /--p-button-font/,
-        /--p-badge-font/,
       ],
     },
     {
@@ -236,9 +227,6 @@ const stylelintPolarisCoverageOptions = {
         // Legacy custom properties
         /--p-range-slider-thumb-size-base/,
         /--p-range-slider-thumb-size-active/,
-        /--p-range-slider-thumb-scale/,
-        /--p-override-visible/,
-        /--p-icon-size/,
         /--p-choice-size/,
       ],
     },
@@ -305,7 +293,6 @@ const stylelintPolarisCoverageOptions = {
         /\$borders-data/,
         // Legacy custom properties
         // /--p-border-radius-base/,
-        /--p-border-radius-wide/,
         // /--p-border-radius-full/,
         /--p-control-border-width/,
         /--p-thin-border-subdued/,
@@ -314,7 +301,6 @@ const stylelintPolarisCoverageOptions = {
         /--p-banner-border-highlight/,
         /--p-banner-border-warning/,
         /--p-banner-border-critical/,
-        /--p-text-field-focus-ring-border-radius/,
         /--p-text-field-focus-ring-offset/,
       ],
     },
@@ -334,14 +320,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$shadows-data/,
-        // Legacy custom properties
-        /--p-button-drop-shadow/,
-        /--p-button-inner-shadow/,
-        /--p-button-pressed-inner-shadow/,
-        /--p-card-shadow/,
-        /--p-popover-shadow/,
-        /--p-modal-shadow/,
-        /--p-top-bar-shadow/,
       ],
     },
     {
@@ -480,11 +458,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy variables
         / \* \$/,
-        // Legacy custom properties
-        /--p-override-none/,
-        /--p-override-one/,
-        /--p-override-zero/,
-        /--p-non-null-content/,
       ],
     },
     {
