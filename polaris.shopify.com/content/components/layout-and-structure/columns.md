@@ -8,10 +8,6 @@ status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: columns-default.tsx
-    title: Default
-    description: >-
-      By default, children are displayed in a 6 column layout with a gap of `space-0` (0px) in between each child.
   - fileName: columns-with-varying-gap.tsx
     title: Gap
     description: >-
