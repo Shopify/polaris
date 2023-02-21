@@ -117,8 +117,10 @@ function PatternPageContent({
       {description ? (
         <Markdown
           components={{
-            p: (props) => (
-              <Box as="p" className={styles.VariantDescription} {...props} />
+            p: ({children}) => (
+              <Box as="p" className={styles.VariantDescription}>
+                {children}
+              </Box>
             ),
           }}
         >
