@@ -1,9 +1,9 @@
+import React from 'react';
 import type {ComponentProps} from 'react';
-import {TextField} from '@shopify/polaris';
+import {mountWithApp} from 'tests/utilities';
 
-import {DisabledTooltipWrapper} from 'components/DisabledTooltipWrapper';
-import {mountWithAppContext} from 'tests/modern';
-
+import {TextField} from '../../../../TextField';
+import {DisabledTooltipWrapper} from '../../../../DisabledTooltipWrapper';
 import {SearchField} from '..';
 
 describe('SearchField', () => {
@@ -17,61 +17,59 @@ describe('SearchField', () => {
     jest.clearAllMocks();
   });
 
-  it('will call onChange when changed', async () => {
+  it('will call onChange when changed', () => {
     const props = {...defaultProps};
-    const wrapper = await mountWithAppContext(<SearchField {...props} />);
+    const wrapper = mountWithApp(<SearchField {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'test');
     });
 
     expect(props.onChange).toHaveBeenCalledWith('test');
   });
 
-  it('will call onChange correctly when clear button clicked', async () => {
+  it('will call onChange correctly when clear button clicked', () => {
     const props = {...defaultProps};
-    const wrapper = await mountWithAppContext(<SearchField {...props} />);
+    const wrapper = mountWithApp(<SearchField {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.findAll(TextField)[0]?.trigger('onClearButtonClick');
     });
 
     expect(props.onChange).toHaveBeenCalledWith('');
   });
 
-  it('will call onFocus', async () => {
+  it('will call onFocus', () => {
     const props = {...defaultProps, onFocus: jest.fn()};
-    const wrapper = await mountWithAppContext(<SearchField {...props} />);
+    const wrapper = mountWithApp(<SearchField {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.findAll(TextField)[0]?.trigger('onFocus');
     });
 
     expect(props.onFocus).toHaveBeenCalledTimes(1);
   });
 
-  it('will call onBlur', async () => {
+  it('will call onBlur', () => {
     const props = {...defaultProps, onBlur: jest.fn()};
-    const wrapper = await mountWithAppContext(<SearchField {...props} />);
+    const wrapper = mountWithApp(<SearchField {...props} />);
 
-    await wrapper.act(async () => {
+    wrapper.act(() => {
       wrapper.findAll(TextField)[0]?.trigger('onBlur');
     });
 
     expect(props.onBlur).toHaveBeenCalledTimes(1);
   });
 
-  it('will pass the placeholder', async () => {
-    const wrapper = await mountWithAppContext(
-      <SearchField {...defaultProps} />,
-    );
+  it('will pass the placeholder', () => {
+    const wrapper = mountWithApp(<SearchField {...defaultProps} />);
 
     expect(wrapper).toContainReactComponent(TextField, {
       placeholder: defaultProps.placeholder,
     });
   });
 
-  it('disables the text field and wraps it in a tooltip when the disabled prop contains disabled info', async () => {
+  it('disables the text field and wraps it in a tooltip when the disabled prop contains disabled info', () => {
     const props: ComponentProps<typeof SearchField> = {
       ...defaultProps,
       disabled: {
@@ -79,7 +77,7 @@ describe('SearchField', () => {
         tooltipMessage: 'Search disabled',
       },
     };
-    const wrapper = await mountWithAppContext(<SearchField {...props} />);
+    const wrapper = mountWithApp(<SearchField {...props} />);
 
     expect(wrapper).toContainReactComponent(TextField, {
       disabled: true,

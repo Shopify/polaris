@@ -1,4 +1,5 @@
 import React from 'react';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../../ActionList';
@@ -11,10 +12,12 @@ describe('<Filters />', () => {
 
   beforeEach(() => {
     originalScroll = HTMLElement.prototype.scroll;
+    matchMedia.mock();
   });
 
   afterEach(() => {
     HTMLElement.prototype.scroll = originalScroll;
+    matchMedia.restore();
   });
 
   const defaultProps: FiltersProps = {

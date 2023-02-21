@@ -30,6 +30,7 @@ export const SmallScreenTabs = ({
   onSetStateToEditingColumns,
   onSelect,
   disabledTooltipMessage,
+  fitted,
 }: CombinedProps) => {
   const {
     state,
@@ -132,14 +133,18 @@ export const SmallScreenTabs = ({
     renderTabMarkup(item, tabIndex),
   );
 
-  const classname = classNames(styles.SmallScreenTabs);
+  const classname = classNames(styles.SmallScreenTabs, fitted && styles.fitted);
 
   const viewNames = tabs.map(({content}) => content);
+
+  const buttonsWrapperClassName = classNames(
+    !fitted && styles.SmallScreenButtonsWrapper,
+  );
 
   return (
     <div className={styles.SmallScreenOuter}>
       <div className={styles.SmallScreenWrapper} ref={scrollRef}>
-        <div className={styles.SmallScreenButtonsWrapper} ref={wrapRef}>
+        <div className={buttonsWrapperClassName} ref={wrapRef}>
           <ul
             role="tablist"
             className={classname}
