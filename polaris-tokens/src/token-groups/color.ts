@@ -64,7 +64,6 @@ export type ColorBackgroundAlias =
   | 'bg-success-subdued'
   | 'bg-success-subdued-active'
   | 'bg-success-subdued-hover'
-  | 'bg-success-subdued-pressed'
   | 'bg-warning';
 
 export type ColorBorderAlias =
@@ -280,10 +279,6 @@ export const color: {
   },
   'color-bg-success-subdued-hover': {
     value: colors.green[50],
-    description: '',
-  },
-  'color-bg-success-subdued-pressed': {
-    value: colors.green[200],
     description: '',
   },
   'color-bg-primary-subdued': {
