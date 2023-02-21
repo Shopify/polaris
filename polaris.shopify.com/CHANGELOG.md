@@ -1,5 +1,19 @@
 # polaris.shopify.com
 
+## 0.35.0
+
+### Minor Changes
+
+- [#8425](https://github.com/Shopify/polaris/pull/8425) [`c73717cf8`](https://github.com/Shopify/polaris/commit/c73717cf82845c9ae9b9a4a05263b60e8c5d266f) Thanks [@lgriffee](https://github.com/lgriffee)! - Manually migrated `z-index` custom properties from `v10` to `v11`
+
+### Patch Changes
+
+- [#8411](https://github.com/Shopify/polaris/pull/8411) [`c66f498af`](https://github.com/Shopify/polaris/commit/c66f498af51ba6ee96f8a4ad24e47d24f95a5a01) Thanks [@kyledurand](https://github.com/kyledurand)! - Added virtual keyboards image
+
+- Updated dependencies [[`6f92bf33c`](https://github.com/Shopify/polaris/commit/6f92bf33ce855cebd2b1243411a75a35f55eaeb1), [`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`c73717cf8`](https://github.com/Shopify/polaris/commit/c73717cf82845c9ae9b9a4a05263b60e8c5d266f), [`bc8ab02f2`](https://github.com/Shopify/polaris/commit/bc8ab02f20c1afdb86c1309453681c1c58265933), [`20d17c61a`](https://github.com/Shopify/polaris/commit/20d17c61af2a14aaab48ccda1a9374d5d90864b3), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8), [`d06191580`](https://github.com/Shopify/polaris/commit/d06191580a8ab6a9562057845511161927249d0c)]:
+  - @shopify/polaris@10.30.0
+  - @shopify/polaris-tokens@6.6.0
+
 ## 0.34.3
 
 ### Patch Changes

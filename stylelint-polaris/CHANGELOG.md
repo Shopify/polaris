@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.0.2
+
+### Patch Changes
+
+- [#7877](https://github.com/Shopify/polaris/pull/7877) [`065df230a`](https://github.com/Shopify/polaris/commit/065df230a279d9dd1503337a523ca5c9a94acce9) Thanks [@chloerice](https://github.com/chloerice)! - - Updated the `polaris/custom-property-allowed-list` plugin tests for unified config
+  - Updated `polaris/custom-property-allowed-list` to report problems with tailored messages for each of the two configuration options
+  - Fixed metadata URLs for `polaris/*` plugins
+- Updated dependencies [[`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8)]:
+  - @shopify/polaris-tokens@6.6.0
+
 ## 6.0.1
 
 ### Patch Changes
