@@ -90,6 +90,7 @@ function getColumnValue(columns?: ColumnTypes) {
     .map((column) => {
       switch (column) {
         case 'oneThird':
+          return 'minmax(0, 1fr)';
         case 'oneHalf':
           return 'minmax(0, 1fr)';
         case 'twoThirds':
