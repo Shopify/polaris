@@ -9,6 +9,7 @@ import {Icon} from '../Icon';
 import {Popover} from '../Popover';
 import {UnstyledButton} from '../UnstyledButton';
 import {Tooltip} from '../Tooltip';
+import {Text} from '../Text';
 import {DisabledTooltipWrapper} from '../DisabledTooltipWrapper';
 
 import type {TabProps, TabMeasurements} from './types';
@@ -54,6 +55,8 @@ export interface TabsProps {
 export type CombinedProps = TabsProps & {
   i18n: ReturnType<typeof useI18n>;
 };
+
+const CREATE_NEW_VIEW_ID = 'create-new-view';
 
 export const TabsInner = ({
   tabs,
@@ -245,9 +248,9 @@ export const TabsInner = ({
 
   const disclosureButtonContent = (
     <>
-      <span className={styles.DisclosureText}>
+      <Text as="span" variant="bodySm" fontWeight="semibold">
         {disclosureText ?? i18n.translate('Polaris.Tabs.toggleTabsLabel')}
-      </span>
+      </Text>
       <div
         className={classNames(
           styles.IconWrap,
@@ -301,7 +304,7 @@ export const TabsInner = ({
 
   const newTab = (
     <Tab
-      id="create-new-view"
+      id={CREATE_NEW_VIEW_ID}
       content={createViewA11yLabel}
       permissions={[]}
       isActive={false}

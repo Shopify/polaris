@@ -87,6 +87,7 @@ export function WithAResourceList() {
         />
       ),
       shortcut: true,
+      pinned: true,
     },
     {
       key: 'taggedWith',
@@ -101,6 +102,7 @@ export function WithAResourceList() {
         />
       ),
       shortcut: true,
+      pinned: true,
     },
     {
       key: 'moneySpent',
@@ -155,6 +157,7 @@ export function WithAResourceList() {
           filterControl={
             <Filters
               queryValue={queryValue}
+              queryPlaceholder="Searching in all"
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleFiltersQueryChange}
@@ -341,16 +344,14 @@ export function WithADataTable() {
   return (
     <div style={{height: '568px'}}>
       <LegacyCard>
-        <LegacyCard.Section>
-          <Filters
-            queryValue={queryValue}
-            filters={filters}
-            appliedFilters={appliedFilters}
-            onQueryChange={handleFiltersQueryChange}
-            onQueryClear={handleQueryValueRemove}
-            onClearAll={handleFiltersClearAll}
-          />
-        </LegacyCard.Section>
+        <Filters
+          queryValue={queryValue}
+          filters={filters}
+          appliedFilters={appliedFilters}
+          onQueryChange={handleFiltersQueryChange}
+          onQueryClear={handleQueryValueRemove}
+          onClearAll={handleFiltersClearAll}
+        />
         <DataTable
           columnContentTypes={[
             'text',
@@ -460,6 +461,7 @@ export function WithChildrenContent() {
           filterControl={
             <Filters
               queryValue={queryValue}
+              queryPlaceholder="Searching in all"
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleQueryValueChange}
@@ -467,7 +469,10 @@ export function WithChildrenContent() {
               onClearAll={handleClearAll}
             >
               <div style={{paddingLeft: '8px'}}>
-                <Button onClick={() => console.log('New filter saved')}>
+                <Button
+                  onClick={() => console.log('New filter saved')}
+                  size="slim"
+                >
                   Save
                 </Button>
               </div>
@@ -583,6 +588,7 @@ export function Disabled() {
           filterControl={
             <Filters
               queryValue={queryValue}
+              queryPlaceholder="Searching in all"
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleQueryValueChange}
@@ -593,6 +599,7 @@ export function Disabled() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
+                  size="slim"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -730,6 +737,7 @@ export function SomeDisabled() {
           filterControl={
             <Filters
               queryValue={queryValue}
+              queryPlaceholder="Searching in all"
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleQueryValueChange}
@@ -739,6 +747,7 @@ export function SomeDisabled() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
+                  size="slim"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -858,6 +867,7 @@ export function WithoutClearButton() {
           filterControl={
             <Filters
               queryValue={queryValue}
+              queryPlaceholder="Searching in all"
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleQueryValueChange}
@@ -1058,6 +1068,7 @@ export function WithHelpText() {
           filterControl={
             <Filters
               queryValue={queryValue}
+              queryPlaceholder="Searching in all"
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleFiltersQueryChange}
@@ -1255,13 +1266,21 @@ export function WithQueryFieldHidden() {
           filterControl={
             <Filters
               queryValue={queryValue}
+              queryPlaceholder="Searching in all"
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleFiltersQueryChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}
               hideQueryField
-            />
+            >
+              <Button
+                onClick={() => console.log('New filter saved')}
+                size="slim"
+              >
+                Save
+              </Button>
+            </Filters>
           }
           items={[
             {
@@ -1451,6 +1470,7 @@ export function WithQueryFieldDisabled() {
           filterControl={
             <Filters
               queryValue={queryValue}
+              queryPlaceholder="Searching in all"
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleFiltersQueryChange}

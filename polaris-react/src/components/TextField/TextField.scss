@@ -156,6 +156,16 @@ $spinner-icon-size: 12px;
   }
 }
 
+.borderless {
+  .Input,
+  .Backdrop {
+    border: none;
+    padding: var(--p-space-2);
+    line-height: var(--p-font-line-height-1);
+    min-height: var(--p-space-8);
+  }
+}
+
 .Input-hasClearButton {
   // Hide webkit search input clear button
   &[type='search'] {

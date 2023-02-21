@@ -14,6 +14,7 @@ import {
   focusFirstFocusableNode,
   handleMouseUpByBlurring,
 } from '../../../../utilities/focus';
+import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Icon} from '../../../Icon';
@@ -22,6 +23,7 @@ import {ActionList} from '../../../ActionList';
 import {Modal} from '../../../Modal';
 import {Badge} from '../../../Badge';
 import {Inline} from '../../../Inline';
+import {Text} from '../../../Text';
 import type {TabProps} from '../../types';
 import {isSimpleOption} from '../../types';
 import styles from '../../Tabs.scss';
@@ -67,6 +69,7 @@ export function Tab({
   const [isDeleteViewModalActive, setIsDeleteViewModalActive] = useState(false);
   const [isDuplicateViewModalActive, setIsDuplicateViewModalActive] =
     useState(false);
+  const {mdDown} = useBreakpoints();
 
   const wasSelected = useRef(selected);
   const panelFocused = useRef(false);
@@ -315,7 +318,13 @@ export function Tab({
       onFocus={onFocus}
     >
       <Inline gap="2">
-        {icon ?? content}
+        <Text
+          as="span"
+          variant={mdDown ? 'bodyMd' : 'bodySm'}
+          fontWeight="semibold"
+        >
+          {icon ?? content}
+        </Text>
         {badge ? (
           <Badge status={selected ? 'success' : 'new'}>{badge}</Badge>
         ) : null}

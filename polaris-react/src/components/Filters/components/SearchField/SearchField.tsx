@@ -63,6 +63,7 @@ export function SearchField({
           clearButton
           onClearButtonClick={handleClear}
           disabled={Boolean(disabled?.isDisabled)}
+          borderless
         />
       </DisabledTooltipWrapper>
     </div>

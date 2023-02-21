@@ -2,7 +2,7 @@ import {
   TextField,
   IndexTable,
   LegacyCard,
-  Filters,
+  LegacyFilters,
   Select,
   useIndexResourceState,
   Text,
@@ -127,7 +127,7 @@ function IndexTableWithFilteringExample() {
     <LegacyCard>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
-          <Filters
+          <LegacyFilters
             queryValue={queryValue}
             filters={filters}
             appliedFilters={appliedFilters}

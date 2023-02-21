@@ -15,18 +15,6 @@ $item-wrapper-loading-height: 64px;
   left: 0;
 }
 
-.FiltersWrapper {
-  padding: var(--p-space-3) var(--p-space-3) var(--p-space-4);
-
-  @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-4);
-  }
-
-  + .ResourceList {
-    border-top: var(--p-border-divider);
-  }
-}
-
 .HeaderOuterWrapper {
   position: relative;
   background-color: var(--p-surface);

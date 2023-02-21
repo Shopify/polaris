@@ -39,6 +39,9 @@ describe('<Filters />', () => {
       },
     ],
     appliedFilters: [],
+    onQueryChange: jest.fn(),
+    onQueryClear: jest.fn(),
+    onClearAll: jest.fn(),
   };
 
   it('renders a list of pinned filters', () => {

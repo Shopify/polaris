@@ -7,7 +7,10 @@ import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
 import {Stack} from '../../../Stack';
 import {Icon} from '../../../Icon';
+import {Text} from '../../../Text';
+import {Inline} from '../../../Inline';
 import {UnstyledButton} from '../../../UnstyledButton';
+import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
 import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
@@ -46,6 +49,7 @@ export function FilterPill({
   onClick,
 }: FilterPillProps) {
   const i18n = useI18n();
+  const {mdDown} = useBreakpoints();
   const elementRef = useRef<HTMLDivElement>(null);
   const {
     value: focused,
@@ -105,43 +109,57 @@ export function FilterPill({
     styles.ToggleButton,
   );
 
-  const activator = (
-    <span className={buttonClasses}>
-      <UnstyledButton
-        onFocus={setFocusedTrue}
-        onBlur={setFocusedFalse}
-        onClick={togglePopoverActive}
-        className={toggleButtonClassNames}
-        type="button"
-        disabled={disabled}
-      >
-        {selected ? (
-          <>{label}</>
-        ) : (
-          <>
-            {label}
-            <Icon source={CaretDownMinor} color="base" />
-          </>
-        )}
-      </UnstyledButton>
+  const wrappedLabel = (
+    <Text variant={mdDown ? 'bodyMd' : 'bodySm'} as="span">
+      {label}
+    </Text>
+  );
 
-      {selected ? (
+  const activator = (
+    <div className={buttonClasses}>
+      <Inline gap="0" wrap={false}>
         <UnstyledButton
-          onClick={handleClear}
-          className={clearButtonClassNames}
+          onFocus={setFocusedTrue}
+          onBlur={setFocusedFalse}
+          onClick={togglePopoverActive}
+          className={toggleButtonClassNames}
           type="button"
-          aria-label={i18n.translate('Polaris.FilterPill.clear')}
           disabled={disabled}
         >
-          <Icon source={CancelSmallMinor} color="base" />
+          <Inline wrap={false} align="center" blockAlign="center" gap="0">
+            {selected ? (
+              <>{wrappedLabel}</>
+            ) : (
+              <>
+                {wrappedLabel}
+                <div className={styles.IconWrapper}>
+                  <Icon source={CaretDownMinor} color="base" />
+                </div>
+              </>
+            )}
+          </Inline>
         </UnstyledButton>
-      ) : null}
-    </span>
+
+        {selected ? (
+          <UnstyledButton
+            onClick={handleClear}
+            className={clearButtonClassNames}
+            type="button"
+            aria-label={i18n.translate('Polaris.FilterPill.clear')}
+            disabled={disabled}
+          >
+            <div className={styles.IconWrapper}>
+              <Icon source={CancelSmallMinor} color="base" />
+            </div>
+          </UnstyledButton>
+        ) : null}
+      </Inline>
+    </div>
   );
 
   const clearButtonMarkup = !hideClearButton && (
     <Button onClick={handleClear} plain disabled={!selected}>
-      {i18n.translate('FilterPill.clear')}
+      {i18n.translate('Polaris.FilterPill.clear')}
     </Button>
   );
 

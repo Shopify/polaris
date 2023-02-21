@@ -18,7 +18,6 @@ type CombinedProps = TabsProps & {
 };
 
 const CREATE_NEW_VIEW_ID = 'create-new-view';
-const SCROLL_OFFSET = 16;
 
 export const SmallScreenTabs = ({
   tabs,
@@ -63,6 +62,7 @@ export const SmallScreenTabs = ({
   } = state;
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
 
   const moveToSelectedTab = useCallback(() => {
     const activeButton = getSelectedTab();
@@ -116,8 +116,9 @@ export const SmallScreenTabs = ({
   const moveToActiveTab = (offsetLeft: number) => {
     setTimeout(() => {
       if (scrollRef.current && typeof scrollRef.current.scroll === 'function') {
+        const scrollRefOffset = wrapRef?.current?.offsetLeft || 0;
         scrollRef?.current?.scroll({
-          left: offsetLeft - SCROLL_OFFSET,
+          left: offsetLeft - scrollRefOffset,
         });
       }
     }, 0);
@@ -138,7 +139,7 @@ export const SmallScreenTabs = ({
   return (
     <div className={styles.SmallScreenOuter}>
       <div className={styles.SmallScreenWrapper} ref={scrollRef}>
-        <div className={styles.SmallScreenButtonsWrapper}>
+        <div className={styles.SmallScreenButtonsWrapper} ref={wrapRef}>
           <ul
             role="tablist"
             className={classname}

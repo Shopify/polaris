@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect, useMemo} from 'react';
 import type {ReactNode} from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 
@@ -166,30 +166,46 @@ export function Filters({
 
   const shouldShowAddButton = enabledFilters.some((filter) => !filter.pinned);
 
+  const additionalContent = useMemo(() => {
+    return (
+      <>
+        <div className={styles.Spinner}>
+          {loading ? <Spinner size="small" /> : null}
+        </div>
+        {children}
+      </>
+    );
+  }, [loading, children]);
+
   return (
-    <div className={styles.Filters}>
-      <div className={styles.Container}>
-        <Box
-          paddingBlockStart={{
-            xs: '3',
-            md: '2',
-          }}
-          paddingBlockEnd={{
-            xs: '3',
-            md: '2',
-          }}
-          paddingInlineStart="2"
-          paddingInlineEnd="3"
-        >
-          <Inline
-            align="start"
-            blockAlign="center"
-            gap={{
-              xs: '4',
-              md: '3',
+    <div
+      className={classNames(
+        styles.Filters,
+        hideQueryField && styles.hideQueryField,
+      )}
+    >
+      {hideQueryField ? null : (
+        <div className={styles.Container}>
+          <Box
+            paddingBlockStart={{
+              xs: '3',
+              md: '2',
             }}
+            paddingBlockEnd={{
+              xs: '3',
+              md: '2',
+            }}
+            paddingInlineStart="2"
+            paddingInlineEnd="3"
           >
-            {hideQueryField ? null : (
+            <Inline
+              align="start"
+              blockAlign="center"
+              gap={{
+                xs: '4',
+                md: '3',
+              }}
+            >
               <div className={styles.SearchField}>
                 <SearchField
                   onChange={onQueryChange}
@@ -206,14 +222,11 @@ export function Filters({
                   }}
                 />
               </div>
-            )}
-            <div className={styles.Spinner}>
-              {loading ? <Spinner size="small" /> : null}
-            </div>
-            {children}
-          </Inline>
-        </Box>
-      </div>
+              {additionalContent}
+            </Inline>
+          </Box>
+        </div>
+      )}
       {hideFilters ? null : (
         <div
           className={classNames(
@@ -301,6 +314,11 @@ export function Filters({
               ) : null}
             </div>
           </div>
+          {hideQueryField ? (
+            <Box paddingInlineEnd="2" paddingBlockStart="1">
+              <Inline>{additionalContent}</Inline>
+            </Box>
+          ) : null}
         </div>
       )}
     </div>
