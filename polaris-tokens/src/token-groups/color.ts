@@ -5,6 +5,7 @@ export type ColorBackgroundAlias =
   | 'bg'
   | 'bg-active'
   | 'bg-app'
+  | 'bg-app-active'
   | 'bg-app-hover'
   | 'bg-app-selected'
   | 'bg-caution'
@@ -12,13 +13,13 @@ export type ColorBackgroundAlias =
   | 'bg-caution-subdued'
   | 'bg-caution-subdued-active'
   | 'bg-caution-subdued-hover'
+  | 'bg-critical'
   | 'bg-critical-strong'
   | 'bg-critical-strong-active'
   | 'bg-critical-strong-hover'
   | 'bg-critical-subdued'
   | 'bg-critical-subdued-active'
   | 'bg-critical-subdued-hover'
-  | 'bg-critical'
   | 'bg-disabled'
   | 'bg-hover'
   | 'bg-info'
@@ -137,6 +138,7 @@ export type ColorTextAlias =
   | 'text-magic-strong'
   | 'text-on-color'
   | 'text-primary'
+  | 'text-primary-hover'
   | 'text-subdued'
   | 'text-success'
   | 'text-success-strong'
@@ -195,6 +197,14 @@ export const color: {
     value: colors.gray[300],
     description: '',
   },
+  'color-bg-app': {
+    value: colors.gray[200],
+    description: '',
+  },
+  'color-bg-app-active': {
+    value: colors.gray[400],
+    description: '',
+  },
   'color-bg-app-hover': {
     value: colors.gray[300],
     description: '',
@@ -209,10 +219,6 @@ export const color: {
   },
   'color-bg-subdued-hover': {
     value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-app': {
-    value: colors.gray[200],
     description: '',
   },
   'color-bg-inset': {
@@ -623,13 +629,16 @@ export const color: {
     value: colors.green[900],
     description: '',
   },
-
   'color-text-success': {
     value: colors.green[700],
     description: '',
   },
   'color-text-primary': {
     value: colors.green[700],
+    description: '',
+  },
+  'color-text-primary-hover': {
+    value: colors.green[800],
     description: '',
   },
   'color-text-critical-strong': {
