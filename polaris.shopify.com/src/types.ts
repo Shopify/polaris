@@ -10,7 +10,7 @@ export type PatternVariant = {
   slug: string;
   howItHelps: MarkdownString;
   usefulToKnow: MarkdownString;
-  example: PatternExample;
+  example?: PatternExample;
 };
 
 export type Pattern = SingleVariantPattern | MultiVariantPattern;

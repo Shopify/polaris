@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Tab} from '@headlessui/react';
 
 import Link from 'next/link';
@@ -131,17 +131,19 @@ function PatternPageContent({
         </Heading>
         <HowItHelps>{howItHelps}</HowItHelps>
       </Stack>
-      <Stack as="section" gap="4">
-        <Heading as="h2" id="using-this-pattern">
-          Using this pattern
-        </Heading>
-        <PatternsExample
-          example={example}
-          showCode={showCode}
-          onCodeToggle={onCodeToggle}
-          patternName={patternName}
-        />
-      </Stack>
+      {example ? (
+        <Stack as="section" gap="4">
+          <Heading as="h2" id="using-this-pattern">
+            Using this pattern
+          </Heading>
+          <PatternsExample
+            example={example}
+            showCode={showCode}
+            onCodeToggle={onCodeToggle}
+            patternName={patternName}
+          />
+        </Stack>
+      ) : null}
       <Stack as="section" gap="4" className={styles.UsefulToKnow}>
         <Heading as="h3" className={styles.UsefulHeading} id="useful-to-know">
           Useful to know
