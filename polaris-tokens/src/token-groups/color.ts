@@ -5,6 +5,7 @@ export type ColorBackgroundAlias =
   | 'bg'
   | 'bg-active'
   | 'bg-app'
+  | 'bg-app-active'
   | 'bg-app-hover'
   | 'bg-app-selected'
   | 'bg-caution'
@@ -197,6 +198,14 @@ export const color: {
     value: colors.gray[300],
     description: '',
   },
+  'color-bg-app': {
+    value: colors.gray[200],
+    description: '',
+  },
+  'color-bg-app-active': {
+    value: colors.gray[400],
+    description: '',
+  },
   'color-bg-app-hover': {
     value: colors.gray[300],
     description: '',
@@ -211,10 +220,6 @@ export const color: {
   },
   'color-bg-subdued-hover': {
     value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-app': {
-    value: colors.gray[200],
     description: '',
   },
   'color-bg-inset': {
