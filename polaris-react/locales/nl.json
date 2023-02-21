@@ -174,7 +174,7 @@
       "showing": "Weergave van {itemsCount} {resource}",
       "loading": "{resource} aan het laden",
       "selected": "{selectedItemsCount} geselecteerd",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in je winkel zijn geselecteerd.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in je winkel zijn geselecteerd",
       "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in je winkel",
       "emptySearchResultTitle": "Geen {resourceNamePlural} gevonden",
       "emptySearchResultDescription": "Probeer de filters of zoekterm te wijzigen",
@@ -194,7 +194,7 @@
         "warningMessage": "Om een betere gebruikerservaring te bieden, zouden er maximaal {maxPromotedActions} gepromote acties moeten zijn."
       },
       "showingTotalCount": "{itemsCount} van {totalItemsCount} {resource} zichtbaar",
-      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd.",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd",
       "selectAllFilteredItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in dit filter."
     },
     "SkeletonPage": {
@@ -277,8 +277,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Artikel",
       "defaultItemPlural": "Artikelen",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} zijn geselecteerd.",
-      "selected": "{selectedItemsCount} geselecteerd.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} zijn geselecteerd",
+      "selected": "{selectedItemsCount} geselecteerd",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} deselecteren",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} selecteren",
       "a11yCheckboxDeselectAllMultiple": "Alle {itemsLength} {resourceNamePlural} deselecteren",
@@ -290,7 +290,7 @@
       "onboardingBadgeText": "Nieuw",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural} laden...",
       "selectAllLabel": "Alle {resourceNamePlural} selecteren",
-      "selected": "{selectedItemsCount} geselecteerd.",
+      "selected": "{selectedItemsCount} geselecteerd",
       "undo": "Ongedaan maken",
       "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} selecteren",
       "selectItem": "{resourceName} selecteren",
