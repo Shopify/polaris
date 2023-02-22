@@ -5,7 +5,7 @@ import {Grid, GridItem} from '../Grid';
 import {Stack} from '../Stack';
 import {Status} from '../../types';
 import styles from './PatternsPage.module.scss';
-import Preview from '../PatternThumbnailPreview';
+import Preview from '../ThumbnailPreview';
 import {patterns} from '../../utils/various';
 import UpdateBanner from '../UpdateBanner';
 

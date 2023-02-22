@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import styles from './ComponentThumbnail.module.scss';
+import style from './ComponentThumbnail.module.scss';
+import ThumbnailPreview from '../ThumbnailPreview';
 import {slugify} from '../../utils/various';
 
 interface Props {
@@ -12,17 +12,11 @@ function ComponentThumbnail({title, group}: Props) {
     ? `/images/components/${group}/${slugify(title)}.png`
     : `/images/components/${slugify(title)}.png`;
   return (
-    <div className={styles.ComponentThumbnail}>
-      <Image
-        src={imageSrc}
-        className={styles.Image}
-        width={266}
-        height={140}
-        quality={70}
-        sizes="300px"
-        alt={`Screenshot of the ${title} component`}
-      />
-    </div>
+    <ThumbnailPreview
+      src={imageSrc}
+      className={style.ComponentThumbnail}
+      alt={`Screenshot of the ${title} component`}
+    />
   );
 }
 
