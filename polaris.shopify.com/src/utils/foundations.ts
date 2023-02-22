@@ -15,7 +15,7 @@ export const getStaticPropsForFoundations = (category: string) => {
     );
     const markdown = fs.readFileSync(markdownPath, 'utf-8');
     const {
-      frontMatter: {title, description, status},
+      frontMatter: {title, description, status, noIndex},
     }: MarkdownFile = parseMarkdown(markdown);
 
     const globPath = [
@@ -75,6 +75,8 @@ export const getStaticPropsForFoundations = (category: string) => {
         title: title || uppercaseFirst(category),
         description: description || '',
         items,
+        // Cooerce `undefined` / `null` to `false`
+        noIndex: noIndex || false,
       },
     };
   };

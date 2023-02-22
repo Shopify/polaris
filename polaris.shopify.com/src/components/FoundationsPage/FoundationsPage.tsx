@@ -12,6 +12,7 @@ export interface FoundationsProps {
   status?: Status;
   description: string;
   items: Item[];
+  noIndex?: boolean;
 }
 
 interface Item extends GridItemProps {
@@ -24,6 +25,7 @@ function FoundationsPage({
   description,
   items,
   status,
+  noIndex,
 }: FoundationsProps) {
   const typedStatus: Status | undefined = status
     ? {
@@ -33,7 +35,7 @@ function FoundationsPage({
     : undefined;
   return (
     <div className={styles.FoundationsPage}>
-      <PageMeta description={description} />
+      <PageMeta description={description} noIndex={noIndex} />
 
       <Page>
         <Longform>
