@@ -1,7 +1,7 @@
 ---
 title: Card
 description: Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
-category: Layout and structure
+category: Deprecated
 keywords:
   - layout
   - container
@@ -20,6 +20,11 @@ keywords:
   - subdued card for secondary content
   - callout
   - call out
+status:
+  value: Deprecated
+  message: >-
+    Card was built prior to layout primitives like box, inline, and alpha stack.
+    The new layout primitives can be used in combination to achieve similar results to card, or the existing legacy card.
 examples:
   - fileName: card-default.tsx
     title: Default
