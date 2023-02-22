@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {Subsection} from '../Subsection';
 
 describe('<Card.Subsection />', () => {

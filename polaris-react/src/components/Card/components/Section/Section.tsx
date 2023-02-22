@@ -19,6 +19,7 @@ export interface CardSectionProps {
   actions?: ComplexAction[];
 }
 
+/** @deprecated Use LegacyCard or AlphaCard instead. */
 export function Section({
   children,
   title,
@@ -28,6 +29,13 @@ export function Section({
   actions,
   hideOnPrint,
 }: CardSectionProps) {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Card /> is deprecated. This component will be removed in a future major version of Polaris. Use <LegacyCard /> or <AlphaCard /> instead.',
+    );
+  }
+
   const className = classNames(
     styles.Section,
     flush && styles['Section-flush'],

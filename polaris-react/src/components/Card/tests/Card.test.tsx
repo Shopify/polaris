@@ -7,6 +7,7 @@ import {Popover} from '../../Popover';
 import {ActionList} from '../../ActionList';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Card} from '../Card';
+// eslint-disable-next-line import/no-deprecated
 import {Section} from '../components';
 
 describe('<Card />', () => {
@@ -243,6 +244,7 @@ describe('<Card />', () => {
       </Card>,
     );
 
+    // eslint-disable-next-line import/no-deprecated
     expect(card.find(Section)).toContainReactText('Some card content.');
   });
 });

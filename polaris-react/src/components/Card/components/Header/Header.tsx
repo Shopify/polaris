@@ -13,7 +13,15 @@ export interface CardHeaderProps {
   children?: React.ReactNode;
 }
 
+/** @deprecated Use LegacyCard or AlphaCard instead. */
 export function Header({children, title, actions}: CardHeaderProps) {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Card /> is deprecated. This component will be removed in a future major version of Polaris. Use <LegacyCard /> or <AlphaCard /> instead.',
+    );
+  }
+
   const actionMarkup = actions ? (
     <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
   ) : null;
