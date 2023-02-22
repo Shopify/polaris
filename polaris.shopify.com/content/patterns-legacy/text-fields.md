@@ -2,6 +2,7 @@
 title: Text fields
 description: Text fields combine the field label (the title) and the input area. Inputs can vary from typed text to URLs to date pickers.
 icon: FormsMajor
+noIndex: true
 status:
   value: Deprecated
   message: This pattern is no longer supported.
