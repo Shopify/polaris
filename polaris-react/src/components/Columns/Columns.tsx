@@ -15,7 +15,7 @@ import type {ResponsiveProp} from '../../utilities/css';
 import styles from './Columns.scss';
 
 type ColumnWidths = 'oneThird' | 'oneHalf' | 'twoThirds';
-type ColumnTypes = number | string | ColumnWidths[];
+type ColumnsType = number | string | ColumnWidths[];
 
 type Columns =
   | ColumnTypes
