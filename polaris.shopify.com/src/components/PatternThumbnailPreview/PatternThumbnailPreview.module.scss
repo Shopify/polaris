@@ -18,15 +18,3 @@
     height: 100%;
   }
 }
-
-.PreviewInner {
-  flex-grow: 1;
-  aspect-ratio: inherit;
-  border: 1.4px var(--p-border-subdued);
-  border-radius: var(--border-radius-600);
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  overflow: hidden;
-  background: var(--p-surface-subdued);
-  box-shadow: 0px 0px 3px 0px rgba(31, 33, 36, 0.24);
-}

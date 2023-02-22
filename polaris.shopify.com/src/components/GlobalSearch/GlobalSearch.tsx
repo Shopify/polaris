@@ -13,7 +13,7 @@ import TokenList from '../TokenList';
 import {Dialog} from '@headlessui/react';
 import {KeyboardEventHandler} from 'react';
 import FoundationsThumbnail from '../FoundationsThumbnail';
-import PatternThumbnail from '../PatternThumbnail';
+import PatternThumbnailPreview from '../PatternThumbnailPreview';
 import ComponentThumbnail from '../ComponentThumbnail';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
@@ -283,7 +283,10 @@ function SearchResults({
                           description={description}
                           title={title}
                           renderPreview={() => (
-                            <PatternThumbnail title={title} img={previewImg} />
+                            <PatternThumbnailPreview
+                              alt={title}
+                              src={previewImg}
+                            />
                           )}
                         />
                       </SearchContext.Provider>

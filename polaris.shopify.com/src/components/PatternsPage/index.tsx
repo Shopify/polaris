@@ -37,7 +37,7 @@ export const PatternsPage = () => (
               description={pattern.description ?? ''}
               url={pattern.url ?? ''}
               renderPreview={() => (
-                <Preview renderInner={false} src={pattern.previewImg} />
+                <Preview alt={pattern.title} src={pattern.previewImg} />
               )}
               status={pattern.status as Status}
             />
