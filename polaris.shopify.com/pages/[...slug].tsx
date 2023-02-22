@@ -72,11 +72,12 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
     const {readme, frontMatter}: MarkdownFile = parseMarkdown(markdown);
-    const {title, description, status, noIndex} = frontMatter;
+    const {title, description, update, status, noIndex} = frontMatter;
     const props: Props = {
       title,
       status: status || null,
       description: description || null,
+      update: update || null,
       readme,
       noIndex: noIndex || false,
       editPageLinkPath,
