@@ -119,8 +119,8 @@ function SmallScreenIndexTableWithAllElementsExample() {
             {name}
           </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text variant="bodyMd" as="p" alignment="end">{orders}</Text>
+          <Text variant="bodyMd" as="p" alignment="end"></Text>{amountSpent}</Text>
         </div>
       </IndexTable.Row>
     ),
