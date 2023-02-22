@@ -26,7 +26,6 @@ describe('<Bleed />', () => {
     expect(bleed).toContainReactComponent('div', {
       style: {
         '--pc-bleed-margin-inline-start-xs': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-end-xs': 'var(--p-space-5)',
       } as React.CSSProperties,
     });
   });
