@@ -27,7 +27,7 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ### v10
 
-#### `v10-react-replace-text-component`
+#### `v10-react-replace-text-components`
 
 Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` with the new single `Text` component.
 
@@ -41,7 +41,7 @@ Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`
 <br />
 
 ```sh
-npx @shopify/polaris-migrator v10-react-replace-text-component <path>
+npx @shopify/polaris-migrator v10-react-replace-text-components <path>
 ```
 
 ### v9
