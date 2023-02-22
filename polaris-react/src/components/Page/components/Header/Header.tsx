@@ -121,15 +121,13 @@ export function Header({
     (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
     (!Array.isArray(breadcrumbs) && breadcrumbs)
   ) {
-    return (
+    breadcrumbMarkup = (
       <div className={styles.BreadcrumbWrapper}>
         <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </Box>
       </div>
     );
-  } else {
-    return null;
   }
 
   const paginationMarkup =
