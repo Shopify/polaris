@@ -293,9 +293,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$shadows-data/,
-        // Legacy custom properties
-        'hidden-when-printing',
-        'print-hidden',
       ],
     },
     {
@@ -389,6 +386,8 @@ const stylelintPolarisCoverageOptions = {
           'when-typography-condensed',
           'when-typography-not-condensed',
           'when-not-printing',
+          'hidden-when-printing',
+          'print-hidden',
         ].map(matchNameRegExp),
       },
     },
