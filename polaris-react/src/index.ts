@@ -97,12 +97,7 @@ export {CalloutCard} from './components/CalloutCard';
 export type {CalloutCardProps} from './components/CalloutCard';
 
 export {Card} from './components/Card';
-export type {
-  CardProps,
-  CardSectionProps,
-  CardHeaderProps,
-  CardSubsectionProps,
-} from './components/Card';
+export type {CardProps} from './components/Card';
 
 export {Checkbox} from './components/Checkbox';
 export type {CheckboxProps} from './components/Checkbox';
