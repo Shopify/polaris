@@ -269,6 +269,29 @@ describe('<Page />', () => {
     });
   });
 
+  describe('backAction', () => {
+    const backAction = {
+      content: 'Products',
+      onAction: noop,
+    };
+
+    it('renders a <Header /> when defined', () => {
+      const page = mountWithApp(
+        <Page {...mockProps} backAction={backAction} />,
+      );
+      expect(page).toContainReactComponent(Header);
+    });
+
+    it('gets passed into the <Header />', () => {
+      const page = mountWithApp(
+        <Page {...mockProps} backAction={backAction} />,
+      );
+      expect(page).toContainReactComponent(Header, {
+        backAction,
+      });
+    });
+  });
+
   describe('divider', () => {
     it('renders border when divider is true and header props exist', () => {
       const wrapper = mountWithApp(<Page {...mockProps} divider />);
