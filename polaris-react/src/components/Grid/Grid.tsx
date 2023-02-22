@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 
+// eslint-disable-next-line import/no-deprecated
 import {Cell} from './components';
 import styles from './Grid.scss';
 
@@ -28,6 +29,7 @@ export interface GridProps {
 }
 /** @deprecated Use `Columns` instead or a combination of layout primitives (`Columns`, `Inline`, and `AlphaStack`) */
 export const Grid: React.FunctionComponent<GridProps> & {
+  // eslint-disable-next-line import/no-deprecated
   Cell: typeof Cell;
 } = function Grid({gap, areas, children, columns}: GridProps) {
   const style = {
@@ -69,4 +71,5 @@ export function formatAreas(areas?: string[]) {
   return `'${areas?.join(`' '`)}'`;
 }
 
+// eslint-disable-next-line import/no-deprecated
 Grid.Cell = Cell;
