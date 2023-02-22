@@ -14,13 +14,13 @@ import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
-type ColumnWidths = 'oneThird' | 'oneHalf' | 'twoThirds';
-type ColumnsType = number | string | ColumnWidths[];
+type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
+type ColumnsType = number | string | ColumnsAlias[];
 
 type Columns =
-  | ColumnTypes
+  | ColumnsType
   | {
-      [Breakpoint in BreakpointsAlias]?: ColumnTypes;
+      [Breakpoint in BreakpointsAlias]?: ColumnsType;
     };
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
@@ -77,7 +77,7 @@ function formatColumns(columns?: Columns): ResponsiveValue {
   return getColumnValue(columns);
 }
 
-function getColumnValue(columns?: ColumnTypes) {
+function getColumnValue(columns?: ColumnsType) {
   if (!columns) return undefined;
 
   if (typeof columns === 'string') return columns;
