@@ -61,4 +61,4 @@ If you use the date picker within a [popover component](/components/overlays/pop
 
 ## Related patterns
 
-- [Date Picking](/patterns/date-picking)
+- [Date picking](/patterns/date-picking)
