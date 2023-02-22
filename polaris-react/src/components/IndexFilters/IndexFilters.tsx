@@ -19,8 +19,14 @@ import {
   SearchFilterButton,
   UpdateButtons,
 } from './components';
-import type {IndexFiltersUpdateAction, SortButtonChoice} from './types';
+import type {
+  IndexFiltersPrimaryAction,
+  IndexFiltersCancelAction,
+  SortButtonChoice,
+} from './types';
 import styles from './IndexFilters.scss';
+
+const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
 
 type ExecutedCallback = (name: string) => Promise<boolean>;
 
@@ -37,26 +43,14 @@ export interface IndexFiltersProps
   onSortChangeKey?: (value: string) => void;
   /** Optional callback when using saved views and changing the sort direction */
   onSortChangeDirection?: (value: string) => void;
-  /** Optional callback invoked when a merchant updates a view based upon the filters and search string */
-  onUpdateIndexFilters?: ExecutedCallback;
-  /** Optional callback invoked when a merchant cancels the current filters and search string */
-  onCancelIndexFilters?: () => void;
-  /** Optional callback invoked when a merchant saves a view based upon the filters and search string */
-  onSaveAsIndexFilters?: ExecutedCallback;
+  /** The primary action to display  */
+  primaryAction?: IndexFiltersPrimaryAction;
+  /** The cancel action to display */
+  cancelAction: IndexFiltersCancelAction;
   /** Optional callback invoked when a merchant begins to edit a view */
   onStartEditing?: () => void;
   /** Whether to disable the Sort button */
   disableSort?: DisabledInfo;
-  /** Whether to disable the Update/Save as button */
-  updateButtonDisabled?: boolean;
-  /** Whether the Update button should be in a loading state */
-  updateButtonLoading?: boolean;
-  /** The current state of the Update button */
-  updateButtonState?: IndexFiltersUpdateAction;
-  /** If true, will hide the update buttons */
-  shouldHideUpdateButtons?: boolean;
-  /** The array of current view names. Used for validation in the Save new view modal */
-  viewNames: string[];
   /** The current mode of the IndexFilters component. Used to determine which view to show */
   mode: IndexFiltersMode;
   /** Callback to set the mode of the IndexFilters component */
@@ -67,6 +61,10 @@ export interface IndexFiltersProps
   disableTabs?: boolean;
   /** If the consumer of this component is the Shopify mobile app in-app browser */
   isMobileClient?: boolean;
+  /** Whether the index supports creating new views */
+  canCreateNewView?: boolean;
+  /** Callback invoked when a merchant creates a new view */
+  onCreateNewView: (name: string) => Promise<boolean>;
 }
 
 export function IndexFilters({
@@ -81,35 +79,33 @@ export function IndexFilters({
   queryValue = '',
   queryPlaceholder,
   disableQueryField,
+  primaryAction,
+  cancelAction,
   filters,
   appliedFilters,
   onClearAll,
   onQueryChange,
   onQueryFocus,
   onQueryClear,
-  onUpdateIndexFilters,
-  onCancelIndexFilters,
-  onSaveAsIndexFilters,
   onStartEditing,
   disableFiltering,
   disableSort,
-  updateButtonDisabled,
-  updateButtonLoading,
-  updateButtonState,
-  shouldHideUpdateButtons,
-  viewNames,
   loading,
   mode,
   setMode,
   disableStickyMode,
   disableTabs,
   isMobileClient = false,
+  canCreateNewView = true,
+  onCreateNewView,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
 
   const {intersectionRef, measurerRef, indexFilteringHeight, isSticky} =
     useIsSticky(mode, Boolean(disableStickyMode), isMobileClient);
+
+  const viewNames = tabs.map(({content}) => content);
 
   const handleChangeSortButton = useCallback(
     (value: string[]) => {
@@ -140,12 +136,27 @@ export function IndexFilters({
       [action, afterEffect],
     );
 
-  const handleUpdate = useExecutedCallback(onUpdateIndexFilters);
-  const handleSaveAs = useExecutedCallback(onSaveAsIndexFilters);
-  const handleCancel = useCallback(() => {
-    onCancelIndexFilters?.();
+  const onExecutedPrimaryAction = useExecutedCallback(primaryAction?.onAction);
+  const onExecutedCancelAction = useCallback(() => {
+    cancelAction.onAction?.();
     setMode(IndexFiltersMode.Default);
-  }, [onCancelIndexFilters, setMode]);
+  }, [cancelAction, setMode]);
+
+  const enhancedPrimaryAction = useMemo(() => {
+    return primaryAction
+      ? {
+          ...primaryAction,
+          onAction: onExecutedPrimaryAction,
+        }
+      : undefined;
+  }, [onExecutedPrimaryAction, primaryAction]);
+
+  const enhancedCancelAction = useMemo(() => {
+    return {
+      ...cancelAction,
+      onAction: onExecutedCancelAction,
+    };
+  }, [cancelAction, onExecutedCancelAction]);
 
   const beginEdit = useCallback(() => {
     setMode(IndexFiltersMode.Filtering);
@@ -155,14 +166,9 @@ export function IndexFilters({
   const updateButtonsMarkup = useMemo(
     () => (
       <UpdateButtons
-        onUpdate={handleUpdate}
-        onSaveAs={handleSaveAs}
-        onCancel={handleCancel}
-        updateButtonDisabled={updateButtonDisabled}
-        updateButtonLoading={updateButtonLoading}
-        updateButtonState={updateButtonState}
+        primaryAction={enhancedPrimaryAction}
+        cancelAction={enhancedCancelAction}
         viewNames={viewNames}
-        shouldHideUpdateButtons={shouldHideUpdateButtons}
         disabled={
           mode === IndexFiltersMode.Filtering ? disableFiltering : undefined
         }
@@ -170,14 +176,9 @@ export function IndexFilters({
     ),
     [
       disableFiltering,
-      handleCancel,
-      handleSaveAs,
-      handleUpdate,
+      enhancedPrimaryAction,
+      enhancedCancelAction,
       mode,
-      shouldHideUpdateButtons,
-      updateButtonDisabled,
-      updateButtonLoading,
-      updateButtonState,
       viewNames,
     ],
   );
@@ -207,6 +208,8 @@ export function IndexFilters({
     disableSort?.tooltipMessage,
   ]);
 
+  const isActionLoading = primaryAction?.loading || cancelAction?.loading;
+
   const topContent = useMemo(() => {
     function setStateToEditingColumns() {
       beginEdit();
@@ -224,7 +227,7 @@ export function IndexFilters({
       'Polaris.IndexFilters.searchFilterAccessibilityLabel',
     );
 
-    const isLoading = loading || updateButtonLoading;
+    const isLoading = loading || isActionLoading;
 
     switch (mode) {
       case IndexFiltersMode.Default:
@@ -254,6 +257,8 @@ export function IndexFilters({
                     mode !== IndexFiltersMode.Default || disableTabs,
                   )}
                   onSetStateToEditingColumns={setStateToEditingColumns}
+                  showNewTab={canCreateNewView}
+                  onSaveNewViewModal={onCreateNewView}
                 />
               </div>
               {isLoading && mdDown && (
@@ -293,7 +298,6 @@ export function IndexFilters({
     loading,
     disableTabs,
     tabs,
-    updateButtonLoading,
     disableFiltering?.isDisabled,
     disableFiltering?.tooltipMessage,
     sortMarkup,
@@ -301,10 +305,13 @@ export function IndexFilters({
     onSelect,
     selected,
     updateButtonsMarkup,
+    isActionLoading,
+    canCreateNewView,
+    onCreateNewView,
   ]);
 
   function onPressEscape() {
-    onCancelIndexFilters?.();
+    cancelAction?.onAction();
     setMode(IndexFiltersMode.Default);
   }
 
@@ -314,6 +321,11 @@ export function IndexFilters({
     }
 
     if (event.key === 'f') {
+      const tag = document?.activeElement?.tagName;
+
+      if (tag && DEFAULT_IGNORED_TAGS.includes(tag)) {
+        return;
+      }
       onPressF();
     }
   }
@@ -358,7 +370,7 @@ export function IndexFilters({
               onClearAll={onClearAll}
               disableFiltering={disableFiltering}
               disableQueryField={disableQueryField}
-              loading={loading || updateButtonLoading}
+              loading={loading || isActionLoading}
               focused
             >
               <Inline gap="3" align="start" blockAlign="center">

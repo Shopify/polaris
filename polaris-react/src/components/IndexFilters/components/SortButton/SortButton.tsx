@@ -1,4 +1,5 @@
 import React, {useState, useMemo} from 'react';
+import {SortMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {Icon} from '../../../Icon';
@@ -8,7 +9,6 @@ import {ChoiceList} from '../../../ChoiceList';
 import type {ChoiceListProps} from '../../../ChoiceList';
 import {Tooltip} from '../../../Tooltip';
 import {Box} from '../../../Box';
-import {Sort} from '../../icons';
 import type {SortButtonChoice} from '../../types';
 import {FilterButton} from '../FilterButton';
 
@@ -106,7 +106,7 @@ export function SortButton({
         disabledTooltipMessage={disabledTooltipMessage}
       >
         <Stack spacing="none">
-          <Icon source={Sort} color="base" />
+          <Icon source={SortMinor} color="base" />
         </Stack>
       </FilterButton>
     </div>

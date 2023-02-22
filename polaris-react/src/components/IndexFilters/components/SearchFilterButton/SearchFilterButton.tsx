@@ -1,10 +1,10 @@
 import React from 'react';
+import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
 import {Stack} from '../../../Stack';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
-import {SearchFilter} from '../../icons';
 import {FilterButton} from '../FilterButton';
 
 export interface SearchFilterButtonProps {
@@ -31,7 +31,8 @@ export function SearchFilterButton({
       hasDoubleWidthIcon
     >
       <Stack spacing="none">
-        <Icon source={SearchFilter} color="base" />
+        <Icon source={SearchMinor} color="base" />
+        <Icon source={FilterMinor} color="base" />
       </Stack>
     </FilterButton>
   );

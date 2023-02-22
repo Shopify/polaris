@@ -1,15 +1,20 @@
 import type {Dispatch} from 'react';
 import React, {useReducer, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {ChoiceList} from '@shopify/polaris';
+import {
+  ChoiceList,
+  Text,
+  useIndexResourceState,
+  IndexTable,
+  IndexFilters,
+  Card,
+} from '@shopify/polaris';
 import type {AppliedFilterInterface} from '@shopify/polaris';
 
 import type {TabProps} from '../Tabs';
 import type {FiltersProps} from '../Filters';
 
-import {IndexFilters} from './IndexFilters';
 import type {IndexFiltersProps} from './IndexFilters';
-import {IndexFiltersUpdateAction} from './types';
 import {useSetIndexFiltersMode} from './hooks';
 
 export default {
@@ -23,7 +28,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof FilterPill>;
+} as ComponentMeta<typeof IndexFilters>;
 
 const UPDATE_PAYMENT = 'UPDATE_PAYMENT';
 const UPDATE_DATE = 'UPDATE_DATE';
@@ -439,123 +444,113 @@ export function Default() {
     setMode,
   } = useDefaultData();
 
-  const updateButtonState = IndexFiltersUpdateAction.Update;
+  console.log({searchTerm});
+
+  const primaryAction: IndexFiltersProps['primaryAction'] =
+    selected === 0
+      ? {
+          type: 'save-as',
+          onAction: onHandleSaveAs,
+          disabled: false,
+          loading: false,
+        }
+      : {
+          type: 'save',
+          onAction: onHandleUpdate,
+          disabled: false,
+          loading: false,
+        };
+
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{orders}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
 
   return (
-    <>
+    <Card>
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
         queryValue={searchTerm}
-        queryPlaceholder=""
+        queryPlaceholder="Searching in all"
         onQueryChange={setSearchTerm}
+        onQueryClear={() => {}}
         onSortChange={setSortSelected}
-        onUpdateIndexFilters={onHandleUpdate}
-        onCancelIndexFilters={onHandleCancel}
-        onSaveAsIndexFilters={onHandleSaveAs}
+        primaryAction={primaryAction}
+        cancelAction={{
+          onAction: onHandleCancel,
+          disabled: false,
+          loading: false,
+        }}
         tabs={items}
         selected={selected}
         onSelect={setSelected}
-        // tabs={
-        //   <Tabs
-        //     items={items}
-        //     selected={selected}
-        //     onSelect={setSelected}
-        //     onSaveNewViewModal={handleSaveNewViewModal}
-        //     showNewTab
-        //     newViewAccessibilityLabel="New view"
-        //   />
-        // }
+        disableTabs={false}
+        canCreateNewView
+        onCreateNewView={handleSaveNewViewModal}
         filters={filters}
         appliedFilters={appliedFilters}
-        onClearAllFilters={onClearAllFilters}
-        updateButtonDisabled={false}
-        updateButtonLoading={false}
-        updateButtonState={updateButtonState}
-        viewNames={viewNames}
+        onClearAll={onClearAllFilters}
         mode={mode}
         setMode={setMode}
       />
-      <dl>
-        <dt>Sort Selected</dt>
-        <dd>{sortSelected}</dd>
-        <dt>Search term</dt>
-        <dd>{searchTerm}</dd>
-        <dt>All filters</dt>
-        <dd>{filters.map((filter) => filter.key).join(' / ')}</dd>
-        <dt>Applied filters</dt>
-        <dd>
-          {appliedFilters
-            .map((filter) => `${filter.key}: ${filter.label}`)
-            .join(' / ')}
-        </dd>
-      </dl>
-    </>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name', flush: true},
+          {title: 'Location', flush: true},
+          {title: 'Order count', flush: true},
+          {title: 'Amount spent', flush: true},
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
   );
 }
-
-// export const WithoutSort = () => {
-//   const {
-//     items,
-//     selected,
-//     setSelected,
-//     handleSaveNewViewModal,
-//     searchTerm,
-//     setSearchTerm,
-//     onHandleUpdate,
-//     onHandleCancel,
-//     onHandleSaveAs,
-//     filters,
-//     appliedFilters,
-//     viewNames,
-//     onClearAllFilters,
-//     mode,
-//     setMode,
-//   } = useDefaultData();
-
-//   const updateButtonState = IndexFiltersUpdateAction.Update;
-
-//   return (
-//     <>
-//       <IndexFilters
-//         queryValue={searchTerm}
-//         queryPlaceholder=""
-//         onQueryChange={setSearchTerm}
-//         onUpdateIndexFilters={onHandleUpdate}
-//         onCancelIndexFilters={onHandleCancel}
-//         onSaveAsIndexFilters={onHandleSaveAs}
-//         tabs={
-//           <Tabs
-//             items={items}
-//             selected={selected}
-//             onSelect={setSelected}
-//             onSaveNewViewModal={handleSaveNewViewModal}
-//             showNewTab
-//             newViewAccessibilityLabel="New view"
-//           />
-//         }
-//         filters={filters}
-//         appliedFilters={appliedFilters}
-//         onClearAllFilters={onClearAllFilters}
-//         updateButtonDisabled={false}
-//         updateButtonLoading={false}
-//         updateButtonState={updateButtonState}
-//         viewNames={viewNames}
-//         mode={mode}
-//         setMode={setMode}
-//       />
-//       <dl>
-//         <dt>Search term</dt>
-//         <dd>{searchTerm}</dd>
-//         <dt>All filters</dt>
-//         <dd>{filters.map((filter) => filter.key).join(' / ')}</dd>
-//         <dt>Applied filters</dt>
-//         <dd>
-//           {appliedFilters
-//             .map((filter) => `${filter.key}: ${filter.label}`)
-//             .join(' / ')}
-//         </dd>
-//       </dl>
-//     </>
-//   );
-// };

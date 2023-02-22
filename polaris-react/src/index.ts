@@ -206,6 +206,9 @@ export type {IconProps} from './components/Icon';
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
+export {IndexFilters} from './components/IndexFilters';
+export type {IndexFiltersProps} from './components/IndexFilters';
+
 export {IndexTable} from './components/IndexTable';
 export type {IndexTableProps} from './components/IndexTable';
 

@@ -11,33 +11,31 @@ import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {useIsTouchDevice} from '../../../../utilities/use-is-touch-device';
 import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
 import type {DisabledInfo} from '../../../DisabledTooltipWrapper';
-import {IndexFiltersUpdateAction} from '../../types';
+import type {
+  IndexFiltersPrimaryAction,
+  IndexFiltersCancelAction,
+} from '../../types';
 
 import {UpdateButton} from './components';
 
+interface UpdateIndexFiltersPrimaryAction
+  extends Omit<IndexFiltersPrimaryAction, 'onAction'> {
+  onAction: (value?: string) => Promise<void>;
+}
+
 export interface UpdateButtonsProps {
-  onCancel: () => void;
-  onUpdate: (value: string) => Promise<void>;
-  onSaveAs: (value: string) => Promise<void>;
-  updateButtonDisabled?: boolean;
-  updateButtonLoading?: boolean;
-  updateButtonState?: IndexFiltersUpdateAction;
+  primaryAction?: UpdateIndexFiltersPrimaryAction;
+  cancelAction: IndexFiltersCancelAction;
   viewNames: string[];
-  shouldHideUpdateButtons?: boolean;
   disabled?: DisabledInfo;
 }
 
 const MAX_VIEW_NAME_LENGTH = 40;
 
 export function UpdateButtons({
-  onCancel,
-  onUpdate,
-  onSaveAs,
-  updateButtonDisabled,
-  updateButtonLoading,
-  updateButtonState,
+  primaryAction,
+  cancelAction,
   viewNames,
-  shouldHideUpdateButtons,
   disabled,
 }: UpdateButtonsProps) {
   const i18n = useI18n();
@@ -53,11 +51,11 @@ export function UpdateButtons({
     }
   }, [savedViewModalOpen, isTouchDevice]);
 
-  async function handleClickUpdateButton() {
-    if (updateButtonState === IndexFiltersUpdateAction.SaveAs) {
+  async function handleClickSaveButton() {
+    if (primaryAction?.type === 'save-as') {
       handleOpenModal();
     } else {
-      await onUpdate('');
+      await primaryAction?.onAction('');
     }
   }
 
@@ -75,25 +73,25 @@ export function UpdateButtons({
 
   async function handlePrimaryAction() {
     if (isPrimaryActionDisabled) return;
-    await onSaveAs(savedViewName);
+    await primaryAction?.onAction(savedViewName);
     handleCloseModal();
   }
 
   const buttonText = useMemo(() => {
-    switch (updateButtonState) {
-      case IndexFiltersUpdateAction.Update:
+    switch (primaryAction?.type) {
+      case 'save':
         return i18n.translate('Polaris.IndexFilters.UpdateButtons.save');
-      case IndexFiltersUpdateAction.SaveAs:
+      case 'save-as':
       default:
         return i18n.translate('Polaris.IndexFilters.UpdateButtons.saveAs');
     }
-  }, [updateButtonState, i18n]);
+  }, [primaryAction?.type, i18n]);
 
-  const updateButton = (
+  const saveButton = (
     <DisabledTooltipWrapper disabled={disabled}>
       <UpdateButton
-        onClick={handleClickUpdateButton}
-        disabled={updateButtonDisabled || disabled?.isDisabled}
+        onClick={handleClickSaveButton}
+        disabled={primaryAction?.disabled || disabled?.isDisabled}
       >
         {buttonText}
       </UpdateButton>
@@ -106,27 +104,31 @@ export function UpdateButtons({
   const isPrimaryActionDisabled =
     hasSameNameError ||
     !savedViewName ||
-    updateButtonLoading ||
+    primaryAction?.loading ||
     savedViewName.length > MAX_VIEW_NAME_LENGTH;
 
   const cancelButtonMarkup = (
     <DisabledTooltipWrapper disabled={disabled}>
-      <UpdateButton plain onClick={onCancel} disabled={disabled?.isDisabled}>
+      <UpdateButton
+        plain
+        onClick={cancelAction.onAction}
+        disabled={disabled?.isDisabled}
+      >
         {i18n.translate('Polaris.IndexFilters.UpdateButtons.cancel')}
       </UpdateButton>
     </DisabledTooltipWrapper>
   );
 
-  if (shouldHideUpdateButtons) {
+  if (!primaryAction) {
     return cancelButtonMarkup;
   }
 
   return (
     <Inline align="start" blockAlign="center" gap="2">
       {cancelButtonMarkup}
-      {updateButtonState === IndexFiltersUpdateAction.SaveAs ? (
+      {primaryAction.type === 'save-as' ? (
         <Modal
-          activator={<Inline>{updateButton}</Inline>}
+          activator={<Inline>{saveButton}</Inline>}
           open={savedViewModalOpen}
           title={i18n.translate(
             'Polaris.IndexFilters.UpdateButtons.modal.title',
@@ -180,7 +182,7 @@ export function UpdateButtons({
           </Modal.Section>
         </Modal>
       ) : (
-        updateButton
+        saveButton
       )}
     </Inline>
   );
