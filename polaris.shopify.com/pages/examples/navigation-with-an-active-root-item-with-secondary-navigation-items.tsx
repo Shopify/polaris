@@ -11,30 +11,33 @@ function NavigationExample() {
           duplicateRootItem
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
             },
             {
-              url: '/admin/products',
+              url: '#',
               label: 'Products',
               icon: ProductsMinor,
               selected: true,
               subNavigationItems: [
                 {
-                  url: '/admin/products/collections',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
-                  url: '/admin/products/inventory',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Inventory',
                 },

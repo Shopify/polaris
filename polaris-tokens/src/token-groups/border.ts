@@ -1,6 +1,36 @@
-import type {TokenGroup} from '../types';
+import type {MetadataProperties} from '../types';
 
-export const border = {
+export type BorderRadiusScale =
+  | '05'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | 'full';
+
+export type BorderWidthScale = '1' | '2' | '3' | '4' | '5';
+
+type BorderAlias =
+  | 'base'
+  | 'dark'
+  | 'transparent'
+  | 'divider'
+  | 'divider-on-dark';
+
+export type BorderTokenName =
+  | `border-radius-${BorderRadiusScale}`
+  | `border-width-${BorderWidthScale}`
+  | `border-${BorderAlias}`;
+
+export type BorderTokenGroup = {
+  [TokenName in BorderTokenName]: string;
+};
+
+export const border: {
+  [TokenName in BorderTokenName]: MetadataProperties;
+} = {
   'border-radius-05': {
     value: '2px',
   },
@@ -56,21 +86,3 @@ export const border = {
     value: 'var(--p-border-width-1) solid var(--p-divider-dark)',
   },
 };
-
-export type BorderTokenGroup = TokenGroup<typeof border>;
-export type BorderTokenName = keyof BorderTokenGroup;
-
-export const borderRadiusScale = [
-  '05',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  'full',
-] as const;
-export type BorderRadiusScale = typeof borderRadiusScale[number];
-
-export const borderWidthScale = ['1', '2', '3', '4', '5'] as const;
-export type BorderWidthScale = typeof borderWidthScale[number];

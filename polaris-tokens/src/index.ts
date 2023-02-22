@@ -27,10 +27,10 @@ export type {
 export type {
   ColorTokenGroup,
   ColorTokenName,
-  ColorBackgroundTokenAlias,
-  ColorBorderTokenAlias,
-  ColorIconTokenAlias,
-  ColorTextTokenAlias,
+  ColorBackgroundAlias,
+  ColorBorderAlias,
+  ColorIconAlias,
+  ColorTextAlias,
 } from './token-groups/color';
 
 export type {

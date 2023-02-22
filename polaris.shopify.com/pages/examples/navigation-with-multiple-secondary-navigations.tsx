@@ -15,64 +15,68 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
               subNavigationItems: [
                 {
-                  url: '/admin/orders/collections',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
-                  url: '/admin/orders/inventory',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Inventory',
                 },
               ],
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Marketing',
               icon: MarketingMinor,
               badge: '15',
               subNavigationItems: [
                 {
-                  url: '/admin/analytics/collections',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Reports',
                 },
                 {
-                  url: '/admin/analytics/inventory',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Live view',
                 },
               ],
             },
             {
-              url: '/admin/products',
+              url: '#',
               label: 'Products',
               icon: ProductsMinor,
               selected: true,
               subNavigationItems: [
                 {
-                  url: '/?path=/story/all-components-navigation--navigation-with-multiple-secondary-navigations',
+                  url: '#',
+                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
-                  url: '/admin/products/inventory',
+                  url: '#',
                   disabled: false,
-                  selected: true,
                   label: 'Inventory',
                 },
               ],

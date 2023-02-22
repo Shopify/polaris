@@ -1,6 +1,172 @@
-import type {TokenGroup} from '../types';
+import type {MetadataProperties} from '../types';
 
-export const colors = {
+export type ColorsBackgroundTokenAlias =
+  | 'background'
+  | 'background-hovered'
+  | 'background-pressed'
+  | 'background-selected';
+
+export type ColorsActionTokenAlias =
+  | 'action-critical'
+  | 'action-critical-depressed'
+  | 'action-critical-disabled'
+  | 'action-critical-hovered'
+  | 'action-critical-pressed'
+  | 'action-primary'
+  | 'action-primary-depressed'
+  | 'action-primary-disabled'
+  | 'action-primary-hovered'
+  | 'action-primary-pressed'
+  | 'action-secondary'
+  | 'action-secondary-depressed'
+  | 'action-secondary-disabled'
+  | 'action-secondary-hovered'
+  | 'action-secondary-hovered-dark'
+  | 'action-secondary-pressed'
+  | 'action-secondary-pressed-dark';
+
+export type ColorsSurfaceTokenAlias =
+  | 'surface'
+  | 'surface-attention'
+  | 'surface-critical'
+  | 'surface-critical-subdued'
+  | 'surface-critical-subdued-depressed'
+  | 'surface-critical-subdued-hovered'
+  | 'surface-critical-subdued-pressed'
+  | 'surface-dark'
+  | 'surface-depressed'
+  | 'surface-disabled'
+  | 'surface-highlight'
+  | 'surface-highlight-subdued'
+  | 'surface-highlight-subdued-hovered'
+  | 'surface-highlight-subdued-pressed'
+  | 'surface-hovered'
+  | 'surface-hovered-dark'
+  | 'surface-neutral'
+  | 'surface-neutral-disabled'
+  | 'surface-neutral-hovered'
+  | 'surface-neutral-pressed'
+  | 'surface-neutral-subdued'
+  | 'surface-neutral-subdued-dark'
+  | 'surface-pressed'
+  | 'surface-pressed-dark'
+  | 'surface-primary-selected'
+  | 'surface-primary-selected-hovered'
+  | 'surface-primary-selected-pressed'
+  | 'surface-search-field'
+  | 'surface-search-field-dark'
+  | 'surface-selected'
+  | 'surface-selected-hovered'
+  | 'surface-selected-pressed'
+  | 'surface-subdued'
+  | 'surface-success'
+  | 'surface-success-subdued'
+  | 'surface-success-subdued-hovered'
+  | 'surface-success-subdued-pressed'
+  | 'surface-warning'
+  | 'surface-warning-subdued'
+  | 'surface-warning-subdued-hovered'
+  | 'surface-warning-subdued-pressed';
+
+export type ColorsBackdropTokenAlias = 'backdrop';
+
+export type ColorsOverlayTokenAlias = 'overlay';
+
+export type ColorsBorderTokenAlias =
+  | 'border'
+  | 'border-on-dark'
+  | 'border-neutral-subdued'
+  | 'border-hovered'
+  | 'border-disabled'
+  | 'border-subdued'
+  | 'border-depressed'
+  | 'border-shadow'
+  | 'border-shadow-subdued'
+  | 'border-critical'
+  | 'border-critical-subdued'
+  | 'border-critical-disabled'
+  | 'border-warning'
+  | 'border-warning-subdued'
+  | 'border-highlight'
+  | 'border-highlight-subdued'
+  | 'border-success'
+  | 'border-success-subdued';
+
+export type ColorsTokenName =
+  | ColorsBackgroundTokenAlias
+  | ColorsActionTokenAlias
+  | ColorsSurfaceTokenAlias
+  | ColorsBackdropTokenAlias
+  | ColorsOverlayTokenAlias
+  | ColorsBorderTokenAlias
+  | 'decorative-five-icon'
+  | 'decorative-five-surface'
+  | 'decorative-five-text'
+  | 'decorative-four-icon'
+  | 'decorative-four-surface'
+  | 'decorative-four-text'
+  | 'decorative-one-icon'
+  | 'decorative-one-surface'
+  | 'decorative-one-text'
+  | 'decorative-three-icon'
+  | 'decorative-three-surface'
+  | 'decorative-three-text'
+  | 'decorative-two-icon'
+  | 'decorative-two-surface'
+  | 'decorative-two-text'
+  | 'divider-dark'
+  | 'divider'
+  | 'focused'
+  | 'hint-from-direct-light'
+  | 'icon-attention'
+  | 'icon-critical'
+  | 'icon-disabled'
+  | 'icon-highlight'
+  | 'icon-hovered'
+  | 'icon-on-critical'
+  | 'icon-on-dark'
+  | 'icon-on-interactive'
+  | 'icon-on-primary'
+  | 'icon-pressed'
+  | 'icon-subdued'
+  | 'icon-success'
+  | 'icon-warning'
+  | 'icon'
+  | 'interactive-critical-disabled'
+  | 'interactive-critical-hovered'
+  | 'interactive-critical-pressed'
+  | 'interactive-critical'
+  | 'interactive-disabled'
+  | 'interactive-hovered'
+  | 'interactive-on-dark'
+  | 'interactive-pressed-on-dark'
+  | 'interactive-pressed'
+  | 'interactive'
+  | 'shadow-color-picker-dragger'
+  | 'shadow-color-picker'
+  | 'text'
+  | 'text-critical'
+  | 'text-disabled'
+  | 'text-highlight'
+  | 'text-on-critical'
+  | 'text-on-dark'
+  | 'text-on-interactive'
+  | 'text-on-primary'
+  | 'text-primary-hovered'
+  | 'text-primary-pressed'
+  | 'text-primary'
+  | 'text-subdued-on-dark'
+  | 'text-subdued'
+  | 'text-success'
+  | 'text-warning';
+
+export type ColorsTokenGroup = {
+  [TokenName in ColorsTokenName]: string;
+};
+
+export const colors: {
+  [TokenName in ColorsTokenName]: MetadataProperties;
+} = {
   background: {
     value: 'rgba(246, 246, 247, 1)',
     description:
@@ -647,109 +813,3 @@ export const colors = {
       'For use as a decorative text color that is applied on a decorative surface.',
   },
 };
-
-export type ColorsTokenGroup = TokenGroup<typeof colors>;
-export type ColorsTokenName = keyof ColorsTokenGroup;
-
-export const colorsBackgroundTokenAlias = [
-  'background',
-  'background-hovered',
-  'background-pressed',
-  'background-selected',
-] as const;
-export type ColorsBackgroundTokenAlias =
-  typeof colorsBackgroundTokenAlias[number];
-
-export const colorsActionTokenAlias = [
-  'action-critical',
-  'action-critical-depressed',
-  'action-critical-disabled',
-  'action-critical-hovered',
-  'action-critical-pressed',
-  'action-primary',
-  'action-primary-depressed',
-  'action-primary-disabled',
-  'action-primary-hovered',
-  'action-primary-pressed',
-  'action-secondary',
-  'action-secondary-depressed',
-  'action-secondary-disabled',
-  'action-secondary-hovered',
-  'action-secondary-hovered-dark',
-  'action-secondary-pressed',
-  'action-secondary-pressed-dark',
-] as const;
-export type ColorsActionTokenAlias = typeof colorsActionTokenAlias[number];
-
-export const colorsSurfaceTokenAlias = [
-  'surface',
-  'surface-attention',
-  'surface-critical',
-  'surface-critical-subdued',
-  'surface-critical-subdued-depressed',
-  'surface-critical-subdued-hovered',
-  'surface-critical-subdued-pressed',
-  'surface-dark',
-  'surface-depressed',
-  'surface-disabled',
-  'surface-highlight',
-  'surface-highlight-subdued',
-  'surface-highlight-subdued-hovered',
-  'surface-highlight-subdued-pressed',
-  'surface-hovered',
-  'surface-hovered-dark',
-  'surface-neutral',
-  'surface-neutral-disabled',
-  'surface-neutral-hovered',
-  'surface-neutral-pressed',
-  'surface-neutral-subdued',
-  'surface-neutral-subdued-dark',
-  'surface-pressed',
-  'surface-pressed-dark',
-  'surface-primary-selected',
-  'surface-primary-selected-hovered',
-  'surface-primary-selected-pressed',
-  'surface-search-field',
-  'surface-search-field-dark',
-  'surface-selected',
-  'surface-selected-hovered',
-  'surface-selected-pressed',
-  'surface-subdued',
-  'surface-success',
-  'surface-success-subdued',
-  'surface-success-subdued-hovered',
-  'surface-success-subdued-pressed',
-  'surface-warning',
-  'surface-warning-subdued',
-  'surface-warning-subdued-hovered',
-  'surface-warning-subdued-pressed',
-] as const;
-export type ColorsSurfaceTokenAlias = typeof colorsSurfaceTokenAlias[number];
-
-export const colorsBackdropTokenAlias = ['backdrop'] as const;
-export type ColorsBackdropTokenAlias = typeof colorsBackdropTokenAlias[number];
-
-export const colorsOverlayTokenAlias = ['overlay'] as const;
-export type ColorsOverlayTokenAlias = typeof colorsOverlayTokenAlias[number];
-
-export const colorsBorderTokenAlias = [
-  'border',
-  'border-on-dark',
-  'border-neutral-subdued',
-  'border-hovered',
-  'border-disabled',
-  'border-subdued',
-  'border-depressed',
-  'border-shadow',
-  'border-shadow-subdued',
-  'border-critical',
-  'border-critical-subdued',
-  'border-critical-disabled',
-  'border-warning',
-  'border-warning-subdued',
-  'border-highlight',
-  'border-highlight-subdued',
-  'border-success',
-  'border-success-subdued',
-] as const;
-export type ColorsBorderTokenAlias = typeof colorsBorderTokenAlias[number];

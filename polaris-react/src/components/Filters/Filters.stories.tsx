@@ -165,13 +165,13 @@ export function WithAResourceList() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -476,13 +476,13 @@ export function WithChildrenContent() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -603,13 +603,13 @@ export function Disabled() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -749,13 +749,13 @@ export function SomeDisabled() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -877,13 +877,13 @@ export function WithoutClearButton() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -1070,13 +1070,13 @@ export function WithHelpText() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -1266,13 +1266,13 @@ export function WithQueryFieldHidden() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
@@ -1462,13 +1462,13 @@ export function WithQueryFieldDisabled() {
           items={[
             {
               id: 341,
-              url: 'customers/341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: 'customers/256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },

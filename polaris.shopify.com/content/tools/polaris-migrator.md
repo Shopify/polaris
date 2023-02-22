@@ -25,7 +25,385 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ## Migrations
 
-### v11
+### v10
+
+#### `v10-react-replace-text-component`
+
+Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` with the new single `Text` component.
+
+```diff
+- <DisplayText size="medium">Display text</DisplayText>
+- <Heading>Heading</Heading>
++ <Text variant="headingXl" as="p">Display text</Text>
++ <Text variant="headingMd" as="h2">Heading</Text>
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v10-react-replace-text-component <path>
+```
+
+### v9
+
+For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-rules/use), all Sass related migrations (ex: `replace-sass-spacing`) accept a `namespace` flag to target a specific `<namespace>.<variable|function|mixin>`.
+
+```sh
+npx @shopify/polaris-migrator v9-<scss-migration> <path> --namespace="legacy-polaris-v8"
+```
+
+#### `v9-scss-replace-breakpoints`
+
+Replace legacy static breakpoint mixins with the new Polaris [media query variables](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md#media-query-variables).
+
+```diff
+- @include page-content-when-layout-not-stacked {}
++ @media #{$p-breakpoints-md-up} {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-breakpoints <path>
+```
+
+#### `v9-scss-replace-border`
+
+Replace usage of the legacy SCSS `border()`) function in `border` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
+- border: border();
++ border: var(--p-border-base);
+
+- border: border(divider);
++ border: var(--p-border-divider);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-border <path>
+```
+
+#### `v9-scss-replace-border-radius`
+
+Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+
+```diff
+- border-radius: border-radius();
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: border-radius(large);
++ border-radius: var(--p-border-radius-large);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-border-radius <path>
+```
+
+#### `v9-scss-replace-border-width`
+
+Replace usage of the legacy SCSS `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+
+```diff
+- border-width: border-width();
++ border-width: var(--p-border-width-1);
+
+- border-width: border-width(thick);
++ border-width: var(--p-border-width-2);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-border-width <path>
+```
+
+#### `v9-scss-replace-color`
+
+Replace the legacy SCSS `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
+
+```diff
+- color: color('ink');
+- background: color('white');
++ color: var(--p-text);
++ background: var(--p-surface);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-color <path>
+```
+
+#### `v9-scss-replace-duration`
+
+Replace the legacy SCSS `duration()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+
+```diff
+- transition-duration: legacy-polaris-v8.duration('slow');
++ transition-duration: var(--p-duration-300);
+
+- transition: opacity legacy-polaris-v8.duration('slow') linear;
++ transition: opacity var(--p-duration-300) linear;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-duration <path>
+```
+
+#### `v9-scss-replace-easing`
+
+Replace the legacy SCSS `easing()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+
+```diff
+- transition-timing-function: legacy-polaris-v8.easing('in');
++ transition-timing-function: var(--p-ease-in);
+
+- transition: opacity 300ms legacy-polaris-v8.easing('in');
++ transition: opacity 300ms var(--p-ease-in);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-easing <path>
+```
+
+#### `v9-scss-replace-font-family`
+
+Replace legacy SCSS `font-family()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+
+```diff
+- font-family: font-family(monospace);
++ font-family: var(--p-font-family-mono);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-font-family <path>
+```
+
+#### `v9-scss-replace-font-size`
+
+Replace legacy SCSS `font-size()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+
+```diff
+- font-size: font-size(input, base);
++ font-size: var(--p-font-size-200);;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-font-size <path>
+```
+
+#### `v9-scss-replace-line-height`
+
+Replace legacy SCSS `line-height()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+
+```diff
+- line-height: line-height(caption, base);
++ font-family: var(--p-font-line-height-2);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-line-height <path>
+```
+
+#### `v9-scss-replace-spacing`
+
+Replace the legacy SCSS `spacing()` function with the supported CSS custom property token equivalent (ex: `var(--p-space-4)`).
+
+```diff
+- padding: spacing();
+- margin: spacing(loose) spacing(tight);
++ padding: var(--p-space-4);
++ margin: var(--p-space-5) var(--p-space-2);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-spacing <path>
+```
+
+#### `v9-scss-replace-text-emphasis`
+
+Replace legacy static mixins with their corresponding declarations and CSS custom properties.
+
+```diff
+- @include text-emphasis-normal;
++ color: var(--p-text);
++ font-weight: var(--p-font-weight-regular);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-text-emphasis <path>
+```
+
+#### `v9-scss-replace-z-index`
+
+Replace the legacy SCSS `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
+
+Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-1` will be replaced with a css variable declaration.
+This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `z-index(modal, $fixed-element-stacking-order)`.
+
+```diff
+- .decl-1 {
+-   z-index: z-index(content);
+- }
+- .decl-2 {
+-   z-index: z-index(modal, $fixed-element-stacking-order)
+- }
++ decl-1 {
++   z-index: var(--p-z-1);
++ }
++ .decl-2 {
++   z-index: var(--p-z-11)
++ }
+```
+
+Invocations of `z-index` within an arithmetic expression will be appended with a comment for review and manual migration.
+Generally in these instances you'll want to wrap the suggested code change in a `calc` however this may defer on a case by case basis in your codebase.
+
+```diff
+.decl-3 {
++  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
++  /* z-index: var(--p-z-1) + 1 */
+  z-index: z-index(content) + 1
+}
+```
+
+Invocations of `z-index` with a custom sass map property, will also be appended with a comment for review and manual migration.
+
+```diff
+.decl-3 {
++  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
++  /* z-index: map.get($custom-sass-map, modal) */
+  z-index: z-index(modal, $custom-sass-map)
+}
+```
+
+In these cases you may also want to run `npx sass-migrator module <path> --migrate-deps --load-path <load-path>` to ensure that
+`map.get` is in scope\*\*.
+
+Be aware that this may also create additional code changes in your codebase, we recommend running this only if there are large number of instances of migrations from `z-index` to `map.get`. Otherwise it may be easier to add `use 'sass:map'` to the top of your `.scss` file manually.
+
+```sh
+npx @shopify/polaris-migrator v9-scss-replace-z-index <path>
+```
+
+#### `v9-styles-tokenize-font`
+
+Replace legacy static font values with Polaris custom properties for `font-size`, `font-weight`, and `line-height` declarations.
+
+```diff
+- font-size: 16px;
++ font-size: var(--p-font-size-200);
+
+- font-weight: 400;
++ font-weight: var(--p-font-weight-regular);
+
+- line-height: 20px;
++ font-family: var(--p-font-line-height-2);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-tokenize-font <path>
+```
+
+#### `v9-styles-tokenize-motion`
+
+Replace timings (`ms`, `s`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) and animation declarations (`animation`, `animation-duration`, `animation-delay`, and `animation-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+
+```diff
+- transition-duration: 100ms;
++ transition-duration: var(--p-duration-100);
+
+- transition-timing-function: linear;
++ transition-timing-function: var(--p-linear);
+
+- transition: opacity 100ms linear;
++ transition: opacity var(--p-duration-100) linear;
+
+- transition: opacity 100ms linear, left 100ms linear;
++ transition: opacity var(--p-duration-100) linear, left var(--p-duration-100) linear;
+
+- animation-duration: 100ms;
++ animation-duration: var(--p-duration-100);
+
+- animation-timing-function: linear;
++ animation-timing-function: var(--p-linear);
+
+- animation: 100ms linear fadeIn;
++ animation: var(--p-duration-100) linear fadeIn;
+
+- animation: 100ms linear slideIn, 100ms linear slideIn;
++ animation: var(--p-duration-100) linear slideIn, var(--p-duration-100) linear slideIn;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-tokenize-motion <path>
+```
+
+#### `v9-styles-tokenize-shape`
+
+Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
+- border: 1px solid transparent;
++ border: var(--p-border-width-1) solid transparent;
+
+- border-width: 0.0625rem;
++ border-width: var(--p-border-width-1);
+
+- border-radius: 4px;
++ border-radius: var(--p-border-radius-1);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-replace-border-declarations <path>
+```
+
+#### `v9-styles-tokenize-space`
+
+Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
+
+```diff
+- padding: 16px;
++ padding: var(--p-space-4);
+
+- margin: 1rem;
++ margin: var(--p-space-4);
+
+- gap: rem(16px);
++ gap: var(--p-space-4);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-tokenize-space <path>
+```
+
+### Generic migrations
 
 #### `styles-replace-custom-property`
 
@@ -75,10 +453,6 @@ export default {
 };
 ```
 
-<br />
-
-### v10
-
 #### `styles-insert-stylelint-disable`
 
 Insert stylelint disable comments for [stylelint-polaris](../stylelint-polaris/) >= v5 so that
@@ -93,23 +467,6 @@ padding: 1rem;
 
 ```sh
 npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
-```
-
-#### `react-replace-text-component`
-
-Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` with the new single `Text` component.
-
-```diff
-- <DisplayText size="medium">Display text</DisplayText>
-- <Heading>Heading</Heading>
-+ <Text variant="headingXl" as="p">Display text</Text>
-+ <Text variant="headingMd" as="h2">Heading</Text>
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator react-replace-text-component <path>
 ```
 
 #### `react-rename-component-prop`
@@ -127,365 +484,6 @@ A generic codemod to rename any component prop.
 
 ```sh
 npx @shopify/polaris-migrator react-rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
-```
-
-### v9
-
-For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-rules/use), all Sass related migrations (ex: `replace-sass-spacing`) accept a `namespace` flag to target a specific `<namespace>.<variable|function|mixin>`.
-
-```sh
-npx @shopify/polaris-migrator <scss-migration> <path> --namespace="legacy-polaris-v8"
-```
-
-### `scss-replace-breakpoints`
-
-Replace legacy static breakpoint mixins with the new Polaris [media query variables](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md#media-query-variables).
-
-```diff
-- @include page-content-when-layout-not-stacked {}
-+ @media #{$p-breakpoints-md-up} {}
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-breakpoints <path>
-```
-
-### `scss-replace-border`
-
-Replace usage of the legacy SCSS `border()`) function in `border` declarations with corresponding Polaris [border](https://polaris.shopify.com/tokens/border) token.
-
-```diff
-- border: border();
-+ border: var(--p-border-base);
-
-- border: border(divider);
-+ border: var(--p-border-divider);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-border <path>
-```
-
-### `scss-replace-border-radius`
-
-Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` declarations with corresponding Polaris [border](https://polaris.shopify.com/tokens/border) tokens.
-
-```diff
-- border-radius: border-radius();
-+ border-radius: var(--p-border-radius-1);
-
-- border-radius: border-radius(large);
-+ border-radius: var(--p-border-radius-large);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-border-radius <path>
-```
-
-### `scss-replace-border-width`
-
-Replace usage of the legacy SCSS `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [border](https://polaris.shopify.com/tokens/border) tokens.
-
-```diff
-- border-width: border-width();
-+ border-width: var(--p-border-width-1);
-
-- border-width: border-width(thick);
-+ border-width: var(--p-border-width-2);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-border-width <path>
-```
-
-### `scss-replace-color`
-
-Replace the legacy SCSS `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
-
-```diff
-- color: color('ink');
-- background: color('white');
-+ color: var(--p-text);
-+ background: var(--p-surface);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-color <path>
-```
-
-### `scss-replace-duration`
-
-Replace the legacy SCSS `duration()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
-
-```diff
-- transition-duration: legacy-polaris-v8.duration('slow');
-+ transition-duration: var(--p-duration-300);
-
-- transition: opacity legacy-polaris-v8.duration('slow') linear;
-+ transition: opacity var(--p-duration-300) linear;
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-duration <path>
-```
-
-### `scss-replace-easing`
-
-Replace the legacy SCSS `easing()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
-
-```diff
-- transition-timing-function: legacy-polaris-v8.easing('in');
-+ transition-timing-function: var(--p-ease-in);
-
-- transition: opacity 300ms legacy-polaris-v8.easing('in');
-+ transition: opacity 300ms var(--p-ease-in);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-easing <path>
-```
-
-### `scss-replace-font-family`
-
-Replace legacy SCSS `font-family()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
-
-```diff
-- font-family: font-family(monospace);
-+ font-family: var(--p-font-family-mono);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-font-family <path>
-```
-
-### `scss-replace-font-size`
-
-Replace legacy SCSS `font-size()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
-
-```diff
-- font-size: font-size(input, base);
-+ font-size: var(--p-font-size-200);;
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-font-size <path>
-```
-
-### `scss-replace-line-height`
-
-Replace legacy SCSS `line-height()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
-
-```diff
-- line-height: line-height(caption, base);
-+ font-family: var(--p-font-line-height-2);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-line-height <path>
-```
-
-### `scss-replace-spacing`
-
-Replace the legacy SCSS `spacing()` function with the supported CSS custom property token equivalent (ex: `var(--p-space-4)`).
-
-```diff
-- padding: spacing();
-- margin: spacing(loose) spacing(tight);
-+ padding: var(--p-space-4);
-+ margin: var(--p-space-5) var(--p-space-2);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-spacing <path>
-```
-
-### `scss-replace-text-emphasis`
-
-Replace legacy static mixins with their corresponding declarations and CSS custom properties.
-
-```diff
-- @include text-emphasis-normal;
-+ color: var(--p-text);
-+ font-weight: var(--p-font-weight-regular);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator scss-replace-text-emphasis <path>
-```
-
-### `scss-replace-z-index`
-
-Replace the legacy SCSS `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
-
-Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-1` will be replaced with a css variable declaration.
-This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `z-index(modal, $fixed-element-stacking-order)`.
-
-```diff
-- .decl-1 {
--   z-index: z-index(content);
-- }
-- .decl-2 {
--   z-index: z-index(modal, $fixed-element-stacking-order)
-- }
-+ decl-1 {
-+   z-index: var(--p-z-1);
-+ }
-+ .decl-2 {
-+   z-index: var(--p-z-11)
-+ }
-```
-
-Invocations of `z-index` within an arithmetic expression will be appended with a comment for review and manual migration.
-Generally in these instances you'll want to wrap the suggested code change in a `calc` however this may defer on a case by case basis in your codebase.
-
-```diff
-.decl-3 {
-+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-+  /* z-index: var(--p-z-1) + 1 */
-  z-index: z-index(content) + 1
-}
-```
-
-Invocations of `z-index` with a custom sass map property, will also be appended with a comment for review and manual migration.
-
-```diff
-.decl-3 {
-+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-+  /* z-index: map.get($custom-sass-map, modal) */
-  z-index: z-index(modal, $custom-sass-map)
-}
-```
-
-In these cases you may also want to run `npx sass-migrator module <path> --migrate-deps --load-path <load-path>` to ensure that
-`map.get` is in scope\*\*.
-
-Be aware that this may also create additional code changes in your codebase, we recommend running this only if there are large number of instances of migrations from `z-index` to `map.get`. Otherwise it may be easier to add `use 'sass:map'` to the top of your `.scss` file manually.
-
-```sh
-npx @shopify/polaris-migrator scss-replace-z-index <path>
-```
-
-### `styles-tokenize-font`
-
-Replace legacy static font values with Polaris custom properties for `font-size`, `font-weight`, and `line-height` declarations.
-
-```diff
-- font-size: 16px;
-+ font-size: var(--p-font-size-200);
-
-- font-weight: 400;
-+ font-weight: var(--p-font-weight-regular);
-
-- line-height: 20px;
-+ font-family: var(--p-font-line-height-2);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator styles-tokenize-font <path>
-```
-
-### `styles-tokenize-motion`
-
-Replace timings (`ms`, `s`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) and animation declarations (`animation`, `animation-duration`, `animation-delay`, and `animation-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
-
-```diff
-- transition-duration: 100ms;
-+ transition-duration: var(--p-duration-100);
-
-- transition-timing-function: linear;
-+ transition-timing-function: var(--p-linear);
-
-- transition: opacity 100ms linear;
-+ transition: opacity var(--p-duration-100) linear;
-
-- transition: opacity 100ms linear, left 100ms linear;
-+ transition: opacity var(--p-duration-100) linear, left var(--p-duration-100) linear;
-
-- animation-duration: 100ms;
-+ animation-duration: var(--p-duration-100);
-
-- animation-timing-function: linear;
-+ animation-timing-function: var(--p-linear);
-
-- animation: 100ms linear fadeIn;
-+ animation: var(--p-duration-100) linear fadeIn;
-
-- animation: 100ms linear slideIn, 100ms linear slideIn;
-+ animation: var(--p-duration-100) linear slideIn, var(--p-duration-100) linear slideIn;
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator styles-tokenize-motion <path>
-```
-
-### `styles-tokenize-shape`
-
-Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [border](https://polaris.shopify.com/tokens/border) token.
-
-```diff
-- border: 1px solid transparent;
-+ border: var(--p-border-width-1) solid transparent;
-
-- border-width: 0.0625rem;
-+ border-width: var(--p-border-width-1);
-
-- border-radius: 4px;
-+ border-radius: var(--p-border-radius-1);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator replace-border-declarations <path>
-```
-
-### `styles-tokenize-space`
-
-Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
-
-```diff
-- padding: 16px;
-+ padding: var(--p-space-4);
-
-- margin: 1rem;
-+ margin: var(--p-space-4);
-
-- gap: rem(16px);
-+ gap: var(--p-space-4);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator styles-tokenize-space <path>
 ```
 
 ## Creating Migrations
@@ -510,7 +508,7 @@ $ plop
   typescript-migration
 ```
 
-Next, provide the name of your migration. For example; `scss-replace-function`:
+Next, provide the name of your migration. For example; `v9-scss-replace-function`:
 
 ```sh
 ? [PLOP] Please choose a generator. sass-migration
@@ -521,12 +519,12 @@ The generator will create the following files in the `migrations` folder:
 
 ```
 migrations
-└── scss-replace-function
-    ├── scss-replace-function.ts
+└── v9-scss-replace-function
+    ├── v9-scss-replace-function.ts
     └── tests
-        ├── scss-replace-function.input.scss
-        ├── scss-replace-function.output.scss
-        └── scss-replace-function.test.ts
+        ├── v9-scss-replace-function.input.scss
+        ├── v9-scss-replace-function.output.scss
+        └── v9-scss-replace-function.test.ts
 ```
 
 #### The SCSS migration function
@@ -540,7 +538,7 @@ Continuing the example, here is what the migration may look like if our goal is 
 import {
   isSassFunction,
   StopWalkingFunctionNodes,
-  createSassMigrator,
+  createSassMigrator as v9ReplaceHelloWorld,
 } from '../../utilities/sass';
 import type {PolarisMigrator} from '../../utilities/sass';
 
@@ -571,7 +569,7 @@ const replaceHelloWorld: PolarisMigrator = (_, {methods}, context) => {
   };
 };
 
-export default createSassMigrator('replace-hello-world', replaceHelloWorld);
+export default v9ReplaceHelloWorld('replace-hello-world', replaceHelloWorld);
 ```
 
 A more complete example can be seen in [`styles-tokenize-space.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/styles-tokenize-space/styles-tokenize-space.ts).
@@ -580,9 +578,9 @@ A more complete example can be seen in [`styles-tokenize-space.ts`](https://gith
 
 The template will also generate starting test files you can use to test your migration. In your migrations `tests` folder, you can see 3 files:
 
-- `scss-replace-function.test.ts` – Runs the fixtures and sets up additional migration options
-- `scss-replace-function.input.scss` – The starting source input
-- `scss-replace-function.output.scss` – The expected output after migration
+- `v9-scss-replace-function.test.ts` – Runs the fixtures and sets up additional migration options
+- `v9-scss-replace-function.input.scss` – The starting source input
+- `v9-scss-replace-function.output.scss` – The expected output after migration
 
 The main test file will load the input/output fixtures to test your migration against. You can configure additional fixtures and test migration options (see the `replace-sass-spacing.test.ts` as an example).
 
@@ -591,7 +589,7 @@ The main test file will load the input/output fixtures to test your migration ag
 Run tests locally from workspace root by filtering to the migrations package:
 
 ```sh
-npx turbo run test --filter=polaris-migrator -- scss-replace-function
+npx turbo run test --filter=polaris-migrator -- v9-scss-replace-function
 ```
 
 ### Testing in another codebase
@@ -602,7 +600,7 @@ In your PR, you can add a comment with the text `/snapit` to create a new [snaps
 
 ```sh
 # example snapshot release
-npx @shopify/polaris-migrator@0.0.0-snapshot-release-20220919213536 scss-replace-function "./app/**/*.scss"
+npx @shopify/polaris-migrator@0.0.0-snapshot-release-20220919213536 v9-scss-replace-function "./app/**/*.scss"
 ```
 
 ### Linting and formatting migrations
