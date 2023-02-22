@@ -85,8 +85,6 @@ function getColumnValue(columns?: ColumnsType) {
           return 'minmax(0, 1fr)';
         case 'twoThirds':
           return 'minmax(0, 2fr)';
-        default:
-          return column;
       }
     })
     .join(' ');
