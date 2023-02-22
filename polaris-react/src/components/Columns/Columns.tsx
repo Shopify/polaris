@@ -1,8 +1,5 @@
 import React from 'react';
-import type {
-  BreakpointsAlias,
-  SpacingSpaceScale,
-} from '@shopify/polaris-tokens';
+import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
 import {
   getResponsiveProps,
@@ -16,19 +13,12 @@ import styles from './Columns.scss';
 
 type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];
-
-type Columns =
-  | ColumnsType
-  | {
-      [Breakpoint in BreakpointsAlias]?: ColumnsType;
-    };
-
+type Columns = ResponsiveProp<ColumnsType>;
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface ColumnsProps {
   children?: React.ReactNode;
   /** The number of columns to display. Accepts either a single value or an object of values for different screen sizes.
-   * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    * @example
    * columns={6}
    * columns={{xs: 1, sm: 1, md: 3, lg: 6, xl: 6}}
