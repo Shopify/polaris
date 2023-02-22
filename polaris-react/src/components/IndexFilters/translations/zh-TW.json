@@ -1,0 +1,57 @@
+{
+  "searchFilter": "搜尋及篩選{type}",
+  "sort": "排序搜尋結果",
+  "addView": "新增檢視畫面",
+  "newView": "自訂搜尋條件",
+  "searchFilterTooltip": "搜尋和篩選 (F)",
+  "searchFilterFallback": "搜尋及篩選結果",
+  "searchTypes": {
+    "PRODUCT": "商品",
+    "ORDER": "訂單",
+    "DRAFT_ORDER": "草擬訂單",
+    "ABANDONED_CHECKOUT": "未完成結帳作業",
+    "INVENTORY": "庫存",
+    "PURCHASE_ORDER": "採購單",
+    "PAYOUT": "支付款項",
+    "INVENTORY_TRANSFER": "庫存轉移",
+    "INVENTORY_MOVEMENT": "庫存轉移",
+    "COLLECTION": "商品系列",
+    "GIFT_CARD": "禮品卡",
+    "PRICE_RULE": "折扣"
+  },
+  "FilterPill": {
+    "clear": "清除"
+  },
+  "Filters": {
+    "addFilter": "新增篩選條件",
+    "clearFilters": "全部清除"
+  },
+  "SearchField": {
+    "placeholder": "在 {currentView} 搜尋",
+    "allPlaceholder": "搜尋所有{type}"
+  },
+  "SortButton": {
+    "ariaLabel": "排序搜尋結果",
+    "tooltip": "排序",
+    "title": "排序依據",
+    "sorting": {
+      "asc": "遞增",
+      "desc": "遞減",
+      "az": "由 A 到 Z",
+      "za": "由 Z 到 A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "取消",
+    "update": "更新",
+    "save": "儲存",
+    "saveAs": "儲存為",
+    "modal": {
+      "title": "將檢視畫面另存為",
+      "label": "名稱",
+      "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。",
+      "save": "儲存",
+      "cancel": "取消"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "searchFilter": "Hledejte a filtrujte {type}",
+  "sort": "Seřadit výsledky",
+  "addView": "Přidat nové zobrazení",
+  "newView": "Vlastní hledání",
+  "searchFilterTooltip": "Hledejte a filtrujte (F)",
+  "searchFilterFallback": "Výsledky hledání a filtrování",
+  "searchTypes": {
+    "PRODUCT": "produkty",
+    "ORDER": "objednávky",
+    "DRAFT_ORDER": "návrhy objednávek",
+    "ABANDONED_CHECKOUT": "opuštěné pokladny",
+    "INVENTORY": "skladové zásoby",
+    "PURCHASE_ORDER": "nákupní objednávky",
+    "PAYOUT": "výplaty",
+    "INVENTORY_TRANSFER": "převody skladových zásob",
+    "INVENTORY_MOVEMENT": "převody skladových zásob",
+    "COLLECTION": "kolekce",
+    "GIFT_CARD": "dárkové karty",
+    "PRICE_RULE": "slevy"
+  },
+  "FilterPill": {
+    "clear": "Vymazat"
+  },
+  "Filters": {
+    "addFilter": "Přidat filtr",
+    "clearFilters": "Vymazat vše"
+  },
+  "SearchField": {
+    "placeholder": "Hledejte v zobrazení {currentView}",
+    "allPlaceholder": "Prohledejte všechny {type}"
+  },
+  "SortButton": {
+    "ariaLabel": "Seřadit výsledky",
+    "tooltip": "Seřadit",
+    "title": "Seřadit podle",
+    "sorting": {
+      "asc": "Vzestupně",
+      "desc": "Sestupně",
+      "az": "A–Z",
+      "za": "Z–A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "Zrušit",
+    "update": "Aktualizovat",
+    "save": "Uložit",
+    "saveAs": "Uložit jako",
+    "modal": {
+      "title": "Uložení zobrazení jako",
+      "label": "Název",
+      "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název.",
+      "save": "Uložit",
+      "cancel": "Zrušit"
+    }
+  }
+}

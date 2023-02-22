@@ -1,0 +1,57 @@
+{
+  "searchFilter": "Hae ja suodata {type}",
+  "sort": "Lajittele tuloksesi",
+  "addView": "Lisää uusi näkymä",
+  "newView": "Räätälöity haku",
+  "searchFilterTooltip": "Hae ja suodata (F)",
+  "searchFilterFallback": "Hae ja suodata tuloksia",
+  "searchTypes": {
+    "PRODUCT": "tuotteet",
+    "ORDER": "tilaukset",
+    "DRAFT_ORDER": "tilausluonnokset",
+    "ABANDONED_CHECKOUT": "hylätyt kassavaiheet",
+    "INVENTORY": "varasto",
+    "PURCHASE_ORDER": "ostotilaukset",
+    "PAYOUT": "maksut",
+    "INVENTORY_TRANSFER": "varaston siirrot",
+    "INVENTORY_MOVEMENT": "varaston siirrot",
+    "COLLECTION": "kokoelmat",
+    "GIFT_CARD": "lahjakortit",
+    "PRICE_RULE": "alennukset"
+  },
+  "FilterPill": {
+    "clear": "Tyhjennä"
+  },
+  "Filters": {
+    "addFilter": "Lisää suodatin",
+    "clearFilters": "Tyhjennä kaikki"
+  },
+  "SearchField": {
+    "placeholder": "Haetaan: {currentView}",
+    "allPlaceholder": "Kaikki: {type}"
+  },
+  "SortButton": {
+    "ariaLabel": "Lajittele tulokset",
+    "tooltip": "Lajittele",
+    "title": "Lajitteluperuste",
+    "sorting": {
+      "asc": "Nouseva",
+      "desc": "Laskeva",
+      "az": "A–Ö",
+      "za": "Ö–A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "Peruuta",
+    "update": "Päivitä",
+    "save": "Tallenna",
+    "saveAs": "Tallenna nimellä",
+    "modal": {
+      "title": "Tallenna näkymä nimellä",
+      "label": "Nimi",
+      "sameName": "Tämän niminen näkymä on jo olemassa. Valitse toinen nimi.",
+      "save": "Tallenna",
+      "cancel": "Peruuta"
+    }
+  }
+}

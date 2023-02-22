@@ -1,0 +1,57 @@
+{
+  "searchFilter": "{type} suchen und filtern",
+  "sort": "Ergebnisse sortieren",
+  "addView": "Eine neue Ansicht hinzufügen",
+  "newView": "Benutzerdefinierte Suche",
+  "searchFilterTooltip": "Suchen und filtern (F)",
+  "searchFilterFallback": "Ergebnisse suchen und filtern",
+  "searchTypes": {
+    "PRODUCT": "Produkte",
+    "ORDER": "Bestellungen",
+    "DRAFT_ORDER": "Bestellentwürfe",
+    "ABANDONED_CHECKOUT": "abgebrochene Checkouts",
+    "INVENTORY": "Inventar",
+    "PURCHASE_ORDER": "Bestellungen",
+    "PAYOUT": "Auszahlungen",
+    "INVENTORY_TRANSFER": "Inventartransfers",
+    "INVENTORY_MOVEMENT": "Inventartransfers",
+    "COLLECTION": "Kategorien",
+    "GIFT_CARD": "Geschenkgutscheine",
+    "PRICE_RULE": "Rabatte"
+  },
+  "FilterPill": {
+    "clear": "Löschen"
+  },
+  "Filters": {
+    "addFilter": "Filter hinzufügen",
+    "clearFilters": "Alles löschen"
+  },
+  "SearchField": {
+    "placeholder": "In {currentView} suchen",
+    "allPlaceholder": "Alle {type} durchsuchen"
+  },
+  "SortButton": {
+    "ariaLabel": "Ergebnisse sortieren",
+    "tooltip": "Sortieren",
+    "title": "Sortieren nach",
+    "sorting": {
+      "asc": "Aufsteigend",
+      "desc": "Absteigend",
+      "az": "A–Z",
+      "za": "Z–A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "Abbrechen",
+    "update": "Aktualisieren",
+    "save": "Speichern",
+    "saveAs": "Speichern unter",
+    "modal": {
+      "title": "Ansicht speichern als",
+      "label": "Name",
+      "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus.",
+      "save": "Speichern",
+      "cancel": "Abbrechen"
+    }
+  }
+}

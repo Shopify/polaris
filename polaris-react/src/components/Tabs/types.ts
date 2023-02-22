@@ -82,9 +82,9 @@ export interface TabProps {
   onToggleModal: (value: boolean) => void;
   /** Overrides the tabIndex calculated by the Tabs component */
   tabIndexOverride?: 0 | -1;
-  /** Callback to toggle the IndexFiltering mode to EditingColumns */
+  /** Callback to toggle the IndexFilters mode to EditingColumns */
   onSetStateToEditingColumns?: () => void;
-  /** Callback to toggle the IndexFiltering mode to Filtering */
+  /** Callback to toggle the IndexFilters mode to Filtering */
   onSetStateToFiltering?: () => void;
   /** Ooptional callback invoked when the Tabs component is focused */
   onFocus?(): void;

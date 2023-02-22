@@ -1,0 +1,57 @@
+{
+  "searchFilter": "Wyszukaj i przefiltruj {type}",
+  "sort": "Sortuj wyniki",
+  "addView": "Dodaj nowy widok",
+  "newView": "Niestandardowe wyszukiwanie",
+  "searchFilterTooltip": "Wyszukaj i przefiltruj (F)",
+  "searchFilterFallback": "Wyszukaj i przefiltruj wyniki",
+  "searchTypes": {
+    "PRODUCT": "produkty",
+    "ORDER": "zamówienia",
+    "DRAFT_ORDER": "wersje robocze zamówień",
+    "ABANDONED_CHECKOUT": "przerwane realizacje zakupu",
+    "INVENTORY": "zapasy",
+    "PURCHASE_ORDER": "zamówienia",
+    "PAYOUT": "wypłaty",
+    "INVENTORY_TRANSFER": "transfery zapasów",
+    "INVENTORY_MOVEMENT": "transfery zapasów",
+    "COLLECTION": "kolekcje",
+    "GIFT_CARD": "karty prezentowe",
+    "PRICE_RULE": "rabaty"
+  },
+  "FilterPill": {
+    "clear": "Wyczyść"
+  },
+  "Filters": {
+    "addFilter": "Dodaj filtr",
+    "clearFilters": "Wyczyść wszystko"
+  },
+  "SearchField": {
+    "placeholder": "Wyszukiwanie w {currentView}",
+    "allPlaceholder": "Wyszukaj wszystkie {type}"
+  },
+  "SortButton": {
+    "ariaLabel": "Sortuj wyniki",
+    "tooltip": "Sortuj",
+    "title": "Sortuj wg",
+    "sorting": {
+      "asc": "Rosnąco",
+      "desc": "Malejąco",
+      "az": "A–Z",
+      "za": "Z–A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "Anuluj",
+    "update": "Aktualizuj",
+    "save": "Zapisz",
+    "saveAs": "Zapisz jako",
+    "modal": {
+      "title": "Zapisz widok jako",
+      "label": "Nazwa",
+      "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę.",
+      "save": "Zapisz",
+      "cancel": "Anuluj"
+    }
+  }
+}

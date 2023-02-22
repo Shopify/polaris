@@ -41,7 +41,7 @@ export interface TabsProps {
   onSelect?: (selectedTabIndex: number) => void;
   /** Whether to show the add new view Tab. */
   showNewTab?: boolean;
-  /** Callback automatically added by the IndexFiltering */
+  /** Callback automatically added by the IndexFilters */
   onSetStateToEditingColumns?: () => void;
   /** Label for the new view Tab. Will override the default of "Create new view" */
   newViewAccessibilityLabel?: string;

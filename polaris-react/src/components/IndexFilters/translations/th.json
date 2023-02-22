@@ -1,0 +1,57 @@
+{
+  "searchFilter": "ค้นหาและตัวกรอง {type}",
+  "sort": "จัดเรียงผลลัพธ์ของคุณ",
+  "addView": "เพิ่มมุมมองใหม่",
+  "newView": "การค้นหาแบบกำหนดเอง",
+  "searchFilterTooltip": "ค้นหาและกรอง (F)",
+  "searchFilterFallback": "ผลลัพธ์ของการค้นหาและกรอง",
+  "searchTypes": {
+    "PRODUCT": "สินค้า",
+    "ORDER": "คำสั่งซื้อ",
+    "DRAFT_ORDER": "คำสั่งซื้อที่ยังไม่ชำระเงิน",
+    "ABANDONED_CHECKOUT": "ขั้นตอนการชำระเงินที่ยังไม่เสร็จสิ้น",
+    "INVENTORY": "สินค้าคงคลัง",
+    "PURCHASE_ORDER": "คำสั่งซื้อ",
+    "PAYOUT": "ยอดเงินที่ร้านค้าจะได้รับ",
+    "INVENTORY_TRANSFER": "การถ่ายโอนสินค้าคงคลัง",
+    "INVENTORY_MOVEMENT": "การถ่ายโอนสินค้าคงคลัง",
+    "COLLECTION": "คอลเลกชัน",
+    "GIFT_CARD": "บัตรของขวัญ",
+    "PRICE_RULE": "ส่วนลด"
+  },
+  "FilterPill": {
+    "clear": "ล้าง"
+  },
+  "Filters": {
+    "addFilter": "เพิ่มตัวกรอง",
+    "clearFilters": "ล้างทั้งหมด"
+  },
+  "SearchField": {
+    "placeholder": "ค้นหาใน {currentView}",
+    "allPlaceholder": "ค้นหา {type} ทั้งหมด"
+  },
+  "SortButton": {
+    "ariaLabel": "จัดเรียงผลลัพธ์",
+    "tooltip": "จัดเรียง",
+    "title": "จัดเรียงตาม",
+    "sorting": {
+      "asc": "น้อยไปมาก",
+      "desc": "มากไปน้อย",
+      "az": "A-Z",
+      "za": "Z-A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "ยกเลิก",
+    "update": "อัปเดต",
+    "save": "บันทึก",
+    "saveAs": "บันทึกเป็น",
+    "modal": {
+      "title": "บันทึกมุมมองเป็น",
+      "label": "ชื่อ",
+      "sameName": "มีมุมมองที่ใช้ชื่อนี้แล้ว โปรดเลือกชื่ออื่น",
+      "save": "บันทึก",
+      "cancel": "ยกเลิก"
+    }
+  }
+}

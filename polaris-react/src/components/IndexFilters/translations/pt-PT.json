@@ -1,0 +1,57 @@
+{
+  "searchFilter": "Pesquisar e filtrar {type}",
+  "sort": "Ordenar os resultados",
+  "addView": "Adicionar uma nova visualização",
+  "newView": "Pesquisa personalizada",
+  "searchFilterTooltip": "Pesquisar e filtrar (F)",
+  "searchFilterFallback": "Resultados da pesquisa e do filtro",
+  "searchTypes": {
+    "PRODUCT": "produtos",
+    "ORDER": "encomendas",
+    "DRAFT_ORDER": "encomendas em rascunho",
+    "ABANDONED_CHECKOUT": "finalizações de compra abandonadas",
+    "INVENTORY": "inventário",
+    "PURCHASE_ORDER": "notas de encomenda",
+    "PAYOUT": "pagamentos",
+    "INVENTORY_TRANSFER": "transferências de inventário",
+    "INVENTORY_MOVEMENT": "transferências de inventário",
+    "COLLECTION": "coleções",
+    "GIFT_CARD": "cartões de oferta",
+    "PRICE_RULE": "descontos"
+  },
+  "FilterPill": {
+    "clear": "Limpar"
+  },
+  "Filters": {
+    "addFilter": "Adicionar filtro",
+    "clearFilters": "Limpar tudo"
+  },
+  "SearchField": {
+    "placeholder": "Pesquisar em {currentView}",
+    "allPlaceholder": "Pesquisar em: {type}"
+  },
+  "SortButton": {
+    "ariaLabel": "Ordenar os resultados",
+    "tooltip": "Ordenar",
+    "title": "Ordenar por",
+    "sorting": {
+      "asc": "Ascendente",
+      "desc": "Descendente",
+      "az": "A-Z",
+      "za": "Z-A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "Cancelar",
+    "update": "Atualizar",
+    "save": "Guardar",
+    "saveAs": "Guardar como",
+    "modal": {
+      "title": "Guardar visualização como",
+      "label": "Nome",
+      "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente.",
+      "save": "Guardar",
+      "cancel": "Cancelar"
+    }
+  }
+}

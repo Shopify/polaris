@@ -1,0 +1,57 @@
+{
+  "searchFilter": "検索と絞り込みの{type}",
+  "sort": "検索結果を並べ替える",
+  "addView": "新たなビューを追加",
+  "newView": "カスタム検索",
+  "searchFilterTooltip": "検索と絞り込み (F)",
+  "searchFilterFallback": "検索と絞り込みの結果",
+  "searchTypes": {
+    "PRODUCT": "商品",
+    "ORDER": "注文",
+    "DRAFT_ORDER": "下書き注文",
+    "ABANDONED_CHECKOUT": "チェックアウト離脱",
+    "INVENTORY": "在庫",
+    "PURCHASE_ORDER": "注文書",
+    "PAYOUT": "支払い",
+    "INVENTORY_TRANSFER": "在庫転送",
+    "INVENTORY_MOVEMENT": "在庫転送",
+    "COLLECTION": "コレクション",
+    "GIFT_CARD": "ギフトカード",
+    "PRICE_RULE": "ディスカウント"
+  },
+  "FilterPill": {
+    "clear": "クリア"
+  },
+  "Filters": {
+    "addFilter": "絞り込みを追加する",
+    "clearFilters": "すべてクリア"
+  },
+  "SearchField": {
+    "placeholder": "{currentView}を検索中",
+    "allPlaceholder": "すべての{type}を検索中"
+  },
+  "SortButton": {
+    "ariaLabel": "検索結果を並べ替える",
+    "tooltip": "並び替え",
+    "title": "並べ替え",
+    "sorting": {
+      "asc": "昇順",
+      "desc": "降順",
+      "az": "A～Z",
+      "za": "Z～A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "キャンセル",
+    "update": "アップロード",
+    "save": "保存",
+    "saveAs": "名前を付けて保存",
+    "modal": {
+      "title": "表示内容を保存",
+      "label": "名前",
+      "sameName": "この名前のビューはすでに存在しています。別の名前を選択してください。",
+      "save": "保存",
+      "cancel": "キャンセル"
+    }
+  }
+}

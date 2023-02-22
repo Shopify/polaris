@@ -1,0 +1,57 @@
+{
+  "searchFilter": "Søk og filtrer {type}",
+  "sort": "Sorter resultatene",
+  "addView": "Legg til en ny visning",
+  "newView": "Tilpasset søk",
+  "searchFilterTooltip": "Søk og filtrer (F)",
+  "searchFilterFallback": "Søk og filtrer resultater",
+  "searchTypes": {
+    "PRODUCT": "produkter",
+    "ORDER": "bestillinger",
+    "DRAFT_ORDER": "utkastbestillinger",
+    "ABANDONED_CHECKOUT": "forlatte kasser",
+    "INVENTORY": "lagerbeholdning",
+    "PURCHASE_ORDER": "innkjøpsordre",
+    "PAYOUT": "utbetalinger",
+    "INVENTORY_TRANSFER": "overføringer av lagerbeholdning",
+    "INVENTORY_MOVEMENT": "overføringer av lagerbeholdning",
+    "COLLECTION": "samlinger",
+    "GIFT_CARD": "gavekort",
+    "PRICE_RULE": "rabatter"
+  },
+  "FilterPill": {
+    "clear": "Fjern"
+  },
+  "Filters": {
+    "addFilter": "Legg til filter",
+    "clearFilters": "Fjern alle"
+  },
+  "SearchField": {
+    "placeholder": "Søker i {currentView}",
+    "allPlaceholder": "Søker i alle {type}"
+  },
+  "SortButton": {
+    "ariaLabel": "Sorter resultatene",
+    "tooltip": "Sorter",
+    "title": "Sorter etter",
+    "sorting": {
+      "asc": "Stigende",
+      "desc": "Synkende",
+      "az": "A–Å",
+      "za": "Å–A"
+    }
+  },
+  "UpdateButtons": {
+    "cancel": "Avbryt",
+    "update": "Oppdater",
+    "save": "Lagre",
+    "saveAs": "Lagre som",
+    "modal": {
+      "title": "Lagre visningen som",
+      "label": "Navn",
+      "sameName": "Det finnes allerede en visning med dette navnet. Velg et annet navn.",
+      "save": "Lagre",
+      "cancel": "Avbryt"
+    }
+  }
+}

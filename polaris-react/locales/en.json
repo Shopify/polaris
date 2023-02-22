@@ -163,6 +163,48 @@
     "FilterPill": {
       "clear": "Clear"
     },
+    "IndexFilters": {
+      "searchFilterTooltip": "Search and filter (F)",
+      "searchFilterAccessibilityLabel": "Search and filter results",
+      "sort": "Sort your results",
+      "addView": "Add a new view",
+      "newView": "Custom search",
+      "FilterPill": {
+        "clear": "Clear"
+      },
+      "Filters": {
+        "addFilter": "Add filter",
+        "clearFilters": "Clear all"
+      },
+      "SearchField": {
+        "placeholder": "Searching in {currentView}",
+        "allPlaceholder": "Searching all {type}"
+      },
+      "SortButton": {
+        "ariaLabel": "Sort the results",
+        "tooltip": "Sort",
+        "title": "Sort by",
+        "sorting": {
+          "asc": "Ascending",
+          "desc": "Descending",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Cancel",
+        "update": "Update",
+        "save": "Save",
+        "saveAs": "Save as",
+        "modal": {
+          "title": "Save view as",
+          "label": "Name",
+          "sameName": "A view with this name already exists. Please choose a different name.",
+          "save": "Save",
+          "cancel": "Cancel"
+        }
+      }
+    },
     "IndexProvider": {
       "defaultItemSingular": "Item",
       "defaultItemPlural": "Items",

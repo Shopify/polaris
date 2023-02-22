@@ -13,7 +13,7 @@ The Tab is the singular component rendered within the parent Tabs component. It 
 ## Examples
 
 ```tsx
-import {Tab} from 'components/IndexFiltering/components';
+import {Tab} from 'components/IndexFilters/components';
 
 const [isActive, setIsActive] = useState(false);
 const [activeActionIndex, setActiveActionIndex] = useState<number>();
