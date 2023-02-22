@@ -154,7 +154,7 @@ export function WithLinkComponent() {
   return (
     <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
-        breadcrumbs={[{content: 'Products', url: '#'}]}
+        backLink={{content: 'Products', url: '#'}}
         title="Jar With Lock-Lid"
         primaryAction={{content: 'Save', disabled: true}}
       >
