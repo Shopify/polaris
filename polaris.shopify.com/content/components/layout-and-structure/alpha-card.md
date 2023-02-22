@@ -52,3 +52,9 @@ Cards should:
 - Stick to single user flows or break more complicated flows into multiple sections
 - Avoid too many call-to-action buttons or links and only one primary call to action per card
 - Use calls to action on the bottom of the card for next steps and use the space in the upper right corner of the card for persistent, optional actions (such as Edit)
+
+---
+
+## Related components
+
+- For more general use cases, [use the Box component](https://polaris.shopify.com/components/layout-and-structure/box)

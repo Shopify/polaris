@@ -8,10 +8,6 @@ status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: box-default.tsx
-    title: Default
-    description: >-
-      By default, box has no padding, borders, border radius, background, or shadows.
   - fileName: box-with-color.tsx
     title: Color
     description: >-
