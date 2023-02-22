@@ -122,7 +122,7 @@
   .TabList {
     position: sticky;
     top: 60px;
-    background-color: white;
+    background-color: var(--surface);
     button:first-of-type {
       padding-left: 1.25rem;
     }
