@@ -15,23 +15,27 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMajor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMajor,
               badge: '15',
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMajor,
             },
             {
-              url: '/path/to/place',
+              url: '#',
+              excludePaths: ['#'],
               label: 'Customers',
               icon: CustomersMajor,
             },

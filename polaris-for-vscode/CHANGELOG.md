@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- [#8246](https://github.com/Shopify/polaris/pull/8246) [`60ef0dffc`](https://github.com/Shopify/polaris/commit/60ef0dffc9f6064d1d42793f5d2bd96f35b14489) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added completions for new `color` token group
+
 ## 0.2.2
 
 ### Patch Changes

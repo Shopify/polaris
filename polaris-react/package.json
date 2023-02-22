@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "10.27.2",
+  "version": "10.28.2",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -57,8 +57,8 @@
     "preversion": "node ./scripts/readme-update-version"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^6.11.1",
-    "@shopify/polaris-tokens": "^6.4.0",
+    "@shopify/polaris-icons": "^6.11.2",
+    "@shopify/polaris-tokens": "^6.5.1",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
@@ -66,12 +66,11 @@
     "react-transition-group": "^4.4.2"
   },
   "peerDependencies": {
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@changesets/get-release-plan": "^3.0.13",
-    "@shopify/browserslist-config": "^3.0.0",
     "@shopify/jest-dom-mocks": "^3.0.5",
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/react-testing": "^4.1.0",
@@ -117,6 +116,7 @@
     "last 3 safari versions",
     "last 3 chromeandroid versions",
     "last 1 firefoxandroid versions",
-    "ios >= 13.4"
+    "ios >= 13.4",
+    "node 16.17.0"
   ]
 }
