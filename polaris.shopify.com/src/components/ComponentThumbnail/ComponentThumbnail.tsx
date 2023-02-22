@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import styles from './ComponentThumbnail.module.scss';
 import {slugify} from '../../utils/various';
 
 interface Props {
@@ -11,18 +12,10 @@ function ComponentThumbnail({title, group}: Props) {
     ? `/images/components/${group}/${slugify(title)}.png`
     : `/images/components/${slugify(title)}.png`;
   return (
-    <div
-      style={{
-        filter: 'brightness(97%)',
-        borderRadius: 'var(--border-radius-600)',
-        borderBottomRightRadius: 0,
-        borderBottomLeftRadius: 0,
-        overflow: 'hidden',
-      }}
-    >
+    <div className={styles.ComponentThumbnail}>
       <Image
         src={imageSrc}
-        style={{width: '100%', height: 'auto'}}
+        className={styles.Image}
         width={266}
         height={140}
         quality={70}
