@@ -162,5 +162,5 @@ Add a menu item
 
 ## Related patterns
 
-- [App Settings](/patterns/app-settings)
-- [Resource Details](/patterns/resource-details)
+- [App settings layout](/patterns/app-settings-layout)
+- [Resource details layout](/patterns/resource-details-layout)
