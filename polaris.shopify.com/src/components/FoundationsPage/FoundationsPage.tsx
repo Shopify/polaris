@@ -4,6 +4,7 @@ import StatusBanner from '../StatusBanner';
 import styles from './FoundationsPage.module.scss';
 import {Status} from '../../types';
 import Longform from '../Longform';
+import {Stack} from '../Stack';
 import {Grid, GridItem, type GridItemProps} from '../Grid';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 
@@ -42,33 +43,31 @@ function FoundationsPage({
           <h1>{title}</h1>
 
           <p>{description}</p>
-          {typedStatus ? (
-            <p>
-              <StatusBanner status={typedStatus} />
-            </p>
-          ) : null}
         </Longform>
+        <Stack gap="8">
+          {typedStatus ? <StatusBanner status={typedStatus} /> : null}
 
-        <Grid>
-          {items
-            .sort((a, b) => a.title.localeCompare(b.title))
-            .sort((a, b) => a.order - b.order)
-            .map((item) => {
-              if (!item.url) return null;
-              return (
-                <GridItem
-                  key={item.title}
-                  {...item}
-                  renderPreview={() => (
-                    <FoundationsThumbnail
-                      icon={item.icon}
-                      category={title.toLowerCase()}
-                    />
-                  )}
-                />
-              );
-            })}
-        </Grid>
+          <Grid>
+            {items
+              .sort((a, b) => a.title.localeCompare(b.title))
+              .sort((a, b) => a.order - b.order)
+              .map((item) => {
+                if (!item.url) return null;
+                return (
+                  <GridItem
+                    key={item.title}
+                    {...item}
+                    renderPreview={() => (
+                      <FoundationsThumbnail
+                        icon={item.icon}
+                        category={title.toLowerCase()}
+                      />
+                    )}
+                  />
+                );
+              })}
+          </Grid>
+        </Stack>
       </Page>
     </div>
   );
