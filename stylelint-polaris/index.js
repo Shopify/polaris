@@ -496,6 +496,7 @@ const stylelintPolarisCoverageOptions = {
 /** @type {import('stylelint').Config} */
 module.exports = {
   customSyntax: 'postcss-scss',
+  reportDescriptionlessDisables: true,
   reportNeedlessDisables: [
     true,
     {
