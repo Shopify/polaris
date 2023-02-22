@@ -27,39 +27,29 @@ const allMap = {
   '--p-decorative-five-icon': 'rgba(174, 43, 76, 1)',
   '--p-decorative-five-surface': 'rgba(253, 201, 208, 1)',
   '--p-decorative-five-text': 'rgba(79, 14, 31, 1)',
-};
 
-const colorMap = {
-  ...allMap,
+  // Color
   '--p-text': '--p-color-text',
   '--p-text-on-dark': '--p-color-text-inverse',
   '--p-text-disabled': '--p-color-text-disabled',
   '--p-text-subdued': '--p-color-text-subdued',
   '--p-text-subdued-on-dark': '--p-color-text-inverse-subdued',
-  '--p-interactive': '--p-color-text-interactive',
-  '--p-interactive-on-dark': '--p-color-text-interactive-inverse',
-  '--p-interactive-disabled': '--p-color-text-interactive-disabled',
-  '--p-interactive-hovered': '--p-color-text-interactive-hover',
-  '--p-interactive-pressed': '--p-color-text-interactive-active',
   '--p-text-on-interactive': '--p-color-text-on-color',
-  '--p-action-primary': '--p-color-text-primary',
   '--p-text-on-primary': '--p-color-text-on-color',
   '--p-text-primary': '--p-color-text-primary',
   '--p-text-primary-hovered': '--p-color-text-primary-hover',
   '--p-text-primary-pressed': '--p-color-text-primary',
   '--p-text-critical': '--p-color-text-critical',
   '--p-text-on-critical': '--p-color-text-on-color',
-  '--p-interactive-critical': '--p-color-text-critical',
-  '--p-interactive-critical-disabled': '--p-color-text-disabled',
-  '--p-interactive-critical-pressed': '--p-color-text-critical-active',
   '--p-text-warning': '--p-color-text-caution',
   '--p-text-highlight': '--p-color-text-info',
   '--p-text-success': '--p-color-text-success',
+  '--p-interactive-on-dark': '--p-color-text-interactive-inverse',
+  '--p-interactive-critical-disabled': '--p-color-text-disabled',
+  '--p-interactive-critical-pressed': '--p-color-text-critical-active',
   '--p-interactive-pressed-on-dark': '--p-color-text-interactive-inverse',
-};
 
-const backgroundColorMap = {
-  ...allMap,
+  // Background
   '--p-background': '--p-color-bg-app',
   '--p-background-hovered': '--p-color-bg-app-hover',
   '--p-background-pressed': '--p-color-bg-app-active',
@@ -81,10 +71,6 @@ const backgroundColorMap = {
   '--p-surface-depressed': '--p-color-bg-inset',
   '--p-surface-search-field': '--p-color-bg-inset',
   '--p-surface-search-field-dark': '--p-color-bg-inverse',
-  '--p-interactive': '--p-color-bg-interactive',
-  '--p-interactive-disabled': '--p-color-bg-interactive-disabled',
-  '--p-interactive-hovered': '--p-color-bg-interactive-hover',
-  '--p-interactive-pressed': '--p-color-bg-interactive-active',
   '--p-surface-selected': '--p-color-bg-interactive-selected',
   '--p-surface-selected-hovered': '--p-color-bg-interactive-subdued-hover',
   '--p-surface-selected-pressed': '--p-color-bg-interactive-subdued-active',
@@ -95,11 +81,6 @@ const backgroundColorMap = {
   '--p-action-secondary-pressed': '--p-color-bg-subdued-active',
   '--p-action-secondary-pressed-dark': '--p-color-bg-inverse-active',
   '--p-action-secondary-depressed': '--p-color-bg-inset-strong',
-  '--p-action-primary': '--p-color-bg-primary',
-  '--p-action-primary-disabled': '--p-color-bg-disabled',
-  '--p-action-primary-hovered': '--p-color-bg-primary-hover',
-  '--p-action-primary-pressed': '--p-color-bg-primary-active',
-  '--p-action-primary-depressed': '--p-color-bg-primary-active',
   '--p-surface-primary-selected': '--p-color-bg-primary-subdued-selected',
   '--p-surface-primary-selected-hovered': '--p-color-bg-primary-subdued-hover',
   '--p-surface-primary-selected-pressed': '--p-color-bg-primary-subdued-active',
@@ -113,7 +94,6 @@ const backgroundColorMap = {
   '--p-action-critical-hovered': '--p-color-bg-critical-strong-hover',
   '--p-action-critical-pressed': '--p-color-bg-critical-strong-active',
   '--p-action-critical-depressed': '--p-color-bg-critical-strong-active',
-  '--p-interactive-critical': '--p-color-bg-critical',
   '--p-surface-warning': '--p-color-bg-warning',
   '--p-surface-warning-subdued': '--p-color-bg-caution-subdued',
   '--p-surface-warning-subdued-hovered': '--p-color-bg-caution-subdued-hover',
@@ -128,11 +108,13 @@ const backgroundColorMap = {
   '--p-surface-success-subdued-pressed': '--p-color-bg-success-subdued-active',
   '--p-surface-attention': '--p-color-bg-caution',
   '--p-action-critical-disabled': '--p-color-bg-disabled',
+  '--p-action-primary-disabled': '--p-color-bg-disabled',
+  '--p-action-primary-hovered': '--p-color-bg-primary-hover',
+  '--p-action-primary-pressed': '--p-color-bg-primary-active',
+  '--p-action-primary-depressed': '--p-color-bg-primary-active',
   '--p-interactive-critical-hovered': '--p-color-bg-critical-strong-hover',
-};
 
-const borderColorMap = {
-  ...allMap,
+  // Border
   '--p-border': '--p-color-border',
   '--p-border-on-dark': '--p-color-border-inverse',
   '--p-border-neutral-subdued': '--p-color-border-strong',
@@ -144,12 +126,7 @@ const borderColorMap = {
   '--p-border-shadow-subdued': '--p-color-border-input',
   '--p-divider': '--p-color-border-subdued',
   '--p-divider-dark': '--p-color-border-inverse',
-  '--p-interactive': '--p-color-border-interactive',
-  '--p-interactive-disabled': '--p-color-border-interactive-disabled',
-  '--p-interactive-hovered': '--p-color-border-interactive-hover',
-  '--p-interactive-pressed': '--p-color-border-interactive-active',
   '--p-focused': '--p-color-border-interactive-focus',
-  '--p-action-primary': '--p-color-border-primary',
   '--p-border-critical': '--p-color-border-critical',
   '--p-border-critical-subdued': '--p-color-border-critical-subdued',
   '--p-border-critical-disabled': '--p-color-border-disabled',
@@ -159,30 +136,62 @@ const borderColorMap = {
   '--p-border-highlight-subdued': '--p-color-border-info-subdued',
   '--p-border-success': '--p-color-border-success',
   '--p-border-success-subdued': '--p-color-border-success-subdued',
-};
 
-const fillColorMap = {
-  ...allMap,
+  // Fill
   '--p-icon': '--p-color-icon',
   '--p-icon-on-dark': '--p-color-icon-inverse',
   '--p-icon-hovered': '--p-color-icon-hover',
   '--p-icon-disabled': '--p-color-icon-disabled',
   '--p-icon-subdued': '--p-color-icon-subdued',
-  '--p-interactive': '--p-color-icon-interactive',
-  '--p-interactive-disabled': '--p-color-icon-interactive-disabled',
-  '--p-interactive-hovered': '--p-color-icon-interactive-hover',
-  '--p-interactive-pressed': '--p-color-icon-interactive-active',
   '--p-icon-on-interactive': '--p-color-icon-on-color',
-  '--p-action-primary': '--p-color-icon-primary',
   '--p-icon-on-primary': '--p-color-icon-on-color',
   '--p-icon-critical': '--p-color-icon-critical',
   '--p-icon-on-critical': '--p-color-icon-on-color',
-  '--p-interactive-critical': '--p-color-icon-critical',
   '--p-icon-warning': '--p-color-icon-caution',
   '--p-icon-highlight': '--p-color-icon-info',
   '--p-icon-success': '--p-color-icon-success',
   '--p-icon-attention': '--p-color-icon-caution',
   '--p-icon-pressed': '--p-color-icon-active',
+};
+
+const colorMap = {
+  ...allMap,
+  '--p-interactive': '--p-color-text-interactive',
+  '--p-interactive-disabled': '--p-color-text-interactive-disabled',
+  '--p-interactive-hovered': '--p-color-text-interactive-hover',
+  '--p-interactive-pressed': '--p-color-text-interactive-active',
+  '--p-action-primary': '--p-color-text-primary',
+  '--p-interactive-critical': '--p-color-text-critical',
+};
+
+const backgroundColorMap = {
+  ...allMap,
+  '--p-interactive': '--p-color-bg-interactive',
+  '--p-interactive-disabled': '--p-color-bg-interactive-disabled',
+  '--p-interactive-hovered': '--p-color-bg-interactive-hover',
+  '--p-interactive-pressed': '--p-color-bg-interactive-active',
+  '--p-action-primary': '--p-color-bg-primary',
+  '--p-interactive-critical': '--p-color-bg-critical',
+};
+
+const borderColorMap = {
+  ...allMap,
+  '--p-interactive': '--p-color-border-interactive',
+  '--p-interactive-disabled': '--p-color-border-interactive-disabled',
+  '--p-interactive-hovered': '--p-color-border-interactive-hover',
+  '--p-interactive-pressed': '--p-color-border-interactive-active',
+  '--p-action-primary': '--p-color-border-primary',
+  '--p-interactive-critical': '--p-color-border-critical',
+};
+
+const fillColorMap = {
+  ...allMap,
+  '--p-interactive': '--p-color-icon-interactive',
+  '--p-interactive-disabled': '--p-color-icon-interactive-disabled',
+  '--p-interactive-hovered': '--p-color-icon-interactive-hover',
+  '--p-interactive-pressed': '--p-color-icon-interactive-active',
+  '--p-action-primary': '--p-color-icon-primary',
+  '--p-interactive-critical': '--p-color-icon-critical',
 };
 
 const replacementMaps = {
