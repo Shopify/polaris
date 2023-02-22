@@ -5,9 +5,7 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 
 import {HowItHelps, UsefulToKnow} from './Blocks';
-import StatusBadge from '../StatusBadge';
 import {
-  StatusName,
   PatternFrontMatter,
   Pattern,
   PatternVariant,
