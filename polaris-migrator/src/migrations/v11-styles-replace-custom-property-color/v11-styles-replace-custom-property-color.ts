@@ -44,6 +44,10 @@ const allMap = {
   '--p-text-warning': '--p-color-text-caution',
   '--p-text-highlight': '--p-color-text-info',
   '--p-text-success': '--p-color-text-success',
+  '--p-interactive-on-dark': '--p-color-text-interactive-inverse',
+  '--p-interactive-critical-disabled': '--p-color-text-disabled',
+  '--p-interactive-critical-pressed': '--p-color-text-critical-active',
+  '--p-interactive-pressed-on-dark': '--p-color-text-interactive-inverse',
 
   // Background
   '--p-background': '--p-color-bg-app',
@@ -104,6 +108,11 @@ const allMap = {
   '--p-surface-success-subdued-pressed': '--p-color-bg-success-subdued-active',
   '--p-surface-attention': '--p-color-bg-caution',
   '--p-action-critical-disabled': '--p-color-bg-disabled',
+  '--p-action-primary-disabled': '--p-color-bg-disabled',
+  '--p-action-primary-hovered': '--p-color-bg-primary-hover',
+  '--p-action-primary-pressed': '--p-color-bg-primary-active',
+  '--p-action-primary-depressed': '--p-color-bg-primary-active',
+  '--p-interactive-critical-hovered': '--p-color-bg-critical-strong-hover',
 
   // Border
   '--p-border': '--p-color-border',
@@ -148,15 +157,11 @@ const allMap = {
 const colorMap = {
   ...allMap,
   '--p-interactive': '--p-color-text-interactive',
-  '--p-interactive-on-dark': '--p-color-text-interactive-inverse',
   '--p-interactive-disabled': '--p-color-text-interactive-disabled',
   '--p-interactive-hovered': '--p-color-text-interactive-hover',
   '--p-interactive-pressed': '--p-color-text-interactive-active',
   '--p-action-primary': '--p-color-text-primary',
   '--p-interactive-critical': '--p-color-text-critical',
-  '--p-interactive-critical-disabled': '--p-color-text-disabled',
-  '--p-interactive-critical-pressed': '--p-color-text-critical-active',
-  '--p-interactive-pressed-on-dark': '--p-color-text-interactive-inverse',
 };
 
 const backgroundColorMap = {
@@ -166,12 +171,7 @@ const backgroundColorMap = {
   '--p-interactive-hovered': '--p-color-bg-interactive-hover',
   '--p-interactive-pressed': '--p-color-bg-interactive-active',
   '--p-action-primary': '--p-color-bg-primary',
-  '--p-action-primary-disabled': '--p-color-bg-disabled',
-  '--p-action-primary-hovered': '--p-color-bg-primary-hover',
-  '--p-action-primary-pressed': '--p-color-bg-primary-active',
-  '--p-action-primary-depressed': '--p-color-bg-primary-active',
   '--p-interactive-critical': '--p-color-bg-critical',
-  '--p-interactive-critical-hovered': '--p-color-bg-critical-strong-hover',
 };
 
 const borderColorMap = {
@@ -181,6 +181,7 @@ const borderColorMap = {
   '--p-interactive-hovered': '--p-color-border-interactive-hover',
   '--p-interactive-pressed': '--p-color-border-interactive-active',
   '--p-action-primary': '--p-color-border-primary',
+  '--p-interactive-critical': '--p-color-border-critical',
 };
 
 const fillColorMap = {
