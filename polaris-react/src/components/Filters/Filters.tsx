@@ -11,7 +11,6 @@ import {classNames} from '../../utilities/css';
 import type {AppliedFilterInterface, FilterInterface} from '../../types';
 import type {DisabledInfo} from '../DisabledTooltipWrapper';
 import {DisabledTooltipWrapper} from '../DisabledTooltipWrapper';
-import {Button} from '../Button';
 import {Link} from '../Link';
 import {Inline} from '../Inline';
 import {Box} from '../Box';
@@ -30,7 +29,7 @@ export interface FiltersProps {
   /** Available filters added to the filter bar. Shortcut filters are pinned to the front of the bar. */
   filters: FilterInterface[];
   /** Applied filters which are rendered as filter pills. The remove callback is called with the respective key. */
-  appliedFilters: AppliedFilterInterface[];
+  appliedFilters?: AppliedFilterInterface[];
   /** Callback when the query field is changed. */
   onQueryChange: (queryValue: string) => void;
   /** Callback when the clear button is triggered. */
@@ -228,7 +227,7 @@ export function Filters({
           </Box>
         </div>
       )}
-      {hideFilters ? null : (
+      {hideFilters || filters.length === 0 ? null : (
         <div
           className={classNames(
             styles.FiltersWrapper,
