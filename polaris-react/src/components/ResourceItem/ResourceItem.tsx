@@ -203,7 +203,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <Inline gap="4"
+        <Inline
+          gap="4"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
