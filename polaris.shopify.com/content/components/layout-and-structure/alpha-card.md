@@ -57,4 +57,4 @@ Cards should:
 
 ## Related components
 
-- For more general use cases, [use the Box component](https://polaris.shopify.com/components/layout-and-structure/box)
+- For more flexibility on styling, [use the Box component](https://polaris.shopify.com/components/layout-and-structure/box)
