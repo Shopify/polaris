@@ -371,7 +371,7 @@ const stylelintPolarisCoverageOptions = {
     },
   ],
   conventions: {
-    'selector-disallowed-list': [/class[*^]='Polaris-[a-z_-]+'/gi],
+    'selector-disallowed-list': [/class[*^~]?='Polaris-[a-z_-]+'/gi],
     'polaris/custom-property-allowed-list': {
       // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
       allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
