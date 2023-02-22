@@ -12,16 +12,13 @@ import styles from './Breadcrumbs.scss';
 export interface BreadcrumbsProps {
   /** @deprecated Collection of breadcrumbs */
   breadcrumbs?: (CallbackAction | LinkAction) | (CallbackAction | LinkAction)[];
-  /** Breadcrumb link */
-  breadcrumb?: CallbackAction | LinkAction;
+  /** Back action link */
+  backAction?: CallbackAction | LinkAction;
 }
 
-export function Breadcrumbs({
-  breadcrumbs,
-  breadcrumb: breadcrumbProp,
-}: BreadcrumbsProps) {
+export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
   const breadcrumb =
-    breadcrumbProp ??
+    backAction ??
     (Array.isArray(breadcrumbs)
       ? breadcrumbs[breadcrumbs.length - 1]
       : breadcrumbs);

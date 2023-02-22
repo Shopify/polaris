@@ -51,8 +51,8 @@ export interface HeaderProps extends TitleProps {
   pagination?: PaginationProps;
   /** @deprecated Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
-  /** A breadcrumb link */
-  breadcrumb?: BreadcrumbsProps['breadcrumb'];
+  /** A back action link */
+  backAction?: BreadcrumbsProps['backAction'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
@@ -79,7 +79,7 @@ export function Header({
   pagination,
   additionalNavigation,
   breadcrumbs,
-  breadcrumb,
+  backAction,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
@@ -93,9 +93,11 @@ export function Header({
     console.warn(
       'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
     );
+  }
+  if (breadcrumbs && process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
     console.warn(
-      'Deprecation: The `breadcrumbs` prop on Page is deprecated and will be removed in the next major version. Please replace with the singular `breadcrumb`.',
+      'Deprecation: The `breadcrumbs` prop on Page is deprecated and will be removed in the next major version. Please replace with a single `backAction`.',
     );
   }
 
@@ -107,11 +109,11 @@ export function Header({
     !actionGroups.length;
 
   const breadcrumbMarkup = () => {
-    if (breadcrumb) {
+    if (backAction) {
       return (
         <div className={styles.BreadcrumbWrapper}>
           <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-            <Breadcrumbs breadcrumb={breadcrumb} />
+            <Breadcrumbs backAction={backAction} />
           </Box>
         </div>
       );
