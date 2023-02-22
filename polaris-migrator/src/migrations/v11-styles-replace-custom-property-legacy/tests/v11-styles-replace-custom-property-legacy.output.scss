@@ -5,16 +5,16 @@
   width: 20px;
   margin: var(--p-space-025);
   border-width: var(--p-border-radius-05);
-  box-shadow: inset 0 1px 0 0 var(--p-border-strong),
-    inset 0 0 0 1px var(--p-border-strong);
-  box-shadow: inset 0 1px 0 0 var(--p-border-success-subdued),
-    inset 0 0 0 1px var(--p-border-success-subdued);
-  box-shadow: inset 0 1px 0 0 var(--p-border-info-subdued),
-    inset 0 0 0 1px var(--p-border-info-subdued);
-  box-shadow: inset 0 1px 0 0 var(--p-border-caution-subdued),
-    inset 0 0 0 1px var(--p-border-caution-subdued);
-  box-shadow: inset 0 1px 0 0 var(--p-border-critical-subdued),
-    inset 0 0 0 1px var(--p-border-critical-subdued);
+  box-shadow: inset 0 (--p-border-width-1) 0 0 var(--p-border-strong),
+    inset 0 0 0 (--p-border-width-1) var(--p-border-strong);
+  box-shadow: inset 0 (--p-border-width-1) 0 0 var(--p-border-success-subdued),
+    inset 0 0 0 (--p-border-width-1) var(--p-border-success-subdued);
+  box-shadow: inset 0 (--p-border-width-1) 0 0 var(--p-border-info-subdued),
+    inset 0 0 0 (--p-border-width-1) var(--p-border-info-subdued);
+  box-shadow: inset 0 (--p-border-width-1) 0 0 var(--p-border-caution-subdued),
+    inset 0 0 0 (--p-border-width-1) var(--p-border-caution-subdued);
+  box-shadow: inset 0 (--p-border-width-1) 0 0 var(--p-border-critical-subdued),
+    inset 0 0 0 (--p-border-width-1) var(--p-border-critical-subdued);
   border: var(--p-border-base);
   margin: 2px;
   margin: -4px;

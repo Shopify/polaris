@@ -11,15 +11,15 @@ const replacementMaps = {
     '--p-choice-margin': '--p-space-025',
     '--p-control-border-width': '--p-border-radius-05',
     '--p-banner-border-default':
-      'inset 0 1px 0 0 var(--p-border-strong), inset 0 0 0 1px var(--p-border-strong)',
+      'inset 0 (--p-border-width-1) 0 0 var(--p-border-strong), inset 0 0 0 (--p-border-width-1) var(--p-border-strong)',
     '--p-banner-border-success':
-      'inset 0 1px 0 0 var(--p-border-success-subdued), inset 0 0 0 1px var(--p-border-success-subdued)',
+      'inset 0 (--p-border-width-1) 0 0 var(--p-border-success-subdued), inset 0 0 0 (--p-border-width-1) var(--p-border-success-subdued)',
     '--p-banner-border-highlight':
-      'inset 0 1px 0 0 var(--p-border-info-subdued), inset 0 0 0 1px var(--p-border-info-subdued)',
+      'inset 0 (--p-border-width-1) 0 0 var(--p-border-info-subdued), inset 0 0 0 (--p-border-width-1) var(--p-border-info-subdued)',
     '--p-banner-border-warning':
-      'inset 0 1px 0 0 var(--p-border-caution-subdued), inset 0 0 0 1px var(--p-border-caution-subdued)',
+      'inset 0 (--p-border-width-1) 0 0 var(--p-border-caution-subdued), inset 0 0 0 (--p-border-width-1) var(--p-border-caution-subdued)',
     '--p-banner-border-critical':
-      'inset 0 1px 0 0 var(--p-border-critical-subdued), inset 0 0 0 1px var(--p-border-critical-subdued)',
+      'inset 0 (--p-border-width-1) 0 0 var(--p-border-critical-subdued), inset 0 0 0 (--p-border-width-1) var(--p-border-critical-subdued)',
     '--p-thin-border-subdued': '--p-border-base',
     '--p-text-field-spinner-offset': '2px',
     '--p-text-field-focus-ring-offset': '-4px',
