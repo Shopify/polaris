@@ -59,7 +59,7 @@ const stylelintPolarisCoverageOptions = {
         'rgb',
         'rgba',
         'sepia',
-        ...['color', 'filter'].map(matchNameRegExp),
+        ...['color-multiply', 'color', 'filter'].map(matchNameRegExp),
       ],
       'polaris/at-rule-disallowed-list': {
         include: [
@@ -91,6 +91,13 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'at-rule-disallowed-list': ['keyframes'],
+      'polaris/at-rule-disallowed-list': {
+        include: ['skeleton-shimmer'].map(matchNameRegExp),
+      },
+      'polaris/global-disallowed-list': [
+        // Legacy mixin map-get data
+        /\$skeleton-shimmer-duration/,
+      ],
     },
     {
       message: 'Please use a Polaris motion token',
@@ -248,6 +255,7 @@ const stylelintPolarisCoverageOptions = {
       ],
       'polaris/at-rule-disallowed-list': {
         include: [
+          'high-contrast-border',
           'high-contrast-button-outline',
           'high-contrast-outline',
           'focus-ring',
@@ -285,6 +293,9 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$shadows-data/,
+        // Legacy custom properties
+        'hidden-when-printing',
+        'print-hidden',
       ],
     },
     {
@@ -377,6 +388,7 @@ const stylelintPolarisCoverageOptions = {
           'page-when-not-max-width',
           'when-typography-condensed',
           'when-typography-not-condensed',
+          'when-not-printing',
         ].map(matchNameRegExp),
       },
     },
@@ -401,6 +413,8 @@ const stylelintPolarisCoverageOptions = {
           'unstyled-button',
           'skeleton-content',
           'unstyled-input',
+          'unstyled-link',
+          'unstyled-list',
           'range-thumb-selectors',
           'range-track-selectors',
           'state',
@@ -408,9 +422,12 @@ const stylelintPolarisCoverageOptions = {
         ].map(matchNameRegExp),
       },
       // Legacy functions
-      'function-disallowed-list': ['available-names', 'em', 'rem'].map(
-        matchNameRegExp,
-      ),
+      'function-disallowed-list': [
+        'available-names',
+        'map-extend',
+        'em',
+        'rem',
+      ].map(matchNameRegExp),
       'polaris/global-disallowed-list': [
         // Legacy variables
         / \* \$/,
