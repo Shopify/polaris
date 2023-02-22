@@ -233,7 +233,7 @@ describe('<Page />', () => {
     });
   });
 
-  describe('breadcrumbs', () => {
+  describe('backAction', () => {
     const backAction = {
       content: 'Products',
       onAction: noop,
@@ -251,29 +251,6 @@ describe('<Page />', () => {
         content: 'Products',
         onAction: noop,
       };
-      const page = mountWithApp(
-        <Page {...mockProps} backAction={backAction} />,
-      );
-      expect(page).toContainReactComponent(Header);
-    });
-
-    it('gets passed into the <Header />', () => {
-      const page = mountWithApp(
-        <Page {...mockProps} backAction={backAction} />,
-      );
-      expect(page).toContainReactComponent(Header, {
-        backAction,
-      });
-    });
-  });
-
-  describe('backAction', () => {
-    const backAction = {
-      content: 'Products',
-      onAction: noop,
-    };
-
-    it('renders a <Header /> when defined', () => {
       const page = mountWithApp(
         <Page {...mockProps} backAction={backAction} />,
       );
