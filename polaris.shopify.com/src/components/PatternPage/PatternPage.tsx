@@ -26,9 +26,6 @@ import styles from './PatternPage.module.scss';
 import Markdown from '../Markdown';
 import PatternsRelatedResources from '../PatternsRelatedResources';
 
-// TODO: Pull this from the markdown file
-const isBeta = false;
-
 interface Props extends PatternFrontMatter {
   pattern: Pattern;
 }
@@ -175,10 +172,7 @@ export default function PatternPage({pattern, ...props}: Props) {
           <Stack gap="4">
             <Heading as="h1">
               <Row wrap gap="2" className={styles.Heading}>
-                {props.title}{' '}
-                {isBeta ? (
-                  <StatusBadge status={{value: StatusName.Beta, message: ''}} />
-                ) : null}
+                {props.title}
               </Row>
             </Heading>
             <Lede>{pattern.description}</Lede>
