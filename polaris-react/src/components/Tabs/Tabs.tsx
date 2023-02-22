@@ -10,6 +10,7 @@ import {Popover} from '../Popover';
 import {UnstyledButton} from '../UnstyledButton';
 import {Tooltip} from '../Tooltip';
 import {Text} from '../Text';
+import {Box} from '../Box';
 import {DisabledTooltipWrapper} from '../DisabledTooltipWrapper';
 
 import type {TabProps, TabMeasurements} from './types';
@@ -350,7 +351,7 @@ export const TabsInner = ({
 
   return (
     <div>
-      <div className={styles.Outer}>
+      <Box padding="2">
         {tabMeasurer}
         <div className={wrapperClassNames}>
           <ul
@@ -412,7 +413,8 @@ export const TabsInner = ({
             </div>
           )}
         </div>
-      </div>
+      </Box>
+
       {panelMarkup}
     </div>
   );

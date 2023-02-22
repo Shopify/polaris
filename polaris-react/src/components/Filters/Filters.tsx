@@ -12,6 +12,7 @@ import type {AppliedFilterInterface, FilterInterface} from '../../types';
 import type {DisabledInfo} from '../DisabledTooltipWrapper';
 import {DisabledTooltipWrapper} from '../DisabledTooltipWrapper';
 import {Button} from '../Button';
+import {Link} from '../Link';
 import {Inline} from '../Inline';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
@@ -301,14 +302,11 @@ export function Filters({
                   <DisabledTooltipWrapper
                     disabled={disableFilteringOrActualDisabled}
                   >
-                    <Button
-                      onClick={handleClearAllFilters}
-                      plain
-                      size="slim"
-                      disabled={disableFilteringOrActualDisabled?.isDisabled}
-                    >
-                      {i18n.translate('Polaris.Filters.clearFilters')}
-                    </Button>
+                    <Link onClick={handleClearAllFilters} removeUnderline>
+                      <Text variant="bodySm" fontWeight="semibold" as="span">
+                        {i18n.translate('Polaris.Filters.clearFilters')}
+                      </Text>
+                    </Link>
                   </DisabledTooltipWrapper>
                 </div>
               ) : null}
