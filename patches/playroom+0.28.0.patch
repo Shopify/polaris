@@ -5,7 +5,7 @@ index 6c82bbe..f05b80b 100644
 @@ -160,6 +160,12 @@ export { themeB } from './themeB';
  // etc...
  ```
- 
+
 +## Additional Code Transformations
 +
 +A hook into the internal processing of code is available via the `processCode` option, which is a path to a file that exports a function that receives the code as entered into the editor, and returns the new code to be rendered.
@@ -13,7 +13,7 @@ index 6c82bbe..f05b80b 100644
 +One example is [wrapping code in an IIFE for state support](https://github.com/seek-oss/playroom/issues/66).
 +
  ## TypeScript Support
- 
+
  If a `tsconfig.json` file is present in your project, static prop types are parsed using [react-docgen-typescript](https://github.com/styleguidist/react-docgen-typescript) to provide better autocompletion in the Playroom editor.
 diff --git a/node_modules/playroom/lib/defaultModules/processCode.js b/node_modules/playroom/lib/defaultModules/processCode.js
 new file mode 100644
@@ -49,7 +49,7 @@ index b175d74..ce3e7ef 100644
  // @ts-ignore
  import RenderCode from './RenderCode/RenderCode';
 +import { INCOMING_CODE, READY_TO_RECEIVE } from './constants';
- 
+
  interface FrameProps {
    themes: Record<string, any>;
 @@ -18,11 +18,21 @@ export default function Frame({
@@ -76,7 +76,7 @@ index b175d74..ce3e7ef 100644
 +    window.parent.postMessage({ type: READY_TO_RECEIVE, ready: true }, window.origin);
 +    return () => window.removeEventListener('message', listener);
 +  }, []);
- 
+
    const resolvedThemeName =
      themeName === '__PLAYROOM__NO_THEME__' ? null : themeName;
 diff --git a/node_modules/playroom/src/Playroom/Frames/Frames.tsx b/node_modules/playroom/src/Playroom/Frames/Frames.tsx
@@ -88,9 +88,9 @@ index 5b4af43..3bb2615 100644
  import { Text } from '../Text/Text';
  import playroomConfig from '../../config';
 -import frameSrc from './frameSrc';
- 
+
  import * as styles from './Frames.css';
- 
+
 @@ -44,10 +43,9 @@ export default function Frames({ code, themes, widths }: FramesProps) {
              <div className={styles.frameBorder} />
              <Iframe
@@ -114,16 +114,16 @@ index 9285b94..cd57b41 100644
  } from 'react';
  import { useIntersection } from 'react-use';
 +import { READY_TO_RECEIVE, INCOMING_CODE } from '../constants';
- 
+
  import playroomConfig from '../../config';
- 
+
  interface IframeProps extends AllHTMLAttributes<HTMLIFrameElement> {
    src: string;
 +  code: string;
 +  themeName: string;
    intersectionRootRef: MutableRefObject<Element | null>;
  }
- 
+
 +
  export default function Iframe({
    intersectionRootRef,
@@ -140,16 +140,15 @@ index 9285b94..cd57b41 100644
    const iframeRef = useRef<HTMLIFrameElement | null>(null);
    const intersection = useIntersection(iframeRef, {
      root: intersectionRootRef.current,
-@@ -32,35 +39,42 @@ export default function Iframe({
+@@ -32,35 +39,41 @@ export default function Iframe({
    const intersectionRatio = intersection?.intersectionRatio ?? null;
- 
+
    useEffect(() => {
 -    if (intersectionRatio === null) {
 -      return;
 +    if (intersectionRatio === null) return;
 +    const listener = (e: any) => {
 +      if (e.data.type === READY_TO_RECEIVE && e.source === iframeRef.current?.contentWindow) {
-+        console.log(e);
 +        setReadyToPost(true);
 +        const contentWindow = iframeRef.current?.contentWindow;
 +        if (contentWindow) {
@@ -158,13 +157,13 @@ index 9285b94..cd57b41 100644
 +      }
      }
 +    window.addEventListener('message', listener);
- 
+
      if (intersectionRatio > 0 && src !== renderedSrc) {
        setRenderedSrc(src);
      }
 +    return () => window.removeEventListener('message', listener);
    }, [intersectionRatio, src, renderedSrc]);
- 
+
    useEffect(() => {
 -    if (renderedSrc !== null) {
 -      const location = iframeRef.current?.contentWindow?.location;
@@ -181,7 +180,7 @@ index 9285b94..cd57b41 100644
 +  }, [readyToPost, code])
 +
 +
- 
+
    return (
      <iframe
        ref={iframeRef}
@@ -212,7 +211,7 @@ index dadea77..82d080c 100644
  import { transform } from '@babel/standalone';
 +/* eslint-disable-next-line import/no-unresolved */
 +import processCode from '__PLAYROOM_ALIAS__PROCESS_CODE__';
- 
+
 -export const compileJsx = (code: string) =>
 -  transform(`<React.Fragment>${code.trim() || ''}</React.Fragment>`, {
 +export const compileJsx = (code: string) => {
@@ -226,7 +225,7 @@ index dadea77..82d080c 100644
      presets: ['react'],
    }).code;
 +}
- 
+
  export const validateCode = (code: string) => {
    try {
 diff --git a/node_modules/playroom/src/utils/formatting.ts b/node_modules/playroom/src/utils/formatting.ts
@@ -236,7 +235,7 @@ index a1819bf..70ac15c 100644
 @@ -133,10 +133,10 @@ export const formatAndInsert = ({
      snippet,
    });
- 
+
 -  return formatCode({
 +  return {
      code: newCode,
@@ -244,5 +243,5 @@ index a1819bf..70ac15c 100644
 -  });
 +  };
  };
- 
+
  export const formatForInsertion = ({
