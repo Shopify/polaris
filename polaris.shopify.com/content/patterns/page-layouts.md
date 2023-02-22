@@ -57,7 +57,7 @@ Within the page, the [layout component](/components/layout-and-structure/layout)
 
 Place page-level [banners](/components/feedback-indicators/banner) in a full-width section at the top of the page.
 
-Stack [cards](/components/layout-and-structure/alpha-card) in sections to separate the screen’s main content into meaningful groups.
+Stack [cards](/components/layout-and-structure/legacy-card) in sections to separate the screen’s main content into meaningful groups.
 
 For screens that represent an individual resource like a product or order, place
 [page actions](/components/actions/page-actions) in a full-width section at the bottom of the page.
@@ -69,7 +69,7 @@ For pages that don’t have footer actions, the
 
 ![Diagram showing the anatomy of a card component, showing the card title and header actions at the top, two sections in the middle, and footer below](/images/foundations/patterns/page-layouts/card-layout-diagram@2x.png)
 
-[Cards](/components/layout-and-structure/alpha-card) have a similar structure to the page as a whole.
+[Cards](/components/layout-and-structure/legacy-card) have a similar structure to the page as a whole.
 
 - Cards often have a header, with a title and card-level actions on the right.
 - Cards can have footer actions.
@@ -77,7 +77,7 @@ For pages that don’t have footer actions, the
 - Sections often have a subheader with a title on the left and section-level actions on the right.
 
 For more details, including when to use header and footer actions, see the
-[card component](/components/layout-and-structure/alpha-card).
+[card component](/components/layout-and-structure/legacy-card).
 
 ---
 
