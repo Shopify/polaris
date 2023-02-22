@@ -112,8 +112,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   };
 
   private node: HTMLDivElement | null = null;
-  private checkboxId = useId();
-  private overlayId = useId();
+  private overlayRef = createRef<HTMLAnchorElement>();
   private buttonOverlay = createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
@@ -180,13 +179,17 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             >
               <div onClick={stopPropagation}>
                 <div onChange={this.handleLargerSelectionArea}>
-                  <Checkbox
-                    id={this.checkboxId}
-                    label={checkboxAccessibilityLabel}
-                    labelHidden
-                    checked={selected}
-                    disabled={loading}
-                  />
+                  <UseId>
+                    {(id) => (
+                      <Checkbox
+                        id={id}
+                        label={checkboxAccessibilityLabel}
+                        labelHidden
+                        checked={selected}
+                        disabled={loading}
+                      />
+                    )}
+                  </UseId>
                 </div>
               </div>
             </Box>
@@ -315,15 +318,20 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       });
 
     const accessibleMarkup = url ? (
-      <UnstyledLink
-        aria-describedby={this.props.id}
-        aria-label={ariaLabel}
-        className={styles.Link}
-        url={url}
-        external={external}
-        tabIndex={tabIndex}
-        id={this.overlayId}
-      />
+      <UseId>
+        {(id) => (
+          <UnstyledLink
+            aria-describedby={this.props.id}
+            aria-label={ariaLabel}
+            className={styles.Link}
+            url={url}
+            external={external}
+            tabIndex={tabIndex}
+            id={id}
+            ref={this.overlayRef}
+          />
+        )}
+      </UseId>
     ) : (
       <button
         className={styles.Button}
@@ -364,8 +372,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   private handleFocus = (event: React.FocusEvent<HTMLElement>) => {
     if (
       event.target === this.buttonOverlay.current ||
-      (this.node &&
-        event.target === this.node.querySelector(`#${this.overlayId}`))
+      (this.node && event.target === this.overlayRef.current)
     ) {
       this.setState({focused: true, focusedInner: false});
     } else if (this.node && this.node.contains(event.target)) {
@@ -508,4 +515,9 @@ function getAlignment(alignment?: Alignment): InlineProps['blockAlign'] {
     default:
       return 'start';
   }
+}
+
+function UseId(props: {children(id: string): JSX.Element}) {
+  const id = useId();
+  return props.children(id);
 }
