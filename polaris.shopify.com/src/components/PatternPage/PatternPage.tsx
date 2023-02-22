@@ -75,7 +75,7 @@ function PatternTabs({pattern, children}: PatternTabsProps) {
       onChange={onTabChange}
     >
       <div className={styles.TabGroup} data-selected={exampleIndex}>
-        <Tab.List className={styles.ExamplesList} id="examples">
+        <Tab.List className={styles.TabList} id="examples">
           {pattern.variants.map((variant) => (
             <Tab key={`${variant.slug}-tab`}>
               <span>{variant.title}</span>
@@ -85,7 +85,10 @@ function PatternTabs({pattern, children}: PatternTabsProps) {
         <Tab.Panels>
           {pattern.variants.map((variant) => {
             return (
-              <Tab.Panel key={`${variant.slug}-panel`} className={styles.Panel}>
+              <Tab.Panel
+                key={`${variant.slug}-panel`}
+                className={styles.TabPanel}
+              >
                 {children({variant})}
               </Tab.Panel>
             );
@@ -127,7 +130,7 @@ function PatternPageContent({
           {description}
         </Markdown>
       ) : null}
-      <Stack as="section" gap="4" className={styles.MerchantGoal}>
+      <Stack as="section" gap="4" className={styles.HowItHelps}>
         <Heading as="h2" id="how-it-helps-merchants">
           How it helps merchants
         </Heading>

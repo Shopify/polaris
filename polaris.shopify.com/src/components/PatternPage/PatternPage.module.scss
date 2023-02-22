@@ -33,7 +33,7 @@
     }
   }
 }
-.Panel {
+.TabPanel {
   background-color: var(--tab-background);
   position: relative;
   padding: 1rem;
@@ -65,7 +65,7 @@
   }
 }
 
-.ExamplesList {
+.TabList {
   --border-subdued: rgba(201, 204, 207, 1);
 
   display: flex;
@@ -116,10 +116,10 @@
     margin-left: -1.25rem;
     margin-right: -1.25rem;
   }
-  .Panel {
+  .TabPanel {
     padding: 1.25rem;
   }
-  .ExamplesList {
+  .TabList {
     position: sticky;
     top: 60px;
     background-color: white;
@@ -129,7 +129,7 @@
   }
 }
 
-.MerchantGoal {
+.HowItHelps {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
