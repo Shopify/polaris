@@ -1,10 +1,10 @@
-import {Card, EmptyState} from '@shopify/polaris';
+import {LegacyCard, EmptyState} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function EmptyStateExample() {
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <EmptyState
         heading="Manage your inventory transfers"
         action={{content: 'Add transfer'}}
@@ -16,7 +16,7 @@ function EmptyStateExample() {
       >
         <p>Track and receive your incoming inventory from suppliers.</p>
       </EmptyState>
-    </Card>
+    </LegacyCard>
   );
 }
 

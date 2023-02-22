@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.6.0
+
+### Minor Changes
+
+- [#8417](https://github.com/Shopify/polaris/pull/8417) [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added new magic tokens
+
+### Patch Changes
+
+- [#8428](https://github.com/Shopify/polaris/pull/8428) [`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `bg-app-active` and `text-primary-hover` `color` tokens
+
+* [#8427](https://github.com/Shopify/polaris/pull/8427) [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Fixed typo in `yellow-100` shade and lightened `blue-100` shade
+
 ## 6.5.1
 
 ### Patch Changes

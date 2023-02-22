@@ -109,7 +109,7 @@ Resource lists function as:
 
 Because a details page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these details pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
 
-![Schematic showing content from a details page being surfaced on a resource list](/images/components/resource-list/list-surfacing-show@2x.png)
+![Schematic showing content from a details page being surfaced on a resource list](/images/components/lists/resource-list/list-surfacing-show@2x.png)
 
 #### A resource list isn’t a data table
 

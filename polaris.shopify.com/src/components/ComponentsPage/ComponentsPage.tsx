@@ -28,41 +28,52 @@ export default function ComponentsPage() {
       />
 
       <Page title="Components" showTOC={false}>
-        {componentCategories.map((category) => {
-          return (
-            <div key={category} className={styles.Category}>
-              <h2 className={styles.CategoryName}>{category}</h2>
-              <Grid>
-                {components
-                  .filter(
-                    (slug) => pages[slug].frontMatter.category === category,
-                  )
-                  .map((slug) => {
-                    const {
-                      title,
-                      status,
-                      description = '',
-                    } = pages[slug].frontMatter;
-                    return (
-                      <Grid.Item
-                        key={title}
-                        title={title}
-                        description={stripMarkdownLinks(description)}
-                        url={`/${slug}`}
-                        status={status as Status}
-                        renderPreview={() => (
-                          <ComponentThumbnail
-                            title={title}
-                            group={slugify(category)}
-                          />
-                        )}
-                      />
-                    );
-                  })}
-              </Grid>
-            </div>
-          );
-        })}
+        {componentCategories
+          .sort((currentCategory, previousCategory) => {
+            const currentOrder =
+              pages[`components/${slugify(currentCategory)}`]?.frontMatter
+                .order || 0;
+            const previousOrder =
+              pages[`components/${slugify(previousCategory)}`]?.frontMatter
+                .order || 0;
+
+            return currentOrder - previousOrder;
+          })
+          .map((category) => {
+            return (
+              <div key={category} className={styles.Category}>
+                <h2 className={styles.CategoryName}>{category}</h2>
+                <Grid>
+                  {components
+                    .filter(
+                      (slug) => pages[slug].frontMatter.category === category,
+                    )
+                    .map((slug) => {
+                      const {
+                        title,
+                        status,
+                        description = '',
+                      } = pages[slug].frontMatter;
+                      return (
+                        <Grid.Item
+                          key={title}
+                          title={title}
+                          description={stripMarkdownLinks(description)}
+                          url={`/${slug}`}
+                          status={status as Status}
+                          renderPreview={() => (
+                            <ComponentThumbnail
+                              title={title}
+                              group={slugify(category)}
+                            />
+                          )}
+                        />
+                      );
+                    })}
+                </Grid>
+              </div>
+            );
+          })}
       </Page>
     </div>
   );

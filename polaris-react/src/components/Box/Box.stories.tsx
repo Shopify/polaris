@@ -33,7 +33,7 @@ export function WithBorderRadius() {
 
 export function WithResponsivePadding() {
   return (
-    <AlphaStack>
+    <AlphaStack gap="4">
       <Box background="surface" padding={{xs: '2', sm: '8'}} border="dark">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>

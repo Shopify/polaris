@@ -17,6 +17,7 @@ export interface FrontMatter {
   description?: string;
   examples?: Example[];
   icon?: string;
+  order?: number;
   keywords?: (string | number)[];
   status?: {
     value: string;

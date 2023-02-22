@@ -7,20 +7,17 @@ function AlphaStackWithAlignExample() {
   return (
     <Page>
       <AlphaStack gap="5" fullWidth>
-        <AlphaStack align="start">
+        <AlphaStack gap="4" align="start">
           <Placeholder width="320px" label="Start" childAlign="start" />
           <Placeholder width="320px" childAlign="start" />
           <Placeholder width="320px" childAlign="start" />
         </AlphaStack>
-
-        <AlphaStack align="center">
-          <AlphaStack>
-            <Placeholder width="320px" label="Center" childAlign="center" />
-            <Placeholder width="320px" childAlign="center" />
-            <Placeholder width="320px" childAlign="center" />
-          </AlphaStack>
+        <AlphaStack gap="4" align="center">
+          <Placeholder width="320px" label="Center" childAlign="center" />
+          <Placeholder width="320px" childAlign="center" />
+          <Placeholder width="320px" childAlign="center" />
         </AlphaStack>
-        <AlphaStack align="end">
+        <AlphaStack gap="4" align="end">
           <Placeholder width="320px" label="End" childAlign="end" />
           <Placeholder width="320px" childAlign="center" />
           <Placeholder width="320px" childAlign="center" />

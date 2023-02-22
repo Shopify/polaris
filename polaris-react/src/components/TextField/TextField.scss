@@ -245,8 +245,8 @@ $spinner-icon-size: 12px;
   width: 100%;
 
   > .Input {
-    padding-left: var(--p-space-0);
-    padding-right: var(--p-space-0);
+    padding-left: 0;
+    padding-right: 0;
   }
 
   @media #{$p-breakpoints-sm-up} {

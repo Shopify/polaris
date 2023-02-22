@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  Card,
+  LegacyCard,
   FormLayout,
   Icon,
   InlineError,
@@ -157,7 +157,7 @@ export function WithSeparateValidationError() {
     </Stack>
   );
 
-  return <Card sectioned>{formGroupMarkup}</Card>;
+  return <LegacyCard sectioned>{formGroupMarkup}</LegacyCard>;
 
   function generateErrorMessage() {
     const weightError =
