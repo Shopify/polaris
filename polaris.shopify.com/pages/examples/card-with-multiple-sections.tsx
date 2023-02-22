@@ -8,7 +8,6 @@ function CardExample() {
       <Card.Section>
         <p>View a summary of your online store’s performance.</p>
       </Card.Section>
-
       <Card.Section>
         <p>
           View a summary of your online store’s performance, including sales,

@@ -63,7 +63,7 @@ npx stylelint --fix '**/*.{css,scss}'
 
 ### Ignoring existing failures
 
-Enabling the linter could result in a large amount of warnings and errors in existing codebases. It is important to fix as many failures upfront as possible, but that shouldn't block the linter from being added. The [styles-insert-stylelint-disable](https://github.com/Shopify/polaris/tree/main/polaris-migrator#v10) migration inserts [ignore comments](https://stylelint.io/user-guide/ignore-code/) so that enabling `stylelint-polaris` can be unblocked.
+Enabling the linter could result in a large amount of warnings and errors in existing codebases. It is important to fix as many failures upfront as possible, but that shouldn't block the linter from being added. The [styles-insert-stylelint-disable](https://github.com/Shopify/polaris/tree/main/polaris-migrator#generic-migrations) migration inserts [ignore comments](https://stylelint.io/user-guide/ignore-code/) so that enabling `stylelint-polaris` can be unblocked.
 
 The migration will insert comments as follows:
 

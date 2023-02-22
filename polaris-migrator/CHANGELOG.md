@@ -1,5 +1,34 @@
 # @shopify/polaris-migrator
 
+## 0.13.4
+
+### Patch Changes
+
+- Updated dependencies [[`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c)]:
+  - @shopify/stylelint-polaris@7.0.0
+
+## 0.13.3
+
+### Patch Changes
+
+- Updated dependencies [[`065df230a`](https://github.com/Shopify/polaris/commit/065df230a279d9dd1503337a523ca5c9a94acce9), [`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8)]:
+  - @shopify/stylelint-polaris@6.0.2
+  - @shopify/polaris-tokens@6.6.0
+
+## 0.13.2
+
+### Patch Changes
+
+- [#8393](https://github.com/Shopify/polaris/pull/8393) [`40ff13451`](https://github.com/Shopify/polaris/commit/40ff1345148a6f77ced213b92137269711925ae2) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed version from generic migrations
+
+## 0.13.1
+
+### Patch Changes
+
+- Updated dependencies [[`7a9977b4d`](https://github.com/Shopify/polaris/commit/7a9977b4dfe29217279d4988a60cf056d8404419)]:
+  - @shopify/polaris-tokens@6.5.1
+  - @shopify/stylelint-polaris@6.0.1
+
 ## 0.13.0
 
 ### Minor Changes

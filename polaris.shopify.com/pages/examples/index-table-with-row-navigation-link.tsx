@@ -1,6 +1,6 @@
 import {
   IndexTable,
-  Card,
+  LegacyCard,
   Link,
   useIndexResourceState,
   Text,
@@ -62,7 +62,7 @@ function ClickThroughLinkIndexTableExample() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -79,7 +79,7 @@ function ClickThroughLinkIndexTableExample() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 

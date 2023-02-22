@@ -40,12 +40,12 @@ Show static display text that that never changes on a page. For example, keep pa
 #### Do
 
 Show actual display text for static content and use skeleton display text for dynamic content.
-![Image showing skeleton display text for dynamic content](/images/components/skeleton-display-text/do-show-display-text-for-static-content@2x.png)
+![Image showing skeleton display text for dynamic content](/images/components/feedback-indicators/skeleton-display-text/do-show-display-text-for-static-content@2x.png)
 
 #### Don’t
 
 Use skeleton display text for static content or placeholder content for dynamic content.
-![Image showing skeleton display text for static content and placeholder text for dynamic content](/images/components/skeleton-display-text/dont-use-skeleton-for-static-or-placeholder-content-for-dynamic@2x.png)
+![Image showing skeleton display text for static content and placeholder text for dynamic content](/images/components/feedback-indicators/skeleton-display-text/dont-use-skeleton-for-static-or-placeholder-content-for-dynamic@2x.png)
 
 <!-- end -->
 
@@ -55,7 +55,7 @@ Use skeleton display text for static content or placeholder content for dynamic 
 
 Show skeleton display text for dynamic page titles.
 
-![Image showing skeleton display text for dynamic page title](/images/components/skeleton-display-text/do-use-skeleton-for-dynamic-page-titles@2x.png)
+![Image showing skeleton display text for dynamic page title](/images/components/feedback-indicators/skeleton-display-text/do-use-skeleton-for-dynamic-page-titles@2x.png)
 
 <!-- end -->
 

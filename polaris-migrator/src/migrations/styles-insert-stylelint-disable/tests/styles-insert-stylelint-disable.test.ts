@@ -2,8 +2,8 @@ import path from 'path';
 
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'v10-styles-insert-stylelint-disable';
-const fixtures = ['v10-styles-insert-stylelint-disable'];
+const migration = 'styles-insert-stylelint-disable';
+const fixtures = ['styles-insert-stylelint-disable'];
 
 for (const fixture of fixtures) {
   check(__dirname, {

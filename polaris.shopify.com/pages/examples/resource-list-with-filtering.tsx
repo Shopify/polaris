@@ -2,7 +2,7 @@ import {
   TextField,
   Filters,
   Button,
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   ResourceItem,
@@ -89,14 +89,14 @@ function ResourceListWithFilteringExample() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
         renderItem={renderItem}
         filterControl={filterControl}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {

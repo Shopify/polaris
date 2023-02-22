@@ -1,5 +1,5 @@
 import {
-  Card,
+  LegacyCard,
   Stack,
   Button,
   Collapsible,
@@ -16,7 +16,7 @@ function CollapsibleExample() {
 
   return (
     <div style={{height: '200px'}}>
-      <Card sectioned>
+      <LegacyCard sectioned>
         <Stack vertical>
           <Button
             onClick={handleToggle}
@@ -41,7 +41,7 @@ function CollapsibleExample() {
             </TextContainer>
           </Collapsible>
         </Stack>
-      </Card>
+      </LegacyCard>
     </div>
   );
 }

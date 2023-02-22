@@ -1,5 +1,51 @@
 # polaris.shopify.com
 
+## 0.36.0
+
+### Minor Changes
+
+- [#8363](https://github.com/Shopify/polaris/pull/8363) [`13c6c383a`](https://github.com/Shopify/polaris/commit/13c6c383a344588dc7fcc2b4b49b910fde05204a) Thanks [@laurkim](https://github.com/laurkim)! - Migrated usage of `Card` to `LegacyCard`
+
+* [#8450](https://github.com/Shopify/polaris/pull/8450) [`2282bd673`](https://github.com/Shopify/polaris/commit/2282bd673a27a65e6780c3967099b06be28e411f) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `Card` and subcomponents
+
+### Patch Changes
+
+- Updated dependencies [[`13c6c383a`](https://github.com/Shopify/polaris/commit/13c6c383a344588dc7fcc2b4b49b910fde05204a), [`2282bd673`](https://github.com/Shopify/polaris/commit/2282bd673a27a65e6780c3967099b06be28e411f)]:
+  - @shopify/polaris@10.31.0
+
+## 0.35.0
+
+### Minor Changes
+
+- [#8425](https://github.com/Shopify/polaris/pull/8425) [`c73717cf8`](https://github.com/Shopify/polaris/commit/c73717cf82845c9ae9b9a4a05263b60e8c5d266f) Thanks [@lgriffee](https://github.com/lgriffee)! - Manually migrated `z-index` custom properties from `v10` to `v11`
+
+### Patch Changes
+
+- [#8411](https://github.com/Shopify/polaris/pull/8411) [`c66f498af`](https://github.com/Shopify/polaris/commit/c66f498af51ba6ee96f8a4ad24e47d24f95a5a01) Thanks [@kyledurand](https://github.com/kyledurand)! - Added virtual keyboards image
+
+- Updated dependencies [[`6f92bf33c`](https://github.com/Shopify/polaris/commit/6f92bf33ce855cebd2b1243411a75a35f55eaeb1), [`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`c73717cf8`](https://github.com/Shopify/polaris/commit/c73717cf82845c9ae9b9a4a05263b60e8c5d266f), [`bc8ab02f2`](https://github.com/Shopify/polaris/commit/bc8ab02f20c1afdb86c1309453681c1c58265933), [`20d17c61a`](https://github.com/Shopify/polaris/commit/20d17c61af2a14aaab48ccda1a9374d5d90864b3), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8), [`d06191580`](https://github.com/Shopify/polaris/commit/d06191580a8ab6a9562057845511161927249d0c)]:
+  - @shopify/polaris@10.30.0
+  - @shopify/polaris-tokens@6.6.0
+
+## 0.34.3
+
+### Patch Changes
+
+- [#8404](https://github.com/Shopify/polaris/pull/8404) [`5d4c2c12d`](https://github.com/Shopify/polaris/commit/5d4c2c12dbb13552e2e5e09a78a2f78a28daf6f1) Thanks [@laurkim](https://github.com/laurkim)! - Fixed broken image urls for component pages
+
+* [#8393](https://github.com/Shopify/polaris/pull/8393) [`40ff13451`](https://github.com/Shopify/polaris/commit/40ff1345148a6f77ced213b92137269711925ae2) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed version from generic migrations
+
+* Updated dependencies [[`955832a3b`](https://github.com/Shopify/polaris/commit/955832a3bb653a334d782edd396b9519625134c1), [`160d9c15b`](https://github.com/Shopify/polaris/commit/160d9c15b433bf01370c1244c5d725808562c673)]:
+  - @shopify/polaris@10.29.0
+
+## 0.34.2
+
+### Patch Changes
+
+- Updated dependencies [[`7a9977b4d`](https://github.com/Shopify/polaris/commit/7a9977b4dfe29217279d4988a60cf056d8404419)]:
+  - @shopify/polaris-tokens@6.5.1
+  - @shopify/polaris@10.28.2
+
 ## 0.34.1
 
 ### Patch Changes

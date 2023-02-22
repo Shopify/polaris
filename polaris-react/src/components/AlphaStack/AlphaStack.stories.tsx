@@ -41,7 +41,7 @@ export function WithResponsiveGap() {
 
 export function WithAlignCenter() {
   return (
-    <AlphaStack align="center">
+    <AlphaStack gap="4" align="center">
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
@@ -52,7 +52,7 @@ export function WithAlignCenter() {
 
 export function WithAlignEnd() {
   return (
-    <AlphaStack align="end">
+    <AlphaStack gap="4" align="end">
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
@@ -63,7 +63,7 @@ export function WithAlignEnd() {
 
 export function WithFullWidthChildren() {
   return (
-    <AlphaStack fullWidth>
+    <AlphaStack gap="4" fullWidth>
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>

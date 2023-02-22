@@ -1,6 +1,40 @@
-import type {TokenGroup} from '../types';
+import type {MetadataProperties} from '../types';
 
-export const motion = {
+export type MotionDurationScale =
+  | '0'
+  | '50'
+  | '100'
+  | '150'
+  | '200'
+  | '250'
+  | '300'
+  | '350'
+  | '400'
+  | '450'
+  | '500'
+  | '5000';
+
+export type MotionKeyframesAlias = 'bounce' | 'fade-in' | 'pulse' | 'spin';
+
+type MotionTimingFunctionAlias =
+  | 'ease'
+  | 'ease-in'
+  | 'ease-out'
+  | 'ease-in-out'
+  | 'linear';
+
+export type MotionTokenName =
+  | `duration-${MotionDurationScale}`
+  | `keyframes-${MotionKeyframesAlias}`
+  | MotionTimingFunctionAlias;
+
+export type MotionTokenGroup = {
+  [TokenName in MotionTokenName]: string;
+};
+
+export const motion: {
+  [TokenName in MotionTokenName]: MetadataProperties;
+} = {
   'duration-0': {
     value: '0ms',
   },
@@ -75,30 +109,3 @@ export const motion = {
     value: '{ to { transform: rotate(1turn) } }',
   },
 };
-
-export type MotionTokenGroup = TokenGroup<typeof motion>;
-export type MotionTokenName = keyof MotionTokenGroup;
-
-export const motionDurationScale = [
-  '0',
-  '50',
-  '100',
-  '150',
-  '200',
-  '250',
-  '300',
-  '350',
-  '400',
-  '450',
-  '500',
-  '5000',
-] as const;
-export type MotionDurationScale = typeof motionDurationScale[number];
-
-export const motionKeyframesAlias = [
-  'bounce',
-  'fade-in',
-  'pulse',
-  'spin',
-] as const;
-export type MotionKeyframesAlias = typeof motionKeyframesAlias[number];

@@ -2,7 +2,7 @@ import {
   Page,
   Layout,
   Banner,
-  Card,
+  LegacyCard,
   FormLayout,
   TextField,
 } from '@shopify/polaris';
@@ -23,7 +23,7 @@ function LayoutExample() {
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -37,7 +37,7 @@ function LayoutExample() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
