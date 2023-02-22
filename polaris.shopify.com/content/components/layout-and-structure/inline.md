@@ -1,6 +1,6 @@
 ---
 title: Inline
-description: Use to arrange items in a horizontal row with equal spacing around them. Items wrap onto multiple lines when needed.
+description: Use to display children horizontally in a row. Based on css flexbox.
 category: Layout and structure
 keywords:
   - layout
@@ -11,23 +11,23 @@ examples:
   - fileName: inline-default.tsx
     title: Default
     description: >-
-      Items are vertically centered with 16px of space around them. They’ll wrap onto multiple lines when needed.
+      By default, children are displayed with `space-0` (0px) in between. Children are vertically centered and will wrap onto multiple lines when needed.
   - fileName: inline-with-non-wrapping.tsx
     title: Non-wrapping
     description: >-
-      Use to create Inline where the children will not wrap to new rows on small screens.
+      The default wrapping behavior of children can be overridden using the `wrap` prop.
   - fileName: inline-with-gap.tsx
     title: Gap
     description: >-
-      Use to control gaps around items in inline in standard increments.
-  - fileName: inline-with-vertical-alignment.tsx
-    title: Vertical alignment
+      Control the horizontal space between children using the `gap` prop. The `gap` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
+  - fileName: inline-with-block-align.tsx
+    title: Block align
     description: >-
-      Use to vertically align Inline.
-  - fileName: inline-with-horizontal-alignment.tsx
-    title: Horizontal alignment
+      Control the vertical alignment of children using the `blockAlign` prop.
+  - fileName: inline-with-align.tsx
+    title: Align
     description: >-
-      Use to horizontally align Inline.
+      Control the horizontal alignment of children using the `align` prop.
 ---
 
 ## Related components

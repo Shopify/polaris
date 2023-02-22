@@ -3,7 +3,7 @@ import {Inline, Text, AlphaStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function InlineWithVerticalAlignmentExample() {
+function InlineWithBlockAlignExample() {
   return (
     <AlphaStack gap="16">
       <Inline gap="4" blockAlign="start">
@@ -79,4 +79,4 @@ const Placeholder = ({
   );
 };
 
-export default withPolarisExample(InlineWithVerticalAlignmentExample);
+export default withPolarisExample(InlineWithBlockAlignExample);
