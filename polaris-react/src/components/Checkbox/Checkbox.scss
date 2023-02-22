@@ -45,10 +45,10 @@
   &:disabled:checked,
   &:disabled.Input-indeterminate {
     + .Backdrop {
-      background: var(--p-border-disabled);
+      background: var(--p-color-border-disabled);
 
       &::before {
-        background: var(--p-border-disabled);
+        background: var(--p-color-border-disabled);
       }
     }
   }
@@ -108,7 +108,7 @@
   .Input:active,
   .Input.Input-indeterminate {
     + .Backdrop::before {
-      background-color: var(--p-border-critical);
+      background-color: var(--p-color-border-critical);
     }
   }
 }

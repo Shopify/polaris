@@ -36,7 +36,7 @@ $control-vertical-adjustment: 2px;
   }
 
   &.active {
-    background: var(--p-surface-selected);
+    background: var(--p-color-bg-interactive-selected);
   }
 
   &.active::before,
@@ -69,7 +69,7 @@ $control-vertical-adjustment: 2px;
   @include text-breakword;
 
   &:hover:not(.disabled) {
-    background: var(--p-surface-hovered);
+    background: var(--p-color-bg-hover);
     outline: var(--p-border-width-1) solid transparent;
   }
 
@@ -77,14 +77,14 @@ $control-vertical-adjustment: 2px;
   &.select,
   &.select:hover:not(.disabled),
   &:active:not(.disabled) {
-    background: var(--p-surface-selected);
+    background: var(--p-color-bg-interactive-selected);
     outline: var(--p-border-width-1) solid transparent;
   }
 
   &.disabled {
-    background: var(--p-surface-disabled);
+    background: var(--p-color-bg-disabled);
     cursor: default;
-    color: var(--p-text-disabled);
+    color: var(--p-color-text-disabled);
   }
 }
 

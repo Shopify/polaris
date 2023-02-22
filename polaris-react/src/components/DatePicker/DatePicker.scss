@@ -65,12 +65,12 @@
   outline: none;
   font-size: var(--p-font-size-75);
   text-align: center;
-  color: var(--p-text);
+  color: var(--p-color-text);
   cursor: pointer;
 
   &:hover {
-    background: var(--p-interactive-hovered);
-    color: var(--p-text-on-interactive);
+    background: var(--p-color-bg-interactive-hover);
+    color: var(--p-color-text-on-color);
     outline: var(--p-border-width-1) solid transparent;
   }
 
@@ -88,7 +88,7 @@
 }
 
 .Day-inRange {
-  background: var(--p-surface-selected);
+  background: var(--p-color-bg-interactive-selected);
   border-radius: 0;
 
   @media (-ms-high-contrast: active) {
@@ -105,8 +105,8 @@
 }
 
 .Day-selected {
-  background: var(--p-interactive);
-  color: var(--p-text-on-interactive);
+  background: var(--p-color-bg-interactive);
+  color: var(--p-color-text-on-color);
 
   @media (-ms-high-contrast: active) {
     -ms-high-contrast-adjust: none;
@@ -123,11 +123,11 @@
 
 .Day-disabled {
   background-color: transparent;
-  color: var(--p-text-disabled);
+  color: var(--p-color-text-disabled);
 
   &:hover {
     background-color: transparent;
-    color: var(--p-text-disabled);
+    color: var(--p-color-text-disabled);
   }
 
   @media (-ms-high-contrast) {
@@ -158,13 +158,13 @@
   background: transparent;
   font-size: var(--p-font-size-75);
   font-weight: var(--p-font-weight-regular);
-  color: var(--p-text-subdued);
+  color: var(--p-color-text-subdued);
   text-align: center;
 }
 
 .Weekday-current {
   font-weight: var(--p-font-weight-bold);
-  color: var(--p-text);
+  color: var(--p-color-text);
 }
 
 .Header {

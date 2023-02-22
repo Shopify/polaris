@@ -10,7 +10,7 @@ $large-size: 44px;
 
 .Spinner svg {
   animation: var(--p-keyframes-spin) var(--p-duration-500) linear infinite;
-  fill: var(--p-border-highlight);
+  fill: var(--p-color-border-info);
 }
 
 .sizeSmall svg {

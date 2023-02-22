@@ -41,28 +41,28 @@
 
 .colorHighlight {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-surface-neutral);
-  --pc-progress-bar-indicator: var(--p-border-highlight);
+  --pc-progress-bar-background: var(--p-color-bg-strong);
+  --pc-progress-bar-indicator: var(--p-color-border-info);
   // stylelint-enable
 }
 
 .colorPrimary {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-surface-neutral);
+  --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-action-primary);
   // stylelint-enable
 }
 
 .colorSuccess {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-surface-neutral);
-  --pc-progress-bar-indicator: var(--p-border-success);
+  --pc-progress-bar-background: var(--p-color-bg-strong);
+  --pc-progress-bar-indicator: var(--p-color-border-success);
   // stylelint-enable
 }
 
 .colorCritical {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-surface-neutral);
+  --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-interactive-critical);
   // stylelint-enable
 }

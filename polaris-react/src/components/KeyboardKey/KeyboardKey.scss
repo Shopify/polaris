@@ -7,16 +7,16 @@ $key-base-height: 24px;
   height: $key-base-height;
   margin: 0 var(--p-space-05) var(--p-space-05);
   padding: 0 var(--p-space-1);
-  background-color: var(--p-surface);
-  box-shadow: 0 0 0 var(--p-space-025) var(--p-border-subdued),
-    0 var(--p-space-05) 0 0 var(--p-surface),
-    0 var(--p-space-05) 0 var(--p-space-025) var(--p-border-subdued);
+  background-color: var(--p-color-bg);
+  box-shadow: 0 0 0 var(--p-space-025) var(--p-color-border-subdued),
+    0 var(--p-space-05) 0 0 var(--p-color-bg),
+    0 var(--p-space-05) 0 var(--p-space-025) var(--p-color-border-subdued);
   border-radius: var(--p-border-radius-1);
   font-family: var(--p-font-family-sans);
   font-size: var(--p-font-size-75);
   font-weight: var(--p-font-weight-medium);
   line-height: $key-base-height;
-  color: var(--p-text-subdued);
+  color: var(--p-color-text-subdued);
   text-align: center;
   min-width: $key-base-height;
   user-select: none;

@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .Card {
-  background-color: var(--p-surface);
+  background-color: var(--p-color-bg);
   box-shadow: var(--p-shadow-card);
   outline: var(--p-border-width-1) solid transparent;
 
@@ -31,7 +31,7 @@
 }
 
 .subdued {
-  background-color: var(--p-surface-subdued);
+  background-color: var(--p-color-bg-subdued);
 }
 
 .Section-hideOnPrint,
@@ -102,7 +102,7 @@
 }
 
 .Section-subdued {
-  background-color: var(--p-surface-subdued);
+  background-color: var(--p-color-bg-subdued);
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;

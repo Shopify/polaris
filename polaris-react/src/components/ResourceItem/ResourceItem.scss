@@ -22,7 +22,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--p-surface-hovered);
+    background-color: var(--p-color-bg-hover);
 
     .Actions {
       // stylelint-disable-next-line selector-max-combinators -- show actions on hover
@@ -33,7 +33,7 @@
   }
 
   &:active {
-    background-color: var(--p-surface-pressed);
+    background-color: var(--p-color-bg-active);
   }
 }
 
@@ -107,14 +107,14 @@
 }
 
 .selected {
-  background-color: var(--p-surface-selected);
+  background-color: var(--p-color-bg-interactive-selected);
 
   &:hover {
-    background-color: var(--p-surface-selected-hovered);
+    background-color: var(--p-color-bg-interactive-subdued-hover);
   }
 
   &:active {
-    background-color: var(--p-surface-selected-pressed);
+    background-color: var(--p-color-bg-interactive-subdued-active);
   }
 }
 

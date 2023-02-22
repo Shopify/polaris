@@ -13,7 +13,7 @@
 }
 
 .applyColor {
-  color: var(--p-surface);
+  color: var(--p-color-bg);
 }
 
 .hasBackdrop {
@@ -46,7 +46,7 @@
   @include recolor-icon(var(--p-icon));
 
   &::before {
-    background-color: var(--p-surface-neutral);
+    background-color: var(--p-color-bg-strong);
   }
 }
 
@@ -60,7 +60,7 @@
   @include recolor-icon(var(--p-icon-critical));
 
   &::before {
-    background-color: var(--p-surface-critical);
+    background-color: var(--p-color-bg-critical);
   }
 }
 
@@ -74,7 +74,7 @@
   @include recolor-icon(var(--p-icon-warning));
 
   &::before {
-    background-color: var(--p-surface-warning);
+    background-color: var(--p-color-bg-warning);
   }
 }
 
@@ -83,7 +83,7 @@
   @include recolor-icon(var(--p-icon-highlight));
 
   &::before {
-    background-color: var(--p-surface-highlight);
+    background-color: var(--p-color-bg-info);
   }
 }
 
@@ -92,7 +92,7 @@
   @include recolor-icon(var(--p-icon-success));
 
   &::before {
-    background-color: var(--p-surface-success);
+    background-color: var(--p-color-bg-success);
   }
 }
 

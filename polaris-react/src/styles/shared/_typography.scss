@@ -145,7 +145,7 @@
 }
 
 @mixin text-emphasis-subdued($for-background: null) {
-  color: var(--p-text-subdued);
+  color: var(--p-color-text-subdued);
 }
 
 @mixin text-emphasis-strong {
@@ -154,7 +154,7 @@
 
 @mixin text-emphasis-normal($for-background: null) {
   font-weight: var(--p-font-weight-regular);
-  color: var(--p-text);
+  color: var(--p-color-text);
 }
 
 @mixin text-breakword {
