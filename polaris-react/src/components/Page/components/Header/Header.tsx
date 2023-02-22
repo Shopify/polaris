@@ -108,32 +108,29 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
-  const breadcrumbMarkup = () => {
-    if (backAction) {
-      return (
-        <div className={styles.BreadcrumbWrapper}>
-          <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-            <Breadcrumbs backAction={backAction} />
-          </Box>
-        </div>
-      );
-    }
-
-    if (
-      (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
-      (!Array.isArray(breadcrumbs) && breadcrumbs)
-    ) {
-      return (
-        <div className={styles.BreadcrumbWrapper}>
-          <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-            <Breadcrumbs breadcrumbs={breadcrumbs} />
-          </Box>
-        </div>
-      );
-    }
-
+  let breadcrumbMarkup = null;
+  if (backAction) {
+    breadcrumbMarkup = (
+      <div className={styles.BreadcrumbWrapper}>
+        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+          <Breadcrumbs backAction={backAction} />
+        </Box>
+      </div>
+    );
+  } else if (
+    (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
+    (!Array.isArray(breadcrumbs) && breadcrumbs)
+  ) {
+    return (
+      <div className={styles.BreadcrumbWrapper}>
+        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </Box>
+      </div>
+    );
+  } else {
     return null;
-  };
+  }
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
@@ -352,7 +349,7 @@ function determineLayout({
   actionMenuMarkup: MaybeJSX;
   additionalMetadataMarkup: MaybeJSX;
   additionalNavigationMarkup: MaybeJSX;
-  breadcrumbMarkup: () => MaybeJSX;
+  breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
   pageTitleMarkup: JSX.Element;
   paginationMarkup: MaybeJSX;
