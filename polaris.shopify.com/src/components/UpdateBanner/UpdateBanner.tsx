@@ -2,23 +2,21 @@ import styles from './UpdateBanner.module.scss';
 import {FlagMajor} from '@shopify/polaris-icons';
 import Icon from '../Icon';
 import Markdown from '../Markdown';
-import {Box} from '@shopify/polaris';
+import {Box} from '../Box';
 
 interface Props {
   message?: string;
-  width?: string;
+  className?: string;
 }
 
-function UpdateBanner({message, width = '100%'}: Props) {
+function UpdateBanner({message, className}: Props) {
   if (!message) {
     return null;
   }
   return (
-    <Box width={width}>
-      <div className={styles.Banner}>
-        <Icon source={FlagMajor} width={20} height={20} />
-        <Markdown>{message}</Markdown>
-      </div>
+    <Box className={[styles.Banner, className]}>
+      <Icon source={FlagMajor} width={20} height={20} />
+      <Markdown>{message}</Markdown>
     </Box>
   );
 }

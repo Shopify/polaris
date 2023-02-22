@@ -26,7 +26,7 @@ export const PatternsPage = () => (
             message={`We are making changes to the patterns section. Expect changes to
               happen here and [join the discussion]("https://github.com/Shopify/polaris/discussions/categories/pattern-documentation)
               to make it better. [See old patterns here]("/patterns-legacy").`}
-            width="50%"
+            className={styles.UpdateBanner}
           />
         </div>
         <Grid>
