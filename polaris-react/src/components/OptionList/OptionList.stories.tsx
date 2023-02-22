@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Button, Card, OptionList, Popover} from '@shopify/polaris';
+import {Button, LegacyCard, OptionList, Popover} from '@shopify/polaris';
 
 export default {
   component: OptionList,
@@ -10,7 +10,7 @@ export function Default() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <Card>
+    <LegacyCard>
       <OptionList
         title="Inventory Location"
         onChange={setSelected}
@@ -23,7 +23,7 @@ export function Default() {
         ]}
         selected={selected}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -31,7 +31,7 @@ export function Multiple() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <Card>
+    <LegacyCard>
       <OptionList
         title="Manage sales channels availability"
         onChange={setSelected}
@@ -45,7 +45,7 @@ export function Multiple() {
         selected={selected}
         allowMultiple
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -53,7 +53,7 @@ export function WithSections() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <Card>
+    <LegacyCard>
       <OptionList
         onChange={setSelected}
         sections={[
@@ -85,7 +85,7 @@ export function WithSections() {
         selected={selected}
         allowMultiple
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

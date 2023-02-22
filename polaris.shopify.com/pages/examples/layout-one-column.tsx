@@ -1,4 +1,4 @@
-import {Page, Layout, Card} from '@shopify/polaris';
+import {Page, Layout, LegacyCard} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -7,9 +7,9 @@ function LayoutExample() {
     <Page fullWidth>
       <Layout>
         <Layout.Section>
-          <Card title="Online store dashboard" sectioned>
+          <LegacyCard title="Online store dashboard" sectioned>
             <p>View a summary of your online store’s performance.</p>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
