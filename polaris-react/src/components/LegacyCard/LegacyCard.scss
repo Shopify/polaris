@@ -13,14 +13,6 @@
     }
   }
 
-  + [class^='Polaris-Card'] {
-    margin-top: var(--p-space-4);
-
-    @media print {
-      margin-top: calc(-1 * var(--p-space-2));
-    }
-  }
-
   @media #{$p-breakpoints-sm-up} {
     border-radius: var(--p-border-radius-2);
   }
