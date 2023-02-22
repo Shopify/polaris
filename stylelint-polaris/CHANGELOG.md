@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.0
+
+### Major Changes
+
+- [#8451](https://github.com/Shopify/polaris/pull/8451) [`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c) Thanks [@qt314](https://github.com/qt314)! - report descriptionless disables
+
 ## 6.0.2
 
 ### Patch Changes
