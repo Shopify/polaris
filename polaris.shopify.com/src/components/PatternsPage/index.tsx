@@ -2,6 +2,7 @@ import Page from '../Page';
 import PageMeta from '../PageMeta';
 import Longform from '../Longform';
 import {Grid, GridItem} from '../Grid';
+import {Stack} from '../Stack';
 import {Status} from '../../types';
 import styles from './PatternsPage.module.scss';
 import Preview from '../PatternThumbnailPreview';
@@ -16,7 +17,7 @@ export const PatternsPage = () => (
     <PageMeta title="Patterns" description={description} />
 
     <Page>
-      <div className={styles.Stack} data-gap="8">
+      <Stack gap={'8'}>
         <div>
           <Longform>
             <h1 className={styles.Header}>Patterns </h1>
@@ -43,7 +44,7 @@ export const PatternsPage = () => (
             />
           ))}
         </Grid>
-      </div>
+      </Stack>
     </Page>
   </>
 );
