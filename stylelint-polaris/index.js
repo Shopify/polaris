@@ -91,13 +91,6 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'at-rule-disallowed-list': ['keyframes'],
-      'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$duration-data/,
-        /\$polaris-duration-map/,
-        /\$skeleton-shimmer-duration/,
-        /\$easing-data/,
-      ],
     },
     {
       message: 'Please use a Polaris motion token',
@@ -140,11 +133,8 @@ const stylelintPolarisCoverageOptions = {
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
-        /\$typography-condensed/,
-        /\$typography-condensed/,
         /\$base-font-size/,
         /\$line-height-data/,
-        /\$font-family-data/,
         /\$font-size-data/,
         /\$default-browser-font-size/,
       ],
@@ -235,8 +225,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$polaris-spacing/,
-        /\$spacing-data/,
-        /\$actions-vertical-spacing/,
         // Legacy custom properties
         /--p-button-group-item-spacing/,
         /--p-choice-margin/,
@@ -267,10 +255,6 @@ const stylelintPolarisCoverageOptions = {
         ].map(matchNameRegExp),
       },
       'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$border-radius-data/,
-        /\$border-width-data/,
-        /\$borders-data/,
         // Legacy custom properties
         // /--p-border-radius-base/,
         /--p-border-radius-wide/,
