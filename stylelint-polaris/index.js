@@ -59,12 +59,11 @@ const stylelintPolarisCoverageOptions = {
         'rgb',
         'rgba',
         'sepia',
-        ...['color-multiply', 'color', 'filter'].map(matchNameRegExp),
+        ...['color', 'filter'].map(matchNameRegExp),
       ],
       'polaris/at-rule-disallowed-list': {
         include: [
           // Legacy mixins
-          'color-icon',
           'recolor-icon',
           'ms-high-contrast-color',
         ].map(matchNameRegExp),
@@ -82,11 +81,9 @@ const stylelintPolarisCoverageOptions = {
   ],
   motion: [
     {
-      'function-disallowed-list': [
-        'control-icon-transition',
-        'duration',
-        'easing',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['control-icon-transition'].map(
+        matchNameRegExp,
+      ),
       'declaration-property-unit-disallowed-list': [
         {
           '/^animation/': ['ms', 's'],
@@ -94,9 +91,6 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'at-rule-disallowed-list': ['keyframes'],
-      'polaris/at-rule-disallowed-list': {
-        include: ['skeleton-shimmer'].map(matchNameRegExp),
-      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$duration-data/,
@@ -121,11 +115,9 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'property-disallowed-list': ['text-transform'],
-      'function-disallowed-list': [
-        'font-family',
-        'font-size',
-        'line-height',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['font-size', 'line-height'].map(
+        matchNameRegExp,
+      ),
       'polaris/at-rule-disallowed-list': {
         include: [
           'truncate',
@@ -205,16 +197,10 @@ const stylelintPolarisCoverageOptions = {
         'control-slim-height',
         'mobile-nav-width',
         'thumbnail-size',
-        'icon-size',
         'top-bar-height',
       ].map(matchNameRegExp),
       'polaris/at-rule-disallowed-list': {
-        include: [
-          'layout-flex-fix',
-          'safe-area-for',
-          'skeleton-page-header-layout',
-          'skeleton-page-secondary-actions-layout',
-        ].map(matchNameRegExp),
+        include: ['layout-flex-fix', 'safe-area-for'].map(matchNameRegExp),
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
@@ -236,7 +222,7 @@ const stylelintPolarisCoverageOptions = {
   ],
   spacing: [
     {
-      'function-disallowed-list': ['control-vertical-padding', 'spacing'].map(
+      'function-disallowed-list': ['control-vertical-padding'].map(
         matchNameRegExp,
       ),
       'declaration-property-unit-disallowed-list': [
@@ -263,11 +249,6 @@ const stylelintPolarisCoverageOptions = {
   ],
   shape: [
     {
-      'function-disallowed-list': [
-        'border-radius',
-        'border-width',
-        'border',
-      ].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
           'border-width': disallowedUnits,
@@ -279,7 +260,6 @@ const stylelintPolarisCoverageOptions = {
       ],
       'polaris/at-rule-disallowed-list': {
         include: [
-          'high-contrast-border',
           'high-contrast-button-outline',
           'high-contrast-outline',
           'focus-ring',
@@ -413,9 +393,6 @@ const stylelintPolarisCoverageOptions = {
           'page-when-not-max-width',
           'when-typography-condensed',
           'when-typography-not-condensed',
-          'when-not-printing',
-          'hidden-when-printing',
-          'print-hidden',
         ].map(matchNameRegExp),
       },
     },
@@ -440,8 +417,6 @@ const stylelintPolarisCoverageOptions = {
           'unstyled-button',
           'skeleton-content',
           'unstyled-input',
-          'unstyled-link',
-          'unstyled-list',
           'range-thumb-selectors',
           'range-track-selectors',
           'state',
@@ -449,13 +424,9 @@ const stylelintPolarisCoverageOptions = {
         ].map(matchNameRegExp),
       },
       // Legacy functions
-      'function-disallowed-list': [
-        'available-names',
-        'map-extend',
-        'em',
-        'px',
-        'rem',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['available-names', 'em', 'rem'].map(
+        matchNameRegExp,
+      ),
       'polaris/global-disallowed-list': [
         // Legacy variables
         / \* \$/,
