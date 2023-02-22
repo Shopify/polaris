@@ -31,7 +31,7 @@ export default function reactUpdatePageBreadcrumbs(
           j,
           j(nodePath).closest(j.JSXElement).paths()[0],
           'breadcrumbs',
-          'breadcrumb',
+          'backAction',
         );
 
         insertCommentBefore(
@@ -46,7 +46,7 @@ export default function reactUpdatePageBreadcrumbs(
           j,
           j(nodePath).closest(j.JSXElement).paths()[0],
           'breadcrumbs',
-          'breadcrumb',
+          'backAction',
         );
         insertCommentBefore(
           j,
@@ -61,7 +61,7 @@ export default function reactUpdatePageBreadcrumbs(
           j,
           j(nodePath).closest(j.JSXElement).paths()[0],
           'breadcrumbs',
-          'breadcrumb',
+          'backAction',
         );
       }
 
@@ -90,7 +90,7 @@ export default function reactUpdatePageBreadcrumbs(
         j,
         j(nodePath).closest(j.JSXElement).paths()[0],
         'breadcrumbs',
-        'breadcrumb',
+        'backAction',
       );
       return j.template.expression`${
         arrayOfBreadcrumbs[arrayOfBreadcrumbs.length - 1]
