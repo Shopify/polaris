@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {Cell} from './components';
 import styles from './Grid.scss';
@@ -26,11 +26,7 @@ export interface GridProps {
   gap?: Gap;
   children?: React.ReactNode;
 }
-/** **Experimental!**
- * This component is in alpha. Use with caution.
- * 6 column default for xs, sm, and md breakpoints.
- * 12 columns for lg, and xl.
- */
+/** @deprecated Use `Columns` instead or a combination of layout primitives (`Columns`, `Inline`, and `AlphaStack`) */
 export const Grid: React.FunctionComponent<GridProps> & {
   Cell: typeof Cell;
 } = function Grid({gap, areas, children, columns}: GridProps) {
@@ -51,6 +47,15 @@ export const Grid: React.FunctionComponent<GridProps> & {
     '--pc-grid-areas-lg': formatAreas(areas?.lg),
     '--pc-grid-areas-xl': formatAreas(areas?.xl),
   } as React.CSSProperties;
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: <Grid /> is deprecated. This component will be removed in a future major version of Polaris. Use <Columns /> instead or a combination of <Columns />, <Inline />, and <AlphaStack />',
+      );
+    }
+  }, []);
 
   return (
     <div className={styles.Grid} style={style}>

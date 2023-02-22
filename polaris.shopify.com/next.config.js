@@ -197,6 +197,11 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/grid',
+    destination: '/components/deprecated/grid',
+    permanent: false,
+  },
+  {
     source: '/components/heading',
     destination: '/components/deprecated/heading',
     permanent: false,
@@ -358,11 +363,6 @@ const layoutAndStructure = [
   {
     source: '/components/form-layout',
     destination: '/components/layout-and-structure/form-layout',
-    permanent: false,
-  },
-  {
-    source: '/components/grid',
-    destination: '/components/layout-and-structure/grid',
     permanent: false,
   },
   {
