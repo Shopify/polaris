@@ -217,6 +217,11 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/text-container',
+    destination: '/components/deprecated/text-container',
+    permanent: false,
+  },
+  {
     source: '/components/text-style',
     destination: '/components/deprecated/text-style',
     permanent: false,
@@ -398,11 +403,6 @@ const layoutAndStructure = [
   {
     source: '/components/stack',
     destination: '/components/layout-and-structure/stack',
-    permanent: false,
-  },
-  {
-    source: '/components/text-container',
-    destination: '/components/layout-and-structure/text-container',
     permanent: false,
   },
 ];
