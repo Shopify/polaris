@@ -19,9 +19,6 @@ export function App({
       >
         hello
       </Page>
-      <Page breadcrumbs={{url: '/testing', content: 'Breadcrumb'}}>
-        testing
-      </Page>
       <Page breadcrumbs={[]}>testing</Page>
       <Page breadcrumbs={breadcrumbs}>testing</Page>
       <Page breadcrumbs={breadcrumbProps}>testing</Page>

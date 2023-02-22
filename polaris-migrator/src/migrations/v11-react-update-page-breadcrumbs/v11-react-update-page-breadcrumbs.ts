@@ -7,7 +7,7 @@ import {
   replaceJSXAttributes,
 } from '../../utilities/jsx';
 
-export default function reactUpdatePageBreadcrumbs(
+export default function v11reactUpdatePageBreadcrumbs(
   fileInfo: FileInfo,
   {jscodeshift: j}: API,
 ) {

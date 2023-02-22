@@ -10,7 +10,6 @@ export function App({
     <>
       <Page backAction={{url: '/testing', content: 'Breadcrumb'}}>hello</Page>
       <Page backAction={{url: '/testing2', content: 'Breadcrumb2'}}>hello</Page>
-      <Page backAction={{url: '/testing', content: 'Breadcrumb'}}>testing</Page>
       <Page>testing</Page>
       <Page
         backAction={
