@@ -42,7 +42,7 @@ const Placeholder = ({
         width: width ?? undefined,
       }}
     >
-      <Inline align={childAlign}>
+      <Inline gap="4" align={childAlign}>
         <div
           style={{
             display: 'inline-block',

@@ -33,7 +33,7 @@ export function Default() {
     <div style={{padding: '0'}}>
       <AlphaStack gap="4">
         {files.map((file, index) => (
-          <Inline align="center" key={index}>
+          <Inline gap="4" align="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -89,7 +89,7 @@ export function WithImageFileUpload() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack gap="4">
       {files.map((file, index) => (
-        <Inline align="center" key={index}>
+        <Inline gap="4" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -146,7 +146,7 @@ export function WithSingleFileUpload() {
 
   const fileUpload = !file && <DropZone.FileUpload />;
   const uploadedFile = file && (
-    <Inline>
+    <Inline gap="4">
       <Thumbnail
         size="small"
         alt={file.name}
@@ -188,7 +188,7 @@ export function WithDropOnPage() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack gap="4">
       {files.map((file, index) => (
-        <Inline align="center" key={index}>
+        <Inline gap="4" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -250,7 +250,7 @@ export function AcceptsOnlySVGFiles() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack gap="4">
       {files.map((file, index) => (
-        <Inline align="center" key={index}>
+        <Inline gap="4" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -313,7 +313,7 @@ export function Nested() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack gap="4">
       {files.map((file, index) => (
-        <Inline align="center" key={index}>
+        <Inline gap="4" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -385,7 +385,7 @@ export function WithCustomFileUploadText() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack gap="4">
       {files.map((file, index) => (
-        <Inline align="center" key={index}>
+        <Inline gap="4" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -434,7 +434,7 @@ export function WithCustomFileDialogTrigger() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack gap="4">
       {files.map((file, index) => (
-        <Inline align="center" key={index}>
+        <Inline gap="4" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
