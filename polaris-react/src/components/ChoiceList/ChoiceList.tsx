@@ -108,10 +108,7 @@ export function ChoiceList({
     ) : null;
     return (
       <li key={value}>
-        <Bleed
-          marginInline="0"
-          marginBlockEnd={helpText ? {xs: '1', md: '0'} : {xs: '0'}}
-        >
+        <Bleed marginBlockEnd={helpText ? {xs: '1', md: '0'} : {xs: '0'}}>
           <ControlComponent
             name={finalName}
             value={value}

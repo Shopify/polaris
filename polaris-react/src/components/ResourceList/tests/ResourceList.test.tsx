@@ -1267,7 +1267,7 @@ describe('<ResourceList />', () => {
       resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
 
       expect(resourceList).toContainReactComponent(SelectAllActions, {
-        paginatedSelectAllText: 'All 2+ customers in this filter are selected.',
+        paginatedSelectAllText: 'All 2+ customers in this filter are selected',
       });
     });
 
@@ -1307,7 +1307,7 @@ describe('<ResourceList />', () => {
       resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
 
       expect(resourceList).toContainReactComponent(SelectAllActions, {
-        paginatedSelectAllText: 'All 2+ customers in your store are selected.',
+        paginatedSelectAllText: 'All 2+ customers in your store are selected',
       });
     });
   });

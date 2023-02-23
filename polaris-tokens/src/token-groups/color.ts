@@ -490,7 +490,7 @@ export const color: {
     description: '',
   },
   'color-border-info-subdued': {
-    value: colors.teal[200],
+    value: colors.teal[400],
     description: '',
   },
   'color-border-interactive-active': {

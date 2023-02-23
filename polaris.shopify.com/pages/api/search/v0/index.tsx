@@ -10,6 +10,7 @@ import {
   SearchResultCategory,
   Status,
   SiteJSON,
+  PatternFrontMatter,
 } from '../../../../src/types';
 
 import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
@@ -21,17 +22,20 @@ const pages: SiteJSON = siteJson;
 const componentSlugs = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
 );
+const patternSlugs = Object.keys(pages).filter((slug) =>
+  slug.startsWith('patterns/'),
+);
 const foundationSlugs = Object.keys(pages).filter(
   (slug) =>
     slug.startsWith('foundations/') ||
     slug.startsWith('design/') ||
-    slug.startsWith('content/') ||
-    slug.startsWith('patterns/'),
+    slug.startsWith('content/'),
 );
 
 const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
   foundations: 8,
   components: 6,
+  patterns: 6,
   tokens: 5,
   icons: 9,
 };
@@ -140,11 +144,37 @@ const getSearchResults = (query?: string) => {
     });
   });
 
+  patternSlugs.forEach((slug) => {
+    const {
+      title,
+      description = '',
+      previewImg,
+    } = pages[slug].frontMatter as PatternFrontMatter;
+
+    results.push({
+      id: slugify(`pattern ${title}`),
+      category: 'patterns',
+      score: 0,
+      url: `/${slug}`,
+      meta: {
+        patterns: {
+          title,
+          description,
+          previewImg,
+        },
+      },
+    });
+  });
+
   const fuse = new Fuse(results, {
     keys: [
       // Foundations
       {name: 'meta.foundations.title', weight: 100},
       {name: 'meta.foundations.description', weight: 50},
+
+      // Patterns
+      {name: 'meta.patterns.title', weight: 100},
+      {name: 'meta.patterns.description', weight: 50},
 
       // Components
       {name: 'meta.components.title', weight: 100},

@@ -12,7 +12,7 @@ function HomePage({}: Props) {
   const useMotion = useMedia('(prefers-reduced-motion: no-preference)');
 
   return (
-    <Page showTOC={false}>
+    <Page>
       <div className={styles.HomePage}>
         <PageMeta description="A starter kit for reimagining commerce." />
 

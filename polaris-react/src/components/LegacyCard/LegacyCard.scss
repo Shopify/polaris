@@ -12,7 +12,7 @@
       margin-top: calc(-1 * var(--p-space-2));
     }
   }
-
+  /* stylelint-disable-next-line polaris/conventions/selector-disallowed-list -- Temporary override, will be removed in v11 */
   + [class^='Polaris-Card'] {
     margin-top: var(--p-space-4);
 

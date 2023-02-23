@@ -6,9 +6,9 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineWithGapExample() {
   return (
     <AlphaStack gap="8">
-      <Inline blockAlign="center">
+      <Inline gap="4" blockAlign="center">
         <SpacingBackground width="436px">
-          <Inline wrap={false}>
+          <Inline gap="4" wrap={false}>
             <Placeholder width="106px" height="36px" />
             <Placeholder width="106px" height="20px" />
             <Placeholder width="106px" height="20px" />
@@ -17,7 +17,7 @@ function InlineWithGapExample() {
         </SpacingBackground>
       </Inline>
       <SpacingBackground width="212px">
-        <Inline wrap={false}>
+        <Inline gap="4" wrap={false}>
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>

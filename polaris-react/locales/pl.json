@@ -174,7 +174,7 @@
       "showing": "Wyświetlanie {itemsCount} {resource}",
       "loading": "Ładowanie {resource}",
       "selected": "Wybrano {selectedItemsCount}",
-      "allItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie są zaznaczone.",
+      "allItemsSelected": "Zaznaczono wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie",
       "selectAllItems": "Zaznacz wszystkie {itemsLength}+ {resourceNamePlural} w swoim sklepie",
       "emptySearchResultTitle": "Nie znaleziono {resourceNamePlural}",
       "emptySearchResultDescription": "Spróbuj zmienić filtry lub szukany termin",
@@ -194,7 +194,7 @@
         "warningMessage": "Aby zapewnić większy komfort użytkowania, maksymalna liczba promowanych czynności powinna wynosić tylko {maxPromotedActions}."
       },
       "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze są zaznaczone.",
+      "allFilteredItemsSelected": "Zaznaczono wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze",
       "selectAllFilteredItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze"
     },
     "SkeletonPage": {
@@ -279,8 +279,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Pozycja",
       "defaultItemPlural": "Pozycje",
-      "allItemsSelected": "Wybrano wszystkie {itemsLength}+ {resourceNamePlural}.",
-      "selected": "Wybrano {selectedItemsCount}.",
+      "allItemsSelected": "Wybrano wszystkie {itemsLength}+ {resourceNamePlural}",
+      "selected": "Wybrano {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Usuń wybór {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Odznacz wszystkie {itemsLength} {resourceNamePlural}",
@@ -292,7 +292,7 @@
       "onboardingBadgeText": "Nowy",
       "resourceLoadingAccessibilityLabel": "Ładowanie {resourceNamePlural}...",
       "selectAllLabel": "Wybierz wszystkie {resourceNamePlural}",
-      "selected": "Wybrano {selectedItemsCount}.",
+      "selected": "Wybrano {selectedItemsCount}",
       "undo": "Cofnij",
       "selectAllItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Wybierz {resourceName}",

@@ -86,7 +86,7 @@ export function SkeletonPage({
             paddingInlineEnd={{xs: '4', sm: '0'}}
           >
             {breadcrumbMarkup}
-            <Inline align="space-between" blockAlign="center">
+            <Inline gap="4" align="space-between" blockAlign="center">
               <Box paddingBlockStart="1" paddingBlockEnd="1">
                 {titleContent}
               </Box>

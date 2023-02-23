@@ -104,3 +104,26 @@ export function WithFreeAndFixedWidths() {
     </Page>
   );
 }
+
+export function WithResponsiveColumns() {
+  return (
+    <Page fullWidth>
+      <Columns columns={{xs: 1, sm: 3}} gap="4">
+        <div style={{background: 'aquamarine'}}>Column one</div>
+        <div style={{background: 'aquamarine'}}>Column two</div>
+        <div style={{background: 'aquamarine'}}>Column three</div>
+      </Columns>
+    </Page>
+  );
+}
+
+export function WithResponsiveColumnAlisases() {
+  return (
+    <Page fullWidth>
+      <Columns columns={['oneThird', 'twoThirds']} gap="4">
+        <div style={{background: 'aquamarine'}}>Column one</div>
+        <div style={{background: 'aquamarine'}}>Column two</div>
+      </Columns>
+    </Page>
+  );
+}
