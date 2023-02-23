@@ -129,7 +129,7 @@ export default function GroupPage({
         <AlphaStack gap="4">
           {frontMatter?.description && (
             <Longform firstParagraphIsLede>
-              <Markdown text={frontMatter?.description} />
+              <Markdown>{frontMatter?.description}</Markdown>
             </Longform>
           )}
 
