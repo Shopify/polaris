@@ -174,7 +174,7 @@
       "showing": "Viser {itemsCount} {resource}",
       "loading": "Laster inn {resource}",
       "selected": "{selectedItemsCount} valgt",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i butikken din er valgt.",
+      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} i butikken din er valgt",
       "selectAllItems": "Velg alle {itemsLength}+ {resourceNamePlural} i butikken din",
       "emptySearchResultTitle": "Fant ingen {resourceNamePlural}",
       "emptySearchResultDescription": "Prøv å endre filtrene eller søkeord",
@@ -194,7 +194,7 @@
         "warningMessage": "For å gi en bedre brukeropplevelse. Det bør ikke være mer enn {maxPromotedActions} promoterte handlinger."
       },
       "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i dette filteret er valgt.",
+      "allFilteredItemsSelected": "Alle {itemsLength} + {resourceNamePlural} i dette filteret er valgt",
       "selectAllFilteredItems": "Velg alle {itemsLength}+ {resourceNamePlural} i dette filteret"
     },
     "SkeletonPage": {
@@ -277,8 +277,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Vare",
       "defaultItemPlural": "Varer",
-      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} er valgt.",
-      "selected": "{selectedItemsCount} valgt.",
+      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} er valgt",
+      "selected": "{selectedItemsCount} valgt",
       "a11yCheckboxDeselectAllSingle": "Opphev valg av {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Velg {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Opphev alle valg av {itemsLength} {resourceNamePlural}",
@@ -290,7 +290,7 @@
       "onboardingBadgeText": "Ny",
       "resourceLoadingAccessibilityLabel": "Laster inn {resourceNamePlural} …",
       "selectAllLabel": "Velg alle {resourceNamePlural}",
-      "selected": "{selectedItemsCount} valgt.",
+      "selected": "{selectedItemsCount} valgt",
       "undo": "Angre",
       "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
       "selectItem": "Velg {resourceName}",

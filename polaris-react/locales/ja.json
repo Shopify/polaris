@@ -174,7 +174,7 @@
       "showing": "{itemsCount}個の{resource}を表示中",
       "loading": "{resource}を読み込んでいます",
       "selected": "{selectedItemsCount}を選択済み",
-      "allItemsSelected": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}が選択されています。",
+      "allItemsSelected": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}が選択されています",
       "selectAllItems": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}を選択する",
       "emptySearchResultTitle": "{resourceNamePlural}が見つかりませんでした",
       "emptySearchResultDescription": "絞り込みや検索ワードを変更してみてください",
@@ -194,7 +194,7 @@
         "warningMessage": "さらに優れたユーザーエクスペリエンスのために。プロモートアクションは最大で{maxPromotedActions}回までです。"
       },
       "showingTotalCount": "{totalItemsCount}の{itemsCount}、{resource}を表示中",
-      "allFilteredItemsSelected": "この絞り込み内の{itemsLength}と{resourceNamePlural}がすべて選択されます。",
+      "allFilteredItemsSelected": "この絞り込み内の{itemsLength}と{resourceNamePlural}がすべて選択されます",
       "selectAllFilteredItems": "この絞り込みの{itemsLength}と{resourceNamePlural}をすべて選択する"
     },
     "SkeletonPage": {
@@ -277,8 +277,8 @@
     "IndexProvider": {
       "defaultItemSingular": "アイテム",
       "defaultItemPlural": "アイテム",
-      "allItemsSelected": "すべての{itemsLength}+{resourceNamePlural}が選択されています。",
-      "selected": "{selectedItemsCount}個を選択済み。",
+      "allItemsSelected": "すべての{itemsLength}+{resourceNamePlural}が選択されています",
+      "selected": "{selectedItemsCount}を選択済み",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular}の選択を解除する",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular}を選択する",
       "a11yCheckboxDeselectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}の選択を解除する",
@@ -290,7 +290,7 @@
       "onboardingBadgeText": "新規",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural}を読み込んでいます...",
       "selectAllLabel": "すべての{resourceNamePlural}を選択する",
-      "selected": "{selectedItemsCount}個を選択済み。",
+      "selected": "{selectedItemsCount}を選択済み",
       "undo": "元に戻す",
       "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
       "selectItem": "{resourceName}を選択する",
