@@ -47,30 +47,30 @@ describe('<Header />', () => {
   });
 
   describe('breadcrumbs', () => {
-    const breadcrumb: LinkAction = {
+    const backAction: LinkAction = {
       content: 'Products',
       url: 'https://www.google.com',
     };
 
     it('get passed into Breadcrumbs', () => {
       const header = mountWithApp(
-        <Header {...mockProps} breadcrumb={breadcrumb} />,
+        <Header {...mockProps} backAction={breadcrumb} />,
       );
       expect(header).toContainReactComponent(Breadcrumbs, {
-        breadcrumb,
+        backAction,
       });
     });
 
     it('renders breadcrumb markup if not an array', () => {
-      const breadcrumb: LinkAction = {
+      const backAction: LinkAction = {
         content: 'Products',
         url: 'https://www.google.com',
       };
       const header = mountWithApp(
-        <Header {...mockProps} breadcrumb={breadcrumb} />,
+        <Header {...mockProps} backAction={breadcrumb} />,
       );
       expect(header).toContainReactComponent(Breadcrumbs, {
-        breadcrumb,
+        backAction,
       });
     });
 
@@ -355,7 +355,7 @@ describe('<Header />', () => {
 
   it('renders a default mobile layout', () => {
     const header = mountWithApp(
-      <Header title="mmmmmmmmm" breadcrumb={breadcrumb} />,
+      <Header title="mmmmmmmmm" backAction={breadcrumb} />,
       {
         mediaQuery: {isNavigationCollapsed: true},
       },

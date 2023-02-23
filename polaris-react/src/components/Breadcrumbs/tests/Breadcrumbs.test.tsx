@@ -13,7 +13,7 @@ describe('<Breadcrumbs />', () => {
         url: 'https://www.shopify.com',
       };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumb={linkBreadcrumb} />,
+        <Breadcrumbs backAction={linkBreadcrumb} />,
       );
 
       expect(breadcrumbs).toContainReactComponentTimes('a', 1);
@@ -26,7 +26,7 @@ describe('<Breadcrumbs />', () => {
         accessibilityLabel: 'Go to Products',
       };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumb={linkBreadcrumb} />,
+        <Breadcrumbs backAction={linkBreadcrumb} />,
       );
 
       expect(breadcrumbs).toContainReactComponent('a', {
@@ -42,7 +42,7 @@ describe('<Breadcrumbs />', () => {
         onAction: noop,
       };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumb={callbackBreadcrumb} />,
+        <Breadcrumbs backAction={callbackBreadcrumb} />,
       );
 
       expect(breadcrumbs).toContainReactComponentTimes('button', 1);
@@ -55,7 +55,7 @@ describe('<Breadcrumbs />', () => {
         accessibilityLabel: 'Go to Products',
       };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumb={callbackBreadcrumb} />,
+        <Breadcrumbs backAction={callbackBreadcrumb} />,
       );
 
       expect(breadcrumbs).toContainReactComponent('button', {
@@ -70,7 +70,7 @@ describe('<Breadcrumbs />', () => {
         onAction: spy,
       };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumb={callbackBreadcrumb} />,
+        <Breadcrumbs backAction={callbackBreadcrumb} />,
       );
 
       breadcrumbs.find('button')!.trigger('onClick');
@@ -84,7 +84,7 @@ describe('<Breadcrumbs />', () => {
   };
 
   it('renders breadcrumb content as a visually hidden label when the new design language is enabled', () => {
-    const wrapper = mountWithApp(<Breadcrumbs breadcrumb={linkBreadcrumb} />);
+    const wrapper = mountWithApp(<Breadcrumbs backAction={linkBreadcrumb} />);
 
     expect(wrapper).toContainReactComponent(Text, {
       children: 'Products',
