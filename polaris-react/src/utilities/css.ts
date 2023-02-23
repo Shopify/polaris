@@ -51,3 +51,31 @@ export function getResponsiveProps(
     ]),
   );
 }
+
+export type ResponsiveValue =
+  | undefined
+  | string
+  | {
+      [Breakpoint in BreakpointsAlias]?: string;
+    };
+
+export function getResponsiveValue(
+  componentName: string,
+  componentProp: string,
+  responsiveProp?: ResponsiveValue,
+) {
+  if (!responsiveProp) return {};
+
+  if (typeof responsiveProp === 'string') {
+    return {
+      [`--pc-${componentName}-${componentProp}-xs`]: responsiveProp,
+    };
+  }
+
+  return Object.fromEntries(
+    Object.entries(responsiveProp).map(([breakpointAlias, responsiveValue]) => [
+      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
+      responsiveValue,
+    ]),
+  );
+}
