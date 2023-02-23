@@ -19,13 +19,13 @@ import {
 import {
   ActionList,
   Badge,
-  Card,
   ContextualSaveBar,
   DropZone,
   DropZoneProps,
   FormLayout,
   Frame,
   Layout,
+  LegacyCard,
   Loading,
   Modal,
   Navigation,
@@ -595,7 +595,7 @@ export function DetailsPage() {
       <Layout>
         {skipToContentTarget}
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Title"
@@ -614,17 +614,17 @@ export function DetailsPage() {
                 multiline
               />
             </FormLayout>
-          </Card>
-          <Card title="Media" sectioned>
+          </LegacyCard>
+          <LegacyCard title="Media" sectioned>
             <DropZone onDrop={handleDropZoneDrop}>
               {uploadedFiles}
               {fileUpload}
             </DropZone>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
         <Layout.Section secondary>
-          <Card title="Organization">
-            <Card.Section>
+          <LegacyCard title="Organization">
+            <LegacyCard.Section>
               <Select
                 label="Product type"
                 options={options}
@@ -638,10 +638,10 @@ export function DetailsPage() {
                 onChange={setSelected}
                 value={selected}
               />
-            </Card.Section>
-            <Card.Section title="Collections" />
-            <Card.Section title="Tags" />
-          </Card>
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Collections" />
+            <LegacyCard.Section title="Tags" />
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -652,12 +652,12 @@ export function DetailsPage() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </SkeletonPage>

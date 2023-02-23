@@ -4,7 +4,7 @@ import {
   ActionList,
   Avatar,
   Button,
-  Card,
+  LegacyCard,
   FormLayout,
   Popover,
   ResourceList,
@@ -215,7 +215,7 @@ export function WithLazyLoadedList() {
   }));
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <div style={{height: '280px'}}>
         <Popover
           sectioned
@@ -229,7 +229,7 @@ export function WithLazyLoadedList() {
           </Popover.Pane>
         </Popover>
       </div>
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem({name, initials}) {

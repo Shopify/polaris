@@ -5,6 +5,7 @@ export type ColorBackgroundAlias =
   | 'bg'
   | 'bg-active'
   | 'bg-app'
+  | 'bg-app-active'
   | 'bg-app-hover'
   | 'bg-app-selected'
   | 'bg-caution'
@@ -12,13 +13,13 @@ export type ColorBackgroundAlias =
   | 'bg-caution-subdued'
   | 'bg-caution-subdued-active'
   | 'bg-caution-subdued-hover'
+  | 'bg-critical'
   | 'bg-critical-strong'
   | 'bg-critical-strong-active'
   | 'bg-critical-strong-hover'
   | 'bg-critical-subdued'
   | 'bg-critical-subdued-active'
   | 'bg-critical-subdued-hover'
-  | 'bg-critical'
   | 'bg-disabled'
   | 'bg-hover'
   | 'bg-info'
@@ -40,6 +41,11 @@ export type ColorBackgroundAlias =
   | 'bg-inverse'
   | 'bg-inverse-active'
   | 'bg-inverse-hover'
+  | 'bg-magic'
+  | 'bg-magic-hover'
+  | 'bg-magic-strong'
+  | 'bg-magic-subdued'
+  | 'bg-magic-subdued-hover'
   | 'bg-primary'
   | 'bg-primary-active'
   | 'bg-primary-hover'
@@ -81,6 +87,8 @@ export type ColorBorderAlias =
   | 'border-interactive-hover'
   | 'border-interactive-subdued'
   | 'border-inverse'
+  | 'border-magic'
+  | 'border-magic-strong'
   | 'border-primary'
   | 'border-strong'
   | 'border-strong-hover'
@@ -102,6 +110,7 @@ export type ColorIconAlias =
   | 'icon-interactive-hover'
   | 'icon-interactive-inverse'
   | 'icon-inverse'
+  | 'icon-magic'
   | 'icon-on-color'
   | 'icon-primary'
   | 'icon-subdued'
@@ -125,8 +134,11 @@ export type ColorTextAlias =
   | 'text-interactive-inverse'
   | 'text-inverse'
   | 'text-inverse-subdued'
+  | 'text-magic'
+  | 'text-magic-strong'
   | 'text-on-color'
   | 'text-primary'
+  | 'text-primary-hover'
   | 'text-subdued'
   | 'text-success'
   | 'text-success-strong'
@@ -185,6 +197,14 @@ export const color: {
     value: colors.gray[300],
     description: '',
   },
+  'color-bg-app': {
+    value: colors.gray[200],
+    description: '',
+  },
+  'color-bg-app-active': {
+    value: colors.gray[400],
+    description: '',
+  },
   'color-bg-app-hover': {
     value: colors.gray[300],
     description: '',
@@ -199,10 +219,6 @@ export const color: {
   },
   'color-bg-subdued-hover': {
     value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-app': {
-    value: colors.gray[200],
     description: '',
   },
   'color-bg-inset': {
@@ -373,6 +389,26 @@ export const color: {
     value: colors.orange[200],
     description: '',
   },
+  'color-bg-magic-strong': {
+    value: colors.purple[500],
+    description: '',
+  },
+  'color-bg-magic-hover': {
+    value: colors.purple[200],
+    description: '',
+  },
+  'color-bg-magic': {
+    value: colors.purple[100],
+    description: '',
+  },
+  'color-bg-magic-subdued-hover': {
+    value: colors.purple[100],
+    description: '',
+  },
+  'color-bg-magic-subdued': {
+    value: colors.purple[50],
+    description: '',
+  },
   'color-border-input-hover': {
     value: colors.gray[800],
     description: '',
@@ -422,7 +458,7 @@ export const color: {
     description: '',
   },
   'color-border-success-subdued': {
-    value: colors.green[200],
+    value: colors.green[400],
     description: '',
   },
   'color-border-critical-active': {
@@ -446,7 +482,7 @@ export const color: {
     description: '',
   },
   'color-border-caution-subdued': {
-    value: colors.yellow[200],
+    value: colors.yellow[400],
     description: '',
   },
   'color-border-info': {
@@ -475,6 +511,14 @@ export const color: {
   },
   'color-border-interactive-subdued': {
     value: colors.blue[200],
+    description: '',
+  },
+  'color-border-magic-strong': {
+    value: colors.purple[500],
+    description: '',
+  },
+  'color-border-magic': {
+    value: colors.purple[400],
     description: '',
   },
   'color-icon-hover': {
@@ -549,6 +593,10 @@ export const color: {
     value: colors.blue[400],
     description: '',
   },
+  'color-icon-magic': {
+    value: colors.purple[600],
+    description: '',
+  },
   'color-text': {
     value: colors.gray[900],
     description: '',
@@ -581,13 +629,16 @@ export const color: {
     value: colors.green[900],
     description: '',
   },
-
   'color-text-success': {
     value: colors.green[700],
     description: '',
   },
   'color-text-primary': {
     value: colors.green[700],
+    description: '',
+  },
+  'color-text-primary-hover': {
+    value: colors.green[800],
     description: '',
   },
   'color-text-critical-strong': {
@@ -636,6 +687,14 @@ export const color: {
   },
   'color-text-interactive-inverse': {
     value: colors.blue[400],
+    description: '',
+  },
+  'color-text-magic-strong': {
+    value: colors.purple[800],
+    description: '',
+  },
+  'color-text-magic': {
+    value: colors.purple[600],
     description: '',
   },
 };

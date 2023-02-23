@@ -8,15 +8,17 @@ import {useThrottle} from '../../utils/hooks';
 import styles from './GlobalSearch.module.scss';
 import {useRouter} from 'next/router';
 import IconGrid from '../IconGrid';
-import Grid from '../Grid';
+import {Grid, GridItem} from '../Grid';
 import TokenList from '../TokenList';
 import {Dialog} from '@headlessui/react';
 import {KeyboardEventHandler} from 'react';
 import FoundationsThumbnail from '../FoundationsThumbnail';
+import PatternThumbnailPreview from '../ThumbnailPreview';
 import ComponentThumbnail from '../ComponentThumbnail';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
   foundations: 'Foundations',
+  patterns: 'Patterns',
   tokens: 'Tokens',
   icons: 'Icons',
 };
@@ -246,7 +248,7 @@ function SearchResults({
                         key={title}
                         value={{currentItemId, id}}
                       >
-                        <Grid.Item
+                        <GridItem
                           title={title}
                           description={description}
                           url={url}
@@ -264,6 +266,37 @@ function SearchResults({
               </ResultsGroup>
             );
 
+          case 'patterns': {
+            return (
+              <ResultsGroup category={category} key={category}>
+                <Grid>
+                  {results.map(({id, url, meta}) => {
+                    if (!meta.patterns) return null;
+                    const {title, description, previewImg} = meta.patterns;
+                    return (
+                      <SearchContext.Provider
+                        key={id}
+                        value={{currentItemId, id}}
+                      >
+                        <GridItem
+                          url={url}
+                          description={description}
+                          title={title}
+                          renderPreview={() => (
+                            <PatternThumbnailPreview
+                              alt={title}
+                              src={previewImg}
+                            />
+                          )}
+                        />
+                      </SearchContext.Provider>
+                    );
+                  })}
+                </Grid>
+              </ResultsGroup>
+            );
+          }
+
           case 'components': {
             return (
               <ResultsGroup category={category} key={category}>
@@ -276,7 +309,7 @@ function SearchResults({
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <Grid.Item
+                        <GridItem
                           url={url}
                           description={description}
                           title={title}

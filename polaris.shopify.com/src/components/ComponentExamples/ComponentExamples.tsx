@@ -102,7 +102,7 @@ const ComponentExamples = ({examples}: Props) => {
 
           return (
             <Tab.Panel key={fileName}>
-              {description ? <Markdown text={description} /> : null}
+              {description ? <Markdown>{description}</Markdown> : null}
               <div className={styles.ExampleFrame}>
                 <iframe
                   src={exampleUrl}

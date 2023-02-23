@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   Avatar,
   Button,
-  Card,
+  LegacyCard,
   ChoiceList,
   DataTable,
   Filters,
@@ -149,7 +149,7 @@ export function WithAResourceList() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -195,7 +195,7 @@ export function WithAResourceList() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
@@ -340,8 +340,8 @@ export function WithADataTable() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
-        <Card.Section>
+      <LegacyCard>
+        <LegacyCard.Section>
           <Filters
             queryValue={queryValue}
             filters={filters}
@@ -350,7 +350,7 @@ export function WithADataTable() {
             onQueryClear={handleQueryValueRemove}
             onClearAll={handleFiltersClearAll}
           />
-        </Card.Section>
+        </LegacyCard.Section>
         <DataTable
           columnContentTypes={[
             'text',
@@ -379,7 +379,7 @@ export function WithADataTable() {
           ]}
           totals={['', '', '', 255, '$155,830.00']}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
@@ -454,7 +454,7 @@ export function WithChildrenContent() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -506,7 +506,7 @@ export function WithChildrenContent() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
@@ -577,7 +577,7 @@ export function Disabled() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -633,7 +633,7 @@ export function Disabled() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
@@ -724,7 +724,7 @@ export function SomeDisabled() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -779,7 +779,7 @@ export function SomeDisabled() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
@@ -852,7 +852,7 @@ export function WithoutClearButton() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -907,7 +907,7 @@ export function WithoutClearButton() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
@@ -1052,7 +1052,7 @@ export function WithHelpText() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -1100,7 +1100,7 @@ export function WithHelpText() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
@@ -1249,7 +1249,7 @@ export function WithQueryFieldHidden() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -1296,7 +1296,7 @@ export function WithQueryFieldHidden() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
@@ -1445,7 +1445,7 @@ export function WithQueryFieldDisabled() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -1492,7 +1492,7 @@ export function WithQueryFieldDisabled() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 

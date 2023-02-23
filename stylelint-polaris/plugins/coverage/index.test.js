@@ -59,7 +59,7 @@ testRule({
       code: '.class {color: var(--p-legacy-var);}',
       description: 'Uses disallowed legacy variable (custom rule)',
       message:
-        'Unexpected disallowed value "--p-legacy-var" - https://polaris.shopify.com/tools/stylelint-polaris/rules/legacy-polaris-global-disallowed-list',
+        'Unexpected disallowed value "--p-legacy-var" - https://polaris.shopify.com/tools/stylelint-polaris/rules/legacy-global-disallowed-list',
     },
   ],
 });

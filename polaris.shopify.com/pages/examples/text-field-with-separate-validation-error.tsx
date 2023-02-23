@@ -5,7 +5,7 @@ import {
   TextField,
   InlineError,
   Button,
-  Card,
+  LegacyCard,
 } from '@shopify/polaris';
 import {DeleteMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
@@ -77,9 +77,9 @@ function SeparateValidationErrorExample() {
   );
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <FormLayout>{formGroupMarkup}</FormLayout>
-    </Card>
+    </LegacyCard>
   );
 
   function isValueInvalid(content) {

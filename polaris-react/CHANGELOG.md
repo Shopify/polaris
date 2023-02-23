@@ -1,5 +1,32 @@
 # Changelog
 
+## 10.31.0
+
+### Minor Changes
+
+- [#8363](https://github.com/Shopify/polaris/pull/8363) [`13c6c383a`](https://github.com/Shopify/polaris/commit/13c6c383a344588dc7fcc2b4b49b910fde05204a) Thanks [@laurkim](https://github.com/laurkim)! - Migrated usage of `Card` to `LegacyCard`
+
+* [#8450](https://github.com/Shopify/polaris/pull/8450) [`2282bd673`](https://github.com/Shopify/polaris/commit/2282bd673a27a65e6780c3967099b06be28e411f) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `Card` and subcomponents
+
+## 10.30.0
+
+### Minor Changes
+
+- [#8356](https://github.com/Shopify/polaris/pull/8356) [`6f92bf33c`](https://github.com/Shopify/polaris/commit/6f92bf33ce855cebd2b1243411a75a35f55eaeb1) Thanks [@lgriffee](https://github.com/lgriffee)! - Migrated `--p-space-0` tokens to `0` in SCSS files
+
+* [#8425](https://github.com/Shopify/polaris/pull/8425) [`c73717cf8`](https://github.com/Shopify/polaris/commit/c73717cf82845c9ae9b9a4a05263b60e8c5d266f) Thanks [@lgriffee](https://github.com/lgriffee)! - Manually migrated `z-index` custom properties from `v10` to `v11`
+
+- [#8423](https://github.com/Shopify/polaris/pull/8423) [`bc8ab02f2`](https://github.com/Shopify/polaris/commit/bc8ab02f20c1afdb86c1309453681c1c58265933) Thanks [@lgriffee](https://github.com/lgriffee)! - Migrated `z-index` custom properties from `v10` to `v11`
+
+### Patch Changes
+
+- [#8343](https://github.com/Shopify/polaris/pull/8343) [`20d17c61a`](https://github.com/Shopify/polaris/commit/20d17c61af2a14aaab48ccda1a9374d5d90864b3) Thanks [@alexanderMontague](https://github.com/alexanderMontague)! - Fix margin bug with sub nav item selected highlight styles
+
+* [#8364](https://github.com/Shopify/polaris/pull/8364) [`d06191580`](https://github.com/Shopify/polaris/commit/d06191580a8ab6a9562057845511161927249d0c) Thanks [@stefanlegg](https://github.com/stefanlegg)! - Replace --pc-index-table-loading-panel with --p-z-2 to resolve loading bar overlap issue with .LoadingPanel
+
+* Updated dependencies [[`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8)]:
+  - @shopify/polaris-tokens@6.6.0
+
 ## 10.29.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Card, DataTable, Link, Page} from '@shopify/polaris';
+import {LegacyCard, DataTable, Link, Page} from '@shopify/polaris';
 
 export default {
   component: DataTable,
@@ -37,7 +37,7 @@ export function Default() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -56,7 +56,7 @@ export function Default() {
           rows={rows}
           totals={['', '', '', 255, '$155,830.00']}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -84,7 +84,7 @@ export function Sortable() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -107,7 +107,7 @@ export function Sortable() {
           initialSortColumnIndex={4}
           onSort={handleSort}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -127,7 +127,7 @@ export function WithFooter() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -147,7 +147,7 @@ export function WithFooter() {
           totals={['', '', '', 255, '$155,830.00']}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -167,7 +167,7 @@ export function WithCustomTotalsHeading() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           showTotalsInFooter
           columnContentTypes={[
@@ -191,7 +191,7 @@ export function WithCustomTotalsHeading() {
             plural: 'Total net sales',
           }}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -211,7 +211,7 @@ export function WithTotalsInFooter() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -231,7 +231,7 @@ export function WithTotalsInFooter() {
           totals={['', '', '', 255, '$155,830.00']}
           showTotalsInFooter
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -281,7 +281,7 @@ export function WithRowHeadingLinks() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -294,7 +294,7 @@ export function WithRowHeadingLinks() {
           rows={rows}
           totals={['', '', '', 255, '$155,830.00']}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -352,7 +352,7 @@ export function WithAllOfItsElements() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -379,7 +379,7 @@ export function WithAllOfItsElements() {
           fixedFirstColumns={1}
           truncate
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -397,7 +397,7 @@ export function WithColumnSpanning() {
       '$1.00',
     ],
     // eslint-disable-next-line react/jsx-key
-    [<Card>Hello</Card>],
+    [<LegacyCard>Hello</LegacyCard>],
     [
       'Sep 19, 2010, 1:02 pm NDT',
       '#1234',
@@ -412,7 +412,7 @@ export function WithColumnSpanning() {
 
   return (
     <Page title="Payouts">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -438,7 +438,7 @@ export function WithColumnSpanning() {
           rows={rows}
           verticalAlign="middle"
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -493,7 +493,7 @@ export function WithFixedColumns() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -526,7 +526,7 @@ export function WithFixedColumns() {
           showTotalsInFooter
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -576,7 +576,7 @@ export function WithIncreasedDensityAndZebraStriping() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -600,7 +600,7 @@ export function WithIncreasedDensityAndZebraStriping() {
           hasZebraStripingOnData
           increasedTableDensity
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -845,7 +845,7 @@ export function WithStickyHeaderEnabled() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -870,7 +870,7 @@ export function WithStickyHeaderEnabled() {
           increasedTableDensity
           stickyHeader
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }

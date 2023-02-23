@@ -1,7 +1,7 @@
 import {
   AppProvider,
   Page,
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   Text,
@@ -30,7 +30,7 @@ function AppProviderExample() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
@@ -61,7 +61,7 @@ function AppProviderExample() {
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );

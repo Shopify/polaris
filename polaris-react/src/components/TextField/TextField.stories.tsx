@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  Card,
+  LegacyCard,
   ChoiceList,
   FormLayout,
   InlineError,
@@ -383,9 +383,9 @@ export function WithSeparateValidationError() {
   );
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <FormLayout>{formGroupMarkup}</FormLayout>
-    </Card>
+    </LegacyCard>
   );
 
   function isValueInvalid(content) {

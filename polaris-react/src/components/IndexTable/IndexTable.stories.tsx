@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  Card,
+  LegacyCard,
   EmptySearchResult,
   Filters,
   IndexTable,
@@ -66,7 +66,7 @@ export function Default() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -83,7 +83,7 @@ export function Default() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -135,7 +135,7 @@ export function Flush() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -152,7 +152,7 @@ export function Flush() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -207,7 +207,7 @@ export function SmallScreen() {
 
   return (
     <div style={{width: '430px'}}>
-      <Card>
+      <LegacyCard>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -225,7 +225,7 @@ export function SmallScreen() {
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 }
@@ -281,7 +281,7 @@ export function SmallScreenLoading() {
 
   return (
     <div style={{width: '430px'}}>
-      <Card>
+      <LegacyCard>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -300,7 +300,7 @@ export function SmallScreenLoading() {
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 }
@@ -344,7 +344,7 @@ export function WithEmptyState() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -362,7 +362,7 @@ export function WithEmptyState() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -435,7 +435,7 @@ export function WithBulkActions() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -454,7 +454,7 @@ export function WithBulkActions() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -553,7 +553,7 @@ export function WithMultiplePromotedBulkActions() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -572,7 +572,7 @@ export function WithMultiplePromotedBulkActions() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -649,7 +649,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     <div
       style={{padding: 'var(--p-space-4) var(--p-space-4) var(--p-space-10)'}}
     >
-      <Card>
+      <LegacyCard>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -669,7 +669,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 }
@@ -722,7 +722,7 @@ export function WithLoadingState() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -740,7 +740,7 @@ export function WithLoadingState() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -840,7 +840,7 @@ export function WithFiltering() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
           <Filters
@@ -878,7 +878,7 @@ export function WithFiltering() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 
   function disambiguateLabel(key, value) {
@@ -950,7 +950,7 @@ export function WithRowStatus() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -967,7 +967,7 @@ export function WithRowStatus() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1044,7 +1044,7 @@ export function WithStickyLastColumn() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1066,7 +1066,7 @@ export function WithStickyLastColumn() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1124,7 +1124,7 @@ export function WithRowNavigationLink() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1141,7 +1141,7 @@ export function WithRowNavigationLink() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1199,7 +1199,7 @@ export function WithClickableButtonColumn() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1216,7 +1216,7 @@ export function WithClickableButtonColumn() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1260,7 +1260,7 @@ export function WithoutCheckboxes() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1274,7 +1274,7 @@ export function WithoutCheckboxes() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1395,7 +1395,7 @@ export function WithAllOfItsElements() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
           <Filters
@@ -1437,7 +1437,7 @@ export function WithAllOfItsElements() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 
   function disambiguateLabel(key, value) {
@@ -1595,7 +1595,7 @@ export function WithSortableHeadings() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={rows.length}
@@ -1622,7 +1622,7 @@ export function WithSortableHeadings() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1763,7 +1763,7 @@ export function WithSortableCustomHeadings() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={rows.length}
@@ -1799,7 +1799,7 @@ export function WithSortableCustomHeadings() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1851,7 +1851,7 @@ export function WithCustomTooltips() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1876,7 +1876,7 @@ export function WithCustomTooltips() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -2000,7 +2000,7 @@ export function SmallScreenWithAllOfItsElements() {
 
   return (
     <div style={{width: '430px'}}>
-      <Card>
+      <LegacyCard>
         <div style={{padding: '16px', display: 'flex'}}>
           <div style={{flex: 1}}>
             <Filters
@@ -2042,7 +2042,7 @@ export function SmallScreenWithAllOfItsElements() {
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 
