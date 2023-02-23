@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+.Link {
+  font-size: var(--font-size-100);
+  color: var(--text-default);
+  &:hover,
+  &:focus {
+    color: var(--text-link);
+  }
+}
+.SpecificityBuster {
+  .ExampleWrapper {
+    box-shadow: none;
+    border: 1px solid var(--p-border-subdued);
+    @media screen and (max-width: $breakpointMobile) {
+      border-left: 0;
+      border-right: 0;
+      margin-left: -1.25rem;
+      margin-right: -1.25rem;
+      border-radius: 0;
+    }
+  }
+}

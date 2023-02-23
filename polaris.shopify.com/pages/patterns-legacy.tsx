@@ -2,7 +2,7 @@ import FoundationsPage from '../src/components/FoundationsPage';
 import {FoundationsProps} from '../src/components/FoundationsPage/FoundationsPage';
 import {getStaticPropsForFoundations} from '../src/utils/foundations';
 
-const SECTION = 'patterns';
+const SECTION = 'patterns-legacy';
 
 const FoundationsCategory = (props: FoundationsProps) => (
   <FoundationsPage {...props} />

@@ -2,6 +2,7 @@ import {useTOC} from '../../utils/hooks';
 import {className} from '../../utils/various';
 import Longform from '../Longform';
 import Container from '../Container';
+import {Box} from '../Box';
 
 import styles from './Page.module.scss';
 import TOC from '../TOC';
@@ -11,12 +12,21 @@ import Link from 'next/link';
 
 interface Props {
   title?: string;
-  showTOC?: boolean;
   editPageLinkPath?: string;
+  /* Content pages have a TOC, and a centered max-width column. To forcibly show
+   * or hide the TOC, use showTOC */
+  isContentPage?: boolean;
+  showTOC?: boolean;
   children: React.ReactNode;
 }
 
-function Layout({title, showTOC = true, editPageLinkPath, children}: Props) {
+function Layout({
+  title,
+  isContentPage = false,
+  showTOC = isContentPage,
+  editPageLinkPath,
+  children,
+}: Props) {
   const [tocItems] = useTOC(children);
   const {asPath} = useRouter();
 
@@ -30,7 +40,11 @@ function Layout({title, showTOC = true, editPageLinkPath, children}: Props) {
 
   return (
     <Container className={className(styles.Page, showTOC && styles.showTOC)}>
-      <article className={styles.Post} id="main">
+      <Box
+        as="article"
+        className={[styles.Post, isContentPage && styles.PostContent]}
+        id="main"
+      >
         <Breadcrumbs />
         {title && (
           <Longform>
@@ -46,7 +60,7 @@ function Layout({title, showTOC = true, editPageLinkPath, children}: Props) {
             <Link href={feedbackUrl}>Leave feedback</Link>
           </p>
         </footer>
-      </article>
+      </Box>
       {showTOC && (
         <div className={styles.TOCWrapper}>
           <TOC items={tocItems} />

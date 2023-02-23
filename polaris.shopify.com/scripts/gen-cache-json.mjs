@@ -8,46 +8,48 @@ const cacheDir = path.join(process.cwd(), '.cache');
 const siteJsonFile = `${cacheDir}/site.json`;
 const navJsonFile = `${cacheDir}/nav.json`;
 
-const genNavJson = (mardownFiles) => {
+const genNavJson = (markdownFiles) => {
   let nav = {};
 
-  mardownFiles.forEach((md) => {
-    const {
-      title,
-      navTitle,
-      icon,
-      description,
-      order,
-      newSection,
-      hideChildren,
-      color,
-      url,
-      status,
-      expanded,
-      groups,
-      componentDescriptions,
-      relatedResources,
-    } = md.frontMatter;
-    const {slug} = md;
+  markdownFiles
+    .filter((md) => md && !md.frontMatter?.hideFromNav)
+    .forEach((md) => {
+      const {
+        title,
+        navTitle,
+        icon,
+        description,
+        order,
+        newSection,
+        hideChildren,
+        color,
+        url,
+        status,
+        expanded,
+        groups,
+        componentDescriptions,
+        relatedResources,
+      } = md.frontMatter;
+      const {slug} = md;
 
-    const path = `children.${slug.replace(/\//g, '.children.')}`;
+      const path = `children.${slug.replace(/\//g, '.children.')}`;
 
-    set(nav, path, {
-      title: navTitle || title,
-      icon,
-      description,
-      order,
-      slug: url || `/${slug}`,
-      newSection,
-      hideChildren,
-      color: color ? color.replace(/\\/g, '') : undefined,
-      status,
-      expanded,
-      groups,
-      componentDescriptions,
-      relatedResources,
+      set(nav, path, {
+        title: navTitle || title,
+        icon,
+        description,
+        order,
+        slug: url || `/${slug}`,
+        newSection,
+        hideChildren,
+        color: color ? color.replace(/\\/g, '') : undefined,
+        status,
+        expanded,
+        groups,
+        componentDescriptions,
+        relatedResources,
+      });
     });
-  });
 
   writeFileSync(navJsonFile, JSON.stringify(nav), 'utf-8');
 };
@@ -79,12 +81,12 @@ const genCacheJson = () => {
 
   const mdFiles = globby.sync(pathGlob);
 
-  const mardownFiles = mdFiles
+  const markdownFiles = mdFiles
     .map((filePath) => getMdContent(filePath))
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
-  genSiteJson(mardownFiles);
-  genNavJson(mardownFiles);
+  genSiteJson(markdownFiles);
+  genNavJson(markdownFiles);
 
   console.log('✅ Generated .cache/nav.json and .cache/site.json');
 };

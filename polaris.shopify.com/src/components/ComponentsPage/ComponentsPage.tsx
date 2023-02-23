@@ -7,7 +7,7 @@ import {
 import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
-import Grid from '../Grid';
+import {Grid, GridItem} from '../Grid';
 import Page from '../Page';
 import ComponentThumbnail from '../ComponentThumbnail';
 
@@ -27,7 +27,7 @@ export default function ComponentsPage() {
         description="Components are reusable building blocks made of interface elements and styles, packaged through code. Piece them together, improve them, and create new ones to solve merchant problems."
       />
 
-      <Page title="Components" showTOC={false}>
+      <Page title="Components">
         {componentCategories
           .sort((currentCategory, previousCategory) => {
             const currentOrder =
@@ -55,7 +55,7 @@ export default function ComponentsPage() {
                         description = '',
                       } = pages[slug].frontMatter;
                       return (
-                        <Grid.Item
+                        <GridItem
                           key={title}
                           title={title}
                           description={stripMarkdownLinks(description)}
