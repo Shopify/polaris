@@ -41,7 +41,7 @@ const pattern: SingleVariantPattern = {
       },
       {
         label: 'Card',
-        url: '/components/layout-and-structure/card',
+        url: '/components/layout-and-structure/alpha-card',
       },
     ],
     context: `
