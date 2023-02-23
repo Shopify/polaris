@@ -155,6 +155,7 @@ export enum StatusName {
   Alpha = 'Alpha',
   Beta = 'Beta',
   Information = 'Information',
+  Legacy = 'Legacy',
   Warning = 'Warning',
 }
 
