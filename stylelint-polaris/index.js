@@ -372,7 +372,7 @@ const stylelintPolarisCoverageOptions = {
   ],
   conventions: {
     'selector-disallowed-list': [
-      [/class[*^]='Polaris-[a-z_-]+'/gi],
+      [/class[*^~]?='Polaris-[a-z_-]+'/gi],
       {
         message:
           'Overriding Polaris styles is disallowed. Please consider contributing instead',
