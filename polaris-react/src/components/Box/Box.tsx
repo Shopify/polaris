@@ -208,8 +208,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     ref,
   ) => {
     const style = {
-      '--pc-box-color': color ? `var(--p-${color})` : undefined,
-      '--pc-box-background': background ? `var(--p-${background})` : undefined,
+      '--pc-box-color': color ? `var(--p-color-${color})` : undefined,
+      '--pc-box-background': background
+        ? `var(--p-color-${background})`
+        : undefined,
       '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
       '--pc-box-border-block-end': borderBlockEnd
         ? `var(--p-border-${borderBlockEnd})`
