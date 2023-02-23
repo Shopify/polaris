@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Adds new backAction prop and deprecates breadcrumbs in favor of the new singular prop.
+Deprecated the `Page` `breadcrumbs` prop in favor of the new `backAction` prop.
