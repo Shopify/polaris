@@ -1,8 +1,8 @@
 .legacy {
   z-index: var(--p-z-index-6);
-  width: 20px;
-  width: 8px;
-  width: 20px;
+  width: 1.25rem;
+  width: 0.5rem;
+  width: 1.25rem;
   margin: var(--p-space-025);
   border-width: var(--p-border-radius-05);
   box-shadow: inset 0 (--p-border-width-1) 0 0 var(--p-color-border-strong),
@@ -20,10 +20,10 @@
       var(--p-color-border-critical-subdued),
     inset 0 0 0 (--p-border-width-1) var(--p-color-border-critical-subdued);
   border: var(--p-border-base);
-  margin: 2px;
-  margin: -4px;
+  margin: 0.125rem;
+  margin: -0.25rem;
   padding: calc(-1 * var(--p-space-025));
-  width: 16px;
-  width: 24px;
+  width: 1rem;
+  width: 1.5rem;
   margin: 0;
 }
