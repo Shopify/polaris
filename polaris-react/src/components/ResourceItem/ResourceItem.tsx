@@ -204,6 +204,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     if (media || selectable) {
       ownedMarkup = (
         <Inline
+          gap="4"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
@@ -295,7 +296,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             gap="5"
           >
             {ownedMarkup}
-            <Inline blockAlign={getAlignment(verticalAlignment)}>
+            <Inline gap="4" blockAlign={getAlignment(verticalAlignment)}>
               <Box
                 width="100%"
                 padding="0"

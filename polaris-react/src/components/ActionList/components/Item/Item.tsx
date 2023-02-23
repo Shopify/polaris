@@ -88,7 +88,7 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <Inline blockAlign="center" gap="0">
+    <Inline blockAlign="center">
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}

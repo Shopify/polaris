@@ -53,7 +53,7 @@ const Placeholder = ({
         width: width,
       }}
     >
-      <Inline align={childAlign}>
+      <Inline gap="4" align={childAlign}>
         <div
           style={{
             color: '#FFFFFF',
