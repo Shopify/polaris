@@ -49,8 +49,10 @@ export interface HeaderProps extends TitleProps {
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
-  /** Breadcrumb link */
-  breadcrumb?: BreadcrumbsProps['breadcrumb'];
+  /** @deprecated Collection of breadcrumbs */
+  breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
+  /** A back action link */
+  backAction?: BreadcrumbsProps['backAction'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
@@ -76,7 +78,8 @@ export function Header({
   primaryAction,
   pagination,
   additionalNavigation,
-  breadcrumb,
+  breadcrumbs,
+  backAction,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
@@ -91,6 +94,12 @@ export function Header({
       'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
     );
   }
+  if (breadcrumbs && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `breadcrumbs` prop on Page is deprecated and will be removed in the next major version. Please replace with a single `backAction`.',
+    );
+  }
 
   const isSingleRow =
     !primaryAction &&
@@ -99,13 +108,27 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
-  const breadcrumbMarkup = breadcrumb ? (
-    <div className={styles.BreadcrumbWrapper}>
-      <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-        <Breadcrumbs breadcrumb={breadcrumb} />
-      </Box>
-    </div>
-  ) : null;
+  let breadcrumbMarkup = null;
+  if (backAction) {
+    breadcrumbMarkup = (
+      <div className={styles.BreadcrumbWrapper}>
+        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+          <Breadcrumbs backAction={backAction} />
+        </Box>
+      </div>
+    );
+  } else if (
+    (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
+    (!Array.isArray(breadcrumbs) && breadcrumbs)
+  ) {
+    breadcrumbMarkup = (
+      <div className={styles.BreadcrumbWrapper}>
+        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </Box>
+      </div>
+    );
+  }
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
@@ -189,7 +212,7 @@ export function Header({
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
-    !breadcrumb && styles.noBreadcrumbs,
+    !backAction && styles.noBreadcrumbs,
     title && title.length < LONG_TITLE && styles.mediumTitle,
     title && title.length > LONG_TITLE && styles.longTitle,
   );

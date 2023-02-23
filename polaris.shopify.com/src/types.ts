@@ -1,5 +1,34 @@
 import {MetadataProperties} from '@shopify/polaris-tokens';
 import {Icon} from '@shopify/polaris-icons/metadata';
+import {type PatternExample} from './components/PatternsExample';
+
+export type MarkdownString = string;
+
+export type PatternVariant = {
+  description?: string;
+  title: string;
+  slug: string;
+  howItHelps: MarkdownString;
+  usefulToKnow: MarkdownString;
+  example?: PatternExample;
+};
+
+export type Pattern = SingleVariantPattern | MultiVariantPattern;
+
+export type SingleVariantPattern = {
+  title: string;
+  description?: string;
+  relatedResources: MarkdownString;
+  howItHelps: MarkdownString;
+  usefulToKnow: MarkdownString;
+  example: PatternExample;
+};
+
+export type MultiVariantPattern = {
+  variants: PatternVariant[];
+  description?: string;
+  relatedResources: MarkdownString;
+};
 
 export interface SiteJSON {
   [key: string]: {
@@ -14,6 +43,7 @@ export interface Example extends FrontMatter {
 export interface FrontMatter {
   title: string;
   category?: string;
+  url?: string;
   description?: string;
   examples?: Example[];
   icon?: string;
@@ -23,6 +53,14 @@ export interface FrontMatter {
     value: string;
     message: string;
   };
+}
+
+export interface PatternFrontMatter extends FrontMatter {
+  previewImg?: string;
+  order?: number;
+  draft: boolean;
+  githubDiscussionsLink?: string;
+  contentFile: string;
 }
 
 export type MarkdownFile = {
@@ -37,6 +75,7 @@ export interface TokenPropertiesWithName extends MetadataProperties {
 export const searchResultCategories = [
   'foundations',
   'components',
+  'patterns',
   'tokens',
   'icons',
 ] as const;
@@ -54,6 +93,11 @@ export interface SearchResult {
       description: string;
       status?: Status;
       group?: string;
+    };
+    patterns: {
+      title: string;
+      description: string;
+      previewImg?: string;
     };
     foundations: {
       title: string;
@@ -98,6 +142,7 @@ export enum Breakpoints {
 export enum StatusName {
   Deprecated = 'Deprecated',
   Alpha = 'Alpha',
+  Beta = 'Beta',
   Information = 'Information',
   Warning = 'Warning',
 }
@@ -158,4 +203,5 @@ export interface NavItem {
   status?: Status;
   children?: NavJSON;
   expanded?: boolean;
+  hideFromNav?: boolean;
 }
