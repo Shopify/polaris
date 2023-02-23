@@ -49,9 +49,7 @@ export interface HeaderProps extends TitleProps {
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
-  /** @deprecated Collection of breadcrumbs */
-  breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
-  /** A back action link */
+  /** Back action link */
   backAction?: BreadcrumbsProps['backAction'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
@@ -78,7 +76,6 @@ export function Header({
   primaryAction,
   pagination,
   additionalNavigation,
-  breadcrumbs,
   backAction,
   secondaryActions = [],
   actionGroups = [],
@@ -94,12 +91,6 @@ export function Header({
       'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
     );
   }
-  if (breadcrumbs && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The `breadcrumbs` prop on Page is deprecated and will be removed in the next major version. Please replace with a single `backAction`.',
-    );
-  }
 
   const isSingleRow =
     !primaryAction &&
@@ -108,27 +99,13 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
-  let breadcrumbMarkup = null;
-  if (backAction) {
-    breadcrumbMarkup = (
-      <div className={styles.BreadcrumbWrapper}>
-        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-          <Breadcrumbs backAction={backAction} />
-        </Box>
-      </div>
-    );
-  } else if (
-    (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
-    (!Array.isArray(breadcrumbs) && breadcrumbs)
-  ) {
-    breadcrumbMarkup = (
-      <div className={styles.BreadcrumbWrapper}>
-        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-          <Breadcrumbs breadcrumbs={breadcrumbs} />
-        </Box>
-      </div>
-    );
-  }
+  const breadcrumbMarkup = backAction ? (
+    <div className={styles.BreadcrumbWrapper}>
+      <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+        <Breadcrumbs backAction={backAction} />
+      </Box>
+    </div>
+  ) : null;
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (

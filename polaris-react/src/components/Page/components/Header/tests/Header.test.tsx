@@ -54,7 +54,7 @@ describe('<Header />', () => {
 
     it('get passed into Breadcrumbs', () => {
       const header = mountWithApp(
-        <Header {...mockProps} backAction={breadcrumb} />,
+        <Header {...mockProps} backAction={backAction} />,
       );
       expect(header).toContainReactComponent(Breadcrumbs, {
         backAction,
@@ -67,7 +67,7 @@ describe('<Header />', () => {
         url: 'https://www.google.com',
       };
       const header = mountWithApp(
-        <Header {...mockProps} backAction={breadcrumb} />,
+        <Header {...mockProps} backAction={backAction} />,
       );
       expect(header).toContainReactComponent(Breadcrumbs, {
         backAction,
@@ -307,7 +307,7 @@ describe('<Header />', () => {
     {content: 'mock content 2'},
   ];
 
-  const breadcrumb: LinkAction = {
+  const backAction: LinkAction = {
     content: 'Products',
     url: 'https://www.google.com',
   };
@@ -355,7 +355,7 @@ describe('<Header />', () => {
 
   it('renders a default mobile layout', () => {
     const header = mountWithApp(
-      <Header title="mmmmmmmmm" backAction={breadcrumb} />,
+      <Header title="mmmmmmmmm" backAction={backAction} />,
       {
         mediaQuery: {isNavigationCollapsed: true},
       },

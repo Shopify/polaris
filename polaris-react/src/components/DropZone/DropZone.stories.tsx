@@ -210,7 +210,7 @@ export function WithDropOnPage() {
 
   return (
     <Page
-      breadcrumbs={[{content: 'Products'}]}
+      backAction={{content: 'Products'}}
       title="Jar With Lock-Lid"
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
