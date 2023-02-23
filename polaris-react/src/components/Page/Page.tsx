@@ -43,7 +43,8 @@ export function Page({
     (rest.breadcrumbs != null &&
       Array.isArray(rest.breadcrumbs) &&
       rest.breadcrumbs.length > 0) ||
-    rest.breadcrumbs != null;
+    rest.breadcrumbs != null ||
+    rest.backAction != null;
 
   const contentClassName = classNames(
     !hasHeaderContent && styles.Content,

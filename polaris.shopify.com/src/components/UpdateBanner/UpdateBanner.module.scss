@@ -1,0 +1,19 @@
+.Banner {
+  border-radius: var(--border-radius-700);
+  background-color: var(--surface-subdued);
+  box-shadow: var(--p-shadow-card);
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-6);
+  padding: var(--p-space-5) var(--p-space-6);
+  & > svg {
+    flex-shrink: 0;
+    fill: var(--p-icon-highlight);
+    /* Undo these overly perscriptive styles from Polaris Icons */
+    filter: none;
+    opacity: 1;
+  }
+  & > p {
+    margin: 0;
+  }
+}
