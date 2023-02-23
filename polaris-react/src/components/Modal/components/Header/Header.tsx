@@ -41,7 +41,7 @@ export function Header({
       paddingInlineEnd="5"
       borderBlockEnd="divider"
     >
-      <Columns columns={{xs: '1fr auto'}}>
+      <Columns columns={{xs: '1fr auto'}} gap="4">
         <Inline gap="4">
           <Text id={id} as="h2" variant="headingLg" breakWord>
             {children}
