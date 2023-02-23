@@ -8,17 +8,7 @@ import GrowFrame from '../GrowFrame';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
 import InlinePill from '../InlinePill';
-
-type RelatedComponent = {
-  label: string;
-  url: string;
-};
-export type PatternExample = {
-  code: string;
-  context?: string;
-  snippetCode?: string;
-  relatedComponents: RelatedComponent[];
-};
+import {PatternExample} from '../../types';
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
 
