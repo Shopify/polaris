@@ -153,18 +153,16 @@ export function WithCustomDisclosure() {
 
   return (
     <LegacyCard>
-      <Box padding="2">
-        <Tabs
-          tabs={tabs}
-          selected={selected}
-          onSelect={handleTabChange}
-          disclosureText="Extra views"
-        >
-          <LegacyCard.Section title={tabs[selected].content}>
-            <p>Tab {selected} selected</p>
-          </LegacyCard.Section>
-        </Tabs>
-      </Box>
+      <Tabs
+        tabs={tabs}
+        selected={selected}
+        onSelect={handleTabChange}
+        disclosureText="Extra views"
+      >
+        <LegacyCard.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </LegacyCard.Section>
+      </Tabs>
     </LegacyCard>
   );
 }

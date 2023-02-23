@@ -1,8 +1,8 @@
-import type {KeyboardEvent} from 'react';
 import React, {useMemo, useCallback} from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
+import {useEventListener} from '../../utilities/use-event-listener';
 import {Inline} from '../Inline';
 import {Spinner} from '../Spinner';
 import {Filters} from '../Filters';
@@ -101,6 +101,22 @@ export function IndexFilters({
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
+
+  useEventListener('keydown', (event) => {
+    const {key} = event;
+    const tag = document?.activeElement?.tagName;
+    if (mode !== IndexFiltersMode.Default && event.key === 'Escape') {
+      onPressEscape();
+    }
+
+    if (key === 'f' && mode === IndexFiltersMode.Default) {
+      if (tag && DEFAULT_IGNORED_TAGS.includes(tag)) {
+        return;
+      }
+      onPressF();
+      event.preventDefault();
+    }
+  });
 
   const {intersectionRef, measurerRef, indexFilteringHeight, isSticky} =
     useIsSticky(mode, Boolean(disableStickyMode), isMobileClient);
@@ -315,21 +331,6 @@ export function IndexFilters({
     setMode(IndexFiltersMode.Default);
   }
 
-  function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-    if (mode !== IndexFiltersMode.Default && event.key === 'Escape') {
-      onPressEscape();
-    }
-
-    if (event.key === 'f') {
-      const tag = document?.activeElement?.tagName;
-
-      if (tag && DEFAULT_IGNORED_TAGS.includes(tag)) {
-        return;
-      }
-      onPressF();
-    }
-  }
-
   function handleClearSearch() {
     onQueryClear?.();
   }
@@ -345,7 +346,6 @@ export function IndexFilters({
     <div
       className={styles.IndexFiltersWrapper}
       style={{height: indexFilteringHeight}}
-      onKeyDown={handleKeyDown}
     >
       <div ref={intersectionRef} />
       <div

@@ -7,7 +7,7 @@ export interface SortButtonChoice {
 
 export interface IndexFiltersPrimaryAction {
   type: 'save' | 'save-as' | 'cancel';
-  onAction: (name?: string) => Promise<boolean>;
+  onAction: (name: string) => Promise<boolean>;
   disabled?: boolean;
   loading?: boolean;
 }

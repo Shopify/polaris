@@ -1,5 +1,4 @@
-import type {Dispatch} from 'react';
-import React, {useReducer, useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   ChoiceList,
@@ -7,6 +6,8 @@ import {
   useIndexResourceState,
   IndexTable,
   IndexFilters,
+  RangeSlider,
+  TextField,
   Card,
 } from '@shopify/polaris';
 import type {AppliedFilterInterface} from '@shopify/polaris';
@@ -30,252 +31,6 @@ export default {
   },
 } as ComponentMeta<typeof IndexFilters>;
 
-const UPDATE_PAYMENT = 'UPDATE_PAYMENT';
-const UPDATE_DATE = 'UPDATE_DATE';
-const UPDATE_SHIPPING = 'UPDATE_SHIPPING';
-const UPDATE_RETURNS = 'UPDATE_RETURNS';
-const REMOVE_ALL = 'REMOVE_ALL';
-
-interface FilterOption {
-  label: string;
-  value: string;
-}
-
-interface Filter {
-  key: string;
-  type: string;
-  label: string;
-  pinned: boolean;
-  isApplied: boolean;
-  options: FilterOption[];
-  value: string;
-}
-
-interface FilterState {
-  [key: string]: Filter;
-}
-
-const initialFilterState = {
-  payment: {
-    key: 'payment',
-    type: UPDATE_PAYMENT,
-    label: 'Payment status',
-    pinned: true,
-    isApplied: false,
-    options: [
-      {label: 'Authorized', value: 'authorized'},
-      {label: 'Expired', value: 'expired'},
-      {label: 'Paid', value: 'paid'},
-    ],
-    value: '',
-  },
-
-  date: {
-    key: 'date',
-    type: UPDATE_DATE,
-
-    label: 'Date',
-    pinned: true,
-    isApplied: false,
-    options: [
-      {label: 'Today', value: 'today'},
-      {label: 'Yesterday', value: 'yesterday'},
-      {label: 'Last week', value: 'lastWeek'},
-    ],
-    value: '',
-  },
-
-  shipping: {
-    key: 'shipping',
-    type: UPDATE_SHIPPING,
-    label: 'Shipping status',
-    pinned: false,
-    isApplied: false,
-    options: [
-      {label: 'Pending', value: 'pending'},
-      {label: 'Shipped', value: 'shipped'},
-      {label: 'Delivered', value: 'delivered'},
-    ],
-    value: '',
-  },
-
-  returns: {
-    key: 'returns',
-    type: UPDATE_RETURNS,
-    label: 'Returns',
-    pinned: false,
-    isApplied: false,
-    options: [
-      {label: 'Returned', value: 'returned'},
-      {label: 'Refunded', value: 'refunded'},
-      {label: 'Rejected', value: 'rejected'},
-    ],
-    value: '',
-  },
-};
-
-interface Action {
-  type: string;
-  payload: Filter;
-}
-
-function reducer(state: FilterState = initialFilterState, action: Action) {
-  switch (action.type) {
-    case UPDATE_PAYMENT:
-      return {
-        ...state,
-        payment: action.payload,
-      };
-    case UPDATE_DATE:
-      return {
-        ...state,
-        date: action.payload,
-      };
-    case UPDATE_SHIPPING:
-      return {
-        ...state,
-        shipping: action.payload,
-      };
-    case UPDATE_RETURNS:
-      return {
-        ...state,
-        returns: action.payload,
-      };
-    case REMOVE_ALL:
-      return {
-        ...state,
-        payment: {...state.payment, isApplied: false},
-        date: {...state.date, isApplied: false},
-        shipping: {...state.shipping, isApplied: false},
-        returns: {...state.returns, isApplied: false},
-      };
-    default:
-      return state;
-  }
-}
-
-const useFilters = () => {
-  const [filtersState, dispatch] = useReducer(reducer, initialFilterState);
-
-  const filters: FiltersProps['filters'] = [
-    {
-      ...filtersState.payment,
-      filter: (
-        <DefaultFilter
-          {...{
-            dispatch,
-            dispatchKey: UPDATE_PAYMENT,
-            filterKey: 'payment',
-            filter: filtersState.payment,
-          }}
-        />
-      ),
-    },
-    {
-      ...filtersState.date,
-      filter: (
-        <DefaultFilter
-          {...{
-            dispatch,
-            dispatchKey: UPDATE_DATE,
-            filterKey: 'date',
-            filter: filtersState.date,
-          }}
-        />
-      ),
-    },
-    {
-      ...filtersState.shipping,
-      filter: (
-        <DefaultFilter
-          {...{
-            dispatch,
-            dispatchKey: UPDATE_SHIPPING,
-            filterKey: 'shipping',
-            filter: filtersState.shipping,
-          }}
-        />
-      ),
-    },
-    {
-      ...filtersState.returns,
-      filter: (
-        <DefaultFilter
-          {...{
-            dispatch,
-            dispatchKey: UPDATE_RETURNS,
-            filterKey: 'returns',
-            filter: filtersState.returns,
-          }}
-        />
-      ),
-    },
-  ];
-  const appliedFilters: AppliedFilterInterface[] = Object.values(filtersState)
-    .filter((filter) => filter.isApplied)
-    .map((filter) => ({
-      key: filter.key,
-      value: filter.value,
-      label:
-        filter.options?.find((option) => option.value === filter.value)
-          ?.label || '',
-      onRemove: () => {
-        dispatch({
-          type: filter.type,
-          payload: {
-            ...filter,
-            isApplied: false,
-            value: '',
-          },
-        });
-      },
-    }));
-
-  const onClearAllFilters = () => {
-    dispatch({
-      type: REMOVE_ALL,
-      payload: {
-        ...filtersState.payment,
-      },
-    });
-  };
-
-  return {
-    filtersState,
-    dispatch,
-    filters,
-    appliedFilters,
-    onClearAllFilters,
-  };
-};
-
-interface DefaultFilterProps {
-  dispatch: Dispatch<Action>;
-  dispatchKey: string;
-  filter: Filter;
-}
-
-function DefaultFilter({dispatch, dispatchKey, filter}: DefaultFilterProps) {
-  function handleChange(value: string[]) {
-    dispatch({
-      type: dispatchKey,
-      payload: {
-        ...filter,
-        isApplied: true,
-        value: value[0],
-      },
-    });
-  }
-  return (
-    <ChoiceList
-      choices={filter.options}
-      title={filter.label}
-      selected={[filter.value]}
-      onChange={handleChange}
-    />
-  );
-}
-
 const useDefaultData = () => {
   const [selected, setSelected] = useState(0);
   const [itemStrings, setItemStrings] = useState([
@@ -295,8 +50,6 @@ const useDefaultData = () => {
   };
 
   const [searchTerm, setSearchTerm] = useState('');
-
-  const {filters, appliedFilters, onClearAllFilters} = useFilters();
 
   const deleteView = (index: number) => {
     const newItemStrings = [...itemStrings];
@@ -337,49 +90,6 @@ const useDefaultData = () => {
       },
     }));
 
-  const sortOptions: IndexFiltersProps['sortOptions'] = [
-    {
-      label: 'Order number',
-      value: 'order-number asc',
-      directionLabel: 'Ascending',
-    },
-    {
-      label: 'Order number',
-      value: 'order-number desc',
-      directionLabel: 'Descending',
-    },
-    {label: 'Customer name', value: 'customer-name asc', directionLabel: 'A-Z'},
-    {
-      label: 'Customer name',
-      value: 'customer-name desc',
-      directionLabel: 'Z-A',
-    },
-    {label: 'Date', value: 'date asc', directionLabel: 'A-Z'},
-    {label: 'Date', value: 'date desc', directionLabel: 'Z-A'},
-    {
-      label: 'Payment status',
-      value: 'payment-status asc',
-      directionLabel: 'Ascending',
-    },
-    {
-      label: 'Payment status',
-      value: 'payment-status desc',
-      directionLabel: 'Descending',
-    },
-    {
-      label: 'Fulfillment status',
-      value: 'fulfillment-status asc',
-      directionLabel: 'A-Z',
-    },
-    {
-      label: 'Fulfillment status',
-      value: 'fulfillment-status desc',
-      directionLabel: 'Z-A',
-    },
-    {label: 'Total', value: 'total asc', directionLabel: 'Ascending'},
-    {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
-  ];
-
   const onHandleUpdate = async () => {
     return true;
   };
@@ -398,6 +108,21 @@ const useDefaultData = () => {
 
   const viewNames = items.map(({content}) => content);
 
+  const primaryAction: IndexFiltersProps['primaryAction'] =
+    selected === 0
+      ? {
+          type: 'save-as',
+          onAction: onHandleSaveAs,
+          disabled: false,
+          loading: false,
+        }
+      : {
+          type: 'save',
+          onAction: onHandleUpdate,
+          disabled: false,
+          loading: false,
+        };
+
   return {
     items,
     selected,
@@ -415,52 +140,14 @@ const useDefaultData = () => {
     onHandleSaveAs,
     filters,
     appliedFilters,
-    viewNames,
     onClearAllFilters,
     mode,
     setMode,
+    primaryAction,
   };
 };
 
-export function Default() {
-  const {
-    items,
-    selected,
-    setSelected,
-    handleSaveNewViewModal,
-    searchTerm,
-    setSearchTerm,
-    sortOptions,
-    sortSelected,
-    setSortSelected,
-    onHandleUpdate,
-    onHandleCancel,
-    onHandleSaveAs,
-    filters,
-    appliedFilters,
-    viewNames,
-    onClearAllFilters,
-    mode,
-    setMode,
-  } = useDefaultData();
-
-  console.log({searchTerm});
-
-  const primaryAction: IndexFiltersProps['primaryAction'] =
-    selected === 0
-      ? {
-          type: 'save-as',
-          onAction: onHandleSaveAs,
-          disabled: false,
-          loading: false,
-        }
-      : {
-          type: 'save',
-          onAction: onHandleUpdate,
-          disabled: false,
-          loading: false,
-        };
-
+function Table() {
   const customers = [
     {
       id: '3411',
@@ -506,15 +193,243 @@ export function Default() {
       </IndexTable.Row>
     ),
   );
+  return (
+    <IndexTable
+      resourceName={resourceName}
+      itemCount={customers.length}
+      selectedItemsCount={
+        allResourcesSelected ? 'All' : selectedResources.length
+      }
+      onSelectionChange={handleSelectionChange}
+      headings={[
+        {title: 'Name', flush: true},
+        {title: 'Location', flush: true},
+        {title: 'Order count', flush: true},
+        {title: 'Amount spent', flush: true},
+      ]}
+    >
+      {rowMarkup}
+    </IndexTable>
+  );
+}
+
+export function Default() {
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const [itemStrings, setItemStrings] = useState([
+    'All',
+    'Unpaid',
+    'Open',
+    'Closed',
+    'Local delivery',
+    'Local pickup',
+  ]);
+  const deleteView = (index: number) => {
+    const newItemStrings = [...itemStrings];
+    newItemStrings.splice(index, 1);
+    setItemStrings(newItemStrings);
+    setSelected(0);
+  };
+
+  const duplicateView = async (name: string) => {
+    setItemStrings([...itemStrings, name]);
+    setSelected(itemStrings.length);
+    return true;
+  };
+
+  const tabs: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[] =
+    itemStrings.map((item, index) => ({
+      content: item,
+      index,
+      onAction: () => {},
+      id: `${item}-${index}`,
+      isLocked: index === 0,
+      permissions: index === 0 ? [] : ['rename', 'duplicate', 'edit', 'delete'],
+      onClickRenameView: () => {},
+      onSaveRenameViewModal: async (value: string, id: string) => {
+        const newItemsStrings = tabs.map((item) => {
+          if (item.id === id) {
+            return value;
+          }
+          return item.content;
+        });
+        setItemStrings(newItemsStrings);
+      },
+      onClickEditView: (id: string) => {},
+      onClickDeleteView: (id: string) => {},
+      onConfirmDuplicateView: async (name) => {
+        duplicateView(name);
+      },
+      onConfirmDeleteView: async (id: string) => {
+        deleteView(index);
+      },
+    }));
+  const [selected, setSelected] = useState(0);
+  const onCreateNewView = async (value: string) => {
+    await sleep(500);
+    setItemStrings([...itemStrings, value]);
+    setSelected(itemStrings.length);
+    return true;
+  };
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
+    {label: 'Order', value: 'order asc', directionLabel: 'Ascending'},
+    {label: 'Order', value: 'order desc', directionLabel: 'Descending'},
+    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
+    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
+    {label: 'Date', value: 'date asc', directionLabel: 'A-Z'},
+    {label: 'Date', value: 'date desc', directionLabel: 'Z-A'},
+    {label: 'Total', value: 'total asc', directionLabel: 'Ascending'},
+    {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
+  ];
+  const [sortSelected, setSortSelected] = useState(['order asc']);
+  const {mode, setMode} = useSetIndexFiltersMode();
+  const onHandleCancel = () => {};
+
+  const onHandleSave = async () => {
+    return true;
+  };
+
+  const primaryAction: IndexFiltersProps['primaryAction'] =
+    selected === 0
+      ? {
+          type: 'save-as',
+          onAction: onCreateNewView,
+          disabled: false,
+          loading: false,
+        }
+      : {
+          type: 'save',
+          onAction: onHandleSave,
+          disabled: false,
+          loading: false,
+        };
+  const [accountStatus, setAccountStatus] = useState(null);
+  const [moneySpent, setMoneySpent] = useState(null);
+  const [taggedWith, setTaggedWith] = useState(null);
+  const [queryValue, setQueryValue] = useState('');
+
+  const handleAccountStatusChange = useCallback(
+    (value) => setAccountStatus(value),
+    [],
+  );
+  const handleMoneySpentChange = useCallback(
+    (value) => setMoneySpent(value),
+    [],
+  );
+  const handleTaggedWithChange = useCallback(
+    (value) => setTaggedWith(value),
+    [],
+  );
+  const handleFiltersQueryChange = useCallback(
+    (value) => setQueryValue(value),
+    [],
+  );
+  const handleAccountStatusRemove = useCallback(
+    () => setAccountStatus(null),
+    [],
+  );
+  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleFiltersClearAll = useCallback(() => {
+    handleAccountStatusRemove();
+    handleMoneySpentRemove();
+    handleTaggedWithRemove();
+    handleQueryValueRemove();
+  }, [
+    handleAccountStatusRemove,
+    handleMoneySpentRemove,
+    handleQueryValueRemove,
+    handleTaggedWithRemove,
+  ]);
+
+  const filters = [
+    {
+      key: 'accountStatus',
+      label: 'Account status',
+      filter: (
+        <ChoiceList
+          title="Account status"
+          titleHidden
+          choices={[
+            {label: 'Enabled', value: 'enabled'},
+            {label: 'Not invited', value: 'not invited'},
+            {label: 'Invited', value: 'invited'},
+            {label: 'Declined', value: 'declined'},
+          ]}
+          selected={accountStatus || []}
+          onChange={handleAccountStatusChange}
+          allowMultiple
+        />
+      ),
+      shortcut: true,
+    },
+    {
+      key: 'taggedWith',
+      label: 'Tagged with',
+      filter: (
+        <TextField
+          label="Tagged with"
+          value={taggedWith}
+          onChange={handleTaggedWithChange}
+          autoComplete="off"
+          labelHidden
+        />
+      ),
+      shortcut: true,
+    },
+    {
+      key: 'moneySpent',
+      label: 'Money spent',
+      filter: (
+        <RangeSlider
+          label="Money spent is between"
+          labelHidden
+          value={moneySpent || [0, 500]}
+          prefix="$"
+          output
+          min={0}
+          max={2000}
+          step={1}
+          onChange={handleMoneySpentChange}
+        />
+      ),
+    },
+  ];
+
+  const appliedFilters: IndexFiltersProps['appliedFilters'] = [];
+  if (!isEmpty(accountStatus)) {
+    const key = 'accountStatus';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, accountStatus),
+      onRemove: handleAccountStatusRemove,
+    });
+  }
+  if (!isEmpty(moneySpent)) {
+    const key = 'moneySpent';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, moneySpent),
+      onRemove: handleMoneySpentRemove,
+    });
+  }
+  if (!isEmpty(taggedWith)) {
+    const key = 'taggedWith';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, taggedWith),
+      onRemove: handleTaggedWithRemove,
+    });
+  }
 
   return (
     <Card>
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
-        queryValue={searchTerm}
+        queryValue={queryValue}
         queryPlaceholder="Searching in all"
-        onQueryChange={setSearchTerm}
+        onQueryChange={handleFiltersQueryChange}
         onQueryClear={() => {}}
         onSortChange={setSortSelected}
         primaryAction={primaryAction}
@@ -523,34 +438,40 @@ export function Default() {
           disabled: false,
           loading: false,
         }}
-        tabs={items}
+        tabs={tabs}
         selected={selected}
         onSelect={setSelected}
         disableTabs={false}
         canCreateNewView
-        onCreateNewView={handleSaveNewViewModal}
+        onCreateNewView={onCreateNewView}
         filters={filters}
         appliedFilters={appliedFilters}
-        onClearAll={onClearAllFilters}
+        onClearAll={handleFiltersClearAll}
         mode={mode}
         setMode={setMode}
       />
-      <IndexTable
-        resourceName={resourceName}
-        itemCount={customers.length}
-        selectedItemsCount={
-          allResourcesSelected ? 'All' : selectedResources.length
-        }
-        onSelectionChange={handleSelectionChange}
-        headings={[
-          {title: 'Name', flush: true},
-          {title: 'Location', flush: true},
-          {title: 'Order count', flush: true},
-          {title: 'Amount spent', flush: true},
-        ]}
-      >
-        {rowMarkup}
-      </IndexTable>
+      <Table />
     </Card>
   );
+
+  function disambiguateLabel(key, value) {
+    switch (key) {
+      case 'moneySpent':
+        return `Money spent is between $${value[0]} and $${value[1]}`;
+      case 'taggedWith':
+        return `Tagged with ${value}`;
+      case 'accountStatus':
+        return value.map((val) => `Customer ${val}`).join(', ');
+      default:
+        return value;
+    }
+  }
+
+  function isEmpty(value) {
+    if (Array.isArray(value)) {
+      return value.length === 0;
+    } else {
+      return value === '' || value == null;
+    }
+  }
 }
