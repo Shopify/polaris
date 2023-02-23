@@ -36,7 +36,7 @@ const pattern: SingleVariantPattern = {
       },
       {label: 'AlphaCard', url: '/components/layout-and-structure/alpha-card'},
       {label: 'Columns', url: '/components/layout-and-structure/columns'},
-      {label: 'Box', url: '//components/layout-and-structure/box'},
+      {label: 'Box', url: '/components/layout-and-structure/box'},
     ],
     context: `
       <div style={{ paddingBottom: '2rem' }}>
@@ -56,7 +56,7 @@ const pattern: SingleVariantPattern = {
       <AlphaStack gap="16" align="center">
         <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
           <Box as="section" paddingInlineStart={{ xs: 4, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
-            <AlphaStack>
+            <AlphaStack gap="4">
               <Text as="h3" variant="headingMd">
                 InterJambs
               </Text>
@@ -66,7 +66,7 @@ const pattern: SingleVariantPattern = {
             </AlphaStack>
           </Box>
           <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth>
+            <AlphaStack gap="4" fullWidth>
               <TextField label="Interjamb style" />
               <TextField label="Interjamb ratio" />
             </AlphaStack>
@@ -74,7 +74,7 @@ const pattern: SingleVariantPattern = {
         </Columns>
         <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
         <Box as="section" paddingInlineStart={{ xs: 2, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
-            <AlphaStack>
+            <AlphaStack gap="4">
               <Text as="h3" variant="headingMd">
                 Dimensions
               </Text>
@@ -84,7 +84,7 @@ const pattern: SingleVariantPattern = {
             </AlphaStack>
           </Box>
           <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth>
+            <AlphaStack gap="4" fullWidth>
               <TextField label="Horizontal" />
               <TextField label="Interjamb ratio" />
             </AlphaStack>

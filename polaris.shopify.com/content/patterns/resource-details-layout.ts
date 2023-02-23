@@ -70,34 +70,36 @@ const pattern: SingleVariantPattern = {
         <Page
           breadcrumbs={[{ content: "Products", url: "/products" }]}
           title="Product"
-          secondaryActions={[{
-            content: 'Duplicate',
-            icon: DuplicateMinor,
-            accessibilityLabel: 'Secondary action label',
-            onAction: () => alert('Duplicate action'),
-          },
-          {
-            content: 'Archive',
-            icon: ArchiveMinor,
-            accessibilityLabel: 'Secondary action label',
-            onAction: () => alert('Archive action'),
-          },
-          {
-            content: 'Delete',
-            icon: DeleteMinor,
-            destructive: true,
-            accessibilityLabel: 'Secondary action label',
-            onAction: () => alert('Delete action'),
-          }]}
+          secondaryActions={[
+            {
+              content: "Duplicate",
+              icon: DuplicateMinor,
+              accessibilityLabel: "Secondary action label",
+              onAction: () => alert("Duplicate action"),
+            },
+            {
+              content: "Archive",
+              icon: ArchiveMinor,
+              accessibilityLabel: "Secondary action label",
+              onAction: () => alert("Archive action"),
+            },
+            {
+              content: "Delete",
+              icon: DeleteMinor,
+              destructive: true,
+              accessibilityLabel: "Secondary action label",
+              onAction: () => alert("Delete action"),
+            },
+          ]}
           pagination={{
             hasPrevious: true,
             hasNext: true,
           }}
         >
           <Columns columns={{ xs: 1, md: "2fr 1fr" }}>
-            <AlphaStack fullWidth>
+            <AlphaStack fullWidth gap="4">
               <AlphaCard roundedAbove="sm">
-                <AlphaStack fullWidth>
+                <AlphaStack fullWidth gap="4">
                   <SkeletonLabel />
                   <Box border="divider" borderRadius="base" minHeight="2rem" />
                   <SkeletonLabel maxWidth="8rem" />
@@ -105,7 +107,7 @@ const pattern: SingleVariantPattern = {
                 </AlphaStack>
               </AlphaCard>
               <AlphaCard roundedAbove="sm">
-                <AlphaStack fullWidth>
+                <AlphaStack fullWidth gap="4">
                   <SkeletonDisplayText size="small" />
                   <Columns columns={{ xs: 1, md: 2 }}>
                     <Box border="divider" borderRadius="base" minHeight="10rem" />
@@ -114,9 +116,9 @@ const pattern: SingleVariantPattern = {
                 </AlphaStack>
               </AlphaCard>
             </AlphaStack>
-            <AlphaStack fullWidth>
+            <AlphaStack fullWidth gap={{ xs: "4", md: "2" }}>
               <AlphaCard roundedAbove="sm">
-                <AlphaStack fullWidth>
+                <AlphaStack fullWidth gap="4">
                   <SkeletonDisplayText size="small" />
                   <Box border="divider" borderRadius="base" minHeight="2rem" />
                   <Box>
@@ -130,7 +132,7 @@ const pattern: SingleVariantPattern = {
                 </AlphaStack>
               </AlphaCard>
               <AlphaCard roundedAbove="sm">
-                <AlphaStack fullWidth>
+                <AlphaStack fullWidth gap="4">
                   <SkeletonLabel />
                   <Box border="divider" borderRadius="base" minHeight="2rem" />
                   <SkeletonLabel maxWidth="4rem" />
@@ -164,34 +166,36 @@ const pattern: SingleVariantPattern = {
         <Page
           breadcrumbs={[{ content: "Products", url: "/products" }]}
           title="Product"
-          secondaryActions={[{
-            content: 'Duplicate',
-            icon: DuplicateMinor,
-            accessibilityLabel: 'Secondary action label',
-            onAction: () => alert('Duplicate action'),
-          },
-          {
-            content: 'Archive',
-            icon: ArchiveMinor,
-            accessibilityLabel: 'Secondary action label',
-            onAction: () => alert('Archive action'),
-          },
-          {
-            content: 'Delete',
-            icon: DeleteMinor,
-            destructive: true,
-            accessibilityLabel: 'Secondary action label',
-            onAction: () => alert('Delete action'),
-          }]}
+          secondaryActions={[
+            {
+              content: "Duplicate",
+              icon: DuplicateMinor,
+              accessibilityLabel: "Secondary action label",
+              onAction: () => alert("Duplicate action"),
+            },
+            {
+              content: "Archive",
+              icon: ArchiveMinor,
+              accessibilityLabel: "Secondary action label",
+              onAction: () => alert("Archive action"),
+            },
+            {
+              content: "Delete",
+              icon: DeleteMinor,
+              destructive: true,
+              accessibilityLabel: "Secondary action label",
+              onAction: () => alert("Delete action"),
+            },
+          ]}
           pagination={{
             hasPrevious: true,
             hasNext: true,
           }}
         >
           <Columns columns={{ xs: 1, md: "2fr 1fr" }}>
-            <AlphaStack fullWidth>
+            <AlphaStack fullWidth gap="4">
               <AlphaCard roundedAbove="sm">
-                <AlphaStack fullWidth>
+                <AlphaStack fullWidth gap="4">
                   <SkeletonLabel />
                   <Box border="divider" borderRadius="base" minHeight="2rem" />
                   <SkeletonLabel maxWidth="8rem" />
@@ -199,7 +203,7 @@ const pattern: SingleVariantPattern = {
                 </AlphaStack>
               </AlphaCard>
               <AlphaCard roundedAbove="sm">
-                <AlphaStack fullWidth>
+                <AlphaStack fullWidth gap="4">
                   <SkeletonDisplayText size="small" />
                   <Columns columns={{ xs: 1, md: 2 }}>
                     <Box border="divider" borderRadius="base" minHeight="10rem" />
@@ -208,9 +212,9 @@ const pattern: SingleVariantPattern = {
                 </AlphaStack>
               </AlphaCard>
             </AlphaStack>
-            <AlphaStack fullWidth>
+            <AlphaStack fullWidth gap={{ xs: "4", md: "2" }}>
               <AlphaCard roundedAbove="sm">
-                <AlphaStack fullWidth>
+                <AlphaStack fullWidth gap="4">
                   <SkeletonDisplayText size="small" />
                   <Box border="divider" borderRadius="base" minHeight="2rem" />
                   <Box>
@@ -224,7 +228,7 @@ const pattern: SingleVariantPattern = {
                 </AlphaStack>
               </AlphaCard>
               <AlphaCard roundedAbove="sm">
-                <AlphaStack fullWidth>
+                <AlphaStack fullWidth gap="4">
                   <SkeletonLabel />
                   <Box border="divider" borderRadius="base" minHeight="2rem" />
                   <SkeletonLabel maxWidth="4rem" />
@@ -237,7 +241,8 @@ const pattern: SingleVariantPattern = {
           </Columns>
         </Page>
       );
-    })()}`,
+    })()}
+    `,
   },
 };
 

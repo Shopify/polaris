@@ -37,16 +37,16 @@ const pattern: MultiVariantPattern = {
       example: {
         relatedComponents: [
           {
-            label: 'Alpha Card',
+            label: 'AlphaCard',
             url: '/components/layout-and-structure/alpha-card',
           },
           {
-            label: 'Date picker',
+            label: 'DatePicker',
             url: '/components/selection-and-input/date-picker',
           },
           {label: 'Popover', url: '/components/overlays/popover'},
           {
-            label: 'Text field',
+            label: 'TextField',
             url: '/components/selection-and-input/text-field',
           },
         ],
@@ -100,7 +100,7 @@ const pattern: MultiVariantPattern = {
             }
           }, [selectedDate]);
           return (
-            <AlphaStack align="center">
+            <AlphaStack align="center" gap="4">
               <Box minWidth="276px" padding={{ xs: 2 }}>
                 <Popover
                   active={visible}
@@ -189,7 +189,7 @@ const pattern: MultiVariantPattern = {
             }
           }, [selectedDate]);
           return (
-            <AlphaStack align="center">
+            <AlphaStack align="center" gap="4">
               <Box minWidth="276px" padding={{ xs: 2 }}>
                 <Popover
                   active={visible}
@@ -260,21 +260,21 @@ const pattern: MultiVariantPattern = {
       example: {
         relatedComponents: [
           {
-            label: 'Alpha stack',
+            label: 'AlphaStack',
             url: '/components/layout-and-structure/alpha-stack',
           },
           {label: 'Box', url: '/components/layout-and-structure/box'},
           {label: 'Button', url: '/components/actions/button'},
           {label: 'Columns', url: '/components/layout-and-structure/columns'},
           {
-            label: 'Date picker',
+            label: 'DatePicker',
             url: '/components/selection-and-input/date-picker',
           },
           {label: 'Inline', url: '/components/layout-and-structure/inline'},
-          {label: 'Option list', url: '/components/lists/option-list'},
+          {label: 'OptionList', url: '/components/lists/option-list'},
           {label: 'Popover', url: '/components/overlays/popover'},
           {
-            label: 'Text field',
+            label: 'TextField',
             url: '/components/selection-and-input/text-field',
           },
         ],
@@ -549,7 +549,7 @@ const pattern: MultiVariantPattern = {
                     )}
                   </Box>
                   <Box padding={{ xs: 5 }} maxWidth={mdDown ? "320px" : "516px"}>
-                    <AlphaStack fullWidth>
+                    <AlphaStack fullWidth gap="4">
                       <Inline>
                         <div style={{ flexGrow: 1 }}>
                           <TextField
@@ -889,7 +889,7 @@ const pattern: MultiVariantPattern = {
                     )}
                   </Box>
                   <Box padding={{ xs: 5 }} maxWidth={mdDown ? "320px" : "516px"}>
-                    <AlphaStack fullWidth>
+                    <AlphaStack fullWidth gap="4">
                       <Inline>
                         <div style={{ flexGrow: 1 }}>
                           <TextField
@@ -947,8 +947,7 @@ const pattern: MultiVariantPattern = {
               </Popover.Pane>
             </Popover>
           );
-        })()}
-        `,
+        })()}`,
       },
     },
     {
@@ -978,7 +977,7 @@ const pattern: MultiVariantPattern = {
       example: {
         relatedComponents: [
           {label: 'Button', url: '/components/button'},
-          {label: 'Option list', url: '/components/option-list'},
+          {label: 'OptionList', url: '/components/option-list'},
           {
             label: 'Popover',
             url: '/components/popover',
