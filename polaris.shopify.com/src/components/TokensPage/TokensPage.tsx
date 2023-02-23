@@ -95,7 +95,7 @@ function TokensPage({tokenGroup}: Props) {
     .join('\n');
 
   return (
-    <Page showTOC={false}>
+    <Page>
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
           <h1>Tokens</h1>

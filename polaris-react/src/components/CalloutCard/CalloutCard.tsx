@@ -4,6 +4,7 @@ import {CancelSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
 import {LegacyCard} from '../LegacyCard';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../TextContainer';
 import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
