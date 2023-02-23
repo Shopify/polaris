@@ -203,4 +203,5 @@ export interface NavItem {
   status?: Status;
   children?: NavJSON;
   expanded?: boolean;
+  hideFromNav?: boolean;
 }
