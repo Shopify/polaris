@@ -38,7 +38,7 @@ describe('<SkeletonPage />', () => {
 
       expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
       expect(skeletonPage).not.toContainReactComponent(Box, {
-        background: 'surface-neutral',
+        background: 'bg-strong',
       });
     });
 
@@ -49,7 +49,7 @@ describe('<SkeletonPage />', () => {
         className: 'Title',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'surface-neutral',
+        background: 'bg-strong',
       });
     });
 
@@ -60,7 +60,7 @@ describe('<SkeletonPage />', () => {
         className: 'Title',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'surface-neutral',
+        background: 'bg-strong',
       });
     });
   });

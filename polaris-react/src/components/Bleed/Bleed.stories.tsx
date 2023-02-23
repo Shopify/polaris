@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof Bleed>;
 
 const styles = {
-  background: 'var(--p-surface-neutral-subdued-dark)',
+  background: 'var(--p-color-bg-inverse)',
   borderRadius: 'var(--p-border-radius-05)',
   padding: 'var(--p-space-4)',
   height: 'var(--p-space-12)',

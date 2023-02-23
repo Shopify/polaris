@@ -1,11 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import type {ColorsTokenName, ShapeTokenName} from '@shopify/polaris-tokens';
+import type {ShapeTokenName} from '@shopify/polaris-tokens';
 
 import {Box} from '..';
 import type {
-  BackgroundColors as BoxBackgroundColorTokenScale,
-  ColorTokenScale as BoxColorTokenScale,
   BorderTokenAlias as BoxBorderTokenAlias,
   BorderRadiusTokenScale as BoxBorderRadiusTokenScale,
 } from '..';
@@ -18,20 +16,6 @@ type Equal<TokenGroup, TokenTypeAlias> = (<T>() => T extends TokenGroup
   : 2) extends <T>() => T extends TokenTypeAlias ? 1 : 2
   ? true
   : false;
-
-// Extract token scales and aliases from token groups for testing
-type BackgroundColorTokenScale = Extract<
-  ColorsTokenName,
-  | `action-${string}`
-  | 'backdrop'
-  | 'background'
-  | `background-${string}`
-  | 'overlay'
-  | 'surface'
-  | `surface-${string}`
->;
-
-type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
 
 type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
   ? Scale
@@ -55,8 +39,6 @@ type BorderRadiusTokenScale = Extract<
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 type cases = [
-  Expect<Equal<BackgroundColorTokenScale, BoxBackgroundColorTokenScale>>,
-  Expect<Equal<ColorTokenScale, BoxColorTokenScale>>,
   Expect<Equal<BorderTokenAlias, BoxBorderTokenAlias>>,
   Expect<Equal<BorderRadiusTokenScale, BoxBorderRadiusTokenScale>>,
 ];
