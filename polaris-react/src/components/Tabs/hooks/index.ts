@@ -1,1 +1,1 @@
-export * from './use-tab-methods';
+export {useTabsMethods} from './use-tab-methods';

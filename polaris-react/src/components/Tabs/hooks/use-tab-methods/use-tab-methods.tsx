@@ -3,7 +3,8 @@ import React, {useReducer, useCallback, useEffect} from 'react';
 
 import {usePrevious} from '../../../../utilities/use-previous';
 import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
-import {Tab} from '../../components';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import {Tab} from '../../components/Tab';
 import type {TabsProps} from '../../Tabs';
 import type {TabProps} from '../../types';
 import styles from '../../Tabs.scss';
