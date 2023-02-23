@@ -24,8 +24,7 @@ export const PatternsPage = () => (
             <p>{description}</p>
           </Longform>
           <UpdateBanner
-            message={`Our pattern documentation is evolving. [Join the discussions](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better. The [legacy patterns documentation](/patterns-legacy) can still be used.
-              to make it better.`}
+            message={`Our pattern documentation is evolving. [Join our discussions](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better. The [legacy patterns documentation](/patterns-legacy) can still be used.`}
             className={styles.UpdateBanner}
           />
         </div>
