@@ -31,18 +31,20 @@ export const PatternsPage = () => (
           />
         </div>
         <Grid>
-          {Object.values(patterns).map(({frontMatter: pattern}, index) => (
-            <GridItem
-              key={index}
-              title={pattern.title}
-              description={pattern.description ?? ''}
-              url={pattern.url ?? ''}
-              renderPreview={() => (
-                <Preview alt={pattern.title} src={pattern.previewImg} />
-              )}
-              status={pattern.status as Status}
-            />
-          ))}
+          {Object.values(patterns)
+            .filter(({frontMatter: {draft}}) => !draft)
+            .map(({frontMatter: pattern}, index) => (
+              <GridItem
+                key={index}
+                title={pattern.title}
+                description={pattern.description ?? ''}
+                url={pattern.url ?? ''}
+                renderPreview={() => (
+                  <Preview alt={pattern.title} src={pattern.previewImg} />
+                )}
+                status={pattern.status as Status}
+              />
+            ))}
         </Grid>
       </Stack>
     </Page>
