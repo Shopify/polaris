@@ -154,7 +154,7 @@ export function WithLinkComponent() {
   return (
     <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
-        backLink={{content: 'Products', url: '#'}}
+        backAction={{content: 'Products', url: '#'}}
         title="Jar With Lock-Lid"
         primaryAction={{content: 'Save', disabled: true}}
       >
