@@ -127,9 +127,12 @@ export default function GroupPage({
       />
       <AlphaStack gap="16">
         <AlphaStack gap="4">
-          <Longform firstParagraphIsLede>
-            <p>{frontMatter?.description}</p>
-          </Longform>
+          {frontMatter?.description && (
+            <Longform firstParagraphIsLede>
+              <Markdown>{frontMatter?.description}</Markdown>
+            </Longform>
+          )}
+
           {groupsMarkup || componentsFromPaths}
         </AlphaStack>
         {relatedResourcesMarkup}
