@@ -3,4 +3,4 @@
 'polaris.shopify.com': minor
 ---
 
-Remove default spacing from `Inline`
+Removed default spacing from `Inline`
