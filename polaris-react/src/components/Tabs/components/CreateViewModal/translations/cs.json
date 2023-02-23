@@ -1,9 +1,0 @@
-{
-  "title": "Vytvořit nové zobrazení",
-  "label": "Název",
-  "cancel": "Zrušit",
-  "create": "Vytvořit zobrazení",
-  "errors": {
-    "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
-  }
-}

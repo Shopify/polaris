@@ -1,9 +1,0 @@
-{
-  "title": "Criar uma visualização",
-  "label": "Nome",
-  "cancel": "Cancelar",
-  "create": "Criar visualização",
-  "errors": {
-    "sameName": "Uma visualização com esse nome já existe. Escolha um nome diferente."
-  }
-}

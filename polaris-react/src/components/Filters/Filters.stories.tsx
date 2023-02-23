@@ -346,6 +346,7 @@ export function WithADataTable() {
       <LegacyCard>
         <Filters
           queryValue={queryValue}
+          queryPlaceholder="Searching in all"
           filters={filters}
           appliedFilters={appliedFilters}
           onQueryChange={handleFiltersQueryChange}

@@ -1,9 +1,0 @@
-{
-  "title": "Renomear vista",
-  "label": "Nome",
-  "cancel": "Cancelar",
-  "create": "Guardar",
-  "errors": {
-    "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente."
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "title": "Gi visning nytt navn",
-  "label": "Navn",
-  "cancel": "Avbryt",
-  "create": "Lagre",
-  "errors": {
-    "sameName": "Det finnes allerede en visning med dette navnet. Velg et annet navn."
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "title": "Renommer la vue",
-  "label": "Nom",
-  "cancel": "Annuler",
-  "create": "Enregistrer",
-  "errors": {
-    "sameName": "Une vue portant ce nom existe déjà. Veuillez choisir un nom différent."
-  }
-}

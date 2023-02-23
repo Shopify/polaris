@@ -1,9 +1,0 @@
-{
-  "title": "Opprett en ny visning",
-  "label": "Navn",
-  "cancel": "Avbryt",
-  "create": "Opprett visning",
-  "errors": {
-    "sameName": "Det finnes allerede en visning med dette navnet. Velg et annet navn."
-  }
-}

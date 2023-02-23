@@ -1,9 +1,0 @@
-{
-  "title": "Crear vista nueva",
-  "label": "Nombre",
-  "cancel": "Cancelar",
-  "create": "Crear vista",
-  "errors": {
-    "sameName": "Ya existe una vista con este nombre. Elige otro."
-  }
-}

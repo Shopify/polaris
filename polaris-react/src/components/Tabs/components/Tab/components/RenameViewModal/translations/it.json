@@ -1,9 +1,0 @@
-{
-  "title": "Rinomina vista",
-  "label": "Nome",
-  "cancel": "Annulla",
-  "create": "Salva",
-  "errors": {
-    "sameName": "Esiste già una vista con questo nome. Scegli un nome diverso."
-  }
-}

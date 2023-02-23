@@ -1,9 +1,0 @@
-{
-  "title": "Přejmenovat zobrazení",
-  "label": "Název",
-  "cancel": "Zrušit",
-  "create": "Uložit",
-  "errors": {
-    "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
-  }
-}

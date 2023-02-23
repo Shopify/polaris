@@ -1,9 +1,0 @@
-{
-  "title": "Omdøb visning",
-  "label": "Navn",
-  "cancel": "Annuller",
-  "create": "Gem",
-  "errors": {
-    "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn."
-  }
-}

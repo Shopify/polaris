@@ -1,9 +1,0 @@
-{
-  "title": "Görünümü yeniden adlandır",
-  "label": "Ad",
-  "cancel": "İptal",
-  "create": "Kaydet",
-  "errors": {
-    "sameName": "Bu ada sahip bir görünüm zaten var. Lütfen farklı bir ad seçin."
-  }
-}

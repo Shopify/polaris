@@ -1,9 +1,0 @@
-{
-  "title": "Byt namn på vy",
-  "label": "Namn",
-  "cancel": "Avbryt",
-  "create": "Spara",
-  "errors": {
-    "sameName": "En vy med detta namn finns redan. Välj ett annat namn."
-  }
-}

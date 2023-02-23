@@ -1,9 +1,0 @@
-{
-  "title": "Create new view",
-  "label": "Name",
-  "cancel": "Cancel",
-  "create": "Create view",
-  "errors": {
-    "sameName": "A view with this name already exists. Please choose a different name."
-  }
-}

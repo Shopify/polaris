@@ -1,9 +1,0 @@
-{
-  "title": "Yeni görünüm oluştur",
-  "label": "Ad",
-  "cancel": "İptal",
-  "create": "Görünüm oluştur",
-  "errors": {
-    "sameName": "Bu ada sahip bir görünüm zaten var. Lütfen farklı bir ad seçin."
-  }
-}

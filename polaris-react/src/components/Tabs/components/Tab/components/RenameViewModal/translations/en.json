@@ -1,9 +1,0 @@
-{
-  "title": "Rename view",
-  "label": "Name",
-  "cancel": "Cancel",
-  "create": "Save",
-  "errors": {
-    "sameName": "A view with this name already exists. Please choose a different name."
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "title": "Sao chép chế độ xem",
-  "label": "Tên",
-  "cancel": "Hủy",
-  "create": "Tạo chế độ xem",
-  "errors": {
-    "sameName": "Chế độ xem có tên này đã tồn tại. Vui lòng chọn tên khác."
-  }
-}

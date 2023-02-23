@@ -169,17 +169,6 @@
       "sort": "Sort your results",
       "addView": "Add a new view",
       "newView": "Custom search",
-      "FilterPill": {
-        "clear": "Clear"
-      },
-      "Filters": {
-        "addFilter": "Add filter",
-        "clearFilters": "Clear all"
-      },
-      "SearchField": {
-        "placeholder": "Searching in {currentView}",
-        "allPlaceholder": "Searching all {type}"
-      },
       "SortButton": {
         "ariaLabel": "Sort the results",
         "tooltip": "Sort",

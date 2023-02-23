@@ -1,9 +1,0 @@
-{
-  "title": "Duplikuj widok",
-  "label": "Nazwa",
-  "cancel": "Anuluj",
-  "create": "Utwórz widok",
-  "errors": {
-    "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę."
-  }
-}
