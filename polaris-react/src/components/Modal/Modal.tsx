@@ -58,7 +58,7 @@ export interface ModalProps extends FooterProps {
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
   /** The element or the RefObject that activates the Modal */
-  activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  activator: React.RefObject<HTMLElement> | React.ReactElement;
   /** Removes Scrollable container from the modal content */
   noScroll?: boolean;
   /** Sets modal to the height of the viewport on small screens */
