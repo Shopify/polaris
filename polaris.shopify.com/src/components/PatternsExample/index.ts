@@ -1,3 +1,2 @@
-import PatternsExample, {type PatternExample} from './PatternsExample';
+import PatternsExample from './PatternsExample';
 export default PatternsExample;
-export {type PatternExample};

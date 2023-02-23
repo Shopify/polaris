@@ -7652,54 +7652,55 @@
       "value": "export interface AccountConnectionProps {\n  /** Content to display as title */\n  title?: React.ReactNode;\n  /** Content to display as additional details */\n  details?: React.ReactNode;\n  /** Content to display as terms of service */\n  termsOfService?: React.ReactNode;\n  /** The name of the service */\n  accountName?: string;\n  /** URL for the user’s avatar image */\n  avatarUrl?: string;\n  /** Set if the account is connected */\n  connected?: boolean;\n  /** Action for account connection */\n  action?: Action;\n}"
     }
   },
-  "ActionMenuProps": {
-    "polaris-react/src/components/ActionMenu/ActionMenu.tsx": {
-      "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
-      "name": "ActionMenuProps",
+  "ActionListProps": {
+    "polaris-react/src/components/ActionList/ActionList.tsx": {
+      "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
+      "name": "ActionListProps",
       "description": "",
       "members": [
         {
-          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
+          "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
           "syntaxKind": "PropertySignature",
-          "name": "actions",
-          "value": "MenuActionDescriptor[]",
-          "description": "Collection of page-level secondary actions",
+          "name": "items",
+          "value": "readonly ActionListItemDescriptor[]",
+          "description": "Collection of actions for list",
           "isOptional": true
         },
         {
-          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
+          "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
           "syntaxKind": "PropertySignature",
-          "name": "groups",
-          "value": "MenuGroupDescriptor[]",
-          "description": "Collection of page-level action groups",
+          "name": "sections",
+          "value": "readonly ActionListSection[]",
+          "description": "Collection of sectioned action items",
           "isOptional": true
         },
         {
-          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
+          "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
           "syntaxKind": "PropertySignature",
-          "name": "rollup",
-          "value": "boolean",
-          "description": "Roll up all actions into a Popover > ActionList",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "rollupActionsLabel",
+          "name": "actionRole",
           "value": "string",
-          "description": "Label for rolled up actions activator",
+          "description": "Defines a specific role attribute for each action in the list",
           "isOptional": true
         },
         {
-          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onActionRollup",
-          "value": "(hasRolledUp: boolean) => void",
-          "description": "Callback that returns true when secondary actions are rolled up into action groups, and false when not",
+          "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "onActionAnyItem",
+          "value": "() => void",
+          "description": "Callback when any item is clicked or keypressed",
           "isOptional": true
         }
       ],
-      "value": "export interface ActionMenuProps {\n  /** Collection of page-level secondary actions */\n  actions?: MenuActionDescriptor[];\n  /** Collection of page-level action groups */\n  groups?: MenuGroupDescriptor[];\n  /** Roll up all actions into a Popover > ActionList */\n  rollup?: boolean;\n  /** Label for rolled up actions activator */\n  rollupActionsLabel?: string;\n  /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */\n  onActionRollup?(hasRolledUp: boolean): void;\n}"
+      "value": "export interface ActionListProps {\n  /** Collection of actions for list */\n  items?: readonly ActionListItemDescriptor[];\n  /** Collection of sectioned action items */\n  sections?: readonly ActionListSection[];\n  /** Defines a specific role attribute for each action in the list */\n  actionRole?: 'menuitem' | string;\n  /** Callback when any item is clicked or keypressed */\n  onActionAnyItem?: ActionListItemDescriptor['onAction'];\n}"
+    }
+  },
+  "ActionListItemProps": {
+    "polaris-react/src/components/ActionList/ActionList.tsx": {
+      "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ActionListItemProps",
+      "value": "ItemProps",
+      "description": ""
     }
   },
   "Props": {
@@ -7986,55 +7987,165 @@
       "value": "interface Props {\n  /** Callback when the search is dismissed */\n  onDismiss?(): void;\n  /** Determines whether the overlay should be visible */\n  visible: boolean;\n}"
     }
   },
-  "ActionListProps": {
-    "polaris-react/src/components/ActionList/ActionList.tsx": {
-      "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
-      "name": "ActionListProps",
+  "ActionMenuProps": {
+    "polaris-react/src/components/ActionMenu/ActionMenu.tsx": {
+      "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
+      "name": "ActionMenuProps",
       "description": "",
       "members": [
         {
-          "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
+          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
           "syntaxKind": "PropertySignature",
-          "name": "items",
-          "value": "readonly ActionListItemDescriptor[]",
-          "description": "Collection of actions for list",
+          "name": "actions",
+          "value": "MenuActionDescriptor[]",
+          "description": "Collection of page-level secondary actions",
           "isOptional": true
         },
         {
-          "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
+          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
           "syntaxKind": "PropertySignature",
-          "name": "sections",
-          "value": "readonly ActionListSection[]",
-          "description": "Collection of sectioned action items",
+          "name": "groups",
+          "value": "MenuGroupDescriptor[]",
+          "description": "Collection of page-level action groups",
           "isOptional": true
         },
         {
-          "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
+          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
           "syntaxKind": "PropertySignature",
-          "name": "actionRole",
+          "name": "rollup",
+          "value": "boolean",
+          "description": "Roll up all actions into a Popover > ActionList",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "rollupActionsLabel",
           "value": "string",
-          "description": "Defines a specific role attribute for each action in the list",
+          "description": "Label for rolled up actions activator",
           "isOptional": true
         },
         {
-          "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "onActionAnyItem",
-          "value": "() => void",
-          "description": "Callback when any item is clicked or keypressed",
+          "filePath": "polaris-react/src/components/ActionMenu/ActionMenu.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onActionRollup",
+          "value": "(hasRolledUp: boolean) => void",
+          "description": "Callback that returns true when secondary actions are rolled up into action groups, and false when not",
           "isOptional": true
         }
       ],
-      "value": "export interface ActionListProps {\n  /** Collection of actions for list */\n  items?: readonly ActionListItemDescriptor[];\n  /** Collection of sectioned action items */\n  sections?: readonly ActionListSection[];\n  /** Defines a specific role attribute for each action in the list */\n  actionRole?: 'menuitem' | string;\n  /** Callback when any item is clicked or keypressed */\n  onActionAnyItem?: ActionListItemDescriptor['onAction'];\n}"
+      "value": "export interface ActionMenuProps {\n  /** Collection of page-level secondary actions */\n  actions?: MenuActionDescriptor[];\n  /** Collection of page-level action groups */\n  groups?: MenuGroupDescriptor[];\n  /** Roll up all actions into a Popover > ActionList */\n  rollup?: boolean;\n  /** Label for rolled up actions activator */\n  rollupActionsLabel?: string;\n  /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */\n  onActionRollup?(hasRolledUp: boolean): void;\n}"
     }
   },
-  "ActionListItemProps": {
-    "polaris-react/src/components/ActionList/ActionList.tsx": {
-      "filePath": "polaris-react/src/components/ActionList/ActionList.tsx",
+  "CardBackgroundColorTokenScale": {
+    "polaris-react/src/components/AlphaCard/AlphaCard.tsx": {
+      "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
       "syntaxKind": "TypeAliasDeclaration",
-      "name": "ActionListItemProps",
-      "value": "ItemProps",
+      "name": "CardBackgroundColorTokenScale",
+      "value": "\"surface\" | \"surface-subdued\"",
       "description": ""
+    }
+  },
+  "Spacing": {
+    "polaris-react/src/components/AlphaCard/AlphaCard.tsx": {
+      "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Spacing",
+      "value": "ResponsiveProp<SpacingSpaceScale>",
+      "description": ""
+    },
+    "polaris-react/src/components/Bleed/Bleed.tsx": {
+      "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Spacing",
+      "value": "ResponsiveProp<SpacingSpaceScale>",
+      "description": ""
+    },
+    "polaris-react/src/components/Box/Box.tsx": {
+      "filePath": "polaris-react/src/components/Box/Box.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Spacing",
+      "value": "ResponsiveProp<SpacingSpaceScale>",
+      "description": ""
+    },
+    "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx": {
+      "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Spacing",
+      "value": "'extraTight' | 'tight' | 'loose'",
+      "description": ""
+    },
+    "polaris-react/src/components/LegacyStack/LegacyStack.tsx": {
+      "filePath": "polaris-react/src/components/LegacyStack/LegacyStack.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Spacing",
+      "value": "'extraTight' | 'tight' | 'baseTight' | 'loose' | 'extraLoose' | 'none'",
+      "description": ""
+    },
+    "polaris-react/src/components/List/List.tsx": {
+      "filePath": "polaris-react/src/components/List/List.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Spacing",
+      "value": "'extraTight' | 'loose'",
+      "description": ""
+    },
+    "polaris-react/src/components/Stack/Stack.tsx": {
+      "filePath": "polaris-react/src/components/Stack/Stack.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Spacing",
+      "value": "'extraTight' | 'tight' | 'baseTight' | 'loose' | 'extraLoose' | 'none'",
+      "description": ""
+    },
+    "polaris-react/src/components/TextContainer/TextContainer.tsx": {
+      "filePath": "polaris-react/src/components/TextContainer/TextContainer.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Spacing",
+      "value": "'tight' | 'loose'",
+      "description": ""
+    }
+  },
+  "AlphaCardProps": {
+    "polaris-react/src/components/AlphaCard/AlphaCard.tsx": {
+      "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
+      "name": "AlphaCardProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "background",
+          "value": "CardBackgroundColorTokenScale",
+          "description": "Background color",
+          "isOptional": true,
+          "defaultValue": "'surface'"
+        },
+        {
+          "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "padding",
+          "value": "Spacing",
+          "description": "The spacing around the card",
+          "isOptional": true,
+          "defaultValue": "{xs: '4', sm: '5'}"
+        },
+        {
+          "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "roundedAbove",
+          "value": "BreakpointsAlias",
+          "description": "Border radius value above a set breakpoint",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface AlphaCardProps {\n  children?: React.ReactNode;\n  /** Background color\n   * @default 'surface'\n   */\n  background?: CardBackgroundColorTokenScale;\n  /** The spacing around the card\n   * @default {xs: '4', sm: '5'}\n   * @example\n   * padding='4'\n   * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}\n   */\n  padding?: Spacing;\n  /** Border radius value above a set breakpoint */\n  roundedAbove?: BreakpointsAlias;\n}"
     }
   },
   "Align": {
@@ -8174,117 +8285,6 @@
         }
       ],
       "value": "export interface AlphaStackProps extends React.AriaAttributes {\n  children?: React.ReactNode;\n  /** HTML Element type\n   * @default 'div'\n   */\n  as?: Element;\n  /** Horizontal alignment of children\n   * @default 'start'\n   */\n  align?: Align;\n  /** Toggle children to be full width\n   * @default false\n   */\n  fullWidth?: boolean;\n  /** The spacing between children */\n  gap?: Gap;\n  /** HTML id attribute */\n  id?: string;\n  /** Reverse the render order of child items\n   * @default false\n   */\n  reverseOrder?: boolean;\n}"
-    }
-  },
-  "CardBackgroundColorTokenScale": {
-    "polaris-react/src/components/AlphaCard/AlphaCard.tsx": {
-      "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "CardBackgroundColorTokenScale",
-      "value": "\"surface\" | \"surface-subdued\"",
-      "description": ""
-    }
-  },
-  "Spacing": {
-    "polaris-react/src/components/AlphaCard/AlphaCard.tsx": {
-      "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Spacing",
-      "value": "ResponsiveProp<SpacingSpaceScale>",
-      "description": ""
-    },
-    "polaris-react/src/components/Box/Box.tsx": {
-      "filePath": "polaris-react/src/components/Box/Box.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Spacing",
-      "value": "ResponsiveProp<SpacingSpaceScale>",
-      "description": ""
-    },
-    "polaris-react/src/components/Bleed/Bleed.tsx": {
-      "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Spacing",
-      "value": "ResponsiveProp<SpacingSpaceScale>",
-      "description": ""
-    },
-    "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx": {
-      "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Spacing",
-      "value": "'extraTight' | 'tight' | 'loose'",
-      "description": ""
-    },
-    "polaris-react/src/components/LegacyStack/LegacyStack.tsx": {
-      "filePath": "polaris-react/src/components/LegacyStack/LegacyStack.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Spacing",
-      "value": "'extraTight' | 'tight' | 'baseTight' | 'loose' | 'extraLoose' | 'none'",
-      "description": ""
-    },
-    "polaris-react/src/components/List/List.tsx": {
-      "filePath": "polaris-react/src/components/List/List.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Spacing",
-      "value": "'extraTight' | 'loose'",
-      "description": ""
-    },
-    "polaris-react/src/components/Stack/Stack.tsx": {
-      "filePath": "polaris-react/src/components/Stack/Stack.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Spacing",
-      "value": "'extraTight' | 'tight' | 'baseTight' | 'loose' | 'extraLoose' | 'none'",
-      "description": ""
-    },
-    "polaris-react/src/components/TextContainer/TextContainer.tsx": {
-      "filePath": "polaris-react/src/components/TextContainer/TextContainer.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Spacing",
-      "value": "'tight' | 'loose'",
-      "description": ""
-    }
-  },
-  "AlphaCardProps": {
-    "polaris-react/src/components/AlphaCard/AlphaCard.tsx": {
-      "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
-      "name": "AlphaCardProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "background",
-          "value": "CardBackgroundColorTokenScale",
-          "description": "Background color",
-          "isOptional": true,
-          "defaultValue": "'surface'"
-        },
-        {
-          "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "padding",
-          "value": "Spacing",
-          "description": "The spacing around the card",
-          "isOptional": true,
-          "defaultValue": "{xs: '4', sm: '5'}"
-        },
-        {
-          "filePath": "polaris-react/src/components/AlphaCard/AlphaCard.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "roundedAbove",
-          "value": "BreakpointsAlias",
-          "description": "Border radius value above a set breakpoint",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface AlphaCardProps {\n  children?: React.ReactNode;\n  /** Background color\n   * @default 'surface'\n   */\n  background?: CardBackgroundColorTokenScale;\n  /** The spacing around the card\n   * @default {xs: '4', sm: '5'}\n   * @example\n   * padding='4'\n   * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}\n   */\n  padding?: Spacing;\n  /** Border radius value above a set breakpoint */\n  roundedAbove?: BreakpointsAlias;\n}"
     }
   },
   "State": {
@@ -8802,91 +8802,6 @@
       "value": "export interface AppProviderProps {\n  /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */\n  i18n: ConstructorParameters<typeof I18n>[0];\n  /** A custom component to use for all links used by Polaris components */\n  linkComponent?: LinkLikeComponent;\n  /** For toggling features */\n  features?: FeaturesConfig;\n  /** Inner content of the application */\n  children?: React.ReactNode;\n}"
     }
   },
-  "Shape": {
-    "polaris-react/src/components/Avatar/Avatar.tsx": {
-      "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Shape",
-      "value": "'square' | 'round'",
-      "description": ""
-    }
-  },
-  "AvatarProps": {
-    "polaris-react/src/components/Avatar/Avatar.tsx": {
-      "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-      "name": "AvatarProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "size",
-          "value": "Size",
-          "description": "Size of avatar",
-          "isOptional": true,
-          "defaultValue": "'medium'"
-        },
-        {
-          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "shape",
-          "value": "Shape",
-          "description": "Shape of avatar",
-          "isOptional": true,
-          "defaultValue": "'round'"
-        },
-        {
-          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "name",
-          "value": "string",
-          "description": "The name of the person",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "initials",
-          "value": "string",
-          "description": "Initials of person to display",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "boolean",
-          "description": "Whether the avatar is for a customer",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "source",
-          "value": "string",
-          "description": "URL of the avatar image which falls back to initials if the image fails to load",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onError",
-          "value": "() => void",
-          "description": "Callback fired when the image fails to load",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabel",
-          "value": "string",
-          "description": "Accessible label for the avatar image",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface AvatarProps {\n  /**\n   * Size of avatar\n   * @default 'medium'\n   */\n  size?: Size;\n  /**\n   * Shape of avatar\n   * @default 'round'\n   */\n  shape?: Shape;\n  /** The name of the person */\n  name?: string;\n  /** Initials of person to display */\n  initials?: string;\n  /** Whether the avatar is for a customer */\n  customer?: boolean;\n  /** URL of the avatar image which falls back to initials if the image fails to load */\n  source?: string;\n  /** Callback fired when the image fails to load  */\n  onError?(): void;\n  /** Accessible label for the avatar image */\n  accessibilityLabel?: string;\n}"
-    }
-  },
   "AutocompleteProps": {
     "polaris-react/src/components/Autocomplete/Autocomplete.tsx": {
       "filePath": "polaris-react/src/components/Autocomplete/Autocomplete.tsx",
@@ -8995,6 +8910,91 @@
         }
       ],
       "value": "export interface AutocompleteProps {\n  /** A unique identifier for the Autocomplete */\n  id?: string;\n  /** Collection of options to be listed */\n  options: SectionDescriptor[] | OptionDescriptor[];\n  /** The selected options */\n  selected: string[];\n  /** The text field component attached to the list of options */\n  textField: React.ReactElement;\n  /** The preferred direction to open the popover */\n  preferredPosition?: PopoverProps['preferredPosition'];\n  /** Title of the list of options */\n  listTitle?: string;\n  /** Allow more than one option to be selected */\n  allowMultiple?: boolean;\n  /** An action to render above the list of options */\n  actionBefore?: ActionListItemDescriptor & {\n    /** Specifies that if the label is too long it will wrap instead of being hidden  */\n    wrapOverflow?: boolean;\n  };\n  /** Display loading state */\n  loading?: boolean;\n  /** Indicates if more results will load dynamically */\n  willLoadMoreResults?: boolean;\n  /** Is rendered when there are no options */\n  emptyState?: React.ReactNode;\n  /** Callback when the selection of options is changed */\n  onSelect(selected: string[]): void;\n  /** Callback when the end of the list is reached */\n  onLoadMoreResults?(): void;\n}"
+    }
+  },
+  "Shape": {
+    "polaris-react/src/components/Avatar/Avatar.tsx": {
+      "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Shape",
+      "value": "'square' | 'round'",
+      "description": ""
+    }
+  },
+  "AvatarProps": {
+    "polaris-react/src/components/Avatar/Avatar.tsx": {
+      "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+      "name": "AvatarProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "size",
+          "value": "Size",
+          "description": "Size of avatar",
+          "isOptional": true,
+          "defaultValue": "'medium'"
+        },
+        {
+          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "shape",
+          "value": "Shape",
+          "description": "Shape of avatar",
+          "isOptional": true,
+          "defaultValue": "'round'"
+        },
+        {
+          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "The name of the person",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "initials",
+          "value": "string",
+          "description": "Initials of person to display",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "boolean",
+          "description": "Whether the avatar is for a customer",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "source",
+          "value": "string",
+          "description": "URL of the avatar image which falls back to initials if the image fails to load",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onError",
+          "value": "() => void",
+          "description": "Callback fired when the image fails to load",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Avatar/Avatar.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "Accessible label for the avatar image",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface AvatarProps {\n  /**\n   * Size of avatar\n   * @default 'medium'\n   */\n  size?: Size;\n  /**\n   * Shape of avatar\n   * @default 'round'\n   */\n  shape?: Shape;\n  /** The name of the person */\n  name?: string;\n  /** Initials of person to display */\n  initials?: string;\n  /** Whether the avatar is for a customer */\n  customer?: boolean;\n  /** URL of the avatar image which falls back to initials if the image fails to load */\n  source?: string;\n  /** Callback fired when the image fails to load  */\n  onError?(): void;\n  /** Accessible label for the avatar image */\n  accessibilityLabel?: string;\n}"
     }
   },
   "BackdropProps": {
@@ -9723,6 +9723,73 @@
       "value": "export interface BannerHandles {\n  focus(): void;\n}"
     }
   },
+  "BleedProps": {
+    "polaris-react/src/components/Bleed/Bleed.tsx": {
+      "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+      "name": "BleedProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "marginInline",
+          "value": "Spacing",
+          "description": "Negative horizontal space around children",
+          "isOptional": true,
+          "defaultValue": "'5'"
+        },
+        {
+          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "marginBlock",
+          "value": "Spacing",
+          "description": "Negative vertical space around children",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "marginBlockStart",
+          "value": "Spacing",
+          "description": "Negative top space around children",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "marginBlockEnd",
+          "value": "Spacing",
+          "description": "Negative bottom space around children",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "marginInlineStart",
+          "value": "Spacing",
+          "description": "Negative left space around children",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "marginInlineEnd",
+          "value": "Spacing",
+          "description": "Negative right space around children",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface BleedProps {\n  children?: React.ReactNode;\n  /** Negative horizontal space around children\n   * @default '5'\n   */\n  marginInline?: Spacing;\n  /** Negative vertical space around children */\n  marginBlock?: Spacing;\n  /** Negative top space around children */\n  marginBlockStart?: Spacing;\n  /** Negative bottom space around children */\n  marginBlockEnd?: Spacing;\n  /** Negative left space around children */\n  marginInlineStart?: Spacing;\n  /** Negative right space around children */\n  marginInlineEnd?: Spacing;\n}"
+    }
+  },
   "Overflow": {
     "polaris-react/src/components/Box/Box.tsx": {
       "filePath": "polaris-react/src/components/Box/Box.tsx",
@@ -10180,77 +10247,20 @@
           "syntaxKind": "PropertySignature",
           "name": "breadcrumbs",
           "value": "LinkAction | CallbackAction | (LinkAction | CallbackAction)[]",
-          "description": "Collection of breadcrumbs"
-        }
-      ],
-      "value": "export interface BreadcrumbsProps {\n  /** Collection of breadcrumbs */\n  breadcrumbs: (CallbackAction | LinkAction) | (CallbackAction | LinkAction)[];\n}"
-    }
-  },
-  "BleedProps": {
-    "polaris-react/src/components/Bleed/Bleed.tsx": {
-      "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
-      "name": "BleedProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
           "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "marginInline",
-          "value": "Spacing",
-          "description": "Negative horizontal space around children",
           "isOptional": true,
-          "defaultValue": "'5'"
+          "deprecationMessage": "Collection of breadcrumbs"
         },
         {
-          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
+          "filePath": "polaris-react/src/components/Breadcrumbs/Breadcrumbs.tsx",
           "syntaxKind": "PropertySignature",
-          "name": "marginBlock",
-          "value": "Spacing",
-          "description": "Negative vertical space around children",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "marginBlockStart",
-          "value": "Spacing",
-          "description": "Negative top space around children",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "marginBlockEnd",
-          "value": "Spacing",
-          "description": "Negative bottom space around children",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "marginInlineStart",
-          "value": "Spacing",
-          "description": "Negative left space around children",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Bleed/Bleed.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "marginInlineEnd",
-          "value": "Spacing",
-          "description": "Negative right space around children",
+          "name": "backAction",
+          "value": "LinkAction | CallbackAction",
+          "description": "Back action link",
           "isOptional": true
         }
       ],
-      "value": "export interface BleedProps {\n  children?: React.ReactNode;\n  /** Negative horizontal space around children\n   * @default '5'\n   */\n  marginInline?: Spacing;\n  /** Negative vertical space around children */\n  marginBlock?: Spacing;\n  /** Negative top space around children */\n  marginBlockStart?: Spacing;\n  /** Negative bottom space around children */\n  marginBlockEnd?: Spacing;\n  /** Negative left space around children */\n  marginInlineStart?: Spacing;\n  /** Negative right space around children */\n  marginInlineEnd?: Spacing;\n}"
+      "value": "export interface BreadcrumbsProps {\n  /** @deprecated Collection of breadcrumbs */\n  breadcrumbs?: (CallbackAction | LinkAction) | (CallbackAction | LinkAction)[];\n  /** Back action link */\n  backAction?: CallbackAction | LinkAction;\n}"
     }
   },
   "BulkAction": {
@@ -10465,64 +10475,6 @@
       "name": "CombinedProps",
       "value": "TabsProps & {\n  i18n: ReturnType<typeof useI18n>;\n}",
       "description": ""
-    }
-  },
-  "ButtonGroupProps": {
-    "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx": {
-      "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
-      "name": "ButtonGroupProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "spacing",
-          "value": "Spacing",
-          "description": "Determines the space between button group items",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "segmented",
-          "value": "boolean",
-          "description": "Join buttons as segmented group",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "fullWidth",
-          "value": "boolean",
-          "description": "Buttons will stretch/shrink to occupy the full width",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "connectedTop",
-          "value": "boolean",
-          "description": "Remove top left and right border radius",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "noWrap",
-          "value": "boolean",
-          "description": "Prevent buttons in button group from wrapping to next line",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "Button components",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface ButtonGroupProps {\n  /** Determines the space between button group items */\n  spacing?: Spacing;\n  /** Join buttons as segmented group */\n  segmented?: boolean;\n  /** Buttons will stretch/shrink to occupy the full width */\n  fullWidth?: boolean;\n  /** Remove top left and right border radius */\n  connectedTop?: boolean;\n  /** Prevent buttons in button group from wrapping to next line */\n  noWrap?: boolean;\n  /** Button components */\n  children?: React.ReactNode;\n}"
     }
   },
   "ButtonProps": {
@@ -10880,6 +10832,64 @@
       "name": "ActionButtonProps",
       "value": "\"submit\" | \"disabled\" | \"loading\" | \"ariaControls\" | \"ariaExpanded\" | \"ariaChecked\" | \"pressed\" | \"onKeyDown\" | \"onKeyUp\" | \"onKeyPress\" | \"onPointerDown\"",
       "description": ""
+    }
+  },
+  "ButtonGroupProps": {
+    "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx": {
+      "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
+      "name": "ButtonGroupProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "spacing",
+          "value": "Spacing",
+          "description": "Determines the space between button group items",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "segmented",
+          "value": "boolean",
+          "description": "Join buttons as segmented group",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "fullWidth",
+          "value": "boolean",
+          "description": "Buttons will stretch/shrink to occupy the full width",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "connectedTop",
+          "value": "boolean",
+          "description": "Remove top left and right border radius",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "noWrap",
+          "value": "boolean",
+          "description": "Prevent buttons in button group from wrapping to next line",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ButtonGroup/ButtonGroup.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "Button components",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ButtonGroupProps {\n  /** Determines the space between button group items */\n  spacing?: Spacing;\n  /** Join buttons as segmented group */\n  segmented?: boolean;\n  /** Buttons will stretch/shrink to occupy the full width */\n  fullWidth?: boolean;\n  /** Remove top left and right border radius */\n  connectedTop?: boolean;\n  /** Prevent buttons in button group from wrapping to next line */\n  noWrap?: boolean;\n  /** Button components */\n  children?: React.ReactNode;\n}"
     }
   },
   "CalloutCardProps": {
@@ -11535,6 +11545,107 @@
       "value": "export interface ChoiceListProps {\n  /** Label for list of choices */\n  title: React.ReactNode;\n  /** Collection of choices */\n  choices: Choice[];\n  /** Collection of selected choices */\n  selected: string[];\n  /** Name for form input */\n  name?: string;\n  /** Allow merchants to select multiple options at once */\n  allowMultiple?: boolean;\n  /** Toggles display of the title */\n  titleHidden?: boolean;\n  /** Display an error message */\n  error?: Error;\n  /** Disable all choices **/\n  disabled?: boolean;\n  /** Callback when the selected choices change */\n  onChange?(selected: string[], name: string): void;\n}"
     }
   },
+  "Transition": {
+    "polaris-react/src/components/Collapsible/Collapsible.tsx": {
+      "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+      "name": "Transition",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "duration",
+          "value": "string",
+          "description": "Assign a transition duration to the collapsible animation.",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "timingFunction",
+          "value": "string",
+          "description": "Assign a transition timing function to the collapsible animation",
+          "isOptional": true
+        }
+      ],
+      "value": "interface Transition {\n  /** Assign a transition duration to the collapsible animation. */\n  duration?: string;\n  /** Assign a transition timing function to the collapsible animation */\n  timingFunction?: string;\n}"
+    }
+  },
+  "CollapsibleProps": {
+    "polaris-react/src/components/Collapsible/Collapsible.tsx": {
+      "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+      "name": "CollapsibleProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop."
+        },
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "expandOnPrint",
+          "value": "boolean",
+          "description": "Option to show collapsible content when printing",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "open",
+          "value": "boolean",
+          "description": "Toggle whether the collapsible is expanded or not."
+        },
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "transition",
+          "value": "boolean | Transition",
+          "description": "Override transition properties. When set to false, disables transition completely.",
+          "isOptional": true,
+          "defaultValue": "transition={{duration: 'var(--p-duration-150)', timingFunction: 'var(--p-ease-in-out)'}}"
+        },
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "preventMeasuringOnChildrenUpdate",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true,
+          "deprecationMessage": "Re-measuring is no longer necessary on children update *"
+        },
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onAnimationEnd",
+          "value": "() => void",
+          "description": "Callback when the animation completes.",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "The content to display inside the collapsible.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface CollapsibleProps {\n  /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */\n  id: string;\n  /** Option to show collapsible content when printing */\n  expandOnPrint?: boolean;\n  /** Toggle whether the collapsible is expanded or not. */\n  open: boolean;\n  /** Override transition properties. When set to false, disables transition completely.\n   * @default transition={{duration: 'var(--p-duration-150)', timingFunction: 'var(--p-ease-in-out)'}}\n   */\n  transition?: boolean | Transition;\n  /** @deprecated Re-measuring is no longer necessary on children update **/\n  preventMeasuringOnChildrenUpdate?: boolean;\n  /** Callback when the animation completes. */\n  onAnimationEnd?(): void;\n  /** The content to display inside the collapsible. */\n  children?: React.ReactNode;\n}"
+    }
+  },
+  "AnimationState": {
+    "polaris-react/src/components/Collapsible/Collapsible.tsx": {
+      "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AnimationState",
+      "value": "'idle' | 'measuring' | 'animating'",
+      "description": ""
+    }
+  },
   "Color": {
     "polaris-react/src/components/ColorPicker/ColorPicker.tsx": {
       "filePath": "polaris-react/src/components/ColorPicker/ColorPicker.tsx",
@@ -11741,107 +11852,6 @@
         }
       ],
       "value": "export interface ColumnsProps {\n  children?: React.ReactNode;\n  /** The number of columns to display\n   * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}\n   */\n  columns?: Columns;\n  /** The spacing between children. Accepts a spacing token or an object of spacing tokens for different screen sizes.\n   * @default '4'\n   * @example\n   * gap='2'\n   * gap={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}\n   */\n  gap?: Gap;\n}"
-    }
-  },
-  "Transition": {
-    "polaris-react/src/components/Collapsible/Collapsible.tsx": {
-      "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-      "name": "Transition",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "duration",
-          "value": "string",
-          "description": "Assign a transition duration to the collapsible animation.",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "timingFunction",
-          "value": "string",
-          "description": "Assign a transition timing function to the collapsible animation",
-          "isOptional": true
-        }
-      ],
-      "value": "interface Transition {\n  /** Assign a transition duration to the collapsible animation. */\n  duration?: string;\n  /** Assign a transition timing function to the collapsible animation */\n  timingFunction?: string;\n}"
-    }
-  },
-  "CollapsibleProps": {
-    "polaris-react/src/components/Collapsible/Collapsible.tsx": {
-      "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-      "name": "CollapsibleProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop."
-        },
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "expandOnPrint",
-          "value": "boolean",
-          "description": "Option to show collapsible content when printing",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "open",
-          "value": "boolean",
-          "description": "Toggle whether the collapsible is expanded or not."
-        },
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "transition",
-          "value": "boolean | Transition",
-          "description": "Override transition properties. When set to false, disables transition completely.",
-          "isOptional": true,
-          "defaultValue": "transition={{duration: 'var(--p-duration-150)', timingFunction: 'var(--p-ease-in-out)'}}"
-        },
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "preventMeasuringOnChildrenUpdate",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true,
-          "deprecationMessage": "Re-measuring is no longer necessary on children update *"
-        },
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onAnimationEnd",
-          "value": "() => void",
-          "description": "Callback when the animation completes.",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "The content to display inside the collapsible.",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface CollapsibleProps {\n  /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */\n  id: string;\n  /** Option to show collapsible content when printing */\n  expandOnPrint?: boolean;\n  /** Toggle whether the collapsible is expanded or not. */\n  open: boolean;\n  /** Override transition properties. When set to false, disables transition completely.\n   * @default transition={{duration: 'var(--p-duration-150)', timingFunction: 'var(--p-ease-in-out)'}}\n   */\n  transition?: boolean | Transition;\n  /** @deprecated Re-measuring is no longer necessary on children update **/\n  preventMeasuringOnChildrenUpdate?: boolean;\n  /** Callback when the animation completes. */\n  onAnimationEnd?(): void;\n  /** The content to display inside the collapsible. */\n  children?: React.ReactNode;\n}"
-    }
-  },
-  "AnimationState": {
-    "polaris-react/src/components/Collapsible/Collapsible.tsx": {
-      "filePath": "polaris-react/src/components/Collapsible/Collapsible.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "AnimationState",
-      "value": "'idle' | 'measuring' | 'animating'",
-      "description": ""
     }
   },
   "ComboboxProps": {
@@ -15800,7 +15810,16 @@
           "syntaxKind": "PropertySignature",
           "name": "breadcrumbs",
           "value": "LinkAction | CallbackAction | (LinkAction | CallbackAction)[]",
-          "description": "Collection of breadcrumbs",
+          "description": "",
+          "isOptional": true,
+          "deprecationMessage": "Collection of breadcrumbs"
+        },
+        {
+          "filePath": "polaris-react/src/components/Page/Page.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "backAction",
+          "value": "LinkAction | CallbackAction",
+          "description": "A back action link",
           "isOptional": true
         },
         {
@@ -19007,221 +19026,6 @@
       "value": "export interface TruncateProps {\n  children: React.ReactNode;\n}"
     }
   },
-  "UnstyledButtonProps": {
-    "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx": {
-      "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-      "name": "UnstyledButtonProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "name": "[key: string]",
-          "value": "any"
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "The content to display inside the button",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "className",
-          "value": "string",
-          "description": "A custom class name to apply styles to button",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "A unique identifier for the button",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "url",
-          "value": "string",
-          "description": "A destination to link to, rendered in the href attribute of a link",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "external",
-          "value": "boolean",
-          "description": "Forces url to open in a new tab",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "download",
-          "value": "string | boolean",
-          "description": "Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "submit",
-          "value": "boolean",
-          "description": "Allows the button to submit a form",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "disabled",
-          "value": "boolean",
-          "description": "Disables the button, disallowing merchant interaction",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "loading",
-          "value": "boolean",
-          "description": "Replaces button text with a spinner while a background action is being performed",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "pressed",
-          "value": "boolean",
-          "description": "Sets the button in a pressed state",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabel",
-          "value": "string",
-          "description": "Visually hidden text for screen readers",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "role",
-          "value": "string",
-          "description": "A valid WAI-ARIA role to define the semantic value of this element",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "ariaControls",
-          "value": "string",
-          "description": "Id of the element the button controls",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "ariaExpanded",
-          "value": "boolean",
-          "description": "Tells screen reader the controlled element is expanded",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "ariaDescribedBy",
-          "value": "string",
-          "description": "Indicates the ID of the element that describes the button",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "ariaChecked",
-          "value": "\"false\" | \"true\"",
-          "description": "Indicates the current checked state of the button when acting as a toggle or switch",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onClick",
-          "value": "() => void",
-          "description": "Callback when clicked",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onFocus",
-          "value": "() => void",
-          "description": "Callback when button becomes focussed",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onBlur",
-          "value": "() => void",
-          "description": "Callback when focus leaves button",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onKeyPress",
-          "value": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
-          "description": "Callback when a keypress event is registered on the button",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onKeyUp",
-          "value": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
-          "description": "Callback when a keyup event is registered on the button",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onKeyDown",
-          "value": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
-          "description": "Callback when a keydown event is registered on the button",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onMouseEnter",
-          "value": "() => void",
-          "description": "Callback when mouse enter",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onTouchStart",
-          "value": "() => void",
-          "description": "Callback when element is touched",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onPointerDown",
-          "value": "() => void",
-          "description": "Callback when pointerdown event is being triggered",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface UnstyledButtonProps extends BaseButton {\n  /** The content to display inside the button */\n  children?: React.ReactNode;\n  /** A custom class name to apply styles to button */\n  className?: string;\n  [key: string]: any;\n}"
-    }
-  },
   "UnstyledLinkProps": {
     "polaris-react/src/components/UnstyledLink/UnstyledLink.tsx": {
       "filePath": "polaris-react/src/components/UnstyledLink/UnstyledLink.tsx",
@@ -22139,6 +21943,221 @@
       "value": "export interface UnstyledLinkProps extends LinkLikeComponentProps {}"
     }
   },
+  "UnstyledButtonProps": {
+    "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx": {
+      "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+      "name": "UnstyledButtonProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "name": "[key: string]",
+          "value": "any"
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "The content to display inside the button",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "className",
+          "value": "string",
+          "description": "A custom class name to apply styles to button",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the button",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "url",
+          "value": "string",
+          "description": "A destination to link to, rendered in the href attribute of a link",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "external",
+          "value": "boolean",
+          "description": "Forces url to open in a new tab",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "download",
+          "value": "string | boolean",
+          "description": "Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "submit",
+          "value": "boolean",
+          "description": "Allows the button to submit a form",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Disables the button, disallowing merchant interaction",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "loading",
+          "value": "boolean",
+          "description": "Replaces button text with a spinner while a background action is being performed",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "pressed",
+          "value": "boolean",
+          "description": "Sets the button in a pressed state",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "Visually hidden text for screen readers",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "role",
+          "value": "string",
+          "description": "A valid WAI-ARIA role to define the semantic value of this element",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaControls",
+          "value": "string",
+          "description": "Id of the element the button controls",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaExpanded",
+          "value": "boolean",
+          "description": "Tells screen reader the controlled element is expanded",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaDescribedBy",
+          "value": "string",
+          "description": "Indicates the ID of the element that describes the button",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaChecked",
+          "value": "\"false\" | \"true\"",
+          "description": "Indicates the current checked state of the button when acting as a toggle or switch",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onClick",
+          "value": "() => void",
+          "description": "Callback when clicked",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onFocus",
+          "value": "() => void",
+          "description": "Callback when button becomes focussed",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onBlur",
+          "value": "() => void",
+          "description": "Callback when focus leaves button",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onKeyPress",
+          "value": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
+          "description": "Callback when a keypress event is registered on the button",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onKeyUp",
+          "value": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
+          "description": "Callback when a keyup event is registered on the button",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onKeyDown",
+          "value": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
+          "description": "Callback when a keydown event is registered on the button",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onMouseEnter",
+          "value": "() => void",
+          "description": "Callback when mouse enter",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onTouchStart",
+          "value": "() => void",
+          "description": "Callback when element is touched",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/UnstyledButton/UnstyledButton.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onPointerDown",
+          "value": "() => void",
+          "description": "Callback when pointerdown event is being triggered",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface UnstyledButtonProps extends BaseButton {\n  /** The content to display inside the button */\n  children?: React.ReactNode;\n  /** A custom class name to apply styles to button */\n  className?: string;\n  [key: string]: any;\n}"
+    }
+  },
   "VideoThumbnailProps": {
     "polaris-react/src/components/VideoThumbnail/VideoThumbnail.tsx": {
       "filePath": "polaris-react/src/components/VideoThumbnail/VideoThumbnail.tsx",
@@ -22439,6 +22458,617 @@
       "value": "export interface PortalsManager {\n  container: PortalsContainerElement;\n}"
     }
   },
+  "SectionProps": {
+    "polaris-react/src/components/ActionList/components/Section/Section.tsx": {
+      "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
+      "name": "SectionProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "section",
+          "value": "ActionListSection",
+          "description": "Section of action items"
+        },
+        {
+          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "hasMultipleSections",
+          "value": "boolean",
+          "description": "Should there be multiple sections"
+        },
+        {
+          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "actionRole",
+          "value": "string",
+          "description": "Defines a specific role attribute for each action in the list",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "onActionAnyItem",
+          "value": "() => void",
+          "description": "Callback when any item is clicked or keypressed",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "isFirst",
+          "value": "boolean",
+          "description": "Whether it is the first in a group of sections",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SectionProps {\n  /** Section of action items */\n  section: ActionListSection;\n  /** Should there be multiple sections */\n  hasMultipleSections: boolean;\n  /** Defines a specific role attribute for each action in the list */\n  actionRole?: 'option' | 'menuitem' | string;\n  /** Callback when any item is clicked or keypressed */\n  onActionAnyItem?: ActionListItemDescriptor['onAction'];\n  /** Whether it is the first in a group of sections */\n  isFirst?: boolean;\n}"
+    },
+    "polaris-react/src/components/Layout/components/Section/Section.tsx": {
+      "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
+      "name": "SectionProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "secondary",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "fullWidth",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "oneHalf",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "oneThird",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SectionProps {\n  children?: React.ReactNode;\n  secondary?: boolean;\n  fullWidth?: boolean;\n  oneHalf?: boolean;\n  oneThird?: boolean;\n}"
+    },
+    "polaris-react/src/components/Listbox/components/Section/Section.tsx": {
+      "filePath": "polaris-react/src/components/Listbox/components/Section/Section.tsx",
+      "name": "SectionProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "divider",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "ReactNode",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "ReactNode",
+          "description": ""
+        }
+      ],
+      "value": "interface SectionProps {\n  divider?: boolean;\n  children?: ReactNode;\n  title: ReactNode;\n}"
+    },
+    "polaris-react/src/components/Modal/components/Section/Section.tsx": {
+      "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
+      "name": "SectionProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "flush",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "subdued",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "titleHidden",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SectionProps {\n  children?: React.ReactNode;\n  flush?: boolean;\n  subdued?: boolean;\n  titleHidden?: boolean;\n}"
+    },
+    "polaris-react/src/components/Navigation/components/Section/Section.tsx": {
+      "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
+      "name": "SectionProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "items",
+          "value": "ItemProps[]",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "icon",
+          "value": "any",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "fill",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "rollup",
+          "value": "{ after: number; view: string; hide: string; activePath: string; }",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "action",
+          "value": "{ icon: any; accessibilityLabel: string; onClick(): void; tooltip?: TooltipProps; }",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "separator",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SectionProps {\n  items: ItemProps[];\n  icon?: IconProps['source'];\n  title?: string;\n  fill?: boolean;\n  rollup?: {\n    after: number;\n    view: string;\n    hide: string;\n    activePath: string;\n  };\n  action?: {\n    icon: IconProps['source'];\n    accessibilityLabel: string;\n    onClick(): void;\n    tooltip?: TooltipProps;\n  };\n  separator?: boolean;\n}"
+    },
+    "polaris-react/src/components/Popover/components/Section/Section.tsx": {
+      "filePath": "polaris-react/src/components/Popover/components/Section/Section.tsx",
+      "name": "SectionProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Popover/components/Section/Section.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SectionProps {\n  children?: React.ReactNode;\n}"
+    }
+  },
+  "ItemProps": {
+    "polaris-react/src/components/ActionList/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/ActionList/components/Item/Item.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ItemProps",
+      "value": "ActionListItemDescriptor",
+      "description": ""
+    },
+    "polaris-react/src/components/ButtonGroup/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/ButtonGroup/components/Item/Item.tsx",
+      "name": "ItemProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/ButtonGroup/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "button",
+          "value": "React.ReactElement",
+          "description": ""
+        }
+      ],
+      "value": "export interface ItemProps {\n  button: React.ReactElement;\n}"
+    },
+    "polaris-react/src/components/Connected/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/Connected/components/Item/Item.tsx",
+      "name": "ItemProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Connected/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "position",
+          "value": "ItemPosition",
+          "description": "Position of the item"
+        },
+        {
+          "filePath": "polaris-react/src/components/Connected/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "Item content",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ItemProps {\n  /** Position of the item */\n  position: ItemPosition;\n  /** Item content */\n  children?: React.ReactNode;\n}"
+    },
+    "polaris-react/src/components/FormLayout/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/FormLayout/components/Item/Item.tsx",
+      "name": "ItemProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/FormLayout/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ItemProps {\n  children?: React.ReactNode;\n}"
+    },
+    "polaris-react/src/components/List/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/List/components/Item/Item.tsx",
+      "name": "ItemProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/List/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "Content to display inside the item",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ItemProps {\n  /** Content to display inside the item */\n  children?: React.ReactNode;\n}"
+    },
+    "polaris-react/src/components/Navigation/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+      "name": "ItemProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "icon",
+          "value": "any",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "badge",
+          "value": "ReactNode",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "label",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "selected",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "exactMatch",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "new",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "subNavigationItems",
+          "value": "SubNavigationItem[]",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "secondaryAction",
+          "value": "SecondaryAction",
+          "description": "",
+          "isOptional": true,
+          "deprecationMessage": "Use secondaryActions instead."
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "secondaryActions",
+          "value": "SecondaryActions",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "displayActionsOnHover",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onClick",
+          "value": "() => void",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onToggleExpandedState",
+          "value": "() => void",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "expanded",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "shouldResizeIcon",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "truncateText",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "url",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "matches",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "matchPaths",
+          "value": "string[]",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "excludePaths",
+          "value": "string[]",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "external",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ItemProps extends ItemURLDetails {\n  icon?: IconProps['source'];\n  badge?: ReactNode;\n  label: string;\n  disabled?: boolean;\n  accessibilityLabel?: string;\n  selected?: boolean;\n  exactMatch?: boolean;\n  new?: boolean;\n  subNavigationItems?: SubNavigationItem[];\n  /** @deprecated Use secondaryActions instead. */\n  secondaryAction?: SecondaryAction;\n  secondaryActions?: SecondaryActions;\n  displayActionsOnHover?: boolean;\n  onClick?(): void;\n  onToggleExpandedState?(): void;\n  expanded?: boolean;\n  shouldResizeIcon?: boolean;\n  truncateText?: boolean;\n}"
+    },
+    "polaris-react/src/components/Stack/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/Stack/components/Item/Item.tsx",
+      "name": "ItemProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Stack/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "Elements to display inside item",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Stack/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "fill",
+          "value": "boolean",
+          "description": "Fill the remaining horizontal space in the stack with the item",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ItemProps {\n  /** Elements to display inside item */\n  children?: React.ReactNode;\n  /** Fill the remaining horizontal space in the stack with the item  */\n  fill?: boolean;\n  /**\n   * @default false\n   */\n}"
+    },
+    "polaris-react/src/components/Tabs/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
+      "name": "ItemProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "focused",
+          "value": "boolean",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "panelID",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "url",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onClick",
+          "value": "() => void",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ItemProps {\n  id: string;\n  focused: boolean;\n  panelID?: string;\n  children?: React.ReactNode;\n  url?: string;\n  accessibilityLabel?: string;\n  onClick?(): void;\n}"
+    },
+    "polaris-react/src/components/Filters/components/ConnectedFilterControl/components/Item/Item.tsx": {
+      "filePath": "polaris-react/src/components/Filters/components/ConnectedFilterControl/components/Item/Item.tsx",
+      "name": "ItemProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Filters/components/ConnectedFilterControl/components/Item/Item.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "React.ReactNode",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "interface ItemProps {\n  children?: React.ReactNode;\n}"
+    }
+  },
   "MeasuredActions": {
     "polaris-react/src/components/ActionMenu/components/Actions/Actions.tsx": {
       "filePath": "polaris-react/src/components/ActionMenu/components/Actions/Actions.tsx",
@@ -22621,6 +23251,188 @@
         }
       ],
       "value": "export interface RollupActionsProps {\n  /** Accessibilty label */\n  accessibilityLabel?: string;\n  /** Collection of actions for the list */\n  items?: ActionListItemDescriptor[];\n  /** Collection of sectioned action items */\n  sections?: ActionListSection[];\n}"
+    }
+  },
+  "MappedAction": {
+    "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx": {
+      "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+      "name": "MappedAction",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "wrapOverflow",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "Visually hidden text for screen readers",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "badge",
+          "value": "{ status: \"new\"; content: string; }",
+          "description": "",
+          "isOptional": true,
+          "deprecationMessage": "Badge component"
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "helpText",
+          "value": "React.ReactNode",
+          "description": "Additional hint text to display with item",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "icon",
+          "value": "any",
+          "description": "",
+          "isOptional": true,
+          "deprecationMessage": "Source of the icon"
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "image",
+          "value": "string",
+          "description": "",
+          "isOptional": true,
+          "deprecationMessage": "Image source"
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "prefix",
+          "value": "React.ReactNode",
+          "description": "Prefix source",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "suffix",
+          "value": "React.ReactNode",
+          "description": "Suffix source",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "ellipsis",
+          "value": "boolean",
+          "description": "Add an ellipsis suffix to action content",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "active",
+          "value": "boolean",
+          "description": "Whether the action is active or not",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "role",
+          "value": "string",
+          "description": "Defines a role for the action",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Whether or not the action is disabled",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the action",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "content",
+          "value": "string",
+          "description": "Content the action displays",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "url",
+          "value": "string",
+          "description": "A destination to link to, rendered in the action",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "external",
+          "value": "boolean",
+          "description": "Forces url to open in a new tab",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onAction",
+          "value": "() => void",
+          "description": "Callback when an action takes place",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onMouseEnter",
+          "value": "() => void",
+          "description": "Callback when mouse enter",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onTouchStart",
+          "value": "() => void",
+          "description": "Callback when element is touched",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "destructive",
+          "value": "boolean",
+          "description": "Destructive action",
+          "isOptional": true
+        }
+      ],
+      "value": "interface MappedAction extends ActionListItemDescriptor {\n  wrapOverflow?: boolean;\n}"
+    }
+  },
+  "MappedOption": {
+    "polaris-react/src/components/Autocomplete/components/MappedOption/MappedOption.tsx": {
+      "filePath": "polaris-react/src/components/Autocomplete/components/MappedOption/MappedOption.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "MappedOption",
+      "value": "ArrayElement<OptionDescriptor[]> & {\n  selected: boolean;\n  singleSelection: boolean;\n}",
+      "description": ""
     }
   },
   "SecondaryAction": {
@@ -22998,799 +23810,6 @@
         }
       ],
       "value": "interface SecondaryAction {\n  accessibilityLabel: string;\n  icon: IconProps['source'];\n  url?: string;\n  onClick?(): void;\n  tooltip?: TooltipProps;\n}"
-    }
-  },
-  "ItemProps": {
-    "polaris-react/src/components/ActionList/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/ActionList/components/Item/Item.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "ItemProps",
-      "value": "ActionListItemDescriptor",
-      "description": ""
-    },
-    "polaris-react/src/components/ButtonGroup/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/ButtonGroup/components/Item/Item.tsx",
-      "name": "ItemProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/ButtonGroup/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "button",
-          "value": "React.ReactElement",
-          "description": ""
-        }
-      ],
-      "value": "export interface ItemProps {\n  button: React.ReactElement;\n}"
-    },
-    "polaris-react/src/components/Connected/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/Connected/components/Item/Item.tsx",
-      "name": "ItemProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Connected/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "position",
-          "value": "ItemPosition",
-          "description": "Position of the item"
-        },
-        {
-          "filePath": "polaris-react/src/components/Connected/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "Item content",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface ItemProps {\n  /** Position of the item */\n  position: ItemPosition;\n  /** Item content */\n  children?: React.ReactNode;\n}"
-    },
-    "polaris-react/src/components/FormLayout/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/FormLayout/components/Item/Item.tsx",
-      "name": "ItemProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/FormLayout/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface ItemProps {\n  children?: React.ReactNode;\n}"
-    },
-    "polaris-react/src/components/List/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/List/components/Item/Item.tsx",
-      "name": "ItemProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/List/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "Content to display inside the item",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface ItemProps {\n  /** Content to display inside the item */\n  children?: React.ReactNode;\n}"
-    },
-    "polaris-react/src/components/Navigation/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-      "name": "ItemProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "icon",
-          "value": "any",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "badge",
-          "value": "ReactNode",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "label",
-          "value": "string",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "disabled",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabel",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "selected",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "exactMatch",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "new",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "subNavigationItems",
-          "value": "SubNavigationItem[]",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "secondaryAction",
-          "value": "SecondaryAction",
-          "description": "",
-          "isOptional": true,
-          "deprecationMessage": "Use secondaryActions instead."
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "secondaryActions",
-          "value": "SecondaryActions",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "displayActionsOnHover",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onClick",
-          "value": "() => void",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onToggleExpandedState",
-          "value": "() => void",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "expanded",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "shouldResizeIcon",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "truncateText",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "url",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "matches",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "matchPaths",
-          "value": "string[]",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "excludePaths",
-          "value": "string[]",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "external",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface ItemProps extends ItemURLDetails {\n  icon?: IconProps['source'];\n  badge?: ReactNode;\n  label: string;\n  disabled?: boolean;\n  accessibilityLabel?: string;\n  selected?: boolean;\n  exactMatch?: boolean;\n  new?: boolean;\n  subNavigationItems?: SubNavigationItem[];\n  /** @deprecated Use secondaryActions instead. */\n  secondaryAction?: SecondaryAction;\n  secondaryActions?: SecondaryActions;\n  displayActionsOnHover?: boolean;\n  onClick?(): void;\n  onToggleExpandedState?(): void;\n  expanded?: boolean;\n  shouldResizeIcon?: boolean;\n  truncateText?: boolean;\n}"
-    },
-    "polaris-react/src/components/Stack/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/Stack/components/Item/Item.tsx",
-      "name": "ItemProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Stack/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "Elements to display inside item",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Stack/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "fill",
-          "value": "boolean",
-          "description": "Fill the remaining horizontal space in the stack with the item",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface ItemProps {\n  /** Elements to display inside item */\n  children?: React.ReactNode;\n  /** Fill the remaining horizontal space in the stack with the item  */\n  fill?: boolean;\n  /**\n   * @default false\n   */\n}"
-    },
-    "polaris-react/src/components/Tabs/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
-      "name": "ItemProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "focused",
-          "value": "boolean",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "panelID",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "url",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabel",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/Item/Item.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onClick",
-          "value": "() => void",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface ItemProps {\n  id: string;\n  focused: boolean;\n  panelID?: string;\n  children?: React.ReactNode;\n  url?: string;\n  accessibilityLabel?: string;\n  onClick?(): void;\n}"
-    },
-    "polaris-react/src/components/Filters/components/ConnectedFilterControl/components/Item/Item.tsx": {
-      "filePath": "polaris-react/src/components/Filters/components/ConnectedFilterControl/components/Item/Item.tsx",
-      "name": "ItemProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Filters/components/ConnectedFilterControl/components/Item/Item.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "interface ItemProps {\n  children?: React.ReactNode;\n}"
-    }
-  },
-  "SectionProps": {
-    "polaris-react/src/components/ActionList/components/Section/Section.tsx": {
-      "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
-      "name": "SectionProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "section",
-          "value": "ActionListSection",
-          "description": "Section of action items"
-        },
-        {
-          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "hasMultipleSections",
-          "value": "boolean",
-          "description": "Should there be multiple sections"
-        },
-        {
-          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "actionRole",
-          "value": "string",
-          "description": "Defines a specific role attribute for each action in the list",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "onActionAnyItem",
-          "value": "() => void",
-          "description": "Callback when any item is clicked or keypressed",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/ActionList/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "isFirst",
-          "value": "boolean",
-          "description": "Whether it is the first in a group of sections",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface SectionProps {\n  /** Section of action items */\n  section: ActionListSection;\n  /** Should there be multiple sections */\n  hasMultipleSections: boolean;\n  /** Defines a specific role attribute for each action in the list */\n  actionRole?: 'option' | 'menuitem' | string;\n  /** Callback when any item is clicked or keypressed */\n  onActionAnyItem?: ActionListItemDescriptor['onAction'];\n  /** Whether it is the first in a group of sections */\n  isFirst?: boolean;\n}"
-    },
-    "polaris-react/src/components/Layout/components/Section/Section.tsx": {
-      "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
-      "name": "SectionProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "secondary",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "fullWidth",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "oneHalf",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Layout/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "oneThird",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface SectionProps {\n  children?: React.ReactNode;\n  secondary?: boolean;\n  fullWidth?: boolean;\n  oneHalf?: boolean;\n  oneThird?: boolean;\n}"
-    },
-    "polaris-react/src/components/Listbox/components/Section/Section.tsx": {
-      "filePath": "polaris-react/src/components/Listbox/components/Section/Section.tsx",
-      "name": "SectionProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "divider",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "ReactNode",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "title",
-          "value": "ReactNode",
-          "description": ""
-        }
-      ],
-      "value": "interface SectionProps {\n  divider?: boolean;\n  children?: ReactNode;\n  title: ReactNode;\n}"
-    },
-    "polaris-react/src/components/Modal/components/Section/Section.tsx": {
-      "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
-      "name": "SectionProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "flush",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "subdued",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Modal/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "titleHidden",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface SectionProps {\n  children?: React.ReactNode;\n  flush?: boolean;\n  subdued?: boolean;\n  titleHidden?: boolean;\n}"
-    },
-    "polaris-react/src/components/Navigation/components/Section/Section.tsx": {
-      "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
-      "name": "SectionProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "items",
-          "value": "ItemProps[]",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "icon",
-          "value": "any",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "title",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "fill",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "rollup",
-          "value": "{ after: number; view: string; hide: string; activePath: string; }",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "action",
-          "value": "{ icon: any; accessibilityLabel: string; onClick(): void; tooltip?: TooltipProps; }",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Navigation/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "separator",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface SectionProps {\n  items: ItemProps[];\n  icon?: IconProps['source'];\n  title?: string;\n  fill?: boolean;\n  rollup?: {\n    after: number;\n    view: string;\n    hide: string;\n    activePath: string;\n  };\n  action?: {\n    icon: IconProps['source'];\n    accessibilityLabel: string;\n    onClick(): void;\n    tooltip?: TooltipProps;\n  };\n  separator?: boolean;\n}"
-    },
-    "polaris-react/src/components/Popover/components/Section/Section.tsx": {
-      "filePath": "polaris-react/src/components/Popover/components/Section/Section.tsx",
-      "name": "SectionProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Popover/components/Section/Section.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "React.ReactNode",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface SectionProps {\n  children?: React.ReactNode;\n}"
-    }
-  },
-  "MappedAction": {
-    "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx": {
-      "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-      "name": "MappedAction",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "wrapOverflow",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabel",
-          "value": "string",
-          "description": "Visually hidden text for screen readers",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "badge",
-          "value": "{ status: \"new\"; content: string; }",
-          "description": "",
-          "isOptional": true,
-          "deprecationMessage": "Badge component"
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "helpText",
-          "value": "React.ReactNode",
-          "description": "Additional hint text to display with item",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "icon",
-          "value": "any",
-          "description": "",
-          "isOptional": true,
-          "deprecationMessage": "Source of the icon"
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "image",
-          "value": "string",
-          "description": "",
-          "isOptional": true,
-          "deprecationMessage": "Image source"
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "prefix",
-          "value": "React.ReactNode",
-          "description": "Prefix source",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "suffix",
-          "value": "React.ReactNode",
-          "description": "Suffix source",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "ellipsis",
-          "value": "boolean",
-          "description": "Add an ellipsis suffix to action content",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "active",
-          "value": "boolean",
-          "description": "Whether the action is active or not",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "role",
-          "value": "string",
-          "description": "Defines a role for the action",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "disabled",
-          "value": "boolean",
-          "description": "Whether or not the action is disabled",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "A unique identifier for the action",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "content",
-          "value": "string",
-          "description": "Content the action displays",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "url",
-          "value": "string",
-          "description": "A destination to link to, rendered in the action",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "external",
-          "value": "boolean",
-          "description": "Forces url to open in a new tab",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onAction",
-          "value": "() => void",
-          "description": "Callback when an action takes place",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onMouseEnter",
-          "value": "() => void",
-          "description": "Callback when mouse enter",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onTouchStart",
-          "value": "() => void",
-          "description": "Callback when element is touched",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "destructive",
-          "value": "boolean",
-          "description": "Destructive action",
-          "isOptional": true
-        }
-      ],
-      "value": "interface MappedAction extends ActionListItemDescriptor {\n  wrapOverflow?: boolean;\n}"
-    }
-  },
-  "MappedOption": {
-    "polaris-react/src/components/Autocomplete/components/MappedOption/MappedOption.tsx": {
-      "filePath": "polaris-react/src/components/Autocomplete/components/MappedOption/MappedOption.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "MappedOption",
-      "value": "ArrayElement<OptionDescriptor[]> & {\n  selected: boolean;\n  singleSelection: boolean;\n}",
-      "description": ""
     }
   },
   "PipProps": {
@@ -24444,6 +24463,124 @@
       "value": "export interface CellProps {\n  children?: ReactNode;\n  className?: string;\n  flush?: boolean;\n}"
     }
   },
+  "MonthProps": {
+    "polaris-react/src/components/DatePicker/components/Month/Month.tsx": {
+      "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+      "name": "MonthProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "focusedDate",
+          "value": "Date",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "selected",
+          "value": "Range",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "hoverDate",
+          "value": "Date",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "month",
+          "value": "number",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "year",
+          "value": "number",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "disableDatesBefore",
+          "value": "Date",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "disableDatesAfter",
+          "value": "Date",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "disableSpecificDates",
+          "value": "Date[]",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "allowRange",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "weekStartsOn",
+          "value": "number",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabelPrefixes",
+          "value": "[string, string]",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onChange",
+          "value": "(date: Range) => void",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onHover",
+          "value": "(hoverEnd: Date) => void",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onFocus",
+          "value": "(date: Date) => void",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface MonthProps {\n  focusedDate?: Date;\n  selected?: Range;\n  hoverDate?: Date;\n  month: number;\n  year: number;\n  disableDatesBefore?: Date;\n  disableDatesAfter?: Date;\n  disableSpecificDates?: Date[];\n  allowRange?: boolean;\n  weekStartsOn: number;\n  accessibilityLabelPrefixes: [string | undefined, string];\n  onChange?(date: Range): void;\n  onHover?(hoverEnd: Date): void;\n  onFocus?(date: Date): void;\n}"
+    }
+  },
   "DayProps": {
     "polaris-react/src/components/DatePicker/components/Day/Day.tsx": {
       "filePath": "polaris-react/src/components/DatePicker/components/Day/Day.tsx",
@@ -24580,124 +24717,6 @@
         }
       ],
       "value": "export interface DayProps {\n  focused?: boolean;\n  day?: Date;\n  selected?: boolean;\n  inRange?: boolean;\n  inHoveringRange?: boolean;\n  disabled?: boolean;\n  lastDayOfMonth?: any;\n  isLastSelectedDay?: boolean;\n  isFirstSelectedDay?: boolean;\n  isHoveringRight?: boolean;\n  rangeIsDifferent?: boolean;\n  weekday?: string;\n  selectedAccessibilityLabelPrefix?: string;\n  onClick?(day: Date): void;\n  onHover?(day?: Date): void;\n  onFocus?(day: Date): void;\n}"
-    }
-  },
-  "MonthProps": {
-    "polaris-react/src/components/DatePicker/components/Month/Month.tsx": {
-      "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-      "name": "MonthProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "focusedDate",
-          "value": "Date",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "selected",
-          "value": "Range",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "hoverDate",
-          "value": "Date",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "month",
-          "value": "number",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "year",
-          "value": "number",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "disableDatesBefore",
-          "value": "Date",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "disableDatesAfter",
-          "value": "Date",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "disableSpecificDates",
-          "value": "Date[]",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "allowRange",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "weekStartsOn",
-          "value": "number",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabelPrefixes",
-          "value": "[string, string]",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onChange",
-          "value": "(date: Range) => void",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onHover",
-          "value": "(hoverEnd: Date) => void",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/DatePicker/components/Month/Month.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "onFocus",
-          "value": "(date: Date) => void",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface MonthProps {\n  focusedDate?: Date;\n  selected?: Range;\n  hoverDate?: Date;\n  month: number;\n  year: number;\n  disableDatesBefore?: Date;\n  disableDatesAfter?: Date;\n  disableSpecificDates?: Date[];\n  allowRange?: boolean;\n  weekStartsOn: number;\n  accessibilityLabelPrefixes: [string | undefined, string];\n  onChange?(date: Range): void;\n  onHover?(hoverEnd: Date): void;\n  onFocus?(date: Date): void;\n}"
     }
   },
   "WeekdayProps": {
@@ -25385,71 +25404,6 @@
       "value": "export interface LegacyItemProps {\n  /** Elements to display inside item */\n  children?: React.ReactNode;\n  /** Fill the remaining horizontal space in the stack with the item  */\n  fill?: boolean;\n  /**\n   * @default false\n   */\n}"
     }
   },
-  "ActionProps": {
-    "polaris-react/src/components/Listbox/components/Action/Action.tsx": {
-      "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
-      "name": "ActionProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "icon",
-          "value": "any",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "value",
-          "value": "string",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabel",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "any",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "selected",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "disabled",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "divider",
-          "value": "boolean",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "interface ActionProps extends OptionProps {\n  icon?: IconProps['source'];\n}"
-    }
-  },
   "HeaderProps": {
     "polaris-react/src/components/Listbox/components/Header/Header.tsx": {
       "filePath": "polaris-react/src/components/Listbox/components/Header/Header.tsx",
@@ -25544,7 +25498,16 @@
           "syntaxKind": "PropertySignature",
           "name": "breadcrumbs",
           "value": "LinkAction | CallbackAction | (LinkAction | CallbackAction)[]",
-          "description": "Collection of breadcrumbs",
+          "description": "",
+          "isOptional": true,
+          "deprecationMessage": "Collection of breadcrumbs"
+        },
+        {
+          "filePath": "polaris-react/src/components/Page/components/Header/Header.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "backAction",
+          "value": "LinkAction | CallbackAction",
+          "description": "A back action link",
           "isOptional": true
         },
         {
@@ -25621,7 +25584,72 @@
           "isOptional": true
         }
       ],
-      "value": "export interface HeaderProps extends TitleProps {\n  /** Visually hide the title */\n  titleHidden?: boolean;\n  /** Primary page-level action */\n  primaryAction?: PrimaryAction | React.ReactNode;\n  /** Page-level pagination */\n  pagination?: PaginationProps;\n  /** Collection of breadcrumbs */\n  breadcrumbs?: BreadcrumbsProps['breadcrumbs'];\n  /** Collection of secondary page-level actions */\n  secondaryActions?: MenuActionDescriptor[] | React.ReactNode;\n  /** Collection of page-level groups of secondary actions */\n  actionGroups?: MenuGroupDescriptor[];\n  /** @deprecated Additional navigation markup */\n  additionalNavigation?: React.ReactNode;\n  // Additional meta data\n  additionalMetadata?: React.ReactNode | string;\n  /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */\n  onActionRollup?(hasRolledUp: boolean): void;\n}"
+      "value": "export interface HeaderProps extends TitleProps {\n  /** Visually hide the title */\n  titleHidden?: boolean;\n  /** Primary page-level action */\n  primaryAction?: PrimaryAction | React.ReactNode;\n  /** Page-level pagination */\n  pagination?: PaginationProps;\n  /** @deprecated Collection of breadcrumbs */\n  breadcrumbs?: BreadcrumbsProps['breadcrumbs'];\n  /** A back action link */\n  backAction?: BreadcrumbsProps['backAction'];\n  /** Collection of secondary page-level actions */\n  secondaryActions?: MenuActionDescriptor[] | React.ReactNode;\n  /** Collection of page-level groups of secondary actions */\n  actionGroups?: MenuGroupDescriptor[];\n  /** @deprecated Additional navigation markup */\n  additionalNavigation?: React.ReactNode;\n  // Additional meta data\n  additionalMetadata?: React.ReactNode | string;\n  /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */\n  onActionRollup?(hasRolledUp: boolean): void;\n}"
+    }
+  },
+  "ActionProps": {
+    "polaris-react/src/components/Listbox/components/Action/Action.tsx": {
+      "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
+      "name": "ActionProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "icon",
+          "value": "any",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "any",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "selected",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/Listbox/components/Action/Action.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "divider",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "interface ActionProps extends OptionProps {\n  icon?: IconProps['source'];\n}"
     }
   },
   "OptionProps": {
@@ -26986,6 +27014,89 @@
       "value": "export interface PanelProps {\n  hidden?: boolean;\n  id: string;\n  tabID: string;\n  children?: React.ReactNode;\n}"
     }
   },
+  "TabMeasurements": {
+    "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx": {
+      "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+      "name": "TabMeasurements",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "containerWidth",
+          "value": "number",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "disclosureWidth",
+          "value": "number",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "hiddenTabWidths",
+          "value": "number[]",
+          "description": ""
+        }
+      ],
+      "value": "interface TabMeasurements {\n  containerWidth: number;\n  disclosureWidth: number;\n  hiddenTabWidths: number[];\n}"
+    }
+  },
+  "TabMeasurerProps": {
+    "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx": {
+      "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+      "name": "TabMeasurerProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "tabToFocus",
+          "value": "number",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "siblingTabHasFocus",
+          "value": "boolean",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "activator",
+          "value": "React.ReactElement",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "selected",
+          "value": "number",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "PropertySignature",
+          "name": "tabs",
+          "value": "TabDescriptor[]",
+          "description": ""
+        },
+        {
+          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "handleMeasurement",
+          "value": "(measurements: TabMeasurements) => void",
+          "description": ""
+        }
+      ],
+      "value": "export interface TabMeasurerProps {\n  tabToFocus: number;\n  siblingTabHasFocus: boolean;\n  activator: React.ReactElement;\n  selected: number;\n  tabs: TabDescriptor[];\n  handleMeasurement(measurements: TabMeasurements): void;\n}"
+    }
+  },
   "TabProps": {
     "polaris-react/src/components/Tabs/components/Tab/Tab.tsx": {
       "filePath": "polaris-react/src/components/Tabs/components/Tab/Tab.tsx",
@@ -27075,89 +27186,6 @@
       "value": "export interface TabProps {\n  id: string;\n  focused?: boolean;\n  siblingTabHasFocus?: boolean;\n  selected?: boolean;\n  panelID?: string;\n  children?: React.ReactNode;\n  url?: string;\n  measuring?: boolean;\n  accessibilityLabel?: string;\n  onClick?(id: string): void;\n}"
     }
   },
-  "TabMeasurements": {
-    "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx": {
-      "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-      "name": "TabMeasurements",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "containerWidth",
-          "value": "number",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "disclosureWidth",
-          "value": "number",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "hiddenTabWidths",
-          "value": "number[]",
-          "description": ""
-        }
-      ],
-      "value": "interface TabMeasurements {\n  containerWidth: number;\n  disclosureWidth: number;\n  hiddenTabWidths: number[];\n}"
-    }
-  },
-  "TabMeasurerProps": {
-    "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx": {
-      "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-      "name": "TabMeasurerProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "tabToFocus",
-          "value": "number",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "siblingTabHasFocus",
-          "value": "boolean",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "activator",
-          "value": "React.ReactElement",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "selected",
-          "value": "number",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "PropertySignature",
-          "name": "tabs",
-          "value": "TabDescriptor[]",
-          "description": ""
-        },
-        {
-          "filePath": "polaris-react/src/components/Tabs/components/TabMeasurer/TabMeasurer.tsx",
-          "syntaxKind": "MethodSignature",
-          "name": "handleMeasurement",
-          "value": "(measurements: TabMeasurements) => void",
-          "description": ""
-        }
-      ],
-      "value": "export interface TabMeasurerProps {\n  tabToFocus: number;\n  siblingTabHasFocus: boolean;\n  activator: React.ReactElement;\n  selected: number;\n  tabs: TabDescriptor[];\n  handleMeasurement(measurements: TabMeasurements): void;\n}"
-    }
-  },
   "ResizerProps": {
     "polaris-react/src/components/TextField/components/Resizer/Resizer.tsx": {
       "filePath": "polaris-react/src/components/TextField/components/Resizer/Resizer.tsx",
@@ -27197,15 +27225,6 @@
         }
       ],
       "value": "export interface ResizerProps {\n  contents?: string;\n  currentHeight?: number | null;\n  minimumLines?: number;\n  onHeightChange(height: number): void;\n}"
-    }
-  },
-  "HandleStepFn": {
-    "polaris-react/src/components/TextField/components/Spinner/Spinner.tsx": {
-      "filePath": "polaris-react/src/components/TextField/components/Spinner/Spinner.tsx",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "HandleStepFn",
-      "value": "(step: number) => void",
-      "description": ""
     }
   },
   "TooltipOverlayProps": {
@@ -27308,6 +27327,15 @@
         }
       ],
       "value": "export interface TooltipOverlayProps {\n  id: string;\n  active: boolean;\n  preventInteraction?: PositionedOverlayProps['preventInteraction'];\n  preferredPosition?: PositionedOverlayProps['preferredPosition'];\n  children?: React.ReactNode;\n  activator: HTMLElement;\n  accessibilityLabel?: string;\n  width?: Width;\n  padding?: Padding;\n  borderRadius?: BorderRadius;\n  zIndexOverride?: number;\n  onClose(): void;\n}"
+    }
+  },
+  "HandleStepFn": {
+    "polaris-react/src/components/TextField/components/Spinner/Spinner.tsx": {
+      "filePath": "polaris-react/src/components/TextField/components/Spinner/Spinner.tsx",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "HandleStepFn",
+      "value": "(step: number) => void",
+      "description": ""
     }
   },
   "MenuProps": {

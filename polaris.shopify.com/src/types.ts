@@ -1,6 +1,17 @@
 import {MetadataProperties} from '@shopify/polaris-tokens';
 import {Icon} from '@shopify/polaris-icons/metadata';
-import {type PatternExample} from './components/PatternsExample';
+
+type RelatedComponent = {
+  label: string;
+  url: string;
+};
+
+export type PatternExample = {
+  code: string;
+  context?: string;
+  snippetCode?: string;
+  relatedComponents: RelatedComponent[];
+};
 
 export type MarkdownString = string;
 
