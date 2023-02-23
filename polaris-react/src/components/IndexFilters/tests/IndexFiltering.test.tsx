@@ -5,10 +5,9 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Tabs} from '../../Tabs';
 import {Filters} from '../../Filters';
-import {IndexFilters, IndexFiltersUpdateAction, IndexFiltersMode} from '..';
+import {IndexFilters, IndexFiltersMode} from '..';
 import type {IndexFiltersProps} from '../IndexFilters';
 import {SearchFilterButton, SortButton, UpdateButtons} from '../components';
-import styles from '../IndexFilters.scss';
 
 describe('IndexFilters', () => {
   const defaultProps: IndexFiltersProps = {
@@ -64,9 +63,13 @@ describe('IndexFilters', () => {
       {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
     ],
     sortSelected: ['order-number asc'],
-    onUpdateIndexFilters: jest.fn(),
-    onCancelIndexFilters: jest.fn(),
-    onSaveAsIndexFilters: jest.fn(),
+    primaryAction: {
+      type: 'save',
+      onAction: jest.fn(),
+    },
+    cancelAction: {
+      onAction: jest.fn(),
+    },
     tabs: [
       {
         id: 'foo',
@@ -75,15 +78,13 @@ describe('IndexFilters', () => {
     ],
     selected: 0,
     onSelect: jest.fn(),
-    updateButtonState: IndexFiltersUpdateAction.Update,
-    updateButtonDisabled: false,
-    updateButtonLoading: false,
     filters: [],
     appliedFilters: [],
     onClearAll: jest.fn(),
-    viewNames: [],
     mode: IndexFiltersMode.Default,
     setMode: jest.fn(),
+    canCreateNewView: true,
+    onCreateNewView: jest.fn(),
   };
 
   beforeEach(() => {
@@ -211,67 +212,49 @@ describe('IndexFilters', () => {
   });
 
   describe('pressing escape', () => {
-    it('does not call the onCancelIndexFilters mode when in Default mode', () => {
-      const onCancelIndexFilters = jest.fn();
-      const wrapper = mountWithApp(
-        <IndexFilters
-          {...defaultProps}
-          onCancelIndexFilters={onCancelIndexFilters}
-          mode={IndexFiltersMode.Default}
-        />,
+    it('does not call the cancelAction.onAction method when in Default mode', () => {
+      mountWithApp(
+        <IndexFilters {...defaultProps} mode={IndexFiltersMode.Default} />,
       );
 
-      wrapper.act(() => {
-        wrapper
-          .find('div', {
-            className: styles.IndexFiltersWrapper,
-          })!
-          .trigger('onKeyDown', {key: 'Escape'});
-      });
-
-      expect(onCancelIndexFilters).not.toHaveBeenCalled();
-    });
-
-    it('does call the onCancelIndexFilters mode when in Filtering mode', () => {
-      const onCancelIndexFilters = jest.fn();
-      const wrapper = mountWithApp(
-        <IndexFilters
-          {...defaultProps}
-          onCancelIndexFilters={onCancelIndexFilters}
-          mode={IndexFiltersMode.Filtering}
-        />,
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Escape',
+        }),
       );
 
-      wrapper.act(() => {
-        wrapper
-          .find('div', {
-            className: styles.IndexFiltersWrapper,
-          })!
-          .trigger('onKeyDown', {key: 'Escape'});
-      });
-
-      expect(onCancelIndexFilters).toHaveBeenCalled();
+      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
     });
 
-    it('does call the onCancelIndexFilters mode when in EditingColumns mode', () => {
-      const onCancelIndexFilters = jest.fn();
-      const wrapper = mountWithApp(
+    it('does call the cancelAction.onAction method when in Filtering mode', () => {
+      mountWithApp(
+        <IndexFilters {...defaultProps} mode={IndexFiltersMode.Filtering} />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Escape',
+        }),
+      );
+
+      expect(defaultProps.cancelAction.onAction).toHaveBeenCalled();
+    });
+
+    it('does call the cancelAction.onAction method when in EditingColumns mode', () => {
+      mountWithApp(
         <IndexFilters
           {...defaultProps}
-          onCancelIndexFilters={onCancelIndexFilters}
           mode={IndexFiltersMode.EditingColumns}
         />,
       );
 
-      wrapper.act(() => {
-        wrapper
-          .find('div', {
-            className: styles.IndexFiltersWrapper,
-          })!
-          .trigger('onKeyDown', {key: 'Escape'});
-      });
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Escape',
+        }),
+      );
 
-      expect(onCancelIndexFilters).toHaveBeenCalled();
+      expect(defaultProps.cancelAction.onAction).toHaveBeenCalled();
     });
   });
 
@@ -317,13 +300,11 @@ describe('IndexFilters', () => {
         <IndexFilters
           {...defaultProps}
           mode={IndexFiltersMode.Filtering}
-          updateButtonDisabled
           disableFiltering={disableFiltering}
         />,
       );
 
       expect(wrapper).toContainReactComponent(UpdateButtons, {
-        updateButtonDisabled: true,
         disabled: disableFiltering,
       });
     });

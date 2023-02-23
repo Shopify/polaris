@@ -128,8 +128,6 @@ export const getStaticProps: GetStaticProps<
     const componentDirName = toPascalCase(`${data.frontMatter.title} `);
     const propName = toPascalCase(`${data.frontMatter.title} Props`);
 
-    console.log({allType, propName, componentDirName});
-
     let type = getRelevantTypes(
       allType,
       propName,

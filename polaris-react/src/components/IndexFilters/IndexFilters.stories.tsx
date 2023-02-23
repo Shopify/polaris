@@ -31,122 +31,6 @@ export default {
   },
 } as ComponentMeta<typeof IndexFilters>;
 
-const useDefaultData = () => {
-  const [selected, setSelected] = useState(0);
-  const [itemStrings, setItemStrings] = useState([
-    'All',
-    'Unpaid',
-    'Open',
-    'Closed',
-    'Local delivery',
-    'Local pickup',
-  ]);
-  const [sortSelected, setSortSelected] = useState(['order-number asc']);
-  const {mode, setMode} = useSetIndexFiltersMode();
-
-  const handleSaveNewViewModal = async (value: string) => {
-    setItemStrings([...itemStrings, value]);
-    return true;
-  };
-
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const deleteView = (index: number) => {
-    const newItemStrings = [...itemStrings];
-    newItemStrings.splice(index, 1);
-    setItemStrings(newItemStrings);
-  };
-
-  const duplicateView = (index: number) => {
-    const item = itemStrings[index];
-    setItemStrings([...itemStrings, item]);
-  };
-
-  const items: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[] =
-    itemStrings.map((item, index) => ({
-      content: item,
-      index,
-      onAction: () => {},
-      id: `${item}-${index}`,
-      isLocked: index === 0,
-      permissions: index === 0 ? [] : ['rename', 'duplicate', 'edit', 'delete'],
-      onClickRenameView: () => {},
-      onSaveRenameViewModal: async (value: string, id: string) => {
-        const newItemsStrings = items.map((item) => {
-          if (item.id === id) {
-            return value;
-          }
-          return item.content;
-        });
-        setItemStrings(newItemsStrings);
-      },
-      onClickDuplicateView: async (id: string) => {
-        duplicateView(index);
-      },
-      onClickEditView: (id: string) => {},
-      onClickDeleteView: (id: string) => {},
-      onConfirmDeleteView: async (id: string) => {
-        deleteView(index);
-      },
-    }));
-
-  const onHandleUpdate = async () => {
-    return true;
-  };
-
-  const onHandleCancel = () => {};
-
-  const onHandleSave = async () => {
-    return true;
-  };
-
-  const onHandleSaveAs = async () => {
-    return true;
-  };
-
-  const isCurrentViewLocked = Boolean(items[selected].isLocked);
-
-  const viewNames = items.map(({content}) => content);
-
-  const primaryAction: IndexFiltersProps['primaryAction'] =
-    selected === 0
-      ? {
-          type: 'save-as',
-          onAction: onHandleSaveAs,
-          disabled: false,
-          loading: false,
-        }
-      : {
-          type: 'save',
-          onAction: onHandleUpdate,
-          disabled: false,
-          loading: false,
-        };
-
-  return {
-    items,
-    selected,
-    setSelected,
-    isCurrentViewLocked,
-    handleSaveNewViewModal,
-    searchTerm,
-    setSearchTerm,
-    sortOptions,
-    sortSelected,
-    setSortSelected,
-    onHandleUpdate,
-    onHandleCancel,
-    onHandleSave,
-    onHandleSaveAs,
-    filters,
-    appliedFilters,
-    onClearAllFilters,
-    mode,
-    setMode,
-    primaryAction,
-  };
-};
-
 function Table() {
   const customers = [
     {
@@ -214,7 +98,8 @@ function Table() {
 }
 
 export function Default() {
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
     'All',
     'Unpaid',
@@ -233,6 +118,7 @@ export function Default() {
   const duplicateView = async (name: string) => {
     setItemStrings([...itemStrings, name]);
     setSelected(itemStrings.length);
+    await sleep(1);
     return true;
   };
 
@@ -252,14 +138,17 @@ export function Default() {
           }
           return item.content;
         });
+        await sleep(1);
         setItemStrings(newItemsStrings);
       },
       onClickEditView: (id: string) => {},
       onClickDeleteView: (id: string) => {},
       onConfirmDuplicateView: async (name) => {
+        await sleep(1);
         duplicateView(name);
       },
       onConfirmDeleteView: async (id: string) => {
+        await sleep(1);
         deleteView(index);
       },
     }));
@@ -285,6 +174,7 @@ export function Default() {
   const onHandleCancel = () => {};
 
   const onHandleSave = async () => {
+    await sleep(1);
     return true;
   };
 
@@ -304,7 +194,7 @@ export function Default() {
         };
   const [accountStatus, setAccountStatus] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
   const [queryValue, setQueryValue] = useState('');
 
   const handleAccountStatusChange = useCallback(
@@ -328,8 +218,8 @@ export function Default() {
     [],
   );
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();

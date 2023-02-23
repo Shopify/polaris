@@ -4,87 +4,72 @@ import {mountWithApp} from 'tests/utilities';
 import {Modal} from '../../../../Modal';
 import {TextField} from '../../../../TextField';
 import {Tooltip} from '../../../../Tooltip';
-import {UpdateButtons} from '..';
+import {UpdateButtons, UpdateButtonsProps} from '..';
 import {UpdateButton} from '../components';
-import {IndexFiltersUpdateAction} from '../../../types';
 
 describe('UpdateButtons', () => {
-  const defaultProps = {
-    onCancel: jest.fn(),
-    onUpdate: jest.fn(),
-    onSave: jest.fn(),
-    onSaveAs: jest.fn(),
-    newViewName: 'Foo',
-    updateButtonState: IndexFiltersUpdateAction.Update,
+  const defaultProps: UpdateButtonsProps = {
+    primaryAction: {
+      type: 'save',
+      onAction: jest.fn(),
+    },
+    cancelAction: {
+      onAction: jest.fn(),
+    },
     viewNames: [],
   };
 
-  it('will call onUpdate when changed', () => {
-    const onUpdate = jest.fn();
-    const wrapper = mountWithApp(
-      <UpdateButtons {...defaultProps} onUpdate={onUpdate} />,
-    );
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('will call the primary action when clicked in save mode', () => {
+    const wrapper = mountWithApp(<UpdateButtons {...defaultProps} />);
 
     wrapper.act(() => {
       wrapper.findAll(UpdateButton)[1]?.trigger('onClick');
     });
 
-    expect(onUpdate).toHaveBeenCalledTimes(1);
+    expect(defaultProps.primaryAction!.onAction).toHaveBeenCalledTimes(1);
   });
 
   it('will call onCancel when cancel clicked', () => {
-    const props = {
-      ...defaultProps,
-      updateButtonState: IndexFiltersUpdateAction.SaveAs,
-    };
     const wrapper = mountWithApp(<UpdateButtons {...defaultProps} />);
 
     wrapper.act(() => {
       wrapper.findAll(UpdateButton)[0]?.trigger('onClick');
     });
 
-    expect(props.onCancel).toHaveBeenCalledTimes(1);
+    expect(defaultProps.cancelAction!.onAction).toHaveBeenCalledTimes(1);
   });
 
-  it('renders the button text correctly in the Update state and will call onUpdate when clicked', () => {
-    const props = {
-      ...defaultProps,
-      onUpdate: jest.fn(),
-    };
-    const wrapper = mountWithApp(<UpdateButtons {...props} />);
+  it('renders the button text correctly in the Save state', () => {
+    const wrapper = mountWithApp(<UpdateButtons {...defaultProps} />);
 
     expect(wrapper.findAll(UpdateButton)[1]).toContainReactText('Save');
-
-    wrapper.act(() => {
-      wrapper.findAll(UpdateButton)[1].trigger('onClick');
-    });
-
-    expect(props.onUpdate).toHaveBeenCalledTimes(1);
   });
 
-  it('renders the button text correctly in a SaveAs state but will not call onSaveAs when clicked', () => {
-    const props = {
+  it('renders the button text correctly in a SaveAs state', () => {
+    const props: UpdateButtonsProps = {
       ...defaultProps,
-      onSaveAs: jest.fn(),
-      updateButtonState: IndexFiltersUpdateAction.SaveAs,
+      primaryAction: {
+        type: 'save-as',
+        onAction: jest.fn(),
+      },
     };
     const wrapper = mountWithApp(<UpdateButtons {...props} />);
 
     expect(wrapper.findAll(UpdateButton)[1]).toContainReactText('Save as');
-
-    wrapper.act(() => {
-      wrapper.findAll(UpdateButton)[1].trigger('onClick');
-    });
-
-    expect(props.onSaveAs).toHaveBeenCalledTimes(0);
   });
 
-  it('opens the modal and calls onSaveAs when clicking the primary action in the modal in a SaveAs state', () => {
-    const props = {
+  it('opens the modal and calls the primary action when clicking the primary action in the modal in a SaveAs state', () => {
+    const props: UpdateButtonsProps = {
       ...defaultProps,
-      onSaveAs: jest.fn(),
-      updateButtonState: IndexFiltersUpdateAction.SaveAs,
-      viewNames: ['Foo'],
+      primaryAction: {
+        type: 'save-as',
+        onAction: jest.fn(),
+      },
+      viewNames: ['foo'],
     };
     const wrapper = mountWithApp(<UpdateButtons {...props} />);
 
@@ -100,14 +85,16 @@ describe('UpdateButtons', () => {
       wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
-    expect(props.onSaveAs).toHaveBeenCalledTimes(1);
+    expect(props.primaryAction!.onAction).toHaveBeenCalledTimes(1);
   });
 
   it('shows an error when the view name is already in use; protects againsts case sensitivity and whitespace', () => {
-    const props = {
+    const props: UpdateButtonsProps = {
       ...defaultProps,
-      onSaveAs: jest.fn(),
-      updateButtonState: IndexFiltersUpdateAction.SaveAs,
+      primaryAction: {
+        type: 'save-as',
+        onAction: jest.fn(),
+      },
       viewNames: ['Foo', 'Bar'],
     };
     const wrapper = mountWithApp(<UpdateButtons {...props} />);
@@ -172,11 +159,22 @@ describe('UpdateButtons', () => {
   });
 
   it('does not render a tooltip when only the update button is disabled', () => {
+    const props: UpdateButtonsProps = {
+      ...defaultProps,
+      primaryAction: {
+        type: 'save',
+        onAction: jest.fn(),
+        disabled: true,
+      },
+      cancelAction: {
+        onAction: jest.fn(),
+        disabled: false,
+      },
+    };
     const wrapper = mountWithApp(
       <UpdateButtons
-        {...defaultProps}
+        {...props}
         disabled={{isDisabled: false, tooltipMessage: 'Update disabled'}}
-        updateButtonDisabled
       />,
     );
 

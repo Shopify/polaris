@@ -20,7 +20,7 @@ import {UpdateButton} from './components';
 
 interface UpdateIndexFiltersPrimaryAction
   extends Omit<IndexFiltersPrimaryAction, 'onAction'> {
-  onAction: (value?: string) => Promise<void>;
+  onAction: (value: string) => Promise<void>;
 }
 
 export interface UpdateButtonsProps {
