@@ -25,7 +25,6 @@ export interface ColumnsProps {
    */
   columns?: Columns;
   /** The spacing between children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
-   * @default '4'
    * @example
    * gap='2'
    * gap={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}
@@ -33,7 +32,7 @@ export interface ColumnsProps {
   gap?: Gap;
 }
 
-export function Columns({children, columns, gap = '4'}: ColumnsProps) {
+export function Columns({children, columns, gap}: ColumnsProps) {
   const style = {
     ...getResponsiveValue(
       'columns',
