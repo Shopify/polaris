@@ -1,6 +1,6 @@
 ---
 title: App settings layout
-description: Makes it easy for merchants to scan and find setting groups.
+description: Scan and find groups of settings in apps
 url: /patterns/app-settings-layout
 previewImg: /images/patterns/pattern-thumbnail-app-settings.png
 githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/8217
