@@ -29,7 +29,7 @@ npx @shopify/polaris-migrator <migration> <path>
 
 #### `v11-react-breadcrumbs-migrate-from-array`
 
-Replace legacy Page component breadcrumbs props that used to take arrays with a single object.
+Replace legacy Page component `breadcrumbs` props with the new `backAction` prop which accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
 
 ```diff
 - <Page breadcrumbs={[{url: '/testing', content: 'Home'}]}>
