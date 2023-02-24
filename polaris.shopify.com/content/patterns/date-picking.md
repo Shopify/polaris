@@ -1,6 +1,6 @@
 ---
 title: Date picking
-description: Makes it easy for merchants to select and input dates and date ranges.
+description: Select a date or a date range
 url: /patterns/date-picking
 previewImg: /images/patterns/pattern-thumbnail-date-picking.png
 githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/7853

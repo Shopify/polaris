@@ -9359,7 +9359,7 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-endent@^2.0.1:
+endent@^2.0.1, endent@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/endent/-/endent-2.1.0.tgz#5aaba698fb569e5e18e69e1ff7a28ff35373cd88"
   integrity sha512-r8VyPX7XL8U01Xgnb1CjZ3XV+z90cXIJ9JPE/R9SEC9vpw2P6CfsRPJmp20DppC5N7ZAMCmjYkJIa744Iyg96w==

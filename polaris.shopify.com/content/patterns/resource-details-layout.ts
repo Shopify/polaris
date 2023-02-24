@@ -2,8 +2,7 @@ import type {SingleVariantPattern} from '../../src/types';
 
 const pattern: SingleVariantPattern = {
   title: 'Resource details layout',
-  description:
-    'Lets merchants effectively create, view, and edit any resource object.',
+  description: 'Lets merchants create, view, and edit resource objects.',
   howItHelps: `![Product details page](/images/patterns/resource-detail-cover-image.png)
 
 1. The page header provides easy access to actions and navigation. It spans the full width of the page to show merchants that these actions represent the page as a whole.
