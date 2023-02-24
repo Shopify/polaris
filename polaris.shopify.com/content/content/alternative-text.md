@@ -1,6 +1,6 @@
 ---
 title: Alternative text
-description: Shopify aims to provide an [inclusive experience](/foundations/accessibility). Alternative text (alt text) and accommodating screen readers help people with low or loss of vision use our products.
+description: Alternative text (alt text) helps provide an inclusive experience for merchants who use screen readers.
 icon: ImageAltMajor
 keywords:
   - speech synthesis
@@ -34,11 +34,12 @@ keywords:
   - alt text
   - accessibility feedback
   - accessible components
+  - blind
 ---
 
-Alt text is a text replacement for an image. Generally, it is represented by the alt HTML element attribute `alt="alt text"`. 
+Alt text is a text replacement for an image. Generally, it is represented by the alt HTML element attribute `alt="alt text"`.
 
-Screen readers announce alt text to explain images to people with low or loss of vision. Alt text also displays if images fail to download (for example, there’s an unstable or low-bandwidth network connection).
+Often used by people with low or loss of vision, screen readers announce alt text to explain images. Alt text also displays if images fail to download (for example, there’s an unstable or low-bandwidth network connection).
 
 Alt text should:
 
@@ -51,17 +52,18 @@ Alt text should:
 
 ## Alt text for images
 
-
 Use alt text when the image conveys valuable information, such as the ability to play a demo video. Even if an image isn’t conveying meaningful information, don’t leave an <img> tag without an alt text element. The screen reader may try to read the filename and create a negative experience. Instead, let the screen reader know to ignore the image by setting the alt to an empty string.
 
-All `<img>` tags need an alt text attribute, even if it’s empty. For example, set an empty alt text attribute using `<img alt="" />`.  
+All `<img>` tags need an alt text attribute, even if it’s empty. For example, set an empty alt text attribute using `<img alt="" />`.
 
 <!-- dodont -->
 
 #### Do
+
 `<img alt="Watch how-to video on Shopify reports." />`
 
 #### Don’t
+
 `IMG_1206.heic`
 `Screenshot 2022-11-07 at 3.05.55 PM`
 `Sneaker.png`
@@ -77,10 +79,10 @@ Always write alt text in plain text. The average rate of listening to a screen r
 - Be concise. Think about how to write for a small amount of space or a character limit.
 - Use simple words. If you’re stuck on how to replace a complicated word, check this [A-Z list of alternative words](https://www.plainenglish.co.uk/the-a-z-of-alternative-words.html) or these [plain language tips](/content/product-content#write-for-a-7-grade-reading-level). Another good resource is the [Hemingway editor](https://hemingwayapp.com/).
 - Avoid needless words. If a phrase is still understandable without a specific word, remove it.
-- Remove articles like “a, an, one of,” etc. whenever possible. Alt text has different grammatical rules. “Filler words” that assist understanding in speech can get in the way in alt text.  
+- Remove articles like “a, an, one of,” etc. whenever possible. Alt text has different grammatical rules. “Filler words” that assist understanding in speech can get in the way in alt text.
 - Avoid using “image of” or “photograph” unless the type of image is relevant to the context. Screenreaders already announce images with use of the <img> attribute.
 - Avoid punctuation like `!!` and emoji like 🥰. Screen readers will announce these as “exclamation point, exclamation point” and “smiling face with three hearts.”
-- Only use acronyms you are confident your audience will understand. If using an acronym, write it with spaces in-between, like “Y M C A”. Otherwise, most screen readers will try to read the acronym as a word.
+- Only use acronyms you are confident your audience will understand. If using an acronym, write it with spaces in-between, like “Y M C A.” Otherwise, most screen readers will try to read the acronym as a word.
 - Write in the [active voice](/content/grammar-and-mechanics#basics) when possible.
 
 ---
@@ -88,15 +90,16 @@ Always write alt text in plain text. The average rate of listening to a screen r
 ## Alt text in context
 
 It can be tricky to decide whether an image needs alt text or should be ignored by screen readers. Ask yourself:
+
 - Is it interactive?
 - Does this image convey information that isn’t given elsewhere?
-- Does the context of the image communicate anything? 
+- Does the context of the image communicate anything?
 
-The same image may have different alt text depending on what it conveys. 
+The same image may have different alt text depending on what it conveys.
 
-For example, if you’re using a photo of sneakers purely decoratively as the hero image for a blog, tell screen readers to skip it. 
+For example, if you’re using a photo of sneakers purely decoratively as the hero image for a blog, tell screen readers to skip it.
 
-If you’re using the photo as an example of a certain type of sneaker mentioned in the blog, then convey relevant information about the image. For example, “High-top sneaker with gum soles.” 
+If you’re using the photo as an example of a certain type of sneaker mentioned in the blog, then convey relevant information about the image. For example, “High-top sneaker with gum soles.”
 
 But if you’re using this image in a product listing, ensure shoppers know the important details of what they are buying, such as “Converse Chuck Taylor All Star Classic Black.”
 
@@ -150,9 +153,10 @@ This is a broad category covering elements that are purely for aesthetic reasons
 
 Avoid adding repetitive alt text if an image has a caption that accurately reflects the information in the image, for example a photo of George Washington that is captioned “George Washington.” If the image is presenting information that isn’t in the caption, consider adding it to the caption text. Only if this isn’t possible or appropriate should you add that information as alt text.
 
-If the image has a longer description in the caption or following paragraph text, you can associate this description with the `aria-describedby` attribute. 
+If the image has a longer description in the caption or following paragraph text, you can associate this description with the `aria-describedby` attribute.
 
 #### Tracking images
+
 Images that would not be visible to a sighted user should not be announced to screen-readers.
 
 ---
@@ -189,6 +193,7 @@ Here’s a
 Besides screen readers, search engines also read alt text. Alt text helps increase image ranking results and site searchability outside of Shopify’s admin.
 
 When accounting for SEO in your alt text:
+
 - Use logical keywords (the words that people search for).
 - Include relevant listing details, like if it is a limited edition or unique colorway.
 - Describe the image, not what you want your audience to think.
@@ -196,31 +201,30 @@ When accounting for SEO in your alt text:
 - Avoid reducing the relevance or clarity of the alt text just to insert a keyword.
 - Never include unassociated lists of key words in the alt text. Instead, place those in your [meta description](https://help.shopify.com/en/manual/promoting-marketing/seo/adding-keywords#edit-the-title-and-meta-description-for-a-page).
 
-
 <!-- dodont -->
 
 #### Do
 
-``` <img alt=”1460 Boot Limited Edition Oxblood Women's”>```
+` <img alt=”1460 Boot Limited Edition Oxblood Women's”>`
 
 #### Don’t
 
 ```html
-<img alt=”shoes sneakers womens footwear girls sizes soles heels boots”>
-<img alt=”Cool shoes for a night out or hot date”>
+<img alt="”shoes" sneakers womens footwear girls sizes soles heels boots” />
+<img alt="”Cool" shoes for a night out or hot date” />
 ```
-
 
 <!-- end -->
 
 ## Resources
+
 For more information on coding and alt text standards, visit the
 [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/intro/wcag.php) or [WebAIM Alternative Text Guidelines] (https://webaim.org/techniques/alttext/).
-
 
 ## Related components
 
 The following Polaris components come props to set alt text, along with specific guidance for their use:
+
 - [Avatar](https://polaris.shopify.com/components/images-and-icons/avatar)
 - [Button](/components/actions/button)
 - [Icon](/components/images-and-icons/icon)
