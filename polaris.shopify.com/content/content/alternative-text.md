@@ -60,13 +60,15 @@ All `<img>` tags need an alt text attribute, even if it’s empty. For example, 
 
 #### Do
 
-`<img alt="Watch how-to video on Shopify reports." />`
+`<VideoThumbnail accessibilityLabel="Watch how-to video on Shopify reports." />`
+`<Thumbnail alt="Black choker necklace" />`
+`<Icon accessibilityLabel="" />`
 
 #### Don’t
 
-`IMG_1206.heic`
-`Screenshot 2022-11-07 at 3.05.55 PM`
-`Sneaker.png`
+`<Icon accessibilityLabel="IMG_1206.heic" />`
+`<VideoThumbnail accessibilityLabel="Screenshot 2022-11-07 at 3.05.55 PM" />`
+`<Thumbnail alt="Sneaker.png" />`
 
 <!-- end -->
 
@@ -109,8 +111,10 @@ But if you’re using this image in a product listing, ensure shoppers know the 
 
 [Icons](/components/images-and-icons/icon) that could be misinterpreted need an explanation, so use the Polaris `accessibilityLabel` prop or the `aria-label` HTML attribute. For interactive icons, don’t describe the image (“magnifying glass”). Instead, describe the action (“search”).
 
-```html
-<Button accessibilityLabel="close" onClick={() => closeModal()} />
+```jsx
+<Button accessibilityLabel="close" onClick={() => close()}>
+  <Icon source={CancelMajor} />
+</Button>
 ```
 
 #### Actions
@@ -123,16 +127,18 @@ Write [clear and predictable](https://polaris.shopify.com/content/actionable-lan
 
 #### Complex images
 
-Images with more complexity need more logic in the code. For example, groups of image elements can be described by a single text, rather than announcing each individual element.
+Images with more complexity need some consideration. For example, groups of image elements can be described by a single text, rather than announcing each individual element.
 
 ```html
-<Stack role=”img” accessibilityLabel=”star_id”>
-	<Icon source={StarFilledMinor} alt=””>
-<Icon  source={StarFilledMinor} alt=””>
-<Icon  source={StarFilledMinor} alt=””>
-<Icon  source={StarOutlineMinor} alt=””>
-</Stack>
-<Stack id=”star_id”>3 of 5 stars</Stack>
+<Box role=”img” accessibilityLabel=”3 of 5 stars”>
+  <Stack>
+    <Icon source={StarFilledMinor} alt=””>
+    <Icon  source={StarFilledMinor} alt=””>
+    <Icon  source={StarFilledMinor} alt=””>
+    <Icon  source={StarOutlineMinor} alt=””>
+    <Icon  source={StarOutlineMinor} alt=””>
+  </Stack>
+</Box>
 ```
 
 For more guidance, visit the W3C page on [complex images](https://www.w3.org/WAI/tutorials/images/complex/).
@@ -209,7 +215,7 @@ When accounting for SEO in your alt text:
 
 #### Don’t
 
-```html
+```jsx
 <img alt="”shoes" sneakers womens footwear girls sizes soles heels boots” />
 <img alt="”Cool" shoes for a night out or hot date” />
 ```
