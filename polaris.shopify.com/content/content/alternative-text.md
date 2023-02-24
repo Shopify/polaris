@@ -111,7 +111,7 @@ But if you’re using this image in a product listing, ensure shoppers know the 
 
 [Icons](/components/images-and-icons/icon) that could be misinterpreted need an explanation, so use the Polaris `accessibilityLabel` prop or the `aria-label` HTML attribute. For interactive icons, don’t describe the image (“magnifying glass”). Instead, describe the action (“search”).
 
-```html
+```jsx
 <Button accessibilityLabel="close" onClick={() => closeModal()} />
 ```
 
