@@ -290,7 +290,7 @@ if (isExecutedThroughCommandLine) {
   ]).then((files) => {
     let filesWithoutTests = files.filter((file) => !file.endsWith('test.tsx'));
     const ast = getProps(filesWithoutTests);
-    const filePath = path.join(__dirname, '../../../../../src/data/props.json');
+    const filePath = path.join(__dirname, '../../../../../.cache/props.json');
     fs.writeFileSync(filePath, JSON.stringify(ast, undefined, 2));
   });
 }
