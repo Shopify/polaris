@@ -27,7 +27,7 @@ describe('<SettingToggle />', () => {
       it('renders as a switch widget', () => {
         const toggle = mountWithApp(
           <SettingToggle
-            action={{content: 'Deactivate', onAction: () => {}}}
+            action={{content: 'Turn off', onAction: () => {}}}
             enabled
           />,
         );
@@ -38,7 +38,7 @@ describe('<SettingToggle />', () => {
         it('updates `aria-checked`', () => {
           const toggle = mountWithApp(
             <SettingToggle
-              action={{content: 'Deactivate', onAction: () => {}}}
+              action={{content: 'Turn off', onAction: () => {}}}
               enabled
             />,
           );
@@ -53,7 +53,7 @@ describe('<SettingToggle />', () => {
         it('updates `aria-checked`', () => {
           const toggle = mountWithApp(
             <SettingToggle
-              action={{content: 'Activate', onAction: () => {}}}
+              action={{content: 'Turn on', onAction: () => {}}}
               enabled={false}
             />,
           );

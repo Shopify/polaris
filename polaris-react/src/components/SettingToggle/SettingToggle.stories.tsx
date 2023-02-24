@@ -11,8 +11,8 @@ export function Default() {
 
   const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-  const contentStatus = active ? 'Deactivate' : 'Activate';
-  const textStatus = active ? 'activated' : 'deactivated';
+  const contentStatus = active ? 'Turn off' : 'Turn on';
+  const textStatus = active ? 'on' : 'off';
 
   return (
     <SettingToggle
