@@ -130,13 +130,15 @@ Write [clear and predictable](https://polaris.shopify.com/content/actionable-lan
 Images with more complexity need some consideration. For example, groups of image elements can be described by a single text, rather than announcing each individual element.
 
 ```html
-<Stack role=”img” accessibilityLabel=”star_id”>
-	<Icon source={StarFilledMinor} alt=””>
-<Icon  source={StarFilledMinor} alt=””>
-<Icon  source={StarFilledMinor} alt=””>
-<Icon  source={StarOutlineMinor} alt=””>
-</Stack>
-<Stack id=”star_id”>3 of 5 stars</Stack>
+<Box role=”img” accessibilityLabel=”3 of 5 stars”>
+  <Stack>
+    <Icon source={StarFilledMinor} alt=””>
+    <Icon  source={StarFilledMinor} alt=””>
+    <Icon  source={StarFilledMinor} alt=””>
+    <Icon  source={StarOutlineMinor} alt=””>
+    <Icon  source={StarOutlineMinor} alt=””>
+  </Stack>
+</Box>
 ```
 
 For more guidance, visit the W3C page on [complex images](https://www.w3.org/WAI/tutorials/images/complex/).
