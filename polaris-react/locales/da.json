@@ -174,7 +174,7 @@
       "showing": "Viser {itemsCount} {resource}",
       "loading": "Indlæser {resource}",
       "selected": "{selectedItemsCount} valgt",
-      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} i din butik er valgt.",
+      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} i din butik er valgt",
       "selectAllItems": "Vælg alle {itemsLength} + {resourceNamePlural} i butikken",
       "emptySearchResultTitle": "Ingen {resourceNamePlural} blev fundet",
       "emptySearchResultDescription": "Prøv at ændre filtrene eller søgeordet",
@@ -194,7 +194,7 @@
         "warningMessage": "Sikring af en bedre brugeroplevelse. Der bør maksimalt være {maxPromotedActions} handlinger, der promoveres."
       },
       "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} i dette filter er valgt.",
+      "allFilteredItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} i dette filter er valgt",
       "selectAllFilteredItems": "Vælg alle mere end {itemsLength} {resourceNamePlural} i dette filter"
     },
     "SkeletonPage": {
@@ -277,8 +277,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Vare",
       "defaultItemPlural": "Varer",
-      "allItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} er valgt.",
-      "selected": "{selectedItemsCount} valgt.",
+      "allItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} er valgt",
+      "selected": "{selectedItemsCount} valgt",
       "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Fravælg alle {itemsLength} {resourceNamePlural}",
@@ -290,7 +290,7 @@
       "onboardingBadgeText": "Nyhed",
       "resourceLoadingAccessibilityLabel": "Indlæser {resourceNamePlural}…",
       "selectAllLabel": "Vælg alle {resourceNamePlural}",
-      "selected": "{selectedItemsCount} valgt.",
+      "selected": "{selectedItemsCount} valgt",
       "undo": "Fortryd",
       "selectAllItems": "Vælg alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Vælg {resourceName}",
