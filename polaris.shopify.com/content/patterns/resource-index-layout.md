@@ -1,6 +1,6 @@
 ---
 title: Resource index layout
-description: Makes it easy for merchants to view and manage resources.
+description: Organize and take action on resource objects
 url: /patterns/resource-index-layout
 previewImg: /images/patterns/pattern-thumbnail-resource-index.png
 githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/8215
