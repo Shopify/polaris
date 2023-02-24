@@ -18,49 +18,96 @@ keywords:
 examples:
   - fileName: setting-toggle-default.tsx
     title: Default
-    description: Use on settings pages to allow merchants to toggle a setting that has an activated or a deactivated state.
+    description: Use on settings pages to allow merchants to toggle a setting that has an on or off state.
 ---
 
 ## Best practices
 
+The setting toggle component should be used when:
+
+- The setting is stand alone, and
+- There are only two binary options that are On / Off
+
+If the setting is dependent on other settings, uses progressive disclosure, or has options that are not a simple On / Off, use a different UI element such as a Checkbox or Radio button.
+
 Settings toggles should:
 
-- Include different body content for the activated and deactivated states.
-- Clearly indicate whether the setting is activated or deactivated and explain the implications of the state of the setting to merchants. (“Automatic messages are deactivated. Your customers won’t receive automatic shipping updates.”)
-- Clearly state when a setting or feature is not available and why. Provide actionable steps for merchants to unlock the functionality.
+- Include body content describing the experience when the setting is On.
+- Clearly indicate whether the setting is On or Off in a badge
+- Use a default button for both states; Using a primary button may misinterpret the setting as being On. 
+
+If more information is needed to explain the details or functionality of a setting, include the Info icon and link to help content or related documentation.
 
 ---
 
 ## Content guidelines
 
-### Toggle description
+### Card title
 
-Toggle descriptions should:
+The setting toggle title should:
 
-- Clearly indicate whether the setting is activated or deactivated
-- Explain the implications of the state of the setting to merchants (“Automatic messages are deactivated. Your customers won’t receive automatic shipping updates.”)
-
-### Primary button
-
-The primary buttons for the setting toggle should always say either “Activate” or “Deactivate” depending on whether the setting can be turned on or off.
-
-For example, if the setting toggle is on, the button should say “Deactivate” to allow merchants to turn it off. If the setting toggle is off, the button should say “Activate” to allow merchants to turn it on.
+- Be the setting name, written as a noun or gerund -ing phrase ("Test mode" or "Automatic order archiving")
+- Represent the experience when the setting is On even if the setting restricts, limits, removes or hides functionality.
 
 <!-- dodont -->
 
 #### Do
 
-- Activate
-- Deactivate
+- Test mode
+- Order archiving
+- Self-serve returns
+
+#### Don’t
+
+- Simulate test payments
+- Automatically archive the order
+- Allow customers to manage returns
+
+<!-- end -->
+
+### Status badge
+
+- The status badge for the setting toggle should always say either On or Off to indicate the current status. 
+
+<!-- dodont -->
+
+#### Do
+
+- On
+- Off
+
+#### Don’t
+
+- Active
+- Inactive
+- Visible
+- Not visible
+
+<!-- end -->
+
+### On/Off button
+
+The button for the setting toggle should always say either “Turn on” or “Turn off” depending on whether the setting can be turned on or off.
+
+<!-- dodont -->
+
+#### Do
+
+- Turn on
+- Turn off
 
 #### Don’t
 
 - Enable
 - Disable
-- Turn on
-- Turn off
+- Activate
+- Deactivate
 
 <!-- end -->
+
+### Supporting content
+
+In addition to the setting description, supporting content can dynamically display based on state. This should be used sparingly and included only if it adds significant clarity or value. For example, "Your customers won’t receive automatic shipping updates.”
 
 ---
 
