@@ -215,7 +215,7 @@ When accounting for SEO in your alt text:
 
 #### Don’t
 
-```html
+```jsx
 <img alt="”shoes" sneakers womens footwear girls sizes soles heels boots” />
 <img alt="”Cool" shoes for a night out or hot date” />
 ```
