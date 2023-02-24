@@ -127,7 +127,7 @@ Write [clear and predictable](https://polaris.shopify.com/content/actionable-lan
 
 #### Complex images
 
-Images with more complexity need more logic in the code. For example, groups of image elements can be described by a single text, rather than announcing each individual element.
+Images with more complexity need some consideration. For example, groups of image elements can be described by a single text, rather than announcing each individual element.
 
 ```html
 <Stack role=”img” accessibilityLabel=”star_id”>
