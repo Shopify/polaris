@@ -66,9 +66,9 @@ All `<img>` tags need an alt text attribute, even if it’s empty. For example, 
 
 #### Don’t
 
-`IMG_1206.heic`
-`Screenshot 2022-11-07 at 3.05.55 PM`
-`Sneaker.png`
+`<Icon accessibilityLabel="IMG_1206.heic" />`
+`<VideoThumbnail accessibilityLabel="Screenshot 2022-11-07 at 3.05.55 PM" />`
+`<Thumbnail alt="Sneaker.png" />`
 
 <!-- end -->
 
