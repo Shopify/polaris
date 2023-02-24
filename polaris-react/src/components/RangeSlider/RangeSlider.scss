@@ -3,7 +3,7 @@
   --pc-range-slider-input: 10;
   --pc-range-slider-output: 20;
   --pc-range-slider-track-height: 4px;
-  --pc-range-slider-thumb-size: 1rem;
+  --pc-range-slider-thumb-size: var(--p-range-slider-thumb-size-base);
   --pc-track-dashed-border-radius: var(--p-border-radius-1);
   // stylelint-enable
 }
