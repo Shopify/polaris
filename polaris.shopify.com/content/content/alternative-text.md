@@ -60,7 +60,9 @@ All `<img>` tags need an alt text attribute, even if it’s empty. For example, 
 
 #### Do
 
-`<img alt="Watch how-to video on Shopify reports." />`
+`<VideoThumbnail accessibilityLabel="Watch how-to video on Shopify reports." />`
+`<Thumbnail alt="Black choker necklace" />`
+`<Icon accessibilityLabel="" />`
 
 #### Don’t
 
