@@ -229,8 +229,7 @@ $range-output-translate-x: calc(
 
   .Input:active + & {
     // stylelint-disable -- polaris/layout/polaris/global-disallowed-list
-    $range-thumb-size-difference: var(--p-range-slider-thumb-size-active) -
-      var(--p-range-slider-thumb-size-base);
+    $range-thumb-size-difference: 24px - 16px;
     // stylelint-enable -- polaris/layout/polaris/global-disallowed-list
     opacity: 1;
     visibility: visible;
