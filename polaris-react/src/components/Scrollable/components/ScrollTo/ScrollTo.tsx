@@ -3,7 +3,11 @@ import React, {useContext, useEffect, useRef} from 'react';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {ScrollableContext} from '../../context';
 
-export function ScrollTo() {
+export interface ScrollToProps extends React.HTMLProps<HTMLAnchorElement>  {
+  scrollKey?: string;
+}
+
+export function ScrollTo({scrollKey}: ScrollToProps) {
   const anchorNode = useRef<HTMLAnchorElement>(null);
   const scrollToPosition = useContext(ScrollableContext);
 
@@ -13,7 +17,7 @@ export function ScrollTo() {
     }
 
     scrollToPosition(anchorNode.current.offsetTop);
-  }, [scrollToPosition]);
+  }, [scrollToPosition, scrollKey]);
 
   const id = useUniqueId(`ScrollTo`);
   // eslint-disable-next-line jsx-a11y/anchor-is-valid
