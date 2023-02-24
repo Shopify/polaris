@@ -46,7 +46,7 @@
 
 .Control {
   // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-choice-size: 1.25rem;
+  --pc-choice-size: var(--p-choice-size);
 
   @media #{$p-breakpoints-md-down} {
     // stylelint-disable-next-line -- Polaris component custom properties
@@ -80,7 +80,7 @@
 
 .Descriptions {
   // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-choice-size: 1.25rem;
+  --pc-choice-size: var(--p-choice-size);
 
   @media #{$p-breakpoints-md-down} {
     // stylelint-disable-next-line -- Polaris component custom properties
