@@ -2,7 +2,6 @@ import type {KeyboardEvent, FocusEvent} from 'react';
 import React, {useReducer, useCallback, useEffect} from 'react';
 
 import {usePrevious} from '../../../../utilities/use-previous';
-import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import {Tab} from '../../components/Tab';
 import type {TabsProps} from '../../Tabs';
@@ -29,7 +28,6 @@ export function useTabsMethods({
   children,
   selected,
   disabled,
-  disabledTooltipMessage,
   onSaveNewViewModal,
   onSetStateToEditingColumns,
   onSelect,
@@ -150,40 +148,32 @@ export function useTabsMethods({
       const tabPanelID = tab.panelID || `${tab.id}-panel`;
 
       return (
-        <DisabledTooltipWrapper
+        <Tab
+          {...tab}
           key={`${index}-${tab.id}`}
-          disabled={{
-            isDisabled: disabled,
-            tooltipMessage: disabledTooltipMessage,
-          }}
-        >
-          <Tab
-            {...tab}
-            id={tab.id}
-            panelID={children ? tabPanelID : undefined}
-            isActive={index === selected}
-            disabled={disabled}
-            siblingTabHasFocus={tabToFocus > -1}
-            focused={index === tabToFocus}
-            selected={index === selected}
-            onAction={handleClick}
-            accessibilityLabel={tab.accessibilityLabel}
-            url={tab.url}
-            content={tab.content}
-            onToggleModal={handleToggleModal}
-            onTogglePopover={handleTogglePopover}
-            viewNames={viewNames}
-            onSetStateToEditingColumns={onSetStateToEditingColumns}
-            onConfirmDuplicateView={handleDuplicate}
-            onConfirmDeleteView={handleDelete}
-            onSaveRenameViewModal={handleRename}
-          />
-        </DisabledTooltipWrapper>
+          id={tab.id}
+          panelID={children ? tabPanelID : undefined}
+          isActive={index === selected}
+          disabled={disabled}
+          siblingTabHasFocus={tabToFocus > -1}
+          focused={index === tabToFocus}
+          selected={index === selected}
+          onAction={handleClick}
+          accessibilityLabel={tab.accessibilityLabel}
+          url={tab.url}
+          content={tab.content}
+          onToggleModal={handleToggleModal}
+          onTogglePopover={handleTogglePopover}
+          viewNames={viewNames}
+          onSetStateToEditingColumns={onSetStateToEditingColumns}
+          onConfirmDuplicateView={handleDuplicate}
+          onConfirmDeleteView={handleDelete}
+          onSaveRenameViewModal={handleRename}
+        />
       );
     },
     [
       disabled,
-      disabledTooltipMessage,
       handleTabClick,
       tabs,
       children,

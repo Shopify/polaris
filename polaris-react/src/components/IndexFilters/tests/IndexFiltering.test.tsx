@@ -270,37 +270,31 @@ describe('IndexFilters', () => {
         },
       ];
 
-      const disableFiltering = {
-        isDisabled: true,
-        tooltipMessage: 'Disabled tooltip message',
-      };
+      const disableFilters = true;
 
       const wrapper = mountWithApp(
         <IndexFilters
           {...defaultProps}
           filters={filters}
           mode={IndexFiltersMode.Filtering}
-          disableFiltering={disableFiltering}
+          disableFilters={disableFilters}
         />,
       );
 
       expect(wrapper).toContainReactComponent(Filters, {
         filters,
-        disableFiltering,
+        disableFilters,
       });
     });
 
     it('renders UpdateButtons with the disabled props when filtering', () => {
-      const disableFiltering = {
-        isDisabled: true,
-        tooltipMessage: 'Disabled tooltip message',
-      };
+      const disableFiltering = true;
 
       const wrapper = mountWithApp(
         <IndexFilters
           {...defaultProps}
           mode={IndexFiltersMode.Filtering}
-          disableFiltering={disableFiltering}
+          disableFilters={disableFiltering}
         />,
       );
 

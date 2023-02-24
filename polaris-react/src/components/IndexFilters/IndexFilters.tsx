@@ -10,7 +10,6 @@ import type {FiltersProps} from '../Filters';
 import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
-import type {DisabledInfo} from '../DisabledTooltipWrapper';
 
 import {IndexFiltersMode, useIsSticky} from './hooks';
 import {
@@ -50,7 +49,9 @@ export interface IndexFiltersProps
   /** Optional callback invoked when a merchant begins to edit a view */
   onStartEditing?: () => void;
   /** Whether to disable the Sort button */
-  disableSort?: DisabledInfo;
+  disableSort?: boolean;
+  /** Whether to disable the filters */
+  disableFilters?: boolean;
   /** The current mode of the IndexFilters component. Used to determine which view to show */
   mode: IndexFiltersMode;
   /** Callback to set the mode of the IndexFilters component */
@@ -88,7 +89,7 @@ export function IndexFilters({
   onQueryFocus,
   onQueryClear,
   onStartEditing,
-  disableFiltering,
+  disableFilters,
   disableSort,
   loading,
   mode,
@@ -186,12 +187,12 @@ export function IndexFilters({
         cancelAction={enhancedCancelAction}
         viewNames={viewNames}
         disabled={
-          mode === IndexFiltersMode.Filtering ? disableFiltering : undefined
+          mode === IndexFiltersMode.Filtering ? disableFilters : undefined
         }
       />
     ),
     [
-      disableFiltering,
+      disableFilters,
       enhancedPrimaryAction,
       enhancedCancelAction,
       mode,
@@ -210,8 +211,7 @@ export function IndexFilters({
         onChange={handleChangeSortButton}
         onChangeKey={onSortChangeKey}
         onChangeDirection={onSortChangeDirection}
-        disabled={disableSort?.isDisabled}
-        disabledTooltipMessage={disableSort?.tooltipMessage}
+        disabled={disableSort}
       />
     );
   }, [
@@ -220,8 +220,7 @@ export function IndexFilters({
     onSortChangeKey,
     sortOptions,
     sortSelected,
-    disableSort?.isDisabled,
-    disableSort?.tooltipMessage,
+    disableSort,
   ]);
 
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
@@ -291,8 +290,7 @@ export function IndexFilters({
                     onClick={handleClickFilterButton}
                     aria-label={searchFilterAriaLabel}
                     tooltipContent={searchFilterTooltip}
-                    disabled={disableFiltering?.isDisabled}
-                    disabledTooltipMessage={disableFiltering?.tooltipMessage}
+                    disabled={disableFilters}
                   />
                   {sortMarkup}
                 </>
@@ -314,8 +312,7 @@ export function IndexFilters({
     loading,
     disableTabs,
     tabs,
-    disableFiltering?.isDisabled,
-    disableFiltering?.tooltipMessage,
+    disableFilters,
     sortMarkup,
     i18n,
     onSelect,
@@ -368,7 +365,7 @@ export function IndexFilters({
               filters={filters}
               appliedFilters={appliedFilters}
               onClearAll={onClearAll}
-              disableFiltering={disableFiltering}
+              disableFilters={disableFilters}
               disableQueryField={disableQueryField}
               loading={loading || isActionLoading}
               focused

@@ -13,8 +13,6 @@ import {UnstyledButton} from '../../../UnstyledButton';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
-import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
-import type {DisabledInfo} from '../../../DisabledTooltipWrapper';
 
 import styles from './FilterPill.scss';
 
@@ -30,7 +28,7 @@ export interface FilterPillProps extends FilterInterface {
   /** Callback invoked when the filter is clicked */
   onClick?(key: string): void;
   /** Whether filtering is disabled */
-  disableFiltering?: DisabledInfo;
+  disabled?: boolean;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
 }
@@ -39,8 +37,7 @@ export function FilterPill({
   filterKey,
   label,
   filter,
-  disableFiltering,
-  disabled = disableFiltering?.isDisabled || false,
+  disabled,
   hideClearButton,
   selected,
   initialActive,
@@ -165,25 +162,24 @@ export function FilterPill({
 
   return (
     <div ref={elementRef}>
-      <DisabledTooltipWrapper key={filterKey} disabled={disableFiltering}>
-        <Popover
-          active={popoverActive && !disableFiltering?.isDisabled}
-          activator={activator}
-          onClose={togglePopoverActive}
-          fluidContent
-          preferredAlignment="left"
-          preventCloseOnChildOverlayClick={!closeOnChildOverlayClick}
-        >
-          <div className={styles.PopoverWrapper}>
-            <Popover.Section>
-              <Stack vertical spacing="tight">
-                {filter}
-                {clearButtonMarkup}
-              </Stack>
-            </Popover.Section>
-          </div>
-        </Popover>
-      </DisabledTooltipWrapper>
+      <Popover
+        active={popoverActive && !disabled}
+        activator={activator}
+        key={filterKey}
+        onClose={togglePopoverActive}
+        fluidContent
+        preferredAlignment="left"
+        preventCloseOnChildOverlayClick={!closeOnChildOverlayClick}
+      >
+        <div className={styles.PopoverWrapper}>
+          <Popover.Section>
+            <Stack vertical spacing="tight">
+              {filter}
+              {clearButtonMarkup}
+            </Stack>
+          </Popover.Section>
+        </div>
+      </Popover>
     </div>
   );
 }

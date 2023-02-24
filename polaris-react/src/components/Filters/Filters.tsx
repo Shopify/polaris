@@ -9,8 +9,6 @@ import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
 import type {AppliedFilterInterface, FilterInterface} from '../../types';
-import type {DisabledInfo} from '../DisabledTooltipWrapper';
-import {DisabledTooltipWrapper} from '../DisabledTooltipWrapper';
 import {Link} from '../Link';
 import {Inline} from '../Inline';
 import {Box} from '../Box';
@@ -50,10 +48,10 @@ export interface FiltersProps {
   hideQueryField?: boolean;
   /** Disable the query field. */
   disableQueryField?: boolean;
+  /** Disable the filters */
+  disableFilters?: boolean;
   /** Whether an asyncronous task is currently being run. */
   loading?: boolean;
-  /** Whether the filtering is disabled or not. */
-  disableFiltering?: DisabledInfo;
 }
 
 export function Filters({
@@ -73,19 +71,12 @@ export function Filters({
   hideQueryField,
   disableQueryField,
   loading,
-  disableFiltering,
+  disableFilters,
 }: FiltersProps) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
   const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
   const hasMounted = useRef(false);
-
-  const disableFilteringOrActualDisabled = disableFiltering
-    ? {
-        ...disableFiltering,
-        isDisabled: disabled || disableFiltering?.isDisabled,
-      }
-    : undefined;
 
   const enabledFilters = filters.filter((filter) => !filter.disabled);
 
@@ -139,8 +130,6 @@ export function Filters({
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
   const addFilterActivator = (
-    // The enclosing div is necessary to prevent the Popover losing its root ref when DisabledTooltip conditionally
-    // renders a Tooltip component
     <div>
       <Text variant="bodySm" as="p">
         <UnstyledButton
@@ -148,9 +137,7 @@ export function Filters({
           className={styles.AddFilter}
           onClick={handleAddFilterClick}
           aria-label={i18n.translate('Polaris.Filters.addFilter')}
-          disabled={
-            disableFiltering?.isDisabled || additionalFilters.length === 0
-          }
+          disabled={disabled || additionalFilters.length === 0}
         >
           <span>{i18n.translate('Polaris.Filters.addFilter')}</span>
           <PlusMinor />
@@ -215,11 +202,7 @@ export function Filters({
                   value={queryValue}
                   placeholder={queryPlaceholder}
                   focused={focused}
-                  disabled={{
-                    isDisabled:
-                      disableQueryField || disableFiltering?.isDisabled,
-                    tooltipMessage: disableFiltering?.tooltipMessage,
-                  }}
+                  disabled={disableQueryField}
                 />
               </div>
               {additionalContent}
@@ -261,7 +244,7 @@ export function Filters({
                     filterKey={filterKey}
                     selected={appliedFilterKeys?.includes(filterKey)}
                     onRemove={handleFilterPillRemove}
-                    disableFiltering={disableFiltering}
+                    disabled={pinnedFilter.disabled || disableFilters}
                   />
                 );
               })}
@@ -273,20 +256,16 @@ export function Filters({
                       styles.AddFilterActivatorMultiple,
                   )}
                 >
-                  <DisabledTooltipWrapper
-                    disabled={disableFilteringOrActualDisabled}
+                  <Popover
+                    active={popoverActive && !disabled}
+                    activator={addFilterActivator}
+                    onClose={togglePopoverActive}
                   >
-                    <Popover
-                      active={popoverActive && !disableFiltering?.isDisabled}
-                      activator={addFilterActivator}
-                      onClose={togglePopoverActive}
-                    >
-                      <ActionList
-                        actionRole="menuitem"
-                        items={additionalFilters}
-                      />
-                    </Popover>
-                  </DisabledTooltipWrapper>
+                    <ActionList
+                      actionRole="menuitem"
+                      items={additionalFilters}
+                    />
+                  </Popover>
                 </div>
               )}
               {appliedFilters?.length || localPinnedFilters.length ? (
@@ -298,15 +277,11 @@ export function Filters({
                       styles.MultiplePinnedFilterClearAll,
                   )}
                 >
-                  <DisabledTooltipWrapper
-                    disabled={disableFilteringOrActualDisabled}
-                  >
-                    <Link onClick={handleClearAllFilters} removeUnderline>
-                      <Text variant="bodySm" fontWeight="semibold" as="span">
-                        {i18n.translate('Polaris.Filters.clearFilters')}
-                      </Text>
-                    </Link>
-                  </DisabledTooltipWrapper>
+                  <Link onClick={handleClearAllFilters} removeUnderline>
+                    <Text variant="bodySm" fontWeight="semibold" as="span">
+                      {i18n.translate('Polaris.Filters.clearFilters')}
+                    </Text>
+                  </Link>
                 </div>
               ) : null}
             </div>

@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Icon} from '../../Icon';
-import {Tooltip} from '../../Tooltip';
 import type {TabOptionsList} from '../types';
 import {Tabs} from '..';
 import {Tab, CreateViewModal, TabMeasurer} from '../components';
@@ -62,36 +61,6 @@ describe('Tabs', () => {
     });
 
     expect(wrapper!.find('ul')!.findAll(Tab)[0]!.prop('isActive')).toBe(true);
-  });
-
-  it('does not show a tooltip if disabled is false', () => {
-    const message = 'I am not disabled';
-    const wrapper = mountWithApp(
-      <Tabs
-        {...defaultProps}
-        disabled={false}
-        disabledTooltipMessage={message}
-      />,
-    );
-
-    expect(wrapper).not.toContainReactComponent(Tooltip, {content: message});
-  });
-
-  it('does not show a tooltip if the tooltip message is undefined', () => {
-    const wrapper = mountWithApp(
-      <Tabs {...defaultProps} disabled disabledTooltipMessage={undefined} />,
-    );
-
-    expect(wrapper).not.toContainReactComponent(Tooltip, {content: undefined});
-  });
-
-  it('shows a tooltip if disabled is true and there is a message', () => {
-    const message = 'I am not disabled';
-    const wrapper = mountWithApp(
-      <Tabs {...defaultProps} disabled disabledTooltipMessage={message} />,
-    );
-
-    expect(wrapper).toContainReactComponent(Tooltip);
   });
 
   describe('callback', () => {

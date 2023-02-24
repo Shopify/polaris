@@ -3,7 +3,6 @@ import type {ReactNode} from 'react';
 
 import {UnstyledButton} from '../../../UnstyledButton';
 import {classNames} from '../../../../utilities/css';
-import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
 
 import styles from './FilterButton.scss';
 
@@ -13,7 +12,6 @@ export interface FilterButtonProps {
   children: ReactNode;
   hasDoubleWidthIcon?: boolean;
   disabled?: boolean;
-  disabledTooltipMessage?: string;
 }
 
 export function FilterButton({
@@ -22,7 +20,6 @@ export function FilterButton({
   children,
   hasDoubleWidthIcon,
   disabled,
-  disabledTooltipMessage,
 }: FilterButtonProps) {
   const classes = classNames(
     styles.FilterButton,
@@ -30,17 +27,13 @@ export function FilterButton({
     disabled && styles.Disabled,
   );
   return (
-    <DisabledTooltipWrapper
-      disabled={{isDisabled: disabled, tooltipMessage: disabledTooltipMessage}}
+    <UnstyledButton
+      className={classes}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      disabled={disabled}
     >
-      <UnstyledButton
-        className={classes}
-        onClick={onClick}
-        aria-label={ariaLabel}
-        disabled={disabled}
-      >
-        {children}
-      </UnstyledButton>
-    </DisabledTooltipWrapper>
+      {children}
+    </UnstyledButton>
   );
 }

@@ -7,16 +7,13 @@ import {Form} from '../../../Form';
 import {FormLayout} from '../../../FormLayout';
 import {Stack} from '../../../Stack';
 import {Inline} from '../../../Inline';
+import {Button} from '../../../Button';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {useIsTouchDevice} from '../../../../utilities/use-is-touch-device';
-import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
-import type {DisabledInfo} from '../../../DisabledTooltipWrapper';
 import type {
   IndexFiltersPrimaryAction,
   IndexFiltersCancelAction,
 } from '../../types';
-
-import {UpdateButton} from './components';
 
 interface UpdateIndexFiltersPrimaryAction
   extends Omit<IndexFiltersPrimaryAction, 'onAction'> {
@@ -27,7 +24,7 @@ export interface UpdateButtonsProps {
   primaryAction?: UpdateIndexFiltersPrimaryAction;
   cancelAction: IndexFiltersCancelAction;
   viewNames: string[];
-  disabled?: DisabledInfo;
+  disabled?: boolean;
 }
 
 const MAX_VIEW_NAME_LENGTH = 40;
@@ -88,14 +85,15 @@ export function UpdateButtons({
   }, [primaryAction?.type, i18n]);
 
   const saveButton = (
-    <DisabledTooltipWrapper disabled={disabled}>
-      <UpdateButton
-        onClick={handleClickSaveButton}
-        disabled={primaryAction?.disabled || disabled?.isDisabled}
-      >
-        {buttonText}
-      </UpdateButton>
-    </DisabledTooltipWrapper>
+    <Button
+      size="micro"
+      primary
+      plain
+      onClick={handleClickSaveButton}
+      disabled={primaryAction?.disabled || disabled}
+    >
+      {buttonText}
+    </Button>
   );
 
   const hasSameNameError = viewNames.some(
@@ -108,15 +106,14 @@ export function UpdateButtons({
     savedViewName.length > MAX_VIEW_NAME_LENGTH;
 
   const cancelButtonMarkup = (
-    <DisabledTooltipWrapper disabled={disabled}>
-      <UpdateButton
-        plain
-        onClick={cancelAction.onAction}
-        disabled={disabled?.isDisabled}
-      >
-        {i18n.translate('Polaris.IndexFilters.UpdateButtons.cancel')}
-      </UpdateButton>
-    </DisabledTooltipWrapper>
+    <Button
+      plain
+      size="micro"
+      onClick={cancelAction.onAction}
+      disabled={disabled}
+    >
+      {i18n.translate('Polaris.IndexFilters.UpdateButtons.cancel')}
+    </Button>
   );
 
   if (!primaryAction) {

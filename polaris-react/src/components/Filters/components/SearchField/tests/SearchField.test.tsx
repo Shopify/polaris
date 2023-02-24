@@ -3,7 +3,6 @@ import type {ComponentProps} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {TextField} from '../../../../TextField';
-import {DisabledTooltipWrapper} from '../../../../DisabledTooltipWrapper';
 import {SearchField} from '..';
 
 describe('SearchField', () => {
@@ -66,28 +65,6 @@ describe('SearchField', () => {
 
     expect(wrapper).toContainReactComponent(TextField, {
       placeholder: defaultProps.placeholder,
-    });
-  });
-
-  it('disables the text field and wraps it in a tooltip when the disabled prop contains disabled info', () => {
-    const props: ComponentProps<typeof SearchField> = {
-      ...defaultProps,
-      disabled: {
-        isDisabled: true,
-        tooltipMessage: 'Search disabled',
-      },
-    };
-    const wrapper = mountWithApp(<SearchField {...props} />);
-
-    expect(wrapper).toContainReactComponent(TextField, {
-      disabled: true,
-    });
-
-    expect(wrapper).toContainReactComponent(DisabledTooltipWrapper, {
-      disabled: {
-        isDisabled: true,
-        tooltipMessage: 'Search disabled',
-      },
     });
   });
 });

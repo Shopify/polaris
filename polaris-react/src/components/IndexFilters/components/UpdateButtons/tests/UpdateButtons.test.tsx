@@ -3,9 +3,8 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Modal} from '../../../../Modal';
 import {TextField} from '../../../../TextField';
-import {Tooltip} from '../../../../Tooltip';
+import {Button} from '../../../../Button';
 import {UpdateButtons, UpdateButtonsProps} from '..';
-import {UpdateButton} from '../components';
 
 describe('UpdateButtons', () => {
   const defaultProps: UpdateButtonsProps = {
@@ -27,7 +26,7 @@ describe('UpdateButtons', () => {
     const wrapper = mountWithApp(<UpdateButtons {...defaultProps} />);
 
     wrapper.act(() => {
-      wrapper.findAll(UpdateButton)[1]?.trigger('onClick');
+      wrapper.findAll(Button)[1]?.trigger('onClick');
     });
 
     expect(defaultProps.primaryAction!.onAction).toHaveBeenCalledTimes(1);
@@ -37,7 +36,7 @@ describe('UpdateButtons', () => {
     const wrapper = mountWithApp(<UpdateButtons {...defaultProps} />);
 
     wrapper.act(() => {
-      wrapper.findAll(UpdateButton)[0]?.trigger('onClick');
+      wrapper.findAll(Button)[0]?.trigger('onClick');
     });
 
     expect(defaultProps.cancelAction!.onAction).toHaveBeenCalledTimes(1);
@@ -46,7 +45,7 @@ describe('UpdateButtons', () => {
   it('renders the button text correctly in the Save state', () => {
     const wrapper = mountWithApp(<UpdateButtons {...defaultProps} />);
 
-    expect(wrapper.findAll(UpdateButton)[1]).toContainReactText('Save');
+    expect(wrapper.findAll(Button)[1]).toContainReactText('Save');
   });
 
   it('renders the button text correctly in a SaveAs state', () => {
@@ -59,7 +58,7 @@ describe('UpdateButtons', () => {
     };
     const wrapper = mountWithApp(<UpdateButtons {...props} />);
 
-    expect(wrapper.findAll(UpdateButton)[1]).toContainReactText('Save as');
+    expect(wrapper.findAll(Button)[1]).toContainReactText('Save as');
   });
 
   it('opens the modal and calls the primary action when clicking the primary action in the modal in a SaveAs state', () => {
@@ -74,7 +73,7 @@ describe('UpdateButtons', () => {
     const wrapper = mountWithApp(<UpdateButtons {...props} />);
 
     wrapper.act(() => {
-      wrapper.findAll(UpdateButton)[1].trigger('onClick');
+      wrapper.findAll(Button)[1].trigger('onClick');
     });
 
     wrapper.act(() => {
@@ -100,7 +99,7 @@ describe('UpdateButtons', () => {
     const wrapper = mountWithApp(<UpdateButtons {...props} />);
 
     wrapper.act(() => {
-      wrapper.findAll(UpdateButton)[1].trigger('onClick');
+      wrapper.findAll(Button)[1].trigger('onClick');
     });
 
     wrapper.act(() => {
@@ -128,58 +127,6 @@ describe('UpdateButtons', () => {
     expect(wrapper).toContainReactComponent(TextField, {
       error:
         'A view with this name already exists. Please choose a different name.',
-    });
-  });
-
-  it('disables the buttons when the disabled prop is true', () => {
-    const wrapper = mountWithApp(
-      <UpdateButtons
-        {...defaultProps}
-        disabled={{isDisabled: true, tooltipMessage: 'Update disabled'}}
-      />,
-    );
-
-    const cancelTooltip = wrapper.find(Tooltip, {
-      content: 'Update disabled',
-    });
-
-    expect(cancelTooltip).toContainReactComponent(UpdateButton, {
-      disabled: true,
-      children: 'Cancel',
-    });
-
-    const saveTooltip = wrapper.findAll(Tooltip, {
-      content: 'Update disabled',
-    })[1];
-
-    expect(saveTooltip).toContainReactComponent(UpdateButton, {
-      disabled: true,
-      children: 'Save',
-    });
-  });
-
-  it('does not render a tooltip when only the update button is disabled', () => {
-    const props: UpdateButtonsProps = {
-      ...defaultProps,
-      primaryAction: {
-        type: 'save',
-        onAction: jest.fn(),
-        disabled: true,
-      },
-      cancelAction: {
-        onAction: jest.fn(),
-        disabled: false,
-      },
-    };
-    const wrapper = mountWithApp(
-      <UpdateButtons
-        {...props}
-        disabled={{isDisabled: false, tooltipMessage: 'Update disabled'}}
-      />,
-    );
-
-    expect(wrapper).not.toContainReactComponent(Tooltip, {
-      content: 'Update disabled',
     });
   });
 });

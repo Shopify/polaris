@@ -1,8 +1,6 @@
 import React from 'react';
 
 import {TextField} from '../../../TextField';
-import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
-import type {DisabledInfo} from '../../../DisabledTooltipWrapper';
 
 import styles from './SearchField.scss';
 
@@ -14,7 +12,7 @@ export interface SearchFieldProps {
   focused?: boolean;
   value?: string;
   placeholder?: string;
-  disabled?: DisabledInfo;
+  disabled?: boolean;
 }
 
 export function SearchField({
@@ -49,23 +47,21 @@ export function SearchField({
 
   return (
     <div className={styles.SearchField}>
-      <DisabledTooltipWrapper disabled={disabled}>
-        <TextField
-          value={value}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          label={placeholder}
-          labelHidden
-          autoComplete="off"
-          focused={focused}
-          placeholder={placeholder}
-          clearButton
-          onClearButtonClick={handleClear}
-          disabled={Boolean(disabled?.isDisabled)}
-          borderless
-        />
-      </DisabledTooltipWrapper>
+      <TextField
+        value={value}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        label={placeholder}
+        labelHidden
+        autoComplete="off"
+        focused={focused}
+        placeholder={placeholder}
+        clearButton
+        onClearButtonClick={handleClear}
+        disabled={disabled}
+        borderless
+      />
     </div>
   );
 }

@@ -11,7 +11,6 @@ import {UnstyledButton} from '../UnstyledButton';
 import {Tooltip} from '../Tooltip';
 import {Text} from '../Text';
 import {Box} from '../Box';
-import {DisabledTooltipWrapper} from '../DisabledTooltipWrapper';
 
 import type {TabProps, TabMeasurements} from './types';
 import {
@@ -35,8 +34,6 @@ export interface TabsProps {
   selected: number;
   /** Whether the Tabs are disabled or not. */
   disabled?: boolean;
-  /** Content within the tooltip when Tabs are disabled */
-  disabledTooltipMessage?: string;
   /** Optional callback invoked when a Tab becomes selected. */
   onSelect?: (selectedTabIndex: number) => void;
   /** Whether to show the add new view Tab. */
@@ -70,7 +67,6 @@ export const TabsInner = ({
   onSaveNewViewModal,
   onSetStateToEditingColumns,
   onSelect,
-  disabledTooltipMessage,
   fitted,
   disclosureText,
 }: CombinedProps) => {
@@ -91,7 +87,6 @@ export const TabsInner = ({
     tabs,
     selected,
     disabled,
-    disabledTooltipMessage,
     onSaveNewViewModal,
     onSetStateToEditingColumns,
     onSelect,
@@ -266,24 +261,17 @@ export const TabsInner = ({
   );
 
   const disclosureButton = (
-    <DisabledTooltipWrapper
-      disabled={{
-        isDisabled: disabled,
-        tooltipMessage: disabledTooltipMessage,
-      }}
+    <UnstyledButton
+      type="button"
+      className={disclosureButtonClassName}
+      onClick={handleDisclosureActivatorClick}
+      aria-label={
+        disclosureText ?? i18n.translate('Polaris.Tabs.toggleTabsLabel')
+      }
+      disabled={disabled}
     >
-      <UnstyledButton
-        type="button"
-        className={disclosureButtonClassName}
-        onClick={handleDisclosureActivatorClick}
-        aria-label={
-          disclosureText ?? i18n.translate('Polaris.Tabs.toggleTabsLabel')
-        }
-        disabled={disabled}
-      >
-        {disclosureButtonContent}
-      </UnstyledButton>
-    </DisabledTooltipWrapper>
+      {disclosureButtonContent}
+    </UnstyledButton>
   );
 
   const activator = disclosureButton;
@@ -351,7 +339,13 @@ export const TabsInner = ({
 
   return (
     <div>
-      <Box padding="2">
+      <Box
+        padding="2"
+        background="surface"
+        borderBlockEnd="divider"
+        borderRadiusStartEnd="2"
+        borderRadiusStartStart="2"
+      >
         {tabMeasurer}
         <div className={wrapperClassNames}>
           <ul
@@ -391,14 +385,7 @@ export const TabsInner = ({
                 viewNames={viewNames}
                 activator={
                   disabled ? (
-                    <DisabledTooltipWrapper
-                      disabled={{
-                        isDisabled: disabled,
-                        tooltipMessage: disabledTooltipMessage,
-                      }}
-                    >
-                      {newTab}
-                    </DisabledTooltipWrapper>
+                    newTab
                   ) : (
                     <Tooltip
                       content={i18n.translate('Polaris.Tabs.newViewTooltip')}

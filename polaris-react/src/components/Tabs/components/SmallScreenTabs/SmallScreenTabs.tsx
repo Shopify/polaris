@@ -5,7 +5,6 @@ import {PlusMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {Icon} from '../../../Icon';
 import type {useI18n} from '../../../../utilities/i18n';
-import {DisabledTooltipWrapper} from '../../../DisabledTooltipWrapper';
 import {useTabsMethods} from '../../hooks';
 import type {TabsProps} from '../../Tabs';
 import {Tab} from '../Tab';
@@ -29,7 +28,6 @@ export const SmallScreenTabs = ({
   onSaveNewViewModal,
   onSetStateToEditingColumns,
   onSelect,
-  disabledTooltipMessage,
   fitted,
 }: CombinedProps) => {
   const {
@@ -164,38 +162,31 @@ export const SmallScreenTabs = ({
                 onPrimaryAction={handleSaveNewViewModal}
                 viewNames={viewNames}
                 activator={
-                  <DisabledTooltipWrapper
-                    disabled={{
-                      isDisabled: disabled,
-                      tooltipMessage: disabledTooltipMessage,
-                    }}
-                  >
-                    <Tab
-                      id={CREATE_NEW_VIEW_ID}
-                      content={createViewA11yLabel}
-                      permissions={[]}
-                      isActive={false}
-                      onAction={handleClickNewTab}
-                      onFocus={() => {
-                        if (modalSubmitted) {
-                          setState({
-                            tabToFocus: selected,
-                            modalSubmitted: false,
-                          });
-                        }
-                      }}
-                      icon={
-                        <Icon
-                          source={PlusMinor}
-                          accessibilityLabel={createViewA11yLabel}
-                        />
+                  <Tab
+                    id={CREATE_NEW_VIEW_ID}
+                    content={createViewA11yLabel}
+                    permissions={[]}
+                    isActive={false}
+                    onAction={handleClickNewTab}
+                    onFocus={() => {
+                      if (modalSubmitted) {
+                        setState({
+                          tabToFocus: selected,
+                          modalSubmitted: false,
+                        });
                       }
-                      disabled={disabled}
-                      onToggleModal={handleToggleModal}
-                      onTogglePopover={handleTogglePopover}
-                      tabIndexOverride={0}
-                    />
-                  </DisabledTooltipWrapper>
+                    }}
+                    icon={
+                      <Icon
+                        source={PlusMinor}
+                        accessibilityLabel={createViewA11yLabel}
+                      />
+                    }
+                    disabled={disabled}
+                    onToggleModal={handleToggleModal}
+                    onTogglePopover={handleTogglePopover}
+                    tabIndexOverride={0}
+                  />
                 }
               />
             </div>
