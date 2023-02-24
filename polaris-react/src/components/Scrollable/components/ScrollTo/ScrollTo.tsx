@@ -3,7 +3,7 @@ import React, {useContext, useEffect, useRef} from 'react';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {ScrollableContext} from '../../context';
 
-export interface ScrollToProps extends React.HTMLProps<HTMLAnchorElement>  {
+export interface ScrollToProps extends React.HTMLProps<HTMLAnchorElement> {
   scrollKey?: string;
 }
 
