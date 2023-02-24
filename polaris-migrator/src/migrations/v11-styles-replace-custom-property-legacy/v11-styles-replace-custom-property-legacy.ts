@@ -1,3 +1,4 @@
+/* eslint-disable line-comment-position */
 import type {FileInfo, API} from 'jscodeshift';
 
 import stylesReplaceCustomProperty from '../styles-replace-custom-property/styles-replace-custom-property';
