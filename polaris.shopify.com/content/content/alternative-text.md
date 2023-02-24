@@ -135,11 +135,11 @@ Images with more complexity need more logic in the code. For example, groups of 
 <Stack id=”star_id”>3 of 5 stars</Stack>
 ```
 
-[Find further guidance on complex images here](https://www.w3.org/WAI/tutorials/images/complex/)
+For more guidance, visit the W3C page on [complex images](https://www.w3.org/WAI/tutorials/images/complex/).
 
 ### Situations that don’t need alt text
 
-Websites can sometimes be noisy for a screen reader user. While alt text is vital for an equal experience, the briefer you are, the happier your screen reader users will be. Avoid repetition and unnecessary announcements by `setting alt=””` in the scenarios that don’t need it.
+Websites can sometimes be noisy for a screen reader user. While alt text is vital for an equal experience, the briefer you are, the happier your screen reader users will be. Avoid repetition and unnecessary announcements by setting `alt=””` in the scenarios that don’t need it.
 
 #### Progress bars
 
@@ -219,7 +219,7 @@ When accounting for SEO in your alt text:
 ## Resources
 
 For more information on coding and alt text standards, visit the
-[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/intro/wcag.php) or [WebAIM Alternative Text Guidelines] (https://webaim.org/techniques/alttext/).
+[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/intro/wcag.php) or [WebAIM Alternative Text Guidelines](https://webaim.org/techniques/alttext/).
 
 ## Related components
 
