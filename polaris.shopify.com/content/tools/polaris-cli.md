@@ -37,7 +37,7 @@ shopify polaris migrate <migration> <path>
 The following is a complete CLI command example using `npm`:
 
 ```
-npm run shopify polaris migrate react-replace-text-component '/src/components/**/*.tsx'
+npm run shopify polaris migrate v10-react-replace-text-components 'src/components/**/*.tsx'
 ```
 
 See the [Shopify CLI command syntax](https://shopify.dev/apps/tools/cli/commands#command-syntax) section for how to execute commands using other package managers.
