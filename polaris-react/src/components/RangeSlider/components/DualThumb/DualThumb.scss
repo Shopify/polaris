@@ -36,7 +36,7 @@ $range-wrapper: 28px;
 .Track {
   // stylelint-disable -- Polaris component custom properties
   --pc-dual-thumb-unselected-range: transparent;
-  --pc-dual-thumb-selected-range: var(--p-interactive);
+  --pc-dual-thumb-selected-range: var(--p-color-bg-interactive);
   --pc-dual-thumb-gradient-colors: var(--pc-dual-thumb-unselected-range) 0%,
     var(--pc-dual-thumb-unselected-range) var(--pc-range-slider-progress-lower),
     var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-lower),

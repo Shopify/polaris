@@ -61,7 +61,7 @@
 
 .Input {
   // stylelint-disable -- Polaris component custom properties
-  --pc-single-thumb-progress-lower: var(--p-interactive);
+  --pc-single-thumb-progress-lower: var(--p-color-bg-interactive);
   --pc-single-thumb-progress-upper: transparent;
   // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
   // into something kinda supported by older browsers. Unfortunately its

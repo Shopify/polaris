@@ -49,7 +49,7 @@
 .colorPrimary {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-strong);
-  --pc-progress-bar-indicator: var(--p-action-primary);
+  --pc-progress-bar-indicator: var(--p-color-bg-primary);
   // stylelint-enable
 }
 
@@ -63,7 +63,7 @@
 .colorCritical {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-strong);
-  --pc-progress-bar-indicator: var(--p-interactive-critical);
+  --pc-progress-bar-indicator: var(--p-color-bg-interactive-critical);
   // stylelint-enable
 }
 
