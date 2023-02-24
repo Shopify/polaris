@@ -9,7 +9,7 @@ const replacementMaps = {
     '--p-icon-size-small': '0.5rem',
     '--p-icon-size-medium': '1.25rem',
     '--p-choice-margin': '--p-space-025',
-    '--p-control-border-width': '--p-border-radius-05',
+    '--p-control-border-width': '--p-border-width-2',
     '--p-banner-border-default':
       'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-strong), inset 0 0 0 (--p-border-width-1) var(--p-color-border-strong)',
     '--p-banner-border-success':
