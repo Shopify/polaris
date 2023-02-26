@@ -1,0 +1,1766 @@
+{
+  "Modal": {
+    "total": {
+      "renders": 1307,
+      "properties": 24,
+      "variants": 82
+    },
+    "properties": {
+      "title": 589,
+      "open": 582,
+      "secondaryActions": 506,
+      "onClose": 585,
+      "src": 2,
+      "onIFrameLoad": 1,
+      "primaryAction": 490,
+      "limitHeight": 12,
+      "activator": 177,
+      "sectioned": 86,
+      "large": 14,
+      "loading": 51,
+      "footer": 37,
+      "flush": 18,
+      "noScroll": 11,
+      "onTransitionEnd": 3,
+      "instant": 8,
+      "onScrolledToBottom": 15,
+      "subdued": 15,
+      "testID": 1,
+      "titleHidden": 8,
+      "small": 3,
+      "key": 13,
+      "fullScreen": 2
+    }
+  },
+  "AppProvider": {
+    "total": {
+      "renders": 7,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "i18n": 7
+    }
+  },
+  "Page": {
+    "total": {
+      "renders": 392,
+      "properties": 14,
+      "variants": 75
+    },
+    "properties": {
+      "narrowWidth": 41,
+      "title": 333,
+      "breadcrumbs": 229,
+      "fullWidth": 63,
+      "primaryAction": 75,
+      "divider": 105,
+      "secondaryActions": 63,
+      "titleMetadata": 28,
+      "subtitle": 30,
+      "compactTitle": 2,
+      "actionGroups": 16,
+      "key": 1,
+      "additionalMetadata": 6,
+      "pagination": 10
+    }
+  },
+  "Card": {
+    "total": {
+      "renders": 2884,
+      "properties": 14,
+      "variants": 55
+    },
+    "properties": {
+      "title": 703,
+      "flush": 65,
+      "actions": 86,
+      "subdued": 183,
+      "sectioned": 443,
+      "hideOnPrint": 11,
+      "key": 65,
+      "primaryFooterAction": 31,
+      "secondaryFooterActions": 28,
+      "fullWidth": 17,
+      "data-test-unassignable-info": 2,
+      "data-test-transfer-in-progress": 1,
+      "footerActionAlignment": 21,
+      "data-spec": 1
+    }
+  },
+  "Stack": {
+    "total": {
+      "renders": 4482,
+      "properties": 9,
+      "variants": 46
+    },
+    "properties": {
+      "vertical": 2061,
+      "distribution": 790,
+      "alignment": 919,
+      "spacing": 1757,
+      "wrap": 414,
+      "fill": 627,
+      "key": 52,
+      "testID": 1,
+      "aria-live": 1
+    }
+  },
+  "Button": {
+    "total": {
+      "renders": 1502,
+      "properties": 35,
+      "variants": 338
+    },
+    "properties": {
+      "children": 2000,
+      "onClick": 1280,
+      "disabled": 400,
+      "primary": 291,
+      "loading": 182,
+      "plain": 631,
+      "icon": 297,
+      "accessibilityLabel": 250,
+      "ariaExpanded": 30,
+      "ariaControls": 39,
+      "size": 138,
+      "disclosure": 92,
+      "fullWidth": 132,
+      "textAlign": 27,
+      "outline": 37,
+      "url": 199,
+      "monochrome": 45,
+      "removeUnderline": 22,
+      "pressed": 15,
+      "id": 89,
+      "testID": 15,
+      "onBlur": 2,
+      "destructive": 50,
+      "external": 34,
+      "submit": 24,
+      "aria-label": 2,
+      "key": 29,
+      "ariaDescribedBy": 4,
+      "onMouseEnter": 7,
+      "onTouchStart": 7,
+      "data-spec": 5,
+      "aria-controls": 1,
+      "aria-expanded": 1,
+      "onFocus": 3,
+      "role": 2,
+      "connectedDisclosure": 1
+    }
+  },
+  "TextContainer": {
+    "total": {
+      "renders": 1180,
+      "properties": 2,
+      "variants": 3
+    },
+    "properties": {
+      "spacing": 325,
+      "key": 11
+    }
+  },
+  "Spinner": {
+    "total": {
+      "renders": 281,
+      "properties": 4,
+      "variants": 5
+    },
+    "properties": {
+      "accessibilityLabel": 78,
+      "size": 191,
+      "key": 1,
+      "aria-label": 1
+    }
+  },
+  "TextStyle": {
+    "total": {
+      "renders": 2982,
+      "properties": 4,
+      "variants": 6
+    },
+    "properties": {
+      "variation": 2725,
+      "key": 41,
+      "data-spec": 4,
+      "testID": 10
+    }
+  },
+  "Link": {
+    "total": {
+      "renders": 1448,
+      "properties": 11,
+      "variants": 52
+    },
+    "properties": {
+      "url": 1302,
+      "external": 541,
+      "monochrome": 74,
+      "removeUnderline": 212,
+      "onClick": 263,
+      "accessibilityLabel": 41,
+      "key": 24,
+      "id": 28,
+      "testID": 1,
+      "dataPrimaryLink": 3,
+      "aria-controls": 1
+    }
+  },
+  "TestProvider": {
+    "total": {
+      "renders": 2,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "i18n": 2
+    }
+  },
+  "Image": {
+    "total": {
+      "renders": 244,
+      "properties": 14,
+      "variants": 23
+    },
+    "properties": {
+      "alt": 239,
+      "source": 239,
+      "className": 107,
+      "draggable": 4,
+      "width": 31,
+      "height": 29,
+      "onLoad": 4,
+      "style": 9,
+      "role": 20,
+      "aria-hidden": 1,
+      "key": 4,
+      "onError": 1,
+      "data-spec": 1,
+      "id": 1
+    }
+  },
+  "DisplayText": {
+    "total": {
+      "renders": 246,
+      "properties": 2,
+      "variants": 3
+    },
+    "properties": {
+      "size": 222,
+      "element": 92
+    }
+  },
+  "Loading": {
+    "total": {
+      "renders": 141,
+      "properties": 0,
+      "variants": 0
+    },
+    "properties": {}
+  },
+  "KeypressListener": {
+    "total": {
+      "renders": 38,
+      "properties": 5,
+      "variants": 5
+    },
+    "properties": {
+      "keyCode": 38,
+      "handler": 38,
+      "keyEvent": 8,
+      "useCapture": 3,
+      "testID": 1
+    }
+  },
+  "EventListener": {
+    "total": {
+      "renders": 86,
+      "properties": 4,
+      "variants": 3
+    },
+    "properties": {
+      "event": 86,
+      "handler": 86,
+      "passive": 1,
+      "capture": 7
+    }
+  },
+  "Provider": {
+    "total": {
+      "renders": 3,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "i18n": 3,
+      "linkComponent": 2
+    }
+  },
+  "EmptyState": {
+    "total": {
+      "renders": 79,
+      "properties": 8,
+      "variants": 13
+    },
+    "properties": {
+      "heading": 78,
+      "image": 79,
+      "action": 58,
+      "fullWidth": 24,
+      "footerContent": 5,
+      "secondaryAction": 10,
+      "largeImage": 1,
+      "imageContained": 1
+    }
+  },
+  "Collapsible": {
+    "total": {
+      "renders": 97,
+      "properties": 6,
+      "variants": 9
+    },
+    "properties": {
+      "id": 97,
+      "open": 97,
+      "preventMeasuringOnChildrenUpdate": 9,
+      "transition": 30,
+      "expandOnPrint": 19,
+      "key": 1
+    }
+  },
+  "SkeletonBodyText": {
+    "total": {
+      "renders": 644,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "lines": 506,
+      "key": 7
+    }
+  },
+  "FormLayout": {
+    "total": {
+      "renders": 366,
+      "properties": 4,
+      "variants": 4
+    },
+    "properties": {
+      "condensed": 12,
+      "title": 5,
+      "testID": 2,
+      "key": 1
+    }
+  },
+  "InlineError": {
+    "total": {
+      "renders": 60,
+      "properties": 3,
+      "variants": 2
+    },
+    "properties": {
+      "message": 60,
+      "fieldID": 60,
+      "key": 5
+    }
+  },
+  "Select": {
+    "total": {
+      "renders": 284,
+      "properties": 17,
+      "variants": 81
+    },
+    "properties": {
+      "key": 13,
+      "label": 277,
+      "labelHidden": 88,
+      "name": 25,
+      "options": 282,
+      "onChange": 240,
+      "value": 230,
+      "placeholder": 61,
+      "disabled": 74,
+      "error": 25,
+      "helpText": 47,
+      "onBlur": 6,
+      "id": 29,
+      "labelInline": 9,
+      "labelAction": 2,
+      "requiredIndicator": 2,
+      "data-spec": 2
+    }
+  },
+  "Autocomplete": {
+    "total": {
+      "renders": 52,
+      "properties": 32,
+      "variants": 35
+    },
+    "properties": {
+      "key": 4,
+      "willLoadMoreResults": 6,
+      "selected": 26,
+      "onSelect": 26,
+      "options": 26,
+      "loading": 15,
+      "textField": 26,
+      "autoComplete": 25,
+      "role": 2,
+      "label": 24,
+      "labelHidden": 12,
+      "placeholder": 17,
+      "name": 4,
+      "value": 22,
+      "onChange": 26,
+      "disabled": 6,
+      "error": 6,
+      "helpText": 2,
+      "prefix": 13,
+      "onBlur": 9,
+      "preferredPosition": 3,
+      "emptyState": 10,
+      "onLoadMoreResults": 2,
+      "focused": 1,
+      "id": 1,
+      "onFocus": 1,
+      "listTitle": 1,
+      "allowMultiple": 1,
+      "suffix": 1,
+      "clearButton": 1,
+      "onClearButtonClick": 1,
+      "autoFocus": 2
+    }
+  },
+  "TextField": {
+    "total": {
+      "renders": 674,
+      "properties": 48,
+      "variants": 354
+    },
+    "properties": {
+      "autoComplete": 659,
+      "key": 13,
+      "label": 650,
+      "labelHidden": 194,
+      "placeholder": 200,
+      "name": 39,
+      "value": 378,
+      "onChange": 381,
+      "disabled": 121,
+      "error": 164,
+      "helpText": 118,
+      "align": 10,
+      "selectTextOnFocus": 5,
+      "type": 173,
+      "multiline": 60,
+      "testID": 16,
+      "id": 60,
+      "connectedRight": 28,
+      "prefix": 84,
+      "suffix": 55,
+      "onFocus": 29,
+      "maxLength": 103,
+      "showCharacterCount": 47,
+      "ariaControls": 5,
+      "role": 4,
+      "onBlur": 64,
+      "verticalContent": 1,
+      "inputMode": 21,
+      "clearButton": 25,
+      "onClearButtonClick": 24,
+      "ariaActiveDescendant": 3,
+      "ariaOwns": 2,
+      "focused": 18,
+      "autoFocus": 15,
+      "ariaAutocomplete": 4,
+      "connectedLeft": 7,
+      "readOnly": 15,
+      "labelAction": 4,
+      "min": 44,
+      "max": 17,
+      "step": 16,
+      "requiredIndicator": 7,
+      "minLength": 6,
+      "spellCheck": 4,
+      "monospaced": 3,
+      "pattern": 3,
+      "ariaExpanded": 2,
+      "maxHeight": 1
+    }
+  },
+  "Popover": {
+    "total": {
+      "renders": 402,
+      "properties": 22,
+      "variants": 70
+    },
+    "properties": {
+      "active": 236,
+      "activator": 236,
+      "onClose": 236,
+      "autofocusTarget": 65,
+      "preferredAlignment": 108,
+      "preferInputActivator": 13,
+      "ref": 2,
+      "fullWidth": 28,
+      "fullHeight": 24,
+      "preferredPosition": 37,
+      "ariaHaspopup": 12,
+      "sectioned": 31,
+      "activatorWrapper": 1,
+      "fixed": 41,
+      "onScrolledToBottom": 5,
+      "preventFocusOnClose": 13,
+      "hideOnPrint": 5,
+      "testID": 3,
+      "fluidContent": 22,
+      "key": 2,
+      "zIndexOverride": 5,
+      "preventCloseOnChildOverlayClick": 1
+    }
+  },
+  "Banner": {
+    "total": {
+      "renders": 843,
+      "properties": 9,
+      "variants": 40
+    },
+    "properties": {
+      "status": 778,
+      "onDismiss": 133,
+      "title": 354,
+      "action": 93,
+      "secondaryAction": 26,
+      "ref": 7,
+      "icon": 21,
+      "key": 16,
+      "testID": 2
+    }
+  },
+  "Toast": {
+    "total": {
+      "renders": 64,
+      "properties": 5,
+      "variants": 6
+    },
+    "properties": {
+      "content": 62,
+      "error": 38,
+      "onDismiss": 63,
+      "duration": 13,
+      "action": 2
+    }
+  },
+  "ActionList": {
+    "total": {
+      "renders": 124,
+      "properties": 5,
+      "variants": 9
+    },
+    "properties": {
+      "items": 108,
+      "sections": 16,
+      "onActionAnyItem": 19,
+      "actionRole": 31,
+      "testID": 2
+    }
+  },
+  "Text": {
+    "total": {
+      "renders": 87,
+      "properties": 5,
+      "variants": 6
+    },
+    "properties": {
+      "as": 87,
+      "variant": 87,
+      "fontWeight": 28,
+      "color": 27,
+      "truncate": 6
+    }
+  },
+  "UnstyledLink": {
+    "total": {
+      "renders": 62,
+      "properties": 23,
+      "variants": 26
+    },
+    "properties": {
+      "url": 45,
+      "className": 43,
+      "external": 10,
+      "onClick": 31,
+      "onKeyDown": 1,
+      "tabIndex": 4,
+      "onMouseEnter": 2,
+      "aria-label": 10,
+      "aria-describedby": 2,
+      "onFocus": 1,
+      "onBlur": 1,
+      "title": 1,
+      "aria-current": 2,
+      "key": 1,
+      "role": 4,
+      "aria-selected": 3,
+      "data-primary-link": 4,
+      "accessibilityLabel": 1,
+      "disabled": 2,
+      "onKeyPress": 1,
+      "id": 2,
+      "aria-controls": 2,
+      "onMouseUp": 1
+    }
+  },
+  "ResourceItem": {
+    "total": {
+      "renders": 54,
+      "properties": 11,
+      "variants": 24
+    },
+    "properties": {
+      "id": 53,
+      "onClick": 30,
+      "accessibilityLabel": 17,
+      "verticalAlignment": 12,
+      "url": 23,
+      "media": 11,
+      "dataHref": 1,
+      "key": 10,
+      "name": 6,
+      "shortcutActions": 2,
+      "sortOrder": 1
+    }
+  },
+  "Checkbox": {
+    "total": {
+      "renders": 329,
+      "properties": 14,
+      "variants": 50
+    },
+    "properties": {
+      "label": 327,
+      "labelHidden": 22,
+      "checked": 274,
+      "disabled": 140,
+      "key": 8,
+      "onChange": 274,
+      "helpText": 54,
+      "testID": 4,
+      "value": 5,
+      "error": 12,
+      "id": 55,
+      "name": 20,
+      "ariaControls": 1,
+      "data-focusable": 2
+    }
+  },
+  "Thumbnail": {
+    "total": {
+      "renders": 38,
+      "properties": 4,
+      "variants": 4
+    },
+    "properties": {
+      "source": 37,
+      "alt": 37,
+      "size": 31,
+      "transparent": 1
+    }
+  },
+  "Subheading": {
+    "total": {
+      "renders": 415,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "element": 20,
+      "testID": 1
+    }
+  },
+  "Scrollable": {
+    "total": {
+      "renders": 43,
+      "properties": 8,
+      "variants": 15
+    },
+    "properties": {
+      "shadow": 20,
+      "className": 27,
+      "onScrolledToBottom": 7,
+      "style": 3,
+      "hint": 2,
+      "focusable": 2,
+      "vertical": 4,
+      "id": 1
+    }
+  },
+  "ResourceList": {
+    "total": {
+      "renders": 109,
+      "properties": 33,
+      "variants": 49
+    },
+    "properties": {
+      "key": 3,
+      "items": 76,
+      "selectedItems": 9,
+      "onSelectionChange": 9,
+      "showHeader": 7,
+      "selectable": 5,
+      "renderItem": 76,
+      "onClick": 20,
+      "resourceName": 44,
+      "loading": 35,
+      "hasMoreItems": 5,
+      "isFiltered": 5,
+      "totalItemsCount": 5,
+      "sortValue": 8,
+      "sortOptions": 8,
+      "onSortChange": 8,
+      "bulkActions": 3,
+      "promotedBulkActions": 4,
+      "filterControl": 18,
+      "id": 32,
+      "url": 17,
+      "accessibilityLabel": 21,
+      "shortcutActions": 5,
+      "emptyState": 10,
+      "media": 10,
+      "emptySearchState": 7,
+      "external": 1,
+      "dataHref": 1,
+      "persistActions": 3,
+      "idForItem": 1,
+      "verticalAlignment": 1,
+      "resolveItemId": 3,
+      "alternateTool": 1
+    }
+  },
+  "Truncate": {
+    "total": {
+      "renders": 24,
+      "properties": 0,
+      "variants": 0
+    },
+    "properties": {}
+  },
+  "Icon": {
+    "total": {
+      "renders": 1001,
+      "properties": 7,
+      "variants": 12
+    },
+    "properties": {
+      "source": 991,
+      "color": 753,
+      "aria-label": 4,
+      "accessibilityLabel": 47,
+      "aria-hidden": 7,
+      "key": 1,
+      "backdrop": 27
+    }
+  },
+  "List": {
+    "total": {
+      "renders": 570,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "key": 115,
+      "type": 105
+    }
+  },
+  "Heading": {
+    "total": {
+      "renders": 520,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "element": 125,
+      "id": 1
+    }
+  },
+  "Layout": {
+    "total": {
+      "renders": 1306,
+      "properties": 8,
+      "variants": 11
+    },
+    "properties": {
+      "sectioned": 23,
+      "title": 47,
+      "key": 11,
+      "fullWidth": 62,
+      "secondary": 97,
+      "description": 30,
+      "oneHalf": 15,
+      "oneThird": 9
+    }
+  },
+  "Form": {
+    "total": {
+      "renders": 161,
+      "properties": 4,
+      "variants": 8
+    },
+    "properties": {
+      "onSubmit": 161,
+      "implicitSubmit": 14,
+      "preventDefault": 8,
+      "autoComplete": 13
+    }
+  },
+  "VisuallyHidden": {
+    "total": {
+      "renders": 90,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "key": 2
+    }
+  },
+  "Tooltip": {
+    "total": {
+      "renders": 167,
+      "properties": 8,
+      "variants": 13
+    },
+    "properties": {
+      "content": 165,
+      "dismissOnMouseOut": 24,
+      "preferredPosition": 35,
+      "active": 4,
+      "activatorWrapper": 4,
+      "accessibilityLabel": 13,
+      "key": 3,
+      "onOpen": 1
+    }
+  },
+  "ChoiceList": {
+    "total": {
+      "renders": 198,
+      "properties": 11,
+      "variants": 22
+    },
+    "properties": {
+      "title": 194,
+      "titleHidden": 116,
+      "choices": 194,
+      "selected": 193,
+      "onChange": 194,
+      "testID": 2,
+      "disabled": 23,
+      "allowMultiple": 51,
+      "name": 32,
+      "error": 4,
+      "key": 1
+    }
+  },
+  "OptionList": {
+    "total": {
+      "renders": 29,
+      "properties": 8,
+      "variants": 8
+    },
+    "properties": {
+      "options": 23,
+      "onChange": 29,
+      "selected": 29,
+      "allowMultiple": 14,
+      "title": 3,
+      "verticalAlign": 1,
+      "sections": 5,
+      "role": 1
+    }
+  },
+  "Badge": {
+    "total": {
+      "renders": 288,
+      "properties": 6,
+      "variants": 11
+    },
+    "properties": {
+      "status": 184,
+      "size": 39,
+      "progress": 18,
+      "key": 6,
+      "statusAndProgressLabelOverride": 2,
+      "icon": 1
+    }
+  },
+  "HSBPicker": {
+    "total": {
+      "renders": 1,
+      "properties": 2,
+      "variants": 1
+    },
+    "properties": {
+      "color": 1,
+      "onChange": 1
+    }
+  },
+  "ColorPicker": {
+    "total": {
+      "renders": 7,
+      "properties": 3,
+      "variants": 2
+    },
+    "properties": {
+      "color": 7,
+      "onChange": 7,
+      "fullWidth": 1
+    }
+  },
+  "Sticky": {
+    "total": {
+      "renders": 12,
+      "properties": 3,
+      "variants": 3
+    },
+    "properties": {
+      "boundingElement": 2,
+      "disableWhenStacked": 3,
+      "offset": 2
+    }
+  },
+  "ContextualSaveBar": {
+    "total": {
+      "renders": 19,
+      "properties": 6,
+      "variants": 5
+    },
+    "properties": {
+      "alignContentFlush": 1,
+      "message": 16,
+      "saveAction": 19,
+      "discardAction": 18,
+      "secondaryMenu": 1,
+      "fullWidth": 4
+    }
+  },
+  "ButtonGroup": {
+    "total": {
+      "renders": 117,
+      "properties": 6,
+      "variants": 8
+    },
+    "properties": {
+      "segmented": 24,
+      "fullWidth": 11,
+      "spacing": 7,
+      "testID": 1,
+      "connectedTop": 1,
+      "key": 1
+    }
+  },
+  "DatePicker": {
+    "total": {
+      "renders": 3,
+      "properties": 10,
+      "variants": 2
+    },
+    "properties": {
+      "weekStartsOn": 1,
+      "allowRange": 2,
+      "month": 2,
+      "year": 2,
+      "onChange": 2,
+      "onMonthChange": 2,
+      "selected": 2,
+      "multiMonth": 2,
+      "disableDatesAfter": 2,
+      "disableDatesBefore": 2
+    }
+  },
+  "IndexTable": {
+    "total": {
+      "renders": 152,
+      "properties": 32,
+      "variants": 37
+    },
+    "properties": {
+      "id": 24,
+      "key": 12,
+      "position": 24,
+      "resourceName": 22,
+      "itemCount": 27,
+      "headings": 27,
+      "selectable": 6,
+      "condensed": 20,
+      "selectedItemsCount": 23,
+      "onSelectionChange": 19,
+      "hasMoreItems": 16,
+      "loading": 20,
+      "bulkActions": 14,
+      "promotedBulkActions": 11,
+      "emptyState": 14,
+      "sort": 8,
+      "selected": 19,
+      "subdued": 4,
+      "onNavigation": 10,
+      "flush": 6,
+      "paginatedSelectAllActionText": 2,
+      "sortable": 1,
+      "defaultSortDirection": 1,
+      "sortColumnIndex": 1,
+      "sortDirection": 1,
+      "onSort": 1,
+      "sortToggleLabels": 1,
+      "className": 36,
+      "onClick": 2,
+      "lastColumnSticky": 1,
+      "disabled": 1,
+      "status": 1
+    }
+  },
+  "CalloutCard": {
+    "total": {
+      "renders": 13,
+      "properties": 5,
+      "variants": 5
+    },
+    "properties": {
+      "onDismiss": 4,
+      "title": 12,
+      "illustration": 12,
+      "primaryAction": 12,
+      "secondaryAction": 3
+    }
+  },
+  "Portal": {
+    "total": {
+      "renders": 35,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "idPrefix": 26
+    }
+  },
+  "Backdrop": {
+    "total": {
+      "renders": 10,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "onClick": 3,
+      "transparent": 1
+    }
+  },
+  "UnstyledButton": {
+    "total": {
+      "renders": 58,
+      "properties": 21,
+      "variants": 29
+    },
+    "properties": {
+      "className": 55,
+      "disabled": 19,
+      "accessibilityLabel": 21,
+      "onClick": 51,
+      "type": 2,
+      "aria-controls": 2,
+      "aria-expanded": 2,
+      "aria-label": 5,
+      "ariaControls": 7,
+      "ariaExpanded": 10,
+      "url": 5,
+      "onFocus": 1,
+      "size": 1,
+      "external": 1,
+      "key": 4,
+      "pressed": 3,
+      "style": 1,
+      "role": 2,
+      "id": 1,
+      "title": 1,
+      "dataPrimaryLink": 1
+    }
+  },
+  "Tag": {
+    "total": {
+      "renders": 18,
+      "properties": 6,
+      "variants": 7
+    },
+    "properties": {
+      "key": 10,
+      "onRemove": 14,
+      "disabled": 6,
+      "onClick": 1,
+      "accessibilityLabel": 1,
+      "url": 1
+    }
+  },
+  "DescriptionList": {
+    "total": {
+      "renders": 26,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "spacing": 5,
+      "items": 26
+    }
+  },
+  "TrapFocus": {
+    "total": {
+      "renders": 14,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "trapping": 4
+    }
+  },
+  "Focus": {
+    "total": {
+      "renders": 8,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "root": 8,
+      "disabled": 1
+    }
+  },
+  "EmptySearchResult": {
+    "total": {
+      "renders": 33,
+      "properties": 3,
+      "variants": 3
+    },
+    "properties": {
+      "withIllustration": 33,
+      "title": 31,
+      "description": 23
+    }
+  },
+  "Filters": {
+    "total": {
+      "renders": 30,
+      "properties": 12,
+      "variants": 11
+    },
+    "properties": {
+      "queryPlaceholder": 20,
+      "queryValue": 27,
+      "onQueryChange": 28,
+      "onQueryClear": 28,
+      "onClearAll": 30,
+      "filters": 30,
+      "appliedFilters": 17,
+      "disabled": 3,
+      "disableQueryField": 1,
+      "helpText": 3,
+      "hideQueryField": 1,
+      "focused": 1
+    }
+  },
+  "Caption": {
+    "total": {
+      "renders": 94,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "key": 1
+    }
+  },
+  "FooterHelp": {
+    "total": {
+      "renders": 80,
+      "properties": 0,
+      "variants": 0
+    },
+    "properties": {}
+  },
+  "Listbox": {
+    "total": {
+      "renders": 113,
+      "properties": 13,
+      "variants": 26
+    },
+    "properties": {
+      "key": 30,
+      "accessibilityLabel": 22,
+      "value": 52,
+      "onSelect": 22,
+      "customListId": 2,
+      "onActiveOptionChange": 2,
+      "enableKeyboardControl": 10,
+      "selected": 13,
+      "divider": 10,
+      "title": 1,
+      "icon": 8,
+      "disabled": 17,
+      "autoSelection": 2
+    }
+  },
+  "Tabs": {
+    "total": {
+      "renders": 49,
+      "properties": 5,
+      "variants": 5
+    },
+    "properties": {
+      "fitted": 8,
+      "tabs": 48,
+      "onSelect": 45,
+      "selected": 48,
+      "disclosureText": 2
+    }
+  },
+  "ScrollLock": {
+    "total": {
+      "renders": 6,
+      "properties": 0,
+      "variants": 0
+    },
+    "properties": {}
+  },
+  "Table": {
+    "total": {
+      "renders": 1,
+      "properties": 3,
+      "variants": 1
+    },
+    "properties": {
+      "columnContentTypes": 1,
+      "headings": 1,
+      "rows": 1
+    }
+  },
+  "Labelled": {
+    "total": {
+      "renders": 11,
+      "properties": 6,
+      "variants": 7
+    },
+    "properties": {
+      "id": 11,
+      "label": 8,
+      "labelHidden": 4,
+      "key": 2,
+      "helpText": 2,
+      "requiredIndicator": 1
+    }
+  },
+  "SkeletonDisplayText": {
+    "total": {
+      "renders": 228,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "size": 183
+    }
+  },
+  "SkeletonPage": {
+    "total": {
+      "renders": 87,
+      "properties": 5,
+      "variants": 16
+    },
+    "properties": {
+      "primaryAction": 36,
+      "narrowWidth": 10,
+      "fullWidth": 13,
+      "breadcrumbs": 25,
+      "title": 28
+    }
+  },
+  "SkeletonThumbnail": {
+    "total": {
+      "renders": 52,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "size": 50,
+      "key": 1
+    }
+  },
+  "PageActions": {
+    "total": {
+      "renders": 67,
+      "properties": 2,
+      "variants": 3
+    },
+    "properties": {
+      "primaryAction": 46,
+      "secondaryActions": 41
+    }
+  },
+  "Combobox": {
+    "total": {
+      "renders": 24,
+      "properties": 19,
+      "variants": 15
+    },
+    "properties": {
+      "label": 12,
+      "labelHidden": 11,
+      "disabled": 6,
+      "onChange": 10,
+      "value": 10,
+      "placeholder": 12,
+      "autoComplete": 12,
+      "labelAction": 1,
+      "allowMultiple": 4,
+      "activator": 12,
+      "onScrolledToBottom": 8,
+      "preferredPosition": 4,
+      "willLoadMoreOptions": 7,
+      "prefix": 11,
+      "helpText": 1,
+      "onBlur": 2,
+      "onFocus": 3,
+      "error": 1,
+      "type": 1
+    }
+  },
+  "Avatar": {
+    "total": {
+      "renders": 41,
+      "properties": 8,
+      "variants": 20
+    },
+    "properties": {
+      "initials": 23,
+      "source": 22,
+      "size": 27,
+      "name": 26,
+      "accessibilityLabel": 7,
+      "customer": 14,
+      "shape": 4,
+      "onError": 1
+    }
+  },
+  "Pagination": {
+    "total": {
+      "renders": 100,
+      "properties": 11,
+      "variants": 10
+    },
+    "properties": {
+      "hasNext": 82,
+      "hasPrevious": 82,
+      "onNext": 81,
+      "onPrevious": 81,
+      "nextKeys": 17,
+      "nextTooltip": 16,
+      "previousKeys": 17,
+      "previousTooltip": 16,
+      "label": 5,
+      "accessibilityLabel": 2,
+      "accessibilityLabels": 1
+    }
+  },
+  "VideoThumbnail": {
+    "total": {
+      "renders": 6,
+      "properties": 6,
+      "variants": 3
+    },
+    "properties": {
+      "videoLength": 6,
+      "thumbnailUrl": 6,
+      "onClick": 6,
+      "onBeforeStartPlaying": 1,
+      "videoProgress": 2,
+      "showVideoProgress": 2
+    }
+  },
+  "Frame": {
+    "total": {
+      "renders": 11,
+      "properties": 7,
+      "variants": 6
+    },
+    "properties": {
+      "logo": 3,
+      "navigation": 7,
+      "topBar": 7,
+      "showMobileNavigation": 4,
+      "onNavigationDismiss": 4,
+      "offset": 2,
+      "globalRibbon": 1
+    }
+  },
+  "Navigation": {
+    "total": {
+      "renders": 17,
+      "properties": 23,
+      "variants": 8
+    },
+    "properties": {
+      "location": 6,
+      "items": 10,
+      "title": 2,
+      "separator": 1,
+      "key": 1,
+      "onDismiss": 1,
+      "contextControl": 1,
+      "logoSuffix": 1,
+      "fill": 1,
+      "url": 1,
+      "label": 1,
+      "disabled": 1,
+      "icon": 1,
+      "shouldResizeIcon": 1,
+      "matchPaths": 1,
+      "excludePaths": 1,
+      "exactMatch": 1,
+      "subNavigationItems": 1,
+      "expanded": 1,
+      "selected": 1,
+      "onClick": 1,
+      "onToggleExpandedState": 1,
+      "badge": 1
+    }
+  },
+  "TopBar": {
+    "total": {
+      "renders": 15,
+      "properties": 25,
+      "variants": 13
+    },
+    "properties": {
+      "actions": 6,
+      "name": 5,
+      "detail": 4,
+      "initials": 5,
+      "open": 6,
+      "onToggle": 5,
+      "onChange": 1,
+      "value": 1,
+      "placeholder": 1,
+      "showFocusBorder": 1,
+      "activatorContent": 1,
+      "onOpen": 1,
+      "onClose": 1,
+      "showNavigationToggle": 5,
+      "userMenu": 6,
+      "secondaryMenu": 2,
+      "searchResultsVisible": 1,
+      "searchField": 3,
+      "searchResults": 1,
+      "onSearchResultsDismiss": 1,
+      "onNavigationToggle": 5,
+      "contextControl": 4,
+      "avatar": 4,
+      "message": 1,
+      "logoSuffix": 1
+    }
+  },
+  "DropZone": {
+    "total": {
+      "renders": 55,
+      "properties": 23,
+      "variants": 28
+    },
+    "properties": {
+      "accept": 20,
+      "onDrop": 11,
+      "allowMultiple": 16,
+      "outline": 6,
+      "variableHeight": 4,
+      "type": 13,
+      "disabled": 10,
+      "onClick": 6,
+      "actionHint": 3,
+      "actionTitle": 5,
+      "customValidator": 11,
+      "onDragOver": 1,
+      "onDropAccepted": 15,
+      "onDropRejected": 11,
+      "dropOnPage": 8,
+      "onFileDialogClose": 11,
+      "openFileDialog": 11,
+      "overlayText": 1,
+      "errorOverlayText": 4,
+      "label": 1,
+      "onDragEnter": 1,
+      "onDragLeave": 2,
+      "key": 1
+    }
+  },
+  "Grid": {
+    "total": {
+      "renders": 42,
+      "properties": 5,
+      "variants": 6
+    },
+    "properties": {
+      "columns": 12,
+      "areas": 8,
+      "area": 17,
+      "gap": 4,
+      "columnSpan": 12
+    }
+  },
+  "RadioButton": {
+    "total": {
+      "renders": 114,
+      "properties": 12,
+      "variants": 26
+    },
+    "properties": {
+      "id": 85,
+      "name": 73,
+      "label": 114,
+      "onChange": 109,
+      "checked": 112,
+      "helpText": 44,
+      "labelHidden": 6,
+      "testID": 3,
+      "disabled": 23,
+      "key": 11,
+      "value": 9,
+      "ariaDescribedBy": 1
+    }
+  },
+  "Breadcrumbs": {
+    "total": {
+      "renders": 3,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "breadcrumbs": 3
+    }
+  },
+  "ProgressBar": {
+    "total": {
+      "renders": 11,
+      "properties": 3,
+      "variants": 3
+    },
+    "properties": {
+      "size": 8,
+      "progress": 11,
+      "color": 2
+    }
+  },
+  "KeyboardKey": {
+    "total": {
+      "renders": 17,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "key": 2
+    }
+  },
+  "MediaCard": {
+    "total": {
+      "renders": 9,
+      "properties": 7,
+      "variants": 7
+    },
+    "properties": {
+      "title": 9,
+      "primaryAction": 8,
+      "description": 9,
+      "popoverActions": 2,
+      "portrait": 5,
+      "size": 5,
+      "secondaryAction": 3
+    }
+  },
+  "SettingToggle": {
+    "total": {
+      "renders": 5,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "action": 5
+    }
+  },
+  "Sheet": {
+    "total": {
+      "renders": 8,
+      "properties": 4,
+      "variants": 2
+    },
+    "properties": {
+      "accessibilityLabel": 8,
+      "open": 8,
+      "onClose": 8,
+      "activator": 1
+    }
+  },
+  "ExceptionList": {
+    "total": {
+      "renders": 23,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "items": 23
+    }
+  },
+  "PEmptyState": {
+    "total": {
+      "renders": 1,
+      "properties": 3,
+      "variants": 1
+    },
+    "properties": {
+      "heading": 1,
+      "image": 1,
+      "action": 1
+    }
+  },
+  "DataTable": {
+    "total": {
+      "renders": 65,
+      "properties": 21,
+      "variants": 26
+    },
+    "properties": {
+      "headings": 62,
+      "rows": 63,
+      "columnContentTypes": 63,
+      "sortable": 8,
+      "onSort": 6,
+      "increasedTableDensity": 11,
+      "hasFixedFirstColumn": 7,
+      "initialSortColumnIndex": 4,
+      "totals": 8,
+      "totalsName": 4,
+      "defaultSortDirection": 3,
+      "footerContent": 8,
+      "hasZebraStripingOnData": 4,
+      "stickyHeader": 5,
+      "truncate": 2,
+      "showTotalsInFooter": 3,
+      "hideScrollIndicator": 16,
+      "hoverable": 20,
+      "firstColumnMinWidth": 1,
+      "verticalAlign": 6,
+      "fixedFirstColumns": 1
+    }
+  },
+  "Box": {
+    "total": {
+      "renders": 3,
+      "properties": 9,
+      "variants": 3
+    },
+    "properties": {
+      "background": 3,
+      "paddingTop": 1,
+      "paddingBottom": 1,
+      "paddingLeft": 1,
+      "paddingRight": 1,
+      "borderTop": 1,
+      "borderRadius": 2,
+      "shadow": 2,
+      "padding": 1
+    }
+  },
+  "Inline": {
+    "total": {
+      "renders": 1,
+      "properties": 2,
+      "variants": 1
+    },
+    "properties": {
+      "alignY": 1,
+      "spacing": 1
+    }
+  },
+  "AlphaStack": {
+    "total": {
+      "renders": 2,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "spacing": 2
+    }
+  },
+  "Label": {
+    "total": {
+      "renders": 7,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "id": 7
+    }
+  },
+  "ActionMenu": {
+    "total": {
+      "renders": 3,
+      "properties": 2,
+      "variants": 2
+    },
+    "properties": {
+      "actions": 2,
+      "groups": 1
+    }
+  },
+  "RangeSlider": {
+    "total": {
+      "renders": 5,
+      "properties": 10,
+      "variants": 5
+    },
+    "properties": {
+      "min": 4,
+      "max": 4,
+      "value": 5,
+      "label": 5,
+      "onChange": 5,
+      "suffix": 2,
+      "output": 4,
+      "labelHidden": 1,
+      "step": 3,
+      "id": 1
+    }
+  },
+  "ResouceList": {
+    "total": {
+      "renders": 1,
+      "properties": 3,
+      "variants": 1
+    },
+    "properties": {
+      "filterControl": 1,
+      "items": 1,
+      "renderItem": 1
+    }
+  },
+  "IconImage": {
+    "total": {
+      "renders": 1,
+      "properties": 2,
+      "variants": 1
+    },
+    "properties": {
+      "source": 1,
+      "alt": 1
+    }
+  },
+  "WithinContentContext": {
+    "total": {
+      "renders": 1,
+      "properties": 1,
+      "variants": 1
+    },
+    "properties": {
+      "value": 1
+    }
+  }
+}
