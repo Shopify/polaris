@@ -8,8 +8,6 @@ import {
 } from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
 import type {Width, Padding, BorderRadius} from '../../Tooltip';
-import {Text} from '../../../Text';
-import {Inline} from '../../../Inline';
 
 import styles from './TooltipOverlay.scss';
 
@@ -27,7 +25,6 @@ export interface TooltipOverlayProps {
   zIndexOverride?: number;
   onClose(): void;
   instant?: boolean;
-  keyboardShortcut?: string;
 }
 
 export function TooltipOverlay({
@@ -43,7 +40,6 @@ export function TooltipOverlay({
   borderRadius,
   zIndexOverride,
   instant,
-  keyboardShortcut,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const markup = active ? (
@@ -103,14 +99,7 @@ export function TooltipOverlay({
               : undefined
           }
         >
-          <Inline gap="2">
-            {children}
-            {keyboardShortcut ? (
-              <Text as="span" variant="bodyMd" color="subdued">
-                {keyboardShortcut}
-              </Text>
-            ) : null}
-          </Inline>
+          {children}
         </div>
       </div>
     );

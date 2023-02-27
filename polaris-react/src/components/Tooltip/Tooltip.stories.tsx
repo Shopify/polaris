@@ -234,48 +234,36 @@ export function ActivatorAsDiv() {
   );
 }
 
-export function WithKeyboardShortcuts() {
+export function WithSuffix() {
   return (
     <Box padding="16">
       <Stack>
         <ButtonGroup segmented fullWidth>
-          <Tooltip content="Bold" keyboardShortcut="⌘B" activatorWrapper="div">
+          <Tooltip content="Bold" suffix="⌘B" activatorWrapper="div">
             <Button>B</Button>
           </Tooltip>
-          <Tooltip content="Italic" keyboardShortcut="⌘I">
+          <Tooltip content="Italic" suffix="⌘I">
             <Button>I</Button>
           </Tooltip>
-          <Tooltip content="Underline" keyboardShortcut="⌘U">
+          <Tooltip content="Underline" suffix="⌘U">
             <Button>U</Button>
           </Tooltip>
-          <Tooltip content="Strikethrough" keyboardShortcut="⌘S">
+          <Tooltip content="Strikethrough" suffix="⌘S">
             <Button>S</Button>
           </Tooltip>
-          <Tooltip
-            content="Bold"
-            preferredPosition="above"
-            keyboardShortcut="⌘B"
-          >
+          <Tooltip content="Bold" preferredPosition="above" suffix="⌘B">
             <Button>B</Button>
           </Tooltip>
-          <Tooltip
-            content="Italic"
-            preferredPosition="above"
-            keyboardShortcut="⌘U"
-          >
+          <Tooltip content="Italic" preferredPosition="above" suffix="⌘U">
             <Button>I</Button>
           </Tooltip>
-          <Tooltip
-            content="Underline"
-            preferredPosition="above"
-            keyboardShortcut="⌘U"
-          >
+          <Tooltip content="Underline" preferredPosition="above" suffix="⌘U">
             <Button>U</Button>
           </Tooltip>
           <Tooltip
             content="Strikethrough"
             preferredPosition="above"
-            keyboardShortcut="⌘S"
+            suffix="⌘S"
           >
             <Button>S</Button>
           </Tooltip>
@@ -290,34 +278,22 @@ export function Alignment() {
     <Box padding="0">
       <Stack>
         <ButtonGroup segmented fullWidth>
-          <Tooltip
-            content="Content is longer than the activator"
-            keyboardShortcut="⌘B"
-          >
+          <Tooltip content="Content is longer than the activator" suffix="⌘B">
             <Button>Bold</Button>
           </Tooltip>
-          <Tooltip content="Italic" keyboardShortcut="⌘I">
+          <Tooltip content="Italic" suffix="⌘I">
             <Button>Italic</Button>
           </Tooltip>
-          <Tooltip content="Underline" keyboardShortcut="⌘U">
+          <Tooltip content="Underline" suffix="⌘U">
             <Button>Activator is longer than the Tooltip</Button>
           </Tooltip>
-          <Tooltip
-            content="Content is longer than the activator"
-            keyboardShortcut="⌘S"
-          >
+          <Tooltip content="Content is longer than the activator" suffix="⌘S">
             <Button>Strikethrough</Button>
           </Tooltip>
-          <Tooltip
-            content="Content is longer than the activator"
-            keyboardShortcut="⌘S"
-          >
+          <Tooltip content="Content is longer than the activator" suffix="⌘S">
             <Button>Strikethrough</Button>
           </Tooltip>
-          <Tooltip
-            content="Content is longer than the activator"
-            keyboardShortcut="⌘S"
-          >
+          <Tooltip content="Content is longer than the activator" suffix="⌘S">
             <Button>Strikethrough</Button>
           </Tooltip>
         </ButtonGroup>

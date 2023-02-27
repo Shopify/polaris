@@ -10,6 +10,8 @@ import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
+import {Inline} from '../Inline';
+import {Text} from '../Text';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
@@ -66,8 +68,8 @@ export interface TooltipProps {
   onOpen?(): void;
   /* Callback fired when the tooltip is dismissed */
   onClose?(): void;
-  /** Used for Tooltips displaying information regarding a keyboard shortcut */
-  keyboardShortcut?: string;
+  /** Subdued text rendered after the tooltip content */
+  suffix?: string;
 }
 
 const HOVER_OUT_TIMEOUT = 150;
@@ -89,7 +91,7 @@ export function Tooltip({
   persistOnClick,
   onOpen,
   onClose,
-  keyboardShortcut,
+  suffix,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
   const {
@@ -112,8 +114,6 @@ export function Tooltip({
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
-
-  // console.log('presence', presenceList.tooltip);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
@@ -178,9 +178,15 @@ export function Tooltip({
         borderRadius={borderRadius}
         zIndexOverride={zIndexOverride}
         instant={!shouldAnimate}
-        keyboardShortcut={keyboardShortcut}
       >
-        {content}
+        <Inline gap="2">
+          {content}
+          {suffix ? (
+            <Text as="span" variant="bodyMd" color="subdued">
+              {suffix}
+            </Text>
+          ) : null}
+        </Inline>
       </TooltipOverlay>
     </Portal>
   ) : null;

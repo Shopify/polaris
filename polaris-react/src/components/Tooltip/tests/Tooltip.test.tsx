@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Link} from '../../Link';
 import {Tooltip} from '../Tooltip';
+import {Text} from '../../Text';
 import {TooltipOverlay} from '../components';
 
 describe('<Tooltip />', () => {
@@ -406,22 +407,6 @@ describe('<Tooltip />', () => {
     });
   });
 
-  describe('keyboard shortcut"', () => {
-    it('passes the keyboard shortcut prop down to the TooltipOverlay', () => {
-      const keyboardShortcut = '#B';
-      const tooltip = mountWithApp(
-        <Tooltip content="Inner content" keyboardShortcut={keyboardShortcut}>
-          <Link>link content</Link>
-        </Tooltip>,
-      );
-
-      findWrapperComponent(tooltip)!.trigger('onMouseOver');
-      expect(tooltip).toContainReactComponent(TooltipOverlay, {
-        keyboardShortcut,
-      });
-    });
-  });
-
   it('will not pass the instant prop when no tooltip is currently present', () => {
     const tooltip = mountWithApp(
       <Tooltip content="Inner content">
@@ -497,6 +482,22 @@ describe('<Tooltip />', () => {
       expect(tooltip).toContainReactComponent(TooltipOverlay, {
         instant: true,
       });
+    });
+  });
+
+  it('adds a suffix if present', () => {
+    const tooltip = mountWithApp(
+      <Tooltip content="Content" suffix="#B">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+    expect(tooltip).toContainReactComponent(Text, {
+      as: 'span',
+      variant: 'bodyMd',
+      color: 'subdued',
     });
   });
 });
