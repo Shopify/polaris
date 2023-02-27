@@ -11,7 +11,6 @@ export interface SearchFilterButtonProps {
   onClick: () => void;
   'aria-label': string;
   disabled?: boolean;
-  disabledTooltipMessage?: string;
   tooltipContent: string;
 }
 
@@ -19,7 +18,6 @@ export function SearchFilterButton({
   onClick,
   'aria-label': ariaLabel,
   disabled,
-  disabledTooltipMessage,
   tooltipContent,
 }: SearchFilterButtonProps) {
   const activator = (
@@ -27,7 +25,6 @@ export function SearchFilterButton({
       onClick={onClick}
       aria-label={ariaLabel}
       disabled={disabled}
-      disabledTooltipMessage={disabledTooltipMessage}
       hasDoubleWidthIcon
     >
       <Stack spacing="none">

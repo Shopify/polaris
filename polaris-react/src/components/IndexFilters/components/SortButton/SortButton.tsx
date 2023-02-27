@@ -24,7 +24,6 @@ export interface SortButtonProps {
   selected: ChoiceListProps['selected'];
   onChange: (selected: string[]) => void;
   disabled?: boolean;
-  disabledTooltipMessage?: string;
   onChangeKey?: (key: string) => void;
   onChangeDirection?: (direction: string) => void;
 }
@@ -34,7 +33,6 @@ export function SortButton({
   selected,
   onChange,
   disabled,
-  disabledTooltipMessage,
   onChangeKey,
   onChangeDirection,
 }: SortButtonProps) {
@@ -103,7 +101,6 @@ export function SortButton({
         onClick={handleClick}
         aria-label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
         disabled={disabled}
-        disabledTooltipMessage={disabledTooltipMessage}
       >
         <Stack spacing="none">
           <Icon source={SortMinor} color="base" />
