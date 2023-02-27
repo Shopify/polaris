@@ -20,8 +20,8 @@
       var(--p-color-border-critical-subdued),
     inset 0 0 0 (--p-border-width-1) var(--p-color-border-critical-subdued);
   border: var(--p-border-base);
-  margin: 0.125rem;
-  margin: -0.25rem;
+  margin: var(--p-space-05);
+  margin-left: calc(-1 * var(--p-space-1));
   padding: calc(-1 * var(--p-space-025));
   width: 1rem;
   width: 1.5rem;

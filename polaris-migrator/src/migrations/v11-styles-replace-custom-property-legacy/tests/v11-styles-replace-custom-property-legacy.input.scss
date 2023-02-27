@@ -12,7 +12,7 @@
   box-shadow: var(--p-banner-border-critical);
   border: var(--p-thin-border-subdued);
   margin: var(--p-text-field-spinner-offset);
-  margin: var(--p-text-field-focus-ring-offset);
+  margin-left: var(--p-text-field-focus-ring-offset);
   padding: var(--p-button-group-item-spacing);
   width: var(--p-range-slider-thumb-size-base);
   width: var(--p-range-slider-thumb-size-active);
