@@ -111,7 +111,7 @@ export function Tooltip({
   const id = useUniqueId('TooltipContent');
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
-  const [shouldAnimate, setShouldAnimate] = useState(true);
+  const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -140,10 +140,10 @@ export function Tooltip({
   }, []);
 
   const handleOpen = useCallback(() => {
-    setShouldAnimate(!presenceList.tooltip);
+    setShouldAnimate(!presenceList.tooltip && !active);
     onOpen?.();
     addPresence('tooltip');
-  }, [addPresence, presenceList.tooltip, onOpen]);
+  }, [addPresence, presenceList.tooltip, onOpen, active]);
 
   const handleClose = useCallback(() => {
     onClose?.();
