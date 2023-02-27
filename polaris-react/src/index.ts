@@ -206,7 +206,11 @@ export type {IconProps} from './components/Icon';
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
-export {IndexFilters} from './components/IndexFilters';
+export {
+  IndexFilters,
+  useSetIndexFiltersMode,
+  IndexFiltersMode,
+} from './components/IndexFilters';
 export type {IndexFiltersProps} from './components/IndexFilters';
 
 export {IndexTable} from './components/IndexTable';
@@ -380,7 +384,7 @@ export {Subheading} from './components/Subheading';
 export type {SubheadingProps} from './components/Subheading';
 
 export {Tabs} from './components/Tabs';
-export type {TabsProps} from './components/Tabs';
+export type {TabsProps, TabProps} from './components/Tabs';
 
 export {Tag} from './components/Tag';
 export type {TagProps} from './components/Tag';

@@ -38,8 +38,6 @@ export interface TabsProps {
   onSelect?: (selectedTabIndex: number) => void;
   /** Whether to show the add new view Tab. */
   showNewTab?: boolean;
-  /** Callback automatically added by the IndexFilters */
-  onSetStateToEditingColumns?: () => void;
   /** Label for the new view Tab. Will override the default of "Create new view" */
   newViewAccessibilityLabel?: string;
   /** Optional callback invoked when a merchant saves a new view from the Modal */
@@ -65,7 +63,6 @@ export const TabsInner = ({
   showNewTab,
   disabled,
   onSaveNewViewModal,
-  onSetStateToEditingColumns,
   onSelect,
   fitted,
   disclosureText,
@@ -88,7 +85,6 @@ export const TabsInner = ({
     selected,
     disabled,
     onSaveNewViewModal,
-    onSetStateToEditingColumns,
     onSelect,
   });
   const {

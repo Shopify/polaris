@@ -59,8 +59,8 @@ export interface IndexFiltersProps
   disabled?: boolean;
   /** If true, the sticky interaction on smaller devices will be disabled */
   disableStickyMode?: boolean;
-  /** If the consumer of this component is the Shopify mobile app in-app browser */
-  isMobileClient?: boolean;
+  /** If the component should go flush to the top of the page when sticking */
+  isFlushWhenSticky?: boolean;
   /** Whether the index supports creating new views */
   canCreateNewView?: boolean;
   /** Callback invoked when a merchant creates a new view */
@@ -92,7 +92,7 @@ export function IndexFilters({
   mode,
   setMode,
   disableStickyMode,
-  isMobileClient = false,
+  isFlushWhenSticky = false,
   canCreateNewView = true,
   onCreateNewView,
 }: IndexFiltersProps) {
@@ -116,7 +116,7 @@ export function IndexFilters({
   });
 
   const {intersectionRef, measurerRef, indexFilteringHeight, isSticky} =
-    useIsSticky(mode, Boolean(disableStickyMode), isMobileClient);
+    useIsSticky(mode, Boolean(disableStickyMode), isFlushWhenSticky);
 
   const viewNames = tabs.map(({content}) => content);
 
@@ -214,11 +214,6 @@ export function IndexFilters({
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
 
   const topContent = useMemo(() => {
-    function setStateToEditingColumns() {
-      beginEdit();
-      setMode(IndexFiltersMode.EditingColumns);
-    }
-
     function handleClickFilterButton() {
       beginEdit();
     }
@@ -259,7 +254,6 @@ export function IndexFilters({
                   disabled={Boolean(
                     mode !== IndexFiltersMode.Default || disabled,
                   )}
-                  onSetStateToEditingColumns={setStateToEditingColumns}
                   showNewTab={canCreateNewView}
                   onSaveNewViewModal={onCreateNewView}
                 />
@@ -295,7 +289,6 @@ export function IndexFilters({
   }, [
     mode,
     beginEdit,
-    setMode,
     mdDown,
     loading,
     disabled,
@@ -336,7 +329,7 @@ export function IndexFilters({
         className={classNames(
           styles.IndexFilters,
           isSticky && styles.IndexFiltersSticky,
-          isSticky && isMobileClient && styles.IndexFiltersStickyMobile,
+          isSticky && isFlushWhenSticky && styles.IndexFiltersStickyFlush,
         )}
         ref={measurerRef}
       >

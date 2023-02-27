@@ -29,7 +29,6 @@ export function useTabsMethods({
   selected,
   disabled,
   onSaveNewViewModal,
-  onSetStateToEditingColumns,
   onSelect,
 }: TabsProps) {
   const [state, setState] = useReducer(
@@ -165,7 +164,6 @@ export function useTabsMethods({
           onToggleModal={handleToggleModal}
           onTogglePopover={handleTogglePopover}
           viewNames={viewNames}
-          onSetStateToEditingColumns={onSetStateToEditingColumns}
           onConfirmDuplicateView={handleDuplicate}
           onConfirmDeleteView={handleDelete}
           onSaveRenameViewModal={handleRename}
@@ -177,7 +175,6 @@ export function useTabsMethods({
       handleTabClick,
       tabs,
       children,
-      onSetStateToEditingColumns,
       selected,
       tabToFocus,
       handleToggleModal,

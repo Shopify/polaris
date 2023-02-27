@@ -49,6 +49,7 @@ export function Tab({
   onClickDuplicateView,
   onConfirmDuplicateView,
   onClickEditView,
+  onClickEditColumns,
   onClickDeleteView,
   onConfirmDeleteView,
   siblingTabHasFocus,
@@ -58,8 +59,6 @@ export function Tab({
   onToggleModal,
   onTogglePopover,
   viewNames,
-  onSetStateToEditingColumns,
-  onSetStateToFiltering,
   tabIndexOverride,
   onFocus,
 }: TabProps) {
@@ -254,7 +253,6 @@ export function Tab({
           icon: EditMinor,
           onAction: () => {
             onClickEditView?.(id);
-            onSetStateToFiltering?.();
             togglePopoverActive();
           },
           ...additionalOptions,
@@ -264,8 +262,7 @@ export function Tab({
           content: i18n.translate('Polaris.Tabs.Tab.editColumns'),
           icon: Columns3Minor,
           onAction: () => {
-            onClickEditView?.(id);
-            onSetStateToEditingColumns?.();
+            onClickEditColumns?.(id);
             togglePopoverActive();
           },
           ...additionalOptions,

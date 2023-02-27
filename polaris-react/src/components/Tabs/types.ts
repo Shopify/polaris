@@ -55,17 +55,19 @@ export interface TabProps {
   /** A list of permissions which map to actions that a merchant can take with this  */
   permissions?: TabOptionsList;
   /** Optional callback invoked when a Tab with the 'rename' permission has that ActionList item clicked */
-  onClickRenameView?(id: string): void;
+  onClickRenameView?(id?: string): void;
   /** Optional callback invoked when the RenameViewModal has been saved */
   onSaveRenameViewModal?(value: string, id: string): Promise<void | boolean>;
   /** Optional callback invoked when a Tab with the 'duplicate' permission has that ActionList item clicked */
-  onClickDuplicateView?(id: string): Promise<void | boolean>;
+  onClickDuplicateView?(id?: string): Promise<void | boolean>;
   /** Optional callback invoked when the duplicate view modal is saved */
   onConfirmDuplicateView?(value: string): Promise<void | boolean>;
   /** Optional callback invoked when a Tab with the 'edit' permission has that ActionList item clicked */
-  onClickEditView?(id: string): void;
+  onClickEditView?(id?: string): void;
+  /** Optional callback invoked when a Tab with the 'edit-columns' permission has that ActionList item clicked */
+  onClickEditColumns?(id?: string): void;
   /** Optional callback invoked when a Tab with the 'delete' permission has that ActionList item clicked */
-  onClickDeleteView?(id: string): void;
+  onClickDeleteView?(id?: string): void;
   /** Optional callback invoked when a view is to be deleted. */
   onConfirmDeleteView?(id: string): Promise<void | boolean>;
   /** Optional array that has a list of names of currently existing views. Used to check if a view name is unique. */
@@ -82,10 +84,6 @@ export interface TabProps {
   onToggleModal: (value: boolean) => void;
   /** Overrides the tabIndex calculated by the Tabs component */
   tabIndexOverride?: 0 | -1;
-  /** Callback to toggle the IndexFilters mode to EditingColumns */
-  onSetStateToEditingColumns?: () => void;
-  /** Callback to toggle the IndexFilters mode to Filtering */
-  onSetStateToFiltering?: () => void;
   /** Ooptional callback invoked when the Tabs component is focused */
   onFocus?(): void;
   /** Boolean to determine whether we want to show the focus ring */

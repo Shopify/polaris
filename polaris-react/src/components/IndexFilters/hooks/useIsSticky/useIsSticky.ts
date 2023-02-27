@@ -9,14 +9,14 @@ const DEBOUNCE_PERIOD = 250;
 export function useIsSticky(
   mode: IndexFiltersMode,
   disabled: boolean,
-  isMobileClient: boolean,
+  isFlushWhenSticky: boolean,
 ) {
   const hasIOSupport =
     typeof window !== 'undefined' && Boolean(window.IntersectionObserver);
 
   const options = {
     root: null,
-    rootMargin: `${isMobileClient ? '0px' : '-56px'} 0px 0px 0px`,
+    rootMargin: `${isFlushWhenSticky ? '0px' : '-56px'} 0px 0px 0px`,
     threshold: 0,
   };
 

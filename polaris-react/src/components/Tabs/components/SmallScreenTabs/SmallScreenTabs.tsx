@@ -26,7 +26,6 @@ export const SmallScreenTabs = ({
   showNewTab,
   disabled,
   onSaveNewViewModal,
-  onSetStateToEditingColumns,
   onSelect,
   fitted,
 }: CombinedProps) => {
@@ -47,7 +46,6 @@ export const SmallScreenTabs = ({
     selected,
     disabled,
     onSaveNewViewModal,
-    onSetStateToEditingColumns,
     onSelect,
   });
 
