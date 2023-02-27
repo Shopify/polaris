@@ -137,7 +137,9 @@ export function Filters({
           className={styles.AddFilter}
           onClick={handleAddFilterClick}
           aria-label={i18n.translate('Polaris.Filters.addFilter')}
-          disabled={disabled || additionalFilters.length === 0}
+          disabled={
+            disabled || additionalFilters.length === 0 || disableFilters
+          }
         >
           <span>{i18n.translate('Polaris.Filters.addFilter')}</span>
           <PlusMinor />

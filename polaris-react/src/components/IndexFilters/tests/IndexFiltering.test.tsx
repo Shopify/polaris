@@ -117,9 +117,7 @@ describe('IndexFilters', () => {
   });
 
   it('overrides and disables tabs even if the current mode is Default', () => {
-    const wrapper = mountWithApp(
-      <IndexFilters {...defaultProps} disableTabs />,
-    );
+    const wrapper = mountWithApp(<IndexFilters {...defaultProps} disabled />);
 
     expect(wrapper).toContainReactComponent(Tabs, {
       disabled: true,
@@ -270,36 +268,33 @@ describe('IndexFilters', () => {
         },
       ];
 
-      const disableFilters = true;
-
       const wrapper = mountWithApp(
         <IndexFilters
           {...defaultProps}
           filters={filters}
           mode={IndexFiltersMode.Filtering}
-          disableFilters={disableFilters}
+          disabled
         />,
       );
 
       expect(wrapper).toContainReactComponent(Filters, {
         filters,
-        disableFilters,
+        disableFilters: true,
+        disableQueryField: true,
       });
     });
 
     it('renders UpdateButtons with the disabled props when filtering', () => {
-      const disableFiltering = true;
-
       const wrapper = mountWithApp(
         <IndexFilters
           {...defaultProps}
           mode={IndexFiltersMode.Filtering}
-          disableFilters={disableFiltering}
+          disabled
         />,
       );
 
       expect(wrapper).toContainReactComponent(UpdateButtons, {
-        disabled: disableFiltering,
+        disabled: true,
       });
     });
   });

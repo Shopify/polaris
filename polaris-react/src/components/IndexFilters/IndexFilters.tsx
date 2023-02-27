@@ -30,7 +30,10 @@ const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
 type ExecutedCallback = (name: string) => Promise<boolean>;
 
 export interface IndexFiltersProps
-  extends Omit<FiltersProps, 'focused' | 'children'>,
+  extends Omit<
+      FiltersProps,
+      'focused' | 'children' | 'disableQueryField' | 'disableFilters'
+    >,
     Pick<TabsProps, 'tabs' | 'onSelect' | 'selected'> {
   /** The available sorting choices. If not present, the sort button will not show */
   sortOptions?: SortButtonChoice[];
@@ -48,18 +51,14 @@ export interface IndexFiltersProps
   cancelAction: IndexFiltersCancelAction;
   /** Optional callback invoked when a merchant begins to edit a view */
   onStartEditing?: () => void;
-  /** Whether to disable the Sort button */
-  disableSort?: boolean;
-  /** Whether to disable the filters */
-  disableFilters?: boolean;
   /** The current mode of the IndexFilters component. Used to determine which view to show */
   mode: IndexFiltersMode;
   /** Callback to set the mode of the IndexFilters component */
   setMode: (mode: IndexFiltersMode) => void;
+  /** Will disable all the elements within the IndexFilters component */
+  disabled?: boolean;
   /** If true, the sticky interaction on smaller devices will be disabled */
   disableStickyMode?: boolean;
-  /** If true, the tabs will be disabled */
-  disableTabs?: boolean;
   /** If the consumer of this component is the Shopify mobile app in-app browser */
   isMobileClient?: boolean;
   /** Whether the index supports creating new views */
@@ -79,7 +78,6 @@ export function IndexFilters({
   sortSelected,
   queryValue = '',
   queryPlaceholder,
-  disableQueryField,
   primaryAction,
   cancelAction,
   filters,
@@ -89,13 +87,11 @@ export function IndexFilters({
   onQueryFocus,
   onQueryClear,
   onStartEditing,
-  disableFilters,
-  disableSort,
+  disabled,
   loading,
   mode,
   setMode,
   disableStickyMode,
-  disableTabs,
   isMobileClient = false,
   canCreateNewView = true,
   onCreateNewView,
@@ -186,18 +182,10 @@ export function IndexFilters({
         primaryAction={enhancedPrimaryAction}
         cancelAction={enhancedCancelAction}
         viewNames={viewNames}
-        disabled={
-          mode === IndexFiltersMode.Filtering ? disableFilters : undefined
-        }
+        disabled={disabled}
       />
     ),
-    [
-      disableFilters,
-      enhancedPrimaryAction,
-      enhancedCancelAction,
-      mode,
-      viewNames,
-    ],
+    [enhancedPrimaryAction, enhancedCancelAction, disabled, viewNames],
   );
 
   const sortMarkup = useMemo(() => {
@@ -211,7 +199,7 @@ export function IndexFilters({
         onChange={handleChangeSortButton}
         onChangeKey={onSortChangeKey}
         onChangeDirection={onSortChangeDirection}
-        disabled={disableSort}
+        disabled={disabled}
       />
     );
   }, [
@@ -220,7 +208,7 @@ export function IndexFilters({
     onSortChangeKey,
     sortOptions,
     sortSelected,
-    disableSort,
+    disabled,
   ]);
 
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
@@ -269,7 +257,7 @@ export function IndexFilters({
                   selected={selected}
                   onSelect={onSelect}
                   disabled={Boolean(
-                    mode !== IndexFiltersMode.Default || disableTabs,
+                    mode !== IndexFiltersMode.Default || disabled,
                   )}
                   onSetStateToEditingColumns={setStateToEditingColumns}
                   showNewTab={canCreateNewView}
@@ -290,7 +278,7 @@ export function IndexFilters({
                     onClick={handleClickFilterButton}
                     aria-label={searchFilterAriaLabel}
                     tooltipContent={searchFilterTooltip}
-                    disabled={disableFilters}
+                    disabled={disabled}
                   />
                   {sortMarkup}
                 </>
@@ -310,9 +298,8 @@ export function IndexFilters({
     setMode,
     mdDown,
     loading,
-    disableTabs,
+    disabled,
     tabs,
-    disableFilters,
     sortMarkup,
     i18n,
     onSelect,
@@ -365,8 +352,8 @@ export function IndexFilters({
               filters={filters}
               appliedFilters={appliedFilters}
               onClearAll={onClearAll}
-              disableFilters={disableFilters}
-              disableQueryField={disableQueryField}
+              disableFilters={disabled}
+              disableQueryField={disabled}
               loading={loading || isActionLoading}
               focused
             >
