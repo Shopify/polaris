@@ -290,7 +290,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         paddingInlineEnd={{xs: '4', sm: '5'}}
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <Columns columns={{xs: '1fr auto'}} gap="0">
+        <Columns columns={{xs: '1fr auto'}}>
           <Columns
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
             gap="5"
