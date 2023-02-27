@@ -1,5 +1,16 @@
 # Changelog
 
+## 8.0.0
+
+### Major Changes
+
+- [#8467](https://github.com/Shopify/polaris/pull/8467) [`9ab93132a`](https://github.com/Shopify/polaris/commit/9ab93132a3e5f0c7c603184fb03ba452f9bc0a64) Thanks [@chloerice](https://github.com/chloerice)! - Configured `selector-disallowed-list` to disallow Polaris component class name overrides
+
+### Patch Changes
+
+- Updated dependencies [[`0e9fa8433`](https://github.com/Shopify/polaris/commit/0e9fa843397a9ec1d1a7eee70d0178d76dd231f8), [`b1768f037`](https://github.com/Shopify/polaris/commit/b1768f03795f224e760edc405dc5bfde298061cb)]:
+  - @shopify/polaris-tokens@6.6.1
+
 ## 7.0.0
 
 ### Major Changes
