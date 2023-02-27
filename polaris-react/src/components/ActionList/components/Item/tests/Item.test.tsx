@@ -22,6 +22,16 @@ describe('<Item />', () => {
     expect(mockOnAction).toHaveBeenCalledTimes(1);
   });
 
+
+  
+  it('calls onMouseEnter when the mouse enters button', () => {
+      const onMouseEnterSpy = jest.fn();
+      const button = mountWithApp(<Item onMouseEnter={onMouseEnterSpy} />);
+      button.find('button')!.trigger('onMouseEnter');
+      expect(onMouseEnterSpy).toHaveBeenCalledTimes(1);
+  });
+  
+
   it('passes the external prop down to the link', () => {
     const item = mountWithApp(<Item external url="https://www.shopify.com" />);
     expect(item).toContainReactComponent(UnstyledLink, {
