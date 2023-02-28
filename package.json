@@ -41,8 +41,7 @@
     "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",
     "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1",
     "new-migration": "yarn workspace @shopify/polaris-migrator generate",
-    "postinstall": "patch-package",
-    "convert-json-to-md": "ts-node -O '{\"lib\":[\"es2015\"],\"types\":[\"node\"]}' scripts/convert-json-to-md.ts"
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -68,7 +67,6 @@
     "@size-limit/preset-small-lib": "^5.0.3",
     "@types/jest": "^27.5.1",
     "downlevel-dts": "^0.6.0",
-    "endent": "^2.1.0",
     "eslint": "^8.3.0",
     "execa": "^5.0.0",
     "jest": "^27.5.1",
