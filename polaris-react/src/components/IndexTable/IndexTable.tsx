@@ -46,6 +46,11 @@ import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
 
 interface IndexTableHeadingBase {
+  /**
+   * Adjust horizontal alignment of header content.
+   * @default 'start'
+   */
+  alignment?: 'start' | 'center' | 'end';
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
@@ -775,8 +780,11 @@ function IndexTableBase({
     const isSecond = index === 0;
     const isLast = index === headings.length - 1;
     const hasSortable = sortable?.some((value) => value === true);
+    const headingAlignment = heading.alignment || 'start';
     const headingContentClassName = classNames(
       styles.TableHeading,
+      headingAlignment === 'center' && styles['TableHeading-align-center'],
+      headingAlignment === 'end' && styles['TableHeading-align-end'],
       hasSortable && styles['TableHeading-sortable'],
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
@@ -884,6 +892,7 @@ function IndexTableBase({
     } else {
       headingContent = heading.title;
     }
+
     if (sortable?.[index]) {
       const isCurrentlySorted = index === sortColumnIndex;
       const isAscending = sortDirection === 'ascending';

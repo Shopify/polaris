@@ -221,6 +221,22 @@ $loading-panel-height: 53px;
   border: 0;
 }
 
+.TableHeading-align-center {
+  text-align: center;
+
+  [class*='TooltipContainer'] {
+    justify-content: center;
+  }
+}
+
+.TableHeading-align-end {
+  text-align: right;
+
+  [class*='TooltipContainer'] {
+    justify-content: end;
+  }
+}
+
 .TableHeading-sortable {
   background: var(--p-surface-subdued);
 }
