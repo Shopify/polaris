@@ -20,10 +20,10 @@ This enables merchants to type a specific date or pick it from a calendar.
 ### Use when merchants need to:
 
 **Schedule an event on a specific day**
-:   Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers
+: Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers
 
 **Input memorable dates to forms**
-:   An example of this is entering a birthdate.
+: An example of this is entering a birthdate.
 
 </div>
 </div>
@@ -33,17 +33,14 @@ This enables merchants to type a specific date or pick it from a calendar.
 
 This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`DatePicker`](/components/selection-and-input/date-picker), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
-
+<!-- prettier-ignore -->
 ```javascript {"type":"sandboxContext","for":"example"}
-{
-  \#(____CODE____\#)()
-}
+{(____CODE____)()}
 ```
 
+<!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
-{
-  \#(____CODE____\#)()
-}
+{(____CODE____)()}
 ```
 
 ```javascript {"type":"livePreview","id":"example"}
@@ -63,11 +60,11 @@ function DatePickerExample() {
   }
   const [visible, setVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [{ month, year }, setDate] = useState({
+  const [{month, year}, setDate] = useState({
     month: selectedDate.getMonth(),
     year: selectedDate.getFullYear(),
   });
-  const formattedValue = selectedDate.toISOString().slice(0,10);
+  const formattedValue = selectedDate.toISOString().slice(0, 10);
   const datePickerRef = useRef(null);
   function isNodeWithinPopover(node) {
     return datePickerRef?.current
@@ -75,15 +72,15 @@ function DatePickerExample() {
       : false;
   }
   function handleInputValueChange() {
-    console.log("handleInputValueChange");
+    console.log('handleInputValueChange');
   }
-  function handleOnClose({ relatedTarget }) {
+  function handleOnClose({relatedTarget}) {
     setVisible(false);
   }
   function handleMonthChange(month, year) {
-    setDate({ month, year });
+    setDate({month, year});
   }
-  function handleDateSelection({ end: newSelectedDate }) {
+  function handleDateSelection({end: newSelectedDate}) {
     setSelectedDate(newSelectedDate);
     setVisible(false);
   }
@@ -97,7 +94,7 @@ function DatePickerExample() {
   }, [selectedDate]);
   return (
     <AlphaStack align="center" gap="4">
-      <Box minWidth="276px" padding={{ xs: 2 }}>
+      <Box minWidth="276px" padding={{xs: 2}}>
         <Popover
           active={visible}
           autofocusTarget="none"
@@ -110,7 +107,7 @@ function DatePickerExample() {
           activator={
             <TextField
               role="combobox"
-              label={"Start date"}
+              label={'Start date'}
               prefix={<Icon source={CalendarMinor} />}
               value={formattedValue}
               onFocus={() => setVisible(true)}
@@ -140,9 +137,9 @@ function DatePickerExample() {
 
 ### Useful to know
 
-| | |
-|-|-|
-|Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.|![Date input labeled “Expiry date”](/images/patterns/single-list-usage-1.png)|
-|This pattern can be duplicated to allow users to add an end date or time.|![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/single-list-usage-2.png)|
+|                                                                                                        |                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc. | ![Date input labeled “Expiry date”](/images/patterns/single-list-usage-1.png)                                                                          |
+| This pattern can be duplicated to allow users to add an end date or time.                              | ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/single-list-usage-2.png) |
 
 </div>

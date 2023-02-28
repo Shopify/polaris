@@ -1,8 +1,6 @@
 ---
-
 hideFromNav: true
 ---
-
 
 <div as="HowItHelps">
 
@@ -19,10 +17,10 @@ hideFromNav: true
 ### Use when merchants need to:
 
 **View and edit resource objects**
-:   This pattern is typically paired with the [resource index layout](/patterns/resource-index-layout) pattern. Together they create one of the Shopify admin’s strongest patterns. Merchants start learning how to use it when they create their first product, and then continue to use it for other essential resource objects such as orders and customers. Use it when merchants need to manage any individual resource object, including niched ones such as discounts, shipping labels, and newsletters.
+: This pattern is typically paired with the [resource index layout](/patterns/resource-index-layout) pattern. Together they create one of the Shopify admin’s strongest patterns. Merchants start learning how to use it when they create their first product, and then continue to use it for other essential resource objects such as orders and customers. Use it when merchants need to manage any individual resource object, including niched ones such as discounts, shipping labels, and newsletters.
 
 **Create resource objects**
-:   Using the resource detail layout when merchants create new resources teaches them both what a resource page looks like and how edit one later.
+: Using the resource detail layout when merchants create new resources teaches them both what a resource page looks like and how edit one later.
 
 </div>
 </div>
@@ -32,12 +30,14 @@ hideFromNav: true
 
 This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`Columns`](/components/layout-and-structure/columns) and [`Page`](/components/layout-and-structure/page) components.
 
+<!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ paddingBottom: '2rem' }}>
   {(____CODE____)()}
 </div>
 ```
 
+<!-- prettier-ignore -->
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
@@ -57,27 +57,27 @@ function ResourceDetailsLayout() {
   };
   return (
     <Page
-      breadcrumbs={[{ content: "Products", url: "/products" }]}
+      breadcrumbs={[{content: 'Products', url: '/products'}]}
       title="Product"
       secondaryActions={[
         {
-          content: "Duplicate",
+          content: 'Duplicate',
           icon: DuplicateMinor,
-          accessibilityLabel: "Secondary action label",
-          onAction: () => alert("Duplicate action"),
+          accessibilityLabel: 'Secondary action label',
+          onAction: () => alert('Duplicate action'),
         },
         {
-          content: "Archive",
+          content: 'Archive',
           icon: ArchiveMinor,
-          accessibilityLabel: "Secondary action label",
-          onAction: () => alert("Archive action"),
+          accessibilityLabel: 'Secondary action label',
+          onAction: () => alert('Archive action'),
         },
         {
-          content: "Delete",
+          content: 'Delete',
           icon: DeleteMinor,
           destructive: true,
-          accessibilityLabel: "Secondary action label",
-          onAction: () => alert("Delete action"),
+          accessibilityLabel: 'Secondary action label',
+          onAction: () => alert('Delete action'),
         },
       ]}
       pagination={{
@@ -85,7 +85,7 @@ function ResourceDetailsLayout() {
         hasNext: true,
       }}
     >
-      <Columns columns={{ xs: 1, md: "2fr 1fr" }}>
+      <Columns columns={{xs: 1, md: '2fr 1fr'}} gap="4">
         <AlphaStack fullWidth gap="4">
           <AlphaCard roundedAbove="sm">
             <AlphaStack fullWidth gap="4">
@@ -98,20 +98,20 @@ function ResourceDetailsLayout() {
           <AlphaCard roundedAbove="sm">
             <AlphaStack fullWidth gap="4">
               <SkeletonDisplayText size="small" />
-              <Columns columns={{ xs: 1, md: 2 }}>
+              <Columns columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
               </Columns>
             </AlphaStack>
           </AlphaCard>
         </AlphaStack>
-        <AlphaStack fullWidth gap={{ xs: "4", md: "2" }}>
+        <AlphaStack fullWidth gap={{xs: '4', md: '2'}}>
           <AlphaCard roundedAbove="sm">
             <AlphaStack fullWidth gap="4">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
-                <Bleed marginInline={{ xs: 4, sm: 5 }}>
+                <Bleed marginInline={{xs: 4, sm: 5}}>
                   <Divider borderStyle="divider" />
                 </Bleed>
               </Box>
@@ -142,12 +142,12 @@ function ResourceDetailsLayout() {
 
 ### Useful to know
 
-| | |
-|-|-|
-|Always use the default width. Full width tends to waste space and make the page harder to parse.|![Details page with margins on either side of the main content](/images/patterns/resource-detail-usage-1.png)|
-|Group similar content in the same card.|![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-detail-usage-2.png)|
-|Put information that defines the resource object in the primary column.|![Product detail example](/images/patterns/resource-detail-usage-3.png)|,
-|Put supporting information such as status, metadata, and summaries in the secondary column.|![Product details page with the secondary column outlined](/images/patterns/resource-detail-usage-4.png)|
-|Arrange content in order of importance.|![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-detail-usage-5.png)|
+|                                                                                                  |                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Always use the default width. Full width tends to waste space and make the page harder to parse. | ![Details page with margins on either side of the main content](/images/patterns/resource-detail-usage-1.png)                                           |
+| Group similar content in the same card.                                                          | ![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-detail-usage-2.png)                  |
+| Put information that defines the resource object in the primary column.                          | ![Product detail example](/images/patterns/resource-detail-usage-3.png)                                                                                 |
+| Put supporting information such as status, metadata, and summaries in the secondary column.      | ![Product details page with the secondary column outlined](/images/patterns/resource-detail-usage-4.png)                                                |
+| Arrange content in order of importance.                                                          | ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-detail-usage-5.png) |
 
 </div>

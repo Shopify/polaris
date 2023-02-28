@@ -34,6 +34,8 @@ This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
 <!-- Optional: This code is wrapped around what is rendered in the live preview. -->
 <!-- Useful for layout, etc. -->
 <!-- Will not be visible in the copy+paste code snippet. -->
+
+<!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
 <div>____CODE____</div>
 ```
@@ -41,12 +43,16 @@ This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
 <!-- Optional: This code is wrapped around the code when clicking "Open in Sandbox". -->
 <!-- Useful for getting it to play nice with Playroom.
 <!-- Will be visible in Playroom. Will not be visible in the copy+paste code snippet. -->
+
+<!-- prettier-ignore -->
 ```javascript {"type":"sandboxContext","for":"example"}
 <div>____CODE____</div>
 ```
 
 <!-- The "id" here is used by the "for" of the above context codeblocks. -->
 <!-- Must have "type":"livePreview" to be rendered as a live preview. -->
+
+<!-- prettier-ignore -->
 ```javascript {"type":"livePreview","id":"example"}
 <Page divider>
   <AlphaStack gap="16">Coming Soon</AlphaStack>

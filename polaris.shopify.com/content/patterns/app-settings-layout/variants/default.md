@@ -28,6 +28,7 @@ hideFromNav: true
 
 This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`AlphaCard`](/components/layout-and-structure/alpha-card), [`Columns`](/components/layout-and-structure/columns) and [`Box`](/components/layout-and-structure/box) components.
 
+<!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ paddingBottom: '2rem' }}>
   ____CODE____

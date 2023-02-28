@@ -21,10 +21,10 @@ This enables merchants to select a date range.
 ### Use when merchants need to:
 
 **Analyze trends and data**
-:   When a merchant needs to view their business metrics so that they can learn and make decisions, they use the date range picker to frame data to certain time periods. Found in: Analytics
+: When a merchant needs to view their business metrics so that they can learn and make decisions, they use the date range picker to frame data to certain time periods. Found in: Analytics
 
 **Schedule an event**
-:   When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.
+: When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.
 
 </div>
 </div>
@@ -34,6 +34,7 @@ This enables merchants to select a date range.
 
 This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`Columns`](/components/layout-and-structure/columns), [`DatePicker`](/components/selection-and-input/date-picker), [`Inline`](/components/layout-and-structure/inline), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
+<!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{
   paddingLeft: "2rem",
@@ -46,46 +47,47 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
 </div>
 ```
 
+<!-- prettier-ignore -->
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
 
 ```javascript {"type":"livePreview","id":"example"}
 function DateRangePicker() {
-  const { mdDown, lgUp } = useBreakpoints();
+  const {mdDown, lgUp} = useBreakpoints();
   const shouldShowMultiMonth = lgUp;
   const today = new Date(new Date().setHours(0, 0, 0, 0));
   const yesterday = new Date(
-    new Date(new Date().setDate(today.getDate() - 1)).setHours(0, 0, 0, 0)
+    new Date(new Date().setDate(today.getDate() - 1)).setHours(0, 0, 0, 0),
   );
   const ranges = [
     {
-      title: "Today",
-      alias: "today",
+      title: 'Today',
+      alias: 'today',
       period: {
         since: today,
         until: today,
       },
     },
     {
-      title: "Yesterday",
-      alias: "yesterday",
+      title: 'Yesterday',
+      alias: 'yesterday',
       period: {
         since: yesterday,
         until: yesterday,
       },
     },
     {
-      title: "Last 7 days",
-      alias: "last7days",
+      title: 'Last 7 days',
+      alias: 'last7days',
       period: {
         since: new Date(
           new Date(new Date().setDate(today.getDate() - 7)).setHours(
             0,
             0,
             0,
-            0
-          )
+            0,
+          ),
         ),
         until: yesterday,
       },
@@ -94,7 +96,7 @@ function DateRangePicker() {
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeDateRange, setActiveDateRange] = useState(ranges[0]);
   const [inputValues, setInputValues] = useState({});
-  const [{ month, year }, setDate] = useState({
+  const [{month, year}, setDate] = useState({
     month: activeDateRange.period.since.getMonth(),
     year: activeDateRange.period.since.getFullYear(),
   });
@@ -114,7 +116,7 @@ function DateRangePicker() {
     // when using new Date()
     // We need to split year, month, day to pass into new Date() separately
     // to get a localized Date
-    const [year, month, day] = input.split("-");
+    const [year, month, day] = input.split('-');
     return new Date(Number(year), Number(month) - 1, Number(day));
   }
   function formatDateToYearMonthDayDateString(date) {
@@ -122,12 +124,12 @@ function DateRangePicker() {
     let month = String(date.getMonth() + 1);
     let day = String(date.getDate());
     if (month.length < 2) {
-      month = String(month).padStart(2, "0");
+      month = String(month).padStart(2, '0');
     }
     if (day.length < 2) {
-      day = String(day).padStart(2, "0");
+      day = String(day).padStart(2, '0');
     }
-    return [year, month, day].join("-");
+    return [year, month, day].join('-');
   }
   function formatDate(date) {
     return formatDateToYearMonthDayDateString(date);
@@ -152,16 +154,16 @@ function DateRangePicker() {
   }
   function handleStartInputValueChange(value) {
     setInputValues((prevState) => {
-      return { ...prevState, since: value };
+      return {...prevState, since: value};
     });
-    console.log("handleStartInputValueChange, validDate", value);
+    console.log('handleStartInputValueChange, validDate', value);
     if (isValidDate(value)) {
       const newSince = parseYearMonthDayDateString(value);
       setActiveDateRange((prevState) => {
         const newPeriod =
           prevState.period && newSince <= prevState.period.until
-            ? { since: newSince, until: prevState.period.until }
-            : { since: newSince, until: newSince };
+            ? {since: newSince, until: prevState.period.until}
+            : {since: newSince, until: newSince};
         return {
           ...prevState,
           period: newPeriod,
@@ -170,14 +172,14 @@ function DateRangePicker() {
     }
   }
   function handleEndInputValueChange(value) {
-    setInputValues((prevState) => ({ ...prevState, until: value }));
+    setInputValues((prevState) => ({...prevState, until: value}));
     if (isValidDate(value)) {
       const newUntil = parseYearMonthDayDateString(value);
       setActiveDateRange((prevState) => {
         const newPeriod =
           prevState.period && newUntil >= prevState.period.since
-            ? { since: prevState.period.since, until: newUntil }
-            : { since: newUntil, until: newUntil };
+            ? {since: prevState.period.since, until: newUntil}
+            : {since: newUntil, until: newUntil};
         return {
           ...prevState,
           period: newPeriod,
@@ -185,7 +187,7 @@ function DateRangePicker() {
       });
     }
   }
-  function handleInputBlur({ relatedTarget }) {
+  function handleInputBlur({relatedTarget}) {
     const isRelatedTargetWithinPopover =
       relatedTarget != null && isNodeWithinPopover(relatedTarget);
     // If focus moves from the TextField to the Popover
@@ -196,17 +198,17 @@ function DateRangePicker() {
     setPopoverActive(false);
   }
   function handleMonthChange(month, year) {
-    setDate({ month, year });
+    setDate({month, year});
   }
-  function handleCalendarChange({ start, end }) {
+  function handleCalendarChange({start, end}) {
     const newDateRange = ranges.find((range) => {
       return (
         range.period.since.valueOf() === start.valueOf() &&
         range.period.until.valueOf() === end.valueOf()
       );
     }) || {
-      alias: "custom",
-      title: "Custom",
+      alias: 'custom',
+      title: 'Custom',
       period: {
         since: start,
         until: end,
@@ -224,7 +226,7 @@ function DateRangePicker() {
     if (activeDateRange) {
       setInputValues({
         since: formatDate(activeDateRange.period.since),
-        until: formatDate(activeDateRange.period.until)
+        until: formatDate(activeDateRange.period.until),
       });
       function monthDiff(referenceDate, newDate) {
         return (
@@ -234,24 +236,24 @@ function DateRangePicker() {
         );
       }
       const monthDifference = monthDiff(
-        { year, month },
+        {year, month},
         {
           year: activeDateRange.period.until.getFullYear(),
-          month: activeDateRange.period.until.getMonth()
-        }
+          month: activeDateRange.period.until.getMonth(),
+        },
       );
       if (monthDifference > 1 || monthDifference < 0) {
         setDate({
           month: activeDateRange.period.until.getMonth(),
-          year: activeDateRange.period.until.getFullYear()
+          year: activeDateRange.period.until.getFullYear(),
         });
       }
     }
   }, [activeDateRange]);
   const buttonValue =
-    activeDateRange.title === "Custom"
+    activeDateRange.title === 'Custom'
       ? activeDateRange.period.since.toDateString() +
-        " - " +
+        ' - ' +
         activeDateRange.period.until.toDateString()
       : activeDateRange.title;
   return (
@@ -277,18 +279,18 @@ function DateRangePicker() {
       <Popover.Pane fixed>
         <Columns
           columns={{
-            xs: "1fr",
-            mdDown: "1fr",
-            md: "max-content max-content",
+            xs: '1fr',
+            mdDown: '1fr',
+            md: 'max-content max-content',
           }}
           gap={0}
           ref={datePickerRef}
         >
           <Box
-            maxWidth={mdDown ? "516px" : "212px"}
-            width={mdDown ? "100%" : "212px"}
-            padding={{ xs: 5, md: 0 }}
-            paddingBlockEnd={{ xs: 1, md: 0 }}
+            maxWidth={mdDown ? '516px' : '212px'}
+            width={mdDown ? '100%' : '212px'}
+            padding={{xs: 5, md: 0}}
+            paddingBlockEnd={{xs: 1, md: 0}}
           >
             {mdDown ? (
               <Select
@@ -296,15 +298,15 @@ function DateRangePicker() {
                 labelHidden
                 onChange={(value) => {
                   const result = ranges.find(
-                    ({ title, alias }) => title === value || alias === value
+                    ({title, alias}) => title === value || alias === value,
                   );
                   setActiveDateRange(result);
                 }}
-                value={activeDateRange?.title || activeDateRange?.alias || ""}
-                options={ranges.map(({ alias, title }) => title || alias)}
+                value={activeDateRange?.title || activeDateRange?.alias || ''}
+                options={ranges.map(({alias, title}) => title || alias)}
               />
             ) : (
-              <Scrollable style={{height: "334px"}}>
+              <Scrollable style={{height: '334px'}}>
                 <OptionList
                   options={ranges.map((range) => ({
                     value: range.alias,
@@ -313,20 +315,20 @@ function DateRangePicker() {
                   selected={activeDateRange.alias}
                   onChange={(value) => {
                     setActiveDateRange(
-                      ranges.find((range) => range.alias === value[0])
+                      ranges.find((range) => range.alias === value[0]),
                     );
                   }}
                 />
               </Scrollable>
             )}
           </Box>
-          <Box padding={{ xs: 5 }} maxWidth={mdDown ? "320px" : "516px"}>
+          <Box padding={{xs: 5}} maxWidth={mdDown ? '320px' : '516px'}>
             <AlphaStack fullWidth gap="4">
               <Inline>
-                <div style={{ flexGrow: 1 }}>
+                <div style={{flexGrow: 1}}>
                   <TextField
                     role="combobox"
-                    label={"Since"}
+                    label={'Since'}
                     labelHidden
                     prefix={<Icon source={CalendarMinor} />}
                     value={inputValues.since}
@@ -336,10 +338,10 @@ function DateRangePicker() {
                   />
                 </div>
                 <Icon source={ArrowRightMinor} />
-                <div style={{ flexGrow: 1 }}>
+                <div style={{flexGrow: 1}}>
                   <TextField
                     role="combobox"
-                    label={"Until"}
+                    label={'Until'}
                     labelHidden
                     prefix={<Icon source={CalendarMinor} />}
                     value={inputValues.until}
@@ -387,10 +389,10 @@ function DateRangePicker() {
 
 ### Useful to know
 
-| | |
-|-|-|
-|Pin any relevant, merchant-specific dates to the top of the option list.|![List of date options such as “BFCM (2023)”](/images/patterns/date-range-usage-1.png)|
-|If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors)|![Single-month calendar with a range of unselectable dates](/images/patterns/date-range-usage-2.png)|
-|If a merchant enters a nonexistent date, revert to the previously selected date.|![Calendar with date inputs reading an incorrect date](/images/patterns/date-range-usage-3.png)|
+|                                                                                                |                                                                                                      |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Pin any relevant, merchant-specific dates to the top of the option list.                       | ![List of date options such as “BFCM (2023)”](/images/patterns/date-range-usage-1.png)               |
+| If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors) | ![Single-month calendar with a range of unselectable dates](/images/patterns/date-range-usage-2.png) |
+| If a merchant enters a nonexistent date, revert to the previously selected date.               | ![Calendar with date inputs reading an incorrect date](/images/patterns/date-range-usage-3.png)      |
 
 </div>
