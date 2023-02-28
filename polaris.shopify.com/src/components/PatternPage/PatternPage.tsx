@@ -212,10 +212,26 @@ const BaseMarkdown = ({
         const Component = mdxComponents?.[as] ?? Box;
         return <Component {...props} />;
       },
-      h1: ({children}) => <Heading as="h1">{children}</Heading>,
-      h2: ({children}) => <Heading as="h2">{children}</Heading>,
-      h3: ({children}) => <Heading as="h3">{children}</Heading>,
-      h4: ({children}) => <Heading as="h4">{children}</Heading>,
+      h1: ({children, id}) => (
+        <Heading id={id} as="h1">
+          {children}
+        </Heading>
+      ),
+      h2: ({children, id}) => (
+        <Heading id={id} as="h2">
+          {children}
+        </Heading>
+      ),
+      h3: ({children, id}) => (
+        <Heading id={id} as="h3">
+          {children}
+        </Heading>
+      ),
+      h4: ({children, id}) => (
+        <Heading id={id} as="h4">
+          {children}
+        </Heading>
+      ),
       ol: ({children}) => (
         <Stack as="ol" gap="2" className={[styles.List, styles.OrderedList]}>
           {children}
