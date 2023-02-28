@@ -39,7 +39,7 @@ keywords:
 
 Alt text is a text replacement for an image. Generally, it is represented by the alt HTML element attribute `alt="alt text"`.
 
-Often used by people with low or loss of vision, screen readers announce alt text to explain images. Alt text also displays if images fail to download (for example, there’s an unstable or low-bandwidth network connection).
+Often used by people who are blind or have low vision, screen readers announce alt text to explain images. Alt text will also display when images fail to download (for example, there’s an unstable or low-bandwidth network connection).
 
 Alt text should:
 
