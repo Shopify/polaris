@@ -1,4 +1,9 @@
-import {IndexTable, LegacyCard, useIndexResourceState, Text} from '@shopify/polaris';
+import {
+  IndexTable,
+  LegacyCard,
+  useIndexResourceState,
+  Text,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -43,8 +48,16 @@ function SimpleFlushIndexTableExample() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>{location}</IndexTable.Cell>
-        <IndexTable.Cell flush>{orders}</IndexTable.Cell>
-        <IndexTable.Cell flush>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell flush>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell flush>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -61,8 +74,34 @@ function SimpleFlushIndexTableExample() {
         headings={[
           {title: 'Name', flush: true},
           {title: 'Location', flush: true},
-          {title: 'Order count', flush: true},
-          {title: 'Amount spent', flush: true},
+          {
+            id: 'order-count',
+            flush: true,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            flush: true,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}

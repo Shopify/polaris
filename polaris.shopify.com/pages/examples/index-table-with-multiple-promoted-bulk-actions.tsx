@@ -1,4 +1,9 @@
-import {IndexTable, LegacyCard, useIndexResourceState, Text} from '@shopify/polaris';
+import {
+  IndexTable,
+  LegacyCard,
+  useIndexResourceState,
+  Text,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -90,8 +95,16 @@ function IndexTableWithMultiplePromotedBulkActionsExample() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -110,8 +123,32 @@ function IndexTableWithMultiplePromotedBulkActionsExample() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
