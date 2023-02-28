@@ -63,8 +63,8 @@ export interface TextProps {
   fontWeight?: FontWeight;
   /** HTML id attribute */
   id?: string;
-  /** Render OpenType font characters with consistent height and width */
-  monospace?: boolean;
+  /** Use a numeric font variant with monospace appearance */
+  numeric?: boolean;
   /** Truncate text overflow with ellipsis */
   truncate?: boolean;
   /** Typographic style of text */
@@ -81,7 +81,7 @@ export const Text = ({
   color,
   fontWeight,
   id,
-  monospace = false,
+  numeric = false,
   truncate = false,
   variant,
   visuallyHidden = false,
@@ -96,7 +96,7 @@ export const Text = ({
     alignment && styles[alignment],
     breakWord && styles.break,
     color && styles[color],
-    monospace && styles.monospace,
+    numeric && styles.numeric,
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
   );

@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-[Text] adds optional monospace prop to render characters with consistent height and width
+[Text] adds optional numeric font variant to render characters with a monospace apperance and consistent height and width

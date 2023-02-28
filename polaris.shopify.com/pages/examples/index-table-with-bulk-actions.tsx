@@ -70,12 +70,12 @@ function IndexTableWithBulkActionsExample() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -100,7 +100,7 @@ function IndexTableWithBulkActionsExample() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -108,7 +108,7 @@ function IndexTableWithBulkActionsExample() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),

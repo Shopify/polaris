@@ -60,12 +60,12 @@ export function Default() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -88,7 +88,7 @@ export function Default() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -96,7 +96,7 @@ export function Default() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -151,12 +151,12 @@ export function Flush() {
         </IndexTable.Cell>
         <IndexTable.Cell flush>{location}</IndexTable.Cell>
         <IndexTable.Cell flush>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -180,7 +180,7 @@ export function Flush() {
             id: 'order-count',
             flush: true,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -189,7 +189,7 @@ export function Flush() {
             id: 'amount-spent',
             flush: true,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -242,10 +242,10 @@ export function SmallScreen() {
             {name}
           </Text>
           <p>{location}</p>
-          <Text variant="bodyMd" as="p" alignment="end">
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
             {orders}
           </Text>
-          <Text variant="bodyMd" as="p" alignment="end">
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
             {amountSpent}
           </Text>
         </div>
@@ -270,7 +270,7 @@ export function SmallScreen() {
             {
               id: 'order-count',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end">
+                <Text as="span" variant="bodyMd" alignment="end" numeric>
                   Order count
                 </Text>
               ),
@@ -278,7 +278,7 @@ export function SmallScreen() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end">
+                <Text as="span" variant="bodyMd" alignment="end" numeric>
                   Amount spent
                 </Text>
               ),
@@ -332,10 +332,10 @@ export function SmallScreenLoading() {
             {name}
           </Text>
           <p>{location}</p>
-          <Text variant="bodyMd" as="p" alignment="end">
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
             {orders}
           </Text>
-          <Text variant="bodyMd" as="p" alignment="end">
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
             {amountSpent}
           </Text>
         </div>
@@ -360,7 +360,7 @@ export function SmallScreenLoading() {
             {
               id: 'order-count',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end">
+                <Text as="span" variant="bodyMd" alignment="end" numeric>
                   Order count
                 </Text>
               ),
@@ -368,7 +368,7 @@ export function SmallScreenLoading() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end">
+                <Text as="span" variant="bodyMd" alignment="end" numeric>
                   Amount spent
                 </Text>
               ),
@@ -416,12 +416,12 @@ export function WithEmptyState() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -445,7 +445,7 @@ export function WithEmptyState() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -453,7 +453,7 @@ export function WithEmptyState() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -529,12 +529,12 @@ export function WithBulkActions() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -559,7 +559,7 @@ export function WithBulkActions() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -567,7 +567,7 @@ export function WithBulkActions() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -669,12 +669,12 @@ export function WithMultiplePromotedBulkActions() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -699,7 +699,7 @@ export function WithMultiplePromotedBulkActions() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -707,7 +707,7 @@ export function WithMultiplePromotedBulkActions() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -784,12 +784,12 @@ export function WithBulkActionsAndSelectionAcrossPages() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -818,7 +818,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
             {
               id: 'order-count',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end">
+                <Text as="span" variant="bodyMd" alignment="end" numeric>
                   Order count
                 </Text>
               ),
@@ -826,7 +826,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end">
+                <Text as="span" variant="bodyMd" alignment="end" numeric>
                   Amount spent
                 </Text>
               ),
@@ -882,12 +882,12 @@ export function WithLoadingState() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -911,7 +911,7 @@ export function WithLoadingState() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -919,7 +919,7 @@ export function WithLoadingState() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -1022,12 +1022,12 @@ export function WithFiltering() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1071,7 +1071,7 @@ export function WithFiltering() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -1079,7 +1079,7 @@ export function WithFiltering() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -1154,12 +1154,12 @@ export function WithRowStatus() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1182,7 +1182,7 @@ export function WithRowStatus() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -1190,7 +1190,7 @@ export function WithRowStatus() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -1266,12 +1266,12 @@ export function WithStickyLastColumn() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1298,7 +1298,7 @@ export function WithStickyLastColumn() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -1307,7 +1307,7 @@ export function WithStickyLastColumn() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -1373,12 +1373,12 @@ export function WithRowNavigationLink() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1401,7 +1401,7 @@ export function WithRowNavigationLink() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -1410,7 +1410,7 @@ export function WithRowNavigationLink() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -1471,12 +1471,12 @@ export function WithClickableButtonColumn() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1499,7 +1499,7 @@ export function WithClickableButtonColumn() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -1508,7 +1508,7 @@ export function WithClickableButtonColumn() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -1555,12 +1555,12 @@ export function WithoutCheckboxes() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1579,7 +1579,7 @@ export function WithoutCheckboxes() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -1588,7 +1588,7 @@ export function WithoutCheckboxes() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -1713,12 +1713,12 @@ export function WithAllOfItsElements() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1766,7 +1766,7 @@ export function WithAllOfItsElements() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -1775,7 +1775,7 @@ export function WithAllOfItsElements() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -1932,12 +1932,12 @@ export function WithSortableHeadings() {
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1964,7 +1964,7 @@ export function WithSortableHeadings() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -1972,7 +1972,7 @@ export function WithSortableHeadings() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -2123,12 +2123,12 @@ export function WithSortableCustomHeadings() {
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2159,7 +2159,7 @@ export function WithSortableCustomHeadings() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -2230,12 +2230,12 @@ export function WithCustomTooltips() {
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end">
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2266,7 +2266,7 @@ export function WithCustomTooltips() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Order count
               </Text>
             ),
@@ -2274,7 +2274,7 @@ export function WithCustomTooltips() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end">
+              <Text as="span" variant="bodyMd" alignment="end" numeric>
                 Amount spent
               </Text>
             ),
@@ -2396,10 +2396,10 @@ export function SmallScreenWithAllOfItsElements() {
             {name}
           </Text>
           <p>{location}</p>
-          <Text variant="bodyMd" as="p" alignment="end">
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
             {orders}
           </Text>
-          <Text variant="bodyMd" as="p" alignment="end">
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
             {amountSpent}
           </Text>
         </div>
@@ -2448,7 +2448,7 @@ export function SmallScreenWithAllOfItsElements() {
             {
               id: 'order-count',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end">
+                <Text as="span" variant="bodyMd" alignment="end" numeric>
                   Order count
                 </Text>
               ),
@@ -2456,7 +2456,7 @@ export function SmallScreenWithAllOfItsElements() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end">
+                <Text as="span" variant="bodyMd" alignment="end" numeric>
                   Amount spent
                 </Text>
               ),
