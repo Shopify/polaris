@@ -396,6 +396,11 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
+    source: '/components/structure/page',
+    destination: '/components/layout-and-structure/page',
+    permanent: false,
+  },
+  {
     source: '/components/page',
     destination: '/components/layout-and-structure/page',
     permanent: false,
