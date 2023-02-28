@@ -179,7 +179,12 @@ function SmallScreenIndexTableWithAllElementsExample() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end" numeric>
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
                   Amount spent
                 </Text>
               ),

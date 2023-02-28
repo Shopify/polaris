@@ -78,7 +78,12 @@ function IndexTableWithLoadingExample() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -86,7 +91,12 @@ function IndexTableWithLoadingExample() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),

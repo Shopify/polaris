@@ -78,7 +78,12 @@ function SimpleFlushIndexTableExample() {
             id: 'order-count',
             flush: true,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -87,7 +92,12 @@ function SimpleFlushIndexTableExample() {
             id: 'amount-spent',
             flush: true,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),

@@ -174,7 +174,12 @@ function IndexTableWithAllElementsExample() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -183,7 +188,12 @@ function IndexTableWithAllElementsExample() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),

@@ -88,7 +88,12 @@ export function Default() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -96,7 +101,12 @@ export function Default() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -180,7 +190,12 @@ export function Flush() {
             id: 'order-count',
             flush: true,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -189,7 +204,12 @@ export function Flush() {
             id: 'amount-spent',
             flush: true,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -270,7 +290,12 @@ export function SmallScreen() {
             {
               id: 'order-count',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end" numeric>
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
                   Order count
                 </Text>
               ),
@@ -278,7 +303,12 @@ export function SmallScreen() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end" numeric>
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
                   Amount spent
                 </Text>
               ),
@@ -360,7 +390,12 @@ export function SmallScreenLoading() {
             {
               id: 'order-count',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end" numeric>
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
                   Order count
                 </Text>
               ),
@@ -368,7 +403,12 @@ export function SmallScreenLoading() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end" numeric>
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
                   Amount spent
                 </Text>
               ),
@@ -445,7 +485,12 @@ export function WithEmptyState() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -453,7 +498,12 @@ export function WithEmptyState() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -559,7 +609,12 @@ export function WithBulkActions() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -567,7 +622,12 @@ export function WithBulkActions() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -699,7 +759,12 @@ export function WithMultiplePromotedBulkActions() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -707,7 +772,12 @@ export function WithMultiplePromotedBulkActions() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -826,7 +896,12 @@ export function WithBulkActionsAndSelectionAcrossPages() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end" numeric>
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
                   Amount spent
                 </Text>
               ),
@@ -911,7 +986,12 @@ export function WithLoadingState() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -919,7 +999,12 @@ export function WithLoadingState() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -1071,7 +1156,12 @@ export function WithFiltering() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -1079,7 +1169,12 @@ export function WithFiltering() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -1182,7 +1277,12 @@ export function WithRowStatus() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -1190,7 +1290,12 @@ export function WithRowStatus() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -1298,7 +1403,12 @@ export function WithStickyLastColumn() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -1307,7 +1417,12 @@ export function WithStickyLastColumn() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -1401,7 +1516,12 @@ export function WithRowNavigationLink() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -1410,7 +1530,12 @@ export function WithRowNavigationLink() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -1499,7 +1624,12 @@ export function WithClickableButtonColumn() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -1508,7 +1638,12 @@ export function WithClickableButtonColumn() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -1579,7 +1714,12 @@ export function WithoutCheckboxes() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -1588,7 +1728,12 @@ export function WithoutCheckboxes() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -1766,7 +1911,12 @@ export function WithAllOfItsElements() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -1775,7 +1925,12 @@ export function WithAllOfItsElements() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -1964,7 +2119,12 @@ export function WithSortableHeadings() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -1972,7 +2132,12 @@ export function WithSortableHeadings() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -2159,7 +2324,12 @@ export function WithSortableCustomHeadings() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -2266,7 +2436,12 @@ export function WithCustomTooltips() {
           {
             id: 'order-count',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Order count
               </Text>
             ),
@@ -2274,7 +2449,12 @@ export function WithCustomTooltips() {
           {
             id: 'amount-spent',
             title: (
-              <Text as="span" variant="bodyMd" alignment="end" numeric>
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
                 Amount spent
               </Text>
             ),
@@ -2456,7 +2636,12 @@ export function SmallScreenWithAllOfItsElements() {
             {
               id: 'amount-spent',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end" numeric>
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
                   Amount spent
                 </Text>
               ),
