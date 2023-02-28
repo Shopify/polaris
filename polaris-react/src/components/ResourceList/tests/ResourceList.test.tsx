@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
-import {BulkActions, useIsBulkActionsSticky} from '../../BulkActions';
+import {BulkActions} from '../../BulkActions';
 import {SelectAllActions} from '../../SelectAllActions';
 import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
@@ -16,20 +16,6 @@ import {ResourceItem} from '../../ResourceItem';
 import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {ResourceList} from '../ResourceList';
 import styles from '../ResourceList.scss';
-
-jest.mock('../../BulkActions', () => ({
-  ...jest.requireActual('../../BulkActions'),
-  useIsBulkActionsSticky: jest.fn(),
-}));
-
-function mockUseIsBulkActionsSticky(
-  args: ReturnType<typeof useIsBulkActionsSticky>,
-) {
-  const useIsBulkActionsSticky: jest.Mock =
-    jest.requireMock('../../BulkActions').useIsBulkActionsSticky;
-
-  useIsBulkActionsSticky.mockReturnValue(args);
-}
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -61,16 +47,6 @@ const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
 const defaultWindowWidth = window.innerWidth;
 
 describe('<ResourceList />', () => {
-  mockUseIsBulkActionsSticky({
-    bulkActionsIntersectionRef: {current: null},
-    tableMeasurerRef: {current: null},
-    isBulkActionsSticky: false,
-    bulkActionsAbsoluteOffset: 0,
-    bulkActionsMaxWidth: 0,
-    bulkActionsOffsetLeft: 0,
-    computeTableDimensions: jest.fn(),
-  });
-
   beforeEach(() => {
     matchMedia.mock();
   });
@@ -1309,31 +1285,6 @@ describe('<ResourceList />', () => {
       expect(resourceList).toContainReactComponent(SelectAllActions, {
         paginatedSelectAllText: 'All 2+ customers in your store are selected',
       });
-    });
-  });
-
-  describe('computeTableDimensions', () => {
-    it('invokes the computeTableDimensions callback when the number of items changes', () => {
-      const computeTableDimensions = jest.fn();
-      mockUseIsBulkActionsSticky({
-        bulkActionsIntersectionRef: {current: null},
-        tableMeasurerRef: {current: null},
-        isBulkActionsSticky: false,
-        bulkActionsAbsoluteOffset: 0,
-        bulkActionsMaxWidth: 0,
-        bulkActionsOffsetLeft: 0,
-        computeTableDimensions,
-      });
-      const newItems = [...itemsWithID, {id: 12, url: '//shopify.com'}];
-      const resourceList = mountWithApp(
-        <ResourceList items={itemsWithID} renderItem={renderItem} />,
-      );
-
-      expect(computeTableDimensions).toHaveBeenCalledTimes(1);
-
-      resourceList.setProps({items: newItems});
-
-      expect(computeTableDimensions).toHaveBeenCalledTimes(2);
     });
   });
 });

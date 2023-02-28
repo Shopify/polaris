@@ -28,13 +28,11 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
-import {
-  BulkActions,
-  BulkActionsProps,
-  useIsBulkActionsSticky,
-} from '../BulkActions';
+import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
+import {Box} from '../Box';
+import {Inline} from '../Inline';
 
 import styles from './ResourceList.scss';
 
@@ -162,20 +160,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     0,
   )[1];
   const checkableButtonRef = useRef<HTMLInputElement>(null);
-
-  const {
-    bulkActionsIntersectionRef,
-    tableMeasurerRef,
-    isBulkActionsSticky,
-    bulkActionsAbsoluteOffset,
-    bulkActionsMaxWidth,
-    bulkActionsOffsetLeft,
-    computeTableDimensions,
-  } = useIsBulkActionsSticky(selectMode);
-
-  useEffect(() => {
-    computeTableDimensions();
-  }, [computeTableDimensions, items.length]);
 
   const defaultResourceName = useLazyRef(() => ({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
@@ -549,29 +533,17 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     </div>
   ) : null;
 
-  const bulkActionClassNames = classNames(
-    styles.BulkActionsWrapper,
-    isBulkActionsSticky && styles.BulkActionsWrapperSticky,
-  );
+  const bulkActionClassNames = classNames(styles.BulkActionsWrapper);
 
   const bulkActionsMarkup =
     isSelectable && selectMode && bulkActions ? (
-      <div
-        className={bulkActionClassNames}
-        style={{
-          top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
-          width: bulkActionsMaxWidth,
-          left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
-        }}
-      >
+      <div className={bulkActionClassNames}>
         <BulkActions
           selectMode={selectMode}
           onSelectModeToggle={handleSelectMode}
           promotedActions={promotedBulkActions}
           actions={bulkActions}
           disabled={loading}
-          isSticky={isBulkActionsSticky}
-          width={bulkActionsMaxWidth}
         />
       </div>
     ) : null;
@@ -672,12 +644,16 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
                   {sortingSelectMarkup}
                   {selectButtonMarkup}
                 </div>
-                {selectAllActionsMarkup}
+                <Box width="100%">
+                  <Inline align="space-between" blockAlign="center">
+                    {selectAllActionsMarkup}
+                    {bulkActionsMarkup}
+                  </Inline>
+                </Box>
               </div>
             );
           }}
         </Sticky>
-        {bulkActionsMarkup}
       </div>
     );
 
@@ -758,7 +734,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   return (
     <ResourceListContext.Provider value={context}>
       <EventListener event="resize" handler={handleResize} />
-      <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
+      <div className={resourceListWrapperClasses}>
         {filterControlMarkup}
         {headerMarkup}
         {listMarkup}
@@ -766,7 +742,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
       </div>
-      <div ref={bulkActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
 };

@@ -43,10 +43,6 @@ export interface BulkActionsProps {
   onSelectModeToggle?(selectMode: boolean): void;
   /** Callback when more actions button is toggled */
   onMoreActionPopoverToggle?(isOpen: boolean): void;
-  /** If the BulkActions is currently sticky in view */
-  isSticky?: boolean;
-  /** The width of the BulkActions */
-  width: number;
 }
 
 type CombinedProps = BulkActionsProps & {
@@ -202,8 +198,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   render() {
-    const {selectMode, disabled, promotedActions, i18n, isSticky, width} =
-      this.props;
+    const {selectMode, disabled, promotedActions, i18n} = this.props;
 
     const actionSections = this.actionSections();
 
@@ -300,7 +295,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const groupContent =
       promotedActionsMarkup || actionsPopover ? (
-        <Inline gap="3">
+        <Inline gap="2">
           {promotedActionsMarkup}
           {actionsPopover}
         </Inline>
@@ -320,22 +315,17 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
         {(status: TransitionStatus) => {
           const groupClassName = classNames(
             styles.Group,
-            !isSticky && styles['Group-not-sticky'],
-            !measuring && isSticky && styles[`Group-${status}`],
+            !measuring && styles[`Group-${status}`],
             measuring && styles['Group-measuring'],
           );
           return (
-            <div
-              className={groupClassName}
-              ref={this.groupNode}
-              style={{width}}
-            >
+            <div className={groupClassName} ref={this.groupNode}>
               <EventListener event="resize" handler={this.handleResize} />
               <div
                 className={styles.ButtonGroupWrapper}
                 ref={this.setButtonsNode}
               >
-                <div className={styles.ButtonGroupInner}>{groupContent}</div>
+                {groupContent}
               </div>
             </div>
           );
