@@ -17,7 +17,8 @@ const allMap = {
     'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-caution-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-caution-subdued)',
   '--p-banner-border-critical':
     'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-critical-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-critical-subdued)',
-  '--p-thin-border-subdued': '--p-border-base',
+  '--p-thin-border-subdued':
+    'var(--p-border-width-1) solid var(--p-color-border-subdued)',
   // The following custom properties are overridden in the spaceMap
   '--p-frame-offset': '0',
   '--p-choice-size': '1.25rem', // 20px
