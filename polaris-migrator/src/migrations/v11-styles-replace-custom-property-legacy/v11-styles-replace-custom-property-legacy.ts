@@ -21,13 +21,13 @@ const allMap = {
     'var(--p-border-width-1) solid var(--p-color-border-subdued)',
   // The following custom properties are overridden in the spaceMap
   '--p-frame-offset': '0',
-  '--p-choice-size': '20px', // 20px/1.25rem
-  '--p-icon-size-small': '8px', // 8px/0.5rem
-  '--p-icon-size-medium': '20px', // 20px/1.25rem
-  '--p-text-field-spinner-offset': '2px', // 2px/0.125rem
-  '--p-text-field-focus-ring-offset': '-4px', // -4px/-0.25rem
-  '--p-range-slider-thumb-size-base': '16px', // 16px/1rem
-  '--p-range-slider-thumb-size-active': '24px', // 24px/1.5rem
+  '--p-choice-size': '1.25rem', // 20px
+  '--p-icon-size-small': '0.5rem', // 8px
+  '--p-icon-size-medium': '1.25rem', // 20px
+  '--p-text-field-spinner-offset': '0.125rem', // 2px
+  '--p-text-field-focus-ring-offset': '-0.25rem', // -4px
+  '--p-range-slider-thumb-size-base': '1rem', // 16px
+  '--p-range-slider-thumb-size-active': '1.5rem', // 24px
   '--p-button-group-item-spacing': 'calc(-1 * var(--p-space-025))',
 };
 
