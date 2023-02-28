@@ -5,6 +5,21 @@
   width: 20px;
   margin: var(--p-space-025);
   border-width: var(--p-border-width-2);
+  box-shadow: inset 0 (--p-border-width-1) 0 0 var(--p-color-border-strong),
+    inset 0 0 0 (--p-border-width-1) var(--p-color-border-strong);
+  box-shadow: inset 0 (--p-border-width-1) 0 0
+      var(--p-color-border-success-subdued),
+    inset 0 0 0 (--p-border-width-1) var(--p-color-border-success-subdued);
+  box-shadow: inset 0 (--p-border-width-1) 0 0
+      var(--p-color-border-info-subdued),
+    inset 0 0 0 (--p-border-width-1) var(--p-color-border-info-subdued);
+  box-shadow: inset 0 (--p-border-width-1) 0 0
+      var(--p-color-border-caution-subdued),
+    inset 0 0 0 (--p-border-width-1) var(--p-color-border-caution-subdued);
+  box-shadow: inset 0 (--p-border-width-1) 0 0
+      var(--p-color-border-critical-subdued),
+    inset 0 0 0 (--p-border-width-1) var(--p-color-border-critical-subdued);
+  border: var(--p-border-width-1) solid var(--p-color-border-subdued);
   margin: var(--p-space-05);
   margin-left: calc(-1 * var(--p-space-1));
   padding: calc(-1 * var(--p-space-025));

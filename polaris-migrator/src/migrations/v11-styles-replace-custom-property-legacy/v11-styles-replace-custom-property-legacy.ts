@@ -7,18 +7,18 @@ const allMap = {
   '--p-override-loading-z-index': '--p-z-index-6',
   '--p-choice-margin': '--p-space-025',
   '--p-control-border-width': '--p-border-width-2',
-  // '--p-banner-border-default':
-  //   'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-strong), inset 0 0 0 (--p-border-width-1) var(--p-color-border-strong)',
-  // '--p-banner-border-success':
-  //   'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-success-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-success-subdued)',
-  // '--p-banner-border-highlight':
-  //   'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-info-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-info-subdued)',
-  // '--p-banner-border-warning':
-  //   'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-caution-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-caution-subdued)',
-  // '--p-banner-border-critical':
-  //   'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-critical-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-critical-subdued)',
-  // '--p-thin-border-subdued':
-  //   'var(--p-border-width-1) solid var(--p-color-border-subdued)',
+  '--p-banner-border-default':
+    'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-strong), inset 0 0 0 (--p-border-width-1) var(--p-color-border-strong)',
+  '--p-banner-border-success':
+    'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-success-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-success-subdued)',
+  '--p-banner-border-highlight':
+    'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-info-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-info-subdued)',
+  '--p-banner-border-warning':
+    'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-caution-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-caution-subdued)',
+  '--p-banner-border-critical':
+    'inset 0 (--p-border-width-1) 0 0 var(--p-color-border-critical-subdued), inset 0 0 0 (--p-border-width-1) var(--p-color-border-critical-subdued)',
+  '--p-thin-border-subdued':
+    'var(--p-border-width-1) solid var(--p-color-border-subdued)',
   // The following custom properties are overridden in the spaceMap
   '--p-frame-offset': '0',
   '--p-choice-size': '20px', // 20px/1.25rem

@@ -5,6 +5,12 @@
   width: var(--p-icon-size-medium);
   margin: var(--p-choice-margin);
   border-width: var(--p-control-border-width);
+  box-shadow: var(--p-banner-border-default);
+  box-shadow: var(--p-banner-border-success);
+  box-shadow: var(--p-banner-border-highlight);
+  box-shadow: var(--p-banner-border-warning);
+  box-shadow: var(--p-banner-border-critical);
+  border: var(--p-thin-border-subdued);
   margin: var(--p-text-field-spinner-offset);
   margin-left: var(--p-text-field-focus-ring-offset);
   padding: var(--p-button-group-item-spacing);
