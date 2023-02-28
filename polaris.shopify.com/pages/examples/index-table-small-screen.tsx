@@ -75,7 +75,7 @@ function SimpleSmallScreenIndexTableExample() {
             {
               id: 'order-count',
               title: (
-                <Text as="span" variant="bodyMd" alignment="end" numeric>
+                <Text as="span" variant="bodySm" alignment="end">
                   Order count
                 </Text>
               ),

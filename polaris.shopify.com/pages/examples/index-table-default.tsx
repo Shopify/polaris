@@ -95,7 +95,6 @@ function SimpleIndexTableExample() {
                 variant="bodySm"
                 fontWeight="medium"
                 alignment="end"
-                numeric
               >
                 Amount spent
               </Text>
