@@ -5,7 +5,6 @@
       "files": "*.md",
       "options": {
         "semi": false,
-        "parser": "markdown",
         "arrowParens": "always"
       }
     }
