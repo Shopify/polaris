@@ -56,52 +56,54 @@ export const useTOC = (children: React.ReactNode) => {
     let tocNodes: TOCItem[] = [];
     let currentNode: TOCItem | null = null;
 
-    const headings =
-      document.querySelectorAll<HTMLHeadingElement>('h2[id], h3[id]');
-    headings.forEach((el, i) => {
-      const id = el.getAttribute('id');
-      if (typeof el.textContent === 'string' && id) {
-        if (currentNode === null) {
-          if (el.tagName === 'H2') {
-            currentNode = {
-              title: el.textContent,
-              id,
-              element: 'H2',
-              children: [],
-            };
-          }
-        } else {
-          if (el.tagName === 'H2') {
-            tocNodes.push(currentNode);
-            currentNode = {
-              title: el.textContent,
-              id,
-              element: 'H2',
-              children: [],
-            };
-          } else if (el.tagName === 'H3') {
-            if (currentNode.element === 'H2') {
-              if (el.closest('.usage-list') === null) {
-                currentNode.children.push({
-                  title: el.textContent,
-                  id,
-                  element: 'H3',
-                  children: [],
-                });
+    window.requestAnimationFrame(() => {
+      const headings =
+        document.querySelectorAll<HTMLHeadingElement>('h2[id], h3[id]');
+      headings.forEach((el, i) => {
+        const id = el.getAttribute('id');
+        if (typeof el.textContent === 'string' && id) {
+          if (currentNode === null) {
+            if (el.tagName === 'H2') {
+              currentNode = {
+                title: el.textContent,
+                id,
+                element: 'H2',
+                children: [],
+              };
+            }
+          } else {
+            if (el.tagName === 'H2') {
+              tocNodes.push(currentNode);
+              currentNode = {
+                title: el.textContent,
+                id,
+                element: 'H2',
+                children: [],
+              };
+            } else if (el.tagName === 'H3') {
+              if (currentNode.element === 'H2') {
+                if (el.closest('.usage-list') === null) {
+                  currentNode.children.push({
+                    title: el.textContent,
+                    id,
+                    element: 'H3',
+                    children: [],
+                  });
+                }
               }
             }
           }
-        }
-        const isLastIterationOfLoop = i === headings.length - 1;
-        if (isLastIterationOfLoop) {
-          if (currentNode !== null) {
-            tocNodes.push(currentNode);
+          const isLastIterationOfLoop = i === headings.length - 1;
+          if (isLastIterationOfLoop) {
+            if (currentNode !== null) {
+              tocNodes.push(currentNode);
+            }
           }
         }
-      }
-    });
+      });
 
-    setToc(tocNodes);
+      setToc(tocNodes);
+    });
   }, [children]);
 
   return [toc];
