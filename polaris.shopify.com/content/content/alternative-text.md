@@ -251,7 +251,6 @@ The following Polaris components come props to set alt text or aria labels, alon
 - [Avatar](https://polaris.shopify.com/components/images-and-icons/avatar)
 - [Button](/components/actions/button)
 - [Icon](/components/images-and-icons/icon)
-- [Image](/components/images-and-icons/image)
 - [Link](https://polaris.shopify.com/components/navigation/link)
 - [Thumbnail](https://polaris.shopify.com/components/images-and-icons/thumbnail)
 - [Video Thumbnail](https://polaris.shopify.com/components/images-and-icons/video-thumbnail)
