@@ -1,4 +1,4 @@
-import {Link, Page, Card, DataTable, useBreakpoints} from '@shopify/polaris';
+import {Link, Page, LegacyCard, DataTable, useBreakpoints} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -281,7 +281,7 @@ function DataTableWithFixedFirstColumnsExample() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -330,7 +330,7 @@ function DataTableWithFixedFirstColumnsExample() {
           stickyHeader
           fixedFirstColumns={fixedFirstColumns}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }

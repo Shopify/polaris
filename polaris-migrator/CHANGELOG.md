@@ -1,5 +1,24 @@
 # @shopify/polaris-migrator
 
+## 0.14.0
+
+### Minor Changes
+
+- [#8071](https://github.com/Shopify/polaris/pull/8071) [`319479143`](https://github.com/Shopify/polaris/commit/319479143c9526ec461b20555ea83b5ec9aa1ecc) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - Added a migration for updating the Page component `breadcrumbs` prop to use an object instead of an array
+
+### Patch Changes
+
+- Updated dependencies [[`0e9fa8433`](https://github.com/Shopify/polaris/commit/0e9fa843397a9ec1d1a7eee70d0178d76dd231f8), [`9ab93132a`](https://github.com/Shopify/polaris/commit/9ab93132a3e5f0c7c603184fb03ba452f9bc0a64), [`b1768f037`](https://github.com/Shopify/polaris/commit/b1768f03795f224e760edc405dc5bfde298061cb)]:
+  - @shopify/polaris-tokens@6.6.1
+  - @shopify/stylelint-polaris@8.0.0
+
+## 0.13.4
+
+### Patch Changes
+
+- Updated dependencies [[`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c)]:
+  - @shopify/stylelint-polaris@7.0.0
+
 ## 0.13.3
 
 ### Patch Changes

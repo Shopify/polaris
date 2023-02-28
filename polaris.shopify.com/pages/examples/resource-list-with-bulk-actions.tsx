@@ -1,4 +1,4 @@
-import {Card, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
+import {LegacyCard, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -48,7 +48,7 @@ function ResourceListWithBulkActionsExample() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -58,7 +58,7 @@ function ResourceListWithBulkActionsExample() {
         promotedBulkActions={promotedBulkActions}
         bulkActions={bulkActions}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {

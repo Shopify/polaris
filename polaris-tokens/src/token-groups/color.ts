@@ -458,7 +458,7 @@ export const color: {
     description: '',
   },
   'color-border-success-subdued': {
-    value: colors.green[200],
+    value: colors.green[400],
     description: '',
   },
   'color-border-critical-active': {
@@ -482,7 +482,7 @@ export const color: {
     description: '',
   },
   'color-border-caution-subdued': {
-    value: colors.yellow[200],
+    value: colors.yellow[400],
     description: '',
   },
   'color-border-info': {
@@ -490,7 +490,7 @@ export const color: {
     description: '',
   },
   'color-border-info-subdued': {
-    value: colors.teal[200],
+    value: colors.teal[400],
     description: '',
   },
   'color-border-interactive-active': {

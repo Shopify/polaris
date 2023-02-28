@@ -6,6 +6,7 @@ import {Text} from '../../../../../Text';
 import {Link} from '../../../../../Link';
 import {Popover} from '../../../../../Popover';
 import {Stack} from '../../../../../Stack';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../../../TextContainer';
 
 import styles from './Message.scss';

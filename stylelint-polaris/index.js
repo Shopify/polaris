@@ -371,6 +371,13 @@ const stylelintPolarisCoverageOptions = {
     },
   ],
   conventions: {
+    'selector-disallowed-list': [
+      [/class[*^~]?='Polaris-[a-z_-]+'/gi],
+      {
+        message:
+          'Overriding Polaris styles is disallowed. Please consider contributing instead',
+      },
+    ],
     'polaris/custom-property-allowed-list': {
       // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
       allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
@@ -496,6 +503,7 @@ const stylelintPolarisCoverageOptions = {
 /** @type {import('stylelint').Config} */
 module.exports = {
   customSyntax: 'postcss-scss',
+  reportDescriptionlessDisables: true,
   reportNeedlessDisables: [
     true,
     {

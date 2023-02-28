@@ -1,7 +1,7 @@
 import {
   TextField,
   IndexTable,
-  Card,
+  LegacyCard,
   Filters,
   Select,
   useIndexResourceState,
@@ -119,8 +119,12 @@ function SmallScreenIndexTableWithAllElementsExample() {
             {name}
           </Text>
           <p>{location}</p>
-          <Text variant="bodyMd" as="p" alignment="end">{orders}</Text>
-          <Text variant="bodyMd" as="p" alignment="end"></Text>{amountSpent}</Text>
+          <Text variant="bodyMd" as="p" alignment="end">
+            {orders}
+          </Text>
+          <Text variant="bodyMd" as="p" alignment="end">
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -128,7 +132,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
 
   return (
     <div style={{width: '430px'}}>
-      <Card>
+      <LegacyCard>
         <div style={{padding: '16px', display: 'flex'}}>
           <div style={{flex: 1}}>
             <Filters
@@ -164,13 +168,28 @@ function SmallScreenIndexTableWithAllElementsExample() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              id: 'order-count',
+              title: (
+                <Text as="span" variant="bodyMd" alignment="end">
+                  Order count
+                </Text>
+              ),
+            },
+            {
+              id: 'amount-spent',
+              title: (
+                <Text as="span" variant="bodyMd" alignment="end">
+                  Amount spent
+                </Text>
+              ),
+            },
+            ,
           ]}
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 

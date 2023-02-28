@@ -1,4 +1,4 @@
-import {Link, Page, Card, DataTable} from '@shopify/polaris';
+import {Link, Page, LegacyCard, DataTable} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -250,7 +250,7 @@ function FullDataTableExample() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -277,7 +277,7 @@ function FullDataTableExample() {
           increasedTableDensity
           stickyHeader
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 

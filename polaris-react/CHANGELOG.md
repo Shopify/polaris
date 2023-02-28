@@ -1,5 +1,41 @@
 # Changelog
 
+## 10.32.0
+
+### Minor Changes
+
+- [#8454](https://github.com/Shopify/polaris/pull/8454) [`4799b6550`](https://github.com/Shopify/polaris/commit/4799b6550d37abcfb5ec049d621b1d57a93cdd91) Thanks [@chazdean](https://github.com/chazdean)! - Removed default spacing from `Inline`
+
+* [#8484](https://github.com/Shopify/polaris/pull/8484) [`cbbb5648c`](https://github.com/Shopify/polaris/commit/cbbb5648c11a4425f7ae8d6976ffa557513f833a) Thanks [@aveline](https://github.com/aveline)! - Removed default `gap` from `Columns`
+
+- [#8135](https://github.com/Shopify/polaris/pull/8135) [`c60617518`](https://github.com/Shopify/polaris/commit/c60617518e1d50c9ae9734f8b95e6546b117ae8e) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - Deprecated the `Page` `breadcrumbs` prop in favor of the new `backAction` prop.
+
+* [#8441](https://github.com/Shopify/polaris/pull/8441) [`3537b3aeb`](https://github.com/Shopify/polaris/commit/3537b3aebb87b4a09ddd8a52e95e3080423bd0c0) Thanks [@kyledurand](https://github.com/kyledurand)! - Deprecated TextContainer in favor of AlphaStack
+
+- [#8418](https://github.com/Shopify/polaris/pull/8418) [`4018ee268`](https://github.com/Shopify/polaris/commit/4018ee2686e1484769b62361b69284018d574bab) Thanks [@kyledurand](https://github.com/kyledurand)! - Deprecated Grid component
+  Update documentation for deprecated components
+
+* [#8413](https://github.com/Shopify/polaris/pull/8413) [`7bbe096e4`](https://github.com/Shopify/polaris/commit/7bbe096e4ce900f1bc7259d1f792c59eeae7dbe7) Thanks [@zakwarsame](https://github.com/zakwarsame)! - updating bulk actions strings
+
+### Patch Changes
+
+- [#8387](https://github.com/Shopify/polaris/pull/8387) [`7f0f2cad1`](https://github.com/Shopify/polaris/commit/7f0f2cad13840d1b7ecf58738473259376ca5ce2) Thanks [@aveline](https://github.com/aveline)! - Updated `Columns` to accept columns aliases
+
+* [#8115](https://github.com/Shopify/polaris/pull/8115) [`cc706f4ce`](https://github.com/Shopify/polaris/commit/cc706f4ce099a0bf4fc91c23824045ecada51797) Thanks [@mrcthms](https://github.com/mrcthms)! - Grouped PageActions actions at the trailing edge of the container
+
+- [#8470](https://github.com/Shopify/polaris/pull/8470) [`f5e450357`](https://github.com/Shopify/polaris/commit/f5e450357156cd8034275173428b60ec536230cd) Thanks [@aveline](https://github.com/aveline)! - Removed default margin from `Bleed`
+
+- Updated dependencies [[`0e9fa8433`](https://github.com/Shopify/polaris/commit/0e9fa843397a9ec1d1a7eee70d0178d76dd231f8), [`b1768f037`](https://github.com/Shopify/polaris/commit/b1768f03795f224e760edc405dc5bfde298061cb)]:
+  - @shopify/polaris-tokens@6.6.1
+
+## 10.31.0
+
+### Minor Changes
+
+- [#8363](https://github.com/Shopify/polaris/pull/8363) [`13c6c383a`](https://github.com/Shopify/polaris/commit/13c6c383a344588dc7fcc2b4b49b910fde05204a) Thanks [@laurkim](https://github.com/laurkim)! - Migrated usage of `Card` to `LegacyCard`
+
+* [#8450](https://github.com/Shopify/polaris/pull/8450) [`2282bd673`](https://github.com/Shopify/polaris/commit/2282bd673a27a65e6780c3967099b06be28e411f) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `Card` and subcomponents
+
 ## 10.30.0
 
 ### Minor Changes

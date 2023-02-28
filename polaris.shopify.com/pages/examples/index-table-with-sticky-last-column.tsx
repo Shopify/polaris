@@ -1,4 +1,9 @@
-import {IndexTable, Card, useIndexResourceState, Text} from '@shopify/polaris';
+import {
+  IndexTable,
+  LegacyCard,
+  useIndexResourceState,
+  Text,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -58,7 +63,7 @@ function StickyLastCellIndexTableExample() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -69,14 +74,29 @@ function StickyLastCellIndexTableExample() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            id: 'order-count',
+            title: (
+              <Text as="span" variant="bodyMd" alignment="end">
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            hidden: false,
+            title: (
+              <Text as="span" variant="bodyMd" alignment="end">
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
         lastColumnSticky
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 

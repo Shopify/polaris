@@ -104,6 +104,36 @@ const nextConfig = {
         destination: 'https://github.com/Shopify/polaris/blob/main/LICENSE.md',
         permanent: true,
       },
+      {
+        source: '/patterns/error-messages',
+        destination: '/content/error-messages',
+        permanent: true,
+      },
+      {
+        source: '/patterns/help-content',
+        destination: '/content/help-content',
+        permanent: true,
+      },
+      {
+        source: '/patterns/loading',
+        destination: '/patterns-legacy/loading',
+        permanent: true,
+      },
+      {
+        source: '/patterns/new-badge',
+        destination: '/patterns-legacy/new-badge',
+        permanent: true,
+      },
+      {
+        source: '/patterns/pickers',
+        destination: '/patterns-legacy/pickers',
+        permanent: true,
+      },
+      {
+        source: '/patterns/text-fields',
+        destination: '/patterns-legacy/text-fields',
+        permanent: true,
+      },
       ...actions,
       ...deprecated,
       ...feedbackIndicators,
@@ -157,8 +187,18 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/card',
+    destination: '/components/deprecated/card',
+    permanent: false,
+  },
+  {
     source: '/components/display-text',
     destination: '/components/deprecated/display-text',
+    permanent: false,
+  },
+  {
+    source: '/components/grid',
+    destination: '/components/deprecated/grid',
     permanent: false,
   },
   {
@@ -174,6 +214,11 @@ const deprecated = [
   {
     source: '/components/subheading',
     destination: '/components/deprecated/subheading',
+    permanent: false,
+  },
+  {
+    source: '/components/text-container',
+    destination: '/components/deprecated/text-container',
     permanent: false,
   },
   {
@@ -301,11 +346,6 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/card',
-    destination: '/components/layout-and-structure/card',
-    permanent: false,
-  },
-  {
     source: '/components/callout-card',
     destination: '/components/layout-and-structure/callout-card',
     permanent: false,
@@ -328,11 +368,6 @@ const layoutAndStructure = [
   {
     source: '/components/form-layout',
     destination: '/components/layout-and-structure/form-layout',
-    permanent: false,
-  },
-  {
-    source: '/components/grid',
-    destination: '/components/layout-and-structure/grid',
     permanent: false,
   },
   {
@@ -368,11 +403,6 @@ const layoutAndStructure = [
   {
     source: '/components/stack',
     destination: '/components/layout-and-structure/stack',
-    permanent: false,
-  },
-  {
-    source: '/components/text-container',
-    destination: '/components/layout-and-structure/text-container',
     permanent: false,
   },
 ];

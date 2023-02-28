@@ -5,6 +5,7 @@ import {Badge} from '../../../../Badge';
 import {Button} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
 import {Text} from '../../../../Text';
+// eslint-disable-next-line import/no-deprecated
 import {Section} from '../Section';
 
 describe('<Card.Section />', () => {

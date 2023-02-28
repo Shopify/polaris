@@ -131,7 +131,7 @@ Index tables should:
 - Support [filtering](https://polaris.shopify.com/components/filters) if the list can be long.
 - Paginate when the current list contains more than 50 items.
 - Use the [skeleton page](https://polaris.shopify.com/components/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
-- Right align and monospace numerical cells with the [Text](https://polaris.shopify.com/components/text) component
+- Right align and monospace numerical cells and titles with the [Text](https://polaris.shopify.com/components/text) component
 
 Index tables can optionally:
 

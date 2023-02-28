@@ -38,7 +38,7 @@ module.exports = {
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          include: path.resolve('./playroom'),
+          include: [path.resolve('./playroom'), path.resolve('./src')],
           use: [
             {
               loader: require.resolve('babel-loader'),
@@ -66,5 +66,5 @@ module.exports = {
       ],
     },
   }),
-  iframeSandbox: 'allow-scripts',
+  iframeSandbox: 'allow-scripts allow-same-origin',
 };

@@ -5,7 +5,7 @@ import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import type {ActionListItemDescriptor, ComplexAction} from '../../types';
-import {Card} from '../Card';
+import {LegacyCard} from '../LegacyCard';
 import {Button, buttonFrom} from '../Button';
 import {Text} from '../Text';
 import {Popover} from '../Popover';
@@ -137,20 +137,20 @@ export function MediaCard({
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div className={mediaCardClassName}>
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
-          <Card.Section>
+          <LegacyCard.Section>
             {popoverActionsMarkup}
             <Stack vertical spacing="tight">
               {headerMarkup}
               <p className={styles.Description}>{description}</p>
               {actionMarkup}
             </Stack>
-          </Card.Section>
+          </LegacyCard.Section>
         </div>
       </div>
-    </Card>
+    </LegacyCard>
   );
 }

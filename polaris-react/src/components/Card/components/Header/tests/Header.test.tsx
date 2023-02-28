@@ -4,6 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 import {buttonsFrom} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
 import {Text} from '../../../../Text';
+// eslint-disable-next-line import/no-deprecated
 import {Header} from '../Header';
 
 jest.mock('../../../../Button', () => ({

@@ -1,4 +1,4 @@
-import {IndexTable, Card, Text} from '@shopify/polaris';
+import {IndexTable, LegacyCard, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -50,21 +50,36 @@ function IndexTableWithoutCheckboxesExample() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            id: 'order-count',
+            title: (
+              <Text as="span" variant="bodyMd" alignment="end">
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            hidden: false,
+            title: (
+              <Text as="span" variant="bodyMd" alignment="end">
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
         selectable={false}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
