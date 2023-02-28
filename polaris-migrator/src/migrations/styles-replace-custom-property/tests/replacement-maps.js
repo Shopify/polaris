@@ -19,7 +19,7 @@ export default {
     '/^animation/': durationMap,
   },
   atRules: {
-    '/mixin|include/': {
+    '/mixin|include|function/': {
       [exactNamePattern('basic|with-fallback-var|with-fallback-value')]:
         atRuleMap,
     },

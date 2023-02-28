@@ -34,7 +34,7 @@ const fixtures = [
     // Same as `with-from-to-flags-regexp` for atRules
     name: 'with-atRule-replacements',
     options: {
-      atRule: '/mixin|include/',
+      atRule: '/mixin|include|function/',
       atRuleParam: exactNamePattern(
         'basic|with-fallback-var|with-fallback-value',
       ),
@@ -54,8 +54,11 @@ const fixtures = [
     name: 'with-atRule-replacements',
     options: {
       replacementMaps: {
+        decls: {
+          color: {'--p-text': '--p-color-text'},
+        },
         atRules: {
-          '/mixin|include/': {
+          '/mixin|include|function/': {
             [exactNamePattern('basic|with-fallback-var|with-fallback-value')]: {
               '--p-text': '--p-color-text',
             },

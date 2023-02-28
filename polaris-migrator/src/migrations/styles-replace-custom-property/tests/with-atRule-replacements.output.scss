@@ -2,8 +2,13 @@
   color: $color;
 }
 
+@function basic($color: var(--p-color-text)) {
+  @return $color;
+}
+
 .basic {
   @include basic(var(--p-color-text));
+  color: basic(var(--p-color-text));
 }
 
 @mixin with-fallback-var($color: var(--p-color-text, var(--p-color-text))) {
