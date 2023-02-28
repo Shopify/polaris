@@ -119,8 +119,12 @@ function SmallScreenIndexTableWithAllElementsExample() {
             {name}
           </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
+            {orders}
+          </Text>
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -164,8 +168,33 @@ function SmallScreenIndexTableWithAllElementsExample() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              id: 'order-count',
+              title: (
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
+                  Order count
+                </Text>
+              ),
+            },
+            {
+              id: 'amount-spent',
+              title: (
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
+                  Amount spent
+                </Text>
+              ),
+            },
+            ,
           ]}
         >
           {rowMarkup}

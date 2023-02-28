@@ -18,26 +18,6 @@ describe('<PageActions />', () => {
       expect(pageActions).toContainReactComponentTimes(Stack, 1);
     });
 
-    it('uses equalSpacing distribution if secondaryActions are provided', () => {
-      const mockActions = [{content: 'Delete'}];
-
-      const pageActions = mountWithApp(
-        <PageActions secondaryActions={mockActions} />,
-      );
-      const stack = pageActions.find(Stack);
-      expect(stack).toHaveReactProps({
-        distribution: 'equalSpacing',
-      });
-    });
-
-    it('uses trailing distribution if secondaryActions are not provided', () => {
-      const pageActions = mountWithApp(<PageActions />);
-      const stack = pageActions.find(Stack);
-      expect(stack).toHaveReactProps({
-        distribution: 'trailing',
-      });
-    });
-
     it('passes spacing tight to Stack', () => {
       const pageActions = mountWithApp(<PageActions />);
       const stack = pageActions.find(Stack);

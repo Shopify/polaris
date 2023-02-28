@@ -2,8 +2,7 @@ import type {SingleVariantPattern} from '../../src/types';
 
 const pattern: SingleVariantPattern = {
   title: 'Resource index layout',
-  description:
-    'Lets merchants effectively view, manage, and take action on resource objects.',
+  description: 'Lets merchants organize and take action on resource objects.',
   howItHelps: `![Products index page](/images/patterns/resource-index-cover-image.png)
 
 1. The resource index layout is based on a single column to create a clear top-to-bottom hierarchy of tasks and to provide horizontal space for resource data.
@@ -42,7 +41,7 @@ const pattern: SingleVariantPattern = {
       },
       {
         label: 'Card',
-        url: '/components/layout-and-structure/card',
+        url: '/components/layout-and-structure/alpha-card',
       },
     ],
     context: `

@@ -121,7 +121,7 @@ export const getStaticProps: GetStaticProps<
       },
     );
 
-    const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
+    const propsFilePath = path.resolve(process.cwd(), `.cache/props.json`);
     const fileContent = fs.readFileSync(propsFilePath, 'utf8');
     const allType: AllTypes = JSON.parse(fileContent);
 

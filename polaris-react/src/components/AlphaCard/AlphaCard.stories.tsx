@@ -88,7 +88,7 @@ export function WithSubduedSection() {
           </List>
         </Box>
       </AlphaStack>
-      <Bleed marginBlockEnd="5">
+      <Bleed marginBlockEnd="5" marginInline="5">
         <Divider />
         <Box
           background="surface-subdued"

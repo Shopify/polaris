@@ -174,7 +174,7 @@
       "showing": "Visar {itemsCount} {resource}",
       "loading": "Laddar {resource}",
       "selected": "{selectedItemsCount} har valts",
-      "allItemsSelected": "Alla {itemsLength}+ {resourceNamePlural} i din butik har valts.",
+      "allItemsSelected": "Alla {itemsLength}+ {resourceNamePlural} i din butik har valts",
       "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural} i din butik",
       "emptySearchResultTitle": "Inga {resourceNamePlural} hittades",
       "emptySearchResultDescription": "Prova att byta filter eller sökord",
@@ -194,7 +194,7 @@
         "warningMessage": "För att ge en bättre användarupplevelse. Det får bara vara maximalt {maxPromotedActions} främjande åtgärder."
       },
       "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Alla {itemsLength} + {resourceNamePlural} i detta filter är valda.",
+      "allFilteredItemsSelected": "Alla {itemsLength} + {resourceNamePlural} i detta filter har valts",
       "selectAllFilteredItems": "Välj alla {itemsLength} + {resourceNamePlural} i det här filtret"
     },
     "SkeletonPage": {
@@ -277,8 +277,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Artikel",
       "defaultItemPlural": "Artiklar",
-      "allItemsSelected": "Alla {itemsLength}+ {resourceNamePlural} har valts.",
-      "selected": "{selectedItemsCount} har valts.",
+      "allItemsSelected": "Alla {itemsLength}+ {resourceNamePlural} har valts",
+      "selected": "{selectedItemsCount} har valts",
       "a11yCheckboxDeselectAllSingle": "Avmarkera {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Välj {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Avmarkera alla {itemsLength} {resourceNamePlural}",
@@ -290,7 +290,7 @@
       "onboardingBadgeText": "Nytt",
       "resourceLoadingAccessibilityLabel": "Laddar {resourceNamePlural}",
       "selectAllLabel": "Välj alla {resourceNamePlural}",
-      "selected": "{selectedItemsCount} har valts.",
+      "selected": "{selectedItemsCount} har valts",
       "undo": "Ångra",
       "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Välj {resourceName}",

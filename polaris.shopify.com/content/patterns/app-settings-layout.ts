@@ -2,8 +2,7 @@ import type {SingleVariantPattern} from '../../src/types';
 
 const pattern: SingleVariantPattern = {
   title: 'App settings layout',
-  description:
-    'Lets merchants easily scan many groups of settings and find the ones they want to change.',
+  description: 'Lets merchants scan and find groups of settings in apps.',
   howItHelps: `![App settings page with two columns](/images/patterns/app-settings-cover-image.png)
 
   1. In the left column, glanceable labels and descriptions are listed to make it easier for merchants to scan the page and quickly find what they are looking for.

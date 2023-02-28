@@ -5,6 +5,7 @@ keywords:
   - stylelint
   - conventions
   - conventions rules
+  - CSS custom properties
 ---
 
 Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`.

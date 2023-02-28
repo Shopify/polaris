@@ -59,8 +59,16 @@ export function Default() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -77,8 +85,32 @@ export function Default() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -128,8 +160,16 @@ export function Flush() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>{location}</IndexTable.Cell>
-        <IndexTable.Cell flush>{orders}</IndexTable.Cell>
-        <IndexTable.Cell flush>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell flush>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell flush>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -146,8 +186,34 @@ export function Flush() {
         headings={[
           {title: 'Name', flush: true},
           {title: 'Location', flush: true},
-          {title: 'Order count', flush: true},
-          {title: 'Amount spent', flush: true},
+          {
+            id: 'order-count',
+            flush: true,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            flush: true,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -192,14 +258,16 @@ export function SmallScreen() {
         position={index}
       >
         <div style={{padding: '12px 16px'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
+          <Text variant="bodyMd" fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
+            {orders}
+          </Text>
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -219,8 +287,32 @@ export function SmallScreen() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              id: 'order-count',
+              title: (
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
+                  Order count
+                </Text>
+              ),
+            },
+            {
+              id: 'amount-spent',
+              title: (
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
+                  Amount spent
+                </Text>
+              ),
+            },
           ]}
         >
           {rowMarkup}
@@ -266,14 +358,16 @@ export function SmallScreenLoading() {
         position={index}
       >
         <div style={{padding: '12px 16px'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
+          <Text variant="bodyMd" fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
+            {orders}
+          </Text>
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -293,8 +387,32 @@ export function SmallScreenLoading() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              id: 'order-count',
+              title: (
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
+                  Order count
+                </Text>
+              ),
+            },
+            {
+              id: 'amount-spent',
+              title: (
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
+                  Amount spent
+                </Text>
+              ),
+            },
           ]}
           loading
         >
@@ -337,8 +455,16 @@ export function WithEmptyState() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -356,8 +482,32 @@ export function WithEmptyState() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -428,8 +578,16 @@ export function WithBulkActions() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -448,8 +606,32 @@ export function WithBulkActions() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -546,8 +728,16 @@ export function WithMultiplePromotedBulkActions() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -566,8 +756,32 @@ export function WithMultiplePromotedBulkActions() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -639,8 +853,16 @@ export function WithBulkActionsAndSelectionAcrossPages() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -663,8 +885,27 @@ export function WithBulkActionsAndSelectionAcrossPages() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              id: 'order-count',
+              title: (
+                <Text as="span" variant="bodySm" alignment="end">
+                  Order count
+                </Text>
+              ),
+            },
+            {
+              id: 'amount-spent',
+              title: (
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
+                  Amount spent
+                </Text>
+              ),
+            },
           ]}
         >
           {rowMarkup}
@@ -715,8 +956,16 @@ export function WithLoadingState() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -734,8 +983,32 @@ export function WithLoadingState() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -833,8 +1106,16 @@ export function WithFiltering() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -872,8 +1153,32 @@ export function WithFiltering() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -943,8 +1248,16 @@ export function WithRowStatus() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -961,8 +1274,32 @@ export function WithRowStatus() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -1033,8 +1370,16 @@ export function WithStickyLastColumn() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{status}</IndexTable.Cell>
         <IndexTable.Cell>{channel}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
@@ -1055,8 +1400,33 @@ export function WithStickyLastColumn() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            hidden: false,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
           {title: 'Status'},
           {title: 'Channel'},
           {title: 'Payment status'},
@@ -1117,8 +1487,16 @@ export function WithRowNavigationLink() {
           </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1135,8 +1513,33 @@ export function WithRowNavigationLink() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            hidden: false,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -1192,8 +1595,16 @@ export function WithClickableButtonColumn() {
           </Button>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1210,8 +1621,33 @@ export function WithClickableButtonColumn() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            hidden: false,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -1253,8 +1689,16 @@ export function WithoutCheckboxes() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1267,8 +1711,33 @@ export function WithoutCheckboxes() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            hidden: false,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
         selectable={false}
       >
@@ -1388,8 +1857,16 @@ export function WithAllOfItsElements() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1431,8 +1908,33 @@ export function WithAllOfItsElements() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            hidden: false,
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -1584,8 +2086,16 @@ export function WithSortableHeadings() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
@@ -1606,8 +2116,33 @@ export function WithSortableHeadings() {
         headings={[
           {title: 'Name'},
           {title: 'Date'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
+
           {title: 'Location'},
           {title: 'Fulfillment status'},
           {title: 'Payment status'},
@@ -1752,8 +2287,16 @@ export function WithSortableCustomHeadings() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
@@ -1778,7 +2321,19 @@ export function WithSortableCustomHeadings() {
             tooltipWidth: 'wide',
           },
           {title: 'Date', tooltipContent: 'I am the Date tooltip'},
-          {title: 'Order count'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
           {
             title: 'Amount spent',
             tooltipContent:
@@ -1844,8 +2399,16 @@ export function WithCustomTooltips() {
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1870,8 +2433,32 @@ export function WithCustomTooltips() {
           {
             title: 'Location',
           },
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text
+                as="span"
+                variant="bodySm"
+                fontWeight="medium"
+                alignment="end"
+              >
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
@@ -1985,14 +2572,16 @@ export function SmallScreenWithAllOfItsElements() {
         position={index}
       >
         <div style={{padding: '.75rem 1rem'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
+          <Text variant="bodyMd" fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
+            {orders}
+          </Text>
+          <Text variant="bodyMd" as="p" alignment="end" numeric>
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -2036,8 +2625,27 @@ export function SmallScreenWithAllOfItsElements() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              id: 'order-count',
+              title: (
+                <Text as="span" variant="bodySm" alignment="end">
+                  Order count
+                </Text>
+              ),
+            },
+            {
+              id: 'amount-spent',
+              title: (
+                <Text
+                  as="span"
+                  variant="bodySm"
+                  fontWeight="medium"
+                  alignment="end"
+                >
+                  Amount spent
+                </Text>
+              ),
+            },
           ]}
         >
           {rowMarkup}

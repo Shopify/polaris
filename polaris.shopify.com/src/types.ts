@@ -151,10 +151,12 @@ export enum Breakpoints {
 }
 
 export enum StatusName {
+  New = 'New',
   Deprecated = 'Deprecated',
   Alpha = 'Alpha',
   Beta = 'Beta',
   Information = 'Information',
+  Legacy = 'Legacy',
   Warning = 'Warning',
 }
 

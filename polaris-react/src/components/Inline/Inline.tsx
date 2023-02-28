@@ -28,7 +28,6 @@ export interface InlineProps {
    */
   blockAlign?: BlockAlign;
   /** The spacing between elements. Accepts a spacing token or an object of spacing tokens for different screen sizes.
-   * @default '4'
    * @example
    * gap='2'
    * gap={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
@@ -43,7 +42,7 @@ export interface InlineProps {
 export const Inline = function Inline({
   align = 'start',
   blockAlign = 'center',
-  gap = '4',
+  gap,
   wrap = true,
   children,
 }: InlineProps) {
