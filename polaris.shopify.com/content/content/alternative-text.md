@@ -246,7 +246,7 @@ For more information on coding and alt text standards, visit the
 
 ## Related components
 
-The following Polaris components come props to set alt text or aria labels, along with specific guidance for their use:
+The following Polaris components include props to set alt text or aria labels, along with specific guidance for their use:
 
 - [Avatar](https://polaris.shopify.com/components/images-and-icons/avatar)
 - [Button](/components/actions/button)
