@@ -13,10 +13,19 @@ interface ReplacementMap {
 }
 
 interface ReplacementMaps {
-  [propertyName: string]: ReplacementMap;
+  decls: {
+    [propertyName: string]: ReplacementMap;
+  };
+  atRules: {
+    [atRuleName: string]: {
+      [atRuleParam: string]: ReplacementMap;
+    };
+  };
 }
 
 interface PluginOptions extends Options {
+  atRule?: string;
+  atRuleParam?: string;
   decl?: string;
   from?: string;
   to?: string;
@@ -34,8 +43,6 @@ export default function stylesReplaceCustomProperty(
   }).css;
 }
 
-const processed = Symbol('processed');
-
 function plugin(options: PluginOptions = {}): Plugin {
   let replacementMaps: ReplacementMaps | undefined;
 
@@ -49,8 +56,17 @@ function plugin(options: PluginOptions = {}): Plugin {
     replacementMaps = require(mapsPath)!.default;
   } else if (options.from && options.to) {
     replacementMaps = {
-      [options.decl || '/.+/']: {
-        [options.from]: options.to,
+      decls: {
+        [options.decl || '/.+/']: {
+          [options.from]: options.to,
+        },
+      },
+      atRules: {
+        [options.atRule || '/.+/']: {
+          [options.atRuleParam || '/.+/']: {
+            [options.from]: options.to,
+          },
+        },
       },
     };
   } else if (options.replacementMaps) {
@@ -61,51 +77,94 @@ function plugin(options: PluginOptions = {}): Plugin {
     throw new Error('Unable to resolve the replacement maps');
   }
 
-  const replacementMapsKeys = Object.keys(replacementMaps);
+  replacementMaps.atRules ||= {};
+  replacementMaps.decls ||= {};
+
+  const replacementAtRuleNames = Object.keys(replacementMaps.atRules);
+  const replacementDeclPropertyNames = Object.keys(replacementMaps.decls);
 
   return {
     postcssPlugin: 'styles-replace-custom-property',
-    Declaration(decl) {
-      // @ts-expect-error - Skip if processed so we don't process it again
-      if (decl[processed] || !replacementMaps) return;
+    Root(root) {
+      root.walkAtRules((atRule) => {
+        if (!replacementMaps) return;
 
-      const matchedDecl = matchesStringOrRegExp(decl.prop, replacementMapsKeys);
+        const matchedAtRuleName = matchesStringOrRegExp(
+          atRule.name,
+          replacementAtRuleNames,
+        );
 
-      if (!matchedDecl) return;
+        if (!matchedAtRuleName) return;
 
-      const replacementMap = replacementMaps[matchedDecl.pattern.toString()];
-      const parsedValue = valueParser(decl.value);
+        const atRuleNameReplacementMap =
+          replacementMaps.atRules[matchedAtRuleName.pattern.toString()];
 
-      parsedValue.walk((node) => {
-        if (!isSassFunction('var', node)) return;
+        const atRuleNameParams = Object.keys(atRuleNameReplacementMap);
 
-        for (const argNode of node.nodes) {
-          if (
-            argNode.type !== 'word' ||
-            !argNode.value.startsWith('--p-') ||
-            !isKeyOf(replacementMap, argNode.value)
-          ) {
-            continue;
-          }
+        const matchedAtRuleParam = matchesStringOrRegExp(
+          atRule.params,
+          atRuleNameParams,
+        );
 
-          const replacement = replacementMap[argNode.value];
+        if (!matchedAtRuleParam) return;
 
-          if (replacement.startsWith('--')) {
-            argNode.value = replacement;
-            continue;
-          }
+        const replacementMap =
+          atRuleNameReplacementMap[matchedAtRuleParam.pattern.toString()];
 
-          // @ts-expect-error - Reassign the type to word
-          node.type = 'word';
-          node.value = replacement;
-          break;
-        }
+        const parsedValue = valueParser(atRule.params);
+
+        parsedValue.walk(processParsedValue(replacementMap));
+
+        atRule.params = parsedValue.toString();
       });
 
-      decl.value = parsedValue.toString();
+      root.walkDecls((decl) => {
+        if (!replacementMaps) return;
 
-      // @ts-expect-error - Mark the declaration as processed
-      decl[processed] = true;
+        const matchedDecl = matchesStringOrRegExp(
+          decl.prop,
+          replacementDeclPropertyNames,
+        );
+
+        if (!matchedDecl) return;
+
+        const replacementMap =
+          replacementMaps.decls[matchedDecl.pattern.toString()];
+
+        const parsedValue = valueParser(decl.value);
+
+        parsedValue.walk(processParsedValue(replacementMap));
+
+        decl.value = parsedValue.toString();
+      });
     },
+  };
+}
+
+function processParsedValue(replacementMap: ReplacementMap) {
+  return (node: valueParser.Node) => {
+    if (!isSassFunction('var', node)) return;
+
+    for (const argNode of node.nodes) {
+      if (
+        argNode.type !== 'word' ||
+        !argNode.value.startsWith('--p-') ||
+        !isKeyOf(replacementMap, argNode.value)
+      ) {
+        continue;
+      }
+
+      const replacement = replacementMap[argNode.value];
+
+      if (replacement.startsWith('--')) {
+        argNode.value = replacement;
+        continue;
+      }
+
+      // @ts-expect-error - We intentionally replace the var(--p-*) function with a value
+      node.type = 'word';
+      node.value = replacement;
+      break;
+    }
   };
 }

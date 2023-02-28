@@ -27,7 +27,41 @@ const fixtures = [
   {
     name: 'with-replacementMaps-option',
     options: {
-      replacementMaps: {color: {'--p-text': '--p-color-text'}},
+      replacementMaps: {decls: {color: {'--p-text': '--p-color-text'}}},
+    },
+  },
+  {
+    // Same as `with-from-to-flags-regexp` for atRules
+    name: 'with-atRule-replacements',
+    options: {
+      atRule: '/mixin|include/',
+      atRuleParam: exactNamePattern(
+        'basic|with-fallback-var|with-fallback-value',
+      ),
+      from: '--p-text',
+      to: '--p-color-text',
+    },
+  },
+  {
+    // Same as `with-maps-flag` for atRules
+    name: 'with-atRule-replacements',
+    options: {
+      maps: 'src/migrations/styles-replace-custom-property/tests/replacement-maps',
+    },
+  },
+  {
+    // Same as `with-replacementMaps-option` for atRules
+    name: 'with-atRule-replacements',
+    options: {
+      replacementMaps: {
+        atRules: {
+          '/mixin|include/': {
+            [exactNamePattern('basic|with-fallback-var|with-fallback-value')]: {
+              '--p-text': '--p-color-text',
+            },
+          },
+        },
+      },
     },
   },
 ];
@@ -39,4 +73,12 @@ for (const fixture of fixtures) {
     extension: 'scss',
     options: fixture.options,
   });
+}
+
+function exactNamePattern(name: string) {
+  // Using `^` to match the start of a string since postcss normalizes the input
+  // https://regex101.com/r/3tzvIW/1
+  return new RegExp(
+    String.raw`^([\w-]+\.)?(?<![\w-])${name}(?![\w-])`,
+  ).toString();
 }

@@ -1,0 +1,23 @@
+@mixin basic($color: var(--p-color-text)) {
+  color: $color;
+}
+
+.basic {
+  @include basic(var(--p-color-text));
+}
+
+@mixin with-fallback-var($color: var(--p-color-text, var(--p-color-text))) {
+  color: $color;
+}
+
+.with-fallback-var {
+  @include with-fallback-var(var(--p-color-text, var(--p-color-text)));
+}
+
+@mixin with-fallback-value($color: var(--p-color-text, #000)) {
+  color: $color;
+}
+
+.with-fallback-value {
+  @include with-fallback-value(var(--p-color-text, #000));
+}
