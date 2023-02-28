@@ -4,8 +4,7 @@
     {
       "files": "*.md",
       "options": {
-        "semi": false,
-        "arrowParens": "always"
+        "semi": false
       }
     }
   ]
