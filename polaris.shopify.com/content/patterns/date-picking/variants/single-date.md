@@ -35,11 +35,15 @@ This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card)
 
 
 ```javascript {"type":"sandboxContext","for":"example"}
-{(____CODE____)()}
+{
+  \#(____CODE____\#)()
+}
 ```
 
 ```javascript {"type":"previewContext","for":"example"}
-{(____CODE____)()}
+{
+  \#(____CODE____\#)()
+}
 ```
 
 ```javascript {"type":"livePreview","id":"example"}
