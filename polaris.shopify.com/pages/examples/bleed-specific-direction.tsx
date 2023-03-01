@@ -5,25 +5,25 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedSpecificDirectionExample() {
   return (
-    <AlphaStack gap="6">
-      <Box background="surface" border="base" padding="5">
-        <Bleed marginBlockStart="5">
-          <Placeholder label="Top" />
+    <AlphaStack gap="6" fullWidth>
+      <Box background="surface" border="base" padding="8">
+        <Bleed marginInlineStart="8">
+          <Placeholder label="marginInlineStart" />
         </Bleed>
       </Box>
-      <Box background="surface" border="base" padding="5">
-        <Bleed marginBlockEnd="5">
-          <Placeholder label="Bottom" />
+      <Box background="surface" border="base" padding="8">
+        <Bleed marginInlineEnd="8">
+          <Placeholder label="marginInlineEnd" />
         </Bleed>
       </Box>
-      <Box background="surface" border="base" padding="5">
-        <Bleed marginInlineStart="5" marginInlineEnd="0">
-          <Placeholder label="Left" />
+      <Box background="surface" border="base" padding="8">
+        <Bleed marginBlockStart="8">
+          <Placeholder label="marginBlockStart" />
         </Bleed>
       </Box>
-      <Box background="surface" border="base" padding="5">
-        <Bleed marginInlineEnd="5" marginInlineStart="0">
-          <Placeholder label="Right" />
+      <Box background="surface" border="base" padding="8">
+        <Bleed marginBlockEnd="8">
+          <Placeholder label="marginBlockEnd" />
         </Bleed>
       </Box>
     </AlphaStack>
@@ -34,7 +34,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#7B47F1',
+        background: 'var(--p-color-text-info)',
         padding: '14px var(--p-space-2)',
         height: height,
         width: width,
