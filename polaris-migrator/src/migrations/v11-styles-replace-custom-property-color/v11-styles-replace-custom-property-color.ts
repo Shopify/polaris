@@ -76,7 +76,7 @@ const allMap = {
   '--p-surface-selected-pressed': '--p-color-bg-interactive-subdued-active',
   '--p-action-secondary': '--p-color-bg-subdued',
   '--p-action-secondary-disabled': '--p-color-bg-disabled',
-  '--p-action-secondary-hovered': '--p-color-bg-hover',
+  '--p-action-secondary-hovered': '--p-color-bg-subdued-hover',
   '--p-action-secondary-hovered-dark': '--p-color-bg-inverse-hover',
   '--p-action-secondary-pressed': '--p-color-bg-subdued-active',
   '--p-action-secondary-pressed-dark': '--p-color-bg-inverse-active',
