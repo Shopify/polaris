@@ -86,30 +86,14 @@ export function Default() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -187,32 +171,16 @@ export function Flush() {
           {title: 'Name', flush: true},
           {title: 'Location', flush: true},
           {
+            alignment: 'end',
             id: 'order-count',
             flush: true,
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
             flush: true,
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -288,30 +256,14 @@ export function SmallScreen() {
             {title: 'Name'},
             {title: 'Location'},
             {
+              alignment: 'end',
               id: 'order-count',
-              title: (
-                <Text
-                  as="span"
-                  variant="bodySm"
-                  fontWeight="medium"
-                  alignment="end"
-                >
-                  Order count
-                </Text>
-              ),
+              title: 'Order count',
             },
             {
+              alignment: 'end',
               id: 'amount-spent',
-              title: (
-                <Text
-                  as="span"
-                  variant="bodySm"
-                  fontWeight="medium"
-                  alignment="end"
-                >
-                  Amount spent
-                </Text>
-              ),
+              title: 'Amount spent',
             },
           ]}
         >
@@ -388,30 +340,14 @@ export function SmallScreenLoading() {
             {title: 'Name'},
             {title: 'Location'},
             {
+              alignment: 'end',
               id: 'order-count',
-              title: (
-                <Text
-                  as="span"
-                  variant="bodySm"
-                  fontWeight="medium"
-                  alignment="end"
-                >
-                  Order count
-                </Text>
-              ),
+              title: 'Order count',
             },
             {
+              alignment: 'end',
               id: 'amount-spent',
-              title: (
-                <Text
-                  as="span"
-                  variant="bodySm"
-                  fontWeight="medium"
-                  alignment="end"
-                >
-                  Amount spent
-                </Text>
-              ),
+              title: 'Amount spent',
             },
           ]}
           loading
@@ -483,30 +419,14 @@ export function WithEmptyState() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -607,30 +527,14 @@ export function WithBulkActions() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -757,30 +661,14 @@ export function WithMultiplePromotedBulkActions() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -886,25 +774,14 @@ export function WithBulkActionsAndSelectionAcrossPages() {
             {title: 'Name'},
             {title: 'Location'},
             {
+              alignment: 'end',
               id: 'order-count',
-              title: (
-                <Text as="span" variant="bodySm" alignment="end">
-                  Order count
-                </Text>
-              ),
+              title: 'Order count',
             },
             {
+              alignment: 'end',
               id: 'amount-spent',
-              title: (
-                <Text
-                  as="span"
-                  variant="bodySm"
-                  fontWeight="medium"
-                  alignment="end"
-                >
-                  Amount spent
-                </Text>
-              ),
+              title: 'Amount spent',
             },
           ]}
         >
@@ -984,30 +861,14 @@ export function WithLoadingState() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -1154,30 +1015,14 @@ export function WithFiltering() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -1275,30 +1120,14 @@ export function WithRowStatus() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -1401,31 +1230,14 @@ export function WithStickyLastColumn() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            hidden: false,
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
           {title: 'Status'},
           {title: 'Channel'},
@@ -1514,31 +1326,14 @@ export function WithRowNavigationLink() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            hidden: false,
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -1622,31 +1417,14 @@ export function WithClickableButtonColumn() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            hidden: false,
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -1712,31 +1490,15 @@ export function WithoutCheckboxes() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
-            id: 'amount-spent',
+            alignment: 'end',
             hidden: false,
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            id: 'amount-spent',
+            title: 'Amount spent',
           },
         ]}
         selectable={false}
@@ -1909,31 +1671,15 @@ export function WithAllOfItsElements() {
           {title: 'Name'},
           {title: 'Location'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
-            id: 'amount-spent',
+            alignment: 'end',
             hidden: false,
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            id: 'amount-spent',
+            title: 'Amount spent',
           },
         ]}
       >
@@ -2117,30 +1863,14 @@ export function WithSortableHeadings() {
           {title: 'Name'},
           {title: 'Date'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
 
           {title: 'Location'},
@@ -2322,19 +2052,12 @@ export function WithSortableCustomHeadings() {
           },
           {title: 'Date', tooltipContent: 'I am the Date tooltip'},
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             title: 'Amount spent',
             tooltipContent:
               'I am a wide Amount spent tooltip that stays when clicked',
@@ -2434,30 +2157,14 @@ export function WithCustomTooltips() {
             title: 'Location',
           },
           {
+            alignment: 'end',
             id: 'order-count',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Order count
-              </Text>
-            ),
+            title: 'Order count',
           },
           {
+            alignment: 'end',
             id: 'amount-spent',
-            title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
-                Amount spent
-              </Text>
-            ),
+            title: 'Amount spent',
           },
         ]}
       >
@@ -2626,25 +2333,14 @@ export function SmallScreenWithAllOfItsElements() {
             {title: 'Name'},
             {title: 'Location'},
             {
+              alignment: 'end',
               id: 'order-count',
-              title: (
-                <Text as="span" variant="bodySm" alignment="end">
-                  Order count
-                </Text>
-              ),
+              title: 'Order count',
             },
             {
+              alignment: 'end',
               id: 'amount-spent',
-              title: (
-                <Text
-                  as="span"
-                  variant="bodySm"
-                  fontWeight="medium"
-                  alignment="end"
-                >
-                  Amount spent
-                </Text>
-              ),
+              title: 'Amount spent',
             },
           ]}
         >
