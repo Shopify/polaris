@@ -1,12 +1,4 @@
 import type {TabProps} from './types';
-import styles from './Tabs.scss';
-
-export function getSelectedTab() {
-  const activeButton = document.querySelector(
-    `[class*="${styles['Tab-active']}"]`,
-  ) as HTMLElement;
-  return activeButton;
-}
 
 export function getVisibleAndHiddenTabIndices(
   tabs: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[],

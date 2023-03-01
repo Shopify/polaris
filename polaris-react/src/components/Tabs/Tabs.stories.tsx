@@ -127,9 +127,12 @@ export function WithActions() {
   }));
 
   return (
-    <LegacyCard>
-      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} />
-    </LegacyCard>
+    <Tabs
+      tabs={tabs}
+      selected={selected}
+      onSelect={handleTabChange}
+      showNewTab
+    />
   );
 }
 

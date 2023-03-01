@@ -1,1 +1,0 @@
-export {SmallScreenTabs} from './SmallScreenTabs';

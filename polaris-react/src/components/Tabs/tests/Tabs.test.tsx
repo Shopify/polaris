@@ -10,6 +10,7 @@ import {Tab, Panel, CreateViewModal, TabMeasurer} from '../components';
 import {Badge} from '../../Badge';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
 import {UnstyledButton} from '../../UnstyledButton';
+import styles from '../Tabs.scss';
 
 jest.mock('../../Portal', () => ({
   ...(jest.requireActual('../../Portal') as any),
@@ -18,9 +19,15 @@ jest.mock('../../Portal', () => ({
   },
 }));
 
+jest.mock('../../../utilities/breakpoints', () => ({
+  ...(jest.requireActual('../../../utilities/breakpoints') as any),
+  useBreakpoints: jest.fn(),
+}));
+
 describe('Tabs', () => {
   beforeEach(() => {
     matchMedia.mock();
+    mockUseBreakpoints(false);
   });
 
   afterEach(() => {
@@ -610,4 +617,25 @@ describe('Tabs', () => {
       expect(onSaveNewViewModal).toHaveBeenCalledWith('foo');
     });
   });
+
+  describe('small screen tabs', () => {
+    it('will not display the disclosure tab', () => {
+      mockUseBreakpoints(true);
+      const wrapper = mountWithApp(<Tabs {...mockProps} />);
+
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: styles.DisclosureActivator,
+      });
+    });
+  });
 });
+
+function mockUseBreakpoints(mdDown: boolean) {
+  const useBreakpoints: jest.Mock = jest.requireMock(
+    '../../../utilities/breakpoints',
+  ).useBreakpoints;
+
+  useBreakpoints.mockReturnValue({
+    mdDown,
+  });
+}

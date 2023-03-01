@@ -1,5 +1,5 @@
-import React, {useEffect, useCallback} from 'react';
-import type {KeyboardEvent} from 'react';
+import React, {useEffect, useCallback, useRef, useReducer} from 'react';
+import type {KeyboardEvent, FocusEvent} from 'react';
 import {CaretDownMinor, PlusMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -11,19 +11,27 @@ import {UnstyledButton} from '../UnstyledButton';
 import {Tooltip} from '../Tooltip';
 import {Text} from '../Text';
 import {Box} from '../Box';
+import {usePrevious} from '../../utilities/use-previous';
 
-import type {TabProps, TabMeasurements} from './types';
-import {
-  Tab,
-  CreateViewModal,
-  List,
-  TabMeasurer,
-  Panel,
-  SmallScreenTabs,
-} from './components';
-import {useTabsMethods} from './hooks';
-import styles from './Tabs.scss';
 import {getVisibleAndHiddenTabIndices} from './utilities';
+import type {TabProps, TabMeasurements} from './types';
+import {Tab, CreateViewModal, List, TabMeasurer, Panel} from './components';
+import styles from './Tabs.scss';
+
+export interface State {
+  disclosureWidth: number;
+  tabWidths: number[];
+  visibleTabs: number[];
+  hiddenTabs: number[];
+  containerWidth: number;
+  showDisclosure: boolean;
+  tabToFocus: number;
+  isTabPopoverOpen: boolean;
+  isTabModalOpen: boolean;
+  isNewViewModalActive: boolean;
+  modalSubmitted: boolean;
+  isTabsFocused: boolean;
+}
 
 export interface TabsProps {
   /** The items that map to each Tab. */
@@ -47,17 +55,11 @@ export interface TabsProps {
   /** Text to replace disclosures horizontal dots */
   disclosureText?: string;
 }
-
-export type CombinedProps = TabsProps & {
-  i18n: ReturnType<typeof useI18n>;
-};
-
 const CREATE_NEW_VIEW_ID = 'create-new-view';
 
-export const TabsInner = ({
+export const Tabs = ({
   tabs,
   children,
-  i18n,
   selected,
   newViewAccessibilityLabel,
   showNewTab,
@@ -66,28 +68,35 @@ export const TabsInner = ({
   onSelect,
   fitted,
   disclosureText,
-}: CombinedProps) => {
-  const {
-    state,
-    setState,
-    handleCloseNewViewModal,
-    handleSaveNewViewModal,
-    handleClickNewTab,
-    handleTabClick,
-    renderTabMarkup,
-    handleFocus,
-    handleBlur,
-    handleKeyDown,
-    handleTogglePopover,
-    handleToggleModal,
-  } = useTabsMethods({
-    tabs,
-    children,
-    selected,
-    disabled,
-    onSaveNewViewModal,
-    onSelect,
-  });
+}: TabsProps) => {
+  const i18n = useI18n();
+
+  const {mdDown} = useBreakpoints();
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const selectedTabRef = useRef<HTMLElement>(null);
+
+  const [state, setState] = useReducer(
+    (data: State, partialData: Partial<State>): State => {
+      return {...data, ...partialData};
+    },
+    {
+      disclosureWidth: 0,
+      containerWidth: Infinity,
+      tabWidths: [],
+      visibleTabs: [],
+      hiddenTabs: [],
+      showDisclosure: false,
+      tabToFocus: -1,
+      isNewViewModalActive: false,
+      modalSubmitted: false,
+      isTabsFocused: false,
+      isTabPopoverOpen: false,
+      isTabModalOpen: false,
+    },
+  );
+
   const {
     tabToFocus,
     visibleTabs,
@@ -103,6 +112,188 @@ export const TabsInner = ({
     isTabPopoverOpen,
   } = state;
 
+  const prevModalOpen = usePrevious(isTabModalOpen);
+  const prevPopoverOpen = usePrevious(isTabPopoverOpen);
+
+  useEffect(() => {
+    const hasModalClosed = prevModalOpen && !isTabModalOpen;
+    const hasPopoverClosed = prevPopoverOpen && !isTabPopoverOpen;
+    if (hasModalClosed) {
+      setState({isTabsFocused: true, tabToFocus: selected});
+    } else if (hasPopoverClosed && !isTabModalOpen) {
+      setState({isTabsFocused: true, tabToFocus: selected});
+    }
+  }, [
+    prevPopoverOpen,
+    isTabPopoverOpen,
+    prevModalOpen,
+    isTabModalOpen,
+    selected,
+    tabToFocus,
+  ]);
+
+  const handleTogglePopover = useCallback(
+    (isOpen: boolean) => setState({isTabPopoverOpen: isOpen}),
+    [],
+  );
+
+  const handleToggleModal = useCallback(
+    (isOpen: boolean) => setState({isTabModalOpen: isOpen}),
+    [],
+  );
+
+  const handleCloseNewViewModal = () => {
+    setState({
+      isNewViewModalActive: false,
+    });
+  };
+
+  const handleSaveNewViewModal = async (value: string) => {
+    if (!onSaveNewViewModal) {
+      return false;
+    }
+    const hasExecuted = await onSaveNewViewModal?.(value);
+    if (hasExecuted) {
+      setState({
+        modalSubmitted: true,
+      });
+    }
+    return hasExecuted;
+  };
+
+  const handleClickNewTab = () => {
+    setState({
+      isNewViewModalActive: true,
+    });
+  };
+
+  const handleTabClick = useCallback(
+    (id: string) => {
+      const tab = tabs.find((aTab) => aTab.id === id);
+      if (tab == null) {
+        return null;
+      }
+      const selectedIndex = tabs.indexOf(tab);
+      onSelect?.(selectedIndex);
+    },
+    [tabs, onSelect],
+  );
+
+  const renderTabMarkup = useCallback(
+    (tab: TabProps, index: number) => {
+      const handleClick = () => {
+        handleTabClick(tab.id);
+        tab.onAction?.();
+      };
+
+      const viewNames = tabs.map(({content}) => content);
+      const tabPanelID = tab.panelID || `${tab.id}-panel`;
+
+      return (
+        <Tab
+          {...tab}
+          key={`${index}-${tab.id}`}
+          id={tab.id}
+          panelID={children ? tabPanelID : undefined}
+          disabled={disabled}
+          siblingTabHasFocus={tabToFocus > -1}
+          focused={index === tabToFocus}
+          selected={index === selected}
+          onAction={handleClick}
+          accessibilityLabel={tab.accessibilityLabel}
+          url={tab.url}
+          content={tab.content}
+          onToggleModal={handleToggleModal}
+          onTogglePopover={handleTogglePopover}
+          viewNames={viewNames}
+          ref={index === selected ? selectedTabRef : null}
+        />
+      );
+    },
+    [
+      disabled,
+      handleTabClick,
+      tabs,
+      children,
+      selected,
+      tabToFocus,
+      handleToggleModal,
+      handleTogglePopover,
+    ],
+  );
+
+  const handleFocus = useCallback((event: FocusEvent<HTMLUListElement>) => {
+    const target = event.target;
+    const isItem = target.classList.contains(styles.Item);
+    const isInNaturalDOMOrder =
+      target.closest(`[data-tabs-focus-catchment]`) || isItem;
+
+    const isDisclosureActivator = target.classList.contains(
+      styles.DisclosureActivator,
+    );
+
+    if (isDisclosureActivator || !isInNaturalDOMOrder) {
+      return;
+    }
+
+    setState({
+      isTabsFocused: true,
+    });
+  }, []);
+
+  const handleBlur = useCallback(
+    (event: FocusEvent<HTMLUListElement>) => {
+      const target = event.target;
+      const relatedTarget = event.relatedTarget;
+      const isInNaturalDOMOrder = relatedTarget?.closest?.(`.${styles.Tabs}`);
+      const targetIsATab = target?.classList?.contains?.(styles.Tab);
+      const focusReceiverIsAnItem = relatedTarget?.classList.contains(
+        styles.Item,
+      );
+
+      if (
+        !relatedTarget &&
+        !isTabModalOpen &&
+        !targetIsATab &&
+        !focusReceiverIsAnItem
+      ) {
+        setState({
+          tabToFocus: -1,
+        });
+        return;
+      }
+
+      if (
+        !isInNaturalDOMOrder &&
+        !isTabModalOpen &&
+        !targetIsATab &&
+        !focusReceiverIsAnItem
+      ) {
+        setState({
+          tabToFocus: -1,
+        });
+        return;
+      }
+
+      setState({
+        isTabsFocused: false,
+      });
+    },
+    [isTabModalOpen],
+  );
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (isTabPopoverOpen || isTabModalOpen || isNewViewModalActive) {
+      return;
+    }
+    const {key} = event;
+
+    if (key === 'ArrowLeft' || key === 'ArrowRight') {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
   useEffect(() => {
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
       tabs,
@@ -116,6 +307,21 @@ export const TabsInner = ({
       hiddenTabs,
     });
   }, [containerWidth, disclosureWidth, tabs, selected, tabWidths, setState]);
+
+  const moveToSelectedTab = useCallback(() => {
+    const activeButton = selectedTabRef.current?.querySelector(
+      `.${styles['Tab-active']}`,
+    ) as HTMLElement;
+    if (activeButton) {
+      moveToActiveTab(activeButton.offsetLeft);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (mdDown) {
+      moveToSelectedTab();
+    }
+  }, [moveToSelectedTab, selected, mdDown]);
 
   useEffect(() => {
     if (isTabsFocused && !showDisclosure) {
@@ -136,9 +342,10 @@ export const TabsInner = ({
       return;
     }
     const key = event.key;
-    const tabsArrayInOrder = showDisclosure
-      ? visibleTabs.concat(hiddenTabs)
-      : [...visibleTabs];
+    const tabsArrayInOrder =
+      showDisclosure || mdDown
+        ? visibleTabs.concat(hiddenTabs)
+        : [...visibleTabs];
 
     let newFocus = tabsArrayInOrder.indexOf(tabToFocus);
 
@@ -212,16 +419,30 @@ export const TabsInner = ({
     });
   };
 
+  const moveToActiveTab = (offsetLeft: number) => {
+    setTimeout(() => {
+      if (scrollRef.current && typeof scrollRef.current.scroll === 'function') {
+        const scrollRefOffset = wrapRef?.current?.offsetLeft || 0;
+        scrollRef?.current?.scroll({
+          left: offsetLeft - scrollRefOffset,
+        });
+      }
+    }, 0);
+  };
+
   const createViewA11yLabel =
     newViewAccessibilityLabel ||
     i18n.translate('Polaris.Tabs.newViewAccessibilityLabel');
 
-  const tabsMarkup = visibleTabs
+  const tabsToShow = mdDown ? [...visibleTabs, ...hiddenTabs] : visibleTabs;
+
+  const tabsMarkup = tabsToShow
     .sort((tabA, tabB) => tabA - tabB)
     .filter((tabIndex) => tabs[tabIndex])
     .map((tabIndex) => renderTabMarkup(tabs[tabIndex], tabIndex));
 
-  const disclosureActivatorVisible = visibleTabs.length < tabs.length;
+  const disclosureActivatorVisible =
+    visibleTabs.length < tabs.length && !mdDown;
 
   const classname = classNames(
     styles.Tabs,
@@ -336,67 +557,73 @@ export const TabsInner = ({
     : null;
 
   return (
-    <div>
+    <div className={styles.Outer}>
       <Box
-        padding="2"
+        padding={{
+          md: '2',
+        }}
         background="surface"
         borderBlockEnd="divider"
         borderRadiusStartEnd="2"
         borderRadiusStartStart="2"
       >
         {tabMeasurer}
-        <div className={wrapperClassNames}>
-          <ul
-            role="tablist"
-            className={classname}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            onKeyDown={handleKeyDown}
-            onKeyUp={handleKeyPress}
-            data-tabs-focus-catchment
-          >
-            {tabsMarkup}
-            <li className={disclosureTabClassName} role="presentation">
-              <Popover
-                preferredPosition="below"
-                activator={activator}
-                active={disclosureActivatorVisible && showDisclosure}
-                onClose={handleClose}
-                autofocusTarget="first-node"
-              >
-                <List
-                  focusIndex={hiddenTabs.indexOf(tabToFocus)}
-                  disclosureTabs={disclosureTabs}
-                  onClick={handleListTabClick}
-                  onKeyPress={handleKeyPress}
-                />
-              </Popover>
-            </li>
-          </ul>
+        <div className={wrapperClassNames} ref={scrollRef}>
+          <div className={styles.ButtonWrapper} ref={wrapRef}>
+            <ul
+              role="tablist"
+              className={classname}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              onKeyDown={handleKeyDown}
+              onKeyUp={handleKeyPress}
+              data-tabs-focus-catchment
+            >
+              {tabsMarkup}
+              {mdDown ? null : (
+                <li className={disclosureTabClassName} role="presentation">
+                  <Popover
+                    preferredPosition="below"
+                    activator={activator}
+                    active={disclosureActivatorVisible && showDisclosure}
+                    onClose={handleClose}
+                    autofocusTarget="first-node"
+                  >
+                    <List
+                      focusIndex={hiddenTabs.indexOf(tabToFocus)}
+                      disclosureTabs={disclosureTabs}
+                      onClick={handleListTabClick}
+                      onKeyPress={handleKeyPress}
+                    />
+                  </Popover>
+                </li>
+              )}
+            </ul>
 
-          {showNewTab && (
-            <div className={styles.NewTab}>
-              <CreateViewModal
-                open={isNewViewModalActive}
-                onClose={handleCloseNewViewModal}
-                onPrimaryAction={handleSaveNewViewModal}
-                viewNames={viewNames}
-                activator={
-                  disabled ? (
-                    newTab
-                  ) : (
-                    <Tooltip
-                      content={i18n.translate('Polaris.Tabs.newViewTooltip')}
-                      preferredPosition="above"
-                      hoverDelay={400}
-                    >
-                      {newTab}
-                    </Tooltip>
-                  )
-                }
-              />
-            </div>
-          )}
+            {showNewTab && (
+              <div className={styles.NewTab}>
+                <CreateViewModal
+                  open={isNewViewModalActive}
+                  onClose={handleCloseNewViewModal}
+                  onPrimaryAction={handleSaveNewViewModal}
+                  viewNames={viewNames}
+                  activator={
+                    disabled ? (
+                      newTab
+                    ) : (
+                      <Tooltip
+                        content={i18n.translate('Polaris.Tabs.newViewTooltip')}
+                        preferredPosition="above"
+                        hoverDelay={400}
+                      >
+                        {newTab}
+                      </Tooltip>
+                    )
+                  }
+                />
+              </div>
+            )}
+          </div>
         </div>
       </Box>
 
@@ -404,14 +631,3 @@ export const TabsInner = ({
     </div>
   );
 };
-
-export function Tabs(props: TabsProps) {
-  const i18n = useI18n();
-  const {mdDown} = useBreakpoints();
-
-  if (mdDown) {
-    return <SmallScreenTabs {...props} i18n={i18n} />;
-  }
-
-  return <TabsInner {...props} i18n={i18n} />;
-}
