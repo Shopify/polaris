@@ -37,7 +37,7 @@ const fixtures = [
     name: 'with-atRule-replacements-all',
     options: {
       namespace: undefined,
-      atRule: 'include',
+      atRule: '/mixin|include|function/',
       atRuleIdentifier: 'basic',
       decl: 'color',
       from: '--p-text',

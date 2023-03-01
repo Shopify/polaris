@@ -178,7 +178,7 @@ function processParsedValue(replacementMap: ReplacementMap) {
 
 function getExactNamePattern(options: PluginOptions) {
   const namespacePattern = options?.namespace
-    ? String.raw`(${options.namespace}\.)`
+    ? String.raw`(?:${options.namespace}\.)`
     : String.raw`(?:[\w-]+\.)?`;
 
   return function exactNamePattern(name: string) {
