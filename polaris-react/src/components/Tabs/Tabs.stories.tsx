@@ -69,6 +69,70 @@ export function Fitted() {
   );
 }
 
+export function WithActions() {
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = (selectedTabIndex: number) =>
+    setSelected(selectedTabIndex);
+
+  const tabs = [
+    'All',
+    'Unpaid',
+    'Open',
+    'Closed',
+    'Local delivery',
+    'Local pickup',
+    'Returning customers',
+    'New customers',
+    'Abandoned checkouts',
+    'Online store',
+    'POS',
+    'Facebook',
+    'Instagram',
+    'Twitter',
+    'Pinterest',
+    'Google',
+    'Referral',
+  ].map((item, index) => ({
+    content: item,
+    index,
+    id: `${item}-${index}`,
+    actions:
+      index === 0
+        ? []
+        : [
+            {
+              type: 'rename',
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+            {
+              type: 'duplicate',
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+            {
+              type: 'edit',
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+            {
+              type: 'delete',
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+          ],
+  }));
+
+  return (
+    <LegacyCard>
+      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} />
+    </LegacyCard>
+  );
+}
+
 export function WithBadgeContent() {
   const [selected, setSelected] = useState(0);
 

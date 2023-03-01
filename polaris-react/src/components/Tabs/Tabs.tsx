@@ -82,6 +82,7 @@ export const TabsInner = ({
     handleToggleModal,
   } = useTabsMethods({
     tabs,
+    children,
     selected,
     disabled,
     onSaveNewViewModal,
@@ -117,11 +118,11 @@ export const TabsInner = ({
   }, [containerWidth, disclosureWidth, tabs, selected, tabWidths, setState]);
 
   useEffect(() => {
-    if (isTabsFocused) {
+    if (isTabsFocused && !showDisclosure) {
       const tabToFocus = selected;
       setState({tabToFocus});
     }
-  }, [isTabsFocused, selected, setState]);
+  }, [isTabsFocused, selected, setState, showDisclosure]);
 
   const handleKeyPress = (event: KeyboardEvent<HTMLElement>) => {
     const {
@@ -156,6 +157,7 @@ export const TabsInner = ({
         newFocus -= 1;
       }
     }
+
     const buttonToFocus = tabsArrayInOrder[newFocus];
 
     if (buttonToFocus != null) {
@@ -168,6 +170,7 @@ export const TabsInner = ({
   const handleDisclosureActivatorClick = () => {
     setState({
       showDisclosure: !showDisclosure,
+      tabToFocus: hiddenTabs[0],
     });
   };
 
@@ -291,8 +294,7 @@ export const TabsInner = ({
     <Tab
       id={CREATE_NEW_VIEW_ID}
       content={createViewA11yLabel}
-      permissions={[]}
-      isActive={false}
+      actions={[]}
       onAction={handleClickNewTab}
       onFocus={() => {
         if (modalSubmitted) {

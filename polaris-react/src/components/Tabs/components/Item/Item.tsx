@@ -24,8 +24,12 @@ export const Item = memo(function Item({
   const focusedNode = useRef<HTMLButtonElement | ReactElement | null>(null);
 
   useEffect(() => {
-    if (focusedNode && focusedNode instanceof HTMLElement && focused) {
-      focusedNode.focus();
+    if (
+      focusedNode.current &&
+      focusedNode.current instanceof HTMLElement &&
+      focused
+    ) {
+      focusedNode.current.focus();
     }
   }, [focusedNode, focused]);
 

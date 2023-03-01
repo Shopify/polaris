@@ -7,17 +7,43 @@ import {Popover} from '../../../../Popover';
 import {ActionList} from '../../../../ActionList';
 import {Modal} from '../../../../Modal';
 import {UnstyledLink} from '../../../../UnstyledLink';
-import type {TabProps, TabOptionsList} from '../../../types';
+import type {TabPropsWithAddedMethods} from '../../../types';
 import {Tab} from '..';
+import {DuplicateViewModal, RenameViewModal} from '../components';
 
 describe('Tab', () => {
-  const defaultProps: TabProps = {
+  const defaultProps: TabPropsWithAddedMethods = {
     id: 'tab-test',
-    permissions: ['rename', 'edit', 'duplicate', 'delete'],
+    actions: [
+      {
+        type: 'rename',
+        onAction: jest.fn(),
+        onPrimaryAction: jest.fn(),
+      },
+      {
+        type: 'edit',
+        onAction: jest.fn(),
+        onPrimaryAction: jest.fn(),
+      },
+      {
+        type: 'edit-columns',
+        onAction: jest.fn(),
+        onPrimaryAction: jest.fn(),
+      },
+      {
+        type: 'duplicate',
+        onAction: jest.fn(),
+        onPrimaryAction: jest.fn(),
+      },
+      {
+        type: 'delete',
+        onAction: jest.fn(),
+        onPrimaryAction: jest.fn(),
+      },
+    ],
     content: 'Unfulfilled',
-    isActive: false,
+    selected: false,
     onAction: jest.fn(),
-    onActiveAction: jest.fn(),
     onToggleModal: jest.fn(),
     onTogglePopover: jest.fn(),
   };
@@ -44,18 +70,18 @@ describe('Tab', () => {
     expect(wrapper).not.toContainReactComponent(Popover);
   });
 
-  it('renders an UnstyledButton if active=true and no permissions', () => {
+  it('renders an UnstyledButton if selected=true and no actions', () => {
     const wrapper = mountWithApp(
-      <Tab {...defaultProps} isActive permissions={[]} />,
+      <Tab {...defaultProps} selected actions={[]} />,
     );
 
     expect(wrapper).toContainReactComponent(UnstyledButton);
     expect(wrapper).not.toContainReactComponent(Popover);
   });
 
-  it('renders an UnstyledButton if active=true and undefined permissions', () => {
+  it('renders an UnstyledButton if selected=true and undefined actions', () => {
     const wrapper = mountWithApp(
-      <Tab {...defaultProps} isActive permissions={undefined} />,
+      <Tab {...defaultProps} selected actions={undefined} />,
     );
 
     expect(wrapper).toContainReactComponent(UnstyledButton);
@@ -78,22 +104,17 @@ describe('Tab', () => {
     expect(wrapper.find(UnstyledButton)).toContainReactText(icon);
   });
 
-  it('renders a Popover if active=true and we have permissions', () => {
-    const wrapper = mountWithApp(<Tab {...defaultProps} isActive />);
+  it('renders a Popover if selected=true and we have actions', () => {
+    const wrapper = mountWithApp(<Tab {...defaultProps} selected />);
 
     expect(wrapper).toContainReactComponent(Popover);
   });
 
   describe('callbacks', () => {
-    it('fires an onAction callback if isActive is false', () => {
+    it('fires an onAction callback if selected is false', () => {
       const onAction = jest.fn();
-      const onActiveAction = jest.fn();
       const wrapper = mountWithApp(
-        <Tab
-          {...defaultProps}
-          onAction={onAction}
-          onActiveAction={onActiveAction}
-        />,
+        <Tab {...defaultProps} onAction={onAction} />,
       );
 
       wrapper.act(() => {
@@ -101,47 +122,27 @@ describe('Tab', () => {
       });
 
       expect(onAction).toHaveBeenCalledTimes(1);
-      expect(onActiveAction).toHaveBeenCalledTimes(0);
     });
 
-    it('fires an onActiveAction callback if isActive is true', () => {
+    it('invoked the onAction callback when the Space bar is pressed on the Tab', () => {
       const onAction = jest.fn();
-      const onActiveAction = jest.fn();
       const wrapper = mountWithApp(
-        <Tab
-          {...defaultProps}
-          isActive
-          onAction={onAction}
-          onActiveAction={onActiveAction}
-        />,
+        <Tab {...defaultProps} onAction={onAction} url="#" />,
       );
 
       wrapper.act(() => {
-        wrapper!.find(UnstyledButton)!.trigger('onClick');
+        wrapper!.find(UnstyledLink)!.trigger('onKeyDown', {
+          key: ' ',
+          preventDefault: jest.fn(),
+        });
       });
 
-      expect(onAction).toHaveBeenCalledTimes(0);
-      expect(onActiveAction).toHaveBeenCalledTimes(1);
+      expect(onAction).toHaveBeenCalledTimes(1);
     });
 
     describe('ActionList', () => {
-      const simpleOptions: TabOptionsList = [
-        'rename',
-        'edit',
-        'duplicate',
-        'delete',
-      ];
-      const complexOptions: TabOptionsList = [
-        {
-          type: 'edit',
-          disabled: true,
-        },
-      ];
-
-      it('renders an ActionList with default props for simple action types', () => {
-        const wrapper = mountWithApp(
-          <Tab {...defaultProps} permissions={simpleOptions} isActive />,
-        );
+      it('renders an ActionList with default props', () => {
+        const wrapper = mountWithApp(<Tab {...defaultProps} selected />);
 
         wrapper.act(() => {
           wrapper!.find(UnstyledButton)!.trigger('onClick');
@@ -156,6 +157,11 @@ describe('Tab', () => {
             },
             {
               content: 'Edit view',
+              icon: expect.any(Function),
+              onAction: expect.any(Function),
+            },
+            {
+              content: 'Edit columns',
               icon: expect.any(Function),
               onAction: expect.any(Function),
             },
@@ -175,33 +181,12 @@ describe('Tab', () => {
       });
 
       it('renders an ActionList with additional ActionListDescriptor props for complex action types', () => {
+        const complexActions = defaultProps.actions!.map((action) => ({
+          ...action,
+          disabled: true,
+        }));
         const wrapper = mountWithApp(
-          <Tab {...defaultProps} permissions={complexOptions} isActive />,
-        );
-
-        wrapper.act(() => {
-          wrapper!.find(UnstyledButton)!.trigger('onClick');
-        });
-
-        expect(wrapper).toContainReactComponent(ActionList, {
-          items: [
-            {
-              content: 'Edit view',
-              icon: expect.any(Function),
-              onAction: expect.any(Function),
-              disabled: true,
-            },
-          ],
-        });
-      });
-
-      it('renders an ActionList with either default props or additional ActionListDescriptor props for mixed action types', () => {
-        const wrapper = mountWithApp(
-          <Tab
-            {...defaultProps}
-            permissions={['rename', ...complexOptions, 'duplicate', 'delete']}
-            isActive
-          />,
+          <Tab {...defaultProps} selected actions={complexActions} />,
         );
 
         wrapper.act(() => {
@@ -214,6 +199,7 @@ describe('Tab', () => {
               content: 'Rename view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
+              disabled: true,
             },
             {
               content: 'Edit view',
@@ -222,133 +208,152 @@ describe('Tab', () => {
               disabled: true,
             },
             {
+              content: 'Edit columns',
+              icon: expect.any(Function),
+              onAction: expect.any(Function),
+              disabled: true,
+            },
+            {
               content: 'Duplicate view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
+              disabled: true,
             },
             {
               content: 'Delete view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
               destructive: true,
+              disabled: true,
             },
           ],
         });
       });
 
-      it('invokes the onConfirmDeleteView callback when the delete modal is confirmed', () => {
-        const onConfirmDeleteView = jest.fn();
-        const wrapper = mountWithApp(
-          <Tab
-            {...defaultProps}
-            isActive
-            onConfirmDeleteView={onConfirmDeleteView}
-          />,
-        );
+      it.each([
+        ['rename', 'Rename view'],
+        ['edit', 'Edit view'],
+        ['edit-columns', 'Edit columns'],
+        ['duplicate', 'Duplicate view'],
+        ['delete', 'Delete view'],
+      ])(
+        'invokes the onAction callback when the %s action is clicked',
+        (type, text) => {
+          const wrapper = mountWithApp(<Tab {...defaultProps} selected />);
 
-        wrapper.act(() => {
-          wrapper!.find(UnstyledButton)!.trigger('onClick');
+          wrapper.act(() => {
+            wrapper!.find(UnstyledButton)!.trigger('onClick');
+          });
+
+          wrapper.act(() => {
+            const actionList = wrapper!.find(ActionList);
+
+            const item = actionList!.findWhere<'li'>(
+              (node) => node.is('button') && node.text() === text,
+            )!;
+            item.trigger('onClick');
+          });
+
+          const action = defaultProps.actions!.find(
+            (action) => action.type === type,
+          )!.onAction;
+
+          expect(action).toHaveBeenCalledTimes(1);
+        },
+      );
+
+      describe('rename action', () => {
+        it('fires the onPrimaryAction when the primary action in the Modal is clicked', () => {
+          const wrapper = mountWithApp(<Tab {...defaultProps} selected />);
+
+          wrapper.act(() => {
+            wrapper!.find(UnstyledButton)!.trigger('onClick');
+          });
+
+          wrapper.act(() => {
+            const actionList = wrapper!.find(ActionList);
+
+            const item = actionList!.findWhere<'li'>(
+              (node) => node.is('button') && node.text() === 'Rename view',
+            )!;
+            item.trigger('onClick');
+          });
+          expect(wrapper).toContainReactComponent(RenameViewModal);
+
+          wrapper.act(() => {
+            wrapper.find(RenameViewModal)!.trigger('onPrimaryAction');
+          });
+
+          expect(
+            defaultProps.actions!.find((action) => action.type === 'rename')!
+              .onPrimaryAction,
+          ).toHaveBeenCalledTimes(1);
         });
-
-        wrapper.act(() => {
-          const actionList = wrapper!.find(ActionList);
-
-          const deleteItem = actionList!.findWhere<'li'>(
-            (node) => node.is('button') && node.text() === 'Delete view',
-          )!;
-          deleteItem.trigger('onClick');
-        });
-
-        expect(wrapper).toContainReactComponent(Modal, {
-          open: true,
-          title: 'Delete view?',
-        });
-
-        wrapper.act(() => {
-          wrapper
-            .find(Modal, {
-              open: true,
-              title: 'Delete view?',
-            })
-            ?.triggerKeypath('primaryAction.onAction');
-        });
-
-        expect(onConfirmDeleteView).toHaveBeenCalledTimes(1);
       });
 
-      it('invokes the onConfirmDuplicateView callback when the delete modal is confirmed', () => {
-        const onConfirmDuplicateView = jest.fn();
-        const wrapper = mountWithApp(
-          <Tab
-            {...defaultProps}
-            isActive
-            onConfirmDuplicateView={onConfirmDuplicateView}
-          />,
-        );
+      describe('duplicate action', () => {
+        it('fires the onPrimaryAction when the primary action in the Modal is clicked', () => {
+          const wrapper = mountWithApp(<Tab {...defaultProps} selected />);
 
-        wrapper.act(() => {
-          wrapper!.find(UnstyledButton)!.trigger('onClick');
+          wrapper.act(() => {
+            wrapper!.find(UnstyledButton)!.trigger('onClick');
+          });
+
+          wrapper.act(() => {
+            const actionList = wrapper!.find(ActionList);
+
+            const item = actionList!.findWhere<'li'>(
+              (node) => node.is('button') && node.text() === 'Duplicate view',
+            )!;
+            item.trigger('onClick');
+          });
+          expect(wrapper).toContainReactComponent(DuplicateViewModal);
+
+          wrapper.act(() => {
+            wrapper.find(DuplicateViewModal)!.trigger('onPrimaryAction');
+          });
+
+          expect(
+            defaultProps.actions!.find((action) => action.type === 'duplicate')!
+              .onPrimaryAction,
+          ).toHaveBeenCalledTimes(1);
         });
+      });
 
-        wrapper.act(() => {
-          const actionList = wrapper!.find(ActionList);
+      describe('delete action', () => {
+        it('fires the onPrimaryAction when the primary action in the Modal is clicked', () => {
+          const wrapper = mountWithApp(<Tab {...defaultProps} selected />);
 
-          const deleteItem = actionList!.findWhere<'li'>(
-            (node) => node.is('button') && node.text() === 'Duplicate view',
-          )!;
-          deleteItem.trigger('onClick');
+          wrapper.act(() => {
+            wrapper!.find(UnstyledButton)!.trigger('onClick');
+          });
+
+          wrapper.act(() => {
+            const actionList = wrapper!.find(ActionList);
+
+            const item = actionList!.findWhere<'li'>(
+              (node) => node.is('button') && node.text() === 'Delete view',
+            )!;
+            item.trigger('onClick');
+          });
+          const deleteModal = wrapper.find(Modal, {
+            open: true,
+            title: 'Delete view?',
+          })!;
+          expect(wrapper).toContainReactComponent(Modal, {
+            open: true,
+            title: 'Delete view?',
+          });
+          wrapper.act(() => {
+            deleteModal!.triggerKeypath('primaryAction.onAction');
+          });
+
+          expect(
+            defaultProps.actions!.find((action) => action.type === 'delete')!
+              .onPrimaryAction,
+          ).toHaveBeenCalledTimes(1);
         });
-
-        expect(wrapper).toContainReactComponent(Modal, {
-          open: true,
-          title: 'Duplicate view',
-        });
-
-        wrapper.act(() => {
-          wrapper
-            .find(Modal, {
-              open: true,
-              title: 'Duplicate view',
-            })
-            ?.triggerKeypath('primaryAction.onAction');
-        });
-
-        expect(onConfirmDuplicateView).toHaveBeenCalledTimes(1);
       });
     });
-
-    it.each([
-      ['onClickRenameView', 'Rename view'],
-      ['onClickEditView', 'Edit view'],
-      ['onClickDuplicateView', 'Duplicate view'],
-      ['onClickDeleteView', 'Delete view'],
-    ])(
-      'fires an on%s callback when clicking on the %s action list item',
-      (callbackName, actionListItemText) => {
-        const spy = jest.fn();
-        const testProps = {
-          [`${callbackName}`]: spy,
-        };
-        const wrapper = mountWithApp(
-          <Tab {...defaultProps} {...testProps} isActive />,
-        );
-
-        wrapper.act(() => {
-          wrapper!.find(UnstyledButton)!.trigger('onClick');
-        });
-
-        wrapper.act(() => {
-          const actionList = wrapper!.find(ActionList);
-
-          const renameItem = actionList!.findWhere<'li'>(
-            (node) => node.is('button') && node.text() === actionListItemText,
-          )!;
-          renameItem.trigger('onClick');
-        });
-
-        expect(spy).toHaveBeenCalledTimes(1);
-        expect(spy).toHaveBeenCalledWith(defaultProps.id);
-      },
-    );
   });
 });

@@ -1,4 +1,10 @@
-import React, {useState, useCallback, useEffect, useRef} from 'react';
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  KeyboardEvent,
+} from 'react';
 import {
   InfoMinor,
   DuplicateMinor,
@@ -24,8 +30,7 @@ import {Modal} from '../../../Modal';
 import {Badge} from '../../../Badge';
 import {Inline} from '../../../Inline';
 import {Text} from '../../../Text';
-import type {TabProps} from '../../types';
-import {isSimpleOption} from '../../types';
+import type {TabPropsWithAddedMethods} from '../../types';
 import styles from '../../Tabs.scss';
 
 import {RenameViewModal, DuplicateViewModal} from './components';
@@ -38,20 +43,10 @@ export function Tab({
   panelID,
   url,
   onAction,
-  isActive,
-  onActiveAction,
-  permissions,
+  actions,
   disabled,
   isModalLoading,
   icon,
-  onClickRenameView,
-  onSaveRenameViewModal,
-  onClickDuplicateView,
-  onConfirmDuplicateView,
-  onClickEditView,
-  onClickEditColumns,
-  onClickDeleteView,
-  onConfirmDeleteView,
   siblingTabHasFocus,
   measuring,
   focused,
@@ -61,7 +56,7 @@ export function Tab({
   viewNames,
   tabIndexOverride,
   onFocus,
-}: TabProps) {
+}: TabPropsWithAddedMethods) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
   const [isRenameViewModalActive, setIsRenameViewModalActive] = useState(false);
@@ -159,24 +154,29 @@ export function Tab({
     tabIndex = tabIndexOverride;
   }
 
+  const renameAction = actions?.find((action) => action.type === 'rename');
+  const duplicateAction = actions?.find(
+    (action) => action.type === 'duplicate',
+  );
+  const deleteAction = actions?.find((action) => action.type === 'delete');
+
   const togglePopoverActive = useCallback(() => {
-    if (!permissions?.length) {
+    if (!actions?.length) {
       return;
     }
     setPopoverActive((popoverActive) => !popoverActive);
-  }, [permissions]);
+  }, [actions]);
 
   const handleClick = useCallback(() => {
     if (disabled) {
       return;
     }
-    if (isActive) {
-      onActiveAction?.();
+    if (selected) {
       togglePopoverActive();
     } else {
       onAction?.();
     }
-  }, [isActive, onActiveAction, onAction, togglePopoverActive, disabled]);
+  }, [selected, onAction, togglePopoverActive, disabled]);
 
   const handleCloseRenameViewModal = () => {
     setIsRenameViewModalActive(false);
@@ -188,7 +188,7 @@ export function Tab({
 
   const handleSaveRenameViewModal = useCallback(
     async (value: string) => {
-      await onSaveRenameViewModal?.(value, id);
+      await renameAction?.onPrimaryAction?.(value);
 
       setTimeout(() => {
         if (node.current) {
@@ -196,33 +196,27 @@ export function Tab({
         }
       }, 250);
     },
-    [onSaveRenameViewModal, id],
+    [renameAction],
   );
 
   const handleCloseDeleteViewModal = () => setIsDeleteViewModalActive(false);
 
   const handleConfirmDeleteView = useCallback(async () => {
-    await onConfirmDeleteView?.(id);
+    await deleteAction?.onPrimaryAction?.(content);
     setIsDeleteViewModalActive(false);
-  }, [onConfirmDeleteView, id]);
+  }, [deleteAction, content]);
 
   const handleSaveDuplicateViewModal = useCallback(
     async (duplicateName: string) => {
-      await onConfirmDuplicateView?.(duplicateName);
+      await duplicateAction?.onPrimaryAction?.(duplicateName);
     },
-    [onConfirmDuplicateView],
+    [duplicateAction],
   );
 
-  const actions = permissions?.map((permission) => {
-    let actionType = null;
-    let additionalOptions = {};
-    if (isSimpleOption(permission)) {
-      actionType = permission;
-    } else {
-      actionType = permission.type;
-      const {type, ...rest} = permission;
-      additionalOptions = rest;
-    }
+  const formattedActions = actions?.map((action) => {
+    const actionType = action.type;
+    const {type, onAction, onPrimaryAction, ...rest} = action;
+    const additionalOptions = rest;
 
     switch (actionType) {
       case 'rename':
@@ -230,7 +224,7 @@ export function Tab({
           content: i18n.translate('Polaris.Tabs.Tab.rename'),
           icon: InfoMinor,
           onAction: () => {
-            onClickRenameView?.(id);
+            onAction?.(content);
             togglePopoverActive();
             setIsRenameViewModalActive(true);
           },
@@ -241,7 +235,7 @@ export function Tab({
           content: i18n.translate('Polaris.Tabs.Tab.duplicate'),
           icon: DuplicateMinor,
           onAction: () => {
-            onClickDuplicateView?.(id);
+            onAction?.(content);
             setIsDuplicateViewModalActive(true);
             togglePopoverActive();
           },
@@ -252,7 +246,7 @@ export function Tab({
           content: i18n.translate('Polaris.Tabs.Tab.edit'),
           icon: EditMinor,
           onAction: () => {
-            onClickEditView?.(id);
+            onAction?.(content);
             togglePopoverActive();
           },
           ...additionalOptions,
@@ -262,7 +256,7 @@ export function Tab({
           content: i18n.translate('Polaris.Tabs.Tab.editColumns'),
           icon: Columns3Minor,
           onAction: () => {
-            onClickEditColumns?.(id);
+            onAction?.(content);
             togglePopoverActive();
           },
           ...additionalOptions,
@@ -273,7 +267,7 @@ export function Tab({
           icon: DeleteMinor,
           destructive: true,
           onAction: () => {
-            onClickDeleteView?.(id);
+            onAction?.(content);
             togglePopoverActive();
             setIsDeleteViewModalActive(true);
           },
@@ -281,6 +275,16 @@ export function Tab({
         };
     }
   });
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+      if (event.key === ' ') {
+        event.preventDefault();
+        handleClick();
+      }
+    },
+    [handleClick],
+  );
 
   const tabContainerClassNames = classNames(
     styles.TabContainer,
@@ -299,10 +303,11 @@ export function Tab({
         styles.Tab,
         icon && styles['Tab-iconOnly'],
         popoverActive && styles['Tab-popoverActive'],
-        isActive && styles['Tab-active'],
-        isActive && actions?.length && styles['Tab-hasActions'],
+        selected && styles['Tab-active'],
+        selected && actions?.length && styles['Tab-hasActions'],
       )}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       disabled={disabled}
       url={urlIfNotDisabledOrSelected}
       aria-label={accessibilityLabel}
@@ -326,7 +331,7 @@ export function Tab({
           <Badge status={selected ? 'success' : 'new'}>{badge}</Badge>
         ) : null}
       </Inline>
-      {isActive && actions?.length ? (
+      {selected && actions?.length ? (
         <div className={classNames(styles.IconWrap)}>
           <Icon source={CaretDownMinor} />
         </div>
@@ -334,7 +339,7 @@ export function Tab({
     </BaseComponent>
   );
 
-  const isPlainButton = !isActive || !actions?.length;
+  const isPlainButton = !selected || !actions?.length;
 
   const markup =
     isPlainButton || disabled ? (
@@ -348,49 +353,55 @@ export function Tab({
           onClose={togglePopoverActive}
         >
           <div className={styles.ActionListWrap}>
-            <ActionList actionRole="menuitem" items={actions} />
+            <ActionList actionRole="menuitem" items={formattedActions} />
           </div>
         </Popover>
-        <RenameViewModal
-          name={content}
-          open={isRenameViewModalActive}
-          onClose={handleCloseRenameViewModal}
-          onPrimaryAction={handleSaveRenameViewModal}
-          isModalLoading={isModalLoading}
-          viewNames={viewNames}
-        />
-        <DuplicateViewModal
-          open={isDuplicateViewModalActive}
-          name={i18n.translate('Polaris.Tabs.Tab.copy', {name: content})}
-          onClose={handleCloseDuplicateViewModal}
-          onPrimaryAction={handleSaveDuplicateViewModal}
-          isModalLoading={isModalLoading}
-          viewNames={viewNames || []}
-        />
-        <Modal
-          open={isDeleteViewModalActive}
-          onClose={handleCloseDeleteViewModal}
-          primaryAction={{
-            content: i18n.translate('Polaris.Tabs.Tab.deleteModal.delete'),
-            onAction: handleConfirmDeleteView,
-            destructive: true,
-            disabled: isModalLoading,
-          }}
-          secondaryActions={[
-            {
-              content: i18n.translate('Polaris.Tabs.Tab.deleteModal.cancel'),
-              onAction: handleCloseDeleteViewModal,
-            },
-          ]}
-          title={i18n.translate('Polaris.Tabs.Tab.deleteModal.title')}
-          instant
-        >
-          <Modal.Section>
-            {i18n.translate('Polaris.Tabs.Tab.deleteModal.description', {
-              viewName: content,
-            })}
-          </Modal.Section>
-        </Modal>
+        {renameAction ? (
+          <RenameViewModal
+            name={content}
+            open={isRenameViewModalActive}
+            onClose={handleCloseRenameViewModal}
+            onPrimaryAction={handleSaveRenameViewModal}
+            isModalLoading={isModalLoading}
+            viewNames={viewNames}
+          />
+        ) : null}
+        {duplicateAction ? (
+          <DuplicateViewModal
+            open={isDuplicateViewModalActive}
+            name={i18n.translate('Polaris.Tabs.Tab.copy', {name: content})}
+            onClose={handleCloseDuplicateViewModal}
+            onPrimaryAction={handleSaveDuplicateViewModal}
+            isModalLoading={isModalLoading}
+            viewNames={viewNames || []}
+          />
+        ) : null}
+        {deleteAction ? (
+          <Modal
+            open={isDeleteViewModalActive}
+            onClose={handleCloseDeleteViewModal}
+            primaryAction={{
+              content: i18n.translate('Polaris.Tabs.Tab.deleteModal.delete'),
+              onAction: handleConfirmDeleteView,
+              destructive: true,
+              disabled: isModalLoading,
+            }}
+            secondaryActions={[
+              {
+                content: i18n.translate('Polaris.Tabs.Tab.deleteModal.cancel'),
+                onAction: handleCloseDeleteViewModal,
+              },
+            ]}
+            title={i18n.translate('Polaris.Tabs.Tab.deleteModal.title')}
+            instant
+          >
+            <Modal.Section>
+              {i18n.translate('Polaris.Tabs.Tab.deleteModal.description', {
+                viewName: content,
+              })}
+            </Modal.Section>
+          </Modal>
+        ) : null}
       </>
     );
 

@@ -122,25 +122,10 @@ export function useTabsMethods({
   );
 
   const renderTabMarkup = useCallback(
-    (
-      tab: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>,
-      index: number,
-    ) => {
+    (tab: TabProps, index: number) => {
       const handleClick = () => {
         handleTabClick(tab.id);
         tab.onAction?.();
-      };
-
-      const handleDuplicate = async (value: string) => {
-        await tab.onConfirmDuplicateView?.(value);
-      };
-
-      const handleDelete = async (value: string) => {
-        await tab.onConfirmDeleteView?.(value);
-      };
-
-      const handleRename = async (value: string, id: string) => {
-        await tab.onSaveRenameViewModal?.(value, id);
       };
 
       const viewNames = tabs.map(({content}) => content);
@@ -152,7 +137,6 @@ export function useTabsMethods({
           key={`${index}-${tab.id}`}
           id={tab.id}
           panelID={children ? tabPanelID : undefined}
-          isActive={index === selected}
           disabled={disabled}
           siblingTabHasFocus={tabToFocus > -1}
           focused={index === tabToFocus}
@@ -164,9 +148,6 @@ export function useTabsMethods({
           onToggleModal={handleToggleModal}
           onTogglePopover={handleTogglePopover}
           viewNames={viewNames}
-          onConfirmDuplicateView={handleDuplicate}
-          onConfirmDeleteView={handleDelete}
-          onSaveRenameViewModal={handleRename}
         />
       );
     },
@@ -184,12 +165,14 @@ export function useTabsMethods({
 
   const handleFocus = useCallback((event: FocusEvent<HTMLUListElement>) => {
     const target = event.target;
-
-    const isInNaturalDOMOrder = target.closest(`[data-tabs-focus-catchment]`);
+    const isItem = target.classList.contains(styles.Item);
+    const isInNaturalDOMOrder =
+      target.closest(`[data-tabs-focus-catchment]`) || isItem;
 
     const isDisclosureActivator = target.classList.contains(
       styles.DisclosureActivator,
     );
+
     if (isDisclosureActivator || !isInNaturalDOMOrder) {
       return;
     }
@@ -203,17 +186,30 @@ export function useTabsMethods({
     (event: FocusEvent<HTMLUListElement>) => {
       const target = event.target;
       const relatedTarget = event.relatedTarget;
-      const isInNaturalDOMOrder = relatedTarget?.closest(`.${styles.Tabs}`);
-      const targetIsATab = target.classList.contains(styles.Tab);
+      const isInNaturalDOMOrder = relatedTarget?.closest?.(`.${styles.Tabs}`);
+      const targetIsATab = target?.classList?.contains?.(styles.Tab);
+      const focusReceiverIsAnItem = relatedTarget?.classList.contains(
+        styles.Item,
+      );
 
-      if (!relatedTarget && !isTabModalOpen && !targetIsATab) {
+      if (
+        !relatedTarget &&
+        !isTabModalOpen &&
+        !targetIsATab &&
+        !focusReceiverIsAnItem
+      ) {
         setState({
           tabToFocus: -1,
         });
         return;
       }
 
-      if (!isInNaturalDOMOrder && !isTabModalOpen && !targetIsATab) {
+      if (
+        !isInNaturalDOMOrder &&
+        !isTabModalOpen &&
+        !targetIsATab &&
+        !focusReceiverIsAnItem
+      ) {
         setState({
           tabToFocus: -1,
         });
