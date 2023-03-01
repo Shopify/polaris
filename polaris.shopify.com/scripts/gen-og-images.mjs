@@ -51,10 +51,19 @@ const generateHTML = async (url, slug) => {
   if (
     url.startsWith('/foundations/') ||
     url.startsWith('/design/') ||
-    url.startsWith('/content/') ||
-    url.startsWith('/patterns/')
+    url.startsWith('/content/')
   ) {
-    const mdFilePath = path.join(process.cwd(), `content${url}.md`);
+    let mdFilePath = path.join(process.cwd(), `content${url}.md`);
+    if (!existsSync(mdFilePath)) {
+      // In case the markdown is nested in a folder instead of named after the
+      // url directly, we want to try /index.md instead
+      mdFilePath = path.join(process.cwd(), `content${url}/index.md`);
+      if (!existsSync(mdFilePath)) {
+        throw new Error(
+          `Failed to load content file for url ${url}. Tried content${url}.md, content${url}/index.md`,
+        );
+      }
+    }
     const markdownContent = await readFile(mdFilePath, 'utf-8');
     const {data} = matter(markdownContent);
     if (data.icon) {
@@ -185,7 +194,7 @@ const genOgImages = async () => {
       await page.close();
     } catch (error) {
       console.error(`❌ Failed to generate png for ${url}`);
-      throw new Error(error);
+      throw error;
     }
   };
 
