@@ -1,0 +1,17 @@
+@use 'global-styles/legacy-polaris-v8';
+
+@mixin basic($color: var(--p-color-text)) {
+  color: $color;
+}
+
+@function basic($color: var(--p-color-text)) {
+  @return $color;
+}
+
+.basic {
+  @include basic(var(--p-color-text));
+  color: basic(var(--p-color-text));
+
+  @include legacy-polaris-v8.basic(var(--p-color-text));
+  color: legacy-polaris-v8.basic(var(--p-color-text));
+}

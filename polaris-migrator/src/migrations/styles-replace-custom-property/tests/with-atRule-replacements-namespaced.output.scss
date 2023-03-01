@@ -1,3 +1,5 @@
+@use 'global-styles/legacy-polaris-v8';
+
 @mixin basic($color: var(--p-text)) {
   color: $color;
 }
@@ -8,7 +10,10 @@
 
 .basic {
   @include basic(var(--p-text));
-  color: basic(var(--p-text));
+  color: basic(var(--p-color-text));
+
+  @include legacy-polaris-v8.basic(var(--p-color-text));
+  color: legacy-polaris-v8.basic(var(--p-color-text));
 }
 
 @mixin with-fallback-var($color: var(--p-text, var(--p-text))) {
@@ -17,6 +22,10 @@
 
 .with-fallback-var {
   @include with-fallback-var(var(--p-text, var(--p-text)));
+
+  @include legacy-polaris-v8.with-fallback-var(
+    var(--p-color-text, var(--p-color-text))
+  );
 }
 
 @mixin with-fallback-value($color: var(--p-text, #000)) {
@@ -25,4 +34,6 @@
 
 .with-fallback-value {
   @include with-fallback-value(var(--p-text, #000));
+
+  @include legacy-polaris-v8.with-fallback-value(var(--p-color-text, #000));
 }

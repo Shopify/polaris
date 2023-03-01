@@ -436,8 +436,10 @@ A generic codemod to replace CSS custom properties with mapped values (either a 
 
 This migration can be run in two ways:
 
-1. Using a combination of `--decl`, `--from`, and `--to` flags to replace a single custom property, or
+1. Using a combination of `--decl`, `--at-rule`, `--at-rule-name`, `--from`, and `--to` flags to replace a single custom property, or
 2. Using a `--maps` flag which points to a file defining replacements for multiple custom properties
+
+> Note: Both approaches accept a `--namespace` flag to scope the replacements to a specific Sass `@use` namespace (e.g. `@include namespace.my-mixin`)
 
 <br />
 
@@ -459,11 +461,20 @@ Example `replacement-maps.js` (with option 2):
 
 ```js
 export default {
-  color: {
-    '--p-text': '--p-color-text',
+  decls: {
+    color: {
+      '--p-text': '--p-color-text',
+    },
+    '/^animation/': {
+      '--p-fast': '100ms',
+    },
   },
-  '/^animation/': {
-    '--p-fast': '100ms',
+  atRules: {
+    include: {
+      'recolor-icon': {
+        '--p-icon': '--p-color-icon',
+      },
+    },
   },
 };
 ```

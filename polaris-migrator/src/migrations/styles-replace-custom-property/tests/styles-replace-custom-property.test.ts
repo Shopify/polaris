@@ -1,5 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
+const colorMap = {'--p-text': '--p-color-text'};
+
 const migration = 'styles-replace-custom-property';
 const fixtures = [
   {
@@ -27,41 +29,55 @@ const fixtures = [
   {
     name: 'with-replacementMaps-option',
     options: {
-      replacementMaps: {decls: {color: {'--p-text': '--p-color-text'}}},
+      replacementMaps: {decls: {color: colorMap}},
     },
   },
   {
-    // Same as `with-from-to-flags-regexp` for atRules
-    name: 'with-atRule-replacements',
+    // Replaces all custom properties if no namespace is provided
+    name: 'with-atRule-replacements-all',
     options: {
-      atRule: '/mixin|include|function/',
-      atRuleParam: exactNamePattern(
-        'basic|with-fallback-var|with-fallback-value',
-      ),
+      namespace: undefined,
+      atRule: 'include',
+      atRuleIdentifier: 'basic',
+      decl: 'color',
+      from: '--p-text',
+      to: '--p-color-text',
+    },
+  },
+  {
+    // Same as `with-from-to-flags-basic` for atRules
+    name: 'with-atRule-replacements-namespaced',
+    options: {
+      namespace: 'legacy-polaris-v8',
+      atRule: 'include',
+      atRuleIdentifier:
+        'basic,with-fallback-var,with-fallback-value,namespaced',
+      decl: 'color',
       from: '--p-text',
       to: '--p-color-text',
     },
   },
   {
     // Same as `with-maps-flag` for atRules
-    name: 'with-atRule-replacements',
+    name: 'with-atRule-replacements-namespaced',
     options: {
+      namespace: 'legacy-polaris-v8',
       maps: 'src/migrations/styles-replace-custom-property/tests/replacement-maps',
     },
   },
   {
     // Same as `with-replacementMaps-option` for atRules
-    name: 'with-atRule-replacements',
+    name: 'with-atRule-replacements-namespaced',
     options: {
+      namespace: 'legacy-polaris-v8',
       replacementMaps: {
-        decls: {
-          color: {'--p-text': '--p-color-text'},
-        },
+        decls: {color: colorMap},
         atRules: {
-          '/mixin|include|function/': {
-            [exactNamePattern('basic|with-fallback-var|with-fallback-value')]: {
-              '--p-text': '--p-color-text',
-            },
+          include: {
+            basic: colorMap,
+            namespaced: colorMap,
+            'with-fallback-var': colorMap,
+            'with-fallback-value': colorMap,
           },
         },
       },
@@ -76,12 +92,4 @@ for (const fixture of fixtures) {
     extension: 'scss',
     options: fixture.options,
   });
-}
-
-function exactNamePattern(name: string) {
-  // Using `^` to match the start of a string since postcss normalizes the input
-  // https://regex101.com/r/3tzvIW/1
-  return new RegExp(
-    String.raw`^([\w-]+\.)?(?<![\w-])${name}(?![\w-])`,
-  ).toString();
 }

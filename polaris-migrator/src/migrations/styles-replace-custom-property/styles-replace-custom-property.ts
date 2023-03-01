@@ -14,18 +14,19 @@ interface ReplacementMap {
 
 interface ReplacementMaps {
   decls: {
-    [propertyName: string]: ReplacementMap;
+    [propertyNamePattern: string]: ReplacementMap;
   };
   atRules: {
-    [atRuleName: string]: {
-      [atRuleParam: string]: ReplacementMap;
+    [atRuleNamePattern: string]: {
+      [atRuleIdentifier: string]: ReplacementMap;
     };
   };
 }
 
 interface PluginOptions extends Options {
+  namespace?: string;
   atRule?: string;
-  atRuleParam?: string;
+  atRuleIdentifier?: string;
   decl?: string;
   from?: string;
   to?: string;
@@ -44,6 +45,8 @@ export default function stylesReplaceCustomProperty(
 }
 
 function plugin(options: PluginOptions = {}): Plugin {
+  const exactNamePattern = getExactNamePattern(options);
+
   let replacementMaps: ReplacementMaps | undefined;
 
   if (options.maps && (options.from || options.to || options.decl)) {
@@ -55,18 +58,19 @@ function plugin(options: PluginOptions = {}): Plugin {
 
     replacementMaps = require(mapsPath)!.default;
   } else if (options.from && options.to) {
+    const fromTo = {[options.from]: options.to};
     replacementMaps = {
       decls: {
-        [options.decl || '/.+/']: {
-          [options.from]: options.to,
-        },
+        [options.decl || '/.+/']: fromTo,
       },
       atRules: {
-        [options.atRule || '/.+/']: {
-          [options.atRuleParam || '/.+/']: {
-            [options.from]: options.to,
-          },
-        },
+        [options.atRule || '/.+/']: options.atRuleIdentifier
+          ? Object.fromEntries(
+              options.atRuleIdentifier
+                .split(',')
+                .map((identifier) => [identifier, fromTo]),
+            )
+          : {'.+': fromTo},
       },
     };
   } else if (options.replacementMaps) {
@@ -96,8 +100,11 @@ function plugin(options: PluginOptions = {}): Plugin {
 
         if (!matchedAtRuleName) return;
 
-        const atRuleNameReplacementMap =
-          replacementMaps.atRules[matchedAtRuleName.pattern.toString()];
+        const atRuleNameReplacementMap = Object.fromEntries(
+          Object.entries(
+            replacementMaps.atRules[matchedAtRuleName.pattern.toString()],
+          ).map(([key, value]) => [exactNamePattern(key), value]),
+        );
 
         const atRuleNameParams = Object.keys(atRuleNameReplacementMap);
 
@@ -166,5 +173,19 @@ function processParsedValue(replacementMap: ReplacementMap) {
       node.value = replacement;
       break;
     }
+  };
+}
+
+function getExactNamePattern(options: PluginOptions) {
+  const namespacePattern = options?.namespace
+    ? String.raw`(${options.namespace}\.)`
+    : String.raw`(?:[\w-]+\.)?`;
+
+  return function exactNamePattern(name: string) {
+    // Using `^` to match the start of a string since postcss normalizes the input
+    // https://regex101.com/r/3tzvIW/1
+    return new RegExp(
+      String.raw`^${namespacePattern}(?<![\w-])${name}(?![\w-])`,
+    );
   };
 }
