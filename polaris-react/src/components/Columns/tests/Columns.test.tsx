@@ -5,11 +5,14 @@ import {Columns} from '..';
 
 describe('Columns', () => {
   it('only renders custom properties that match the properties passed in', () => {
-    const columns = mountWithApp(<Columns gap={{md: '1'}} />);
+    const columns = mountWithApp(
+      <Columns gap={{md: '1'}} alignItems="start" />,
+    );
 
     expect(columns).toContainReactComponent('div', {
       style: {
         '--pc-columns-gap-md': 'var(--p-space-1)',
+        '--pc-columns-align-items': 'start',
       } as React.CSSProperties,
     });
   });
