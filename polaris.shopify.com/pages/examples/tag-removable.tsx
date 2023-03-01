@@ -1,4 +1,4 @@
-import {Tag, Stack} from '@shopify/polaris';
+import {Tag, LegacyStack} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -26,7 +26,7 @@ function RemovableTagExample() {
     </Tag>
   ));
 
-  return <Stack spacing="tight">{tagMarkup}</Stack>;
+  return <LegacyStack spacing="tight">{tagMarkup}</LegacyStack>;
 }
 
 export default withPolarisExample(RemovableTagExample);

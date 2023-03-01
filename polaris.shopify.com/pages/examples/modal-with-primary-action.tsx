@@ -1,4 +1,10 @@
-import {Button, Modal, Stack, TextContainer, TextField} from '@shopify/polaris';
+import {
+  Button,
+  Modal,
+  LegacyStack,
+  TextContainer,
+  TextField,
+} from '@shopify/polaris';
 import {useState, useCallback, useRef} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -37,8 +43,8 @@ function ModalWithPrimaryActionExample() {
         }}
       >
         <Modal.Section>
-          <Stack vertical>
-            <Stack.Item>
+          <LegacyStack vertical>
+            <LegacyStack.Item>
               <TextContainer>
                 <p>
                   You can share this discount link with your customers via email
@@ -46,8 +52,8 @@ function ModalWithPrimaryActionExample() {
                   at checkout.
                 </p>
               </TextContainer>
-            </Stack.Item>
-            <Stack.Item fill>
+            </LegacyStack.Item>
+            <LegacyStack.Item fill>
               <TextField
                 ref={node}
                 label="Discount link"
@@ -61,8 +67,8 @@ function ModalWithPrimaryActionExample() {
                   </Button>
                 }
               />
-            </Stack.Item>
-          </Stack>
+            </LegacyStack.Item>
+          </LegacyStack>
         </Modal.Section>
       </Modal>
     </div>

@@ -5,7 +5,7 @@ import {
   ActionList,
   TextContainer,
   ResourceList,
-  Stack,
+  LegacyStack,
   List,
 } from '@shopify/polaris';
 import React from 'react';
@@ -68,10 +68,10 @@ function CardExample() {
                 url={url}
                 accessibilityLabel={`View Sales for ${sales}`}
               >
-                <Stack>
-                  <Stack.Item fill>{sales}</Stack.Item>
-                  <Stack.Item>{amount}</Stack.Item>
-                </Stack>
+                <LegacyStack>
+                  <LegacyStack.Item fill>{sales}</LegacyStack.Item>
+                  <LegacyStack.Item>{amount}</LegacyStack.Item>
+                </LegacyStack>
               </ResourceList.Item>
             );
           }}
