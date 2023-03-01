@@ -19,13 +19,9 @@ type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface InlineProps {
   children?: React.ReactNode;
-  /** Horizontal alignment of children
-   * @default 'start'
-   */
+  /** Horizontal alignment of children */
   align?: Align;
-  /** Vertical alignment of children
-   * @default 'center'
-   */
+  /** Vertical alignment of children */
   blockAlign?: BlockAlign;
   /** The spacing between elements. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
@@ -40,8 +36,8 @@ export interface InlineProps {
 }
 
 export const Inline = function Inline({
-  align = 'start',
-  blockAlign = 'center',
+  align,
+  blockAlign,
   gap,
   wrap = true,
   children,
