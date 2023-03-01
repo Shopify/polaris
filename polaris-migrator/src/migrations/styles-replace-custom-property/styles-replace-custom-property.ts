@@ -14,10 +14,10 @@ interface ReplacementMap {
 
 interface ReplacementMaps {
   decls: {
-    [propertyNamePattern: string]: ReplacementMap;
+    [propertyName: string]: ReplacementMap;
   };
   atRules: {
-    [atRuleNamePattern: string]: {
+    [atRuleName: string]: {
       [atRuleIdentifier: string]: ReplacementMap;
     };
   };
@@ -45,7 +45,7 @@ export default function stylesReplaceCustomProperty(
 }
 
 function plugin(options: PluginOptions = {}): Plugin {
-  const exactNamePattern = getExactNamePattern(options);
+  const getNamespacePattern = createNamespacePattern(options);
 
   let replacementMaps: ReplacementMaps | undefined;
 
@@ -100,25 +100,30 @@ function plugin(options: PluginOptions = {}): Plugin {
 
         if (!matchedAtRuleName) return;
 
-        const atRuleNameReplacementMap = Object.fromEntries(
-          Object.entries(
-            replacementMaps.atRules[matchedAtRuleName.pattern.toString()],
-          ).map(([key, value]) => [exactNamePattern(key), value]),
+        const parsedValue = valueParser(atRule.params);
+
+        if (parsedValue.nodes?.[0].type !== 'function') return;
+
+        const atRuleIdentifier = parsedValue.nodes[0].value;
+        const atRuleNameMaps =
+          replacementMaps.atRules[matchedAtRuleName.pattern.toString()];
+
+        const namespacedAtRuleNameMaps = Object.fromEntries(
+          Object.entries(atRuleNameMaps).map(([identifier, map]) => [
+            getNamespacePattern(identifier),
+            map,
+          ]),
         );
 
-        const atRuleNameParams = Object.keys(atRuleNameReplacementMap);
-
-        const matchedAtRuleParam = matchesStringOrRegExp(
-          atRule.params,
-          atRuleNameParams,
+        const matchedAtRuleIdentifier = matchesStringOrRegExp(
+          atRuleIdentifier,
+          Object.keys(namespacedAtRuleNameMaps),
         );
 
-        if (!matchedAtRuleParam) return;
+        if (!matchedAtRuleIdentifier) return;
 
         const replacementMap =
-          atRuleNameReplacementMap[matchedAtRuleParam.pattern.toString()];
-
-        const parsedValue = valueParser(atRule.params);
+          namespacedAtRuleNameMaps[matchedAtRuleIdentifier.pattern.toString()];
 
         parsedValue.walk(processParsedValue(replacementMap));
 
@@ -176,16 +181,12 @@ function processParsedValue(replacementMap: ReplacementMap) {
   };
 }
 
-function getExactNamePattern(options: PluginOptions) {
-  const namespacePattern = options?.namespace
-    ? String.raw`(?:${options.namespace}\.)`
+function createNamespacePattern(options: PluginOptions) {
+  const namespace = options?.namespace
+    ? String.raw`${options.namespace}\.`
     : String.raw`(?:[\w-]+\.)?`;
 
-  return function exactNamePattern(name: string) {
-    // Using `^` to match the start of a string since postcss normalizes the input
-    // https://regex101.com/r/3tzvIW/1
-    return new RegExp(
-      String.raw`^${namespacePattern}(?<![\w-])${name}(?![\w-])`,
-    );
+  return function getNamespacePattern(name: string) {
+    return new RegExp(String.raw`^${namespace}${name}$`);
   };
 }
