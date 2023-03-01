@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Link} from '../../Link';
 import {Tooltip} from '../Tooltip';
-import {Text} from '../../Text';
 import {TooltipOverlay} from '../components';
 
 describe('<Tooltip />', () => {
@@ -482,22 +481,6 @@ describe('<Tooltip />', () => {
       expect(tooltip).toContainReactComponent(TooltipOverlay, {
         instant: true,
       });
-    });
-  });
-
-  it('adds a suffix if present', () => {
-    const tooltip = mountWithApp(
-      <Tooltip content="Content" suffix="#B">
-        <Link>link content</Link>
-      </Tooltip>,
-    );
-
-    findWrapperComponent(tooltip)!.trigger('onMouseOver');
-
-    expect(tooltip).toContainReactComponent(Text, {
-      as: 'span',
-      variant: 'bodyMd',
-      color: 'subdued',
     });
   });
 });

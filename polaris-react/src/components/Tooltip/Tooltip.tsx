@@ -10,8 +10,6 @@ import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
-import {Inline} from '../Inline';
-import {Text} from '../Text';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
@@ -68,8 +66,6 @@ export interface TooltipProps {
   onOpen?(): void;
   /* Callback fired when the tooltip is dismissed */
   onClose?(): void;
-  /** Subdued text rendered after the tooltip content */
-  suffix?: string;
 }
 
 const HOVER_OUT_TIMEOUT = 150;
@@ -91,7 +87,6 @@ export function Tooltip({
   persistOnClick,
   onOpen,
   onClose,
-  suffix,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
   const {
@@ -179,14 +174,7 @@ export function Tooltip({
         zIndexOverride={zIndexOverride}
         instant={!shouldAnimate}
       >
-        <Inline gap="2">
-          {content}
-          {suffix ? (
-            <Text as="span" variant="bodyMd" color="subdued">
-              {suffix}
-            </Text>
-          ) : null}
-        </Inline>
+        {content}
       </TooltipOverlay>
     </Portal>
   ) : null;
