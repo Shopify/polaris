@@ -26,6 +26,8 @@ export interface OptionProps {
   verticalAlign?: Alignment;
   role?: string;
   onClick(section: number, option: number): void;
+  /** Callback when pointer enters the option */
+  onPointerEnter(section: number, option: number): void;
 }
 
 export function Option({
@@ -42,6 +44,7 @@ export function Option({
   section,
   index,
   verticalAlign,
+  onPointerEnter,
 }: OptionProps) {
   const {value: focused, toggle: toggleFocused} = useToggle(false);
 
@@ -52,6 +55,14 @@ export function Option({
 
     onClick(section, index);
   }, [disabled, index, onClick, section]);
+
+  const handlePointerEnter = useCallback(() => {
+    if (disabled) {
+      return;
+    }
+
+    onPointerEnter(section, index);
+  }, [disabled, onPointerEnter, section, index]);
 
   const mediaMarkup = media ? (
     <div className={styles.Media}>{media}</div>
@@ -111,7 +122,12 @@ export function Option({
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
 
   return (
-    <li key={id} className={styles.Option} tabIndex={-1}>
+    <li
+      key={id}
+      className={styles.Option}
+      tabIndex={-1}
+      onPointerEnter={handlePointerEnter}
+    >
       {scrollMarkup}
       {optionMarkup}
     </li>

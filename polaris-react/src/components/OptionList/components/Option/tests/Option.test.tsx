@@ -14,6 +14,7 @@ describe('<Option />', () => {
     section: 0,
     index: 0,
     onClick: noop,
+    onPointerEnter: noop,
   };
 
   it('renders a checkbox if allowMultiple is true', () => {
@@ -72,6 +73,32 @@ describe('<Option />', () => {
     input.trigger('onChange');
 
     expect(spy).not.toHaveBeenCalled();
+  });
+
+  describe('onPointerEnter', () => {
+    it('is called with section and index if option is not disabled', () => {
+      const spy = jest.fn();
+      const {section, index} = defaultProps;
+
+      const listItem = mountWithApp(
+        <Option {...defaultProps} onPointerEnter={spy} />,
+      ).find('li')!;
+      listItem.trigger('onPointerEnter');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(section, index);
+    });
+
+    it('is not called if option is disabled', () => {
+      const spy = jest.fn();
+
+      const listItem = mountWithApp(
+        <Option {...defaultProps} onPointerEnter={spy} disabled />,
+      ).find('li')!;
+      listItem.trigger('onPointerEnter');
+
+      expect(spy).not.toHaveBeenCalled();
+    });
   });
 
   it('sets the pass through props for Checkbox if multiple items are allowed', () => {
