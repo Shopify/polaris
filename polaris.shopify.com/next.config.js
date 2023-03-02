@@ -336,6 +336,11 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
+    source: '/components/layout-and-structure/card',
+    destination: '/components/layout-and-structure/alpha-card',
+    permanent: false,
+  },
+  {
     source: '/components/structure/stack',
     destination: '/components/layout-and-structure/alpha-stack',
     permanent: false,
