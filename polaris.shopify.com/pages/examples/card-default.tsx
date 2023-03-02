@@ -1,13 +1,15 @@
-import {Card} from '@shopify/polaris';
+import {AlphaCard, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function CardExample() {
+function AlphaCardExample() {
   return (
-    <Card title="Online store dashboard" sectioned>
-      <p>View a summary of your online store’s performance.</p>
-    </Card>
+    <AlphaCard>
+      <Text as="h2" variant="bodyMd">
+        Content inside a card
+      </Text>
+    </AlphaCard>
   );
 }
 
-export default withPolarisExample(CardExample);
+export default withPolarisExample(AlphaCardExample);

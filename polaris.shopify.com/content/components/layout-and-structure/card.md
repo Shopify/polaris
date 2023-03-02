@@ -1,5 +1,5 @@
 ---
-title: Alpha card
+title: Card
 description: Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
 category: Layout and structure
 keywords:
@@ -24,19 +24,19 @@ status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: alpha-card-default.tsx
+  - fileName: card-default.tsx
     title: Default
     description: >-
       By default, Card has an 8px border radius and uses --p-surface as the background and --p-shadow-card as the shadow. There is padding of `space-5` (20px) around children and `space-4` (16px) for small screens.
-  - fileName: alpha-card-with-subdued-background.tsx
+  - fileName: card-with-subdued-background.tsx
     title: With subdued background
     description: >-
       Use for content that you want to deprioritize. Subdued cards don’t stand out as much as cards with white backgrounds so don’t use them for information or actions that are critical to merchants.
-  - fileName: alpha-card-with-varying-padding.tsx
+  - fileName: card-with-varying-padding.tsx
     title: With varying padding
     description: >-
       Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
-  - fileName: alpha-card-with-rounded-corners.tsx
+  - fileName: card-with-rounded-corners.tsx
     title: Rounded corners
     description: >-
       Cards can have a border radius applied responsively with the `roundedAbove` prop.
