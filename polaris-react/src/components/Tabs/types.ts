@@ -14,7 +14,7 @@ type TabActions = typeof VIEW_BUTTON_ACTION_TYPES[number];
 interface TabActionDescriptor
   extends Omit<ActionListItemDescriptor, 'onAction'> {
   type: TabActions;
-  onAction: (name: string) => void;
+  onAction?: (name: string) => void;
   onPrimaryAction?: (name: string) => Promise<boolean>;
 }
 

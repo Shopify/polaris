@@ -10,7 +10,6 @@ export interface FilterButtonProps {
   onClick: () => void;
   'aria-label': string;
   children: ReactNode;
-  hasDoubleWidthIcon?: boolean;
   disabled?: boolean;
 }
 
@@ -18,14 +17,9 @@ export function FilterButton({
   onClick,
   'aria-label': ariaLabel,
   children,
-  hasDoubleWidthIcon,
   disabled,
 }: FilterButtonProps) {
-  const classes = classNames(
-    styles.FilterButton,
-    hasDoubleWidthIcon && styles.DoubleWidth,
-    disabled && styles.Disabled,
-  );
+  const classes = classNames(styles.FilterButton, disabled && styles.Disabled);
   return (
     <UnstyledButton
       className={classes}

@@ -70,6 +70,8 @@ export interface ResourceListProps<TItemType = any> {
   /** Item data; each item is passed to renderItem */
   items: TItemType[];
   filterControl?: React.ReactNode;
+  /** Whether to remove all padding around the filter controls. Should be true if using Filters, and false if using LegacyFilters.  */
+  flushFilters?: boolean;
   /** The markup to display when no resources exist yet. Renders when set and items is empty. */
   emptyState?: React.ReactNode;
   /** The markup to display when no results are returned on search or filter of the list. Renders when `filterControl` is set, items are empty, and `emptyState` is not set.
@@ -128,6 +130,7 @@ type ResourceListType = (<TItemType>(
 export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   items,
   filterControl,
+  flushFilters,
   emptyState,
   emptySearchState,
   resourceName: resourceNameProp,
@@ -577,7 +580,9 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     ) : null;
 
   const filterControlMarkup = filterControl ? (
-    <div className={styles.FiltersWrapper}>{filterControl}</div>
+    <div className={classNames(!flushFilters && styles.FiltersWrapper)}>
+      {filterControl}
+    </div>
   ) : null;
 
   const sortingSelectMarkup =

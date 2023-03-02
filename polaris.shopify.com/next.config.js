@@ -588,8 +588,8 @@ const selectionAndInput = [
     permanent: false,
   },
   {
-    source: '/components/legacy-filters',
-    destination: '/components/selection-and-input/legacy-filters',
+    source: '/components/filters',
+    destination: '/components/selection-and-input/filters',
     permanent: false,
   },
   {
@@ -605,6 +605,11 @@ const selectionAndInput = [
   {
     source: '/components/inline-error',
     destination: '/components/selection-and-input/inline-error',
+    permanent: false,
+  },
+  {
+    source: '/components/legacy-filters',
+    destination: '/components/selection-and-input/legacy-filters',
     permanent: false,
   },
   {

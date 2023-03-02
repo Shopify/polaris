@@ -120,36 +120,52 @@ export function Default() {
     return true;
   };
 
-  const tabs: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[] =
-    itemStrings.map((item, index) => ({
-      content: item,
-      index,
-      onAction: () => {},
-      id: `${item}-${index}`,
-      isLocked: index === 0,
-      permissions: index === 0 ? [] : ['rename', 'duplicate', 'edit', 'delete'],
-      onClickRenameView: () => {},
-      onSaveRenameViewModal: async (value: string, id: string) => {
-        const newItemsStrings = tabs.map((item) => {
-          if (item.id === id) {
-            return value;
-          }
-          return item.content;
-        });
-        await sleep(1);
-        setItemStrings(newItemsStrings);
-      },
-      onClickEditView: (id: string) => {},
-      onClickDeleteView: (id: string) => {},
-      onConfirmDuplicateView: async (name) => {
-        await sleep(1);
-        duplicateView(name);
-      },
-      onConfirmDeleteView: async (id: string) => {
-        await sleep(1);
-        deleteView(index);
-      },
-    }));
+  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+    content: item,
+    index,
+    onAction: () => {},
+    id: `${item}-${index}`,
+    isLocked: index === 0,
+    actions:
+      index === 0
+        ? []
+        : [
+            {
+              type: 'rename',
+              onAction: () => {},
+              onPrimaryAction: async (value: string) => {
+                const newItemsStrings = tabs.map((item, idx) => {
+                  if (idx === index) {
+                    return value;
+                  }
+                  return item.content;
+                });
+                await sleep(1);
+                setItemStrings(newItemsStrings);
+                return true;
+              },
+            },
+            {
+              type: 'duplicate',
+              onPrimaryAction: async (name) => {
+                await sleep(1);
+                duplicateView(name);
+                return true;
+              },
+            },
+            {
+              type: 'edit',
+            },
+            {
+              type: 'delete',
+              onPrimaryAction: async (id: string) => {
+                await sleep(1);
+                deleteView(index);
+                return true;
+              },
+            },
+          ],
+  }));
   const [selected, setSelected] = useState(0);
   const onCreateNewView = async (value: string) => {
     await sleep(500);
@@ -389,36 +405,52 @@ export function WithPinnedFilters() {
     return true;
   };
 
-  const tabs: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[] =
-    itemStrings.map((item, index) => ({
-      content: item,
-      index,
-      onAction: () => {},
-      id: `${item}-${index}`,
-      isLocked: index === 0,
-      permissions: index === 0 ? [] : ['rename', 'duplicate', 'edit', 'delete'],
-      onClickRenameView: () => {},
-      onSaveRenameViewModal: async (value: string, id: string) => {
-        const newItemsStrings = tabs.map((item) => {
-          if (item.id === id) {
-            return value;
-          }
-          return item.content;
-        });
-        await sleep(1);
-        setItemStrings(newItemsStrings);
-      },
-      onClickEditView: (id: string) => {},
-      onClickDeleteView: (id: string) => {},
-      onConfirmDuplicateView: async (name) => {
-        await sleep(1);
-        duplicateView(name);
-      },
-      onConfirmDeleteView: async (id: string) => {
-        await sleep(1);
-        deleteView(index);
-      },
-    }));
+  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+    content: item,
+    index,
+    onAction: () => {},
+    id: `${item}-${index}`,
+    isLocked: index === 0,
+    actions:
+      index === 0
+        ? []
+        : [
+            {
+              type: 'rename',
+              onAction: () => {},
+              onPrimaryAction: async (value: string) => {
+                const newItemsStrings = tabs.map((item, idx) => {
+                  if (idx === index) {
+                    return value;
+                  }
+                  return item.content;
+                });
+                await sleep(1);
+                setItemStrings(newItemsStrings);
+                return true;
+              },
+            },
+            {
+              type: 'duplicate',
+              onPrimaryAction: async (name) => {
+                await sleep(1);
+                duplicateView(name);
+                return true;
+              },
+            },
+            {
+              type: 'edit',
+            },
+            {
+              type: 'delete',
+              onPrimaryAction: async (id: string) => {
+                await sleep(1);
+                deleteView(index);
+                return true;
+              },
+            },
+          ],
+  }));
   const [selected, setSelected] = useState(0);
   const onCreateNewView = async (value: string) => {
     await sleep(500);
@@ -660,36 +692,52 @@ export function Disabled() {
     return true;
   };
 
-  const tabs: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[] =
-    itemStrings.map((item, index) => ({
-      content: item,
-      index,
-      onAction: () => {},
-      id: `${item}-${index}`,
-      isLocked: index === 0,
-      permissions: index === 0 ? [] : ['rename', 'duplicate', 'edit', 'delete'],
-      onClickRenameView: () => {},
-      onSaveRenameViewModal: async (value: string, id: string) => {
-        const newItemsStrings = tabs.map((item) => {
-          if (item.id === id) {
-            return value;
-          }
-          return item.content;
-        });
-        await sleep(1);
-        setItemStrings(newItemsStrings);
-      },
-      onClickEditView: (id: string) => {},
-      onClickDeleteView: (id: string) => {},
-      onConfirmDuplicateView: async (name) => {
-        await sleep(1);
-        duplicateView(name);
-      },
-      onConfirmDeleteView: async (id: string) => {
-        await sleep(1);
-        deleteView(index);
-      },
-    }));
+  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+    content: item,
+    index,
+    onAction: () => {},
+    id: `${item}-${index}`,
+    isLocked: index === 0,
+    actions:
+      index === 0
+        ? []
+        : [
+            {
+              type: 'rename',
+              onAction: () => {},
+              onPrimaryAction: async (value: string) => {
+                const newItemsStrings = tabs.map((item, idx) => {
+                  if (idx === index) {
+                    return value;
+                  }
+                  return item.content;
+                });
+                await sleep(1);
+                setItemStrings(newItemsStrings);
+                return true;
+              },
+            },
+            {
+              type: 'duplicate',
+              onPrimaryAction: async (name) => {
+                await sleep(1);
+                duplicateView(name);
+                return true;
+              },
+            },
+            {
+              type: 'edit',
+            },
+            {
+              type: 'delete',
+              onPrimaryAction: async (id: string) => {
+                await sleep(1);
+                deleteView(index);
+                return true;
+              },
+            },
+          ],
+  }));
   const [selected, setSelected] = useState(0);
   const onCreateNewView = async (value: string) => {
     await sleep(500);

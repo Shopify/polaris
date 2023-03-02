@@ -204,7 +204,7 @@ export function Filters({
                   value={queryValue}
                   placeholder={queryPlaceholder}
                   focused={focused}
-                  disabled={disableQueryField}
+                  disabled={disabled || disableQueryField}
                 />
               </div>
               {additionalContent}
@@ -289,7 +289,7 @@ export function Filters({
             </div>
           </div>
           {hideQueryField ? (
-            <Box paddingInlineEnd="2" paddingBlockStart="1">
+            <Box paddingInlineEnd="2" paddingBlockStart="2">
               <Inline>{additionalContent}</Inline>
             </Box>
           ) : null}

@@ -2,9 +2,9 @@ import React from 'react';
 import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
-import {Stack} from '../../../Stack';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
+import {Inline} from '../../../Inline';
 import {FilterButton} from '../FilterButton';
 
 export interface SearchFilterButtonProps {
@@ -21,16 +21,11 @@ export function SearchFilterButton({
   tooltipContent,
 }: SearchFilterButtonProps) {
   const activator = (
-    <FilterButton
-      onClick={onClick}
-      aria-label={ariaLabel}
-      disabled={disabled}
-      hasDoubleWidthIcon
-    >
-      <Stack spacing="none">
+    <FilterButton onClick={onClick} aria-label={ariaLabel} disabled={disabled}>
+      <Inline gap="0">
         <Icon source={SearchMinor} color="base" />
         <Icon source={FilterMinor} color="base" />
-      </Stack>
+      </Inline>
     </FilterButton>
   );
 

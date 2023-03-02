@@ -1,6 +1,6 @@
 ---
-title: Legacy filters
-description: This is a legacy version of the Filters component, which is a composite component that filters the items of a list or table.
+title: Filters
+description: Filters is a composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters
@@ -10,28 +10,17 @@ keywords:
   - index
   - list filter
   - table
-status:
-  value: Legacy
-  message: This is a legacy component and will be deprecated. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: legacy-filters-with-a-resource-list.tsx
+  - fileName: filters-with-a-resource-list.tsx
     title: With a resource list
-  - fileName: legacy-filters-with-a-data-table.tsx
+  - fileName: filters-with-a-data-table.tsx
     title: With a data table
-  - fileName: legacy-filters-with-children-content.tsx
+  - fileName: filters-with-children-content.tsx
     title: With children content
-  - fileName: legacy-filters-disabled.tsx
+  - fileName: filters-disabled.tsx
     title: Disabled
-  - fileName: legacy-filters-some-disabled.tsx
-    title: Some disabled
-  - fileName: legacy-filters-without-clear-button.tsx
-    title: Without clear button
-  - fileName: legacy-filters-with-help-text.tsx
-    title: With help text
-  - fileName: legacy-filters-with-query-field-hidden.tsx
+  - fileName: filters-with-query-field-hidden.tsx
     title: With query field hidden
-  - fileName: legacy-filters-with-query-field-disabled.tsx
-    title: With query field disabled
 ---
 
 Merchants use filters to:
