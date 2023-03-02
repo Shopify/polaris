@@ -29,7 +29,7 @@
   "scripts": {
     "lint": "TIMING=1 eslint --cache .",
     "test": "jest",
-    "clean": "rm -rf .turbo node_modules dist"
+    "clean": "rimraf .turbo node_modules dist"
   },
   "dependencies": {
     "postcss-value-parser": "^4.2.0",

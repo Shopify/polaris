@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsc -b",
     "lint": "TIMING=1 eslint --cache .",
-    "clean": "rm -rf .turbo node_modules dist"
+    "clean": "rimraf .turbo node_modules dist"
   },
   "dependencies": {
     "@oclif/core": "^1.13.10",

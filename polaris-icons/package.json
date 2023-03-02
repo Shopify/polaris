@@ -17,7 +17,7 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "test": "jest",
-    "clean": "rm -rf .turbo node_modules dist"
+    "clean": "rimraf .turbo node_modules dist"
   },
   "exports": {
     ".": {

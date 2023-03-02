@@ -20,13 +20,13 @@
     "build:assets": "ts-node --skip-project scripts/index.ts",
     "build:js": "rollup -c",
     "build:types": "tsc -b",
-    "build:clean": "rm -rf build",
+    "build:clean": "rimraf build",
     "dev": "rollup -c -w",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "test": "jest",
-    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo build"
+    "clean": "rimraf .turbo node_modules dist *.tsbuildinfo build"
   },
   "devDependencies": {
     "@shopify/browserslist-config": "^3.0.0"
