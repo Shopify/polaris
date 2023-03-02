@@ -112,6 +112,7 @@ describe('<PositionedOverlay />', () => {
         left: 0,
         measuring: false,
         positioning: 'above',
+        chevronOffset: 0,
       });
     });
 
@@ -125,7 +126,41 @@ describe('<PositionedOverlay />', () => {
         left: undefined,
         measuring: true,
         positioning: 'below',
+        chevronOffset: 0,
       });
+    });
+  });
+
+  describe('chevronOffset', () => {
+    let calculateHorizontalPositionMock: jest.SpyInstance;
+    let getRectForNodeMock: jest.SpyInstance;
+
+    beforeEach(() => {
+      calculateHorizontalPositionMock = jest.spyOn(
+        mathModule,
+        'calculateHorizontalPosition',
+      );
+      calculateHorizontalPositionMock.mockReturnValue(250);
+      getRectForNodeMock = jest.spyOn(geometry, 'getRectForNode');
+      getRectForNodeMock.mockReturnValue({
+        x: 100,
+        y: 50,
+        width: 200,
+        height: 100,
+        center: {x: 435, y: 25},
+      });
+    });
+
+    afterEach(() => {
+      calculateHorizontalPositionMock.mockRestore();
+      getRectForNodeMock.mockRestore();
+    });
+
+    it('calculates the chevron offset correctly', () => {
+      const positionedOverlay = mountWithApp(
+        <PositionedOverlay {...mockProps} />,
+      );
+      expect(positionedOverlay.instance.state.chevronOffset).toBe(185);
     });
   });
 
