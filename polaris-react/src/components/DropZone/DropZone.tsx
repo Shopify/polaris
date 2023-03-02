@@ -458,7 +458,6 @@ DropZone.FileUpload = FileUpload;
 
 interface DropZoneInputProps {
   id: string;
-  ref: React.RefObject<HTMLInputElement>;
   accept?: string;
   disabled: boolean;
   type: DropZoneFileType;
