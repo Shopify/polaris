@@ -197,6 +197,11 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/grid',
+    destination: '/components/deprecated/grid',
+    permanent: false,
+  },
+  {
     source: '/components/heading',
     destination: '/components/deprecated/heading',
     permanent: false,
@@ -209,6 +214,11 @@ const deprecated = [
   {
     source: '/components/subheading',
     destination: '/components/deprecated/subheading',
+    permanent: false,
+  },
+  {
+    source: '/components/text-container',
+    destination: '/components/deprecated/text-container',
     permanent: false,
   },
   {
@@ -351,6 +361,11 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
+    source: '/components/structure/empty-state',
+    destination: '/components/layout-and-structure/empty-state',
+    permanent: false,
+  },
+  {
     source: '/components/empty-state',
     destination: '/components/layout-and-structure/empty-state',
     permanent: false,
@@ -361,13 +376,18 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/grid',
-    destination: '/components/layout-and-structure/grid',
+    source: '/components/forms/form-layout',
+    destination: '/components/layout-and-structure/form-layout',
     permanent: false,
   },
   {
     source: '/components/inline',
     destination: '/components/layout-and-structure/inline',
+    permanent: false,
+  },
+  {
+    source: '/components/structure/layout',
+    destination: '/components/layout-and-structure/layout',
     permanent: false,
   },
   {
@@ -391,6 +411,11 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
+    source: '/components/structure/page',
+    destination: '/components/layout-and-structure/page',
+    permanent: false,
+  },
+  {
     source: '/components/page',
     destination: '/components/layout-and-structure/page',
     permanent: false,
@@ -398,11 +423,6 @@ const layoutAndStructure = [
   {
     source: '/components/stack',
     destination: '/components/layout-and-structure/stack',
-    permanent: false,
-  },
-  {
-    source: '/components/text-container',
-    destination: '/components/layout-and-structure/text-container',
     permanent: false,
   },
 ];
@@ -518,6 +538,11 @@ const selectionAndInput = [
     permanent: false,
   },
   {
+    source: '/components/forms/choice-list',
+    destination: '/components/selection-and-input/choice-list',
+    permanent: false,
+  },
+  {
     source: '/components/color-picker',
     destination: '/components/selection-and-input/color-picker',
     permanent: false,
@@ -553,6 +578,11 @@ const selectionAndInput = [
     permanent: false,
   },
   {
+    source: '/components/forms/form',
+    destination: '/components/selection-and-input/form',
+    permanent: false,
+  },
+  {
     source: '/components/inline-error',
     destination: '/components/selection-and-input/inline-error',
     permanent: false,
@@ -573,12 +603,22 @@ const selectionAndInput = [
     permanent: false,
   },
   {
+    source: '/components/forms/select',
+    destination: '/components/selection-and-input/select',
+    permanent: false,
+  },
+  {
     source: '/components/tag',
     destination: '/components/selection-and-input/tag',
     permanent: false,
   },
   {
     source: '/components/text-field',
+    destination: '/components/selection-and-input/text-field',
+    permanent: false,
+  },
+  {
+    source: '/components/forms/text-field',
     destination: '/components/selection-and-input/text-field',
     permanent: false,
   },
@@ -595,9 +635,19 @@ const tables = [
     destination: '/components/tables/index-table',
     permanent: false,
   },
+  {
+    source: '/components/lists-and-tables/index-table',
+    destination: '/components/tables/index-table',
+    permanent: false,
+  },
 ];
 
 const typography = [
+  {
+    source: '/components/titles-and-text/text-style',
+    destination: '/components/typography/text',
+    permanent: false,
+  },
   {
     source: '/components/text',
     destination: '/components/typography/text',

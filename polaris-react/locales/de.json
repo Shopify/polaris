@@ -174,7 +174,7 @@
       "showing": "{itemsCount} {resource} werden angezeigt",
       "loading": "{resource} wird geladen",
       "selected": "{selectedItemsCount} ausgewählt",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop sind ausgewählt.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop wurden ausgewählt",
       "selectAllItems": "Wähle alle {itemsLength}+ {resourceNamePlural} in deinem Shop aus",
       "emptySearchResultTitle": "Keine {resourceNamePlural} gefunden",
       "emptySearchResultDescription": "Versuche, die Filter oder den Suchbegriff zu ändern",
@@ -194,7 +194,7 @@
         "warningMessage": "Um eine bessere Benutzererfahrung zu bieten. Es sollte nur maximal {maxPromotedActions} beworbene Aktionen geben."
       },
       "showingTotalCount": "{itemsCount} von {totalItemsCount} {resource} werden angezeigt",
-      "allFilteredItemsSelected": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter sind ausgewählt.",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in diesem Filter wurden ausgewählt",
       "selectAllFilteredItems": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter auswählen"
     },
     "SkeletonPage": {
@@ -277,8 +277,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Artikel",
       "defaultItemPlural": "Artikel",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} wurden ausgewählt.",
-      "selected": "{selectedItemsCount} ausgewählt.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} wurden ausgewählt",
+      "selected": "{selectedItemsCount} ausgewählt",
       "a11yCheckboxDeselectAllSingle": "Auswahl für {resourceNameSingular} aufheben",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} auswählen",
       "a11yCheckboxDeselectAllMultiple": "Auswahl für alle {itemsLength} {resourceNamePlural} aufheben",
@@ -290,7 +290,7 @@
       "onboardingBadgeText": "Neu",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural} werden geladen ...",
       "selectAllLabel": "Alle {resourceNamePlural} auswählen",
-      "selected": "{selectedItemsCount} ausgewählt.",
+      "selected": "{selectedItemsCount} ausgewählt",
       "undo": "Rückgängig machen",
       "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} auswählen",
       "selectItem": "{resourceName} auswählen",

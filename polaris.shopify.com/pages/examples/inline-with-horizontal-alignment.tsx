@@ -7,7 +7,7 @@ function InlineWithHorizontalAlignmentExample() {
   return (
     <Page narrowWidth>
       <AlphaStack gap="16">
-        <Inline align="start">
+        <Inline gap="4" align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -15,7 +15,7 @@ function InlineWithHorizontalAlignmentExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
-        <Inline align="center">
+        <Inline gap="4" align="center">
           <Placeholder width="106px" label="Center" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -23,7 +23,7 @@ function InlineWithHorizontalAlignmentExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
-        <Inline align="end">
+        <Inline gap="4" align="end">
           <Placeholder width="106px" label="End" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -46,7 +46,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         width: width,
       }}
     >
-      <Inline align="center" blockAlign="center">
+      <Inline gap="4" align="center" blockAlign="center">
         <div
           style={{
             color: '#FFFFFF',

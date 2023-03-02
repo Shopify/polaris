@@ -174,7 +174,7 @@
       "showing": "{itemsCount} {resource} sont affichés",
       "loading": "Chargement de {resource} en cours",
       "selected": "{selectedItemsCount} sélectionné(s)",
-      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de votre boutique sont sélectionnés.",
+      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de votre boutique est sélectionnée",
       "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural} de votre boutique",
       "emptySearchResultTitle": "Pas de {resourceNamePlural} trouvés",
       "emptySearchResultDescription": "Essayez de changer les filtres ou le terme de recherche",
@@ -194,7 +194,7 @@
         "warningMessage": "Pour fournir une meilleure expérience utilisateur. Il ne doit y avoir que {maxPromotedActions} actions promues au maximum."
       },
       "showingTotalCount": "{itemsCount} sur {totalItemsCount} {resource} sont affichés",
-      "allFilteredItemsSelected": "La totalité des {resourceNamePlural}+ {itemsLength} de ce filtre sont sélectionnés.",
+      "allFilteredItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de ce filtre est sélectionnée",
       "selectAllFilteredItems": "Sélectionner la totalité des éléments {resourceNamePlural}+ {itemsLength} de ce filtre"
     },
     "SkeletonPage": {
@@ -278,8 +278,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Article",
       "defaultItemPlural": "Articles",
-      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} sont sélectionnés.",
-      "selected": "{selectedItemsCount} sélectionné(s)",
+      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} est sélectionnée",
+      "selected": "{selectedItemsCount} sélectionné(s)",
       "a11yCheckboxDeselectAllSingle": "Désélectionner {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Sélectionner {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Désélectionner la totalité des {itemsLength} {resourceNamePlural}",
@@ -291,7 +291,7 @@
       "onboardingBadgeText": "Nouveau",
       "resourceLoadingAccessibilityLabel": "Chargement de {resourceNamePlural} en cours…",
       "selectAllLabel": "Sélectionner la totalité des {resourceNamePlural}",
-      "selected": "{selectedItemsCount} sélectionné(s)",
+      "selected": "{selectedItemsCount} sélectionné(s)",
       "undo": "Annuler",
       "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Sélectionner {resourceName}",

@@ -117,7 +117,7 @@ export function Header({
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <Inline align="end">
+    <Inline gap="4" align="end">
       <Box printHidden>{additionalNavigation}</Box>
     </Inline>
   ) : null;
@@ -168,7 +168,7 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
         }
       >
-        <Inline align="space-between" blockAlign="center">
+        <Inline gap="4" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {additionalNavigationMarkup}
           {paginationMarkup}
@@ -239,7 +239,7 @@ export function Header({
         </ConditionalRender>
         <ConditionalRender condition={[slot5, slot6].some(notNull)}>
           <div className={styles.Row}>
-            <Inline>{slot5}</Inline>
+            <Inline gap="4">{slot5}</Inline>
             <ConditionalRender condition={slot6 != null}>
               <div className={styles.RightAlign}>{slot6}</div>
             </ConditionalRender>

@@ -29,6 +29,7 @@ const genNavJson = (markdownFiles) => {
       relatedResources,
       hideFromNav,
     } = md.frontMatter;
+
     const {slug} = md;
 
     const path = `children.${slug.replace(/\//g, '.children.')}`;
@@ -83,6 +84,7 @@ const genCacheJson = () => {
 
   const markdownFiles = mdFiles
     .map((filePath) => getMdContent(filePath))
+    .filter((md) => !md.frontMatter?.hideFromNav)
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   genSiteJson(markdownFiles);

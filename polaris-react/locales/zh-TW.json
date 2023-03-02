@@ -174,7 +174,7 @@
       "showing": "顯示 {itemsCount} {resource}",
       "loading": "正在載入 {resource}",
       "selected": "已選取 {selectedItemsCount} 項",
-      "allItemsSelected": "已選取您商店中所有 {itemsLength}+ {resourceNamePlural}。",
+      "allItemsSelected": "已選取您商店中全部 {itemsLength}+ 個{resourceNamePlural}",
       "selectAllItems": "選取您商店中全部 {itemsLength}+ {resourceNamePlural}",
       "emptySearchResultTitle": "找不到 {resourceNamePlural}",
       "emptySearchResultDescription": "請嘗試變更篩選條件或搜尋詞彙",
@@ -194,7 +194,7 @@
         "warningMessage": "為提供更良好的用戶體驗，您一次舉辦的促銷活動應以 {maxPromotedActions} 項為限。"
       },
       "showingTotalCount": "顯示第 {itemsCount} 個 {resource}，共 {totalItemsCount} 個",
-      "allFilteredItemsSelected": "已選取套用此篩選條件後顯示的全部 {itemsLength}+ 個 {resourceNamePlural}。",
+      "allFilteredItemsSelected": "已選取此篩選條件中全部 {itemsLength}+ 個{resourceNamePlural}",
       "selectAllFilteredItems": "選取套用此篩選條件後顯示的全部 {itemsLength}+ 個 {resourceNamePlural}"
     },
     "SkeletonPage": {
@@ -277,8 +277,8 @@
     "IndexProvider": {
       "defaultItemSingular": "品項",
       "defaultItemPlural": "品項",
-      "allItemsSelected": "已選取全部 {itemsLength} + {resourceNamePlural}。",
-      "selected": "已選取 {selectedItemsCount} 個。",
+      "allItemsSelected": "已選取全部 {itemsLength}+ 個{resourceNamePlural}",
+      "selected": "已選取 {selectedItemsCount} 項",
       "a11yCheckboxDeselectAllSingle": "取消選取 {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "選取 {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "取消選取全部 {itemsLength} {resourceNamePlural}",
@@ -290,7 +290,7 @@
       "onboardingBadgeText": "全新功能",
       "resourceLoadingAccessibilityLabel": "正在載入 {resourceNamePlural}......",
       "selectAllLabel": "選取所有 {resourceNamePlural}",
-      "selected": "已選取 {selectedItemsCount} 個。",
+      "selected": "已選取 {selectedItemsCount} 項",
       "undo": "復原",
       "selectAllItems": "選取全部 {itemsLength} + {resourceNamePlural}",
       "selectItem": "選取 {resourceName}",

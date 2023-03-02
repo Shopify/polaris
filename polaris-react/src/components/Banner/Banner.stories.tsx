@@ -194,7 +194,7 @@ export function WithEndJustifiedContent() {
   return (
     <Banner status="critical">
       <AlphaStack gap="1" fullWidth>
-        <Inline align="space-between">
+        <Inline gap="4" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
           </Text>

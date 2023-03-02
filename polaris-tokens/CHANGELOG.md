@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.6.1
+
+### Patch Changes
+
+- [#8456](https://github.com/Shopify/polaris/pull/8456) [`0e9fa8433`](https://github.com/Shopify/polaris/commit/0e9fa843397a9ec1d1a7eee70d0178d76dd231f8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated `border-caution-subdued` and `border-success-subdued` tokens to improve color contrast
+
+* [#8483](https://github.com/Shopify/polaris/pull/8483) [`b1768f037`](https://github.com/Shopify/polaris/commit/b1768f03795f224e760edc405dc5bfde298061cb) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Adjusted colors to meet color contrast requirements
+
 ## 6.6.0
 
 ### Minor Changes

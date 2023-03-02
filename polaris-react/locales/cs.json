@@ -174,7 +174,7 @@
       "showing": "Zobrazuje se tento počet: {itemsCount} ({resource})",
       "loading": "Načítání: {resource}",
       "selected": "Vybráno: {selectedItemsCount}",
-      "allItemsSelected": "V obchodě bylo vybráno vše typu {resourceNamePlural}: {itemsLength} a více.",
+      "allItemsSelected": "V obchodě byly vybrány veškeré položky typu {resourceNamePlural}: {itemsLength} a více",
       "selectAllItems": "Vybrat v obchodě vše typu {resourceNamePlural}: {itemsLength} a více",
       "emptySearchResultTitle": "Nepovedlo se najít: {resourceNamePlural}",
       "emptySearchResultDescription": "Zkuste změnit filtry nebo hledaný termín",
@@ -194,7 +194,7 @@
         "warningMessage": "Chceme zlepšit uživatelské zkušenosti. Propagačních akcí by mělo být maximálně {maxPromotedActions}."
       },
       "showingTotalCount": "Zobrazuje se tento počet: {itemsCount} z {totalItemsCount} ({resource})",
-      "allFilteredItemsSelected": "Jsou vybrány všechny položky ({resourceNamePlural}: {itemsLength} a více) v tomto filtru.",
+      "allFilteredItemsSelected": "V tomto filtru byly vybrány veškeré položky typu {resourceNamePlural}: {itemsLength}",
       "selectAllFilteredItems": "Vybrat všechny položky ({resourceNamePlural}: {itemsLength} a více) v tomto filtru"
     },
     "SkeletonPage": {
@@ -279,8 +279,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Položka",
       "defaultItemPlural": "Položky",
-      "allItemsSelected": "Bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength} a více).",
-      "selected": "Vybráno: {selectedItemsCount}.",
+      "allItemsSelected": "Byly vybrány veškeré položky typu {resourceNamePlural}: {itemsLength} a více",
+      "selected": "Vybráno: {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
@@ -292,7 +292,7 @@
       "onboardingBadgeText": "Novinka",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural} se načítají…",
       "selectAllLabel": "Vybrat vše: {resourceNamePlural}",
-      "selected": "Vybráno: {selectedItemsCount}.",
+      "selected": "Vybráno: {selectedItemsCount}",
       "undo": "Vrátit zpět",
       "selectAllItems": "Vybrat vše typu {resourceNamePlural} ({itemsLength} a více)",
       "selectItem": "Vybrat: {resourceName}",

@@ -7,6 +7,7 @@ import {Popover} from '../Popover';
 import type {PopoverPublicAPI} from '../Popover';
 import {Pane, PopoverCloseSource, PopoverOverlay} from '../components';
 import * as setActivatorAttributes from '../set-activator-attributes';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../TextContainer';
 
 describe('<Popover />', () => {

@@ -32,14 +32,14 @@ export function Footer({
     ) : null;
 
   return (
-    <Inline blockAlign="center">
+    <Inline gap="4" blockAlign="center">
       <Box
         borderBlockStart="divider"
         minHeight="var(--p-space-16)"
         padding="4"
         width="100%"
       >
-        <Inline blockAlign="center" align="space-between">
+        <Inline gap="4" blockAlign="center" align="space-between">
           <Box>{children}</Box>
           {actions}
         </Inline>
