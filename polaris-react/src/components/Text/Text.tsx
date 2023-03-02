@@ -30,12 +30,12 @@ type Variant =
 
 type Alignment = 'start' | 'center' | 'end' | 'justify';
 
-type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
+type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold' | null;
 
 type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
 
 const VariantFontWeightMapping: {
-  [V in Exclude<Variant, 'bodySm' | 'bodyMd' | 'bodyLg'>]: FontWeight;
+  [V in Variant]: FontWeight;
 } = {
   headingXs: 'semibold',
   headingSm: 'semibold',
@@ -45,6 +45,9 @@ const VariantFontWeightMapping: {
   heading2xl: 'semibold',
   heading3xl: 'semibold',
   heading4xl: 'bold',
+  bodyLg: null,
+  bodyMd: null,
+  bodySm: null,
 };
 
 export interface TextProps {
@@ -86,9 +89,11 @@ export const Text = ({
   visuallyHidden = false,
 }: TextProps) => {
   const Component = as || (visuallyHidden ? 'span' : 'p');
+
+  const variantFontWeight = variant && VariantFontWeightMapping[variant];
   const fontWeightClassName = fontWeight
     ? styles[fontWeight]
-    : variant && styles[VariantFontWeightMapping[variant]];
+    : variantFontWeight && styles[variantFontWeight];
 
   const className = classNames(
     styles.root,

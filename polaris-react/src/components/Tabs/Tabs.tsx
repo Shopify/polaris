@@ -4,7 +4,6 @@ import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
-import {Text} from '../Text';
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 

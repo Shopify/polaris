@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {Text} from '../Text';
 
 import styles from './Label.scss';
 

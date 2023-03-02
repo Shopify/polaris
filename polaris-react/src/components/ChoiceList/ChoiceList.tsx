@@ -5,7 +5,6 @@ import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
-import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 import {Box} from '../Box';
 import {Bleed} from '../Bleed';

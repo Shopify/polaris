@@ -72,6 +72,17 @@ describe('<Text />', () => {
         className: expect.stringContaining('bold'),
       });
     });
+
+    it('no font weight when using body variant', () => {
+      const headingText = mountWithApp(
+        <Text as="h4" variant="bodySm">
+          {text}
+        </Text>,
+      );
+      expect(headingText).toContainReactComponent('h4', {
+        className: expect.not.stringContaining('bold'),
+      });
+    });
   });
 
   describe('truncate', () => {
