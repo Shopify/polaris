@@ -34,11 +34,11 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
 
-export interface TextProps {
+interface NonMutuallyExclusiveProps {
   /** Adjust horizontal alignment of text */
   alignment?: Alignment;
   /** The element type */
-  as: Element;
+  as?: Element;
   /** Prevent text from overflowing */
   breakWord?: boolean;
   /** Text to display */
@@ -58,6 +58,12 @@ export interface TextProps {
   /** Visually hide the text */
   visuallyHidden?: boolean;
 }
+
+export type TextProps = NonMutuallyExclusiveProps &
+  (
+    | {visuallyHidden?: boolean; as?: undefined; variant?: undefined}
+    | {visuallyHidden?: undefined; as?: Element; variant?: Variant}
+  );
 
 export const Text = ({
   alignment,
