@@ -117,3 +117,13 @@ export const WithTruncate = () => (
     commodo. Ut luctus ut metus vel bibendum.
   </Text>
 );
+
+export const ParentWithChild = () => (
+  <Text as="h1" variant="headingMd" color="subdued">
+    Parent Text component with{' '}
+    <Text as="span" fontWeight="bold">
+      bold
+    </Text>{' '}
+    children
+  </Text>
+);
