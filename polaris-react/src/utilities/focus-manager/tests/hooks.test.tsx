@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'tests/utilities';
+import {mount, mountWithApp} from 'tests/utilities';
 
 import {useFocusManager} from '../hooks';
 
@@ -25,7 +25,7 @@ describe('useFocusManager', () => {
   });
 
   it('throws an error if context is not set', () => {
-    const attemptMount = () => <Component />;
+    const attemptMount = () => mount(<Component />);
     expect(attemptMount).toThrow(
       'No FocusManager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
     );
