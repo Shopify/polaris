@@ -16,17 +16,19 @@ export function Default() {
 
   return (
     <SettingToggle
+      title="Multipass"
+      description="Allow customers to log in with an external customer account system."
+      headerBadge={{
+        enabled: {content: 'On'},
+        disabled: {content: 'Off'},
+      }}
       action={{
         content: contentStatus,
         onAction: handleToggle,
       }}
       enabled={active}
     >
-      This setting is{' '}
-      <Text variant="bodyMd" fontWeight="bold" as="span">
-        {textStatus}
-      </Text>
-      .
+      Hey
     </SettingToggle>
   );
 }
