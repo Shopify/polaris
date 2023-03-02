@@ -1,5 +1,6 @@
 import {readFileSync} from 'fs';
 import * as path from 'path';
+import {fileURLToPath} from 'url';
 
 import {babel} from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
@@ -13,9 +14,8 @@ import {styles} from './config/rollup/plugin-styles.js';
 import {generateScopedName} from './config/rollup/namespaced-classname.js';
 import postcssPlugins from './config/postcss-plugins.js';
 
-const pkg = JSON.parse(
-  readFileSync(new URL('./package.json', import.meta.url).pathname),
-);
+const pathToPkgJSON = fileURLToPath(new URL('./package.json', import.meta.url));
+const pkg = JSON.parse(readFileSync(pathToPkgJSON));
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 function generateConfig({output, targets, stylesConfig}) {

@@ -1,12 +1,12 @@
 import {readFileSync} from 'fs';
+import {fileURLToPath} from 'url';
 
 import {babel} from '@rollup/plugin-babel';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
-const pkg = JSON.parse(
-  readFileSync(new URL('./package.json', import.meta.url).pathname),
-);
+const pathToPkgJSON = fileURLToPath(new URL('./package.json', import.meta.url));
+const pkg = JSON.parse(readFileSync(pathToPkgJSON));
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 /** @type {import('rollup').RollupOptions} */

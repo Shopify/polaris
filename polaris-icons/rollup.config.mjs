@@ -1,6 +1,7 @@
 // rollup.config.js
 import * as fs from 'fs';
 import * as path from 'path';
+import {fileURLToPath} from 'url';
 
 import {createFilter} from '@rollup/pluginutils';
 import {babel} from '@rollup/plugin-babel';
@@ -11,7 +12,7 @@ import svgr from '@svgr/core';
 import {optimize} from 'svgo';
 
 const convert = svgr.default;
-const iconBasePath = new URL('./icons', import.meta.url).pathname;
+const iconBasePath = fileURLToPath(new URL('./icons', import.meta.url));
 const iconPaths = globby.sync(path.join(iconBasePath, '*.yml'));
 
 const iconExports = [];
