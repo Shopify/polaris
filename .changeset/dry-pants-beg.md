@@ -1,6 +1,6 @@
 ---
-'@shopify/polaris': minor
-'polaris.shopify.com': minor
+'@shopify/polaris': patch
+'polaris.shopify.com': patch
 ---
 
 Migrated usage of `Stack` to `LegacyStack`
