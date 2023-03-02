@@ -46,7 +46,7 @@ export function Columns({children, columns, gap, alignItems}: ColumnsProps) {
       formatColumns(columns),
     ),
     ...getResponsiveProps('columns', 'gap', 'space', gap),
-    '--pc-columns-align-items': alignItems,
+    '--pc-columns-align-items': alignItems || 'normal',
   } as React.CSSProperties;
 
   return (
