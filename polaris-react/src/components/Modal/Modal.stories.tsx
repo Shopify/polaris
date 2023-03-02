@@ -45,11 +45,8 @@ export function Default() {
       >
         <Modal.Section>
           <TextContainer>
-            <Text variant="bodyMd" as="span">
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </Text>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -95,11 +92,9 @@ export function WithPrimaryAction() {
           <Stack vertical>
             <Stack.Item>
               <TextContainer>
-                <Text variant="bodyMd" as="span">
-                  You can share this discount link with your customers via email
-                  or social media. Your discount will be automatically applied
-                  at checkout.
-                </Text>
+                You can share this discount link with your customers via email
+                or social media. Your discount will be automatically applied at
+                checkout.
               </TextContainer>
             </Stack.Item>
             <Stack.Item fill>
@@ -339,11 +334,8 @@ export function WithoutATitle() {
       >
         <Modal.Section titleHidden>
           <TextContainer>
-            <Text variant="bodyMd" as="span">
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </Text>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -375,9 +367,7 @@ export function WithScrollListener() {
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
             <TextContainer>
-              <Text variant="bodyMd" as="span">
-                Item <a href="#Content">#{index}</a>
-              </Text>
+              Item <a href="#Content">#{index}</a>
             </TextContainer>
           </Modal.Section>
         ))}
@@ -424,11 +414,8 @@ export function WithActivatorRef() {
       >
         <Modal.Section>
           <TextContainer>
-            <Text variant="bodyMd" as="span">
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </Text>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -471,11 +458,8 @@ export function WithoutAnActivatorProp() {
       >
         <Modal.Section>
           <TextContainer>
-            <Text variant="bodyMd" as="span">
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </Text>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
           </TextContainer>
         </Modal.Section>
       </Modal>

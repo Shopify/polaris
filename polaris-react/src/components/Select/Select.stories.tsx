@@ -170,14 +170,12 @@ export function WithSeparateValidationError() {
     }
 
     return (
-      <span>
-        <Text variant="bodyMd" color="critical" as="span">
-          <p>
-            {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
-            <Link>Manage shipping</Link>
-          </p>
-        </Text>
-      </span>
+      <Text color="critical" as="span">
+        <p>
+          {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
+          <Link>Manage shipping</Link>
+        </p>
+      </Text>
     );
   }
 }

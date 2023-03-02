@@ -74,9 +74,7 @@ export function ChoiceList({
       paddingBlockEnd={{xs: '5', md: '1'}}
       visuallyHidden={titleHidden}
     >
-      <Text as="span" variant="bodyMd">
-        {title}
-      </Text>
+      {title}
     </Box>
   ) : null;
 

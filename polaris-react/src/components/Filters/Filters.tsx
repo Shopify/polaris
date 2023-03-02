@@ -191,7 +191,6 @@ class FiltersInner extends Component<CombinedProps, State> {
             <div className={styles.FilterTriggerLabelContainer}>
               <h3 className={styles.FilterTriggerTitle}>
                 <Text
-                  variant="bodyMd"
                   as="span"
                   color={
                     this.props.disabled || filter.disabled
@@ -355,7 +354,7 @@ class FiltersInner extends Component<CombinedProps, State> {
           </Button>
         ) : (
           <div className={styles.EmptyFooterState}>
-            <Text variant="bodyMd" color="subdued" as="span">
+            <Text color="subdued" as="span">
               <p>{i18n.translate('Polaris.Filters.noFiltersApplied')}</p>
             </Text>
           </div>
@@ -430,7 +429,7 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const helpTextMarkup = helpText ? (
       <div id="FiltersHelpText" className={styles.HelpText}>
-        <Text variant="bodyMd" color="subdued" as="span">
+        <Text color="subdued" as="span">
           {helpText}
         </Text>
       </div>

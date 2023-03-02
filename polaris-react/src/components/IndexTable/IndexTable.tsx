@@ -877,7 +877,7 @@ function IndexTableBase({
       );
     } else if (heading.hidden) {
       headingContent = (
-        <Text variant="bodySm" as="span" visuallyHidden>
+        <Text as="span" visuallyHidden>
           {heading.title}
         </Text>
       );

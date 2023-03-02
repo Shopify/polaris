@@ -43,14 +43,14 @@ function SimpleSmallScreenIndexTableExample() {
         position={index}
       >
         <div style={{padding: '12px 16px'}}>
-          <Text variant="bodyMd" fontWeight="bold" as="p">
+          <Text fontWeight="bold" as="p">
             {name}
           </Text>
           <p>{location}</p>
-          <Text variant="bodyMd" as="p" alignment="end" numeric>
+          <Text as="p" alignment="end" numeric>
             {orders}
           </Text>
-          <Text variant="bodyMd" as="p" alignment="end" numeric>
+          <Text as="p" alignment="end" numeric>
             {amountSpent}
           </Text>
         </div>
@@ -75,7 +75,7 @@ function SimpleSmallScreenIndexTableExample() {
             {
               id: 'order-count',
               title: (
-                <Text as="span" variant="bodySm" alignment="end">
+                <Text as="span" alignment="end">
                   Order count
                 </Text>
               ),
@@ -83,12 +83,7 @@ function SimpleSmallScreenIndexTableExample() {
             {
               id: 'amount-spent',
               title: (
-                <Text
-                  as="span"
-                  variant="bodySm"
-                  fontWeight="medium"
-                  alignment="end"
-                >
+                <Text as="span" fontWeight="medium" alignment="end">
                   Amount spent
                 </Text>
               ),

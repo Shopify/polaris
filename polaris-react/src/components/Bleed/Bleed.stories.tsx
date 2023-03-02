@@ -56,33 +56,25 @@ export function WithHorizontalDirection() {
 export function WithSpecificDirection() {
   return (
     <Stack vertical>
-      <Text variant="bodyMd" as="p">
-        Block Start
-      </Text>
+      <p>Block Start</p>
       <Box background="surface" padding="4" border="base">
         <Bleed marginInline="4" marginBlockStart="6">
           <div style={styles} />
         </Bleed>
       </Box>
-      <Text variant="bodyMd" as="p">
-        Block End
-      </Text>
+      <p>Block End</p>
       <Box background="surface" padding="4" border="base">
         <Bleed marginInline="4" marginBlockEnd="6">
           <div style={styles} />
         </Bleed>
       </Box>
-      <Text variant="bodyMd" as="p">
-        Inline Start
-      </Text>
+      <p>Inline Start</p>
       <Box background="surface" padding="4" border="base">
         <Bleed marginInline="0" marginInlineStart="6">
           <div style={styles} />
         </Bleed>
       </Box>
-      <Text variant="bodyMd" as="p">
-        Inline End
-      </Text>
+      <p>Inline End</p>
       <Box background="surface" padding="4" border="base">
         <Bleed marginInline="0" marginInlineEnd="6">
           <div style={styles} />

@@ -34,7 +34,9 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
 
-const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
+const VariantFontWeightMapping: {
+  [V in Exclude<Variant, 'bodySm' | 'bodyMd' | 'bodyLg'>]: FontWeight;
+} = {
   headingXs: 'semibold',
   headingSm: 'semibold',
   headingMd: 'semibold',
@@ -43,9 +45,6 @@ const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
   heading2xl: 'semibold',
   heading3xl: 'semibold',
   heading4xl: 'bold',
-  bodySm: 'regular',
-  bodyMd: 'regular',
-  bodyLg: 'regular',
 };
 
 export interface TextProps {

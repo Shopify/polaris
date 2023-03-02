@@ -399,7 +399,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         >
           {dragOverlay}
           {dragErrorOverlay}
-          <Text variant="bodySm" as="span" visuallyHidden>
+          <Text as="span" visuallyHidden>
             <DropZoneInput
               {...inputAttributes}
               openFileDialog={openFileDialog}

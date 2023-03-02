@@ -70,7 +70,7 @@ export function Form({
   const autoCompleteInputs = normalizeAutoComplete(autoComplete);
 
   const submitMarkup = implicitSubmit ? (
-    <Text variant="bodySm" as="span" visuallyHidden>
+    <Text as="span" visuallyHidden>
       <button type="submit" aria-hidden="true" tabIndex={-1}>
         {i18n.translate('Polaris.Common.submit')}
       </button>

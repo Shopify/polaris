@@ -63,7 +63,7 @@ export function Badge({
     : getDefaultAccessibilityLabel(i18n, progress, status);
 
   let accessibilityMarkup = Boolean(accessibilityLabel) && (
-    <Text variant="bodySm" as="span" visuallyHidden>
+    <Text as="span" visuallyHidden>
       {accessibilityLabel}
     </Text>
   );

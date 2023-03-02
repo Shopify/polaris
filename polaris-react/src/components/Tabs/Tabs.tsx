@@ -247,9 +247,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
         accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
       >
-        <Text as="span" variant="bodyMd">
-          {tab.content}
-        </Text>
+        {tab.content}
       </Tab>
     );
   };
