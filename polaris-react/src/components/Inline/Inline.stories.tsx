@@ -29,7 +29,7 @@ export function Default() {
 
 export function WithAlignStart() {
   return (
-    <Inline align="start" gap="1">
+    <Inline align="start" blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -40,7 +40,7 @@ export function WithAlignStart() {
 
 export function WithAlignCenter() {
   return (
-    <Inline align="center" gap="1">
+    <Inline align="center" blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -51,7 +51,7 @@ export function WithAlignCenter() {
 
 export function WithAlignEnd() {
   return (
-    <Inline align="end" gap="1">
+    <Inline align="end" blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
