@@ -412,7 +412,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         >
           {dragOverlay}
           {dragErrorOverlay}
-          <Text variant="bodySm" as="span" visuallyHidden>
+          <Text visuallyHidden>
             <input
               id={id}
               accept={accept}

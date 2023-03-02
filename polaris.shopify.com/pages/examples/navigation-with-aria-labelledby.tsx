@@ -7,7 +7,11 @@ function NavigationExample() {
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
+<<<<<<< HEAD
         <Text as="span" visuallyHidden>
+=======
+        <Text visuallyHidden>
+>>>>>>> 8ece95d3e (Remove unnecessary props)
           <p id="label-id">Hidden label</p>
         </Text>
         <Navigation.Section

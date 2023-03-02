@@ -886,11 +886,7 @@ function IndexTableBase({
         </LegacyStack>
       );
     } else if (heading.hidden) {
-      headingContent = (
-        <Text as="span" visuallyHidden>
-          {heading.title}
-        </Text>
-      );
+      headingContent = <Text visuallyHidden>{heading.title}</Text>;
     } else {
       headingContent = heading.title;
     }

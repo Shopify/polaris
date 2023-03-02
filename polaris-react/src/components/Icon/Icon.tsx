@@ -98,9 +98,7 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
 
   return (
     <span className={className}>
-      <Text as="span" visuallyHidden>
-        {accessibilityLabel}
-      </Text>
+      <Text visuallyHidden>{accessibilityLabel}</Text>
       {contentMarkup[sourceType]}
     </span>
   );

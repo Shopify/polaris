@@ -337,9 +337,7 @@ export function TextField({
         onClick={handleClearButtonPress}
         disabled={disabled}
       >
-        <Text as="span" visuallyHidden>
-          {i18n.translate('Polaris.Common.clear')}
-        </Text>
+        <Text visuallyHidden>{i18n.translate('Polaris.Common.clear')}</Text>
         <Icon source={CircleCancelMinor} color="base" />
       </button>
     ) : null;

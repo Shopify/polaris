@@ -79,9 +79,7 @@ function TopBarExample() {
       activatorContent={
         <span>
           <Icon source={QuestionMarkMajor} />
-          <Text as="span" visuallyHidden>
-            Secondary menu
-          </Text>
+          <Text visuallyHidden>Secondary menu</Text>
         </span>
       }
       open={isSecondaryMenuOpen}

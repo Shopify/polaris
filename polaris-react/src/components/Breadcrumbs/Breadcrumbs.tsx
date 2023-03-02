@@ -39,9 +39,7 @@ export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
       <span className={styles.Icon}>
         <Icon source={ArrowLeftMinor} />
       </span>
-      <Text as="span" visuallyHidden>
-        {content}
-      </Text>
+      <Text visuallyHidden>{content}</Text>
     </>
   );
 

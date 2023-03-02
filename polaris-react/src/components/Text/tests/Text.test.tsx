@@ -102,12 +102,8 @@ describe('<Text />', () => {
 
   describe('visuallyHidden', () => {
     it('renders with the text hidden', () => {
-      const bodyText = mountWithApp(
-        <Text as="p" visuallyHidden>
-          {text}
-        </Text>,
-      );
-      expect(bodyText).toContainReactComponent('p', {
+      const bodyText = mountWithApp(<Text visuallyHidden>{text}</Text>);
+      expect(bodyText).toContainReactComponent('span', {
         className: expect.stringContaining('visuallyHidden'),
       });
     });
