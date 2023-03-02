@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
-  Card,
+  LegacyCard,
   ContextualSaveBar,
   Layout,
   Page,
@@ -39,7 +39,7 @@ export function Default() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
@@ -72,7 +72,7 @@ export function Default() {
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );
@@ -99,7 +99,7 @@ export function WithI18n() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
@@ -132,7 +132,7 @@ export function WithI18n() {
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );
@@ -154,7 +154,7 @@ export function WithLinkComponent() {
   return (
     <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
-        breadcrumbs={[{content: 'Products', url: '#'}]}
+        backAction={{content: 'Products', url: '#'}}
         title="Jar With Lock-Lid"
         primaryAction={{content: 'Save', disabled: true}}
       >

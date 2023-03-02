@@ -63,6 +63,8 @@ export interface TextProps {
   fontWeight?: FontWeight;
   /** HTML id attribute */
   id?: string;
+  /** Use a numeric font variant with monospace appearance */
+  numeric?: boolean;
   /** Truncate text overflow with ellipsis */
   truncate?: boolean;
   /** Typographic style of text */
@@ -79,6 +81,7 @@ export const Text = ({
   color,
   fontWeight,
   id,
+  numeric = false,
   truncate = false,
   variant,
   visuallyHidden = false,
@@ -93,6 +96,7 @@ export const Text = ({
     alignment && styles[alignment],
     breakWord && styles.break,
     color && styles[color],
+    numeric && styles.numeric,
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
   );

@@ -23,11 +23,20 @@
 .Page {
   --toc-width: 16rem;
   display: flex;
-  gap: 5rem;
+  gap: 2.5rem;
+  /* If the TOC is not visible, ensure the Post column is centered */
+  justify-content: center;
 }
 
 .Post {
   flex: 1;
+}
+
+.PostContent {
+  @media screen and (max-width: $breakpointDesktop) {
+    /* Ensure the page width doesn't become too wide when TOC is hidden */
+    max-width: 776px;
+  }
 }
 
 .Footer {

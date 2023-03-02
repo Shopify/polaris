@@ -13,14 +13,6 @@
     }
   }
 
-  + [class^='Polaris-Card'] {
-    margin-top: var(--p-space-4);
-
-    @media print {
-      margin-top: calc(-1 * var(--p-space-2));
-    }
-  }
-
   @media #{$p-breakpoints-sm-up} {
     border-radius: var(--p-border-radius-2);
   }
@@ -50,7 +42,7 @@
   }
 
   @media print and #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-2) var(--p-space-4) var(--p-space-0);
+    padding: var(--p-space-2) var(--p-space-4) 0;
   }
 }
 
@@ -86,18 +78,18 @@
 }
 
 .Section-fullWidth {
-  padding: var(--p-space-4) var(--p-space-0);
+  padding: var(--p-space-4) 0;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-5) var(--p-space-0);
+    padding: var(--p-space-5) 0;
   }
 }
 
 .Section-flush {
-  padding: var(--p-space-0);
+  padding: 0;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-0);
+    padding: 0;
   }
 }
 

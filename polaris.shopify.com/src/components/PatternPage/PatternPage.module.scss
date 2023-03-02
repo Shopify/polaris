@@ -1,0 +1,325 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+
+.Heading {
+  align-items: center;
+}
+
+.TabGroup {
+  --tab-background: var(--p-surface-subdued);
+  --tab-background-pressed: rgba(250, 250, 250, 1);
+  --tab-background-hover: rgba(241, 241, 241, 1);
+  --tab-border: 1px solid #c9cccf;
+  @include dark-mode {
+    --tab-background: #18181d;
+    --tab-background-pressed: var(--tab-background);
+    --tab-border: 1px solid rgba(55, 55, 55, 1);
+    --tab-background-hover: rgba(41, 41, 41, 1);
+  }
+  border-color: var(--tab-border-color);
+  isolation: isolate;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.InfoLine {
+  color: var(--text-subdued);
+  .InfoLineLink {
+    color: inherit;
+    text-decoration: underline;
+    &:hover {
+      color: var(--text-link);
+    }
+  }
+}
+.TabPanel {
+  background-color: var(--tab-background);
+  position: relative;
+  padding: 1rem;
+  // Tuck it up underneath the tabs so it makes the tab buttons appear connected
+  // to the panel by hiding a part of the border
+  margin-top: -1px;
+  border: var(--tab-border);
+  border-radius: var(--border-radius-400);
+
+  .TabGroup[data-selected='0'] & {
+    // The first tab butts up against the edge of the panel, so remove the
+    // border radius there when that tab is selected
+    border-top-left-radius: 0;
+  }
+}
+
+.Variant {
+  & > p:first-child {
+    // The first paragrah when it exists should be bigger
+    font-size: var(--font-size-400);
+  }
+}
+
+.UsageTable {
+  td:first-child {
+    width: 0;
+    white-space: nowrap;
+  }
+}
+
+.TabList {
+  --border-subdued: rgba(201, 204, 207, 1);
+
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  z-index: 5;
+
+  .Tab {
+    --default-padding: 0.5rem 1rem;
+    background: var(--tab-background);
+    z-index: 5;
+    padding: var(--default-padding);
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    border-radius: var(--border-radius-400);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-size: var(--font-size-400);
+    font-weight: var(--font-weight-500);
+    line-height: 1.33;
+    color: var(--p-text-disabled);
+
+    &[aria-selected='true'] {
+      color: var(--text-strong);
+      background-color: var(--tab-background-pressed);
+      border: var(--tab-border);
+      border-bottom: 0;
+    }
+    &:hover {
+      background-color: var(--tab-background-hover);
+    }
+
+    &:focus,
+    &:focus-visible {
+      box-shadow: none;
+      border: var(--tab-border);
+      border-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpointMobile) {
+  .TabGroup {
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+  }
+  .TabPanel {
+    padding: 1.25rem;
+  }
+  .TabList {
+    position: sticky;
+    top: 60px;
+    background-color: var(--surface);
+    .Tab {
+      padding-left: 1.25rem;
+    }
+    .Tab ~ .Tab {
+      // Undo the above for all tabs that aren't the first
+      padding: var(--default-padding);
+    }
+  }
+}
+
+.HowItHelps {
+  .ImageWrapper {
+    display: block;
+    border: 1px solid var(--p-border-subdued);
+    position: relative;
+    flex: auto;
+    overflow: hidden;
+    aspect-ratio: 361.9/180.9;
+    width: 100%;
+    border-radius: 0.25rem;
+    background: var(--p-surface-depressed);
+    > img {
+      width: 100%;
+      object-fit: fill;
+    }
+  }
+  ol {
+    list-style: none;
+    counter-reset: item;
+    li {
+      counter-increment: item;
+      &::before {
+        width: 24px;
+        height: 24px;
+        content: counter(item);
+        font-weight: 700;
+        color: rgba(153, 35, 247, 1);
+        text-align: center;
+      }
+    }
+  }
+  @media screen and (max-width: $breakpointTablet) {
+    flex-direction: column;
+    .ImageWrapper {
+      min-width: 100%;
+    }
+  }
+}
+
+.UsageGuidelinesGrid {
+  display: grid;
+  column-gap: var(--p-space-4);
+  row-gap: var(--p-space-8);
+
+  --txt-column-width: 35%;
+  /*
+   * Rules of the grid:
+   * The second (img) column should never be bigger than 30rem.
+   * The first (text) column should never shrink below 35% of the container.
+   * The first (text) column should grow to fill the remaining space (1fr).
+   * The second (img) column should never shrink below 20rem. */
+  grid-template-columns:
+    minmax(
+      // Give this column a minimum width (thin container)
+      var(--txt-column-width),
+      // Grow to fill the remaining space when possible (wide container)
+      1fr
+    )
+    minmax(
+      min(
+        // Minimum size of 20rem to keep it legible
+        20rem,
+        // Except when the container is too thin: let it shrinnk so the text
+        // column can still take up its desired minimum width
+        calc(100% - var(--txt-column-width))
+      ),
+      // Maximum width (wide container) - avoids gigantic images
+      30rem
+    );
+
+  @media screen and (max-width: $breakpointMobile) {
+    grid-template-columns: 1fr;
+    row-gap: var(--p-space-4);
+  }
+
+  .UsageGuidelinesRow {
+    display: contents;
+  }
+
+  .ImageWrapper {
+    aspect-ratio: 485/315;
+    position: relative;
+    background: var(--p-surface-depressed);
+    display: block;
+    overflow: hidden;
+    > img {
+      object-fit: cover;
+    }
+  }
+}
+
+.UsefulToKnow {
+  .ImageWrapper {
+    border-radius: var(--border-radius-400);
+    border: 1px solid #c9cccf;
+  }
+}
+
+.Accordion {
+  padding: 1rem 2rem;
+  border: 1px solid black;
+}
+
+.Checkbox {
+  appearance: auto;
+}
+
+.DefinitionTable {
+  --props-table-border-color: #c9cccf;
+  --props-table-heading-background: rgba(0, 0, 0, 0.02);
+  --props-table-content-background: inherit;
+  @include dark-mode {
+    --props-table-border-color: rgba(55, 55, 55, 1);
+    --props-table-heading-background: rgba(30, 30, 35, 1);
+    --props-table-content-background: rgba(22, 22, 25, 1);
+  }
+  border: 1px solid var(--props-table-border-color);
+  border-radius: var(--border-radius-400);
+  background: var(--props-table-content-background);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    background: var(--props-table-heading-background);
+    color: var(--text-strong);
+    padding: 0.66rem 1rem;
+    margin: 0;
+    font-size: inherit;
+    font-weight: normal;
+  }
+
+  .DefinitionList {
+    display: grid;
+    dt {
+      color: var(--text-strong);
+    }
+
+    border-top: 1px solid var(--props-table-border-color);
+    grid-template-columns: fit-content(35%) 1fr;
+    padding: 1rem;
+    gap: 1rem;
+    @media screen and (max-width: $breakpointDesktopSmall) {
+      grid-template-columns: 1fr;
+    }
+    @media screen and (max-width: $breakpointTablet) {
+      grid-template-columns: fit-content(30%) 1fr;
+    }
+    @media screen and (max-width: $breakpointMobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.List {
+  list-style: none;
+  margin: 0;
+  position: relative;
+  li {
+    /* Using before elements as they respond to layout unlike ::marker, so we
+    * can wrap the li's in a <Stack> and use the gap property */
+    &::before {
+      width: 24px;
+      height: 24px;
+      font-weight: 700;
+      text-align: center;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.UnorderedList {
+  li {
+    &::before {
+      content: '\2022';
+    }
+  }
+}
+
+.OrderedList {
+  counter-reset: item;
+  li {
+    counter-increment: item;
+    &::before {
+      content: counter(item);
+      color: rgba(153, 35, 247, 1);
+    }
+  }
+}

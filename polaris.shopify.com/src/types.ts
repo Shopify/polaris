@@ -1,6 +1,40 @@
 import {MetadataProperties} from '@shopify/polaris-tokens';
 import {Icon} from '@shopify/polaris-icons/metadata';
 
+export type PatternExample = {
+  code: string;
+  previewContext?: string;
+  sandboxContext?: string;
+};
+
+export type MarkdownString = string;
+
+export type PatternVariant = {
+  description?: string;
+  title: string;
+  slug: string;
+  howItHelps: MarkdownString;
+  usefulToKnow: MarkdownString;
+  example?: PatternExample;
+};
+
+export type Pattern = SingleVariantPattern | MultiVariantPattern;
+
+export type SingleVariantPattern = {
+  title: string;
+  description?: string;
+  relatedResources: MarkdownString;
+  howItHelps: MarkdownString;
+  usefulToKnow: MarkdownString;
+  example: PatternExample;
+};
+
+export type MultiVariantPattern = {
+  variants: PatternVariant[];
+  description?: string;
+  relatedResources: MarkdownString;
+};
+
 export interface SiteJSON {
   [key: string]: {
     frontMatter: FrontMatter;
@@ -14,14 +48,34 @@ export interface Example extends FrontMatter {
 export interface FrontMatter {
   title: string;
   category?: string;
+  url?: string;
   description?: string;
   examples?: Example[];
   icon?: string;
+  order?: number;
   keywords?: (string | number)[];
   status?: {
     value: string;
     message: string;
   };
+  hideFromNav?: boolean;
+}
+
+export interface PatternFrontMatter extends Omit<FrontMatter, 'description'> {
+  /* Description is shown on Patterns index page, and as the meta description on detail page */
+  description: string;
+  /* Lede is the first paragraph on the detail page, above variants */
+  lede: string;
+  previewImg?: string;
+  order?: number;
+  draft: boolean;
+  githubDiscussionsLink?: string;
+  variants?: string[];
+}
+
+export interface PatternVariantFontMatter {
+  title?: string;
+  slug?: string;
 }
 
 export type MarkdownFile = {
@@ -36,6 +90,7 @@ export interface TokenPropertiesWithName extends MetadataProperties {
 export const searchResultCategories = [
   'foundations',
   'components',
+  'patterns',
   'tokens',
   'icons',
 ] as const;
@@ -53,6 +108,11 @@ export interface SearchResult {
       description: string;
       status?: Status;
       group?: string;
+    };
+    patterns: {
+      title: string;
+      description: string;
+      previewImg?: string;
     };
     foundations: {
       title: string;
@@ -95,9 +155,12 @@ export enum Breakpoints {
 }
 
 export enum StatusName {
+  New = 'New',
   Deprecated = 'Deprecated',
   Alpha = 'Alpha',
+  Beta = 'Beta',
   Information = 'Information',
+  Legacy = 'Legacy',
   Warning = 'Warning',
 }
 
@@ -157,4 +220,5 @@ export interface NavItem {
   status?: Status;
   children?: NavJSON;
   expanded?: boolean;
+  hideFromNav?: boolean;
 }

@@ -45,7 +45,6 @@
   --font-size-2000: 5.852rem;
 
   @media screen and (max-width: $breakpointMobile) {
-    --font-size-100: 0.75rem;
     --font-size-100: 0.85rem;
     --font-size-200: 0.9rem;
     --font-size-300: 0.95rem;
@@ -233,7 +232,7 @@ body,
 .dark-mode {
   --text: #b0b0bc;
   --text-strong: #e7e7f1;
-  --text-subdued: #808089;
+  --text-subdued: #85858e;
   --text-link: #8bb2ff;
   --surface-attention: #454500;
   --surface-information: #02382d;

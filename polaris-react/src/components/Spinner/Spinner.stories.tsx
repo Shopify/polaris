@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  Card,
+  LegacyCard,
   Form,
   FormLayout,
   Spinner,
@@ -81,12 +81,12 @@ export function WithFocusManagement() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <Tabs tabs={tabs.current} selected={selected} onSelect={handleTabChange}>
-        <Card.Section title={tabs.current[selected].content}>
+        <LegacyCard.Section title={tabs.current[selected].content}>
           {sectionMarkup}
-        </Card.Section>
+        </LegacyCard.Section>
       </Tabs>
-    </Card>
+    </LegacyCard>
   );
 }

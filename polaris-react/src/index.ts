@@ -46,9 +46,6 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
-export {AlphaCard} from './components/AlphaCard';
-export type {AlphaCardProps} from './components/AlphaCard';
-
 export {AlphaStack} from './components/AlphaStack';
 export type {AlphaStackProps} from './components/AlphaStack';
 
@@ -97,12 +94,7 @@ export {CalloutCard} from './components/CalloutCard';
 export type {CalloutCardProps} from './components/CalloutCard';
 
 export {Card} from './components/Card';
-export type {
-  CardProps,
-  CardSectionProps,
-  CardHeaderProps,
-  CardSubsectionProps,
-} from './components/Card';
+export type {CardProps} from './components/Card';
 
 export {Checkbox} from './components/Checkbox';
 export type {CheckboxProps} from './components/Checkbox';

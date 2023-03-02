@@ -8,6 +8,7 @@
 .turbo
 dist
 node_modules
+Session.vim
 /polaris-react/build
 /polaris-react/build-internal
 /polaris-react/src/styles/_media-queries.scss
@@ -16,3 +17,4 @@ node_modules
 /polaris.shopify.com/public/sitemap.xml
 /polaris.shopify.com/public/og-images
 /polaris.shopify.com/public/playroom
+storybook-static

@@ -5,7 +5,7 @@ import {NavJSON} from '../../types';
 import get from 'lodash.get';
 
 import styles from './Breadcrumbs.module.scss';
-import {uppercaseFirst} from '../../utils/various';
+import {deslugify} from '../../utils/various';
 
 const nav = navJSON as NavJSON;
 
@@ -33,7 +33,7 @@ function Breadcrumbs() {
 
     segments.push({
       url: `/${pathChunks.slice(0, i + 1).join('/')}`,
-      text: navItem ? navItem.title : uppercaseFirst(chunk),
+      text: navItem ? navItem.title : deslugify(chunk),
     });
   });
 

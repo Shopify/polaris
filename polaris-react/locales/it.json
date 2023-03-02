@@ -174,7 +174,7 @@
       "showing": "Visualizzazione di {itemsCount} {resource}",
       "loading": "Caricamento {resource}",
       "selected": "{selectedItemsCount} selezionati",
-      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} nel tuo negozio sono selezionati.",
+      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} nel tuo negozio sono selezionati",
       "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural} nel tuo negozio",
       "emptySearchResultTitle": "Impossibile trovare {resourceNamePlural}",
       "emptySearchResultDescription": "Prova a cambiare i filtri o il termine di ricerca",
@@ -194,7 +194,7 @@
         "warningMessage": "Per offrire una migliore User Experience. È previsto solo un massimo di {maxPromotedActions} azioni promosse."
       },
       "showingTotalCount": "Visualizzazione di {itemsCount} su {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Tutti i {resourceNamePlural} {itemsLength}+ in questo filtro sono selezionati.",
+      "allFilteredItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} in questo filtro sono selezionati",
       "selectAllFilteredItems": "Seleziona tutti i {resourceNamePlural} {itemsLength}+ in questo filtro"
     },
     "SkeletonPage": {
@@ -278,8 +278,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Articolo",
       "defaultItemPlural": "Articoli",
-      "allItemsSelected": "Tutti gli oltre {itemsLength} {resourceNamePlural} sono selezionati.",
-      "selected": "{selectedItemsCount} selezionati.",
+      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} sono selezionati",
+      "selected": "{selectedItemsCount} selezionati",
       "a11yCheckboxDeselectAllSingle": "Deseleziona {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleziona {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Deseleziona tutto: {itemsLength} {resourceNamePlural}",
@@ -291,7 +291,7 @@
       "onboardingBadgeText": "Novità",
       "resourceLoadingAccessibilityLabel": "Caricamento {resourceNamePlural} in corso",
       "selectAllLabel": "Seleziona tutto: {resourceNamePlural}",
-      "selected": "{selectedItemsCount} selezionati.",
+      "selected": "{selectedItemsCount} selezionati",
       "undo": "Annulla",
       "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Seleziona {resourceName}",

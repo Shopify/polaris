@@ -136,7 +136,7 @@ export function OptionList({
             paddingBlockStart={isFirstOption ? undefined : '2'}
           >
             {titleMarkup}
-            <Bleed marginBlockStart={title ? undefined : '05'} marginInline="0">
+            <Bleed marginBlockStart={title ? undefined : '05'}>
               <Box
                 as="ul"
                 id={`${id}-${sectionIndex}`}

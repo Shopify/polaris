@@ -2,6 +2,7 @@ import React from 'react';
 import {matchMedia, timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {formatAreas, Grid} from '../Grid';
 
 describe('<Grid />', () => {

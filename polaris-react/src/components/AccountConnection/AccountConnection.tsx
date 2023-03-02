@@ -4,7 +4,7 @@ import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
 import {SettingAction} from '../SettingAction';
-import {AlphaCard} from '../AlphaCard';
+import {Card} from '../Card';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
 import {Text} from '../Text';
@@ -69,7 +69,7 @@ export function AccountConnection({
     : null;
 
   return (
-    <AlphaCard>
+    <Card>
       <SettingAction action={actionElement}>
         <Inline gap="4">
           {avatarMarkup}
@@ -80,6 +80,6 @@ export function AccountConnection({
         </Inline>
       </SettingAction>
       {termsOfServiceMarkup}
-    </AlphaCard>
+    </Card>
   );
 }

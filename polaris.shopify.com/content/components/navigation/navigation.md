@@ -68,7 +68,7 @@ The navigation component should:
 - Use a major icon for item actions.
 - Use a minor icon for secondary actions.
 - Use the provided navigation section component to group navigation items.
-- Not add additional components, like [badge](/components/feedback-indicators/badge), in navigation items. Example: Don‘t add the [New badge](/patterns/new-badge).
+- Not add additional components, like [badge](/components/feedback-indicators/badge), in navigation items. Example: Don‘t add the [New badge](/patterns-legacy/new-badge).
 
 ---
 
