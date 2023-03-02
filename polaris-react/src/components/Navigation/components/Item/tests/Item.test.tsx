@@ -476,7 +476,7 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponent('a', {
         'aria-expanded': false,
-        'aria-controls': 'PolarisSecondaryNavigation1',
+        'aria-controls': ':r18:',
       });
     });
 

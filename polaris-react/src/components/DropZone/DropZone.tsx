@@ -316,7 +316,9 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   });
 
   const uniqId = useId();
-  const id = idProp ?? uniqId;
+  // The regex to remove `:` which fails as a selector and
+  // is a work around for the child class component that cannot useRef
+  const id = idProp ?? uniqId.replace(/:/g, '');
 
   const typeSuffix = capitalize(type);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);
@@ -456,6 +458,7 @@ DropZone.FileUpload = FileUpload;
 
 interface DropZoneInputProps {
   id: string;
+  ref: React.RefObject<HTMLInputElement>;
   accept?: string;
   disabled: boolean;
   type: DropZoneFileType;

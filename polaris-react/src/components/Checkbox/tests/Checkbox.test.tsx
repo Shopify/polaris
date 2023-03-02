@@ -102,7 +102,7 @@ describe('<Checkbox />', () => {
       const element = mountWithApp(<Checkbox label="Checkbox" />);
 
       expect(element).toContainReactComponent('input', {
-        id: 'PolarisCheckbox1',
+        id: ':r8:',
       });
     });
   });
@@ -138,7 +138,7 @@ describe('<Checkbox />', () => {
       );
 
       expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisCheckbox1HelpText',
+        'aria-describedby': ':rc:HelpText',
       });
 
       expect(checkbox.find('div')).toContainReactText('Some help');
@@ -168,7 +168,7 @@ describe('<Checkbox />', () => {
       );
 
       expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisCheckbox1Error',
+        'aria-describedby': ':re:Error',
       });
 
       expect(checkbox.find('div')).toContainReactText('Some error');
@@ -188,7 +188,7 @@ describe('<Checkbox />', () => {
       );
 
       expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisCheckbox1Error PolarisCheckbox1HelpText',
+        'aria-describedby': ':rg:Error :rg:HelpText',
       });
       expect(checkbox.find('div')).toContainReactText('Some error');
       expect(checkbox.find('div')).toContainReactText('Some help');
