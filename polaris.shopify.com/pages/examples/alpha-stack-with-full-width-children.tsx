@@ -1,45 +1,40 @@
 import React from 'react';
-import {AlphaStack, Text} from '@shopify/polaris';
+import {AlphaStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithFullWidthChildrenExample() {
   return (
-    <AlphaStack gap="4">
-      <Placeholder label="Stack child" childWidth="100%" />
-      <Placeholder />
-      <Placeholder />
+    <AlphaStack fullWidth>
+      <Placeholder height="48px" />
+      <DashedDivider />
+      <Placeholder height="48px" />
+      <DashedDivider />
+      <Placeholder height="48px" />
     </AlphaStack>
   );
 }
 
-const Placeholder = ({
-  label = '',
-  height = 'auto',
-  width = '100%',
-  childWidth = 'auto',
-}) => {
+const Placeholder = ({height = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#7B47F1',
+        background: '#20828D',
         padding: '14px var(--p-space-2)',
-        height: height ?? undefined,
-        width: width ?? undefined,
+        height: height,
       }}
-    >
+    />
+  );
+};
+
+const DashedDivider = () => {
+  return (
+    <div style={{background: 'var(--p-color-text-info)'}}>
       <div
         style={{
-          display: 'inline-block',
-          background: 'rgba(255, 255, 255, 0.3)',
-          color: '#FFFFFF',
-          width: childWidth ?? undefined,
+          border: '1px dashed #EAFAF3',
         }}
-      >
-        <Text as="h2" variant="bodyMd" fontWeight="medium">
-          {label}
-        </Text>
-      </div>
+      />
     </div>
   );
 };
