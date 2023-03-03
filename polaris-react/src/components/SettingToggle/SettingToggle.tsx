@@ -1,7 +1,6 @@
 import React, {useMemo} from 'react';
 
 import type {ComplexAction} from '../../types';
-import {SettingAction} from '../SettingAction';
 import {buttonFrom} from '../Button';
 import {LegacyCard} from '../LegacyCard';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
@@ -27,6 +26,7 @@ export interface SettingToggleProps {
   action?: ComplexAction;
   /** Sets toggle state to activated or deactivated */
   enabled?: boolean;
+  /** The content that should be rendered in the badge for setting status */
   headerBadge?: SettingsToggleBadge;
 }
 
@@ -69,7 +69,7 @@ export function SettingToggle({
               ? headerBadge?.enabled.content
               : headerBadge?.disabled.content}
           </Badge>
-          {/* {helpLink && <LearnMoreLink url={helpLink} />} */}
+          {helpLink}
         </Stack>
       </Stack.Item>
       {actionMarkup}

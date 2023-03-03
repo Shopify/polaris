@@ -27,8 +27,6 @@ export function Default() {
         onAction: handleToggle,
       }}
       enabled={active}
-    >
-      Hey
-    </SettingToggle>
+    />
   );
 }
