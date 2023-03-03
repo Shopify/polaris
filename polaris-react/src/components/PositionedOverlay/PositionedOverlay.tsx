@@ -27,6 +27,7 @@ interface OverlayDetails {
   positioning: Positioning;
   measuring: boolean;
   activatorRect: Rect;
+  chevronOffset: number;
 }
 
 export interface PositionedOverlayProps {
@@ -56,6 +57,7 @@ interface State {
   zIndex: number | null;
   outsideScrollableContainer: boolean;
   lockPosition: boolean;
+  chevronOffset: number;
 }
 
 const OBSERVER_CONFIG = {
@@ -80,6 +82,7 @@ export class PositionedOverlay extends PureComponent<
     zIndex: null,
     outsideScrollableContainer: false,
     lockPosition: false,
+    chevronOffset: 0,
   };
 
   private overlay: HTMLElement | null = null;
@@ -170,8 +173,15 @@ export class PositionedOverlay extends PureComponent<
   }
 
   private overlayDetails = (): OverlayDetails => {
-    const {measuring, left, right, positioning, height, activatorRect} =
-      this.state;
+    const {
+      measuring,
+      left,
+      right,
+      positioning,
+      height,
+      activatorRect,
+      chevronOffset,
+    } = this.state;
 
     return {
       measuring,
@@ -180,6 +190,7 @@ export class PositionedOverlay extends PureComponent<
       desiredHeight: height,
       positioning,
       activatorRect,
+      chevronOffset,
     };
   };
 
@@ -304,6 +315,8 @@ export class PositionedOverlay extends PureComponent<
           preferredAlignment,
         );
 
+        const chevronOffset = activatorRect.center.x - horizontalPosition;
+
         this.setState(
           {
             measuring: false,
@@ -324,6 +337,7 @@ export class PositionedOverlay extends PureComponent<
                 intersectionWithViewport(scrollableContainerRect),
               ),
             zIndex,
+            chevronOffset,
           },
           () => {
             if (!this.overlay) return;
