@@ -1,12 +1,10 @@
 import React, {
-  createRef,
   useState,
   useRef,
   useCallback,
   FunctionComponent,
   useMemo,
   useEffect,
-  Component,
 } from 'react';
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
@@ -22,6 +20,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
 import {AlphaStack} from '../AlphaStack';
+import {useEventListener} from '../../utilities/use-event-listener';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
@@ -34,6 +33,8 @@ import {
 import styles from './DropZone.scss';
 
 export type DropZoneFileType = 'file' | 'image' | 'video';
+
+type DropZoneEvent = Event | React.ChangeEvent<HTMLInputElement>;
 
 export interface DropZoneProps {
   /** Label for the file input */
@@ -141,6 +142,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   onDragLeave,
 }: DropZoneProps) {
   const node = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -208,7 +210,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   );
 
   const handleDrop = useCallback(
-    (event: DragEvent) => {
+    (event: DropZoneEvent) => {
       stopEvent(event);
       if (disabled) return;
 
@@ -231,7 +233,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   );
 
   const handleDragEnter = useCallback(
-    (event: DragEvent) => {
+    (event: DropZoneEvent) => {
       stopEvent(event);
       if (disabled) return;
 
@@ -254,7 +256,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   );
 
   const handleDragOver = useCallback(
-    (event: DragEvent) => {
+    (event: DropZoneEvent) => {
       stopEvent(event);
       if (disabled) return;
       onDragOver && onDragOver();
@@ -263,7 +265,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   );
 
   const handleDragLeave = useCallback(
-    (event: DragEvent) => {
+    (event: DropZoneEvent) => {
       event.preventDefault();
 
       if (disabled) return;
@@ -284,38 +286,25 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     [dropOnPage, disabled, onDragLeave],
   );
 
-  useEffect(() => {
-    const dropNode = dropOnPage ? document : node.current;
+  const doc = typeof document === 'undefined' ? null : document;
+  const dropNode = dropOnPage ? doc : node.current;
 
-    if (!dropNode) return;
-
-    dropNode.addEventListener('drop', handleDrop);
-    dropNode.addEventListener('dragover', handleDragOver);
-    dropNode.addEventListener('dragenter', handleDragEnter);
-    dropNode.addEventListener('dragleave', handleDragLeave);
-    window.addEventListener('resize', adjustSize);
-
-    return () => {
-      dropNode.removeEventListener('drop', handleDrop);
-      dropNode.removeEventListener('dragover', handleDragOver);
-      dropNode.removeEventListener('dragenter', handleDragEnter);
-      dropNode.removeEventListener('dragleave', handleDragLeave);
-      window.removeEventListener('resize', adjustSize);
-    };
-  }, [
-    dropOnPage,
-    handleDrop,
-    handleDragOver,
-    handleDragEnter,
-    handleDragLeave,
+  useEventListener('drop', handleDrop, dropNode);
+  useEventListener('dragover', handleDragOver, dropNode);
+  useEventListener('dragenter', handleDragEnter, dropNode);
+  useEventListener('dragleave', handleDragLeave, dropNode);
+  useEventListener(
+    'resize',
     adjustSize,
-  ]);
+    typeof window === 'undefined' ? null : window,
+  );
 
   useComponentDidMount(() => {
     adjustSize();
   });
 
   const id = useUniqueId('DropZone', idProp);
+
   const typeSuffix = capitalize(type);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);
 
@@ -335,17 +324,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     label ||
     i18n.translate(`Polaris.DropZone.${allowMultipleKey}.label${typeSuffix}`);
   const labelHiddenValue = label ? labelHidden : true;
-
-  const inputAttributes = {
-    id,
-    accept,
-    disabled,
-    type: 'file' as const,
-    multiple: allowMultiple,
-    onChange: handleDrop,
-    onFocus: handleFocus,
-    onBlur: handleBlur,
-  };
 
   const classes = classNames(
     styles.DropZone,
@@ -382,35 +360,15 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     [disabled, focused, measuring, size, type, allowMultiple],
   );
 
-  return (
-    <DropZoneContext.Provider value={context}>
-      <Labelled
-        id={id}
-        label={labelValue}
-        action={labelAction}
-        labelHidden={labelHiddenValue}
-      >
-        <div
-          ref={node}
-          className={classes}
-          aria-disabled={disabled}
-          onClick={handleClick}
-          onDragStart={stopEvent}
-        >
-          {dragOverlay}
-          {dragErrorOverlay}
-          <Text variant="bodySm" as="span" visuallyHidden>
-            <DropZoneInput
-              {...inputAttributes}
-              openFileDialog={openFileDialog}
-              onFileDialogClose={onFileDialogClose}
-            />
-          </Text>
-          <div className={styles.Container}>{children}</div>
-        </div>
-      </Labelled>
-    </DropZoneContext.Provider>
-  );
+  const open = useCallback(() => {
+    if (!inputRef.current) return;
+    inputRef.current.click();
+  }, [inputRef]);
+
+  const triggerFileDialog = useCallback(() => {
+    open();
+    onFileDialogClose?.();
+  }, [open, onFileDialogClose]);
 
   function overlayMarkup(
     icon: FunctionComponent,
@@ -431,68 +389,57 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     );
   }
 
-  function open() {
-    const fileInputNode = node.current && node.current.querySelector(`#${id}`);
-    fileInputNode &&
-      fileInputNode instanceof HTMLElement &&
-      fileInputNode.click();
-  }
-
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (disabled) return;
 
     return onClick ? onClick(event) : open();
   }
+
+  useEffect(() => {
+    if (openFileDialog) triggerFileDialog();
+  }, [openFileDialog, triggerFileDialog]);
+
+  return (
+    <DropZoneContext.Provider value={context}>
+      <Labelled
+        id={id}
+        label={labelValue}
+        action={labelAction}
+        labelHidden={labelHiddenValue}
+      >
+        <div
+          ref={node}
+          className={classes}
+          aria-disabled={disabled}
+          onClick={handleClick}
+          onDragStart={stopEvent}
+        >
+          {dragOverlay}
+          {dragErrorOverlay}
+          <Text variant="bodySm" as="span" visuallyHidden>
+            <input
+              id={id}
+              accept={accept}
+              disabled={disabled}
+              multiple={allowMultiple}
+              onChange={handleDrop}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              type="file"
+              ref={inputRef}
+              autoComplete="off"
+            />
+          </Text>
+          <div className={styles.Container}>{children}</div>
+        </div>
+      </Labelled>
+    </DropZoneContext.Provider>
+  );
 };
 
-function stopEvent(event: DragEvent | React.DragEvent) {
+function stopEvent(event: DropZoneEvent | React.DragEvent) {
   event.preventDefault();
   event.stopPropagation();
 }
 
 DropZone.FileUpload = FileUpload;
-
-interface DropZoneInputProps {
-  id: string;
-  accept?: string;
-  disabled: boolean;
-  type: DropZoneFileType;
-  multiple: boolean;
-  openFileDialog?: boolean;
-  onChange(event: DragEvent | React.ChangeEvent<HTMLInputElement>): void;
-  onFocus(): void;
-  onBlur(): void;
-  onFileDialogClose?(): void;
-}
-
-// Due to security reasons, browsers do not allow file inputs to be opened artificially.
-// For example `useEffect(() => { ref.click() })`. Oddly enough react class-based components bi-pass this.
-class DropZoneInput extends Component<DropZoneInputProps, never> {
-  private fileInputNode = createRef<HTMLInputElement>();
-
-  componentDidMount() {
-    this.props.openFileDialog && this.triggerFileDialog();
-  }
-
-  componentDidUpdate() {
-    this.props.openFileDialog && this.triggerFileDialog();
-  }
-
-  render() {
-    const {openFileDialog, onFileDialogClose, ...inputProps} = this.props;
-
-    return (
-      <input {...inputProps} ref={this.fileInputNode} autoComplete="off" />
-    );
-  }
-
-  private triggerFileDialog = () => {
-    this.open();
-    this.props.onFileDialogClose && this.props.onFileDialogClose();
-  };
-
-  private open = () => {
-    if (!this.fileInputNode.current) return;
-    this.fileInputNode.current.click();
-  };
-}
