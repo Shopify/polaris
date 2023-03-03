@@ -10,10 +10,10 @@ on:
 jobs:
   build:
     name: 'Validate with Node v${{ matrix.node-version }}'
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: ['14.17.0', '16.13.0']
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -67,6 +67,7 @@ jobs:
     strategy:
       matrix:
         node-version: ['14.17.0', '16.13.0']
+        os: [ubuntu-latest, windows-latest]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
