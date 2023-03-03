@@ -20,6 +20,7 @@ import {isServer} from '../../utilities/target';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
 import {AlphaStack} from '../AlphaStack';
+import {useEventListener} from '../../utilities/use-event-listener';
 
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
@@ -285,32 +286,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     [dropOnPage, disabled, onDragLeave],
   );
 
-  useEffect(() => {
-    const dropNode = dropOnPage ? document : node.current;
+  const dropNode = dropOnPage ? document : node.current;
+  useEventListener('drop', handleDrop, dropNode);
 
-    if (!dropNode) return;
-
-    dropNode.addEventListener('drop', handleDrop);
-    dropNode.addEventListener('dragover', handleDragOver);
-    dropNode.addEventListener('dragenter', handleDragEnter);
-    dropNode.addEventListener('dragleave', handleDragLeave);
-    window.addEventListener('resize', adjustSize);
-
-    return () => {
-      dropNode.removeEventListener('drop', handleDrop);
-      dropNode.removeEventListener('dragover', handleDragOver);
-      dropNode.removeEventListener('dragenter', handleDragEnter);
-      dropNode.removeEventListener('dragleave', handleDragLeave);
-      window.removeEventListener('resize', adjustSize);
-    };
-  }, [
-    dropOnPage,
-    handleDrop,
-    handleDragOver,
-    handleDragEnter,
-    handleDragLeave,
-    adjustSize,
-  ]);
+  useEventListener('dragover', handleDragOver, dropNode);
+  useEventListener('dragenter', handleDragEnter, dropNode);
+  useEventListener('dragleave', handleDragLeave, dropNode);
+  useEventListener('resize', adjustSize, window);
 
   useComponentDidMount(() => {
     adjustSize();
