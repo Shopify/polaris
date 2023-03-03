@@ -1,13 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  Box,
-  Badge,
-  Icon,
-  Inline,
-  Thumbnail,
-  AlphaStack,
-} from '@shopify/polaris';
+import {Box, Badge, Icon, Inline, Thumbnail} from '@shopify/polaris';
 import {CapitalMajor, ImageMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -90,9 +83,9 @@ export function WithAlignSpaceEvenly() {
   );
 }
 
-export function WithBlockAlignCenter() {
+export function WithBlockAlignStart() {
   return (
-    <Inline blockAlign="center" gap="1">
+    <Inline blockAlign="start" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -101,9 +94,9 @@ export function WithBlockAlignCenter() {
   );
 }
 
-export function WithBlockAlignStart() {
+export function WithBlockAlignCenter() {
   return (
-    <Inline blockAlign="start" gap="1">
+    <Inline blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -169,33 +162,22 @@ export function WithNonWrapping() {
 
 export function WithGap() {
   return (
-    <AlphaStack gap="4">
-      <Inline gap="8">
-        <Badge>Paid</Badge>
-        <Badge>Processing</Badge>
-        <Badge>Fulfilled</Badge>
-        <Badge>Completed</Badge>
-      </Inline>
-
-      <Inline gap={{xs: '2', md: '4'}}>
-        <Badge>Paid</Badge>
-        <Badge>Processing</Badge>
-        <Badge>Fulfilled</Badge>
-        <Badge>Completed</Badge>
-      </Inline>
-    </AlphaStack>
+    <Inline gap="8">
+      <Badge>Paid</Badge>
+      <Badge>Processing</Badge>
+      <Badge>Fulfilled</Badge>
+      <Badge>Completed</Badge>
+    </Inline>
   );
 }
 
 export function WithResponsiveGap() {
   return (
-    <AlphaStack gap="4">
-      <Inline gap={{xs: '2', md: '4'}}>
-        <Badge>Paid</Badge>
-        <Badge>Processing</Badge>
-        <Badge>Fulfilled</Badge>
-        <Badge>Completed</Badge>
-      </Inline>
-    </AlphaStack>
+    <Inline gap={{xs: '2', md: '4'}}>
+      <Badge>Paid</Badge>
+      <Badge>Processing</Badge>
+      <Badge>Fulfilled</Badge>
+      <Badge>Completed</Badge>
+    </Inline>
   );
 }
