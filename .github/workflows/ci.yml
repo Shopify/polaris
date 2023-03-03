@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: 'Validate with Node v${{ matrix.node-version }}'
+    name: 'Run Node v${{ matrix.node-version }} on ${{ matrix.os }}'
     strategy:
       matrix:
         node-version: ['14.17.0', '16.13.0']
