@@ -1,7 +1,7 @@
 import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
-import {AlphaStack, Text} from '@shopify/polaris';
+import {Text} from '@shopify/polaris';
 import {Grid, GridItem} from '../../../src/components/Grid';
 import Page from '../../../src/components/Page';
 import TipBanner from '../../../src/components/TipBanner/TipBanner';
@@ -11,6 +11,7 @@ import {stripMarkdownLinks} from '../../../src/utils/various';
 import PageMeta from '../../../src/components/PageMeta';
 import Longform from '../../../src/components/Longform';
 import Markdown from '../../../src/components/Markdown';
+import {Stack} from '../../../src/components/Stack';
 
 interface Group {
   title?: string;
@@ -45,12 +46,12 @@ export default function GroupPage({
   const relatedResources = frontMatter?.relatedResources;
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
-      <AlphaStack gap="4">
+      <Stack gap="4">
         <Text as="h4" variant="headingLg">
           {title}
         </Text>
         <p>{description}</p>
-      </AlphaStack>
+      </Stack>
       <Grid condensed>
         {components?.map((component) => {
           const componentSlug = component.replace(/ /g, '-').toLowerCase();
@@ -101,7 +102,7 @@ export default function GroupPage({
 
   const relatedResourcesMarkup = relatedResources
     ? relatedResources && (
-        <AlphaStack gap="4">
+        <Stack gap="4">
           <Text as="h4" variant="headingLg">
             Related Resources
           </Text>
@@ -115,7 +116,7 @@ export default function GroupPage({
               </li>
             ))}
           </ul>
-        </AlphaStack>
+        </Stack>
       )
     : null;
 
@@ -125,8 +126,8 @@ export default function GroupPage({
         title={frontMatter?.title}
         description={frontMatter?.description}
       />
-      <AlphaStack gap="16">
-        <AlphaStack gap="4">
+      <Stack gap="16">
+        <Stack gap="4">
           {frontMatter?.description && (
             <Longform firstParagraphIsLede>
               <Markdown>{frontMatter?.description}</Markdown>
@@ -134,9 +135,9 @@ export default function GroupPage({
           )}
 
           {groupsMarkup || componentsFromPaths}
-        </AlphaStack>
+        </Stack>
         {relatedResourcesMarkup}
-      </AlphaStack>
+      </Stack>
     </Page>
   );
 }

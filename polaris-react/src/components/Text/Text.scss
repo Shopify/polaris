@@ -156,3 +156,7 @@
 .break {
   overflow-wrap: break-word;
 }
+
+.numeric {
+  font-variant-numeric: tabular-nums lining-nums;
+}

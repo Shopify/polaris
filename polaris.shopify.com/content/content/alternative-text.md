@@ -39,7 +39,7 @@ keywords:
 
 Alt text is a text replacement for an image. Generally, it is represented by the alt HTML element attribute `alt="alt text"`.
 
-Often used by people with low or loss of vision, screen readers announce alt text to explain images. Alt text also displays if images fail to download (for example, there’s an unstable or low-bandwidth network connection).
+Often used by people who are blind or have low vision, screen readers announce alt text to explain images. Alt text will also display when images fail to download (for example, there’s an unstable or low-bandwidth network connection).
 
 Alt text should:
 
@@ -246,12 +246,11 @@ For more information on coding and alt text standards, visit the
 
 ## Related components
 
-The following Polaris components come props to set alt text or aria labels, along with specific guidance for their use:
+The following Polaris components include props to set alt text or aria labels, along with specific guidance for their use:
 
 - [Avatar](https://polaris.shopify.com/components/images-and-icons/avatar)
 - [Button](/components/actions/button)
 - [Icon](/components/images-and-icons/icon)
-- [Image](/components/images-and-icons/image)
 - [Link](https://polaris.shopify.com/components/navigation/link)
 - [Thumbnail](https://polaris.shopify.com/components/images-and-icons/thumbnail)
 - [Video Thumbnail](https://polaris.shopify.com/components/images-and-icons/video-thumbnail)
