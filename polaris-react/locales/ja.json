@@ -152,7 +152,9 @@
       "clearAllFilters": "すべての絞り込みをクリアする",
       "clear": "クリア",
       "clearLabel": "{filterName}をクリアする",
-      "moreFiltersWithCount": "詳細な絞り込み ({count})"
+      "moreFiltersWithCount": "詳細な絞り込み ({count})",
+      "addFilter": "絞り込みを追加",
+      "clearFilters": "すべてクリア"
     },
     "Modal": {
       "iFrameTitle": "body markup",
@@ -201,7 +203,50 @@
       "loadingLabel": "ページを読み込み中"
     },
     "Tabs": {
-      "toggleTabsLabel": "その他のタブ"
+      "toggleTabsLabel": "その他のビュー",
+      "newViewAccessibilityLabel": "新たなビューを作成",
+      "newViewTooltip": "ビューを作成",
+      "Tab": {
+        "rename": "ビューの名前を変更",
+        "duplicate": "ビューを複製",
+        "edit": "ビューを編集",
+        "editColumns": "列を編集",
+        "delete": "ビューを削除",
+        "copy": "{name}のコピー",
+        "deleteModal": {
+          "title": "ビューを削除しますか？",
+          "description": "これは元に戻せません。{viewName}ビューは管理画面で使用できなくなります。",
+          "cancel": "キャンセル",
+          "delete": "ビューを削除"
+        }
+      },
+      "RenameViewModal": {
+        "title": "ビューの名前を変更する",
+        "label": "名前",
+        "cancel": "キャンセル",
+        "create": "保存",
+        "errors": {
+          "sameName": "この名前のビューはすでに存在しています。別の名前を選択してください。"
+        }
+      },
+      "DuplicateViewModal": {
+        "title": "ビューを複製する",
+        "label": "名前",
+        "cancel": "キャンセル",
+        "create": "ビューを作成",
+        "errors": {
+          "sameName": "この名前のビューはすでに存在しています。別の名前を選択してください。"
+        }
+      },
+      "CreateViewModal": {
+        "title": "新たなビューを作成する",
+        "label": "名前",
+        "cancel": "キャンセル",
+        "create": "ビューを作成",
+        "errors": {
+          "sameName": "この名前のビューはすでに存在しています。別の名前を選択してください。"
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "{children}を削除"
@@ -305,6 +350,40 @@
     "FullscreenBar": {
       "back": "戻る",
       "accessibilityLabel": "フルスクリーンモードを閉じる"
+    },
+    "FilterPill": {
+      "clear": "クリア"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "検索と絞り込み (F)",
+      "searchFilterAccessibilityLabel": "検索と絞り込みの結果",
+      "sort": "検索結果を並べ替える",
+      "addView": "新たなビューを追加",
+      "newView": "カスタム検索",
+      "SortButton": {
+        "ariaLabel": "検索結果を並べ替える",
+        "tooltip": "並び替え",
+        "title": "並び替え",
+        "sorting": {
+          "asc": "昇順",
+          "desc": "降順",
+          "az": "A～Z",
+          "za": "Z～A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "キャンセル",
+        "update": "アップデート",
+        "save": "保存",
+        "saveAs": "名前を付けて保存",
+        "modal": {
+          "title": "表示内容を保存",
+          "label": "名前",
+          "sameName": "この名前のビューはすでに存在しています。別の名前を選択してください。",
+          "save": "保存",
+          "cancel": "キャンセル"
+        }
+      }
     }
   }
 }

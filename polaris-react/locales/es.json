@@ -152,7 +152,9 @@
       "clearAllFilters": "Borrar todos los filtros",
       "clear": "Borrar",
       "clearLabel": "Borrar {filterName}",
-      "moreFiltersWithCount": "Más filtros ({count})"
+      "moreFiltersWithCount": "Más filtros ({count})",
+      "addFilter": "Agregar filtro",
+      "clearFilters": "Borrar todo"
     },
     "Modal": {
       "iFrameTitle": "marcado body",
@@ -201,7 +203,50 @@
       "loadingLabel": "Cargando página"
     },
     "Tabs": {
-      "toggleTabsLabel": "Más pestañas"
+      "toggleTabsLabel": "Más vistas",
+      "newViewAccessibilityLabel": "Crear vista nueva",
+      "newViewTooltip": "Crear vista",
+      "Tab": {
+        "rename": "Cambiar nombre de vista",
+        "duplicate": "Duplicar vista",
+        "edit": "Editar vista",
+        "editColumns": "Editar columnas",
+        "delete": "Eliminar vista",
+        "copy": "Copia de {name}",
+        "deleteModal": {
+          "title": "¿Eliminar vista?",
+          "description": "Esta acción no se puede deshacer. La vista {viewName} ya no estará disponible en el panel de control.",
+          "cancel": "Cancelar",
+          "delete": "Eliminar vista"
+        }
+      },
+      "RenameViewModal": {
+        "title": "Cambiar nombre de vista",
+        "label": "Nombre",
+        "cancel": "Cancelar",
+        "create": "Guardar",
+        "errors": {
+          "sameName": "Ya existe una vista con este nombre. Elige otro nombre."
+        }
+      },
+      "DuplicateViewModal": {
+        "title": "Duplicar vista",
+        "label": "Nombre",
+        "cancel": "Cancelar",
+        "create": "Crear vista",
+        "errors": {
+          "sameName": "Ya existe una vista con este nombre. Elige otro nombre."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Crear vista nueva",
+        "label": "Nombre",
+        "cancel": "Cancelar",
+        "create": "Crear vista",
+        "errors": {
+          "sameName": "Ya existe una vista con este nombre. Elige otro nombre."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Eliminar {children}"
@@ -306,6 +351,40 @@
     "FullscreenBar": {
       "back": "Atrás",
       "accessibilityLabel": "Salir del modo de pantalla completa"
+    },
+    "FilterPill": {
+      "clear": "Borrar"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Buscar y filtrar (F)",
+      "searchFilterAccessibilityLabel": "Buscar y filtrar resultados",
+      "sort": "Ordenar los resultados",
+      "addView": "Agregar una vista nueva",
+      "newView": "Búsqueda personalizada",
+      "SortButton": {
+        "ariaLabel": "Ordenar los resultados",
+        "tooltip": "Ordenar",
+        "title": "Ordenar por",
+        "sorting": {
+          "asc": "Ascendente",
+          "desc": "Descendente",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Cancelar",
+        "update": "Modificar",
+        "save": "Guardar",
+        "saveAs": "Guardar como",
+        "modal": {
+          "title": "Guardar vista como",
+          "label": "Nombre",
+          "sameName": "Ya existe una vista con este nombre. Elige otro nombre.",
+          "save": "Guardar",
+          "cancel": "Cancelar"
+        }
+      }
     }
   }
 }

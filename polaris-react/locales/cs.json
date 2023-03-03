@@ -152,7 +152,9 @@
       "clearAllFilters": "Vymazat všechny filtry",
       "clear": "Vymazat",
       "clearLabel": "Vymazat {filterName}",
-      "moreFiltersWithCount": "Další filtry ({count})"
+      "moreFiltersWithCount": "Další filtry ({count})",
+      "addFilter": "Přidat filtr",
+      "clearFilters": "Vymazat vše"
     },
     "Modal": {
       "iFrameTitle": "kód hlavní části",
@@ -201,7 +203,50 @@
       "loadingLabel": "Stránka se načítá"
     },
     "Tabs": {
-      "toggleTabsLabel": "Více karet"
+      "toggleTabsLabel": "Více zobrazení",
+      "newViewAccessibilityLabel": "Vytvořte nové zobrazení",
+      "newViewTooltip": "Vytvořit zobrazení",
+      "Tab": {
+        "rename": "Přejmenovat zobrazení",
+        "duplicate": "Duplikování zobrazení",
+        "edit": "Upravit zobrazení",
+        "editColumns": "Upravit sloupce",
+        "delete": "Odstranit zobrazení",
+        "copy": "{name} – kopie",
+        "deleteModal": {
+          "title": "Chcete zobrazení odstranit?",
+          "description": "Tato akce je nevratná. Zobrazení {viewName} už nebude k dispozici ve vašem administrátorovi.",
+          "cancel": "Zrušit",
+          "delete": "Odstranit zobrazení"
+        }
+      },
+      "RenameViewModal": {
+        "title": "Přejmenovat zobrazení",
+        "label": "Název",
+        "cancel": "Zrušit",
+        "create": "Uložit",
+        "errors": {
+          "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
+        }
+      },
+      "DuplicateViewModal": {
+        "title": "Duplikování zobrazení",
+        "label": "Název",
+        "cancel": "Zrušit",
+        "create": "Vytvořit zobrazení",
+        "errors": {
+          "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Vytvořte nové zobrazení",
+        "label": "Název",
+        "cancel": "Zrušit",
+        "create": "Vytvořit zobrazení",
+        "errors": {
+          "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Odebrat: {children}"
@@ -307,6 +352,40 @@
     "FullscreenBar": {
       "back": "Zpět",
       "accessibilityLabel": "Ukončit režim celé obrazovky"
+    },
+    "FilterPill": {
+      "clear": "Vymazat"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Hledejte a filtrujte (F)",
+      "searchFilterAccessibilityLabel": "Výsledky hledání a filtrování",
+      "sort": "Seřadit výsledky",
+      "addView": "Přidat nové zobrazení",
+      "newView": "Vlastní hledání",
+      "SortButton": {
+        "ariaLabel": "Seřadit výsledky",
+        "tooltip": "Seřadit",
+        "title": "Seřadit podle",
+        "sorting": {
+          "asc": "Vzestupně",
+          "desc": "Sestupně",
+          "az": "A–Z",
+          "za": "Z–A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Zrušit",
+        "update": "Aktualizovat",
+        "save": "Uložit",
+        "saveAs": "Uložit jako",
+        "modal": {
+          "title": "Uložení zobrazení jako",
+          "label": "Název",
+          "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název.",
+          "save": "Uložit",
+          "cancel": "Zrušit"
+        }
+      }
     }
   }
 }

@@ -152,7 +152,9 @@
       "clearAllFilters": "모든 필터 지우기",
       "clear": "지우기",
       "clearLabel": "{filterName} 지우기",
-      "moreFiltersWithCount": "추가 필터({count}개)"
+      "moreFiltersWithCount": "추가 필터({count}개)",
+      "addFilter": "필터 추가",
+      "clearFilters": "모두 지우기"
     },
     "Modal": {
       "iFrameTitle": "본문 표시",
@@ -201,7 +203,50 @@
       "loadingLabel": "페이지 로딩"
     },
     "Tabs": {
-      "toggleTabsLabel": "탭 더 보기"
+      "toggleTabsLabel": "더 보기",
+      "newViewAccessibilityLabel": "새 보기 생성",
+      "newViewTooltip": "보기 생성",
+      "Tab": {
+        "rename": "보기 이름 바꾸기",
+        "duplicate": "보기 복제",
+        "edit": "보기 편집",
+        "editColumns": "열 편집",
+        "delete": "보기 삭제",
+        "copy": "{name}의 사본",
+        "deleteModal": {
+          "title": "보기를 삭제하시겠습니까?",
+          "description": "이 작업은 취소할 수 없습니다. 관리자에서 더 이상 {viewName} 보기를 사용할 수 없습니다.",
+          "cancel": "취소",
+          "delete": "보기 삭제"
+        }
+      },
+      "RenameViewModal": {
+        "title": "보기 이름 바꾸기",
+        "label": "이름",
+        "cancel": "취소",
+        "create": "저장",
+        "errors": {
+          "sameName": "이 이름을 가진 보기가 이미 있습니다. 다른 이름을 선택하십시오."
+        }
+      },
+      "DuplicateViewModal": {
+        "title": "보기 복제",
+        "label": "이름",
+        "cancel": "취소",
+        "create": "보기 생성",
+        "errors": {
+          "sameName": "이 이름을 가진 보기가 이미 있습니다. 다른 이름을 선택하십시오."
+        }
+      },
+      "CreateViewModal": {
+        "title": "새 보기 생성",
+        "label": "이름",
+        "cancel": "취소",
+        "create": "보기 생성",
+        "errors": {
+          "sameName": "이 이름을 가진 보기가 이미 있습니다. 다른 이름을 선택하십시오."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "{children} 제거"
@@ -305,6 +350,40 @@
     "FullscreenBar": {
       "back": "뒤로",
       "accessibilityLabel": "전체 화면 모드 종료"
+    },
+    "FilterPill": {
+      "clear": "지우기"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "검색 및 필터링(F)",
+      "searchFilterAccessibilityLabel": "결과 검색 및 필터링",
+      "sort": "결과 정렬",
+      "addView": "새 보기 추가",
+      "newView": "사용자 지정 검색",
+      "SortButton": {
+        "ariaLabel": "결과 정렬",
+        "tooltip": "정렬",
+        "title": "정렬 기준",
+        "sorting": {
+          "asc": "오름차순",
+          "desc": "내림차순",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "취소",
+        "update": "업데이트",
+        "save": "저장",
+        "saveAs": "다른 이름으로 저장",
+        "modal": {
+          "title": "다른 이름으로 보기 저장",
+          "label": "이름",
+          "sameName": "이 이름을 가진 보기가 이미 있습니다. 다른 이름을 선택하십시오.",
+          "save": "저장",
+          "cancel": "취소"
+        }
+      }
     }
   }
 }

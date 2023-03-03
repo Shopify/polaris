@@ -152,7 +152,9 @@
       "clearAllFilters": "Alle Filter löschen",
       "clear": "Löschen",
       "clearLabel": "{filterName} löschen",
-      "moreFiltersWithCount": "Weitere Filter ({count})"
+      "moreFiltersWithCount": "Weitere Filter ({count})",
+      "addFilter": "Filter hinzufügen",
+      "clearFilters": "Alles löschen"
     },
     "Modal": {
       "iFrameTitle": "Text-Markup",
@@ -201,7 +203,50 @@
       "loadingLabel": "Seite wird geladen"
     },
     "Tabs": {
-      "toggleTabsLabel": "Weitere Registerkarten"
+      "toggleTabsLabel": "Weitere Ansichten",
+      "newViewAccessibilityLabel": "Neue Ansicht erstellen",
+      "newViewTooltip": "Ansicht erstellen",
+      "Tab": {
+        "rename": "Ansicht umbenennen",
+        "duplicate": "Ansicht duplizieren",
+        "edit": "Ansicht bearbeiten",
+        "editColumns": "Spalten bearbeiten",
+        "delete": "Ansicht löschen",
+        "copy": "Kopie von {name}",
+        "deleteModal": {
+          "title": "Ansicht löschen?",
+          "description": "Diese Aktion kann nicht rückgängig gemacht werden. Die Ansicht \"{viewName}\" wird nicht länger in deinem Adminbereich zur Verfügung stehen.",
+          "cancel": "Abbrechen",
+          "delete": "Ansicht löschen"
+        }
+      },
+      "RenameViewModal": {
+        "title": "Ansicht umbenennen",
+        "label": "Name",
+        "cancel": "Abbrechen",
+        "create": "Speichern",
+        "errors": {
+          "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus."
+        }
+      },
+      "DuplicateViewModal": {
+        "title": "Ansicht duplizieren",
+        "label": "Name",
+        "cancel": "Abbrechen",
+        "create": "Ansicht erstellen",
+        "errors": {
+          "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Neue Ansicht erstellen",
+        "label": "Name",
+        "cancel": "Abbrechen",
+        "create": "Ansicht erstellen",
+        "errors": {
+          "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "{children} entfernen"
@@ -305,6 +350,40 @@
     "FullscreenBar": {
       "back": "Zurück",
       "accessibilityLabel": "Vollbildmodus beenden"
+    },
+    "FilterPill": {
+      "clear": "Löschen"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Suchen und filtern (F)",
+      "searchFilterAccessibilityLabel": "Ergebnisse suchen und filtern",
+      "sort": "Ergebnisse sortieren",
+      "addView": "Eine neue Ansicht hinzufügen",
+      "newView": "Benutzerdefinierte Suche",
+      "SortButton": {
+        "ariaLabel": "Ergebnisse sortieren",
+        "tooltip": "Sortieren",
+        "title": "Sortieren nach",
+        "sorting": {
+          "asc": "Aufsteigend",
+          "desc": "Absteigend",
+          "az": "A–Z",
+          "za": "Z–A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Abbrechen",
+        "update": "Aktualisieren",
+        "save": "Speichern",
+        "saveAs": "Speichern unter",
+        "modal": {
+          "title": "Ansicht speichern als",
+          "label": "Name",
+          "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus.",
+          "save": "Speichern",
+          "cancel": "Abbrechen"
+        }
+      }
     }
   }
 }

@@ -152,7 +152,9 @@
       "clearAllFilters": "Limpar todos os filtros",
       "clear": "Limpar",
       "clearLabel": "Limpar {filterName}",
-      "moreFiltersWithCount": "Mais filtros ({count})"
+      "moreFiltersWithCount": "Mais filtros ({count})",
+      "addFilter": "Adicionar filtro",
+      "clearFilters": "Limpar tudo"
     },
     "Modal": {
       "iFrameTitle": "marcação de corpo",
@@ -201,7 +203,50 @@
       "loadingLabel": "Página a carregar"
     },
     "Tabs": {
-      "toggleTabsLabel": "Mais separadores"
+      "toggleTabsLabel": "Mais visualizações",
+      "newViewAccessibilityLabel": "Criar uma nova visualização",
+      "newViewTooltip": "Criar visualização",
+      "Tab": {
+        "rename": "Renomear visualização",
+        "duplicate": "Duplicar visualização",
+        "edit": "Editar visualização",
+        "editColumns": "Editar colunas",
+        "delete": "Eliminar visualização",
+        "copy": "Cópia de {name}",
+        "deleteModal": {
+          "title": "Eliminar visualização?",
+          "description": "Esta ação não pode ser anulada. A vista de {viewName} deixará de estar disponível no seu admin.",
+          "cancel": "Cancelar",
+          "delete": "Eliminar visualização"
+        }
+      },
+      "RenameViewModal": {
+        "title": "Renomear visualização",
+        "label": "Nome",
+        "cancel": "Cancelar",
+        "create": "Guardar",
+        "errors": {
+          "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente."
+        }
+      },
+      "DuplicateViewModal": {
+        "title": "Duplicar visualização",
+        "label": "Nome",
+        "cancel": "Cancelar",
+        "create": "Criar visualização",
+        "errors": {
+          "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Criar uma nova visualização",
+        "label": "Nome",
+        "cancel": "Cancelar",
+        "create": "Criar visualização",
+        "errors": {
+          "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Remover {children}"
@@ -306,6 +351,40 @@
     "FullscreenBar": {
       "back": "Voltar",
       "accessibilityLabel": "Sair do modo ecrã inteiro"
+    },
+    "FilterPill": {
+      "clear": "Limpar"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Pesquisar e filtrar (F)",
+      "searchFilterAccessibilityLabel": "Resultados da pesquisa e do filtro",
+      "sort": "Ordenar os resultados",
+      "addView": "Adicionar uma nova visualização",
+      "newView": "Pesquisa personalizada",
+      "SortButton": {
+        "ariaLabel": "Ordenar os resultados",
+        "tooltip": "Ordenar",
+        "title": "Ordenar por",
+        "sorting": {
+          "asc": "Ascendente",
+          "desc": "Descendente",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Cancelar",
+        "update": "Atualizar",
+        "save": "Guardar",
+        "saveAs": "Guardar como",
+        "modal": {
+          "title": "Guardar visualização como",
+          "label": "Nome",
+          "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente.",
+          "save": "Guardar",
+          "cancel": "Cancelar"
+        }
+      }
     }
   }
 }
