@@ -21,6 +21,7 @@ export function Colored() {
       <Icon source={CirclePlusMinor} color="success" />
       <Icon source={CirclePlusMinor} color="warning" />
       <Icon source={CirclePlusMinor} color="critical" />
+      <Icon source={CirclePlusMinor} color="magic" />
     </div>
   );
 }
