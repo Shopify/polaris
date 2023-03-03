@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {fileURLToPath} from 'url';
 
+import slash from 'slash';
 import {createFilter} from '@rollup/pluginutils';
 import {babel} from '@rollup/plugin-babel';
 import virtual from '@rollup/plugin-virtual';
@@ -13,7 +14,8 @@ import {optimize} from 'svgo';
 
 const convert = svgr.default;
 const iconBasePath = fileURLToPath(new URL('./icons', import.meta.url));
-const iconPaths = globby.sync(path.join(iconBasePath, '*.yml'));
+const unixifiedIconBasePath = slash(iconBasePath);
+const iconPaths = globby.sync(slash(path.join(unixifiedIconBasePath, '*.yml')));
 
 const iconExports = [];
 const iconTypes = [];
@@ -34,7 +36,7 @@ iconPaths.forEach((filename) => {
   ommitedKeys.forEach((key) => delete iconData[key]);
 
   const exportName = filename
-    .replace(`${iconBasePath}/`, '')
+    .replace(`${unixifiedIconBasePath}/`, '')
     .replace('.yml', '');
 
   iconMetadata[exportName] = {
