@@ -286,13 +286,18 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     [dropOnPage, disabled, onDragLeave],
   );
 
-  const dropNode = dropOnPage ? document : node.current;
-  useEventListener('drop', handleDrop, dropNode);
+  const doc = typeof document === 'undefined' ? null : document;
+  const dropNode = dropOnPage ? doc : node.current;
 
+  useEventListener('drop', handleDrop, dropNode);
   useEventListener('dragover', handleDragOver, dropNode);
   useEventListener('dragenter', handleDragEnter, dropNode);
   useEventListener('dragleave', handleDragLeave, dropNode);
-  useEventListener('resize', adjustSize, window);
+  useEventListener(
+    'resize',
+    adjustSize,
+    typeof window === 'undefined' ? null : window,
+  );
 
   useComponentDidMount(() => {
     adjustSize();
