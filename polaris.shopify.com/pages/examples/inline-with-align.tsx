@@ -1,12 +1,12 @@
 import React from 'react';
-import {AlphaStack, Inline, Text, Page} from '@shopify/polaris';
+import {AlphaStack, Inline, Text, Page, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithAlignExample() {
   return (
     <Page narrowWidth>
-      <AlphaStack gap="16">
+      <AlphaStack fullWidth gap="16">
         <Inline gap="4" align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" />
@@ -15,6 +15,7 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
+        <Divider />
         <Inline gap="4" align="center">
           <Placeholder width="106px" label="Center" />
           <Placeholder width="106px" height="20px" />
@@ -23,6 +24,7 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
+        <Divider />
         <Inline gap="4" align="end">
           <Placeholder width="106px" label="End" />
           <Placeholder width="106px" height="20px" />
