@@ -580,7 +580,7 @@ export const Tabs = ({
               data-tabs-focus-catchment
             >
               {tabsMarkup}
-              {mdDown ? null : (
+              {mdDown || tabsToShow.length === 0 ? null : (
                 <li className={disclosureTabClassName} role="presentation">
                   <Popover
                     preferredPosition="below"
@@ -600,7 +600,7 @@ export const Tabs = ({
               )}
             </ul>
 
-            {showNewTab && (
+            {showNewTab && tabsToShow.length > 0 ? (
               <div className={styles.NewTab}>
                 <CreateViewModal
                   open={isNewViewModalActive}
@@ -622,7 +622,7 @@ export const Tabs = ({
                   }
                 />
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </Box>

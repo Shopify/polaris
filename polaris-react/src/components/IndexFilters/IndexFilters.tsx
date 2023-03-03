@@ -57,6 +57,8 @@ export interface IndexFiltersProps
   setMode: (mode: IndexFiltersMode) => void;
   /** Will disable all the elements within the IndexFilters component */
   disabled?: boolean;
+  /** Will disable just the query field */
+  disableQueryField?: boolean;
   /** If true, the sticky interaction on smaller devices will be disabled */
   disableStickyMode?: boolean;
   /** If the component should go flush to the top of the page when sticking */
@@ -88,6 +90,7 @@ export function IndexFilters({
   onQueryClear,
   onStartEditing,
   disabled,
+  disableQueryField,
   loading,
   mode,
   setMode,
@@ -346,7 +349,7 @@ export function IndexFilters({
               appliedFilters={appliedFilters}
               onClearAll={onClearAll}
               disableFilters={disabled}
-              disableQueryField={disabled}
+              disableQueryField={disabled || disableQueryField}
               loading={loading || isActionLoading}
               focused
             >
