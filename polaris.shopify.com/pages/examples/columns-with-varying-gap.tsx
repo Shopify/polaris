@@ -6,10 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function ColumnsWithVaryingGapExample() {
   return (
     <SpacingBackground>
-      <Columns gap="4" columns={6}>
-        <Placeholder height="320px" />
-        <Placeholder height="320px" />
-        <Placeholder height="320px" />
+      <Columns gap="4" columns={3}>
         <Placeholder height="320px" />
         <Placeholder height="320px" />
         <Placeholder height="320px" />
