@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function ColumnsWithVaryingGapExample() {
   return (
     <SpacingBackground>
-      <Columns gap='4'>
+      <Columns gap="4" columns={6}>
         <Placeholder height="320px" />
         <Placeholder height="320px" />
         <Placeholder height="320px" />
@@ -22,8 +22,7 @@ const SpacingBackground = ({children, width = '100%'}) => {
   return (
     <div
       style={{
-        background:
-          '#E0F8EE',
+        background: '#E0F8EE',
         width: width ?? undefined,
         height: 'auto',
       }}

@@ -5,16 +5,14 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ColumnsWithSetNumberExample() {
   return (
-      <Columns
-        columns={2}
-      >
-        <Placeholder height="320px" />
-        <Placeholder height="320px" showBorder/>
-      </Columns>
+    <Columns columns={2} gap="025">
+      <Placeholder height="320px" />
+      <Placeholder height="320px" />
+    </Columns>
   );
 }
 
-const Placeholder = ({height = 'auto', width = 'auto', showBorder = false}) => {
+const Placeholder = ({height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
@@ -22,10 +20,8 @@ const Placeholder = ({height = 'auto', width = 'auto', showBorder = false}) => {
         background: '#20828D',
         height: height ?? undefined,
         width: width ?? undefined,
-        borderInlineStart: showBorder ? '1px dashed #ffffff' : 'none'
       }}
     />
-
   );
 };
 

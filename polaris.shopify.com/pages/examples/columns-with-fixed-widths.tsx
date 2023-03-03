@@ -5,14 +5,14 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ColumnsWithFreeAndFixedWidthsExample() {
   return (
-    <Columns columns={['oneThird', 'twoThirds']} gap='0'>
-      <Placeholder height="320px" label="oneThird"  />
-      <Placeholder height="320px" label="twoThirds" showBorder/>
+    <Columns columns={['oneThird', 'twoThirds']} gap="025">
+      <Placeholder height="320px" label="oneThird" />
+      <Placeholder height="320px" label="twoThirds" />
     </Columns>
   );
 }
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto', showBorder = false}) => {
+const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
@@ -20,7 +20,6 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto', showBorder = 
         background: '#20828D',
         height: height ?? undefined,
         width: width ?? undefined,
-        borderInlineStart: showBorder ? '1px dashed #ffffff' : 'none',
       }}
     >
       <Inline gap="4" align="center" blockAlign="center">
