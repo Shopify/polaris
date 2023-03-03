@@ -24,7 +24,6 @@ describe('<Inline />', () => {
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-inline-align': 'start',
-        '--pc-inline-block-align': 'center',
         '--pc-inline-wrap': 'wrap',
       }) as React.CSSProperties,
     });
@@ -32,7 +31,7 @@ describe('<Inline />', () => {
 
   it('overrides custom properties if they are passed in', () => {
     const stack = mountWithApp(
-      <Inline align="center" blockAlign="start" gap="10">
+      <Inline align="center" gap="10">
         {renderChildren()}
       </Inline>,
     );
@@ -40,7 +39,6 @@ describe('<Inline />', () => {
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-inline-align': 'center',
-        '--pc-inline-block-align': 'start',
         '--pc-inline-wrap': 'wrap',
         '--pc-inline-gap-xs': 'var(--p-space-10)',
       }) as React.CSSProperties,
@@ -55,7 +53,6 @@ describe('<Inline />', () => {
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-inline-align': 'start',
-        '--pc-inline-block-align': 'center',
         '--pc-inline-wrap': 'wrap',
         '--pc-inline-gap-xs': 'var(--p-space-2)',
         '--pc-inline-gap-md': 'var(--p-space-8)',

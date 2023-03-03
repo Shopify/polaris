@@ -10,7 +10,7 @@ import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './AlphaStack.scss';
 
-type Align = 'start' | 'end' | 'center';
+type Align = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
 
 type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 

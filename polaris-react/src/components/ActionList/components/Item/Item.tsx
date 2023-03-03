@@ -11,6 +11,7 @@ import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {Inline} from '../../../Inline';
 import {Box} from '../../../Box';
+import {AlphaStack} from '../../../AlphaStack';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -88,12 +89,14 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <Inline blockAlign="center">
-      {prefixMarkup}
-      {textMarkup}
-      {badgeMarkup}
-      {suffixMarkup}
-    </Inline>
+    <AlphaStack align="center">
+      <Inline>
+        {prefixMarkup}
+        {textMarkup}
+        {badgeMarkup}
+        {suffixMarkup}
+      </Inline>
+    </AlphaStack>
   );
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;

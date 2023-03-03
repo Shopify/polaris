@@ -9,7 +9,7 @@ import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
 import {Columns} from '../Columns';
-import {Inline, InlineProps} from '../Inline';
+import {Inline} from '../Inline';
 import {Popover} from '../Popover';
 import {UnstyledLink} from '../UnstyledLink';
 import type {AvatarProps} from '../Avatar';
@@ -27,6 +27,7 @@ import {
   SELECT_ALL_ITEMS,
   ResourceListSelectedItems,
 } from '../../utilities/resource-list';
+import {AlphaStack, AlphaStackProps} from '../AlphaStack';
 
 import styles from './ResourceItem.scss';
 
@@ -203,15 +204,16 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <Inline
-          gap="4"
-          blockAlign={
+        <AlphaStack
+          align={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
         >
-          {handleMarkup}
-          {media}
-        </Inline>
+          <Inline gap="4">
+            {handleMarkup}
+            {media}
+          </Inline>
+        </AlphaStack>
       );
     }
 
@@ -296,16 +298,18 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             gap="5"
           >
             {ownedMarkup}
-            <Inline gap="4" blockAlign={getAlignment(verticalAlignment)}>
-              <Box
-                width="100%"
-                padding="0"
-                paddingInlineStart="0"
-                paddingInlineEnd="0"
-              >
-                {children}
-              </Box>
-            </Inline>
+            <AlphaStack align={getAlignment(verticalAlignment)}>
+              <Inline gap="4">
+                <Box
+                  width="100%"
+                  padding="0"
+                  paddingInlineStart="0"
+                  paddingInlineEnd="0"
+                >
+                  {children}
+                </Box>
+              </Inline>
+            </AlphaStack>
           </Columns>
           {actionsMarkup}
           {disclosureMarkup}
@@ -500,7 +504,7 @@ export function ResourceItem(props: ResourceItemProps) {
   );
 }
 
-function getAlignment(alignment?: Alignment): InlineProps['blockAlign'] {
+function getAlignment(alignment?: Alignment): AlphaStackProps['align'] {
   switch (alignment) {
     case 'leading':
       return 'start';

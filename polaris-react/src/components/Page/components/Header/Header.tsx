@@ -26,6 +26,7 @@ import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
 import {Inline} from '../../../Inline';
+import {AlphaStack} from '../../../AlphaStack';
 
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
@@ -191,11 +192,13 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
         }
       >
-        <Inline gap="4" align="space-between" blockAlign="center">
-          {breadcrumbMarkup}
-          {additionalNavigationMarkup}
-          {paginationMarkup}
-        </Inline>
+        <AlphaStack align="center">
+          <Inline gap="4" align="space-between">
+            {breadcrumbMarkup}
+            {additionalNavigationMarkup}
+            {paginationMarkup}
+          </Inline>
+        </AlphaStack>
       </Box>
     ) : null;
 

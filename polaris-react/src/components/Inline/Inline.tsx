@@ -13,7 +13,6 @@ type Align =
   | 'space-around'
   | 'space-between'
   | 'space-evenly';
-type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
@@ -23,10 +22,6 @@ export interface InlineProps {
    * @default 'start'
    */
   align?: Align;
-  /** Vertical alignment of children
-   * @default 'center'
-   */
-  blockAlign?: BlockAlign;
   /** The spacing between elements. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * gap='2'
@@ -41,14 +36,12 @@ export interface InlineProps {
 
 export const Inline = function Inline({
   align = 'start',
-  blockAlign = 'center',
   gap,
   wrap = true,
   children,
 }: InlineProps) {
   const style = {
     '--pc-inline-align': align,
-    '--pc-inline-block-align': blockAlign,
     '--pc-inline-wrap': wrap ? 'wrap' : 'nowrap',
     ...getResponsiveProps('inline', 'gap', 'space', gap),
   } as React.CSSProperties;

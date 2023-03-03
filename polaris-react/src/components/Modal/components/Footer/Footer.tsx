@@ -4,6 +4,7 @@ import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Box} from '../../../Box';
 import {Inline} from '../../../Inline';
+import {AlphaStack} from '../../../AlphaStack';
 
 export interface FooterProps {
   /** Primary action */
@@ -32,18 +33,20 @@ export function Footer({
     ) : null;
 
   return (
-    <Inline gap="4" blockAlign="center">
-      <Box
-        borderBlockStart="divider"
-        minHeight="var(--p-space-16)"
-        padding="4"
-        width="100%"
-      >
-        <Inline gap="4" blockAlign="center" align="space-between">
-          <Box>{children}</Box>
-          {actions}
-        </Inline>
-      </Box>
-    </Inline>
+    <AlphaStack align="center">
+      <Inline gap="4">
+        <Box
+          borderBlockStart="divider"
+          minHeight="var(--p-space-16)"
+          padding="4"
+          width="100%"
+        >
+          <Inline gap="4" align="space-between">
+            <Box>{children}</Box>
+            {actions}
+          </Inline>
+        </Box>
+      </Inline>
+    </AlphaStack>
   );
 }
