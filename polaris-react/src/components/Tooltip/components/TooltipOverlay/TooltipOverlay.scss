@@ -35,7 +35,7 @@
     width: 0;
     border-width: var(--p-space-2);
     border-style: solid;
-    border-color: transparent transparent var(--p-surface) transparent;
+    border-color: transparent transparent var(--p-color-bg) transparent;
   }
 
   &.positionedAbove {
@@ -44,7 +44,7 @@
       top: auto;
       // stylelint-disable-next-line -- No Polaris layout component offers this
       bottom: calc(var(--p-space-4) * -1);
-      border-color: var(--p-surface) transparent transparent transparent;
+      border-color: var(--p-color-bg) transparent transparent transparent;
     }
   }
 }
