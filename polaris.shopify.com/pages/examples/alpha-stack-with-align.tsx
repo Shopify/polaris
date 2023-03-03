@@ -9,33 +9,32 @@ function AlphaStackWithAlignExample() {
       <AlphaStack gap="8" fullWidth>
         <AlphaStack align="start">
           <Placeholder height="48px" width="320px" label="Start" />
-          <DashedDivider />
-          <Placeholder height="48px" width="320px" />
-          <DashedDivider />
-          <Placeholder height="48px" width="320px" />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
         <Divider />
         <AlphaStack align="center">
           <Placeholder height="48px" width="320px" label="Center" />
-          <DashedDivider />
-          <Placeholder height="48px" width="320px" />
-          <DashedDivider />
-          <Placeholder height="48px" width="320px" />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
         <Divider />
         <AlphaStack align="end">
           <Placeholder height="48px" width="320px" label="End" />
-          <DashedDivider />
-          <Placeholder height="48px" width="320px" />
-          <DashedDivider />
-          <Placeholder height="48px" width="320px" />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
       </AlphaStack>
     </Page>
   );
 }
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  showBorder = false,
+}) => {
   return (
     <div
       style={{
@@ -43,6 +42,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         padding: '14px var(--p-space-2)',
         height: height,
         width: width,
+        borderBlockStart: showBorder ? '1px dashed #EAFAF3' : 'none',
       }}
     >
       <Inline align="center">
@@ -56,14 +56,6 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
           </Text>
         </div>
       </Inline>
-    </div>
-  );
-};
-
-const DashedDivider = () => {
-  return (
-    <div style={{background: 'var(--p-color-text-info)', width: '320px'}}>
-      <div style={{border: '1px dashed #EAFAF3'}} />
     </div>
   );
 };

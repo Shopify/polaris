@@ -36,17 +36,23 @@ function InlineWithAlignExample() {
   );
 }
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  showBorder = false,
+}) => {
   return (
     <div
       style={{
         padding: '6px 0',
-        background: '#7B47F1',
+        background: '#20828D',
         height: height,
         width: width,
+        borderInlineStart: showBorder ? '1px dashed #EAFAF3' : 'none',
       }}
     >
-      <Inline gap="4" align="center" blockAlign="center">
+      <Inline align="center">
         <div
           style={{
             color: '#FFFFFF',

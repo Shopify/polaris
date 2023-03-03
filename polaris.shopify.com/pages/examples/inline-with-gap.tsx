@@ -5,8 +5,8 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithGapExample() {
   return (
-    <AlphaStack gap="8">
-      <Inline gap="4" blockAlign="center">
+    <AlphaStack gap="4">
+      <Inline>
         <SpacingBackground width="436px">
           <Inline gap="4" wrap={false}>
             <Placeholder width="106px" height="36px" />
@@ -31,9 +31,8 @@ const SpacingBackground = ({children, width}) => {
     <div
       style={{
         display: 'flex',
-        background:
-          'repeating-linear-gradient(-45deg, #7B47F1, #7B47F1 1px, #E8D1FA 1px, #E8D1FA 7px)',
-        width: width ?? '100%',
+        background: '#E0F8EE',
+        width: width,
         height: '20px',
       }}
     >
@@ -46,7 +45,7 @@ const Placeholder = ({height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#7B47F1',
+        background: '#20828D',
         height: height,
         width: width,
       }}
