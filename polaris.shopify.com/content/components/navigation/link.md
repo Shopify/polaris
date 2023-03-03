@@ -70,13 +70,13 @@ Edge cases: External icons should not be used to indicate a new tab or window is
 
 Use as a standalone, identifying icon only
 
-![Shopify admin search search results with an example of the external link icon being used as a decorative element](/images/components/link/external-link-icon-decorative@2x.png)
+![Shopify admin search search results with an example of the external link icon being used as a decorative element](/images/components/navigation/link/external-link-icon-decorative@2x.png)
 
 #### Don’t
 
 Avoid using the icon beside link text
 
-![Shopify admin page with an example of an external link to the Shopify help center with no icon](/images/components/link/external-link-dont-example@2x.png)
+![Shopify admin page with an example of an external link to the Shopify help center with no icon](/images/components/navigation/link/external-link-dont-example@2x.png)
 
 <!-- end -->
 

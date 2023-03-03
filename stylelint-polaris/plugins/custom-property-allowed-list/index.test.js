@@ -4,46 +4,25 @@ const {messages, ruleName} = require('.');
 
 const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
 
-// For external usage:
-// -p-* Tokens are reserved for usage by polaris-tokens.
-//   - Defining custom properties with this prefix is disallowed
-//   - Usage of them is allowed
-// -pc-* Tokens are reserved for usage by components in polaris-react
-//  - Defining custom properties with this prefix is disallowed
-//  - Usage of them is disallowed
-// Any other tokens can be freely defined and used
-const externalUserDefinedCustomPropertyNames = /--(?!pc?-).+/;
-const externalConfig = [
-  {
-    allowedProperties: [externalUserDefinedCustomPropertyNames],
-    allowedValues: {
-      '/.+/': [
-        ...polarisCustomPropertyNames,
-        externalUserDefinedCustomPropertyNames,
-      ],
-    },
-  },
-];
+/*
+ --p-* Tokens are to be defined in polaris-tokens.
+   - Defining custom properties with this prefix anywhere else is disallowed
+   - Usage of them is allowed
+ --pc-* Tokens are reserved for usage by components in polaris-react
+  - Defining custom properties with this prefix is disallowed
+  - Usage and definition of them is deprecated in polaris-react
+  - Existing tokens with this prefix should be contributed to and/or replaced with polaris-tokens
+*/
 
-// For internal usage:
-// -p-* Tokens are reserved for usage by polaris-tokens.
-//   - Defining custom properties with this prefix is disallowed
-//   - Usage of them is allowed
-// -pc-* Tokens are reserved for usage by components in polaris-react
-//  - Defining custom properties with this prefix is allowed
-//  - Usage of them is allowed
-// Any other tokens should not be defined or used
-const internalPolarisComponentCustomProperties = /--pc-.+/;
-const internalConfig = [
+const allowedCustomPropertyNames = /--(?!(p|pc|polaris-version)-).+/;
+const invalidOrDeprecatedPrivateCustomPropertyNames = /--(?!(p|pc)-).+/;
+const config = [
   {
-    allowedProperties: [
-      '--polaris-version-number',
-      internalPolarisComponentCustomProperties,
-    ],
+    allowedProperties: [allowedCustomPropertyNames],
     allowedValues: {
       '/.+/': [
-        internalPolarisComponentCustomProperties,
         ...polarisCustomPropertyNames,
+        invalidOrDeprecatedPrivateCustomPropertyNames,
       ],
     },
   },
@@ -52,24 +31,20 @@ const internalConfig = [
 testRule({
   ruleName,
   plugins: [__dirname],
-  config: externalConfig,
+  config,
   accept: [
     {
       code: '.a { border: 1px red; }',
-      description: 'Uses no custom properties',
+      description: 'Use of no custom properties is allowed',
     },
     {
       code: '.a { --test: red; }',
       description:
-        "Defining custom-properties that don't start with --p- or --pc-",
+        "Defining custom-properties that don't start with --p- or --pc- is allowed",
     },
     {
       code: '.a { color: var(--p-text); }',
-      description: 'Using custom-properties from polaris-tokens',
-    },
-    {
-      code: '.a { --test: red; color: var(--test); }',
-      description: 'Using other custom-properties',
+      description: 'Using custom-properties from polaris-tokens is allowed',
     },
   ],
 
@@ -78,7 +53,7 @@ testRule({
       code: '.a { --p-test: red; }',
       description:
         'Defining custom-properties that start with --p- is disallowed',
-      message: messages.rejected('--p-test', 'red', true, undefined),
+      message: messages.rejected('--p-test', 'red', '--p-', true, undefined),
       line: 1,
       column: 6,
       endLine: 1,
@@ -88,7 +63,7 @@ testRule({
       code: '.a { --pc-test: red; }',
       description:
         'Defining custom-properties that start with --pc- is disallowed',
-      message: messages.rejected('--pc-test', 'red', true, undefined),
+      message: messages.rejected('--pc-test', 'red', '--pc-', true, undefined),
       line: 1,
       column: 6,
       endLine: 1,
@@ -101,8 +76,9 @@ testRule({
       message: messages.rejected(
         'color',
         'var(--p-unknown)',
+        undefined,
         false,
-        '--p-unknown',
+        ['--p-unknown'],
       ),
       line: 1,
       column: 6,
@@ -112,62 +88,13 @@ testRule({
     {
       code: '.a { color: var(--pc-test); }',
       description: 'Using --pc- prefixed tokens is disallowed',
-      message: messages.rejected('color', 'var(--pc-test)', false, '--pc-test'),
+      message: messages.rejected('color', 'var(--pc-test)', undefined, false, [
+        '--pc-test',
+      ]),
       line: 1,
       column: 6,
       endLine: 1,
       endColumn: 28,
-    },
-  ],
-});
-
-testRule({
-  ruleName,
-  plugins: [__dirname],
-  config: internalConfig,
-  accept: [
-    {
-      code: '.a { --pc-test: red; }',
-      description: 'Defining custom-properties that start with --pc-',
-    },
-    {
-      code: '.a { color: var(--p-text); }',
-      description: 'Using custom-properties from polaris-tokens',
-    },
-    {
-      code: '.a { color: var(--pc-my-value); }',
-      description: 'Using custom-properties that start with --pc-',
-    },
-  ],
-  reject: [
-    {
-      code: '.a { --p-test: red; }',
-      description:
-        'Defining custom-properties that start with --p- is disallowed',
-      message: messages.rejected('--p-test', 'red', true, undefined),
-      line: 1,
-      column: 6,
-      endLine: 1,
-      endColumn: 20,
-    },
-    {
-      code: '.a { --test: red; }',
-      description:
-        "Defining custom-properties that don't start with --p- or --pc- is disallowed",
-      message: messages.rejected('--test', 'red', true, undefined),
-      line: 1,
-      column: 6,
-      endLine: 1,
-      endColumn: 18,
-    },
-    {
-      code: '.a { color: var(--test); }',
-      description: 'Using other custom-properties',
-      message: messages.rejected('color', 'var(--test)', false, '--test'),
-      line: 1,
-      column: 6,
-      endLine: 1,
-      endColumn: 25,
     },
   ],
 });

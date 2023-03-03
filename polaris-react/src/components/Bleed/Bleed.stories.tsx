@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaCard, Bleed, Box, Divider, Stack, Text} from '@shopify/polaris';
+import {Card, Bleed, Box, Divider, Stack, Text} from '@shopify/polaris';
 
 export default {
   component: Bleed,
@@ -15,7 +15,7 @@ const styles = {
 
 export function Default() {
   return (
-    <AlphaCard>
+    <Card>
       <Box paddingBlockEnd="5">
         <Text as="p" variant="bodySm">
           Section 01
@@ -29,7 +29,7 @@ export function Default() {
           Section 02
         </Text>
       </Box>
-    </AlphaCard>
+    </Card>
   );
 }
 

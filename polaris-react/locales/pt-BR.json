@@ -174,7 +174,7 @@
       "showing": "Mostrando {itemsCount}{resource}",
       "loading": "Carregando {resource}",
       "selected": "{selectedItemsCount} selecionados",
-      "allItemsSelected": "Todos os {resourceNamePlural} da loja maiores que {itemsLength} estão selecionados.",
+      "allItemsSelected": "Todos os {resourceNamePlural} da loja maiores que {itemsLength} estão selecionados",
       "selectAllItems": "Selecionar todos os {resourceNamePlural} da loja maiores do que {itemsLength}",
       "emptySearchResultTitle": "Não foram encontrados {resourceNamePlural}",
       "emptySearchResultDescription": "Tente alterar os filtros ou o termo de pesquisa",
@@ -194,7 +194,7 @@
         "warningMessage": "Para oferecer uma experiência do usuário melhor. São permitidas apenas {maxPromotedActions} ações promovidas, no máximo."
       },
       "showingTotalCount": "Mostrando {itemsCount} de {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Todos os {resourceNamePlural} maiores que {itemsLength} neste filtro estão selecionados.",
+      "allFilteredItemsSelected": "Todos os {resourceNamePlural} maiores que {itemsLength} neste filtro estão selecionados",
       "selectAllFilteredItems": "Selecionar todos os {resourceNamePlural} maiores que {itemsLength} neste filtro"
     },
     "SkeletonPage": {
@@ -278,8 +278,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Item",
       "defaultItemPlural": "Itens",
-      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} estão selecionados.",
-      "selected": "{selectedItemsCount} selecionados.",
+      "allItemsSelected": "Todos os {resourceNamePlural} maiores que {itemsLength} estão selecionados",
+      "selected": "{selectedItemsCount} selecionados",
       "a11yCheckboxDeselectAllSingle": "Desmarcar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Desmarcar todos os {itemsLength} {resourceNamePlural}",
@@ -291,7 +291,7 @@
       "onboardingBadgeText": "Novo",
       "resourceLoadingAccessibilityLabel": "Carregando {resourceNamePlural}…",
       "selectAllLabel": "Selecionar todos os {resourceNamePlural}",
-      "selected": "{selectedItemsCount} selecionados.",
+      "selected": "{selectedItemsCount} selecionados",
       "undo": "Desfazer",
       "selectAllItems": "Selecionar todos os {resourceNamePlural} maiores que {itemsLength}",
       "selectItem": "Selecionar {resourceName}",

@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-Change breadcrumbs from an array to a single breadcrumb since only one is supported.
+Change breadcrumbs from an array to a single backAction since only one is supported.

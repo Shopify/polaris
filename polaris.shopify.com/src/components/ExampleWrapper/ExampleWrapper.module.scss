@@ -1,0 +1,34 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.ExampleFrame {
+  --example-button-text-color: inherit;
+  @include dark-mode {
+    --example-button-text-color: rgba(78, 82, 184, 1);
+  }
+  background: #ffffff;
+  border-radius: var(--border-radius-400);
+  overflow: hidden;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
+  .Buttons {
+    display: flex;
+    color: var(--example-button-text-color);
+    justify-content: flex-end;
+    border-top: 1px solid rgba(0, 0, 0, 0.075);
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  iframe {
+    display: block;
+    resize: none;
+    overflow: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 375px;
+    box-shadow: 20px 0 20px -20px rgba(0, 0, 0, 0.125);
+
+    @media screen and (max-width: $breakpointMobile) {
+      min-width: 100%;
+    }
+  }
+}

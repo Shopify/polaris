@@ -49,8 +49,8 @@ export interface HeaderProps extends TitleProps {
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
-  /** Breadcrumb link */
-  breadcrumb?: BreadcrumbsProps['breadcrumb'];
+  /** Back action link */
+  backAction?: BreadcrumbsProps['backAction'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
@@ -76,7 +76,7 @@ export function Header({
   primaryAction,
   pagination,
   additionalNavigation,
-  breadcrumb,
+  backAction,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
@@ -99,10 +99,10 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
-  const breadcrumbMarkup = breadcrumb ? (
+  const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
       <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-        <Breadcrumbs breadcrumb={breadcrumb} />
+        <Breadcrumbs backAction={backAction} />
       </Box>
     </div>
   ) : null;
@@ -117,7 +117,7 @@ export function Header({
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <Inline align="end">
+    <Inline gap="4" align="end">
       <Box printHidden>{additionalNavigation}</Box>
     </Inline>
   ) : null;
@@ -168,7 +168,7 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
         }
       >
-        <Inline align="space-between" blockAlign="center">
+        <Inline gap="4" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {additionalNavigationMarkup}
           {paginationMarkup}
@@ -189,7 +189,7 @@ export function Header({
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
-    !breadcrumb && styles.noBreadcrumbs,
+    !backAction && styles.noBreadcrumbs,
     title && title.length < LONG_TITLE && styles.mediumTitle,
     title && title.length > LONG_TITLE && styles.longTitle,
   );
@@ -239,7 +239,7 @@ export function Header({
         </ConditionalRender>
         <ConditionalRender condition={[slot5, slot6].some(notNull)}>
           <div className={styles.Row}>
-            <Inline>{slot5}</Inline>
+            <Inline gap="4">{slot5}</Inline>
             <ConditionalRender condition={slot6 != null}>
               <div className={styles.RightAlign}>{slot6}</div>
             </ConditionalRender>

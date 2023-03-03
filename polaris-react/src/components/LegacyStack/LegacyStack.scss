@@ -26,7 +26,7 @@
 
 .spacingNone {
   // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-stack-spacing: var(--p-space-0);
+  --pc-stack-spacing: 0;
 }
 
 .spacingExtraTight {
@@ -117,10 +117,10 @@
 
 .vertical {
   flex-direction: column;
-  margin-left: var(--p-space-0);
+  margin-left: 0;
 
   > .Item {
-    margin-left: var(--p-space-0);
+    margin-left: 0;
   }
 }
 

@@ -74,7 +74,7 @@ export function Toast({
     <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
-      <Inline blockAlign="center">
+      <Inline gap="4" blockAlign="center">
         <Text as="span" variant="bodyMd" fontWeight="medium">
           {content}
         </Text>

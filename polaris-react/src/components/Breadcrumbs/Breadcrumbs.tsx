@@ -10,12 +10,12 @@ import {Text} from '../Text';
 import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
-  /** Breadcrumb link */
-  breadcrumb: CallbackAction | LinkAction;
+  /** Back action link */
+  backAction: CallbackAction | LinkAction;
 }
 
-export function Breadcrumbs({breadcrumb}: BreadcrumbsProps) {
-  const {content} = breadcrumb;
+export function Breadcrumbs({backAction}: BreadcrumbsProps) {
+  const {content} = backAction;
 
   const contentMarkup = (
     <>
@@ -29,13 +29,13 @@ export function Breadcrumbs({breadcrumb}: BreadcrumbsProps) {
   );
 
   const breadcrumbMarkup =
-    'url' in breadcrumb ? (
+    'url' in backAction ? (
       <UnstyledLink
         key={content}
-        url={breadcrumb.url}
+        url={backAction.url}
         className={styles.Breadcrumb}
         onMouseUp={handleMouseUpByBlurring}
-        aria-label={breadcrumb.accessibilityLabel}
+        aria-label={backAction.accessibilityLabel}
       >
         {contentMarkup}
       </UnstyledLink>
@@ -43,10 +43,10 @@ export function Breadcrumbs({breadcrumb}: BreadcrumbsProps) {
       <button
         key={content}
         className={styles.Breadcrumb}
-        onClick={breadcrumb.onAction}
+        onClick={backAction.onAction}
         onMouseUp={handleMouseUpByBlurring}
         type="button"
-        aria-label={breadcrumb.accessibilityLabel}
+        aria-label={backAction.accessibilityLabel}
       >
         {contentMarkup}
       </button>

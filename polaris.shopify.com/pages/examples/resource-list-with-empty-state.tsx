@@ -3,7 +3,7 @@ import {
   EmptyState,
   Page,
   Layout,
-  Card,
+  LegacyCard,
   ResourceList,
 } from '@shopify/polaris';
 import React from 'react';
@@ -41,7 +41,7 @@ function ResourceListWithEmptyStateExample() {
     <Page title="Files">
       <Layout>
         <Layout.Section>
-          <Card>
+          <LegacyCard>
             <ResourceList
               emptyState={emptyStateMarkup}
               items={items}
@@ -49,7 +49,7 @@ function ResourceListWithEmptyStateExample() {
               filterControl={filterControl}
               resourceName={{singular: 'file', plural: 'files'}}
             />
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>

@@ -169,7 +169,7 @@ export function WithNonWrapping() {
 
 export function WithGap() {
   return (
-    <AlphaStack>
+    <AlphaStack gap="4">
       <Inline gap="8">
         <Badge>Paid</Badge>
         <Badge>Processing</Badge>
@@ -189,7 +189,7 @@ export function WithGap() {
 
 export function WithResponsiveGap() {
   return (
-    <AlphaStack>
+    <AlphaStack gap="4">
       <Inline gap={{xs: '2', md: '4'}}>
         <Badge>Paid</Badge>
         <Badge>Processing</Badge>

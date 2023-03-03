@@ -2,7 +2,7 @@ import {
   ChoiceList,
   TextField,
   RangeSlider,
-  Card,
+  LegacyCard,
   ResourceList,
   Filters,
   Avatar,
@@ -134,7 +134,7 @@ function ResourceListFiltersExample() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -181,7 +181,7 @@ function ResourceListFiltersExample() {
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 

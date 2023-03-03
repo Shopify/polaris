@@ -194,7 +194,9 @@ function NavItem({
   return (
     <>
       {nav.children &&
+        !nav.hideFromNav &&
         Object.entries(nav.children)
+          .filter(([, child]) => !child.hideFromNav)
           .sort((_a, _b) => {
             const [, a] = _a as [string, NavItem];
             const [, b] = _b as [string, NavItem];
