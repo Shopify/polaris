@@ -574,7 +574,7 @@ function IndexTableBase({
           const selectAllActionsMarkup =
             shouldShowBulkActions && !condensed ? (
               <div className={styles.ActionsWrapper}>
-                <Box paddingInlineEnd="2">
+                <Box paddingInlineEnd="3">
                   <Inline align="space-between" blockAlign="center">
                     <div className={selectAllActionsClassName}>
                       <SelectAllActions
