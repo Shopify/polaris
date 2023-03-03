@@ -570,7 +570,7 @@ export const color: {
     description: '',
   },
   'color-icon-info': {
-    value: colors.green[600],
+    value: colors.teal[600],
     description: '',
   },
   'color-icon-warning': {
