@@ -61,3 +61,54 @@ jobs:
 
       - name: Test
         run: yarn test --filter=[HEAD^1]
+  build-windows:
+    name: 'Validate with Node v${{ matrix.node-version }}'
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        node-version: ['14.17.0', '16.13.0']
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Free up space on GitHub image
+        run: |
+          # Based on the official advice:
+          # https://github.com/actions/virtual-environments/issues/2840#issuecomment-790492173
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
+      - name: Setup Node with v${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/.eslintcache
+            **/.turbo
+            node_modules/.cache/turbo
+            polaris.shopify.com/.next/cache
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Lint
+        run: yarn lint --filter=[HEAD^1]
+
+      - name: Type check
+        run: yarn type-check
+
+      - name: Test
+        run: yarn test --filter=[HEAD^1]
