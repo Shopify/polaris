@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -93,7 +94,11 @@ export class AppProvider extends Component<AppProviderProps, State> {
               <LinkContext.Provider value={link}>
                 <MediaQueryProvider>
                   <PortalsManager>
-                    <FocusManager>{children}</FocusManager>
+                    <FocusManager>
+                      <EphemeralPresenceManager>
+                        {children}
+                      </EphemeralPresenceManager>
+                    </FocusManager>
                   </PortalsManager>
                 </MediaQueryProvider>
               </LinkContext.Provider>

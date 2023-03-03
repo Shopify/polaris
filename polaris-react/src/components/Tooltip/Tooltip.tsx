@@ -5,6 +5,7 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
+import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
@@ -66,6 +67,8 @@ export interface TooltipProps {
   onClose?(): void;
 }
 
+const HOVER_OUT_TIMEOUT = 150;
+
 export function Tooltip({
   children,
   content,
@@ -96,11 +99,15 @@ export function Tooltip({
   );
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+  const {presenceList, addPresence, removePresence} =
+    useEphemeralPresenceManager();
 
   const id = useId();
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
+  const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
+  const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
@@ -120,17 +127,34 @@ export function Tooltip({
       if (hoverDelayTimeout.current) {
         clearTimeout(hoverDelayTimeout.current);
       }
+      if (hoverOutTimeout.current) {
+        clearTimeout(hoverOutTimeout.current);
+      }
     };
   }, []);
+
+  const handleOpen = useCallback(() => {
+    setShouldAnimate(!presenceList.tooltip && !active);
+    onOpen?.();
+    addPresence('tooltip');
+  }, [addPresence, presenceList.tooltip, onOpen, active]);
+
+  const handleClose = useCallback(() => {
+    onClose?.();
+    setShouldAnimate(false);
+    hoverOutTimeout.current = setTimeout(() => {
+      removePresence('tooltip');
+    }, HOVER_OUT_TIMEOUT);
+  }, [removePresence, onClose]);
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
       if (event.key !== 'Escape') return;
-      onClose?.();
+      handleClose?.();
       handleBlur();
       persistOnClick && togglePersisting();
     },
-    [handleBlur, onClose, persistOnClick, togglePersisting],
+    [handleBlur, handleClose, persistOnClick, togglePersisting],
   );
 
   const portal = activatorNode ? (
@@ -147,6 +171,7 @@ export function Tooltip({
         padding={padding}
         borderRadius={borderRadius}
         zIndexOverride={zIndexOverride}
+        instant={!shouldAnimate}
       >
         {content}
       </TooltipOverlay>
@@ -161,11 +186,11 @@ export function Tooltip({
   return (
     <WrapperComponent
       onFocus={() => {
-        onOpen?.();
+        handleOpen();
         handleFocus();
       }}
       onBlur={() => {
-        onClose?.();
+        handleClose();
         handleBlur();
         persistOnClick && togglePersisting();
       }}
@@ -197,13 +222,13 @@ export function Tooltip({
 
   function handleMouseEnter() {
     mouseEntered.current = true;
-    if (hoverDelay) {
+    if (hoverDelay && !presenceList.tooltip) {
       hoverDelayTimeout.current = setTimeout(() => {
-        onOpen?.();
+        handleOpen();
         handleFocus();
       }, hoverDelay);
     } else {
-      onOpen?.();
+      handleOpen();
       handleFocus();
     }
   }
@@ -215,7 +240,7 @@ export function Tooltip({
     }
 
     mouseEntered.current = false;
-    onClose?.();
+    handleClose();
 
     if (!persist) {
       handleBlur();
