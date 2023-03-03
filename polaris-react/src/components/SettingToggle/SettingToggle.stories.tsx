@@ -18,7 +18,7 @@ export function Default() {
     <SettingToggle
       title="Multipass"
       description="Allow customers to log in with an external customer account system."
-      headerBadge={{
+      settingStatus={{
         enabled: {content: 'On'},
         disabled: {content: 'Off'},
       }}

@@ -7,6 +7,7 @@ import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {Stack} from '../Stack';
 import {Text} from '../Text';
 import {Badge, Status} from '../Badge';
+import {useMediaQuery} from '../../utilities/media-query';
 
 interface SettingsToggleBadge {
   enabled: {content: string; status?: Status};
@@ -27,7 +28,7 @@ export interface SettingToggleProps {
   /** Sets toggle state to activated or deactivated */
   enabled?: boolean;
   /** The content that should be rendered in the badge for setting status */
-  headerBadge?: SettingsToggleBadge;
+  settingStatus?: SettingsToggleBadge;
 }
 
 const getUniqueSettingToggleId = globalIdGeneratorFactory('SettingToggle');
@@ -39,9 +40,10 @@ export function SettingToggle({
   title,
   description,
   helpLink,
-  headerBadge,
+  settingStatus,
 }: SettingToggleProps) {
   const id = useMemo(getUniqueSettingToggleId, []);
+  const {isNavigationCollapsed} = useMediaQuery();
 
   const actionMarkup = action
     ? buttonFrom(action, {
@@ -61,32 +63,30 @@ export function SettingToggle({
           <Badge
             status={
               enabled
-                ? headerBadge?.enabled.status || 'success'
-                : headerBadge?.disabled.status
+                ? settingStatus?.enabled.status || 'success'
+                : settingStatus?.disabled.status
             }
           >
             {enabled
-              ? headerBadge?.enabled.content
-              : headerBadge?.disabled.content}
+              ? settingStatus?.enabled.content
+              : settingStatus?.disabled.content}
           </Badge>
           {helpLink}
         </Stack>
       </Stack.Item>
-      {actionMarkup}
+      {!isNavigationCollapsed ? actionMarkup : null}
     </Stack>
   );
 
   return (
     <LegacyCard title={settingTitle} sectioned>
       <Stack spacing="loose" vertical>
-        <Text variant="bodyMd" as="p">
+        <Text variant="bodyMd" as="p" color="subdued">
           {description}
         </Text>
+        {isNavigationCollapsed ? actionMarkup : null}
       </Stack>
       {children}
-      {/* <SettingAction action={actionMarkup}>
-        <label htmlFor={id}>{children}</label>
-      </SettingAction> */}
     </LegacyCard>
   );
 }
