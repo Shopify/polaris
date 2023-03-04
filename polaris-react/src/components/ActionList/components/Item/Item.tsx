@@ -22,6 +22,7 @@ export function Item({
   helpText,
   url,
   onAction,
+  onMouseEnter,
   icon,
   image,
   prefix,
@@ -120,6 +121,7 @@ export function Item({
       onClick={onAction}
       onMouseUp={handleMouseUpByBlurring}
       role={role}
+      onMouseEnter={onMouseEnter}
     >
       {contentElement}
     </button>
