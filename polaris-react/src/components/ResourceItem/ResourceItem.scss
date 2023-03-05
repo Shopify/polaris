@@ -134,15 +134,16 @@
     &:last-of-type {
       border-bottom-left-radius: var(--p-border-radius-2);
       border-bottom-right-radius: var(--p-border-radius-2);
-      // stylelint-disable-next-line selector-max-specificity
+      // stylelint-disable selector-max-specificity -- Needed due to the nesting of the elements that change border-radius based on selection mode
       .ItemWrapper {
         border-radius: inherit;
       }
-      // stylelint-disable-next-line selector-max-specificity
+
       &.focused::after {
         border-bottom-left-radius: var(--p-border-radius-2);
         border-bottom-right-radius: var(--p-border-radius-2);
       }
+      // stylelint-enable
     }
   }
 
