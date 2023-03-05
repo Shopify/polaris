@@ -4,8 +4,8 @@ description: The New badge can be used to inform merchants about the release of 
 icon: StarFilledMinor
 noIndex: true
 status:
-  value: Deprecated
-  message: This pattern is no longer supported.
+  value: Legacy
+  message: This is a legacy pattern.
 keywords:
   - new badge
   - new features
