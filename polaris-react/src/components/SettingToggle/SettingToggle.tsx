@@ -2,12 +2,13 @@ import React, {useMemo} from 'react';
 
 import type {ComplexAction} from '../../types';
 import {buttonFrom} from '../Button';
-import {LegacyCard} from '../LegacyCard';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
-import {Stack} from '../Stack';
 import {Text} from '../Text';
 import {Badge, Status} from '../Badge';
 import {useMediaQuery} from '../../utilities/media-query';
+import {AlphaCard} from '../AlphaCard';
+import {AlphaStack} from '../AlphaStack';
+import {Inline} from '../Inline';
 
 interface SettingsToggleBadge {
   enabled: {content: string; status?: Status};
@@ -54,39 +55,42 @@ export function SettingToggle({
     : null;
 
   const settingTitle = (
-    <Stack alignment="center" wrap={false}>
-      <Stack.Item fill>
-        <Stack spacing="tight" alignment="center">
-          <Text variant="headingMd" as="h6">
-            {title}
-          </Text>
-          <Badge
-            status={
-              enabled
-                ? settingStatus?.enabled.status || 'success'
-                : settingStatus?.disabled.status
-            }
-          >
-            {enabled
-              ? settingStatus?.enabled.content
-              : settingStatus?.disabled.content}
-          </Badge>
-          {helpLink}
-        </Stack>
-      </Stack.Item>
-      {!isNavigationCollapsed ? actionMarkup : null}
-    </Stack>
+    <Inline align="space-between" wrap={false} fill>
+      <Inline gap="2">
+        <Text variant="headingMd" as="h6">
+          {title}
+        </Text>
+        <Badge
+          status={
+            enabled
+              ? settingStatus?.enabled.status || 'success'
+              : settingStatus?.disabled.status
+          }
+        >
+          {enabled
+            ? settingStatus?.enabled.content
+            : settingStatus?.disabled.content}
+        </Badge>
+        {helpLink}
+      </Inline>
+      <Inline align="end">
+        {!isNavigationCollapsed ? actionMarkup : null}
+      </Inline>
+    </Inline>
   );
 
   return (
-    <LegacyCard title={settingTitle} sectioned>
-      <Stack spacing="loose" vertical>
-        <Text variant="bodyMd" as="p" color="subdued">
-          {description}
-        </Text>
-        {isNavigationCollapsed ? actionMarkup : null}
-      </Stack>
-      {children}
-    </LegacyCard>
+    <AlphaCard>
+      <AlphaStack gap="5">
+        {settingTitle}
+        <AlphaStack gap="5">
+          <Text variant="bodyMd" as="p" color="subdued">
+            {description}
+          </Text>
+          {isNavigationCollapsed ? actionMarkup : null}
+        </AlphaStack>
+        {children}
+      </AlphaStack>
+    </AlphaCard>
   );
 }

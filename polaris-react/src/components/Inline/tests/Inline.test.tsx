@@ -32,7 +32,7 @@ describe('<Inline />', () => {
 
   it('overrides custom properties if they are passed in', () => {
     const stack = mountWithApp(
-      <Inline align="center" blockAlign="start" gap="10">
+      <Inline align="center" blockAlign="start" gap="10" fill>
         {renderChildren()}
       </Inline>,
     );
@@ -43,6 +43,7 @@ describe('<Inline />', () => {
         '--pc-inline-block-align': 'start',
         '--pc-inline-wrap': 'wrap',
         '--pc-inline-gap-xs': 'var(--p-space-10)',
+        width: '100%',
       }) as React.CSSProperties,
     });
   });

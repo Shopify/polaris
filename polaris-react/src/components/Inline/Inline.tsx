@@ -37,6 +37,10 @@ export interface InlineProps {
    * @default true
    */
   wrap?: boolean;
+  /**
+   * Fills the inline width of the container
+   */
+  fill?: boolean;
 }
 
 export const Inline = function Inline({
@@ -44,12 +48,14 @@ export const Inline = function Inline({
   blockAlign = 'center',
   gap,
   wrap = true,
+  fill,
   children,
 }: InlineProps) {
   const style = {
     '--pc-inline-align': align,
     '--pc-inline-block-align': blockAlign,
     '--pc-inline-wrap': wrap ? 'wrap' : 'nowrap',
+    width: fill ? '100%' : undefined,
     ...getResponsiveProps('inline', 'gap', 'space', gap),
   } as React.CSSProperties;
 
