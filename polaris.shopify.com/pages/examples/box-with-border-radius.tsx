@@ -15,7 +15,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#7B47F1',
+        background: '#BBD4F7',
         height: height,
         width: width,
         borderRadius: 'inherit',
@@ -23,7 +23,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
     >
       <div
         style={{
-          color: '#FFFFFF',
+          color: '#1F2124',
         }}
       >
         <Text as="h2" variant="bodyMd" fontWeight="medium">
