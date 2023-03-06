@@ -45,6 +45,10 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   onScrolledToBottom?(): void;
 }
 
+export interface ScrolToOptions {
+  behavior?: ScrollBehavior;
+}
+
 export interface ScrollableRef {
   scrollTo: (scrollY: number) => void;
 }
@@ -69,10 +73,14 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
     const stickyManager = useLazyRef(() => new StickyManager());
     const scrollArea = useRef<HTMLDivElement>(null);
 
-    const scrollTo = useCallback((scrollY: number) => {
-      const behavior = prefersReducedMotion() ? 'auto' : 'smooth';
-      scrollArea.current?.scrollTo({top: scrollY, behavior});
-    }, []);
+    const scrollTo = useCallback(
+      (scrollY: number, options: ScrolToOptions = {}) => {
+        const optionsBehavior = options.behavior || 'smooth';
+        const behavior = prefersReducedMotion() ? 'auto' : optionsBehavior;
+        scrollArea.current?.scrollTo({top: scrollY, behavior});
+      },
+      [],
+    );
 
     useImperativeHandle(forwardedRef, () => ({scrollTo}));
 
