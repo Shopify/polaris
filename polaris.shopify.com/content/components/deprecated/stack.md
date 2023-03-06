@@ -1,7 +1,7 @@
 ---
 title: Stack
 description: Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack.
-category: Layout and structure
+category: Deprecated
 keywords:
   - rows
   - vertical centering
@@ -17,6 +17,11 @@ keywords:
   - right-aligned stack
   - stack layout
   - layout
+status:
+  value: Deprecated
+  message: >-
+    Stack was built prior to layout primitives like box, inline, and alpha stack.
+    The new layout primitives can be used in combination to achieve similar results to stack, or the existing legacy stack.
 examples:
   - fileName: stack-default.tsx
     title: Default

@@ -1,10 +1,10 @@
-import {Text, Stack} from '@shopify/polaris';
+import {Text, LegacyStack} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TextExample() {
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       <Text variant="bodyMd" as="p" color="subdued">
         Use to de-emphasize a piece of text that is less important to merchants
         than other nearby text. May also be used to indicate when normal content
@@ -23,7 +23,7 @@ function TextExample() {
         Use in combination with a symbol showing a decreasing value to indicate
         a downward trend.
       </Text>
-    </Stack>
+    </LegacyStack>
   );
 }
 

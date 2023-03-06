@@ -5,7 +5,7 @@ import {
   LegacyCard,
   Collapsible,
   Link,
-  Stack,
+  LegacyStack,
   TextContainer,
 } from '@shopify/polaris';
 
@@ -21,7 +21,7 @@ export function Default() {
   return (
     <div style={{height: '200px'}}>
       <LegacyCard sectioned>
-        <Stack vertical>
+        <LegacyStack vertical>
           <Button
             onClick={handleToggle}
             ariaExpanded={open}
@@ -47,7 +47,7 @@ export function Default() {
               <Link url="#">Test link</Link>
             </TextContainer>
           </Collapsible>
-        </Stack>
+        </LegacyStack>
       </LegacyCard>
     </div>
   );

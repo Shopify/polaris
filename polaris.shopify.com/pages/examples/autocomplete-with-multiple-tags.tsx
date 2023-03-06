@@ -1,4 +1,4 @@
-import {Stack, Tag, Autocomplete} from '@shopify/polaris';
+import {LegacyStack, Tag, Autocomplete} from '@shopify/polaris';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -50,7 +50,7 @@ function MultiAutocompleteExample() {
 
   const verticalContentMarkup =
     selectedOptions.length > 0 ? (
-      <Stack spacing="extraTight" alignment="center">
+      <LegacyStack spacing="extraTight" alignment="center">
         {selectedOptions.map((option) => {
           let tagLabel = '';
           tagLabel = option.replace('_', ' ');
@@ -61,7 +61,7 @@ function MultiAutocompleteExample() {
             </Tag>
           );
         })}
-      </Stack>
+      </LegacyStack>
     ) : null;
 
   const textField = (

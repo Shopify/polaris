@@ -11,7 +11,7 @@ import {Text} from '../Text';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
-import {Stack} from '../Stack';
+import {LegacyStack} from '../LegacyStack';
 
 import styles from './MediaCard.scss';
 
@@ -143,11 +143,11 @@ export function MediaCard({
         <div className={infoContainerClassName}>
           <LegacyCard.Section>
             {popoverActionsMarkup}
-            <Stack vertical spacing="tight">
+            <LegacyStack vertical spacing="tight">
               {headerMarkup}
               <p className={styles.Description}>{description}</p>
               {actionMarkup}
-            </Stack>
+            </LegacyStack>
           </LegacyCard.Section>
         </div>
       </div>

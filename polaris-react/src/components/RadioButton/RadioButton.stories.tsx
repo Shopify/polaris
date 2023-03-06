@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {RadioButton, Stack} from '@shopify/polaris';
+import {RadioButton, LegacyStack} from '@shopify/polaris';
 
 export default {
   component: RadioButton,
@@ -15,7 +15,7 @@ export function Default() {
   );
 
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       <RadioButton
         label="Accounts are disabled"
         helpText="Customers will only be able to check out as guests."
@@ -32,6 +32,6 @@ export function Default() {
         checked={value === 'optional'}
         onChange={handleChange}
       />
-    </Stack>
+    </LegacyStack>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {AlphaStack, Box, Stack, Text, Inline} from '@shopify/polaris';
+import {AlphaStack, Box, LegacyStack, Text, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 

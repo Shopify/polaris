@@ -1,10 +1,10 @@
-import {Text, Stack} from '@shopify/polaris';
+import {Text, LegacyStack} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TextExample() {
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       <Text variant="heading4xl" as="h1">
         Online store dashboard
       </Text>
@@ -29,7 +29,7 @@ function TextExample() {
       <Text variant="headingXs" as="h6">
         Online store dashboard
       </Text>
-    </Stack>
+    </LegacyStack>
   );
 }
 
