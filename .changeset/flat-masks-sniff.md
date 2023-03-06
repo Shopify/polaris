@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fix issue 8459. Made changes for actionlist item use css gap property instead on padding right.
+Fixed `ActionList` item `suffix` having extra padding when wrapped
