@@ -5,7 +5,7 @@ icon: LocationMajor
 noIndex: true
 status:
   value: Legacy
-  message: This is a legacy pattern.
+  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - customer segments
   - locations
