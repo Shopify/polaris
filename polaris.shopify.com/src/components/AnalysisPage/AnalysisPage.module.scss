@@ -1,0 +1,26 @@
+@import '../../styles/fonts.scss';
+
+.AnalysisPage {
+  h1 {
+    @include heading-1;
+    margin-bottom: 1rem;
+  }
+}
+
+.Grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+
+  > div {
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+
+    h2 {
+      @include heading-3;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
