@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState, useCallback} from 'react';
+import React, {useEffect, useRef, useState, useCallback, ForwardRefRenderFunction, useImperativeHandle, forwardRef} from 'react';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -10,7 +10,6 @@ import {scrollable} from '../shared';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 
-import {ScrollTo} from './components';
 import {ScrollableContext} from './context';
 import styles from './Scrollable.scss';
 
@@ -38,7 +37,11 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   onScrolledToBottom?(): void;
 }
 
-export function Scrollable({
+export type ScrollableHandle = {
+  scrollTo: (scrollY: number)=>void;
+}
+
+ const ScrollableComponent: ForwardRefRenderFunction<ScrollableHandle, ScrollableProps> = ({
   children,
   className,
   horizontal = true,
@@ -48,15 +51,20 @@ export function Scrollable({
   focusable,
   onScrolledToBottom,
   ...rest
-}: ScrollableProps) {
+}: ScrollableProps, forwardedRef) => {
   const [topShadow, setTopShadow] = useState(false);
   const [bottomShadow, setBottomShadow] = useState(false);
   const stickyManager = useLazyRef(() => new StickyManager());
   const scrollArea = useRef<HTMLDivElement>(null);
+  
   const scrollTo = useCallback((scrollY: number) => {
     const behavior = prefersReducedMotion() ? 'auto' : 'smooth';
     scrollArea.current?.scrollTo({top: scrollY, behavior});
   }, []);
+
+  useImperativeHandle(forwardedRef, ()=>({
+    scrollTo
+  }));
 
   const handleScroll = useCallback(() => {
     const currentScrollArea = scrollArea.current;
@@ -165,10 +173,15 @@ function performScrollHint(elem?: HTMLDivElement | null) {
   elem.addEventListener('scroll', goBackToTop);
   elem.scrollTo({top: MAX_SCROLL_HINT_DISTANCE, behavior: 'smooth'});
 }
-
-Scrollable.ScrollTo = ScrollTo;
-
-Scrollable.forNode = (node: HTMLElement): HTMLElement | Document => {
+ 
+const forNode = (node: HTMLElement): HTMLElement | Document => {
   const closestElement = node.closest(scrollable.selector);
   return closestElement instanceof HTMLElement ? closestElement : document;
 };
+
+const Scrollable = forwardRef(ScrollableComponent);
+
+
+
+
+export {Scrollable, forNode};
