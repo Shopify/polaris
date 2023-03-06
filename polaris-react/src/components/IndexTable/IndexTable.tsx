@@ -46,6 +46,11 @@ import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
 
 interface IndexTableHeadingBase {
+  /**
+   * Adjust horizontal alignment of header content.
+   * @default 'start'
+   */
+  alignment?: 'start' | 'center' | 'end';
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
@@ -173,6 +178,7 @@ function IndexTableBase({
   const scrollContainerElement = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
   const scrollingContainer = useRef(false);
+  const lastSortedColumnIndex = useRef<number | undefined>(sortColumnIndex);
   const {
     bulkActionsIntersectionRef,
     tableMeasurerRef,
@@ -775,8 +781,11 @@ function IndexTableBase({
     const isSecond = index === 0;
     const isLast = index === headings.length - 1;
     const hasSortable = sortable?.some((value) => value === true);
+    const headingAlignment = heading.alignment || 'start';
     const headingContentClassName = classNames(
       styles.TableHeading,
+      headingAlignment === 'center' && styles['TableHeading-align-center'],
+      headingAlignment === 'end' && styles['TableHeading-align-end'],
       hasSortable && styles['TableHeading-sortable'],
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
@@ -845,6 +854,7 @@ function IndexTableBase({
     index: number,
     direction: IndexTableSortDirection,
   ) {
+    lastSortedColumnIndex.current = sortColumnIndex;
     onSort?.(index, direction);
   }
 
@@ -884,8 +894,12 @@ function IndexTableBase({
     } else {
       headingContent = heading.title;
     }
+
     if (sortable?.[index]) {
       const isCurrentlySorted = index === sortColumnIndex;
+      const isPreviouslySorted =
+        !isCurrentlySorted && index === lastSortedColumnIndex.current;
+
       const isAscending = sortDirection === 'ascending';
       let newDirection: IndexTableSortDirection = defaultSortDirection;
       let SourceComponent =
@@ -904,6 +918,8 @@ function IndexTableBase({
         <span
           className={classNames(
             styles.TableHeadingSortIcon,
+            heading?.alignment === 'end' &&
+              styles['TableHeadingSortIcon-heading-align-end'],
             isCurrentlySorted && styles['TableHeadingSortIcon-visible'],
           )}
         >
@@ -917,7 +933,20 @@ function IndexTableBase({
 
       const defaultSortButtonProps = {
         onClick: () => handleSortHeadingClick(index, newDirection),
-        className: styles.TableHeadingSortButton,
+        className: classNames(
+          styles.TableHeadingSortButton,
+          !isCurrentlySorted &&
+            heading?.alignment === 'end' &&
+            styles['TableHeadingSortButton-heading-align-end'],
+          isCurrentlySorted &&
+            heading?.alignment === 'end' &&
+            styles['TableHeadingSortButton-heading-align-end-currently-sorted'],
+          isPreviouslySorted &&
+            heading?.alignment === 'end' &&
+            styles[
+              'TableHeadingSortButton-heading-align-end-previously-sorted'
+            ],
+        ),
         tabIndex: selectMode ? -1 : 0,
       };
 
