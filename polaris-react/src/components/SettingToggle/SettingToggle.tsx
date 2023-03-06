@@ -28,7 +28,7 @@ export interface SettingToggleProps {
   helpLink?: React.ReactNode;
   /** Card header actions */
   action?: ComplexAction;
-  /** Sets toggle state to activated or deactivated */
+  /** Sets toggle state to on or off */
   enabled?: boolean;
   /** The content that should be rendered in the badge for setting status */
   settingStatus?: SettingsToggleBadge;
