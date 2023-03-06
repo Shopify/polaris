@@ -74,10 +74,10 @@ Shopify experiences should help people achieve their goals quickly, accurately, 
 
 ### Trustworthy
 
-We constantly work to earn trust with our users. We pay attention to detail. We’re genuine and transparent because it shows we’re acting in users' best interests.
+We constantly work to earn trust with our users. We pay attention to detail. We’re genuine and transparent because it shows we’re acting in users’ best interests.
 
 - Fix small mistakes and inconsistencies that erode trust.
-- Be transparent about what features and tools can or can't do.
+- Be transparent about what features and tools can or can’t do.
 - Make safe and positive actions frictionless. If they’re risky, give clear instructions and greater control. Make it easy to recover from mistakes.
 
 ### Familiar
