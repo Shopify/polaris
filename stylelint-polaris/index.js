@@ -490,6 +490,7 @@ const stylelintPolarisCoverageOptions = {
         /--p-popover-shadow/,
         /--p-modal-shadow/,
         /--p-top-bar-shadow/,
+        /--p-shadow-transparent/,
       ],
     },
     {
