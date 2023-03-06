@@ -19,14 +19,17 @@ function AnalysisPage({}: Props) {
     <Page>
       <div className={styles.AnalysisPage}>
         <h1>Analysis</h1>
+
+        <h2>Components</h2>
         <div className={styles.Grid}>
           {analysis.map((component) => (
             <div key={component.name}>
-              <h2>{component.name}</h2>
+              <h3>{component.name}</h3>
               <ul>
                 <li>Is documented: {component.isDocumented ? '✅' : '❌'}</li>
                 <li>
-                  Types contain any: {component.typesContainAny ? '💩' : '—'}
+                  Types do not use any:{' '}
+                  {component.typesContainAny ? '❌' : '✅'}
                 </li>
                 <li>
                   Props follow naming convention:{' '}
@@ -39,6 +42,24 @@ function AnalysisPage({}: Props) {
               </ul>
             </div>
           ))}
+        </div>
+
+        <h2>Exports</h2>
+        <div className={styles.Grid}>
+          {Object.keys(polaris)
+            .sort((a, b) => a.localeCompare(b))
+            .map((key) => (
+              <div key={key}>
+                <h3>
+                  {analysis.find((component) => component.name === key)
+                    ? '✅'
+                    : key.startsWith('use')
+                    ? '👀'
+                    : '❌'}{' '}
+                  {key} ({typeof polaris[key]})
+                </h3>
+              </div>
+            ))}
         </div>
       </div>
     </Page>
