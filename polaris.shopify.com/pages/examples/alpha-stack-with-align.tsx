@@ -7,34 +7,29 @@ function AlphaStackWithAlignExample() {
   return (
     <Page>
       <AlphaStack gap="8" fullWidth>
-        <AlphaStack align="start">
+        <AlphaStack gap="025" align="start">
           <Placeholder height="48px" width="320px" label="Start" />
-          <Placeholder height="48px" width="320px" showBorder />
-          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" />
+          <Placeholder height="48px" width="320px" />
         </AlphaStack>
         <Divider />
-        <AlphaStack align="center">
+        <AlphaStack gap="025" align="center">
           <Placeholder height="48px" width="320px" label="Center" />
-          <Placeholder height="48px" width="320px" showBorder />
-          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" />
+          <Placeholder height="48px" width="320px" />
         </AlphaStack>
         <Divider />
-        <AlphaStack align="end">
+        <AlphaStack gap="025" align="end">
           <Placeholder height="48px" width="320px" label="End" />
-          <Placeholder height="48px" width="320px" showBorder />
-          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" />
+          <Placeholder height="48px" width="320px" />
         </AlphaStack>
       </AlphaStack>
     </Page>
   );
 }
 
-const Placeholder = ({
-  label = '',
-  height = 'auto',
-  width = 'auto',
-  showBorder = false,
-}) => {
+const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
@@ -42,7 +37,6 @@ const Placeholder = ({
         padding: '14px var(--p-space-2)',
         height: height,
         width: width,
-        borderBlockStart: showBorder ? '1px dashed #EAFAF3' : 'none',
       }}
     >
       <Inline align="center">

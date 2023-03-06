@@ -5,10 +5,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithGapExample() {
   return (
-    <AlphaStack gap="4">
+    <AlphaStack>
       <Inline>
-        <SpacingBackground width="436px">
-          <Inline gap="4" wrap={false}>
+        <SpacingBackground width="436px" height="20px" margin>
+          <Inline gap="4" wrap={false} blockAlign="center">
             <Placeholder width="106px" height="36px" />
             <Placeholder width="106px" height="20px" />
             <Placeholder width="106px" height="20px" />
@@ -16,8 +16,8 @@ function InlineWithGapExample() {
           </Inline>
         </SpacingBackground>
       </Inline>
-      <SpacingBackground width="212px">
-        <Inline gap="4" wrap={false}>
+      <SpacingBackground width="227.98px" height="40px">
+        <Inline gap="4" wrap={false} blockAlign="end">
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
@@ -26,14 +26,15 @@ function InlineWithGapExample() {
   );
 }
 
-const SpacingBackground = ({children, width}) => {
+const SpacingBackground = ({children, width, height, margin = false}) => {
   return (
     <div
       style={{
         display: 'flex',
         background: '#E0F8EE',
         width: width,
-        height: '20px',
+        height: height,
+        marginBlockEnd: margin ? '8px' : 'none',
       }}
     >
       {children}

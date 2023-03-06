@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineWithBlockAlignExample() {
   return (
     <AlphaStack gap="8" fullWidth>
-      <Inline gap="4" blockAlign="start">
+      <Inline gap="025" blockAlign="start">
         <Placeholder width="106px" label="Start" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -15,7 +15,7 @@ function InlineWithBlockAlignExample() {
         <Placeholder width="106px" height="20px" />
       </Inline>
       <Divider />
-      <Inline gap="4" blockAlign="center">
+      <Inline gap="025" blockAlign="center">
         <Placeholder width="106px" label="Center" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -24,7 +24,7 @@ function InlineWithBlockAlignExample() {
         <Placeholder width="106px" height="20px" />
       </Inline>
       <Divider />
-      <Inline gap="4" blockAlign="end">
+      <Inline gap="025" blockAlign="end">
         <Placeholder width="106px" label="End" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -33,7 +33,7 @@ function InlineWithBlockAlignExample() {
         <Placeholder width="106px" height="20px" />
       </Inline>
       <Divider />
-      <Inline gap="4" blockAlign="baseline">
+      <Inline gap="025" blockAlign="baseline">
         <Placeholder width="106px" label="Baseline" />
         <Placeholder width="106px" padding="0" label="text" />
         <Placeholder width="106px" padding="0" label="text" />
@@ -42,7 +42,7 @@ function InlineWithBlockAlignExample() {
         <Placeholder width="106px" padding="0" label="text" />
       </Inline>
       <Divider />
-      <Inline gap="4" blockAlign="stretch">
+      <Inline gap="025" blockAlign="stretch">
         <Placeholder width="106px" label="Strech" />
         <Placeholder width="106px" minHeight="20px" />
         <Placeholder width="106px" minHeight="20px" />

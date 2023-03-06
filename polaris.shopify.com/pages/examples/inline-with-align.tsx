@@ -7,7 +7,7 @@ function InlineWithAlignExample() {
   return (
     <Page narrowWidth>
       <AlphaStack fullWidth gap="16">
-        <Inline gap="4" align="start">
+        <Inline gap="025" align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -16,7 +16,7 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" />
         </Inline>
         <Divider />
-        <Inline gap="4" align="center">
+        <Inline gap="025" align="center">
           <Placeholder width="106px" label="Center" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -25,7 +25,7 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" />
         </Inline>
         <Divider />
-        <Inline gap="4" align="end">
+        <Inline gap="025" align="end">
           <Placeholder width="106px" label="End" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />

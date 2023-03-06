@@ -5,22 +5,21 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithFullWidthChildrenExample() {
   return (
-    <AlphaStack fullWidth>
+    <AlphaStack gap="025" fullWidth>
       <Placeholder height="48px" />
-      <Placeholder height="48px" showBorder />
-      <Placeholder height="48px" showBorder />
+      <Placeholder height="48px" />
+      <Placeholder height="48px" />
     </AlphaStack>
   );
 }
 
-const Placeholder = ({height = 'auto', showBorder = false}) => {
+const Placeholder = ({height = 'auto'}) => {
   return (
     <div
       style={{
         background: '#20828D',
         padding: '14px var(--p-space-2)',
         height: height,
-        borderBlockStart: showBorder ? '1px dashed #EAFAF3' : 'none',
       }}
     />
   );
