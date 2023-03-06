@@ -30,25 +30,9 @@ type Variant =
 
 type Alignment = 'start' | 'center' | 'end' | 'justify';
 
-type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold' | null;
+type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
-
-const VariantFontWeightMapping: {
-  [V in Variant]: FontWeight;
-} = {
-  headingXs: 'semibold',
-  headingSm: 'semibold',
-  headingMd: 'semibold',
-  headingLg: 'semibold',
-  headingXl: 'semibold',
-  heading2xl: 'semibold',
-  heading3xl: 'semibold',
-  heading4xl: 'bold',
-  bodyLg: null,
-  bodyMd: null,
-  bodySm: null,
-};
 
 export interface TextProps {
   /** Adjust horizontal alignment of text */
@@ -90,15 +74,10 @@ export const Text = ({
 }: TextProps) => {
   const Component = as || (visuallyHidden ? 'span' : 'p');
 
-  const variantFontWeight = variant && VariantFontWeightMapping[variant];
-  const fontWeightClassName = fontWeight
-    ? styles[fontWeight]
-    : variantFontWeight && styles[variantFontWeight];
-
   const className = classNames(
     styles.root,
     variant && styles[variant],
-    fontWeightClassName,
+    fontWeight && styles[fontWeight],
     (alignment || truncate) && styles.block,
     alignment && styles[alignment],
     breakWord && styles.break,
