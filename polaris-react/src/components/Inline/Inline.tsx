@@ -38,7 +38,7 @@ export interface InlineProps {
    */
   wrap?: boolean;
   /**
-   * Fills the inline width of the container
+   * Fills the width of the container
    */
   fill?: boolean;
 }
