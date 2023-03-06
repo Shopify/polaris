@@ -450,3 +450,4 @@ export {
   SelectionType as IndexTableSelectionType,
 } from './utilities/index-provider';
 export {useBreakpoints} from './utilities/breakpoints';
+export {useReadOnlyEphemeralPresenceManager as useEphemeralPresenceManager} from './utilities/ephemeral-presence-manager';

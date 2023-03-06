@@ -23,8 +23,6 @@ describe('<Inline />', () => {
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-inline-align': 'start',
-        '--pc-inline-block-align': 'center',
         '--pc-inline-wrap': 'wrap',
       }) as React.CSSProperties,
     });
@@ -54,8 +52,6 @@ describe('<Inline />', () => {
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-inline-align': 'start',
-        '--pc-inline-block-align': 'center',
         '--pc-inline-wrap': 'wrap',
         '--pc-inline-gap-xs': 'var(--p-space-2)',
         '--pc-inline-gap-md': 'var(--p-space-8)',

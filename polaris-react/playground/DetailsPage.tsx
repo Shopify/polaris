@@ -34,7 +34,7 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
-  Stack,
+  LegacyStack,
   Text,
   // eslint-disable-next-line import/no-deprecated
   TextContainer,
@@ -520,9 +520,9 @@ export function DetailsPage() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -539,9 +539,9 @@ export function DetailsPage() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   // ---- Page markup ----

@@ -1,10 +1,10 @@
-import {Text, Stack} from '@shopify/polaris';
+import {Text, LegacyStack} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TextExample() {
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       <Text as="p" fontWeight="bold">
         Sales this year
       </Text>
@@ -17,7 +17,7 @@ function TextExample() {
       <Text as="p" fontWeight="regular">
         Sales this year
       </Text>
-    </Stack>
+    </LegacyStack>
   );
 }
 

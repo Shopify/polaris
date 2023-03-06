@@ -1,6 +1,13 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaCard, Bleed, Box, Divider, Stack, Text} from '@shopify/polaris';
+import {
+  AlphaCard,
+  Bleed,
+  Box,
+  Divider,
+  LegacyStack,
+  Text,
+} from '@shopify/polaris';
 
 export default {
   component: Bleed,
@@ -55,7 +62,7 @@ export function WithHorizontalDirection() {
 
 export function WithSpecificDirection() {
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       <p>Block Start</p>
       <Box background="surface" padding="4" border="base">
         <Bleed marginInline="4" marginBlockStart="6">
@@ -80,7 +87,7 @@ export function WithSpecificDirection() {
           <div style={styles} />
         </Bleed>
       </Box>
-    </Stack>
+    </LegacyStack>
   );
 }
 

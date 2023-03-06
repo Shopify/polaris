@@ -12,6 +12,7 @@ export interface ResourceListContextType {
     plural: string;
   };
   loading?: boolean;
+  hasBulkActions?: boolean;
   onSelectionChange?(
     selected: boolean,
     id: string,

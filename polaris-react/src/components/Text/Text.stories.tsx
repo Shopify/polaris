@@ -1,13 +1,13 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Stack, Text} from '@shopify/polaris';
+import {LegacyStack, Text} from '@shopify/polaris';
 
 export default {
   component: Text,
 } as ComponentMeta<typeof Text>;
 
 export const Variants = () => (
-  <Stack vertical>
+  <LegacyStack vertical>
     <Text as="h1" variant="heading4xl">
       Text with Heading4xl variant
     </Text>
@@ -41,11 +41,11 @@ export const Variants = () => (
     <Text as="p" variant="bodySm">
       Text with BodySm variant
     </Text>
-  </Stack>
+  </LegacyStack>
 );
 
 export const WithAlignment = () => (
-  <Stack vertical>
+  <LegacyStack vertical>
     <Text as="p" variant="bodyLg" alignment="start">
       Manage your Shopify store on-the-go with real-time notifications, access
       to your dashboard, and order management, all from your smartphone.
@@ -62,11 +62,11 @@ export const WithAlignment = () => (
       Manage your Shopify store on-the-go with real-time notifications, access
       to your dashboard, and order management, all from your smartphone.
     </Text>
-  </Stack>
+  </LegacyStack>
 );
 
 export const WithFontWeight = () => (
-  <Stack vertical>
+  <LegacyStack vertical>
     <Text as="p" fontWeight="bold">
       Sales this year
     </Text>
@@ -79,11 +79,11 @@ export const WithFontWeight = () => (
     <Text as="p" fontWeight="regular">
       Sales this year
     </Text>
-  </Stack>
+  </LegacyStack>
 );
 
 export const WithColor = () => (
-  <Stack vertical>
+  <LegacyStack vertical>
     <Text as="p" color="subdued">
       Use to de-emphasize a piece of text that is less important to merchants
       than other nearby text. May also be used to indicate when normal content
@@ -102,7 +102,7 @@ export const WithColor = () => (
       Use in combination with a symbol showing a decreasing value to indicate a
       downward trend.
     </Text>
-  </Stack>
+  </LegacyStack>
 );
 
 export const WithTruncate = () => (
