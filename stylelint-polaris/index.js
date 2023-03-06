@@ -497,6 +497,18 @@ const stylelintPolarisCoverageOptions = {
         /\$fixed-element-stacking-order/,
         /\$global-elements/,
         // Legacy custom properties
+        /--p-z-1/,
+        /--p-z-2/,
+        /--p-z-3/,
+        /--p-z-4/,
+        /--p-z-5/,
+        /--p-z-6/,
+        /--p-z-7/,
+        /--p-z-8/,
+        /--p-z-9/,
+        /--p-z-10/,
+        /--p-z-11/,
+        /--p-z-12/,
       ],
     },
     {
