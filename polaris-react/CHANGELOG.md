@@ -1,5 +1,41 @@
 # Changelog
 
+## 10.33.0
+
+### Minor Changes
+
+- [#8514](https://github.com/Shopify/polaris/pull/8514) [`78d686db5`](https://github.com/Shopify/polaris/commit/78d686db50f2a9691e57c0baa4ec9fde8ba8057a) Thanks [@lgriffee](https://github.com/lgriffee)! - Add additional changes for migrating `legacy` custom properties from `v10` to `v11`
+
+* [#8512](https://github.com/Shopify/polaris/pull/8512) [`b77c1fe51`](https://github.com/Shopify/polaris/commit/b77c1fe516a9b4634cb8f5187a91898af4e63782) Thanks [@fatimasajadi](https://github.com/fatimasajadi)! - Add onMouseEnter prop to the each item on the ActionList component
+
+- [#8530](https://github.com/Shopify/polaris/pull/8530) [`bec50d4d8`](https://github.com/Shopify/polaris/commit/bec50d4d8cfa6e68fa6dbabb6e720f5553e0e346) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed alignment defaults from Inline and AlphaStack
+
+* [#8448](https://github.com/Shopify/polaris/pull/8448) [`590e495fd`](https://github.com/Shopify/polaris/commit/590e495fd2751191c6e74af008a32e147a785eda) Thanks [@alex-page](https://github.com/alex-page)! - [Text] adds optional numeric font variant to render characters with a monospace apperance and consistent height and width
+
+- [#8130](https://github.com/Shopify/polaris/pull/8130) [`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907) Thanks [@mrcthms](https://github.com/mrcthms)! - - Added a `suffix` prop to `Tooltip`
+  - Improved the UX of `Tooltip` by refining open and close animations and adding an arrow pointing to the center of the `activator`
+  - Added the `EmpemeralPresenceManager` to manage the presence of non-blocking overlays, like `Tooltip` and `Toast`
+
+* [#8556](https://github.com/Shopify/polaris/pull/8556) [`de3a925a7`](https://github.com/Shopify/polaris/commit/de3a925a721b11327394a1cd041e888871f4aabe) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `Stack` and `Stack.Item` and updated documentation on style guide
+
+- [#8498](https://github.com/Shopify/polaris/pull/8498) [`624751155`](https://github.com/Shopify/polaris/commit/62475115576b1d602522d6e11db7e5a8b36d490d) Thanks [@lgriffee](https://github.com/lgriffee)! - Migrated `legacy` custom properties from `v10` to `v11`
+
+### Patch Changes
+
+- [#8534](https://github.com/Shopify/polaris/pull/8534) [`eeb8a4fc5`](https://github.com/Shopify/polaris/commit/eeb8a4fc53cfafd7bad1c2de5e16718295223900) Thanks [@laurkim](https://github.com/laurkim)! - Migrated usage of `Stack` to `LegacyStack`
+
+* [#8540](https://github.com/Shopify/polaris/pull/8540) [`70c166290`](https://github.com/Shopify/polaris/commit/70c166290790c478a397d6f4cf56cfec8b258a94) Thanks [@Ipriyankrajai](https://github.com/Ipriyankrajai)! - Fixed `ActionList` item `suffix` having extra padding when wrapped
+
+- [#8523](https://github.com/Shopify/polaris/pull/8523) [`f644ad671`](https://github.com/Shopify/polaris/commit/f644ad671d2c0a0f5f01247204717ab67ba8909c) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed deprecation warning on Card
+
+* [#8531](https://github.com/Shopify/polaris/pull/8531) [`7ecc8a9a6`](https://github.com/Shopify/polaris/commit/7ecc8a9a62faba5894a5920b538e36c847eb4a12) Thanks [@chloerice](https://github.com/chloerice)! - - Fixed header of `IndexTable` with `bulkActions` not having border radius
+  - Fixed header of `selectable` `ResourceList` not having border radius
+  - Fixed `selectable` `ResourceList` with no `bulkActions` having extra bottom padding in select mode
+  - Fixed last `ResourceItem` in a `selectable` `ResourceList` with `bulkActions` having a border radius when in select mode
+* Updated dependencies [[`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907), [`886da4fc3`](https://github.com/Shopify/polaris/commit/886da4fc3db468989dff46c7d0938661fb5a5fcb)]:
+  - @shopify/polaris-tokens@6.7.0
+  - @shopify/polaris-icons@6.11.3
+
 ## 10.32.0
 
 ### Minor Changes
