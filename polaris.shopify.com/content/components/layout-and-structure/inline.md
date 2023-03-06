@@ -15,7 +15,7 @@ examples:
   - fileName: inline-with-gap.tsx
     title: Gap
     description: >-
-      Control the horizontal space between children using the `gap` prop. The `gap` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
+      Control the horizontal and vertical space between children using the `gap` prop. The `gap` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
   - fileName: inline-with-block-align.tsx
     title: Block align
     description: >-
