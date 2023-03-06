@@ -1,5 +1,36 @@
 # polaris.shopify.com
 
+## 0.38.0
+
+### Minor Changes
+
+- [#8129](https://github.com/Shopify/polaris/pull/8129) [`6d3843755`](https://github.com/Shopify/polaris/commit/6d38437556105b96db5b67d069bf07d2ccd15e8e) Thanks [@jesstelford](https://github.com/jesstelford)! - Patterns documentation is now written in Markdown to match all other site content.
+
+* [#8130](https://github.com/Shopify/polaris/pull/8130) [`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907) Thanks [@mrcthms](https://github.com/mrcthms)! - - Added a `suffix` prop to `Tooltip`
+  - Improved the UX of `Tooltip` by refining open and close animations and adding an arrow pointing to the center of the `activator`
+  - Added the `EmpemeralPresenceManager` to manage the presence of non-blocking overlays, like `Tooltip` and `Toast`
+
+- [#8559](https://github.com/Shopify/polaris/pull/8559) [`668afa51c`](https://github.com/Shopify/polaris/commit/668afa51ce2650168aabbc5feb6695f40c393ad9) Thanks [@jjgali](https://github.com/jjgali)! - Update voice and tone of Trustworthy experience value.
+
+### Patch Changes
+
+- [#8534](https://github.com/Shopify/polaris/pull/8534) [`eeb8a4fc5`](https://github.com/Shopify/polaris/commit/eeb8a4fc53cfafd7bad1c2de5e16718295223900) Thanks [@laurkim](https://github.com/laurkim)! - Migrated usage of `Stack` to `LegacyStack`
+
+* [#8519](https://github.com/Shopify/polaris/pull/8519) [`f411cf0b6`](https://github.com/Shopify/polaris/commit/f411cf0b63487dbc270390e33decd0720a6e9636) Thanks [@kyledurand](https://github.com/kyledurand)! - Added missing redirect, updated content
+
+- [#8553](https://github.com/Shopify/polaris/pull/8553) [`d2672648a`](https://github.com/Shopify/polaris/commit/d2672648a874e7d4d286ac78620028028a609f2a) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix legacy patterns wrongly being categorised as deprecated. These are now correctly labeled "legacy"
+
+* [#8556](https://github.com/Shopify/polaris/pull/8556) [`de3a925a7`](https://github.com/Shopify/polaris/commit/de3a925a721b11327394a1cd041e888871f4aabe) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `Stack` and `Stack.Item` and updated documentation on style guide
+
+- [#8493](https://github.com/Shopify/polaris/pull/8493) [`a6fb3fbb7`](https://github.com/Shopify/polaris/commit/a6fb3fbb74c614f3b32364434f5cc673ad0f86c8) Thanks [@kyledurand](https://github.com/kyledurand)! - Moved props.json to cache and automate generation
+
+* [#8528](https://github.com/Shopify/polaris/pull/8528) [`191ff96df`](https://github.com/Shopify/polaris/commit/191ff96df5f45abe83f3ad12170c69c46ff8627c) Thanks [@jesstelford](https://github.com/jesstelford)! - Fixed grid alignment on component group page
+
+* Updated dependencies [[`eeb8a4fc5`](https://github.com/Shopify/polaris/commit/eeb8a4fc53cfafd7bad1c2de5e16718295223900), [`78d686db5`](https://github.com/Shopify/polaris/commit/78d686db50f2a9691e57c0baa4ec9fde8ba8057a), [`70c166290`](https://github.com/Shopify/polaris/commit/70c166290790c478a397d6f4cf56cfec8b258a94), [`b77c1fe51`](https://github.com/Shopify/polaris/commit/b77c1fe516a9b4634cb8f5187a91898af4e63782), [`bec50d4d8`](https://github.com/Shopify/polaris/commit/bec50d4d8cfa6e68fa6dbabb6e720f5553e0e346), [`f644ad671`](https://github.com/Shopify/polaris/commit/f644ad671d2c0a0f5f01247204717ab67ba8909c), [`590e495fd`](https://github.com/Shopify/polaris/commit/590e495fd2751191c6e74af008a32e147a785eda), [`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907), [`de3a925a7`](https://github.com/Shopify/polaris/commit/de3a925a721b11327394a1cd041e888871f4aabe), [`886da4fc3`](https://github.com/Shopify/polaris/commit/886da4fc3db468989dff46c7d0938661fb5a5fcb), [`7ecc8a9a6`](https://github.com/Shopify/polaris/commit/7ecc8a9a62faba5894a5920b538e36c847eb4a12), [`624751155`](https://github.com/Shopify/polaris/commit/62475115576b1d602522d6e11db7e5a8b36d490d)]:
+  - @shopify/polaris@10.33.0
+  - @shopify/polaris-tokens@6.7.0
+  - @shopify/polaris-icons@6.11.3
+
 ## 0.37.0
 
 ### Minor Changes
