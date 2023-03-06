@@ -179,8 +179,8 @@ function PopoverWithSearchableListboxExample() {
     <div
       style={{
         fontSize: 'var(--p-font-size-300)',
-        color: 'var(--p-text)',
-        borderBottom: '1px dashed var(--p-border)',
+        color: 'var(--p-color-text)',
+        borderBottom: '1px dashed var(--p-color-border)',
       }}
     >
       <Link monochrome removeUnderline onClick={handleOpenPicker}>
@@ -233,7 +233,9 @@ function PopoverWithSearchableListboxExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span style={{color: 'var(--p-color-text-interactive)'}}>
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
