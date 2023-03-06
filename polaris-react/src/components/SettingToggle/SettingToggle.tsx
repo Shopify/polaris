@@ -63,17 +63,19 @@ export function SettingToggle({
           <Text variant="headingMd" as="h6">
             {title}
           </Text>
-          <Badge
-            status={
-              enabled
-                ? settingStatus?.enabled.status || 'success'
-                : settingStatus?.disabled.status
-            }
-          >
-            {enabled
-              ? settingStatus?.enabled.content
-              : settingStatus?.disabled.content}
-          </Badge>
+          {settingStatus && (
+            <Badge
+              status={
+                enabled
+                  ? settingStatus?.enabled.status || 'success'
+                  : settingStatus?.disabled.status
+              }
+            >
+              {enabled
+                ? settingStatus?.enabled.content
+                : settingStatus?.disabled.content}
+            </Badge>
+          )}
           {helpLink}
         </Inline>
         <Inline align="end">

@@ -1,26 +1,43 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {SettingAction} from '../../SettingAction';
 import {SettingToggle} from '../SettingToggle';
 import {Button} from '../../Button';
+import {Badge} from '../../Badge';
+import {Text} from '../../Text';
+
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: window.innerWidth < 768,
+      addEventListener() {},
+      removeEventListener() {},
+    };
+  };
+
+const defaultWindowWidth = window.innerWidth;
 
 describe('<SettingToggle />', () => {
-  function getComponentProps(node: React.ReactNode) {
-    return (node as JSX.Element).props;
-  }
+  afterEach(() => {
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      writable: true,
+      value: defaultWindowWidth,
+    });
+  });
 
   describe('action', () => {
-    it('passes a button for the action into SettingAction', () => {
+    it('renders a button for the setting action', () => {
       const action = {
         content: 'Click me!',
         onAction: noop,
       };
       const toggle = mountWithApp(<SettingToggle action={action} />);
-      const {children} = getComponentProps(
-        toggle.find(SettingAction)!.prop('action'),
-      );
-      expect(children).toBe('Click me!');
+
+      expect(toggle).toContainReactComponent(Button, {
+        children: 'Click me!',
+      });
     });
 
     describe('accessibility', () => {
@@ -67,32 +84,80 @@ describe('<SettingToggle />', () => {
   });
 
   describe('enabled', () => {
-    it('makes the button primary when not enabled', () => {
-      const action = {
-        content: 'Click me!',
-        onAction: noop,
-      };
-      const toggle = mountWithApp(<SettingToggle action={action} />);
-      const {primary} = getComponentProps(
-        toggle.find(SettingAction)!.prop('action'),
+    it('renders enabled badge state', () => {
+      const toggle = mountWithApp(
+        <SettingToggle
+          settingStatus={{
+            enabled: {content: 'On', status: 'info'},
+            disabled: {content: 'Off'},
+          }}
+          enabled
+        />,
       );
-      expect(primary).toBe(true);
+      expect(toggle).toContainReactComponent(Badge, {
+        status: 'info',
+        children: 'On',
+      });
     });
 
-    it('makes the button secondary when enabled', () => {
-      const action = {
-        content: 'Click me!',
-        onAction: noop,
-      };
-      const toggle = mountWithApp(<SettingToggle action={action} enabled />);
-      const {primary} = getComponentProps(
-        toggle.find(SettingAction)!.prop('action'),
+    it('renders default enabled badge state', () => {
+      const toggle = mountWithApp(
+        <SettingToggle
+          settingStatus={{
+            enabled: {content: 'On'},
+            disabled: {content: 'Off'},
+          }}
+          enabled
+        />,
       );
-      expect(primary).toBe(false);
+      expect(toggle).toContainReactComponent(Badge, {
+        status: 'success',
+      });
     });
   });
 
-  describe('children', () => {
+  describe('disabled', () => {
+    it('renders disabled badge state', () => {
+      const toggle = mountWithApp(
+        <SettingToggle
+          settingStatus={{
+            enabled: {content: 'On'},
+            disabled: {content: 'Off', status: 'critical'},
+          }}
+          enabled={false}
+        />,
+      );
+      expect(toggle).toContainReactComponent(Badge, {
+        status: 'critical',
+        children: 'Off',
+      });
+    });
+  });
+
+  describe('settings toggle content', () => {
+    it('renders title', () => {
+      const title = 'Multipass';
+      const toggle = mountWithApp(<SettingToggle title={title} />);
+
+      expect(toggle).toContainReactComponent(Text, {
+        children: title,
+        variant: 'headingMd',
+        as: 'h6',
+      });
+    });
+
+    it('renders description', () => {
+      const description =
+        'Allow customers to log in with an external customer account system.';
+      const toggle = mountWithApp(<SettingToggle description={description} />);
+
+      expect(toggle).toContainReactComponent(Text, {
+        children: description,
+        as: 'p',
+        variant: 'bodyMd',
+      });
+    });
+
     it('renders the given children', () => {
       const children = <div id="someId" />;
       const toggle = mountWithApp(<SettingToggle>{children}</SettingToggle>);
