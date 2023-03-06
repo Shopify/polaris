@@ -16,7 +16,7 @@ type ColumnsType = number | string | ColumnsAlias[];
 type Columns = ResponsiveProp<ColumnsType>;
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface ColumnsProps {
+export interface ColumnsProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** The number of columns to display. Accepts either a single value or an object of values for different screen sizes.
    * @example
