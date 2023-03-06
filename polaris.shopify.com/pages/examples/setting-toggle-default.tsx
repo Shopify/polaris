@@ -1,4 +1,4 @@
-import {SettingToggle, Text} from '@shopify/polaris';
+import {Banner, Box, SettingToggle} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -7,22 +7,25 @@ function SettingToggleExample() {
 
   const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-  const contentStatus = active ? 'Deactivate' : 'Activate';
-  const textStatus = active ? 'activated' : 'deactivated';
+  const contentStatus = active ? 'Turn off' : 'Turn on';
 
   return (
     <SettingToggle
+      title="Multipass"
+      description="Allow customers to log in with an external customer account system."
+      settingStatus={{
+        enabled: {content: 'On', status: 'success'},
+        disabled: {content: 'Off'},
+      }}
       action={{
         content: contentStatus,
         onAction: handleToggle,
       }}
       enabled={active}
     >
-      This setting is{' '}
-      <Text variant="bodyMd" fontWeight="bold" as="span">
-        {textStatus}
-      </Text>
-      .
+      <Box width="100%">
+        <Banner status="info">An Example Banner Child</Banner>
+      </Box>
     </SettingToggle>
   );
 }

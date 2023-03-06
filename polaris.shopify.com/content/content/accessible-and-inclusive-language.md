@@ -77,9 +77,9 @@ Accounts are disabled.
 
 #### Do
 
-- Turned on, turned off
+- On, off
 - Active, inactive
-- Activate, deactivate
+- Activated, deactivated
 
 #### Don’t
 
