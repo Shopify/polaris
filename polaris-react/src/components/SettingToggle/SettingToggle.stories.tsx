@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Banner, SettingToggle, Text} from '@shopify/polaris';
+import {Banner, SettingToggle, Text, Inline, Box} from '@shopify/polaris';
 
 export default {
   component: SettingToggle,
@@ -28,7 +28,9 @@ export function Default() {
       }}
       enabled={active}
     >
-      <Banner status="info">An Example Banner Child</Banner>
+      <Box width="100%">
+        <Banner status="info">An Example Banner Child</Banner>
+      </Box>
     </SettingToggle>
   );
 }
