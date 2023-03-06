@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {
-  Stack,
+  LegacyStack,
   Icon,
   Page,
   LegacyCard,

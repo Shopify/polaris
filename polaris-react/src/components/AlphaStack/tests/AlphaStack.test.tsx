@@ -18,7 +18,6 @@ describe('<AlphaStack />', () => {
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-stack-align': 'start',
         '--pc-stack-order': 'column',
       }) as React.CSSProperties,
     });

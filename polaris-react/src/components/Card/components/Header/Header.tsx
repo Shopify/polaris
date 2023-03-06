@@ -3,7 +3,7 @@ import React, {isValidElement} from 'react';
 import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
-import {Stack} from '../../../Stack';
+import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import styles from '../../Card.scss';
 
@@ -36,11 +36,11 @@ export function Header({children, title, actions}: CardHeaderProps) {
 
   const headingMarkup =
     actionMarkup || children ? (
-      <Stack alignment="baseline">
-        <Stack.Item fill>{titleMarkup}</Stack.Item>
+      <LegacyStack alignment="baseline">
+        <LegacyStack.Item fill>{titleMarkup}</LegacyStack.Item>
         {actionMarkup}
         {children}
-      </Stack>
+      </LegacyStack>
     ) : (
       titleMarkup
     );

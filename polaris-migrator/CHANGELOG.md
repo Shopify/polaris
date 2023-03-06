@@ -1,5 +1,17 @@
 # @shopify/polaris-migrator
 
+## 0.15.0
+
+### Minor Changes
+
+- [#8229](https://github.com/Shopify/polaris/pull/8229) [`e21fd8d79`](https://github.com/Shopify/polaris/commit/e21fd8d79193665054cd3bcba43518ca9684bd22) Thanks [@aveline](https://github.com/aveline)! - Created migration to rename `Card` to `LegacyCard`
+
+### Patch Changes
+
+- Updated dependencies [[`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907)]:
+  - @shopify/polaris-tokens@6.7.0
+  - @shopify/stylelint-polaris@8.0.1
+
 ## 0.14.0
 
 ### Minor Changes

@@ -10,7 +10,7 @@ import {
   List,
   Popover,
   ResourceList,
-  Stack,
+  LegacyStack,
   Text,
   TextContainer,
 } from '@shopify/polaris';
@@ -80,19 +80,19 @@ export function WithCustomFooterActions() {
   return (
     <LegacyCard title="Secure your account with 2-step authentication">
       <LegacyCard.Section>
-        <Stack spacing="loose" vertical>
+        <LegacyStack spacing="loose" vertical>
           <p>
             Two-step authentication adds an extra layer of security when logging
             in to your account. A special code will be required each time you
             log in, ensuring only you can access your account.
           </p>
-          <Stack distribution="trailing">
+          <LegacyStack distribution="trailing">
             <ButtonGroup>
               <Button>Enable two-step authentication</Button>
               <Button plain>Learn more</Button>
             </ButtonGroup>
-          </Stack>
-        </Stack>
+          </LegacyStack>
+        </LegacyStack>
       </LegacyCard.Section>
     </LegacyCard>
   );
@@ -281,12 +281,12 @@ export function WithCustomReactNodeTitle() {
     <LegacyCard title="Products">
       <LegacyCard.Section
         title={
-          <Stack>
+          <LegacyStack>
             <Icon source={ProductsMajor} />
             <Text variant="headingSm" as="h3">
               New Products
             </Text>
-          </Stack>
+          </LegacyStack>
         }
       >
         <List>
@@ -355,10 +355,10 @@ export function WithAllElements() {
                 url={url}
                 accessibilityLabel={`View Sales for ${sales}`}
               >
-                <Stack>
-                  <Stack.Item fill>{sales}</Stack.Item>
-                  <Stack.Item>{amount}</Stack.Item>
-                </Stack>
+                <LegacyStack>
+                  <LegacyStack.Item fill>{sales}</LegacyStack.Item>
+                  <LegacyStack.Item>{amount}</LegacyStack.Item>
+                </LegacyStack>
               </ResourceList.Item>
             );
           }}

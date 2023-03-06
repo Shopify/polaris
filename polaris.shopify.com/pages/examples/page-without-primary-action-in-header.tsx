@@ -1,4 +1,4 @@
-import {Page, LegacyCard, Stack, Button} from '@shopify/polaris';
+import {Page, LegacyCard, LegacyStack, Button} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -18,12 +18,12 @@ function PageExample() {
       }}
     >
       <LegacyCard sectioned title="Fulfill order">
-        <Stack alignment="center">
-          <Stack.Item fill>
+        <LegacyStack alignment="center">
+          <LegacyStack.Item fill>
             <p>Buy postage and ship remaining 2 items</p>
-          </Stack.Item>
+          </LegacyStack.Item>
           <Button primary>Continue</Button>
-        </Stack>
+        </LegacyStack>
       </LegacyCard>
     </Page>
   );

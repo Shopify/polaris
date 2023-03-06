@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ <Stack />
++ <LegacyStack />
 // Don't
 - width: 100%;
 ```

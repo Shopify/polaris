@@ -156,7 +156,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 
     const body = loading ? (
       <Box padding="4">
-        <Inline gap="4" align="center">
+        <Inline gap="4" align="center" blockAlign="center">
           <Spinner />
         </Inline>
       </Box>

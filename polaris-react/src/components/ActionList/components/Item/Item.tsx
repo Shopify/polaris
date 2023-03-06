@@ -22,6 +22,7 @@ export function Item({
   helpText,
   url,
   onAction,
+  onMouseEnter,
   icon,
   image,
   prefix,
@@ -80,7 +81,7 @@ export function Item({
   );
 
   const suffixMarkup = suffix && (
-    <Box paddingInlineStart="4">
+    <Box>
       <span className={styles.Suffix}>{suffix}</span>
     </Box>
   );
@@ -88,7 +89,7 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <Inline blockAlign="center">
+    <Inline blockAlign="center" gap="4">
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
@@ -120,6 +121,7 @@ export function Item({
       onClick={onAction}
       onMouseUp={handleMouseUpByBlurring}
       role={role}
+      onMouseEnter={onMouseEnter}
     >
       {contentElement}
     </button>

@@ -1,4 +1,11 @@
-import {DropZone, Stack, Thumbnail, Banner, List, Text} from '@shopify/polaris';
+import {
+  DropZone,
+  LegacyStack,
+  Thumbnail,
+  Banner,
+  List,
+  Text,
+} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -17,9 +24,9 @@ function DropZoneWithImageFileUpload() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -31,9 +38,9 @@ function DropZoneWithImageFileUpload() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   const errorMessage = hasError && (
@@ -52,13 +59,13 @@ function DropZoneWithImageFileUpload() {
   );
 
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       {errorMessage}
       <DropZone accept="image/*" type="image" onDrop={handleDrop}>
         {uploadedFiles}
         {fileUpload}
       </DropZone>
-    </Stack>
+    </LegacyStack>
   );
 }
 
