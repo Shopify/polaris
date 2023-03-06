@@ -618,6 +618,7 @@ $loading-panel-height: 53px;
   right: 0;
   padding: 0 var(--p-space-2) 0 var(--p-space-4);
   background: var(--p-surface);
+  border-radius: var(--p-border-radius-2);
 
   &.StickyTableHeader-condensed {
     padding-top: calc(var(--p-space-2) + var(--p-space-05));
