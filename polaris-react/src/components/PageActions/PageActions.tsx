@@ -5,7 +5,7 @@ import type {
   DisableableAction,
   LoadableAction,
 } from '../../types';
-import {Stack} from '../Stack';
+import {LegacyStack} from '../LegacyStack';
 import {ButtonGroup} from '../ButtonGroup';
 import {buttonsFrom} from '../Button';
 import {isInterface} from '../../utilities/is-interface';
@@ -44,10 +44,10 @@ export function PageActions({
 
   return (
     <div className={styles.PageActions}>
-      <Stack distribution="trailing" spacing="tight">
+      <LegacyStack distribution="trailing" spacing="tight">
         {secondaryActionsMarkup}
         {primaryActionMarkup}
-      </Stack>
+      </LegacyStack>
     </div>
   );
 }

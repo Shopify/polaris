@@ -7,7 +7,7 @@ import {
   TextField,
   Icon,
   Listbox,
-  Stack,
+  LegacyStack,
   AutoSelection,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
@@ -45,10 +45,10 @@ export function WithAction() {
         Item 2
       </Listbox.Option>
       <Listbox.Action value="ActionValue">
-        <Stack spacing="tight">
+        <LegacyStack spacing="tight">
           <Icon source={CirclePlusMinor} color="base" />
           <div>Add item</div>
-        </Stack>
+        </LegacyStack>
       </Listbox.Action>
     </Listbox>
   );

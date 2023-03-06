@@ -12,7 +12,7 @@ import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {SelectAllActions} from '../SelectAllActions';
-import {Stack} from '../Stack';
+import {LegacyStack} from '../LegacyStack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {Text} from '../Text';
@@ -467,7 +467,7 @@ function IndexTableBase({
       style={stickyColumnHeaderStyle}
       data-index-table-sticky-heading
     >
-      <Stack spacing="none" wrap={false} alignment="center">
+      <LegacyStack spacing="none" wrap={false} alignment="center">
         {selectable && (
           <div
             className={styles.FirstStickyHeaderElement}
@@ -491,7 +491,7 @@ function IndexTableBase({
             {renderHeadingContent(headings[0], 0)}
           </div>
         )}
-      </Stack>
+      </LegacyStack>
     </div>
   );
   const stickyHeadingsMarkup = headings.map(renderStickyHeading);
@@ -868,12 +868,12 @@ function IndexTableBase({
 
     if (heading.new) {
       headingContent = (
-        <Stack wrap={false} alignment="center">
+        <LegacyStack wrap={false} alignment="center">
           <span>{heading.title}</span>
           <Badge status="new">
             {i18n.translate('Polaris.IndexTable.onboardingBadgeText')}
           </Badge>
-        </Stack>
+        </LegacyStack>
       );
     } else if (heading.hidden) {
       headingContent = (

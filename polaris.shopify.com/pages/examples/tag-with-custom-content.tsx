@@ -1,4 +1,4 @@
-import {Tag, Stack, Icon} from '@shopify/polaris';
+import {Tag, LegacyStack, Icon} from '@shopify/polaris';
 import {WandMinor} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -6,10 +6,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function TagExample() {
   return (
     <Tag url="#">
-      <Stack spacing="extraTight">
+      <LegacyStack spacing="extraTight">
         <Icon source={WandMinor} />
         <span>Wholesale</span>
-      </Stack>
+      </LegacyStack>
     </Tag>
   );
 }

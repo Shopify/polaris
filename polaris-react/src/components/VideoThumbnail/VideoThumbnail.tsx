@@ -9,7 +9,7 @@ import {
 } from '../../utilities/duration';
 import {useMediaQuery} from '../../utilities/media-query';
 import {Icon} from '../Icon';
-import {Stack} from '../Stack';
+import {LegacyStack} from '../LegacyStack';
 import {Text} from '../Text';
 
 import styles from './VideoThumbnail.scss';
@@ -78,7 +78,7 @@ export function VideoThumbnail({
 
   const timeStampMarkup = videoLength ? (
     <div className={styles.Timestamp}>
-      <Stack alignment="center" spacing="extraTight">
+      <LegacyStack alignment="center" spacing="extraTight">
         <span className={styles.PlayIcon}>
           <Icon source={PlayMinor} />
         </span>
@@ -89,7 +89,7 @@ export function VideoThumbnail({
         >
           {secondsToTimestamp(videoLength)}
         </Text>
-      </Stack>
+      </LegacyStack>
     </div>
   ) : null;
 
