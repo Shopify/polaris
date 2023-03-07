@@ -12,7 +12,7 @@ export function Default() {
 
 export function WithBorderStyles() {
   return (
-    <AlphaStack gap="5" fullWidth>
+    <AlphaStack gap="5">
       <Text as="h1" variant="headingXs">
         Base
       </Text>

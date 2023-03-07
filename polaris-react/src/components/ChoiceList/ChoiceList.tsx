@@ -138,12 +138,11 @@ export function ChoiceList({
     <AlphaStack
       as="fieldset"
       gap={{xs: '4', md: '0'}}
-      fullWidth
       aria-invalid={error != null}
       id={finalName}
     >
       {titleMarkup}
-      <AlphaStack as="ul" gap={{xs: '4', md: '0'}} fullWidth>
+      <AlphaStack as="ul" gap={{xs: '4', md: '0'}}>
         {choicesMarkup}
       </AlphaStack>
       {errorMarkup}
