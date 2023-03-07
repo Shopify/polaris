@@ -560,6 +560,10 @@ function IndexTableBase({
     <div className={stickyTableClassNames} role="presentation">
       <Sticky boundingElement={stickyWrapper}>
         {(isSticky: boolean) => {
+          const wrapperClassName = classNames(
+            styles.ActionsWrapper,
+            isSticky && styles['StickyTableHeader-isSticky'],
+          );
           const stickyHeaderClassNames = classNames(
             styles.StickyTableHeader,
             isSticky && styles['StickyTableHeader-isSticky'],
@@ -568,12 +572,11 @@ function IndexTableBase({
           const selectAllActionsClassName = classNames(
             styles.SelectAllActionsWrapper,
             condensed && styles['StickyTableHeader-condensed'],
-            isSticky && styles['StickyTableHeader-isSticky'],
           );
 
           const selectAllActionsMarkup =
             shouldShowBulkActions && !condensed ? (
-              <div className={styles.ActionsWrapper}>
+              <div className={wrapperClassName}>
                 <Box paddingInlineEnd="3">
                   <Inline align="space-between" blockAlign="center">
                     <div className={selectAllActionsClassName}>
