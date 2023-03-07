@@ -50,7 +50,7 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
   <AlphaStack gap="16" align="center">
     <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
       <Box as="section" paddingInlineStart={{ xs: 4, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
-        <AlphaStack gap="4">
+        <AlphaStack align="start" gap="4">
           <Text as="h3" variant="headingMd">
             InterJambs
           </Text>
@@ -68,7 +68,7 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
     </Columns>
     <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
     <Box as="section" paddingInlineStart={{ xs: 2, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
-        <AlphaStack gap="4">
+        <AlphaStack align="start" gap="4">
           <Text as="h3" variant="headingMd">
             Dimensions
           </Text>
