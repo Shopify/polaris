@@ -11,10 +11,6 @@ const genSiteMap = async () => {
 
   server.stdout.pipe(process.stdout);
 
-  console.log('wait 30 seconds');
-  await sleep(30 * 1000);
-  console.log('wait done');
-
   const {stdout} = await execa('npx', [
     'get-site-urls',
     'http://localhost:3000',
