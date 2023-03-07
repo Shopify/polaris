@@ -45,7 +45,7 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   onScrolledToBottom?(): void;
 }
 
-export interface ScrolToOptions {
+export interface ScrollToOptions {
   behavior?: ScrollBehavior;
 }
 
@@ -74,7 +74,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
     const scrollArea = useRef<HTMLDivElement>(null);
 
     const scrollTo = useCallback(
-      (scrollY: number, options: ScrolToOptions = {}) => {
+      (scrollY: number, options: ScrollToOptions = {}) => {
         const optionsBehavior = options.behavior || 'smooth';
         const behavior = prefersReducedMotion() ? 'auto' : optionsBehavior;
         scrollArea.current?.scrollTo({top: scrollY, behavior});
@@ -82,7 +82,8 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       [],
     );
 
-    useImperativeHandle(forwardedRef, () => ({scrollTo}));
+    const defaultRef = useRef();
+    useImperativeHandle(forwardedRef || defaultRef, () => ({scrollTo}));
 
     const handleScroll = useCallback(() => {
       const currentScrollArea = scrollArea.current;
