@@ -36,9 +36,5 @@
     "constants.js",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "pages/examples/**/*",
-    "scripts/get-props/testData"
-  ]
+  "exclude": ["node_modules", "app/examples/**/*", "scripts/get-props/testData"]
 }
