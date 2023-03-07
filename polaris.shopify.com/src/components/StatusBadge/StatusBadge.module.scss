@@ -11,7 +11,8 @@
   }
 
   &[data-value='warning'],
-  &[data-value='deprecated'] {
+  &[data-value='deprecated'],
+  &[data-value='legacy'] {
     background: var(--surface-warning);
   }
 

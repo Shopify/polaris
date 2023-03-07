@@ -21,7 +21,7 @@ keywords:
   - list
 status:
   value: Beta
-  message: This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. To learn more please read about our [Component lifecycle](/getting-started/components-lifecycle)
+  message: This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. To learn more please read about our [component lifecycles](/getting-started/components-lifecycle)
 examples:
   - fileName: text-heading.tsx
     title: Heading

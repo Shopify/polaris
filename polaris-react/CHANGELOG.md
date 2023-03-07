@@ -1,5 +1,21 @@
 # Changelog
 
+## 10.34.0
+
+### Minor Changes
+
+- [#8546](https://github.com/Shopify/polaris/pull/8546) [`8872c0861`](https://github.com/Shopify/polaris/commit/8872c08615d5781f4a9721b22ca3275f55a62ae1) Thanks [@MindRave](https://github.com/MindRave)! - Added "magic" color to the Icon component's color prop type.
+
+* [#8545](https://github.com/Shopify/polaris/pull/8545) [`7c174e47a`](https://github.com/Shopify/polaris/commit/7c174e47adf5d865cab43f51c14f1f54fa0607c9) Thanks [@alex-page](https://github.com/alex-page)! - Updated DropZone with a signifigant restructure to remove Class child component
+
+- [#8525](https://github.com/Shopify/polaris/pull/8525) [`8a4de8168`](https://github.com/Shopify/polaris/commit/8a4de8168ae4a80e3b11e909b64bef72b5af93b7) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - [IndexTable] Adds support for header config object alignment property and treatment of right-aligned, sortable column headings
+
+* [#8569](https://github.com/Shopify/polaris/pull/8569) [`646fba23f`](https://github.com/Shopify/polaris/commit/646fba23f603d09cb96de1bd7975111dd8ec06a3) Thanks [@kyledurand](https://github.com/kyledurand)! - Allowed aria attributes on Bleed, Inline, and Columns
+
+### Patch Changes
+
+- [#8581](https://github.com/Shopify/polaris/pull/8581) [`336d14545`](https://github.com/Shopify/polaris/commit/336d145453954993f01c60c3b516a733ea8c6aa9) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a bug where bulk actions wouldn't render when only promoted actions exist
+
 ## 10.33.0
 
 ### Minor Changes

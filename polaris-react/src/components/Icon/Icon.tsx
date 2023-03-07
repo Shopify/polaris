@@ -14,7 +14,8 @@ type Color =
   | 'warning'
   | 'highlight'
   | 'success'
-  | 'primary';
+  | 'primary'
+  | 'magic';
 
 const COLORS_WITH_BACKDROPS = [
   'base',
