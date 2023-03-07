@@ -11,17 +11,25 @@ const genSiteMap = async () => {
 
   server.stdout.pipe(process.stdout);
 
-  setTimeout(async () => {
-    const {stdout} = await execa('npx', [
-      'get-site-urls',
-      'http://localhost:3000',
-      `--output=${outputFile}`,
-      '--alias=https://polaris.shopify.com',
-    ]);
-    console.log(stdout);
+  console.log('wait 5 seconds');
+  await sleep(10000);
+  console.log('wait done');
 
-    await server.kill();
-  }, 5000);
+  const {stdout} = await execa('npx', [
+    'get-site-urls',
+    'http://localhost:3000',
+    `--output=${outputFile}`,
+    '--alias=https://polaris.shopify.com',
+  ]);
+  console.log(stdout);
+
+  await server.kill();
 };
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 export default genSiteMap;
