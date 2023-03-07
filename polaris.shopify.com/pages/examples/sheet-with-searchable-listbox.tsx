@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import {
   TextField,
-  Stack,
+  LegacyStack,
   Listbox,
   Page,
   Sheet,

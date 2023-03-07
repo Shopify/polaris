@@ -1,5 +1,5 @@
 import {
-  Stack,
+  LegacyStack,
   FormLayout,
   TextField,
   Select,
@@ -21,7 +21,7 @@ function SeparateValidationErrorExample() {
   const unitSelectID = 'unit';
   const errorMessage = generateErrorMessage();
   const formGroupMarkup = (
-    <Stack vertical spacing="extraTight">
+    <LegacyStack vertical spacing="extraTight">
       <FormLayout>
         <FormLayout.Group condensed>
           <TextField
@@ -44,7 +44,7 @@ function SeparateValidationErrorExample() {
         </FormLayout.Group>
       </FormLayout>
       <InlineError message={errorMessage} fieldID={unitSelectID} />
-    </Stack>
+    </LegacyStack>
   );
 
   return <LegacyCard sectioned>{formGroupMarkup}</LegacyCard>;

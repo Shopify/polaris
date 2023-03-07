@@ -7,7 +7,7 @@ import {
   FormLayout,
   InlineError,
   Select,
-  Stack,
+  LegacyStack,
   Tag,
   TextField,
 } from '@shopify/polaris';
@@ -40,7 +40,7 @@ export function Number() {
   const handleChange1 = useCallback((newValue) => setValue1(newValue), []);
 
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       <TextField
         label="First Quantity"
         type="number"
@@ -55,7 +55,7 @@ export function Number() {
         onChange={handleChange1}
         autoComplete="off"
       />
-    </Stack>
+    </LegacyStack>
   );
 }
 
@@ -161,8 +161,8 @@ export function WithRightAlignedText() {
   );
 
   return (
-    <Stack>
-      <Stack.Item fill>Price</Stack.Item>
+    <LegacyStack>
+      <LegacyStack.Item fill>Price</LegacyStack.Item>
       <TextField
         label="Price"
         labelHidden
@@ -171,7 +171,7 @@ export function WithRightAlignedText() {
         autoComplete="off"
         align="right"
       />
-    </Stack>
+    </LegacyStack>
   );
 }
 
@@ -247,11 +247,11 @@ export function WithVerticalContent() {
 
   const verticalContentMarkup =
     tags.length > 0 ? (
-      <Stack spacing="extraTight" alignment="center">
+      <LegacyStack spacing="extraTight" alignment="center">
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
-      </Stack>
+      </LegacyStack>
     ) : null;
 
   return (
@@ -345,8 +345,8 @@ export function WithSeparateValidationError() {
     : '';
 
   const formGroupMarkup = (
-    <Stack wrap={false} alignment="leading" spacing="loose">
-      <Stack.Item fill>
+    <LegacyStack wrap={false} alignment="leading" spacing="loose">
+      <LegacyStack.Item fill>
         <FormLayout>
           <FormLayout.Group condensed>
             <Select
@@ -377,9 +377,9 @@ export function WithSeparateValidationError() {
         <div style={{marginTop: '4px'}}>
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>
-      </Stack.Item>
+      </LegacyStack.Item>
       <Button icon={DeleteMinor} accessibilityLabel="Remove item" />
-    </Stack>
+    </LegacyStack>
   );
 
   return (

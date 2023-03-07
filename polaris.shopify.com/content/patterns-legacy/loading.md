@@ -4,8 +4,8 @@ description: Navigating the Shopify admin should be fast, meaningful, and focuse
 icon: RefreshMajor
 noIndex: true
 status:
-  value: Deprecated
-  message: This pattern is no longer supported.
+  value: Legacy
+  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - page loading
   - loading

@@ -32,4 +32,4 @@ examples:
 
 ## Related components
 
-- To display elements vertically, [use the AlphaStack component](https://polaris.shopify.com/components/alphastack)
+- To display elements vertically, [use the AlphaStack component](https://polaris.shopify.com/components/layout-and-structure/alpha-stack)

@@ -4,7 +4,7 @@ import {
   Combobox,
   Icon,
   TextContainer,
-  Stack,
+  LegacyStack,
   AutoSelection,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
@@ -119,7 +119,7 @@ function MultiComboboxExample() {
         ) : null}
       </Combobox>
       <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
+        <LegacyStack>{tagsMarkup}</LegacyStack>
       </TextContainer>
     </div>
   );
