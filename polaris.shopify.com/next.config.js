@@ -13,6 +13,7 @@ const nextConfig = {
     scrollRestoration: true,
     // this includes files from the monorepo base one directory up
     outputFileTracingRoot: path.join(__dirname, '../'),
+    appDir: true,
   },
   async rewrites() {
     return [

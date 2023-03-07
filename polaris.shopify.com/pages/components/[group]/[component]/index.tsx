@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps<
       (example: ComponentExample) => {
         const examplePath = path.resolve(
           process.cwd(),
-          `pages/examples/${example.fileName}`,
+          `app/examples/${example.fileName.replace('.tsx', '')}/page.tsx`,
         );
         let code = '';
 
@@ -116,6 +116,8 @@ export const getStaticProps: GetStaticProps<
             .filter((line) => !line.includes('withPolarisExample'))
             .join('\n');
         }
+
+        code = code.replace("'use client';\n\n", '');
 
         return {...example, code};
       },
