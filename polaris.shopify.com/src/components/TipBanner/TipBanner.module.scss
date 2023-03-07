@@ -1,8 +1,8 @@
 .TipBanner {
-  padding: var(--p-space-4) var(--p-space-6);
-  background: var(--p-surface-highlight-subdued);
-  border-radius: var(--p-border-radius-2);
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  border-radius: var(--border-radius-100);
   color: #00565e;
-  margin: var(--p-space-6) 0;
-  margin-bottom: var(--p-space-16);
+  margin: 1.5rem 0;
+  margin-bottom: 4rem;
 }

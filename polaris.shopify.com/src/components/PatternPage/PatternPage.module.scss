@@ -7,7 +7,7 @@
 }
 
 .TabGroup {
-  --tab-background: var(--p-surface-subdued);
+  --tab-background: var(--surface-subdued);
   --tab-background-pressed: rgba(250, 250, 250, 1);
   --tab-background-hover: rgba(241, 241, 241, 1);
   --tab-border: 1px solid #c9cccf;
@@ -90,7 +90,7 @@
     font-size: var(--font-size-400);
     font-weight: var(--font-weight-500);
     line-height: 1.33;
-    color: var(--p-text-disabled);
+    color: var(--text-subdied);
 
     &[aria-selected='true'] {
       color: var(--text-strong);
@@ -136,14 +136,14 @@
 .HowItHelps {
   .ImageWrapper {
     display: block;
-    border: 1px solid var(--p-border-subdued);
+    border: 1px solid var(--border-color);
     position: relative;
     flex: auto;
     overflow: hidden;
     aspect-ratio: 361.9/180.9;
     width: 100%;
     border-radius: 0.25rem;
-    background: var(--p-surface-depressed);
+    background: var(--surface-subdued);
     > img {
       width: 100%;
       object-fit: fill;
@@ -174,8 +174,8 @@
 
 .UsageGuidelinesGrid {
   display: grid;
-  column-gap: var(--p-space-4);
-  row-gap: var(--p-space-8);
+  column-gap: 1rem;
+  row-gap: 2rem;
 
   --txt-column-width: 35%;
   /*
@@ -205,7 +205,7 @@
 
   @media screen and (max-width: $breakpointMobile) {
     grid-template-columns: 1fr;
-    row-gap: var(--p-space-4);
+    row-gap: 1rem;
   }
 
   .UsageGuidelinesRow {
@@ -215,7 +215,7 @@
   .ImageWrapper {
     aspect-ratio: 485/315;
     position: relative;
-    background: var(--p-surface-depressed);
+    background: var(--surface-subdued);
     display: block;
     overflow: hidden;
     > img {
