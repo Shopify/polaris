@@ -34,7 +34,8 @@ type Type =
   | 'month'
   | 'time'
   | 'week'
-  | 'currency';
+  | 'currency'
+  | 'integer';
 
 type Alignment = 'left' | 'center' | 'right';
 
@@ -231,7 +232,6 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
-
   const id = useUniqueId('TextField', idProp);
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -266,6 +266,8 @@ export function TextField({
 
   const normalizedValue = suggestion ? suggestion : value;
   const normalizedStep = step != null ? step : 1;
+  const roundedStep =
+    type === 'integer' ? Math.round(normalizedStep) : normalizedStep;
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
 
@@ -279,8 +281,7 @@ export function TextField({
     focus && styles.focus,
   );
 
-  const inputType = type === 'currency' ? 'text' : type;
-
+  const inputType = type === 'currency' || type === 'integer' ? 'text' : type;
   const prefixMarkup = prefix ? (
     <div className={styles.Prefix} id={`${id}-Prefix`} ref={prefixRef}>
       {prefix}
@@ -360,16 +361,16 @@ export function TextField({
 
       // Making sure the new value has the same length of decimal places as the
       // step / value has.
-      const decimalPlaces = Math.max(dpl(numericValue), dpl(normalizedStep));
+      const decimalPlaces = Math.max(dpl(numericValue), dpl(roundedStep));
 
       const newValue = Math.min(
         Number(normalizedMax),
-        Math.max(numericValue + steps * normalizedStep, Number(normalizedMin)),
+        Math.max(numericValue + steps * roundedStep, Number(normalizedMin)),
       );
 
       onChange(String(newValue.toFixed(decimalPlaces)), id);
     },
-    [id, normalizedMax, normalizedMin, onChange, normalizedStep, value],
+    [id, normalizedMax, normalizedMin, onChange, value, roundedStep],
   );
 
   const handleButtonRelease = useCallback(() => {
@@ -401,7 +402,10 @@ export function TextField({
   );
 
   const spinnerMarkup =
-    type === 'number' && step !== 0 && !disabled && !readOnly ? (
+    (type === 'number' || type === 'integer') &&
+    step !== 0 &&
+    !disabled &&
+    !readOnly ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
@@ -486,7 +490,9 @@ export function TextField({
       event.stopPropagation();
     }
   }
-
+  const inputPattern =
+    pattern ?? (type === 'integer' ? '^[-]?[0-9]*' : pattern);
+  const mode = inputMode ?? (type === 'integer' ? 'numeric' : inputMode);
   const input = createElement(multiline ? 'textarea' : 'input', {
     name,
     id,
@@ -502,12 +508,12 @@ export function TextField({
     ref: multiline ? textAreaRef : inputRef,
     min,
     max,
-    step,
+    step: step ? roundedStep : undefined,
     minLength,
     maxLength,
     spellCheck,
-    pattern,
-    inputMode,
+    pattern: inputPattern,
+    inputMode: mode,
     type: inputType,
     rows: getRows(multiline),
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
@@ -577,8 +583,20 @@ export function TextField({
     </Labelled>
   );
 
+  // add tests
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    onChange && onChange(event.currentTarget.value, id);
+    const {value} = event.currentTarget;
+    const integerSpec = /^-?[0-9]*$/;
+
+    if (onChange) {
+      if (type !== 'integer') {
+        onChange(value, id);
+      }
+      if (type === 'integer' && integerSpec.test(value)) {
+        const integerValue = value !== '' && Number(value) === 0 ? '0' : value;
+        onChange(integerValue, id);
+      }
+    }
   }
 
   function handleClick(event: React.MouseEvent<HTMLInputElement>) {
