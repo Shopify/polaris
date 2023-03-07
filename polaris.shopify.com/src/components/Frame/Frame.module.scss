@@ -15,6 +15,7 @@ $breakpointNav: $breakpointTablet;
   user-select: none;
   background: var(--surface);
   z-index: 10;
+  display: none;
 }
 
 .NavAndContent {
@@ -34,13 +35,13 @@ $breakpointNav: $breakpointTablet;
 
 .Nav {
   position: sticky;
-  top: var(--header-height);
-  height: calc(100vh - var(--header-height));
+  top: 0;
+  height: 100vh;
   min-width: 18rem;
   max-width: 18rem;
   background: var(--surface-subdued);
-  border-radius: 0 var(--border-radius-600) var(--border-radius-600) 0;
-  padding: 1rem 4px 1.5rem 6px;
+  padding: 4rem 4px 2rem 6px;
+  border-right: var(--border);
   user-select: none;
   @include custom-scrollbars;
   overscroll-behavior: contain;
@@ -74,9 +75,10 @@ $breakpointNav: $breakpointTablet;
 
     > li {
       .NavItem {
-        font-size: var(--font-size-400);
+        font-size: var(--font-size-300);
         letter-spacing: var(--letter-spacing-100);
         color: var(--text-strong);
+        font-weight: vaR(--font-weight-500);
 
         + ul > li:first-child {
           padding-top: 0.125rem;
@@ -109,6 +111,7 @@ $breakpointNav: $breakpointTablet;
 
           > a {
             color: var(--text-strong);
+            font-weight: var(--font-weight-400);
           }
 
           &.isCurrent > a {
@@ -136,6 +139,7 @@ $breakpointNav: $breakpointTablet;
       > ul > li > ul > li {
         > .NavItem {
           font-size: var(--font-size-200);
+          font-weight: var(--font-weight-400);
           letter-spacing: var(--letter-spacing-300);
           padding-left: 3rem;
 
@@ -173,7 +177,7 @@ $breakpointNav: $breakpointTablet;
   justify-content: space-between;
   align-items: center;
   padding: 0.025rem 0.75rem 0.025rem 1.5rem;
-  border-radius: var(--border-radius-500);
+  border-radius: var(--border-radius-300);
   transition: box-shadow 0.2s linear;
 
   &:hover {
@@ -181,9 +185,7 @@ $breakpointNav: $breakpointTablet;
   }
 
   &.isCurrent {
-    background: var(--surface);
-    font-weight: var(--font-weight-500);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.033), 0 2px 50px rgba(0, 0, 0, 0.033);
+    // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.033), 0 2px 50px rgba(0, 0, 0, 0.033);
 
     &:before {
       content: '';
