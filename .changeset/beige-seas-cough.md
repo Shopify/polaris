@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-[Scrollable] Add a forward ref imperative handler to permit programattic scrolling
+Added a forward `ref` to permit programmatic scrolling for `Scrollable` (example: `scrollRef.current?.scrollTo(0)`)
