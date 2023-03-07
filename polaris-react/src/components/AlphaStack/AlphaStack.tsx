@@ -16,6 +16,8 @@ type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
+type Spacing = ResponsiveProp<SpacingSpaceScale>;
+
 export interface AlphaStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** HTML Element type
@@ -35,6 +37,18 @@ export interface AlphaStackProps extends React.AriaAttributes {
   /** Reverse the render order of child items
    * @default false
    */
+  /** Vertical start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingBlockStart='4'
+   * paddingBlockStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  paddingBlockStart?: Spacing;
+  /** Vertical end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingBlockEnd='4'
+   * paddingBlockEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  paddingBlockEnd?: Spacing;
   reverseOrder?: boolean;
 }
 
@@ -45,6 +59,8 @@ export const AlphaStack = ({
   fullWidth = false,
   gap,
   id,
+  paddingBlockStart,
+  paddingBlockEnd,
   reverseOrder = false,
   ...restProps
 }: AlphaStackProps) => {
@@ -59,6 +75,18 @@ export const AlphaStack = ({
     '--pc-stack-align': align ? `${align}` : '',
     '--pc-stack-order': reverseOrder ? 'column-reverse' : 'column',
     ...getResponsiveProps('stack', 'gap', 'space', gap),
+    ...getResponsiveProps(
+      'stack',
+      'padding-block-end',
+      'space',
+      paddingBlockEnd,
+    ),
+    ...getResponsiveProps(
+      'stack',
+      'padding-block-start',
+      'space',
+      paddingBlockStart,
+    ),
   } as React.CSSProperties;
 
   return createElement(

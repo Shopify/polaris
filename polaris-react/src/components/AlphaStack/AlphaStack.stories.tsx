@@ -117,3 +117,23 @@ export function WithFullWidthChildren() {
     </AlphaStack>
   );
 }
+
+export function WithResponsivePaddingBlockStartAndEnd() {
+  return (
+    <AlphaStack
+      gap="4"
+      paddingBlockStart={{sm: '2', md: '6'}}
+      paddingBlockEnd={{sm: '2', md: '6'}}
+    >
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
+    </AlphaStack>
+  );
+}
