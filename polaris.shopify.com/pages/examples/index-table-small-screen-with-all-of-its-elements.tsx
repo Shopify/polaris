@@ -2,11 +2,12 @@ import {
   TextField,
   IndexTable,
   LegacyCard,
-  LegacyFilters,
-  Select,
+  IndexFilters,
+  useSetIndexFiltersMode,
   useIndexResourceState,
   Text,
 } from '@shopify/polaris';
+import type {IndexFiltersProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -44,14 +45,8 @@ function SmallScreenIndexTableWithAllElementsExample() {
     (value: string) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(
-    () => setTaggedWith(undefined),
-    [],
-  );
-  const handleQueryValueRemove = useCallback(
-    () => setQueryValue(undefined),
-    [],
-  );
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
@@ -111,9 +106,10 @@ function SmallScreenIndexTableWithAllElementsExample() {
       : [];
 
   const sortOptions = [
-    {label: 'Today', value: 'today'},
-    {label: 'Yesterday', value: 'yesterday'},
-    {label: 'Last 7 days', value: 'lastWeek'},
+    {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
+    {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
+    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
+    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
   ];
 
   const rowMarkup = customers.map(
@@ -140,30 +136,54 @@ function SmallScreenIndexTableWithAllElementsExample() {
     ),
   );
 
+  const tabs = [
+    {
+      id: 'all',
+      content: 'All customers',
+    },
+  ];
+
+  const {mode, setMode} = useSetIndexFiltersMode();
+
+  const cancelAction = {
+    onAction: () => {},
+  };
+
+  async function emptyPromise() {
+    const prom = Promise.resolve();
+    return prom.then(() => {
+      return true;
+    });
+  }
+
+  const primaryAction: IndexFiltersProps['primaryAction'] = {
+    onAction: emptyPromise,
+    type: 'save-as',
+  };
+
   return (
     <div style={{width: '430px'}}>
       <LegacyCard>
-        <div style={{padding: '16px', display: 'flex'}}>
-          <div style={{flex: 1}}>
-            <LegacyFilters
-              queryValue={queryValue}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={setQueryValue}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-            />
-          </div>
-          <div style={{paddingLeft: '0.25rem'}}>
-            <Select
-              labelInline
-              label="Sort by"
-              options={sortOptions}
-              value={sortValue}
-              onChange={handleSortChange}
-            />
-          </div>
-        </div>
+        <IndexFilters
+          tabs={tabs}
+          selected={0}
+          onSelect={() => {}}
+          onCreateNewView={emptyPromise}
+          queryValue={queryValue}
+          queryPlaceholder="Searching in all"
+          filters={filters}
+          appliedFilters={appliedFilters}
+          onQueryChange={setQueryValue}
+          onQueryClear={handleQueryValueRemove}
+          onClearAll={handleClearAll}
+          sortOptions={sortOptions}
+          sortSelected={sortValue}
+          onSortChange={handleSortChange}
+          mode={mode}
+          setMode={setMode}
+          cancelAction={cancelAction}
+          primaryAction={primaryAction}
+        />
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}

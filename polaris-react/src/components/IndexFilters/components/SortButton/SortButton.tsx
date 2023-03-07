@@ -3,7 +3,6 @@ import {SortMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {Icon} from '../../../Icon';
-import {Stack} from '../../../Stack';
 import {Popover} from '../../../Popover';
 import {ChoiceList} from '../../../ChoiceList';
 import type {ChoiceListProps} from '../../../ChoiceList';
@@ -96,17 +95,13 @@ export function SortButton({
   });
 
   const tooltipActivator = (
-    <div>
-      <FilterButton
-        onClick={handleClick}
-        aria-label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
-        disabled={disabled}
-      >
-        <Stack spacing="none">
-          <Icon source={SortMinor} color="base" />
-        </Stack>
-      </FilterButton>
-    </div>
+    <FilterButton
+      onClick={handleClick}
+      aria-label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
+      disabled={disabled}
+    >
+      <Icon source={SortMinor} color="base" />
+    </FilterButton>
   );
 
   const activator = (

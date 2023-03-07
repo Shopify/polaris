@@ -66,7 +66,7 @@ export interface IndexFiltersProps
   /** Whether the index supports creating new views */
   canCreateNewView?: boolean;
   /** Callback invoked when a merchant creates a new view */
-  onCreateNewView: (name: string) => Promise<boolean>;
+  onCreateNewView?: (name: string) => Promise<boolean>;
 }
 
 export function IndexFilters({

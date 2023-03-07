@@ -5,7 +5,6 @@ import {Modal} from '../../../Modal';
 import {TextField} from '../../../TextField';
 import {Form} from '../../../Form';
 import {FormLayout} from '../../../FormLayout';
-import {Stack} from '../../../Stack';
 import {Inline} from '../../../Inline';
 import {Button} from '../../../Button';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
@@ -149,32 +148,30 @@ export function UpdateButtons({
         >
           <Modal.Section>
             <Form onSubmit={handlePrimaryAction}>
-              <Stack vertical>
-                <FormLayout>
-                  <div ref={container}>
-                    <TextField
-                      label={i18n.translate(
-                        'Polaris.IndexFilters.UpdateButtons.modal.label',
-                      )}
-                      value={savedViewName}
-                      onChange={handleChange}
-                      autoComplete="off"
-                      maxLength={MAX_VIEW_NAME_LENGTH}
-                      showCharacterCount
-                      error={
-                        hasSameNameError
-                          ? i18n.translate(
-                              'Polaris.IndexFilters.UpdateButtons.modal.sameName',
-                              {
-                                name: savedViewName,
-                              },
-                            )
-                          : undefined
-                      }
-                    />
-                  </div>
-                </FormLayout>
-              </Stack>
+              <FormLayout>
+                <div ref={container}>
+                  <TextField
+                    label={i18n.translate(
+                      'Polaris.IndexFilters.UpdateButtons.modal.label',
+                    )}
+                    value={savedViewName}
+                    onChange={handleChange}
+                    autoComplete="off"
+                    maxLength={MAX_VIEW_NAME_LENGTH}
+                    showCharacterCount
+                    error={
+                      hasSameNameError
+                        ? i18n.translate(
+                            'Polaris.IndexFilters.UpdateButtons.modal.sameName',
+                            {
+                              name: savedViewName,
+                            },
+                          )
+                        : undefined
+                    }
+                  />
+                </div>
+              </FormLayout>
             </Form>
           </Modal.Section>
         </Modal>

@@ -31,9 +31,6 @@ examples:
   - fileName: index-table-default.tsx
     title: Default
     description: A index table with simple items and no bulk actions, sorting, or filtering.
-  - fileName: index-table-flush.tsx
-    title: Flush
-    description: A index table with simple items and no bulk actions, sorting, or filtering.
   - fileName: index-table-small-screen.tsx
     title: Small screen
     description: A small screen index table with simple items and no bulk actions, sorting, or filtering.

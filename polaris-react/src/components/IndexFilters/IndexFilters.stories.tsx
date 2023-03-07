@@ -124,7 +124,6 @@ export function Default() {
     content: item,
     index,
     onAction: () => {},
-    url: '#',
     id: `${item}-${index}`,
     isLocked: index === 0,
     actions:

@@ -8,7 +8,6 @@ import {Modal} from '../../../Modal';
 import {TextField} from '../../../TextField';
 import {Form} from '../../../Form';
 import {FormLayout} from '../../../FormLayout';
-import {Stack} from '../../../Stack';
 
 export interface CreateViewModalProps {
   open: boolean;
@@ -95,28 +94,26 @@ export function CreateViewModal({
     >
       <Modal.Section>
         <Form onSubmit={handlePrimaryAction}>
-          <Stack vertical>
-            <FormLayout>
-              <div ref={container}>
-                <TextField
-                  label={i18n.translate('Polaris.Tabs.CreateViewModal.label')}
-                  value={value}
-                  onChange={handleChange}
-                  autoComplete="off"
-                  maxLength={MAX_VIEW_NAME_LENGTH}
-                  showCharacterCount
-                  error={
-                    hasSameNameError
-                      ? i18n.translate(
-                          'Polaris.Tabs.CreateViewModal.errors.sameName',
-                          {name: value},
-                        )
-                      : undefined
-                  }
-                />
-              </div>
-            </FormLayout>
-          </Stack>
+          <FormLayout>
+            <div ref={container}>
+              <TextField
+                label={i18n.translate('Polaris.Tabs.CreateViewModal.label')}
+                value={value}
+                onChange={handleChange}
+                autoComplete="off"
+                maxLength={MAX_VIEW_NAME_LENGTH}
+                showCharacterCount
+                error={
+                  hasSameNameError
+                    ? i18n.translate(
+                        'Polaris.Tabs.CreateViewModal.errors.sameName',
+                        {name: value},
+                      )
+                    : undefined
+                }
+              />
+            </div>
+          </FormLayout>
         </Form>
       </Modal.Section>
     </Modal>

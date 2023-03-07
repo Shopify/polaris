@@ -1,17 +1,17 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import type {IndexFiltersProps} from '@shopify/polaris';
 import {
   Button,
   LegacyCard,
   EmptySearchResult,
-  LegacyFilters,
+  IndexFilters,
+  useSetIndexFiltersMode,
   IndexTable,
   Link,
-  Select,
   TextField,
   Text,
   useIndexResourceState,
-  Tooltip,
 } from '@shopify/polaris';
 
 export default {
@@ -905,15 +905,15 @@ export function WithFiltering() {
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
-  const [queryValue, setQueryValue] = useState(null);
-  const [sortValue, setSortValue] = useState('today');
+  const [queryValue, setQueryValue] = useState('');
+  const [sortValue, setSortValue] = useState(['today asc']);
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
     [],
   );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
@@ -948,9 +948,8 @@ export function WithFiltering() {
     : [];
 
   const sortOptions = [
-    {label: 'Today', value: 'today'},
-    {label: 'Yesterday', value: 'yesterday'},
-    {label: 'Last 7 days', value: 'lastWeek'},
+    {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
+    {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
 
   const rowMarkup = customers.map(
@@ -981,29 +980,53 @@ export function WithFiltering() {
     ),
   );
 
+  const tabs = [
+    {
+      id: 'all',
+      content: 'All customers',
+    },
+  ];
+
+  const {mode, setMode} = useSetIndexFiltersMode();
+
+  const cancelAction = {
+    onAction: () => {},
+  };
+
+  async function emptyPromise() {
+    const prom = Promise.resolve();
+    return prom.then(() => {
+      return true;
+    });
+  }
+
+  const primaryAction: IndexFiltersProps['primaryAction'] = {
+    onAction: emptyPromise,
+    type: 'save-as',
+  };
+
   return (
     <LegacyCard>
-      <div style={{padding: '16px', display: 'flex'}}>
-        <div style={{flex: 1}}>
-          <LegacyFilters
-            queryValue={queryValue}
-            filters={filters}
-            appliedFilters={appliedFilters}
-            onQueryChange={setQueryValue}
-            onQueryClear={handleQueryValueRemove}
-            onClearAll={handleClearAll}
-          />
-        </div>
-        <div style={{paddingLeft: '0.25rem'}}>
-          <Select
-            labelInline
-            label="Sort by"
-            options={sortOptions}
-            value={sortValue}
-            onChange={handleSortChange}
-          />
-        </div>
-      </div>
+      <IndexFilters
+        tabs={tabs}
+        selected={0}
+        onSelect={() => {}}
+        onCreateNewView={emptyPromise}
+        queryValue={queryValue}
+        queryPlaceholder="Searching in all"
+        filters={filters}
+        appliedFilters={appliedFilters}
+        onQueryChange={setQueryValue}
+        onQueryClear={handleQueryValueRemove}
+        onClearAll={handleClearAll}
+        sortOptions={sortOptions}
+        sortSelected={sortValue}
+        onSortChange={handleSortChange}
+        mode={mode}
+        setMode={setMode}
+        cancelAction={cancelAction}
+        primaryAction={primaryAction}
+      />
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1536,15 +1559,15 @@ export function WithAllOfItsElements() {
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
-  const [queryValue, setQueryValue] = useState(null);
-  const [sortValue, setSortValue] = useState('today');
+  const [queryValue, setQueryValue] = useState('');
+  const [sortValue, setSortValue] = useState(['today asc']);
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
     [],
   );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
@@ -1600,9 +1623,8 @@ export function WithAllOfItsElements() {
     : [];
 
   const sortOptions = [
-    {label: 'Today', value: 'today'},
-    {label: 'Yesterday', value: 'yesterday'},
-    {label: 'Last 7 days', value: 'lastWeek'},
+    {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
+    {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
 
   const rowMarkup = customers.map(
@@ -1633,29 +1655,53 @@ export function WithAllOfItsElements() {
     ),
   );
 
+  const tabs = [
+    {
+      id: 'all',
+      content: 'All customers',
+    },
+  ];
+
+  const {mode, setMode} = useSetIndexFiltersMode();
+
+  const cancelAction = {
+    onAction: () => {},
+  };
+
+  async function emptyPromise() {
+    const prom = Promise.resolve();
+    return prom.then(() => {
+      return true;
+    });
+  }
+
+  const primaryAction: IndexFiltersProps['primaryAction'] = {
+    onAction: emptyPromise,
+    type: 'save-as',
+  };
+
   return (
     <LegacyCard>
-      <div style={{padding: '16px', display: 'flex'}}>
-        <div style={{flex: 1}}>
-          <LegacyFilters
-            queryValue={queryValue}
-            filters={filters}
-            appliedFilters={appliedFilters}
-            onQueryChange={setQueryValue}
-            onQueryClear={handleQueryValueRemove}
-            onClearAll={handleClearAll}
-          />
-        </div>
-        <div style={{paddingLeft: '0.25rem'}}>
-          <Select
-            labelInline
-            label="Sort by"
-            options={sortOptions}
-            value={sortValue}
-            onChange={handleSortChange}
-          />
-        </div>
-      </div>
+      <IndexFilters
+        tabs={tabs}
+        selected={0}
+        onSelect={() => {}}
+        onCreateNewView={emptyPromise}
+        queryValue={queryValue}
+        queryPlaceholder="Searching in all"
+        filters={filters}
+        appliedFilters={appliedFilters}
+        onQueryChange={setQueryValue}
+        onQueryClear={handleQueryValueRemove}
+        onClearAll={handleClearAll}
+        sortOptions={sortOptions}
+        sortSelected={sortValue}
+        onSortChange={handleSortChange}
+        mode={mode}
+        setMode={setMode}
+        cancelAction={cancelAction}
+        primaryAction={primaryAction}
+      />
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -2654,15 +2700,15 @@ export function SmallScreenWithAllOfItsElements() {
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(customers);
   const [taggedWith, setTaggedWith] = useState('VIP');
-  const [queryValue, setQueryValue] = useState(null);
-  const [sortValue, setSortValue] = useState('today');
+  const [queryValue, setQueryValue] = useState('');
+  const [sortValue, setSortValue] = useState(['today asc']);
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
     [],
   );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
@@ -2718,9 +2764,8 @@ export function SmallScreenWithAllOfItsElements() {
     : [];
 
   const sortOptions = [
-    {label: 'Today', value: 'today'},
-    {label: 'Yesterday', value: 'yesterday'},
-    {label: 'Last 7 days', value: 'lastWeek'},
+    {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
+    {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
 
   const rowMarkup = customers.map(
@@ -2747,30 +2792,54 @@ export function SmallScreenWithAllOfItsElements() {
     ),
   );
 
+  const tabs = [
+    {
+      id: 'all',
+      content: 'All customers',
+    },
+  ];
+
+  const {mode, setMode} = useSetIndexFiltersMode();
+
+  const cancelAction = {
+    onAction: () => {},
+  };
+
+  async function emptyPromise() {
+    const prom = Promise.resolve();
+    return prom.then(() => {
+      return true;
+    });
+  }
+
+  const primaryAction: IndexFiltersProps['primaryAction'] = {
+    onAction: emptyPromise,
+    type: 'save-as',
+  };
+
   return (
     <div style={{width: '430px'}}>
       <LegacyCard>
-        <div style={{padding: '16px', display: 'flex'}}>
-          <div style={{flex: 1}}>
-            <LegacyFilters
-              queryValue={queryValue}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={setQueryValue}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-            />
-          </div>
-          <div style={{paddingLeft: '0.25rem'}}>
-            <Select
-              labelInline
-              label="Sort by"
-              options={sortOptions}
-              value={sortValue}
-              onChange={handleSortChange}
-            />
-          </div>
-        </div>
+        <IndexFilters
+          tabs={tabs}
+          selected={0}
+          onSelect={() => {}}
+          onCreateNewView={emptyPromise}
+          queryValue={queryValue}
+          queryPlaceholder="Searching in all"
+          filters={filters}
+          appliedFilters={appliedFilters}
+          onQueryChange={setQueryValue}
+          onQueryClear={handleQueryValueRemove}
+          onClearAll={handleClearAll}
+          sortOptions={sortOptions}
+          sortSelected={sortValue}
+          onSortChange={handleSortChange}
+          mode={mode}
+          setMode={setMode}
+          cancelAction={cancelAction}
+          primaryAction={primaryAction}
+        />
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
