@@ -18,20 +18,20 @@ interface SettingsToggleBadge {
 }
 
 export interface SettingToggleProps {
-  /** Inner content of the card */
-  children?: React.ReactNode;
-  /** The title in the header of the settings toggle */
-  title?: string;
-  /** The description of the settings toggle */
-  description?: string;
-  /** The help link rendered in the settings toggle */
-  helpLink?: React.ReactNode;
   /** Card header actions */
   action?: ComplexAction;
+  /** Inner content of the card */
+  children?: React.ReactNode;
+  /** The description of the settings toggle */
+  description?: string;
   /** Sets toggle state to on or off */
   enabled?: boolean;
+  /** The help link rendered in the settings toggle */
+  helpLink?: React.ReactNode;
   /** The content that should be rendered in the badge for setting status */
   settingStatus?: SettingsToggleBadge;
+  /** The title in the header of the settings toggle */
+  title?: string;
 }
 
 const getUniqueSettingToggleId = globalIdGeneratorFactory('SettingToggle');
