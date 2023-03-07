@@ -10,7 +10,7 @@
 .SpecificityBuster {
   .ExampleWrapper {
     box-shadow: none;
-    border: 1px solid var(--p-border-subdued);
+    border: 1px solid var(--border-color);
     @media screen and (max-width: $breakpointMobile) {
       border-left: 0;
       border-right: 0;

@@ -15,7 +15,7 @@ export const Stack = forwardRef(
       style={{
         // @ts-expect-error The types for `style` don't support css vars for
         // some reason
-        '--stack-gap-prop': `var(--p-space-${gap})`,
+        '--stack-gap-prop': `${gap * 0.25}rem`,
         ...style,
       }}
       {...props}

@@ -110,7 +110,7 @@ export default function GroupPage({
             {relatedResources.map((resource) => (
               <li
                 key={resource}
-                style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
+                style={{listStyle: 'initial', marginLeft: '.5rem'}}
               >
                 <Markdown>{resource}</Markdown>
               </li>

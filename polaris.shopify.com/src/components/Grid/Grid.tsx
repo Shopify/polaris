@@ -44,11 +44,17 @@ export const Grid = forwardRef(
       style={{
         // @ts-expect-error The types for `style` don't support css vars
         '--props-grid-gap':
-          typeof gap !== 'undefined' ? `var(--p-space-${gap})` : undefined,
+          typeof gap !== 'undefined'
+            ? `${0.25 * parseFloat(gap)}rem)`
+            : undefined,
         '--props-grid-gap-x':
-          typeof gapX !== 'undefined' ? `var(--p-space-${gapX})` : undefined,
+          typeof gapX !== 'undefined'
+            ? `${0.25 * parseFloat(gapX)}rem)`
+            : undefined,
         '--props-grid-gap-y':
-          typeof gapY !== 'undefined' ? `var(--p-space-${gapY})` : undefined,
+          typeof gapY !== 'undefined'
+            ? `${0.25 * parseFloat(gapY)}rem)`
+            : undefined,
         '--props-grid-item-min-width': itemMinWidth,
       }}
       className={[styles.Grid, condensed && styles.condensed, className]}
