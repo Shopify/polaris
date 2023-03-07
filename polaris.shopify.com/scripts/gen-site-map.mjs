@@ -4,8 +4,12 @@ import path from 'path';
 const genSiteMap = async () => {
   const outputFile = 'public/sitemap.xml';
 
+  console.log('⚙️  Generating sitemap.xml...');
+  console.log('⚙️  Starting dev server using next dev...');
   const nextBin = path.join(process.cwd(), 'node_modules/.bin/next');
   const server = execa(nextBin, ['dev']);
+
+  server.stdout.pipe(process.stdout);
 
   const {stdout} = await execa('npx', [
     'get-site-urls',
