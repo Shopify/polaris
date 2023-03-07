@@ -1,12 +1,12 @@
 import React from 'react';
-import {AlphaStack, Inline, Text, Page} from '@shopify/polaris';
+import {Stack, Inline, Text, Page} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithHorizontalAlignmentExample() {
   return (
     <Page narrowWidth>
-      <AlphaStack gap="16">
+      <Stack gap="16">
         <Inline gap="4" align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" />
@@ -31,7 +31,7 @@ function InlineWithHorizontalAlignmentExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
-      </AlphaStack>
+      </Stack>
     </Page>
   );
 }

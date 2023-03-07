@@ -24,7 +24,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`AlphaCard`](/components/layout-and-structure/alpha-card), [`Columns`](/components/layout-and-structure/columns) and [`Box`](/components/layout-and-structure/box) components.
+This pattern uses the [`Stack`](/components/layout-and-structure/stack), [`Card`](/components/layout-and-structure/card), [`Columns`](/components/layout-and-structure/columns) and [`Box`](/components/layout-and-structure/box) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -45,28 +45,28 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
     },
   ]}
 >
-  <AlphaStack gap="16" align="center">
+  <Stack gap="16" align="center">
     <Columns columns={{xs: '1fr', md: '2fr 5fr'}}>
       <Box
         as="section"
         paddingInlineStart={{xs: 4, sm: 0}}
         paddingInlineEnd={{xs: 2, sm: 0}}
       >
-        <AlphaStack align="start" gap="4">
+        <Stack align="start" gap="4">
           <Text as="h3" variant="headingMd">
             InterJambs
           </Text>
           <p>
             Interjambs are the rounded protruding bits of your puzzlie piece
           </p>
-        </AlphaStack>
+        </Stack>
       </Box>
-      <AlphaCard roundedAbove="sm">
-        <AlphaStack gap="4" fullWidth>
+      <Card roundedAbove="sm">
+        <Stack gap="4" fullWidth>
           <TextField label="Interjamb style" />
           <TextField label="Interjamb ratio" />
-        </AlphaStack>
-      </AlphaCard>
+        </Stack>
+      </Card>
     </Columns>
     <Columns columns={{xs: '1fr', md: '2fr 5fr'}}>
       <Box
@@ -74,23 +74,23 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
         paddingInlineStart={{xs: 2, sm: 0}}
         paddingInlineEnd={{xs: 2, sm: 0}}
       >
-        <AlphaStack align="start" gap="4">
+        <Stack align="start" gap="4">
           <Text as="h3" variant="headingMd">
             Dimensions
           </Text>
           <p>
             Interjambs are the rounded protruding bits of your puzzlie piece
           </p>
-        </AlphaStack>
+        </Stack>
       </Box>
-      <AlphaCard roundedAbove="sm">
-        <AlphaStack gap="4" fullWidth>
+      <Card roundedAbove="sm">
+        <Stack gap="4" fullWidth>
           <TextField label="Horizontal" />
           <TextField label="Interjamb ratio" />
-        </AlphaStack>
-      </AlphaCard>
+        </Stack>
+      </Card>
     </Columns>
-  </AlphaStack>
+  </Stack>
 </Page>
 ```
 

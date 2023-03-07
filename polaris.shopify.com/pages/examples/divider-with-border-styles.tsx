@@ -1,11 +1,11 @@
 import React from 'react';
-import {Divider, Text, AlphaStack} from '@shopify/polaris';
+import {Divider, Text, Stack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DividerWithBorderStylesExample() {
   return (
-    <AlphaStack gap="5" fullWidth>
+    <Stack gap="5" fullWidth>
       <Text as="h1" variant="headingXs">
         Base
       </Text>
@@ -26,7 +26,7 @@ function DividerWithBorderStylesExample() {
         Transparent
       </Text>
       <Divider borderStyle="transparent" />
-    </AlphaStack>
+    </Stack>
   );
 }
 
