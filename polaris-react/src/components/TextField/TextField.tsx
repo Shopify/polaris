@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
+import {useToggle} from '../../utilities/use-toggle';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -118,6 +119,8 @@ interface NonMutuallyExclusiveProps {
   role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
+  /** Hide stepper by default, reveal on hover and focus */
+  stepperHidden?: boolean;
   /** Enable automatic completion by the browser. Set to "off" when you do not want the browser to fill in info */
   autoComplete: string;
   /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
@@ -201,6 +204,7 @@ export function TextField({
   id: idProp,
   role,
   step,
+  stepperHidden,
   autoComplete,
   max,
   maxLength,
@@ -230,6 +234,11 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
+  const {
+    value: mouseEnter,
+    setTrue: handleMouseEnter,
+    setFalse: handleMouseLeave,
+  } = useToggle(false);
 
   const id = useUniqueId('TextField', idProp);
 
@@ -267,6 +276,7 @@ export function TextField({
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
+  const spinnerHidden = stepperHidden && !focus && !mouseEnter;
 
   const className = classNames(
     styles.TextField,
@@ -400,7 +410,11 @@ export function TextField({
   );
 
   const spinnerMarkup =
-    type === 'number' && step !== 0 && !disabled && !readOnly ? (
+    type === 'number' &&
+    step !== 0 &&
+    !disabled &&
+    !readOnly &&
+    !spinnerHidden ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
@@ -517,6 +531,8 @@ export function TextField({
     onKeyPress: handleKeyPress,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
+    onMouseEnter: stepperHidden ? handleMouseEnter : undefined,
+    onMouseLeave: stepperHidden ? handleMouseLeave : undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (
