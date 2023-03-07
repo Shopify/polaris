@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaStack, Divider, Text} from '@shopify/polaris';
+import {Stack, Divider, Text} from '@shopify/polaris';
 
 export default {
   component: Divider,
@@ -12,7 +12,7 @@ export function Default() {
 
 export function WithBorderStyles() {
   return (
-    <AlphaStack gap="5" fullWidth>
+    <Stack gap="5" fullWidth>
       <Text as="h1" variant="headingXs">
         Base
       </Text>
@@ -33,6 +33,6 @@ export function WithBorderStyles() {
         Transparent
       </Text>
       <Divider borderStyle="transparent" />
-    </AlphaStack>
+    </Stack>
   );
 }

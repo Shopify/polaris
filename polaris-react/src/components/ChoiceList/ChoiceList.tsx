@@ -4,7 +4,7 @@ import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
-import {AlphaStack} from '../AlphaStack';
+import {Stack} from '../Stack';
 import {Box} from '../Box';
 import {Bleed} from '../Bleed';
 
@@ -132,7 +132,7 @@ export function ChoiceList({
   );
 
   return (
-    <AlphaStack
+    <Stack
       as="fieldset"
       gap={{xs: '4', md: '0'}}
       fullWidth
@@ -140,11 +140,11 @@ export function ChoiceList({
       id={finalName}
     >
       {titleMarkup}
-      <AlphaStack as="ul" gap={{xs: '4', md: '0'}} fullWidth>
+      <Stack as="ul" gap={{xs: '4', md: '0'}} fullWidth>
         {choicesMarkup}
-      </AlphaStack>
+      </Stack>
       {errorMarkup}
-    </AlphaStack>
+    </Stack>
   );
 }
 

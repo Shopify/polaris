@@ -7,7 +7,7 @@ import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
 import {createAllowMultipleKey} from '../../utils';
-import {AlphaStack} from '../../../AlphaStack';
+import {Stack} from '../../../Stack';
 
 import styles from './FileUpload.scss';
 
@@ -55,18 +55,18 @@ export function FileUpload(props: FileUploadProps) {
   switch (size) {
     case 'large':
       viewMarkup = (
-        <AlphaStack align="center" gap="2">
+        <Stack align="center" gap="2">
           {actionMarkup}
           {actionHintMarkup}
-        </AlphaStack>
+        </Stack>
       );
       break;
     case 'medium':
       viewMarkup = (
-        <AlphaStack align="center" gap="2">
+        <Stack align="center" gap="2">
           {actionMarkup}
           {actionHintMarkup}
-        </AlphaStack>
+        </Stack>
       );
       break;
     case 'small':

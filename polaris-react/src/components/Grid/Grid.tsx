@@ -27,7 +27,7 @@ export interface GridProps {
   gap?: Gap;
   children?: React.ReactNode;
 }
-/** @deprecated Use `Columns` instead or a combination of layout primitives (`Columns`, `Inline`, and `AlphaStack`) */
+/** @deprecated Use `Columns` instead or a combination of layout primitives (`Columns`, `Inline`, and `Stack`) */
 export const Grid: React.FunctionComponent<GridProps> & {
   // eslint-disable-next-line import/no-deprecated
   Cell: typeof Cell;
@@ -54,7 +54,7 @@ export const Grid: React.FunctionComponent<GridProps> & {
     if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
       console.warn(
-        'Deprecation: <Grid /> is deprecated. This component will be removed in a future major version of Polaris. Use <Columns /> instead or a combination of <Columns />, <Inline />, and <AlphaStack />',
+        'Deprecation: <Grid /> is deprecated. This component will be removed in a future major version of Polaris. Use <Columns /> instead or a combination of <Columns />, <Inline />, and <Stack />',
       );
     }
   }, []);
