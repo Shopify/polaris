@@ -547,8 +547,7 @@ export function DetailsPage() {
   // ---- Page markup ----
   const actualPageMarkup = (
     <Page
-      fullWidth
-      breadcrumbs={[{content: 'Products', url: '/products/31'}]}
+      backAction={{content: 'Products', url: '/products/31'}}
       title={title}
       titleMetadata={<Badge status="success">Success badge</Badge>}
       primaryAction={{

@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {classNames} from '../../utilities/css';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
+import {Box} from '../Box';
+import {Divider} from '../Divider';
+import {Inline} from '../Inline';
 
 import {Header} from './components';
 import type {HeaderProps} from './components';
-import styles from './Page.scss';
 
 export interface PageProps extends HeaderProps {
   /** The contents of the page */
@@ -26,12 +27,6 @@ export function Page({
   divider,
   ...rest
 }: PageProps) {
-  const pageClassName = classNames(
-    styles.Page,
-    fullWidth && styles.fullWidth,
-    narrowWidth && styles.narrowWidth,
-  );
-
   const hasHeaderContent =
     (rest.title != null && rest.title !== '') ||
     (rest.subtitle != null && rest.subtitle !== '') ||
@@ -47,17 +42,32 @@ export function Page({
     rest.breadcrumbs != null ||
     rest.backAction != null;
 
-  const contentClassName = classNames(
-    !hasHeaderContent && styles.Content,
-    divider && hasHeaderContent && styles.divider,
-  );
-
   const headerMarkup = hasHeaderContent ? <Header {...rest} /> : null;
-
+  let pageWidth = '62.375rem';
+  if (fullWidth) pageWidth = '100%';
+  if (narrowWidth) pageWidth = '41.375rem';
   return (
-    <div className={pageClassName}>
-      {headerMarkup}
-      <div className={contentClassName}>{children}</div>
-    </div>
+    <Inline align="center">
+      <Box
+        padding={{xs: '0'}}
+        paddingInlineStart={{sm: '6'}}
+        paddingInlineEnd={{sm: '6'}}
+        maxWidth={pageWidth}
+        width="100%"
+      >
+        {headerMarkup}
+        {divider && hasHeaderContent && (
+          <Box paddingBlockEnd="8">
+            <Divider />
+          </Box>
+        )}
+        <Box
+          paddingBlockEnd={!hasHeaderContent ? '2' : undefined}
+          paddingBlockStart={!hasHeaderContent ? {xs: '2', md: '5'} : {}}
+        >
+          {children}
+        </Box>
+      </Box>
+    </Inline>
   );
 }
