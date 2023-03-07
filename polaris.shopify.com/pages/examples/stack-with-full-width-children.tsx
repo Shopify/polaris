@@ -1,39 +1,22 @@
 import React from 'react';
-import {AlphaStack, Text} from '@shopify/polaris';
+import {Stack, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function AlphaStackWithGapExample() {
+function StackWithFullWidthChildrenExample() {
   return (
-    <SpacingBackground width="320px">
-      <AlphaStack gap="5">
-        <Placeholder width="320px" label="Stack child" />
-        <Placeholder width="320px" />
-        <Placeholder width="320px" />
-      </AlphaStack>
-    </SpacingBackground>
+    <Stack gap="4" fullWidth>
+      <Placeholder label="Stack child" childWidth="100%" />
+      <Placeholder />
+      <Placeholder />
+    </Stack>
   );
 }
-
-const SpacingBackground = ({children, width}) => {
-  return (
-    <div
-      style={{
-        background:
-          'repeating-linear-gradient(-45deg, #7B47F1, #7B47F1 1px, #E8D1FA 1px, #E8D1FA 7px)',
-        width: width ?? '100%',
-        height: 'auto',
-      }}
-    >
-      {children}
-    </div>
-  );
-};
 
 const Placeholder = ({
   label = '',
   height = 'auto',
-  width = 'auto',
+  width = '100%',
   childWidth = 'auto',
 }) => {
   return (
@@ -61,4 +44,4 @@ const Placeholder = ({
   );
 };
 
-export default withPolarisExample(AlphaStackWithGapExample);
+export default withPolarisExample(StackWithFullWidthChildrenExample);

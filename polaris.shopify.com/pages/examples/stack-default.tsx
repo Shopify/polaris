@@ -1,22 +1,22 @@
 import React from 'react';
-import {AlphaStack, Text} from '@shopify/polaris';
+import {Stack, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function AlphaStackWithFullWidthChildrenExample() {
+function StackExample() {
   return (
-    <AlphaStack gap="4" fullWidth>
-      <Placeholder label="Stack child" childWidth="100%" />
-      <Placeholder />
-      <Placeholder />
-    </AlphaStack>
+    <Stack>
+      <Placeholder width="320px" label="Stack child" />
+      <Placeholder width="320px" />
+      <Placeholder width="320px" />
+    </Stack>
   );
 }
 
 const Placeholder = ({
   label = '',
   height = 'auto',
-  width = '100%',
+  width = 'auto',
   childWidth = 'auto',
 }) => {
   return (
@@ -44,4 +44,4 @@ const Placeholder = ({
   );
 };
 
-export default withPolarisExample(AlphaStackWithFullWidthChildrenExample);
+export default withPolarisExample(StackExample);

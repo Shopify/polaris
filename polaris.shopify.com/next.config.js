@@ -341,8 +341,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/alpha-stack',
-    destination: '/components/layout-and-structure/alpha-stack',
+    source: '/components/stack',
+    destination: '/components/layout-and-structure/stack',
     permanent: false,
   },
   {
