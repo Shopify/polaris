@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useImperativeHandle,
   forwardRef,
+  NamedExoticComponent,
 } from 'react';
 
 import {debounce} from '../../utilities/debounce';
@@ -53,7 +54,7 @@ export interface ScrollableRef {
   scrollTo: (scrollY: number, options: ScrollToOptions) => void;
 }
 
-const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
+export const Scrollable = forwardRef<ScrollableRef, ScrollableProps>(
   (
     {
       children,
@@ -163,9 +164,12 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       </ScrollableContext.Provider>
     );
   },
-);
+) as NamedExoticComponent<ScrollableProps> & {
+  ScrollTo: typeof ScrollTo;
+  forNode: typeof forNode;
+};
 
-ScrollableComponent.displayName = 'Scrollable';
+Scrollable.displayName = 'Scrollable';
 
 function prefersReducedMotion() {
   try {
@@ -202,14 +206,5 @@ const forNode = (node: HTMLElement): HTMLElement | Document => {
   return closestElement instanceof HTMLElement ? closestElement : document;
 };
 
-type ScrollableType = typeof ScrollableComponent & {
-  ScrollTo: typeof ScrollTo;
-  forNode: typeof forNode;
-};
-
-// @ts-expect-error - expected functions/sub-components are assigned after declaration
-const Scrollable: ScrollableType = ScrollableComponent;
 Scrollable.ScrollTo = ScrollTo;
 Scrollable.forNode = forNode;
-
-export {Scrollable};
