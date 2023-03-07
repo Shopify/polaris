@@ -11,8 +11,8 @@ const genSiteMap = async () => {
 
   server.stdout.pipe(process.stdout);
 
-  console.log('wait 5 seconds');
-  await sleep(10000);
+  console.log('wait 30 seconds');
+  await sleep(30 * 1000);
   console.log('wait done');
 
   const {stdout} = await execa('npx', [
