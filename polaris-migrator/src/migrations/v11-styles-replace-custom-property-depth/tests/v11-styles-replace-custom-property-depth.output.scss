@@ -1,3 +1,17 @@
 .depth {
-  box-shadow: 0 0 0 0 transparent;
+  box-shadow: var(--p-shadow-none);
+  box-shadow: var(--p-shadow-none);
+  box-shadow: var(--p-shadow-xs);
+  box-shadow: var(--p-shadow-none);
+  box-shadow: var(--p-shadow-sm);
+  box-shadow: var(--p-shadow-sm);
+  box-shadow: var(--p-shadow-md);
+  box-shadow: var(--p-shadow-xl);
+  box-shadow: var(--p-shadow-none);
+  box-shadow: var(--p-shadow-2xl);
+  box-shadow: var(--p-shadow-none);
+  box-shadow: var(--p-shadow-inset-md);
+  box-shadow: var(--p-shadow-inset-sm);
+  box-shadow: var(--p-shadow-sm);
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.15);
 }
