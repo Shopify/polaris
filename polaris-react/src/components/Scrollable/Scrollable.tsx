@@ -46,7 +46,7 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export interface ScrollToOptions {
-  behavior?: ScrollBehavior;
+  behavior?: 'instant' | 'smooth' | 'auto';
 }
 
 export interface ScrollableRef {
