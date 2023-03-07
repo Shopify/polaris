@@ -4,6 +4,7 @@
   @include responsive-props('columns', 'gap', 'gap');
 
   // stylelint-disable -- Polaris component custom properties
+  --pc-columns-align-items: initial;
   --pc-columns-grid-template-columns-xs: initial;
   --pc-columns-grid-template-columns-sm: var(
     --pc-columns-grid-template-columns-xs
