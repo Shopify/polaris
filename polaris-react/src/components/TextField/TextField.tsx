@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
-import {useToggle} from '../../utilities/use-toggle';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -234,11 +233,6 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
-  const {
-    value: mouseEnter,
-    setTrue: handleMouseEnter,
-    setFalse: handleMouseLeave,
-  } = useToggle(false);
 
   const id = useUniqueId('TextField', idProp);
 
@@ -276,7 +270,6 @@ export function TextField({
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
-  const spinnerHidden = stepperHidden && !focus && !mouseEnter;
 
   const className = classNames(
     styles.TextField,
@@ -414,7 +407,7 @@ export function TextField({
     step !== 0 &&
     !disabled &&
     !readOnly &&
-    !spinnerHidden ? (
+    !stepperHidden ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
@@ -531,8 +524,6 @@ export function TextField({
     onKeyPress: handleKeyPress,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
-    onMouseEnter: stepperHidden ? handleMouseEnter : undefined,
-    onMouseLeave: stepperHidden ? handleMouseLeave : undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (
