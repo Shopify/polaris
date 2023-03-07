@@ -232,6 +232,13 @@
         "warningMessage": "To provide a better user experience. There should only be a maximum of {maxPromotedActions} promoted actions."
       }
     },
+    "SettingToggle": {
+      "status": {
+        "enabled": "On",
+        "disabled": "Off",
+        "accessibilityLabel": "Setting is {status}"
+      }
+    },
     "SkeletonPage": {
       "loadingLabel": "Page loading"
     },
