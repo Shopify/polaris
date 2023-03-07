@@ -555,7 +555,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   );
 
   const bulkActionsMarkup =
-    isSelectable && selectMode && bulkActions ? (
+    isSelectable && selectMode && (bulkActions || promotedBulkActions) ? (
       <div
         className={bulkActionClassNames}
         style={{
