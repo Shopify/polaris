@@ -37,8 +37,8 @@ type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
 interface NonMutuallyExclusiveProps {
   /** Adjust horizontal alignment of text */
   alignment?: Alignment;
-  /** The element type */
-  as?: Element;
+  /** The element type. Mandatory unless visuallyHidden is present */
+  as?: Element | undefined | null;
   /** Prevent text from overflowing */
   breakWord?: boolean;
   /** Text to display */
@@ -59,10 +59,10 @@ interface NonMutuallyExclusiveProps {
   visuallyHidden?: boolean;
 }
 
-export type TextProps = NonMutuallyExclusiveProps &
+type TextProps = NonMutuallyExclusiveProps &
   (
-    | {visuallyHidden?: boolean; as?: undefined; variant?: undefined}
-    | {visuallyHidden?: undefined; as?: Element; variant?: Variant}
+    | {visuallyHidden: boolean; as?: Element}
+    | {visuallyHidden?: undefined; as: Element}
   );
 
 export const Text = ({
