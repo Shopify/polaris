@@ -50,7 +50,7 @@ export interface ScrollToOptions {
 }
 
 export interface ScrollableRef {
-  scrollTo: (scrollY: number, options: ScrollToOptions) => void;
+  scrollTo: (scrollY: number, options?: ScrollToOptions) => void;
 }
 
 const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
