@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.8.0
+
+### Minor Changes
+
+- [#8572](https://github.com/Shopify/polaris/pull/8572) [`7d1c4f1db`](https://github.com/Shopify/polaris/commit/7d1c4f1db629ad9cfc68f65bd5f704127d10136e) Thanks [@lgriffee](https://github.com/lgriffee)! - Added a new `shadow` token group
+
 ## 6.7.0
 
 ### Minor Changes

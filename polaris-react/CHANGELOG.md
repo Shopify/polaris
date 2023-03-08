@@ -1,5 +1,20 @@
 # Changelog
 
+## 10.35.0
+
+### Minor Changes
+
+- [#8539](https://github.com/Shopify/polaris/pull/8539) [`cb41f719c`](https://github.com/Shopify/polaris/commit/cb41f719c57d181335d9e308db09beb665d011b5) Thanks [@alex-page](https://github.com/alex-page)! - Updated `variant` prop on `Text` component to be optional to better support children with similar styles
+
+* [#8533](https://github.com/Shopify/polaris/pull/8533) [`b39b19782`](https://github.com/Shopify/polaris/commit/b39b19782cd0ea3bedb7e4575c44ad7d5dbc310e) Thanks [@aveline](https://github.com/aveline)! - Updated `Columns` to accept `alignItems` prop
+
+### Patch Changes
+
+- [#8582](https://github.com/Shopify/polaris/pull/8582) [`4fb2bdc57`](https://github.com/Shopify/polaris/commit/4fb2bdc57b2e19eade84829f092861eef8ff4f28) Thanks [@aveline](https://github.com/aveline)! - Removed `fullWidth` prop from `AlphaStack`
+
+- Updated dependencies [[`7d1c4f1db`](https://github.com/Shopify/polaris/commit/7d1c4f1db629ad9cfc68f65bd5f704127d10136e)]:
+  - @shopify/polaris-tokens@6.8.0
+
 ## 10.34.0
 
 ### Minor Changes
