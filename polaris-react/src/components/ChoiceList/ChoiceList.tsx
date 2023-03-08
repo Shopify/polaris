@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useId} from 'react';
 
-import {useUniqueId} from '../../utilities/unique-id';
 import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
@@ -64,7 +63,8 @@ export function ChoiceList({
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
 
-  const name = useUniqueId('ChoiceList', nameProp);
+  const uniqName = useId();
+  const name = nameProp ?? uniqName;
   const finalName = allowMultiple ? `${name}[]` : name;
 
   const titleMarkup = title ? (

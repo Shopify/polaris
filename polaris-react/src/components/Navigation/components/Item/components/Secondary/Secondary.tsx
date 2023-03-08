@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useId} from 'react';
 
-import {useUniqueId} from '../../../../../../utilities/unique-id';
 import {Collapsible} from '../../../../../Collapsible';
 import styles from '../../../../Navigation.scss';
 
@@ -11,7 +10,7 @@ interface SecondaryProps {
 }
 
 export function Secondary({id, children, expanded}: SecondaryProps) {
-  const uid = useUniqueId('SecondaryNavigation');
+  const uid = useId();
   return (
     <Collapsible id={id || uid} open={expanded} transition={false}>
       <ul className={styles.List}>{children}</ul>

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useId} from 'react';
 import {SelectMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, LabelledProps, helpTextID} from '../Labelled';
 import {Box} from '../Box';
 import {Icon} from '../Icon';
@@ -95,7 +94,8 @@ export function Select({
   onBlur,
   requiredIndicator,
 }: SelectProps) {
-  const id = useUniqueId('Select', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
   const labelHidden = labelInline ? true : labelHiddenProp;
 
   const className = classNames(
