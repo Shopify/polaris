@@ -15,8 +15,9 @@ type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];
 type Columns = ResponsiveProp<ColumnsType>;
 type Gap = ResponsiveProp<SpacingSpaceScale>;
+type ColumnsAlignItems = 'start' | 'end' | 'center';
 
-export interface ColumnsProps {
+export interface ColumnsProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** The number of columns to display. Accepts either a single value or an object of values for different screen sizes.
    * @example
@@ -30,9 +31,14 @@ export interface ColumnsProps {
    * gap={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}
    */
   gap?: Gap;
+  /** Vertical alignment of children. If not set, inline elements will stretch to the height of the parent.
+   * @example
+   * alignItems='start'
+   */
+  alignItems?: ColumnsAlignItems;
 }
 
-export function Columns({children, columns, gap}: ColumnsProps) {
+export function Columns({children, columns, gap, alignItems}: ColumnsProps) {
   const style = {
     ...getResponsiveValue(
       'columns',
@@ -40,6 +46,7 @@ export function Columns({children, columns, gap}: ColumnsProps) {
       formatColumns(columns),
     ),
     ...getResponsiveProps('columns', 'gap', 'space', gap),
+    '--pc-columns-align-items': alignItems,
   } as React.CSSProperties;
 
   return (

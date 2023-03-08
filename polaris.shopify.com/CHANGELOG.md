@@ -1,5 +1,16 @@
 # polaris.shopify.com
 
+## 0.38.1
+
+### Patch Changes
+
+- [#8570](https://github.com/Shopify/polaris/pull/8570) [`45ca38d41`](https://github.com/Shopify/polaris/commit/45ca38d411e5d29eee3d0f781ac821339707f013) Thanks [@laurkim](https://github.com/laurkim)! - Added `Legacy` status to component lifecycle page and banner/badge to `LegacyStack` and `LegacyCard`
+
+* [#8573](https://github.com/Shopify/polaris/pull/8573) [`0389fd8b8`](https://github.com/Shopify/polaris/commit/0389fd8b8f3242eeeef7907df7380d5d009c5618) Thanks [@laurkim](https://github.com/laurkim)! - Fixed links to component lifecycle page in alpha component banners
+
+* Updated dependencies [[`336d14545`](https://github.com/Shopify/polaris/commit/336d145453954993f01c60c3b516a733ea8c6aa9), [`8872c0861`](https://github.com/Shopify/polaris/commit/8872c08615d5781f4a9721b22ca3275f55a62ae1), [`7c174e47a`](https://github.com/Shopify/polaris/commit/7c174e47adf5d865cab43f51c14f1f54fa0607c9), [`8a4de8168`](https://github.com/Shopify/polaris/commit/8a4de8168ae4a80e3b11e909b64bef72b5af93b7), [`646fba23f`](https://github.com/Shopify/polaris/commit/646fba23f603d09cb96de1bd7975111dd8ec06a3)]:
+  - @shopify/polaris@10.34.0
+
 ## 0.38.0
 
 ### Minor Changes

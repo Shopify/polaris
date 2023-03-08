@@ -9,10 +9,10 @@ function TextExample() {
         Shopify POS is the easiest way to sell your products in person.
         Available for iPad, iPhone, and Android.
       </Text>
-      <Text variant="bodyMd" as="p">
+      <p>
         Shopify POS is the easiest way to sell your products in person.
         Available for iPad, iPhone, and Android.
-      </Text>
+      </p>
       <Text variant="bodySm" as="p">
         Shopify POS is the easiest way to sell your products in person.
         Available for iPad, iPhone, and Android.

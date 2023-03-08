@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {Text} from '../Text';
 
 import styles from './Label.scss';
 
@@ -33,9 +32,7 @@ export function Label({children, id, hidden, requiredIndicator}: LabelProps) {
           requiredIndicator && styles.RequiredIndicator,
         )}
       >
-        <Text as="span" variant="bodyMd">
-          {children}
-        </Text>
+        {children}
       </label>
     </div>
   );

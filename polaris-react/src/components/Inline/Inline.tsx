@@ -17,7 +17,7 @@ type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface InlineProps {
+export interface InlineProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** Horizontal alignment of children */
   align?: Align;

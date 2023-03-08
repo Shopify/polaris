@@ -451,7 +451,7 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <Text as="span" variant="bodySm" visuallyHidden>
+    <Text as="span" visuallyHidden>
       <a
         href="#SkipToContent"
         id="SkipToContentTarget"
