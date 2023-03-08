@@ -20,7 +20,7 @@ export const metadata = createMetadata({
   font: tokensToRems(font),
   legacy: tokensToRems(legacy),
   motion,
-  shadow,
+  shadow: tokensToRems(shadow),
   shape: tokensToRems(shape),
   spacing: tokensToRems(spacing),
   zIndex,
