@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+import type {TextFieldProps} from '../../..';
 import {Connected} from '../../Connected';
 import {InlineError} from '../../InlineError';
 import {Labelled} from '../../Labelled';
@@ -785,8 +786,8 @@ describe('<TextField />', () => {
             id="MyTextField"
             label="TextField"
             type="number"
-            onChange={spy}
             autoComplete="off"
+            onChange={spy}
           />,
         );
         element
@@ -1097,13 +1098,451 @@ describe('<TextField />', () => {
           const spy = jest.fn();
           const element = mountWithApp(
             <TextField
-              id="MyTextField"
               label="TextField"
               type="number"
               value="3"
               onChange={spy}
               autoComplete="off"
             />,
+          );
+
+          element
+            .findAll('div', {role: 'button'})[1]
+            .trigger('onMouseDown', {button: 0});
+
+          documentEvent.mouseup();
+
+          jest.runOnlyPendingTimers();
+          expect(spy).not.toHaveBeenCalled();
+        });
+      });
+    });
+
+    describe('integer', () => {
+      const defaultIntegerProps: TextFieldProps = {
+        id: 'MyIntegerTextField',
+        label: 'IntegerTextField',
+        type: 'integer',
+        autoComplete: 'off',
+        value: '3',
+        onChange: noop,
+      };
+
+      it('returns an input with type="text', () => {
+        const element = mountWithApp(<TextField {...defaultIntegerProps} />);
+
+        expect(element).toContainReactComponent('input', {
+          type: 'text',
+        });
+      });
+
+      it('rounds the step value to the nearest integer', () => {
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} step={1.5} />,
+        );
+
+        expect(element).toContainReactComponent('input', {
+          step: 2,
+        });
+      });
+
+      it('sets a default integer inputPattern if no pattern is passed', () => {
+        const element = mountWithApp(<TextField {...defaultIntegerProps} />);
+
+        expect(element).toContainReactComponent('input', {
+          pattern: '^[-]?[0-9]*',
+        });
+      });
+
+      it('uses the passed inputPattern if one is passed', () => {
+        const pattern = '[0-9]*';
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} pattern={pattern} />,
+        );
+
+        expect(element).toContainReactComponent('input', {
+          pattern,
+        });
+      });
+
+      it('sets the inputMode to numeric by default no inputMode is passed', () => {
+        const element = mountWithApp(<TextField {...defaultIntegerProps} />);
+
+        expect(element).toContainReactComponent('input', {
+          inputMode: 'numeric',
+        });
+      });
+
+      it('uses the passed inputMode if one is passed', () => {
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} inputMode="decimal" />,
+        );
+
+        expect(element).toContainReactComponent('input', {
+          inputMode: 'decimal',
+        });
+      });
+
+      it('calls onChange if the value is a valid integer', () => {
+        const onChangeSpy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} onChange={onChangeSpy} />,
+        );
+
+        element.find('input')!.trigger('onChange', {
+          currentTarget: {
+            value: '4',
+          },
+        });
+
+        expect(onChangeSpy).toHaveBeenCalledWith('4', 'MyIntegerTextField');
+      });
+
+      it('calls onChange if the value is a minus sign', () => {
+        const onChangeSpy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} onChange={onChangeSpy} />,
+        );
+
+        element.find('input')!.trigger('onChange', {
+          currentTarget: {
+            value: '-',
+          },
+        });
+
+        expect(onChangeSpy).toHaveBeenCalledWith('-', 'MyIntegerTextField');
+      });
+
+      it('calls onChange with 0 if -0 is passed as the value', () => {
+        const onChangeSpy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} onChange={onChangeSpy} />,
+        );
+
+        element.find('input')!.trigger('onChange', {
+          currentTarget: {
+            value: '-0',
+          },
+        });
+
+        expect(onChangeSpy).toHaveBeenCalledWith('0', 'MyIntegerTextField');
+      });
+
+      it('calls onChange with 0 if a value of multiple zeros are passed', () => {
+        const onChangeSpy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} onChange={onChangeSpy} />,
+        );
+
+        element.find('input')!.trigger('onChange', {
+          currentTarget: {
+            value: '000000000',
+          },
+        });
+
+        expect(onChangeSpy).toHaveBeenCalledWith('0', 'MyIntegerTextField');
+      });
+
+      it('does not call onChange if the value is not a valid integer', () => {
+        const onChangeSpy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} onChange={onChangeSpy} />,
+        );
+
+        element.find('input')!.trigger('onChange', {
+          currentTarget: {
+            value: 'string',
+          },
+        });
+
+        expect(onChangeSpy).not.toHaveBeenCalledWith();
+      });
+
+      it('adds an increment button that increases the value', () => {
+        const onChangeSpy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} onChange={onChangeSpy} />,
+        );
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+        expect(onChangeSpy).toHaveBeenCalledWith('4', 'MyIntegerTextField');
+      });
+
+      it('adds a decrement button that increases the value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyIntegerTextField"
+            label="IntegerTextField"
+            type="integer"
+            value="3"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenCalledWith('2', 'MyIntegerTextField');
+      });
+
+      it('does not call the onChange if the value is not valid', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            label="IntegerTextField"
+            type="integer"
+            value="not a number"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+
+        expect(spy).not.toHaveBeenCalled();
+      });
+
+      it('handles incrementing from no value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            {...defaultIntegerProps}
+            value={undefined}
+            onChange={spy}
+          />,
+        );
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenCalledWith('1', 'MyIntegerTextField');
+      });
+
+      it('passes the step prop to the input', () => {
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} step={6} />,
+        );
+
+        expect(element).toContainReactComponent('input', {
+          step: 6,
+        });
+      });
+
+      it('passes the a rounded step prop to the input', () => {
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} step={6.4} />,
+        );
+
+        expect(element).toContainReactComponent('input', {
+          step: 6,
+        });
+      });
+
+      it('uses the step prop when incrementing', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            {...defaultIntegerProps}
+            value="1"
+            step={1}
+            onChange={spy}
+          />,
+        );
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+        expect(spy).toHaveBeenCalledWith('2', 'MyIntegerTextField');
+      });
+
+      it('respects a min value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            {...defaultIntegerProps}
+            min={2}
+            value="2"
+            onChange={spy}
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyIntegerTextField');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('3', 'MyIntegerTextField');
+      });
+
+      it('respects a max value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            {...defaultIntegerProps}
+            onChange={spy}
+            value="2"
+            max={2}
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyIntegerTextField');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('1', 'MyIntegerTextField');
+      });
+
+      it('brings an invalid value up to the min', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            {...defaultIntegerProps}
+            value="-1"
+            min={2}
+            onChange={spy}
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyIntegerTextField');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyIntegerTextField');
+      });
+
+      it('brings an invalid value down to the max', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} max={2} onChange={spy} />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyIntegerTextField');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyIntegerTextField');
+      });
+
+      it('removes increment and decrement buttons when disabled', () => {
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} disabled />,
+        );
+        expect(element).not.toContainReactComponent('[role="button"]');
+      });
+
+      it('removes increment and decrement buttons when readOnly', () => {
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} readOnly />,
+        );
+        expect(element).not.toContainReactComponent(Spinner);
+      });
+
+      it('removes spinner buttons when step is 0', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} step={0} onChange={spy} />,
+        );
+        expect(element).not.toContainReactComponent(Spinner);
+      });
+
+      it('decrements on mouse down', () => {
+        jest.useFakeTimers();
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} onChange={spy} />,
+        );
+        element
+          .findAll('div', {role: 'button'})[1]
+          .trigger('onMouseDown', {button: 0});
+
+        jest.runOnlyPendingTimers();
+        expect(spy).toHaveBeenCalledWith('2', 'MyIntegerTextField');
+      });
+
+      it('stops decrementing on mouse up', () => {
+        jest.useFakeTimers();
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField {...defaultIntegerProps} onChange={spy} />,
+        );
+
+        const buttonDiv = element.findAll('div', {role: 'button'})[1];
+
+        buttonDiv.trigger('onMouseDown', {button: 0});
+        buttonDiv.trigger('onMouseUp');
+
+        jest.runOnlyPendingTimers();
+        expect(spy).not.toHaveBeenCalled();
+      });
+
+      describe('document events', () => {
+        type EventCallback = (mockEventData?: {[key: string]: any}) => void;
+
+        const documentEvent: {[eventType: string]: EventCallback} = {};
+
+        beforeAll(() => {
+          jest
+            .spyOn(document, 'addEventListener')
+            .mockImplementation(
+              (eventType: string, callback: EventCallback) => {
+                documentEvent[eventType] = callback;
+              },
+            );
+        });
+
+        afterAll(() => {
+          (document.addEventListener as jest.Mock).mockRestore();
+        });
+
+        it('stops decrementing on mouse up anywhere in document', () => {
+          jest.useFakeTimers();
+          const spy = jest.fn();
+          const element = mountWithApp(
+            <TextField {...defaultIntegerProps} onChange={spy} />,
           );
 
           element
