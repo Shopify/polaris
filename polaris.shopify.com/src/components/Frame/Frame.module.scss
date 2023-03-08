@@ -71,6 +71,10 @@ $breakpointNav: $breakpointTablet;
       opacity: 0.25;
       transition: all 0.125s ease;
 
+      @include dark-mode {
+        filter: invert(1);
+      }
+
       &:hover {
         opacity: 1;
       }
