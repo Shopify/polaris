@@ -485,7 +485,8 @@ export function TextField({
     }
   };
 
-  const inputPattern = pattern ?? (type === 'integer' ? '[0-9]*' : pattern);
+  const inputPattern =
+    pattern ?? (type === 'integer' ? '^[-]?[0-9]*' : pattern);
 
   const input = createElement(multiline ? 'textarea' : 'input', {
     name,
@@ -579,7 +580,7 @@ export function TextField({
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const {value} = event.currentTarget;
-    const integerSpec = /^[-0]?[0-9]*$/;
+    const integerSpec = /^[-]?[0-9]*$/;
 
     if (onChange) {
       if (
