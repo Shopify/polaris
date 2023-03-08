@@ -31,7 +31,7 @@ examples:
   - fileName: box-with-shadow.tsx
     title: Shadow
     description: >-
-      Shadow can be applied using the Shadow token. The base is [--p-shadow-base](https://polaris.shopify.com/tokens/depth).
+      Shadow can be applied using the Shadow token. The base is [--p-shadow-md](https://polaris.shopify.com/tokens/shadow).
 ---
 
 ## Related components
