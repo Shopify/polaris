@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {ButtonGroup} from '../../ButtonGroup';
-import {Stack} from '../../Stack';
+import {LegacyStack} from '../../LegacyStack';
 import {buttonsFrom} from '../../Button';
 import {PageActions} from '../PageActions';
 
@@ -12,15 +12,15 @@ jest.mock('../../Button', () => ({
 }));
 
 describe('<PageActions />', () => {
-  describe('<Stack />', () => {
+  describe('<LegacyStack />', () => {
     it('renders a stack component', () => {
       const pageActions = mountWithApp(<PageActions />);
-      expect(pageActions).toContainReactComponentTimes(Stack, 1);
+      expect(pageActions).toContainReactComponentTimes(LegacyStack, 1);
     });
 
     it('passes spacing tight to Stack', () => {
       const pageActions = mountWithApp(<PageActions />);
-      const stack = pageActions.find(Stack);
+      const stack = pageActions.find(LegacyStack);
       expect(stack).toHaveReactProps({
         spacing: 'tight',
       });

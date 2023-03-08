@@ -107,7 +107,7 @@ export function SearchField({
 
   return (
     <div className={className} onFocus={handleFocus} onBlur={handleBlur}>
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <Text as="span" visuallyHidden>
         <label htmlFor={searchId}>
           {i18n.translate('Polaris.TopBar.SearchField.search')}
         </label>

@@ -43,18 +43,18 @@ function StickyLastCellIndexTableExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -77,12 +77,7 @@ function StickyLastCellIndexTableExample() {
           {
             id: 'order-count',
             title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
+              <Text as="span" alignment="end">
                 Order count
               </Text>
             ),
@@ -91,12 +86,7 @@ function StickyLastCellIndexTableExample() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
+              <Text as="span" alignment="end">
                 Amount spent
               </Text>
             ),

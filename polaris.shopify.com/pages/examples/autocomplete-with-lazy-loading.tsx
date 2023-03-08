@@ -1,4 +1,4 @@
-import {Autocomplete, Tag, Stack} from '@shopify/polaris';
+import {Autocomplete, Tag, LegacyStack} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -96,11 +96,11 @@ function AutoCompleteLazyLoadExample() {
     : null;
   const optionList = options.slice(0, visibleOptionIndex);
   const selectedTagMarkup = hasSelectedOptions ? (
-    <Stack spacing="extraTight">{tagsMarkup}</Stack>
+    <LegacyStack spacing="extraTight">{tagsMarkup}</LegacyStack>
   ) : null;
 
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       {selectedTagMarkup}
       <Autocomplete
         allowMultiple
@@ -113,7 +113,7 @@ function AutoCompleteLazyLoadExample() {
         onLoadMoreResults={handleLoadMoreResults}
         willLoadMoreResults={willLoadMoreResults}
       />
-    </Stack>
+    </LegacyStack>
   );
 
   function titleCase(string) {

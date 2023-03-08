@@ -49,7 +49,7 @@ export function Default() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -157,7 +157,7 @@ export function WithSelectionAndNoBulkActions() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -238,7 +238,7 @@ export function WithBulkActions() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -315,7 +315,7 @@ export function WithBulkActionsAndManyItems() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -397,7 +397,7 @@ export function WithLoadingState() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -438,7 +438,7 @@ export function WithTotalCount() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -484,7 +484,7 @@ export function WithHeaderContent() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -552,7 +552,7 @@ export function WithSorting() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -606,7 +606,7 @@ export function WithAlternateTool() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -711,7 +711,7 @@ export function WithFiltering() {
     return (
       <ResourceItem id={id} url={url} media={media}>
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -824,7 +824,7 @@ export function WithACustomEmptySearchResultState() {
     return (
       <ResourceItem id={id} url={url} media={media}>
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -894,7 +894,7 @@ export function WithItemShortcutActions() {
               shortcutActions={shortcutActions}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -951,7 +951,7 @@ export function WithPersistentItemShortcutActions() {
               persistActions
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -1061,7 +1061,7 @@ export function WithMultiselect() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -1222,7 +1222,7 @@ export function WithAllOfItsElements() {
         persistActions
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>

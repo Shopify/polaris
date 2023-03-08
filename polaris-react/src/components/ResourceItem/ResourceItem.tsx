@@ -151,7 +151,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       persistActions = false,
       accessibilityLabel,
       name,
-      context: {selectable, selectMode, loading, resourceName},
+      context: {selectable, selectMode, hasBulkActions, loading, resourceName},
       i18n,
       verticalAlignment,
       dataHref,
@@ -225,6 +225,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     const listItemClassName = classNames(
       styles.ListItem,
       focused && !focusedInner && styles.focused,
+      hasBulkActions && styles.hasBulkActions,
     );
 
     let actionsMarkup: React.ReactNode | null = null;

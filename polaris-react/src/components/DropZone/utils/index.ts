@@ -1,4 +1,4 @@
-type DropZoneEvent = Event | React.ChangeEvent<HTMLInputElement>;
+export type DropZoneEvent = DragEvent | React.ChangeEvent<HTMLInputElement>;
 
 const dragEvents = ['dragover', 'dragenter', 'drop'];
 

@@ -187,7 +187,7 @@ export function WithAResourceList() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                <Text as="h3" fontWeight="bold">
                   {name}
                 </Text>
                 <div>{location}</div>
@@ -498,7 +498,7 @@ export function WithChildrenContent() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                <Text as="h3" fontWeight="bold">
                   {name}
                 </Text>
                 <div>{location}</div>
@@ -625,7 +625,7 @@ export function Disabled() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                <Text as="h3" fontWeight="bold">
                   {name}
                 </Text>
                 <div>{location}</div>
@@ -771,7 +771,7 @@ export function SomeDisabled() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                <Text as="h3" fontWeight="bold">
                   {name}
                 </Text>
                 <div>{location}</div>
@@ -899,7 +899,7 @@ export function WithoutClearButton() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                <Text as="h3" fontWeight="bold">
                   {name}
                 </Text>
                 <div>{location}</div>
@@ -1092,7 +1092,7 @@ export function WithHelpText() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                <Text as="h3" fontWeight="bold">
                   {name}
                 </Text>
                 <div>{location}</div>
@@ -1288,7 +1288,7 @@ export function WithQueryFieldHidden() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                <Text as="h3" fontWeight="bold">
                   {name}
                 </Text>
                 <div>{location}</div>
@@ -1484,7 +1484,7 @@ export function WithQueryFieldDisabled() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                <Text as="h3" fontWeight="bold">
                   {name}
                 </Text>
                 <div>{location}</div>

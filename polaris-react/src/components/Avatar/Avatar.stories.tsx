@@ -1,6 +1,12 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {ActionList, Avatar, Button, Popover, Stack} from '@shopify/polaris';
+import {
+  ActionList,
+  Avatar,
+  Button,
+  Popover,
+  LegacyStack,
+} from '@shopify/polaris';
 
 export default {
   component: Avatar,
@@ -57,77 +63,77 @@ export function Square() {
 
 export function SquareWithInitials() {
   return (
-    <Stack vertical>
-      <Stack.Item>
+    <LegacyStack vertical>
+      <LegacyStack.Item>
         <Avatar
           shape="square"
           initials="OE"
           name="Oluwayemisi Eun-Jung"
           size="extraSmall"
         />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar
           shape="square"
           initials="OE"
           name="Oluwayemisi Eun-Jung"
           size="small"
         />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar
           shape="square"
           initials="OE"
           name="Oluwayemisi Eun-Jung"
           size="medium"
         />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar
           shape="square"
           initials="OE"
           name="Oluwayemisi Eun-Jung"
           size="large"
         />
-      </Stack.Item>
-    </Stack>
+      </LegacyStack.Item>
+    </LegacyStack>
   );
 }
 
 export function Sizes() {
   return (
-    <Stack vertical>
-      <Stack.Item>
+    <LegacyStack vertical>
+      <LegacyStack.Item>
         <Avatar name="Farrah" size="extraSmall" />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar name="Farrah" size="small" />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar name="Farrah" size="medium" />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar name="Farrah" size="large" />
-      </Stack.Item>
-    </Stack>
+      </LegacyStack.Item>
+    </LegacyStack>
   );
 }
 
 export function SizesWithInitials() {
   return (
-    <Stack vertical>
-      <Stack.Item>
+    <LegacyStack vertical>
+      <LegacyStack.Item>
         <Avatar initials="OE" name="Oluwayemisi Eun-Jung" size="extraSmall" />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar initials="OE" name="Oluwayemisi Eun-Jung" size="small" />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar initials="OE" name="Oluwayemisi Eun-Jung" size="medium" />
-      </Stack.Item>
-      <Stack.Item>
+      </LegacyStack.Item>
+      <LegacyStack.Item>
         <Avatar initials="OE" name="Oluwayemisi Eun-Jung" size="large" />
-      </Stack.Item>
-    </Stack>
+      </LegacyStack.Item>
+    </LegacyStack>
   );
 }

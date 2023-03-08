@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Icon, Stack, Tag} from '@shopify/polaris';
+import {Icon, LegacyStack, Tag} from '@shopify/polaris';
 import {WandMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -35,7 +35,7 @@ export function Removable() {
     </Tag>
   ));
 
-  return <Stack spacing="tight">{tagMarkup}</Stack>;
+  return <LegacyStack spacing="tight">{tagMarkup}</LegacyStack>;
 }
 
 export function Clickable() {
@@ -49,10 +49,10 @@ export function WithLink() {
 export function WithCustomContent() {
   return (
     <Tag url="#">
-      <Stack spacing="extraTight">
+      <LegacyStack spacing="extraTight">
         <Icon source={WandMinor} />
         <span>Wholesale</span>
-      </Stack>
+      </LegacyStack>
     </Tag>
   );
 }
@@ -80,5 +80,5 @@ export function RemovableWithLink() {
     </Tag>
   ));
 
-  return <Stack spacing="tight">{tagMarkup}</Stack>;
+  return <LegacyStack spacing="tight">{tagMarkup}</LegacyStack>;
 }

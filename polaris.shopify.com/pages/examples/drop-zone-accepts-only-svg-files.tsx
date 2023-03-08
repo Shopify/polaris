@@ -1,4 +1,11 @@
-import {Stack, Thumbnail, Banner, List, DropZone, Text} from '@shopify/polaris';
+import {
+  LegacyStack,
+  Thumbnail,
+  Banner,
+  List,
+  DropZone,
+  Text,
+} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -16,9 +23,9 @@ function DropZoneAcceptingSVGFilesExample() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -30,9 +37,9 @@ function DropZoneAcceptingSVGFilesExample() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   const errorMessage = hasError && (
@@ -51,7 +58,7 @@ function DropZoneAcceptingSVGFilesExample() {
   );
 
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       {errorMessage}
       <DropZone
         accept="image/svg+xml"
@@ -61,7 +68,7 @@ function DropZoneAcceptingSVGFilesExample() {
       >
         {uploadedFiles}
       </DropZone>
-    </Stack>
+    </LegacyStack>
   );
 }
 

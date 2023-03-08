@@ -6,7 +6,7 @@ function TooltipExample() {
   return (
     <div style={{padding: '75px 0'}}>
       <Tooltip active content="This order has shipping labels.">
-        <Text variant="bodyMd" fontWeight="bold" as="span">
+        <Text fontWeight="bold" as="span">
           Order #1001
         </Text>
       </Tooltip>

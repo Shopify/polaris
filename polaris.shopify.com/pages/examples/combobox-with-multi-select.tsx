@@ -1,5 +1,5 @@
 import {
-  Stack,
+  LegacyStack,
   Tag,
   Listbox,
   Combobox,
@@ -119,7 +119,7 @@ function MultiAutoComboboxExample() {
         ) : null}
       </Combobox>
       <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
+        <LegacyStack>{tagsMarkup}</LegacyStack>
       </TextContainer>
     </div>
   );

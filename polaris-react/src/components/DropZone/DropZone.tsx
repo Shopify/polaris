@@ -25,6 +25,7 @@ import {useEventListener} from '../../utilities/use-event-listener';
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
 import {
+  DropZoneEvent,
   fileAccepted,
   getDataTransferFiles,
   defaultAllowMultiple,
@@ -33,8 +34,6 @@ import {
 import styles from './DropZone.scss';
 
 export type DropZoneFileType = 'file' | 'image' | 'video';
-
-type DropZoneEvent = Event | React.ChangeEvent<HTMLInputElement>;
 
 export interface DropZoneProps {
   /** Label for the file input */
@@ -227,7 +226,9 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       onDropAccepted && acceptedFiles.length && onDropAccepted(acceptedFiles);
       onDropRejected && rejectedFiles.length && onDropRejected(rejectedFiles);
 
-      (event.target as HTMLInputElement).value = '';
+      if (!(event.target && 'value' in event.target)) return;
+
+      event.target.value = '';
     },
     [disabled, getValidatedFiles, onDrop, onDropAccepted, onDropRejected],
   );
@@ -286,18 +287,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     [dropOnPage, disabled, onDragLeave],
   );
 
-  const doc = typeof document === 'undefined' ? null : document;
-  const dropNode = dropOnPage ? doc : node.current;
+  const dropNode = dropOnPage && !isServer ? document : node.current;
 
   useEventListener('drop', handleDrop, dropNode);
   useEventListener('dragover', handleDragOver, dropNode);
   useEventListener('dragenter', handleDragEnter, dropNode);
   useEventListener('dragleave', handleDragLeave, dropNode);
-  useEventListener(
-    'resize',
-    adjustSize,
-    typeof window === 'undefined' ? null : window,
-  );
+  useEventListener('resize', adjustSize, isServer ? null : window);
 
   useComponentDidMount(() => {
     adjustSize();
@@ -438,7 +434,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   );
 };
 
-function stopEvent(event: DropZoneEvent | React.DragEvent) {
+function stopEvent(event: DropZoneEvent | React.DragEvent<HTMLDivElement>) {
   event.preventDefault();
   event.stopPropagation();
 }

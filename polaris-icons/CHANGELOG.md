@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.3
+
+### Patch Changes
+
+- [#8505](https://github.com/Shopify/polaris/pull/8505) [`886da4fc3`](https://github.com/Shopify/polaris/commit/886da4fc3db468989dff46c7d0938661fb5a5fcb) Thanks [@lfroms](https://github.com/lfroms)! - Converted percentage fill-opacity to float in two icons for better compatibility
+
 ## 6.11.2
 
 ### Patch Changes
