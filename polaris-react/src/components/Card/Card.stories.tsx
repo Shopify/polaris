@@ -13,9 +13,7 @@ export function Default() {
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
-        <Text variant="bodyMd" as="p">
-          View a summary of your online store’s performance.
-        </Text>
+        <p>View a summary of your online store’s performance.</p>
       </Stack>
     </Card>
   );
@@ -28,9 +26,7 @@ export function WithBackgroundSubdued() {
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
-        <Text variant="bodyMd" as="p">
-          View a summary of your online store’s performance.
-        </Text>
+        <p>View a summary of your online store’s performance.</p>
       </Stack>
     </Card>
   );
@@ -43,9 +39,7 @@ export function WithBorderRadiusRoundedAbove() {
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
-        <Text variant="bodyMd" as="p">
-          View a summary of your online store’s performance.
-        </Text>
+        <p>View a summary of your online store’s performance.</p>
       </Stack>
     </Card>
   );
@@ -58,9 +52,7 @@ export function WithResponsivePadding() {
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
-        <Text variant="bodyMd" as="p">
-          View a summary of your online store’s performance.
-        </Text>
+        <p>View a summary of your online store’s performance.</p>
       </Stack>
     </Card>
   );
