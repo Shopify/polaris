@@ -11,7 +11,7 @@ import styles from './Bleed.scss';
 
 type Spacing = ResponsiveProp<SpacingSpaceScale>;
 
-export interface BleedProps {
+export interface BleedProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** Negative horizontal space around children */
   marginInline?: Spacing;

@@ -22,14 +22,8 @@ export interface AlphaStackProps extends React.AriaAttributes {
    * @default 'div'
    */
   as?: Element;
-  /** Horizontal alignment of children
-   * @default 'start'
-   */
+  /** Horizontal alignment of children */
   align?: Align;
-  /** Toggle children to be full width
-   * @default false
-   */
-  fullWidth?: boolean;
   /** The spacing between children */
   gap?: Gap;
   /** HTML id attribute */
@@ -43,8 +37,7 @@ export interface AlphaStackProps extends React.AriaAttributes {
 export const AlphaStack = ({
   as = 'div',
   children,
-  align = 'start',
-  fullWidth = false,
+  align,
   gap,
   id,
   reverseOrder = false,
@@ -52,7 +45,6 @@ export const AlphaStack = ({
 }: AlphaStackProps) => {
   const className = classNames(
     styles.AlphaStack,
-    fullWidth && styles.fullWidth,
     as === 'ul' && styles.listReset,
     as === 'fieldset' && styles.fieldsetReset,
   );

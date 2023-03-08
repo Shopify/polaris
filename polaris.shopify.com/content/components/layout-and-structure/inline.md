@@ -6,7 +6,7 @@ keywords:
   - layout
 status:
   value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [Component lifecycle](/getting-started/components-lifecycle).
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: inline-default.tsx
     title: Default
@@ -32,4 +32,4 @@ examples:
 
 ## Related components
 
-- To display elements vertically, [use the AlphaStack component](https://polaris.shopify.com/components/alphastack)
+- To display elements vertically, [use the AlphaStack component](https://polaris.shopify.com/components/layout-and-structure/alpha-stack)

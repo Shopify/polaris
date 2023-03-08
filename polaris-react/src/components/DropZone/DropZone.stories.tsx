@@ -123,7 +123,7 @@ export function WithImageFileUpload() {
   );
 
   return (
-    <AlphaStack gap="4" fullWidth>
+    <AlphaStack gap="4">
       {errorMessage}
       <DropZone accept="image/*" type="image" onDrop={handleDrop}>
         {uploadedFiles}
@@ -284,7 +284,7 @@ export function AcceptsOnlySVGFiles() {
   );
 
   return (
-    <AlphaStack gap="4" fullWidth>
+    <AlphaStack gap="4">
       {errorMessage}
       <DropZone
         accept="image/svg+xml"

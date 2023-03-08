@@ -8,7 +8,6 @@ import styles from './PatternsExample.module.scss';
 import GrowFrame from '../GrowFrame';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
-import InlinePill from '../InlinePill';
 import {PatternExample} from '../../types';
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
@@ -22,8 +21,6 @@ const PlayroomButton = ({
 }) => {
   const [encodedUrl, setEncodedUrl] = useState('');
   useEffect(() => {
-    // Casting because the typescript function(str: string) overload is missing
-    const dedentedCode = endent(code as unknown as TemplateStringsArray);
     setEncodedUrl(
       createUrl({
         baseUrl: '/sandbox/',
@@ -34,7 +31,7 @@ const PlayroomButton = ({
         } */}
           {/* This example is for guidance purposes. Copying it will come with caveats. */}
           ${/* intentional blank line */ ''}
-          ${dedentedCode}
+          ${code}
         `,
         // TODO: Is this correct?
         themes: ['locale:en'],
@@ -108,85 +105,64 @@ const PatternsExample = ({
       return match;
     });
   };
-  const [previewUrl, setPreviewUrl] = useState('');
-  useEffect(() => {
-    function constructLivePreview(code: string, context?: string) {
-      const livePreviewCode = context
-        ? context.replace('____CODE____', code)
-        : code;
-      return `/playroom/preview/index.html${createUrl({
-        code: formatCodeSnippet(livePreviewCode),
-        themes: ['locale:en'],
-        paramType: 'search',
-      })}`;
-    }
-    setPreviewUrl(constructLivePreview(example.code, example.context));
-  }, [example.code, example.context]);
 
-  const {code, snippetCode} = example;
+  const formattedCode = formatCodeSnippet(example.code);
+
+  const sandboxCode = example.sandboxContext
+    ? formatCodeSnippet(
+        example.sandboxContext
+          .replace(/\\\#/g, "")
+          .replace(/____CODE____;?/, formattedCode)
+      )
+    : formattedCode;
+
+  const previewCode = example.previewContext
+    ? formatCodeSnippet(
+        example.previewContext
+          .replace(/\\\#/g, "")
+          .replace(/____CODE____;?/, formattedCode)
+      )
+    : formattedCode;
+
+  const previewUrl = `/playroom/preview/index.html${createUrl({
+    code: previewCode,
+    themes: ["locale:en"],
+    paramType: "search",
+  })}`;
 
   return (
-    <Fragment>
-      <p>
-        This pattern uses the{' '}
-        {example.relatedComponents.map((component, index) => {
-          if (
-            index === example.relatedComponents.length - 1 &&
-            example.relatedComponents.length > 1
-          ) {
-            return (
-              <Fragment key={component.url}>
-                {' and '}
-                <InlinePill as="a" href={component.url}>
-                  {component.label}
-                </InlinePill>
-              </Fragment>
-            );
-          }
-          return (
-            <Fragment key={component.url}>
-              {index > 0 ? ', ' : null}
-              <InlinePill as="a" key={component.url} href={component.url}>
-                {component.label}
-              </InlinePill>
-            </Fragment>
-          );
-        })}
-        {example.relatedComponents.length > 1 ? ' components' : ' component'}
-      </p>
-      <Stack gap="2" className={styles.SpecificityBuster}>
-        <ExampleWrapper
-          className={styles.ExampleWrapper}
-          renderFrameActions={() => (
-            <Fragment>
-              <PlayroomButton code={example.code} patternName={patternName} />
-              <LinkButton onClick={handleCodeToggle}>
-                {showCodeValue ? 'Hide code' : 'Show code'}
-              </LinkButton>
-            </Fragment>
-          )}
-        >
-          <GrowFrame
-            id="live-preview-iframe"
-            defaultHeight={'400px'}
-            src={previewUrl}
-          />
-        </ExampleWrapper>
-        {showCodeValue ? (
-          <Code
-            code={[
-              {
-                title: 'React',
-                code: endent`
-                  // This example is for guidance purposes. Copying it will come with caveats.
-                  ${formatCodeSnippet(snippetCode ? snippetCode : code)}
-                `,
-              },
-            ]}
-          />
-        ) : null}
-      </Stack>
-    </Fragment>
+    <Stack gap="2" className={styles.SpecificityBuster}>
+      <ExampleWrapper
+        className={styles.ExampleWrapper}
+        renderFrameActions={() => (
+          <Fragment>
+            <PlayroomButton code={sandboxCode} patternName={patternName} />
+            <LinkButton onClick={handleCodeToggle}>
+              {showCodeValue ? 'Hide code' : 'Show code'}
+            </LinkButton>
+          </Fragment>
+        )}
+      >
+        <GrowFrame
+          id="live-preview-iframe"
+          defaultHeight={'400px'}
+          src={previewUrl}
+        />
+      </ExampleWrapper>
+      {showCodeValue ? (
+        <Code
+          code={[
+            {
+              title: 'React',
+              code: endent`
+                // This example is for guidance purposes. Copying it will come with caveats.
+                ${formattedCode}
+              `,
+            },
+          ]}
+        />
+      ) : null}
+    </Stack>
   );
 };
 

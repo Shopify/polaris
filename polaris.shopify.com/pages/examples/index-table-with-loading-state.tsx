@@ -1,4 +1,9 @@
-import {IndexTable, LegacyCard, useIndexResourceState, Text} from '@shopify/polaris';
+import {
+  IndexTable,
+  LegacyCard,
+  useIndexResourceState,
+  Text,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -38,13 +43,21 @@ function IndexTableWithLoadingExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -62,8 +75,23 @@ function IndexTableWithLoadingExample() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text as="span" alignment="end">
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text as="span" alignment="end">
+                Amount spent
+              </Text>
+            ),
+          },
+          ,
         ]}
       >
         {rowMarkup}

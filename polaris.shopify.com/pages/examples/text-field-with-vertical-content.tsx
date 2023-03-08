@@ -1,4 +1,4 @@
-import {Stack, Tag, TextField} from '@shopify/polaris';
+import {LegacyStack, Tag, TextField} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -13,11 +13,11 @@ function VerticalContentExample() {
 
   const verticalContentMarkup =
     tags.length > 0 ? (
-      <Stack spacing="extraTight" alignment="center">
+      <LegacyStack spacing="extraTight" alignment="center">
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
-      </Stack>
+      </LegacyStack>
     ) : null;
 
   return (

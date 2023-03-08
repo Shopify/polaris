@@ -20,7 +20,6 @@ export type {
   CardSubsectionProps,
 } from './components';
 
-/** @deprecated Use LegacyCard or AlphaCard instead. */
 export interface CardProps {
   /** Title content for the card */
   title?: React.ReactNode;
@@ -48,7 +47,7 @@ export interface CardProps {
 // subcomponents so explicitly state the subcomponents in the type definition.
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
-
+/** @deprecated Use AlphaCard instead. */
 export const Card: React.FunctionComponent<CardProps> & {
   // eslint-disable-next-line import/no-deprecated
   Header: typeof Header;

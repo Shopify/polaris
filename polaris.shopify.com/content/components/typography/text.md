@@ -21,7 +21,7 @@ keywords:
   - list
 status:
   value: Beta
-  message: This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. To learn more please read about our [Component lifecycle](/getting-started/components-lifecycle)
+  message: This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. To learn more please read about our [component lifecycles](/getting-started/components-lifecycle)
 examples:
   - fileName: text-heading.tsx
     title: Heading
@@ -43,6 +43,26 @@ examples:
     title: Color
     description: >-
       Use to set text color.
+---
+
+## Variant tokens
+
+Each variant uses a predetermined combination of the [font tokens](/tokens/font) to set the font size and line height. Heading variants have a set font weight but can be overridden by using the `fontWeight` prop.
+
+| Variant      | Font size token     | px value | rem value | Font line height token | Font weight token          | Reponsive |
+| ------------ | ------------------- | -------- | --------- | ---------------------- | -------------------------- | --------- |
+| `heading4Xl` | `--p-font-size-700` | 40       | 2.5       | `--p-line-height-7`    | `--p-font-weight-bold`     | Yes       |
+| `heading3Xl` | `--p-font-size-600` | 32       | 2         | `--p-line-height-6`    | `--p-font-weight-semibold` | Yes       |
+| `heading2Xl` | `--p-font-size-500` | 28       | 1.75      | `--p-line-height-5`    | `--p-font-weight-semibold` | Yes       |
+| `headingXl`  | `--p-font-size-400` | 24       | 1.5       | `--p-line-height-4`    | `--p-font-weight-semibold` | Yes       |
+| `headingLg`  | `--p-font-size-300` | 20       | 1.25      | `--p-line-height-3`    | `--p-font-weight-semibold` | Yes       |
+| `headingMd`  | `--p-font-size-200` | 16       | 1         | `--p-line-height-3`    | `--p-font-weight-semibold` | No        |
+| `headingSm`  | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-semibold` | No        |
+| `headingXs`  | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-semibold` | No        |
+| `bodyLg`     | `--p-font-size-200` | 16       | 1         | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
+| `bodyMd`     | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
+| `bodySm`     | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-regular`  | No        |
+
 ---
 
 ## Mapping from previous type components
@@ -106,42 +126,42 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <TextStyle variation="subdued">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" color="subdued">No supplier listed</Text>
++ <Text as="span" color="subdued">No supplier listed</Text>
 ```
 
 #### Strong
 
 ```diff
 - <TextStyle variation="strong">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" fontWeight="semibold" >No supplier listed</Text>
++ <Text as="span" fontWeight="semibold" >No supplier listed</Text>
 ```
 
 #### Positive
 
 ```diff
 - <TextStyle variation="positive">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" color="success">No supplier listed</Text>
++ <Text as="span" color="success">No supplier listed</Text>
 ```
 
 #### Negative
 
 ```diff
 - <TextStyle variation="negative">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" color="critical">No supplier listed</Text>
++ <Text as="span" color="critical">No supplier listed</Text>
 ```
 
 #### Warning
 
 ```diff
 - <TextStyle variation="warning">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" color="warning">No supplier listed</Text>
++ <Text as="span" color="warning">No supplier listed</Text>
 ```
 
 #### Code
 
 ```diff
 - <TextStyle variation="code">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span"><InlineCode>No supplier listed</InlineCode></Text>
++ <Text as="span"><InlineCode>No supplier listed</InlineCode></Text>
 ```
 
 ### VisuallyHidden
@@ -150,5 +170,5 @@ These are suggested replacements for existing text style components, but ultimat
 - <VisuallyHidden>
 -   <Heading>Title and description</Heading>
 - </VisuallyHidden>
-+ <Text visuallyHidden variant="bodySm" as="h2">Title and description</Text>
++ <Text visuallyHidden as="h2">Title and description</Text>
 ```

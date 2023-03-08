@@ -115,12 +115,16 @@ function SmallScreenIndexTableWithAllElementsExample() {
         position={index}
       >
         <div style={{padding: '.75rem 1rem'}}>
-          <Text variant="bodyMd" fontWeight="bold" as="p">
+          <Text fontWeight="bold" as="p">
             {name}
           </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text as="p" alignment="end" numeric>
+            {orders}
+          </Text>
+          <Text as="p" alignment="end" numeric>
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -164,8 +168,23 @@ function SmallScreenIndexTableWithAllElementsExample() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              id: 'order-count',
+              title: (
+                <Text as="span" alignment="end">
+                  Order count
+                </Text>
+              ),
+            },
+            {
+              id: 'amount-spent',
+              title: (
+                <Text as="span" alignment="end">
+                  Amount spent
+                </Text>
+              ),
+            },
+            ,
           ]}
         >
           {rowMarkup}

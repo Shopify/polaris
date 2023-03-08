@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedSpecificDirectionExample() {
   return (
-    <AlphaStack gap="6" fullWidth>
+    <AlphaStack gap="6">
       <Box background="surface" border="base" padding="5">
         <Bleed marginBlockStart="5">
           <Placeholder label="Top" />

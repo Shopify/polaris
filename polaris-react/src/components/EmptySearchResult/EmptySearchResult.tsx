@@ -3,7 +3,7 @@ import React from 'react';
 import {useI18n} from '../../utilities/i18n';
 import {Text} from '../Text';
 import {Image} from '../Image';
-import {Stack} from '../Stack';
+import {LegacyStack} from '../LegacyStack';
 
 import {emptySearch} from './illustrations';
 
@@ -28,14 +28,14 @@ export function EmptySearchResult({
   ) : null;
 
   return (
-    <Stack alignment="center" vertical>
+    <LegacyStack alignment="center" vertical>
       {illustrationMarkup}
       <Text variant="headingLg" as="p">
         {title}
       </Text>
-      <Text variant="bodyMd" color="subdued" as="span">
+      <Text color="subdued" as="span">
         {descriptionMarkup}
       </Text>
-    </Stack>
+    </LegacyStack>
   );
 }

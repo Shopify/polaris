@@ -5,7 +5,7 @@ import {Box, type WithAsProp} from '../Box';
 export interface InlinePillProps {}
 
 const InlinePill = forwardRef(
-  ({as = 'button', className, ...props}, forwardedRef) => (
+  ({as = 'span', className, ...props}, forwardedRef) => (
     <Box
       {...props}
       as={as}
@@ -13,7 +13,7 @@ const InlinePill = forwardRef(
       ref={forwardedRef}
     />
   ),
-) as WithAsProp<InlinePillProps, typeof Box, 'button'>;
+) as WithAsProp<InlinePillProps, typeof Box, 'span'>;
 
 InlinePill.displayName = 'InlinePill';
 

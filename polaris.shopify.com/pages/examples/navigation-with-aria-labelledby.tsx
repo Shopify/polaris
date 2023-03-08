@@ -7,7 +7,7 @@ function NavigationExample() {
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
-        <Text variant="bodySm" as="span" visuallyHidden>
+        <Text as="span" visuallyHidden>
           <p id="label-id">Hidden label</p>
         </Text>
         <Navigation.Section

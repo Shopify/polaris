@@ -48,14 +48,13 @@
     // border radius there when that tab is selected
     border-top-left-radius: 0;
   }
-
-  .VariantDescription {
-    font-size: var(--font-size-400);
-  }
 }
 
-.UsefulHeading {
-  font-size: var(--font-size-700);
+.Variant {
+  & > p:first-child {
+    // The first paragrah when it exists should be bigger
+    font-size: var(--font-size-400);
+  }
 }
 
 .UsageTable {
@@ -74,10 +73,11 @@
   gap: 1rem;
   z-index: 5;
 
-  button {
+  .Tab {
+    --default-padding: 0.5rem 1rem;
     background: var(--tab-background);
     z-index: 5;
-    padding: 0.5rem 1rem;
+    padding: var(--default-padding);
     text-align: left;
     display: flex;
     align-items: flex-start;
@@ -123,17 +123,17 @@
     position: sticky;
     top: 60px;
     background-color: var(--surface);
-    button:first-of-type {
+    .Tab {
       padding-left: 1.25rem;
+    }
+    .Tab ~ .Tab {
+      // Undo the above for all tabs that aren't the first
+      padding: var(--default-padding);
     }
   }
 }
 
 .HowItHelps {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
   .ImageWrapper {
     display: block;
     border: 1px solid var(--p-border-subdued);
@@ -150,32 +150,18 @@
     }
   }
   ol {
-    margin: 0px;
     list-style: none;
     counter-reset: item;
-    padding-left: 32px;
-    position: relative;
     li {
       counter-increment: item;
-    }
-    li:before {
-      --props-list-counter-background: inherit;
-      @include dark-mode {
-        --props-list-counter-background: rgba(240, 240, 240, 1);
+      &::before {
+        width: 24px;
+        height: 24px;
+        content: counter(item);
+        font-weight: 700;
+        color: rgba(153, 35, 247, 1);
+        text-align: center;
       }
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      left: -2px;
-      content: counter(item);
-      font-weight: 700;
-      color: rgba(153, 35, 247, 1);
-      background: var(--props-list-counter-background);
-      vertical-align: bottom;
-      text-align: center;
-      display: block;
-      line-height: 1.5rem;
-      border-radius: var(--p-border-radius-2);
     }
   }
   @media screen and (max-width: $breakpointTablet) {
@@ -185,6 +171,7 @@
     }
   }
 }
+
 .UsageGuidelinesGrid {
   display: grid;
   column-gap: var(--p-space-4);
@@ -253,7 +240,7 @@
   appearance: auto;
 }
 
-.CustomTable {
+.DefinitionTable {
   --props-table-border-color: #c9cccf;
   --props-table-heading-background: rgba(0, 0, 0, 0.02);
   --props-table-content-background: inherit;
@@ -266,12 +253,19 @@
   border-radius: var(--border-radius-400);
   background: var(--props-table-content-background);
 
-  h3 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     background: var(--props-table-heading-background);
     color: var(--text-strong);
     padding: 0.66rem 1rem;
     margin: 0;
+    font-size: inherit;
+    font-weight: normal;
   }
+
   .DefinitionList {
     display: grid;
     dt {
@@ -282,7 +276,6 @@
     grid-template-columns: fit-content(35%) 1fr;
     padding: 1rem;
     gap: 1rem;
-    font-size: var(--font-size-200);
     @media screen and (max-width: $breakpointDesktopSmall) {
       grid-template-columns: 1fr;
     }
@@ -291,6 +284,42 @@
     }
     @media screen and (max-width: $breakpointMobile) {
       grid-template-columns: 1fr;
+    }
+  }
+}
+
+.List {
+  list-style: none;
+  margin: 0;
+  position: relative;
+  li {
+    /* Using before elements as they respond to layout unlike ::marker, so we
+    * can wrap the li's in a <Stack> and use the gap property */
+    &::before {
+      width: 24px;
+      height: 24px;
+      font-weight: 700;
+      text-align: center;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.UnorderedList {
+  li {
+    &::before {
+      content: '\2022';
+    }
+  }
+}
+
+.OrderedList {
+  counter-reset: item;
+  li {
+    counter-increment: item;
+    &::before {
+      content: counter(item);
+      color: rgba(153, 35, 247, 1);
     }
   }
 }

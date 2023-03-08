@@ -63,7 +63,7 @@ export function Default() {
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
                   <h3>
-                    <Text variant="bodyMd" fontWeight="bold" as="span">
+                    <Text fontWeight="bold" as="span">
                       {name}
                     </Text>
                   </h3>
@@ -123,7 +123,7 @@ export function WithI18n() {
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
                   <h3>
-                    <Text variant="bodyMd" fontWeight="bold" as="span">
+                    <Text fontWeight="bold" as="span">
                       {name}
                     </Text>
                   </h3>
