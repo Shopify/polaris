@@ -26,6 +26,19 @@ export function sanitizeCustomProperties(
   return nonNullValues.length ? Object.fromEntries(nonNullValues) : undefined;
 }
 
+export function getComponentProperties(
+  styles?: React.CSSProperties,
+): React.CSSProperties | undefined {
+  if (!styles) return undefined;
+  const componentProperties = Object.entries(styles).filter(([property]) =>
+    property.startsWith('--pc'),
+  );
+
+  return componentProperties.length
+    ? Object.fromEntries(componentProperties)
+    : undefined;
+}
+
 export function getResponsiveProps(
   componentName: string,
   componentProp: string,

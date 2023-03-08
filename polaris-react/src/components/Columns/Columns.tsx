@@ -4,12 +4,10 @@ import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 import {
   getResponsiveProps,
   getResponsiveValue,
-  sanitizeCustomProperties,
   ResponsiveValue,
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
-
-import styles from './Columns.scss';
+import {Box, BoxProps} from '../Box';
 
 type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];
@@ -17,7 +15,16 @@ type Columns = ResponsiveProp<ColumnsType>;
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 type ColumnsAlignItems = 'start' | 'end' | 'center';
 
-export interface ColumnsProps extends React.AriaAttributes {
+export interface ColumnsProps
+  extends React.AriaAttributes,
+    Pick<
+      BoxProps,
+      | 'padding'
+      | 'paddingBlockEnd'
+      | 'paddingBlockStart'
+      | 'paddingInlineEnd'
+      | 'paddingInlineStart'
+    > {
   children?: React.ReactNode;
   /** The number of columns to display. Accepts either a single value or an object of values for different screen sizes.
    * @example
@@ -38,7 +45,13 @@ export interface ColumnsProps extends React.AriaAttributes {
   alignItems?: ColumnsAlignItems;
 }
 
-export function Columns({children, columns, gap, alignItems}: ColumnsProps) {
+export function Columns({
+  children,
+  columns,
+  gap,
+  alignItems,
+  ...boxProps
+}: ColumnsProps) {
   const style = {
     ...getResponsiveValue(
       'columns',
@@ -50,9 +63,15 @@ export function Columns({children, columns, gap, alignItems}: ColumnsProps) {
   } as React.CSSProperties;
 
   return (
-    <div className={styles.Columns} style={sanitizeCustomProperties(style)}>
+    <Box
+      layout={{
+        component: 'Columns',
+        customProperties: style,
+      }}
+      {...boxProps}
+    >
       {children}
-    </div>
+    </Box>
   );
 }
 

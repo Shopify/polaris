@@ -15,14 +15,21 @@ import {
   ResponsiveProp,
   classNames,
   sanitizeCustomProperties,
+  getComponentProperties,
 } from '../../utilities/css';
 
 import styles from './Box.scss';
 
 type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
-
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
+
+interface InternalBoxProps {
+  layout?: {
+    component?: 'Bleed' | 'Card' | 'Columns' | 'Inline' | 'Stack';
+    customProperties?: React.CSSProperties;
+  };
+}
 
 export type ColorTokenScale =
   | 'text'
@@ -183,10 +190,11 @@ export interface BoxProps extends React.AriaAttributes {
   zIndex?: string;
 }
 
-export const Box = forwardRef<HTMLElement, BoxProps>(
+export const Box = forwardRef<HTMLElement, BoxProps & InternalBoxProps>(
   (
     {
       as = 'div',
+      layout,
       background,
       border,
       borderBlockEnd,
@@ -327,10 +335,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         : undefined,
       zIndex,
       opacity,
+      ...getComponentProperties(layout?.customProperties),
     } as React.CSSProperties;
 
     const className = classNames(
       styles.Box,
+      layout?.component && styles[layout.component],
       visuallyHidden && styles.visuallyHidden,
       printHidden && styles.printHidden,
       as === 'ul' && styles.listReset,
