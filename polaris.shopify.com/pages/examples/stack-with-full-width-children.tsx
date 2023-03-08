@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function StackWithFullWidthChildrenExample() {
   return (
-    <Stack gap="4" fullWidth>
+    <Stack gap="4">
       <Placeholder label="Stack child" childWidth="100%" />
       <Placeholder />
       <Placeholder />

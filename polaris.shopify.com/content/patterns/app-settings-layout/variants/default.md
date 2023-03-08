@@ -62,7 +62,7 @@ This pattern uses the [`Stack`](/components/layout-and-structure/stack), [`Card`
         </Stack>
       </Box>
       <Card roundedAbove="sm">
-        <Stack gap="4" fullWidth>
+        <Stack gap="4">
           <TextField label="Interjamb style" />
           <TextField label="Interjamb ratio" />
         </Stack>
@@ -84,7 +84,7 @@ This pattern uses the [`Stack`](/components/layout-and-structure/stack), [`Card`
         </Stack>
       </Box>
       <Card roundedAbove="sm">
-        <Stack gap="4" fullWidth>
+        <Stack gap="4">
           <TextField label="Horizontal" />
           <TextField label="Interjamb ratio" />
         </Stack>

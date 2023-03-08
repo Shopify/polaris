@@ -63,8 +63,9 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <Stack gap="4" align="center" fullWidth>
+    <Stack gap="4" align="center">
       <Box
+        width="100%"
         padding="0"
         paddingInlineStart={{sm: '6'}}
         paddingInlineEnd={{sm: '6'}}
@@ -78,12 +79,13 @@ export function SkeletonPage({
           maxWidth: 'none',
         })}
       >
-        <Stack fullWidth>
+        <Stack>
           <Box
             paddingBlockStart={{xs: '4', md: '5'}}
             paddingBlockEnd={{xs: '4', md: '5'}}
             paddingInlineStart={{xs: '4', sm: '0'}}
             paddingInlineEnd={{xs: '4', sm: '0'}}
+            width="100%"
           >
             {breadcrumbMarkup}
             <Inline gap="4" align="space-between" blockAlign="center">
@@ -93,7 +95,9 @@ export function SkeletonPage({
               {primaryActionMarkup}
             </Inline>
           </Box>
-          <Box paddingBlockEnd="2">{children}</Box>
+          <Box paddingBlockEnd="2" width="100%">
+            {children}
+          </Box>
         </Stack>
       </Box>
     </Stack>

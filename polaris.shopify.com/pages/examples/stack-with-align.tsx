@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function StackWithAlignExample() {
   return (
     <Page>
-      <Stack gap="5" fullWidth>
+      <Stack gap="5">
         <Stack gap="4" align="start">
           <Placeholder width="320px" label="Start" childAlign="start" />
           <Placeholder width="320px" childAlign="start" />

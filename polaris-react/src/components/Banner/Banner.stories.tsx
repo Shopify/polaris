@@ -193,7 +193,7 @@ export function InACard() {
 export function WithEndJustifiedContent() {
   return (
     <Banner status="critical">
-      <Stack gap="1" fullWidth>
+      <Stack gap="1">
         <Inline gap="4" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min

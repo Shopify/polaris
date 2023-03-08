@@ -86,9 +86,9 @@ function ResourceDetailsLayout() {
       }}
     >
       <Columns columns={{xs: 1, md: '2fr 1fr'}} gap="4">
-        <Stack fullWidth gap="4">
+        <Stack gap="4">
           <Card roundedAbove="sm">
-            <Stack fullWidth gap="4">
+            <Stack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
@@ -96,7 +96,7 @@ function ResourceDetailsLayout() {
             </Stack>
           </Card>
           <Card roundedAbove="sm">
-            <Stack fullWidth gap="4">
+            <Stack gap="4">
               <SkeletonDisplayText size="small" />
               <Columns columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
@@ -105,9 +105,9 @@ function ResourceDetailsLayout() {
             </Stack>
           </Card>
         </Stack>
-        <Stack fullWidth gap={{xs: '4', md: '2'}}>
+        <Stack gap={{xs: '4', md: '2'}}>
           <Card roundedAbove="sm">
-            <Stack fullWidth gap="4">
+            <Stack gap="4">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
@@ -119,9 +119,9 @@ function ResourceDetailsLayout() {
               <Divider borderStyle="divider" />
               <SkeletonBodyText />
             </Stack>
-          </Card>
+          </Cad>
           <Card roundedAbove="sm">
-            <Stack fullWidth gap="4">
+            <Stack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="4rem" />
