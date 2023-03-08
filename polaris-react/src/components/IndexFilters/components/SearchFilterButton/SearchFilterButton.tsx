@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {CSSProperties} from 'react';
 import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
@@ -12,6 +12,7 @@ export interface SearchFilterButtonProps {
   'aria-label': string;
   disabled?: boolean;
   tooltipContent: string;
+  style: CSSProperties;
 }
 
 export function SearchFilterButton({
@@ -19,14 +20,21 @@ export function SearchFilterButton({
   'aria-label': ariaLabel,
   disabled,
   tooltipContent,
+  style,
 }: SearchFilterButtonProps) {
   const activator = (
-    <FilterButton onClick={onClick} aria-label={ariaLabel} disabled={disabled}>
-      <Inline gap="0">
-        <Icon source={SearchMinor} color="base" />
-        <Icon source={FilterMinor} color="base" />
-      </Inline>
-    </FilterButton>
+    <div style={style}>
+      <FilterButton
+        onClick={onClick}
+        aria-label={ariaLabel}
+        disabled={disabled}
+      >
+        <Inline gap="0">
+          <Icon source={SearchMinor} color="base" />
+          <Icon source={FilterMinor} color="base" />
+        </Inline>
+      </FilterButton>
+    </div>
   );
 
   const content = (

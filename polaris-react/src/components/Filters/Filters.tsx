@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect, useMemo} from 'react';
 import type {ReactNode} from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
+import type {TransitionStatus} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
 import {Popover} from '../Popover';
@@ -16,6 +17,21 @@ import {Spinner} from '../Spinner';
 
 import {FilterPill, SearchField} from './components';
 import styles from './Filters.scss';
+
+const TRANSITION_DURATION = 150;
+
+const defaultStyle = {
+  transition: `opacity ${TRANSITION_DURATION}ms ease-in-out`,
+  opacity: 0,
+};
+
+const transitionStyles = {
+  entering: {opacity: 1},
+  entered: {opacity: 1},
+  exiting: {opacity: 0},
+  exited: {opacity: 0},
+  unmounted: {opacity: 0},
+};
 
 export interface FiltersProps {
   /** Currently entered text in the query field */
@@ -52,6 +68,7 @@ export interface FiltersProps {
   disableFilters?: boolean;
   /** Whether an asyncronous task is currently being run. */
   loading?: boolean;
+  mountedState?: TransitionStatus;
 }
 
 export function Filters({
@@ -72,6 +89,7 @@ export function Filters({
   disableQueryField,
   loading,
   disableFilters,
+  mountedState,
 }: FiltersProps) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
@@ -195,7 +213,17 @@ export function Filters({
                 md: '3',
               }}
             >
-              <div className={styles.SearchField}>
+              <div
+                className={styles.SearchField}
+                style={
+                  mountedState
+                    ? {
+                        ...defaultStyle,
+                        ...transitionStyles[mountedState],
+                      }
+                    : undefined
+                }
+              >
                 <SearchField
                   onChange={onQueryChange}
                   onFocus={onQueryFocus}
@@ -223,7 +251,17 @@ export function Filters({
           aria-live="polite"
         >
           <div className={classNames(styles.FiltersInner)}>
-            <div className={classNames(styles.FiltersStickyArea)}>
+            <div
+              className={classNames(styles.FiltersStickyArea)}
+              style={
+                mountedState
+                  ? {
+                      ...defaultStyle,
+                      ...transitionStyles[mountedState],
+                    }
+                  : undefined
+              }
+            >
               {pinnedFilters.map(({key: filterKey, ...pinnedFilter}) => {
                 const appliedFilter = appliedFilters?.find(
                   ({key}) => key === filterKey,

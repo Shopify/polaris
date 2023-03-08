@@ -1,4 +1,5 @@
-import React, {useMemo, useCallback} from 'react';
+import React, {useMemo, useCallback, useRef} from 'react';
+import {Transition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
@@ -26,6 +27,21 @@ import type {
 import styles from './IndexFilters.scss';
 
 const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
+
+const TRANSITION_DURATION = 150;
+
+const defaultStyle = {
+  transition: `opacity ${TRANSITION_DURATION}ms ease-in-out`,
+  opacity: 0,
+};
+
+const transitionStyles = {
+  entering: {opacity: 1},
+  entered: {opacity: 1},
+  exiting: {opacity: 0},
+  exited: {opacity: 0},
+  unmounted: {opacity: 0},
+};
 
 type ExecutedCallback = (name: string) => Promise<boolean>;
 
@@ -101,6 +117,8 @@ export function IndexFilters({
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
+  const defaultRef = useRef(null);
+  const filteringRef = useRef(null);
 
   useEventListener('keydown', (event) => {
     const {key} = event;
@@ -216,95 +234,18 @@ export function IndexFilters({
 
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
 
-  const topContent = useMemo(() => {
-    function handleClickFilterButton() {
-      beginEdit();
-    }
+  function handleClickFilterButton() {
+    beginEdit();
+  }
 
-    const searchFilterTooltip = i18n.translate(
-      'Polaris.IndexFilters.searchFilterTooltip',
-    );
-    const searchFilterAriaLabel = i18n.translate(
-      'Polaris.IndexFilters.searchFilterAccessibilityLabel',
-    );
+  const searchFilterTooltip = i18n.translate(
+    'Polaris.IndexFilters.searchFilterTooltip',
+  );
+  const searchFilterAriaLabel = i18n.translate(
+    'Polaris.IndexFilters.searchFilterAccessibilityLabel',
+  );
 
-    const isLoading = loading || isActionLoading;
-
-    switch (mode) {
-      case IndexFiltersMode.Default:
-      case IndexFiltersMode.EditingColumns:
-        return (
-          <Inline
-            align="start"
-            blockAlign="center"
-            gap={{
-              xs: '0',
-              md: '2',
-            }}
-          >
-            <div
-              className={classNames(
-                styles.TabsWrapper,
-                mdDown && styles.SmallScreenTabsWrapper,
-                isLoading && styles.TabsWrapperLoading,
-              )}
-            >
-              <div className={styles.TabsInner}>
-                <Tabs
-                  tabs={tabs}
-                  selected={selected}
-                  onSelect={onSelect}
-                  disabled={Boolean(
-                    mode !== IndexFiltersMode.Default || disabled,
-                  )}
-                  showNewTab={canCreateNewView}
-                  onSaveNewViewModal={onCreateNewView}
-                />
-              </div>
-              {isLoading && mdDown && (
-                <div className={styles.TabsLoading}>
-                  <Spinner size="small" />
-                </div>
-              )}
-            </div>
-            <div className={styles.ActionWrap}>
-              {isLoading && !mdDown && <Spinner size="small" />}
-              {mode === IndexFiltersMode.Default ? (
-                <>
-                  <SearchFilterButton
-                    onClick={handleClickFilterButton}
-                    aria-label={searchFilterAriaLabel}
-                    tooltipContent={searchFilterTooltip}
-                    disabled={disabled}
-                  />
-                  {sortMarkup}
-                </>
-              ) : null}
-              {mode === IndexFiltersMode.EditingColumns
-                ? updateButtonsMarkup
-                : null}
-            </div>
-          </Inline>
-        );
-      default:
-        return null;
-    }
-  }, [
-    mode,
-    beginEdit,
-    mdDown,
-    loading,
-    disabled,
-    tabs,
-    sortMarkup,
-    i18n,
-    onSelect,
-    selected,
-    updateButtonsMarkup,
-    isActionLoading,
-    canCreateNewView,
-    onCreateNewView,
-  ]);
+  const isLoading = loading || isActionLoading;
 
   function onPressEscape() {
     cancelAction?.onAction();
@@ -336,8 +277,122 @@ export function IndexFilters({
         )}
         ref={measurerRef}
       >
-        {topContent ? <Container>{topContent}</Container> : null}
-        {mode === IndexFiltersMode.Filtering && (
+        <Transition
+          nodeRef={defaultRef}
+          in={mode !== IndexFiltersMode.Filtering}
+          timeout={TRANSITION_DURATION}
+        >
+          {(state) => (
+            <div ref={defaultRef}>
+              {mode !== IndexFiltersMode.Filtering ? (
+                <Container>
+                  <Inline
+                    align="start"
+                    blockAlign="center"
+                    gap={{
+                      xs: '0',
+                      md: '2',
+                    }}
+                  >
+                    <div
+                      className={classNames(
+                        styles.TabsWrapper,
+                        mdDown && styles.SmallScreenTabsWrapper,
+                        isLoading && styles.TabsWrapperLoading,
+                      )}
+                    >
+                      <div
+                        className={styles.TabsInner}
+                        style={{
+                          ...defaultStyle,
+                          ...transitionStyles[state],
+                        }}
+                      >
+                        <Tabs
+                          tabs={tabs}
+                          selected={selected}
+                          onSelect={onSelect}
+                          disabled={Boolean(
+                            mode !== IndexFiltersMode.Default || disabled,
+                          )}
+                          showNewTab={canCreateNewView}
+                          onSaveNewViewModal={onCreateNewView}
+                        />
+                      </div>
+                      {isLoading && mdDown && (
+                        <div className={styles.TabsLoading}>
+                          <Spinner size="small" />
+                        </div>
+                      )}
+                    </div>
+                    <div className={styles.ActionWrap}>
+                      {isLoading && !mdDown && <Spinner size="small" />}
+                      {mode === IndexFiltersMode.Default ? (
+                        <>
+                          <SearchFilterButton
+                            onClick={handleClickFilterButton}
+                            aria-label={searchFilterAriaLabel}
+                            tooltipContent={searchFilterTooltip}
+                            disabled={disabled}
+                            style={{
+                              ...defaultStyle,
+                              ...transitionStyles[state],
+                            }}
+                          />
+                          {sortMarkup}
+                        </>
+                      ) : null}
+                      {mode === IndexFiltersMode.EditingColumns
+                        ? updateButtonsMarkup
+                        : null}
+                    </div>
+                  </Inline>
+                </Container>
+              ) : null}
+            </div>
+          )}
+        </Transition>
+        <Transition
+          nodeRef={filteringRef}
+          in={mode === IndexFiltersMode.Filtering}
+          timeout={TRANSITION_DURATION}
+        >
+          {(state) => (
+            <div ref={filteringRef}>
+              {mode === IndexFiltersMode.Filtering ? (
+                <Filters
+                  queryValue={queryValue}
+                  queryPlaceholder={queryPlaceholder}
+                  onQueryChange={handleChangeSearch}
+                  onQueryClear={handleClearSearch}
+                  onQueryFocus={onQueryFocus}
+                  filters={filters}
+                  appliedFilters={appliedFilters}
+                  onClearAll={onClearAll}
+                  disableFilters={disabled}
+                  disableQueryField={disabled || disableQueryField}
+                  loading={loading || isActionLoading}
+                  focused
+                  mountedState={state}
+                >
+                  <Inline gap="3" align="start" blockAlign="center">
+                    <div
+                      style={{
+                        ...defaultStyle,
+                        ...transitionStyles[state],
+                      }}
+                    >
+                      {updateButtonsMarkup}
+                    </div>
+                    {sortMarkup}
+                  </Inline>
+                </Filters>
+              ) : null}
+            </div>
+          )}
+        </Transition>
+        {/* {topContent ? <Container>{topContent}</Container> : null} */}
+        {/* {mode === IndexFiltersMode.Filtering && (
           <>
             <Filters
               queryValue={queryValue}
@@ -359,7 +414,7 @@ export function IndexFilters({
               </Inline>
             </Filters>
           </>
-        )}
+        )} */}
       </div>
     </div>
   );
