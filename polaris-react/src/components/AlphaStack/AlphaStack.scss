@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
 .AlphaStack {
+  --pc-stack-align: initial;
   // stylelint-disable -- Polaris component custom properties
   --pc-stack-gap-xs: 0;
   --pc-stack-gap-sm: var(--pc-stack-gap-xs);
