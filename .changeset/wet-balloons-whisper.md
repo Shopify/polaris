@@ -2,4 +2,4 @@
 '@shopify/polaris-tokens': minor
 ---
 
-Added a `shadow` token group using the new internal values
+Added a new `shadow` token group
