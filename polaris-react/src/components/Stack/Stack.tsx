@@ -24,10 +24,6 @@ export interface StackProps extends React.AriaAttributes {
   as?: Element;
   /** Horizontal alignment of children */
   align?: Align;
-  /** Toggle children to be full width
-   * @default false
-   */
-  fullWidth?: boolean;
   /** The spacing between children */
   gap?: Gap;
   /** HTML id attribute */
@@ -42,7 +38,6 @@ export const Stack = ({
   as = 'div',
   children,
   align,
-  fullWidth = false,
   gap,
   id,
   reverseOrder = false,
@@ -50,7 +45,6 @@ export const Stack = ({
 }: StackProps) => {
   const className = classNames(
     styles.Stack,
-    fullWidth && styles.fullWidth,
     as === 'ul' && styles.listReset,
     as === 'fieldset' && styles.fieldsetReset,
   );

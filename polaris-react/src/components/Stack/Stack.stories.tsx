@@ -101,19 +101,3 @@ export function WithAlignEnd() {
     </Stack>
   );
 }
-
-export function WithFullWidthChildren() {
-  return (
-    <Stack gap="4" fullWidth>
-      <Box background="surface" padding="1">
-        01
-      </Box>
-      <Box background="surface" padding="1">
-        02
-      </Box>
-      <Box background="surface" padding="1">
-        03
-      </Box>
-    </Stack>
-  );
-}
