@@ -13,7 +13,7 @@ import {Box} from '../Box';
 import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
 
-interface SettingsToggleBadge {
+interface SettingToggleBadge {
   enabled: {content: string; status?: Status};
   disabled: {content: string; status?: Status};
 }
@@ -29,8 +29,8 @@ export interface SettingToggleProps {
   enabled?: boolean;
   /** The help link rendered in the setting */
   helpLink?: React.ReactNode;
-  /** The badge that indicates the enabled or disabled status of the setting */
-  settingStatus?: SettingsToggleBadge;
+  /** Customization for the badge that indicates the enabled or disabled status of the setting when a `title` is set. Defaults to "On" when `enabled` and "Off" when disabled. */
+  settingStatus?: SettingToggleBadge;
   /** The name of the setting */
   title?: string;
 }

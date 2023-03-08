@@ -86,7 +86,9 @@ export function WithAllOfItsElements() {
       enabled={active}
     >
       <Box width="100%">
-        <Banner status="info">An Example Banner Child</Banner>
+        <Banner status="info">
+          Accounts must be optional or required in order to enable Multipass.
+        </Banner>
       </Box>
     </SettingToggle>
   );

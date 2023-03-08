@@ -16,9 +16,15 @@ keywords:
   - switch
   - adjuster
 examples:
-  - fileName: setting-toggle-default.tsx
-    title: Default
-    description: Use on settings pages to allow merchants to toggle a setting that has an on or off state.
+  - fileName: setting-toggle-with-child-content-only.tsx
+    title: With child content only
+    description: Setting toggles with child content only are supported for backward compatibility. Use the `title` and `description` props to name and describe the setting purpose instead of nesting these elements as `children`.
+  - fileName: setting-toggle-with-title-status-and-description.tsx
+    title: With title, status, and description
+    description: Use for to allow merchants to toggle a setting that has an on or off state. Set the setting name on the `title` and set the `description` prop with the context merchants need to decide whether or not to enable the setting.
+  - fileName: setting-toggle-with-all-of-its-elements.tsx
+    title: With all of its elements
+    description: Use to provide merchants additonal information for the setting, such as requirements or conditions for enabling or disabling it.
 ---
 
 ## Best practices
