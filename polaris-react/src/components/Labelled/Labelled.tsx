@@ -49,7 +49,7 @@ export function Labelled({
 
   const helpTextMarkup = helpText ? (
     <div className={styles.HelpText} id={helpTextID(id)}>
-      <Text as="span" variant="bodyMd" color="subdued" breakWord>
+      <Text as="span" color="subdued" breakWord>
         {helpText}
       </Text>
     </div>

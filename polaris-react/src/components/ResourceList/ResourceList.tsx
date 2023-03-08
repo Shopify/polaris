@@ -552,7 +552,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   );
 
   const bulkActionsMarkup =
-    isSelectable && selectMode && bulkActions ? (
+    isSelectable && selectMode && (bulkActions || promotedBulkActions) ? (
       <div
         className={bulkActionClassNames}
         style={{

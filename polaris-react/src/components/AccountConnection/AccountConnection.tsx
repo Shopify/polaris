@@ -55,7 +55,7 @@ export function AccountConnection({
   const titleMarkup = title ? title : accountName;
 
   const detailsMarkup = details ? (
-    <Text as="span" variant="bodyMd" color="subdued">
+    <Text as="span" color="subdued">
       {details}
     </Text>
   ) : null;

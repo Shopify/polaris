@@ -49,7 +49,7 @@ export function Spinner({
 
   const accessibilityLabelMarkup = (isAfterInitialMount ||
     !hasFocusableParent) && (
-    <Text variant="bodySm" as="span" visuallyHidden>
+    <Text as="span" visuallyHidden>
       {accessibilityLabel}
     </Text>
   );
