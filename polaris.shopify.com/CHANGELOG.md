@@ -1,5 +1,15 @@
 # polaris.shopify.com
 
+## 0.38.2
+
+### Patch Changes
+
+- [#8593](https://github.com/Shopify/polaris/pull/8593) [`a0e52a30a`](https://github.com/Shopify/polaris/commit/a0e52a30ab7c6c944ecbc3cb3622423d875a153c) Thanks [@laurkim](https://github.com/laurkim)! - Added in chart to map `Text` variants to font tokens
+
+- Updated dependencies [[`4fb2bdc57`](https://github.com/Shopify/polaris/commit/4fb2bdc57b2e19eade84829f092861eef8ff4f28), [`cb41f719c`](https://github.com/Shopify/polaris/commit/cb41f719c57d181335d9e308db09beb665d011b5), [`b39b19782`](https://github.com/Shopify/polaris/commit/b39b19782cd0ea3bedb7e4575c44ad7d5dbc310e), [`7d1c4f1db`](https://github.com/Shopify/polaris/commit/7d1c4f1db629ad9cfc68f65bd5f704127d10136e)]:
+  - @shopify/polaris@10.35.0
+  - @shopify/polaris-tokens@6.8.0
+
 ## 0.38.1
 
 ### Patch Changes

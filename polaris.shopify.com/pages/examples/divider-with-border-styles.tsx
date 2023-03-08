@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DividerWithBorderStylesExample() {
   return (
-    <AlphaStack gap="5" fullWidth>
+    <AlphaStack gap="5">
       <Text as="h1" variant="headingXs">
         Base
       </Text>
