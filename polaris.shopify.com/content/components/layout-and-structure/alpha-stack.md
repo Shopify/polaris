@@ -1,6 +1,6 @@
 ---
 title: Alpha stack
-description: Use to display children vertically. Based on css flexbox.
+description: Use to display children vertically and at full width. Based on css flexbox.
 category: Layout and structure
 keywords:
   - layout
@@ -12,10 +12,6 @@ examples:
     title: Gap
     description: >-
       Control the vertical space between children using the `gap` prop.
-  - fileName: alpha-stack-with-full-width-children.tsx
-    title: Full width
-    description: >-
-      Control the width of children using the `fullWidth` prop.
   - fileName: alpha-stack-with-align.tsx
     title: Align
     description: >-
