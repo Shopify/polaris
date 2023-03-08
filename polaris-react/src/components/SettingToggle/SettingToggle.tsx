@@ -4,7 +4,7 @@ import type {ComplexAction} from '../../types';
 import {buttonFrom} from '../Button';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {Text} from '../Text';
-import {Badge, Status, StatusValue} from '../Badge';
+import {Badge, BadgeProps} from '../Badge';
 import {useMediaQuery} from '../../utilities/media-query';
 import {AlphaCard} from '../AlphaCard';
 import {AlphaStack} from '../AlphaStack';
@@ -14,8 +14,8 @@ import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
 
 interface SettingToggleBadge {
-  enabled: {content: string; status?: Status};
-  disabled: {content: string; status?: Status};
+  enabled: {content: string; status?: BadgeProps['status']};
+  disabled: {content: string; status?: BadgeProps['status']};
 }
 
 export interface SettingToggleProps {
@@ -81,9 +81,9 @@ export function SettingToggle({
     );
   }
 
-  const defaultSettingStatus = {
+  const defaultSettingStatus: SettingToggleBadge = {
     enabled: {
-      status: StatusValue.Success,
+      status: 'success',
       content: i18n.translate('Polaris.SettingToggle.status.enabled'),
     },
     disabled: {
@@ -91,7 +91,7 @@ export function SettingToggle({
     },
   };
 
-  const badgeStatus: Status = enabled
+  const badgeStatus = enabled
     ? settingStatus?.enabled.status || defaultSettingStatus.enabled.status
     : settingStatus?.disabled.status;
 
