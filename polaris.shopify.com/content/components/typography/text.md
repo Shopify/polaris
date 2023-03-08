@@ -45,6 +45,26 @@ examples:
       Use to set text color.
 ---
 
+## Variant tokens
+
+Each variant uses a predetermined combination of the [font tokens](/tokens/font) to set the size and line height. Heading variants have a set font weight but can be overridden by using the `fontWeight` prop.
+
+| Variant      | Font size token     | px value | rem value | Font line height token | Font weight token          | Reponsive |
+| ------------ | ------------------- | -------- | --------- | ---------------------- | -------------------------- | --------- |
+| `heading4Xl` | `--p-font-size-700` | 40       | 2.5       | `--p-line-height-7`    | `--p-font-weight-bold`     | Yes       |
+| `heading3Xl` | `--p-font-size-600` | 32       | 2         | `--p-line-height-6`    | `--p-font-weight-semibold` | Yes       |
+| `heading2Xl` | `--p-font-size-500` | 28       | 1.75      | `--p-line-height-5`    | `--p-font-weight-semibold` | Yes       |
+| `headingXl`  | `--p-font-size-400` | 24       | 1.5       | `--p-line-height-4`    | `--p-font-weight-semibold` | Yes       |
+| `headingLg`  | `--p-font-size-300` | 20       | 1.25      | `--p-line-height-3`    | `--p-font-weight-semibold` | Yes       |
+| `headingMd`  | `--p-font-size-200` | 16       | 1         | `--p-line-height-3`    | `--p-font-weight-semibold` | No        |
+| `headingSm`  | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-semibold` | No        |
+| `headingXs`  | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-semibold` | No        |
+| `bodyLg`     | `--p-font-size-200` | 16       | 1         | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
+| `bodyMd`     | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
+| `bodySm`     | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-regular`  | No        |
+
+---
+
 ## Mapping from previous type components
 
 These are suggested replacements for existing text style components, but ultimately the best replacement should be evaluated based on the context of the usage. The `Text` component also requires setting the semantically appropriate html element through the `as` prop.
