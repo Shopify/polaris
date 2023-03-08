@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithBlockAlignExample() {
   return (
-    <AlphaStack gap="8" fullWidth>
+    <AlphaStack gap="8">
       <Inline gap="025" blockAlign="start">
         <Placeholder width="106px" label="Start" />
         <Placeholder width="106px" height="20px" />

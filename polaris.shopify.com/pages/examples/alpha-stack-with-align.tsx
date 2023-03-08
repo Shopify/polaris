@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function AlphaStackWithAlignExample() {
   return (
     <Page>
-      <AlphaStack gap="8" fullWidth>
+      <AlphaStack gap="8">
         <AlphaStack gap="025" align="start">
           <Placeholder height="48px" width="320px" label="Start" />
           <Placeholder height="48px" width="320px" />
