@@ -62,7 +62,7 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
         </AlphaStack>
       </Box>
       <AlphaCard roundedAbove="sm">
-        <AlphaStack gap="4" fullWidth>
+        <AlphaStack gap="4">
           <TextField label="Interjamb style" />
           <TextField label="Interjamb ratio" />
         </AlphaStack>
@@ -84,7 +84,7 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
         </AlphaStack>
       </Box>
       <AlphaCard roundedAbove="sm">
-        <AlphaStack gap="4" fullWidth>
+        <AlphaStack gap="4">
           <TextField label="Horizontal" />
           <TextField label="Interjamb ratio" />
         </AlphaStack>
