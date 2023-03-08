@@ -323,7 +323,7 @@ function DateRangePicker() {
             )}
           </Box>
           <Box padding={{xs: 5}} maxWidth={mdDown ? '320px' : '516px'}>
-            <AlphaStack fullWidth gap="4">
+            <AlphaStack gap="4">
               <Inline gap="2">
                 <div style={{flexGrow: 1}}>
                   <TextField
