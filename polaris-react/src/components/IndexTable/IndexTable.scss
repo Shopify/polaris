@@ -197,6 +197,30 @@ $loading-panel-height: 53px;
   color: var(--p-text-subdued);
 }
 
+// Extra specificity is needed to address edge cases where the zebra striping is combined with other options
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators -- extra specificity needed for when combining props
+.ZebraStriping {
+  .TableRow:nth-child(2n + 1) {
+    background: none;
+  }
+
+  .TableRow:nth-child(2n),
+  .TableRow:nth-child(2n) .TableCell:last-child {
+    background: var(--p-surface-subdued);
+
+    &:hover {
+      background-color: var(--p-surface-hovered);
+    }
+  }
+
+  .TableRow-hovered:nth-child(2n + 1),
+  .TableRow-hovered:nth-child(2n),
+  .TableRow-hovered:nth-child(2n) .TableCell:last-child {
+    background-color: var(--p-surface-hovered);
+  }
+}
+// stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators
+
 .TableHeading {
   background: var(--p-surface-subdued);
   z-index: var(--p-z-index-1);
