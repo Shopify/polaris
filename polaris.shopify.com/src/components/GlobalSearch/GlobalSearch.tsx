@@ -43,6 +43,22 @@ function scrollToTop() {
   overflowEl?.scrollTo({top: 0, behavior: 'smooth'});
 }
 
+function captureSearchEvent(
+  searchTerm: string,
+  resultRank: number,
+  selectedResult?: string,
+) {
+  const eventParams = {
+    searchTerm,
+    resultRank,
+    selectedResult,
+  };
+
+  if (searchTerm) {
+    window.gtag('event', 'customSearch', eventParams);
+  }
+}
+
 function scrollIntoView() {
   const overflowEl = document.querySelector(`.${styles.ResultsInner}`);
   const highlightedEl = document.querySelector(
@@ -152,6 +168,7 @@ function GlobalSearch() {
         if (resultsInRenderedOrder.length > 0) {
           setIsOpen(false);
           const url = resultsInRenderedOrder[currentResultIndex].url;
+          captureSearchEvent(searchTerm, currentResultIndex + 1, url);
           router.push(url);
         }
         break;
@@ -171,7 +188,14 @@ function GlobalSearch() {
         Search <span className={styles.KeyboardShortcutHint}>/</span>
       </button>
 
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+      <Dialog
+        open={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+          // on close we want to capture that no search result was selected
+          captureSearchEvent(searchTerm, 0);
+        }}
+      >
         <div className={styles.PreventBackgroundInteractions}></div>
         <div className="dark-mode styles-for-site-but-not-polaris-examples">
           <Dialog.Panel className={styles.Results}>
@@ -213,6 +237,8 @@ function GlobalSearch() {
                 <SearchResults
                   searchResults={searchResults}
                   currentItemId={currentItemId}
+                  searchTerm={searchTerm}
+                  resultsInRenderedOrder={resultsInRenderedOrder}
                 />
               )}
             </div>
@@ -226,9 +252,13 @@ function GlobalSearch() {
 function SearchResults({
   searchResults,
   currentItemId,
+  searchTerm,
+  resultsInRenderedOrder,
 }: {
   searchResults: GroupedSearchResults;
   currentItemId: string;
+  searchTerm?: string;
+  resultsInRenderedOrder: SearchResults;
 }) {
   return (
     <>
@@ -243,6 +273,12 @@ function SearchResults({
                     if (!meta.foundations) return null;
                     const {title, description, icon, category} =
                       meta.foundations;
+                    const resultIndex = resultsInRenderedOrder.findIndex(
+                      (r) => {
+                        return r.id === id;
+                      },
+                    );
+                    const rank = resultIndex + 1; // zero-indexed
                     return (
                       <SearchContext.Provider
                         key={title}
@@ -252,6 +288,10 @@ function SearchResults({
                           title={title}
                           description={description}
                           url={url}
+                          customOnClick={() =>
+                            searchTerm &&
+                            captureSearchEvent(searchTerm, rank, url)
+                          }
                           renderPreview={() => (
                             <FoundationsThumbnail
                               icon={icon}
@@ -273,6 +313,12 @@ function SearchResults({
                   {results.map(({id, url, meta}) => {
                     if (!meta.patterns) return null;
                     const {title, description, previewImg} = meta.patterns;
+                    const resultIndex = resultsInRenderedOrder.findIndex(
+                      (r) => {
+                        return r.id === id;
+                      },
+                    );
+                    const rank = resultIndex + 1;
                     return (
                       <SearchContext.Provider
                         key={id}
@@ -282,6 +328,10 @@ function SearchResults({
                           url={url}
                           description={description}
                           title={title}
+                          customOnClick={() =>
+                            searchTerm &&
+                            captureSearchEvent(searchTerm, rank, url)
+                          }
                           renderPreview={() => (
                             <PatternThumbnailPreview
                               alt={title}
@@ -304,6 +354,12 @@ function SearchResults({
                   {results.map(({id, url, meta}) => {
                     if (!meta.components) return null;
                     const {title, description, status, group} = meta.components;
+                    const resultIndex = resultsInRenderedOrder.findIndex(
+                      (r) => {
+                        return r.id === id;
+                      },
+                    );
+                    const rank = resultIndex + 1;
                     return (
                       <SearchContext.Provider
                         key={id}
@@ -314,6 +370,10 @@ function SearchResults({
                           description={description}
                           title={title}
                           status={status}
+                          customOnClick={() =>
+                            searchTerm &&
+                            captureSearchEvent(searchTerm, rank, url)
+                          }
                           renderPreview={() => (
                             <ComponentThumbnail title={title} group={group} />
                           )}
@@ -342,12 +402,24 @@ function SearchResults({
                   {results.map(({id, meta}) => {
                     if (!meta.tokens) return null;
                     const {token, category} = meta.tokens;
+                    const resultIndex = resultsInRenderedOrder.findIndex(
+                      (r) => {
+                        return r.id === id;
+                      },
+                    );
+                    const rank = resultIndex + 1;
                     return (
                       <SearchContext.Provider
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <TokenList.Item category={category} token={token} />
+                        <TokenList.Item
+                          category={category}
+                          token={token}
+                          customOnClick={captureSearchEvent}
+                          searchTerm={searchTerm}
+                          rank={rank}
+                        />
                       </SearchContext.Provider>
                     );
                   })}
@@ -363,12 +435,23 @@ function SearchResults({
                   {results.map(({id, meta}) => {
                     if (!meta.icons) return null;
                     const {icon} = meta.icons;
+                    const resultIndex = resultsInRenderedOrder.findIndex(
+                      (r) => {
+                        return r.id === id;
+                      },
+                    );
+                    const rank = resultIndex + 1;
                     return (
                       <SearchContext.Provider
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <IconGrid.Item icon={icon} />
+                        <IconGrid.Item
+                          icon={icon}
+                          customOnClick={captureSearchEvent}
+                          searchTerm={searchTerm}
+                          rank={rank}
+                        />
                       </SearchContext.Provider>
                     );
                   })}
