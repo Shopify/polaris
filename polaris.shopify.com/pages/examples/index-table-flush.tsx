@@ -43,18 +43,18 @@ function SimpleFlushIndexTableExample() {
         position={index}
       >
         <IndexTable.Cell flush>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>{location}</IndexTable.Cell>
         <IndexTable.Cell flush>
-          <Text variant="bodyMd" as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>
-          <Text variant="bodyMd" as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -78,12 +78,7 @@ function SimpleFlushIndexTableExample() {
             id: 'order-count',
             flush: true,
             title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
+              <Text as="span" alignment="end">
                 Order count
               </Text>
             ),
@@ -92,12 +87,7 @@ function SimpleFlushIndexTableExample() {
             id: 'amount-spent',
             flush: true,
             title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
+              <Text as="span" alignment="end">
                 Amount spent
               </Text>
             ),

@@ -33,7 +33,7 @@ export function EmptySearchResult({
       <Text variant="headingLg" as="p">
         {title}
       </Text>
-      <Text variant="bodyMd" color="subdued" as="span">
+      <Text color="subdued" as="span">
         {descriptionMarkup}
       </Text>
     </LegacyStack>

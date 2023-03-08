@@ -5,7 +5,6 @@ import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
-import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 import {Box} from '../Box';
 import {Bleed} from '../Bleed';
@@ -74,9 +73,7 @@ export function ChoiceList({
       paddingBlockEnd={{xs: '5', md: '1'}}
       visuallyHidden={titleHidden}
     >
-      <Text as="span" variant="bodyMd">
-        {title}
-      </Text>
+      {title}
     </Box>
   ) : null;
 
