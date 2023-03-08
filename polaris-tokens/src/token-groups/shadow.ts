@@ -53,6 +53,6 @@ export const shadow: {
   },
   'shadow-2xl': {
     value:
-      '0px 32px 32px rgba(23, 24, 24, 0.15), 0px 32px 56px -2px rgba(23, 24, 24, 0.16)',
+      '0px 32px 32px rgba(31, 33, 36, 0.15), 0px 32px 56px -2px rgba(31, 33, 36, 0.16)',
   },
 };
