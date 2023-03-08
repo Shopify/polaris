@@ -78,7 +78,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .HeaderWrapper-isSticky {
-  box-shadow: var(--p-shadow-base);
+  box-shadow: var(--p-shadow-md);
 }
 
 .HeaderContentWrapper {

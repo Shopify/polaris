@@ -57,7 +57,7 @@ $breakpoints-height-limit-up: '(min-height: #{breakpoint($height-limit + $vertic
   width: 100%;
   max-height: calc(100vh - #{$vertical-spacing});
   background: var(--p-surface);
-  box-shadow: var(--p-shadow-modal);
+  box-shadow: var(--p-shadow-2xl);
 
   @media (forced-colors: active) {
     border: var(--p-border-width-1) solid transparent;
