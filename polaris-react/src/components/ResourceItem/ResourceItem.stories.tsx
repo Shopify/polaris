@@ -44,7 +44,7 @@ export function Default() {
               name={title}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {title}
                 </Text>
               </h3>
@@ -91,7 +91,7 @@ export function WithMedia() {
               name={name}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -142,7 +142,7 @@ export function WithShortcutActions() {
               name={name}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -195,7 +195,7 @@ export function WithPersistedShortcutActions() {
               name={name}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -243,7 +243,7 @@ export function WithVerticalAlignment() {
               name={name}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>

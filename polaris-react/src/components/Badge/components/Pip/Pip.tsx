@@ -32,7 +32,7 @@ export function Pip({
 
   return (
     <span className={className}>
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <Text as="span" visuallyHidden>
         {accessibilityLabel}
       </Text>
     </span>

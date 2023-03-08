@@ -20,7 +20,7 @@ function LayoutExample() {
               <Text id="storeDetails" variant="headingMd" as="h2">
                 Store details
               </Text>
-              <Text variant="bodyMd" color="subdued" as="p">
+              <Text color="subdued" as="p">
                 Shopify and your customers will use this information to contact
                 you.
               </Text>

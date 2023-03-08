@@ -204,7 +204,7 @@ Use to align text on a vertical line.
 Use to give text a regular font weight.
 
 ```jsx
-<Text variant="bodyMd" as="p" fontWeight="regular">
+<Text as="p" fontWeight="regular">
   Sales this year
 </Text>
 ```
@@ -214,7 +214,7 @@ Use to give text a regular font weight.
 Use to give text a medium font weight.
 
 ```jsx
-<Text variant="bodyMd" as="p" fontWeight="medium">
+<Text as="p" fontWeight="medium">
   Sales this year
 </Text>
 ```
@@ -224,7 +224,7 @@ Use to give text a medium font weight.
 Use to give text a semibold font weight.
 
 ```jsx
-<Text variant="bodyMd" as="p" fontWeight="semibold">
+<Text as="p" fontWeight="semibold">
   Sales this year
 </Text>
 ```
@@ -234,7 +234,7 @@ Use to give text a semibold font weight.
 Use to give text a bold font weight.
 
 ```jsx
-<Text variant="bodyMd" as="p" fontWeight="bold">
+<Text as="p" fontWeight="bold">
   Sales this year
 </Text>
 ```
@@ -244,7 +244,7 @@ Use to give text a bold font weight.
 Use in combination with a symbol showing an increasing value to indicate an upward trend.
 
 ```jsx
-<Text variant="bodyMd" as="p" color="success">
+<Text as="p" color="success">
   Orders increased
 </Text>
 ```
@@ -254,7 +254,7 @@ Use in combination with a symbol showing an increasing value to indicate an upwa
 Use in combination with a symbol showing a decreasing value to indicate a downward trend.
 
 ```jsx
-<Text variant="bodyMd" as="p" color="critical">
+<Text as="p" color="critical">
   Orders decreased
 </Text>
 ```
@@ -264,7 +264,7 @@ Use in combination with a symbol showing a decreasing value to indicate a downwa
 Use to denote something that needs attention, or that merchants need to take action on.
 
 ```jsx
-<Text variant="bodyMd" as="p" color="warning">
+<Text as="p" color="warning">
   Scheduled maintenance
 </Text>
 ```
@@ -274,7 +274,7 @@ Use to denote something that needs attention, or that merchants need to take act
 Use to de-emphasize a piece of text that is less important to merchants than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
 
 ```jsx
-<Text variant="bodyMd" as="p" color="subdued">
+<Text as="p" color="subdued">
   No supplier listed
 </Text>
 ```

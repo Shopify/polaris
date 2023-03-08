@@ -16,7 +16,7 @@ function LayoutExample() {
         <Layout.Section oneHalf>
           <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 455 units available
               </Text>
             </LegacyCard.Section>
@@ -76,7 +76,7 @@ function LayoutExample() {
         <Layout.Section oneHalf>
           <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 301 units available
               </Text>
             </LegacyCard.Section>

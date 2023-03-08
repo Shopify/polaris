@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, CalloutCard} from '@shopify/polaris';
+import {Badge, CalloutCard, Text} from '@shopify/polaris';
 
 export default {
   component: CalloutCard,
@@ -51,7 +51,7 @@ export function WithCustomTitle() {
   const customTitle = (
     <>
       <span>Customize the style of your checkout </span>
-      <Badge status="info">New</Badge>
+      <Badge status="new">New</Badge>
     </>
   );
 

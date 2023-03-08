@@ -486,7 +486,7 @@ export function Listbox({
   return (
     <>
       {listeners}
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <Text as="span" visuallyHidden>
         <div aria-live="polite">{loading ? loading : null}</div>
       </Text>
       <ListboxContext.Provider value={listboxContext}>

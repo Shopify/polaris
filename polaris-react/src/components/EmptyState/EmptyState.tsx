@@ -79,7 +79,7 @@ export function EmptyState({
 
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="4">
-      <Text as="span" variant="bodyMd" color="subdued" alignment="center">
+      <Text as="span" color="subdued" alignment="center">
         {footerContent}
       </Text>
     </Box>
@@ -100,7 +100,7 @@ export function EmptyState({
   ) : null;
 
   const childrenMarkup = children ? (
-    <Text as="span" variant="bodyMd" color="subdued" alignment="center">
+    <Text as="span" color="subdued" alignment="center">
       {children}
     </Text>
   ) : null;

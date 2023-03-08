@@ -86,9 +86,9 @@ function ResourceDetailsLayout() {
       }}
     >
       <Columns columns={{xs: 1, md: '2fr 1fr'}} gap="4">
-        <AlphaStack fullWidth gap="4">
+        <AlphaStack gap="4">
           <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth gap="4">
+            <AlphaStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
@@ -96,7 +96,7 @@ function ResourceDetailsLayout() {
             </AlphaStack>
           </AlphaCard>
           <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth gap="4">
+            <AlphaStack gap="4">
               <SkeletonDisplayText size="small" />
               <Columns columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
@@ -105,9 +105,9 @@ function ResourceDetailsLayout() {
             </AlphaStack>
           </AlphaCard>
         </AlphaStack>
-        <AlphaStack fullWidth gap={{xs: '4', md: '2'}}>
+        <AlphaStack gap={{xs: '4', md: '2'}}>
           <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth gap="4">
+            <AlphaStack gap="4">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
@@ -121,7 +121,7 @@ function ResourceDetailsLayout() {
             </AlphaStack>
           </AlphaCard>
           <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth gap="4">
+            <AlphaStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="4rem" />
