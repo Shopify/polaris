@@ -31,7 +31,7 @@ describe('<SettingToggle />', () => {
     it('renders a button for the setting action', () => {
       const action = {
         content: 'Click me!',
-        onAction: noop,
+        onAction: () => {},
       };
       const toggle = mountWithApp(<SettingToggle action={action} />);
 
@@ -84,9 +84,34 @@ describe('<SettingToggle />', () => {
   });
 
   describe('enabled', () => {
-    it('renders enabled badge state', () => {
+    it('does not render an enabled status badge if no title is set', () => {
       const toggle = mountWithApp(
         <SettingToggle
+          settingStatus={{
+            enabled: {content: 'Enabled'},
+            disabled: {content: 'Disabled'},
+          }}
+          enabled
+        />,
+      );
+
+      expect(toggle).not.toContainReactComponent(Badge);
+    });
+
+    it('renders the default enabled status Badge when no settingStatus is provided', () => {
+      const toggle = mountWithApp(
+        <SettingToggle title="Setting name" enabled />,
+      );
+      expect(toggle).toContainReactComponent(Badge, {
+        status: 'success',
+        children: 'On',
+      });
+    });
+
+    it('renders the enabled status Badge with custom status if provided', () => {
+      const toggle = mountWithApp(
+        <SettingToggle
+          title="Setting name"
           settingStatus={{
             enabled: {content: 'On', status: 'info'},
             disabled: {content: 'Off'},
@@ -100,26 +125,52 @@ describe('<SettingToggle />', () => {
       });
     });
 
-    it('renders default enabled badge state', () => {
+    it('renders the enabled status Badge with custom content if provided', () => {
       const toggle = mountWithApp(
         <SettingToggle
+          title="Setting name"
           settingStatus={{
-            enabled: {content: 'On'},
-            disabled: {content: 'Off'},
+            enabled: {content: 'Enabled'},
+            disabled: {content: 'Disabled'},
           }}
           enabled
         />,
       );
       expect(toggle).toContainReactComponent(Badge, {
         status: 'success',
+        children: 'Enabled',
       });
     });
   });
 
   describe('disabled', () => {
-    it('renders disabled badge state', () => {
+    it('does not render an disabled status badge if no title is set', () => {
       const toggle = mountWithApp(
         <SettingToggle
+          settingStatus={{
+            enabled: {content: 'Enabled'},
+            disabled: {content: 'Disabled'},
+          }}
+          enabled={false}
+        />,
+      );
+      expect(toggle).not.toContainReactComponent(Badge);
+    });
+
+    it('renders the default disabled status Badge when no settingStatus is provided', () => {
+      const toggle = mountWithApp(
+        <SettingToggle title="Setting name" enabled={false} />,
+      );
+      expect(toggle).toContainReactComponent(Badge, {
+        status: undefined,
+        children: 'Off',
+      });
+    });
+
+    it('renders the disabled status Badge with custom status if provided', () => {
+      const toggle = mountWithApp(
+        <SettingToggle
+          title="Setting name"
           settingStatus={{
             enabled: {content: 'On'},
             disabled: {content: 'Off', status: 'critical'},
@@ -130,6 +181,23 @@ describe('<SettingToggle />', () => {
       expect(toggle).toContainReactComponent(Badge, {
         status: 'critical',
         children: 'Off',
+      });
+    });
+
+    it('renders the disabled status Badge with custom content if provided', () => {
+      const toggle = mountWithApp(
+        <SettingToggle
+          title="Setting name"
+          settingStatus={{
+            enabled: {content: 'Enabled'},
+            disabled: {content: 'Disabled'},
+          }}
+          enabled={false}
+        />,
+      );
+      expect(toggle).toContainReactComponent(Badge, {
+        status: undefined,
+        children: 'Disabled',
       });
     });
   });
@@ -165,5 +233,3 @@ describe('<SettingToggle />', () => {
     });
   });
 });
-
-function noop() {}
