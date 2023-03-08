@@ -86,28 +86,28 @@ function ResourceDetailsLayout() {
       }}
     >
       <Columns columns={{xs: 1, md: '2fr 1fr'}} gap="4">
-        <AlphaStack fullWidth gap="4">
-          <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth gap="4">
+        <Stack fullWidth gap="4">
+          <Card roundedAbove="sm">
+            <Stack fullWidth gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
               <Box border="divider" borderRadius="base" minHeight="20rem" />
-            </AlphaStack>
-          </AlphaCard>
-          <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth gap="4">
+            </Stack>
+          </Card>
+          <Card roundedAbove="sm">
+            <Stack fullWidth gap="4">
               <SkeletonDisplayText size="small" />
               <Columns columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
               </Columns>
-            </AlphaStack>
-          </AlphaCard>
-        </AlphaStack>
-        <AlphaStack fullWidth gap={{xs: '4', md: '2'}}>
-          <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth gap="4">
+            </Stack>
+          </Card>
+        </Stack>
+        <Stack fullWidth gap={{xs: '4', md: '2'}}>
+          <Card roundedAbove="sm">
+            <Stack fullWidth gap="4">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
@@ -118,19 +118,19 @@ function ResourceDetailsLayout() {
               <SkeletonLabel />
               <Divider borderStyle="divider" />
               <SkeletonBodyText />
-            </AlphaStack>
-          </AlphaCard>
-          <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth gap="4">
+            </Stack>
+          </Card>
+          <Card roundedAbove="sm">
+            <Stack fullWidth gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="4rem" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel />
               <SkeletonBodyText />
-            </AlphaStack>
-          </AlphaCard>
-        </AlphaStack>
+            </Stack>
+          </Card>
+        </Stack>
       </Columns>
     </Page>
   );

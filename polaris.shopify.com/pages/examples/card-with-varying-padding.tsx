@@ -1,10 +1,10 @@
-import {Card, Text, AlphaStack} from '@shopify/polaris';
+import {Card, Text, Stack} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
-    <AlphaStack gap="4" fullWidth>
+    <Stack gap="4" fullWidth>
       <Card>
         <Placeholder label="Content inside a card" />
       </Card>
@@ -17,7 +17,7 @@ function CardExample() {
       <Card padding="0">
         <Placeholder label="Content inside a card" />
       </Card>
-    </AlphaStack>
+    </Stack>
   );
 }
 

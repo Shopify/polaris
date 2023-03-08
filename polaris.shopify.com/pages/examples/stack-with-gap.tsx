@@ -1,16 +1,16 @@
 import React from 'react';
-import {AlphaStack, Text} from '@shopify/polaris';
+import {Stack, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function AlphaStackWithGapExample() {
+function StackWithGapExample() {
   return (
     <SpacingBackground width="320px">
-      <AlphaStack gap="5">
+      <Stack gap="5">
         <Placeholder width="320px" label="Stack child" />
         <Placeholder width="320px" />
         <Placeholder width="320px" />
-      </AlphaStack>
+      </Stack>
     </SpacingBackground>
   );
 }
@@ -61,4 +61,4 @@ const Placeholder = ({
   );
 };
 
-export default withPolarisExample(AlphaStackWithGapExample);
+export default withPolarisExample(StackWithGapExample);

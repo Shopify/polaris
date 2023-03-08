@@ -4,7 +4,7 @@ import {useI18n} from '../../utilities/i18n';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
-import {AlphaStack} from '../AlphaStack';
+import {Stack} from '../Stack';
 
 import styles from './SkeletonPage.scss';
 
@@ -63,7 +63,7 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <AlphaStack gap="4" align="center" fullWidth>
+    <Stack gap="4" align="center" fullWidth>
       <Box
         padding="0"
         paddingInlineStart={{sm: '6'}}
@@ -78,7 +78,7 @@ export function SkeletonPage({
           maxWidth: 'none',
         })}
       >
-        <AlphaStack fullWidth>
+        <Stack fullWidth>
           <Box
             paddingBlockStart={{xs: '4', md: '5'}}
             paddingBlockEnd={{xs: '4', md: '5'}}
@@ -94,8 +94,8 @@ export function SkeletonPage({
             </Inline>
           </Box>
           <Box paddingBlockEnd="2">{children}</Box>
-        </AlphaStack>
+        </Stack>
       </Box>
-    </AlphaStack>
+    </Stack>
   );
 }

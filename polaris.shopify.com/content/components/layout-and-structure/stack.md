@@ -1,5 +1,5 @@
 ---
-title: Alpha stack
+title: Stack
 description: Use to display elements vertically with items placed directly below the preceding item.
 category: Layout and structure
 keywords:
@@ -8,19 +8,19 @@ status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: alpha-stack-default.tsx
+  - fileName: stack-default.tsx
     title: Default
     description: >-
       By default, stack is left aligned and stacked items are spaced with 16px in between.
-  - fileName: alpha-stack-with-gap.tsx
+  - fileName: stack-with-gap.tsx
     title: Gap
     description: >-
       Gaps between stack children can be adjusted using the Space token.
-  - fileName: alpha-stack-with-full-width-children.tsx
+  - fileName: stack-with-full-width-children.tsx
     title: Full width
     description: >-
       Use a boolean to make Stack full width.
-  - fileName: alpha-stack-with-align.tsx
+  - fileName: stack-with-align.tsx
     title: Alignment
     description: >-
       Use to horizontally align Stack.

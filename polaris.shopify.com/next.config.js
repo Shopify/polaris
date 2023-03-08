@@ -212,11 +212,6 @@ const deprecated = [
     permanent: false,
   },
   {
-    source: '/components/stack',
-    destination: '/components/deprecated/stack',
-    permanent: false,
-  },
-  {
     source: '/components/subheading',
     destination: '/components/deprecated/subheading',
     permanent: false,
@@ -346,11 +341,6 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/alpha-stack',
-    destination: '/components/layout-and-structure/alpha-stack',
-    permanent: false,
-  },
-  {
     source: '/components/bleed',
     destination: '/components/layout-and-structure/bleed',
     permanent: false,
@@ -438,6 +428,11 @@ const layoutAndStructure = [
   {
     source: '/components/page',
     destination: '/components/layout-and-structure/page',
+    permanent: false,
+  },
+  {
+    source: '/components/layout-and-structure/alpha-stack',
+    destination: '/components/layout-and-structure/stack',
     permanent: false,
   },
   {

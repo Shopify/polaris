@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, Text, Stack} from '@shopify/polaris';
+import {Box, Stack} from '@shopify/polaris';
 
 export default {
   component: Stack,
@@ -9,88 +9,111 @@ export default {
 export function Default() {
   return (
     <Stack>
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </Stack>
   );
 }
 
-export function NonWrapping() {
+export function WithGap() {
   return (
-    <Stack wrap={false}>
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
+    <Stack gap="8">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </Stack>
   );
 }
 
-export function Spacing() {
+export function WithResponsiveGap() {
   return (
-    <Stack spacing="loose">
-      <Badge>Paid</Badge>
-      <Badge>Fulfilled</Badge>
+    <Stack gap={{xs: '4', md: '10'}}>
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </Stack>
   );
 }
 
-export function VerticalCentering() {
+export function WithAlignStart() {
   return (
-    <Stack alignment="center">
-      <Text variant="headingMd" as="h2">
-        Order
-        <br />
-        #1136
-        <br />
-        was paid
-      </Text>
-      <Badge>Paid</Badge>
-      <Badge>Fulfilled</Badge>
+    <Stack gap="4" align="start">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </Stack>
   );
 }
 
-export function FillAvailableSpaceProportionally() {
+export function WithAlignCenter() {
   return (
-    <Stack distribution="fill">
-      <Text variant="headingMd" as="h2">
-        Order #1136
-      </Text>
-      <Badge>Paid</Badge>
-      <Badge>Fulfilled</Badge>
+    <Stack gap="4" align="center">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </Stack>
   );
 }
 
-export function WhereItemsFillSpaceEvenly() {
+export function WithAlignEnd() {
   return (
-    <Stack distribution="fillEvenly">
-      <Text variant="headingMd" as="h2">
-        Order #1136
-      </Text>
-      <Badge>Paid</Badge>
-      <Badge>Fulfilled</Badge>
+    <Stack gap="4" align="end">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </Stack>
   );
 }
 
-export function WhereASingleItemFillsTheRemainingSpace() {
+export function WithFullWidthChildren() {
   return (
-    <Stack>
-      <Stack.Item fill>
-        <Text variant="headingMd" as="h2">
-          Order #1136
-        </Text>
-      </Stack.Item>
-      <Stack.Item>
-        <Badge>Paid</Badge>
-      </Stack.Item>
-      <Stack.Item>
-        <Badge>Fulfilled</Badge>
-      </Stack.Item>
+    <Stack gap="4" fullWidth>
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </Stack>
   );
 }

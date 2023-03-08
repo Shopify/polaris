@@ -7,7 +7,7 @@ import {
   DropZone,
   List,
   Page,
-  AlphaStack,
+  Stack,
   Thumbnail,
   Inline,
 } from '@shopify/polaris';
@@ -31,7 +31,7 @@ export function Default() {
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
     <div style={{padding: '0'}}>
-      <AlphaStack gap="4">
+      <Stack gap="4">
         {files.map((file, index) => (
           <Inline gap="4" align="center" key={index}>
             <Thumbnail
@@ -51,7 +51,7 @@ export function Default() {
             </div>
           </Inline>
         ))}
-      </AlphaStack>
+      </Stack>
     </div>
   );
 
@@ -86,7 +86,7 @@ export function WithImageFileUpload() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack gap="4">
+    <Stack gap="4">
       {files.map((file, index) => (
         <Inline gap="4" align="center" key={index}>
           <Thumbnail
@@ -102,7 +102,7 @@ export function WithImageFileUpload() {
           </div>
         </Inline>
       ))}
-    </AlphaStack>
+    </Stack>
   );
 
   const errorMessage = hasError && (
@@ -121,13 +121,13 @@ export function WithImageFileUpload() {
   );
 
   return (
-    <AlphaStack gap="4" fullWidth>
+    <Stack gap="4" fullWidth>
       {errorMessage}
       <DropZone accept="image/*" type="image" onDrop={handleDrop}>
         {uploadedFiles}
         {fileUpload}
       </DropZone>
-    </AlphaStack>
+    </Stack>
   );
 }
 
@@ -183,7 +183,7 @@ export function WithDropOnPage() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack gap="4">
+    <Stack gap="4">
       {files.map((file, index) => (
         <Inline gap="4" align="center" key={index}>
           <Thumbnail
@@ -203,7 +203,7 @@ export function WithDropOnPage() {
           </div>
         </Inline>
       ))}
-    </AlphaStack>
+    </Stack>
   );
 
   const uploadMessage = !uploadedFiles && <DropZone.FileUpload />;
@@ -244,7 +244,7 @@ export function AcceptsOnlySVGFiles() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack gap="4">
+    <Stack gap="4">
       {files.map((file, index) => (
         <Inline gap="4" align="center" key={index}>
           <Thumbnail
@@ -260,7 +260,7 @@ export function AcceptsOnlySVGFiles() {
           </div>
         </Inline>
       ))}
-    </AlphaStack>
+    </Stack>
   );
 
   const errorMessage = hasError && (
@@ -279,7 +279,7 @@ export function AcceptsOnlySVGFiles() {
   );
 
   return (
-    <AlphaStack gap="4" fullWidth>
+    <Stack gap="4" fullWidth>
       {errorMessage}
       <DropZone
         accept="image/svg+xml"
@@ -289,7 +289,7 @@ export function AcceptsOnlySVGFiles() {
       >
         {uploadedFiles}
       </DropZone>
-    </AlphaStack>
+    </Stack>
   );
 }
 
@@ -306,7 +306,7 @@ export function Nested() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack gap="4">
+    <Stack gap="4">
       {files.map((file, index) => (
         <Inline gap="4" align="center" key={index}>
           <Thumbnail
@@ -326,7 +326,7 @@ export function Nested() {
           </div>
         </Inline>
       ))}
-    </AlphaStack>
+    </Stack>
   );
 
   return (
@@ -377,7 +377,7 @@ export function WithCustomFileUploadText() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack gap="4">
+    <Stack gap="4">
       {files.map((file, index) => (
         <Inline gap="4" align="center" key={index}>
           <Thumbnail
@@ -397,7 +397,7 @@ export function WithCustomFileUploadText() {
           </div>
         </Inline>
       ))}
-    </AlphaStack>
+    </Stack>
   );
 
   return (
@@ -425,7 +425,7 @@ export function WithCustomFileDialogTrigger() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <AlphaStack gap="4">
+    <Stack gap="4">
       {files.map((file, index) => (
         <Inline gap="4" align="center" key={index}>
           <Thumbnail
@@ -445,7 +445,7 @@ export function WithCustomFileDialogTrigger() {
           </div>
         </Inline>
       ))}
-    </AlphaStack>
+    </Stack>
   );
 
   return (
