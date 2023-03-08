@@ -4,18 +4,16 @@
 $breakpointNav: $breakpointTablet;
 
 .Header {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0 1.5rem;
   height: var(--header-height);
   user-select: none;
-  background: var(--surface);
   z-index: 10;
-  display: none;
 }
 
 .NavAndContent {
@@ -40,116 +38,98 @@ $breakpointNav: $breakpointTablet;
   min-width: 18rem;
   max-width: 18rem;
   background: var(--surface-subdued);
-  padding: 4rem 4px 2rem 6px;
+  padding: 2rem;
   border-right: var(--border);
   user-select: none;
   @include custom-scrollbars;
   overscroll-behavior: contain;
-  overflow: scroll;
+  overflow: auto;
 
   @media screen and (max-width: $breakpointNav) {
     padding-top: 4.75rem;
   }
 
   .newSection {
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
   }
 
-  a {
+  .NavItem {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
-    white-space: pre;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--text);
 
-    &:hover {
-      color: var(--text-strong);
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .NavItemToggle {
+      width: 20px;
+      height: 20px;
+      background: url(/images/nav-item-toggle.svg) no-repeat center center;
+      opacity: 0.25;
+      transition: all 0.125s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &[aria-expanded='true'] {
+        transform: rotate(90deg);
+        opacity: 1;
+      }
     }
   }
 
-  > ul {
-    display: flex;
-    flex-direction: column;
+  > ul > li {
+    // First level links
+    > span a {
+      font-weight: var(--font-weight-400);
+      font-size: var(--font-size-600);
+      color: var(--text-strong);
+      padding: 0.15rem 0;
+    }
 
-    > li {
-      .NavItem {
-        font-size: var(--font-size-300);
-        letter-spacing: var(--letter-spacing-100);
-        color: var(--text-strong);
-        font-weight: vaR(--font-weight-500);
+    > ul {
+      position: relative;
+      padding-left: 1rem;
 
-        + ul > li:first-child {
-          padding-top: 0.125rem;
-        }
-
-        + ul > li:last-child {
-          padding-bottom: 1rem;
-        }
-
-        > a {
-          padding: 0.033rem 0;
-          color: var(--text-strong);
-
-          @media screen and (max-width: $breakpointNav) {
-            padding: 0.4rem 0;
-            font-size: var(--font-size-400);
-          }
-        }
-
-        &.isCurrent > a {
-          color: var(--primary);
-        }
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        bottom: 1.4rem;
+        background: var(--text-subdued);
+        width: 1px;
       }
 
-      > ul > li {
-        > .NavItem {
-          font-size: var(--font-size-200);
-          letter-spacing: var(--letter-spacing-300);
-          padding-left: 2.25rem;
-
-          > a {
-            color: var(--text-strong);
-            font-weight: var(--font-weight-400);
-          }
-
-          &.isCurrent > a {
-            color: var(--primary);
-          }
+      > li {
+        &:first-child {
+          padding-top: 0.1rem;
+        }
+        &:last-child {
+          padding-bottom: 1rem;
+        }
+        // Second level links
+        > span a {
+          font-size: var(--font-size-300);
+          color: var(--text);
+          padding: 0.25rem 0;
+          line-height: 1.3;
         }
 
         > ul > li {
-          > .NavItem {
+          &:last-child {
+            padding-bottom: 1rem;
+          }
+          // Third level links
+          > span a {
             font-size: var(--font-size-200);
-            letter-spacing: var(--letter-spacing-300);
-            padding-left: 2.75rem;
-
-            > a {
-              color: var(--text);
-            }
-
-            &.isCurrent > a {
-              color: var(--primary);
-            }
-          }
-        }
-      }
-
-      > ul > li > ul > li {
-        > .NavItem {
-          font-size: var(--font-size-200);
-          font-weight: var(--font-weight-400);
-          letter-spacing: var(--letter-spacing-300);
-          padding-left: 3rem;
-
-          > a {
             color: var(--text);
-            white-space: normal;
-          }
-
-          &.isCurrent > a {
-            color: var(--primary);
+            padding: 0.1rem 0 0.1rem 0.75rem;
           }
         }
       }
@@ -167,81 +147,6 @@ $breakpointNav: $breakpointTablet;
       box-shadow: 0 0 100px rgba(0, 0, 0, 0.33);
       height: 100vh;
       border-radius: 0;
-    }
-  }
-}
-
-.NavItem {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.025rem 0.75rem 0.025rem 1.5rem;
-  border-radius: var(--border-radius-300);
-  transition: box-shadow 0.2s linear;
-
-  &:hover {
-    background: var(--surface);
-  }
-
-  &.isCurrent {
-    // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.033), 0 2px 50px rgba(0, 0, 0, 0.033);
-
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 4px;
-      bottom: 4px;
-      left: 4px;
-      width: 4px;
-      background: var(--primary);
-      border-radius: var(--border-radius-400);
-      animation: fade-in 0.1s ease-out both;
-
-      @keyframes fade-in {
-        from {
-          transform: scale(0.8);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  a {
-    flex: 1;
-  }
-
-  .Toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 100%;
-    background-color: transparent;
-    background-image: url(/images/PlusMinor.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 12px 12px;
-    opacity: 0.66;
-
-    @media screen and (max-width: $breakpointNav) {
-      width: 36px;
-      height: 36px;
-    }
-
-    &:hover {
-      opacity: 1;
-      background-color: var(--surface-subdued);
-    }
-
-    &[aria-expanded='true'] {
-      background-image: url(/images/MinusMinor.svg);
     }
   }
 }
@@ -298,14 +203,19 @@ $breakpointNav: $breakpointTablet;
   align-items: center;
   color: inherit;
   gap: 0.5rem;
-  margin-left: 0.25rem;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-200);
-  color: var(--text-strong);
+  color: var(--text);
   margin-right: auto;
+  margin-bottom: 4.66rem;
 
   img {
-    opacity: 0.8;
+    filter: invert(1);
+    opacity: 0.9;
+    @include dark-mode {
+      filter: none;
+      opacity: 1;
+    }
   }
 
   p {

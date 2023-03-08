@@ -94,13 +94,13 @@ function Frame({darkMode, children}: Props) {
 
   return (
     <>
-      <div className={styles.Header}>
-        {showSkipToContentLink && (
-          <a className={styles.SkipToContentLink} href="#main">
-            Skip to content
-          </a>
-        )}
+      {showSkipToContentLink && (
+        <a className={styles.SkipToContentLink} href="#main">
+          Skip to content
+        </a>
+      )}
 
+      <div className={styles.Header}>
         <button
           id="menu-button"
           aria-label="Open menu"
@@ -113,16 +113,6 @@ function Frame({darkMode, children}: Props) {
           <NavToggleIcon />
         </button>
 
-        <Link href="/" className={styles.Logo}>
-          <Image
-            alt="Shopify logo"
-            src="/images/shopify-logo.svg"
-            width={24}
-            height={24}
-          />
-          Polaris
-        </Link>
-
         {isMounted && (
           <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
             {darkMode.value ? (
@@ -132,8 +122,6 @@ function Frame({darkMode, children}: Props) {
             )}
           </button>
         )}
-
-        <GlobalSearch />
       </div>
 
       <div className={styles.NavAndContent}>
@@ -141,6 +129,18 @@ function Frame({darkMode, children}: Props) {
           className={className(styles.Nav, navIsVisible && styles.isVisible)}
           id={NAV_ID}
         >
+          <Link href="/" className={styles.Logo}>
+            <Image
+              alt="Shopify logo"
+              src="/images/shopify-logo-bw.svg"
+              width={24}
+              height={24}
+            />
+            Polaris
+          </Link>
+
+          <GlobalSearch />
+
           <ul>
             <NavItem
               nav={nav}
@@ -258,7 +258,7 @@ function NavItem({
 
                   {isExpandable && !child.expanded && (
                     <button
-                      className={styles.Toggle}
+                      className={styles.NavItemToggle}
                       onClick={() => manuallyToggleSection(key, !isExpanded)}
                       aria-label="Toggle section"
                       aria-expanded={isExpanded}

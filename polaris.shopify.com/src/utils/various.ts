@@ -26,11 +26,15 @@ export const getComponentCategories = (): string[] => {
   const componentCategories: string[] = [];
 
   components.forEach((slug) => {
-    const {category = ''} = pages[slug].frontMatter;
-    if (!componentCategories.includes(category)) {
-      componentCategories.push(category);
+    const {category} = pages[slug].frontMatter;
+    if (category) {
+      if (!componentCategories.includes(category)) {
+        componentCategories.push(category);
+      }
     }
   });
+
+  console.log({componentCategories});
 
   return componentCategories;
 };

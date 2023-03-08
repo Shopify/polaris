@@ -1,5 +1,5 @@
 .TOC {
-  font-size: var(--font-size-300);
+  font-size: var(--font-size-100);
 
   > ul > li:not(:first-child) {
     padding-top: 0.25rem;
@@ -18,7 +18,7 @@
       position: absolute;
       left: 0;
       height: 1rem;
-      width: 3px;
+      width: 2px;
       background: var(--text);
       border-radius: 0 2px 2px 0;
       opacity: 0;
@@ -45,7 +45,7 @@
   &.isNested {
     ul ul {
       padding-top: 0.25rem;
-      font-size: var(--font-size-200);
+      font-size: var(--font-size-100);
 
       a {
         padding: 0.1rem 0 0.1rem 0.66rem;

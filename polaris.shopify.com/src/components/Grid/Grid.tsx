@@ -41,22 +41,6 @@ export const Grid = forwardRef(
     <Box
       as={as}
       ref={ref}
-      style={{
-        // @ts-expect-error The types for `style` don't support css vars
-        '--props-grid-gap':
-          typeof gap !== 'undefined'
-            ? `${0.25 * parseFloat(gap)}rem)`
-            : undefined,
-        '--props-grid-gap-x':
-          typeof gapX !== 'undefined'
-            ? `${0.25 * parseFloat(gapX)}rem)`
-            : undefined,
-        '--props-grid-gap-y':
-          typeof gapY !== 'undefined'
-            ? `${0.25 * parseFloat(gapY)}rem)`
-            : undefined,
-        '--props-grid-item-min-width': itemMinWidth,
-      }}
       className={[styles.Grid, condensed && styles.condensed, className]}
       {...props}
     />
@@ -84,14 +68,20 @@ export const GridItem = forwardRef(
       <Box as={as} ref={ref} className={styles.GridItem} {...searchAttributes}>
         <Link href={url} className={styles.Text}>
           <SearchResultHighlight />
+
           {renderPreview && (
             <div className={styles.Preview}>{renderPreview()}</div>
           )}
-          <h4>
-            {title} {status && <StatusBadge status={status} />}
-          </h4>
-          <p>{stripMarkdownLinks(description || '')}</p>
+
+          <div>
+            <h4>
+              {title} {status && <StatusBadge status={status} />}{' '}
+              <span>&rarr;</span>
+            </h4>
+            <p>{stripMarkdownLinks(description || '')}</p>
+          </div>
         </Link>
+
         {deepLinks && (
           <ul className={styles.DeepLinks}>
             {deepLinks.map(({url, text}) => (

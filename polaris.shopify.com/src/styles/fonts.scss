@@ -6,23 +6,23 @@
   color: var(--text-strong);
   font-size: var(--font-size-1200);
   font-weight: var(--font-weight-700);
-  letter-spacing: var(--letter-spacing-700);
+  letter-spacing: var(--letter-spacing-600);
   line-height: 1.15;
 }
 
 @mixin heading-2 {
   color: var(--text-strong);
-  font-size: var(--font-size-800);
-  letter-spacing: var(--letter-spacing-400);
-  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-900);
+  letter-spacing: var(--letter-spacing-500);
+  font-weight: var(--font-weight-400);
   line-height: 1.25;
 }
 
 @mixin heading-3 {
   color: var(--text-strong);
-  font-size: var(--font-size-600);
-  font-weight: var(--font-weight-700);
-  letter-spacing: var(--letter-spacing-200);
+  font-size: var(--font-size-700);
+  font-weight: var(--font-weight-400);
+  letter-spacing: var(--letter-spacing-100);
   line-height: 1.25;
 }
 

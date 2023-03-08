@@ -1,34 +1,42 @@
+@import '../../styles/mixins.scss';
+
 .FoundationsThumbnail {
   aspect-ratio: 16 / 9;
   display: flex;
+  padding: 0;
   align-items: center;
   justify-content: center;
-  background: var(--surface-subdued);
+  background: var(--text);
   border-radius: var(--border-radius-600);
   overflow: hidden;
 
+  @include dark-mode {
+    background: var(--surface-subdued);
+  }
+
   svg {
-    opacity: 0.7;
-    transform: scale(1.5);
+    opacity: 1;
+    transform: scale(2);
+    filter: invert(1);
   }
 
-  &[data-category='foundations'] {
-    background: var(--decorative-4);
-  }
+  // &[data-category='foundations'] {
+  //   background: var(--decorative-4);
+  // }
 
-  &[data-category='design'] {
-    background: var(--decorative-2);
-  }
+  // &[data-category='design'] {
+  //   background: var(--decorative-2);
+  // }
 
-  &[data-category='content'] {
-    background: var(--decorative-1);
-  }
+  // &[data-category='content'] {
+  //   background: var(--decorative-1);
+  // }
 
-  &[data-category='patterns'] {
-    background: var(--decorative-3);
-  }
+  // &[data-category='patterns'] {
+  //   background: var(--decorative-3);
+  // }
 
-  &[data-category='tools'] {
-    background: var(--decorative-4);
-  }
+  // &[data-category='tools'] {
+  //   background: var(--decorative-4);
+  // }
 }

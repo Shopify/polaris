@@ -23,8 +23,8 @@
 .Page {
   --toc-width: 16rem;
   display: flex;
-  gap: 2.5rem;
-  padding: 4rem;
+  gap: 4rem;
+  padding: 4rem 7rem 4rem 6rem;
   /* If the TOC is not visible, ensure the Post column is centered */
   justify-content: center;
 }
@@ -48,6 +48,7 @@
   p {
     display: flex;
     gap: 1rem;
+    font-size: var(--font-size-200);
   }
 
   a {
@@ -62,12 +63,12 @@
 .TOCWrapper {
   align-self: flex-start;
   position: sticky;
-  top: calc(var(--header-height) + 4.25rem);
+  top: calc(var(--header-height) + 4.5rem);
   padding: 0 0 0 1.5rem;
   width: var(--toc-width);
   overscroll-behavior: contain;
   overflow: auto;
-  box-shadow: inset 1px 0 var(--border-color);
+  // box-shadow: inset 1px 0 var(--border-color);
   @include layout-scrollbars();
 
   @media screen and (max-width: $breakpointDesktop) {

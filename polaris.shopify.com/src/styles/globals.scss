@@ -68,7 +68,7 @@
   }
 
   --font-weight-400: 400;
-  --font-weight-500: 500;
+  --font-weight-500: 450;
   --font-weight-600: 600;
   --font-weight-700: 700;
 
@@ -182,7 +182,7 @@ html {
 body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 body,
@@ -196,6 +196,7 @@ body,
   --text-strong: #1c1e1e;
   --text-subdued: #767676;
   --text-link: #4e52b8;
+  // --text-link: #111;
   --surface: #fff;
   --surface-attention: #ffffe1;
   --surface-code-inline: #f1f1f1;
@@ -230,18 +231,18 @@ body,
 }
 
 .dark-mode {
-  --text: #b0b0bc;
+  --text: #a8a8bd;
   --text-strong: #e7e7f1;
   --text-subdued: #85858e;
   --text-link: #8bb2ff;
   --surface-attention: #454500;
   --surface-information: #02382d;
   --surface-warning: #4c250f;
-  --surface: #161619;
-  --surface-subdued: #1e1e23;
+  --surface: #16161a;
+  --surface-subdued: #1c1c22;
   --surface-code-inline: #3b3b3c;
-  --primary: #1aab87;
-  --border-color: rgb(55, 55, 55);
+  --primary: #29c4b0;
+  --border-color: #24242d;
   --border: 1px solid var(--border-color);
   --card-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
   --card-shadow-hover: 0 4px 7px rgba(255, 255, 255, 0.1),

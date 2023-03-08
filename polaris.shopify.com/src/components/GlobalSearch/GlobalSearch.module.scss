@@ -5,17 +5,18 @@
   background: transparent;
   display: flex;
   align-items: center;
-  font-size: var(--font-size-200);
-  width: 14rem;
-  padding: 0.33rem 0.66rem;
-  border-radius: var(--border-radius-600);
+  justify-content: center;
+  font-size: var(--font-size-500);
+  font-weight: var(--font-weight-400);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-800);
   gap: 0.5rem;
-  background: var(--surface-subdued);
+  background: var(--surface);
   border: 1px solid var(--border-color);
-  box-shadow: inset 0 1px var(--border-color);
-  margin-left: 1rem;
   color: var(--text-strong);
   letter-spacing: var(--letter-spacing-300);
+  width: 100%;
+  margin-bottom: 2rem;
 
   @include dark-mode {
     box-shadow: none;
@@ -35,7 +36,7 @@
     margin-left: auto;
     border: var(--border);
     padding: 0 0.33rem;
-    border-radius: var(--border-radius-300);
+    border-radius: var(--border-radius-400);
     font-size: 13px;
   }
 }

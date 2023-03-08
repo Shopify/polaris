@@ -25,7 +25,7 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 
     @media screen and (max-width: $breakpointMobile) {
       margin-bottom: 1.5rem;
@@ -34,12 +34,14 @@
 
   h2 {
     @include heading-2;
-    margin-top: 3rem;
+    border-top: var(--border);
+    margin-top: 2.25rem;
+    padding-top: 2.25rem;
   }
 
   h3 {
     @include heading-3;
-    margin-top: 1.5rem;
+    margin-top: 1.75rem;
   }
 
   h4 {
@@ -53,6 +55,13 @@
     + ol {
       margin-top: -0.5rem;
     }
+  }
+
+  // Headings following an image needs
+  // a little extra breathing room
+  img + h3,
+  p:has(img) + h3 {
+    margin-top: 2.5rem;
   }
 
   ul {
@@ -222,9 +231,9 @@
 .Content.firstParagraphIsLede {
   > p:first-of-type {
     margin-top: 0;
-    margin-bottom: 1.5rem;
-    font-size: var(--font-size-600);
-    font-weight: var(--font-weight-500);
+    margin-bottom: 3rem;
+    font-size: var(--font-size-700);
+    font-weight: var(--font-weight-400);
     letter-spacing: var(--letter-spacing-300);
   }
 }
