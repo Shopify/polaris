@@ -31,7 +31,7 @@ This enables merchants to type a specific date or pick it from a calendar.
 
 ## Using this pattern
 
-This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`DatePicker`](/components/selection-and-input/date-picker), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
+This pattern uses the [`Card`](/components/layout-and-structure/card), [`DatePicker`](/components/selection-and-input/date-picker), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"sandboxContext","for":"example"}
@@ -116,7 +116,7 @@ function DatePickerExample() {
             />
           }
         >
-          <AlphaCard ref={datePickerRef}>
+          <Card ref={datePickerRef}>
             <DatePicker
               month={month}
               year={year}
@@ -124,7 +124,7 @@ function DatePickerExample() {
               onMonthChange={handleMonthChange}
               onChange={handleDateSelection}
             />
-          </AlphaCard>
+          </Card>
         </Popover>
       </Box>
     </Stack>

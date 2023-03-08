@@ -28,7 +28,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`Columns`](/components/layout-and-structure/columns) and [`Page`](/components/layout-and-structure/page) components.
+This pattern uses the [`Card`](/components/layout-and-structure/alpha-card), [`Stack`](/components/layout-and-structure/stack), [`Columns`](/components/layout-and-structure/columns) and [`Page`](/components/layout-and-structure/page) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -119,7 +119,7 @@ function ResourceDetailsLayout() {
               <Divider borderStyle="divider" />
               <SkeletonBodyText />
             </Stack>
-          </Cad>
+          </Card>
           <Card roundedAbove="sm">
             <Stack gap="4">
               <SkeletonLabel />
