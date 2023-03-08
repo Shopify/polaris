@@ -173,11 +173,6 @@ const actions = [
     destination: '/components/actions/page-actions',
     permanent: false,
   },
-  {
-    source: '/components/setting-toggle',
-    destination: '/components/actions/setting-toggle',
-    permanent: false,
-  },
 ];
 
 const deprecated = [
@@ -620,6 +615,16 @@ const selectionAndInput = [
   {
     source: '/components/forms/select',
     destination: '/components/selection-and-input/select',
+    permanent: false,
+  },
+  {
+    source: '/components/setting-toggle',
+    destination: '/components/selection-and-input/setting-toggle',
+    permanent: false,
+  },
+  {
+    source: '/components/actions/setting-toggle',
+    destination: '/components/selection-and-input/setting-toggle',
     permanent: false,
   },
   {
