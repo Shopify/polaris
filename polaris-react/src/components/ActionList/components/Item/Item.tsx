@@ -66,7 +66,7 @@ export function Item({
   const contentMarkup = helpText ? (
     <>
       <Box>{contentText}</Box>
-      <Text variant="bodyMd" color="subdued" as="span">
+      <Text color="subdued" as="span">
         {helpText}
       </Text>
     </>

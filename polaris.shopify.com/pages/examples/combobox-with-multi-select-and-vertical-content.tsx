@@ -68,7 +68,7 @@ function MultiselectTagComboboxExample() {
       return (
         <p>
           {start}
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {highlight}
           </Text>
           {end}

@@ -58,16 +58,14 @@ export function Choice({
     >
       <span className={styles.Control}>{children}</span>
       <span className={styles.Label}>
-        <Text as="span" variant="bodyMd">
-          {label}
-        </Text>
+        <span>{label}</span>
       </span>
     </label>
   );
 
   const helpTextMarkup = helpText ? (
     <div className={styles.HelpText} id={helpTextID(id)}>
-      <Text as="span" variant="bodyMd" color="subdued">
+      <Text as="span" color="subdued">
         {helpText}
       </Text>
     </div>

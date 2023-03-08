@@ -62,7 +62,7 @@ export function TwoColumnsWithEqualWidth() {
         <Layout.Section oneHalf>
           <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 455 units available
               </Text>
             </LegacyCard.Section>
@@ -108,7 +108,7 @@ export function TwoColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                        <Text fontWeight="bold" as="span">
                           {name}
                         </Text>
                       </h3>
@@ -124,7 +124,7 @@ export function TwoColumnsWithEqualWidth() {
         <Layout.Section oneHalf>
           <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 301 units available
               </Text>
             </LegacyCard.Section>
@@ -170,7 +170,7 @@ export function TwoColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                        <Text fontWeight="bold" as="span">
                           {name}
                         </Text>
                       </h3>
@@ -195,7 +195,7 @@ export function ThreeColumnsWithEqualWidth() {
         <Layout.Section oneThird>
           <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 455 units available
               </Text>
             </LegacyCard.Section>
@@ -241,7 +241,7 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                        <Text fontWeight="bold" as="span">
                           {name}
                         </Text>
                       </h3>
@@ -257,7 +257,7 @@ export function ThreeColumnsWithEqualWidth() {
         <Layout.Section oneThird>
           <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 301 units available
               </Text>
             </LegacyCard.Section>
@@ -303,7 +303,7 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                        <Text fontWeight="bold" as="span">
                           {name}
                         </Text>
                       </h3>
@@ -319,7 +319,7 @@ export function ThreeColumnsWithEqualWidth() {
         <Layout.Section oneThird>
           <LegacyCard title="Minneapolis" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 1931 units available
               </Text>
             </LegacyCard.Section>
@@ -365,7 +365,7 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                        <Text fontWeight="bold" as="span">
                           {name}
                         </Text>
                       </h3>

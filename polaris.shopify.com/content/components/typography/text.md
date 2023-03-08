@@ -106,42 +106,42 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <TextStyle variation="subdued">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" color="subdued">No supplier listed</Text>
++ <Text as="span" color="subdued">No supplier listed</Text>
 ```
 
 #### Strong
 
 ```diff
 - <TextStyle variation="strong">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" fontWeight="semibold" >No supplier listed</Text>
++ <Text as="span" fontWeight="semibold" >No supplier listed</Text>
 ```
 
 #### Positive
 
 ```diff
 - <TextStyle variation="positive">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" color="success">No supplier listed</Text>
++ <Text as="span" color="success">No supplier listed</Text>
 ```
 
 #### Negative
 
 ```diff
 - <TextStyle variation="negative">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" color="critical">No supplier listed</Text>
++ <Text as="span" color="critical">No supplier listed</Text>
 ```
 
 #### Warning
 
 ```diff
 - <TextStyle variation="warning">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" color="warning">No supplier listed</Text>
++ <Text as="span" color="warning">No supplier listed</Text>
 ```
 
 #### Code
 
 ```diff
 - <TextStyle variation="code">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span"><InlineCode>No supplier listed</InlineCode></Text>
++ <Text as="span"><InlineCode>No supplier listed</InlineCode></Text>
 ```
 
 ### VisuallyHidden
@@ -150,5 +150,5 @@ These are suggested replacements for existing text style components, but ultimat
 - <VisuallyHidden>
 -   <Heading>Title and description</Heading>
 - </VisuallyHidden>
-+ <Text visuallyHidden variant="bodySm" as="h2">Title and description</Text>
++ <Text visuallyHidden as="h2">Title and description</Text>
 ```

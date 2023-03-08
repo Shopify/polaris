@@ -49,19 +49,19 @@ function ClickThroughButtonIndexTableExample() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <Text variant="bodyMd" fontWeight="bold" as="span">
+            <Text fontWeight="bold" as="span">
               {name}
             </Text>
           </Button>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text variant="bodyMd" as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -84,12 +84,7 @@ function ClickThroughButtonIndexTableExample() {
           {
             id: 'order-count',
             title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
+              <Text as="span" alignment="end">
                 Order count
               </Text>
             ),
@@ -98,12 +93,7 @@ function ClickThroughButtonIndexTableExample() {
             id: 'amount-spent',
             hidden: false,
             title: (
-              <Text
-                as="span"
-                variant="bodySm"
-                fontWeight="medium"
-                alignment="end"
-              >
+              <Text as="span" alignment="end">
                 Amount spent
               </Text>
             ),
