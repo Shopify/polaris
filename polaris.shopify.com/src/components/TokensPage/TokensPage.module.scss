@@ -79,10 +79,12 @@
         padding: 0.66rem 0;
       }
 
-      li:nth-last-child(1),
-      li:nth-last-child(2),
-      li:nth-last-child(3),
-      li:nth-last-child(4) {
+      // Temporality disabling these styles until v11 ships and we get rid of the depth token group
+      // li:nth-last-child(1),
+      // li:nth-last-child(2),
+      // li:nth-last-child(3),
+      // li:nth-last-child(4) {
+      li:nth-last-child(1) {
         a {
           border-bottom: none;
         }
