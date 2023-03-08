@@ -4,7 +4,7 @@ import type {ComplexAction} from '../../types';
 import {buttonFrom} from '../Button';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {Text} from '../Text';
-import {Badge, BadgeProps} from '../Badge';
+import {Badge} from '../Badge';
 import {useMediaQuery} from '../../utilities/media-query';
 import {AlphaCard} from '../AlphaCard';
 import {AlphaStack} from '../AlphaStack';
@@ -12,11 +12,6 @@ import {Inline} from '../Inline';
 import {Box} from '../Box';
 import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
-
-interface SettingToggleBadge {
-  enabled: {content: string; status?: BadgeProps['status']};
-  disabled: {content: string; status?: BadgeProps['status']};
-}
 
 export interface SettingToggleProps {
   /** The action that toggles the setting on or off */
@@ -29,8 +24,6 @@ export interface SettingToggleProps {
   enabled?: boolean;
   /** The help link rendered in the setting */
   helpLink?: React.ReactNode;
-  /** Customization for the badge that indicates the enabled or disabled status of the setting when a `title` is set. Defaults to "On" when `enabled` and "Off" when disabled. */
-  settingStatus?: SettingToggleBadge;
   /** The name of the setting */
   title?: string;
 }
@@ -47,7 +40,6 @@ export function SettingToggle({
   title,
   description,
   helpLink,
-  settingStatus,
 }: SettingToggleProps) {
   const toggleId = useMemo(getUniqueSettingToggleId, []);
   const descriptionId = useMemo(getUniqueDescriptionId, []);
@@ -81,23 +73,11 @@ export function SettingToggle({
     );
   }
 
-  const defaultSettingStatus: SettingToggleBadge = {
-    enabled: {
-      status: 'success',
-      content: i18n.translate('Polaris.SettingToggle.status.enabled'),
-    },
-    disabled: {
-      content: i18n.translate('Polaris.SettingToggle.status.disabled'),
-    },
-  };
-
-  const badgeStatus = enabled
-    ? settingStatus?.enabled.status || defaultSettingStatus.enabled.status
-    : settingStatus?.disabled.status;
+  const badgeStatus = enabled ? 'success' : undefined;
 
   const badgeContent = enabled
-    ? settingStatus?.enabled.content || defaultSettingStatus.enabled.content
-    : settingStatus?.disabled.content || defaultSettingStatus.disabled.content;
+    ? i18n.translate('Polaris.SettingToggle.status.enabled')
+    : i18n.translate('Polaris.SettingToggle.status.disabled');
 
   const settingStatusMarkup = (
     <Badge

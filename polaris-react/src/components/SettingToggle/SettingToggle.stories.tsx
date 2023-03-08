@@ -28,7 +28,7 @@ export function WithOnlyChildContent() {
   );
 }
 
-export function WithTitleStatusAndDescription() {
+export function WithTitleAndDescription() {
   const [active, setActive] = useState(false);
 
   const handleToggle = useCallback(() => setActive((active) => !active), []);
