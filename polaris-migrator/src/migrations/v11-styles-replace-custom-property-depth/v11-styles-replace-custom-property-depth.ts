@@ -16,9 +16,6 @@ const replacementMaps = {
     '--p-shadow-modal': '--p-shadow-2xl',
     '--p-shadows-inset-button': '--p-shadow-none',
     '--p-shadows-inset-button-pressed': '--p-shadow-inset-md',
-    '--p-shadow-color-picker': '--p-shadow-inset-sm',
-    '--p-shadow-color-picker-dragger': '--p-shadow-sm',
-    '--p-hint-from-direct-light': '--p-shadow-sm',
   },
 };
 
