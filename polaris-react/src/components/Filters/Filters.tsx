@@ -18,10 +18,10 @@ import {Spinner} from '../Spinner';
 import {FilterPill, SearchField} from './components';
 import styles from './Filters.scss';
 
-const TRANSITION_DURATION = 150;
+const TRANSITION_DURATION = 'var(--p-duration-150)';
 
 const defaultStyle = {
-  transition: `opacity ${TRANSITION_DURATION}ms ease-in-out`,
+  transition: `opacity ${TRANSITION_DURATION} var(--p-ease)`,
   opacity: 0,
 };
 
@@ -184,6 +184,146 @@ export function Filters({
     );
   }, [loading, children]);
 
+  const queryFieldMarkup = hideQueryField ? null : (
+    <div className={styles.Container}>
+      <Box
+        paddingBlockStart={{
+          xs: '3',
+          md: '2',
+        }}
+        paddingBlockEnd={{
+          xs: '3',
+          md: '2',
+        }}
+        paddingInlineStart="2"
+        paddingInlineEnd="3"
+      >
+        <Inline
+          align="start"
+          blockAlign="center"
+          gap={{
+            xs: '4',
+            md: '3',
+          }}
+        >
+          <div
+            className={styles.SearchField}
+            style={
+              mountedState
+                ? {
+                    ...defaultStyle,
+                    ...transitionStyles[mountedState],
+                  }
+                : undefined
+            }
+          >
+            <SearchField
+              onChange={onQueryChange}
+              onFocus={onQueryFocus}
+              onBlur={onQueryBlur}
+              onClear={onQueryClear}
+              value={queryValue}
+              placeholder={queryPlaceholder}
+              focused={focused}
+              disabled={disabled || disableQueryField}
+            />
+          </div>
+          {additionalContent}
+        </Inline>
+      </Box>
+    </div>
+  );
+
+  const mountedStateStyles = mountedState
+    ? {
+        ...defaultStyle,
+        ...transitionStyles[mountedState],
+      }
+    : undefined;
+
+  const filtersMarkup =
+    hideFilters || filters.length === 0 ? null : (
+      <div
+        className={classNames(
+          styles.FiltersWrapper,
+          shouldShowAddButton &&
+            hasOneOrMorePinnedFilters &&
+            styles.FiltersWrapperWithAddButton,
+        )}
+        aria-live="polite"
+      >
+        <div className={classNames(styles.FiltersInner)}>
+          <div
+            className={classNames(styles.FiltersStickyArea)}
+            style={mountedStateStyles}
+          >
+            {pinnedFilters.map(({key: filterKey, ...pinnedFilter}) => {
+              const appliedFilter = appliedFilters?.find(
+                ({key}) => key === filterKey,
+              );
+              const handleFilterPillRemove = () => {
+                setLocalPinnedFilters((currentLocalPinnedFilters) =>
+                  currentLocalPinnedFilters.filter((key) => key !== filterKey),
+                );
+                appliedFilter?.onRemove(filterKey);
+              };
+
+              return (
+                <FilterPill
+                  key={filterKey}
+                  {...pinnedFilter}
+                  initialActive={hasMounted.current && !pinnedFilter.pinned}
+                  label={appliedFilter?.label || pinnedFilter.label}
+                  filterKey={filterKey}
+                  selected={appliedFilterKeys?.includes(filterKey)}
+                  onRemove={handleFilterPillRemove}
+                  disabled={pinnedFilter.disabled || disableFilters}
+                />
+              );
+            })}
+            {shouldShowAddButton && (
+              <div
+                className={classNames(
+                  styles.AddFilterActivator,
+                  hasOneOrMorePinnedFilters &&
+                    styles.AddFilterActivatorMultiple,
+                )}
+              >
+                <Popover
+                  active={popoverActive && !disabled}
+                  activator={addFilterActivator}
+                  onClose={togglePopoverActive}
+                >
+                  <ActionList actionRole="menuitem" items={additionalFilters} />
+                </Popover>
+              </div>
+            )}
+            {appliedFilters?.length || localPinnedFilters.length ? (
+              <div
+                className={classNames(
+                  styles.ClearAll,
+                  hasOneOrMorePinnedFilters &&
+                    shouldShowAddButton &&
+                    styles.MultiplePinnedFilterClearAll,
+                )}
+              >
+                <Link onClick={handleClearAllFilters} removeUnderline>
+                  <Text variant="bodySm" fontWeight="semibold" as="span">
+                    {i18n.translate('Polaris.Filters.clearFilters')}
+                  </Text>
+                </Link>
+              </div>
+            ) : null}
+          </div>
+        </div>
+        {hideQueryField ? (
+          <Box paddingInlineEnd="2" paddingBlockStart="2">
+            <Inline>{additionalContent}</Inline>
+          </Box>
+        ) : null}
+      </div>
+    );
+
   return (
     <div
       className={classNames(
@@ -191,148 +331,8 @@ export function Filters({
         hideQueryField && styles.hideQueryField,
       )}
     >
-      {hideQueryField ? null : (
-        <div className={styles.Container}>
-          <Box
-            paddingBlockStart={{
-              xs: '3',
-              md: '2',
-            }}
-            paddingBlockEnd={{
-              xs: '3',
-              md: '2',
-            }}
-            paddingInlineStart="2"
-            paddingInlineEnd="3"
-          >
-            <Inline
-              align="start"
-              blockAlign="center"
-              gap={{
-                xs: '4',
-                md: '3',
-              }}
-            >
-              <div
-                className={styles.SearchField}
-                style={
-                  mountedState
-                    ? {
-                        ...defaultStyle,
-                        ...transitionStyles[mountedState],
-                      }
-                    : undefined
-                }
-              >
-                <SearchField
-                  onChange={onQueryChange}
-                  onFocus={onQueryFocus}
-                  onBlur={onQueryBlur}
-                  onClear={onQueryClear}
-                  value={queryValue}
-                  placeholder={queryPlaceholder}
-                  focused={focused}
-                  disabled={disabled || disableQueryField}
-                />
-              </div>
-              {additionalContent}
-            </Inline>
-          </Box>
-        </div>
-      )}
-      {hideFilters || filters.length === 0 ? null : (
-        <div
-          className={classNames(
-            styles.FiltersWrapper,
-            shouldShowAddButton &&
-              hasOneOrMorePinnedFilters &&
-              styles.FiltersWrapperWithAddButton,
-          )}
-          aria-live="polite"
-        >
-          <div className={classNames(styles.FiltersInner)}>
-            <div
-              className={classNames(styles.FiltersStickyArea)}
-              style={
-                mountedState
-                  ? {
-                      ...defaultStyle,
-                      ...transitionStyles[mountedState],
-                    }
-                  : undefined
-              }
-            >
-              {pinnedFilters.map(({key: filterKey, ...pinnedFilter}) => {
-                const appliedFilter = appliedFilters?.find(
-                  ({key}) => key === filterKey,
-                );
-                const handleFilterPillRemove = () => {
-                  setLocalPinnedFilters((currentLocalPinnedFilters) =>
-                    currentLocalPinnedFilters.filter(
-                      (key) => key !== filterKey,
-                    ),
-                  );
-                  appliedFilter?.onRemove(filterKey);
-                };
-
-                return (
-                  <FilterPill
-                    key={filterKey}
-                    {...pinnedFilter}
-                    initialActive={hasMounted.current && !pinnedFilter.pinned}
-                    label={appliedFilter?.label || pinnedFilter.label}
-                    filterKey={filterKey}
-                    selected={appliedFilterKeys?.includes(filterKey)}
-                    onRemove={handleFilterPillRemove}
-                    disabled={pinnedFilter.disabled || disableFilters}
-                  />
-                );
-              })}
-              {shouldShowAddButton && (
-                <div
-                  className={classNames(
-                    styles.AddFilterActivator,
-                    hasOneOrMorePinnedFilters &&
-                      styles.AddFilterActivatorMultiple,
-                  )}
-                >
-                  <Popover
-                    active={popoverActive && !disabled}
-                    activator={addFilterActivator}
-                    onClose={togglePopoverActive}
-                  >
-                    <ActionList
-                      actionRole="menuitem"
-                      items={additionalFilters}
-                    />
-                  </Popover>
-                </div>
-              )}
-              {appliedFilters?.length || localPinnedFilters.length ? (
-                <div
-                  className={classNames(
-                    styles.ClearAll,
-                    hasOneOrMorePinnedFilters &&
-                      shouldShowAddButton &&
-                      styles.MultiplePinnedFilterClearAll,
-                  )}
-                >
-                  <Link onClick={handleClearAllFilters} removeUnderline>
-                    <Text variant="bodySm" fontWeight="semibold" as="span">
-                      {i18n.translate('Polaris.Filters.clearFilters')}
-                    </Text>
-                  </Link>
-                </div>
-              ) : null}
-            </div>
-          </div>
-          {hideQueryField ? (
-            <Box paddingInlineEnd="2" paddingBlockStart="2">
-              <Inline>{additionalContent}</Inline>
-            </Box>
-          ) : null}
-        </div>
-      )}
+      {queryFieldMarkup}
+      {filtersMarkup}
     </div>
   );
 }
