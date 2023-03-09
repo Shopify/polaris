@@ -52,6 +52,7 @@ function captureSearchEvent(
     searchTerm,
     resultRank,
     selectedResult,
+    category: 'engagement',
   };
 
   if (searchTerm) {
