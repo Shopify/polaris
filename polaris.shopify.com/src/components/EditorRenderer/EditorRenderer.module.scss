@@ -1,0 +1,49 @@
+.EditorRenderer {
+  img,
+  iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-400);
+  }
+
+  iframe {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.Tabs {
+  position: sticky;
+  top: var(--header-height);
+  display: flex;
+  gap: 0.33rem;
+  padding: 0 0 1rem;
+  margin: 2rem 0 1rem;
+  background: var(--surface);
+
+  button {
+    background: black;
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    font-weight: var(--font-weight-500);
+
+    &[aria-current='true'] {
+      background: var(--text-strong);
+      color: var(--surface);
+    }
+  }
+}
+
+.ImageText {
+  display: flex;
+  gap: 2rem;
+
+  :first-child {
+    margin-top: 0;
+  }
+
+  > * {
+    flex: 1;
+  }
+}

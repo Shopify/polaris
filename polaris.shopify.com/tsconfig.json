@@ -34,7 +34,8 @@
     "next-env.d.ts",
     "scripts/get-props/src/get-props.ts",
     "constants.js",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "content.ts"
   ],
   "exclude": ["node_modules", "app/examples/**/*", "scripts/get-props/testData"]
 }
