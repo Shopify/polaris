@@ -8,6 +8,8 @@ import {LegacyCard} from '../../LegacyCard';
 import {Page} from '../Page';
 import type {PageProps} from '../Page';
 import {Header} from '../components';
+import {Divider} from '../../Divider';
+import {Inline} from '../../Inline';
 
 window.matchMedia =
   window.matchMedia ||
@@ -296,26 +298,18 @@ describe('<Page />', () => {
   describe('divider', () => {
     it('renders border when divider is true and header props exist', () => {
       const wrapper = mountWithApp(<Page {...mockProps} divider />);
-      expect(wrapper).toContainReactComponent('div', {
-        className: 'divider',
-      });
+      expect(wrapper).toContainReactComponent(Divider);
     });
 
     it('does not render border when divider is true and no header props exist', () => {
       const wrapper = mountWithApp(<Page divider />);
-      expect(wrapper).not.toContainReactComponent('div', {
-        className: 'Content divider',
-      });
-      expect(wrapper).toContainReactComponent('div', {
-        className: 'Content',
-      });
+      expect(wrapper).not.toContainReactComponent(Divider);
+      expect(wrapper).toContainReactComponent(Inline);
     });
 
     it('does not render border when divider is false', () => {
       const wrapper = mountWithApp(<Page {...mockProps} divider={false} />);
-      expect(wrapper).not.toContainReactComponent('div', {
-        className: 'divider',
-      });
+      expect(wrapper).not.toContainReactComponent(Divider);
     });
   });
 
