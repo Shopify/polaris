@@ -292,17 +292,17 @@ $loading-panel-height: 53px;
   }
 
   .TableHeadingSortIcon-heading-align-end {
-    animation: hide-right-aligned-sort-button-icon var(--p-duration-100)
-      var(--p-ease-in);
+    animation: hide-right-aligned-sort-button-icon var(--p-duration-50);
   }
 }
 
 .TableHeadingSortButton-heading-align-end {
   transform: translateX(var(--p-space-5));
-  transition: all var(--p-duration-100) var(--p-ease-in);
+  transition-delay: var(--p-duration-50);
 
   &:hover,
   &:focus {
+    transition-delay: none;
     transform: translateX(var(--p-space-1));
   }
 }
@@ -316,7 +316,8 @@ $loading-panel-height: 53px;
 }
 
 .TableHeadingSortButton-heading-align-end-previously-sorted {
-  animation: hide-sort-button var(--p-duration-100) var(--p-ease-in);
+  animation: right-aligned-sort-button-slide-out var(--p-duration-50)
+    var(--p-ease);
 }
 
 .TableHeadingSortIcon {
@@ -325,7 +326,8 @@ $loading-panel-height: 53px;
   height: var(--p-space-5);
   width: var(--p-space-5);
 
-  &:not(.TableHeadingSortIcon-heading-align-end) {
+  &:not(.TableHeadingSortIcon-heading-align-end),
+  &:not(.TableHeadingSortButton-heading-align-end-previously-sorted) {
     transition: opacity var(--p-duration-200) var(--p-ease-in)
       var(--p-duration-100);
   }
@@ -334,7 +336,7 @@ $loading-panel-height: 53px;
 .TableHeadingSortButton:hover {
   .TableHeadingSortIcon-heading-align-end {
     animation: reveal-right-aligned-sort-button-icon var(--p-duration-200)
-      var(--p-ease-in);
+      var(--p-ease);
   }
 }
 
@@ -760,8 +762,12 @@ $scroll-bar-size: var(--p-space-2);
 }
 
 /* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- custom reset animation for right-aligned header */
-@keyframes hide-sort-button {
+@keyframes right-aligned-sort-button-slide-out {
   0% {
+    transform: translateX(var(--p-space-1));
+  }
+
+  80% {
     transform: translateX(var(--p-space-1));
   }
 
@@ -777,8 +783,11 @@ $scroll-bar-size: var(--p-space-2);
     opacity: 0;
   }
 
-  50% {
+  40% {
     opacity: 0;
+  }
+
+  50% {
     transform: translateX(0);
   }
 
@@ -794,15 +803,17 @@ $scroll-bar-size: var(--p-space-2);
     opacity: 1;
   }
 
-  50% {
+  20% {
+    opacity: 0;
     transform: translateX(0);
   }
 
-  75% {
-    opacity: 0;
+  90% {
+    transform: translateX(calc(var(--p-space-5) * -1));
   }
 
   100% {
+    opacity: 0;
     transform: translateX(calc(var(--p-space-5) * -1));
   }
 }
