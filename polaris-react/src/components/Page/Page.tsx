@@ -62,8 +62,8 @@ export function Page({
           </Box>
         )}
         <Box
-          paddingBlockEnd={!hasHeaderContent ? '2' : undefined}
-          paddingBlockStart={!hasHeaderContent ? {xs: '2', md: '5'} : {}}
+          paddingBlockEnd={hasHeaderContent ? undefined : '2'}
+          paddingBlockStart={hasHeaderContent ? undefined : {xs: '2', md: '5'}}
         >
           {children}
         </Box>
