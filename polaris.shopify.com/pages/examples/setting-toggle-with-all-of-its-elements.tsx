@@ -11,8 +11,8 @@ function WithAllOfItsElements() {
 
   return (
     <SettingToggle
-      title="Multipass"
-      description="Allow customers to log in with an external customer account system."
+      title="Customer privacy banner (California)"
+      description="To comply with the California Consumer Privacy Act (CCPA), show a banner to customers in California so they can choose to opt out of the sale of their data."
       action={{
         content: contentStatus,
         onAction: handleToggle,
@@ -20,8 +20,9 @@ function WithAllOfItsElements() {
       enabled={active}
     >
       <Box width="100%">
-        <Banner status="info">
-          Accounts must be optional or required in order to enable Multipass.
+        <Banner status="success">
+          Your online store is in compliance with California&apos;s privacy
+          laws.
         </Banner>
       </Box>
     </SettingToggle>

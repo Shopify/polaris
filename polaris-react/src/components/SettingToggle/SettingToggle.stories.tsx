@@ -22,7 +22,9 @@ export function WithOnlyChildContent() {
       enabled={active}
     >
       <Text>
-        Allow customers to log in with an external customer account system.
+        To comply with the California Consumer Privacy Act (CCPA), show a banner
+        to customers in California so they can choose to opt out of the sale of
+        their data.
       </Text>
     </SettingToggle>
   );
