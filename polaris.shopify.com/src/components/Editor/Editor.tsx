@@ -225,41 +225,29 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
   const editedPage = content.pages.find((page) => page.id === editedPageId);
   if (!editedPage) throw new Error('Page not found');
 
-  const pageBlocks = content.blocks.filter(
-    (block) => block.pageId === editedPageId,
-  );
+  function updatePage(newPage: Page) {
+    setContent((content) => ({
+      ...content,
+      pages: content.pages.map((page) =>
+        page.id === editedPageId ? newPage : page,
+      ),
+    }));
+  }
 
   return (
     <div>
       <input
         type="text"
         value={editedPage.title}
-        onChange={(evt) => {
-          setContent((content) => ({
-            ...content,
-            pages: content.pages.map((page) =>
-              page.id === editedPageId
-                ? {...page, title: evt.target.value}
-                : page,
-            ),
-          }));
-        }}
+        onChange={(evt) => updatePage({...editedPage, title: evt.target.value})}
       />
       <input
         min={0}
-        step={1}
         type="number"
         value={editedPage.order}
-        onChange={(evt) => {
-          setContent((content) => ({
-            ...content,
-            pages: content.pages.map((page) =>
-              page.id === editedPageId
-                ? {...page, order: parseInt(evt.target.value)}
-                : page,
-            ),
-          }));
-        }}
+        onChange={(evt) =>
+          updatePage({...editedPage, order: parseInt(evt.target.value)})
+        }
       />
 
       <BlockEditor pageId={editedPageId} parentBlockId={null} />
@@ -497,12 +485,7 @@ function ProgressiveDisclosureEditor({
       <input
         type="text"
         value={block.title}
-        onChange={(evt) =>
-          onChange({
-            ...block,
-            title: evt.target.value,
-          })
-        }
+        onChange={(evt) => onChange({...block, title: evt.target.value})}
       />
       <BlockEditor pageId={pageId} parentBlockId={block.id} />
     </div>
@@ -585,6 +568,8 @@ function ImagePicker({
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <Dialog.Backdrop></Dialog.Backdrop>
         <Dialog.Panel className={styles.ImagePicker}>
+          <button onClick={addImage}>Add image</button>
+
           {content.images.map((image) => (
             <div key={image.id}>
               {Object.values(ColorScheme).map((scheme) => {
@@ -606,52 +591,28 @@ function ImagePicker({
                       />
                     </button>
                   );
+                } else {
+                  return (
+                    <button
+                      key={image.id}
+                      onClick={() => setUploadTarget({id: image.id, scheme})}
+                    >
+                      Add {scheme} mode image
+                    </button>
+                  );
                 }
               })}
-
-              <div className={styles.Images}>
-                {content.images.map((image) => {
-                  return (
-                    <div key={image.id}>
-                      {Object.values(ColorScheme).map((scheme) => {
-                        const imageVariant = image.variants[scheme];
-                        return (
-                          <>
-                            {imageVariant ? (
-                              <Image
-                                src={`/uploads/${imageVariant.fileName}`}
-                                alt={imageVariant.alt}
-                                width={200}
-                                height={200}
-                              />
-                            ) : (
-                              <button
-                                onClick={() =>
-                                  setUploadTarget({id: image.id, scheme})
-                                }
-                              >
-                                Add
-                              </button>
-                            )}
-                          </>
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-                <button onClick={addImage}>Add image</button>
-              </div>
-
-              {uploadTarget && (
-                <input
-                  type="file"
-                  multiple={true}
-                  id="file-input"
-                  onChange={uploadImage}
-                />
-              )}
             </div>
           ))}
+
+          {uploadTarget && (
+            <input
+              type="file"
+              multiple={true}
+              id="file-input"
+              onChange={uploadImage}
+            />
+          )}
         </Dialog.Panel>
       </Dialog>
     </>

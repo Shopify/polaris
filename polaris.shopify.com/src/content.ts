@@ -171,7 +171,7 @@ const pages : Content['pages'] = [
   },
   {
     "id": "PqEewDXtYKEmwhNfhafU9",
-    "title": "New page",
+    "title": "New page is rad",
     "parentId": null,
     "order": 0
   }
@@ -343,6 +343,14 @@ const blocks : Content['blocks'] = [
     "title": "Learn more about this"
   },
   {
+    "id": "T06nesvV8mTQDNg5F0a7E",
+    "pageId": "PqEewDXtYKEmwhNfhafU9",
+    "order": 0,
+    "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
+    "blockType": "SandboxEmbed",
+    "embedUrl": ""
+  },
+  {
     "id": "-gungkycEGMVYR0a3BZsn",
     "order": 1,
     "parentBlockId": "qPHeJNAbcB2Bmx-lnGhbN",
@@ -365,28 +373,12 @@ const blocks : Content['blocks'] = [
     "youtubeUrl": ""
   },
   {
-    "id": "T06nesvV8mTQDNg5F0a7E",
-    "pageId": "PqEewDXtYKEmwhNfhafU9",
-    "order": 0,
-    "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
-    "blockType": "SandboxEmbed",
-    "embedUrl": ""
-  },
-  {
     "id": "K8XA3cFVai-Y8YF9bDLro",
     "pageId": "PqEewDXtYKEmwhNfhafU9",
     "order": 1,
     "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
     "blockType": "Markdown",
     "content": ""
-  },
-  {
-    "id": "W4BnBwNklY-IDD3mpC873",
-    "pageId": "PqEewDXtYKEmwhNfhafU9",
-    "order": 2,
-    "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
-    "blockType": "Image",
-    "imageId": null
   },
   {
     "id": "L1rP2BbrAGEdzoxBsFSqW",
@@ -421,12 +413,20 @@ const blocks : Content['blocks'] = [
     }
   },
   {
-    "id": "JM8sFAs5Ql8fIR3QRX0Ux",
+    "id": "hKfVZTNjAG00uAig3Kv-a",
+    "pageId": "PqEewDXtYKEmwhNfhafU9",
+    "order": 2,
+    "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
+    "blockType": "Image",
+    "imageId": null
+  },
+  {
+    "id": "W4BnBwNklY-IDD3mpC873",
     "pageId": "PqEewDXtYKEmwhNfhafU9",
     "order": 3,
     "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
-    "blockType": "YoutubeVideo",
-    "youtubeUrl": ""
+    "blockType": "Image",
+    "imageId": "l87Lbi0UaEPHZkYE1nd0K"
   },
   {
     "id": "fqCCADJ4F1VpdNRFFsxLp",
@@ -444,6 +444,14 @@ const blocks : Content['blocks'] = [
     "imageId": "rQ0jZtxpJ5zc0OAn7BqXt"
   },
   {
+    "id": "JM8sFAs5Ql8fIR3QRX0Ux",
+    "pageId": "PqEewDXtYKEmwhNfhafU9",
+    "order": 4,
+    "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
+    "blockType": "YoutubeVideo",
+    "youtubeUrl": ""
+  },
+  {
     "id": "M0KMI4oR6aKBMmGO1YbwH",
     "pageId": "PqEewDXtYKEmwhNfhafU9",
     "order": 4,
@@ -452,12 +460,28 @@ const blocks : Content['blocks'] = [
     "content": "asrgasrg"
   },
   {
+    "id": "IzwWcguqR6uZikLn6xCNY",
+    "pageId": "PqEewDXtYKEmwhNfhafU9",
+    "order": 5,
+    "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
+    "blockType": "Markdown",
+    "content": ""
+  },
+  {
     "id": "gX69tCoVybOxiUA-yeSux",
     "pageId": "PqEewDXtYKEmwhNfhafU9",
     "order": 5,
     "parentBlockId": null,
     "blockType": "Image",
     "imageId": null
+  },
+  {
+    "id": "S-katRAYSYQpaSW2wRXcI",
+    "pageId": "PqEewDXtYKEmwhNfhafU9",
+    "order": 6,
+    "parentBlockId": "FFYB3iQvccNKktxwtS-nj",
+    "blockType": "YoutubeVideo",
+    "youtubeUrl": ""
   }
 ];
 
@@ -519,6 +543,12 @@ const images : Content['images'] = [
         "alt": "",
         "width": 2112,
         "height": 1328
+      },
+      "dark": {
+        "fileName": "gradienta-LeG68PrXA6Y-unsplash (1).jpg",
+        "alt": "",
+        "width": 7200,
+        "height": 4800
       }
     }
   },
