@@ -83,6 +83,10 @@ export interface IndexFiltersProps
   canCreateNewView?: boolean;
   /** Callback invoked when a merchant creates a new view */
   onCreateNewView?: (name: string) => Promise<boolean>;
+  /** Optional override to the default aria-label for the button that toggles the filtering mode */
+  filteringAccessibilityLabel?: string;
+  /** Optional override to the default Tooltip message for the button that toggles the filtering mode */
+  filteringAccessibilityTooltip?: string;
 }
 
 export function IndexFilters({
@@ -114,6 +118,8 @@ export function IndexFilters({
   isFlushWhenSticky = false,
   canCreateNewView = true,
   onCreateNewView,
+  filteringAccessibilityLabel,
+  filteringAccessibilityTooltip,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -238,12 +244,12 @@ export function IndexFilters({
     beginEdit();
   }
 
-  const searchFilterTooltip = i18n.translate(
-    'Polaris.IndexFilters.searchFilterTooltip',
-  );
-  const searchFilterAriaLabel = i18n.translate(
-    'Polaris.IndexFilters.searchFilterAccessibilityLabel',
-  );
+  const searchFilterTooltip =
+    filteringAccessibilityTooltip ||
+    i18n.translate('Polaris.IndexFilters.searchFilterTooltip');
+  const searchFilterAriaLabel =
+    filteringAccessibilityLabel ||
+    i18n.translate('Polaris.IndexFilters.searchFilterAccessibilityLabel');
 
   const isLoading = loading || isActionLoading;
 
@@ -391,30 +397,6 @@ export function IndexFilters({
             </div>
           )}
         </Transition>
-        {/* {topContent ? <Container>{topContent}</Container> : null} */}
-        {/* {mode === IndexFiltersMode.Filtering && (
-          <>
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder={queryPlaceholder}
-              onQueryChange={handleChangeSearch}
-              onQueryClear={handleClearSearch}
-              onQueryFocus={onQueryFocus}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onClearAll={onClearAll}
-              disableFilters={disabled}
-              disableQueryField={disabled || disableQueryField}
-              loading={loading || isActionLoading}
-              focused
-            >
-              <Inline gap="3" align="start" blockAlign="center">
-                {updateButtonsMarkup}
-                {sortMarkup}
-              </Inline>
-            </Filters>
-          </>
-        )} */}
       </div>
     </div>
   );
