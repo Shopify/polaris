@@ -27,15 +27,26 @@ interface IconGridItemProps {
   icon: IconType;
   query?: string;
   activeIcon?: string;
+  customOnClick?: Function;
+  rank?: number;
+  searchTerm?: string;
 }
 
-function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
+function IconGridItem({
+  icon,
+  activeIcon,
+  query,
+  customOnClick,
+  rank,
+  searchTerm,
+}: IconGridItemProps) {
   const {id, name} = icon;
   const searchAttributes = useGlobalSearchResult();
 
   return (
     <li key={id}>
       <Link
+        legacyBehavior
         href={{
           pathname: '/icons',
           query: {
@@ -51,9 +62,16 @@ function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
         id={icon.id}
         {...searchAttributes}
       >
-        <SearchResultHighlight />
-        <Icon source={(polarisIcons as any)[id]} />
-        <p>{name}</p>
+        <a
+          onClick={() =>
+            customOnClick &&
+            customOnClick(searchTerm, rank, `/icons?icon=${id}`)
+          }
+        >
+          <SearchResultHighlight />
+          <Icon source={(polarisIcons as any)[id]} />
+          <p>{name}</p>
+        </a>
       </Link>
     </li>
   );
