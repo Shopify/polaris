@@ -8,6 +8,8 @@
   margin: var(--pc-tooltip-overlay-offset) var(--p-space-4) var(--p-space-4);
   opacity: 1;
   box-shadow: var(--p-shadow-popover);
+  box-shadow: 0 3px 6px -3px rgba(23, 24, 24, 0.08),
+    0 4px 16px -4px rgba(23, 24, 24, 0.12);
   // stylelint-disable-next-line -- Polaris component custom properties
   border-radius: var(--pc-tooltip-border-radius);
   pointer-events: none;
@@ -48,7 +50,7 @@
 }
 
 .measured:not(.instant) {
-  animation: var(--p-keyframes-appear-below) var(--p-duration-200)
+  animation: var(--p-keyframes-appear-below) var(--p-duration-50)
     var(--p-ease-in) var(--p-duration-100) 1 both;
 
   // stylelint-disable-next-line -- Not a breakpoint
@@ -58,7 +60,7 @@
 }
 
 .measured.positionedAbove:not(.instant) {
-  animation: var(--p-keyframes-appear-above) var(--p-duration-200)
+  animation: var(--p-keyframes-appear-above) var(--p-duration-50)
     var(--p-ease-in) var(--p-duration-100) 1 both;
 
   // stylelint-disable-next-line -- Not a breakpoint
