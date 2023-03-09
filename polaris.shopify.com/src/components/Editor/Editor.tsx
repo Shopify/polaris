@@ -305,10 +305,7 @@ function BlockEditor({
           }
           return thisBlock;
         });
-      return {
-        ...content,
-        blocks: sortedBlocks,
-      };
+      return {...content, blocks: sortedBlocks};
     });
   }
 
