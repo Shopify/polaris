@@ -281,7 +281,7 @@ describe('Tab', () => {
           expect(wrapper).toContainReactComponent(RenameViewModal);
 
           wrapper.act(() => {
-            wrapper.find(RenameViewModal)!.trigger('onPrimaryAction');
+            wrapper.find(RenameViewModal)!.trigger('onClickPrimaryAction');
           });
 
           expect(
@@ -310,7 +310,7 @@ describe('Tab', () => {
           expect(wrapper).toContainReactComponent(DuplicateViewModal);
 
           wrapper.act(() => {
-            wrapper.find(DuplicateViewModal)!.trigger('onPrimaryAction');
+            wrapper.find(DuplicateViewModal)!.trigger('onClickPrimaryAction');
           });
 
           expect(

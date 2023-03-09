@@ -13,8 +13,8 @@ describe('RenameViewModal', () => {
         onClose: jest.fn(),
         open: true,
         name: 'Foo',
-        onPrimaryAction: jest.fn(),
-        onSecondaryAction: jest.fn(),
+        onClickPrimaryAction: jest.fn(),
+        onClickSecondaryAction: jest.fn(),
         viewNames: ['Foo'],
       };
 
@@ -33,8 +33,8 @@ describe('RenameViewModal', () => {
         onClose: jest.fn(),
         open: true,
         name: 'Foo',
-        onPrimaryAction: jest.fn(),
-        onSecondaryAction: jest.fn(),
+        onClickPrimaryAction: jest.fn(),
+        onClickSecondaryAction: jest.fn(),
       };
       const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
@@ -46,13 +46,13 @@ describe('RenameViewModal', () => {
     });
   });
 
-  it('fires onPrimaryAction on the primary action', async () => {
+  it('fires onClickPrimaryAction on the primary action', async () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Baz',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
       viewNames: ['Foo'],
     };
     const wrapper = mountWithApp(<RenameViewModal {...props} />);
@@ -63,7 +63,7 @@ describe('RenameViewModal', () => {
       await wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
-    expect(props.onPrimaryAction).toHaveBeenCalledTimes(1);
+    expect(props.onClickPrimaryAction).toHaveBeenCalledTimes(1);
   });
 
   it('will change the value of the TextField when changed', () => {
@@ -71,8 +71,8 @@ describe('RenameViewModal', () => {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
@@ -89,13 +89,13 @@ describe('RenameViewModal', () => {
     });
   });
 
-  it('fires the onPrimaryAction with the changed value', () => {
+  it('fires the onClickPrimaryAction with the changed value', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
@@ -106,16 +106,16 @@ describe('RenameViewModal', () => {
       wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
-    expect(props.onPrimaryAction).toHaveBeenCalledWith('Foo Bar');
+    expect(props.onClickPrimaryAction).toHaveBeenCalledWith('Foo Bar');
   });
 
-  it('resets the value in the TextField once the onPrimaryAction has been invoked', async () => {
+  it('resets the value in the TextField once the onClickPrimaryAction has been invoked', async () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
@@ -136,13 +136,13 @@ describe('RenameViewModal', () => {
     });
   });
 
-  it('fires onSecondaryAction on the secondary action', () => {
+  it('fires onClickSecondaryAction on the secondary action', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<RenameViewModal {...props} />);
 
@@ -150,7 +150,7 @@ describe('RenameViewModal', () => {
       wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
     });
 
-    expect(props.onSecondaryAction).toHaveBeenCalledTimes(1);
+    expect(props.onClickSecondaryAction).toHaveBeenCalledTimes(1);
   });
 
   it('shows an error when the view name is already in use; protects againsts case sensitivity and whitespace', () => {
@@ -158,8 +158,8 @@ describe('RenameViewModal', () => {
       onClose: jest.fn(),
       open: true,
       name: 'Bar',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
       viewNames: ['Foo', 'Foo Bar'],
     };
     const wrapper = mountWithApp(<RenameViewModal {...props} />);
@@ -192,13 +192,13 @@ describe('RenameViewModal', () => {
     });
   });
 
-  it('resets the value in the TextField to the name prop once the onSecondaryAction has been invoked', () => {
+  it('resets the value in the TextField to the name prop once the onClickSecondaryAction has been invoked', () => {
     const props: RenameViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<RenameViewModal {...props} />);
 

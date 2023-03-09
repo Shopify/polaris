@@ -18,7 +18,7 @@ import type {TabProps, TabMeasurements} from './types';
 import {Tab, CreateViewModal, List, TabMeasurer, Panel} from './components';
 import styles from './Tabs.scss';
 
-export interface State {
+export interface TabsState {
   disclosureWidth: number;
   tabWidths: number[];
   visibleTabs: number[];
@@ -45,11 +45,11 @@ export interface TabsProps {
   /** Optional callback invoked when a Tab becomes selected. */
   onSelect?: (selectedTabIndex: number) => void;
   /** Whether to show the add new view Tab. */
-  showNewTab?: boolean;
+  canCreateNewView?: boolean;
   /** Label for the new view Tab. Will override the default of "Create new view" */
   newViewAccessibilityLabel?: string;
   /** Optional callback invoked when a merchant saves a new view from the Modal */
-  onSaveNewViewModal?: (value: string) => Promise<boolean>;
+  onCreateNewView?: (value: string) => Promise<boolean>;
   /** Fit tabs to container */
   fitted?: boolean;
   /** Text to replace disclosures horizontal dots */
@@ -62,9 +62,9 @@ export const Tabs = ({
   children,
   selected,
   newViewAccessibilityLabel,
-  showNewTab,
+  canCreateNewView,
   disabled,
-  onSaveNewViewModal,
+  onCreateNewView,
   onSelect,
   fitted,
   disclosureText,
@@ -78,7 +78,7 @@ export const Tabs = ({
   const selectedTabRef = useRef<HTMLElement>(null);
 
   const [state, setState] = useReducer(
-    (data: State, partialData: Partial<State>): State => {
+    (data: TabsState, partialData: Partial<TabsState>): TabsState => {
       return {...data, ...partialData};
     },
     {
@@ -149,10 +149,10 @@ export const Tabs = ({
   };
 
   const handleSaveNewViewModal = async (value: string) => {
-    if (!onSaveNewViewModal) {
+    if (!onCreateNewView) {
       return false;
     }
-    const hasExecuted = await onSaveNewViewModal?.(value);
+    const hasExecuted = await onCreateNewView?.(value);
     if (hasExecuted) {
       setState({
         modalSubmitted: true,
@@ -452,7 +452,7 @@ export const Tabs = ({
 
   const wrapperClassNames = classNames(
     styles.Wrapper,
-    showNewTab && styles.WrapperWithNewButton,
+    canCreateNewView && styles.WrapperWithNewButton,
   );
 
   const disclosureTabClassName = classNames(
@@ -600,12 +600,12 @@ export const Tabs = ({
               )}
             </ul>
 
-            {showNewTab && tabsToShow.length > 0 ? (
+            {canCreateNewView && tabsToShow.length > 0 ? (
               <div className={styles.NewTab}>
                 <CreateViewModal
                   open={isNewViewModalActive}
                   onClose={handleCloseNewViewModal}
-                  onPrimaryAction={handleSaveNewViewModal}
+                  onClickPrimaryAction={handleSaveNewViewModal}
                   viewNames={viewNames}
                   activator={
                     disabled ? (

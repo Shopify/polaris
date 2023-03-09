@@ -10,8 +10,8 @@ describe('CreateViewModal', () => {
   const defaultProps: CreateViewModalProps = {
     onClose: jest.fn(),
     open: true,
-    onPrimaryAction: jest.fn(),
-    onSecondaryAction: jest.fn(),
+    onClickPrimaryAction: jest.fn(),
+    onClickSecondaryAction: jest.fn(),
     viewNames: [],
     activator: <div>Create View</div>,
   };
@@ -49,7 +49,10 @@ describe('CreateViewModal', () => {
   it('fires onPrimaryAction on the primary action', () => {
     const onPrimaryAction = jest.fn();
     const wrapper = mountWithApp(
-      <CreateViewModal {...defaultProps} onPrimaryAction={onPrimaryAction} />,
+      <CreateViewModal
+        {...defaultProps}
+        onClickPrimaryAction={onPrimaryAction}
+      />,
     );
 
     wrapper.find(TextField)!.trigger('onChange', 'Foo');
@@ -80,7 +83,10 @@ describe('CreateViewModal', () => {
   it('fires the onPrimaryAction with the changed value', () => {
     const onPrimaryAction = jest.fn();
     const wrapper = mountWithApp(
-      <CreateViewModal {...defaultProps} onPrimaryAction={onPrimaryAction} />,
+      <CreateViewModal
+        {...defaultProps}
+        onClickPrimaryAction={onPrimaryAction}
+      />,
     );
 
     wrapper.act(() => {
@@ -118,7 +124,7 @@ describe('CreateViewModal', () => {
     const wrapper = mountWithApp(
       <CreateViewModal
         {...defaultProps}
-        onSecondaryAction={onSecondaryAction}
+        onClickSecondaryAction={onSecondaryAction}
       />,
     );
 
@@ -211,7 +217,7 @@ describe('CreateViewModal', () => {
       <CreateViewModal
         {...defaultProps}
         viewNames={viewNames}
-        onPrimaryAction={onPrimaryAction}
+        onClickPrimaryAction={onPrimaryAction}
       />,
     );
 

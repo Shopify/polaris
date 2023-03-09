@@ -12,8 +12,8 @@ import {FormLayout} from '../../../FormLayout';
 export interface CreateViewModalProps {
   open: boolean;
   onClose: () => void;
-  onPrimaryAction: (value: string) => Promise<boolean>;
-  onSecondaryAction?: () => void;
+  onClickPrimaryAction: (value: string) => Promise<boolean>;
+  onClickSecondaryAction?: () => void;
   activator: ModalProps['activator'];
   viewNames: string[];
 }
@@ -24,8 +24,8 @@ export function CreateViewModal({
   activator,
   open,
   onClose,
-  onPrimaryAction,
-  onSecondaryAction,
+  onClickPrimaryAction,
+  onClickSecondaryAction,
   viewNames,
 }: CreateViewModalProps) {
   const i18n = useI18n();
@@ -63,13 +63,13 @@ export function CreateViewModal({
       return;
     }
     setLoading(true);
-    await onPrimaryAction(value);
+    await onClickPrimaryAction(value);
     setLoading(false);
     setValue('');
     onClose();
   }
   function handleSecondaryAction() {
-    onSecondaryAction?.();
+    onClickSecondaryAction?.();
     setValue('');
     onClose();
   }

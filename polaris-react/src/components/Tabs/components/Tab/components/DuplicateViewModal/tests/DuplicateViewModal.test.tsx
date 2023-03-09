@@ -13,8 +13,8 @@ describe('DuplicateViewModal', () => {
         onClose: jest.fn(),
         open: true,
         name: 'Foo',
-        onPrimaryAction: jest.fn(),
-        onSecondaryAction: jest.fn(),
+        onClickPrimaryAction: jest.fn(),
+        onClickSecondaryAction: jest.fn(),
         viewNames: ['Foo'],
       };
 
@@ -33,8 +33,8 @@ describe('DuplicateViewModal', () => {
         onClose: jest.fn(),
         open: true,
         name: 'Foo',
-        onPrimaryAction: jest.fn(),
-        onSecondaryAction: jest.fn(),
+        onClickPrimaryAction: jest.fn(),
+        onClickSecondaryAction: jest.fn(),
       };
       const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
@@ -46,13 +46,13 @@ describe('DuplicateViewModal', () => {
     });
   });
 
-  it('fires onPrimaryAction on the primary action', async () => {
+  it('fires onClickPrimaryAction on the primary action', async () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
       viewNames: ['Foo'],
     };
     const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
@@ -62,7 +62,7 @@ describe('DuplicateViewModal', () => {
       await wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
-    expect(props.onPrimaryAction).toHaveBeenCalledTimes(1);
+    expect(props.onClickPrimaryAction).toHaveBeenCalledTimes(1);
   });
 
   it('will change the value of the TextField when changed', () => {
@@ -70,8 +70,8 @@ describe('DuplicateViewModal', () => {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
@@ -88,13 +88,13 @@ describe('DuplicateViewModal', () => {
     });
   });
 
-  it('fires the onPrimaryAction with the changed value', () => {
+  it('fires the onClickPrimaryAction with the changed value', () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
@@ -105,16 +105,16 @@ describe('DuplicateViewModal', () => {
       wrapper.find(Modal)!.triggerKeypath('primaryAction.onAction');
     });
 
-    expect(props.onPrimaryAction).toHaveBeenCalledWith('Foo Bar');
+    expect(props.onClickPrimaryAction).toHaveBeenCalledWith('Foo Bar');
   });
 
-  it('resets the value in the TextField once the onPrimaryAction has been invoked', async () => {
+  it('resets the value in the TextField once the onClickPrimaryAction has been invoked', async () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
@@ -135,13 +135,13 @@ describe('DuplicateViewModal', () => {
     });
   });
 
-  it('fires onSecondaryAction on the secondary action', () => {
+  it('fires onClickSecondaryAction on the secondary action', () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 
@@ -149,7 +149,7 @@ describe('DuplicateViewModal', () => {
       wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
     });
 
-    expect(props.onSecondaryAction).toHaveBeenCalledTimes(1);
+    expect(props.onClickSecondaryAction).toHaveBeenCalledTimes(1);
   });
 
   it('shows and error when the view name is already in use; protects against case sensitivity and whitespace', () => {
@@ -157,8 +157,8 @@ describe('DuplicateViewModal', () => {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
       viewNames: ['Foo', 'Bar', 'Baz'],
     };
     const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
@@ -194,13 +194,13 @@ describe('DuplicateViewModal', () => {
     });
   });
 
-  it('resets the value in the TextField to the name prop once the onSecondaryAction has been invoked', () => {
+  it('resets the value in the TextField to the name prop once the onClickSecondaryAction has been invoked', () => {
     const props: DuplicateViewModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
-      onPrimaryAction: jest.fn(),
-      onSecondaryAction: jest.fn(),
+      onClickPrimaryAction: jest.fn(),
+      onClickSecondaryAction: jest.fn(),
     };
     const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
 

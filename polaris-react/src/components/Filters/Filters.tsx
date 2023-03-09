@@ -196,7 +196,10 @@ export function Filters({
           md: '2',
         }}
         paddingInlineStart="2"
-        paddingInlineEnd="3"
+        paddingInlineEnd={{
+          xs: '4',
+          md: '3',
+        }}
       >
         <Inline
           align="start"

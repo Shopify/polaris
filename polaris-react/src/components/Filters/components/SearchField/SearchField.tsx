@@ -2,8 +2,6 @@ import React from 'react';
 
 import {TextField} from '../../../TextField';
 
-import styles from './SearchField.scss';
-
 export interface SearchFieldProps {
   onChange: (value: string) => void;
   onFocus?: () => void;
@@ -37,31 +35,21 @@ export function SearchField({
     }
   }
 
-  function handleFocus() {
-    onFocus?.();
-  }
-
-  function handleBlur() {
-    onBlur?.();
-  }
-
   return (
-    <div className={styles.SearchField}>
-      <TextField
-        value={value}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        label={placeholder}
-        labelHidden
-        autoComplete="off"
-        focused={focused}
-        placeholder={placeholder}
-        clearButton
-        onClearButtonClick={handleClear}
-        disabled={disabled}
-        borderless
-      />
-    </div>
+    <TextField
+      value={value}
+      onChange={handleChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      label={placeholder}
+      labelHidden
+      autoComplete="off"
+      focused={focused}
+      placeholder={placeholder}
+      clearButton
+      onClearButtonClick={handleClear}
+      disabled={disabled}
+      borderless
+    />
   );
 }

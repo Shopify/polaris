@@ -335,7 +335,7 @@ export function Default() {
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
         onQueryClear={() => {}}
-        onSortChange={setSortSelected}
+        onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
           onAction: onHandleCancel,
@@ -622,7 +622,7 @@ export function WithPinnedFilters() {
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
         onQueryClear={() => {}}
-        onSortChange={setSortSelected}
+        onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
           onAction: onHandleCancel,
@@ -907,7 +907,7 @@ export function Disabled() {
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
         onQueryClear={() => {}}
-        onSortChange={setSortSelected}
+        onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
           onAction: onHandleCancel,

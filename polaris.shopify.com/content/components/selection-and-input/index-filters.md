@@ -1,6 +1,6 @@
 ---
 title: Index filters
-description: IndexFilters is a composite component that combines the filtering, searching, and sorting functionality of an IndexTable, with view management for a particular index.
+description: Use index filters to allow merchants to filter, search, and sort their index table data and create unique saved views from the results.
 category: Selection and input
 keywords:
   - filters
@@ -23,58 +23,63 @@ examples:
 
 Merchants use filters to:
 
-- view different subsets of items in a list or table
-- filter by typing into a text field
-- filter by selecting filters or promoted filters
+- Create different subsets of list items
+- Search list items by typing a query into the text input
+- Sort list items by column
 
-The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. What the filters are and how they’re exposed to merchants is flexible.
+The way that merchants interact with index filters depends on the components that you decide to incorporate. It supports configuration of a search query input, sorting options, and one or more filters that can be made up of different inputs.
 
-Merchants use the view management functionality to:
+Merchants use the tabs in index tables to:
 
-- control which view is currently visible for an index table
-- rename the current view of an index table
-- duplicate the current view of an index table
-- edit the current filters and search terms of an index table
-- delete the current view of an index table
-- create a new view for an index table
+- Control which view is visible
+- Edit the applied filters and search terms of a view
+- Create, rename, duplicate, or delete views
 
-You have control over which actions can be performed on a view, and also the ability to create new views for a particular index table.
+You can create views and control which actions can be performed on a particular view.
 
-## Associated components
+## Anatomy
 
-- Refer to the Filters component for more information about the implementation of filters.
-- Refer to the Tabs component for more information about the implemenetation of the view management.
+<-- insert ![A diagram of the IndexFilters component showing the components it is composed of.](/images/components/selection-and-input/index-filters/index-filters-anatomy.png) -->
+Index filters are made up of the following:
+
+1. **Tabs**: A list of saved views. Each tab represents a subset of the list that has been sorted, filtered, and or queried and saved with a unique name. New views can be created directly from the tab list, or by editing the filters, query, or sort selection of an existing view and saving it as new.
+2. **Search and filter button**: The search and filter button allows merchants to toggle the index table from "View" mode to "Filter" mode. When clicked, the button reveals the search field and the filters that allow merchants to edit or create saved views.
+3. \*Search field\*\*: A text field that filters the list of items by the input as merchants type.
+4. **Filters**: A set of useful ways to narrow down the list based on the common actions merchants may need to take on the data. The filters should present merchants with form inputs that help them include or exclude list items from the view based on their data.
+5. **Sort button**: A button that activates a popover displaying a list of options merchants can choose from to sort the list items. Merchants can also choose whether the list should be sorted in ascending or descending order.
 
 ---
 
 ## Accessibility
 
-The filters component relies on the accessibility features of multiple other components:
+The filters component relies on the accessibility features of several other components:
 
-- [Text field](https://polaris.shopify.com/components/selection-and-input/text-field)
-- [Button](https://polaris.shopify.com/components/actions/button)
-- [Popover](https://polaris.shopify.com/components/overlays/popover)
+- [Popover](/components/overlays/popover)
+- [ChoiceList](/components/selection-and-input/choice-list)
+- [Modal](/components/overlays/modal)
+- [Tabs](/components/navigation/tabs)
+- [Tooltip](/components/overlays/tooltip)
 
 ### Maintain accessibility with custom features
 
 Since custom HTML can be passed to the component for additional actions, ensure that the filtering system you build is accessible as a whole.
 
-All merchants must:
+All merchants must be able to:
 
-- be able to identify and understand labels for all controls
-- be notified of state changes
-- be able to complete all actions with the keyboard
+- Identify and understand the labels of all controls
+- Be notified of state changes as they use the filter controls
+- Complete all actions using a keyboard
 
 ---
 
 ## Best practices
 
-The filters component should:
+Index filters should:
 
-- help reduce merchant effort by promoting the filtering categories that are most commonly used
-- include no more than 2 or 3 promoted filters
-- consider small screen sizes when designing the interface for each filter and the total number filters to include
-- use children only for content that’s related or relevant to filtering
+- Reduce merchant effort by promoting the filtering categories that are most commonly used
+- Include no more than 2 or 3 promoted filters
+- Consider small screen sizes when designing the interface for each filter and the total number filters to include
+- Use children only for content that’s related or relevant to filtering
 
 ---
 

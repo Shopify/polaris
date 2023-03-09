@@ -1021,7 +1021,7 @@ export function WithFiltering() {
         onClearAll={handleClearAll}
         sortOptions={sortOptions}
         sortSelected={sortValue}
-        onSortChange={handleSortChange}
+        onSort={handleSortChange}
         mode={mode}
         setMode={setMode}
         cancelAction={cancelAction}
@@ -1696,7 +1696,7 @@ export function WithAllOfItsElements() {
         onClearAll={handleClearAll}
         sortOptions={sortOptions}
         sortSelected={sortValue}
-        onSortChange={handleSortChange}
+        onSort={handleSortChange}
         mode={mode}
         setMode={setMode}
         cancelAction={cancelAction}
@@ -2834,7 +2834,7 @@ export function SmallScreenWithAllOfItsElements() {
           onClearAll={handleClearAll}
           sortOptions={sortOptions}
           sortSelected={sortValue}
-          onSortChange={handleSortChange}
+          onSort={handleSortChange}
           mode={mode}
           setMode={setMode}
           cancelAction={cancelAction}

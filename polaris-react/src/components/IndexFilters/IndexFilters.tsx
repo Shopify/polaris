@@ -12,7 +12,7 @@ import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
-import {IndexFiltersMode, useIsSticky} from './hooks';
+import {useIsSticky} from './hooks';
 import {
   Container,
   SortButton,
@@ -24,6 +24,7 @@ import type {
   IndexFiltersCancelAction,
   SortButtonChoice,
 } from './types';
+import {IndexFiltersMode} from './types';
 import styles from './IndexFilters.scss';
 
 const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
@@ -31,7 +32,7 @@ const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
 const TRANSITION_DURATION = 150;
 
 const defaultStyle = {
-  transition: `opacity ${TRANSITION_DURATION}ms ease-in-out`,
+  transition: `opacity ${TRANSITION_DURATION}ms var(--p-ease)`,
   opacity: 0,
 };
 
@@ -56,17 +57,17 @@ export interface IndexFiltersProps
   /** The currently selected sort choice. Required if using sorting */
   sortSelected?: string[];
   /** Optional callback invoked when a merchant changes the sort order. Required if using sorting */
-  onSortChange?: (value: string[]) => void;
+  onSort?: (value: string[]) => void;
   /** Optional callback when using saved views and changing the sort key */
-  onSortChangeKey?: (value: string) => void;
+  onSortKeyChange?: (value: string) => void;
   /** Optional callback when using saved views and changing the sort direction */
-  onSortChangeDirection?: (value: string) => void;
+  onSortDirectionChange?: (value: string) => void;
   /** The primary action to display  */
   primaryAction?: IndexFiltersPrimaryAction;
   /** The cancel action to display */
   cancelAction: IndexFiltersCancelAction;
   /** Optional callback invoked when a merchant begins to edit a view */
-  onStartEditing?: () => void;
+  onEditStart?: () => void;
   /** The current mode of the IndexFilters component. Used to determine which view to show */
   mode: IndexFiltersMode;
   /** Callback to set the mode of the IndexFilters component */
@@ -93,9 +94,9 @@ export function IndexFilters({
   tabs,
   selected,
   onSelect,
-  onSortChange,
-  onSortChangeKey,
-  onSortChangeDirection,
+  onSort,
+  onSortKeyChange,
+  onSortDirectionChange,
   sortOptions,
   sortSelected,
   queryValue = '',
@@ -108,7 +109,7 @@ export function IndexFilters({
   onQueryChange,
   onQueryFocus,
   onQueryClear,
-  onStartEditing,
+  onEditStart,
   disabled,
   disableQueryField,
   loading,
@@ -149,9 +150,9 @@ export function IndexFilters({
 
   const handleChangeSortButton = useCallback(
     (value: string[]) => {
-      onSortChange?.(value);
+      onSort?.(value);
     },
-    [onSortChange],
+    [onSort],
   );
 
   const handleChangeSearch = useCallback(
@@ -200,8 +201,8 @@ export function IndexFilters({
 
   const beginEdit = useCallback(() => {
     setMode(IndexFiltersMode.Filtering);
-    onStartEditing?.();
-  }, [onStartEditing, setMode]);
+    onEditStart?.();
+  }, [onEditStart, setMode]);
 
   const updateButtonsMarkup = useMemo(
     () => (
@@ -224,15 +225,15 @@ export function IndexFilters({
         choices={sortOptions}
         selected={sortSelected!}
         onChange={handleChangeSortButton}
-        onChangeKey={onSortChangeKey}
-        onChangeDirection={onSortChangeDirection}
+        onChangeKey={onSortKeyChange}
+        onChangeDirection={onSortDirectionChange}
         disabled={disabled}
       />
     );
   }, [
     handleChangeSortButton,
-    onSortChangeDirection,
-    onSortChangeKey,
+    onSortDirectionChange,
+    onSortKeyChange,
     sortOptions,
     sortSelected,
     disabled,
@@ -321,8 +322,8 @@ export function IndexFilters({
                           disabled={Boolean(
                             mode !== IndexFiltersMode.Default || disabled,
                           )}
-                          showNewTab={canCreateNewView}
-                          onSaveNewViewModal={onCreateNewView}
+                          canCreateNewView={canCreateNewView}
+                          onCreateNewView={onCreateNewView}
                         />
                       </div>
                       {isLoading && mdDown && (

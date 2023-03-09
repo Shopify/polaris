@@ -14,7 +14,7 @@ describe('IndexFilters', () => {
     onQueryChange: jest.fn(),
     onQueryClear: jest.fn(),
     queryValue: 'foo',
-    onSortChange: jest.fn(),
+    onSort: jest.fn(),
     queryPlaceholder: 'Bar',
     sortOptions: [
       {
@@ -136,15 +136,13 @@ describe('IndexFilters', () => {
     expect(defaultProps.onQueryChange).toHaveBeenCalledWith('bar');
   });
 
-  it('onSortChange gets called correctly', () => {
+  it('onSort gets called correctly', () => {
     const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
     wrapper.act(() => {
       wrapper.find(SortButton)!.trigger('onChange', ['customer-name asc']);
     });
 
-    expect(defaultProps.onSortChange).toHaveBeenCalledWith([
-      'customer-name asc',
-    ]);
+    expect(defaultProps.onSort).toHaveBeenCalledWith(['customer-name asc']);
   });
 
   describe('filters', () => {

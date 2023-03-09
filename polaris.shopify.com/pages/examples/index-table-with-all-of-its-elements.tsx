@@ -187,7 +187,7 @@ function IndexTableWithAllElementsExample() {
         onClearAll={handleClearAll}
         sortOptions={sortOptions}
         sortSelected={sortValue}
-        onSortChange={handleSortChange}
+        onSort={handleSortChange}
         mode={mode}
         setMode={setMode}
         cancelAction={cancelAction}

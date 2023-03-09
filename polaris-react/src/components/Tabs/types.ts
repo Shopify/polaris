@@ -2,14 +2,7 @@ import type {ReactNode} from 'react';
 
 import type {ActionListItemDescriptor} from '../../types';
 
-const VIEW_BUTTON_ACTION_TYPES = [
-  'rename',
-  'edit',
-  'edit-columns',
-  'duplicate',
-  'delete',
-] as const;
-type TabActions = typeof VIEW_BUTTON_ACTION_TYPES[number];
+type TabActions = 'rename' | 'edit' | 'edit-columns' | 'duplicate' | 'delete';
 
 interface TabActionDescriptor
   extends Omit<ActionListItemDescriptor, 'onAction'> {

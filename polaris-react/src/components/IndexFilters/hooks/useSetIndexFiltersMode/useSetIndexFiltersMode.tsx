@@ -1,10 +1,6 @@
 import {useState} from 'react';
 
-export enum IndexFiltersMode {
-  Default = 'DEFAULT',
-  Filtering = 'FILTERING',
-  EditingColumns = 'EDITING_COLUMNS',
-}
+import {IndexFiltersMode} from '../../types';
 
 export function useSetIndexFiltersMode(
   defaultMode: IndexFiltersMode = IndexFiltersMode.Default,

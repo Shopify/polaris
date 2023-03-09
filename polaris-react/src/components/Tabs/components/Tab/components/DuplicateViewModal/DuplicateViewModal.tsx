@@ -14,8 +14,8 @@ export interface DuplicateViewModalProps {
   helpText?: string;
   viewNames?: string[];
   onClose: () => void;
-  onPrimaryAction: (value: string) => Promise<void>;
-  onSecondaryAction?: () => void;
+  onClickPrimaryAction: (value: string) => Promise<void>;
+  onClickSecondaryAction?: () => void;
 }
 
 const MAX_VIEW_NAME_LENGTH = 40;
@@ -25,8 +25,8 @@ export function DuplicateViewModal({
   isModalLoading,
   name,
   onClose,
-  onPrimaryAction,
-  onSecondaryAction,
+  onClickPrimaryAction,
+  onClickSecondaryAction,
   helpText,
   viewNames,
 }: DuplicateViewModalProps) {
@@ -62,12 +62,12 @@ export function DuplicateViewModal({
     if (isPrimaryActionDisabled) {
       return;
     }
-    await onPrimaryAction(value);
+    await onClickPrimaryAction(value);
     setValue('');
     onClose();
   }
   function handleSecondaryAction() {
-    onSecondaryAction?.();
+    onClickSecondaryAction?.();
     setValue(name);
     onClose();
   }

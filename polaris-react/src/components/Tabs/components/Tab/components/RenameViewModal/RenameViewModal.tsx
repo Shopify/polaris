@@ -14,8 +14,8 @@ export interface RenameViewModalProps {
   helpText?: string;
   viewNames?: string[];
   onClose: () => void;
-  onPrimaryAction: (value: string) => Promise<void>;
-  onSecondaryAction?: () => void;
+  onClickPrimaryAction: (value: string) => Promise<void>;
+  onClickSecondaryAction?: () => void;
 }
 
 export function RenameViewModal({
@@ -23,8 +23,8 @@ export function RenameViewModal({
   isModalLoading,
   name,
   onClose,
-  onPrimaryAction,
-  onSecondaryAction,
+  onClickPrimaryAction,
+  onClickSecondaryAction,
   helpText,
   viewNames,
 }: RenameViewModalProps) {
@@ -60,12 +60,12 @@ export function RenameViewModal({
     if (isPrimaryActionDisabled) {
       return;
     }
-    await onPrimaryAction(value);
+    await onClickPrimaryAction(value);
     setValue('');
     onClose();
   }
   function handleSecondaryAction() {
-    onSecondaryAction?.();
+    onClickSecondaryAction?.();
     setValue(name);
     onClose();
   }

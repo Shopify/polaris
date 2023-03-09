@@ -329,7 +329,7 @@ function IndexFiltersWithFilteringMode() {
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
         onQueryClear={() => {}}
-        onSortChange={setSortSelected}
+        onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
           onAction: onHandleCancel,

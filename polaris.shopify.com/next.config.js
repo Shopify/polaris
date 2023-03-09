@@ -608,11 +608,6 @@ const selectionAndInput = [
     permanent: false,
   },
   {
-    source: '/components/legacy-filters',
-    destination: '/components/selection-and-input/legacy-filters',
-    permanent: false,
-  },
-  {
     source: '/components/radio-button',
     destination: '/components/selection-and-input/radio-button',
     permanent: false,

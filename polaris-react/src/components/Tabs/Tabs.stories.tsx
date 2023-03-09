@@ -131,7 +131,7 @@ export function WithActions() {
       tabs={tabs}
       selected={selected}
       onSelect={handleTabChange}
-      showNewTab
+      canCreateNewView
     />
   );
 }

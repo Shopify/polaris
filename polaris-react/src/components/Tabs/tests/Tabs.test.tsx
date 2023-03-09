@@ -77,7 +77,7 @@ describe('Tabs', () => {
     onSelect: jest.fn(),
     selected: 1,
     newViewAccessibilityLabel: 'create a new label',
-    showNewTab: true,
+    canCreateNewView: true,
   };
 
   describe('focus management', () => {
@@ -569,17 +569,19 @@ describe('Tabs', () => {
     });
   });
 
-  describe('showNewTab', () => {
-    it('does not render the new tab Tab if showNewTab=false', () => {
-      const wrapper = mountWithApp(<Tabs {...mockProps} showNewTab={false} />);
+  describe('canCreateNewView', () => {
+    it('does not render the new tab Tab if canCreateNewView=false', () => {
+      const wrapper = mountWithApp(
+        <Tabs {...mockProps} canCreateNewView={false} />,
+      );
 
       expect(wrapper).not.toContainReactComponent(Tab, {
         content: mockProps.newViewAccessibilityLabel,
       });
     });
 
-    it('renders the new tab Tab if showNewTab=true', () => {
-      const wrapper = mountWithApp(<Tabs {...mockProps} showNewTab />);
+    it('renders the new tab Tab if canCreateNewView=true', () => {
+      const wrapper = mountWithApp(<Tabs {...mockProps} canCreateNewView />);
 
       expect(wrapper).toContainReactComponent(Tab, {
         content: mockProps.newViewAccessibilityLabel,
@@ -589,13 +591,13 @@ describe('Tabs', () => {
       });
     });
 
-    it('onSaveNewViewModal gets called correctly', () => {
-      const onSaveNewViewModal = jest.fn();
+    it('onCreateNewView gets called correctly', () => {
+      const onCreateNewView = jest.fn();
       const wrapper = mountWithApp(
         <Tabs
           {...mockProps}
-          showNewTab
-          onSaveNewViewModal={onSaveNewViewModal}
+          canCreateNewView
+          onCreateNewView={onCreateNewView}
         />,
       );
       wrapper.act(() => {
@@ -611,10 +613,10 @@ describe('Tabs', () => {
       });
 
       wrapper.act(() => {
-        wrapper.find(CreateViewModal)!.trigger('onPrimaryAction', 'foo');
+        wrapper.find(CreateViewModal)!.trigger('onClickPrimaryAction', 'foo');
       });
 
-      expect(onSaveNewViewModal).toHaveBeenCalledWith('foo');
+      expect(onCreateNewView).toHaveBeenCalledWith('foo');
     });
   });
 

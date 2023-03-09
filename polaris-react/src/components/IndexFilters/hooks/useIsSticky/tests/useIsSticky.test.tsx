@@ -2,7 +2,7 @@ import React from 'react';
 import {intersectionObserver} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {IndexFiltersMode} from '../../useSetIndexFiltersMode';
+import {IndexFiltersMode} from '../../../types';
 import {useIsSticky} from '..';
 
 interface Props {
@@ -26,7 +26,7 @@ function Component({disabled}: Props) {
   );
 }
 
-describe('useIsBulkActionsSticky', () => {
+describe('useIsSticky', () => {
   let getBoundingClientRectSpy: jest.SpyInstance;
 
   beforeEach(() => {

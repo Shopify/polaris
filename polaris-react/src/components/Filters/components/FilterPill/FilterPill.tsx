@@ -107,9 +107,11 @@ export function FilterPill({
   );
 
   const wrappedLabel = (
-    <Text variant={mdDown ? 'bodyMd' : 'bodySm'} as="span">
-      {label}
-    </Text>
+    <div className={styles.Label}>
+      <Text variant={mdDown ? 'bodyMd' : 'bodySm'} as="span">
+        {label}
+      </Text>
+    </div>
   );
 
   const activator = (

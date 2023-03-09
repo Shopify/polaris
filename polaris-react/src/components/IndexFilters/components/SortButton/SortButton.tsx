@@ -94,30 +94,26 @@ export function SortButton({
     return currentKey === selectedValueKey;
   });
 
-  const tooltipActivator = (
-    <FilterButton
-      onClick={handleClick}
-      aria-label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
-      disabled={disabled}
-    >
-      <Icon source={SortMinor} color="base" />
-    </FilterButton>
-  );
-
-  const activator = (
+  const sortButton = (
     <Tooltip
       content={i18n.translate('Polaris.IndexFilters.SortButton.tooltip')}
       preferredPosition="above"
       hoverDelay={400}
     >
-      {tooltipActivator}
+      <FilterButton
+        onClick={handleClick}
+        aria-label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
+        disabled={disabled}
+      >
+        <Icon source={SortMinor} color="base" />
+      </FilterButton>
     </Tooltip>
   );
 
   return (
     <Popover
       active={active && !disabled}
-      activator={activator}
+      activator={sortButton}
       autofocusTarget="first-node"
       onClose={handleClose}
       fluidContent

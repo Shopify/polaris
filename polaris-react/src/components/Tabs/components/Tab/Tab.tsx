@@ -102,22 +102,17 @@ export const Tab = forwardRef(
       };
     }, [onToggleModal, onTogglePopover]);
 
-    // A tab can start selected when it is moved from the disclosure dropdown
-    // into the main list, so we need to send focus from the tab to the panel
-    // on mount and update
+    // A tab can start selected when it is moved from the disclosure dropdown into the main list, so we need to send focus from the tab to the panel on mount and update
     useEffect(() => {
       if (measuring) {
         return;
       }
 
-      // Because of timing issues with the render, we may still have the old,
-      // in-disclosure version of the tab that has focus. Check for this
-      // as a second indicator of focus
+      // Because of timing issues with the render, we may still have the old, in-disclosure version of the tab that has focus. Check for this as a second indicator of focus
       const itemHadFocus =
         focused || (document.activeElement && document.activeElement.id === id);
 
-      // If we just check for selected, the panel for the active tab will
-      // be focused on page load, which we don’t want
+      // If we just check for selected, the panel for the active tab will be focused on page load, which we don’t want
       if (
         itemHadFocus &&
         selected &&
@@ -376,7 +371,7 @@ export const Tab = forwardRef(
               name={content}
               open={isRenameViewModalActive}
               onClose={handleCloseRenameViewModal}
-              onPrimaryAction={handleSaveRenameViewModal}
+              onClickPrimaryAction={handleSaveRenameViewModal}
               isModalLoading={isModalLoading}
               viewNames={viewNames}
             />
@@ -386,7 +381,7 @@ export const Tab = forwardRef(
               open={isDuplicateViewModalActive}
               name={i18n.translate('Polaris.Tabs.Tab.copy', {name: content})}
               onClose={handleCloseDuplicateViewModal}
-              onPrimaryAction={handleSaveDuplicateViewModal}
+              onClickPrimaryAction={handleSaveDuplicateViewModal}
               isModalLoading={isModalLoading}
               viewNames={viewNames || []}
             />
