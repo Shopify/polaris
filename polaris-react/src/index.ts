@@ -211,7 +211,10 @@ export {
   useSetIndexFiltersMode,
   IndexFiltersMode,
 } from './components/IndexFilters';
-export type {IndexFiltersProps} from './components/IndexFilters';
+export type {
+  IndexFiltersProps,
+  SortButtonChoice,
+} from './components/IndexFilters';
 
 export {IndexTable} from './components/IndexTable';
 export type {IndexTableProps} from './components/IndexTable';
