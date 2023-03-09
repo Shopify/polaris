@@ -47,6 +47,7 @@ function IconGridItem({
     <li key={id}>
       <Link
         legacyBehavior
+        passHref
         href={{
           pathname: '/icons',
           query: {
@@ -55,14 +56,14 @@ function IconGridItem({
           },
         }}
         scroll={false}
-        className={className(
-          styles.Icon,
-          activeIcon === id && styles.isSelected,
-        )}
         id={icon.id}
         {...searchAttributes}
       >
         <a
+          className={className(
+            styles.Icon,
+            activeIcon === id && styles.isSelected,
+          )}
           onClick={() =>
             customOnClick &&
             customOnClick(searchTerm, rank, `/icons?icon=${id}`)
