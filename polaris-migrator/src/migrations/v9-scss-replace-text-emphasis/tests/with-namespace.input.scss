@@ -1,17 +1,18 @@
 @use 'global-styles/legacy-polaris-v8';
 
 .normal {
-  @include legacy-polaris-v8.text-emphasis-normal;
+  font-weight: var(--p-font-weight-regular);
+  color: var(--p-text);
 }
 
 .strong {
-  @include legacy-polaris-v8.text-emphasis-strong;
+  font-weight: var(--p-font-weight-semibold);
 }
 
 .subdued {
-  @include legacy-polaris-v8.text-emphasis-subdued;
+  color: var(--p-text-subdued);
 }
 
 .subdued-with-args {
-  @include legacy-polaris-v8.text-emphasis-subdued(green);
+  color: var(--p-text-subdued);
 }
