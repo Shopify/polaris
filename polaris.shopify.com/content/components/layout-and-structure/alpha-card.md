@@ -49,4 +49,4 @@ Cards should:
 - Use headings that set clear expectations about the card’s purpose
 - Stick to single user flows or break more complicated flows into multiple sections
 - Avoid too many call-to-action buttons or links and only one primary call to action per card
-- Use calls to action on the bottom of the card for next steps and use the space in the upper right corner of the card for persistent, optional actions (such as an Edit link)
+- Use calls to action on the bottom of the card for next steps and use the space in the upper right corner of the card for persistent, optional actions (such as Edit)
