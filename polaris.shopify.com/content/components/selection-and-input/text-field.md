@@ -214,8 +214,7 @@ Use the placeholder to provide information that’s required to use the text fie
 Text fields have standard keyboard support.
 
 - Merchants who rely on the keyboard expect to move focus to each text field using the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
-- If the `type` is set to `number`, then merchants can use the up and down arrow keys to adjust the value typed into the field
-- Using the `stepperShownOnInteraction` prop if the `type` is set to `number` allows to hide the stepper arrows by default and show them when the field is interacted with to mimic the default browser behaviour
+- If the `type` is set to `number`, then merchants can use the up and down arrow keys to adjust the value typed into the field when hovering over or focusing the field to make the arrows appear
 - Using the `disabled` prop will prevent the text field from receive keyboard focus or inputs
 - The `readOnly` prop allows focus on the text field but prevents input or editing
 - The `inputMode` prop can be used to bring up a relevant keyboard for merchants on mobile; it’s passed down to the input as an [`inputmode` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)

@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
-import {useToggle} from '../../utilities/use-toggle';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -119,8 +118,6 @@ interface NonMutuallyExclusiveProps {
   role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
-  /** Hide stepper by default, reveal on hover and focus */
-  stepperShownOnInteraction?: boolean;
   /** Enable automatic completion by the browser. Set to "off" when you do not want the browser to fill in info */
   autoComplete: string;
   /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
@@ -204,7 +201,6 @@ export function TextField({
   id: idProp,
   role,
   step,
-  stepperShownOnInteraction,
   autoComplete,
   max,
   maxLength,
@@ -234,11 +230,6 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
-  const {
-    value: mouseEnter,
-    setTrue: handleMouseEnter,
-    setFalse: handleMouseLeave,
-  } = useToggle(false);
 
   const id = useUniqueId('TextField', idProp);
 
@@ -276,7 +267,6 @@ export function TextField({
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
-  const spinnerHidden = stepperShownOnInteraction && !focus && !mouseEnter;
 
   const className = classNames(
     styles.TextField,
@@ -410,11 +400,7 @@ export function TextField({
   );
 
   const spinnerMarkup =
-    type === 'number' &&
-    step !== 0 &&
-    !disabled &&
-    !readOnly &&
-    !spinnerHidden ? (
+    type === 'number' && step !== 0 && !disabled && !readOnly ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
@@ -568,16 +554,7 @@ export function TextField({
       requiredIndicator={requiredIndicator}
     >
       <Connected left={connectedLeft} right={connectedRight}>
-        <div
-          className={className}
-          onClick={handleClick}
-          onMouseEnter={
-            stepperShownOnInteraction ? handleMouseEnter : undefined
-          }
-          onMouseLeave={
-            stepperShownOnInteraction ? handleMouseLeave : undefined
-          }
-        >
+        <div className={className} onClick={handleClick}>
           {prefixMarkup}
           {inputMarkup}
           {suffixMarkup}
