@@ -1,6 +1,11 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, RangeSlider, Stack, TextField} from '@shopify/polaris';
+import {
+  LegacyCard,
+  RangeSlider,
+  LegacyStack,
+  TextField,
+} from '@shopify/polaris';
 
 export default {
   component: RangeSlider,
@@ -181,7 +186,7 @@ export function WithDualThumb() {
           step={step}
           onChange={handleRangeSliderChange}
         />
-        <Stack distribution="equalSpacing" spacing="extraLoose">
+        <LegacyStack distribution="equalSpacing" spacing="extraLoose">
           <TextField
             label="Min money spent"
             type="number"
@@ -206,7 +211,7 @@ export function WithDualThumb() {
             onBlur={handleUpperTextFieldBlur}
             autoComplete="off"
           />
-        </Stack>
+        </LegacyStack>
       </div>
     </LegacyCard>
   );

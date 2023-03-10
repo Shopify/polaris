@@ -24,7 +24,7 @@ import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 // eslint-disable-next-line import/no-deprecated
 import {Sheet} from '../Sheet';
-import {Stack} from '../Stack';
+import {LegacyStack} from '../LegacyStack';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
 
@@ -191,7 +191,6 @@ class FiltersInner extends Component<CombinedProps, State> {
             <div className={styles.FilterTriggerLabelContainer}>
               <h3 className={styles.FilterTriggerTitle}>
                 <Text
-                  variant="bodyMd"
                   as="span"
                   color={
                     this.props.disabled || filter.disabled
@@ -355,7 +354,7 @@ class FiltersInner extends Component<CombinedProps, State> {
           </Button>
         ) : (
           <div className={styles.EmptyFooterState}>
-            <Text variant="bodyMd" color="subdued" as="span">
+            <Text color="subdued" as="span">
               <p>{i18n.translate('Polaris.Filters.noFiltersApplied')}</p>
             </Text>
           </div>
@@ -430,7 +429,7 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const helpTextMarkup = helpText ? (
       <div id="FiltersHelpText" className={styles.HelpText}>
-        <Text variant="bodyMd" color="subdued" as="span">
+        <Text color="subdued" as="span">
           {helpText}
         </Text>
       </div>
@@ -575,10 +574,10 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     return (
       <div ref={this.focusNode}>
-        <Stack vertical spacing="tight">
+        <LegacyStack vertical spacing="tight">
           {filter.filter}
           {clearButtonMarkup}
-        </Stack>
+        </LegacyStack>
       </div>
     );
   }

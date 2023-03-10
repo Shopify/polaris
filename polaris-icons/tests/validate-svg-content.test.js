@@ -134,6 +134,25 @@ allIconFiles.forEach(
         ).toStrictEqual([]);
       });
 
+      it('does not contain any percentages', () => {
+        expect(iconSource).not.toContain('%');
+      });
+
+      it('only has nodes that use numbers to represent values in the [fill-opacity] attributes', () => {
+        const nodesWithDisallowedValues = selectAll(
+          '[fillOpacity], [opacity]',
+          iconAst,
+        ).filter(({properties: {opacity, fillOpacity}}) =>
+          [opacity, fillOpacity]
+            .filter(Boolean)
+            .some((property) => typeof property !== 'number'),
+        );
+
+        expect(
+          nodeSources(nodesWithDisallowedValues, iconSource),
+        ).toStrictEqual([]);
+      });
+
       if (expectedFillColors) {
         const expectedFillsString = expectedFillColors.join(',');
 

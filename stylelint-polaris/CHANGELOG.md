@@ -1,5 +1,19 @@
 # Changelog
 
+## 8.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`7d1c4f1db`](https://github.com/Shopify/polaris/commit/7d1c4f1db629ad9cfc68f65bd5f704127d10136e)]:
+  - @shopify/polaris-tokens@6.8.0
+
+## 8.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907)]:
+  - @shopify/polaris-tokens@6.7.0
+
 ## 8.0.0
 
 ### Major Changes

@@ -218,7 +218,7 @@ export function InAnApplication() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <Text variant="bodySm" as="span" visuallyHidden>
+    <Text as="span" visuallyHidden>
       <a
         id="SkipToContentTarget"
         ref={skipToContentRef}
@@ -557,7 +557,7 @@ export function WithAnOffset() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <Text variant="bodySm" as="span" visuallyHidden>
+    <Text as="span" visuallyHidden>
       <a
         id="SkipToContentTarget"
         ref={skipToContentRef}

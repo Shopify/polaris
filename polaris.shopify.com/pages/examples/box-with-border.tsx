@@ -15,14 +15,14 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#F4E8FD',
+        background: '#BBD4F7',
         height: height,
         width: width,
       }}
     >
       <div
         style={{
-          color: '#26282C',
+          color: '#1F2124',
         }}
       >
         <Text as="h2" variant="bodyMd" fontWeight="medium">

@@ -323,7 +323,7 @@ export {ResourceList} from './components/ResourceList';
 export type {ResourceListProps} from './components/ResourceList';
 
 export {Scrollable} from './components/Scrollable';
-export type {ScrollableProps} from './components/Scrollable';
+export type {ScrollableProps, ScrollableRef} from './components/Scrollable';
 
 export {ScrollLock} from './components/ScrollLock';
 
@@ -450,3 +450,4 @@ export {
   SelectionType as IndexTableSelectionType,
 } from './utilities/index-provider';
 export {useBreakpoints} from './utilities/breakpoints';
+export {useReadOnlyEphemeralPresenceManager as useEphemeralPresenceManager} from './utilities/ephemeral-presence-manager';

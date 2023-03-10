@@ -3,6 +3,7 @@ import React, {memo, NamedExoticComponent} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {elementChildren, wrapWithComponent} from '../../utilities/components';
 
+// eslint-disable-next-line import/no-deprecated
 import {Item} from './components';
 import styles from './Stack.scss';
 
@@ -39,6 +40,7 @@ export interface StackProps {
   distribution?: Distribution;
 }
 
+/** @deprecated Use LegacyStack or AlphaStack instead. */
 export const Stack = memo(function Stack({
   children,
   vertical,
@@ -47,6 +49,13 @@ export const Stack = memo(function Stack({
   alignment,
   wrap,
 }: StackProps) {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Stack /> is deprecated. This component will be removed in a future major version of Polaris. Use <LegacyStack /> or <AlphaStack /> instead.',
+    );
+  }
+
   const className = classNames(
     styles.Stack,
     vertical && styles.vertical,
@@ -58,12 +67,15 @@ export const Stack = memo(function Stack({
 
   const itemMarkup = elementChildren(children).map((child, index) => {
     const props = {key: index};
+    // eslint-disable-next-line import/no-deprecated
     return wrapWithComponent(child, Item, props);
   });
 
   return <div className={className}>{itemMarkup}</div>;
 }) as NamedExoticComponent<StackProps> & {
+  // eslint-disable-next-line import/no-deprecated
   Item: typeof Item;
 };
 
+// eslint-disable-next-line import/no-deprecated
 Stack.Item = Item;

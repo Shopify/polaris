@@ -6,6 +6,7 @@ import {Button} from '../../Button';
 import {Popover} from '../../Popover';
 import {ActionList} from '../../ActionList';
 import {WithinContentContext} from '../../../utilities/within-content-context';
+// eslint-disable-next-line import/no-deprecated
 import {Card} from '../Card';
 // eslint-disable-next-line import/no-deprecated
 import {Section} from '../components';
@@ -61,6 +62,7 @@ describe('<Card />', () => {
         <Card.Header />
       </Card>,
     );
+    // eslint-disable-next-line import/no-deprecated
     expect(card).toContainReactComponent(Card.Header);
   });
 
@@ -72,6 +74,7 @@ describe('<Card />', () => {
     );
 
     expect(card).toContainReactComponent(Button);
+    // eslint-disable-next-line import/no-deprecated
     expect(card).toContainReactComponent(Card.Header);
   });
 

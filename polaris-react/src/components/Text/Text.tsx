@@ -34,20 +34,6 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
 
-const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
-  headingXs: 'semibold',
-  headingSm: 'semibold',
-  headingMd: 'semibold',
-  headingLg: 'semibold',
-  headingXl: 'semibold',
-  heading2xl: 'semibold',
-  heading3xl: 'semibold',
-  heading4xl: 'bold',
-  bodySm: 'regular',
-  bodyMd: 'regular',
-  bodyLg: 'regular',
-};
-
 export interface TextProps {
   /** Adjust horizontal alignment of text */
   alignment?: Alignment;
@@ -68,7 +54,7 @@ export interface TextProps {
   /** Truncate text overflow with ellipsis */
   truncate?: boolean;
   /** Typographic style of text */
-  variant: Variant;
+  variant?: Variant;
   /** Visually hide the text */
   visuallyHidden?: boolean;
 }
@@ -90,8 +76,8 @@ export const Text = ({
 
   const className = classNames(
     styles.root,
-    styles[variant],
-    fontWeight ? styles[fontWeight] : styles[VariantFontWeightMapping[variant]],
+    variant && styles[variant],
+    fontWeight && styles[fontWeight],
     (alignment || truncate) && styles.block,
     alignment && styles[alignment],
     breakWord && styles.break,
