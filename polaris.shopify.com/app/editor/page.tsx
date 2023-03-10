@@ -7,6 +7,12 @@ async function getEditorContent() {
 
 async function EditorPage() {
   const content = await getEditorContent();
+
+  if (process.env.NODE_ENV !== 'development') {
+    // TODO: Return <Error404Page />
+    return null;
+  }
+
   return <Editor initialContent={content} />;
 }
 
