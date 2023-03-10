@@ -22,8 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 function createTsFileContent(content: Content): string {
-  return `
-  import { Content } from './components/Editor/types';
+  return `import { Content } from './components/Editor/types';
 
 /*
   Automatically generated file (created by /api/editor.tsx).
@@ -32,12 +31,10 @@ function createTsFileContent(content: Content): string {
 
 const pages : Content['pages'] = ${JSON.stringify(content.pages, null, 2)};
 
-const blocks : Content['blocks'] = ${JSON.stringify(content.blocks, null, 2)};
-
 const images : Content['images'] = ${JSON.stringify(content.images, null, 2)};
 
-export const content : Content = { pages, blocks, images };
-  `;
+export const content : Content = { pages, images };
+`;
 }
 
 export default handler;

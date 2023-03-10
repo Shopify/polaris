@@ -5,7 +5,36 @@ export interface Page {
   parentId: string | null;
   order: number;
   rendering: 'blocks' | 'custom';
+  blocks: Block[];
+  keywords: string[];
+  childPageMetaType: PageMetaType | null;
+  pageMeta: PageMeta | null;
 }
+
+export type BasePageMeta = {
+  type: PageMetaType;
+};
+
+export const pageMetaTypes = ['components', 'patterns'] as const;
+export type PageMetaType = typeof pageMetaTypes[number];
+
+interface ComponentsPageMeta extends BasePageMeta {
+  type: 'components';
+  category: string;
+  description: string;
+  examples: {
+    fileName: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+interface PatternsPageMeta extends BasePageMeta {
+  type: 'patterns';
+  tags: [];
+}
+
+export type PageMeta = ComponentsPageMeta | PatternsPageMeta;
 
 export const blockTypes = [
   'Markdown',
@@ -21,7 +50,6 @@ export type BlockType = typeof blockTypes[number];
 
 export interface BaseBlock {
   id: string;
-  pageId: string;
   blockType: BlockType;
   order: number;
   parentBlockId: string | null;
@@ -98,6 +126,5 @@ export type Image = {
 
 export interface Content {
   pages: Page[];
-  blocks: Block[];
   images: Image[];
 }

@@ -28,6 +28,8 @@ import {
   ColorScheme,
   blockTypes,
   ProgressiveDisclosureBlock,
+  PageMetaType,
+  PageMeta,
 } from './types';
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -37,12 +39,10 @@ function assertUnreachable(_: never): never {
 
 function getEmptyBlock(
   blockType: BlockType,
-  pageId: string,
   parentBlockId: string | null,
 ): Block {
   const baseBlock: Omit<BaseBlock, 'blockType'> = {
     id: nanoid(),
-    pageId,
     order: 0,
     parentBlockId,
   };
@@ -113,7 +113,6 @@ const ContentContext = createContext<{
 }>({
   content: {
     pages: [],
-    blocks: [],
     images: [],
   },
   setContent: () => undefined,
@@ -148,9 +147,43 @@ export default function Editor({initialContent}: {initialContent: Content}) {
   function addPage(parentId: string | null) {
     const pageId = nanoid();
 
+    const parentPage =
+      (parentId && content.pages.find((page) => page.id === parentId)) ||
+      undefined;
+
     const siblings = content.pages.filter(
       (thisPage) => thisPage.parentId === parentId,
     );
+
+    let pageMeta: PageMeta | null = null;
+    let pageMetaType: PageMetaType | null = null;
+    if (parentPage?.childPageMetaType) {
+      pageMetaType = parentPage.childPageMetaType;
+    }
+
+    switch (pageMetaType) {
+      case 'components':
+        pageMeta = {
+          type: 'components',
+          category: '',
+          description: '',
+          examples: [],
+        };
+        break;
+
+      case 'patterns':
+        pageMeta = {
+          type: 'patterns',
+          tags: [],
+        };
+        break;
+
+      case null:
+        break;
+
+      default:
+        assertUnreachable(pageMetaType);
+    }
 
     const newPage: Page = {
       id: pageId,
@@ -159,6 +192,10 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       parentId,
       order: siblings.length,
       rendering: 'blocks',
+      blocks: [],
+      keywords: [],
+      childPageMetaType: null,
+      pageMeta,
     };
 
     setContent((content) => ({
@@ -222,7 +259,8 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     >
       <div className={styles.Editor}>
         <div className={styles.Pages}>
-          <button onClick={() => addPage(null)}>Add page</button>
+          {/* <button onClick={() => addPage(null)}>Add page</button> */}
+
           {content.pages
             .filter((page) => page.parentId === null)
             .sort((a, b) => a.order - b.order)
@@ -267,13 +305,14 @@ function PageNavItem({
     .sort((a, b) => a.order - b.order);
 
   return (
-    <div style={{border: '1px solid red'}}>
+    <div style={{border: '1px solid'}}>
       <button
         onClick={() => onPageClick(page.id)}
         aria-current={page.id === editedPageId}
       >
         {page.title}
       </button>
+
       <button onClick={() => addPage(page.id)}>Add child</button>
       <button onClick={() => movePage(page, 'up')}>&uarr;</button>
       <button onClick={() => movePage(page, 'down')}>&darr;</button>
@@ -350,6 +389,29 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
           Block based layout
         </label>
 
+        <label>
+          Require that children supply the following meta data:
+          <select
+            value={editedPage.childPageMetaType || 'null'}
+            onChange={(evt) => {
+              const {value} = evt.target;
+              const childPageMetaType = (
+                value === 'null' ? null : value
+              ) as PageMetaType | null;
+              updatePage({
+                ...editedPage,
+                childPageMetaType,
+              });
+            }}
+          >
+            <option value="null">Nothing</option>
+            <option value="components">Componets</option>
+            <option value="patterns">Patterns</option>
+          </select>
+        </label>
+
+        <PageMetaEditor page={editedPage} updatePage={updatePage} />
+
         {editedPage.rendering === 'custom' && (
           <p>
             This page is not using blocks. You should create a custom Next.js
@@ -365,6 +427,54 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
   );
 }
 
+function PageMetaEditor({
+  page,
+  updatePage,
+}: {
+  page: Page;
+  updatePage: (page: Page) => void;
+}) {
+  const {pageMeta} = page;
+
+  if (!pageMeta) return null;
+
+  function updateMeta(newMeta: PageMeta) {
+    updatePage({...page, pageMeta: newMeta});
+  }
+
+  switch (pageMeta.type) {
+    case 'components':
+      return (
+        <div>
+          <h3>Components meta</h3>
+
+          <input
+            type="text"
+            value={pageMeta.description || ''}
+            placeholder="Component description"
+            onChange={(evt) => {
+              updateMeta({...pageMeta, description: evt.target.value});
+            }}
+          />
+
+          <input
+            type="text"
+            value={pageMeta.category || ''}
+            onChange={(evt) =>
+              updateMeta({...pageMeta, category: evt.target.value})
+            }
+          />
+        </div>
+      );
+      break;
+
+    case 'patterns':
+      return null;
+  }
+
+  assertUnreachable(pageMeta);
+}
+
 function BlockEditor({
   pageId,
   parentBlockId,
@@ -374,22 +484,41 @@ function BlockEditor({
 }) {
   const {content, setContent} = useContext(ContentContext);
 
-  const blocks = content.blocks.filter(
-    (block) => block.pageId === pageId && block.parentBlockId === parentBlockId,
-  );
+  const page = content.pages.find((page) => page.id === pageId);
+  if (!page) throw new Error('Page not found');
+  let {blocks} = page;
+  blocks = blocks.filter((block) => block.parentBlockId === parentBlockId);
 
   function addBlock(blockType: BlockType) {
     let block: Block = {
-      ...getEmptyBlock(blockType, pageId, parentBlockId),
+      ...getEmptyBlock(blockType, parentBlockId),
       order: blocks.length,
     };
-    setContent(({blocks}) => ({...content, blocks: [...blocks, block]}));
+    setContent((content) => ({
+      ...content,
+      pages: [
+        ...content.pages.map((page) => {
+          if (page.id === pageId) {
+            return {...page, blocks: [...page.blocks, block]};
+          }
+          return page;
+        }),
+      ],
+    }));
   }
 
   function deleteBlock(blockId: string) {
-    setContent(({blocks}) => ({
+    setContent((content) => ({
       ...content,
-      blocks: blocks.filter((block) => block.id !== blockId),
+      pages: content.pages.map((page) => {
+        if (page.id === pageId) {
+          return {
+            ...page,
+            blocks: page.blocks.filter((block) => block.id !== blockId),
+          };
+        }
+        return page;
+      }),
     }));
     // TODO: Update order of blocks after delte
     // TODO: Don't allow removal of blocks with children
@@ -398,7 +527,10 @@ function BlockEditor({
   function moveBlock(block: Block, direction: 'up' | 'down') {
     const indexDiff = direction === 'up' ? -1.5 : 1.5;
     setContent((content) => {
-      const newBlocks = [...content.blocks].map((thisBlock) => {
+      const page = content.pages.find((page) => page.id === pageId);
+      if (!page) throw new Error('Page not found');
+
+      const newBlocks = [...page.blocks].map((thisBlock) => {
         return thisBlock.id === block.id
           ? {...thisBlock, order: thisBlock.order + indexDiff}
           : thisBlock;
@@ -407,10 +539,7 @@ function BlockEditor({
       const sortedBlocks = newBlocks
         .sort((a, b) => a.order - b.order)
         .map((thisBlock) => {
-          if (
-            thisBlock.pageId === block.pageId &&
-            thisBlock.parentBlockId === block.parentBlockId
-          ) {
+          if (thisBlock.parentBlockId === block.parentBlockId) {
             index++;
             return {...thisBlock, order: index};
           }
@@ -423,9 +552,17 @@ function BlockEditor({
   function handleBlockChange(updatedBlock: Block) {
     setContent((content) => ({
       ...content,
-      blocks: content.blocks.map((currentBlock) =>
-        currentBlock.id === updatedBlock.id ? updatedBlock : currentBlock,
-      ),
+      blocks: content.pages.map((page) => {
+        if (page.id === pageId) {
+          return {
+            ...page,
+            blocks: page.blocks.map((block) =>
+              block.id === updatedBlock.id ? updatedBlock : block,
+            ),
+          };
+        }
+        return page;
+      }),
     }));
   }
 
