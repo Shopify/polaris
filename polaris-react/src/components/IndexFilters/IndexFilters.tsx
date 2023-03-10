@@ -112,6 +112,7 @@ export function IndexFilters({
   onEditStart,
   disabled,
   disableQueryField,
+  hideFilters,
   loading,
   mode,
   setMode,
@@ -341,6 +342,7 @@ export function IndexFilters({
                             aria-label={searchFilterAriaLabel}
                             tooltipContent={searchFilterTooltip}
                             disabled={disabled}
+                            hideFilters={hideFilters}
                             style={{
                               ...defaultStyle,
                               ...transitionStyles[state],
@@ -377,6 +379,7 @@ export function IndexFilters({
                   appliedFilters={appliedFilters}
                   onClearAll={onClearAll}
                   disableFilters={disabled}
+                  hideFilters={hideFilters}
                   disableQueryField={disabled || disableQueryField}
                   loading={loading || isActionLoading}
                   focused

@@ -12,6 +12,7 @@ export interface SearchFilterButtonProps {
   'aria-label': string;
   disabled?: boolean;
   tooltipContent: string;
+  hideFilters?: boolean;
   style: CSSProperties;
 }
 
@@ -21,6 +22,7 @@ export function SearchFilterButton({
   disabled,
   tooltipContent,
   style,
+  hideFilters,
 }: SearchFilterButtonProps) {
   const activator = (
     <div style={style}>
@@ -31,7 +33,7 @@ export function SearchFilterButton({
       >
         <Inline gap="0">
           <Icon source={SearchMinor} color="base" />
-          <Icon source={FilterMinor} color="base" />
+          {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
         </Inline>
       </FilterButton>
     </div>
