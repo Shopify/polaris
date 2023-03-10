@@ -8,6 +8,12 @@ keywords:
   - flexbox
   - flex
   - responsive
+  - flexible items
+  - row of components
+  - rows
+  - vertical centering
+  - horizontal row of components
+  - stack
 status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).

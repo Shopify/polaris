@@ -4,15 +4,6 @@ description: Use to display children vertically with full width by default. Base
 category: Layout and structure
 keywords:
   - layout
-  - stack
-  - responsive
-  - rows
-  - vertical centering
-  - horizontal row of components
-  - flexible items
-  - flex
-  - flexbox
-  - row of components
   - stack spacing
   - vertical centering
   - fill available space
