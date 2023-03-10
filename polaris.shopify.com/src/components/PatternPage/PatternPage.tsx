@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  useState,
-  createContext,
-  useContext,
-  useEffect,
-} from 'react';
+import React, {useState, createContext, useContext, useEffect} from 'react';
 import {Tab} from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -181,17 +175,24 @@ const Variants = (props: {patternData: Props['data']}) => {
     <Container patternData={props.patternData}>
       {(variant) => (
         <Stack gap="8" className={styles.Variant}>
-          <VariantMarkdown
+          <PatternMarkdown
+            patternData={props.patternData}
             patternName={`${props.patternData.title}${
               variant.data.title ? ` > ${variant.data.title}` : ''
             }`}
           >
             {variant.content}
-          </VariantMarkdown>
+          </PatternMarkdown>
         </Stack>
       )}
     </Container>
   );
+};
+
+type MDXComponents = {
+  [key: string]: React.ComponentType<
+    React.PropsWithChildren<{[key: string]: any}>
+  >;
 };
 
 const BaseMarkdown = ({
@@ -202,11 +203,7 @@ const BaseMarkdown = ({
 }: {
   children: string;
   components?: React.ComponentProps<typeof Markdown>['components'];
-  mdxComponents?: {
-    [key: string]: React.ComponentType<
-      React.PropsWithChildren<{[key: string]: any}>
-    >;
-  };
+  mdxComponents?: MDXComponents;
   patternName?: string;
 }) => (
   <Markdown
@@ -320,84 +317,48 @@ const BaseMarkdown = ({
   </Markdown>
 );
 
+const defaultMdxComponents: MDXComponents = {
+  Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
+  Hero: ({children}) => <Box className={styles.Hero}>{children}</Box>,
+  HowItHelps: ({children}) => (
+    <Stack gap="4" className={styles.HowItHelps}>
+      {children}
+    </Stack>
+  ),
+  Usage: ({children}) => (
+    <Stack gap="4" className={styles.Usage}>
+      {children}
+    </Stack>
+  ),
+  UsefulToKnow: ({children}) => (
+    <Stack gap="4" className={styles.UsefulToKnow}>
+      {children}
+    </Stack>
+  ),
+  DefinitionTable: ({children}) => (
+    <Box className={styles.DefinitionTable}>{children}</Box>
+  ),
+};
+
 const PatternMarkdown = ({
   children,
   patternData,
+  patternName,
 }: {
   children: string;
   patternData: Props['data'];
+  patternName?: string;
 }) => (
   <BaseMarkdown
+    patternName={patternName ?? ''}
     mdxComponents={{
+      ...defaultMdxComponents,
       Variants: () => <Variants patternData={patternData} />,
-      Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
     }}
   >
     {children}
   </BaseMarkdown>
 );
-
-const VariantMarkdown = ({
-  children,
-  patternName,
-}: {
-  children: string;
-  patternName: string;
-}) => {
-  return (
-    <BaseMarkdown
-      patternName={patternName}
-      components={{
-        // We're using table as a handy shortcut for rendering a CSS grid
-        // But that grid is actually rendered as an unordered list of items!
-        // Should probably just be MDX at this point...
-        table: ({children}) => (
-          <Box as="ul" className={styles.UsageGuidelinesGrid}>
-            {children}
-          </Box>
-        ),
-        // don't need this extra wrapping element, so pass it through
-        tbody: ({children}) => <Fragment>{children}</Fragment>,
-        // We don't use theads here
-        thead: () => null,
-        tr: ({children}) => (
-          <Box as="li" className={styles.UsageGuidelinesRow}>
-            {children}
-          </Box>
-        ),
-        td: ({children, node}) =>
-          node?.children?.[0].type === 'text' ? (
-            <p>{children}</p>
-          ) : (
-            <Fragment>{children}</Fragment>
-          ),
-      }}
-      mdxComponents={{
-        Hero: ({children}) => <Box className={styles.Hero}>{children}</Box>,
-        HowItHelps: ({children}) => (
-          <Stack gap="4" className={styles.HowItHelps}>
-            {children}
-          </Stack>
-        ),
-        Usage: ({children}) => (
-          <Stack gap="4" className={styles.Usage}>
-            {children}
-          </Stack>
-        ),
-        UsefulToKnow: ({children}) => (
-          <Stack gap="4" className={styles.UsefulToKnow}>
-            {children}
-          </Stack>
-        ),
-        DefinitionTable: ({children}) => (
-          <Box className={styles.DefinitionTable}>{children}</Box>
-        ),
-      }}
-    >
-      {children}
-    </BaseMarkdown>
-  );
-};
 
 export default function PatternPage(props: Props) {
   const [showCode, toggleCode] = useState(true);
