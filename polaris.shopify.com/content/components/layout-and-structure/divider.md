@@ -1,6 +1,6 @@
 ---
 title: Divider
-description: Use to separate or group content
+description: Use to separate or group content.
 category: Layout and structure
 keywords:
   - layout

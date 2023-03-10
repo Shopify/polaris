@@ -1,6 +1,6 @@
 ---
 title: Inline
-description: Use to display children horizontally in a row. Based on css flexbox.
+description: Use to display children horizontally in a row. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout

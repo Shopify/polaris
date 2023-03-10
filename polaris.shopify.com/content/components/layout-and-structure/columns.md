@@ -1,6 +1,6 @@
 ---
 title: Columns
-description: Use to lay out children horizontally with equal gap between columns. Based on css grid.
+description: Use to lay out children horizontally with equal gap between columns. Based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 category: Layout and structure
 keywords:
   - layout
@@ -15,7 +15,7 @@ examples:
   - fileName: columns-with-fixed-widths.tsx
     title: Column width
     description: >-
-      The `column` property accepts CSS column shorthand syntax, or an array of strings mapping to common widths in the admin such as oneThird, oneHalf, and twoThirds. For responsive columns, use the same syntax passed into an object with the breakpoints.
+      The `columns` property accepts CSS column shorthand syntax, or an array of strings mapping to common widths in the admin such as `oneThird`, `oneHalf`, and `twoThirds`. For responsive columns, use the same syntax passed into an object with the breakpoints.
   - fileName: columns-with-set-number.tsx
     title: Number of columns
     description: >-

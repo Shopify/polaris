@@ -23,7 +23,7 @@ examples:
   - fileName: box-with-padding.tsx
     title: Padding
     description: >-
-      Padding can be added to either all sides, left, right, top, and bottom, using the [Spacing tokens](https://polaris.shopify.com/tokens/spacing). The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints)
+      Padding can be added to either all sides, left, right, top, and bottom, using the [Spacing tokens](https://polaris.shopify.com/tokens/spacing). The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
   - fileName: box-with-shadow.tsx
     title: Shadow
     description: >-
