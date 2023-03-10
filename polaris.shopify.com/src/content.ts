@@ -8,356 +8,45 @@
 
 const pages : Content['pages'] = [
   {
-    "id": "60yo5blOzPMzhZPW9KG5V",
-    "title": "Another great page",
+    "id": "HAaaOmCbUNE9vzfCEwR24",
+    "title": "New page",
+    "slug": "HAaaOmCbUNE9vzfCEwR24",
+    "parentId": "WxJNgwXl_J3sjobEND9QB",
+    "order": 0,
+    "rendering": "custom"
+  },
+  {
+    "id": "0mhuBB4-NhT1deohCxHTb",
+    "title": "New page",
+    "slug": "0mhuBB4-NhT1deohCxHTb",
     "parentId": null,
-    "order": 0
+    "order": 0,
+    "rendering": "blocks"
   },
   {
-    "id": "15Cq4avK1pTlaao8fuaeC",
+    "id": "WxJNgwXl_J3sjobEND9QB",
     "title": "New page",
-    "parentId": "KGNDcXJFe0Tz4HgxKUgOp",
-    "order": 0
-  },
-  {
-    "id": "9kf80ZAWXqL7L6bHLpEy2",
-    "title": "New page",
-    "parentId": "p7M5Ziym2-p7H3Bxl0X-Y",
-    "order": 0
-  },
-  {
-    "id": "p7M5Ziym2-p7H3Bxl0X-Y",
-    "title": "New page",
-    "parentId": "60yo5blOzPMzhZPW9KG5V",
-    "order": 0
-  },
-  {
-    "id": "KGNDcXJFe0Tz4HgxKUgOp",
-    "title": "Fantasticrgsargasrasrgkasrg",
-    "parentId": null,
-    "order": 1
-  },
-  {
-    "id": "GVS0hnqyTbZ5c9hdIk5ZU",
-    "title": "The best page",
-    "parentId": null,
-    "order": 2
-  },
-  {
-    "id": "meSWE4c81c9JORMUW6H2L",
-    "title": "Date picking",
-    "parentId": null,
-    "order": 3
-  },
-  {
-    "id": "W25UVgb9MUrD9xsYf9YHK",
-    "title": "New page",
-    "parentId": null,
-    "order": 4
-  },
-  {
-    "id": "ab0xNGsFLc-9gVd7xKF1J",
-    "title": "New page",
-    "parentId": null,
-    "order": 5
-  },
-  {
-    "id": "086RdVmHqwUFUJHD2S53d",
-    "title": "New page",
-    "parentId": null,
-    "order": 6
-  },
-  {
-    "id": "6yr-0KZZwA5LhSTN-UV79",
-    "title": "New page",
-    "parentId": null,
-    "order": 7
-  },
-  {
-    "id": "NpR8ZOYu85_MZTVx2xhOG",
-    "title": "New page",
-    "parentId": null,
-    "order": 8
-  },
-  {
-    "id": "9bCUCerorZSITKQssHYE8",
-    "title": "New pagergsrgsrgasrgasasrgasrasrg",
-    "parentId": null,
-    "order": 9
-  },
-  {
-    "id": "GJQIgAUXW-6_NFQuGKzPi",
-    "title": "New page",
-    "parentId": null,
-    "order": 10
-  },
-  {
-    "id": "oSSGS_yw2ZhT1gNgSItLN",
-    "title": "New page",
-    "parentId": null,
-    "order": 11
-  },
-  {
-    "id": "WWupLvAdhIKwRc3CyGros",
-    "title": "New page",
-    "parentId": null,
-    "order": 12
-  },
-  {
-    "id": "b4J983eoKtpC0Cg8scWYD",
-    "title": "New page",
-    "parentId": null,
-    "order": 13
-  },
-  {
-    "id": "CXWv9JVAvdSo4rW3gY7ZC",
-    "title": "New page",
-    "parentId": null,
-    "order": 14
-  },
-  {
-    "id": "SM0Ww0jiUrtIucT81CTvd",
-    "title": "New page",
-    "parentId": null,
-    "order": 15
-  },
-  {
-    "id": "pZ0yghikiYNTy_V-mj7rr",
-    "title": "New page",
-    "parentId": null,
-    "order": 16
-  },
-  {
-    "id": "Z86VcIlSQfe6NCty5IDvD",
-    "title": "New page",
-    "parentId": null,
-    "order": 17
-  },
-  {
-    "id": "P01VwLlSfe1vkAc8740rr",
-    "title": "New page",
-    "parentId": null,
-    "order": 18
-  },
-  {
-    "id": "tCZCcVA9LMwvvJ0yl7-kD",
-    "title": "New page",
-    "parentId": null,
-    "order": 19
-  },
-  {
-    "id": "xwtgXNR0I_-6VnwsORBWS",
-    "title": "New page",
-    "parentId": null,
-    "order": 20
-  },
-  {
-    "id": "hzLqmIWK9HkISrGz6skO2",
-    "title": "New pagesrgasrg",
-    "parentId": null,
-    "order": 21
-  },
-  {
-    "id": "9dWmHlYnDzdaT_8-SEyAw",
-    "title": "New page",
-    "parentId": null,
-    "order": 22
-  },
-  {
-    "id": "se0x8bQGJ4D3Wo8QPS0hA",
-    "title": "New page",
-    "parentId": null,
-    "order": 23
-  },
-  {
-    "id": "Q0EL8QM2wEkNwoNtA5gDS",
-    "title": "New page",
-    "parentId": null,
-    "order": 24
-  },
-  {
-    "id": "PrtvYrFtaK0aLZHFiF94v",
-    "title": "New page",
-    "parentId": null,
-    "order": 25
-  },
-  {
-    "id": "E2gpPwwNg0ElYrIiT-aGW",
-    "title": "New page",
-    "parentId": null,
-    "order": 26
-  },
-  {
-    "id": "PqEewDXtYKEmwhNfhafU9",
-    "title": "New page is rad",
-    "parentId": null,
-    "order": 27
-  },
-  {
-    "id": "pA4eRSQ-sjE4hwAQdLJPN",
-    "title": "Date picking",
-    "parentId": null,
-    "order": 28
-  },
-  {
-    "id": "mOU3cVRk2qWJofKeIi8Ol",
-    "title": "New page",
-    "parentId": null,
-    "order": 29
-  },
-  {
-    "id": "PenICnlwLoVptf_zvb1sN",
-    "title": "New page",
-    "parentId": null,
-    "order": 30
-  },
-  {
-    "id": "-BHH8VtX-JwFb2zDFn2rh",
-    "title": "New page",
-    "parentId": null,
-    "order": 31
-  },
-  {
-    "id": "TCRhN2KfgcQY4Vlh2XQJ4",
-    "title": "New page",
-    "parentId": null,
-    "order": 32
-  },
-  {
-    "id": "XzcMgEtN12rFi3JtdsDo3",
-    "title": "New page",
-    "parentId": null,
-    "order": 33
-  },
-  {
-    "id": "UvkjCf7fQ-tV1su9td-uu",
-    "title": "New page",
-    "parentId": null,
-    "order": 34
-  },
-  {
-    "id": "CG3EP8ZvZV1gi25tP75BF",
-    "title": "New page",
-    "parentId": null,
-    "order": 35
-  },
-  {
-    "id": "yyuMlQnscTc00uefsciIK",
-    "title": "New page",
-    "parentId": null,
-    "order": 36
-  },
-  {
-    "id": "wEPoLceVP04DpsFbSNz0T",
-    "title": "New page",
-    "parentId": "086RdVmHqwUFUJHD2S53d",
-    "order": 0
-  },
-  {
-    "id": "LLrF9IV1ts3Y7QusEvCN8",
-    "title": "New page",
-    "parentId": "9bCUCerorZSITKQssHYE8",
-    "order": 0
-  },
-  {
-    "id": "LTBNi9_pd01Jlsp2oXF2d",
-    "title": "New page",
-    "parentId": "9bCUCerorZSITKQssHYE8",
-    "order": 0
-  },
-  {
-    "id": "_lILpEFM2-I9Rm8b57tT4",
-    "title": "New page",
-    "parentId": "9bCUCerorZSITKQssHYE8",
-    "order": 0
-  },
-  {
-    "id": "RwlRvN_1XNM9zQTIRdA4j",
-    "title": "New page",
-    "parentId": "9bCUCerorZSITKQssHYE8",
-    "order": 0
-  },
-  {
-    "id": "IRH2cs8tlq_g8xnbhKohs",
-    "title": "New page",
-    "parentId": "086RdVmHqwUFUJHD2S53d",
-    "order": 0
-  },
-  {
-    "id": "P5eezevJZyZVb0jZo29yo",
-    "title": "New page",
-    "parentId": "086RdVmHqwUFUJHD2S53d",
-    "order": 0
-  },
-  {
-    "id": "7kuncyDiOfG2AGycMSb53",
-    "title": "New page",
-    "parentId": "086RdVmHqwUFUJHD2S53d",
-    "order": 0
-  },
-  {
-    "id": "grDoQTWJ3sUepA81vLkdx",
-    "title": "New page",
-    "parentId": "086RdVmHqwUFUJHD2S53d",
-    "order": 0
-  },
-  {
-    "id": "re3zgFm104Zkpy9l-vP4q",
-    "title": "New page",
-    "parentId": "7kuncyDiOfG2AGycMSb53",
-    "order": 0
-  },
-  {
-    "id": "Ggzh9YGsCEQED2t-07qjz",
-    "title": "New page",
-    "parentId": "re3zgFm104Zkpy9l-vP4q",
-    "order": 0
-  },
-  {
-    "id": "0fxYVpFg8JGcm4EgqPOxr",
-    "title": "New page",
-    "parentId": "KGNDcXJFe0Tz4HgxKUgOp",
-    "order": 1
-  },
-  {
-    "id": "Ut8wxvPHDFYL_5o-cbCYP",
-    "title": "New page",
-    "parentId": "p7M5Ziym2-p7H3Bxl0X-Y",
-    "order": 1
-  },
-  {
-    "id": "xPSL-GSS3_bH6BUVYh5BY",
-    "title": "New page",
-    "parentId": "60yo5blOzPMzhZPW9KG5V",
-    "order": 1
-  },
-  {
-    "id": "G4PgDO4SyUr0pu-dpvGFx",
-    "title": "New page",
-    "parentId": "re3zgFm104Zkpy9l-vP4q",
-    "order": 1
-  },
-  {
-    "id": "cyTBDoZRAvGz0kA3hI8DP",
-    "title": "New page",
-    "parentId": "re3zgFm104Zkpy9l-vP4q",
-    "order": 2
-  },
-  {
-    "id": "JpqGEq7VPGEVAQ5fAE4Pg",
-    "title": "New page",
-    "parentId": "60yo5blOzPMzhZPW9KG5V",
-    "order": 2
-  },
-  {
-    "id": "JgsILzUdYk257jQMNlww9",
-    "title": "New page",
-    "parentId": "60yo5blOzPMzhZPW9KG5V",
-    "order": 3
+    "slug": "WxJNgwXl_J3sjobEND9QB",
+    "parentId": "0mhuBB4-NhT1deohCxHTb",
+    "order": 0,
+    "rendering": "blocks"
   }
 ];
 
 const blocks : Content['blocks'] = [
+  {
+    "id": "_QE_BMxX9gqb0uhvxmCd1",
+    "pageId": "60yo5blOzPMzhZPW9KG5V",
+    "order": 0,
+    "parentBlockId": "Rmo3tm6bVsM5EOCWSgYjR",
+    "blockType": "Code",
+    "code": {
+      "javascript": {
+        "title": "Example",
+        "code": ""
+      }
+    }
+  },
   {
     "id": "vSGEdHtImGmTNB7FxEWVK",
     "pageId": "-BHH8VtX-JwFb2zDFn2rh",
@@ -397,6 +86,38 @@ const blocks : Content['blocks'] = [
     "parentBlockId": null,
     "blockType": "Markdown",
     "content": "## Fantastic news old mate"
+  },
+  {
+    "id": "bKU8usHr9VZgMtTqfRp4l",
+    "pageId": "yyuMlQnscTc00uefsciIK",
+    "order": 0,
+    "parentBlockId": null,
+    "blockType": "Markdown",
+    "content": ""
+  },
+  {
+    "id": "9bwhV7A0aQpljCQ0kNitJ",
+    "pageId": "KGNDcXJFe0Tz4HgxKUgOp",
+    "order": 0,
+    "parentBlockId": null,
+    "blockType": "Markdown",
+    "content": ""
+  },
+  {
+    "id": "Rmo3tm6bVsM5EOCWSgYjR",
+    "pageId": "60yo5blOzPMzhZPW9KG5V",
+    "order": 0,
+    "parentBlockId": null,
+    "blockType": "ProgressiveDisclosure",
+    "title": "Expand me mate"
+  },
+  {
+    "id": "R3LSEYj6tw1SyUOAhHrRZ",
+    "pageId": "60yo5blOzPMzhZPW9KG5V",
+    "order": 1,
+    "parentBlockId": "Rmo3tm6bVsM5EOCWSgYjR",
+    "blockType": "SandboxEmbed",
+    "embedUrl": ""
   },
   {
     "id": "LAHjLCJfFbKIFI55SUn_j",
@@ -444,6 +165,30 @@ const blocks : Content['blocks'] = [
     }
   },
   {
+    "id": "n_yPwQfBT_W2ZawdYD2F3",
+    "pageId": "yyuMlQnscTc00uefsciIK",
+    "order": 1,
+    "parentBlockId": null,
+    "blockType": "Image",
+    "imageId": null
+  },
+  {
+    "id": "AxdUipD8UbWMXZpHr2-yr",
+    "pageId": "KGNDcXJFe0Tz4HgxKUgOp",
+    "order": 1,
+    "parentBlockId": null,
+    "blockType": "YoutubeVideo",
+    "youtubeUrl": ""
+  },
+  {
+    "id": "uGBGcLiVDqleFW7XTHios",
+    "pageId": "60yo5blOzPMzhZPW9KG5V",
+    "order": 2,
+    "parentBlockId": "Rmo3tm6bVsM5EOCWSgYjR",
+    "blockType": "YoutubeVideo",
+    "youtubeUrl": ""
+  },
+  {
     "id": "6jDd5LSrBfQr6LapEbsQC",
     "pageId": "UvkjCf7fQ-tV1su9td-uu",
     "order": 2,
@@ -482,6 +227,23 @@ const blocks : Content['blocks'] = [
     "parentBlockId": null,
     "blockType": "Markdown",
     "content": "There are many things to keep in mind when you're building a website. The most important aspect of any type of website development is to always consider the end user.\n\n## Key considerations\nAlways think about the end user."
+  },
+  {
+    "id": "OvRCGTGqn1TZp3V66iW8M",
+    "pageId": "yyuMlQnscTc00uefsciIK",
+    "order": 2,
+    "parentBlockId": null,
+    "blockType": "YoutubeVideo",
+    "youtubeUrl": ""
+  },
+  {
+    "id": "KZGZd_Zx9XVHO0A5Bn42I",
+    "pageId": "KGNDcXJFe0Tz4HgxKUgOp",
+    "order": 2,
+    "parentBlockId": null,
+    "blockType": "TextImage",
+    "content": "",
+    "imageId": null
   },
   {
     "id": "23--rY2T4jW2tcewDMML_",
@@ -564,67 +326,82 @@ const blocks : Content['blocks'] = [
     }
   },
   {
-    "id": "bKU8usHr9VZgMtTqfRp4l",
-    "pageId": "yyuMlQnscTc00uefsciIK",
+    "id": "TeDMl_1lMAkXNxqTGYmse",
+    "pageId": "ZgktPIAtTGgMgcLZgRBHU",
     "order": 0,
     "parentBlockId": null,
-    "blockType": "Markdown",
-    "content": ""
+    "blockType": "SandboxEmbed",
+    "embedUrl": ""
   },
   {
-    "id": "n_yPwQfBT_W2ZawdYD2F3",
-    "pageId": "yyuMlQnscTc00uefsciIK",
+    "id": "QZYDZKL0JGbGbFiI-P-2G",
+    "pageId": "ZgktPIAtTGgMgcLZgRBHU",
     "order": 1,
+    "parentBlockId": null,
+    "blockType": "YoutubeVideo",
+    "youtubeUrl": ""
+  },
+  {
+    "id": "AbHn5IUppZanc6olBlWh5",
+    "pageId": "99vGinUDlB5XfgYWAXvwl",
+    "order": 0,
+    "parentBlockId": "zsLG-5f5y-SqvW-maCdln",
+    "blockType": "YoutubeVideo",
+    "youtubeUrl": ""
+  },
+  {
+    "id": "bst0O5YikpH36O9xKpvJn",
+    "pageId": "99vGinUDlB5XfgYWAXvwl",
+    "order": 1,
+    "parentBlockId": "zsLG-5f5y-SqvW-maCdln",
+    "blockType": "SandboxEmbed",
+    "embedUrl": ""
+  },
+  {
+    "id": "43zhDPE3na5jCZWeOjRaB",
+    "pageId": "99vGinUDlB5XfgYWAXvwl",
+    "order": 2,
+    "parentBlockId": "zsLG-5f5y-SqvW-maCdln",
+    "blockType": "Image",
+    "imageId": "CNm6RIsrhUcUb5VctubJJ"
+  },
+  {
+    "id": "1oDGNqWVs4ZCxkSpfOtyc",
+    "pageId": "99vGinUDlB5XfgYWAXvwl",
+    "order": 9,
+    "parentBlockId": null,
+    "blockType": "YoutubeVideo",
+    "youtubeUrl": ""
+  },
+  {
+    "id": "ORs_k3zE5c6bxuiB7RTVM",
+    "pageId": "HAaaOmCbUNE9vzfCEwR24",
+    "order": 0,
     "parentBlockId": null,
     "blockType": "Image",
     "imageId": null
   },
   {
-    "id": "OvRCGTGqn1TZp3V66iW8M",
-    "pageId": "yyuMlQnscTc00uefsciIK",
-    "order": 2,
-    "parentBlockId": null,
-    "blockType": "YoutubeVideo",
-    "youtubeUrl": ""
-  },
-  {
-    "id": "9bwhV7A0aQpljCQ0kNitJ",
-    "pageId": "KGNDcXJFe0Tz4HgxKUgOp",
-    "order": 0,
+    "id": "893QULIc1ddfHBq4ItabS",
+    "pageId": "HAaaOmCbUNE9vzfCEwR24",
+    "order": 1,
     "parentBlockId": null,
     "blockType": "Markdown",
     "content": ""
   },
   {
-    "id": "AxdUipD8UbWMXZpHr2-yr",
-    "pageId": "KGNDcXJFe0Tz4HgxKUgOp",
-    "order": 1,
+    "id": "xtuzI3-5QsVDciQgRMnQs",
+    "pageId": "HAaaOmCbUNE9vzfCEwR24",
+    "order": 2,
     "parentBlockId": null,
     "blockType": "YoutubeVideo",
     "youtubeUrl": ""
   },
   {
-    "id": "KZGZd_Zx9XVHO0A5Bn42I",
-    "pageId": "KGNDcXJFe0Tz4HgxKUgOp",
-    "order": 2,
+    "id": "OFzvbkJzGUr37ovA_5aHn",
+    "pageId": "HAaaOmCbUNE9vzfCEwR24",
+    "order": 3,
     "parentBlockId": null,
-    "blockType": "TextImage",
-    "content": "",
-    "imageId": null
-  },
-  {
-    "id": "Rmo3tm6bVsM5EOCWSgYjR",
-    "pageId": "60yo5blOzPMzhZPW9KG5V",
-    "order": 0,
-    "parentBlockId": null,
-    "blockType": "ProgressiveDisclosure",
-    "title": "Expand me mate"
-  },
-  {
-    "id": "_QE_BMxX9gqb0uhvxmCd1",
-    "pageId": "60yo5blOzPMzhZPW9KG5V",
-    "order": 0,
-    "parentBlockId": "Rmo3tm6bVsM5EOCWSgYjR",
     "blockType": "Code",
     "code": {
       "javascript": {
@@ -634,20 +411,20 @@ const blocks : Content['blocks'] = [
     }
   },
   {
-    "id": "R3LSEYj6tw1SyUOAhHrRZ",
-    "pageId": "60yo5blOzPMzhZPW9KG5V",
-    "order": 1,
-    "parentBlockId": "Rmo3tm6bVsM5EOCWSgYjR",
-    "blockType": "SandboxEmbed",
-    "embedUrl": ""
+    "id": "3rZqKwmuAgHQX-KnKmscM",
+    "pageId": "HAaaOmCbUNE9vzfCEwR24",
+    "order": 4,
+    "parentBlockId": null,
+    "blockType": "ProgressiveDisclosure",
+    "title": "Expand me"
   },
   {
-    "id": "uGBGcLiVDqleFW7XTHios",
-    "pageId": "60yo5blOzPMzhZPW9KG5V",
-    "order": 2,
-    "parentBlockId": "Rmo3tm6bVsM5EOCWSgYjR",
-    "blockType": "YoutubeVideo",
-    "youtubeUrl": ""
+    "id": "qT2c-NGNjIbqQmHXuihPk",
+    "pageId": "HAaaOmCbUNE9vzfCEwR24",
+    "order": 5,
+    "parentBlockId": null,
+    "blockType": "ProgressiveDisclosure",
+    "title": "Expand me"
   }
 ];
 

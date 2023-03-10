@@ -1,8 +1,10 @@
 export interface Page {
   id: string;
   title: string;
+  slug: string;
   parentId: string | null;
   order: number;
+  rendering: 'blocks' | 'custom';
 }
 
 export const blockTypes = [

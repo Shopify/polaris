@@ -109,6 +109,7 @@ const ContentContext = createContext<{
   setContent: Dispatch<SetStateAction<Content>>;
   addPage: (parent: string | null) => void;
   movePage: (page: Page, direction: 'up' | 'down') => void;
+  deletePage: (page: Page) => void;
 }>({
   content: {
     pages: [],
@@ -118,6 +119,7 @@ const ContentContext = createContext<{
   setContent: () => undefined,
   addPage: () => undefined,
   movePage: () => undefined,
+  deletePage: () => undefined,
 });
 
 export default function Editor({initialContent}: {initialContent: Content}) {
@@ -135,7 +137,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({content}),
       });
-    }, 2500);
+    }, 1500);
     return () => {
       if (persistToBackendTimer.current) {
         clearTimeout(persistToBackendTimer.current);
@@ -153,8 +155,10 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     const newPage: Page = {
       id: pageId,
       title: 'New page',
+      slug: pageId,
       parentId,
       order: siblings.length,
+      rendering: 'blocks',
     };
 
     setContent((content) => ({
@@ -165,6 +169,19 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     setEditedPageId(pageId);
   }
 
+  function sortPages(pages: Page[], parentId: string | null) {
+    let index = -1;
+    return pages
+      .sort((a, b) => a.order - b.order)
+      .map((thisPage) => {
+        if (thisPage.parentId === parentId) {
+          index++;
+          return {...thisPage, order: index};
+        }
+        return thisPage;
+      });
+  }
+
   function movePage(page: Page, direction: 'up' | 'down') {
     const indexDiff = direction === 'up' ? -1.5 : 1.5;
     setContent((content) => {
@@ -173,22 +190,36 @@ export default function Editor({initialContent}: {initialContent: Content}) {
           ? {...thisPage, order: thisPage.order + indexDiff}
           : thisPage;
       });
-      let index = -1;
-      const sortedPages = newPages
-        .sort((a, b) => a.order - b.order)
-        .map((thisPage) => {
-          if (thisPage.parentId === page.parentId) {
-            index++;
-            return {...thisPage, order: index};
-          }
-          return thisPage;
-        });
+      const sortedPages = sortPages(newPages, page.parentId);
       return {...content, pages: sortedPages};
     });
   }
 
+  function deletePage(page: Page) {
+    if (editedPageId === page.id) {
+      setEditedPageId(null);
+    }
+    setContent((content) => {
+      const childPages = content.pages.filter(
+        ({parentId}) => parentId === page.id,
+      );
+      if (childPages.length > 0) {
+        throw new Error('Cannot delete page with child pages');
+      }
+      const newPages = content.pages.filter(({id}) => id !== page.id);
+      const sortedPages = sortPages(newPages, page.parentId);
+
+      return {
+        ...content,
+        pages: sortedPages,
+      };
+    });
+  }
+
   return (
-    <ContentContext.Provider value={{content, setContent, addPage, movePage}}>
+    <ContentContext.Provider
+      value={{content, setContent, addPage, movePage, deletePage}}
+    >
       <div className={styles.Editor}>
         <div className={styles.Pages}>
           <button onClick={() => addPage(null)}>Add page</button>
@@ -230,7 +261,7 @@ function PageNavItem({
   onPageClick: (pageId: string) => void;
   editedPageId: string | null;
 }) {
-  const {content, addPage, movePage} = useContext(ContentContext);
+  const {content, addPage, movePage, deletePage} = useContext(ContentContext);
   const childPages = content.pages
     .filter((thisPage) => thisPage.parentId === page.id)
     .sort((a, b) => a.order - b.order);
@@ -246,6 +277,9 @@ function PageNavItem({
       <button onClick={() => addPage(page.id)}>Add child</button>
       <button onClick={() => movePage(page, 'up')}>&uarr;</button>
       <button onClick={() => movePage(page, 'down')}>&darr;</button>
+      <button onClick={() => deletePage(page)} disabled={childPages.length > 0}>
+        —
+      </button>
 
       {childPages && (
         <div className={styles.ChildPages}>
@@ -266,7 +300,7 @@ function PageNavItem({
 function PageEditor({editedPageId}: {editedPageId: string}) {
   const {content, setContent} = useContext(ContentContext);
   const editedPage = content.pages.find((page) => page.id === editedPageId);
-  if (!editedPage) throw new Error('Page not found');
+  if (!editedPage) throw new Error('Edited page not found');
 
   function updatePage(newPage: Page) {
     setContent((content) => ({
@@ -295,8 +329,37 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
             updatePage({...editedPage, order: parseInt(evt.target.value)})
           }
         />
+        <input
+          type="string"
+          value={editedPage.slug}
+          onChange={(evt) =>
+            updatePage({...editedPage, slug: evt.target.value})
+          }
+        />
+        <label>
+          <input
+            type="checkbox"
+            checked={editedPage.rendering === 'blocks'}
+            onChange={(evt) =>
+              updatePage({
+                ...editedPage,
+                rendering: evt.target.checked ? 'blocks' : 'custom',
+              })
+            }
+          />
+          Block based layout
+        </label>
 
-        <BlockEditor pageId={editedPageId} parentBlockId={null} />
+        {editedPage.rendering === 'custom' && (
+          <p>
+            This page is not using blocks. You should create a custom Next.js
+            page so that something is rendered in its place.
+          </p>
+        )}
+
+        {editedPage.rendering === 'blocks' && (
+          <BlockEditor pageId={editedPageId} parentBlockId={null} />
+        )}
       </div>
     </div>
   );
@@ -329,6 +392,7 @@ function BlockEditor({
       blocks: blocks.filter((block) => block.id !== blockId),
     }));
     // TODO: Update order of blocks after delte
+    // TODO: Don't allow removal of blocks with children
   }
 
   function moveBlock(block: Block, direction: 'up' | 'down') {
