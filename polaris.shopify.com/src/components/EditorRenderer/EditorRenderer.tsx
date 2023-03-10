@@ -21,20 +21,10 @@ interface Props {}
 function EditorRenderer({}: Props) {
   const router = useRouter();
   const {id} = router.query;
-  const [currentTabId, setCurrentTabId] = useState<string | null>(null);
   const page = content.pages.find((page) => page.id === id);
   if (!page) {
     return <p>Page not found</p>;
   }
-
-  const tabs = content.tabs.filter((tab) => tab.pageId === page.id);
-  if (!tabs) {
-    return <p>Page has no tabs</p>;
-  }
-
-  const tabIds = tabs.map((tab) => tab.id);
-  const blocks = content.blocks.filter((block) => tabIds.includes(block.tabId));
-  let currentTab = tabs.find((tab) => tab.id === currentTabId) || tabs[0];
 
   return (
     <Page showTOC>
@@ -43,24 +33,10 @@ function EditorRenderer({}: Props) {
           <h1 className={styles.PageTitle}>{page.title}</h1>
         </Longform>
 
-        {tabs.length > 1 && (
-          <div className={styles.Tabs}>
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                className={styles.TabButton}
-                onClick={() => setCurrentTabId(tab.id)}
-                aria-current={tab.id === currentTab.id}
-              >
-                {tab.title}
-              </button>
-            ))}
-          </div>
-        )}
-
         <div className={styles.Blocks}>
-          {blocks
-            .filter((block) => block.tabId === currentTab.id)
+          {content.blocks
+            .filter((block) => block.pageId === id)
+            .sort((a, b) => a.order - b.order)
             .map((block) => (
               <div key={block.id} className={styles.Block}>
                 {block.blockType === 'Markdown' && (

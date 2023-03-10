@@ -32,13 +32,11 @@ function createTsFileContent(content: Content): string {
 
 const pages : Content['pages'] = ${JSON.stringify(content.pages, null, 2)};
 
-const tabs : Content['tabs'] = ${JSON.stringify(content.tabs, null, 2)};
-
 const blocks : Content['blocks'] = ${JSON.stringify(content.blocks, null, 2)};
 
 const images : Content['images'] = ${JSON.stringify(content.images, null, 2)};
 
-export const content : Content = { pages, tabs, blocks, images };
+export const content : Content = { pages, blocks, images };
   `;
 }
 

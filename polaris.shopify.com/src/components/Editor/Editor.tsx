@@ -29,6 +29,7 @@ import {
   blockTypes,
   ProgressiveDisclosureBlock,
 } from './types';
+import TextareaAutosize from 'react-textarea-autosize';
 
 function assertUnreachable(_: never): never {
   throw new Error("Didn't expect to get here");
@@ -106,6 +107,8 @@ function getEmptyBlock(
 const ContentContext = createContext<{
   content: Content;
   setContent: Dispatch<SetStateAction<Content>>;
+  addPage: (parent: string | null) => void;
+  movePage: (page: Page, direction: 'up' | 'down') => void;
 }>({
   content: {
     pages: [],
@@ -113,6 +116,8 @@ const ContentContext = createContext<{
     images: [],
   },
   setContent: () => undefined,
+  addPage: () => undefined,
+  movePage: () => undefined,
 });
 
 export default function Editor({initialContent}: {initialContent: Content}) {
@@ -130,7 +135,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({content}),
       });
-    }, 1000);
+    }, 2500);
     return () => {
       if (persistToBackendTimer.current) {
         clearTimeout(persistToBackendTimer.current);
@@ -138,14 +143,18 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     };
   }, [content]);
 
-  function addPage() {
+  function addPage(parentId: string | null) {
     const pageId = nanoid();
+
+    const siblings = content.pages.filter(
+      (thisPage) => thisPage.parentId === parentId,
+    );
 
     const newPage: Page = {
       id: pageId,
       title: 'New page',
-      parentId: null,
-      order: 0,
+      parentId,
+      order: siblings.length,
     };
 
     setContent((content) => ({
@@ -156,11 +165,33 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     setEditedPageId(pageId);
   }
 
+  function movePage(page: Page, direction: 'up' | 'down') {
+    const indexDiff = direction === 'up' ? -1.5 : 1.5;
+    setContent((content) => {
+      const newPages = [...content.pages].map((thisPage) => {
+        return thisPage.id === page.id
+          ? {...thisPage, order: thisPage.order + indexDiff}
+          : thisPage;
+      });
+      let index = -1;
+      const sortedPages = newPages
+        .sort((a, b) => a.order - b.order)
+        .map((thisPage) => {
+          if (thisPage.parentId === page.parentId) {
+            index++;
+            return {...thisPage, order: index};
+          }
+          return thisPage;
+        });
+      return {...content, pages: sortedPages};
+    });
+  }
+
   return (
-    <ContentContext.Provider value={{content, setContent}}>
+    <ContentContext.Provider value={{content, setContent, addPage, movePage}}>
       <div className={styles.Editor}>
         <div className={styles.Pages}>
-          <button onClick={addPage}>Add page</button>
+          <button onClick={() => addPage(null)}>Add page</button>
           {content.pages
             .filter((page) => page.parentId === null)
             .sort((a, b) => a.order - b.order)
@@ -174,9 +205,17 @@ export default function Editor({initialContent}: {initialContent: Content}) {
             ))}
         </div>
 
-        <div className={styles.PageEditorWrapper}>
-          {editedPageId && <PageEditor editedPageId={editedPageId} />}
-        </div>
+        {editedPageId && <PageEditor editedPageId={editedPageId} />}
+
+        {editedPageId && (
+          <iframe
+            className={styles.SitePreview}
+            src={`/editor-page?id=${editedPageId}`}
+            width={500}
+            height={500}
+            title="Preview"
+          />
+        )}
       </div>
     </ContentContext.Provider>
   );
@@ -191,18 +230,22 @@ function PageNavItem({
   onPageClick: (pageId: string) => void;
   editedPageId: string | null;
 }) {
-  const {content} = useContext(ContentContext);
+  const {content, addPage, movePage} = useContext(ContentContext);
   const childPages = content.pages
-    .filter((page) => page.parentId === page.id)
+    .filter((thisPage) => thisPage.parentId === page.id)
     .sort((a, b) => a.order - b.order);
+
   return (
-    <div>
+    <div style={{border: '1px solid red'}}>
       <button
         onClick={() => onPageClick(page.id)}
         aria-current={page.id === editedPageId}
       >
         {page.title}
       </button>
+      <button onClick={() => addPage(page.id)}>Add child</button>
+      <button onClick={() => movePage(page, 'up')}>&uarr;</button>
+      <button onClick={() => movePage(page, 'down')}>&darr;</button>
 
       {childPages && (
         <div className={styles.ChildPages}>
@@ -235,22 +278,26 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
   }
 
   return (
-    <div>
-      <input
-        type="text"
-        value={editedPage.title}
-        onChange={(evt) => updatePage({...editedPage, title: evt.target.value})}
-      />
-      <input
-        min={0}
-        type="number"
-        value={editedPage.order}
-        onChange={(evt) =>
-          updatePage({...editedPage, order: parseInt(evt.target.value)})
-        }
-      />
+    <div className={styles.PageEditor}>
+      <div className={styles.PageEditorInner}>
+        <input
+          type="text"
+          value={editedPage.title}
+          onChange={(evt) =>
+            updatePage({...editedPage, title: evt.target.value})
+          }
+        />
+        <input
+          min={0}
+          type="number"
+          value={editedPage.order}
+          onChange={(evt) =>
+            updatePage({...editedPage, order: parseInt(evt.target.value)})
+          }
+        />
 
-      <BlockEditor pageId={editedPageId} parentBlockId={null} />
+        <BlockEditor pageId={editedPageId} parentBlockId={null} />
+      </div>
     </div>
   );
 }
@@ -358,26 +405,29 @@ function BlockEditor({
   };
 
   return (
-    <>
+    <div>
       {blockTypes.map((blockType) => (
         <button key={blockType} onClick={() => addBlock(blockType)}>
           + {blockType}
         </button>
       ))}
 
-      {blocks
-        .sort((a, b) => a.order - b.order)
-        .map((block) => (
-          <div key={block.id}>
-            <button onClick={() => deleteBlock(block.id)}>—</button>
-            <button onClick={() => moveBlock(block, 'up')}>&uarr;</button>
-            <button onClick={() => moveBlock(block, 'down')}>&darr;</button>
+      <div className={styles.BlockEditor}>
+        {blocks
+          .sort((a, b) => a.order - b.order)
+          .map((block) => (
+            <div key={block.id} className={styles.Block}>
+              <div className={styles.BlockActions}>
+                <button onClick={() => deleteBlock(block.id)}>—</button>
+                <button onClick={() => moveBlock(block, 'up')}>&uarr;</button>
+                <button onClick={() => moveBlock(block, 'down')}>&darr;</button>
+              </div>
 
-            {block.order}
-            {getBlockEditor(block)}
-          </div>
-        ))}
-    </>
+              {getBlockEditor(block)}
+            </div>
+          ))}
+      </div>
+    </div>
   );
 }
 
@@ -391,13 +441,14 @@ function MarkdownBlockEditor({
   onChange,
 }: BlockEditorProps<MarkdownBlock>) {
   return (
-    <textarea
+    <TextareaAutosize
       onChange={(evt) => {
         onChange({...block, content: evt.target.value});
       }}
+      minRows={5}
     >
       {block.content}
-    </textarea>
+    </TextareaAutosize>
   );
 }
 
@@ -413,10 +464,11 @@ function ImageBlockEditor({block, onChange}: BlockEditorProps<ImageBlock>) {
 function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
   return (
     <>
-      <textarea
+      <TextareaAutosize
         value={block.content}
         onChange={(evt) => onChange({...block, content: evt.target.value})}
-      ></textarea>
+        minRows={5}
+      ></TextareaAutosize>
       <ImagePicker
         imageId={block.imageId}
         onPick={(imageId) => onChange({...block, imageId})}
@@ -457,7 +509,7 @@ function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
   // We only support javascript for now. The data structure is extensible
   // so that we can add more language down the road if we like.
   return (
-    <textarea
+    <TextareaAutosize
       onChange={(evt) =>
         onChange({
           ...block,
@@ -466,9 +518,10 @@ function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
         })
       }
       placeholder="JS, JSX, TS or TSX code"
+      minRows={10}
     >
       {block.code.javascript.code}
-    </textarea>
+    </TextareaAutosize>
   );
 }
 
@@ -498,13 +551,13 @@ function ImagePicker({
 }) {
   const {content, setContent} = useContext(ContentContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [uploadTarget, setUploadTarget] = useState<{
-    id: string;
-    scheme: ColorScheme;
-  } | null>(null);
+  const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
 
-  function uploadImage() {
-    const fileInput = document.getElementById('file-input') as HTMLInputElement;
+  function uploadImage(imageId: string, colorScheme: ColorScheme) {
+    const fileInput = document.getElementById(
+      `drop-zone-${imageId}-${colorScheme}`,
+    ) as HTMLInputElement;
+
     if (fileInput && fileInput.files) {
       const formData = new FormData();
       for (let i = 0; i < fileInput.files.length; i++) {
@@ -520,13 +573,13 @@ function ImagePicker({
             ...content,
             images: [
               ...content.images.map((image) => {
-                if (image.id === uploadTarget?.id) {
+                if (image.id === imageId) {
                   const {fileName, width, height} = data;
                   return {
                     ...image,
                     variants: {
                       ...image.variants,
-                      [uploadTarget.scheme]: {fileName, alt: '', width, height},
+                      [colorScheme]: {fileName, alt: '', width, height},
                     },
                   };
                 }
@@ -535,7 +588,6 @@ function ImagePicker({
             ],
           }));
           fileInput.value = '';
-          setUploadTarget(null);
         });
     }
   }
@@ -543,12 +595,52 @@ function ImagePicker({
   function addImage() {
     setContent((content) => ({
       ...content,
-      images: [...content.images, {id: nanoid(), variants: {}}],
+      images: [
+        ...content.images,
+        {id: nanoid(), alt: {light: '', dark: ''}, variants: {}},
+      ],
+    }));
+  }
+
+  function setAltAttribute(imageId: string, alt: string) {
+    setContent((content) => ({
+      ...content,
+      images: [
+        ...content.images.map((image) => {
+          if (image.id === imageId) {
+            return {
+              ...image,
+              alt: {
+                [ColorScheme.Light]: alt,
+                [ColorScheme.Dark]: alt,
+              },
+            };
+          }
+          return image;
+        }),
+      ],
     }));
   }
 
   const selectedImage = content.images.find((image) => image.id === imageId);
   const lightVariant = selectedImage?.variants[ColorScheme.Light];
+  const inspectedImage = content.images.find(({id}) => id === selectedImageId);
+
+  function getImageDimensions(
+    dimensions: {width: number; height: number},
+    maxWidth: number,
+  ): {
+    width: number;
+    height: number;
+  } {
+    const ratio = dimensions.width / dimensions.height;
+    const height = maxWidth / ratio;
+
+    return {
+      width: maxWidth,
+      height,
+    };
+  }
 
   return (
     <>
@@ -556,60 +648,121 @@ function ImagePicker({
       {lightVariant && (
         <Image
           src={`/uploads/${lightVariant.fileName}`}
-          alt={lightVariant.alt}
+          alt={selectedImage.alt[ColorScheme.Light]}
           width={400}
           height={400}
         />
       )}
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <Dialog.Backdrop></Dialog.Backdrop>
+        <Dialog.Backdrop className={styles.Backdrop}></Dialog.Backdrop>
         <Dialog.Panel className={styles.ImagePicker}>
-          <button onClick={addImage}>Add image</button>
+          <div className={styles.Browser}>
+            <div className={styles.Images}>
+              <button className={styles.AddImageButton} onClick={addImage}>
+                Add image
+              </button>
 
-          {content.images.map((image) => (
-            <div key={image.id}>
-              {Object.values(ColorScheme).map((scheme) => {
-                const variantImage = image.variants[scheme];
-                if (variantImage) {
-                  return (
-                    <button
-                      key={scheme}
-                      onClick={() => {
-                        onPick(image.id);
-                        setIsOpen(false);
-                      }}
-                    >
-                      <Image
-                        src={`/uploads/${variantImage.fileName}`}
-                        alt={variantImage.alt}
-                        width={200}
-                        height={200}
-                      />
-                    </button>
-                  );
-                } else {
-                  return (
-                    <button
-                      key={image.id}
-                      onClick={() => setUploadTarget({id: image.id, scheme})}
-                    >
-                      Add {scheme} mode image
-                    </button>
-                  );
-                }
-              })}
+              {content.images.map((image) => (
+                <button
+                  className={styles.Image}
+                  onClick={() => setSelectedImageId(image.id)}
+                  key={image.id}
+                >
+                  {Object.values(ColorScheme).map((scheme) => {
+                    const variantImage = image.variants[scheme];
+                    if (variantImage) {
+                      return (
+                        <Image
+                          key={scheme}
+                          src={`/uploads/${variantImage.fileName}`}
+                          alt={image.alt[scheme]}
+                          width={200}
+                          height={200}
+                        />
+                      );
+                    } else {
+                      return (
+                        <div
+                          className={styles.ImagePlaceholder}
+                          key={`${image.id}-${scheme}`}
+                        ></div>
+                      );
+                    }
+                  })}
+                </button>
+              ))}
             </div>
-          ))}
+          </div>
 
-          {uploadTarget && (
-            <input
-              type="file"
-              multiple={true}
-              id="file-input"
-              onChange={uploadImage}
-            />
-          )}
+          <div className={styles.Inspector}>
+            {inspectedImage && (
+              <>
+                <h2>{inspectedImage.id}</h2>
+                <input
+                  type="text"
+                  value={inspectedImage.alt.light || ''}
+                  onChange={(evt) =>
+                    setAltAttribute(inspectedImage.id, evt.target.value)
+                  }
+                  title=""
+                />
+                {Object.values(ColorScheme).map((scheme) => {
+                  const variantImage = inspectedImage.variants[scheme];
+                  const indicator = (
+                    <span className={styles.ColorSchemeIndicator}>
+                      {scheme === 'light' ? '☀️ Light mode' : '🌙 Dark mode'}
+                    </span>
+                  );
+                  if (variantImage) {
+                    return (
+                      <div className={styles.ImagePreview} key={scheme}>
+                        {indicator}
+                        <Image
+                          src={`/uploads/${variantImage.fileName}`}
+                          alt={inspectedImage.alt[scheme]}
+                          {...getImageDimensions(
+                            {
+                              width: variantImage.width,
+                              height: variantImage.height,
+                            },
+                            500,
+                          )}
+                        />
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div
+                        className={styles.DropZone}
+                        key={`${inspectedImage.id}-${scheme}`}
+                      >
+                        {indicator}
+                        <p>+</p>
+                        <input
+                          type="file"
+                          id={`drop-zone-${inspectedImage.id}-${scheme}`}
+                          onChange={() =>
+                            uploadImage(inspectedImage.id, scheme)
+                          }
+                          title=""
+                        />
+                      </div>
+                    );
+                  }
+                })}
+
+                <button
+                  onClick={() => {
+                    onPick(inspectedImage.id);
+                    setIsOpen(false);
+                  }}
+                >
+                  Pick
+                </button>
+              </>
+            )}
+          </div>
         </Dialog.Panel>
       </Dialog>
     </>

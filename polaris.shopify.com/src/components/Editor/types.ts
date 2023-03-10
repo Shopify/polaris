@@ -82,10 +82,12 @@ export enum ColorScheme {
 
 export type Image = {
   id: string;
+  alt: {
+    [scheme in ColorScheme]: string;
+  };
   variants: {
     [scheme in ColorScheme]?: {
       fileName: string;
-      alt: string;
       width: number;
       height: number;
     };
