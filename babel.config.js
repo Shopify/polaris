@@ -8,24 +8,7 @@ module.exports = function (api) {
     presets: [
       [
         '@babel/preset-env',
-        {
-          useBuiltIns: 'entry',
-          corejs: '3.0',
-          bugfixes: true,
-          // These plugins are handled by preset-env.
-          // But they aren't yet supported in webpack 4 because of missing support
-          // in acorn v6 (support is in acorn v7, which is used in webpack v5).
-          // So we want to always transpile this synax away
-          // See https://github.com/webpack/webpack/issues/10227
-          // Can be removed once we drop support for webpack v4 in esnext builds
-          include: [
-            '@babel/plugin-proposal-class-properties',
-            '@babel/plugin-proposal-private-methods',
-            '@babel/plugin-proposal-numeric-separator',
-            '@babel/plugin-proposal-nullish-coalescing-operator',
-            '@babel/plugin-proposal-optional-chaining',
-          ],
-        },
+        {useBuiltIns: 'entry', corejs: '3.0', bugfixes: true},
       ],
       ['@babel/preset-typescript'],
       ['@babel/preset-react', {development, useBuiltIns: true}],
