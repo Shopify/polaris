@@ -169,3 +169,46 @@ These are suggested replacements for existing text style components, but ultimat
 - </VisuallyHidden>
 + <Text visuallyHidden as="h2">Title and description</Text>
 ```
+
+---
+
+## Best practices
+
+### Headings
+
+Headings use all the variants with `heading` in the name, such as `headingMd`. Headings should:
+
+- Clearly describe the section of interface they refer to
+- Highlight the most important concept or piece of information merchants need to know
+- Sit at the top of the section of interface they’re referring to
+
+### Captions
+
+Captions use the `bodySm` Text variant.
+
+- Use for secondary labels in graphs and charts
+- May be used for timestamps in lists of content
+- Don’t use this variant for other cases
+- Don’t use this variant for text longer than a few words
+- Don’t use this variant for aesthetic effect or to break from the standard text size
+
+### Text styles
+
+Text styles should be:
+
+- Used when enhancing the text to help merchants understand its meaning
+- Subdued if the text is less important than its surrounding text
+- Warning if the text denotes something that needs attention, or that merchants need to take action on.
+- Semibold for input fields, or for a row total in a price table
+- Paired with symbols, like an arrow or dollar sign, when using success or critical styles
+
+### Visually hidden
+
+Visually hidden text should:
+
+- Not be used if semantic markup can make content understandable to people using assistive technology
+- Be used to provide extra context when semantic markup isn’t enough
+- Be used on any content that is normally present but is being omitted
+- Make sense in context when used with a screen reader
+
+---
