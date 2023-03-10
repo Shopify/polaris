@@ -105,10 +105,8 @@ function AppSettingsLayoutExample() {
 
 ### Useful to know
 
-|                                                  |                                                                                                            |
-| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| Don't include a description unless it's helpful. | ![Section header with no description on an app settings page](/images/patterns/app-settings-usage-1.png)   |
-| Place grouped settings within cards.             | ![App settings page with section headings and grouped settings](/images/patterns/app-settings-usage-2.png) |
-| Stack all setting groups vertically on the page. | ![App settings page with two vertically stacked sections](/images/patterns/app-settings-usage-3.png)       |
+- <span>Don't include a description unless it's helpful.</span> ![Section header with no description on an app settings page](/images/patterns/app-settings-usage-1.png)
+- <span>Place grouped settings within cards.</span> ![App settings page with section headings and grouped settings](/images/patterns/app-settings-usage-2.png)
+- <span>Stack all setting groups vertically on the page.</span> ![App settings page with two vertically stacked sections](/images/patterns/app-settings-usage-3.png)
 
 </div>
