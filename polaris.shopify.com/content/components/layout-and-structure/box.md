@@ -4,6 +4,9 @@ description: Box is the most primitive layout component. It’s a way to access 
 category: Layout and structure
 keywords:
   - layout
+  - box
+  - responsive
+  - tokens
 status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).

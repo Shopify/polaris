@@ -4,6 +4,22 @@ description: Use to display children vertically and at full width. Based on CSS 
 category: Layout and structure
 keywords:
   - layout
+  - stack
+  - responsive
+  - rows
+  - vertical centering
+  - horizontal row of components
+  - flexible items
+  - flex
+  - flexbox
+  - row of components
+  - stack spacing
+  - vertical centering
+  - fill available space
+  - fill space
+  - equal width
+  - right-aligned stack
+  - stack layout
 status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).

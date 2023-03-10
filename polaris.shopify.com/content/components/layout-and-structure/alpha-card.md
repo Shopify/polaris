@@ -4,6 +4,8 @@ description: Cards are used to group similar concepts and tasks together for mer
 category: Layout and structure
 keywords:
   - layout
+  - card
+  - responsive
   - container
   - box
   - grid

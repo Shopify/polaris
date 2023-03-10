@@ -4,6 +4,10 @@ description: Use to display children horizontally in a row. Based on CSS Flexbox
 category: Layout and structure
 keywords:
   - layout
+  - inline
+  - flexbox
+  - flex
+  - responsive
 status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).

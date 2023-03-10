@@ -4,6 +4,9 @@ description: Use to lay out children horizontally with equal gap between columns
 category: Layout and structure
 keywords:
   - layout
+  - columns
+  - grid
+  - responsive
 status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
