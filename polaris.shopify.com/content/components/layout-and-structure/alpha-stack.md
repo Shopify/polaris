@@ -26,6 +26,15 @@ examples:
       Use to horizontally align Stack.
 ---
 
+## Best practices
+
+Stacks should:
+
+- Not be used for complex or unique arrangements of components
+- Not be used for large-scale page layout
+
+---
+
 ## Related components
 
 - To display elements horizontally, [use the Inline component](https://polaris.shopify.com/components/inline)
