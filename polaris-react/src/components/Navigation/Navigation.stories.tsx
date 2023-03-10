@@ -96,7 +96,6 @@ export function WithMultipleSecondaryNavigations() {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
@@ -118,7 +117,6 @@ export function WithMultipleSecondaryNavigations() {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Reports',
                 },
                 {
@@ -139,13 +137,11 @@ export function WithMultipleSecondaryNavigations() {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
                   url: '#',
                   disabled: false,
-                  selected: true,
                   label: 'Inventory',
                 },
               ],
@@ -162,7 +158,6 @@ export function WithAnActiveRootItemWithSecondaryNavigationItems() {
     <Frame>
       <Navigation location="/">
         <Navigation.Section
-          duplicateRootItem
           items={[
             {
               url: '#',
@@ -187,7 +182,6 @@ export function WithAnActiveRootItemWithSecondaryNavigationItems() {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
                 },
                 {
@@ -764,7 +758,6 @@ export function WithVariousStatesAndSecondaryElements() {
               subNavigationItems: [
                 {
                   url: window.location.href,
-                  selected: true,
                   disabled: false,
                   label: 'Selected sub item',
                 },
@@ -853,7 +846,7 @@ export function WithAriaLabelledby() {
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
-        <Text as="span" visuallyHidden>
+        <Text variant="bodySm" as="span" visuallyHidden>
           <p id="label-id">Hidden label</p>
         </Text>
         <Navigation.Section
