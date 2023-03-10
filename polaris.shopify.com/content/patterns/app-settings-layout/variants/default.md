@@ -46,7 +46,7 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
   ]}
 >
   <AlphaStack gap="16" align="center">
-    <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap={{xs: '4', md: '0'}}>
+    <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
       <Box
         as="section"
         paddingInlineStart={{xs: 4, sm: 0}}
@@ -68,7 +68,7 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
         </AlphaStack>
       </AlphaCard>
     </Columns>
-    <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap={{xs: '4', md: '0'}}>
+    <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
       <Box
         as="section"
         paddingInlineStart={{xs: 4, sm: 0}}
