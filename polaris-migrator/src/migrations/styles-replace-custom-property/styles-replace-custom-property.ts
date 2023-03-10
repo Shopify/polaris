@@ -45,7 +45,13 @@ export default function stylesReplaceCustomProperty(
 }
 
 function plugin(options: PluginOptions = {}): Plugin {
-  const getNamespacePattern = createNamespacePattern(options);
+  const namespace = options?.namespace
+    ? String.raw`${options.namespace}\.`
+    : String.raw`(?:[\w-]+\.)?`;
+
+  function getNamespacePattern(name: string) {
+    return new RegExp(String.raw`^${namespace}${name}$`);
+  }
 
   let replacementMaps: ReplacementMaps | undefined;
 
@@ -178,15 +184,5 @@ function processParsedValue(replacementMap: ReplacementMap) {
       node.value = replacement;
       break;
     }
-  };
-}
-
-function createNamespacePattern(options: PluginOptions) {
-  const namespace = options?.namespace
-    ? String.raw`${options.namespace}\.`
-    : String.raw`(?:[\w-]+\.)?`;
-
-  return function getNamespacePattern(name: string) {
-    return new RegExp(String.raw`^${namespace}${name}$`);
   };
 }
