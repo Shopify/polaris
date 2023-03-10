@@ -1,9 +1,7 @@
 /**
  * @type {import('@babel/core').TransformOptions}
  */
-module.exports = function (api) {
-  const envName = api.env();
-  const development = envName === 'development' || envName === 'test';
+module.exports = function () {
   return {
     presets: [
       [
@@ -11,7 +9,7 @@ module.exports = function (api) {
         {useBuiltIns: 'entry', corejs: '3.0', bugfixes: true},
       ],
       ['@babel/preset-typescript'],
-      ['@babel/preset-react', {development, useBuiltIns: true}],
+      ['@babel/preset-react', {runtime: 'automatic', useBuiltIns: true}],
     ],
     assumptions: {
       setPublicClassFields: true,
