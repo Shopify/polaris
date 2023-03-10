@@ -8,22 +8,18 @@ status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: bleed-vertical.tsx
-    title: Vertical
-    description: >-
-      Content will bleed vertically into the surrounding layout using the vertical prop.
   - fileName: bleed-horizontal.tsx
     title: Horizontal
     description: >-
-      Content will bleed horizontally into the surrounding layout using the horizontal prop.
+      Content will bleed horizontally into the surrounding layout using the `marginInline` prop.
+  - fileName: bleed-vertical.tsx
+    title: Vertical
+    description: >-
+      Content will bleed vertically into the surrounding layout using the `marginBlock` prop.
   - fileName: bleed-specific-direction.tsx
     title: Specific direction
     description: >-
-      Content will bleed into the surrounding layout in a specific direction using the top, bottom, left, or right prop.
-  - fileName: bleed-all-directions.tsx
-    title: All directions
-    description: >-
-      Content will bleed into the surrounding layout in all directions using the spacing prop.
+      Negative margins can be added in a specific direction using the [Spacing tokens](https://polaris.shopify.com/tokens/spacing).
 ---
 
 ## Bleed values

@@ -23,6 +23,7 @@ import {PatternVariantFontMatter, PatternFrontMatter} from '../../types';
 import PageMeta from '../PageMeta';
 import {Stack, Row} from '../Stack';
 import {Box} from '../Box';
+import Code from '../Code';
 import {Lede} from '../Lede';
 import {Heading} from '../Heading';
 import PatternsExample from '../PatternsExample';
@@ -60,10 +61,17 @@ function codeAsContext(): Plugin {
       meta: Record<string, any>;
     }[] = [];
     visit(tree, 'code', (node, index, parent) => {
-      try {
-        codes.push({node, index: index!, parent, meta: JSON.parse(node.meta)});
-      } catch (error) {
-        // Just ignore this block
+      if (node.meta) {
+        try {
+          codes.push({
+            node,
+            index: index!,
+            parent,
+            meta: JSON.parse(node.meta),
+          });
+        } catch (error) {
+          // Just ignore this block
+        }
       }
     });
 
@@ -263,7 +271,7 @@ const BaseMarkdown = ({
             <Image fill src={src} alt={alt ?? ''} />
           </div>
         ) : null,
-      code: function Code({
+      code: function MdCode({
         inline,
         // @ts-expect-error Unsure how to tell react-markdown this prop is
         // being injected by a plugin
@@ -301,7 +309,9 @@ const BaseMarkdown = ({
           );
         }
 
-        return <code>{(children?.[0] as string) ?? ''}</code>;
+        return (
+          <Code code={{title: '', code: (children?.[0] as string) ?? ''}} />
+        );
       },
       ...components,
     }}

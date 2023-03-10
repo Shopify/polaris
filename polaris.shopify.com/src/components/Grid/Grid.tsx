@@ -66,25 +66,39 @@ export interface GridItemProps {
   deepLinks?: {url: string; text: string}[];
   renderPreview?: () => React.ReactNode;
   status?: Status;
+  customOnClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  searchQuery?: string;
+  rank?: number;
 }
 
 export const GridItem = forwardRef(
   (
-    {as = 'li', title, description, url, deepLinks, renderPreview, status},
+    {
+      as = 'li',
+      title,
+      description,
+      url,
+      deepLinks,
+      renderPreview,
+      status,
+      customOnClick,
+    },
     ref,
   ) => {
     const searchAttributes = useGlobalSearchResult();
     return (
       <Box as={as} ref={ref} className={styles.GridItem} {...searchAttributes}>
-        <Link href={url} className={styles.Text}>
-          <SearchResultHighlight />
-          {renderPreview && (
-            <div className={styles.Preview}>{renderPreview()}</div>
-          )}
-          <h4>
-            {title} {status && <StatusBadge status={status} />}
-          </h4>
-          <p>{stripMarkdownLinks(description || '')}</p>
+        <Link legacyBehavior href={url} className={styles.Text}>
+          <a onClick={customOnClick}>
+            <SearchResultHighlight />
+            {renderPreview && (
+              <div className={styles.Preview}>{renderPreview()}</div>
+            )}
+            <h4>
+              {title} {status && <StatusBadge status={status} />}
+            </h4>
+            <p>{stripMarkdownLinks(description || '')}</p>
+          </a>
         </Link>
         {deepLinks && (
           <ul className={styles.DeepLinks}>
