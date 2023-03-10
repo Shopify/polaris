@@ -169,7 +169,6 @@ export function FilterPill({
         activator={activator}
         key={filterKey}
         onClose={togglePopoverActive}
-        fluidContent
         preferredAlignment="left"
         preventCloseOnChildOverlayClick={!closeOnChildOverlayClick}
       >
