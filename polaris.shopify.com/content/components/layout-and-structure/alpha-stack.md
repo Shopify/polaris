@@ -1,6 +1,6 @@
 ---
 title: Alpha stack
-description: Use to display children vertically and at full width. Based on CSS Flexbox.
+description: Use to display children vertically with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout
