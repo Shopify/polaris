@@ -110,9 +110,29 @@
   }
 }
 
-.Images {
-  img {
-    max-width: 200px;
+.CustomRouteBanner {
+  padding: 150px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16px;
+  border: 2px dashed #ddd;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    max-width: 30rem;
+
+    span {
+      background: rgba(0, 0, 0, 0.1);
+      padding: 0.25rem 0.4rem;
+      border-radius: 4px;
+    }
   }
 }
 

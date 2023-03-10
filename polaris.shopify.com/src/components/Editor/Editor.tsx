@@ -37,6 +37,27 @@ function assertUnreachable(_: never): never {
   throw new Error("Didn't expect to get here");
 }
 
+function getPageStack(content: Content, page: Page): Page[] {
+  let parents: Page[] = [];
+
+  function getParent(currentPage: Page): Page | undefined {
+    if (currentPage.parentId) {
+      const parent = content.pages.find(
+        (page) => page.id === currentPage.parentId,
+      );
+      if (parent) {
+        parents = [parent, ...parents];
+        getParent(parent);
+      }
+    }
+    return undefined;
+  }
+
+  getParent(page);
+  parents.push(page);
+  return parents;
+}
+
 function getEmptyBlock(
   blockType: BlockType,
   parentBlockId: string | null,
@@ -413,10 +434,28 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
         <PageMetaEditor page={editedPage} updatePage={updatePage} />
 
         {editedPage.rendering === 'custom' && (
-          <p>
-            This page is not using blocks. You should create a custom Next.js
-            page so that something is rendered in its place.
-          </p>
+          <div className={styles.CustomRouteBanner}>
+            <h2>Custom route</h2>
+            <p>
+              This page is not using blocks. You should create a custom Next.js
+              page so that something is rendered in its place.
+            </p>
+            <p>
+              Put it in{' '}
+              <span>
+                polaris.shopify.com/app/
+                {getPageStack(content, editedPage)
+                  ?.map((page) => page.slug)
+                  .join('/')}
+                .tsx
+              </span>
+            </p>
+            <p>
+              <a href="https://beta.nextjs.org/docs/app-directory-roadmap">
+                Next.js documentation
+              </a>
+            </p>
+          </div>
         )}
 
         {editedPage.rendering === 'blocks' && (
