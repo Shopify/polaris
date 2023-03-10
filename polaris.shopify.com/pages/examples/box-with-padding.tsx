@@ -1,12 +1,12 @@
 import React from 'react';
-import {AlphaStack, Box, LegacyStack, Text, Inline} from '@shopify/polaris';
+import {AlphaStack, Box, Text, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithPaddingExample() {
   return (
     <AlphaStack gap="4">
-      <div style={{backgroundColor: '#2AACBB'}}>
+      <div style={{backgroundColor: '#2AACBB', width: '586px'}}>
         <Box padding="4" width="586px">
           <Placeholder label="padding" childAlign="center" />
         </Box>
