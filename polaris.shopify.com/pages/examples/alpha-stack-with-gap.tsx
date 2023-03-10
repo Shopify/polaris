@@ -5,23 +5,21 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithGapExample() {
   return (
-    <SpacingBackground width="320px">
+    <SpacingBackground>
       <AlphaStack gap="5">
-        <Placeholder width="320px" label="Stack child" />
-        <Placeholder width="320px" />
-        <Placeholder width="320px" />
+        <Placeholder height="48px" />
+        <Placeholder height="48px" />
+        <Placeholder height="48px" />
       </AlphaStack>
     </SpacingBackground>
   );
 }
 
-const SpacingBackground = ({children, width}) => {
+const SpacingBackground = ({children}) => {
   return (
     <div
       style={{
-        background:
-          'repeating-linear-gradient(-45deg, #7B47F1, #7B47F1 1px, #E8D1FA 1px, #E8D1FA 7px)',
-        width: width ?? '100%',
+        background: '#E0F8EE',
         height: 'auto',
       }}
     >
@@ -30,34 +28,15 @@ const SpacingBackground = ({children, width}) => {
   );
 };
 
-const Placeholder = ({
-  label = '',
-  height = 'auto',
-  width = 'auto',
-  childWidth = 'auto',
-}) => {
+const Placeholder = ({height = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#7B47F1',
+        background: '#20828D',
         padding: '14px var(--p-space-2)',
-        height: height ?? undefined,
-        width: width ?? undefined,
+        height: height,
       }}
-    >
-      <div
-        style={{
-          display: 'inline-block',
-          background: 'rgba(255, 255, 255, 0.3)',
-          color: '#FFFFFF',
-          width: childWidth ?? undefined,
-        }}
-      >
-        <Text as="h2" variant="bodyMd" fontWeight="medium">
-          {label}
-        </Text>
-      </div>
-    </div>
+    />
   );
 };
 
