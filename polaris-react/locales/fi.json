@@ -305,6 +305,13 @@
     "FullscreenBar": {
       "back": "Takaisin",
       "accessibilityLabel": "Poistu koko näytön tilasta"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "Käytössä",
+        "disabled": "Ei käytössä",
+        "accessibilityLabel": "Asetus on {status}"
+      }
     }
   }
 }

@@ -305,6 +305,13 @@
     "FullscreenBar": {
       "back": "Geri",
       "accessibilityLabel": "Tam ekran modundan çık"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "Açık",
+        "disabled": "Kapalı",
+        "accessibilityLabel": "Ayar {status}."
+      }
     }
   }
 }

@@ -306,6 +306,13 @@
     "FullscreenBar": {
       "back": "Atrás",
       "accessibilityLabel": "Salir del modo de pantalla completa"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "Activado",
+        "disabled": "Desactivado",
+        "accessibilityLabel": "La configuración está {status}"
+      }
     }
   }
 }

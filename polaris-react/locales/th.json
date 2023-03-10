@@ -305,6 +305,13 @@
     "FullscreenBar": {
       "back": "ย้อนกลับ",
       "accessibilityLabel": "ออกจากโหมดเต็มหน้าจอ"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "เปิด",
+        "disabled": "ปิด",
+        "accessibilityLabel": "การตั้งค่าเป็น {status}"
+      }
     }
   }
 }

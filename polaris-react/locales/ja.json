@@ -305,6 +305,13 @@
     "FullscreenBar": {
       "back": "戻る",
       "accessibilityLabel": "フルスクリーンモードを閉じる"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "オン",
+        "disabled": "オフ",
+        "accessibilityLabel": "設定は{status}です"
+      }
     }
   }
 }

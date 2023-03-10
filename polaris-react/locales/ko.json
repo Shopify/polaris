@@ -305,6 +305,13 @@
     "FullscreenBar": {
       "back": "뒤로",
       "accessibilityLabel": "전체 화면 모드 종료"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "켜짐",
+        "disabled": "꺼짐",
+        "accessibilityLabel": "설정 {status}"
+      }
     }
   }
 }

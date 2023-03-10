@@ -306,6 +306,13 @@
     "FullscreenBar": {
       "back": "Retour",
       "accessibilityLabel": "Quitter le mode plein écran"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "Activé",
+        "disabled": "Désactivé",
+        "accessibilityLabel": "Ce paramètre est {status}"
+      }
     }
   }
 }

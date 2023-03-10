@@ -305,6 +305,13 @@
     "FullscreenBar": {
       "back": "Tilbage",
       "accessibilityLabel": "Afslut fuldskærmstilstand"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "Til",
+        "disabled": "Fra",
+        "accessibilityLabel": "Indstillingen er {status}"
+      }
     }
   }
 }

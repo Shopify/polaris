@@ -305,6 +305,13 @@
     "FullscreenBar": {
       "back": "Tilbake",
       "accessibilityLabel": "Avslutt fullskjermmodus"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "På",
+        "disabled": "Av",
+        "accessibilityLabel": "Innstillingen er {status}"
+      }
     }
   }
 }

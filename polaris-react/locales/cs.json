@@ -307,6 +307,13 @@
     "FullscreenBar": {
       "back": "Zpět",
       "accessibilityLabel": "Ukončit režim celé obrazovky"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "Zapnuto",
+        "disabled": "Vypnuto",
+        "accessibilityLabel": "Nastavení je: {status}"
+      }
     }
   }
 }

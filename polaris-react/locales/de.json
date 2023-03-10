@@ -305,6 +305,13 @@
     "FullscreenBar": {
       "back": "Zurück",
       "accessibilityLabel": "Vollbildmodus beenden"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "An",
+        "disabled": "Aus",
+        "accessibilityLabel": "Einstellung ist {status}"
+      }
     }
   }
 }

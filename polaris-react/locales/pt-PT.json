@@ -306,6 +306,13 @@
     "FullscreenBar": {
       "back": "Voltar",
       "accessibilityLabel": "Sair do modo ecrã inteiro"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "Ligar",
+        "disabled": "Desligar",
+        "accessibilityLabel": "A definição é {status}"
+      }
     }
   }
 }

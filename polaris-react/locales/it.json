@@ -306,6 +306,13 @@
     "FullscreenBar": {
       "back": "Indietro",
       "accessibilityLabel": "Esci dalla modalità schermo intero"
+    },
+    "SettingToggle": {
+      "status": {
+        "enabled": "Attiva",
+        "disabled": "Disattiva",
+        "accessibilityLabel": "L'impostazione è {status}"
+      }
     }
   }
 }
