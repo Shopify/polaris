@@ -39,11 +39,9 @@ examples:
     description: >-
       Use the `padding` property to adjust the spacing within a card. You can also specify spacing values at different breakpoints.
   - fileName: card-with-rounded-corners.tsx
-      Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
-  - fileName: card-with-rounded-corners.tsx
     title: Rounded corners
     description: >-
-      Cards can have a border radius applied responsively with the `roundedAbove` prop.
+      Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
 ---
 
 ## Best practices
