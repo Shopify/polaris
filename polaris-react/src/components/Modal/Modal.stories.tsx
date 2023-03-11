@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {RefObject, useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
@@ -24,7 +24,7 @@ import {
   ResourceItem,
   UnstyledButton,
 } from '@shopify/polaris';
-import {AppsMajor, PlaceholderMajor} from '@shopify/polaris-icons';
+import {AppsMajor} from '@shopify/polaris-icons';
 
 export default {
   component: Modal,
@@ -56,7 +56,7 @@ export function Default() {
         ]}
       >
         <Modal.Section>
-          <Text>
+          <Text as="p">
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
           </Text>
@@ -70,17 +70,17 @@ export function WithPrimaryAction() {
   const discountLink = 'https://polaris.shopify.com/';
 
   const [active, setActive] = useState(true);
-  const node = useRef(null);
+  const node: RefObject<HTMLDivElement> = useRef(null);
 
   const handleClick = useCallback(() => {
-    node.current && node.current.input.focus();
+    node.current && node.current.querySelector('input')?.focus();
   }, []);
 
   const handleFocus = useCallback(() => {
     if (node.current == null) {
       return;
     }
-    node.current.input.select();
+    node.current.querySelector('input')?.select();
     document.execCommand('copy');
   }, []);
 
@@ -102,25 +102,26 @@ export function WithPrimaryAction() {
       >
         <Modal.Section>
           <AlphaStack gap="5">
-            <Text>
+            <Text as="p">
               You can share this discount link with your customers via email or
               social media. Your discount will be automatically applied at
               checkout.
             </Text>
 
-            <TextField
-              ref={node}
-              label="Discount link"
-              onFocus={handleFocus}
-              value={discountLink}
-              onChange={() => {}}
-              autoComplete="off"
-              connectedRight={
-                <Button primary onClick={handleClick}>
-                  Copy link
-                </Button>
-              }
-            />
+            <Box ref={node}>
+              <TextField
+                label="Discount link"
+                onFocus={handleFocus}
+                value={discountLink}
+                onChange={() => {}}
+                autoComplete="off"
+                connectedRight={
+                  <Button primary onClick={handleClick}>
+                    Copy link
+                  </Button>
+                }
+              />
+            </Box>
           </AlphaStack>
         </Modal.Section>
       </Modal>
@@ -215,28 +216,25 @@ export function WithCustomFooter() {
   const toggleModal = useCallback(() => setActive((active) => !active), []);
 
   const viewRecommendedAppsButton = (
-    <Box
-      as="button"
-      width="100%"
-      padding="4"
-      border="base"
-      borderRadius="2"
+    <div
+      style={{width: '100%', padding: '4', border: 'base', borderRadius: '2'}}
       onClick={toggleModal}
     >
       <Inline gap="2" align="start" blockAlign="center">
         <Image
-          size="extraSmall"
           alt="Multi-color icon depicting apps that can be installed"
           source="https://cdn.shopify.com/shopifycloud/web/assets/v1/7d8afec8c40d8022c7c62b8a99f358797d5e6f8546ec0496e26c97f406d0df4e.svg"
         />
-        <Text variant="bodyMd">Recommended local delivery apps</Text>
+        <Text as="p" variant="bodyMd">
+          Recommended local delivery apps
+        </Text>
       </Inline>
-    </Box>
+    </div>
   );
 
   const recommendedApps = [
     {
-      iconSource:
+      logoSource:
         'https://cdn.shopify.com/app-store/listing_images/344d58fb5ba3e45b5c10756e4ba34b74/icon/CPXwi6b04PQCEAE=.png',
       name: 'Local Delivery + Store Pickup',
       description:
@@ -246,7 +244,7 @@ export function WithCustomFooter() {
       promotion: 'Free plan available',
     },
     {
-      iconSource:
+      logoSource:
         'https://cdn.shopify.com/app-store/listing_images/81daf05370b75b77bcc06ad853c9d6fd/icon/COvPvK30lu8CEAE=.png',
       name: 'Local Delivery Dispatch',
       description:
@@ -256,7 +254,7 @@ export function WithCustomFooter() {
       promotion: 'Free to install',
     },
     {
-      iconSource:
+      logoSource:
         'https://cdn.shopify.com/app-store/listing_images/a025a29145b1f0be4ef5692148f05569/icon/CLvai6LUx_cCEAE=.png',
       name: 'Amai Local Pickup & Delivery',
       description:
@@ -273,7 +271,7 @@ export function WithCustomFooter() {
       resourceName={{singular: 'app', plural: 'apps'}}
       items={recommendedApps}
       renderItem={({
-        iconSource,
+        logoSource,
         name,
         description,
         rating,
@@ -286,23 +284,39 @@ export function WithCustomFooter() {
           name={name}
           url=""
           verticalAlignment="center"
-          media={<Thumbnail size="medium" source={iconSource || AppsMajor} />}
+          media={
+            <Thumbnail
+              alt={`${name} app logo`}
+              size="medium"
+              source={logoSource || AppsMajor}
+            />
+          }
           accessibilityLabel={`View the ${name} app in the app store`}
         >
           <AlphaStack>
-            <Text variant="headingMd">{name}</Text>
+            <Text as="p" variant="headingMd">
+              {name}
+            </Text>
             <Inline gap="1">
-              <Text fontWeight="medium">{rating}</Text>
-              <Text fontWeight="medium">
-                <span as="span" role="img" aria-label="star">
+              <Text as="p" fontWeight="medium">
+                {rating}
+              </Text>
+              <Text as="p" fontWeight="medium">
+                <span role="img" aria-label="star">
                   ⭐️
                 </span>
               </Text>
-              <Text fontWeight="medium">{`(${reviewCount})`}</Text>
-              <Text fontWeight="medium">•</Text>
-              <Text fontWeight="medium">{promotion}</Text>
+              <Text as="p" fontWeight="medium">{`(${reviewCount})`}</Text>
+              <Text as="p" fontWeight="medium">
+                •
+              </Text>
+              <Text as="p" fontWeight="medium">
+                {promotion}
+              </Text>
             </Inline>
-            <Text color="subdued">{description}</Text>
+            <Text as="p" color="subdued">
+              {description}
+            </Text>
           </AlphaStack>
         </ResourceItem>
       )}
@@ -312,8 +326,10 @@ export function WithCustomFooter() {
   const localDeliverySettingCard = (
     <AlphaCard padding="5">
       <AlphaStack gap="5">
-        <Text variant="headingMd">Manage local deliveries</Text>
-        <Text>
+        <Text as="p" variant="headingMd">
+          Manage local deliveries
+        </Text>
+        <Text as="p">
           Get an optimized route or plan the order of delivery stops yourself.
           With local delivery apps, you and your staff can view routes, contact
           customers, update delivery statuses, and more.
@@ -327,7 +343,7 @@ export function WithCustomFooter() {
           footer={
             <Box width="100%">
               <Inline align="center" blockAlign="center">
-                <Text variant="headingMd" fontWeight="semibold">
+                <Text as="p" variant="headingMd" fontWeight="semibold">
                   Find more local delivery apps in the{' '}
                   <Link>Shopify App Store</Link>
                 </Text>
@@ -356,7 +372,7 @@ export function WithActionsAndCustomFooter() {
 
   return (
     <Modal
-      open
+      open={active}
       activator={activator}
       title="Import customers by CSV"
       primaryAction={{
@@ -369,6 +385,7 @@ export function WithActionsAndCustomFooter() {
           onAction: toggleActive,
         },
       ]}
+      onClose={toggleActive}
       footer={
         <Inline align="start">
           <Link>Need help importing customers?</Link>
@@ -525,7 +542,7 @@ export function WithoutATitle() {
         ]}
       >
         <Modal.Section titleHidden>
-          <Text>
+          <Text as="p">
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
           </Text>
@@ -558,7 +575,7 @@ export function WithScrollListener() {
       >
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
-            <Text>
+            <Text as="p">
               Item <a href="#Content">#{index}</a>
             </Text>
           </Modal.Section>
@@ -605,7 +622,7 @@ export function WithActivatorRef() {
         ]}
       >
         <Modal.Section>
-          <Text>
+          <Text as="p">
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
           </Text>
@@ -618,13 +635,13 @@ export function WithActivatorRef() {
 export function WithoutAnActivatorProp() {
   const [active, setActive] = useState(true);
 
-  const button = useRef();
+  const button: React.RefObject<HTMLDivElement> = useRef(null);
 
   const handleOpen = useCallback(() => setActive(true), []);
 
   const handleClose = useCallback(() => {
     setActive(false);
-    requestAnimationFrame(() => button.current.querySelector('button').focus());
+    requestAnimationFrame(() => button.current?.querySelector('button')?.focus);
   }, []);
 
   return (
@@ -649,7 +666,7 @@ export function WithoutAnActivatorProp() {
         ]}
       >
         <Modal.Section>
-          <Text>
+          <Text as="p">
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
           </Text>
