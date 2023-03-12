@@ -12,7 +12,6 @@ import {
 import {nanoid} from 'nanoid';
 import styles from './Editor.module.scss';
 import Image from 'next/image';
-import {Dialog} from '@headlessui/react';
 import {
   Page,
   BaseBlock,
@@ -30,14 +29,40 @@ import {
   ProgressiveDisclosureBlock,
   PageMetaType,
   PageMeta,
+  pageMetaTypes,
 } from './types';
-import TextareaAutosize from 'react-textarea-autosize';
+import {
+  ActionList,
+  AlphaCard,
+  AppProvider,
+  Button,
+  ButtonGroup,
+  Card,
+  Checkbox,
+  EmptyState,
+  FormLayout,
+  Layout,
+  Modal,
+  Page as PolarisPage,
+  PageActions,
+  Popover,
+  Select,
+  TextField,
+  Tooltip,
+} from '@shopify/polaris';
+import {
+  ArrowUpMinor,
+  ArrowDownMinor,
+  PlusMinor,
+  DeleteMinor,
+} from '@shopify/polaris-icons';
+import enTranslations from '@shopify/polaris/locales/en.json';
 
 function assertUnreachable(_: never): never {
   throw new Error("Didn't expect to get here");
 }
 
-function getPageStack(content: Content, page: Page): Page[] {
+export function getPageStack(content: Content, page: Page): Page[] {
   let parents: Page[] = [];
 
   function getParent(currentPage: Page): Page | undefined {
@@ -116,7 +141,7 @@ function getEmptyBlock(
       const block: ProgressiveDisclosureBlock = {
         ...baseBlock,
         blockType,
-        title: 'Expand me',
+        title: '',
       };
       return block;
     }
@@ -186,8 +211,6 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       case 'components':
         pageMeta = {
           type: 'components',
-          category: '',
-          description: '',
           examples: [],
         };
         break;
@@ -211,12 +234,17 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       title: 'New page',
       slug: pageId,
       parentId,
+      excerpt: '',
       order: siblings.length,
-      rendering: 'blocks',
+      useCustomLayout: false,
       blocks: [],
       keywords: [],
       childPageMetaType: null,
       pageMeta,
+      allowChildren: false,
+      hideInNav: false,
+      noIndex: false,
+      hasSeparatorInNav: false,
     };
 
     setContent((content) => ({
@@ -278,35 +306,41 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     <ContentContext.Provider
       value={{content, setContent, addPage, movePage, deletePage}}
     >
-      <div className={styles.Editor}>
-        <div className={styles.Pages}>
-          {/* <button onClick={() => addPage(null)}>Add page</button> */}
+      <AppProvider i18n={enTranslations}>
+        <div className={styles.Editor}>
+          <div className={styles.PageNav}>
+            <Button outline size="slim" onClick={() => addPage(null)}>
+              Add top level page
+            </Button>
 
-          {content.pages
-            .filter((page) => page.parentId === null)
-            .sort((a, b) => a.order - b.order)
-            .map((page) => (
-              <PageNavItem
-                key={page.id}
-                page={page}
-                onPageClick={(id) => setEditedPageId(id)}
-                editedPageId={editedPageId}
-              />
-            ))}
+            <ul>
+              {content.pages
+                .filter((page) => page.parentId === null)
+                .sort((a, b) => a.order - b.order)
+                .map((page) => (
+                  <PageNavItem
+                    key={page.id}
+                    page={page}
+                    onPageClick={(id) => setEditedPageId(id)}
+                    editedPageId={editedPageId}
+                  />
+                ))}
+            </ul>
+          </div>
+
+          {editedPageId && <PageEditor editedPageId={editedPageId} />}
+
+          {/* {editedPageId && (
+            <iframe
+              className={styles.SitePreview}
+              src={`/editor-page?id=${editedPageId}`}
+              width={500}
+              height={500}
+              title="Preview"
+            />
+          )} */}
         </div>
-
-        {editedPageId && <PageEditor editedPageId={editedPageId} />}
-
-        {editedPageId && (
-          <iframe
-            className={styles.SitePreview}
-            src={`/editor-page?id=${editedPageId}`}
-            width={500}
-            height={500}
-            title="Preview"
-          />
-        )}
-      </div>
+      </AppProvider>
     </ContentContext.Provider>
   );
 }
@@ -320,29 +354,29 @@ function PageNavItem({
   onPageClick: (pageId: string) => void;
   editedPageId: string | null;
 }) {
-  const {content, addPage, movePage, deletePage} = useContext(ContentContext);
+  const {content, addPage} = useContext(ContentContext);
   const childPages = content.pages
     .filter((thisPage) => thisPage.parentId === page.id)
     .sort((a, b) => a.order - b.order);
 
   return (
-    <div style={{border: '1px solid'}}>
-      <button
-        onClick={() => onPageClick(page.id)}
-        aria-current={page.id === editedPageId}
-      >
-        {page.title}
-      </button>
-
-      <button onClick={() => addPage(page.id)}>Add child</button>
-      <button onClick={() => movePage(page, 'up')}>&uarr;</button>
-      <button onClick={() => movePage(page, 'down')}>&darr;</button>
-      <button onClick={() => deletePage(page)} disabled={childPages.length > 0}>
-        —
-      </button>
+    <li aria-current={page.id === editedPageId}>
+      <span>
+        <button onClick={() => onPageClick(page.id)}>{page.title}</button>
+        <Tooltip content="Add child page">
+          {page.allowChildren && (
+            <button
+              onClick={() => addPage(page.id)}
+              aria-label="Add child page"
+            >
+              +
+            </button>
+          )}
+        </Tooltip>
+      </span>
 
       {childPages && (
-        <div className={styles.ChildPages}>
+        <ul className={styles.ChildPages}>
           {childPages.map((childPage) => (
             <PageNavItem
               key={childPage.id}
@@ -351,16 +385,21 @@ function PageNavItem({
               editedPageId={editedPageId}
             />
           ))}
-        </div>
+        </ul>
       )}
-    </div>
+    </li>
   );
 }
 
 function PageEditor({editedPageId}: {editedPageId: string}) {
-  const {content, setContent} = useContext(ContentContext);
+  const {content, setContent, movePage, deletePage} =
+    useContext(ContentContext);
   const editedPage = content.pages.find((page) => page.id === editedPageId);
   if (!editedPage) throw new Error('Edited page not found');
+
+  const childPages = content.pages.filter(
+    ({parentId}) => parentId === editedPageId,
+  );
 
   function updatePage(newPage: Page) {
     setContent((content) => ({
@@ -372,96 +411,188 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
   }
 
   return (
-    <div className={styles.PageEditor}>
-      <div className={styles.PageEditorInner}>
-        <input
-          type="text"
-          value={editedPage.title}
-          onChange={(evt) =>
-            updatePage({...editedPage, title: evt.target.value})
-          }
-        />
-        <input
-          min={0}
-          type="number"
-          value={editedPage.order}
-          onChange={(evt) =>
-            updatePage({...editedPage, order: parseInt(evt.target.value)})
-          }
-        />
-        <input
-          type="string"
-          value={editedPage.slug}
-          onChange={(evt) =>
-            updatePage({...editedPage, slug: evt.target.value})
-          }
-        />
-        <label>
-          <input
-            type="checkbox"
-            checked={editedPage.rendering === 'blocks'}
-            onChange={(evt) =>
-              updatePage({
-                ...editedPage,
-                rendering: evt.target.checked ? 'blocks' : 'custom',
-              })
-            }
-          />
-          Block based layout
-        </label>
+    <div className={styles.PageWrapper}>
+      <PolarisPage
+        title={editedPage.title}
+        secondaryActions={[
+          {
+            content: 'Move up',
+            onAction: () => movePage(editedPage, 'up'),
+            icon: ArrowUpMinor,
+            disabled: editedPage.order === 0,
+          },
+          {
+            content: 'Move down',
+            onAction: () => movePage(editedPage, 'down'),
+            icon: ArrowDownMinor,
+          },
+        ]}
+      >
+        <Layout>
+          <Layout.Section>
+            <div className={styles.PageEditor}>
+              <AlphaCard>
+                <FormLayout>
+                  <TextField
+                    type="text"
+                    value={editedPage.title}
+                    onChange={(title) => updatePage({...editedPage, title})}
+                    label="Title"
+                    autoComplete="off"
+                  />
 
-        <label>
-          Require that children supply the following meta data:
-          <select
-            value={editedPage.childPageMetaType || 'null'}
-            onChange={(evt) => {
-              const {value} = evt.target;
-              const childPageMetaType = (
-                value === 'null' ? null : value
-              ) as PageMetaType | null;
-              updatePage({
-                ...editedPage,
-                childPageMetaType,
-              });
-            }}
-          >
-            <option value="null">Nothing</option>
-            <option value="components">Componets</option>
-            <option value="patterns">Patterns</option>
-          </select>
-        </label>
+                  <TextField
+                    type="text"
+                    value={editedPage.slug}
+                    onChange={(slug) =>
+                      updatePage({
+                        ...editedPage,
+                        slug: slug
+                          .toLowerCase()
+                          .replace(/[_\s]+/g, '-')
+                          .replace(/[^a-z-]+/g, ''),
+                      })
+                    }
+                    label="Slug"
+                    autoComplete="off"
+                    prefix={`${getPageStack(content, editedPage)
+                      .slice(0, -1)
+                      .map(({slug}) => slug)
+                      .join(' / ')} /`}
+                    maxLength={40}
+                    showCharacterCount
+                  />
 
-        <PageMetaEditor page={editedPage} updatePage={updatePage} />
+                  <TextField
+                    type="text"
+                    value={editedPage.excerpt}
+                    onChange={(excerpt) => updatePage({...editedPage, excerpt})}
+                    label="Excerpt"
+                    helpText="The excerpt is used in overview pages and in search results."
+                    multiline={true}
+                    autoComplete="off"
+                  />
 
-        {editedPage.rendering === 'custom' && (
-          <div className={styles.CustomRouteBanner}>
-            <h2>Custom route</h2>
-            <p>
-              This page is not using blocks. You should create a custom Next.js
-              page so that something is rendered in its place.
-            </p>
-            <p>
-              Put it in{' '}
-              <span>
-                polaris.shopify.com/app/
-                {getPageStack(content, editedPage)
-                  ?.map((page) => page.slug)
-                  .join('/')}
-                .tsx
-              </span>
-            </p>
-            <p>
-              <a href="https://beta.nextjs.org/docs/app-directory-roadmap">
-                Next.js documentation
-              </a>
-            </p>
-          </div>
-        )}
+                  <Checkbox
+                    label="Use custom layout"
+                    checked={editedPage.useCustomLayout}
+                    onChange={(useCustomLayout) =>
+                      updatePage({...editedPage, useCustomLayout})
+                    }
+                  />
+                </FormLayout>
+              </AlphaCard>
 
-        {editedPage.rendering === 'blocks' && (
-          <BlockEditor pageId={editedPageId} parentBlockId={null} />
-        )}
-      </div>
+              <PageMetaEditor page={editedPage} updatePage={updatePage} />
+
+              {editedPage.useCustomLayout && (
+                <Card>
+                  <EmptyState
+                    heading="This page is using a custom layout"
+                    secondaryAction={{
+                      content: 'Read Next.js docs',
+                      url: 'https://beta.nextjs.org/docs/app-directory-roadmap',
+                    }}
+                    image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+                  >
+                    <p>
+                      You should create a custom Next.js page so that something
+                      is rendered in its place. Put it in{' '}
+                      <span>
+                        polaris.shopify.com/app/
+                        {getPageStack(content, editedPage)
+                          ?.map((page) => page.slug)
+                          .join('/')}
+                        .tsx
+                      </span>
+                    </p>
+                  </EmptyState>
+                </Card>
+              )}
+
+              {!editedPage.useCustomLayout && (
+                <BlockList pageId={editedPageId} parentBlockId={null} />
+              )}
+            </div>
+
+            <PageActions
+              secondaryActions={[
+                {
+                  content: 'Delete page',
+                  destructive: true,
+                  onAction: () => deletePage(editedPage),
+                  disabled: childPages.length > 0,
+                },
+              ]}
+            />
+          </Layout.Section>
+          <Layout.Section secondary>
+            <AlphaCard>
+              <FormLayout>
+                <Checkbox
+                  checked={editedPage.hideInNav}
+                  onChange={(hideInNav) =>
+                    updatePage({...editedPage, hideInNav})
+                  }
+                  label="Hide in navigation"
+                />
+
+                <Checkbox
+                  checked={editedPage.noIndex}
+                  onChange={(noIndex) => updatePage({...editedPage, noIndex})}
+                  label="Hide in search engines"
+                />
+
+                <Checkbox
+                  checked={editedPage.allowChildren}
+                  onChange={(allowChildren) =>
+                    updatePage({...editedPage, allowChildren})
+                  }
+                  label="Page can have children"
+                />
+
+                {editedPage.parentId === null &&
+                  editedPage.hideInNav === false && (
+                    <Checkbox
+                      checked={editedPage.hasSeparatorInNav}
+                      onChange={(hasSeparatorInNav) =>
+                        updatePage({...editedPage, hasSeparatorInNav})
+                      }
+                      label="Add separator in navigation"
+                    />
+                  )}
+
+                {editedPage.allowChildren && (
+                  <Select
+                    label="Child page type"
+                    helpText={
+                      <p>
+                        {`This value can't be changed when the page already has
+                    children.`}
+                      </p>
+                    }
+                    options={[
+                      {label: 'None', value: 'null'},
+                      ...pageMetaTypes.map((type) => ({
+                        label: type,
+                        value: type,
+                      })),
+                    ]}
+                    onChange={(value) => {
+                      const childPageMetaType = (
+                        value === 'null' ? null : value
+                      ) as PageMetaType | null;
+                      updatePage({...editedPage, childPageMetaType});
+                    }}
+                    value={editedPage.childPageMetaType || 'null'}
+                    disabled={childPages.length > 0}
+                  />
+                )}
+              </FormLayout>
+            </AlphaCard>
+          </Layout.Section>
+        </Layout>
+      </PolarisPage>
     </div>
   );
 }
@@ -485,24 +616,13 @@ function PageMetaEditor({
     case 'components':
       return (
         <div>
-          <h3>Components meta</h3>
-
-          <input
-            type="text"
-            value={pageMeta.description || ''}
-            placeholder="Component description"
-            onChange={(evt) => {
-              updateMeta({...pageMeta, description: evt.target.value});
-            }}
-          />
-
-          <input
+          {/* <input
             type="text"
             value={pageMeta.category || ''}
             onChange={(evt) =>
               updateMeta({...pageMeta, category: evt.target.value})
             }
-          />
+          /> */}
         </div>
       );
       break;
@@ -514,37 +634,50 @@ function PageMetaEditor({
   assertUnreachable(pageMeta);
 }
 
-function BlockEditor({
+function BlockList({
   pageId,
   parentBlockId,
 }: {
   pageId: string;
   parentBlockId: string | null;
 }) {
-  const {content, setContent} = useContext(ContentContext);
+  const {content} = useContext(ContentContext);
 
   const page = content.pages.find((page) => page.id === pageId);
   if (!page) throw new Error('Page not found');
   let {blocks} = page;
   blocks = blocks.filter((block) => block.parentBlockId === parentBlockId);
 
-  function addBlock(blockType: BlockType) {
-    let block: Block = {
-      ...getEmptyBlock(blockType, parentBlockId),
-      order: blocks.length,
-    };
-    setContent((content) => ({
-      ...content,
-      pages: [
-        ...content.pages.map((page) => {
-          if (page.id === pageId) {
-            return {...page, blocks: [...page.blocks, block]};
-          }
-          return page;
-        }),
-      ],
-    }));
-  }
+  return (
+    <div>
+      <div className={styles.BlockList}>
+        <BlockAdder pageId={pageId} parentBlockId={parentBlockId} order={0} />
+
+        {blocks
+          .sort((a, b) => a.order - b.order)
+          .map((block) => (
+            <BlockEditor
+              key={block.id}
+              pageId={pageId}
+              block={block}
+              parentBlockId={parentBlockId}
+            />
+          ))}
+      </div>
+    </div>
+  );
+}
+
+function BlockEditor({
+  pageId,
+  block,
+  parentBlockId,
+}: {
+  pageId: string;
+  block: Block;
+  parentBlockId: string | null;
+}) {
+  const {setContent} = useContext(ContentContext);
 
   function deleteBlock(blockId: string) {
     setContent((content) => ({
@@ -584,14 +717,22 @@ function BlockEditor({
           }
           return thisBlock;
         });
-      return {...content, blocks: sortedBlocks};
+      return {
+        ...content,
+        pages: content.pages.map((thisPage) =>
+          thisPage.id === page.id
+            ? {...thisPage, blocks: sortedBlocks}
+            : thisPage,
+        ),
+      };
     });
   }
 
   function handleBlockChange(updatedBlock: Block) {
+    console.log({pageId, updatedBlock});
     setContent((content) => ({
       ...content,
-      blocks: content.pages.map((page) => {
+      pages: content.pages.map((page) => {
         if (page.id === pageId) {
           return {
             ...page,
@@ -643,31 +784,116 @@ function BlockEditor({
 
     assertUnreachable(block);
   };
+  return (
+    <>
+      <AlphaCard key={block.id}>
+        <div className={styles.BlockActions}>
+          {block.order}
+          <ButtonGroup>
+            <Button
+              plain
+              icon={DeleteMinor}
+              size="slim"
+              onClick={() => deleteBlock(block.id)}
+              aria-label="Delete block"
+            ></Button>
+            <Button
+              plain
+              icon={ArrowUpMinor}
+              size="slim"
+              onClick={() => moveBlock(block, 'up')}
+              aria-label="Move block up"
+              disabled={block.order === 0}
+            ></Button>
+            <Button
+              plain
+              icon={ArrowDownMinor}
+              size="slim"
+              onClick={() => moveBlock(block, 'down')}
+              aria-label="Move block down"
+            ></Button>
+          </ButtonGroup>
+        </div>
+
+        {getBlockEditor(block)}
+      </AlphaCard>
+
+      <BlockAdder
+        pageId={pageId}
+        parentBlockId={parentBlockId}
+        order={block.order + 1}
+      />
+    </>
+  );
+}
+
+function BlockAdder({
+  pageId,
+  parentBlockId,
+  order,
+}: {
+  pageId: string;
+  parentBlockId: string | null;
+  order: number;
+}) {
+  const {setContent} = useContext(ContentContext);
+  const [adderIsVisible, setAdderIsVisible] = useState(false);
+
+  function addBlock(blockType: BlockType, order: number) {
+    let block: Block = {
+      ...getEmptyBlock(blockType, parentBlockId),
+      order,
+    };
+    setContent((content) => ({
+      ...content,
+      pages: [
+        ...content.pages.map((page) => {
+          if (page.id === pageId) {
+            return {
+              ...page,
+              blocks: [
+                ...page.blocks.slice(0, order),
+                block,
+                ...page.blocks.slice(order).map((block) => ({
+                  ...block,
+                  order: block.order + 1,
+                })),
+              ],
+            };
+          }
+          return page;
+        }),
+      ],
+    }));
+  }
 
   return (
-    <div>
-      {blockTypes.map((blockType) => (
-        <button key={blockType} onClick={() => addBlock(blockType)}>
-          + {blockType}
-        </button>
-      ))}
-
-      <div className={styles.BlockEditor}>
-        {blocks
-          .sort((a, b) => a.order - b.order)
-          .map((block) => (
-            <div key={block.id} className={styles.Block}>
-              <div className={styles.BlockActions}>
-                <button onClick={() => deleteBlock(block.id)}>—</button>
-                <button onClick={() => moveBlock(block, 'up')}>&uarr;</button>
-                <button onClick={() => moveBlock(block, 'down')}>&darr;</button>
-              </div>
-
-              {getBlockEditor(block)}
-            </div>
-          ))}
-      </div>
-    </div>
+    <Popover
+      active={adderIsVisible}
+      activator={
+        <Button
+          onClick={() => setAdderIsVisible(true)}
+          icon={PlusMinor}
+          plain
+        ></Button>
+      }
+      autofocusTarget="first-node"
+      onClose={() => setAdderIsVisible(false)}
+    >
+      <ActionList
+        actionRole="menuitem"
+        items={[
+          ...blockTypes.map((blockType) => ({
+            content: blockType,
+            onAction: () => {
+              addBlock(blockType, order);
+              setAdderIsVisible(false);
+            },
+            icon: PlusMinor,
+          })),
+        ]}
+      />
+    </Popover>
   );
 }
 
@@ -681,14 +907,17 @@ function MarkdownBlockEditor({
   onChange,
 }: BlockEditorProps<MarkdownBlock>) {
   return (
-    <TextareaAutosize
-      onChange={(evt) => {
-        onChange({...block, content: evt.target.value});
-      }}
-      minRows={5}
-    >
-      {block.content}
-    </TextareaAutosize>
+    <TextField
+      type="text"
+      multiline={true}
+      value={block.content}
+      onChange={(content) => onChange({...block, content})}
+      label="Markdown content"
+      autoComplete="off"
+      placeholder={`# Heading
+
+Lorem ipsum dolor...`}
+    />
   );
 }
 
@@ -704,11 +933,15 @@ function ImageBlockEditor({block, onChange}: BlockEditorProps<ImageBlock>) {
 function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
   return (
     <>
-      <TextareaAutosize
+      <TextField
+        type="text"
+        multiline={true}
         value={block.content}
-        onChange={(evt) => onChange({...block, content: evt.target.value})}
-        minRows={5}
-      ></TextareaAutosize>
+        onChange={(content) => onChange({...block, content})}
+        label="Markdown content"
+        autoComplete="off"
+      />
+
       <ImagePicker
         imageId={block.imageId}
         onPick={(imageId) => onChange({...block, imageId})}
@@ -722,11 +955,13 @@ function YoutubeVideoEditor({
   onChange,
 }: BlockEditorProps<YoutubeVideoBlock>) {
   return (
-    <input
+    <TextField
       type="text"
       value={block.youtubeUrl}
-      onChange={(evt) => onChange({...block, youtubeUrl: evt.target.value})}
-      placeholder="Youtube video URL"
+      onChange={(youtubeUrl) => onChange({...block, youtubeUrl})}
+      label="Youtube video URL"
+      autoComplete="off"
+      placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     />
   );
 }
@@ -736,11 +971,12 @@ function SandboxEmbedEditor({
   onChange,
 }: BlockEditorProps<SandboxEmbedBlock>) {
   return (
-    <input
+    <TextField
       type="text"
       value={block.embedUrl}
-      onChange={(evt) => onChange({...block, embedUrl: evt.target.value})}
-      placeholder="Sandbox embed URL"
+      onChange={(embedUrl) => onChange({...block, embedUrl})}
+      label="Sandbox embed URL"
+      autoComplete="off"
     />
   );
 }
@@ -749,19 +985,20 @@ function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
   // We only support javascript for now. The data structure is extensible
   // so that we can add more language down the road if we like.
   return (
-    <TextareaAutosize
-      onChange={(evt) =>
+    <TextField
+      type="text"
+      multiline={true}
+      value={block.code.javascript.code}
+      onChange={(code) => {
         onChange({
           ...block,
           // TODO: Allow multiple javascript tabs. Switch to array structure.
-          code: {javascript: {title: '', code: evt.target.value}},
-        })
-      }
-      placeholder="JS, JSX, TS or TSX code"
-      minRows={10}
-    >
-      {block.code.javascript.code}
-    </TextareaAutosize>
+          code: {javascript: {title: '', code}},
+        });
+      }}
+      label="Code"
+      autoComplete="off"
+    />
   );
 }
 
@@ -771,13 +1008,16 @@ function ProgressiveDisclosureEditor({
   pageId,
 }: BlockEditorProps<ProgressiveDisclosureBlock> & {pageId: string}) {
   return (
-    <div style={{padding: 20, border: '1px solid red'}}>
-      <input
+    <div>
+      <TextField
         type="text"
         value={block.title}
-        onChange={(evt) => onChange({...block, title: evt.target.value})}
+        onChange={(title) => onChange({...block, title})}
+        label="Text to show when collapsed"
+        autoComplete="off"
       />
-      <BlockEditor pageId={pageId} parentBlockId={block.id} />
+
+      <BlockList pageId={pageId} parentBlockId={block.id} />
     </div>
   );
 }
@@ -884,7 +1124,6 @@ function ImagePicker({
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Pick image</button>
       {lightVariant && (
         <Image
           src={`/uploads/${lightVariant.fileName}`}
@@ -894,117 +1133,134 @@ function ImagePicker({
         />
       )}
 
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <Dialog.Backdrop className={styles.Backdrop}></Dialog.Backdrop>
-        <Dialog.Panel className={styles.ImagePicker}>
-          <div className={styles.Browser}>
-            <div className={styles.Images}>
-              <button className={styles.AddImageButton} onClick={addImage}>
-                Add image
-              </button>
+      <Modal
+        activator={<Button onClick={() => setIsOpen(true)}>Pick image</Button>}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Choose an image"
+        primaryAction={{
+          content: 'Pick image',
+          onAction: () => {
+            if (inspectedImage) {
+              onPick(inspectedImage.id);
+              setIsOpen(false);
+            }
+          },
+          disabled: !inspectedImage,
+        }}
+        large={true}
+      >
+        <Modal.Section>
+          <div className={styles.ImagePicker}>
+            <div className={styles.Browser}>
+              <div className={styles.Images}>
+                <button className={styles.AddImageButton} onClick={addImage}>
+                  Add image
+                </button>
 
-              {content.images.map((image) => (
-                <button
-                  className={styles.Image}
-                  onClick={() => setSelectedImageId(image.id)}
-                  key={image.id}
-                >
+                {content.images.map((image) => (
+                  <button
+                    className={styles.Image}
+                    onClick={() => setSelectedImageId(image.id)}
+                    key={image.id}
+                  >
+                    {Object.values(ColorScheme).map((scheme) => {
+                      const variantImage = image.variants[scheme];
+                      if (variantImage) {
+                        return (
+                          <Image
+                            key={scheme}
+                            src={`/uploads/${variantImage.fileName}`}
+                            alt={image.alt[scheme]}
+                            width={200}
+                            height={200}
+                          />
+                        );
+                      } else {
+                        return (
+                          <div
+                            className={styles.ImagePlaceholder}
+                            key={`${image.id}-${scheme}`}
+                          ></div>
+                        );
+                      }
+                    })}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.Inspector}>
+              {inspectedImage && (
+                <>
+                  <h2>{inspectedImage.id}</h2>
+                  <input
+                    type="text"
+                    value={inspectedImage.alt.light || ''}
+                    onChange={(evt) =>
+                      setAltAttribute(inspectedImage.id, evt.target.value)
+                    }
+                    title=""
+                  />
                   {Object.values(ColorScheme).map((scheme) => {
-                    const variantImage = image.variants[scheme];
+                    const variantImage = inspectedImage.variants[scheme];
+                    const indicator = (
+                      <span className={styles.ColorSchemeIndicator}>
+                        {scheme === 'light' ? '☀️ Light mode' : '🌙 Dark mode'}
+                      </span>
+                    );
                     if (variantImage) {
                       return (
-                        <Image
-                          key={scheme}
-                          src={`/uploads/${variantImage.fileName}`}
-                          alt={image.alt[scheme]}
-                          width={200}
-                          height={200}
-                        />
+                        <div className={styles.ImagePreview} key={scheme}>
+                          {indicator}
+                          <Image
+                            src={`/uploads/${variantImage.fileName}`}
+                            alt={inspectedImage.alt[scheme]}
+                            {...getImageDimensions(
+                              {
+                                width: variantImage.width,
+                                height: variantImage.height,
+                              },
+                              500,
+                            )}
+                          />
+                        </div>
                       );
                     } else {
                       return (
                         <div
-                          className={styles.ImagePlaceholder}
-                          key={`${image.id}-${scheme}`}
-                        ></div>
+                          className={styles.DropZone}
+                          key={`${inspectedImage.id}-${scheme}`}
+                        >
+                          {indicator}
+                          <p>+</p>
+                          <input
+                            type="file"
+                            id={`drop-zone-${inspectedImage.id}-${scheme}`}
+                            onChange={() =>
+                              uploadImage(inspectedImage.id, scheme)
+                            }
+                            title=""
+                          />
+                        </div>
                       );
                     }
                   })}
-                </button>
-              ))}
+
+                  <button
+                    onClick={() => {
+                      onPick(inspectedImage.id);
+                      setIsOpen(false);
+                    }}
+                  >
+                    Pick
+                  </button>
+                </>
+              )}
             </div>
           </div>
-
-          <div className={styles.Inspector}>
-            {inspectedImage && (
-              <>
-                <h2>{inspectedImage.id}</h2>
-                <input
-                  type="text"
-                  value={inspectedImage.alt.light || ''}
-                  onChange={(evt) =>
-                    setAltAttribute(inspectedImage.id, evt.target.value)
-                  }
-                  title=""
-                />
-                {Object.values(ColorScheme).map((scheme) => {
-                  const variantImage = inspectedImage.variants[scheme];
-                  const indicator = (
-                    <span className={styles.ColorSchemeIndicator}>
-                      {scheme === 'light' ? '☀️ Light mode' : '🌙 Dark mode'}
-                    </span>
-                  );
-                  if (variantImage) {
-                    return (
-                      <div className={styles.ImagePreview} key={scheme}>
-                        {indicator}
-                        <Image
-                          src={`/uploads/${variantImage.fileName}`}
-                          alt={inspectedImage.alt[scheme]}
-                          {...getImageDimensions(
-                            {
-                              width: variantImage.width,
-                              height: variantImage.height,
-                            },
-                            500,
-                          )}
-                        />
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div
-                        className={styles.DropZone}
-                        key={`${inspectedImage.id}-${scheme}`}
-                      >
-                        {indicator}
-                        <p>+</p>
-                        <input
-                          type="file"
-                          id={`drop-zone-${inspectedImage.id}-${scheme}`}
-                          onChange={() =>
-                            uploadImage(inspectedImage.id, scheme)
-                          }
-                          title=""
-                        />
-                      </div>
-                    );
-                  }
-                })}
-
-                <button
-                  onClick={() => {
-                    onPick(inspectedImage.id);
-                    setIsOpen(false);
-                  }}
-                >
-                  Pick
-                </button>
-              </>
-            )}
-          </div>
-        </Dialog.Panel>
-      </Dialog>
+        </Modal.Section>
+      </Modal>
     </>
   );
 }

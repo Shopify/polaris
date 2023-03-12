@@ -1,14 +1,19 @@
 export interface Page {
   id: string;
   title: string;
+  excerpt: string;
   slug: string;
   parentId: string | null;
   order: number;
-  rendering: 'blocks' | 'custom';
+  useCustomLayout: boolean;
   blocks: Block[];
   keywords: string[];
   childPageMetaType: PageMetaType | null;
   pageMeta: PageMeta | null;
+  allowChildren: boolean;
+  hideInNav: boolean;
+  noIndex: boolean;
+  hasSeparatorInNav: boolean;
 }
 
 export type BasePageMeta = {
@@ -20,8 +25,6 @@ export type PageMetaType = typeof pageMetaTypes[number];
 
 interface ComponentsPageMeta extends BasePageMeta {
   type: 'components';
-  category: string;
-  description: string;
   examples: {
     fileName: string;
     title: string;
