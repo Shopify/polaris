@@ -116,7 +116,7 @@ $disabled-fade: 0.6;
 
   border-radius: var(--p-border-radius-1);
 
-  &:hover {
+  &:is(:hover, :focus-visible) {
     background: var(--p-background-hovered);
     color: var(--p-text);
     text-decoration: none;
