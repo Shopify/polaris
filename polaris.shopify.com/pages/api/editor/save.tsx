@@ -1,5 +1,5 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
-import {Content, Page, Image} from '../../../src/components/Editor/types';
+import {Content} from '../../../src/components/Editor/types';
 import fs from 'fs';
 
 export const config = {
@@ -21,14 +21,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-function createTsFileContent(content: Content): string {
-  function stringify(obj: Page[] | Image[]): string {
-    return JSON.stringify(obj, null, 2)
-      .replace(`},\n  {`, `},\n\n  {`)
-      .replace(/"([a-z]+)":/gi, '$1:');
-    // .replace(/\\n/g, '\n');
-  }
+function stringify(obj: Object): string {
+  return JSON.stringify(obj, null, 2)
+    .replace(`},\n  {`, `},\n\n  {`)
+    .replace(/"([a-z]+)":/gi, '$1:');
+}
 
+function createTsFileContent(content: Content): string {
   return `import { Content } from './components/Editor/types';
 
 /*

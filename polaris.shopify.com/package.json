@@ -8,15 +8,13 @@
     "dev": "yarn get-props && run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
     "disabled-dev:playroom": "rm -rf ./public/playroom && playroom start",
-    "disabled-dev:watch-md": "node scripts/watch-md.mjs",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
-    "gen-sitemap": "yarn next-sitemap",
     "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
-    "gen-assets": "node scripts/gen-assets.mjs && yarn get-props"
+    "gen-assets": "npx ts-node scripts/createNav/createNav.ts && npx ts-node scripts/createNav/createSiteMap.ts"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
@@ -68,7 +66,6 @@
     "execa": "^6.1.0",
     "frontmatter": "^0.0.3",
     "generact": "^0.4.0",
-    "get-site-urls": "3.0.0-alpha.1",
     "globby": "^11.1.0",
     "js-yaml": "^4.1.0",
     "lodash.set": "^4.3.2",
@@ -79,6 +76,7 @@
     "rehype-raw": "^6.1.1",
     "sass": "^1.49.9",
     "style-loader": "^3.3.1",
+    "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   }
 }

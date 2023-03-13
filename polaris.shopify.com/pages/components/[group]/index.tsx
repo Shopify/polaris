@@ -4,10 +4,7 @@ import ComponentThumbnail from '../../../src/components/ComponentThumbnail';
 import {PageWithUrl} from '../../../src/components/Editor/types';
 import {GetStaticPaths, GetStaticProps} from 'next';
 import {content} from '../../../src/content';
-import {
-  createPageWithUrl,
-  getPageUrl,
-} from '../../../src/components/Editor/Editor';
+import {getPageWithUrl, getPageUrl} from '../../../src/components/Editor/utils';
 
 interface Props {
   page: PageWithUrl;
@@ -16,7 +13,7 @@ interface Props {
 
 export default function GroupPage({page, subPages}: Props) {
   return (
-    <Page page={page}>
+    <Page page={page} showTOC={false}>
       <Grid>
         {subPages
           .sort((a, b) => a.title.localeCompare(b.title))
@@ -47,10 +44,10 @@ export const getStaticProps: GetStaticProps<Props, {group: string}> = async ({
     return pageUrl === `components/${params?.group}`;
   });
   if (page) {
-    const pageWithUrl = createPageWithUrl(content, page);
+    const pageWithUrl = getPageWithUrl(content, page);
     const subPages = content.pages
       .filter((page) => page.parentId === pageWithUrl.id)
-      .map((page) => createPageWithUrl(content, page));
+      .map((page) => getPageWithUrl(content, page));
 
     return {props: {page: pageWithUrl, subPages}};
   } else {

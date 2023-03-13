@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next';
-import {getPageUrl, getPageWithUrl} from '../../src/components/Editor/Editor';
+import {getPageUrl, getPageWithUrl} from '../../src/components/Editor/utils';
 import {PageWithUrl} from '../../src/components/Editor/types';
 import {Grid, GridItem, GridItemProps} from '../../src/components/Grid';
 import Longform from '../../src/components/Longform';

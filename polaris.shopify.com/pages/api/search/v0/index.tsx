@@ -2,35 +2,19 @@ import type {NextApiRequest, NextApiResponse} from 'next';
 import Fuse from 'fuse.js';
 import {metadata, MetadataProperties} from '@shopify/polaris-tokens';
 import iconMetadata from '@shopify/polaris-icons/metadata';
-
+import {content} from '../../../../src/content';
 import {
   SearchResults,
   GroupedSearchResults,
   searchResultCategories,
   SearchResultCategory,
-  Status,
-  SiteJSON,
-  PatternFrontMatter,
+  StatusName,
 } from '../../../../src/types';
-
 import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
-
-import siteJson from '../../../../.cache/site.json';
-
-const pages: SiteJSON = siteJson;
-
-const componentSlugs = Object.keys(pages).filter((slug) =>
-  slug.startsWith('components/'),
-);
-const patternSlugs = Object.keys(pages).filter((slug) =>
-  slug.startsWith('patterns/'),
-);
-const foundationSlugs = Object.keys(pages).filter(
-  (slug) =>
-    slug.startsWith('foundations/') ||
-    slug.startsWith('design/') ||
-    slug.startsWith('content/'),
-);
+import {
+  getPageStack,
+  getPageUrl,
+} from '../../../../src/components/Editor/utils';
 
 const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
   foundations: 8,
@@ -46,33 +30,40 @@ const getSearchResults = (query?: string) => {
   let results: SearchResults = [];
 
   // Add components
-  componentSlugs.forEach((slug) => {
-    const {
-      status,
-      title,
-      description = '',
-      category = '',
-    } = pages[slug].frontMatter;
+  const componentsPage = content.pages.find(
+    (page) => page.parentId === null && page.slug === 'components',
+  );
+  if (componentsPage) {
+    const componentGroupIds = content.pages
+      .filter(({parentId}) => parentId === componentsPage.id)
+      .map(({id}) => id);
 
-    const url = category
-      ? `/components/${slugify(category)}/${slugify(title)}`
-      : `/components/${slugify(title)}`;
+    content.pages
+      .filter(({parentId}) => parentId && componentGroupIds.includes(parentId))
+      .forEach((page) => {
+        const {id, title, excerpt} = page;
+        const url = getPageUrl(content, page);
+        const pageStack = getPageStack(content, page);
 
-    results.push({
-      id: slugify(`components ${title}`),
-      category: 'components',
-      score: 0,
-      url,
-      meta: {
-        components: {
-          title,
-          description: stripMarkdownLinks(description),
-          status: status as Status,
-          group: slugify(category),
-        },
-      },
-    });
-  });
+        results.push({
+          id,
+          category: 'components',
+          score: 0,
+          url,
+          meta: {
+            components: {
+              title,
+              description: stripMarkdownLinks(excerpt),
+              status: {
+                value: StatusName.Alpha,
+                message: 'TODO',
+              },
+              group: pageStack[1].slug,
+            },
+          },
+        });
+      });
+  }
 
   const {colors, depth, font, motion, shape, spacing, zIndex} = metadata;
   const tokenGroups = {
@@ -124,47 +115,63 @@ const getSearchResults = (query?: string) => {
   });
 
   // Add foundations
-  foundationSlugs.forEach((slug) => {
-    const {title, icon = '', description = ''} = pages[slug].frontMatter;
-    const category = slug.split('/')[0].toLowerCase();
+  const foundationSlugs = ['foundations', 'design', 'content'];
+  const foundationsPageIds = content.pages
+    .filter(
+      ({parentId, slug}) => parentId === null && foundationSlugs.includes(slug),
+    )
+    .map(({id}) => id);
+  content.pages
+    .filter(({parentId}) => parentId && foundationsPageIds.includes(parentId))
+    .forEach((page) => {
+      const {id, title, excerpt, pageMeta} = page;
+      if (pageMeta?.type !== 'foundations') return;
+      const url = getPageUrl(content, page);
+      const pageStack = getPageStack(content, page);
 
-    results.push({
-      id: slugify(`foundations ${title}`),
-      category: 'foundations',
-      score: 0,
-      url: `/${slug}`,
-      meta: {
-        foundations: {
-          title,
-          icon,
-          description,
-          category: category || '',
+      results.push({
+        id,
+        category: 'foundations',
+        score: 0,
+        url,
+        meta: {
+          foundations: {
+            title,
+            icon: pageMeta.icon,
+            description: excerpt,
+            category: pageStack[0].slug,
+          },
         },
-      },
+      });
     });
-  });
 
-  patternSlugs.forEach((slug) => {
-    const {
-      title,
-      description = '',
-      previewImg,
-    } = pages[slug].frontMatter as PatternFrontMatter;
+  const patternsPage = content.pages.find(
+    ({parentId, slug}) => parentId === null && slug === 'patterns',
+  );
 
-    results.push({
-      id: slugify(`pattern ${title}`),
-      category: 'patterns',
-      score: 0,
-      url: `/${slug}`,
-      meta: {
-        patterns: {
-          title,
-          description,
-          previewImg,
-        },
-      },
-    });
-  });
+  if (patternsPage) {
+    content.pages
+      .filter(({parentId}) => parentId === patternsPage.id)
+      .forEach((page) => {
+        const {title, excerpt} = page;
+        const url = getPageUrl(content, page);
+        const previewImg = '';
+
+        results.push({
+          id: slugify(`pattern ${title}`),
+          category: 'patterns',
+          score: 0,
+          url,
+          meta: {
+            patterns: {
+              title,
+              description: excerpt,
+              previewImg,
+            },
+          },
+        });
+      });
+  }
 
   const fuse = new Fuse(results, {
     keys: [

@@ -107,6 +107,10 @@ html {
   padding: 0;
 }
 
+html {
+  scroll-padding-top: calc(var(--header-height) + var(--header-margin));
+}
+
 // Resets and styles that should not affect Polaris examples
 *:where(.styles-for-site-but-not-polaris-examples *) {
   margin: 0;

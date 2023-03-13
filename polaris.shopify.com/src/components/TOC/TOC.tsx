@@ -10,7 +10,8 @@ interface Props {
 function getContentTopMargin(): number {
   const rootStyles = getComputedStyle(document.documentElement);
   const headerHeight = rootStyles.getPropertyValue('--header-height');
-  const headerThreshold = parseInt(headerHeight);
+  const headerMargin = rootStyles.getPropertyValue('--header-margin');
+  const headerThreshold = parseInt(headerHeight) + parseInt(headerMargin) + 1;
   return headerThreshold;
 }
 
@@ -45,49 +46,8 @@ function scanPageForCurrentHeading(): string | void {
 function TOC({items}: Props) {
   const isNested = !!items.find((item) => item.children.length > 0);
   const [idOfCurrentHeading, setIdOfCurrentHeading] = useState<string>();
-  const temporarilyIgnoreScrolling = useRef(false);
-  const lastScrollY = useRef(0);
-
-  function waitForScrollToStop() {
-    function checkIfStillScrolling() {
-      if (lastScrollY.current !== window.scrollY) {
-        // Don't check too often (e.g. using animationFrame)
-        // because the scrollY diff between frames might be
-        // less than 1 if rounded.
-        setTimeout(checkIfStillScrolling, 100);
-      } else {
-        temporarilyIgnoreScrolling.current = false;
-      }
-      lastScrollY.current = window.scrollY;
-    }
-    // Give browser some time to start scrolling
-    setTimeout(checkIfStillScrolling, 100);
-  }
-
-  function scrollIntoView(id: string) {
-    setIdOfCurrentHeading(id);
-    const contentTopMargin = getContentTopMargin();
-    const targetEl = document.getElementById(id);
-    if (targetEl) {
-      const {top: distanceFromViewportTop} = targetEl.getBoundingClientRect();
-      let newScrollY =
-        window.scrollY + distanceFromViewportTop - contentTopMargin + 1;
-
-      const isAlmostAtTheTopOfThePage = newScrollY < contentTopMargin * 1.25;
-      if (isAlmostAtTheTopOfThePage) {
-        newScrollY = 0;
-      }
-
-      history.pushState({}, '', `#${id}`);
-
-      temporarilyIgnoreScrolling.current = true;
-      window.scrollTo({top: newScrollY, behavior: 'smooth'});
-      waitForScrollToStop();
-    }
-  }
 
   function detectCurrentHeading() {
-    if (temporarilyIgnoreScrolling.current) return;
     const id = scanPageForCurrentHeading();
     if (id) {
       setIdOfCurrentHeading(id);
@@ -103,14 +63,7 @@ function TOC({items}: Props) {
   useEffect(() => detectCurrentHeading(), [items]);
 
   const Link = ({toId, linkText}: {toId: string; linkText: string}) => (
-    <a
-      href={`#${toId}`}
-      data-is-current={toId === idOfCurrentHeading}
-      onClick={(evt) => {
-        scrollIntoView(toId);
-        evt.preventDefault();
-      }}
-    >
+    <a href={`#${toId}`} data-is-current={toId === idOfCurrentHeading}>
       {linkText}
     </a>
   );

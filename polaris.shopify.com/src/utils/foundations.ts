@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next';
-import {getPageUrl, getPageWithUrl} from '../components/Editor/Editor';
+import {getPageUrl, getPageWithUrl} from '../components/Editor/utils';
 import {FoundationsProps} from '../components/FoundationsPage/FoundationsPage';
 import {content} from '../content';
 

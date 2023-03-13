@@ -160,6 +160,7 @@ componentCategories
           pageMeta: {
             type: 'components',
             examples: examples,
+            lifeCyclePhase: 'alfa',
           },
           keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
           hasSeparatorInNav: false,

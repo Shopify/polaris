@@ -12,7 +12,7 @@ import {
   getPageByPath,
   getPageStack,
   getPageWithUrl,
-} from '../../../../src/components/Editor/Editor';
+} from '../../../../src/components/Editor/utils';
 import {PageWithUrl} from '../../../../src/components/Editor/types';
 import EditorRenderer from '../../../../src/components/EditorRenderer';
 import {ResolvedComponentExample} from '../../../../src/components/ComponentExamples/ComponentExamples';

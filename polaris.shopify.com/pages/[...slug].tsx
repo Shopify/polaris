@@ -2,7 +2,7 @@ import type {GetStaticPaths, GetStaticProps, NextPage} from 'next';
 
 import Page from '../src/components/Page';
 import {content} from '../src/content';
-import {getPageUrl, getPageWithUrl} from '../src/components/Editor/Editor';
+import {getPageUrl, getPageWithUrl} from '../src/components/Editor/utils';
 import {PageWithUrl} from '../src/components/Editor/types';
 
 interface Props {

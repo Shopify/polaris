@@ -4,7 +4,7 @@ import ComponentThumbnail from '../../src/components/ComponentThumbnail';
 import {PageWithUrl} from '../../src/components/Editor/types';
 import {GetStaticProps} from 'next';
 import {content} from '../../src/content';
-import {getPageWithUrl, getPageUrl} from '../../src/components/Editor/Editor';
+import {getPageWithUrl, getPageUrl} from '../../src/components/Editor/utils';
 
 interface Props {
   page: PageWithUrl;

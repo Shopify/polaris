@@ -5,8 +5,8 @@ import {DarkMode} from 'use-dark-mode';
 import {motion, AnimatePresence} from 'framer-motion';
 
 import GlobalSearch from '../GlobalSearch';
-import navJSON from '../../../.cache/nav.json';
-import {NavJSON, NavItem, Breakpoints} from '../../types';
+import {nav} from '../../nav';
+import {Breakpoints} from '../../types';
 
 import styles from './Frame.module.scss';
 import {className} from '../../utils/various';
@@ -19,8 +19,6 @@ interface Props {
   darkMode: DarkMode;
   children: React.ReactNode;
 }
-
-const nav = navJSON as NavJSON;
 
 function Frame({darkMode, children}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
@@ -142,12 +140,18 @@ function Frame({darkMode, children}: Props) {
           id={NAV_ID}
         >
           <ul>
-            <NavItem
-              nav={nav}
-              level={0}
-              handleLinkClick={() => setNavIsVisible(false)}
-              handleShiftTabOnFirstLink={handleShiftTabPress}
-            />
+            {nav
+              .filter((page) => page.parentId === null)
+              .sort((a, b) => a.order - b.order)
+              .map((item) => (
+                <NavItem
+                  key={item.id}
+                  id={item.id}
+                  level={0}
+                  handleLinkClick={() => setNavIsVisible(false)}
+                  handleShiftTabOnFirstLink={handleShiftTabPress}
+                />
+              ))}
           </ul>
           <button
             ref={closeButtonRef}
@@ -166,129 +170,87 @@ function Frame({darkMode, children}: Props) {
 }
 
 function NavItem({
-  nav,
+  id,
   level,
   handleLinkClick,
   handleShiftTabOnFirstLink,
 }: {
-  nav: NavItem;
+  id: string;
   level: number;
   handleLinkClick: () => void;
   handleShiftTabOnFirstLink: (e: React.KeyboardEvent) => void;
 }) {
-  const [manuallyExpandedSections, setManuallyExpandedSections] = useState<{
-    [slug: string]: boolean;
-  }>({});
-
   const {asPath} = useRouter();
 
-  const manuallyToggleSection = (slug: string, expanded: boolean) => {
-    setManuallyExpandedSections({
-      ...manuallyExpandedSections,
-      [slug]: expanded,
-    });
-  };
+  const item = nav.find((item) => item.id === id);
+  if (!item) return null;
 
-  useEffect(() => setManuallyExpandedSections({}), [asPath]);
+  const children = nav.filter((child) => child.parentId === id);
+
+  const isExpandable = children.length > 0;
+  const navAriaId = `nav-${id}`;
+  const isExpanded = true;
+
+  const isCurrent = false;
 
   return (
-    <>
-      {nav.children &&
-        !nav.hideFromNav &&
-        Object.entries(nav.children)
-          .filter(([, child]) => !child.hideFromNav)
-          .sort((_a, _b) => {
-            const [, a] = _a as [string, NavItem];
-            const [, b] = _b as [string, NavItem];
-            return a.title && b.title ? a.title.localeCompare(b.title) : 0;
-          })
-          .sort((_a, _b) => {
-            const [, a] = _a as [string, NavItem];
-            const [, b] = _b as [string, NavItem];
-            return (
-              (typeof a.order !== 'undefined' ? a.order : 1000) -
-              (typeof b.order !== 'undefined' ? b.order : 1000)
-            );
-          })
-          .map((entry, i) => {
-            const [key, child] = entry as [string, NavItem];
+    <li
+      key={item.id}
+      className={className(item.hasSeparatorInNav && styles.newSection)}
+    >
+      <span
+        className={className(styles.NavItem, isCurrent && styles.isCurrent)}
+      >
+        <Link
+          href={`/${item.url}`}
+          onClick={handleLinkClick}
+          aria-current={isCurrent ? 'page' : 'false'}
+          onKeyDown={(evt) => {
+            if (level === 0 && i === 0) {
+              handleShiftTabOnFirstLink(evt);
+            }
+          }}
+        >
+          {item.title}
 
-            if (!child.slug) return null;
+          {/* {child.status && <StatusBadge status={child.status} />} */}
+        </Link>
 
-            const isExpandable = child.children && !child.hideChildren;
-            const id = (child.slug || key).replace(/\//g, '');
-            const navAriaId = `nav-${id}`;
-            const segments = asPath.slice(1).split('/');
-            const keyAndLevelMatchUrl = !!(segments[level] === key);
-            const manuallyExpandedStatus = manuallyExpandedSections[key];
-            const isExpanded = child.expanded
-              ? child.expanded
-              : manuallyExpandedStatus === undefined
-              ? keyAndLevelMatchUrl
-              : manuallyExpandedStatus;
+        {isExpandable && (
+          <button
+            className={styles.Toggle}
+            onClick={() => undefined}
+            aria-label="Toggle section"
+            aria-expanded={isExpanded}
+            aria-controls={isExpanded ? navAriaId : undefined}
+          />
+        )}
+      </span>
 
-            const removeParams = (path: string) => path.replace(/\?.+$/gi, '');
-            const isCurrent = removeParams(asPath) === child.slug;
-
-            return (
-              <li
-                key={child.slug}
-                className={className(child.newSection && styles.newSection)}
-              >
-                <span
-                  className={className(
-                    styles.NavItem,
-                    isCurrent && styles.isCurrent,
-                  )}
-                >
-                  <Link
-                    href={child.slug}
-                    onClick={handleLinkClick}
-                    aria-current={isCurrent ? 'page' : 'false'}
-                    onKeyDown={(evt) => {
-                      if (level === 0 && i === 0) {
-                        handleShiftTabOnFirstLink(evt);
-                      }
-                    }}
-                  >
-                    {child.title}
-
-                    {child.status && <StatusBadge status={child.status} />}
-                  </Link>
-
-                  {isExpandable && !child.expanded && (
-                    <button
-                      className={styles.Toggle}
-                      onClick={() => manuallyToggleSection(key, !isExpanded)}
-                      aria-label="Toggle section"
-                      aria-expanded={isExpanded}
-                      aria-controls={isExpanded ? navAriaId : undefined}
-                    />
-                  )}
-                </span>
-
-                <AnimatePresence initial={false}>
-                  {isExpandable && isExpanded && (
-                    <motion.ul
-                      initial={{opacity: 0, height: 0}}
-                      animate={{opacity: 1, scale: 1, height: 'auto'}}
-                      exit={{opacity: 0, height: 0}}
-                      transition={{ease: 'easeInOut', duration: 0.15}}
-                      id={navAriaId}
-                    >
-                      <NavItem
-                        nav={child}
-                        level={level + 1}
-                        handleLinkClick={handleLinkClick}
-                        handleShiftTabOnFirstLink={handleShiftTabOnFirstLink}
-                      />
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
-              </li>
-            );
-          })}
-    </>
+      <motion.ul
+        initial={{opacity: 0, height: 0}}
+        animate={{opacity: 1, scale: 1, height: 'auto'}}
+        exit={{opacity: 0, height: 0}}
+        transition={{ease: 'easeInOut', duration: 0.15}}
+        id={navAriaId}
+      >
+        <AnimatePresence initial={false}>
+          {children
+            .sort((a, b) => a.order - b.order)
+            .map((child) => {
+              return (
+                <NavItem
+                  key={child.id}
+                  id={child.id}
+                  level={level + 1}
+                  handleLinkClick={handleLinkClick}
+                  handleShiftTabOnFirstLink={handleShiftTabOnFirstLink}
+                />
+              );
+            })}
+        </AnimatePresence>
+      </motion.ul>
+    </li>
   );
 }
 
