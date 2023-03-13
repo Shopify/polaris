@@ -101,8 +101,8 @@ $disabled-fade: 0.6;
   border-radius: var(--p-border-radius-1);
 
   &:is(:hover, :focus-visible) {
-    background: var(--p-background-hovered);
-    color: var(--p-text);
+    background: var(--p-color-bg-app-hover);
+    color: var(--p-color-text);
     text-decoration: none;
   }
 }
