@@ -1,15 +1,22 @@
 import React from 'react';
 
+import {classNames} from '../../utilities/css';
+
 import styles from './KeyboardKey.scss';
 
+type Size = 'small';
+
 export interface KeyboardKeyProps {
-  /** The content to display inside the key */
   children?: string;
+  size?: Size;
 }
+export function KeyboardKey({children = '', size}: KeyboardKeyProps) {
+  const key =
+    !size && children.length > 1
+      ? children.toLowerCase()
+      : children.toUpperCase();
 
-export function KeyboardKey({children}: KeyboardKeyProps) {
-  let key = children || '';
-  key = key.length > 1 ? key.toLowerCase() : key.toUpperCase();
+  const className = classNames(styles.KeyboardKey, size && styles[size]);
 
-  return <kbd className={styles.KeyboardKey}>{key}</kbd>;
+  return <kbd className={className}>{key}</kbd>;
 }

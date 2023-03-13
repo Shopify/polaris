@@ -1,5 +1,5 @@
 import {
-  Stack,
+  LegacyStack,
   Tag,
   Listbox,
   EmptySearchResult,
@@ -68,7 +68,7 @@ function MultiselectTagComboboxExample() {
       return (
         <p>
           {start}
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {highlight}
           </Text>
           {end}
@@ -94,13 +94,13 @@ function MultiselectTagComboboxExample() {
 
   const verticalContentMarkup =
     selectedTags.length > 0 ? (
-      <Stack spacing="extraTight" alignment="center">
+      <LegacyStack spacing="extraTight" alignment="center">
         {selectedTags.map((tag) => (
           <Tag key={`option-${tag}`} onRemove={removeTag(tag)}>
             {tag}
           </Tag>
         ))}
-      </Stack>
+      </LegacyStack>
     ) : null;
 
   const optionMarkup =

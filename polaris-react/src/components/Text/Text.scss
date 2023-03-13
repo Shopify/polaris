@@ -57,40 +57,28 @@
   color: var(--p-text-on-dark);
 }
 
-.regular {
-  font-weight: var(--p-font-weight-regular);
-}
-
-.medium {
-  font-weight: var(--p-font-weight-medium);
-}
-
-.semibold {
-  font-weight: var(--p-font-weight-semibold);
-}
-
-.bold {
-  font-weight: var(--p-font-weight-bold);
-}
-
 .headingXs {
   font-size: var(--p-font-size-75);
   line-height: var(--p-font-line-height-1);
+  font-weight: var(--p-font-weight-semibold);
 }
 
 .headingSm {
   font-size: var(--p-font-size-100);
   line-height: var(--p-font-line-height-2);
+  font-weight: var(--p-font-weight-semibold);
 }
 
 .headingMd {
   font-size: var(--p-font-size-200);
   line-height: var(--p-font-line-height-3);
+  font-weight: var(--p-font-weight-semibold);
 }
 
 .headingLg {
   font-size: var(--p-font-size-200);
   line-height: var(--p-font-line-height-2);
+  font-weight: var(--p-font-weight-semibold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-300);
@@ -101,6 +89,7 @@
 .headingXl {
   font-size: var(--p-font-size-300);
   line-height: var(--p-font-line-height-3);
+  font-weight: var(--p-font-weight-semibold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-400);
@@ -111,6 +100,7 @@
 .heading2xl {
   font-size: var(--p-font-size-300);
   line-height: var(--p-font-line-height-3);
+  font-weight: var(--p-font-weight-semibold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-500);
@@ -121,6 +111,7 @@
 .heading3xl {
   font-size: var(--p-font-size-400);
   line-height: var(--p-font-line-height-4);
+  font-weight: var(--p-font-weight-semibold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-600);
@@ -131,6 +122,7 @@
 .heading4xl {
   font-size: var(--p-font-size-600);
   line-height: var(--p-font-line-height-6);
+  font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-700);
@@ -151,6 +143,24 @@
 .bodyLg {
   font-size: var(--p-font-size-200);
   line-height: var(--p-font-line-height-2);
+}
+
+// font-weight must be below variant styles so
+// it can override the styles when necessary.
+.regular {
+  font-weight: var(--p-font-weight-regular);
+}
+
+.medium {
+  font-weight: var(--p-font-weight-medium);
+}
+
+.semibold {
+  font-weight: var(--p-font-weight-semibold);
+}
+
+.bold {
+  font-weight: var(--p-font-weight-bold);
 }
 
 .break {

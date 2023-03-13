@@ -4,8 +4,8 @@ description: Picker experiences help merchants browse, find, and select from mul
 icon: LocationMajor
 noIndex: true
 status:
-  value: Deprecated
-  message: This pattern is no longer supported.
+  value: Legacy
+  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - customer segments
   - locations

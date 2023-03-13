@@ -1,29 +1,37 @@
 ---
 title: Alpha stack
-description: Use to display elements vertically with items placed directly below the preceding item.
+description: Use to display children vertically with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout
+  - stack spacing
+  - vertical centering
+  - fill available space
+  - fill space
+  - equal width
+  - right-aligned stack
+  - stack layout
 status:
   value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [Component lifecycle](/getting-started/components-lifecycle).
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: alpha-stack-default.tsx
-    title: Default
-    description: >-
-      By default, stack is left aligned and stacked items are spaced with 16px in between.
   - fileName: alpha-stack-with-gap.tsx
     title: Gap
     description: >-
-      Gaps between stack children can be adjusted using the Space token.
-  - fileName: alpha-stack-with-full-width-children.tsx
-    title: Full width
-    description: >-
-      Use a boolean to make Stack full width.
+      Control the vertical space between children using the `gap` prop.
   - fileName: alpha-stack-with-align.tsx
-    title: Alignment
+    title: Align
     description: >-
-      Use to horizontally align Stack.
+      Control the horizontal alignment of children using the `align` prop.
+---
+
+## Best practices
+
+Stacks should:
+
+- Not be used for complex or unique arrangements of components
+- Not be used for large-scale page layout
+
 ---
 
 ## Related components

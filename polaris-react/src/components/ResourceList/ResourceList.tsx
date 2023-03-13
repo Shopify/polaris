@@ -555,7 +555,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   );
 
   const bulkActionsMarkup =
-    isSelectable && selectMode ? (
+    isSelectable && selectMode && (bulkActions || promotedBulkActions) ? (
       <div
         className={bulkActionClassNames}
         style={{
@@ -741,6 +741,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     selectable: isSelectable,
     selectedItems,
     selectMode,
+    hasBulkActions: Boolean(bulkActions),
     resourceName,
     loading,
     onSelectionChange: handleSelectionChange,
@@ -750,6 +751,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     styles.ResourceListWrapper,
     Boolean(bulkActionsMarkup) &&
       selectMode &&
+      bulkActions &&
       styles.ResourceListWrapperWithBulkActions,
   );
 

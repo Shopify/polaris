@@ -1,12 +1,12 @@
 import React from 'react';
-import {Inline, Text, AlphaStack} from '@shopify/polaris';
+import {Inline, Text, AlphaStack, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function InlineWithVerticalAlignmentExample() {
+function InlineWithBlockAlignExample() {
   return (
-    <AlphaStack gap="16">
-      <Inline gap="4" blockAlign="start">
+    <AlphaStack gap="8">
+      <Inline gap="025" blockAlign="start">
         <Placeholder width="106px" label="Start" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -14,7 +14,8 @@ function InlineWithVerticalAlignmentExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline gap="4" blockAlign="center">
+      <Divider />
+      <Inline gap="025" blockAlign="center">
         <Placeholder width="106px" label="Center" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -22,7 +23,8 @@ function InlineWithVerticalAlignmentExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline gap="4" blockAlign="end">
+      <Divider />
+      <Inline gap="025" blockAlign="end">
         <Placeholder width="106px" label="End" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -30,13 +32,23 @@ function InlineWithVerticalAlignmentExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline gap="4" blockAlign="baseline">
-        <Placeholder width="106px" header={true} label="Baseline" />
+      <Divider />
+      <Inline gap="025" blockAlign="baseline">
+        <Placeholder width="106px" label="Baseline" />
         <Placeholder width="106px" padding="0" label="text" />
         <Placeholder width="106px" padding="0" label="text" />
         <Placeholder width="106px" padding="0" label="text" />
         <Placeholder width="106px" padding="0" label="text" />
         <Placeholder width="106px" padding="0" label="text" />
+      </Inline>
+      <Divider />
+      <Inline gap="025" blockAlign="stretch">
+        <Placeholder width="106px" label="Strech" />
+        <Placeholder width="106px" minHeight="20px" />
+        <Placeholder width="106px" minHeight="20px" />
+        <Placeholder width="106px" minHeight="20px" />
+        <Placeholder width="106px" minHeight="20px" />
+        <Placeholder width="106px" minHeight="20px" />
       </Inline>
     </AlphaStack>
   );
@@ -46,37 +58,34 @@ const Placeholder = ({
   label = '',
   height = 'auto',
   width = 'auto',
+  minHeight = 'auto',
   padding = '6px 0px',
-  header = false,
+  showBorder = false,
 }) => {
   return (
     <div
       style={{
         padding: padding,
-        background: '#7B47F1',
+        background: '#20828D',
         height: height,
         width: width,
+        minHeight: minHeight,
+        borderInlineStart: showBorder ? '1px dashed #EAFAF3' : 'none',
       }}
     >
-      <Inline gap="4" align="center" blockAlign="center">
+      <Inline align="center">
         <div
           style={{
             color: '#FFFFFF',
           }}
         >
-          {header ? (
-            <Text as="h2" variant="headingLg" fontWeight="medium">
-              {label}
-            </Text>
-          ) : (
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              {label}
-            </Text>
-          )}
+          <Text as="h2" variant="bodyMd" fontWeight="medium">
+            {label}
+          </Text>
         </div>
       </Inline>
     </div>
   );
 };
 
-export default withPolarisExample(InlineWithVerticalAlignmentExample);
+export default withPolarisExample(InlineWithBlockAlignExample);

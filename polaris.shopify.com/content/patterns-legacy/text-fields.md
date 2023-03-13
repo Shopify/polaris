@@ -4,8 +4,8 @@ description: Text fields combine the field label (the title) and the input area.
 icon: FormsMajor
 noIndex: true
 status:
-  value: Deprecated
-  message: This pattern is no longer supported.
+  value: Legacy
+  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - text fields
   - search
