@@ -101,3 +101,35 @@ export function WithAlignEnd() {
     </AlphaStack>
   );
 }
+
+export function WithDivider() {
+  return (
+    <AlphaStack gap="4" withDivider>
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
+    </AlphaStack>
+  );
+}
+
+export function WithStyledDivider() {
+  return (
+    <AlphaStack gap="4" withDivider="dark">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
+    </AlphaStack>
+  );
+}

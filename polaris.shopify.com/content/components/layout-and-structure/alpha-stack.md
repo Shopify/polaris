@@ -23,6 +23,11 @@ examples:
     title: Align
     description: >-
       Control the horizontal alignment of children using the `align` prop.
+  - fileName: alpha-stack-with-divider.tsx
+    title: With divider
+    description: >-
+      Automatically insert a `<Divider />` between children using the
+      `withDivider` prop.
 ---
 
 ## Best practices

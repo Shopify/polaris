@@ -2,9 +2,10 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {AlphaStack} from '../AlphaStack';
+import {Divider} from '../../Divider';
 
 const text = 'This is a stack';
-const children = <p>{text}</p>;
+const children = [<p key="1">{text}</p>, <p key="2">{text}</p>];
 
 describe('<AlphaStack />', () => {
   it('renders children', () => {
@@ -48,6 +49,22 @@ describe('<AlphaStack />', () => {
         '--pc-stack-gap-md': 'var(--p-space-8)',
         '--pc-stack-gap-xs': 'var(--p-space-2)',
       }) as React.CSSProperties,
+    });
+  });
+
+  it('renders n-1 dividers', () => {
+    const stack = mountWithApp(<AlphaStack withDivider>{children}</AlphaStack>);
+
+    expect(stack).toContainReactComponentTimes(Divider, children.length - 1);
+  });
+
+  it('renders dividers with given style', () => {
+    const stack = mountWithApp(
+      <AlphaStack withDivider="dark">{children}</AlphaStack>,
+    );
+
+    expect(stack).toContainReactComponentTimes(Divider, children.length - 1, {
+      borderStyle: 'dark',
     });
   });
 });

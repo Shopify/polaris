@@ -1,6 +1,7 @@
-import React, {createElement} from 'react';
+import React, {Fragment, createElement} from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
+import {Divider, type DividerProps} from '../Divider';
 import {
   classNames,
   sanitizeCustomProperties,
@@ -32,6 +33,11 @@ export interface AlphaStackProps extends React.AriaAttributes {
    * @default false
    */
   reverseOrder?: boolean;
+  /** Render a <Divider /> between each stack child. Setting to `true` will
+   * render the default style of <Divider />
+   * @default false
+   */
+  withDivider?: boolean | DividerProps['borderStyle'];
 }
 
 export const AlphaStack = ({
@@ -41,6 +47,7 @@ export const AlphaStack = ({
   gap,
   id,
   reverseOrder = false,
+  withDivider = false,
   ...restProps
 }: AlphaStackProps) => {
   const className = classNames(
@@ -55,6 +62,25 @@ export const AlphaStack = ({
     ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
+  let dividedChildren = children;
+
+  if (withDivider) {
+    const dividerProps =
+      typeof withDivider === 'boolean' ? {} : {borderStyle: withDivider};
+
+    dividedChildren = React.Children.map(children, (child, index) => {
+      if (index === 0) {
+        return child;
+      }
+      return (
+        <Fragment key={index}>
+          <Divider {...dividerProps} />
+          {child}
+        </Fragment>
+      );
+    });
+  }
+
   return createElement(
     as,
     {
@@ -62,6 +88,6 @@ export const AlphaStack = ({
       style: sanitizeCustomProperties(style),
       ...restProps,
     },
-    children,
+    dividedChildren,
   );
 };
