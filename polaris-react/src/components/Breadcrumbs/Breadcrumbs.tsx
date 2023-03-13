@@ -6,17 +6,30 @@ import {UnstyledLink} from '../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {Text} from '../Text';
+import {Box} from '../Box';
+import {SkeletonBodyText} from '../SkeletonBodyText';
 
 import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
   /** @deprecated Collection of breadcrumbs */
-  breadcrumbs?: (CallbackAction | LinkAction) | (CallbackAction | LinkAction)[];
+  breadcrumbs?:
+    | (CallbackAction | LinkAction)
+    | (CallbackAction | LinkAction)[]
+    | 'placeholder';
   /** Back action link */
-  backAction?: CallbackAction | LinkAction;
+  backAction?: CallbackAction | LinkAction | 'placeholder';
 }
 
 export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
+  if (breadcrumbs === 'placeholder' || backAction === 'placeholder') {
+    return (
+      <Box maxWidth="60px" paddingBlockStart="4" paddingBlockEnd="4">
+        <SkeletonBodyText lines={1} />
+      </Box>
+    );
+  }
+
   const breadcrumb =
     backAction ??
     (Array.isArray(breadcrumbs)

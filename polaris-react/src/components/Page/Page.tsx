@@ -18,6 +18,8 @@ export interface PageProps extends HeaderProps {
   narrowWidth?: boolean;
   /** Displays a divider between the page header and the page content */
   divider?: boolean;
+  /** Aria role */
+  role?: React.AriaRole;
 }
 
 export function Page({

@@ -6,6 +6,7 @@ import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
 import {SkeletonPage} from '../SkeletonPage';
 import {Box} from '../../Box';
+import {SkeletonDisplayText} from '../../SkeletonDisplayText';
 
 describe('<SkeletonPage />', () => {
   it('renders its children', () => {
@@ -48,9 +49,7 @@ describe('<SkeletonPage />', () => {
       expect(skeletonPage).not.toContainReactComponent('h1', {
         className: 'Title',
       });
-      expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'bg-strong',
-      });
+      expect(skeletonPage).toContainReactComponent(SkeletonDisplayText);
     });
 
     it('renders SkeletonTitle when title is an empty string', () => {
@@ -59,9 +58,7 @@ describe('<SkeletonPage />', () => {
       expect(skeletonPage).not.toContainReactComponent('h1', {
         className: 'Title',
       });
-      expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'bg-strong',
-      });
+      expect(skeletonPage).toContainReactComponent(SkeletonDisplayText);
     });
   });
 

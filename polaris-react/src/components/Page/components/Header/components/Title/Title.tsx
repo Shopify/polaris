@@ -1,12 +1,13 @@
 import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
+import {SkeletonDisplayText} from '../../../../../SkeletonDisplayText';
 
 import styles from './Title.scss';
 
 export interface TitleProps {
   /** Page title, in large type */
-  title?: string;
+  title?: string | 'placeholder';
   /** Page subtitle, in regular type*/
   subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. */
@@ -26,7 +27,8 @@ export function Title({
     subtitle && styles.TitleWithSubtitle,
   );
 
-  const titleMarkup = title ? <h1 className={className}>{title}</h1> : null;
+  let titleMarkup = title ? <h1 className={className}>{title}</h1> : null;
+  titleMarkup = title === 'placeholder' ? <SkeletonDisplayText /> : titleMarkup;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>
