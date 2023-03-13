@@ -4,19 +4,19 @@ import {mountWithApp} from 'tests/utilities';
 
 import {UnstyledButton} from '../../../../../../UnstyledButton';
 import {Icon} from '../../../../../../Icon';
-import {OrderButton} from '..';
-import type {OrderButtonProps} from '../OrderButton';
+import {DirectionButton} from '..';
+import type {DirectionButtonProps} from '../DirectionButton';
 
-describe('OrderButton', () => {
-  it('renders asc <OrderButton />', () => {
-    const props: OrderButtonProps = {
+describe('DirectionButton', () => {
+  it('renders asc <DirectionButton />', () => {
+    const props: DirectionButtonProps = {
       direction: 'asc',
       children: 'Foo',
       active: false,
       value: 'order_number asc',
       onClick: () => {},
     };
-    const wrapper = mountWithApp(<OrderButton {...props} />);
+    const wrapper = mountWithApp(<DirectionButton {...props} />);
 
     expect(wrapper).toContainReactComponent(Icon, {
       source: ArrowUpMinor,
@@ -24,15 +24,15 @@ describe('OrderButton', () => {
     });
   });
 
-  it('renders desc <OrderButton />', () => {
-    const props: OrderButtonProps = {
+  it('renders desc <DirectionButton />', () => {
+    const props: DirectionButtonProps = {
       direction: 'desc',
       children: 'Foo',
       active: false,
       value: 'order_number desc',
       onClick: () => {},
     };
-    const wrapper = mountWithApp(<OrderButton {...props} />);
+    const wrapper = mountWithApp(<DirectionButton {...props} />);
 
     expect(wrapper).toContainReactComponent(Icon, {
       source: ArrowDownMinor,
@@ -40,15 +40,15 @@ describe('OrderButton', () => {
     });
   });
 
-  it('renders active <OrderButton />', () => {
-    const props: OrderButtonProps = {
+  it('renders active <DirectionButton />', () => {
+    const props: DirectionButtonProps = {
       direction: 'asc',
       children: 'Foo',
       active: true,
       value: 'order_number asc',
       onClick: () => {},
     };
-    const wrapper = mountWithApp(<OrderButton {...props} />);
+    const wrapper = mountWithApp(<DirectionButton {...props} />);
 
     expect(wrapper).toContainReactComponent(Icon, {
       source: ArrowUpMinor,
@@ -58,14 +58,14 @@ describe('OrderButton', () => {
 
   describe('callbacks', () => {
     it('fires an onClick callback', () => {
-      const props: OrderButtonProps = {
+      const props: DirectionButtonProps = {
         direction: 'asc',
         children: 'Foo',
         active: true,
         value: 'order_number asc',
         onClick: jest.fn(),
       };
-      const wrapper = mountWithApp(<OrderButton {...props} />);
+      const wrapper = mountWithApp(<DirectionButton {...props} />);
 
       wrapper.act(() => {
         wrapper!.find(UnstyledButton)!.trigger('onClick');

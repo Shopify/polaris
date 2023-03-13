@@ -11,7 +11,7 @@ import {Box} from '../../../Box';
 import type {SortButtonChoice} from '../../types';
 import {FilterButton} from '../FilterButton';
 
-import {OrderButton} from './components';
+import {DirectionButton} from './components';
 
 export enum SortButtonDirection {
   Asc = 'asc',
@@ -127,22 +127,22 @@ export function SortButton({
         />
       </Box>
       <Box padding="4">
-        <OrderButton
+        <DirectionButton
           direction="asc"
           active={selectedDirection === SortButtonDirection.Asc}
           onClick={handleChangeDirection}
           value={selectedChoices?.[0]?.value}
         >
           {selectedChoices?.[0]?.directionLabel}
-        </OrderButton>
-        <OrderButton
+        </DirectionButton>
+        <DirectionButton
           direction="desc"
           active={selectedDirection === SortButtonDirection.Desc}
           onClick={handleChangeDirection}
           value={selectedChoices?.[1]?.value}
         >
           {selectedChoices?.[1]?.directionLabel}
-        </OrderButton>
+        </DirectionButton>
       </Box>
     </Popover>
   );

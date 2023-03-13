@@ -7,7 +7,7 @@ import {UnstyledButton} from '../../../../UnstyledButton';
 import type {SortButtonChoice} from '../../../types';
 import {SortButton} from '..';
 import type {SortButtonProps} from '../SortButton';
-import {OrderButton} from '../components';
+import {DirectionButton} from '../components';
 import {FilterButton} from '../..';
 
 describe('SortButton', () => {
@@ -110,7 +110,7 @@ describe('SortButton', () => {
       wrapper.find(FilterButton)!.trigger('onClick');
     });
 
-    expect(wrapper).toContainReactComponent(OrderButton, {
+    expect(wrapper).toContainReactComponent(DirectionButton, {
       direction: 'asc',
       active: true,
     });
@@ -128,7 +128,7 @@ describe('SortButton', () => {
       wrapper.find(FilterButton)!.trigger('onClick');
     });
 
-    expect(wrapper).toContainReactComponent(OrderButton, {
+    expect(wrapper).toContainReactComponent(DirectionButton, {
       direction: 'desc',
       active: true,
     });
@@ -148,7 +148,7 @@ describe('SortButton', () => {
 
     wrapper.act(() => {
       wrapper
-        .find(OrderButton, {direction: 'asc'})!
+        .find(DirectionButton, {direction: 'asc'})!
         .find(UnstyledButton)!
         .trigger('onClick');
     });
@@ -170,7 +170,7 @@ describe('SortButton', () => {
 
     wrapper.act(() => {
       wrapper
-        .find(OrderButton, {direction: 'desc'})!
+        .find(DirectionButton, {direction: 'desc'})!
         .find(UnstyledButton)!
         .trigger('onClick');
     });

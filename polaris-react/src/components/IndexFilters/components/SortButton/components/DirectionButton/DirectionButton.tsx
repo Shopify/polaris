@@ -6,28 +6,28 @@ import {classNames} from '../../../../../../utilities/css';
 import {UnstyledButton} from '../../../../../UnstyledButton';
 import {Icon} from '../../../../../Icon';
 
-import styles from './OrderButton.scss';
+import styles from './DirectionButton.scss';
 
-type OrderButtonDirection = 'asc' | 'desc';
+type DirectionButtonDirection = 'asc' | 'desc';
 
-export interface OrderButtonProps {
+export interface DirectionButtonProps {
   onClick: (value: string[]) => void;
   active: boolean;
   children: ReactNode;
-  direction: OrderButtonDirection;
+  direction: DirectionButtonDirection;
   value: string;
 }
 
-export function OrderButton({
+export function DirectionButton({
   onClick,
   active,
   children,
   direction,
   value,
-}: OrderButtonProps) {
+}: DirectionButtonProps) {
   const classes = classNames(
-    styles.OrderButton,
-    active && styles['OrderButton-active'],
+    styles.DirectionButton,
+    active && styles['DirectionButton-active'],
   );
   function handleClick() {
     onClick([value]);
