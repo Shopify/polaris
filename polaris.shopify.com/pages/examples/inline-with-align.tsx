@@ -1,13 +1,13 @@
 import React from 'react';
-import {Stack, Inline, Text, Page} from '@shopify/polaris';
+import {Stack, Inline, Text, Page, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function InlineWithHorizontalAlignmentExample() {
+function InlineWithAlignExample() {
   return (
     <Page narrowWidth>
       <Stack gap="16">
-        <Inline gap="4" align="start">
+        <Inline gap="025" align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -15,7 +15,8 @@ function InlineWithHorizontalAlignmentExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
-        <Inline gap="4" align="center">
+        <Divider />
+        <Inline gap="025" align="center">
           <Placeholder width="106px" label="Center" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -23,7 +24,8 @@ function InlineWithHorizontalAlignmentExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
-        <Inline gap="4" align="end">
+        <Divider />
+        <Inline gap="025" align="end">
           <Placeholder width="106px" label="End" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -36,17 +38,23 @@ function InlineWithHorizontalAlignmentExample() {
   );
 }
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  showBorder = false,
+}) => {
   return (
     <div
       style={{
         padding: '6px 0',
-        background: '#7B47F1',
+        background: '#20828D',
         height: height,
         width: width,
+        borderInlineStart: showBorder ? '1px dashed #EAFAF3' : 'none',
       }}
     >
-      <Inline gap="4" align="center" blockAlign="center">
+      <Inline align="center">
         <div
           style={{
             color: '#FFFFFF',
@@ -61,4 +69,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(InlineWithHorizontalAlignmentExample);
+export default withPolarisExample(InlineWithAlignExample);
