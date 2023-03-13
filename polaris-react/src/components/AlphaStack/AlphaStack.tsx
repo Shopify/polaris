@@ -45,7 +45,7 @@ export const AlphaStack = ({
 }: AlphaStackProps) => {
   const className = classNames(
     styles.AlphaStack,
-    as === 'ul' && styles.listReset,
+    (as === 'ul' || as === 'ol') && styles.listReset,
     as === 'fieldset' && styles.fieldsetReset,
   );
 

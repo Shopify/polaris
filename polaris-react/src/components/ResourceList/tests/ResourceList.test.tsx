@@ -939,12 +939,24 @@ describe('<ResourceList />', () => {
   });
 
   describe('BulkActions', () => {
-    it('renders on initial load when items are selected', () => {
+    it('renders on initial load when items are selected and bulkActions are present', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
           bulkActions={bulkActions}
+          selectedItems={['1']}
+        />,
+      );
+      expect(resourceList).toContainReactComponentTimes(BulkActions, 1);
+    });
+
+    it('renders on initial load when items are selected and promotedBulkActions are present', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          promotedBulkActions={promotedBulkActions}
           selectedItems={['1']}
         />,
       );
