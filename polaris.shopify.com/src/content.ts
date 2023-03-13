@@ -7,7 +7,7 @@ import { Content } from './components/Editor/types';
 
 const pages: Content['pages'] = [
   {
-    id: "d2VjJfC_QYJ44kfMjFChg",
+    id: "WUjxEw9WD9e28gRRCfUBK",
     title: "Components",
     excerpt: "",
     slug: "components",
@@ -25,11 +25,11 @@ const pages: Content['pages'] = [
   },
 
   {
-    id: "bSPYQo1ch-YBY2k_nsVzE",
+    id: "msb8vKq0tOy5gOufcbjyr",
     title: "Actions",
     excerpt: "",
     slug: "actions",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 1,
     useCustomLayout: true,
     blocks: [],
@@ -42,16 +42,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "PNFWCg5tN0rX7e6yP_m4w",
+    id: "I88amE36ZKmetCzOspqE4",
     title: "Account connection",
     excerpt: "The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.",
     slug: "account-connection",
-    parentId: "bSPYQo1ch-YBY2k_nsVzE",
+    parentId: "msb8vKq0tOy5gOufcbjyr",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "k8sjwIzFqNyMXR4g_37Va",
+        id: "slRVdK-h_oLVSD_hwzhhk",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -89,16 +89,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "Cw-BLKuncLKm_BP0XH95N",
+    id: "OafrOTWaDzqVYTmqLh3kE",
     title: "Button group",
     excerpt: "Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.",
     slug: "button-group",
-    parentId: "bSPYQo1ch-YBY2k_nsVzE",
+    parentId: "msb8vKq0tOy5gOufcbjyr",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "nAoHKl2s3kh99-VCc7zo6",
+        id: "QYJk9-7q-4EqeakpmMs12",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -150,16 +150,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "A7Gd564h42XCtVdITAlcG",
+    id: "Tbx6MR0706vQjHrqloBCA",
     title: "Button",
     excerpt: "Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”.",
     slug: "button",
-    parentId: "bSPYQo1ch-YBY2k_nsVzE",
+    parentId: "msb8vKq0tOy5gOufcbjyr",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "XFoFft8c6tfM5dLEcU1YU",
+        id: "5H-yvdK8IHhhdV5P_woAR",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -294,16 +294,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "6nAK6HsxPWFNZTTw9TOYq",
+    id: "EznLuze6vlr3CSXDgOEXH",
     title: "Page actions",
     excerpt: "Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.",
     slug: "page-actions",
-    parentId: "bSPYQo1ch-YBY2k_nsVzE",
+    parentId: "msb8vKq0tOy5gOufcbjyr",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Dru72ux1BNEVxkK5IMoMD",
+        id: "Z6XCH5BWy0TeianARu6hn",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -354,16 +354,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "Rwxlg5A1B_JWusm64p4mH",
+    id: "DF6G_CxvlGhY62ngkN_ST",
     title: "Setting toggle",
     excerpt: "Use to give merchants control over a feature or option that can be turned on or off.",
     slug: "setting-toggle",
-    parentId: "bSPYQo1ch-YBY2k_nsVzE",
+    parentId: "msb8vKq0tOy5gOufcbjyr",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "FdWJHOcbcFkrUf4feE59h",
+        id: "gHymLpmmGFMYGNf2l1za8",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -402,11 +402,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "ZAyyl5J0G9XE3r1XYOMN5",
+    id: "FFsYxJaBB1R2J56Glrdw2",
     title: "Deprecated",
     excerpt: "Deprecated components will be removed in future major versions of Polaris. These components could be deprecated for a [number of reasons](https://polaris.shopify.com/getting-started/components-lifecycle#requirements-for-deprecation) and should be avoided. These components will show warnings in the component file and provide details for alternative usage. For more information, check out the [component lifecycle](https://polaris.shopify.com/getting-started/components-lifecycle#deprecated).",
     slug: "deprecated",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 12,
     useCustomLayout: true,
     blocks: [],
@@ -419,16 +419,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "EMnG7k4e9vHVZai759kJT",
+    id: "jv-0Bx81azW8lr5OZuvSx",
     title: "Caption",
     excerpt: "Caption text size is smaller than the recommended size for general reading. On web, it should be used only in a graph or as a timestamp for a list item. On Android and iOS, it can also be used as help text or as other kinds of secondary text for list items.",
     slug: "caption",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "HYF-tE6PV7voguCovKOOm",
+        id: "4HVITONuDXyDYniBRJ9-Y",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -461,16 +461,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "HsUIoJgynCZqkGdCyWHiY",
+    id: "CmJO2Kfn3DyQIl4x0i_tv",
     title: "Card",
     excerpt: "Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.",
     slug: "card",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "18ALI30E7T_1KsaT0qBUm",
+        id: "BnG8SDVHJq4-rUf2SNVXr",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -594,16 +594,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "NPR16VwAGP81NvhBz1Lb9",
+    id: "Irm82DFCi6_AdelJ5x1LR",
     title: "Display text",
     excerpt: "Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding.",
     slug: "display-text",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "2sQu320k0J4HheEM-Lq62",
+        id: "epYabbvbRZbtYWCLntYnB",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -644,16 +644,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "87-hjt2LNKDE5bOZMxV59",
+    id: "VL2KyqvUpaILJyyizZpcm",
     title: "Grid",
     excerpt: "Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).",
     slug: "grid",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "bRLk6RbfPr2c8UWu69a0K",
+        id: "CRdV7Kr4atJkkfBrcXjrx",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -705,16 +705,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "s9fJbx7tvBTchF6b3uUvs",
+    id: "4jMPgDJRc7BZcblEc6Ty7",
     title: "Heading",
     excerpt: "Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/layout-and-structure/alpha-card) generally use headings as their title.",
     slug: "heading",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "P0JJAPL27GzT_DoGAkTlw",
+        id: "LZ-y-PrAnQ4wvdtpHbr7r",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -746,16 +746,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "8Fz2zulL9BSvatRkkhIMb",
+    id: "2stA-AIJXTgmxgfQbKMcT",
     title: "Sheet",
     excerpt: "A sheet is a large container that enters from the edge of the screen when triggered by the merchant. It’s used to provide merchants with actions and information contextual to the page. It doesn’t interrupt their flow like a modal.",
     slug: "sheet",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "4LhRDMzbHED-ViShKJJ9G",
+        id: "XZOR_xB7b_JCv3iEVBAUi",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -794,16 +794,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "UHGBEHRkWa8qd6a41gpAy",
+    id: "HUAxCdDSUJDr2IQoPBiRE",
     title: "Stack",
     excerpt: "Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack.",
     slug: "stack",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "AEucMU0vIUefyCE2eh5ZZ",
+        id: "5WNFHAetWkbapiKbQ9FfQ",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -874,16 +874,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "-fcYHkOJ7fNcjN1Ahw8IA",
+    id: "FKf6G1qtUm3qUxIKVkkd3",
     title: "Subheading",
     excerpt: "Subheadings are used for the title of any sub-sections in top-level page sections.",
     slug: "subheading",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Th4TmX9cZKY9ILgLbJ1XP",
+        id: "9z3kxBJrYGeLXKv3AXieX",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -911,16 +911,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "aEb606Alz5055UcW1Za4M",
+    id: "nGsUVhV2fVQI_Qcly9UP4",
     title: "Text container",
     excerpt: "A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.",
     slug: "text-container",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "7vczodR1RS2S_0Ba1WvRO",
+        id: "wl0p4g1Xhxy19yA_qFE4o",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -964,16 +964,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "iPhL210q6zHEtpdubG6m7",
+    id: "d_M1yN9JR1bPNeLSeLkLj",
     title: "Text style",
     excerpt: "Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.",
     slug: "text-style",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "UdyJW9F0JXk_9duc2Snbm",
+        id: "oMGwp_Bo89Sv73h34T7vg",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1010,16 +1010,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "DO19kSh3SSFusO--kUuJG",
+    id: "zCWZBcDO0IQS3P0IrMk5p",
     title: "Visually hidden",
     excerpt: "Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden.",
     slug: "visually-hidden",
-    parentId: "ZAyyl5J0G9XE3r1XYOMN5",
+    parentId: "FFsYxJaBB1R2J56Glrdw2",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "cNZOOqqO6ik3_e7FMOELt",
+        id: "YbwHvBW4VwBqDXU1MWllW",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1054,11 +1054,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "aF9IEmfbxX7PizZ-ucgBt",
+    id: "ohJKguM4vnIJCbd9ZnNkj",
     title: "Feedback indicators",
     excerpt: "",
     slug: "feedback-indicators",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 5,
     useCustomLayout: true,
     blocks: [],
@@ -1071,16 +1071,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "fqtErhKLGhv6HI3-ddKRN",
+    id: "rDyaiMJWoTPLcAoXap18B",
     title: "Badge",
     excerpt: "Badges are used to inform merchants of the status of an object or of an action that’s been taken.",
     slug: "badge",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "CK5gzwiId8jot9SKW91p_",
+        id: "P1YaHezVY1oQWBhboQLKT",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1168,16 +1168,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "A8jEClLE7K1Rb5I0j6hIs",
+    id: "aq0yHqwUSPEqv_Cg7Oozh",
     title: "Banner",
     excerpt: "Informs merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.",
     slug: "banner",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "2RdwLwIgNCtziT_uepKdP",
+        id: "Y136l77p2BLPCPJp41u-L",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1270,16 +1270,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "TPhLRhs8cvzhfJspVdiQe",
+    id: "Q5T36F51OjhfegsvZKwjq",
     title: "Exception list",
     excerpt: "Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front.",
     slug: "exception-list",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "jpyEAW__F5otG-MyWa0Zd",
+        id: "V_xndwzRF6_lTvFDIPDbp",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1310,16 +1310,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "xWeFJsWTRegyS0AUmRX7r",
+    id: "TjqkZfEuS0Ag6jZEiLvf4",
     title: "Loading",
     excerpt: "The loading component is used to indicate to merchants that a page is loading or an upload is processing.",
     slug: "loading",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "lcmT4rBYUOe3vrvCfSP-e",
+        id: "xMiVzWFeLTMqFPJsdAFiO",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1350,16 +1350,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "CK3IAXrn0KvxyhASxSiKV",
+    id: "nVevd8qc0ogaOKVgdOpG0",
     title: "Progress bar",
     excerpt: "The progress bar component is used to visually represent the completion of a task or operation. It shows how much of the task has been completed and how much is still left.",
     slug: "progress-bar",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "1VdApgccEBgeEiW_qD7bq",
+        id: "LqByoSFakdlZj7Lce78aF",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1405,16 +1405,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "32uVTFr9Bf_PSxmcgR2HZ",
+    id: "Q42i5p3B5gdW9qFDQlMaT",
     title: "Skeleton body text",
     excerpt: "Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.",
     slug: "skeleton-body-text",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "kGXK4H518c6HAb_NIL4JR",
+        id: "3gLRV8XrToS8GNcNT37TS",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1450,16 +1450,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "QEEzMTcask1s2jt5ByRQ3",
+    id: "RkncgFOHProN23VTk1Gne",
     title: "Skeleton display text",
     excerpt: "Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.",
     slug: "skeleton-display-text",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "qyZNHoUapEHPIYm5W5NDJ",
+        id: "-nBRSr05Bxe_7IZCJEgva",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1500,16 +1500,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "rjlDIOlfc47XGZEJCIjE8",
+    id: "dLmV7GWpOQeZ5brmwJvf1",
     title: "Skeleton page",
     excerpt: "Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.",
     slug: "skeleton-page",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "HcIPKBB0az6C0EghwPLpH",
+        id: "5d1wnt-rlXa7BY1RBC_ef",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1545,16 +1545,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "9sJ704celmbvWt4iRnqQ4",
+    id: "Eun1oAgo2E31jU4LEKTUV",
     title: "Skeleton tabs",
     excerpt: "Skeleton tabs are used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.",
     slug: "skeleton-tabs",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "SYfxe82CBP2tGHi0aW1C7",
+        id: "CJHDPZ6PiVixr7Q6X55n0",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1590,16 +1590,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "27acAK0kuZmbr8QzM0isI",
+    id: "v_aWownyn6DePRq2pft_Q",
     title: "Skeleton thumbnail",
     excerpt: "Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.",
     slug: "skeleton-thumbnail",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "B9Q3yPr00jgShplGceAh2",
+        id: "dvPODDY7BrpDHYeFNuoWy",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1645,16 +1645,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "27BsB1ljfZOjgUbGDopAY",
+    id: "_S4ZoqNlrn8MFOYB9DoTH",
     title: "Spinner",
     excerpt: "Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.",
     slug: "spinner",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "DUNNmZlEdEwFTTDiSFVKu",
+        id: "1X_3x5s2iUHe_L5apQDhQ",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1695,16 +1695,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "s7m65SCzgrCUfkwz9IIoJ",
+    id: "kkR4THopJdOIUXbrcKTwZ",
     title: "Toast",
     excerpt: "The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.",
     slug: "toast",
-    parentId: "aF9IEmfbxX7PizZ-ucgBt",
+    parentId: "ohJKguM4vnIJCbd9ZnNkj",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "d4vbVjWrYc0bA8pByhad_",
+        id: "LGj3qcWMZkBGVLfq7kwoo",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1762,11 +1762,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "7cU-sE5jryGTehG0Pvne-",
+    id: "pLv5MsRPO-5LCBKvyqvgO",
     title: "Images and icons",
     excerpt: "",
     slug: "images-and-icons",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 4,
     useCustomLayout: true,
     blocks: [],
@@ -1779,16 +1779,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "M8g30oeV2WYUQPKBQhqLo",
+    id: "CgXXmDQuLA0h8LzNb7rzg",
     title: "Avatar",
     excerpt: "Avatars are used to show a thumbnail representation of an individual or business in the interface.",
     slug: "avatar",
-    parentId: "7cU-sE5jryGTehG0Pvne-",
+    parentId: "pLv5MsRPO-5LCBKvyqvgO",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "-5net5QjSkKRNsYKIACKu",
+        id: "9hcq5w_WtZgO-7UyjyExL",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1840,16 +1840,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "Z5rbSk-448FhgKBiAUWE4",
+    id: "JtQL-hqhmfrJsGzinF6QF",
     title: "Icon",
     excerpt: "Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.",
     slug: "icon",
-    parentId: "7cU-sE5jryGTehG0Pvne-",
+    parentId: "pLv5MsRPO-5LCBKvyqvgO",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "B-9WazyqDN6x2LmhH4JoL",
+        id: "FBgCXoZT92His1Z8cweXd",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1907,16 +1907,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "dlpv_HtcqEISZ1T_6RWvo",
+    id: "7ruzqy55-MzsN9G1RPRjW",
     title: "Keyboard key",
     excerpt: "Keyboard key is used to educate merchants about keyboard shortcuts.",
     slug: "keyboard-key",
-    parentId: "7cU-sE5jryGTehG0Pvne-",
+    parentId: "pLv5MsRPO-5LCBKvyqvgO",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "JiOwLd_BSe_vH-5HiYOdT",
+        id: "wBIBmR_lGxBHePs9go9js",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -1950,16 +1950,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "YZInPTvQ4MyFirCP2HSg2",
+    id: "2TAa59qkRcN3-q1jea4MG",
     title: "Thumbnail",
     excerpt: "Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.",
     slug: "thumbnail",
-    parentId: "7cU-sE5jryGTehG0Pvne-",
+    parentId: "pLv5MsRPO-5LCBKvyqvgO",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "E1ZXSRTMDHRRnlAQG0Fsy",
+        id: "Yo5vFJHF1GaZQqFHntfJp",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2013,16 +2013,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "Vf_g0pD2dMUyVINCgBNd9",
+    id: "R7xOcO4vhh13DHhog8WBW",
     title: "Video thumbnail",
     excerpt: "Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen.",
     slug: "video-thumbnail",
-    parentId: "7cU-sE5jryGTehG0Pvne-",
+    parentId: "pLv5MsRPO-5LCBKvyqvgO",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Y25TipcC6-oOS3FTMuRCb",
+        id: "gpkKGLrOze1e-ZeVFqMrU",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2062,11 +2062,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "x-9vkBy1ipyHUb3UNpjdk",
+    id: "mXvOdePlqRviqIpVuSjmn",
     title: "Layout and structure",
     excerpt: "Layout is the arrangement of elements on a page. A good layout helps merchants understand and find information to complete their goals. Learn how to use Polaris layout primitives to build a wide range of layouts.",
     slug: "layout-and-structure",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 2,
     useCustomLayout: true,
     blocks: [],
@@ -2079,16 +2079,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "XkayOBiHbhp7Y9syCmvTW",
+    id: "mBWT2j557hmqmC6BJYDQi",
     title: "Alpha card",
     excerpt: "Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.",
     slug: "alpha-card",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Y_XVPUC0VT4EcAlLeA_m8",
+        id: "z2J3XKAkwVKPjWcQy9XWm",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2147,16 +2147,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "xYdBnQMpHxruqbZzDbpn0",
+    id: "cLH8N9bQsZnRJVz3YdnUo",
     title: "Alpha stack",
     excerpt: "Use to display elements vertically with items placed directly below the preceding item.",
     slug: "alpha-stack",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Rb7qGWhDsevPmjSKqqn0L",
+        id: "y0-gBcWZEQ1thjuf2ptmv",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2199,16 +2199,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "qb6Czf4CbeHNqS61wO5bS",
+    id: "DHlyH8_ZgR2P9lMtIOJCG",
     title: "Bleed",
     excerpt: "Applies negative margin to allow content to bleed out into the surrounding layout.",
     slug: "bleed",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Vz1l8UBLgMN2KZMj3Je81",
+        id: "bs9n6C9LUj_4rwZse5Uks",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2251,16 +2251,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "dLEaYiHigV5WrapQySBck",
+    id: "ESinl_iuwd6JCqrLozFC6",
     title: "Box",
     excerpt: "Box is the most primitive layout component. It’s a way to access Polaris design tokens.",
     slug: "box",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "R5juISeWxKZ2BjY8XJLKq",
+        id: "9nDXaam_aMP7PvhiMhy_L",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2313,16 +2313,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "K_fxgZjqYmbVbip0mSw3O",
+    id: "xjKJyNXq-L-BRmmvo2Z-s",
     title: "Callout card",
     excerpt: "Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify.",
     slug: "callout-card",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "3FxlFaO8mDQ67ePwcSpTf",
+        id: "fPggWhUpMbqBySz2o47rS",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2378,16 +2378,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "hpwyHzcj_DIkS0HYvtZB4",
+    id: "teeauCR_DTFj1sheFsof9",
     title: "Columns",
     excerpt: "Displays content horizontally in one or more columns with equal spacing between.",
     slug: "columns",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "9a78IGjTqbZsZhMDnbU0l",
+        id: "MXJuq8yipcuqQw2VuZbad",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2430,16 +2430,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "XlnHqkfeQsGnvzTGaYs5p",
+    id: "-MHJp5Cj1DMeFfYleFNiV",
     title: "Divider",
     excerpt: "Use to separate or group content",
     slug: "divider",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "vh36xCwv1Y8oWkL-JdY26",
+        id: "4t59L3vmF_IoBpYGiTgno",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2467,16 +2467,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "xkU2o9Ubosrud4g8VjUda",
+    id: "UoVwwrV-a_ScC0pJvS4VM",
     title: "Empty state",
     excerpt: "Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface.",
     slug: "empty-state",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "V5l_FJqjm2aMz-gpd-Y_a",
+        id: "EM3NqcWX2zPg_Cf0hoFwa",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2531,16 +2531,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "1RnAty7JzPx5Y7NkZ58PO",
+    id: "yKRrqGcrknosXU-hnFePz",
     title: "Form layout",
     excerpt: "Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.",
     slug: "form-layout",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "0iPSFLG2BlX8aksUBrbJr",
+        id: "0UaM57dBxM54GSOx4qARz",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2601,16 +2601,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "6zmrLid52OU8H34sQQSzQ",
+    id: "GojrV9FKwGDoCF4y4p6Tn",
     title: "Inline",
     excerpt: "Use to arrange items in a horizontal row with equal spacing around them. Items wrap onto multiple lines when needed.",
     slug: "inline",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Lua3gZ7A-2d8nJni3ULVa",
+        id: "JBe0vJZKwlrcyBA4JsIJS",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2658,16 +2658,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "NvSp-xobsp4cvqZV1axwd",
+    id: "t9cO_sQOqOPs3EXzcrp9Y",
     title: "Layout",
     excerpt: "The layout component is used to create the main layout on a page. Layouts sections come in three main configurations. one-column, two-column, and annotated. One and two column layouts can be combined in the same page. Annotated layouts should be used on their own and only on settings pages.",
     slug: "layout",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "BwjOfzF70ueR_mPtjmzRU",
+        id: "jvswWNevpdzOJLqwleC6U",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2737,16 +2737,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "rkPEgbVRs5IVNVYbdiL-g",
+    id: "oO0ghbEy9AobIWnLvW40C",
     title: "Legacy card",
     excerpt: "This is the legacy version of the Card component which is in the process of being updated to a more flexible and composable API. Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.",
     slug: "legacy-card",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "wYJl_0DDKTYp_OfQwZ0Dc",
+        id: "914bBCT1HcxvbqYdtSLr2",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2871,16 +2871,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "F8do1IzMDRYwYLSNGUqh2",
+    id: "15kmUZ-xmhypODN7dQGOp",
     title: "Legacy stack",
     excerpt: "This is the legacy version of the Stack component which is in the process of being updated to a more flexible and composable API. Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack.",
     slug: "legacy-stack",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "vg0v5NArgrLI7wV2OOE87",
+        id: "UFyANYY_hz9ZltvPqiShF",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -2952,16 +2952,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "by4VYL9ygEd0OhBfMgxsG",
+    id: "s_ElTI8h1netNv-yI0Y9e",
     title: "Media card",
     excerpt: "Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.",
     slug: "media-card",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "mtUwDBmRFoOBs0scA1zIZ",
+        id: "HD_Up2ImBiRzaN_HdsYYi",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3022,16 +3022,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "EnssK55-b15ilXZU7dpK7",
+    id: "4KHhDoD6NnEth-q7iPZDL",
     title: "Page",
     excerpt: "Use to build the outer wrapper of a page, including the page title and associated actions.",
     slug: "page",
-    parentId: "x-9vkBy1ipyHUb3UNpjdk",
+    parentId: "mXvOdePlqRviqIpVuSjmn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "HoroRCqxybZGFNTUjRTGv",
+        id: "wKrI1LAxEt-1TRXA17UU5",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3139,11 +3139,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "8ZHBDRsCaLY8T7suBdZf8",
+    id: "eUCb3wtZMazaWwdefJFfa",
     title: "Lists",
     excerpt: "",
     slug: "lists",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 8,
     useCustomLayout: true,
     blocks: [],
@@ -3156,16 +3156,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "DD58iT75SEmCvOh4OK5oJ",
+    id: "mftryKsM-LxjC3_HN0XSf",
     title: "Action list",
     excerpt: "Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.",
     slug: "action-list",
-    parentId: "8ZHBDRsCaLY8T7suBdZf8",
+    parentId: "eUCb3wtZMazaWwdefJFfa",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "aOqgXJRAdhEbBM01flInS",
+        id: "-tAfNJALN7Q0zBbc5pyDV",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3231,16 +3231,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "YKi3Sqq7_Vur0sqrMxQyu",
+    id: "OjIlQIi_ajKGZnA2j3Siz",
     title: "Description list",
     excerpt: "Description lists are a way to organize and explain related information. They’re particularly useful when you need to list and define terms such as in a glossary.",
     slug: "description-list",
-    parentId: "8ZHBDRsCaLY8T7suBdZf8",
+    parentId: "eUCb3wtZMazaWwdefJFfa",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "BSiM_egyTLashyaHEsWuc",
+        id: "z5QDeTSheKvhi_RK1atOT",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3276,16 +3276,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "nSCkx3uWt7etCfePRQO1V",
+    id: "jgcUhylCVn2WimW83eLW0",
     title: "List",
     excerpt: "Lists display a set of related text-only content. Each list item begins with a bullet or a number.",
     slug: "list",
-    parentId: "8ZHBDRsCaLY8T7suBdZf8",
+    parentId: "eUCb3wtZMazaWwdefJFfa",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "n69qTolC2d-e46eLNLGQ3",
+        id: "W7IfhQO79wDcC-hsZ4daF",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3328,16 +3328,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "c83a9o2Qrr3ziYUb1ACLH",
+    id: "d7jugI847mcbTyrpPmhAd",
     title: "Listbox",
     excerpt: "A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.",
     slug: "listbox",
-    parentId: "8ZHBDRsCaLY8T7suBdZf8",
+    parentId: "eUCb3wtZMazaWwdefJFfa",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "KrkJIZN6ArpYNLbIhAkFj",
+        id: "6nxPFXwLQPKCH1lZajXIm",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3388,16 +3388,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "ZGrGhIdH7Z6qyfsTiOY7N",
+    id: "JXcjIj9IAhAFqwriIvmqG",
     title: "Option list",
     excerpt: "The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu.",
     slug: "option-list",
-    parentId: "8ZHBDRsCaLY8T7suBdZf8",
+    parentId: "eUCb3wtZMazaWwdefJFfa",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "AW4FJxIpxWX1qV3gPbs6v",
+        id: "vZ4sMIb45HpwjPoG5V8to",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3448,16 +3448,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "upJiy8eovh2C5GgZvQEgE",
+    id: "z07kZwJlrJ5dAkggjrIJo",
     title: "Resource item",
     excerpt: "Resource items represent specific objects within a collection, such as products or orders. They provide contextual information on the resource type and link to the object’s detail page.",
     slug: "resource-item",
-    parentId: "8ZHBDRsCaLY8T7suBdZf8",
+    parentId: "eUCb3wtZMazaWwdefJFfa",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "hqKSiDt81G7qALyH6rVou",
+        id: "_WtnNglw19dpj6_O_wXXL",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3519,16 +3519,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "ZszrJCSPLsp4MTdAzwRPL",
+    id: "HwIOihAZ6tLSCfZFlyIFA",
     title: "Resource list",
     excerpt: "A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.",
     slug: "resource-list",
-    parentId: "8ZHBDRsCaLY8T7suBdZf8",
+    parentId: "eUCb3wtZMazaWwdefJFfa",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "9_Ahdtt9ccP4MmTDmd8Gt",
+        id: "vMm3dI8FJrZ9K6KjGLUE7",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3641,11 +3641,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "8fdjg5YP7rHjcrfHN5Ae6",
+    id: "qZREMQ0NHflkl4vBTS7kV",
     title: "Navigation",
     excerpt: "",
     slug: "navigation",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 9,
     useCustomLayout: true,
     blocks: [],
@@ -3658,16 +3658,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "8CYGvHRKNct8Ga1yw_t3P",
+    id: "oO7wBMcnRnNXjzQZVqHAv",
     title: "Footer help",
     excerpt: "Footer help is used to refer merchants to more information related to the product or feature they’re using.",
     slug: "footer-help",
-    parentId: "8fdjg5YP7rHjcrfHN5Ae6",
+    parentId: "qZREMQ0NHflkl4vBTS7kV",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "bZp4AOnUX9JnZkqOt2D1q",
+        id: "c_4Tz7r6RwUtNZ_E0tkDS",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3705,16 +3705,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "cgXCGxnhJ5QzjVx_DyQP7",
+    id: "hCNYmpJsfBSlLypqy6qIm",
     title: "Fullscreen bar",
     excerpt: "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`.",
     slug: "fullscreen-bar",
-    parentId: "8fdjg5YP7rHjcrfHN5Ae6",
+    parentId: "qZREMQ0NHflkl4vBTS7kV",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "OmkyRpkmOJDMI8dkPUmid",
+        id: "fKkwCo7ox_YL-d2gAaQpw",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3751,16 +3751,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "LzIpvwym_JCO-TkVPgwQ0",
+    id: "PBe9ZagF5sHHIEQ4Jp3Uv",
     title: "Link",
     excerpt: "Links take users to another place, and usually appear within or directly following a sentence.",
     slug: "link",
-    parentId: "8fdjg5YP7rHjcrfHN5Ae6",
+    parentId: "qZREMQ0NHflkl4vBTS7kV",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "dUUdZ5kisknxeBHwbqr5L",
+        id: "No_ooo6A0VlM41Xv0tQ3L",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3819,16 +3819,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "bA_Tl0pjxJ2A_gRtL_e3g",
+    id: "EmggTNq4XvNObdGscKDQE",
     title: "Navigation",
     excerpt: "The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.",
     slug: "navigation",
-    parentId: "8fdjg5YP7rHjcrfHN5Ae6",
+    parentId: "qZREMQ0NHflkl4vBTS7kV",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "SaqFhYvuB9V5mtgGWb1DU",
+        id: "uEXiy-dKye__TsL0RF8uz",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3918,16 +3918,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "wt6KCHHHC_MMjaTxO7Liw",
+    id: "Xdtx1eAEda2e-M8rkUzH-",
     title: "Pagination",
     excerpt: "Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling.",
     slug: "pagination",
-    parentId: "8fdjg5YP7rHjcrfHN5Ae6",
+    parentId: "qZREMQ0NHflkl4vBTS7kV",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "zjf0B_cQnjSlx8N95V2Wi",
+        id: "IaJxN5I4VuRfMp6C-hqoS",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -3980,16 +3980,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "jTWAxUgIO5HQy4404P7DC",
+    id: "Gim8rDhf_ZyNOjoFqvVGN",
     title: "Tabs",
     excerpt: "Use to alternate among related views within the same context.",
     slug: "tabs",
-    parentId: "8fdjg5YP7rHjcrfHN5Ae6",
+    parentId: "qZREMQ0NHflkl4vBTS7kV",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "zIKziFPgsjP5EuRuEsdo9",
+        id: "f9UHHsvzY0WaZNPtBwnhi",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4039,16 +4039,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "-mBw6KyhY11ACzBFvP-w7",
+    id: "84bij-pADYbm1jWsEMWAe",
     title: "Top bar",
     excerpt: "The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo.",
     slug: "top-bar",
-    parentId: "8fdjg5YP7rHjcrfHN5Ae6",
+    parentId: "qZREMQ0NHflkl4vBTS7kV",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "t9JSDfHmH6cRNDmAF_Bgg",
+        id: "rrZJf_Lxwr2PMQjdvFYu3",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4088,11 +4088,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "k4aifxCkA7bzhLemGUjfp",
+    id: "yOxbtwuqurDWgw3mvf1nn",
     title: "Overlays",
     excerpt: "",
     slug: "overlays",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 10,
     useCustomLayout: true,
     blocks: [],
@@ -4105,16 +4105,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "q_98go12hbpOwXrirxAv2",
+    id: "KXKmUtFSU-SxZNo_C4jeW",
     title: "Modal",
     excerpt: "Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.",
     slug: "modal",
-    parentId: "k4aifxCkA7bzhLemGUjfp",
+    parentId: "yOxbtwuqurDWgw3mvf1nn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "liB6XhIKsXMEjY8CRjuU-",
+        id: "TISL4jL_2YaUloKwsIQM1",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4203,16 +4203,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "GlEZ1n0Gmhpr9nbAcpDrF",
+    id: "GSBWRWfU09gm9g2Aw_syA",
     title: "Popover",
     excerpt: "Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.",
     slug: "popover",
-    parentId: "k4aifxCkA7bzhLemGUjfp",
+    parentId: "yOxbtwuqurDWgw3mvf1nn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "rCqVCn-fCziQMgnP5IWX5",
+        id: "i7vtNM-IsiTqT2Vipv4Qk",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4276,16 +4276,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "eVkWuKhYTs-xV6vsDEehE",
+    id: "AGRg4JVq6jt2fp9Cfqzrk",
     title: "Tooltip",
     excerpt: "Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click.",
     slug: "tooltip",
-    parentId: "k4aifxCkA7bzhLemGUjfp",
+    parentId: "yOxbtwuqurDWgw3mvf1nn",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "sGljyquC_Xvuh1s8IX6Wn",
+        id: "MpmKKXxbbqv2Od7iq1seR",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4330,11 +4330,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "iLXNVW4fs74jwpuOAR3gT",
+    id: "ikG-IGFZ7Y0mHPv0qIJzu",
     title: "Selection and input",
     excerpt: "",
     slug: "selection-and-input",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 3,
     useCustomLayout: true,
     blocks: [],
@@ -4347,16 +4347,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "gePI3mpkvnrvL-jayTs6A",
+    id: "LLtmL19jmJLATzW6lChiR",
     title: "Autocomplete",
     excerpt: "The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options. It's a convenience wrapper around the `Combobox` and `Listbox` components with minor UI differences.",
     slug: "autocomplete",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "TFTSaobnJBjkT7aZVjpJ3",
+        id: "NQbEC77Wq4NKcAA_6tDHs",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4428,16 +4428,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "vXSDUg7gCpQGWVWy9PdYM",
+    id: "GuXvwdDWNEDbQHRCxKpup",
     title: "Checkbox",
     excerpt: "Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.",
     slug: "checkbox",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "-1HSPo6Wc6l0tLrjaRXBM",
+        id: "VCJdSoxte9A7NKoatDZ2N",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4475,16 +4475,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "67o1cHuyjZ_mwIWw6Rq24",
+    id: "mXSjJKvOw8g0hZYGff0UW",
     title: "Choice list",
     excerpt: "A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.",
     slug: "choice-list",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "uNOwtT9GDWi45Cu1_VYSh",
+        id: "-vGAbPsrG84blSQ7id_xP",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4546,16 +4546,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "q5ookRxguycQDpy4c3l0b",
+    id: "pZJnTW_olwR2_1iRI9FSS",
     title: "Color picker",
     excerpt: "The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop.",
     slug: "color-picker",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "zKCHnr-j4vypkvZxzvSAB",
+        id: "wpbf--vgmuU0N0vPy5B1F",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4603,16 +4603,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "djP1BRAqcze5B_rluSWvV",
+    id: "NZvuHLhiTue74926vL1gK",
     title: "Combobox",
     excerpt: "Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values.",
     slug: "combobox",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "BDNDbBamrmw0Pzj1gKqTb",
+        id: "j_yo6NJiez48GImSybqUw",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4671,16 +4671,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "V9wRjrIeGugcYqNfzP_Ln",
+    id: "U_i8JXTbvyaSkDDQZtGs-",
     title: "Contextual save bar",
     excerpt: "The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.",
     slug: "contextual-save-bar",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "ElKEVf666WafQZA3-8m8c",
+        id: "8DETPe6eO1nNrzhazCLO2",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4724,16 +4724,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "LOHRmvn23zFn_yk1HTi-T",
+    id: "516WBll6wfcsz5nqTTswI",
     title: "Date picker",
     excerpt: "Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.",
     slug: "date-picker",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "GxGt-QisHpyk4DvQH6nKv",
+        id: "6uwimBxmPcAkok6ipi6u9",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4793,16 +4793,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "BYgnhtzKoPlrQYRTsrDGh",
+    id: "8XarNT5xhrBZWZotv8aaE",
     title: "Drop zone",
     excerpt: "The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button.",
     slug: "drop-zone",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "h-BVQVLIbyO2sS4932u9_",
+        id: "1CY7ZbHENkmOeQZiubNiH",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4889,16 +4889,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "pPjInFUsM1UeZwR-l4skS",
+    id: "LDtsHTfjgKSoVAGn2T_Kz",
     title: "Filters",
     excerpt: "Filters is a composite component that filters the items of a list or table.",
     slug: "filters",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "AhnBvfbKUEetbXXvSlkCD",
+        id: "FOjcPRvXbC2wxdZzJEl8p",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -4972,16 +4972,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "uhf_RG8-0kY6Jy25cCm2o",
+    id: "n3uW3TgJuYjRZVPPVLRsX",
     title: "Form",
     excerpt: "A wrapper component that handles the submission of forms.",
     slug: "form",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "75i2tzA0A4NSG9PvgZdkB",
+        id: "NsmA6Pg1k9mMF5PEnETuc",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5022,16 +5022,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "xU7Yc9IA_6VjwpeULfP_h",
+    id: "-5x1ct-gTnocLnUPAzN-b",
     title: "Inline error",
     excerpt: "Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.",
     slug: "inline-error",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "snZioIHXmK_xyuWmZmszs",
+        id: "8jCfUf3MQwNKGKm4PGPmN",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5063,16 +5063,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "G9puBtev9r9MpdhEzfYw9",
+    id: "Bhe6G2ZXcshg6gwSXAawV",
     title: "Radio button",
     excerpt: "Use radio buttons to present each item in a list of options where merchants must make a single selection.",
     slug: "radio-button",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "SSuxw8V7VQkAQMLqt2MF1",
+        id: "TTN_HduWjwfpBpblHjPqg",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5110,16 +5110,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "6vGH-Uml5JAkK79x2McTH",
+    id: "olU3_d46e3kXH1JQ25Ad5",
     title: "Range slider",
     excerpt: "A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values).",
     slug: "range-slider",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "6tD197u03N2EIgjDocyTW",
+        id: "chvzWa4AKEXnHSr3D3xbC",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5173,16 +5173,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "m3xVwdRltoW6C8vmoMsvK",
+    id: "y8LHVKxIT2xHrU3ad5Y7X",
     title: "Select",
     excerpt: "Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.",
     slug: "select",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "BaxqgAfu9pEgD0cDB_jC-",
+        id: "5hhqrGiFqgPOpXpkAvXM5",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5251,16 +5251,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "SmMNlVuu6bSKu7klGDtWL",
+    id: "3zVMjDxlW179IMiOZOIqP",
     title: "Tag",
     excerpt: "Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants.",
     slug: "tag",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "ImmUyIMUVrSIfQP7AdGS5",
+        id: "1R00-CQ0XKoQRCi-LJnqF",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5319,16 +5319,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "nMFzVhiD6uB0AGlAHTRZK",
+    id: "jHy7yFgyg49a_U4Uxe90D",
     title: "Text field",
     excerpt: "A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.",
     slug: "text-field",
-    parentId: "iLXNVW4fs74jwpuOAR3gT",
+    parentId: "ikG-IGFZ7Y0mHPv0qIJzu",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "pd1_k5q7wqMdg6-gc4Pb9",
+        id: "zQ3yO_gFoEGw1mNYEf-ZD",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5488,11 +5488,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "B5tRWOF-gemYt7F2Jqv-F",
+    id: "B4bb_FdFkiIM0B4PdlACP",
     title: "Tables",
     excerpt: "",
     slug: "tables",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 7,
     useCustomLayout: true,
     blocks: [],
@@ -5505,16 +5505,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "uMK7k3T0Og2vWfi41hOLc",
+    id: "wDSy3yr8avIQGhrZpAMLJ",
     title: "Data table",
     excerpt: "Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.",
     slug: "data-table",
-    parentId: "B5tRWOF-gemYt7F2Jqv-F",
+    parentId: "B4bb_FdFkiIM0B4PdlACP",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "k7tzL6pmBTjW68yka68cq",
+        id: "S0zAipqw9eej3ZCVz0BLY",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5591,16 +5591,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "_1tzP5JMclj_6FKRB75lU",
+    id: "IurPQOBpm8Ha2VGkOs6Si",
     title: "Index table",
     excerpt: "An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.",
     slug: "index-table",
-    parentId: "B5tRWOF-gemYt7F2Jqv-F",
+    parentId: "B4bb_FdFkiIM0B4PdlACP",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Z8H2ZgW1vZ7Ee6JNjAgnE",
+        id: "jSE7VPKg7meYrEP_ztRV0",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5726,11 +5726,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "4J9kefIuV3m8uCL01x0GB",
+    id: "bH6aM5yv7fvnvpk_1UsZC",
     title: "Typography",
     excerpt: "Typography components",
     slug: "typography",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 6,
     useCustomLayout: true,
     blocks: [],
@@ -5743,16 +5743,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "YJY1yow7DhmSyweqKFlHr",
+    id: "g3_QP32eQIYOU8nlLQgbu",
     title: "Text",
     excerpt: "Typography helps establish hierarchy and communicate important content by creating clear visual patterns.",
     slug: "text",
-    parentId: "4J9kefIuV3m8uCL01x0GB",
+    parentId: "bH6aM5yv7fvnvpk_1UsZC",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "H7Aa7PC42wviPjV5nBKeD",
+        id: "07AmmM7mk8YTy75GSivli",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5815,11 +5815,11 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "gvHcCwdeMgZAeztbwgle_",
+    id: "Q9ymlGvFUpkwG-vbWJHUL",
     title: "Utilities",
     excerpt: "",
     slug: "utilities",
-    parentId: "d2VjJfC_QYJ44kfMjFChg",
+    parentId: "WUjxEw9WD9e28gRRCfUBK",
     order: 11,
     useCustomLayout: true,
     blocks: [],
@@ -5832,16 +5832,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "agJXRn1fcAKMa5CRdkYX6",
+    id: "UDYXtLU9FskEwcPaobBZl",
     title: "App provider",
     excerpt: "App provider is a required component that enables sharing global settings throughout the hierarchy of your application.",
     slug: "app-provider",
-    parentId: "gvHcCwdeMgZAeztbwgle_",
+    parentId: "Q9ymlGvFUpkwG-vbWJHUL",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "nWbcHFpfXcyM-zSNV982Q",
+        id: "BM3whI4pjzDf9Bxv97a6C",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5890,16 +5890,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "dtLJyJxajOCuf_QTXVkpZ",
+    id: "fOpPM2OMmotOYZItTL_mh",
     title: "Collapsible",
     excerpt: "The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.",
     slug: "collapsible",
-    parentId: "gvHcCwdeMgZAeztbwgle_",
+    parentId: "Q9ymlGvFUpkwG-vbWJHUL",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "hhdo9hzNbwPaAEcvHRV4G",
+        id: "M-xyTqG3uOAYFPrA89r3N",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5942,16 +5942,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "4uJeSxNiQU1ibgV144BCG",
+    id: "4iaD5g3Mep4ugc1YCR-hI",
     title: "Frame",
     excerpt: "The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/feedback-indicators/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components.",
     slug: "frame",
-    parentId: "gvHcCwdeMgZAeztbwgle_",
+    parentId: "Q9ymlGvFUpkwG-vbWJHUL",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "FKy4WF-cykzit00Gi3559",
+        id: "yjYrmldulwjpbXtfn-3SH",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -5996,16 +5996,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "gP4sYO4Q4mdj_U90iPfYj",
+    id: "uaevnDgRbDTMRX5_ddij-",
     title: "Scrollable",
     excerpt: "The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read.",
     slug: "scrollable",
-    parentId: "gvHcCwdeMgZAeztbwgle_",
+    parentId: "Q9ymlGvFUpkwG-vbWJHUL",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "U0VEZ6SY6QngjYcLHlHkn",
+        id: "s21YSqYigSpS0ZAxDoyeO",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6048,7 +6048,7 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "ZHokUV64tT3zHD7KvSuDb",
+    id: "Ilprm-eHbqfHk4YD6If3Z",
     title: "Patterns",
     excerpt: "Design patterns help ensure consistent behavior across the Shopify admin.",
     slug: "patterns",
@@ -6065,16 +6065,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: true
   },
   {
-    id: "bu1d_SwaEkR2r8PfCdP2h",
+    id: "kLh6E-72pFjsr4S0od4cW",
     title: "App settings layout",
     excerpt: "Scan and find groups of settings in apps",
     slug: "app-settings-layout",
-    parentId: "ZHokUV64tT3zHD7KvSuDb",
+    parentId: "Ilprm-eHbqfHk4YD6If3Z",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "_if35qIFy15s1frV8dtRy",
+        id: "WVf2tZjQNymP-Udz6xRCL",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6090,16 +6090,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "UwfCwvA_kTXWyMN3qtbsq",
+    id: "_wwlZbvm3kEs9uhb5XnnB",
     title: "Date picking",
     excerpt: "Select a date or a date range",
     slug: "date-picking",
-    parentId: "ZHokUV64tT3zHD7KvSuDb",
+    parentId: "Ilprm-eHbqfHk4YD6If3Z",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "WgwtusdLpk4xvsEt-LK5f",
+        id: "f_69jPYQumhtZcw6B1bYS",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6115,16 +6115,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "eFKXOlh7Q_tlRfajUZANV",
+    id: "ZzwCnVNwweCeEe0Kol7b3",
     title: "Resource details layout",
     excerpt: "Create, view, and edit resource objects",
     slug: "resource-details-layout",
-    parentId: "ZHokUV64tT3zHD7KvSuDb",
+    parentId: "Ilprm-eHbqfHk4YD6If3Z",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "2RCfthmflw5d1xriDXHDa",
+        id: "veFa2YuU3jKLjoCc3_TIk",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6140,16 +6140,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "iVZMfMoAmUeasWzmY5njB",
+    id: "tl7eb6Xaz7N8dPVYOMPry",
     title: "Resource index layout",
     excerpt: "Organize and take action on resource objects",
     slug: "resource-index-layout",
-    parentId: "ZHokUV64tT3zHD7KvSuDb",
+    parentId: "Ilprm-eHbqfHk4YD6If3Z",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "9AEfGNH1qJ-2guf3yOI0x",
+        id: "msZ50bhss6nV09F4FUPCr",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6165,7 +6165,7 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "bGhYAxKMkWfru-2w0zLwy",
+    id: "xFq5ZOVDB3b-CdCF9-sUb",
     title: "Content",
     excerpt: "Thoughtful, consistent interface content is a core element of a well-designed user experience.",
     slug: "content",
@@ -6174,7 +6174,7 @@ const pages: Content['pages'] = [
     useCustomLayout: false,
     blocks: [
       {
-        id: "SX0u-44rvGfMGPULkg6g2",
+        id: "mmJBhQ6uPK3HfdYaC1teM",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6190,16 +6190,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "WECPR4GKvmhXDgXI1ZaYW",
+    id: "czYA-Kgbglfi7QuyejdA5",
     title: "Accessible and inclusive language",
     excerpt: "Our mission is to make commerce better for _everyone_. Building products for everyone means creating inclusive content.",
     slug: "accessible-and-inclusive-language",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "e8w-oqYyqaHkSzSQmkT_i",
+        id: "8CEhaqHy1fL96Fjx8_fwP",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6245,16 +6245,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "vBXJYkzWujAldnVLVM5sH",
+    id: "ZxKHZzGIwMAjHzkvhgPPG",
     title: "Actionable language",
     excerpt: "Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions.",
     slug: "actionable-language",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "6XIamkEoQOJN9pt9vkMnF",
+        id: "BYuOluuqdLsanb96PFKH-",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6340,16 +6340,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "uHz3R3D7wzrBugkftknL6",
+    id: "vKMTprzfGjcQhnYmxKowv",
     title: "Alternative text",
     excerpt: "Alternative text (alt text) helps provide an inclusive experience for merchants who use screen readers.",
     slug: "alternative-text",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "TeJm-OisQtBAAnJnxtYc0",
+        id: "X7jlFgxxmuU0NXX74wO5o",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6401,16 +6401,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "Hl-waAi89N_u79h-TPhPY",
+    id: "FagEOTK18Ijn6A42td4JW",
     title: "Error messages",
     excerpt: "Error messages can be scary. Make errors visible to merchants, easy to understand, and helpful.",
     slug: "error-messages",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "ICuxvdCWvvpAl8wXDZndn",
+        id: "IO2T_xgRfsaThoza9cW8s",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6436,16 +6436,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "pNr-geegG85H2FhNmkDpl",
+    id: "W55lUd9A9A3UAD0gqFpOA",
     title: "Grammar and mechanics",
     excerpt: "This guide is to help designers, developers, recruiters, UX-ers, product managers, support advisors, or anyone who writes public-facing text for Shopify.",
     slug: "grammar-and-mechanics",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "vlmKmemELkQMdGxweWUEc",
+        id: "p1CtmVHM45vbEdLABI2Xp",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6480,16 +6480,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "T612lc1MpHeHb6hH9A_JE",
+    id: "cFhkEXXJpv0J1CAWvCvLr",
     title: "Help content",
     excerpt: "Help content is educational text that describes interactive elements or offers information about concepts in the UI.",
     slug: "help-content",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "S8HgQwOt6XdtsS1PjNLfj",
+        id: "cResbq-kqdqcN_UDps5Tb",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6513,16 +6513,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "Nb1MzJPKWhb2ESglMiv8y",
+    id: "aGlSPpzyKNZQsIsnBk3JR",
     title: "Help documentation",
     excerpt: "After you build an app or other integration, writing help documentation will show merchants how to use it.",
     slug: "help-documentation",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "ETPsP6t8dmbg-wS7tNgJH",
+        id: "UjAm9Rmj6_OEwstKboEgL",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6568,16 +6568,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "KesN6RhWQGL1GnD0nqL3c",
+    id: "nj-KNLJnnWmbchwMqC-9Z",
     title: "Merchant-to-customer content",
     excerpt: "Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.",
     slug: "merchant-to-customer",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "VJ6fptdZDudvoIVbt1IcC",
+        id: "ohf9JOuOcO4HGFNHIOQ5u",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6605,16 +6605,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "nLOphNdB6gEyknBq6Vd-m",
+    id: "WeN_EPzZsfToHGpoBwJtc",
     title: "Naming",
     excerpt: "The names we give our products and features teach merchants how to use Shopify and how to find the things they need to run their business.",
     slug: "naming",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "vZbT-LEBHThiNSlnZl5t1",
+        id: "yRriBFxd8eYir601BPW2w",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6652,16 +6652,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "yPQBhdOLtvtEU0TgPwE5L",
+    id: "H10VwHeEOXrjgJB38PxHx",
     title: "Product content",
     excerpt: "Thoughtful, consistent interface content is a core element of a well-designed user experience.",
     slug: "product-content",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "30yqLU65ZpDTAIbjgu8ty",
+        id: "E8eHjsWllebCWaOpXlytZ",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6705,16 +6705,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "ecsVG65CKsOIMRG6DqXLO",
+    id: "Uel2V3dgUXXbHjqtxbB09",
     title: "Voice and tone",
     excerpt: "Learn how to apply Shopify’s voice and choose the right tone, no matter what product, feature, or app you’re building.",
     slug: "voice-and-tone",
-    parentId: "bGhYAxKMkWfru-2w0zLwy",
+    parentId: "xFq5ZOVDB3b-CdCF9-sUb",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "sowTUCMbXX2wluOuhYaBx",
+        id: "qStlU5Z0vT-P-20QUCm3y",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6743,7 +6743,7 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "w2yPAvls3eJ8GcDvSOMrU",
+    id: "wBJsU7k36lXt0MZQGu4vv",
     title: "Contributing to Polaris",
     excerpt: "Polaris exists to make a product worked on by many, feel like it was created by one person. The design system needs to stay in sync with new solutions so merchants always have a seamless experience. This is why Polaris thrives on contribution and community support.",
     slug: "contributing",
@@ -6752,7 +6752,7 @@ const pages: Content['pages'] = [
     useCustomLayout: false,
     blocks: [
       {
-        id: "dfTYAnFtGPvIcH23Lb3Ye",
+        id: "9KM0iN5WSRha6rRthajsP",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6771,16 +6771,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: true
   },
   {
-    id: "D--M2KhptuoD_jTIxpRrT",
+    id: "LYbdDm_2CPTJ2hHLuMHgC",
     title: "Code of Conduct",
     excerpt: "",
     slug: "code-of-conduct",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "J6xFPAZcLp1nBDfYysTlg",
+        id: "o8pv1Ym3uNhjtUglgShqB",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6798,16 +6798,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "qy7izaNqoPvyiG7DkxmfD",
+    id: "6JrNcVMIdLHy4YydOltOu",
     title: "Contributing to Polaris React",
     excerpt: "Anyone is welcome to contribute to Polaris React components. There are several types of component contributions, but they typically fall under three categories; bug fix, enhancement, or new pattern.",
     slug: "components",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 2,
     useCustomLayout: false,
     blocks: [
       {
-        id: "UZFQuity6djzswaHErIil",
+        id: "LfNQN0mvIkmts5ot8EaX6",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6835,16 +6835,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "rHOcO7x1TTkvfJWCzKGg1",
+    id: "NR11zvuDskaj94ZI3O4tX",
     title: "Designing with a system",
     excerpt: "",
     slug: "designing-with-a-system",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 7,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Q5M0sSHS3aT_ezWsdaple",
+        id: "YWQUE0SI4Mxuett9Lu66b",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6864,16 +6864,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "m_xRyEUSpN-WfLRkfxpU7",
+    id: "PqW36FWPsu4H7kdb0JrZZ",
     title: "Documenting in Polaris",
     excerpt: "",
     slug: "documentation",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 5,
     useCustomLayout: false,
     blocks: [
       {
-        id: "cz_KOGUs3CZn70WjBf8At",
+        id: "OjOKltwcHuWCp30DL8gDN",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6894,16 +6894,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "MlNLHUgYyOVt15LCQ832O",
+    id: "r7kc4E0XPfaTLIpMiT2Wn",
     title: "Contributing to the Figma UI Kit",
     excerpt: "",
     slug: "figma-ui-kit",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 3,
     useCustomLayout: false,
     blocks: [
       {
-        id: "oMnOlMNvnBTeGbOQR3xiH",
+        id: "rD8zghmOXNVvQ-LvYbL2x",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6924,16 +6924,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "ev9rJNx93QsvIlSZZgmbk",
+    id: "ynMYke7ekVnCVtqrbOUUO",
     title: "Contributing to Polaris Icons",
     excerpt: "",
     slug: "icons",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 1,
     useCustomLayout: false,
     blocks: [
       {
-        id: "j4hxewYwR7FZpesdTHkmp",
+        id: "KTSidaCuPz2LcstLMwwk5",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6955,16 +6955,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "ZO8uh9Hqde7cjwtinhxuV",
+    id: "Axr4bsPrePbA-2g3V3z61",
     title: "Adding new illustrations",
     excerpt: "",
     slug: "illustrations",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 4,
     useCustomLayout: false,
     blocks: [
       {
-        id: "6F6SGbYbTSsBM_m36h9a0",
+        id: "iJ6gkyfa7ZquuK5JQ-XGr",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -6986,16 +6986,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "nPAAcbkcGtgnt8oBuvkqP",
+    id: "M6n1RpxGq1nk2pkh8KZZy",
     title: "Shipping your contribution",
     excerpt: "Contributions to this documentation site and code-related resources in the Polaris design system are made in the [Shopify/polaris GitHub repository](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects/2250), and use GitHub discussions, issues, and pull requests to work in the open.",
     slug: "shipping-your-contribution",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 6,
     useCustomLayout: false,
     blocks: [
       {
-        id: "yWLSy0iTn92KhVhOD_v9Y",
+        id: "H0TcjukAbiTaTcYMrnah8",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7017,16 +7017,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "dQjvAsqbzI_SABdAAJnc0",
+    id: "uvxhIGugJ6ZJSrUIIeDiM",
     title: "When to contribute new patterns",
     excerpt: "There will likely be times where the system and its components fall short of your preferred solution. You have a decision to make — should you stay consistent with what exists, or go with the best possible solution, regardless of consistency?",
     slug: "when-to-contribute-new-patterns",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 8,
     useCustomLayout: false,
     blocks: [
       {
-        id: "DctHgAAJk-t2XHqM5PicU",
+        id: "BQFM7L3aq4Q2fL_-6lvLd",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7047,16 +7047,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "7N7yS7OiLZFes_0slDFuj",
+    id: "bVny_2MzGnoqs001XhhUs",
     title: "Working with the Polaris team",
     excerpt: "When you contribute to Polaris, you help the Shopify community create better experiences for merchants, faster. Contribution takes thoughtful planning.",
     slug: "working-with-the-polaris-team",
-    parentId: "w2yPAvls3eJ8GcDvSOMrU",
+    parentId: "wBJsU7k36lXt0MZQGu4vv",
     order: 9,
     useCustomLayout: false,
     blocks: [
       {
-        id: "UWhVF_LLIRk5OHv87vzX3",
+        id: "JB3SJBnCajsMTQJRuH7GL",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7078,7 +7078,7 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "YlrASegwdIamsQRG9LHAx",
+    id: "Y44dCu9OnXgbqJtDiqD9L",
     title: "Design",
     excerpt: "These are the principles that shape how we design all the experiences across the Shopify admin.",
     slug: "design",
@@ -7095,16 +7095,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "Abt0CU3CWLSpN_tOwn1lD",
+    id: "W9HFPK5FZrrHfGgtp1Oj1",
     title: "Colors",
     excerpt: "Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.",
     slug: "colors",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "p7YVZS8OapuzEJo7uyDvD",
+        id: "GhZ2V57RYdfdR-wWu44GU",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7127,16 +7127,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "_eEJ6U0I9H0u_b3gQ1jTR",
+    id: "QvaceZTZCPatGq2AtEYUy",
     title: "Data visualizations",
     excerpt: "Visualizations surface patterns in data, and provide immediate answers to a single, specific question.",
     slug: "data-visualizations",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "X8eQSrIMxcyXFymPn760L",
+        id: "zNvzNiwH1THDpmtQ7qTCb",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7157,16 +7157,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "vNCDq3J7EstPwD11ayaaM",
+    id: "Y69syvHxZdYeCFwJRkDHo",
     title: "Design",
     excerpt: "These are the principles that shape how we design all the experiences across the Shopify admin.",
     slug: "design",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "80S_WnRWmV_AGpepmcnwR",
+        id: "U8ebQOcragTIsWqbhpnXa",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7189,16 +7189,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "wV10zY_I-4bBOoYDmpote",
+    id: "tSGmWCTbEyj0xyEJU1MtZ",
     title: "Icons",
     excerpt: "Icons in the Shopify admin act as visual aids to help merchants complete tasks. They’re simple, informative, and build on the visual language of the design system.",
     slug: "icons",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Za7jZnE5kktlYFyHzCbc_",
+        id: "CIpdCmELFgeBfkD1nZAJ4",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7234,16 +7234,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "cxqHTx-PqV0Xy0B2W5i95",
+    id: "64ovcUQRN0VXgqf-7EnxH",
     title: "Illustrations",
     excerpt: "The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience.",
     slug: "illustrations",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "LgpLGTaDvaimymYzx-Xtl",
+        id: "U0kgaCd4BsGu_QtflLJFG",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7265,16 +7265,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "8ENWn2rHw0TuvHz7oOrVf",
+    id: "9dXvQQbUTzA4M2f0V9Tst",
     title: "Interaction states",
     excerpt: "Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.",
     slug: "interaction-states",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "dc8EIRubuvBTJcGxI2nwV",
+        id: "0zPs-4dFedakcGjlBHqv5",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7304,16 +7304,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "7XM1NHYI6MoSlTLDNy72Q",
+    id: "GC7Ph-QZhUxEYhgL-w9lo",
     title: "Sounds",
     excerpt: "We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.",
     slug: "sounds",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "TelZFUEXyij8hk5i0uPIV",
+        id: "TG9POan_Jsak41e9V5OWv",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7336,16 +7336,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "m-yz2cXUa0mbDbNg6gWOY",
+    id: "Yly62LKNgIpm8NSopHCF-",
     title: "Space",
     excerpt: "Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping  the content become more useful and understandable.",
     slug: "space",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "IEufF3OyFDnWzlY_rfUye",
+        id: "8FXcKB9L7Ba5m7EVF7bVc",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7372,16 +7372,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "wsrjWc9Chcgcwn9jW1MfP",
+    id: "tfw7MYFqR9a2fX6PHJ4hv",
     title: "Typography",
     excerpt: "Typography helps establish hierarchy and communicate important content by creating clear visual patterns.",
     slug: "typography",
-    parentId: "YlrASegwdIamsQRG9LHAx",
+    parentId: "Y44dCu9OnXgbqJtDiqD9L",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "XgerOI1RVNKVqQClUC0bg",
+        id: "Se4Zwf_FQ9xDBTz2YnunM",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7404,7 +7404,7 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "ewByuhVNIsZh1d15HVKA8",
+    id: "jxb3gI4AKMpwEbzva0EnA",
     title: "Foundations",
     excerpt: "Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences.",
     slug: "foundations",
@@ -7421,16 +7421,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: true
   },
   {
-    id: "qKcW1W_yIfBtWQH3Euf00",
+    id: "vwsX1I4eCkO0BCdQ31Ihp",
     title: "Accessibility",
     excerpt: "Making commerce better for everyone means caring deeply about making quality products. A quality product should have a fantastic user experience (UX).",
     slug: "accessibility",
-    parentId: "ewByuhVNIsZh1d15HVKA8",
+    parentId: "jxb3gI4AKMpwEbzva0EnA",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "XDw2ZYBgMQWCmDD10cgIx",
+        id: "6hqz8Ws6dIjgK8j81aL3y",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7464,16 +7464,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "WglrAMC1XGqC20mcFVSm-",
+    id: "vDO0GuBtuTMGecKwMNgXS",
     title: "Shopify experience values",
     excerpt: "At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.",
     slug: "experience-values",
-    parentId: "ewByuhVNIsZh1d15HVKA8",
+    parentId: "jxb3gI4AKMpwEbzva0EnA",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "7-IBHXXk30I87NS-cu3AJ",
+        id: "grY-A2iPoOEsOeG_Ns3dC",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7518,16 +7518,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "VpdrmO4Vs1j8dasmGpThQ",
+    id: "l7JKXDefzwV6e0nuKbNP-",
     title: "Formatting localized currency",
     excerpt: "Currencies are formatted differently in different countries and languages.",
     slug: "formatting-localized-currency",
-    parentId: "ewByuhVNIsZh1d15HVKA8",
+    parentId: "jxb3gI4AKMpwEbzva0EnA",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "bM-UKC7v6yo7Uuw4yHiq6",
+        id: "HAoeflpA28qjF9xIDoxy6",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7564,16 +7564,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "z4v9TYKWyleMUTrrdfK7Y",
+    id: "rsmTghMZCPXIkk45TV8Yp",
     title: "Information architecture",
     excerpt: "Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.",
     slug: "information-architecture",
-    parentId: "ewByuhVNIsZh1d15HVKA8",
+    parentId: "jxb3gI4AKMpwEbzva0EnA",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "sA5EjKhdbFIkzeZAy87md",
+        id: "6ZCj9ATlMV6LK9SGXmJ7q",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7598,16 +7598,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "m7li3JK3kJXWPGf2WuqCV",
+    id: "ui_ks6MdaBjjFX9p0h-Y-",
     title: "Internationalization",
     excerpt: "Make commerce better for everyone by building interfaces that work everywhere. These guidelines will help you design, write, and build products that can be used in every part of the world.",
     slug: "internationalization",
-    parentId: "ewByuhVNIsZh1d15HVKA8",
+    parentId: "jxb3gI4AKMpwEbzva0EnA",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "pqih2HYmChenjBKB8p093",
+        id: "O4eFlXSsW54ojZ3SJ75VZ",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7641,7 +7641,7 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "5xsG-ZIxRaGYJMg3Nivsl",
+    id: "e_PFJKXMpdbX7hnINqVHM",
     title: "Getting Started",
     excerpt: "Polaris is the design system for the Shopify admin. If you’re just starting out with Polaris, here’s a list of recommended resources and guidance to get you started.",
     slug: "getting-started",
@@ -7650,7 +7650,7 @@ const pages: Content['pages'] = [
     useCustomLayout: false,
     blocks: [
       {
-        id: "X8IfJNS6ecVN3flZ3tFrV",
+        id: "Zvlm5ED7TRggtjYY3PMwS",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7678,16 +7678,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "pc_KOVMvsdMvtXPvYVJF1",
+    id: "05fEkdHox2wepKF_bFUdA",
     title: "Component lifecycle",
     excerpt: "Polaris components move through a series of stages throughout their lifecycle. Within each stage, a component must meet a set of requirements.",
     slug: "components-lifecycle",
-    parentId: "5xsG-ZIxRaGYJMg3Nivsl",
+    parentId: "e_PFJKXMpdbX7hnINqVHM",
     order: 1,
     useCustomLayout: false,
     blocks: [
       {
-        id: "Js6I0-9LRCD4UpKuM13_v",
+        id: "G4zv4v3FtQDOtPQZXTV7f",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7712,16 +7712,16 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "QooPbaDBnBw57J6M12pJE",
+    id: "E9E0p_x2GEBr_DqEtuWAj",
     title: "Polaris 101",
     excerpt: "The Polaris design system is used by designers and developers to build world-class Shopify admin experiences.",
     slug: "polaris-101",
-    parentId: "5xsG-ZIxRaGYJMg3Nivsl",
+    parentId: "e_PFJKXMpdbX7hnINqVHM",
     order: 0,
     useCustomLayout: false,
     blocks: [
       {
-        id: "wVOsS3tLb8j6v1ofQugkK",
+        id: "BvshhDPfCqgTkmdxxNyHZ",
         order: 0,
         blockType: "Markdown",
         parentBlockId: null,
@@ -7740,7 +7740,7 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "nJ_7EyHL1daBwoAcZSVvU",
+    id: "ggdvxuT4N_5gx9gp_qWS2",
     title: "Icons",
     excerpt: "",
     slug: "icons",
@@ -7757,7 +7757,7 @@ const pages: Content['pages'] = [
     hasSeparatorInNav: false
   },
   {
-    id: "PE7FIPzbX7azwAn9m-GN_",
+    id: "yTOJcWFYEUwF6A17F7uWh",
     title: "Tokens",
     excerpt: "",
     slug: "tokens",

@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import {content} from '../../src/content';
-import {getPageUrl} from '../../src/components/Editor/utils';
+import {content} from '../src/content';
+import {getPageUrl} from '../src/components/Editor/utils';
 
 let urlLines: string[] = [];
 
@@ -19,4 +19,4 @@ const fileContent = `<?xml version="1.0" encoding="UTF-8"?>
 ${urlLines.join('\n')}
 </urlset>`;
 
-fs.writeFileSync('sitemap.xml', fileContent);
+fs.writeFileSync('public/sitemap.xml', fileContent);
