@@ -20,7 +20,7 @@ interface Props {
 
 export default function ComponentPage({page, groups}: Props) {
   return (
-    <Page page={page}>
+    <Page page={page} showTOC={false}>
       {groups.map((group) => {
         return (
           <>

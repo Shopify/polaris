@@ -12,7 +12,7 @@ interface Props {
 }
 
 const PatternsIndex = ({page, patterns}: Props) => (
-  <Page page={page}>
+  <Page page={page} showTOC={false}>
     <Longform>
       <p>{page.excerpt}</p>
     </Longform>

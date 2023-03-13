@@ -20,7 +20,7 @@ export interface FoundationsProps {
 function FoundationsPage({page, items}: FoundationsProps) {
   return (
     <div className={styles.FoundationsPage}>
-      <Page page={page}>
+      <Page page={page} showTOC={false}>
         <Longform>
           <p>{page.excerpt}</p>
         </Longform>

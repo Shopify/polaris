@@ -1,29 +1,24 @@
 import fs from 'fs';
-import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
 import ComponentExamples from '../../../../src/components/ComponentExamples';
-import type {ResolvedComponentExample} from '../../../../src/components/ComponentExamples';
-import Longform from '../../../../src/components/Longform';
-import Markdown from '../../../../src/components/Markdown';
 import Page from '../../../../src/components/Page';
 import {toPascalCase} from '../../../../src/utils/various';
-import PageMeta from '../../../../src/components/PageMeta';
-import {Status, FilteredTypes, AllTypes} from '../../../../src/types';
-import StatusBanner from '../../../../src/components/StatusBanner';
-import UpdateBanner from '../../../../src/components/UpdateBanner';
+import {FilteredTypes, AllTypes} from '../../../../src/types';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
 import {content} from '../../../../src/content';
 import {
   getPageByPath,
   getPageStack,
+  getPageWithUrl,
 } from '../../../../src/components/Editor/Editor';
-import {Page as PageType} from '../../../../src/components/Editor/types';
+import {PageWithUrl} from '../../../../src/components/Editor/types';
 import EditorRenderer from '../../../../src/components/EditorRenderer';
+import {ResolvedComponentExample} from '../../../../src/components/ComponentExamples/ComponentExamples';
 
 interface Props {
-  page: PageType;
+  page: PageWithUrl;
   examples: ResolvedComponentExample[];
   filteredTypes: FilteredTypes;
 }
@@ -39,22 +34,22 @@ const Components = ({page, examples, filteredTypes}: Props) => {
   const componentExamples = Boolean(examples.length) && (
     <ComponentExamples examples={examples} />
   );
+
   // const propsTable =
   //   type && status?.value !== 'Deprecated' ? (
   //     <PropsTable componentName={title} types={type} />
   //   ) : null;
+
   const propsTable = (
     <PropsTable types={filteredTypes} componentName={page.title} />
   );
 
   return (
-    <>
+    <Page page={page}>
       {componentExamples}
-
       {propsTable}
-
       <EditorRenderer page={page} />
-    </>
+    </Page>
     //     <Page title={title} editPageLinkPath={editPageLinkPath} isContentPage>
     //       <PageMeta title={title} description={description} />
 
@@ -87,6 +82,8 @@ export const getStaticProps: GetStaticProps<
   );
 
   if (page && page.pageMeta?.type === 'components') {
+    const pageWithUrl = getPageWithUrl(content, page);
+
     const examples = page.pageMeta.examples.map((example) => {
       const examplePath = path.resolve(
         process.cwd(),
@@ -121,7 +118,7 @@ export const getStaticProps: GetStaticProps<
     );
 
     const props: Props = {
-      page,
+      page: pageWithUrl,
       examples,
       filteredTypes,
     };

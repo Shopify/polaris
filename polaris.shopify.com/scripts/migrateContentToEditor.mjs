@@ -59,7 +59,7 @@ function createPage(
 
 // Migrate components
 const componentsIndexFile = fs.readFileSync(
-  'content/components/index.md',
+  'removed-content/components/index.md',
   'utf8',
 );
 const {readme: componentsReadme, frontMatter: componentsFrontMatter} =
@@ -86,12 +86,12 @@ createPage(
   componentsReadme,
 );
 
-const componentCategories = fs.readdirSync('content/components');
+const componentCategories = fs.readdirSync('removed-content/components');
 componentCategories
   .filter((category) => category !== 'index.md')
   .forEach((category) => {
     const componentIndexFile = fs.readFileSync(
-      `content/components/${category}/index.md`,
+      `removed-content/components/${category}/index.md`,
       'utf8',
     );
     const {
@@ -122,7 +122,9 @@ componentCategories
       componentCategoryReadme,
     );
 
-    const filePaths = globby.sync(`content/components/${category}/*.md`);
+    const filePaths = globby.sync(
+      `removed-content/components/${category}/*.md`,
+    );
     filePaths.forEach((filePath) => {
       if (filePath.endsWith('index.md')) return;
       const file = fs.readFileSync(filePath, 'utf8');
@@ -168,7 +170,10 @@ componentCategories
   });
 
 // Migrate patterns
-const patternsIndexFile = fs.readFileSync('content/patterns/index.md', 'utf8');
+const patternsIndexFile = fs.readFileSync(
+  'removed-content/patterns/index.md',
+  'utf8',
+);
 const {readme: patternsReadme, frontMatter: patternsFrontMatter} =
   parseMarkdown(patternsIndexFile);
 const patternsId = nanoid();
@@ -192,12 +197,14 @@ createPage(
   patternsReadme,
 );
 
-const patternCategories = fs.readdirSync('content/patterns');
+const patternCategories = fs.readdirSync('removed-content/patterns');
 patternCategories
   .filter((patternCategory) => patternCategory !== 'index.md')
   .filter((patternCategory) => patternCategory !== 'variant.md.template')
   .forEach((patternCategory) => {
-    const filePaths = globby.sync(`content/patterns/${patternCategory}/*.md`);
+    const filePaths = globby.sync(
+      `removed-content/patterns/${patternCategory}/*.md`,
+    );
     filePaths.forEach((filePath) => {
       const file = fs.readFileSync(filePath, 'utf8');
       const {readme, frontMatter} = parseMarkdown(file);
@@ -226,7 +233,10 @@ patternCategories
   });
 
 // Migrate foundations: Content
-const contentIndexFile = fs.readFileSync('content/content/index.md', 'utf8');
+const contentIndexFile = fs.readFileSync(
+  'removed-content/content/index.md',
+  'utf8',
+);
 const {readme: contentReadme, frontMatter: contentFrontMatter} =
   parseMarkdown(contentIndexFile);
 const contentId = nanoid();
@@ -249,7 +259,7 @@ createPage(
   },
   contentReadme,
 );
-const contentFilePaths = globby.sync(`content/content/*.md`);
+const contentFilePaths = globby.sync(`removed-content/content/*.md`);
 contentFilePaths
   .filter((filePath) => !filePath.endsWith('index.md'))
   .forEach((filePath) => {
@@ -282,7 +292,7 @@ contentFilePaths
 
 // Contributing
 const contributingIndexFile = fs.readFileSync(
-  'content/contributing/index.md',
+  'removed-content/contributing/index.md',
   'utf8',
 );
 const {readme: contributingReadme, frontMatter: contributingFrontMatter} =
@@ -308,7 +318,7 @@ createPage(
   },
   contributingReadme,
 );
-const contributingFilePaths = globby.sync(`content/contributing/*.md`);
+const contributingFilePaths = globby.sync(`removed-content/contributing/*.md`);
 contributingFilePaths
   .filter((filePath) => !filePath.endsWith('index.md'))
   .forEach((filePath) => {
@@ -337,7 +347,10 @@ contributingFilePaths
   });
 
 // Migrate foundtions: Design
-const designIndexFile = fs.readFileSync('content/design/index.md', 'utf8');
+const designIndexFile = fs.readFileSync(
+  'removed-content/design/index.md',
+  'utf8',
+);
 const {readme: designReadme, frontMatter: designFrontMatter} =
   parseMarkdown(designIndexFile);
 const designId = nanoid();
@@ -360,7 +373,7 @@ createPage(
   },
   designReadme,
 );
-const designFilePaths = globby.sync(`content/design/*.md`);
+const designFilePaths = globby.sync(`removed-content/design/*.md`);
 designFilePaths
   .filter((filePath) => !filePath.endsWith('index.md'))
   .forEach((filePath) => {
@@ -393,7 +406,7 @@ designFilePaths
 
 // Migrate foundations: Foundations
 const foundationsIndexFile = fs.readFileSync(
-  'content/foundations/index.md',
+  'removed-content/foundations/index.md',
   'utf8',
 );
 const {readme: foundationsReadme, frontMatter: foundationsFrontMatter} =
@@ -418,7 +431,7 @@ createPage(
   },
   foundationsReadme,
 );
-const foundationsFilePaths = globby.sync(`content/foundations/*.md`);
+const foundationsFilePaths = globby.sync(`removed-content/foundations/*.md`);
 foundationsFilePaths
   .filter((filePath) => !filePath.endsWith('index.md'))
   .forEach((filePath) => {
@@ -451,7 +464,7 @@ foundationsFilePaths
 
 // Migrate foundations: Getting started
 const gettingStartedIndexFile = fs.readFileSync(
-  'content/getting-started/index.md',
+  'removed-content/getting-started/index.md',
   'utf8',
 );
 const {readme: gettingStartedReadme, frontMatter: gettingStartedFrontMatter} =
@@ -469,14 +482,16 @@ createPage(
     allowChildren: true,
     hideInNav: false,
     noIndex: false,
-    childPageMetaType: 'foundations',
+    childPageMetaType: null,
     pageMeta: null,
     keywords: gettingStartedFrontMatter.keywords?.map((kw) => kw.toString()),
     hasSeparatorInNav: false,
   },
   gettingStartedReadme,
 );
-const gettingStartedFilePaths = globby.sync(`content/getting-started/*.md`);
+const gettingStartedFilePaths = globby.sync(
+  `removed-content/getting-started/*.md`,
+);
 gettingStartedFilePaths
   .filter((filePath) => !filePath.endsWith('index.md'))
   .forEach((filePath) => {
@@ -497,10 +512,7 @@ gettingStartedFilePaths
         hideInNav: false,
         noIndex: false,
         childPageMetaType: null,
-        pageMeta: {
-          type: 'foundations',
-          icon: frontMatter.icon,
-        },
+        pageMeta: null,
         keywords: frontMatter.keywords?.map((kw) => kw.toString()),
         hasSeparatorInNav: false,
       },

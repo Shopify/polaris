@@ -12,7 +12,7 @@ export default function FrameComponent({
 }) {
   useEffect(() => {
     updateGrowFrameHeight(`${document.body.scrollHeight}px`);
-  });
+  }, []);
   return (
     <AppProvider i18n={theme || enTranslations}>
       <div id="polaris-sandbox-wrapper">{children}</div>

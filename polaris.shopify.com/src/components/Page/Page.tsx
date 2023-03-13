@@ -14,10 +14,11 @@ import styles from './Page.module.scss';
 
 interface Props {
   page: PageWithUrl;
+  showTOC?: boolean;
   children?: React.ReactNode;
 }
 
-function Page({page, children}: Props) {
+function Page({page, showTOC = true, children}: Props) {
   const [tocItems] = useTOC(page.id);
   const {asPath} = useRouter();
 
@@ -26,7 +27,6 @@ function Page({page, children}: Props) {
     githubIssueSubject,
   )}&amp;labels=polaris.shopify.com`;
   const editOnGithubUrl = `https://github.com/Shopify/polaris/tree/main/src/content.ts`;
-  const showTOC = !!!children; // TODO: Implement as page setting
 
   return (
     <Container className={className(styles.Page, showTOC && styles.showTOC)}>
