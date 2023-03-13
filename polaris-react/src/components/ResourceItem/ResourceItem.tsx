@@ -1,4 +1,4 @@
-import React, {Component, createRef, useContext} from 'react';
+import React, {Component, createRef, useContext, useId} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'react-fast-compare';
 
@@ -20,7 +20,6 @@ import {
   BreakpointsDirectionAlias,
 } from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
-import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
 import {
   ResourceListContext,
@@ -94,11 +93,6 @@ interface State {
 
 type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
 
-const getUniqueCheckboxID = globalIdGeneratorFactory(
-  'ResourceListItemCheckbox',
-);
-const getUniqueOverlayID = globalIdGeneratorFactory('ResourceListItemOverlay');
-
 class BaseResourceItem extends Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
@@ -118,8 +112,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   };
 
   private node: HTMLDivElement | null = null;
-  private checkboxId = getUniqueCheckboxID();
-  private overlayId = getUniqueOverlayID();
+  private overlayRef = createRef<HTMLAnchorElement>();
   private buttonOverlay = createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
@@ -158,7 +151,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       persistActions = false,
       accessibilityLabel,
       name,
-      context: {selectable, selectMode, loading, resourceName},
+      context: {selectable, selectMode, hasBulkActions, loading, resourceName},
       i18n,
       verticalAlignment,
       dataHref,
@@ -186,13 +179,17 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             >
               <div onClick={stopPropagation}>
                 <div onChange={this.handleLargerSelectionArea}>
-                  <Checkbox
-                    id={this.checkboxId}
-                    label={checkboxAccessibilityLabel}
-                    labelHidden
-                    checked={selected}
-                    disabled={loading}
-                  />
+                  <UseId>
+                    {(id) => (
+                      <Checkbox
+                        id={id}
+                        label={checkboxAccessibilityLabel}
+                        labelHidden
+                        checked={selected}
+                        disabled={loading}
+                      />
+                    )}
+                  </UseId>
                 </div>
               </div>
             </Box>
@@ -228,6 +225,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     const listItemClassName = classNames(
       styles.ListItem,
       focused && !focusedInner && styles.focused,
+      hasBulkActions && styles.hasBulkActions,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -322,15 +320,20 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       });
 
     const accessibleMarkup = url ? (
-      <UnstyledLink
-        aria-describedby={this.props.id}
-        aria-label={ariaLabel}
-        className={styles.Link}
-        url={url}
-        external={external}
-        tabIndex={tabIndex}
-        id={this.overlayId}
-      />
+      <UseId>
+        {(id) => (
+          <UnstyledLink
+            aria-describedby={this.props.id}
+            aria-label={ariaLabel}
+            className={styles.Link}
+            url={url}
+            external={external}
+            tabIndex={tabIndex}
+            id={id}
+            ref={this.overlayRef}
+          />
+        )}
+      </UseId>
     ) : (
       <button
         className={styles.Button}
@@ -371,8 +374,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   private handleFocus = (event: React.FocusEvent<HTMLElement>) => {
     if (
       event.target === this.buttonOverlay.current ||
-      (this.node &&
-        event.target === this.node.querySelector(`#${this.overlayId}`))
+      (this.node && event.target === this.overlayRef.current)
     ) {
       this.setState({focused: true, focusedInner: false});
     } else if (this.node && this.node.contains(event.target)) {
@@ -515,4 +517,9 @@ function getAlignment(alignment?: Alignment): InlineProps['blockAlign'] {
     default:
       return 'start';
   }
+}
+
+function UseId(props: {children(id: string): JSX.Element}) {
+  const id = useId();
+  return props.children(id);
 }

@@ -1,6 +1,5 @@
-import React, {useRef} from 'react';
+import React, {useRef, useId} from 'react';
 
-import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
@@ -48,7 +47,8 @@ export function RadioButton({
   name: nameProp,
   value,
 }: RadioButtonProps) {
-  const id = useUniqueId('RadioButton', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
   const name = nameProp || id;
   const inputNode = useRef<HTMLInputElement>(null);
 

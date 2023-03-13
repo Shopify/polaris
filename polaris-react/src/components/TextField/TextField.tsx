@@ -4,12 +4,12 @@ import React, {
   useEffect,
   useRef,
   useCallback,
+  useId,
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
@@ -230,8 +230,8 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
-
-  const id = useUniqueId('TextField', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -337,7 +337,7 @@ export function TextField({
         onClick={handleClearButtonPress}
         disabled={disabled}
       >
-        <Text variant="bodySm" as="span" visuallyHidden>
+        <Text as="span" visuallyHidden>
           {i18n.translate('Polaris.Common.clear')}
         </Text>
         <Icon source={CircleCancelMinor} color="base" />

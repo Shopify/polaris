@@ -10,7 +10,7 @@ interface Props {
 export function TagsWrapper({children, hidden}: Props) {
   if (hidden) {
     return (
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <Text as="span" visuallyHidden>
         {children}
       </Text>
     );

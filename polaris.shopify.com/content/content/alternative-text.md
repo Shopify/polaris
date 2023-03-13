@@ -144,13 +144,13 @@ Images with more complexity need some consideration. For example, groups of imag
 
 ```jsx
 <div role="img" aria-labelledby="star_id">
-  <Stack>
+  <LegacyStack>
     <Icon source={StarFilledMinor} alt="">
     <Icon source={StarFilledMinor} alt="">
     <Icon source={StarFilledMinor} alt="">
     <Icon source={StarOutlineMinor} alt="">
     <Icon source={StarOutlineMinor} alt="">
-  </Stack>
+  </LegacyStack>
 </div>
 <div id="star_id">3 of 5 stars</div>
 ```

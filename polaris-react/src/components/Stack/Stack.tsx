@@ -1,69 +1,67 @@
-import React, {memo, NamedExoticComponent} from 'react';
+import React, {createElement} from 'react';
+import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
-import {classNames, variationName} from '../../utilities/css';
-import {elementChildren, wrapWithComponent} from '../../utilities/components';
+import {
+  classNames,
+  sanitizeCustomProperties,
+  getResponsiveProps,
+} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
-import {Item} from './components';
 import styles from './Stack.scss';
 
-type Spacing =
-  | 'extraTight'
-  | 'tight'
-  | 'baseTight'
-  | 'loose'
-  | 'extraLoose'
-  | 'none';
+type Align = 'start' | 'end' | 'center';
 
-type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
+type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
-type Distribution =
-  | 'equalSpacing'
-  | 'leading'
-  | 'trailing'
-  | 'center'
-  | 'fill'
-  | 'fillEvenly';
+type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface StackProps {
-  /** Elements to display inside stack */
+export interface StackProps extends React.AriaAttributes {
   children?: React.ReactNode;
-  /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
-  wrap?: boolean;
-  /** Stack the elements vertically */
-  vertical?: boolean;
-  /** Adjust spacing between elements */
-  spacing?: Spacing;
-  /** Adjust vertical alignment of elements */
-  alignment?: Alignment;
-  /** Adjust horizontal alignment of elements */
-  distribution?: Distribution;
+  /** HTML Element type
+   * @default 'div'
+   */
+  as?: Element;
+  /** Horizontal alignment of children */
+  align?: Align;
+  /** The spacing between children */
+  gap?: Gap;
+  /** HTML id attribute */
+  id?: string;
+  /** Reverse the render order of child items
+   * @default false
+   */
+  reverseOrder?: boolean;
 }
 
-export const Stack = memo(function Stack({
+export const Stack = ({
+  as = 'div',
   children,
-  vertical,
-  spacing,
-  distribution,
-  alignment,
-  wrap,
-}: StackProps) {
+  align,
+  gap,
+  id,
+  reverseOrder = false,
+  ...restProps
+}: StackProps) => {
   const className = classNames(
     styles.Stack,
-    vertical && styles.vertical,
-    spacing && styles[variationName('spacing', spacing)],
-    distribution && styles[variationName('distribution', distribution)],
-    alignment && styles[variationName('alignment', alignment)],
-    wrap === false && styles.noWrap,
+    as === 'ul' && styles.listReset,
+    as === 'fieldset' && styles.fieldsetReset,
   );
 
-  const itemMarkup = elementChildren(children).map((child, index) => {
-    const props = {key: index};
-    return wrapWithComponent(child, Item, props);
-  });
+  const style = {
+    '--pc-stack-align': align ? `${align}` : '',
+    '--pc-stack-order': reverseOrder ? 'column-reverse' : 'column',
+    ...getResponsiveProps('stack', 'gap', 'space', gap),
+  } as React.CSSProperties;
 
-  return <div className={className}>{itemMarkup}</div>;
-}) as NamedExoticComponent<StackProps> & {
-  Item: typeof Item;
+  return createElement(
+    as,
+    {
+      className,
+      style: sanitizeCustomProperties(style),
+      ...restProps,
+    },
+    children,
+  );
 };
-
-Stack.Item = Item;

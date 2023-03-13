@@ -8,7 +8,7 @@ describe('Secondary()', () => {
   it('passes a default id to Collapsible', () => {
     const component = mountWithApp(<Secondary expanded />);
     expect(component).toContainReactComponent(Collapsible, {
-      id: 'PolarisSecondaryNavigation1',
+      id: ':r0:',
     });
   });
 

@@ -23,7 +23,7 @@ export function Default() {
       enabled={active}
     >
       This setting is{' '}
-      <Text variant="bodyMd" fontWeight="bold" as="span">
+      <Text fontWeight="bold" as="span">
         {textStatus}
       </Text>
       .

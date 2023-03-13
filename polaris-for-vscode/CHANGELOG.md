@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+### Minor Changes
+
+- [#8572](https://github.com/Shopify/polaris/pull/8572) [`7d1c4f1db`](https://github.com/Shopify/polaris/commit/7d1c4f1db629ad9cfc68f65bd5f704127d10136e) Thanks [@lgriffee](https://github.com/lgriffee)! - Added completions for new `shadow` token group
+
 ## 0.3.0
 
 ### Minor Changes

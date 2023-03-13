@@ -1,7 +1,6 @@
-import {memo} from 'react';
+import {memo, useId} from 'react';
 
 import {ToastProps as ToastProps1, useFrame} from '../../utilities/frame';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 
 // The script in the styleguide that generates the Props Explorer data expects
@@ -11,7 +10,7 @@ import {useDeepEffect} from '../../utilities/use-deep-effect';
 export interface ToastProps extends ToastProps1 {}
 
 export const Toast = memo(function Toast(props: ToastProps) {
-  const id = useUniqueId('Toast');
+  const id = useId();
   const {showToast, hideToast} = useFrame();
 
   useDeepEffect(() => {

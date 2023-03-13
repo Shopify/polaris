@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, useCallback} from 'react';
+import React, {useEffect, useState, useRef, useCallback, useId} from 'react';
 import type {
   ShapeBorderRadiusScale,
   SpacingSpaceScale,
@@ -7,7 +7,6 @@ import type {
 import {Portal} from '../Portal';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 
@@ -103,7 +102,7 @@ export function Tooltip({
   const {presenceList, addPresence, removePresence} =
     useEphemeralPresenceManager();
 
-  const id = useUniqueId('TooltipContent');
+  const id = useId();
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
   const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));

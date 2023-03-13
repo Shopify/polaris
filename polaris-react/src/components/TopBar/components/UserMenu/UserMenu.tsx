@@ -52,13 +52,7 @@ export function UserMenu({
         />
       </MessageIndicator>
       <span className={styles.Details}>
-        <Text
-          as="p"
-          variant="bodyMd"
-          alignment="start"
-          fontWeight="medium"
-          truncate
-        >
+        <Text as="p" alignment="start" fontWeight="medium" truncate>
           {name}
         </Text>
         <Text

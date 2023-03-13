@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  AlphaStack,
+  Stack,
   Banner,
   Button,
   LegacyCard,
@@ -193,7 +193,7 @@ export function InACard() {
 export function WithEndJustifiedContent() {
   return (
     <Banner status="critical">
-      <AlphaStack gap="1" fullWidth>
+      <Stack gap="1">
         <Inline gap="4" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
@@ -203,7 +203,7 @@ export function WithEndJustifiedContent() {
           </Link>
         </Inline>
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
-      </AlphaStack>
+      </Stack>
     </Banner>
   );
 }

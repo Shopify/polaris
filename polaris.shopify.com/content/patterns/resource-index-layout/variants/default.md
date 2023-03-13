@@ -47,7 +47,7 @@ This pattern uses the [`Layout`](/components/layout-and-structure/layout), [`Pag
     },
   ]}
 >
-  <AlphaCard>Coming Soon</AlphaCard>
+  <Card>Coming Soon</Card>
 </Page>
 ```
 

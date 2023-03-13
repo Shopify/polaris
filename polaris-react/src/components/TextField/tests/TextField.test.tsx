@@ -80,7 +80,7 @@ describe('<TextField />', () => {
     );
 
     expect(textField).toContainReactComponent('input', {
-      'aria-labelledby': 'PolarisTextField1Label',
+      'aria-labelledby': ':r2:Label',
     });
   });
 
@@ -220,7 +220,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        id: 'PolarisTextField1',
+        id: ':ra:',
       });
     });
 
@@ -333,7 +333,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisTextField1HelpText',
+        'aria-describedby': ':ri:HelpText',
       });
       expect(textField.find('div')).toContainReactText('Some help');
     });
@@ -372,7 +372,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisTextField1Error',
+        'aria-describedby': ':rk:Error',
       });
     });
 
@@ -410,7 +410,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisTextField1Error PolarisTextField1HelpText',
+        'aria-describedby': ':rm:Error :rm:HelpText',
       });
 
       expect(textField.find('div')).toContainReactText('Some error');

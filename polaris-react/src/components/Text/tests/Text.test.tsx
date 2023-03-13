@@ -38,7 +38,7 @@ describe('<Text />', () => {
   describe('alignment', () => {
     it('overrides default alignment', () => {
       const bodyText = mountWithApp(
-        <Text as="p" variant="bodyMd" alignment="center">
+        <Text as="p" alignment="center">
           {text}
         </Text>,
       );
@@ -72,6 +72,17 @@ describe('<Text />', () => {
         className: expect.stringContaining('bold'),
       });
     });
+
+    it('no font weight when using body variant', () => {
+      const headingText = mountWithApp(
+        <Text as="h4" variant="bodySm">
+          {text}
+        </Text>,
+      );
+      expect(headingText).toContainReactComponent('h4', {
+        className: expect.not.stringContaining('bold'),
+      });
+    });
   });
 
   describe('truncate', () => {
@@ -79,7 +90,7 @@ describe('<Text />', () => {
       const text =
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt vel lorem nec pretium. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi sollicitudin ex nec imperdiet pellentesque. Etiam dapibus ipsum non ligula molestie rhoncus. Vivamus eget iaculis lectus. Sed porttitor leo at nulla mollis malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum vestibulum porttitor mollis. Nam dictum ante sed lobortis commodo. Ut luctus ut metus vel bibendum.';
       const bodyText = mountWithApp(
-        <Text as="p" variant="bodyMd" truncate>
+        <Text as="p" truncate>
           {text}
         </Text>,
       );
@@ -92,7 +103,7 @@ describe('<Text />', () => {
   describe('visuallyHidden', () => {
     it('renders with the text hidden', () => {
       const bodyText = mountWithApp(
-        <Text as="p" variant="bodyMd" visuallyHidden>
+        <Text as="p" visuallyHidden>
           {text}
         </Text>,
       );

@@ -1,7 +1,6 @@
-import React, {useRef, useCallback, memo, useContext} from 'react';
+import React, {useRef, useCallback, memo, useContext, useId} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {useListbox} from '../../../../utilities/listbox';
 import {useSection, listboxWithinSectionDataSelector} from '../Section';
 import {TextOption} from '../TextOption';
@@ -40,7 +39,7 @@ export const Option = memo(function Option({
     useContext(MappedActionContext);
 
   const listItemRef = useRef<HTMLLIElement>(null);
-  const domId = useUniqueId('ListboxOption');
+  const domId = useId();
   const sectionId = useSection();
   const isWithinSection = Boolean(sectionId);
 

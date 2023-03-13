@@ -4,7 +4,7 @@ import {
   Combobox,
   Icon,
   TextContainer,
-  Stack,
+  LegacyStack,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
@@ -118,7 +118,7 @@ function MultiManualComboboxExample() {
         ) : null}
       </Combobox>
       <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
+        <LegacyStack>{tagsMarkup}</LegacyStack>
       </TextContainer>
     </div>
   );

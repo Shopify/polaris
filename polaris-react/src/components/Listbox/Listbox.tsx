@@ -5,12 +5,12 @@ import React, {
   useCallback,
   ReactNode,
   useMemo,
+  useId,
   Children,
 } from 'react';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useComboboxListbox} from '../../utilities/combobox';
 import {
   ListboxContext,
@@ -88,7 +88,7 @@ export function Listbox({
     setFalse: disableKeyboardEvents,
   } = useToggle(Boolean(enableKeyboardControl));
 
-  const uniqueId = useUniqueId('Listbox');
+  const uniqueId = useId();
   const listId = customListId || uniqueId;
 
   const scrollableRef = useRef<HTMLElement | null>(null);
@@ -486,7 +486,7 @@ export function Listbox({
   return (
     <>
       {listeners}
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <Text as="span" visuallyHidden>
         <div aria-live="polite">{loading ? loading : null}</div>
       </Text>
       <ListboxContext.Provider value={listboxContext}>

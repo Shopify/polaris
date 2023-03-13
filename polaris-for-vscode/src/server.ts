@@ -70,12 +70,13 @@ const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   colors:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
-  spacing: /margin|padding|gap|top|left|right|bottom/,
-  font: /font|line-height/,
-  zIndex: /z-index/,
-  shape: /border/,
   depth: /shadow/,
+  font: /font|line-height/,
   motion: /animation/,
+  shadow: /shadow/,
+  shape: /border/,
+  spacing: /margin|padding|gap|top|left|right|bottom/,
+  zIndex: /z-index/,
 };
 
 connection.onInitialize((params: InitializeParams) => {
