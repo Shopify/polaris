@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ background: var(--p-hint-from-direct-light);
++ background: var(--p-hint-from-direct-lightX);
 // Don't
 - background: black;
 - opacity: 0.15;

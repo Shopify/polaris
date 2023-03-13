@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ box-shadow: var(--p-shadow-card);
++ box-shadow: var(--p-shadow-md);
 // Don't
 - box-shadow: var(--p-card-shadow);
 ```
