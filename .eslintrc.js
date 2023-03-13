@@ -55,6 +55,11 @@ module.exports = {
     'react/button-has-type': 'off',
     'react/no-array-index-key': 'off',
     'react/no-unsafe': ['error', {checkAliases: true}],
+
+    // These can be removed when eslint-plugin-react is updated
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+
     '@shopify/jsx-no-complex-expressions': 'off',
     '@shopify/jsx-prefer-fragment-wrappers': 'off',
     '@shopify/no-ancestor-directory-import': 'error',
@@ -165,7 +170,6 @@ module.exports = {
       files: ['polaris.shopify.com/**/*'],
       extends: 'plugin:@next/eslint-plugin-next/recommended',
       rules: {
-        'react/react-in-jsx-scope': 'off',
         '@shopify/jsx-no-hardcoded-content': 'off',
         'import/no-default-export': 'off',
       },

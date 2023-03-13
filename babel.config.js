@@ -1,7 +1,9 @@
 /**
  * @type {import('@babel/core').TransformOptions}
  */
-module.exports = function () {
+module.exports = function (api) {
+  api.cache(true);
+
   return {
     presets: [
       [
@@ -9,7 +11,13 @@ module.exports = function () {
         {useBuiltIns: 'entry', corejs: '3.0', bugfixes: true},
       ],
       ['@babel/preset-typescript'],
-      ['@babel/preset-react', {runtime: 'automatic', useBuiltIns: true}],
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+          useBuiltIns: true,
+        },
+      ],
     ],
     assumptions: {
       setPublicClassFields: true,
