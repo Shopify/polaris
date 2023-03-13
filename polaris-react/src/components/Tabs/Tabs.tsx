@@ -571,7 +571,7 @@ export const Tabs = ({
         <div className={wrapperClassNames} ref={scrollRef}>
           <div className={styles.ButtonWrapper} ref={wrapRef}>
             <ul
-              role="tablist"
+              role={tabsMarkup.length > 0 ? 'tablist' : undefined}
               className={classname}
               onFocus={handleFocus}
               onBlur={handleBlur}
