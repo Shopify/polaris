@@ -4,18 +4,12 @@ import {
   slugify,
   stripMarkdownLinks,
 } from '../../utils/various';
-import {Status, SiteJSON} from '../../types';
+import {Status} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
 import {Grid, GridItem} from '../Grid';
 import Page from '../Page';
 import ComponentThumbnail from '../ComponentThumbnail';
-
-const pages: SiteJSON = siteJson;
-
-const components = Object.keys(pages).filter((slug) =>
-  slug.startsWith('components/'),
-);
 
 const componentCategories = getComponentCategories();
 
@@ -27,7 +21,7 @@ export default function ComponentsPage() {
         description="Components are reusable building blocks made of interface elements and styles, packaged through code. Piece them together, improve them, and create new ones to solve merchant problems."
       />
 
-      <Page title="Components">
+      <Page page={page}>
         {componentCategories
           .sort((currentCategory, previousCategory) => {
             const currentOrder =

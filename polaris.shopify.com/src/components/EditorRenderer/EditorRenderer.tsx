@@ -1,63 +1,45 @@
 import Image from 'next/image';
-import {useRouter} from 'next/router';
-import {useState} from 'react';
-import {content} from '../../content';
+// import {content} from '../../content';
 import Code from '../Code';
 import {
   CodeBlock,
   ImageBlock,
   MarkdownBlock,
+  Page as PageType,
   SandboxEmbedBlock,
   TextImageBlock,
   YoutubeVideoBlock,
 } from '../Editor/types';
 import Longform from '../Longform';
 import Markdown from '../Markdown';
-import Page from '../Page';
 import styles from './EditorRenderer.module.scss';
 
-interface Props {}
+interface Props {
+  page: PageType;
+}
 
-function EditorRenderer({}: Props) {
-  const router = useRouter();
-  const {id} = router.query;
-  const page = content.pages.find((page) => page.id === id);
-  if (!page) {
-    return <p>Page not found</p>;
-  }
-
+function EditorRenderer({page}: Props) {
   return (
-    <Page showTOC>
-      <div className={styles.EditorRenderer}>
-        <Longform>
-          <h1 className={styles.PageTitle}>{page.title}</h1>
-        </Longform>
-
-        <div className={styles.Blocks}>
-          {content.blocks
-            .filter((block) => block.pageId === id)
-            .sort((a, b) => a.order - b.order)
-            .map((block) => (
-              <div key={block.id} className={styles.Block}>
-                {block.blockType === 'Markdown' && (
-                  <MarkdownBlock block={block} />
-                )}
-                {block.blockType === 'Image' && <ImageBlock block={block} />}
-                {block.blockType === 'YoutubeVideo' && (
-                  <YoutubeVideoBlock block={block} />
-                )}
-                {block.blockType === 'SandboxEmbed' && (
-                  <SandboxEmbedBlock block={block} />
-                )}
-                {block.blockType === 'Code' && <CodeBlock block={block} />}
-                {block.blockType === 'TextImage' && (
-                  <TextImageBlock block={block} />
-                )}
-              </div>
-            ))}
-        </div>
+    <div className={styles.EditorRenderer}>
+      <div className={styles.Blocks}>
+        {page.blocks.map((block) => (
+          <div key={block.id} className={styles.Block}>
+            {block.blockType === 'Markdown' && <MarkdownBlock block={block} />}
+            {block.blockType === 'Image' && <ImageBlock block={block} />}
+            {block.blockType === 'YoutubeVideo' && (
+              <YoutubeVideoBlock block={block} />
+            )}
+            {block.blockType === 'SandboxEmbed' && (
+              <SandboxEmbedBlock block={block} />
+            )}
+            {block.blockType === 'Code' && <CodeBlock block={block} />}
+            {block.blockType === 'TextImage' && (
+              <TextImageBlock block={block} />
+            )}
+          </div>
+        ))}
       </div>
-    </Page>
+    </div>
   );
 }
 
@@ -70,6 +52,7 @@ function MarkdownBlock({block}: {block: MarkdownBlock}) {
 }
 
 function ImageBlock({block}: {block: ImageBlock}) {
+  return null;
   const image = content.images.find((image) => image.id === block.imageId);
   if (!image) {
     return null;
@@ -90,6 +73,7 @@ function ImageBlock({block}: {block: ImageBlock}) {
 }
 
 function TextImageBlock({block}: {block: TextImageBlock}) {
+  return null;
   const image = content.images.find((image) => image.id === block.imageId);
   if (!image) {
     return null;

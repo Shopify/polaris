@@ -1,4 +1,4 @@
-export interface Page {
+export interface PageInfo {
   id: string;
   title: string;
   excerpt: string;
@@ -6,7 +6,6 @@ export interface Page {
   parentId: string | null;
   order: number;
   useCustomLayout: boolean;
-  blocks: Block[];
   keywords: string[];
   childPageMetaType: PageMetaType | null;
   pageMeta: PageMeta | null;
@@ -16,11 +15,25 @@ export interface Page {
   hasSeparatorInNav: boolean;
 }
 
+export interface PageInfoWithUrl extends PageInfo {
+  url: string;
+  pageStack: PageInfo[];
+}
+
+export interface PageWithUrl extends Page {
+  url: string;
+  pageStack: PageInfo[];
+}
+
+export interface Page extends PageInfo {
+  blocks: Block[];
+}
+
 export type BasePageMeta = {
   type: PageMetaType;
 };
 
-export const pageMetaTypes = ['components', 'patterns'] as const;
+export const pageMetaTypes = ['components', 'patterns', 'foundations'] as const;
 export type PageMetaType = typeof pageMetaTypes[number];
 
 interface ComponentsPageMeta extends BasePageMeta {
@@ -37,7 +50,15 @@ interface PatternsPageMeta extends BasePageMeta {
   tags: [];
 }
 
-export type PageMeta = ComponentsPageMeta | PatternsPageMeta;
+interface FoundationsPageMeta extends BasePageMeta {
+  type: 'foundations';
+  icon: string;
+}
+
+export type PageMeta =
+  | ComponentsPageMeta
+  | PatternsPageMeta
+  | FoundationsPageMeta;
 
 export const blockTypes = [
   'Markdown',

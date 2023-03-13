@@ -1,40 +1,3 @@
-import siteJson from '../../.cache/site.json';
-import {PatternFrontMatter, SiteJSON} from '../types';
-
-interface PatternJSON {
-  [key: string]: {
-    frontMatter: PatternFrontMatter;
-  };
-}
-
-const pages: SiteJSON = siteJson;
-
-const components = Object.keys(pages).filter((slug) =>
-  slug.startsWith('components/'),
-);
-
-export const patterns: PatternJSON = Object.keys(pages)
-  .filter((slug) => slug.startsWith('patterns/'))
-  .sort((a, b) => a.localeCompare(b))
-  .reduce((memo, key) => {
-    // @ts-expect-error Yes it is compatible Typescript. Shhhh.
-    memo[key] = pages[key];
-    return memo;
-  }, {} as PatternJSON);
-
-export const getComponentCategories = (): string[] => {
-  const componentCategories: string[] = [];
-
-  components.forEach((slug) => {
-    const {category = ''} = pages[slug].frontMatter;
-    if (!componentCategories.includes(category)) {
-      componentCategories.push(category);
-    }
-  });
-
-  return componentCategories;
-};
-
 export const slugify = (str: string): string => {
   return (
     str
@@ -70,6 +33,3 @@ export const toPascalCase = (str: string): string =>
 
 export const uppercaseFirst = (str: string): string =>
   str.charAt(0).toUpperCase() + str.slice(1);
-
-export const deslugify = (str: string): string =>
-  uppercaseFirst(str.replace(/-+/g, ' '));

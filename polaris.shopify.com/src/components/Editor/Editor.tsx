@@ -30,6 +30,9 @@ import {
   PageMetaType,
   PageMeta,
   pageMetaTypes,
+  PageInfo,
+  PageInfoWithUrl,
+  PageWithUrl,
 } from './types';
 import {
   ActionList,
@@ -57,15 +60,65 @@ import {
   DeleteMinor,
 } from '@shopify/polaris-icons';
 import enTranslations from '@shopify/polaris/locales/en.json';
+import {className} from '../../utils/various';
 
 function assertUnreachable(_: never): never {
   throw new Error("Didn't expect to get here");
 }
 
-export function getPageStack(content: Content, page: Page): Page[] {
-  let parents: Page[] = [];
+export function getPageByPath(content: Content, path: string): Page | null {
+  const page = content.pages.find((page) => getPageUrl(content, page) === path);
+  return page || null;
+}
 
-  function getParent(currentPage: Page): Page | undefined {
+export function getPageUrl(content: Content, page: Page | PageInfo): string {
+  const pageStack = getPageStack(content, page);
+  return pageStack.map((page) => page.slug).join('/');
+}
+
+export function getPageWithUrl(content: Content, page: Page): PageWithUrl {
+  return {
+    ...page,
+    url: getPageUrl(content, page),
+    pageStack: getPageStack(content, page),
+  };
+}
+
+export function getPageInfoWithUrl(
+  content: Content,
+  pageInfo: PageInfo,
+): PageInfoWithUrl {
+  return {
+    ...pageInfo,
+    url: getPageUrl(content, pageInfo),
+    pageStack: getPageStack(content, pageInfo),
+  };
+}
+
+export function getPageInfo(page: Page): PageInfo {
+  const pageInfo: PageInfo = {
+    id: page.id,
+    title: page.title,
+    excerpt: page.excerpt,
+    slug: page.slug,
+    parentId: page.parentId,
+    order: page.order,
+    useCustomLayout: page.useCustomLayout,
+    keywords: page.keywords,
+    childPageMetaType: page.childPageMetaType,
+    pageMeta: page.pageMeta,
+    allowChildren: page.allowChildren,
+    hideInNav: page.hideInNav,
+    noIndex: page.noIndex,
+    hasSeparatorInNav: page.hasSeparatorInNav,
+  };
+  return pageInfo;
+}
+
+export function getPageStack(content: Content, pageInfo: PageInfo): PageInfo[] {
+  let parents: PageInfo[] = [];
+
+  function getParent(currentPage: Page | PageInfo): Page | undefined {
     if (currentPage.parentId) {
       const parent = content.pages.find(
         (page) => page.id === currentPage.parentId,
@@ -78,8 +131,8 @@ export function getPageStack(content: Content, page: Page): Page[] {
     return undefined;
   }
 
-  getParent(page);
-  parents.push(page);
+  getParent(pageInfo);
+  parents.push(pageInfo);
   return parents;
 }
 
@@ -222,6 +275,13 @@ export default function Editor({initialContent}: {initialContent: Content}) {
         };
         break;
 
+      case 'foundations': {
+        pageMeta = {
+          type: 'foundations',
+          icon: '',
+        };
+      }
+
       case null:
         break;
 
@@ -360,7 +420,12 @@ function PageNavItem({
     .sort((a, b) => a.order - b.order);
 
   return (
-    <li aria-current={page.id === editedPageId}>
+    <li
+      className={className(
+        !page.parentId && page.hasSeparatorInNav && styles.withSeparator,
+      )}
+      aria-current={page.id === editedPageId}
+    >
       <span>
         <button onClick={() => onPageClick(page.id)}>{page.title}</button>
         <Tooltip content="Add child page">
@@ -474,7 +539,7 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                   />
 
                   <Checkbox
-                    label="Use custom layout"
+                    label="Use custom Next.js layout"
                     checked={editedPage.useCustomLayout}
                     onChange={(useCustomLayout) =>
                       updatePage({...editedPage, useCustomLayout})
@@ -483,7 +548,11 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                 </FormLayout>
               </AlphaCard>
 
-              <PageMetaEditor page={editedPage} updatePage={updatePage} />
+              {editedPage.pageMeta !== null && (
+                <AlphaCard>
+                  <PageMetaEditor page={editedPage} updatePage={updatePage} />
+                </AlphaCard>
+              )}
 
               {editedPage.useCustomLayout && (
                 <Card>
@@ -567,7 +636,7 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                     label="Child page type"
                     helpText={
                       <p>
-                        {`This value can't be changed when the page already has
+                        {`Forces all children to contain the same type of meta data. This value can't be changed when the page already has
                     children.`}
                       </p>
                     }
@@ -629,6 +698,17 @@ function PageMetaEditor({
 
     case 'patterns':
       return null;
+
+    case 'foundations':
+      return (
+        <TextField
+          type="text"
+          value={pageMeta.icon}
+          onChange={(icon) => updateMeta({...pageMeta, icon})}
+          label="Icon"
+          autoComplete="false"
+        />
+      );
   }
 
   assertUnreachable(pageMeta);
@@ -729,7 +809,6 @@ function BlockEditor({
   }
 
   function handleBlockChange(updatedBlock: Block) {
-    console.log({pageId, updatedBlock});
     setContent((content) => ({
       ...content,
       pages: content.pages.map((page) => {

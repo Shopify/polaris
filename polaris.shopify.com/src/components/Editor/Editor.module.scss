@@ -39,9 +39,23 @@
       color: inherit;
     }
 
+    > ul > li {
+      padding-bottom: 0.5rem;
+    }
+
     li {
       &[aria-current='true'] > span {
         color: var(--p-text-primary);
+
+        button:first-child {
+          font-weight: var(--p-font-weight-medium);
+        }
+      }
+
+      &.withSeparator {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--p-border);
       }
 
       > span {
@@ -51,10 +65,17 @@
           font-size: var(--p-font-size-200);
           font-weight: var(--p-font-weight-medium);
           padding: 0.25rem 0;
+          text-overflow: ellipsis;
+          white-space: pre;
+          overflow: hidden;
 
           &:first-child {
             flex: 1;
             text-align: left;
+
+            &:hover {
+              color: var(--p-text-primary);
+            }
           }
         }
       }

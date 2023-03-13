@@ -7,7 +7,6 @@ const Components: NextPage = () => {
   return (
     <>
       <PageMeta title="Color tokens" />
-
       <TokensPage tokenGroup={'colors'} />
     </>
   );

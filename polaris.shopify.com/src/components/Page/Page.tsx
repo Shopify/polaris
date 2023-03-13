@@ -1,57 +1,50 @@
+import Link from 'next/link';
+import {useRouter} from 'next/router';
 import {useTOC} from '../../utils/hooks';
 import {className} from '../../utils/various';
-import Longform from '../Longform';
-import Container from '../Container';
 import {Box} from '../Box';
-
-import styles from './Page.module.scss';
-import TOC from '../TOC';
 import Breadcrumbs from '../Breadcrumbs';
-import {useRouter} from 'next/router';
-import Link from 'next/link';
+import Container from '../Container';
+import {PageWithUrl} from '../Editor/types';
+import EditorRenderer from '../EditorRenderer';
+import Longform from '../Longform';
+import PageMeta from '../PageMeta';
+import TOC from '../TOC';
+import styles from './Page.module.scss';
 
 interface Props {
-  title?: string;
-  editPageLinkPath?: string;
-  /* Content pages have a TOC, and a centered max-width column. To forcibly show
-   * or hide the TOC, use showTOC */
-  isContentPage?: boolean;
-  showTOC?: boolean;
-  children: React.ReactNode;
+  page: PageWithUrl;
+  children?: React.ReactNode;
 }
 
-function Layout({
-  title,
-  isContentPage = false,
-  showTOC = isContentPage,
-  editPageLinkPath,
-  children,
-}: Props) {
-  const [tocItems] = useTOC(children);
+function Page({page, children}: Props) {
+  const [tocItems] = useTOC(page.id);
   const {asPath} = useRouter();
 
   const githubIssueSubject = `[polaris.shopify.com] Feedback (on ${asPath})`;
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     githubIssueSubject,
   )}&amp;labels=polaris.shopify.com`;
-  const editOnGithubUrl = editPageLinkPath
-    ? `https://github.com/Shopify/polaris/tree/main${editPageLinkPath}`
-    : '';
+  const editOnGithubUrl = `https://github.com/Shopify/polaris/tree/main/src/content.ts`;
+  const showTOC = !!!children; // TODO: Implement as page setting
 
   return (
     <Container className={className(styles.Page, showTOC && styles.showTOC)}>
-      <Box
-        as="article"
-        className={[styles.Post, isContentPage && styles.PostContent]}
-        id="main"
-      >
-        <Breadcrumbs />
-        {title && (
-          <Longform>
-            <h1>{title}</h1>
-          </Longform>
-        )}
-        {children}
+      <PageMeta
+        title={page.title}
+        description={page.excerpt}
+        noIndex={page.noIndex}
+      />
+
+      <Box as="article" className={styles.Post} id="main">
+        <Breadcrumbs currentPage={page} />
+
+        <Longform>
+          <h1>{page.title}</h1>
+        </Longform>
+
+        {children ? <>{children}</> : <EditorRenderer page={page} />}
+
         <footer className={styles.Footer}>
           <p>
             {editOnGithubUrl && (
@@ -61,6 +54,7 @@ function Layout({
           </p>
         </footer>
       </Box>
+
       {showTOC && (
         <div className={styles.TOCWrapper}>
           <TOC items={tocItems} />
@@ -70,4 +64,4 @@ function Layout({
   );
 }
 
-export default Layout;
+export default Page;

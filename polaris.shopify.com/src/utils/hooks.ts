@@ -49,7 +49,7 @@ export type TOCItem = {
   children: TOCItem[];
 };
 
-export const useTOC = (children: React.ReactNode) => {
+export const useTOC = (pageId: string) => {
   const [toc, setToc] = useState<TOCItem[]>([]);
 
   useEffect(() => {
@@ -104,7 +104,7 @@ export const useTOC = (children: React.ReactNode) => {
 
       setToc(tocNodes);
     });
-  }, [children]);
+  }, [pageId]);
 
   return [toc];
 };

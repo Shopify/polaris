@@ -35,7 +35,6 @@ const handler = async function (req: NextApiRequest, res: NextApiResponse) {
         sizeOf(
           `./public/uploads/${uploadedFileName}`,
           function (err, dimensions) {
-            console.log({err, dimensions});
             if (dimensions && dimensions.width && dimensions.height) {
               width = dimensions.width;
               height = dimensions.height;

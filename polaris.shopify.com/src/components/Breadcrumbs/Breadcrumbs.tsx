@@ -1,51 +1,27 @@
 import Link from 'next/link';
-import {useRouter} from 'next/router';
-import navJSON from '../../../.cache/nav.json';
-import {NavJSON} from '../../types';
-import get from 'lodash.get';
 
 import styles from './Breadcrumbs.module.scss';
-import {deslugify} from '../../utils/various';
+import {PageWithUrl} from '../Editor/types';
 
-const nav = navJSON as NavJSON;
-
-function Breadcrumbs() {
-  const {asPath} = useRouter();
-  if (asPath === '/') return null;
-
-  const segments: {url: string; text: string}[] = [
-    {
-      url: '/',
-      text: 'Home',
-    },
+function Breadcrumbs({currentPage}: {currentPage: PageWithUrl}) {
+  const pageStack: {
+    title: string;
+    slug: string;
+  }[] = [
+    {title: 'Home', slug: ''},
+    ...currentPage.pageStack.map(({title, slug}) => ({title, slug})),
   ];
-
-  const pathChunks = asPath
-    .replace(/[#\?].+$/, '')
-    .slice(1)
-    .split('/');
-
-  pathChunks.forEach((chunk, i) => {
-    const objectPath = `children.${pathChunks
-      .slice(0, i + 1)
-      .join('.children.')}`;
-    const navItem = get(nav, objectPath);
-
-    segments.push({
-      url: `/${pathChunks.slice(0, i + 1).join('/')}`,
-      text: navItem ? navItem.title : deslugify(chunk),
-    });
-  });
-
   return (
     <nav className={styles.Breadcrumbs} aria-label="Breadcrumb">
       <ul>
-        {segments.map(({url, text}, i) => (
+        {pageStack.map((page, i) => (
           <li
-            key={url}
-            aria-current={segments.length == i + 1 ? 'page' : 'false'}
+            key={page.title}
+            aria-current={
+              currentPage.pageStack.length == i + 1 ? 'page' : 'false'
+            }
           >
-            <Link href={url}>{text}</Link>
+            <Link href={'#TODO'}>{page.title}</Link>
           </li>
         ))}
       </ul>

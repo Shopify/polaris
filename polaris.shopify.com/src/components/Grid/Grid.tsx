@@ -69,16 +69,12 @@ export interface GridItemProps {
   title: string;
   url: string;
   description?: string;
-  deepLinks?: {url: string; text: string}[];
   renderPreview?: () => React.ReactNode;
   status?: Status;
 }
 
 export const GridItem = forwardRef(
-  (
-    {as = 'li', title, description, url, deepLinks, renderPreview, status},
-    ref,
-  ) => {
+  ({as = 'li', title, description, url, renderPreview, status}, ref) => {
     const searchAttributes = useGlobalSearchResult();
     return (
       <Box as={as} ref={ref} className={styles.GridItem} {...searchAttributes}>
@@ -92,15 +88,6 @@ export const GridItem = forwardRef(
           </h4>
           <p>{stripMarkdownLinks(description || '')}</p>
         </Link>
-        {deepLinks && (
-          <ul className={styles.DeepLinks}>
-            {deepLinks.map(({url, text}) => (
-              <li key={text}>
-                <a href={url}>{text}</a>
-              </li>
-            ))}
-          </ul>
-        )}
       </Box>
     );
   },

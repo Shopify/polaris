@@ -19,10 +19,12 @@ interface Props {
 
 const WhatsNew: NextPage<Props> = ({title, description, posts}: Props) => {
   return (
-    <Page title={title}>
+    // <Page title={title}>
+    <>
       <PageMeta title={title} description={description} />
       <WhatsNewListing posts={posts} />
-    </Page>
+    </>
+    // </Page>
   );
 };
 

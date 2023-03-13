@@ -24,17 +24,18 @@ function createPage(
   },
   markdown,
 ) {
-  const blocks = markdown
-    ? [
-        {
-          id: nanoid(),
-          order: 0,
-          blockType: 'Markdown',
-          parentBlockId: null,
-          content: markdown.trim(),
-        },
-      ]
-    : [];
+  const blocks =
+    useCustomLayout === false && markdown
+      ? [
+          {
+            id: nanoid(),
+            order: 0,
+            blockType: 'Markdown',
+            parentBlockId: null,
+            content: markdown.trim(),
+          },
+        ]
+      : [];
 
   const page = {
     id,
@@ -70,7 +71,7 @@ createPage(
     id: componentsId,
     title: componentsFrontMatter.title,
     excerpt: componentsFrontMatter.description || '',
-    slug: 'patterns',
+    slug: 'components',
     parentId: null,
     order: componentsFrontMatter.order || 0,
     useCustomLayout: true,
@@ -123,11 +124,12 @@ componentCategories
 
     const filePaths = globby.sync(`content/components/${category}/*.md`);
     filePaths.forEach((filePath) => {
+      if (filePath.endsWith('index.md')) return;
       const file = fs.readFileSync(filePath, 'utf8');
       const {readme, frontMatter} = parseMarkdown(file);
       const slug = filePath.split('/').pop().replace('.md', '');
 
-      const patternsCategoryId = nanoid();
+      const id = nanoid();
 
       let examples = [];
 
@@ -142,7 +144,7 @@ componentCategories
 
       createPage(
         {
-          id: patternsCategoryId,
+          id,
           title: frontMatter.title,
           excerpt: frontMatter.description || '',
           slug,
@@ -209,7 +211,7 @@ patternCategories
           slug: patternCategory,
           parentId: patternsId,
           order: frontMatter.order || 0,
-          useCustomLayout: true,
+          useCustomLayout: false,
           allowChildren: false,
           hideInNav: false,
           noIndex: false,
@@ -233,14 +235,14 @@ createPage(
     id: contentId,
     title: contentFrontMatter.title,
     excerpt: contentFrontMatter.description || '',
-    slug: 'contributing',
+    slug: 'content',
     parentId: null,
     order: contentFrontMatter.order || 0,
     useCustomLayout: false,
     allowChildren: true,
     hideInNav: false,
     noIndex: false,
-    childPageMetaType: null,
+    childPageMetaType: 'foundations',
     pageMeta: null,
     keywords: contentFrontMatter.keywords?.map((kw) => kw.toString()) || [],
     hasSeparatorInNav: false,
@@ -267,7 +269,10 @@ contentFilePaths
         hideInNav: false,
         noIndex: false,
         childPageMetaType: null,
-        pageMeta: null,
+        pageMeta: {
+          type: 'foundations',
+          icon: frontMatter.icon,
+        },
         keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
         hasSeparatorInNav: false,
       },
@@ -275,7 +280,7 @@ contentFilePaths
     );
   });
 
-// Migrate foundations: Contributing
+// Contributing
 const contributingIndexFile = fs.readFileSync(
   'content/contributing/index.md',
   'utf8',
@@ -348,7 +353,7 @@ createPage(
     allowChildren: true,
     hideInNav: false,
     noIndex: false,
-    childPageMetaType: null,
+    childPageMetaType: 'foundations',
     pageMeta: null,
     keywords: designFrontMatter.keywords?.map((kw) => kw.toString()) || [],
     hasSeparatorInNav: false,
@@ -375,7 +380,10 @@ designFilePaths
         hideInNav: false,
         noIndex: false,
         childPageMetaType: null,
-        pageMeta: null,
+        pageMeta: {
+          type: 'foundations',
+          icon: frontMatter.icon,
+        },
         keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
         hasSeparatorInNav: false,
       },
@@ -403,7 +411,7 @@ createPage(
     allowChildren: true,
     hideInNav: false,
     noIndex: false,
-    childPageMetaType: null,
+    childPageMetaType: 'foundations',
     pageMeta: null,
     keywords: foundationsFrontMatter.keywords?.map((kw) => kw.toString()) || [],
     hasSeparatorInNav: true,
@@ -430,7 +438,10 @@ foundationsFilePaths
         hideInNav: false,
         noIndex: false,
         childPageMetaType: null,
-        pageMeta: null,
+        pageMeta: {
+          type: 'foundations',
+          icon: frontMatter.icon,
+        },
         keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
         hasSeparatorInNav: false,
       },
@@ -458,7 +469,7 @@ createPage(
     allowChildren: true,
     hideInNav: false,
     noIndex: false,
-    childPageMetaType: null,
+    childPageMetaType: 'foundations',
     pageMeta: null,
     keywords: gettingStartedFrontMatter.keywords?.map((kw) => kw.toString()),
     hasSeparatorInNav: false,
@@ -486,7 +497,10 @@ gettingStartedFilePaths
         hideInNav: false,
         noIndex: false,
         childPageMetaType: null,
-        pageMeta: null,
+        pageMeta: {
+          type: 'foundations',
+          icon: frontMatter.icon,
+        },
         keywords: frontMatter.keywords?.map((kw) => kw.toString()),
         hasSeparatorInNav: false,
       },

@@ -1,84 +1,40 @@
-import globby from 'globby';
-import path from 'path';
-import fs from 'fs';
-import {MarkdownFile} from '../types';
-import {parseMarkdown} from './markdown.mjs';
-import {slugify, uppercaseFirst} from './various';
 import {GetStaticProps} from 'next';
+import {getPageUrl, getPageWithUrl} from '../components/Editor/Editor';
 import {FoundationsProps} from '../components/FoundationsPage/FoundationsPage';
+import {content} from '../content';
 
 export const getStaticPropsForFoundations = (category: string) => {
   const getStaticProps: GetStaticProps<FoundationsProps> = async () => {
-    const markdownPath = path.resolve(
-      process.cwd(),
-      `content/${category}/index.md`,
-    );
-    const markdown = fs.readFileSync(markdownPath, 'utf-8');
-    const {
-      frontMatter: {title, description, status, noIndex},
-    }: MarkdownFile = parseMarkdown(markdown);
+    const {pages} = content;
+    const page = pages.find((page) => page.slug === category);
 
-    const globPath = [
-      path.resolve(process.cwd(), `content/${category}/*.md`),
-      path.resolve(process.cwd(), `content/${category}/*/index.md`),
-    ];
+    if (page) {
+      const pageInfoWithUrl = getPageWithUrl(content, page);
+      const items: FoundationsProps['items'] = pages
+        .filter(({parentId}) => parentId === page.id)
+        .map((page) => {
+          if (page.pageMeta?.type !== 'foundations') {
+            throw new Error('Invalid page type');
+          }
+          return {
+            slug: page.slug,
+            title: page.title,
+            excerpt: page.excerpt,
+            url: getPageUrl(content, page),
+            order: page.order,
+            icon: page.pageMeta.icon,
+          };
+        });
 
-    const itemPaths = globby
-      .sync(globPath)
-      .filter((path) => !path.endsWith(`content/${category}/index.md`));
-
-    let items: FoundationsProps['items'] = [];
-
-    itemPaths
-      .filter((path) => !path.endsWith(`content/${category}/index.md`))
-      .forEach((markdownFilePath) => {
-        if (fs.existsSync(markdownFilePath)) {
-          const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
-          const {frontMatter, readme}: MarkdownFile = parseMarkdown(markdown);
-          const {
-            title,
-            description,
-            order,
-            icon,
-            url: frontMatterUrl,
-          } = frontMatter;
-
-          const url =
-            frontMatterUrl ??
-            markdownFilePath
-              .replace(`${process.cwd()}/content`, '')
-              .replace('/index', '')
-              .replace(/\.md$/, '');
-
-          const headings = (readme.match(/\n## [^\n]+/gi) || []).map(
-            (heading) => heading.replace(/^\n## /, '').trim(),
-          );
-          const deepLinks = headings.map((heading) => ({
-            url: `${url.replace(/\/$/, '')}#${slugify(heading)}`,
-            text: heading,
-          }));
-
-          items.push({
-            title,
-            description: description || '',
-            icon: icon || '',
-            url,
-            deepLinks,
-            order: !isNaN(parseInt(order)) ? order : 1000,
-          });
-        }
-      });
-
-    return {
-      props: {
-        status: status || null,
-        title: title || uppercaseFirst(category),
-        description: description || '',
-        items,
-        // Cooerce `undefined` / `null` to `false`
-        noIndex: noIndex || false,
-      },
-    };
+      return {
+        props: {
+          page: pageInfoWithUrl,
+          items,
+        },
+      };
+    } else {
+      return {notFound: true};
+    }
   };
 
   return getStaticProps;
