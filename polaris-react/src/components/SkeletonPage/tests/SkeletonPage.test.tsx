@@ -67,7 +67,12 @@ describe('<SkeletonPage />', () => {
 
   it('renders breadcrumbs', () => {
     const skeletonPage = mountWithApp(<SkeletonPage breadcrumbs />);
-    expect(skeletonPage).toContainReactComponent(SkeletonBodyText);
+    expect(skeletonPage).toContainReactComponent(Box, {
+      background: 'surface-neutral',
+      minWidth: '2.25rem',
+      minHeight: '2.25rem',
+      maxWidth: '2.25rem',
+    });
   });
 
   describe('primaryAction', () => {
