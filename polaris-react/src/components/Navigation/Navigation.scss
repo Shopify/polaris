@@ -425,14 +425,11 @@ $disabled-fade: 0.6;
   margin-left: 0;
   overflow-x: visible;
 
-  &.isExpanded {
-    margin-bottom: var(--p-space-2);
-  }
-
   .List {
     margin: 0;
     padding: 0;
     list-style: none;
+    margin-bottom: var(--p-space-2);
   }
 
   .Item {
