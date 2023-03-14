@@ -3,7 +3,7 @@ import React, {useMemo} from 'react';
 import type {ComplexAction} from '../../types';
 import {SettingAction} from '../SettingAction';
 import {buttonFrom} from '../Button';
-import {Card} from '../Card';
+import {LegacyCard} from '../LegacyCard';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 
 export interface SettingToggleProps {
@@ -30,10 +30,10 @@ export function SettingToggle({enabled, action, children}: SettingToggleProps) {
     : null;
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <SettingAction action={actionMarkup}>
         <label htmlFor={id}>{children}</label>
       </SettingAction>
-    </Card>
+    </LegacyCard>
   );
 }

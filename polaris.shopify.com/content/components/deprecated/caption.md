@@ -50,7 +50,7 @@ Captions are primarily used in [data visualizations](https://polaris.shopify.com
 #### Do
 
 - Use caption for labelling data visualizations
-  ![Diagram of using captions to label graphs and other data content](/images/components/caption/do-use-caption-for-labeling-data-visualizations@2x.png)
+  ![Diagram of using captions to label graphs and other data content](/images/components/deprecated/caption/do-use-caption-for-labeling-data-visualizations@2x.png)
 - Received April 21, 2017
 
 #### Don’t

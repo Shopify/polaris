@@ -1,7 +1,7 @@
 import {
   Page,
   Layout,
-  Card,
+  LegacyCard,
   ResourceList,
   Thumbnail,
   Text,
@@ -14,13 +14,13 @@ function LayoutExample() {
     <Page fullWidth>
       <Layout>
         <Layout.Section oneHalf>
-          <Card title="Florida" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+          <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text color="subdued" as="span">
                 455 units available
               </Text>
-            </Card.Section>
-            <Card.Section title="Items">
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
@@ -70,17 +70,17 @@ function LayoutExample() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
         <Layout.Section oneHalf>
-          <Card title="Nevada" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+          <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text color="subdued" as="span">
                 301 units available
               </Text>
-            </Card.Section>
-            <Card.Section title="Items">
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
@@ -130,8 +130,8 @@ function LayoutExample() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>

@@ -79,7 +79,7 @@ export function EmptyState({
 
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="4">
-      <Text as="span" variant="bodyMd" color="subdued" alignment="center">
+      <Text as="span" color="subdued" alignment="center">
         {footerContent}
       </Text>
     </Box>
@@ -100,7 +100,7 @@ export function EmptyState({
   ) : null;
 
   const childrenMarkup = children ? (
-    <Text as="span" variant="bodyMd" color="subdued" alignment="center">
+    <Text as="span" color="subdued" alignment="center">
       {children}
     </Text>
   ) : null;
@@ -124,7 +124,7 @@ export function EmptyState({
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
       <Box maxWidth={fullWidth ? '100%' : '400px'}>
-        <AlphaStack align="center" gap="0">
+        <AlphaStack align="center">
           {textContentMarkup}
           {actionsMarkup}
           {footerContentMarkup}
@@ -139,7 +139,7 @@ export function EmptyState({
       paddingBlockStart="5"
       paddingBlockEnd="16"
     >
-      <AlphaStack align="center" gap="0">
+      <AlphaStack align="center">
         {imageMarkup}
         {detailsMarkup}
       </AlphaStack>

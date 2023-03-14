@@ -1,4 +1,4 @@
-import {Card, Tabs} from '@shopify/polaris';
+import {LegacyCard, Tabs} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -25,13 +25,13 @@ function FittedTabsExample() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
-        <Card.Section title={tabs[selected].content}>
+        <LegacyCard.Section title={tabs[selected].content}>
           <p>Tab {selected} selected</p>
-        </Card.Section>
+        </LegacyCard.Section>
       </Tabs>
-    </Card>
+    </LegacyCard>
   );
 }
 

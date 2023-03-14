@@ -1,7 +1,7 @@
 import {
   Page,
   Layout,
-  Card,
+  LegacyCard,
   FormLayout,
   TextField,
   TextContainer,
@@ -20,7 +20,7 @@ function LayoutExample() {
               <Text id="storeDetails" variant="headingMd" as="h2">
                 Store details
               </Text>
-              <Text variant="bodyMd" color="subdued" as="p">
+              <Text color="subdued" as="p">
                 Shopify and your customers will use this information to contact
                 you.
               </Text>
@@ -28,7 +28,7 @@ function LayoutExample() {
           </div>
         </Layout.Section>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -42,7 +42,7 @@ function LayoutExample() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>

@@ -16,21 +16,6 @@ describe('<Bleed />', () => {
     expect(bleed).toContainReactComponent(Children);
   });
 
-  it('renders default horizontal custom properties', () => {
-    const bleed = mountWithApp(
-      <Bleed>
-        <Children />
-      </Bleed>,
-    );
-
-    expect(bleed).toContainReactComponent('div', {
-      style: {
-        '--pc-bleed-margin-inline-start-xs': 'var(--p-space-5)',
-        '--pc-bleed-margin-inline-end-xs': 'var(--p-space-5)',
-      } as React.CSSProperties,
-    });
-  });
-
   it('only renders the custom property that matches the property passed in', () => {
     const bleed = mountWithApp(
       <Bleed marginInlineStart="2">
@@ -41,7 +26,6 @@ describe('<Bleed />', () => {
     expect(bleed).toContainReactComponent('div', {
       style: {
         '--pc-bleed-margin-inline-start-xs': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-end-xs': 'var(--p-space-5)',
       } as React.CSSProperties,
     });
   });

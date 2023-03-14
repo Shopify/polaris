@@ -4,7 +4,7 @@ import {
   AlphaStack,
   Banner,
   Button,
-  Card,
+  LegacyCard,
   Inline,
   Link,
   List,
@@ -175,7 +175,7 @@ export function WithFocus() {
 
 export function InACard() {
   return (
-    <Card title="Online store dashboard" sectioned>
+    <LegacyCard title="Online store dashboard" sectioned>
       <TextContainer>
         <Banner onDismiss={() => {}}>
           <p>
@@ -186,15 +186,15 @@ export function InACard() {
 
         <p>View a summary of your online store’s performance.</p>
       </TextContainer>
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithEndJustifiedContent() {
   return (
     <Banner status="critical">
-      <AlphaStack gap="1" fullWidth>
-        <Inline align="space-between">
+      <AlphaStack gap="1">
+        <Inline gap="4" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
           </Text>

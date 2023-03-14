@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import {
   TextField,
-  Stack,
+  LegacyStack,
   Listbox,
   Page,
   Sheet,
@@ -194,7 +194,7 @@ function SheetWithSearchableListboxExample() {
       style={{
         padding: 'var(--p-space-4) var(--p-space-2)',
         position: 'sticky',
-        zIndex: 'var(--p-z-12)',
+        zIndex: 'var(--p-z-index-12)',
         width: '100%',
         background: 'var(--p-surface)',
       }}
@@ -331,7 +331,7 @@ function SheetWithSearchableListboxExample() {
               <Text variant="headingMd" as="h2">
                 Look up customer segmentation membership
               </Text>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 Look up whether a customer is included in a segment.
               </Text>
             </TextContainer>

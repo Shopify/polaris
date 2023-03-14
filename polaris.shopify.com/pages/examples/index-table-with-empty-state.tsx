@@ -1,7 +1,7 @@
 import {
   EmptySearchResult,
   IndexTable,
-  Card,
+  LegacyCard,
   useIndexResourceState,
   Text,
 } from '@shopify/polaris';
@@ -35,19 +35,27 @@ function IndexTableWithCustomEmptyStateExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -59,13 +67,28 @@ function IndexTableWithCustomEmptyStateExample() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            id: 'order-count',
+            title: (
+              <Text as="span" alignment="end">
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            title: (
+              <Text as="span" alignment="end">
+                Amount spent
+              </Text>
+            ),
+          },
+          ,
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 

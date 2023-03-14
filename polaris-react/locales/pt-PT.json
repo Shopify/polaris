@@ -174,7 +174,7 @@
       "showing": "A mostrar {itemsCount} {resource}",
       "loading": "A carregar {resource}",
       "selected": "{selectedItemsCount} selecionada",
-      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
+      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados",
       "selectAllItems": "Selecione todos os {itemsLength}+ {resourceNamePlural} da sua loja",
       "emptySearchResultTitle": "Nenhum {resourceNamePlural} encontrado",
       "emptySearchResultDescription": "Tente alterar os filtros ou o termo de pesquisa",
@@ -194,7 +194,7 @@
         "warningMessage": "Para oferecer uma melhor experiência de utilizador. Deve existir apenas um máximo de {maxPromotedActions} ações promovidas."
       },
       "showingTotalCount": "Mostrar {itemsCount} de {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Todos os {itemsLength} + {resourceNamePlural} neste filtro estão selecionados.",
+      "allFilteredItemsSelected": "Todos os {itemsLength} + {resourceNamePlural} neste filtro estão selecionados",
       "selectAllFilteredItems": "Selecionar todos os {itemsLength}+ {resourceNamePlural} neste filtro"
     },
     "SkeletonPage": {
@@ -278,8 +278,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Item",
       "defaultItemPlural": "Itens",
-      "allItemsSelected": "Todos os itens de {resourceNamePlural} de {itemsLength}+ foram selecionados.",
-      "selected": "{selectedItemsCount} selecionados.",
+      "allItemsSelected": "Todos os {itemsLength}+ de {resourceNamePlural} foram selecionados",
+      "selected": "{selectedItemsCount} selecionada",
       "a11yCheckboxDeselectAllSingle": "Desselecionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Desselecionar tudo {itemsLength} {resourceNamePlural}",
@@ -291,7 +291,7 @@
       "onboardingBadgeText": "Novo",
       "resourceLoadingAccessibilityLabel": "A carregar {resourceNamePlural}",
       "selectAllLabel": "Selecionar tudo {resourceNamePlural}",
-      "selected": "{selectedItemsCount} selecionados.",
+      "selected": "{selectedItemsCount} selecionada",
       "undo": "Anular",
       "selectAllItems": "Selecionar todos os itens de {resourceNamePlural} de {itemsLength}+",
       "selectItem": "Selecionar {resourceName}",

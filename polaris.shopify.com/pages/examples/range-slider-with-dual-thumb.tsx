@@ -1,4 +1,9 @@
-import {Card, RangeSlider, Stack, TextField} from '@shopify/polaris';
+import {
+  LegacyCard,
+  RangeSlider,
+  LegacyStack,
+  TextField,
+} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -71,7 +76,7 @@ function DualThumbRangeSliderExample() {
       : intermediateTextFieldValue[1];
 
   return (
-    <Card sectioned title="Minimum requirements">
+    <LegacyCard sectioned title="Minimum requirements">
       <div onKeyDown={handleEnterKeyPress}>
         <RangeSlider
           output
@@ -83,7 +88,7 @@ function DualThumbRangeSliderExample() {
           step={step}
           onChange={handleRangeSliderChange}
         />
-        <Stack distribution="equalSpacing" spacing="extraLoose">
+        <LegacyStack distribution="equalSpacing" spacing="extraLoose">
           <TextField
             label="Min money spent"
             type="number"
@@ -108,9 +113,9 @@ function DualThumbRangeSliderExample() {
             onBlur={handleUpperTextFieldBlur}
             autoComplete="off"
           />
-        </Stack>
+        </LegacyStack>
       </div>
-    </Card>
+    </LegacyCard>
   );
 }
 

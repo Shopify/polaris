@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, AlphaStack} from '@shopify/polaris';
+import {Box, AlphaStack} from '@shopify/polaris';
 
 export default {
   component: AlphaStack,
@@ -9,10 +9,15 @@ export default {
 export function Default() {
   return (
     <AlphaStack>
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </AlphaStack>
   );
 }
@@ -20,10 +25,15 @@ export function Default() {
 export function WithGap() {
   return (
     <AlphaStack gap="8">
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </AlphaStack>
   );
 }
@@ -31,43 +41,63 @@ export function WithGap() {
 export function WithResponsiveGap() {
   return (
     <AlphaStack gap={{xs: '4', md: '10'}}>
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
+    </AlphaStack>
+  );
+}
+
+export function WithAlignStart() {
+  return (
+    <AlphaStack gap="4" align="start">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </AlphaStack>
   );
 }
 
 export function WithAlignCenter() {
   return (
-    <AlphaStack align="center">
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
+    <AlphaStack gap="4" align="center">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </AlphaStack>
   );
 }
 
 export function WithAlignEnd() {
   return (
-    <AlphaStack align="end">
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
-    </AlphaStack>
-  );
-}
-
-export function WithFullWidthChildren() {
-  return (
-    <AlphaStack fullWidth>
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
+    <AlphaStack gap="4" align="end">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
     </AlphaStack>
   );
 }

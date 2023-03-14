@@ -8,7 +8,7 @@ import {
   DropZone,
   FormLayout,
   Modal,
-  Stack,
+  LegacyStack,
   Text,
   TextContainer,
   TextField,
@@ -45,11 +45,8 @@ export function Default() {
       >
         <Modal.Section>
           <TextContainer>
-            <Text variant="bodyMd" as="span">
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </Text>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -92,17 +89,15 @@ export function WithPrimaryAction() {
         }}
       >
         <Modal.Section>
-          <Stack vertical>
-            <Stack.Item>
+          <LegacyStack vertical>
+            <LegacyStack.Item>
               <TextContainer>
-                <Text variant="bodyMd" as="span">
-                  You can share this discount link with your customers via email
-                  or social media. Your discount will be automatically applied
-                  at checkout.
-                </Text>
+                You can share this discount link with your customers via email
+                or social media. Your discount will be automatically applied at
+                checkout.
               </TextContainer>
-            </Stack.Item>
-            <Stack.Item fill>
+            </LegacyStack.Item>
+            <LegacyStack.Item fill>
               <TextField
                 ref={node}
                 label="Discount link"
@@ -116,8 +111,8 @@ export function WithPrimaryAction() {
                   </Button>
                 }
               />
-            </Stack.Item>
-          </Stack>
+            </LegacyStack.Item>
+          </LegacyStack>
         </Modal.Section>
       </Modal>
     </div>
@@ -174,8 +169,8 @@ export function WithPrimaryAndSecondaryActions() {
         ]}
       >
         <Modal.Section>
-          <Stack vertical>
-            <Stack.Item>
+          <LegacyStack vertical>
+            <LegacyStack.Item>
               <ChoiceList
                 title="Export"
                 choices={[
@@ -186,8 +181,8 @@ export function WithPrimaryAndSecondaryActions() {
                 selected={selectedExport}
                 onChange={handleSelectedExport}
               />
-            </Stack.Item>
-            <Stack.Item>
+            </LegacyStack.Item>
+            <LegacyStack.Item>
               <ChoiceList
                 title="Export as"
                 choices={[
@@ -201,8 +196,8 @@ export function WithPrimaryAndSecondaryActions() {
                 selected={selectedExportAs}
                 onChange={handleSelectedExportAs}
               />
-            </Stack.Item>
-          </Stack>
+            </LegacyStack.Item>
+          </LegacyStack>
         </Modal.Section>
       </Modal>
     </div>
@@ -239,7 +234,7 @@ export function Large() {
         ]}
       >
         <Modal.Section>
-          <Stack vertical>
+          <LegacyStack vertical>
             <DropZone
               accept=".csv"
               errorOverlayText="File type must be .csv"
@@ -253,7 +248,7 @@ export function Large() {
               label="Overwrite existing customers that have the same email or phone"
               onChange={handleCheckbox}
             />
-          </Stack>
+          </LegacyStack>
         </Modal.Section>
       </Modal>
     </div>
@@ -290,7 +285,7 @@ export function Small() {
         ]}
       >
         <Modal.Section>
-          <Stack vertical>
+          <LegacyStack vertical>
             <DropZone
               accept=".csv"
               errorOverlayText="File type must be .csv"
@@ -304,7 +299,7 @@ export function Small() {
               label="Overwrite existing customers that have the same email or phone"
               onChange={handleCheckbox}
             />
-          </Stack>
+          </LegacyStack>
         </Modal.Section>
       </Modal>
     </div>
@@ -339,11 +334,8 @@ export function WithoutATitle() {
       >
         <Modal.Section titleHidden>
           <TextContainer>
-            <Text variant="bodyMd" as="span">
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </Text>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -375,9 +367,7 @@ export function WithScrollListener() {
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
             <TextContainer>
-              <Text variant="bodyMd" as="span">
-                Item <a href="#Content">#{index}</a>
-              </Text>
+              Item <a href="#Content">#{index}</a>
             </TextContainer>
           </Modal.Section>
         ))}
@@ -424,11 +414,8 @@ export function WithActivatorRef() {
       >
         <Modal.Section>
           <TextContainer>
-            <Text variant="bodyMd" as="span">
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </Text>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -471,11 +458,8 @@ export function WithoutAnActivatorProp() {
       >
         <Modal.Section>
           <TextContainer>
-            <Text variant="bodyMd" as="span">
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </Text>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
           </TextContainer>
         </Modal.Section>
       </Modal>

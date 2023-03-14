@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  Card,
+  LegacyCard,
   EmptySearchResult,
   Filters,
   IndexTable,
@@ -54,19 +54,27 @@ export function Default() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -77,13 +85,21 @@ export function Default() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -123,19 +139,27 @@ export function Flush() {
         position={index}
       >
         <IndexTable.Cell flush>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>{location}</IndexTable.Cell>
-        <IndexTable.Cell flush>{orders}</IndexTable.Cell>
-        <IndexTable.Cell flush>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell flush>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell flush>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -146,13 +170,23 @@ export function Flush() {
         headings={[
           {title: 'Name', flush: true},
           {title: 'Location', flush: true},
-          {title: 'Order count', flush: true},
-          {title: 'Amount spent', flush: true},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            flush: true,
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            flush: true,
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -192,14 +226,16 @@ export function SmallScreen() {
         position={index}
       >
         <div style={{padding: '12px 16px'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
+          <Text fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text as="p" alignment="end" numeric>
+            {orders}
+          </Text>
+          <Text as="p" alignment="end" numeric>
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -207,7 +243,7 @@ export function SmallScreen() {
 
   return (
     <div style={{width: '430px'}}>
-      <Card>
+      <LegacyCard>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -219,13 +255,21 @@ export function SmallScreen() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              alignment: 'end',
+              id: 'order-count',
+              title: 'Order count',
+            },
+            {
+              alignment: 'end',
+              id: 'amount-spent',
+              title: 'Amount spent',
+            },
           ]}
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 }
@@ -266,14 +310,16 @@ export function SmallScreenLoading() {
         position={index}
       >
         <div style={{padding: '12px 16px'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
+          <Text fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text as="p" alignment="end" numeric>
+            {orders}
+          </Text>
+          <Text as="p" alignment="end" numeric>
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -281,7 +327,7 @@ export function SmallScreenLoading() {
 
   return (
     <div style={{width: '430px'}}>
-      <Card>
+      <LegacyCard>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -293,14 +339,22 @@ export function SmallScreenLoading() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              alignment: 'end',
+              id: 'order-count',
+              title: 'Order count',
+            },
+            {
+              alignment: 'end',
+              id: 'amount-spent',
+              title: 'Amount spent',
+            },
           ]}
           loading
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 }
@@ -332,19 +386,27 @@ export function WithEmptyState() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -356,13 +418,21 @@ export function WithEmptyState() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -423,19 +493,27 @@ export function WithBulkActions() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -448,13 +526,21 @@ export function WithBulkActions() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -541,19 +627,27 @@ export function WithMultiplePromotedBulkActions() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -566,13 +660,21 @@ export function WithMultiplePromotedBulkActions() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -634,13 +736,21 @@ export function WithBulkActionsAndSelectionAcrossPages() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -649,7 +759,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     <div
       style={{padding: 'var(--p-space-4) var(--p-space-4) var(--p-space-10)'}}
     >
-      <Card>
+      <LegacyCard>
         <IndexTable
           resourceName={resourceName}
           itemCount={customers.length}
@@ -663,13 +773,21 @@ export function WithBulkActionsAndSelectionAcrossPages() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              alignment: 'end',
+              id: 'order-count',
+              title: 'Order count',
+            },
+            {
+              alignment: 'end',
+              id: 'amount-spent',
+              title: 'Amount spent',
+            },
           ]}
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 }
@@ -710,19 +828,27 @@ export function WithLoadingState() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -734,13 +860,21 @@ export function WithLoadingState() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -828,19 +962,27 @@ export function WithFiltering() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
           <Filters
@@ -872,13 +1014,21 @@ export function WithFiltering() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 
   function disambiguateLabel(key, value) {
@@ -938,19 +1088,27 @@ export function WithRowStatus() {
         status={status}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -961,13 +1119,21 @@ export function WithRowStatus() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1028,13 +1194,21 @@ export function WithStickyLastColumn() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{status}</IndexTable.Cell>
         <IndexTable.Cell>{channel}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
@@ -1044,7 +1218,7 @@ export function WithStickyLastColumn() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1055,8 +1229,16 @@ export function WithStickyLastColumn() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
           {title: 'Status'},
           {title: 'Channel'},
           {title: 'Payment status'},
@@ -1066,7 +1248,7 @@ export function WithStickyLastColumn() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1111,20 +1293,28 @@ export function WithRowNavigationLink() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <Text variant="bodyMd" fontWeight="bold" as="span">
+            <Text fontWeight="bold" as="span">
               {name}
             </Text>
           </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1135,13 +1325,21 @@ export function WithRowNavigationLink() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1186,20 +1384,28 @@ export function WithClickableButtonColumn() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <Text variant="bodyMd" fontWeight="bold" as="span">
+            <Text fontWeight="bold" as="span">
               {name}
             </Text>
           </Button>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1210,13 +1416,21 @@ export function WithClickableButtonColumn() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1248,33 +1462,50 @@ export function WithoutCheckboxes() {
     ({id, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row id={id} key={id} position={index}>
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            hidden: false,
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
         selectable={false}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1383,19 +1614,27 @@ export function WithAllOfItsElements() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div style={{padding: '16px', display: 'flex'}}>
         <div style={{flex: 1}}>
           <Filters
@@ -1431,13 +1670,22 @@ export function WithAllOfItsElements() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            hidden: false,
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 
   function disambiguateLabel(key, value) {
@@ -1579,13 +1827,21 @@ export function WithSortableHeadings() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
@@ -1595,7 +1851,7 @@ export function WithSortableHeadings() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={rows.length}
@@ -1606,8 +1862,17 @@ export function WithSortableHeadings() {
         headings={[
           {title: 'Name'},
           {title: 'Date'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+
           {title: 'Location'},
           {title: 'Fulfillment status'},
           {title: 'Payment status'},
@@ -1622,7 +1887,7 @@ export function WithSortableHeadings() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1747,13 +2012,21 @@ export function WithSortableCustomHeadings() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
@@ -1763,7 +2036,7 @@ export function WithSortableCustomHeadings() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={rows.length}
@@ -1778,8 +2051,13 @@ export function WithSortableCustomHeadings() {
             tooltipWidth: 'wide',
           },
           {title: 'Date', tooltipContent: 'I am the Date tooltip'},
-          {title: 'Order count'},
           {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
             title: 'Amount spent',
             tooltipContent:
               'I am a wide Amount spent tooltip that stays when clicked',
@@ -1799,7 +2077,7 @@ export function WithSortableCustomHeadings() {
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1839,19 +2117,27 @@ export function WithCustomTooltips() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
@@ -1870,13 +2156,398 @@ export function WithCustomTooltips() {
           {
             title: 'Location',
           },
-          {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
+  );
+}
+
+export function WithZebraStriping() {
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+        hasZebraStriping
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithZebraStripingCondensed() {
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+        hasZebraStriping
+        condensed
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithZebraStripingAndRowStatus() {
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      status: 'success',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      status: 'subdued',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent, status}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+        status={status}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithZebraStripingAndStickyLastColumn() {
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      status: 'Created',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      status: 'Created',
+      channel: 'Online Store',
+      paymentStatus: 'Paid',
+      fulfillmentStatus: 'Unfulfilled',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        status,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+          {title: 'Status'},
+          {title: 'Channel'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+        ]}
+        lastColumnSticky
+        hasZebraStriping
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
   );
 }
 
@@ -1985,14 +2656,16 @@ export function SmallScreenWithAllOfItsElements() {
         position={index}
       >
         <div style={{padding: '.75rem 1rem'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
+          <Text fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
+          <Text as="p" alignment="end" numeric>
+            {orders}
+          </Text>
+          <Text as="p" alignment="end" numeric>
+            {amountSpent}
+          </Text>
         </div>
       </IndexTable.Row>
     ),
@@ -2000,7 +2673,7 @@ export function SmallScreenWithAllOfItsElements() {
 
   return (
     <div style={{width: '430px'}}>
-      <Card>
+      <LegacyCard>
         <div style={{padding: '16px', display: 'flex'}}>
           <div style={{flex: 1}}>
             <Filters
@@ -2036,13 +2709,21 @@ export function SmallScreenWithAllOfItsElements() {
           headings={[
             {title: 'Name'},
             {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
+            {
+              alignment: 'end',
+              id: 'order-count',
+              title: 'Order count',
+            },
+            {
+              alignment: 'end',
+              id: 'amount-spent',
+              title: 'Amount spent',
+            },
           ]}
         >
           {rowMarkup}
         </IndexTable>
-      </Card>
+      </LegacyCard>
     </div>
   );
 

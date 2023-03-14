@@ -23,7 +23,7 @@ export function Header({
 }: HeaderProps) {
   const titleHiddenMarkup = (
     <Box position="absolute" insetInlineEnd="0" zIndex="1">
-      <Inline align="end">
+      <Inline gap="4" align="end" blockAlign="center">
         <CloseButton titleHidden={titleHidden} onClick={onClose} />
       </Inline>
     </Box>
@@ -41,8 +41,8 @@ export function Header({
       paddingInlineEnd="5"
       borderBlockEnd="divider"
     >
-      <Columns columns={{xs: '1fr auto'}}>
-        <Inline>
+      <Columns columns={{xs: '1fr auto'}} gap="4">
+        <Inline gap="4" blockAlign="center">
           <Text id={id} as="h2" variant="headingLg" breakWord>
             {children}
           </Text>

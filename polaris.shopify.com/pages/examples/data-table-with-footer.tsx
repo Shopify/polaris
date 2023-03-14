@@ -1,4 +1,4 @@
-import {Page, Card, DataTable} from '@shopify/polaris';
+import {Page, LegacyCard, DataTable} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -17,7 +17,7 @@ function DataTableFooterExample() {
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -37,7 +37,7 @@ function DataTableFooterExample() {
           totals={['', '', '', 255, '$155,830.00']}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }

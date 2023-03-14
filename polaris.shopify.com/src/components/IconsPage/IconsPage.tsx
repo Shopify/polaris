@@ -109,7 +109,7 @@ function IconsPage() {
   )}`;
 
   return (
-    <Page title="Icons" showTOC={false}>
+    <Page title="Icons">
       <PageMeta title={pageTitle} />
 
       <div className={className(!useModal && styles.PageLayout)}>

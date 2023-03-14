@@ -8,10 +8,10 @@ const cacheDir = path.join(process.cwd(), '.cache');
 const siteJsonFile = `${cacheDir}/site.json`;
 const navJsonFile = `${cacheDir}/nav.json`;
 
-const genNavJson = (mardownFiles) => {
+const genNavJson = (markdownFiles) => {
   let nav = {};
 
-  mardownFiles.forEach((md) => {
+  markdownFiles.forEach((md) => {
     const {
       title,
       navTitle,
@@ -27,7 +27,9 @@ const genNavJson = (mardownFiles) => {
       groups,
       componentDescriptions,
       relatedResources,
+      hideFromNav,
     } = md.frontMatter;
+
     const {slug} = md;
 
     const path = `children.${slug.replace(/\//g, '.children.')}`;
@@ -46,6 +48,7 @@ const genNavJson = (mardownFiles) => {
       groups,
       componentDescriptions,
       relatedResources,
+      hideFromNav: hideFromNav || false,
     });
   });
 
@@ -79,12 +82,13 @@ const genCacheJson = () => {
 
   const mdFiles = globby.sync(pathGlob);
 
-  const mardownFiles = mdFiles
+  const markdownFiles = mdFiles
     .map((filePath) => getMdContent(filePath))
+    .filter((md) => !md.frontMatter?.hideFromNav)
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
-  genSiteJson(mardownFiles);
-  genNavJson(mardownFiles);
+  genSiteJson(markdownFiles);
+  genNavJson(markdownFiles);
 
   console.log('✅ Generated .cache/nav.json and .cache/site.json');
 };

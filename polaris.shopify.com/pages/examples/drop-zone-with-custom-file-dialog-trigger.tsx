@@ -1,4 +1,10 @@
-import {Stack, Thumbnail, Card, DropZone, Text} from '@shopify/polaris';
+import {
+  LegacyStack,
+  Thumbnail,
+  LegacyCard,
+  DropZone,
+  Text,
+} from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -20,9 +26,9 @@ function DropZoneWithCustomFileDialogExample() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -38,13 +44,13 @@ function DropZoneWithCustomFileDialogExample() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   return (
-    <Card
+    <LegacyCard
       sectioned
       title="Product Images"
       actions={[
@@ -61,7 +67,7 @@ function DropZoneWithCustomFileDialogExample() {
       >
         {uploadedFiles}
       </DropZone>
-    </Card>
+    </LegacyCard>
   );
 }
 

@@ -2,10 +2,10 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  Card,
+  LegacyCard,
   Collapsible,
   Link,
-  Stack,
+  LegacyStack,
   TextContainer,
 } from '@shopify/polaris';
 
@@ -20,8 +20,8 @@ export function Default() {
 
   return (
     <div style={{height: '200px'}}>
-      <Card sectioned>
-        <Stack vertical>
+      <LegacyCard sectioned>
+        <LegacyStack vertical>
           <Button
             onClick={handleToggle}
             ariaExpanded={open}
@@ -47,8 +47,8 @@ export function Default() {
               <Link url="#">Test link</Link>
             </TextContainer>
           </Collapsible>
-        </Stack>
-      </Card>
+        </LegacyStack>
+      </LegacyCard>
     </div>
   );
 }

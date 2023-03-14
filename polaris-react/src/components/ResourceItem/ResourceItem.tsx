@@ -158,7 +158,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       persistActions = false,
       accessibilityLabel,
       name,
-      context: {selectable, selectMode, loading, resourceName},
+      context: {selectable, selectMode, hasBulkActions, loading, resourceName},
       i18n,
       verticalAlignment,
       dataHref,
@@ -204,6 +204,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     if (media || selectable) {
       ownedMarkup = (
         <Inline
+          gap="4"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
@@ -227,6 +228,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     const listItemClassName = classNames(
       styles.ListItem,
       focused && !focusedInner && styles.focused,
+      hasBulkActions && styles.hasBulkActions,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -289,13 +291,13 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         paddingInlineEnd={{xs: '4', sm: '5'}}
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <Columns columns={{xs: '1fr auto'}} gap="0">
+        <Columns columns={{xs: '1fr auto'}}>
           <Columns
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
             gap="5"
           >
             {ownedMarkup}
-            <Inline blockAlign={getAlignment(verticalAlignment)}>
+            <Inline gap="4" blockAlign={getAlignment(verticalAlignment)}>
               <Box
                 width="100%"
                 padding="0"

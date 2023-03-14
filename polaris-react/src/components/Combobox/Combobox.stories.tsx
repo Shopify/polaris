@@ -5,7 +5,7 @@ import {
   EmptySearchResult,
   Icon,
   Listbox,
-  Stack,
+  LegacyStack,
   Tag,
   TextContainer,
   Text,
@@ -296,7 +296,7 @@ export function WithMultiSelect() {
         ) : null}
       </Combobox>
       <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
+        <LegacyStack>{tagsMarkup}</LegacyStack>
       </TextContainer>
     </div>
   );
@@ -410,7 +410,7 @@ export function WithMultiSelectAndManualSelection() {
         ) : null}
       </Combobox>
       <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
+        <LegacyStack>{tagsMarkup}</LegacyStack>
       </TextContainer>
     </div>
   );
@@ -481,7 +481,7 @@ export function WithMultiSelectAndVerticalContent() {
       return (
         <p>
           {start}
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {highlight}
           </Text>
           {end}
@@ -507,13 +507,13 @@ export function WithMultiSelectAndVerticalContent() {
 
   const verticalContentMarkup =
     selectedTags.length > 0 ? (
-      <Stack spacing="extraTight" alignment="center">
+      <LegacyStack spacing="extraTight" alignment="center">
         {selectedTags.map((tag) => (
           <Tag key={`option-${tag}`} onRemove={removeTag(tag)}>
             {tag}
           </Tag>
         ))}
-      </Stack>
+      </LegacyStack>
     ) : null;
 
   const optionMarkup =

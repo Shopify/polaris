@@ -1,4 +1,10 @@
-import {DropZone, Stack, Thumbnail, Card, Text} from '@shopify/polaris';
+import {
+  DropZone,
+  LegacyStack,
+  Thumbnail,
+  LegacyCard,
+  Text,
+} from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -16,9 +22,9 @@ function NestedDropZoneExample() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -34,19 +40,19 @@ function NestedDropZoneExample() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   return (
     <DropZone outline={false} onDrop={handleDrop}>
-      <Card sectioned>
+      <LegacyCard sectioned>
         <DropZone onClick={handleDropZoneClick}>
           {uploadedFiles}
           {fileUpload}
         </DropZone>
-      </Card>
+      </LegacyCard>
     </DropZone>
   );
 }

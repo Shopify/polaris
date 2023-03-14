@@ -1,0 +1,69 @@
+---
+title: {title - optional when only 1 variant}
+slug: {slug - optional when only 1 variant}
+hideFromNav: true
+---
+
+<!-- Optional when only 1 variant -->
+{description}
+
+<div as="HowItHelps">
+
+## How it helps merchants
+
+{image}
+
+{ordered list}
+
+<div as="DefinitionTable">
+
+### Use when merchants need to:
+
+<!-- Use the Description List format to display a 2 column table: -->
+<!-- **{term}** -->
+<!-- : {definition} -->
+
+</div>
+</div>
+<div as="Usage">
+
+## Using this pattern
+
+This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
+
+<!-- Optional: This code is wrapped around what is rendered in the live preview. -->
+<!-- Useful for layout, etc. -->
+<!-- Will not be visible in the copy+paste code snippet. -->
+
+<!-- prettier-ignore -->
+```javascript {"type":"previewContext","for":"example"}
+<div>____CODE____</div>
+```
+
+<!-- Optional: This code is wrapped around the code when clicking "Open in Sandbox". -->
+<!-- Useful for getting it to play nice with Playroom.
+<!-- Will be visible in Playroom. Will not be visible in the copy+paste code snippet. -->
+
+<!-- prettier-ignore -->
+```javascript {"type":"sandboxContext","for":"example"}
+<div>____CODE____</div>
+```
+
+<!-- The "id" here is used by the "for" of the above context codeblocks. -->
+<!-- Must have "type":"livePreview" to be rendered as a live preview. -->
+
+<!-- prettier-ignore -->
+```javascript {"type":"livePreview","id":"example"}
+<Page divider>
+  <AlphaStack gap="16">Coming Soon</AlphaStack>
+</Page>
+```
+
+</div>
+<div as="UsefulToKnow">
+
+### Useful to know
+
+{A 2 column table with images in the 2nd column}
+
+</div>

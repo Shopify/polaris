@@ -21,6 +21,7 @@ import {
   UniqueIdFactoryContext,
   globalIdGeneratorFactory,
 } from '../../utilities/unique-id';
+import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 type MediaQueryContextType = NonNullable<
@@ -87,9 +88,11 @@ export function PolarisTestProvider({
                   <MediaQueryContext.Provider value={mergedMediaQuery}>
                     <PortalsManager>
                       <FocusManager>
-                        <FrameContext.Provider value={mergedFrame}>
-                          {children}
-                        </FrameContext.Provider>
+                        <EphemeralPresenceManager>
+                          <FrameContext.Provider value={mergedFrame}>
+                            {children}
+                          </FrameContext.Provider>
+                        </EphemeralPresenceManager>
                       </FocusManager>
                     </PortalsManager>
                   </MediaQueryContext.Provider>

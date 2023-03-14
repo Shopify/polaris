@@ -30,7 +30,7 @@ export interface CellProps {
   row?: Cell;
   children?: React.ReactNode;
 }
-
+/** @deprecated Use `Columns` instead or a combination of layout primitives (`Columns`, `Inline`, and `AlphaStack`) */
 export function Cell({
   area: gridArea,
   column,

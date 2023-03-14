@@ -1,5 +1,46 @@
 # Changelog
 
+## 8.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`7d1c4f1db`](https://github.com/Shopify/polaris/commit/7d1c4f1db629ad9cfc68f65bd5f704127d10136e)]:
+  - @shopify/polaris-tokens@6.8.0
+
+## 8.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907)]:
+  - @shopify/polaris-tokens@6.7.0
+
+## 8.0.0
+
+### Major Changes
+
+- [#8467](https://github.com/Shopify/polaris/pull/8467) [`9ab93132a`](https://github.com/Shopify/polaris/commit/9ab93132a3e5f0c7c603184fb03ba452f9bc0a64) Thanks [@chloerice](https://github.com/chloerice)! - Configured `selector-disallowed-list` to disallow Polaris component class name overrides
+
+### Patch Changes
+
+- Updated dependencies [[`0e9fa8433`](https://github.com/Shopify/polaris/commit/0e9fa843397a9ec1d1a7eee70d0178d76dd231f8), [`b1768f037`](https://github.com/Shopify/polaris/commit/b1768f03795f224e760edc405dc5bfde298061cb)]:
+  - @shopify/polaris-tokens@6.6.1
+
+## 7.0.0
+
+### Major Changes
+
+- [#8451](https://github.com/Shopify/polaris/pull/8451) [`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c) Thanks [@qt314](https://github.com/qt314)! - report descriptionless disables
+
+## 6.0.2
+
+### Patch Changes
+
+- [#7877](https://github.com/Shopify/polaris/pull/7877) [`065df230a`](https://github.com/Shopify/polaris/commit/065df230a279d9dd1503337a523ca5c9a94acce9) Thanks [@chloerice](https://github.com/chloerice)! - - Updated the `polaris/custom-property-allowed-list` plugin tests for unified config
+  - Updated `polaris/custom-property-allowed-list` to report problems with tailored messages for each of the two configuration options
+  - Fixed metadata URLs for `polaris/*` plugins
+- Updated dependencies [[`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8)]:
+  - @shopify/polaris-tokens@6.6.0
+
 ## 6.0.1
 
 ### Patch Changes

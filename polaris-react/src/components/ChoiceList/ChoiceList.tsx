@@ -5,7 +5,6 @@ import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
-import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 import {Box} from '../Box';
 import {Bleed} from '../Bleed';
@@ -74,9 +73,7 @@ export function ChoiceList({
       paddingBlockEnd={{xs: '5', md: '1'}}
       visuallyHidden={titleHidden}
     >
-      <Text as="span" variant="bodyMd">
-        {title}
-      </Text>
+      {title}
     </Box>
   ) : null;
 
@@ -108,10 +105,7 @@ export function ChoiceList({
     ) : null;
     return (
       <li key={value}>
-        <Bleed
-          marginInline="0"
-          marginBlockEnd={helpText ? {xs: '1', md: '0'} : {xs: '0'}}
-        >
+        <Bleed marginBlockEnd={helpText ? {xs: '1', md: '0'} : {xs: '0'}}>
           <ControlComponent
             name={finalName}
             value={value}
@@ -141,12 +135,11 @@ export function ChoiceList({
     <AlphaStack
       as="fieldset"
       gap={{xs: '4', md: '0'}}
-      fullWidth
       aria-invalid={error != null}
       id={finalName}
     >
       {titleMarkup}
-      <AlphaStack as="ul" gap={{xs: '4', md: '0'}} fullWidth>
+      <AlphaStack as="ul" gap={{xs: '4', md: '0'}}>
         {choicesMarkup}
       </AlphaStack>
       {errorMarkup}

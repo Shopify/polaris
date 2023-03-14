@@ -17,18 +17,13 @@ type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface InlineProps {
+export interface InlineProps extends React.AriaAttributes {
   children?: React.ReactNode;
-  /** Horizontal alignment of children
-   * @default 'start'
-   */
+  /** Horizontal alignment of children */
   align?: Align;
-  /** Vertical alignment of children
-   * @default 'center'
-   */
+  /** Vertical alignment of children */
   blockAlign?: BlockAlign;
   /** The spacing between elements. Accepts a spacing token or an object of spacing tokens for different screen sizes.
-   * @default '4'
    * @example
    * gap='2'
    * gap={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
@@ -41,9 +36,9 @@ export interface InlineProps {
 }
 
 export const Inline = function Inline({
-  align = 'start',
-  blockAlign = 'center',
-  gap = '4',
+  align,
+  blockAlign,
+  gap,
   wrap = true,
   children,
 }: InlineProps) {

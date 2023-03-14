@@ -83,7 +83,7 @@ export function Default() {
       activatorContent={
         <span>
           <Icon source={QuestionMarkMajor} />
-          <Text variant="bodySm" as="span" visuallyHidden>
+          <Text as="span" visuallyHidden>
             Secondary menu
           </Text>
         </span>

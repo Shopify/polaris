@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {ButtonGroup} from '../../ButtonGroup';
-import {Stack} from '../../Stack';
+import {LegacyStack} from '../../LegacyStack';
 import {buttonsFrom} from '../../Button';
 import {PageActions} from '../PageActions';
 
@@ -12,35 +12,15 @@ jest.mock('../../Button', () => ({
 }));
 
 describe('<PageActions />', () => {
-  describe('<Stack />', () => {
+  describe('<LegacyStack />', () => {
     it('renders a stack component', () => {
       const pageActions = mountWithApp(<PageActions />);
-      expect(pageActions).toContainReactComponentTimes(Stack, 1);
-    });
-
-    it('uses equalSpacing distribution if secondaryActions are provided', () => {
-      const mockActions = [{content: 'Delete'}];
-
-      const pageActions = mountWithApp(
-        <PageActions secondaryActions={mockActions} />,
-      );
-      const stack = pageActions.find(Stack);
-      expect(stack).toHaveReactProps({
-        distribution: 'equalSpacing',
-      });
-    });
-
-    it('uses trailing distribution if secondaryActions are not provided', () => {
-      const pageActions = mountWithApp(<PageActions />);
-      const stack = pageActions.find(Stack);
-      expect(stack).toHaveReactProps({
-        distribution: 'trailing',
-      });
+      expect(pageActions).toContainReactComponentTimes(LegacyStack, 1);
     });
 
     it('passes spacing tight to Stack', () => {
       const pageActions = mountWithApp(<PageActions />);
-      const stack = pageActions.find(Stack);
+      const stack = pageActions.find(LegacyStack);
       expect(stack).toHaveReactProps({
         spacing: 'tight',
       });

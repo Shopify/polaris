@@ -12,8 +12,7 @@ groups:
       - Inline
       - Columns
       - Bleed
-    description: >-
-      Layout primitives allow you to specify values for different screen sizes. Check out the layout primitives for information on how responsive props apply to each component.
+    description: All layouts and spacing should be handled using layout primitives. This keeps our components simple, flexible and composable.
     tip: Layout primitives allow you to specify values for different screen sizes. Check out the layout primitives for information on how responsive props apply to each component.
 
   - title: Layout compositions

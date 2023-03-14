@@ -34,8 +34,10 @@ export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
 export interface BannerProps {
   /** Title content for the banner. */
   title?: string;
-  /** Icon to display in the banner. Use only major, duotone icons */
+  /** Status icon to display in the banner. Use only major icons */
   icon?: IconProps['source'];
+  /** Renders the banner without a status icon. */
+  hideIcon?: boolean;
   /** Sets the status of the banner. */
   status?: BannerStatus;
   /** The child elements to render in the banner. */
@@ -60,6 +62,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     status,
     onDismiss,
     stopAnnouncements,
+    hideIcon,
   }: BannerProps,
   bannerRef,
 ) {
@@ -169,9 +172,11 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
       >
         {dismissButton}
 
-        <Box paddingInlineEnd="4">
-          <Icon source={iconName} color={iconColor} />
-        </Box>
+        {hideIcon ? null : (
+          <Box paddingInlineEnd="4">
+            <Icon source={iconName} color={iconColor} />
+          </Box>
+        )}
 
         <div className={styles.ContentWrapper}>
           {headingMarkup}
