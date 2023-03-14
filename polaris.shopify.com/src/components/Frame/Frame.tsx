@@ -214,7 +214,7 @@ function NavItem({
   return (
     <li
       key={item.id}
-      className={className(item.hasSeparatorInNav && styles.newSection)}
+      className={className(item.hasSeparatorInNav && styles.hasSeparatorInNav)}
     >
       <span
         className={className(styles.NavItem, isCurrent && styles.isCurrent)}
