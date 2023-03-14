@@ -1,14 +1,16 @@
 import {Grid, GridItem} from '../../../src/components/Grid';
 import Page from '../../../src/components/Page';
-import ComponentThumbnail from '../../../src/components/ComponentThumbnail';
-import {PageWithUrl} from '../../../src/components/Editor/types';
+import {ResolvedPage} from '../../../src/components/Editor/types';
 import {GetStaticPaths, GetStaticProps} from 'next';
 import {content} from '../../../src/content';
-import {getPageWithUrl, getPageUrl} from '../../../src/components/Editor/utils';
+import {
+  getResolvedPage,
+  getPageUrl,
+} from '../../../src/components/Editor/utils';
 
 interface Props {
-  page: PageWithUrl;
-  subPages: PageWithUrl[];
+  page: ResolvedPage;
+  subPages: ResolvedPage[];
 }
 
 export default function GroupPage({page, subPages}: Props) {
@@ -19,17 +21,7 @@ export default function GroupPage({page, subPages}: Props) {
           .sort((a, b) => a.title.localeCompare(b.title))
           .sort((a, b) => a.order - b.order)
           .map((subPage) => {
-            return (
-              <GridItem
-                key={subPage.slug}
-                {...subPage}
-                description={subPage.excerpt}
-                url={subPage.url}
-                renderPreview={() => (
-                  <ComponentThumbnail title={subPage.title} />
-                )}
-              />
-            );
+            return <GridItem key={subPage.slug} {...subPage} />;
           })}
       </Grid>
     </Page>
@@ -44,12 +36,12 @@ export const getStaticProps: GetStaticProps<Props, {group: string}> = async ({
     return pageUrl === `components/${params?.group}`;
   });
   if (page) {
-    const pageWithUrl = getPageWithUrl(content, page);
+    const resolvedPage = getResolvedPage(content, page);
     const subPages = content.pages
-      .filter((page) => page.parentId === pageWithUrl.id)
-      .map((page) => getPageWithUrl(content, page));
+      .filter((page) => page.parentId === resolvedPage.id)
+      .map((page) => getResolvedPage(content, page));
 
-    return {props: {page: pageWithUrl, subPages}};
+    return {props: {page: resolvedPage, subPages}};
   } else {
     return {notFound: true};
   }

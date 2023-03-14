@@ -21,6 +21,7 @@ function createPage(
     childPageMetaType,
     pageMeta,
     hasSeparatorInNav,
+    thumbnailImageId = null,
   },
   markdown,
 ) {
@@ -53,7 +54,9 @@ function createPage(
     childPageMetaType,
     pageMeta,
     hasSeparatorInNav,
+    thumbnailImageId,
   };
+
   pages.push(page);
 }
 
@@ -282,7 +285,6 @@ contentFilePaths
         childPageMetaType: null,
         pageMeta: {
           type: 'foundations',
-          icon: frontMatter.icon,
         },
         keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
         hasSeparatorInNav: false,
@@ -396,7 +398,6 @@ designFilePaths
         childPageMetaType: null,
         pageMeta: {
           type: 'foundations',
-          icon: frontMatter.icon,
         },
         keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
         hasSeparatorInNav: false,
@@ -454,7 +455,6 @@ foundationsFilePaths
         childPageMetaType: null,
         pageMeta: {
           type: 'foundations',
-          icon: frontMatter.icon,
         },
         keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
         hasSeparatorInNav: false,
@@ -544,8 +544,9 @@ createPage({
 });
 
 // Migrate tokens
+const tokensPageId = nanoid();
 createPage({
-  id: nanoid(),
+  id: tokensPageId,
   title: 'Tokens',
   excerpt: '',
   slug: 'tokens',
@@ -557,6 +558,166 @@ createPage({
   noIndex: false,
   childPageMetaType: null,
   pageMeta: null,
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Colors',
+  excerpt: '',
+  slug: 'colors',
+  parentId: tokensPageId,
+  order: 0,
+  useCustomLayout: true,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: {
+    type: 'tokens',
+    tokenGroup: 'colors',
+  },
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Fonts',
+  excerpt: '',
+  slug: 'font',
+  parentId: tokensPageId,
+  order: 1,
+  useCustomLayout: true,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: {
+    type: 'tokens',
+    tokenGroup: 'font',
+  },
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Shape',
+  excerpt: '',
+  slug: 'shape',
+  parentId: tokensPageId,
+  order: 2,
+  useCustomLayout: true,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: {
+    type: 'tokens',
+    tokenGroup: 'shape',
+  },
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Spacing',
+  excerpt: '',
+  slug: 'spacing',
+  parentId: tokensPageId,
+  order: 3,
+  useCustomLayout: true,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: {
+    type: 'tokens',
+    tokenGroup: 'spacing',
+  },
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Depth',
+  excerpt: '',
+  slug: 'depth',
+  parentId: tokensPageId,
+  order: 5,
+  useCustomLayout: true,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: {
+    type: 'tokens',
+    tokenGroup: 'depth',
+  },
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Motion',
+  excerpt: '',
+  slug: 'motion',
+  parentId: tokensPageId,
+  order: 6,
+  useCustomLayout: true,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: {
+    type: 'tokens',
+    tokenGroup: 'motion',
+  },
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Breakpoints',
+  excerpt: '',
+  slug: 'breakpoints',
+  parentId: tokensPageId,
+  order: 7,
+  useCustomLayout: true,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: {
+    type: 'tokens',
+    tokenGroup: 'breakpoints',
+  },
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Z-index',
+  excerpt: '',
+  slug: 'zIndex',
+  parentId: tokensPageId,
+  order: 8,
+  useCustomLayout: true,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: {
+    type: 'tokens',
+    tokenGroup: 'zIndex',
+  },
   keywords: [],
   hasSeparatorInNav: false,
 });

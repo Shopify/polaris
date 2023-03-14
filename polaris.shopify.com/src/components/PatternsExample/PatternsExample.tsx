@@ -3,12 +3,10 @@ import {format} from 'prettier/standalone';
 import babel from 'prettier/parser-babel';
 import endent from 'endent';
 import {createUrl} from 'playroom';
-import {Stack} from '../Stack';
 import styles from './PatternsExample.module.scss';
 import GrowFrame from '../GrowFrame';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
-import {PatternExample} from '../../types';
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
 
@@ -111,29 +109,28 @@ const PatternsExample = ({
   const sandboxCode = example.sandboxContext
     ? formatCodeSnippet(
         example.sandboxContext
-          .replace(/\\\#/g, "")
-          .replace(/____CODE____;?/, formattedCode)
+          .replace(/\\\#/g, '')
+          .replace(/____CODE____;?/, formattedCode),
       )
     : formattedCode;
 
   const previewCode = example.previewContext
     ? formatCodeSnippet(
         example.previewContext
-          .replace(/\\\#/g, "")
-          .replace(/____CODE____;?/, formattedCode)
+          .replace(/\\\#/g, '')
+          .replace(/____CODE____;?/, formattedCode),
       )
     : formattedCode;
 
   const previewUrl = `/playroom/preview/index.html${createUrl({
     code: previewCode,
-    themes: ["locale:en"],
-    paramType: "search",
+    themes: ['locale:en'],
+    paramType: 'search',
   })}`;
 
   return (
-    <Stack gap="2" className={styles.SpecificityBuster}>
+    <>
       <ExampleWrapper
-        className={styles.ExampleWrapper}
         renderFrameActions={() => (
           <Fragment>
             <PlayroomButton code={sandboxCode} patternName={patternName} />
@@ -162,7 +159,7 @@ const PatternsExample = ({
           ]}
         />
       ) : null}
-    </Stack>
+    </>
   );
 };
 

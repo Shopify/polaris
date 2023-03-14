@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next';
-import {getPageUrl, getPageWithUrl} from '../../src/components/Editor/utils';
+import {getPageUrl, getResolvedPage} from '../../src/components/Editor/utils';
 import {PageWithUrl} from '../../src/components/Editor/types';
 import {Grid, GridItem, GridItemProps} from '../../src/components/Grid';
 import Longform from '../../src/components/Longform';
@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const page = pages.find((page) => page.slug === 'patterns');
 
   if (page) {
-    const pageWithUrl = getPageWithUrl(content, page);
+    const pageWithUrl = getResolvedPage(content, page);
     const patterns: Props['patterns'] = pages
       .filter(({parentId}) => parentId === pageWithUrl.id)
       .map((page) => {

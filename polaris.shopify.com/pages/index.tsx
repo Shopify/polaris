@@ -1,5 +1,5 @@
 import HomePage from '../src/components/HomePage';
 
-const Resources = () => <HomePage />;
+const Home = () => <HomePage />;
 
-export default Resources;
+export default Home;

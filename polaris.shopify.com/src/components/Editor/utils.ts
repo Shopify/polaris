@@ -1,36 +1,63 @@
-import {Content, Page, PageInfo, PageInfoWithUrl, PageWithUrl} from './types';
+import {
+  Content,
+  Image,
+  Page,
+  ResolvedPage,
+  ResolvedPageWithBlocks,
+} from './types';
 
 export function getPageByPath(content: Content, path: string): Page | null {
   const page = content.pages.find((page) => getPageUrl(content, page) === path);
   return page || null;
 }
 
-export function getPageUrl(content: Content, page: Page | PageInfo): string {
+export function getPageUrl(
+  content: Content,
+  page: Page | ResolvedPage,
+): string {
+  // TODO: Include leading slash
   const pageStack = getPageStack(content, page);
   return pageStack.map((page) => page.slug).join('/');
 }
 
-export function getPageWithUrl(content: Content, page: Page): PageWithUrl {
+export function getResolvedPage(content: Content, page: Page): ResolvedPage {
+  let images: Image[] = [];
+
+  if (page.thumbnailImageId) {
+    const thumbnailImage = content.images.find(
+      (image) => image.id === page.thumbnailImageId,
+    );
+    if (thumbnailImage) {
+      images = [thumbnailImage];
+    }
+  }
+
   return {
     ...page,
     url: getPageUrl(content, page),
     pageStack: getPageStack(content, page),
+    images,
   };
 }
 
-export function getPageInfoWithUrl(
-  content: Content,
-  pageInfo: PageInfo,
-): PageInfoWithUrl {
+export function getImageDimensions(
+  dimensions: {width: number; height: number},
+  maxWidth: number,
+): {
+  width: number;
+  height: number;
+} {
+  const ratio = dimensions.width / dimensions.height;
+  const height = maxWidth / ratio;
+
   return {
-    ...pageInfo,
-    url: getPageUrl(content, pageInfo),
-    pageStack: getPageStack(content, pageInfo),
+    width: maxWidth,
+    height,
   };
 }
 
-export function getPageInfo(page: Page): PageInfo {
-  const pageInfo: PageInfo = {
+export function getUnresolvedPage(page: ResolvedPage): Page {
+  const pageInfo: Page = {
     id: page.id,
     title: page.title,
     excerpt: page.excerpt,
@@ -45,14 +72,30 @@ export function getPageInfo(page: Page): PageInfo {
     hideInNav: page.hideInNav,
     noIndex: page.noIndex,
     hasSeparatorInNav: page.hasSeparatorInNav,
+    thumbnailImageId: page.thumbnailImageId,
   };
   return pageInfo;
 }
 
-export function getPageStack(content: Content, pageInfo: PageInfo): PageInfo[] {
-  let parents: PageInfo[] = [];
+export function getResolvedPageWithBlocks(
+  content: Content,
+  page: Page,
+): ResolvedPageWithBlocks {
+  const resolvedPageInfo = getResolvedPage(content, page);
+  const blocks = content.pages.find((p) => p.id === page.id)?.blocks;
+  if (!blocks) {
+    throw new Error(`No blocks found for page with id ${page.id}`);
+  }
+  return {
+    ...resolvedPageInfo,
+    blocks,
+  };
+}
 
-  function getParent(currentPage: Page | PageInfo): Page | undefined {
+export function getPageStack(content: Content, page: Page): Page[] {
+  let parents: Page[] = [];
+
+  function getParent(currentPage: Page): Page | undefined {
     if (currentPage.parentId) {
       const parent = content.pages.find(
         (page) => page.id === currentPage.parentId,
@@ -65,7 +108,7 @@ export function getPageStack(content: Content, pageInfo: PageInfo): PageInfo[] {
     return undefined;
   }
 
-  getParent(pageInfo);
-  parents.push(pageInfo);
+  getParent(page);
+  parents.push(page);
   return parents;
 }

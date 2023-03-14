@@ -11,7 +11,7 @@ import {content} from '../../../../src/content';
 import {
   getPageByPath,
   getPageStack,
-  getPageWithUrl,
+  getResolvedPage,
 } from '../../../../src/components/Editor/utils';
 import {PageWithUrl} from '../../../../src/components/Editor/types';
 import EditorRenderer from '../../../../src/components/EditorRenderer';
@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps<
   );
 
   if (page && page.pageMeta?.type === 'components') {
-    const pageWithUrl = getPageWithUrl(content, page);
+    const pageWithUrl = getResolvedPage(content, page);
 
     const examples = page.pageMeta.examples.map((example) => {
       const examplePath = path.resolve(

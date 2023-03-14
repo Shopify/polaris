@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {className} from '../../utils/various';
 import {useMedia} from '../../utils/hooks';
-import Image from '../Image';
+import Image from 'next/image';
 import PageMeta from '../PageMeta';
 import styles from './HomePage.module.scss';
 

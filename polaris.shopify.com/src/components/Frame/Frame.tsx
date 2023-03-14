@@ -205,11 +205,11 @@ function NavItem({
           href={`/${item.url}`}
           onClick={handleLinkClick}
           aria-current={isCurrent ? 'page' : 'false'}
-          onKeyDown={(evt) => {
-            if (level === 0 && i === 0) {
-              handleShiftTabOnFirstLink(evt);
-            }
-          }}
+          // onKeyDown={(evt) => {
+          //   if (level === 0 && i === 0) {
+          //     handleShiftTabOnFirstLink(evt);
+          //   }
+          // }}
         >
           {item.title}
 

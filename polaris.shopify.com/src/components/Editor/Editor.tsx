@@ -13,7 +13,6 @@ import {nanoid} from 'nanoid';
 import styles from './Editor.module.scss';
 import Image from 'next/image';
 import {
-  Page,
   BaseBlock,
   Block,
   BlockType,
@@ -30,6 +29,9 @@ import {
   PageMetaType,
   PageMeta,
   pageMetaTypes,
+  tokenGroups,
+  TokenGroup,
+  PageWithBlocks,
 } from './types';
 import {
   ActionList,
@@ -58,10 +60,10 @@ import {
 } from '@shopify/polaris-icons';
 import enTranslations from '@shopify/polaris/locales/en.json';
 import {className} from '../../utils/various';
-import {getPageStack} from './utils';
+import {getPageStack, getImageDimensions} from './utils';
 
 function assertUnreachable(_: never): never {
-  throw new Error("Didn't expect to get here");
+  throw new Error('assertUnreachable was called, which should never happen');
 }
 
 function getEmptyBlock(
@@ -135,8 +137,8 @@ const ContentContext = createContext<{
   content: Content;
   setContent: Dispatch<SetStateAction<Content>>;
   addPage: (parent: string | null) => void;
-  movePage: (page: Page, direction: 'up' | 'down') => void;
-  deletePage: (page: Page) => void;
+  movePage: (page: PageWithBlocks, direction: 'up' | 'down') => void;
+  deletePage: (page: PageWithBlocks) => void;
 }>({
   content: {
     pages: [],
@@ -200,14 +202,19 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       case 'patterns':
         pageMeta = {
           type: 'patterns',
-          tags: [],
         };
         break;
 
       case 'foundations': {
         pageMeta = {
           type: 'foundations',
-          icon: '',
+        };
+      }
+
+      case 'tokens': {
+        pageMeta = {
+          type: 'tokens',
+          tokenGroup: tokenGroups[0],
         };
       }
 
@@ -218,7 +225,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
         assertUnreachable(pageMetaType);
     }
 
-    const newPage: Page = {
+    const newPage: PageWithBlocks = {
       id: pageId,
       title: 'New page',
       slug: pageId,
@@ -234,6 +241,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       hideInNav: false,
       noIndex: false,
       hasSeparatorInNav: false,
+      thumbnailImageId: null,
     };
 
     setContent((content) => ({
@@ -244,7 +252,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     setEditedPageId(pageId);
   }
 
-  function sortPages(pages: Page[], parentId: string | null) {
+  function sortPages(pages: PageWithBlocks[], parentId: string | null) {
     let index = -1;
     return pages
       .sort((a, b) => a.order - b.order)
@@ -257,7 +265,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       });
   }
 
-  function movePage(page: Page, direction: 'up' | 'down') {
+  function movePage(page: PageWithBlocks, direction: 'up' | 'down') {
     const indexDiff = direction === 'up' ? -1.5 : 1.5;
     setContent((content) => {
       const newPages = [...content.pages].map((thisPage) => {
@@ -270,7 +278,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     });
   }
 
-  function deletePage(page: Page) {
+  function deletePage(page: PageWithBlocks) {
     if (editedPageId === page.id) {
       setEditedPageId(null);
     }
@@ -339,7 +347,7 @@ function PageNavItem({
   onPageClick,
   editedPageId,
 }: {
-  page: Page;
+  page: PageWithBlocks;
   onPageClick: (pageId: string) => void;
   editedPageId: string | null;
 }) {
@@ -395,7 +403,7 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
     ({parentId}) => parentId === editedPageId,
   );
 
-  function updatePage(newPage: Page) {
+  function updatePage(newPage: PageWithBlocks) {
     setContent((content) => ({
       ...content,
       pages: content.pages.map((page) =>
@@ -465,6 +473,13 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                     helpText="The excerpt is used in overview pages and in search results."
                     multiline={true}
                     autoComplete="off"
+                  />
+
+                  <ImagePicker
+                    imageId={editedPage.thumbnailImageId}
+                    onPick={(thumbnailImageId) =>
+                      updatePage({...editedPage, thumbnailImageId})
+                    }
                   />
 
                   <Checkbox
@@ -599,8 +614,8 @@ function PageMetaEditor({
   page,
   updatePage,
 }: {
-  page: Page;
-  updatePage: (page: Page) => void;
+  page: PageWithBlocks;
+  updatePage: (page: PageWithBlocks) => void;
 }) {
   const {pageMeta} = page;
 
@@ -629,13 +644,23 @@ function PageMetaEditor({
       return null;
 
     case 'foundations':
+      return null;
+
+    case 'tokens':
       return (
-        <TextField
-          type="text"
-          value={pageMeta.icon}
-          onChange={(icon) => updateMeta({...pageMeta, icon})}
-          label="Icon"
-          autoComplete="false"
+        <Select
+          label="Token type"
+          options={[
+            ...tokenGroups.map((groupName) => ({
+              label: groupName,
+              value: groupName,
+            })),
+          ]}
+          onChange={(value) => {
+            const tokenGroup = value as TokenGroup;
+            updateMeta({...pageMeta, tokenGroup});
+          }}
+          value={pageMeta.tokenGroup}
         />
       );
   }
@@ -1113,22 +1138,6 @@ function ImagePicker({
   const selectedImage = content.images.find((image) => image.id === imageId);
   const lightVariant = selectedImage?.variants[ColorScheme.Light];
   const inspectedImage = content.images.find(({id}) => id === selectedImageId);
-
-  function getImageDimensions(
-    dimensions: {width: number; height: number},
-    maxWidth: number,
-  ): {
-    width: number;
-    height: number;
-  } {
-    const ratio = dimensions.width / dimensions.height;
-    const height = maxWidth / ratio;
-
-    return {
-      width: maxWidth,
-      height,
-    };
-  }
 
   return (
     <>

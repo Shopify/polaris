@@ -1,4 +1,4 @@
-export interface PageInfo {
+export interface Page {
   id: string;
   title: string;
   excerpt: string;
@@ -13,19 +13,20 @@ export interface PageInfo {
   hideInNav: boolean;
   noIndex: boolean;
   hasSeparatorInNav: boolean;
+  thumbnailImageId: string | null;
 }
 
-export interface PageInfoWithUrl extends PageInfo {
+export interface PageWithBlocks extends Page {
+  blocks: Block[];
+}
+
+export interface ResolvedPage extends Page {
   url: string;
-  pageStack: PageInfo[];
+  pageStack: Page[];
+  images: Image[];
 }
 
-export interface PageWithUrl extends Page {
-  url: string;
-  pageStack: PageInfo[];
-}
-
-export interface Page extends PageInfo {
+export interface ResolvedPageWithBlocks extends ResolvedPage {
   blocks: Block[];
 }
 
@@ -33,7 +34,12 @@ export type BasePageMeta = {
   type: PageMetaType;
 };
 
-export const pageMetaTypes = ['components', 'patterns', 'foundations'] as const;
+export const pageMetaTypes = [
+  'components',
+  'patterns',
+  'foundations',
+  'tokens',
+] as const;
 export type PageMetaType = typeof pageMetaTypes[number];
 
 export const polarisComponentLifecyclePhases = [
@@ -56,18 +62,34 @@ interface ComponentsPageMeta extends BasePageMeta {
 
 interface PatternsPageMeta extends BasePageMeta {
   type: 'patterns';
-  tags: [];
 }
 
 interface FoundationsPageMeta extends BasePageMeta {
   type: 'foundations';
-  icon: string;
+}
+
+export const tokenGroups = [
+  'breakpoints',
+  'colors',
+  'depth',
+  'font',
+  'motion',
+  'shape',
+  'spacing',
+  'zIndex',
+] as const;
+export type TokenGroup = typeof tokenGroups[number];
+
+interface TokensPageMeta extends BasePageMeta {
+  type: 'tokens';
+  tokenGroup: TokenGroup;
 }
 
 export type PageMeta =
   | ComponentsPageMeta
   | PatternsPageMeta
-  | FoundationsPageMeta;
+  | FoundationsPageMeta
+  | TokensPageMeta;
 
 export const blockTypes = [
   'Markdown',
@@ -146,10 +168,16 @@ export enum ColorScheme {
 export type Image = {
   id: string;
   alt: {
-    [scheme in ColorScheme]: string;
+    [ColorScheme.Light]: string;
+    [ColorScheme.Dark]?: string;
   };
   variants: {
-    [scheme in ColorScheme]?: {
+    [ColorScheme.Light]: {
+      fileName: string;
+      width: number;
+      height: number;
+    };
+    [ColorScheme.Dark]?: {
       fileName: string;
       width: number;
       height: number;
@@ -158,6 +186,6 @@ export type Image = {
 };
 
 export interface Content {
-  pages: Page[];
+  pages: PageWithBlocks[];
   images: Image[];
 }

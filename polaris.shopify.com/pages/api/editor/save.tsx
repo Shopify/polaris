@@ -22,9 +22,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 function stringify(obj: Object): string {
-  return JSON.stringify(obj, null, 2)
-    .replace(`},\n  {`, `},\n\n  {`)
-    .replace(/"([a-z]+)":/gi, '$1:');
+  return (
+    JSON.stringify(obj, null, 2)
+      // .replace(`},\n  {`, `},\n\n  {`)
+      .replace(/"([a-z]+)":/gi, '$1:')
+  );
 }
 
 function createTsFileContent(content: Content): string {

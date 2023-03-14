@@ -1,20 +1,15 @@
 import {Grid, GridItem} from '../../src/components/Grid';
 import Page from '../../src/components/Page';
-import ComponentThumbnail from '../../src/components/ComponentThumbnail';
-import {PageWithUrl} from '../../src/components/Editor/types';
+import {ResolvedPage} from '../../src/components/Editor/types';
 import {GetStaticProps} from 'next';
 import {content} from '../../src/content';
-import {getPageWithUrl, getPageUrl} from '../../src/components/Editor/utils';
+import {getResolvedPage} from '../../src/components/Editor/utils';
 
 interface Props {
-  page: PageWithUrl;
+  page: ResolvedPage;
   groups: {
     title: string;
-    components: {
-      title: string;
-      excerpt: string;
-      url: string;
-    }[];
+    componentPages: ResolvedPage[];
   }[];
 }
 
@@ -27,16 +22,8 @@ export default function ComponentPage({page, groups}: Props) {
             <h2>{group.title}</h2>
 
             <Grid>
-              {group.components.map((component) => (
-                <GridItem
-                  key={component.title}
-                  title={component.title}
-                  description={component.excerpt}
-                  url={component.url}
-                  renderPreview={() => (
-                    <ComponentThumbnail title={component.title} />
-                  )}
-                />
+              {group.componentPages.map((page) => (
+                <GridItem key={page.id} {...page} />
               ))}
             </Grid>
           </>
@@ -51,26 +38,22 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     ({parentId, slug}) => !parentId && slug === 'components',
   );
   if (page) {
-    const pageWithUrl = getPageWithUrl(content, page);
+    const resolvedPage = getResolvedPage(content, page);
     let groups: Props['groups'] = [];
 
     content.pages
-      .filter((page) => page.parentId === pageWithUrl.id)
+      .filter((page) => page.parentId === resolvedPage.id)
       .forEach((groupPage) => {
         groups.push({
           title: groupPage.title,
-          components: content.pages
+          componentPages: content.pages
             .filter((page) => page.parentId === groupPage.id)
-            .map((componentPage) => ({
-              title: componentPage.title,
-              excerpt: componentPage.excerpt,
-              url: getPageUrl(content, componentPage),
-            })),
+            .map((componentPage) => getResolvedPage(content, componentPage)),
         });
       });
 
     return {
-      props: {page: pageWithUrl, groups},
+      props: {page: resolvedPage, groups},
     };
   } else {
     return {notFound: true};

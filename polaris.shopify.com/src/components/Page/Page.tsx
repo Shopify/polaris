@@ -36,7 +36,7 @@ function Page({page, showTOC = true, children}: Props) {
         noIndex={page.noIndex}
       />
 
-      <Box as="article" className={styles.Post} id="main">
+      <article className={styles.Post} id="main">
         <Breadcrumbs currentPage={page} />
 
         <Longform>
@@ -53,7 +53,7 @@ function Page({page, showTOC = true, children}: Props) {
             <Link href={feedbackUrl}>Leave feedback</Link>
           </p>
         </footer>
-      </Box>
+      </article>
 
       {showTOC && (
         <div className={styles.TOCWrapper}>

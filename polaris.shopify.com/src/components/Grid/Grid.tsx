@@ -1,96 +1,51 @@
 import Link from 'next/link';
-import React, {forwardRef} from 'react';
-import {type SpacingSpaceScale} from '@shopify/polaris-tokens';
+import Image from 'next/image';
+import React from 'react';
 import {stripMarkdownLinks} from '../../utils/various';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import styles from './Grid.module.scss';
 import SearchResultHighlight from '../SearchResultHighlight';
 import {Status} from '../../types';
 import StatusBadge from '../StatusBadge';
-import {Box, type WithAsProp} from '../Box';
+import {ColorScheme, ResolvedPage} from '../Editor/types';
 
 export interface GridProps {
-  condensed?: boolean;
-  /* Set default values for both x & y gap values. */
-  gap?: SpacingSpaceScale;
-  /* Set value for x gaps. Will overwrite any `gap` value set. */
-  gapX?: SpacingSpaceScale;
-  /* Set value for y gaps. Will overwrite any `gap` value set. */
-  gapY?: SpacingSpaceScale;
-  /* Set the minimum width of grid items. <Grid> will attempt to pack as many
-   * <GridItems> in as possible without going below this size. Note: A <GridItem>
-   * will never expand to be wider than the <Grid> container, meaning small
-   * screens might cause a <GridItem> to shrink below this value. */
-  itemMinWidth?: string;
+  children: React.ReactNode;
 }
 
-export const Grid = forwardRef(
-  (
-    {
-      as = 'ul',
-      gap,
-      gapX = gap,
-      gapY = gap,
-      itemMinWidth,
-      condensed,
-      className,
-      ...props
-    },
-    ref,
-  ) => (
-    <Box
-      as={as}
-      ref={ref}
-      style={{
-        // @ts-expect-error The types for `style` don't support css vars
-        '--props-grid-gap':
-          typeof gap !== 'undefined'
-            ? `${0.25 * parseFloat(gap)}rem)`
-            : undefined,
-        '--props-grid-gap-x':
-          typeof gapX !== 'undefined'
-            ? `${0.25 * parseFloat(gapX)}rem)`
-            : undefined,
-        '--props-grid-gap-y':
-          typeof gapY !== 'undefined'
-            ? `${0.25 * parseFloat(gapY)}rem)`
-            : undefined,
-        '--props-grid-item-min-width': itemMinWidth,
-      }}
-      className={[styles.Grid, condensed && styles.condensed, className]}
-      {...props}
-    />
-  ),
-) as WithAsProp<GridProps, typeof Box, 'ul'>;
+export const Grid = ({children}: GridProps) => (
+  <ul className={styles.Grid}>{children}</ul>
+);
 
-Grid.displayName = 'Grid';
+export type GridItemProps = ResolvedPage;
 
-export interface GridItemProps {
-  title: string;
-  url: string;
-  description?: string;
-  renderPreview?: () => React.ReactNode;
-  status?: Status;
-}
-
-export const GridItem = forwardRef(
-  ({as = 'li', title, description, url, renderPreview, status}, ref) => {
-    const searchAttributes = useGlobalSearchResult();
-    return (
-      <Box as={as} ref={ref} className={styles.GridItem} {...searchAttributes}>
-        <Link href={url} className={styles.Text}>
-          <SearchResultHighlight />
-          {renderPreview && (
-            <div className={styles.Preview}>{renderPreview()}</div>
-          )}
-          <h4>
-            {title} {status && <StatusBadge status={status} />}
-          </h4>
-          <p>{stripMarkdownLinks(description || '')}</p>
-        </Link>
-      </Box>
-    );
-  },
-) as WithAsProp<GridItemProps, typeof Box, 'li'>;
-
-GridItem.displayName = 'GridItem';
+export const GridItem = ({
+  title,
+  url,
+  excerpt,
+  thumbnailImageId,
+  images,
+}: GridItemProps) => {
+  const searchAttributes = useGlobalSearchResult();
+  const coverImage = images.find((image) => image.id === thumbnailImageId);
+  return (
+    <li className={styles.GridItem} {...searchAttributes}>
+      <Link href={url} className={styles.Text}>
+        <SearchResultHighlight />
+        {coverImage && (
+          <Image
+            src={`/uploads/${coverImage.variants[ColorScheme.Light].fileName}`}
+            alt={coverImage.alt.light}
+            width={coverImage.variants[ColorScheme.Light].width}
+            height={coverImage.variants[ColorScheme.Light].height}
+          />
+        )}
+        <h4>
+          {title}
+          {/* {status && <StatusBadge status={status} />} */}
+        </h4>
+        <p>{stripMarkdownLinks(excerpt)}</p>
+      </Link>
+    </li>
+  );
+};

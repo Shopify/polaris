@@ -287,6 +287,12 @@ button {
   }
 }
 
+img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -357,11 +363,6 @@ button {
       &::before {
         background: #ea5945;
       }
-    }
-
-    img {
-      width: auto;
-      max-width: 100%;
     }
 
     h3 {

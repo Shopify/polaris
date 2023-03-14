@@ -12,9 +12,6 @@ import {Grid, GridItem} from '../Grid';
 import TokenList from '../TokenList';
 import {Dialog} from '@headlessui/react';
 import {KeyboardEventHandler} from 'react';
-import FoundationsThumbnail from '../FoundationsThumbnail';
-import PatternThumbnailPreview from '../ThumbnailPreview';
-import ComponentThumbnail from '../ComponentThumbnail';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
   foundations: 'Foundations',
@@ -252,12 +249,7 @@ function SearchResults({
                           title={title}
                           description={description}
                           url={url}
-                          renderPreview={() => (
-                            <FoundationsThumbnail
-                              icon={icon}
-                              category={category}
-                            />
-                          )}
+                          renderPreview={() => <p>Todo: Implement thumbnail</p>}
                         />
                       </SearchContext.Provider>
                     );
@@ -282,12 +274,7 @@ function SearchResults({
                           url={url}
                           description={description}
                           title={title}
-                          renderPreview={() => (
-                            <PatternThumbnailPreview
-                              alt={title}
-                              src={previewImg}
-                            />
-                          )}
+                          renderPreview={() => <p>TODO: Fix preview</p>}
                         />
                       </SearchContext.Provider>
                     );
@@ -314,9 +301,7 @@ function SearchResults({
                           description={description}
                           title={title}
                           status={status}
-                          renderPreview={() => (
-                            <ComponentThumbnail title={title} group={group} />
-                          )}
+                          renderPreview={() => <p>Todo: Implement thumbnail</p>}
                         />
                       </SearchContext.Provider>
                     );

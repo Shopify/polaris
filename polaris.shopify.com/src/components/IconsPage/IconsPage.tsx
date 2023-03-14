@@ -11,9 +11,9 @@ import SearchField from '../SearchField';
 import {SearchMajor} from '@shopify/polaris-icons';
 import Icon from '../Icon';
 import IconDetails from '../IconDetails';
-import PageMeta from '../PageMeta';
 import {className} from '../../utils/various';
 import Page from '../Page';
+import {PageWithUrl} from '../Editor/types';
 
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
@@ -63,7 +63,11 @@ function scrollToActiveIcon(activeIcon: string): void {
   }
 }
 
-function IconsPage() {
+interface Props {
+  page: PageWithUrl;
+}
+
+function IconsPage({page}: Props) {
   const router = useRouter();
   const useModal = useMedia('screen and (max-width: 1400px)');
   const [searchText, setSearchText] = useState('');
@@ -99,19 +103,13 @@ function IconsPage() {
     router.push({query});
   };
 
-  const pageTitle = iconMetadata[activeIcon]
-    ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
-    : 'Icons';
-
   const githubIssueTitle = `[Icon] New icon ${searchText}`;
   const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?labels=Icon&template=NEW_ICON.yml&title=${encodeURIComponent(
     githubIssueTitle,
   )}`;
 
   return (
-    <Page title="Icons">
-      <PageMeta title={pageTitle} />
-
+    <Page page={page} showTOC={false}>
       <div className={className(!useModal && styles.PageLayout)}>
         <div className={styles.IconGrids}>
           <SearchField
