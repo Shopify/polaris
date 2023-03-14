@@ -5,8 +5,8 @@ category: Layout and structure
 keywords:
   - layout
 status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+  value: Beta
+  message: This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: bleed-horizontal.tsx
     title: Horizontal
