@@ -110,6 +110,8 @@ export interface IndexTableBaseProps {
   /** Optional dictionary of sort toggle labels for each sortable column, with ascending and descending label,
    * with the key as the index of the column */
   sortToggleLabels?: IndexTableSortToggleLabels;
+  /** Add zebra striping to table rows */
+  hasZebraStriping?: boolean;
 }
 
 export interface TableHeadingRect {
@@ -135,6 +137,7 @@ function IndexTableBase({
   sortColumnIndex,
   onSort,
   sortToggleLabels,
+  hasZebraStriping,
   ...restProps
 }: IndexTableBaseProps) {
   const {
@@ -702,6 +705,7 @@ function IndexTableBase({
       lastColumnSticky &&
       canScrollRight &&
       styles['Table-sticky-scrolling'],
+    hasZebraStriping && styles.ZebraStriping,
   );
 
   const emptyStateMarkup = emptyState ? (
@@ -723,12 +727,17 @@ function IndexTableBase({
     </>
   );
 
+  const condensedClassNames = classNames(
+    styles.CondensedList,
+    hasZebraStriping && styles.ZebraStriping,
+  );
+
   const bodyMarkup = condensed ? (
     <>
       {sharedMarkup}
       <ul
         data-selectmode={Boolean(selectMode)}
-        className={styles.CondensedList}
+        className={condensedClassNames}
         ref={condensedListElement}
       >
         {children}
