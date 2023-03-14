@@ -3430,11 +3430,6 @@
     postcss-flexbugs-fixes "^5.0.2"
     postcss-will-change "^4.0.1"
 
-"@shopify/prettier-config@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@shopify/prettier-config/-/prettier-config-1.1.2.tgz#612f87c0cd1196e8b43c85425e587d0fa7f1172d"
-  integrity sha512-5ugCL9sPGzmOaZjeRGaWUWhHgAbemrS6z+R7v6gwiD+BiqSeoFhIY+imLpfdFCVpuOGalpHeCv6o3gv++EHs0A==
-
 "@shopify/react-testing@^4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-4.1.0.tgz#0564c5977f0cfbcda37c4b181b5ff52740ade970"

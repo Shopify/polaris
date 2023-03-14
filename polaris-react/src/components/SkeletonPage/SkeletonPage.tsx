@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-import {SkeletonBodyText} from '../SkeletonBodyText';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
 import {Stack} from '../Stack';
@@ -17,8 +16,10 @@ export interface SkeletonPageProps {
   narrowWidth?: boolean;
   /** Shows a skeleton over the primary action */
   primaryAction?: boolean;
-  /** Shows a skeleton over the breadcrumb */
+  /** @deprecated Use backAction instead */
   breadcrumbs?: boolean;
+  /** Shows a skeleton over the backAction */
+  backAction?: boolean;
   /** The child elements to render in the skeleton page. */
   children?: React.ReactNode;
 }
@@ -29,6 +30,7 @@ export function SkeletonPage({
   narrowWidth,
   primaryAction,
   title = '',
+  backAction,
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
@@ -56,11 +58,16 @@ export function SkeletonPage({
     />
   ) : null;
 
-  const breadcrumbMarkup = breadcrumbs ? (
-    <Box maxWidth="60px" paddingBlockStart="4" paddingBlockEnd="4">
-      <SkeletonBodyText lines={1} />
-    </Box>
-  ) : null;
+  const breadcrumbMarkup =
+    breadcrumbs || backAction ? (
+      <Box
+        borderRadius="1"
+        background="surface-neutral"
+        minHeight="2.25rem"
+        minWidth="2.25rem"
+        maxWidth="2.25rem"
+      />
+    ) : null;
 
   return (
     <Stack gap="4" align="center">
@@ -87,11 +94,13 @@ export function SkeletonPage({
             paddingInlineEnd={{xs: '4', sm: '0'}}
             width="100%"
           >
-            {breadcrumbMarkup}
             <Inline gap="4" align="space-between" blockAlign="center">
-              <Box paddingBlockStart="1" paddingBlockEnd="1">
-                {titleContent}
-              </Box>
+              <Inline gap="4">
+                {breadcrumbMarkup}
+                <Box paddingBlockStart="1" paddingBlockEnd="1">
+                  {titleContent}
+                </Box>
+              </Inline>
               {primaryActionMarkup}
             </Inline>
           </Box>

@@ -303,7 +303,6 @@ export function Item({
 
     const SecondaryNavigationClassName = classNames(
       styles.SecondaryNavigation,
-      showExpanded && styles.isExpanded,
       !icon && styles['SecondaryNavigation-noIcon'],
     );
 
