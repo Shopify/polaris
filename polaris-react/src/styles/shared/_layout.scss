@@ -1,12 +1,3 @@
-/// To be used on flex items. Resolves some common layout issues, such as
-/// text truncation not respecting padding or breaking out of container.
-/// https://css-tricks.com/flexbox-truncated-text/
-
-@mixin layout-flex-fix {
-  min-width: 0;
-  max-width: 100%;
-}
-
 /// Returns a safe-area-inset for iPhone X screen obtrusions.
 ///
 /// @param {String} $property - The property name i.e. padding-left.

@@ -2,16 +2,8 @@
   @return 36px;
 }
 
-@function control-slim-height() {
-  @return 28px;
-}
-
 @function control-vertical-padding() {
   @return calc((36px - var(--p-font-line-height-3) - var(--p-space-05)) / 2);
-}
-
-@function control-icon-transition() {
-  @return transform var(--p-duration-100) var(--p-ease-in);
 }
 
 @mixin control-backdrop($style: base) {
