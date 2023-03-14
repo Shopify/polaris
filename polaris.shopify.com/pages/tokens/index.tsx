@@ -1,12 +1,15 @@
 import {Grid, GridItem} from '../../src/components/Grid';
 import Page from '../../src/components/Page';
-import {ResolvedPage} from '../../src/components/Editor/types';
+import {
+  ResolvedPage,
+  ResolvedPageWithBlocks,
+} from '../../src/components/Editor/types';
 import {GetStaticProps} from 'next';
 import {content} from '../../src/content';
 import {getResolvedPage} from '../../src/components/Editor/utils';
 
 interface Props {
-  page: ResolvedPage;
+  page: ResolvedPageWithBlocks;
   subPages: ResolvedPage[];
 }
 
@@ -27,7 +30,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     ({parentId, slug}) => !parentId && slug === 'tokens',
   );
   if (page) {
-    const resolvedPage = getResolvedPage(content, page);
+    const resolvedPage = getResolvedPage(content, page, true);
     let subPages = content.pages
       .filter((page) => page.parentId === resolvedPage.id)
       .map((componentPage) => getResolvedPage(content, componentPage));

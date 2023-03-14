@@ -5,7 +5,7 @@ import {
   CodeBlock,
   ImageBlock,
   MarkdownBlock,
-  Page as PageType,
+  ResolvedPageWithBlocks,
   SandboxEmbedBlock,
   TextImageBlock,
   YoutubeVideoBlock,
@@ -15,7 +15,7 @@ import Markdown from '../Markdown';
 import styles from './EditorRenderer.module.scss';
 
 interface Props {
-  page: PageType;
+  page: ResolvedPageWithBlocks;
 }
 
 function EditorRenderer({page}: Props) {

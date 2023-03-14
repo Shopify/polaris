@@ -31,7 +31,7 @@ import {
   pageMetaTypes,
   tokenGroups,
   TokenGroup,
-  PageWithBlocks,
+  Page,
   PolarisComponentLifecyclePhase,
   polarisComponentLifecyclePhases,
 } from './types';
@@ -62,7 +62,7 @@ import {
 } from '@shopify/polaris-icons';
 import enTranslations from '@shopify/polaris/locales/en.json';
 import {className} from '../../utils/various';
-import {getPageStack, getImageDimensions} from './utils';
+import {getPageStack, getImageDimensions, getResolvedPage} from './utils';
 
 function assertUnreachable(_: never): never {
   throw new Error('assertUnreachable was called, which should never happen');
@@ -139,11 +139,12 @@ const ContentContext = createContext<{
   content: Content;
   setContent: Dispatch<SetStateAction<Content>>;
   addPage: (parent: string | null) => void;
-  movePage: (page: PageWithBlocks, direction: 'up' | 'down') => void;
-  deletePage: (page: PageWithBlocks) => void;
+  movePage: (page: Page, direction: 'up' | 'down') => void;
+  deletePage: (page: Page) => void;
 }>({
   content: {
     pages: [],
+    blocks: [],
     images: [],
   },
   setContent: () => undefined,
@@ -197,7 +198,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
         pageMeta = {
           type: 'components',
           examples: [],
-          lifeCyclePhase: 'alfa',
+          lifeCyclePhase: 'Alpha',
           lifeCycleNotice: '',
         };
         break;
@@ -228,7 +229,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
         assertUnreachable(pageMetaType);
     }
 
-    const newPage: PageWithBlocks = {
+    const newPage: Page = {
       id: pageId,
       title: 'New page',
       slug: pageId,
@@ -236,7 +237,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       excerpt: '',
       order: siblings.length,
       useCustomLayout: false,
-      blocks: [],
+      blockIds: [],
       keywords: [],
       childPageMetaType: null,
       pageMeta,
@@ -255,7 +256,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     setEditedPageId(pageId);
   }
 
-  function sortPages(pages: PageWithBlocks[], parentId: string | null) {
+  function sortPages(pages: Page[], parentId: string | null) {
     let index = -1;
     return pages
       .sort((a, b) => a.order - b.order)
@@ -268,7 +269,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       });
   }
 
-  function movePage(page: PageWithBlocks, direction: 'up' | 'down') {
+  function movePage(page: Page, direction: 'up' | 'down') {
     const indexDiff = direction === 'up' ? -1.5 : 1.5;
     setContent((content) => {
       const newPages = [...content.pages].map((thisPage) => {
@@ -281,7 +282,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
     });
   }
 
-  function deletePage(page: PageWithBlocks) {
+  function deletePage(page: Page) {
     if (editedPageId === page.id) {
       setEditedPageId(null);
     }
@@ -350,7 +351,7 @@ function PageNavItem({
   onPageClick,
   editedPageId,
 }: {
-  page: PageWithBlocks;
+  page: Page;
   onPageClick: (pageId: string) => void;
   editedPageId: string | null;
 }) {
@@ -406,7 +407,7 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
     ({parentId}) => parentId === editedPageId,
   );
 
-  function updatePage(newPage: PageWithBlocks) {
+  function updatePage(newPage: Page) {
     setContent((content) => ({
       ...content,
       pages: content.pages.map((page) =>
@@ -617,8 +618,8 @@ function PageMetaEditor({
   page,
   updatePage,
 }: {
-  page: PageWithBlocks;
-  updatePage: (page: PageWithBlocks) => void;
+  page: Page;
+  updatePage: (page: Page) => void;
 }) {
   const {pageMeta} = page;
 
@@ -701,15 +702,14 @@ function BlockList({
 
   const page = content.pages.find((page) => page.id === pageId);
   if (!page) throw new Error('Page not found');
-  let {blocks} = page;
-  blocks = blocks.filter((block) => block.parentBlockId === parentBlockId);
+  const resolvedPage = getResolvedPage(content, page, true);
 
   return (
     <div>
       <div className={styles.BlockList}>
         <BlockAdder pageId={pageId} parentBlockId={parentBlockId} order={0} />
 
-        {blocks
+        {resolvedPage.blocks
           .sort((a, b) => a.order - b.order)
           .map((block) => (
             <BlockEditor
@@ -738,15 +738,7 @@ function BlockEditor({
   function deleteBlock(blockId: string) {
     setContent((content) => ({
       ...content,
-      pages: content.pages.map((page) => {
-        if (page.id === pageId) {
-          return {
-            ...page,
-            blocks: page.blocks.filter((block) => block.id !== blockId),
-          };
-        }
-        return page;
-      }),
+      blocks: content.blocks.filter((block) => block.id !== blockId),
     }));
     // TODO: Update order of blocks after delte
     // TODO: Don't allow removal of blocks with children
@@ -755,31 +747,32 @@ function BlockEditor({
   function moveBlock(block: Block, direction: 'up' | 'down') {
     const indexDiff = direction === 'up' ? -1.5 : 1.5;
     setContent((content) => {
-      const page = content.pages.find((page) => page.id === pageId);
-      if (!page) throw new Error('Page not found');
-
-      const newBlocks = [...page.blocks].map((thisBlock) => {
-        return thisBlock.id === block.id
+      const newBlocks = [...content.blocks].map((thisBlock) => {
+        return thisBlock.parentBlockId === block.parentBlockId &&
+          thisBlock.parentBlockId === block.parentBlockId
           ? {...thisBlock, order: thisBlock.order + indexDiff}
           : thisBlock;
       });
-      let index = -1;
-      const sortedBlocks = newBlocks
+
+      let sortMap: {[id: string]: number} = {};
+
+      newBlocks
         .sort((a, b) => a.order - b.order)
-        .map((thisBlock) => {
-          if (thisBlock.parentBlockId === block.parentBlockId) {
-            index++;
-            return {...thisBlock, order: index};
-          }
-          return thisBlock;
+        .forEach((thisBlock, index) => {
+          sortMap[thisBlock.id] = index;
         });
+
       return {
         ...content,
-        pages: content.pages.map((thisPage) =>
-          thisPage.id === page.id
-            ? {...thisPage, blocks: sortedBlocks}
-            : thisPage,
-        ),
+        blocks: content.blocks.map((thisBlock) => {
+          if (Object.keys(sortMap).includes(thisBlock.id)) {
+            return {
+              ...thisBlock,
+              order: sortMap[thisBlock.id],
+            };
+          }
+          return thisBlock;
+        }),
       };
     });
   }
@@ -787,17 +780,9 @@ function BlockEditor({
   function handleBlockChange(updatedBlock: Block) {
     setContent((content) => ({
       ...content,
-      pages: content.pages.map((page) => {
-        if (page.id === pageId) {
-          return {
-            ...page,
-            blocks: page.blocks.map((block) =>
-              block.id === updatedBlock.id ? updatedBlock : block,
-            ),
-          };
-        }
-        return page;
-      }),
+      blocks: content.blocks.map((block) =>
+        block.id === updatedBlock.id ? updatedBlock : block,
+      ),
     }));
   }
 
@@ -882,6 +867,36 @@ function BlockEditor({
   );
 }
 
+// function sortBlocks(content: Content): Content {
+//   const orderMap: {
+//     [parentId: string]: {
+//       [blockParentId: string]: {
+//         [blockId: string]: string;
+//       };
+//     };
+//   } = {};
+
+//   const uniqueParentIds: (string | null)[] = [];
+//   content.blocks.forEach((block) => {
+//     if (!uniqueParentIds.includes(block.parentBlockId)) {
+//       uniqueParentIds.push(block.parentBlockId);
+//     }
+//   });
+
+//   uniqueParentIds.forEach((parentId) => {
+//     const uniqeBlockParentIDs: (string | null)[] = [];
+//     content.blocks.forEach((block) => {
+//       if (block.parentBlockId === parentId) {
+//         uniqeBlockParentIDs.push(block.id);
+//       }
+//     });
+//   });
+
+//   uniqueParentIds.forEach((uniqueParent) => {
+//     uniqueBlock;
+//   });
+// }
+
 function BlockAdder({
   pageId,
   parentBlockId,
@@ -899,6 +914,7 @@ function BlockAdder({
       ...getEmptyBlock(blockType, parentBlockId),
       order,
     };
+
     setContent((content) => ({
       ...content,
       pages: [

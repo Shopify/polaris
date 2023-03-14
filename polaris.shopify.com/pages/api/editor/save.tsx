@@ -39,9 +39,11 @@ function createTsFileContent(content: Content): string {
 
 const pages: Content['pages'] = ${stringify(content.pages)};
 
+const images: Content['blocks'] = ${stringify(content.blocks)};
+
 const images: Content['images'] = ${stringify(content.images)};
 
-export const content: Content = { pages, images };
+export const content: Content = { pages, blocks, images };
 `;
 }
 

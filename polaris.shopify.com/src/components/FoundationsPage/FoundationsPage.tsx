@@ -2,10 +2,10 @@ import Page from '../Page';
 import styles from './FoundationsPage.module.scss';
 import Longform from '../Longform';
 import {Grid, GridItem, GridItemProps} from '../Grid';
-import {PageWithUrl} from '../Editor/types';
+import {ResolvedPageWithBlocks} from '../Editor/types';
 
 export interface FoundationsProps {
-  page: PageWithUrl;
+  page: ResolvedPageWithBlocks;
   items: GridItemProps[];
 }
 

@@ -2,7 +2,6 @@ import {
   Content,
   Image,
   Page,
-  PageWithBlocks,
   ResolvedPage,
   ResolvedPageWithBlocks,
 } from './types';
@@ -21,7 +20,18 @@ export function getPageUrl(
   return pageStack.map((page) => page.slug).join('/');
 }
 
-export function getResolvedPage(content: Content, page: Page): ResolvedPage {
+export function getResolvedPage(content: Content, page: Page): ResolvedPage;
+export function getResolvedPage(
+  content: Content,
+  page: Page,
+  includeBlocks: true,
+): ResolvedPageWithBlocks;
+
+export function getResolvedPage(
+  content: Content,
+  page: Page,
+  includeBlocks?: true,
+): ResolvedPage | ResolvedPageWithBlocks {
   let images: Image[] = [];
 
   if (page.thumbnailImageId) {
@@ -33,12 +43,25 @@ export function getResolvedPage(content: Content, page: Page): ResolvedPage {
     }
   }
 
-  return {
+  const resolvedPage: ResolvedPage = {
     ...page,
     url: getPageUrl(content, page),
     pageStack: getPageStack(content, page),
     images,
   };
+
+  if (includeBlocks) {
+    const blocks = content.blocks.filter((block) =>
+      page.blockIds.includes(block.id),
+    );
+    const resolvedPageWithBlocks: ResolvedPageWithBlocks = {
+      ...resolvedPage,
+      blocks,
+    };
+    return resolvedPageWithBlocks;
+  } else {
+    return resolvedPage;
+  }
 }
 
 export function getImageDimensions(
@@ -54,42 +77,6 @@ export function getImageDimensions(
   return {
     width: maxWidth,
     height,
-  };
-}
-
-export function getUnresolvedPage(page: PageWithBlocks): Page {
-  const pageInfo: Page = {
-    id: page.id,
-    title: page.title,
-    excerpt: page.excerpt,
-    slug: page.slug,
-    parentId: page.parentId,
-    order: page.order,
-    useCustomLayout: page.useCustomLayout,
-    keywords: page.keywords,
-    childPageMetaType: page.childPageMetaType,
-    pageMeta: page.pageMeta,
-    allowChildren: page.allowChildren,
-    hideInNav: page.hideInNav,
-    noIndex: page.noIndex,
-    hasSeparatorInNav: page.hasSeparatorInNav,
-    thumbnailImageId: page.thumbnailImageId,
-  };
-  return pageInfo;
-}
-
-export function getResolvedPageWithBlocks(
-  content: Content,
-  page: Page,
-): ResolvedPageWithBlocks {
-  const resolvedPageInfo = getResolvedPage(content, page);
-  const blocks = content.pages.find((p) => p.id === page.id)?.blocks;
-  if (!blocks) {
-    throw new Error(`No blocks found for page with id ${page.id}`);
-  }
-  return {
-    ...resolvedPageInfo,
-    blocks,
   };
 }
 

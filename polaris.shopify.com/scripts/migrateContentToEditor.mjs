@@ -4,6 +4,7 @@ import {parseMarkdown} from '../src/utils/markdown.mjs';
 import {nanoid} from 'nanoid';
 
 const pages = [];
+const blocks = [];
 
 function createPage(
   {
@@ -25,18 +26,17 @@ function createPage(
   },
   markdown,
 ) {
-  const blocks =
+  const blockId = nanoid();
+  const block =
     useCustomLayout === false && markdown
-      ? [
-          {
-            id: nanoid(),
-            order: 0,
-            blockType: 'Markdown',
-            parentBlockId: null,
-            content: markdown.trim(),
-          },
-        ]
-      : [];
+      ? {
+          id: blockId,
+          order: 0,
+          blockType: 'Markdown',
+          parentBlockId: null,
+          content: markdown.trim(),
+        }
+      : undefined;
 
   const page = {
     id,
@@ -46,7 +46,7 @@ function createPage(
     parentId,
     order,
     useCustomLayout,
-    blocks,
+    blockIds: block ? [blockId] : [],
     allowChildren,
     hideInNav,
     noIndex,
@@ -58,6 +58,9 @@ function createPage(
   };
 
   pages.push(page);
+  if (block) {
+    blocks.push(block);
+  }
 }
 
 // Migrate components
@@ -734,9 +737,11 @@ const file = `import { Content } from './components/Editor/types';
 
 const pages : Content['pages'] = ${JSON.stringify(pages, null, 2)};
 
+const blocks : Content['blocks'] = ${JSON.stringify(blocks, null, 2)};
+
 const images : Content['images'] = [];
 
-export const content : Content = { pages, images };
+export const content : Content = { pages, blocks, images };
 `;
 
 fs.writeFileSync('src/content.ts', file, 'utf8');

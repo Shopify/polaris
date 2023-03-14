@@ -14,10 +14,7 @@ export interface Page {
   noIndex: boolean;
   hasSeparatorInNav: boolean;
   thumbnailImageId: string | null;
-}
-
-export interface PageWithBlocks extends Page {
-  blocks: Block[];
+  blockIds: string[];
 }
 
 export interface ResolvedPage extends Page {
@@ -199,6 +196,7 @@ export type Image = {
 };
 
 export interface Content {
-  pages: PageWithBlocks[];
+  pages: Page[];
+  blocks: Block[];
   images: Image[];
 }

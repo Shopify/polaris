@@ -1,6 +1,6 @@
 import type {GetStaticPaths, GetStaticProps} from 'next';
 import React from 'react';
-import {PageWithUrl} from '../../src/components/Editor/types';
+import {ResolvedPageWithBlocks} from '../../src/components/Editor/types';
 import {
   getPageByPath,
   getPageStack,
@@ -12,7 +12,7 @@ import TokensPage from '../../src/components/TokensPage';
 import {content} from '../../src/content';
 
 interface Props {
-  page: PageWithUrl;
+  page: ResolvedPageWithBlocks;
 }
 
 const Tokens = ({page}: Props) => {
@@ -22,7 +22,6 @@ const Tokens = ({page}: Props) => {
   return (
     <Page page={page} showTOC={false}>
       <TokensPage tokenGroup={pageMeta.tokenGroup} />
-
       <EditorRenderer page={page} />
     </Page>
   );
@@ -35,8 +34,7 @@ export const getStaticProps: GetStaticProps<Props, {group: string}> = async (
   const page = getPageByPath(content, `tokens/${group}`);
 
   if (page && page.pageMeta?.type === 'tokens') {
-    const pageWithUrl = getResolvedPage(content, page);
-    const props: Props = {page: pageWithUrl};
+    const props: Props = {page: getResolvedPage(content, page, true)};
     return {props};
   } else {
     return {notFound: true};

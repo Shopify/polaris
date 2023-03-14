@@ -13,7 +13,6 @@ import {slugify} from '../../../../src/utils/various';
 import {
   getPageUrl,
   getResolvedPage,
-  getUnresolvedPage,
 } from '../../../../src/components/Editor/utils';
 
 const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
@@ -42,10 +41,7 @@ const getSearchResults = (query?: string) => {
       .filter(({parentId}) => parentId && componentGroupIds.includes(parentId))
       .forEach((page) => {
         const {id} = page;
-
-        // TODO: Not pretty
-        const unresolvedPage = getUnresolvedPage(page);
-        const resolvedPage = getResolvedPage(content, unresolvedPage);
+        const resolvedPage = getResolvedPage(content, page);
 
         results.push({
           id,
@@ -121,10 +117,7 @@ const getSearchResults = (query?: string) => {
     .forEach((page) => {
       const {id, pageMeta} = page;
       if (pageMeta?.type !== 'foundations') return;
-
-      // TODO: Not pretty
-      const unresolvedPage = getUnresolvedPage(page);
-      const resolvedPage = getResolvedPage(content, unresolvedPage);
+      const resolvedPage = getResolvedPage(content, page);
 
       results.push({
         id,
@@ -147,10 +140,7 @@ const getSearchResults = (query?: string) => {
       .forEach((page) => {
         const {id} = page;
         const url = getPageUrl(content, page);
-
-        // TODO: Not pretty
-        const unresolvedPage = getUnresolvedPage(page);
-        const resolvedPage = getResolvedPage(content, unresolvedPage);
+        const resolvedPage = getResolvedPage(content, page);
 
         results.push({
           id,

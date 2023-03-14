@@ -13,14 +13,14 @@ import {
   getPageStack,
   getResolvedPage,
 } from '../../../../src/components/Editor/utils';
-import {ResolvedPage} from '../../../../src/components/Editor/types';
+import {ResolvedPageWithBlocks} from '../../../../src/components/Editor/types';
 import EditorRenderer from '../../../../src/components/EditorRenderer';
 import {ResolvedComponentExample} from '../../../../src/components/ComponentExamples/ComponentExamples';
 import StatusBanner from '../../../../src/components/StatusBanner';
 import Longform from '../../../../src/components/Longform';
 
 interface Props {
-  page: ResolvedPage;
+  page: ResolvedPageWithBlocks;
   examples: ResolvedComponentExample[];
   filteredTypes: FilteredTypes;
 }
@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps<
   );
 
   if (page && page.pageMeta?.type === 'components') {
-    const pageWithUrl = getResolvedPage(content, page);
+    const ResolvedPageWithBlocks = getResolvedPage(content, page, true);
 
     const examples = page.pageMeta.examples.map((example) => {
       const examplePath = path.resolve(
@@ -109,7 +109,7 @@ export const getStaticProps: GetStaticProps<
     );
 
     const props: Props = {
-      page: pageWithUrl,
+      page: ResolvedPageWithBlocks,
       examples,
       filteredTypes,
     };

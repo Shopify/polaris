@@ -1,13 +1,16 @@
 import {GetStaticProps} from 'next';
 import {getResolvedPage} from '../src/components/Editor/utils';
-import {ResolvedPage} from '../src/components/Editor/types';
+import {
+  ResolvedPage,
+  ResolvedPageWithBlocks,
+} from '../src/components/Editor/types';
 import {Grid, GridItem} from '../src/components/Grid';
 import Longform from '../src/components/Longform';
 import Page from '../src/components/Page';
 import {content} from '../src/content';
 
 interface Props {
-  page: ResolvedPage;
+  page: ResolvedPageWithBlocks;
   patterns: ResolvedPage[];
 }
 
@@ -30,14 +33,14 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const page = pages.find((page) => page.slug === 'patterns');
 
   if (page) {
-    const pageWithUrl = getResolvedPage(content, page);
+    const ResolvedPageWithBlocks = getResolvedPage(content, page, true);
     const patterns: Props['patterns'] = pages
-      .filter(({parentId}) => parentId === pageWithUrl.id)
+      .filter(({parentId}) => parentId === ResolvedPageWithBlocks.id)
       .map((page) => getResolvedPage(content, page));
 
     return {
       props: {
-        page: pageWithUrl,
+        page: ResolvedPageWithBlocks,
         patterns,
       },
     };

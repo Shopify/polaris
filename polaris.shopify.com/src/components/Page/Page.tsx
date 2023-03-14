@@ -2,10 +2,9 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useTOC} from '../../utils/hooks';
 import {className} from '../../utils/various';
-import {Box} from '../Box';
 import Breadcrumbs from '../Breadcrumbs';
 import Container from '../Container';
-import {PageWithUrl} from '../Editor/types';
+import {ResolvedPageWithBlocks} from '../Editor/types';
 import EditorRenderer from '../EditorRenderer';
 import Longform from '../Longform';
 import PageMeta from '../PageMeta';
@@ -13,7 +12,7 @@ import TOC from '../TOC';
 import styles from './Page.module.scss';
 
 interface Props {
-  page: PageWithUrl;
+  page: ResolvedPageWithBlocks;
   showTOC?: boolean;
   children?: React.ReactNode;
 }

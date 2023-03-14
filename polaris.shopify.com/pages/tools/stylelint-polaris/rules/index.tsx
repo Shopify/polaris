@@ -20,7 +20,7 @@ const FoundationsCategory = ({title, description, content}: RulesProps) => {
   return (
     <>
       <PageMeta description={description} />
-      <Page isContentPage>
+      <Page>
         <Longform>
           <h1>{title}</h1>
           <p>{description}</p>

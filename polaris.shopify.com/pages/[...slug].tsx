@@ -3,10 +3,10 @@ import type {GetStaticPaths, GetStaticProps, NextPage} from 'next';
 import Page from '../src/components/Page';
 import {content} from '../src/content';
 import {getPageUrl, getResolvedPage} from '../src/components/Editor/utils';
-import {PageWithUrl} from '../src/components/Editor/types';
+import {ResolvedPageWithBlocks} from '../src/components/Editor/types';
 
 interface Props {
-  page: PageWithUrl;
+  page: ResolvedPageWithBlocks;
 }
 
 const CatchAllTemplate: NextPage<Props> = ({page}: Props) => {
@@ -21,8 +21,8 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     return pageUrl === params?.slug.join('/');
   });
   if (page) {
-    const pageWithUrl = getResolvedPage(content, page);
-    return {props: {page: pageWithUrl}};
+    const ResolvedPageWithBlocks = getResolvedPage(content, page, true);
+    return {props: {page: ResolvedPageWithBlocks}};
   } else {
     return {notFound: true};
   }

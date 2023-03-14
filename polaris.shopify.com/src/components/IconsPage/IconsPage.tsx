@@ -13,7 +13,7 @@ import Icon from '../Icon';
 import IconDetails from '../IconDetails';
 import {className} from '../../utils/various';
 import Page from '../Page';
-import {PageWithUrl} from '../Editor/types';
+import {ResolvedPageWithBlocks} from '../Editor/types';
 
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
@@ -64,7 +64,7 @@ function scrollToActiveIcon(activeIcon: string): void {
 }
 
 interface Props {
-  page: PageWithUrl;
+  page: ResolvedPageWithBlocks;
 }
 
 function IconsPage({page}: Props) {

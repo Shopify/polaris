@@ -11,7 +11,7 @@ export const getStaticPropsForFoundations = (category: string) => {
     );
 
     if (page) {
-      const resolvedPage = getResolvedPage(content, page);
+      const resolvedPage = getResolvedPage(content, page, true);
       const items: FoundationsProps['items'] = pages
         .filter(({parentId}) => parentId === page.id)
         .map((page) => getResolvedPage(content, page));
