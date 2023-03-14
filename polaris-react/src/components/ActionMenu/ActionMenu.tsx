@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {classNames} from '../../utilities/css';
 import type {
   ActionListSection,
   MenuActionDescriptor,
