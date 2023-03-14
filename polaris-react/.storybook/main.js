@@ -2,6 +2,7 @@ const path = require('path');
 const spawn = require('child_process').spawn;
 const CreateFileWebpack = require('create-file-webpack');
 const postcssPlugins = require('../config/postcss-plugins');
+const {VanillaExtractPlugin} = require('@vanilla-extract/webpack-plugin');
 
 module.exports = {
   core: {
@@ -24,6 +25,8 @@ module.exports = {
     '@storybook/addon-viewport',
   ],
   webpackFinal: (config) => {
+    config.plugins.push(new VanillaExtractPlugin());
+
     const extraRules = [
       {
         test: /\.scss$/,

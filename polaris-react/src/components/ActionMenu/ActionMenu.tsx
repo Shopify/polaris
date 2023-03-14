@@ -8,7 +8,7 @@ import type {
 } from '../../types';
 
 import {Actions, RollupActions} from './components';
-import styles from './ActionMenu.scss';
+import * as styles from './ActionMenu.css';
 
 export interface ActionMenuProps {
   /** Collection of page-level secondary actions */
@@ -34,15 +34,10 @@ export function ActionMenu({
     return null;
   }
 
-  const actionMenuClassNames = classNames(
-    styles.ActionMenu,
-    rollup && styles.rollup,
-  );
-
   const rollupSections = groups.map((group) => convertGroupToSection(group));
 
   return (
-    <div className={actionMenuClassNames}>
+    <div className={styles.actionMenu}>
       {rollup ? (
         <RollupActions
           accessibilityLabel={rollupActionsLabel}

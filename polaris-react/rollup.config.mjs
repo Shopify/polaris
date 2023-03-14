@@ -8,6 +8,7 @@ import {externals} from 'rollup-plugin-node-externals';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
+import {vanillaExtractPlugin} from '@vanilla-extract/rollup-plugin';
 
 import {styles} from './config/rollup/plugin-styles.js';
 import {generateScopedName} from './config/rollup/namespaced-classname.js';
@@ -46,6 +47,7 @@ function generateConfig({output, targets, stylesConfig}) {
         compact: true,
       }),
       styles(stylesConfig),
+      vanillaExtractPlugin(),
     ],
     output,
   };
