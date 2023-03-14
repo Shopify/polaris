@@ -29,69 +29,75 @@ This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stac
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ paddingBottom: '2rem' }}>
-  ____CODE____
+  {(____CODE____)()}
 </div>
 ```
 
 ```javascript {"type":"livePreview","id":"example"}
-<Page
-  divider
-  primaryAction={{content: 'View on your store', disabled: true}}
-  secondaryActions={[
-    {
-      content: 'Duplicate',
-      accessibilityLabel: 'Secondary action label',
-      onAction: () => alert('Duplicate action'),
-    },
-  ]}
->
-  <AlphaStack gap="16" align="center">
-    <Columns columns={{xs: '1fr', md: '2fr 5fr'}}>
-      <Box
-        as="section"
-        paddingInlineStart={{xs: 4, sm: 0}}
-        paddingInlineEnd={{xs: 2, sm: 0}}
-      >
-        <AlphaStack align="start" gap="4">
-          <Text as="h3" variant="headingMd">
-            InterJambs
-          </Text>
-          <p>
-            Interjambs are the rounded protruding bits of your puzzlie piece
-          </p>
-        </AlphaStack>
-      </Box>
-      <AlphaCard roundedAbove="sm">
-        <AlphaStack gap="4">
-          <TextField label="Interjamb style" />
-          <TextField label="Interjamb ratio" />
-        </AlphaStack>
-      </AlphaCard>
-    </Columns>
-    <Columns columns={{xs: '1fr', md: '2fr 5fr'}}>
-      <Box
-        as="section"
-        paddingInlineStart={{xs: 2, sm: 0}}
-        paddingInlineEnd={{xs: 2, sm: 0}}
-      >
-        <AlphaStack align="start" gap="4">
-          <Text as="h3" variant="headingMd">
-            Dimensions
-          </Text>
-          <p>
-            Interjambs are the rounded protruding bits of your puzzlie piece
-          </p>
-        </AlphaStack>
-      </Box>
-      <AlphaCard roundedAbove="sm">
-        <AlphaStack gap="4">
-          <TextField label="Horizontal" />
-          <TextField label="Interjamb ratio" />
-        </AlphaStack>
-      </AlphaCard>
-    </Columns>
-  </AlphaStack>
-</Page>
+function AppSettingsLayoutExample() {
+  const {smUp} = useBreakpoints();
+  return (
+    <Page
+      divider
+      primaryAction={{content: 'View on your store', disabled: true}}
+      secondaryActions={[
+        {
+          content: 'Duplicate',
+          accessibilityLabel: 'Secondary action label',
+          onAction: () => alert('Duplicate action'),
+        },
+      ]}
+    >
+      <AlphaStack gap={{xs: '8', sm: '4'}}>
+        <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
+          <Box
+            as="section"
+            paddingInlineStart={{xs: 4, sm: 0}}
+            paddingInlineEnd={{xs: 4, sm: 0}}
+          >
+            <AlphaStack gap="4">
+              <Text as="h3" variant="headingMd">
+                InterJambs
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Interjambs are the rounded protruding bits of your puzzlie piece
+              </Text>
+            </AlphaStack>
+          </Box>
+          <AlphaCard roundedAbove="sm">
+            <AlphaStack gap="4">
+              <TextField label="Interjamb style" />
+              <TextField label="Interjamb ratio" />
+            </AlphaStack>
+          </AlphaCard>
+        </Columns>
+        {smUp ? <Divider borderStyle="base" /> : null}
+        <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
+          <Box
+            as="section"
+            paddingInlineStart={{xs: 4, sm: 0}}
+            paddingInlineEnd={{xs: 4, sm: 0}}
+          >
+            <AlphaStack gap="4">
+              <Text as="h3" variant="headingMd">
+                Dimensions
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Interjambs are the rounded protruding bits of your puzzlie piece
+              </Text>
+            </AlphaStack>
+          </Box>
+          <AlphaCard roundedAbove="sm">
+            <AlphaStack gap="4">
+              <TextField label="Horizontal" />
+              <TextField label="Interjamb ratio" />
+            </AlphaStack>
+          </AlphaCard>
+        </Columns>
+      </AlphaStack>
+    </Page>
+  );
+}
 ```
 
 </div>

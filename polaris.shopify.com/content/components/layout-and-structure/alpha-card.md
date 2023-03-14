@@ -4,6 +4,8 @@ description: Cards are used to group similar concepts and tasks together for mer
 category: Layout and structure
 keywords:
   - layout
+  - card
+  - responsive
   - container
   - box
   - grid
@@ -26,6 +28,8 @@ status:
 examples:
   - fileName: alpha-card-default.tsx
     title: Default
+    description: >-
+      By default, cards have an 8px border radius and uses `--p-surface` as the background and `--p-shadow-card` as the shadow. There is padding of `space-5` (20px) around children and `space-4` (16px) for small screens.
   - fileName: alpha-card-with-subdued-background.tsx
     title: With subdued background
     description: >-
@@ -33,11 +37,11 @@ examples:
   - fileName: alpha-card-with-varying-padding.tsx
     title: With varying padding
     description: >-
-      Use the `padding` property to adjust the spacing within a card. You can also specify spacing values at different breakpoints.
+      Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
   - fileName: alpha-card-with-rounded-corners.tsx
     title: Rounded corners
     description: >-
-      Cards have an 8px border radius by default. Rounding may also be applied responsively with the roundedAbove prop. This enables cards to be softened on larger screens, but squared off when they are full bleed on smaller devices.
+      Cards can have a border radius applied responsively with the `roundedAbove` prop.
 ---
 
 ## Best practices
@@ -46,3 +50,13 @@ Cards should:
 
 - Group related information
 - Display information in a way that prioritizes what the merchant needs to know most first
+- Use headings that set clear expectations about the card’s purpose
+- Stick to single user flows or break more complicated flows into multiple sections
+- Avoid too many call-to-action buttons or links and only one primary call to action per card
+- Use calls to action on the bottom of the card for next steps and use the space in the upper right corner of the card for persistent, optional actions (such as Edit)
+
+---
+
+## Related components
+
+- For more flexibility on styling, [use the Box component](https://polaris.shopify.com/components/layout-and-structure/box)
