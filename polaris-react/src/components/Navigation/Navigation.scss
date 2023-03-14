@@ -166,7 +166,6 @@ $disabled-fade: 0.6;
 .Badge {
   margin-left: var(--p-space-2);
   display: inline-flex;
-  // stylelint-disable-next-line -- ensures badges are the same height as the text
   height: var(--p-font-line-height-2);
   margin-top: calc(var(--p-space-2) + var(--p-space-05));
   margin-right: var(--p-space-4);
@@ -214,7 +213,6 @@ $disabled-fade: 0.6;
 }
 
 .ItemInnerWrapper {
-  // stylelint-disable-next-line -- required for absolute positioning of actions
   position: relative;
   display: flex;
   flex-wrap: nowrap;
@@ -255,9 +253,7 @@ $disabled-fade: 0.6;
 }
 
 .SecondaryActions {
-  // stylelint-disable-next-line -- horizontal action icons layout
   display: flex;
-  // stylelint-disable-next-line -- ensures correct height of actions
   height: nav(mobile-height);
 
   &:last-child {
@@ -265,15 +261,12 @@ $disabled-fade: 0.6;
   }
 
   @media #{$p-breakpoints-md-up} {
-    // stylelint-disable-next-line -- ensures correct height of actions
     height: nav(desktop-height);
   }
 }
 
 .ItemWithFloatingActions {
-  // stylelint-disable-next-line -- required for absolute positioning of actions
   position: relative;
-  // stylelint-disable-next-line -- position actions to to the right of label
   display: flex;
   flex-wrap: nowrap;
 
@@ -285,11 +278,8 @@ $disabled-fade: 0.6;
 .ItemInnerWrapper-display-actions-on-hover {
   @media #{$p-breakpoints-md-up} {
     .SecondaryActions {
-      // stylelint-disable-next-line -- position floating actions at top right
       position: absolute;
-      // stylelint-disable-next-line -- position floating actions at top right
       top: 0;
-      // stylelint-disable-next-line -- position floating actions at top right
       right: 0;
       background: var(--p-background-hovered);
       visibility: hidden;
@@ -300,15 +290,10 @@ $disabled-fade: 0.6;
       &::before {
         content: '';
         pointer-events: none;
-        // stylelint-disable-next-line -- required for fade effect
         position: absolute;
-        // stylelint-disable-next-line -- required for fade effect
         right: 100%;
-        // stylelint-disable-next-line -- required for fade effect
         display: block;
-        // stylelint-disable-next-line -- required for fade effect
         height: 100%;
-        // stylelint-disable-next-line -- required for fade effect
         width: var(--p-space-8);
         // stylelint-disable-next-line -- required for fade effect
         background: linear-gradient(
