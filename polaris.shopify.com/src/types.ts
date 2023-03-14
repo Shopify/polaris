@@ -1,5 +1,6 @@
 import {MetadataProperties} from '@shopify/polaris-tokens';
 import {Icon} from '@shopify/polaris-icons/metadata';
+import {ResolvedPage} from './components/Editor/types';
 
 export interface TokenPropertiesWithName extends MetadataProperties {
   name: string;
@@ -21,23 +22,9 @@ export interface SearchResult {
   url: string;
   score: number;
   meta: Partial<{
-    components: {
-      title: string;
-      description: string;
-      status?: string;
-      group?: string;
-    };
-    patterns: {
-      title: string;
-      description: string;
-      previewImg?: string;
-    };
-    foundations: {
-      title: string;
-      description: string;
-      icon: string;
-      category: string;
-    };
+    components: ResolvedPage;
+    patterns: ResolvedPage;
+    foundations: ResolvedPage;
     tokens: {
       category: string;
       token: TokenPropertiesWithName;

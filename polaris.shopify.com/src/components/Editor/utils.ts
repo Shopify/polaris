@@ -2,6 +2,7 @@ import {
   Content,
   Image,
   Page,
+  PageWithBlocks,
   ResolvedPage,
   ResolvedPageWithBlocks,
 } from './types';
@@ -56,7 +57,7 @@ export function getImageDimensions(
   };
 }
 
-export function getUnresolvedPage(page: ResolvedPage): Page {
+export function getUnresolvedPage(page: PageWithBlocks): Page {
   const pageInfo: Page = {
     id: page.id,
     title: page.title,

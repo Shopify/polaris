@@ -236,21 +236,15 @@ function SearchResults({
             return (
               <ResultsGroup category={category} key={category}>
                 <Grid>
-                  {results.map(({id, url, meta}) => {
+                  {results.map(({id, meta}) => {
                     if (!meta.foundations) return null;
-                    const {title, description, icon, category} =
-                      meta.foundations;
+                    const resolvedPage = meta.foundations;
                     return (
                       <SearchContext.Provider
-                        key={title}
+                        key={id}
                         value={{currentItemId, id}}
                       >
-                        <GridItem
-                          title={title}
-                          description={description}
-                          url={url}
-                          renderPreview={() => <p>Todo: Implement thumbnail</p>}
-                        />
+                        <GridItem {...resolvedPage} />
                       </SearchContext.Provider>
                     );
                   })}
@@ -264,18 +258,13 @@ function SearchResults({
                 <Grid>
                   {results.map(({id, url, meta}) => {
                     if (!meta.patterns) return null;
-                    const {title, description, previewImg} = meta.patterns;
+                    const resolvedPage = meta.patterns;
                     return (
                       <SearchContext.Provider
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <GridItem
-                          url={url}
-                          description={description}
-                          title={title}
-                          renderPreview={() => <p>TODO: Fix preview</p>}
-                        />
+                        <GridItem {...resolvedPage} />
                       </SearchContext.Provider>
                     );
                   })}
@@ -288,21 +277,15 @@ function SearchResults({
             return (
               <ResultsGroup category={category} key={category}>
                 <Grid>
-                  {results.map(({id, url, meta}) => {
+                  {results.map(({id, meta}) => {
                     if (!meta.components) return null;
-                    const {title, description, status, group} = meta.components;
+                    const resolvedPage = meta.components;
                     return (
                       <SearchContext.Provider
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <GridItem
-                          url={url}
-                          description={description}
-                          title={title}
-                          status={status}
-                          renderPreview={() => <p>Todo: Implement thumbnail</p>}
-                        />
+                        <GridItem {...resolvedPage} />
                       </SearchContext.Provider>
                     );
                   })}

@@ -8,12 +8,12 @@ import {
   GroupedSearchResults,
   searchResultCategories,
   SearchResultCategory,
-  StatusName,
 } from '../../../../src/types';
-import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
+import {slugify} from '../../../../src/utils/various';
 import {
-  getPageStack,
   getPageUrl,
+  getResolvedPage,
+  getUnresolvedPage,
 } from '../../../../src/components/Editor/utils';
 
 const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
@@ -41,25 +41,19 @@ const getSearchResults = (query?: string) => {
     content.pages
       .filter(({parentId}) => parentId && componentGroupIds.includes(parentId))
       .forEach((page) => {
-        const {id, title, excerpt} = page;
-        const url = getPageUrl(content, page);
-        const pageStack = getPageStack(content, page);
+        const {id} = page;
+
+        // TODO: Not pretty
+        const unresolvedPage = getUnresolvedPage(page);
+        const resolvedPage = getResolvedPage(content, unresolvedPage);
 
         results.push({
           id,
           category: 'components',
           score: 0,
-          url,
+          url: resolvedPage.url,
           meta: {
-            components: {
-              title,
-              description: stripMarkdownLinks(excerpt),
-              status: {
-                value: StatusName.Alpha,
-                message: 'TODO',
-              },
-              group: pageStack[1].slug,
-            },
+            components: resolvedPage,
           },
         });
       });
@@ -121,26 +115,24 @@ const getSearchResults = (query?: string) => {
       ({parentId, slug}) => parentId === null && foundationSlugs.includes(slug),
     )
     .map(({id}) => id);
+
   content.pages
     .filter(({parentId}) => parentId && foundationsPageIds.includes(parentId))
     .forEach((page) => {
-      const {id, title, excerpt, pageMeta} = page;
+      const {id, pageMeta} = page;
       if (pageMeta?.type !== 'foundations') return;
-      const url = getPageUrl(content, page);
-      const pageStack = getPageStack(content, page);
+
+      // TODO: Not pretty
+      const unresolvedPage = getUnresolvedPage(page);
+      const resolvedPage = getResolvedPage(content, unresolvedPage);
 
       results.push({
         id,
         category: 'foundations',
         score: 0,
-        url,
+        url: resolvedPage.url,
         meta: {
-          foundations: {
-            title,
-            icon: pageMeta.icon,
-            description: excerpt,
-            category: pageStack[0].slug,
-          },
+          foundations: resolvedPage,
         },
       });
     });
@@ -153,21 +145,20 @@ const getSearchResults = (query?: string) => {
     content.pages
       .filter(({parentId}) => parentId === patternsPage.id)
       .forEach((page) => {
-        const {title, excerpt} = page;
+        const {id} = page;
         const url = getPageUrl(content, page);
-        const previewImg = '';
+
+        // TODO: Not pretty
+        const unresolvedPage = getUnresolvedPage(page);
+        const resolvedPage = getResolvedPage(content, unresolvedPage);
 
         results.push({
-          id: slugify(`pattern ${title}`),
+          id,
           category: 'patterns',
           score: 0,
           url,
           meta: {
-            patterns: {
-              title,
-              description: excerpt,
-              previewImg,
-            },
+            patterns: resolvedPage,
           },
         });
       });
