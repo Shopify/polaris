@@ -2,7 +2,6 @@ import {useState, useEffect, useRef} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {DarkMode} from 'use-dark-mode';
-import {motion, AnimatePresence} from 'framer-motion';
 
 import GlobalSearch from '../GlobalSearch';
 import {nav} from '../../nav';
@@ -180,18 +179,37 @@ function NavItem({
   handleLinkClick: () => void;
   handleShiftTabOnFirstLink: (e: React.KeyboardEvent) => void;
 }) {
+  const [isManuallyToggled, setIsManuallyToggled] = useState<boolean | null>(
+    null,
+  );
   const {asPath} = useRouter();
 
   const item = nav.find((item) => item.id === id);
   if (!item) return null;
+  const {pageMeta} = item;
 
   const children = nav.filter((child) => child.parentId === id);
 
+  const childrenAriaId = `nav-${id}`;
   const isExpandable = children.length > 0;
-  const navAriaId = `nav-${id}`;
-  const isExpanded = true;
+  let isExpanded = false;
+  if (isExpandable) {
+    if (isManuallyToggled === null) {
+      isExpanded = nav.some(
+        (thisItem) =>
+          thisItem.url.startsWith(item.url) && `/${thisItem.url}` === asPath,
+      );
+    } else {
+      isExpanded = isManuallyToggled;
+    }
+  }
 
   const isCurrent = false;
+
+  const statusBadgeMarkup =
+    pageMeta?.type === 'components' && pageMeta.lifeCyclePhase !== 'Stable' ? (
+      <StatusBadge status={pageMeta.lifeCyclePhase} />
+    ) : null;
 
   return (
     <li
@@ -205,6 +223,7 @@ function NavItem({
           href={`/${item.url}`}
           onClick={handleLinkClick}
           aria-current={isCurrent ? 'page' : 'false'}
+          // TODO
           // onKeyDown={(evt) => {
           //   if (level === 0 && i === 0) {
           //     handleShiftTabOnFirstLink(evt);
@@ -213,28 +232,26 @@ function NavItem({
         >
           {item.title}
 
-          {/* {child.status && <StatusBadge status={child.status} />} */}
+          {statusBadgeMarkup}
         </Link>
 
         {isExpandable && (
           <button
             className={styles.Toggle}
-            onClick={() => undefined}
+            onClick={() =>
+              setIsManuallyToggled(
+                isManuallyToggled ? !isManuallyToggled : true,
+              )
+            }
             aria-label="Toggle section"
             aria-expanded={isExpanded}
-            aria-controls={isExpanded ? navAriaId : undefined}
+            aria-controls={isExpanded ? childrenAriaId : undefined}
           />
         )}
       </span>
 
-      <motion.ul
-        initial={{opacity: 0, height: 0}}
-        animate={{opacity: 1, scale: 1, height: 'auto'}}
-        exit={{opacity: 0, height: 0}}
-        transition={{ease: 'easeInOut', duration: 0.15}}
-        id={navAriaId}
-      >
-        <AnimatePresence initial={false}>
+      {children && isExpanded && (
+        <ul id={childrenAriaId}>
           {children
             .sort((a, b) => a.order - b.order)
             .map((child) => {
@@ -248,8 +265,8 @@ function NavItem({
                 />
               );
             })}
-        </AnimatePresence>
-      </motion.ul>
+        </ul>
+      )}
     </li>
   );
 }

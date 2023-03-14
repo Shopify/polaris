@@ -72,32 +72,6 @@ export enum Breakpoints {
   DesktopLarge = 1600,
 }
 
-// export enum StatusName {
-//   New = 'New',
-//   Deprecated = 'Deprecated',
-//   Alpha = 'Alpha',
-//   Beta = 'Beta',
-//   Information = 'Information',
-//   Legacy = 'Legacy',
-//   Warning = 'Warning',
-// }
-
-// export type Status = {
-//   value: StatusName;
-//   message: string;
-// };
-
-export interface QuickGuideRow {
-  question: string;
-  answer: string;
-}
-
-export interface QuickGuide {
-  title: string;
-  queryParam: string;
-  rows: QuickGuideRow[];
-}
-
 export type AllTypes = {
   [typeName: string]: {
     [filePath: string]: Type;

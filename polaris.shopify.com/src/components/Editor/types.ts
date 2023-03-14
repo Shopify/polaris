@@ -63,6 +63,16 @@ interface ComponentsPageMeta extends BasePageMeta {
   }[];
 }
 
+export type NavItem = {
+  id: string;
+  title: string;
+  url: string;
+  order: number;
+  parentId: string | null;
+  pageMeta: PageMeta | null;
+  hasSeparatorInNav: boolean;
+};
+
 interface PatternsPageMeta extends BasePageMeta {
   type: 'patterns';
 }

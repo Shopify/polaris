@@ -20,3 +20,5 @@ ${urlLines.join('\n')}
 </urlset>`;
 
 fs.writeFileSync('public/sitemap.xml', fileContent);
+
+console.log('✅ Created sitemap.xml');

@@ -1,8 +1,7 @@
 import {createContext, useContext, useState} from 'react';
-import {Type, FilteredTypes, StatusName} from '../../types';
+import {Type, FilteredTypes} from '../../types';
 import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
-import {motion, AnimatePresence} from 'framer-motion';
 import StatusBadge from '../StatusBadge';
 import {className, toPascalCase} from '../../utils/various';
 
@@ -59,9 +58,7 @@ function PropsTable({types, componentName}: Props) {
           </div>
         )}
 
-        <AnimatePresence initial={false}>
-          <TypeTable types={types} type={propsForComponent} />
-        </AnimatePresence>
+        <TypeTable types={types} type={propsForComponent} />
       </div>
     </TypeContext.Provider>
   );
@@ -94,18 +91,7 @@ function TypeTable({
   const {collapseType} = useContext(ExpandedTypesContext);
 
   return (
-    <motion.div
-      key={type.name}
-      className={styles.TypeTable}
-      initial={{opacity: 0, scale: 0.7, height: 0}}
-      animate={{
-        opacity: 1,
-        scale: 1,
-        height: 'auto',
-        transition: {ease: 'backOut'},
-      }}
-      exit={{opacity: 0, scale: 0, height: 0, transition: {ease: 'backIn'}}}
-    >
+    <div key={type.name} className={styles.TypeTable}>
       <div className={styles.TypeTableHeader}>
         {syntaxKindToDeveloperFriendlyString(type.syntaxKind)} {type.name}{' '}
         {typeof level === 'number' && level > 0 && (
@@ -131,21 +117,19 @@ function TypeTable({
           <div className={styles.RawInterfaceValue}>
             <Highlighter type={type.value.toString()} />
 
-            <AnimatePresence initial={false}>
-              {expandedTypes
-                .filter((expanded) => expanded.memberName === null)
-                .map((expanded) => {
-                  const typeForExpandedType = types[expanded.typeName];
-                  if (!typeForExpandedType) return null;
-                  return (
-                    <TypeTable
-                      key={expanded.typeName}
-                      types={types}
-                      type={typeForExpandedType}
-                    />
-                  );
-                })}
-            </AnimatePresence>
+            {expandedTypes
+              .filter((expanded) => expanded.memberName === null)
+              .map((expanded) => {
+                const typeForExpandedType = types[expanded.typeName];
+                if (!typeForExpandedType) return null;
+                return (
+                  <TypeTable
+                    key={expanded.typeName}
+                    types={types}
+                    type={typeForExpandedType}
+                  />
+                );
+              })}
           </div>
         </ExpandedTypesContext.Provider>
       )}
@@ -229,23 +213,20 @@ function TypeTable({
                         )}
                       </div>
 
-                      <AnimatePresence initial={false}>
-                        {expandedTypes
-                          .filter((expanded) => expanded.memberName === name)
-                          .map((expanded) => {
-                            const typeForExpandedType =
-                              types[expanded.typeName];
-                            if (!typeForExpandedType) return null;
-                            return (
-                              <TypeTable
-                                key={expanded.typeName}
-                                types={types}
-                                type={typeForExpandedType}
-                                level={level + 1}
-                              />
-                            );
-                          })}
-                      </AnimatePresence>
+                      {expandedTypes
+                        .filter((expanded) => expanded.memberName === name)
+                        .map((expanded) => {
+                          const typeForExpandedType = types[expanded.typeName];
+                          if (!typeForExpandedType) return null;
+                          return (
+                            <TypeTable
+                              key={expanded.typeName}
+                              types={types}
+                              type={typeForExpandedType}
+                              level={level + 1}
+                            />
+                          );
+                        })}
                     </dd>
                   </span>
                 </ExpandedTypesContext.Provider>
@@ -254,7 +235,7 @@ function TypeTable({
           )}
         </dl>
       )}
-    </motion.div>
+    </div>
   );
 }
 

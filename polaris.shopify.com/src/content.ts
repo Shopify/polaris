@@ -6074,7 +6074,7 @@ const pages: Content['pages'] = [
   {
     id: "a71XMPGpjRBTxmYu7NpPU",
     title: "Collapsible",
-    excerpt: "The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.",
+    excerpt: "The collapsible component is used to put long sections of information under a block that merchants can expand or collapse..",
     slug: "collapsible",
     parentId: "ntMpo5B1y62hw1jWOLhIo",
     order: 0,

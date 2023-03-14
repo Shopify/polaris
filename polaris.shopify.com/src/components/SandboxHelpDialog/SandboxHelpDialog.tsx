@@ -1,6 +1,5 @@
 import {Dialog} from '@headlessui/react';
 import styles from './SandboxHelpDialog.module.scss';
-import Button from '../Button';
 
 function SandboxHelpDialog({
   isOpen,
@@ -45,13 +44,12 @@ function SandboxHelpDialog({
               .
             </p>
 
-            <Button
-              primary
+            <button
               className={styles.CloseButton}
               onClick={() => setIsOpen(false)}
             >
               Get started
-            </Button>
+            </button>
           </div>
         </Dialog.Panel>
       </div>
