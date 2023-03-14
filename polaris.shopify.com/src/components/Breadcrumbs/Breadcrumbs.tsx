@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 import styles from './Breadcrumbs.module.scss';
-import {PageWithUrl} from '../Editor/types';
+import {ResolvedPage} from '../Editor/types';
 
-function Breadcrumbs({currentPage}: {currentPage: PageWithUrl}) {
+function Breadcrumbs({currentPage}: {currentPage: ResolvedPage}) {
   const pageStack: {
     title: string;
     slug: string;

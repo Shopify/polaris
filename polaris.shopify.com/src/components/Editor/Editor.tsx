@@ -32,6 +32,8 @@ import {
   tokenGroups,
   TokenGroup,
   PageWithBlocks,
+  PolarisComponentLifecyclePhase,
+  polarisComponentLifecyclePhases,
 } from './types';
 import {
   ActionList,
@@ -196,6 +198,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
           type: 'components',
           examples: [],
           lifeCyclePhase: 'alfa',
+          lifeCycleNotice: '',
         };
         break;
 
@@ -628,15 +631,34 @@ function PageMetaEditor({
   switch (pageMeta.type) {
     case 'components':
       return (
-        <div>
-          {/* <input
+        <>
+          <Select
+            label="Lifecycle phase"
+            options={[
+              ...polarisComponentLifecyclePhases.map((groupName) => ({
+                label: groupName,
+                value: groupName,
+              })),
+            ]}
+            onChange={(value) => {
+              const lifeCyclePhase = value as PolarisComponentLifecyclePhase;
+              updateMeta({...pageMeta, lifeCyclePhase});
+            }}
+            value={pageMeta.lifeCyclePhase}
+          />
+
+          <TextField
             type="text"
-            value={pageMeta.category || ''}
-            onChange={(evt) =>
-              updateMeta({...pageMeta, category: evt.target.value})
+            multiline={true}
+            value={pageMeta.lifeCycleNotice}
+            onChange={(lifeCycleNotice) =>
+              updateMeta({...pageMeta, lifeCycleNotice})
             }
-          /> */}
-        </div>
+            label="Lifecycle message"
+            helpText="Displayed in the banner at the top of the component page"
+            autoComplete="off"
+          />
+        </>
       );
       break;
 

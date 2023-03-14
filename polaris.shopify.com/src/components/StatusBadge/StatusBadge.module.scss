@@ -6,19 +6,19 @@
   padding: 0.05rem 0.25rem;
   color: var(--text);
 
-  &[data-value='alpha'] {
+  &[data-value='Alpha'] {
     background: var(--surface-attention);
   }
 
-  &[data-value='warning'],
-  &[data-value='deprecated'],
-  &[data-value='legacy'] {
+  &[data-value='Warning'],
+  &[data-value='Deprecated'],
+  &[data-value='Legacy'] {
     background: var(--surface-warning);
   }
 
-  &[data-value='beta'],
-  &[data-value='information'],
-  &[data-value='new'] {
+  &[data-value='Beta'],
+  &[data-value='Information'],
+  &[data-value='New'] {
     background: var(--surface-information);
   }
 }

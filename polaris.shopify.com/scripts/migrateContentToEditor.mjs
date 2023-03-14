@@ -164,6 +164,8 @@ componentCategories
             type: 'components',
             examples: examples,
             lifeCyclePhase: 'alfa',
+            lifeCyclePhase: frontMatter.status?.value || 'Stable',
+            lifeCycleNotice: frontMatter.status?.message || '',
           },
           keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
           hasSeparatorInNav: false,

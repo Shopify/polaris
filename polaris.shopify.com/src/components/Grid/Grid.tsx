@@ -5,7 +5,6 @@ import {stripMarkdownLinks} from '../../utils/various';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import styles from './Grid.module.scss';
 import SearchResultHighlight from '../SearchResultHighlight';
-import {Status} from '../../types';
 import StatusBadge from '../StatusBadge';
 import {ColorScheme, ResolvedPage} from '../Editor/types';
 
@@ -25,9 +24,17 @@ export const GridItem = ({
   excerpt,
   thumbnailImageId,
   images,
+  pageMeta,
 }: GridItemProps) => {
   const searchAttributes = useGlobalSearchResult();
   const coverImage = images.find((image) => image.id === thumbnailImageId);
+
+  let status: string | null = null;
+
+  if (pageMeta?.type === 'components' && pageMeta.lifeCyclePhase !== 'Stable') {
+    status = pageMeta.lifeCyclePhase;
+  }
+
   return (
     <li className={styles.GridItem} {...searchAttributes}>
       <Link href={url} className={styles.Text}>
@@ -42,7 +49,7 @@ export const GridItem = ({
         )}
         <h4>
           {title}
-          {/* {status && <StatusBadge status={status} />} */}
+          {status && <StatusBadge status={status} />}
         </h4>
         <p>{stripMarkdownLinks(excerpt)}</p>
       </Link>

@@ -18,7 +18,6 @@ export default function GroupPage({page, subPages}: Props) {
     <Page page={page} showTOC={false}>
       <Grid>
         {subPages
-          .sort((a, b) => a.title.localeCompare(b.title))
           .sort((a, b) => a.order - b.order)
           .map((subPage) => {
             return <GridItem key={subPage.slug} {...subPage} />;

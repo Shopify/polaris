@@ -2,25 +2,28 @@
 
 .StatusBanner {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   background: var(--surface-subdued);
   border-radius: var(--border-radius-400);
 
-  &[data-value='alpha'] {
+  &[data-value='Alpha'] {
     background: var(--surface-attention);
   }
 
-  &[data-value='warning'],
-  &[data-value='deprecated'],
-  &[data-value='legacy'] {
+  &[data-value='Warning'],
+  &[data-value='Deprecated'],
+  &[data-value='Legacy'] {
     background: var(--surface-warning);
   }
 
-  &[data-value='beta'],
-  &[data-value='information'] {
+  &[data-value='Beta'],
+  &[data-value='Information'] {
     background: var(--surface-information);
   }
 
-  &[data-value='information'] {
+  &[data-value='Information'] {
     background: var(--surface-information);
   }
 

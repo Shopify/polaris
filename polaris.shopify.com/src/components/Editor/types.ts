@@ -43,9 +43,11 @@ export const pageMetaTypes = [
 export type PageMetaType = typeof pageMetaTypes[number];
 
 export const polarisComponentLifecyclePhases = [
-  'alfa',
-  'something',
-  'deprecated',
+  'Alpha',
+  'Beta',
+  'Stable',
+  'Legacy',
+  'Deprecated',
 ] as const;
 export type PolarisComponentLifecyclePhase =
   typeof polarisComponentLifecyclePhases[number];
@@ -53,6 +55,7 @@ export type PolarisComponentLifecyclePhase =
 interface ComponentsPageMeta extends BasePageMeta {
   type: 'components';
   lifeCyclePhase: PolarisComponentLifecyclePhase;
+  lifeCycleNotice: string;
   examples: {
     fileName: string;
     title: string;

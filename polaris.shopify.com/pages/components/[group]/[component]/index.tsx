@@ -13,59 +13,50 @@ import {
   getPageStack,
   getResolvedPage,
 } from '../../../../src/components/Editor/utils';
-import {PageWithUrl} from '../../../../src/components/Editor/types';
+import {ResolvedPage} from '../../../../src/components/Editor/types';
 import EditorRenderer from '../../../../src/components/EditorRenderer';
 import {ResolvedComponentExample} from '../../../../src/components/ComponentExamples/ComponentExamples';
+import StatusBanner from '../../../../src/components/StatusBanner';
+import Longform from '../../../../src/components/Longform';
 
 interface Props {
-  page: PageWithUrl;
+  page: ResolvedPage;
   examples: ResolvedComponentExample[];
   filteredTypes: FilteredTypes;
 }
 
 const Components = ({page, examples, filteredTypes}: Props) => {
-  // const typedStatus: Status | undefined = status
-  //   ? {
-  //       value: status.value.toLowerCase() as Status['value'],
-  //       message: status.message,
-  //     }
-  //   : undefined;
-
   const componentExamples = Boolean(examples.length) && (
     <ComponentExamples examples={examples} />
   );
 
-  // const propsTable =
-  //   type && status?.value !== 'Deprecated' ? (
-  //     <PropsTable componentName={title} types={type} />
-  //   ) : null;
-
-  const propsTable = (
+  const componentsMeta =
+    page.pageMeta && page.pageMeta.type === 'components' ? page.pageMeta : null;
+  const showPropsTable = componentsMeta?.lifeCyclePhase !== 'Deprecated';
+  const propsTable = showPropsTable ? (
     <PropsTable types={filteredTypes} componentName={page.title} />
-  );
+  ) : null;
+
+  const banner =
+    componentsMeta && componentsMeta.lifeCycleNotice.length > 0 ? (
+      <StatusBanner
+        status={{
+          status: componentsMeta.lifeCyclePhase,
+          message: componentsMeta.lifeCycleNotice,
+        }}
+      />
+    ) : null;
 
   return (
     <Page page={page}>
+      <Longform>
+        <p>{page.excerpt}</p>
+      </Longform>
+      {banner}
       {componentExamples}
       {propsTable}
       <EditorRenderer page={page} />
     </Page>
-    //     <Page title={title} editPageLinkPath={editPageLinkPath} isContentPage>
-    //       <PageMeta title={title} description={description} />
-
-    //       <Longform>
-    //         <Markdown>{description}</Markdown>
-    //         {typedStatus && <StatusBanner status={typedStatus} />}
-    //         {updateBannerMessage && <UpdateBanner message={updateBannerMessage} />}
-    //         {componentExamples}
-    //       </Longform>
-
-    // {/*
-    //       {/*
-    //       <Longform firstParagraphIsLede={false}>
-    //         <Markdown>{readme.body}</Markdown>
-    //       </Longform> */} */}
-    //     </Page>
   );
 };
 

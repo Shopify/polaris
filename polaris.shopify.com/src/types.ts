@@ -24,7 +24,7 @@ export interface SearchResult {
     components: {
       title: string;
       description: string;
-      status?: Status;
+      status?: string;
       group?: string;
     };
     patterns: {
@@ -72,20 +72,20 @@ export enum Breakpoints {
   DesktopLarge = 1600,
 }
 
-export enum StatusName {
-  New = 'New',
-  Deprecated = 'Deprecated',
-  Alpha = 'Alpha',
-  Beta = 'Beta',
-  Information = 'Information',
-  Legacy = 'Legacy',
-  Warning = 'Warning',
-}
+// export enum StatusName {
+//   New = 'New',
+//   Deprecated = 'Deprecated',
+//   Alpha = 'Alpha',
+//   Beta = 'Beta',
+//   Information = 'Information',
+//   Legacy = 'Legacy',
+//   Warning = 'Warning',
+// }
 
-export type Status = {
-  value: StatusName;
-  message: string;
-};
+// export type Status = {
+//   value: StatusName;
+//   message: string;
+// };
 
 export interface QuickGuideRow {
   question: string;
