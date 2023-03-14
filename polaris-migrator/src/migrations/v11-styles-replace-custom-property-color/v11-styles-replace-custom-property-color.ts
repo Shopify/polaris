@@ -196,10 +196,9 @@ const fillColorMap = {
 
 const replacementMaps = {
   color: colorMap,
-  background: backgroundColorMap,
-  'background-color': backgroundColorMap,
-  border: borderColorMap,
-  'border-color': borderColorMap,
+  '/^background/': backgroundColorMap,
+  '/^border/': borderColorMap,
+  '/^outline/': borderColorMap,
   fill: fillColorMap,
   '/.+/': allMap,
 };
