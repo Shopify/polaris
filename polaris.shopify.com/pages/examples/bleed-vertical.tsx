@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedVerticalExample() {
   return (
-    <Box background="surface" border="base" padding="4">
+    <Box background="surface" borderColor="border" borderWidth="1" padding="4">
       <Bleed marginInline="0" marginBlock="4">
         <Placeholder label="Vertical" />
       </Bleed>

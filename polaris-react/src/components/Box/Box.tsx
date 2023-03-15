@@ -2,7 +2,7 @@ import React, {createElement, forwardRef} from 'react';
 import type {
   BorderRadiusScale,
   BorderWidthScale,
-  ColorBorderTokenAlias,
+  ColorsBorderTokenAlias,
   ColorsActionTokenAlias,
   ColorsBackdropTokenAlias,
   ColorsBackgroundTokenAlias,
@@ -61,12 +61,13 @@ export interface BoxProps extends React.AriaAttributes {
   /** Background color */
   background?: BackgroundColors;
 
-  /** Border radius */
-  borderColor?: ColorBorderTokenAlias;
+  /** Border color */
+  borderColor?: ColorsBorderTokenAlias;
   /** Border width */
   borderWidth?: BorderWidthScale;
   /** Border radius */
   borderRadius?: BorderRadiusScale;
+  /** Border style */
   borderStyle?: 'solid' | 'dashed' | 'dotted';
 
   /** Vertical end horizontal start border radius */

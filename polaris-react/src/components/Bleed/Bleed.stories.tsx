@@ -35,7 +35,7 @@ export function Default() {
 
 export function WithVerticalDirection() {
   return (
-    <Box background="surface" padding="4" border="base">
+    <Box background="surface" padding="4" borderColor="border" borderWidth="1">
       <Bleed marginBlock="6">
         <div style={styles} />
       </Bleed>
@@ -45,7 +45,7 @@ export function WithVerticalDirection() {
 
 export function WithHorizontalDirection() {
   return (
-    <Box background="surface" padding="4" border="base">
+    <Box background="surface" padding="4" borderColor="border" borderWidth="1">
       <Bleed marginInline="6">
         <div style={styles} />
       </Bleed>
@@ -59,7 +59,12 @@ export function WithSpecificDirection() {
       <Text variant="bodyMd" as="p">
         Block Start
       </Text>
-      <Box background="surface" padding="4" border="base">
+      <Box
+        background="surface"
+        padding="4"
+        borderColor="border"
+        borderWidth="1"
+      >
         <Bleed marginInline="4" marginBlockStart="6">
           <div style={styles} />
         </Bleed>
@@ -67,7 +72,12 @@ export function WithSpecificDirection() {
       <Text variant="bodyMd" as="p">
         Block End
       </Text>
-      <Box background="surface" padding="4" border="base">
+      <Box
+        background="surface"
+        padding="4"
+        borderColor="border"
+        borderWidth="1"
+      >
         <Bleed marginInline="4" marginBlockEnd="6">
           <div style={styles} />
         </Bleed>
@@ -75,7 +85,12 @@ export function WithSpecificDirection() {
       <Text variant="bodyMd" as="p">
         Inline Start
       </Text>
-      <Box background="surface" padding="4" border="base">
+      <Box
+        background="surface"
+        padding="4"
+        borderColor="border"
+        borderWidth="1"
+      >
         <Bleed marginInline="0" marginInlineStart="6">
           <div style={styles} />
         </Bleed>
@@ -83,7 +98,12 @@ export function WithSpecificDirection() {
       <Text variant="bodyMd" as="p">
         Inline End
       </Text>
-      <Box background="surface" padding="4" border="base">
+      <Box
+        background="surface"
+        padding="4"
+        borderColor="border"
+        borderWidth="1"
+      >
         <Bleed marginInline="0" marginInlineEnd="6">
           <div style={styles} />
         </Bleed>
@@ -94,7 +114,7 @@ export function WithSpecificDirection() {
 
 export function WithAllDirection() {
   return (
-    <Box background="surface" padding="4" border="base">
+    <Box background="surface" padding="4" borderColor="border" borderWidth="1">
       <Bleed marginInline="6" marginBlock="6">
         <div style={styles} />
       </Bleed>
@@ -107,7 +127,8 @@ export function WithResponsiveHorizontalDirection() {
     <Box
       background="surface"
       padding={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}
-      border="base"
+      borderColor="border"
+      borderWidth="1"
     >
       <Bleed marginInline={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}>
         <div style={styles} />

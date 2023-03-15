@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedAllDirectionsExample() {
   return (
-    <Box background="surface" border="base" padding="5">
+    <Box background="surface" borderColor="border" borderWidth="1" padding="5">
       <Bleed marginBlock="5">
         <Placeholder label="All directions" />
       </Bleed>
