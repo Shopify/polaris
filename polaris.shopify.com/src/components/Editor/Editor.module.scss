@@ -205,20 +205,12 @@
 }
 
 .ImagePicker {
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(20px);
-  z-index: 10;
   display: flex;
-  overflow: hidden;
-  max-width: 1540px;
-  max-height: 900px;
-  margin: auto;
 
   .Inspector {
-    min-width: 30rem;
-    max-width: 30rem;
-    background: black;
-    padding: 4rem;
+    min-width: 24rem;
+    max-width: 24rem;
+    padding: var(--p-space-6);
 
     .ColorSchemeIndicator {
       position: absolute;
@@ -227,53 +219,66 @@
       border-radius: 100px;
       padding: 0.25rem 0.5rem;
       font-size: 11px;
-      top: 10px;
-      left: 10px;
+      top: var(--p-space-2);
+      left: var(--p-space-2);
       color: white;
     }
 
     .ImagePreview {
       position: relative;
-      border-radius: 8px;
+      border-radius: 2px;
       overflow: hidden;
-    }
 
-    .DropZone {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      border: 1px dashed white;
-      border-radius: 8px;
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
 
-      p {
+      .ImageActions {
         position: absolute;
-        width: 100%;
-        height: 100%;
+        bottom: var(--p-space-2);
+        left: var(--p-space-2);
         display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #888;
-        font-size: 2rem;
-      }
+        gap: var(--p-space-1);
 
-      input {
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
+        .RemoveImageButton,
+        .ReplaceImageButton {
+          display: block;
+          padding: 0.25rem 0.5rem;
+          background: rgba(0, 0, 0, 0.5);
+          color: white;
+          border-radius: 4px;
+          border: none;
+          font-size: 11px;
+          cursor: pointer;
+
+          &:hover {
+            background: black;
+          }
+
+          input[type='file'] {
+            display: none;
+          }
+        }
       }
     }
+  }
+
+  .Browser {
+    flex: 1;
   }
 
   .Images {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
-    padding: 4rem;
-    overflow: auto;
+    gap: var(--p-space-6);
     align-items: flex-start;
+    overflow: auto;
+    min-height: 500px;
+    max-height: 800px;
+    flex: 1;
+    padding: var(--p-space-8);
 
     .AddImageButton {
       width: 200px;
@@ -287,6 +292,9 @@
       width: 200px;
       height: 200px;
       transition: all 0.1s ease;
+      border: none;
+      background: transparent;
+      cursor: pointer;
       &:hover {
         transform: scale(1.05);
       }
@@ -299,15 +307,15 @@
         width: 100%;
         height: 100%;
         border-radius: 8px;
-        background: #333;
+        background: #ededed;
 
         &:nth-child(1) {
           z-index: 1;
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
         }
 
         &:nth-child(2) {
           transform: scale(0.9) translateY(20px);
+          background: #ddd;
         }
       }
     }

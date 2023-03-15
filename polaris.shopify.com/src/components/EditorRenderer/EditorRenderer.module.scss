@@ -6,6 +6,7 @@
     max-width: 100%;
     height: auto;
     border-radius: var(--border-radius-400);
+    overflow: hidden;
   }
 
   iframe {
@@ -48,7 +49,7 @@
   }
 }
 
-.YoutubeVideo {
+.ResonsiveEmbed {
   position: relative;
   padding-bottom: 56.25%;
   padding-bottom: 56%; // Caps some stray pixels caused by rounding errors

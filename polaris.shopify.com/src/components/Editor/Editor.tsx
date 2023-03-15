@@ -34,6 +34,8 @@ import {
   Page,
   PolarisComponentLifecyclePhase,
   polarisComponentLifecyclePhases,
+  Image as ImageType,
+  ImageFile,
 } from './types';
 import {
   ActionList,
@@ -43,13 +45,16 @@ import {
   Button,
   ButtonGroup,
   Checkbox,
+  DropZone,
   FormLayout,
   Layout,
+  List,
   Modal,
   Page as PolarisPage,
   PageActions,
   Popover,
   Select,
+  Text,
   TextField,
   Tooltip,
 } from '@shopify/polaris';
@@ -58,10 +63,20 @@ import {
   ArrowDownMinor,
   PlusMinor,
   DeleteMinor,
+  ExternalMinor,
 } from '@shopify/polaris-icons';
 import enTranslations from '@shopify/polaris/locales/en.json';
 import {className} from '../../utils/various';
-import {getPageStack, getImageDimensions, getResolvedPage} from './utils';
+import {
+  getPageStack,
+  getImageDimensions,
+  getResolvedPage,
+  getPageUrl,
+} from './utils';
+import {UploadImageResponse} from '../../../pages/api/editor/uploadImage';
+import {useRouter, useSearchParams} from 'next/navigation';
+import Link from 'next/link';
+import {DeleteImageResponse} from '../../../pages/api/editor/deleteImage';
 
 function assertUnreachable(_: never): never {
   throw new Error('assertUnreachable was called, which should never happen');
@@ -154,8 +169,11 @@ const ContentContext = createContext<{
 
 export default function Editor({initialContent}: {initialContent: Content}) {
   const [content, setContent] = useState<Content>(initialContent);
-  const [editedPageId, setEditedPageId] = useState<string | null>(null);
   let persistToBackendTimer = useRef<NodeJS.Timeout | null>(null);
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const editedPageId = searchParams?.get('page') || null;
 
   useEffect(() => {
     if (persistToBackendTimer.current) {
@@ -208,12 +226,6 @@ export default function Editor({initialContent}: {initialContent: Content}) {
         };
         break;
 
-      case 'foundations': {
-        pageMeta = {
-          type: 'foundations',
-        };
-      }
-
       case 'tokens': {
         pageMeta = {
           type: 'tokens',
@@ -252,7 +264,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       pages: [...content.pages, newPage],
     }));
 
-    setEditedPageId(pageId);
+    router.replace(`/editor?page=${pageId}`);
   }
 
   function sortPages(pages: Page[], parentId: string | null) {
@@ -283,7 +295,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
 
   function deletePage(page: Page) {
     if (editedPageId === page.id) {
-      setEditedPageId(null);
+      router.replace('/editor');
     }
     setContent((content) => {
       const childPages = content.pages.filter(
@@ -321,7 +333,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
                   <PageNavItem
                     key={page.id}
                     page={page}
-                    onPageClick={(id) => setEditedPageId(id)}
+                    onPageClick={(id) => router.replace(`/editor?page=${id}`)}
                     editedPageId={editedPageId}
                   />
                 ))}
@@ -430,6 +442,12 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
             content: 'Move down',
             onAction: () => movePage(editedPage, 'down'),
             icon: ArrowDownMinor,
+          },
+          {
+            content: 'Preview',
+            icon: ExternalMinor,
+            external: true,
+            url: getPageUrl(content, editedPage),
           },
         ]}
       >
@@ -654,9 +672,6 @@ function PageMetaEditor({
       break;
 
     case 'patterns':
-      return null;
-
-    case 'foundations':
       return null;
 
     case 'tokens':
@@ -1080,6 +1095,8 @@ function ProgressiveDisclosureEditor({
   );
 }
 
+const ACCEPTED_FILES = 'image/jpeg, image/png, image/svg, image/gif';
+
 function ImagePicker({
   imageId,
   onPick,
@@ -1091,53 +1108,22 @@ function ImagePicker({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
 
-  function uploadImage(imageId: string, colorScheme: ColorScheme) {
-    const fileInput = document.getElementById(
-      `drop-zone-${imageId}-${colorScheme}`,
-    ) as HTMLInputElement;
+  async function uploadImage(files: File[]): Promise<ImageFile | null> {
+    const formData = new FormData();
+    files.forEach((file) => formData.append('multipleFiles', file));
 
-    if (fileInput && fileInput.files) {
-      const formData = new FormData();
-      for (let i = 0; i < fileInput.files.length; i++) {
-        formData.append('multipleFiles', fileInput.files[i]);
-      }
-      fetch('/api/editor/uploadImage', {
-        method: 'POST',
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setContent((content) => ({
-            ...content,
-            images: [
-              ...content.images.map((image) => {
-                if (image.id === imageId) {
-                  const {fileName, width, height} = data;
-                  return {
-                    ...image,
-                    variants: {
-                      ...image.variants,
-                      [colorScheme]: {fileName, alt: '', width, height},
-                    },
-                  };
-                }
-                return image;
-              }),
-            ],
-          }));
-          fileInput.value = '';
-        });
-    }
-  }
-
-  function addImage() {
-    setContent((content) => ({
-      ...content,
-      images: [
-        ...content.images,
-        {id: nanoid(), alt: {light: '', dark: ''}, variants: {}},
-      ],
-    }));
+    return fetch('/api/editor/uploadImage', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data: UploadImageResponse) => {
+        if (data.status === 'success') {
+          return data.image;
+        } else {
+          return null;
+        }
+      });
   }
 
   function setAltAttribute(imageId: string, alt: string) {
@@ -1160,9 +1146,156 @@ function ImagePicker({
     }));
   }
 
+  function addImageAndUpload(files: File[]) {
+    if (files) {
+      uploadImage(files).then((image) => {
+        if (image) {
+          const newImage: ImageType = {
+            id: nanoid(),
+            alt: {light: '', dark: ''},
+            variants: {[ColorScheme.Light]: image},
+          };
+          setContent((content) => ({
+            ...content,
+            images: [...content.images, newImage],
+          }));
+        } else {
+          alert('Failed to upload image');
+        }
+      });
+    }
+  }
+
+  async function replaceImage(
+    imageToReplace: ImageType,
+    colorScheme: ColorScheme,
+    files: File[],
+  ) {
+    const variant = imageToReplace.variants[colorScheme];
+    if (!variant) {
+      throw new Error('Variant does not exist');
+    }
+    await deleteImageFile(variant);
+    const uploadedImage = await uploadImage(files);
+    if (uploadedImage) {
+      setContent((content) => ({
+        ...content,
+        images: [
+          ...content.images.map((image) => {
+            if (image.id === imageToReplace.id) {
+              return {
+                ...image,
+                variants: {
+                  ...image.variants,
+                  [colorScheme]: uploadedImage,
+                },
+              };
+            }
+            return image;
+          }),
+        ],
+      }));
+    } else {
+      alert('Failed to replace image');
+    }
+  }
+
+  function handleOnDrop(
+    imageId: string,
+    colorScheme: ColorScheme,
+    files: File[],
+  ) {
+    uploadImage(Array.from(files)).then((uploadedImage) => {
+      setContent((content) => ({
+        ...content,
+        images: [
+          ...content.images.map((image) => {
+            if (image.id === imageId) {
+              return {
+                ...image,
+                variants: {
+                  ...image.variants,
+                  [colorScheme]: uploadedImage,
+                },
+              };
+            }
+            return image;
+          }),
+        ],
+      }));
+    });
+  }
+
+  async function deleteImageFile(
+    imageFile: ImageFile,
+  ): Promise<DeleteImageResponse> {
+    return fetch(`/api/editor/deleteImage`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({fileName: imageFile.fileName}),
+    })
+      .then((res) => res.json())
+      .then((data) => data as DeleteImageResponse);
+  }
+
+  async function removeDarkModeImage(id: string) {
+    const image = content.images.find((image) => image.id === id);
+    if (image) {
+      const imageFile = image.variants['dark'];
+      if (imageFile) {
+        const data = await deleteImageFile(imageFile);
+        if (data.status === 'success') {
+          setContent((content) => ({
+            ...content,
+            images: [
+              ...content.images.map((image) => {
+                if (image.id === id) {
+                  return {
+                    ...image,
+                    variants: {
+                      ...image.variants,
+                      [ColorScheme.Dark]: undefined,
+                    },
+                  };
+                }
+                return image;
+              }),
+            ],
+          }));
+        } else {
+          alert('Failed to delete image');
+        }
+      }
+    }
+  }
+
   const selectedImage = content.images.find((image) => image.id === imageId);
   const lightVariant = selectedImage?.variants[ColorScheme.Light];
   const inspectedImage = content.images.find(({id}) => id === selectedImageId);
+  const blocksIdsUsingImage = content.blocks
+    .filter((block) => {
+      switch (block.blockType) {
+        case 'Image':
+          return block.imageId === imageId;
+        case 'TextImage':
+          return block.imageId === imageId;
+      }
+      return false;
+    })
+    .map((block) => block.id);
+
+  const pagesUsingSelectedImage = content.pages.filter((page) => {
+    if (page.thumbnailImageId === selectedImageId) {
+      return true;
+    }
+    let matchInBlocks = false;
+    page.blockIds.forEach((blockId) => {
+      if (blocksIdsUsingImage.includes(blockId)) {
+        matchInBlocks = true;
+      }
+    });
+    return matchInBlocks;
+  });
 
   return (
     <>
@@ -1170,16 +1303,22 @@ function ImagePicker({
         <Image
           src={`/uploads/${lightVariant.fileName}`}
           alt={selectedImage.alt[ColorScheme.Light]}
-          width={400}
-          height={400}
+          {...getImageDimensions(
+            {width: lightVariant.width, height: lightVariant.height},
+            200,
+          )}
         />
       )}
 
       <Modal
-        activator={<Button onClick={() => setIsOpen(true)}>Pick image</Button>}
+        activator={
+          <Button onClick={() => setIsOpen(true)}>
+            {imageId ? 'Replace image' : 'Choose an image'}
+          </Button>
+        }
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        title="Choose an image"
+        title={imageId ? 'Replace image' : 'Choose an image'}
         primaryAction={{
           content: 'Pick image',
           onAction: () => {
@@ -1192,14 +1331,17 @@ function ImagePicker({
         }}
         large={true}
       >
-        <Modal.Section>
+        <Modal.Section flush={true}>
           <div className={styles.ImagePicker}>
             <div className={styles.Browser}>
+              <UploadButton
+                className={styles.AddImageButton}
+                onChange={addImageAndUpload}
+                accept={ACCEPTED_FILES}
+              >
+                <p>Add image</p>
+              </UploadButton>
               <div className={styles.Images}>
-                <button className={styles.AddImageButton} onClick={addImage}>
-                  Add image
-                </button>
-
                 {content.images.map((image) => (
                   <button
                     className={styles.Image}
@@ -1213,7 +1355,7 @@ function ImagePicker({
                           <Image
                             key={scheme}
                             src={`/uploads/${variantImage.fileName}`}
-                            alt={image.alt[scheme]}
+                            alt={image.alt[scheme] || ''}
                             width={200}
                             height={200}
                           />
@@ -1235,68 +1377,113 @@ function ImagePicker({
             <div className={styles.Inspector}>
               {inspectedImage && (
                 <>
-                  <h2>{inspectedImage.id}</h2>
-                  <input
-                    type="text"
-                    value={inspectedImage.alt.light || ''}
-                    onChange={(evt) =>
-                      setAltAttribute(inspectedImage.id, evt.target.value)
-                    }
-                    title=""
-                  />
-                  {Object.values(ColorScheme).map((scheme) => {
-                    const variantImage = inspectedImage.variants[scheme];
-                    const indicator = (
-                      <span className={styles.ColorSchemeIndicator}>
-                        {scheme === 'light' ? '☀️ Light mode' : '🌙 Dark mode'}
-                      </span>
-                    );
-                    if (variantImage) {
-                      return (
-                        <div className={styles.ImagePreview} key={scheme}>
-                          {indicator}
-                          <Image
-                            src={`/uploads/${variantImage.fileName}`}
-                            alt={inspectedImage.alt[scheme]}
-                            {...getImageDimensions(
-                              {
-                                width: variantImage.width,
-                                height: variantImage.height,
-                              },
-                              500,
-                            )}
-                          />
-                        </div>
+                  <Text as="h2" variant="headingMd">
+                    Pages using this image
+                  </Text>
+                  <List type="bullet">
+                    {pagesUsingSelectedImage.map((page) => (
+                      <List.Item key={page.id}>
+                        <Link href={getPageUrl(content, page)}>
+                          {page.title}
+                        </Link>
+                      </List.Item>
+                    ))}
+                  </List>
+                  <FormLayout>
+                    <TextField
+                      type="text"
+                      value={inspectedImage.alt.light}
+                      onChange={(alt) =>
+                        setAltAttribute(inspectedImage.id, alt)
+                      }
+                      label="Alt attribute"
+                      autoComplete="off"
+                    />
+                    {Object.values(ColorScheme).map((scheme) => {
+                      const variantImage = inspectedImage.variants[scheme];
+                      const indicator = (
+                        <span className={styles.ColorSchemeIndicator}>
+                          {scheme === 'light'
+                            ? '☀️ Light mode'
+                            : '🌙 Dark mode'}
+                        </span>
                       );
-                    } else {
-                      return (
-                        <div
-                          className={styles.DropZone}
-                          key={`${inspectedImage.id}-${scheme}`}
-                        >
-                          {indicator}
-                          <p>+</p>
-                          <input
-                            type="file"
-                            id={`drop-zone-${inspectedImage.id}-${scheme}`}
-                            onChange={() =>
-                              uploadImage(inspectedImage.id, scheme)
+                      if (variantImage) {
+                        return (
+                          <div className={styles.ImagePreview} key={scheme}>
+                            {indicator}
+                            <Image
+                              src={`/uploads/${variantImage.fileName}`}
+                              alt={inspectedImage.alt[scheme] || ''}
+                              {...getImageDimensions(
+                                {
+                                  width: variantImage.width,
+                                  height: variantImage.height,
+                                },
+                                400,
+                              )}
+                            />
+                            <div className={styles.ImageActions}>
+                              {scheme === ColorScheme.Dark && (
+                                <button
+                                  className={styles.RemoveImageButton}
+                                  onClick={() =>
+                                    removeDarkModeImage(inspectedImage.id)
+                                  }
+                                >
+                                  Remove
+                                </button>
+                              )}
+                              <UploadButton
+                                className={styles.ReplaceImageButton}
+                                onChange={(files) =>
+                                  replaceImage(inspectedImage, scheme, files)
+                                }
+                                accept={ACCEPTED_FILES}
+                              >
+                                <p>Replace</p>
+                              </UploadButton>
+                            </div>
+                          </div>
+                        );
+                      } else {
+                        return (
+                          <DropZone
+                            key={`${inspectedImage.id}-${scheme}`}
+                            onDrop={(_, acceptedFiles) =>
+                              handleOnDrop(
+                                inspectedImage.id,
+                                scheme,
+                                acceptedFiles,
+                              )
                             }
-                            title=""
-                          />
-                        </div>
-                      );
-                    }
-                  })}
+                            accept={ACCEPTED_FILES}
+                            allowMultiple={false}
+                          >
+                            <DropZone.FileUpload
+                              actionTitle={`Add ${scheme} mode image`}
+                            />
+                          </DropZone>
+                        );
+                      }
+                    })}
 
-                  <button
-                    onClick={() => {
-                      onPick(inspectedImage.id);
-                      setIsOpen(false);
-                    }}
-                  >
-                    Pick
-                  </button>
+                    <Button
+                      destructive
+                      disabled={pagesUsingSelectedImage.length > 0}
+                      onClick={() => alert('TODO: Delete image')}
+                      icon={DeleteMinor}
+                      fullWidth
+                      outline
+                    >
+                      Delete image
+                    </Button>
+                    {pagesUsingSelectedImage.length > 0 && (
+                      <Text as="p" color="subdued" variant="bodySm">
+                        {`The image can't be deleted while still being referenced by other pages. Remove the image from those pages before deleting it.`}
+                      </Text>
+                    )}
+                  </FormLayout>
                 </>
               )}
             </div>
@@ -1304,5 +1491,39 @@ function ImagePicker({
         </Modal.Section>
       </Modal>
     </>
+  );
+}
+
+function UploadButton({
+  onChange,
+  className,
+  accept,
+  children,
+}: {
+  onChange: (files: File[]) => void;
+  className: string;
+  accept: string;
+  children: React.ReactNode;
+}) {
+  const id = useRef(nanoid());
+
+  return (
+    <label className={className}>
+      <input
+        type="file"
+        id={id.current}
+        onChange={() => {
+          const thisElement = document.getElementById(
+            id.current,
+          ) as HTMLInputElement;
+          if (thisElement && thisElement.files) {
+            onChange(Array.from(thisElement.files));
+            thisElement.value = '';
+          }
+        }}
+        accept={accept}
+      />
+      {children}
+    </label>
   );
 }

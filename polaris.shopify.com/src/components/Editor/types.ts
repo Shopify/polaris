@@ -31,12 +31,7 @@ export type BasePageMeta = {
   type: PageMetaType;
 };
 
-export const pageMetaTypes = [
-  'components',
-  'patterns',
-  'foundations',
-  'tokens',
-] as const;
+export const pageMetaTypes = ['components', 'patterns', 'tokens'] as const;
 export type PageMetaType = typeof pageMetaTypes[number];
 
 export const polarisComponentLifecyclePhases = [
@@ -167,6 +162,12 @@ export enum ColorScheme {
   Dark = 'dark',
 }
 
+export type ImageFile = {
+  fileName: string;
+  width: number;
+  height: number;
+};
+
 export type Image = {
   id: string;
   alt: {
@@ -174,16 +175,8 @@ export type Image = {
     [ColorScheme.Dark]?: string;
   };
   variants: {
-    [ColorScheme.Light]: {
-      fileName: string;
-      width: number;
-      height: number;
-    };
-    [ColorScheme.Dark]?: {
-      fileName: string;
-      width: number;
-      height: number;
-    };
+    [ColorScheme.Light]: ImageFile;
+    [ColorScheme.Dark]?: ImageFile;
   };
 };
 

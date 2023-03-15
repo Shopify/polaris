@@ -324,6 +324,7 @@ createPage(
   },
   contributingReadme,
 );
+
 const contributingFilePaths = globby.sync(`removed-content/contributing/*.md`);
 contributingFilePaths
   .filter((filePath) => !filePath.endsWith('index.md'))
@@ -351,6 +352,24 @@ contributingFilePaths
       readme,
     );
   });
+
+// Contributing: New page
+createPage({
+  id: nanoid(),
+  title: 'Contributing to the website',
+  excerpt: `Info about how the website works`,
+  slug: 'website',
+  parentId: contributingId,
+  order: 99,
+  useCustomLayout: false,
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: null,
+  keywords: ['website', 'site'],
+  hasSeparatorInNav: false,
+});
 
 // Migrate foundtions: Design
 const designIndexFile = fs.readFileSync(

@@ -43,6 +43,31 @@ export function getResolvedPage(
     }
   }
 
+  content.blocks
+    .filter((block) => page.blockIds.includes(block.id))
+    .forEach((block) => {
+      switch (block.blockType) {
+        case 'Image': {
+          const image = content.images.find(
+            (image) => image.id === block.imageId,
+          );
+          if (image) {
+            images.push(image);
+          }
+          break;
+        }
+        case 'TextImage': {
+          const image = content.images.find(
+            (image) => image.id === block.imageId,
+          );
+          if (image) {
+            images.push(image);
+          }
+          break;
+        }
+      }
+    });
+
   const resolvedPage: ResolvedPage = {
     ...page,
     url: getPageUrl(content, page),

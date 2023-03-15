@@ -1,12 +1,19 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
 import formidable from 'formidable';
 import sizeOf from 'image-size';
+import {ImageFile} from '../../../src/components/Editor/types';
+import {nanoid} from 'nanoid';
 
 export const config = {
-  api: {
-    bodyParser: false,
-  },
+  api: {bodyParser: false},
 };
+
+export type UploadImageResponse =
+  | {
+      status: 'success';
+      image: ImageFile;
+    }
+  | {status: 'error'; message: string};
 
 const handler = async function (req: NextApiRequest, res: NextApiResponse) {
   if (process.env.NODE_ENV !== 'development') {
@@ -20,11 +27,12 @@ const handler = async function (req: NextApiRequest, res: NextApiResponse) {
         uploadDir: './public/uploads',
         multiples: true,
         keepExtensions: true,
-        filter: function ({name, originalFilename, mimetype}) {
+        allowEmptyFiles: false,
+        filter: function ({mimetype}) {
           return !!(mimetype && mimetype.includes('image'));
         },
-        filename(name, ext, part, form) {
-          uploadedFileName = `${name}${ext}`;
+        filename(_, ext) {
+          uploadedFileName = `${nanoid()}${ext}`;
           return uploadedFileName;
         },
       });
@@ -35,16 +43,27 @@ const handler = async function (req: NextApiRequest, res: NextApiResponse) {
         sizeOf(
           `./public/uploads/${uploadedFileName}`,
           function (err, dimensions) {
+            if (err) {
+              const response: UploadImageResponse = {
+                status: 'error',
+                message: err.message,
+              };
+              return res.status(500).json(response);
+            }
+
             if (dimensions && dimensions.width && dimensions.height) {
               width = dimensions.width;
               height = dimensions.height;
             }
-            res.status(200).json({
+            const response: UploadImageResponse = {
               status: 'success',
-              fileName: uploadedFileName,
-              width,
-              height,
-            });
+              image: {
+                fileName: uploadedFileName,
+                width,
+                height,
+              },
+            };
+            return res.status(200).json(response);
           },
         );
       });

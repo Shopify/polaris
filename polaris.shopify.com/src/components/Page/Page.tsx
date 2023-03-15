@@ -25,7 +25,10 @@ function Page({page, showTOC = true, children}: Props) {
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     githubIssueSubject,
   )}&amp;labels=polaris.shopify.com`;
-  const editOnGithubUrl = `https://github.com/Shopify/polaris/tree/main/src/content.ts`;
+  const editPageUrl =
+    process.env.NODE_ENV === 'development'
+      ? `http://localhost:3000/editor?page=${page.id}`
+      : `https://github.com/Shopify/polaris/tree/main/src/content.ts`;
 
   return (
     <Container className={className(styles.Page, showTOC && styles.showTOC)}>
@@ -46,9 +49,7 @@ function Page({page, showTOC = true, children}: Props) {
 
         <footer className={styles.Footer}>
           <p>
-            {editOnGithubUrl && (
-              <Link href={editOnGithubUrl}>Edit this page</Link>
-            )}
+            {editPageUrl && <Link href={editPageUrl}>Edit this page</Link>}
             <Link href={feedbackUrl}>Leave feedback</Link>
           </p>
         </footer>

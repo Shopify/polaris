@@ -6,7 +6,7 @@
     "build": "yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
     "dev": "yarn get-props && yarn gen-assets && run-p dev:*",
-    "dev:server": "open http://localhost:3000 && next dev",
+    "dev:server": "open http://localhost:3000/contributing/website && next dev",
     "dev:watch-md": "ts-node scripts/watchNav.ts",
     "dev:playroom": "rm -rf ./public/playroom && playroom start",
     "lint": "run-p lint:*",
