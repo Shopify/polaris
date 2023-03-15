@@ -242,7 +242,7 @@ export default [
       },
     ],
 
-    external: ['react'],
+    external: ['react', 'react/jsx-runtime'],
     onwarn: (warning, warn) => {
       // Unresolved imports means Rollup couldn't find an import, possibly because
       // we made a typo in the file name. Fail the build in that case so we know

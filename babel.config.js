@@ -2,7 +2,8 @@
  * @type {import('@babel/core').TransformOptions}
  */
 module.exports = function (api) {
-  api.cache(true);
+  const envName = api.env();
+  const development = envName === 'development' || envName === 'test';
 
   return {
     presets: [
@@ -15,7 +16,7 @@ module.exports = function (api) {
         '@babel/preset-react',
         {
           runtime: 'automatic',
-          useBuiltIns: true,
+          development,
         },
       ],
     ],
