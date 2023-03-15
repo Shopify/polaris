@@ -1,6 +1,6 @@
 # [Polaris React](https://polaris.shopify.com/)
 
-Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
+Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more!
 
 ## Using the React components
 
