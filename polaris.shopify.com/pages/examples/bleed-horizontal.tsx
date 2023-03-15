@@ -5,7 +5,13 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedHorizontalExample() {
   return (
-    <Box background="surface" borderColor="border" borderWidth="1" padding="4">
+    <Box
+      background="surface"
+      borderColor="border"
+      borderStyle="solid"
+      borderWidth="1"
+      padding="4"
+    >
       <Bleed marginInline="4">
         <Placeholder label="Horizontal" />
       </Bleed>

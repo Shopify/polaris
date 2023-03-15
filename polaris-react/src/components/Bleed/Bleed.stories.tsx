@@ -35,7 +35,13 @@ export function Default() {
 
 export function WithVerticalDirection() {
   return (
-    <Box background="surface" padding="4" borderColor="border" borderWidth="1">
+    <Box
+      background="surface"
+      padding="4"
+      borderColor="border"
+      borderWidth="1"
+      borderStyle="solid"
+    >
       <Bleed marginBlock="6">
         <div style={styles} />
       </Bleed>
@@ -45,7 +51,13 @@ export function WithVerticalDirection() {
 
 export function WithHorizontalDirection() {
   return (
-    <Box background="surface" padding="4" borderColor="border" borderWidth="1">
+    <Box
+      background="surface"
+      padding="4"
+      borderColor="border"
+      borderWidth="1"
+      borderStyle="solid"
+    >
       <Bleed marginInline="6">
         <div style={styles} />
       </Bleed>
@@ -64,6 +76,7 @@ export function WithSpecificDirection() {
         padding="4"
         borderColor="border"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Bleed marginInline="4" marginBlockStart="6">
           <div style={styles} />
@@ -77,6 +90,7 @@ export function WithSpecificDirection() {
         padding="4"
         borderColor="border"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Bleed marginInline="4" marginBlockEnd="6">
           <div style={styles} />
@@ -90,6 +104,7 @@ export function WithSpecificDirection() {
         padding="4"
         borderColor="border"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Bleed marginInline="0" marginInlineStart="6">
           <div style={styles} />
@@ -103,6 +118,7 @@ export function WithSpecificDirection() {
         padding="4"
         borderColor="border"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Bleed marginInline="0" marginInlineEnd="6">
           <div style={styles} />
@@ -114,7 +130,13 @@ export function WithSpecificDirection() {
 
 export function WithAllDirection() {
   return (
-    <Box background="surface" padding="4" borderColor="border" borderWidth="1">
+    <Box
+      background="surface"
+      padding="4"
+      borderColor="border"
+      borderWidth="1"
+      borderStyle="solid"
+    >
       <Bleed marginInline="6" marginBlock="6">
         <div style={styles} />
       </Bleed>

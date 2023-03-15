@@ -10,6 +10,7 @@ function BleedSpecificDirectionExample() {
         background="surface"
         borderColor="border"
         borderWidth="1"
+        borderStyle="solid"
         padding="5"
       >
         <Bleed marginBlockStart="5">
@@ -20,6 +21,7 @@ function BleedSpecificDirectionExample() {
         background="surface"
         borderColor="border"
         borderWidth="1"
+        borderStyle="solid"
         padding="5"
       >
         <Bleed marginBlockEnd="5">
@@ -30,6 +32,7 @@ function BleedSpecificDirectionExample() {
         background="surface"
         borderColor="border"
         borderWidth="1"
+        borderStyle="solid"
         padding="5"
       >
         <Bleed marginInlineStart="5" marginInlineEnd="0">
@@ -40,6 +43,7 @@ function BleedSpecificDirectionExample() {
         background="surface"
         borderColor="border"
         borderWidth="1"
+        borderStyle="solid"
         padding="5"
       >
         <Bleed marginInlineEnd="5" marginInlineStart="0">

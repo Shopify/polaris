@@ -22,6 +22,7 @@ export function WithCriticalBorder() {
       padding="4"
       borderColor="border-critical"
       borderWidth="1"
+      borderStyle="solid"
     >
       <Icon source={PaintBrushMajor} color="base" />
     </Box>
@@ -44,6 +45,7 @@ export function WithResponsivePadding() {
         padding={{xs: '2', sm: '8'}}
         borderColor="border-critical"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
@@ -53,6 +55,7 @@ export function WithResponsivePadding() {
         paddingBlockStart={{xs: '4', sm: '10'}}
         borderColor="border-critical"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
@@ -62,6 +65,7 @@ export function WithResponsivePadding() {
         paddingBlockEnd={{xs: '4', sm: '10'}}
         borderColor="border-critical"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
@@ -71,6 +75,7 @@ export function WithResponsivePadding() {
         paddingInlineStart={{xs: '4', sm: '10'}}
         borderColor="border-critical"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
@@ -79,6 +84,7 @@ export function WithResponsivePadding() {
         paddingInlineEnd={{xs: '4', sm: '10'}}
         borderColor="border-critical"
         borderWidth="1"
+        borderStyle="solid"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
