@@ -9,13 +9,12 @@ import {
   ChoiceList,
   RangeSlider,
   Badge,
-  IndexFiltersMode,
 } from '@shopify/polaris';
 import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function IndexTableWithFilteringExample() {
+function IndexTableWithViewsSearchFilterSorting() {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
@@ -104,7 +103,7 @@ function IndexTableWithFilteringExample() {
     {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
   ];
   const [sortSelected, setSortSelected] = useState(['order asc']);
-  const {mode, setMode} = useSetIndexFiltersMode(IndexFiltersMode.Filtering);
+  const {mode, setMode} = useSetIndexFiltersMode();
   const onHandleCancel = () => {};
 
   const onHandleSave = async () => {
@@ -128,8 +127,8 @@ function IndexTableWithFilteringExample() {
         };
   const [accountStatus, setAccountStatus] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState<string | undefined>('');
-  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
@@ -143,18 +142,28 @@ function IndexTableWithFilteringExample() {
     (value) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleFiltersQueryChange = useCallback(
+    (value) => setQueryValue(value),
+    [],
+  );
+  const handleAccountStatusRemove = useCallback(
+    () => setAccountStatus(null),
+    [],
+  );
+  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
     handleTaggedWithRemove();
     handleQueryValueRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove]);
-  const handleSortChange = useCallback(
-    (value: string) => setSortValue(value),
-    [],
-  );
+  }, [
+    handleAccountStatusRemove,
+    handleMoneySpentRemove,
+    handleQueryValueRemove,
+    handleTaggedWithRemove,
+  ]);
 
   const filters = [
     {
@@ -210,22 +219,72 @@ function IndexTableWithFilteringExample() {
     },
   ];
 
-  const appliedFilters =
-    taggedWith && !isEmpty(taggedWith)
-      ? [
-          {
-            key: 'taggedWith',
-            label: disambiguateLabel('taggedWith', taggedWith),
-            onRemove: handleTaggedWithRemove,
-          },
-        ]
-      : [];
+  const appliedFilters: IndexFiltersProps['appliedFilters'] = [];
+  if (!isEmpty(accountStatus)) {
+    const key = 'accountStatus';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, accountStatus),
+      onRemove: handleAccountStatusRemove,
+    });
+  }
+  if (!isEmpty(moneySpent)) {
+    const key = 'moneySpent';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, moneySpent),
+      onRemove: handleMoneySpentRemove,
+    });
+  }
+  if (!isEmpty(taggedWith)) {
+    const key = 'taggedWith';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, taggedWith),
+      onRemove: handleTaggedWithRemove,
+    });
+  }
 
-  const sortOptions = [
-    {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
-    {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
-    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
-    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
+  const orders = [
+    {
+      id: '1020',
+      order: (
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          #1020
+        </Text>
+      ),
+      date: 'Jul 20 at 4:34pm',
+      customer: 'Jaydon Stanton',
+      total: '$969.44',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1019',
+      order: (
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          #1019
+        </Text>
+      ),
+      date: 'Jul 20 at 3:46pm',
+      customer: 'Ruben Westerfelt',
+      total: '$701.19',
+      paymentStatus: <Badge progress="partiallyComplete">Partially paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1018',
+      order: (
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          #1018
+        </Text>
+      ),
+      date: 'Jul 20 at 3.44pm',
+      customer: 'Leo Carder',
+      total: '$798.24',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
   ];
   const resourceName = {
     singular: 'order',
@@ -308,7 +367,7 @@ function IndexTableWithFilteringExample() {
     </LegacyCard>
   );
 
-  function disambiguateLabel(key: string, value: string): string {
+  function disambiguateLabel(key, value) {
     switch (key) {
       case 'moneySpent':
         return `Money spent is between $${value[0]} and $${value[1]}`;
@@ -321,7 +380,7 @@ function IndexTableWithFilteringExample() {
     }
   }
 
-  function isEmpty(value: string): boolean {
+  function isEmpty(value) {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
@@ -330,4 +389,4 @@ function IndexTableWithFilteringExample() {
   }
 }
 
-export default withPolarisExample(IndexTableWithFilteringExample);
+export default withPolarisExample(IndexTableWithViewsSearchFilterSorting);

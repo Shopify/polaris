@@ -13,12 +13,19 @@ keywords:
 examples:
   - fileName: index-filters-default.tsx
     title: Default
+    description: An IndexFilters component with view management, search, filtering, and sorting.
   - fileName: index-filters-with-pinned-filters.tsx
     title: With pinned filters
+    description: An IndexFilters component with some of the filters pinned, making them visible by default.
   - fileName: index-filters-with-filtering-mode.tsx
     title: Filtering mode default
+    description: An IndexFilters component with filtering mode enabled by default.
   - fileName: index-filters-disabled.tsx
     title: Disabled
+    description: An IndexFilters component that is disabled.
+  - fileName: index-filters-with-no-filters.tsx
+    title: With no filters
+    description: An IndexFilters component with only view management, search, and sorting.
 ---
 
 Merchants use filters to:

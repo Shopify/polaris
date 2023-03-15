@@ -122,6 +122,7 @@ export function IndexFilters({
   onCreateNewView,
   filteringAccessibilityLabel,
   filteringAccessibilityTooltip,
+  hideQueryField,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -380,6 +381,7 @@ export function IndexFilters({
                   onClearAll={onClearAll}
                   disableFilters={disabled}
                   hideFilters={hideFilters}
+                  hideQueryField={hideQueryField}
                   disableQueryField={disabled || disableQueryField}
                   loading={loading || isActionLoading}
                   focused

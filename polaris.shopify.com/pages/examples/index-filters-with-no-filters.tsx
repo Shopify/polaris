@@ -9,13 +9,12 @@ import {
   ChoiceList,
   RangeSlider,
   Badge,
-  IndexFiltersMode,
 } from '@shopify/polaris';
 import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function IndexTableWithFilteringExample() {
+function IndexFiltersWithNoFiltersExample() {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
@@ -104,7 +103,7 @@ function IndexTableWithFilteringExample() {
     {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
   ];
   const [sortSelected, setSortSelected] = useState(['order asc']);
-  const {mode, setMode} = useSetIndexFiltersMode(IndexFiltersMode.Filtering);
+  const {mode, setMode} = useSetIndexFiltersMode();
   const onHandleCancel = () => {};
 
   const onHandleSave = async () => {
@@ -126,106 +125,53 @@ function IndexTableWithFilteringExample() {
           disabled: false,
           loading: false,
         };
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState<string | undefined>('');
-  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
+  const [queryValue, setQueryValue] = useState('');
 
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove]);
-  const handleSortChange = useCallback(
-    (value: string) => setSortValue(value),
+  const handleFiltersQueryChange = useCallback(
+    (value) => setQueryValue(value),
     [],
   );
 
-  const filters = [
+  const orders = [
     {
-      key: 'accountStatus',
-      label: 'Account status',
-      filter: (
-        <ChoiceList
-          title="Account status"
-          titleHidden
-          choices={[
-            {label: 'Enabled', value: 'enabled'},
-            {label: 'Not invited', value: 'not invited'},
-            {label: 'Invited', value: 'invited'},
-            {label: 'Declined', value: 'declined'},
-          ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
-          allowMultiple
-        />
+      id: '1020',
+      order: (
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          #1020
+        </Text>
       ),
-      shortcut: true,
+      date: 'Jul 20 at 4:34pm',
+      customer: 'Jaydon Stanton',
+      total: '$969.44',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
     },
     {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
+      id: '1019',
+      order: (
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          #1019
+        </Text>
       ),
-      shortcut: true,
+      date: 'Jul 20 at 3:46pm',
+      customer: 'Ruben Westerfelt',
+      total: '$701.19',
+      paymentStatus: <Badge progress="partiallyComplete">Partially paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
     },
     {
-      key: 'moneySpent',
-      label: 'Money spent',
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent || [0, 500]}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleMoneySpentChange}
-        />
+      id: '1018',
+      order: (
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          #1018
+        </Text>
       ),
+      date: 'Jul 20 at 3.44pm',
+      customer: 'Leo Carder',
+      total: '$798.24',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
     },
-  ];
-
-  const appliedFilters =
-    taggedWith && !isEmpty(taggedWith)
-      ? [
-          {
-            key: 'taggedWith',
-            label: disambiguateLabel('taggedWith', taggedWith),
-            onRemove: handleTaggedWithRemove,
-          },
-        ]
-      : [];
-
-  const sortOptions = [
-    {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
-    {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
-    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
-    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
   ];
   const resourceName = {
     singular: 'order',
@@ -281,11 +227,13 @@ function IndexTableWithFilteringExample() {
         onSelect={setSelected}
         canCreateNewView
         onCreateNewView={onCreateNewView}
-        filters={filters}
-        appliedFilters={appliedFilters}
-        onClearAll={handleFiltersClearAll}
+        filters={[]}
+        appliedFilters={[]}
+        onClearAll={() => {}}
         mode={mode}
         setMode={setMode}
+        hideFilters
+        filteringAccessibilityTooltip="Search (F)"
       />
       <IndexTable
         resourceName={resourceName}
@@ -308,7 +256,7 @@ function IndexTableWithFilteringExample() {
     </LegacyCard>
   );
 
-  function disambiguateLabel(key: string, value: string): string {
+  function disambiguateLabel(key, value) {
     switch (key) {
       case 'moneySpent':
         return `Money spent is between $${value[0]} and $${value[1]}`;
@@ -321,7 +269,7 @@ function IndexTableWithFilteringExample() {
     }
   }
 
-  function isEmpty(value: string): boolean {
+  function isEmpty(value) {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
@@ -330,4 +278,4 @@ function IndexTableWithFilteringExample() {
   }
 }
 
-export default withPolarisExample(IndexTableWithFilteringExample);
+export default withPolarisExample(IndexFiltersWithNoFiltersExample);
