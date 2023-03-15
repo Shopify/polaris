@@ -2174,6 +2174,383 @@ export function WithCustomTooltips() {
   );
 }
 
+export function WithZebraStriping() {
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+        hasZebraStriping
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithZebraStripingCondensed() {
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+        hasZebraStriping
+        condensed
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithZebraStripingAndRowStatus() {
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      status: 'success',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      status: 'subdued',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent, status}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+        status={status}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithZebraStripingAndStickyLastColumn() {
+  const customers = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      status: 'Created',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
+    },
+    {
+      id: '2561',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      status: 'Created',
+      channel: 'Online Store',
+      paymentStatus: 'Paid',
+      fulfillmentStatus: 'Unfulfilled',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        status,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+          {title: 'Status'},
+          {title: 'Channel'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+        ]}
+        lastColumnSticky
+        hasZebraStriping
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
 export function SmallScreenWithAllOfItsElements() {
   const customers = [
     {
