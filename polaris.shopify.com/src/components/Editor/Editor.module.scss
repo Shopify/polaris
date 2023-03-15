@@ -108,10 +108,17 @@
   }
 
   .BlockList {
-    margin-top: var(--p-space-6);
+    margin-top: var(--p-space-2);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    padding-bottom: var(--p-space-8);
+  }
+
+  .BlockAdder {
+    display: flex;
+    justify-content: center;
+    padding-bottom: var(--p-space-1);
   }
 
   .Block {
@@ -126,13 +133,12 @@
       padding: 0.5rem;
       width: 100%;
     }
-
-    &:hover {
-      .BlockActions {
-        opacity: 1;
-      }
-    }
   }
+}
+
+.BlockActions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .CustomRouteBanner {

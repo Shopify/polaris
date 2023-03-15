@@ -39,11 +39,10 @@ import {
   ActionList,
   AlphaCard,
   AppProvider,
+  Banner,
   Button,
   ButtonGroup,
-  Card,
   Checkbox,
-  EmptyState,
   FormLayout,
   Layout,
   Modal,
@@ -487,12 +486,28 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                   />
 
                   <Checkbox
-                    label="Use custom Next.js layout"
+                    label="Render with custom Next.js layout"
                     checked={editedPage.useCustomLayout}
                     onChange={(useCustomLayout) =>
                       updatePage({...editedPage, useCustomLayout})
                     }
                   />
+
+                  {editedPage.useCustomLayout && (
+                    <Banner
+                      title="This page is using a custom layout"
+                      action={{
+                        content: 'Read Next.js docs',
+                        url: 'https://beta.nextjs.org/docs/app-directory-roadmap',
+                      }}
+                      status="info"
+                    >
+                      <p>
+                        You have to create a custom Next.js template for the
+                        page to show up.
+                      </p>
+                    </Banner>
+                  )}
                 </FormLayout>
               </AlphaCard>
 
@@ -500,31 +515,6 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                 <AlphaCard>
                   <PageMetaEditor page={editedPage} updatePage={updatePage} />
                 </AlphaCard>
-              )}
-
-              {editedPage.useCustomLayout && (
-                <Card>
-                  <EmptyState
-                    heading="This page is using a custom layout"
-                    secondaryAction={{
-                      content: 'Read Next.js docs',
-                      url: 'https://beta.nextjs.org/docs/app-directory-roadmap',
-                    }}
-                    image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
-                  >
-                    <p>
-                      You should create a custom Next.js page so that something
-                      is rendered in its place. Put it in{' '}
-                      <span>
-                        polaris.shopify.com/app/
-                        {getPageStack(content, editedPage)
-                          ?.map((page) => page.slug)
-                          .join('/')}
-                        .tsx
-                      </span>
-                    </p>
-                  </EmptyState>
-                </Card>
               )}
 
               {!editedPage.useCustomLayout && (
@@ -703,22 +693,25 @@ function BlockList({
   const page = content.pages.find((page) => page.id === pageId);
   if (!page) throw new Error('Page not found');
   const resolvedPage = getResolvedPage(content, page, true);
+  const blocks = resolvedPage.blocks
+    .filter((block) => block.parentBlockId === parentBlockId)
+    .sort((a, b) => a.order - b.order);
 
   return (
     <div>
       <div className={styles.BlockList}>
         <BlockAdder pageId={pageId} parentBlockId={parentBlockId} order={0} />
 
-        {resolvedPage.blocks
-          .sort((a, b) => a.order - b.order)
-          .map((block) => (
-            <BlockEditor
-              key={block.id}
-              pageId={pageId}
-              block={block}
-              parentBlockId={parentBlockId}
-            />
-          ))}
+        {blocks.map((block, index) => (
+          <BlockEditor
+            key={block.id}
+            pageId={pageId}
+            block={block}
+            parentBlockId={parentBlockId}
+            isFirst={index === 0}
+            isLast={index === blocks.length - 1}
+          />
+        ))}
       </div>
     </div>
   );
@@ -728,19 +721,24 @@ function BlockEditor({
   pageId,
   block,
   parentBlockId,
+  isFirst,
+  isLast,
 }: {
   pageId: string;
   block: Block;
   parentBlockId: string | null;
+  isFirst: boolean;
+  isLast: boolean;
 }) {
   const {setContent} = useContext(ContentContext);
 
   function deleteBlock(blockId: string) {
-    setContent((content) => ({
-      ...content,
-      blocks: content.blocks.filter((block) => block.id !== blockId),
-    }));
-    // TODO: Update order of blocks after delte
+    setContent((content) =>
+      sortBlocks({
+        ...content,
+        blocks: content.blocks.filter((block) => block.id !== blockId),
+      }),
+    );
     // TODO: Don't allow removal of blocks with children
   }
 
@@ -748,32 +746,17 @@ function BlockEditor({
     const indexDiff = direction === 'up' ? -1.5 : 1.5;
     setContent((content) => {
       const newBlocks = [...content.blocks].map((thisBlock) => {
-        return thisBlock.parentBlockId === block.parentBlockId &&
-          thisBlock.parentBlockId === block.parentBlockId
+        return thisBlock.id === block.id
           ? {...thisBlock, order: thisBlock.order + indexDiff}
           : thisBlock;
       });
 
-      let sortMap: {[id: string]: number} = {};
-
-      newBlocks
-        .sort((a, b) => a.order - b.order)
-        .forEach((thisBlock, index) => {
-          sortMap[thisBlock.id] = index;
-        });
-
-      return {
+      const sortedContent = sortBlocks({
         ...content,
-        blocks: content.blocks.map((thisBlock) => {
-          if (Object.keys(sortMap).includes(thisBlock.id)) {
-            return {
-              ...thisBlock,
-              order: sortMap[thisBlock.id],
-            };
-          }
-          return thisBlock;
-        }),
-      };
+        blocks: newBlocks,
+      });
+
+      return sortedContent;
     });
   }
 
@@ -824,6 +807,7 @@ function BlockEditor({
 
     assertUnreachable(block);
   };
+
   return (
     <>
       <AlphaCard key={block.id}>
@@ -843,7 +827,7 @@ function BlockEditor({
               size="slim"
               onClick={() => moveBlock(block, 'up')}
               aria-label="Move block up"
-              disabled={block.order === 0}
+              disabled={isFirst}
             ></Button>
             <Button
               plain
@@ -851,6 +835,7 @@ function BlockEditor({
               size="slim"
               onClick={() => moveBlock(block, 'down')}
               aria-label="Move block down"
+              disabled={isLast}
             ></Button>
           </ButtonGroup>
         </div>
@@ -867,35 +852,40 @@ function BlockEditor({
   );
 }
 
-// function sortBlocks(content: Content): Content {
-//   const orderMap: {
-//     [parentId: string]: {
-//       [blockParentId: string]: {
-//         [blockId: string]: string;
-//       };
-//     };
-//   } = {};
+function sortBlocks(content: Content): Content {
+  const delimiter = '$';
 
-//   const uniqueParentIds: (string | null)[] = [];
-//   content.blocks.forEach((block) => {
-//     if (!uniqueParentIds.includes(block.parentBlockId)) {
-//       uniqueParentIds.push(block.parentBlockId);
-//     }
-//   });
+  let groups: {
+    [hash: string]: Block[];
+  } = {};
 
-//   uniqueParentIds.forEach((parentId) => {
-//     const uniqeBlockParentIDs: (string | null)[] = [];
-//     content.blocks.forEach((block) => {
-//       if (block.parentBlockId === parentId) {
-//         uniqeBlockParentIDs.push(block.id);
-//       }
-//     });
-//   });
+  const getHash = (pageId: string, block: Block) =>
+    `${pageId}${delimiter}${block.parentBlockId || 'null'}`;
 
-//   uniqueParentIds.forEach((uniqueParent) => {
-//     uniqueBlock;
-//   });
-// }
+  content.pages.forEach(({id, blockIds}) => {
+    blockIds.forEach((blockId) => {
+      const block = content.blocks.find((block) => block.id === blockId);
+      if (block) {
+        const hash = getHash(id, block);
+        groups[hash] = [...(groups[hash] || []), block];
+      }
+    });
+  });
+
+  Object.keys(groups).forEach((hash) => {
+    groups[hash] = groups[hash]
+      .sort((a, b) => a.order - b.order)
+      .map((block, index) => ({...block, order: index}));
+  });
+
+  let sortedBlocks: Block[] = [];
+
+  Object.keys(groups).forEach(
+    (hash) => (sortedBlocks = [...sortedBlocks, ...groups[hash]]),
+  );
+
+  return {...content, blocks: sortedBlocks};
+}
 
 function BlockAdder({
   pageId,
@@ -910,43 +900,40 @@ function BlockAdder({
   const [adderIsVisible, setAdderIsVisible] = useState(false);
 
   function addBlock(blockType: BlockType, order: number) {
-    let block: Block = {
+    let newBlock: Block = {
       ...getEmptyBlock(blockType, parentBlockId),
-      order,
+      // -0.5 squeezes the block in between the indented order
+      // and the previous one. The sorting function will then
+      // clean up the order values.
+      order: order - 0.5,
     };
 
-    setContent((content) => ({
-      ...content,
-      pages: [
-        ...content.pages.map((page) => {
-          if (page.id === pageId) {
-            return {
-              ...page,
-              blocks: [
-                ...page.blocks.slice(0, order),
-                block,
-                ...page.blocks.slice(order).map((block) => ({
-                  ...block,
-                  order: block.order + 1,
-                })),
-              ],
-            };
-          }
-          return page;
-        }),
-      ],
-    }));
+    setContent((content) => {
+      return sortBlocks({
+        ...content,
+        pages: [
+          ...content.pages.map((page) =>
+            page.id === pageId
+              ? {...page, blockIds: [...page.blockIds, newBlock.id]}
+              : page,
+          ),
+        ],
+        blocks: [...content.blocks, newBlock],
+      });
+    });
   }
 
   return (
     <Popover
       active={adderIsVisible}
       activator={
-        <Button
-          onClick={() => setAdderIsVisible(true)}
-          icon={PlusMinor}
-          plain
-        ></Button>
+        <div className={styles.BlockAdder}>
+          <Button
+            onClick={() => setAdderIsVisible(true)}
+            icon={PlusMinor}
+            plain
+          ></Button>
+        </div>
       }
       autofocusTarget="first-node"
       onClose={() => setAdderIsVisible(false)}

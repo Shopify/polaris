@@ -74,10 +74,6 @@ interface PatternsPageMeta extends BasePageMeta {
   type: 'patterns';
 }
 
-interface FoundationsPageMeta extends BasePageMeta {
-  type: 'foundations';
-}
-
 export const tokenGroups = [
   'breakpoints',
   'colors',
@@ -95,11 +91,7 @@ interface TokensPageMeta extends BasePageMeta {
   tokenGroup: TokenGroup;
 }
 
-export type PageMeta =
-  | ComponentsPageMeta
-  | PatternsPageMeta
-  | FoundationsPageMeta
-  | TokensPageMeta;
+export type PageMeta = ComponentsPageMeta | PatternsPageMeta | TokensPageMeta;
 
 export const blockTypes = [
   'Markdown',
