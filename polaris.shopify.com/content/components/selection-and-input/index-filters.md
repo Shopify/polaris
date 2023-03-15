@@ -46,14 +46,13 @@ You can create views and control which actions can be performed on a particular 
 
 ## Anatomy
 
-<-- insert ![A diagram of the IndexFilters component showing the components it is composed of.](/images/components/selection-and-input/index-filters/index-filters-anatomy.png) -->
+![A diagram of the IndexFilters component showing the components it is composed of.](/images/components/selection-and-input/index-filters/index-filters-anatomy.png)
 Index filters are made up of the following:
 
 1. **Tabs**: A list of saved views. Each tab represents a subset of the list that has been sorted, filtered, and or queried and saved with a unique name. New views can be created directly from the tab list, or by editing the filters, query, or sort selection of an existing view and saving it as new.
-2. **Search and filter button**: The search and filter button allows merchants to toggle the index table from "View" mode to "Filter" mode. When clicked, the button reveals the search field and the filters that allow merchants to edit or create saved views.
-3. \*Search field\*\*: A text field that filters the list of items by the input as merchants type.
-4. **Filters**: A set of useful ways to narrow down the list based on the common actions merchants may need to take on the data. The filters should present merchants with form inputs that help them include or exclude list items from the view based on their data.
-5. **Sort button**: A button that activates a popover displaying a list of options merchants can choose from to sort the list items. Merchants can also choose whether the list should be sorted in ascending or descending order.
+2. **Search and filter, and sort buttons**: The search and filter button allows merchants to toggle the index table from "View" mode to "Filter" mode. When clicked, the button reveals the search field and the filters that allow merchants to edit or create saved views. The sort button activates a popover displaying a list of options merchants can choose from to sort the list items. Merchants can also choose whether the list should be sorted in ascending or descending order.
+3. **Filters**: A set of useful ways to narrow down the list based on the common actions merchants may need to take on the data. The filters should present merchants with form inputs that help them include or exclude list items from the view based on their data.
+4. **Action buttons**: Primary and secondary actions that a merchant can take on the current view. The primary action will always be either "Save" or "Save as" depending on whether the view is mutable, and the secondary action will always be "Cancel".
 
 ---
 
