@@ -328,8 +328,7 @@ $loading-panel-height: 53px;
 
   &:not(.TableHeadingSortIcon-heading-align-end),
   &:not(.TableHeadingSortButton-heading-align-end-previously-sorted) {
-    transition: opacity var(--p-duration-200) var(--p-ease-in)
-      var(--p-duration-100);
+    transition: opacity var(--p-duration-50) var(--p-ease);
   }
 }
 
