@@ -1,5 +1,16 @@
 # @shopify/polaris-migrator
 
+## 0.16.0
+
+### Minor Changes
+
+- [#8272](https://github.com/Shopify/polaris/pull/8272) [`cccd69848`](https://github.com/Shopify/polaris/commit/cccd698482ed4ff74e2ae4ab23ccc1c3e7c69412) Thanks [@lgriffee](https://github.com/lgriffee)! - Create migrations to replace deprecated custom properties in polaris-react v11.0.0 and v9.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`764f17d86`](https://github.com/Shopify/polaris/commit/764f17d86c30c9f30bec6717c09f07b2e04e23f8)]:
+  - @shopify/stylelint-polaris@9.0.0
+
 ## 0.15.1
 
 ### Patch Changes
