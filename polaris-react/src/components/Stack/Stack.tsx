@@ -1,4 +1,4 @@
-import React, {createElement} from 'react';
+import {createElement} from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
 import {

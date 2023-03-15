@@ -1,4 +1,3 @@
-import React from 'react';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import { useRef } from 'react';
 import {mount} from 'tests/utilities';
 
 import {useEventListener} from '../use-event-listener';

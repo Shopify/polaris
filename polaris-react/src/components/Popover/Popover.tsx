@@ -1,4 +1,4 @@
-import React, {
+import {
   Children,
   forwardRef,
   useEffect,
@@ -8,6 +8,7 @@ import React, {
   useId,
   useState,
 } from 'react';
+
 import type {AriaAttributes} from 'react';
 
 import {

@@ -1,7 +1,5 @@
 // @ts-nocheck
-import React from 'react';
-
-import {DisplayText} from '../DisplayText';
+import { DisplayText } from '../DisplayText';
 import {Heading} from '../Heading';
 import {Subheading} from '../Subheading';
 import {Caption} from '../Caption';

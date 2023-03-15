@@ -1,4 +1,3 @@
-import React from 'react';
 import {AlertMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';

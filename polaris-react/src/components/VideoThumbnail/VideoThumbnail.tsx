@@ -1,4 +1,3 @@
-import React from 'react';
 import {PlayMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../utilities/i18n';

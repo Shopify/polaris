@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {RenderPerformanceProfiler} from '../.storybook/RenderPerformanceProfiler';
 
 interface Stories {

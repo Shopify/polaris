@@ -1,4 +1,3 @@
-import React from 'react';
 import {CirclePlusMinor, AddMajor} from '@shopify/polaris-icons';
 import {mountWithListboxProvider} from 'tests/utilities/listbox';
 

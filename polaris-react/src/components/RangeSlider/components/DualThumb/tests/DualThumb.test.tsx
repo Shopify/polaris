@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp, CustomRoot} from 'tests/utilities';
 
 import {Key} from '../../../../../types';

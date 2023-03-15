@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp, ReactTestingElement, CustomRoot} from 'tests/utilities';
 
 import {TextField} from '../../TextField';

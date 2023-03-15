@@ -1,5 +1,4 @@
 import {List} from '@shopify/polaris';
-import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ListExtraTightExample() {

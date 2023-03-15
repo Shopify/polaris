@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import { useContext } from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {useLink} from '../hooks';

@@ -1,4 +1,3 @@
-import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {act} from 'react-dom/test-utils';
 import {mountWithApp} from 'tests/utilities';

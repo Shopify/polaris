@@ -1,4 +1,4 @@
-import React, {memo, forwardRef} from 'react';
+import { memo, forwardRef } from 'react';
 
 import {unstyled} from '../shared';
 import {useLink, LinkLikeComponentProps} from '../../utilities/link';

@@ -1,4 +1,4 @@
-import React, {useRef, useId} from 'react';
+import {useRef, useId} from 'react';
 
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';

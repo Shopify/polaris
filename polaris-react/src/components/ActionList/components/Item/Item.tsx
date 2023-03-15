@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
 import {Scrollable} from '../../../Scrollable';

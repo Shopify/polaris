@@ -1,5 +1,4 @@
 import {mount} from '@shopify/react-testing';
-import React from 'react';
 
 import {useDisableClick, useDisableKeyboard} from '../use-disable-interaction';
 

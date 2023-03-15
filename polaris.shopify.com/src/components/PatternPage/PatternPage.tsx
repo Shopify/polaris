@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  useState,
-  createContext,
-  useContext,
-  useEffect,
-} from 'react';
+import {Fragment, useState, createContext, useContext, useEffect} from 'react';
 import {Tab} from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';

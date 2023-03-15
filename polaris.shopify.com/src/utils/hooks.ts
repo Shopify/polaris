@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState, useCallback} from 'react';
+import {useEffect, useRef, useState, useCallback} from 'react';
 import throttle from 'lodash.throttle';
 import {useRouter} from 'next/router';
 

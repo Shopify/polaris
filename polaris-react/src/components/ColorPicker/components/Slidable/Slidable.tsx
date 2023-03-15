@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import {PureComponent} from 'react';
 
 import {isServer} from '../../../../utilities/target';
 // eslint-disable-next-line import/no-deprecated

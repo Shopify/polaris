@@ -1,4 +1,3 @@
-import React from 'react';
 import {AddonPanel, ArgsTable} from '@storybook/components';
 import {addons, types} from '@storybook/addons';
 import {useGlobals} from '@storybook/api';

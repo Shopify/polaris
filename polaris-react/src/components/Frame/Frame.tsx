@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef, MouseEvent} from 'react';
+import {PureComponent, createRef, MouseEvent} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 import {motion} from '@shopify/polaris-tokens';

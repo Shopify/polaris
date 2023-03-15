@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import {ReactElement} from 'react';
 import {createMount} from '@shopify/react-testing';
 
 // eslint-disable-next-line @shopify/strict-component-boundaries

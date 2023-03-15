@@ -1,5 +1,4 @@
 import {Page, Layout, LegacyCard, FormLayout, TextField} from '@shopify/polaris';
-import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function LayoutExample() {

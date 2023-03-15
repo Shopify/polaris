@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {classNames, variationName} from '../../utilities/css';
 import {Text} from '../Text';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';

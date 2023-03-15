@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Item} from '../Item';
 import type {TabDescriptor} from '../../types';
 import {Box} from '../../../Box';

@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import {useCallback, useRef} from 'react';
 
 import {ScrollLock} from '../../../ScrollLock';
 import {classNames} from '../../../../utilities/css';

@@ -1,4 +1,4 @@
-import React, {forwardRef} from 'react';
+import { forwardRef } from 'react';
 import {Transition} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';

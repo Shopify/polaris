@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import { memo } from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import styles from '../../DatePicker.scss';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
 import {Scrollable} from '../../../Scrollable';

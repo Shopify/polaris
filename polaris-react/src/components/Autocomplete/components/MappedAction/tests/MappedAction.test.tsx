@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithListboxProvider} from 'tests/utilities/listbox';
 
 import {Listbox} from '../../../../Listbox';

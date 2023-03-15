@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import { useState, useCallback } from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {SCROLL_LOCKING_ATTRIBUTE} from '../../../utilities/scroll-lock-manager';

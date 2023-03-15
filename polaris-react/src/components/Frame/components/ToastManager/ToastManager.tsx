@@ -1,4 +1,4 @@
-import React, {createRef, memo} from 'react';
+import {createRef, memo} from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 
 import {classNames} from '../../../../utilities/css';

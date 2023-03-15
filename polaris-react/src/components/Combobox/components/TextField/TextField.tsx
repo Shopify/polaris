@@ -1,4 +1,4 @@
-import React, {useMemo, useId, useCallback, useEffect} from 'react';
+import {useMemo, useId, useCallback, useEffect} from 'react';
 
 import {labelID} from '../../../Label';
 import {TextField as PolarisTextField} from '../../../TextField';

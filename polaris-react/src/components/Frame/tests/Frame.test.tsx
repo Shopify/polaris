@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import { createRef } from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';

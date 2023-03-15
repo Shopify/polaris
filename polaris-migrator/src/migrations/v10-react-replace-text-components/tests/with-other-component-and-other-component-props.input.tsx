@@ -1,4 +1,3 @@
-import React from 'react';
 import type {HeadingProps} from '@shopify/polaris';
 import {Subheading} from '@shopify/polaris';
 

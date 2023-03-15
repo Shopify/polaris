@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import { useCallback } from 'react';
 
 import type {ActionListSection, MenuGroupDescriptor} from '../../../../types';
 import {ActionList} from '../../../ActionList';

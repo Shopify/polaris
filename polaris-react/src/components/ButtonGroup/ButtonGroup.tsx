@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {classNames} from '../../utilities/css';
 import {elementChildren} from '../../utilities/components';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './LinkButton.module.scss';
 type Props = React.ComponentProps<'button'>;
 

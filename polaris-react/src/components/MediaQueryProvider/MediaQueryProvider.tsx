@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback, useMemo} from 'react';
+import {useEffect, useState, useCallback, useMemo} from 'react';
 
 import {debounce} from '../../utilities/debounce';
 import {MediaQueryContext} from '../../utilities/media-query';

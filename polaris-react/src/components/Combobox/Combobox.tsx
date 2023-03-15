@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useMemo, Children, useRef} from 'react';
+import {useState, useCallback, useMemo, Children, useRef} from 'react';
 
 import {Popover, PopoverPublicAPI} from '../Popover';
 import type {PopoverProps} from '../Popover';

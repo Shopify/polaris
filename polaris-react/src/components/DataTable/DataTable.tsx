@@ -1,9 +1,4 @@
-import React, {
-  PureComponent,
-  createRef,
-  ReactNode,
-  FocusEventHandler,
-} from 'react';
+import {PureComponent, createRef, ReactNode, FocusEventHandler} from 'react';
 import isEqual from 'react-fast-compare';
 
 import {debounce} from '../../utilities/debounce';

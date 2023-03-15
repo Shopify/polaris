@@ -1,4 +1,4 @@
-import React, {forwardRef, RefObject} from 'react';
+import { forwardRef, RefObject } from 'react';
 
 export interface PolarisContainerProps {}
 

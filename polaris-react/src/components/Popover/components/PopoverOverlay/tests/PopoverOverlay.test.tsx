@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import { useState, useRef } from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Key} from '../../../../../types';
@@ -350,7 +350,7 @@ describe('<PopoverOverlay />', () => {
 
   describe('deleting descendant elements', () => {
     const DeleteButton = () => {
-      const [show, setShow] = React.useState(true);
+      const [show, setShow] = useState(true);
 
       return show ? (
         <button onClick={() => setShow((prev) => !prev)}>Delete</button>

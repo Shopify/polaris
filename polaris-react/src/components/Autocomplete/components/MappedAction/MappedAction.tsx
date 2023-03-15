@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 
 import type {ActionListItemDescriptor} from '../../../../types';
 import {Badge} from '../../../Badge';

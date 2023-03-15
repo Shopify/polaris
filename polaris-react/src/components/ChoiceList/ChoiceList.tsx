@@ -1,4 +1,4 @@
-import React, {useId} from 'react';
+import {useId} from 'react';
 
 import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';

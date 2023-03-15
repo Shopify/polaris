@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {ActionList, ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 

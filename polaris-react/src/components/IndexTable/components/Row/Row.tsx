@@ -1,4 +1,4 @@
-import React, {useMemo, memo, useRef, useCallback} from 'react';
+import {useMemo, memo, useRef, useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {

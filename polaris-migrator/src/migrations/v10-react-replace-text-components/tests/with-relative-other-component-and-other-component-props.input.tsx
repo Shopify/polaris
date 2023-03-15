@@ -1,7 +1,5 @@
 // @ts-nocheck
-import React from 'react';
-
-import type {HeadingProps} from '../Heading';
+import type { HeadingProps } from '../Heading';
 import {TextStyle} from '../TextStyle';
 
 const MyHeading = (_props: HeadingProps) => {

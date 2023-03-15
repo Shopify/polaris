@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Badge, BadgeProps} from '../../../../../Badge';
 import {Button} from '../../../../../Button';
 import {Text} from '../../../../../Text';

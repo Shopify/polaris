@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import { useCallback, useRef, useState } from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,

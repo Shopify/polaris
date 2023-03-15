@@ -4,7 +4,6 @@ import type {
   ShapeBorderRadiusScale,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
-import React from 'react';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';

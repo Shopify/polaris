@@ -1,4 +1,3 @@
-import React from 'react';
 import type {TextStyleProps} from '@shopify/polaris';
 
 const MyTextStyle = (_props: TextStyleProps) => {

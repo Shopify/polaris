@@ -1,7 +1,5 @@
 // @ts-nocheck
-import React from 'react';
-
-import {Text} from '../Text';
+import { Text } from '../Text';
 
 export function App() {
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import {forwardRef} from 'react';
 import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
@@ -14,7 +14,7 @@ export interface SpinnerProps {
   onBlur(event: React.FocusEvent): void;
 }
 
-export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
+export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
   function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
     function handleStep(step: number) {
       return () => onChange(step);

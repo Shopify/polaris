@@ -1,6 +1,5 @@
 import {ExceptionList} from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
-import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ExceptionListExample() {

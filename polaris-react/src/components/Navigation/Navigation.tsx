@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 
 import {Scrollable} from '../Scrollable';
 import {WithinContentContext} from '../../utilities/within-content-context';

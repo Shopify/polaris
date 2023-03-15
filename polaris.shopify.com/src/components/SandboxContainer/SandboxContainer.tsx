@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './SandboxContainer.module.scss';
 import {className} from '../../utils/various';
 

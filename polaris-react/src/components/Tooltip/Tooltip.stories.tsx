@@ -1,4 +1,3 @@
-import React from 'react';
 import {QuestionMarkMinor} from '@shopify/polaris-icons';
 import type {ComponentMeta} from '@storybook/react';
 import {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {classNames, variationName} from '../../../../utilities/css';
 import type {Progress, Status} from '../../types';
 import {Text} from '../../../Text';

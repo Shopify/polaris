@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Box} from '../../../Box';
 import {classNames} from '../../../../utilities/css';
 

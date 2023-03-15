@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, useCallback, useId} from 'react';
+import {useEffect, useState, useRef, useCallback, useId} from 'react';
 import type {
   ShapeBorderRadiusScale,
   SpacingSpaceScale,

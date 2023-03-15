@@ -1,7 +1,5 @@
 // @ts-nocheck
-import React from 'react';
-
-import type {TextStyleProps} from '../TextStyle';
+import type { TextStyleProps } from '../TextStyle';
 
 const MyTextStyle = (_props: TextStyleProps) => {
   return null;

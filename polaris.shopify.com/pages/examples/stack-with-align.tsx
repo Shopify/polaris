@@ -1,4 +1,3 @@
-import React from 'react';
 import {Stack, Page, Inline, Text, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';

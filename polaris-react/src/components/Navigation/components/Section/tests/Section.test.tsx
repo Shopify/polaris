@@ -1,4 +1,3 @@
-import React from 'react';
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 

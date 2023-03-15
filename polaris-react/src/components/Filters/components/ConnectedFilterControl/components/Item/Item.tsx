@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {classNames} from '../../../../../../utilities/css';
 import {useToggle} from '../../../../../../utilities/use-toggle';
 import styles from '../../ConnectedFilterControl.scss';

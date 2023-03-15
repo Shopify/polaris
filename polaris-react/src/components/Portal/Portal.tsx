@@ -1,4 +1,4 @@
-import React, {useEffect, useId} from 'react';
+import {useEffect, useId} from 'react';
 import {createPortal} from 'react-dom';
 
 import {usePortalsManager} from '../../utilities/portals';

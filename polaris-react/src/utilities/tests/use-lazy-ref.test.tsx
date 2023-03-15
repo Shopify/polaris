@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import {mount} from 'tests/utilities';
 
 import {useLazyRef} from '../use-lazy-ref';

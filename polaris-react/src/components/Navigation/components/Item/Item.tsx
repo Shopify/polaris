@@ -1,12 +1,4 @@
-import React, {
-  useEffect,
-  useContext,
-  useState,
-  MouseEvent,
-  ReactNode,
-  useRef,
-  useId,
-} from 'react';
+import { useEffect, useContext, useState, MouseEvent, ReactNode, useRef, useId } from 'react';
 
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 import {classNames} from '../../../../utilities/css';

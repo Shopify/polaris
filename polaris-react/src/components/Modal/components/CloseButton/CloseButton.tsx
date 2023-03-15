@@ -1,4 +1,3 @@
-import React from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';

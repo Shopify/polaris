@@ -1,4 +1,4 @@
-import React, {isValidElement} from 'react';
+import {isValidElement} from 'react';
 
 import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';

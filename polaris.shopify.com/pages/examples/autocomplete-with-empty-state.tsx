@@ -1,6 +1,6 @@
 import {Autocomplete, Icon, TextContainer} from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
-import React, {useState, useCallback, useMemo} from 'react';
+import { Fragment, useState, useCallback, useMemo } from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AutocompleteExample() {
@@ -69,12 +69,12 @@ function AutocompleteExample() {
   );
 
   const emptyState = (
-    <React.Fragment>
+    <Fragment>
       <Icon source={SearchMinor} />
       <div style={{textAlign: 'center'}}>
         <TextContainer>Could not find any results</TextContainer>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 
   return (

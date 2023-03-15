@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, memo} from 'react';
+import { useRef, useEffect, memo } from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {isSameDay} from '../../../../utilities/dates';

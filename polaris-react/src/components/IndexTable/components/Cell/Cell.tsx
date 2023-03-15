@@ -1,4 +1,4 @@
-import React, {memo, ReactNode} from 'react';
+import { memo, ReactNode } from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import styles from '../../IndexTable.scss';

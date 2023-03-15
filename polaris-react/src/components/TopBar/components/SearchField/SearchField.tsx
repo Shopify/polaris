@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState, useRef, useId} from 'react';
+import {useCallback, useEffect, useState, useRef, useId} from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';

@@ -1,4 +1,3 @@
-import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Stack, Box, Icon} from '@shopify/polaris';
 import {PaintBrushMajor} from '@shopify/polaris-icons';

@@ -1,5 +1,5 @@
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
-import React, {createRef} from 'react';
+import {createRef} from 'react';
 
 import type {Key} from '../../types';
 import {useI18n} from '../../utilities/i18n';

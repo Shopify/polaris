@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import { PureComponent } from 'react';
 
 import {Slidable, SlidableProps} from '../Slidable';
 import styles from '../../ColorPicker.scss';

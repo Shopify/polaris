@@ -1,4 +1,3 @@
-import React from 'react';
 import {CustomRoot, mountWithApp} from 'tests/utilities';
 
 import type {WithPolarisTestProviderOptions} from '../../PolarisTestProvider';

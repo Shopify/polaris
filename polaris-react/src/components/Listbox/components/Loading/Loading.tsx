@@ -1,4 +1,4 @@
-import React, {memo, useEffect} from 'react';
+import {memo, useEffect} from 'react';
 
 import {Spinner} from '../../../Spinner';
 import {useListbox} from '../../../../utilities/listbox';

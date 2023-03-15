@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import {Fragment} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {Icon, IconProps} from '../Icon';

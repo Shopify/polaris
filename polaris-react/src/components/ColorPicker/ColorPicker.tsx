@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import {PureComponent} from 'react';
 
 import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';

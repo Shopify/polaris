@@ -1,5 +1,4 @@
 import type {NextPage} from 'next';
-import React from 'react';
 import TokensPage from '../../src/components/TokensPage';
 import PageMeta from '../../src/components/PageMeta';
 import Container from '../../src/components/Container';

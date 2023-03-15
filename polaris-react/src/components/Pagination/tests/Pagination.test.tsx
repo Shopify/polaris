@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {CustomRoot} from '@shopify/react-testing';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Text} from '../Text';
 import {classNames, variationName} from '../../utilities/css';
 import type {IconSource} from '../../types';

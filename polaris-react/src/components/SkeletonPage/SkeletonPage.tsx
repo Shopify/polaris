@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {useI18n} from '../../utilities/i18n';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 import {Box} from '../Box';

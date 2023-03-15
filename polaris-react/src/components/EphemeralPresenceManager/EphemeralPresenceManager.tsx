@@ -1,4 +1,4 @@
-import React, {useMemo, useState, useCallback, ContextType} from 'react';
+import {useMemo, useState, useCallback, ContextType} from 'react';
 
 import {EphemeralPresenceManagerContext} from '../../utilities/ephemeral-presence-manager';
 import type {EphemeralPresenceKey} from '../../utilities/ephemeral-presence-manager';

@@ -1,4 +1,3 @@
-import React from 'react';
 import {LegacyStack} from '@shopify/polaris';
 
 const MyStack = LegacyStack;

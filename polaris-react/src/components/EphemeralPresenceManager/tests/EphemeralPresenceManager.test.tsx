@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {useEphemeralPresenceManager} from '../../../utilities/ephemeral-presence-manager';

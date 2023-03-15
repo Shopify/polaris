@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, SetStateAction, Dispatch} from 'react';
+import {useRef, useEffect, SetStateAction, Dispatch} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {motion} from '@shopify/polaris-tokens';
 

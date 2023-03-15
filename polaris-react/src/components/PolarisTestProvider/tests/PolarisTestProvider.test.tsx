@@ -1,4 +1,4 @@
-import React, {StrictMode} from 'react';
+import { StrictMode } from 'react';
 import {mount, mountWithApp} from 'tests/utilities';
 
 import {MediaQueryContext, useMediaQuery} from '../../../utilities/media-query';

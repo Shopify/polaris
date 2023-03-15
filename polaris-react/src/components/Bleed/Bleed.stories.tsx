@@ -1,4 +1,3 @@
-import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Card, Bleed, Box, Divider, LegacyStack, Text} from '@shopify/polaris';
 

@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef, useId} from 'react';
+import {useState, useCallback, useRef, useId} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';

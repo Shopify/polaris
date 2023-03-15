@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {classNames} from '../../utilities/css';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';

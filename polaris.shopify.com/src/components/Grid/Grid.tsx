@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, {forwardRef} from 'react';
+import {forwardRef} from 'react';
 import {type SpacingSpaceScale} from '@shopify/polaris-tokens';
 import {stripMarkdownLinks} from '../../utils/various';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';

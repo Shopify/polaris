@@ -1,4 +1,4 @@
-import React, {Component, createRef, useContext, useId} from 'react';
+import {Component, createRef, useContext, useId} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'react-fast-compare';
 

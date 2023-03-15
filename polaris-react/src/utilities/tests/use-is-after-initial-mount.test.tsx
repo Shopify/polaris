@@ -1,4 +1,3 @@
-import React from 'react';
 import {mount} from 'tests/utilities';
 
 import {useIsAfterInitialMount} from '../use-is-after-initial-mount';

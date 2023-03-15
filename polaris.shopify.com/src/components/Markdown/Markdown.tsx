@@ -1,5 +1,4 @@
 import ReactMarkdown from 'react-markdown';
-import React from 'react';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';

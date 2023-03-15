@@ -1,6 +1,4 @@
 // @ts-nocheck
-import React from 'react';
-
 import type {
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* Replace with: TextProps */

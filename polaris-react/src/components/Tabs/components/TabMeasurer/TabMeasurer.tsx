@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useRef, useCallback} from 'react';
+import {memo, useEffect, useRef, useCallback} from 'react';
 
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';

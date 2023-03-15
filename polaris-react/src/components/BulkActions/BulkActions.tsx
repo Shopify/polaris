@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from 'react';
+import { PureComponent, createRef } from 'react';
 import {Transition} from 'react-transition-group';
 
 import {debounce} from '../../utilities/debounce';

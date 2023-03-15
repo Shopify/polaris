@@ -1,4 +1,3 @@
-import React from 'react';
 import type {CaptionProps} from '@shopify/polaris';
 import {Caption, DisplayText} from '@shopify/polaris';
 

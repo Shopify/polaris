@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect} from 'react';
+import { ReactNode, useEffect } from 'react';
 
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 

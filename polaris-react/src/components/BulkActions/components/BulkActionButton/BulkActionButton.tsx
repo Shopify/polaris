@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import { useRef } from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import type {DisableableAction} from '../../../../types';

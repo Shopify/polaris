@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {classNames} from '../../utilities/css';
 import type {Error} from '../../types';
 import {InlineError} from '../InlineError';

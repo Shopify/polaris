@@ -1,4 +1,3 @@
-import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Button, Columns, Page} from '@shopify/polaris';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';

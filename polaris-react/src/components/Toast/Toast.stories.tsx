@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import { useCallback, useState } from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Button, ButtonGroup, Frame, Page, Toast} from '@shopify/polaris';
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {useIsMountedRef} from '../../../../utilities/use-is-mounted-ref';

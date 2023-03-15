@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface MyComponentProps {
   prop?: string;
   newProp?: string;

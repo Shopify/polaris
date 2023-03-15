@@ -1,4 +1,3 @@
-import React from 'react';
 import {mount} from 'tests/utilities';
 
 import {useComponentDidMount} from '../use-component-did-mount';

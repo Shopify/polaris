@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Icon} from '../../../Icon';
 import type {IconProps} from '../../../Icon';
 import {Option, OptionProps} from '../Option';

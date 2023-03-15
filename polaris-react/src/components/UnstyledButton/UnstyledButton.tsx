@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {useDisableClick} from '../../utilities/use-disable-interaction';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode, Fragment } from 'react';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
@@ -9,7 +9,7 @@ import {breakpoints} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
-  const Wrapper = strictMode ? React.StrictMode : React.Fragment;
+  const Wrapper = strictMode ? StrictMode : Fragment;
 
   return (
     <Wrapper>
@@ -45,7 +45,7 @@ function GridOverlayDecorator(Story, context) {
 
 function ReactRenderProfiler(Story, context) {
   const {profiler} = context.globals;
-  const Wrapper = profiler ? RenderPerformanceProfiler : React.Fragment;
+  const Wrapper = profiler ? RenderPerformanceProfiler : Fragment;
   const props = profiler ? {id: context.id, kind: context.kind} : {};
 
   return (

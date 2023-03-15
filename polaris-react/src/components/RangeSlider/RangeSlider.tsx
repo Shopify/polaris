@@ -1,4 +1,4 @@
-import React, {useId} from 'react';
+import { useId } from 'react';
 
 import type {RangeSliderProps, RangeSliderValue, DualValue} from './types';
 import {SingleThumb, DualThumb} from './components';

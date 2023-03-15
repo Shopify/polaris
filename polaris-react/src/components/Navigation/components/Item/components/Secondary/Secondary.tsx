@@ -1,4 +1,4 @@
-import React, {useId} from 'react';
+import {useId} from 'react';
 
 import {Collapsible} from '../../../../../Collapsible';
 import styles from '../../../../Navigation.scss';

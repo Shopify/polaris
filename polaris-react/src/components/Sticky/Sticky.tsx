@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 
 import {getRectForNode} from '../../utilities/geometry';
 import {useStickyManager} from '../../utilities/sticky-manager';

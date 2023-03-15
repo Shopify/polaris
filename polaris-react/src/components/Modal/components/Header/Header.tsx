@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Box} from '../../../Box';
 import {CloseButton} from '../CloseButton';
 import {Columns} from '../../../Columns';

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import { useContext } from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';

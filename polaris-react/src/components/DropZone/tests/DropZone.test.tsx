@@ -1,4 +1,3 @@
-import React from 'react';
 import {act} from 'react-dom/test-utils';
 import {clock} from '@shopify/jest-dom-mocks';
 import {mountWithApp, CustomRoot} from 'tests/utilities';

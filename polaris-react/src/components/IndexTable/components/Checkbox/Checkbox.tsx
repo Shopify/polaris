@@ -1,12 +1,4 @@
-import React, {
-  useContext,
-  memo,
-  useEffect,
-  useRef,
-  useCallback,
-  Fragment,
-  ReactNode,
-} from 'react';
+import { useContext, memo, useEffect, useRef, useCallback, Fragment, ReactNode } from 'react';
 
 import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';

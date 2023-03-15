@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type {ComplexAction} from '../../types';
 
 import {Button, ButtonProps} from './Button';

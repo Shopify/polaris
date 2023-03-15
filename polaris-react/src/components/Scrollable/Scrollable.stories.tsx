@@ -1,4 +1,4 @@
-import React, {ComponentRef, useRef} from 'react';
+import { ComponentRef, useRef } from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Button, LegacyCard, Scrollable} from '@shopify/polaris';
 import type {ScrollableRef} from '@shopify/polaris';

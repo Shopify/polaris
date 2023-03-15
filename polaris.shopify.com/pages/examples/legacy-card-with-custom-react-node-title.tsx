@@ -1,6 +1,5 @@
 import {LegacyCard, LegacyStack, Icon, List, Text} from '@shopify/polaris';
 import {ProductsMajor} from '@shopify/polaris-icons';
-import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function LegacyCardExample() {

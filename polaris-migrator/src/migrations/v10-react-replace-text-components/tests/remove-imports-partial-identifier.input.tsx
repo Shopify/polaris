@@ -1,4 +1,3 @@
-import React from 'react';
 import {Caption, DisplayText} from '@shopify/polaris';
 
 export function App() {

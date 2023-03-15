@@ -1,4 +1,3 @@
-import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import type {

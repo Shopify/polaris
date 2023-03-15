@@ -1,4 +1,3 @@
-import React from 'react';
 import {ExitMajor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';

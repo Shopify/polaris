@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import { useCallback, useState } from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 

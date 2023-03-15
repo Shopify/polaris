@@ -5,7 +5,6 @@ import {
   CirclePlusOutlineMinor,
   ProductsMinor,
 } from '@shopify/polaris-icons';
-import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function NavigationExample() {

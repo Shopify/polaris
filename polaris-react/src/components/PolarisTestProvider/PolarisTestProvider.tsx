@@ -1,4 +1,4 @@
-import React, {useMemo, Fragment, StrictMode} from 'react';
+import {useMemo, Fragment, StrictMode} from 'react';
 
 import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';

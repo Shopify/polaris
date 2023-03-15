@@ -1,6 +1,5 @@
 import {Frame, Navigation, Text} from '@shopify/polaris';
 import {HomeMinor, OrdersMinor, ProductsMinor} from '@shopify/polaris-icons';
-import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function NavigationExample() {

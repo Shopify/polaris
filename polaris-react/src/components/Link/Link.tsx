@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {UnstyledLink} from '../UnstyledLink';

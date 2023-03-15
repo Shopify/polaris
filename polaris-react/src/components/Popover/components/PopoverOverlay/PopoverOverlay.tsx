@@ -1,4 +1,4 @@
-import React, {PureComponent, Children, createRef} from 'react';
+import {PureComponent, Children, createRef} from 'react';
 import {motion} from '@shopify/polaris-tokens';
 
 import {findFirstKeyboardFocusableNode} from '../../../../utilities/focus';

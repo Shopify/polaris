@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import {useCallback, useRef, useState} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Portal} from '../../Portal';

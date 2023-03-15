@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 import {classNames} from '../../utilities/css';
 import {ScrollLock} from '../ScrollLock';

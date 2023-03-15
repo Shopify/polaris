@@ -1,4 +1,4 @@
-import React, {Component, createRef} from 'react';
+import {Component, createRef} from 'react';
 
 import {debounce} from '../../../../utilities/debounce';
 import {classNames} from '../../../../utilities/css';

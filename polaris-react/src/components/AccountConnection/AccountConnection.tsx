@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';

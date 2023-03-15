@@ -1,4 +1,4 @@
-import React, {PropsWithChildren} from 'react';
+import { Profiler, PropsWithChildren } from 'react';
 
 interface Data {
   id: string;
@@ -34,7 +34,7 @@ export const RenderPerformanceProfiler = ({
   }
 
   return (
-    <React.Profiler
+    <Profiler
       id={id}
       onRender={(_, phase, actualDuration, baseDuration) => {
         const data = {
@@ -48,6 +48,6 @@ export const RenderPerformanceProfiler = ({
       }}
     >
       {children}
-    </React.Profiler>
+    </Profiler>
   );
 };

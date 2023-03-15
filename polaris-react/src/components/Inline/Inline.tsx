@@ -1,4 +1,3 @@
-import React from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
 import {getResponsiveProps} from '../../utilities/css';

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState, useId} from 'react';
+import { useEffect, useRef, useState, useId } from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';

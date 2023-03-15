@@ -1,6 +1,5 @@
 import {ActionList, Thumbnail, Icon, Avatar} from '@shopify/polaris';
 import {ChevronRightMinor} from '@shopify/polaris-icons';
-import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ActionListWithPrefixSuffixExample() {

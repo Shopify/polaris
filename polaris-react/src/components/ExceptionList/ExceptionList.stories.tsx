@@ -1,4 +1,3 @@
-import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ExceptionList} from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';

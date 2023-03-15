@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import {useCallback} from 'react';
 
 import {Text} from '../Text';
 import {useI18n} from '../../utilities/i18n';

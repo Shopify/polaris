@@ -1,4 +1,3 @@
-import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {SearchMinor} from '@shopify/polaris-icons';
 

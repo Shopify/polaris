@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import { memo } from 'react';
 
 import type {OptionDescriptor, ArrayElement} from '../../../../types';
 import {Listbox} from '../../../Listbox';

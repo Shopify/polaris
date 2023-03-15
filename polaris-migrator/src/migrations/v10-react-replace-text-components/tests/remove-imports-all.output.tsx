@@ -1,4 +1,3 @@
-import React from 'react';
 import {Text, InlineCode} from '@shopify/polaris';
 
 export function App() {

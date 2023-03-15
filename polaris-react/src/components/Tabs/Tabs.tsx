@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import {PureComponent} from 'react';
 import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';

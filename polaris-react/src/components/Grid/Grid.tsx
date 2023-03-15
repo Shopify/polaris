@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 
 // eslint-disable-next-line import/no-deprecated
 import {Cell} from './components';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './SettingAction.scss';
 
 export interface SettingActionProps {

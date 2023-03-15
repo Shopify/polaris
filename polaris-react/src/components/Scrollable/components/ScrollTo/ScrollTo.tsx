@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useId} from 'react';
+import { useContext, useEffect, useRef, useId } from 'react';
 
 import {ScrollableContext} from '../../context';
 

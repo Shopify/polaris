@@ -1,4 +1,3 @@
-import React from 'react';
 import {Stack} from '@shopify/polaris';
 
 const MyStack = Stack;

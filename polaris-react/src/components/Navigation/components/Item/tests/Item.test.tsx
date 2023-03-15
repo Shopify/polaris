@@ -1,4 +1,3 @@
-import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';

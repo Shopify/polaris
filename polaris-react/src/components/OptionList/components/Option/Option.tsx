@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import {useCallback} from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import type {IconProps} from '../../../Icon';

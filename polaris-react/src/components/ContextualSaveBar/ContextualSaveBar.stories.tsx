@@ -1,4 +1,3 @@
-import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ContextualSaveBar, Frame} from '@shopify/polaris';
 

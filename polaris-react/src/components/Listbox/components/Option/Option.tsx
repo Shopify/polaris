@@ -1,4 +1,4 @@
-import React, {useRef, useCallback, memo, useContext, useId} from 'react';
+import {useRef, useCallback, memo, useContext, useId} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {useListbox} from '../../../../utilities/listbox';

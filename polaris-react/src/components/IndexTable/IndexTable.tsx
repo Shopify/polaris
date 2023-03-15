@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
+import {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 import {tokens, toPx, motion} from '@shopify/polaris-tokens';
