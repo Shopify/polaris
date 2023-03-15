@@ -504,15 +504,7 @@ const stylelintPolarisCoverageOptions = {
 module.exports = {
   customSyntax: 'postcss-scss',
   reportDescriptionlessDisables: true,
-  reportNeedlessDisables: [
-    true,
-    {
-      // Report needless disables for all rules except layout coverage rules
-      // Note: This doesn't affect the default Stylelint behavior/reporting
-      // and is only need because we dynamically create these rule names
-      except: ['all', /^polaris\/layout\/.+$/],
-    },
-  ],
+  reportNeedlessDisables: true,
   reportInvalidScopeDisables: [
     true,
     {

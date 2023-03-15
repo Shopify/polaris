@@ -8,7 +8,6 @@ function NavigationExample() {
     <Frame>
       <Navigation location="/">
         <Navigation.Section
-          duplicateRootItem
           items={[
             {
               url: '#',
