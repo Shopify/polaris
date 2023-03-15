@@ -3,13 +3,16 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
-  const [selected, setSelected] = useState(['none']);
+  const [selected, setSelected] = useState<string[]>(['none']);
   const [textFieldValue, setTextFieldValue] = useState('');
 
-  const handleChoiceListChange = useCallback((value) => setSelected(value), []);
+  const handleChoiceListChange = useCallback(
+    (value: string[]) => setSelected(value),
+    [],
+  );
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 
