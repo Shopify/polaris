@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Add Typescript typings to AppProvider documentation
+Add Typescript typings to AppProvider examples
