@@ -4,6 +4,7 @@ import {useMedia} from '../../utils/hooks';
 import Image from 'next/image';
 import PageMeta from '../PageMeta';
 import styles from './HomePage.module.scss';
+import Container from '../Container';
 
 interface Props {}
 
@@ -11,7 +12,7 @@ function HomePage({}: Props) {
   const useMotion = useMedia('(prefers-reduced-motion: no-preference)');
 
   return (
-    <div className={styles.HomePage}>
+    <Container className={styles.HomePage}>
       <PageMeta description="A starter kit for reimagining commerce." />
 
       <div className={styles.Hero}>
@@ -119,7 +120,7 @@ function HomePage({}: Props) {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

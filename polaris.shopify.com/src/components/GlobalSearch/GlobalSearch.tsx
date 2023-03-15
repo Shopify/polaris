@@ -256,7 +256,7 @@ function SearchResults({
             return (
               <ResultsGroup category={category} key={category}>
                 <Grid>
-                  {results.map(({id, url, meta}) => {
+                  {results.map(({id, meta}) => {
                     if (!meta.patterns) return null;
                     const resolvedPage = meta.patterns;
                     return (

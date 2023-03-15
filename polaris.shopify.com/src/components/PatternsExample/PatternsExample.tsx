@@ -56,7 +56,7 @@ const PatternsExample = ({
   showCode,
   onCodeToggle,
 }: {
-  example: PatternExample;
+  example: any;
   patternName: string;
   showCode?: boolean;
   onCodeToggle?: () => void;

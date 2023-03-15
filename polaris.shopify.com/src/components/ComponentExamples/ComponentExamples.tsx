@@ -9,7 +9,7 @@ import Markdown from '../Markdown';
 const exampleIframeId = 'example-iframe';
 const iframePadding = 192;
 
-export type ResolvedComponentExample = {
+export type ComponentExample = {
   code: string;
   description: string;
   fileName: string;
@@ -17,7 +17,7 @@ export type ResolvedComponentExample = {
 };
 
 interface Props {
-  examples: ResolvedComponentExample[];
+  examples: ComponentExample[];
 }
 
 // https://stackoverflow.com/a/60338028

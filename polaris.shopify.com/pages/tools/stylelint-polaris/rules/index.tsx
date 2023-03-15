@@ -4,10 +4,10 @@ import path from 'path';
 import globby from 'globby';
 import Longform from '../../../../src/components/Longform';
 import Markdown from '../../../../src/components/Markdown';
-import Page from '../../../../src/components/Page';
+// import Page from '../../../../src/components/Page';
 import PageMeta from '../../../../src/components/PageMeta';
 import {uppercaseFirst} from '../../../../src/utils/various';
-import {MarkdownFile} from '../../../../src/types';
+// import {MarkdownFile} from '../../../../src/types';
 import {parseMarkdown} from '../../../../src/utils/markdown.mjs';
 
 export interface RulesProps {
@@ -20,13 +20,13 @@ const FoundationsCategory = ({title, description, content}: RulesProps) => {
   return (
     <>
       <PageMeta description={description} />
-      <Page>
-        <Longform>
-          <h1>{title}</h1>
-          <p>{description}</p>
-          <Markdown>{content}</Markdown>
-        </Longform>
-      </Page>
+      {/* <Page> */}
+      <Longform>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <Markdown>{content}</Markdown>
+      </Longform>
+      {/* </Page> */}
     </>
   );
 };
@@ -51,7 +51,7 @@ function indexPageMetadata() {
   const markdown = fs.readFileSync(markdownPath, 'utf-8');
   const {
     frontMatter: {title, description},
-  }: MarkdownFile = parseMarkdown(markdown);
+  }: any = parseMarkdown(markdown);
 
   return {title, description};
 }
@@ -68,7 +68,7 @@ function ruleListMarkdown(): string {
       const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
       const {
         frontMatter: {title, description},
-      }: MarkdownFile = parseMarkdown(markdown);
+      }: any = parseMarkdown(markdown);
 
       const url = markdownFilePath
         .replace(`${process.cwd()}/content`, '')

@@ -115,8 +115,7 @@ const getSearchResults = (query?: string) => {
   content.pages
     .filter(({parentId}) => parentId && foundationsPageIds.includes(parentId))
     .forEach((page) => {
-      const {id, pageMeta} = page;
-      if (pageMeta?.type !== 'foundations') return;
+      const {id} = page;
       const resolvedPage = getResolvedPage(content, page);
 
       results.push({

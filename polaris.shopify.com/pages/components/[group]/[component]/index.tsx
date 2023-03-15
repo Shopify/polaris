@@ -15,13 +15,13 @@ import {
 } from '../../../../src/components/Editor/utils';
 import {ResolvedPageWithBlocks} from '../../../../src/components/Editor/types';
 import EditorRenderer from '../../../../src/components/EditorRenderer';
-import {ResolvedComponentExample} from '../../../../src/components/ComponentExamples/ComponentExamples';
+import {ComponentExample} from '../../../../src/components/ComponentExamples/ComponentExamples';
 import StatusBanner from '../../../../src/components/StatusBanner';
 import Longform from '../../../../src/components/Longform';
 
 interface Props {
   page: ResolvedPageWithBlocks;
-  examples: ResolvedComponentExample[];
+  examples: ComponentExample[];
   filteredTypes: FilteredTypes;
 }
 

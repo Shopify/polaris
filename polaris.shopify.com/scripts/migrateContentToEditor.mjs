@@ -158,7 +158,7 @@ componentCategories
           slug,
           parentId: componentCategoryId,
           order: frontMatter.order || 0,
-          useCustomLayout: false,
+          useCustomLayout: true,
           allowChildren: false,
           hideInNav: false,
           noIndex: false,
@@ -257,7 +257,7 @@ createPage(
     slug: 'content',
     parentId: null,
     order: contentFrontMatter.order || 0,
-    useCustomLayout: false,
+    useCustomLayout: true,
     allowChildren: true,
     hideInNav: false,
     noIndex: false,
@@ -540,6 +540,23 @@ gettingStartedFilePaths
   });
 
 // Migrate tools
+const toolsId = nanoid();
+createPage({
+  id: toolsId,
+  title: 'Tools',
+  excerpt: 'Extensions, plugins, and other tools to help build with Polaris.',
+  slug: 'tools',
+  parentId: null,
+  order: 10,
+  useCustomLayout: true,
+  allowChildren: true,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: null,
+  keywords: [],
+  hasSeparatorInNav: false,
+});
 
 // Migrate What's new
 

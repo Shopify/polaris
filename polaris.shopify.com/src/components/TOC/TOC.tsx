@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {TOCItem} from '../../utils/hooks';
 import {className} from '../../utils/various';
 import styles from './TOC.module.scss';

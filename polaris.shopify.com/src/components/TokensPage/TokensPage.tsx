@@ -1,6 +1,6 @@
 import styles from './TokensPage.module.scss';
 import {MetadataGroup, metadata as allTokens} from '@shopify/polaris-tokens';
-import {Status, TokenPropertiesWithName} from '../../types';
+import {TokenPropertiesWithName} from '../../types';
 import TokenList from '../TokenList';
 
 interface Props {
@@ -18,7 +18,6 @@ interface Props {
 export type NavItem = {
   title: string;
   url?: string;
-  status?: Status;
   children?: NavItem[];
 };
 

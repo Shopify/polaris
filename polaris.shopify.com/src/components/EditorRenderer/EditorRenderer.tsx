@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import {useEffect, useState} from 'react';
-import useDarkMode from 'use-dark-mode';
 import Code from '../Code';
 import {
   CodeBlock,

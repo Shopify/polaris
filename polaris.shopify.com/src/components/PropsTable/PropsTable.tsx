@@ -2,7 +2,6 @@ import {createContext, useContext, useState} from 'react';
 import {Type, FilteredTypes} from '../../types';
 import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
-import StatusBadge from '../StatusBadge';
 import {className, toPascalCase} from '../../utils/various';
 
 interface Props {
@@ -202,13 +201,7 @@ function TypeTable({
                         )}
                         {deprecationMessage && (
                           <p className={styles.DeprecationNotice}>
-                            <StatusBadge
-                              status={{
-                                message: 'Deprecated',
-                                value: StatusName.Warning,
-                              }}
-                            />{' '}
-                            {endWithPeriod(deprecationMessage)}
+                            Deprecated: {endWithPeriod(deprecationMessage)}
                           </p>
                         )}
                       </div>
