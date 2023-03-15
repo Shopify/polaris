@@ -3,7 +3,7 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function OptionListInPopoverExample() {
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<string[]>([]);
   const [popoverActive, setPopoverActive] = useState(true);
 
   const togglePopoverActive = useCallback(
