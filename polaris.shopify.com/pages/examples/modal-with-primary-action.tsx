@@ -12,19 +12,7 @@ function ModalWithPrimaryActionExample() {
   const DISCOUNT_LINK = 'https://polaris.shopify.com/';
 
   const [active, setActive] = useState(true);
-  const node = useRef(null);
-
-  const handleClick = useCallback(() => {
-    node.current && node.current.input.focus();
-  }, []);
-
-  const handleFocus = useCallback(() => {
-    if (node.current == null) {
-      return;
-    }
-    node.current.input.select();
-    document.execCommand('copy');
-  }, []);
+  const node = useRef<HTMLInputElement>(null);
 
   const toggleModal = useCallback(() => setActive((active) => !active), []);
 
@@ -52,21 +40,6 @@ function ModalWithPrimaryActionExample() {
                   at checkout.
                 </p>
               </TextContainer>
-            </LegacyStack.Item>
-            <LegacyStack.Item fill>
-              <TextField
-                ref={node}
-                label="Discount link"
-                onFocus={handleFocus}
-                value={DISCOUNT_LINK}
-                onChange={() => {}}
-                autoComplete="off"
-                connectedRight={
-                  <Button primary onClick={handleClick}>
-                    Copy link
-                  </Button>
-                }
-              />
             </LegacyStack.Item>
           </LegacyStack>
         </Modal.Section>

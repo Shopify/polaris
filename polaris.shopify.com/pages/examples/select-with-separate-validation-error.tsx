@@ -15,8 +15,11 @@ function SeparateValidationErrorExample() {
   const [weight, setWeight] = useState('12');
   const [unit, setUnit] = useState('');
 
-  const handleWeightChange = useCallback((value) => setWeight(value), []);
-  const handleUnitChange = useCallback((value) => setUnit(value), []);
+  const handleWeightChange = useCallback(
+    (value: string) => setWeight(value),
+    [],
+  );
+  const handleUnitChange = useCallback((value: string) => setUnit(value), []);
 
   const unitSelectID = 'unit';
   const errorMessage = generateErrorMessage();
