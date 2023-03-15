@@ -52,7 +52,7 @@ function AppProviderExample() {
               const media = <Avatar customer size="medium" name={name} />;
 
               return (
-                <ResourceList.Item id={id} url={url} media={media}>
+                <ResourceList.Item id={id.toString()} url={url} media={media}>
                   <Text variant="bodyMd" fontWeight="bold" as="h3">
                     {name}
                   </Text>
