@@ -1,11 +1,11 @@
-import {Banner} from '@shopify/polaris';
-import {useEffect, useRef} from 'react';
+import {Banner, BannerHandles} from '@shopify/polaris';
+import React, {useEffect, useRef} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BannerWithFocusExample() {
-  const banner = useRef();
+  const banner = useRef<BannerHandles>({focus: () => undefined});
 
-  useEffect(() => banner.current.focus(), []);
+  useEffect(() => banner.current?.focus(), []);
 
   return (
     <Banner
