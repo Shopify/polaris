@@ -1,6 +1,19 @@
-import {LegacyCard, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
+import {
+  LegacyCard,
+  ResourceList,
+  Avatar,
+  ResourceItem,
+  Text,
+} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
+
+type Item = {
+  id: string;
+  url: string;
+  name: string;
+  location: string;
+};
 
 function ResourceListWithSortingExample() {
   const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
@@ -10,15 +23,15 @@ function ResourceListWithSortingExample() {
     plural: 'customers',
   };
 
-  const items = [
+  const items: Item[] = [
     {
-      id: 106,
+      id: '106',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 206,
+      id: '206',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -44,7 +57,7 @@ function ResourceListWithSortingExample() {
     </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: Item) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 

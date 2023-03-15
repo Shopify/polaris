@@ -11,8 +11,6 @@ import {SearchMinor} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-type Option = {value: string; label: string};
-
 function MultiComboboxExample() {
   const deselectedOptions = useMemo(
     () => [

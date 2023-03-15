@@ -1,5 +1,11 @@
 import {TextField} from '@shopify/polaris';
-import {useState, useEffect, useCallback, useMemo} from 'react';
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  KeyboardEventHandler,
+} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TextFieldWithSuggestionExample() {
@@ -70,7 +76,7 @@ function TextFieldWithSuggestionExample() {
   const [suggestion, setSuggestion] = useState('');
 
   const handleSuggestion = useCallback(
-    (nextValue) => {
+    (nextValue: string) => {
       const nextSuggestion = suggestions.find((suggestion) =>
         suggestion.toLowerCase().startsWith(nextValue.toLowerCase()),
       );
@@ -84,12 +90,12 @@ function TextFieldWithSuggestionExample() {
     if (value !== suggestion) handleSuggestion(value);
   }, [handleSuggestion, suggestion, value]);
 
-  const handleChange = useCallback((value) => {
+  const handleChange = useCallback((value: string) => {
     setValue(value);
     setSuggestion('');
   }, []);
 
-  const handleKeyDown = useCallback(
+  const handleKeyDown = useCallback<KeyboardEventHandler>(
     (event) => {
       if (event.key === 'Enter') {
         handleChange(suggestion);
@@ -106,6 +112,7 @@ function TextFieldWithSuggestionExample() {
         value={value}
         onChange={handleChange}
         suggestion={suggestion}
+        autoComplete="off"
       />
     </div>
   );

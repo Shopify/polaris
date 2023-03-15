@@ -6,7 +6,7 @@ function RightAlignExample() {
   const [textFieldValue, setTextFieldValue] = useState('1');
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 

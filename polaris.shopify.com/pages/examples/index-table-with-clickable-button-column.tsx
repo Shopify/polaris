@@ -49,9 +49,7 @@ function ClickThroughButtonIndexTableExample() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <Text fontWeight="bold" as="span">
-              {name}
-            </Text>
+            {name}
           </Button>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>

@@ -14,9 +14,15 @@ import {SearchMinor} from '@shopify/polaris-icons';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
+type Segment = {
+  label: string;
+  id: string;
+  value: string;
+};
+
 const actionValue = '__ACTION__';
 
-const segments = [
+const segments: Segment[] = [
   {
     label: 'All customers',
     id: 'gid://shopify/CustomerSegment/1',
@@ -98,7 +104,7 @@ function PopoverWithSearchableListboxExample() {
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
-  const [filteredSegments, setFilteredSegments] = useState([]);
+  const [filteredSegments, setFilteredSegments] = useState<Segment[]>([]);
 
   const handleClickShowAll = () => {
     setShowFooterAction(false);

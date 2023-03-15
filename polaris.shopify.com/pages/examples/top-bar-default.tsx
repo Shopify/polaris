@@ -24,7 +24,7 @@ function TopBarExample() {
     setSearchValue('');
   }, []);
 
-  const handleSearchChange = useCallback((value) => {
+  const handleSearchChange = useCallback((value: string) => {
     setSearchValue(value);
     setIsSearchActive(value.length > 0);
   }, []);

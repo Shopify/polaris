@@ -17,7 +17,7 @@ function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
   );
 
   const renderChildren = useCallback(
-    (isSelected) =>
+    (isSelected: boolean) =>
       isSelected && (
         <TextField
           label="Minimum Quantity"

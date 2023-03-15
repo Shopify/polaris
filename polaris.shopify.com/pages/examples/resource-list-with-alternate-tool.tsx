@@ -9,21 +9,28 @@ import {
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
+type Item = {
+  id: string;
+  url: string;
+  name: string;
+  location: string;
+};
+
 function ResourceListWithAlternateToolExample() {
   const resourceName = {
     singular: 'Customer',
     plural: 'Customers',
   };
 
-  const items = [
+  const items: Item[] = [
     {
-      id: 107,
+      id: '107',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 207,
+      id: '207',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -41,7 +48,7 @@ function ResourceListWithAlternateToolExample() {
     </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: Item) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
