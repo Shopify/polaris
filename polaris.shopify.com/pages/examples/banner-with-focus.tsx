@@ -3,7 +3,7 @@ import React, {useEffect, useRef} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BannerWithFocusExample() {
-  const banner = useRef<BannerHandles>({focus: () => undefined});
+  const banner = useRef<BannerHandles>(null);
 
   useEffect(() => banner.current?.focus(), []);
 
