@@ -62,7 +62,7 @@ export function SkeletonPage({
     breadcrumbs || backAction ? (
       <Box
         borderRadius="1"
-        background="surface-neutral"
+        background="bg-strong"
         minHeight="2.25rem"
         minWidth="2.25rem"
         maxWidth="2.25rem"
