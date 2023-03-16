@@ -1,0 +1,51 @@
+@import '../../../styles/variables.scss';
+
+.SideBySide {
+  & > ul {
+    display: grid;
+    column-gap: var(--p-space-4);
+    row-gap: var(--p-space-8);
+
+    --txt-column-width: 35%;
+    /*
+   * Rules of the grid:
+   * The second (img) column should never be bigger than 30rem.
+   * The first (text) column should never shrink below 35% of the container.
+   * The first (text) column should grow to fill the remaining space (1fr).
+   * The second (img) column should never shrink below 20rem. */
+    grid-template-columns:
+      minmax(
+        // Give this column a minimum width (thin container)
+        var(--txt-column-width),
+        // Grow to fill the remaining space when possible (wide container)
+        1fr
+      )
+      minmax(
+        min(
+          // Minimum size of 20rem to keep it legible
+          20rem,
+          // Except when the container is too thin: let it shrinnk so the text
+          // column can still take up its desired minimum width
+          calc(100% - var(--txt-column-width))
+        ),
+        // Maximum width (wide container) - avoids gigantic images
+        30rem
+      );
+
+    @media screen and (max-width: $breakpointMobile) {
+      grid-template-columns: 1fr;
+      row-gap: var(--p-space-4);
+    }
+
+    & > li {
+      display: contents;
+      &::before {
+        display: none;
+      }
+
+      & > span {
+        display: contents;
+      }
+    }
+  }
+}
