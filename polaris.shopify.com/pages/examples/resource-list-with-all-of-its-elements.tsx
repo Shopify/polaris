@@ -165,7 +165,7 @@ function ResourceListExample() {
     );
   }
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string): string {
     switch (key) {
       case 'taggedWith3':
         return `Tagged with ${value}`;
@@ -174,7 +174,7 @@ function ResourceListExample() {
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

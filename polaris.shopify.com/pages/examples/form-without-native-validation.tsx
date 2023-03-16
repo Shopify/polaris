@@ -5,9 +5,9 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function FormWithoutNativeValidationExample() {
   const [url, setUrl] = useState('');
 
-  const handleSubmit = useCallback((_event) => setUrl(''), []);
+  const handleSubmit = useCallback(() => setUrl(''), []);
 
-  const handleUrlChange = useCallback((value) => setUrl(value), []);
+  const handleUrlChange = useCallback((value: string) => setUrl(value), []);
 
   return (
     <Form noValidate onSubmit={handleSubmit}>
