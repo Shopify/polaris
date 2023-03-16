@@ -1,4 +1,4 @@
-import type {ReactNode, ReactElement, MutableRefObject} from 'react';
+import type {ReactNode, ReactElement, MutableRefObject, RefObject} from 'react';
 import React, {memo, useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
@@ -37,7 +37,7 @@ export const Item = memo(function Item({
 
   const sharedProps = {
     id,
-    ref: focusedNode,
+    ref: focusedNode as RefObject<HTMLAnchorElement>,
     onClick,
     className: classname,
     'aria-selected': false,

@@ -10,16 +10,14 @@ function ModalExample() {
 
   const handleClose = useCallback(() => {
     setActive(false);
-    requestAnimationFrame(() =>
-      button.current?.querySelector('button')?.focus(),
-    );
+    requestAnimationFrame(() => button.current?.focus());
   }, []);
 
   return (
     <div style={{height: '500px'}}>
-      <div ref={button}>
-        <Button onClick={handleOpen}>Open</Button>
-      </div>
+      <Button onClick={handleOpen} ref={button}>
+        Open
+      </Button>
       <Modal
         instant
         open={active}

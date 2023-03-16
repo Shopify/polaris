@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
+import type {Ref, LegacyRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -14,26 +15,29 @@ import {Box} from '../../../Box';
 
 export type ItemProps = ActionListItemDescriptor;
 
-export function Item({
-  id,
-  badge,
-  content,
-  accessibilityLabel,
-  helpText,
-  url,
-  onAction,
-  onMouseEnter,
-  icon,
-  image,
-  prefix,
-  suffix,
-  disabled,
-  external,
-  destructive,
-  ellipsis,
-  active,
-  role,
-}: ItemProps) {
+export const Item = forwardRef(function Item(
+  {
+    id,
+    badge,
+    content,
+    accessibilityLabel,
+    helpText,
+    url,
+    onAction,
+    onMouseEnter,
+    icon,
+    image,
+    prefix,
+    suffix,
+    disabled,
+    external,
+    destructive,
+    ellipsis,
+    active,
+    role,
+  }: ItemProps,
+  ref,
+) {
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
@@ -108,6 +112,7 @@ export function Item({
       aria-label={accessibilityLabel}
       onClick={disabled ? null : onAction}
       role={role}
+      ref={ref as Ref<HTMLAnchorElement>}
     >
       {contentElement}
     </UnstyledLink>
@@ -122,6 +127,7 @@ export function Item({
       onMouseUp={handleMouseUpByBlurring}
       role={role}
       onMouseEnter={onMouseEnter}
+      ref={ref as LegacyRef<HTMLButtonElement> | undefined}
     >
       {contentElement}
     </button>
@@ -133,4 +139,4 @@ export function Item({
       {control}
     </>
   );
-}
+});
