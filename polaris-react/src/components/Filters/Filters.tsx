@@ -19,6 +19,7 @@ import {FilterPill, SearchField} from './components';
 import styles from './Filters.scss';
 
 const TRANSITION_DURATION = 'var(--p-duration-150)';
+const TRANSITION_MARGIN = '-36px';
 
 const defaultStyle = {
   transition: `opacity ${TRANSITION_DURATION} var(--p-ease)`,
@@ -31,6 +32,35 @@ const transitionStyles = {
   exiting: {opacity: 0},
   exited: {opacity: 0},
   unmounted: {opacity: 0},
+};
+
+const defaultFilterStyles = {
+  transition: `opacity ${TRANSITION_DURATION} var(--p-ease), margin ${TRANSITION_DURATION} var(--p-ease)`,
+  opacity: 0,
+  marginTop: TRANSITION_MARGIN,
+};
+
+const transitionFilterStyles = {
+  entering: {
+    opacity: 1,
+    marginTop: 0,
+  },
+  entered: {
+    opacity: 1,
+    marginTop: 0,
+  },
+  exiting: {
+    opacity: 0,
+    marginTop: TRANSITION_MARGIN,
+  },
+  exited: {
+    opacity: 0,
+    marginTop: TRANSITION_MARGIN,
+  },
+  unmounted: {
+    opacity: 0,
+    marginTop: TRANSITION_MARGIN,
+  },
 };
 
 export interface FiltersProps {
@@ -243,8 +273,8 @@ export function Filters({
 
   const mountedStateStyles = mountedState
     ? {
-        ...defaultStyle,
-        ...transitionStyles[mountedState],
+        ...defaultFilterStyles,
+        ...transitionFilterStyles[mountedState],
       }
     : undefined;
 
@@ -258,12 +288,10 @@ export function Filters({
             styles.FiltersWrapperWithAddButton,
         )}
         aria-live="polite"
+        style={mountedStateStyles}
       >
         <div className={classNames(styles.FiltersInner)}>
-          <div
-            className={classNames(styles.FiltersStickyArea)}
-            style={mountedStateStyles}
-          >
+          <div className={classNames(styles.FiltersStickyArea)}>
             {pinnedFilters.map(({key: filterKey, ...pinnedFilter}) => {
               const appliedFilter = appliedFilters?.find(
                 ({key}) => key === filterKey,

@@ -1,6 +1,8 @@
 @import '../../styles/common';
 
 .Container {
+  position: relative;
+  z-index: var(--p-z-index-1);
   border-bottom: var(--p-border-divider);
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
