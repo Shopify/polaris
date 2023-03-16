@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.37.0
+
+### Minor Changes
+
+- [#8601](https://github.com/Shopify/polaris/pull/8601) [`243fd6224`](https://github.com/Shopify/polaris/commit/243fd622406612370efe40dd32dcd2025cf53db7) Thanks [@lgriffee](https://github.com/lgriffee)! - Migrate `depth` custom properties from Polaris `v10` to `v11`
+
+### Patch Changes
+
+- [#8664](https://github.com/Shopify/polaris/pull/8664) [`d340f8471`](https://github.com/Shopify/polaris/commit/d340f8471d330e8562c0dbb67d9f3aeae8699b65) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed responsive gap on AlphaStack
+
 ## 10.36.0
 
 ### Minor Changes
