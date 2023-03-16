@@ -9,7 +9,7 @@ function AutoCompleteLazyLoadExample() {
     label: `Rustic ${index + 1}`,
   }));
 
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +39,7 @@ function AutoCompleteLazyLoadExample() {
   }, [willLoadMoreResults, visibleOptionIndex, options.length]);
 
   const removeTag = useCallback(
-    (tag) => () => {
+    (tag: string) => () => {
       const options = [...selectedOptions];
       options.splice(options.indexOf(tag), 1);
       setSelectedOptions(options);
@@ -48,7 +48,7 @@ function AutoCompleteLazyLoadExample() {
   );
 
   const updateText = useCallback(
-    (value) => {
+    (value: string) => {
       setInputValue(value);
 
       if (value === '') {
@@ -77,6 +77,7 @@ function AutoCompleteLazyLoadExample() {
       label="Tags"
       value={inputValue}
       placeholder="Vintage, cotton, summer"
+      autoComplete="off"
     />
   );
 
@@ -116,7 +117,7 @@ function AutoCompleteLazyLoadExample() {
     </LegacyStack>
   );
 
-  function titleCase(string) {
+  function titleCase(string: string) {
     return string
       .toLowerCase()
       .split(' ')
