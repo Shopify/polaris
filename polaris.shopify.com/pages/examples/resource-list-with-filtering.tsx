@@ -12,7 +12,7 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithFilteringExample() {
-  const [taggedWith, setTaggedWith] = useState('VIP');
+  const [taggedWith, setTaggedWith] = useState<string | undefined>('VIP');
   const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleTaggedWithChange = useCallback(
@@ -69,15 +69,16 @@ function ResourceListWithFilteringExample() {
     },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith1',
-          label: disambiguateLabel('taggedWith1', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith1',
+            label: disambiguateLabel('taggedWith1', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
   const filterControl = (
     <Filters
