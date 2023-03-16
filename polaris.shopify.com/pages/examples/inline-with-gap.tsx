@@ -26,7 +26,17 @@ function InlineWithGapExample() {
   );
 }
 
-const SpacingBackground = ({children, width, height, margin = false}) => {
+const SpacingBackground = ({
+  children,
+  width,
+  height,
+  margin = false,
+}: {
+  children: React.ReactNode;
+  width: string;
+  height: string;
+  margin?: boolean;
+}) => {
   return (
     <div
       style={{

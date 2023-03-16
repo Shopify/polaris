@@ -9,7 +9,7 @@ $vertical-motion-offset: -5px;
 .Popover {
   max-width: calc(100vw - var(--p-space-8));
   margin: $visible-portion-of-arrow var(--p-space-2) var(--p-space-4);
-  box-shadow: var(--p-shadow-popover);
+  box-shadow: var(--p-shadow-xl);
   border-radius: var(--p-border-radius-2);
   will-change: left, top;
 }

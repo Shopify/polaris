@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.38.2",
+  "version": "0.40.0",
   "private": true,
   "engines": {
     "node": "^16.17.0 || >=18.12.0"
@@ -16,6 +16,7 @@
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
+    "next-build": "next build",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
@@ -24,7 +25,7 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
-    "@shopify/polaris": "^10.35.0",
+    "@shopify/polaris": "^10.37.0",
     "@shopify/polaris-icons": "^6.11.3",
     "@shopify/polaris-tokens": "^6.8.0",
     "@radix-ui/react-polymorphic": "^0.0.14",

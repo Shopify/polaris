@@ -1,9 +1,18 @@
-import {LegacyCard, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
+import {
+  LegacyCard,
+  ResourceList,
+  Avatar,
+  ResourceItem,
+  Text,
+} from '@shopify/polaris';
+import {ResourceListSelectedItems} from '@shopify/polaris/build/ts/latest/src/utilities/resource-list';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithBulkActionsExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<ResourceListSelectedItems>(
+    [],
+  );
 
   const resourceName = {
     singular: 'customer',
@@ -12,13 +21,13 @@ function ResourceListWithBulkActionsExample() {
 
   const items = [
     {
-      id: 103,
+      id: '103',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 203,
+      id: '203',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -61,7 +70,7 @@ function ResourceListWithBulkActionsExample() {
     </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: typeof items[number]) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 

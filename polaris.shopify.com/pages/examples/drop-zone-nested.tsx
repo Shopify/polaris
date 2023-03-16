@@ -10,10 +10,10 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function NestedDropZoneExample() {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
 
-  const handleDrop = useCallback((dropFiles) => {
-    setFiles((files) => [...files, dropFiles]);
+  const handleDrop = useCallback((dropFiles: File[]) => {
+    setFiles((files) => [...files, ...dropFiles]);
   }, []);
 
   const handleDropZoneClick = useCallback(() => {}, []);

@@ -6,7 +6,7 @@ function PrefixExample() {
   const [textFieldValue, setTextFieldValue] = useState('2.00');
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 

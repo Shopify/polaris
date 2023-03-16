@@ -25,7 +25,6 @@ function PageExample() {
       actionGroups={[
         {
           title: 'Promote',
-          accessibilityLabel: 'Action group label',
           actions: [
             {
               content: 'Share on Facebook',

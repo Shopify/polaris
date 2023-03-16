@@ -1,22 +1,27 @@
 import {LegacyCard, ResourceList, ResourceItem, Text} from '@shopify/polaris';
+import {ResourceListSelectedItems} from '@shopify/polaris/build/ts/latest/src/utilities/resource-list';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
+const items = [
+  {
+    id: '6',
+    url: 'posts/6',
+    title: 'How To Get Value From Wireframes',
+    author: 'Jonathan Mangrove',
+  },
+];
+
 function ResourceItemExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<ResourceListSelectedItems>(
+    [],
+  );
 
   return (
     <LegacyCard>
       <ResourceList
         resourceName={{singular: 'blog post', plural: 'blog posts'}}
-        items={[
-          {
-            id: 6,
-            url: 'posts/6',
-            title: 'How To Get Value From Wireframes',
-            author: 'Jonathan Mangrove',
-          },
-        ]}
+        items={items}
         selectedItems={selectedItems}
         onSelectionChange={setSelectedItems}
         selectable

@@ -44,6 +44,11 @@ const Placeholder = ({
   height = 'auto',
   width = 'auto',
   childAlign,
+}: {
+  label?: string;
+  height?: string;
+  width?: string;
+  childAlign: 'start' | 'center' | 'end';
 }) => {
   return (
     <div

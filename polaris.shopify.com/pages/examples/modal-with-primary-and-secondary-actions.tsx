@@ -10,8 +10,8 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
   const CSV_PLAIN = 'csv_plain';
 
   const [active, setActive] = useState(true);
-  const [selectedExport, setSelectedExport] = useState([]);
-  const [selectedExportAs, setSelectedExportAs] = useState([]);
+  const [selectedExport, setSelectedExport] = useState<string[]>([]);
+  const [selectedExportAs, setSelectedExportAs] = useState<string[]>([]);
 
   const handleModalChange = useCallback(() => setActive(!active), [active]);
 
@@ -22,12 +22,12 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
   };
 
   const handleSelectedExport = useCallback(
-    (value) => setSelectedExport(value),
+    (value: string[]) => setSelectedExport(value),
     [],
   );
 
   const handleSelectedExportAs = useCallback(
-    (value) => setSelectedExportAs(value),
+    (value: string[]) => setSelectedExportAs(value),
     [],
   );
 

@@ -1,5 +1,57 @@
 # polaris.shopify.com
 
+## 0.40.0
+
+### Minor Changes
+
+- [#8601](https://github.com/Shopify/polaris/pull/8601) [`243fd6224`](https://github.com/Shopify/polaris/commit/243fd622406612370efe40dd32dcd2025cf53db7) Thanks [@lgriffee](https://github.com/lgriffee)! - Migrate `depth` custom properties from Polaris `v10` to `v11`
+
+### Patch Changes
+
+- [#8627](https://github.com/Shopify/polaris/pull/8627) [`7067143cd`](https://github.com/Shopify/polaris/commit/7067143cd5a6973beafbafd11d543f2c23249b25) Thanks [@jesstelford](https://github.com/jesstelford)! - Refactor Pattern MDX rendering to remove some duplication and table magic
+
+* [#8670](https://github.com/Shopify/polaris/pull/8670) [`43ee27d39`](https://github.com/Shopify/polaris/commit/43ee27d39d920e7cb7cdea203ef4d232f3a8c713) Thanks [@martenbjork](https://github.com/martenbjork)! - Add Typescript typings to AppProvider examples
+
+- [#8678](https://github.com/Shopify/polaris/pull/8678) [`443898f93`](https://github.com/Shopify/polaris/commit/443898f93a7b07142d3e39d84b2c689a2488dfb5) Thanks [@martenbjork](https://github.com/martenbjork)! - Fix various typings in examples across multiple components
+
+* [#8672](https://github.com/Shopify/polaris/pull/8672) [`1718f559b`](https://github.com/Shopify/polaris/commit/1718f559b26a14b26ebe7c505593adc9e13e4f45) Thanks [@martenbjork](https://github.com/martenbjork)! - Add Typescript typings to Autocomplete examples
+
+- [#8674](https://github.com/Shopify/polaris/pull/8674) [`8d7e45a8d`](https://github.com/Shopify/polaris/commit/8d7e45a8d289094f15eb7693d7fa22306a1127bc) Thanks [@martenbjork](https://github.com/martenbjork)! - Add Typescript typings to Banner examples
+
+* [#8673](https://github.com/Shopify/polaris/pull/8673) [`9beee4850`](https://github.com/Shopify/polaris/commit/9beee4850e936c4f159b49a3b7a00ffe3cf85a53) Thanks [@martenbjork](https://github.com/martenbjork)! - Add Typescript typings to AlphaStack examples
+
+* Updated dependencies [[`243fd6224`](https://github.com/Shopify/polaris/commit/243fd622406612370efe40dd32dcd2025cf53db7), [`d340f8471`](https://github.com/Shopify/polaris/commit/d340f8471d330e8562c0dbb67d9f3aeae8699b65)]:
+  - @shopify/polaris@10.37.0
+
+## 0.39.0
+
+### Minor Changes
+
+- [#8604](https://github.com/Shopify/polaris/pull/8604) [`65a678d29`](https://github.com/Shopify/polaris/commit/65a678d299fd6637cb88462135cfe3cd7713c6aa) Thanks [@lgriffee](https://github.com/lgriffee)! - Added a `shadow` token page
+
+* [#8615](https://github.com/Shopify/polaris/pull/8615) [`4aacd1983`](https://github.com/Shopify/polaris/commit/4aacd1983d0c475ec4b239e725b036de5a67ed47) Thanks [@yurm04](https://github.com/yurm04)! - Added search event that sets the default google parameters in addition to custom
+
+- [#8613](https://github.com/Shopify/polaris/pull/8613) [`1a36ed60c`](https://github.com/Shopify/polaris/commit/1a36ed60c4f049b8fbbaa7cfebb1020dc7ba5055) Thanks [@yurm04](https://github.com/yurm04)! - Added 'engagement' category to search event
+
+* [#8272](https://github.com/Shopify/polaris/pull/8272) [`cccd69848`](https://github.com/Shopify/polaris/commit/cccd698482ed4ff74e2ae4ab23ccc1c3e7c69412) Thanks [@lgriffee](https://github.com/lgriffee)! - Create migrations to replace deprecated custom properties in polaris-react v11.0.0 and v9.0.0
+
+### Patch Changes
+
+- [#8621](https://github.com/Shopify/polaris/pull/8621) [`dca759b0b`](https://github.com/Shopify/polaris/commit/dca759b0b54e5984cf1f6151e5178e577db9044f) Thanks [@jesstelford](https://github.com/jesstelford)! - Fix <Code> renderer on Patterns pages to support code blocks without meta
+
+* [#8622](https://github.com/Shopify/polaris/pull/8622) [`613f637c9`](https://github.com/Shopify/polaris/commit/613f637c923f18b51faf8707f185513eaff028f8) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix minor layout bugs in app-settings-layout pattern code example
+
+- [#8379](https://github.com/Shopify/polaris/pull/8379) [`c8207636c`](https://github.com/Shopify/polaris/commit/c8207636cfd9493da8e0b5b1aaa4de01a5e521de) Thanks [@nayeobkim](https://github.com/nayeobkim)! - Updated documentation and guidance for `AlphaCard`, `AlphaStack`, `Box`, `Bleed`, `Columns`, and `Inline`
+
+* [#8614](https://github.com/Shopify/polaris/pull/8614) [`3526fc2fc`](https://github.com/Shopify/polaris/commit/3526fc2fcd3756024ad85bb8b107f9c7a36a7f74) Thanks [@laurkim](https://github.com/laurkim)! - Added best practices to `Text`, `AlphaCard`, and `AlphaStack`
+
+- [#8616](https://github.com/Shopify/polaris/pull/8616) [`74f0bc42a`](https://github.com/Shopify/polaris/commit/74f0bc42a9eb4107328fed0bb13077e97853c597) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed icon page layout
+
+* [#8602](https://github.com/Shopify/polaris/pull/8602) [`575b351d5`](https://github.com/Shopify/polaris/commit/575b351d514b6799d365b9f667437943a62e8809) Thanks [@yurm04](https://github.com/yurm04)! - Added search tracking using google analytics
+
+* Updated dependencies [[`696473b82`](https://github.com/Shopify/polaris/commit/696473b8215c76eaa3645260d0ec9f6f443a4b9d), [`437a3bbf1`](https://github.com/Shopify/polaris/commit/437a3bbf15209ad211ad3c197b9ed8cb34be2261), [`078cf9aea`](https://github.com/Shopify/polaris/commit/078cf9aea6fbee85f1a22662808ec527b46e6f2d), [`83bde8690`](https://github.com/Shopify/polaris/commit/83bde86903b3b6cfdb1a56f8f505c353eb4609be), [`ff70ab3d1`](https://github.com/Shopify/polaris/commit/ff70ab3d1bc36d6d4b04a85c03f0b60e7ea8c43e), [`62b712362`](https://github.com/Shopify/polaris/commit/62b71236221edddae106600a73d3f524089a6cd0), [`446ba341c`](https://github.com/Shopify/polaris/commit/446ba341c2debf0ed9378294598fb125d64d3a88), [`d27a361c2`](https://github.com/Shopify/polaris/commit/d27a361c25fd002937a1a6e7eea46225d12cad98), [`3e7e0837d`](https://github.com/Shopify/polaris/commit/3e7e0837daccbc8652ea15caf0679b1309ca03fb), [`230786ace`](https://github.com/Shopify/polaris/commit/230786ace70a370d0ada255e33f0b8fe830edfaa), [`6ee523a5f`](https://github.com/Shopify/polaris/commit/6ee523a5ff7b11425537936c41fc675e72fc81ef), [`515a62f3b`](https://github.com/Shopify/polaris/commit/515a62f3b2f7cfadbc1a80a9a320aae857262790), [`fb373c3e1`](https://github.com/Shopify/polaris/commit/fb373c3e1d0f3e5dc7a61406b66f1580a45df6a2)]:
+  - @shopify/polaris@10.36.0
+
 ## 0.38.2
 
 ### Patch Changes

@@ -88,7 +88,6 @@ function SimpleSmallScreenIndexTableExample() {
                 </Text>
               ),
             },
-            ,
           ]}
         >
           {rowMarkup}

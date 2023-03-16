@@ -120,10 +120,8 @@ function DateListPicker() {
 
 ### Useful to know
 
-|                                                                                                                                 |                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| In the button preview, set a default date range that a merchant will most likely use.                                           | ![Button showing a calendar icon labeled “Today”](/images/patterns/date-list-usage-1.png)                                           |
-| Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.                         | ![Option list with common suggested dates followed by ranges](/images/patterns/date-list-usage-2.png)                               |
-| A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor. | ![Customer segment editor with a date list showing common ranges and related code snippets](/images/patterns/date-list-usage-3.png) |
+- <span>In the button preview, set a default date range that a merchant will most likely use.</span> ![Button showing a calendar icon labeled “Today”](/images/patterns/date-list-usage-1.png)
+- <span>Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.</span> ![Option list with common suggested dates followed by ranges](/images/patterns/date-list-usage-2.png)
+- <span>A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.</span> ![Customer segment editor with a date list showing common ranges and related code snippets](/images/patterns/date-list-usage-3.png)
 
 </div>

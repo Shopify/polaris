@@ -10,9 +10,9 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithEmptyStateExample() {
-  const items = [];
-  const appliedFilters = [];
-  const filters = [];
+  const items: any[] = [];
+  const appliedFilters: any[] = [];
+  const filters: any[] = [];
 
   const filterControl = (
     <Filters
@@ -20,6 +20,9 @@ function ResourceListWithEmptyStateExample() {
       queryValue=""
       filters={filters}
       appliedFilters={appliedFilters}
+      onClearAll={() => undefined}
+      onQueryChange={() => undefined}
+      onQueryClear={() => undefined}
     />
   );
 
@@ -45,7 +48,7 @@ function ResourceListWithEmptyStateExample() {
             <ResourceList
               emptyState={emptyStateMarkup}
               items={items}
-              renderItem={() => {}}
+              renderItem={() => <></>}
               filterControl={filterControl}
               resourceName={{singular: 'file', plural: 'files'}}
             />

@@ -113,7 +113,6 @@ function IndexTableWithBulkActionsExample() {
               </Text>
             ),
           },
-          ,
         ]}
       >
         {rowMarkup}

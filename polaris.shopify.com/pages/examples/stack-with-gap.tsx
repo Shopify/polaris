@@ -15,7 +15,7 @@ function StackWithGapExample() {
   );
 }
 
-const SpacingBackground = ({children}) => {
+const SpacingBackground = ({children}: {children: React.ReactNode}) => {
   return (
     <div
       style={{
