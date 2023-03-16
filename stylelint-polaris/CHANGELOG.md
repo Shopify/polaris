@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.0.0
+
+### Major Changes
+
+- [#8657](https://github.com/Shopify/polaris/pull/8657) [`764f17d86`](https://github.com/Shopify/polaris/commit/764f17d86c30c9f30bec6717c09f07b2e04e23f8) Thanks [@alex-page](https://github.com/alex-page)! - Turn on reportNeedlessDisables for all comments
+
 ## 8.0.2
 
 ### Patch Changes

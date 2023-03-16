@@ -1,5 +1,37 @@
 # Changelog
 
+## 10.36.0
+
+### Minor Changes
+
+- [#8555](https://github.com/Shopify/polaris/pull/8555) [`696473b82`](https://github.com/Shopify/polaris/commit/696473b8215c76eaa3645260d0ec9f6f443a4b9d) Thanks [@clarkjennings](https://github.com/clarkjennings)! - Added a forward `ref` to permit programmatic scrolling for `Scrollable` (example: `scrollRef.current?.scrollTo(0)`)
+
+* [#8650](https://github.com/Shopify/polaris/pull/8650) [`078cf9aea`](https://github.com/Shopify/polaris/commit/078cf9aea6fbee85f1a22662808ec527b46e6f2d) Thanks [@kyledurand](https://github.com/kyledurand)! - Deprecated breadcrumbs prop on SkeletonPage, added backAction prop with story
+
+- [#8586](https://github.com/Shopify/polaris/pull/8586) [`83bde8690`](https://github.com/Shopify/polaris/commit/83bde86903b3b6cfdb1a56f8f505c353eb4609be) Thanks [@tatianau](https://github.com/tatianau)! - Made hiding the stepper arrows for inputs of type "number" and revealing them on hover and focus the default `TextField` behaviour to mimic the default browser experience
+
+* [#8288](https://github.com/Shopify/polaris/pull/8288) [`d27a361c2`](https://github.com/Shopify/polaris/commit/d27a361c25fd002937a1a6e7eea46225d12cad98) Thanks [@rcd00](https://github.com/rcd00)! - Updated the style of keyboard component and add optional size prop
+
+- [#8600](https://github.com/Shopify/polaris/pull/8600) [`515a62f3b`](https://github.com/Shopify/polaris/commit/515a62f3b2f7cfadbc1a80a9a320aae857262790) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed list reset class from not applying to ordered lists
+
+* [#8655](https://github.com/Shopify/polaris/pull/8655) [`fb373c3e1`](https://github.com/Shopify/polaris/commit/fb373c3e1d0f3e5dc7a61406b66f1580a45df6a2) Thanks [@stewx](https://github.com/stewx)! - Adjust CSS for expanded navigation section to remove unwanted space during collapse/expand
+
+### Patch Changes
+
+- [#8595](https://github.com/Shopify/polaris/pull/8595) [`437a3bbf1`](https://github.com/Shopify/polaris/commit/437a3bbf15209ad211ad3c197b9ed8cb34be2261) Thanks [@KateWood](https://github.com/KateWood)! - Added option zebra striping to `IndexTable` ([#8595](https://github.com/Shopify/polaris/pull/8595))
+
+* [#8626](https://github.com/Shopify/polaris/pull/8626) [`ff70ab3d1`](https://github.com/Shopify/polaris/commit/ff70ab3d1bc36d6d4b04a85c03f0b60e7ea8c43e) Thanks [@alex-page](https://github.com/alex-page)! - Fix border radius on active/pressed navigation items
+
+- [#8644](https://github.com/Shopify/polaris/pull/8644) [`62b712362`](https://github.com/Shopify/polaris/commit/62b71236221edddae106600a73d3f524089a6cd0) Thanks [@alex-page](https://github.com/alex-page)! - Remove unnecessary stylelint-disable comments
+
+* [#8651](https://github.com/Shopify/polaris/pull/8651) [`446ba341c`](https://github.com/Shopify/polaris/commit/446ba341c2debf0ed9378294598fb125d64d3a88) Thanks [@aveline](https://github.com/aveline)! - Updated default stack order custom property
+
+- [#8659](https://github.com/Shopify/polaris/pull/8659) [`3e7e0837d`](https://github.com/Shopify/polaris/commit/3e7e0837daccbc8652ea15caf0679b1309ca03fb) Thanks [@mrcthms](https://github.com/mrcthms)! - Removed comments after stylelint rule changes that are breaking the rules
+
+* [#8606](https://github.com/Shopify/polaris/pull/8606) [`230786ace`](https://github.com/Shopify/polaris/commit/230786ace70a370d0ada255e33f0b8fe830edfaa) Thanks [@alex-page](https://github.com/alex-page)! - Remove unused shared scss functions and move low usage or low value functions into components
+
+- [#8629](https://github.com/Shopify/polaris/pull/8629) [`6ee523a5f`](https://github.com/Shopify/polaris/commit/6ee523a5ff7b11425537936c41fc675e72fc81ef) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the animation duration and box-shadow for the `Tooltip`
+
 ## 10.35.0
 
 ### Minor Changes

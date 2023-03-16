@@ -13,12 +13,12 @@ function MultiAutocompleteExample() {
     ],
     [],
   );
-  const [selectedOptions, setSelectedOptions] = useState(['rustic']);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(['rustic']);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
   const updateText = useCallback(
-    (value) => {
+    (value: string) => {
       setInputValue(value);
 
       if (value === '') {
@@ -40,7 +40,7 @@ function MultiAutocompleteExample() {
   );
 
   const removeTag = useCallback(
-    (tag) => () => {
+    (tag: string) => () => {
       const options = [...selectedOptions];
       options.splice(options.indexOf(tag), 1);
       setSelectedOptions(options);
@@ -71,6 +71,7 @@ function MultiAutocompleteExample() {
       value={inputValue}
       placeholder="Vintage, cotton, summer"
       verticalContent={verticalContentMarkup}
+      autoComplete="off"
     />
   );
 
@@ -87,7 +88,7 @@ function MultiAutocompleteExample() {
     </div>
   );
 
-  function titleCase(string) {
+  function titleCase(string: string) {
     return string
       .toLowerCase()
       .split(' ')
