@@ -63,6 +63,7 @@ $loading-panel-height: 53px;
   align-items: center;
   background: var(--p-surface);
   padding: var(--p-space-2) var(--p-space-4);
+  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- :thinking-face: */
   box-shadow: var(--p-shadow-md);
 
   .LoadingPanelRow {
@@ -745,31 +746,78 @@ $scroll-bar-size: var(--p-space-2);
   }
 }
 
+$border-selected-top: inset 0 2px 0 0 black;
+$border-selected-bottom: inset 0 -2px 0 0 black;
+$border-selected: $border-selected-top, $border-selected-bottom;
+
+$border-selected-top-left: inset 1px 1px 0 1px black;
+$border-selected-top-right: inset -1px 1px 0 1px black;
+
+$border-selected-bottom-left: inset 1px -1px 0 1px black;
+$border-selected-bottom-right: inset -1px -1px 0 1px black;
+
+$border-selected-mid: inset 0 -1px 0 0 black, inset 0 1px 0 0 black;
+
 .TableRow-selected {
   .TableCell {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    // Start
+    // border-top: 2px solid black;
+    // border-bottom: 2px solid black;
+    box-shadow: $border-selected;
 
     &:first-child {
-      border-left: 2px solid black;
-      border-top-left-radius: 10px;
+      // border-left: 2px solid black;
+      // border-top-left-radius: 10px;
+      border-top-left-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-2);
+      box-shadow: $border-selected-top-left, $border-selected-bottom-left;
     }
 
     &:last-child {
-      border-right: 2px solid black;
+      border-top-right-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-2);
+      box-shadow: $border-selected-top-right, $border-selected-bottom-right;
     }
   }
 
-  + .TableRow-selected {
-    .TableCell {
-      border-top: 1px solid black;
-      border-bottom: 2px solid black;
-    }
-  }
+  // + .TableRow-selected {
+  //   .TableCell {
+  //     // End
+  //     // border-top: 1px solid black;
+  //     box-shadow: $border-selected-mid;
+  //     // border-bottom: 2px solid black;
+
+  //     &:first-child {
+  //       // border-left: 1px solid black;
+  //       // border-bottom-left-radius: 10px;
+  //       border-radius: var(--p-border-radius-2);
+  //       box-shadow: $border-selected-bottom-left;
+  //     }
+
+  //     &:last-child {
+  //       border-radius: var(--p-border-radius-2);
+  //       box-shadow: $border-selected-bottom-right;
+  //     }
+  //   }
+  // }
 }
 
-.TableRow-selected:has(+ .TableRow-selected) {
-  .TableCell {
-    border-bottom: 1px solid black;
-  }
-}
+// .TableRow-selected:has(+ .TableRow-selected) {
+//   .TableCell {
+//     // Middle
+//     // border-bottom: 1px solid black;
+//     box-shadow: $border-selected-mid;
+
+//     &:first-child {
+//       // border-left: 1px solid black;
+//       // border-bottom-left-radius: 10px;
+//       border-radius: 0;
+//       box-shadow: $border-selected-mid;
+//     }
+
+//     &:last-child {
+//       border-radius: 0;
+//       box-shadow: $border-selected-mid;
+//     }
+//   }
+// }
