@@ -8,13 +8,6 @@ import {
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-type Item = {
-  id: string;
-  url: string;
-  name: string;
-  location: string;
-};
-
 function ResourceListWithSortingExample() {
   const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
 
@@ -23,7 +16,7 @@ function ResourceListWithSortingExample() {
     plural: 'customers',
   };
 
-  const items: Item[] = [
+  const items = [
     {
       id: '106',
       url: '#',
@@ -57,7 +50,7 @@ function ResourceListWithSortingExample() {
     </LegacyCard>
   );
 
-  function renderItem(item: Item) {
+  function renderItem(item: typeof items[number]) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 

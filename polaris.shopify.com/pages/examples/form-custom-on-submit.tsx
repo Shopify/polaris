@@ -6,17 +6,17 @@ function FormOnSubmitExample() {
   const [newsletter, setNewsletter] = useState(false);
   const [email, setEmail] = useState('');
 
-  const handleSubmit = useCallback((_event) => {
+  const handleSubmit = useCallback(() => {
     setEmail('');
     setNewsletter(false);
   }, []);
 
   const handleNewsLetterChange = useCallback(
-    (value) => setNewsletter(value),
+    (value: boolean) => setNewsletter(value),
     [],
   );
 
-  const handleEmailChange = useCallback((value) => setEmail(value), []);
+  const handleEmailChange = useCallback((value: string) => setEmail(value), []);
 
   return (
     <Form onSubmit={handleSubmit}>

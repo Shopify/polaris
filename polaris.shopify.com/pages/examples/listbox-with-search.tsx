@@ -1,12 +1,7 @@
 import React, {useState} from 'react';
 import {
-  LegacyStack,
   Icon,
-  Page,
   LegacyCard,
-  Layout,
-  Button,
-  Popover,
   TextField,
   Listbox,
   AutoSelection,
@@ -94,20 +89,22 @@ const interval = 25;
 
 function ListboxWithSearchExample() {
   const [showFooterAction, setShowFooterAction] = useState(true);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>('');
   const [lazyLoading, setLazyLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
-  const [filteredSegments, setFilteredSegments] = useState([]);
+  const [filteredSegments, setFilteredSegments] = useState<
+    typeof segments[number][]
+  >([]);
 
   const handleClickShowAll = () => {
     setShowFooterAction(false);
     setVisibleOptionIndex(segments.length);
   };
 
-  const handleFilterSegments = (query) => {
+  const handleFilterSegments = (query: any) => {
     const nextFilteredSegments = segments.filter((segment) => {
       return segment.label
         .toLocaleLowerCase()
@@ -117,7 +114,7 @@ function ListboxWithSearchExample() {
     setFilteredSegments(nextFilteredSegments);
   };
 
-  const handleQueryChange = (query) => {
+  const handleQueryChange = (query: any) => {
     setQuery(query);
 
     if (query.length >= 2) handleFilterSegments(query);
@@ -127,11 +124,7 @@ function ListboxWithSearchExample() {
     handleQueryChange('');
   };
 
-  const handleResetVisibleOptionIndex = () => {
-    setVisibleOptionIndex(interval);
-  };
-
-  const handleSegmentSelect = (segmentIndex) => {
+  const handleSegmentSelect = (segmentIndex: string) => {
     if (segmentIndex === actionValue) {
       return handleClickShowAll();
     }
@@ -139,11 +132,15 @@ function ListboxWithSearchExample() {
     setSelectedSegmentIndex(Number(segmentIndex));
   };
 
-  const handleActiveOptionChange = (_, domId) => {
+  const handleActiveOptionChange = (_: string, domId: string) => {
     setActiveOptionId(domId);
   };
 
-  /* This is just to illustrate lazy loading state vs loading state. This is an example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage` from your GraphQL query data instead of this fake "willLoadMoreResults" state along with setting `first` your GraphQL query's variables to your app's default max edges limit (e.g., 250). */
+  // This is just to illustrate lazy loading state vs loading state. This is an
+  // example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage`
+  // from your GraphQL query data instead of this fake "willLoadMoreResults" state
+  // along with setting `first` your GraphQL query's variables to your app's
+  // default max edges limit (e.g., 250).
 
   const handleLazyLoadSegments = () => {
     if (willLoadMoreResults && !showFooterAction) {

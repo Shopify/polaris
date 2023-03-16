@@ -1,18 +1,9 @@
-import {
-  Button,
-  Modal,
-  LegacyStack,
-  TextContainer,
-  TextField,
-} from '@shopify/polaris';
-import {useState, useCallback, useRef} from 'react';
+import {Button, Modal, LegacyStack, TextContainer} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ModalWithPrimaryActionExample() {
-  const DISCOUNT_LINK = 'https://polaris.shopify.com/';
-
   const [active, setActive] = useState(true);
-  const node = useRef<HTMLInputElement>(null);
 
   const toggleModal = useCallback(() => setActive((active) => !active), []);
 

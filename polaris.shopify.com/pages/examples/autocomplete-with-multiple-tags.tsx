@@ -30,10 +30,7 @@ function MultiAutocompleteExample() {
       const resultOptions = deselectedOptions.filter((option) =>
         option.label.match(filterRegex),
       );
-      let endIndex = resultOptions.length - 1;
-      if (resultOptions.length === 0) {
-        endIndex = 0;
-      }
+
       setOptions(resultOptions);
     },
     [deselectedOptions],

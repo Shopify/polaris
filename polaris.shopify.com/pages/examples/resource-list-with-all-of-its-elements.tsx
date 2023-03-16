@@ -8,25 +8,34 @@ import {
   ResourceItem,
   Text,
 } from '@shopify/polaris';
+import {ResourceListSelectedItems} from '@shopify/polaris/build/ts/latest/src/utilities/resource-list';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<ResourceListSelectedItems>(
+    [],
+  );
   const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
-  const [taggedWith, setTaggedWith] = useState('VIP');
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState<string | undefined>('VIP');
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
@@ -39,14 +48,14 @@ function ResourceListExample() {
 
   const items = [
     {
-      id: 112,
+      id: '112',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       latestOrderUrl: 'orders/1456',
     },
     {
-      id: 212,
+      id: '212',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -93,15 +102,16 @@ function ResourceListExample() {
     },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith3',
-          label: disambiguateLabel('taggedWith3', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith3',
+            label: disambiguateLabel('taggedWith3', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
   const filterControl = (
     <Filters
@@ -142,12 +152,12 @@ function ResourceListExample() {
     </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: typeof items[number]) {
     const {id, url, name, location, latestOrderUrl} = item;
     const media = <Avatar customer size="medium" name={name} />;
     const shortcutActions = latestOrderUrl
       ? [{content: 'View latest order', url: latestOrderUrl}]
-      : null;
+      : undefined;
     return (
       <ResourceItem
         id={id}
