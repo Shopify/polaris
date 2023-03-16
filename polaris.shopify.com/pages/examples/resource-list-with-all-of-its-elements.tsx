@@ -8,14 +8,14 @@ import {
   ResourceItem,
   Text,
 } from '@shopify/polaris';
-import {ResourceListSelectedItems} from '@shopify/polaris/build/ts/latest/src/utilities/resource-list';
+import type {ResourceListProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListExample() {
-  const [selectedItems, setSelectedItems] = useState<ResourceListSelectedItems>(
-    [],
-  );
+  const [selectedItems, setSelectedItems] = useState<
+    ResourceListProps['selectedItems']
+  >([]);
   const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
   const [taggedWith, setTaggedWith] = useState<string | undefined>('VIP');
   const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
