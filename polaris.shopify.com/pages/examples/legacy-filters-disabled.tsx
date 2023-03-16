@@ -11,19 +11,19 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DisableAllFiltersExample() {
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
 
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
