@@ -11,7 +11,7 @@ import {
   TextField,
   Text,
   useIndexResourceState,
-  Tooltip,
+  IndexTableSelectionType,
 } from '@shopify/polaris';
 
 export default {
@@ -1725,7 +1725,7 @@ export function WithSortableHeadings() {
     {
       id: '3411',
       url: '#',
-      name: 'Mae Jemison',
+      name: 'Michael Scott',
       date: '2022-02-04',
       location: 'Decatur, USA',
       orders: 20,
@@ -1738,7 +1738,7 @@ export function WithSortableHeadings() {
       id: '2561',
       url: '#',
       date: '2022-01-19',
-      name: 'Ellen Ochoa',
+      name: 'Jim Halpert',
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
@@ -1750,7 +1750,7 @@ export function WithSortableHeadings() {
       id: '1245',
       url: '#',
       date: '2021-12-12',
-      name: 'Anne-Marie Johnson',
+      name: 'Dwight Schrute',
       location: 'Portland, USA',
       orders: 10,
       amountSpent: '$250',
@@ -1762,7 +1762,7 @@ export function WithSortableHeadings() {
       id: '8741',
       url: '#',
       date: '2022-05-11',
-      name: 'Bradley Stevens',
+      name: 'Pam Beesly',
       location: 'Hialeah, USA',
       orders: 5,
       amountSpent: '$26',
@@ -1774,7 +1774,7 @@ export function WithSortableHeadings() {
       id: '12460',
       url: '#',
       date: '2021-12-12',
-      name: 'Anne-Marie Johnson',
+      name: 'Kelly Kapoor',
       location: 'Portland, USA',
       orders: 10,
       amountSpent: '$250',
@@ -1786,7 +1786,7 @@ export function WithSortableHeadings() {
       id: '87410',
       url: '#',
       date: '2022-05-11',
-      name: 'Bradley Stevens',
+      name: 'Andy Bernard',
       location: 'Hialeah, USA',
       orders: 5,
       amountSpent: '$26',
@@ -1798,7 +1798,7 @@ export function WithSortableHeadings() {
       id: '12450',
       url: '#',
       date: '2021-12-12',
-      name: 'Anne-Marie Johnson',
+      name: 'Erin Hannon',
       location: 'Portland, USA',
       orders: 10,
       amountSpent: '$250',
@@ -1810,7 +1810,7 @@ export function WithSortableHeadings() {
       id: '874125',
       url: '#',
       date: '2022-05-11',
-      name: 'Bradley Stevens',
+      name: 'Angela Martin',
       location: 'Hialeah, USA',
       orders: 5,
       amountSpent: '$26',
@@ -1833,6 +1833,246 @@ export function WithSortableHeadings() {
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(rows);
 
+  function handleClickSortHeading(index, direction) {
+    setSortIndex(index);
+    setSortDirection(direction);
+    const newSortedRows = sortRows(rows, index, direction);
+    setSortedRows(newSortedRows);
+  }
+
+  function sortRows(localRows, index, direction) {
+    return [...localRows].sort((rowA, rowB) => {
+      const key = index === 0 ? 'name' : 'location';
+      if (rowA[key] < rowB[key]) {
+        return direction === 'descending' ? -1 : 1;
+      }
+      if (rowA[key] > rowB[key]) {
+        return direction === 'descending' ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  const rowMarkup = rows.map(
+    (
+      {
+        id,
+        name,
+        date,
+        location,
+        orders,
+        amountSpent,
+        fulfillmentStatus,
+        paymentStatus,
+        notes,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{notes}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={rows.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Date'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+
+          {title: 'Location'},
+          {title: 'Fulfillment status'},
+          {title: 'Payment status'},
+          {title: 'Notes'},
+        ]}
+        sortable={[true, true, false, true, true, false, false]}
+        sortDirection={sortDirection}
+        sortColumnIndex={sortIndex}
+        onSort={handleClickSortHeading}
+        sortToggleLabels={sortToggleLabels}
+        lastColumnSticky
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithSelectedRows() {
+  const [sortIndex, setSortIndex] = useState(0);
+  const [sortDirection, setSortDirection] = useState('descending');
+
+  const sortToggleLabels = {
+    0: {ascending: 'A-Z', descending: 'Z-A'},
+    1: {ascending: 'Ascending', descending: 'Descending'},
+    2: {ascending: 'Newest', descending: 'Oldest'},
+    3: {ascending: 'Ascending', descending: 'Ascending'},
+    4: {ascending: 'A-Z', descending: 'Z-A'},
+    5: {ascending: 'A-Z', descending: 'Z-A'},
+    6: {ascending: 'A-Z', descending: 'Z-A'},
+    7: {ascending: 'A-Z', descending: 'Z-A'},
+  };
+
+  const initialRows = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Michael Scott',
+      date: '2022-02-04',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Paid',
+      notes: '',
+    },
+    {
+      id: '2561',
+      url: '#',
+      date: '2022-01-19',
+      name: 'Jim Halpert',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer lives on the 3rd floor',
+    },
+    {
+      id: '1245',
+      url: '#',
+      date: '2021-12-12',
+      name: 'Dwight Schrute',
+      location: 'Portland, USA',
+      orders: 10,
+      amountSpent: '$250',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: '',
+    },
+    {
+      id: '8741',
+      url: '#',
+      date: '2022-05-11',
+      name: 'Pam Beesly',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
+    },
+    {
+      id: '12460',
+      url: '#',
+      date: '2021-12-12',
+      name: 'Kelly Kapoor',
+      location: 'Portland, USA',
+      orders: 10,
+      amountSpent: '$250',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: '',
+    },
+    {
+      id: '87410',
+      url: '#',
+      date: '2022-05-11',
+      name: 'Andy Bernard',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
+    },
+    {
+      id: '12450',
+      url: '#',
+      date: '2021-12-12',
+      name: 'Erin Hannon',
+      location: 'Portland, USA',
+      orders: 10,
+      amountSpent: '$250',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: '',
+    },
+    {
+      id: '874125',
+      url: '#',
+      date: '2022-05-11',
+      name: 'Angela Martin',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
+    },
+  ];
+  const [sortedRows, setSortedRows] = useState(
+    sortRows(initialRows, sortIndex, sortDirection),
+  );
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const rows = sortedRows ?? initialRows;
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows);
+
+  React.useEffect(() => {
+    handleSelectionChange(IndexTableSelectionType.Multi, true, [0, 1]);
+    handleSelectionChange(IndexTableSelectionType.Multi, true, [4, 6]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log(selectedResources);
   function handleClickSortHeading(index, direction) {
     setSortIndex(index);
     setSortDirection(direction);
