@@ -203,6 +203,7 @@ export interface ActionListItemDescriptor
   active?: boolean;
   /** Defines a role for the action */
   role?: string;
+  activatorRef?: LegacyRef<HTMLSpanElement> | undefined;
 }
 
 export interface ActionListSection {
