@@ -992,7 +992,11 @@ function IndexTableBase({
       if (!heading.tooltipContent) {
         return (
           // Regular header with sort icon and sort direction tooltip
-          <Tooltip {...defaultTooltipProps} content={sortTooltipContent}>
+          <Tooltip
+            {...defaultTooltipProps}
+            content={sortTooltipContent}
+            preferredPosition="above"
+          >
             {sortMarkup}
           </Tooltip>
         );
