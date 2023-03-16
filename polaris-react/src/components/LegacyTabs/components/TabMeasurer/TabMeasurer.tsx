@@ -87,7 +87,7 @@ export const TabMeasurer = memo(function TabMeasurer({
     );
   });
 
-  const classname = classNames(styles.Tabs, styles.TabMeasurer);
+  const classname = classNames(styles.LegacyTabs, styles.TabMeasurer);
 
   return (
     <div className={classname} ref={containerNode}>

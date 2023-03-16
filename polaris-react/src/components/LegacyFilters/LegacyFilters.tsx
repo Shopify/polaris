@@ -292,7 +292,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
     );
 
     const filtersContainerHeaderClassname = classNames(
-      styles.FiltersContainerHeader,
+      styles.LegacyFiltersContainerHeader,
     );
 
     const filtersDesktopHeaderMarkup = (
@@ -327,7 +327,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
     );
 
     const filtersDesktopFooterClassname = classNames(
-      styles.FiltersContainerFooter,
+      styles.LegacyFiltersContainerFooter,
     );
 
     const filtersDesktopFooterMarkup = (
@@ -347,7 +347,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
     );
 
     const filtersMobileFooterMarkup = (
-      <div className={styles.FiltersMobileContainerFooter}>
+      <div className={styles.LegacyFiltersMobileContainerFooter}>
         {this.hasAppliedFilters() ? (
           <Button onClick={onClearAll} fullWidth>
             {i18n.translate('Polaris.Filters.clearAllFilters')}
@@ -385,11 +385,11 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
     ) : null;
 
     const filtersMobileContainerContentClassName = classNames(
-      styles.FiltersMobileContainerContent,
+      styles.LegacyFiltersMobileContainerContent,
     );
 
     const filtersDesktopContainerContentClassName = classNames(
-      styles.FiltersDesktopContainerContent,
+      styles.LegacyFiltersDesktopContainerContent,
     );
 
     const filtersContainerMarkup = isNavigationCollapsed ? (
@@ -414,7 +414,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
         onEntered={this.setReadyForFocus(true)}
         onExit={this.setReadyForFocus(false)}
       >
-        <div className={styles.FiltersContainer}>
+        <div className={styles.LegacyFiltersContainer}>
           {filtersDesktopHeaderMarkup}
           <Scrollable
             className={filtersDesktopContainerContentClassName}
@@ -437,7 +437,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
 
     return (
       <WithinFilterContext.Provider value>
-        <div className={styles.Filters}>
+        <div className={styles.LegacyFilters}>
           {filtersControlMarkup}
           {filtersContainerMarkup}
           {tagsMarkup}

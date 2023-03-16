@@ -3,11 +3,11 @@
 $list-filters-header-height: $top-bar-height;
 $list-filters-footer-height: 70px;
 
-.Filters {
+.LegacyFilters {
   position: relative;
 }
 
-.FiltersContainer {
+.LegacyFiltersContainer {
   position: relative;
   height: 100%;
   width: 100%;
@@ -15,7 +15,7 @@ $list-filters-footer-height: 70px;
   flex-direction: column;
 }
 
-.FiltersContainerHeader {
+.LegacyFiltersContainerHeader {
   top: 0;
   width: 100%;
   padding: var(--p-space-4) var(--p-space-5);
@@ -27,7 +27,7 @@ $list-filters-footer-height: 70px;
   justify-content: space-between;
 }
 
-.FiltersDesktopContainerContent {
+.LegacyFiltersDesktopContainerContent {
   width: 100%;
   height: calc(
     100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
@@ -35,13 +35,13 @@ $list-filters-footer-height: 70px;
   padding: var(--p-space-2);
 }
 
-.FiltersMobileContainerContent {
+.LegacyFiltersMobileContainerContent {
   width: 100%;
   height: calc(100% - #{$list-filters-header-height});
   padding: var(--p-space-2);
 }
 
-.FiltersContainerFooter {
+.LegacyFiltersContainerFooter {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -54,7 +54,7 @@ $list-filters-footer-height: 70px;
   justify-content: space-between;
 }
 
-.FiltersMobileContainerFooter {
+.LegacyFiltersMobileContainerFooter {
   width: 100%;
   padding: var(--p-space-4) var(--p-space-4);
   height: $list-filters-footer-height;

@@ -106,7 +106,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     const hasCustomDisclosure = Boolean(disclosureText);
 
     const classname = classNames(
-      styles.Tabs,
+      styles.LegacyTabs,
       fitted && styles.fitted,
       disclosureActivatorVisible && styles.fillSpace,
     );
