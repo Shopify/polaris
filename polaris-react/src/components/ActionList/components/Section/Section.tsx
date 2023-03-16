@@ -39,7 +39,7 @@ export function Section({
     };
   };
   const actionMarkup = section.items.map(
-    ({content, helpText, onAction, ...item}, index) => {
+    ({content, helpText, onAction, id, ref, ...item}, index) => {
       return (
         <li
           key={`${content}-${index}`}
@@ -50,6 +50,7 @@ export function Section({
             helpText={helpText}
             role={actionRole}
             onAction={handleAction(onAction)}
+            ref={ref}
             {...item}
           />
         </li>

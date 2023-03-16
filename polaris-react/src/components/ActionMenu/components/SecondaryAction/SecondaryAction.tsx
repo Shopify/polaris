@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {forwardRef, useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {Tooltip} from '../../../Tooltip';
@@ -13,43 +13,50 @@ interface SecondaryAction extends ButtonProps {
   getOffsetWidth?(width: number): void;
 }
 
-export function SecondaryAction({
-  children,
-  destructive,
-  helpText,
-  onAction,
-  getOffsetWidth,
-  ...rest
-}: SecondaryAction) {
-  const secondaryActionsRef = useRef<HTMLSpanElement>(null);
+export const SecondaryAction = forwardRef(
+  (
+    {
+      children,
+      destructive,
+      helpText,
+      onAction,
+      getOffsetWidth,
+      ...rest
+    }: SecondaryAction,
+    ref,
+  ) => {
+    const secondaryActionsRef = useRef<HTMLSpanElement>(null);
 
-  useEffect(() => {
-    if (!getOffsetWidth || !secondaryActionsRef.current) return;
+    useEffect(() => {
+      if (!getOffsetWidth || !secondaryActionsRef.current) return;
 
-    getOffsetWidth(secondaryActionsRef.current?.offsetWidth);
-  }, [getOffsetWidth]);
+      getOffsetWidth(secondaryActionsRef.current?.offsetWidth);
+    }, [getOffsetWidth]);
 
-  const buttonMarkup = (
-    <Button onClick={onAction} {...rest}>
-      {children}
-    </Button>
-  );
+    const buttonMarkup = (
+      <Button onClick={onAction} {...rest} ref={ref}>
+        {children}
+      </Button>
+    );
 
-  const actionMarkup = helpText ? (
-    <Tooltip content={helpText}>{buttonMarkup}</Tooltip>
-  ) : (
-    buttonMarkup
-  );
+    const actionMarkup = helpText ? (
+      <Tooltip content={helpText}>{buttonMarkup}</Tooltip>
+    ) : (
+      buttonMarkup
+    );
 
-  return (
-    <span
-      className={classNames(
-        styles.SecondaryAction,
-        destructive && styles.destructive,
-      )}
-      ref={secondaryActionsRef}
-    >
-      {actionMarkup}
-    </span>
-  );
-}
+    return (
+      <span
+        className={classNames(
+          styles.SecondaryAction,
+          destructive && styles.destructive,
+        )}
+        ref={secondaryActionsRef}
+      >
+        {actionMarkup}
+      </span>
+    );
+  },
+);
+
+SecondaryAction.displayName = 'SecondaryAction';

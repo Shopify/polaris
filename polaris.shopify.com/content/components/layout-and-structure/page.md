@@ -27,6 +27,9 @@ examples:
   - fileName: page-with-custom-primary-action.tsx
     title: With custom primary action
     description: Use to create a custom primary action.
+  - fileName: page-with-activator-ref.tsx
+    title: With activator ref
+    description: Use to create a page with activator ref.
   - fileName: page-without-primary-action-in-header.tsx
     title: Without primary action in header
     description: Use when a primary action functions better as part of the page content instead of in the page header.

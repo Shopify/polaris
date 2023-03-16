@@ -14,9 +14,9 @@ function ModalExample() {
   }, []);
 
   const activator = (
-    <div ref={buttonRef}>
-      <Button onClick={handleOpen}>Open</Button>
-    </div>
+    <Button onClick={handleOpen} ref={buttonRef}>
+      Open
+    </Button>
   );
 
   return (
