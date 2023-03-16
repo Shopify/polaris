@@ -76,11 +76,11 @@ function formatColumns(columns?: Columns): ResponsiveValue {
 function getColumnValue(columns?: ColumnsType) {
   if (!columns) return undefined;
 
-  if (typeof columns === 'string') return columns;
-
-  if (typeof columns === 'number') {
-    return `repeat(${columns}, minmax(0, 1fr))`;
+  if (typeof columns === 'number' || !isNaN(Number(columns))) {
+    return `repeat(${Number(columns)}, minmax(0, 1fr))`;
   }
+
+  if (typeof columns === 'string') return columns;
 
   return columns
     .map((column) => {
