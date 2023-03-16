@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, forwardRef, useImperativeHandle} from 'react';
 
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -13,92 +13,114 @@ export interface UnstyledButtonProps extends BaseButton {
   [key: string]: any;
 }
 
-export function UnstyledButton({
-  id,
-  children,
-  className,
-  url,
-  external,
-  download,
-  submit,
-  disabled,
-  loading,
-  pressed,
-  accessibilityLabel,
-  role,
-  ariaControls,
-  ariaExpanded,
-  ariaDescribedBy,
-  ariaChecked,
-  onClick,
-  onFocus,
-  onBlur,
-  onKeyDown,
-  onKeyPress,
-  onKeyUp,
-  onMouseEnter,
-  onTouchStart,
-  ...rest
-}: UnstyledButtonProps) {
-  let buttonMarkup;
+export const UnstyledButton = forwardRef(
+  (
+    {
+      id,
+      children,
+      className,
+      url,
+      external,
+      download,
+      submit,
+      disabled,
+      loading,
+      pressed,
+      accessibilityLabel,
+      role,
+      ariaControls,
+      ariaExpanded,
+      ariaDescribedBy,
+      ariaChecked,
+      onClick,
+      onFocus,
+      onBlur,
+      onKeyDown,
+      onKeyPress,
+      onKeyUp,
+      onMouseEnter,
+      onTouchStart,
+      overrideRef,
+      ...rest
+    }: UnstyledButtonProps,
+    ref,
+  ) => {
+    let buttonMarkup;
+    const localButtonRef: React.RefObject<HTMLButtonElement> = useRef(null);
+    const localLinkRef: React.RefObject<HTMLAnchorElement> = useRef(null);
 
-  const commonProps = {
-    id,
-    className,
-    'aria-label': accessibilityLabel,
-  };
-  const interactiveProps = {
-    ...commonProps,
-    role,
-    onClick,
-    onFocus,
-    onBlur,
-    onMouseUp: handleMouseUpByBlurring,
-    onMouseEnter,
-    onTouchStart,
-  };
+    useImperativeHandle(ref, () => {
+      return {
+        focus: () =>
+          url
+            ? localLinkRef?.current?.focus()
+            : localButtonRef?.current?.focus(),
+      };
+    });
 
-  const handleClick = useDisableClick(disabled, onClick);
+    const commonProps = {
+      id,
+      className,
+      'aria-label': accessibilityLabel,
+    };
+    const interactiveProps = {
+      ...commonProps,
+      role,
+      onClick,
+      onFocus,
+      onBlur,
+      onMouseUp: handleMouseUpByBlurring,
+      onMouseEnter,
+      onTouchStart,
+    };
 
-  if (url) {
-    buttonMarkup = disabled ? (
-      // Render an `<a>` so toggling disabled/enabled state changes only the
-      // `href` attribute instead of replacing the whole element.
-      <a {...commonProps}>{children}</a>
-    ) : (
-      <UnstyledLink
-        {...interactiveProps}
-        url={url}
-        external={external}
-        download={download}
-        {...rest}
-      >
-        {children}
-      </UnstyledLink>
-    );
-  } else {
-    buttonMarkup = (
-      <button
-        {...interactiveProps}
-        aria-disabled={disabled}
-        type={submit ? 'submit' : 'button'}
-        aria-busy={loading ? true : undefined}
-        aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
-        aria-describedby={ariaDescribedBy}
-        aria-checked={ariaChecked}
-        aria-pressed={pressed}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
-        onClick={handleClick}
-        tabIndex={disabled ? -1 : undefined}
-        {...rest}
-      >
-        {children}
-      </button>
-    );
-  }
+    const handleClick = useDisableClick(disabled, onClick);
 
-  return buttonMarkup;
-}
+    if (url) {
+      buttonMarkup = disabled ? (
+        // Render an `<a>` so toggling disabled/enabled state changes only the
+        // `href` attribute instead of replacing the whole element.
+        <a {...commonProps} ref={localLinkRef}>
+          {children}
+        </a>
+      ) : (
+        <UnstyledLink
+          {...interactiveProps}
+          url={url}
+          external={external}
+          download={download}
+          {...rest}
+          ref={localLinkRef}
+        >
+          {children}
+        </UnstyledLink>
+      );
+    } else {
+      buttonMarkup = (
+        <button
+          {...interactiveProps}
+          aria-disabled={disabled}
+          type={submit ? 'submit' : 'button'}
+          aria-busy={loading ? true : undefined}
+          aria-controls={ariaControls}
+          aria-expanded={ariaExpanded}
+          aria-describedby={ariaDescribedBy}
+          aria-checked={ariaChecked}
+          aria-pressed={pressed}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
+          onKeyPress={onKeyPress}
+          onClick={handleClick}
+          tabIndex={disabled ? -1 : undefined}
+          ref={localButtonRef}
+          {...rest}
+        >
+          {children}
+        </button>
+      );
+    }
+
+    return buttonMarkup;
+  },
+);
+UnstyledButton.displayName = 'UnstyledButton';

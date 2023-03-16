@@ -118,7 +118,11 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         ? activator && activator.current
         : activatorRef.current;
     if (activatorElement) {
-      requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
+      requestAnimationFrame(() => {
+        activatorElement.focus
+          ? activatorElement.focus()
+          : focusFirstFocusableNode(activatorElement);
+      });
     }
   }, [activator]);
 

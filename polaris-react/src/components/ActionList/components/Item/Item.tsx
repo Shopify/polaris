@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef, Ref} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -11,29 +11,33 @@ import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {Inline} from '../../../Inline';
 import {Box} from '../../../Box';
+import {UnstyledButton} from '../../../UnstyledButton';
 
 export type ItemProps = ActionListItemDescriptor;
 
-export function Item({
-  id,
-  badge,
-  content,
-  accessibilityLabel,
-  helpText,
-  url,
-  onAction,
-  onMouseEnter,
-  icon,
-  image,
-  prefix,
-  suffix,
-  disabled,
-  external,
-  destructive,
-  ellipsis,
-  active,
-  role,
-}: ItemProps) {
+export const Item = forwardRef(function Item(
+  {
+    id,
+    badge,
+    content,
+    accessibilityLabel,
+    helpText,
+    url,
+    onAction,
+    onMouseEnter,
+    icon,
+    image,
+    prefix,
+    suffix,
+    disabled,
+    external,
+    destructive,
+    ellipsis,
+    active,
+    role,
+  }: ItemProps,
+  ref,
+) {
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
@@ -108,11 +112,12 @@ export function Item({
       aria-label={accessibilityLabel}
       onClick={disabled ? null : onAction}
       role={role}
+      ref={ref as Ref<HTMLAnchorElement>}
     >
       {contentElement}
     </UnstyledLink>
   ) : (
-    <button
+    <UnstyledButton
       id={id}
       type="button"
       className={className}
@@ -122,9 +127,10 @@ export function Item({
       onMouseUp={handleMouseUpByBlurring}
       role={role}
       onMouseEnter={onMouseEnter}
+      ref={ref}
     >
       {contentElement}
-    </button>
+    </UnstyledButton>
   );
 
   return (
@@ -133,4 +139,4 @@ export function Item({
       {control}
     </>
   );
-}
+});

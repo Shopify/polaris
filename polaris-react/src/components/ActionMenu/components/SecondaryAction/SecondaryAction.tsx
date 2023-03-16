@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {forwardRef, useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {Tooltip} from '../../../Tooltip';
@@ -13,14 +13,17 @@ interface SecondaryAction extends ButtonProps {
   getOffsetWidth?(width: number): void;
 }
 
-export function SecondaryAction({
-  children,
-  destructive,
-  helpText,
-  onAction,
-  getOffsetWidth,
-  ...rest
-}: SecondaryAction) {
+export const SecondaryAction = forwardRef(function SecondaryAction(
+  {
+    children,
+    destructive,
+    helpText,
+    onAction,
+    getOffsetWidth,
+    ...rest
+  }: SecondaryAction,
+  ref,
+) {
   const secondaryActionsRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -30,7 +33,7 @@ export function SecondaryAction({
   }, [getOffsetWidth]);
 
   const buttonMarkup = (
-    <Button onClick={onAction} {...rest}>
+    <Button onClick={onAction} {...rest} ref={ref}>
       {children}
     </Button>
   );
@@ -52,4 +55,4 @@ export function SecondaryAction({
       {actionMarkup}
     </span>
   );
-}
+});

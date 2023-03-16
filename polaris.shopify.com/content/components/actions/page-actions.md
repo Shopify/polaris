@@ -25,6 +25,9 @@ examples:
   - fileName: page-actions-with-custom-secondary-action.tsx
     title: With custom secondary action
     description: Use to create a custom secondary action.
+  - fileName: page-actions-with-activator-ref.tsx
+    title: With Activator ref on secondary action
+    description: Use to provide a ref on a secondary action.
 ---
 
 ## Best practices

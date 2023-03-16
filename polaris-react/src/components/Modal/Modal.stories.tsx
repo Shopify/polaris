@@ -388,9 +388,9 @@ export function WithActivatorRef() {
   }, []);
 
   const activator = (
-    <div ref={buttonRef}>
-      <Button onClick={handleOpen}>Open</Button>
-    </div>
+    <Button onClick={handleOpen} ref={buttonRef}>
+      Open
+    </Button>
   );
 
   return (
@@ -426,20 +426,20 @@ export function WithActivatorRef() {
 export function WithoutAnActivatorProp() {
   const [active, setActive] = useState(true);
 
-  const button = useRef();
+  const button = useRef<HTMLButtonElement>(null);
 
   const handleOpen = useCallback(() => setActive(true), []);
 
   const handleClose = useCallback(() => {
     setActive(false);
-    requestAnimationFrame(() => button.current.querySelector('button').focus());
+    requestAnimationFrame(() => button.current?.focus());
   }, []);
 
   return (
     <div style={{height: '500px'}}>
-      <div ref={button}>
-        <Button onClick={handleOpen}>Open</Button>
-      </div>
+      <Button onClick={handleOpen} ref={button}>
+        Open
+      </Button>
       <Modal
         instant
         open={active}

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {forwardRef, useCallback, useState} from 'react';
 import {
   CaretDownMinor,
   CaretUpMinor,
@@ -91,45 +91,48 @@ type ActionButtonProps = Pick<
 
 const DEFAULT_SIZE = 'medium';
 
-export function Button({
-  id,
-  children,
-  url,
-  disabled,
-  external,
-  download,
-  submit,
-  loading,
-  pressed,
-  accessibilityLabel,
-  role,
-  ariaControls,
-  ariaExpanded,
-  ariaDescribedBy,
-  ariaChecked,
-  onClick,
-  onFocus,
-  onBlur,
-  onKeyDown,
-  onKeyPress,
-  onKeyUp,
-  onMouseEnter,
-  onTouchStart,
-  onPointerDown,
-  icon,
-  primary,
-  outline,
-  destructive,
-  disclosure,
-  plain,
-  monochrome,
-  removeUnderline,
-  size = DEFAULT_SIZE,
-  textAlign,
-  fullWidth,
-  connectedDisclosure,
-  dataPrimaryLink,
-}: ButtonProps) {
+export const Button = forwardRef(function Button(
+  {
+    id,
+    children,
+    url,
+    disabled,
+    external,
+    download,
+    submit,
+    loading,
+    pressed,
+    accessibilityLabel,
+    role,
+    ariaControls,
+    ariaExpanded,
+    ariaDescribedBy,
+    ariaChecked,
+    onClick,
+    onFocus,
+    onBlur,
+    onKeyDown,
+    onKeyPress,
+    onKeyUp,
+    onMouseEnter,
+    onTouchStart,
+    onPointerDown,
+    icon,
+    primary,
+    outline,
+    destructive,
+    disclosure,
+    plain,
+    monochrome,
+    removeUnderline,
+    size = DEFAULT_SIZE,
+    textAlign,
+    fullWidth,
+    connectedDisclosure,
+    dataPrimaryLink,
+  }: ButtonProps,
+  ref,
+) {
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
@@ -297,7 +300,7 @@ export function Button({
   };
 
   const buttonMarkup = (
-    <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
+    <UnstyledButton {...commonProps} {...linkProps} {...actionProps} ref={ref}>
       <span className={styles.Content}>
         {spinnerSVGMarkup}
         {iconMarkup}
@@ -315,7 +318,7 @@ export function Button({
   ) : (
     buttonMarkup
   );
-}
+});
 
 function isIconSource(x: any): x is IconSource {
   return (

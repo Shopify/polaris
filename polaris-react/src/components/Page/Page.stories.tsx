@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Badge,
@@ -7,6 +7,9 @@ import {
   Page,
   PageActions,
   LegacyStack,
+  Modal,
+  TextContainer,
+  Text,
 } from '@shopify/polaris';
 import {PlusMinor, ArrowDownMinor, ExternalMinor} from '@shopify/polaris-icons';
 
@@ -106,6 +109,103 @@ export function WithoutPrimaryActionInHeader() {
           <Button primary>Continue</Button>
         </LegacyStack>
       </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithActivatorRef() {
+  const [active, setActive] = useState(true);
+  const [active2, setActive2] = useState(false);
+  const [hasRolledUp, setHasRolledUp] = useState(false);
+  console.log('hasRolledUp', hasRolledUp);
+  const onActionRollup = useCallback((hasRolledUp: boolean) => {
+    console.log('rollup stuff');
+    setHasRolledUp(hasRolledUp);
+  }, []);
+
+  const handleChange = useCallback(() => setActive(!active), [active]);
+  const handleChange2 = useCallback(() => setActive2(!active2), [active2]);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef2 = useRef<HTMLButtonElement>(null);
+  return (
+    <Page
+      breadcrumbs={[{content: 'Orders', url: '#'}]}
+      title="#1085"
+      secondaryActions={[
+        {content: 'Print'},
+        {content: 'Fulfill'},
+        {content: 'Share'},
+        {content: 'Tweet'},
+        {
+          content: 'Unarchive',
+          id: 'unarchive',
+          ref: buttonRef2,
+          onAction: () => setActive2(true),
+        },
+        {
+          id: 'cancel-order',
+          content: 'Cancel order',
+          ref: buttonRef,
+          onAction: () => setActive(true),
+        },
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
+      onActionRollup={onActionRollup}
+    >
+      <LegacyCard sectioned title="Fulfill order">
+        <LegacyStack alignment="center">
+          <LegacyStack.Item fill>
+            <p>Buy postage and ship remaining 2 items</p>
+          </LegacyStack.Item>
+          <Button primary>Continue</Button>
+        </LegacyStack>
+      </LegacyCard>
+      <Modal
+        activator={buttonRef}
+        open={active}
+        onClose={handleChange}
+        title="Delete 3/4 inch Leather pet collar?"
+        primaryAction={{
+          content: 'Delete product',
+          onAction: handleChange,
+        }}
+        secondaryActions={[{content: 'Cancel', onAction: handleChange}]}
+      >
+        <Modal.Section>
+          <Text variant="bodyMd" as="p">
+            Are you sure you want to delete{' '}
+            <Text as="span" fontWeight="bold">
+              3/4 inch Leather pet collar
+            </Text>
+            ? This can&apos;t be undone.
+          </Text>
+        </Modal.Section>
+      </Modal>
+
+      <Modal
+        activator={buttonRef2}
+        open={active2}
+        onClose={handleChange2}
+        title="Unarchive inch Leather pet collar?"
+        primaryAction={{
+          content: 'Unarchive product',
+          onAction: handleChange2,
+        }}
+        secondaryActions={[{content: 'Cancel', onAction: handleChange2}]}
+      >
+        <Modal.Section>
+          <Text variant="bodyMd" as="p">
+            Are you sure you want to delete{' '}
+            <Text as="span" fontWeight="bold">
+              1 inch Leather pet collar
+            </Text>
+            ? This can&apos;t be undone.
+          </Text>
+        </Modal.Section>
+      </Modal>
     </Page>
   );
 }

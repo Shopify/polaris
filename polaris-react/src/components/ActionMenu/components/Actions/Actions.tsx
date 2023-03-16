@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 
 import type {
   ActionListItemDescriptor,
@@ -35,7 +35,6 @@ const ACTION_SPACING = 8;
 export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   const i18n = useI18n();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
-  const menuGroupWidthRef = useRef<number>(0);
   const availableWidthRef = useRef<number>(0);
   const actionsAndGroupsLengthRef = useRef<number>(0);
   const timesMeasured = useRef(0);
@@ -115,12 +114,11 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
 
     actionsAndGroups.forEach((action, index) => {
-      const canFitAction =
+      const newWidth =
         actionWidthsRef.current[index] +
-          menuGroupWidthRef.current +
-          ACTION_SPACING +
-          lastMenuGroupWidth <=
-        currentAvailableWidth;
+        ACTION_SPACING * 2 +
+        lastMenuGroupWidth;
+      const canFitAction = newWidth <= currentAvailableWidth;
 
       if (canFitAction) {
         currentAvailableWidth -=
@@ -154,23 +152,29 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     actionsAndGroupsLengthRef.current = actionsAndGroups.length;
   }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, onActionRollup]);
 
-  const handleResize = useMemo(
-    () =>
-      debounce(
-        () => {
-          if (!actionsLayoutRef.current) return;
-          availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
-          // Set timesMeasured to 0 to allow re-measuring
-          timesMeasured.current = 0;
-          measureActions();
-        },
-        50,
-        {leading: false, trailing: true},
-      ),
-    [measureActions],
+  // don't use debounce with an inline function, we only want to create one debouncedMeasureActions
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedMeasureActions = useCallback(
+    debounce(
+      () => {
+        if (!actionsLayoutRef.current) return;
+        availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+        timesMeasured.current = 0;
+        measureActions();
+      },
+      50,
+      {leading: false, trailing: true},
+    ),
+    [measureActions, actionsLayoutRef],
   );
 
-  useEventListener('resize', handleResize);
+  const handleResize = useCallback(debouncedMeasureActions, [
+    debouncedMeasureActions,
+  ]);
+
+  useEventListener('resize', () => {
+    handleResize;
+  });
 
   useIsomorphicLayoutEffect(() => {
     if (!actionsLayoutRef.current) return;

@@ -1,3 +1,4 @@
+import type {RefObject} from 'react';
 import type React from 'react';
 
 /* eslint-disable @shopify/strict-component-boundaries */
@@ -102,8 +103,10 @@ export interface Action {
   url?: string;
   /** Forces url to open in a new tab */
   external?: boolean;
+  /** Ref to set on the button element */
+  ref?: RefObject<HTMLElement>;
   /** Callback when an action takes place */
-  onAction?(): void;
+  onAction?(id?: string): void;
   /** Callback when mouse enter */
   onMouseEnter?(): void;
   /** Callback when element is touched */
