@@ -12,34 +12,47 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListFiltersExample() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [accountStatus, setAccountStatus] = useState<string[] | undefined>(
+    undefined,
+  );
+  const [moneySpent, setMoneySpent] = useState<[number, number] | undefined>(
+    undefined,
+  );
+  const [taggedWith, setTaggedWith] = useState<string | undefined>(undefined);
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
+    (value: string[]) => setAccountStatus(value),
     [],
   );
   const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
+    (value: [number, number]) => setMoneySpent(value),
     [],
   );
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
   const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
+    () => setAccountStatus(undefined),
     [],
   );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleMoneySpentRemove = useCallback(
+    () => setMoneySpent(undefined),
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
@@ -107,27 +120,24 @@ function ResourceListFiltersExample() {
   ];
 
   const appliedFilters = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
+  if (accountStatus && accountStatus.length > 0) {
     appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
+      key: 'accountStatus',
+      label: accountStatus.map((val) => `Customer ${val}`).join(', '),
       onRemove: handleAccountStatusRemove,
     });
   }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
+  if (moneySpent) {
     appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
+      key: 'moneySpent',
+      label: `Money spent is between $${moneySpent[0]} and $${moneySpent[1]}`,
       onRemove: handleMoneySpentRemove,
     });
   }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
+  if (taggedWith && !isEmpty(taggedWith)) {
     appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
+      key: 'taggedWith',
+      label: `Tagged with ${taggedWith}`,
       onRemove: handleTaggedWithRemove,
     });
   }
@@ -151,13 +161,13 @@ function ResourceListFiltersExample() {
           }
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
@@ -186,20 +196,7 @@ function ResourceListFiltersExample() {
     </div>
   );
 
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
-      default:
-        return value;
-    }
-  }
-
-  function isEmpty(value) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

@@ -9,31 +9,47 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DataTableFiltersExample() {
-  const [availability, setAvailability] = useState(null);
-  const [productType, setProductType] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [availability, setAvailability] = useState<string[] | undefined>(
+    undefined,
+  );
+  const [productType, setProductType] = useState<string[] | undefined>(
+    undefined,
+  );
+  const [taggedWith, setTaggedWith] = useState<string | undefined>(undefined);
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleAvailabilityChange = useCallback(
-    (value) => setAvailability(value),
+    (value: string[]) => setAvailability(value),
     [],
   );
   const handleProductTypeChange = useCallback(
-    (value) => setProductType(value),
+    (value: string[]) => setProductType(value),
     [],
   );
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
-  const handleAvailabilityRemove = useCallback(() => setAvailability(null), []);
-  const handleProductTypeRemove = useCallback(() => setProductType(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleAvailabilityRemove = useCallback(
+    () => setAvailability(undefined),
+    [],
+  );
+  const handleProductTypeRemove = useCallback(
+    () => setProductType(undefined),
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
   const handleFiltersClearAll = useCallback(() => {
     handleAvailabilityRemove();
     handleProductTypeRemove();
@@ -100,7 +116,7 @@ function DataTableFiltersExample() {
   ];
 
   const appliedFilters = [];
-  if (!isEmpty(availability)) {
+  if (availability && !isEmpty(availability)) {
     const key = 'availability';
     appliedFilters.push({
       key,
@@ -108,7 +124,7 @@ function DataTableFiltersExample() {
       onRemove: handleAvailabilityRemove,
     });
   }
-  if (!isEmpty(productType)) {
+  if (productType && !isEmpty(productType)) {
     const key = 'productType';
     appliedFilters.push({
       key,
@@ -116,11 +132,10 @@ function DataTableFiltersExample() {
       onRemove: handleProductTypeRemove,
     });
   }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
+  if (taggedWith && !isEmpty(taggedWith)) {
     appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
+      key: 'taggedWith',
+      label: `Tagged with ${taggedWith}`,
       onRemove: handleTaggedWithRemove,
     });
   }
@@ -170,7 +185,7 @@ function DataTableFiltersExample() {
     </div>
   );
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string[]): string {
     switch (key) {
       case 'taggedWith':
         return `Tagged with ${value}`;
@@ -179,11 +194,11 @@ function DataTableFiltersExample() {
       case 'productType':
         return value.join(', ');
       default:
-        return value;
+        return value.toString();
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string | string[]): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

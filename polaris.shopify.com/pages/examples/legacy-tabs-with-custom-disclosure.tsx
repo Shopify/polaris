@@ -6,7 +6,7 @@ function TabsWithCustomDisclosureExample() {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
+    (selectedTabIndex: number) => setSelected(selectedTabIndex),
     [],
   );
 
