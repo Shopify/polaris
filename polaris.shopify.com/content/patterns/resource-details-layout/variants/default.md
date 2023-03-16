@@ -57,7 +57,7 @@ function ResourceDetailsLayout() {
   };
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      backAction={{content: 'Products', url: '/products'}}
       title="Product"
       secondaryActions={[
         {
