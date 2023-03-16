@@ -25,16 +25,19 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
   resources: T[],
   {
     selectedResources: initSelectedResources = [],
+    selectedGroups = [['1245', '8741']],
     allResourcesSelected: initAllResourcesSelected = false,
     resourceIDResolver = defaultResourceIDResolver,
     resourceFilter = undefined,
   }: {
     selectedResources?: string[];
+    selectedGroups?: string[][];
     allResourcesSelected?: boolean;
     resourceIDResolver?: ResourceIDResolver<T>;
     resourceFilter?: (value: T) => boolean;
   } = {
     selectedResources: [],
+    selectedGroups: [],
     allResourcesSelected: false,
     resourceIDResolver: defaultResourceIDResolver,
     resourceFilter: undefined,
@@ -43,6 +46,7 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
   const [selectedResources, setSelectedResources] = useState(
     initSelectedResources,
   );
+
   const [allResourcesSelected, setAllResourcesSelected] = useState(
     initAllResourcesSelected,
   );
@@ -147,5 +151,6 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     handleSelectionChange,
     clearSelection,
     removeSelectedResources,
+    selectedGroups,
   };
 }

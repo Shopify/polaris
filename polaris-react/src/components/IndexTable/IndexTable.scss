@@ -744,3 +744,32 @@ $scroll-bar-size: var(--p-space-2);
     transform: translateX(var(--p-space-5));
   }
 }
+
+.TableRow-selected {
+  .TableCell {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+
+    &:first-child {
+      border-left: 2px solid black;
+      border-top-left-radius: 10px;
+    }
+
+    &:last-child {
+      border-right: 2px solid black;
+    }
+  }
+
+  + .TableRow-selected {
+    .TableCell {
+      border-top: 1px solid black;
+      border-bottom: 2px solid black;
+    }
+  }
+}
+
+.TableRow-selected:has(+ .TableRow-selected) {
+  .TableCell {
+    border-bottom: 1px solid black;
+  }
+}
