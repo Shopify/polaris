@@ -1,5 +1,5 @@
 import React from 'react';
-import {AlphaStack, Text} from '@shopify/polaris';
+import {AlphaStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -15,7 +15,7 @@ function AlphaStackWithGapExample() {
   );
 }
 
-const SpacingBackground = ({children}) => {
+const SpacingBackground = ({children}: {children: React.ReactNode}) => {
   return (
     <div
       style={{
