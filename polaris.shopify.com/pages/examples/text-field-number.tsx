@@ -5,7 +5,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function NumberFieldExample() {
   const [value, setValue] = useState('1');
 
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange = useCallback(
+    (newValue: string) => setValue(newValue),
+    [],
+  );
 
   return (
     <TextField

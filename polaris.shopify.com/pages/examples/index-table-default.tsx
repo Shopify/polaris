@@ -90,7 +90,6 @@ function SimpleIndexTableExample() {
               </Text>
             ),
           },
-          ,
         ]}
       >
         {rowMarkup}

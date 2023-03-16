@@ -6,7 +6,7 @@ function LabelActionExample() {
   const [textFieldValue, setTextFieldValue] = useState('6201.11.0000');
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 

@@ -10,11 +10,11 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DropZoneWithCustomFileDialogExample() {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
   const [openFileDialog, setOpenFileDialog] = useState(false);
 
   const handleDropZoneDrop = useCallback(
-    (dropFiles, _acceptedFiles, _rejectedFiles) =>
+    (dropFiles: File[], _acceptedFiles: File[], _rejectedFiles: File[]) =>
       setFiles((files) => [...files, ...dropFiles]),
     [],
   );

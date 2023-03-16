@@ -1,6 +1,5 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
-  HomeMinor,
   OrdersMinor,
   CirclePlusOutlineMinor,
   ProductsMinor,

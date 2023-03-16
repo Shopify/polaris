@@ -1,4 +1,10 @@
-import {LegacyCard, ResourceList, ResourceItem, Avatar, Text} from '@shopify/polaris';
+import {
+  LegacyCard,
+  ResourceList,
+  ResourceItem,
+  Avatar,
+  Text,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -9,7 +15,7 @@ function ResourceItemExample() {
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
-            id: 145,
+            id: '145',
             url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
@@ -22,7 +28,7 @@ function ResourceItemExample() {
           const {id, url, avatarSource, name, location, latestOrderUrl} = item;
           const shortcutActions = latestOrderUrl
             ? [{content: 'View latest order', url: latestOrderUrl}]
-            : null;
+            : undefined;
 
           return (
             <ResourceItem
