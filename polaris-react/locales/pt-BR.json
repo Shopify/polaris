@@ -220,7 +220,7 @@
           "delete": "Excluir visualização"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Renomear visualização",
         "label": "Nome",
         "cancel": "Cancelar",
@@ -229,7 +229,7 @@
           "sameName": "Uma visualização com esse nome já existe. Escolha outro."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Duplicar visualização",
         "label": "Nome",
         "cancel": "Cancelar",

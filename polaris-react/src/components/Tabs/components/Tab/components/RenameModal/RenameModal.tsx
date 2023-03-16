@@ -7,7 +7,7 @@ import {TextField} from '../../../../../TextField';
 import {Form} from '../../../../../Form';
 import {FormLayout} from '../../../../../FormLayout';
 
-export interface DuplicateViewModalProps {
+export interface RenameModalProps {
   open: boolean;
   isModalLoading?: boolean;
   name: string;
@@ -18,9 +18,7 @@ export interface DuplicateViewModalProps {
   onClickSecondaryAction?: () => void;
 }
 
-const MAX_VIEW_NAME_LENGTH = 40;
-
-export function DuplicateViewModal({
+export function RenameModal({
   open,
   isModalLoading,
   name,
@@ -29,18 +27,18 @@ export function DuplicateViewModal({
   onClickSecondaryAction,
   helpText,
   viewNames,
-}: DuplicateViewModalProps) {
+}: RenameModalProps) {
   const i18n = useI18n();
   const [value, setValue] = useState(name);
   const container = useRef<HTMLDivElement>(null);
-  const hasSameNameError = viewNames?.some(
-    (viewName) => viewName.trim().toLowerCase() === value.trim().toLowerCase(),
-  );
+  const hasSameNameError = viewNames
+    ?.filter((viewName) => viewName !== name)
+    .some(
+      (viewName) =>
+        viewName.trim().toLowerCase() === value.trim().toLowerCase(),
+    );
   const isPrimaryActionDisabled =
-    isModalLoading ||
-    hasSameNameError ||
-    !value ||
-    value.length > MAX_VIEW_NAME_LENGTH;
+    isModalLoading || hasSameNameError || value === name || !value;
   useEffect(() => {
     if (!container.current) return;
     if (open) {
@@ -50,7 +48,7 @@ export function DuplicateViewModal({
 
   useEffect(() => {
     if (open) {
-      setValue(name.slice(0, MAX_VIEW_NAME_LENGTH));
+      setValue(name);
     }
   }, [name, open]);
 
@@ -75,15 +73,15 @@ export function DuplicateViewModal({
     <Modal
       open={open}
       onClose={onClose}
-      title={i18n.translate('Polaris.Tabs.DuplicateViewModal.title')}
+      title={i18n.translate('Polaris.Tabs.RenameModal.title')}
       primaryAction={{
-        content: i18n.translate('Polaris.Tabs.DuplicateViewModal.create'),
+        content: i18n.translate('Polaris.Tabs.RenameModal.create'),
         onAction: handlePrimaryAction,
         disabled: isPrimaryActionDisabled,
       }}
       secondaryActions={[
         {
-          content: i18n.translate('Polaris.Tabs.DuplicateViewModal.cancel'),
+          content: i18n.translate('Polaris.Tabs.RenameModal.cancel'),
           onAction: handleSecondaryAction,
         },
       ]}
@@ -94,17 +92,17 @@ export function DuplicateViewModal({
           <FormLayout>
             <div ref={container}>
               <TextField
-                label={i18n.translate('Polaris.Tabs.DuplicateViewModal.label')}
+                label={i18n.translate('Polaris.Tabs.RenameModal.label')}
                 value={value}
                 onChange={handleChange}
                 autoComplete="off"
                 helpText={helpText}
-                maxLength={MAX_VIEW_NAME_LENGTH}
+                maxLength={40}
                 showCharacterCount
                 error={
                   hasSameNameError
                     ? i18n.translate(
-                        'Polaris.Tabs.DuplicateViewModal.errors.sameName',
+                        'Polaris.Tabs.RenameModal.errors.sameName',
                         {name: value},
                       )
                     : undefined

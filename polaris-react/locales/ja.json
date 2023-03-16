@@ -220,7 +220,7 @@
           "delete": "ビューを削除"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "ビューの名前を変更する",
         "label": "名前",
         "cancel": "キャンセル",
@@ -229,7 +229,7 @@
           "sameName": "この名前のビューはすでに存在しています。別の名前を選択してください。"
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "ビューを複製する",
         "label": "名前",
         "cancel": "キャンセル",

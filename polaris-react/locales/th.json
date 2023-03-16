@@ -220,7 +220,7 @@
           "delete": "ลบมุมมอง"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "เปลี่ยนชื่อมุมมอง",
         "label": "ชื่อ",
         "cancel": "ยกเลิก",
@@ -229,7 +229,7 @@
           "sameName": "มีมุมมองที่ใช้ชื่อนี้แล้ว โปรดเลือกชื่ออื่น"
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "ทำซ้ำมุมมอง",
         "label": "ชื่อ",
         "cancel": "ยกเลิก",

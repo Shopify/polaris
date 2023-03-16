@@ -220,7 +220,7 @@
           "delete": "Poista näkymä"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Nimeä näkymä uudelleen",
         "label": "Nimi",
         "cancel": "Peruuta",
@@ -229,7 +229,7 @@
           "sameName": "Tämän niminen näkymä on jo olemassa. Valitse toinen nimi."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Kopioi näkymä",
         "label": "Nimi",
         "cancel": "Peruuta",

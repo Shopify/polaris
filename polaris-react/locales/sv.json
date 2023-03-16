@@ -220,7 +220,7 @@
           "delete": "Radera vy"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Döp om vy",
         "label": "Namn",
         "cancel": "Avbryt",
@@ -229,7 +229,7 @@
           "sameName": "En vy med detta namn finns redan. Välj ett annat namn."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Duplicera vy",
         "label": "Namn",
         "cancel": "Avbryt",

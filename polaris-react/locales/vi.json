@@ -220,7 +220,7 @@
           "delete": "Xóa chế độ xem"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Đổi tên chế độ xem",
         "label": "Tên",
         "cancel": "Hủy",
@@ -229,7 +229,7 @@
           "sameName": "Chế độ xem có tên này đã tồn tại. Vui lòng chọn tên khác."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Sao chép chế độ xem",
         "label": "Tên",
         "cancel": "Hủy",

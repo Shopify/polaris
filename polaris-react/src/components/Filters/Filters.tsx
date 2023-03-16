@@ -66,6 +66,8 @@ export interface FiltersProps {
   disableQueryField?: boolean;
   /** Disable the filters */
   disableFilters?: boolean;
+  /** Whether the text field should be borderless. Should be true when used as part of the IndexFilters component. */
+  borderlessQueryField?: boolean;
   /** Whether an asyncronous task is currently being run. */
   loading?: boolean;
   mountedState?: TransitionStatus;
@@ -87,6 +89,7 @@ export function Filters({
   hideFilters,
   hideQueryField,
   disableQueryField,
+  borderlessQueryField,
   loading,
   disableFilters,
   mountedState,
@@ -229,6 +232,7 @@ export function Filters({
               placeholder={queryPlaceholder}
               focused={focused}
               disabled={disabled || disableQueryField}
+              borderlessQueryField={borderlessQueryField}
             />
           </div>
           {additionalContent}

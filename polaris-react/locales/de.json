@@ -220,7 +220,7 @@
           "delete": "Ansicht löschen"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Ansicht umbenennen",
         "label": "Name",
         "cancel": "Abbrechen",
@@ -229,7 +229,7 @@
           "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Ansicht duplizieren",
         "label": "Name",
         "cancel": "Abbrechen",

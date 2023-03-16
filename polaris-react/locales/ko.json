@@ -220,7 +220,7 @@
           "delete": "보기 삭제"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "보기 이름 바꾸기",
         "label": "이름",
         "cancel": "취소",
@@ -229,7 +229,7 @@
           "sameName": "이 이름을 가진 보기가 이미 있습니다. 다른 이름을 선택하십시오."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "보기 복제",
         "label": "이름",
         "cancel": "취소",

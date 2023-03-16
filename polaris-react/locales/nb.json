@@ -220,7 +220,7 @@
           "delete": "Slett visning"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Gi visning nytt navn",
         "label": "Navn",
         "cancel": "Avbryt",
@@ -229,7 +229,7 @@
           "sameName": "Det finnes allerede en visning med dette navnet. Velg et annet navn."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Dupliser visning",
         "label": "Navn",
         "cancel": "Avbryt",

@@ -386,6 +386,7 @@ export function IndexFilters({
                   loading={loading || isActionLoading}
                   focused
                   mountedState={state}
+                  borderlessQueryField
                 >
                   <Inline gap="3" align="start" blockAlign="center">
                     <div

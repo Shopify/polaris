@@ -220,7 +220,7 @@
           "delete": "删除视图"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "重命名视图",
         "label": "名称",
         "cancel": "取消",
@@ -229,7 +229,7 @@
           "sameName": "已存在具有此名称的视图。请选择其他名称。"
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "复制视图",
         "label": "名称",
         "cancel": "取消",

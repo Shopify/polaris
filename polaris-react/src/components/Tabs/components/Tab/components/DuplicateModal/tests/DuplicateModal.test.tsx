@@ -3,13 +3,13 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Modal} from '../../../../../../Modal';
 import {TextField} from '../../../../../../TextField';
-import {DuplicateViewModal} from '..';
-import type {DuplicateViewModalProps} from '..';
+import {DuplicateModal} from '..';
+import type {DuplicateModalProps} from '..';
 
-describe('DuplicateViewModal', () => {
+describe('DuplicateModal', () => {
   describe('onClose', () => {
     it('fires on the primary action', async () => {
-      const props: DuplicateViewModalProps = {
+      const props: DuplicateModalProps = {
         onClose: jest.fn(),
         open: true,
         name: 'Foo',
@@ -18,7 +18,7 @@ describe('DuplicateViewModal', () => {
         viewNames: ['Foo'],
       };
 
-      const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+      const wrapper = mountWithApp(<DuplicateModal {...props} />);
       wrapper.find(TextField)!.trigger('onChange', 'Bar');
 
       await wrapper.act(async () => {
@@ -29,14 +29,14 @@ describe('DuplicateViewModal', () => {
     });
 
     it('fires on the secondary action', () => {
-      const props: DuplicateViewModalProps = {
+      const props: DuplicateModalProps = {
         onClose: jest.fn(),
         open: true,
         name: 'Foo',
         onClickPrimaryAction: jest.fn(),
         onClickSecondaryAction: jest.fn(),
       };
-      const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+      const wrapper = mountWithApp(<DuplicateModal {...props} />);
 
       wrapper.act(() => {
         wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
@@ -47,7 +47,7 @@ describe('DuplicateViewModal', () => {
   });
 
   it('fires onClickPrimaryAction on the primary action', async () => {
-    const props: DuplicateViewModalProps = {
+    const props: DuplicateModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
@@ -55,7 +55,7 @@ describe('DuplicateViewModal', () => {
       onClickSecondaryAction: jest.fn(),
       viewNames: ['Foo'],
     };
-    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+    const wrapper = mountWithApp(<DuplicateModal {...props} />);
     wrapper.find(TextField)!.trigger('onChange', 'Bar');
 
     await wrapper.act(async () => {
@@ -66,14 +66,14 @@ describe('DuplicateViewModal', () => {
   });
 
   it('will change the value of the TextField when changed', () => {
-    const props: DuplicateViewModalProps = {
+    const props: DuplicateModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
       onClickPrimaryAction: jest.fn(),
       onClickSecondaryAction: jest.fn(),
     };
-    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+    const wrapper = mountWithApp(<DuplicateModal {...props} />);
 
     expect(wrapper).toContainReactComponent(TextField, {
       value: 'Foo',
@@ -89,14 +89,14 @@ describe('DuplicateViewModal', () => {
   });
 
   it('fires the onClickPrimaryAction with the changed value', () => {
-    const props: DuplicateViewModalProps = {
+    const props: DuplicateModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
       onClickPrimaryAction: jest.fn(),
       onClickSecondaryAction: jest.fn(),
     };
-    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+    const wrapper = mountWithApp(<DuplicateModal {...props} />);
 
     wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'Foo Bar');
@@ -109,14 +109,14 @@ describe('DuplicateViewModal', () => {
   });
 
   it('resets the value in the TextField once the onClickPrimaryAction has been invoked', async () => {
-    const props: DuplicateViewModalProps = {
+    const props: DuplicateModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
       onClickPrimaryAction: jest.fn(),
       onClickSecondaryAction: jest.fn(),
     };
-    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+    const wrapper = mountWithApp(<DuplicateModal {...props} />);
 
     wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'new value');
@@ -136,14 +136,14 @@ describe('DuplicateViewModal', () => {
   });
 
   it('fires onClickSecondaryAction on the secondary action', () => {
-    const props: DuplicateViewModalProps = {
+    const props: DuplicateModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
       onClickPrimaryAction: jest.fn(),
       onClickSecondaryAction: jest.fn(),
     };
-    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+    const wrapper = mountWithApp(<DuplicateModal {...props} />);
 
     wrapper.act(() => {
       wrapper.find(Modal)!.triggerKeypath('secondaryActions[0].onAction');
@@ -153,7 +153,7 @@ describe('DuplicateViewModal', () => {
   });
 
   it('shows and error when the view name is already in use; protects against case sensitivity and whitespace', () => {
-    const props: DuplicateViewModalProps = {
+    const props: DuplicateModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
@@ -161,7 +161,7 @@ describe('DuplicateViewModal', () => {
       onClickSecondaryAction: jest.fn(),
       viewNames: ['Foo', 'Bar', 'Baz'],
     };
-    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+    const wrapper = mountWithApp(<DuplicateModal {...props} />);
 
     wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'Foo');
@@ -195,14 +195,14 @@ describe('DuplicateViewModal', () => {
   });
 
   it('resets the value in the TextField to the name prop once the onClickSecondaryAction has been invoked', () => {
-    const props: DuplicateViewModalProps = {
+    const props: DuplicateModalProps = {
       onClose: jest.fn(),
       open: true,
       name: 'Foo',
       onClickPrimaryAction: jest.fn(),
       onClickSecondaryAction: jest.fn(),
     };
-    const wrapper = mountWithApp(<DuplicateViewModal {...props} />);
+    const wrapper = mountWithApp(<DuplicateModal {...props} />);
 
     wrapper.act(() => {
       wrapper.find(TextField)!.trigger('onChange', 'new value');

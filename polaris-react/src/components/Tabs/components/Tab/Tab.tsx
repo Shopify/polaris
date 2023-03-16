@@ -37,7 +37,7 @@ import {Text} from '../../../Text';
 import type {TabPropsWithAddedMethods} from '../../types';
 import styles from '../../Tabs.scss';
 
-import {RenameViewModal, DuplicateViewModal} from './components';
+import {RenameModal, DuplicateModal} from './components';
 
 export const Tab = forwardRef(
   (
@@ -67,12 +67,10 @@ export const Tab = forwardRef(
   ) => {
     const i18n = useI18n();
     const [popoverActive, setPopoverActive] = useState(false);
-    const [isRenameViewModalActive, setIsRenameViewModalActive] =
-      useState(false);
+    const [isRenameModalActive, setIsRenameModalActive] = useState(false);
     const [isDeleteViewModalActive, setIsDeleteViewModalActive] =
       useState(false);
-    const [isDuplicateViewModalActive, setIsDuplicateViewModalActive] =
-      useState(false);
+    const [isDuplicateModalActive, setIsDuplicateModalActive] = useState(false);
     const {mdDown} = useBreakpoints();
 
     const wasSelected = useRef(selected);
@@ -84,12 +82,12 @@ export const Tab = forwardRef(
     }, [popoverActive, onTogglePopover]);
 
     useEffect(() => {
-      onToggleModal(isRenameViewModalActive);
-    }, [isRenameViewModalActive, onToggleModal]);
+      onToggleModal(isRenameModalActive);
+    }, [isRenameModalActive, onToggleModal]);
 
     useEffect(() => {
-      onToggleModal(isDuplicateViewModalActive);
-    }, [isDuplicateViewModalActive, onToggleModal]);
+      onToggleModal(isDuplicateModalActive);
+    }, [isDuplicateModalActive, onToggleModal]);
 
     useEffect(() => {
       onToggleModal(isDeleteViewModalActive);
@@ -128,9 +126,9 @@ export const Tab = forwardRef(
       } else if (
         focused &&
         node.current != null &&
-        !isRenameViewModalActive &&
+        !isRenameModalActive &&
         !isDeleteViewModalActive &&
-        !isDuplicateViewModalActive &&
+        !isDuplicateModalActive &&
         !disabled
       ) {
         focusFirstFocusableNode(node.current);
@@ -144,9 +142,9 @@ export const Tab = forwardRef(
       measuring,
       panelID,
       selected,
-      isRenameViewModalActive,
+      isRenameModalActive,
       isDeleteViewModalActive,
-      isDuplicateViewModalActive,
+      isDuplicateModalActive,
       disabled,
     ]);
 
@@ -188,15 +186,15 @@ export const Tab = forwardRef(
       }
     }, [selected, onAction, togglePopoverActive, disabled]);
 
-    const handleCloseRenameViewModal = () => {
-      setIsRenameViewModalActive(false);
+    const handleCloseRenameModal = () => {
+      setIsRenameModalActive(false);
     };
 
-    const handleCloseDuplicateViewModal = () => {
-      setIsDuplicateViewModalActive(false);
+    const handleCloseDuplicateModal = () => {
+      setIsDuplicateModalActive(false);
     };
 
-    const handleSaveRenameViewModal = useCallback(
+    const handleSaveRenameModal = useCallback(
       async (value: string) => {
         await renameAction?.onPrimaryAction?.(value);
 
@@ -216,7 +214,7 @@ export const Tab = forwardRef(
       setIsDeleteViewModalActive(false);
     }, [deleteAction, content]);
 
-    const handleSaveDuplicateViewModal = useCallback(
+    const handleSaveDuplicateModal = useCallback(
       async (duplicateName: string) => {
         await duplicateAction?.onPrimaryAction?.(duplicateName);
       },
@@ -236,7 +234,7 @@ export const Tab = forwardRef(
             onAction: () => {
               onAction?.(content);
               togglePopoverActive();
-              setIsRenameViewModalActive(true);
+              setIsRenameModalActive(true);
             },
             ...additionalOptions,
           };
@@ -246,7 +244,7 @@ export const Tab = forwardRef(
             icon: DuplicateMinor,
             onAction: () => {
               onAction?.(content);
-              setIsDuplicateViewModalActive(true);
+              setIsDuplicateModalActive(true);
               togglePopoverActive();
             },
             ...additionalOptions,
@@ -367,21 +365,21 @@ export const Tab = forwardRef(
             </div>
           </Popover>
           {renameAction ? (
-            <RenameViewModal
+            <RenameModal
               name={content}
-              open={isRenameViewModalActive}
-              onClose={handleCloseRenameViewModal}
-              onClickPrimaryAction={handleSaveRenameViewModal}
+              open={isRenameModalActive}
+              onClose={handleCloseRenameModal}
+              onClickPrimaryAction={handleSaveRenameModal}
               isModalLoading={isModalLoading}
               viewNames={viewNames}
             />
           ) : null}
           {duplicateAction ? (
-            <DuplicateViewModal
-              open={isDuplicateViewModalActive}
+            <DuplicateModal
+              open={isDuplicateModalActive}
               name={i18n.translate('Polaris.Tabs.Tab.copy', {name: content})}
-              onClose={handleCloseDuplicateViewModal}
-              onClickPrimaryAction={handleSaveDuplicateViewModal}
+              onClose={handleCloseDuplicateModal}
+              onClickPrimaryAction={handleSaveDuplicateModal}
               isModalLoading={isModalLoading}
               viewNames={viewNames || []}
             />

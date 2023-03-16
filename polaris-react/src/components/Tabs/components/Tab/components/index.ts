@@ -1,2 +1,2 @@
-export {RenameViewModal} from './RenameViewModal';
-export {DuplicateViewModal} from './DuplicateViewModal';
+export {RenameModal} from './RenameModal';
+export {DuplicateModal} from './DuplicateModal';

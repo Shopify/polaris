@@ -9,7 +9,7 @@ import {Modal} from '../../../../Modal';
 import {UnstyledLink} from '../../../../UnstyledLink';
 import type {TabPropsWithAddedMethods} from '../../../types';
 import {Tab} from '..';
-import {DuplicateViewModal, RenameViewModal} from '../components';
+import {DuplicateModal, RenameModal} from '../components';
 
 describe('Tab', () => {
   const defaultProps: TabPropsWithAddedMethods = {
@@ -278,10 +278,10 @@ describe('Tab', () => {
             )!;
             item.trigger('onClick');
           });
-          expect(wrapper).toContainReactComponent(RenameViewModal);
+          expect(wrapper).toContainReactComponent(RenameModal);
 
           wrapper.act(() => {
-            wrapper.find(RenameViewModal)!.trigger('onClickPrimaryAction');
+            wrapper.find(RenameModal)!.trigger('onClickPrimaryAction');
           });
 
           expect(
@@ -307,10 +307,10 @@ describe('Tab', () => {
             )!;
             item.trigger('onClick');
           });
-          expect(wrapper).toContainReactComponent(DuplicateViewModal);
+          expect(wrapper).toContainReactComponent(DuplicateModal);
 
           wrapper.act(() => {
-            wrapper.find(DuplicateViewModal)!.trigger('onClickPrimaryAction');
+            wrapper.find(DuplicateModal)!.trigger('onClickPrimaryAction');
           });
 
           expect(

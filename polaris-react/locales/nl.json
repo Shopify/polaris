@@ -220,7 +220,7 @@
           "delete": "Weergave verwijderen"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Naam van weergave wijzigen",
         "label": "Naam",
         "cancel": "Annuleren",
@@ -229,7 +229,7 @@
           "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Weergave dupliceren",
         "label": "Naam",
         "cancel": "Annuleren",

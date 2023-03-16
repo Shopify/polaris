@@ -220,7 +220,7 @@
           "delete": "Odstranit zobrazení"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Přejmenovat zobrazení",
         "label": "Název",
         "cancel": "Zrušit",
@@ -229,7 +229,7 @@
           "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Duplikování zobrazení",
         "label": "Název",
         "cancel": "Zrušit",

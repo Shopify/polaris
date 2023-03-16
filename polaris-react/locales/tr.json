@@ -220,7 +220,7 @@
           "delete": "Görünümü sil"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Görünümü yeniden adlandır",
         "label": "Ad",
         "cancel": "İptal",
@@ -229,7 +229,7 @@
           "sameName": "Bu ada sahip bir görünüm zaten var. Lütfen farklı bir ad seçin."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Görünümü çoğalt",
         "label": "Ad",
         "cancel": "İptal",

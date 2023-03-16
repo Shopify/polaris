@@ -220,7 +220,7 @@
           "delete": "Elimina vista"
         }
       },
-      "RenameViewModal": {
+      "RenameModal": {
         "title": "Rinomina vista",
         "label": "Nome",
         "cancel": "Annulla",
@@ -229,7 +229,7 @@
           "sameName": "Esiste già una vista con questo nome. Scegli un nome diverso."
         }
       },
-      "DuplicateViewModal": {
+      "DuplicateModal": {
         "title": "Duplica vista",
         "label": "Nome",
         "cancel": "Annulla",

@@ -11,6 +11,7 @@ export interface SearchFieldProps {
   value?: string;
   placeholder?: string;
   disabled?: boolean;
+  borderlessQueryField?: boolean;
 }
 
 export function SearchField({
@@ -22,6 +23,7 @@ export function SearchField({
   value,
   placeholder,
   disabled,
+  borderlessQueryField,
 }: SearchFieldProps) {
   function handleChange(value: string) {
     onChange(value);
@@ -49,7 +51,7 @@ export function SearchField({
       clearButton
       onClearButtonClick={handleClear}
       disabled={disabled}
-      borderless
+      borderless={borderlessQueryField}
     />
   );
 }
