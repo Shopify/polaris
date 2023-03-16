@@ -64,10 +64,12 @@ function captureSearchEvent(
     value: resultRank,
   };
 
-  // i honestly have no idea which one of thes is the right set up for the google analytics version we have so let's try both
-  // and keep the one that works
-  window.gtag('event', 'customSearch', customParams);
-  window.gtag('event', 'Global Search', googleParams);
+  if (process.env.NODE_ENV === 'production') {
+    // i honestly have no idea which one of thes is the right set up for the google analytics version we have so let's try both
+    // and keep the one that works
+    window.gtag('event', 'customSearch', customParams);
+    window.gtag('event', 'Global Search', googleParams);
+  }
 }
 
 function scrollIntoView() {
