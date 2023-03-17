@@ -26,8 +26,8 @@
     ]
   },
   "scripts": {
-    "build": "turbo run build --filter=!polaris.shopify.com && turbo run build --filter=polaris.shopify.com",
-    "dev": "turbo run dev --filter=@shopify/polaris... --parallel",
+    "build": "turbo run build",
+    "dev": "turbo run dev --filter=@shopify/polaris --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:watch": "jest --watch",
@@ -81,7 +81,7 @@
     "size-limit": "^5.0.3",
     "stylelint": "^14.15.0",
     "ts-node": "^10.7.0",
-    "turbo": "^1.2.8",
+    "turbo": "^1.8.3",
     "typescript": "^4.6.3"
   },
   "size-limit": [
