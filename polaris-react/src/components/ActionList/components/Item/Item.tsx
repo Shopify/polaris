@@ -33,7 +33,6 @@ export function Item({
   ellipsis,
   active,
   role,
-  activatorRef,
 }: ItemProps) {
   const className = classNames(
     styles.Item,
@@ -113,21 +112,19 @@ export function Item({
       {contentElement}
     </UnstyledLink>
   ) : (
-    <span ref={activatorRef}>
-      <button
-        id={id}
-        type="button"
-        className={className}
-        disabled={disabled}
-        aria-label={accessibilityLabel}
-        onClick={onAction}
-        onMouseUp={handleMouseUpByBlurring}
-        role={role}
-        onMouseEnter={onMouseEnter}
-      >
-        {contentElement}
-      </button>
-    </span>
+    <button
+      id={id}
+      type="button"
+      className={className}
+      disabled={disabled}
+      aria-label={accessibilityLabel}
+      onClick={onAction}
+      onMouseUp={handleMouseUpByBlurring}
+      role={role}
+      onMouseEnter={onMouseEnter}
+    >
+      {contentElement}
+    </button>
   );
 
   return (
