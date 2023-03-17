@@ -22,6 +22,8 @@ const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   tokens: 'Tokens',
   icons: 'Icons',
 };
+import {Monorail} from '@shopify/monorail';
+import {v4 as uuidv4} from 'uuid';
 
 const SearchContext = createContext({id: '', currentItemId: ''});
 
@@ -43,33 +45,44 @@ function scrollToTop() {
   overflowEl?.scrollTo({top: 0, behavior: 'smooth'});
 }
 
+const monorail =
+  process.env.NODE_ENV === 'production'
+    ? Monorail.createHttpProducer({production: true})
+    : Monorail.createLogProducer({
+        debugMode: true,
+      });
+
+const monorailEvent = (monorailSchema, monorailFields: any) => {
+  return monorail.produce({
+    schemaId: monorailSchema,
+    payload: {...monorailFields, locale: document.documentElement.lang},
+  });
+};
+
 function captureSearchEvent(
   searchTerm: string,
   resultRank: number,
   selectedResult?: string,
 ) {
-  // if nothings been searched we don't care about it
-  if (!searchTerm) return;
+  // if we don't meet the minimum search query length, bail
+  if (searchTerm.length < 3) return;
 
-  const customParams = {
-    searchTerm,
-    resultRank,
-    selectedResult,
-    category: 'engagement',
+  const monorailFields = {
+    query: searchTerm,
+    rank: resultRank,
+    url: selectedResult,
+    locale: document.documentElement.lang,
   };
 
-  const googleParams = {
-    event_category: resultRank > 0 ? 'engagement' : 'exit',
-    event_label: selectedResult,
-    value: resultRank,
-  };
+  monorailEvent('polaris_docs_search_click/1.0', monorailFields);
+}
 
-  if (process.env.NODE_ENV === 'production') {
-    // i honestly have no idea which one of thes is the right set up for the google analytics version we have so let's try both
-    // and keep the one that works
-    window.gtag('event', 'customSearch', customParams);
-    window.gtag('event', 'Global Search', googleParams);
-  }
+function captureSearchQuery(uuid, searchTerm) {
+  const monorailFields = {
+    uuid,
+    query: searchTerm,
+  };
+  monorailEvent('polaris_docs_search_query/1.0', monorailFields);
 }
 
 function scrollIntoView() {
@@ -101,6 +114,7 @@ function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
+  const [uuid, setUuid] = useState('');
   const router = useRouter();
 
   let resultsInRenderedOrder: SearchResults = [];
@@ -137,6 +151,11 @@ function GlobalSearch() {
     scrollToTop();
   }, 400);
 
+  const throttledSearchQueryEvent = useThrottle(() => {
+    // need to pass the search results
+    captureSearchQuery(uuid, searchTerm);
+  }, 1000); // how long should we wait?
+
   useEffect(throttledSearch, [searchTerm, throttledSearch]);
 
   useEffect(() => scrollIntoView(), [currentResultIndex]);
@@ -156,6 +175,10 @@ function GlobalSearch() {
   useEffect(() => {
     if (!isOpen) {
       setSearchTerm('');
+      setUuid(''); // reset the uuid if the modal is closed
+    } else {
+      // set uuid when modal is opened
+      setUuid(uuidv4());
     }
   }, [isOpen]);
 
