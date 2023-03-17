@@ -64,17 +64,19 @@ function captureSearchClick(
   uuid: string,
   searchTerm: string,
   resultRank: number,
-  selectedResult?: string,
+  gid: string,
+  selectedResult: string,
 ) {
   // if we don't meet the minimum search query length, bail
   if (searchTerm.length < 3) return;
 
   const monorailFields = {
-    uuid,
+    search_uuid: uuid,
     query: searchTerm,
-    rank: resultRank,
-    url: selectedResult,
     locale: document.documentElement.lang,
+    gid,
+    url: selectedResult,
+    rank: resultRank,
   };
 
   monorailEvent('polaris_docs_search_click/1.0', monorailFields);
@@ -346,7 +348,7 @@ function SearchResults({
                           url={url}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchClick(uuid, searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, id, url)
                           }
                           renderPreview={() => (
                             <FoundationsThumbnail
@@ -386,7 +388,7 @@ function SearchResults({
                           title={title}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchClick(uuid, searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, id, url)
                           }
                           renderPreview={() => (
                             <PatternThumbnailPreview
@@ -428,7 +430,7 @@ function SearchResults({
                           status={status}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchClick(uuid, searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, id, url)
                           }
                           renderPreview={() => (
                             <ComponentThumbnail title={title} group={group} />
@@ -472,6 +474,7 @@ function SearchResults({
                         <TokenList.Item
                           category={category}
                           token={token}
+                          uuid={uuid}
                           customOnClick={captureSearchClick}
                           searchTerm={searchTerm}
                           rank={rank}
@@ -504,6 +507,7 @@ function SearchResults({
                       >
                         <IconGrid.Item
                           icon={icon}
+                          uuid={uuid}
                           customOnClick={captureSearchClick}
                           searchTerm={searchTerm}
                           rank={rank}

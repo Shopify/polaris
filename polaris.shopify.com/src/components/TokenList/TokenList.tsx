@@ -127,6 +127,7 @@ interface TokenListItemProps {
   customOnClick?: Function;
   searchTerm?: string;
   rank?: number;
+  uuid: string;
 }
 
 function TokenListItem({
@@ -135,6 +136,7 @@ function TokenListItem({
   customOnClick,
   searchTerm,
   rank,
+  uuid,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
   const tokenNameWithPrefix = `--p-${name}`;
@@ -145,7 +147,8 @@ function TokenListItem({
   const url = `/tokens/${category}#${searchAttributes?.id}`;
 
   const customOnClickHandler = () => {
-    customOnClick && customOnClick(searchTerm, rank, url);
+    customOnClick &&
+      customOnClick(uuid, searchTerm, rank, searchAttributes?.id, url);
   };
 
   return (

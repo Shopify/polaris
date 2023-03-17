@@ -30,6 +30,7 @@ interface IconGridItemProps {
   customOnClick?: Function;
   rank?: number;
   searchTerm?: string;
+  uuid: string;
 }
 
 function IconGridItem({
@@ -39,6 +40,7 @@ function IconGridItem({
   customOnClick,
   rank,
   searchTerm,
+  uuid,
 }: IconGridItemProps) {
   const {id, name} = icon;
   const searchAttributes = useGlobalSearchResult();
@@ -66,7 +68,7 @@ function IconGridItem({
           )}
           onClick={() =>
             customOnClick &&
-            customOnClick(searchTerm, rank, `/icons?icon=${id}`)
+            customOnClick(uuid, searchTerm, rank, id, `/icons?icon=${id}`)
           }
         >
           <SearchResultHighlight />
