@@ -59,7 +59,8 @@ const monorailEvent = (monorailSchema, monorailFields: any) => {
   });
 };
 
-function captureSearchEvent(
+function captureSearchClick(
+  uuid: string,
   searchTerm: string,
   resultRank: number,
   selectedResult?: string,
@@ -68,6 +69,7 @@ function captureSearchEvent(
   if (searchTerm.length < 3) return;
 
   const monorailFields = {
+    uuid,
     query: searchTerm,
     rank: resultRank,
     url: selectedResult,
@@ -151,12 +153,15 @@ function GlobalSearch() {
     scrollToTop();
   }, 400);
 
+  // fire when fuzzy searching to capture the search query
   const throttledSearchQueryEvent = useThrottle(() => {
     // need to pass the search results
     captureSearchQuery(uuid, searchTerm);
   }, 1000); // how long should we wait?
 
   useEffect(throttledSearch, [searchTerm, throttledSearch]);
+
+  useEffect(throttledSearchQueryEvent, [searchTerm, throttledSearchQueryEvent]);
 
   useEffect(() => scrollIntoView(), [currentResultIndex]);
 
@@ -204,7 +209,7 @@ function GlobalSearch() {
         if (resultsInRenderedOrder.length > 0) {
           setIsOpen(false);
           const url = resultsInRenderedOrder[currentResultIndex].url;
-          captureSearchEvent(searchTerm, currentResultIndex + 1, url);
+          captureSearchClick(uuid, searchTerm, currentResultIndex, url);
           router.push(url);
         }
         break;
@@ -229,7 +234,7 @@ function GlobalSearch() {
         onClose={() => {
           setIsOpen(false);
           // on close we want to capture that no search result was selected
-          captureSearchEvent(searchTerm, 0);
+          captureSearchQuery(uuid, searchTerm);
         }}
       >
         <div className={styles.PreventBackgroundInteractions}></div>
@@ -275,6 +280,7 @@ function GlobalSearch() {
                   currentItemId={currentItemId}
                   searchTerm={searchTerm}
                   resultsInRenderedOrder={resultsInRenderedOrder}
+                  uuid={uuid}
                 />
               )}
             </div>
@@ -290,11 +296,13 @@ function SearchResults({
   currentItemId,
   searchTerm,
   resultsInRenderedOrder,
+  uuid,
 }: {
   searchResults: GroupedSearchResults;
   currentItemId: string;
   searchTerm?: string;
   resultsInRenderedOrder: SearchResults;
+  uuid: string;
 }) {
   return (
     <>
@@ -326,7 +334,7 @@ function SearchResults({
                           url={url}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchEvent(searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, url)
                           }
                           renderPreview={() => (
                             <FoundationsThumbnail
@@ -366,7 +374,7 @@ function SearchResults({
                           title={title}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchEvent(searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, url)
                           }
                           renderPreview={() => (
                             <PatternThumbnailPreview
@@ -408,7 +416,7 @@ function SearchResults({
                           status={status}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchEvent(searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, url)
                           }
                           renderPreview={() => (
                             <ComponentThumbnail title={title} group={group} />
@@ -452,7 +460,7 @@ function SearchResults({
                         <TokenList.Item
                           category={category}
                           token={token}
-                          customOnClick={captureSearchEvent}
+                          customOnClick={captureSearchClick}
                           searchTerm={searchTerm}
                           rank={rank}
                         />
@@ -484,7 +492,7 @@ function SearchResults({
                       >
                         <IconGrid.Item
                           icon={icon}
-                          customOnClick={captureSearchEvent}
+                          customOnClick={captureSearchClick}
                           searchTerm={searchTerm}
                           rank={rank}
                         />
