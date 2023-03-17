@@ -10,7 +10,7 @@ $Backdrop-opacity: 0.88;
   background: var(--p-color-bg-inverse);
   color: var(--p-color-text-on-color);
   margin-bottom: var(--p-space-5);
-  box-shadow: var(--p-shadow-popover);
+  box-shadow: var(--p-shadow-xl);
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-3);

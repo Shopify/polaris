@@ -48,7 +48,7 @@ export const AlphaCard = ({
     <Box
       background={background}
       padding={padding}
-      shadow="card"
+      shadow="md"
       borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
     >
       {children}

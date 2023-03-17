@@ -11,7 +11,10 @@ function PopoverFormExample() {
     [],
   );
 
-  const handleTagValueChange = useCallback((value) => setTagValue(value), []);
+  const handleTagValueChange = useCallback(
+    (value: string) => setTagValue(value),
+    [],
+  );
 
   const activator = (
     <Button onClick={togglePopoverActive} disclosure>

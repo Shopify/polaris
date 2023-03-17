@@ -8,7 +8,7 @@ $sheet-desktop-width: 380px;
   width: 100%;
   height: 100%;
   background-color: var(--p-color-bg);
-  box-shadow: var(--p-shadow-modal);
+  box-shadow: var(--p-shadow-2xl);
 
   @media screen and (-ms-high-contrast: active) {
     border-left: var(--p-border-base);

@@ -15,12 +15,12 @@ function ComboboxExample() {
     [],
   );
 
-  const [selectedOption, setSelectedOption] = useState();
+  const [selectedOption, setSelectedOption] = useState<string | undefined>();
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
   const updateText = useCallback(
-    (value) => {
+    (value: string) => {
       setInputValue(value);
 
       if (value === '') {
@@ -38,7 +38,7 @@ function ComboboxExample() {
   );
 
   const updateSelection = useCallback(
-    (selected) => {
+    (selected: string) => {
       const matchedOption = options.find((option) => {
         return option.value.match(selected);
       });
@@ -78,6 +78,7 @@ function ComboboxExample() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >

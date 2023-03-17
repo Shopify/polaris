@@ -2,7 +2,7 @@
 
 .LegacyCard {
   background-color: var(--p-color-bg);
-  box-shadow: var(--p-shadow-card);
+  box-shadow: var(--p-shadow-md);
   outline: var(--p-border-width-1) solid transparent;
 
   + .LegacyCard {

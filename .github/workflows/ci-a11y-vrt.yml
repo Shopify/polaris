@@ -53,7 +53,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build packages
-        run: yarn turbo run build --filter=@shopify/polaris
+        run: yarn build --filter=@shopify/polaris
 
       - name: Build Storybook
         run: yarn workspace @shopify/polaris run storybook:build --quiet
@@ -93,7 +93,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build packages
-        run: yarn turbo run build --filter=@shopify/polaris
+        run: yarn build --filter=@shopify/polaris
 
       - name: Build Storybook
         run: yarn workspace @shopify/polaris run storybook:build --quiet

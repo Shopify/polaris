@@ -25,7 +25,7 @@ function LayoutExample() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 343,
+                    id: '343',
                     url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -38,7 +38,7 @@ function LayoutExample() {
                     ),
                   },
                   {
-                    id: 258,
+                    id: '258',
                     url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -85,7 +85,7 @@ function LayoutExample() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 344,
+                    id: '344',
                     url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -98,7 +98,7 @@ function LayoutExample() {
                     ),
                   },
                   {
-                    id: 259,
+                    id: '259',
                     url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -145,7 +145,7 @@ function LayoutExample() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 345,
+                    id: '345',
                     url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -158,7 +158,7 @@ function LayoutExample() {
                     ),
                   },
                   {
-                    id: 260,
+                    id: '260',
                     url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',

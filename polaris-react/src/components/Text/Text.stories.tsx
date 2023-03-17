@@ -105,6 +105,15 @@ export const WithColor = () => (
   </LegacyStack>
 );
 
+export const WithInheritance = () => (
+  <Text as="p" variant="heading2xl" color="warning">
+    <LegacyStack vertical>
+      <Text as="span">This is a 2xl heading</Text>
+      <Text as="span">This is also a 2xl heading</Text>
+    </LegacyStack>
+  </Text>
+);
+
 export const WithTruncate = () => (
   <Text as="p" truncate>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt vel

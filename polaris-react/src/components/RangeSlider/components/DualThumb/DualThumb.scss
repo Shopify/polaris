@@ -171,7 +171,7 @@ $range-output-size: 32px;
   min-width: $range-output-size;
   height: $range-output-size;
   background-color: var(--p-color-bg);
-  box-shadow: var(--p-shadow-popover);
+  box-shadow: var(--p-shadow-xl);
   border-radius: var(--p-border-radius-1);
   transition-property: transform;
   transition-duration: var(--p-duration-150);

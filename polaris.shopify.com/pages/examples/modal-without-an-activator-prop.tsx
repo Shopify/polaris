@@ -4,13 +4,15 @@ import {useState, useCallback, useRef} from 'react';
 function ModalExample() {
   const [active, setActive] = useState(true);
 
-  const button = useRef();
+  const button = useRef<HTMLDivElement>(null);
 
   const handleOpen = useCallback(() => setActive(true), []);
 
   const handleClose = useCallback(() => {
     setActive(false);
-    requestAnimationFrame(() => button.current.querySelector('button').focus());
+    requestAnimationFrame(() =>
+      button.current?.querySelector('button')?.focus(),
+    );
   }, []);
 
   return (
@@ -49,4 +51,4 @@ function ModalExample() {
 }
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(() => <ModalExample />);

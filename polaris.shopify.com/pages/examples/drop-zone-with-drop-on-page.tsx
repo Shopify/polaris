@@ -4,10 +4,10 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DropZoneWithDropOnPageExample() {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
 
   const handleDropZoneDrop = useCallback(
-    (dropFiles, _acceptedFiles, _rejectedFiles) =>
+    (dropFiles: File[], _acceptedFiles: File[], _rejectedFiles: File[]) =>
       setFiles((files) => [...files, ...dropFiles]),
     [],
   );
@@ -42,7 +42,7 @@ function DropZoneWithDropOnPageExample() {
 
   return (
     <Page
-      breadcrumbs={[{content: 'Products'}]}
+      breadcrumbs={[{content: 'Products', url: '/products'}]}
       title="Jar With Lock-Lid"
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[

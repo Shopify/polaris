@@ -1,0 +1,13 @@
+name: Pin Unfilled
+set: minor
+description: Used to represent an unpinned item or an action to unpin something.
+keywords:
+  - unpin
+authors:
+  - David Luong
+  - Adam Whitcroft
+  - Chris Blinstrub
+version: 1
+date_added: 2023-01-30
+date_modified:
+exclusive_use:
