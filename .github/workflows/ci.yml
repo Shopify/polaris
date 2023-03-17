@@ -49,13 +49,13 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build packages
-        run: yarn build --filter=[main...${{GITHUB_REF_NAME}}]
+        run: yarn build --filter=[main...${{ github.head_ref }}]
 
       - name: Lint
-        run: yarn lint --filter=[main...${{GITHUB_REF_NAME}}]
+        run: yarn lint --filter=[main...${{ github.head_ref }}]
 
       - name: Type check
-        run: yarn type-check --filter=[main...${{GITHUB_REF_NAME}}]
+        run: yarn type-check --filter=[main...${{ github.head_ref }}]
 
       - name: Test
-        run: yarn test --filter=[main...${{GITHUB_REF_NAME}}]
+        run: yarn test --filter=[main...${{ github.head_ref }}]
