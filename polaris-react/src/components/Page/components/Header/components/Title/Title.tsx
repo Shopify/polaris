@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
+import {SkeletonBodyText} from '../../../../../SkeletonBodyText';
 import {SkeletonDisplayText} from '../../../../../SkeletonDisplayText';
 
 import styles from './Title.scss';
@@ -9,7 +10,7 @@ export interface TitleProps {
   /** Page title, in large type */
   title?: string | 'placeholder';
   /** Page subtitle, in regular type*/
-  subtitle?: string;
+  subtitle?: string | 'placeholder';
   /** Important and non-interactive status information shown immediately after the title. */
   titleMetadata?: React.ReactNode;
   /** Removes spacing between title and subtitle */
@@ -50,7 +51,11 @@ export function Title({
         compactTitle && styles.SubtitleCompact,
       )}
     >
-      <p>{subtitle}</p>
+      {subtitle === 'placeholder' ? (
+        <SkeletonBodyText lines={1} />
+      ) : (
+        <p>{subtitle}</p>
+      )}
     </div>
   ) : null;
 

@@ -53,16 +53,16 @@ export interface HeaderProps extends TitleProps {
   /** Page-level pagination */
   pagination?: PaginationProps;
   /** @deprecated Collection of breadcrumbs */
-  breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
+  breadcrumbs?: BreadcrumbsProps['breadcrumbs'] | 'placeholder';
   /** A back action link */
-  backAction?: BreadcrumbsProps['backAction'];
+  backAction?: BreadcrumbsProps['backAction'] | 'placeholder';
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
   /** @deprecated Additional navigation markup */
   additionalNavigation?: React.ReactNode;
-  // Additional meta data
+  /** Additional meta data */
   additionalMetadata?: React.ReactNode | string;
   /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
   onActionRollup?(hasRolledUp: boolean): void;
@@ -130,6 +130,22 @@ export function Header({
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </Box>
       </div>
+    );
+  }
+
+  if (breadcrumbs === 'placeholder' || backAction === 'placeholder') {
+    breadcrumbMarkup = (
+      <Inline gap="4">
+        <Box
+          borderRadius="1"
+          background="surface-neutral"
+          minHeight="2.25rem"
+          maxHeight="2.25rem"
+          minWidth="2.25rem"
+          maxWidth="2.25rem"
+        />
+        <div />
+      </Inline>
     );
   }
 
