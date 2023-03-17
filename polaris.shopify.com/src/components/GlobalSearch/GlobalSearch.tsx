@@ -217,7 +217,6 @@ function GlobalSearch() {
         if (resultsInRenderedOrder.length > 0) {
           setIsOpen(false);
           const url = resultsInRenderedOrder[currentResultIndex].url;
-          // captureSearchClick(uuid, searchTerm, currentResultIndex, url);
           router.push(url);
         }
         break;
