@@ -75,7 +75,7 @@ The component is bug free and works in most, if not all, environments. It’s re
 
 ## Legacy
 
-The component will be deprecated and should be avoided.
+The component is stable and has been supported in at least two past major releases, but there are plans to replace its functionality with a new component or a combination of new components. Usage of legacy components is not discouraged, with the caveat that it will be deprecated and replaced in the next major release.
 
 ### Requirements for legacy components
 
