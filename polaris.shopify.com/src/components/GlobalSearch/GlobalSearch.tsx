@@ -1,6 +1,7 @@
 import {useState, useEffect, createContext, useContext} from 'react';
 import {
   GroupedSearchResults,
+  SearchResult,
   SearchResultCategory,
   SearchResults,
 } from '../../types';
@@ -79,15 +80,22 @@ function captureSearchClick(
   monorailEvent('polaris_docs_search_click/1.0', monorailFields);
 }
 
-function captureSearchQuery(uuid, searchTerm, results) {
-  const monorailFields = {
+function captureSearchQuery(
+  uuid: string,
+  searchTerm: string,
+  results: SearchResults,
+) {
+  if (searchTerm.length < 3) return;
+
+  const monorailFields: any = {
     uuid,
     query: searchTerm,
   };
 
-  if (results) {
-    console.log(results);
-  }
+  results?.slice(0, 10).forEach((result: SearchResult, index: number) => {
+    monorailFields[`gid${index}`] = result.id;
+    monorailFields[`url${index}`] = result.url;
+  });
 
   monorailEvent('polaris_docs_search_query/1.0', monorailFields);
 }
@@ -154,7 +162,7 @@ function GlobalSearch() {
         setSearchResults(results);
       });
 
-    captureSearchQuery(uuid, searchTerm, results);
+    captureSearchQuery(uuid, searchTerm, resultsInRenderedOrder);
     setCurrentResultIndex(0);
     scrollToTop();
   }, 400);
@@ -215,7 +223,7 @@ function GlobalSearch() {
         if (resultsInRenderedOrder.length > 0) {
           setIsOpen(false);
           const url = resultsInRenderedOrder[currentResultIndex].url;
-          captureSearchClick(uuid, searchTerm, currentResultIndex, url);
+          // captureSearchClick(uuid, searchTerm, currentResultIndex, url);
           router.push(url);
         }
         break;
