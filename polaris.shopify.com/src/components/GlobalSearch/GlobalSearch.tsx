@@ -169,15 +169,7 @@ function GlobalSearch() {
     scrollToTop();
   }, 400);
 
-  // fire when fuzzy searching to capture the search query
-  const throttledSearchQueryEvent = useThrottle(() => {
-    // need to pass the search results
-    // captureSearchQuery(uuid, searchTerm);
-  }, 1000); // how long should we wait?
-
   useEffect(throttledSearch, [searchTerm, throttledSearch]);
-
-  useEffect(throttledSearchQueryEvent, [searchTerm, throttledSearchQueryEvent]);
 
   useEffect(() => scrollIntoView(), [currentResultIndex]);
 
