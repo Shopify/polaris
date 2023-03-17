@@ -221,15 +221,13 @@ export interface ComplexAction
     OutlineableAction,
     LoadableAction,
     PlainAction {
-  /** Reference to access DOM node */
+  /** The element or the RefObject that activates the Modal */
   activatorRef?: LegacyRef<HTMLSpanElement> | undefined;
 }
 
 export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
   index?: number;
-  /** Reference to access DOM node. TODO: maybe we can remove it from here */
-  activatorRef?: LegacyRef<HTMLSpanElement> | undefined;
 }
 
 export interface MenuGroupDescriptor extends BadgeAction {
