@@ -69,7 +69,7 @@ export function WithStaticContent() {
       title="#1054"
       primaryAction={{content: 'Create order'}}
       subtitle="October 19, 2020 at 3:45 p.m. from Online Store"
-      backAction={{url: ''}}
+      backAction={{url: '', content: 'Back to orders'}}
     >
       <Layout>
         <Layout.Section>

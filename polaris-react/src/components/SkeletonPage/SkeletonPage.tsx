@@ -2,8 +2,8 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
-import type {PageProps} from '../Page';
 import {Page} from '../Page';
+import type {PageProps} from '../Page';
 
 export interface SkeletonPageProps {
   /** Page title, in large type */
