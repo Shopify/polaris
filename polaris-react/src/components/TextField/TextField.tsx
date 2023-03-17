@@ -16,6 +16,7 @@ import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
+import {useEventListener} from '../../utilities/use-event-listener';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
@@ -477,6 +478,14 @@ export function TextField({
       onFocus(event as React.FocusEvent<HTMLInputElement>);
     }
   };
+
+  useEventListener('wheel', handleOnWheel, inputRef);
+
+  function handleOnWheel(event: WheelEvent) {
+    if (document.activeElement === event.target && type === 'number') {
+      event.stopPropagation();
+    }
+  }
 
   const input = createElement(multiline ? 'textarea' : 'input', {
     name,
