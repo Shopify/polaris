@@ -1,7 +1,4 @@
-import React, {useCallback, useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
 import {
-  SettingToggle,
   Text,
   Inline,
   Box,
@@ -10,37 +7,10 @@ import {
   Badge,
   AlphaStack,
 } from '@shopify/polaris';
+import {useState, useCallback, useEffect} from 'react';
+import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-export default {
-  component: SettingToggle,
-} as ComponentMeta<typeof SettingToggle>;
-
-export function WithDeprecatedComponent() {
-  const [enabled, setEnabled] = useState(false);
-
-  const toggleId = 'setting-toggle-uuid';
-
-  const contentStatus = enabled ? 'Turn off' : 'Turn on';
-
-  const handleToggle = useCallback(() => setEnabled((enabled) => !enabled), []);
-
-  return (
-    <SettingToggle
-      enabled={enabled}
-      action={{
-        content: contentStatus,
-        onAction: handleToggle,
-      }}
-    >
-      <Text as="p">
-        Simulate transactions to test your checkout and order flows. When test
-        mode is on, checkout does not accept real credit cards.
-      </Text>
-    </SettingToggle>
-  );
-}
-
-export function WithPrimitiveComponents() {
+function WithPrimitiveComponents() {
   const [enabled, setEnabled] = useState(true);
 
   const handleToggle = useCallback(() => setEnabled((enabled) => !enabled), []);
@@ -50,13 +20,7 @@ export function WithPrimitiveComponents() {
   const toggleId = 'setting-toggle-uuid';
   const descriptionId = 'setting-toggle-description-uuid';
 
-  function navigationBarCollapsed() {
-    return typeof window === 'undefined'
-      ? false
-      : window.matchMedia(`(max-width: 767.95px)`).matches;
-  }
-
-  const isNavigationCollapsed = navigationBarCollapsed();
+  const isNavigationCollapsed = useMedia('screen and (max-width: 767.95px)');
 
   const badgeStatus = enabled ? 'success' : undefined;
 
@@ -141,4 +105,30 @@ export function WithPrimitiveComponents() {
       </AlphaStack>
     </AlphaCard>
   );
+
+  function useMedia(media: string): boolean {
+    const [isActive, setIsActive] = useState(false);
+
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        const mediaQueryList = window.matchMedia(media);
+
+        setIsActive(mediaQueryList.matches);
+
+        const listener = (evt: MediaQueryListEvent) => {
+          setIsActive(evt.matches);
+        };
+
+        mediaQueryList.addEventListener('change', listener);
+
+        return () => {
+          mediaQueryList.removeEventListener('change', listener);
+        };
+      }
+    }, [media]);
+
+    return isActive;
+  }
 }
+
+export default withPolarisExample(WithPrimitiveComponents);
