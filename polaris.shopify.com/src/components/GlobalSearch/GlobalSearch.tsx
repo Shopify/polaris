@@ -49,7 +49,7 @@ const monorail =
   process.env.NODE_ENV === 'production'
     ? Monorail.createHttpProducer({production: true})
     : Monorail.createLogProducer({
-        debugMode: true,
+        debugMode: true, // we may not want to log these in staging
       });
 
 const monorailEvent = (monorailSchema, monorailFields: any) => {
@@ -79,11 +79,16 @@ function captureSearchClick(
   monorailEvent('polaris_docs_search_click/1.0', monorailFields);
 }
 
-function captureSearchQuery(uuid, searchTerm) {
+function captureSearchQuery(uuid, searchTerm, results) {
   const monorailFields = {
     uuid,
     query: searchTerm,
   };
+
+  if (results) {
+    console.log(results);
+  }
+
   monorailEvent('polaris_docs_search_query/1.0', monorailFields);
 }
 
@@ -149,6 +154,7 @@ function GlobalSearch() {
         setSearchResults(results);
       });
 
+    captureSearchQuery(uuid, searchTerm, results);
     setCurrentResultIndex(0);
     scrollToTop();
   }, 400);
@@ -156,7 +162,7 @@ function GlobalSearch() {
   // fire when fuzzy searching to capture the search query
   const throttledSearchQueryEvent = useThrottle(() => {
     // need to pass the search results
-    captureSearchQuery(uuid, searchTerm);
+    // captureSearchQuery(uuid, searchTerm);
   }, 1000); // how long should we wait?
 
   useEffect(throttledSearch, [searchTerm, throttledSearch]);
@@ -233,8 +239,6 @@ function GlobalSearch() {
         open={isOpen}
         onClose={() => {
           setIsOpen(false);
-          // on close we want to capture that no search result was selected
-          captureSearchQuery(uuid, searchTerm);
         }}
       >
         <div className={styles.PreventBackgroundInteractions}></div>
