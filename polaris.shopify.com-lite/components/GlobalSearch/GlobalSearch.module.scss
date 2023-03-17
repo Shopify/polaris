@@ -1,0 +1,47 @@
+.Dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background: var(--color-surface);
+  max-width: 1000px;
+  max-height: 800px;
+  border-radius: calc(var(--unit-radius) * 8);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 100px 100px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.Input {
+  padding: 2rem;
+  font-size: 2rem;
+  line-height: 1;
+  border-bottom: 1px solid var(--color-border);
+
+  &:not(focus-visible) {
+    outline: none;
+  }
+}
+
+.Results {
+  flex: 1;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+.Result {
+  padding: 2rem;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &[data-headlessui-state='active'] {
+    background: black;
+  }
+}

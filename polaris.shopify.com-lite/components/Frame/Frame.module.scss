@@ -1,0 +1,11 @@
+.Frame {
+  display: flex;
+  max-width: 100rem;
+  margin: 0 auto;
+  scroll-margin-top: 3rem;
+}
+
+.Content {
+  padding: 2rem 4rem;
+  flex: 1;
+}

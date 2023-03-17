@@ -1,0 +1,15 @@
+.TOC {
+  font-size: 0.8rem;
+  line-height: 1.75;
+
+  a {
+    &[data-is-current='true'] {
+      color: var(--color-text-strong);
+    }
+  }
+
+  ul ul {
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+  }
+}

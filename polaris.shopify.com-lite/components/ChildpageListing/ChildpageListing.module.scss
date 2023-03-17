@@ -1,0 +1,5 @@
+.ChildpageListing {
+  display: grid;
+  gap: 1.25rem 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+}

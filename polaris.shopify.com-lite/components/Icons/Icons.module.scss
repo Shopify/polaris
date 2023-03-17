@@ -1,0 +1,25 @@
+.Grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem 1.5rem;
+}
+
+.Icon {
+  p {
+    font-size: 0.8rem;
+  }
+
+  button {
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    padding: 0.1rem 0.33rem;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1.5px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    svg {
+      fill: #fff;
+    }
+  }
+}

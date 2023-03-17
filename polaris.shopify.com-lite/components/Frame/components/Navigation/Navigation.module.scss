@@ -1,0 +1,32 @@
+.Navigation {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-width: 20rem;
+  max-width: 20rem;
+  border-right: 1px solid;
+  padding: 2rem;
+  overflow: auto;
+  border-right: 1px solid var(--color-border);
+
+  ul ul {
+    font-size: 0.9rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  li {
+    &.hasSeparatorInNav {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.NavItem {
+  display: flex;
+  justify-content: space-between;
+
+  &.isCurrent {
+    color: vaR(--color-link);
+  }
+}

@@ -1,0 +1,33 @@
+.Page {
+  .Breadcrumbs {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  h1 {
+    color: var(--color-text-strong);
+    font-size: 2.75rem;
+    margin-bottom: 4rem;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.05rem;
+  }
+}
+
+.PageLayout {
+  display: flex;
+  gap: 4rem;
+
+  main {
+    flex: 1;
+  }
+
+  aside {
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+    min-width: 14rem;
+    max-width: 14rem;
+  }
+}
