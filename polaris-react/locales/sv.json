@@ -221,7 +221,7 @@
         }
       },
       "RenameModal": {
-        "title": "Döp om vy",
+        "title": "Byt namn på vy",
         "label": "Namn",
         "cancel": "Avbryt",
         "create": "Spara",

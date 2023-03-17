@@ -221,7 +221,7 @@
         }
       },
       "RenameModal": {
-        "title": "Cambiar nombre de vista",
+        "title": "Renombrar vista",
         "label": "Nombre",
         "cancel": "Cancelar",
         "create": "Guardar",
