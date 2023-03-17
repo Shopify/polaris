@@ -1,0 +1,2 @@
+- Remove legacy scripts
+- Remove globby?
