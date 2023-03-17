@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {LegacyRef, useCallback} from 'react';
 
 import type {ActionListSection, MenuGroupDescriptor} from '../../../../types';
 import {ActionList} from '../../../ActionList';
@@ -22,6 +22,8 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   getOffsetWidth?(width: number): void;
   /** Collection of sectioned action items */
   sections?: readonly ActionListSection[];
+  /** Reference to return focus to the actions group activator */
+  actionGroupsActivator?: LegacyRef<HTMLSpanElement> | undefined;
 }
 
 export function MenuGroup({
@@ -37,6 +39,7 @@ export function MenuGroup({
   onOpen,
   getOffsetWidth,
   sections,
+  actionGroupsActivator,
 }: MenuGroupProps) {
   const handleClose = useCallback(() => {
     onClose(title);
@@ -70,6 +73,7 @@ export function MenuGroup({
       accessibilityLabel={accessibilityLabel}
       onClick={handleClick}
       getOffsetWidth={handleOffsetWidth}
+      activatorRef={actionGroupsActivator}
     >
       {title}
     </SecondaryAction>
