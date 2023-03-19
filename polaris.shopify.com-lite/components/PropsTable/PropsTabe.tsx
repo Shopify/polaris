@@ -267,9 +267,6 @@ function ExpandType({
                 references={references}
               />
             </MyPopover>
-            <MyPopover buttonText={'click me'}>
-              <p>Weehoo</p>
-            </MyPopover>
           </>
         );
       }
