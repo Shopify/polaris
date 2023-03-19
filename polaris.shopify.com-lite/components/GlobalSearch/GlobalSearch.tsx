@@ -5,6 +5,7 @@ import {SearchResult} from '@/app/api/search/route';
 import {Combobox, Dialog} from '@headlessui/react';
 import {useRouter} from 'next/navigation';
 import styles from './GlobalSearch.module.scss';
+import Link from 'next/link';
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -37,7 +38,9 @@ export default function Search() {
 
   return (
     <main>
-      <button onClick={() => setIsOpen(true)}>Search</button>
+      <button className={styles.Trigger} onClick={() => setIsOpen(true)}>
+        Search
+      </button>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <Dialog.Panel className={styles.Dialog}>
@@ -47,12 +50,16 @@ export default function Search() {
               const result = searchResults.find((result) => result.id === id);
               if (result) {
                 router.push(`${result.url}`);
+                setIsOpen(false);
               }
             }}
           >
             <Combobox.Input
               className={styles.Input}
               onChange={(event) => setQ(event.target.value)}
+              autoComplete="off"
+              spellCheck="false"
+              placeholder="Search"
             />
             <Combobox.Options className={styles.Results}>
               {searchResults.map((result) => (

@@ -4,13 +4,17 @@ import GlobalSearch from '@/components/GlobalSearch';
 import {NavItems} from '@/types';
 import {className} from '@/utils';
 import Link from 'next/link';
-import {usePathname, useRouter} from 'next/navigation';
-import {useEffect, useState} from 'react';
+import {usePathname} from 'next/navigation';
+import {useState} from 'react';
 import styles from './Navigation.module.scss';
 
 function Navigation({navItems}: {navItems: NavItems}) {
   return (
     <nav className={styles.Navigation}>
+      <Link href="/">
+        <h1 className={styles.Logo}>Polaris</h1>
+      </Link>
+
       <GlobalSearch />
 
       <ul>
@@ -69,7 +73,9 @@ function NavItem({
 
   const statusBadgeMarkup =
     pageMeta?.type === 'components' && pageMeta.lifeCyclePhase !== 'Stable' ? (
-      <p>{pageMeta.lifeCyclePhase}</p>
+      <span style={{border: '1px solid var(--color-border)'}}>
+        {pageMeta.lifeCyclePhase}
+      </span>
     ) : null;
 
   return (
