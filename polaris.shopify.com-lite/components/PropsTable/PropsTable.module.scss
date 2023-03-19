@@ -1,0 +1,80 @@
+.PropsTableHeader {
+  background: var(--color-border);
+  padding: 0.4rem 0.75rem 0.5rem;
+  font-weight: var(--font-weight-heavy);
+  border-radius: 8px 8px 0 0;
+}
+
+.PropsTableContent {
+  background: var(--color-surface);
+  z-index: 1;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 -1px rgba(255, 255, 255, 0.175);
+
+  &.isPopover {
+    transform: translateY(2px);
+    box-shadow: 0 -1px rgba(255, 255, 255, 0.175),
+      0 50px 200px rgba(0, 0, 0, 0.5), 0 5px 20px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    min-width: 30rem;
+    max-width: 50rem;
+  }
+}
+
+.Prop {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.66rem 0.75rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.PropName {
+  font-weight: var(--font-weight-heavy);
+  margin-right: 0.5rem;
+}
+
+.PropComment {
+  opacity: 0.6;
+}
+
+.GithubSourceLink {
+  color: var(--color-code-function);
+  &:after {
+    content: ' ->';
+  }
+}
+
+.PopoverContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.PopoverButton {
+  background: var(--color-border);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0 0.33rem;
+  color: var(--color-code-function);
+}
+
+.Primitive {
+  &[data-type='string'] {
+    color: var(--color-code-string);
+  }
+
+  &[data-type='number'] {
+    color: var(--color-code-number);
+  }
+
+  &[data-type='boolean'] {
+    color: var(--color-code-boolean);
+  }
+
+  &[data-type='function'] {
+    color: var(--color-code-function);
+  }
+}
