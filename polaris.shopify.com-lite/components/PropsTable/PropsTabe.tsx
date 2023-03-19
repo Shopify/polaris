@@ -1,10 +1,11 @@
 'use client';
 
-import {cloneElement, Fragment, ReactNode} from 'react';
+import {Fragment, ReactNode, useState} from 'react';
 import {JSONOutput} from 'typedoc';
-import {Disclosure, Popover, PopoverPanelProps} from '@headlessui/react';
+import {Popover} from '@headlessui/react';
 import styles from './PropsTable.module.scss';
 import {className} from '@/utils';
+import {useFloating} from '@floating-ui/react';
 
 interface Props {
   props: JSONOutput.DeclarationReflection | undefined;
@@ -34,11 +35,11 @@ function PropItemWrapper({
 }) {
   const comment = (
     <p>
-      {declarationReflection.comment?.summary.map((segment) => {
+      {declarationReflection.comment?.summary.map((segment, index) => {
         if (segment.kind === 'text') {
-          return <Fragment key={segment.text}>{segment.text}</Fragment>;
+          return <Fragment key={index}>{segment.text}</Fragment>;
         } else if (segment.kind === 'code') {
-          return <code key={segment.text}>{segment.text}</code>;
+          return <code key={index}>{segment.text}</code>;
         }
       })}
     </p>
@@ -251,15 +252,11 @@ function ExpandType({
       const referencedDeclaration = references.find(
         (ref) => ref.id === type.id,
       );
+
       if (referencedDeclaration) {
         return (
-          <Popover as="span" className={className(styles.PopoverContainer)}>
-            <Popover.Button className={styles.PopoverButton}>
-              {referencedDeclaration.name}
-            </Popover.Button>
-            <Popover.Panel
-              className={className(styles.PropsTableContent, styles.isPopover)}
-            >
+          <>
+            <MyPopover buttonText={referencedDeclaration.name}>
               {referencedDeclaration.children && (
                 <p className={styles.PropsTableHeader}>
                   {referencedDeclaration.name}
@@ -269,8 +266,11 @@ function ExpandType({
                 declarationReflection={referencedDeclaration}
                 references={references}
               />
-            </Popover.Panel>
-          </Popover>
+            </MyPopover>
+            <MyPopover buttonText={'click me'}>
+              <p>Weehoo</p>
+            </MyPopover>
+          </>
         );
       }
     } else if (type.package) {
@@ -376,6 +376,39 @@ function ExpandCallSignature({
         isPartOfAnotherType={true}
       />
     </>
+  );
+}
+
+function MyPopover({
+  buttonText,
+  children,
+}: {
+  buttonText: string;
+  children: ReactNode;
+}) {
+  let [referenceElement, setReferenceElement] =
+    useState<HTMLButtonElement | null>(null);
+  const {x, y, strategy, refs} = useFloating();
+
+  return (
+    <Popover as="span" className={className(styles.PopoverContainer)}>
+      <Popover.Button className={styles.PopoverButton} ref={refs.setReference}>
+        {buttonText}
+      </Popover.Button>
+
+      <Popover.Panel
+        className={className(styles.PropsTableContent, styles.isPopover)}
+        ref={refs.setFloating}
+        style={{
+          position: strategy,
+          top: y ?? 0,
+          left: x ?? 0,
+          width: 'max-content',
+        }}
+      >
+        {children}
+      </Popover.Panel>
+    </Popover>
   );
 }
 

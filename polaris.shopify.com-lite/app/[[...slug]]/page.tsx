@@ -78,9 +78,7 @@ async function loadProps(propName: string): Promise<{
     findReferences(prop);
   });
 
-  const propsForComponent = props.children?.find(
-    (prop) => prop.name === propName,
-  );
+  const propsForComponent = props.children?.find(({name}) => name === propName);
   return {
     props: propsForComponent,
     references: Object.values(references),
