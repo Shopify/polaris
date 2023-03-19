@@ -7,13 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
-    "gen-assets": "ts-node scripts/createNav.ts && ts-node scripts/createSiteMap.ts"
+    "gen-assets": "ts-node scripts/createNav.ts && ts-node scripts/createSiteMap.ts",
+    "get-props": "typedoc"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.13",
     "@types/formidable": "^2.0.5",
-    "@types/node": "18.15.3",
+    "@types/node": "^18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "eslint": "8.36.0",
@@ -30,6 +30,7 @@
     "remark-gfm": "^3.0.1",
     "sass": "^1.59.3",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.23.27",
     "typescript": "4.9.5"
   }
 }

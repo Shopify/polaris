@@ -28,6 +28,20 @@
   --color-text-strong: #000;
   --color-link: #2e3ddc;
   --color-border: #ededed;
+  --color-code-keyword: #017b33;
+  --color-code-function: var(--color-code-keyword);
+  --color-code-string: #6a00df;
+  --color-code-boolean: #d6004b;
+  --color-code-number: #c55100;
+  --color-code-operator: var(--text);
+  --color-code-punctuation: var(--text-subdued);
+  --color-code-property: var(--color-code-keyword);
+  --color-code-selector: var(--color-code-keyword);
+  --color-code-comment: #3d2fe8;
+  --color-code-inserted: var(--color-code-keyword);
+  --color-code-deleted: var(--color-code-boolean);
+  --color-code-inserted-highlight: #e5ffef;
+  --color-code-deleted-highlight: #fff3f8;
 
   @media screen and (prefers-color-scheme: dark) {
     --color-surface: #212126;
@@ -35,6 +49,20 @@
     --color-text-strong: #fff;
     --color-link: #7480ff;
     --color-border: #35353d;
+    --color-code-keyword: #6dffaa;
+    --color-code-function: var(--color-code-keyword);
+    --color-code-string: #c087ff;
+    --color-code-boolean: #ff6ea1;
+    --color-code-number: #ff9e5b;
+    --color-code-operator: var(--text);
+    --color-code-punctuation: var(--text-subdued);
+    --color-code-property: var(--color-code-keyword);
+    --color-code-selector: var(--color-code-keyword);
+    --color-code-comment: #897fff;
+    --color-code-inserted: var(--color-code-keyword);
+    --color-code-deleted: #ffb7d1;
+    --color-code-inserted-highlight: var(--surface-information);
+    --color-code-deleted-highlight: var(--surface-warning);
   }
 }
 

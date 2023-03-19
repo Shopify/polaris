@@ -27,7 +27,9 @@
     position: sticky;
     top: 2rem;
     align-self: flex-start;
-    min-width: 14rem;
-    max-width: 14rem;
+    padding-left: 2rem;
+    min-width: 16rem;
+    max-width: 16rem;
+    border-left: 1px solid var(--color-border);
   }
 }

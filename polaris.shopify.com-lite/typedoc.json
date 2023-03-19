@@ -1,0 +1,7 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["../polaris-react/src/index.ts"],
+  "entryPointStrategy": "expand",
+  "json": "./.cache/props.json",
+  "skipErrorChecking": true
+}

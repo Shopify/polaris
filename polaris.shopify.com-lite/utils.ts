@@ -140,3 +140,8 @@ export const className = (...classNames: ClassName[]): string => {
     .flatMap((c) => (Array.isArray(c) ? className(...c) : c))
     .join(' ');
 };
+
+export const toPascalCase = (str: string): string =>
+  (str.match(/[a-zA-Z0-9]+/g) || [])
+    .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
+    .join('');
