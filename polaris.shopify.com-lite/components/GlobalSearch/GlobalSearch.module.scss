@@ -1,9 +1,11 @@
+@use '../../styles/mixins' as *;
+
 .Trigger {
   width: 100%;
-  background: rgba(0, 0, 0, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 10000px;
   margin-bottom: 3rem;
+  background: var(--color-surface-subdued);
   border: 1px solid var(--color-border);
 }
 
@@ -46,8 +48,28 @@
 }
 
 .Result {
+  display: flex;
   padding: 2rem;
   cursor: pointer;
+  gap: 2rem;
+
+  .Preview {
+    width: 150px;
+    height: 100px;
+    background: var(--color-surface-subdued);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    @include heading-4;
+  }
+
+  svg {
+    fill: var(--color-text-strong);
+  }
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-border);

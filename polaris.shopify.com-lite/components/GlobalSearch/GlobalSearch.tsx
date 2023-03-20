@@ -3,15 +3,20 @@
 import {useEffect, useState} from 'react';
 import {SearchResult} from '@/app/api/search/route';
 import {Combobox, Dialog} from '@headlessui/react';
-import {useRouter} from 'next/navigation';
+import {useRouter, useSearchParams} from 'next/navigation';
 import styles from './GlobalSearch.module.scss';
 import Link from 'next/link';
+import Markdown from '../Markdown';
+import * as PolarisIcons from '@shopify/polaris-icons';
+import {toPascalCase} from '@/utils';
+import {useDebounce} from '@/hooks';
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [q, setQ] = useState<string>('');
   const [selectedSearchResult, setSelectedSearchResult] = useState<string>('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const debouncedQ: string = useDebounce<string>(q, 200);
 
   const router = useRouter();
 
@@ -23,7 +28,7 @@ export default function Search() {
     } else {
       setSearchResults([]);
     }
-  }, [q]);
+  }, [debouncedQ]);
 
   useEffect(() => {
     function handler(evt: KeyboardEvent) {
@@ -49,7 +54,7 @@ export default function Search() {
             onChange={(id) => {
               const result = searchResults.find((result) => result.id === id);
               if (result) {
-                router.push(`${result.url}`);
+                router.push(`${result.url}${result.urlAppendix}`);
                 setIsOpen(false);
               }
             }}
@@ -62,17 +67,45 @@ export default function Search() {
               placeholder="Search"
             />
             <Combobox.Options className={styles.Results}>
-              {searchResults.map((result) => (
-                <Combobox.Option
-                  key={result.id}
-                  value={result.id}
-                  className={styles.Result}
-                >
-                  <h2>{result.title}</h2>
-                  <p>{result.excerpt}</p>
-                  <p>{result.url}</p>
-                </Combobox.Option>
-              ))}
+              {searchResults.map((result) => {
+                const category = result.url.split('/')[0];
+                const Icon =
+                  PolarisIcons[
+                    toPascalCase(result.title) as keyof typeof PolarisIcons
+                  ];
+                return (
+                  <Combobox.Option
+                    key={result.id}
+                    value={result.id}
+                    className={styles.Result}
+                  >
+                    {Icon && (
+                      <div className={styles.Preview}>
+                        <Icon width={32} height={32} />
+                      </div>
+                    )}
+                    <div>
+                      <h2>
+                        {result.title}{' '}
+                        <span
+                          style={{
+                            padding: 4,
+                            background: '#444',
+                            borderRadius: 8,
+                          }}
+                        >
+                          {category}
+                        </span>
+                      </h2>
+                      <Markdown>{result.excerpt}</Markdown>
+                      <p>{result.url}</p>
+                      {result.thumbnail && (
+                        <p>{JSON.stringify(result.thumbnail)}</p>
+                      )}
+                    </div>
+                  </Combobox.Option>
+                );
+              })}
             </Combobox.Options>
           </Combobox>
         </Dialog.Panel>

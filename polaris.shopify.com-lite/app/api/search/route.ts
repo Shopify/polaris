@@ -1,17 +1,37 @@
 import {NextRequest, NextResponse} from 'next/server';
 import {content} from '@/content';
-import {getResolvedPage} from '@/utils';
+import {getPageByPath, getPageUrl, getResolvedPage} from '@/utils';
 import Fuse from 'fuse.js';
 import iconsMeta from '@shopify/polaris-icons/metadata';
 import {metadata, MetadataProperties} from '@shopify/polaris-tokens';
-import {blockTypes} from '@/types';
+import {Image} from '@/types';
+
+enum SearchResultType {
+  Page = 'Page',
+  Token = 'Token',
+  Icon = 'Icon',
+}
+
+interface IndexItem {
+  id: string;
+  title: string;
+  keywords: string[];
+  excerpt: string;
+  body: string;
+  url: string;
+  urlAppendix: string;
+  type: SearchResultType;
+  thumbnail?: Image;
+}
 
 export type SearchResult = {
   id: string;
-  type: 'page' | 'icon' | 'token';
   title: string;
   excerpt: string;
   url: string;
+  urlAppendix: string;
+  type: SearchResultType;
+  thumbnail?: Image;
 };
 
 export const config = {
@@ -27,96 +47,101 @@ export async function GET(req: NextRequest) {
   const q = searchParams.get('q');
 
   if (q) {
-    let searchResults: {
-      id: string;
-      title: string;
-      excerpt: string;
-      body: string;
-      url: string;
-    }[] = content.pages
+    let searchIndex: IndexItem[] = content.pages
       .map((page) => getResolvedPage(content, page, true))
       .map((page) => ({
         id: page.id,
         title: page.title,
+        keywords: page.keywords,
         excerpt: page.excerpt,
-        url: page.url,
-        body: page.blocks
-          .map((block) => {
-            switch (block.blockType) {
-              case 'Markdown':
-                return block.content;
+        body:
+          page.excerpt +
+          ' ' +
+          page.blocks
+            .map((block) => {
+              switch (block.blockType) {
+                case 'Markdown':
+                  return block.content;
 
-              case 'TextImage':
-                return block.content;
+                case 'TextImage':
+                  return block.content;
 
-              default:
-                return '';
-            }
-          })
-          .join(' '),
+                default:
+                  return '';
+              }
+            })
+            .join(' '),
+        url: getPageUrl(content, page),
+        urlAppendix: '',
+        thumbnail: page.images.find(
+          (image) => image.id === page.thumbnailImageId,
+        ),
+        type: SearchResultType.Page,
       }));
 
-    const tokenGroups = Object.keys(metadata) as Array<keyof typeof metadata>;
-    tokenGroups.forEach((group) => {
-      const tokenGroup = metadata[group];
-      Object.entries(tokenGroup).forEach(
-        ([tokenName, tokenProperties]: [string, MetadataProperties]) => {
-          searchResults.push({
-            id: tokenName,
-            title: tokenName,
-            body: tokenProperties.description || '',
-            excerpt: tokenProperties.description || '',
-            url: `/tokens/?TODO`,
-            // meta: {
-            //   tokens: {
-            //     category: groupSlug,
-            //     token: {
-            //       name: tokenName,
-            //       description: tokenProperties.description || '',
-            //       value: tokenProperties.value,
-            //     },
-            //   },
-            // },
-          });
-        },
-      );
+    const tokensPage = getPageByPath(content, 'tokens');
+    if (tokensPage) {
+      const tokenGroups = Object.keys(metadata) as Array<keyof typeof metadata>;
+      tokenGroups.forEach((group) => {
+        const tokenGroup = metadata[group];
+        Object.entries(tokenGroup).forEach(
+          ([tokenName, tokenProperties]: [string, MetadataProperties]) => {
+            searchIndex.push({
+              id: tokenName,
+              title: tokenName,
+              body: tokenProperties.description || '',
+              excerpt: tokenProperties.description || '',
+              keywords: ['token', group],
+              url: `tokens/${group}`,
+              urlAppendix: `?token=${tokenName}`,
+              type: SearchResultType.Token,
+            });
+          },
+        );
+      });
+    }
+
+    Object.keys(iconsMeta).forEach((fileName) => {
+      const meta = iconsMeta[fileName];
+      searchIndex.push({
+        id: fileName,
+        title: `${meta.name} (${meta.set})`,
+        keywords: ['icon', ...meta.keywords],
+        excerpt: meta.description,
+        body: '',
+        url: 'icons',
+        urlAppendix: `?q=${fileName}`,
+        type: SearchResultType.Icon,
+      });
     });
 
-    const fuse = new Fuse(searchResults, {
+    const fuse = new Fuse(searchIndex, {
       keys: [
         {name: 'title', weight: 100},
-        // {name: 'excerpt', weight: 50},
-        {name: 'body', weight: 100},
+        {name: 'keywords', weight: 50},
+        {name: 'body', weight: 10},
       ],
       includeScore: false,
       threshold: 0.5,
       shouldSort: true,
-      ignoreLocation: true,
-      isCaseSensitive: true,
+      isCaseSensitive: false,
+      fieldNormWeight: 3,
+      includeMatches: true,
     });
-
-    // Object.keys(iconsMeta).forEach((fileName) => {
-    //   searchResults.push({
-    //     id: fileName,
-    //     title: iconsMeta[fileName].name,
-    //     excerpt: iconsMeta[fileName].description,
-    //     url: `/icons?icon=${fileName}`,
-    //     type: 'icon',
-    //   });
-    // });
 
     const fuseResults: SearchResult[] = fuse
       .search(q)
       .sort((a, b) => (a.score || 0) - (b.score || 0))
-      .map((fuseResult) => fuseResult.item)
+      .map((result) => result.item)
       .slice(0, 20)
-      .map((page) => {
+      .map((result) => {
         return {
-          id: page.id,
-          title: page.title,
-          excerpt: page.body,
-          url: page.url,
-          type: 'page',
+          id: result.id,
+          title: result.title,
+          excerpt: result.excerpt,
+          url: result.url,
+          urlAppendix: result.urlAppendix,
+          type: result.type,
         };
       });
 
