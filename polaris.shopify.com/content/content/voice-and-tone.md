@@ -78,7 +78,7 @@ While it’s helpful to consider how your audience is likely to feel, don’t as
 
 When everything is working as it should, our goal is to give people what they need to get work done, without getting in the way or drawing attention to ourselves. We want the audience to know what something is or that something has happened as expected.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -92,9 +92,9 @@ Use overly complicated or intimidating language.
 
 ![Image showing a toggle switch on a card labeled “Use Biometrics for Authentication”](/images/content/voice-and-tone/biometrics-toggle-card@2x.png)
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -109,7 +109,7 @@ Add extra text just to fill space.
 
 ![Image showing a text field for notes labeled “Add a note” followed by an ellipsis](/images/content/voice-and-tone/add-note-field@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Learning and education
 
@@ -119,7 +119,7 @@ Some people will want to be guided step-by-step through the process, while other
 
 Remember, they may have sought this out specifically or we may have recommended it to them, so don’t assume that they want or need to use it.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -133,9 +133,9 @@ Oversell or overpromise.
 
 _Create a new campaign and you could double your sales this holiday season._
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -149,7 +149,7 @@ Be overly prescriptive about how someone should use a feature.
 
 _You need to add at least 10 products before opening your store._
 
-<!-- end -->
+</DoDont>
 
 ### Simple errors
 
@@ -159,7 +159,7 @@ In this case, our job is to help people understand what happened so that they ca
 
 Read the [error message guidelines](https://polaris.shopify.com/patterns/error-messages) for more detailed guidance.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -173,9 +173,9 @@ Use overly dramatic or scary words for simple errors.
 
 _Bad request, forbidden, fatal, expectation failed, unresolved, invalid_
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -189,7 +189,7 @@ Use error numbers or code unless they’re easily recognizable by people and hel
 
 ![Error modal with a confusing error code stating “200 OK”](/images/content/voice-and-tone/channel-not-found-error@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Acknowledging effort, progress, or completion
 
@@ -197,7 +197,7 @@ There are situations where we want to acknowledge that someone completed a compl
 
 While we don’t need to celebrate the accomplishment, we should recognize that they put in the time and effort. Depending on the level of effort, these may be simple confirmations or more active recognition that they completed something difficult.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -211,9 +211,9 @@ Assume people are excited or celebrating. They may be annoyed if it was a partic
 
 _Congrats! You set up your single login for Shopify._
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -227,7 +227,7 @@ Refer to simple actions or completed steps as “successes.”
 
 _You successfully added a product._
 
-<!-- end -->
+</DoDont>
 
 ### Motivate or encourage action
 
@@ -235,7 +235,7 @@ These are situations when we want to keep people moving along a desired path. In
 
 We don’t want to be too overzealous or action-driven here—it’s more about helping people understand the next step and giving them the context they need to take it.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -249,9 +249,9 @@ Assume the next step or outcome is guaranteed.
 
 _You’re just a few steps away from receiving your first order._
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -259,7 +259,7 @@ Provide guidance to help people understand if the decision is right for them.
 
 _Based on your type of business, this is the POS hardware we recommend:._
 
-<!-- end -->
+</DoDont>
 
 ### Serious problems or errors
 
@@ -269,7 +269,7 @@ In this case, there’s a serious risk of damaging trust and hurting our relatio
 
 Read the [error message guidelines](https://polaris.shopify.com/patterns/error-messages) for more detailed guidance.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -283,9 +283,9 @@ Ask merchants to trust us without providing data or context.
 
 _Today’s sales data might not be accurate, but don’t worry—it’s just temporary._
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -293,9 +293,9 @@ Apologize and empathize when we’re at fault, but within reason.
 
 _All systems are now fully operational. We recognize and apologize for the stress, concern, and impact this outage had on your business. In the coming days we will be working to fully understand how this widespread internet infrastructure failure affected our platform._
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -303,7 +303,7 @@ Provide clear steps to resolve issues. If there’s no solution, be direct about
 
 _Your Shopify Payments account is on hold. Please attach your State Tax Exemption Certificate for review._
 
-<!-- end -->
+</DoDont>
 
 ### Announcing new features and updates
 
@@ -311,7 +311,7 @@ It’s exciting to launch a new feature or update, but always consider the audie
 
 When you’re announcing something new, focus on educating and explaining what it is, what it’s used for, and what the user can expect.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -329,9 +329,9 @@ _**Get Shopify’s new Buy Button**_
 
 _It’s never been easier to customize the fonts, colors, and styles of Buy Buttons. It’s also twice as fast._
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -339,7 +339,7 @@ If possible, let users dismiss announcements or postpone changes until they’re
 
 ![A modal with a secondary button option to “remind me later” for a “single login” feature.](/images/content/voice-and-tone/remind-later-button@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Celebrations and congratulations
 
@@ -349,7 +349,7 @@ Let audiences know that we understand that it’s an important moment and we’r
 
 Remember, this is about celebrating their accomplishments, not ours. Launching something new? You probably don’t need to celebrate with them. Read our guidance around [announcing new features and updates](#announcing-features).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -363,9 +363,9 @@ Celebrate completing tasks or processes that people don’t actually want to cel
 
 _You set up your payment providers, congrats!_
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -379,4 +379,4 @@ Take credit for merchants’ successes or presume to know what they need.
 
 _We did it! Congrats on your first sale._
 
-<!-- end -->
+</DoDont>
