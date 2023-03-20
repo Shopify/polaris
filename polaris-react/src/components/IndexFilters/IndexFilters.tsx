@@ -4,6 +4,8 @@ import {Transition} from 'react-transition-group';
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
 import {useEventListener} from '../../utilities/use-event-listener';
+import {useToggle} from '../../utilities/use-toggle';
+import {useOnValueChange} from '../../utilities/use-on-value-change';
 import {Inline} from '../Inline';
 import {Spinner} from '../Spinner';
 import {Filters} from '../Filters';
@@ -128,7 +130,19 @@ export function IndexFilters({
   const {mdDown} = useBreakpoints();
   const defaultRef = useRef(null);
   const filteringRef = useRef(null);
+  const {
+    value: filtersFocused,
+    setFalse: setFiltersUnFocused,
+    setTrue: setFiltersFocused,
+  } = useToggle(false);
 
+  useOnValueChange(mode, (newMode) => {
+    if (newMode === IndexFiltersMode.Filtering) {
+      setFiltersFocused();
+    } else {
+      setFiltersUnFocused();
+    }
+  });
   useEventListener('keydown', (event) => {
     const {key} = event;
     const tag = document?.activeElement?.tagName;
@@ -265,6 +279,15 @@ export function IndexFilters({
     onQueryClear?.();
   }
 
+  function handleQueryBlur() {
+    setFiltersUnFocused();
+  }
+
+  function handleQueryFocus() {
+    setFiltersFocused();
+    onQueryFocus?.();
+  }
+
   function onPressF() {
     if (mode !== IndexFiltersMode.Default) {
       return;
@@ -375,7 +398,8 @@ export function IndexFilters({
                   queryPlaceholder={queryPlaceholder}
                   onQueryChange={handleChangeSearch}
                   onQueryClear={handleClearSearch}
-                  onQueryFocus={onQueryFocus}
+                  onQueryFocus={handleQueryFocus}
+                  onQueryBlur={handleQueryBlur}
                   filters={filters}
                   appliedFilters={appliedFilters}
                   onClearAll={onClearAll}
@@ -384,7 +408,7 @@ export function IndexFilters({
                   hideQueryField={hideQueryField}
                   disableQueryField={disabled || disableQueryField}
                   loading={loading || isActionLoading}
-                  focused
+                  focused={filtersFocused}
                   mountedState={state}
                   borderlessQueryField
                 >
