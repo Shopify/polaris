@@ -222,7 +222,7 @@
       },
       "RenameModal": {
         "title": "Zmień nazwę widoku",
-        "label": "Nazwisko",
+        "label": "Nazwa",
         "cancel": "Anuluj",
         "create": "Zapisz",
         "errors": {

@@ -230,7 +230,7 @@
         }
       },
       "DuplicateModal": {
-        "title": "Weergave dupliceren",
+        "title": "Dubbele weergave",
         "label": "Naam",
         "cancel": "Annuleren",
         "create": "Weergave aanmaken",
