@@ -23,7 +23,7 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   /** Collection of sectioned action items */
   sections?: readonly ActionListSection[];
   /** Reference to return focus to the actions group activator */
-  actionGroupsActivator?: LegacyRef<HTMLSpanElement> | undefined;
+  groupActivatorRef?: LegacyRef<HTMLSpanElement> | undefined;
 }
 
 export function MenuGroup({
@@ -39,7 +39,7 @@ export function MenuGroup({
   onOpen,
   getOffsetWidth,
   sections,
-  actionGroupsActivator,
+  groupActivatorRef,
 }: MenuGroupProps) {
   const handleClose = useCallback(() => {
     onClose(title);
@@ -73,7 +73,7 @@ export function MenuGroup({
       accessibilityLabel={accessibilityLabel}
       onClick={handleClick}
       getOffsetWidth={handleOffsetWidth}
-      activatorRef={actionGroupsActivator}
+      activatorRef={groupActivatorRef}
     >
       {title}
     </SecondaryAction>
