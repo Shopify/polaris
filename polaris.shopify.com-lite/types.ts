@@ -48,7 +48,7 @@ export const polarisComponentLifecyclePhases = [
 export type PolarisComponentLifecyclePhase =
   typeof polarisComponentLifecyclePhases[number];
 
-interface ComponentsPageMeta extends BasePageMeta {
+export interface ComponentsPageMeta extends BasePageMeta {
   type: 'components';
   lifeCyclePhase: PolarisComponentLifecyclePhase;
   lifeCycleNotice: string;

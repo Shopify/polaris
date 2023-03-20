@@ -7,30 +7,50 @@ import Code from '@/components/Code';
 
 interface Props {
   children: string;
+  strip?: boolean;
 }
 
-function Markdown({children: text}: Props) {
+function Markdown({strip, children: text}: Props) {
   return (
     <ReactMarkdown
       remarkPlugins={[[remarkGfm, {tablePipeAlign: true}]]}
       rehypePlugins={[rehypeRaw, rehypeSlug]}
-      components={{
-        code: ({inline, children, className}) =>
-          inline ? (
-            <code>{children}</code>
-          ) : (
-            <Code
-              code={{className, title: 'Example', code: children.toString()}}
-            />
-          ),
-        table: ({children}) => (
-          <div className="table-wrapper">
-            <table>{children}</table>
-          </div>
-        ),
-        br: () => <></>,
-        hr: () => <></>,
-      }}
+      components={
+        strip
+          ? {
+              br: () => <></>,
+              hr: () => <></>,
+              a: ({children}) => <>{children}</>,
+            }
+          : {
+              h2: ({children, id}) => (
+                <h2 id={id}>
+                  {children} <a href={`#${id}`}>🔗</a>
+                </h2>
+              ),
+              code: ({inline, children, className}) =>
+                inline ? (
+                  <code>{children}</code>
+                ) : (
+                  <Code
+                    code={[
+                      {
+                        className,
+                        title: 'Example',
+                        code: children.toString(),
+                      },
+                    ]}
+                  />
+                ),
+              table: ({children}) => (
+                <div className="table-wrapper">
+                  <table>{children}</table>
+                </div>
+              ),
+              br: () => <></>,
+              hr: () => <></>,
+            }
+      }
     >
       {text}
     </ReactMarkdown>

@@ -1,6 +1,7 @@
 import {ColorScheme, ResolvedPage} from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import Markdown from '../Markdown';
 import styles from './ChildpageListing.module.scss';
 
 interface Props {
@@ -18,6 +19,7 @@ function ChildpageListing({pages}: Props) {
           <Link href={page.url} key={page.id} className={styles.Page}>
             {thumbnail ? (
               <Image
+                className={styles.Thumbnail}
                 src={thumbnail.variants[ColorScheme.Light].fileName}
                 alt={thumbnail.alt[ColorScheme.Light]}
                 width={200}
@@ -25,6 +27,7 @@ function ChildpageListing({pages}: Props) {
               />
             ) : (
               <div
+                className={styles.Thumbnail}
                 style={{
                   aspectRatio: '16/9',
                   background: `rgba(0,0,0,.25)`,
@@ -33,7 +36,7 @@ function ChildpageListing({pages}: Props) {
               />
             )}
             <h3>{page.title}</h3>
-            <p>{page.excerpt}</p>
+            <Markdown strip>{page.excerpt}</Markdown>
           </Link>
         );
       })}

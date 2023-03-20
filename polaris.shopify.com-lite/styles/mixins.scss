@@ -1,0 +1,49 @@
+@mixin heading-1 {
+  font-size: 4rem;
+  color: var(--color-text-strong);
+}
+
+@mixin heading-2 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.0125rem;
+  line-height: 1.25;
+  color: var(--color-text-strong);
+}
+
+@mixin heading-3 {
+  font-size: 1.4rem;
+  line-height: 1.25;
+  color: var(--color-text-strong);
+}
+
+@mixin heading-4 {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-text-strong);
+}
+
+@mixin custom-scrollbars {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-border);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--color-text);
+    }
+  }
+}

@@ -15,6 +15,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  &:focus {
+    &:not(:focus-visible) {
+      outline: none;
+    }
+  }
+
   --unit-space: 1rem;
   --unit-radius: 2px;
 
@@ -22,8 +28,13 @@
   --font-weight-body-links: 435;
   --font-weight-heavy: 500;
   --font-weight-bold: 600;
+}
 
+:root,
+.light-mode {
   --color-surface: #fff;
+  --color-surface-subdued: #fafafa;
+  --color-surface-code: #ededed;
   --color-text: rgba(0, 0, 0, 0.77);
   --color-text-strong: #000;
   --color-link: #2e3ddc;
@@ -33,8 +44,8 @@
   --color-code-string: #6a00df;
   --color-code-boolean: #d6004b;
   --color-code-number: #c55100;
-  --color-code-operator: var(--text);
-  --color-code-punctuation: var(--text-subdued);
+  --color-code-operator: var(--color-text);
+  --color-code-punctuation: var(--color-text-subdued);
   --color-code-property: var(--color-code-keyword);
   --color-code-selector: var(--color-code-keyword);
   --color-code-comment: #3d2fe8;
@@ -42,28 +53,40 @@
   --color-code-deleted: var(--color-code-boolean);
   --color-code-inserted-highlight: #e5ffef;
   --color-code-deleted-highlight: #fff3f8;
+}
 
+@mixin dark-mode-colors {
+  --color-surface: #212126;
+  --color-surface-subdued: #2a2a31;
+  --color-surface-code: #16161a;
+  --color-text: rgba(255, 255, 255, 0.8);
+  --color-text-strong: #fff;
+  --color-link: #7480ff;
+  --color-border: #35353d;
+  --color-code-keyword: #6dffaa;
+  --color-code-function: var(--color-code-keyword);
+  --color-code-string: #c087ff;
+  --color-code-boolean: #ff6ea1;
+  --color-code-number: #ff9e5b;
+  --color-code-operator: var(--color-text);
+  --color-code-punctuation: var(--color-text-subdued);
+  --color-code-property: var(--color-code-keyword);
+  --color-code-selector: var(--color-code-keyword);
+  --color-code-comment: #897fff;
+  --color-code-inserted: var(--color-code-keyword);
+  --color-code-deleted: #ffb7d1;
+  --color-code-inserted-highlight: var(--surface-information);
+  --color-code-deleted-highlight: var(--surface-warning);
+}
+
+:root {
   @media screen and (prefers-color-scheme: dark) {
-    --color-surface: #212126;
-    --color-text: rgba(255, 255, 255, 0.8);
-    --color-text-strong: #fff;
-    --color-link: #7480ff;
-    --color-border: #35353d;
-    --color-code-keyword: #6dffaa;
-    --color-code-function: var(--color-code-keyword);
-    --color-code-string: #c087ff;
-    --color-code-boolean: #ff6ea1;
-    --color-code-number: #ff9e5b;
-    --color-code-operator: var(--text);
-    --color-code-punctuation: var(--text-subdued);
-    --color-code-property: var(--color-code-keyword);
-    --color-code-selector: var(--color-code-keyword);
-    --color-code-comment: #897fff;
-    --color-code-inserted: var(--color-code-keyword);
-    --color-code-deleted: #ffb7d1;
-    --color-code-inserted-highlight: var(--surface-information);
-    --color-code-deleted-highlight: var(--surface-warning);
+    @include dark-mode-colors;
   }
+}
+
+.dark-mode {
+  @include dark-mode-colors;
 }
 
 html {
@@ -94,6 +117,11 @@ button {
   cursor: pointer;
 }
 
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
 .dodont {
   display: flex;
   flex-direction: column;
@@ -114,5 +142,47 @@ button {
   [data-type='dont'] {
     background: #391c29;
     border-top: 1px solid #4b2537;
+  }
+}
+
+code,
+pre {
+  .keyword {
+    color: var(--color-code-keyword);
+  }
+  .function {
+    color: var(--color-code-function);
+  }
+  .string {
+    color: var(--color-code-string);
+  }
+  .boolean {
+    color: var(--color-code-boolean);
+  }
+  .number {
+    color: var(--color-code-number);
+  }
+  .operator {
+    color: var(--color-code-operator);
+  }
+  .punctuation {
+    color: var(--color-code-punctuation);
+  }
+  .property {
+    color: var(--color-code-property);
+  }
+  .selector {
+    color: var(--color-code-selector);
+  }
+  .comment {
+    color: var(--color-code-comment);
+  }
+  .inserted {
+    background: var(--color-code-inserted-highlight);
+    color: var(--color-code-inserted);
+  }
+  .deleted {
+    background: var(--color-code-deleted-highlight);
+    color: var(--color-code-deleted);
   }
 }

@@ -1,3 +1,5 @@
+@use '../../../../styles/mixins.scss' as *;
+
 .Navigation {
   position: sticky;
   top: 0;
@@ -7,6 +9,7 @@
   padding: 2rem;
   overflow: auto;
   border-right: 1px solid var(--color-border);
+  @include custom-scrollbars;
 
   ul ul {
     font-size: 0.9rem;

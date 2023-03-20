@@ -1,3 +1,7 @@
 export default function () {
-  return <main>Test example</main>;
+  return (
+    <main id="polaris-example">
+      <p>Test example</p>
+    </main>
+  );
 }

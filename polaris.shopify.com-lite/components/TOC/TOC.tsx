@@ -65,14 +65,6 @@ export const useTOC = (children: React.ReactNode) => {
   return toc;
 };
 
-function getContentTopMargin(): number {
-  const rootStyles = getComputedStyle(document.documentElement);
-  const headerHeight = rootStyles.getPropertyValue('--header-height');
-  const headerMargin = rootStyles.getPropertyValue('--header-margin');
-  const headerThreshold = parseInt(headerHeight) + parseInt(headerMargin) + 1;
-  return headerThreshold;
-}
-
 function scanPageForCurrentHeading(): string | void {
   // const contentTopMargin = getContentTopMargin();
   const contentTopMargin = 0;
@@ -131,6 +123,8 @@ function TOC({pageId}: Props) {
       {linkText}
     </a>
   );
+
+  if (items.length < 2) return null;
 
   return (
     <div className={className(styles.TOC, isNested && styles.isNested)}>

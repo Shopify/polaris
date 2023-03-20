@@ -1,5 +1,16 @@
+@use '/styles/mixins.scss' as *;
+
 .ChildpageListing {
   display: grid;
   gap: 3rem 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+
+  .Thumbnail {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    @include heading-3;
+    margin-bottom: 0.75rem;
+  }
 }

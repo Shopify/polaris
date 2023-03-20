@@ -5,7 +5,7 @@ import {JSONOutput} from 'typedoc';
 import {Popover} from '@headlessui/react';
 import styles from './PropsTable.module.scss';
 import {className} from '@/utils';
-import {useFloating} from '@floating-ui/react';
+import {useFloating} from '@floating-ui/react-dom';
 
 interface Props {
   props: JSONOutput.DeclarationReflection | undefined;
@@ -15,9 +15,25 @@ interface Props {
 function PropsTable({props, references}: Props) {
   if (!props) return <p>No props found</p>;
 
+  if (!(props.children || props.type)) {
+    return <p>This component doesn't take any props</p>;
+  }
+
+  const propsUrl = props.sources?.[0].url;
+
   return (
     <div className={styles.PropsTableContent}>
-      <div className={styles.PropsTableHeader}>{props.name}</div>
+      <div className={styles.PropsTableHeader}>
+        <span>{props.name}</span>
+        {propsUrl && (
+          <>
+            {' '}
+            <a href={propsUrl} target="_blank">
+              View source
+            </a>
+          </>
+        )}
+      </div>
       <HandleDeclarationReflection
         declarationReflection={props}
         references={references}
@@ -91,12 +107,13 @@ function HandleDeclarationReflection({
     );
   } else if (declarationReflection.kindString === 'Call signature') {
     if (declarationReflection.name === '__type') {
-      <ExpandType
-        type={declarationReflection.type}
-        references={references}
-        definitionUrl={definitionUrl}
-        isPartOfAnotherType={false}
-      />;
+      return (
+        <ExpandType
+          type={declarationReflection.type}
+          references={references}
+          definitionUrl={definitionUrl}
+        />
+      );
     } else {
       return (
         <PropItemWrapper declarationReflection={declarationReflection}>
@@ -128,7 +145,6 @@ function HandleDeclarationReflection({
             type={declarationReflection.type}
             references={references}
             definitionUrl={definitionUrl}
-            isPartOfAnotherType={false}
           />
         </PropItemWrapper>
       );
@@ -140,30 +156,22 @@ function HandleDeclarationReflection({
           type={declarationReflection.type}
           references={references}
           definitionUrl={definitionUrl}
-          isPartOfAnotherType={false}
         />
       </PropItemWrapper>
     );
   }
-  return (
-    <ExpandType
-      type={declarationReflection.type}
-      isPartOfAnotherType={false}
-      references={references}
-    />
-  );
+
+  return null;
 }
 
 function ExpandType({
   type,
   references,
   definitionUrl,
-  isPartOfAnotherType,
 }: {
   type: JSONOutput.DeclarationReflection['type'];
   references: JSONOutput.DeclarationReflection[];
   definitionUrl?: string;
-  isPartOfAnotherType: boolean;
 }) {
   if (!type) return <p>Type is empty</p>;
 
@@ -175,7 +183,6 @@ function ExpandType({
           type={type.elementType}
           references={references}
           definitionUrl={definitionUrl}
-          isPartOfAnotherType={true}
         />
         &gt;
       </>
@@ -189,7 +196,6 @@ function ExpandType({
               type={subType}
               references={references}
               definitionUrl={definitionUrl}
-              isPartOfAnotherType={true}
             />
             {index < type.types.length - 1 && <span> | </span>}
           </Fragment>
@@ -205,7 +211,6 @@ function ExpandType({
               type={subType}
               references={references}
               definitionUrl={definitionUrl}
-              isPartOfAnotherType={true}
             />
             {index < type.types.length - 1 && <span> & </span>}
           </Fragment>
@@ -276,8 +281,7 @@ function ExpandType({
           {type.name}
         </span>
       );
-    }
-    if (definitionUrl) {
+    } else if (definitionUrl) {
       return (
         <a
           className={styles.GithubSourceLink}
@@ -288,7 +292,7 @@ function ExpandType({
         </a>
       );
     }
-    return <p>Type is not exported: ❌ {type.name}</p>;
+    return <span>{type.name}</span>;
   } else if (type.type === 'reflection' && type.declaration) {
     if (type.declaration.signatures) {
       return (
@@ -305,12 +309,8 @@ function ExpandType({
           nodes.push(() => (
             <>
               {child.name}:{' '}
-              <ExpandType
-                type={child.type}
-                isPartOfAnotherType={true}
-                references={references}
-              />
-              ;{index < children.length - 1 && ' '}
+              <ExpandType type={child.type} references={references} />;
+              {index < children.length - 1 && ' '}
             </>
           ));
         });
@@ -334,9 +334,16 @@ function ExpandType({
           type={type.declaration.type}
           references={references}
           definitionUrl={definitionUrl}
-          isPartOfAnotherType={false}
         />
       </>
+    );
+  } else if (type.type === 'typeOperator') {
+    return (
+      <ExpandType
+        type={type.target}
+        references={references}
+        definitionUrl={definitionUrl}
+      />
     );
   }
 
@@ -358,20 +365,12 @@ function ExpandCallSignature({
         parameters.map((parameter, index) => (
           <Fragment key={parameter.id}>
             {parameter.name}:{' '}
-            <ExpandType
-              type={parameter.type}
-              references={references}
-              isPartOfAnotherType={true}
-            />
+            <ExpandType type={parameter.type} references={references} />
             {index < parameters.length - 1 && ', '}
           </Fragment>
         ))}
       ) =&gt;{' '}
-      <ExpandType
-        type={declarationReflection.type}
-        references={references}
-        isPartOfAnotherType={true}
-      />
+      <ExpandType type={declarationReflection.type} references={references} />
     </>
   );
 }

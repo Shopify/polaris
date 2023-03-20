@@ -1,0 +1,37 @@
+.Banner {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--color-surface-subdued);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  &[data-value='Alpha'] {
+    background: var(--surface-attention);
+  }
+
+  &[data-value='Warning'],
+  &[data-value='Deprecated'],
+  &[data-value='Legacy'] {
+    background: var(--surface-warning);
+  }
+
+  &[data-value='Beta'],
+  &[data-value='Information'] {
+    background: var(--surface-information);
+  }
+
+  &[data-value='Information'] {
+    background: var(--surface-information);
+  }
+
+  h2 {
+    margin-top: 0;
+    // @include heading-3;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}

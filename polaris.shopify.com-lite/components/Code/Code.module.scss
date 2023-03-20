@@ -1,12 +1,10 @@
-@import '../../styles/mixins.scss';
+@use '../../styles/mixins.scss' as *;
 
 .Code {
-  border-radius: var(--border-radius-400);
-  max-width: calc(100vw - 1.5rem);
   cursor: text;
-  background: var(--surface);
-  color: var(--text-strong);
-  border: var(--border);
+  background: var(--color-surface-code);
+  color: var(--color-text);
+  border-radius: 8px;
 }
 
 .TopBar {
@@ -86,12 +84,11 @@
   display: block;
   font-family: var(--font-family-mono);
   white-space: pre-wrap;
-  padding: 0.85rem 1rem;
+  padding: 1rem;
   font-size: 14px;
   line-height: 1.6;
   overflow: auto;
   max-height: 50vh;
-
   @include custom-scrollbars;
 }
 

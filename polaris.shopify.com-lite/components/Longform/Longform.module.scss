@@ -1,47 +1,38 @@
+@use '/styles/mixins.scss' as *;
+
 .Longform {
   h1,
   h2,
   h3,
   p,
-  ul {
+  ul,
+  pre {
     margin-bottom: 1rem;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    color: var(--color-text-strong);
-  }
-
   h1 {
-    font-size: 4rem;
+    @include heading-1;
   }
 
   h2 {
     &:not(:first-child) {
       margin-top: 2.5rem;
     }
-    font-size: 2rem;
-    font-weight: 500;
-    letter-spacing: -0.0125rem;
-    line-height: 1.25;
+    @include heading-2;
   }
 
   h3 {
     &:not(:first-child) {
       margin-top: 2rem;
+      @include heading-3;
     }
-    font-size: 1.4rem;
-    line-height: 1.25;
   }
 
   h4 {
     &:not(:first-child) {
       margin-top: 1.5rem;
     }
-    font-weight: 600;
-    font-size: 1.1rem;
+    @include heading-4;
     margin-bottom: 0.5rem;
   }
 
@@ -63,6 +54,26 @@
     strong,
     b {
       font-weight: 600;
+    }
+  }
+
+  table {
+    font-size: 0.875rem;
+    td,
+    th {
+      padding: 0.4rem 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+    th {
+      font-weight: var(--font-weight-heavy);
     }
   }
 
@@ -93,234 +104,3 @@
     background: aqua;
   }
 }
-
-// // @import '../../styles/fonts.scss';
-// // @import '../../styles/mixins.scss';
-// // @import '../../styles/variables.scss';
-
-// .Longform {
-//   img {
-//     border-radius: var(--border-radius-200);
-//     width: 100%;
-//     height: auto;
-//   }
-
-//   ul li {
-//     list-style-type: disc;
-//   }
-
-//   h2,
-//   h3,
-//   h4,
-//   p,
-//   ul,
-//   ol,
-//   .usage-list {
-//     margin: 1rem 0;
-//   }
-
-//   h1 {
-//     @include heading-1;
-//     margin-bottom: 1.5rem;
-
-//     @media screen and (max-width: $breakpointMobile) {
-//       margin-bottom: 1.5rem;
-//     }
-//   }
-
-//   h2 {
-//     @include heading-2;
-//     margin-top: 3rem;
-//   }
-
-//   h3 {
-//     @include heading-3;
-//     margin-top: 1.5rem;
-//   }
-
-//   h4 {
-//     @include heading-4;
-//   }
-
-//   h3,
-//   h4 {
-//     + p,
-//     + ul,
-//     + ol {
-//       margin-top: -0.5rem;
-//     }
-//   }
-
-//   ul {
-//     li {
-//       margin-left: 0.95em;
-//     }
-//   }
-
-//   ol {
-//     li {
-//       padding-left: 1.35em;
-//     }
-//   }
-
-//   ul,
-//   ol {
-//     ul,
-//     ol {
-//       margin-top: 0;
-//       margin-bottom: 0;
-//     }
-
-//     p {
-//       margin: 0;
-//     }
-//   }
-
-//   ul li {
-//     position: relative;
-//     &::marker {
-//       color: var(--text);
-//     }
-//   }
-
-//   ol {
-//     counter-reset: list;
-//     li {
-//       position: relative;
-//       counter-increment: list;
-//       &::before {
-//         content: counter(list) '.';
-//         display: block;
-//         position: absolute;
-//         left: 0;
-//         border-radius: var(--border-radius-round);
-//       }
-//     }
-//   }
-
-//   li {
-//     margin-bottom: 0.5em;
-
-//     &:last-child {
-//       margin-bottom: 0;
-//     }
-
-//     li {
-//       margin-top: 0.5rem;
-//     }
-//   }
-
-//   strong {
-//     font-weight: var(--font-weight-500);
-//     color: var(--text-strong);
-//   }
-
-//   hr {
-//     height: 1px;
-//     box-shadow: 0 0.5px var(--border-color);
-//     margin: 1rem 0;
-//     background: var(--surface);
-//     border-radius: var(--border-radius-200);
-//     opacity: 0;
-//     display: none;
-//   }
-
-//   p code {
-//     font-family: var(--font-family-mono);
-//     font-size: 0.9em;
-//     font-weight: var(--font-weight-500);
-//     background: var(--surface-code-inline);
-//     border-radius: var(--border-radius-300);
-//     padding: 0.15rem 0.25rem;
-//   }
-
-//   .usage-list {
-//     + h3 {
-//       margin-top: 2.5rem !important;
-//     }
-//   }
-
-//   table {
-//     font-size: var(--font-size-300);
-//     border-collapse: separate;
-//     border-spacing: 0;
-//     border: 1px solid var(--border-color);
-//     border-radius: 0.5rem;
-//     width: 100%;
-
-//     th {
-//       font-weight: var(--font-weight-600);
-//       font-size: var(--font-size-300);
-//       letter-spacing: var(--letter-spacing-100);
-//       text-align: left;
-//       background-color: var(--surface-subdued);
-//       color: var(--text-strong);
-
-//       &:first-child {
-//         border-top-left-radius: 0.5rem;
-//       }
-
-//       &:last-child {
-//         border-top-right-radius: 0.5rem;
-//       }
-//     }
-
-//     th,
-//     td {
-//       padding: 0.6rem 0.70588rem;
-//       border-bottom: 1px solid var(--border-color);
-//       vertical-align: top;
-
-//       &:first-child {
-//         padding-left: 1.5rem;
-//       }
-
-//       &:last-child {
-//         padding-right: 1.5rem;
-//       }
-
-//       @media screen and (min-width: $breakpointDesktop) {
-//         &:first-child {
-//           padding-left: 1.5rem;
-//         }
-
-//         &:last-child {
-//           padding-right: 1.5rem;
-//         }
-//       }
-//     }
-
-//     tbody {
-//       tr:last-child td {
-//         border-bottom: none;
-//       }
-
-//       tr:last-child td:first-child {
-//         border-bottom-left-radius: 0.5rem;
-//       }
-
-//       tr:last-child td:last-child {
-//         border-bottom-right-radius: 0.5rem;
-//       }
-//     }
-//   }
-
-//   :global {
-//     .table-wrapper {
-//       overflow: auto;
-//       max-width: calc(100vw - 2.5rem);
-//       width: 100%;
-//       overflow-wrap: normal;
-//     }
-//   }
-// }
-
-// .Content.firstParagraphIsLede {
-//   > p:first-of-type {
-//     margin-top: 0;
-//     margin-bottom: 1.5rem;
-//     font-size: var(--font-size-600);
-//     font-weight: var(--font-weight-500);
-//     letter-spacing: var(--letter-spacing-300);
-//   }
-// }

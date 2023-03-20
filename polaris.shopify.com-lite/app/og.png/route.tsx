@@ -4,6 +4,9 @@ import satori from 'satori';
 import sharp from 'sharp';
 import {NextRequest, NextResponse} from 'next/server';
 
+const WIDTH = 1200;
+const HEIGHT = 630;
+
 const interRegular = fs.readFileSync('./app/og.png/Inter-Regular.ttf');
 const interSemiBold = fs.readFileSync('./app/og.png/Inter-SemiBold.ttf');
 
@@ -16,6 +19,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.error();
   }
 
+  const logoDimensions = {width: 913, height: 1035};
   const logo = fs.readFileSync('./app/og.png/shopify_glyph_white.png');
   const logoSrc = `data:image/png;base64,${Buffer.from(logo).toString(
     'base64',
@@ -29,7 +33,8 @@ export async function GET(request: NextRequest) {
         padding: 100,
         background: 'black',
         color: 'white',
-        height: 630,
+        height: HEIGHT,
+        width: WIDTH,
       }}
     >
       <div
@@ -40,7 +45,12 @@ export async function GET(request: NextRequest) {
           marginBottom: 10,
         }}
       >
-        <img src={logoSrc} width={48} height={48} style={{top: -4}} />
+        <img
+          src={logoSrc}
+          width={logoDimensions.width / 22}
+          height={logoDimensions.height / 22}
+          style={{top: -4}}
+        />
         <div style={{fontSize: 30, letterSpacing: -1, fontWeight: 400}}>
           Polaris
         </div>
@@ -63,8 +73,8 @@ export async function GET(request: NextRequest) {
       </div>
     </div>,
     {
-      width: 1200,
-      height: 630,
+      width: WIDTH,
+      height: HEIGHT,
       fonts: [
         {
           name: 'Inter',

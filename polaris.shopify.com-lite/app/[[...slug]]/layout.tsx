@@ -1,4 +1,4 @@
-import './globals.scss';
+import '@/styles/globals.scss';
 import {content} from '@/content';
 import {getPageUrl} from '@/utils';
 import {NavItems} from '@/types';
