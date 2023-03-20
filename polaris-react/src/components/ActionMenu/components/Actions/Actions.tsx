@@ -196,13 +196,12 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     )
       return null;
 
-    const {content, onAction, activatorRef, ...rest} = action;
+    const {content, onAction, ...rest} = action;
 
     return (
       <SecondaryAction
         key={content}
         onClick={onAction}
-        activatorRef={activatorRef}
         {...rest}
         getOffsetWidth={handleActionsOffsetWidth}
       >
