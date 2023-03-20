@@ -25,6 +25,23 @@ const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
 };
 import {Monorail} from '@shopify/monorail';
 import {v4 as uuidv4} from 'uuid';
+import {
+  PlusOverviewTimeFrameClick_2_1,
+  PortalCsatSource_2_0,
+} from '@shopify/monorail/lib/schemas';
+
+type MonorailEventHandleMap = {
+  // TODO swap these out as soon as the polaris events are released
+  searchClick: PlusOverviewTimeFrameClick_2_1['schemaId'];
+  searchQuery: PortalCsatSource_2_0['schemaId'];
+};
+
+type MonorailEventHandles = keyof MonorailEventHandleMap;
+
+const schemas: MonorailEventHandleMap = {
+  searchClick: 'plus_overview_time_frame_click/2.1',
+  searchQuery: 'portal_csat_source/2.0',
+};
 
 const SearchContext = createContext({id: '', currentItemId: ''});
 
@@ -53,9 +70,9 @@ const monorail =
         debugMode: true, // we may not want to log these in staging
       });
 
-const monorailEvent = (monorailSchema, monorailFields: any) => {
+const monorailEvent = (event: MonorailEventHandles, monorailFields: any) => {
   return monorail.produce({
-    schemaId: monorailSchema,
+    schemaId: schemas[event],
     payload: {...monorailFields, locale: document.documentElement.lang},
   });
 };
@@ -79,7 +96,7 @@ function captureSearchClick(
     rank: resultRank,
   };
 
-  monorailEvent('polaris_docs_search_click/1.0', monorailFields);
+  monorailEvent('searchClick', monorailFields);
 }
 
 function captureSearchQuery(
@@ -99,7 +116,7 @@ function captureSearchQuery(
     monorailFields[`url${index}`] = result.url;
   });
 
-  monorailEvent('polaris_docs_search_query/1.0', monorailFields);
+  monorailEvent('searchQuery', monorailFields);
 }
 
 function scrollIntoView() {
