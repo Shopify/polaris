@@ -307,7 +307,7 @@ When checking out from your online store, the customer:
 
 Menu lists give users a horizontal set of actions when space is limited. The order of actions is often based on logic, such as most popular actions.
 
-Actions in a menu follow a {verb}+{noun} pattern. If there’s enough context, then only a verb might be required.
+Actions in a menu follow a \{verb\}+\{noun\} pattern. If there’s enough context, only a verb might be required.
 
 <DoDont>
 
