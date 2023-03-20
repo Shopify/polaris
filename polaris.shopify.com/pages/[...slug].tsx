@@ -13,49 +13,34 @@ import {
 } from '../src/components/Markdown/serialize';
 import Markdown from '../src/components/Markdown';
 import Page from '../src/components/Page';
-import StatusBanner from '../src/components/StatusBanner';
-import Longform from '../src/components/Longform';
 import PageMeta from '../src/components/PageMeta';
 import {Status} from '../src/types';
-import UpdateBanner from '../src/components/UpdateBanner';
 
 interface FrontMatter {
   title: string;
   noIndex?: boolean;
   status?: Status;
   update?: string;
-  description?: string;
+  seoDescription?: string;
 }
 
 interface Props {
   mdx: SerializedMdx<FrontMatter>;
-  descriptionMdx: SerializedMdx | null;
+  seoDescription?: string;
   editPageLinkPath: string;
 }
 
 const CatchAllTemplate = ({
   mdx,
-  descriptionMdx,
+  seoDescription,
   editPageLinkPath,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const {title, description, update, status, noIndex = false} = mdx.frontmatter;
-
-  const typedStatus: Status | undefined = status
-    ? {
-        value: status.value.toLowerCase() as Status['value'],
-        message: status.message,
-      }
-    : undefined;
+  const {title, noIndex = false} = mdx.frontmatter;
 
   return (
-    <Page title={title} editPageLinkPath={editPageLinkPath} isContentPage>
-      <PageMeta title={title} description={description} noIndex={noIndex} />
-      <Longform>
-        {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
-        {typedStatus && <StatusBanner status={typedStatus} />}
-        {update && <UpdateBanner message={update} />}
-        <Markdown {...mdx} />
-      </Longform>
+    <Page editPageLinkPath={editPageLinkPath} isContentPage>
+      <PageMeta title={title} description={seoDescription} noIndex={noIndex} />
+      <Markdown {...mdx} />
     </Page>
   );
 };
@@ -81,17 +66,16 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
 
-    const mdx = await serializeMdx<FrontMatter>(markdown);
+    const [mdx, data] = await serializeMdx<FrontMatter>(markdown);
 
-    let descriptionMdx: SerializedMdx | null = null;
-
-    if (mdx.frontmatter.description) {
-      descriptionMdx = await serializeMdx(mdx.frontmatter.description);
-    }
+    const seoDescription =
+      typeof mdx.frontmatter.seoDescription === 'string'
+        ? mdx.frontmatter.seoDescription
+        : (data.firstParagraph as string) ?? null;
 
     const props: Props = {
       mdx,
-      descriptionMdx,
+      seoDescription,
       editPageLinkPath,
     };
 
