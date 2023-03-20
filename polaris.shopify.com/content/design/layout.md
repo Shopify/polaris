@@ -58,19 +58,14 @@ Layout components are intended to solve about 80% of layout use cases. But they 
 
 When building, keep the following behaviors and limitations in mind.
 
-**Layout components are single purpose, composable, and flexible.**
-Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup.
+<div as="SideBySide">
 
-Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.
+- <span>Layout components are single purpose, composable, and flexible. Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
+- <span>Layout components shouldn’t affect anything outside their borders. They should only impact components rendered inside of them. The exception is the Bleed component.</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
+- <span>Layout components have a default spacing of 0. There isn’t a perfect default, so add spacing with intention. For more information, refer to the Space guide.</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
+- <span>Layout component behaviors rely on Polaris tokens. Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a Polaris design token.</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
 
-**Layout components shouldn’t affect anything outside their borders.**
-They should only impact components rendered inside of them. The exception is the Bleed component.
-
-**Layout components have a default spacing of 0.**
-There isn’t a perfect default, so add spacing with intention. For more information, refer to the Space guide.
-
-**Layout component behaviors rely on Polaris tokens.**
-Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a Polaris design token.
+</div>
 
 ## Designing with layout components
 tktktk
