@@ -63,7 +63,7 @@ Labels should:
 - Be independent sentences. To support [internationalization](https://polaris.shopify.com/foundations/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -73,9 +73,9 @@ Labels should:
 
 - What is your email address?
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -85,7 +85,7 @@ Labels should:
 
 - My phone number is:
 
-<!-- end -->
+</DoDont>
 
 ### Select options
 

@@ -49,7 +49,7 @@ Tooltips should:
 - Be concise and scannable
 - Not be used to communicate error messages or important account information
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -59,7 +59,7 @@ Post reach is the number of people who have seen your post in their News Feed.
 
 To continue using Shopify, this amount must be paid immediately.
 
-<!-- end -->
+</DoDont>
 
 ---
 
