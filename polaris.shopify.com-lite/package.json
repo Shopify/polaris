@@ -11,12 +11,13 @@
     "get-props": "typedoc"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.2.4",
+    "@floating-ui/react-dom": "^1.2.4",
     "@headlessui/react": "^1.7.13",
     "@types/formidable": "^2.0.5",
     "@types/node": "^18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@types/sharp": "^0.31.1",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "formidable": "^2.1.1",
@@ -30,8 +31,11 @@
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "sass": "^1.59.3",
+    "satori": "^0.4.3",
+    "sharp": "^0.31.3",
     "ts-node": "^10.9.1",
     "typedoc": "^0.23.27",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "yarn": "^1.22.19"
   }
 }

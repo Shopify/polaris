@@ -63,6 +63,23 @@ function createPage(
   }
 }
 
+createPage({
+  id: nanoid(),
+  title: 'Home',
+  excerpt: '',
+  slug: 'home',
+  parentId: null,
+  order: 0,
+  layout: 'blocks',
+  allowChildren: false,
+  hideInNav: true,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: null,
+  keywords: [],
+  hasSeparatorInNav: false,
+});
+
 // Migrate components
 const componentsIndexFile = fs.readFileSync(
   'legacy/content/components/index.md',

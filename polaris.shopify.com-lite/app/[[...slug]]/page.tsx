@@ -5,20 +5,30 @@ import Icons from '@/components/Icons';
 import PropsTable from '@/components/PropsTable';
 import TOC from '@/components/TOC';
 import {content} from '@/content';
-import {ResolvedPage, ResolvedPageWithBlocks} from '@/types';
+import {
+  ComponentsPageMeta,
+  ResolvedPage,
+  ResolvedPageWithBlocks,
+} from '@/types';
 import {getPageByPath, getResolvedPage, toPascalCase} from '@/utils';
 import {Metadata} from 'next';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {JSONOutput} from 'typedoc';
 import styles from './page.module.scss';
-import page from '../examples/test/page';
+import ComponentMeta from './componentMeta';
+import Markdown from '@/components/Markdown';
+import Longform from '@/components/Longform';
 
-async function loadPage(
-  slug?: string[],
-): Promise<ResolvedPageWithBlocks | undefined> {
-  if (!slug) return undefined;
-  const page = getPageByPath(content, slug.join('/'));
+async function loadPage(slug?: string[]): Promise<ResolvedPageWithBlocks> {
+  const page = slug
+    ? getPageByPath(content, slug.join('/'))
+    : getPageByPath(content, 'home');
+
+  if (!page) {
+    return notFound();
+  }
+
   if (page) {
     return getResolvedPage(content, page, true);
   } else {
@@ -90,38 +100,50 @@ export async function generateMetadata({
 }: {
   params: {slug: string[] | undefined};
 }): Promise<Metadata> {
-  if (!params.slug)
-    return {
-      title: 'Shopify Polaris',
-      description: '',
-    };
+  const page = params.slug
+    ? getPageByPath(content, params.slug.join('/'))
+    : getPageByPath(content, 'home');
 
-  const page = getPageByPath(content, params.slug.join('/'));
+  if (!page) {
+    return notFound();
+  }
+
   if (page) {
     const title = `${page.title} — Shopify Polaris`;
     return {
       title,
       description: page.excerpt,
+      openGraph: {
+        images: [`/og.png?id=${page.id}`],
+      },
     };
   } else {
     return {};
   }
 }
 
+async function LoadCodeExamples(
+  componentsPageMeta: ComponentsPageMeta,
+): Promise<{[fileName: string]: string}> {
+  const examples: {[fileName: string]: string} = {};
+  componentsPageMeta.examples.forEach((example) => {
+    const fileName = `./app/examples/${example.fileName.replace(
+      '.tsx',
+      '',
+    )}/page.tsx`;
+    const fileExists = fs.existsSync(fileName);
+    if (fileExists) {
+      examples[example.fileName] = fs.readFileSync(fileName, 'utf-8');
+    }
+  });
+  return examples;
+}
+
 export default async function Home({params}: {params: {slug: string[]}}) {
   const {slug} = params;
-
   const page = await loadPage(slug);
 
-  if (!page) {
-    return (
-      <PageWrapper title="Shopify Polaris" excerpt="" breadcrumbs={[]}>
-        Home
-      </PageWrapper>
-    );
-  }
-
-  if (slug.join('/') === 'icons') {
+  if (slug && slug.join('/') === 'icons') {
     return (
       <PageWrapper
         title={page.title}
@@ -134,7 +156,13 @@ export default async function Home({params}: {params: {slug: string[]}}) {
   }
 
   const childPages = await loadChildPages(page);
-  const props = await loadProps(toPascalCase(`${page.title}Props`));
+  const {pageMeta} = page;
+  const props =
+    pageMeta?.type === 'components'
+      ? await loadProps(toPascalCase(`${page.title}Props`))
+      : undefined;
+  const codeExamples =
+    pageMeta?.type === 'components' ? await LoadCodeExamples(pageMeta) : {};
 
   return (
     <PageWrapper
@@ -146,39 +174,28 @@ export default async function Home({params}: {params: {slug: string[]}}) {
         Website route {JSON.stringify({page})} {JSON.stringify({childPages})}
       </p> */}
 
-      {page.pageMeta?.type === 'components' && (
-        <>
-          <p>Lifecycle phase: {page.pageMeta.lifeCyclePhase}</p>
-          {page.pageMeta.examples.length > 0 && (
-            <iframe
-              style={{width: '100%', aspectRatio: '16/6', marginBottom: '3rem'}}
-              src={`/examples/${page.pageMeta.examples[0].fileName.replace(
-                '.tsx',
-                '',
-              )}`}
-            ></iframe>
-          )}
-        </>
+      {pageMeta?.type === 'components' && (
+        <ComponentMeta pageMeta={pageMeta} codeExamples={codeExamples} />
       )}
 
       <div className={styles.PageLayout}>
         <main>
-          {page && (
+          {pageMeta?.type === 'components' && props && (
             <>
-              {page.pageMeta?.type === 'components' && (
-                <PropsTable props={props.props} references={props.references} />
-              )}
-
-              {page.layout === 'listing' ? (
-                <ChildpageListing pages={childPages} />
-              ) : (
-                <>
-                  <EditorRenderer page={page} />
-                </>
-              )}
+              <Longform>
+                <h2 id="props">Props</h2>
+              </Longform>
+              <PropsTable props={props.props} references={props.references} />
             </>
           )}
+
+          {page.layout === 'listing' ? (
+            <ChildpageListing pages={childPages} />
+          ) : (
+            <EditorRenderer page={page} />
+          )}
         </main>
+
         {page.layout === 'blocks' && (
           <aside>
             <TOC pageId={page.id} />
@@ -218,7 +235,10 @@ function PageWrapper({
       )}
 
       <h1>{title}</h1>
-      <p>{excerpt}</p>
+
+      <Longform>
+        <Markdown>{excerpt}</Markdown>
+      </Longform>
 
       {children}
     </div>
