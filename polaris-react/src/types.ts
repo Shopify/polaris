@@ -249,7 +249,7 @@ export interface MenuGroupDescriptor extends BadgeAction {
   /** Callback when the menu is clicked */
   onClick?(openActions: () => void): void;
   /** Reference to return focus to the actions group activator */
-  actionGroupsActivator?: LegacyRef<HTMLSpanElement> | undefined;
+  groupActivatorRef?: LegacyRef<HTMLSpanElement> | undefined;
 }
 
 export interface ConnectedDisclosure {
