@@ -2,41 +2,49 @@ import React, {type ComponentProps} from 'react';
 import {MDXRemote} from 'next-mdx-remote';
 
 import styles from './Markdown.module.scss';
-import {slugify} from '../../utils/various';
 import Code from '../Code';
+import StatusBanner from '../../components/StatusBanner';
+import {Lede} from '../../components/Lede';
+import UpdateBanner from '../../components/UpdateBanner';
 import {SideBySide} from './components/SideBySide';
 import {DoDont} from './components/DoDont';
+import {Heading} from '../../components/Heading';
 
 function Markdown(props: ComponentProps<typeof MDXRemote>) {
   return (
     <MDXRemote
       {...props}
       components={{
-        h1: ({children}) => {
-          return <h1>{children}</h1>;
-        },
-        h2: ({children}) => {
-          if (
-            Array.isArray(children) &&
-            children.length === 1 &&
-            typeof children[0] === 'string'
-          ) {
-            return <h2 id={slugify(children[0])}>{children}</h2>;
-          } else {
-            return <h2>{children}</h2>;
-          }
-        },
-        h3: ({children}) => {
-          if (
-            Array.isArray(children) &&
-            children.length === 1 &&
-            typeof children[0] === 'string'
-          ) {
-            return <h3 id={slugify(children[0])}>{children}</h3>;
-          } else {
-            return <h3>{children}</h3>;
-          }
-        },
+        h1: ({id, children}) => (
+          <Heading as="h1" id={id}>
+            {children}
+          </Heading>
+        ),
+        h2: ({id, children}) => (
+          <Heading as="h2" id={id}>
+            {children}
+          </Heading>
+        ),
+        h3: ({id, children}) => (
+          <Heading as="h3" id={id}>
+            {children}
+          </Heading>
+        ),
+        h4: ({id, children}) => (
+          <Heading as="h4" id={id}>
+            {children}
+          </Heading>
+        ),
+        h5: ({id, children}) => (
+          <Heading as="h5" id={id}>
+            {children}
+          </Heading>
+        ),
+        h5: ({id, children}) => (
+          <Heading as="h5" id={id}>
+            {children}
+          </Heading>
+        ),
         img: ({src, alt}) =>
           src ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -58,6 +66,9 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
         ),
         SideBySide,
         DoDont,
+        StatusBanner,
+        UpdateBanner,
+        Lede,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">

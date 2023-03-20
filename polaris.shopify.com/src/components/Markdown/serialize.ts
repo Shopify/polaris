@@ -1,11 +1,13 @@
 import {type MDXRemoteSerializeResult} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
 import remarkUnwrapImages from 'remark-unwrap-images';
-import rehypeRaw from 'rehype-raw';
+import {VFile, type Data} from 'vfile';
 import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
+import remarkSlug from 'remark-slug';
 import {visit} from 'unist-util-visit';
 import type {Plugin} from 'unified';
+
+import remarkExtractFirstParagraph from './remark-extract-first-paragraph';
 
 export type DefaultScope = Record<string, unknown>;
 export type DefaultFrontmatter = Record<string, unknown>;
@@ -33,7 +35,7 @@ function codeMetaAsDataAttribute(): Plugin {
 // the server. To reduce client bundle size, this function should only be
 // imported directly in a page level component, and not exported from this
 // folder's index file.
-export const serializeMdx = <
+export const serializeMdx = async <
   TFrontmatter = Record<string, unknown>,
   TScope = Record<string, unknown>,
 >(
@@ -42,23 +44,33 @@ export const serializeMdx = <
     Parameters<typeof serialize>[1],
     undefined
   >['mdxOptions'],
-) => {
-  return serialize<TScope, TFrontmatter>(content, {
+): Promise<[SerializedMdx<TFrontmatter, TScope>, Data]> => {
+  const file = new VFile(content);
+  const result = await serialize<TScope, TFrontmatter>(file, {
     parseFrontmatter: true,
     mdxOptions: {
       ...mdxOptions,
       remarkPlugins: [
         [remarkGfm, {tablePipeAlign: true}],
         remarkUnwrapImages,
+        remarkSlug,
         ...(mdxOptions?.remarkPlugins ?? []),
         codeMetaAsDataAttribute,
+        [
+          remarkExtractFirstParagraph,
+          {
+            remove: [
+              // Don't consider images at all
+              'image',
+              // Handle JSX elements by passing through their children
+              ['mdxJsxFlowElement', (node) => node.children || []],
+              ['mdxJsxTextElement', (node) => node.children || []],
+            ],
+          },
+        ],
       ],
-      rehypePlugins: [
-        // TODO: FIXME: Why does this throw an error?
-        //rehypeRaw,
-        rehypeSlug,
-        ...(mdxOptions?.rehypePlugins ?? []),
-      ],
+      rehypePlugins: [...(mdxOptions?.rehypePlugins ?? [])],
     },
   });
+  return [result, file.data];
 };

@@ -23,7 +23,11 @@ export const DoDont = ({children}: PropsWithChildren) => {
   let i = 0;
 
   // leading paragraphs, etc, need to be kept as they are
-  while (i < childrenArray.length && childrenArray[i].type !== 'h4') {
+  while (
+    i < childrenArray.length &&
+    childrenArray[i].type !== 'h4' &&
+    childrenArray[i].type?.name !== 'h4'
+  ) {
     prefix.push(childrenArray[i]);
     i++;
   }
@@ -40,7 +44,11 @@ export const DoDont = ({children}: PropsWithChildren) => {
     i++;
 
     // Add all the non-headings
-    while (i < childrenArray.length && childrenArray[i].type !== 'h4') {
+    while (
+      i < childrenArray.length &&
+      childrenArray[i].type !== 'h4' &&
+      childrenArray[i].type?.name !== 'h4'
+    ) {
       target.push(childrenArray[i]);
       i++;
     }
