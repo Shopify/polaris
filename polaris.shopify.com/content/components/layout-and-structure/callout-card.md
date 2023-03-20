@@ -58,7 +58,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -68,12 +68,12 @@ Get performance data for all your sales channels.
 
 Now you can get performance data for all your sales channels.
 
-<!-- end -->
+</DoDont>
 
 - Structured for merchant success: always put the most critical information first
 - Clear: use the verb “need” to help merchants understand when they’re required to do something
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -83,7 +83,7 @@ To buy a shipping label, you need to enter the total weight of your shipment, in
 
 To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
-<!-- end -->
+</DoDont>
 
 ### Call to action
 
@@ -91,7 +91,7 @@ Buttons should be:
 
 Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -101,11 +101,11 @@ Buy shipping label
 
 Buy
 
-<!-- end -->
+</DoDont>
 
 - Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -115,11 +115,11 @@ View shipping settings
 
 View your settings
 
-<!-- end -->
+</DoDont>
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -129,7 +129,7 @@ Add menu item
 
 Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ---
 

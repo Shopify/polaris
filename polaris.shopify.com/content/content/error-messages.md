@@ -128,7 +128,7 @@ Examples of critical message types:
 - Review an order for fraud
 - Fix a problem that’s preventing payment from being processed
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -138,11 +138,11 @@ Examples of critical message types:
 
 ![Yellow banner with high fraud risk message](/images/content/error-messages/yellow-banner@2x.png)
 
-<!-- end -->
+</DoDont>
 
 The one exception to using red is in form validation errors because this is a standard convention merchants are used to seeing outside of Shopify.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -152,7 +152,7 @@ The one exception to using red is in form validation errors because this is a st
 
 ![Form validation with yellow banner](/images/content/error-messages/validation-banner-yellow@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Yellow (warning)
 
@@ -170,7 +170,7 @@ Examples of warning message types:
 - Changing a setting might have unintended consequences. See
   [settings warning](#settings-warning).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -180,7 +180,7 @@ Examples of warning message types:
 
 ![Red banner with warning message](/images/content/error-messages/yellow-dont@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -190,7 +190,7 @@ Examples of warning message types:
 
 Although error toast is still available, we discourage its use. Toast messages are too short to adequately explain what went wrong and how to fix the problem. Because the toast component appears at the bottom of the screen and disappears after 3 seconds, it can easily be missed. Reserve toast for errors not caused by merchants, like a connection issue. Always try to use a banner to inform merchants about persistent errors.
 
-<!-- dodont -->
+<DoDont>
 
 #### Don’t
 
@@ -201,7 +201,9 @@ Although error toast is still available, we discourage its use. Toast messages a
 Modal dialogs are a good way to ask merchants to confirm a destructive action, but not to tell them an error has occurred.
 Modals block merchants until a decision is made, which is likely to make merchants feel pressured. Most errors don’t need to block access to the rest of the feature.
 
-<!-- dodont -->
+</DoDont>
+
+<DoDont>
 
 #### Don’t
 
@@ -213,15 +215,15 @@ Home notification errors are for high-priority tasks that merchants must complet
 a negative impact to their business, like losing money.
 One exception is errors for features that don‘t have a dedicated details page.
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Don’t
 
 ![Home notification error message](/images/content/error-messages/dont-home-notification@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -324,7 +326,7 @@ Individual field error messages:
 
 Rather than pointing out that there are {x} number of errors, be more descriptive. Explain that in order to save or continue, {x} number of fields need to be changed. For the bullet point instructions, see if you can word them to be more actionable, for example, “Add a discount code,“ instead of “Discount can’t be blank.“
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -334,7 +336,7 @@ Rather than pointing out that there are {x} number of errors, be more descriptiv
 
 ![Validation banner that only points out that there is an error](/images/content/error-messages/validation-banner-content-dont@2x.png)
 
-<!-- end -->
+</DoDont>
 
 **Usage**
 
@@ -414,7 +416,7 @@ Page-level banner errors should explain:
 - Why it happened
 - What to do next
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -424,7 +426,7 @@ Page-level banner errors should explain:
 
 - Unable to process payment for checkout with negative taxes.
 
-<!-- end -->
+</DoDont>
 
 ### Component
 
@@ -557,7 +559,7 @@ Warning home notifications are pre-emptive. They let merchants know that their f
 - Warn about upcoming expiration
 - Pending status, like with Shopify Capital application status
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -567,7 +569,7 @@ Warning home notifications are pre-emptive. They let merchants know that their f
 
 ![Warning home notification with chargeback message](/images/content/error-messages/dont-home-notification@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Critical home notifications
 
@@ -587,7 +589,7 @@ Critical home notifications can be used for these message types:
 - Payment processing issues
 - Payment authorizations expiring that day
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -597,7 +599,7 @@ Critical home notifications can be used for these message types:
 
 ![Critical home notification with out of stock message](/images/content/error-messages/dont-home-notification-02@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -613,7 +615,7 @@ Don’t use when:
 
 - The error can be placed in context, close to the source of the problem
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -623,11 +625,11 @@ Don’t use when:
 
 ![Page not found error with oops, something went wrong message](/images/content/error-messages/dont-page-not-found@2x.png)
 
-<!-- end -->
+</DoDont>
 
 Don’t use internal language in error messages and avoid using question formats.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -637,7 +639,7 @@ Don’t use internal language in error messages and avoid using question formats
 
 ![Problem loading page error with content that talks about operational engineers](/images/content/error-messages/dont-admin-error@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Component:
 
@@ -669,7 +671,7 @@ Don’t use when:
 
 - There’s literally any solution we can offer to merchants
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
