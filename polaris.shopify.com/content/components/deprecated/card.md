@@ -1,6 +1,6 @@
 ---
-title: Legacy card
-description: This is the legacy version of the Card component which is in the process of being updated to a more flexible and composable API. Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
+title: Card
+description: Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
 category: Deprecated
 keywords:
   - layout
@@ -20,60 +20,61 @@ keywords:
   - subdued card for secondary content
   - callout
   - call out
-  - legacy card
 status:
   value: Deprecated
-  message: This component is no longer supported. The new [Card component](/components/layout-and-structure/card) can be used in combination with the new layout primitives to achieve similar results to LegacyCard. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+  message: >-
+    Card was built prior to layout primitives like box, inline, and alpha stack.
+    The new layout primitives can be used in combination to achieve similar results to card, or the existing legacy card.
 examples:
-  - fileName: legacy-card-default.tsx
+  - fileName: deprecated-card-default.tsx
     title: Default
     description: Use when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
-  - fileName: legacy-card-with-header-actions.tsx
+  - fileName: deprecated-card-with-header-actions.tsx
     title: With header actions
     description: Use for less important card actions, or actions merchants may do before reviewing the contents of the card. For example, merchants may want to add items to a card containing a long list, or enter a customer’s new address.
-  - fileName: legacy-card-with-footer-actions.tsx
+  - fileName: deprecated-card-with-footer-actions.tsx
     title: With footer actions
     description: Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information. Footer actions can be left or right aligned with the `footerActionAlignment` prop.
-  - fileName: legacy-card-with-multiple-footer-actions.tsx
+  - fileName: deprecated-card-with-multiple-footer-actions.tsx
     title: With multiple footer actions
     description: When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop.
-  - fileName: legacy-card-with-custom-footer-actions.tsx
+  - fileName: deprecated-card-with-custom-footer-actions.tsx
     title: With custom footer actions
     description: Use to present actionable content that is optional or not the primary purpose of the page.
-  - fileName: legacy-card-with-destructive-footer-action.tsx
+  - fileName: deprecated-card-with-destructive-footer-action.tsx
     title: With destructive footer action
     description: Use when a card action will delete merchant data or be otherwise difficult to recover from.
-  - fileName: legacy-card-with-multiple-sections.tsx
+  - fileName: deprecated-card-with-multiple-sections.tsx
     title: With multiple sections
     description: Use when you have two related but distinct pieces of information to communicate to merchants. Multiple sections can help break up complicated concepts to make them easier to scan and understand.
-  - fileName: legacy-card-with-multiple-titled-sections.tsx
+  - fileName: deprecated-card-with-multiple-titled-sections.tsx
     title: With multiple titled sections
     description: Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
-  - fileName: legacy-card-with-sections-and-actions.tsx
+  - fileName: deprecated-card-with-sections-and-actions.tsx
     title: With sections and actions
     description: Use when your card section has actions that apply only to that section.
-  - fileName: legacy-card-with-subsection.tsx
+  - fileName: deprecated-card-with-subsection.tsx
     title: With subsection
     description: Use when your card sections need further categorization.
-  - fileName: legacy-card-with-destructive-action.tsx
+  - fileName: deprecated-card-with-destructive-action.tsx
     title: With destructive action
     description: Use when a card action applies only to one section and will delete merchant data or be otherwise difficult to recover from.
-  - fileName: legacy-card-with-a-subdued-section.tsx
+  - fileName: deprecated-card-with-a-subdued-section.tsx
     title: With a subdued section
     description: Use to indicate when one of the sections in your card contains inactive or disabled content.
-  - fileName: legacy-card-with-subdued-for-secondary-content.tsx
+  - fileName: deprecated-card-with-subdued-for-secondary-content.tsx
     title: With subdued for secondary content
     description: Use for content that you want to deprioritize. Subdued cards don’t stand out as much as cards with white backgrounds so don’t use them for information or actions that are critical to merchants.
-  - fileName: legacy-card-with-separate-header.tsx
+  - fileName: deprecated-card-with-separate-header.tsx
     title: With separate header
     description: Use to be able to use custom React elements as header content.
-  - fileName: legacy-card-with-custom-react-node-title.tsx
+  - fileName: deprecated-card-with-custom-react-node-title.tsx
     title: With custom React Node title
     description: Use to render custom content such as icons, links, or buttons in a card section’s header.
-  - fileName: legacy-card-with-all-elements.tsx
+  - fileName: deprecated-card-with-all-elements.tsx
     title: With all elements
     description: Use as a broad example that includes most props available to card.
-  - fileName: legacy-card-with-flushed-sections.tsx
+  - fileName: deprecated-card-with-flushed-sections.tsx
     title: With flushed sections
     description: Use when you need further control over the spacing of your card sections.
 ---
@@ -198,14 +199,14 @@ Links should be:
 
 ## Related components
 
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout-and-structure/layout)
 - To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/callout-card)
 
 ---
 
 ## Accessibility
 
-The required `title` prop gives the card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
+The `title` prop gives the card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
 
 If you use the `subdued` prop on a card or section, make sure that the card or section `title` conveys the reason for using `subdued`. This ensures that merchants with low vision, including those who use screen readers, can identify that the content is inactive or less important.
 
@@ -214,23 +215,23 @@ If you use the `subdued` prop on a card or section, make sure that the card or s
 #### Do
 
 ```
-<LegacyCard title="Deactivated staff accounts" sectioned subdued>
+<Card title="Deactivated staff accounts" sectioned subdued>
   <List>
     <List.Item>Felix Crafford</List.Item>
     <List.Item>Ezequiel Manno</List.Item>
   </List>
-</LegacyCard>
+</Card>
 ```
 
 #### Don’t
 
 ```
-<LegacyCard title="Staff accounts" sectioned subdued>
+<Card title="Staff accounts" sectioned subdued>
   <List>
     <List.Item>Felix Crafford</List.Item>
     <List.Item>Ezequiel Manno</List.Item>
   </List>
-</LegacyCard>
+</Card>
 ```
 
 </DoDont>
