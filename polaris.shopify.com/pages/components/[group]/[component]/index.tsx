@@ -3,11 +3,17 @@ import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
 import ComponentExamples from '../../../../src/components/ComponentExamples';
-import type {ComponentExample} from '../../../../src/components/ComponentExamples';
+import type {
+  ComponentExample,
+  ComponentExampleSerialized,
+} from '../../../../src/components/ComponentExamples';
 import Longform from '../../../../src/components/Longform';
+import {
+  serializeMdx,
+  type SerializedMdx,
+} from '../../../../src/components/Markdown/serialize';
 import Markdown from '../../../../src/components/Markdown';
 import Page from '../../../../src/components/Page';
-import {parseMarkdown} from '../../../../src/utils/markdown.mjs';
 import {toPascalCase} from '../../../../src/utils/various';
 import PageMeta from '../../../../src/components/PageMeta';
 import {Status, FilteredTypes, AllTypes} from '../../../../src/types';
@@ -16,40 +22,37 @@ import TipBanner from '../../../../src/components/TipBanner/TipBanner';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
 
-interface MarkdownData {
-  frontMatter: any;
+interface FrontMatter {
+  status?: Status;
+  title: string;
+  examples: ComponentExample[];
   description: string;
-  readme: string;
+  updateBannerMessage?: string;
 }
 
 interface Props {
-  examples: ComponentExample[];
-  status?: Status;
-  title: string;
-  description: string;
-  readme: {
-    body: string;
-    header: string;
-  };
+  mdx: SerializedMdx<FrontMatter>;
+  descriptionMdx: SerializedMdx | null;
+  examples: ComponentExampleSerialized[];
   type: FilteredTypes;
   editPageLinkPath: string;
-  tip?: string;
+}
+
+interface Props {
+  editPageLinkPath: string;
 }
 
 const Components = ({
   examples,
-  description,
-  title,
-  readme,
-  status,
+  mdx,
+  descriptionMdx,
   type,
-  tip,
   editPageLinkPath,
 }: Props) => {
-  const typedStatus: Status | undefined = status
+  const typedStatus: Status | undefined = mdx.frontmatter.status
     ? {
-        value: status.value.toLowerCase() as Status['value'],
-        message: status.message,
+        value: mdx.frontmatter.status.value.toLowerCase() as Status['value'],
+        message: mdx.frontmatter.status.message,
       }
     : undefined;
 
@@ -57,21 +60,26 @@ const Components = ({
     <ComponentExamples examples={examples} />
   );
   const propsTable =
-    type && status?.value !== 'Deprecated' ? (
-      <PropsTable componentName={title} types={type} />
+    type && mdx.frontmatter.status?.value !== 'Deprecated' ? (
+      <PropsTable componentName={mdx.frontmatter.title} types={type} />
     ) : null;
 
   return (
-    <Page title={title} editPageLinkPath={editPageLinkPath} isContentPage>
-      <PageMeta title={title} description={description} />
+    <Page
+      title={mdx.frontmatter.title}
+      editPageLinkPath={editPageLinkPath}
+      isContentPage
+    >
+      <PageMeta
+        title={mdx.frontmatter.title}
+        description={mdx.frontmatter.description}
+      />
 
       <Longform>
-        <Markdown>{description}</Markdown>
+        {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
         {typedStatus && <StatusBanner status={typedStatus} />}
-        {tip && (
-          <TipBanner title="Tip">
-            <Markdown>{tip}</Markdown>
-          </TipBanner>
+        {mdx.frontmatter.updateBannerMessage && (
+          <UpdateBanner message={mdx.frontmatter.updateBannerMessage} />
         )}
         {componentExamples}
       </Longform>
@@ -79,7 +87,7 @@ const Components = ({
       {propsTable}
 
       <Longform firstParagraphIsLede={false}>
-        <Markdown>{readme.body}</Markdown>
+        <Markdown {...mdx} />
       </Longform>
     </Page>
   );
@@ -98,40 +106,47 @@ export const getStaticProps: GetStaticProps<
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
-    const data: MarkdownData = parseMarkdown(componentMarkdown);
 
-    const description = data.frontMatter.description;
-    const body = data.readme;
-    const tip = data.frontMatter.tip || '';
+    const mdx = await serializeMdx<FrontMatter>(componentMarkdown);
+    console.log('mdx: ', mdx);
 
-    const readme = {description, body};
+    let descriptionMdx: SerializedMdx | null = null;
 
-    const examples = (data?.frontMatter?.examples || []).map(
-      (example: ComponentExample) => {
-        const examplePath = path.resolve(
-          process.cwd(),
-          `pages/examples/${example.fileName}`,
-        );
-        let code = '';
+    if (mdx.frontmatter.description) {
+      descriptionMdx = await serializeMdx(mdx.frontmatter.description);
+      console.log('description: ', descriptionMdx);
+    }
 
-        if (fs.existsSync(examplePath)) {
-          code = fs.readFileSync(examplePath, 'utf-8');
-          code = code
-            .split('\n')
-            .filter((line) => !line.includes('withPolarisExample'))
-            .join('\n');
-        }
+    const examples = await Promise.all(
+      (mdx.frontmatter.examples || []).map(
+        async (example: ComponentExample) => {
+          const examplePath = path.resolve(
+            process.cwd(),
+            `pages/examples/${example.fileName}`,
+          );
+          let code = '';
 
-        return {...example, code};
-      },
+          if (fs.existsSync(examplePath)) {
+            code = fs.readFileSync(examplePath, 'utf-8');
+            code = code
+              .split('\n')
+              .filter((line) => !line.includes('withPolarisExample'))
+              .join('\n');
+          }
+
+          const description = await serializeMdx(example.description);
+
+          return {...example, description, code};
+        },
+      ),
     );
 
     const propsFilePath = path.resolve(process.cwd(), `.cache/props.json`);
     const fileContent = fs.readFileSync(propsFilePath, 'utf8');
     const allType: AllTypes = JSON.parse(fileContent);
 
-    const componentDirName = toPascalCase(`${data.frontMatter.title} `);
-    const propName = toPascalCase(`${data.frontMatter.title} Props`);
+    const componentDirName = toPascalCase(`${mdx.frontmatter.title} `);
+    const propName = toPascalCase(`${mdx.frontmatter.title} Props`);
 
     let type = getRelevantTypes(
       allType,
@@ -141,11 +156,9 @@ export const getStaticProps: GetStaticProps<
     );
 
     const props: Props = {
-      ...data.frontMatter,
+      mdx,
       examples,
-      tip,
-      description,
-      readme,
+      descriptionMdx,
       type,
       editPageLinkPath,
     };
