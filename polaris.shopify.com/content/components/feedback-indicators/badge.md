@@ -90,13 +90,13 @@ The available badges for fulfillment tone are:
 - Unfulfilled
 - Restocked
 
-<!-- dodont -->
+<DoDont>
 
 #### Don’t
 
 Don’t use alternatives to existing badge options. Only create a new badge option if there aren’t any existing options to communicate the tone you need.
 
-<!-- end -->
+</DoDont>
 
 ---
 
