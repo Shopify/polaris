@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "เลือก {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "ยกเลิกการเลือก {resourceNamePlural} ทั้ง {itemsLength} รายการ",
       "a11yCheckboxSelectAllMultiple": "เลือก {resourceNamePlural} ทั้ง {itemsLength} รายการ",
-      "ariaLiveSingular": "{itemsLength} รายการ",
-      "ariaLivePlural": "{itemsLength} รายการ",
       "Item": {
         "actionsDropdownLabel": "การดำเนินการสำหรับ {accessibilityLabel}",
         "actionsDropdown": "เมนูดรอปดาวน์ของการดำเนินการ",
@@ -290,7 +288,7 @@
       "emptySearchTitle": "ไม่พบ {resourceNamePlural}",
       "emptySearchDescription": "ลองเปลี่ยนตัวกรองหรือคำค้นหา",
       "onboardingBadgeText": "ใหม่",
-      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}...",
+      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}…",
       "selectAllLabel": "เลือก {resourceNamePlural} ทั้งหมด",
       "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
       "undo": "เลิกทำ",
