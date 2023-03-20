@@ -232,7 +232,7 @@ Bar charts are used for comparing discrete categories. Use a bar chart when ther
 
 ### Best used for
 
-Showing discrete categories of data, like {products} vs {sales}.
+Showing discrete categories of data, like \{products\} vs \{sales\}.
 
 ### Don’t use
 

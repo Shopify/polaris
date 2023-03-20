@@ -125,7 +125,7 @@ When a merchant has 11 or more customer segments:
 
 - Add text search above the segment list. This allows merchants to search for segments by name.
 - Below the pinned "All customers" and active or selected segments, display the 4 most recently edited segments. If there are none, show the first 4 segments from the full list.
-- Below the recently edited segments, display a listbox action to "Show all {total number} segments". Clicking the action should show the inactive search state, displaying the full list of segments.
+- Below the recently edited segments, display a listbox action to "Show all \{total number\} segments". Clicking the action should show the inactive search state, displaying the full list of segments.
 - Segments should be paginated and load more when merchants scroll to the bottom of the list.
 
 #### Flow automations

@@ -73,7 +73,7 @@ Modals should:
 
 Modal titles should:
 
-- Use a clear {verb}+{noun} question or statement
+- Use a clear \{verb\}+\{noun\} question or statement
 - Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings)
 
 <DoDont>
@@ -147,7 +147,7 @@ Actions should be:
 
 </DoDont>
 
-- Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
+- Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the \{verb\}+\{noun\} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
 
 <DoDont>
 

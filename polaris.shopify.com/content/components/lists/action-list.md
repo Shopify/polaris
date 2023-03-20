@@ -63,7 +63,7 @@ Buy
 
 </DoDont>
 
-Each item in an action list should always lead with a strong verb that encourages action. To provide enough context use the {verb}+{noun} format unless the action is clear with a single verb.
+Each item in an action list should always lead with a strong verb that encourages action. To provide enough context use the \{verb\}+\{noun\} format unless the action is clear with a single verb.
 
 <DoDont>
 

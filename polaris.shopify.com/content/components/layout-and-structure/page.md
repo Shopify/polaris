@@ -104,7 +104,7 @@ Page header action labels should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a page action. Never deceive merchants by mislabeling an action.
 
-- Action-led: they should always lead with a strong verb that encourages action. To provide enough context to merchants, use the {verb}+{noun} format.
+- Action-led: they should always lead with a strong verb that encourages action. To provide enough context to merchants, use the \{verb\}+\{noun\} format.
 
 <DoDont>
 
@@ -120,7 +120,7 @@ Page header action labels should be:
 
 </DoDont>
 
-- Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the {verb}+{noun} format.
+- Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the \{verb\}+\{noun\} format.
 
   In the context of the orders list page:
 

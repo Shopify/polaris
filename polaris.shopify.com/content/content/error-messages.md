@@ -311,7 +311,7 @@ And one or more of the following:
 Banner heading
 
 - Use a colon to introduce the list.
-- Make the heading instructional. Don’t just call out that there are {x} number of errors.
+- Make the heading instructional. Don’t just call out that there are \{x\} number of errors.
 
 Banner body text
 
@@ -324,7 +324,7 @@ Individual field error messages:
 
 ![Red form validation banner](/images/foundations/patterns/error-messages/validation-banner-red@2x.png)
 
-Rather than pointing out that there are {x} number of errors, be more descriptive. Explain that in order to save or continue, {x} number of fields need to be changed. For the bullet point instructions, see if you can word them to be more actionable, for example, “Add a discount code,“ instead of “Discount can’t be blank.“
+Rather than pointing out that there are \{x\} number of errors, be more descriptive. Explain that in order to save or continue, \{x\} number of fields need to be changed. For the bullet point instructions, see if you can word them to be more actionable, for example, “Add a discount code,“ instead of “Discount can’t be blank.“
 
 <DoDont>
 
@@ -385,7 +385,7 @@ Tip: Explore ways to prevent the warning message from showing at all. Look for o
 - Explain the risks or consequences of an action that’s just been taken
 - These messages don’t have to start with actionable language, like, “Change currency.” Here are some options
   - Start with the word “This” and explain the consequence, for example, “This will affect inventory prices”
-  - Start by noting the action, then explain the consequence, “Changing {x} will affect {y}”
+  - Start by noting the action, then explain the consequence, “Changing \{x\} will affect \{y\}”
 - If available, link to a resource where merchants can learn more
 
 ![In line warning banner below a drop down](/images/foundations/patterns/error-messages/settings-warning@2x.png)

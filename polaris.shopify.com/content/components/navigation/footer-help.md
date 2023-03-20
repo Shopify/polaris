@@ -40,7 +40,7 @@ It’s recommended to link your footer help component to [help documentation](ht
 
 By default, footer help should link to information in the Shopify Help Center and should follow this content pattern:
 
-- Learn more about {X}
+- Learn more about \{X\}
 
 Links should be:
 

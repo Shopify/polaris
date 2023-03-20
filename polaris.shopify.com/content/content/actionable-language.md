@@ -173,7 +173,7 @@ Add your first product and see how it looks in your store.
 
 Buttons need to be clear and predictable. Merchants should be able to anticipate what will happen when they select a button. Never mislead someone by mislabeling a button.
 
-Buttons should always lead with a strong verb that encourages action. To provide enough context to merchants, use the {verb} + {noun} content formula on buttons except in the case of common actions like “Done,” “Close,” “Cancel,” or “OK.”
+Buttons should always lead with a strong verb that encourages action. To provide enough context to merchants, use the \{verb\} + \{noun\} content formula on buttons except in the case of common actions like “Done,” “Close,” “Cancel,” or “OK.”
 
 <DoDont>
 
@@ -263,7 +263,7 @@ It’s better for [internationalization](/foundations/internationalization) to h
 
 ### Links outside of a sentence
 
-Links that aren’t in full sentences should use the {verb + noun} pattern and not be punctuated, with the exception of question marks.
+Links that aren’t in full sentences should use the \{verb + noun\} pattern and not be punctuated, with the exception of question marks.
 
 <DoDont>
 
@@ -293,7 +293,7 @@ Confirmation messages should:
 
 Confirmation titles should:
 
-- Ask if merchants want to continue, using a concise {verb}+{noun} question
+- Ask if merchants want to continue, using a concise \{verb\}+\{noun\} question
 - Be one sentence and avoid using punctuation, with the exception of question marks
 - Avoid articles (the, a, an) to keep content short and actionable
 - Be written in sentence case (the first word is capitalized, and the rest is lowercase)
@@ -342,11 +342,11 @@ Confirmation primary and secondary actions should:
 - Be clear and predictable: merchants should be able to anticipate what will happen when they click a button
 - Scannable: avoid unnecessary words and articles such as “the,” “an,” or “a”
 
-Since confirmation messages are placed in modals, the call to action in the title is in close context to the buttons. Because of this, the call to action text on the buttons doesn’t have to follow the {verb}+{noun} pattern. Instead, one word calls to action can be used, for example, [Cancel] \[Delete].
+Since confirmation messages are placed in modals, the call to action in the title is in close context to the buttons. Because of this, the call to action text on the buttons doesn’t have to follow the \{verb\}+\{noun\} pattern. Instead, one word calls to action can be used, for example, [Cancel] \[Delete].
 
 **Deletions**
 
-Before merchants can delete objects like collections, transfers, products, and variants, we present them with a confirmation message that has two calls to action, one to [Cancel] and one to [Delete]. We keep it short and don’t use {verb}+{noun} button copy.
+Before merchants can delete objects like collections, transfers, products, and variants, we present them with a confirmation message that has two calls to action, one to [Cancel] and one to [Delete]. We keep it short and don’t use \{verb\}+\{noun\} button copy.
 
 Primary action:
 
@@ -465,7 +465,7 @@ Use “Save” as the default for any action that saves immediately to a databas
 
 #### Saving using the context bar component
 
-When merchants make changes on a page they’re sometimes presented with a context bar at the top. This context bar displays a status message on the left to indicate the state of the changes, like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common {verb} + {noun} content formula. For example, [Save] instead of [Save product]. In the context bar component, use the verb “Save”.
+When merchants make changes on a page they’re sometimes presented with a context bar at the top. This context bar displays a status message on the left to indicate the state of the changes, like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common \{verb\} + \{noun\} content formula. For example, [Save] instead of [Save product]. In the context bar component, use the verb “Save”.
 
 <div as="SideBySide">
 
@@ -492,7 +492,7 @@ Use the verb “Save” in the context bar
 
 </DoDont>
 
-Status messages in the context bar should be descriptive and follow the {adjective} + {noun} content formula.
+Status messages in the context bar should be descriptive and follow the \{adjective\} + \{noun\} content formula.
 
 <DoDont>
 
@@ -531,7 +531,7 @@ Use the verb “Save” in modals and sheets
 
 #### Saving at the bottom of a page
 
-Use the {Save} + {noun} content formula when a save action doesn’t have the surrounding context of a modal or context bar. This applies to the save action at the bottom of pages.
+Use the \{Save\} + \{noun\} content formula when a save action doesn’t have the surrounding context of a modal or context bar. This applies to the save action at the bottom of pages.
 
 For example, the action at the bottom of the Create discount page uses [Save discount]:
 
@@ -852,7 +852,7 @@ Use the verb “view” when you’re encouraging merchants to go to a specific 
 #### Do
 
 - View invoices
-- View all {x}
+- View all \{x\}
 - View details
 - View report
 - Try clearing your filters to view all results.
@@ -860,7 +860,7 @@ Use the verb “view” when you’re encouraging merchants to go to a specific 
 #### Don’t
 
 - See invoices
-- See all {x}
+- See all \{x\}
 - See details
 - See report
 
