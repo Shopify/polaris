@@ -76,7 +76,7 @@ Modal titles should:
 - Use a clear {verb}+{noun} question or statement
 - Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -90,7 +90,7 @@ Modal titles should:
 - Are you sure you want to delete customer?
 - Discard?
 
-<!-- end -->
+</DoDont>
 
 ### Body content
 
@@ -98,7 +98,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -110,12 +110,12 @@ Body content should be:
 - You can edit the email address where emails will be sent.
 - Are you sure you want to delete the variant Dark Blue Tee/Small/Silk? You cannot reverse this.
 
-<!-- end -->
+</DoDont>
 
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -125,7 +125,7 @@ Body content should be:
 
 - To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
-<!-- end -->
+</DoDont>
 
 ### Primary and secondary actions
 
@@ -133,7 +133,7 @@ Actions should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling an action.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -145,11 +145,11 @@ Actions should be:
 - New order
 - Buy
 
-<!-- end -->
+</DoDont>
 
 - Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -161,11 +161,11 @@ Actions should be:
 - Try Apple Pay
 - View your settings
 
-<!-- end -->
+</DoDont>
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -175,7 +175,7 @@ Actions should be:
 
 - Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ### Tertiary actions
 
@@ -184,7 +184,7 @@ Tertiary actions should:
 - Only be used when the action requires the context of the content in the modal
 - Never be used to dismiss the modal
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -196,7 +196,7 @@ Tertiary actions should:
 - Use a tertiary action for a destructive action
   ![Screenshot of modal with a destructive button as a tertiary action](/images/components/overlays/modal/dont-use-destructive-tertiary-action@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Footer
 
@@ -204,7 +204,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -214,12 +214,12 @@ Body content should be:
 
 - You can edit the email address where emails will be sent.
 
-<!-- end -->
+</DoDont>
 
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -229,7 +229,7 @@ Body content should be:
 
 - To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
-<!-- end -->
+</DoDont>
 
 ---
 

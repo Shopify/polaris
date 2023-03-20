@@ -53,7 +53,7 @@ The placeholder content for the search field should:
 - Always say "Search"
 - Never include an ellipsis
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -63,7 +63,7 @@ The placeholder content for the search field should:
 
 - search...
 
-<!-- end -->
+</DoDont>
 
 ---
 

@@ -46,7 +46,7 @@ Radio button labels should:
 - Be introduced with a colon or a heading
 - Start with a capital letter
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -56,11 +56,11 @@ Radio button labels should:
 
 - option 1
 
-<!-- end -->
+</DoDont>
 
 - Not end in punctuation if it’s a single sentence, word, or a fragment
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -70,7 +70,7 @@ Radio button labels should:
 
 - Red;
 
-<!-- end -->
+</DoDont>
 
 ### Toggle (Android and iOS only)
 
