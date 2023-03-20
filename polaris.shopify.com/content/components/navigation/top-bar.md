@@ -90,7 +90,7 @@ A specialized menu component that is activated by a user avatar.
 
 | Prop       | Type                          | Description                                                                                             |
 | ---------- | ----------------------------- | ------------------------------------------------------------------------------------------------------- |
-| actions    | {items: IconableAction[]}[]   | An array of action objects that are rendered inside of a popover triggered by this menu                 |
+| actions    | \{items: IconableAction[]\}[] | An array of action objects that are rendered inside of a popover triggered by this menu                 |
 | message    | [MessageProps](#type-message) | Accepts a message that facilitates direct, urgent communication with the merchant through the user menu |
 | name       | string                        | A string detailing the merchant’s full name to be displayed in the user menu                            |
 | detail     | string                        | A string allowing further details on the merchant’s name displayed in the user menu                     |
@@ -103,13 +103,13 @@ A specialized menu component that is activated by a user avatar.
 
 #### Message properties
 
-| Prop        | Type                                            | Description                               |
-| ----------- | ----------------------------------------------- | ----------------------------------------- |
-| title       | string                                          | A title for the message                   |
-| description | string                                          | A description for the message             |
-| action      | {onClick(): void; content: string}              | An action to render near the message      |
-| link        | {to: string; content: string}                   | A link to view the content of the message |
-| badge       | {content: string; status: BadgeProps['status']} | A badge to render near the message        |
+| Prop        | Type                                              | Description                               |
+| ----------- | ------------------------------------------------- | ----------------------------------------- |
+| title       | string                                            | A title for the message                   |
+| description | string                                            | A description for the message             |
+| action      | \{onClick(): void; content: string\}              | An action to render near the message      |
+| link        | \{to: string; content: string\}                   | A link to view the content of the message |
+| badge       | \{content: string; status: BadgeProps['status']\} | A badge to render near the message        |
 
 ---
 
