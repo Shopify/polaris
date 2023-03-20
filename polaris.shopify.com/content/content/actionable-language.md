@@ -467,6 +467,15 @@ Use “Save” as the default for any action that saves immediately to a databas
 
 When merchants make changes on a page they’re sometimes presented with a context bar at the top. This context bar displays a status message on the left to indicate the state of the changes, like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common {verb} + {noun} content formula. For example, [Save] instead of [Save product]. In the context bar component, use the verb “Save”.
 
+<div as="SideBySide">
+
+- <span>Foo bar zip</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
+- <span>Foo bar zip</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
+- <span>Foo bar zip</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
+- <span>Foo bar zip</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
+
+</div>
+
 <!-- dodont -->
 
 #### Do

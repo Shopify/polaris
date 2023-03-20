@@ -1,36 +1,45 @@
-import type {GetStaticPaths, GetStaticProps, NextPage} from 'next';
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+} from 'next';
 import fs from 'fs';
 import path from 'path';
 import globby from 'globby';
 
+import {
+  serializeMdx,
+  type SerializedMdx,
+} from '../src/components/Markdown/serialize';
+import Markdown from '../src/components/Markdown';
 import Page from '../src/components/Page';
 import StatusBanner from '../src/components/StatusBanner';
 import Longform from '../src/components/Longform';
-import Markdown from '../src/components/Markdown';
 import PageMeta from '../src/components/PageMeta';
-import {parseMarkdown} from '../src/utils/markdown.mjs';
-import {MarkdownFile, Status} from '../src/types';
+import {Status} from '../src/types';
 import UpdateBanner from '../src/components/UpdateBanner';
 
-interface Props {
-  readme: MarkdownFile['readme'];
+interface FrontMatter {
   title: string;
   noIndex?: boolean;
   status?: Status;
   update?: string;
   description?: string;
+}
+
+interface Props {
+  mdx: SerializedMdx<FrontMatter>;
+  descriptionMdx: SerializedMdx | null;
   editPageLinkPath: string;
 }
 
-const CatchAllTemplate: NextPage<Props> = ({
-  readme,
-  title,
-  status,
-  noIndex,
-  description,
+const CatchAllTemplate = ({
+  mdx,
+  descriptionMdx,
   editPageLinkPath,
-  update,
-}: Props) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const {title, description, update, status, noIndex = false} = mdx.frontmatter;
+
   const typedStatus: Status | undefined = status
     ? {
         value: status.value.toLowerCase() as Status['value'],
@@ -42,10 +51,10 @@ const CatchAllTemplate: NextPage<Props> = ({
     <Page title={title} editPageLinkPath={editPageLinkPath} isContentPage>
       <PageMeta title={title} description={description} noIndex={noIndex} />
       <Longform>
-        {description ? <Markdown>{description}</Markdown> : null}
+        {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
         {typedStatus && <StatusBanner status={typedStatus} />}
         {update && <UpdateBanner message={update} />}
-        <Markdown>{readme}</Markdown>
+        <Markdown {...mdx} />
       </Longform>
     </Page>
   );
@@ -71,15 +80,18 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
-    const {readme, frontMatter}: MarkdownFile = parseMarkdown(markdown);
-    const {title, description, update, status, noIndex} = frontMatter;
+
+    const mdx = await serializeMdx<FrontMatter>(markdown);
+
+    let descriptionMdx: SerializedMdx | null = null;
+
+    if (mdx.frontmatter.description) {
+      descriptionMdx = await serializeMdx(mdx.frontmatter.description);
+    }
+
     const props: Props = {
-      title,
-      status: status || null,
-      description: description || null,
-      update: update || null,
-      readme,
-      noIndex: noIndex || false,
+      mdx,
+      descriptionMdx,
       editPageLinkPath,
     };
 
