@@ -2,6 +2,7 @@
   "files": [],
   "references": [
     {"path": "./polaris-cli"},
+    {"path": "./polaris-codemods"},
     {"path": "./polaris-for-vscode"},
     {"path": "./polaris-migrator"},
     {"path": "./polaris-react"},

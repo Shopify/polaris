@@ -1,0 +1,14 @@
+.legacy {
+  display: none;
+  flex: 1;
+  overflow: visible;
+  padding: 0;
+  background-color: transparent;
+  width: var(--p-icon-size-small);
+  scale: 1.5;
+  mix-blend-mode: luminosity;
+
+  &::before {
+    content: '';
+  }
+}

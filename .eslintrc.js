@@ -105,6 +105,20 @@ module.exports = {
       },
     },
     {
+      files: ['polaris-codemods/src/**/*.{ts,tsx}'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
+    {
+      files: ['polaris-codemods/src/**/tests/*.{ts,tsx}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        '@shopify/jsx-no-hardcoded-content': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+      },
+    },
+    {
       files: ['polaris-migrator/src/**/*.{ts,tsx}'],
       rules: {
         'import/no-default-export': 'off',

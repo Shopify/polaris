@@ -1,0 +1,120 @@
+@use 'global-styles/legacy-polaris-v8';
+
+.root {
+  @include legacy-polaris-v8.page-content-when-partially-condensed {
+    padding-bottom: spacing(loose);
+
+    &.Active {
+      border-bottom: rem(3px) solid color('ink');
+    }
+
+    @include legacy-polaris-v8.page-content-when-not-partially-condensed {
+      padding: 0 spacing(extra-loose);
+    }
+  }
+
+  @include legacy-polaris-v8.page-content-when-fully-condensed {
+    margin: 0 spacing(loose) spacing(tight);
+  }
+
+  @include legacy-polaris-v8.page-content-when-not-fully-condensed {
+    border-radius: spacing(tight);
+  }
+
+  @include legacy-polaris-v8.page-when-not-max-width {
+    border-radius: spacing(tight);
+  }
+
+  @include legacy-polaris-v8.page-content-when-layout-stacked {
+    @include legacy-polaris-v8.stacked-elements;
+  }
+
+  @include legacy-polaris-v8.page-content-when-layout-not-stacked {
+    border-radius: spacing(tight);
+  }
+
+  @include legacy-polaris-v8.page-after-resource-list-small {
+    border-radius: spacing(tight);
+  }
+
+  @include legacy-polaris-v8.page-before-resource-list-small {
+    border-radius: spacing(tight);
+  }
+
+  @include legacy-polaris-v8.after-topbar-sheet {
+    max-width: $content-max-width + (2 * spacing(extra-loose));
+
+    > li {
+      margin-right: spacing();
+    }
+
+    &.TwoColumn > li {
+      flex: 0 calc(50% - #{spacing(extra-loose)});
+    }
+  }
+
+  @include legacy-polaris-v8.frame-with-nav-when-not-max-width {
+    padding: spacing(tight) 0;
+  }
+
+  @mixin global-nav-offset {
+    @include legacy-polaris-v8.frame-when-nav-displayed {
+      left: $global-nav-width;
+      width: calc(100% - #{$global-nav-width});
+    }
+  }
+
+  .Large {
+    @include legacy-polaris-v8.frame-when-nav-displayed {
+      width: $sheet-desktop-width-large;
+    }
+  }
+
+  @include legacy-polaris-v8.frame-when-nav-displayed {
+    @include legacy-polaris-v8.breakpoint-after(
+      layout-width(page-content, not-condensed) + layout-width(nav)
+    ) {
+      @content;
+    }
+  }
+
+  @include legacy-polaris-v8.frame-when-nav-hidden {
+    @include legacy-polaris-v8.stick-to-bottom-container;
+  }
+
+  .MinimizableVideoToolbar {
+    &.Inline {
+      @include legacy-polaris-v8.frame-when-nav-hidden {
+        display: none;
+      }
+    }
+  }
+
+  @include legacy-polaris-v8.frame-when-nav-hidden {
+    @include legacy-polaris-v8.page-content-when-not-partially-condensed {
+      width: rem(200px);
+    }
+  }
+
+  @mixin breakpoint-tablet-not-condensed {
+    @include legacy-polaris-v8.frame-when-nav-hidden {
+      @include legacy-polaris-v8.page-content-when-not-partially-condensed {
+        @content;
+      }
+    }
+
+    @include legacy-polaris-v8.frame-when-nav-displayed {
+      @include legacy-polaris-v8.breakpoint-after(
+        layout-width(page-content, not-condensed) + layout-width(nav)
+      ) {
+        @content;
+      }
+    }
+  }
+
+  > *:not(:last-child) {
+    @include legacy-polaris-v8.when-typography-condensed {
+      margin-bottom: var(--p-space-4);
+    }
+  }
+}
