@@ -50,7 +50,7 @@ Links should not be:
 
 Marked as external: Do not set the `external` prop on the `Link` component to force open a new tab.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -62,7 +62,7 @@ Marked as external: Do not set the `external` prop on the `Link` component to fo
 - Go to [docs] to learn about zones.
 - Find out about [themes].
 
-<!-- end -->
+</DoDont>
 
 ---
 

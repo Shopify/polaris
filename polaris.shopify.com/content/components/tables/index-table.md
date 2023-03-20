@@ -146,7 +146,7 @@ Index tables should:
 
 - Identify the type of resource, usually with a heading
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -157,11 +157,11 @@ Index tables should:
 
 - _No heading_
 
-<!-- end -->
+</DoDont>
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -171,7 +171,7 @@ Index tables should:
 
 - Products
 
-<!-- end -->
+</DoDont>
 
 - Follow the verb + noun formula for bulk actions
 

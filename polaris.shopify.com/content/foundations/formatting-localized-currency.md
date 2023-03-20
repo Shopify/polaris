@@ -90,7 +90,7 @@ Because CLDR formatting is limited, these guidelines will help you choose the ap
 
 #### Store currency
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -104,7 +104,7 @@ Use [explicit format](#explicit-format) except when presenting store currency wi
 
 ![Incorrect explicit format in today’s sales card](/images/foundations/foundations/internationalization/dont-use-explicit-format@2x.png)
 
-<!-- end -->
+</DoDont>
 
 #### Non-store currency
 
@@ -127,7 +127,7 @@ This example illustrates the use of short format for non-total amounts and expli
 
 Always place the negative symbol before the currency and amount in either format.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -139,7 +139,7 @@ Always place the negative symbol before the currency and amount in either format
 - \$-4.20
 - 12,50 €-
 
-<!-- end -->
+</DoDont>
 
 ### Customers
 

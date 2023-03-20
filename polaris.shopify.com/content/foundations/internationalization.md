@@ -50,7 +50,7 @@ French-France (fr-FR); French-Canada (fr-CA); Portuguese-Brazil (pt-BR). Note th
 
 When interfaces are localized, the content will often expand in length. In most languages, text is up to 50% longer on average than English. Some non-Latin languages, such as Japanese, take up more vertical space. For character-based languages, text wrapping and line breaking can’t always rely on spaces to separate words. Your interface needs to be flexible enough to accommodate language-specific formatting and text expansion without changing its context of use.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -64,9 +64,9 @@ Lay out your elements in a way where text expansion doesn’t hinder your inform
 
 Don’t rely on responsive stacking alone. It can often change the hierarchy of information of the layout. In this case, the text expansion causes the line break at the wrong spot, placing the button in the middle of the heading and content of this card.
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -80,7 +80,7 @@ Use single columns to stack elements flexibly to accomodate for text expansion.
 
 Avoid using narrow columns in smaller components. Ensure the right amount of padding for a clean interface.
 
-<!-- end -->
+</DoDont>
 
 ### Tips
 
@@ -95,7 +95,7 @@ Avoid using narrow columns in smaller components. Ensure the right amount of pad
 
 Word order can change dramatically in translation. If the layout and functionality of your interface is dependent on a certain word order, it’s likely to break when localized.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -109,9 +109,9 @@ If content elements need to stay in a certain position on the page, implement th
 
 Don’t place elements with a fixed position inside a sentence. The order of this sentence would often need to change in translation, which is impossible to do if the interface is built this way.
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -125,7 +125,7 @@ When including links in body text, only use a single and descriptive term or a s
 
 Don’t use full phrases as links. Word order changes might break the link into several parts when translated.
 
-<!-- end -->
+</DoDont>
 
 ### Tips
 

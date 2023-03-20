@@ -106,7 +106,7 @@ Page header action labels should be:
 
 - Action-led: they should always lead with a strong verb that encourages action. To provide enough context to merchants, use the {verb}+{noun} format.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -118,13 +118,13 @@ Page header action labels should be:
 - Create
 - Postmates deliveries
 
-<!-- end -->
+</DoDont>
 
 - Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the {verb}+{noun} format.
 
   In the context of the orders list page:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -136,11 +136,11 @@ Page header action labels should be:
 - Import orders
 - Export orders
 
-<!-- end -->
+</DoDont>
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -150,7 +150,7 @@ Add menu item
 
 Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ---
 

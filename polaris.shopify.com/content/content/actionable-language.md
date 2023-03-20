@@ -91,7 +91,7 @@ Headings and subheadings should be:
 - Avoid using punctuation such as periods, commas, or semicolons
 - Write in sentence case (capitalize the first word and proper nouns only)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -105,7 +105,7 @@ Headings and subheadings should be:
 - Custom Reports
 - Sell your products in person!
 
-<!-- end -->
+</DoDont>
 
 ### Articles
 
@@ -115,7 +115,7 @@ Whether or not to use articles (“the,” “a,” “an”) in headings and su
 
 For more conversational areas of the product, like Home cards, sell pages, and empty states, use articles. It makes the language more approachable and helps people to understand new, complex concepts.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -125,13 +125,13 @@ For more conversational areas of the product, like Home cards, sell pages, and e
 
 - Two-step authentication
 
-<!-- end -->
+</DoDont>
 
 #### Microcopy headings
 
 For labels, titles, and microcopy, avoid articles to keep content short and actionable. This increases readability and encourages immediate action.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -141,7 +141,7 @@ For labels, titles, and microcopy, avoid articles to keep content short and acti
 
 - Create a collection
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -151,7 +151,7 @@ Start sentences with imperative verbs when telling merchants what actions they c
 
 When a merchant reads a sentence that starts with an imperative verb it should sound like they’re being instructed what to do. Don’t use permissive language like “you can.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -163,7 +163,7 @@ Add your first product and see how it looks in your store.
 
 - Add your first product so you can see how it looks in your store.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -175,7 +175,7 @@ Buttons need to be clear and predictable. Merchants should be able to anticipate
 
 Buttons should always lead with a strong verb that encourages action. To provide enough context to merchants, use the {verb} + {noun} content formula on buttons except in the case of common actions like “Done,” “Close,” “Cancel,” or “OK.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -189,11 +189,11 @@ Buttons should always lead with a strong verb that encourages action. To provide
 - Free themes
 - Settings
 
-<!-- end -->
+</DoDont>
 
 Always write button text in sentence case, which means the first word is capitalized and the rest are lowercase (unless a term is a proper noun).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -203,11 +203,11 @@ Always write button text in sentence case, which means the first word is capital
 
 - Buy New Domain
 
-<!-- end -->
+</DoDont>
 
 Avoid unnecessary words and articles such as “the,” “an,” or “a.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -217,7 +217,7 @@ Add menu item
 
 Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -225,7 +225,7 @@ Add a menu item
 
 Links need to be clear and predictable. Merchants should be able to anticipate what will happen when they select a link. Never mislead someone by mislabeling a link.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -237,7 +237,7 @@ Links need to be clear and predictable. Merchants should be able to anticipate w
 - Want to learn more about dropshipping?
   [Click here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 
-<!-- end -->
+</DoDont>
 
 Links should never use “click here” or “here” as link text.
 
@@ -247,7 +247,7 @@ Links in full sentences shouldn’t link the entire sentence, only the text that
 
 It’s better for [internationalization](/foundations/internationalization) to have only single terms or small parts of phrases linked. Linking a full phrase is problematic because the word order might change, which would break the link into two parts.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -259,13 +259,13 @@ It’s better for [internationalization](/foundations/internationalization) to h
 - [Learn more about Fraud Protect](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 - [Manage the channels](/) you use to sell products and services.
 
-<!-- end -->
+</DoDont>
 
 ### Links outside of a sentence
 
 Links that aren’t in full sentences should use the {verb + noun} pattern and not be punctuated, with the exception of question marks.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -277,7 +277,7 @@ Links that aren’t in full sentences should use the {verb + noun} pattern and n
 - [Learn more.](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 - [Forgot password](/)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -298,7 +298,7 @@ Confirmation titles should:
 - Avoid articles (the, a, an) to keep content short and actionable
 - Be written in sentence case (the first word is capitalized, and the rest is lowercase)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -314,14 +314,14 @@ Confirmation titles should:
 - Are you sure you want to delete Dark Blue Tee?
 - This page has unsaved changes are you sure you want to leave?
 
-<!-- end -->
+</DoDont>
 
 Confirmation body content should:
 
 - Clearly explain if the action is irreversible or difficult to undo, using [plain language](https://polaris.shopify.com/content/product-content#write-for-a-grade-7-reading-level).
 - Be concise: use only one line of text. Don’t start the sentence with “Are you sure?”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -335,7 +335,7 @@ Confirmation body content should:
 - If you discard changes, you’ll delete any edits you made since you last saved.
 - If you leave this page, all unsaved changes will be lost. Are you sure you want to leave this page?
 
-<!-- end -->
+</DoDont>
 
 Confirmation primary and secondary actions should:
 
@@ -350,7 +350,7 @@ Before merchants can delete objects like collections, transfers, products, and v
 
 Primary action:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -362,11 +362,11 @@ Primary action:
 - Erase
 - Discard
 
-<!-- end -->
+</DoDont>
 
 Secondary action:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -376,13 +376,13 @@ Secondary action:
 
 - Discard
 
-<!-- end -->
+</DoDont>
 
 **Discarding changes while on a page**
 
 Primary action:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -392,11 +392,11 @@ Primary action:
 
 - Cancel
 
-<!-- end -->
+</DoDont>
 
 Secondary action:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -407,13 +407,13 @@ Secondary action:
 - Go back
 - Cancel
 
-<!-- end -->
+</DoDont>
 
 **Leaving a page with unsaved changes**
 
 Primary action:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -424,11 +424,11 @@ Primary action:
 - Exit
 - Delete changes
 
-<!-- end -->
+</DoDont>
 
 Secondary action:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -441,7 +441,7 @@ Secondary action:
 - Discard
 - Keep editing
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -476,7 +476,7 @@ When merchants make changes on a page they’re sometimes presented with a conte
 
 </div>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -490,11 +490,11 @@ Use the verb “Save” in the context bar
 - Apply
 - Save discount
 
-<!-- end -->
+</DoDont>
 
 Status messages in the context bar should be descriptive and follow the {adjective} + {noun} content formula.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -507,13 +507,13 @@ Status messages in the context bar should be descriptive and follow the {adjecti
 
 - Unsaved changes
 
-<!-- end -->
+</DoDont>
 
 #### Saving in modals and sheets
 
 Use the verb “Save” in modals and sheets when saving directly to the database.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -527,7 +527,7 @@ Use the verb “Save” in modals and sheets
 - Done
 - Apply
 
-<!-- end -->
+</DoDont>
 
 #### Saving at the bottom of a page
 
@@ -535,7 +535,7 @@ Use the {Save} + {noun} content formula when a save action doesn’t have the su
 
 For example, the action at the bottom of the Create discount page uses [Save discount]:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -548,7 +548,7 @@ For example, the action at the bottom of the Create discount page uses [Save dis
 - Done
 - Apply
 
-<!-- end -->
+</DoDont>
 
 ### Deferred saves
 
@@ -558,7 +558,7 @@ Use the adjective “Done” for deferred saves. When the modal or sheet closes,
 
 Most deferred saves happen when confirming changes in Add, Edit, Manage, and Select modals and sheets.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -573,13 +573,13 @@ Most deferred saves happen when confirming changes in Add, Edit, Manage, and Sel
 - Apply
 - Save
 
-<!-- end -->
+</DoDont>
 
 ### Datepickers
 
 Use the adjective “Done” for datepickers.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -591,7 +591,7 @@ Use the adjective “Done” for datepickers.
 - Select
 - Save
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -601,7 +601,7 @@ Use the verb “Close” when merchants need to confirm they’ve read something
 
 Don't use "OK". "OK" is an exclamation, not an action. When merchants click the "Close" button, they’re not saying “OK”, they’re doing a specific action.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -617,11 +617,11 @@ Don't use "OK". "OK" is an exclamation, not an action. When merchants click the 
 - Accept
 - Continue
 
-<!-- end -->
+</DoDont>
 
 Use the verb “Accept” when terms of service require legal confirmation before merchants can continue.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -634,7 +634,7 @@ Accept
 - Close
 - Continue
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -649,7 +649,7 @@ Don’t use “Close” as the call to action when there’s the option for merc
 - make any changes to the modal or screen
 - confirm they’ve read something or accept terms of service (see [OK vs. accept](#OK-accept))
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -661,11 +661,11 @@ Don’t use “Close” as the call to action when there’s the option for merc
 - Exit
 - OK
 
-<!-- end -->
+</DoDont>
 
 Use “Cancel” as the option for merchants to back out of any changes made on a page, modal, or sheet. When the cancel button is pressed, changes automatically get discarded. “Cancel” is often paired with “Save” and “Done” actions (and is always placed to the left).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -679,7 +679,7 @@ Use the verb “Cancel” as the action for merchants to back out of changes
 - Close
 - Done
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -694,7 +694,7 @@ Use the verb “select”:
 
 Pair Select modals and screens with the “Done” call to action.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -707,14 +707,14 @@ Pair Select modals and screens with the “Done” call to action.
 - Select a pricing plan.
 - Choose countries
 
-<!-- end -->
+</DoDont>
 
 Use the verb “choose” when:
 
 - Encouraging merchants to make a decision that is more subjective, strategic, emotional, or open-ended
 - Merchants have to pick from a large inventory of items, like themes, or options that require strategic decision making, like pricing plans
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -729,7 +729,7 @@ Use the verb “choose” when:
 - Pick a province.
 - Pick a pricing plan.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -737,7 +737,7 @@ Use the verb “choose” when:
 
 Use the verb “edit” when you can change the input of a field (letters, numbers, properties). Place as link text next to the field or area that is being edited. There’s no need for a noun unless it’s unclear what’s being edited.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -750,11 +750,11 @@ Use the verb “edit” when you can change the input of a field (letters, numbe
 - Use “Edit” if multiple actions can be taken after. “Manage” is more suitable.
 - Modify
 
-<!-- end -->
+</DoDont>
 
 Use the verb “manage” at a higher level to convey that multiple actions can be done, or sections and settings can be updated. Pair this verb with a noun if it’s in a button or if it’s unclear what is being managed.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -767,7 +767,7 @@ Use the verb “manage” at a higher level to convey that multiple actions can 
 - Edit
 - Modify
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -775,7 +775,7 @@ Use the verb “manage” at a higher level to convey that multiple actions can 
 
 Use the verb “change” when merchants can replace an option, but not edit it. For example, they can change an image or theme, but the action doesn’t include editing its properties. Place as link text next to the field or area that is being changed. There’s no need for a noun unless it’s unclear what is being changed.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -786,11 +786,11 @@ Use the verb “change” when merchants can replace an option, but not edit it.
 
 - Use the verb “change” if a selection must be made between only two options
 
-<!-- end -->
+</DoDont>
 
 Use the verb “switch” when it’s important for merchants to know what they’re switching between, like users, accounts, locations, or modes. When the switch happens, the previous option is turned off, logged out, or deactivated. Always pair with a noun to prevent confusion.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -801,7 +801,7 @@ Use the verb “switch” when it’s important for merchants to know what they�
 
 - Switch images
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -809,7 +809,7 @@ Use the verb “switch” when it’s important for merchants to know what they�
 
 Use the verb “create” when you’re encouraging merchants to generate something from scratch, like a collection.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -823,11 +823,11 @@ Use the verb “create” when you’re encouraging merchants to generate someth
 - Add collection
 - Add discount
 
-<!-- end -->
+</DoDont>
 
 Use the verb “add” when you’re encouraging merchants to bring something that already exists into Shopify, like a product.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -839,7 +839,7 @@ Use the verb “add” when you’re encouraging merchants to bring something th
 - Create product
 - Create customer
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -847,7 +847,7 @@ Use the verb “add” when you’re encouraging merchants to bring something th
 
 Use the verb “view” when you’re encouraging merchants to go to a specific page or section for more details, or to reveal more information. Use “view” in buttons, calls to action, and link text.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -864,11 +864,11 @@ Use the verb “view” when you’re encouraging merchants to go to a specific 
 - See details
 - See report
 
-<!-- end -->
+</DoDont>
 
 Use the verb “see” in more general, conversational descriptions without a specific call to action.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -880,7 +880,7 @@ Use the verb “see” in more general, conversational descriptions without a sp
 - Add your first product and view how it looks on your store.
 - Customers will view this name at checkout.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -888,7 +888,7 @@ Use the verb “see” in more general, conversational descriptions without a sp
 
 Use the verb “need” when you’re telling merchants something they’re required to do or should do.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -898,7 +898,7 @@ To buy a shipping label, you need to enter the total weight of your shipment, in
 
 To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -906,7 +906,7 @@ To buy a shipping label, you must enter the total weight of your shipment, inclu
 
 Use “export” as the call to action when merchants needs to transfer data from Shopify and convert it into a different format.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -916,11 +916,11 @@ Use “export” as the call to action when merchants needs to transfer data fro
 
 - Download CSV file
 
-<!-- end -->
+</DoDont>
 
 Use “download” as the call to action when merchants need to copy data (of the same format) from Shopify to a computer system.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -932,7 +932,7 @@ Use “download” as the call to action when merchants need to copy data (of th
 - Export shipping label
 - Export PDF
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -940,7 +940,7 @@ Use “download” as the call to action when merchants need to copy data (of th
 
 Use “import” as the call to action when merchants need to transfer data and convert it into a different format so it can be used in Shopify.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -950,11 +950,11 @@ Use “import” as the call to action when merchants need to transfer data and 
 
 - Download CSV file
 
-<!-- end -->
+</DoDont>
 
 Use “upload” as the call to action when merchants need to copy data of the same format from a computer system into Shopify.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -965,4 +965,4 @@ Use “upload” as the call to action when merchants need to copy data of the s
 
 - Upload CSV file
 
-<!-- end -->
+</DoDont>

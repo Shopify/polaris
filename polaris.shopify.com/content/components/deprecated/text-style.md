@@ -86,7 +86,7 @@ Text style should be:
 
 Don’t rely on text style alone to convey information to merchants. Ensure that text styles are used to enhance the information provided in text.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -100,4 +100,4 @@ Don’t rely on text style alone to convey information to merchants. Ensure that
 <TextStyle variation="positive">Orders</TextStyle>
 ```
 
-<!-- end -->
+</DoDont>

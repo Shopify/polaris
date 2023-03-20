@@ -46,7 +46,7 @@ a feature that’s referred to descriptively and so doesn’t need to be capital
 
 Avoid capitalizing descriptive feature names.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -56,11 +56,11 @@ Avoid capitalizing descriptive feature names.
 
 - Order Entry
 
-<!-- end -->
+</DoDont>
 
 If there‘s room, describe the feature instead of defaulting to only using the name.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -70,7 +70,7 @@ If there‘s room, describe the feature instead of defaulting to only using the 
 
 - Display carrier calculated shipping rates.
 
-<!-- end -->
+</DoDont>
 
 ### Using “Shopify”
 
@@ -89,7 +89,7 @@ Use “Shopify” in front of a name when a product:
 
 Don’t use “Shopify” in a name for built in functionality features, like fraud analysis or importing products.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -103,11 +103,11 @@ Don’t use “Shopify” in a name for built in functionality features, like fr
 - Shopify Discounts
 - Shopify Account
 
-<!-- end -->
+</DoDont>
 
 Shopify makes apps that merchants can add to their Shopify admin. It’s okay to say “Built by Shopify” or “Made by Shopify” after the app name. Once you’ve picked the format that works for the design, use it consistently.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -121,11 +121,11 @@ Shopify makes apps that merchants can add to their Shopify admin. It’s okay to
 - Order Printer
 - Shopcodes
 
-<!-- end -->
+</DoDont>
 
 Apps that aren’t built by Shopify should not use the word “Shopify” in their name or say “for Shopify” after the name.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -137,7 +137,7 @@ Apps that aren’t built by Shopify should not use the word “Shopify” in the
 - AdSpace for Shopify
 - Email Marketing for Shopify
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -163,7 +163,7 @@ Descriptive names should:
 
 If it’s a default feature (merchants don’t have to sign up or opt in to use it), don’t [capitalize](/content/naming#general-guidelines) it.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -177,11 +177,11 @@ If it’s a default feature (merchants don’t have to sign up or opt in to use 
 - Fraud Analysis
 - Use Analytics to review your store’s transactions
 
-<!-- end -->
+</DoDont>
 
 Avoid jargon and give merchants a hint about the actions they’ll be able to take when they interact with the product or feature.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -196,7 +196,7 @@ Avoid jargon and give merchants a hint about the actions they’ll be able to ta
 - Configuration app
 - Shipity-do-dah
 
-<!-- end -->
+</DoDont>
 
 ### Evocative names
 
@@ -217,7 +217,7 @@ Evocative names should:
 
 If you work at Shopify and want to trademark a name, talk to the legal department. It’s easier to trademark unique or made-up name. These names have stronger identities, but it’s not always clear what they do.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -231,11 +231,11 @@ If you work at Shopify and want to trademark a name, talk to the legal departmen
 - The Marketing Bot
 - Drop Shipping app
 
-<!-- end -->
+</DoDont>
 
 Some evocative names can be more descriptive, although they’re harder to trademark if they use common terminology. Not all evocative names need to be trademarked.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -247,11 +247,11 @@ Some evocative names can be more descriptive, although they’re harder to trade
 - Free Stock Photography
 - Learn about Shopify event
 
-<!-- end -->
+</DoDont>
 
 If you’re creating a website or product for an existing brand, maintain its brand identity and keep “Shopify” out of the name.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -262,7 +262,7 @@ If you’re creating a website or product for an existing brand, maintain its br
 
 - Shopify Pop-up, featuring Kylie Jenner
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -301,7 +301,7 @@ A good description should:
 
 Use consistent descriptions when referring to areas in the Shopify admin.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -313,11 +313,11 @@ Use consistent descriptions when referring to areas in the Shopify admin.
 - Manage customers in Customers.
 - Customer information is automatically added to Customers in the Shopify admin.
 
-<!-- end -->
+</DoDont>
 
 Merchants call our main product offering “Shopify”, so we use that same terminology. terminology
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -328,12 +328,12 @@ Merchants call our main product offering “Shopify”, so we use that same term
 
 - Don’t use “admin” or “Shopify admin” if “Shopify” will do
 
-<!-- end -->
+</DoDont>
 
 Top-level marketing content is created for audiences who have little context about Shopify. Since they may not know about specific Shopify products, we use
 “Shopify” here too.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -345,14 +345,14 @@ Top-level marketing content is created for audiences who have little context abo
 - Use our ecommerce platform
 - Print shipping labels directly through Shopify’s admin
 
-<!-- end -->
+</DoDont>
 
 ### Using “app” and “channel”
 
 For app names in areas with surrounding context, like in the app store or on the
 Apps page in the Shopify admin, don’t add the word “app” to the end of the name.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -364,11 +364,11 @@ Apps page in the Shopify admin, don’t add the word “app” to the end of the
 - Oberlo app
 - Script Editor app
 
-<!-- end -->
+</DoDont>
 
 For app names without surrounding context, like in search in the Shopify admin, or on a home card, add “app” so merchants know what it is.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -378,12 +378,12 @@ For app names without surrounding context, like in search in the Shopify admin, 
 
 - Bulk Account Order
 
-<!-- end -->
+</DoDont>
 
 When writing about channels, make it clear to merchants that they are interacting with
 a channel through Shopify, and not through the other company.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -393,11 +393,11 @@ a channel through Shopify, and not through the other company.
 
 - Amazon now supports electronics listings
 
-<!-- end -->
+</DoDont>
 
 If “channel” is used somewhere in surrounding content, it’s okay to drop it for titles and button copy. titles
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -407,13 +407,13 @@ If “channel” is used somewhere in surrounding content, it’s okay to drop i
 
 - Add Amazon channel
 
-<!-- end -->
+</DoDont>
 
 Not every channel is a sales channel. For example, BuzzFeed is a marketing outreach channel and Facebook is a sales and marketing channel. Clarify channel types when you have room, otherwise default to channel. If there’s surrounding context, you can drop channel altogether.
 
 If there’s surrounding context, drop the word channel from the name.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -423,11 +423,11 @@ If there’s surrounding context, drop the word channel from the name.
 
 - Google Shopping channel
 
-<!-- end -->
+</DoDont>
 
 If there’s room for a description, explain the channel type.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -437,7 +437,7 @@ If there’s room for a description, explain the channel type.
 
 - Use the BuzzFeed channel to get more customers.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -456,7 +456,7 @@ Capitalizing names should only happen:
 - When we want to try and claim specific words (think Tweet or Pin)
 - For names listed in top level navigation, like Products
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -474,7 +474,7 @@ Capitalizing names should only happen:
 - Retail package
 - Buy button
 
-<!-- end -->
+</DoDont>
 
 Names shouldn’t be capitalized if they:
 
@@ -482,7 +482,7 @@ Names shouldn’t be capitalized if they:
 - Include common, familiar words
 - Are default features
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -498,7 +498,7 @@ Names shouldn’t be capitalized if they:
 - Online Store
 - Themes
 
-<!-- end -->
+</DoDont>
 
 ### Acronyms and abbreviations
 
@@ -512,7 +512,7 @@ Our stance on acronyms:
 - If you have to use an acronym, spell it out the first time you use it and follow with the acronym in brackets.
 - Internationally understood acronyms and abbreviations are acceptable, like the word “app” or “SEO”.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -530,11 +530,11 @@ Our stance on acronyms:
 - VR
 - BABB
 
-<!-- end -->
+</DoDont>
 
 Avoid using Internet slang acronyms in Shopify products and when creating new, branded names. These acronyms are exclusive to certain online communities and branded approachable for everyday merchants.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -544,11 +544,11 @@ Avoid using Internet slang acronyms in Shopify products and when creating new, b
 
 - Shopify IRL
 
-<!-- end -->
+</DoDont>
 
 Internationally understood acronyms and abbreviations are acceptable. Some of these include time zone, tax, barcode, weight, and size abbreviations.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -584,11 +584,11 @@ Internationally understood acronyms and abbreviations are acceptable. Some of th
 - 2 pounds
 - Application
 
-<!-- end -->
+</DoDont>
 
 When using a country as an adjective (such as when referring to currency), you may use an abbreviated form without punctuation.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -598,7 +598,7 @@ When using a country as an adjective (such as when referring to currency), you m
 
 - Pinterest requires your store to use United States currency.
 
-<!-- end -->
+</DoDont>
 
 ### Similar names
 
@@ -621,7 +621,7 @@ Some already existing names are different depending where you’re from. For exa
 
 Use “text message” when writing for North American audiences.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -631,11 +631,11 @@ Use “text message” when writing for North American audiences.
 
 - SMS
 
-<!-- end -->
+</DoDont>
 
 Use SMS when writing for Indian and Nordic audiences.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -645,7 +645,7 @@ Use SMS when writing for Indian and Nordic audiences.
 
 - text message
 
-<!-- end -->
+</DoDont>
 
 ### Initials
 
@@ -680,7 +680,7 @@ Component names in documentation should:
 
 In documentation we write out the name without any punctuation and use sentence case, meaning, the first word is capitalized and the rest is lowercase.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -692,11 +692,11 @@ In documentation we write out the name without any punctuation and use sentence 
 - TypeScale
 - EmptyState
 
-<!-- end -->
+</DoDont>
 
 In code, we use the same name as the documentation, but can alter the spelling convention to suit the implementation.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -708,11 +708,11 @@ In code, we use the same name as the documentation, but can alter the spelling c
 - Type scale
 - Empty state
 
-<!-- end -->
+</DoDont>
 
 For subcomponents, the same rules apply. In documentation, write out the name with a space between words, and use sentence case. with
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -722,11 +722,11 @@ For subcomponents, the same rules apply. In documentation, write out the name wi
 
 - Layout.Section
 
-<!-- end -->
+</DoDont>
 
 For subcomponents in the code, use a period in place of the space.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -736,11 +736,11 @@ For subcomponents in the code, use a period in place of the space.
 
 - Layout section
 
-<!-- end -->
+</DoDont>
 
 For all components, use American spelling:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -752,7 +752,7 @@ For all components, use American spelling:
 - Layout.Centre
 - Palette.Colour
 
-<!-- end -->
+</DoDont>
 
 There is an exception: the Labelled component uses the British spelling, following the `aria-labelledby` attribute as per the [ARIA specification](https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby) itself.
 
@@ -772,7 +772,7 @@ Product area icons should:
 
 - Only be used to symbolize their specific product area or function
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -786,11 +786,11 @@ Product area icons should:
 - Invoice
 - Price tag
 
-<!-- end -->
+</DoDont>
 
 Functional icons not tied to product areas should represent a clear action.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -800,14 +800,14 @@ Functional icons not tied to product areas should represent a clear action.
 
 - Image
 
-<!-- end -->
+</DoDont>
 
 Icons with more than one function should be named to:
 
 - Represent their purpose
 - Describe how they look
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -821,4 +821,4 @@ Icons with more than one function should be named to:
 - Photography
 - Time
 
-<!-- end -->
+</DoDont>

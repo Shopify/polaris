@@ -32,7 +32,7 @@ Show page titles that never change for a page. For example, keep the title “Pr
 
 Secondary actions are always represented with skeleton content. You can change the number of skeleton actions that best represent the number of actions once loaded.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -46,7 +46,7 @@ Use placeholder content that will change when the page fully loads. This will co
 
 ![Image showing placeholder content that will change](/images/components/feedback-indicators/skeleton-page/dont-use-placeholder-content-that-will-change@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 

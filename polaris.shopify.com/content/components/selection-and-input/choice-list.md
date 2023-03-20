@@ -54,7 +54,7 @@ List titles should:
 
 - Help merchants understand how the items in the list are grouped together, or should explain what kind of choice merchants are making
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -64,7 +64,7 @@ Pick a shipping method
 
 Pick one
 
-<!-- end -->
+</DoDont>
 
 ### Be concise and scannable
 
@@ -73,7 +73,7 @@ Pick one
 - It the title introduces the list, it should end with a colon
 - Should be written in sentence case
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -83,11 +83,11 @@ Shipping options
 
 Shipping Options
 
-<!-- end -->
+</DoDont>
 
 ### Not use colons
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -103,7 +103,7 @@ If the customer abandons their checkout, send them an email reminder to complete
 - Option a
 - Option b
 
-<!-- end -->
+</DoDont>
 
 ### List choices
 
@@ -113,7 +113,7 @@ Every item in a choice list should:
 - Not use commas or semicolons at the end of each line
 - Be written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -127,7 +127,7 @@ Every item in a choice list should:
 - Yellow;
 - Item Three
 
-<!-- end -->
+</DoDont>
 
 ### Helper text and descriptions
 

@@ -58,7 +58,7 @@ Use the `element` prop to determine the specific HTML element that’s output fo
 
 Learn more about writing helpful [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -68,4 +68,4 @@ Use headings to support the hierarchy and structure of the page.
 
 Use headings for style alone.
 
-<!-- end -->
+</DoDont>

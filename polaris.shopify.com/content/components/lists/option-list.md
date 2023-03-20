@@ -42,7 +42,7 @@ The option list component should:
 
 Each item in an option list should be clear and descriptive.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -52,7 +52,7 @@ Each item in an option list should be clear and descriptive.
 
 - Source
 
-<!-- end -->
+</DoDont>
 
 ---
 

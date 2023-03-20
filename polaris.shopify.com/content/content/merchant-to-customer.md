@@ -66,7 +66,7 @@ Too much personality is inappropriate for some stores. Customers aren’t going 
 
 Keep in mind that some content, such as emails, can be personalized by merchants. You’re providing a default for them to work from.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -87,13 +87,13 @@ Whoops! Houston, we have a problem!
 - Address must correspond with that held by your payment provider.
 - Thanks for stopping by! or See you again soon!
 
-<!-- end -->
+</DoDont>
 
 ### Shopping, not ecommerce: use shopper terms
 
 Avoid technical or ecommerce terms. Customers are interested in their order and their delivery, not in inventory and fulfillment. They might want to sign up for news and exclusive offers, but not marketing emails.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -105,13 +105,13 @@ Avoid technical or ecommerce terms. Customers are interested in their order and 
 - There was a server verification error with your payment provider.
 - We’ll inform you when we’ve fulfilled your order.
 
-<!-- end -->
+</DoDont>
 
 ### Concise, but not short
 
 It’s important that any purchase flow is efficient. Use short, easy-to-understand words and phrases. For example:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -125,11 +125,11 @@ It’s important that any purchase flow is efficient. Use short, easy-to-underst
 - Don’t use “proceed to”
 - No payment gateway is currently configured
 
-<!-- end -->
+</DoDont>
 
 But remember that clear beats short. Don’t use content that can be interpreted in different ways. For example, does “bi-weekly” mean twice a week or every two weeks? It’s clearer to say “Every 2 weeks.” Using more words is okay if it provides clarity.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -141,7 +141,7 @@ But remember that clear beats short. Don’t use content that can be interpreted
 - Bi-weekly
 - Loading
 
-<!-- end -->
+</DoDont>
 
 No matter who the audience is, all Shopify content follows the same [grammar and mechanics](https://polaris.shopify.com/content/grammar-and-mechanics) and [product content guidelines](https://polaris.shopify.com/content/product-content).
 
@@ -167,7 +167,7 @@ In the Shopify admin and Point-of-Sale (POS), a customer appears on the Customer
 
 Word usage to use/avoid:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -187,7 +187,7 @@ Word usage to use/avoid:
 - Oh happy day! (don’t be over-congratulatory)
 - Wrong, fail, failure, error (avoid sounding robotic or negative)
 
-<!-- end -->
+</DoDont>
 
 ### Common terms
 

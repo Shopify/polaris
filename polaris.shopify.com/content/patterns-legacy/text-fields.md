@@ -24,7 +24,7 @@ Field labels act as a title for the text field. Labels should typically be short
 
 ![field-label-highlighted](/images/foundations/patterns/text-fields/field-label-highlighted@2x.png)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -34,11 +34,11 @@ Field labels act as a title for the text field. Labels should typically be short
 
 ![dont-example-form-fields](/images/foundations/patterns/text-fields/dont-example-form-fields@2x.png)
 
-<!-- end -->
+</DoDont>
 
 Edge case: When a text field isn’t part of a form and is placed individually on a page (like a comment field), then you can write the field label as a call to action. For example, “Leave a comment”. This is because there’s no surrounding context and using “Comment” alone could be confusing.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -48,7 +48,7 @@ Edge case: When a text field isn’t part of a form and is placed individually o
 
 ![](/images/foundations/patterns/text-fields/dont-example-comment@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -84,7 +84,7 @@ Best practices:
 
 ![help-text](/images/foundations/patterns/text-fields/help-text@2x.png)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -102,7 +102,7 @@ Best practices:
 
 ![dont-example-help-text-domain](/images/foundations/patterns/text-fields/dont-example-help-text-domain.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -138,7 +138,7 @@ Modeled text inputs are text field inputs that require text to be formatted in a
 - If there’s not enough room to include both an instructional call to action and an example, then include only the example
 - Use the word “Example” followed by a colon to introduce the example (instead of e.g.)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -156,7 +156,7 @@ Modeled text inputs are text field inputs that require text to be formatted in a
 
 ![dont-example-modeled-text-inputs-expected-arrival](/images/foundations/patterns/text-fields/dont-example-modeled-text-inputs-expected-arrival@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -186,7 +186,7 @@ If the text field label isn’t clear about where the user can find the informat
 
 Don’t use placeholder text for free input titles, names, and descriptions; use help text instead.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -196,7 +196,7 @@ Don’t use placeholder text for free input titles, names, and descriptions; use
 
 ![dont-example-titles-names-descriptions](/images/foundations/patterns/text-fields/dont-example-titles-names-descriptions@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -206,7 +206,7 @@ Don’t use placeholder text for codes or tracking numbers; use help text instea
 
 Choose clear names for the field label, and don’t repeat it in the help text if possible. Instead, offer context that will help the user understand and complete the task quickly.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -224,7 +224,7 @@ Choose clear names for the field label, and don’t repeat it in the help text i
 
 ![dont-example-discount-code](/images/foundations/patterns/text-fields/dont-example-discount-code@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -241,7 +241,7 @@ Multiline inputs hold things like product and collection descriptions, notes abo
 
 We usually don’t know what will go in multiline fields, so providing example text isn’t helpful. Instead, include help text that explains how the text will be used and who can view it.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -251,7 +251,7 @@ We usually don’t know what will go in multiline fields, so providing example t
 
 ![dont-example-multiline-text-input](/images/foundations/patterns/text-fields/dont-example-multiline-text-input@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Comments and notes
 
@@ -259,7 +259,7 @@ Don’t use placeholder text for comments and notes; use help text instead. Comm
 
 Some comments and notes are not visible to customers, but some are. In the help text, describe clearly who will be able to view the note.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -277,7 +277,7 @@ Some comments and notes are not visible to customers, but some are. In the help 
 
 ![dont-example-note](/images/foundations/patterns/text-fields/dont-example-note@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 

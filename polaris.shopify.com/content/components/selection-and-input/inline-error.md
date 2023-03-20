@@ -41,7 +41,7 @@ Inline error messages should:
 - Be short and concise, no more than a single sentence
 - Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -51,7 +51,7 @@ Inline error messages should:
 
 - You didn’t enter a store name.
 
-<!-- end -->
+</DoDont>
 
 ---
 

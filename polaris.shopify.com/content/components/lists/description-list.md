@@ -37,7 +37,7 @@ Terms should be:
 
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -47,7 +47,7 @@ Terms should be:
 
 - Discount Code
 
-<!-- end -->
+</DoDont>
 
 ### Term description
 
@@ -55,7 +55,7 @@ Terms descriptions should be:
 
 - Directly related to the term they’re describing
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -65,7 +65,7 @@ Terms descriptions should be:
 
 - Discount code: Having a sale on your store is a great way to sell products quickly.
 
-<!-- end -->
+</DoDont>
 
 - Written to describe the merchant benefit or utility
 - No more than one or two short sentences in length
@@ -73,7 +73,7 @@ Terms descriptions should be:
 - Conversational by using articles (the, a, an)
 - Written using plain language
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -83,7 +83,7 @@ Terms descriptions should be:
 
 - Abandoned checkout: Details of products added to checkout but not purchased
 
-<!-- end -->
+</DoDont>
 
 ---
 

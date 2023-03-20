@@ -40,7 +40,7 @@ Lists that use checkboxes should:
 
 - Start with a capital letter
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -54,11 +54,11 @@ Lists that use checkboxes should:
 - option 2
 - option 3
 
-<!-- end -->
+</DoDont>
 
 - Not use commas or semicolons at the end of each line
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -72,11 +72,11 @@ Lists that use checkboxes should:
 - Yellow;
 - Blue.
 
-<!-- end -->
+</DoDont>
 
 - In the rare case where the checkbox is asking merchants to agree to terms or service, use the first person
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -86,7 +86,7 @@ I agree to the Terms of Service.
 
 You agree to the Terms of Service
 
-<!-- end -->
+</DoDont>
 
 ---
 

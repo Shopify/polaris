@@ -45,7 +45,7 @@ status:
 
 Captions are primarily used in [data visualizations](https://polaris.shopify.com/design/data-visualizations). Stick to a few words and don’t use this component for complete sentences or longer content.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -58,7 +58,7 @@ Captions are primarily used in [data visualizations](https://polaris.shopify.com
 - Order #1001 was received on April 21, 2017
 - This is your recent activity
 
-<!-- end -->
+</DoDont>
 
 ---
 

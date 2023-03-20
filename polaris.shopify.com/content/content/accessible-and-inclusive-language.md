@@ -61,7 +61,7 @@ This language and narrative around people with disabilities can be othering and 
 
 Implies that disability is a less-desired or negative state.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -71,9 +71,9 @@ Accounts are deactivated.
 
 Accounts are disabled.
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -86,23 +86,23 @@ Accounts are disabled.
 - Enable, enabled
 - Disable, disabled
 
-<!-- end -->
+</DoDont>
 
 _Note: Because `disabled` is a valid state for HTML elements, usage of “disabled” is appropriate when talking about specific element states, just not overall feature functionality._
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
 The checkbox is disabled.
 
-<!-- end -->
+</DoDont>
 
 #### Normal, abnormal
 
 This language can imply that there’s something wrong with anyone outside of the majority.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -114,7 +114,7 @@ This language can imply that there’s something wrong with anyone outside of th
 - Normal
 - Abnormal
 
-<!-- end -->
+</DoDont>
 
 #### Deaf
 
@@ -124,7 +124,7 @@ This language is often used to equate deafness or hearing impairment with ignora
 
 As a metaphor, this can equate lack of vision to ignorance. Only use the term when referencing the disability itself.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -136,13 +136,13 @@ As a metaphor, this can equate lack of vision to ignorance. Only use the term wh
 - Blind
 - Blind spot
 
-<!-- end -->
+</DoDont>
 
 #### Insane, crazy
 
 This language can stigmatize people with mental disabilities by using these words as modifiers for “unbelievable” or in a negative context.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -158,13 +158,13 @@ This language can stigmatize people with mental disabilities by using these word
 - Insane
 - Crazy
 
-<!-- end -->
+</DoDont>
 
 #### Handicap, handicapped
 
 Handicap implies that the person is the issue, rather than the environment.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -175,13 +175,13 @@ Handicap implies that the person is the issue, rather than the environment.
 - Handicap
 - Handicapped
 
-<!-- end -->
+</DoDont>
 
 #### Wheelchair-bound
 
 This term can reduce a person’s primary identity to using a wheelchair.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -192,13 +192,13 @@ This term can reduce a person’s primary identity to using a wheelchair.
 
 - Wheelchair-bound
 
-<!-- end -->
+</DoDont>
 
 #### Suffers from...
 
 This phrasing implies that having a disability equates to suffering.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -208,7 +208,7 @@ This phrasing implies that having a disability equates to suffering.
 
 - Suffers from vision impairment
 
-<!-- end -->
+</DoDont>
 
 #### Just, only
 
@@ -241,7 +241,7 @@ Consider why you need to frame someone or something this way. What is “foreign
 
 These phrases come from laws meant to circumvent or disenfranchise Black people’s rights. These laws, or “grandfather clauses” originated in the Reconstruction era in the American South.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -253,13 +253,13 @@ These phrases come from laws meant to circumvent or disenfranchise Black people�
 - Grandfather in, grandfathered in
 - Grandfather clause
 
-<!-- end -->
+</DoDont>
 
 #### Powwow
 
 A powwow is a celebration of heritage, art, and community held by Indigenous people, and should only be used to refer to actual powwows. Use other terms to refer to meetings and events that aren’t powwows.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -272,7 +272,7 @@ A powwow is a celebration of heritage, art, and community held by Indigenous peo
 
 - Powwow
 
-<!-- end -->
+</DoDont>
 
 #### Spirit animal
 
@@ -282,7 +282,7 @@ Indigenous communities use spirit animals as totems and guides. A spirit animal 
 
 These terms imply that “white is good” and “black is bad”.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -294,13 +294,13 @@ These terms imply that “white is good” and “black is bad”.
 - Black hat
 - White hat
 
-<!-- end -->
+</DoDont>
 
 #### Blacklist, whitelist
 
 These terms enforce the “white is good” and “black is bad” paradigm.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -314,9 +314,9 @@ These terms enforce the “white is good” and “black is bad” paradigm.
 - Whitelist
 - Graylist
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -326,9 +326,9 @@ Learn how to secure a compromised account and reset blocked credentials.
 
 Learn how to secure a compromised account and reset blacklisted credentials.
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -338,13 +338,13 @@ Add no-reply[at]shopify.com to your email provider’s allowlist.
 
 Add no-reply[at]shopify.com to your email provider’s whitelist.
 
-<!-- end -->
+</DoDont>
 
 #### Cakewalk
 
 This term originates from a dance contest where enslaved Black people competed for cake.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -354,13 +354,13 @@ You can easily file your your taxes with our latest features.
 
 It’s a cakewalk to file your taxes with our latest features.
 
-<!-- end -->
+</DoDont>
 
 #### Whitespace
 
 This term refers to communities and places that are predominantly white and that might make non-white people feel restricted or isolated. Avoid using this term except when referring to the named property in CSS.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -372,13 +372,13 @@ This term refers to communities and places that are predominantly white and that
 
 - Whitespace
 
-<!-- end -->
+</DoDont>
 
 #### Long time no see
 
 This phrase was used to stereotype Indigenous peoples as unintelligent, and shouldn’t be used due to its racist origins.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -388,13 +388,13 @@ It’s been a while
 
 Long time no see
 
-<!-- end -->
+</DoDont>
 
 #### Low-hanging fruit
 
 This metaphor refers to the lynching of Black people, and shouldn’t be used.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -404,7 +404,7 @@ This metaphor refers to the lynching of Black people, and shouldn’t be used.
 
 - Take care of low-hanging fruit on your task list by adding a new product.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -437,7 +437,7 @@ Avoid the following words and phrases.
 
 These terms reinforce the idea that gender is binary.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -449,13 +449,13 @@ These terms reinforce the idea that gender is binary.
 - Female adaptor
 - Female connector
 
-<!-- end -->
+</DoDont>
 
 #### Businessman
 
 This term can exclude people who aren’t men and reinforce the idea that positions of power are only for men. Use a word that’s gender-neutral and inclusive of all people.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -465,13 +465,13 @@ This term can exclude people who aren’t men and reinforce the idea that positi
 
 - Businessman
 
-<!-- end -->
+</DoDont>
 
 #### Manned
 
 This term excludes people who aren’t men. Use a word that’s gender-neutral and inclusive of all people.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -482,13 +482,13 @@ This term excludes people who aren’t men. Use a word that’s gender-neutral a
 
 - Manned
 
-<!-- end -->
+</DoDont>
 
 #### Man-made
 
 This word can exclude people who aren’t men. Use a word that’s gender-neutral and inclusive of all people.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -501,13 +501,13 @@ This word can exclude people who aren’t men. Use a word that’s gender-neutra
 
 - Man-made
 
-<!-- end -->
+</DoDont>
 
 #### Manpower
 
 This word can also exclude people who aren’t men.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -518,13 +518,13 @@ This word can also exclude people who aren’t men.
 
 - Manpower
 
-<!-- end -->
+</DoDont>
 
 #### Man, woman
 
 These terms assume a binary gender which might not be the case. Consider how you use these terms and if they’re necessary in that particular context. If you’re listing genders, make sure to include all genders.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -536,13 +536,13 @@ These terms assume a binary gender which might not be the case. Consider how you
 - Man
 - Woman
 
-<!-- end -->
+</DoDont>
 
 #### He/him/his, she/her/hers
 
 These terms assume a binary gender which might not be the case. Consider how you use these terms and if they’re necessary in that particular context.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -553,4 +553,4 @@ These terms assume a binary gender which might not be the case. Consider how you
 - He/him/his
 - She/her/hers
 
-<!-- end -->
+</DoDont>

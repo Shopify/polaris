@@ -90,7 +90,7 @@ Although display text creates an interesting visual experience, it doesn’t rep
 
 By default, the display text component outputs text in an HTML paragraph (`<p>`). If a heading tag is needed for display text, use the `element` prop to set the heading level.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -100,4 +100,4 @@ Use display text to create visual interest along with a meaningful heading struc
 
 Use display text in place of standard headings. Use the [heading component](https://polaris.shopify.com/components/heading) and [subheading component](https://polaris.shopify.com/components/subheading) to provide structure.
 
-<!-- end -->
+</DoDont>

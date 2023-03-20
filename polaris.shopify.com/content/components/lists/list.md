@@ -40,7 +40,7 @@ Every item in a list should:
 - Start with a capital letter
 - Not use commas or semicolons at the end of each line
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -54,11 +54,11 @@ Every item in a list should:
 - Yellow;
 - Blue.
 
-<!-- end -->
+</DoDont>
 
 - Be written in sentence case
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -72,7 +72,7 @@ Every item in a list should:
 - Item Two
 - Item Three
 
-<!-- end -->
+</DoDont>
 
 ---
 

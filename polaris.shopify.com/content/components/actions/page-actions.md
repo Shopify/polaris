@@ -44,7 +44,7 @@ Buttons should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -56,11 +56,11 @@ Buttons should be:
 - New order
 - Buy
 
-<!-- end -->
+</DoDont>
 
 - Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -72,11 +72,11 @@ Buttons should be:
 - Try Apple Pay
 - View your settings
 
-<!-- end -->
+</DoDont>
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -86,7 +86,7 @@ Buttons should be:
 
 - Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ---
 

@@ -184,7 +184,7 @@ textarea {
 
 ## Mobile considerations
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -198,4 +198,4 @@ textarea {
 - Keep in mind that all UI elements containing text will be affected
 - Explore additional content height, width, truncation, and line wraps
 
-<!-- end -->
+</DoDont>

@@ -42,7 +42,7 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 - Make the entire list item clickable because the exception list itself isn’t clickable
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -52,7 +52,7 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 - ![Exception list being used in place of a banner](/images/components/feedback-indicators/exception-list/dont-exception-list@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 

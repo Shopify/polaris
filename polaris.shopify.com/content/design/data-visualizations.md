@@ -78,7 +78,7 @@ All standard charts that show quantitative data have 2 axes that should be label
 
 Axis lines should be used as a guideline to show quantitative data, yet be unobtrusive.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -92,13 +92,13 @@ Use bleeding axis lines to the edge of the screen.
 
 ![A chart with axis lines filling the screen](/images/foundations/design/data-visualizations/dont/use-bleeding-axis-lines-to-the-edge-of-the-screen@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Skipping labels
 
 Labelling the tick marks on both the y-axis and x-axis helps the visualization become more clear in what it represents.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -112,7 +112,7 @@ Try to squeeze all labels together.
 
 ![A chart plotting time with too many axis labels](/images/foundations/design/data-visualizations/dont/squeeze-all-labels-together@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### X-axis Abbreviations
 
@@ -124,7 +124,7 @@ Shopify uses standard abbreviations for months and weekdays in order to reduce c
 - For specific days, use the format ‘day + month’ (10 Apr, 11 Apr)
 - For specific months, use the format month + year (Apr 2011, May 2017)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -138,13 +138,13 @@ Slant labels to make them fit.
 
 ![A chart with labels slanted at a 45 degree angle](/images/foundations/design/data-visualizations/dont/slant-labels-to-make-them-fit2@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Y-Axis Abbreviations
 
 Shopify uses standard monetary abbreviations for the y-axis to reduce clutter.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -158,13 +158,13 @@ Go over 3 numeric characters, 1 decimal, or 1 letter.
 
 ![A chart with a y-axis that represents the value of a thousand and one dollars as “$1.001k”](/images/foundations/design/data-visualizations/dont/go-over-3-numeric-characters-1-decimal-and-1-single-letter@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### X-axis Labelling conventions
 
 Labels should be clear and concise.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -178,13 +178,13 @@ Use decimals on the x-axis labels.
 
 ![A bar chart plotting numbers with decimals on the x-axis](/images/foundations/design/data-visualizations/dont/use-decimals-on-x-axis-labels2@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Y-axis Labelling conventions
 
 Labels should be clear and concise.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -192,7 +192,7 @@ Left align labels and keep them above y-axis lines.
 
 ![A chart with a dollar value on the y-axis that’s aligned to the left and raised slightly from the grey axis](/images/foundations/design/data-visualizations/do/left-align-labels-and-keep-them-slightly-above-the-y-axis-lines@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -242,7 +242,7 @@ When the number of data points can exceed 6. In this case, use a table.
 
 Label each bar with what it’s displaying, as well as the value. For more best practices, visit axis and label conventions.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -256,13 +256,13 @@ Include a label on top of each bar to display what data it’s showing.
 
 ![A horizontal bar chart displaying the country represented by each bar](/images/foundations/design/data-visualizations/do/include-a-label-on-top-of-each-bar-to-display-what-data-it-is-showing@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Color
 
 Use one color for all bars.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -276,13 +276,13 @@ Use multiple colors for the bars.
 
 ![A horizontal bar chart using a different color for each bar](/images/foundations/design/data-visualizations/dont/use-multiple-colors-for-the-bars@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Bar positioning
 
 Make sure the bars are proportional in width, roughly twice the size of the space between the bars.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -292,7 +292,7 @@ Make the width of each bar about twice as wide as the space between them.
 
 Make the bars too skinny.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -313,7 +313,7 @@ When the number of data points can exceed 31. In this case, use a [line chart](/
 
 All bars should be the same color.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -327,13 +327,13 @@ Use multiple colors for the bars.
 
 ![A bar chart showing the same data point with different colors](/images/foundations/design/data-visualizations/dont/use-multiple-colors-for-the-bars2@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Bar positioning
 
 Make sure the bars are proportional in width, roughly twice the size of the space between the bars.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -347,13 +347,13 @@ Make the bars too skinny.
 
 ![A bar chart with spaces 4 times larger than the bar itself](/images/foundations/design/data-visualizations/dont/make-the-bars-too-skinny@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Interactivity
 
 Include some interactivity on the bars upon hover since users will be looking at individual data points. The top line of the tooltip should follow x-axis abbreviation and labelling guidelines, while the bottom line tooltip should follow y-axis abbreviation and labelling guidelines.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -361,7 +361,7 @@ Include tooltips for x-axis and y-axis values.
 
 ![A bar chart with a tool tip on a bar displaying the date axis point and the dollar value axis point](/images/foundations/design/data-visualizations/do/include-tooltips-with-both-the-x-axis-value-and-y-axis-value@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -385,7 +385,7 @@ Set up the chart area using the [axis and labelling guidelines](/design/data-vis
 
 Line graphs work well when multiple datasets need to be compared. Use the [color palette](/design/colors#color-palette) to select colors.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -399,7 +399,7 @@ Use more than 4 lines.
 
 ![A line chart with 4 lines of different colors](/images/foundations/design/data-visualizations/dont/use-more-than-4-lines-try-to-stick-to-2-lines@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -419,7 +419,7 @@ Metrics should be paired with their base unit in close proximity to the number. 
 
 Metrics should be scoped to indicate the timeline of the data.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -427,13 +427,13 @@ Include a dimension of time to scope the value.
 
 ![Diagram showing “sales this week” with a numeric dollar value](/images/foundations/design/data-visualizations/do/include-a-dimension-of-time-to-scope-the-value@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Movement
 
 If needed, consider including a comparison indicator, such as comparison to the previous time or average.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -445,7 +445,7 @@ Use red for negative movement.
 
 ![Diagram of red being used to signify a downward trend in data](/images/foundations/design/data-visualizations/do/use-red-to-signify-negative-movement@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -463,7 +463,7 @@ A table is a good way to showcase a large amount of information which has a vari
 
 Consistent vertical alignment is essential for fast visual comparison between values in a table.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -477,13 +477,13 @@ Center column headers.
 
 ![A table showing product inventory data with headers, numbers, and titles centered](/images/foundations/design/data-visualizations/dont/center-align-columns@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Separation
 
 In order to reduce clutter and non-data ink, we prefer to subtly separate each row.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -497,13 +497,13 @@ Highlight every other row to indicate separation.
 
 ![A table with a white background and grey lines using a darker grey every other row](/images/foundations/design/data-visualizations/dont/separate-rows-by-highlighting-every-other-row@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Totals
 
 Totals allow merchants to understand the data holistically and should be easy to find.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -511,7 +511,7 @@ Place totals as the first row beneath the headers, and bold the text.
 
 ![A diagram showing individual product sales underneath the total sales in bold type](/images/foundations/design/data-visualizations/do/place-bold-totals-in-the-first-row@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -529,7 +529,7 @@ Others might simply have trouble understanding data presented in a chart or grap
 
 To support the needs of different merchants, always provide multiple formats for data visualizations.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -539,13 +539,13 @@ Let merchants access their data in multiple formats. For charts and graphs, it�
 
 Provide data visualizations in only one format.
 
-<!-- end -->
+</DoDont>
 
 ### Use of color
 
 Color is critical for visualization, but can cause issues for merchants with color blindness and low vision. Color should be used in a way that supports the interpretation of visual information for all merchants, including those with visual issues.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -559,7 +559,7 @@ Use colors that can be distinguished from each other to support merchants with d
 
 Require that merchants are able to see color to understand the information provided in the chart or graph.
 
-<!-- end -->
+</DoDont>
 
 To learn more, see guidance about [accessible colors in Polaris](https://polaris.shopify.com/design/colors#colors-follow-accessibility-guidelines).
 

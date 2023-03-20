@@ -196,7 +196,7 @@ When you provide help text via the `helpText` prop or an inline error message vi
 
 Use the `placeholder` prop to provide additional instructions. However, don’t rely on placeholders alone since the content isn’t always conveyed to all merchants.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -207,7 +207,7 @@ Use the `placeholder` prop to provide additional instructions. However, don’t 
 
 Use the placeholder to provide information that’s required to use the text field.
 
-<!-- end -->
+</DoDont>
 
 ### Keyboard support
 

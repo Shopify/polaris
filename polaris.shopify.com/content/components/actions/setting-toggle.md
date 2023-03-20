@@ -46,7 +46,7 @@ The primary buttons for the setting toggle should always say either “Activate�
 
 For example, if the setting toggle is on, the button should say “Deactivate” to allow merchants to turn it off. If the setting toggle is off, the button should say “Activate” to allow merchants to turn it on.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -60,7 +60,7 @@ For example, if the setting toggle is on, the button should say “Deactivate”
 - Turn on
 - Turn off
 
-<!-- end -->
+</DoDont>
 
 ---
 

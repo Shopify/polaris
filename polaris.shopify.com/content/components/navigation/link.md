@@ -64,7 +64,7 @@ Avoid using the [external icon](/icons?icon=ExternalMinor&q=external), as it can
 
 Edge cases: External icons should not be used to indicate a new tab or window is being opened. However, they may be used sparingly in features where symbols help merchants scan and pick from a list of several kinds of navigation options, like the admin's global search results.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -78,7 +78,7 @@ Avoid using the icon beside link text
 
 ![Shopify admin page with an example of an external link to the Shopify help center with no icon](/images/components/navigation/link/external-link-dont-example@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ### Unstyled links
 
@@ -104,7 +104,7 @@ Use the `url` prop to give the link component a valid `href` value. This allows 
 
 The Link component is underlined to give interactive elements a shape. This allows links to not rely on color from being the only way users can tell if an element is interactive.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -125,7 +125,7 @@ The Link component is underlined to give interactive elements a shape. This allo
 <Link removeUnderline>Learn more about Fraud Protect.</Link>
 ```
 
-<!-- end -->
+</DoDont>
 
 ### Submitting data
 
@@ -142,7 +142,7 @@ To provide consistency and clarity:
 - Use the same text for links that navigate to the same content
 - Use different text for links that navigate to different content
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -156,9 +156,9 @@ To provide consistency and clarity:
 <Link>fulfilling orders</Link>
 ```
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -180,7 +180,7 @@ To provide consistency and clarity:
 <Link url="https://help.shopify.com/manual">order fulfillment section</Link>
 ```
 
-<!-- end -->
+</DoDont>
 
 ### Keyboard support
 

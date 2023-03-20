@@ -63,7 +63,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 - Short and succinct (1–3 words)
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -73,9 +73,9 @@ A label is a short description of a field. Labels are not help text, and they sh
 
 - What is your email address?
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -85,7 +85,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 
 - My phone number is:
 
-<!-- end -->
+</DoDont>
 
 ### Help text
 

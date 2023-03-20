@@ -103,7 +103,7 @@ Body content should:
 - Avoid repeating the heading
 - Explain how to resolve the issue, particularly for warning and critical banners
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -113,7 +113,7 @@ Your online store has a maximum of 20 themes. Delete unused themes to add more.
 
 You have reached your theme limit. Your online store has reached its maximum of 20 themes. To add more themes, delete themes you’re no longer using.
 
-<!-- end -->
+</DoDont>
 
 ### Button and links
 
@@ -121,7 +121,7 @@ Buttons and links should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -131,11 +131,11 @@ Buy shipping label
 
 Buy
 
-<!-- end -->
+</DoDont>
 
 - Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -145,11 +145,11 @@ Activate Apple Pay
 
 Try Apple Pay
 
-<!-- end -->
+</DoDont>
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -159,13 +159,13 @@ Add menu item
 
 Add a menu item
 
-<!-- end -->
+</DoDont>
 
 Link text should:
 
 - Set the expectation of where merchants will be taken
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -175,11 +175,11 @@ Order #001
 
 Order
 
-<!-- end -->
+</DoDont>
 
 - Use consistent content to label navigation. For example, if a navigational link leads to a page called Orders, label the link Orders.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -189,7 +189,7 @@ Payments
 
 Finance section
 
-<!-- end -->
+</DoDont>
 
 ### Secondary body content
 
@@ -197,7 +197,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -207,12 +207,12 @@ Get performance data for all your sales channels.
 
 Now you can get performance data for all your sales channels.
 
-<!-- end -->
+</DoDont>
 
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -222,7 +222,7 @@ To buy a shipping label, you need to enter the total weight of your shipment, in
 
 To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -256,7 +256,7 @@ Always include [inline error](https://polaris.shopify.com/components/inline-erro
 
 To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -269,4 +269,4 @@ To learn about creating helpful and accessible error message text, see the guide
 - Move focus to banners if they appear on page load, or outside the merchant’s current workflow
 - Use warning or critical (`role=”alert”`) banners to convey information that the merchant doesn’t need to address immediately
 
-<!-- end -->
+</DoDont>

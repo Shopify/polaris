@@ -80,7 +80,7 @@ The filters component should:
 
 The text field should be clearly labeled so it’s obvious to merchants what they should enter into the field.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -90,13 +90,13 @@ The text field should be clearly labeled so it’s obvious to merchants what the
 
 - Enter text here
 
-<!-- end -->
+</DoDont>
 
 ### Filter badges
 
 Use the name of the filter if the purpose of the name is clear on its own. For example, when you see a filter badge that reads **Fulfilled**, it’s intuitive that it falls under the Fulfillment status category.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -106,11 +106,11 @@ Use the name of the filter if the purpose of the name is clear on its own. For e
 
 - Fulfillment: Fulfilled, Unfulfilled
 
-<!-- end -->
+</DoDont>
 
 If the filter name is ambiguous on its own, add a descriptive word related to the status. For example, **Low** doesn’t make sense out of context. Add the word “risk” so that merchants know it’s from the Risk category.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -120,11 +120,11 @@ If the filter name is ambiguous on its own, add a descriptive word related to th
 
 - High, Low
 
-<!-- end -->
+</DoDont>
 
 Group tags from the same category together.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -134,11 +134,11 @@ Group tags from the same category together.
 
 - (Unfulfilled) (fulfilled)
 
-<!-- end -->
+</DoDont>
 
 If all tag pills selected: truncate in the middle
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -148,4 +148,4 @@ If all tag pills selected: truncate in the middle
 
 - All payment status filters selected, Paid, unpa…
 
-<!-- end -->
+</DoDont>

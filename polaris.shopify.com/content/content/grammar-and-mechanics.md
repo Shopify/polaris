@@ -30,7 +30,7 @@ You should (almost) always write in the active voice:
 
 Use the active voice if merchants need to do something. It should be clear that the subject is the one doing the action.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -40,7 +40,7 @@ Add details to the product
 
 Details were added to the product
 
-<!-- end -->
+</DoDont>
 
 ### Passive voice
 
@@ -56,7 +56,7 @@ You should almost always write in the active voice, but here’s when to use the
 - To make it clear that you didn’t personally take an action or make a decision
 - If the object (thing being done) is more important than the subject (person doing the thing)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -68,13 +68,13 @@ Invoices are created monthly and emailed to
 Shopify creates and emails your invoices monthly to
 [simran.robichaud@nomail.com](mailto:Simran.Robichaud@nomail.com)
 
-<!-- end -->
+</DoDont>
 
 ### Contractions
 
 Contractions are abbreviated words. We use them to set a light and casual tone in the interface. The goal is to sound human, so avoid contracting verbs that sound awkward when you say them out loud, or have been phased out of modern day speech.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -102,13 +102,13 @@ Contractions are abbreviated words. We use them to set a light and casual tone i
 - You gotta set up Shopify Payments to use Shopify Capital
 - It’d be a good idea to place an ad this weekend
 
-<!-- end -->
+</DoDont>
 
 ### Plain language
 
 Use words and language that our merchants use. Avoid jargon or technical terminology. Make sure each sentence has a single focus and keep them short. Aim for a Grade 7 reading level.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -120,7 +120,7 @@ Use words and language that our merchants use. Avoid jargon or technical termino
 - Your SSL certificates were activated
 - These are your less popular products with the highest add-to-cart conversion
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -134,7 +134,7 @@ Use sentence case for all headings:
 - Capitalize proper or trademarked nouns (names of products, countries, or people)
 - Lowercase for everything else
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -144,13 +144,13 @@ Create purchase order
 
 Create Purchase Order
 
-<!-- end -->
+</DoDont>
 
 ### Product and feature names
 
 In general, if a feature or product isn’t unique to Shopify, don’t capitalize it (such as blogs, navigation, pages). If it’s unique to Shopify and marketable as its own product, capitalize it (such as Shopify Payments, or Frenzy).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -164,7 +164,7 @@ In general, if a feature or product isn’t unique to Shopify, don’t capitaliz
 - Navigation
 - shopify payments
 
-<!-- end -->
+</DoDont>
 
 ### Trademarks
 
@@ -176,7 +176,7 @@ Review the third party’s brand usage guidelines to make sure you are using the
 
 Job titles should be capitalized when they come before or after a person’s name. When referring to a job title without referencing a name, don’t capitalize the job title.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -192,13 +192,13 @@ Job titles should be capitalized when they come before or after a person’s nam
 - Jane Smith is a Content Strategist
 - The Content Strategist redesigned the information architecture.
 
-<!-- end -->
+</DoDont>
 
 ### Letters following slashes
 
 The first letter following a slash shouldn’t be capitalized.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -208,7 +208,7 @@ ZIP/postal code required
 
 ZIP/Postal code required
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -224,7 +224,7 @@ See the content guidelines for [headings and subheadings](/content/actionable-la
 
 Use a bulleted list when items are related but sequence or priority doesn’t matter.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -242,13 +242,13 @@ Use Shopify payments to
 - track pending payout schedule,
 - minimize lost sales from chargebacks. And eliminate PCI fees
 
-<!-- end -->
+</DoDont>
 
 ### Numbered
 
 Use a numbered list when item sequence or priority does matter, such as step-by-step instructions.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -265,7 +265,7 @@ To set up Shopify Payments:
 1.  Go to Settings from Shopify admin Then select Shopify Payments
 2.  Select Setup
 
-<!-- end -->
+</DoDont>
 
 ### Dropdown menus
 
@@ -275,7 +275,7 @@ Menu lists give users a horizontal set of actions when space is limited. The ord
 
 Actions in a menu follow a {verb}+{noun} pattern. If there’s enough context, only a verb might be required.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -291,7 +291,7 @@ Actions in a menu follow a {verb}+{noun} pattern. If there’s enough context, o
 - File name changes
 - Duplicate this order so that you can make edits, updates, or changes
 
-<!-- end -->
+</DoDont>
 
 #### Nouns in a menu
 
@@ -299,7 +299,7 @@ Menu lists give users a horizontal set of nouns when space is limited. The order
 
 Nouns in a menu should be concise but still give the user enough information so they can easily find and accurately select the item they want.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -317,14 +317,14 @@ Select filter
 - Filter product vendor
 - Filter tagged with
 
-<!-- end -->
+</DoDont>
 
 ### Capitalization
 
 - List items always start with a capital letter.
 - Capitalization and punctuation rules apply to both bulleted and numbered lists.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -342,7 +342,7 @@ Company name
 - optional
 - required
 
-<!-- end -->
+</DoDont>
 
 ### Punctuation
 
@@ -363,7 +363,7 @@ Dates, numbers, and measurements are often formatted automatically according use
 
 When possible, use the month’s full name. If there are space constraints, use 3-letter abbreviations. Don’t write dates with numerals only.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -377,11 +377,11 @@ When possible, use the month’s full name. If there are space constraints, use 
 - October 15, ’15
 - 10/15/15
 
-<!-- end -->
+</DoDont>
 
 Don’t use ordinal indicators, which are words representing position or rank in a sequential order (1st, 2nd, 3rd, and so on).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -391,7 +391,7 @@ January 23–April 1
 
 January 23rd–April 1st
 
-<!-- end -->
+</DoDont>
 
 ### Time
 
@@ -410,7 +410,7 @@ For all translations, the time format is automatically localized by the `Intl.Da
 - If your audience is in a single time zone, then don’t include an S (for Standard) or D (for Daylight). For example, 3:00 pm PT.
 - If your audience is in a combination of time zones, then include the S (for Standard) or D (for Daylight) to avoid confusion. For example, 3:00 pm PDT.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -420,11 +420,11 @@ Thursday, October 15, 2015 at 2:00 pm EDT
 
 2015-10-15, CDT 2:00P.M.
 
-<!-- end -->
+</DoDont>
 
 Use consistent timestamp formats by following these examples:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -446,13 +446,13 @@ Use consistent timestamp formats by following these examples:
 - 7 days to 1 year: `10:30am, Oct 15, 2015`
 - More than 1 year: `Last year`
 
-<!-- end -->
+</DoDont>
 
 ### Currency
 
 When including currency with a price, the currency comes after the dollar amount. Learn more about [formatting localized currency](/foundations/formatting-localized-currency).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -464,13 +464,13 @@ When including currency with a price, the currency comes after the dollar amount
 - \$10KUSD
 - \$10,000USD
 
-<!-- end -->
+</DoDont>
 
 ### Numbers
 
 In general, use numerals. If the number is below 10 and not integral to the sentence, spell it out in full.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -489,11 +489,11 @@ In general, use numerals. If the number is below 10 and not integral to the sent
 - Here are two marketing campaigns you can use.
 - You have three orders to fulfill.
 
-<!-- end -->
+</DoDont>
 
 Use commas for numbers with four or more digits. Whenever possible, don’t truncate numbers:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -507,11 +507,11 @@ Use commas for numbers with four or more digits. Whenever possible, don’t trun
 - 9344
 - 1.8 m
 
-<!-- end -->
+</DoDont>
 
 Use hyphens when writing phone numbers. Don’t use brackets, spaces, periods, or plus signs:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -525,11 +525,11 @@ Use hyphens when writing phone numbers. Don’t use brackets, spaces, periods, o
 - 1-(514)-555-1234
 - +33 55 416 123
 
-<!-- end -->
+</DoDont>
 
 Use an en dash without a space on either side for number ranges:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -549,11 +549,11 @@ Use an en dash without a space on either side for number ranges:
 - \$0.00 – \$49.99
 - 2:00 pm – 3:00 pm
 
-<!-- end -->
+</DoDont>
 
 Use “to” instead of an en dash if a number range is preceded by “from” in a phrase. Use “and” if a range is preceded by “between.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -567,11 +567,11 @@ Use “to” instead of an en dash if a number range is preceded by “from” i
 - Active from August 15–August 30
 - Free shipping for products between \$10.00–\$40.00
 
-<!-- end -->
+</DoDont>
 
 For undefined upward ranges, use “and up” or “or more.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -583,11 +583,11 @@ For undefined upward ranges, use “and up” or “or more.”
 - \$50.00+
 - \>100
 
-<!-- end -->
+</DoDont>
 
 For downward ranges, be specific.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -597,13 +597,13 @@ $0.00–$49.99
 
 \$50.00 or less
 
-<!-- end -->
+</DoDont>
 
 ### Units of measurement
 
 In all cases, include a space between the number and the unit.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -618,11 +618,11 @@ In all cases, include a space between the number and the unit.
 - 2kg
 - 1.875 × 3.375 × 13.625cm
 
-<!-- end -->
+</DoDont>
 
 Never pluralize unit of measurement abbreviations.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -634,11 +634,11 @@ Never pluralize unit of measurement abbreviations.
 - 4 lbs
 - 11 mls
 
-<!-- end -->
+</DoDont>
 
 When listing out multiple measurements in a row, put the unit of measurement at the end instead of after each number (and include a space).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -648,11 +648,11 @@ When listing out multiple measurements in a row, put the unit of measurement at 
 
 - 1.875 cm × 3.375 cm × 13.625 cm
 
-<!-- end -->
+</DoDont>
 
 For pricing by measurement, don’t add a space before or after a slash.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -664,11 +664,11 @@ For pricing by measurement, don’t add a space before or after a slash.
 - \$100/ m
 - \$5/ 100g
 
-<!-- end -->
+</DoDont>
 
 For units of measurement, use decimals instead of fractions:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -680,7 +680,7 @@ For units of measurement, use decimals instead of fractions:
 - 2-3/8 lb
 - 11-7/8 × 3-3/8 × 13-5/8 cm
 
-<!-- end -->
+</DoDont>
 
 #### Unit of measurement abbreviations
 
@@ -733,7 +733,7 @@ Country            Province           Postal code
 
 Please note, “optional” in `Apartment, suite, etc. (optional)` means that the field is optional for customers to complete, but we should always include it in the form.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -744,13 +744,13 @@ Please note, “optional” in `Apartment, suite, etc. (optional)` means that th
 - Add extra fields
 - Change the placeholder text
 
-<!-- end -->
+</DoDont>
 
 ### Country, province, and state names
 
 Use a nation’s proper name when referring to it as a noun.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -760,11 +760,11 @@ Your store must be located in the United States.
 
 Your store must be located in the US.
 
-<!-- end -->
+</DoDont>
 
 When using a country as an adjective (such as when referring to currency), use the abbreviated form without punctuation.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -774,7 +774,7 @@ Pinterest requires your store to use US currency.
 
 U.S. currency
 
-<!-- end -->
+</DoDont>
 
 Things to watch out for:
 
@@ -789,7 +789,7 @@ Things to watch out for:
 
 Don’t use ampersands (&). They attract attention to the least important part of the sentence. Spell out the word “and.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -799,7 +799,7 @@ Zones and rates
 
 Zones & rates
 
-<!-- end -->
+</DoDont>
 
 ### Apostrophes
 
@@ -817,7 +817,7 @@ Use apostrophes to form possessives:
 
 Don’t use apostrophes to form possessive pronouns such as hers or his.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -831,11 +831,11 @@ Don’t use apostrophes to form possessive pronouns such as hers or his.
 - Womens clothing
 - Customers credit cards
 
-<!-- end -->
+</DoDont>
 
 Always use apostrophes, not vertical (straight) quotes.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -845,13 +845,13 @@ Always use apostrophes, not vertical (straight) quotes.
 
 - <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">'</span>
 
-<!-- end -->
+</DoDont>
 
 ### Colons
 
 Avoid using colons in sentences. If you need to use one, don’t capitalize the first word after the colon unless it’s a proper noun.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -861,11 +861,11 @@ Your store accepts payments with GoCoin and Shopify Payments.
 
 Your store accepts payments with: GoCoin and Shopify Payments. Merchants store, womens clothing, customers credit cards
 
-<!-- end -->
+</DoDont>
 
 Don’t use colons to introduce radio buttons or checkboxes.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -875,11 +875,11 @@ If the customer abandons their checkout, send them an email reminder to complete
 
 If the customer abandons their checkout, send them an email reminder to complete their order:
 
-<!-- end -->
+</DoDont>
 
 Introduce bulleted lists with a colon.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -897,13 +897,13 @@ Correct the following payment information to continue.
 - The billing address street doesn’t match the street for the credit card
 - The billing address ZIP or postal code doesn’t match the credit card address
 
-<!-- end -->
+</DoDont>
 
 ### Commas
 
 Use the oxford comma (also known as the serial comma) in sentences. There should be a comma after every list of 3 or more items (unless you’re using a bulleted or numbered list).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -913,11 +913,11 @@ Kit is an app that handles your online advertising, email marketing, and social 
 
 Kit is an app that handles your online advertising, email marketing and social media.
 
-<!-- end -->
+</DoDont>
 
 Don’t use commas to separate bulleted or numbered list items.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -931,7 +931,7 @@ Don’t use commas to separate bulleted or numbered list items.
 - The billing address street doesn’t match the street for the credit card,
 - The billing address ZIP or postal code doesn’t match the credit card address.
 
-<!-- end -->
+</DoDont>
 
 ### Ellipses
 
@@ -946,7 +946,7 @@ Don’t use ellipses for:
 - Placeholder copy
 - Trailing off a sentence
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -956,11 +956,11 @@ Search files
 
 Start typing to search for files…
 
-<!-- end -->
+</DoDont>
 
 Always use the ellipsis character, not three periods.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -970,7 +970,7 @@ Always use the ellipsis character, not three periods.
 
 <code style="font-size: 5rem; line-height: 0; background-color: transparent">...</code>
 
-<!-- end -->
+</DoDont>
 
 #### Truncation
 
@@ -984,7 +984,7 @@ A button with an ellipsis icon (not the same as text) is used to expand more act
 
 Use an en dash with no spaces in between (–) for a fixed range of numbers
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -994,11 +994,11 @@ Use an en dash with no spaces in between (–) for a fixed range of numbers
 
 2006 – 2013
 
-<!-- end -->
+</DoDont>
 
 Use an em dash only if you can’t make your message clearer by splitting it into two sentences. Use an em dash without a space on either side (—).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1008,7 +1008,7 @@ Choose your theme’s colors, typography, and pictures—all in one place.
 
 Choose your theme’s design—colors, typography, and pictures—all in one place.
 
-<!-- end -->
+</DoDont>
 
 Depending on the font or appearance, you may want to include a hair space on either side of the en or em dash. HTML entity code for hair space is `&hairsp;` or `&#8202;`.
 
@@ -1018,7 +1018,7 @@ Tip: On Mac the keyboard shortcuts are option - for en dash and shift option - f
 
 Avoid exclamation marks—only use them for really really exciting things. If you absolutely have to, limit yourself to one exclamation mark per page.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1028,7 +1028,7 @@ You’ve launched your first online store!
 
 You’ve updated your product title!
 
-<!-- end -->
+</DoDont>
 
 ### Hyphens
 
@@ -1036,7 +1036,7 @@ Use hyphens to:
 
 - Form compound modifiers: two words that combine to modify or describe the noun that follows
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1053,11 +1053,11 @@ Use hyphens to:
 - This order is high-risk.
 - Add weight based shipping rates.
 
-<!-- end -->
+</DoDont>
 
 - Join prefixes and suffixes only if there are two vowels beside each other. Never use hyphens in the words ecommerce and email.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1070,7 +1070,7 @@ Use hyphens to:
 - Reenable
 - Re-send
 
-<!-- end -->
+</DoDont>
 
 ### Periods
 
@@ -1078,7 +1078,7 @@ Periods often end up in places they shouldn’t, and are omitted at strange time
 
 When to use periods:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1100,9 +1100,9 @@ When to use periods:
 - Footer help box text
 - Radio button and checkbox text
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1118,11 +1118,11 @@ When to use periods:
 - Heading example: I’m Kit, your virtual employee.
 - Notification example: 6 orders have payments that need to be captured.
 
-<!-- end -->
+</DoDont>
 
 #### Periods for bulleted, numbered, and lists of links
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1134,7 +1134,7 @@ When to use periods:
 - Don’t use periods when a list has only single sentences or fragments
 - Don’t use periods for lists of links
 
-<!-- end -->
+</DoDont>
 
 ### Question marks
 
@@ -1150,7 +1150,7 @@ Don’t use question marks if:
 - It’s the only option available: “Reset password”
 - It’s an on/off option: “Show quantity box”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1160,7 +1160,7 @@ Don’t use question marks if:
 
 - Reset password?
 
-<!-- end -->
+</DoDont>
 
 ### Quotation marks
 
@@ -1171,7 +1171,7 @@ Use quotation marks to:
 
 When it’s helpful to the merchant, use quotation marks to indicate input that the merchant has provided, such as a product title or file name. Use this indication only when the input appears in running text.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1183,11 +1183,11 @@ When it’s helpful to the merchant, use quotation marks to indicate input that 
 - Are you sure you want to delete **cat shirt**?
 - Nike Air Max 90.png failed to upload
 
-<!-- end -->
+</DoDont>
 
 In general, place commas and periods inside quotation marks. When working with literal strings like typed commands or merchant inputs, place punctuation outside the quotation marks.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1201,11 +1201,11 @@ In general, place commas and periods inside quotation marks. When working with l
 - We call it a “store”, not a “shop”.
 - There was an error with the file “cat_shirt.png.”
 
-<!-- end -->
+</DoDont>
 
 Always use smart (curly) quotes, not vertical (straight) quotes.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1222,7 +1222,7 @@ Always use smart (curly) quotes, not vertical (straight) quotes.
 
 - <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">"</span> or <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">'</span>
 
-<!-- end -->
+</DoDont>
 
 ### Semicolons
 
@@ -1231,7 +1231,7 @@ Avoid semicolons if possible. If you really need them, use semicolons to:
 - Connect two closely related ideas, as long as they are both independent clauses (full sentences that could stand on their own).
 - Replace a comma or the word “and” between two closely related ideas.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1241,7 +1241,7 @@ My friends made me banana pancakes on my birthday; I’ve never been happier.
 
 The unicorn was hungry; the grass was brown.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -1251,7 +1251,7 @@ The unicorn was hungry; the grass was brown.
 
 Use American spelling for all external-facing Shopify content. When in doubt, check the [Merriam-Webster dictionary](https://www.merriam-webster.com/) for the preferred spelling of specific terms.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1265,7 +1265,7 @@ Use American spelling for all external-facing Shopify content. When in doubt, ch
 - Centre
 - Cancelled
 
-<!-- end -->
+</DoDont>
 
 Tip: it’s easy to miss Canadian spelling. Switch your laptop language settings to American English and turn spell check on. It will highlight any Canadianisms you might have missed.
 
@@ -1279,7 +1279,7 @@ Use bold sparingly and only where strong emphasis is required. Don’t use bold 
 - Merchant input
 - Checkbox titles
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1289,7 +1289,7 @@ After your first sale, PayPal will email you at **merchant&#64;email.com** with 
 
 Are you sure you want to delete **Sunset T-shirt**?
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -1299,7 +1299,7 @@ Are you sure you want to delete **Sunset T-shirt**?
 
 Always refer to merchants as “you.” Don’t speak for merchants with phrases that use “I” or “my.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1309,11 +1309,11 @@ Change your email address in your Profile.
 
 Change your email address in My Profile.
 
-<!-- end -->
+</DoDont>
 
 In some cases (such as getting merchant consent or granting permissions) you should refer to merchants as “I.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1322,13 +1322,13 @@ In some cases (such as getting merchant consent or granting permissions) you sho
 #### Don’t
 
 <p><label><input type="checkbox"> You agree the terms and conditions</label></p>
- <!-- end -->
+ </DoDont>
 
 ### Referring to Shopify
 
 Always refer to Shopify as “we,” but avoid inserting Shopify into the content as much as possible (except when a human is taking action, such as reviewing a request).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -1338,4 +1338,4 @@ Pinterest Buyable Pins will be available in the coming weeks.
 
 We’re making Pinterest Buyable Pins available in the coming weeks.
 
-<!-- end -->
+</DoDont>

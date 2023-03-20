@@ -44,7 +44,7 @@ The account connection title should be the name of the platform or service that 
 - Mailchimp account
 - Instagram account
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -56,13 +56,13 @@ The account connection title should be the name of the platform or service that 
 - Connect your Account
 - Instagram Account
 
-<!-- end -->
+</DoDont>
 
 ### Terms and conditions
 
 Clearly link to your terms and conditions and let merchants know about any additional costs of your service.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -73,13 +73,13 @@ Clearly link to your terms and conditions and let merchants know about any addit
 
 Learn about terms, conditions, and payment details.
 
-<!-- end -->
+</DoDont>
 
 ### Connect button
 
 Always use the verb Connect in the button of the account connection component. When merchants click or tap “Connect” it should open up your platform or service’s authorization page in a new browser window.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -89,7 +89,7 @@ Connect
 
 Connect to app
 
-<!-- end -->
+</DoDont>
 
 ---
 

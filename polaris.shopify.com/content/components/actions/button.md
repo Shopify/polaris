@@ -146,7 +146,7 @@ To help support merchants who use speech activation software as well as sighted 
 
 When possible, give the button visible text that clearly conveys its purpose without the use of `accessibilityLabel`. When no additional content is needed, duplicating the button text with `accessibilityLabel` isn’t necessary.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -169,7 +169,7 @@ When possible, give the button visible text that clearly conveys its purpose wit
 <Button accessibilityLabel="Edit">Edit</Button>
 ```
 
-<!-- end -->
+</DoDont>
 
 #### External links
 
@@ -181,7 +181,7 @@ When you use the button component to create a link to an external resource:
 
 For more information on making accessible links, see the [link component](https://polaris.shopify.com/components/link).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -205,7 +205,7 @@ For more information on making accessible links, see the [link component](https:
 </Button>
 ```
 
-<!-- end -->
+</DoDont>
 
 ### Keyboard support
 

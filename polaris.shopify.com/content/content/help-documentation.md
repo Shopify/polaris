@@ -136,7 +136,7 @@ Maintain the heading hierarchy throughout the doc, and don’t skip heading leve
 
 For page or topic-level headings, use short, gerund (ing-word) based statements.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -146,11 +146,11 @@ For page or topic-level headings, use short, gerund (ing-word) based statements.
 
 - Create products from your admin
 
-<!-- end -->
+</DoDont>
 
 For task-based headings within the document, use verb stems / imperatives.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -160,11 +160,11 @@ For task-based headings within the document, use verb stems / imperatives.
 
 - Adding a customer
 
-<!-- end -->
+</DoDont>
 
 Avoid pronouns and articles in headings to keep them short.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -175,11 +175,11 @@ Avoid pronouns and articles in headings to keep them short.
 - Connecting a Facebook account
 - Connecting your Facebook account
 
-<!-- end -->
+</DoDont>
 
 Avoid long strings of nouns in a heading.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -191,11 +191,11 @@ Avoid long strings of nouns in a heading.
 - Creating product posts
 - Creating product post pages
 
-<!-- end -->
+</DoDont>
 
 Keep the key descriptors close to the front of a heading so it’s easier to scan quickly. For example, avoid starting the heading with “How to” or “To.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -205,11 +205,11 @@ Keep the key descriptors close to the front of a heading so it’s easier to sca
 
 - How to add a product
 
-<!-- end -->
+</DoDont>
 
 Try to keep parallel grammatical structure between headings of the same level.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -219,11 +219,11 @@ Try to keep parallel grammatical structure between headings of the same level.
 
 - Boost a post, Choosing your audience, How to fulfill your orders
 
-<!-- end -->
+</DoDont>
 
 In most cases, headings should be statements rather than questions. Save question-style headings for FAQs or low-level headings that address specific functions.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -233,11 +233,11 @@ In most cases, headings should be statements rather than questions. Save questio
 
 - How do I add a product?
 
-<!-- end -->
+</DoDont>
 
 Use sentence case for all headings, but no periods at the end. Format and capitalize interface elements or buttons in the way they appear in the Shopify admin.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -247,11 +247,11 @@ Use sentence case for all headings, but no periods at the end. Format and capita
 
 - Adding Products To Your Store.
 
-<!-- end -->
+</DoDont>
 
 Use parallel structure in lists, headings, and pretty much everywhere else to encourage comprehension and recall.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -261,7 +261,7 @@ Use parallel structure in lists, headings, and pretty much everywhere else to en
 
 - Add products to your store, How to delete products from your store, Edit a product in your store
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -293,7 +293,7 @@ In general, use short lists (either numbered steps or bullets), which are easier
 Tell the user what they can do with your product, not what it can do. This means structuring documentation around user actions rather than product features.
 Readers aren’t there to read a spec: they want to keep their businesses up and running.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -303,12 +303,12 @@ Readers aren’t there to read a spec: they want to keep their businesses up and
 
 - This feature notifies you about key updates and promotions.
 
-<!-- end -->
+</DoDont>
 
 In general, avoid grouping multiple actions together in a single numbered step.
 Each step should include only one or two user actions.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -320,11 +320,11 @@ Each step should include only one or two user actions.
 1.  From your Shopify admin, click **Products**, click **Add a product**, and
     then enter your product information.
 
-<!-- end -->
+</DoDont>
 
 Avoid telling the user to “find” or “locate” something in a task.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -334,13 +334,13 @@ Avoid telling the user to “find” or “locate” something in a task.
 
 - Find the Pinterest section, then click **Remove channel**.
 
-<!-- end -->
+</DoDont>
 
 Use the action word “select” when you’re telling the reader to pick something from a set number of choices (like from a list or dropdown menu), and use
 “choose” when you’re telling the reader to make a choice that’s more open-ended
 (like “Choose what kind of store you want to open”).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -350,11 +350,11 @@ Use the action word “select” when you’re telling the reader to pick someth
 
 - From the **Products** drop-down menu, choose the one you want to discount.
 
-<!-- end -->
+</DoDont>
 
 Use consistent phrasing when referring to the reader’s choice. Use the most direct “If you want to” instead of more formal options such as “If you would like to” or “If you wish to.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -364,11 +364,11 @@ Use consistent phrasing when referring to the reader’s choice. Use the most di
 
 - If you’d like to add a product, click **Add product**.
 
-<!-- end -->
+</DoDont>
 
 Avoid using “desired” in place of the more direct “want.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -378,7 +378,7 @@ Avoid using “desired” in place of the more direct “want.”
 
 - Select the desired item to add to the order.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -386,7 +386,7 @@ Avoid using “desired” in place of the more direct “want.”
 
 For conditional cases, start the step with “if” so the reader doesn’t have to read the whole sentence only to find out that the condition does not apply to them. It often helps to add a “then” to help the reader identify the condition and the outcome.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -396,7 +396,7 @@ For conditional cases, start the step with “if” so the reader doesn’t have
 
 - Click A, B, and C if you need Z.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -429,7 +429,7 @@ When asking the reader to confirm something, use:
 
 For instructions, use the command form of the verb.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -439,11 +439,11 @@ For instructions, use the command form of the verb.
 
 - Clicking **Refresh** will show your new orders.
 
-<!-- end -->
+</DoDont>
 
 Limit the future tense to cases that actually refer to the future.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -453,7 +453,7 @@ Limit the future tense to cases that actually refer to the future.
 
 - Click **Save**. The price will change when the discount is applied.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -526,7 +526,7 @@ For actions and tasks, aim for a much more direct tone. Keep your tone approach
 
 Use contractions.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -536,11 +536,11 @@ Use contractions.
 
 - After you have set up your product, click **Save**.
 
-<!-- end -->
+</DoDont>
 
 Address the reader or user as “you.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -550,7 +550,7 @@ Address the reader or user as “you.”
 
 - Products can be added from the Products page in your Shopify admin.
 
-<!-- end -->
+</DoDont>
 
 Keep tone in check by avoiding the following:
 
@@ -564,7 +564,7 @@ Keep tone in check by avoiding the following:
 
 Use the active voice as much as possible, which generally sounds less formal than the passive voice. This means writing what merchants do, instead of what is being done by merchants. But in cases where the passive voice sounds more natural than the active voice, use passive voice (like with verbs such as “publish” or “assign” and with nouns like “discount”).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -574,7 +574,7 @@ Use the active voice as much as possible, which generally sounds less formal tha
 
 - After the product has been added, **Save** must be clicked.
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -586,7 +586,7 @@ It’s important that the sentences you put together flow. Changing things up an
 
 Use linking adverbs, conjunctions, and prepositions liberally to avoid choppy writing.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -596,7 +596,7 @@ Use linking adverbs, conjunctions, and prepositions liberally to avoid choppy wr
 
 - Click the button. The window opens.
 
-<!-- end -->
+</DoDont>
 
 ### Change up sentence structures
 
