@@ -78,7 +78,7 @@ function IndexTableWithFilteringExample() {
             },
             {
               type: 'delete',
-              onPrimaryAction: async (id: string) => {
+              onPrimaryAction: async () => {
                 await sleep(1);
                 deleteView(index);
                 return true;
@@ -126,35 +126,47 @@ function IndexTableWithFilteringExample() {
           disabled: false,
           loading: false,
         };
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
+  const [accountStatus, setAccountStatus] = useState<string[]>([]);
+  const [moneySpent, setMoneySpent] = useState<[number, number] | undefined>(
+    undefined,
+  );
   const [taggedWith, setTaggedWith] = useState<string | undefined>('');
   const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
+    (value: string[]) => setAccountStatus(value),
     [],
   );
   const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
+    (value: [number, number]) => setMoneySpent(value),
     [],
   );
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleQueryValueChange = useCallback(
+    (value: string) => setQueryValue(value),
+    [],
+  );
+  const handleAccountStatusRemove = useCallback(() => setAccountStatus([]), []);
+  const handleMoneySpentRemove = useCallback(
+    () => setMoneySpent(undefined),
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
     handleTaggedWithRemove();
     handleQueryValueRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove]);
-  const handleSortChange = useCallback(
-    (value: string) => setSortValue(value),
-    [],
-  );
+  }, [
+    handleQueryValueRemove,
+    handleTaggedWithRemove,
+    handleMoneySpentRemove,
+    handleAccountStatusRemove,
+  ]);
 
   const filters = [
     {
@@ -221,12 +233,36 @@ function IndexTableWithFilteringExample() {
         ]
       : [];
 
-  const sortOptions = [
-    {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
-    {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
-    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
-    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
+  const orders = [
+    {
+      id: '1020',
+      order: '#1020',
+      date: 'Jul 20 at 4:34pm',
+      customer: 'Jaydon Stanton',
+      total: '$969.44',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1019',
+      order: '#1019',
+      date: 'Jul 20 at 3:46pm',
+      customer: 'Ruben Westerfelt',
+      total: '$701.19',
+      paymentStatus: <Badge progress="partiallyComplete">Partially paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1018',
+      order: '#1018',
+      date: 'Jul 20 at 3.44pm',
+      customer: 'Leo Carder',
+      total: '$798.24',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
   ];
+
   const resourceName = {
     singular: 'order',
     plural: 'orders',
@@ -267,7 +303,7 @@ function IndexTableWithFilteringExample() {
         sortSelected={sortSelected}
         queryValue={queryValue}
         queryPlaceholder="Searching in all"
-        onQueryChange={handleFiltersQueryChange}
+        onQueryChange={handleQueryValueChange}
         onQueryClear={() => {}}
         onSort={setSortSelected}
         primaryAction={primaryAction}
@@ -308,16 +344,16 @@ function IndexTableWithFilteringExample() {
     </LegacyCard>
   );
 
-  function disambiguateLabel(key: string, value: string): string {
+  function disambiguateLabel(key: string, value: string | string[]): string {
     switch (key) {
       case 'moneySpent':
         return `Money spent is between $${value[0]} and $${value[1]}`;
       case 'taggedWith':
         return `Tagged with ${value}`;
       case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
+        return (value as string[]).map((val) => `Customer ${val}`).join(', ');
       default:
-        return value;
+        return value as string;
     }
   }
 

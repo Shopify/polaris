@@ -77,7 +77,7 @@ function IndexTableWithLoadingExample() {
             },
             {
               type: 'delete',
-              onPrimaryAction: async (id: string) => {
+              onPrimaryAction: async () => {
                 await sleep(1);
                 deleteView(index);
                 return true;
@@ -125,32 +125,39 @@ function IndexTableWithLoadingExample() {
           disabled: false,
           loading: false,
         };
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
+  const [accountStatus, setAccountStatus] = useState<string[] | undefined>(
+    undefined,
+  );
+  const [moneySpent, setMoneySpent] = useState<[number, number] | undefined>(
+    undefined,
+  );
+  const [taggedWith, setTaggedWith] = useState<string>('');
+  const [queryValue, setQueryValue] = useState<string>('');
 
   const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
+    (value: string[]) => setAccountStatus(value),
     [],
   );
   const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
+    (value: [number, number]) => setMoneySpent(value),
     [],
   );
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
   const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
+    () => setAccountStatus(undefined),
     [],
   );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+  const handleMoneySpentRemove = useCallback(
+    () => setMoneySpent(undefined),
+    [],
+  );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
@@ -220,7 +227,7 @@ function IndexTableWithLoadingExample() {
   ];
 
   const appliedFilters: IndexFiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
+  if (accountStatus && !isEmpty(accountStatus)) {
     const key = 'accountStatus';
     appliedFilters.push({
       key,
@@ -228,7 +235,7 @@ function IndexTableWithLoadingExample() {
       onRemove: handleAccountStatusRemove,
     });
   }
-  if (!isEmpty(moneySpent)) {
+  if (moneySpent) {
     const key = 'moneySpent';
     appliedFilters.push({
       key,
@@ -368,20 +375,20 @@ function IndexTableWithLoadingExample() {
     </LegacyCard>
   );
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string | any[]): string {
     switch (key) {
       case 'moneySpent':
         return `Money spent is between $${value[0]} and $${value[1]}`;
       case 'taggedWith':
         return `Tagged with ${value}`;
       case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
+        return (value as string[]).map((val) => `Customer ${val}`).join(', ');
       default:
-        return value;
+        return value as string;
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string | string[]): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

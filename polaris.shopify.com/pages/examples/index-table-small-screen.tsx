@@ -61,14 +61,16 @@ function SimpleSmallScreenIndexTableExample() {
       >
         <div style={{padding: '12px 16px', width: '100%'}}>
           <AlphaStack gap="1">
-            <Text variant="bodySm" color="subdued">
+            <Text as="span" variant="bodySm" color="subdued">
               {order} • {date}
             </Text>
             <Inline align="space-between">
-              <Text variant="bodyMd" fontWeight="semibold">
+              <Text as="span" variant="bodyMd" fontWeight="semibold">
                 {customer}
               </Text>
-              <Text variant="bodyMd">{total}</Text>
+              <Text as="span" variant="bodyMd">
+                {total}
+              </Text>
             </Inline>
             <Inline align="start" gap="1">
               {paymentStatus}

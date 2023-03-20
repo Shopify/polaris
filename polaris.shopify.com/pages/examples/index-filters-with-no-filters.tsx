@@ -1,13 +1,10 @@
 import {
-  TextField,
   IndexTable,
   LegacyCard,
   IndexFilters,
   useSetIndexFiltersMode,
   useIndexResourceState,
   Text,
-  ChoiceList,
-  RangeSlider,
   Badge,
 } from '@shopify/polaris';
 import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
@@ -77,7 +74,7 @@ function IndexFiltersWithNoFiltersExample() {
             },
             {
               type: 'delete',
-              onPrimaryAction: async (id: string) => {
+              onPrimaryAction: async () => {
                 await sleep(1);
                 deleteView(index);
                 return true;
@@ -128,7 +125,7 @@ function IndexFiltersWithNoFiltersExample() {
   const [queryValue, setQueryValue] = useState('');
 
   const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
 
@@ -255,27 +252,6 @@ function IndexFiltersWithNoFiltersExample() {
       </IndexTable>
     </LegacyCard>
   );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
-      default:
-        return value;
-    }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
-    }
-  }
 }
 
 export default withPolarisExample(IndexFiltersWithNoFiltersExample);

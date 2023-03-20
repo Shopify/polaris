@@ -143,7 +143,7 @@ function ResourceListExample() {
           {label: 'Newest update', value: 'DATE_MODIFIED_DESC'},
           {label: 'Oldest update', value: 'DATE_MODIFIED_ASC'},
         ]}
-        onSort={(selected) => {
+        onSortChange={(selected) => {
           setSortValue(selected);
           console.log(`Sort option changed to ${selected}.`);
         }}
