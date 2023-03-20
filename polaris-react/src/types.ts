@@ -203,6 +203,7 @@ export interface ActionListItemDescriptor
   active?: boolean;
   /** Defines a role for the action */
   role?: string;
+  /** The element or the RefObject that activates the Modal */
   activatorRef?: LegacyRef<HTMLSpanElement> | undefined;
 }
 
