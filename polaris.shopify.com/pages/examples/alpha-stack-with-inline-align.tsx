@@ -1,37 +1,31 @@
 import React from 'react';
-import {AlphaStack, Inline, Text, Divider} from '@shopify/polaris';
+import {AlphaStack, Page, Inline, Text, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function AlphaStackWithAlignExample() {
+function AlphaStackWithInlineAlignExample() {
   return (
-    <>
-      <Divider />
-      <div style={{display: 'flex', height: '200px'}}>
-        <AlphaStack gap="025" align="start">
+    <Page>
+      <AlphaStack gap="8">
+        <AlphaStack gap="025" inlineAlign="start">
           <Placeholder height="48px" width="320px" label="Start" />
           <Placeholder height="48px" width="320px" />
           <Placeholder height="48px" width="320px" />
         </AlphaStack>
-      </div>
-      <Divider />
-      <div style={{display: 'flex', height: '200px'}}>
-        <AlphaStack gap="025" align="center">
+        <Divider />
+        <AlphaStack gap="025" inlineAlign="center">
           <Placeholder height="48px" width="320px" label="Center" />
           <Placeholder height="48px" width="320px" />
           <Placeholder height="48px" width="320px" />
         </AlphaStack>
-      </div>
-      <Divider />
-      <div style={{display: 'flex', height: '200px'}}>
-        <AlphaStack gap="025" align="end">
+        <Divider />
+        <AlphaStack gap="025" inlineAlign="end">
           <Placeholder height="48px" width="320px" label="End" />
           <Placeholder height="48px" width="320px" />
           <Placeholder height="48px" width="320px" />
         </AlphaStack>
-      </div>
-      <Divider />
-    </>
+      </AlphaStack>
+    </Page>
   );
 }
 
@@ -60,4 +54,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(AlphaStackWithAlignExample);
+export default withPolarisExample(AlphaStackWithInlineAlignExample);
