@@ -205,9 +205,8 @@ function GlobalSearch() {
   useEffect(() => {
     if (!isOpen) {
       setSearchTerm('');
-      setUuid(''); // reset the uuid if the modal is closed
+      setUuid('');
     } else {
-      // set uuid when modal is opened
       setUuid(uuidv4());
     }
   }, [isOpen]);
