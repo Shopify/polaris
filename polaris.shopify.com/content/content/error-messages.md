@@ -677,3 +677,5 @@ Don’t use when:
 
 ![Carrier may not be able to pick up package error message](/images/foundations/patterns/error-messages/warning-no-solution@2x.png)
 ![Carrier may not be able to pick up package error message](/images/foundations/pattern
+
+</DoDont>

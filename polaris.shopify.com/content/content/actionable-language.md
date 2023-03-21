@@ -160,7 +160,6 @@ Add your first product and see how it looks in your store.
 #### Don’t
 
 - Products appear in your store after you add them.
-
 - Add your first product so you can see how it looks in your store.
 
 </DoDont>
@@ -169,7 +168,7 @@ Add your first product and see how it looks in your store.
 
 ## Buttons
 
-<!--- keywords: buttons, button copy, button text, button content, links, actions, calls to action, call to actions, action-led, action led, scannable, articles, choose , select, choose vs select, select vs choose, need, must, need vs must, must vs need -->
+{/* keywords: buttons, button copy, button text, button content, links, actions, calls to action, call to actions, action-led, action led, scannable, articles, choose , select, choose vs select, select vs choose, need, must, need vs must, must vs need --> --> */}
 
 Buttons need to be clear and predictable. Merchants should be able to anticipate what will happen when they select a button. Never mislead someone by mislabeling a button.
 

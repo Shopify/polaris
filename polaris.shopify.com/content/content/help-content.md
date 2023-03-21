@@ -83,8 +83,7 @@ The Help Center is a rich resource, but for a merchant it’s not always a conve
 
 ![“Learn more” badge interaction pattern](/images/foundations/patterns/help-content/learn-more-badges.png)
 
-Use “learn more” badges:
-​
+Use “learn more” badges:​
 
 - Only in settings experiences, and only in card headers
 - When the linked Help Center topic is relevant to the entire card

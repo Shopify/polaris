@@ -839,11 +839,28 @@ Always use apostrophes, not vertical (straight) quotes.
 
 #### Do
 
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">’</span> <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
+- <span
+    style={{
+      fontSize: '5rem',
+      lineHeight: 0,
+      verticalAlign: 'bottom',
+    }}
+  >
+    ’
+  </span>
+  <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
 
 #### Don’t
 
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">'</span>
+- <span
+    style={{
+      fontSize: '5rem',
+      lineHeight: 0,
+      verticalAlign: 'bottom',
+    }}
+  >
+    '
+  </span>
 
 </DoDont>
 
@@ -964,11 +981,27 @@ Always use the ellipsis character, not three periods.
 
 #### Do
 
-<code style="font-size: 5rem; line-height: 0; background-color: transparent">…</code> <kbd>option</kbd> + <kbd>;</kbd>
-
+<code
+  style={{
+    fontSize: '5rem',
+    lineHeight: 0,
+    backgroundColor: 'transparent',
+  }}
+>
+  …
+</code>
+<kbd>option</kbd> +<kbd>;</kbd>
 #### Don’t
 
-<code style="font-size: 5rem; line-height: 0; background-color: transparent">...</code>
+<code
+  style={{
+    fontSize: '5rem',
+    lineHeight: 0,
+    backgroundColor: 'transparent',
+  }}
+>
+  ...
+</code>
 
 </DoDont>
 
@@ -1209,18 +1242,68 @@ Always use smart (curly) quotes, not vertical (straight) quotes.
 
 #### Do
 
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">‘</span>
+- <span
+    style={{
+      fontSize: '5rem',
+      lineHeight: 0,
+      verticalAlign: 'bottom',
+    }}
+  >
+    ‘
+  </span>
   <kbd>option</kbd> + <kbd>]</kbd>
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">’</span>
+- <span
+    style={{
+      fontSize: '5rem',
+      lineHeight: 0,
+      verticalAlign: 'bottom',
+    }}
+  >
+    ’
+  </span>
   <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">“</span>
+- <span
+    style={{
+      fontSize: '5rem',
+      lineHeight: 0,
+      verticalAlign: 'bottom',
+    }}
+  >
+    “
+  </span>
   <kbd>option</kbd> + <kbd>[</kbd>
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">”</span>
+- <span
+    style={{
+      fontSize: '5rem',
+      lineHeight: 0,
+      verticalAlign: 'bottom',
+    }}
+  >
+    ”
+  </span>
   <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>[</kbd>
 
 #### Don’t
 
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">"</span> or <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">'</span>
+- <span
+    style={{
+      fontSize: '5rem',
+      lineHeight: 0,
+      verticalAlign: 'bottom',
+    }}
+  >
+    "
+  </span>
+  or
+  <span
+    style={{
+      fontSize: '5rem',
+      lineHeight: 0,
+      verticalAlign: 'bottom',
+    }}
+  >
+    '
+  </span>
 
 </DoDont>
 
@@ -1317,12 +1400,20 @@ In some cases (such as getting merchant consent or granting permissions) you sho
 
 #### Do
 
-<p><label><input type="checkbox"> I agree to the terms and conditions</label></p>
+<p>
+  <label>
+    <input type="checkbox" />I agree to the terms and conditions
+  </label>
+</p>
 
 #### Don’t
 
-<p><label><input type="checkbox"> You agree the terms and conditions</label></p>
- </DoDont>
+<p>
+  <label htmlFor="Agree">You agree the terms and conditions</label>
+  <input name="Agree" type="checkbox" id="Agree" />
+</p>
+
+</DoDont>
 
 ### Referring to Shopify
 

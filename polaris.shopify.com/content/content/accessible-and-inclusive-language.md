@@ -227,7 +227,7 @@ Racist language expresses bias towards or against a particular race, or expresse
 - Use terms in an appropriate context.
   - For example, while we typically avoid the use of the term “powwow”, in the following context, it’s appropriate: “Bear Witness is a co-founder of A Tribe Called Red, a Canadian DJ collective that blends hip-hop and EDM with traditional powwow drums and vocals” (from [Vanguard: How A Tribe Called Red Brought Activism to the Dance Floor](https://www.shopify.com/blog/vanguard-a-tribe-called-red)).
 
-<br>
+<br />
 
 ### Words and phrases to avoid
 
