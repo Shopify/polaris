@@ -55,7 +55,7 @@ export function FileUpload(props: FileUploadProps) {
   switch (size) {
     case 'large':
       viewMarkup = (
-        <Stack align="center" gap="2">
+        <Stack inlineAlign="center" gap="2">
           {actionMarkup}
           {actionHintMarkup}
         </Stack>
@@ -63,7 +63,7 @@ export function FileUpload(props: FileUploadProps) {
       break;
     case 'medium':
       viewMarkup = (
-        <Stack align="center" gap="2">
+        <Stack inlineAlign="center" gap="2">
           {actionMarkup}
           {actionHintMarkup}
         </Stack>

@@ -25,14 +25,14 @@ describe('<Stack />', () => {
 
   it('overrides custom properties if they are passed in', () => {
     const stack = mountWithApp(
-      <Stack align="center" gap="10">
+      <Stack inlineAlign="center" gap="10">
         {children}
       </Stack>,
     );
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-stack-align': 'center',
+        '--pc-stack-inline-align': 'center',
         '--pc-stack-gap-xs': 'var(--p-space-10)',
       }) as React.CSSProperties,
     });

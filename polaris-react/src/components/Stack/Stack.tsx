@@ -10,7 +10,15 @@ import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Stack.scss';
 
-type Align = 'start' | 'end' | 'center';
+type Align =
+  | 'start'
+  | 'center'
+  | 'end'
+  | 'space-around'
+  | 'space-between'
+  | 'space-evenly';
+
+type InlineAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
@@ -22,8 +30,10 @@ export interface StackProps extends React.AriaAttributes {
    * @default 'div'
    */
   as?: Element;
-  /** Horizontal alignment of children */
+  /** Vertical alignment of children */
   align?: Align;
+  /** Horizontal alignment of children */
+  inlineAlign?: InlineAlign;
   /** The spacing between children */
   gap?: Gap;
   /** HTML id attribute */
@@ -38,6 +48,7 @@ export const Stack = ({
   as = 'div',
   children,
   align,
+  inlineAlign,
   gap,
   id,
   reverseOrder = false,
@@ -51,6 +62,7 @@ export const Stack = ({
 
   const style = {
     '--pc-stack-align': align ? `${align}` : '',
+    '--pc-stack-inline-align': inlineAlign ? `${inlineAlign}` : '',
     '--pc-stack-order': reverseOrder ? 'column-reverse' : 'column',
     ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;

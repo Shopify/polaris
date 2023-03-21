@@ -151,11 +151,7 @@ export {ExceptionList} from './components/ExceptionList';
 export type {ExceptionListProps} from './components/ExceptionList';
 
 export {Filters} from './components/Filters';
-export type {
-  FiltersProps,
-  AppliedFilterInterface,
-  FilterInterface,
-} from './components/Filters';
+export type {FiltersProps} from './components/Filters';
 
 export {Focus} from './components/Focus';
 export type {FocusProps} from './components/Focus';
@@ -226,8 +222,18 @@ export type {
   LegacyCardSubsectionProps,
 } from './components/LegacyCard';
 
+export {LegacyFilters} from './components/LegacyFilters';
+export type {
+  LegacyFiltersProps,
+  AppliedFilterInterface,
+  FilterInterface,
+} from './components/LegacyFilters';
+
 export {LegacyStack} from './components/LegacyStack';
 export type {LegacyStackProps} from './components/LegacyStack';
+
+export {LegacyTabs} from './components/LegacyTabs';
+export type {LegacyTabsProps} from './components/LegacyTabs';
 
 export {Link} from './components/Link';
 export type {LinkProps} from './components/Link';

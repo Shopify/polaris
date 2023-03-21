@@ -56,23 +56,115 @@ export function WithResponsiveGap() {
 
 export function WithAlignStart() {
   return (
-    <Stack gap="4" align="start">
-      <Box background="surface" padding="1">
-        01
-      </Box>
-      <Box background="surface" padding="1">
-        02
-      </Box>
-      <Box background="surface" padding="1">
-        03
-      </Box>
-    </Stack>
+    <div style={{display: 'flex', height: '250px'}}>
+      <Stack gap="4" align="start">
+        <Box background="surface" padding="1">
+          01
+        </Box>
+        <Box background="surface" padding="1">
+          02
+        </Box>
+        <Box background="surface" padding="1">
+          03
+        </Box>
+      </Stack>
+    </div>
   );
 }
 
 export function WithAlignCenter() {
   return (
-    <Stack gap="4" align="center">
+    <div style={{display: 'flex', height: '250px'}}>
+      <Stack gap="4" align="center">
+        <Box background="surface" padding="1">
+          01
+        </Box>
+        <Box background="surface" padding="1">
+          02
+        </Box>
+        <Box background="surface" padding="1">
+          03
+        </Box>
+      </Stack>
+    </div>
+  );
+}
+
+export function WithAlignEnd() {
+  return (
+    <div style={{display: 'flex', height: '250px'}}>
+      <Stack gap="4" align="end">
+        <Box background="surface" padding="1">
+          01
+        </Box>
+        <Box background="surface" padding="1">
+          02
+        </Box>
+        <Box background="surface" padding="1">
+          03
+        </Box>
+      </Stack>
+    </div>
+  );
+}
+
+export function WithAlignSpaceAround() {
+  return (
+    <div style={{display: 'flex', height: '250px'}}>
+      <Stack gap="4" align="space-around">
+        <Box background="surface" padding="1">
+          01
+        </Box>
+        <Box background="surface" padding="1">
+          02
+        </Box>
+        <Box background="surface" padding="1">
+          03
+        </Box>
+      </Stack>
+    </div>
+  );
+}
+
+export function WithAlignSpaceBetween() {
+  return (
+    <div style={{display: 'flex', height: '250px'}}>
+      <Stack gap="4" align="space-between">
+        <Box background="surface" padding="1">
+          01
+        </Box>
+        <Box background="surface" padding="1">
+          02
+        </Box>
+        <Box background="surface" padding="1">
+          03
+        </Box>
+      </Stack>
+    </div>
+  );
+}
+
+export function WithAlignSpaceEvenly() {
+  return (
+    <div style={{display: 'flex', height: '250px'}}>
+      <Stack gap="4" align="space-evenly">
+        <Box background="surface" padding="1">
+          01
+        </Box>
+        <Box background="surface" padding="1">
+          02
+        </Box>
+        <Box background="surface" padding="1">
+          03
+        </Box>
+      </Stack>
+    </div>
+  );
+}
+
+export function WithInlineAlignStart() {
+  return (
+    <Stack gap="4" inlineAlign="start">
       <Box background="surface" padding="1">
         01
       </Box>
@@ -86,9 +178,25 @@ export function WithAlignCenter() {
   );
 }
 
-export function WithAlignEnd() {
+export function WithInlineAlignCenter() {
   return (
-    <Stack gap="4" align="end">
+    <Stack gap="4" inlineAlign="center">
+      <Box background="surface" padding="1">
+        01
+      </Box>
+      <Box background="surface" padding="1">
+        02
+      </Box>
+      <Box background="surface" padding="1">
+        03
+      </Box>
+    </Stack>
+  );
+}
+
+export function WithInlineAlignEnd() {
+  return (
+    <Stack gap="4" inlineAlign="end">
       <Box background="surface" padding="1">
         01
       </Box>
