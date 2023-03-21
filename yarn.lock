@@ -3346,10 +3346,10 @@
     lolex "^2.7.5"
     promise "^8.0.3"
 
-"@shopify/monorail@^2.5.2-17347":
-  version "2.5.2-17347"
-  resolved "https://npm.shopify.io/node/@shopify/monorail/-/2.5.2-17347/monorail-2.5.2-17347.tgz#481b644f8fa9635affedd64fe6fcc79ba268bb67"
-  integrity sha512-dwWH0ZpV92KlhMgKvBllNW86Dk/9SRzLNgWh8mBu1mVrSuCAooCWQ2wBbZyluaTLqlHD4siOA1bhu/6ZHPrvfQ==
+"@shopify/monorail@^2.5.2-17450":
+  version "2.5.2-17450"
+  resolved "https://npm.shopify.io/node/@shopify/monorail/-/2.5.2-17450/monorail-2.5.2-17450.tgz#868a97e4488efc43c44f0df3cfbfe6be9bb9c0d2"
+  integrity sha512-ByGAuSlijmohBdp6BvG4aTo7fMbkSApM2dQd9so7Z9TwOSmoNWCgreTWeJfXfNhI4aUxhZ+LJxV2/V+hI6cBdQ==
   dependencies:
     uuid "^9.0.0"
 
