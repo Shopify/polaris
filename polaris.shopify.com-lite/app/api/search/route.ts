@@ -142,6 +142,7 @@ export async function GET(req: NextRequest) {
           url: result.url,
           urlAppendix: result.urlAppendix,
           type: result.type,
+          thumbnail: result.thumbnail,
         };
       });
 

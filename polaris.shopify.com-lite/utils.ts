@@ -11,6 +11,11 @@ export function getPageByPath(content: Content, path: string): Page | null {
   return page || null;
 }
 
+export function getPageById(content: Content, id: string): Page | null {
+  const page = content.pages.find((page) => page.id === id);
+  return page || null;
+}
+
 export function getPageUrl(
   content: Content,
   page: Page | ResolvedPage,
@@ -96,8 +101,9 @@ export function getImageDimensions(
   width: number;
   height: number;
 } {
+  const round = (num: number) => Math.round(num * 1000) / 1000;
   const ratio = dimensions.width / dimensions.height;
-  const height = maxWidth / ratio;
+  const height = round(maxWidth / ratio);
 
   return {
     width: maxWidth,

@@ -1,6 +1,7 @@
 'use client';
 
 import GlobalSearch from '@/components/GlobalSearch';
+import {HOME_PAGE_ID} from '@/config';
 import {NavItems} from '@/types';
 import {className} from '@/utils';
 import Link from 'next/link';
@@ -19,7 +20,8 @@ function Navigation({navItems}: {navItems: NavItems}) {
 
       <ul>
         {navItems
-          .filter((page) => !page.parentId)
+          .filter((page) => !page.parentId && page.id !== HOME_PAGE_ID)
+          .sort((a, b) => a.order - b.order)
           .map((page) => (
             <NavItem
               key={page.id}

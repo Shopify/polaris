@@ -10,7 +10,12 @@ import {
   ResolvedPage,
   ResolvedPageWithBlocks,
 } from '@/types';
-import {getPageByPath, getResolvedPage, toPascalCase} from '@/utils';
+import {
+  getPageById,
+  getPageByPath,
+  getResolvedPage,
+  toPascalCase,
+} from '@/utils';
 import {Metadata} from 'next';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
@@ -19,11 +24,12 @@ import styles from './page.module.scss';
 import ComponentMeta from './componentMeta';
 import Markdown from '@/components/Markdown';
 import Longform from '@/components/Longform';
+import {HOME_PAGE_ID} from '@/config';
 
 async function loadPage(slug?: string[]): Promise<ResolvedPageWithBlocks> {
   const page = slug
     ? getPageByPath(content, slug.join('/'))
-    : getPageByPath(content, 'home');
+    : getPageById(content, HOME_PAGE_ID);
 
   if (!page) {
     return notFound();
@@ -102,7 +108,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const page = params.slug
     ? getPageByPath(content, params.slug.join('/'))
-    : getPageByPath(content, 'home');
+    : getPageById(content, HOME_PAGE_ID);
 
   if (!page) {
     return notFound();

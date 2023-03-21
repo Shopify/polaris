@@ -1,6 +1,6 @@
-import {ColorScheme, ResolvedPage} from '@/types';
-import Image from 'next/image';
+import {ResolvedPage} from '@/types';
 import Link from 'next/link';
+import ImageRenderer from '../ImageRenderer';
 import Markdown from '../Markdown';
 import styles from './ChildpageListing.module.scss';
 
@@ -18,19 +18,13 @@ function ChildpageListing({pages}: Props) {
         return (
           <Link href={page.url} key={page.id} className={styles.Page}>
             {thumbnail ? (
-              <Image
-                className={styles.Thumbnail}
-                src={thumbnail.variants[ColorScheme.Light].fileName}
-                alt={thumbnail.alt[ColorScheme.Light]}
-                width={200}
-                height={200}
-              />
+              <ImageRenderer image={thumbnail} width={368} />
             ) : (
               <div
                 className={styles.Thumbnail}
                 style={{
                   aspectRatio: '16/9',
-                  background: `rgba(0,0,0,.25)`,
+                  background: `var(--color-surface-subdued)`,
                   borderRadius: 8,
                 }}
               />

@@ -5,6 +5,7 @@
   background: var(--color-surface-code);
   color: var(--color-text);
   border-radius: 8px;
+  overflow-x: auto;
 }
 
 .TopBar {
@@ -83,7 +84,7 @@
 .ActualCode {
   display: block;
   font-family: var(--font-family-mono);
-  white-space: pre-wrap;
+  white-space: pre;
   padding: 1rem;
   font-size: 14px;
   line-height: 1.6;

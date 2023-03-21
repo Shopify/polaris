@@ -14,7 +14,7 @@ import {useDebounce} from '@/hooks';
 export default function Search() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [q, setQ] = useState<string>('');
-  const [selectedSearchResult, setSelectedSearchResult] = useState<string>('');
+  const [selectedSearchResult] = useState<string>('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const debouncedQ: string = useDebounce<string>(q, 200);
 

@@ -2,7 +2,7 @@
 
 import {ClipboardMinor} from '@shopify/polaris-icons';
 import {Tab} from '@headlessui/react';
-import {useState} from 'react';
+import {Fragment, useState} from 'react';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 
 // import {useCopyToClipboard} from '../../utils/hooks';
@@ -78,7 +78,7 @@ function HighlightedCode({
       language={lang}
       codeTagProps={{className: styles.ActualCode}}
       useInlineStyles={false}
-      wrapLongLines
+      PreTag={'span'}
     />
   );
 }

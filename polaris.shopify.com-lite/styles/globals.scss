@@ -24,21 +24,27 @@
   --unit-space: 1rem;
   --unit-radius: 2px;
 
+  --font-size-small: 0.9rem;
+
   --font-weight-normal: 400;
   --font-weight-body-links: 435;
   --font-weight-heavy: 500;
   --font-weight-bold: 600;
+
+  --font-family-mono: 'SF Mono', SFMono-Regular, ui-monospace,
+    'DejaVu Sans Mono', Menlo, Consolas, monospace;
 }
 
 :root,
 .light-mode {
   --color-surface: #fff;
-  --color-surface-subdued: #fafafa;
+  --color-surface-subdued: #efefef;
   --color-surface-code: #ededed;
   --color-text: rgba(0, 0, 0, 0.77);
   --color-text-strong: #000;
+  --color-text-subdied: #767676;
   --color-link: #2e3ddc;
-  --color-border: #ededed;
+  --color-border: #e5e5e5;
   --color-code-keyword: #017b33;
   --color-code-function: var(--color-code-keyword);
   --color-code-string: #6a00df;
@@ -61,6 +67,7 @@
   --color-surface-code: #16161a;
   --color-text: rgba(255, 255, 255, 0.8);
   --color-text-strong: #fff;
+  --color-text-subdied: #aaa;
   --color-link: #7480ff;
   --color-border: #35353d;
   --color-code-keyword: #6dffaa;
@@ -185,4 +192,10 @@ pre {
     background: var(--color-code-deleted-highlight);
     color: var(--color-code-deleted);
   }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
 }

@@ -1,8 +1,6 @@
-import Image from 'next/image';
 import Code from '../Code';
 import {
   CodeBlock,
-  ColorScheme,
   Image as ImageType,
   ImageBlock,
   MarkdownBlock,
@@ -11,10 +9,10 @@ import {
   TextImageBlock,
   YoutubeVideoBlock,
 } from '@/types';
-import {getImageDimensions} from '@/utils';
 import Longform from '../Longform';
 import Markdown from '../Markdown';
 import styles from './EditorRenderer.module.scss';
+import ImageRenderer from '../ImageRenderer';
 
 interface Props {
   page: ResolvedPageWithBlocks;
@@ -56,41 +54,9 @@ function MarkdownBlock({block}: {block: MarkdownBlock}) {
 }
 
 function ImageBlock({block, images}: {block: ImageBlock; images: ImageType[]}) {
-  // const [isInitialRender, setIsInitialRender] = useState(true);
-
-  // useEffect(() => {
-  //   setIsInitialRender(false);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (isInitialRender && darkMode.value) {
-  //     const darkModeVersion = image.variants[ColorScheme.Dark];
-  //     if (darkModeVersion) {
-  //       const darkVariant = image.variants[ColorScheme.Dark];
-  //       if (darkVariant) {
-  //         variant = darkVariant;
-  //         console.log(isInitialRender, 'use dark variant');
-  //       }
-  //     }
-  //   }
-  // }, [isInitialRender]);
-
-  // const darkMode = useDarkMode();
   const image = images.find((image) => image.id === block.imageId);
   if (!image) return null;
-  let variant = image.variants[ColorScheme.Light];
-
-  const width = 848;
-
-  return (
-    <>
-      <Image
-        src={`/uploads/${variant.fileName}`}
-        alt={image.alt[ColorScheme.Light]}
-        {...getImageDimensions(variant, width)}
-      />
-    </>
-  );
+  return <ImageRenderer image={image} width={800} />;
 }
 
 function TextImageBlock({
@@ -102,20 +68,13 @@ function TextImageBlock({
 }) {
   const image = images.find((image) => image.id === block.imageId);
   if (!image) return null;
-  const lightVersion = image.variants.light;
-  if (!lightVersion) return null;
-  const width = 600;
   return (
     <div className={styles.ImageText}>
       <Longform firstParagraphIsLede={false}>
         <Markdown>{block.content}</Markdown>
       </Longform>
       <div>
-        <Image
-          src={`/uploads/${lightVersion.fileName}`}
-          alt={image.alt[ColorScheme.Light]}
-          {...getImageDimensions(lightVersion, width)}
-        />
+        <ImageRenderer image={image} width={500} />
       </div>
     </div>
   );

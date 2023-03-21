@@ -58,18 +58,22 @@
   }
 
   table {
-    font-size: 0.875rem;
+    font-size: var(--font-size-small);
+    width: 100%;
+
     td,
     th {
-      padding: 0.4rem 0.75rem;
+      padding: 0.5rem 0.75rem;
       border-bottom: 1px solid var(--color-border);
-
-      &:first-child {
-        padding-left: 0;
-      }
-
+      // TODO: Add white-space: pre; but it requires
+      // removing longform content from tables
+    }
+    tbody tr {
       &:last-child {
-        padding-right: 0;
+        td,
+        th {
+          border-bottom: none;
+        }
       }
     }
     th {
