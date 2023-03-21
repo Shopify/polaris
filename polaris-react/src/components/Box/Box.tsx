@@ -111,6 +111,8 @@ export interface BoxProps extends React.AriaAttributes {
   id?: string;
   /** Minimum height of container */
   minHeight?: string;
+  /** Width of container */
+  width?: string;
   /** Minimum width of container */
   minWidth?: string;
   /** Maximum width of container */
@@ -158,8 +160,6 @@ export interface BoxProps extends React.AriaAttributes {
   shadow?: ShadowAlias;
   /** Set tab order */
   tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
-  /** Width of container */
-  width?: string;
   // These could be moved to new layout component(s) in the future
   /** Position of box */
   position?: Position;
@@ -280,12 +280,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-border-inline-end-width': borderInlineEndWidth
         ? `var(--p-border-width-${borderInlineEndWidth})`
         : undefined,
-      '--pc-box-min-height': minHeight,
-      '--pc-box-min-width': minWidth,
-      '--pc-box-max-width': maxWidth,
       '--pc-box-outline': outline ? `var(--p-border-${outline})` : undefined,
-      '--pc-box-overflow-x': overflowX,
-      '--pc-box-overflow-y': overflowY,
       ...getResponsiveProps(
         'box',
         'padding-block-end',
@@ -311,8 +306,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         paddingInlineEnd || padding,
       ),
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
-      '--pc-box-width': width,
-      position,
       '--pc-box-inset-block-start': insetBlockStart
         ? `var(--p-space-${insetBlockStart})`
         : undefined,
@@ -325,6 +318,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-inset-inline-end': insetInlineEnd
         ? `var(--p-space-${insetInlineEnd})`
         : undefined,
+      overflowX,
+      overflowY,
+      position,
+      minHeight,
+      width,
+      minWidth,
+      maxWidth,
       zIndex,
       opacity,
     } as React.CSSProperties;
