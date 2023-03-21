@@ -20,7 +20,12 @@
   ul,
   ol,
   .usage-list {
-    margin: 1rem 0;
+    margin-bottom: 1rem;
+    margin-inline: 0;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
   }
 
   h1 {
@@ -34,12 +39,16 @@
 
   h2 {
     @include heading-2;
-    margin-top: 3rem;
+    &:not(:first-child) {
+      margin-top: 3rem;
+    }
   }
 
   h3 {
     @include heading-3;
-    margin-top: 1.5rem;
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
   }
 
   h4 {
@@ -139,7 +148,7 @@
   }
 
   .usage-list {
-    + h3 {
+    + h3:not(:first-child) {
       margin-top: 2.5rem !important;
     }
   }
