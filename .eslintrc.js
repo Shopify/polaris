@@ -12,6 +12,7 @@ module.exports = {
     'plugin:@shopify/polaris',
     'plugin:@shopify/prettier',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: [
@@ -59,6 +60,8 @@ module.exports = {
     '@shopify/jsx-prefer-fragment-wrappers': 'off',
     '@shopify/no-ancestor-directory-import': 'error',
     '@shopify/react-prefer-private-members': 'off',
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/array-type': ['error', {default: 'array'}],
     '@typescript-eslint/naming-convention': 'off',
     'jsx-a11y/label-has-for': [
