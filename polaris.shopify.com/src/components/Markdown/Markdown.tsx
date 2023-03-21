@@ -7,7 +7,7 @@ import StatusBanner from '../../components/StatusBanner';
 import {Lede} from '../../components/Lede';
 import UpdateBanner from '../../components/UpdateBanner';
 import {SideBySide} from './components/SideBySide';
-import {DoDont} from './components/DoDont';
+import {DoDont, Do, Dont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
 
 function Markdown(props: ComponentProps<typeof MDXRemote>) {
@@ -66,6 +66,8 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
         ),
         SideBySide,
         DoDont,
+        Do,
+        Dont,
         StatusBanner,
         UpdateBanner,
         Lede,
