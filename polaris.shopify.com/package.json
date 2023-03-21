@@ -23,7 +23,7 @@
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
     "@radix-ui/react-polymorphic": "^0.0.14",
-    "@shopify/monorail": "^2.5.2-17347",
+    "@shopify/monorail": "^2.5.2-17450",
     "@shopify/polaris": "^10.37.0",
     "@shopify/polaris-icons": "^6.11.3",
     "@shopify/polaris-tokens": "^6.8.0",
