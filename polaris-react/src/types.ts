@@ -246,6 +246,8 @@ export interface MenuGroupDescriptor extends BadgeAction {
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
   /** Callback when the menu is clicked */
   onClick?(openActions: () => void): void;
+  /** The element or the RefObject that activates the Modal */
+  groupActivatorRef?: LegacyRef<HTMLSpanElement> | undefined;
 }
 
 export interface ConnectedDisclosure {
