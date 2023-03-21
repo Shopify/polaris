@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {Badge, BadgeProps} from '../../../../../Badge';
+import {Badge} from '../../../../../Badge';
+import type {BadgeProps} from '../../../../../Badge';
 import {Button} from '../../../../../Button';
 import {Text} from '../../../../../Text';
 import {Link} from '../../../../../Link';

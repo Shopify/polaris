@@ -4,7 +4,8 @@ import {mountWithApp} from 'tests/utilities';
 import {TextField} from '../../TextField';
 import {Combobox} from '../Combobox';
 import {Listbox} from '../../Listbox';
-import {Popover, PopoverPublicAPI} from '../../Popover';
+import {Popover} from '../../Popover';
+import type {PopoverPublicAPI} from '../../Popover';
 import {
   ComboboxTextFieldContext,
   ComboboxListboxContext,

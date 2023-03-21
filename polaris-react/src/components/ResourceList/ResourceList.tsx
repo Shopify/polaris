@@ -1,5 +1,4 @@
 import React, {
-  ReactElement,
   useCallback,
   useEffect,
   useReducer,
@@ -7,6 +6,7 @@ import React, {
   useState,
   Children,
 } from 'react';
+import type {ReactElement} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {tokens, toPx} from '@shopify/polaris-tokens';
 
@@ -20,19 +20,17 @@ import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
   ResourceListContext,
-  ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
 } from '../../utilities/resource-list';
-import {Select, SelectOption} from '../Select';
+import type {ResourceListSelectedItems} from '../../utilities/resource-list';
+import {Select} from '../Select';
+import type {SelectOption} from '../Select';
 import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
-import {
-  BulkActions,
-  BulkActionsProps,
-  useIsBulkActionsSticky,
-} from '../BulkActions';
+import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
+import type {BulkActionsProps} from '../BulkActions';
 import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 

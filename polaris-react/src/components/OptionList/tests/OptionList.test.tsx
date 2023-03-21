@@ -2,7 +2,8 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Option} from '../components';
-import {OptionList, OptionListProps} from '../OptionList';
+import {OptionList} from '../OptionList';
+import type {OptionListProps} from '../OptionList';
 import type {OptionDescriptor} from '../../../types';
 
 describe('<OptionList />', () => {

@@ -1,9 +1,11 @@
 import React from 'react';
 
-import {ActionList, ActionListProps} from '../../../ActionList';
+import {ActionList} from '../../../ActionList';
+import type {ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 
-import {Message, MessageProps} from './components';
+import {Message} from './components';
+import type {MessageProps} from './components';
 import styles from './Menu.scss';
 
 export interface MenuProps {

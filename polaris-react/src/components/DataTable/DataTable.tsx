@@ -1,9 +1,5 @@
-import React, {
-  PureComponent,
-  createRef,
-  ReactNode,
-  FocusEventHandler,
-} from 'react';
+import React, {PureComponent, createRef} from 'react';
+import type {FocusEventHandler, ReactNode} from 'react';
 import isEqual from 'react-fast-compare';
 
 import {debounce} from '../../utilities/debounce';
@@ -15,7 +11,8 @@ import {EventListener} from '../EventListener';
 import {AfterInitialMount} from '../AfterInitialMount';
 import {Sticky} from '../Sticky';
 
-import {Cell, CellProps, Navigation} from './components';
+import {Cell, Navigation} from './components';
+import type {CellProps} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 import type {DataTableState, SortDirection, VerticalAlign} from './types';
 import styles from './DataTable.scss';

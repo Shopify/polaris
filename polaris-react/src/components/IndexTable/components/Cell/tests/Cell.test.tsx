@@ -1,4 +1,5 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Cell} from '../Cell';

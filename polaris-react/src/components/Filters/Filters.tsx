@@ -28,11 +28,8 @@ import {LegacyStack} from '../LegacyStack';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
 
-import {
-  ConnectedFilterControl,
-  ConnectedFilterControlProps,
-  TagsWrapper,
-} from './components';
+import {ConnectedFilterControl, TagsWrapper} from './components';
+import type {ConnectedFilterControlProps} from './components';
 import styles from './Filters.scss';
 
 export interface AppliedFilterInterface {

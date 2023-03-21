@@ -1,7 +1,8 @@
 import React, {memo, forwardRef} from 'react';
 
 import {unstyled} from '../shared';
-import {useLink, LinkLikeComponentProps} from '../../utilities/link';
+import {useLink} from '../../utilities/link';
+import type {LinkLikeComponentProps} from '../../utilities/link';
 
 // The script in the styleguide that generates the Props Explorer data expects
 // that the interface defining the props is defined in this file, not imported
