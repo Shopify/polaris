@@ -1,14 +1,16 @@
-import postcss, {Plugin} from 'postcss';
+import postcss from 'postcss';
+import type {Plugin} from 'postcss';
 import type {API, FileInfo, Options} from 'jscodeshift';
-import valueParser, {FunctionNode, Node} from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
+import type {FunctionNode, Node} from 'postcss-value-parser';
 
 import {
-  NamespaceOptions,
   namespace,
   hasSassFunction,
   isSassFunction,
   hasNumericOperator,
 } from '../../utilities/sass';
+import type {NamespaceOptions} from '../../utilities/sass';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
 interface PluginOptions extends Options, NamespaceOptions {}

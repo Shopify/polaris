@@ -1,5 +1,6 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Plugin, AtRule} from 'postcss';
+import postcss from 'postcss';
+import type {Plugin, AtRule} from 'postcss';
 import valueParser from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
 
@@ -12,10 +13,10 @@ import {
   isTransformableLength,
   isUnitlessZero,
   namespace,
-  NamespaceOptions,
   toTransformablePx,
   StopWalkingFunctionNodes,
 } from '../../utilities/sass';
+import type {NamespaceOptions} from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
 export default function v9StylesTokenizeFont(

@@ -1,4 +1,5 @@
-import meow, {AnyFlag} from 'meow';
+import meow from 'meow';
+import type {AnyFlag} from 'meow';
 
 import {migrate} from './migrate';
 import {cliConfig} from './constants';
