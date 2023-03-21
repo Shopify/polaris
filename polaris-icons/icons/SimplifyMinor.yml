@@ -1,0 +1,14 @@
+name: Simplify
+set: minor
+description: Action | Used when a merchant simplifies text using AI.
+keywords:
+  - simplify
+  - shorten
+  - reduce
+  - summarize
+authors:
+  - David Goligorsky
+version: 1
+date_added: 2023-03-18
+date_modified: 2023-03-18
+exclusive_use:
