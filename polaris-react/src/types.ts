@@ -1,3 +1,4 @@
+import type {LegacyRef} from 'react';
 import type React from 'react';
 
 /* eslint-disable @shopify/strict-component-boundaries */
@@ -218,7 +219,10 @@ export interface ComplexAction
     IconableAction,
     OutlineableAction,
     LoadableAction,
-    PlainAction {}
+    PlainAction {
+  /** The element or the RefObject that activates the Modal */
+  activatorRef?: LegacyRef<HTMLSpanElement> | undefined;
+}
 
 export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
