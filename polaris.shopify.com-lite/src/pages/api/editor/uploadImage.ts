@@ -4,6 +4,12 @@ import sizeOf from 'image-size';
 import {ImageFile} from '@/types';
 import {nanoid} from 'nanoid';
 
+// This file lives uses Next.js legacy API routes. This is because
+// Formidable requires the request to be a Node.js "IncomingMessage".
+// The new "route handlers" in Next.js 13+ use the native "Request"
+// object instead of "IncomingMessage" which means we can't use it
+// with formidable.
+
 export const config = {
   api: {bodyParser: false},
 };

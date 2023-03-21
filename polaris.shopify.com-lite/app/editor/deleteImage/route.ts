@@ -1,5 +1,5 @@
-import type {NextApiResponse, NextApiRequest} from 'next';
 import fs from 'fs';
+import {NextRequest, NextResponse} from 'next/server';
 
 export type DeleteImageResponse =
   | {
@@ -7,29 +7,17 @@ export type DeleteImageResponse =
     }
   | {status: 'error'; message: string};
 
-const handler = async function (req: NextApiRequest, res: NextApiResponse) {
+export async function DELETE(req: NextRequest, res: NextResponse) {
   if (process.env.NODE_ENV !== 'development') {
-    return res.status(500).end();
+    return NextResponse.error();
   }
-  switch (req.method) {
-    case 'DELETE':
-      const filePath = `./public/uploads/${req.body.fileName}`;
-      if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath);
-        return res.status(200).json({status: 'success'});
-      } else {
-        return res.status(500).json({
-          status: 'error',
-          message: `File ${filePath} does not exist`,
-        });
-      }
-
-    default:
-      return res.status(500).json({
-        status: 'error',
-        message: `Method ${req.method} not allowed`,
-      });
+  const body = await req.json();
+  if (body.fileName) {
+    const filePath = `./public/uploads/${body.fileName}`;
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+      return NextResponse.json({status: 'success'});
+    }
   }
-};
-
-export default handler;
+  return NextResponse.error();
+}

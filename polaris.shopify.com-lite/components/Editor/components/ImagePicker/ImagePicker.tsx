@@ -13,7 +13,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {useContext, useRef, useState} from 'react';
 import {DeleteImageResponse} from '@/app/editor/deleteImage/route';
-import {UploadImageResponse} from '@/app/editor/uploadImage/route';
+import {UploadImageResponse} from '@/src/pages/api/editor/uploadImage';
 import {ContentContext} from '../../Editor';
 import {ColorScheme, ImageFile, Image as ImageType} from '@/types';
 import {getImageDimensions, getPageUrl} from '@/utils';
@@ -153,7 +153,7 @@ function ImagePicker({
   async function deleteImageFile(
     imageFile: ImageFile,
   ): Promise<DeleteImageResponse> {
-    return fetch(`/api/editor/deleteImage`, {
+    return fetch(`/editor/deleteImage`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({fileName: imageFile.fileName}),
