@@ -63,11 +63,12 @@ function createPage(
   }
 }
 
+// Migrate Home
 createPage({
-  id: nanoid(),
+  id: 'SIC6mp1SHvcUtS98_DTHb',
   title: 'Home',
   excerpt: '',
-  slug: 'home',
+  slug: '',
   parentId: null,
   order: 0,
   layout: 'blocks',
@@ -79,6 +80,54 @@ createPage({
   keywords: [],
   hasSeparatorInNav: false,
 });
+
+// Migrate What's new
+const whatsNewId = nanoid();
+
+createPage({
+  id: whatsNewId,
+  title: "What's new",
+  excerpt: '',
+  slug: 'whats-new',
+  parentId: null,
+  order: 0,
+  layout: 'listing',
+  allowChildren: true,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: null,
+  keywords: ['news', 'update', 'changelog', 'releases'],
+  hasSeparatorInNav: false,
+});
+
+const whatsNewFilePaths = globbySync(`legacy/content/whats-new/*.md`);
+whatsNewFilePaths
+  .filter((filePath) => !filePath.endsWith('index.md'))
+  .forEach((filePath) => {
+    const file = fs.readFileSync(filePath, 'utf8');
+    const {readme, frontMatter} = parseMarkdown(file);
+    const slug = filePath.slice(filePath.lastIndexOf('/') + 1, -3);
+    createPage(
+      {
+        id: nanoid(),
+        title: frontMatter.title,
+        excerpt: frontMatter.description || '',
+        slug,
+        parentId: whatsNewId,
+        order: frontMatter.order || 0,
+        layout: 'blocks',
+        allowChildren: false,
+        hideInNav: true,
+        noIndex: false,
+        childPageMetaType: null,
+        pageMeta: null,
+        keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
+        hasSeparatorInNav: false,
+      },
+      readme,
+    );
+  });
 
 // Migrate components
 const componentsIndexFile = fs.readFileSync(
@@ -96,7 +145,7 @@ createPage(
     excerpt: componentsFrontMatter.description || '',
     slug: 'components',
     parentId: null,
-    order: componentsFrontMatter.order || 0,
+    order: 6,
     layout: 'listing',
     allowChildren: true,
     hideInNav: false,
@@ -208,7 +257,7 @@ createPage(
     excerpt: patternsFrontMatter.description,
     slug: 'patterns',
     parentId: null,
-    order: patternsFrontMatter.order || 0,
+    order: 5,
     layout: 'listing',
     allowChildren: true,
     hideInNav: false,
@@ -271,7 +320,7 @@ createPage(
     excerpt: contentFrontMatter.description || '',
     slug: 'content',
     parentId: null,
-    order: contentFrontMatter.order || 0,
+    order: 4,
     layout: 'listing',
     allowChildren: true,
     hideInNav: false,
@@ -326,7 +375,7 @@ createPage(
     excerpt: contributingFrontMatter.description,
     slug: 'contributing',
     parentId: null,
-    order: contributingFrontMatter.order || 0,
+    order: 9,
     layout: 'blocks',
     allowChildren: true,
     hideInNav: false,
@@ -386,7 +435,7 @@ createPage({
   hasSeparatorInNav: false,
 });
 
-// Migrate foundtions: Design
+// Migrate foundations: Design
 const designIndexFile = fs.readFileSync(
   'legacy/content/design/index.md',
   'utf8',
@@ -401,7 +450,7 @@ createPage(
     excerpt: designFrontMatter.description,
     slug: 'design',
     parentId: null,
-    order: designFrontMatter.order || 0,
+    order: 3,
     layout: 'listing',
     allowChildren: true,
     hideInNav: false,
@@ -456,7 +505,7 @@ createPage(
     excerpt: foundationsFrontMatter.description,
     slug: 'foundations',
     parentId: null,
-    order: foundationsFrontMatter.order || 0,
+    order: 2,
     layout: 'listing',
     allowChildren: true,
     hideInNav: false,
@@ -511,7 +560,7 @@ createPage(
     excerpt: gettingStartedFrontMatter.description,
     slug: 'getting-started',
     parentId: null,
-    order: gettingStartedFrontMatter.order,
+    order: 1,
     layout: 'listing',
     allowChildren: true,
     hideInNav: false,
@@ -573,16 +622,15 @@ createPage({
   hasSeparatorInNav: false,
 });
 
-// Migrate What's new
-
 // Migrate Icons
+const iconsPageId = nanoid();
 createPage({
-  id: nanoid(),
+  id: iconsPageId,
   title: 'Icons',
   excerpt: '',
   slug: 'icons',
   parentId: null,
-  order: 9,
+  order: 8,
   layout: 'blocks',
   allowChildren: false,
   hideInNav: false,
@@ -590,6 +638,40 @@ createPage({
   childPageMetaType: null,
   pageMeta: null,
   keywords: [],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Icons in Figma',
+  excerpt: '',
+  slug: 'icons-in-figma',
+  parentId: iconsPageId,
+  order: 0,
+  layout: 'blocks',
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: null,
+  keywords: ['icon', 'icons', 'figma', 'ui kit'],
+  hasSeparatorInNav: false,
+});
+
+createPage({
+  id: nanoid(),
+  title: 'Icons in React',
+  excerpt: '',
+  slug: 'icons-in-react',
+  parentId: iconsPageId,
+  order: 1,
+  layout: 'blocks',
+  allowChildren: false,
+  hideInNav: false,
+  noIndex: false,
+  childPageMetaType: null,
+  pageMeta: null,
+  keywords: ['icon', 'icons', 'figma', 'ui kit'],
   hasSeparatorInNav: false,
 });
 
@@ -601,7 +683,7 @@ createPage({
   excerpt: '',
   slug: 'tokens',
   parentId: null,
-  order: 8,
+  order: 7,
   layout: 'blocks',
   allowChildren: false,
   hideInNav: false,
