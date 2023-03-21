@@ -90,6 +90,8 @@ export const blockTypes = [
   'Code',
   'TextImage',
   'ProgressiveDisclosure',
+  'DoDont',
+  'TabbedContent',
 ] as const;
 
 export type BlockType = typeof blockTypes[number];
@@ -99,6 +101,7 @@ export interface BaseBlock {
   blockType: BlockType;
   order: number;
   parentBlockId: string | null;
+  tabId: string | null;
 }
 
 export interface MarkdownBlock extends BaseBlock {
@@ -142,6 +145,20 @@ export interface ProgressiveDisclosureBlock extends BaseBlock {
   title: string;
 }
 
+export interface DoDontBlock extends BaseBlock {
+  blockType: 'DoDont';
+  doMarkdown: string;
+  dontMarkdown: string;
+}
+
+export interface TabbedContentBlock extends BaseBlock {
+  blockType: 'TabbedContent';
+  tabs: {
+    id: string;
+    label: string;
+  }[];
+}
+
 export type Block =
   | MarkdownBlock
   | ImageBlock
@@ -149,7 +166,9 @@ export type Block =
   | SandboxEmbedBlock
   | CodeBlock
   | TextImageBlock
-  | ProgressiveDisclosureBlock;
+  | ProgressiveDisclosureBlock
+  | DoDontBlock
+  | TabbedContentBlock;
 
 export enum ColorScheme {
   Light = 'light',

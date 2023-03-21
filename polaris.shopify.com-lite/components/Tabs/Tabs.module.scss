@@ -30,20 +30,22 @@
   }
 
   &.boxed {
-    border-radius: 8px 8px 0 0;
-    background: rgba(255, 255, 255, 0.033);
-    margin-bottom: 1px;
-    padding: 1.5rem;
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.075);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-subdued);
+    padding: 1rem 1.5rem;
+    border-radius: 12px 12px 0 0;
   }
 }
 
 .TabPanels {
   &.boxed {
     .Panel {
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.033);
-      border-radius: 0 0 8px 8px;
+      padding: 1.5rem 1.5rem;
+      border: 1px solid var(--color-border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      margin-bottom: 2rem;
+      background: var(--color-surface-subdued);
     }
   }
 }

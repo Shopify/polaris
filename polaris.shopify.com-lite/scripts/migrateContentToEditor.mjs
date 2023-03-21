@@ -34,6 +34,7 @@ function createPage(
           order: 0,
           blockType: 'Markdown',
           parentBlockId: null,
+          tabId: null,
           content: markdown.trim(),
         }
       : undefined;

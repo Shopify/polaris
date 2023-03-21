@@ -1,11 +1,13 @@
 import Code from '../Code';
 import {
   CodeBlock,
+  DoDontBlock,
   Image as ImageType,
   ImageBlock,
   MarkdownBlock,
   ResolvedPageWithBlocks,
   SandboxEmbedBlock,
+  TabbedContentBlock,
   TextImageBlock,
   YoutubeVideoBlock,
 } from '@/types';
@@ -13,6 +15,8 @@ import Longform from '../Longform';
 import Markdown from '../Markdown';
 import styles from './EditorRenderer.module.scss';
 import ImageRenderer from '../ImageRenderer';
+import {Tab, Tabs} from '../Tabs';
+import {className} from '@/utils';
 
 interface Props {
   page: ResolvedPageWithBlocks;
@@ -21,36 +25,59 @@ interface Props {
 function EditorRenderer({page}: Props) {
   return (
     <div className={styles.EditorRenderer}>
-      <div className={styles.Blocks}>
-        {page.blocks.map((block) => (
-          <div key={block.id} className={styles.Block}>
-            {block.blockType === 'Markdown' && <MarkdownBlock block={block} />}
-            {block.blockType === 'Image' && (
-              <ImageBlock block={block} images={page.images} />
-            )}
-            {block.blockType === 'YoutubeVideo' && (
-              <YoutubeVideoBlock block={block} />
-            )}
-            {block.blockType === 'SandboxEmbed' && (
-              <SandboxEmbedBlock block={block} />
-            )}
-            {block.blockType === 'Code' && <CodeBlock block={block} />}
-            {block.blockType === 'TextImage' && (
-              <TextImageBlock block={block} images={page.images} />
-            )}
-          </div>
-        ))}
-      </div>
+      <RenderBlocks page={page} parentBlockId={null} tabId={null} />
+    </div>
+  );
+}
+
+function RenderBlocks({
+  page,
+  parentBlockId,
+  tabId,
+}: {
+  page: ResolvedPageWithBlocks;
+  parentBlockId: string | null;
+  tabId: string | null;
+}) {
+  return (
+    <div className={styles.Blocks}>
+      <Longform firstParagraphIsLede={false}>
+        {page.blocks
+          .filter(
+            (block) =>
+              block.parentBlockId === parentBlockId && block.tabId === tabId,
+          )
+          .map((block) => (
+            <div key={block.id} className={styles.Block}>
+              {block.blockType === 'Markdown' && (
+                <MarkdownBlock block={block} />
+              )}
+              {block.blockType === 'Image' && (
+                <ImageBlock block={block} images={page.images} />
+              )}
+              {block.blockType === 'YoutubeVideo' && (
+                <YoutubeVideoBlock block={block} />
+              )}
+              {block.blockType === 'SandboxEmbed' && (
+                <SandboxEmbedBlock block={block} />
+              )}
+              {block.blockType === 'Code' && <CodeBlock block={block} />}
+              {block.blockType === 'TextImage' && (
+                <TextImageBlock block={block} images={page.images} />
+              )}
+              {block.blockType === 'DoDont' && <DoDontBock block={block} />}
+              {block.blockType === 'TabbedContent' && (
+                <TabbedContentBlock page={page} block={block} />
+              )}
+            </div>
+          ))}
+      </Longform>
     </div>
   );
 }
 
 function MarkdownBlock({block}: {block: MarkdownBlock}) {
-  return (
-    <Longform firstParagraphIsLede={false}>
-      <Markdown>{block.content}</Markdown>
-    </Longform>
-  );
+  return <Markdown>{block.content}</Markdown>;
 }
 
 function ImageBlock({block, images}: {block: ImageBlock; images: ImageType[]}) {
@@ -70,9 +97,7 @@ function TextImageBlock({
   if (!image) return null;
   return (
     <div className={styles.ImageText}>
-      <Longform firstParagraphIsLede={false}>
-        <Markdown>{block.content}</Markdown>
-      </Longform>
+      <Markdown>{block.content}</Markdown>
       <div>
         <ImageRenderer image={image} width={500} />
       </div>
@@ -97,7 +122,6 @@ function YoutubeVideoBlock({block}: {block: YoutubeVideoBlock}) {
         height="315"
         src={`https://www.youtube.com/embed/${youtubeId}`}
         title="YouTube video player"
-        frameBorder={0}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>
@@ -117,6 +141,46 @@ function SandboxEmbedBlock({block}: {block: SandboxEmbedBlock}) {
 function CodeBlock({block}: {block: CodeBlock}) {
   const code = Object.values(block.code);
   return <Code code={code} />;
+}
+
+function DoDontBock({block}: {block: DoDontBlock}) {
+  return (
+    <>
+      {block.doMarkdown && (
+        <div className={className(styles.DoDontItem, styles.do)}>
+          <h4>✅ Do</h4>
+          <div className={styles.DoDontMarkdown}>
+            <Markdown>{block.doMarkdown}</Markdown>
+          </div>
+        </div>
+      )}
+      {block.dontMarkdown && (
+        <div className={className(styles.DoDontItem, styles.dont)}>
+          <h4>❌ Don't</h4>
+          <div className={styles.DoDontMarkdown}>
+            <Markdown>{block.dontMarkdown}</Markdown>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function TabbedContentBlock({
+  page,
+  block,
+}: {block: TabbedContentBlock} & {page: ResolvedPageWithBlocks}) {
+  return (
+    <>
+      <Tabs tabs={block.tabs.map((tab) => tab.label)} boxed>
+        {block.tabs.map((tab) => (
+          <Tab key={tab.id}>
+            <RenderBlocks page={page} parentBlockId={block.id} tabId={tab.id} />
+          </Tab>
+        ))}
+      </Tabs>
+    </>
+  );
 }
 
 export default EditorRenderer;

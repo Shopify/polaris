@@ -32,6 +32,8 @@ import {
   Page,
   PolarisComponentLifecyclePhase,
   polarisComponentLifecyclePhases,
+  DoDontBlock,
+  TabbedContentBlock,
 } from '@/types';
 import {
   ActionList,
@@ -47,6 +49,7 @@ import {
   PageActions,
   Popover,
   Select,
+  Tabs,
   TextField,
   Tooltip,
 } from '@shopify/polaris';
@@ -70,11 +73,13 @@ function assertUnreachable(_: never): never {
 function getEmptyBlock(
   blockType: BlockType,
   parentBlockId: string | null,
+  tabId: string | null,
 ): Block {
   const baseBlock: Omit<BaseBlock, 'blockType'> = {
     id: nanoid(),
     order: 0,
     parentBlockId,
+    tabId,
   };
 
   switch (blockType) {
@@ -126,6 +131,25 @@ function getEmptyBlock(
         ...baseBlock,
         blockType,
         title: '',
+      };
+      return block;
+    }
+
+    case 'DoDont': {
+      const block: DoDontBlock = {
+        ...baseBlock,
+        blockType,
+        doMarkdown: '',
+        dontMarkdown: '',
+      };
+      return block;
+    }
+
+    case 'TabbedContent': {
+      const block: TabbedContentBlock = {
+        ...baseBlock,
+        blockType,
+        tabs: [],
       };
       return block;
     }
@@ -537,7 +561,11 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
               )}
 
               {editedPage.layout !== 'listing' && (
-                <BlockList pageId={editedPageId} parentBlockId={null} />
+                <BlockList
+                  pageId={editedPageId}
+                  parentBlockId={null}
+                  tabId={null}
+                />
               )}
             </div>
 
@@ -700,9 +728,11 @@ function PageMetaEditor({
 function BlockList({
   pageId,
   parentBlockId,
+  tabId,
 }: {
   pageId: string;
   parentBlockId: string | null;
+  tabId: string | null;
 }) {
   const {content} = useContext(ContentContext);
 
@@ -710,13 +740,20 @@ function BlockList({
   if (!page) throw new Error('Page not found');
   const resolvedPage = getResolvedPage(content, page, true);
   const blocks = resolvedPage.blocks
-    .filter((block) => block.parentBlockId === parentBlockId)
+    .filter(
+      (block) => block.parentBlockId === parentBlockId && block.tabId === tabId,
+    )
     .sort((a, b) => a.order - b.order);
 
   return (
     <div>
       <div className={styles.BlockList}>
-        <BlockAdder pageId={pageId} parentBlockId={parentBlockId} order={0} />
+        <BlockAdder
+          pageId={pageId}
+          parentBlockId={parentBlockId}
+          order={0}
+          tabId={tabId}
+        />
 
         {blocks.map((block, index) => (
           <BlockEditor
@@ -726,6 +763,7 @@ function BlockList({
             parentBlockId={parentBlockId}
             isFirst={index === 0}
             isLast={index === blocks.length - 1}
+            tabId={tabId}
           />
         ))}
       </div>
@@ -737,12 +775,14 @@ function BlockEditor({
   pageId,
   block,
   parentBlockId,
+  tabId,
   isFirst,
   isLast,
 }: {
   pageId: string;
   block: Block;
   parentBlockId: string | null;
+  tabId: string | null;
   isFirst: boolean;
   isLast: boolean;
 }) {
@@ -819,6 +859,18 @@ function BlockEditor({
             onChange={handleBlockChange}
           />
         );
+
+      case 'DoDont':
+        return <DoDontEditor block={block} onChange={handleBlockChange} />;
+
+      case 'TabbedContent':
+        return (
+          <TabbedContentEditor
+            pageId={pageId}
+            block={block}
+            onChange={handleBlockChange}
+          />
+        );
     }
 
     assertUnreachable(block);
@@ -830,13 +882,6 @@ function BlockEditor({
         <div className={styles.BlockActions}>
           {block.order}
           <ButtonGroup>
-            <Button
-              plain
-              icon={DeleteMinor}
-              size="slim"
-              onClick={() => deleteBlock(block.id)}
-              aria-label="Delete block"
-            ></Button>
             <Button
               plain
               icon={ArrowUpMinor}
@@ -853,6 +898,13 @@ function BlockEditor({
               aria-label="Move block down"
               disabled={isLast}
             ></Button>
+            <Button
+              plain
+              icon={DeleteMinor}
+              size="slim"
+              onClick={() => deleteBlock(block.id)}
+              aria-label="Delete block"
+            ></Button>
           </ButtonGroup>
         </div>
 
@@ -863,6 +915,7 @@ function BlockEditor({
         pageId={pageId}
         parentBlockId={parentBlockId}
         order={block.order + 1}
+        tabId={tabId}
       />
     </>
   );
@@ -906,10 +959,12 @@ function sortBlocks(content: Content): Content {
 function BlockAdder({
   pageId,
   parentBlockId,
+  tabId,
   order,
 }: {
   pageId: string;
   parentBlockId: string | null;
+  tabId: string | null;
   order: number;
 }) {
   const {setContent} = useContext(ContentContext);
@@ -917,7 +972,7 @@ function BlockAdder({
 
   function addBlock(blockType: BlockType, order: number) {
     let newBlock: Block = {
-      ...getEmptyBlock(blockType, parentBlockId),
+      ...getEmptyBlock(blockType, parentBlockId, tabId),
       // -0.5 squeezes the block in between the indented order
       // and the previous one. The sorting function will then
       // clean up the order values.
@@ -1091,7 +1146,105 @@ function ProgressiveDisclosureEditor({
         autoComplete="off"
       />
 
-      <BlockList pageId={pageId} parentBlockId={block.id} />
+      <BlockList pageId={pageId} parentBlockId={block.id} tabId={null} />
+    </div>
+  );
+}
+
+function DoDontEditor({block, onChange}: BlockEditorProps<DoDontBlock>) {
+  return (
+    <div>
+      <TextField
+        type="text"
+        value={block.doMarkdown}
+        onChange={(doMarkdown) => onChange({...block, doMarkdown})}
+        label="Do (markdown)"
+        autoComplete="off"
+        multiline={true}
+      />
+
+      <TextField
+        type="text"
+        value={block.dontMarkdown}
+        onChange={(dontMarkdown) => onChange({...block, dontMarkdown})}
+        label="Don't (markdown)"
+        autoComplete="off"
+        multiline={true}
+      />
+    </div>
+  );
+}
+
+function TabbedContentEditor({
+  pageId,
+  block,
+  onChange,
+}: BlockEditorProps<TabbedContentBlock> & {pageId: string}) {
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+
+  const addTab = () => {
+    onChange({
+      ...block,
+      tabs: [
+        ...block.tabs,
+        {
+          id: nanoid(),
+          label: 'New tab',
+        },
+      ],
+    });
+  };
+
+  const deleteTab = (index: number) => {
+    onChange({
+      ...block,
+      tabs: block.tabs.filter((_, i) => i !== index),
+    });
+  };
+
+  const selectedTab = block.tabs[selectedTabIndex];
+
+  return (
+    <div>
+      <button onClick={addTab}>+</button>
+
+      <Tabs
+        tabs={block.tabs.map((tab) => ({
+          id: tab.id,
+          content: tab.label,
+        }))}
+        selected={selectedTabIndex}
+        onSelect={(index) => setSelectedTabIndex(index)}
+      >
+        {selectedTab && (
+          <FormLayout>
+            <TextField
+              type="text"
+              label="Tab label"
+              value={selectedTab.label}
+              onChange={(label) => {
+                onChange({
+                  ...block,
+                  tabs: block.tabs.map((tab, i) =>
+                    i === selectedTabIndex ? {...tab, label} : tab,
+                  ),
+                });
+              }}
+              autoComplete="off"
+            />
+
+            <BlockList
+              pageId={pageId}
+              parentBlockId={block.id}
+              tabId={selectedTab.id}
+            />
+
+            <Button destructive onClick={() => deleteTab(selectedTabIndex)}>
+              Delete tab
+            </Button>
+          </FormLayout>
+        )}
+      </Tabs>
     </div>
   );
 }
