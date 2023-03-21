@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {Metadata, MetadataGroup} from '../src';
+import type {Metadata, MetadataGroup} from '../src';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
