@@ -176,7 +176,7 @@
       "selected": "{selectedItemsCount} sélectionné(s)",
       "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de votre boutique est sélectionnée",
       "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural} de votre boutique",
-      "emptySearchResultTitle": "Pas de {resourceNamePlural} trouvés",
+      "emptySearchResultTitle": "{resourceNamePlural} introuvables",
       "emptySearchResultDescription": "Essayez de changer les filtres ou le terme de recherche",
       "selectButtonText": "Sélectionner",
       "a11yCheckboxDeselectAllSingle": "Désélectionner {resourceNameSingular}",
@@ -286,7 +286,7 @@
       "a11yCheckboxSelectAllMultiple": "Sélectionner la totalité des {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
-      "emptySearchTitle": "Pas de {resourceNamePlural} trouvés",
+      "emptySearchTitle": "{resourceNamePlural} introuvables",
       "emptySearchDescription": "Essayez de changer les filtres ou le terme de recherche",
       "onboardingBadgeText": "Nouveau",
       "resourceLoadingAccessibilityLabel": "Chargement de {resourceNamePlural} en cours…",
