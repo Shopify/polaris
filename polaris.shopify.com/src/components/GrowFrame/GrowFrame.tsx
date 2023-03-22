@@ -1,6 +1,7 @@
 import {forwardRef, ForwardedRef, useRef, useEffect, useState} from 'react';
 import {mergeRefs} from 'react-merge-refs';
 import {nanoid} from 'nanoid';
+import {ResizeObserver} from '@juggle/resize-observer';
 
 interface GrowFrameProps extends React.HTMLProps<HTMLIFrameElement> {
   // A CSS length value to set the default height during initial render (before
@@ -21,6 +22,34 @@ export const updateGrowFrameHeight = (height: string) => {
     height,
     id: window.frameElement.getAttribute('data-frame-id'),
   });
+};
+
+export const useGrowFrameUpdater = <T extends Element | null>(
+  wrapperRef: React.MutableRefObject<T>,
+) => {
+  // Tell parent frame of the initial size on first render
+  useEffect(() => {
+    if (!wrapperRef.current) {
+      return;
+    }
+    var {height} = wrapperRef.current.getBoundingClientRect();
+    updateGrowFrameHeight(`${Math.ceil(height)}px`);
+  }, [wrapperRef]);
+
+  // Watch for changes in size (screen resizing, interacting, etc);
+  useEffect(() => {
+    if (!wrapperRef.current) {
+      return;
+    }
+    const observer = new ResizeObserver((entries) => {
+      const {blockSize: height} = entries[0].contentBoxSize[0];
+      updateGrowFrameHeight(`${Math.ceil(height)}px`);
+    });
+    observer.observe(wrapperRef.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, [wrapperRef]);
 };
 
 const GrowFrame = forwardRef(
@@ -56,7 +85,9 @@ const GrowFrame = forwardRef(
         const {id, height} = e.data;
         if (id === frameId.current && typeof height === 'string') {
           setHeight(height);
-          requestAnimationFrame(() => onContentLoad?.());
+          requestAnimationFrame(() =>
+            onContentLoad?.(growFrameRef.current as HTMLIFrameElement),
+          );
         }
       };
       window.addEventListener('message', messageReceiver);

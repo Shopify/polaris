@@ -1,3 +1,3 @@
-import GrowFrame, {updateGrowFrameHeight} from './GrowFrame';
-export {updateGrowFrameHeight};
+import GrowFrame, {useGrowFrameUpdater} from './GrowFrame';
+export {useGrowFrameUpdater};
 export default GrowFrame;

@@ -228,7 +228,8 @@ interface TokenPreviewProps {
 
 function TokenPreview({name, value}: TokenPreviewProps) {
   const previewDivAttributes = {
-    className: styles.Preview,
+    // Used for targeting by visual regression testing
+    ['data-preview']: true,
   };
 
   // Colors

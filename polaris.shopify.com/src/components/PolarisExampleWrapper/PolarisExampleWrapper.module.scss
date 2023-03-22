@@ -1,10 +1,14 @@
+/* Allow the page to shrink to wrap the content */
+.Container :global(body, html) {
+  min-height: auto;
+  height: auto;
+}
+
 .Container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 96px 32px;
 }
 
 .Example {

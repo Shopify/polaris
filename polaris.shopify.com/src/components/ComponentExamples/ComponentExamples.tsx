@@ -6,9 +6,9 @@ import Code from '../Code';
 import {Tab} from '@headlessui/react';
 import {className} from '../../utils/various';
 import Markdown from '../Markdown';
+import GrowFrame from '../GrowFrame';
 
 const exampleIframeId = 'example-iframe';
-const iframePadding = 192;
 
 export type ComponentExample = {
   code: string;
@@ -52,34 +52,13 @@ const ComponentExamples = ({examples}: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState('');
 
-  const [iframeHeight, setIframeHeight] = useState(400);
+  const handleExampleLoad = (iframeEl: HTMLIFrameElement) => {
+    const exampleIframeDOM = iframeEl.contentDocument;
+    const exampleWrapper = exampleIframeDOM?.getElementById('polaris-example');
 
-  const handleExampleLoad = () => {
-    let attempts = 0;
-
-    const waitForExampleContentToRender = setInterval(() => {
-      const exampleIframe = document.getElementById(
-        exampleIframeId,
-      ) as HTMLIFrameElement;
-      const exampleIframeDOM = exampleIframe?.contentDocument;
-      const exampleWrapper =
-        exampleIframeDOM?.getElementById('polaris-example');
-
-      if (exampleWrapper) {
-        const newHeight = iframePadding + exampleWrapper.offsetHeight;
-        setIframeHeight(newHeight);
-        setHTMLCode(formatHTML(exampleWrapper.innerHTML));
-        clearInterval(waitForExampleContentToRender);
-      }
-
-      attempts++;
-
-      if (attempts > 10) {
-        clearInterval(waitForExampleContentToRender);
-      }
-    }, 100);
-
-    return () => clearInterval(waitForExampleContentToRender);
+    if (exampleWrapper) {
+      setHTMLCode(formatHTML(exampleWrapper.innerHTML));
+    }
   };
 
   useEffect(() => {
@@ -116,10 +95,10 @@ const ComponentExamples = ({examples}: Props) => {
             <Tab.Panel key={fileName}>
               {description ? <Markdown {...description} /> : null}
               <div className={styles.ExampleFrame}>
-                <iframe
+                <GrowFrame
+                  defaultHeight={'400px'}
                   src={exampleUrl}
-                  height={iframeHeight}
-                  onLoad={handleExampleLoad}
+                  onContentLoad={handleExampleLoad}
                   id={exampleIframeId}
                 />
                 <div className={className(styles.Buttons, 'light-mode')}>
