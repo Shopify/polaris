@@ -675,6 +675,26 @@ describe('<IndexTable>', () => {
           expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
       );
+
+      it('uses column defaultSortDirection instead of table defaultSortDirection', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            defaultSortDirection="ascending"
+            headings={[
+              {title: 'Foo'},
+              {title: 'Bar'},
+              {title: 'Baz', defaultSortDirection: 'descending'},
+            ]}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll('th')[3]).toContainReactComponent(
+          SortDescendingMajor,
+        );
+      });
     });
 
     describe('onSort', () => {
