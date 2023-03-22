@@ -6,4 +6,4 @@
 '@shopify/stylelint-polaris': patch
 ---
 
-Added `@typescript-eslint/consistent-type-imports` and `@typescript-eslint/consistent-type-exports` rule and updated type imports
+Bumped `@shopify/eslint-plugin` to v42.0.3, added type import/export rules, and updated type imports
