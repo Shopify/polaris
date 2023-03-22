@@ -114,7 +114,6 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
               </Text>
             ),
           },
-          ,
         ]}
       >
         {rowMarkup}

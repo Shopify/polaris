@@ -6,7 +6,7 @@ function PlaceholderExample() {
   const [textFieldValue, setTextFieldValue] = useState('');
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 

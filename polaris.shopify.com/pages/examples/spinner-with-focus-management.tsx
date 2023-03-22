@@ -34,7 +34,7 @@ function SpinnerWithFocusManagement() {
     setTextFieldFocused(!loading);
   }, [loading]);
 
-  const handleTabChange = useCallback((selectedTab) => {
+  const handleTabChange = useCallback((selectedTab: number) => {
     setLoading(true);
     setSelected(selectedTab);
     setTimeout(() => {
@@ -43,9 +43,9 @@ function SpinnerWithFocusManagement() {
     }, 1500);
   }, []);
 
-  const handleUrlChange = useCallback((value) => setValue(value), []);
+  const handleUrlChange = useCallback((value: string) => setValue(value), []);
 
-  const handleSubmit = useCallback((_event) => setValue(''), []);
+  const handleSubmit = useCallback(() => setValue(''), []);
 
   const label = selected ? 'Marketing' : 'Customers';
   const sectionMarkup = loading ? (

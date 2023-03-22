@@ -10,7 +10,7 @@ function DatePickerExample() {
   });
 
   const handleMonthChange = useCallback(
-    (month, year) => setDate({month, year}),
+    (month: number, year: number) => setDate({month, year}),
     [],
   );
 

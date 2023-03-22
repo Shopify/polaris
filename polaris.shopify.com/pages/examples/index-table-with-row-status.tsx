@@ -8,7 +8,15 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function IndexTableWithRowStatusExample() {
-  const customers = [
+  const customers: {
+    id: string;
+    url: string;
+    name: string;
+    location: string;
+    orders: number;
+    amountSpent: string;
+    status: 'success' | 'subdued';
+  }[] = [
     {
       id: '3411',
       url: '#',
@@ -28,6 +36,7 @@ function IndexTableWithRowStatusExample() {
       status: 'subdued',
     },
   ];
+
   const resourceName = {
     singular: 'customer',
     plural: 'customers',

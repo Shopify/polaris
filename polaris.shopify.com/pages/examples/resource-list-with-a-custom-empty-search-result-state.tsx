@@ -12,20 +12,26 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithFilteringExample() {
-  const [taggedWith, setTaggedWith] = useState('VIP');
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState<string | undefined>('VIP');
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
   const [items, setItems] = useState([]);
 
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
-  const handleQueryValueChange = useCallback((value) => {
+  const handleQueryValueChange = useCallback((value: string) => {
     setQueryValue(value);
     setItems([]);
   }, []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
@@ -53,15 +59,16 @@ function ResourceListWithFilteringExample() {
     },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith2',
-          label: disambiguateLabel('taggedWith2', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith2',
+            label: disambiguateLabel('taggedWith2', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
   const filterControl = (
     <Filters
@@ -90,7 +97,12 @@ function ResourceListWithFilteringExample() {
     </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: {
+    id: string;
+    url: string;
+    name: string;
+    location: string;
+  }) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -104,7 +116,7 @@ function ResourceListWithFilteringExample() {
     );
   }
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string): string {
     switch (key) {
       case 'taggedWith2':
         return `Tagged with ${value}`;
@@ -113,7 +125,7 @@ function ResourceListWithFilteringExample() {
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

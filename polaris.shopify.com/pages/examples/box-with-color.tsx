@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithColorExample() {
   return (
-    <Box background="color-bg-interactive-subdued-active">
+    <Box background="background-selected">
       <Text as="h2" variant="bodyMd" fontWeight="medium">
         Content inside a box
       </Text>

@@ -63,7 +63,7 @@ $loading-panel-height: 53px;
   align-items: center;
   background: var(--p-surface);
   padding: var(--p-space-2) var(--p-space-4);
-  box-shadow: var(--p-shadow-base);
+  box-shadow: var(--p-shadow-md);
 
   .LoadingPanelRow {
     display: flex;
@@ -205,6 +205,7 @@ $loading-panel-height: 53px;
   }
 
   .TableRow:nth-child(2n),
+  .TableRow:nth-child(2n) .TableCell:first-child,
   .TableRow:nth-child(2n) .TableCell:last-child {
     background: var(--p-surface-subdued);
 
@@ -215,6 +216,7 @@ $loading-panel-height: 53px;
 
   .TableRow-hovered:nth-child(2n + 1),
   .TableRow-hovered:nth-child(2n),
+  .TableRow-hovered:nth-child(2n) .TableCell:first-child,
   .TableRow-hovered:nth-child(2n) .TableCell:last-child {
     background-color: var(--p-surface-hovered);
   }
@@ -290,24 +292,34 @@ $loading-panel-height: 53px;
       opacity: 1;
     }
   }
+
+  .TableHeadingSortIcon-heading-align-end {
+    animation: hide-right-aligned-sort-button-icon var(--p-duration-50);
+  }
 }
 
 .TableHeadingSortButton-heading-align-end {
   transform: translateX(var(--p-space-5));
-  transition: all var(--p-duration-100) var(--p-ease-in);
+  transition-delay: var(--p-duration-50);
 
   &:hover,
   &:focus {
+    transition-delay: none;
     transform: translateX(var(--p-space-1));
   }
 }
 
 .TableHeadingSortButton-heading-align-end-currently-sorted {
   transform: translateX(var(--p-space-1));
+
+  .TableHeadingSortIcon-heading-align-end {
+    animation: none;
+  }
 }
 
 .TableHeadingSortButton-heading-align-end-previously-sorted {
-  animation: hide-sort-button var(--p-duration-100) var(--p-ease-in);
+  animation: right-aligned-sort-button-slide-out var(--p-duration-50)
+    var(--p-ease);
 }
 
 .TableHeadingSortIcon {
@@ -315,8 +327,24 @@ $loading-panel-height: 53px;
   opacity: 0;
   height: var(--p-space-5);
   width: var(--p-space-5);
-  transition: opacity var(--p-duration-200) var(--p-ease-in)
-    var(--p-duration-100);
+
+  &:not(.TableHeadingSortIcon-heading-align-end),
+  &:not(.TableHeadingSortButton-heading-align-end-previously-sorted) {
+    transition: opacity var(--p-duration-50) var(--p-ease);
+  }
+}
+
+.TableHeadingSortButton:hover {
+  .TableHeadingSortIcon-heading-align-end {
+    animation: reveal-right-aligned-sort-button-icon var(--p-duration-200)
+      var(--p-ease);
+  }
+}
+
+.TableHeadingSortButton-heading-align-end-currently-sorted:hover {
+  .TableHeadingSortIcon-heading-align-end {
+    animation: none;
+  }
 }
 
 .TableHeadingUnderline {
@@ -560,7 +588,7 @@ $loading-panel-height: 53px;
 .StickyTableHeader-isSticky {
   visibility: visible;
   background-color: var(--p-surface);
-  box-shadow: var(--p-shadow-base);
+  box-shadow: var(--p-shadow-md);
 }
 
 .IndexTable:hover {
@@ -735,12 +763,58 @@ $scroll-bar-size: var(--p-space-2);
 }
 
 /* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- custom reset animation for right-aligned header */
-@keyframes hide-sort-button {
+@keyframes right-aligned-sort-button-slide-out {
   0% {
+    transform: translateX(var(--p-space-1));
+  }
+
+  80% {
     transform: translateX(var(--p-space-1));
   }
 
   100% {
     transform: translateX(var(--p-space-5));
+  }
+}
+
+/* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- custom animation for right-aligned header */
+@keyframes reveal-right-aligned-sort-button-icon {
+  0% {
+    transform: translateX(calc(var(--p-space-5) * -1));
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- custom animation for right-aligned header */
+@keyframes hide-right-aligned-sort-button-icon {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  90% {
+    transform: translateX(calc(var(--p-space-5) * -1));
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(calc(var(--p-space-5) * -1));
   }
 }

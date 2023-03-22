@@ -25,7 +25,7 @@ function LayoutExample() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 341,
+                    id: '341',
                     url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -38,7 +38,7 @@ function LayoutExample() {
                     ),
                   },
                   {
-                    id: 256,
+                    id: '256',
                     url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -85,7 +85,7 @@ function LayoutExample() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 342,
+                    id: '342',
                     url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -98,7 +98,7 @@ function LayoutExample() {
                     ),
                   },
                   {
-                    id: 257,
+                    id: '257',
                     url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',

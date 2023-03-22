@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function OptionListWithSectionsExample() {
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<string[]>([]);
 
   return (
     <LegacyCard>

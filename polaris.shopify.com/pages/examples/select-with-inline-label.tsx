@@ -5,7 +5,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineLabelExample() {
   const [selected, setSelected] = useState('newestUpdate');
 
-  const handleSelectChange = useCallback((value) => setSelected(value), []);
+  const handleSelectChange = useCallback(
+    (value: string) => setSelected(value),
+    [],
+  );
 
   const options = [
     {label: 'Newest update', value: 'newestUpdate'},

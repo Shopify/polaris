@@ -1,5 +1,38 @@
 # Changelog
 
+## 10.38.0
+
+### Minor Changes
+
+- [#8682](https://github.com/Shopify/polaris/pull/8682) [`9c65bdae3`](https://github.com/Shopify/polaris/commit/9c65bdae313bd21975399bed6a19fc7f9626aeca) Thanks [@mrcthms](https://github.com/mrcthms)! - Added `LegacyTabs` and `LegacyFilters` components in preparation for the `IndexFilters` workstream
+
+### Patch Changes
+
+- [#8662](https://github.com/Shopify/polaris/pull/8662) [`4a018e7de`](https://github.com/Shopify/polaris/commit/4a018e7de2aacb32d951cc4223023c9f38b118b1) Thanks [@rdott](https://github.com/rdott)! - Prevented page scroll when using mousewheel over a number input
+
+* [#8598](https://github.com/Shopify/polaris/pull/8598) [`611640238`](https://github.com/Shopify/polaris/commit/611640238a893015d060a1b0e58c70a19b119edd) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - [IndexTable] Sets header sort tooltip preferred position to "above" and adjusts right-aligned, sortable header animation
+
+- [#8700](https://github.com/Shopify/polaris/pull/8700) [`47b03e639`](https://github.com/Shopify/polaris/commit/47b03e63956c3fd5a6e9ae479256c5b49a25882e) Thanks [@kyledurand](https://github.com/kyledurand)! - Added inheritance examples to Text component
+
+* [#8676](https://github.com/Shopify/polaris/pull/8676) [`b4a1c451f`](https://github.com/Shopify/polaris/commit/b4a1c451f9f911f81cd8c3d34b3a07743e72a346) Thanks [@laurkim](https://github.com/laurkim)! - Updated `AlphaStack` to support horizontal alignment with `inlineAlign` and vertical alignment with `align`
+
+- [#8675](https://github.com/Shopify/polaris/pull/8675) [`3013bee2c`](https://github.com/Shopify/polaris/commit/3013bee2c6c3f37a959d5f0ec9c2dc70b1b506e2) Thanks [@kyledurand](https://github.com/kyledurand)! - Accounted for string numbers to be passed into columns prop
+
+* [#8695](https://github.com/Shopify/polaris/pull/8695) [`3a958ddbf`](https://github.com/Shopify/polaris/commit/3a958ddbff7cd58cd5d0d99c0ebbca97b6e12d32) Thanks [@KateWood](https://github.com/KateWood)! - adds zebra striping background color to .TableCell:first-child
+
+* Updated dependencies [[`0ad5a20f7`](https://github.com/Shopify/polaris/commit/0ad5a20f780ad24527083b4bb37f6a411350425f), [`ed376f714`](https://github.com/Shopify/polaris/commit/ed376f7144d30526649725764420e5a046de359f)]:
+  - @shopify/polaris-icons@6.12.0
+
+## 10.37.0
+
+### Minor Changes
+
+- [#8601](https://github.com/Shopify/polaris/pull/8601) [`243fd6224`](https://github.com/Shopify/polaris/commit/243fd622406612370efe40dd32dcd2025cf53db7) Thanks [@lgriffee](https://github.com/lgriffee)! - Migrate `depth` custom properties from Polaris `v10` to `v11`
+
+### Patch Changes
+
+- [#8664](https://github.com/Shopify/polaris/pull/8664) [`d340f8471`](https://github.com/Shopify/polaris/commit/d340f8471d330e8562c0dbb67d9f3aeae8699b65) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed responsive gap on AlphaStack
+
 ## 10.36.0
 
 ### Minor Changes

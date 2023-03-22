@@ -127,29 +127,25 @@
 }
 
 .HowItHelps {
-  .ImageWrapper {
+  & > img {
     display: block;
     border: 1px solid var(--p-border-subdued);
-    position: relative;
-    flex: auto;
-    overflow: hidden;
     aspect-ratio: 361.9/180.9;
-    width: 100%;
     border-radius: 0.25rem;
     background: var(--p-surface-depressed);
-    > img {
-      width: 100%;
-      object-fit: fill;
-    }
   }
   ol {
+    --counter-offset: calc(24px + var(--p-space-2));
     list-style: none;
     counter-reset: item;
     li {
       counter-increment: item;
+      padding-left: var(--counter-offset);
       &::before {
         width: 24px;
         height: 24px;
+        position: absolute;
+        margin-left: calc(-1 * var(--counter-offset));
         content: counter(item);
         font-weight: 700;
         color: rgba(153, 35, 247, 1);
@@ -166,68 +162,8 @@
 }
 
 .UsefulToKnow {
-  & > ul {
-    display: grid;
-    column-gap: var(--p-space-4);
-    row-gap: var(--p-space-8);
-
-    --txt-column-width: 35%;
-    /*
-   * Rules of the grid:
-   * The second (img) column should never be bigger than 30rem.
-   * The first (text) column should never shrink below 35% of the container.
-   * The first (text) column should grow to fill the remaining space (1fr).
-   * The second (img) column should never shrink below 20rem. */
-    grid-template-columns:
-      minmax(
-        // Give this column a minimum width (thin container)
-        var(--txt-column-width),
-        // Grow to fill the remaining space when possible (wide container)
-        1fr
-      )
-      minmax(
-        min(
-          // Minimum size of 20rem to keep it legible
-          20rem,
-          // Except when the container is too thin: let it shrinnk so the text
-          // column can still take up its desired minimum width
-          calc(100% - var(--txt-column-width))
-        ),
-        // Maximum width (wide container) - avoids gigantic images
-        30rem
-      );
-
-    @media screen and (max-width: $breakpointMobile) {
-      grid-template-columns: 1fr;
-      row-gap: var(--p-space-4);
-    }
-
-    & > li {
-      display: contents;
-      &::before {
-        display: none;
-      }
-
-      & > span {
-        display: contents;
-      }
-    }
-
-    .ImageWrapper {
-      aspect-ratio: 485/315;
-      position: relative;
-      background: var(--p-surface-depressed);
-      display: block;
-      overflow: hidden;
-      > img {
-        object-fit: cover;
-      }
-    }
-  }
-}
-
-.UsefulToKnow {
-  .ImageWrapper {
+  img {
+    background: var(--p-surface-depressed);
     border-radius: var(--border-radius-400);
     border: 1px solid #c9cccf;
   }

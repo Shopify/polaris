@@ -15,12 +15,18 @@ function ColumnsWithVaryingGapExample() {
   );
 }
 
-const SpacingBackground = ({children, width = '100%'}) => {
+const SpacingBackground = ({
+  children,
+  width = '100%',
+}: {
+  children: React.ReactNode;
+  width?: string;
+}) => {
   return (
     <div
       style={{
         background: '#E0F8EE',
-        width: width ?? undefined,
+        width,
         height: 'auto',
       }}
     >

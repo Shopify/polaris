@@ -32,7 +32,7 @@ function FrameExample() {
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
   });
-  const skipToContentRef = useRef(null);
+  const skipToContentRef = useRef<HTMLAnchorElement>(null);
 
   const [toastActive, setToastActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -55,11 +55,11 @@ function FrameExample() {
   const [supportMessage, setSupportMessage] = useState('');
 
   const handleSubjectChange = useCallback(
-    (value) => setSupportSubject(value),
+    (value: string) => setSupportSubject(value),
     [],
   );
   const handleMessageChange = useCallback(
-    (value) => setSupportMessage(value),
+    (value: string) => setSupportMessage(value),
     [],
   );
   const handleDiscard = useCallback(() => {
@@ -75,11 +75,11 @@ function FrameExample() {
     setToastActive(true);
     setStoreName(defaultState.current.nameFieldValue);
   }, [emailFieldValue, nameFieldValue]);
-  const handleNameFieldChange = useCallback((value) => {
+  const handleNameFieldChange = useCallback((value: string) => {
     setNameFieldValue(value);
     value && setIsDirty(true);
   }, []);
-  const handleEmailFieldChange = useCallback((value) => {
+  const handleEmailFieldChange = useCallback((value: string) => {
     setEmailFieldValue(value);
     value && setIsDirty(true);
   }, []);
@@ -87,7 +87,7 @@ function FrameExample() {
     setSearchActive(false);
     setSearchValue('');
   }, []);
-  const handleSearchFieldChange = useCallback((value) => {
+  const handleSearchFieldChange = useCallback((value: string) => {
     setSearchValue(value);
     setSearchActive(value.length > 0);
   }, []);
@@ -344,7 +344,7 @@ function FrameExample() {
           navigation={navigationMarkup}
           showMobileNavigation={mobileNavigationActive}
           onNavigationDismiss={toggleMobileNavigationActive}
-          skipToContentTarget={skipToContentRef.current}
+          skipToContentTarget={skipToContentRef}
         >
           {contextualSaveBarMarkup}
           {loadingMarkup}

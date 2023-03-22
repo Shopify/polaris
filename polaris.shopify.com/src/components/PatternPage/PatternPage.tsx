@@ -1,12 +1,12 @@
 import React, {useState, createContext, useContext, useEffect} from 'react';
 import {Tab} from '@headlessui/react';
-import Image from 'next/image';
 import Link from 'next/link';
+
 import {
   remarkDefinitionList,
   defListHastHandlers,
 } from 'remark-definition-list';
-import remarkUnwrapImages from 'remark-unwrap-images';
+
 import {useRouter} from 'next/router';
 import {visit} from 'unist-util-visit';
 import type {Node, Parent} from 'unist-util-visit';
@@ -15,7 +15,7 @@ import type {Plugin} from 'unified';
 import InlinePill from '../InlinePill';
 import {PatternVariantFontMatter, PatternFrontMatter} from '../../types';
 import PageMeta from '../PageMeta';
-import {Stack, Row} from '../Stack';
+import {Stack} from '../Stack';
 import {Box} from '../Box';
 import Code from '../Code';
 import {Lede} from '../Lede';
@@ -24,6 +24,7 @@ import PatternsExample from '../PatternsExample';
 import Page from '../Page';
 import styles from './PatternPage.module.scss';
 import Markdown from '../Markdown';
+import {SideBySide} from '../Markdown/components';
 
 export interface Props {
   data: Omit<PatternFrontMatter, 'variants'> & {
@@ -207,16 +208,11 @@ const BaseMarkdown = ({
   patternName?: string;
 }) => (
   <Markdown
-    remarkPlugins={[codeAsContext, remarkUnwrapImages, remarkDefinitionList]}
+    remarkPlugins={[codeAsContext, remarkDefinitionList]}
     // @ts-expect-error incompatible type to remark-rehype in remark-definition-list package.
     remarkRehypeOptions={{handlers: defListHastHandlers}}
+    mdxComponents={mdxComponents}
     components={{
-      // @ts-expect-error react-markdown doesn't understand custom attributes
-      div: ({as, ...props}) => {
-        // poor man's MDX
-        const Component = mdxComponents?.[as] ?? Box;
-        return <Component {...props} />;
-      },
       h1: ({children, id}) => (
         <Heading id={id} as="h1">
           {children}
@@ -247,11 +243,6 @@ const BaseMarkdown = ({
           {children}
         </Stack>
       ),
-      li: ({children, ordered, ...props}) => (
-        <Row as="li" gap={ordered ? '2' : '0'} {...props}>
-          <span>{children}</span>
-        </Row>
-      ),
       dl: ({children}) => (
         <Box as="dl" className={styles.DefinitionList}>
           {children}
@@ -262,12 +253,6 @@ const BaseMarkdown = ({
           {children}
         </Box>
       ),
-      img: ({src, alt}) =>
-        src ? (
-          <div className={styles.ImageWrapper}>
-            <Image fill src={src} alt={alt ?? ''} />
-          </div>
-        ) : null,
       code: function MdCode({
         inline,
         // @ts-expect-error Unsure how to tell react-markdown this prop is
@@ -331,9 +316,7 @@ const defaultMdxComponents: MDXComponents = {
     </Stack>
   ),
   UsefulToKnow: ({children}) => (
-    <Stack gap="4" className={styles.UsefulToKnow}>
-      {children}
-    </Stack>
+    <SideBySide className={styles.UsefulToKnow}>{children}</SideBySide>
   ),
   DefinitionTable: ({children}) => (
     <Box className={styles.DefinitionTable}>{children}</Box>

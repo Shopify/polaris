@@ -1,9 +1,7 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState} from 'react';
 import {
   TextField,
-  LegacyStack,
   Listbox,
-  Page,
   Sheet,
   Scrollable,
   AutoSelection,
@@ -101,7 +99,9 @@ function SheetWithSearchableListboxExample() {
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
-  const [filteredSegments, setFilteredSegments] = useState([]);
+  const [filteredSegments, setFilteredSegments] = useState<
+    typeof segments[number][]
+  >([]);
 
   const handleClickShowAll = () => {
     setShowFooterAction(false);
