@@ -6,30 +6,35 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BoxWithPaddingExample() {
   return (
     <AlphaStack gap="4">
-      <div style={{backgroundColor: '#2AACBB', width: '586px'}}>
+      <div
+        style={{
+          backgroundColor: 'var(--p-color-bg-info-strong)',
+          width: '586px',
+        }}
+      >
         <Box padding="4" width="586px">
           <Placeholder label="padding" childAlign="center" />
         </Box>
       </div>
       <Inline gap="4">
-        <div style={{backgroundColor: '#2AACBB'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
           <Box paddingInlineStart="4" width="284px">
             <Placeholder label="paddingInlineStart" childAlign="start" />
           </Box>
         </div>
-        <div style={{backgroundColor: '#2AACBB'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
           <Box paddingInlineEnd="4" width="284px">
             <Placeholder label="paddingInlineEnd" childAlign="end" />
           </Box>
         </div>
       </Inline>
       <Inline gap="4">
-        <div style={{backgroundColor: '#2AACBB'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
           <Box paddingBlockStart="4" width="284px">
             <Placeholder label="paddingBlockStart" childAlign="center" />
           </Box>
         </div>
-        <div style={{backgroundColor: '#2AACBB'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
           <Box paddingBlockEnd="4" width="284px">
             <Placeholder label="paddingBlockEnd" childAlign="center" />
           </Box>
@@ -53,7 +58,7 @@ const Placeholder = ({
   return (
     <div
       style={{
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         height: height,
         width: width,
       }}
@@ -61,7 +66,7 @@ const Placeholder = ({
       <Inline gap="4" align={childAlign}>
         <div
           style={{
-            color: '#FFFFFF',
+            color: 'var(--p-color-text-on-color)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="medium">

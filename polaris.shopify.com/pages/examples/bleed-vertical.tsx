@@ -26,7 +26,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
       <Inline gap="4" align="center">
         <div
           style={{
-            color: '#FFFFFF',
+            color: 'var(--p-color-text-on-color)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="regular">
