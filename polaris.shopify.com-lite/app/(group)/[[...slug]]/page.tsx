@@ -257,10 +257,10 @@ function PageWrapper({
   );
 }
 
-// export async function generateStaticParams() {
-//   const posts = await fetch('https://.../posts').then((res) => res.json());
+export async function generateStaticParams() {
+  const pages = content.pages.map((page) => getResolvedPage(content, page));
 
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }));
-// }
+  return pages.map((page) => ({
+    slugs: page.breadcrumbs.map((breadcrumb) => breadcrumb.slug),
+  }));
+}
