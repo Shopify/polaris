@@ -60,10 +60,11 @@ module.exports = {
     '@shopify/jsx-prefer-fragment-wrappers': 'off',
     '@shopify/no-ancestor-directory-import': 'error',
     '@shopify/react-prefer-private-members': 'off',
+    '@typescript-eslint/array-type': ['error', {default: 'array'}],
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/consistent-type-exports': 'error',
-    '@typescript-eslint/array-type': ['error', {default: 'array'}],
     '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/no-import-type-side-effects': 'error',
     'jsx-a11y/label-has-for': [
       2,
       {
