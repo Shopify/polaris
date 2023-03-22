@@ -314,7 +314,7 @@ $loading-panel-height: 53px;
   content: '';
   position: absolute;
   top: 0;
-  left: 95%;
+  left: calc(100% - var(--p-space-2));
   height: 100%;
   width: var(--p-space-6);
   display: block;
