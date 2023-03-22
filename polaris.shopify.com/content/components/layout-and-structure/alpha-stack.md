@@ -1,6 +1,6 @@
 ---
 title: Alpha stack
-description: Use to display children vertically with full width by default. Based on CSS Flexbox.
+description: Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout
@@ -22,7 +22,11 @@ examples:
   - fileName: alpha-stack-with-align.tsx
     title: Align
     description: >-
-      Control the horizontal alignment of children using the `align` prop.
+      Control the vertical alignment of children using the `align` prop.
+  - fileName: alpha-stack-with-inline-align.tsx
+    title: Inline align
+    description: >-
+      Control the horizontal alignment of children using the `inlineAlign` prop.
 ---
 
 ## Best practices

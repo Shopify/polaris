@@ -70,7 +70,7 @@ export function SkeletonPage({
     ) : null;
 
   return (
-    <AlphaStack gap="4" align="center">
+    <AlphaStack gap="4" inlineAlign="center">
       <Box
         width="100%"
         padding="0"

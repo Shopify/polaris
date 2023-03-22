@@ -93,7 +93,7 @@ function DatePickerExample() {
     }
   }, [selectedDate]);
   return (
-    <AlphaStack align="center" gap="4">
+    <AlphaStack inlineAlign="center" gap="4">
       <Box minWidth="276px" padding={{xs: 2}}>
         <Popover
           active={visible}
