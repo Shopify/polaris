@@ -8,8 +8,10 @@ import styles from './GlobalSearch.module.scss';
 import Link from 'next/link';
 import Markdown from '../Markdown';
 import * as PolarisIcons from '@shopify/polaris-icons';
-import {toPascalCase} from '@/utils';
+import {toPascalCase, uppercaseFirst} from '@/utils';
 import {useDebounce} from '@/hooks';
+import ImageRenderer from '../ImageRenderer';
+import Pill from '../Pill';
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -68,11 +70,12 @@ export default function Search() {
             />
             <Combobox.Options className={styles.Results}>
               {searchResults.map((result) => {
-                const category = result.url.split('/')[0];
+                const category = uppercaseFirst(result.url.split('/')[0]);
                 const Icon =
                   PolarisIcons[
                     toPascalCase(result.title) as keyof typeof PolarisIcons
                   ];
+
                 return (
                   <Combobox.Option
                     key={result.id}
@@ -84,24 +87,15 @@ export default function Search() {
                         <Icon width={32} height={32} />
                       </div>
                     )}
+                    {result.thumbnail && (
+                      <ImageRenderer image={result.thumbnail} width={200} />
+                    )}
                     <div>
                       <h2>
-                        {result.title}{' '}
-                        <span
-                          style={{
-                            padding: 4,
-                            background: '#444',
-                            borderRadius: 8,
-                          }}
-                        >
-                          {category}
-                        </span>
+                        {result.title} <Pill label={category} />
                       </h2>
-                      <Markdown>{result.excerpt}</Markdown>
-                      <p>{result.url}</p>
-                      {result.thumbnail && (
-                        <p>{JSON.stringify(result.thumbnail)}</p>
-                      )}
+                      <Markdown strip>{result.excerpt}</Markdown>
+                      <p className={styles.Url}>/{result.url}</p>
                     </div>
                   </Combobox.Option>
                 );

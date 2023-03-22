@@ -13,7 +13,7 @@ function ImageRenderer({image, width}: {image: ImageType; width: number}) {
       {inDarkMode && image.variants['dark'] ? (
         <Image
           src={`/uploads/${image.variants['dark'].fileName}`}
-          alt={image.alt.light}
+          alt={image.alt}
           {...getImageDimensions(
             {
               width: image.variants['dark'].width,
@@ -25,7 +25,7 @@ function ImageRenderer({image, width}: {image: ImageType; width: number}) {
       ) : (
         <Image
           src={`/uploads/${image.variants['light'].fileName}`}
-          alt={image.alt.light}
+          alt={image.alt}
           {...getImageDimensions(
             {
               width: image.variants['light'].width,

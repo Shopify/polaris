@@ -10,7 +10,6 @@ import {
 import {DeleteMinor} from '@shopify/polaris-icons';
 import {nanoid} from 'nanoid';
 import Image from 'next/image';
-import Link from 'next/link';
 import {useContext, useRef, useState} from 'react';
 import {DeleteImageResponse} from '@/app/editor/deleteImage/route';
 import {UploadImageResponse} from '@/src/pages/api/editor/uploadImage';
@@ -58,10 +57,7 @@ function ImagePicker({
           if (image.id === imageId) {
             return {
               ...image,
-              alt: {
-                [ColorScheme.Light]: alt,
-                [ColorScheme.Dark]: alt,
-              },
+              alt,
             };
           }
           return image;
@@ -76,7 +72,7 @@ function ImagePicker({
         if (image) {
           const newImage: ImageType = {
             id: nanoid(),
-            alt: {light: '', dark: ''},
+            alt: '',
             variants: {[ColorScheme.Light]: image},
           };
           setContent((content) => ({
@@ -196,37 +192,37 @@ function ImagePicker({
   const selectedImage = content.images.find((image) => image.id === imageId);
   const lightVariant = selectedImage?.variants[ColorScheme.Light];
   const inspectedImage = content.images.find(({id}) => id === selectedImageId);
-  const blocksIdsUsingImage = content.blocks
-    .filter((block) => {
-      switch (block.blockType) {
-        case 'Image':
-          return block.imageId === imageId;
-        case 'TextImage':
-          return block.imageId === imageId;
-      }
-      return false;
-    })
-    .map((block) => block.id);
+  // const blocksIdsUsingImage = content.blocks
+  //   .filter((block) => {
+  //     switch (block.blockType) {
+  //       case 'Image':
+  //         return block.imageId === imageId;
+  //       case 'TextImage':
+  //         return block.imageId === imageId;
+  //     }
+  //     return false;
+  //   })
+  //   .map((block) => block.id);
 
-  const pagesUsingSelectedImage = content.pages.filter((page) => {
-    if (page.thumbnailImageId === selectedImageId) {
-      return true;
-    }
-    let matchInBlocks = false;
-    page.blockIds.forEach((blockId) => {
-      if (blocksIdsUsingImage.includes(blockId)) {
-        matchInBlocks = true;
-      }
-    });
-    return matchInBlocks;
-  });
+  // const pagesUsingSelectedImage = content.pages.filter((page) => {
+  //   if (page.thumbnailImageId === selectedImageId) {
+  //     return true;
+  //   }
+  //   let matchInBlocks = false;
+  //   page.blockIds.forEach((blockId) => {
+  //     if (blocksIdsUsingImage.includes(blockId)) {
+  //       matchInBlocks = true;
+  //     }
+  //   });
+  //   return matchInBlocks;
+  // });
 
   return (
     <>
       {lightVariant && (
         <Image
           src={`/uploads/${lightVariant.fileName}`}
-          alt={selectedImage.alt[ColorScheme.Light]}
+          alt={selectedImage.alt}
           {...getImageDimensions(
             {width: lightVariant.width, height: lightVariant.height},
             300,
@@ -279,7 +275,7 @@ function ImagePicker({
                           <Image
                             key={scheme}
                             src={`/uploads/${variantImage.fileName}`}
-                            alt={image.alt[scheme] || ''}
+                            alt={image.alt}
                             width={200}
                             height={200}
                           />
@@ -304,7 +300,7 @@ function ImagePicker({
                   <FormLayout>
                     <TextField
                       type="text"
-                      value={inspectedImage.alt.light}
+                      value={inspectedImage.alt}
                       onChange={(alt) =>
                         setAltAttribute(inspectedImage.id, alt)
                       }
@@ -326,7 +322,7 @@ function ImagePicker({
                             {indicator}
                             <Image
                               src={`/uploads/${variantImage.fileName}`}
-                              alt={inspectedImage.alt[scheme] || ''}
+                              alt={inspectedImage.alt}
                               {...getImageDimensions(
                                 {
                                   width: variantImage.width,
@@ -382,31 +378,31 @@ function ImagePicker({
 
                     <Button
                       destructive
-                      disabled={pagesUsingSelectedImage.length > 0}
-                      outline={pagesUsingSelectedImage.length === 0}
+                      // disabled={pagesUsingSelectedImage.length > 0}
+                      // outline={pagesUsingSelectedImage.length === 0}
                       onClick={() => alert('TODO: Delete image')}
                       icon={DeleteMinor}
                       fullWidth
                     >
                       Delete image
                     </Button>
-                    {pagesUsingSelectedImage.length > 0 && (
+                    {/* {pagesUsingSelectedImage.length > 0 && (
                       <Text as="p" color="subdued" variant="bodySm">
                         {`The image can't be deleted while still being referenced by other pages. Remove the image from those pages before deleting it.`}
                       </Text>
-                    )}
+                    )} */}
 
                     <Text as="h2" variant="headingMd">
                       Pages using this image
                     </Text>
                     <List type="bullet">
-                      {pagesUsingSelectedImage.map((page) => (
+                      {/* {pagesUsingSelectedImage.map((page) => (
                         <List.Item key={page.id}>
                           <Link href={getPageUrl(content, page)}>
                             {page.title}
                           </Link>
                         </List.Item>
-                      ))}
+                      ))} */}
                     </List>
                   </FormLayout>
                 </>

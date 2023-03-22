@@ -8,7 +8,7 @@ import {content} from '@/content';
 import {
   ComponentsPageMeta,
   ResolvedPage,
-  ResolvedPageWithBlocks,
+  ResolvedPageWithoutBlocks,
 } from '@/types';
 import {
   getPageById,
@@ -23,10 +23,9 @@ import {JSONOutput} from 'typedoc';
 import styles from './page.module.scss';
 import ComponentMeta from './componentMeta';
 import Markdown from '@/components/Markdown';
-import Longform from '@/components/Longform';
 import {HOME_PAGE_ID} from '@/config';
 
-async function loadPage(slug?: string[]): Promise<ResolvedPageWithBlocks> {
+async function loadPage(slug?: string[]): Promise<ResolvedPage> {
   const page = slug
     ? getPageByPath(content, slug.join('/'))
     : getPageById(content, HOME_PAGE_ID);
@@ -36,15 +35,15 @@ async function loadPage(slug?: string[]): Promise<ResolvedPageWithBlocks> {
   }
 
   if (page) {
-    return getResolvedPage(content, page, true);
+    return getResolvedPage(content, page);
   } else {
     return notFound();
   }
 }
 
 async function loadChildPages(
-  page: ResolvedPageWithBlocks,
-): Promise<ResolvedPage[]> {
+  page: ResolvedPageWithoutBlocks,
+): Promise<ResolvedPageWithoutBlocks[]> {
   if (page.layout === 'listing') {
     return content.pages
       .filter(({parentId}) => parentId === page.id)
@@ -152,8 +151,8 @@ export default async function Home({params}: {params: {slug: string[]}}) {
   if (slug && slug.join('/') === 'icons') {
     return (
       <PageWrapper
+        id={page.id}
         title={page.title}
-        excerpt={page.excerpt}
         breadcrumbs={page.breadcrumbs}
       >
         <Icons />
@@ -171,28 +170,30 @@ export default async function Home({params}: {params: {slug: string[]}}) {
     pageMeta?.type === 'components' ? await LoadCodeExamples(pageMeta) : {};
 
   return (
-    <PageWrapper
-      title={page.title}
-      excerpt={page.excerpt}
-      breadcrumbs={page.breadcrumbs}
-    >
+    <PageWrapper id={page.id} title={page.title} breadcrumbs={page.breadcrumbs}>
       {/* <p style={{fontSize: 9}}>
         Website route {JSON.stringify({page})} {JSON.stringify({childPages})}
       </p> */}
 
       {pageMeta?.type === 'components' && (
-        <ComponentMeta pageMeta={pageMeta} codeExamples={codeExamples} />
+        <ComponentMeta
+          excerpt={page.excerpt}
+          pageMeta={pageMeta}
+          codeExamples={codeExamples}
+        />
       )}
 
       <div className={styles.PageLayout}>
         <main>
-          {pageMeta?.type === 'components' && props && (
+          {pageMeta?.type === 'components' && props ? (
             <>
-              <Longform>
-                <h2 id="props">Props</h2>
-              </Longform>
+              <h2 id="props">Props</h2>
               <PropsTable props={props.props} references={props.references} />
             </>
+          ) : (
+            <div className={styles.ExcerptWrapper}>
+              <Markdown>{page.excerpt}</Markdown>
+            </div>
           )}
 
           {page.layout === 'listing' ? (
@@ -213,38 +214,41 @@ export default async function Home({params}: {params: {slug: string[]}}) {
 }
 
 function PageWrapper({
+  id,
   title,
-  excerpt,
   breadcrumbs,
   children,
 }: {
+  id: string;
   title: string;
-  excerpt: string;
   breadcrumbs: ResolvedPage['breadcrumbs'];
   children: React.ReactNode;
 }) {
   let breadcrumbSlugs: string[] = [];
   return (
     <div className={styles.Page}>
-      {breadcrumbs.length > 0 && (
-        <ul className={styles.Breadcrumbs}>
-          <Link href="">Home</Link>
-          {breadcrumbs.map(({id, slug, title}) => {
-            breadcrumbSlugs.push(slug);
-            return (
-              <Link key={id} href={breadcrumbSlugs.join('/')}>
-                {title}
-              </Link>
-            );
-          })}
-        </ul>
-      )}
+      <nav aria-label="Breadcrumb">
+        {breadcrumbs.length > 0 && (
+          <ol className={styles.Breadcrumbs}>
+            {id !== HOME_PAGE_ID && <Link href="/">Home</Link>}
+            {breadcrumbs.map(({id, slug, title}, index) => {
+              breadcrumbSlugs.push(slug);
+              const isLast = index === breadcrumbs.length - 1;
+              return (
+                <Link
+                  key={id}
+                  href={breadcrumbSlugs.join('/')}
+                  aria-current={isLast ? 'page' : undefined}
+                >
+                  {title}
+                </Link>
+              );
+            })}
+          </ol>
+        )}
+      </nav>
 
       <h1>{title}</h1>
-
-      <Longform>
-        <Markdown>{excerpt}</Markdown>
-      </Longform>
 
       {children}
     </div>

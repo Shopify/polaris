@@ -14,7 +14,8 @@ export interface Page {
   noIndex: boolean;
   hasSeparatorInNav: boolean;
   thumbnailImageId: string | null;
-  blockIds: string[];
+  hasNewBadge: boolean;
+  blocks: Block[];
 }
 
 export interface ResolvedPage extends Page {
@@ -27,9 +28,7 @@ export interface ResolvedPage extends Page {
   images: Image[];
 }
 
-export interface ResolvedPageWithBlocks extends ResolvedPage {
-  blocks: Block[];
-}
+export type ResolvedPageWithoutBlocks = Omit<ResolvedPage, 'blocks'>;
 
 export type BasePageMeta = {
   type: PageMetaType;
@@ -99,9 +98,6 @@ export type BlockType = typeof blockTypes[number];
 export interface BaseBlock {
   id: string;
   blockType: BlockType;
-  order: number;
-  parentBlockId: string | null;
-  tabId: string | null;
 }
 
 export interface MarkdownBlock extends BaseBlock {
@@ -143,6 +139,7 @@ export interface TextImageBlock extends BaseBlock {
 export interface ProgressiveDisclosureBlock extends BaseBlock {
   blockType: 'ProgressiveDisclosure';
   title: string;
+  blocks: Block[];
 }
 
 export interface DoDontBlock extends BaseBlock {
@@ -156,6 +153,7 @@ export interface TabbedContentBlock extends BaseBlock {
   tabs: {
     id: string;
     label: string;
+    blocks: Block[];
   }[];
 }
 
@@ -183,10 +181,7 @@ export type ImageFile = {
 
 export type Image = {
   id: string;
-  alt: {
-    [ColorScheme.Light]: string;
-    [ColorScheme.Dark]?: string;
-  };
+  alt: string;
   variants: {
     [ColorScheme.Light]: ImageFile;
     [ColorScheme.Dark]?: ImageFile;
@@ -195,7 +190,6 @@ export type Image = {
 
 export interface Content {
   pages: Page[];
-  blocks: Block[];
   images: Image[];
 }
 
@@ -207,6 +201,7 @@ export type NavItems = {
   pageMeta: Page['pageMeta'];
   parentId: Page['parentId'];
   hasSeparatorInNav: Page['hasSeparatorInNav'];
+  hasNewBadge: Page['hasNewBadge'];
 }[];
 
 export type TOCItem = {

@@ -4,15 +4,15 @@
 }
 
 @mixin heading-2 {
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 400;
   letter-spacing: -0.0125rem;
   line-height: 1.25;
   color: var(--color-text-strong);
 }
 
 @mixin heading-3 {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   line-height: 1.25;
   color: var(--color-text-strong);
 }
@@ -21,6 +21,14 @@
   font-weight: 600;
   font-size: 1.05rem;
   color: var(--color-text-strong);
+}
+
+@mixin lede {
+  font-size: 1.15rem;
+  margin-bottom: 1.75rem;
+  font-weight: var(--font-weight-heavy);
+  // TODO: This feels bad
+  max-width: 46rem;
 }
 
 @mixin custom-scrollbars {

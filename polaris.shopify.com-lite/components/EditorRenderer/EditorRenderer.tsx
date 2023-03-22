@@ -1,78 +1,64 @@
 import Code from '../Code';
 import {
+  Block,
   CodeBlock,
   DoDontBlock,
+  Image,
   Image as ImageType,
   ImageBlock,
   MarkdownBlock,
-  ResolvedPageWithBlocks,
+  Page,
+  ResolvedPage,
   SandboxEmbedBlock,
   TabbedContentBlock,
   TextImageBlock,
   YoutubeVideoBlock,
 } from '@/types';
-import Longform from '../Longform';
 import Markdown from '../Markdown';
 import styles from './EditorRenderer.module.scss';
 import ImageRenderer from '../ImageRenderer';
 import {Tab, Tabs} from '../Tabs';
 import {className} from '@/utils';
+import {Fragment} from 'react';
 
 interface Props {
-  page: ResolvedPageWithBlocks;
+  page: ResolvedPage;
 }
 
 function EditorRenderer({page}: Props) {
   return (
     <div className={styles.EditorRenderer}>
-      <RenderBlocks page={page} parentBlockId={null} tabId={null} />
+      <RenderBlocks blocks={page.blocks} images={page.images} />
     </div>
   );
 }
 
-function RenderBlocks({
-  page,
-  parentBlockId,
-  tabId,
-}: {
-  page: ResolvedPageWithBlocks;
-  parentBlockId: string | null;
-  tabId: string | null;
-}) {
+function RenderBlocks({blocks, images}: {blocks: Block[]; images: Image[]}) {
   return (
-    <div className={styles.Blocks}>
-      <Longform firstParagraphIsLede={false}>
-        {page.blocks
-          .filter(
-            (block) =>
-              block.parentBlockId === parentBlockId && block.tabId === tabId,
-          )
-          .map((block) => (
-            <div key={block.id} className={styles.Block}>
-              {block.blockType === 'Markdown' && (
-                <MarkdownBlock block={block} />
-              )}
-              {block.blockType === 'Image' && (
-                <ImageBlock block={block} images={page.images} />
-              )}
-              {block.blockType === 'YoutubeVideo' && (
-                <YoutubeVideoBlock block={block} />
-              )}
-              {block.blockType === 'SandboxEmbed' && (
-                <SandboxEmbedBlock block={block} />
-              )}
-              {block.blockType === 'Code' && <CodeBlock block={block} />}
-              {block.blockType === 'TextImage' && (
-                <TextImageBlock block={block} images={page.images} />
-              )}
-              {block.blockType === 'DoDont' && <DoDontBock block={block} />}
-              {block.blockType === 'TabbedContent' && (
-                <TabbedContentBlock page={page} block={block} />
-              )}
-            </div>
-          ))}
-      </Longform>
-    </div>
+    <>
+      {blocks.map((block) => (
+        <Fragment key={block.id}>
+          {block.blockType === 'Markdown' && <MarkdownBlock block={block} />}
+          {block.blockType === 'Image' && (
+            <ImageBlock block={block} images={images} />
+          )}
+          {block.blockType === 'YoutubeVideo' && (
+            <YoutubeVideoBlock block={block} />
+          )}
+          {block.blockType === 'SandboxEmbed' && (
+            <SandboxEmbedBlock block={block} />
+          )}
+          {block.blockType === 'Code' && <CodeBlock block={block} />}
+          {block.blockType === 'TextImage' && (
+            <TextImageBlock block={block} images={images} />
+          )}
+          {block.blockType === 'DoDont' && <DoDontBock block={block} />}
+          {block.blockType === 'TabbedContent' && (
+            <TabbedContentBlock block={block} images={images} />
+          )}
+        </Fragment>
+      ))}
+    </>
   );
 }
 
@@ -140,7 +126,11 @@ function SandboxEmbedBlock({block}: {block: SandboxEmbedBlock}) {
 
 function CodeBlock({block}: {block: CodeBlock}) {
   const code = Object.values(block.code);
-  return <Code code={code} />;
+  return (
+    <pre>
+      <Code code={code} />
+    </pre>
+  );
 }
 
 function DoDontBock({block}: {block: DoDontBlock}) {
@@ -167,19 +157,22 @@ function DoDontBock({block}: {block: DoDontBlock}) {
 }
 
 function TabbedContentBlock({
-  page,
   block,
-}: {block: TabbedContentBlock} & {page: ResolvedPageWithBlocks}) {
+  images,
+}: {
+  block: TabbedContentBlock;
+  images: Image[];
+}) {
   return (
-    <>
+    <div>
       <Tabs tabs={block.tabs.map((tab) => tab.label)} boxed>
         {block.tabs.map((tab) => (
           <Tab key={tab.id}>
-            <RenderBlocks page={page} parentBlockId={block.id} tabId={tab.id} />
+            <RenderBlocks blocks={tab.blocks} images={images} />
           </Tab>
         ))}
       </Tabs>
-    </>
+    </div>
   );
 }
 

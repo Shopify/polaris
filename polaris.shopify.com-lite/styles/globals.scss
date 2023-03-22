@@ -42,7 +42,7 @@
   --color-surface-code: #ededed;
   --color-text: rgba(0, 0, 0, 0.77);
   --color-text-strong: #000;
-  --color-text-subdied: #767676;
+  --color-text-subdued: #767676;
   --color-link: #2e3ddc;
   --color-border: #e5e5e5;
   --color-code-keyword: #017b33;
@@ -62,13 +62,13 @@
 }
 
 @mixin dark-mode-colors {
-  --color-surface: #212126;
+  --color-surface: #1f2124;
   --color-surface-subdued: #2a2a31;
   --color-surface-code: #16161a;
-  --color-text: rgba(255, 255, 255, 0.8);
+  --color-text: #b6b6bf;
   --color-text-strong: #fff;
-  --color-text-subdied: #aaa;
-  --color-link: #7480ff;
+  --color-text-subdued: #909097;
+  --color-link: #ad8bf1;
   --color-border: #35353d;
   --color-code-keyword: #6dffaa;
   --color-code-function: var(--color-code-keyword);

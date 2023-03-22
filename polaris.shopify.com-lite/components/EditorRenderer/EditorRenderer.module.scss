@@ -1,3 +1,148 @@
+@use '../../styles/mixins' as *;
+
+.EditorRenderer {
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  pre {
+    margin-bottom: 1.15rem;
+  }
+
+  img,
+  iframe,
+  > div {
+    margin: 1.75rem 0;
+  }
+
+  h1 {
+    @include heading-1;
+  }
+
+  h2 {
+    @include heading-2;
+    &:not(:first-child) {
+      margin-top: 3rem;
+    }
+  }
+
+  h3 {
+    @include heading-3;
+    &:not(:first-child) {
+      margin-top: 2.25rem;
+    }
+  }
+
+  h4 {
+    @include heading-4;
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    padding-left: 1rem;
+    li {
+      list-style-type: disc;
+    }
+  }
+
+  ol {
+    padding-left: 1.35rem;
+    li {
+      list-style-type: auto;
+    }
+  }
+
+  p {
+    strong,
+    b {
+      font-weight: 600;
+    }
+  }
+
+  &.firstParagraphIsLede {
+    > p:first-child {
+      @include lede;
+      margin-bottom: 2.75rem;
+    }
+  }
+
+  p,
+  li {
+    code {
+      font-size: var(--font-size-small);
+      font-family: var(--font-family-mono);
+      background: var(--color-surface-code);
+      border-radius: 4px;
+      padding: 0.1rem 0.2rem;
+    }
+  }
+
+  img,
+  iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: calc(var(--unit-radius) * 4);
+    overflow: hidden;
+  }
+
+  table {
+    font-size: var(--font-size-small);
+    width: 100%;
+
+    td,
+    th {
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+      // TODO: Add white-space: pre; but it requires
+      // removing longform content from tables
+    }
+    tbody tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom: none;
+        }
+      }
+    }
+    th {
+      font-weight: var(--font-weight-heavy);
+    }
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: var(--font-weight-body-links);
+  }
+
+  a[href^='/design'] {
+    background: orange;
+  }
+
+  a[href^='/content'] {
+    background: pink;
+  }
+
+  a[href^='/foundations'] {
+    background: mediumturquoise;
+  }
+
+  a[href^='/components'] {
+    background: yellow;
+  }
+
+  a[href^='/patterns'] {
+    background: aqua;
+  }
+}
+
 .ImageText {
   display: flex;
   gap: 2rem;

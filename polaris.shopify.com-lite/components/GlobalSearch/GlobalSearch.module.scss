@@ -3,8 +3,8 @@
 .Trigger {
   width: 100%;
   padding: 0.5rem 1rem;
-  border-radius: 10000px;
-  margin-bottom: 3rem;
+  border-radius: 8px;
+  margin-bottom: 3.5rem;
   background: var(--color-surface-subdued);
   border: 1px solid var(--color-border);
 }
@@ -17,9 +17,9 @@
   left: 0;
   margin: auto;
   background: var(--color-surface);
-  background: rgba(38, 38, 45, 0.97);
+  background: rgba(31, 33, 36, 0.97);
   backdrop-filter: blur(5px) saturate(200%);
-  max-width: 1200px;
+  max-width: 800px;
   max-height: 80vh;
   border-radius: calc(var(--unit-radius) * 8);
   box-shadow: 0 -0.5px 0 rgba(255, 255, 255, 0.25),
@@ -31,7 +31,7 @@
 }
 
 .Input {
-  padding: 2rem;
+  padding: 1.5rem;
   font-size: 2rem;
   line-height: 1;
   border-bottom: 1px solid var(--color-border);
@@ -45,16 +45,18 @@
   flex: 1;
   overflow: auto;
   scroll-behavior: smooth;
+  @include custom-scrollbars;
 }
 
 .Result {
   display: flex;
-  padding: 2rem;
+  padding: 1.5rem;
   cursor: pointer;
   gap: 2rem;
 
   .Preview {
-    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
     height: 100px;
     background: var(--color-surface-subdued);
     border-radius: 8px;
@@ -64,7 +66,17 @@
   }
 
   h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     @include heading-4;
+    margin-bottom: 0.1rem;
+  }
+
+  .Url {
+    margin-top: 0.1rem;
+    font-size: var(--font-size-small);
+    color: var(--color-link);
   }
 
   svg {

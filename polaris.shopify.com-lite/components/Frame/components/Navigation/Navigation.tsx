@@ -1,6 +1,7 @@
 'use client';
 
 import GlobalSearch from '@/components/GlobalSearch';
+import Pill from '@/components/Pill';
 import {HOME_PAGE_ID} from '@/config';
 import {NavItems} from '@/types';
 import {className} from '@/utils';
@@ -75,9 +76,7 @@ function NavItem({
 
   const statusBadgeMarkup =
     pageMeta?.type === 'components' && pageMeta.lifeCyclePhase !== 'Stable' ? (
-      <span style={{border: '1px solid var(--color-border)'}}>
-        {pageMeta.lifeCyclePhase}
-      </span>
+      <Pill label={pageMeta.lifeCyclePhase} />
     ) : null;
 
   return (
@@ -102,6 +101,8 @@ function NavItem({
           {item.title}
 
           {statusBadgeMarkup}
+
+          {item.hasNewBadge && <Pill label="New" />}
         </Link>
 
         {isExpandable && (

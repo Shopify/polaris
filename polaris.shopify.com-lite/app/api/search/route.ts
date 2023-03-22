@@ -48,11 +48,12 @@ export async function GET(req: NextRequest) {
 
   if (q) {
     let searchIndex: IndexItem[] = content.pages
-      .map((page) => getResolvedPage(content, page, true))
+      .map((page) => getResolvedPage(content, page))
       .map((page) => ({
         id: page.id,
         title: page.title,
         keywords: page.keywords,
+
         excerpt: page.excerpt,
         body:
           page.excerpt +
@@ -118,14 +119,14 @@ export async function GET(req: NextRequest) {
     const fuse = new Fuse(searchIndex, {
       keys: [
         {name: 'title', weight: 100},
-        {name: 'keywords', weight: 50},
-        {name: 'body', weight: 10},
+        {name: 'keywords', weight: 20},
+        {name: 'body', weight: 5},
       ],
       includeScore: false,
       threshold: 0.5,
       shouldSort: true,
       isCaseSensitive: false,
-      fieldNormWeight: 3,
+      fieldNormWeight: 5,
       includeMatches: true,
     });
 

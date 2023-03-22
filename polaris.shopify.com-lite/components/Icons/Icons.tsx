@@ -7,7 +7,8 @@ import iconMetadata from '@shopify/polaris-icons/metadata';
 import {useEffect, useState} from 'react';
 import {useRouter, useSearchParams} from 'next/navigation';
 import {useCopyToClipboard} from '@/hooks';
-import {toPascalCase} from '@/utils';
+import {toPascalCase, uppercaseFirst} from '@/utils';
+import Pill from '../Pill';
 
 interface Props {}
 
@@ -46,7 +47,6 @@ function Icons({}: Props) {
               .includes(query.toLowerCase().replace(/ /g, ''));
           })
           .map((icon) => {
-            const Icon = PolarisIcons[icon.id as keyof typeof PolarisIcons];
             return <IconItem key={icon.id} icon={icon} />;
           })}
       </div>
@@ -89,7 +89,7 @@ function IconItem({icon}: {icon: typeof iconMetadata[number]}) {
     <div key={icon.id} className={styles.Icon} id={id}>
       <Icon width={32} height={32} />
       <h2>
-        {icon.name} ({icon.set})
+        {icon.name} <Pill label={uppercaseFirst(icon.set)} />
       </h2>
       <p>{icon.description}</p>
       <button onClick={copyReactCode}>

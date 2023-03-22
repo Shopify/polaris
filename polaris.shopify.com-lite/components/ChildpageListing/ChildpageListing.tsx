@@ -1,11 +1,12 @@
-import {ResolvedPage} from '@/types';
+import {ResolvedPage, ResolvedPageWithoutBlocks} from '@/types';
 import Link from 'next/link';
 import ImageRenderer from '../ImageRenderer';
 import Markdown from '../Markdown';
+import Pill from '../Pill';
 import styles from './ChildpageListing.module.scss';
 
 interface Props {
-  pages: ResolvedPage[];
+  pages: ResolvedPageWithoutBlocks[];
 }
 
 function ChildpageListing({pages}: Props) {
@@ -18,7 +19,9 @@ function ChildpageListing({pages}: Props) {
         return (
           <Link href={page.url} key={page.id} className={styles.Page}>
             {thumbnail ? (
-              <ImageRenderer image={thumbnail} width={368} />
+              <div className={styles.Thumbnail}>
+                <ImageRenderer image={thumbnail} width={368} />
+              </div>
             ) : (
               <div
                 className={styles.Thumbnail}
@@ -29,7 +32,13 @@ function ChildpageListing({pages}: Props) {
                 }}
               />
             )}
-            <h3>{page.title}</h3>
+            <h3>
+              {page.title}{' '}
+              {page.pageMeta?.type === 'components' &&
+                page.pageMeta.lifeCyclePhase !== 'Stable' && (
+                  <Pill label={page.pageMeta.lifeCyclePhase} />
+                )}
+            </h3>
             <Markdown strip>{page.excerpt}</Markdown>
           </Link>
         );

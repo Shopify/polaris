@@ -2,7 +2,6 @@
 
 import Banner from '@/components/Banner';
 import Code from '@/components/Code';
-import Longform from '@/components/Longform';
 import Markdown from '@/components/Markdown';
 import {Tab, Tabs} from '@/components/Tabs';
 import {Tab as HeadlessTab} from '@headlessui/react';
@@ -14,9 +13,11 @@ import {className} from '@/utils';
 const exampleIframeId = 'example-iframe';
 
 export default function ComponentMeta({
+  excerpt,
   pageMeta,
   codeExamples,
 }: {
+  excerpt: string;
   pageMeta: ComponentsPageMeta;
   codeExamples: {[fileName: string]: string};
 }) {
@@ -44,12 +45,17 @@ export default function ComponentMeta({
 
   return (
     <>
+      <div className={styles.ExcerptWrapper}>
+        <Markdown>{excerpt}</Markdown>
+      </div>
+
       {pageMeta.lifeCycleNotice && (
         <Banner
           title={pageMeta.lifeCyclePhase}
           markdownContent={pageMeta.lifeCycleNotice}
         />
       )}
+
       <Tabs
         tabs={pageMeta.examples.map((example) => example.title)}
         boxed={false}
@@ -60,9 +66,7 @@ export default function ComponentMeta({
           return (
             <Tab key={example.title}>
               <div className={styles.ExampleDescription}>
-                <Longform>
-                  <Markdown>{example.description}</Markdown>
-                </Longform>
+                <Markdown>{example.description}</Markdown>
               </div>
 
               <div className={styles.ExampleContainer}>

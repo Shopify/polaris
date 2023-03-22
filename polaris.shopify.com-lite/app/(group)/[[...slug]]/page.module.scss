@@ -2,15 +2,23 @@
 
 .Page {
   .Breadcrumbs {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     display: flex;
-    gap: 0.33rem;
-    font-size: 0.9rem;
+    gap: 0.25rem;
+    font-size: 0.825rem;
+    font-weight: var(--font-weight-heavy);
 
     a {
+      color: var(--color-text-subdued);
+
+      &:hover {
+        color: var(--color-text-strong);
+      }
+
       &:not(:last-child):after {
-        content: '->';
-        margin-left: 0.4rem;
+        content: '/';
+        margin-left: 0.25rem;
+        color: var(--color-border);
       }
     }
   }
@@ -45,8 +53,15 @@
   }
 }
 
+.ExcerptWrapper {
+  p:first-child {
+    @include lede;
+  }
+}
+
 .ExampleDescription {
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .ExampleContainer {

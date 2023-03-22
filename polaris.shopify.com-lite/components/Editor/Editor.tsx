@@ -4,6 +4,7 @@ import {
   createContext,
   Dispatch,
   SetStateAction,
+  useCallback,
   useContext,
   useEffect,
   useRef,
@@ -34,6 +35,7 @@ import {
   polarisComponentLifecyclePhases,
   DoDontBlock,
   TabbedContentBlock,
+  ResolvedPage,
 } from '@/types';
 import {
   ActionList,
@@ -61,7 +63,7 @@ import {
   ExternalMinor,
 } from '@shopify/polaris-icons';
 import enTranslations from '@shopify/polaris/locales/en.json';
-import {className} from '@/utils';
+import {arrayMoveImmutable, className} from '@/utils';
 import {getBreadcrumbs, getResolvedPage, getPageUrl} from '@/utils';
 import {useRouter, useSearchParams} from 'next/navigation';
 import ImagePicker from './components/ImagePicker';
@@ -77,9 +79,6 @@ function getEmptyBlock(
 ): Block {
   const baseBlock: Omit<BaseBlock, 'blockType'> = {
     id: nanoid(),
-    order: 0,
-    parentBlockId,
-    tabId,
   };
 
   switch (blockType) {
@@ -131,6 +130,7 @@ function getEmptyBlock(
         ...baseBlock,
         blockType,
         title: '',
+        blocks: [],
       };
       return block;
     }
@@ -167,7 +167,6 @@ export const ContentContext = createContext<{
 }>({
   content: {
     pages: [],
-    blocks: [],
     images: [],
   },
   setContent: () => undefined,
@@ -257,7 +256,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       excerpt: '',
       order: siblings.length,
       layout: 'blocks',
-      blockIds: [],
+      blocks: [],
       keywords: [],
       childPageMetaType: null,
       pageMeta,
@@ -738,12 +737,22 @@ function BlockList({
 
   const page = content.pages.find((page) => page.id === pageId);
   if (!page) throw new Error('Page not found');
-  const resolvedPage = getResolvedPage(content, page, true);
-  const blocks = resolvedPage.blocks
-    .filter(
-      (block) => block.parentBlockId === parentBlockId && block.tabId === tabId,
-    )
-    .sort((a, b) => a.order - b.order);
+  const resolvedPage = getResolvedPage(content, page);
+
+  let blocks = resolvedPage.blocks;
+  if (parentBlockId) {
+    const parentBlock = resolvedPage.blocks.find(
+      (block) => block.id === parentBlockId,
+    );
+    if (!parentBlock) throw new Error('Parent block not found');
+    if (parentBlock.blockType === 'ProgressiveDisclosure') {
+      blocks = parentBlock.blocks;
+    } else if (parentBlock.blockType === 'TabbedContent') {
+      const tab = parentBlock.tabs.find((tab) => tab.id === tabId);
+      if (!tab) throw new Error('Tab not found');
+      blocks = tab.blocks;
+    }
+  }
 
   return (
     <div>
@@ -751,8 +760,8 @@ function BlockList({
         <BlockAdder
           pageId={pageId}
           parentBlockId={parentBlockId}
-          order={0}
           tabId={tabId}
+          index={0}
         />
 
         {blocks.map((block, index) => (
@@ -761,8 +770,9 @@ function BlockList({
             pageId={pageId}
             block={block}
             parentBlockId={parentBlockId}
+            index={index}
             isFirst={index === 0}
-            isLast={index === blocks.length - 1}
+            isLast={index === resolvedPage.blocks.length - 1}
             tabId={tabId}
           />
         ))}
@@ -776,6 +786,7 @@ function BlockEditor({
   block,
   parentBlockId,
   tabId,
+  index,
   isFirst,
   isLast,
 }: {
@@ -783,47 +794,302 @@ function BlockEditor({
   block: Block;
   parentBlockId: string | null;
   tabId: string | null;
+  index: number;
   isFirst: boolean;
   isLast: boolean;
 }) {
   const {setContent} = useContext(ContentContext);
 
-  function deleteBlock(blockId: string) {
-    setContent((content) =>
-      sortBlocks({
+  function deleteBlock(
+    blockId: string,
+    pageId: string,
+    parentBlockId: string | null,
+    tabId: string | null,
+  ) {
+    if (tabId) {
+      setContent((content) => ({
         ...content,
-        blocks: content.blocks.filter((block) => block.id !== blockId),
-      }),
-    );
+        pages: content.pages.map((page) => {
+          if (page.id === pageId) {
+            return {
+              ...page,
+              blocks: page.blocks.map((block) => {
+                if (block.blockType === 'TabbedContent') {
+                  return {
+                    ...block,
+                    tabs: block.tabs.map((tab) => {
+                      if (tab.id === tabId) {
+                        return {
+                          ...tab,
+                          blocks: tab.blocks.filter(
+                            (block) => block.id !== blockId,
+                          ),
+                        };
+                      }
+                      return tab;
+                    }),
+                  };
+                }
+                return block;
+              }),
+            };
+          }
+          return page;
+        }),
+      }));
+    } else if (parentBlockId) {
+      setContent((content) => ({
+        ...content,
+        pages: content.pages.map((page) => {
+          if (page.id === pageId) {
+            return {
+              ...page,
+              blocks: page.blocks.map((block) => {
+                if (block.id === parentBlockId) {
+                  if (block.blockType === 'ProgressiveDisclosure') {
+                    return {
+                      ...block,
+                      blocks: block.blocks.filter(
+                        (block) => block.id !== blockId,
+                      ),
+                    };
+                  } else if (block.blockType === 'TabbedContent') {
+                    if (block.id === parentBlockId) {
+                      return {
+                        ...block,
+                        tabs: block.tabs.map((tab) => ({
+                          ...tab,
+                          blocks: tab.blocks.filter(
+                            (block) => block.id !== blockId,
+                          ),
+                        })),
+                      };
+                    }
+                  }
+                }
+                return block;
+              }),
+            };
+          }
+          return page;
+        }),
+      }));
+    } else if (pageId) {
+      setContent((content) => ({
+        ...content,
+        pages: content.pages.map((page) => {
+          if (page.id === pageId) {
+            return {
+              ...page,
+              blocks: page.blocks.filter((block) => block.id !== blockId),
+            };
+          }
+          return page;
+        }),
+      }));
+    }
+
     // TODO: Don't allow removal of blocks with children
   }
 
-  function moveBlock(block: Block, direction: 'up' | 'down') {
-    const indexDiff = direction === 'up' ? -1.5 : 1.5;
-    setContent((content) => {
-      const newBlocks = [...content.blocks].map((thisBlock) => {
-        return thisBlock.id === block.id
-          ? {...thisBlock, order: thisBlock.order + indexDiff}
-          : thisBlock;
-      });
-
-      const sortedContent = sortBlocks({
+  function moveBlock(
+    pageId: string,
+    parentBlockId: string | null,
+    tabId: string | null,
+    fromIndex: number,
+    toIndex: number,
+  ) {
+    if (tabId) {
+      setContent((content) => ({
         ...content,
-        blocks: newBlocks,
-      });
-
-      return sortedContent;
-    });
+        pages: content.pages.map((page) => {
+          if (page.id === pageId) {
+            return {
+              ...page,
+              blocks: page.blocks.map((block) => {
+                if (block.blockType === 'TabbedContent') {
+                  return {
+                    ...block,
+                    tabs: block.tabs.map((tab) => {
+                      if (tab.id === tabId) {
+                        return {
+                          ...tab,
+                          blocks: arrayMoveImmutable(
+                            tab.blocks,
+                            fromIndex,
+                            toIndex,
+                          ),
+                        };
+                      }
+                      return tab;
+                    }),
+                  };
+                }
+                return block;
+              }),
+            };
+          }
+          return page;
+        }),
+      }));
+    } else if (parentBlockId) {
+      setContent((content) => ({
+        ...content,
+        pages: content.pages.map((page) => {
+          if (page.id === pageId) {
+            return {
+              ...page,
+              blocks: page.blocks.map((block) => {
+                if (block.id === parentBlockId) {
+                  if (block.blockType === 'ProgressiveDisclosure') {
+                    return {
+                      ...block,
+                      blocks: arrayMoveImmutable(
+                        block.blocks,
+                        fromIndex,
+                        toIndex,
+                      ),
+                    };
+                  } else if (block.blockType === 'TabbedContent') {
+                    if (block.id === parentBlockId) {
+                      return {
+                        ...block,
+                        tabs: block.tabs.map((tab) => ({
+                          ...tab,
+                          blocks: arrayMoveImmutable(
+                            tab.blocks,
+                            fromIndex,
+                            toIndex,
+                          ),
+                        })),
+                      };
+                    }
+                  }
+                }
+                return block;
+              }),
+            };
+          }
+          return page;
+        }),
+      }));
+    } else if (pageId) {
+      setContent((content) => ({
+        ...content,
+        pages: content.pages.map((page) => {
+          if (page.id === pageId) {
+            return {
+              ...page,
+              blocks: arrayMoveImmutable(page.blocks, fromIndex, toIndex),
+            };
+          }
+          return page;
+        }),
+      }));
+    }
   }
 
-  function handleBlockChange(updatedBlock: Block) {
-    setContent((content) => ({
-      ...content,
-      blocks: content.blocks.map((block) =>
-        block.id === updatedBlock.id ? updatedBlock : block,
-      ),
-    }));
-  }
+  const handleBlockChange = useCallback(
+    (newBlock: Block) => {
+      if (tabId) {
+        setContent((content) => ({
+          ...content,
+          pages: content.pages.map((page) => {
+            if (page.id === pageId) {
+              return {
+                ...page,
+                blocks: page.blocks.map((block) => {
+                  if (block.blockType === 'TabbedContent') {
+                    return {
+                      ...block,
+                      tabs: block.tabs.map((tab) => {
+                        if (tab.id === tabId) {
+                          return {
+                            ...tab,
+                            blocks: tab.blocks.map((block) => {
+                              if (block.id === newBlock.id) {
+                                return newBlock;
+                              }
+                              return block;
+                            }),
+                          };
+                        }
+                        return tab;
+                      }),
+                    };
+                  }
+                  return block;
+                }),
+              };
+            }
+            return page;
+          }),
+        }));
+      } else if (parentBlockId) {
+        setContent((content) => ({
+          ...content,
+          pages: content.pages.map((page) => {
+            if (page.id === pageId) {
+              return {
+                ...page,
+                blocks: page.blocks.map((block) => {
+                  if (block.id === parentBlockId) {
+                    if (block.blockType === 'ProgressiveDisclosure') {
+                      return {
+                        ...block,
+                        blocks: block.blocks.map((block) => {
+                          if (block.id === newBlock.id) {
+                            return newBlock;
+                          }
+                          return block;
+                        }),
+                      };
+                    } else if (block.blockType === 'TabbedContent') {
+                      if (block.id === parentBlockId) {
+                        return {
+                          ...block,
+                          tabs: block.tabs.map((tab) => ({
+                            ...tab,
+                            blocks: tab.blocks.map((block) => {
+                              if (block.id === newBlock.id) {
+                                return newBlock;
+                              }
+                              return block;
+                            }),
+                          })),
+                        };
+                      }
+                    }
+                  }
+                  return block;
+                }),
+              };
+            }
+            return page;
+          }),
+        }));
+      } else if (pageId) {
+        setContent((content) => ({
+          ...content,
+          pages: content.pages.map((page) => {
+            if (page.id === pageId) {
+              return {
+                ...page,
+                blocks: page.blocks.map((block) => {
+                  if (block.id === newBlock.id) {
+                    return newBlock;
+                  }
+                  return block;
+                }),
+              };
+            }
+            return page;
+          }),
+        }));
+      }
+    },
+    [tabId, parentBlockId, pageId],
+  );
 
   const getBlockEditor = (block: Block) => {
     switch (block.blockType) {
@@ -876,17 +1142,25 @@ function BlockEditor({
     assertUnreachable(block);
   };
 
+  // pageId,
+  // block,
+  // parentBlockId,
+  // tabId,
+  // isFirst,
+  // isLast,
+
   return (
     <>
       <AlphaCard key={block.id}>
         <div className={styles.BlockActions}>
-          {block.order}
           <ButtonGroup>
             <Button
               plain
               icon={ArrowUpMinor}
               size="slim"
-              onClick={() => moveBlock(block, 'up')}
+              onClick={() =>
+                moveBlock(pageId, parentBlockId, tabId, index, index - 1)
+              }
               aria-label="Move block up"
               disabled={isFirst}
             ></Button>
@@ -894,7 +1168,9 @@ function BlockEditor({
               plain
               icon={ArrowDownMinor}
               size="slim"
-              onClick={() => moveBlock(block, 'down')}
+              onClick={() =>
+                moveBlock(pageId, parentBlockId, tabId, index, index - 1)
+              }
               aria-label="Move block down"
               disabled={isLast}
             ></Button>
@@ -902,7 +1178,9 @@ function BlockEditor({
               plain
               icon={DeleteMinor}
               size="slim"
-              onClick={() => deleteBlock(block.id)}
+              onClick={() =>
+                deleteBlock(block.id, pageId, parentBlockId, tabId)
+              }
               aria-label="Delete block"
             ></Button>
           </ButtonGroup>
@@ -914,85 +1192,115 @@ function BlockEditor({
       <BlockAdder
         pageId={pageId}
         parentBlockId={parentBlockId}
-        order={block.order + 1}
         tabId={tabId}
+        index={index + 1}
       />
     </>
   );
-}
-
-function sortBlocks(content: Content): Content {
-  const delimiter = '$';
-
-  let groups: {
-    [hash: string]: Block[];
-  } = {};
-
-  const getHash = (pageId: string, block: Block) =>
-    `${pageId}${delimiter}${block.parentBlockId || 'null'}`;
-
-  content.pages.forEach(({id, blockIds}) => {
-    blockIds.forEach((blockId) => {
-      const block = content.blocks.find((block) => block.id === blockId);
-      if (block) {
-        const hash = getHash(id, block);
-        groups[hash] = [...(groups[hash] || []), block];
-      }
-    });
-  });
-
-  Object.keys(groups).forEach((hash) => {
-    groups[hash] = groups[hash]
-      .sort((a, b) => a.order - b.order)
-      .map((block, index) => ({...block, order: index}));
-  });
-
-  let sortedBlocks: Block[] = [];
-
-  Object.keys(groups).forEach(
-    (hash) => (sortedBlocks = [...sortedBlocks, ...groups[hash]]),
-  );
-
-  return {...content, blocks: sortedBlocks};
 }
 
 function BlockAdder({
   pageId,
   parentBlockId,
   tabId,
-  order,
+  index,
 }: {
   pageId: string;
   parentBlockId: string | null;
   tabId: string | null;
-  order: number;
+  index: number;
 }) {
   const {setContent} = useContext(ContentContext);
   const [adderIsVisible, setAdderIsVisible] = useState(false);
 
-  function addBlock(blockType: BlockType, order: number) {
-    let newBlock: Block = {
-      ...getEmptyBlock(blockType, parentBlockId, tabId),
-      // -0.5 squeezes the block in between the indented order
-      // and the previous one. The sorting function will then
-      // clean up the order values.
-      order: order - 0.5,
-    };
+  const addBlock = useCallback(
+    (blockType: BlockType) => {
+      let newBlock: Block = getEmptyBlock(blockType, parentBlockId, tabId);
 
-    setContent((content) => {
-      return sortBlocks({
-        ...content,
-        pages: [
-          ...content.pages.map((page) =>
-            page.id === pageId
-              ? {...page, blockIds: [...page.blockIds, newBlock.id]}
-              : page,
-          ),
-        ],
-        blocks: [...content.blocks, newBlock],
-      });
-    });
-  }
+      if (tabId) {
+        setContent((content) => ({
+          ...content,
+          pages: content.pages.map((page) => {
+            if (page.id === pageId) {
+              return {
+                ...page,
+                blocks: page.blocks.map((block) => {
+                  if (
+                    block.id === parentBlockId &&
+                    block.blockType === 'TabbedContent'
+                  ) {
+                    return {
+                      ...block,
+                      tabs: block.tabs.map((tab) => {
+                        if (tab.id === tabId) {
+                          return {
+                            ...tab,
+                            blocks: [
+                              ...tab.blocks.slice(0, index),
+                              newBlock,
+                              ...tab.blocks.slice(index),
+                            ],
+                          };
+                        }
+                        return tab;
+                      }),
+                    };
+                  }
+                  return block;
+                }),
+              };
+            }
+            return page;
+          }),
+        }));
+      } else if (parentBlockId) {
+        setContent((content) => ({
+          ...content,
+          pages: content.pages.map((page) => {
+            if (page.id === pageId) {
+              return {
+                ...page,
+                blocks: page.blocks.map((block) => {
+                  if (block.id === parentBlockId) {
+                    if (block.blockType === 'ProgressiveDisclosure') {
+                      return {
+                        ...block,
+                        blocks: [
+                          ...block.blocks.slice(0, index),
+                          newBlock,
+                          ...block.blocks.slice(index),
+                        ],
+                      };
+                    }
+                  }
+                  return block;
+                }),
+              };
+            }
+            return page;
+          }),
+        }));
+      } else {
+        setContent((content) => ({
+          ...content,
+          pages: content.pages.map((page) => {
+            if (page.id === pageId) {
+              return {
+                ...page,
+                blocks: [
+                  ...page.blocks.slice(0, index),
+                  newBlock,
+                  ...page.blocks.slice(index),
+                ],
+              };
+            }
+            return page;
+          }),
+        }));
+      }
+    },
+    [tabId, parentBlockId, pageId, index],
+  );
 
   return (
     <Popover
@@ -1015,7 +1323,7 @@ function BlockAdder({
           ...blockTypes.map((blockType) => ({
             content: blockType,
             onAction: () => {
-              addBlock(blockType, order);
+              addBlock(blockType);
               setAdderIsVisible(false);
             },
             icon: PlusMinor,
@@ -1046,6 +1354,7 @@ function MarkdownBlockEditor({
       placeholder={`# Heading
 
 Lorem ipsum dolor...`}
+      maxHeight={800}
     />
   );
 }
@@ -1190,6 +1499,7 @@ function TabbedContentEditor({
         {
           id: nanoid(),
           label: 'New tab',
+          blocks: [],
         },
       ],
     });
@@ -1239,7 +1549,11 @@ function TabbedContentEditor({
               tabId={selectedTab.id}
             />
 
-            <Button destructive onClick={() => deleteTab(selectedTabIndex)}>
+            <Button
+              destructive
+              onClick={() => deleteTab(selectedTabIndex)}
+              outline
+            >
               Delete tab
             </Button>
           </FormLayout>

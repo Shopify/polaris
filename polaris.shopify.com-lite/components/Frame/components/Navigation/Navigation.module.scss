@@ -11,25 +11,22 @@
   border-right: 1px solid var(--color-border);
   @include custom-scrollbars;
 
+  > ul > li > span > a {
+    font-size: 1.1rem;
+  }
+
   ul ul {
+    margin-top: 0.15rem;
     font-size: 0.9rem;
-    padding-bottom: 1rem;
-    > li {
-      &:before {
-        content: '';
-        display: block;
-        float: left;
-        width: 6px;
-        height: 6px;
-        background: rgba(255, 255, 255, 0.5);
-        margin-right: 0.5rem;
-        border-radius: 1px;
-        position: relative;
-        top: 9px;
-      }
+    padding-bottom: 1.5rem;
+    font-weight: var(--font-weight-heavy);
+
+    a {
+      padding: 0.1rem 0;
     }
+
     ul {
-      padding-left: 1.1rem;
+      padding-left: 0.75rem;
     }
   }
 
@@ -45,9 +42,9 @@
 .Logo {
   display: flex;
   align-items: center;
-  background: url(/images/shopify-logo-bw.svg) no-repeat;
+  background: url(/images/shopify-logo.svg) no-repeat;
   padding-left: 34px;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   background-size: auto 28px;
   height: 28px;
   font-size: 1.15rem;
@@ -59,14 +56,17 @@
   justify-content: space-between;
 
   &.isCurrent {
-    color: vaR(--color-link);
+    color: var(--color-text-strong);
   }
 
   a {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
     flex: 1;
 
     &:hover {
-      color: var(--color-link);
+      color: var(--color-text-strong);
     }
   }
 }

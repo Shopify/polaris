@@ -23,11 +23,17 @@ export async function POST(req: NextRequest) {
 }
 
 function stringify(obj: Object): string {
-  return (
-    JSON.stringify(obj, null, 2)
-      // .replace(`},\n  {`, `},\n\n  {`)
-      .replace(/"([a-z]+)":/gi, '$1:')
-  );
+  function escape(str: string) {
+    return str.replace(/\\\`/g, '`').replace(/`/g, '\\`');
+  }
+  let string = JSON.stringify(obj, null, 2)
+    .replace(/},\n  {/g, `},\n\n  {`)
+    .replace(/"([a-z]+)":/gi, '$1:')
+    .replaceAll(/content: "([^"]+)"\n/g, (match, str) => {
+      return `content: \`${escape(str.replace(/\\n/g, '\n'))}\`\n`;
+    });
+
+  return string;
 }
 
 function createTsFileContent(content: Content): string {
@@ -39,11 +45,7 @@ function createTsFileContent(content: Content): string {
 */
 
 const pages: Content['pages'] = ${stringify(content.pages)};
-
-const blocks: Content['blocks'] = ${stringify(content.blocks)};
-
 const images: Content['images'] = ${stringify(content.images)};
-
-export const content: Content = { pages, blocks, images };
+export const content: Content = { pages, images };
 `;
 }

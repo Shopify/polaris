@@ -3,7 +3,7 @@ import {
   Image,
   Page,
   ResolvedPage,
-  ResolvedPageWithBlocks,
+  ResolvedPageWithoutBlocks,
 } from './types';
 
 export function getPageByPath(content: Content, path: string): Page | null {
@@ -29,14 +29,14 @@ export function getResolvedPage(content: Content, page: Page): ResolvedPage;
 export function getResolvedPage(
   content: Content,
   page: Page,
-  includeBlocks: true,
-): ResolvedPageWithBlocks;
+  removeBlocks: true,
+): ResolvedPageWithoutBlocks;
 
 export function getResolvedPage(
   content: Content,
   page: Page,
-  includeBlocks?: true,
-): ResolvedPage | ResolvedPageWithBlocks {
+  removeBlocks?: true,
+): ResolvedPage | ResolvedPageWithoutBlocks {
   let images: Image[] = [];
 
   if (page.thumbnailImageId) {
@@ -48,30 +48,29 @@ export function getResolvedPage(
     }
   }
 
-  content.blocks
-    .filter((block) => page.blockIds.includes(block.id))
-    .forEach((block) => {
-      switch (block.blockType) {
-        case 'Image': {
-          const image = content.images.find(
-            (image) => image.id === block.imageId,
-          );
-          if (image) {
-            images.push(image);
-          }
-          break;
+  // TODO: Make recursive
+  page.blocks.forEach((block) => {
+    switch (block.blockType) {
+      case 'Image': {
+        const image = content.images.find(
+          (image) => image.id === block.imageId,
+        );
+        if (image) {
+          images.push(image);
         }
-        case 'TextImage': {
-          const image = content.images.find(
-            (image) => image.id === block.imageId,
-          );
-          if (image) {
-            images.push(image);
-          }
-          break;
-        }
+        break;
       }
-    });
+      case 'TextImage': {
+        const image = content.images.find(
+          (image) => image.id === block.imageId,
+        );
+        if (image) {
+          images.push(image);
+        }
+        break;
+      }
+    }
+  });
 
   const resolvedPage: ResolvedPage = {
     ...page,
@@ -80,18 +79,15 @@ export function getResolvedPage(
     images,
   };
 
-  if (includeBlocks) {
-    const blocks = content.blocks.filter((block) =>
-      page.blockIds.includes(block.id),
-    );
-    const resolvedPageWithBlocks: ResolvedPageWithBlocks = {
-      ...resolvedPage,
-      blocks,
+  if (removeBlocks) {
+    const {blocks, ...pageWithoutBlocks} = resolvedPage;
+    const resolvedPageWithoutBlocks: ResolvedPageWithoutBlocks = {
+      ...pageWithoutBlocks,
     };
-    return resolvedPageWithBlocks;
-  } else {
-    return resolvedPage;
+    return resolvedPageWithoutBlocks;
   }
+
+  return resolvedPage;
 }
 
 export function getImageDimensions(
@@ -137,6 +133,7 @@ export function getBreadcrumbs(
   );
   return breadcrumbs;
 }
+
 type ValueOrArray<T> = T | ValueOrArray<T>[];
 export type ClassName = ValueOrArray<string | boolean | null | undefined>;
 
@@ -151,3 +148,32 @@ export const toPascalCase = (str: string): string =>
   (str.match(/[a-zA-Z0-9]+/g) || [])
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
     .join('');
+
+function arrayMoveMutable<T>(
+  array: Array<T>,
+  fromIndex: number,
+  toIndex: number,
+) {
+  const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;
+
+  if (startIndex >= 0 && startIndex < array.length) {
+    const endIndex = toIndex < 0 ? array.length + toIndex : toIndex;
+
+    const [item] = array.splice(fromIndex, 1);
+    array.splice(endIndex, 0, item);
+  }
+}
+
+export function arrayMoveImmutable<T>(
+  array: Array<T>,
+  fromIndex: number,
+  toIndex: number,
+) {
+  const newArray = [...array];
+  arrayMoveMutable(newArray, fromIndex, toIndex);
+  return newArray;
+}
+
+export function uppercaseFirst(string: string): string {
+  return string[0].toUpperCase() + string.slice(1);
+}
