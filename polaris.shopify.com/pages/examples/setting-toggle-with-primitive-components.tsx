@@ -6,11 +6,13 @@ import {
   Button,
   Badge,
   AlphaStack,
+  useBreakpoints,
 } from '@shopify/polaris';
+import {CircleInformationMajor} from '@shopify/polaris-icons';
 import {useState, useCallback, useEffect} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function WithPrimitiveComponents() {
+export function WithPrimitiveComponents() {
   const [enabled, setEnabled] = useState(true);
 
   const handleToggle = useCallback(() => setEnabled((enabled) => !enabled), []);
@@ -20,7 +22,7 @@ function WithPrimitiveComponents() {
   const toggleId = 'setting-toggle-uuid';
   const descriptionId = 'setting-toggle-description-uuid';
 
-  const isNavigationCollapsed = useMedia('screen and (max-width: 767.95px)');
+  const {mdDown} = useBreakpoints();
 
   const badgeStatus = enabled ? 'success' : undefined;
 
@@ -39,16 +41,21 @@ function WithPrimitiveComponents() {
     </Badge>
   );
 
+  const helpLink = <Button plain icon={CircleInformationMajor} />;
+
   const settingTitle = title ? (
     <Inline gap="2" wrap={false}>
-      <label htmlFor={toggleId}>
-        <Inline gap="2" align="start" blockAlign="baseline" wrap={false}>
+      <Inline gap="2" align="start" blockAlign="baseline">
+        <label htmlFor={toggleId}>
           <Text variant="headingMd" as="h6">
             {title}
           </Text>
+        </label>
+        <Inline gap="2" align="center" blockAlign="center">
           {settingStatusMarkup}
+          {helpLink}
         </Inline>
-      </label>
+      </Inline>
     </Inline>
   ) : null;
 
@@ -68,7 +75,7 @@ function WithPrimitiveComponents() {
     <Box width="100%">
       <Inline gap="12" align="space-between" blockAlign="start" wrap={false}>
         {settingTitle}
-        {!isNavigationCollapsed ? (
+        {!mdDown ? (
           <Box minWidth="fit-content">
             <Inline align="end">{actionMarkup}</Inline>
           </Box>
@@ -82,7 +89,7 @@ function WithPrimitiveComponents() {
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
-      {isNavigationCollapsed ? (
+      {mdDown ? (
         <Box width="100%">
           <Inline align="start">{actionMarkup}</Inline>
         </Box>
@@ -105,30 +112,6 @@ function WithPrimitiveComponents() {
       </AlphaStack>
     </AlphaCard>
   );
-
-  function useMedia(media: string): boolean {
-    const [isActive, setIsActive] = useState(false);
-
-    useEffect(() => {
-      if (typeof window !== 'undefined') {
-        const mediaQueryList = window.matchMedia(media);
-
-        setIsActive(mediaQueryList.matches);
-
-        const listener = (evt: MediaQueryListEvent) => {
-          setIsActive(evt.matches);
-        };
-
-        mediaQueryList.addEventListener('change', listener);
-
-        return () => {
-          mediaQueryList.removeEventListener('change', listener);
-        };
-      }
-    }, [media]);
-
-    return isActive;
-  }
 }
 
 export default withPolarisExample(WithPrimitiveComponents);

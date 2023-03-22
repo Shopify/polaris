@@ -26,20 +26,39 @@ examples:
 
 ## Best practices
 
-The setting toggle component should be used when:
-
-- The setting is stand alone, and
-- There are only two binary options that are “On”/“Off”
-
-If the setting is dependent on other settings, uses progressive disclosure, or has options that are not a simple “On”/“Off”, use a different UI element such as [Checkbox](https://polaris.shopify.com/components/selection-and-input/checkbox) or [Radio button](https://polaris.shopify.com/components/selection-and-input/radio-button).
-
 Settings toggles should:
 
+- Include a title
 - Include body content describing the experience when the setting is turned on.
 - Use a badge to clearly indicate whether the setting is turned on or off.
 - Use a default button for both states. A primary button can be misinterpreted as the setting being turned on.
 
 If more information is needed to explain setting details or functionality, include the [Info](https://polaris.shopify.com/icons?icon=InfoMinor&q=) icon and link to help content or related documentation.
+
+### Usage
+
+The setting toggle component should only be used when:
+
+- The setting is stand alone
+- There are two binary options that are “On”/“Off”
+
+If the setting is dependent on other settings, uses progressive disclosure, or has options that are not a simple “On”/“Off”, use a different UI element such as [Checkbox](https://polaris.shopify.com/components/selection-and-input/checkbox) or [Radio button](https://polaris.shopify.com/components/selection-and-input/radio-button).
+
+<!-- dodont -->
+
+#### Do
+
+Only include the actions Turn on/ Turn off.
+
+![Setting toggle do](/images/components/selection-and-input/setting-toggle/Do.png)
+
+#### Don’t
+
+Don't include additional settings or inputs.
+
+![Setting toggle dont](/images/components/selection-and-input/setting-toggle/Dont.png)
+
+<!-- end -->
 
 ---
 
