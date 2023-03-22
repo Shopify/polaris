@@ -22,7 +22,8 @@
     "get-props": "./scripts/get-props/src/get-props.ts",
     "get-style-props": "node ./scripts/get-style-props.mjs",
     "gen-assets": "yarn get-props && node scripts/gen-assets.mjs",
-    "gen-colors": "ts-node ./scripts/gen-colors.ts"
+    "gen-colors": "ts-node ./scripts/gen-colors.ts",
+    "visual-regression": "node scripts/visual-regression.mjs"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
@@ -74,6 +75,7 @@
     "@types/uuid": "^9.0.1",
     "@webref/css": "^6.8.3",
     "babel-plugin-preval": "^5.1.0",
+    "backstopjs": "^6.1.4",
     "camelcase": "^8.0.0",
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
@@ -82,6 +84,7 @@
     "eslint": "8.10.0",
     "eslint-config-next": "^13.0.0",
     "execa": "^6.1.0",
+    "fast-xml-parser": "^4.1.3",
     "frontmatter": "^0.0.3",
     "generact": "^0.4.0",
     "get-site-urls": "3.0.0-alpha.1",
@@ -90,14 +93,18 @@
     "js-yaml": "^4.1.0",
     "lodash.set": "^4.3.2",
     "marked": "^4.0.16",
+    "node-fetch": "^3.3.1",
     "ora": "^6.2.0",
     "p-map": "^5.5.0",
     "playroom": "^0.28.0",
+    "playwright-core": "^1.31.2",
     "puppeteer": "^16.0.0",
     "sass": "^1.49.9",
     "style-loader": "^3.3.1",
     "tiny-invariant": "^1.3.1",
+    "tmp": "^0.2.1",
     "ts-node": "^10.7.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "yargs": "^17.7.1"
   }
 }
