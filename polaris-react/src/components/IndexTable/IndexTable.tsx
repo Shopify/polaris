@@ -182,6 +182,19 @@ function IndexTableBase({
   const scrollingWithBar = useRef(false);
   const scrollingContainer = useRef(false);
   const lastSortedColumnIndex = useRef<number | undefined>(sortColumnIndex);
+  const renderAfterSelectEvent = useRef(false);
+  const lastSelectedItemsCount = useRef<number | 'All'>(0);
+  const hasSelected = useRef(false);
+
+  if (selectedItemsCount !== lastSelectedItemsCount.current) {
+    renderAfterSelectEvent.current = true;
+    lastSelectedItemsCount.current = selectedItemsCount;
+  }
+
+  if (!hasSelected.current && selectedItemsCount !== 0) {
+    hasSelected.current = true;
+  }
+
   const {
     bulkActionsIntersectionRef,
     tableMeasurerRef,
@@ -863,6 +876,8 @@ function IndexTableBase({
     index: number,
     direction: IndexTableSortDirection,
   ) {
+    renderAfterSelectEvent.current = false;
+    hasSelected.current = false;
     lastSortedColumnIndex.current = sortColumnIndex;
     onSort?.(index, direction);
   }
@@ -908,7 +923,9 @@ function IndexTableBase({
       const isCurrentlySorted = index === sortColumnIndex;
       const isPreviouslySorted =
         !isCurrentlySorted && index === lastSortedColumnIndex.current;
-
+      const isRenderAfterSelectEvent =
+        renderAfterSelectEvent.current ||
+        (!hasSelected.current && selectedItemsCount !== 0);
       const isAscending = sortDirection === 'ascending';
       let newDirection: IndexTableSortDirection = defaultSortDirection;
       let SourceComponent =
@@ -928,6 +945,7 @@ function IndexTableBase({
           className={classNames(
             styles.TableHeadingSortIcon,
             heading?.alignment === 'end' &&
+              !isRenderAfterSelectEvent &&
               styles['TableHeadingSortIcon-heading-align-end'],
             isCurrentlySorted && styles['TableHeadingSortIcon-visible'],
           )}
@@ -951,6 +969,7 @@ function IndexTableBase({
             heading?.alignment === 'end' &&
             styles['TableHeadingSortButton-heading-align-end-currently-sorted'],
           isPreviouslySorted &&
+            !isRenderAfterSelectEvent &&
             heading?.alignment === 'end' &&
             styles[
               'TableHeadingSortButton-heading-align-end-previously-sorted'
