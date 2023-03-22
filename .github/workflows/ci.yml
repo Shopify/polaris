@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
       - name: Free up space on GitHub image
         run: |
@@ -49,13 +51,13 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build packages
-        run: yarn build --filter=[main...${{ github.head_ref }}]
+        run: yarn build --filter=[HEAD^1]
 
       - name: Lint
-        run: yarn lint --filter=[main...${{ github.head_ref }}]
+        run: yarn lint --filter=[HEAD^1]
 
       - name: Type check
-        run: yarn type-check --filter=[main...${{ github.head_ref }}]
+        run: yarn type-check
 
       - name: Test
-        run: yarn test --filter=[main...${{ github.head_ref }}]
+        run: yarn test --filter=[HEAD^1]
