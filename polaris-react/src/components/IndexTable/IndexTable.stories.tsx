@@ -1861,7 +1861,7 @@ export function WithSortableHeadings() {
         onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
-          {title: 'Date'},
+          {title: 'Date', defaultSortDirection: 'ascending'},
           {
             alignment: 'end',
             id: 'order-count',

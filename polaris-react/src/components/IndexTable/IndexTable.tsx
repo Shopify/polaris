@@ -57,6 +57,11 @@ interface IndexTableHeadingBase {
   tooltipContent?: React.ReactNode;
   tooltipWidth?: Width;
   tooltipPersistsOnClick?: boolean;
+  /**
+   * The direction to sort the table rows on first click or keypress of this column heading.
+   * When not specified, the value from IndexTable.defaultSortDirection will be used.
+   */
+  defaultSortDirection?: IndexTableSortDirection;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -910,11 +915,12 @@ function IndexTableBase({
         !isCurrentlySorted && index === lastSortedColumnIndex.current;
 
       const isAscending = sortDirection === 'ascending';
-      let newDirection: IndexTableSortDirection = defaultSortDirection;
+
+      let newDirection: IndexTableSortDirection =
+        heading.defaultSortDirection ?? defaultSortDirection;
+
       let SourceComponent =
-        defaultSortDirection === 'ascending'
-          ? SortAscendingMajor
-          : SortDescendingMajor;
+        newDirection === 'ascending' ? SortAscendingMajor : SortDescendingMajor;
       if (isCurrentlySorted) {
         newDirection = isAscending ? 'descending' : 'ascending';
         SourceComponent =
@@ -985,7 +991,7 @@ function IndexTableBase({
 
       const tooltipDirection = isCurrentlySorted
         ? sortDirection!
-        : defaultSortDirection;
+        : newDirection;
 
       const sortTooltipContent = sortToggleLabels[index][tooltipDirection];
 
