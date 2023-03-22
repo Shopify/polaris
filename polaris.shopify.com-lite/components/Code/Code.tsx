@@ -1,7 +1,6 @@
 'use client';
 
 import {ClipboardMinor} from '@shopify/polaris-icons';
-import {Tab} from '@headlessui/react';
 import {Fragment, useState} from 'react';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 
@@ -9,53 +8,35 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 // import Icon from '../Icon';
 import styles from './Code.module.scss';
 import {className} from '@/utils';
+import {CodeBlock, CodeBlockLanguage} from '@/types';
+import {Tabs, Tab} from '../Tabs';
 // import Tooltip from '../Tooltip';
 
 interface Props {
-  code: {
-    title: string;
-    code: string;
-    className?: string;
-  }[];
+  snippets: CodeBlock['snippets'];
 }
 
-function Code({code}: Props) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  if (code.length > 1) {
+function Code({snippets}: Props) {
+  if (snippets.length > 1) {
     return (
       <div className={className(styles.Code, 'dark-mode')}>
-        <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
-          <div className={styles.TopBar}>
-            <Tab.List className={styles.Tabs}>
-              {code.map(({title}) => (
-                <Tab key={title} className={styles.Tab}>
-                  {title}
-                </Tab>
-              ))}
-            </Tab.List>
-            {/* {code[selectedIndex] && (
-            <CopyButton code={code[selectedIndex].code} />
-          )} */}
-          </div>
-
-          <Tab.Panels>
-            {code.map(({title, code, className}) => (
-              <Tab.Panel key={title}>
-                <HighlightedCode code={code} className={className} />
-              </Tab.Panel>
-            ))}
-          </Tab.Panels>
-        </Tab.Group>
+        <Tabs tabs={snippets.map(({id, label}) => label)} boxed={false}>
+          {snippets.map(({id, code, language}) => (
+            <Tab>
+              <HighlightedCode code={code} language={language} />
+            </Tab>
+          ))}
+        </Tabs>
       </div>
     );
-  } else if (code.length === 1) {
+  } else if (snippets.length === 1) {
     return (
       <div className={className(styles.Code, 'dark-mode')}>
-        <div className={styles.TopBar}>
-          {/* <CopyButton code={code.code} /> */}
-        </div>
-        <HighlightedCode code={code[0].code} className={code[0].className} />
+        {/* <CopyButton code={code.code} /> */}
+        <HighlightedCode
+          code={snippets[0].code}
+          language={snippets[0].language}
+        />
       </div>
     );
   }
@@ -64,22 +45,22 @@ function Code({code}: Props) {
 
 function HighlightedCode({
   code,
-  className,
+  language,
 }: {
   code: string;
-  className?: string;
+  language: CodeBlockLanguage;
 }) {
-  const match = /language-(\w+)/.exec(className || '');
-  const lang = match ? match[1] : 'javascript';
   return (
-    <SyntaxHighlighter
-      // eslint-disable-next-line react/no-children-prop
-      children={String(code).replace(/\n$/, '')}
-      language={lang}
-      codeTagProps={{className: styles.ActualCode}}
-      useInlineStyles={false}
-      PreTag={'span'}
-    />
+    <pre>
+      <SyntaxHighlighter
+        // eslint-disable-next-line react/no-children-prop
+        children={String(code).replace(/\n$/, '')}
+        language={language}
+        codeTagProps={{className: styles.ActualCode}}
+        useInlineStyles={false}
+        PreTag={'span'}
+      />
+    </pre>
   );
 }
 

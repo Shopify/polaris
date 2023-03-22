@@ -98,10 +98,12 @@ export default function ComponentMeta({
                     {reactCode && (
                       <HeadlessTab.Panel className={styles.Code}>
                         <Code
-                          code={[
+                          snippets={[
                             {
-                              title: 'React',
+                              id: 'react',
+                              label: 'React',
                               code: reactCode,
+                              language: 'typescript',
                             },
                           ]}
                         />
@@ -109,9 +111,11 @@ export default function ComponentMeta({
                     )}
                     <HeadlessTab.Panel className={styles.Code}>
                       <Code
-                        code={[
+                        snippets={[
                           {
-                            title: 'HTML',
+                            id: 'html',
+                            label: 'HTML',
+                            language: 'html',
                             code: htmlCode,
                           },
                         ]}

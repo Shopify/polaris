@@ -36,6 +36,8 @@ import {
   DoDontBlock,
   TabbedContentBlock,
   ResolvedPage,
+  CodeBlockLanguage,
+  codeBlockLanguages,
 } from '@/types';
 import {
   ActionList,
@@ -110,7 +112,7 @@ function getEmptyBlock(
       const block: CodeBlock = {
         ...baseBlock,
         blockType,
-        code: {javascript: {title: 'Example', code: ''}},
+        snippets: [],
       };
       return block;
     }
@@ -265,6 +267,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       noIndex: false,
       hasSeparatorInNav: false,
       thumbnailImageId: null,
+      hasNewBadge: false,
     };
 
     setContent((content) => ({
@@ -1419,27 +1422,6 @@ function SandboxEmbedEditor({
   );
 }
 
-function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
-  // We only support javascript for now. The data structure is extensible
-  // so that we can add more language down the road if we like.
-  return (
-    <TextField
-      type="text"
-      multiline={true}
-      value={block.code.javascript.code}
-      onChange={(code) => {
-        onChange({
-          ...block,
-          // TODO: Allow multiple javascript tabs. Switch to array structure.
-          code: {javascript: {title: '', code}},
-        });
-      }}
-      label="Code"
-      autoComplete="off"
-    />
-  );
-}
-
 function ProgressiveDisclosureEditor({
   block,
   onChange,
@@ -1480,6 +1462,112 @@ function DoDontEditor({block, onChange}: BlockEditorProps<DoDontBlock>) {
         autoComplete="off"
         multiline={true}
       />
+    </div>
+  );
+}
+
+function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+
+  const addTab = () => {
+    onChange({
+      ...block,
+      snippets: [
+        ...block.snippets,
+        {
+          id: nanoid(),
+          label: 'New tab',
+          code: '',
+          language: 'typescript',
+        },
+      ],
+    });
+  };
+
+  const deleteTab = (index: number) => {
+    onChange({
+      ...block,
+      snippets: block.snippets.filter((_, i) => i !== index),
+    });
+  };
+
+  const selectedTab = block.snippets[selectedTabIndex];
+
+  return (
+    <div>
+      <button onClick={addTab}>+</button>
+
+      <Tabs
+        tabs={block.snippets.map((snippet) => ({
+          id: snippet.id,
+          content: snippet.label,
+        }))}
+        selected={selectedTabIndex}
+        onSelect={(index) => setSelectedTabIndex(index)}
+      >
+        {selectedTab && (
+          <FormLayout>
+            <TextField
+              type="text"
+              label="Snippet label"
+              value={selectedTab.label}
+              onChange={(label) => {
+                onChange({
+                  ...block,
+                  snippets: block.snippets.map((snippet, i) =>
+                    i === selectedTabIndex ? {...snippet, label} : snippet,
+                  ),
+                });
+              }}
+              autoComplete="off"
+            />
+
+            <Select
+              label="Layout"
+              options={codeBlockLanguages.map((language) => ({
+                label: language,
+                value: language,
+              }))}
+              value={selectedTab.language}
+              onChange={(language) => {
+                const typedLanguage = language as CodeBlockLanguage;
+                onChange({
+                  ...block,
+                  snippets: block.snippets.map((snippet, i) =>
+                    i === selectedTabIndex
+                      ? {...snippet, language: typedLanguage}
+                      : snippet,
+                  ),
+                });
+              }}
+            />
+
+            <TextField
+              type="text"
+              label="Code"
+              value={selectedTab.code}
+              onChange={(code) => {
+                onChange({
+                  ...block,
+                  snippets: block.snippets.map((snippet, i) =>
+                    i === selectedTabIndex ? {...snippet, code} : snippet,
+                  ),
+                });
+              }}
+              autoComplete="off"
+              multiline={true}
+            />
+
+            <Button
+              destructive
+              onClick={() => deleteTab(selectedTabIndex)}
+              outline
+            >
+              Delete tab
+            </Button>
+          </FormLayout>
+        )}
+      </Tabs>
     </div>
   );
 }

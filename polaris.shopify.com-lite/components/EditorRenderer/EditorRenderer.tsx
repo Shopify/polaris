@@ -1,7 +1,7 @@
 import Code from '../Code';
 import {
   Block,
-  CodeBlock,
+  CodeBlock as CodeblockType,
   DoDontBlock,
   Image,
   Image as ImageType,
@@ -124,15 +124,9 @@ function SandboxEmbedBlock({block}: {block: SandboxEmbedBlock}) {
   return <iframe src={url} width={600} height={400} />;
 }
 
-function CodeBlock({block}: {block: CodeBlock}) {
-  const code = Object.values(block.code);
-  return (
-    <pre>
-      <Code code={code} />
-    </pre>
-  );
+function CodeBlock({block}: {block: CodeblockType}) {
+  return <Code snippets={block.snippets} />;
 }
-
 function DoDontBock({block}: {block: DoDontBlock}) {
   return (
     <>

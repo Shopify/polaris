@@ -187,7 +187,9 @@ export default async function Home({params}: {params: {slug: string[]}}) {
         <main>
           {pageMeta?.type === 'components' && props ? (
             <>
-              <h2 id="props">Props</h2>
+              <h2 id="props" className={styles.PropsTableHeading}>
+                Props
+              </h2>
               <PropsTable props={props.props} references={props.references} />
             </>
           ) : (

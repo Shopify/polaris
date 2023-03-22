@@ -120,14 +120,17 @@ export interface SandboxEmbedBlock extends BaseBlock {
   embedUrl: string;
 }
 
+export const codeBlockLanguages = ['typescript', 'html', 'css'] as const;
+export type CodeBlockLanguage = typeof codeBlockLanguages[number];
+
 export interface CodeBlock extends BaseBlock {
   blockType: 'Code';
-  code: {
-    [language: string]: {
-      title: string;
-      code: string;
-    };
-  };
+  snippets: {
+    id: string;
+    label: string;
+    language: CodeBlockLanguage;
+    code: string;
+  }[];
 }
 
 export interface TextImageBlock extends BaseBlock {

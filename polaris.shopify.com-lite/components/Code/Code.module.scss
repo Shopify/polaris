@@ -2,10 +2,6 @@
 
 .Code {
   cursor: text;
-  background: var(--color-surface-code);
-  color: var(--color-text);
-  border-radius: 8px;
-  overflow-x: auto;
 }
 
 .TopBar {
@@ -82,7 +78,12 @@
 }
 
 .ActualCode {
+  margin-top: 1rem;
   display: block;
+  background: var(--color-surface-code);
+  color: var(--color-text);
+  border-radius: 8px;
+  overflow-x: auto;
   font-family: var(--font-family-mono);
   white-space: pre;
   padding: 1rem;

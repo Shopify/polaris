@@ -33,10 +33,11 @@ function Markdown({strip, children: text}: Props) {
                   <code>{children}</code>
                 ) : (
                   <Code
-                    code={[
+                    snippets={[
                       {
-                        className,
-                        title: 'Example',
+                        id: 'example',
+                        label: 'Example',
+                        language: 'typescript',
                         code: children.toString(),
                       },
                     ]}
