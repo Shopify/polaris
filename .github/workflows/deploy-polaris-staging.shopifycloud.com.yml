@@ -18,18 +18,39 @@ jobs:
         uses: prince-chrismc/check-actor-permissions-action@v1
         with:
           permission: write
-      - name: Get PR SHA
-        id: sha
+      - name: Validate pull request and get PR SHA
         uses: actions/github-script@v6
+        id: sha
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           result-encoding: string
           script: |
-            const pr = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-            });
-            return pr.data.head.sha
+            try {
+              const pullRequest = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+              })
+
+              // Pull request from fork
+              if (context.payload.repository.full_name !== pullRequest.data.head.repo.full_name) {
+                const errorMessage = '`/stageit` is not supported on pull requests from forked repositories.'
+
+                await github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: errorMessage,
+                })
+
+                core.setFailed(errorMessage)
+              } else {
+                return pullRequest.data.head.sha
+              }
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
       - name: Trigger deploy polaris-staging.shopifycloud.com
         uses: actions/github-script@v6
         with:
