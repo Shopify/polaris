@@ -25,20 +25,18 @@ description: Polaris layout components let you quickly build custom layouts with
 ---
 
 <div class="space-hero">
-  <img src="/images/foundations/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit">
+  <img src="/images/foundations/design/layout/layout-banner.png" alt="A visual example of a polaris unit">
 </div>
 
 ---
 
 ## What are layout components?
 
-![Illustrations of blocks representing each principle](/images/foundations/design/space/principles@2x.png)
-
 Polaris layout components define the structure and spacing of user interfaces in a fast and composable way. They create consistent layouts across all components and pages of an application. Developers can use these components to quickly create flexible pages and features without worrying about the underlying structure or CSS code.
 
 Each layout component encapsulates CSS styles commonly found in the Shopify admin. Passing different values to the component props will render the respective CSS style. 
 
-You can browse available layout components in the Layout and structure component section.
+You can browse available layout components in the [Layout and structure](/components/layout-and-structure) component section.
 
 ---
 
@@ -54,21 +52,26 @@ Reusability. Create new pages and components with these layout building blocks, 
 
 ## Guiding behaviors
 
-Layout components are intended to solve about 80% of layout use cases. But they won’t solve everything. For unique cases, leverage Polaris design tokens to write your own CSS styles. 
+Layout components are intended to solve about 80% of layout use cases. But they won’t solve everything. For unique cases, leverage (Polaris design tokens)[/tokens/colors] to write your own CSS styles. 
 
 When building, keep the following behaviors and limitations in mind.
 
 <div as="SideBySide">
 
-- <span>Layout components are single purpose, composable, and flexible. Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
-- <span>Layout components shouldn’t affect anything outside their borders. They should only impact components rendered inside of them. The exception is the Bleed component.</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
-- <span>Layout components have a default spacing of 0. There isn’t a perfect default, so add spacing with intention. For more information, refer to the Space guide.</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
-- <span>Layout component behaviors rely on Polaris tokens. Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a Polaris design token.</span> ![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
+- <span>Layout components are single purpose, composable, and flexible. Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.</span> ![web context bar](/images/foundations/design/layout/visual-single-purpose-composible-flexible.png)
+- <span>Layout components shouldn’t affect anything outside their borders. They should only impact components rendered inside of them. The exception is the (Bleed)[/components/layout-and-structure/bleed] component.</span> ![web context bar](/images/foundations/design/layout/visual-outside-borders.png)
+- <span>Layout components have a default spacing of 0. There isn’t a perfect default, so add spacing with intention. For more information, refer to the [Space](/design/space) guide.</span> ![web context bar](/images/foundations/design/layout/default-spacing.png)
+- <span>Layout component behaviors rely on Polaris tokens. Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a [Polaris design token](/tokens/colors).</span> ![web context bar](/images/foundations/design/layout/tokens.png)
 
 </div>
 
 ## Designing with layout components
-tktktk
+### Where should I start? 
+In the Polaris Figma component library, there is a section called “Layout” that displays the base for layout. The Polaris site also has written documentation for layout component. To ensure designs are fully responsive, refer to the layout breakpoints and examples in Figma and the Polaris [spacing documentation](/design/space).
+
+### Considerations as a designer:
+[Spacing](/design/space) can affect a layout when breakpoints come into play. On smaller screens, consider how elements will be tighter. On medium to large screens, cards will be side by side and have more room. All layout primitives use the breakpoint scale as well as tokens.
+
 
 ## Layout components in action
 
