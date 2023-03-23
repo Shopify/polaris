@@ -10,7 +10,7 @@ export interface AlphaButtonProps {
   children?: React.ReactNode;
 }
 
-const hasChildOfType = (children: React.ReactNode, type: any): boolean => {
+const hasChildOfType = (children: React.ReactNode, type: any) => {
   let hasType = false;
 
   React.Children.forEach(children, (child) => {
