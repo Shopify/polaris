@@ -193,11 +193,14 @@ export function Tooltip({
       onBlur={() => {
         handleClose();
         handleBlur();
-        persistOnClick && togglePersisting();
+
+        if (persistOnClick) {
+          togglePersisting();
+        }
       }}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
-      onMouseDown={persistOnClick && togglePersisting}
+      onMouseDown={persistOnClick ? togglePersisting : undefined}
       ref={setActivator}
       onKeyUp={handleKeyUp}
       className={wrapperClassNames}
