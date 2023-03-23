@@ -19,7 +19,7 @@ jobs:
 
       - name: Check for generic migrator comment in diff
         run: |
-          if git diff --name-only main...HEAD | grep -q '.*\.scss'; then
+          if git diff --name-only main...HEAD | grep -q "\.scss$"; then
             echo 'SCSS files were changed'
           else
             exit 0
