@@ -17,7 +17,8 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
-    "gen-assets": "node scripts/gen-assets.mjs && yarn get-props"
+    "gen-assets": "node scripts/gen-assets.mjs && yarn get-props",
+    "synapse:embeddings": "npx tsx ./.yalc/synapse/src/cli.ts embeddings"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
