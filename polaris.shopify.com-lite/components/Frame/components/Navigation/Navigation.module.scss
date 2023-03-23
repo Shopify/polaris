@@ -12,28 +12,47 @@
   @include custom-scrollbars;
 
   > ul > li > span > a {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    font-weight: var(--font-weight-heavy);
   }
 
   ul ul {
-    margin-top: 0.15rem;
+    margin-top: 0.2rem;
+    position: relative;
     font-size: 0.9rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
     font-weight: var(--font-weight-heavy);
+    padding-left: 1.2rem;
 
-    a {
-      padding: 0.1rem 0;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0.4rem;
+      bottom: 0.4rem;
+      left: 0;
+      width: 1px;
+      background: var(--color-border);
     }
 
-    ul {
-      padding-left: 0.75rem;
+    a {
+      padding: 0.05rem 0;
+      color: var(--color-text);
+    }
+  }
+
+  ul {
+    li.hasIcon {
+      > ul {
+        margin-left: 9px;
+      }
     }
   }
 
   li {
     &.hasSeparatorInNav {
-      margin-top: 1rem;
-      padding-top: 1rem;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
       border-top: 1px solid var(--color-border);
     }
   }
@@ -47,13 +66,14 @@
   margin-bottom: 2.5rem;
   background-size: auto 28px;
   height: 28px;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: var(--color-text-strong);
 }
 
 .NavItem {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   &.isCurrent {
     color: var(--color-text-strong);
@@ -64,9 +84,42 @@
     align-items: center;
     gap: 0.25rem;
     flex: 1;
+    padding: 0.1rem 0;
+    color: var(--color-text-strong);
 
     &:hover {
       color: var(--color-text-strong);
     }
+  }
+
+  .IconContainer {
+    margin-right: 0.2rem;
+  }
+}
+
+.ExpandCollapseButton {
+  transform: translateX(7px);
+  width: 24px;
+  height: 24px;
+  background-image: url(./PlusMinor.svg);
+  background-repeat: no-repeat;
+  background-size: 20px auto;
+  background-position: center center;
+  opacity: 0.3;
+
+  @media (prefers-color-scheme: dark) {
+    opacity: 0.5;
+  }
+
+  &[aria-expanded='true'] {
+    background-image: url(./MinusMinor.svg);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    filter: brightness(1000%) contrast(0);
+  }
+
+  ul ul & {
+    background-size: 14px auto;
   }
 }

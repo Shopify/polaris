@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as *;
+
 .Banner {
   padding: 1.25rem;
   display: flex;
@@ -28,7 +30,7 @@
 
   h2 {
     margin-top: 0;
-    // @include heading-3;
+    @include heading-4;
   }
 
   p {

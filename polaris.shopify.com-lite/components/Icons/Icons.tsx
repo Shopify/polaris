@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import styles from './Icons.module.scss';
 import * as PolarisIcons from '@shopify/polaris-icons';
 import iconMetadata from '@shopify/polaris-icons/metadata';
@@ -9,6 +8,8 @@ import {useRouter, useSearchParams} from 'next/navigation';
 import {useCopyToClipboard} from '@/hooks';
 import {toPascalCase, uppercaseFirst} from '@/utils';
 import Pill from '../Pill';
+import Button from '../Button';
+import {ButtonGroup} from '../Button/Button';
 
 interface Props {}
 
@@ -55,10 +56,21 @@ function Icons({}: Props) {
 }
 
 function IconItem({icon}: {icon: typeof iconMetadata[number]}) {
-  const Icon = PolarisIcons[icon.id as keyof typeof PolarisIcons];
   const [copySVGToClipbard, didJustCopySVG] = useCopyToClipboard();
   const [copyReactCodeToClipbard, didJustCopyReactCode] = useCopyToClipboard();
+  const [didJustDownload, setDidJustDownload] = useState(false);
+
+  const Icon = PolarisIcons[icon.id as keyof typeof PolarisIcons];
   const id = `${icon.name} ${icon.set}`.replace(/ /g, '-');
+
+  useEffect(() => {
+    if (didJustDownload) {
+      const timeout = setTimeout(() => {
+        setDidJustDownload(false);
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [didJustDownload]);
 
   function copySVG() {
     const svg = document.getElementById(id)?.querySelector('svg')?.outerHTML;
@@ -73,10 +85,14 @@ function IconItem({icon}: {icon: typeof iconMetadata[number]}) {
   }
 
   function download() {
-    const svg = document.getElementById(id)?.querySelector('svg')?.outerHTML;
+    setDidJustDownload(true);
+    const svg = document.getElementById(id)?.querySelector('svg');
+
     if (svg) {
+      svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      const svgString = svg.outerHTML;
       const fileName = `${toPascalCase(`${icon.name} ${icon.set}`)}.svg`;
-      const blob = new Blob([svg]);
+      const blob = new Blob([svgString]);
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.download = fileName;
@@ -87,18 +103,36 @@ function IconItem({icon}: {icon: typeof iconMetadata[number]}) {
 
   return (
     <div key={icon.id} className={styles.Icon} id={id}>
-      <Icon width={32} height={32} />
+      <div className={styles.IconWrapper}>
+        <Icon width={32} height={32} />
+      </div>
       <h2>
         {icon.name} <Pill label={uppercaseFirst(icon.set)} />
       </h2>
       <p>{icon.description}</p>
-      <button onClick={copyReactCode}>
-        {didJustCopyReactCode ? 'Copied' : 'Copy React code'}
-      </button>
-      <button onClick={copySVG}>
-        {didJustCopySVG ? 'Copied' : 'Copy SVG'}
-      </button>
-      <button onClick={download}>Download</button>
+      <ButtonGroup>
+        <Button
+          onClick={copyReactCode}
+          label="React"
+          ariaLabel="Copy React code"
+          didJustCopy={didJustCopyReactCode}
+          icon="copy"
+        ></Button>
+        <Button
+          onClick={copySVG}
+          label="SVG"
+          ariaLabel="Copy SVG"
+          didJustCopy={didJustCopySVG}
+          icon="copy"
+        />
+        <Button
+          onClick={download}
+          label=""
+          ariaLabel="Download"
+          didJustDownload={didJustDownload}
+          icon="download"
+        />
+      </ButtonGroup>
     </div>
   );
 }

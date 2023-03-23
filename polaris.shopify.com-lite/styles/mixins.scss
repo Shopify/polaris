@@ -1,5 +1,8 @@
 @mixin heading-1 {
-  font-size: 4rem;
+  font-size: 2.75rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.05rem;
   color: var(--color-text-strong);
 }
 
@@ -18,23 +21,27 @@
 }
 
 @mixin heading-4 {
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
   font-size: 1.05rem;
   color: var(--color-text-strong);
 }
 
 @mixin lede {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   margin-bottom: 1.75rem;
-  font-weight: var(--font-weight-heavy);
   // TODO: This feels bad
   max-width: 46rem;
+
+  a {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
 }
 
 @mixin custom-scrollbars {
   &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
   }
 
   &::-webkit-scrollbar-track {

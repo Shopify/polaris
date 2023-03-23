@@ -1,9 +1,109 @@
 .Pill {
-  background: #3232c6;
+  position: relative;
+  display: inline-block;
+  background: var(--color-border);
   color: var(--color-text-strong);
-  font-size: 0.825rem;
-  font-weight: var(--font-weight-heavy);
+  font-size: 0.825rem !important;
+  font-weight: var(--font-weight-heavy) !important;
   line-height: 1;
   border-radius: 8px;
   padding: 0.25rem 0.3rem;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.075);
+  text-decoration: none !important;
+  color: var(--color-text-strong) !important;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    aspect-ratio: 1 / 1;
+    // background-size: 13px auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.9;
+
+    @media (prefers-color-scheme: dark) {
+      filter: invert(1);
+      opacity: 1;
+    }
+  }
+
+  // Should cover all items in 'const pagesWithIcons'
+  &[data-style='Component'],
+  &[data-style='Components'],
+  &[data-style='Pattern'],
+  &[data-style='Patterns'],
+  &[data-style='Token'],
+  &[data-style='Tokens'],
+  &[data-style='Icon'],
+  &[data-style='Icons'] {
+    padding-left: 1.25rem;
+    padding-right: 0.35rem;
+  }
+
+  &[data-style='Component'],
+  &[data-style='Components'] {
+    background-color: var(--color-entity-components);
+    &:before {
+      background-image: url(./icon-components.svg);
+    }
+  }
+
+  &[data-style='Pattern'],
+  &[data-style='Patterns'] {
+    background-color: var(--color-entity-patterns);
+    &:before {
+      background-image: url(./icon-patterns.svg);
+    }
+  }
+
+  &[data-style='Token'],
+  &[data-style='Tokens'] {
+    background-color: var(--color-entity-tokens);
+    &:before {
+      background-image: url(./icon-tokens.svg);
+    }
+  }
+
+  &[data-style='Icon'],
+  &[data-style='Icons'] {
+    background-color: var(--color-entity-icons);
+    &:before {
+      background-image: url(./icon-icons.svg);
+    }
+  }
+
+  &[data-style='Success'],
+  &[data-style='New'] {
+    background-color: var(--color-status-success);
+  }
+
+  &[data-style='Beta'],
+  &[data-style='Information'] {
+    background-color: var(--color-status-information);
+  }
+
+  &[data-style='Alpha'],
+  &[data-style='Warning'] {
+    background-color: var(--color-status-warning);
+  }
+
+  &[data-style='Deprecated'],
+  &[data-style='Critical'] {
+    background-color: var(--color-status-critical);
+  }
+
+  &.asIcon {
+    --size: 22px;
+    display: block;
+    padding: 0;
+    min-width: var(--size);
+    max-width: var(--size);
+    min-height: var(--size);
+    max-height: var(--size);
+    background-position: center center;
+  }
 }

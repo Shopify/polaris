@@ -1,4 +1,4 @@
-import {ResolvedPage, ResolvedPageWithoutBlocks} from '@/types';
+import {ResolvedPageWithoutBlocks} from '@/types';
 import Link from 'next/link';
 import ImageRenderer from '../ImageRenderer';
 import Markdown from '../Markdown';
@@ -28,7 +28,7 @@ function ChildpageListing({pages}: Props) {
                 style={{
                   aspectRatio: '16/9',
                   background: `var(--color-surface-subdued)`,
-                  borderRadius: 8,
+                  borderRadius: 16,
                 }}
               />
             )}
@@ -36,7 +36,10 @@ function ChildpageListing({pages}: Props) {
               {page.title}{' '}
               {page.pageMeta?.type === 'components' &&
                 page.pageMeta.lifeCyclePhase !== 'Stable' && (
-                  <Pill label={page.pageMeta.lifeCyclePhase} />
+                  <Pill
+                    label={page.pageMeta.lifeCyclePhase}
+                    style={page.pageMeta.lifeCyclePhase.toLowerCase()}
+                  />
                 )}
             </h3>
             <Markdown strip>{page.excerpt}</Markdown>

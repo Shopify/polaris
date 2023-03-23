@@ -160,6 +160,10 @@ export default async function Home({params}: {params: {slug: string[]}}) {
     );
   }
 
+  if (slug && slug.length === 2 && slug[0] === 'tokens') {
+    return <p>Tokens</p>;
+  }
+
   const childPages = await loadChildPages(page);
   const {pageMeta} = page;
   const props =
@@ -259,7 +263,6 @@ function PageWrapper({
 
 export async function generateStaticParams() {
   const pages = content.pages.map((page) => getResolvedPage(content, page));
-
   return pages.map((page) => ({
     slugs: page.breadcrumbs.map((breadcrumb) => breadcrumb.slug),
   }));

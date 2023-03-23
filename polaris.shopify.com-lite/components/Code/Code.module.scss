@@ -1,80 +1,18 @@
 @use '../../styles/mixins.scss' as *;
 
 .Code {
+  position: relative;
   cursor: text;
 }
 
-.TopBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: var(--border);
+.CopyButtonWrapper {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
 }
 
-.Tabs {
-  padding-left: 1rem;
-  display: flex;
-
-  .Tab {
-    padding-top: 0.66rem;
-    padding-bottom: 0.66rem;
-    border-radius: var(--border-radius-300);
-    background: transparent;
-    font-size: var(--font-size-100);
-    color: var(--text-subdued);
-  }
-
-  button.Tab {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    color: var(--text-strong);
-
-    &[aria-selected='true'] {
-      position: relative;
-
-      &:not(:focus-visible) {
-        &:after {
-          content: '';
-          display: block;
-          position: absolute;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background: var(--text-strong);
-          height: 3px;
-          border-radius: var(--border-radius-200) var(--border-radius-200) 0 0;
-        }
-      }
-    }
-  }
-
-  &:focus-visible {
-    box-shadow: var(--focus-outline);
-  }
-}
-
-.CopyButton {
-  padding: 0.5rem 1rem;
-  background: transparent;
-  border-radius: var(--border-radius-200);
-  opacity: 0.5;
-  display: flex;
-  align-items: center;
-
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  &:focus-visible {
-    box-shadow: none;
-    opacity: 1;
-  }
+.HighlightedCode {
+  position: relative;
 }
 
 .ActualCode {
@@ -87,8 +25,7 @@
   font-family: var(--font-family-mono);
   white-space: pre;
   padding: 1rem;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: var(--font-size-small);
   overflow: auto;
   max-height: 50rem;
   @include custom-scrollbars;

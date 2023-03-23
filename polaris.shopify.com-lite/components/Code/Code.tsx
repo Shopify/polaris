@@ -7,9 +7,11 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 // import {useCopyToClipboard} from '../../utils/hooks';
 // import Icon from '../Icon';
 import styles from './Code.module.scss';
-import {className} from '@/utils';
 import {CodeBlock, CodeBlockLanguage} from '@/types';
 import {Tabs, Tab} from '../Tabs';
+import Button from '../Button';
+import {useCopyToClipboard} from '@/hooks';
+import {className} from '@/utils';
 // import Tooltip from '../Tooltip';
 
 interface Props {
@@ -19,11 +21,13 @@ interface Props {
 function Code({snippets}: Props) {
   if (snippets.length > 1) {
     return (
-      <div className={className(styles.Code, 'dark-mode')}>
-        <Tabs tabs={snippets.map(({id, label}) => label)} boxed={false}>
+      <div className={styles.Code}>
+        <Tabs tabs={snippets.map(({label}) => label)} boxed={false}>
           {snippets.map(({id, code, language}) => (
-            <Tab>
-              <HighlightedCode code={code} language={language} />
+            <Tab key={id}>
+              <div className="dark-mode">
+                <HighlightedCode code={code} language={language} />
+              </div>
             </Tab>
           ))}
         </Tabs>
@@ -32,7 +36,6 @@ function Code({snippets}: Props) {
   } else if (snippets.length === 1) {
     return (
       <div className={className(styles.Code, 'dark-mode')}>
-        {/* <CopyButton code={code.code} /> */}
         <HighlightedCode
           code={snippets[0].code}
           language={snippets[0].language}
@@ -51,39 +54,36 @@ function HighlightedCode({
   language: CodeBlockLanguage;
 }) {
   return (
-    <pre>
-      <SyntaxHighlighter
-        // eslint-disable-next-line react/no-children-prop
-        children={String(code).replace(/\n$/, '')}
-        language={language}
-        codeTagProps={{className: styles.ActualCode}}
-        useInlineStyles={false}
-        PreTag={'span'}
-      />
-    </pre>
+    <div className={styles.HighlightedCode}>
+      <CopyButton code={code} />
+      <pre>
+        <SyntaxHighlighter
+          // eslint-disable-next-line react/no-children-prop
+          children={String(code).replace(/\n$/, '')}
+          language={language}
+          codeTagProps={{className: styles.ActualCode}}
+          useInlineStyles={false}
+          PreTag={'span'}
+        />
+      </pre>
+    </div>
   );
 }
 
-// export function CopyButton({code}: {code: string}) {
-//   const [copy, didJustCopy] = useCopyToClipboard(code);
+export function CopyButton({code}: {code: string}) {
+  const [copy, didJustCopy] = useCopyToClipboard();
 
-//   return (
-//     <div className={styles.CopyButtonWrapper}>
-//       <Tooltip
-//         ariaLabel="Copy to clipboard"
-//         renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
-//       >
-//         <button
-//           type="button"
-//           className={styles.CopyButton}
-//           onClick={copy}
-//           aria-label="Copy to clipboard"
-//         >
-//           <Icon source={ClipboardMinor} width={16} height={16} />
-//         </button>
-//       </Tooltip>
-//     </div>
-//   );
-// }
+  return (
+    <div className={styles.CopyButtonWrapper}>
+      <Button
+        label="Copy"
+        ariaLabel="Copy code"
+        icon="copy"
+        didJustCopy={didJustCopy}
+        onClick={() => copy(code)}
+      />
+    </div>
+  );
+}
 
 export default Code;

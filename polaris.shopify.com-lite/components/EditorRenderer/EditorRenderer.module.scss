@@ -4,7 +4,7 @@
   h1,
   h2,
   h3 {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   p,
@@ -79,7 +79,7 @@
       font-family: var(--font-family-mono);
       background: var(--color-surface-code);
       border-radius: 4px;
-      padding: 0.1rem 0.2rem;
+      padding: 0.15rem 0.2rem;
     }
   }
 
@@ -104,6 +104,7 @@
       // TODO: Add white-space: pre; but it requires
       // removing longform content from tables
     }
+
     tbody tr {
       &:last-child {
         td,
@@ -113,35 +114,13 @@
       }
     }
     th {
-      font-weight: var(--font-weight-heavy);
+      font-weight: var(--font-weight-bold);
     }
   }
 
   a {
     color: var(--color-link);
     text-decoration: underline;
-    text-underline-offset: 3px;
-    font-weight: var(--font-weight-body-links);
-  }
-
-  a[href^='/design'] {
-    background: orange;
-  }
-
-  a[href^='/content'] {
-    background: pink;
-  }
-
-  a[href^='/foundations'] {
-    background: mediumturquoise;
-  }
-
-  a[href^='/components'] {
-    background: yellow;
-  }
-
-  a[href^='/patterns'] {
-    background: aqua;
   }
 }
 

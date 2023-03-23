@@ -8,7 +8,7 @@ import styles from './GlobalSearch.module.scss';
 import Link from 'next/link';
 import Markdown from '../Markdown';
 import * as PolarisIcons from '@shopify/polaris-icons';
-import {toPascalCase, uppercaseFirst} from '@/utils';
+import {className, toPascalCase, uppercaseFirst} from '@/utils';
 import {useDebounce} from '@/hooks';
 import ImageRenderer from '../ImageRenderer';
 import Pill from '../Pill';
@@ -50,7 +50,7 @@ export default function Search() {
       </button>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <Dialog.Panel className={styles.Dialog}>
+        <Dialog.Panel className={className(styles.Dialog, 'dark-morde')}>
           <Combobox
             value={selectedSearchResult}
             onChange={(id) => {
@@ -70,7 +70,9 @@ export default function Search() {
             />
             <Combobox.Options className={styles.Results}>
               {searchResults.map((result) => {
-                const category = uppercaseFirst(result.url.split('/')[0]);
+                const category =
+                  result.url.length > 0 &&
+                  uppercaseFirst(result.url.split('/')[0]).replace(/s$/g, '');
                 const Icon =
                   PolarisIcons[
                     toPascalCase(result.title) as keyof typeof PolarisIcons
@@ -92,7 +94,7 @@ export default function Search() {
                     )}
                     <div>
                       <h2>
-                        {result.title} <Pill label={category} />
+                        {result.title} {category && <Pill label={category} />}
                       </h2>
                       <Markdown strip>{result.excerpt}</Markdown>
                       <p className={styles.Url}>/{result.url}</p>

@@ -199,6 +199,7 @@ export interface Content {
 export type NavItems = {
   id: Page['id'];
   title: Page['title'];
+  slug: ResolvedPage['slug'];
   url: ResolvedPage['url'];
   order: Page['order'];
   pageMeta: Page['pageMeta'];
@@ -213,3 +214,5 @@ export type TOCItem = {
   id: string;
   children: TOCItem[];
 };
+
+export const pagesWithIcons = ['patterns', 'components', 'tokens', 'icons'];

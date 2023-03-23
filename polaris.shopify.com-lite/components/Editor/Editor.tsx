@@ -35,7 +35,6 @@ import {
   polarisComponentLifecyclePhases,
   DoDontBlock,
   TabbedContentBlock,
-  ResolvedPage,
   CodeBlockLanguage,
   codeBlockLanguages,
 } from '@/types';

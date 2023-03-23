@@ -2,42 +2,35 @@
 
 .Grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem 0;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 2rem 1.5rem;
 }
 
 .Icon {
-  padding-top: 2rem;
-  padding-right: 2rem;
   color: var(--color-text-subdued);
-  border-top: 1px solid var(--color-border);
+
+  .IconWrapper {
+    border-radius: 16px;
+    aspect-ratio: 16/9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-surface-subdued);
+  }
 
   h2 {
     margin-top: 1rem;
     margin-bottom: 0.25rem;
     font-weight: var(--font-weight-heavy);
+    color: var(--color-text-strong);
+    @include heading-4;
   }
 
   p {
-    font-size: var(--font-size-small);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
-  button {
-    font-size: 0.8rem;
-    margin-right: 0.2rem;
-    padding: 0.1rem 0.33rem;
-    border-radius: 8px;
-    background: var(--color-surface-subdued);
-    border: 1px solid var(--color-border);
-    font-weight: var(--font-weight-heavy);
-
-    &:hover {
-      background: var(--color-border);
-    }
-  }
-
-  @media screen and (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
     svg {
       fill: #fff;
     }

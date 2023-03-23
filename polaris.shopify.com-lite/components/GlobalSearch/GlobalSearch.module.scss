@@ -1,12 +1,41 @@
 @use '../../styles/mixins' as *;
 
 .Trigger {
+  position: relative;
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
   border-radius: 8px;
   margin-bottom: 3.5rem;
-  background: var(--color-surface-subdued);
+  background-size: auto 18px;
   border: 1px solid var(--color-border);
+  color: var(--color-text-strong);
+  transition: all 0.05s ease;
+
+  &:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0.75rem;
+    width: 18px;
+    height: 18px;
+    background: url(./SearchMajor.svg) no-repeat center center;
+    background-size: contain;
+
+    @media (prefers-color-scheme: dark) {
+      filter: invert(1);
+    }
+  }
 }
 
 .Dialog {
@@ -17,13 +46,12 @@
   left: 0;
   margin: auto;
   background: var(--color-surface);
-  background: rgba(31, 33, 36, 0.97);
   backdrop-filter: blur(5px) saturate(200%);
   max-width: 800px;
   max-height: 80vh;
   border-radius: calc(var(--unit-radius) * 8);
-  box-shadow: 0 -0.5px 0 rgba(255, 255, 255, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.1), 0 100px 100px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.075),
+    0 50px 100px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   z-index: 2;
@@ -88,6 +116,6 @@
   }
 
   &[data-headlessui-state='active'] {
-    background: rgba(0, 0, 0, 0.25);
+    background: var(--color-surface-subdued);
   }
 }

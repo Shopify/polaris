@@ -16,6 +16,7 @@ export async function getNavItems(): Promise<NavItems> {
         parentId,
         hasSeparatorInNav,
         hasNewBadge,
+        slug,
       } = page;
       return {
         id,
@@ -26,6 +27,7 @@ export async function getNavItems(): Promise<NavItems> {
         parentId,
         hasSeparatorInNav,
         hasNewBadge,
+        slug,
       };
     });
 }

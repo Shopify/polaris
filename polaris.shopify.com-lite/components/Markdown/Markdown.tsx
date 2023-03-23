@@ -4,6 +4,9 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import Code from '@/components/Code';
+import Link from 'next/link';
+import Pill from '../Pill';
+import {pagesWithIcons} from '@/types';
 
 interface Props {
   children: string;
@@ -50,6 +53,23 @@ function Markdown({strip, children: text}: Props) {
               ),
               br: () => <></>,
               hr: () => <></>,
+              a: ({children, href}) => {
+                if (href) {
+                  const firstSegment = href
+                    .replace('https://polaris.shopify.com', '')
+                    .split('/')[1];
+                  if (pagesWithIcons.includes(firstSegment)) {
+                    return (
+                      <Pill
+                        href={href}
+                        label={children.toString()}
+                        style={firstSegment}
+                      ></Pill>
+                    );
+                  }
+                }
+                return <Link href={href || ''}>{children}</Link>;
+              },
             }
       }
     >

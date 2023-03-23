@@ -3,7 +3,7 @@
 import GlobalSearch from '@/components/GlobalSearch';
 import Pill from '@/components/Pill';
 import {HOME_PAGE_ID} from '@/config';
-import {NavItems} from '@/types';
+import {NavItems, pagesWithIcons} from '@/types';
 import {className} from '@/utils';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
@@ -73,6 +73,8 @@ function NavItem({
   }
 
   const isCurrent = `/${item.url}` === pathName;
+  const hasIcon =
+    pagesWithIcons.includes(item.slug) && item.url.split('/').length === 1;
 
   const statusBadgeMarkup =
     pageMeta?.type === 'components' && pageMeta.lifeCyclePhase !== 'Stable' ? (
@@ -82,14 +84,22 @@ function NavItem({
   return (
     <li
       key={item.id}
-      className={className(item.hasSeparatorInNav && styles.hasSeparatorInNav)}
+      className={className(
+        item.hasSeparatorInNav && styles.hasSeparatorInNav,
+        hasIcon && styles.hasIcon,
+      )}
     >
       <span
         className={className(styles.NavItem, isCurrent && styles.isCurrent)}
       >
         <Link
           href={`/${item.url}`}
-          onClick={handleLinkClick}
+          onClick={() => {
+            handleLinkClick();
+            if (isManuallyToggled === false) {
+              setIsManuallyToggled(null);
+            }
+          }}
           aria-current={isCurrent ? 'page' : 'false'}
           // TODO
           // onKeyDown={(evt) => {
@@ -98,6 +108,12 @@ function NavItem({
           //   }
           // }}
         >
+          {hasIcon && (
+            <div className={styles.IconContainer}>
+              <Pill asIcon label={item.slug} />
+            </div>
+          )}
+
           {item.title}
 
           {statusBadgeMarkup}
@@ -107,18 +123,16 @@ function NavItem({
 
         {isExpandable && (
           <button
-            className={styles.Toggle}
+            className={styles.ExpandCollapseButton}
             onClick={() =>
               setIsManuallyToggled(
-                isManuallyToggled ? !isManuallyToggled : true,
+                isManuallyToggled === null ? !isExpanded : !isManuallyToggled,
               )
             }
             aria-label="Toggle section"
             aria-expanded={isExpanded}
             aria-controls={isExpanded ? childrenAriaId : undefined}
-          >
-            +
-          </button>
+          />
         )}
       </span>
 
