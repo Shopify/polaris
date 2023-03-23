@@ -29,8 +29,8 @@ examples:
 Settings toggles should:
 
 - Include a title
-- Include body content describing the experience when the setting is turned on.
-- Use a badge to clearly indicate whether the setting is turned on or off.
+- Include body content describing the experience when the setting is turned on
+- Use a badge to clearly indicate whether the setting is turned on or off
 - Use a default button for both states. A primary button can be misinterpreted as the setting being turned on.
 
 If more information is needed to explain setting details or functionality, include the [Info](https://polaris.shopify.com/icons?icon=InfoMinor&q=) icon and link to help content or related documentation.
