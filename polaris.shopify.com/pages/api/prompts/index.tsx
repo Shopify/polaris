@@ -1,5 +1,5 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
-import {createContextualChatCompletion} from 'synapse';
+import {createChatCompletion, generateEmbedding, getSimilarBits} from 'synapse';
 import context from '../../../scripts/synapse/bits/polaris-color-tokens.json' assert {type: 'json'};
 import type {Bit, TemplateArgs, Message} from 'synapse';
 
@@ -30,21 +30,34 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  // Is this ever an array?
   const input = Array.isArray(req.query.p)
     ? req.query.p.join(' ')
     : req.query.p;
 
+  // const input = 'What are all the background colors I can use?';
+
   if (!input) return res.status(400).send('A question must be provided');
 
-  try {
-    const aiResponse = await createContextualChatCompletion(
-      {input},
-      messagesTemplate,
-      [...context.bits],
-    );
+  // need to handle if it fails
+  const embeddedInput = await generateEmbedding(input);
+  const similarBits = getSimilarBits(embeddedInput, [...context.bits], 1500);
+  const messages = messagesTemplate({input}, similarBits);
+  const completion = await createChatCompletion(messages);
 
-    return res.send(aiResponse);
+  let mostSimilar = [];
+
+  for (let i = 0; i <= 4; i++) {
+    mostSimilar.push(similarBits[i].slug);
+  }
+
+  try {
+    // const aiResponse = await createContextualChatCompletion(
+    //   {input},
+    //   messagesTemplate,
+    //   [...context.bits],
+    // );
+
+    return res.send({messages, completion, mostSimilar});
   } catch (error) {
     console.error(error);
     res.status(400).send(error);

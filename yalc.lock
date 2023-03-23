@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "synapse": {
-      "signature": "cb226b8464dbff162da94864cb918fa2",
+      "signature": "26a613de0a63bdc79f8341e710de7bba",
       "pure": true
     }
   }
