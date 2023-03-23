@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "^14.17.0 || ^16.13.0"
+    "node": "^14.17.0 || ^16.13.0 || 19.8"
   },
   "workspaces": {
     "packages": [
@@ -104,5 +104,8 @@
       "path": "polaris-react/build/esm/styles.css",
       "limit": "50 kB"
     }
-  ]
+  ],
+  "dependencies": {
+    "synapse": "file:.yalc/synapse"
+  }
 }
