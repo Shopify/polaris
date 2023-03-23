@@ -53,6 +53,7 @@ module.exports = {
     '@babel/no-unused-expressions': 'off',
     'import/named': 'off',
     'import/no-default-export': ['error'],
+    'import/consistent-type-specifier-style': 'error',
     'react/button-has-type': 'off',
     'react/no-array-index-key': 'off',
     'react/no-unsafe': ['error', {checkAliases: true}],
