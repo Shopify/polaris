@@ -41,7 +41,13 @@ export function WithPrimitiveComponents() {
     </Badge>
   );
 
-  const helpLink = <Button plain icon={CircleInformationMajor} />;
+  const helpLink = (
+    <Button
+      plain
+      icon={CircleInformationMajor}
+      accessibilityLabel="Learn more"
+    />
+  );
 
   const settingTitle = title ? (
     <Inline gap="2" wrap={false}>

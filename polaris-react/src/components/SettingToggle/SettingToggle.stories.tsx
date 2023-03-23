@@ -20,8 +20,6 @@ export default {
 export function WithDeprecatedComponent() {
   const [enabled, setEnabled] = useState(false);
 
-  const toggleId = 'setting-toggle-uuid';
-
   const contentStatus = enabled ? 'Turn off' : 'Turn on';
 
   const handleToggle = useCallback(() => setEnabled((enabled) => !enabled), []);
@@ -71,7 +69,13 @@ export function WithPrimitiveComponents() {
     </Badge>
   );
 
-  const helpLink = <Button plain icon={CircleInformationMajor} />;
+  const helpLink = (
+    <Button
+      plain
+      icon={CircleInformationMajor}
+      accessibilityLabel="Learn more"
+    />
+  );
 
   const settingTitle = title ? (
     <Inline gap="2" wrap={false}>
@@ -174,7 +178,13 @@ export function WithPrimitiveComponentsAndLongTitle() {
     </Badge>
   );
 
-  const helpLink = <Button plain icon={CircleInformationMajor} />;
+  const helpLink = (
+    <Button
+      plain
+      icon={CircleInformationMajor}
+      accessibilityLabel="Learn more"
+    />
+  );
 
   const settingTitle = title ? (
     <Inline gap="2" wrap={false}>
