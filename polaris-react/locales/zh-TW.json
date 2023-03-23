@@ -305,13 +305,6 @@
     "FullscreenBar": {
       "back": "返回",
       "accessibilityLabel": "退出全螢幕模式"
-    },
-    "SettingToggle": {
-      "status": {
-        "enabled": "開啟",
-        "disabled": "關閉",
-        "accessibilityLabel": "此設定目前為{status}"
-      }
     }
   }
 }

@@ -306,13 +306,6 @@
     "FullscreenBar": {
       "back": "Voltar",
       "accessibilityLabel": "Sair do modo de tela cheia"
-    },
-    "SettingToggle": {
-      "status": {
-        "enabled": "Ativada",
-        "disabled": "Desativada",
-        "accessibilityLabel": "A configuração está {status}"
-      }
     }
   }
 }

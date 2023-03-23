@@ -305,13 +305,6 @@
     "FullscreenBar": {
       "back": "Tillbaka",
       "accessibilityLabel": "Lämna helskärmsläget"
-    },
-    "SettingToggle": {
-      "status": {
-        "enabled": "På",
-        "disabled": "Av",
-        "accessibilityLabel": "Inställningen är {status}"
-      }
     }
   }
 }

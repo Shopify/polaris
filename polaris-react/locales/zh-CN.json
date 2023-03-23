@@ -305,13 +305,6 @@
     "FullscreenBar": {
       "back": "上一步",
       "accessibilityLabel": "退出全屏模式"
-    },
-    "SettingToggle": {
-      "status": {
-        "enabled": "开",
-        "disabled": "关",
-        "accessibilityLabel": "设置状态为 {status}"
-      }
     }
   }
 }

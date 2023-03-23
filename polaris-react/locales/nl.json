@@ -305,13 +305,6 @@
     "FullscreenBar": {
       "back": "Terug",
       "accessibilityLabel": "Volledig scherm-modus afsluiten"
-    },
-    "SettingToggle": {
-      "status": {
-        "enabled": "Aan",
-        "disabled": "Uit",
-        "accessibilityLabel": "Instelling is {status}"
-      }
     }
   }
 }
