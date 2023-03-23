@@ -9,7 +9,7 @@ import {
   useBreakpoints,
 } from '@shopify/polaris';
 import {CircleInformationMajor} from '@shopify/polaris-icons';
-import {useState, useCallback, useEffect} from 'react';
+import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 export function WithPrimitiveComponents() {
