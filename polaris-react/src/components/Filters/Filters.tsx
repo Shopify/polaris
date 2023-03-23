@@ -278,6 +278,66 @@ export function Filters({
       }
     : undefined;
 
+  const pinnedFiltersMarkup = pinnedFilters.map(
+    ({key: filterKey, ...pinnedFilter}) => {
+      const appliedFilter = appliedFilters?.find(({key}) => key === filterKey);
+      const handleFilterPillRemove = () => {
+        setLocalPinnedFilters((currentLocalPinnedFilters) =>
+          currentLocalPinnedFilters.filter((key) => key !== filterKey),
+        );
+        appliedFilter?.onRemove(filterKey);
+      };
+
+      return (
+        <FilterPill
+          key={filterKey}
+          {...pinnedFilter}
+          initialActive={hasMounted.current && !pinnedFilter.pinned}
+          label={appliedFilter?.label || pinnedFilter.label}
+          filterKey={filterKey}
+          selected={appliedFilterKeys?.includes(filterKey)}
+          onRemove={handleFilterPillRemove}
+          disabled={pinnedFilter.disabled || disableFilters}
+        />
+      );
+    },
+  );
+
+  const addButton = shouldShowAddButton ? (
+    <div
+      className={classNames(
+        styles.AddFilterActivator,
+        hasOneOrMorePinnedFilters && styles.AddFilterActivatorMultiple,
+      )}
+    >
+      <Popover
+        active={popoverActive && !disabled}
+        activator={addFilterActivator}
+        onClose={togglePopoverActive}
+      >
+        <ActionList actionRole="menuitem" items={additionalFilters} />
+      </Popover>
+    </div>
+  ) : null;
+
+  const clearAllMarkup =
+    appliedFilters?.length || localPinnedFilters.length ? (
+      <div
+        className={classNames(
+          styles.ClearAll,
+          hasOneOrMorePinnedFilters &&
+            shouldShowAddButton &&
+            styles.MultiplePinnedFilterClearAll,
+        )}
+      >
+        <Link onClick={handleClearAllFilters} removeUnderline>
+          <Text variant="bodySm" fontWeight="semibold" as="span">
+            {i18n.translate('Polaris.Filters.clearFilters')}
+          </Text>
+        </Link>
+      </div>
+    ) : null;
+
   const filtersMarkup =
     hideFilters || filters.length === 0 ? null : (
       <div
@@ -292,63 +352,9 @@ export function Filters({
       >
         <div className={classNames(styles.FiltersInner)}>
           <div className={classNames(styles.FiltersStickyArea)}>
-            {pinnedFilters.map(({key: filterKey, ...pinnedFilter}) => {
-              const appliedFilter = appliedFilters?.find(
-                ({key}) => key === filterKey,
-              );
-              const handleFilterPillRemove = () => {
-                setLocalPinnedFilters((currentLocalPinnedFilters) =>
-                  currentLocalPinnedFilters.filter((key) => key !== filterKey),
-                );
-                appliedFilter?.onRemove(filterKey);
-              };
-
-              return (
-                <FilterPill
-                  key={filterKey}
-                  {...pinnedFilter}
-                  initialActive={hasMounted.current && !pinnedFilter.pinned}
-                  label={appliedFilter?.label || pinnedFilter.label}
-                  filterKey={filterKey}
-                  selected={appliedFilterKeys?.includes(filterKey)}
-                  onRemove={handleFilterPillRemove}
-                  disabled={pinnedFilter.disabled || disableFilters}
-                />
-              );
-            })}
-            {shouldShowAddButton && (
-              <div
-                className={classNames(
-                  styles.AddFilterActivator,
-                  hasOneOrMorePinnedFilters &&
-                    styles.AddFilterActivatorMultiple,
-                )}
-              >
-                <Popover
-                  active={popoverActive && !disabled}
-                  activator={addFilterActivator}
-                  onClose={togglePopoverActive}
-                >
-                  <ActionList actionRole="menuitem" items={additionalFilters} />
-                </Popover>
-              </div>
-            )}
-            {appliedFilters?.length || localPinnedFilters.length ? (
-              <div
-                className={classNames(
-                  styles.ClearAll,
-                  hasOneOrMorePinnedFilters &&
-                    shouldShowAddButton &&
-                    styles.MultiplePinnedFilterClearAll,
-                )}
-              >
-                <Link onClick={handleClearAllFilters} removeUnderline>
-                  <Text variant="bodySm" fontWeight="semibold" as="span">
-                    {i18n.translate('Polaris.Filters.clearFilters')}
-                  </Text>
-                </Link>
-              </div>
-            ) : null}
+            {pinnedFiltersMarkup}
+            {addButton}
+            {clearAllMarkup}
           </div>
         </div>
         {hideQueryField ? (

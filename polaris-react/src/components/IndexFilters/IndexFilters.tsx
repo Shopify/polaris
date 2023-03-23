@@ -143,6 +143,7 @@ export function IndexFilters({
       setFiltersUnFocused();
     }
   });
+
   useEventListener('keydown', (event) => {
     const {key} = event;
     const tag = document?.activeElement?.tagName;
@@ -194,6 +195,7 @@ export function IndexFilters({
     );
 
   const onExecutedPrimaryAction = useExecutedCallback(primaryAction?.onAction);
+
   const onExecutedCancelAction = useCallback(() => {
     cancelAction.onAction?.();
     setMode(IndexFiltersMode.Default);

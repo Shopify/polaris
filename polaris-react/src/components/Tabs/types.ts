@@ -2,11 +2,16 @@ import type {ReactNode} from 'react';
 
 import type {ActionListItemDescriptor} from '../../types';
 
-type TabActions = 'rename' | 'edit' | 'edit-columns' | 'duplicate' | 'delete';
+export type TabAction =
+  | 'rename'
+  | 'edit'
+  | 'edit-columns'
+  | 'duplicate'
+  | 'delete';
 
 interface TabActionDescriptor
   extends Omit<ActionListItemDescriptor, 'onAction'> {
-  type: TabActions;
+  type: TabAction;
   onAction?: (name: string) => void;
   onPrimaryAction?: (name: string) => Promise<boolean>;
 }
@@ -49,7 +54,7 @@ export interface TabProps {
   measuring?: boolean;
   /** Overrides the tabIndex calculated by the Tabs component */
   tabIndexOverride?: 0 | -1;
-  /** Ooptional callback invoked when the Tabs component is focused */
+  /** Optional callback invoked when the Tabs component is focused */
   onFocus?(): void;
 }
 

@@ -34,7 +34,7 @@ import {Modal} from '../../../Modal';
 import {Badge} from '../../../Badge';
 import {Inline} from '../../../Inline';
 import {Text} from '../../../Text';
-import type {TabPropsWithAddedMethods} from '../../types';
+import type {TabPropsWithAddedMethods, TabAction} from '../../types';
 import styles from '../../Tabs.scss';
 
 import {RenameModal, DuplicateModal} from './components';
@@ -67,10 +67,9 @@ export const Tab = forwardRef(
   ) => {
     const i18n = useI18n();
     const [popoverActive, setPopoverActive] = useState(false);
-    const [isRenameModalActive, setIsRenameModalActive] = useState(false);
-    const [isDeleteViewModalActive, setIsDeleteViewModalActive] =
-      useState(false);
-    const [isDuplicateModalActive, setIsDuplicateModalActive] = useState(false);
+    const [activeModalType, setActiveModalType] = useState<TabAction | null>(
+      null,
+    );
     const {mdDown} = useBreakpoints();
 
     const wasSelected = useRef(selected);
@@ -82,16 +81,8 @@ export const Tab = forwardRef(
     }, [popoverActive, onTogglePopover]);
 
     useEffect(() => {
-      onToggleModal(isRenameModalActive);
-    }, [isRenameModalActive, onToggleModal]);
-
-    useEffect(() => {
-      onToggleModal(isDuplicateModalActive);
-    }, [isDuplicateModalActive, onToggleModal]);
-
-    useEffect(() => {
-      onToggleModal(isDeleteViewModalActive);
-    }, [isDeleteViewModalActive, onToggleModal]);
+      onToggleModal(Boolean(activeModalType));
+    }, [activeModalType, onToggleModal]);
 
     useEffect(() => {
       return () => {
@@ -126,9 +117,7 @@ export const Tab = forwardRef(
       } else if (
         focused &&
         node.current != null &&
-        !isRenameModalActive &&
-        !isDeleteViewModalActive &&
-        !isDuplicateModalActive &&
+        activeModalType == null &&
         !disabled
       ) {
         focusFirstFocusableNode(node.current);
@@ -142,9 +131,7 @@ export const Tab = forwardRef(
       measuring,
       panelID,
       selected,
-      isRenameModalActive,
-      isDeleteViewModalActive,
-      isDuplicateModalActive,
+      activeModalType,
       disabled,
     ]);
 
@@ -186,12 +173,12 @@ export const Tab = forwardRef(
       }
     }, [selected, onAction, togglePopoverActive, disabled]);
 
-    const handleCloseRenameModal = () => {
-      setIsRenameModalActive(false);
+    const handleModalOpen = (type: TabAction) => {
+      setActiveModalType(type);
     };
 
-    const handleCloseDuplicateModal = () => {
-      setIsDuplicateModalActive(false);
+    const handleModalClose = () => {
+      setActiveModalType(null);
     };
 
     const handleSaveRenameModal = useCallback(
@@ -207,11 +194,9 @@ export const Tab = forwardRef(
       [renameAction],
     );
 
-    const handleCloseDeleteViewModal = () => setIsDeleteViewModalActive(false);
-
     const handleConfirmDeleteView = useCallback(async () => {
       await deleteAction?.onPrimaryAction?.(content);
-      setIsDeleteViewModalActive(false);
+      handleModalClose();
     }, [deleteAction, content]);
 
     const handleSaveDuplicateModal = useCallback(
@@ -221,68 +206,46 @@ export const Tab = forwardRef(
       [duplicateAction],
     );
 
-    const formattedActions = actions?.map((action) => {
-      const actionType = action.type;
-      const {type, onAction, onPrimaryAction, ...rest} = action;
-      const additionalOptions = rest;
+    const actionContent = {
+      rename: {
+        icon: InfoMinor,
+        content: i18n.translate('Polaris.Tabs.Tab.rename'),
+      },
+      duplicate: {
+        icon: DuplicateMinor,
+        content: i18n.translate('Polaris.Tabs.Tab.duplicate'),
+      },
+      edit: {
+        icon: EditMinor,
+        content: i18n.translate('Polaris.Tabs.Tab.edit'),
+      },
+      'edit-columns': {
+        icon: Columns3Minor,
+        content: i18n.translate('Polaris.Tabs.Tab.editColumns'),
+      },
+      delete: {
+        icon: DeleteMinor,
+        content: i18n.translate('Polaris.Tabs.Tab.delete'),
+        destructive: true,
+      },
+    };
 
-      switch (actionType) {
-        case 'rename':
-          return {
-            content: i18n.translate('Polaris.Tabs.Tab.rename'),
-            icon: InfoMinor,
-            onAction: () => {
-              onAction?.(content);
-              togglePopoverActive();
-              setIsRenameModalActive(true);
-            },
-            ...additionalOptions,
-          };
-        case 'duplicate':
-          return {
-            content: i18n.translate('Polaris.Tabs.Tab.duplicate'),
-            icon: DuplicateMinor,
-            onAction: () => {
-              onAction?.(content);
-              setIsDuplicateModalActive(true);
-              togglePopoverActive();
-            },
-            ...additionalOptions,
-          };
-        case 'edit':
-          return {
-            content: i18n.translate('Polaris.Tabs.Tab.edit'),
-            icon: EditMinor,
-            onAction: () => {
-              onAction?.(content);
-              togglePopoverActive();
-            },
-            ...additionalOptions,
-          };
-        case 'edit-columns':
-          return {
-            content: i18n.translate('Polaris.Tabs.Tab.editColumns'),
-            icon: Columns3Minor,
-            onAction: () => {
-              onAction?.(content);
-              togglePopoverActive();
-            },
-            ...additionalOptions,
-          };
-        case 'delete':
-          return {
-            content: i18n.translate('Polaris.Tabs.Tab.delete'),
-            icon: DeleteMinor,
-            destructive: true,
-            onAction: () => {
-              onAction?.(content);
-              togglePopoverActive();
-              setIsDeleteViewModalActive(true);
-            },
-            ...additionalOptions,
-          };
-      }
-    });
+    const formattedActions = actions?.map(
+      ({type, onAction, onPrimaryAction, ...additionalOptions}) => {
+        const isModalActivator = !type.includes('edit');
+        return {
+          ...actionContent[type],
+          ...additionalOptions,
+          onAction: () => {
+            onAction?.(content);
+            togglePopoverActive();
+            if (isModalActivator) {
+              handleModalOpen(type);
+            }
+          },
+        };
+      },
+    );
 
     const handleKeyDown = useCallback(
       (event: KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>) => {
@@ -305,29 +268,42 @@ export const Tab = forwardRef(
       ? UnstyledLink
       : UnstyledButton;
 
+    const tabClassName = classNames(
+      styles.Tab,
+      icon && styles['Tab-iconOnly'],
+      popoverActive && styles['Tab-popoverActive'],
+      selected && styles['Tab-active'],
+      selected && actions?.length && styles['Tab-hasActions'],
+    );
+
+    const badgeMarkup = badge ? (
+      <Badge status={selected ? 'success' : 'new'}>{badge}</Badge>
+    ) : null;
+
+    const disclosureMarkup =
+      selected && actions?.length ? (
+        <div className={classNames(styles.IconWrap)}>
+          <Icon source={CaretDownMinor} />
+        </div>
+      ) : null;
+
     const activator = (
       <BaseComponent
-        className={classNames(
-          styles.Tab,
-          icon && styles['Tab-iconOnly'],
-          popoverActive && styles['Tab-popoverActive'],
-          selected && styles['Tab-active'],
-          selected && actions?.length && styles['Tab-hasActions'],
-        )}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        disabled={disabled}
-        url={urlIfNotDisabledOrSelected}
-        aria-label={accessibilityLabel}
+        id={id}
+        className={tabClassName}
         tabIndex={tabIndex}
         aria-selected={selected}
         aria-controls={panelID}
-        onMouseUp={handleMouseUpByBlurring}
+        aria-label={accessibilityLabel}
         role={tabIndexOverride == null ? 'tab' : undefined}
-        id={id}
+        disabled={disabled}
+        url={urlIfNotDisabledOrSelected}
         onFocus={onFocus}
+        onMouseUp={handleMouseUpByBlurring}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
       >
-        <Inline gap="2">
+        <Inline gap="2" align="center" blockAlign="center" wrap={false}>
           <Text
             as="span"
             variant={mdDown ? 'bodyMd' : 'bodySm'}
@@ -335,19 +311,60 @@ export const Tab = forwardRef(
           >
             {icon ?? content}
           </Text>
-          {badge ? (
-            <Badge status={selected ? 'success' : 'new'}>{badge}</Badge>
-          ) : null}
+          {badgeMarkup}
         </Inline>
-        {selected && actions?.length ? (
-          <div className={classNames(styles.IconWrap)}>
-            <Icon source={CaretDownMinor} />
-          </div>
-        ) : null}
+        {disclosureMarkup}
       </BaseComponent>
     );
 
     const isPlainButton = !selected || !actions?.length;
+
+    const renameModal = renameAction ? (
+      <RenameModal
+        name={content}
+        open={activeModalType === 'rename'}
+        onClose={handleModalClose}
+        onClickPrimaryAction={handleSaveRenameModal}
+        isModalLoading={isModalLoading}
+        viewNames={viewNames}
+      />
+    ) : null;
+    const duplicateModal = duplicateAction ? (
+      <DuplicateModal
+        open={activeModalType === 'duplicate'}
+        name={i18n.translate('Polaris.Tabs.Tab.copy', {name: content})}
+        onClose={handleModalClose}
+        onClickPrimaryAction={handleSaveDuplicateModal}
+        isModalLoading={isModalLoading}
+        viewNames={viewNames || []}
+      />
+    ) : null;
+    const deleteModal = deleteAction ? (
+      <Modal
+        open={activeModalType === 'delete'}
+        onClose={handleModalClose}
+        primaryAction={{
+          content: i18n.translate('Polaris.Tabs.Tab.deleteModal.delete'),
+          onAction: handleConfirmDeleteView,
+          destructive: true,
+          disabled: isModalLoading,
+        }}
+        secondaryActions={[
+          {
+            content: i18n.translate('Polaris.Tabs.Tab.deleteModal.cancel'),
+            onAction: handleModalClose,
+          },
+        ]}
+        title={i18n.translate('Polaris.Tabs.Tab.deleteModal.title')}
+        instant
+      >
+        <Modal.Section>
+          {i18n.translate('Polaris.Tabs.Tab.deleteModal.description', {
+            viewName: content,
+          })}
+        </Modal.Section>
+      </Modal>
+    ) : null;
 
     const markup =
       isPlainButton || disabled ? (
@@ -364,54 +381,9 @@ export const Tab = forwardRef(
               <ActionList actionRole="menuitem" items={formattedActions} />
             </div>
           </Popover>
-          {renameAction ? (
-            <RenameModal
-              name={content}
-              open={isRenameModalActive}
-              onClose={handleCloseRenameModal}
-              onClickPrimaryAction={handleSaveRenameModal}
-              isModalLoading={isModalLoading}
-              viewNames={viewNames}
-            />
-          ) : null}
-          {duplicateAction ? (
-            <DuplicateModal
-              open={isDuplicateModalActive}
-              name={i18n.translate('Polaris.Tabs.Tab.copy', {name: content})}
-              onClose={handleCloseDuplicateModal}
-              onClickPrimaryAction={handleSaveDuplicateModal}
-              isModalLoading={isModalLoading}
-              viewNames={viewNames || []}
-            />
-          ) : null}
-          {deleteAction ? (
-            <Modal
-              open={isDeleteViewModalActive}
-              onClose={handleCloseDeleteViewModal}
-              primaryAction={{
-                content: i18n.translate('Polaris.Tabs.Tab.deleteModal.delete'),
-                onAction: handleConfirmDeleteView,
-                destructive: true,
-                disabled: isModalLoading,
-              }}
-              secondaryActions={[
-                {
-                  content: i18n.translate(
-                    'Polaris.Tabs.Tab.deleteModal.cancel',
-                  ),
-                  onAction: handleCloseDeleteViewModal,
-                },
-              ]}
-              title={i18n.translate('Polaris.Tabs.Tab.deleteModal.title')}
-              instant
-            >
-              <Modal.Section>
-                {i18n.translate('Polaris.Tabs.Tab.deleteModal.description', {
-                  viewName: content,
-                })}
-              </Modal.Section>
-            </Modal>
-          ) : null}
+          {renameModal}
+          {duplicateModal}
+          {deleteModal}
         </>
       );
 
