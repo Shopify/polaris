@@ -9,6 +9,7 @@
 dist
 node_modules
 Session.vim
+.yalc
 /polaris-react/build
 /polaris-react/build-internal
 /polaris-react/src/styles/_media-queries.scss
