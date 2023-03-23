@@ -15,6 +15,7 @@ import {KeyboardEventHandler} from 'react';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 import PatternThumbnailPreview from '../ThumbnailPreview';
 import ComponentThumbnail from '../ComponentThumbnail';
+import {MagicMajor} from '@shopify/polaris-icons';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
   foundations: 'Foundations',
@@ -101,6 +102,13 @@ function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
+  const [searchMode, setSearchMode] = useState<'search' | 'ai'>('search');
+
+  const [prompt, setPrompt] = useState('');
+  const [promptResults, setPromptResults] = useState<
+    {question: string; answer: string; searchResults: GroupedSearchResults}[]
+  >([]);
+
   const router = useRouter();
 
   let resultsInRenderedOrder: SearchResults = [];
@@ -159,6 +167,26 @@ function GlobalSearch() {
     }
   }, [isOpen]);
 
+  // query the prompts endpoint
+  const handleAskQuestion = async () => {
+    if (prompt) {
+      fetch(`/api/prompts?p=${encodeURIComponent(prompt)}`)
+        .then((data) => data.json())
+        .then((json) => {
+          const {completion} = json;
+          console.log(completion);
+          setPromptResults((prev) => [
+            {
+              question: prompt,
+              answer: completion,
+              // searchResults: data.searchResults,
+            },
+            ...prev,
+          ]);
+        });
+    }
+  };
+
   const handleKeyboardNavigation: KeyboardEventHandler<HTMLDivElement> = (
     evt,
   ) => {
@@ -212,33 +240,28 @@ function GlobalSearch() {
         <div className={styles.PreventBackgroundInteractions}></div>
         <div className="dark-mode styles-for-site-but-not-polaris-examples">
           <Dialog.Panel className={styles.Results}>
-            {isOpen && (
-              <div className={styles.Header}>
-                <div className={styles.SearchIcon}>
-                  <SearchIcon />
-                </div>
-                <input
-                  type="search"
-                  value={searchTerm}
-                  onChange={(evt) => setSearchTerm(evt.target.value)}
-                  role="combobox"
-                  aria-controls="search-results"
-                  aria-expanded={searchResultsCount > 0}
-                  aria-activedescendant={currentItemId}
-                  onKeyUp={handleKeyboardNavigation}
-                  autoComplete="off"
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  spellCheck={false}
-                  placeholder="Search"
-                />
-                <button
-                  className={styles.MobileCloseButton}
-                  onClick={() => setIsOpen(false)}
-                >
-                  Close
-                </button>
-              </div>
+            {searchMode === 'search' && (
+              <Search
+                value={searchTerm}
+                onChange={(evt) => setSearchTerm(evt.target.value)}
+                onKeyUp={handleKeyboardNavigation}
+                searchResultsCount={searchResultsCount}
+                currentItemId={currentItemId}
+                onSearchModeToggle={() => setSearchMode('ai')}
+                onClose={() => setIsOpen(false)}
+              />
+            )}
+            {searchMode === 'ai' && (
+              <AIPrompt
+                value={prompt}
+                onChange={(evt) => setPrompt(evt.target.value)}
+                onKeyUp={handleKeyboardNavigation}
+                searchResultsCount={promptResults.length}
+                currentItemId={currentItemId}
+                onSearchModeToggle={() => setSearchMode('search')}
+                onClose={() => setIsOpen(false)}
+                onAskQuestion={handleAskQuestion}
+              />
             )}
             <div
               className={styles.ResultsInner}
@@ -246,13 +269,40 @@ function GlobalSearch() {
               role="listbox"
               aria-label="Search results"
             >
-              {searchResults && (
+              {searchMode === 'search' && searchResults && (
                 <SearchResults
                   searchResults={searchResults}
                   currentItemId={currentItemId}
                   searchTerm={searchTerm}
                   resultsInRenderedOrder={resultsInRenderedOrder}
                 />
+              )}
+              {searchMode === 'ai' && promptResults.length < 1 && (
+                <h3 className={styles.PromptAnswer}>
+                  <span className={styles.BlinkingCursor}>|</span>
+                </h3>
+              )}
+              {searchMode === 'ai' && promptResults.length > 0 && (
+                <>
+                  {promptResults.map(
+                    ({question, answer, searchResults}, idx) => (
+                      <>
+                        {/* <p>{question}</p> */}
+                        <h3 key={idx} className={styles.PromptAnswer}>
+                          <TypingAnimation message={answer} />
+                        </h3>
+                        {searchResults && (
+                          <SearchResults
+                            searchResults={searchResults}
+                            currentItemId={currentItemId}
+                            searchTerm={searchTerm}
+                            resultsInRenderedOrder={resultsInRenderedOrder}
+                          />
+                        )}
+                      </>
+                    ),
+                  )}
+                </>
               )}
             </div>
           </Dialog.Panel>
@@ -506,5 +556,143 @@ function ResultsGroup({
     </div>
   );
 }
+
+function Search({
+  value,
+  onChange,
+  onKeyUp,
+  onClose,
+  onSearchModeToggle,
+  searchResultsCount,
+  currentItemId,
+}: {
+  value: string;
+  onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyUp: KeyboardEventHandler<HTMLDivElement>;
+  onClose: () => void;
+  onSearchModeToggle: () => void;
+  searchResultsCount: number;
+  currentItemId: string;
+}) {
+  return (
+    <div className={styles.Header}>
+      <div className={styles.SearchIcon}>
+        <SearchIcon />
+      </div>
+      <input
+        type="search"
+        value={value}
+        onChange={onChange}
+        role="combobox"
+        aria-controls="search-results"
+        aria-expanded={searchResultsCount > 0}
+        aria-activedescendant={currentItemId}
+        onKeyUp={onKeyUp}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        placeholder="Search"
+      />
+      <button className={styles.SearchModeToggle} onClick={onSearchModeToggle}>
+        Try AI prompt <MagicMajor />
+      </button>
+      <button className={styles.MobileCloseButton} onClick={onClose}>
+        Close
+      </button>
+    </div>
+  );
+}
+
+function AIPrompt({
+  value,
+  onChange,
+  onKeyUp,
+  onClose,
+  onSearchModeToggle,
+  searchResultsCount,
+  currentItemId,
+  onAskQuestion,
+}: {
+  value: string;
+  onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyUp: KeyboardEventHandler<HTMLDivElement>;
+  onClose: () => void;
+  onSearchModeToggle: () => void;
+  searchResultsCount: number;
+  currentItemId: string;
+  onAskQuestion: () => Promise<void>;
+}) {
+  return (
+    <div className={styles.Header}>
+      <div className={styles.AIPromptIcon}>
+        <MagicMajor />
+      </div>
+      <input
+        type="search"
+        value={value}
+        onChange={onChange}
+        role="combobox"
+        aria-controls="search-results"
+        aria-expanded={searchResultsCount > 0}
+        aria-activedescendant={currentItemId}
+        onKeyUp={onKeyUp}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        placeholder="Ask a question"
+      />
+      <button className={styles.AskButton} onClick={onAskQuestion}>
+        Send question
+      </button>
+      <button className={styles.SearchModeToggle} onClick={onSearchModeToggle}>
+        Back to search
+      </button>
+      <button className={styles.MobileCloseButton} onClick={onClose}>
+        Close
+      </button>
+    </div>
+  );
+}
+
+const TypingAnimation = ({message}) => {
+  const [text, setText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const messageSplit = message.split(' ');
+  console.log(message);
+
+  useEffect(() => {
+    let intervalId = null;
+
+    if (isTyping) {
+      intervalId = setInterval(() => {
+        setText(
+          (text) =>
+            text +
+            (messageSplit[text.split(' ').length] === undefined
+              ? ''
+              : messageSplit[text.length == 0 ? 0 : text.split(' ').length] +
+                ' '),
+        );
+        if (text.length === message.length) {
+          setIsTyping(false);
+        }
+        console.log('text', text);
+      }, 150);
+    } else {
+      clearInterval(intervalId);
+    }
+    return () => clearInterval(intervalId);
+  }, [isTyping, text, currentIndex, message]);
+
+  return (
+    <span>
+      {text}
+      <span className={styles.BlinkingCursor}>|</span>
+    </span>
+  );
+};
 
 export default GlobalSearch;

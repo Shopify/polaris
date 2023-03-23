@@ -2,8 +2,12 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Next.js",
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -30,5 +34,8 @@
     "scripts/get-props/src/get-props.ts",
     "constants.js"
   ],
-  "exclude": ["node_modules", "scripts/get-props/testData"]
+  "exclude": [
+    "node_modules",
+    "scripts/get-props/testData"
+  ]
 }
