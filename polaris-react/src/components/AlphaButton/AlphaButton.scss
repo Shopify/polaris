@@ -1,0 +1,12 @@
+.Button {
+  background: var(--p-surface);
+  color: var(--p-text);
+  border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
+  padding: var(--p-space-2);
+  border-radius: var(--p-border-radius-1);
+  height: 36px;
+}
+
+.hasIcon {
+  padding: 0 var(--p-space-2);
+}
