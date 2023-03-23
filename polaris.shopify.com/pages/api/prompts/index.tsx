@@ -38,24 +38,24 @@ export default async function handler(
 
   if (!input) return res.status(400).send('A question must be provided');
 
-  // need to handle if it fails
-  const embeddedInput = await generateEmbedding(input);
-  const similarBits = getSimilarBits(embeddedInput, [...context.bits], 1500);
-  const messages = messagesTemplate({input}, similarBits);
-  const completion = await createChatCompletion(messages);
-
-  let mostSimilar = [];
-
-  for (let i = 0; i <= 4; i++) {
-    mostSimilar.push(similarBits[i].slug);
-  }
-
   try {
     // const aiResponse = await createContextualChatCompletion(
     //   {input},
     //   messagesTemplate,
     //   [...context.bits],
     // );
+
+    // need to handle if it fails
+    const embeddedInput = await generateEmbedding(input);
+    const similarBits = getSimilarBits(embeddedInput, [...context.bits], 1500);
+    const messages = messagesTemplate({input}, similarBits);
+    const completion = await createChatCompletion(messages);
+
+    let mostSimilar = [];
+
+    for (let i = 0; i <= 4; i++) {
+      mostSimilar.push(similarBits[i].slug);
+    }
 
     return res.send({messages, completion, mostSimilar});
   } catch (error) {
