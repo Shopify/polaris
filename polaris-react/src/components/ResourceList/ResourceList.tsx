@@ -6,7 +6,6 @@ import React, {
   useState,
   Children,
 } from 'react';
-import type {ReactElement} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {tokens, toPx} from '@shopify/polaris-tokens';
 
@@ -39,7 +38,11 @@ import styles from './ResourceList.scss';
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-function getAllItemsOnPage<TItemType>(
+interface ResourceListItemData {
+  [data: string]: any;
+}
+
+function getAllItemsOnPage<TItemType extends ResourceListItemData>(
   items: TItemType[],
   idForItem: (item: TItemType, index: number) => string,
 ) {
@@ -55,7 +58,7 @@ const isBreakpointsXS = () => {
         parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
 };
 
-function defaultIdForItem<TItemType extends {id?: any}>(
+function defaultIdForItem<TItemType extends ResourceListItemData>(
   item: TItemType,
   index: number,
 ) {
@@ -64,7 +67,9 @@ function defaultIdForItem<TItemType extends {id?: any}>(
     : index.toString();
 }
 
-export interface ResourceListProps<TItemType = any> {
+export interface ResourceListProps<
+  TItemType extends ResourceListItemData = ResourceListItemData,
+> {
   /** Item data; each item is passed to renderItem */
   items: TItemType[];
   filterControl?: React.ReactNode;
@@ -117,13 +122,7 @@ export interface ResourceListProps<TItemType = any> {
   resolveItemId?(item: TItemType): string;
 }
 
-type ResourceListType = (<TItemType>(
-  value: ResourceListProps<TItemType>,
-) => ReactElement) & {
-  Item: typeof ResourceItem;
-};
-
-export const ResourceList: ResourceListType = function ResourceList<TItemType>({
+export function ResourceList<TItemType extends ResourceListItemData>({
   items,
   filterControl,
   emptyState,
@@ -767,6 +766,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       <div ref={bulkActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
-};
+}
 
 ResourceList.Item = ResourceItem;
