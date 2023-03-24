@@ -1,6 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaStack, Box, BoxProps, Icon} from '@shopify/polaris';
+import {AlphaStack, Box, Icon} from '@shopify/polaris';
+import type {BoxProps} from '@shopify/polaris';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 
 export default {
