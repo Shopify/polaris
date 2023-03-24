@@ -1,3 +1,5 @@
+@use '../../styles//mixins.scss' as *;
+
 .TOC {
   font-size: 0.825rem;
   font-weight: var(--font-weight-heavy);

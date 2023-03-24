@@ -20,6 +20,7 @@ import ImageRenderer from '../ImageRenderer';
 import {Tab, Tabs} from '../Tabs';
 import {className} from '@/utils';
 import {Fragment} from 'react';
+import Iframe from '../Iframe';
 
 interface Props {
   page: ResolvedPage;
@@ -121,12 +122,15 @@ function SandboxEmbedBlock({block}: {block: SandboxEmbedBlock}) {
   if (process.env.NODE_ENV === 'production') {
     url = url.replace('http://localhost:3000', 'https://polaris.shopify.com');
   }
-  return <iframe src={url} width={600} height={400} />;
+  return (
+    <Iframe src={url} minBreakpoint="breakpoints-lg" aspectRatio="16 / 9" />
+  );
 }
 
 function CodeBlock({block}: {block: CodeblockType}) {
   return <Code snippets={block.snippets} />;
 }
+
 function DoDontBock({block}: {block: DoDontBlock}) {
   return (
     <>

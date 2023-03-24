@@ -6,11 +6,22 @@ import {Popover} from '@headlessui/react';
 import styles from './PropsTable.module.scss';
 import {className} from '@/utils';
 import {useFloating} from '@floating-ui/react-dom';
+import Pill from '../Pill';
 
 interface Props {
   props: JSONOutput.DeclarationReflection | undefined;
   references: JSONOutput.DeclarationReflection[];
 }
+
+const endWithPeriod = (str: string): string =>
+  str.trim().endsWith('.') ? str.trim() : `${str.trim()}.`;
+
+const propIsDeprecated = (
+  declarationReflection: JSONOutput.DeclarationReflection,
+) =>
+  declarationReflection.comment?.blockTags
+    ?.map((tag) => tag.tag)
+    .includes('@deprecated');
 
 function PropsTable({props, references}: Props) {
   if (!props) return <p>No props found</p>;
@@ -49,27 +60,54 @@ function PropItemWrapper({
   declarationReflection: JSONOutput.DeclarationReflection;
   children: ReactNode;
 }) {
-  const comment = (
-    <p>
-      {declarationReflection.comment?.summary.map((segment, index) => {
+  const comment = declarationReflection.comment?.summary
+    ?.map((comment) => comment.text)
+    .join(' ');
+
+  const isDeprecated = propIsDeprecated(declarationReflection);
+  const isOptional = declarationReflection.flags?.isOptional;
+  const defaultValue =
+    declarationReflection.defaultValue ||
+    declarationReflection.comment?.blockTags
+      ?.filter((tag) => tag.tag === '@default')
+      ?.map((tag) => tag.content.map((part) => part.text))
+      .join(' ');
+
+  return (
+    <div className={styles.Prop}>
+      {isDeprecated && (
+        <>
+          <Pill label="Deprecated" />{' '}
+        </>
+      )}
+      <h3 className={styles.PropName}>
+        {declarationReflection.name}
+        {isOptional && '?'}
+      </h3>
+      {children}
+      <p className={styles.PropComment}>
+        {comment && endWithPeriod(comment)}{' '}
+        {defaultValue && <> Default value: {defaultValue}.</>}
+      </p>
+    </div>
+  );
+}
+
+function RenderCommentDisplayParts({
+  parts,
+}: {
+  parts: JSONOutput.CommentDisplayPart[];
+}) {
+  return (
+    <>
+      {parts.map((segment, index) => {
         if (segment.kind === 'text') {
           return <Fragment key={index}>{segment.text}</Fragment>;
         } else if (segment.kind === 'code') {
           return <code key={index}>{segment.text}</code>;
         }
       })}
-    </p>
-  );
-  const isOptional = declarationReflection.flags?.isOptional;
-  return (
-    <div className={styles.Prop}>
-      <span className={styles.PropName}>
-        {declarationReflection.name}
-        {isOptional && '?'}
-      </span>
-      {children}
-      <span className={styles.PropComment}>{comment}</span>
-    </div>
+    </>
   );
 }
 
@@ -84,13 +122,15 @@ function HandleDeclarationReflection({
   if (declarationReflection.children) {
     return (
       <>
-        {declarationReflection.children.map((child) => (
-          <HandleDeclarationReflection
-            key={child.id}
-            declarationReflection={child}
-            references={references}
-          />
-        ))}
+        {declarationReflection.children
+          .sort((child) => (propIsDeprecated(child) ? 1 : -1))
+          .map((child) => (
+            <HandleDeclarationReflection
+              key={child.id}
+              declarationReflection={child}
+              references={references}
+            />
+          ))}
       </>
     );
   } else if (declarationReflection.signatures) {

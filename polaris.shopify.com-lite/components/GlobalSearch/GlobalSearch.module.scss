@@ -48,7 +48,7 @@
   background: var(--color-surface);
   backdrop-filter: blur(5px) saturate(200%);
   max-width: 800px;
-  max-height: 80vh;
+  max-height: 50rem;
   border-radius: calc(var(--unit-radius) * 8);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.075),
     0 50px 100px rgba(0, 0, 0, 0.5);

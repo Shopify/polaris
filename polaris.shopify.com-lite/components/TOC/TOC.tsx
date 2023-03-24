@@ -77,7 +77,7 @@ function scanPageForCurrentHeading(): string | void {
     const heading = headings[i];
     const {top} = heading.getBoundingClientRect();
     currentHeading = heading;
-    if (top < contentTopMargin) {
+    if (top <= contentTopMargin + 1) {
       break;
     }
   }

@@ -5,14 +5,20 @@
   cursor: text;
 }
 
-.CopyButtonWrapper {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.25rem;
-}
-
 .HighlightedCode {
   position: relative;
+}
+
+.CopyButtonWrapper {
+  position: absolute;
+  top: 0.33rem;
+  right: 0.33rem;
+  opacity: 0;
+  transition: 0.25s opacity ease;
+
+  .Code:hover & {
+    opacity: 1;
+  }
 }
 
 .ActualCode {

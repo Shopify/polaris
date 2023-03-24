@@ -766,7 +766,7 @@ createPage({
   slug: 'tokens',
   parentId: null,
   order: 7,
-  layout: 'blocks',
+  layout: 'listing',
   allowChildren: false,
   hideInNav: false,
   noIndex: false,

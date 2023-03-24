@@ -7,10 +7,15 @@ interface Props {
   href?: string;
   asIcon?: true;
   style?: string;
+  subdued?: boolean;
 }
 
-function Pill({href, label, asIcon, style}: Props) {
-  const classNameValue = className(styles.Pill, asIcon && styles.asIcon);
+function Pill({href, label, asIcon, style, subdued}: Props) {
+  const classNameValue = className(
+    styles.Pill,
+    asIcon && styles.asIcon,
+    subdued && styles.subdued,
+  );
   const dataStyle = (style && toPascalCase(style)) || toPascalCase(label);
   if (href) {
     return (

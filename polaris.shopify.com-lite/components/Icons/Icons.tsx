@@ -65,9 +65,7 @@ function IconItem({icon}: {icon: typeof iconMetadata[number]}) {
 
   useEffect(() => {
     if (didJustDownload) {
-      const timeout = setTimeout(() => {
-        setDidJustDownload(false);
-      }, 2000);
+      const timeout = setTimeout(() => setDidJustDownload(false), 2000);
       return () => clearTimeout(timeout);
     }
   }, [didJustDownload]);
@@ -104,35 +102,39 @@ function IconItem({icon}: {icon: typeof iconMetadata[number]}) {
   return (
     <div key={icon.id} className={styles.Icon} id={id}>
       <div className={styles.IconWrapper}>
-        <Icon width={32} height={32} />
+        <Icon width={20} height={20} />
       </div>
-      <h2>
-        {icon.name} <Pill label={uppercaseFirst(icon.set)} />
-      </h2>
-      <p>{icon.description}</p>
-      <ButtonGroup>
-        <Button
-          onClick={copyReactCode}
-          label="React"
-          ariaLabel="Copy React code"
-          didJustCopy={didJustCopyReactCode}
-          icon="copy"
-        ></Button>
-        <Button
-          onClick={copySVG}
-          label="SVG"
-          ariaLabel="Copy SVG"
-          didJustCopy={didJustCopySVG}
-          icon="copy"
-        />
-        <Button
-          onClick={download}
-          label=""
-          ariaLabel="Download"
-          didJustDownload={didJustDownload}
-          icon="download"
-        />
-      </ButtonGroup>
+      <div className={styles.IconInfo}>
+        <h2>
+          {icon.name} <Pill label={uppercaseFirst(icon.set)} subdued />
+        </h2>
+        <p>{icon.description}</p>
+      </div>
+      <div className={styles.IconActions}>
+        <ButtonGroup>
+          <Button
+            onClick={copyReactCode}
+            label="React"
+            ariaLabel="Copy React code"
+            didJustCopy={didJustCopyReactCode}
+            icon="copy"
+          ></Button>
+          <Button
+            onClick={copySVG}
+            label="SVG"
+            ariaLabel="Copy SVG"
+            didJustCopy={didJustCopySVG}
+            icon="copy"
+          />
+          <Button
+            onClick={download}
+            label=""
+            ariaLabel="Download"
+            didJustDownload={didJustDownload}
+            icon="download"
+          />
+        </ButtonGroup>
+      </div>
     </div>
   );
 }

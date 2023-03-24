@@ -9,6 +9,7 @@ import {ComponentsPageMeta} from '@/types';
 import styles from './page.module.scss';
 import {useEffect, useState} from 'react';
 import {className} from '@/utils';
+import Iframe from '@/components/Iframe';
 
 const exampleIframeId = 'example-iframe';
 
@@ -89,12 +90,14 @@ export default function ComponentMeta({
                         : styles.isDark,
                     )}
                   >
-                    <HeadlessTab.Panel
-                      as="iframe"
-                      id={exampleIframeId}
-                      src={iframeSrc}
-                      onLoad={handleExampleLoad}
-                    ></HeadlessTab.Panel>
+                    <HeadlessTab.Panel>
+                      <Iframe
+                        id={exampleIframeId}
+                        src={iframeSrc}
+                        onLoad={handleExampleLoad}
+                        minBreakpoint="breakpoints-lg"
+                      />
+                    </HeadlessTab.Panel>
                     {reactCode && (
                       <HeadlessTab.Panel className={styles.Code}>
                         <Code

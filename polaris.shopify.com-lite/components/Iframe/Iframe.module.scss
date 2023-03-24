@@ -1,0 +1,18 @@
+.Iframe {
+  position: relative;
+  background: var(--color-surface-subdued);
+  border-radius: 8px;
+
+  iframe {
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    animation: fade-in 0.2s 0.5s both ease-in-out;
+  }
+}

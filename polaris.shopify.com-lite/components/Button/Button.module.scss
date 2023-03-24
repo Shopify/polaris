@@ -82,8 +82,15 @@
 }
 
 .CopyIndicator {
-  background: var(--color-surface-subdued) url(./icon-tickmark.svg) no-repeat
-    center center;
+  background: var(--color-surface-subdued);
+  > span {
+    flex: 1;
+    height: 100%;
+    background: url(./icon-tickmark.svg) no-repeat center center;
+    @media (prefers-color-scheme: dark) {
+      filter: invert(1);
+    }
+  }
 }
 
 .DownloadIndicator {

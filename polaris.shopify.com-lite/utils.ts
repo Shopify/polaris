@@ -1,4 +1,5 @@
 import {
+  Block,
   Content,
   Image,
   Page,
@@ -48,29 +49,45 @@ export function getResolvedPage(
     }
   }
 
-  // TODO: Make recursive
-  page.blocks.forEach((block) => {
-    switch (block.blockType) {
-      case 'Image': {
-        const image = content.images.find(
-          (image) => image.id === block.imageId,
-        );
-        if (image) {
-          images.push(image);
+  function extractImages(blocks: Block[]) {
+    blocks.forEach((block) => {
+      switch (block.blockType) {
+        case 'Image': {
+          const image = content.images.find(
+            (image) => image.id === block.imageId,
+          );
+          if (image) {
+            images.push(image);
+          }
+          break;
         }
-        break;
-      }
-      case 'TextImage': {
-        const image = content.images.find(
-          (image) => image.id === block.imageId,
-        );
-        if (image) {
-          images.push(image);
+
+        case 'TextImage': {
+          const image = content.images.find(
+            (image) => image.id === block.imageId,
+          );
+          if (image) {
+            images.push(image);
+          }
+          break;
         }
-        break;
+
+        case 'ProgressiveDisclosure': {
+          extractImages(block.blocks);
+          break;
+        }
+
+        case 'TabbedContent': {
+          block.tabs.forEach((tab) => {
+            extractImages(tab.blocks);
+          });
+          break;
+        }
       }
-    }
-  });
+    });
+  }
+
+  extractImages(page.blocks);
 
   const resolvedPage: ResolvedPage = {
     ...page,

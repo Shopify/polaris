@@ -12,6 +12,10 @@
   text-decoration: none !important;
   color: var(--color-text-strong) !important;
 
+  &.subdued {
+    color: var(--color-text-subdued) !important;
+  }
+
   &:before {
     content: '';
     display: block;

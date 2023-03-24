@@ -1,4 +1,4 @@
-// import './globals.css'
+import '@shopify/polaris/build/esm/styles.css';
 
 export default function ExamplesLayout({
   children,

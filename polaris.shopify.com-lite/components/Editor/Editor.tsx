@@ -526,32 +526,12 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                         value: 'listing',
                         label: 'Sub page listing',
                       },
-                      {
-                        value: 'custom',
-                        label: 'Custom next.js layout',
-                      },
                     ]}
                     value={editedPage.layout}
                     onChange={(layout: Page['layout']) =>
                       updatePage({...editedPage, layout})
                     }
                   />
-
-                  {editedPage.layout === 'custom' && (
-                    <Banner
-                      title="This page is using a custom layout"
-                      action={{
-                        content: 'Read Next.js docs',
-                        url: 'https://beta.nextjs.org/docs/app-directory-roadmap',
-                      }}
-                      status="info"
-                    >
-                      <p>
-                        You have to create a custom Next.js template for the
-                        page to show up.
-                      </p>
-                    </Banner>
-                  )}
                 </FormLayout>
               </AlphaCard>
 

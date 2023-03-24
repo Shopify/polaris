@@ -1,5 +1,6 @@
 .ImagePicker {
   display: flex;
+  min-height: 80vh;
 
   .Inspector {
     min-width: 24rem;
@@ -100,6 +101,7 @@
         height: 100%;
         border-radius: 8px;
         background: #ededed;
+        object-fit: contain;
 
         &:nth-child(1) {
           z-index: 1;

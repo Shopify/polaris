@@ -1,0 +1,27 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.LightModeImage,
+.DarkModeImage {
+  animation: fade-in 0.2s 0.5s both ease-in-out;
+}
+
+@media (prefers-color-scheme: light) {
+  .DarkModeImage {
+    display: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .LightModeImage {
+    &.darkModeImageAvailable {
+      display: none !important;
+    }
+  }
+}

@@ -4,18 +4,26 @@
   h1,
   h2,
   h3 {
-    margin-bottom: 1rem;
+    &:not(:last-child) {
+      margin-bottom: 0.75rem;
+    }
   }
 
   p,
   ul {
-    margin-bottom: 1.15rem;
+    &:not(:last-child) {
+      margin-bottom: 1.15rem;
+    }
   }
 
   img,
-  iframe,
   > div {
-    margin: 1.5rem 0;
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   h1 {

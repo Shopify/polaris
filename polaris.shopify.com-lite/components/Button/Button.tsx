@@ -32,7 +32,9 @@ function Button({
       {label}
 
       {didJustCopy && (
-        <span className={styles.CopyIndicator} aria-hidden={true}></span>
+        <span className={styles.CopyIndicator} aria-hidden={true}>
+          <span></span>
+        </span>
       )}
       {didJustDownload && (
         <span className={styles.DownloadIndicator} aria-hidden={true}>

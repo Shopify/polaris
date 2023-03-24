@@ -1,18 +1,11 @@
 'use client';
 
-import {ClipboardMinor} from '@shopify/polaris-icons';
-import {Fragment, useState} from 'react';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
-
-// import {useCopyToClipboard} from '../../utils/hooks';
-// import Icon from '../Icon';
-import styles from './Code.module.scss';
 import {CodeBlock, CodeBlockLanguage} from '@/types';
 import {Tabs, Tab} from '../Tabs';
 import Button from '../Button';
 import {useCopyToClipboard} from '@/hooks';
-import {className} from '@/utils';
-// import Tooltip from '../Tooltip';
+import styles from './Code.module.scss';
 
 interface Props {
   snippets: CodeBlock['snippets'];
@@ -25,9 +18,7 @@ function Code({snippets}: Props) {
         <Tabs tabs={snippets.map(({label}) => label)} boxed={false}>
           {snippets.map(({id, code, language}) => (
             <Tab key={id}>
-              <div className="dark-mode">
-                <HighlightedCode code={code} language={language} />
-              </div>
+              <HighlightedCode code={code} language={language} />
             </Tab>
           ))}
         </Tabs>
@@ -35,7 +26,7 @@ function Code({snippets}: Props) {
     );
   } else if (snippets.length === 1) {
     return (
-      <div className={className(styles.Code, 'dark-mode')}>
+      <div className={styles.Code}>
         <HighlightedCode
           code={snippets[0].code}
           language={snippets[0].language}

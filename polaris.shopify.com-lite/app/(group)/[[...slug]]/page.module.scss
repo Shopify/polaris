@@ -46,6 +46,9 @@
     min-width: 16rem;
     max-width: 16rem;
     border-left: 1px solid var(--color-border);
+    overflow: auto;
+    @include custom-scrollbars;
+    max-height: calc(100vh - 4rem);
   }
 }
 
@@ -58,6 +61,10 @@
 .ExampleDescription {
   margin-top: 1rem;
   margin-bottom: 1rem;
+
+  code {
+    font-family: var(--font-family-mono);
+  }
 }
 
 .ExampleContainer {
@@ -81,11 +88,11 @@
   border-radius: 8px;
   overflow: hidden;
   color: var(--color-text);
-  height: 500px;
+  aspect-ratio: 16 / 9;
   // transition: background-color 0.1s 0.1s linear;
 
   &.isDark {
-    background: black;
+    background: var(--color-surface-subdued);
   }
 
   iframe {

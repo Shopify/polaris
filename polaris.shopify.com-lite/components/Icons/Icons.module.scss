@@ -2,37 +2,49 @@
 
 .Grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 2rem 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
 .Icon {
   color: var(--color-text-subdued);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-surface-subdued);
+  padding: 3rem 1.5rem 1rem;
+  text-align: center;
+  border-radius: 16px;
+  cursor: default;
+}
 
-  .IconWrapper {
-    border-radius: 16px;
-    aspect-ratio: 16/9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--color-surface-subdued);
-  }
+.IconWrapper {
+  fill: var(--color-text-strong);
+}
+
+.IconInfo {
+  flex: 1;
 
   h2 {
     margin-top: 1rem;
-    margin-bottom: 0.25rem;
-    font-weight: var(--font-weight-heavy);
-    color: var(--color-text-strong);
-    @include heading-4;
+    margin-bottom: 0.125rem;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
   }
 
   p {
     margin-bottom: 0.75rem;
+    font-size: var(--font-size-small);
+  }
+}
+
+.IconActions {
+  @media (pointer: fine) {
+    opacity: 0;
+    transition: opacity 0.1s linear;
   }
 
-  @media (prefers-color-scheme: dark) {
-    svg {
-      fill: #fff;
-    }
+  .Icon:hover & {
+    opacity: 1;
   }
 }

@@ -111,6 +111,10 @@
     opacity: 0.5;
   }
 
+  &:hover {
+    opacity: 1;
+  }
+
   &[aria-expanded='true'] {
     background-image: url(./MinusMinor.svg);
   }

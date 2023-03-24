@@ -40,6 +40,8 @@ export const useMedia = <T>(
   values: T[],
   defaultValue: T,
 ) => {
+  if (typeof window === 'undefined') return defaultValue;
+
   // Array containing a media query list for each query
   const mediaQueryLists = queries.map((q) => window.matchMedia(q));
   // Function that gets value based on matching media query

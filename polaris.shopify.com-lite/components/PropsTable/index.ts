@@ -1,3 +1,3 @@
-import PropsTable from './PropsTabe';
+import PropsTable from './PropsTable';
 
 export default PropsTable;

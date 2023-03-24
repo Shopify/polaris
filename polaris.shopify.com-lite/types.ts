@@ -5,7 +5,7 @@ export interface Page {
   slug: string;
   parentId: string | null;
   order: number;
-  layout: 'blocks' | 'listing' | 'custom';
+  layout: 'blocks' | 'listing';
   keywords: string[];
   childPageMetaType: PageMetaType | null;
   pageMeta: PageMeta | null;
