@@ -25,7 +25,7 @@ const SpacingBackground = ({
   return (
     <div
       style={{
-        background: '#E0F8EE',
+        background: 'var(--p-color-bg-success-subdued)',
         width,
         height: 'auto',
       }}
@@ -40,7 +40,7 @@ const Placeholder = ({height = 'auto', width = 'auto'}) => {
     <div
       style={{
         display: 'inherit',
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         height: height ?? undefined,
         width: width ?? undefined,
       }}
