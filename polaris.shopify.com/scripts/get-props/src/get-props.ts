@@ -45,15 +45,6 @@ export function getProps(filePaths: string[]): AllTypes {
     }
   }
 
-  Object.entries(ast).forEach(([name, value]) => {
-    const definitionCount = Object.keys(value).length;
-    if (definitionCount !== 1) {
-      console.warn(
-        `A type called "${name}" is defined in ${definitionCount} files`,
-      );
-    }
-  });
-
   return ast;
 
   function visit(
