@@ -1,9 +1,15 @@
-import {prettyExeca, startLocalServer} from './util.mjs';
+import {prettyExeca, buildLocalServer, startLocalServer} from './util.mjs';
 
 const genSiteMap = async () => {
   const outputFile = 'public/sitemap.xml';
 
-  const server = startLocalServer('dev');
+  try {
+    await buildLocalServer();
+  } catch (error) {
+    process.exit(-1);
+  }
+
+  const server = startLocalServer();
   server.catch((err) => {
     if (!server.killed) {
       console.error(err.stderr);

@@ -94,6 +94,18 @@ function streamToStringGetter(stream) {
   return () => Buffer.concat(chunks).toString('utf8');
 }
 
+export function buildLocalServer() {
+  return prettyExeca('yarn', ['next', 'build'], {
+    stdout: 'inherit',
+    stderr: 'inherit',
+    pretty: {
+      text: 'Building local server',
+      successText: 'Built local server',
+      failText: "Couldn't build local server",
+    },
+  });
+}
+
 export function genAssets() {
   return prettyExeca('yarn', ['gen-assets'], {
     stdout: 'inherit',
