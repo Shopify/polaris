@@ -10,7 +10,10 @@ export function Default() {
   return (
     <FooterHelp>
       Learn more about{' '}
-      <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
+      <Link
+        url="https://help.shopify.com/manual/orders/fulfill-orders"
+        underline
+      >
         fulfilling orders
       </Link>
     </FooterHelp>

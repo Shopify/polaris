@@ -25,6 +25,8 @@ export interface LinkProps {
   accessibilityLabel?: string;
   /** Indicates whether or not the link is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
+  /** Adds decoration underline to the link. Use when link is inline*/
+  underline?: boolean;
 }
 
 export function Link({
@@ -37,6 +39,7 @@ export function Link({
   removeUnderline,
   accessibilityLabel,
   dataPrimaryLink,
+  underline,
 }: LinkProps) {
   return (
     <BannerContext.Consumer>
@@ -47,6 +50,7 @@ export function Link({
           styles.Link,
           shouldBeMonochrome && styles.monochrome,
           removeUnderline && styles.removeUnderline,
+          underline && styles.underline,
         );
 
         return url ? (
