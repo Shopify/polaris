@@ -34,3 +34,11 @@ export function External() {
     </Link>
   );
 }
+
+export function Underline() {
+  return (
+    <Link url="https://help.shopify.com/manual" external underline>
+      Shopify Help Center
+    </Link>
+  );
+}
