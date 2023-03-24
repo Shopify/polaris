@@ -6,4 +6,4 @@
 '@shopify/stylelint-polaris': patch
 ---
 
-Bumped `eslint-plugin-import` and `@typescript-eslint/**` packages, added type import/export rules, and updated type imports
+Bumped `eslint-plugin-import`, `@typescript-eslint/**`, and `downlevel-dts` packages, added type import/export rules, and updated type imports
