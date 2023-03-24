@@ -868,8 +868,10 @@ function IndexTableBase({
     index: number,
     direction: IndexTableSortDirection,
   ) {
-    lastSortedColumnIndex.current = sortColumnIndex;
-    onSort?.(index, direction);
+    return () => {
+      lastSortedColumnIndex.current = sortColumnIndex;
+      onSort?.(index, direction);
+    };
   }
 
   function renderHeadingContent(heading: IndexTableHeading, index: number) {
@@ -910,24 +912,24 @@ function IndexTableBase({
     }
 
     if (sortable?.[index]) {
+      const isCurrentlyAscending = sortDirection === 'ascending';
       const isCurrentlySorted = index === sortColumnIndex;
       const isPreviouslySorted =
         !isCurrentlySorted && index === lastSortedColumnIndex.current;
 
-      const isAscending = sortDirection === 'ascending';
+      const sortIcons = {
+        ascending: SortAscendingMajor,
+        descending: SortDescendingMajor,
+      };
 
-      let newDirection: IndexTableSortDirection =
-        heading.defaultSortDirection || defaultSortDirection;
+      let nextDirection: IndexTableSortDirection =
+        heading.defaultSortDirection ?? defaultSortDirection;
 
-      let SourceComponent =
-        newDirection === 'ascending' ? SortAscendingMajor : SortDescendingMajor;
       if (isCurrentlySorted) {
-        newDirection = isAscending ? 'descending' : 'ascending';
-        SourceComponent =
-          sortDirection === 'ascending'
-            ? SortAscendingMajor
-            : SortDescendingMajor;
+        nextDirection = isCurrentlyAscending ? 'descending' : 'ascending';
       }
+
+      const SourceComponent = sortIcons[nextDirection];
 
       const iconMarkup = (
         <span
@@ -947,7 +949,7 @@ function IndexTableBase({
       );
 
       const defaultSortButtonProps = {
-        onClick: () => handleSortHeadingClick(index, newDirection),
+        onClick: handleSortHeadingClick(index, nextDirection),
         className: classNames(
           styles.TableHeadingSortButton,
           !isCurrentlySorted &&
@@ -991,7 +993,7 @@ function IndexTableBase({
 
       const tooltipDirection = isCurrentlySorted
         ? sortDirection!
-        : newDirection;
+        : nextDirection;
 
       const sortTooltipContent = sortToggleLabels[index][tooltipDirection];
 

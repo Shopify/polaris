@@ -14,6 +14,11 @@ import {
   Tooltip,
 } from '@shopify/polaris';
 
+import {
+  IndexTableHeading,
+  IndexTableSortDirection,
+} from '../../../build/ts/latest/src/components/IndexTable';
+
 export default {
   component: IndexTable,
 } as ComponentMeta<typeof IndexTable>;
@@ -1708,18 +1713,30 @@ export function WithAllOfItsElements() {
 
 export function WithSortableHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
-  const [sortDirection, setSortDirection] = useState('descending');
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableSortDirection>('descending');
 
   const sortToggleLabels = {
-    0: {ascending: 'A-Z', descending: 'Z-A'},
-    1: {ascending: 'Ascending', descending: 'Descending'},
-    2: {ascending: 'Newest', descending: 'Oldest'},
-    3: {ascending: 'Ascending', descending: 'Ascending'},
-    4: {ascending: 'A-Z', descending: 'Z-A'},
-    5: {ascending: 'A-Z', descending: 'Z-A'},
-    6: {ascending: 'A-Z', descending: 'Z-A'},
-    7: {ascending: 'A-Z', descending: 'Z-A'},
+    0: {ascending: 'A-Z', descending: 'Z-A', key: 'name'},
+    1: {ascending: 'Newest', descending: 'Oldest', key: 'date'},
+    2: {ascending: 'Ascending', descending: 'Descending', key: 'orders'},
+    3: {ascending: 'Ascending', descending: 'Descending', key: 'amountSpent'},
+    4: {ascending: 'A-Z', descending: 'Z-A', key: 'location'},
+    5: {ascending: 'A-Z', descending: 'Z-A', key: 'fulfillmentStatus'},
+    6: {ascending: 'A-Z', descending: 'Z-A', key: 'paymentStatus'},
+    7: {ascending: 'A-Z', descending: 'Z-A', key: 'notes'},
   };
+
+  const headings: IndexTableHeading[] = [
+    {title: 'Name'},
+    {title: 'Date', defaultSortDirection: 'ascending'},
+    {title: 'Order count', alignment: 'end'},
+    {title: 'Amount spent', alignment: 'end'},
+    {title: 'Location'},
+    {title: 'Fulfillment status'},
+    {title: 'Payment status'},
+    {title: 'Notes'},
+  ];
 
   const initialRows = [
     {
@@ -1771,6 +1788,7 @@ export function WithSortableHeadings() {
       notes: 'This customer has requested fragile delivery',
     },
   ];
+
   const [sortedRows, setSortedRows] = useState(
     sortRows(initialRows, sortIndex, sortDirection),
   );
@@ -1788,24 +1806,35 @@ export function WithSortableHeadings() {
   function handleClickSortHeading(index, direction) {
     setSortIndex(index);
     setSortDirection(direction);
-    const newSortedRows = sortRows(rows, index, direction);
-    setSortedRows(newSortedRows);
+    setSortedRows(sortRows(rows, index, direction));
   }
 
-  function sortRows(localRows, index, direction) {
-    return [...localRows].sort((rowA, rowB) => {
-      const key = index === 0 ? 'name' : 'location';
-      if (rowA[key] < rowB[key]) {
-        return direction === 'descending' ? -1 : 1;
-      }
-      if (rowA[key] > rowB[key]) {
-        return direction === 'descending' ? 1 : -1;
-      }
-      return 0;
+  function parseDollars(stringNum) {
+    return stringNum.substring(1).split(',').join('');
+  }
+
+  function sortRows(rows, index, direction) {
+    const {key} = sortToggleLabels[index];
+
+    const collator = new Intl.Collator('en', {
+      numeric: key === 'date' || key === 'amountSpent',
+      sensitivity: 'base',
     });
+
+    const nextSortedRows = [...rows].sort((rowA, rowB) => {
+      const isCurrency = key === 'amountSpent';
+      const valueA = isCurrency ? parseDollars(rowA[key]) : rowA[key];
+      const valueB = isCurrency ? parseDollars(rowB[key]) : rowB[key];
+
+      return collator.compare(valueA, valueB);
+    });
+
+    return direction === 'ascending'
+      ? nextSortedRows
+      : nextSortedRows.reverse();
   }
 
-  const rowMarkup = rows.map(
+  const rowMarkup = sortedRows.map(
     (
       {
         id,
@@ -1859,25 +1888,7 @@ export function WithSortableHeadings() {
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
-        headings={[
-          {title: 'Name'},
-          {title: 'Date', defaultSortDirection: 'ascending'},
-          {
-            alignment: 'end',
-            id: 'order-count',
-            title: 'Order count',
-          },
-          {
-            alignment: 'end',
-            id: 'amount-spent',
-            title: 'Amount spent',
-          },
-
-          {title: 'Location'},
-          {title: 'Fulfillment status'},
-          {title: 'Payment status'},
-          {title: 'Notes'},
-        ]}
+        headings={headings}
         sortable={[true, true, false, true, true, false, false]}
         sortDirection={sortDirection}
         sortColumnIndex={sortIndex}
@@ -1893,17 +1904,18 @@ export function WithSortableHeadings() {
 
 export function WithSortableCustomHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
-  const [sortDirection, setSortDirection] = useState('descending');
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableSortDirection>('descending');
 
   const sortToggleLabels = {
-    0: {ascending: 'A-Z', descending: 'Z-A'},
-    1: {ascending: 'Ascending', descending: 'Descending'},
-    2: {ascending: 'Newest', descending: 'Oldest'},
-    3: {ascending: 'Ascending', descending: 'Ascending'},
-    4: {ascending: 'A-Z', descending: 'Z-A'},
-    5: {ascending: 'A-Z', descending: 'Z-A'},
-    6: {ascending: 'A-Z', descending: 'Z-A'},
-    7: {ascending: 'A-Z', descending: 'Z-A'},
+    0: {ascending: 'A-Z', descending: 'Z-A', key: 'name'},
+    1: {ascending: 'Newest', descending: 'Oldest', key: 'date'},
+    2: {ascending: 'Ascending', descending: 'Descending', key: 'orders'},
+    3: {ascending: 'Ascending', descending: 'Descending', key: 'amountSpent'},
+    4: {ascending: 'A-Z', descending: 'Z-A', key: 'location'},
+    5: {ascending: 'A-Z', descending: 'Z-A', key: 'fulfillmentStatus'},
+    6: {ascending: 'A-Z', descending: 'Z-A', key: 'paymentStatus'},
+    7: {ascending: 'A-Z', descending: 'Z-A', key: 'notes'},
   };
 
   const initialRows = [
@@ -1973,21 +1985,32 @@ export function WithSortableCustomHeadings() {
   function handleClickSortHeading(index, direction) {
     setSortIndex(index);
     setSortDirection(direction);
-    const newSortedRows = sortRows(rows, index, direction);
-    setSortedRows(newSortedRows);
+    setSortedRows(sortRows(rows, index, direction));
   }
 
-  function sortRows(localRows, index, direction) {
-    return [...localRows].sort((rowA, rowB) => {
-      const key = index === 0 ? 'name' : 'location';
-      if (rowA[key] < rowB[key]) {
-        return direction === 'descending' ? -1 : 1;
-      }
-      if (rowA[key] > rowB[key]) {
-        return direction === 'descending' ? 1 : -1;
-      }
-      return 0;
+  function parseDollars(stringNum) {
+    return stringNum.substring(1).split(',').join('');
+  }
+
+  function sortRows(rows, index, direction) {
+    const {key} = sortToggleLabels[index];
+
+    const collator = new Intl.Collator('en', {
+      numeric: key === 'date' || key === 'amountSpent',
+      sensitivity: 'base',
     });
+
+    const nextSortedRows = [...rows].sort((rowA, rowB) => {
+      const isCurrency = key === 'amountSpent';
+      const valueA = isCurrency ? parseDollars(rowA[key]) : rowA[key];
+      const valueB = isCurrency ? parseDollars(rowB[key]) : rowB[key];
+
+      return collator.compare(valueA, valueB);
+    });
+
+    return direction === 'ascending'
+      ? nextSortedRows
+      : nextSortedRows.reverse();
   }
 
   const rowMarkup = rows.map(
@@ -2062,6 +2085,7 @@ export function WithSortableCustomHeadings() {
             tooltipContent:
               'I am a wide Amount spent tooltip that stays when clicked',
             tooltipWidth: 'wide',
+            tooltipPersistsOnClick: true,
           },
           {title: 'Location'},
           {title: 'Fulfillment status'},
