@@ -292,10 +292,6 @@ $loading-panel-height: 53px;
       opacity: 1;
     }
   }
-
-  .TableHeadingSortIcon-heading-align-end {
-    animation: hide-right-aligned-sort-button-icon var(--p-duration-50);
-  }
 }
 
 .TableHeadingSortButton-heading-align-end {
@@ -314,7 +310,7 @@ $loading-panel-height: 53px;
   content: '';
   position: absolute;
   top: 0;
-  left: 95%;
+  left: calc(100% - var(--p-space-2));
   height: 100%;
   width: var(--p-space-6);
   display: block;
@@ -341,7 +337,7 @@ $loading-panel-height: 53px;
   height: var(--p-space-5);
   width: var(--p-space-5);
 
-  &:not(.TableHeadingSortIcon-heading-align-end),
+  &:not(.TableHeadingSortIcon-heading-align-end:hover),
   &:not(.TableHeadingSortButton-heading-align-end-previously-sorted) {
     transition: opacity var(--p-duration-50) var(--p-ease);
   }
@@ -807,27 +803,5 @@ $scroll-bar-size: var(--p-space-2);
 
   100% {
     opacity: 1;
-  }
-}
-
-/* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- custom animation for right-aligned header */
-@keyframes hide-right-aligned-sort-button-icon {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  20% {
-    opacity: 0;
-    transform: translateX(0);
-  }
-
-  90% {
-    transform: translateX(calc(var(--p-space-5) * -1));
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(calc(var(--p-space-5) * -1));
   }
 }
