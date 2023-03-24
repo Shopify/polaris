@@ -281,8 +281,16 @@ if (isExecutedThroughCommandLine) {
   ]).then((files) => {
     let filesWithoutTests = files.filter((file) => !file.endsWith('test.tsx'));
     const ast = getProps(filesWithoutTests);
-    const filePath = path.join(__dirname, '../../../../../.cache/props.json');
-    fs.writeFileSync(filePath, JSON.stringify(ast, undefined, 2));
+
+    const cacheDir = path.join(__dirname, '../../../../../.cache');
+    if (!fs.existsSync(cacheDir)) {
+      fs.mkdirSync(cacheDir, {recursive: true});
+    }
+
+    fs.writeFileSync(
+      path.join(cacheDir, 'props.json'),
+      JSON.stringify(ast, undefined, 2),
+    );
   });
 }
 
