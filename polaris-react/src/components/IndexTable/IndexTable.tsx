@@ -945,7 +945,6 @@ function IndexTableBase({
           className={classNames(
             styles.TableHeadingSortIcon,
             heading?.alignment === 'end' &&
-              !isRenderAfterSelectEvent &&
               styles['TableHeadingSortIcon-heading-align-end'],
             isCurrentlySorted && styles['TableHeadingSortIcon-visible'],
           )}
