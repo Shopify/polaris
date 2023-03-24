@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {Page} from '../src';
+import {Box, Page} from '../src';
 
 export function Playground() {
   return (
     <Page title="Playground">
-      {/* Add the code you want to test in here */}
+      <Box styleOverrides={{background: 'hotpink'}}>hot pink bg</Box>
     </Page>
   );
 }

@@ -1,4 +1,4 @@
-import React, {createElement, forwardRef} from 'react';
+import React, {createElement, forwardRef, useEffect} from 'react';
 import type {
   ColorsActionTokenAlias,
   ColorsBackdropTokenAlias,
@@ -68,6 +68,7 @@ export type BackgroundColors =
   | ColorsSurfaceTokenAlias;
 
 export interface BoxProps extends React.AriaAttributes {
+  styleOverrides?: React.CSSProperties;
   children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
@@ -187,6 +188,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
       as = 'div',
+      styleOverrides,
       background,
       border,
       borderBlockEnd,
@@ -234,6 +236,16 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
+    const styleSheet = new CSSStyleSheet();
+    styleSheet.insertRule(`${styles.Box} {background: hotpink}`);
+
+    useEffect(() => {
+      if (document.adoptedStyleSheets.length > 1) {
+        document.adoptedStyleSheets = [styleSheet];
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     const style = {
       '--pc-box-color': color ? `var(--p-${color})` : undefined,
       '--pc-box-background': background ? `var(--p-${background})` : undefined,
