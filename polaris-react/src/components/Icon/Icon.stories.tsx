@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Icon} from '@shopify/polaris';
+import {AlphaStack, Box, BoxProps, Icon} from '@shopify/polaris';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -27,14 +27,24 @@ export function Colored() {
 }
 
 export function WithBackdrop() {
+  const BackdropIcon = ({color, backdrop = undefined}: any) => (
+    <Box
+      background={`surface-${backdrop ?? color}` as BoxProps['background']}
+      padding="1"
+      width="28px"
+      borderRadius="full"
+    >
+      <Icon source={CirclePlusMinor} color={color} />
+    </Box>
+  );
   return (
-    <div>
-      <Icon source={CirclePlusMinor} color="base" backdrop />
-      <Icon source={CirclePlusMinor} color="highlight" backdrop />
-      <Icon source={CirclePlusMinor} color="success" backdrop />
-      <Icon source={CirclePlusMinor} color="warning" backdrop />
-      <Icon source={CirclePlusMinor} color="critical" backdrop />
-    </div>
+    <AlphaStack gap="1">
+      <BackdropIcon color="base" backdrop="neutral" />
+      <BackdropIcon color="highlight" />
+      <BackdropIcon color="success" />
+      <BackdropIcon color="warning" />
+      <BackdropIcon color="critical" />
+    </AlphaStack>
   );
 }
 
