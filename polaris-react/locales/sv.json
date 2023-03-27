@@ -355,7 +355,7 @@
       "clear": "Rensa"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Sök och filtrera (F)",
+      "searchFilterTooltip": "Sök och filtrera {shortcut}",
       "searchFilterAccessibilityLabel": "Sök och filtrera resultat",
       "sort": "Sortera dina resultat",
       "addView": "Lägg till en ny vy",

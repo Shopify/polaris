@@ -355,7 +355,7 @@
       "clear": "Wissen"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Zoeken en filteren (F)",
+      "searchFilterTooltip": "Zoeken en filteren {shortcut}",
       "searchFilterAccessibilityLabel": "Resultaten zoeken en filteren",
       "sort": "Resultaten sorteren",
       "addView": "Nieuwe weergave toevoegen",

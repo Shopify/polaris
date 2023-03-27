@@ -355,7 +355,7 @@
       "clear": "Xóa"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Tìm kiếm và lọc (F)",
+      "searchFilterTooltip": "Tìm kiếm và lọc {shortcut}",
       "searchFilterAccessibilityLabel": "Tìm kiếm và lọc kết quả",
       "sort": "Sắp xếp kết quả",
       "addView": "Thêm chế độ xem mới",

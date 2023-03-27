@@ -355,7 +355,7 @@
       "clear": "Fjern"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Søk og filtrer (F)",
+      "searchFilterTooltip": "Søk og filtrer {shortcut}",
       "searchFilterAccessibilityLabel": "Søk og filtrer resultater",
       "sort": "Sorter resultatene",
       "addView": "Legg til en ny visning",
