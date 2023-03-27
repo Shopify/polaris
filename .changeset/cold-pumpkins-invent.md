@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Updated `gen-site-map` script to use `dev` server to fix issue of sitemap.xml not being generated with urls
+Updated `startLocalServer` script to use `dev` as default command to fix issue of sitemap.xml not being generated with urls
