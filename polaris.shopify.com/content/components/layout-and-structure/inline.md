@@ -39,4 +39,4 @@ examples:
 ## Related components
 
 - To create the large-scale structure of pages, [use the Columns component](https://polaris.shopify.com/components/layout-and-structure/columns)
-- To display elements vertically, [use the AlphaStack component](https://polaris.shopify.com/components/alphastack)
+- To display elements vertically, [use the Stack component](https://polaris.shopify.com/components/layout-and-structure/stack)
