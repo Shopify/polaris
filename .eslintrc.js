@@ -51,7 +51,7 @@ module.exports = {
       },
     ],
     '@babel/no-unused-expressions': 'off',
-    'import/consistent-type-specifier-style': 'error',
+    'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
     'import/named': 'off',
     'import/no-default-export': ['error'],
     'react/button-has-type': 'off',
@@ -65,7 +65,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/naming-convention': 'off',
-    '@typescript-eslint/no-import-type-side-effects': 'error',
     'jsx-a11y/label-has-for': [
       2,
       {
