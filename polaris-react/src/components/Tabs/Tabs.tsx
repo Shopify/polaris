@@ -9,7 +9,8 @@ import {Box} from '../Box';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
-import {List, Panel, Tab, TabMeasurer, TabMeasurerProps} from './components';
+import {List, Panel, Tab, TabMeasurer} from './components';
+import type {TabMeasurerProps} from './components';
 import styles from './Tabs.scss';
 
 export interface TabsProps {

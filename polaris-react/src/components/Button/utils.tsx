@@ -2,7 +2,8 @@ import React from 'react';
 
 import type {ComplexAction} from '../../types';
 
-import {Button, ButtonProps} from './Button';
+import {Button} from './Button';
+import type {ButtonProps} from './Button';
 
 export function buttonsFrom(
   action: ComplexAction,

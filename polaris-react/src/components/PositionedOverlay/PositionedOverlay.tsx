@@ -8,14 +8,13 @@ import {Scrollable} from '../Scrollable';
 import {layer, dataPolarisTopBar} from '../shared';
 
 import {
-  PreferredPosition,
-  PreferredAlignment,
   calculateVerticalPosition,
   calculateHorizontalPosition,
   rectIsOutsideOfRect,
   intersectionWithViewport,
   windowRect,
 } from './utilities/math';
+import type {PreferredPosition, PreferredAlignment} from './utilities/math';
 import styles from './PositionedOverlay.scss';
 
 type Positioning = 'above' | 'below';

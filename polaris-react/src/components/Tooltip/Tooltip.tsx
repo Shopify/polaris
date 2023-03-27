@@ -11,7 +11,8 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 
-import {TooltipOverlay, TooltipOverlayProps} from './components';
+import {TooltipOverlay} from './components';
+import type {TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';

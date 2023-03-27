@@ -6,11 +6,14 @@ import {useMediaQuery} from '../../../../utilities/media-query';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
-import {Icon, IconProps} from '../../../Icon';
+import {Icon} from '../../../Icon';
+import type {IconProps} from '../../../Icon';
 import {Text} from '../../../Text';
-import {Item, ItemProps} from '../Item';
+import {Item} from '../Item';
+import type {ItemProps} from '../Item';
 import styles from '../../Navigation.scss';
-import {Tooltip, TooltipProps} from '../../../Tooltip';
+import {Tooltip} from '../../../Tooltip';
+import type {TooltipProps} from '../../../Tooltip';
 
 export interface SectionProps {
   items: ItemProps[];

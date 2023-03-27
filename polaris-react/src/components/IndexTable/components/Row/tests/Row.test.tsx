@@ -1,8 +1,10 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {DeepPartial} from '@shopify/useful-types';
 
-import {IndexTable, IndexTableProps} from '../../../IndexTable';
+import {IndexTable} from '../../../IndexTable';
+import type {IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
 import {Row} from '../Row';
 import {Checkbox} from '../../Checkbox';

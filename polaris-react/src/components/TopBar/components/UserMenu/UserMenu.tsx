@@ -1,9 +1,11 @@
 import React from 'react';
 
 import type {IconableAction} from '../../../../types';
-import {Avatar, AvatarProps} from '../../../Avatar';
+import {Avatar} from '../../../Avatar';
+import type {AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
-import {Menu, MenuProps} from '../Menu';
+import {Menu} from '../Menu';
+import type {MenuProps} from '../Menu';
 import {Text} from '../../../Text';
 
 import styles from './UserMenu.scss';

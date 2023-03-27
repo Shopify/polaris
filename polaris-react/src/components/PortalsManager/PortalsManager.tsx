@@ -1,9 +1,7 @@
 import React, {useMemo, useState} from 'react';
 
-import {
-  PortalsManagerContext,
-  PortalsContainerElement,
-} from '../../utilities/portals';
+import {PortalsManagerContext} from '../../utilities/portals';
+import type {PortalsContainerElement} from '../../utilities/portals';
 
 import {PortalsContainer} from './components';
 

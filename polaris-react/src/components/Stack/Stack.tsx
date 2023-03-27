@@ -1,4 +1,5 @@
-import React, {memo, NamedExoticComponent} from 'react';
+import React, {memo} from 'react';
+import type {NamedExoticComponent} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 import {elementChildren, wrapWithComponent} from '../../utilities/components';

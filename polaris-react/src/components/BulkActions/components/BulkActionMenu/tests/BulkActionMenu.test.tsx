@@ -3,7 +3,8 @@ import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../../../../ActionList';
 import {Popover} from '../../../../Popover';
-import {BulkActionMenu, BulkActionsMenuProps, BulkActionButton} from '../..';
+import {BulkActionMenu, BulkActionButton} from '../..';
+import type {BulkActionsMenuProps} from '../..';
 
 const defaultProps: BulkActionsMenuProps = {
   title: 'New promoted action',

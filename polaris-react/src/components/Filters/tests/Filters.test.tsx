@@ -2,7 +2,8 @@ import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {Button, ButtonProps} from '../../Button';
+import {Button} from '../../Button';
+import type {ButtonProps} from '../../Button';
 import {Collapsible} from '../../Collapsible';
 import {Popover} from '../../Popover';
 // eslint-disable-next-line import/no-deprecated
@@ -11,7 +12,8 @@ import {Tag} from '../../Tag';
 import {TextField} from '../../TextField';
 import {Text} from '../../Text';
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
-import {Filters, FiltersProps} from '../Filters';
+import {Filters} from '../Filters';
+import type {FiltersProps} from '../Filters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
 import * as focusUtils from '../../../utilities/focus';
 import styles from '../Filters.scss';

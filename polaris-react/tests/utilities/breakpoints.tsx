@@ -1,8 +1,5 @@
-import {
-  BreakpointsTokenName,
-  breakpoints,
-  getMediaConditions,
-} from '@shopify/polaris-tokens';
+import {breakpoints, getMediaConditions} from '@shopify/polaris-tokens';
+import type {BreakpointsTokenName} from '@shopify/polaris-tokens';
 
 const mediaConditions = getMediaConditions(breakpoints);
 
