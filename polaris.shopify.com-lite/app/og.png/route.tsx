@@ -15,9 +15,7 @@ export async function GET(request: NextRequest) {
   const id = searchParams.get('id');
   const page = content.pages.find((page) => page.id === id);
 
-  if (!page) {
-    return NextResponse.error();
-  }
+  if (!page) return NextResponse.error();
 
   const logoDimensions = {width: 913, height: 1035};
   const logo = fs.readFileSync('./app/og.png/shopify_glyph_white.png');
@@ -76,18 +74,8 @@ export async function GET(request: NextRequest) {
       width: WIDTH,
       height: HEIGHT,
       fonts: [
-        {
-          name: 'Inter',
-          data: interRegular,
-          weight: 400,
-          style: 'normal',
-        },
-        {
-          name: 'Inter',
-          data: interSemiBold,
-          weight: 600,
-          style: 'normal',
-        },
+        {name: 'Inter', data: interRegular, weight: 400, style: 'normal'},
+        {name: 'Inter', data: interSemiBold, weight: 600, style: 'normal'},
       ],
     },
   );

@@ -21,7 +21,7 @@ import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {JSONOutput} from 'typedoc';
 import styles from './page.module.scss';
-import ComponentMeta from './componentMeta';
+import ComponentMeta from './ComponentMeta';
 import Markdown from '@/components/Markdown';
 import {HOME_PAGE_ID} from '@/config';
 
@@ -263,7 +263,8 @@ function PageWrapper({
 
 export async function generateStaticParams() {
   const pages = content.pages.map((page) => getResolvedPage(content, page));
+
   return pages.map((page) => ({
-    slugs: page.breadcrumbs.map((breadcrumb) => breadcrumb.slug),
+    slug: page.breadcrumbs.map((breadcrumb) => breadcrumb.slug),
   }));
 }

@@ -62,21 +62,20 @@ interface PatternsPageMeta extends BasePageMeta {
   type: 'patterns';
 }
 
-export const tokenGroups = [
-  'breakpoints',
-  'colors',
-  'depth',
-  'font',
-  'motion',
-  'shape',
-  'spacing',
-  'zIndex',
-] as const;
-export type TokenGroup = typeof tokenGroups[number];
+// export const tokenGroups = [
+//   'breakpoints',
+//   'colors',
+//   'depth',
+//   'font',
+//   'motion',
+//   'shape',
+//   'spacing',
+//   'zIndex',
+// ] as const;
+// export type TokenGroup = typeof tokenGroups[number];
 
 interface TokensPageMeta extends BasePageMeta {
   type: 'tokens';
-  tokenGroup: TokenGroup;
 }
 
 export type PageMeta = ComponentsPageMeta | PatternsPageMeta | TokensPageMeta;
@@ -191,7 +190,7 @@ export type Image = {
   };
 };
 
-export interface Content {
+export interface State {
   pages: Page[];
   images: Image[];
 }

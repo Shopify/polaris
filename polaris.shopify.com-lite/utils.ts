@@ -1,47 +1,44 @@
 import {
   Block,
-  Content,
+  State,
   Image,
   Page,
   ResolvedPage,
   ResolvedPageWithoutBlocks,
 } from './types';
 
-export function getPageByPath(content: Content, path: string): Page | null {
-  const page = content.pages.find((page) => getPageUrl(content, page) === path);
+export function getPageByPath(state: State, path: string): Page | null {
+  const page = state.pages.find((page) => getPageUrl(state, page) === path);
   return page || null;
 }
 
-export function getPageById(content: Content, id: string): Page | null {
-  const page = content.pages.find((page) => page.id === id);
+export function getPageById(state: State, id: string): Page | null {
+  const page = state.pages.find((page) => page.id === id);
   return page || null;
 }
 
-export function getPageUrl(
-  content: Content,
-  page: Page | ResolvedPage,
-): string {
+export function getPageUrl(state: State, page: Page | ResolvedPage): string {
   // TODO: Include leading slash
-  const breadcrumbs = getBreadcrumbs(content, page);
+  const breadcrumbs = getBreadcrumbs(state, page);
   return breadcrumbs.map(({slug}) => slug).join('/');
 }
 
-export function getResolvedPage(content: Content, page: Page): ResolvedPage;
+export function getResolvedPage(state: State, page: Page): ResolvedPage;
 export function getResolvedPage(
-  content: Content,
+  state: State,
   page: Page,
   removeBlocks: true,
 ): ResolvedPageWithoutBlocks;
 
 export function getResolvedPage(
-  content: Content,
+  state: State,
   page: Page,
   removeBlocks?: true,
 ): ResolvedPage | ResolvedPageWithoutBlocks {
   let images: Image[] = [];
 
   if (page.thumbnailImageId) {
-    const thumbnailImage = content.images.find(
+    const thumbnailImage = state.images.find(
       (image) => image.id === page.thumbnailImageId,
     );
     if (thumbnailImage) {
@@ -53,7 +50,7 @@ export function getResolvedPage(
     blocks.forEach((block) => {
       switch (block.blockType) {
         case 'Image': {
-          const image = content.images.find(
+          const image = state.images.find(
             (image) => image.id === block.imageId,
           );
           if (image) {
@@ -63,7 +60,7 @@ export function getResolvedPage(
         }
 
         case 'TextImage': {
-          const image = content.images.find(
+          const image = state.images.find(
             (image) => image.id === block.imageId,
           );
           if (image) {
@@ -91,8 +88,8 @@ export function getResolvedPage(
 
   const resolvedPage: ResolvedPage = {
     ...page,
-    url: getPageUrl(content, page),
-    breadcrumbs: getBreadcrumbs(content, page),
+    url: getPageUrl(state, page),
+    breadcrumbs: getBreadcrumbs(state, page),
     images,
   };
 
@@ -125,14 +122,14 @@ export function getImageDimensions(
 }
 
 export function getBreadcrumbs(
-  content: Content,
+  state: State,
   page: Page,
 ): ResolvedPage['breadcrumbs'] {
   let parents: Page[] = [];
 
   function getParent(currentPage: Page): Page | undefined {
     if (currentPage.parentId) {
-      const parent = content.pages.find(
+      const parent = state.pages.find(
         (page) => page.id === currentPage.parentId,
       );
       if (parent) {
@@ -193,4 +190,8 @@ export function arrayMoveImmutable<T>(
 
 export function uppercaseFirst(string: string): string {
   return string[0].toUpperCase() + string.slice(1);
+}
+
+export function assertUnreachable(_: never): never {
+  throw new Error('assertUnreachable was called, which should never happen');
 }

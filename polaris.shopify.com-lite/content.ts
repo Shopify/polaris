@@ -1,11 +1,72 @@
-import { Content } from '@/types';
+import { State } from '@/types';
 
 /*
   Automatically generated file (created by /api/editor.tsx).
   Do not edit by hand.
 */
 
-const pages: Content['pages'] = [
+const pages: State['pages'] = [
+  {
+    id: "cwalFof6yovu1SgMtoZim",
+    title: "Accessibility",
+    excerpt: "Making commerce better for everyone means caring deeply about making quality products. A quality product should have a fantastic user experience (UX).",
+    slug: "accessibility",
+    parentId: "1wV1qjPStuXEdMmv3uvMY",
+    order: 0,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "wVCM5xqddRUZYWWxUkP4_",
+        blockType: "Markdown",
+        content: "This includes:\n\n- A beautiful and functional design\n- Consistent and useful [copy](/content/product-content)\n- Principles of\n  [universal design](https://en.wikipedia.org/wiki/Universal_design) and inclusivity\n\n---\n\n## Usable for everyone\n\nIt’s important that Shopify products—and [Partner](https://www.shopify.ca/partners) products—are usable and useful to everyone.\n\nEveryone is a pretty big group. It includes our merchants, their customers, our developer partners, our employees, and the greater tech community at large. That also includes all members of our community who have disabilities.\n\nDisabilities may affect how people move, see, hear, communicate, learn, understand, and process information.\nAs a result, it’s important to consider how to design and develop your product to support a wide range of needs and experiences.\n\nIn the United States, as many as 1 in 4 adults has at least 1 disability [Source: [CDC](https://www.cdc.gov/media/releases/2018/p0816-disability.html)]. In Canada, the estimate is 22%, and elsewhere in the world the estimate is closer to 1 in 7 [Source: [Statistics Canada](https://www150.statcan.gc.ca/n1/pub/11-627-m/11-627-m2018035-eng.htm), [World Bank](https://www.worldbank.org/en/topic/disability)].\n\n---\n\n## Building inclusive experiences\n\nUsing our [components](/components) is a way to improve accessibility and consistency when building products for Shopify.\n\n- The component library in this style guide includes code we can use across applications\n- This component code includes accessible markup\n- Since the code exists in a single component that gets reused, it’s easier to update and fix any bugs\n\nThe build-it-once, use-it-everywhere model means the accessibility knowledge of the designers and developers who build these components is available to all of Shopify and our partners. Because of this, merchants get a consistent experience that can be leveraged into accessible products.\n\nMany accessibility features come free in the components. But, it’s important to make sure that components are integrated in a way that doesn't create unforeseen accessibility barriers. Depending how components are used, there may be more design and implementation considerations. Be sure to test user task flows post integration.\n\n### Managing focus to support merchant workflows\n\nDon’t programmatically move focus to new content without merchant input. Polaris components that use controls to display overlays, such as modals and popovers, manage focus automatically.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n- When a merchant activates a link that goes elsewhere in the page, move focus to that content\n- When a merchant must access an overlay, move focus to it\n- When a merchant submits a form that results in an error, move focus to the error message\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n- Move focus when content updates in the background\n- Move focus when the user is actively working elsewhere on the page\n\n</div></div>\n\nThe only case where focus should be managed without the merchant’s okay is when the merchant needs to be interrupted because they cannot continue their current workflow.\n\n### Limiting non-standard interactions\n\nMerchants will expect to interact with controls and content in ways that follow the defaults for their browser, platform, and assistive technologies. Introducing non-standard features can give merchants better ways of accomplishing tasks, but they can also create barriers.\n\nFor example, merchants who rely on the keyboard will expect that buttons can be activated with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key. If buttons are programmed to be used with different keys, merchants will need to be instructed on how to use them.\n\nBefore designing or building custom features that use non-standard controls or interactions, first consider whether the goal can be met using native features.\n\nIf non-standard interactions _are_ required:\n\n- Carefully follow guidelines and best practices for designing, building, and testing custom features on your platform\n- Give merchants clear instructions for using the custom feature\n- Provide an additional, standard way to accomplish the task\n\n### Assistive technology support\n\nOur components are tested for accessibility with automated and manual techniques. Merchants should expect to be able to access features built with our components using modern assistive technologies. These include native and third-party tools like:\n\n- Screen readers\n- Speech recognition programs\n- Supports for low vision and color blindness\n- Alternative keyboards\n- Switch devices\n- Tools for readability\n\n### Coding standards\n\nPolaris components start with web standards for HTML, CSS, and JavaScript. Features from the Accessible Rich Internet Applications (WAI-ARIA or ARIA) specification are used to build functionality that is not available in native HTML.\n\n### Alternative text\n\nTo help people who rely on assistive technologies, such as a screen reader or other text to speech programs, our components use [alternative text](/content/alternative-text) for icons and images used to convey information and actions (like buttons and links).\n\n### Meeting the Web Content Accessibility Guidelines (WCAG)\n\nPolaris targets WCAG 2.1 Level A and Level AA success criteria, and seeks to provide a highly usable experience for everyone.\n\nFor more information, see the following resources:\n\n- [WCAG 2.1](https://www.w3.org/TR/WCAG21/)\n- [ARIA 1.1](https://www.w3.org/TR/wai-aria-1.1/)\n- [Shopify's statement of commitment to accessibility](https://www.shopify.com/accessibility)\n\n### Feedback\n\nSometimes, building accessible and inclusive experiences can be difficult. If we’ve made any mistakes in this style guide, please\n[reach out by creating a GitHub issue](https://github.com/Shopify/polaris-react/issues) and help us make it better."
+      },
+      {
+        id: "VKfZaQbEyCA7l5JJpEfEN",
+        blockType: "Code",
+        snippets: [
+          {
+            id: "dFoeut-TGoUPDdQzyBQzj",
+            label: "New tabsrg",
+            code: "srg",
+            language: "html",
+            typedLanguage: "css"
+          },
+          {
+            id: "ILZCDgKciqWWseaeN4vrp",
+            label: "example.mdsrg",
+            code: "console.log('foo')srgsrg",
+            language: "html",
+            typedLanguage: "html"
+          }
+        ]
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "a11y",
+      "universal design",
+      "inclusive",
+      "inclusivity",
+      "disability",
+      "disabilities",
+      "people with disabilities",
+      "persons with disabilities",
+      "accessible markup",
+      "accessible mark up",
+      "accessible code",
+      "accessible",
+      "diversity",
+      "diverse"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
   {
     id: "SIC6mp1SHvcUtS98_DTHb",
     title: "Home",
@@ -229,46 +290,6 @@ Don’t worry, we’ll also provide a timeline and guidance for migration.
       "text",
       "type styles"
     ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "CygsFGc5pjU2NfaioNN6n",
-    title: "Components",
-    excerpt: "",
-    slug: "components",
-    parentId: null,
-    order: 6,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "QzMkCvxMJkpi82dzj7nQ5",
-    title: "Actions",
-    excerpt: "",
-    slug: "actions",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 1,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
     childPageMetaType: null,
     pageMeta: null,
     hasSeparatorInNav: false,
@@ -663,26 +684,6 @@ Button groups should follow the [content guidelines](https://polaris.shopify.com
       lifeCyclePhase: "Stable",
       lifeCycleNotice: ""
     },
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "0bdzc9SC87fzxIKKnK9Lq",
-    title: "Deprecated",
-    excerpt: "Deprecated components will be removed in future major versions of Polaris. These components could be deprecated for a [number of reasons](https://polaris.shopify.com/getting-started/components-lifecycle#requirements-for-deprecation) and should be avoided. These components will show warnings in the component file and provide details for alternative usage. For more information, check out the [component lifecycles](https://polaris.shopify.com/getting-started/components-lifecycle#deprecated).",
-    slug: "deprecated",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 12,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -1425,26 +1426,6 @@ The closer the spacing, the closer the relationship between content topics. The 
       lifeCyclePhase: "Deprecated",
       lifeCycleNotice: "This component is no longer supported. Please use the Text component instead."
     },
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "NDOwU0XLFVibxHqXitUMu",
-    title: "Feedback indicators",
-    excerpt: "",
-    slug: "feedback-indicators",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 5,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -2230,26 +2211,6 @@ Spinner accessibility label should:
   },
 
   {
-    id: "5oZLkRUkisX2R3QsvprUG",
-    title: "Images and icons",
-    excerpt: "",
-    slug: "images-and-icons",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 4,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
     id: "xgijV7GTlVvCpzLhveK3u",
     title: "Avatar",
     excerpt: "Avatars are used to show a thumbnail representation of an individual or business in the interface.",
@@ -2567,26 +2528,6 @@ The play button is keyboard accessible and the \`aria-label\` includes a timesta
       lifeCyclePhase: "Stable",
       lifeCycleNotice: ""
     },
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "h19imKM4L1KqVWIPc5Rou",
-    title: "Layout and structure",
-    excerpt: "Layout is the arrangement of elements on a page. A good layout helps merchants understand and find information to complete their goals. Learn how to use Polaris layout primitives to build a wide range of layouts.",
-    slug: "layout-and-structure",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 2,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -3789,26 +3730,6 @@ The stack component is for alignment only and doesn’t provide any structural i
   },
 
   {
-    id: "F6xfWIk4FLnsA3q-zq4R2",
-    title: "Lists",
-    excerpt: "",
-    slug: "lists",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 8,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
     id: "PAND3VBNyEy1qVnQvINQZ",
     title: "Action list",
     excerpt: "Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.",
@@ -4358,26 +4279,6 @@ To display a simple list of related content, [use the list component](https://po
   },
 
   {
-    id: "05y1h7EKgtlr6S0tFXlYk",
-    title: "Navigation",
-    excerpt: "",
-    slug: "navigation",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 9,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
     id: "pXysy5KG_xw2PudU1eUUX",
     title: "Footer help",
     excerpt: "Footer help is used to refer merchants to more information related to the product or feature they’re using.",
@@ -4901,26 +4802,6 @@ Where possible, follow this pattern when writing tabs.`
   },
 
   {
-    id: "HIDB-4DqRqugWieUHzbLp",
-    title: "Overlays",
-    excerpt: "",
-    slug: "overlays",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 10,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
     id: "tJtn0uEw4pd5fUYWDGzx0",
     title: "Modal",
     excerpt: "Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.",
@@ -5147,26 +5028,6 @@ Where possible, follow this pattern when writing tabs.`
       lifeCyclePhase: "Stable",
       lifeCycleNotice: ""
     },
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "lfjMao2nMHVhBomYYRFV7",
-    title: "Selection and input",
-    excerpt: "",
-    slug: "selection-and-input",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 3,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -6401,26 +6262,6 @@ When a merchant uses the button to remove a tag, it is important to make sure th
   },
 
   {
-    id: "LK6NmpiqhaM0dn94puBjN",
-    title: "Tables",
-    excerpt: "",
-    slug: "tables",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 7,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
     id: "5m7W5qLaXjHjNv5Yrh7JO",
     title: "Data table",
     excerpt: "Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.",
@@ -6646,26 +6487,6 @@ When a merchant uses the button to remove a tag, it is important to make sure th
   },
 
   {
-    id: "X7qu0PObX85AwSELoGcn7",
-    title: "Typography",
-    excerpt: "Typography components",
-    slug: "typography",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 6,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
     id: "rQbryYKYyQgpRhZFsztXm",
     title: "Text",
     excerpt: "Typography helps establish hierarchy and communicate important content by creating clear visual patterns.",
@@ -6735,26 +6556,6 @@ When a merchant uses the button to remove a tag, it is important to make sure th
       lifeCyclePhase: "Beta",
       lifeCycleNotice: "This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. To learn more please read about our [component lifecycles](/getting-started/components-lifecycle)"
     },
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "M7T1stz5iP1IsW5a8r5F_",
-    title: "Utilities",
-    excerpt: "",
-    slug: "utilities",
-    parentId: "CygsFGc5pjU2NfaioNN6n",
-    order: 11,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -7047,26 +6848,6 @@ Scrollable containers are cards with scrolling functionality, and should follow 
   },
 
   {
-    id: "rV7xa9ut4MVdpG79cT33q",
-    title: "Patterns",
-    excerpt: "Design patterns help ensure consistent behavior across the Shopify admin.",
-    slug: "patterns",
-    parentId: null,
-    order: 5,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: true,
-    thumbnailImageId: null
-  },
-
-  {
     id: "HcCkpZQ9dkFPHQr3di0q1",
     title: "App settings layout",
     excerpt: "Scan and find groups of settings in apps",
@@ -7160,26 +6941,6 @@ Scrollable containers are cards with scrolling functionality, and should follow 
       }
     ],
     allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "fB1luFngftZOsIAEQ73ue",
-    title: "Content",
-    excerpt: "Thoughtful, consistent interface content is a core element of a well-designed user experience.",
-    slug: "content",
-    parentId: null,
-    order: 4,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
     hideInNav: false,
     hasNewBadge: false,
     noIndex: false,
@@ -7842,64 +7603,6 @@ To help your audience understand key concepts and actions they can take, use con
   },
 
   {
-    id: "cAlaGlo7Wj4TQUm-lysdT",
-    title: "Contributing to Polaris",
-    excerpt: "Polaris exists to make a product worked on by many, feel like it was created by one person. The design system needs to stay in sync with new solutions so merchants always have a seamless experience. This is why Polaris thrives on contribution and community support.",
-    slug: "contributing",
-    parentId: null,
-    order: 9,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "A1KUCP5ysZtujWNeUz2l-",
-        blockType: "Markdown",
-        content: `Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
-
-## Who can contribute
-
-Contribution to Polaris looks different depending on whether you work at Shopify. Shopify employees can contribute to any Polaris project, including the Figma UI Kit. Open source contributions are welcome for [Polaris React components](/contributing/components) and their [documentation](/contributing/documentation).
-
-## When to contribute
-
-Contributions can seem intimidating, but they don’t have to be! Here are some common scenarios for deciding when to contribute:
-
-| Use the system                                                               | Extend the system                                                                       | Build a custom solution                                                                         |     |     |
-| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --- | --- |
-| _When available resources can solve a design problem_                        | _When a change or addition can solve a shared problem_                                  | _When a unique problem requires a unique solution_                                              |     |     |
-| Read [ Designing with a system ](/contributing/designing-with-a-system)      | Read [ When to contribute new patterns ](/contributing/when-to-contribute-new-patterns) | Share ideas in [ #admin-ux ](https://shopify.slack.com/archives/C039ZAKQ5AA)(Shopify employees) |     |     |
-| [ Review App Design Guidelines ](https://shopify.dev/apps/design-guidelines) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | Build with Polaris [ tokens ](https://polaris.shopify.com/tokens/colors)                        |     |     |
-
-## What makes a good contribution
-
-By sticking to a few principles, we can ensure that all contributions made to Polaris are of high quality, meaningful work for Shopify teams and contributors, and valuable to merchants.
-
-| Preparing contributions                                                                                                                                                                                                                                                                                            | Submitting contributions                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **🧠 Keep the merchant in mind** <br>Polaris is for building merchant admin experiences. If the value to merchants isn’t clear, reconsider the contribution.                                                                                                                                                       | **💡 Provide solutions** <br>Contributions should both identify a problem and provide a solution. If you found a bug, have a question, or want to open a discussion, you can submit those via [GitHub](https://github.com/Shopify/polaris/discussions/6750).                                                                                                                                                                                             |
-| **🤝 Collaborate with other disciplines** <br>A good contribution addresses the needs and perspectives of design, content, and code. Consult a diverse group of disciplines when drafting your contribution.                                                                                                       | **🪟 Work in the open** <br>Public discussion is crucial for contribution visibility and feedback. Submit contributions using [GitHub](https://github.com/Shopify/polaris/discussions/6750). Shopify employees can request assistance via the #polaris Slack channel.                                                                                                                                                                                    |
-| **📅 Include contribution in project cycles** <br>Contributing close to a project deadline creates blockers. Include contribution in project retros, or involve Polaris early in a project cycle. Read [Working with Polaris](/contributing/working-with-the-polaris-team).                                        | **🔍 Check your work** <br>Double check your contribution to make sure it meets standards for things like accessibility and performance. Following the guidance for each contribution type is also a great way to meet quality standards.                                                                                                                                                                                                                |
-| **🏗️ Consider the impact on the system** <br>Contributions to Polaris should apply to multiple admin surfaces. They should not be unique solutions with only one use case. Read [Designing with a system](/contributing/designing-with-a-system), and reach out to the Polaris team for system advice or guidance. | **🔬 Be clear and detailed** <br>Submit a short summary of your contribution, along with relevant links, artifacts, and context. State your expectations, understanding that we must prioritize certain business and system needs. If you can ship in collaboration with another product team, tag them and let the Polaris team know. Capture contribution details with [GitHub issue templates](https://github.com/Shopify/polaris/issues/new/choose). |
-
-## Where to get help
-
-If you get stuck or want help strategizing a larger contribution, bring it up in [GitHub discussions](https://github.com/Shopify/polaris/discussions/new). The Polaris team and other members of the systems community will help you out. If you see a discussion where you could guide another member of the community, we welcome you to join the conversation.`
-      }
-    ],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "how to contribute to polaris",
-      "contribution"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: true,
-    thumbnailImageId: null
-  },
-
-  {
     id: "KKlRfpWgox5iXrJA25m01",
     title: "Code of Conduct",
     excerpt: "",
@@ -7961,726 +7664,6 @@ This Code of Conduct is adapted from the [Contributor Covenant](https://www.cont
     keywords: [
       "open source"
     ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "66EBD1hJ2QGxO-9u_gx7k",
-    title: "Contributing to Polaris React",
-    excerpt: "Anyone is welcome to contribute to Polaris React components. There are several types of component contributions, but they typically fall under three categories; bug fix, enhancement, or new pattern.",
-    slug: "components",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 2,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "wSBNGi6BK49EZTDiPd_3v",
-        blockType: "Markdown",
-        content: `Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component’s documentation, or by adding new components or utilities. Often component contributions are a mix of these.
-
-Start planning your contribution as early as possible to account for the scope in your timeline. To get help with the strategy for your contribution early on, start a [discussion](https://github.com/Shopify/polaris/discussions/new) with the Polaris community. If you have a smaller question, reach out in #polaris if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you’re an open source contributor. Once you’ve decided on the best way to solve the problem, submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) issue. Then contribute the change by shipping a pull request.
-
-Often the changes you make to a component’s code impact the [documentation](/contributing/documentation) and [Figma UI Kit](/contributing/figma-ui-kit). If you work at Shopify, component contributions should be a team effort across disciplines. If you’re an open source contributor, we’ll work with you to update the Figma UI Kit once you [create an issue](https://github.com/Shopify/polaris/issues/new/choose) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the \`Shopify/polaris\` repo.
-
-## Update props
-
-### Considerations
-
-There are many ways to make a Polaris component more flexible. Updating or adding props is the most common way to add flexibility to the way a component looks or works. Sometimes refactoring the component is [a better path](#add-or-improve-a-component).
-
-Components should be performant, accessible, and maintainable. When contributing a new prop or updating the types of an existing prop, ask yourself how your change might:
-
-- Be backwards compatible
-- Increase or maintain performance
-- Improve or maintain accessibility
-- Address a pain point in the merchant experience
-- Reduce complexity of the source code
-
-If a component isn’t flexible enough to meet your project’s requirements, or you’re unsure whether a component is right for your use case, submit an [issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) outlining the problem and the approach you’re thinking about. We’re happy to collaborate to find a solution.
-
-### How to contribute
-
-To add or update a prop:
-
-1. Explore and align on whether to add a new prop or update the types of an existing prop
-2. Submit or assign yourself to an existing [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md)
-3. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment)
-4. Add your change to the props interface
-5. Include or update the description comment
-6. Update the \`@default\` value if relevant in the props interface and in the props deconstruction at the start of the component’s definition
-7. Add tests to cover the changes
-8. Add examples to the component’s documentation
-9. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr)
-
----
-
-## Fix a bug
-
-### Considerations
-
-Bug fixes are high impact contributions that ensure we deliver a reliable, crafted experience to merchants. Whether you’re a seasoned contributor or looking to make your first pull request, there’s a bug report open for every level of experience.
-
-If you’re just getting started with contributing to Polaris React, look for issues that are:
-
-- Labeled as a [good first issue](https://github.com/Shopify/polaris/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+first+issue%22)
-- Not yet assigned to someone
-- Haven’t been updated in two or more weeks
-
-### How to contribute
-
-1. Submit or assign yourself to a [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md).
-2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment).
-3. Assess the time and difficulty of finding and fixing the problem code.
-4. If you discover that fixing the bug is too complex or will take longer than you’re able to commit, that’s okay! Your findings will help the next developer move the needle on shipping a fix.
-   <br /> - Update the issue with a comment detailing your findings. Describe the problem code and share permalinks to the lines involved.
-   <br /> - If you have a potential fix locally, commit and push your changes and open a draft pull request that links to the bug report.
-   <br /> - Add or update the issue’s labels to indicate level of difficulty.
-   <br /> - Unassign yourself from the issue.
-5. If after investigating you arrive at a solution to the issue:
-   <br /> - Update the issue so everyone knows a fix is on the way.
-   <br /> - Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr).
-
----
-
-## Add or improve a component
-
-### Considerations
-
-From perceived performance and accessibility enhancements, to the evolution of our design language, contributing UX improvements to Polaris components empowers teams to make sweeping changes effectively with minimal technical debt upstream.
-
-When exploring the potential for improving the look, feel, and or experience of a component:
-
-- Prioritize accessibility
-- Check [W3C](https://www.w3.org/WAI/ARIA/apg/patterns/) for examples of the pattern the component implements
-- Consider whether the existing component could be replaced entirely if it were broken up into smaller components
-
-### Case study
-
-In the years since Polaris launched in 2017, we’ve learned a lot from the Shopify and design system communities. As the system’s matured, we’ve found that many of the components should evolve toward [composition over configuration](https://maecapozzi.com/blog/composition-vs-configuration/). Many props is a signal that a component is solving too many problems or is too opinionated. When that’s the case, there’s an opportunity to refactor the component or build a new component to better meet merchant needs.
-
-For example, \`Autocomplete\` implements [the combobox with list pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/). When the Deliver team looked into fixing bugs in the component, they decided it would benefit from being broken down into two new components. They contributed \`Combobox\` and \`Listbox\` and refactored \`Autocomplete\` to use them. This reduced complexity and made \`Autocomplete\` easier to maintain.
-
-The Deliver team partnered with the Polaris team to improve the UX of tag autocomplete inputs in a follow-up project. To accomplish this, we refactored \`Combobox\` and \`Listbox\` to support [the combobox with both list and inline autocomplete pattern](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-autocomplete-both.html) with automatic selection. Every \`Autocomplete\` in the Shopify Admin benefited from those improvements without any code changes needed upstream in the app.
-
-### How to contribute
-
-1. Submit or assign yourself to an existing [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [new component proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=&template=NEW_COMPONENT.md)
-2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment)
-3. Prototype and iterate on your proposal, testing with merchants as you iterate if possible
-4. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr)`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "components",
-      "contributing to polaris react",
-      "how to add a prop",
-      "how to add a prop type",
-      "how to add a new component",
-      "bug fix",
-      "ux improvement",
-      "improve component",
-      "improve ux",
-      "improve accessibility",
-      "open source"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "qkClpXikpeggtw1911uH6",
-    title: "Designing with a system",
-    excerpt: "",
-    slug: "designing-with-a-system",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 7,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "faMCjTQYN1Ik5USGt_VUg",
-        blockType: "Markdown",
-        content: `![Illustration of dozens of chairs of the same kind and a single chair of a diverent kind.](/images/contributing/designing-with-a-system/01.png)
-
-At Shopify, we often say, “Polaris is the floor, not the ceiling.” The design system provides you with building blocks, and it’s up to you to construct them in a way that best meets your user’s needs. The idea behind Polaris not being a ceiling is that you shouldn’t limit your ideas to fit into existing system pieces too early. Zoom out, figure out the best design solution to the problem, and then see if Polaris has all the pieces for you to design that solution. If there’s a gap, then [contribute](https://polaris.shopify.com/contributing) to the system to make it better.
-
-## Zoom out
-
-No matter what problem you’re solving, zooming out allows you to get a better understanding of the problem, and its sphere of influence. A problem rarely exists in isolation, so understanding context and contributing factors is key before getting into solutions. Practically speaking, this means that you should understand the product as a whole, not just the product area you’re working on.
-
-For instance, if you work on Orders, you should have a holistic understanding of the Shopify admin so you can leverage existing patterns and mental models. You can also gain context and empathy for merchants through research.
-
-Merchants don’t care about Shopify’s internal organization. They use the admin as a whole, so we must design with the whole experience in mind.
-
-![Illustration of three tag autocomplete inputs implementing the same pattern, but using different components.](/images/contributing/designing-with-a-system/02.png)
-
-The Deliver team identified a need to consolidate 6 different tag components with varying UX that were doing the same job in different sections of the admin. The redundancy in components was causing a fractured user experience.
-
-## Explore freely
-
-When you understand the product as a whole, you should be well equipped to explore without constraints. That means don’t start from our UI kit, component library, or patterns you see in the product---start with a blank sheet of paper instead. Solve the problem, preferably in more than one way, before you start worrying about consistency.
-
-![Illustration of three different ways to improve the design and experience of the tag autocomplete input.](/images/contributing/designing-with-a-system/03.png)
-
-As the Deliver team was working on consolidating the 6 components, they also identified an opportunity to improve the overall usability for adding tags. The team explored several different ideas and approaches to understand which approach would best solve the problem.
-
-## Calibrate
-
-Once you understand the problem and potential solutions, you can start aligning more closely with the design system.
-
-![Illustration of before and after improving the design of the tag autocomplete.](/images/contributing/designing-with-a-system/04.png)
-
-The team made updates to the Polaris foundational pieces like the tag, icon, and interactions so that they could use those pieces to build a more opinionated component.
-
-If you have initial questions about contribution, reach out in #polaris if you work at Shopify, or the Shopify Partners Slack if you’re an open source contributor. To get help with the strategy for a larger contribution, start a GitHub discussion with the system community.`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "systems thinking",
-      "contribution guide",
-      "designing with a system"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "cy8SPgvYWXVDmA-2Vh8hA",
-    title: "Documenting in Polaris",
-    excerpt: "",
-    slug: "documentation",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 5,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "XZpwWpAkeN42cmK0LcskT",
-        blockType: "Markdown",
-        content: `Shopify teams create documentation for polaris.shopify.com, but open source contributors are welcome to make copy edits as well as update or add examples to [component documentation](/contributing/components).
-
-To write effectively as a Shopify employee, use a cross-discipline lens. Make sure your content meets both UX and development needs. Before starting, check out our [style guide to the style guide](https://docs.google.com/document/d/1zVDsHIWhoir2svRjdtSdRbD_ruTz3K1nAJcQLGPVQwM/edit#heading=h.ni67tdntu9cr).
-
-Most documentation about the design system is meant for polaris.shopify.com. However, there may be a reason for the content to live elsewhere. If you’re not sure if something should live on this site, the Polaris team can help you figure that out.
-
-## Making copy edits
-
-Edits related to spelling, grammar, punctuation, or other typos should happen quickly and often. Both Shopify employees and open source contributors are welcome to submit copy edits.
-
-To fix any copy issues on polaris.shopify.com, [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
-
-Note: If you find copy issues in other Polaris resources, follow the steps for that resource’s contribution guidelines.
-
-## Updating documentation
-
-To expand or edit existing documentation:
-
-1. Draft your proposed changes in Google Docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
-2. Get feedback from subject matter experts or someone with high context around your changes, like a team member or your lead.
-3. Reach out to the Polaris team to review your changes for style guide alignment.
-4. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
-
-## Adding new documentation
-
-New documentation in Polaris can range from component documentation, to content guidelines, to pattern guidance.
-
-To create new documentation:
-
-1. Reach out to the Polaris team. We can help find a home for your documentation, offer templates, provide asynchronous feedback, and—if you're really stuck—participate in pair writing sessions.
-
-2. Draft the content in Google docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
-3. Get feedback from subject matter experts, or someone with high context around your changes (team member, manager, etc.).
-4. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
-
-## Removing documentation
-
-It’s important that inaccurate or outdated information be removed as soon as possible. This helps maintain high trust in Polaris as a source of truth for design system guidance.
-
-To remove documentation:
-
-1. Reach out to subject matter experts, or someone with high context around the existing content, to confirm its relevance and accuracy
-2. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "how to contribute to polaris documentation",
-      "how to contribute to the style guide",
-      "documenting in polaris",
-      "documentation guidelines"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "MZ8NzP7-qEmxkz81r9wfM",
-    title: "Contributing to the Figma UI Kit",
-    excerpt: "",
-    slug: "figma-ui-kit",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 3,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "1l54RiAo2GWg1QvqiQ2hr",
-        blockType: "Markdown",
-        content: "Any designer that works at Shopify can contribute to the Figma UI Kit. If you find a bug to fix or your team is contributing new patterns or variants to Polaris React components, we want you to feel empowered to contribute.\n\nComponents, features, or patterns shouldn’t be added to the Figma UI Kit if they are not part of Polaris React, as our goal is to keep Figma in sync with the code base. Only contributing changes to the Figma UI Kit when there’s a counterpart in Polaris React prevents confusion and keeps tooling in sync across resources.\n\n1. Submit an issue in the [Shopify/polaris](https://github.com/Shopify/polaris/issues/new) GitHub repo, or assign yourself to [an existing issue](https://github.com/Shopify/polaris/labels/Figma%20UI%20Kit). Make sure to:\n   1. Assign yourself to the issue so it’s clear who is doing the work.\n   2. Add the \"Figma UI Kit\" label so we can easily find the issue.\n   3. Use a descriptive title.\n   4. Describe the change you’re making in the issue itself.\n2. Create a branch in the Polaris Components Figma library.\n   <br /> - Give your branch a descriptive name, ideally using the GitHub issue number so it’s easy to track.\n   <br /> - For example, \"[4963] Navigation design changes\"\n3. Make the necessary changes in the new branch.\n4. Document all changes in the “Release Notes” page within the UI kit.\n5. Add a design reviewer from the Polaris team to review the changes on your branch. If you aren’t sure who to add, share the link to your Figma branch and ask for review in the #polaris Slack channel.\n6. Once reviewed and approved, the Polaris designer will merge your changes into the main branch and publish the updates."
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "ui kit",
-      "figma",
-      "how to contribute to polaris ui kit",
-      "how to fix a figma component"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "09zRNNgZM17gnUfVIkA2k",
-    title: "Contributing to Polaris Icons",
-    excerpt: "",
-    slug: "icons",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 1,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "TY1h9U2NNa8i4QpGhHGvb",
-        blockType: "Markdown",
-        content: `Polaris Icons are important visual aids that help merchants understand actions and concepts across the Shopify Admin. Whether your team needs to add, modify, or deprectate an icon, all designers and developers that work at Shopify are welcome to contribute.
-
-Before proposing a new icon, search the [icon explorer](https://polaris.shopify.com/icons). If the icon you’re looking for isn’t included, create a proposal for the new icon and work with your team to add it. Any additions or changes should also be reflected in the [Figma UI Kit](/contributing/figma-ui-kit).
-
-To learn about best practices for designing and using Polaris icons, read the [icon design guidelines](https://polaris.shopify.com/design/icons). If you have initial questions or need help, reach out in the [#polaris](https://shopify.slack.com/archives/C4Y8N30KD) Slack channel. If you want to start a more in-depth conversation with the system community before opening an issue, start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/new).
-
-## Design a new icon
-
-1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md).
-2. Review design specs in the Polaris Icons library in Figma.
-3. If you are designing a new icon:
-   <br /> - Draft the new icon following the design language guidance in the Polaris Icon Library in Figma.
-   <br /> - Request feedback from a Polaris designer.
-4. If you need assistance designing the new icon:
-   <br /> - Reach out in the #polaris Slack channel requesting a new icon.
-   <br /> - A designer will reach out to get context and information around what you need, deadlines and other relevant information.
-   <br /> - A designer will work with you to design an icon that meets your team’s needs with your feedback along the way.
-5. Once alignment on the design is reached, follow the instructions below for adding the icon.
-
-## Add or edit an icon
-
-1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md)
-2. [Set up your development environment](/contributing/shipping-your-contribution#get-set-up)
-3. If you are adding an icon:
-   <br /> - Copy and rename the icon template files
-   <br /> - Add the exported icon SVG to the \`.svg\` file
-   <br /> - Add the icon metadata to the \`.yml\` file
-4. If you are editing an existing icon:
-   <br /> - Replace the existing icon SVG in the \`.svg\` file
-   <br /> - Update the relevant metadata in the \`.yml\` file
-5. Run \`yarn changeset\` to add an entry to the change log and release notes
-6. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the Shopify/polaris GitHub repo
-7. Update the Polaris Icon Library in Figma
-
-## Deprecate an icon
-
-1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md).
-2. [Set up your development environment](/contributing/shipping-your-contribution#get-set-up).
-3. If you are deprecating an icon without replacement:
-   <br /> - Add \`deprecated: true\` to the icon’s \`.yml\` file.
-4. If you are deprecating an icon with replacement:
-   <br /> - Rename the icon’s \`.svg\` and \`.yml\` files.
-   <br /> - Add \`deprecated_aliases\` to the \`.yml\` file.
-   <br /> - List each of the icon’s previous names. For example, if you were to rename \`OldMajor\` to \`NewMajor\`, you would add these lines to \`NewMajor.yml\`:
-   <br />
-
-   \`\`\`yml
-   deprecated_aliases:
-     - OldMajor
-   \`\`\`
-
-5. Run \`yarn changeset\` to add an entry to the change log and release notes.
-6. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the Shopify/polaris GitHub repo.
-7. Update the Polaris Icon Library in Figma.`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "icons",
-      "add a new icon",
-      "deprecate an icon",
-      "update an icon",
-      "how to contribute to polaris icons"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "o3fAm9vXVsXI_ncZlvX1y",
-    title: "Adding new illustrations",
-    excerpt: "",
-    slug: "illustrations",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 4,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "K-9HdBPnfTXWiyG0l6G3l",
-        blockType: "Markdown",
-        content: `Reusing illustrations should be avoided in product. New illustration contributions are welcome from any designer working at Shopify. They can be submitted for feedback to the #illustration-guild on Slack. Polaris only supports illustrations within the Shopify admin product and not marketing assets.`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "illustration",
-      "image",
-      "photo",
-      "contribute",
-      "add"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "6XxSmUCEnk_P_sJ2HENQY",
-    title: "Shipping your contribution",
-    excerpt: "Contributions to this documentation site and code-related resources in the Polaris design system are made in the [Shopify/polaris GitHub repository](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects/2250), and use GitHub discussions, issues, and pull requests to work in the open.",
-    slug: "shipping-your-contribution",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 6,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "Om4NM7aG4KhTzX-fo1byZ",
-        blockType: "Markdown",
-        content: "## Project details\n\n### How it’s structured\n\nThe Shopify/polaris GitHub repository is structured as a monorepo, which means it’s a single repository with multiple projects. The monorepo includes:\n\n<!-- prettier-ignore -->\n| `polaris` |     |\n| ---------- | --- |\n|`/polaris-for-vscode` |VS Code extension for Polaris Design Token autocompletion|\n|`/polaris-icons` |npm SVG icon library `@shopify/polaris-icons`|\n|`/polaris-react` |npm React component library `@shopify/polaris`|\n|`/polaris-tokens` |npm Design Token library `@shopify/polaris-tokens`|\n|`/polaris.shopify.com` |The style guide to the Polaris Design System|\n|`/stylelint-polaris` |Linting rules for using Polaris Design Tokens through CSS custom properties|\n\n### Technologies we use\n\nTo manage our monorepo, we use:\n\n- Yarn for package management\n- Turborepo and Yarn workspaces for monorepo workflows\n- Changesets for managing release notes and change logs\n\nEvery Polaris project is a little different, but in general we build with JavaScript, TypeScript, and Sass. This documentation site is built using React and Next.js.\n\n## Get set up\n\nTo contribute to Polaris components, icons, or documentation, you’ll need to use your preferred `git` interface to commit and push up your changes. Whether that’s the command line in your favorite terminal, or in GitHub Desktop is entirely up to you. For this guide, we’ll illustrate the steps with terminal commands.\n\n### 1. Download the repo\n\n#### Shopifolk\n\nClone the polaris repo\n\n```bash\ngit clone <https://github.com/Shopify/polaris.git>\n```\n\n#### Open Source Contributors\n\n[Fork](https://github.com/Shopify/polaris/fork) the polaris repo\n\n### 2. Install and build\n\n```bash\nyarn && yarn build\n```\n\n### 3. Create a new branch\n\n```bash\ngit checkout -b new-branch-name\n```\n\n## Open your first PR\n\n### 1. Test your changes\n\nAs you work, commit and test your changes:\n\nIf your changes affect Polaris React components, you’ll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.\n\n```bash\nyarn turbo run dev --filter=@shopify/polaris\n\n# Open https://localhost:3000 to test documentation\n# Open https://localhost:6006 to test Storybook examples and Playground sandboxes\n```\n\nIf you are adding or editing documentation, ensure your content displays as expected on the style guide website:\n\n```bash\nyarn turbo run dev --filter=polaris.shopify.com\n```\n\n### 2. Commit your changes\n\nSave the changes you’ve made to your branch.\n\n```bash\ngit commit -m “descriptive message”\n```\n\nPush up your branch to GitHub\n\n```bash\ngit push origin new-branch-name\n```\n\n### 3. Create a pull request\n\nUse the \"New pull request\" button from the [your branch](https://github.com/Shopify/polaris/branches/yours) list to create a pull request for your changes.\n\nIn your PR’s description, be specific with what you’ve tested as well as what reviewers should focus on when testing your changes, for example:\n\n- Keyboard and screen reader accessibility\n- Interaction state changes\n- UI changes\n- Small screen vs large screen UX\n- Other considerations or feedback you’re seeking regarding how you’ve implemented your changes\n\nAdd a [changeset](https://github.com/Shopify/polaris/blob/main/.changeset/README.md#changesets) if your PR includes any changes that will require a package version bump and release. Otherwise, add the `🤖 Skip Changelog` label to your PR."
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "contributing to polaris",
-      "github",
-      "pull request",
-      "fork",
-      "clone"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "Od80UZSrhiDsUMZq6BOSO",
-    title: "When to contribute new patterns",
-    excerpt: "There will likely be times where the system and its components fall short of your preferred solution. You have a decision to make — should you stay consistent with what exists, or go with the best possible solution, regardless of consistency?",
-    slug: "when-to-contribute-new-patterns",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 8,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "3hF0En5zy0x7LXpJgbbrA",
-        blockType: "Markdown",
-        content: "To help you figure this out, start by plotting out where each solution fits in this “perfect vs consistent” framework. Rate the solutions according to:\n\n- Consistency with the rest of the product (x axis)\n- How appropriate the solution is for your specific situation (y axis)\n\n![Illustration of a graph with \"Perfect for situation\" on the y-axis and \"Consistent\" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/01.png)\n\nTo practice this framework, let’s imagine some possible scenarios. Consider the more obvious directions:\n\n![Illustration of a graph with \"Perfect for situation\" on the y-axis and \"Consistent\" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/02.png)\n\nWhen deciding between A or B, go with A. It’s the better solution to the problem, assuming all options are inconsistent.\nA or C? Obviously C. Of two equal solutions, choose the one that is more consistent with the rest of the experience.\nA or D? D is consistent, but A is a much better solution to the problem. In that situation, it is likely that you can [contribute the new pattern to the system](https://polaris.shopify.com/contributing/documentation), so others can leverage it in the future.\n\nNow let’s look at the less obvious directions:\n\n![Illustration of a graph with \"Perfect for situation\" on the y-axis and \"Consistent\" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/03.png)\n\nGo with A if it’s the perfect solution and has the potential to scale to the rest of the system\n\nDeciding between A or E is trickier. If A is clearly better than E, but E is much more consistent, go with A. This is because A has potential to become a system pattern and eventually get closer to E, and maybe even surpass it, in terms of consistency.\n\n![Illustration of a graph with \"Perfect for situation\" on the y-axis and \"Consistent\" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/04.png)\n\nGo with E when consistency trumps perfection\n\nGo with E if A seems like a snowflake solution. Building a snowflake solution will make it difficult for other teams to adopt it. Breaking consistency is also costly because new, custom solutions add complexity to the experience and are hard to learn, so its benefits should significantly outweigh the cost of inconsistency.\n\nWhen both are appropriate and there’s not a massive difference in value, consistency trumps perfection.\n\nThe key here is to zoom out. When we’re [designing for scale](https://polaris.shopify.com/contributing/designing-with-a-system), we need to think broader and look at our specific problem area as a small part of a larger system. So spend some time figuring out if your solution is unique, or if it has potential to solve other problems. This is why it’s important to have good awareness of the whole experience before you start, and why it’s important to contribute back to the system if you land on a solution that would benefit others.\n\nFor initial questions about contribution, reach out in [#polaris](https://shopify.slack.com/archives/C4Y8N30KD) if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you’re an open source contributor. To get help with the strategy for a larger contribution, start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/new) with the system community."
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "when to contribute to polaris",
-      "when to evolve the system",
-      "when to contribute new patterns",
-      "contribution guide"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "gu8vDX5BIP8zY7eUcMs-R",
-    title: "Working with the Polaris team",
-    excerpt: "When you contribute to Polaris, you help the Shopify community create better experiences for merchants, faster. Contribution takes thoughtful planning.",
-    slug: "working-with-the-polaris-team",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 9,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "lk3KFteIF1Dceg1YrI-BS",
-        blockType: "Markdown",
-        content: `Through supporting teams, we’ve learned what works well, and not so well. We’ve outlined these things so that you can create a successful plan. This guide goes into detail, but here are the highlights.
-
-## Tl;dr
-
-Think about your system needs in the prototype phase of your project so your team can plan for [quality](/contributing#what-makes-a-good-contribution) systems [contributions](/contributing) ahead of the build phase. The Polaris team is here to help you with planning, but we can’t be pulled in last minute to unblock.
-
-The best way to get help is through our support channels:
-
-- [GitHub discussions](https://github.com/Shopify/polaris/discussions/6750) to talk to the community about anything from patterns, to potential contributions
-- #polaris in Slack if you work at Shopify and have a general inquiry
-
-As you’re building you may need custom styles. In those cases, always use Polaris [tokens](/tokens).
-
-## Product team tips
-
-With some early planning and intentional systems thinking, the build stage will go a lot smoother.
-
-### Plan for systems changes ahead of time
-
-The Polaris team should never be pulled in to unblock a team from shipping something quickly—we’re here to support and guide teams when they’re planning their strategic system changes ahead of time. Teams at Shopify should start working on their system needs early in the design and build process and are expected to make [quality system contributions](/contributing#what-makes-a-good-contribution) ahead of their ship dates.
-
-### Aim to systematize your custom solutions
-
-Things don’t always go according to plan. If a team is still learning how to plan for system changes and finds themselves under pressure to quickly ship something custom, they’re responsible for owning any custom components they ship. The components should use [Polaris tokens](https://polaris.shopify.com/tokens/colors) and the team should make an effort to systematize the custom solution down the road. When product-wide changes happen in the future, the product team will be responsible for updating their custom components.
-
-## Collaborations for system contributions
-
-When an opportunity for a collaboration related to a system contribution comes up, we’ll add it to our [backlog](https://github.com/orgs/Shopify/projects/2250/views/5) for triaging. Collaboration opportunities can be worked on through cross-product team pairings and don’t always have to be with Polaris.
-
-### Triaging considerations
-
-During our triaging process, teams can expect that the Polaris team will help:
-
-- figure out how a component can be composed and/or how a pattern can be systematized
-- see if and where the contribution should be added to the system
-- identify system dependencies for making the contribution
-- identify other teams that could join the collaboration (and determine if the Polaris team needs to be involved)
-
-The Polaris team will prioritize collaborating on contributions that:
-
-- have the highest number of community upvotes in Github discussions
-- help other teams solve similar problems so that we make the best possible impact on the merchant experience, like through pattern documentation
-- align with ongoing system improvement projects, for example, a team wants to make layout improvements while the Polaris team improves the layout foundations
-- break down large and complex composite components into primitive, foundational components
-- improve foundational components
-
-### Polaris support during collaborations
-
-If the Polaris team is the main collaborator on a system contribution, the Polaris team will:
-
-- pair with the contributor(s) asynchronously, or when it’s more efficient, through ad hoc video calls
-- direct internal contributors to the #admin-ux community if extra feedback is needed on the solution being explored
-- offer systems coaching to the subject matter experts with the most context on the merchant problem that’s being solved
-- help the contributor with any systems tooling related to shipping the solution
-
-## Polaris on-call support
-
-The Polaris team rotation schedule assigns one UXer and one developer to cover system inquiries and collaboration requests. Coverage is during their distributed working hours, Monday to Friday. The pair on rotation will:
-
-- direct internal #polaris Slack questions to a resolution
-- direct large requests for collaboration to @polaris-enablement for triaging
-- review, clean up, or close GitHub issues
-- provide PR reviews where necessary
-- participate in GitHub discussions where necessary
-
-If an issue doesn’t get resolved by the end of their work day, it’s passed along to the next scheduled support pair.
-
-If a Polaris team member is messaged directly, they’ll forward the inquiry/request to the internal #polaris channel for the pair on call to respond.
-
-Admin pattern questions should be posted in the #admin-ux channel and if a question relates to #polaris, it should be forwarded to the #polaris channel.
-
-### Response time goals
-
-These response time goals are for GitHub and our internal #polaris Slack channel.
-
-| Request type                                                                                                                                 | Initial response time                                                                         | Time to resolve                                                                                                                                                                                 |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Production grade bug in shopify/web and shopify/polaris                                                                                      | @here in the internal #polaris channel and the support person on call will respond.           | As soon as possible                                                                                                                                                                             |
-| **System inquiry**<br/> A response would help move things along but the problem can continue to be solved without the response               | 24 hours                                                                                      | 48 hours                                                                                                                                                                                        |
-| **Collaboration request**<br/> An opportunity has been identified for an individual or team to collaborate with Polaris to evolve the system | 72 hours: [Github discussion](https://github.com/Shopify/polaris/discussions/6750) is started | 1 week: Discussions identified for a larger Polaris team collaboration have an issue added to the [Polaris backlog](https://github.com/orgs/Shopify/projects/2250/views/5) for project triaging |
-
-### Third party developer response times
-
-Polaris is an open source project used by Shopify employees, and Shopify Partners building apps. We value all feedback, feature requests, issues, and pull requests from our open source community. However, we aren’t able to accommodate every request and take longer than we’d like to respond to everyone. We review every request and prioritize them against our product roadmap based on user needs. Below is the process for every open source contribution:
-
-| Contribution type                                                                | Team response                                                                                                                                                                                                                                | How you can help                                                                                                                                                                                                                                                                                       |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Bug report                                                                       | Prioritized against our backlog and roadmap. If there’s a clear or urgent need for a fix we’ll add it to our backlog.                                                                                                                        | Leave comments with additional information on how to reproduce the bug and how it’s affecting your use case.<br/><br/> If you’re interested in a fix, [upvote](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) the bug report to let the team know. |
-| Feature request                                                                  | For now, feature requests will be closed and reviewed against our existing backlog and roadmap. We’ll evaluate interest in the request and prioritize it for development if there is enough interest and alignment with our product roadmap. | If you’re interested in the feature please upvote the request in [GitHub](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) to let the team know.                                                                                           |
-| Pull request                                                                     | Will review [PRs](https://github.com/Shopify/polaris/pulls) for system alignment, user need, and contribution quality.                                                                                                                       | Leave comments for code review.<br/><br/> Upvote the request in [GitHub](https://github.com/Shopify/polaris/discussions/6750) to express interest and let the team know you want this feature.                                                                                                         |
-| Start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/6750) | Review discussions and close or respond as needed                                                                                                                                                                                            | Participate in a discussion to express interest or share your opinion.                                                                                                                                                                                                                                 |`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "service level agreement",
-      "SLA",
-      "contributing to polaris",
-      "open source",
-      "contribution guide"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "87qAKx7bI_hF_7y7zdQIz",
-    title: "Contributing to the website",
-    excerpt: "Info about how the website works",
-    slug: "website",
-    parentId: "cAlaGlo7Wj4TQUm-lysdT",
-    order: 99,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "Zn8jtk2Lzz7vxmLcNcpzR",
-        blockType: "Markdown",
-        content: `## The content structure
-
-### The Page object
-
-Each page is represented by a Typescript object that contains all the information about the page.`
-      },
-      {
-        id: "Fs0dfl2APIGisWpSOaMbH",
-        blockType: "Code",
-        code: {
-          javascript: {
-            title: "",
-            code: "{\n    id: \"SIC6mp1SHvcUtS98_DTHb\",\n    title: \"Home\",\n    excerpt: \"\",\n    slug: \"\",\n    parentId: null,\n    order: 0,\n    layout: \"blocks\",\n    blocks: [],\n    allowChildren: false,\n    hideInNav: true,\n    noIndex: false,\n    keywords: [],\n    childPageMetaType: null,\n    pageMeta: null,\n    hasSeparatorInNav: false,\n    thumbnailImageId: null\n}"
-          }
-        }
-      },
-      {
-        id: "3f67h7MDYwvoRHoYTAZfU",
-        blockType: "Markdown",
-        content: `### Blocks
-
-Every page can contain blocks. There are many types of blocks to choose from:
-
-- Markdown block
-- Image block
-- Youtube embed block
-- Sandbox embed block
-
-And more. A block is defined in Typescript using a simple object. Every object has an \`id\` and a \`blockType\`:`
-      },
-      {
-        id: "YW9IeYADI0Iiy75NBWOoS",
-        blockType: "Code",
-        code: {
-          javascript: {
-            title: "",
-            code: "{\n    id: \"_Oz0-L-OBwpOSrXPMFqb0\",\n    blockType: \"Markdown\",\n    ...\n}"
-          }
-        }
-      },
-      {
-        id: "8IZchJG6-k7F27BvaT2ay",
-        blockType: "Markdown",
-        content: `You can add more fields to each block. The available fields depend on which \`blockType\` you use. For instance, the Youtube block accepts a URL field:`
-      },
-      {
-        id: "vwLt4tc_P4NmnK_JnSFz6",
-        blockType: "Code",
-        code: {
-          javascript: {
-            title: "",
-            code: "{\n    id: \"_Oz0-L-OBwpOSrXPMFqb0\",\n    blockType: 'YoutubeVideo';\n    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';\n}"
-          }
-        }
-      },
-      {
-        id: "bBmDBbwLADywIhJwDDpcE",
-        blockType: "Markdown",
-        content: `Blocks are added to the \`Page\` on the \`blocks\` property. The property is an array that takes \`Block\` objects:`
-      },
-      {
-        id: "wPIrww6xoGi0aPUBjOPeS",
-        blockType: "Code",
-        code: {
-          javascript: {
-            title: "",
-            code: "{\n    id: \"SIC6mp1SHvcUtS98_DTHb\",\n    ...\n    blocks: [\n        {\n            blockType: 'YoutubeVideo';\n            youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';\n        }\n        ...\n    ],\n}"
-          }
-        }
-      },
-      {
-        id: "AnGTB6rJHT-R5MtLGtDYC",
-        blockType: "DoDont",
-        doMarkdown: "- Use the existing blocks to create new pages. We have enough primitives to communicate any type of content. Use the existing primitives instead of creating new ones.\n- ",
-        dontMarkdown: ""
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "website",
-      "site"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "dfKJpx1bw80se3wpXty8j",
-    title: "Design",
-    excerpt: "These are the principles that shape how we design all the experiences across the Shopify admin.",
-    slug: "design",
-    parentId: null,
-    order: 3,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
     childPageMetaType: null,
     pageMeta: null,
     hasSeparatorInNav: false,
@@ -8818,18 +7801,38 @@ Decorative colors are for expressive communications that assert the Shopify bran
   },
 
   {
-    id: "7KPu0qi8WphcNyDh0rKf4",
-    title: "Data visualizations",
-    excerpt: "Visualizations surface patterns in data, and provide immediate answers to a single, specific question.",
-    slug: "data-visualizations",
-    parentId: "dfKJpx1bw80se3wpXty8j",
+    id: "BqNKiujrXowZGlwyEIPfu",
+    title: "Polaris 101",
+    excerpt: "The Polaris design system is used by designers and developers to build world-class Shopify admin experiences.",
+    slug: "polaris-101",
+    parentId: "PFLzo-XPzihTi1K3imeoe",
     order: 0,
     layout: "blocks",
     blocks: [
       {
-        id: "i9XAgqfV9eYWeFS_PnYRL",
+        id: "iwPGzpeuz9asOpTIkMiTC",
         blockType: "Markdown",
-        content: "This section outlines data visualization practices at Shopify and how to leverage them.\n\n---\n\n## Data visualizations at Shopify\n\nThe data visualization process always begins with a set of data, a question, and analysis of the data to find the answer. Each visualization should focus on answering a single question about the dataset. For example, “What are my sales over time?”\n\nBy maintaining consistent styles and formats for our data visualizations, we ensure that data is presented in a truthful and accurate manner to maintain integrity with merchants.\n\n---\n\n## Guidelines\n\nData visualization should be approached by:\n\n### Solving a problem\n\nHave a clear question that needs to be answered. If multiple answers to multiple questions are illustrated in a visualization, it will become over complicated and hard to understand.\n\n### Testing with real data\n\nTesting with real data will reveal the effectiveness of the visualization. Also test when there are a few data points (one or two) or many data points (100 or more).\n\n### Scaling by number of datapoints\n\nThink about how the visualization will scale with more or fewer data points. Look out for cases where data is sparse (mostly zero) or spiky (some values are much\nlarger than others).\n\n---\n\n## Five core traits\n\nAn effective data visualization strikes the right balance between the five core traits: accuracy, intuitiveness, engagement, focus, and data granularity. It’s important to be intentional about which of these you focus on, and which are less important, in order to answer your specific question in the best way for your target audience. Understanding these traits help you choose between the many ways to visualize data by giving you a language for evaluating a visualization's effectiveness.\n\n### Accuracy\n\nAccuracy is about how faithfully the visualization matches the original data set. How much accuracy is needed to send your message across? A high level of accuracy may not always be needed to convey a trend or a pattern.\n\n### Intuitiveness\n\nIntuitiveness is about the ease of interpreting the visualization. Will merchants immediately understand what’s being represented, or will they need instructions? More intuitive is usually better, but sometimes it comes at the cost of flexibility.\n\n### Engagement\n\nEngagement is about how much attention the visualization attracts at a glance. Is it the star of the show, or does it sit in the background? More engagement is not always better—sometimes the best visualization is one that plays a supporting role.\n\n### Focus\n\nFocus is about how merchants’ attention is directed. Is one pattern or trend surfaced more prominently than others, or are there several trends that are given equal weight? Highly focused visualizations decrease cognitive overload, but restrict the breadth of the message you are able to convey.\n\n### Data Granularity\n\nData granularity is about the level of detail of the data set presented in the visualization. More granular means more data points, and possibly more cognitive processing, but less granular is less detailed. The right level of data granularity depends entirely on the specific question you’re trying to answer and the audience you’re communicating to.\n\n---\n\n## Axis and labelling conventions\n\nAll standard charts that show quantitative data have 2 axes that should be labeled for clarity.\n\n- Labelling should be outside and separate from the data area. This ensures the user understands the range of the data without taking focus away from the data.\n- Ensure that all labels are clear and accurate in what they represent. Use simple and short language.\n\n---\n\n## Granular guidelines\n\n### Axis lines\n\nAxis lines should be used as a guideline to show quantitative data, yet be unobtrusive.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nEnsure axis lines only appear where the data appears.\n\n![A light grey chart with axis lines](/images/foundations/design/data-visualizations/do/ensure-axis-lines-only-appear-where-data-appears@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse bleeding axis lines to the edge of the screen.\n\n![A chart with axis lines filling the screen](/images/foundations/design/data-visualizations/dont/use-bleeding-axis-lines-to-the-edge-of-the-screen@2x.png)\n\n</div></div>\n\n### Skipping labels\n\nLabelling the tick marks on both the y-axis and x-axis helps the visualization become more clear in what it represents.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nSkip labels in regular intervals.\n\n![A bar chart plotting time using 12am, 8am, 12pm, and 8pm](/images/foundations/design/data-visualizations/do/skip-labels-in-regular-intervals@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nTry to squeeze all labels together.\n\n![A chart plotting time with too many axis labels](/images/foundations/design/data-visualizations/dont/squeeze-all-labels-together@2x.png)\n\n</div></div>\n\n### X-axis Abbreviations\n\nShopify uses standard abbreviations for months and weekdays in order to reduce clutter in visualizations.\n\n- Use 12 hour format for time, with lowercase letters (12am, 6pm)\n- Use the first three letters for days of the week (Sun, Mon)\n- Use the first three letters for months (Feb, Mar)\n- For specific days, use the format ‘day + month’ (10 Apr, 11 Apr)\n- For specific months, use the format month + year (Apr 2011, May 2017)\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse standard abbreviations for labeling.\n\n![A chart showing the days of the week abbreviated to Mon, Tues, and so on](/images/foundations/design/data-visualizations/do/use-standard-abbreviations-for-labeling2@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nSlant labels to make them fit.\n\n![A chart with labels slanted at a 45 degree angle](/images/foundations/design/data-visualizations/dont/slant-labels-to-make-them-fit2@2x.png)\n\n</div></div>\n\n### Y-Axis Abbreviations\n\nShopify uses standard monetary abbreviations for the y-axis to reduce clutter.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nAbbreviate using ‘k’ for thousand, ‘b’ for billion.\n\n![A chart with a y-axis representing a thousand dollars as “$1.0k”](/images/foundations/design/data-visualizations/do/abbreviate-using-k-for-thousand-b-for-billion-and-include-the-unit@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nGo over 3 numeric characters, 1 decimal, or 1 letter.\n\n![A chart with a y-axis that represents the value of a thousand and one dollars as “$1.001k”](/images/foundations/design/data-visualizations/dont/go-over-3-numeric-characters-1-decimal-and-1-single-letter@2x.png)\n\n</div></div>\n\n### X-axis Labelling conventions\n\nLabels should be clear and concise.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nCenter all labels on the bar and the tick mark.\n\n![A bar chart with the abbreviated days of the week centered on the ticks which are centered on the bars that they represent](/images/foundations/design/data-visualizations/do/center-all-labels-with-the-bar-and-tick2@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse decimals on the x-axis labels.\n\n![A bar chart plotting numbers with decimals on the x-axis](/images/foundations/design/data-visualizations/dont/use-decimals-on-x-axis-labels2@2x.png)\n\n</div></div>\n\n### Y-axis Labelling conventions\n\nLabels should be clear and concise.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nLeft align labels and keep them above y-axis lines.\n\n![A chart with a dollar value on the y-axis that’s aligned to the left and raised slightly from the grey axis](/images/foundations/design/data-visualizations/do/left-align-labels-and-keep-them-slightly-above-the-y-axis-lines@2x.png)\n\n</div></div>\n\n---\n\n## Color palettes\n\nColor in data visualization has a very specific meaning. The data visualization color palette provides specific colors that can be used alone or in a group, depending on the intent.\n\n### Single data series\n\nUse when there is a single data series. For example, a bar chart, column chart, or a single line chart.\n\n![A line graph with y-axis and x-axis labels and a single purple line plotting data](/images/foundations/design/data-visualizations/single-data-series@2x.png)\n\n![A line chart with 2 different colors comparing current values to a past value](/images/foundations/design/data-visualizations/single-comparison-to-past@2x.png)\n\n### Single comparison to past\n\nThis is used when the data set is being compared to to its past values. For example, total sales by month, this year, compared to last year. In this case, the current value will be purple and the past value will be grey.\n\n### Multiseries data\n\nUsed when there are multiple data sets to compare. For example, a multiseries line chart. Go down the list as the number of datasets increase.\n\n![A line chart with multiple data points represented by different colors](/images/foundations/design/data-visualizations/multiseries-data@2x.png)\n\n![One example of an upward trend in percentage sales represented in gren and another example of a downward trend in](/images/foundations/design/data-visualizations/biased-charts@2x.png)\n\n### Biased\n\nUsed when certain data need is displayed in a negative or positive light. For example, showing positive or negative change relative to a reference value.\n\n---\n\n## Horizontal bar charts\n\nBar charts are used for comparing discrete categories. Use a bar chart when there is a constraint to the number of data points that can appear on the visualization, otherwise it becomes hard to scale.\n\n### Best used for\n\nShowing discrete categories of data, like {products} vs {sales}.\n\n### Don’t use\n\nWhen the number of data points can exceed 6. In this case, use a table.\n\n### Bar chart labels\n\nLabel each bar with what it’s displaying, as well as the value. For more best practices, visit axis and label conventions.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nInclude a label on each bar. If the bar is too small, include it outside of the bar.\n\n![A horizontal bar chart with 2 dollar values within the bar and the lowest value outside of the bar to the right](/images/foundations/design/data-visualizations/do/include-a-label-on-each-bar-if-the-bar-is-too-small-include-it-outside-of-the-bar@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nInclude a label on top of each bar to display what data it’s showing.\n\n![A horizontal bar chart displaying the country represented by each bar](/images/foundations/design/data-visualizations/do/include-a-label-on-top-of-each-bar-to-display-what-data-it-is-showing@2x.png)\n\n</div></div>\n\n### Color\n\nUse one color for all bars.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nGive negative bars 60% opacity.\n\n![A horizontal bar chart with solid purple positive bars and purple negative bars set to 60% opacity](/images/foundations/design/data-visualizations/do/give-negative-bars-60-opacity@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse multiple colors for the bars.\n\n![A horizontal bar chart using a different color for each bar](/images/foundations/design/data-visualizations/dont/use-multiple-colors-for-the-bars@2x.png)\n\n</div></div>\n\n### Bar positioning\n\nMake sure the bars are proportional in width, roughly twice the size of the space between the bars.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nMake the width of each bar about twice as wide as the space between them.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nMake the bars too skinny.\n\n</div></div>\n\n---\n\n## Vertical column charts\n\nColumn charts are used to show change over time, trends, and individual data points. Use column charts for when the number of data points is fewer than 30, or else use a line chart.\n\n### Best used for\n\n- Showing continuous data like sales per hour, or orders per month\n- Showing smaller granularities of time (hourly, daily, weekly, and monthly)\n\n### Don’t use\n\nWhen the number of data points can exceed 31. In this case, use a [line chart](/design/data-visualizations#line-charts).\n\n### Color\n\nAll bars should be the same color.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse one color for all bars.\n\n![A bar chart showing a data trend with the same bar color](/images/foundations/design/data-visualizations/do/use-one-color-for-all-bars@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse multiple colors for the bars.\n\n![A bar chart showing the same data point with different colors](/images/foundations/design/data-visualizations/dont/use-multiple-colors-for-the-bars2@2x.png)\n\n</div></div>\n\n### Bar positioning\n\nMake sure the bars are proportional in width, roughly twice the size of the space between the bars.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nMake the width of each bar about twice as wide as the space between them.\n\n![A bar chart properly formatted with spaces half the size of each bar](/images/foundations/design/data-visualizations/do/make-the-width-of-each-bar-about-twice-the-space-between-them@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nMake the bars too skinny.\n\n![A bar chart with spaces 4 times larger than the bar itself](/images/foundations/design/data-visualizations/dont/make-the-bars-too-skinny@2x.png)\n\n</div></div>\n\n### Interactivity\n\nInclude some interactivity on the bars upon hover since users will be looking at individual data points. The top line of the tooltip should follow x-axis abbreviation and labelling guidelines, while the bottom line tooltip should follow y-axis abbreviation and labelling guidelines.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nInclude tooltips for x-axis and y-axis values.\n\n![A bar chart with a tool tip on a bar displaying the date axis point and the dollar value axis point](/images/foundations/design/data-visualizations/do/include-tooltips-with-both-the-x-axis-value-and-y-axis-value@2x.png)\n\n</div></div>\n\n---\n\n## Line charts\n\nA line chart is created by connecting a series of data points together with a line. Line charts are good to show change over time, comparisons, and trends. Use line charts when the number of data points is more than 30.\n\n### Best used for\n\n- Showing continuous data like sales or orders over time\n- Showing larger granularities of time (yearly, or quarterly)\n- Spotting overall trends and shapes of data\n\n### Axis and labelling\n\nSet up the chart area using the [axis and labelling guidelines](/design/data-visualizations#axis-and-labelling-conventions)\n\n---\n\n## Multiline charts\n\nLine graphs work well when multiple datasets need to be compared. Use the [color palette](/design/colors#color-palette) to select colors.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse contrasting color and include a legend.\n\n![A line chart with 2 lines using purple and teal to represent the years 2015 and 2016](/images/foundations/design/data-visualizations/do/use-contrasting-colors-and-include-a-legend@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse more than 4 lines.\n\n![A line chart with 4 lines of different colors](/images/foundations/design/data-visualizations/dont/use-more-than-4-lines-try-to-stick-to-2-lines@2x.png)\n\n</div></div>\n\n---\n\n## Display metrics\n\nA display metric is a quantifiable measure that is used to track and display the status of a specific process. Examples include a sum, an average, or a movement in a positive or negative direction.\n\n### Best used for\n\nShowing a single value with a base unit.\n\n### Units\n\nMetrics should be paired with their base unit in close proximity to the number. Use concise and clear language for metrics.\n\n### Scope\n\nMetrics should be scoped to indicate the timeline of the data.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nInclude a dimension of time to scope the value.\n\n![Diagram showing “sales this week” with a numeric dollar value](/images/foundations/design/data-visualizations/do/include-a-dimension-of-time-to-scope-the-value@2x.png)\n\n</div></div>\n\n### Movement\n\nIf needed, consider including a comparison indicator, such as comparison to the previous time or average.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse green for positive movement.\n\n![Diagram of green being used to signify an upward trend in data](/images/foundations/design/data-visualizations/do/use-green-to-signify-positive-movement@2x.png)\n\nUse red for negative movement.\n\n![Diagram of red being used to signify a downward trend in data](/images/foundations/design/data-visualizations/do/use-red-to-signify-negative-movement@2x.png)\n\n</div></div>\n\n---\n\n## Tables\n\nA table is a good way to showcase a large amount of information which has a variety of columns and data to show for each entity. A table should be used when multiple metrics and categories need to be presented together, and accurate lookup of the data values is more important that showing patterns in the data.\n\n### Best used for\n\n- Showing large amounts of discrete data with many variables\n- Showing values across multiple categories and measures\n- Allowing for filtering and ordering when comparison is not a priority\n\n### Alignment\n\nConsistent vertical alignment is essential for fast visual comparison between values in a table.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nLeft align non-numeric values and right align numeric values.\n\n![A table showing product inventory with product names aligned to the left and numbers aligned to the right](/images/foundations/design/data-visualizations/do/left-align-non-numeric-values-and-right-align-numeric-values@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nCenter column headers.\n\n![A table showing product inventory data with headers, numbers, and titles centered](/images/foundations/design/data-visualizations/dont/center-align-columns@2x.png)\n\n</div></div>\n\n### Separation\n\nIn order to reduce clutter and non-data ink, we prefer to subtly separate each row.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse light lines to indicate separation between rows.\n\n![A table with three rows separated by light grey lines](/images/foundations/design/data-visualizations/do/separate-rows-with-dividing-lines@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nHighlight every other row to indicate separation.\n\n![A table with a white background and grey lines using a darker grey every other row](/images/foundations/design/data-visualizations/dont/separate-rows-by-highlighting-every-other-row@2x.png)\n\n</div></div>\n\n### Totals\n\nTotals allow merchants to understand the data holistically and should be easy to find.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nPlace totals as the first row beneath the headers, and bold the text.\n\n![A diagram showing individual product sales underneath the total sales in bold type](/images/foundations/design/data-visualizations/do/place-bold-totals-in-the-first-row@2x.png)\n\n</div></div>\n\n---\n\n## Accessibility\n\nAn important part of designing clear visualizations is making data accessible to everyone.\n\n### Provide options\n\nMerchants with vision issues might have trouble understanding visual presentations of data, even with assistive software.\n\nMerchants with dexterity or motor issues might have trouble using interactive visualizations that depend on fine motor control.\n\nOthers might simply have trouble understanding data presented in a chart or graph.\n\nTo support the needs of different merchants, always provide multiple formats for data visualizations.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nLet merchants access their data in multiple formats. For charts and graphs, it’s often helpful to offer the same content in a data table that’s either on the same page or on a related page that’s easy to discover.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nProvide data visualizations in only one format.\n\n</div></div>\n\n### Use of color\n\nColor is critical for visualization, but can cause issues for merchants with color blindness and low vision. Color should be used in a way that supports the interpretation of visual information for all merchants, including those with visual issues.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nEnsure that text, line, bar, and other colors have sufficient contrast against their background.\n\n</div><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse colors that can be distinguished from each other to support merchants with different forms of [color blindness](https://webaim.org/articles/visual/colorblind).\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nRequire that merchants are able to see color to understand the information provided in the chart or graph.\n\n</div></div>\n\nTo learn more, see guidance about [accessible colors in Polaris](https://polaris.shopify.com/design/colors#colors-follow-accessibility-guidelines).\n\n### Scalable vector graphics (SVGs)\n\n`<svg>` and `<canvas>` elements are excellent tools for creating engaging, dynamic visualizations in HTML. However, they are frequently difficult to access using assistive technologies. Assistive technology users may not be able to access content in the correct order, find text equivalents for visual information, or access interactions with the keyboard.\n\nIn general, hide `<svg>` elements from screen readers using `aria-hidden=\"true\"` and provide a separate text equivalent for the graph or chart. Although different visualizations may benefit from different treatments, try to prioritize creating a consistent experience."
+        content: `## What’s the Shopify admin?
+
+Merchants set up their store, configure settings, and manage their business using the admin. It includes core aspects of the merchant’s business, including orders, products, and customers.
+
+![Partial screenshots of the admin in mobile and web](/images/getting-started/polaris-101/mobile-web-admin@2x.png)
+
+## What is Polaris?
+
+Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences.
+
+The design system is made up of design guidance, code libraries, development opinions, and API documentation on how to build merchant experiences for the Shopify admin.
+
+## Who is Polaris for?
+
+Polaris is used both internally at Shopify and externally by app developers and designers.
+
+## What are Shopify apps?
+
+The admin includes installable apps that are distributed through the Shopify App Store. They enable merchants to add functionality to their stores without leaving the familiar environment of the admin.
+
+By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bridge) and following the [App Design Guidelines](https://shopify.dev/apps/design-guidelines), you'll create a streamlined experience with the rest of the Shopify admin.`
       }
     ],
     allowChildren: false,
@@ -8837,7 +7840,8 @@ Decorative colors are for expressive communications that assert the Shopify bran
     hasNewBadge: false,
     noIndex: false,
     keywords: [
-      "data viz"
+      "polaris",
+      "shopify admin"
     ],
     childPageMetaType: null,
     pageMeta: null,
@@ -8846,476 +7850,49 @@ Decorative colors are for expressive communications that assert the Shopify bran
   },
 
   {
-    id: "qAqpxorBptcnl9v0xULGy",
-    title: "Design",
-    excerpt: "These are the principles that shape how we design all the experiences across the Shopify admin.",
-    slug: "design",
-    parentId: "dfKJpx1bw80se3wpXty8j",
+    id: "J5QGKbutohK0lRY34VpwT",
+    title: "Icons in Figma",
+    excerpt: "",
+    slug: "icons-in-figma",
+    parentId: "O83BdyzISt1Mgz0IrGHtP",
     order: 0,
     layout: "blocks",
-    blocks: [
-      {
-        id: "CH4COeA2uvNI-r-ma501D",
-        blockType: "Markdown",
-        content: `![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/images/foundations/design/design-intro@2x.png)
-
-### Fresh visual style
-
-A clean, simple style makes things feel approachable and&nbsp;efficient.
-
-### Faster performance
-
-Elegant code and lightweight assets means pages load&nbsp;more&nbsp;quickly.
-
-### Future-friendliness
-
-Built for flexibility, design tokens and new infrastructure let us iterate easily across&nbsp;experiences.
-
-### Purposeful brand presence
-
-Being intentional about when the Shopify brand comes forward, and when it takes a backseat, directs the focus to where it&nbsp;matters&nbsp;most.
-
-### Familiarity across experiences
-
-Defined patterns and guidelines help us design a wide variety of experiences that still always feel&nbsp;like&nbsp;Shopify.`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "visual design",
-      "design language",
-      "design"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "HBAXg6nVIMGEHdptP7KYO",
-    title: "Icons",
-    excerpt: "Icons in the Shopify admin act as visual aids to help merchants complete tasks. They’re simple, informative, and build on the visual language of the design system.",
-    slug: "icons",
-    parentId: "dfKJpx1bw80se3wpXty8j",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "ov-thFrzEL0mdBeqXRKw5",
-        blockType: "Markdown",
-        content: "![A collection of various icons used in the Shopify Admin.](/images/foundations/design/icons/icons-intro@2x.png)\n\n---\n\n## Principles\n\n### Simple over detailed\n\nDetailed icons increase cognitive load. Focus on simplicity to help merchants understand the concept the icon represents and recognize icons on smaller screens.\n\n### Literally literal\n\nLiteral symbols are easier to understand than abstract symbols. When possible, use symbols that represent the most basic idea or concept instead of a metaphorical one. If the concept can’t be conveyed literally (an activity like gardening, a profession like doctor), pick a logically related symbol (shovel, stethoscope).\n\n### Stay professional\n\nThe design of an icon communicates tone, much like the content it’s paired with. Focus on the effectiveness of the message instead of its ability to delight. In other words, prioritize representing the function, rather than how nice it looks.\n\n---\n\n## Creating icons\n\n![Five icons in order: a trash can to represent a delete action, a cogwheel to represent settings, a spyglass to represent search, a pin to represent location and a bell to represent notifications.](/images/foundations/design/icons/icons-established@2x.png)\n\n### Use established icons\n\nIcons that have been used for a long time worldwide have a higher chance of being recognized and understood quickly. Don’t reinvent an icon that’s already been accepted as the convention. There are global, established conventions for concepts like “delete,” “settings,” and “search.” These symbols are effective, and don’t need to be redefined.\n\n![An icon of a cogwheel that represents Store, Product, and global settings.](/images/foundations/design/icons/icons-limit-variations@2x.png)\n\n### Limit variations\n\nUse a single icon to represent variations of the same concept. Shipping settings, store settings, account settings, and any new settings should use the cog icon. Don’t create a custom icon for each of these concepts—it bloats the icon library and makes it difficult for merchants to create strong connections around a concept.\n\n![Various icons paired with text, notably the icon of a house with the word \"Home\", the icon of a computer with the word \"Desktop\" and an icon of an arrow pointing up and another pointing down with the word \"Sort\".](/images/foundations/design/icons/icons-pairing@2x.png)\n\n### Pair icons with text\n\nThe purpose of an icon is to clarify the content by providing a visual cue and improve legibility and scannability of the user interface. In general, icons should be placed near a label or title. Never use an icon to replace a name of a product or feature—the rare exception being an icon that’s a universally understood action, like the trash can icon that represents deletions.\n\n![Five icons representing the currency of different countries: a dollar, a euro, a british pound, an indian rupee and a japanese yen.](/images/foundations/design/icons/icons-internationalization@2x.png)\n\n### Keep internationalization in mind\n\nWhenever possible, use a universally recognized icon. However, there will be times where only a locally understood icon will work to communicate a concept. When deciding what symbol should be used, check that it will be understood at a glance by people from different cultures and backgrounds.\n\n---\n\n## When to use icons\n\nIcons are powerful visual helpers and should be used with care. Overuse quickly results in user interfaces that are visually overwhelming or distracting.\nIcons are commonly used:\n\n- In primary navigation\n- In page headers and section titles\n- In banners to bring attention to a specific theme, such as an announcement or an error\n- Inline with text to add clarity\n- To direct attention to something the merchant can take action on\n\nTo browse all available icons, visit the [Icons library](https://polaris.shopify.com/icons).\n\n## System icons\n\nSystem icons help merchants find their way around and shouldn’t be ornamental. They’re smaller than spot icons because they’re always applied in product experiences where it’s important that they complement the user experience and not overpower it. They should represent a specific action, object, or concept.\n\n![Icons in a navigation menu.](/images/foundations/design/icons/icons-system-20@2x.png)\n\n### Major icons—20×20\n\nMajor system icons are:\n\n- Primarily used in navigation to support wayfinding\n- Used to help promote, reinforce, or draw special attention to a specific area or metaphor\n- 20×20 in size\n- Within a 20×20 bounding box\n\n![Smaller icons in a drop-down menu](/images/foundations/design/icons/icons-system-16@2x.png)\n\n### Minor icons—16×16\n\nMinor system icons are:\n\n- Used inline to add clarity to an action\n- Used in form elements (`<input>`, `<button>`, etc.)\n- 16×16 in size\n- Within a 20×20 bounding box\n\n---\n\n## Spot icons\n\n![Larger, spot icons of a spyglass for a \"results not found\" error, an upwards arrow for a file upload card, and an exclamation point for a \"page not found\" error.](/images/foundations/design/icons/icons-spot@2x.png)\n\nSpot icons reinforce messaging in product experiences that are seen more than once. Spot&nbsp;icons&nbsp;are:\n\n- Bigger than system icons and have a stronger stroke weight to add visual balance to the layout\n- 60×60 in size\n- Within a 60×60 bounding box"
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "shopify icons",
-      "icon sets",
-      "icon designs",
-      "icon guidelines",
-      "icon standards",
-      "iconography",
-      "visual helpers",
-      "minor icons",
-      "major icons",
-      "inline icons",
-      "in-line icons",
-      "main navigation icons",
-      "main nav icons",
-      "icons in nav",
-      "icons in main nav",
-      "icon colors"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "ZRiKW4XzbrflowwzHFVKE",
-    title: "Illustrations",
-    excerpt: "The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience.",
-    slug: "illustrations",
-    parentId: "dfKJpx1bw80se3wpXty8j",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "WQ0MNNnzpgagYRV30q1za",
-        blockType: "Markdown",
-        content: `![The illustration of a chair, in simples straight lines, followed by a version with curves and some color, followed by a final version with filled shapes and shadows.](/images/foundations/design/illustrations/illustrations-intro@2x.png)
-
----
-
-## Principles
-
-### Always be useful
-
-Illustration adds information. It provides context, adds clarity, or leads to the next step. It gives merchants a deeper understanding of what they’re working on.
-
-### Keep it in the family
-
-Illustrations are all part of the same visual family. Inconsistencies lower the overall quality of the experience, and can distract merchants or make them feel like they’re in the wrong place.
-
-### Be considerate
-
-Illustration should understand and support the merchant’s experience. Each illustration needs to feel appropriate for whatever situation it shows up in.
-
-### Stay focused
-
-Each illustration conveys one thing. The story is easy to understand, so merchants intuitively know how to accomplish whatever they came here to do.
-
----
-
-## Elements of style
-
-![A color palette and illustrations using the color palette](/images/foundations/design/illustrations/illustrations-color@2x.png)
-
-### Color
-
-Illustrations use a special set of colors designed to work well in the places where they show up. The palette is limited: individual illustrations use whites, grays, and two or three colors each. Colors are also less saturated than the surrounding UI, so they don’t distract from core interactions.
-
-![Illustrations of a flag, a teapot, a leaf, and various profiles of people of different ethnicities.](/images/foundations/design/illustrations/illustrations-shape@2x.png)
-
-### Shape
-
-Objects have realistic proportions so they’re easy to recognize. Simple geometric shapes with rounded corners build images that are clear and approachable. Representations of people use more organic shapes.
-
-![An illustration of a laptop and an illustration of shipping boxes separated on a white background](/images/foundations/design/illustrations/illustrations-space@2x.png)
-
-### Space
-
-The perspective is flat and two-dimensional so the entire area of the illustration is of equal importance. Drop shadows give things subtle depth when necessary. An additional side of an object can be added if things aren’t easily recognizable from a single side.
-
-Each illustration has negative space around it so it feels balanced in the place it lives, and so its visual weight is the same as other illustrations that live in the same places.
-
-![An stylized illustration of a chair with red lines defining its angles, next to an illustration of the profile of a person, with red lines to emphasize where curves are used.](/images/foundations/design/illustrations/illustrations-line@2x.png)
-
-### Line
-
-Line makes and arranges shapes in the space. All illustrations have smooth lines without texture. Smaller objects have straighter lines, while larger objects can have more detailed, curved lines.
-
-Intersecting and continuous lines are a key element of the admin illustration style, but they aren’t forced. They make a simple illustration feel elegant and visually interesting without being distracting.
-
-![An intricate illustration of a shipping label, followed by an illustration of a sheet with a list of users, followed by a very simple illustration of an URL address bar.](/images/foundations/design/illustrations/illustrations-detail@2x.png)
-
-### Detail
-
-Illustrations need some detail to make sense, but too much can be noisy. They have the minimum amount of detail necessary to make them feel realistic but still simple. Fine details are rarely smaller than 4px in height or width.
-
----
-
-## Where illustrations live
-
-There are places where illustrations always appear, and places where they’re used only sometimes.
-
-![An illustration of scissors cutting a coupon to indicate a page for discount code administration that has no discount codes saved.](/images/foundations/design/illustrations/illustrations-empty-states@2x.png)
-
-### Empty states
-
-Merchants see an empty state illustration the first time they access a new part of the experience, before they’ve had the chance to do anything there yet. It introduces what they can do here, and sets expectations for what’s ahead.
-
-![An admin homecard with a small illustration next to some text describing how to customize a theme.](/images/foundations/design/illustrations/illustrations-onboarding@2x.png)
-
-### Onboarding
-
-Onboarding tasks help new merchants set up their store. Illustrations frame what each task is for. And by changing in appearance, they reinforce when a task is complete.
-
-![An illustration celebrating a store anniversary.](/images/foundations/design/illustrations/illustrations-announcements@2x.png)
-
-### Announcements
-
-Announcements let merchants know about something that might help their business. When the announcement celebrates a major merchant milestone or introduces an important product, illustration helps make it special or noticeable.
-
-![An illustration next to a card talking about Shopify Payments.](/images/foundations/design/illustrations/illustrations-spot@2x.png)
-
-### Spot illustrations
-
-In some rare instances, unique spot illustrations can be used to achieve a specific goal, like to draw attention to something important on a busy page, or to explain a technical concept.`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "drawings",
-      "pictures"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "Qc7S68Ht4VUcD21IXbZ3Z",
-    title: "Interaction states",
-    excerpt: "Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.",
-    slug: "interaction-states",
-    parentId: "dfKJpx1bw80se3wpXty8j",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "7s-cDN759RsPCUuXuYNuX",
-        blockType: "Markdown",
-        content: "![A collection of buttons in different states](/images/foundations/design/interaction-states/interaction-states-intro@2x.png)\n\n---\n\n## Principles\n\n### Be subtle, but clear\n\nSuccessful interaction feedback is informative, not decorative. Avoid elaborate transitions that create visual noise or intense color changes. Distracting animation can create disturbance and make an interface unpleasant to use.\n\n### Keep things consistent\n\nConsistent treatments for interaction feedback create recognizable patterns. If an interaction produces different feedback across the Shopify admin, it deteriorates the integrity of the pattern and risks confusing merchants.\n\n---\n\n## Designing interaction states\n\nKeep in mind that merchants interact with interfaces differently depending which input device they’re using. Devices they may be using include:\n\n### Input devices to consider\n\n- Mouse\n- Touch screen\n- Keyboard\n- Voice\n- Game controller\n- Refreshable braille display\n\nTo learn more, check out the [accessibility guidelines](/foundations/accessibility).\n\n### Use signifiers\n\nProvide merchants with cues as to what the interface will do if they interact with it. By using signifiers we set expectations about what components can do, which creates a more intuitive interface that’s easier to use. The types of signifiers include:\n\n![A \"sort\" button in a default state.](/images/foundations/design/interaction-states/interaction-states-explicit@2x.png)\n\n**Explicit**, where content directs merchants to do the intended action, such as “Sort” or “Save.”\n\n![An \"edit\" button with its underline appearing when the mouse hovers above it.](/images/foundations/design/interaction-states/interaction-states-hidden@2x.png)\n\n**Hidden**, where the clue isn’t revealed until the merchant interacts with it, such as hovering or using tab navigation to see if a button is clickable.\n\n![A \"print packing slip\" button that is grayed out and inactive.](/images/foundations/design/interaction-states/interaction-states-negative@2x.png)\n\n**Negative**, where the action appears inactive (like the button is grayed out and doesn’t respond to hover) because it isn’t available for the merchant to use.\n\n![A toast component, a button with a spinner component and a text field component with an error message.](/images/foundations/design/interaction-states/interaction-states-behavior@2x.png)\n\n### Behavior\n\n**Use feedback indicators** like the [progress bar](https://polaris.shopify.com/components/progress-bar) component or the [spinner](https://polaris.shopify.com/components/spinner) component to let them know that the interface received their request. If appropriate, you can also provide added information about what or how long it will take to complete.\n\n**For non-disruptive feedback** on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.\n\n**For an unsuccessful completion** that requires the merchant to take action, provide information about what prevented the action from completing successfully and what the merchant can do to fix the problem. For example, use the validation error state of the [text field](https://polaris.shopify.com/components/selection-and-input/text-field) component."
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "visual patterns",
-      "color strategy",
-      "interaction states",
-      "hover",
-      "focus",
-      "active",
-      "selected",
-      "disabled",
-      "subdued",
-      "state"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "SXps_TkS5FC4BTGqxpmEp",
-    title: "Sounds",
-    excerpt: "We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.",
-    slug: "sounds",
-    parentId: "dfKJpx1bw80se3wpXty8j",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "LaBRijyg14uDzN38jy_Rr",
-        blockType: "Markdown",
-        content: `![Visual representation of sound waves as concentric circles](/images/foundations/design/sounds/sound-intro@2x.png)
-
----
-
-## Principles
-
-### Selectively urgent
-
-The duration, volume, and character of a sound should all be dictated by the level of urgency of an event. For example, an alert indicating that a customer is struggling to complete checkout requires more urgent attention and immediate action. An alert indicating that a customer has arrived at a storefront is informative, but doesn’t require immediate action. The sounds used during these events should be customized to reflect the differences in urgency.
-
-### Avoid annoying repetition
-
-Some sounds occur many times per day. While appealing on first listen, a sound may become irritating after ten, and unbearable after a hundred. Merchants that hear a sound repeatedly may quickly grow tired of it. **Our sounds should be informative and not annoying.** When possible, use data to determine how often a sound is triggered.
-
-### Distinct and succinct
-
-Merchants are likely to hear our sounds in a variety of contexts. Clean, focused, and succinct sounds convey information better than muffled or distorted sounds.
-
-### Test across devices
-
-While you may be testing your designs using headphones or loudspeakers that reveal the audible frequency spectrum clearly, a smartphone speaker will affect the quality of the sound. Smaller speakers are more susceptible to distortion. Sounds on mobile devices should be played at lower levels than on a desktop computer or laptop. Test sounds on a variety of devices and volume&nbsp;levels.
-
-### Think beyond sound
-
-Some people can’t rely on sound to receive cues or notifications. Merchants may have a disability that affects hearing or auditory processing. Depending on the merchant’s preferences and technologies, they may receive sound cues through haptic or visual feedback, but don’t assume that they’ll be able to perceive sound. Always include an alternative method to convey information, like text-based notifications or visual changes in the interface.
-
----
-
-## When to use sound
-
-Sounds in our product help convey information. There’s an important balance between having too many sounds and not enough. Useful and well-planned sounds will help with merchant understanding. Unnecessary sounds will reduce the perceived quality of our product.
-
-Even though merchants might miss important information if they turn off their sound, we should always provide the option for them to do so.
-
-### Common sound events
-
-- For an event that requires a merchant’s immediate attention, use an alert to encourage them to pause their workflow and take care of things.
-- For something that’s useful for a merchant to do, but not necessarily immediately, use a notification.
-- To confirm success, use feedback for a successful action.
-- For statement of failure, use feedback for unsuccessful action.
-
----
-
-## How to approach sound design
-
-Be creative and intentional with your sound design. And remember:
-
-- Short sounds should be no longer than 250ms, long sounds no longer than 1 second.
-- Sounds should be in the same “family.” If you introduce a new note, key, or timbre, make sure there’s a good reason.
-- Create two versions of every sound:
-  - A louder version for desktop applications.
-  - A quieter version for mobile applications where the speakers are smaller and may distort more easily.
-
-Design sounds with as much intentionality as other design aspects of Shopify’s products.`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "audio",
-      "sonic",
-      "noise"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "il1aV-jwzBjClB8uo6vkV",
-    title: "Space",
-    excerpt: "Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping  the content become more useful and understandable.",
-    slug: "space",
-    parentId: "dfKJpx1bw80se3wpXty8j",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "O5f88OH1ZAv51Q4YGo-kC",
-        blockType: "Markdown",
-        content: "<!-- inline css styling for html video and images -->\n<style>\n.space-hero {\n  margin: 40px -30px 40px -30px;\n}\n\n.punit-img {\n  display: block;\n  margin: 40px auto 40px auto;\n  width: 75%;\n}\n</style>\n\n---\n\n<div class=\"space-hero\">\n  <img src=\"/images/foundations/design/space/spacing-polaris-size-units.svg\" alt=\"A visual example of a polaris unit\">\n</div>\n\n---\n\n## Spacing must...\n\n![Illustrations of blocks representing each principle](/images/foundations/design/space/principles@2x.png)\n\n### 1. Create visual groupings\n\nThe more items are related, the closer they should be to each other.\n\n### 2. Complement function\n\nUse tighter spacing for large amounts of information, use looser spacing for more focused content.\n\n### 3. Be harmonious\n\nUse Polaris space tokens in a way that is consistent with the rest of the experience.\n\n---\n\n## Spacing tools\n\n### Polaris space units\n\nAll measurements used across the experience (space, width, height, etc) must reference Polaris space units to guarantee visual consistency and balance.\n\n<div class=\"punit-img\">\n  <img src=\"/images/foundations/design/space/spacing-polaris-units@2x.png\" alt=\"A visual example of a polaris unit\">\n</div>\n\n### Space scale\n\n| Value        | Space         | px value | rem value |\n| ------------ | ------------- | -------- | --------- |\n| 0            | --p-space-0   | 0        | 0         |\n| 0.25         | --p-space-025 | 1        | 0.0625    |\n| 0.5          | --p-space-05  | 2        | 0.125     |\n| **1 (base)** | --p-space-1   | 4        | 0.25      |\n| 2            | --p-space-2   | 8        | 0.5       |\n| 3            | --p-space-3   | 12       | 0.75      |\n| 4            | --p-space-4   | 16       | 1         |\n| 5            | --p-space-5   | 20       | 1.25      |\n| 6            | --p-space-6   | 24       | 1.5       |\n| 8            | --p-space-8   | 32       | 2         |\n| 10           | --p-space-10  | 40       | 2.5       |\n| 12           | --p-space-12  | 48       | 3         |\n| 16           | --p-space-16  | 64       | 4         |\n| 20           | --p-space-20  | 80       | 5         |\n| 24           | --p-space-24  | 96       | 6         |\n| 28           | --p-space-28  | 112      | 7         |\n| 32           | --p-space-32  | 128      | 8         |\n\nPolaris units are more dense at a small scale, and less so as dimensions increase.\nThis is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different spaces.\n\n![Examples of different variations of spacing](/images/foundations/design/space/spacing-scale-examples@2x.png)\n\nRepeating the same amount of spacing (left) and using more variation (right).\n\n<br/>\n\n### Column grid\n\nThe column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.\n\n<video width=\"100%\" height=\"auto\" controls autoplay muted loop>\n  <source src=\"/images/foundations/design/space/column.mp4\" type=\"video/mp4\">\n</video>\n\n<br/>\n\n### Breakpoints\n\n<video width=\"100%\" height=\"auto\" controls autoplay muted loop>\n  <source src=\"/images/foundations/design/space/breakpoints.mp4\" type=\"video/mp4\">\n</video>\n\nThe grid adapts to the viewport width. The amount of columns will change depending on how much space there is. This is a recommendation for how much should be displayed horizontally. Less columns means less content.\n\n<br/>\n\n| Screen size                              | Columns | Margin | Gutter | Navigation |\n| ---------------------------------------- | ------- | ------ | ------ | ---------- |\n| **XS** <br/> 0-489 <br/> Phones          | 6       | 16     | 16     | Collapsed  |\n| **SM** <br/> 490-767 <br/> Small tablets | 6       | 16     | 16     | Collapsed  |\n| **MD** <br/> 768-1039 <br/> Tablets      | 6       | 24     | 16     | Visible    |\n| **LG** <br/> 1040-1399 <br/> Laptops     | 12      | 24     | 16     | Visible    |\n| **XL** <br/> 1440+ <br/> Desktops        | 12      | 32     | 16     | Visible    |\n\nThe grid is meant to serve as a point of reference for page level design and alignment, but this doesn’t need to apply to component level layouts.\n\n---\n\n## Essentials for designing with space\n\n### Gestalt principles\n\nThe perception of any given page goes beyond the individual elements presented, and the space between them. People’s perception is heavily influenced by their own expectations and motivations.\nWhen designing, it’s key to consider that people look for patterns, and will always perceive things in their simplest form. For instance, a bunch of similar items stacked on top of each other will likely read as a list.\n\n![Different types of list items, such as menus, popovers, and dropdowns](/images/foundations/design/space/spacing-principles@2x.png)\n\n<br/>\n\nPeople look for patterns instinctively, and they lean of visual cues like:\n\n#### Similarity\n\nGrouping things based on physical appearance (shape, color, size, orientation).\n\n![Index table](/images/foundations/design/space/spacing-similarity@2x.png)\n\n<br/>\n\n#### Proximity\n\nGrouping things based on distance between objects.\n\n![Customers and orders page](/images/foundations/design/space/spacing-proximity@2x.png)\n\n<br/>\n\n#### Continuity\n\nGrouping things based on the way they are arranged.\n\n![Tag multiselect popover and media card](/images/foundations/design/space/spacing-continuity@2x.png)\n\nShadows inside popovers act as visual cues to indicate additional content when scrolled (left). Cards placed horizontally in a media carousel communicates related topics (right).\n\n<br/>\n\n#### Closure\n\nGrouping things that are implicitly enclosed by a larger object.\n\n![Order details page](/images/foundations/design/space/spacing-closure@2x.png)\n\n<br/>\n\n#### Common fate\n\nGrouping things based on how they move.\n\n<video width=\"100%\" height=\"auto\" controls autoplay muted loop>\n  <source src=\"/images/foundations/design/space/common-fate.mp4\" type=\"video/mp4\">\n</video>\n\n<br/>\n\n#### Common Region\n\nGrouping things that are explicitly enclosed by a larger object.\n\n![Customer details card](/images/foundations/design/space/spacing-common-region@2x.png)\n\nBecause people perceive these instinctively, we can use them as tools to create hierarchy, visual rhythm, and guide the user's eye to what’s important.\n\n---\n\n<br/>\n\n### Rhythm\n\nAlternating between objects and space creates a pattern. Repeated patterns create visual rhythm, which can be used to effectively direct the viewer’s attention.\nAnything can establish rhythm: space, typography, icons, color, shape, and size.\n\nLike in music, different types of rhythm serve a different purpose, in design there’s three worth highlighting:\n\n<br/>\n\n![Example of data table](/images/foundations/design/space/spacing-regular-rhythm@2x.png)\n\n**Regular rhythm** is predictable, which makes it a useful way to organize large sets of objects that have the same level of importance.\n\n<br/>\n\n![Location profile page](/images/foundations/design/space/spacing-flowing-rhythm@2x.png)\n\n**Flowing rhythm** is organic, and it can bring a high level of scannability to something that would be otherwise a random collection of objects.\n\n<br/>\n\n![Home page with progressive disclosure card](/images/foundations/design/space/spacing-progressive-rhythm@2x.png)\n\n**Progressive rhythm** is a gradual progression, and is very effective in giving the eye a path to follow, along the progression. This is great to establish hierarchy and aid the user through a series of steps.\n\nRhythm plays another job in designs, it’s the norm that enables the introduction of variation and points of attention, otherwise known as contrast.\n\n---\n\n<br/>\n\n### Density\n\nThe overall perception people get from the space between information as a whole is density. It can range from tight to loose, and there is a very different purpose for each end of the spectrum.\n\n![Examples showign tigher versus looser spacing](/images/foundations/design/space/spacing-density@2x.png)\n\nTighter spacing (left) makes it easier to scan and comprehend large sets of data, like lists and tables. It also naturally enables one to fit more elements in a given page.\nLooser space (right) can help attract the user attention and make a layout feel more user-friendly.\n\n---\n\n<br/>\n\n### Contrast\n\nContrast is meant to create sticking points that help make content easy to scan, highlight important pieces of information, or just to give viewers a moment to breathe.\n\n![Marketing page and empty state](/images/foundations/design/space/spacing-contrast@2x.png)\n\n**Highlights (left)**: Callout cards are used to encourage merchants to take an action related to a new feature or opportunity.\n\n**Breather moment (right)**: Empty states provide explanation or guidance to help merchants progress.\n\nContrast can play a role at very different levels, but it must be used sparingly, otherwise its effect gets diluted.\n\n![Examples on the analytics page to show contrast](/images/foundations/design/space/spacing-analytics@2x.png)\n\nHome feed overview (left) and location profile analytics (right).\n\n---\n\n<br/>\n\n### Optical adjustment\n\nSometimes software will say two objects are aligned, or that they have the same size, but visually they don’t feel like that. This happens because computers aren’t great at perceiving visual weight or simultaneous color contrast, so we can’t fully rely on them to create balanced compositions.\n\nThat means designers must make optical corrections, using Polaris units until the space feels balanced. Some things to keep an eye out for:\n\n<br/>\n\n#### Visual weight ≠ Size\n\nTwo things can have the same size, but feel unbalanced.\n\n![Before and after comparison of optical adjustment applied to a button](/images/foundations/design/space/spacing-weight-buttons@2x.png)\n\nWithout optical adjustment, the disclosure icon appears too far from the right edge of the button. After optical correction, the perceived spacing is more balanced.\n\n![Before and after comparison of optical adjustment applied to an icon](/images/foundations/design/space/spacing-weight-icon@2x.png)\n\nThe square icon seems larger compared to the circle icon without optical adjustment, however, they in fact have the same size and diameter. The shapes look visually closer to each other after decreasing the size of the square.\n\n<br/>\n\n#### Colors affect each other\n\nTwo things can have the same colour, but feel unbalanced.\n\n![Before and after comparison of applying the same colour versus slightly different colours to a banner component](/images/foundations/design/space/spacing-colour@2x.png)"
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "spacing",
-      "space",
-      "layout",
-      "grid",
-      "position",
-      "margin",
-      "padding"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "11MW-27dMsyWP2xcbR_rA",
-    title: "Typography",
-    excerpt: "Typography helps establish hierarchy and communicate important content by creating clear visual patterns.",
-    slug: "typography",
-    parentId: "dfKJpx1bw80se3wpXty8j",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "Mk_MrSfHJ2kt0tzq5Hner",
-        blockType: "Markdown",
-        content: "![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)\n\n## Working with typography\n\n![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)\n\n### 1. Make it scannable\n\nKeep related text aligned and closer together to create visual groupings. For most languages, the the majority of text should be left-aligned.\n\n### 2. Adjust text based on device size and distance from the merchant\n\nBecause small screens are often at an arm's distance, we can decrease the size of larger headings and increase the size of important body text.\n\n### 3. Create visual hierarchy\n\nPair font weight, size, and color together to create hierarchy. Use a lighter color or font-size to de-emphasize secondary content.\n\n---\n\n## Essentials for designing with type\n\nWhen designing with type, we can use a combination of font size, weight, color, and space to ensure a strong hierarchy and scannability of a page. By understanding the fundamentals, you’ll be able to better apply type to the UI.\n\n### Using the bounding box\n\nThe bounding box is the vertical height of the text and is defined by the text’s line-height. The value of the line-height is critical to make sure text aligns to the 4px grid. Refer to individual type styles for specified heights.\n\n![An image showing how the bounding box applies to text elements](/images/foundations/design/typography/text-bounding-box@2x.png)\n\n### Using the baseline\n\nThe baseline is the imaginary line that letters rest on. Align text horizontally to the baseline for a simple clean look.\n\n![An image showing the baseline and how it applies to text elements](/images/foundations/design/typography/text-align-baseline@2x.png)\n\nThere are situations where it makes sense to have multiple text sizes on a single line to establish hierarchy of elements. Aligning to the text’s baseline instead of center gives a more harmonious look.\n\n![An example of aligning text elements to the baseline](/images/foundations/design/typography/text-center-baseline@2x.png)\n\n### Line length\n\nLine length describes the width of the content. For longer body text, the recommended line length is between 40 to 60 characters.\n\n![A diagram showing the ideal line length for text](/images/foundations/design/typography/text-line-length@2x.png)\n\n### Color\n\nColor can be used to add contrast and reinforce the hierarchy between text.\n\nFor example, one way to distinguish between a title and a subtitle is to apply `--p-text-color` to the title, and `--p-text-subdued` to the subtitle. Using a lighter color for secondary information provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.\n\n![An image showing how you can use color to add hierarchy within text elements](/images/foundations/design/typography/text-color-different@2x.png)\n\n### Space\n\nWe can help merchants navigate the UI by grouping related information together. One way to do this is to use space to create relationships between elements on a page.\n\nAmbiguous spacing can cause confusion and make it hard to understand the content.\n\n![An image of showing how to use space to create hierachy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)\n\n---\n\n## Font sizes\n\nAll font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px.\n\n| Token             | px value | rem value |\n| ----------------- | -------- | --------- |\n| `p-font-size-700` | 40       | 2.5       |\n| `p-font-size-600` | 32       | 2         |\n| `p-font-size-500` | 28       | 1.75      |\n| `p-font-size-400` | 24       | 1.5       |\n| `p-font-size-300` | 20       | 1.25      |\n| `p-font-size-200` | 16       | 1         |\n| `p-font-size-100` | 14       | 0.875     |\n| `p-font-size-75`  | 12       | 0.75      |\n\n---\n\n## Type styles\n\nPolaris type styles are grouped into two categories: heading and body. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the user interface. They use one scale, so they can be applied to any screen size.\n\n### Body styles\n\nBody styles are used within components and blocks of text.\n\n![An image showing how body styles are applied](/images/foundations/design/typography/text-body-example-01@2x.png)\n\n### Heading styles\n\nHeading styles are used to create various levels of hierarchy on the page. These styles range in size and weight. Using a blend of the two can help distinguish content and guide merchants through the page.\n\n`headingXl` - `heading4xl` styles are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.\n\n![An image showing how heading styles are applied](/images/foundations/design/typography/text-heading-example-01@2x.png)\n\n`headingXs` - `headingLg` styles are most commonly used for card, section, or page titles.\n\n![An image showing how large heading styles are applied](/images/foundations/design/typography/text-heading-example-02@2x.png)\n\n### Responsive styles\n\nLarge heading styles, `headingLg` - `heading4xl`, are responsive and will change size at different breakpoints.\n\nSmall heading styles, `headingXs` - `headingMd`, and body styles will remain the same size regardless of breakpoint unless specified. You can choose to adjust the size of these styles at specific breakpoints when needed. For instance, you may need to increase the size of important body text on smaller screens.\n\n<video width=\"100%\" height=\"auto\" controls autoplay muted loop>\n  <source src=\"/images/foundations/design/typography/text-responsive.mp4\" type=\"video/mp4\">\n</video>\n\n![An image showing how heading styles change based on breakpoint](/images/foundations/design/typography/type-responsive-styles@2x.png)\n\n### Uppercase styles\n\nThe design language no longer supports uppercase typography. We recommend using the [Text component](/components/typography/text) to apply visual hierarchy. Work with your team to determine a type style that works best for your use case.\n\n---\n\n## Font stack\n\nWe use a font stack that adapts to the operating system it runs on, like macOS, iOS, Windows, Android or Linux distributions.\n\n![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/type-fontstack@2x.png)\n\n- Apple devices will display [San Francisco](https://developer.apple.com/fonts/)\n- Android devices will display\n  [Roboto](https://material.io/guidelines/resources/roboto-noto-fonts.html)\n- Devices running Windows will display\n  [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI)\n- Machines running Linux will display the default sans-serif font for any running distribution\n\nThis font-stack makes sure all browsers can load platform-specific fonts:\n\n```\n-apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif\n```\n\nAdd this to your CSS to preload system fonts and set up browsers for legibility:\n\n```css\nhtml {\n  /* Load system fonts */\n  font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI,\n    Roboto, Helvetica Neue, sans-serif;\n\n  /* Make type rendering look crisper */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n\n  /* Deactivate auto-enlargement of small text in Safari */\n  text-size-adjust: 100%;\n\n  /* Enable kerning and optional ligatures */\n  text-rendering: optimizeLegibility;\n}\n\n/**\n * Form elements render using OS defaults,\n * so font-family inheritance must be specifically declared\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit;\n}\n```\n\n---\n\n## Mobile considerations\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n- Refer to the platform’s native font scales when designing experiences for native apps\n- Refer to the small-screen scale when designing experiences for mobile browsers\n- Use the platform-specific component library\n\n</div><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n- Use the native font scale\n- Keep in mind that all UI elements containing text will be affected\n- Explore additional content height, width, truncation, and line wraps\n\n</div></div>"
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "type styles",
-      "font sizes",
-      "fonts"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "1wV1qjPStuXEdMmv3uvMY",
-    title: "Foundations",
-    excerpt: "Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences.",
-    slug: "foundations",
-    parentId: null,
-    order: 2,
-    layout: "listing",
     blocks: [],
-    allowChildren: true,
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "icon",
+      "icons",
+      "figma",
+      "ui kit"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "QrijUC7rHfK7lo1_kkX1e",
+    title: "Colors",
+    excerpt: "",
+    slug: "colors",
+    parentId: "NyZhQfyfXoUHqlQYrrBDL",
+    order: 0,
+    layout: "blocks",
+    blocks: [],
+    allowChildren: false,
     hideInNav: false,
     hasNewBadge: false,
     noIndex: false,
     keywords: [],
     childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: true,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "cwalFof6yovu1SgMtoZim",
-    title: "Accessibility",
-    excerpt: "Making commerce better for everyone means caring deeply about making quality products. A quality product should have a fantastic user experience (UX).",
-    slug: "accessibility",
-    parentId: "1wV1qjPStuXEdMmv3uvMY",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "wVCM5xqddRUZYWWxUkP4_",
-        blockType: "Markdown",
-        content: "This includes:\n\n- A beautiful and functional design\n- Consistent and useful [copy](/content/product-content)\n- Principles of\n  [universal design](https://en.wikipedia.org/wiki/Universal_design) and inclusivity\n\n---\n\n## Usable for everyone\n\nIt’s important that Shopify products—and [Partner](https://www.shopify.ca/partners) products—are usable and useful to everyone.\n\nEveryone is a pretty big group. It includes our merchants, their customers, our developer partners, our employees, and the greater tech community at large. That also includes all members of our community who have disabilities.\n\nDisabilities may affect how people move, see, hear, communicate, learn, understand, and process information.\nAs a result, it’s important to consider how to design and develop your product to support a wide range of needs and experiences.\n\nIn the United States, as many as 1 in 4 adults has at least 1 disability [Source: [CDC](https://www.cdc.gov/media/releases/2018/p0816-disability.html)]. In Canada, the estimate is 22%, and elsewhere in the world the estimate is closer to 1 in 7 [Source: [Statistics Canada](https://www150.statcan.gc.ca/n1/pub/11-627-m/11-627-m2018035-eng.htm), [World Bank](https://www.worldbank.org/en/topic/disability)].\n\n---\n\n## Building inclusive experiences\n\nUsing our [components](/components) is a way to improve accessibility and consistency when building products for Shopify.\n\n- The component library in this style guide includes code we can use across applications\n- This component code includes accessible markup\n- Since the code exists in a single component that gets reused, it’s easier to update and fix any bugs\n\nThe build-it-once, use-it-everywhere model means the accessibility knowledge of the designers and developers who build these components is available to all of Shopify and our partners. Because of this, merchants get a consistent experience that can be leveraged into accessible products.\n\nMany accessibility features come free in the components. But, it’s important to make sure that components are integrated in a way that doesn't create unforeseen accessibility barriers. Depending how components are used, there may be more design and implementation considerations. Be sure to test user task flows post integration.\n\n### Managing focus to support merchant workflows\n\nDon’t programmatically move focus to new content without merchant input. Polaris components that use controls to display overlays, such as modals and popovers, manage focus automatically.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n- When a merchant activates a link that goes elsewhere in the page, move focus to that content\n- When a merchant must access an overlay, move focus to it\n- When a merchant submits a form that results in an error, move focus to the error message\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n- Move focus when content updates in the background\n- Move focus when the user is actively working elsewhere on the page\n\n</div></div>\n\nThe only case where focus should be managed without the merchant’s okay is when the merchant needs to be interrupted because they cannot continue their current workflow.\n\n### Limiting non-standard interactions\n\nMerchants will expect to interact with controls and content in ways that follow the defaults for their browser, platform, and assistive technologies. Introducing non-standard features can give merchants better ways of accomplishing tasks, but they can also create barriers.\n\nFor example, merchants who rely on the keyboard will expect that buttons can be activated with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key. If buttons are programmed to be used with different keys, merchants will need to be instructed on how to use them.\n\nBefore designing or building custom features that use non-standard controls or interactions, first consider whether the goal can be met using native features.\n\nIf non-standard interactions _are_ required:\n\n- Carefully follow guidelines and best practices for designing, building, and testing custom features on your platform\n- Give merchants clear instructions for using the custom feature\n- Provide an additional, standard way to accomplish the task\n\n### Assistive technology support\n\nOur components are tested for accessibility with automated and manual techniques. Merchants should expect to be able to access features built with our components using modern assistive technologies. These include native and third-party tools like:\n\n- Screen readers\n- Speech recognition programs\n- Supports for low vision and color blindness\n- Alternative keyboards\n- Switch devices\n- Tools for readability\n\n### Coding standards\n\nPolaris components start with web standards for HTML, CSS, and JavaScript. Features from the Accessible Rich Internet Applications (WAI-ARIA or ARIA) specification are used to build functionality that is not available in native HTML.\n\n### Alternative text\n\nTo help people who rely on assistive technologies, such as a screen reader or other text to speech programs, our components use [alternative text](/content/alternative-text) for icons and images used to convey information and actions (like buttons and links).\n\n### Meeting the Web Content Accessibility Guidelines (WCAG)\n\nPolaris targets WCAG 2.1 Level A and Level AA success criteria, and seeks to provide a highly usable experience for everyone.\n\nFor more information, see the following resources:\n\n- [WCAG 2.1](https://www.w3.org/TR/WCAG21/)\n- [ARIA 1.1](https://www.w3.org/TR/wai-aria-1.1/)\n- [Shopify's statement of commitment to accessibility](https://www.shopify.com/accessibility)\n\n### Feedback\n\nSometimes, building accessible and inclusive experiences can be difficult. If we’ve made any mistakes in this style guide, please\n[reach out by creating a GitHub issue](https://github.com/Shopify/polaris-react/issues) and help us make it better."
-      },
-      {
-        id: "VKfZaQbEyCA7l5JJpEfEN",
-        blockType: "Code",
-        snippets: [
-          {
-            id: "dFoeut-TGoUPDdQzyBQzj",
-            label: "New tabsrg",
-            code: "srg",
-            language: "html",
-            typedLanguage: "css"
-          },
-          {
-            id: "ILZCDgKciqWWseaeN4vrp",
-            label: "example.md",
-            code: "console.log('foo')",
-            language: "css",
-            typedLanguage: "html"
-          }
-        ]
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "a11y",
-      "universal design",
-      "inclusive",
-      "inclusivity",
-      "disability",
-      "disabilities",
-      "people with disabilities",
-      "persons with disabilities",
-      "accessible markup",
-      "accessible mark up",
-      "accessible code",
-      "accessible",
-      "diversity",
-      "diverse"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
+    pageMeta: {
+      type: "tokens",
+      tokenGroup: "colors"
+    },
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -9326,7 +7903,7 @@ Design sounds with as much intentionality as other design aspects of Shopify’s
     excerpt: "At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.",
     slug: "experience-values",
     parentId: "1wV1qjPStuXEdMmv3uvMY",
-    order: 0,
+    order: 1,
     layout: "blocks",
     blocks: [
       {
@@ -9429,18 +8006,38 @@ We want people to feel comfortable using our products, whether it’s their firs
   },
 
   {
-    id: "ujAqM2BvLhdUIvaqGUT6Z",
-    title: "Formatting localized currency",
-    excerpt: "Currencies are formatted differently in different countries and languages.",
-    slug: "formatting-localized-currency",
-    parentId: "1wV1qjPStuXEdMmv3uvMY",
-    order: 0,
+    id: "qAqpxorBptcnl9v0xULGy",
+    title: "Design",
+    excerpt: "These are the principles that shape how we design all the experiences across the Shopify admin.",
+    slug: "design",
+    parentId: "dfKJpx1bw80se3wpXty8j",
+    order: 1,
     layout: "blocks",
     blocks: [
       {
-        id: "dKDHO6pLibCT5LtVw74cC",
+        id: "CH4COeA2uvNI-r-ma501D",
         blockType: "Markdown",
-        content: "There’s a currency formatting framework to:\n\n- Help more merchants sell globally\n- Localize currency formatting for merchants and customers everywhere\n- Unify the display of mixed currencies to help merchants manage multiple currency stores\n- Implement the formatting through APIs\n\n---\n\n## Definitions\n\nA store can have more than one type of currency and currency format.\n\n### Store currency\n\nThe main currency of the store and the Shopify default. All sales and reports are shown in the store currency.\n\n### Non-store currency\n\nAny other type of currency is called “non-store currency”. Types of non-store currency include:\n\n- Presentment currency: The type of currency that is presented to buyers in a merchant’s store. For multi-currency stores, it can be different from store currency.\n- Payout currency: The type of currency used to pay merchants for their sales. For multi-currency stores, it can be different from store currency.\n- Billing currency: The type of currency used to bill merchants for themes, app purchases, and monthly subscriptions. Billing currency is in USD only, but might include local currencies for tax purposes.\n\n### Short format\n\nIncludes the currency symbol and currency value. This format is used for currency that merchants are familiar with.\n\nExamples: \\$12.50; 12,50 €\n\n### Explicit format\n\nIncludes the currency symbol, currency value, and ISO code (for example, “USD” and “CAD”). Best used for currency that merchants aren’t familiar with and don’t expect to see.\n\nExamples: \\$12.50 CAD; 12,50 € EUR\n\n---\n\n## Aligning with global standards\n\nShopify uses [Common Locale Database Repository (CLDR)](http://cldr.unicode.org/) for localization formatting for currency, date, time, and amount.\n\n- It’s the recognized international standard\n- It automatically formats numbers and currency based on the merchant’s locale\n- The repository is maintained by a third party\n\nCLDR determines:\n\n- Whether the currency symbol appears before or after the amount (for example, $250, 250 USD, 250 $)\n- Whether decimals are used (for example, there are no “cents” in Japanese yen)\n- Whether the decimal sign is a period or a comma (for example, 37,50 or 37.50)\n- How to group numbers (for example, 10,000 or 1,0000, or using spaces)\n\nCLDR doesn’t determine the appropriate level of detail shown in different contexts. For example, it can’t determine when to show the currency symbol and value ([short format](#short-format)), or the currency symbol, value, and ISO code ([explicit format](#explicit-format)).\n\nThough short format is more efficient, it’s important to provide clarity for merchants who deal with unfamiliar currencies in multi-currency stores. In those cases, use explicit format.\n\n---\n\n## Design guidelines\n\nBecause CLDR formatting is limited, these guidelines will help you choose the appropriate level of currency detail to display in a multi-currency context.\n\n### Merchants\n\n#### Store currency\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nDefault to [short format](#short-format).\n\n![Short format in today’s sales card](/images/foundations/foundations/internationalization/do-use-short-format@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse [explicit format](#explicit-format) except when presenting store currency within in a mixed-currency context.\n\n![Incorrect explicit format in today’s sales card](/images/foundations/foundations/internationalization/dont-use-explicit-format@2x.png)\n\n</div></div>\n\n#### Non-store currency\n\n- Use explicit format when showing total amounts, an amount within a button, or in a paragraph\n- Use short format when showing non-total amounts with total amounts\n\n![](/images/foundations/foundations/internationalization/paid-status-explicit@2x.png)\n\nThis example shows a scenario where the presentment currency is in USD, which is different than the store currency. The non-total amounts in the paid status card are in short format, and the total amounts are in explicit format.\n\n![](/images/foundations/foundations/internationalization/refund-non-store-currency@2x.png)\n\nThis example shows a scenario refunding an order that’s in a non-store currency.\n\n![](/images/foundations/foundations/internationalization/short-format-non-total@2x.png)\n\nThis example illustrates the use of short format for non-total amounts and explicit format for total amounts in a data table.\n\n#### Negative amount display\n\nAlways place the negative symbol before the currency and amount in either format.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n- \\-\\$4.20\n- -12,50 €\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n- \\$-4.20\n- 12,50 €-\n\n</div></div>\n\n### Customers\n\n- Default to explicit format whenever prices are customer-facing. Use short format for unit prices, itemized prices, and installment prices.\n- If there are enough indicators to let customers know which currency they’re looking at, short format may be sufficient. When using short format, make sure to always use explicit format for cart total, checkout total, and notification totals.\n\n![](/images/foundations/foundations/internationalization/short-format-installment-prices@2x.png)\n\nThis example shows the use of short format for installment prices.\n\n![](/images/foundations/foundations/internationalization/short-format-unit-prices@2x.png)\n\nThis example shows the use of short format for unit prices.\n\n![](/images/foundations/foundations/internationalization/short-format-itemized-prices@2x.png)\n\nThis example shows the use of short format for itemized prices.\n\n---\n\n## Guiding questions when making design decisions\n\nUse the following questions to guide you when making decisions about currency formatting.\n\n**Does the merchant know which currency they’re looking at?**\n\n- Which currency do they expect to see?\n- Do they know which currency their orders are in if they have a multi-currency store?\n\n**Does the currency format support the merchant’s main task?**\n\n- Is the main task scanning, comparing and analyzing, or taking an action (for example, a refund)?\n\n**Are there enough details to make an informed decision?**\n\n- For example, do they know the currency of their non-store currency order refund?\n- Can they distinguish between the sales report and payout summary if the store currency and payout currency are different?\n\n**Can the UI be simplified without creating confusion?**\n\nWe don’t want to show [explicit format](#explicit-format) everywhere and for every task.\n\n- How can we make currency formatting both simple and accurate?\n\n---\n\n## Design tips\n\nMock up a scenario where the store, presentment, payout, and billing currencies are different. This scenario is becoming more common as more merchants start selling globally.\n\n### Use currencies that share the same symbol to test for clarity\n\nUSD, CAD, AUD, HKD, SGD are just a few of the many currencies that share the same symbol “\\$”.\n\n### Use Japanese Yen (JPY) amount to test currency length and space constraints\n\n1 USD is approximately 100 JPY. If there is enough space for the JPY amount, it should work for most other major currencies.\n\n### When in doubt, let the guiding questions help you make a decision\n\nThe guiding questions are meant to help make merchant-focused decisions about which format to use when the use case is unclear.\n\n---\n\n## Major currencies in their local formats\n\nThis table shows commonly-used currencies in short and explicit formats.\n\n| Currency                        | Locale       | Short format | Explicit format |\n| ------------------------------- | ------------ | ------------ | --------------- |\n| **US Dollar ($, USD)**          | en-US        | $12.50       | $12.50 USD      |\n| **Canadian Dollar ($, CAD)**    | en-CA        | $12.50       | $12.50 CAD      |\n|                                 | fr-CA        | 12,50 $      | 12,50 $ CAD     |\n| **Australian Dollar ($, AUD)**  | en-AU        | $12.50       | $12.50 AUD      |\n| **Euro (€, EUR)**               | de-DE, fr-FR | 12,50 €      | 12,50 € EUR     |\n|                                 | en-IE        | €12.50       | €12.50 EUR      |\n|                                 | nl-NL        | €12,50       | €12,50 EUR      |\n| **British Pounds (£, GBP)**     | en-GB        | £12.50       | £12.50 GBP      |\n| **Japanese Yen (¥, JPY)**       | ja-JP        | ¥1250        | ¥1250 JPY       |\n| **New Zealand Dollar ($, NZD)** | en-NZ        | $12.50       | $12.50 NZD      |\n| **Hong Kong Dollar ($, HKD)**   | zh-HK        | $12.50       | $12.50 HKD      |\n| **Singapore Dollar ($, SGD)**   | zh-SG        | $12.50       | $12.50 SGD      |\n| **Danish Krone (Kr, DKK)**      | da-DK        | 12,50 kr.    | 12,50 kr. DKK   |\n\n---\n\n## Implementation\n\nTo format currency in a React component, use the [`Shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n) library’s `formatCurrency` method. You can select either `short` or `explicit` formatting by setting the `form` option as shown in the code example below.\n\n```jsx\nimport {useI18n} from '@shopify/react-i18n';\n\nconst [i18n] = useI18n();\n\ni18n.locale = 'de-AT';\n\nconst eurDeAt = i18n.formatCurrency(price, {\n  currency: 'EUR',\n  form: 'short',\n});\n\nconst eurDeAtExp = i18n.formatCurrency(price, {\n  currency: 'EUR',\n  form: 'explicit',\n});\n```"
+        content: `![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/images/foundations/design/design-intro@2x.png)
+
+### Fresh visual style
+
+A clean, simple style makes things feel approachable and&nbsp;efficient.
+
+### Faster performance
+
+Elegant code and lightweight assets means pages load&nbsp;more&nbsp;quickly.
+
+### Future-friendliness
+
+Built for flexibility, design tokens and new infrastructure let us iterate easily across&nbsp;experiences.
+
+### Purposeful brand presence
+
+Being intentional about when the Shopify brand comes forward, and when it takes a backseat, directs the focus to where it&nbsp;matters&nbsp;most.
+
+### Familiarity across experiences
+
+Defined patterns and guidelines help us design a wide variety of experiences that still always feel&nbsp;like&nbsp;Shopify.`
       }
     ],
     allowChildren: false,
@@ -9448,23 +8045,9 @@ We want people to feel comfortable using our products, whether it’s their firs
     hasNewBadge: false,
     noIndex: false,
     keywords: [
-      "internationalization",
-      "localization",
-      "currency",
-      "currencies",
-      "money",
-      "euro",
-      "dollar",
-      "formatting",
-      "short format",
-      "explicit format",
-      "internationalizing",
-      "localizing",
-      "locale",
-      "overseas",
-      "international",
-      "global",
-      "japan"
+      "visual design",
+      "design language",
+      "design"
     ],
     childPageMetaType: null,
     pageMeta: null,
@@ -9473,108 +8056,19 @@ We want people to feel comfortable using our products, whether it’s their firs
   },
 
   {
-    id: "zI7hMfeh308jB1awRBxkB",
-    title: "Information architecture",
-    excerpt: "Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.",
-    slug: "information-architecture",
-    parentId: "1wV1qjPStuXEdMmv3uvMY",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "rNAPD1VvOEw3VQo45cmrp",
-        blockType: "Markdown",
-        content: `## Defining IA
-
-Information architecture is the practice of organizing, structuring, and labeling content in an effective and sustainable way. Whether you’re creating an app, part of the Shopify admin, a new feature, or an editorial page, these IA principles are here to help you make content usable and findable.
-
----
-
-## Why we do IA
-
-1. Simplify complexity: Information should be structured and managed in the simplest way possible.
-2. Support scalability: Good IA practices will help us avoid overhauling our previous work whenever the product grows or changes.
-3. Create familiarity: Regardless of how our merchants access Shopify, it should feel like the same product. Creating a common experience goes beyond design and extends to how we structure Shopify’s content.
-
----
-
-## Our IA principles
-
-These principles will help you make good IA decisions no matter what you’re working on.
-
-### Show your audience where they are
-
-Successful wayfinding happens when your audience can make navigation decisions that fulfill their goal. For navigation to enable wayfinding:
-
-- Establish multiple navigation schemes
-- Use task-based navigation
-- Integrate secondary navigational support (like breadcrumbs)
-
-Navigation is a tool that serves a number of wayfinding purposes.
-Good navigation allows our merchants to explore a topic in depth, switch tasks easily, and filter information.
-
-In the Shopify admin, merchants can find their way using multiple navigation schemes:
-
-- Structural: main navigation, local navigation, breadcrumbs
-- Associative: contextual links to other features or help documentation
-- Utility: linked avatars to access your account, search
-
-In the Shopify admin, merchants can find their way to the blog posts page using the side navigation (nav) and search. They can use the breadcrumb to go up to the main level in the Online Store section of the nav. They can also access related help documentation through the contextual “learn more” footer at the bottom of the page.
-
-![Blog posts page breadcrumbs and left side navigation](/images/foundations/foundations/information-architecture/blogposts-breadcrumb-nav@2x.png)
-
-### Give content one home and many doors
-
-All people are unique and have different information-seeking behaviors. For example, one person might start their experience from various points in a product or shift their focus midway through a task. They might also begin a task on one device and finish it on another. To facilitate these behaviors, all screens should have meaningful navigation and bridge content to other parts of the product.
-
-The content on the Shopify Help Center’s shipping page only lives in the Help Center—we don’t duplicate it in the Shopify admin or on our marketing pages. But even though it only lives in one place, we give merchants access to it when it’s likely that they’ll need more context on shipping (like through a link on our shipping settings page in the Shopify admin).
-
-![shipping labels settings with link to docs](/images/foundations/foundations/information-architecture/shippinglabels-link@2x.png)
-
-### Avoid information overload
-
-Although we want to give our merchants all the information they need to complete a task, we need to avoid overloading them with information. Don’t over-simplify, but don’t burden your user with choice. To do this in design, we use progressive disclosure, but this principle also applies to information architecture. To practice progressive disclosure in IA:
-
-- Gradually reveal information as it’s requested
-- Provide multiple access points to information
-- Eliminate redundant content
-
-The content on the [Shopify Capital page](https://www.shopify.com/capital) on Shopify.com summarizes the benefits of receiving capital from Shopify at a high level. After scanning the summary, merchants have the option to access more information about the program with a link to the [docs on the Shopify Help Center](https://help.shopify.com/en/manual/your-account/shopify-capital?itcat=capital&itterm=capital-resources-help-docs). By progressively disclosing information in this way, we help merchants reach decisions faster and avoid the frustration and disorientation of front-loading with too much detail.
-
-![capital page landing page](/images/foundations/foundations/information-architecture/capitalpage-hero@2x.jpg)
-
-### Plan for growth and change
-
-Information architecture, like design, is not set in stone. It should change with your product. As such, the IA decisions you make need to leave room for growth while also continuing to promote consistency across the experience.
-
-The [Shopify.com homepage](https://www.shopify.com/) takes a scalable approach to page architecture—the structure was designed to adapt as Shopify expands to different locations. This was done by taking a modular approach.
-
-Each locale can customize the homepage to meet their needs. For example, for 2 stories, they can use 2 banners. For 3, they can use 1 banner and 2 tiles.
-
-![Three content components Denmark page](/images/foundations/foundations/information-architecture/de-component@2x.png)
-
-![2 content components India page](/images/foundations/foundations/information-architecture/india-component@2x.jpg)
-
-To make sure your IA decisions are scalable:
-
-- Communicate early and often, within and outside of your team.
-  Open the lines of communication when doing IA work and make sure your work aligns with the work of other areas of the product.
-- Think about the future and how the work you’re doing will intersect with other projects.
-- Create content groups that are flexible enough to accommodate growth, while being meaningful to the user.
-- Consider how your IA will adapt to multiple environments and their existing patterns (for instance, iOS, Android, desktop browsers, chat bots, retail products like Point of Sale).`
-      }
-    ],
-    allowChildren: false,
+    id: "QzMkCvxMJkpi82dzj7nQ5",
+    title: "Actions",
+    excerpt: "",
+    slug: "actions",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 1,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
     hideInNav: false,
     hasNewBadge: false,
     noIndex: false,
-    keywords: [
-      "IA principles",
-      "info architecture",
-      "wayfinding",
-      "way finding",
-      "navigation"
-    ],
+    keywords: [],
     childPageMetaType: null,
     pageMeta: null,
     hasSeparatorInNav: false,
@@ -9582,18 +8076,71 @@ To make sure your IA decisions are scalable:
   },
 
   {
-    id: "hJChvNVJNIrENzPaol_-X",
-    title: "Internationalization",
-    excerpt: "Make commerce better for everyone by building interfaces that work everywhere. These guidelines will help you design, write, and build products that can be used in every part of the world.",
-    slug: "internationalization",
-    parentId: "1wV1qjPStuXEdMmv3uvMY",
-    order: 0,
+    id: "09zRNNgZM17gnUfVIkA2k",
+    title: "Contributing to Polaris Icons",
+    excerpt: "",
+    slug: "icons",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 1,
     layout: "blocks",
     blocks: [
       {
-        id: "Inl0AB_M8yUi3yGA6PvPU",
+        id: "TY1h9U2NNa8i4QpGhHGvb",
         blockType: "Markdown",
-        content: "We want our merchants to experience Shopify in a way that’s appropriate and meaningful to them, no matter where they are in the world.\n\nWe aim to build one experience that works for all merchants in all of our markets. However, when a certain experience doesn’t fit a specific market, we should tailor it.\n\n---\n\n## Definitions\n\n### Internationalization\n\nBuilding your product and interface so they can be used in different locales. This includes creating flexible interfaces that allow for text expansion and changes to word order.\n\n### Localization\n\nAdapting your product and interface for different locales to make them a good cultural fit. This includes adapting features, changing visuals, and translating text.\n\n### Translation\n\nConverting text from one language to another. Not to be confused with localization, translation is just one part of localizing a product.\n\n### Locale\n\nA linguistic region defined by both its language and country. Examples:\nFrench-France (fr-FR); French-Canada (fr-CA); Portuguese-Brazil (pt-BR). Note that languages and countries won’t always have a 1:1 mapping.\n\n---\n\n## Plan for text expansion\n\nWhen interfaces are localized, the content will often expand in length. In most languages, text is up to 50% longer on average than English. Some non-Latin languages, such as Japanese, take up more vertical space. For character-based languages, text wrapping and line breaking can’t always rely on spaces to separate words. Your interface needs to be flexible enough to accommodate language-specific formatting and text expansion without changing its context of use.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n![Good example of flexible layouts with text expansion](/images/foundations/foundations/internationalization/info-hierarchy-do@2x.png)\n\nLay out your elements in a way where text expansion doesn’t hinder your information hierarchy.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n![Bad example of flexible layouts with text expansion](/images/foundations/foundations/internationalization/info-hierarchy-dont@2x.png)\n\nDon’t rely on responsive stacking alone. It can often change the hierarchy of information of the layout. In this case, the text expansion causes the line break at the wrong spot, placing the button in the middle of the heading and content of this card.\n\n</div></div>\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n![Good example of narrow columns with text expansion](/images/foundations/foundations/internationalization/narrow-columns-do@2x.png)\n\nUse single columns to stack elements flexibly to accomodate for text expansion.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n![Bad example of narrow columns with text expansion](/images/foundations/foundations/internationalization/narrow-columns-dont@2x.png)\n\nAvoid using narrow columns in smaller components. Ensure the right amount of padding for a clean interface.\n\n</div></div>\n\n### Tips\n\n- Always assume the worst-case scenario for text length, especially on mobile and in layouts such as tables and columns. Avoid using narrow columns.\n- Pay particular attention to content elements that only have a few words. In English, labels and buttons [exclude words such as “a” or “the”](/content/actionable-language#buttons), but many other languages need to include them. Overall these small pieces of text may expand up to 300%.\n- Our components are designed to be expandable, but you should still test them in your designs and builds. Check the CSS layout to make sure text doesn’t overflow when the screen size is reduced.\n- Work with linguistic experts to review line breaks and word wrapping for character-based languages, like Chinese or Japanese, to ensure they don’t break sentences.\n\n---\n\n## Plan for changes in word order\n\nWord order can change dramatically in translation. If the layout and functionality of your interface is dependent on a certain word order, it’s likely to break when localized.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n![Good example of avoiding sentence-based UI](/images/foundations/foundations/internationalization/sentence-based-ui-do@2x.png)\n\nIf content elements need to stay in a certain position on the page, implement them as separate labels, outside of sentences.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n![Bad example of sentence-based UI](/images/foundations/foundations/internationalization/sentence-based-ui-dont@2x.png)\n\nDon’t place elements with a fixed position inside a sentence. The order of this sentence would often need to change in translation, which is impossible to do if the interface is built this way.\n\n</div></div>\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n![Good example of hyperlinking text](/images/foundations/foundations/internationalization/hyperlink-text-do@2x.png)\n\nWhen including links in body text, only use a single and descriptive term or a small part of a phrase as the link. Find out more about [links](/content/actionable-language#links).\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n![Bad example of link within sentence](/images/foundations/foundations/internationalization/hyperlink-text-dont@2x.png)\n\nDon’t use full phrases as links. Word order changes might break the link into several parts when translated.\n\n</div></div>\n\n### Tips\n\n- Assume the word order of every sentence in your interface will change when translated.\n- Avoid using UI components to build sentences.\n- Avoid splitting one sentence into several strings, known as concatenated strings. If you use concatenated strings, translators won’t be able to change the word order and their translations won’t make sense.\n- Avoid using variables in your strings as it will translate differently.\n\n---\n\n## Plan for cultural differences\n\nMerchants in each locale have different cultural sensibilities. Use visuals, content, and interface formats that are useful and meaningful to merchants in all parts of the world.\n\n![Good example of icon usage](/images/foundations/foundations/internationalization/icons-meaning@2x.png)\n\nWhen possible, use universally known icons. Be mindful of when you use country-specific icons and where they are surfaced. Find out more about [icons](/design/icons).\n\n![Bad example of text fields](/images/foundations/foundations/internationalization/colors-cultural-context@2x.png)\n\nBe mindful of using colors to represent meaning. Colors can hold discrete connotations in different cultures. For example, in North America, green is used to indicate success and red for failure, as opposed to China, where red symbolizes prosperity and good fortune.\n\n### Tips\n\n- When using photos, illustrations, icons, or emojis, make sure the visuals you’re using are not offensive or culturally insensitive. If you’re unsure about a visual you’re using, research it or ask someone with local knowledge.\n- When naming features, be mindful of connotations in other cultures, especially for evocative names and acronyms. Find out more about [naming](/content/naming).\n- Avoid colloquial words, idioms, and references to popular culture. It’s difficult to translate them in a meaningful way.\n- In some cultures, a person’s given name comes first, whereas in other cultures the family name comes first. Let merchants choose how they want to enter, read, and sort names, especially in text fields and lists.\n- Many types of information, such as addresses, dates, numbers, and currencies, are shown in different formats in different locales. For example, some locales display currency symbols before the number, others display them after. Make sure these can be translated appropriately. Find out more about [formatting localized currency](/foundations/formatting-localized-currency#navigation).\n- Some cultures expect more guidelines and instructions when filling in long or critical forms. Consider using asterisks to mark mandatory fields in a form to match that expectation.\n- Work with people that have local knowledge if possible.\n\n---\n\n## Internationalize Polaris components\n\n- When designing with a Polaris component, test the localized versions to make sure it still works with the rest of your interface.\n  If you need a certain component to adapt, but it hasn’t yet been internationalized in Polaris, you can open a feature request in [GitHub](https://github.com/Shopify/polaris-react/issues/)."
+        content: `Polaris Icons are important visual aids that help merchants understand actions and concepts across the Shopify Admin. Whether your team needs to add, modify, or deprectate an icon, all designers and developers that work at Shopify are welcome to contribute.
+
+Before proposing a new icon, search the [icon explorer](https://polaris.shopify.com/icons). If the icon you’re looking for isn’t included, create a proposal for the new icon and work with your team to add it. Any additions or changes should also be reflected in the [Figma UI Kit](/contributing/figma-ui-kit).
+
+To learn about best practices for designing and using Polaris icons, read the [icon design guidelines](https://polaris.shopify.com/design/icons). If you have initial questions or need help, reach out in the [#polaris](https://shopify.slack.com/archives/C4Y8N30KD) Slack channel. If you want to start a more in-depth conversation with the system community before opening an issue, start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/new).
+
+## Design a new icon
+
+1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md).
+2. Review design specs in the Polaris Icons library in Figma.
+3. If you are designing a new icon:
+   <br /> - Draft the new icon following the design language guidance in the Polaris Icon Library in Figma.
+   <br /> - Request feedback from a Polaris designer.
+4. If you need assistance designing the new icon:
+   <br /> - Reach out in the #polaris Slack channel requesting a new icon.
+   <br /> - A designer will reach out to get context and information around what you need, deadlines and other relevant information.
+   <br /> - A designer will work with you to design an icon that meets your team’s needs with your feedback along the way.
+5. Once alignment on the design is reached, follow the instructions below for adding the icon.
+
+## Add or edit an icon
+
+1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md)
+2. [Set up your development environment](/contributing/shipping-your-contribution#get-set-up)
+3. If you are adding an icon:
+   <br /> - Copy and rename the icon template files
+   <br /> - Add the exported icon SVG to the \`.svg\` file
+   <br /> - Add the icon metadata to the \`.yml\` file
+4. If you are editing an existing icon:
+   <br /> - Replace the existing icon SVG in the \`.svg\` file
+   <br /> - Update the relevant metadata in the \`.yml\` file
+5. Run \`yarn changeset\` to add an entry to the change log and release notes
+6. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the Shopify/polaris GitHub repo
+7. Update the Polaris Icon Library in Figma
+
+## Deprecate an icon
+
+1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md).
+2. [Set up your development environment](/contributing/shipping-your-contribution#get-set-up).
+3. If you are deprecating an icon without replacement:
+   <br /> - Add \`deprecated: true\` to the icon’s \`.yml\` file.
+4. If you are deprecating an icon with replacement:
+   <br /> - Rename the icon’s \`.svg\` and \`.yml\` files.
+   <br /> - Add \`deprecated_aliases\` to the \`.yml\` file.
+   <br /> - List each of the icon’s previous names. For example, if you were to rename \`OldMajor\` to \`NewMajor\`, you would add these lines to \`NewMajor.yml\`:
+   <br />
+
+   \`\`\`yml
+   deprecated_aliases:
+     - OldMajor
+   \`\`\`
+
+5. Run \`yarn changeset\` to add an entry to the change log and release notes.
+6. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the Shopify/polaris GitHub repo.
+7. Update the Polaris Icon Library in Figma.`
       }
     ],
     allowChildren: false,
@@ -9601,20 +8148,11 @@ To make sure your IA decisions are scalable:
     hasNewBadge: false,
     noIndex: false,
     keywords: [
-      "internationalization",
-      "localization",
-      "translation",
-      "internationalizing",
-      "localizing",
-      "translating",
-      "locale",
-      "overseas",
-      "international",
-      "global",
-      "globalization",
-      "japan",
-      "germany",
-      "france"
+      "icons",
+      "add a new icon",
+      "deprecate an icon",
+      "update an icon",
+      "how to contribute to polaris icons"
     ],
     childPageMetaType: null,
     pageMeta: null,
@@ -9771,120 +8309,6 @@ The component will be removed and should be avoided.
   },
 
   {
-    id: "BqNKiujrXowZGlwyEIPfu",
-    title: "Polaris 101",
-    excerpt: "The Polaris design system is used by designers and developers to build world-class Shopify admin experiences.",
-    slug: "polaris-101",
-    parentId: "PFLzo-XPzihTi1K3imeoe",
-    order: 0,
-    layout: "blocks",
-    blocks: [
-      {
-        id: "iwPGzpeuz9asOpTIkMiTC",
-        blockType: "Markdown",
-        content: `## What’s the Shopify admin?
-
-Merchants set up their store, configure settings, and manage their business using the admin. It includes core aspects of the merchant’s business, including orders, products, and customers.
-
-![Partial screenshots of the admin in mobile and web](/images/getting-started/polaris-101/mobile-web-admin@2x.png)
-
-## What is Polaris?
-
-Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences.
-
-The design system is made up of design guidance, code libraries, development opinions, and API documentation on how to build merchant experiences for the Shopify admin.
-
-## Who is Polaris for?
-
-Polaris is used both internally at Shopify and externally by app developers and designers.
-
-## What are Shopify apps?
-
-The admin includes installable apps that are distributed through the Shopify App Store. They enable merchants to add functionality to their stores without leaving the familiar environment of the admin.
-
-By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bridge) and following the [App Design Guidelines](https://shopify.dev/apps/design-guidelines), you'll create a streamlined experience with the rest of the Shopify admin.`
-      }
-    ],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "polaris",
-      "shopify admin"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "nYFYo1G--dxorxmIElhr9",
-    title: "Tools",
-    excerpt: "Extensions, plugins, and other tools to help build with Polaris.",
-    slug: "tools",
-    parentId: null,
-    order: 10,
-    layout: "listing",
-    blocks: [],
-    allowChildren: true,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "O83BdyzISt1Mgz0IrGHtP",
-    title: "Icons",
-    excerpt: "",
-    slug: "icons",
-    parentId: null,
-    order: 8,
-    layout: "blocks",
-    blocks: [],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "J5QGKbutohK0lRY34VpwT",
-    title: "Icons in Figma",
-    excerpt: "",
-    slug: "icons-in-figma",
-    parentId: "O83BdyzISt1Mgz0IrGHtP",
-    order: 0,
-    layout: "blocks",
-    blocks: [],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [
-      "icon",
-      "icons",
-      "figma",
-      "ui kit"
-    ],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
     id: "vajPcPkRvUUrzRCG9z7m9",
     title: "Icons in React",
     excerpt: "",
@@ -9905,49 +8329,6 @@ By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bri
     ],
     childPageMetaType: null,
     pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "NyZhQfyfXoUHqlQYrrBDL",
-    title: "Tokens",
-    excerpt: "",
-    slug: "tokens",
-    parentId: null,
-    order: 7,
-    layout: "blocks",
-    blocks: [],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: null,
-    hasSeparatorInNav: false,
-    thumbnailImageId: null
-  },
-
-  {
-    id: "QrijUC7rHfK7lo1_kkX1e",
-    title: "Colors",
-    excerpt: "",
-    slug: "colors",
-    parentId: "NyZhQfyfXoUHqlQYrrBDL",
-    order: 0,
-    layout: "blocks",
-    blocks: [],
-    allowChildren: false,
-    hideInNav: false,
-    hasNewBadge: false,
-    noIndex: false,
-    keywords: [],
-    childPageMetaType: null,
-    pageMeta: {
-      type: "tokens",
-      tokenGroup: "colors"
-    },
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -9976,6 +8357,327 @@ By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bri
   },
 
   {
+    id: "zI7hMfeh308jB1awRBxkB",
+    title: "Information architecture",
+    excerpt: "Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.",
+    slug: "information-architecture",
+    parentId: "1wV1qjPStuXEdMmv3uvMY",
+    order: 2,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "rNAPD1VvOEw3VQo45cmrp",
+        blockType: "Markdown",
+        content: `## Defining IA
+
+Information architecture is the practice of organizing, structuring, and labeling content in an effective and sustainable way. Whether you’re creating an app, part of the Shopify admin, a new feature, or an editorial page, these IA principles are here to help you make content usable and findable.
+
+---
+
+## Why we do IA
+
+1. Simplify complexity: Information should be structured and managed in the simplest way possible.
+2. Support scalability: Good IA practices will help us avoid overhauling our previous work whenever the product grows or changes.
+3. Create familiarity: Regardless of how our merchants access Shopify, it should feel like the same product. Creating a common experience goes beyond design and extends to how we structure Shopify’s content.
+
+---
+
+## Our IA principles
+
+These principles will help you make good IA decisions no matter what you’re working on.
+
+### Show your audience where they are
+
+Successful wayfinding happens when your audience can make navigation decisions that fulfill their goal. For navigation to enable wayfinding:
+
+- Establish multiple navigation schemes
+- Use task-based navigation
+- Integrate secondary navigational support (like breadcrumbs)
+
+Navigation is a tool that serves a number of wayfinding purposes.
+Good navigation allows our merchants to explore a topic in depth, switch tasks easily, and filter information.
+
+In the Shopify admin, merchants can find their way using multiple navigation schemes:
+
+- Structural: main navigation, local navigation, breadcrumbs
+- Associative: contextual links to other features or help documentation
+- Utility: linked avatars to access your account, search
+
+In the Shopify admin, merchants can find their way to the blog posts page using the side navigation (nav) and search. They can use the breadcrumb to go up to the main level in the Online Store section of the nav. They can also access related help documentation through the contextual “learn more” footer at the bottom of the page.
+
+![Blog posts page breadcrumbs and left side navigation](/images/foundations/foundations/information-architecture/blogposts-breadcrumb-nav@2x.png)
+
+### Give content one home and many doors
+
+All people are unique and have different information-seeking behaviors. For example, one person might start their experience from various points in a product or shift their focus midway through a task. They might also begin a task on one device and finish it on another. To facilitate these behaviors, all screens should have meaningful navigation and bridge content to other parts of the product.
+
+The content on the Shopify Help Center’s shipping page only lives in the Help Center—we don’t duplicate it in the Shopify admin or on our marketing pages. But even though it only lives in one place, we give merchants access to it when it’s likely that they’ll need more context on shipping (like through a link on our shipping settings page in the Shopify admin).
+
+![shipping labels settings with link to docs](/images/foundations/foundations/information-architecture/shippinglabels-link@2x.png)
+
+### Avoid information overload
+
+Although we want to give our merchants all the information they need to complete a task, we need to avoid overloading them with information. Don’t over-simplify, but don’t burden your user with choice. To do this in design, we use progressive disclosure, but this principle also applies to information architecture. To practice progressive disclosure in IA:
+
+- Gradually reveal information as it’s requested
+- Provide multiple access points to information
+- Eliminate redundant content
+
+The content on the [Shopify Capital page](https://www.shopify.com/capital) on Shopify.com summarizes the benefits of receiving capital from Shopify at a high level. After scanning the summary, merchants have the option to access more information about the program with a link to the [docs on the Shopify Help Center](https://help.shopify.com/en/manual/your-account/shopify-capital?itcat=capital&itterm=capital-resources-help-docs). By progressively disclosing information in this way, we help merchants reach decisions faster and avoid the frustration and disorientation of front-loading with too much detail.
+
+![capital page landing page](/images/foundations/foundations/information-architecture/capitalpage-hero@2x.jpg)
+
+### Plan for growth and change
+
+Information architecture, like design, is not set in stone. It should change with your product. As such, the IA decisions you make need to leave room for growth while also continuing to promote consistency across the experience.
+
+The [Shopify.com homepage](https://www.shopify.com/) takes a scalable approach to page architecture—the structure was designed to adapt as Shopify expands to different locations. This was done by taking a modular approach.
+
+Each locale can customize the homepage to meet their needs. For example, for 2 stories, they can use 2 banners. For 3, they can use 1 banner and 2 tiles.
+
+![Three content components Denmark page](/images/foundations/foundations/information-architecture/de-component@2x.png)
+
+![2 content components India page](/images/foundations/foundations/information-architecture/india-component@2x.jpg)
+
+To make sure your IA decisions are scalable:
+
+- Communicate early and often, within and outside of your team.
+  Open the lines of communication when doing IA work and make sure your work aligns with the work of other areas of the product.
+- Think about the future and how the work you’re doing will intersect with other projects.
+- Create content groups that are flexible enough to accommodate growth, while being meaningful to the user.
+- Consider how your IA will adapt to multiple environments and their existing patterns (for instance, iOS, Android, desktop browsers, chat bots, retail products like Point of Sale).`
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "IA principles",
+      "info architecture",
+      "wayfinding",
+      "way finding",
+      "navigation"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "HBAXg6nVIMGEHdptP7KYO",
+    title: "Icons",
+    excerpt: "Icons in the Shopify admin act as visual aids to help merchants complete tasks. They’re simple, informative, and build on the visual language of the design system.",
+    slug: "icons",
+    parentId: "dfKJpx1bw80se3wpXty8j",
+    order: 2,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "ov-thFrzEL0mdBeqXRKw5",
+        blockType: "Markdown",
+        content: "![A collection of various icons used in the Shopify Admin.](/images/foundations/design/icons/icons-intro@2x.png)\n\n---\n\n## Principles\n\n### Simple over detailed\n\nDetailed icons increase cognitive load. Focus on simplicity to help merchants understand the concept the icon represents and recognize icons on smaller screens.\n\n### Literally literal\n\nLiteral symbols are easier to understand than abstract symbols. When possible, use symbols that represent the most basic idea or concept instead of a metaphorical one. If the concept can’t be conveyed literally (an activity like gardening, a profession like doctor), pick a logically related symbol (shovel, stethoscope).\n\n### Stay professional\n\nThe design of an icon communicates tone, much like the content it’s paired with. Focus on the effectiveness of the message instead of its ability to delight. In other words, prioritize representing the function, rather than how nice it looks.\n\n---\n\n## Creating icons\n\n![Five icons in order: a trash can to represent a delete action, a cogwheel to represent settings, a spyglass to represent search, a pin to represent location and a bell to represent notifications.](/images/foundations/design/icons/icons-established@2x.png)\n\n### Use established icons\n\nIcons that have been used for a long time worldwide have a higher chance of being recognized and understood quickly. Don’t reinvent an icon that’s already been accepted as the convention. There are global, established conventions for concepts like “delete,” “settings,” and “search.” These symbols are effective, and don’t need to be redefined.\n\n![An icon of a cogwheel that represents Store, Product, and global settings.](/images/foundations/design/icons/icons-limit-variations@2x.png)\n\n### Limit variations\n\nUse a single icon to represent variations of the same concept. Shipping settings, store settings, account settings, and any new settings should use the cog icon. Don’t create a custom icon for each of these concepts—it bloats the icon library and makes it difficult for merchants to create strong connections around a concept.\n\n![Various icons paired with text, notably the icon of a house with the word \"Home\", the icon of a computer with the word \"Desktop\" and an icon of an arrow pointing up and another pointing down with the word \"Sort\".](/images/foundations/design/icons/icons-pairing@2x.png)\n\n### Pair icons with text\n\nThe purpose of an icon is to clarify the content by providing a visual cue and improve legibility and scannability of the user interface. In general, icons should be placed near a label or title. Never use an icon to replace a name of a product or feature—the rare exception being an icon that’s a universally understood action, like the trash can icon that represents deletions.\n\n![Five icons representing the currency of different countries: a dollar, a euro, a british pound, an indian rupee and a japanese yen.](/images/foundations/design/icons/icons-internationalization@2x.png)\n\n### Keep internationalization in mind\n\nWhenever possible, use a universally recognized icon. However, there will be times where only a locally understood icon will work to communicate a concept. When deciding what symbol should be used, check that it will be understood at a glance by people from different cultures and backgrounds.\n\n---\n\n## When to use icons\n\nIcons are powerful visual helpers and should be used with care. Overuse quickly results in user interfaces that are visually overwhelming or distracting.\nIcons are commonly used:\n\n- In primary navigation\n- In page headers and section titles\n- In banners to bring attention to a specific theme, such as an announcement or an error\n- Inline with text to add clarity\n- To direct attention to something the merchant can take action on\n\nTo browse all available icons, visit the [Icons library](https://polaris.shopify.com/icons).\n\n## System icons\n\nSystem icons help merchants find their way around and shouldn’t be ornamental. They’re smaller than spot icons because they’re always applied in product experiences where it’s important that they complement the user experience and not overpower it. They should represent a specific action, object, or concept.\n\n![Icons in a navigation menu.](/images/foundations/design/icons/icons-system-20@2x.png)\n\n### Major icons—20×20\n\nMajor system icons are:\n\n- Primarily used in navigation to support wayfinding\n- Used to help promote, reinforce, or draw special attention to a specific area or metaphor\n- 20×20 in size\n- Within a 20×20 bounding box\n\n![Smaller icons in a drop-down menu](/images/foundations/design/icons/icons-system-16@2x.png)\n\n### Minor icons—16×16\n\nMinor system icons are:\n\n- Used inline to add clarity to an action\n- Used in form elements (`<input>`, `<button>`, etc.)\n- 16×16 in size\n- Within a 20×20 bounding box\n\n---\n\n## Spot icons\n\n![Larger, spot icons of a spyglass for a \"results not found\" error, an upwards arrow for a file upload card, and an exclamation point for a \"page not found\" error.](/images/foundations/design/icons/icons-spot@2x.png)\n\nSpot icons reinforce messaging in product experiences that are seen more than once. Spot&nbsp;icons&nbsp;are:\n\n- Bigger than system icons and have a stronger stroke weight to add visual balance to the layout\n- 60×60 in size\n- Within a 60×60 bounding box"
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "shopify icons",
+      "icon sets",
+      "icon designs",
+      "icon guidelines",
+      "icon standards",
+      "iconography",
+      "visual helpers",
+      "minor icons",
+      "major icons",
+      "inline icons",
+      "in-line icons",
+      "main navigation icons",
+      "main nav icons",
+      "icons in nav",
+      "icons in main nav",
+      "icon colors"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "h19imKM4L1KqVWIPc5Rou",
+    title: "Layout and structure",
+    excerpt: "Layout is the arrangement of elements on a page. A good layout helps merchants understand and find information to complete their goals. Learn how to use Polaris layout primitives to build a wide range of layouts.",
+    slug: "layout-and-structure",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 2,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "66EBD1hJ2QGxO-9u_gx7k",
+    title: "Contributing to Polaris React",
+    excerpt: "Anyone is welcome to contribute to Polaris React components. There are several types of component contributions, but they typically fall under three categories; bug fix, enhancement, or new pattern.",
+    slug: "components",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 2,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "wSBNGi6BK49EZTDiPd_3v",
+        blockType: "Markdown",
+        content: `Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component’s documentation, or by adding new components or utilities. Often component contributions are a mix of these.
+
+Start planning your contribution as early as possible to account for the scope in your timeline. To get help with the strategy for your contribution early on, start a [discussion](https://github.com/Shopify/polaris/discussions/new) with the Polaris community. If you have a smaller question, reach out in #polaris if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you’re an open source contributor. Once you’ve decided on the best way to solve the problem, submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) issue. Then contribute the change by shipping a pull request.
+
+Often the changes you make to a component’s code impact the [documentation](/contributing/documentation) and [Figma UI Kit](/contributing/figma-ui-kit). If you work at Shopify, component contributions should be a team effort across disciplines. If you’re an open source contributor, we’ll work with you to update the Figma UI Kit once you [create an issue](https://github.com/Shopify/polaris/issues/new/choose) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the \`Shopify/polaris\` repo.
+
+## Update props
+
+### Considerations
+
+There are many ways to make a Polaris component more flexible. Updating or adding props is the most common way to add flexibility to the way a component looks or works. Sometimes refactoring the component is [a better path](#add-or-improve-a-component).
+
+Components should be performant, accessible, and maintainable. When contributing a new prop or updating the types of an existing prop, ask yourself how your change might:
+
+- Be backwards compatible
+- Increase or maintain performance
+- Improve or maintain accessibility
+- Address a pain point in the merchant experience
+- Reduce complexity of the source code
+
+If a component isn’t flexible enough to meet your project’s requirements, or you’re unsure whether a component is right for your use case, submit an [issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) outlining the problem and the approach you’re thinking about. We’re happy to collaborate to find a solution.
+
+### How to contribute
+
+To add or update a prop:
+
+1. Explore and align on whether to add a new prop or update the types of an existing prop
+2. Submit or assign yourself to an existing [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md)
+3. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment)
+4. Add your change to the props interface
+5. Include or update the description comment
+6. Update the \`@default\` value if relevant in the props interface and in the props deconstruction at the start of the component’s definition
+7. Add tests to cover the changes
+8. Add examples to the component’s documentation
+9. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr)
+
+---
+
+## Fix a bug
+
+### Considerations
+
+Bug fixes are high impact contributions that ensure we deliver a reliable, crafted experience to merchants. Whether you’re a seasoned contributor or looking to make your first pull request, there’s a bug report open for every level of experience.
+
+If you’re just getting started with contributing to Polaris React, look for issues that are:
+
+- Labeled as a [good first issue](https://github.com/Shopify/polaris/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+first+issue%22)
+- Not yet assigned to someone
+- Haven’t been updated in two or more weeks
+
+### How to contribute
+
+1. Submit or assign yourself to a [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md).
+2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment).
+3. Assess the time and difficulty of finding and fixing the problem code.
+4. If you discover that fixing the bug is too complex or will take longer than you’re able to commit, that’s okay! Your findings will help the next developer move the needle on shipping a fix.
+   <br /> - Update the issue with a comment detailing your findings. Describe the problem code and share permalinks to the lines involved.
+   <br /> - If you have a potential fix locally, commit and push your changes and open a draft pull request that links to the bug report.
+   <br /> - Add or update the issue’s labels to indicate level of difficulty.
+   <br /> - Unassign yourself from the issue.
+5. If after investigating you arrive at a solution to the issue:
+   <br /> - Update the issue so everyone knows a fix is on the way.
+   <br /> - Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr).
+
+---
+
+## Add or improve a component
+
+### Considerations
+
+From perceived performance and accessibility enhancements, to the evolution of our design language, contributing UX improvements to Polaris components empowers teams to make sweeping changes effectively with minimal technical debt upstream.
+
+When exploring the potential for improving the look, feel, and or experience of a component:
+
+- Prioritize accessibility
+- Check [W3C](https://www.w3.org/WAI/ARIA/apg/patterns/) for examples of the pattern the component implements
+- Consider whether the existing component could be replaced entirely if it were broken up into smaller components
+
+### Case study
+
+In the years since Polaris launched in 2017, we’ve learned a lot from the Shopify and design system communities. As the system’s matured, we’ve found that many of the components should evolve toward [composition over configuration](https://maecapozzi.com/blog/composition-vs-configuration/). Many props is a signal that a component is solving too many problems or is too opinionated. When that’s the case, there’s an opportunity to refactor the component or build a new component to better meet merchant needs.
+
+For example, \`Autocomplete\` implements [the combobox with list pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/). When the Deliver team looked into fixing bugs in the component, they decided it would benefit from being broken down into two new components. They contributed \`Combobox\` and \`Listbox\` and refactored \`Autocomplete\` to use them. This reduced complexity and made \`Autocomplete\` easier to maintain.
+
+The Deliver team partnered with the Polaris team to improve the UX of tag autocomplete inputs in a follow-up project. To accomplish this, we refactored \`Combobox\` and \`Listbox\` to support [the combobox with both list and inline autocomplete pattern](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-autocomplete-both.html) with automatic selection. Every \`Autocomplete\` in the Shopify Admin benefited from those improvements without any code changes needed upstream in the app.
+
+### How to contribute
+
+1. Submit or assign yourself to an existing [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [new component proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=&template=NEW_COMPONENT.md)
+2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment)
+3. Prototype and iterate on your proposal, testing with merchants as you iterate if possible
+4. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr)`
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "components",
+      "contributing to polaris react",
+      "how to add a prop",
+      "how to add a prop type",
+      "how to add a new component",
+      "bug fix",
+      "ux improvement",
+      "improve component",
+      "improve ux",
+      "improve accessibility",
+      "open source"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "1wV1qjPStuXEdMmv3uvMY",
+    title: "Foundations",
+    excerpt: "Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences.",
+    slug: "foundations",
+    parentId: null,
+    order: 2,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: true,
+    thumbnailImageId: null
+  },
+
+  {
     id: "MG9JkYOdnfZzbGK9ybh3S",
     title: "Shape",
     excerpt: "",
@@ -9994,6 +8696,238 @@ By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bri
       type: "tokens",
       tokenGroup: "shape"
     },
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "ujAqM2BvLhdUIvaqGUT6Z",
+    title: "Formatting localized currency",
+    excerpt: "Currencies are formatted differently in different countries and languages.",
+    slug: "formatting-localized-currency",
+    parentId: "1wV1qjPStuXEdMmv3uvMY",
+    order: 3,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "dKDHO6pLibCT5LtVw74cC",
+        blockType: "Markdown",
+        content: "There’s a currency formatting framework to:\n\n- Help more merchants sell globally\n- Localize currency formatting for merchants and customers everywhere\n- Unify the display of mixed currencies to help merchants manage multiple currency stores\n- Implement the formatting through APIs\n\n---\n\n## Definitions\n\nA store can have more than one type of currency and currency format.\n\n### Store currency\n\nThe main currency of the store and the Shopify default. All sales and reports are shown in the store currency.\n\n### Non-store currency\n\nAny other type of currency is called “non-store currency”. Types of non-store currency include:\n\n- Presentment currency: The type of currency that is presented to buyers in a merchant’s store. For multi-currency stores, it can be different from store currency.\n- Payout currency: The type of currency used to pay merchants for their sales. For multi-currency stores, it can be different from store currency.\n- Billing currency: The type of currency used to bill merchants for themes, app purchases, and monthly subscriptions. Billing currency is in USD only, but might include local currencies for tax purposes.\n\n### Short format\n\nIncludes the currency symbol and currency value. This format is used for currency that merchants are familiar with.\n\nExamples: \\$12.50; 12,50 €\n\n### Explicit format\n\nIncludes the currency symbol, currency value, and ISO code (for example, “USD” and “CAD”). Best used for currency that merchants aren’t familiar with and don’t expect to see.\n\nExamples: \\$12.50 CAD; 12,50 € EUR\n\n---\n\n## Aligning with global standards\n\nShopify uses [Common Locale Database Repository (CLDR)](http://cldr.unicode.org/) for localization formatting for currency, date, time, and amount.\n\n- It’s the recognized international standard\n- It automatically formats numbers and currency based on the merchant’s locale\n- The repository is maintained by a third party\n\nCLDR determines:\n\n- Whether the currency symbol appears before or after the amount (for example, $250, 250 USD, 250 $)\n- Whether decimals are used (for example, there are no “cents” in Japanese yen)\n- Whether the decimal sign is a period or a comma (for example, 37,50 or 37.50)\n- How to group numbers (for example, 10,000 or 1,0000, or using spaces)\n\nCLDR doesn’t determine the appropriate level of detail shown in different contexts. For example, it can’t determine when to show the currency symbol and value ([short format](#short-format)), or the currency symbol, value, and ISO code ([explicit format](#explicit-format)).\n\nThough short format is more efficient, it’s important to provide clarity for merchants who deal with unfamiliar currencies in multi-currency stores. In those cases, use explicit format.\n\n---\n\n## Design guidelines\n\nBecause CLDR formatting is limited, these guidelines will help you choose the appropriate level of currency detail to display in a multi-currency context.\n\n### Merchants\n\n#### Store currency\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nDefault to [short format](#short-format).\n\n![Short format in today’s sales card](/images/foundations/foundations/internationalization/do-use-short-format@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse [explicit format](#explicit-format) except when presenting store currency within in a mixed-currency context.\n\n![Incorrect explicit format in today’s sales card](/images/foundations/foundations/internationalization/dont-use-explicit-format@2x.png)\n\n</div></div>\n\n#### Non-store currency\n\n- Use explicit format when showing total amounts, an amount within a button, or in a paragraph\n- Use short format when showing non-total amounts with total amounts\n\n![](/images/foundations/foundations/internationalization/paid-status-explicit@2x.png)\n\nThis example shows a scenario where the presentment currency is in USD, which is different than the store currency. The non-total amounts in the paid status card are in short format, and the total amounts are in explicit format.\n\n![](/images/foundations/foundations/internationalization/refund-non-store-currency@2x.png)\n\nThis example shows a scenario refunding an order that’s in a non-store currency.\n\n![](/images/foundations/foundations/internationalization/short-format-non-total@2x.png)\n\nThis example illustrates the use of short format for non-total amounts and explicit format for total amounts in a data table.\n\n#### Negative amount display\n\nAlways place the negative symbol before the currency and amount in either format.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n- \\-\\$4.20\n- -12,50 €\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n- \\$-4.20\n- 12,50 €-\n\n</div></div>\n\n### Customers\n\n- Default to explicit format whenever prices are customer-facing. Use short format for unit prices, itemized prices, and installment prices.\n- If there are enough indicators to let customers know which currency they’re looking at, short format may be sufficient. When using short format, make sure to always use explicit format for cart total, checkout total, and notification totals.\n\n![](/images/foundations/foundations/internationalization/short-format-installment-prices@2x.png)\n\nThis example shows the use of short format for installment prices.\n\n![](/images/foundations/foundations/internationalization/short-format-unit-prices@2x.png)\n\nThis example shows the use of short format for unit prices.\n\n![](/images/foundations/foundations/internationalization/short-format-itemized-prices@2x.png)\n\nThis example shows the use of short format for itemized prices.\n\n---\n\n## Guiding questions when making design decisions\n\nUse the following questions to guide you when making decisions about currency formatting.\n\n**Does the merchant know which currency they’re looking at?**\n\n- Which currency do they expect to see?\n- Do they know which currency their orders are in if they have a multi-currency store?\n\n**Does the currency format support the merchant’s main task?**\n\n- Is the main task scanning, comparing and analyzing, or taking an action (for example, a refund)?\n\n**Are there enough details to make an informed decision?**\n\n- For example, do they know the currency of their non-store currency order refund?\n- Can they distinguish between the sales report and payout summary if the store currency and payout currency are different?\n\n**Can the UI be simplified without creating confusion?**\n\nWe don’t want to show [explicit format](#explicit-format) everywhere and for every task.\n\n- How can we make currency formatting both simple and accurate?\n\n---\n\n## Design tips\n\nMock up a scenario where the store, presentment, payout, and billing currencies are different. This scenario is becoming more common as more merchants start selling globally.\n\n### Use currencies that share the same symbol to test for clarity\n\nUSD, CAD, AUD, HKD, SGD are just a few of the many currencies that share the same symbol “\\$”.\n\n### Use Japanese Yen (JPY) amount to test currency length and space constraints\n\n1 USD is approximately 100 JPY. If there is enough space for the JPY amount, it should work for most other major currencies.\n\n### When in doubt, let the guiding questions help you make a decision\n\nThe guiding questions are meant to help make merchant-focused decisions about which format to use when the use case is unclear.\n\n---\n\n## Major currencies in their local formats\n\nThis table shows commonly-used currencies in short and explicit formats.\n\n| Currency                        | Locale       | Short format | Explicit format |\n| ------------------------------- | ------------ | ------------ | --------------- |\n| **US Dollar ($, USD)**          | en-US        | $12.50       | $12.50 USD      |\n| **Canadian Dollar ($, CAD)**    | en-CA        | $12.50       | $12.50 CAD      |\n|                                 | fr-CA        | 12,50 $      | 12,50 $ CAD     |\n| **Australian Dollar ($, AUD)**  | en-AU        | $12.50       | $12.50 AUD      |\n| **Euro (€, EUR)**               | de-DE, fr-FR | 12,50 €      | 12,50 € EUR     |\n|                                 | en-IE        | €12.50       | €12.50 EUR      |\n|                                 | nl-NL        | €12,50       | €12,50 EUR      |\n| **British Pounds (£, GBP)**     | en-GB        | £12.50       | £12.50 GBP      |\n| **Japanese Yen (¥, JPY)**       | ja-JP        | ¥1250        | ¥1250 JPY       |\n| **New Zealand Dollar ($, NZD)** | en-NZ        | $12.50       | $12.50 NZD      |\n| **Hong Kong Dollar ($, HKD)**   | zh-HK        | $12.50       | $12.50 HKD      |\n| **Singapore Dollar ($, SGD)**   | zh-SG        | $12.50       | $12.50 SGD      |\n| **Danish Krone (Kr, DKK)**      | da-DK        | 12,50 kr.    | 12,50 kr. DKK   |\n\n---\n\n## Implementation\n\nTo format currency in a React component, use the [`Shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n) library’s `formatCurrency` method. You can select either `short` or `explicit` formatting by setting the `form` option as shown in the code example below.\n\n```jsx\nimport {useI18n} from '@shopify/react-i18n';\n\nconst [i18n] = useI18n();\n\ni18n.locale = 'de-AT';\n\nconst eurDeAt = i18n.formatCurrency(price, {\n  currency: 'EUR',\n  form: 'short',\n});\n\nconst eurDeAtExp = i18n.formatCurrency(price, {\n  currency: 'EUR',\n  form: 'explicit',\n});\n```"
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "internationalization",
+      "localization",
+      "currency",
+      "currencies",
+      "money",
+      "euro",
+      "dollar",
+      "formatting",
+      "short format",
+      "explicit format",
+      "internationalizing",
+      "localizing",
+      "locale",
+      "overseas",
+      "international",
+      "global",
+      "japan"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "ZRiKW4XzbrflowwzHFVKE",
+    title: "Illustrations",
+    excerpt: "The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience.",
+    slug: "illustrations",
+    parentId: "dfKJpx1bw80se3wpXty8j",
+    order: 3,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "WQ0MNNnzpgagYRV30q1za",
+        blockType: "Markdown",
+        content: `![The illustration of a chair, in simples straight lines, followed by a version with curves and some color, followed by a final version with filled shapes and shadows.](/images/foundations/design/illustrations/illustrations-intro@2x.png)
+
+---
+
+## Principles
+
+### Always be useful
+
+Illustration adds information. It provides context, adds clarity, or leads to the next step. It gives merchants a deeper understanding of what they’re working on.
+
+### Keep it in the family
+
+Illustrations are all part of the same visual family. Inconsistencies lower the overall quality of the experience, and can distract merchants or make them feel like they’re in the wrong place.
+
+### Be considerate
+
+Illustration should understand and support the merchant’s experience. Each illustration needs to feel appropriate for whatever situation it shows up in.
+
+### Stay focused
+
+Each illustration conveys one thing. The story is easy to understand, so merchants intuitively know how to accomplish whatever they came here to do.
+
+---
+
+## Elements of style
+
+![A color palette and illustrations using the color palette](/images/foundations/design/illustrations/illustrations-color@2x.png)
+
+### Color
+
+Illustrations use a special set of colors designed to work well in the places where they show up. The palette is limited: individual illustrations use whites, grays, and two or three colors each. Colors are also less saturated than the surrounding UI, so they don’t distract from core interactions.
+
+![Illustrations of a flag, a teapot, a leaf, and various profiles of people of different ethnicities.](/images/foundations/design/illustrations/illustrations-shape@2x.png)
+
+### Shape
+
+Objects have realistic proportions so they’re easy to recognize. Simple geometric shapes with rounded corners build images that are clear and approachable. Representations of people use more organic shapes.
+
+![An illustration of a laptop and an illustration of shipping boxes separated on a white background](/images/foundations/design/illustrations/illustrations-space@2x.png)
+
+### Space
+
+The perspective is flat and two-dimensional so the entire area of the illustration is of equal importance. Drop shadows give things subtle depth when necessary. An additional side of an object can be added if things aren’t easily recognizable from a single side.
+
+Each illustration has negative space around it so it feels balanced in the place it lives, and so its visual weight is the same as other illustrations that live in the same places.
+
+![An stylized illustration of a chair with red lines defining its angles, next to an illustration of the profile of a person, with red lines to emphasize where curves are used.](/images/foundations/design/illustrations/illustrations-line@2x.png)
+
+### Line
+
+Line makes and arranges shapes in the space. All illustrations have smooth lines without texture. Smaller objects have straighter lines, while larger objects can have more detailed, curved lines.
+
+Intersecting and continuous lines are a key element of the admin illustration style, but they aren’t forced. They make a simple illustration feel elegant and visually interesting without being distracting.
+
+![An intricate illustration of a shipping label, followed by an illustration of a sheet with a list of users, followed by a very simple illustration of an URL address bar.](/images/foundations/design/illustrations/illustrations-detail@2x.png)
+
+### Detail
+
+Illustrations need some detail to make sense, but too much can be noisy. They have the minimum amount of detail necessary to make them feel realistic but still simple. Fine details are rarely smaller than 4px in height or width.
+
+---
+
+## Where illustrations live
+
+There are places where illustrations always appear, and places where they’re used only sometimes.
+
+![An illustration of scissors cutting a coupon to indicate a page for discount code administration that has no discount codes saved.](/images/foundations/design/illustrations/illustrations-empty-states@2x.png)
+
+### Empty states
+
+Merchants see an empty state illustration the first time they access a new part of the experience, before they’ve had the chance to do anything there yet. It introduces what they can do here, and sets expectations for what’s ahead.
+
+![An admin homecard with a small illustration next to some text describing how to customize a theme.](/images/foundations/design/illustrations/illustrations-onboarding@2x.png)
+
+### Onboarding
+
+Onboarding tasks help new merchants set up their store. Illustrations frame what each task is for. And by changing in appearance, they reinforce when a task is complete.
+
+![An illustration celebrating a store anniversary.](/images/foundations/design/illustrations/illustrations-announcements@2x.png)
+
+### Announcements
+
+Announcements let merchants know about something that might help their business. When the announcement celebrates a major merchant milestone or introduces an important product, illustration helps make it special or noticeable.
+
+![An illustration next to a card talking about Shopify Payments.](/images/foundations/design/illustrations/illustrations-spot@2x.png)
+
+### Spot illustrations
+
+In some rare instances, unique spot illustrations can be used to achieve a specific goal, like to draw attention to something important on a busy page, or to explain a technical concept.`
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "drawings",
+      "pictures"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "lfjMao2nMHVhBomYYRFV7",
+    title: "Selection and input",
+    excerpt: "",
+    slug: "selection-and-input",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 3,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "MZ8NzP7-qEmxkz81r9wfM",
+    title: "Contributing to the Figma UI Kit",
+    excerpt: "",
+    slug: "figma-ui-kit",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 3,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "1l54RiAo2GWg1QvqiQ2hr",
+        blockType: "Markdown",
+        content: "Any designer that works at Shopify can contribute to the Figma UI Kit. If you find a bug to fix or your team is contributing new patterns or variants to Polaris React components, we want you to feel empowered to contribute.\n\nComponents, features, or patterns shouldn’t be added to the Figma UI Kit if they are not part of Polaris React, as our goal is to keep Figma in sync with the code base. Only contributing changes to the Figma UI Kit when there’s a counterpart in Polaris React prevents confusion and keeps tooling in sync across resources.\n\n1. Submit an issue in the [Shopify/polaris](https://github.com/Shopify/polaris/issues/new) GitHub repo, or assign yourself to [an existing issue](https://github.com/Shopify/polaris/labels/Figma%20UI%20Kit). Make sure to:\n   1. Assign yourself to the issue so it’s clear who is doing the work.\n   2. Add the \"Figma UI Kit\" label so we can easily find the issue.\n   3. Use a descriptive title.\n   4. Describe the change you’re making in the issue itself.\n2. Create a branch in the Polaris Components Figma library.\n   <br /> - Give your branch a descriptive name, ideally using the GitHub issue number so it’s easy to track.\n   <br /> - For example, \"[4963] Navigation design changes\"\n3. Make the necessary changes in the new branch.\n4. Document all changes in the “Release Notes” page within the UI kit.\n5. Add a design reviewer from the Polaris team to review the changes on your branch. If you aren’t sure who to add, share the link to your Figma branch and ask for review in the #polaris Slack channel.\n6. Once reviewed and approved, the Polaris designer will merge your changes into the main branch and publish the updates."
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "ui kit",
+      "figma",
+      "how to contribute to polaris ui kit",
+      "how to fix a figma component"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "dfKJpx1bw80se3wpXty8j",
+    title: "Design",
+    excerpt: "These are the principles that shape how we design all the experiences across the Shopify admin.",
+    slug: "design",
+    parentId: null,
+    order: 3,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -10022,6 +8956,352 @@ By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bri
   },
 
   {
+    id: "hJChvNVJNIrENzPaol_-X",
+    title: "Internationalization",
+    excerpt: "Make commerce better for everyone by building interfaces that work everywhere. These guidelines will help you design, write, and build products that can be used in every part of the world.",
+    slug: "internationalization",
+    parentId: "1wV1qjPStuXEdMmv3uvMY",
+    order: 4,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "Inl0AB_M8yUi3yGA6PvPU",
+        blockType: "Markdown",
+        content: "We want our merchants to experience Shopify in a way that’s appropriate and meaningful to them, no matter where they are in the world.\n\nWe aim to build one experience that works for all merchants in all of our markets. However, when a certain experience doesn’t fit a specific market, we should tailor it.\n\n---\n\n## Definitions\n\n### Internationalization\n\nBuilding your product and interface so they can be used in different locales. This includes creating flexible interfaces that allow for text expansion and changes to word order.\n\n### Localization\n\nAdapting your product and interface for different locales to make them a good cultural fit. This includes adapting features, changing visuals, and translating text.\n\n### Translation\n\nConverting text from one language to another. Not to be confused with localization, translation is just one part of localizing a product.\n\n### Locale\n\nA linguistic region defined by both its language and country. Examples:\nFrench-France (fr-FR); French-Canada (fr-CA); Portuguese-Brazil (pt-BR). Note that languages and countries won’t always have a 1:1 mapping.\n\n---\n\n## Plan for text expansion\n\nWhen interfaces are localized, the content will often expand in length. In most languages, text is up to 50% longer on average than English. Some non-Latin languages, such as Japanese, take up more vertical space. For character-based languages, text wrapping and line breaking can’t always rely on spaces to separate words. Your interface needs to be flexible enough to accommodate language-specific formatting and text expansion without changing its context of use.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n![Good example of flexible layouts with text expansion](/images/foundations/foundations/internationalization/info-hierarchy-do@2x.png)\n\nLay out your elements in a way where text expansion doesn’t hinder your information hierarchy.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n![Bad example of flexible layouts with text expansion](/images/foundations/foundations/internationalization/info-hierarchy-dont@2x.png)\n\nDon’t rely on responsive stacking alone. It can often change the hierarchy of information of the layout. In this case, the text expansion causes the line break at the wrong spot, placing the button in the middle of the heading and content of this card.\n\n</div></div>\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n![Good example of narrow columns with text expansion](/images/foundations/foundations/internationalization/narrow-columns-do@2x.png)\n\nUse single columns to stack elements flexibly to accomodate for text expansion.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n![Bad example of narrow columns with text expansion](/images/foundations/foundations/internationalization/narrow-columns-dont@2x.png)\n\nAvoid using narrow columns in smaller components. Ensure the right amount of padding for a clean interface.\n\n</div></div>\n\n### Tips\n\n- Always assume the worst-case scenario for text length, especially on mobile and in layouts such as tables and columns. Avoid using narrow columns.\n- Pay particular attention to content elements that only have a few words. In English, labels and buttons [exclude words such as “a” or “the”](/content/actionable-language#buttons), but many other languages need to include them. Overall these small pieces of text may expand up to 300%.\n- Our components are designed to be expandable, but you should still test them in your designs and builds. Check the CSS layout to make sure text doesn’t overflow when the screen size is reduced.\n- Work with linguistic experts to review line breaks and word wrapping for character-based languages, like Chinese or Japanese, to ensure they don’t break sentences.\n\n---\n\n## Plan for changes in word order\n\nWord order can change dramatically in translation. If the layout and functionality of your interface is dependent on a certain word order, it’s likely to break when localized.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n![Good example of avoiding sentence-based UI](/images/foundations/foundations/internationalization/sentence-based-ui-do@2x.png)\n\nIf content elements need to stay in a certain position on the page, implement them as separate labels, outside of sentences.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n![Bad example of sentence-based UI](/images/foundations/foundations/internationalization/sentence-based-ui-dont@2x.png)\n\nDon’t place elements with a fixed position inside a sentence. The order of this sentence would often need to change in translation, which is impossible to do if the interface is built this way.\n\n</div></div>\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n![Good example of hyperlinking text](/images/foundations/foundations/internationalization/hyperlink-text-do@2x.png)\n\nWhen including links in body text, only use a single and descriptive term or a small part of a phrase as the link. Find out more about [links](/content/actionable-language#links).\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\n![Bad example of link within sentence](/images/foundations/foundations/internationalization/hyperlink-text-dont@2x.png)\n\nDon’t use full phrases as links. Word order changes might break the link into several parts when translated.\n\n</div></div>\n\n### Tips\n\n- Assume the word order of every sentence in your interface will change when translated.\n- Avoid using UI components to build sentences.\n- Avoid splitting one sentence into several strings, known as concatenated strings. If you use concatenated strings, translators won’t be able to change the word order and their translations won’t make sense.\n- Avoid using variables in your strings as it will translate differently.\n\n---\n\n## Plan for cultural differences\n\nMerchants in each locale have different cultural sensibilities. Use visuals, content, and interface formats that are useful and meaningful to merchants in all parts of the world.\n\n![Good example of icon usage](/images/foundations/foundations/internationalization/icons-meaning@2x.png)\n\nWhen possible, use universally known icons. Be mindful of when you use country-specific icons and where they are surfaced. Find out more about [icons](/design/icons).\n\n![Bad example of text fields](/images/foundations/foundations/internationalization/colors-cultural-context@2x.png)\n\nBe mindful of using colors to represent meaning. Colors can hold discrete connotations in different cultures. For example, in North America, green is used to indicate success and red for failure, as opposed to China, where red symbolizes prosperity and good fortune.\n\n### Tips\n\n- When using photos, illustrations, icons, or emojis, make sure the visuals you’re using are not offensive or culturally insensitive. If you’re unsure about a visual you’re using, research it or ask someone with local knowledge.\n- When naming features, be mindful of connotations in other cultures, especially for evocative names and acronyms. Find out more about [naming](/content/naming).\n- Avoid colloquial words, idioms, and references to popular culture. It’s difficult to translate them in a meaningful way.\n- In some cultures, a person’s given name comes first, whereas in other cultures the family name comes first. Let merchants choose how they want to enter, read, and sort names, especially in text fields and lists.\n- Many types of information, such as addresses, dates, numbers, and currencies, are shown in different formats in different locales. For example, some locales display currency symbols before the number, others display them after. Make sure these can be translated appropriately. Find out more about [formatting localized currency](/foundations/formatting-localized-currency#navigation).\n- Some cultures expect more guidelines and instructions when filling in long or critical forms. Consider using asterisks to mark mandatory fields in a form to match that expectation.\n- Work with people that have local knowledge if possible.\n\n---\n\n## Internationalize Polaris components\n\n- When designing with a Polaris component, test the localized versions to make sure it still works with the rest of your interface.\n  If you need a certain component to adapt, but it hasn’t yet been internationalized in Polaris, you can open a feature request in [GitHub](https://github.com/Shopify/polaris-react/issues/)."
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "internationalization",
+      "localization",
+      "translation",
+      "internationalizing",
+      "localizing",
+      "translating",
+      "locale",
+      "overseas",
+      "international",
+      "global",
+      "globalization",
+      "japan",
+      "germany",
+      "france"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "Qc7S68Ht4VUcD21IXbZ3Z",
+    title: "Interaction states",
+    excerpt: "Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.",
+    slug: "interaction-states",
+    parentId: "dfKJpx1bw80se3wpXty8j",
+    order: 4,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "7s-cDN759RsPCUuXuYNuX",
+        blockType: "Markdown",
+        content: "![A collection of buttons in different states](/images/foundations/design/interaction-states/interaction-states-intro@2x.png)\n\n---\n\n## Principles\n\n### Be subtle, but clear\n\nSuccessful interaction feedback is informative, not decorative. Avoid elaborate transitions that create visual noise or intense color changes. Distracting animation can create disturbance and make an interface unpleasant to use.\n\n### Keep things consistent\n\nConsistent treatments for interaction feedback create recognizable patterns. If an interaction produces different feedback across the Shopify admin, it deteriorates the integrity of the pattern and risks confusing merchants.\n\n---\n\n## Designing interaction states\n\nKeep in mind that merchants interact with interfaces differently depending which input device they’re using. Devices they may be using include:\n\n### Input devices to consider\n\n- Mouse\n- Touch screen\n- Keyboard\n- Voice\n- Game controller\n- Refreshable braille display\n\nTo learn more, check out the [accessibility guidelines](/foundations/accessibility).\n\n### Use signifiers\n\nProvide merchants with cues as to what the interface will do if they interact with it. By using signifiers we set expectations about what components can do, which creates a more intuitive interface that’s easier to use. The types of signifiers include:\n\n![A \"sort\" button in a default state.](/images/foundations/design/interaction-states/interaction-states-explicit@2x.png)\n\n**Explicit**, where content directs merchants to do the intended action, such as “Sort” or “Save.”\n\n![An \"edit\" button with its underline appearing when the mouse hovers above it.](/images/foundations/design/interaction-states/interaction-states-hidden@2x.png)\n\n**Hidden**, where the clue isn’t revealed until the merchant interacts with it, such as hovering or using tab navigation to see if a button is clickable.\n\n![A \"print packing slip\" button that is grayed out and inactive.](/images/foundations/design/interaction-states/interaction-states-negative@2x.png)\n\n**Negative**, where the action appears inactive (like the button is grayed out and doesn’t respond to hover) because it isn’t available for the merchant to use.\n\n![A toast component, a button with a spinner component and a text field component with an error message.](/images/foundations/design/interaction-states/interaction-states-behavior@2x.png)\n\n### Behavior\n\n**Use feedback indicators** like the [progress bar](https://polaris.shopify.com/components/progress-bar) component or the [spinner](https://polaris.shopify.com/components/spinner) component to let them know that the interface received their request. If appropriate, you can also provide added information about what or how long it will take to complete.\n\n**For non-disruptive feedback** on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.\n\n**For an unsuccessful completion** that requires the merchant to take action, provide information about what prevented the action from completing successfully and what the merchant can do to fix the problem. For example, use the validation error state of the [text field](https://polaris.shopify.com/components/selection-and-input/text-field) component."
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "visual patterns",
+      "color strategy",
+      "interaction states",
+      "hover",
+      "focus",
+      "active",
+      "selected",
+      "disabled",
+      "subdued",
+      "state"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "5oZLkRUkisX2R3QsvprUG",
+    title: "Images and icons",
+    excerpt: "",
+    slug: "images-and-icons",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 4,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "fB1luFngftZOsIAEQ73ue",
+    title: "Content",
+    excerpt: "Thoughtful, consistent interface content is a core element of a well-designed user experience.",
+    slug: "content",
+    parentId: null,
+    order: 4,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "o3fAm9vXVsXI_ncZlvX1y",
+    title: "Adding new illustrations",
+    excerpt: "",
+    slug: "illustrations",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 4,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "K-9HdBPnfTXWiyG0l6G3l",
+        blockType: "Markdown",
+        content: `Reusing illustrations should be avoided in product. New illustration contributions are welcome from any designer working at Shopify. They can be submitted for feedback to the #illustration-guild on Slack. Polaris only supports illustrations within the Shopify admin product and not marketing assets.`
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "illustration",
+      "image",
+      "photo",
+      "contribute",
+      "add"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "SXps_TkS5FC4BTGqxpmEp",
+    title: "Sounds",
+    excerpt: "We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.",
+    slug: "sounds",
+    parentId: "dfKJpx1bw80se3wpXty8j",
+    order: 5,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "LaBRijyg14uDzN38jy_Rr",
+        blockType: "Markdown",
+        content: `![Visual representation of sound waves as concentric circles](/images/foundations/design/sounds/sound-intro@2x.png)
+
+---
+
+## Principles
+
+### Selectively urgent
+
+The duration, volume, and character of a sound should all be dictated by the level of urgency of an event. For example, an alert indicating that a customer is struggling to complete checkout requires more urgent attention and immediate action. An alert indicating that a customer has arrived at a storefront is informative, but doesn’t require immediate action. The sounds used during these events should be customized to reflect the differences in urgency.
+
+### Avoid annoying repetition
+
+Some sounds occur many times per day. While appealing on first listen, a sound may become irritating after ten, and unbearable after a hundred. Merchants that hear a sound repeatedly may quickly grow tired of it. **Our sounds should be informative and not annoying.** When possible, use data to determine how often a sound is triggered.
+
+### Distinct and succinct
+
+Merchants are likely to hear our sounds in a variety of contexts. Clean, focused, and succinct sounds convey information better than muffled or distorted sounds.
+
+### Test across devices
+
+While you may be testing your designs using headphones or loudspeakers that reveal the audible frequency spectrum clearly, a smartphone speaker will affect the quality of the sound. Smaller speakers are more susceptible to distortion. Sounds on mobile devices should be played at lower levels than on a desktop computer or laptop. Test sounds on a variety of devices and volume&nbsp;levels.
+
+### Think beyond sound
+
+Some people can’t rely on sound to receive cues or notifications. Merchants may have a disability that affects hearing or auditory processing. Depending on the merchant’s preferences and technologies, they may receive sound cues through haptic or visual feedback, but don’t assume that they’ll be able to perceive sound. Always include an alternative method to convey information, like text-based notifications or visual changes in the interface.
+
+---
+
+## When to use sound
+
+Sounds in our product help convey information. There’s an important balance between having too many sounds and not enough. Useful and well-planned sounds will help with merchant understanding. Unnecessary sounds will reduce the perceived quality of our product.
+
+Even though merchants might miss important information if they turn off their sound, we should always provide the option for them to do so.
+
+### Common sound events
+
+- For an event that requires a merchant’s immediate attention, use an alert to encourage them to pause their workflow and take care of things.
+- For something that’s useful for a merchant to do, but not necessarily immediately, use a notification.
+- To confirm success, use feedback for a successful action.
+- For statement of failure, use feedback for unsuccessful action.
+
+---
+
+## How to approach sound design
+
+Be creative and intentional with your sound design. And remember:
+
+- Short sounds should be no longer than 250ms, long sounds no longer than 1 second.
+- Sounds should be in the same “family.” If you introduce a new note, key, or timbre, make sure there’s a good reason.
+- Create two versions of every sound:
+  - A louder version for desktop applications.
+  - A quieter version for mobile applications where the speakers are smaller and may distort more easily.
+
+Design sounds with as much intentionality as other design aspects of Shopify’s products.`
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "audio",
+      "sonic",
+      "noise"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "NDOwU0XLFVibxHqXitUMu",
+    title: "Feedback indicators",
+    excerpt: "",
+    slug: "feedback-indicators",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 5,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "rV7xa9ut4MVdpG79cT33q",
+    title: "Patterns",
+    excerpt: "Design patterns help ensure consistent behavior across the Shopify admin.",
+    slug: "patterns",
+    parentId: null,
+    order: 5,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: true,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "cy8SPgvYWXVDmA-2Vh8hA",
+    title: "Documenting in Polaris",
+    excerpt: "",
+    slug: "documentation",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 5,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "XZpwWpAkeN42cmK0LcskT",
+        blockType: "Markdown",
+        content: `Shopify teams create documentation for polaris.shopify.com, but open source contributors are welcome to make copy edits as well as update or add examples to [component documentation](/contributing/components).
+
+To write effectively as a Shopify employee, use a cross-discipline lens. Make sure your content meets both UX and development needs. Before starting, check out our [style guide to the style guide](https://docs.google.com/document/d/1zVDsHIWhoir2svRjdtSdRbD_ruTz3K1nAJcQLGPVQwM/edit#heading=h.ni67tdntu9cr).
+
+Most documentation about the design system is meant for polaris.shopify.com. However, there may be a reason for the content to live elsewhere. If you’re not sure if something should live on this site, the Polaris team can help you figure that out.
+
+## Making copy edits
+
+Edits related to spelling, grammar, punctuation, or other typos should happen quickly and often. Both Shopify employees and open source contributors are welcome to submit copy edits.
+
+To fix any copy issues on polaris.shopify.com, [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
+
+Note: If you find copy issues in other Polaris resources, follow the steps for that resource’s contribution guidelines.
+
+## Updating documentation
+
+To expand or edit existing documentation:
+
+1. Draft your proposed changes in Google Docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
+2. Get feedback from subject matter experts or someone with high context around your changes, like a team member or your lead.
+3. Reach out to the Polaris team to review your changes for style guide alignment.
+4. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
+
+## Adding new documentation
+
+New documentation in Polaris can range from component documentation, to content guidelines, to pattern guidance.
+
+To create new documentation:
+
+1. Reach out to the Polaris team. We can help find a home for your documentation, offer templates, provide asynchronous feedback, and—if you're really stuck—participate in pair writing sessions.
+
+2. Draft the content in Google docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
+3. Get feedback from subject matter experts, or someone with high context around your changes (team member, manager, etc.).
+4. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
+
+## Removing documentation
+
+It’s important that inaccurate or outdated information be removed as soon as possible. This helps maintain high trust in Polaris as a source of truth for design system guidance.
+
+To remove documentation:
+
+1. Reach out to subject matter experts, or someone with high context around the existing content, to confirm its relevance and accuracy
+2. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo`
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "how to contribute to polaris documentation",
+      "how to contribute to the style guide",
+      "documenting in polaris",
+      "documentation guidelines"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
     id: "uZzRHUVmiaP098pp_34wf",
     title: "Depth",
     excerpt: "",
@@ -10040,6 +9320,112 @@ By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bri
       type: "tokens",
       tokenGroup: "depth"
     },
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "il1aV-jwzBjClB8uo6vkV",
+    title: "Space",
+    excerpt: "Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping  the content become more useful and understandable.",
+    slug: "space",
+    parentId: "dfKJpx1bw80se3wpXty8j",
+    order: 6,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "O5f88OH1ZAv51Q4YGo-kC",
+        blockType: "Markdown",
+        content: "<!-- inline css styling for html video and images -->\n<style>\n.space-hero {\n  margin: 40px -30px 40px -30px;\n}\n\n.punit-img {\n  display: block;\n  margin: 40px auto 40px auto;\n  width: 75%;\n}\n</style>\n\n---\n\n<div class=\"space-hero\">\n  <img src=\"/images/foundations/design/space/spacing-polaris-size-units.svg\" alt=\"A visual example of a polaris unit\">\n</div>\n\n---\n\n## Spacing must...\n\n![Illustrations of blocks representing each principle](/images/foundations/design/space/principles@2x.png)\n\n### 1. Create visual groupings\n\nThe more items are related, the closer they should be to each other.\n\n### 2. Complement function\n\nUse tighter spacing for large amounts of information, use looser spacing for more focused content.\n\n### 3. Be harmonious\n\nUse Polaris space tokens in a way that is consistent with the rest of the experience.\n\n---\n\n## Spacing tools\n\n### Polaris space units\n\nAll measurements used across the experience (space, width, height, etc) must reference Polaris space units to guarantee visual consistency and balance.\n\n<div class=\"punit-img\">\n  <img src=\"/images/foundations/design/space/spacing-polaris-units@2x.png\" alt=\"A visual example of a polaris unit\">\n</div>\n\n### Space scale\n\n| Value        | Space         | px value | rem value |\n| ------------ | ------------- | -------- | --------- |\n| 0            | --p-space-0   | 0        | 0         |\n| 0.25         | --p-space-025 | 1        | 0.0625    |\n| 0.5          | --p-space-05  | 2        | 0.125     |\n| **1 (base)** | --p-space-1   | 4        | 0.25      |\n| 2            | --p-space-2   | 8        | 0.5       |\n| 3            | --p-space-3   | 12       | 0.75      |\n| 4            | --p-space-4   | 16       | 1         |\n| 5            | --p-space-5   | 20       | 1.25      |\n| 6            | --p-space-6   | 24       | 1.5       |\n| 8            | --p-space-8   | 32       | 2         |\n| 10           | --p-space-10  | 40       | 2.5       |\n| 12           | --p-space-12  | 48       | 3         |\n| 16           | --p-space-16  | 64       | 4         |\n| 20           | --p-space-20  | 80       | 5         |\n| 24           | --p-space-24  | 96       | 6         |\n| 28           | --p-space-28  | 112      | 7         |\n| 32           | --p-space-32  | 128      | 8         |\n\nPolaris units are more dense at a small scale, and less so as dimensions increase.\nThis is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different spaces.\n\n![Examples of different variations of spacing](/images/foundations/design/space/spacing-scale-examples@2x.png)\n\nRepeating the same amount of spacing (left) and using more variation (right).\n\n<br/>\n\n### Column grid\n\nThe column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.\n\n<video width=\"100%\" height=\"auto\" controls autoplay muted loop>\n  <source src=\"/images/foundations/design/space/column.mp4\" type=\"video/mp4\">\n</video>\n\n<br/>\n\n### Breakpoints\n\n<video width=\"100%\" height=\"auto\" controls autoplay muted loop>\n  <source src=\"/images/foundations/design/space/breakpoints.mp4\" type=\"video/mp4\">\n</video>\n\nThe grid adapts to the viewport width. The amount of columns will change depending on how much space there is. This is a recommendation for how much should be displayed horizontally. Less columns means less content.\n\n<br/>\n\n| Screen size                              | Columns | Margin | Gutter | Navigation |\n| ---------------------------------------- | ------- | ------ | ------ | ---------- |\n| **XS** <br/> 0-489 <br/> Phones          | 6       | 16     | 16     | Collapsed  |\n| **SM** <br/> 490-767 <br/> Small tablets | 6       | 16     | 16     | Collapsed  |\n| **MD** <br/> 768-1039 <br/> Tablets      | 6       | 24     | 16     | Visible    |\n| **LG** <br/> 1040-1399 <br/> Laptops     | 12      | 24     | 16     | Visible    |\n| **XL** <br/> 1440+ <br/> Desktops        | 12      | 32     | 16     | Visible    |\n\nThe grid is meant to serve as a point of reference for page level design and alignment, but this doesn’t need to apply to component level layouts.\n\n---\n\n## Essentials for designing with space\n\n### Gestalt principles\n\nThe perception of any given page goes beyond the individual elements presented, and the space between them. People’s perception is heavily influenced by their own expectations and motivations.\nWhen designing, it’s key to consider that people look for patterns, and will always perceive things in their simplest form. For instance, a bunch of similar items stacked on top of each other will likely read as a list.\n\n![Different types of list items, such as menus, popovers, and dropdowns](/images/foundations/design/space/spacing-principles@2x.png)\n\n<br/>\n\nPeople look for patterns instinctively, and they lean of visual cues like:\n\n#### Similarity\n\nGrouping things based on physical appearance (shape, color, size, orientation).\n\n![Index table](/images/foundations/design/space/spacing-similarity@2x.png)\n\n<br/>\n\n#### Proximity\n\nGrouping things based on distance between objects.\n\n![Customers and orders page](/images/foundations/design/space/spacing-proximity@2x.png)\n\n<br/>\n\n#### Continuity\n\nGrouping things based on the way they are arranged.\n\n![Tag multiselect popover and media card](/images/foundations/design/space/spacing-continuity@2x.png)\n\nShadows inside popovers act as visual cues to indicate additional content when scrolled (left). Cards placed horizontally in a media carousel communicates related topics (right).\n\n<br/>\n\n#### Closure\n\nGrouping things that are implicitly enclosed by a larger object.\n\n![Order details page](/images/foundations/design/space/spacing-closure@2x.png)\n\n<br/>\n\n#### Common fate\n\nGrouping things based on how they move.\n\n<video width=\"100%\" height=\"auto\" controls autoplay muted loop>\n  <source src=\"/images/foundations/design/space/common-fate.mp4\" type=\"video/mp4\">\n</video>\n\n<br/>\n\n#### Common Region\n\nGrouping things that are explicitly enclosed by a larger object.\n\n![Customer details card](/images/foundations/design/space/spacing-common-region@2x.png)\n\nBecause people perceive these instinctively, we can use them as tools to create hierarchy, visual rhythm, and guide the user's eye to what’s important.\n\n---\n\n<br/>\n\n### Rhythm\n\nAlternating between objects and space creates a pattern. Repeated patterns create visual rhythm, which can be used to effectively direct the viewer’s attention.\nAnything can establish rhythm: space, typography, icons, color, shape, and size.\n\nLike in music, different types of rhythm serve a different purpose, in design there’s three worth highlighting:\n\n<br/>\n\n![Example of data table](/images/foundations/design/space/spacing-regular-rhythm@2x.png)\n\n**Regular rhythm** is predictable, which makes it a useful way to organize large sets of objects that have the same level of importance.\n\n<br/>\n\n![Location profile page](/images/foundations/design/space/spacing-flowing-rhythm@2x.png)\n\n**Flowing rhythm** is organic, and it can bring a high level of scannability to something that would be otherwise a random collection of objects.\n\n<br/>\n\n![Home page with progressive disclosure card](/images/foundations/design/space/spacing-progressive-rhythm@2x.png)\n\n**Progressive rhythm** is a gradual progression, and is very effective in giving the eye a path to follow, along the progression. This is great to establish hierarchy and aid the user through a series of steps.\n\nRhythm plays another job in designs, it’s the norm that enables the introduction of variation and points of attention, otherwise known as contrast.\n\n---\n\n<br/>\n\n### Density\n\nThe overall perception people get from the space between information as a whole is density. It can range from tight to loose, and there is a very different purpose for each end of the spectrum.\n\n![Examples showign tigher versus looser spacing](/images/foundations/design/space/spacing-density@2x.png)\n\nTighter spacing (left) makes it easier to scan and comprehend large sets of data, like lists and tables. It also naturally enables one to fit more elements in a given page.\nLooser space (right) can help attract the user attention and make a layout feel more user-friendly.\n\n---\n\n<br/>\n\n### Contrast\n\nContrast is meant to create sticking points that help make content easy to scan, highlight important pieces of information, or just to give viewers a moment to breathe.\n\n![Marketing page and empty state](/images/foundations/design/space/spacing-contrast@2x.png)\n\n**Highlights (left)**: Callout cards are used to encourage merchants to take an action related to a new feature or opportunity.\n\n**Breather moment (right)**: Empty states provide explanation or guidance to help merchants progress.\n\nContrast can play a role at very different levels, but it must be used sparingly, otherwise its effect gets diluted.\n\n![Examples on the analytics page to show contrast](/images/foundations/design/space/spacing-analytics@2x.png)\n\nHome feed overview (left) and location profile analytics (right).\n\n---\n\n<br/>\n\n### Optical adjustment\n\nSometimes software will say two objects are aligned, or that they have the same size, but visually they don’t feel like that. This happens because computers aren’t great at perceiving visual weight or simultaneous color contrast, so we can’t fully rely on them to create balanced compositions.\n\nThat means designers must make optical corrections, using Polaris units until the space feels balanced. Some things to keep an eye out for:\n\n<br/>\n\n#### Visual weight ≠ Size\n\nTwo things can have the same size, but feel unbalanced.\n\n![Before and after comparison of optical adjustment applied to a button](/images/foundations/design/space/spacing-weight-buttons@2x.png)\n\nWithout optical adjustment, the disclosure icon appears too far from the right edge of the button. After optical correction, the perceived spacing is more balanced.\n\n![Before and after comparison of optical adjustment applied to an icon](/images/foundations/design/space/spacing-weight-icon@2x.png)\n\nThe square icon seems larger compared to the circle icon without optical adjustment, however, they in fact have the same size and diameter. The shapes look visually closer to each other after decreasing the size of the square.\n\n<br/>\n\n#### Colors affect each other\n\nTwo things can have the same colour, but feel unbalanced.\n\n![Before and after comparison of applying the same colour versus slightly different colours to a banner component](/images/foundations/design/space/spacing-colour@2x.png)"
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "spacing",
+      "space",
+      "layout",
+      "grid",
+      "position",
+      "margin",
+      "padding"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "CygsFGc5pjU2NfaioNN6n",
+    title: "Components",
+    excerpt: "",
+    slug: "components",
+    parentId: null,
+    order: 6,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "X7qu0PObX85AwSELoGcn7",
+    title: "Typography",
+    excerpt: "Typography components",
+    slug: "typography",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 6,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "6XxSmUCEnk_P_sJ2HENQY",
+    title: "Shipping your contribution",
+    excerpt: "Contributions to this documentation site and code-related resources in the Polaris design system are made in the [Shopify/polaris GitHub repository](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects/2250), and use GitHub discussions, issues, and pull requests to work in the open.",
+    slug: "shipping-your-contribution",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 6,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "Om4NM7aG4KhTzX-fo1byZ",
+        blockType: "Markdown",
+        content: "## Project details\n\n### How it’s structured\n\nThe Shopify/polaris GitHub repository is structured as a monorepo, which means it’s a single repository with multiple projects. The monorepo includes:\n\n<!-- prettier-ignore -->\n| `polaris` |     |\n| ---------- | --- |\n|`/polaris-for-vscode` |VS Code extension for Polaris Design Token autocompletion|\n|`/polaris-icons` |npm SVG icon library `@shopify/polaris-icons`|\n|`/polaris-react` |npm React component library `@shopify/polaris`|\n|`/polaris-tokens` |npm Design Token library `@shopify/polaris-tokens`|\n|`/polaris.shopify.com` |The style guide to the Polaris Design System|\n|`/stylelint-polaris` |Linting rules for using Polaris Design Tokens through CSS custom properties|\n\n### Technologies we use\n\nTo manage our monorepo, we use:\n\n- Yarn for package management\n- Turborepo and Yarn workspaces for monorepo workflows\n- Changesets for managing release notes and change logs\n\nEvery Polaris project is a little different, but in general we build with JavaScript, TypeScript, and Sass. This documentation site is built using React and Next.js.\n\n## Get set up\n\nTo contribute to Polaris components, icons, or documentation, you’ll need to use your preferred `git` interface to commit and push up your changes. Whether that’s the command line in your favorite terminal, or in GitHub Desktop is entirely up to you. For this guide, we’ll illustrate the steps with terminal commands.\n\n### 1. Download the repo\n\n#### Shopifolk\n\nClone the polaris repo\n\n```bash\ngit clone <https://github.com/Shopify/polaris.git>\n```\n\n#### Open Source Contributors\n\n[Fork](https://github.com/Shopify/polaris/fork) the polaris repo\n\n### 2. Install and build\n\n```bash\nyarn && yarn build\n```\n\n### 3. Create a new branch\n\n```bash\ngit checkout -b new-branch-name\n```\n\n## Open your first PR\n\n### 1. Test your changes\n\nAs you work, commit and test your changes:\n\nIf your changes affect Polaris React components, you’ll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.\n\n```bash\nyarn turbo run dev --filter=@shopify/polaris\n\n# Open https://localhost:3000 to test documentation\n# Open https://localhost:6006 to test Storybook examples and Playground sandboxes\n```\n\nIf you are adding or editing documentation, ensure your content displays as expected on the style guide website:\n\n```bash\nyarn turbo run dev --filter=polaris.shopify.com\n```\n\n### 2. Commit your changes\n\nSave the changes you’ve made to your branch.\n\n```bash\ngit commit -m “descriptive message”\n```\n\nPush up your branch to GitHub\n\n```bash\ngit push origin new-branch-name\n```\n\n### 3. Create a pull request\n\nUse the \"New pull request\" button from the [your branch](https://github.com/Shopify/polaris/branches/yours) list to create a pull request for your changes.\n\nIn your PR’s description, be specific with what you’ve tested as well as what reviewers should focus on when testing your changes, for example:\n\n- Keyboard and screen reader accessibility\n- Interaction state changes\n- UI changes\n- Small screen vs large screen UX\n- Other considerations or feedback you’re seeking regarding how you’ve implemented your changes\n\nAdd a [changeset](https://github.com/Shopify/polaris/blob/main/.changeset/README.md#changesets) if your PR includes any changes that will require a package version bump and release. Otherwise, add the `🤖 Skip Changelog` label to your PR."
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "contributing to polaris",
+      "github",
+      "pull request",
+      "fork",
+      "clone"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -10068,6 +9454,108 @@ By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bri
   },
 
   {
+    id: "LK6NmpiqhaM0dn94puBjN",
+    title: "Tables",
+    excerpt: "",
+    slug: "tables",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 7,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "qkClpXikpeggtw1911uH6",
+    title: "Designing with a system",
+    excerpt: "",
+    slug: "designing-with-a-system",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 7,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "faMCjTQYN1Ik5USGt_VUg",
+        blockType: "Markdown",
+        content: `![Illustration of dozens of chairs of the same kind and a single chair of a diverent kind.](/images/contributing/designing-with-a-system/01.png)
+
+At Shopify, we often say, “Polaris is the floor, not the ceiling.” The design system provides you with building blocks, and it’s up to you to construct them in a way that best meets your user’s needs. The idea behind Polaris not being a ceiling is that you shouldn’t limit your ideas to fit into existing system pieces too early. Zoom out, figure out the best design solution to the problem, and then see if Polaris has all the pieces for you to design that solution. If there’s a gap, then [contribute](https://polaris.shopify.com/contributing) to the system to make it better.
+
+## Zoom out
+
+No matter what problem you’re solving, zooming out allows you to get a better understanding of the problem, and its sphere of influence. A problem rarely exists in isolation, so understanding context and contributing factors is key before getting into solutions. Practically speaking, this means that you should understand the product as a whole, not just the product area you’re working on.
+
+For instance, if you work on Orders, you should have a holistic understanding of the Shopify admin so you can leverage existing patterns and mental models. You can also gain context and empathy for merchants through research.
+
+Merchants don’t care about Shopify’s internal organization. They use the admin as a whole, so we must design with the whole experience in mind.
+
+![Illustration of three tag autocomplete inputs implementing the same pattern, but using different components.](/images/contributing/designing-with-a-system/02.png)
+
+The Deliver team identified a need to consolidate 6 different tag components with varying UX that were doing the same job in different sections of the admin. The redundancy in components was causing a fractured user experience.
+
+## Explore freely
+
+When you understand the product as a whole, you should be well equipped to explore without constraints. That means don’t start from our UI kit, component library, or patterns you see in the product---start with a blank sheet of paper instead. Solve the problem, preferably in more than one way, before you start worrying about consistency.
+
+![Illustration of three different ways to improve the design and experience of the tag autocomplete input.](/images/contributing/designing-with-a-system/03.png)
+
+As the Deliver team was working on consolidating the 6 components, they also identified an opportunity to improve the overall usability for adding tags. The team explored several different ideas and approaches to understand which approach would best solve the problem.
+
+## Calibrate
+
+Once you understand the problem and potential solutions, you can start aligning more closely with the design system.
+
+![Illustration of before and after improving the design of the tag autocomplete.](/images/contributing/designing-with-a-system/04.png)
+
+The team made updates to the Polaris foundational pieces like the tag, icon, and interactions so that they could use those pieces to build a more opinionated component.
+
+If you have initial questions about contribution, reach out in #polaris if you work at Shopify, or the Shopify Partners Slack if you’re an open source contributor. To get help with the strategy for a larger contribution, start a GitHub discussion with the system community.`
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "systems thinking",
+      "contribution guide",
+      "designing with a system"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "NyZhQfyfXoUHqlQYrrBDL",
+    title: "Tokens",
+    excerpt: "",
+    slug: "tokens",
+    parentId: null,
+    order: 7,
+    layout: "blocks",
+    blocks: [],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
     id: "Mem_cB4Qg84DwjRSIc1z3",
     title: "Breakpoints",
     excerpt: "",
@@ -10086,6 +9574,107 @@ By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bri
       type: "tokens",
       tokenGroup: "breakpoints"
     },
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "11MW-27dMsyWP2xcbR_rA",
+    title: "Typography",
+    excerpt: "Typography helps establish hierarchy and communicate important content by creating clear visual patterns.",
+    slug: "typography",
+    parentId: "dfKJpx1bw80se3wpXty8j",
+    order: 7,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "Mk_MrSfHJ2kt0tzq5Hner",
+        blockType: "Markdown",
+        content: "![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)\n\n## Working with typography\n\n![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)\n\n### 1. Make it scannable\n\nKeep related text aligned and closer together to create visual groupings. For most languages, the the majority of text should be left-aligned.\n\n### 2. Adjust text based on device size and distance from the merchant\n\nBecause small screens are often at an arm's distance, we can decrease the size of larger headings and increase the size of important body text.\n\n### 3. Create visual hierarchy\n\nPair font weight, size, and color together to create hierarchy. Use a lighter color or font-size to de-emphasize secondary content.\n\n---\n\n## Essentials for designing with type\n\nWhen designing with type, we can use a combination of font size, weight, color, and space to ensure a strong hierarchy and scannability of a page. By understanding the fundamentals, you’ll be able to better apply type to the UI.\n\n### Using the bounding box\n\nThe bounding box is the vertical height of the text and is defined by the text’s line-height. The value of the line-height is critical to make sure text aligns to the 4px grid. Refer to individual type styles for specified heights.\n\n![An image showing how the bounding box applies to text elements](/images/foundations/design/typography/text-bounding-box@2x.png)\n\n### Using the baseline\n\nThe baseline is the imaginary line that letters rest on. Align text horizontally to the baseline for a simple clean look.\n\n![An image showing the baseline and how it applies to text elements](/images/foundations/design/typography/text-align-baseline@2x.png)\n\nThere are situations where it makes sense to have multiple text sizes on a single line to establish hierarchy of elements. Aligning to the text’s baseline instead of center gives a more harmonious look.\n\n![An example of aligning text elements to the baseline](/images/foundations/design/typography/text-center-baseline@2x.png)\n\n### Line length\n\nLine length describes the width of the content. For longer body text, the recommended line length is between 40 to 60 characters.\n\n![A diagram showing the ideal line length for text](/images/foundations/design/typography/text-line-length@2x.png)\n\n### Color\n\nColor can be used to add contrast and reinforce the hierarchy between text.\n\nFor example, one way to distinguish between a title and a subtitle is to apply `--p-text-color` to the title, and `--p-text-subdued` to the subtitle. Using a lighter color for secondary information provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.\n\n![An image showing how you can use color to add hierarchy within text elements](/images/foundations/design/typography/text-color-different@2x.png)\n\n### Space\n\nWe can help merchants navigate the UI by grouping related information together. One way to do this is to use space to create relationships between elements on a page.\n\nAmbiguous spacing can cause confusion and make it hard to understand the content.\n\n![An image of showing how to use space to create hierachy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)\n\n---\n\n## Font sizes\n\nAll font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px.\n\n| Token             | px value | rem value |\n| ----------------- | -------- | --------- |\n| `p-font-size-700` | 40       | 2.5       |\n| `p-font-size-600` | 32       | 2         |\n| `p-font-size-500` | 28       | 1.75      |\n| `p-font-size-400` | 24       | 1.5       |\n| `p-font-size-300` | 20       | 1.25      |\n| `p-font-size-200` | 16       | 1         |\n| `p-font-size-100` | 14       | 0.875     |\n| `p-font-size-75`  | 12       | 0.75      |\n\n---\n\n## Type styles\n\nPolaris type styles are grouped into two categories: heading and body. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the user interface. They use one scale, so they can be applied to any screen size.\n\n### Body styles\n\nBody styles are used within components and blocks of text.\n\n![An image showing how body styles are applied](/images/foundations/design/typography/text-body-example-01@2x.png)\n\n### Heading styles\n\nHeading styles are used to create various levels of hierarchy on the page. These styles range in size and weight. Using a blend of the two can help distinguish content and guide merchants through the page.\n\n`headingXl` - `heading4xl` styles are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.\n\n![An image showing how heading styles are applied](/images/foundations/design/typography/text-heading-example-01@2x.png)\n\n`headingXs` - `headingLg` styles are most commonly used for card, section, or page titles.\n\n![An image showing how large heading styles are applied](/images/foundations/design/typography/text-heading-example-02@2x.png)\n\n### Responsive styles\n\nLarge heading styles, `headingLg` - `heading4xl`, are responsive and will change size at different breakpoints.\n\nSmall heading styles, `headingXs` - `headingMd`, and body styles will remain the same size regardless of breakpoint unless specified. You can choose to adjust the size of these styles at specific breakpoints when needed. For instance, you may need to increase the size of important body text on smaller screens.\n\n<video width=\"100%\" height=\"auto\" controls autoplay muted loop>\n  <source src=\"/images/foundations/design/typography/text-responsive.mp4\" type=\"video/mp4\">\n</video>\n\n![An image showing how heading styles change based on breakpoint](/images/foundations/design/typography/type-responsive-styles@2x.png)\n\n### Uppercase styles\n\nThe design language no longer supports uppercase typography. We recommend using the [Text component](/components/typography/text) to apply visual hierarchy. Work with your team to determine a type style that works best for your use case.\n\n---\n\n## Font stack\n\nWe use a font stack that adapts to the operating system it runs on, like macOS, iOS, Windows, Android or Linux distributions.\n\n![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/type-fontstack@2x.png)\n\n- Apple devices will display [San Francisco](https://developer.apple.com/fonts/)\n- Android devices will display\n  [Roboto](https://material.io/guidelines/resources/roboto-noto-fonts.html)\n- Devices running Windows will display\n  [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI)\n- Machines running Linux will display the default sans-serif font for any running distribution\n\nThis font-stack makes sure all browsers can load platform-specific fonts:\n\n```\n-apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif\n```\n\nAdd this to your CSS to preload system fonts and set up browsers for legibility:\n\n```css\nhtml {\n  /* Load system fonts */\n  font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI,\n    Roboto, Helvetica Neue, sans-serif;\n\n  /* Make type rendering look crisper */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n\n  /* Deactivate auto-enlargement of small text in Safari */\n  text-size-adjust: 100%;\n\n  /* Enable kerning and optional ligatures */\n  text-rendering: optimizeLegibility;\n}\n\n/**\n * Form elements render using OS defaults,\n * so font-family inheritance must be specifically declared\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit;\n}\n```\n\n---\n\n## Mobile considerations\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n- Refer to the platform’s native font scales when designing experiences for native apps\n- Refer to the small-screen scale when designing experiences for mobile browsers\n- Use the platform-specific component library\n\n</div><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\n- Use the native font scale\n- Keep in mind that all UI elements containing text will be affected\n- Explore additional content height, width, truncation, and line wraps\n\n</div></div>"
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "type styles",
+      "font sizes",
+      "fonts"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "F6xfWIk4FLnsA3q-zq4R2",
+    title: "Lists",
+    excerpt: "",
+    slug: "lists",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 8,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "Od80UZSrhiDsUMZq6BOSO",
+    title: "When to contribute new patterns",
+    excerpt: "There will likely be times where the system and its components fall short of your preferred solution. You have a decision to make — should you stay consistent with what exists, or go with the best possible solution, regardless of consistency?",
+    slug: "when-to-contribute-new-patterns",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 8,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "3hF0En5zy0x7LXpJgbbrA",
+        blockType: "Markdown",
+        content: "To help you figure this out, start by plotting out where each solution fits in this “perfect vs consistent” framework. Rate the solutions according to:\n\n- Consistency with the rest of the product (x axis)\n- How appropriate the solution is for your specific situation (y axis)\n\n![Illustration of a graph with \"Perfect for situation\" on the y-axis and \"Consistent\" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/01.png)\n\nTo practice this framework, let’s imagine some possible scenarios. Consider the more obvious directions:\n\n![Illustration of a graph with \"Perfect for situation\" on the y-axis and \"Consistent\" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/02.png)\n\nWhen deciding between A or B, go with A. It’s the better solution to the problem, assuming all options are inconsistent.\nA or C? Obviously C. Of two equal solutions, choose the one that is more consistent with the rest of the experience.\nA or D? D is consistent, but A is a much better solution to the problem. In that situation, it is likely that you can [contribute the new pattern to the system](https://polaris.shopify.com/contributing/documentation), so others can leverage it in the future.\n\nNow let’s look at the less obvious directions:\n\n![Illustration of a graph with \"Perfect for situation\" on the y-axis and \"Consistent\" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/03.png)\n\nGo with A if it’s the perfect solution and has the potential to scale to the rest of the system\n\nDeciding between A or E is trickier. If A is clearly better than E, but E is much more consistent, go with A. This is because A has potential to become a system pattern and eventually get closer to E, and maybe even surpass it, in terms of consistency.\n\n![Illustration of a graph with \"Perfect for situation\" on the y-axis and \"Consistent\" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/04.png)\n\nGo with E when consistency trumps perfection\n\nGo with E if A seems like a snowflake solution. Building a snowflake solution will make it difficult for other teams to adopt it. Breaking consistency is also costly because new, custom solutions add complexity to the experience and are hard to learn, so its benefits should significantly outweigh the cost of inconsistency.\n\nWhen both are appropriate and there’s not a massive difference in value, consistency trumps perfection.\n\nThe key here is to zoom out. When we’re [designing for scale](https://polaris.shopify.com/contributing/designing-with-a-system), we need to think broader and look at our specific problem area as a small part of a larger system. So spend some time figuring out if your solution is unique, or if it has potential to solve other problems. This is why it’s important to have good awareness of the whole experience before you start, and why it’s important to contribute back to the system if you land on a solution that would benefit others.\n\nFor initial questions about contribution, reach out in [#polaris](https://shopify.slack.com/archives/C4Y8N30KD) if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you’re an open source contributor. To get help with the strategy for a larger contribution, start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/new) with the system community."
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "when to contribute to polaris",
+      "when to evolve the system",
+      "when to contribute new patterns",
+      "contribution guide"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "O83BdyzISt1Mgz0IrGHtP",
+    title: "Icons",
+    excerpt: "",
+    slug: "icons",
+    parentId: null,
+    order: 8,
+    layout: "blocks",
+    blocks: [],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
     hasSeparatorInNav: false,
     thumbnailImageId: null
   },
@@ -10111,7 +9700,457 @@ By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bri
     },
     hasSeparatorInNav: false,
     thumbnailImageId: null
+  },
+
+  {
+    id: "7KPu0qi8WphcNyDh0rKf4",
+    title: "Data visualizations",
+    excerpt: "Visualizations surface patterns in data, and provide immediate answers to a single, specific question.",
+    slug: "data-visualizations",
+    parentId: "dfKJpx1bw80se3wpXty8j",
+    order: 8,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "i9XAgqfV9eYWeFS_PnYRL",
+        blockType: "Markdown",
+        content: "This section outlines data visualization practices at Shopify and how to leverage them.\n\n---\n\n## Data visualizations at Shopify\n\nThe data visualization process always begins with a set of data, a question, and analysis of the data to find the answer. Each visualization should focus on answering a single question about the dataset. For example, “What are my sales over time?”\n\nBy maintaining consistent styles and formats for our data visualizations, we ensure that data is presented in a truthful and accurate manner to maintain integrity with merchants.\n\n---\n\n## Guidelines\n\nData visualization should be approached by:\n\n### Solving a problem\n\nHave a clear question that needs to be answered. If multiple answers to multiple questions are illustrated in a visualization, it will become over complicated and hard to understand.\n\n### Testing with real data\n\nTesting with real data will reveal the effectiveness of the visualization. Also test when there are a few data points (one or two) or many data points (100 or more).\n\n### Scaling by number of datapoints\n\nThink about how the visualization will scale with more or fewer data points. Look out for cases where data is sparse (mostly zero) or spiky (some values are much\nlarger than others).\n\n---\n\n## Five core traits\n\nAn effective data visualization strikes the right balance between the five core traits: accuracy, intuitiveness, engagement, focus, and data granularity. It’s important to be intentional about which of these you focus on, and which are less important, in order to answer your specific question in the best way for your target audience. Understanding these traits help you choose between the many ways to visualize data by giving you a language for evaluating a visualization's effectiveness.\n\n### Accuracy\n\nAccuracy is about how faithfully the visualization matches the original data set. How much accuracy is needed to send your message across? A high level of accuracy may not always be needed to convey a trend or a pattern.\n\n### Intuitiveness\n\nIntuitiveness is about the ease of interpreting the visualization. Will merchants immediately understand what’s being represented, or will they need instructions? More intuitive is usually better, but sometimes it comes at the cost of flexibility.\n\n### Engagement\n\nEngagement is about how much attention the visualization attracts at a glance. Is it the star of the show, or does it sit in the background? More engagement is not always better—sometimes the best visualization is one that plays a supporting role.\n\n### Focus\n\nFocus is about how merchants’ attention is directed. Is one pattern or trend surfaced more prominently than others, or are there several trends that are given equal weight? Highly focused visualizations decrease cognitive overload, but restrict the breadth of the message you are able to convey.\n\n### Data Granularity\n\nData granularity is about the level of detail of the data set presented in the visualization. More granular means more data points, and possibly more cognitive processing, but less granular is less detailed. The right level of data granularity depends entirely on the specific question you’re trying to answer and the audience you’re communicating to.\n\n---\n\n## Axis and labelling conventions\n\nAll standard charts that show quantitative data have 2 axes that should be labeled for clarity.\n\n- Labelling should be outside and separate from the data area. This ensures the user understands the range of the data without taking focus away from the data.\n- Ensure that all labels are clear and accurate in what they represent. Use simple and short language.\n\n---\n\n## Granular guidelines\n\n### Axis lines\n\nAxis lines should be used as a guideline to show quantitative data, yet be unobtrusive.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nEnsure axis lines only appear where the data appears.\n\n![A light grey chart with axis lines](/images/foundations/design/data-visualizations/do/ensure-axis-lines-only-appear-where-data-appears@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse bleeding axis lines to the edge of the screen.\n\n![A chart with axis lines filling the screen](/images/foundations/design/data-visualizations/dont/use-bleeding-axis-lines-to-the-edge-of-the-screen@2x.png)\n\n</div></div>\n\n### Skipping labels\n\nLabelling the tick marks on both the y-axis and x-axis helps the visualization become more clear in what it represents.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nSkip labels in regular intervals.\n\n![A bar chart plotting time using 12am, 8am, 12pm, and 8pm](/images/foundations/design/data-visualizations/do/skip-labels-in-regular-intervals@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nTry to squeeze all labels together.\n\n![A chart plotting time with too many axis labels](/images/foundations/design/data-visualizations/dont/squeeze-all-labels-together@2x.png)\n\n</div></div>\n\n### X-axis Abbreviations\n\nShopify uses standard abbreviations for months and weekdays in order to reduce clutter in visualizations.\n\n- Use 12 hour format for time, with lowercase letters (12am, 6pm)\n- Use the first three letters for days of the week (Sun, Mon)\n- Use the first three letters for months (Feb, Mar)\n- For specific days, use the format ‘day + month’ (10 Apr, 11 Apr)\n- For specific months, use the format month + year (Apr 2011, May 2017)\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse standard abbreviations for labeling.\n\n![A chart showing the days of the week abbreviated to Mon, Tues, and so on](/images/foundations/design/data-visualizations/do/use-standard-abbreviations-for-labeling2@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nSlant labels to make them fit.\n\n![A chart with labels slanted at a 45 degree angle](/images/foundations/design/data-visualizations/dont/slant-labels-to-make-them-fit2@2x.png)\n\n</div></div>\n\n### Y-Axis Abbreviations\n\nShopify uses standard monetary abbreviations for the y-axis to reduce clutter.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nAbbreviate using ‘k’ for thousand, ‘b’ for billion.\n\n![A chart with a y-axis representing a thousand dollars as “$1.0k”](/images/foundations/design/data-visualizations/do/abbreviate-using-k-for-thousand-b-for-billion-and-include-the-unit@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nGo over 3 numeric characters, 1 decimal, or 1 letter.\n\n![A chart with a y-axis that represents the value of a thousand and one dollars as “$1.001k”](/images/foundations/design/data-visualizations/dont/go-over-3-numeric-characters-1-decimal-and-1-single-letter@2x.png)\n\n</div></div>\n\n### X-axis Labelling conventions\n\nLabels should be clear and concise.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nCenter all labels on the bar and the tick mark.\n\n![A bar chart with the abbreviated days of the week centered on the ticks which are centered on the bars that they represent](/images/foundations/design/data-visualizations/do/center-all-labels-with-the-bar-and-tick2@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse decimals on the x-axis labels.\n\n![A bar chart plotting numbers with decimals on the x-axis](/images/foundations/design/data-visualizations/dont/use-decimals-on-x-axis-labels2@2x.png)\n\n</div></div>\n\n### Y-axis Labelling conventions\n\nLabels should be clear and concise.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nLeft align labels and keep them above y-axis lines.\n\n![A chart with a dollar value on the y-axis that’s aligned to the left and raised slightly from the grey axis](/images/foundations/design/data-visualizations/do/left-align-labels-and-keep-them-slightly-above-the-y-axis-lines@2x.png)\n\n</div></div>\n\n---\n\n## Color palettes\n\nColor in data visualization has a very specific meaning. The data visualization color palette provides specific colors that can be used alone or in a group, depending on the intent.\n\n### Single data series\n\nUse when there is a single data series. For example, a bar chart, column chart, or a single line chart.\n\n![A line graph with y-axis and x-axis labels and a single purple line plotting data](/images/foundations/design/data-visualizations/single-data-series@2x.png)\n\n![A line chart with 2 different colors comparing current values to a past value](/images/foundations/design/data-visualizations/single-comparison-to-past@2x.png)\n\n### Single comparison to past\n\nThis is used when the data set is being compared to to its past values. For example, total sales by month, this year, compared to last year. In this case, the current value will be purple and the past value will be grey.\n\n### Multiseries data\n\nUsed when there are multiple data sets to compare. For example, a multiseries line chart. Go down the list as the number of datasets increase.\n\n![A line chart with multiple data points represented by different colors](/images/foundations/design/data-visualizations/multiseries-data@2x.png)\n\n![One example of an upward trend in percentage sales represented in gren and another example of a downward trend in](/images/foundations/design/data-visualizations/biased-charts@2x.png)\n\n### Biased\n\nUsed when certain data need is displayed in a negative or positive light. For example, showing positive or negative change relative to a reference value.\n\n---\n\n## Horizontal bar charts\n\nBar charts are used for comparing discrete categories. Use a bar chart when there is a constraint to the number of data points that can appear on the visualization, otherwise it becomes hard to scale.\n\n### Best used for\n\nShowing discrete categories of data, like {products} vs {sales}.\n\n### Don’t use\n\nWhen the number of data points can exceed 6. In this case, use a table.\n\n### Bar chart labels\n\nLabel each bar with what it’s displaying, as well as the value. For more best practices, visit axis and label conventions.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nInclude a label on each bar. If the bar is too small, include it outside of the bar.\n\n![A horizontal bar chart with 2 dollar values within the bar and the lowest value outside of the bar to the right](/images/foundations/design/data-visualizations/do/include-a-label-on-each-bar-if-the-bar-is-too-small-include-it-outside-of-the-bar@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nInclude a label on top of each bar to display what data it’s showing.\n\n![A horizontal bar chart displaying the country represented by each bar](/images/foundations/design/data-visualizations/do/include-a-label-on-top-of-each-bar-to-display-what-data-it-is-showing@2x.png)\n\n</div></div>\n\n### Color\n\nUse one color for all bars.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nGive negative bars 60% opacity.\n\n![A horizontal bar chart with solid purple positive bars and purple negative bars set to 60% opacity](/images/foundations/design/data-visualizations/do/give-negative-bars-60-opacity@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse multiple colors for the bars.\n\n![A horizontal bar chart using a different color for each bar](/images/foundations/design/data-visualizations/dont/use-multiple-colors-for-the-bars@2x.png)\n\n</div></div>\n\n### Bar positioning\n\nMake sure the bars are proportional in width, roughly twice the size of the space between the bars.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nMake the width of each bar about twice as wide as the space between them.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nMake the bars too skinny.\n\n</div></div>\n\n---\n\n## Vertical column charts\n\nColumn charts are used to show change over time, trends, and individual data points. Use column charts for when the number of data points is fewer than 30, or else use a line chart.\n\n### Best used for\n\n- Showing continuous data like sales per hour, or orders per month\n- Showing smaller granularities of time (hourly, daily, weekly, and monthly)\n\n### Don’t use\n\nWhen the number of data points can exceed 31. In this case, use a [line chart](/design/data-visualizations#line-charts).\n\n### Color\n\nAll bars should be the same color.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse one color for all bars.\n\n![A bar chart showing a data trend with the same bar color](/images/foundations/design/data-visualizations/do/use-one-color-for-all-bars@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse multiple colors for the bars.\n\n![A bar chart showing the same data point with different colors](/images/foundations/design/data-visualizations/dont/use-multiple-colors-for-the-bars2@2x.png)\n\n</div></div>\n\n### Bar positioning\n\nMake sure the bars are proportional in width, roughly twice the size of the space between the bars.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nMake the width of each bar about twice as wide as the space between them.\n\n![A bar chart properly formatted with spaces half the size of each bar](/images/foundations/design/data-visualizations/do/make-the-width-of-each-bar-about-twice-the-space-between-them@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nMake the bars too skinny.\n\n![A bar chart with spaces 4 times larger than the bar itself](/images/foundations/design/data-visualizations/dont/make-the-bars-too-skinny@2x.png)\n\n</div></div>\n\n### Interactivity\n\nInclude some interactivity on the bars upon hover since users will be looking at individual data points. The top line of the tooltip should follow x-axis abbreviation and labelling guidelines, while the bottom line tooltip should follow y-axis abbreviation and labelling guidelines.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nInclude tooltips for x-axis and y-axis values.\n\n![A bar chart with a tool tip on a bar displaying the date axis point and the dollar value axis point](/images/foundations/design/data-visualizations/do/include-tooltips-with-both-the-x-axis-value-and-y-axis-value@2x.png)\n\n</div></div>\n\n---\n\n## Line charts\n\nA line chart is created by connecting a series of data points together with a line. Line charts are good to show change over time, comparisons, and trends. Use line charts when the number of data points is more than 30.\n\n### Best used for\n\n- Showing continuous data like sales or orders over time\n- Showing larger granularities of time (yearly, or quarterly)\n- Spotting overall trends and shapes of data\n\n### Axis and labelling\n\nSet up the chart area using the [axis and labelling guidelines](/design/data-visualizations#axis-and-labelling-conventions)\n\n---\n\n## Multiline charts\n\nLine graphs work well when multiple datasets need to be compared. Use the [color palette](/design/colors#color-palette) to select colors.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse contrasting color and include a legend.\n\n![A line chart with 2 lines using purple and teal to represent the years 2015 and 2016](/images/foundations/design/data-visualizations/do/use-contrasting-colors-and-include-a-legend@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nUse more than 4 lines.\n\n![A line chart with 4 lines of different colors](/images/foundations/design/data-visualizations/dont/use-more-than-4-lines-try-to-stick-to-2-lines@2x.png)\n\n</div></div>\n\n---\n\n## Display metrics\n\nA display metric is a quantifiable measure that is used to track and display the status of a specific process. Examples include a sum, an average, or a movement in a positive or negative direction.\n\n### Best used for\n\nShowing a single value with a base unit.\n\n### Units\n\nMetrics should be paired with their base unit in close proximity to the number. Use concise and clear language for metrics.\n\n### Scope\n\nMetrics should be scoped to indicate the timeline of the data.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nInclude a dimension of time to scope the value.\n\n![Diagram showing “sales this week” with a numeric dollar value](/images/foundations/design/data-visualizations/do/include-a-dimension-of-time-to-scope-the-value@2x.png)\n\n</div></div>\n\n### Movement\n\nIf needed, consider including a comparison indicator, such as comparison to the previous time or average.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse green for positive movement.\n\n![Diagram of green being used to signify an upward trend in data](/images/foundations/design/data-visualizations/do/use-green-to-signify-positive-movement@2x.png)\n\nUse red for negative movement.\n\n![Diagram of red being used to signify a downward trend in data](/images/foundations/design/data-visualizations/do/use-red-to-signify-negative-movement@2x.png)\n\n</div></div>\n\n---\n\n## Tables\n\nA table is a good way to showcase a large amount of information which has a variety of columns and data to show for each entity. A table should be used when multiple metrics and categories need to be presented together, and accurate lookup of the data values is more important that showing patterns in the data.\n\n### Best used for\n\n- Showing large amounts of discrete data with many variables\n- Showing values across multiple categories and measures\n- Allowing for filtering and ordering when comparison is not a priority\n\n### Alignment\n\nConsistent vertical alignment is essential for fast visual comparison between values in a table.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nLeft align non-numeric values and right align numeric values.\n\n![A table showing product inventory with product names aligned to the left and numbers aligned to the right](/images/foundations/design/data-visualizations/do/left-align-non-numeric-values-and-right-align-numeric-values@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nCenter column headers.\n\n![A table showing product inventory data with headers, numbers, and titles centered](/images/foundations/design/data-visualizations/dont/center-align-columns@2x.png)\n\n</div></div>\n\n### Separation\n\nIn order to reduce clutter and non-data ink, we prefer to subtly separate each row.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse light lines to indicate separation between rows.\n\n![A table with three rows separated by light grey lines](/images/foundations/design/data-visualizations/do/separate-rows-with-dividing-lines@2x.png)\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nHighlight every other row to indicate separation.\n\n![A table with a white background and grey lines using a darker grey every other row](/images/foundations/design/data-visualizations/dont/separate-rows-by-highlighting-every-other-row@2x.png)\n\n</div></div>\n\n### Totals\n\nTotals allow merchants to understand the data holistically and should be easy to find.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nPlace totals as the first row beneath the headers, and bold the text.\n\n![A diagram showing individual product sales underneath the total sales in bold type](/images/foundations/design/data-visualizations/do/place-bold-totals-in-the-first-row@2x.png)\n\n</div></div>\n\n---\n\n## Accessibility\n\nAn important part of designing clear visualizations is making data accessible to everyone.\n\n### Provide options\n\nMerchants with vision issues might have trouble understanding visual presentations of data, even with assistive software.\n\nMerchants with dexterity or motor issues might have trouble using interactive visualizations that depend on fine motor control.\n\nOthers might simply have trouble understanding data presented in a chart or graph.\n\nTo support the needs of different merchants, always provide multiple formats for data visualizations.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nLet merchants access their data in multiple formats. For charts and graphs, it’s often helpful to offer the same content in a data table that’s either on the same page or on a related page that’s easy to discover.\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nProvide data visualizations in only one format.\n\n</div></div>\n\n### Use of color\n\nColor is critical for visualization, but can cause issues for merchants with color blindness and low vision. Color should be used in a way that supports the interpretation of visual information for all merchants, including those with visual issues.\n\n<div class=\"dodont\"><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nEnsure that text, line, bar, and other colors have sufficient contrast against their background.\n\n</div><div class=\"dodont-part\" data-type=\"do\">\n\n#### Do\n\nUse colors that can be distinguished from each other to support merchants with different forms of [color blindness](https://webaim.org/articles/visual/colorblind).\n\n</div><div class=\"dodont-part\" data-type=\"dont\">\n\n#### Don’t\n\nRequire that merchants are able to see color to understand the information provided in the chart or graph.\n\n</div></div>\n\nTo learn more, see guidance about [accessible colors in Polaris](https://polaris.shopify.com/design/colors#colors-follow-accessibility-guidelines).\n\n### Scalable vector graphics (SVGs)\n\n`<svg>` and `<canvas>` elements are excellent tools for creating engaging, dynamic visualizations in HTML. However, they are frequently difficult to access using assistive technologies. Assistive technology users may not be able to access content in the correct order, find text equivalents for visual information, or access interactions with the keyboard.\n\nIn general, hide `<svg>` elements from screen readers using `aria-hidden=\"true\"` and provide a separate text equivalent for the graph or chart. Although different visualizations may benefit from different treatments, try to prioritize creating a consistent experience."
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "data viz"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "05y1h7EKgtlr6S0tFXlYk",
+    title: "Navigation",
+    excerpt: "",
+    slug: "navigation",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 9,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "cAlaGlo7Wj4TQUm-lysdT",
+    title: "Contributing to Polaris",
+    excerpt: "Polaris exists to make a product worked on by many, feel like it was created by one person. The design system needs to stay in sync with new solutions so merchants always have a seamless experience. This is why Polaris thrives on contribution and community support.",
+    slug: "contributing",
+    parentId: null,
+    order: 9,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "A1KUCP5ysZtujWNeUz2l-",
+        blockType: "Markdown",
+        content: `Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
+
+## Who can contribute
+
+Contribution to Polaris looks different depending on whether you work at Shopify. Shopify employees can contribute to any Polaris project, including the Figma UI Kit. Open source contributions are welcome for [Polaris React components](/contributing/components) and their [documentation](/contributing/documentation).
+
+## When to contribute
+
+Contributions can seem intimidating, but they don’t have to be! Here are some common scenarios for deciding when to contribute:
+
+| Use the system                                                               | Extend the system                                                                       | Build a custom solution                                                                         |     |     |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --- | --- |
+| _When available resources can solve a design problem_                        | _When a change or addition can solve a shared problem_                                  | _When a unique problem requires a unique solution_                                              |     |     |
+| Read [ Designing with a system ](/contributing/designing-with-a-system)      | Read [ When to contribute new patterns ](/contributing/when-to-contribute-new-patterns) | Share ideas in [ #admin-ux ](https://shopify.slack.com/archives/C039ZAKQ5AA)(Shopify employees) |     |     |
+| [ Review App Design Guidelines ](https://shopify.dev/apps/design-guidelines) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | Build with Polaris [ tokens ](https://polaris.shopify.com/tokens/colors)                        |     |     |
+
+## What makes a good contribution
+
+By sticking to a few principles, we can ensure that all contributions made to Polaris are of high quality, meaningful work for Shopify teams and contributors, and valuable to merchants.
+
+| Preparing contributions                                                                                                                                                                                                                                                                                            | Submitting contributions                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **🧠 Keep the merchant in mind** <br>Polaris is for building merchant admin experiences. If the value to merchants isn’t clear, reconsider the contribution.                                                                                                                                                       | **💡 Provide solutions** <br>Contributions should both identify a problem and provide a solution. If you found a bug, have a question, or want to open a discussion, you can submit those via [GitHub](https://github.com/Shopify/polaris/discussions/6750).                                                                                                                                                                                             |
+| **🤝 Collaborate with other disciplines** <br>A good contribution addresses the needs and perspectives of design, content, and code. Consult a diverse group of disciplines when drafting your contribution.                                                                                                       | **🪟 Work in the open** <br>Public discussion is crucial for contribution visibility and feedback. Submit contributions using [GitHub](https://github.com/Shopify/polaris/discussions/6750). Shopify employees can request assistance via the #polaris Slack channel.                                                                                                                                                                                    |
+| **📅 Include contribution in project cycles** <br>Contributing close to a project deadline creates blockers. Include contribution in project retros, or involve Polaris early in a project cycle. Read [Working with Polaris](/contributing/working-with-the-polaris-team).                                        | **🔍 Check your work** <br>Double check your contribution to make sure it meets standards for things like accessibility and performance. Following the guidance for each contribution type is also a great way to meet quality standards.                                                                                                                                                                                                                |
+| **🏗️ Consider the impact on the system** <br>Contributions to Polaris should apply to multiple admin surfaces. They should not be unique solutions with only one use case. Read [Designing with a system](/contributing/designing-with-a-system), and reach out to the Polaris team for system advice or guidance. | **🔬 Be clear and detailed** <br>Submit a short summary of your contribution, along with relevant links, artifacts, and context. State your expectations, understanding that we must prioritize certain business and system needs. If you can ship in collaboration with another product team, tag them and let the Polaris team know. Capture contribution details with [GitHub issue templates](https://github.com/Shopify/polaris/issues/new/choose). |
+
+## Where to get help
+
+If you get stuck or want help strategizing a larger contribution, bring it up in [GitHub discussions](https://github.com/Shopify/polaris/discussions/new). The Polaris team and other members of the systems community will help you out. If you see a discussion where you could guide another member of the community, we welcome you to join the conversation.`
+      }
+    ],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "how to contribute to polaris",
+      "contribution"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: true,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "gu8vDX5BIP8zY7eUcMs-R",
+    title: "Working with the Polaris team",
+    excerpt: "When you contribute to Polaris, you help the Shopify community create better experiences for merchants, faster. Contribution takes thoughtful planning.",
+    slug: "working-with-the-polaris-team",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 9,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "lk3KFteIF1Dceg1YrI-BS",
+        blockType: "Markdown",
+        content: `Through supporting teams, we’ve learned what works well, and not so well. We’ve outlined these things so that you can create a successful plan. This guide goes into detail, but here are the highlights.
+
+## Tl;dr
+
+Think about your system needs in the prototype phase of your project so your team can plan for [quality](/contributing#what-makes-a-good-contribution) systems [contributions](/contributing) ahead of the build phase. The Polaris team is here to help you with planning, but we can’t be pulled in last minute to unblock.
+
+The best way to get help is through our support channels:
+
+- [GitHub discussions](https://github.com/Shopify/polaris/discussions/6750) to talk to the community about anything from patterns, to potential contributions
+- #polaris in Slack if you work at Shopify and have a general inquiry
+
+As you’re building you may need custom styles. In those cases, always use Polaris [tokens](/tokens).
+
+## Product team tips
+
+With some early planning and intentional systems thinking, the build stage will go a lot smoother.
+
+### Plan for systems changes ahead of time
+
+The Polaris team should never be pulled in to unblock a team from shipping something quickly—we’re here to support and guide teams when they’re planning their strategic system changes ahead of time. Teams at Shopify should start working on their system needs early in the design and build process and are expected to make [quality system contributions](/contributing#what-makes-a-good-contribution) ahead of their ship dates.
+
+### Aim to systematize your custom solutions
+
+Things don’t always go according to plan. If a team is still learning how to plan for system changes and finds themselves under pressure to quickly ship something custom, they’re responsible for owning any custom components they ship. The components should use [Polaris tokens](https://polaris.shopify.com/tokens/colors) and the team should make an effort to systematize the custom solution down the road. When product-wide changes happen in the future, the product team will be responsible for updating their custom components.
+
+## Collaborations for system contributions
+
+When an opportunity for a collaboration related to a system contribution comes up, we’ll add it to our [backlog](https://github.com/orgs/Shopify/projects/2250/views/5) for triaging. Collaboration opportunities can be worked on through cross-product team pairings and don’t always have to be with Polaris.
+
+### Triaging considerations
+
+During our triaging process, teams can expect that the Polaris team will help:
+
+- figure out how a component can be composed and/or how a pattern can be systematized
+- see if and where the contribution should be added to the system
+- identify system dependencies for making the contribution
+- identify other teams that could join the collaboration (and determine if the Polaris team needs to be involved)
+
+The Polaris team will prioritize collaborating on contributions that:
+
+- have the highest number of community upvotes in Github discussions
+- help other teams solve similar problems so that we make the best possible impact on the merchant experience, like through pattern documentation
+- align with ongoing system improvement projects, for example, a team wants to make layout improvements while the Polaris team improves the layout foundations
+- break down large and complex composite components into primitive, foundational components
+- improve foundational components
+
+### Polaris support during collaborations
+
+If the Polaris team is the main collaborator on a system contribution, the Polaris team will:
+
+- pair with the contributor(s) asynchronously, or when it’s more efficient, through ad hoc video calls
+- direct internal contributors to the #admin-ux community if extra feedback is needed on the solution being explored
+- offer systems coaching to the subject matter experts with the most context on the merchant problem that’s being solved
+- help the contributor with any systems tooling related to shipping the solution
+
+## Polaris on-call support
+
+The Polaris team rotation schedule assigns one UXer and one developer to cover system inquiries and collaboration requests. Coverage is during their distributed working hours, Monday to Friday. The pair on rotation will:
+
+- direct internal #polaris Slack questions to a resolution
+- direct large requests for collaboration to @polaris-enablement for triaging
+- review, clean up, or close GitHub issues
+- provide PR reviews where necessary
+- participate in GitHub discussions where necessary
+
+If an issue doesn’t get resolved by the end of their work day, it’s passed along to the next scheduled support pair.
+
+If a Polaris team member is messaged directly, they’ll forward the inquiry/request to the internal #polaris channel for the pair on call to respond.
+
+Admin pattern questions should be posted in the #admin-ux channel and if a question relates to #polaris, it should be forwarded to the #polaris channel.
+
+### Response time goals
+
+These response time goals are for GitHub and our internal #polaris Slack channel.
+
+| Request type                                                                                                                                 | Initial response time                                                                         | Time to resolve                                                                                                                                                                                 |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Production grade bug in shopify/web and shopify/polaris                                                                                      | @here in the internal #polaris channel and the support person on call will respond.           | As soon as possible                                                                                                                                                                             |
+| **System inquiry**<br/> A response would help move things along but the problem can continue to be solved without the response               | 24 hours                                                                                      | 48 hours                                                                                                                                                                                        |
+| **Collaboration request**<br/> An opportunity has been identified for an individual or team to collaborate with Polaris to evolve the system | 72 hours: [Github discussion](https://github.com/Shopify/polaris/discussions/6750) is started | 1 week: Discussions identified for a larger Polaris team collaboration have an issue added to the [Polaris backlog](https://github.com/orgs/Shopify/projects/2250/views/5) for project triaging |
+
+### Third party developer response times
+
+Polaris is an open source project used by Shopify employees, and Shopify Partners building apps. We value all feedback, feature requests, issues, and pull requests from our open source community. However, we aren’t able to accommodate every request and take longer than we’d like to respond to everyone. We review every request and prioritize them against our product roadmap based on user needs. Below is the process for every open source contribution:
+
+| Contribution type                                                                | Team response                                                                                                                                                                                                                                | How you can help                                                                                                                                                                                                                                                                                       |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Bug report                                                                       | Prioritized against our backlog and roadmap. If there’s a clear or urgent need for a fix we’ll add it to our backlog.                                                                                                                        | Leave comments with additional information on how to reproduce the bug and how it’s affecting your use case.<br/><br/> If you’re interested in a fix, [upvote](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) the bug report to let the team know. |
+| Feature request                                                                  | For now, feature requests will be closed and reviewed against our existing backlog and roadmap. We’ll evaluate interest in the request and prioritize it for development if there is enough interest and alignment with our product roadmap. | If you’re interested in the feature please upvote the request in [GitHub](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) to let the team know.                                                                                           |
+| Pull request                                                                     | Will review [PRs](https://github.com/Shopify/polaris/pulls) for system alignment, user need, and contribution quality.                                                                                                                       | Leave comments for code review.<br/><br/> Upvote the request in [GitHub](https://github.com/Shopify/polaris/discussions/6750) to express interest and let the team know you want this feature.                                                                                                         |
+| Start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/6750) | Review discussions and close or respond as needed                                                                                                                                                                                            | Participate in a discussion to express interest or share your opinion.                                                                                                                                                                                                                                 |`
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "service level agreement",
+      "SLA",
+      "contributing to polaris",
+      "open source",
+      "contribution guide"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "HIDB-4DqRqugWieUHzbLp",
+    title: "Overlays",
+    excerpt: "",
+    slug: "overlays",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 10,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "nYFYo1G--dxorxmIElhr9",
+    title: "Tools",
+    excerpt: "Extensions, plugins, and other tools to help build with Polaris.",
+    slug: "tools",
+    parentId: null,
+    order: 10,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "M7T1stz5iP1IsW5a8r5F_",
+    title: "Utilities",
+    excerpt: "",
+    slug: "utilities",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 11,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "0bdzc9SC87fzxIKKnK9Lq",
+    title: "Deprecated",
+    excerpt: "Deprecated components will be removed in future major versions of Polaris. These components could be deprecated for a [number of reasons](https://polaris.shopify.com/getting-started/components-lifecycle#requirements-for-deprecation) and should be avoided. These components will show warnings in the component file and provide details for alternative usage. For more information, check out the [component lifecycles](https://polaris.shopify.com/getting-started/components-lifecycle#deprecated).",
+    slug: "deprecated",
+    parentId: "CygsFGc5pjU2NfaioNN6n",
+    order: 12,
+    layout: "listing",
+    blocks: [],
+    allowChildren: true,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
+  },
+
+  {
+    id: "dOgB2pDiy4s3veHEocP7c",
+    title: "New page",
+    slug: "dOgB2pDiy4s3veHEocP7c",
+    parentId: null,
+    excerpt: "",
+    order: 12,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "LkYdYhhGZs6QZZyK2mH4F",
+        blockType: "Code",
+        snippets: [
+          {
+            id: "t9BkHxDHdnI8cSHL__TBL",
+            label: "New tab",
+            code: "",
+            language: "typescript"
+          }
+        ]
+      },
+      {
+        id: "a88-DErgUuzgq1vPL4M0q",
+        blockType: "ProgressiveDisclosure",
+        title: "",
+        blocks: []
+      }
+    ],
+    keywords: [],
+    childPageMetaType: null,
+    pageMeta: null,
+    allowChildren: false,
+    hideInNav: false,
+    noIndex: false,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null,
+    hasNewBadge: false
+  },
+
+  {
+    id: "87qAKx7bI_hF_7y7zdQIz",
+    title: "Contributing to the website",
+    excerpt: "Info about how the website works",
+    slug: "website",
+    parentId: "cAlaGlo7Wj4TQUm-lysdT",
+    order: 99,
+    layout: "blocks",
+    blocks: [
+      {
+        id: "Zn8jtk2Lzz7vxmLcNcpzR",
+        blockType: "Markdown",
+        content: `## The content structure
+
+### The Page object
+
+Each page is represented by a Typescript object that contains all the information about the page.`
+      },
+      {
+        id: "Fs0dfl2APIGisWpSOaMbH",
+        blockType: "Code",
+        code: {
+          javascript: {
+            title: "",
+            code: "{\n    id: \"SIC6mp1SHvcUtS98_DTHb\",\n    title: \"Home\",\n    excerpt: \"\",\n    slug: \"\",\n    parentId: null,\n    order: 0,\n    layout: \"blocks\",\n    blocks: [],\n    allowChildren: false,\n    hideInNav: true,\n    noIndex: false,\n    keywords: [],\n    childPageMetaType: null,\n    pageMeta: null,\n    hasSeparatorInNav: false,\n    thumbnailImageId: null\n}"
+          }
+        }
+      },
+      {
+        id: "3f67h7MDYwvoRHoYTAZfU",
+        blockType: "Markdown",
+        content: `### Blocks
+
+Every page can contain blocks. There are many types of blocks to choose from:
+
+- Markdown block
+- Image block
+- Youtube embed block
+- Sandbox embed block
+
+And more. A block is defined in Typescript using a simple object. Every object has an \`id\` and a \`blockType\`:`
+      },
+      {
+        id: "YW9IeYADI0Iiy75NBWOoS",
+        blockType: "Code",
+        code: {
+          javascript: {
+            title: "",
+            code: "{\n    id: \"_Oz0-L-OBwpOSrXPMFqb0\",\n    blockType: \"Markdown\",\n    ...\n}"
+          }
+        }
+      },
+      {
+        id: "8IZchJG6-k7F27BvaT2ay",
+        blockType: "Markdown",
+        content: `You can add more fields to each block. The available fields depend on which \`blockType\` you use. For instance, the Youtube block accepts a URL field:`
+      },
+      {
+        id: "vwLt4tc_P4NmnK_JnSFz6",
+        blockType: "Code",
+        code: {
+          javascript: {
+            title: "",
+            code: "{\n    id: \"_Oz0-L-OBwpOSrXPMFqb0\",\n    blockType: 'YoutubeVideo';\n    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';\n}"
+          }
+        }
+      },
+      {
+        id: "bBmDBbwLADywIhJwDDpcE",
+        blockType: "Markdown",
+        content: `Blocks are added to the \`Page\` on the \`blocks\` property. The property is an array that takes \`Block\` objects:`
+      },
+      {
+        id: "wPIrww6xoGi0aPUBjOPeS",
+        blockType: "Code",
+        code: {
+          javascript: {
+            title: "",
+            code: "{\n    id: \"SIC6mp1SHvcUtS98_DTHb\",\n    ...\n    blocks: [\n        {\n            blockType: 'YoutubeVideo';\n            youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';\n        }\n        ...\n    ],\n}"
+          }
+        }
+      },
+      {
+        id: "AnGTB6rJHT-R5MtLGtDYC",
+        blockType: "DoDont",
+        doMarkdown: "- Use the existing blocks to create new pages. We have enough primitives to communicate any type of content. Use the existing primitives instead of creating new ones.\n- ",
+        dontMarkdown: ""
+      }
+    ],
+    allowChildren: false,
+    hideInNav: false,
+    hasNewBadge: false,
+    noIndex: false,
+    keywords: [
+      "website",
+      "site"
+    ],
+    childPageMetaType: null,
+    pageMeta: null,
+    hasSeparatorInNav: false,
+    thumbnailImageId: null
   }
 ];
-const images: Content['images'] = [];
-export const content: Content = { pages, images };
+const images: State['images'] = [];
+export const content: State = { pages, images };

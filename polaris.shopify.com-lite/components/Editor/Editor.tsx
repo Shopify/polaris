@@ -3,10 +3,9 @@
 import {
   createContext,
   Dispatch,
-  SetStateAction,
-  useCallback,
   useContext,
   useEffect,
+  useReducer,
   useRef,
   useState,
 } from 'react';
@@ -22,14 +21,11 @@ import {
   SandboxEmbedBlock,
   CodeBlock,
   TextImageBlock,
-  Content,
   blockTypes,
   ProgressiveDisclosureBlock,
   PageMetaType,
   PageMeta,
   pageMetaTypes,
-  tokenGroups,
-  TokenGroup,
   Page,
   PolarisComponentLifecyclePhase,
   polarisComponentLifecyclePhases,
@@ -37,12 +33,12 @@ import {
   TabbedContentBlock,
   CodeBlockLanguage,
   codeBlockLanguages,
+  State,
 } from '@/types';
 import {
   ActionList,
   AlphaCard,
   AppProvider,
-  Banner,
   Button,
   ButtonGroup,
   Checkbox,
@@ -64,120 +60,26 @@ import {
   ExternalMinor,
 } from '@shopify/polaris-icons';
 import enTranslations from '@shopify/polaris/locales/en.json';
-import {arrayMoveImmutable, className} from '@/utils';
+import {assertUnreachable, className} from '@/utils';
 import {getBreadcrumbs, getResolvedPage, getPageUrl} from '@/utils';
 import {useRouter, useSearchParams} from 'next/navigation';
-import ImagePicker from './components/ImagePicker';
+import reducer from './reducer';
+import {Action} from './types';
 
-function assertUnreachable(_: never): never {
-  throw new Error('assertUnreachable was called, which should never happen');
-}
-
-function getEmptyBlock(
-  blockType: BlockType,
-  parentBlockId: string | null,
-  tabId: string | null,
-): Block {
-  const baseBlock: Omit<BaseBlock, 'blockType'> = {
-    id: nanoid(),
-  };
-
-  switch (blockType) {
-    case 'Markdown': {
-      const block: MarkdownBlock = {...baseBlock, blockType, content: ''};
-      return block;
-    }
-
-    case 'Image': {
-      const block: ImageBlock = {...baseBlock, blockType, imageId: null};
-      return block;
-    }
-
-    case 'YoutubeVideo': {
-      const block: YoutubeVideoBlock = {
-        ...baseBlock,
-        blockType,
-        youtubeUrl: '',
-      };
-      return block;
-    }
-
-    case 'SandboxEmbed': {
-      const block: SandboxEmbedBlock = {...baseBlock, blockType, embedUrl: ''};
-      return block;
-    }
-
-    case 'Code': {
-      const block: CodeBlock = {
-        ...baseBlock,
-        blockType,
-        snippets: [],
-      };
-      return block;
-    }
-
-    case 'TextImage': {
-      const block: TextImageBlock = {
-        ...baseBlock,
-        blockType,
-        content: '',
-        imageId: null,
-      };
-      return block;
-    }
-
-    case 'ProgressiveDisclosure': {
-      const block: ProgressiveDisclosureBlock = {
-        ...baseBlock,
-        blockType,
-        title: '',
-        blocks: [],
-      };
-      return block;
-    }
-
-    case 'DoDont': {
-      const block: DoDontBlock = {
-        ...baseBlock,
-        blockType,
-        doMarkdown: '',
-        dontMarkdown: '',
-      };
-      return block;
-    }
-
-    case 'TabbedContent': {
-      const block: TabbedContentBlock = {
-        ...baseBlock,
-        blockType,
-        tabs: [],
-      };
-      return block;
-    }
-  }
-
-  return assertUnreachable(blockType);
+function ImagePicker() {
+  return <p>TODO: Implement image picker</p>;
 }
 
 export const ContentContext = createContext<{
-  content: Content;
-  setContent: Dispatch<SetStateAction<Content>>;
-  addPage: (parent: string | null) => void;
-  movePage: (page: Page, direction: 'up' | 'down') => void;
-  deletePage: (page: Page) => void;
+  state: State;
+  dispatch: Dispatch<Action>;
 }>({
-  content: {
-    pages: [],
-    images: [],
-  },
-  setContent: () => undefined,
-  addPage: () => undefined,
-  movePage: () => undefined,
-  deletePage: () => undefined,
+  state: {pages: [], images: []},
+  dispatch: () => undefined,
 });
 
-export default function Editor({initialContent}: {initialContent: Content}) {
-  const [content, setContent] = useState<Content>(initialContent);
+export default function Editor({initialContent}: {initialContent: State}) {
+  const [state, dispatch] = useReducer(reducer, initialContent);
   let persistToBackendTimer = useRef<NodeJS.Timeout | null>(null);
 
   const router = useRouter();
@@ -192,7 +94,7 @@ export default function Editor({initialContent}: {initialContent: Content}) {
       fetch(`/editor/save`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({content}),
+        body: JSON.stringify({state}),
       });
     }, 1500);
     return () => {
@@ -200,143 +102,27 @@ export default function Editor({initialContent}: {initialContent: Content}) {
         clearTimeout(persistToBackendTimer.current);
       }
     };
-  }, [content]);
-
-  function addPage(parentId: string | null) {
-    const pageId = nanoid();
-
-    const parentPage =
-      (parentId && content.pages.find((page) => page.id === parentId)) ||
-      undefined;
-
-    const siblings = content.pages.filter(
-      (thisPage) => thisPage.parentId === parentId,
-    );
-
-    let pageMeta: PageMeta | null = null;
-    let pageMetaType: PageMetaType | null = null;
-    if (parentPage?.childPageMetaType) {
-      pageMetaType = parentPage.childPageMetaType;
-    }
-
-    switch (pageMetaType) {
-      case 'components':
-        pageMeta = {
-          type: 'components',
-          examples: [],
-          lifeCyclePhase: 'Alpha',
-          lifeCycleNotice: '',
-        };
-        break;
-
-      case 'patterns':
-        pageMeta = {
-          type: 'patterns',
-        };
-        break;
-
-      case 'tokens': {
-        pageMeta = {
-          type: 'tokens',
-          tokenGroup: tokenGroups[0],
-        };
-      }
-
-      case null:
-        break;
-
-      default:
-        assertUnreachable(pageMetaType);
-    }
-
-    const newPage: Page = {
-      id: pageId,
-      title: 'New page',
-      slug: pageId,
-      parentId,
-      excerpt: '',
-      order: siblings.length,
-      layout: 'blocks',
-      blocks: [],
-      keywords: [],
-      childPageMetaType: null,
-      pageMeta,
-      allowChildren: false,
-      hideInNav: false,
-      noIndex: false,
-      hasSeparatorInNav: false,
-      thumbnailImageId: null,
-      hasNewBadge: false,
-    };
-
-    setContent((content) => ({
-      ...content,
-      pages: [...content.pages, newPage],
-    }));
-
-    router.replace(`/editor?page=${pageId}`);
-  }
-
-  function sortPages(pages: Page[], parentId: string | null) {
-    let index = -1;
-    return pages
-      .sort((a, b) => a.order - b.order)
-      .map((thisPage) => {
-        if (thisPage.parentId === parentId) {
-          index++;
-          return {...thisPage, order: index};
-        }
-        return thisPage;
-      });
-  }
-
-  function movePage(page: Page, direction: 'up' | 'down') {
-    const indexDiff = direction === 'up' ? -1.5 : 1.5;
-    setContent((content) => {
-      const newPages = [...content.pages].map((thisPage) => {
-        return thisPage.id === page.id
-          ? {...thisPage, order: thisPage.order + indexDiff}
-          : thisPage;
-      });
-      const sortedPages = sortPages(newPages, page.parentId);
-      return {...content, pages: sortedPages};
-    });
-  }
-
-  function deletePage(page: Page) {
-    if (editedPageId === page.id) {
-      router.replace('/editor');
-    }
-    setContent((content) => {
-      const childPages = content.pages.filter(
-        ({parentId}) => parentId === page.id,
-      );
-      if (childPages.length > 0) {
-        throw new Error('Cannot delete page with child pages');
-      }
-      const newPages = content.pages.filter(({id}) => id !== page.id);
-      const sortedPages = sortPages(newPages, page.parentId);
-
-      return {
-        ...content,
-        pages: sortedPages,
-      };
-    });
-  }
+  }, [state]);
 
   return (
-    <ContentContext.Provider
-      value={{content, setContent, addPage, movePage, deletePage}}
-    >
+    <ContentContext.Provider value={{state, dispatch}}>
       <AppProvider i18n={enTranslations}>
         <div className={styles.Editor}>
           <div className={styles.PageNav}>
-            <Button outline size="slim" onClick={() => addPage(null)}>
+            <Button
+              outline
+              size="slim"
+              onClick={() => {
+                const id = nanoid();
+                dispatch({type: 'ADD_PAGE', id, parentId: null});
+                router.replace(`/editor?page=${id}`);
+              }}
+            >
               Add top level page
             </Button>
 
             <ul>
-              {content.pages
+              {state.pages
                 .filter((page) => page.parentId === null)
                 .sort((a, b) => a.order - b.order)
                 .map((page) => (
@@ -351,16 +137,6 @@ export default function Editor({initialContent}: {initialContent: Content}) {
           </div>
 
           {editedPageId && <PageEditor editedPageId={editedPageId} />}
-
-          {/* {editedPageId && (
-            <iframe
-              className={styles.SitePreview}
-              src={`/editor-page?id=${editedPageId}`}
-              width={500}
-              height={500}
-              title="Preview"
-            />
-          )} */}
         </div>
       </AppProvider>
     </ContentContext.Provider>
@@ -376,8 +152,8 @@ function PageNavItem({
   onPageClick: (pageId: string) => void;
   editedPageId: string | null;
 }) {
-  const {content, addPage} = useContext(ContentContext);
-  const childPages = content.pages
+  const {state, dispatch} = useContext(ContentContext);
+  const childPages = state.pages
     .filter((thisPage) => thisPage.parentId === page.id)
     .sort((a, b) => a.order - b.order);
 
@@ -393,7 +169,9 @@ function PageNavItem({
         <Tooltip content="Add child page">
           {page.allowChildren && (
             <button
-              onClick={() => addPage(page.id)}
+              onClick={() =>
+                dispatch({type: 'ADD_PAGE', id: nanoid(), parentId: page.id})
+              }
               aria-label="Add child page"
             >
               +
@@ -419,24 +197,28 @@ function PageNavItem({
 }
 
 function PageEditor({editedPageId}: {editedPageId: string}) {
-  const {content, setContent, movePage, deletePage} =
-    useContext(ContentContext);
-  const editedPage = content.pages.find((page) => page.id === editedPageId);
-  if (!editedPage) {
-    return <p>Page not found</p>;
-  }
+  const {state, dispatch} = useContext(ContentContext);
+  const editedPage = state.pages.find((page) => page.id === editedPageId);
+  const router = useRouter();
+  if (!editedPage) return <p>Page not found</p>;
 
-  const childPages = content.pages.filter(
+  const siblingPages = state.pages.filter(
+    ({parentId}) => parentId === editedPage.parentId,
+  );
+
+  const childPages = state.pages.filter(
     ({parentId}) => parentId === editedPageId,
   );
 
-  function updatePage(newPage: Page) {
-    setContent((content) => ({
-      ...content,
-      pages: content.pages.map((page) =>
-        page.id === editedPageId ? newPage : page,
-      ),
-    }));
+  function updatePage(changedPage: Page) {
+    dispatch({type: 'UPDATE_PAGE', changedPage});
+  }
+
+  function deletePage() {
+    if (editedPage) {
+      dispatch({type: 'DELETE_PAGE', page: editedPage});
+      router.replace('/editor');
+    }
   }
 
   return (
@@ -446,20 +228,27 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
         secondaryActions={[
           {
             content: 'Move up',
-            onAction: () => movePage(editedPage, 'up'),
-            icon: ArrowUpMinor,
+            onAction: () =>
+              dispatch({type: 'MOVE_PAGE', page: editedPage, direction: 'up'}),
+            // icon: ArrowUpMinor,
             disabled: editedPage.order === 0,
           },
           {
             content: 'Move down',
-            onAction: () => movePage(editedPage, 'down'),
-            icon: ArrowDownMinor,
+            onAction: () =>
+              dispatch({
+                type: 'MOVE_PAGE',
+                page: editedPage,
+                direction: 'down',
+              }),
+            // icon: ArrowDownMinor,
+            disabled: editedPage.order === siblingPages.length - 1,
           },
           {
             content: 'Preview',
-            icon: ExternalMinor,
+            // icon: ExternalMinor,
             external: true,
-            url: getPageUrl(content, editedPage),
+            url: getPageUrl(state, editedPage),
           },
         ]}
       >
@@ -490,7 +279,7 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                     }
                     label="Slug"
                     autoComplete="off"
-                    prefix={`${getBreadcrumbs(content, editedPage)
+                    prefix={`${getBreadcrumbs(state, editedPage)
                       .slice(0, -1)
                       .map(({slug}) => slug)
                       .join(' / ')} /`}
@@ -508,24 +297,13 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                     autoComplete="off"
                   />
 
-                  <ImagePicker
-                    imageId={editedPage.thumbnailImageId}
-                    onPick={(thumbnailImageId) =>
-                      updatePage({...editedPage, thumbnailImageId})
-                    }
-                  />
+                  <ImagePicker />
 
                   <Select
                     label="Layout"
                     options={[
-                      {
-                        value: 'blocks',
-                        label: 'Blocks',
-                      },
-                      {
-                        value: 'listing',
-                        label: 'Sub page listing',
-                      },
+                      {value: 'blocks', label: 'Blocks'},
+                      {value: 'listing', label: 'Sub page listing'},
                     ]}
                     value={editedPage.layout}
                     onChange={(layout: Page['layout']) =>
@@ -555,7 +333,7 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                 {
                   content: 'Delete page',
                   destructive: true,
-                  onAction: () => deletePage(editedPage),
+                  onAction: deletePage,
                   disabled: childPages.length > 0,
                 },
               ]}
@@ -685,22 +463,7 @@ function PageMetaEditor({
       return null;
 
     case 'tokens':
-      return (
-        <Select
-          label="Token type"
-          options={[
-            ...tokenGroups.map((groupName) => ({
-              label: groupName,
-              value: groupName,
-            })),
-          ]}
-          onChange={(value) => {
-            const tokenGroup = value as TokenGroup;
-            updateMeta({...pageMeta, tokenGroup});
-          }}
-          value={pageMeta.tokenGroup}
-        />
-      );
+      return null;
   }
 
   assertUnreachable(pageMeta);
@@ -715,11 +478,11 @@ function BlockList({
   parentBlockId: string | null;
   tabId: string | null;
 }) {
-  const {content} = useContext(ContentContext);
+  const {state} = useContext(ContentContext);
 
-  const page = content.pages.find((page) => page.id === pageId);
+  const page = state.pages.find((page) => page.id === pageId);
   if (!page) throw new Error('Page not found');
-  const resolvedPage = getResolvedPage(content, page);
+  const resolvedPage = getResolvedPage(state, page);
 
   let blocks = resolvedPage.blocks;
   if (parentBlockId) {
@@ -780,298 +543,17 @@ function BlockEditor({
   isFirst: boolean;
   isLast: boolean;
 }) {
-  const {setContent} = useContext(ContentContext);
+  const {dispatch} = useContext(ContentContext);
 
-  function deleteBlock(
-    blockId: string,
-    pageId: string,
-    parentBlockId: string | null,
-    tabId: string | null,
-  ) {
-    if (tabId) {
-      setContent((content) => ({
-        ...content,
-        pages: content.pages.map((page) => {
-          if (page.id === pageId) {
-            return {
-              ...page,
-              blocks: page.blocks.map((block) => {
-                if (block.blockType === 'TabbedContent') {
-                  return {
-                    ...block,
-                    tabs: block.tabs.map((tab) => {
-                      if (tab.id === tabId) {
-                        return {
-                          ...tab,
-                          blocks: tab.blocks.filter(
-                            (block) => block.id !== blockId,
-                          ),
-                        };
-                      }
-                      return tab;
-                    }),
-                  };
-                }
-                return block;
-              }),
-            };
-          }
-          return page;
-        }),
-      }));
-    } else if (parentBlockId) {
-      setContent((content) => ({
-        ...content,
-        pages: content.pages.map((page) => {
-          if (page.id === pageId) {
-            return {
-              ...page,
-              blocks: page.blocks.map((block) => {
-                if (block.id === parentBlockId) {
-                  if (block.blockType === 'ProgressiveDisclosure') {
-                    return {
-                      ...block,
-                      blocks: block.blocks.filter(
-                        (block) => block.id !== blockId,
-                      ),
-                    };
-                  } else if (block.blockType === 'TabbedContent') {
-                    if (block.id === parentBlockId) {
-                      return {
-                        ...block,
-                        tabs: block.tabs.map((tab) => ({
-                          ...tab,
-                          blocks: tab.blocks.filter(
-                            (block) => block.id !== blockId,
-                          ),
-                        })),
-                      };
-                    }
-                  }
-                }
-                return block;
-              }),
-            };
-          }
-          return page;
-        }),
-      }));
-    } else if (pageId) {
-      setContent((content) => ({
-        ...content,
-        pages: content.pages.map((page) => {
-          if (page.id === pageId) {
-            return {
-              ...page,
-              blocks: page.blocks.filter((block) => block.id !== blockId),
-            };
-          }
-          return page;
-        }),
-      }));
-    }
-
-    // TODO: Don't allow removal of blocks with children
+  function handleBlockChange(newBlock: Block) {
+    dispatch({
+      type: 'UPDATE_BLOCK',
+      newBlock,
+      pageId,
+      parentBlockId,
+      tabId,
+    });
   }
-
-  function moveBlock(
-    pageId: string,
-    parentBlockId: string | null,
-    tabId: string | null,
-    fromIndex: number,
-    toIndex: number,
-  ) {
-    if (tabId) {
-      setContent((content) => ({
-        ...content,
-        pages: content.pages.map((page) => {
-          if (page.id === pageId) {
-            return {
-              ...page,
-              blocks: page.blocks.map((block) => {
-                if (block.blockType === 'TabbedContent') {
-                  return {
-                    ...block,
-                    tabs: block.tabs.map((tab) => {
-                      if (tab.id === tabId) {
-                        return {
-                          ...tab,
-                          blocks: arrayMoveImmutable(
-                            tab.blocks,
-                            fromIndex,
-                            toIndex,
-                          ),
-                        };
-                      }
-                      return tab;
-                    }),
-                  };
-                }
-                return block;
-              }),
-            };
-          }
-          return page;
-        }),
-      }));
-    } else if (parentBlockId) {
-      setContent((content) => ({
-        ...content,
-        pages: content.pages.map((page) => {
-          if (page.id === pageId) {
-            return {
-              ...page,
-              blocks: page.blocks.map((block) => {
-                if (block.id === parentBlockId) {
-                  if (block.blockType === 'ProgressiveDisclosure') {
-                    return {
-                      ...block,
-                      blocks: arrayMoveImmutable(
-                        block.blocks,
-                        fromIndex,
-                        toIndex,
-                      ),
-                    };
-                  } else if (block.blockType === 'TabbedContent') {
-                    if (block.id === parentBlockId) {
-                      return {
-                        ...block,
-                        tabs: block.tabs.map((tab) => ({
-                          ...tab,
-                          blocks: arrayMoveImmutable(
-                            tab.blocks,
-                            fromIndex,
-                            toIndex,
-                          ),
-                        })),
-                      };
-                    }
-                  }
-                }
-                return block;
-              }),
-            };
-          }
-          return page;
-        }),
-      }));
-    } else if (pageId) {
-      setContent((content) => ({
-        ...content,
-        pages: content.pages.map((page) => {
-          if (page.id === pageId) {
-            return {
-              ...page,
-              blocks: arrayMoveImmutable(page.blocks, fromIndex, toIndex),
-            };
-          }
-          return page;
-        }),
-      }));
-    }
-  }
-
-  const handleBlockChange = useCallback(
-    (newBlock: Block) => {
-      if (tabId) {
-        setContent((content) => ({
-          ...content,
-          pages: content.pages.map((page) => {
-            if (page.id === pageId) {
-              return {
-                ...page,
-                blocks: page.blocks.map((block) => {
-                  if (block.blockType === 'TabbedContent') {
-                    return {
-                      ...block,
-                      tabs: block.tabs.map((tab) => {
-                        if (tab.id === tabId) {
-                          return {
-                            ...tab,
-                            blocks: tab.blocks.map((block) => {
-                              if (block.id === newBlock.id) {
-                                return newBlock;
-                              }
-                              return block;
-                            }),
-                          };
-                        }
-                        return tab;
-                      }),
-                    };
-                  }
-                  return block;
-                }),
-              };
-            }
-            return page;
-          }),
-        }));
-      } else if (parentBlockId) {
-        setContent((content) => ({
-          ...content,
-          pages: content.pages.map((page) => {
-            if (page.id === pageId) {
-              return {
-                ...page,
-                blocks: page.blocks.map((block) => {
-                  if (block.id === parentBlockId) {
-                    if (block.blockType === 'ProgressiveDisclosure') {
-                      return {
-                        ...block,
-                        blocks: block.blocks.map((block) => {
-                          if (block.id === newBlock.id) {
-                            return newBlock;
-                          }
-                          return block;
-                        }),
-                      };
-                    } else if (block.blockType === 'TabbedContent') {
-                      if (block.id === parentBlockId) {
-                        return {
-                          ...block,
-                          tabs: block.tabs.map((tab) => ({
-                            ...tab,
-                            blocks: tab.blocks.map((block) => {
-                              if (block.id === newBlock.id) {
-                                return newBlock;
-                              }
-                              return block;
-                            }),
-                          })),
-                        };
-                      }
-                    }
-                  }
-                  return block;
-                }),
-              };
-            }
-            return page;
-          }),
-        }));
-      } else if (pageId) {
-        setContent((content) => ({
-          ...content,
-          pages: content.pages.map((page) => {
-            if (page.id === pageId) {
-              return {
-                ...page,
-                blocks: page.blocks.map((block) => {
-                  if (block.id === newBlock.id) {
-                    return newBlock;
-                  }
-                  return block;
-                }),
-              };
-            }
-            return page;
-          }),
-        }));
-      }
-    },
-    [tabId, parentBlockId, pageId],
-  );
 
   const getBlockEditor = (block: Block) => {
     switch (block.blockType) {
@@ -1124,13 +606,6 @@ function BlockEditor({
     assertUnreachable(block);
   };
 
-  // pageId,
-  // block,
-  // parentBlockId,
-  // tabId,
-  // isFirst,
-  // isLast,
-
   return (
     <>
       <AlphaCard key={block.id}>
@@ -1138,30 +613,50 @@ function BlockEditor({
           <ButtonGroup>
             <Button
               plain
-              icon={ArrowUpMinor}
+              // // icon={ArrowUpMinor}
               size="slim"
               onClick={() =>
-                moveBlock(pageId, parentBlockId, tabId, index, index - 1)
+                dispatch({
+                  type: 'MOVE_BLOCK',
+                  pageId,
+                  parentBlockId,
+                  tabId,
+                  fromIndex: index,
+                  toIndex: index - 1,
+                })
               }
               aria-label="Move block up"
               disabled={isFirst}
             ></Button>
             <Button
               plain
-              icon={ArrowDownMinor}
+              // // icon={ArrowDownMinor}
               size="slim"
               onClick={() =>
-                moveBlock(pageId, parentBlockId, tabId, index, index - 1)
+                dispatch({
+                  type: 'MOVE_BLOCK',
+                  pageId,
+                  parentBlockId,
+                  tabId,
+                  fromIndex: index,
+                  toIndex: index - 1,
+                })
               }
               aria-label="Move block down"
               disabled={isLast}
             ></Button>
             <Button
               plain
-              icon={DeleteMinor}
+              // icon={DeleteMinor}
               size="slim"
               onClick={() =>
-                deleteBlock(block.id, pageId, parentBlockId, tabId)
+                dispatch({
+                  type: 'DELETE_BLOCK',
+                  blockId: block.id,
+                  pageId,
+                  parentBlockId,
+                  tabId,
+                })
               }
               aria-label="Delete block"
             ></Button>
@@ -1192,97 +687,8 @@ function BlockAdder({
   tabId: string | null;
   index: number;
 }) {
-  const {setContent} = useContext(ContentContext);
+  const {dispatch} = useContext(ContentContext);
   const [adderIsVisible, setAdderIsVisible] = useState(false);
-
-  const addBlock = useCallback(
-    (blockType: BlockType) => {
-      let newBlock: Block = getEmptyBlock(blockType, parentBlockId, tabId);
-
-      if (tabId) {
-        setContent((content) => ({
-          ...content,
-          pages: content.pages.map((page) => {
-            if (page.id === pageId) {
-              return {
-                ...page,
-                blocks: page.blocks.map((block) => {
-                  if (
-                    block.id === parentBlockId &&
-                    block.blockType === 'TabbedContent'
-                  ) {
-                    return {
-                      ...block,
-                      tabs: block.tabs.map((tab) => {
-                        if (tab.id === tabId) {
-                          return {
-                            ...tab,
-                            blocks: [
-                              ...tab.blocks.slice(0, index),
-                              newBlock,
-                              ...tab.blocks.slice(index),
-                            ],
-                          };
-                        }
-                        return tab;
-                      }),
-                    };
-                  }
-                  return block;
-                }),
-              };
-            }
-            return page;
-          }),
-        }));
-      } else if (parentBlockId) {
-        setContent((content) => ({
-          ...content,
-          pages: content.pages.map((page) => {
-            if (page.id === pageId) {
-              return {
-                ...page,
-                blocks: page.blocks.map((block) => {
-                  if (block.id === parentBlockId) {
-                    if (block.blockType === 'ProgressiveDisclosure') {
-                      return {
-                        ...block,
-                        blocks: [
-                          ...block.blocks.slice(0, index),
-                          newBlock,
-                          ...block.blocks.slice(index),
-                        ],
-                      };
-                    }
-                  }
-                  return block;
-                }),
-              };
-            }
-            return page;
-          }),
-        }));
-      } else {
-        setContent((content) => ({
-          ...content,
-          pages: content.pages.map((page) => {
-            if (page.id === pageId) {
-              return {
-                ...page,
-                blocks: [
-                  ...page.blocks.slice(0, index),
-                  newBlock,
-                  ...page.blocks.slice(index),
-                ],
-              };
-            }
-            return page;
-          }),
-        }));
-      }
-    },
-    [tabId, parentBlockId, pageId, index],
-  );
 
   return (
     <Popover
@@ -1291,9 +697,11 @@ function BlockAdder({
         <div className={styles.BlockAdder}>
           <Button
             onClick={() => setAdderIsVisible(true)}
-            icon={PlusMinor}
+            // icon={PlusMinor}
             plain
-          ></Button>
+          >
+            +
+          </Button>
         </div>
       }
       autofocusTarget="first-node"
@@ -1305,10 +713,17 @@ function BlockAdder({
           ...blockTypes.map((blockType) => ({
             content: blockType,
             onAction: () => {
-              addBlock(blockType);
+              dispatch({
+                type: 'ADD_BLOCK',
+                blockType,
+                pageId,
+                tabId,
+                parentBlockId,
+                index,
+              });
               setAdderIsVisible(false);
             },
-            icon: PlusMinor,
+            // icon: PlusMinor,
           })),
         ]}
       />
@@ -1342,12 +757,7 @@ Lorem ipsum dolor...`}
 }
 
 function ImageBlockEditor({block, onChange}: BlockEditorProps<ImageBlock>) {
-  return (
-    <ImagePicker
-      imageId={block.imageId}
-      onPick={(imageId) => onChange({...block, imageId})}
-    />
-  );
+  return <ImagePicker />;
 }
 
 function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
@@ -1362,10 +772,7 @@ function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
         autoComplete="off"
       />
 
-      <ImagePicker
-        imageId={block.imageId}
-        onPick={(imageId) => onChange({...block, imageId})}
-      />
+      <ImagePicker />
     </>
   );
 }
@@ -1453,12 +860,7 @@ function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
       ...block,
       snippets: [
         ...block.snippets,
-        {
-          id: nanoid(),
-          label: 'New tab',
-          code: '',
-          language: 'typescript',
-        },
+        {id: nanoid(), label: 'New tab', code: '', language: 'typescript'},
       ],
     });
   };
@@ -1537,13 +939,15 @@ function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
               multiline={true}
             />
 
-            <Button
-              destructive
-              onClick={() => deleteTab(selectedTabIndex)}
-              outline
-            >
-              Delete tab
-            </Button>
+            {block.snippets.length > 1 && (
+              <Button
+                destructive
+                onClick={() => deleteTab(selectedTabIndex)}
+                outline
+              >
+                Delete tab
+              </Button>
+            )}
           </FormLayout>
         )}
       </Tabs>
@@ -1561,14 +965,7 @@ function TabbedContentEditor({
   const addTab = () => {
     onChange({
       ...block,
-      tabs: [
-        ...block.tabs,
-        {
-          id: nanoid(),
-          label: 'New tab',
-          blocks: [],
-        },
-      ],
+      tabs: [...block.tabs, {id: nanoid(), label: 'New tab', blocks: []}],
     });
   };
 

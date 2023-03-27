@@ -69,7 +69,8 @@
   p {
     strong,
     b {
-      font-weight: 600;
+      font-weight: var(--font-weight-heavy);
+      color: var(--color-text-strong);
     }
   }
 

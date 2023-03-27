@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from 'next/server';
 
-import {Content} from '@/types';
+import {State} from '@/types';
 import fs from 'fs';
 
 export const config = {
@@ -14,7 +14,7 @@ export const config = {
 export async function POST(req: NextRequest) {
   if (process.env.NODE_ENV === 'development') {
     const body = await req.json();
-    const tsFileContent = createTsFileContent(body.content);
+    const tsFileContent = createTsFileContent(body.state);
     fs.writeFileSync('./content.ts', tsFileContent);
     return NextResponse.json({message: 'Content saved'});
   } else {
@@ -36,16 +36,16 @@ function stringify(obj: Object): string {
   return string;
 }
 
-function createTsFileContent(content: Content): string {
-  return `import { Content } from '@/types';
+function createTsFileContent(state: State): string {
+  return `import { State } from '@/types';
 
 /*
   Automatically generated file (created by /api/editor.tsx).
   Do not edit by hand.
 */
 
-const pages: Content['pages'] = ${stringify(content.pages)};
-const images: Content['images'] = ${stringify(content.images)};
-export const content: Content = { pages, images };
+const pages: State['pages'] = ${stringify(state.pages)};
+const images: State['images'] = ${stringify(state.images)};
+export const content: State = { pages, images };
 `;
 }
