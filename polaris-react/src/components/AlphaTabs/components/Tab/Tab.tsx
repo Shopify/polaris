@@ -3,8 +3,10 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  KeyboardEvent,
   forwardRef,
+} from 'react';
+import type {
+  KeyboardEvent,
   RefObject,
   MutableRefObject,
   RefCallback,
