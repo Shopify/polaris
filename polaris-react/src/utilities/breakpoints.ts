@@ -1,10 +1,9 @@
 import {useState} from 'react';
-import {
+import {getMediaConditions, breakpoints} from '@shopify/polaris-tokens';
+import type {
   BreakpointsAlias,
   BreakpointsAliasDirection,
   BreakpointsTokenGroup,
-  getMediaConditions,
-  breakpoints,
 } from '@shopify/polaris-tokens';
 
 import {isServer} from './target';

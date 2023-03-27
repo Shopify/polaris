@@ -3,12 +3,10 @@ import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../../ActionList';
-import {
-  BulkActionButton,
-  BulkActionMenu,
-  BulkActionButtonProps,
-} from '../components';
-import {BulkAction, BulkActions, BulkActionsProps} from '../BulkActions';
+import {BulkActionButton, BulkActionMenu} from '../components';
+import type {BulkActionButtonProps} from '../components';
+import {BulkActions} from '../BulkActions';
+import type {BulkAction, BulkActionsProps} from '../BulkActions';
 
 interface Props {
   bulkActions: BulkActionButtonProps['content'][];

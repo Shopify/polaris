@@ -4,10 +4,10 @@ import {
   IndexContext,
   IndexRowContext,
   IndexSelectionChangeContext,
-  IndexProviderProps,
   useBulkSelectionData,
   useHandleBulkSelection,
 } from '../../utilities/index-provider';
+import type {IndexProviderProps} from '../../utilities/index-provider';
 
 export function IndexProvider({
   children,

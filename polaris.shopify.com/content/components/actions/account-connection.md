@@ -95,4 +95,4 @@ Connect to app
 
 ## Accessibility
 
-See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/setting-toggle) to turn connections on and off.
+See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/selection-and-input/setting-toggle) to turn connections on and off.

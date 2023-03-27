@@ -3,7 +3,8 @@ import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
-import {Toast, ToastProps} from '../Toast';
+import {Toast} from '../Toast';
+import type {ToastProps} from '../Toast';
 import {Key} from '../../../../../types';
 
 interface HandlerMap {

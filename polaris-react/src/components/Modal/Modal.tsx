@@ -12,7 +12,8 @@ import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';
 
-import {Dialog, Footer, FooterProps, Header, Section} from './components';
+import {Dialog, Footer, Header, Section} from './components';
+import type {FooterProps} from './components';
 import styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;

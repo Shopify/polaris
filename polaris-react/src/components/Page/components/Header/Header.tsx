@@ -19,15 +19,18 @@ import type {
   MenuGroupDescriptor,
   TooltipAction,
 } from '../../../../types';
-import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
-import {Pagination, PaginationProps} from '../../../Pagination';
+import {Breadcrumbs} from '../../../Breadcrumbs';
+import type {BreadcrumbsProps} from '../../../Breadcrumbs';
+import {Pagination} from '../../../Pagination';
+import type {PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
 import {Inline} from '../../../Inline';
 
-import {Title, TitleProps} from './components';
+import {Title} from './components';
+import type {TitleProps} from './components';
 import styles from './Header.scss';
 
 type MaybeJSX = JSX.Element | null;

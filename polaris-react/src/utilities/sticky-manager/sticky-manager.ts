@@ -3,7 +3,8 @@ import {spacing} from '@shopify/polaris-tokens';
 import {debounce} from '../debounce';
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
 import {stackedContent} from '../breakpoints';
-import {getRectForNode, Rect} from '../geometry';
+import {getRectForNode} from '../geometry';
+import type {Rect} from '../geometry';
 
 interface StickyItem {
   /** Node of the sticky element */

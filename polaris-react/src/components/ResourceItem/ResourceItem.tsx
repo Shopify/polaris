@@ -9,23 +9,22 @@ import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
 import {Columns} from '../Columns';
-import {Inline, InlineProps} from '../Inline';
+import {Inline} from '../Inline';
+import type {InlineProps} from '../Inline';
 import {Popover} from '../Popover';
 import {UnstyledLink} from '../UnstyledLink';
 import type {AvatarProps} from '../Avatar';
 import type {DisableableAction} from '../../types';
 import type {ThumbnailProps} from '../Thumbnail';
-import {
-  useBreakpoints,
-  BreakpointsDirectionAlias,
-} from '../../utilities/breakpoints';
+import {useBreakpoints} from '../../utilities/breakpoints';
+import type {BreakpointsDirectionAlias} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
-  ResourceListSelectedItems,
 } from '../../utilities/resource-list';
+import type {ResourceListSelectedItems} from '../../utilities/resource-list';
 
 import styles from './ResourceItem.scss';
 
