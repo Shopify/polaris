@@ -58,10 +58,10 @@ When building, keep the following behaviors and limitations in mind.
 
 <div as="SideBySide">
 
-- <span>**Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /><br />Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.</span> ![web context bar](/images/foundations/design/layout/visual-single-purpose-composible-flexible.png)
-- <span>**Layout components shouldn’t affect anything outside their borders.** They should only impact components rendered inside of them. The exception is the (Bleed)[/components/layout-and-structure/bleed] component.</span> ![web context bar](/images/foundations/design/layout/visual-outside-borders.png)
-- <span>**Layout components have a default spacing of 0.** There isn’t a perfect default, so add spacing with intention. For more information, refer to the [Space](/design/space) guide.</span> ![web context bar](/images/foundations/design/layout/default-spacing.png)
-- <span>**Layout component behaviors rely on Polaris tokens.** Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a [Polaris design token](/tokens/colors).</span> ![web context bar](/images/foundations/design/layout/tokens.png)
+- <span>**Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /><br />Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.</span> ![web context bar](/images/foundations/design/layout/single-purpose-composible-flexible@2x.png)
+- <span>**Layout components shouldn’t affect anything outside their borders.** They should only impact components rendered inside of them. The exception is the (Bleed)[/components/layout-and-structure/bleed] component.</span> ![web context bar](/images/foundations/design/layout/outside-borders@2x.png)
+- <span>**Layout components have a default spacing of 0.** There isn’t a perfect default, so add spacing with intention. For more information, refer to the [Space](/design/space) guide.</span> ![web context bar](/images/foundations/design/layout/default-spacing@2x.png)
+- <span>**Layout component behaviors rely on Polaris tokens.** Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a [Polaris design token](/tokens/colors).</span> ![web context bar](/images/foundations/design/layout/tokens@2x.png)
 
 </div>
 
