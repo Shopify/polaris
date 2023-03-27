@@ -51,8 +51,14 @@ export type {ActionMenuProps} from './components/ActionMenu';
 export {AlphaCard} from './components/AlphaCard';
 export type {AlphaCardProps} from './components/AlphaCard';
 
+export {AlphaFilters} from './components/AlphaFilters';
+export type {AlphaFiltersProps} from './components/AlphaFilters';
+
 export {AlphaStack} from './components/AlphaStack';
 export type {AlphaStackProps} from './components/AlphaStack';
+
+export {AlphaTabs} from './components/AlphaTabs';
+export type {AlphaTabsProps, AlphaTabProps} from './components/AlphaTabs';
 
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
@@ -383,7 +389,7 @@ export {Subheading} from './components/Subheading';
 export type {SubheadingProps} from './components/Subheading';
 
 export {Tabs} from './components/Tabs';
-export type {TabsProps, TabProps} from './components/Tabs';
+export type {TabsProps} from './components/Tabs';
 
 export {Tag} from './components/Tag';
 export type {TagProps} from './components/Tag';

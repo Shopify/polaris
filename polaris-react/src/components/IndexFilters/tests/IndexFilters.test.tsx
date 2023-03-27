@@ -3,8 +3,8 @@ import type {ComponentProps} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
-import {Tabs} from '../../Tabs';
-import {Filters} from '../../Filters';
+import {AlphaTabs} from '../../AlphaTabs';
+import {AlphaFilters} from '../../AlphaFilters';
 import {IndexFilters, IndexFiltersMode} from '..';
 import type {IndexFiltersProps} from '../IndexFilters';
 import {SearchFilterButton, SortButton, UpdateButtons} from '../components';
@@ -111,7 +111,7 @@ describe('IndexFilters', () => {
   it('renders non-disabled tabs if the current mode is Default', () => {
     const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
 
-    expect(wrapper).toContainReactComponent(Tabs, {
+    expect(wrapper).toContainReactComponent(AlphaTabs, {
       disabled: false,
     });
   });
@@ -119,7 +119,7 @@ describe('IndexFilters', () => {
   it('overrides and disables tabs even if the current mode is Default', () => {
     const wrapper = mountWithApp(<IndexFilters {...defaultProps} disabled />);
 
-    expect(wrapper).toContainReactComponent(Tabs, {
+    expect(wrapper).toContainReactComponent(AlphaTabs, {
       disabled: true,
     });
   });
@@ -130,7 +130,7 @@ describe('IndexFilters', () => {
     );
 
     wrapper.act(() => {
-      wrapper.find(Filters)!.trigger('onQueryChange', 'bar');
+      wrapper.find(AlphaFilters)!.trigger('onQueryChange', 'bar');
     });
 
     expect(defaultProps.onQueryChange).toHaveBeenCalledWith('bar');
@@ -165,7 +165,7 @@ describe('IndexFilters', () => {
         />,
       );
 
-      expect(wrapper).toContainReactComponent(Filters, {
+      expect(wrapper).toContainReactComponent(AlphaFilters, {
         filters,
       });
     });
@@ -191,7 +191,7 @@ describe('IndexFilters', () => {
         />,
       );
 
-      expect(wrapper).not.toContainReactComponent(Filters);
+      expect(wrapper).not.toContainReactComponent(AlphaFilters);
     });
 
     it('does not render the SortButton or SearchFilterButton component', () => {
@@ -275,7 +275,7 @@ describe('IndexFilters', () => {
         />,
       );
 
-      expect(wrapper).toContainReactComponent(Filters, {
+      expect(wrapper).toContainReactComponent(AlphaFilters, {
         filters,
         disableFilters: true,
         disableQueryField: true,

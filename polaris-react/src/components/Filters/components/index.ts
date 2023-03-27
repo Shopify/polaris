@@ -1,2 +1,2 @@
-export * from './FilterPill';
-export * from './SearchField';
+export * from './ConnectedFilterControl';
+export * from './TagsWrapper';

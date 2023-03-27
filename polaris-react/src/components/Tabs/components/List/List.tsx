@@ -1,15 +1,14 @@
 import React from 'react';
-import type {KeyboardEvent} from 'react';
 
 import {Item} from '../Item';
-import type {TabProps} from '../../types';
-import styles from '../../Tabs.scss';
+import type {TabDescriptor} from '../../types';
+import {Box} from '../../../Box';
 
 export interface ListProps {
   focusIndex: number;
-  disclosureTabs: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[];
+  disclosureTabs: TabDescriptor[];
   onClick?(id: string): void;
-  onKeyPress?(event: KeyboardEvent<HTMLElement>): void;
+  onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void;
 }
 
 export function List({
@@ -33,15 +32,17 @@ export function List({
   });
 
   return (
-    <ul className={styles.List} onKeyDown={handleKeyDown} onKeyUp={onKeyPress}>
-      {tabs}
-    </ul>
+    <div onKeyDown={handleKeyDown} onKeyUp={onKeyPress}>
+      <Box as="ul" padding="2">
+        {tabs}
+      </Box>
+    </div>
   );
 }
 
 function noop() {}
 
-function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
+function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
   if (key === 'ArrowLeft' || key === 'ArrowRight') {

@@ -1,19 +1,25 @@
-import type {ReactElement} from 'react';
 import React, {memo, useEffect, useRef, useCallback} from 'react';
 
+// eslint-disable-next-line import/no-deprecated
+import {EventListener} from '../../../EventListener';
 import {classNames} from '../../../../utilities/css';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
-import {useEventListener} from '../../../../utilities/use-event-listener';
-import type {TabProps, TabMeasurements} from '../../types';
+import type {TabDescriptor} from '../../types';
 import {Tab} from '../Tab';
 import styles from '../../Tabs.scss';
+
+interface TabMeasurements {
+  containerWidth: number;
+  disclosureWidth: number;
+  hiddenTabWidths: number[];
+}
 
 export interface TabMeasurerProps {
   tabToFocus: number;
   siblingTabHasFocus: boolean;
-  activator: ReactElement;
+  activator: React.ReactElement;
   selected: number;
-  tabs: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[];
+  tabs: TabDescriptor[];
   handleMeasurement(measurements: TabMeasurements): void;
 }
 
@@ -38,12 +44,11 @@ export const TabMeasurer = memo(function TabMeasurer({
         return;
       }
 
-      const containerWidth = containerNode.current.offsetWidth - 20 - 28;
+      const containerWidth = containerNode.current.offsetWidth;
       const hiddenTabNodes = containerNode.current.children;
       const hiddenTabNodesArray = Array.from(hiddenTabNodes);
       const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
-        const buttonWidth = Math.ceil(node.getBoundingClientRect().width);
-        return buttonWidth + 4;
+        return Math.ceil(node.getBoundingClientRect().width);
       });
       const disclosureWidth = hiddenTabWidths.pop() || 0;
 
@@ -69,25 +74,24 @@ export const TabMeasurer = memo(function TabMeasurer({
     return (
       <Tab
         measuring
-        key={`$${tab.id}Hidden`}
+        key={`${index}${tab.id}Hidden`}
         id={`${tab.id}Measurer`}
         siblingTabHasFocus={siblingTabHasFocus}
         focused={index === tabToFocus}
         selected={index === selected}
+        onClick={noop}
         url={tab.url}
-        content={tab.content}
-        onTogglePopover={noop}
-        onToggleModal={noop}
-      />
+      >
+        {tab.content}
+      </Tab>
     );
   });
 
-  const classname = classNames(styles.Tabs, styles.TabsMeasurer);
-
-  useEventListener('resize', handleMeasurement);
+  const classname = classNames(styles.Tabs, styles.TabMeasurer);
 
   return (
     <div className={classname} ref={containerNode}>
+      <EventListener event="resize" handler={handleMeasurement} />
       {tabsMarkup}
       {activator}
     </div>

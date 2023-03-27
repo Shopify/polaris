@@ -8,10 +8,10 @@ import {useToggle} from '../../utilities/use-toggle';
 import {useOnValueChange} from '../../utilities/use-on-value-change';
 import {Inline} from '../Inline';
 import {Spinner} from '../Spinner';
-import {Filters} from '../Filters';
-import type {FiltersProps} from '../Filters';
-import {Tabs} from '../Tabs';
-import type {TabsProps} from '../Tabs';
+import {AlphaFilters} from '../AlphaFilters';
+import type {AlphaFiltersProps} from '../AlphaFilters';
+import {AlphaTabs} from '../AlphaTabs';
+import type {AlphaTabsProps} from '../AlphaTabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
 import {useIsSticky} from './hooks';
@@ -50,10 +50,10 @@ type ExecutedCallback = (name: string) => Promise<boolean>;
 
 export interface IndexFiltersProps
   extends Omit<
-      FiltersProps,
+      AlphaFiltersProps,
       'focused' | 'children' | 'disableQueryField' | 'disableFilters'
     >,
-    Pick<TabsProps, 'tabs' | 'onSelect' | 'selected'> {
+    Pick<AlphaTabsProps, 'tabs' | 'onSelect' | 'selected'> {
   /** The available sorting choices. If not present, the sort button will not show */
   sortOptions?: SortButtonChoice[];
   /** The currently selected sort choice. Required if using sorting */
@@ -342,7 +342,7 @@ export function IndexFilters({
                           ...transitionStyles[state],
                         }}
                       >
-                        <Tabs
+                        <AlphaTabs
                           tabs={tabs}
                           selected={selected}
                           onSelect={onSelect}
@@ -395,7 +395,7 @@ export function IndexFilters({
           {(state) => (
             <div ref={filteringRef}>
               {mode === IndexFiltersMode.Filtering ? (
-                <Filters
+                <AlphaFilters
                   queryValue={queryValue}
                   queryPlaceholder={queryPlaceholder}
                   onQueryChange={handleChangeSearch}
@@ -425,7 +425,7 @@ export function IndexFilters({
                     </div>
                     {sortMarkup}
                   </Inline>
-                </Filters>
+                </AlphaFilters>
               ) : null}
             </div>
           )}

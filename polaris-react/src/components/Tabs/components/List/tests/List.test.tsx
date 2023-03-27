@@ -21,7 +21,6 @@ describe('<List />', () => {
 
   it('renders an unordered list', () => {
     const list = mountWithApp(<List {...mockProps} />);
-
     expect(list).toContainReactComponent('ul');
   });
 
@@ -31,7 +30,6 @@ describe('<List />', () => {
       const list = mountWithApp(
         <List {...mockProps} focusIndex={focusIndex} />,
       );
-
       expect(list).toContainReactComponent(Item, {
         focused: false,
       });
@@ -42,7 +40,6 @@ describe('<List />', () => {
       const list = mountWithApp(
         <List {...mockProps} focusIndex={focusIndex} />,
       );
-
       expect(list).toContainReactComponent(Item, {
         focused: true,
       });
@@ -65,7 +62,6 @@ describe('<List />', () => {
       const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-
       expect(list).toContainReactComponentTimes('button', 2);
     });
 
@@ -73,7 +69,6 @@ describe('<List />', () => {
       const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-
       expect(list).toContainReactComponent('button', {
         id: 'repeat-customers',
       });
@@ -96,7 +91,6 @@ describe('<List />', () => {
       const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-
       expect(list).toContainReactComponentTimes(Item, 2);
     });
 
@@ -104,7 +98,6 @@ describe('<List />', () => {
       const list = mountWithApp(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );
-
       expect(list.find(Item)).toContainReactText('Repeat customers');
     });
   });

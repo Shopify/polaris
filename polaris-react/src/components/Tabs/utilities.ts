@@ -1,7 +1,7 @@
-import type {TabProps} from './types';
+import type {TabDescriptor} from './types';
 
 export function getVisibleAndHiddenTabIndices(
-  tabs: Omit<TabProps, 'onToggleModal' | 'onTogglePopover'>[],
+  tabs: TabDescriptor[],
   selected: number,
   disclosureWidth: number,
   tabWidths: number[],

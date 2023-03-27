@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, Tabs, Box} from '@shopify/polaris';
+import {Badge, LegacyCard, Tabs} from '@shopify/polaris';
 
 export default {
   component: Tabs,
@@ -9,21 +9,34 @@ export default {
 export function Default() {
   const [selected, setSelected] = useState(0);
 
-  const handleTabChange = (selectedTabIndex: number) =>
-    setSelected(selectedTabIndex);
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
 
   const tabs = [
-    'All',
-    'Unpaid',
-    'Open',
-    'Closed',
-    'Local delivery',
-    'Local pickup',
-  ].map((item, index) => ({
-    content: item,
-    index,
-    id: `${item}-${index}`,
-  }));
+    {
+      id: 'all-customers-1',
+      content: 'All',
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-content-1',
+    },
+    {
+      id: 'accepts-marketing-1',
+      content: 'Accepts marketing',
+      panelID: 'accepts-marketing-content-1',
+    },
+    {
+      id: 'repeat-customers-1',
+      content: 'Repeat customers',
+      panelID: 'repeat-customers-content-1',
+    },
+    {
+      id: 'prospects-1',
+      content: 'Prospects',
+      panelID: 'prospects-content-1',
+    },
+  ];
 
   return (
     <LegacyCard>
@@ -46,15 +59,15 @@ export function Fitted() {
 
   const tabs = [
     {
-      id: 'all-customers-fitted-3',
+      id: 'all-customers-fitted-2',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content-3',
+      panelID: 'all-customers-fitted-content-2',
     },
     {
-      id: 'accepts-marketing-fitted-3',
+      id: 'accepts-marketing-fitted-2',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-fitted-content-3',
+      panelID: 'accepts-marketing-fitted-Ccontent-2',
     },
   ];
 
@@ -69,73 +82,6 @@ export function Fitted() {
   );
 }
 
-export function WithActions() {
-  const sleep = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-  const [selected, setSelected] = useState(0);
-
-  const handleTabChange = (selectedTabIndex: number) =>
-    setSelected(selectedTabIndex);
-
-  const tabs = [
-    'All',
-    'Unpaid',
-    'Open',
-    'Closed',
-    'Local delivery',
-    'Local pickup',
-    'Returning customers',
-    'New customers',
-    'Abandoned checkouts',
-    'Online store',
-    'POS',
-    'Facebook',
-    'Instagram',
-    'Twitter',
-    'Pinterest',
-    'Google',
-    'Referral',
-  ].map((item, index) => ({
-    content: item,
-    index,
-    id: `${item}-${index}`,
-    actions:
-      index === 0
-        ? []
-        : [
-            {
-              type: 'rename',
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'duplicate',
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'edit',
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'delete',
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-          ],
-  }));
-
-  return (
-    <Tabs
-      tabs={tabs}
-      selected={selected}
-      onSelect={handleTabChange}
-      canCreateNewView
-    />
-  );
-}
-
 export function WithBadgeContent() {
   const [selected, setSelected] = useState(0);
 
@@ -147,15 +93,21 @@ export function WithBadgeContent() {
   const tabs = [
     {
       id: 'all-customers-fitted-3',
-      badge: '10+',
-      content: 'All',
+      content: (
+        <span>
+          All <Badge status="new">10+</Badge>
+        </span>
+      ),
       accessibilityLabel: 'All customers',
       panelID: 'all-customers-fitted-content-3',
     },
     {
       id: 'accepts-marketing-fitted-3',
-      badge: '4',
-      content: 'Accepts marketing',
+      content: (
+        <span>
+          Accepts marketing <Badge status="new">4</Badge>
+        </span>
+      ),
       panelID: 'accepts-marketing-fitted-content-3',
     },
   ];
@@ -201,21 +153,6 @@ export function WithCustomDisclosure() {
       content: 'Prospects',
       panelID: 'prospects-content-4',
     },
-    {
-      id: 'opt-out-marketing-4',
-      content: 'Opted out of marketing',
-      panelID: 'opt-out-content-4',
-    },
-    {
-      id: 'net-new-customers-4',
-      content: 'Net new customers',
-      panelID: 'net-new-customers-content-4',
-    },
-    {
-      id: 'churned-customers-4',
-      content: 'Churned customers',
-      panelID: 'churned=customers-content-4',
-    },
   ];
 
   return (
@@ -224,40 +161,12 @@ export function WithCustomDisclosure() {
         tabs={tabs}
         selected={selected}
         onSelect={handleTabChange}
-        disclosureText="Extra views"
+        disclosureText="More views"
       >
         <LegacyCard.Section title={tabs[selected].content}>
           <p>Tab {selected} selected</p>
         </LegacyCard.Section>
       </Tabs>
     </LegacyCard>
-  );
-}
-
-export function OutsideOfCard() {
-  const [selected, setSelected] = useState(0);
-
-  const handleTabChange = (selectedTabIndex: number) =>
-    setSelected(selectedTabIndex);
-
-  const tabs = [
-    'All',
-    'Unpaid',
-    'Open',
-    'Closed',
-    'Local delivery',
-    'Local pickup',
-  ].map((item, index) => ({
-    content: item,
-    index,
-    id: `${item}-${index}`,
-  }));
-
-  return (
-    <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
-      <LegacyCard.Section title={tabs[selected].content}>
-        <p>Tab {selected} selected</p>
-      </LegacyCard.Section>
-    </Tabs>
   );
 }
