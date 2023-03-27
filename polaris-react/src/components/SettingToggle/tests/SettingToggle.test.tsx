@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {SettingAction} from '../../SettingAction';
+// eslint-disable-next-line import/no-deprecated
 import {SettingToggle} from '../SettingToggle';
 import {Button} from '../../Button';
 
