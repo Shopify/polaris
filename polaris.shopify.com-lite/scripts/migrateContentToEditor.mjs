@@ -21,7 +21,13 @@ function createPage(
     childPageMetaType,
     pageMeta,
     hasSeparatorInNav,
-    thumbnailImageId = null,
+    thumbnailImage = {
+      alt: '',
+      width: 0,
+      height: 0,
+      lightModeFilename: '',
+      darkModeFilename: '',
+    },
     blocks,
   },
   markdown,
@@ -55,7 +61,7 @@ function createPage(
     childPageMetaType,
     pageMeta,
     hasSeparatorInNav,
-    thumbnailImageId,
+    thumbnailImage,
   };
   pages.push(page);
 }
@@ -946,9 +952,7 @@ const file = `import { Content } from '@/types';
 
 const pages : Content['pages'] = ${JSON.stringify(pages, null, 2)};
 
-const images : Content['images'] = [];
-
-export const content : Content = { pages, images };
+export const content : Content = { pages };
 `;
 
 fs.writeFileSync('content.ts', file, 'utf8');

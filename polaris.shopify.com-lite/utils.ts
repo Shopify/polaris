@@ -35,62 +35,10 @@ export function getResolvedPage(
   page: Page,
   removeBlocks?: true,
 ): ResolvedPage | ResolvedPageWithoutBlocks {
-  let images: Image[] = [];
-
-  if (page.thumbnailImageId) {
-    const thumbnailImage = state.images.find(
-      (image) => image.id === page.thumbnailImageId,
-    );
-    if (thumbnailImage) {
-      images = [thumbnailImage];
-    }
-  }
-
-  function extractImages(blocks: Block[]) {
-    blocks.forEach((block) => {
-      switch (block.blockType) {
-        case 'Image': {
-          const image = state.images.find(
-            (image) => image.id === block.imageId,
-          );
-          if (image) {
-            images.push(image);
-          }
-          break;
-        }
-
-        case 'TextImage': {
-          const image = state.images.find(
-            (image) => image.id === block.imageId,
-          );
-          if (image) {
-            images.push(image);
-          }
-          break;
-        }
-
-        case 'ProgressiveDisclosure': {
-          extractImages(block.blocks);
-          break;
-        }
-
-        case 'TabbedContent': {
-          block.tabs.forEach((tab) => {
-            extractImages(tab.blocks);
-          });
-          break;
-        }
-      }
-    });
-  }
-
-  extractImages(page.blocks);
-
   const resolvedPage: ResolvedPage = {
     ...page,
     url: getPageUrl(state, page),
     breadcrumbs: getBreadcrumbs(state, page),
-    images,
   };
 
   if (removeBlocks) {

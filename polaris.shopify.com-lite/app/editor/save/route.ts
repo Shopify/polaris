@@ -45,7 +45,6 @@ function createTsFileContent(state: State): string {
 */
 
 const pages: State['pages'] = ${stringify(state.pages)};
-const images: State['images'] = ${stringify(state.images)};
-export const content: State = { pages, images };
+export const content: State = { pages };
 `;
 }

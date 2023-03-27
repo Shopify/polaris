@@ -6,6 +6,7 @@ import {
   BlockType,
   CodeBlock,
   DoDontBlock,
+  Image,
   ImageBlock,
   MarkdownBlock,
   Page,
@@ -85,7 +86,7 @@ export default function reducer(state: State, action: Action): State {
         hideInNav: false,
         noIndex: false,
         hasSeparatorInNav: false,
-        thumbnailImageId: null,
+        thumbnailImage: getEmptyImage(),
         hasNewBadge: false,
       };
 
@@ -513,7 +514,11 @@ function getEmptyBlock(
     }
 
     case 'Image': {
-      const block: ImageBlock = {...baseBlock, blockType, imageId: null};
+      const block: ImageBlock = {
+        ...baseBlock,
+        blockType,
+        image: getEmptyImage(),
+      };
       return block;
     }
 
@@ -552,7 +557,7 @@ function getEmptyBlock(
         ...baseBlock,
         blockType,
         content: '',
-        imageId: null,
+        image: getEmptyImage(),
       };
       return block;
     }
@@ -601,4 +606,14 @@ function sortPages(pages: Page[], parentId: string | null): Page[] {
       }
       return thisPage;
     });
+}
+
+function getEmptyImage(): Image {
+  return {
+    lightModeFilename: '',
+    darkModeFilename: '',
+    height: 0,
+    width: 0,
+    alt: '',
+  };
 }

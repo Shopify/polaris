@@ -5,6 +5,7 @@ import {
   Dispatch,
   useContext,
   useEffect,
+  useId,
   useReducer,
   useRef,
   useState,
@@ -34,6 +35,7 @@ import {
   CodeBlockLanguage,
   codeBlockLanguages,
   State,
+  Image as ImageType,
 } from '@/types';
 import {
   ActionList,
@@ -43,7 +45,9 @@ import {
   ButtonGroup,
   Checkbox,
   FormLayout,
+  InlineError,
   Layout,
+  Modal,
   Page as PolarisPage,
   PageActions,
   Popover,
@@ -60,21 +64,18 @@ import {
   ExternalMinor,
 } from '@shopify/polaris-icons';
 import enTranslations from '@shopify/polaris/locales/en.json';
-import {assertUnreachable, className} from '@/utils';
+import {assertUnreachable, className, getImageDimensions} from '@/utils';
 import {getBreadcrumbs, getResolvedPage, getPageUrl} from '@/utils';
 import {useRouter, useSearchParams} from 'next/navigation';
 import reducer from './reducer';
 import {Action} from './types';
-
-function ImagePicker() {
-  return <p>TODO: Implement image picker</p>;
-}
+import Image from 'next/image';
 
 export const ContentContext = createContext<{
   state: State;
   dispatch: Dispatch<Action>;
 }>({
-  state: {pages: [], images: []},
+  state: {pages: []},
   dispatch: () => undefined,
 });
 
@@ -297,7 +298,12 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                     autoComplete="off"
                   />
 
-                  <ImagePicker />
+                  <ImagePicker
+                    image={editedPage.thumbnailImage}
+                    onChange={(thumbnailImage) =>
+                      updatePage({...editedPage, thumbnailImage})
+                    }
+                  />
 
                   <Select
                     label="Layout"
@@ -757,7 +763,12 @@ Lorem ipsum dolor...`}
 }
 
 function ImageBlockEditor({block, onChange}: BlockEditorProps<ImageBlock>) {
-  return <ImagePicker />;
+  return (
+    <ImagePicker
+      image={block.image}
+      onChange={(image) => onChange({...block, image})}
+    />
+  );
 }
 
 function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
@@ -772,7 +783,10 @@ function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
         autoComplete="off"
       />
 
-      <ImagePicker />
+      <ImagePicker
+        image={block.image}
+        onChange={(image) => onChange({...block, image})}
+      />
     </>
   );
 }
@@ -1024,5 +1038,100 @@ function TabbedContentEditor({
         )}
       </Tabs>
     </div>
+  );
+}
+
+function ImagePicker({
+  image,
+  onChange,
+}: {
+  image: ImageType;
+  onChange: (image: ImageType) => void;
+}) {
+  const [active, setIsActive] = useState(false);
+  const [widthValue, setWidthValue] = useState(image.width.toString());
+  const [heightValue, setHeightValue] = useState(image.height.toString());
+  const imageIsValid =
+    image.lightModeFilename && image.alt && image.width && image.height;
+  const buttonId = useId();
+  return (
+    <Modal
+      activator={
+        <>
+          {imageIsValid && (
+            <Image
+              src={`/images/content/actionable-language/${image.lightModeFilename}`}
+              alt={image.alt}
+              {...getImageDimensions(
+                {
+                  width: image.width,
+                  height: image.height,
+                },
+                200,
+              )}
+            />
+          )}
+          <Button id={buttonId} onClick={() => setIsActive(true)}>
+            {imageIsValid ? 'Replace' : 'Select'} image
+          </Button>
+          <InlineError
+            message={'Missing required information'}
+            fieldID={buttonId}
+          />
+        </>
+      }
+      open={active}
+      onClose={() => setIsActive(false)}
+      title="Reach more shoppers with Instagram product tags"
+      primaryAction={{
+        content: 'Close',
+        onAction: () => setIsActive(false),
+      }}
+    >
+      <Modal.Section>
+        <FormLayout>
+          <TextField
+            label="☀️ Light mode image filename"
+            value={image.lightModeFilename}
+            onChange={(lightModeFilename) =>
+              onChange({...image, lightModeFilename})
+            }
+            autoComplete="off"
+            requiredIndicator={true}
+          />
+          <TextField
+            label="💡 Dark mode image filename"
+            value={image.darkModeFilename}
+            onChange={(darkModeFilename) =>
+              onChange({...image, darkModeFilename})
+            }
+            autoComplete="off"
+          />
+          <TextField
+            label="Alt attribute"
+            value={image.alt}
+            onChange={(alt) => onChange({...image, alt})}
+            autoComplete="off"
+            requiredIndicator={true}
+          />
+          <TextField
+            label="Width (original file)"
+            value={widthValue}
+            onChange={(value) => setWidthValue(value)}
+            onBlur={() => onChange({...image, width: parseInt(widthValue)})}
+            autoComplete="off"
+            requiredIndicator={true}
+          />
+          <TextField
+            label="Height (original file)"
+            value={heightValue}
+            onChange={(value) => setHeightValue(value)}
+            onBlur={() => onChange({...image, height: parseInt(heightValue)})}
+            autoComplete="off"
+            requiredIndicator={true}
+          />
+        </FormLayout>
+      </Modal.Section>
+    </Modal>
   );
 }

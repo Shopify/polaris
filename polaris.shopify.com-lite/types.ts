@@ -13,7 +13,7 @@ export interface Page {
   hideInNav: boolean;
   noIndex: boolean;
   hasSeparatorInNav: boolean;
-  thumbnailImageId: string | null;
+  thumbnailImage: Image;
   hasNewBadge: boolean;
   blocks: Block[];
 }
@@ -25,7 +25,6 @@ export interface ResolvedPage extends Page {
     title: string;
     slug: string;
   }[];
-  images: Image[];
 }
 
 export type ResolvedPageWithoutBlocks = Omit<ResolvedPage, 'blocks'>;
@@ -106,7 +105,7 @@ export interface MarkdownBlock extends BaseBlock {
 
 export interface ImageBlock extends BaseBlock {
   blockType: 'Image';
-  imageId: string | null;
+  image: Image;
 }
 
 export interface YoutubeVideoBlock extends BaseBlock {
@@ -135,7 +134,7 @@ export interface CodeBlock extends BaseBlock {
 export interface TextImageBlock extends BaseBlock {
   blockType: 'TextImage';
   content: string;
-  imageId: string | null;
+  image: Image;
 }
 
 export interface ProgressiveDisclosureBlock extends BaseBlock {
@@ -182,17 +181,15 @@ export type ImageFile = {
 };
 
 export type Image = {
-  id: string;
   alt: string;
-  variants: {
-    [ColorScheme.Light]: ImageFile;
-    [ColorScheme.Dark]?: ImageFile;
-  };
+  width: number;
+  height: number;
+  lightModeFilename: string;
+  darkModeFilename: string;
 };
 
 export interface State {
   pages: Page[];
-  images: Image[];
 }
 
 export type NavItems = {
