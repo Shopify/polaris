@@ -17,6 +17,12 @@ export interface SettingToggleProps {
 
 const getUniqueSettingToggleId = globalIdGeneratorFactory('SettingToggle');
 
+/**
+ * @deprecated The SettingToggle component will be removed in v12.0.0.
+ * See the "With primitive components" example to learn how to compose
+ * setting toggles with layout and typography primitives.
+ * https://polaris.shopify.com/components/deprecated/setting-toggle
+ */
 export function SettingToggle({enabled, action, children}: SettingToggleProps) {
   const id = useMemo(getUniqueSettingToggleId, []);
 
