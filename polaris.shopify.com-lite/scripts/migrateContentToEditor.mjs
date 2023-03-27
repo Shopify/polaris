@@ -33,13 +33,18 @@ function createPage(
   markdown,
 ) {
   const blockId = nanoid();
+  const fixImagePaths = (markdown) =>
+    markdown.replace(
+      /!\[([^\]]*)]\(([^)]*)\)/g,
+      (_, alt, src) => `![${alt}](/images/${src.split('/').pop()})`,
+    );
   const newBlocks =
     layout !== 'listing' && markdown
       ? [
           {
             id: blockId,
             blockType: 'Markdown',
-            content: markdown.trim(),
+            content: fixImagePaths(markdown).trim(),
           },
         ]
       : blocks || [];
