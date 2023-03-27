@@ -4,7 +4,8 @@ import {mountWithApp} from 'tests/utilities';
 import {Modal} from '../../../../Modal';
 import {TextField} from '../../../../TextField';
 import {Button} from '../../../../Button';
-import {UpdateButtons, UpdateButtonsProps} from '..';
+import {UpdateButtons} from '..';
+import type {UpdateButtonsProps} from '..';
 
 describe('UpdateButtons', () => {
   const defaultProps: UpdateButtonsProps = {

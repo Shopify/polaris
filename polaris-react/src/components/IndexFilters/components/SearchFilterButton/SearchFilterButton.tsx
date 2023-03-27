@@ -1,4 +1,5 @@
-import React, {CSSProperties} from 'react';
+import React from 'react';
+import type {CSSProperties} from 'react';
 import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
