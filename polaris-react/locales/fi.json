@@ -355,7 +355,7 @@
       "clear": "Tyhjennä"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Hae ja suodata (F)",
+      "searchFilterTooltip": "Hae ja suodata {shortcut}",
       "searchFilterAccessibilityLabel": "Hae ja suodata tuloksia",
       "sort": "Lajittele tuloksesi",
       "addView": "Lisää uusi näkymä",

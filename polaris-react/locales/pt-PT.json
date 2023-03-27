@@ -356,7 +356,7 @@
       "clear": "Limpar"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Pesquisar e filtrar (F)",
+      "searchFilterTooltip": "Pesquisar e filtrar {shortcut}",
       "searchFilterAccessibilityLabel": "Resultados da pesquisa e do filtro",
       "sort": "Ordenar os resultados",
       "addView": "Adicionar uma nova visualização",

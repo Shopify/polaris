@@ -355,7 +355,7 @@
       "clear": "清除"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "搜索和筛选 (F)",
+      "searchFilterTooltip": "搜索和筛选 {shortcut}",
       "searchFilterAccessibilityLabel": "搜索和筛选结果",
       "sort": "对结果排序",
       "addView": "添加新视图",

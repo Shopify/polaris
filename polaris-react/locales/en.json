@@ -164,7 +164,7 @@
       "clear": "Clear"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Search and filter (F)",
+      "searchFilterTooltip": "Search and filter {shortcut}",
       "searchFilterAccessibilityLabel": "Search and filter results",
       "sort": "Sort your results",
       "addView": "Add a new view",

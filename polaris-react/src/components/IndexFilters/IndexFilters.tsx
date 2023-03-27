@@ -263,9 +263,20 @@ export function IndexFilters({
     beginEdit();
   }
 
-  const searchFilterTooltip =
-    filteringAccessibilityTooltip ||
-    i18n.translate('Polaris.IndexFilters.searchFilterTooltip');
+  const searchFilterTooltip = useMemo(() => {
+    const isMac =
+      typeof window === 'undefined'
+        ? false
+        : window.navigator?.platform?.includes('Mac');
+
+    return (
+      filteringAccessibilityTooltip ||
+      i18n.translate('Polaris.IndexFilters.searchFilterTooltip', {
+        shortcut: isMac ? '⌘F' : 'F',
+      })
+    );
+  }, [filteringAccessibilityTooltip, i18n]);
+
   const searchFilterAriaLabel =
     filteringAccessibilityLabel ||
     i18n.translate('Polaris.IndexFilters.searchFilterAccessibilityLabel');
