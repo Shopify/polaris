@@ -1,5 +1,33 @@
 # polaris.shopify.com
 
+## 0.42.0
+
+### Minor Changes
+
+- [#8547](https://github.com/Shopify/polaris/pull/8547) [`109fb5d0e`](https://github.com/Shopify/polaris/commit/109fb5d0ebe65a515b1653572e55afd11c1bac10) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Updated SettingToggle component and documentation
+
+* [#8440](https://github.com/Shopify/polaris/pull/8440) [`f30c696b3`](https://github.com/Shopify/polaris/commit/f30c696b32d3acbeb9a790505239fe9a5d59633c) Thanks [@mrcthms](https://github.com/mrcthms)! - - Added the `IndexFilters` component, which combines redesigned `AlphaTabs` and `AlphaFilters` components to make searching, filtering, and saving `IndexTable` views a more consistent, intuitive experience for merchants
+  - Created the new `AlphaTabs` component to replace the current `Tabs` component
+  - Created the new `AlphaFilters` component to replace the current `Filters` component
+
+### Patch Changes
+
+- [#8741](https://github.com/Shopify/polaris/pull/8741) [`14923dd3b`](https://github.com/Shopify/polaris/commit/14923dd3b80cc05bcb26261e0f29e8830f8731e3) Thanks [@chloerice](https://github.com/chloerice)! - Updated the image set on the `SettingToggle` card of the Selection and input component category page
+
+* [#8719](https://github.com/Shopify/polaris/pull/8719) [`7242e9a10`](https://github.com/Shopify/polaris/commit/7242e9a1070cd4bd4fe6302409d1dfa02ed3babf) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Remove bad display contents from SideBySide styles
+
+- [#8743](https://github.com/Shopify/polaris/pull/8743) [`a793f7113`](https://github.com/Shopify/polaris/commit/a793f7113f67db0a9ef8e8ffdede978c2459b71d) Thanks [@jesstelford](https://github.com/jesstelford)! - Create utils for pretty output when running gen-assets child processes locally
+
+* [#8744](https://github.com/Shopify/polaris/pull/8744) [`3a0974765`](https://github.com/Shopify/polaris/commit/3a0974765ed5d3f49b327b31ab96c4129cbca806) Thanks [@jesstelford](https://github.com/jesstelford)! - Generate sitemap from production docs site build to ensure draft URLs aren't accidentally exposed.
+
+- [#8730](https://github.com/Shopify/polaris/pull/8730) [`32859ff34`](https://github.com/Shopify/polaris/commit/32859ff34bb5c451225a17d232f6a61b09241d74) Thanks [@laurkim](https://github.com/laurkim)! - Updated examples for layout components to use color tokens instead of HEX colors
+
+* [#8742](https://github.com/Shopify/polaris/pull/8742) [`a61f6d382`](https://github.com/Shopify/polaris/commit/a61f6d3822f2a144ac6cbaa02aa3f8073592ad45) Thanks [@jesstelford](https://github.com/jesstelford)! - Remove supurfolous console warnings about duplicate types
+
+* Updated dependencies [[`e584de5be`](https://github.com/Shopify/polaris/commit/e584de5be69193aeb101aedae858b683a7156a77), [`aa599a7cf`](https://github.com/Shopify/polaris/commit/aa599a7cf47d0587a8ebc135d4da23a9e359952e), [`abe280b8c`](https://github.com/Shopify/polaris/commit/abe280b8c18b951f308a91d6d9cff510ae54c94c), [`531d41286`](https://github.com/Shopify/polaris/commit/531d41286d780a83083e23931057a497025f8291), [`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491), [`e701d3eae`](https://github.com/Shopify/polaris/commit/e701d3eae538626c83aed224d2811d232be67c61), [`109fb5d0e`](https://github.com/Shopify/polaris/commit/109fb5d0ebe65a515b1653572e55afd11c1bac10), [`ec1ca5eb3`](https://github.com/Shopify/polaris/commit/ec1ca5eb3359127aeb429792cab0742b9df86f5e), [`f30c696b3`](https://github.com/Shopify/polaris/commit/f30c696b32d3acbeb9a790505239fe9a5d59633c), [`28eb2e702`](https://github.com/Shopify/polaris/commit/28eb2e70270ec894024d802b5793ffca81727cba), [`8f96c2ded`](https://github.com/Shopify/polaris/commit/8f96c2ded6f4136603f0818563bde742364761ab)]:
+  - @shopify/polaris@10.39.0
+  - @shopify/polaris-tokens@6.8.1
+
 ## 0.41.0
 
 ### Minor Changes
