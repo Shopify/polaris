@@ -45,12 +45,16 @@
     "react-syntax-highlighter": "^15.5.0",
     "rehype-slug": "^5.1.0",
     "remark-definition-list": "^1.2.0",
+    "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
     "remark-unwrap-images": "^3.0.1",
     "sharp": "^0.31.2",
     "synapse": "file:.yalc/synapse",
     "unified": "^10.1.2",
-    "use-dark-mode": "^2.3.1"
+    "unist-util-visit": "^4.1.2",
+    "use-dark-mode": "^2.3.1",
+    "vfile-matter": "^4.0.1"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.10",
