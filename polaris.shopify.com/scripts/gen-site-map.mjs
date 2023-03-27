@@ -9,7 +9,7 @@ const genSiteMap = async () => {
     process.exit(-1);
   }
 
-  const server = startLocalServer();
+  const server = startLocalServer('dev');
   server.catch((err) => {
     if (!server.killed) {
       console.error(err.stderr);
