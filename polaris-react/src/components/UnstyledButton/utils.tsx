@@ -2,7 +2,8 @@ import React from 'react';
 
 import type {ComplexAction} from '../../types';
 
-import {UnstyledButton, UnstyledButtonProps} from './UnstyledButton';
+import {UnstyledButton} from './UnstyledButton';
+import type {UnstyledButtonProps} from './UnstyledButton';
 
 export function unstyledButtonFrom(
   {content, onAction, ...action}: ComplexAction,

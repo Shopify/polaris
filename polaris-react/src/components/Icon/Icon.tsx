@@ -30,7 +30,7 @@ export interface IconProps {
   source: IconSource;
   /** Set the color for the SVG fill */
   color?: Color;
-  /** Show a backdrop behind the icon */
+  /** @deprecated Use the Box component to create a backdrop */
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;

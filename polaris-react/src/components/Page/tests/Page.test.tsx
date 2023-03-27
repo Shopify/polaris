@@ -5,7 +5,8 @@ import {mountWithApp} from 'tests/utilities';
 import type {ActionMenuProps} from '../../ActionMenu';
 import {Badge} from '../../Badge';
 import {LegacyCard} from '../../LegacyCard';
-import {Page, PageProps} from '../Page';
+import {Page} from '../Page';
+import type {PageProps} from '../Page';
 import {Header} from '../components';
 
 window.matchMedia =

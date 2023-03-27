@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithBorderRadiusExample() {
   return (
-    <Box background="surface" borderRadius="2">
+    <Box background="surface" borderRadius="1">
       <Placeholder label="Content inside a box" />
     </Box>
   );
@@ -15,7 +15,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#BBD4F7',
+        background: 'var(--p-color-border-interactive-subdued)',
         height: height,
         width: width,
         borderRadius: 'inherit',
@@ -23,10 +23,10 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
     >
       <div
         style={{
-          color: '#1F2124',
+          color: 'var(--p-color-text)',
         }}
       >
-        <Text as="h2" variant="bodyMd" fontWeight="medium">
+        <Text as="p" variant="bodyMd">
           {label}
         </Text>
       </div>

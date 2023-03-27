@@ -1,4 +1,5 @@
-import {useRef, MutableRefObject} from 'react';
+import {useRef} from 'react';
+import type {MutableRefObject} from 'react';
 
 const UNIQUE_IDENTIFIER = Symbol('unique_identifier');
 

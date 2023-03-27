@@ -2,7 +2,8 @@ import React, {useId} from 'react';
 import {SelectMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {Labelled, LabelledProps, helpTextID} from '../Labelled';
+import {Labelled, helpTextID} from '../Labelled';
+import type {LabelledProps} from '../Labelled';
 import {Box} from '../Box';
 import {Icon} from '../Icon';
 import {Text} from '../Text';

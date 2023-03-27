@@ -7,16 +7,15 @@ import {
 
 import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
-import {
-  handleMouseUpByBlurring,
-  MouseUpBlurHandler,
-} from '../../utilities/focus';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
+import type {MouseUpBlurHandler} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
-import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
+import {UnstyledButton} from '../UnstyledButton';
+import type {UnstyledButtonProps} from '../UnstyledButton';
 import {useDisableClick} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';

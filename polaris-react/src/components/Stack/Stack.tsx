@@ -1,4 +1,4 @@
-import React, {createElement} from 'react';
+import React from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
 import {
@@ -67,7 +67,7 @@ export const Stack = ({
     ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
-  return createElement(
+  return React.createElement(
     as,
     {
       className,

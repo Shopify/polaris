@@ -2,7 +2,8 @@ import React from 'react';
 
 import {Icon} from '../../../Icon';
 import type {IconProps} from '../../../Icon';
-import {Option, OptionProps} from '../Option';
+import {Option} from '../Option';
+import type {OptionProps} from '../Option';
 import {TextOption} from '../TextOption';
 import {classNames} from '../../../../utilities/css';
 import {ActionContext} from '../../../../utilities/listbox/context';

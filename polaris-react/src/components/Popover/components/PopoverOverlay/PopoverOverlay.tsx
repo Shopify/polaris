@@ -12,16 +12,13 @@ import {overlay} from '../../../shared';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {KeypressListener} from '../../../KeypressListener';
-import {
-  PositionedOverlay,
-  PositionedOverlayProps,
-} from '../../../PositionedOverlay';
-import {Pane, PaneProps} from '../Pane';
+import {PositionedOverlay} from '../../../PositionedOverlay';
+import type {PositionedOverlayProps} from '../../../PositionedOverlay';
+import {Pane} from '../Pane';
+import type {PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
-import {
-  PortalsContainerElement,
-  PortalsManagerContext,
-} from '../../../../utilities/portals';
+import {PortalsManagerContext} from '../../../../utilities/portals';
+import type {PortalsContainerElement} from '../../../../utilities/portals';
 import {Box} from '../../../Box';
 
 export enum PopoverCloseSource {

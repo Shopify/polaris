@@ -11,14 +11,17 @@ import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
-import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
+import {Labelled, helpTextID, labelID} from '../Labelled';
+import type {LabelledProps} from '../Labelled';
 import {Connected} from '../Connected';
-import {Error, Key} from '../../types';
+import {Key} from '../../types';
+import type {Error} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
 import {useEventListener} from '../../utilities/use-event-listener';
 
-import {Resizer, Spinner, SpinnerProps} from './components';
+import {Resizer, Spinner} from './components';
+import type {SpinnerProps} from './components';
 import styles from './TextField.scss';
 
 type Type =

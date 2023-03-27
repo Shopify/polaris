@@ -2,11 +2,11 @@ import React, {
   useState,
   useRef,
   useCallback,
-  FunctionComponent,
   useMemo,
   useEffect,
   useId,
 } from 'react';
+import type {FunctionComponent} from 'react';
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {debounce} from '../../utilities/debounce';
@@ -14,7 +14,8 @@ import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
-import {Labelled, LabelledProps} from '../Labelled';
+import {Labelled} from '../Labelled';
+import type {LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
@@ -25,12 +26,12 @@ import {useEventListener} from '../../utilities/use-event-listener';
 import {FileUpload} from './components';
 import {DropZoneContext} from './context';
 import {
-  DropZoneEvent,
   fileAccepted,
   getDataTransferFiles,
   defaultAllowMultiple,
   createAllowMultipleKey,
 } from './utils';
+import type {DropZoneEvent} from './utils';
 import styles from './DropZone.scss';
 
 export type DropZoneFileType = 'file' | 'image' | 'video';

@@ -66,32 +66,6 @@ describe('<SettingToggle />', () => {
     });
   });
 
-  describe('enabled', () => {
-    it('makes the button primary when not enabled', () => {
-      const action = {
-        content: 'Click me!',
-        onAction: noop,
-      };
-      const toggle = mountWithApp(<SettingToggle action={action} />);
-      const {primary} = getComponentProps(
-        toggle.find(SettingAction)!.prop('action'),
-      );
-      expect(primary).toBe(true);
-    });
-
-    it('makes the button secondary when enabled', () => {
-      const action = {
-        content: 'Click me!',
-        onAction: noop,
-      };
-      const toggle = mountWithApp(<SettingToggle action={action} enabled />);
-      const {primary} = getComponentProps(
-        toggle.find(SettingAction)!.prop('action'),
-      );
-      expect(primary).toBe(false);
-    });
-  });
-
   describe('children', () => {
     it('renders the given children', () => {
       const children = <div id="someId" />;

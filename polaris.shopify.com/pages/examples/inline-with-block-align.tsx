@@ -6,49 +6,49 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineWithBlockAlignExample() {
   return (
     <Stack gap="8">
-      <Inline gap="025" blockAlign="start">
+      <Inline blockAlign="start">
         <Placeholder width="106px" label="Start" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
       </Inline>
       <Divider />
-      <Inline gap="025" blockAlign="center">
+      <Inline blockAlign="center">
         <Placeholder width="106px" label="Center" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
       </Inline>
       <Divider />
-      <Inline gap="025" blockAlign="end">
+      <Inline blockAlign="end">
         <Placeholder width="106px" label="End" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
-        <Placeholder width="106px" height="20px" />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
+        <Placeholder width="106px" height="20px" showBorder />
       </Inline>
       <Divider />
-      <Inline gap="025" blockAlign="baseline">
+      <Inline blockAlign="baseline">
         <Placeholder width="106px" label="Baseline" />
-        <Placeholder width="106px" padding="0" label="text" />
-        <Placeholder width="106px" padding="0" label="text" />
-        <Placeholder width="106px" padding="0" label="text" />
-        <Placeholder width="106px" padding="0" label="text" />
-        <Placeholder width="106px" padding="0" label="text" />
+        <Placeholder width="106px" padding="0" label="text" showBorder />
+        <Placeholder width="106px" padding="0" label="text" showBorder />
+        <Placeholder width="106px" padding="0" label="text" showBorder />
+        <Placeholder width="106px" padding="0" label="text" showBorder />
+        <Placeholder width="106px" padding="0" label="text" showBorder />
       </Inline>
       <Divider />
-      <Inline gap="025" blockAlign="stretch">
+      <Inline blockAlign="stretch">
         <Placeholder width="106px" label="Strech" />
-        <Placeholder width="106px" minHeight="20px" />
-        <Placeholder width="106px" minHeight="20px" />
-        <Placeholder width="106px" minHeight="20px" />
-        <Placeholder width="106px" minHeight="20px" />
-        <Placeholder width="106px" minHeight="20px" />
+        <Placeholder width="106px" minHeight="20px" showBorder />
+        <Placeholder width="106px" minHeight="20px" showBorder />
+        <Placeholder width="106px" minHeight="20px" showBorder />
+        <Placeholder width="106px" minHeight="20px" showBorder />
+        <Placeholder width="106px" minHeight="20px" showBorder />
       </Inline>
     </Stack>
   );
@@ -66,17 +66,19 @@ const Placeholder = ({
     <div
       style={{
         padding: padding,
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         height: height,
         width: width,
         minHeight: minHeight,
-        borderInlineStart: showBorder ? '1px dashed #EAFAF3' : 'none',
+        borderInlineStart: showBorder
+          ? '1px dashed var(--p-color-bg-success-subdued)'
+          : 'none',
       }}
     >
       <Inline align="center">
         <div
           style={{
-            color: '#FFFFFF',
+            color: 'var(--p-color-text-on-color)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="medium">
