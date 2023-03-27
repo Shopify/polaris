@@ -1,8 +1,10 @@
 import React from 'react';
-import {mountWithApp, ReactTestingElement, CustomRoot} from 'tests/utilities';
+import {mountWithApp} from 'tests/utilities';
+import type {ReactTestingElement, CustomRoot} from 'tests/utilities';
 
 import {TextField} from '../../TextField';
-import {Key, SectionDescriptor} from '../../../types';
+import {Key} from '../../../types';
+import type {SectionDescriptor} from '../../../types';
 import {MappedOption, MappedAction} from '../components';
 import {ComboboxTextFieldContext} from '../../../utilities/combobox';
 import {Autocomplete} from '../Autocomplete';

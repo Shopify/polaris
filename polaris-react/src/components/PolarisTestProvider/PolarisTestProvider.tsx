@@ -14,8 +14,10 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {I18n, I18nContext} from '../../utilities/i18n';
-import {LinkContext, LinkLikeComponent} from '../../utilities/link';
-import {FeaturesConfig, FeaturesContext} from '../../utilities/features';
+import {LinkContext} from '../../utilities/link';
+import type {LinkLikeComponent} from '../../utilities/link';
+import {FeaturesContext} from '../../utilities/features';
+import type {FeaturesConfig} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,

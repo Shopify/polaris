@@ -5,9 +5,9 @@ import {
   LegacyCard,
   ResourceItem,
   ResourceList,
-  ResourceListProps,
   Text,
 } from '@shopify/polaris';
+import type {ResourceListProps} from '@shopify/polaris';
 
 export default {
   component: ResourceItem,

@@ -4,10 +4,8 @@ import {mountWithApp} from 'tests/utilities';
 import {Button} from '../../../../Button';
 import {Popover} from '../../../../Popover';
 import styles from '../ConnectedFilterControl.scss';
-import {
-  ConnectedFilterControl,
-  ConnectedFilterControlProps,
-} from '../ConnectedFilterControl';
+import {ConnectedFilterControl} from '../ConnectedFilterControl';
+import type {ConnectedFilterControlProps} from '../ConnectedFilterControl';
 
 const MockChild = () => <div />;
 const MockFilter = () => <div />;

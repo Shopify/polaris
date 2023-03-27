@@ -18,19 +18,16 @@ import {Spinner} from '../Spinner';
 import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
-import {
-  BulkActions,
-  BulkActionsProps,
-  useIsBulkActionsSticky,
-} from '../BulkActions';
+import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
+import type {BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
 import {
   useIndexValue,
   useIndexSelectionChange,
   SELECT_ALL_ITEMS,
   SelectionType,
-  IndexProviderProps,
 } from '../../utilities/index-provider';
+import type {IndexProviderProps} from '../../utilities/index-provider';
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';

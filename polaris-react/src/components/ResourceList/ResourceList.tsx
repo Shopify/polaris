@@ -1,5 +1,4 @@
 import React, {
-  ReactElement,
   useCallback,
   useEffect,
   useReducer,
@@ -20,19 +19,17 @@ import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
   ResourceListContext,
-  ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
 } from '../../utilities/resource-list';
-import {Select, SelectOption} from '../Select';
+import type {ResourceListSelectedItems} from '../../utilities/resource-list';
+import {Select} from '../Select';
+import type {SelectOption} from '../Select';
 import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
-import {
-  BulkActions,
-  BulkActionsProps,
-  useIsBulkActionsSticky,
-} from '../BulkActions';
+import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
+import type {BulkActionsProps} from '../BulkActions';
 import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 
@@ -41,7 +38,11 @@ import styles from './ResourceList.scss';
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-function getAllItemsOnPage<TItemType>(
+interface ResourceListItemData {
+  [data: string]: any;
+}
+
+function getAllItemsOnPage<TItemType extends ResourceListItemData>(
   items: TItemType[],
   idForItem: (item: TItemType, index: number) => string,
 ) {
@@ -57,7 +58,7 @@ const isBreakpointsXS = () => {
         parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
 };
 
-function defaultIdForItem<TItemType extends {id?: any}>(
+function defaultIdForItem<TItemType extends ResourceListItemData>(
   item: TItemType,
   index: number,
 ) {
@@ -66,7 +67,9 @@ function defaultIdForItem<TItemType extends {id?: any}>(
     : index.toString();
 }
 
-export interface ResourceListProps<TItemType = any> {
+export interface ResourceListProps<
+  TItemType extends ResourceListItemData = ResourceListItemData,
+> {
   /** Item data; each item is passed to renderItem */
   items: TItemType[];
   filterControl?: React.ReactNode;
@@ -119,13 +122,7 @@ export interface ResourceListProps<TItemType = any> {
   resolveItemId?(item: TItemType): string;
 }
 
-type ResourceListType = (<TItemType>(
-  value: ResourceListProps<TItemType>,
-) => ReactElement) & {
-  Item: typeof ResourceItem;
-};
-
-export const ResourceList: ResourceListType = function ResourceList<TItemType>({
+export function ResourceList<TItemType extends ResourceListItemData>({
   items,
   filterControl,
   emptyState,
@@ -769,6 +766,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       <div ref={bulkActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
-};
+}
 
 ResourceList.Item = ResourceItem;

@@ -10,7 +10,8 @@ import {ButtonGroup} from '../../../../ButtonGroup';
 import {Pagination} from '../../../../Pagination';
 import {Tooltip} from '../../../../Tooltip';
 import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
-import {Header, HeaderProps} from '../Header';
+import {Header} from '../Header';
+import type {HeaderProps} from '../Header';
 
 describe('<Header />', () => {
   const mockProps: HeaderProps = {

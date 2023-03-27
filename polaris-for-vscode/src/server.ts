@@ -1,13 +1,16 @@
-import {createVar, metadata, MetadataGroup} from '@shopify/polaris-tokens';
+import {createVar, metadata} from '@shopify/polaris-tokens';
+import type {MetadataGroup} from '@shopify/polaris-tokens';
 import {
   createConnection,
   TextDocuments,
   ProposedFeatures,
+  CompletionItemKind,
+  TextDocumentSyncKind,
+} from 'vscode-languageserver/node';
+import type {
   InitializeParams,
   CompletionItem,
-  CompletionItemKind,
   TextDocumentPositionParams,
-  TextDocumentSyncKind,
   InitializeResult,
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';

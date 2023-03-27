@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import {removeMetadata, Metadata} from '../src';
+import {removeMetadata} from '../src';
+import type {Metadata} from '../src';
 import type {Entry, Entries, Tokens} from '../src/types';
 
 const outputDir = path.join(__dirname, '../build');

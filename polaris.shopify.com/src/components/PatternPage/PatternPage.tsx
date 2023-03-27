@@ -209,7 +209,6 @@ const BaseMarkdown = ({
 }) => (
   <Markdown
     remarkPlugins={[codeAsContext, remarkDefinitionList]}
-    // @ts-expect-error incompatible type to remark-rehype in remark-definition-list package.
     remarkRehypeOptions={{handlers: defListHastHandlers}}
     mdxComponents={mdxComponents}
     components={{

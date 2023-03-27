@@ -1,11 +1,14 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {Element as ElementType} from '@shopify/react-testing';
 import {act} from 'react-dom/test-utils';
 
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
-import {IndexTable, IndexTableProps} from '../../../IndexTable';
-import {Row, RowProps} from '../../Row';
+import {IndexTable} from '../../../IndexTable';
+import type {IndexTableProps} from '../../../IndexTable';
+import {Row} from '../../Row';
+import type {RowProps} from '../../Row';
 import {Checkbox, CheckboxWrapper} from '../Checkbox';
 import * as setRootPropertyModule from '../../../../../utilities/set-root-property';
 

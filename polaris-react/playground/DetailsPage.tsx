@@ -21,7 +21,6 @@ import {
   Badge,
   ContextualSaveBar,
   DropZone,
-  DropZoneProps,
   FormLayout,
   Frame,
   Layout,
@@ -43,6 +42,7 @@ import {
   Toast,
   TopBar,
 } from '../src';
+import type {DropZoneProps} from '../src';
 
 import styles from './DetailsPage.scss';
 

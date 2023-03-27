@@ -1,8 +1,10 @@
 import React from 'react';
-import {CustomRoot, mountWithApp} from 'tests/utilities';
+import {mountWithApp} from 'tests/utilities';
+import type {CustomRoot} from 'tests/utilities';
 
 import type {WithPolarisTestProviderOptions} from '../../PolarisTestProvider';
-import {Collapsible, CollapsibleProps} from '../Collapsible';
+import {Collapsible} from '../Collapsible';
+import type {CollapsibleProps} from '../Collapsible';
 
 const mockScrollHeight = 2;
 
