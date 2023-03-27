@@ -3,56 +3,80 @@ import {
   LegacyCard,
   useIndexResourceState,
   Text,
+  Inline,
+  Badge,
+  AlphaStack,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function SimpleSmallScreenIndexTableExample() {
-  const customers = [
+  const orders = [
     {
-      id: '3412',
-      url: '#',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$2,400',
+      id: '1020',
+      order: '#1020',
+      date: 'Jul 20 at 4:34pm',
+      customer: 'Jaydon Stanton',
+      total: '$969.44',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
     },
     {
-      id: '2562',
-      url: '#',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
+      id: '1019',
+      order: '#1019',
+      date: 'Jul 20 at 3:46pm',
+      customer: 'Ruben Westerfelt',
+      total: '$701.19',
+      paymentStatus: <Badge progress="partiallyComplete">Partially paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1018',
+      order: '#1018',
+      date: 'Jul 20 at 3.44pm',
+      customer: 'Leo Carder',
+      total: '$798.24',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
     },
   ];
   const resourceName = {
-    singular: 'customer',
-    plural: 'customers',
+    singular: 'order',
+    plural: 'orders',
   };
 
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
-    useIndexResourceState(customers);
+    useIndexResourceState(orders);
 
-  const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
       >
-        <div style={{padding: '12px 16px'}}>
-          <Text fontWeight="bold" as="p">
-            {name}
-          </Text>
-          <p>{location}</p>
-          <Text as="p" alignment="end" numeric>
-            {orders}
-          </Text>
-          <Text as="p" alignment="end" numeric>
-            {amountSpent}
-          </Text>
+        <div style={{padding: '12px 16px', width: '100%'}}>
+          <AlphaStack gap="1">
+            <Text as="span" variant="bodySm" color="subdued">
+              {order} • {date}
+            </Text>
+            <Inline align="space-between">
+              <Text as="span" variant="bodyMd" fontWeight="semibold">
+                {customer}
+              </Text>
+              <Text as="span" variant="bodyMd">
+                {total}
+              </Text>
+            </Inline>
+            <Inline align="start" gap="1">
+              {paymentStatus}
+              {fulfillmentStatus}
+            </Inline>
+          </AlphaStack>
         </div>
       </IndexTable.Row>
     ),
@@ -63,31 +87,19 @@ function SimpleSmallScreenIndexTableExample() {
       <LegacyCard>
         <IndexTable
           resourceName={resourceName}
-          itemCount={customers.length}
+          itemCount={orders.length}
           selectedItemsCount={
             allResourcesSelected ? 'All' : selectedResources.length
           }
-          onSelectionChange={handleSelectionChange}
           condensed
+          onSelectionChange={handleSelectionChange}
           headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {
-              id: 'order-count',
-              title: (
-                <Text as="span" alignment="end">
-                  Order count
-                </Text>
-              ),
-            },
-            {
-              id: 'amount-spent',
-              title: (
-                <Text as="span" fontWeight="medium" alignment="end">
-                  Amount spent
-                </Text>
-              ),
-            },
+            {title: 'Order'},
+            {title: 'Date'},
+            {title: 'Customer'},
+            {title: 'Total', alignment: 'end'},
+            {title: 'Payment status'},
+            {title: 'Fulfillment status'},
           ]}
         >
           {rowMarkup}

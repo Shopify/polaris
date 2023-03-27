@@ -1,5 +1,5 @@
 import {
-  Filters,
+  LegacyFilters,
   EmptyState,
   Page,
   Layout,
@@ -15,7 +15,7 @@ function ResourceListWithEmptyStateExample() {
   const filters: any[] = [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       disabled={!items.length}
       queryValue=""
       filters={filters}

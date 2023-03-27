@@ -1,6 +1,6 @@
 ---
 title: Legacy filters
-description: LegacyFilters is a composite component that filters the items of a list or table.
+description: This is a legacy version of the Filters component, which is a composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters
@@ -12,7 +12,7 @@ keywords:
   - table
 status:
   value: Legacy
-  message: This is a legacy component and will be deprecated. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+  message: This is a legacy component and will be deprecated. The new [Filters component](/components/selection-and-input/filters) can be used as a standalone component, but is used primarily within the [IndexFilters](/components/selection-and-input/index-filters) for sorting and filtering IndexTables. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: legacy-filters-with-a-resource-list.tsx
     title: With a resource list
