@@ -152,7 +152,9 @@
       "clearAllFilters": "Rensa filter",
       "clear": "Rensa",
       "clearLabel": "Rensa {filterName}",
-      "moreFiltersWithCount": "Fler filter ({count})"
+      "moreFiltersWithCount": "Fler filter ({count})",
+      "addFilter": "Lägg till filter",
+      "clearFilters": "Rensa alla"
     },
     "Modal": {
       "iFrameTitle": "markering av brödtext",
@@ -201,7 +203,50 @@
       "loadingLabel": "Sidan laddar"
     },
     "Tabs": {
-      "toggleTabsLabel": "Fler flikar"
+      "toggleTabsLabel": "Fler vyer",
+      "newViewAccessibilityLabel": "Skapa ny vy",
+      "newViewTooltip": "Skapa vy",
+      "Tab": {
+        "rename": "Döp om vy",
+        "duplicate": "Duplicera vy",
+        "edit": "Redigera vy",
+        "editColumns": "Redigera kolumner",
+        "delete": "Radera vy",
+        "copy": "Kopia av {name}",
+        "deleteModal": {
+          "title": "Radera vy?",
+          "description": "Du kan inte ångra detta. {viewName}-visning kommer inte längre vara tillgänglig i din admin.",
+          "cancel": "Avbryt",
+          "delete": "Radera vy"
+        }
+      },
+      "RenameModal": {
+        "title": "Byt namn på vy",
+        "label": "Namn",
+        "cancel": "Avbryt",
+        "create": "Spara",
+        "errors": {
+          "sameName": "En vy med detta namn finns redan. Välj ett annat namn."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplicera vy",
+        "label": "Namn",
+        "cancel": "Avbryt",
+        "create": "Skapa vy",
+        "errors": {
+          "sameName": "En vy med detta namn finns redan. Välj ett annat namn."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Skapa ny vy",
+        "label": "Namn",
+        "cancel": "Avbryt",
+        "create": "Skapa vy",
+        "errors": {
+          "sameName": "En vy med detta namn finns redan. Välj ett annat namn."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Ta bort {children}"
@@ -305,6 +350,40 @@
     "FullscreenBar": {
       "back": "Tillbaka",
       "accessibilityLabel": "Lämna helskärmsläget"
+    },
+    "FilterPill": {
+      "clear": "Rensa"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Sök och filtrera (F)",
+      "searchFilterAccessibilityLabel": "Sök och filtrera resultat",
+      "sort": "Sortera dina resultat",
+      "addView": "Lägg till en ny vy",
+      "newView": "Anpassad sökning",
+      "SortButton": {
+        "ariaLabel": "Sortera resultatet",
+        "tooltip": "Sortera",
+        "title": "Sortera efter",
+        "sorting": {
+          "asc": "Stigande",
+          "desc": "Fallande",
+          "az": "A–Ö",
+          "za": "Ö–A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Avbryt",
+        "update": "Uppdatera",
+        "save": "Spara",
+        "saveAs": "Spara som",
+        "modal": {
+          "title": "Spara vy som",
+          "label": "Namn",
+          "sameName": "En vy med detta namn finns redan. Välj ett annat namn.",
+          "save": "Spara",
+          "cancel": "Avbryt"
+        }
+      }
     }
   }
 }

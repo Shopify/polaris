@@ -79,7 +79,11 @@ function FiltersExample() {
               onClearAll={handleClearAll}
             >
               <div style={{paddingLeft: '8px'}}>
-                <Button onClick={() => console.log('New filter saved')}>
+                <Button
+                  onClick={() => console.log('New filter saved')}
+                  primary
+                  plain
+                >
                   Save
                 </Button>
               </div>

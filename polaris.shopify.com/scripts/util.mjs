@@ -118,7 +118,7 @@ export function genAssets() {
   });
 }
 
-export function startLocalServer(command = 'start') {
+export function startLocalServer(command = 'dev') {
   return prettyExeca('yarn', ['next', command], {
     stdout: 'ignore',
     stderr: 'pipe',
