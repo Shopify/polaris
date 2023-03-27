@@ -1054,6 +1054,14 @@ function ImagePicker({
   const imageIsValid =
     image.lightModeFilename && image.alt && image.width && image.height;
   const buttonId = useId();
+
+  useEffect(() => {
+    if (active) {
+      setWidthValue(image.width.toString());
+      setHeightValue(image.height.toString());
+    }
+  }, [active]);
+
   return (
     <Modal
       activator={
@@ -1063,10 +1071,7 @@ function ImagePicker({
               src={`/images/content/actionable-language/${image.lightModeFilename}`}
               alt={image.alt}
               {...getImageDimensions(
-                {
-                  width: image.width,
-                  height: image.height,
-                },
+                {width: image.width, height: image.height},
                 200,
               )}
             />

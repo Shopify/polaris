@@ -239,6 +239,13 @@ componentCategories
           },
           keywords: frontMatter.keywords?.map((kw) => kw.toString()) || [],
           hasSeparatorInNav: false,
+          thumbnailImage: {
+            lightModeFilename: `${slug}.png`,
+            darkModeFilename: '',
+            alt: `Thumbnail for the ${frontMatter.title} component`,
+            width: 1575,
+            height: 900,
+          },
         },
         readme,
       );
@@ -943,16 +950,25 @@ createPage({
 });
 
 // Create file
-const file = `import { Content } from '@/types';
+const file = `import { State } from '@/types';
 
 /*
   Automatically generated file (created by /api/editor.tsx).
   Do not edit by hand.
 */
 
-const pages : Content['pages'] = ${JSON.stringify(pages, null, 2)};
+const pages : State['pages'] = ${JSON.stringify(pages, null, 2)};
 
-export const content : Content = { pages };
+export const content : State = { pages };
 `;
 
 fs.writeFileSync('content.ts', file, 'utf8');
+
+// Migrate images
+fs.rmSync('./public/images', {recursive: true, force: true});
+fs.mkdirSync('./public/images');
+
+globbySync('./legacy/images', {onlyFiles: true}).forEach((file) => {
+  const fileName = file.split('/').pop();
+  fs.copyFileSync(file, `./public/images/${fileName}`);
+});

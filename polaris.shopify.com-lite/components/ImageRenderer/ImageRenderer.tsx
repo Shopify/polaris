@@ -28,19 +28,19 @@ function ImageRenderer({image, width}: {image: ImageType; width: number}) {
   }, []);
 
   const canSafelySkipRenderingOfLightModeImage =
-    !isInitialLoad && prefersDarkMode && image.variants['dark'];
+    !isInitialLoad && prefersDarkMode && image.darkModeFilename;
+
+  const metaIsValid = image.width && image.height && image.alt;
+  if (!metaIsValid) return null;
 
   return (
     <>
-      {image.variants['dark'] && (
+      {image.darkModeFilename && (
         <Image
-          src={`/uploads/${image.variants['dark'].fileName}`}
+          src={`/images/${image.darkModeFilename}`}
           alt={image.alt}
           {...getImageDimensions(
-            {
-              width: image.variants['dark'].width,
-              height: image.variants['dark'].height,
-            },
+            {width: image.width, height: image.height},
             width,
           )}
           className={styles.DarkModeImage}
@@ -49,18 +49,15 @@ function ImageRenderer({image, width}: {image: ImageType; width: number}) {
 
       {!canSafelySkipRenderingOfLightModeImage && (
         <Image
-          src={`/uploads/${image.variants['light'].fileName}`}
+          src={`/images/${image.lightModeFilename}`}
           alt={image.alt}
           {...getImageDimensions(
-            {
-              width: image.variants['light'].width,
-              height: image.variants['light'].height,
-            },
+            {width: image.width, height: image.height},
             width,
           )}
           className={className(
             styles.LightModeImage,
-            image.variants['dark'] && styles.darkModeImageAvailable,
+            image.darkModeFilename && styles.darkModeImageAvailable,
           )}
         />
       )}

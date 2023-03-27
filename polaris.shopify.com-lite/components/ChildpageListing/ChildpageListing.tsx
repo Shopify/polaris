@@ -13,14 +13,14 @@ function ChildpageListing({pages}: Props) {
   return (
     <div className={styles.ChildpageListing}>
       {pages.map((page) => {
-        const thumbnail = page.images.find(
-          (image) => image.id === page.thumbnailImageId,
-        );
         return (
           <Link href={page.url} key={page.id} className={styles.Page}>
-            {thumbnail ? (
+            {page.thumbnailImage.alt &&
+            page.thumbnailImage.lightModeFilename &&
+            page.thumbnailImage.width &&
+            page.thumbnailImage.height ? (
               <div className={styles.Thumbnail}>
-                <ImageRenderer image={thumbnail} width={368} />
+                <ImageRenderer image={page.thumbnailImage} width={368} />
               </div>
             ) : (
               <div
