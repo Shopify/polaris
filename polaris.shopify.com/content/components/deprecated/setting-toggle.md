@@ -50,13 +50,13 @@ If the setting is dependent on other settings, uses progressive disclosure, or h
 
 Only include the actions Turn on/ Turn off.
 
-![Setting toggle do](/images/components/selection-and-input/setting-toggle/Do.png)
+![Setting toggle do](/images/components/deprecated/setting-toggle/Do.png)
 
 #### Don’t
 
 Don't include additional settings or inputs.
 
-![Setting toggle dont](/images/components/selection-and-input/setting-toggle/Dont.png)
+![Setting toggle dont](/images/components/deprecated/setting-toggle/Dont.png)
 
 <!-- end -->
 
