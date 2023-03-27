@@ -7,7 +7,7 @@ import {
   Text,
   Badge,
 } from '@shopify/polaris';
-import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
+import type {IndexFiltersProps, AlphaTabProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -36,7 +36,7 @@ function IndexFiltersWithNoFiltersExample() {
     return true;
   };
 
-  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},

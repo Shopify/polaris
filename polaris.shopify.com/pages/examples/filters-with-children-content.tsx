@@ -81,7 +81,6 @@ function FiltersExample() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   onClick={() => console.log('New filter saved')}
-                  size="micro"
                   primary
                   plain
                 >

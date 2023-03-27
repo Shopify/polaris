@@ -76,7 +76,6 @@ function DisableAllFiltersExample() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
-                  size="micro"
                   primary
                   plain
                   onClick={() => console.log('New filter saved')}
@@ -86,7 +85,6 @@ function DisableAllFiltersExample() {
               </div>
             </Filters>
           }
-          flushFilters
           items={[
             {
               id: '341',

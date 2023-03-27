@@ -128,15 +128,17 @@ function DataTableFiltersExample() {
   return (
     <div style={{height: '568px'}}>
       <LegacyCard>
-        <Filters
-          queryValue={queryValue}
-          queryPlaceholder="Search items"
-          filters={filters}
-          appliedFilters={appliedFilters}
-          onQueryChange={handleFiltersQueryChange}
-          onQueryClear={handleQueryValueRemove}
-          onClearAll={handleFiltersClearAll}
-        />
+        <LegacyCard.Section>
+          <Filters
+            queryValue={queryValue}
+            queryPlaceholder="Search items"
+            filters={filters}
+            appliedFilters={appliedFilters}
+            onQueryChange={handleFiltersQueryChange}
+            onQueryClear={handleQueryValueRemove}
+            onClearAll={handleFiltersClearAll}
+          />
+        </LegacyCard.Section>
         <DataTable
           columnContentTypes={[
             'text',
