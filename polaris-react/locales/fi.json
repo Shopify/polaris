@@ -152,7 +152,9 @@
       "clearAllFilters": "Tyhjennä kaikki suodattimet",
       "clear": "Tyhjennä",
       "clearLabel": "Tyhjennä {filterName}",
-      "moreFiltersWithCount": "Lisää suodattimia ({count})"
+      "moreFiltersWithCount": "Lisää suodattimia ({count})",
+      "addFilter": "Lisää suodatin",
+      "clearFilters": "Tyhjennä kaikki"
     },
     "Modal": {
       "iFrameTitle": "tekstin merkintä",
@@ -201,7 +203,50 @@
       "loadingLabel": "Sivu latautuu"
     },
     "Tabs": {
-      "toggleTabsLabel": "Lisää välilehtiä"
+      "toggleTabsLabel": "Enemmän näkymiä",
+      "newViewAccessibilityLabel": "Luo uusi näkymä",
+      "newViewTooltip": "Luo näkymä",
+      "Tab": {
+        "rename": "Nimeä näkymä uudelleen",
+        "duplicate": "Kopioi näkymä",
+        "edit": "Muokkaa näkymää",
+        "editColumns": "Muokkaa sarakkeita",
+        "delete": "Poista näkymä",
+        "copy": "Kopio tiedostosta {name}",
+        "deleteModal": {
+          "title": "Haluatko poistaa näkymän?",
+          "description": "Tätä ei voi kumota. Näkymä {viewName} ei ole enää käytettävissä Adminissasi.",
+          "cancel": "Peruuta",
+          "delete": "Poista näkymä"
+        }
+      },
+      "RenameModal": {
+        "title": "Nimeä näkymä uudelleen",
+        "label": "Nimi",
+        "cancel": "Peruuta",
+        "create": "Tallenna",
+        "errors": {
+          "sameName": "Tämän niminen näkymä on jo olemassa. Valitse toinen nimi."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Kopioi näkymä",
+        "label": "Nimi",
+        "cancel": "Peruuta",
+        "create": "Luo näkymä",
+        "errors": {
+          "sameName": "Tämän niminen näkymä on jo olemassa. Valitse toinen nimi."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Luo uusi näkymä",
+        "label": "Nimi",
+        "cancel": "Peruuta",
+        "create": "Luo näkymä",
+        "errors": {
+          "sameName": "Tämän niminen näkymä on jo olemassa. Valitse toinen nimi."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Poista {children}"
@@ -305,6 +350,40 @@
     "FullscreenBar": {
       "back": "Takaisin",
       "accessibilityLabel": "Poistu koko näytön tilasta"
+    },
+    "FilterPill": {
+      "clear": "Tyhjennä"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Hae ja suodata (F)",
+      "searchFilterAccessibilityLabel": "Hae ja suodata tuloksia",
+      "sort": "Lajittele tuloksesi",
+      "addView": "Lisää uusi näkymä",
+      "newView": "Mukautettu haku",
+      "SortButton": {
+        "ariaLabel": "Lajittele tulokset",
+        "tooltip": "Lajittele",
+        "title": "Lajitteluperuste",
+        "sorting": {
+          "asc": "Nouseva",
+          "desc": "Laskeva",
+          "az": "A–Ö",
+          "za": "Ö–A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Peruuta",
+        "update": "Päivitä",
+        "save": "Tallenna",
+        "saveAs": "Tallenna nimellä",
+        "modal": {
+          "title": "Tallenna näkymä nimellä",
+          "label": "Nimi",
+          "sameName": "Tämän niminen näkymä on jo olemassa. Valitse toinen nimi.",
+          "save": "Tallenna",
+          "cancel": "Peruuta"
+        }
+      }
     }
   }
 }

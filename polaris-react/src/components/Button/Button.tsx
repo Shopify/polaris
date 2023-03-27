@@ -31,7 +31,7 @@ export interface ButtonProps extends BaseButton {
    * Changes the size of the button, giving it more or less padding
    * @default 'medium'
    */
-  size?: 'slim' | 'medium' | 'large';
+  size?: 'micro' | 'slim' | 'medium' | 'large';
   /** Changes the inner text alignment of the button */
   textAlign?: 'left' | 'right' | 'center' | 'start' | 'end';
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
@@ -139,9 +139,10 @@ export function Button({
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
+    primary && plain && styles.primaryPlain,
     isDisabled && styles.disabled,
     loading && styles.loading,
-    plain && styles.plain,
+    plain && !primary && styles.plain,
     pressed && !disabled && !url && styles.pressed,
     monochrome && styles.monochrome,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
