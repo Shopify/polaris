@@ -1068,7 +1068,7 @@ function ImagePicker({
         <>
           {imageIsValid && (
             <Image
-              src={`/images/content/actionable-language/${image.lightModeFilename}`}
+              src={`/images/${image.lightModeFilename}`}
               alt={image.alt}
               {...getImageDimensions(
                 {width: image.width, height: image.height},
@@ -1079,10 +1079,12 @@ function ImagePicker({
           <Button id={buttonId} onClick={() => setIsActive(true)}>
             {imageIsValid ? 'Replace' : 'Select'} image
           </Button>
-          <InlineError
-            message={'Missing required information'}
-            fieldID={buttonId}
-          />
+          {!imageIsValid && (
+            <InlineError
+              message={'Missing required information'}
+              fieldID={buttonId}
+            />
+          )}
         </>
       }
       open={active}

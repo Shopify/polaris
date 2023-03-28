@@ -445,16 +445,6 @@ const contributingToTheWebsiteBlocks = [
 Each page is represented by a Typescript object that contains all the information about the page.`,
   },
   {
-    id: 'Fs0dfl2APIGisWpSOaMbH',
-    blockType: 'Code',
-    code: {
-      javascript: {
-        title: '',
-        code: '{\n    id: "SIC6mp1SHvcUtS98_DTHb",\n    title: "Home",\n    excerpt: "",\n    slug: "",\n    parentId: null,\n    order: 0,\n    layout: "blocks",\n    blocks: [],\n    allowChildren: false,\n    hideInNav: true,\n    noIndex: false,\n    keywords: [],\n    childPageMetaType: null,\n    pageMeta: null,\n    hasSeparatorInNav: false,\n    thumbnailImageId: null\n}',
-      },
-    },
-  },
-  {
     id: '3f67h7MDYwvoRHoYTAZfU',
     blockType: 'Markdown',
     content: `### Blocks
@@ -469,44 +459,14 @@ Every page can contain blocks. There are many types of blocks to choose from:
 And more. A block is defined in Typescript using a simple object. Every object has an \`id\` and a \`blockType\`:`,
   },
   {
-    id: 'YW9IeYADI0Iiy75NBWOoS',
-    blockType: 'Code',
-    code: {
-      javascript: {
-        title: '',
-        code: '{\n    id: "_Oz0-L-OBwpOSrXPMFqb0",\n    blockType: "Markdown",\n    ...\n}',
-      },
-    },
-  },
-  {
     id: '8IZchJG6-k7F27BvaT2ay',
     blockType: 'Markdown',
     content: `You can add more fields to each block. The available fields depend on which \`blockType\` you use. For instance, the Youtube block accepts a URL field:`,
   },
   {
-    id: 'vwLt4tc_P4NmnK_JnSFz6',
-    blockType: 'Code',
-    code: {
-      javascript: {
-        title: '',
-        code: "{\n    id: \"_Oz0-L-OBwpOSrXPMFqb0\",\n    blockType: 'YoutubeVideo';\n    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';\n}",
-      },
-    },
-  },
-  {
     id: 'bBmDBbwLADywIhJwDDpcE',
     blockType: 'Markdown',
     content: `Blocks are added to the \`Page\` on the \`blocks\` property. The property is an array that takes \`Block\` objects:`,
-  },
-  {
-    id: 'wPIrww6xoGi0aPUBjOPeS',
-    blockType: 'Code',
-    code: {
-      javascript: {
-        title: '',
-        code: "{\n    id: \"SIC6mp1SHvcUtS98_DTHb\",\n    ...\n    blocks: [\n        {\n            blockType: 'YoutubeVideo';\n            youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';\n        }\n        ...\n    ],\n}",
-      },
-    },
   },
   {
     id: 'AnGTB6rJHT-R5MtLGtDYC',
@@ -806,10 +766,7 @@ createPage({
   hideInNav: false,
   noIndex: false,
   childPageMetaType: null,
-  pageMeta: {
-    type: 'tokens',
-    tokenGroup: 'colors',
-  },
+  pageMeta: null,
   keywords: [],
   hasSeparatorInNav: false,
 });
@@ -826,10 +783,7 @@ createPage({
   hideInNav: false,
   noIndex: false,
   childPageMetaType: null,
-  pageMeta: {
-    type: 'tokens',
-    tokenGroup: 'font',
-  },
+  pageMeta: null,
   keywords: [],
   hasSeparatorInNav: false,
 });
@@ -846,10 +800,7 @@ createPage({
   hideInNav: false,
   noIndex: false,
   childPageMetaType: null,
-  pageMeta: {
-    type: 'tokens',
-    tokenGroup: 'shape',
-  },
+  pageMeta: null,
   keywords: [],
   hasSeparatorInNav: false,
 });
@@ -866,10 +817,7 @@ createPage({
   hideInNav: false,
   noIndex: false,
   childPageMetaType: null,
-  pageMeta: {
-    type: 'tokens',
-    tokenGroup: 'spacing',
-  },
+  pageMeta: null,
   keywords: [],
   hasSeparatorInNav: false,
 });
@@ -886,10 +834,7 @@ createPage({
   hideInNav: false,
   noIndex: false,
   childPageMetaType: null,
-  pageMeta: {
-    type: 'tokens',
-    tokenGroup: 'depth',
-  },
+  pageMeta: null,
   keywords: [],
   hasSeparatorInNav: false,
 });
@@ -906,10 +851,7 @@ createPage({
   hideInNav: false,
   noIndex: false,
   childPageMetaType: null,
-  pageMeta: {
-    type: 'tokens',
-    tokenGroup: 'motion',
-  },
+  pageMeta: null,
   keywords: [],
   hasSeparatorInNav: false,
 });
@@ -926,10 +868,7 @@ createPage({
   hideInNav: false,
   noIndex: false,
   childPageMetaType: null,
-  pageMeta: {
-    type: 'tokens',
-    tokenGroup: 'breakpoints',
-  },
+  pageMeta: null,
   keywords: [],
   hasSeparatorInNav: false,
 });
@@ -946,10 +885,7 @@ createPage({
   hideInNav: false,
   noIndex: false,
   childPageMetaType: null,
-  pageMeta: {
-    type: 'tokens',
-    tokenGroup: 'zIndex',
-  },
+  pageMeta: null,
   keywords: [],
   hasSeparatorInNav: false,
 });

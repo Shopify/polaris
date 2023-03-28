@@ -70,7 +70,9 @@ function ImageBlock({block}: {block: ImageBlock}) {
 function TextImageBlock({block}: {block: TextImageBlock}) {
   return (
     <div className={styles.ImageText}>
-      <Markdown>{block.content}</Markdown>
+      <div>
+        <Markdown>{block.content}</Markdown>
+      </div>
       <div>
         <ImageRenderer image={block.image} width={500} />
       </div>
