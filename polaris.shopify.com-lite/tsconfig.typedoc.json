@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["../polaris-react/src/index.ts"]
+}

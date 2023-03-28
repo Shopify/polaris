@@ -4,7 +4,7 @@ import {getPageUrl} from '@/utils';
 import {NavItems} from '@/types';
 import Frame from '@/components/Frame';
 
-export async function getNavItems(): Promise<NavItems> {
+async function getNavItems(): Promise<NavItems> {
   return content.pages
     .filter((page) => !page.hideInNav)
     .map((page) => {

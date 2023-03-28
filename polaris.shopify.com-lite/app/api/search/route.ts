@@ -74,9 +74,7 @@ export async function GET(req: NextRequest) {
             .join(' '),
         url: getPageUrl(content, page),
         urlAppendix: '',
-        thumbnail: page.images.find(
-          (image) => image.id === page.thumbnailImageId,
-        ),
+        thumbnail: page.thumbnailImage,
         type: SearchResultType.Page,
       }));
 

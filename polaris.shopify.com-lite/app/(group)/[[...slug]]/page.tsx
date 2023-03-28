@@ -21,7 +21,7 @@ import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {JSONOutput} from 'typedoc';
 import styles from './page.module.scss';
-import ComponentMeta from './ComponentMeta';
+import ComponentMeta from './componentMeta';
 import Markdown from '@/components/Markdown';
 import {HOME_PAGE_ID} from '@/config';
 

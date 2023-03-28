@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "get-props": "typedoc"
+    "get-props": "typedoc --tsconfig tsconfig.typedoc.json"
   },
   "dependencies": {
     "@shopify/polaris": "^10.33.0",
