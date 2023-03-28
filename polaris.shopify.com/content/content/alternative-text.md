@@ -91,7 +91,7 @@ Always write alt text in plain text. The average rate of listening to a screen r
 - Avoid needless words. If a phrase is still understandable without a specific word, remove it.
 - Remove articles like "a, an, one of," etc. whenever possible. Alt text has different grammatical rules. "Filler words" that assist understanding in speech can get in the way in alt text.
 - Avoid using "image of" or "photograph" unless the type of image is relevant to the context. Screenreaders already announce images with use of the `<img>` attribute.
-- Avoid punctuation like `!!` and emoji like 🥰. Screen readers will announce these as "exclamation point, exclamation point" and "smiling face with three hearts." Do use other punctuation marks as you regularly would, such as commas or periods at the ends of the sentences. The screen-reader will react with a brief pause.
+- Avoid punctuation like `!!` and emoji like 🥰. Screen readers will announce these as "exclamation point, exclamation point" and "smiling face with three hearts." Use other punctuation marks as you regularly would, such as commas, or periods at the ends of the sentences. The screen-reader will react with a brief pause.
 - Only use acronyms you are confident your audience will understand. If using an acronym, write it with spaces in-between, like "Y M C A." Otherwise, most screen readers will try to read the acronym as a word.
 - Write in the [active voice](/content/grammar-and-mechanics#basics) when possible.
 
@@ -241,8 +241,8 @@ When accounting for SEO in your alt text:
 
 ## Resources
 
-For more information on coding and alt text standards, visit the
-[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/intro/wcag.php) or [WebAIM Alternative Text Guidelines](https://webaim.org/techniques/alttext/). Read some more [considerations when writing alt text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204) from our accessibility specialist.
+For detailed guidance on coding and alt text standards, visit the
+[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/intro/wcag.php) or [WebAIM Alternative Text Guidelines](https://webaim.org/techniques/alttext/). You can also read some more [considerations when writing alt text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204) from our accessibility specialist.
 
 ## Related components
 
