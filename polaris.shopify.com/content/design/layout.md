@@ -24,9 +24,11 @@ description: Polaris layout components let you quickly build custom layouts with
 
 ## What are layout components?
 
-Polaris [layout components](/components/layout-and-structure) define the structure and spacing of user interfaces in a fast and composable way. They create consistent layouts across all components and pages of an application. Developers can use these components to quickly create flexible pages and features without worrying about the underlying structure or CSS code.
+Polaris layout components define the structure and spacing of user interfaces in a fast and composable way. They create consistent layouts across all components and pages of an application. Developers can use these components to quickly create flexible pages and features without worrying about the underlying structure or CSS code.
 
 Each layout component encapsulates CSS styles commonly found in the Shopify admin. Passing different values to the component props will render different CSS styles.
+
+You can browse all [layout and structure components](/components/layout-and-structure), as well as view usage guidelines and examples for each component.
 
 ---
 
@@ -53,23 +55,16 @@ Layout components are intended to solve about 80% of layout use cases. But they 
 
 </div>
 
-## Designing with layout components
-
-When designing layouts, reference these resources:
-
-- Browse all [layout and structure components](/components/layout-and-structure), and view usage guidelines and examples for each component.
-- In the Polaris Figma component library, the “Layout” section contains all available building blocks for layout, as well as breakpoints.
-
-### Breakpoints and spacing
+## Breakpoints and spacing
 
 All layout components use the breakpoint scale and tokens. Consequently, consider how spacing can affect a layout, depending on screen size. On smaller screens, elements will be tighter. On medium to large screens, cards will be side by side and have more room.
+
+To ensure designs are responsive, reference the breakpoints and examples in the Polaris [Space](/design/space) documentation.
 
 <video width="100%" height="auto" controls autoplay muted loop>
   <source src="/images/foundations/design/space/breakpoints.mp4" type="video/mp4">
   <p>Browser window resizing with the overlayed column grid dynamically adjusting to the size</p>
 </video>
-
-To ensure designs are responsive, reference the breakpoints and examples in the Polaris [Space](/design/space) documentation.
 
 ## Layout component examples
 
