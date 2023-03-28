@@ -72,7 +72,7 @@ export interface BaseButton {
   /** Indicates the current checked state of the button when acting as a toggle or switch */
   ariaChecked?: 'false' | 'true';
   /** Callback when clicked */
-  onClick?(): void;
+  onClick?(): unknown;
   /** Callback when button becomes focussed */
   onFocus?(): void;
   /** Callback when focus leaves button */
@@ -364,3 +364,34 @@ export interface CheckboxHandles {
 export type NonEmptyArray<T> = [T, ...T[]];
 
 export type ArrayElement<T> = T extends (infer U)[] ? U : never;
+
+export interface AppliedFilterInterface {
+  /** A unique key used to identify the applied filter */
+  key: string;
+  /** A label for the applied filter */
+  label: string;
+  /** Callback when the remove button is pressed */
+  onRemove(key: string): void;
+}
+
+export interface FilterInterface {
+  /** A unique key used to identify the filter */
+  key: string;
+  /** The label for the filter */
+  label: string;
+  /** The markup for the given filter */
+  filter: React.ReactNode;
+  /** Whether or not the filter should have a shortcut popover displayed */
+  shortcut?: boolean;
+  /** Whether or not the filter should be pinned, permanently displaying the filter */
+  pinned?: boolean;
+  /** Whether or not the filter is disabled */
+  disabled?: boolean;
+  /**
+   * @default false
+   * Whether or not the clear button is displayed
+   */
+  hideClearButton?: boolean;
+  /** Optional callback when filter is pressed */
+  onAction?: () => void;
+}

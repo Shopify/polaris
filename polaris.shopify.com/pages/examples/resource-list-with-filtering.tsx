@@ -1,6 +1,6 @@
 import {
   TextField,
-  Filters,
+  LegacyFilters,
   Button,
   LegacyCard,
   ResourceList,
@@ -81,7 +81,7 @@ function ResourceListWithFilteringExample() {
       : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -92,7 +92,7 @@ function ResourceListWithFilteringExample() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (

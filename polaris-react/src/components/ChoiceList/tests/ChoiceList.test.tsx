@@ -5,7 +5,8 @@ import {Bleed} from '../../Bleed';
 import {Checkbox} from '../../Checkbox';
 import {InlineError} from '../../InlineError';
 import {RadioButton} from '../../RadioButton';
-import {ChoiceList, ChoiceListProps} from '../ChoiceList';
+import {ChoiceList} from '../ChoiceList';
+import type {ChoiceListProps} from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
   let choices: ChoiceListProps['choices'];

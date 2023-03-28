@@ -1,11 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import {
-  getMediaConditions,
-  removeMetadata,
-  MetaBreakpointsTokenGroup,
-} from '../src';
+import {getMediaConditions, removeMetadata} from '../src';
+import type {MetaBreakpointsTokenGroup} from '../src';
 
 const scssOutputDir = path.join(__dirname, '../dist/scss');
 const scssOutputPath = path.join(scssOutputDir, 'media-queries.scss');

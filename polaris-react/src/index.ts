@@ -25,6 +25,8 @@ export type {
   MenuGroupDescriptor,
   ConnectedDisclosure,
   CheckboxHandles,
+  AppliedFilterInterface,
+  FilterInterface,
 } from './types';
 
 // AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
@@ -49,8 +51,14 @@ export type {ActionMenuProps} from './components/ActionMenu';
 export {AlphaCard} from './components/AlphaCard';
 export type {AlphaCardProps} from './components/AlphaCard';
 
+export {AlphaFilters} from './components/AlphaFilters';
+export type {AlphaFiltersProps} from './components/AlphaFilters';
+
 export {AlphaStack} from './components/AlphaStack';
 export type {AlphaStackProps} from './components/AlphaStack';
+
+export {AlphaTabs} from './components/AlphaTabs';
+export type {AlphaTabsProps, AlphaTabProps} from './components/AlphaTabs';
 
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
@@ -204,6 +212,16 @@ export type {IconProps} from './components/Icon';
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
+export {
+  IndexFilters,
+  useSetIndexFiltersMode,
+  IndexFiltersMode,
+} from './components/IndexFilters';
+export type {
+  IndexFiltersProps,
+  SortButtonChoice,
+} from './components/IndexFilters';
+
 export {IndexTable} from './components/IndexTable';
 export type {IndexTableProps} from './components/IndexTable';
 
@@ -246,11 +264,7 @@ export type {
 } from './components/LegacyCard';
 
 export {LegacyFilters} from './components/LegacyFilters';
-export type {
-  LegacyFiltersProps,
-  AppliedFilterInterface,
-  FilterInterface,
-} from './components/LegacyFilters';
+export type {LegacyFiltersProps} from './components/LegacyFilters';
 
 export {LegacyStack} from './components/LegacyStack';
 export type {LegacyStackProps} from './components/LegacyStack';

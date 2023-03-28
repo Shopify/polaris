@@ -1,5 +1,6 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
+import postcss from 'postcss';
+import type {Plugin} from 'postcss';
 import valueParser from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
@@ -7,9 +8,9 @@ import {
   getFunctionArgs,
   isSassFunction,
   namespace,
-  NamespaceOptions,
   createInlineComment,
 } from '../../utilities/sass';
+import type {NamespaceOptions} from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
 export default function v9ScssReplaceBorder(

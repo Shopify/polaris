@@ -4,7 +4,8 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Checkbox} from '../../Checkbox';
 import {Cell, Navigation} from '../components';
-import {DataTable, DataTableProps} from '../DataTable';
+import {DataTable} from '../DataTable';
+import type {DataTableProps} from '../DataTable';
 
 describe('<DataTable />', () => {
   const headings = ['Product', 'Price', 'Order Number', 'Quantity', 'Subtotal'];

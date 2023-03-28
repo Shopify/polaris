@@ -107,10 +107,9 @@ export const WithColor = () => (
 
 export const WithInheritance = () => (
   <Text as="p" variant="heading2xl" color="warning">
-    <LegacyStack vertical>
-      <Text as="span">This is a 2xl heading</Text>
-      <Text as="span">This is also a 2xl heading</Text>
-    </LegacyStack>
+    <Text as="span">This is a 2xl heading</Text>
+    <br />
+    <Text as="span">This is also a 2xl heading</Text>
   </Text>
 );
 

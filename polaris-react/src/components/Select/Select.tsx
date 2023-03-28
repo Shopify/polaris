@@ -3,7 +3,8 @@ import {SelectMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {useUniqueId} from '../../utilities/unique-id';
-import {Labelled, LabelledProps, helpTextID} from '../Labelled';
+import {Labelled, helpTextID} from '../Labelled';
+import type {LabelledProps} from '../Labelled';
 import {Box} from '../Box';
 import {Icon} from '../Icon';
 import {Text} from '../Text';

@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {Icon, IconProps} from '../Icon';
+import {Icon} from '../Icon';
+import type {IconProps} from '../Icon';
 import {Truncate} from '../Truncate';
 
 import styles from './ExceptionList.scss';

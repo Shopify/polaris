@@ -11,7 +11,8 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 
-import {TooltipOverlay, TooltipOverlayProps} from './components';
+import {TooltipOverlay} from './components';
+import type {TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
@@ -193,11 +194,14 @@ export function Tooltip({
       onBlur={() => {
         handleClose();
         handleBlur();
-        persistOnClick && togglePersisting();
+
+        if (persistOnClick) {
+          togglePersisting();
+        }
       }}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
-      onMouseDown={persistOnClick && togglePersisting}
+      onMouseDown={persistOnClick ? togglePersisting : undefined}
       ref={setActivator}
       onKeyUp={handleKeyUp}
       className={wrapperClassNames}

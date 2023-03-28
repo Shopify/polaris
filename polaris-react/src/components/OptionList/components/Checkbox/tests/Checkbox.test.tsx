@@ -1,7 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Checkbox, CheckboxProps} from '../Checkbox';
+import {Checkbox} from '../Checkbox';
+import type {CheckboxProps} from '../Checkbox';
 
 describe('<Checkbox />', () => {
   const defaultProps: CheckboxProps = {

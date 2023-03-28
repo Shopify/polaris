@@ -7,42 +7,50 @@ function AlphaStackWithInlineAlignExample() {
   return (
     <Page>
       <AlphaStack gap="8">
-        <AlphaStack gap="025" inlineAlign="start">
-          <Placeholder height="48px" width="320px" label="Start" />
-          <Placeholder height="48px" width="320px" />
-          <Placeholder height="48px" width="320px" />
+        <AlphaStack inlineAlign="start">
+          <Placeholder height="48px" width="320px" label="Start" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
         <Divider />
-        <AlphaStack gap="025" inlineAlign="center">
-          <Placeholder height="48px" width="320px" label="Center" />
-          <Placeholder height="48px" width="320px" />
-          <Placeholder height="48px" width="320px" />
+        <AlphaStack inlineAlign="center">
+          <Placeholder height="48px" width="320px" label="Center" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
         <Divider />
-        <AlphaStack gap="025" inlineAlign="end">
-          <Placeholder height="48px" width="320px" label="End" />
-          <Placeholder height="48px" width="320px" />
-          <Placeholder height="48px" width="320px" />
+        <AlphaStack inlineAlign="end">
+          <Placeholder height="48px" width="320px" label="End" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
       </AlphaStack>
     </Page>
   );
 }
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  showBorder = false,
+}) => {
   return (
     <div
       style={{
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         padding: '14px var(--p-space-2)',
         height: height,
         width: width,
+        borderBlockEnd: showBorder
+          ? '1px dashed var(--p-color-bg-success-subdued)'
+          : 'none',
       }}
     >
       <Inline align="center">
         <div
           style={{
-            color: '#FFFFFF',
+            color: 'var(--p-color-text-on-color)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="regular">

@@ -8,7 +8,8 @@ import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
-import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
+import {AlphaPicker, HuePicker, Slidable} from './components';
+import type {SlidableProps} from './components';
 import styles from './ColorPicker.scss';
 
 interface State {

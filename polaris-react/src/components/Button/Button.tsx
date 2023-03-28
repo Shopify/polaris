@@ -7,16 +7,15 @@ import {
 
 import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
-import {
-  handleMouseUpByBlurring,
-  MouseUpBlurHandler,
-} from '../../utilities/focus';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
+import type {MouseUpBlurHandler} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
-import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
+import {UnstyledButton} from '../UnstyledButton';
+import type {UnstyledButtonProps} from '../UnstyledButton';
 import {useDisableClick} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';
@@ -32,7 +31,7 @@ export interface ButtonProps extends BaseButton {
    * Changes the size of the button, giving it more or less padding
    * @default 'medium'
    */
-  size?: 'slim' | 'medium' | 'large';
+  size?: 'micro' | 'slim' | 'medium' | 'large';
   /** Changes the inner text alignment of the button */
   textAlign?: 'left' | 'right' | 'center' | 'start' | 'end';
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
@@ -140,9 +139,10 @@ export function Button({
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
+    primary && plain && styles.primaryPlain,
     isDisabled && styles.disabled,
     loading && styles.loading,
-    plain && styles.plain,
+    plain && !primary && styles.plain,
     pressed && !disabled && !url && styles.pressed,
     monochrome && styles.monochrome,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],

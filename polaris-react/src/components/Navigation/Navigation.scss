@@ -98,13 +98,16 @@ $disabled-fade: 0.6;
   @include nav-item-attributes;
   position: relative;
 
-  border-radius: var(--p-border-radius-1);
-
   &:is(:hover, :focus-visible) {
     background: var(--p-color-bg-app-hover);
     color: var(--p-color-text);
     text-decoration: none;
   }
+}
+
+.Item,
+.ItemInnerWrapper {
+  border-radius: var(--p-border-radius-1);
 }
 
 .Item-selected {

@@ -1,4 +1,5 @@
-import React, {AllHTMLAttributes} from 'react';
+import React from 'react';
+import type {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {setMediaWidth} from 'tests/utilities/breakpoints';
