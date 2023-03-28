@@ -31,7 +31,7 @@ jobs:
         run: |
           # The "|| true" is used so that matches are saved but it always exit with status 0.
           # Without this, grep will exit with a status of 1 when no matches are found, ending the script.
-          files=$(git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | grep "\.scss$" || true)
+          files=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | grep "\.scss$" || true)
 
           if [ -n "$files" ]; then
             echo "SCSS files where modified."
