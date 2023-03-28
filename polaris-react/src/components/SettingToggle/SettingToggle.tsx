@@ -14,6 +14,12 @@ export interface SettingToggleProps {
   enabled?: boolean;
 }
 
+/**
+ * @deprecated The SettingToggle component will be removed in v12.0.0.
+ * See the "With primitive components" example to learn how to compose
+ * setting toggles with layout and typography primitives.
+ * https://polaris.shopify.com/components/deprecated/setting-toggle
+ */
 export function SettingToggle({enabled, action, children}: SettingToggleProps) {
   const id = useId();
 
@@ -21,7 +27,7 @@ export function SettingToggle({enabled, action, children}: SettingToggleProps) {
     // eslint-disable-next-line no-console
     console.warn(
       `Deprecation: <SettingToggle /> is deprecated. This component will be removed in a future major version of Polaris. Use the primitive layout and typography components to compose a setting toggle card.
-      See the "With primitive components" example in https://polaris.shopify.com/components/selection-and-input/setting-toggle`,
+      See the "With primitive components" example in https://polaris.shopify.com/components/deprecated/setting-toggle`,
     );
   }
 
