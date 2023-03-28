@@ -51,10 +51,12 @@ export default function ComponentMeta({
       </div>
 
       {pageMeta.lifeCycleNotice && (
-        <Banner
-          title={pageMeta.lifeCyclePhase}
-          markdownContent={pageMeta.lifeCycleNotice}
-        />
+        <div className={styles.LifeCycleNotice}>
+          <Banner
+            title={pageMeta.lifeCyclePhase}
+            markdownContent={pageMeta.lifeCycleNotice}
+          />
+        </div>
       )}
 
       <Tabs

@@ -47,7 +47,7 @@ async function loadChildPages(
   if (page.layout === 'listing') {
     return content.pages
       .filter(({parentId}) => parentId === page.id)
-      .map((page) => getResolvedPage(content, page));
+      .map((page) => getResolvedPage(content, page, true));
   }
   return [];
 }
@@ -179,22 +179,26 @@ export default async function Home({params}: {params: {slug: string[]}}) {
         Website route {JSON.stringify({page})} {JSON.stringify({childPages})}
       </p> */}
 
-      {pageMeta?.type === 'components' && (
-        <ComponentMeta
-          excerpt={page.excerpt}
-          pageMeta={pageMeta}
-          codeExamples={codeExamples}
-        />
-      )}
-
       <div className={styles.PageLayout}>
         <main>
-          {pageMeta?.type === 'components' && props ? (
+          {pageMeta?.type === 'components' ? (
             <>
-              <h2 id="props" className={styles.PropsTableHeading}>
-                Props
-              </h2>
-              <PropsTable props={props.props} references={props.references} />
+              <ComponentMeta
+                excerpt={page.excerpt}
+                pageMeta={pageMeta}
+                codeExamples={codeExamples}
+              />
+              {props && (
+                <>
+                  <h2 id="props" className={styles.PropsTableHeading}>
+                    Props
+                  </h2>
+                  <PropsTable
+                    props={props.props}
+                    references={props.references}
+                  />
+                </>
+              )}
             </>
           ) : (
             <div className={styles.ExcerptWrapper}>

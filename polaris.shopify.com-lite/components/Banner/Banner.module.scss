@@ -9,23 +9,20 @@
   border: 1px solid var(--color-border);
   border-radius: 8px;
 
-  &[data-value='Alpha'] {
-    background: var(--surface-attention);
+  &[data-style='Success'] {
+    background-color: var(--color-surface-status-success);
   }
 
-  &[data-value='Warning'],
-  &[data-value='Deprecated'],
-  &[data-value='Legacy'] {
-    background: var(--surface-warning);
+  &[data-style='Beta'] {
+    background-color: var(--color-surface-status-information);
   }
 
-  &[data-value='Beta'],
-  &[data-value='Information'] {
-    background: var(--surface-information);
+  &[data-style='Alpha'] {
+    background-color: var(--color-surface-status-warning);
   }
 
-  &[data-value='Information'] {
-    background: var(--surface-information);
+  &[data-style='Deprecated'] {
+    background-color: var(--color-surface-status-critical);
   }
 
   h2 {

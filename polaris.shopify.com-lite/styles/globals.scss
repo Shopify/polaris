@@ -67,6 +67,10 @@
   --color-status-information: #9fc6ff;
   --color-status-warning: #f8d4b7;
   --color-status-critical: #f8d3cc;
+  --color-surface-status-success: #00241a;
+  --color-surface-status-information: #001c44;
+  --color-surface-status-warning: #381800;
+  --color-surface-status-critical: #380800;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -100,6 +104,11 @@
     --color-status-information: #144995;
     --color-status-warning: #a44c0a;
     --color-status-critical: #9f200a;
+
+    --color-surface-status-success: #00241a;
+    --color-surface-status-information: #001c44;
+    --color-surface-status-warning: #381800;
+    --color-surface-status-critical: #380800;
   }
 }
 

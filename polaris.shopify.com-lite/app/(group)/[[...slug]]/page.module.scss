@@ -88,7 +88,7 @@
   border-radius: 8px;
   overflow: hidden;
   color: var(--color-text);
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   // transition: background-color 0.1s 0.1s linear;
 
   &.isDark {
@@ -134,4 +134,8 @@
 .PropsTableHeading {
   @include heading-2;
   margin-bottom: 1.25rem;
+}
+
+.LifeCycleNotice {
+  margin-bottom: 2rem;
 }

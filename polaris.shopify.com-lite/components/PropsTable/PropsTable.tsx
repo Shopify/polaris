@@ -66,8 +66,8 @@ function PropsTable({props, references}: Props) {
           (!shouldHaveToggle || isExpanded) && styles.isExpanded,
         )}
         id="props-table"
-        aria-labelledy={
-          shouldHaveToggle && isExpanded ? undefined : 'props-table-toggle'
+        aria-labelledby={
+          !shouldHaveToggle || isExpanded ? undefined : 'props-table-toggle'
         }
       >
         <ExpandPropsTableContext.Provider value={{setIsExpanded}}>
@@ -133,24 +133,6 @@ function PropItemWrapper({
   );
 }
 
-function RenderCommentDisplayParts({
-  parts,
-}: {
-  parts: JSONOutput.CommentDisplayPart[];
-}) {
-  return (
-    <>
-      {parts.map((segment, index) => {
-        if (segment.kind === 'text') {
-          return <Fragment key={index}>{segment.text}</Fragment>;
-        } else if (segment.kind === 'code') {
-          return <code key={index}>{segment.text}</code>;
-        }
-      })}
-    </>
-  );
-}
-
 function HandleDeclarationReflection({
   declarationReflection,
   references,
@@ -159,10 +141,12 @@ function HandleDeclarationReflection({
   references: JSONOutput.DeclarationReflection[];
 }) {
   const definitionUrl = declarationReflection.sources?.[0]?.url;
-  if (declarationReflection.children) {
+  if (declarationReflection.children || declarationReflection.signatures) {
+    const items =
+      declarationReflection.children || declarationReflection.signatures || [];
     return (
       <>
-        {[...declarationReflection.children]
+        {[...items]
           .sort((child) => (propIsDeprecated(child) ? 1 : -1))
           .map((child) => (
             <HandleDeclarationReflection
@@ -171,18 +155,6 @@ function HandleDeclarationReflection({
               references={references}
             />
           ))}
-      </>
-    );
-  } else if (declarationReflection.signatures) {
-    return (
-      <>
-        {declarationReflection.signatures.map((child) => (
-          <HandleDeclarationReflection
-            key={child.id}
-            declarationReflection={child}
-            references={references}
-          />
-        ))}
       </>
     );
   } else if (declarationReflection.kindString === 'Call signature') {
@@ -209,7 +181,7 @@ function HandleDeclarationReflection({
     declarationReflection.type.type === 'reference'
   ) {
     const referencedDeclaration = references.find(
-      (ref) => ref.id === declarationReflection.id,
+      ({id}) => id === declarationReflection.id,
     );
     if (referencedDeclaration) {
       return (

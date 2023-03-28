@@ -29,20 +29,18 @@ interface Props {
 function EditorRenderer({page}: Props) {
   return (
     <div className={styles.EditorRenderer}>
-      <RenderBlocks blocks={page.blocks} images={page.images} />
+      <RenderBlocks blocks={page.blocks} />
     </div>
   );
 }
 
-function RenderBlocks({blocks, images}: {blocks: Block[]; images: Image[]}) {
+function RenderBlocks({blocks}: {blocks: Block[]}) {
   return (
     <>
       {blocks.map((block) => (
         <Fragment key={block.id}>
           {block.blockType === 'Markdown' && <MarkdownBlock block={block} />}
-          {block.blockType === 'Image' && (
-            <ImageBlock block={block} images={images} />
-          )}
+          {block.blockType === 'Image' && <ImageBlock block={block} />}
           {block.blockType === 'YoutubeVideo' && (
             <YoutubeVideoBlock block={block} />
           )}
@@ -50,12 +48,10 @@ function RenderBlocks({blocks, images}: {blocks: Block[]; images: Image[]}) {
             <SandboxEmbedBlock block={block} />
           )}
           {block.blockType === 'Code' && <CodeBlock block={block} />}
-          {block.blockType === 'TextImage' && (
-            <TextImageBlock block={block} images={images} />
-          )}
+          {block.blockType === 'TextImage' && <TextImageBlock block={block} />}
           {block.blockType === 'DoDont' && <DoDontBock block={block} />}
           {block.blockType === 'TabbedContent' && (
-            <TabbedContentBlock block={block} images={images} />
+            <TabbedContentBlock block={block} />
           )}
         </Fragment>
       ))}
@@ -67,26 +63,16 @@ function MarkdownBlock({block}: {block: MarkdownBlock}) {
   return <Markdown>{block.content}</Markdown>;
 }
 
-function ImageBlock({block, images}: {block: ImageBlock; images: ImageType[]}) {
-  const image = images.find((image) => image.id === block.imageId);
-  if (!image) return null;
-  return <ImageRenderer image={image} width={800} />;
+function ImageBlock({block}: {block: ImageBlock}) {
+  return <ImageRenderer image={block.image} width={800} />;
 }
 
-function TextImageBlock({
-  block,
-  images,
-}: {
-  block: TextImageBlock;
-  images: ImageType[];
-}) {
-  const image = images.find((image) => image.id === block.imageId);
-  if (!image) return null;
+function TextImageBlock({block}: {block: TextImageBlock}) {
   return (
     <div className={styles.ImageText}>
       <Markdown>{block.content}</Markdown>
       <div>
-        <ImageRenderer image={image} width={500} />
+        <ImageRenderer image={block.image} width={500} />
       </div>
     </div>
   );
@@ -154,19 +140,13 @@ function DoDontBock({block}: {block: DoDontBlock}) {
   );
 }
 
-function TabbedContentBlock({
-  block,
-  images,
-}: {
-  block: TabbedContentBlock;
-  images: Image[];
-}) {
+function TabbedContentBlock({block}: {block: TabbedContentBlock}) {
   return (
     <div>
       <Tabs tabs={block.tabs.map((tab) => tab.label)} boxed>
         {block.tabs.map((tab) => (
           <Tab key={tab.id}>
-            <RenderBlocks blocks={tab.blocks} images={images} />
+            <RenderBlocks blocks={tab.blocks} />
           </Tab>
         ))}
       </Tabs>
