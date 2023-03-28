@@ -115,7 +115,7 @@
 
 .Tab-active {
   background: var(--p-color-bg-primary-subdued-selected);
-  color: var(--p-color-icon-success);
+  color: var(--p-color-text-primary);
 
   &[aria-disabled='true'] {
     background: var(--p-color-bg-disabled);
