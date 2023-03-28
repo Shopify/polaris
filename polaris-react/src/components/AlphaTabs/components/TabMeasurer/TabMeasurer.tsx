@@ -82,7 +82,7 @@ export const TabMeasurer = memo(function TabMeasurer({
     );
   });
 
-  const classname = classNames(styles.Tabs, styles.TabsMeasurer);
+  const classname = classNames(styles.AlphaTabs, styles.TabsMeasurer);
 
   useEventListener('resize', handleMeasurement);
 
