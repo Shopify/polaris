@@ -10,7 +10,11 @@ keywords:
   - columns
   - bleed
   - card
-  - Box
+  - box
+  - inline
+  - divider
+  - responsive
+  - spacing
 description: Polaris layout components let you quickly build custom layouts without writing CSS code.
 ---
 
