@@ -134,6 +134,18 @@ describe('<MediaCard>', () => {
     expect(videoCard).not.toContainReactComponent(Popover);
   });
 
+  it('does not render a Popover if enableDismissButton is true and only one popoverActions is provided', () => {
+    const actions = [{content: 'Dismiss'}];
+    const videoCard = mountWithApp(
+      <MediaCard {...mockProps} popoverActions={actions} enableDismissButton />,
+    );
+
+    expect(videoCard).not.toContainReactComponent(Popover);
+    expect(videoCard).toContainReactComponent(Button, {
+      accessibilityLabel: 'Dismiss',
+    });
+  });
+
   it('renders in landscape mode by default', () => {
     const videoCard = mountWithApp(<MediaCard {...mockProps} />);
 

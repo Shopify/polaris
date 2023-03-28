@@ -1,5 +1,5 @@
 import React from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {CancelMinor, HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
@@ -38,6 +38,15 @@ interface MediaCardProps {
    * @default 'medium'
    */
   size?: Size;
+  /**
+   * Render a dismiss `x` button in place of a popover + action list
+   * notes:
+   *   - this will override the display of a `Popover` via the `popoverActions` prop; and
+   *   - this will have _no_ affect unless `popoverActions.length` is 1
+   *
+   * @default false
+   */
+  enableDismissButton?: boolean,
 }
 
 export function MediaCard({
@@ -49,6 +58,7 @@ export function MediaCard({
   popoverActions = [],
   portrait = false,
   size = 'medium',
+  enableDismissButton = false,
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
@@ -66,6 +76,16 @@ export function MediaCard({
     headerMarkup = <div className={styles.Heading}>{headerContent}</div>;
   }
 
+  const dismissButtonMarkup = enableDismissButton && popoverActions.length === 1 ? (
+    <Button
+      icon={CancelMinor}
+      onClick={() => popoverActions[0].onAction?.()}
+      size="slim"
+      plain
+      accessibilityLabel={popoverActions[0].accessibilityLabel ?? i18n.translate('Polaris.MediaCard.dismissButton')}
+    />
+  ) : null;
+
   const popoverActivator = (
     <Button
       icon={HorizontalDotsMinor}
@@ -79,18 +99,21 @@ export function MediaCard({
   const popoverActionsMarkup =
     popoverActions.length > 0 ? (
       <div className={styles.Popover}>
-        <Popover
-          active={popoverActive}
-          activator={popoverActivator}
-          onClose={togglePopoverActive}
-          preferredAlignment="left"
-          preferredPosition="below"
-        >
-          <ActionList
-            items={popoverActions}
-            onActionAnyItem={togglePopoverActive}
-          />
-        </Popover>
+        {dismissButtonMarkup
+          ? dismissButtonMarkup
+          : <Popover
+              active={popoverActive}
+              activator={popoverActivator}
+              onClose={togglePopoverActive}
+              preferredAlignment="left"
+              preferredPosition="below"
+            >
+              <ActionList
+                items={popoverActions}
+                onActionAnyItem={togglePopoverActive}
+              />
+            </Popover>
+        }
       </div>
     ) : null;
 
