@@ -202,6 +202,11 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/setting-toggle',
+    destination: '/components/deprecated/setting-toggle',
+    permanent: false,
+  },
+  {
     source: '/components/sheet',
     destination: '/components/deprecated/sheet',
     permanent: false,
@@ -623,13 +628,8 @@ const selectionAndInput = [
     permanent: false,
   },
   {
-    source: '/components/setting-toggle',
-    destination: '/components/selection-and-input/setting-toggle',
-    permanent: false,
-  },
-  {
-    source: '/components/actions/setting-toggle',
-    destination: '/components/selection-and-input/setting-toggle',
+    source: '/components/selection-and-input/setting-toggle',
+    destination: '/components/deprecated/setting-toggle',
     permanent: false,
   },
   {

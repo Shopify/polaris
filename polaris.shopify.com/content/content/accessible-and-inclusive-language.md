@@ -390,22 +390,6 @@ Long time no see
 
 <!-- end -->
 
-#### Low-hanging fruit
-
-This metaphor refers to the lynching of Black people, and shouldn’t be used.
-
-<!-- dodont -->
-
-#### Do
-
-- Prepare to launch your store by adding a new product.
-
-#### Don’t
-
-- Take care of low-hanging fruit on your task list by adding a new product.
-
-<!-- end -->
-
 ---
 
 ## Ungendered content
