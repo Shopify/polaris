@@ -111,6 +111,7 @@ html {
   background: var(--color-surface);
   color: var(--color-text);
   scroll-margin-top: 5rem;
+  scroll-behavior: smooth;
 }
 
 img,

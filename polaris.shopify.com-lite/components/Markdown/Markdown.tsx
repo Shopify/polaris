@@ -7,6 +7,7 @@ import Code from '@/components/Code';
 import Link from 'next/link';
 import Pill from '../Pill';
 import {pagesWithIcons} from '@/types';
+import {HEADING_ANCHOR_LINK_TEXT} from '@/config';
 
 interface Props {
   children: string;
@@ -28,8 +29,19 @@ function Markdown({strip, children: text}: Props) {
           : {
               h2: ({children, id}) => (
                 <h2 id={id}>
-                  {children} <a href={`#${id}`}>🔗</a>
+                  {children}{' '}
+                  <a data-anchor="true" href={`#${id}`}>
+                    {HEADING_ANCHOR_LINK_TEXT}
+                  </a>
                 </h2>
+              ),
+              h3: ({children, id}) => (
+                <h3 id={id}>
+                  {children}{' '}
+                  <a data-anchor="true" href={`#${id}`}>
+                    {HEADING_ANCHOR_LINK_TEXT}
+                  </a>
+                </h3>
               ),
               code: ({inline, children, className}) =>
                 inline ? (

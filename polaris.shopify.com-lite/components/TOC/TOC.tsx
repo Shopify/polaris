@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import {TOCItem} from '@/types';
 import {className} from '@/utils';
 import styles from './TOC.module.scss';
+import {HEADING_ANCHOR_LINK_TEXT} from '@/config';
 
 const HEADING_MARGIN = 60; // Approximation of scroll-margin-top on headings
 
@@ -19,11 +20,13 @@ export const useTOC = (children: React.ReactNode) => {
         document.querySelectorAll<HTMLHeadingElement>('h2[id], h3[id]');
       headings.forEach((el, i) => {
         const id = el.getAttribute('id');
+        const title =
+          el.textContent?.replace(HEADING_ANCHOR_LINK_TEXT, '').trim() || '';
         if (typeof el.textContent === 'string' && id) {
           if (currentNode === null) {
             if (el.tagName === 'H2') {
               currentNode = {
-                title: el.textContent,
+                title,
                 id,
                 element: 'H2',
                 children: [],
@@ -33,7 +36,7 @@ export const useTOC = (children: React.ReactNode) => {
             if (el.tagName === 'H2') {
               tocNodes.push(currentNode);
               currentNode = {
-                title: el.textContent,
+                title,
                 id,
                 element: 'H2',
                 children: [],
@@ -42,7 +45,7 @@ export const useTOC = (children: React.ReactNode) => {
               if (currentNode.element === 'H2') {
                 if (el.closest('.usage-list') === null) {
                   currentNode.children.push({
-                    title: el.textContent,
+                    title,
                     id,
                     element: 'H3',
                     children: [],

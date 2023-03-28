@@ -53,6 +53,35 @@
     margin-bottom: 0.5rem;
   }
 
+  h2,
+  h3 {
+    [data-anchor='true'] {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      text-indent: -1000px;
+      overflow: hidden;
+      vertical-align: middle;
+      opacity: 0;
+      text-decoration: none;
+      background: url(./anchor.svg) no-repeat center center;
+      background-size: cover;
+      transform: translateY(-1px);
+      @media (prefers-color-scheme: dark) {
+        filter: invert(1);
+      }
+    }
+
+    &:hover {
+      [data-anchor='true'] {
+        opacity: 0.5;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
   ul {
     padding-left: 1rem;
     li {
