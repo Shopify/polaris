@@ -244,25 +244,25 @@
 
 .primaryPlain {
   // stylelint-disable -- Polaris component custom properties
-  --pc-button-color: var(--p-surface-selected-pressed);
-  --pc-button-text: var(--p-interactive-hovered);
-  --pc-button-color-hover: var(--p-surface-selected-pressed);
-  --pc-button-color-active: var(--p-surface-selected-pressed);
+  --pc-button-color: var(--p-color-bg-interactive-subdued-active);
+  --pc-button-text: var(--p-color-text-interactive-hover);
+  --pc-button-color-hover: var(--p-color-bg-interactive-subdued-active);
+  --pc-button-color-active: var(--p-color-bg-interactive-subdued-active);
   --pc-button-color-depressed: var(--p-surface-selected-depressed);
   // stylelint-enable
   box-shadow: none;
 
   path {
-    fill: var(--p-icon-on-interactive);
+    fill: var(--p-color-icon-on-color);
   }
 
   &:is(:hover, :focus, :active) {
-    color: var(--p-interactive-pressed);
+    color: var(--p-color-text-interactive-active);
     box-shadow: none;
   }
 
   &.disabled {
-    background: var(--p-action-critical-disabled);
+    background: var(--p-color-bg-disabled);
   }
 }
 

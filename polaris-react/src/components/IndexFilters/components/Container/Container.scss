@@ -4,7 +4,7 @@
   border-bottom: var(--p-border-divider);
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
-  background: var(--p-surface);
+  background: var(--p-color-bg);
 }
 
 @media #{$p-breakpoints-sm-down} {

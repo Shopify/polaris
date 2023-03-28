@@ -12,7 +12,7 @@
 }
 
 .FilterButton.Disabled {
-  background: var(--p-action-primary-disabled);
+  background: var(--p-color-bg-disabled);
   border-color: transparent;
   box-shadow: none;
   cursor: default;
@@ -20,10 +20,10 @@
   &:hover,
   &:focus,
   &:active {
-    background: var(--p-action-primary-disabled);
+    background: var(--p-color-bg-disabled);
   }
 
   path {
-    fill: var(--p-icon-subdued);
+    fill: var(--p-color-icon-subdued);
   }
 }
