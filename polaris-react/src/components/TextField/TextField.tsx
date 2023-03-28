@@ -162,6 +162,8 @@ interface NonMutuallyExclusiveProps {
   onClearButtonClick?(id: string): void;
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
+  /** When provided, callback fired instead of onChange when value is changed via the number step control  */
+  onStepperChange?(value: string, id: string): void;
   /** Callback fired when input is focused */
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
@@ -229,6 +231,7 @@ export function TextField({
   suggestion,
   onClearButtonClick,
   onChange,
+  onStepperChange,
   onFocus,
   onBlur,
   borderless,
@@ -354,7 +357,7 @@ export function TextField({
 
   const handleNumberChange = useCallback(
     (steps: number) => {
-      if (onChange == null) {
+      if (onChange == null && onStepperChange == null) {
         return;
       }
       // Returns the length of decimal places in a number
@@ -374,9 +377,21 @@ export function TextField({
         Math.max(numericValue + steps * normalizedStep, Number(normalizedMin)),
       );
 
-      onChange(String(newValue.toFixed(decimalPlaces)), id);
+      if (onStepperChange != null) {
+        onStepperChange(String(newValue.toFixed(decimalPlaces)), id);
+      } else if (onChange != null) {
+        onChange(String(newValue.toFixed(decimalPlaces)), id);
+      }
     },
-    [id, normalizedMax, normalizedMin, onChange, normalizedStep, value],
+    [
+      id,
+      normalizedMax,
+      normalizedMin,
+      onChange,
+      onStepperChange,
+      normalizedStep,
+      value,
+    ],
   );
 
   const handleButtonRelease = useCallback(() => {

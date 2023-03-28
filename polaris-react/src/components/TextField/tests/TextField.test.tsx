@@ -1073,6 +1073,72 @@ describe('<TextField />', () => {
         expect(spy).not.toHaveBeenCalled();
       });
 
+      describe('onStepperChange()', () => {
+        it('is called with the new value when incrementing by step', () => {
+          const spy = jest.fn();
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="2"
+              step={4}
+              onStepperChange={spy}
+              autoComplete="off"
+            />,
+          );
+
+          element.findAll('div', {role: 'button'})[0].trigger('onClick');
+          expect(spy).toHaveBeenCalledWith('6', 'MyTextField');
+        });
+
+        it('is called with the new value instead of onChange when incrementing by step', () => {
+          const onStepperSpy = jest.fn();
+          const onChangeSpy = jest.fn();
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="2"
+              step={4}
+              onStepperChange={onStepperSpy}
+              onChange={onChangeSpy}
+              autoComplete="off"
+            />,
+          );
+
+          element.findAll('div', {role: 'button'})[0].trigger('onClick');
+          expect(onStepperSpy).toHaveBeenCalledWith('6', 'MyTextField');
+          expect(onChangeSpy).not.toHaveBeenCalled();
+        });
+
+        it('is not called when new values are typed', () => {
+          const onStepperSpy = jest.fn();
+          const onChangeSpy = jest.fn();
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="2"
+              step={4}
+              onStepperChange={onStepperSpy}
+              onChange={onChangeSpy}
+              autoComplete="off"
+            />,
+          );
+
+          element.find('input')!.trigger('onChange', {
+            currentTarget: {
+              value: '6',
+            },
+          });
+          expect(onStepperSpy).not.toHaveBeenCalled();
+          expect(onChangeSpy).toHaveBeenCalledWith('6', 'MyTextField');
+        });
+      });
+
       describe('document events', () => {
         type EventCallback = (mockEventData?: {[key: string]: any}) => void;
 
