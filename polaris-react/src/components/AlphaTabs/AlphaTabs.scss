@@ -7,10 +7,9 @@
 }
 
 .Outer {
-  overflow: hidden;
-
   @media #{$p-breakpoints-md-down} {
     max-width: 100%;
+    overflow: hidden;
     height: 56px;
     padding: 0;
   }
