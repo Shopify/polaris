@@ -19,14 +19,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function IndexTableWithViewsSearchFilterSorting() {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
-  const [itemStrings, setItemStrings] = useState([
-    'All',
-    'Unpaid',
-    'Open',
-    'Closed',
-    'Local delivery',
-    'Local pickup',
-  ]);
+  const [itemStrings, setItemStrings] = useState(['All', 'Unpaid']);
   const deleteView = (index: number) => {
     const newItemStrings = [...itemStrings];
     newItemStrings.splice(index, 1);
