@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import type {TabProps} from '@shopify/polaris';
 import {
   ChoiceList,
   Text,
@@ -10,8 +11,6 @@ import {
   TextField,
   Card,
 } from '@shopify/polaris';
-
-import type {TabProps} from '../Tabs';
 
 import {useSetIndexFiltersMode} from './hooks';
 import type {IndexFiltersProps} from './IndexFilters';
