@@ -30,7 +30,7 @@ jobs:
       - name: Check for generic migrator comment in diff
         run: |
           commits="origin/${{ github.base_ref }}...origin/${{ github.head_ref }}"
-          files=$(git diff --name-only "$commits" -- "*.scss")
+          files=$(git diff --name-only --diff-filter=d "$commits" -- "*.scss")
 
           if [ -n "$files" ]; then
             echo "SCSS files where modified."
@@ -40,7 +40,7 @@ jobs:
             exit 0
           fi
 
-          filesWithComment=$(git diff --unified=0 "$commits" -- $(echo $files) | grep "^\+.*$COMMENT")
+          filesWithComment=$(git diff --unified=0 --diff-filter=d "$commits" -- $(echo $files) | grep "^\+.*$COMMENT")
 
           if [ -n "$filesWithComment" ]; then
             echo "A migrator comment '$COMMENT' was added to a SCSS file in this PR."
