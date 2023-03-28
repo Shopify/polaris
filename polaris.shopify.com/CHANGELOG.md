@@ -1,5 +1,20 @@
 # polaris.shopify.com
 
+## 0.43.0
+
+### Minor Changes
+
+- [#8764](https://github.com/Shopify/polaris/pull/8764) [`005b9770c`](https://github.com/Shopify/polaris/commit/005b9770cbd22b16befccf345b7f63918191b496) Thanks [@nikk-ca](https://github.com/nikk-ca)! - Update "Accessible and inclusive language"
+
+### Patch Changes
+
+- [#8757](https://github.com/Shopify/polaris/pull/8757) [`ae63b984a`](https://github.com/Shopify/polaris/commit/ae63b984ab7322c02b34af34f3aeaca1070d9d99) Thanks [@laurkim](https://github.com/laurkim)! - Updated `startLocalServer` script to use `dev` as default command to fix issue of sitemap.xml not being generated with urls for `v11-major` branch
+
+* [#8753](https://github.com/Shopify/polaris/pull/8753) [`a52a15ffd`](https://github.com/Shopify/polaris/commit/a52a15ffd74552cbdfbfa030dca005e02da2b13c) Thanks [@chloerice](https://github.com/chloerice)! - Moved `SettingToggle` documentation content and assets to deprecated folders and updated redirects
+
+* Updated dependencies [[`abc739cc8`](https://github.com/Shopify/polaris/commit/abc739cc8e4d245c00f53666d449fcc392aaff8d), [`a52a15ffd`](https://github.com/Shopify/polaris/commit/a52a15ffd74552cbdfbfa030dca005e02da2b13c), [`e96b24e29`](https://github.com/Shopify/polaris/commit/e96b24e29671fbbbf4aa738f0f258332b8d00ab3)]:
+  - @shopify/polaris@10.39.1
+
 ## 0.42.0
 
 ### Minor Changes
