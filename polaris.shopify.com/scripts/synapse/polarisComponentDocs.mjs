@@ -33,8 +33,21 @@ export default function polarisComponentDocs(options) {
     unified().use(matter).parse(file);
     // console.log(file.data.matter);
 
-    throw 'hello';
-    return 'hello';
+    // console.log(stripIndents(contents));
+    console.log(JSON.stringify(stripIndents(contents)));
+    const bit = {
+      type: 'BitNode',
+      data: {
+        title: file.data.matter?.title,
+        text: stripIndents(contents),
+        slug: 'polaris.shopify.com',
+      },
+    };
+
+    return {
+      type: 'root',
+      children: bit,
+    };
   };
 
   Object.assign(this, {Parser: parser});

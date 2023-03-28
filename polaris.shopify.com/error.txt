@@ -1,0 +1,213 @@
+yarn run v1.22.18
+$ npx tsx ./.yalc/synapse/src/cli.ts embeddings
+{
+  type: 'BitNode',
+  data: {
+    title: 'Account connection',
+    text: '---\n' +
+      'title: Account connection\n' +
+      'description: The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.\n' +
+      'category: Actions\n' +
+      'keywords:\n' +
+      '- AccountConnection\n' +
+      '- connect\n' +
+      '- account\n' +
+      '- sign-up\n' +
+      '- default account connection\n' +
+      '- disconnection\n' +
+      '- authorize\n' +
+      '- third-party accounts\n' +
+      '- integrate\n' +
+      '- facebook\n' +
+      '- social media\n' +
+      'examples:\n' +
+      '- fileName: account-connection-default.tsx\n' +
+      'title: Default\n' +
+      'description: Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.\n' +
+      '---\n' +
+      '\n' +
+      '## Best practices\n' +
+      '\n' +
+      'The account component should:\n' +
+      '\n' +
+      '- Be placed at the top of the Account page for the relevant sales channel\n' +
+      '- Identify the name of the platform or service merchants can connect to\n' +
+      '- Show whether the account is connected or disconnected so that merchants can easily connect or disconnect an account\n' +
+      '- Include a link to the relevant sales channel or platform terms and conditions, including information about any charges or fees that merchants may incur by using the channel or platform\n' +
+      '- Link to terms and conditions, which should open up on the sales channel developer’s website in a new browser window\n' +
+      '\n' +
+      '---\n' +
+      '\n' +
+      '## Content guidelines\n' +
+      '\n' +
+      '### Title\n' +
+      '\n' +
+      'The account connection title should be the name of the platform or service that merchants can connect to, followed by the word “account”. Write account connection titles in sentence case (capitalize the first word and proper nouns only).\n' +
+      '\n' +
+      '#### For example:\n' +
+      '\n' +
+      '- Facebook account\n' +
+      '- Mailchimp account\n' +
+      '- Instagram account\n' +
+      '\n' +
+      '<!-- dodont -->\n' +
+      '\n' +
+      '#### Do\n' +
+      '\n' +
+      '- Facebook account\n' +
+      '- Instagram account\n' +
+      '\n' +
+      '#### Don’t\n' +
+      '\n' +
+      '- Connect your Account\n' +
+      '- Instagram Account\n' +
+      '\n' +
+      '<!-- end -->\n' +
+      '\n' +
+      '### Terms and conditions\n' +
+      '\n' +
+      'Clearly link to your terms and conditions and let merchants know about any additional costs of your service.\n' +
+      '\n' +
+      '<!-- dodont -->\n' +
+      '\n' +
+      '#### Do\n' +
+      '\n' +
+      '- By clicking Connect, you agree to accept Sample’s terms and conditions.\n' +
+      '- You’ll pay a commission rate of 15% on sales made through Sample.\n' +
+      '\n' +
+      '#### Don’t\n' +
+      '\n' +
+      'Learn about terms, conditions, and payment details.\n' +
+      '\n' +
+      '<!-- end -->\n' +
+      '\n' +
+      '### Connect button\n' +
+      '\n' +
+      'Always use the verb Connect in the button of the account connection component. When merchants click or tap “Connect” it should open up your platform or service’s authorization page in a new browser window.\n' +
+      '\n' +
+      '<!-- dodont -->\n' +
+      '\n' +
+      '#### Do\n' +
+      '\n' +
+      'Connect\n' +
+      '\n' +
+      '#### Don’t\n' +
+      '\n' +
+      'Connect to app\n' +
+      '\n' +
+      '<!-- end -->\n' +
+      '\n' +
+      '---\n' +
+      '\n' +
+      '## Accessibility\n' +
+      '\n' +
+      'See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/setting-toggle) to turn connections on and off.',
+    slug: 'polaris.shopify.com'
+  }
+}
+{
+  type: 'BitNode',
+  data: {
+    title: 'Account connection',
+    text: '---\n' +
+      'title: Account connection\n' +
+      'description: The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.\n' +
+      'category: Actions\n' +
+      'keywords:\n' +
+      '- AccountConnection\n' +
+      '- connect\n' +
+      '- account\n' +
+      '- sign-up\n' +
+      '- default account connection\n' +
+      '- disconnection\n' +
+      '- authorize\n' +
+      '- third-party accounts\n' +
+      '- integrate\n' +
+      '- facebook\n' +
+      '- social media\n' +
+      'examples:\n' +
+      '- fileName: account-connection-default.tsx\n' +
+      'title: Default\n' +
+      'description: Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.\n' +
+      '---\n' +
+      '\n' +
+      '## Best practices\n' +
+      '\n' +
+      'The account component should:\n' +
+      '\n' +
+      '- Be placed at the top of the Account page for the relevant sales channel\n' +
+      '- Identify the name of the platform or service merchants can connect to\n' +
+      '- Show whether the account is connected or disconnected so that merchants can easily connect or disconnect an account\n' +
+      '- Include a link to the relevant sales channel or platform terms and conditions, including information about any charges or fees that merchants may incur by using the channel or platform\n' +
+      '- Link to terms and conditions, which should open up on the sales channel developer’s website in a new browser window\n' +
+      '\n' +
+      '---\n' +
+      '\n' +
+      '## Content guidelines\n' +
+      '\n' +
+      '### Title\n' +
+      '\n' +
+      'The account connection title should be the name of the platform or service that merchants can connect to, followed by the word “account”. Write account connection titles in sentence case (capitalize the first word and proper nouns only).\n' +
+      '\n' +
+      '#### For example:\n' +
+      '\n' +
+      '- Facebook account\n' +
+      '- Mailchimp account\n' +
+      '- Instagram account\n' +
+      '\n' +
+      '<!-- dodont -->\n' +
+      '\n' +
+      '#### Do\n' +
+      '\n' +
+      '- Facebook account\n' +
+      '- Instagram account\n' +
+      '\n' +
+      '#### Don’t\n' +
+      '\n' +
+      '- Connect your Account\n' +
+      '- Instagram Account\n' +
+      '\n' +
+      '<!-- end -->\n' +
+      '\n' +
+      '### Terms and conditions\n' +
+      '\n' +
+      'Clearly link to your terms and conditions and let merchants know about any additional costs of your service.\n' +
+      '\n' +
+      '<!-- dodont -->\n' +
+      '\n' +
+      '#### Do\n' +
+      '\n' +
+      '- By clicking Connect, you agree to accept Sample’s terms and conditions.\n' +
+      '- You’ll pay a commission rate of 15% on sales made through Sample.\n' +
+      '\n' +
+      '#### Don’t\n' +
+      '\n' +
+      'Learn about terms, conditions, and payment details.\n' +
+      '\n' +
+      '<!-- end -->\n' +
+      '\n' +
+      '### Connect button\n' +
+      '\n' +
+      'Always use the verb Connect in the button of the account connection component. When merchants click or tap “Connect” it should open up your platform or service’s authorization page in a new browser window.\n' +
+      '\n' +
+      '<!-- dodont -->\n' +
+      '\n' +
+      '#### Do\n' +
+      '\n' +
+      'Connect\n' +
+      '\n' +
+      '#### Don’t\n' +
+      '\n' +
+      'Connect to app\n' +
+      '\n' +
+      '<!-- end -->\n' +
+      '\n' +
+      '---\n' +
+      '\n' +
+      '## Accessibility\n' +
+      '\n' +
+      'See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/setting-toggle) to turn connections on and off.',
+    slug: 'polaris.shopify.com'
+  }
+}
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

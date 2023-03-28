@@ -29,7 +29,7 @@ export default defineConfig({
     {
       name: 'component-docs',
       // can be files or glob patterns
-      source: ['./scripts/synapse/polaris-color-tokens.txt'],
+      source: ['./content/components/layout-and-structure/alpha-stack.md'],
       plugins: [
         polarisComponentDocs,
         embeddings,
