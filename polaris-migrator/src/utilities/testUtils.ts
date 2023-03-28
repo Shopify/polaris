@@ -2,7 +2,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import jscodeshift, {FileInfo} from 'jscodeshift';
+import jscodeshift from 'jscodeshift';
+import type {FileInfo} from 'jscodeshift';
 import prettier from 'prettier';
 
 export default async function applyTransform(

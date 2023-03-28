@@ -18,17 +18,17 @@ function SeparateValidationErrorExample() {
     useState('is equal to');
 
   const handleTextFieldValueChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 
   const handleSelectTypeChange = useCallback(
-    (value) => setSelectTypeValue(value),
+    (value: string) => setSelectTypeValue(value),
     [],
   );
 
   const handleSelectConditionChange = useCallback(
-    (value) => setSelectConditionValue(value),
+    (value: string) => setSelectConditionValue(value),
     [],
   );
 
@@ -82,7 +82,7 @@ function SeparateValidationErrorExample() {
     </LegacyCard>
   );
 
-  function isValueInvalid(content) {
+  function isValueInvalid(content: string) {
     if (!content) {
       return true;
     }

@@ -4,11 +4,11 @@ import {
   LegacyStack,
   TextField,
 } from '@shopify/polaris';
-import {useState, useCallback} from 'react';
+import {useState, useCallback, KeyboardEventHandler} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DualThumbRangeSliderExample() {
-  const initialValue = [900, 1000];
+  const initialValue: [number, number] = [900, 1000];
   const prefix = '$';
   const min = 0;
   const max = 2000;
@@ -18,13 +18,13 @@ function DualThumbRangeSliderExample() {
     useState(initialValue);
   const [rangeValue, setRangeValue] = useState(initialValue);
 
-  const handleRangeSliderChange = useCallback((value) => {
+  const handleRangeSliderChange = useCallback((value: [number, number]) => {
     setRangeValue(value);
     setIntermediateTextFieldValue(value);
   }, []);
 
   const handleLowerTextFieldChange = useCallback(
-    (value) => {
+    (value: string) => {
       const upperValue = rangeValue[1];
       setIntermediateTextFieldValue([parseInt(value, 10), upperValue]);
     },
@@ -32,7 +32,7 @@ function DualThumbRangeSliderExample() {
   );
 
   const handleUpperTextFieldChange = useCallback(
-    (value) => {
+    (value: string) => {
       const lowerValue = rangeValue[0];
       setIntermediateTextFieldValue([lowerValue, parseInt(value, 10)]);
     },
@@ -43,22 +43,22 @@ function DualThumbRangeSliderExample() {
     const upperValue = rangeValue[1];
     const value = intermediateTextFieldValue[0];
 
-    setRangeValue([parseInt(value, 10), upperValue]);
+    setRangeValue([value, upperValue]);
   }, [intermediateTextFieldValue, rangeValue]);
 
   const handleUpperTextFieldBlur = useCallback(() => {
     const lowerValue = rangeValue[0];
     const value = intermediateTextFieldValue[1];
 
-    setRangeValue([lowerValue, parseInt(value, 10)]);
+    setRangeValue([lowerValue, value]);
   }, [intermediateTextFieldValue, rangeValue]);
 
-  const handleEnterKeyPress = useCallback(
+  const handleEnterKeyPress = useCallback<KeyboardEventHandler>(
     (event) => {
       const newValue = intermediateTextFieldValue;
       const oldValue = rangeValue;
 
-      if (event.keyCode === Key.Enter && newValue !== oldValue) {
+      if (event.key === 'Enter' && newValue !== oldValue) {
         setRangeValue(newValue);
       }
     },

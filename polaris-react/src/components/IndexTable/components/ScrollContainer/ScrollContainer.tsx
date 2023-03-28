@@ -3,9 +3,9 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {debounce} from '../../../../utilities/debounce';
 import {
   ScrollContext,
-  ScrollContextType,
   scrollDefaultContext,
 } from '../../../../utilities/index-table';
+import type {ScrollContextType} from '../../../../utilities/index-table';
 
 import styles from './ScrollContainer.scss';
 

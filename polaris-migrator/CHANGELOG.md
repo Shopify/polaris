@@ -1,5 +1,26 @@
 # @shopify/polaris-migrator
 
+## 0.16.1
+
+### Patch Changes
+
+- [#8727](https://github.com/Shopify/polaris/pull/8727) [`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491) Thanks [@laurkim](https://github.com/laurkim)! - Bumped `eslint-plugin-import`, `@typescript-eslint/**`, and `downlevel-dts` packages, added type import/export rules, and updated type imports
+
+- Updated dependencies [[`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491)]:
+  - @shopify/polaris-tokens@6.8.1
+  - @shopify/stylelint-polaris@9.0.1
+
+## 0.16.0
+
+### Minor Changes
+
+- [#8272](https://github.com/Shopify/polaris/pull/8272) [`cccd69848`](https://github.com/Shopify/polaris/commit/cccd698482ed4ff74e2ae4ab23ccc1c3e7c69412) Thanks [@lgriffee](https://github.com/lgriffee)! - Create migrations to replace deprecated custom properties in polaris-react v11.0.0 and v9.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`764f17d86`](https://github.com/Shopify/polaris/commit/764f17d86c30c9f30bec6717c09f07b2e04e23f8)]:
+  - @shopify/stylelint-polaris@9.0.0
+
 ## 0.15.1
 
 ### Patch Changes

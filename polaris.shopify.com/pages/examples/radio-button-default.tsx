@@ -6,7 +6,7 @@ function RadioButtonExample() {
   const [value, setValue] = useState('disabled');
 
   const handleChange = useCallback(
-    (_checked, newValue) => setValue(newValue),
+    (_: boolean, newValue: string) => setValue(newValue),
     [],
   );
 

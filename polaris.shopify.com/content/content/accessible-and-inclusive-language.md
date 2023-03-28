@@ -77,9 +77,9 @@ Accounts are disabled.
 
 #### Do
 
-- Turned on, turned off
+- On, off
 - Active, inactive
-- Activate, deactivate
+- Activated, deactivated
 
 #### Don’t
 
@@ -387,22 +387,6 @@ It’s been a while
 #### Don’t
 
 Long time no see
-
-<!-- end -->
-
-#### Low-hanging fruit
-
-This metaphor refers to the lynching of Black people, and shouldn’t be used.
-
-<!-- dodont -->
-
-#### Do
-
-- Prepare to launch your store by adding a new product.
-
-#### Don’t
-
-- Take care of low-hanging fruit on your task list by adding a new product.
 
 <!-- end -->
 

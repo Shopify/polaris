@@ -5,27 +5,35 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ColumnsWithFreeAndFixedWidthsExample() {
   return (
-    <Columns columns={['oneThird', 'twoThirds']} gap="025">
+    <Columns columns={['oneThird', 'twoThirds']}>
       <Placeholder height="320px" label="oneThird" />
-      <Placeholder height="320px" label="twoThirds" />
+      <Placeholder height="320px" label="twoThirds" showBorder />
     </Columns>
   );
 }
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  showBorder = false,
+}) => {
   return (
     <div
       style={{
         display: 'inherit',
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         height: height ?? undefined,
         width: width ?? undefined,
+        borderInlineStart: showBorder
+          ? '1px dashed var(--p-color-bg-success-subdued)'
+          : 'none',
       }}
     >
       <Inline gap="4" align="center" blockAlign="center">
         <div
           style={{
-            color: '#FFFFFF',
+            color: 'var(--p-color-text-on-color)',
             width: width ?? undefined,
           }}
         >

@@ -93,7 +93,7 @@ function DatePickerExample() {
     }
   }, [selectedDate]);
   return (
-    <AlphaStack align="center" gap="4">
+    <AlphaStack inlineAlign="center" gap="4">
       <Box minWidth="276px" padding={{xs: 2}}>
         <Popover
           active={visible}
@@ -137,9 +137,7 @@ function DatePickerExample() {
 
 ### Useful to know
 
-|                                                                                                        |                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc. | ![Date input labeled “Expiry date”](/images/patterns/single-list-usage-1.png)                                                                          |
-| This pattern can be duplicated to allow users to add an end date or time.                              | ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/single-list-usage-2.png) |
+- <span>Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.</span> ![Date input labeled “Expiry date”](/images/patterns/single-list-usage-1.png)
+- <span>This pattern can be duplicated to allow users to add an end date or time.</span> ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/single-list-usage-2.png)
 
 </div>

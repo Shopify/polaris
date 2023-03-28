@@ -18,7 +18,8 @@
     "jsx": "preserve",
     "composite": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "downlevelIteration": true
   },
   "include": [
     "src",
@@ -29,9 +30,5 @@
     "scripts/get-props/src/get-props.ts",
     "constants.js"
   ],
-  "exclude": [
-    "node_modules",
-    "pages/examples/**/*",
-    "scripts/get-props/testData"
-  ]
+  "exclude": ["node_modules", "scripts/get-props/testData"]
 }

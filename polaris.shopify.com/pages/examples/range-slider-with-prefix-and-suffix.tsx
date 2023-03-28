@@ -6,14 +6,9 @@ function RangeSliderWithPrefixAndSuffixExample() {
   const [rangeValue, setRangeValue] = useState(100);
 
   const handleRangeSliderChange = useCallback(
-    (value) => setRangeValue(value),
+    (value: number) => setRangeValue(value),
     [],
   );
-
-  const suffixStyles = {
-    minWidth: '24px',
-    textAlign: 'right',
-  };
 
   return (
     <LegacyCard sectioned title="Text color">
@@ -25,7 +20,16 @@ function RangeSliderWithPrefixAndSuffixExample() {
         value={rangeValue}
         onChange={handleRangeSliderChange}
         prefix={<p>Hue</p>}
-        suffix={<p style={suffixStyles}>{rangeValue}</p>}
+        suffix={
+          <p
+            style={{
+              minWidth: '24px',
+              textAlign: 'right',
+            }}
+          >
+            {rangeValue}
+          </p>
+        }
       />
     </LegacyCard>
   );

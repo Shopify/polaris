@@ -1,48 +1,62 @@
 import React from 'react';
-import {AlphaStack, Page, Inline, Text, Divider} from '@shopify/polaris';
+import {AlphaStack, Inline, Text, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithAlignExample() {
   return (
-    <Page>
-      <AlphaStack gap="8">
-        <AlphaStack gap="025" align="start">
-          <Placeholder height="48px" width="320px" label="Start" />
-          <Placeholder height="48px" width="320px" />
-          <Placeholder height="48px" width="320px" />
+    <>
+      <Divider />
+      <div style={{display: 'flex', height: '200px'}}>
+        <AlphaStack align="start">
+          <Placeholder height="48px" width="320px" label="Start" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
-        <Divider />
-        <AlphaStack gap="025" align="center">
-          <Placeholder height="48px" width="320px" label="Center" />
-          <Placeholder height="48px" width="320px" />
-          <Placeholder height="48px" width="320px" />
+      </div>
+      <Divider />
+      <div style={{display: 'flex', height: '200px'}}>
+        <AlphaStack align="center">
+          <Placeholder height="48px" width="320px" label="Center" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
-        <Divider />
-        <AlphaStack gap="025" align="end">
-          <Placeholder height="48px" width="320px" label="End" />
-          <Placeholder height="48px" width="320px" />
-          <Placeholder height="48px" width="320px" />
+      </div>
+      <Divider />
+      <div style={{display: 'flex', height: '200px'}}>
+        <AlphaStack align="end">
+          <Placeholder height="48px" width="320px" label="End" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
+          <Placeholder height="48px" width="320px" showBorder />
         </AlphaStack>
-      </AlphaStack>
-    </Page>
+      </div>
+      <Divider />
+    </>
   );
 }
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  showBorder = false,
+}) => {
   return (
     <div
       style={{
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         padding: '14px var(--p-space-2)',
         height: height,
         width: width,
+        borderBlockEnd: showBorder
+          ? '1px dashed var(--p-color-bg-success-subdued)'
+          : 'none',
       }}
     >
       <Inline align="center">
         <div
           style={{
-            color: '#FFFFFF',
+            color: 'var(--p-color-text-on-color)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="regular">

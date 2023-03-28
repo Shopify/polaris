@@ -6,7 +6,7 @@ function TextFieldWithMonospacedFontExample() {
   const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 
@@ -16,6 +16,7 @@ function TextFieldWithMonospacedFontExample() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       monospaced
+      autoComplete="off"
     />
   );
 }

@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 
-import {Slidable, SlidableProps} from '../Slidable';
+import {Slidable} from '../Slidable';
+import type {SlidableProps} from '../Slidable';
 import styles from '../../ColorPicker.scss';
 
 import {calculateDraggerY, hueForDraggerY} from './utilities';

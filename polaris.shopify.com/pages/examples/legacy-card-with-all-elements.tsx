@@ -65,6 +65,7 @@ function LegacyCardExample() {
             const {sales, amount, url} = item;
             return (
               <ResourceList.Item
+                id={item.sales.toLocaleLowerCase()}
                 url={url}
                 accessibilityLabel={`View Sales for ${sales}`}
               >

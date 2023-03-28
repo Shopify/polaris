@@ -11,19 +11,25 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function FiltersExample() {
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState<string | undefined>(undefined);
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
 
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -47,15 +53,16 @@ function FiltersExample() {
     },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith',
+            label: disambiguateLabel('taggedWith', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
   return (
     <div style={{height: '568px'}}>
@@ -72,7 +79,11 @@ function FiltersExample() {
               onClearAll={handleClearAll}
             >
               <div style={{paddingLeft: '8px'}}>
-                <Button onClick={() => console.log('New filter saved')}>
+                <Button
+                  onClick={() => console.log('New filter saved')}
+                  primary
+                  plain
+                >
                   Save
                 </Button>
               </div>
@@ -80,13 +91,13 @@ function FiltersExample() {
           }
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
@@ -115,7 +126,7 @@ function FiltersExample() {
     </div>
   );
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string): string {
     switch (key) {
       case 'taggedWith':
         return `Tagged with ${value}`;
@@ -124,7 +135,7 @@ function FiltersExample() {
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

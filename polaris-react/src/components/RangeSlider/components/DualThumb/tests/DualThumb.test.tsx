@@ -1,8 +1,10 @@
 import React from 'react';
-import {mountWithApp, CustomRoot} from 'tests/utilities';
+import {mountWithApp} from 'tests/utilities';
+import type {CustomRoot} from 'tests/utilities';
 
 import {Key} from '../../../../../types';
-import {DualThumb, DualThumbProps} from '../DualThumb';
+import {DualThumb} from '../DualThumb';
+import type {DualThumbProps} from '../DualThumb';
 
 type MountedComponentType = CustomRoot<any, any>;
 

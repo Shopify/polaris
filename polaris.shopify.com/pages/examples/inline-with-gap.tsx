@@ -26,12 +26,22 @@ function InlineWithGapExample() {
   );
 }
 
-const SpacingBackground = ({children, width, height, margin = false}) => {
+const SpacingBackground = ({
+  children,
+  width,
+  height,
+  margin = false,
+}: {
+  children: React.ReactNode;
+  width: string;
+  height: string;
+  margin?: boolean;
+}) => {
   return (
     <div
       style={{
         display: 'flex',
-        background: '#E0F8EE',
+        background: 'var(--p-color-bg-success-subdued)',
         width: width,
         height: height,
         marginBlockEnd: margin ? '8px' : 'none',
@@ -46,7 +56,7 @@ const Placeholder = ({height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         height: height,
         width: width,
       }}

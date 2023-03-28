@@ -5,9 +5,8 @@ import {
   getResponsiveProps,
   getResponsiveValue,
   sanitizeCustomProperties,
-  ResponsiveValue,
 } from '../../utilities/css';
-import type {ResponsiveProp} from '../../utilities/css';
+import type {ResponsiveValue, ResponsiveProp} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
@@ -76,11 +75,11 @@ function formatColumns(columns?: Columns): ResponsiveValue {
 function getColumnValue(columns?: ColumnsType) {
   if (!columns) return undefined;
 
-  if (typeof columns === 'string') return columns;
-
-  if (typeof columns === 'number') {
-    return `repeat(${columns}, minmax(0, 1fr))`;
+  if (typeof columns === 'number' || !isNaN(Number(columns))) {
+    return `repeat(${Number(columns)}, minmax(0, 1fr))`;
   }
+
+  if (typeof columns === 'string') return columns;
 
   return columns
     .map((column) => {

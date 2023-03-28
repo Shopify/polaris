@@ -8,7 +8,7 @@ function LargeModalExample() {
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-  const handleCheckbox = useCallback((value) => setChecked(value), []);
+  const handleCheckbox = useCallback((value: boolean) => setChecked(value), []);
 
   const activator = <Button onClick={toggleActive}>Open</Button>;
 

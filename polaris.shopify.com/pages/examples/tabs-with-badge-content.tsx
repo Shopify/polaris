@@ -1,4 +1,4 @@
-import {Badge, LegacyCard, Tabs} from '@shopify/polaris';
+import {LegacyCard, Tabs, Badge} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,7 +6,7 @@ function TabsWithBadgeExample() {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
+    (selectedTabIndex: number) => setSelected(selectedTabIndex),
     [],
   );
 

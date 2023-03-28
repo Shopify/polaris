@@ -1,7 +1,9 @@
-import {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
+import type {FileInfo, API, Options} from 'jscodeshift';
+import postcss from 'postcss';
+import type {Plugin} from 'postcss';
 
-import {NamespaceOptions, getNamespacePattern} from '../../utilities/sass';
+import {getNamespacePattern} from '../../utilities/sass';
+import type {NamespaceOptions} from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
 /** Mapping of static mixins to replacement declarations */

@@ -3,9 +3,17 @@ import {SearchMinor} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
+type Section = {
+  title: string;
+  options: {
+    value: string;
+    label: string;
+  }[];
+};
+
 function AutocompleteExample() {
   const deselectedOptions = useMemo(
-    () => [
+    (): Section[] => [
       {
         title: 'Frequently used',
         options: [
@@ -23,12 +31,12 @@ function AutocompleteExample() {
     ],
     [],
   );
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
   const updateText = useCallback(
-    (value) => {
+    (value: string) => {
       setInputValue(value);
 
       if (value === '') {
@@ -37,16 +45,16 @@ function AutocompleteExample() {
       }
 
       const filterRegex = new RegExp(value, 'i');
-      const resultOptions = [];
+      const resultOptions: Section[] = [];
 
       deselectedOptions.forEach((opt) => {
-        const lol = opt.options.filter((option) =>
+        const options = opt.options.filter((option) =>
           option.label.match(filterRegex),
         );
 
         resultOptions.push({
           title: opt.title,
-          options: lol,
+          options,
         });
       });
 
@@ -56,16 +64,16 @@ function AutocompleteExample() {
   );
 
   const updateSelection = useCallback(
-    ([selected]) => {
-      let selectedValue;
+    (selected: string[]) => {
+      let selectedValue: string | undefined;
 
-      options.forEach(({options: opt}) => {
+      options.forEach(({options}) => {
         if (selectedValue) {
           return;
         }
 
-        const matchedOption = opt.find((option) =>
-          option.value.match(selected),
+        const matchedOption = options.find((option) =>
+          option.value.match(selected[0]),
         );
 
         if (matchedOption) {
@@ -73,8 +81,8 @@ function AutocompleteExample() {
         }
       });
 
-      setSelectedOptions([selected]);
-      setInputValue(String(selectedValue) ? String(selectedValue) : '');
+      setSelectedOptions(selected);
+      setInputValue(selectedValue ? selectedValue : '');
     },
     [options],
   );
@@ -86,6 +94,7 @@ function AutocompleteExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 

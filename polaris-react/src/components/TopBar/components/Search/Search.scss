@@ -9,7 +9,7 @@
   top: $top-bar-height;
   left: 0;
   right: 0;
-  box-shadow: var(--p-shadow-modal);
+  box-shadow: var(--p-shadow-2xl);
   overflow: hidden;
 
   @media #{$p-breakpoints-sm-up} {

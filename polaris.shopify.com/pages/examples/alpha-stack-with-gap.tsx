@@ -1,5 +1,5 @@
 import React from 'react';
-import {AlphaStack, Text} from '@shopify/polaris';
+import {AlphaStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -15,11 +15,11 @@ function AlphaStackWithGapExample() {
   );
 }
 
-const SpacingBackground = ({children}) => {
+const SpacingBackground = ({children}: {children: React.ReactNode}) => {
   return (
     <div
       style={{
-        background: '#E0F8EE',
+        background: 'var(--p-color-bg-success-subdued)',
         height: 'auto',
       }}
     >
@@ -32,7 +32,7 @@ const Placeholder = ({height = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         padding: '14px var(--p-space-2)',
         height: height,
       }}

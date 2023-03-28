@@ -1,4 +1,4 @@
-import React, {createElement, forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 import type {
   ColorsActionTokenAlias,
   ColorsBackdropTokenAlias,
@@ -6,16 +6,16 @@ import type {
   ColorsOverlayTokenAlias,
   ColorsSurfaceTokenAlias,
   ShapeBorderWidthScale,
-  DepthShadowAlias,
+  ShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
 import {
   getResponsiveProps,
-  ResponsiveProp,
   classNames,
   sanitizeCustomProperties,
 } from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Box.scss';
 
@@ -155,7 +155,7 @@ export interface BoxProps extends React.AriaAttributes {
     'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
   >;
   /** Shadow on box */
-  shadow?: DepthShadowAlias;
+  shadow?: ShadowAlias;
   /** Set tab order */
   tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
   /** Width of container */
@@ -336,7 +336,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as === 'ul' && styles.listReset,
     );
 
-    return createElement(
+    return React.createElement(
       as,
       {
         className,

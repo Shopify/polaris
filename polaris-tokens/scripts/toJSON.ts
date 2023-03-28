@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {Metadata, MetadataGroup} from '../src';
+import type {Metadata, MetadataGroup} from '../src';
 
 const outputDir = path.join(__dirname, '../dist/json');
 

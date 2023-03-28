@@ -1,14 +1,16 @@
 import path from 'path';
 import globby from 'globby';
-import {existsSync, rmSync, mkdirSync, writeFileSync, readFileSync} from 'fs';
+import {existsSync} from 'fs';
+import {mkdir, writeFile, readFile} from 'fs/promises';
 import matter from 'gray-matter';
 import set from 'lodash.set';
+import ora from 'ora';
 
 const cacheDir = path.join(process.cwd(), '.cache');
 const siteJsonFile = `${cacheDir}/site.json`;
 const navJsonFile = `${cacheDir}/nav.json`;
 
-const genNavJson = (markdownFiles) => {
+const genNavJson = async (markdownFiles) => {
   let nav = {};
 
   markdownFiles.forEach((md) => {
@@ -52,18 +54,18 @@ const genNavJson = (markdownFiles) => {
     });
   });
 
-  writeFileSync(navJsonFile, JSON.stringify(nav), 'utf-8');
+  await writeFile(navJsonFile, JSON.stringify(nav), 'utf-8');
 };
 
-const genSiteJson = (data) => {
+const genSiteJson = async (data) => {
   const json = {};
   data.forEach((md) => (json[md.slug] = {frontMatter: md.frontMatter}));
 
-  writeFileSync(siteJsonFile, JSON.stringify(json), 'utf-8');
+  await writeFile(siteJsonFile, JSON.stringify(json), 'utf-8');
 };
 
-const getMdContent = (filePath) => {
-  const fileContent = readFileSync(filePath, 'utf-8');
+const getMdContent = async (filePath) => {
+  const fileContent = await readFile(filePath, 'utf-8');
   const {data} = matter(fileContent);
   const slug = filePath
     .replace(`${process.cwd()}/content/`, '')
@@ -73,26 +75,32 @@ const getMdContent = (filePath) => {
   return {frontMatter: data, slug};
 };
 
-const genCacheJson = () => {
-  if (!existsSync(cacheDir)) mkdirSync(cacheDir, {recursive: true});
+const genCacheJson = async () => {
+  const spinner = ora(
+    'Generating .cache/nav.json and .cache/site.json',
+  ).start();
+
+  if (!existsSync(cacheDir)) {
+    await mkdir(cacheDir, {recursive: true});
+  }
+
   const pathGlob = [
     path.join(process.cwd(), 'content/*.md'),
     path.join(process.cwd(), 'content/**/*.md'),
   ];
 
-  const mdFiles = globby.sync(pathGlob);
+  const mdFiles = await globby(pathGlob);
 
-  const markdownFiles = mdFiles
-    .map((filePath) => getMdContent(filePath))
+  const markdownFiles = (
+    await Promise.all(mdFiles.map((filePath) => getMdContent(filePath)))
+  )
     .filter((md) => !md.frontMatter?.hideFromNav)
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
-  genSiteJson(markdownFiles);
-  genNavJson(markdownFiles);
+  await genSiteJson(markdownFiles);
+  await genNavJson(markdownFiles);
 
-  console.log('✅ Generated .cache/nav.json and .cache/site.json');
+  spinner.succeed('Generated .cache/nav.json and .cache/site.json');
 };
-
-genCacheJson();
 
 export default genCacheJson;

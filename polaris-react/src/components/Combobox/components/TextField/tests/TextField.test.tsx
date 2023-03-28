@@ -5,10 +5,8 @@ import {TextField as PolarisTextField} from '../../../../TextField';
 import type {TextFieldProps} from '../../../../TextField';
 import {TextField} from '../TextField';
 import {labelID} from '../../../../Label';
-import {
-  ComboboxTextFieldContext,
-  ComboboxTextFieldType,
-} from '../../../../../utilities/combobox';
+import {ComboboxTextFieldContext} from '../../../../../utilities/combobox';
+import type {ComboboxTextFieldType} from '../../../../../utilities/combobox';
 
 const textFieldContextDefaultValue = {
   activeOptionId: undefined,

@@ -1,5 +1,8 @@
 import ReactMarkdown from 'react-markdown';
+import remarkUnwrapImages from 'remark-unwrap-images';
 import React from 'react';
+import styles from './Markdown.module.scss';
+import {Box} from '../Box';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -7,6 +10,7 @@ import {visit} from 'unist-util-visit';
 import type {Plugin} from 'unified';
 import {slugify} from '../../utils/various';
 import Code from '../Code';
+import {SideBySide} from './components';
 
 // rehype-raw will strip the non-HTML-standard `meta` field from the node when
 // converting the parsed markdown to HTML, so we have to capture it in a
@@ -23,8 +27,17 @@ function codeMetaAsDataAttribute(): Plugin {
   };
 }
 
+type MDXComponent = React.ComponentType<
+  React.PropsWithChildren<{[key: string]: any}>
+>;
+
+type MDXComponents = {
+  [key: string]: MDXComponent;
+};
+
 interface Props {
   children: string;
+  mdxComponents?: MDXComponents;
   components?: React.ComponentProps<typeof ReactMarkdown>['components'];
   remarkPlugins?: React.ComponentProps<typeof ReactMarkdown>['remarkPlugins'];
   rehypePlugins?: React.ComponentProps<typeof ReactMarkdown>['rehypePlugins'];
@@ -33,9 +46,14 @@ interface Props {
   >['remarkRehypeOptions'];
 }
 
+const defaultMDXComponents: MDXComponents = {
+  SideBySide: SideBySide as MDXComponent,
+};
+
 function Markdown({
   children: text,
   components,
+  mdxComponents,
   remarkPlugins,
   rehypePlugins,
   remarkRehypeOptions,
@@ -44,12 +62,20 @@ function Markdown({
     <ReactMarkdown
       remarkPlugins={[
         [remarkGfm, {tablePipeAlign: true}],
+        remarkUnwrapImages,
         ...(remarkPlugins ?? []),
         codeMetaAsDataAttribute,
       ]}
       rehypePlugins={[rehypeRaw, rehypeSlug, ...(rehypePlugins ?? [])]}
       remarkRehypeOptions={remarkRehypeOptions}
       components={{
+        // @ts-expect-error react-markdown doesn't understand custom attributes
+        div: ({as, ...props}) => {
+          // poor man's MDX
+          const Component =
+            mdxComponents?.[as] ?? defaultMDXComponents?.[as] ?? Box;
+          return <Component {...props} />;
+        },
         h1: ({children}) => {
           return <h1>{children}</h1>;
         },
@@ -67,6 +93,11 @@ function Markdown({
             return <h3>{children}</h3>;
           }
         },
+        img: ({src, alt}) =>
+          src ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={src} alt={alt ?? ''} className={styles.MarkdownImage} />
+          ) : null,
         code: ({inline, children, className}) =>
           inline ? (
             <code>{children}</code>
