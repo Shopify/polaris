@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.39.1
+
+### Patch Changes
+
+- [#8767](https://github.com/Shopify/polaris/pull/8767) [`abc739cc8`](https://github.com/Shopify/polaris/commit/abc739cc8e4d245c00f53666d449fcc392aaff8d) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed border-radius on navigation selected items
+
+* [#8753](https://github.com/Shopify/polaris/pull/8753) [`a52a15ffd`](https://github.com/Shopify/polaris/commit/a52a15ffd74552cbdfbfa030dca005e02da2b13c) Thanks [@chloerice](https://github.com/chloerice)! - Moved `SettingToggle` documentation content and assets to deprecated folders and updated redirects
+
+- [#8770](https://github.com/Shopify/polaris/pull/8770) [`e96b24e29`](https://github.com/Shopify/polaris/commit/e96b24e29671fbbbf4aa738f0f258332b8d00ab3) Thanks [@mrcthms](https://github.com/mrcthms)! - FIxed a bug where the `AlphaTabs` component was referencing an incorrect CSS class name
+
 ## 10.39.0
 
 ### Minor Changes

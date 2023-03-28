@@ -60,7 +60,7 @@ export function DetailsPage() {
   const [userMenuActive, setUserMenuActive] = useState(false);
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
-  const [navItemActive, setNavItemActive] = useState('');
+  const [navItemActive, setNavItemActive] = useState('products');
   const initialDescription =
     'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
   const [previewValue, setPreviewValue] = useState(initialDescription);
