@@ -52,6 +52,60 @@
   }
 }
 
+.DisclosureWrapper {
+  position: relative;
+  max-height: 170px;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+
+    background: linear-gradient(
+      180deg,
+      rgba(247, 248, 250, 0) 0%,
+      rgba(247, 248, 250, 1) 100%
+    );
+
+    @media (prefers-color-scheme: dark) {
+      background: linear-gradient(
+        180deg,
+        rgba(22, 23, 24, 0) 0%,
+        rgba(22, 23, 24, 1) 100%
+      );
+    }
+  }
+
+  &.isExpanded {
+    max-height: unset;
+    overflow: visible;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.DisclosureToggle {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--color-text-strong);
+  margin-bottom: -1.5rem;
+  padding-left: 1rem;
+
+  button {
+    padding: 0.25rem 0.75rem;
+    transform: translateY(-50%);
+    border-radius: 100px;
+    background: var(--color-text-strong);
+    color: var(--color-surface);
+  }
+}
+
 .Prop {
   border-bottom: 1px solid var(--color-border);
   padding: 0.66rem 0;

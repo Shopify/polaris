@@ -5,6 +5,8 @@ import {TOCItem} from '@/types';
 import {className} from '@/utils';
 import styles from './TOC.module.scss';
 
+const HEADING_MARGIN = 60; // Approximation of scroll-margin-top on headings
+
 export const useTOC = (children: React.ReactNode) => {
   const [toc, setToc] = useState<TOCItem[]>([]);
 
@@ -77,7 +79,7 @@ function scanPageForCurrentHeading(): string | void {
     const heading = headings[i];
     const {top} = heading.getBoundingClientRect();
     currentHeading = heading;
-    if (top <= contentTopMargin + 1) {
+    if (top <= contentTopMargin + HEADING_MARGIN) {
       break;
     }
   }

@@ -69,6 +69,7 @@
   --color-status-critical: #f8d3cc;
 
   @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
     --color-surface: #161718;
     --color-surface-subdued: #1d1e1f;
     --color-surface-code: var(--color-surface-subdued);

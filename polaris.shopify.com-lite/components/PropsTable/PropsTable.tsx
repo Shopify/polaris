@@ -1,6 +1,14 @@
 'use client';
 
-import {Fragment, ReactNode, useState} from 'react';
+import {
+  createContext,
+  Dispatch,
+  Fragment,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from 'react';
 import {JSONOutput} from 'typedoc';
 import {Popover} from '@headlessui/react';
 import styles from './PropsTable.module.scss';
@@ -23,7 +31,13 @@ const propIsDeprecated = (
     ?.map((tag) => tag.tag)
     .includes('@deprecated');
 
+const ExpandPropsTableContext = createContext<{
+  setIsExpanded: Dispatch<SetStateAction<boolean>>;
+}>({setIsExpanded: () => undefined});
+
 function PropsTable({props, references}: Props) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   if (!props) return <p>No props found</p>;
 
   if (!(props.children || props.type)) {
@@ -31,6 +45,7 @@ function PropsTable({props, references}: Props) {
   }
 
   const propsUrl = props.sources?.[0].url;
+  const shouldHaveToggle = props.children && props.children.length > 5;
 
   return (
     <div className={styles.PropsTableContent}>
@@ -45,10 +60,35 @@ function PropsTable({props, references}: Props) {
           </>
         )}
       </div>
-      <HandleDeclarationReflection
-        declarationReflection={props}
-        references={references}
-      />
+      <div
+        className={className(
+          styles.DisclosureWrapper,
+          (!shouldHaveToggle || isExpanded) && styles.isExpanded,
+        )}
+        id="props-table"
+        aria-labelledy={
+          shouldHaveToggle && isExpanded ? undefined : 'props-table-toggle'
+        }
+      >
+        <ExpandPropsTableContext.Provider value={{setIsExpanded}}>
+          <HandleDeclarationReflection
+            declarationReflection={props}
+            references={references}
+          />
+        </ExpandPropsTableContext.Provider>
+      </div>
+      {shouldHaveToggle && !isExpanded && (
+        <div className={styles.DisclosureToggle}>
+          <button
+            id="props-table-toggle"
+            aria-controls="props-table"
+            aria-expanded="true"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            Show all
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -122,7 +162,7 @@ function HandleDeclarationReflection({
   if (declarationReflection.children) {
     return (
       <>
-        {declarationReflection.children
+        {[...declarationReflection.children]
           .sort((child) => (propIsDeprecated(child) ? 1 : -1))
           .map((child) => (
             <HandleDeclarationReflection
@@ -422,13 +462,16 @@ function MyPopover({
   buttonText: string;
   children: ReactNode;
 }) {
-  let [referenceElement, setReferenceElement] =
-    useState<HTMLButtonElement | null>(null);
+  const {setIsExpanded} = useContext(ExpandPropsTableContext);
   const {x, y, strategy, refs} = useFloating();
 
   return (
-    <Popover as="span" className={className(styles.PopoverContainer)}>
-      <Popover.Button className={styles.PopoverButton} ref={refs.setReference}>
+    <Popover as="span" className={styles.PopoverContainer}>
+      <Popover.Button
+        className={styles.PopoverButton}
+        ref={refs.setReference}
+        onClick={() => setIsExpanded(true)}
+      >
         {buttonText}
       </Popover.Button>
 
