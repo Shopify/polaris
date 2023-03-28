@@ -7,22 +7,6 @@ import {stripIndents} from 'common-tags';
 import remarkFrontmatter from 'remark-frontmatter';
 import matter from './matter.mjs';
 
-async function main() {
-  const file = readFileSync(
-    '/Users/yurm/src/github.com/Shopify/polaris/polaris.shopify.com/content/components/actions/account-connection.md',
-  );
-
-  const tree = unified()
-    .use(remarkParse)
-    .use(remarkFrontmatter)
-    .use(matter)
-    .use(polarisComponentDocs)
-    .parse(file);
-  // console.log(tree);
-}
-
-main();
-
 export default function polarisComponentDocs(options) {
   const parser = (contents, file) => {
     // turn the file into an AST
@@ -35,6 +19,7 @@ export default function polarisComponentDocs(options) {
 
     // console.log(stripIndents(contents));
     console.log(JSON.stringify(stripIndents(contents)));
+    // throw 'eh';
     const bit = {
       type: 'BitNode',
       data: {
@@ -46,7 +31,7 @@ export default function polarisComponentDocs(options) {
 
     return {
       type: 'root',
-      children: bit,
+      children: [bit],
     };
   };
 

@@ -15,21 +15,21 @@ import fakeCompiler from './scripts/synapse/fakeCompiler.mjs';
 export default defineConfig({
   outputDir: './scripts/synapse/bits/',
   synapses: [
-    // {
-    //   name: 'token-docs',
-    //   // can be files or glob patterns
-    //   source: ['./scripts/synapse/polaris-color-tokens.txt'],
-    //   plugins: [
-    //     polarisTokenDocs,
-    //     embeddings,
-    //     // // plugins might need options too, use this format from unified-engine
-    //     [synapseStringify, {format: 'JSON'}],
-    //   ],
-    // },
+    {
+      name: 'token-docs',
+      // can be files or glob patterns
+      source: ['./scripts/synapse/polaris-color-tokens.txt'],
+      plugins: [
+        polarisTokenDocs,
+        embeddings,
+        // // plugins might need options too, use this format from unified-engine
+        [synapseStringify, {format: 'JSON'}],
+      ],
+    },
     {
       name: 'component-docs',
       // can be files or glob patterns
-      source: ['./content/components/layout-and-structure/alpha-stack.md'],
+      source: ['./content/components/layout-and-structure/*.md'],
       plugins: [
         polarisComponentDocs,
         embeddings,
