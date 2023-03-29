@@ -58,6 +58,11 @@
   }
 }
 
+.ExamplesHeading {
+  @include heading-2;
+  margin-bottom: 1.25rem;
+}
+
 .ExampleDescription {
   margin-top: 1rem;
   margin-bottom: 1rem;

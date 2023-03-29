@@ -59,6 +59,9 @@ export default function ComponentMeta({
         </div>
       )}
 
+      <h2 className={styles.ExamplesHeading} id="examples">
+        Examples
+      </h2>
       <Tabs
         tabs={pageMeta.examples.map((example) => example.title)}
         boxed={false}
