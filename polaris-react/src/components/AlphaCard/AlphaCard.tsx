@@ -15,7 +15,7 @@ type Spacing = ResponsiveProp<SpacingSpaceScale>;
 export interface AlphaCardProps {
   children?: React.ReactNode;
   /** Background color
-   * @default 'surface'
+   * @default 'bg'
    */
   background?: ColorBackgroundAlias;
   /** The spacing around the card
