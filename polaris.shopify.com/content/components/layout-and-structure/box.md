@@ -36,3 +36,7 @@ examples:
 ## Related components
 
 - For more specific use cases, [use the Card component](https://polaris.shopify.com/components/layout-and-structure/alpha-card)
+
+## Related resources
+
+- Box props are named following the convention of CSS logical properties, such as 'padding-inline-start' and 'padding-block-start'. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).
