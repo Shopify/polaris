@@ -90,7 +90,11 @@ const viewPorts = Object.entries({
   };
 });
 
-export const parameters = {viewport: {viewports: {...viewPorts}}};
+export const parameters = {
+  viewport: {viewports: {...viewPorts}},
+  // Increases precision of rendered snapshot diffs. Default is 0.063
+  chromatic: {diffThreshold: 0.03},
+};
 
 export const decorators = [
   GridOverlayDecorator,
