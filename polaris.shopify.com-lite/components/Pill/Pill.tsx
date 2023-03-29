@@ -17,6 +17,7 @@ function Pill({href, label, asIcon, style, subdued}: Props) {
     subdued && styles.subdued,
   );
   const dataStyle = (style && toPascalCase(style)) || toPascalCase(label);
+
   if (href) {
     return (
       <Link href={href} className={classNameValue} data-style={dataStyle}>

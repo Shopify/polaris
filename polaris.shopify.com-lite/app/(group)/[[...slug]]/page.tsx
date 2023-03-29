@@ -150,11 +150,7 @@ export default async function Home({params}: {params: {slug: string[]}}) {
 
   if (slug && slug.join('/') === 'icons') {
     return (
-      <PageWrapper
-        id={page.id}
-        title={page.title}
-        breadcrumbs={page.breadcrumbs}
-      >
+      <PageWrapper page={page} hideTOC={true}>
         <Icons />
       </PageWrapper>
     );
@@ -172,95 +168,91 @@ export default async function Home({params}: {params: {slug: string[]}}) {
       : undefined;
   const codeExamples =
     pageMeta?.type === 'components' ? await LoadCodeExamples(pageMeta) : {};
+  const hideTOC = page.layout === 'listing';
 
   return (
-    <PageWrapper id={page.id} title={page.title} breadcrumbs={page.breadcrumbs}>
+    <PageWrapper page={page} hideTOC={hideTOC}>
       {/* <p style={{fontSize: 9}}>
         Website route {JSON.stringify({page})} {JSON.stringify({childPages})}
       </p> */}
 
-      <div className={styles.PageLayout}>
-        <main>
-          {pageMeta?.type === 'components' ? (
+      {pageMeta?.type === 'components' ? (
+        <>
+          <ComponentMeta
+            excerpt={page.excerpt}
+            pageMeta={pageMeta}
+            codeExamples={codeExamples}
+          />
+          {props && (
             <>
-              <ComponentMeta
-                excerpt={page.excerpt}
-                pageMeta={pageMeta}
-                codeExamples={codeExamples}
-              />
-              {props && (
-                <>
-                  <h2 id="props" className={styles.PropsTableHeading}>
-                    Props
-                  </h2>
-                  <PropsTable
-                    props={props.props}
-                    references={props.references}
-                  />
-                </>
-              )}
+              <h2 id="props" className={styles.PropsTableHeading}>
+                Props
+              </h2>
+              <PropsTable props={props.props} references={props.references} />
             </>
-          ) : (
-            <div className={styles.ExcerptWrapper}>
-              <Markdown>{page.excerpt}</Markdown>
-            </div>
           )}
+        </>
+      ) : (
+        <div className={styles.ExcerptWrapper}>
+          <Markdown>{page.excerpt}</Markdown>
+        </div>
+      )}
 
-          {page.layout === 'listing' ? (
-            <ChildpageListing pages={childPages} />
-          ) : (
-            <EditorRenderer page={page} />
-          )}
-        </main>
-
-        {page.layout === 'blocks' && (
-          <aside>
-            <TOC pageId={page.id} />
-          </aside>
-        )}
-      </div>
+      {page.layout === 'listing' ? (
+        <ChildpageListing pages={childPages} />
+      ) : (
+        <EditorRenderer page={page} />
+      )}
     </PageWrapper>
   );
 }
 
 function PageWrapper({
-  id,
-  title,
-  breadcrumbs,
+  page,
   children,
+  hideTOC = false,
 }: {
-  id: string;
-  title: string;
-  breadcrumbs: ResolvedPage['breadcrumbs'];
+  page: ResolvedPage;
   children: React.ReactNode;
+  hideTOC?: boolean;
 }) {
+  const {id, title, breadcrumbs} = page;
   let breadcrumbSlugs: string[] = [];
   return (
     <div className={styles.Page}>
-      <nav aria-label="Breadcrumb">
-        {breadcrumbs.length > 0 && (
-          <ol className={styles.Breadcrumbs}>
-            {id !== HOME_PAGE_ID && <Link href="/">Home</Link>}
-            {breadcrumbs.map(({id, slug, title}, index) => {
-              breadcrumbSlugs.push(slug);
-              const isLast = index === breadcrumbs.length - 1;
-              return (
-                <Link
-                  key={id}
-                  href={breadcrumbSlugs.join('/')}
-                  aria-current={isLast ? 'page' : undefined}
-                >
-                  {title}
-                </Link>
-              );
-            })}
-          </ol>
+      <div className={styles.PageLayout}>
+        <main id="main">
+          <nav aria-label="Breadcrumb">
+            {breadcrumbs.length > 0 && (
+              <ol className={styles.Breadcrumbs}>
+                {id !== HOME_PAGE_ID && <Link href="/">Home</Link>}
+                {breadcrumbs.map(({id, slug, title}, index) => {
+                  breadcrumbSlugs.push(slug);
+                  const isLast = index === breadcrumbs.length - 1;
+                  return (
+                    <Link
+                      key={id}
+                      href={breadcrumbSlugs.join('/')}
+                      aria-current={isLast ? 'page' : undefined}
+                    >
+                      {title}
+                    </Link>
+                  );
+                })}
+              </ol>
+            )}
+          </nav>
+
+          <h1>{title}</h1>
+          {children}
+        </main>
+
+        {!hideTOC && (
+          <aside>
+            <TOC pageId={id} />
+          </aside>
         )}
-      </nav>
-
-      <h1>{title}</h1>
-
-      {children}
+      </div>
     </div>
   );
 }

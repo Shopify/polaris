@@ -5,9 +5,21 @@
   font-weight: var(--font-weight-heavy);
   line-height: 1.75;
 
+  li {
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding-left: 2px; // Don't clip focus outline
+  }
+
   a {
-    &[data-is-current='true'] {
+    &[data-is-current='true'],
+    &:hover {
       color: var(--color-text-strong);
+    }
+    &:focus {
+      border-radius: 2px;
     }
   }
 

@@ -13,6 +13,9 @@ interface Props {
 function Frame({navItems, children}: Props) {
   return (
     <div className={className(styles.Frame, inter.className)}>
+      <a href="#main" className={styles.SkipToMain}>
+        Skip to main content
+      </a>
       <Navigation navItems={navItems} />
       <div className={styles.Content}>{children}</div>
     </div>

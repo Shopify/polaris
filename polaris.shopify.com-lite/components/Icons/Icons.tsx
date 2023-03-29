@@ -26,7 +26,7 @@ function Icons({}: Props) {
   }, [params]);
 
   return (
-    <div className={styles.Icons}>
+    <main className={styles.Icons} id="main">
       <input
         type="search"
         value={query}
@@ -51,7 +51,7 @@ function Icons({}: Props) {
             return <IconItem key={icon.id} icon={icon} />;
           })}
       </div>
-    </div>
+    </main>
   );
 }
 

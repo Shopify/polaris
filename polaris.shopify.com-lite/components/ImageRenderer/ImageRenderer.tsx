@@ -2,7 +2,7 @@
 
 import {useMedia} from '@/hooks';
 import {Image as ImageType} from '@/types';
-import {className, getImageDimensions} from '@/utils';
+import {className as classNameHelper, getImageDimensions} from '@/utils';
 import Image from 'next/image';
 import {useEffect, useState} from 'react';
 import styles from './ImageRenderer.module.scss';
@@ -15,7 +15,15 @@ import styles from './ImageRenderer.module.scss';
 // Current drawback: With JavaScript disabled, both dark and light mode images
 // are fetched (but not rendered). This is an acceptable tradeoff for now.
 
-function ImageRenderer({image, width}: {image: ImageType; width: number}) {
+function ImageRenderer({
+  image,
+  width,
+  className,
+}: {
+  image: ImageType;
+  width: number;
+  className?: string;
+}) {
   const prefersDarkMode = useMedia(
     ['(prefers-color-scheme: dark)'],
     [true],
@@ -43,7 +51,10 @@ function ImageRenderer({image, width}: {image: ImageType; width: number}) {
             {width: image.width, height: image.height},
             width,
           )}
-          className={styles.DarkModeImage}
+          className={classNameHelper(
+            styles.DarkModeImage,
+            className && className,
+          )}
         />
       )}
 
@@ -55,9 +66,10 @@ function ImageRenderer({image, width}: {image: ImageType; width: number}) {
             {width: image.width, height: image.height},
             width,
           )}
-          className={className(
+          className={classNameHelper(
             styles.LightModeImage,
             image.darkModeFilename && styles.darkModeImageAvailable,
+            className && className,
           )}
         />
       )}

@@ -1,6 +1,4 @@
-'use client';
-
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {SearchResult} from '@/app/api/search/route';
 import {Combobox, Dialog} from '@headlessui/react';
 import {useRouter, useSearchParams} from 'next/navigation';
@@ -13,20 +11,40 @@ import {useDebounce} from '@/hooks';
 import ImageRenderer from '../ImageRenderer';
 import Pill from '../Pill';
 
-export default function Search() {
+interface Props {
+  renderToggle: (attributes: {onClick: () => void}) => React.ReactNode;
+}
+
+export default function GlobalSearch({renderToggle}: Props) {
+  const [isFetching, setIsFetching] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [q, setQ] = useState<string>('');
   const [selectedSearchResult] = useState<string>('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-  const debouncedQ: string = useDebounce<string>(q, 200);
+  const debouncedQ: string = useDebounce<string>(q, 150);
+  const controller = useRef<AbortController>();
 
   const router = useRouter();
 
   useEffect(() => {
-    if (q.length > 0) {
-      fetch(`/api/search?q=${encodeURIComponent(q)}`)
+    if (controller.current?.signal) {
+      controller.current.abort();
+    }
+    controller.current = new AbortController();
+
+    if (q.trim().length > 0) {
+      setIsFetching(true);
+      fetch(`/api/search?q=${encodeURIComponent(q)}`, {
+        signal: controller.current.signal,
+      })
         .then((res) => res.json())
-        .then((data) => setSearchResults(data));
+        .then((data) => setSearchResults(data))
+        .catch((error) => {
+          if (error.name !== 'AbortError') {
+            throw new Error(error);
+          }
+          setIsFetching(false);
+        });
     } else {
       setSearchResults([]);
     }
@@ -43,11 +61,13 @@ export default function Search() {
     return () => document.removeEventListener('keydown', handler);
   }, []);
 
+  const triggerAttributes = {
+    onClick: () => setIsOpen(true),
+  };
+
   return (
-    <main>
-      <button className={styles.Trigger} onClick={() => setIsOpen(true)}>
-        Search
-      </button>
+    <>
+      {renderToggle(triggerAttributes)}
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <Dialog.Panel className={className(styles.Dialog, 'dark-morde')}>
@@ -68,6 +88,24 @@ export default function Search() {
               spellCheck="false"
               placeholder="Search"
             />
+            <button
+              className={styles.CloseButton}
+              onClick={() => setIsOpen(false)}
+            >
+              Close
+            </button>
+
+            {q.trim().length > 0 &&
+              searchResults.length === 0 &&
+              !isFetching && (
+                <div className={styles.EmptyState}>No results</div>
+              )}
+            {q.trim().length === 0 && searchResults.length === 0 && (
+              <div className={styles.EmptyState}>
+                Find guidance, patterns, tokens, components, tokens...
+              </div>
+            )}
+
             <Combobox.Options className={styles.Results}>
               {searchResults.map((result) => {
                 const category =
@@ -90,11 +128,16 @@ export default function Search() {
                       </div>
                     )}
                     {result.thumbnail && (
-                      <ImageRenderer image={result.thumbnail} width={200} />
+                      <ImageRenderer
+                        className={styles.Preview}
+                        image={result.thumbnail}
+                        width={400}
+                      />
                     )}
-                    <div>
+                    <div className={styles.Text}>
                       <h2>
-                        {result.title} {category && <Pill label={category} />}
+                        {category && <Pill label={category} asIcon />}
+                        {result.title}{' '}
                       </h2>
                       <Markdown strip>{result.excerpt}</Markdown>
                       <p className={styles.Url}>/{result.url}</p>
@@ -106,6 +149,6 @@ export default function Search() {
           </Combobox>
         </Dialog.Panel>
       </Dialog>
-    </main>
+    </>
   );
 }

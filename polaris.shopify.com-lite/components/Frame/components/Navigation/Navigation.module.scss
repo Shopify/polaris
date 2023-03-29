@@ -1,15 +1,48 @@
 @use '../../../../styles/mixins.scss' as *;
 
+$mobile-nav-toggle-size: 44px;
+$nav-item-focus-outline-inset: 0.25rem;
+
 .Navigation {
   position: sticky;
   top: 0;
-  height: 100vh;
-  min-width: 20rem;
-  max-width: 20rem;
-  padding: 2rem;
-  overflow: auto;
-  border-right: 1px solid var(--color-border);
-  @include custom-scrollbars;
+  align-self: flex-start;
+
+  .Content {
+    height: 100vh;
+    min-width: 20rem;
+    max-width: 20rem;
+    padding: 2rem;
+    border-right: 1px solid var(--color-border);
+    overflow: auto;
+    @include custom-scrollbars;
+
+    > ul {
+      margin-left: -1 * $nav-item-focus-outline-inset;
+    }
+  }
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    position: static;
+  }
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    .Content {
+      position: fixed;
+      top: $mobile-header-height;
+      left: 0;
+      background: var(--color-surface);
+      width: 100%;
+      max-width: 100%;
+      display: none;
+      z-index: 2;
+      padding: 1.5rem;
+      height: calc(100vh - $mobile-header-height);
+      &.mobileNavOpen {
+        display: block;
+      }
+    }
+  }
 
   > ul > li > span > a {
     font-size: 1rem;
@@ -36,7 +69,7 @@
     }
 
     a {
-      padding: 0.05rem 0;
+      padding: 0.05rem $nav-item-focus-outline-inset;
       color: var(--color-text);
     }
   }
@@ -58,16 +91,135 @@
   }
 }
 
+.GlobalSearchDesktopToggle {
+  position: relative;
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border-radius: 8px;
+  margin-top: 2.5rem;
+  margin-bottom: 3.5rem;
+  background-size: auto 18px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-strong);
+  transition: all 0.05s ease;
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  &:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0.75rem;
+    width: 18px;
+    height: 18px;
+    background: url(./SearchMajor.svg) no-repeat center center;
+    background-size: contain;
+
+    @media (prefers-color-scheme: dark) {
+      filter: invert(1);
+    }
+  }
+}
+
+.GlobalSearchMobileToggle {
+  width: $mobile-nav-toggle-size;
+  height: $mobile-nav-toggle-size;
+  border-radius: 100px;
+  text-indent: -1000px;
+  overflow: hidden;
+  background: url(./SearchMajor.svg) no-repeat center center;
+  background-size: 18px auto;
+
+  @media (prefers-color-scheme: dark) {
+    filter: invert(1);
+  }
+}
+
+.MobileHeader {
+  display: none;
+  position: sticky;
+  top: 0;
+  height: $mobile-header-height;
+  padding: 0 64px 0 1.5rem;
+  align-items: center;
+  background: rgb(var(--color-surface-rgb), 0.9);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  justify-content: space-between;
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    display: flex;
+  }
+}
+
+.MobileBackdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.MobileNavToggle {
+  display: none;
+  position: fixed;
+  top: ($mobile-header-height - $mobile-nav-toggle-size) / 2;
+  right: 1.5rem;
+  width: $mobile-nav-toggle-size;
+  height: $mobile-nav-toggle-size;
+  border-radius: 100px;
+  text-indent: -1000px;
+  overflow: hidden;
+  z-index: 2;
+  background: url(./nav-open.svg) no-repeat center center;
+  background-size: 18px auto;
+
+  @media screen and (prefers-color-scheme: dark) {
+    filter: invert(1);
+  }
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    display: block;
+  }
+
+  &.isCloseButton {
+    background-image: url(./nav-close.svg);
+  }
+}
+
 .Logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background: url(/images/shopify-logo.svg) no-repeat;
   padding-left: 34px;
-  margin-bottom: 2.5rem;
   background-size: auto 28px;
   height: 28px;
-  font-size: 1.25rem;
+  font-weight: var(--font-weight-heavy);
   color: var(--color-text-strong);
+
+  .Navigation & {
+    @media screen and (max-width: $mobile-nav-breakpoint) {
+      display: none;
+    }
+  }
+
+  &:focus-visible {
+    border-radius: 8px;
+  }
 }
 
 .NavItem {
@@ -84,11 +236,15 @@
     align-items: center;
     gap: 0.25rem;
     flex: 1;
-    padding: 0.1rem 0;
+    padding: 0.1rem $nav-item-focus-outline-inset;
     color: var(--color-text-strong);
 
     &:hover {
       color: var(--color-text-strong);
+    }
+
+    &:focus-visible {
+      border-radius: 11px;
     }
   }
 
@@ -115,12 +271,20 @@
     opacity: 1;
   }
 
+  &:focus-visible {
+    border-radius: 8px;
+    opacity: 1;
+  }
+
   &[aria-expanded='true'] {
     background-image: url(./MinusMinor.svg);
   }
 
   @media (prefers-color-scheme: dark) {
-    filter: brightness(1000%) contrast(0);
+    filter: invert(1) brightness(5) contrast(100);
+    &:focus-visible {
+      box-shadow: 0 0 0 2px var(--color-surface);
+    }
   }
 
   ul ul & {

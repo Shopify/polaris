@@ -8,9 +8,14 @@
   line-height: 1;
   border-radius: 8px;
   padding: 0.25rem 0.3rem;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.075);
   text-decoration: none !important;
   color: var(--color-text-strong) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.075);
+
+  &:focus-visible {
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.075),
+      0 0 0 2px var(--color-text-strong);
+  }
 
   &.subdued {
     color: var(--color-text-subdued) !important;

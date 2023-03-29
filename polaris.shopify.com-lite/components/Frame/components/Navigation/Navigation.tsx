@@ -7,49 +7,138 @@ import {NavItems, pagesWithIcons} from '@/types';
 import {className} from '@/utils';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
-import {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './Navigation.module.scss';
 
 function Navigation({navItems}: {navItems: NavItems}) {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const mobileNavToggleRef = useRef<HTMLButtonElement>(null);
+
+  const pathName = usePathname();
+  useEffect(() => setMobileNavOpen(false), [pathName]);
+
+  function handleFirstFocusableItemKeyDown(evt: React.KeyboardEvent) {
+    if (mobileNavOpen && evt.key === 'Tab' && evt.shiftKey) {
+      const selector = '#top-level-nav > li:last-child a';
+      (document.querySelector(selector) as HTMLLinkElement)?.focus();
+      evt.preventDefault();
+    }
+  }
+
+  function handleLastFocusableItemKeyDown(evt: React.KeyboardEvent) {
+    if (mobileNavOpen && evt.key === 'Tab' && !evt.shiftKey) {
+      mobileNavToggleRef.current?.focus();
+      evt.preventDefault();
+    }
+  }
+
+  function handleContentKeyDown(evt: React.KeyboardEvent) {
+    if (evt.key === 'Escape') {
+      const originatedFromGlobalSearch =
+        (evt.target as HTMLElement)?.getAttribute('role') === 'combobox';
+      if (!originatedFromGlobalSearch) {
+        closeMobileNav();
+      }
+    }
+  }
+
+  useEffect(() => {
+    document.body.style.overflow = mobileNavOpen ? 'hidden' : 'auto';
+  }, [mobileNavOpen]);
+
+  function closeMobileNav() {
+    setMobileNavOpen(false);
+  }
+
+  const topLevelItems = [...navItems]
+    .filter((page) => !page.parentId && page.id !== HOME_PAGE_ID)
+    .sort((a, b) => a.order - b.order);
+
   return (
-    <nav className={styles.Navigation}>
-      <Link href="/">
-        <h1 className={styles.Logo}>Polaris</h1>
-      </Link>
+    <>
+      <div className={styles.MobileHeader}>
+        <Link href="/" className={styles.Logo}>
+          <h1>Polaris</h1>
+        </Link>
+        <GlobalSearch
+          renderToggle={(attributes) => (
+            <button {...attributes} className={styles.GlobalSearchMobileToggle}>
+              Search
+            </button>
+          )}
+        />
+      </div>
 
-      <GlobalSearch />
+      <nav className={styles.Navigation}>
+        <button
+          className={className(
+            styles.MobileNavToggle,
+            mobileNavOpen && styles.isCloseButton,
+          )}
+          aria-expanded={mobileNavOpen}
+          aria-controls="navContent"
+          ref={mobileNavToggleRef}
+          onClick={() => setMobileNavOpen(!mobileNavOpen)}
+          onKeyDown={handleFirstFocusableItemKeyDown}
+        >
+          Toggle navigation
+        </button>
 
-      <ul>
-        {navItems
-          .filter((page) => !page.parentId && page.id !== HOME_PAGE_ID)
-          .sort((a, b) => a.order - b.order)
-          .map((page) => (
-            <NavItem
-              key={page.id}
-              navItems={navItems}
-              item={page}
-              level={0}
-              handleLinkClick={() => undefined}
-              handleShiftTabOnFirstLink={() => undefined}
-            />
-          ))}
-      </ul>
-    </nav>
+        {mobileNavOpen && (
+          <div className={styles.MobileBackdrop} onClick={closeMobileNav}></div>
+        )}
+
+        <div
+          className={className(
+            styles.Content,
+            mobileNavOpen && styles.mobileNavOpen,
+          )}
+          id="navContent"
+          onKeyDown={handleContentKeyDown}
+        >
+          <Link href="/" className={styles.Logo}>
+            <h1>Polaris</h1>
+          </Link>
+
+          <GlobalSearch
+            renderToggle={(attributes) => (
+              <button
+                className={styles.GlobalSearchDesktopToggle}
+                {...attributes}
+              >
+                Search
+              </button>
+            )}
+          />
+
+          <ul id="top-level-nav">
+            {topLevelItems.map((page, index) => (
+              <NavItem
+                key={page.id}
+                navItems={navItems}
+                item={page}
+                onKeyDown={
+                  index === topLevelItems.length - 1
+                    ? handleLastFocusableItemKeyDown
+                    : undefined
+                }
+              />
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </>
   );
 }
 
 function NavItem({
   navItems,
   item,
-  level,
-  handleLinkClick,
-  handleShiftTabOnFirstLink,
+  onKeyDown,
 }: {
   navItems: NavItems;
   item: NavItems[number];
-  level: number;
-  handleLinkClick: () => void;
-  handleShiftTabOnFirstLink: (e: React.KeyboardEvent) => void;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
 }) {
   const [isManuallyToggled, setIsManuallyToggled] = useState<boolean | null>(
     null,
@@ -95,18 +184,12 @@ function NavItem({
         <Link
           href={`/${item.url}`}
           onClick={() => {
-            handleLinkClick();
             if (isManuallyToggled === false) {
               setIsManuallyToggled(null);
             }
           }}
           aria-current={isCurrent ? 'page' : 'false'}
-          // TODO
-          // onKeyDown={(evt) => {
-          //   if (level === 0 && i === 0) {
-          //     handleShiftTabOnFirstLink(evt);
-          //   }
-          // }}
+          onKeyDown={(evt) => onKeyDown && onKeyDown(evt)}
         >
           {hasIcon && (
             <div className={styles.IconContainer}>
@@ -115,9 +198,7 @@ function NavItem({
           )}
 
           {item.title}
-
           {statusBadgeMarkup}
-
           {item.hasNewBadge && <Pill label="New" />}
         </Link>
 
@@ -140,18 +221,9 @@ function NavItem({
         <ul id={childrenAriaId}>
           {children
             .sort((a, b) => a.order - b.order)
-            .map((child) => {
-              return (
-                <NavItem
-                  key={child.id}
-                  navItems={navItems}
-                  item={child}
-                  level={level + 1}
-                  handleLinkClick={handleLinkClick}
-                  handleShiftTabOnFirstLink={handleShiftTabOnFirstLink}
-                />
-              );
-            })}
+            .map((child) => (
+              <NavItem key={child.id} navItems={navItems} item={child} />
+            ))}
         </ul>
       )}
     </li>

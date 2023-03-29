@@ -34,10 +34,15 @@ function createPage(
 ) {
   const blockId = nanoid();
   const fixImagePaths = (markdown) =>
-    markdown.replace(
-      /!\[([^\]]*)]\(([^)]*)\)/g,
-      (_, alt, src) => `![${alt}](/images/${src.split('/').pop()})`,
-    );
+    markdown
+      .replace(
+        /!\[([^\]]*)]\(([^)]*)\)/g,
+        (_, alt, src) => `![${alt}](/images/${src.split('/').pop()})`,
+      )
+      .replace(
+        /src="([^"]+)"/g,
+        (_, src) => `src="/images/${src.split('/').pop()}"`,
+      );
   const newBlocks =
     layout !== 'listing' && markdown
       ? [

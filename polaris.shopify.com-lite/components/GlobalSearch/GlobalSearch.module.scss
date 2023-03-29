@@ -1,71 +1,72 @@
 @use '../../styles/mixins' as *;
 
-.Trigger {
-  position: relative;
-  width: 100%;
-  padding: 0.5rem 1rem 0.5rem 2.5rem;
-  border-radius: 8px;
-  margin-bottom: 3.5rem;
-  background-size: auto 18px;
-  border: 1px solid var(--color-border);
-  color: var(--color-text-strong);
-  transition: all 0.05s ease;
-
-  &:hover {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
-
-  &:active {
-    transform: scale(0.99);
-  }
-
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0.75rem;
-    width: 18px;
-    height: 18px;
-    background: url(./SearchMajor.svg) no-repeat center center;
-    background-size: contain;
-
-    @media (prefers-color-scheme: dark) {
-      filter: invert(1);
-    }
-  }
-}
-
 .Dialog {
   position: fixed;
-  top: 0;
+  top: 2rem;
   right: 0;
-  bottom: 0;
   left: 0;
+  height: calc(100vh - 4rem);
   margin: auto;
   background: var(--color-surface);
   backdrop-filter: blur(5px) saturate(200%);
   max-width: 800px;
-  max-height: 50rem;
+  max-height: 60rem;
   border-radius: calc(var(--unit-radius) * 8);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.075),
-    0 50px 100px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5), 0 0 0 10000px rgba(0, 0, 0, 0.85);
   display: flex;
   flex-direction: column;
   z-index: 2;
   overflow: hidden;
+
+  @media screen and (max-width: $breakpoint-md) {
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
+    top: 0;
+    border-radius: 0;
+  }
 }
 
 .Input {
-  padding: 1.5rem;
+  padding: 0 1.5rem;
   font-size: 2rem;
   line-height: 1;
   border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-strong);
+  height: 100px;
+  display: flex;
+  align-items: center;
 
-  &:not(focus-visible) {
-    outline: none;
+  &:focus {
+    box-shadow: none;
+  }
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    height: $mobile-header-height;
+    font-size: 1.5rem;
+  }
+}
+
+.CloseButton {
+  $size: 44px;
+  position: absolute;
+  width: $size;
+  height: $size;
+  top: ($mobile-header-height - $size) / 2;
+  right: 1.5rem;
+  text-indent: -1000px;
+  overflow: hidden;
+  background: url(./close.svg) no-repeat center center;
+  background-size: 14px auto;
+  z-index: 2;
+  display: none;
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    display: block;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    filter: invert(1);
   }
 }
 
@@ -73,36 +74,69 @@
   flex: 1;
   overflow: auto;
   scroll-behavior: smooth;
+  font-size: var(--font-size-small);
   @include custom-scrollbars;
+
+  &:empty {
+    display: none;
+  }
 }
 
 .Result {
   display: flex;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   cursor: pointer;
-  gap: 2rem;
+  gap: 1.5rem;
+  align-items: center;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .Preview {
-    min-width: 150px;
-    max-width: 150px;
-    height: 100px;
-    background: var(--color-surface-subdued);
+    margin-top: 0.15rem;
+    max-width: 50%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #fff;
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: $breakpoint-md) {
+      max-width: 33%;
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+      max-width: 100%;
+    }
+
+    svg {
+      fill: #111;
+    }
+  }
+
+  img.Preview {
+    min-height: auto;
+    aspect-ratio: auto;
+  }
+
+  .Text {
+    flex: 1;
   }
 
   h2 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    @include heading-4;
-    margin-bottom: 0.1rem;
+    @include heading-3;
+    margin-bottom: 0.5rem;
   }
 
   .Url {
-    margin-top: 0.1rem;
+    margin-top: 0.125rem;
     font-size: var(--font-size-small);
     color: var(--color-link);
   }
@@ -118,4 +152,14 @@
   &[data-headlessui-state='active'] {
     background: var(--color-surface-subdued);
   }
+}
+
+.EmptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-subdued);
+  text-align: center;
+  padding: 0 1.5rem;
 }

@@ -18,11 +18,15 @@
   -moz-osx-font-smoothing: grayscale;
 
   &:focus {
-    &:not(:focus-visible) {
-      outline: none;
-    }
+    outline: none;
   }
 
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-text-strong);
+  }
+}
+
+:root {
   --unit-space: 1rem;
   --unit-radius: 2px;
 
@@ -34,10 +38,9 @@
 
   --font-family-mono: 'SF Mono', SFMono-Regular, ui-monospace,
     'DejaVu Sans Mono', Menlo, Consolas, monospace;
-}
 
-:root {
-  --color-surface: #f7f8fa;
+  --color-surface-rgb: 247, 248, 250;
+  --color-surface: rgb(var(--color-surface-rgb));
   --color-surface-subdued: #eff0f3;
   --color-surface-code: var(--color-surface-subdued);
   --color-text: #4d4f54;
@@ -74,9 +77,10 @@
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
-    --color-surface: #161718;
+    --color-surface-rgb: 22, 23, 24;
+    --color-surface: rgb(var(--color-surface-rgb));
     --color-surface-subdued: #1d1e1f;
-    --color-surface-code: var(--color-surface-subdued);
+    --color-surface-code: #202122;
     --color-text: #b6b6bf;
     --color-text-strong: #fff;
     --color-text-subdued: #909097;

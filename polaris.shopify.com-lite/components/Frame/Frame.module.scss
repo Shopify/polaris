@@ -1,12 +1,39 @@
+@use '/styles/mixins.scss' as *;
+
 .Frame {
   display: flex;
   max-width: 100rem;
   margin: 0 auto;
   scroll-margin-top: 3rem;
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    display: block;
+  }
 }
 
 .Content {
   padding: 4rem;
   flex: 1;
   min-width: 0;
+
+  @media screen and (max-width: $mobile-nav-breakpoint) {
+    padding: 1.5rem;
+  }
+}
+
+.SkipToMain {
+  position: fixed;
+  top: 2px;
+  right: 2px;
+  left: 2px;
+  transform: translateY(-9999px);
+  padding: 1.5rem;
+  background: var(--color-surface);
+  @include heading-3;
+  z-index: 3;
+  text-align: center;
+
+  &:focus-visible {
+    transform: none;
+  }
 }

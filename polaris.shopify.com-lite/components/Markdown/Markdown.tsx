@@ -43,6 +43,11 @@ function Markdown({strip, children: text}: Props) {
                   </a>
                 </h3>
               ),
+              img: ({src, alt, style}) =>
+                src ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={src} alt={alt ?? ''} style={style} />
+                ) : null,
               code: ({inline, children, className}) =>
                 inline ? (
                   <code>{children}</code>

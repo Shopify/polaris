@@ -10,7 +10,7 @@ import {
   useState,
 } from 'react';
 import {JSONOutput} from 'typedoc';
-import {Popover} from '@headlessui/react';
+import {Popover as HeadlessPopover} from '@headlessui/react';
 import styles from './PropsTable.module.scss';
 import {className} from '@/utils';
 import {useFloating} from '@floating-ui/react-dom';
@@ -225,7 +225,7 @@ function ExpandType({
   references: JSONOutput.DeclarationReflection[];
   definitionUrl?: string;
 }) {
-  if (!type) return <p>Type is empty</p>;
+  if (!type) return <>{JSON.stringify(type)}</>;
 
   if (type.type === 'array') {
     return (
@@ -312,19 +312,17 @@ function ExpandType({
 
       if (referencedDeclaration) {
         return (
-          <>
-            <MyPopover buttonText={referencedDeclaration.name}>
-              {referencedDeclaration.children && (
-                <p className={styles.PropsTableHeader}>
-                  {referencedDeclaration.name}
-                </p>
-              )}
-              <HandleDeclarationReflection
-                declarationReflection={referencedDeclaration}
-                references={references}
-              />
-            </MyPopover>
-          </>
+          <Popover buttonText={referencedDeclaration.name}>
+            {referencedDeclaration.children && (
+              <p className={styles.PropsTableHeader}>
+                {referencedDeclaration.name}
+              </p>
+            )}
+            <HandleDeclarationReflection
+              declarationReflection={referencedDeclaration}
+              references={references}
+            />
+          </Popover>
         );
       }
     } else if (type.package) {
@@ -379,15 +377,11 @@ function ExpandType({
     }
 
     return (
-      <>
-        Reflect:
-        {JSON.stringify(type)}
-        <ExpandType
-          type={type.declaration.type}
-          references={references}
-          definitionUrl={definitionUrl}
-        />
-      </>
+      <ExpandType
+        type={type.declaration.type}
+        references={references}
+        definitionUrl={definitionUrl}
+      />
     );
   } else if (type.type === 'typeOperator') {
     return (
@@ -427,7 +421,7 @@ function ExpandCallSignature({
   );
 }
 
-function MyPopover({
+function Popover({
   buttonText,
   children,
 }: {
@@ -438,16 +432,16 @@ function MyPopover({
   const {x, y, strategy, refs} = useFloating();
 
   return (
-    <Popover as="span" className={styles.PopoverContainer}>
-      <Popover.Button
+    <HeadlessPopover as="span" className={styles.PopoverContainer}>
+      <HeadlessPopover.Button
         className={styles.PopoverButton}
         ref={refs.setReference}
         onClick={() => setIsExpanded(true)}
       >
         {buttonText}
-      </Popover.Button>
+      </HeadlessPopover.Button>
 
-      <Popover.Panel
+      <HeadlessPopover.Panel
         className={className(styles.PropsTableContent, styles.isPopover)}
         ref={refs.setFloating}
         style={{
@@ -458,8 +452,8 @@ function MyPopover({
         }}
       >
         {children}
-      </Popover.Panel>
-    </Popover>
+      </HeadlessPopover.Panel>
+    </HeadlessPopover>
   );
 }
 

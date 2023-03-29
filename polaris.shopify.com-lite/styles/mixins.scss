@@ -1,3 +1,10 @@
+$breakpoint-sm: 30.625rem;
+$breakpoint-md: 48rem;
+$breakpoint-lg: 65rem;
+$breakpoint-xl: 90rem;
+$mobile-nav-breakpoint: $breakpoint-md;
+$mobile-header-height: 64px;
+
 @mixin heading-1 {
   font-size: 2.75rem;
   line-height: 1;

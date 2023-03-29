@@ -15,7 +15,7 @@
       background: var(--color-border);
     }
 
-    &:focus {
+    &:focus-visible {
       // TODO
       outline: none;
     }

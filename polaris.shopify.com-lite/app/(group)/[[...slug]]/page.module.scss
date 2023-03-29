@@ -4,6 +4,7 @@
   .Breadcrumbs {
     margin-bottom: 1rem;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.25rem;
     font-size: 0.825rem;
     font-weight: var(--font-weight-heavy);
@@ -40,6 +41,7 @@
 
   aside {
     position: sticky;
+    margin-top: 8.5rem; // Visually align with lede
     top: 2rem;
     align-self: flex-start;
     padding-left: 2rem;
@@ -49,6 +51,10 @@
     overflow: auto;
     @include custom-scrollbars;
     max-height: calc(100vh - 4rem);
+
+    @media screen and (max-width: $breakpoint-lg) {
+      display: none;
+    }
   }
 }
 
@@ -94,7 +100,6 @@
   overflow: hidden;
   color: var(--color-text);
   aspect-ratio: 16 / 9;
-  // transition: background-color 0.1s 0.1s linear;
 
   &.isDark {
     background: var(--color-surface-subdued);
