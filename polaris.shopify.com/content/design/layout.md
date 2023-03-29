@@ -1,6 +1,6 @@
 ---
 title: Layout
-icon: BuyButtonHorizontalLayoutMajor
+icon: TemplateMajor
 keywords:
   - layout
   - layout components
