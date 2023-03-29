@@ -1,5 +1,24 @@
 # polaris.shopify.com
 
+## 0.44.0
+
+### Minor Changes
+
+- [#8718](https://github.com/Shopify/polaris/pull/8718) [`444d7b248`](https://github.com/Shopify/polaris/commit/444d7b248ea48bed37a4d5060413d5319225b05b) Thanks [@yurm04](https://github.com/yurm04)! - Added Layout resource page to polaris.shopify.com
+
+* [#8787](https://github.com/Shopify/polaris/pull/8787) [`2fa562db3`](https://github.com/Shopify/polaris/commit/2fa562db3fd6636bea260798be9cc239c3257f42) Thanks [@jjgali](https://github.com/jjgali)! - Cross linked to Layout documentation page from the Structure and layout component page.
+
+### Patch Changes
+
+- [#8786](https://github.com/Shopify/polaris/pull/8786) [`023c781e1`](https://github.com/Shopify/polaris/commit/023c781e12da67f622d07bbd6a372c59a8299339) Thanks [@samrose3](https://github.com/samrose3)! - Fix npm badge width on Tools pages
+
+* [#8746](https://github.com/Shopify/polaris/pull/8746) [`d2fcf18d5`](https://github.com/Shopify/polaris/commit/d2fcf18d5c5b36e299af830dd4376671490658c2) Thanks [@laurkim](https://github.com/laurkim)! - Added 'Related resources' section to layout components
+
+- [#8785](https://github.com/Shopify/polaris/pull/8785) [`94351645f`](https://github.com/Shopify/polaris/commit/94351645f2dec23781b2a5557230003828b55f1b) Thanks [@samrose3](https://github.com/samrose3)! - Fixed width of Listbox with search example"
+
+- Updated dependencies [[`a4f3838bb`](https://github.com/Shopify/polaris/commit/a4f3838bbd621fab0958906595c9776d42f3428f), [`8c5e9705c`](https://github.com/Shopify/polaris/commit/8c5e9705c39e3a959aa07c4d59c6fbcd90ab492c), [`8217b5845`](https://github.com/Shopify/polaris/commit/8217b5845c7c07dbb6affab455d68eaf7b8051b3)]:
+  - @shopify/polaris@10.39.2
+
 ## 0.43.0
 
 ### Minor Changes
