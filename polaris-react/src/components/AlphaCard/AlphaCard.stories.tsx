@@ -29,7 +29,7 @@ export function Default() {
 
 export function WithBackgroundSubdued() {
   return (
-    <AlphaCard background="surface-subdued">
+    <AlphaCard background="bg-subdued">
       <AlphaStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
@@ -83,7 +83,7 @@ export function WithSubduedSection() {
       <Bleed marginBlockEnd="5" marginInline="5">
         <Divider />
         <Box
-          background="surface-subdued"
+          background="bg-subdued"
           borderRadiusEndStart="2"
           borderRadiusEndEnd="2"
           padding="5"
