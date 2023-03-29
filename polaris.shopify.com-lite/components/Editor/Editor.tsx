@@ -231,7 +231,7 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
             content: 'Move up',
             onAction: () =>
               dispatch({type: 'MOVE_PAGE', page: editedPage, direction: 'up'}),
-            // icon: ArrowUpMinor,
+            icon: ArrowUpMinor,
             disabled: editedPage.order === 0,
           },
           {
@@ -242,12 +242,12 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                 page: editedPage,
                 direction: 'down',
               }),
-            // icon: ArrowDownMinor,
+            icon: ArrowDownMinor,
             disabled: editedPage.order === siblingPages.length - 1,
           },
           {
             content: 'Preview',
-            // icon: ExternalMinor,
+            icon: ExternalMinor,
             external: true,
             url: getPageUrl(state, editedPage),
           },
@@ -619,7 +619,7 @@ function BlockEditor({
           <ButtonGroup>
             <Button
               plain
-              // // icon={ArrowUpMinor}
+              icon={ArrowUpMinor}
               size="slim"
               onClick={() =>
                 dispatch({
@@ -636,7 +636,7 @@ function BlockEditor({
             ></Button>
             <Button
               plain
-              // // icon={ArrowDownMinor}
+              icon={ArrowDownMinor}
               size="slim"
               onClick={() =>
                 dispatch({
@@ -653,7 +653,7 @@ function BlockEditor({
             ></Button>
             <Button
               plain
-              // icon={DeleteMinor}
+              icon={DeleteMinor}
               size="slim"
               onClick={() =>
                 dispatch({
@@ -703,11 +703,9 @@ function BlockAdder({
         <div className={styles.BlockAdder}>
           <Button
             onClick={() => setAdderIsVisible(true)}
-            // icon={PlusMinor}
+            icon={PlusMinor}
             plain
-          >
-            +
-          </Button>
+          />
         </div>
       }
       autofocusTarget="first-node"
@@ -729,7 +727,7 @@ function BlockAdder({
               });
               setAdderIsVisible(false);
             },
-            // icon: PlusMinor,
+            icon: PlusMinor,
           })),
         ]}
       />
