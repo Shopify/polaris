@@ -105,11 +105,6 @@ $disabled-fade: 0.6;
   }
 }
 
-.Item,
-.ItemInnerWrapper {
-  border-radius: var(--p-border-radius-1);
-}
-
 .Item-selected {
   font-weight: var(--p-font-weight-semibold);
   color: var(--p-text-primary);
