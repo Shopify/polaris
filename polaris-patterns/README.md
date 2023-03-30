@@ -1,0 +1,3 @@
+# Polaris Patterns
+
+INIT
