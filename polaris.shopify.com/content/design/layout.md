@@ -17,7 +17,7 @@ keywords:
   - spacing
 description: Polaris layout components let you quickly build custom layouts without writing CSS code.
 ---
-
+<!-- 
 <style>
   .video {
     position: relative;
@@ -34,7 +34,7 @@ description: Polaris layout components let you quickly build custom layouts with
     height: 100%;
     border: 0;
   }
-</style>
+</style> -->
 
 ---
 
@@ -53,6 +53,7 @@ Each layout component encapsulates CSS styles commonly found in the Shopify admi
 You can browse all [layout and structure components](/components/layout-and-structure), as well as view usage guidelines and examples for each component.
 
 ---
+
 
 ## Layout components vs writing CSS
 
@@ -98,11 +99,7 @@ Admin UI card with a horizontal dot button on one side, plus text and a button o
 
 ![](/images/foundations/design/layout/example1.png)
 
-<div class="video">
-  <iframe src="https://www.youtube.com/embed/D_MsLKbdcGs?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
-
+<div as="YoutubeVideo" id="D_MsLKbdcGs"></div>
 
 ### Example 2
 
@@ -110,11 +107,7 @@ Admin UI card with stacked elements, inline links, and a divider. [Edit in sandb
 
 ![](/images/foundations/design/layout/example2.png)
 
-<div class="video">
-  <iframe src="https://www.youtube.com/embed/VRRakuy85ss?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
-
+<div as="YoutubeVideo" id="VRRakuy85ss"></div>
 
 ### Example 3
 
@@ -122,9 +115,4 @@ Admin UI card with text on one side, and a button on the opposite side. [Edit in
 
 ![](/images/foundations/design/layout/example3.png)
 
-
-<div class="video">
-  <iframe src="https://www.youtube.com/embed/3ww0V5drMhk?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
-
+<div as="YoutubeVideo" id="D_MsLKbdcGs"></div>
