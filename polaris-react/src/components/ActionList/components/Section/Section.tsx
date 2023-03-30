@@ -28,13 +28,16 @@ export function Section({
   actionRole,
   onActionAnyItem,
 }: SectionProps) {
-  const handleAction = (itemOnAction: ActionListItemDescriptor['onAction']) => {
+  const handleAction = (
+    itemOnAction: ActionListItemDescriptor['onAction'],
+    id?: string,
+  ) => {
     return () => {
       if (itemOnAction) {
         itemOnAction();
       }
       if (onActionAnyItem) {
-        onActionAnyItem();
+        onActionAnyItem(id);
       }
     };
   };
@@ -49,7 +52,7 @@ export function Section({
             content={content}
             helpText={helpText}
             role={actionRole}
-            onAction={handleAction(onAction)}
+            onAction={handleAction(onAction, id)}
             ref={ref}
             {...item}
           />

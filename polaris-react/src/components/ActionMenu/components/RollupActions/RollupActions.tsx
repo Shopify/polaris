@@ -31,6 +31,13 @@ export function RollupActions({
 
   const {value: rollupOpen, toggle: toggleRollupOpen} = useToggle(false);
 
+  const handleToggle = (id?: string) => {
+    const itemHasRef = items.find((item) => item.id && item.id === id)?.ref;
+    if (rollupOpen && !itemHasRef) {
+      toggleRollupOpen();
+    }
+  };
+
   if (items.length === 0 && sections.length === 0) {
     return null;
   }
@@ -56,11 +63,12 @@ export function RollupActions({
       preferredAlignment="right"
       onClose={toggleRollupOpen}
       hideOnPrint
+      preventCloseOnChildOverlayClick
     >
       <ActionList
         items={items}
         sections={sections}
-        onActionAnyItem={toggleRollupOpen}
+        onActionAnyItem={handleToggle}
       />
     </Popover>
   );

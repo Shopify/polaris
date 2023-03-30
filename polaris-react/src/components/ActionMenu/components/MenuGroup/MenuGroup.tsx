@@ -42,6 +42,17 @@ export function MenuGroup({
     onClose(title);
   }, [onClose, title]);
 
+  const handleCloseActionList = useCallback(
+    (id?: string) => {
+      const hasRef = actions.find(
+        (action) => action.id && action.id === id,
+      )?.ref;
+
+      !hasRef && handleClose();
+    },
+    [actions, handleClose],
+  );
+
   const handleOpen = useCallback(() => {
     onOpen(title);
   }, [onOpen, title]);
@@ -82,11 +93,12 @@ export function MenuGroup({
       preferredAlignment="left"
       onClose={handleClose}
       hideOnPrint
+      preventCloseOnChildOverlayClick
     >
       <ActionList
         items={actions}
         sections={sections}
-        onActionAnyItem={handleClose}
+        onActionAnyItem={handleCloseActionList}
       />
       {details && <div className={styles.Details}>{details}</div>}
     </Popover>
