@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.40.0
+
+### Minor Changes
+
+- [#8802](https://github.com/Shopify/polaris/pull/8802) [`c933547a2`](https://github.com/Shopify/polaris/commit/c933547a28f8de46e5d20eefdc4744b8996e8959) Thanks [@Flufd](https://github.com/Flufd)! - Hide AlphaCard overflow
+
+### Patch Changes
+
+- [#8814](https://github.com/Shopify/polaris/pull/8814) [`654d840e6`](https://github.com/Shopify/polaris/commit/654d840e654b3a0dc9de8c2ea7e03d0d34a8a4d0) Thanks [@CameronGorrie](https://github.com/CameronGorrie)! - Provide fallback value to --pc-frame-offset
+
 ## 10.39.2
 
 ### Patch Changes
