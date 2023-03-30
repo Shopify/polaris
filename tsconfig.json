@@ -6,6 +6,7 @@
     {"path": "./polaris-for-vscode"},
     {"path": "./polaris-migrator"},
     {"path": "./polaris-react"},
+    {"path": "./polaris-patterns"},
     {"path": "./polaris-tokens"},
     {"path": "./polaris.shopify.com"},
     {"path": "./stylelint-polaris"}
