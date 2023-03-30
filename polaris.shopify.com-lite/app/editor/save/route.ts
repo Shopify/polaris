@@ -1,21 +1,17 @@
 import {NextRequest, NextResponse} from 'next/server';
+import {spawn} from 'node:child_process';
 
 import {State} from '@/types';
 import fs from 'fs';
 
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '5mb',
-    },
-  },
-};
+export const config = {api: {bodyParser: {sizeLimit: '5mb'}}};
 
 export async function POST(req: NextRequest) {
   if (process.env.NODE_ENV === 'development') {
     const body = await req.json();
     const tsFileContent = createTsFileContent(body.state);
     fs.writeFileSync('./content.ts', tsFileContent);
+    spawn('prettier', ['--write', 'content.ts']);
     return NextResponse.json({message: 'Content saved'});
   } else {
     return NextResponse.json({message: 'Not allowed'});
@@ -28,7 +24,6 @@ function stringify(obj: Object): string {
   }
   let string = JSON.stringify(obj, null, 2)
     .replace(/},\n  {/g, `},\n\n  {`)
-    .replace(/"([a-z]+)":/gi, '$1:')
     .replaceAll(/content: "([^"]+)"\n/g, (match, str) => {
       return `content: \`${escape(str.replace(/\\n/g, '\n'))}\`\n`;
     });

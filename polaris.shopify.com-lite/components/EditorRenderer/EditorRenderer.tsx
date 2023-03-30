@@ -145,7 +145,7 @@ function DoDontBock({block}: {block: DoDontBlock}) {
 function TabbedContentBlock({block}: {block: TabbedContentBlock}) {
   return (
     <div>
-      <Tabs tabs={block.tabs.map((tab) => tab.label)} boxed>
+      <Tabs tabs={block.tabs.map(({id, label}) => ({id, label}))} boxed>
         {block.tabs.map((tab) => (
           <Tab key={tab.id}>
             <RenderBlocks blocks={tab.blocks} />

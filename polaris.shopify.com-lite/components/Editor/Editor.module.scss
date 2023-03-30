@@ -1,6 +1,14 @@
+@use '@/styles/colors.scss' as websiteColors; // Used by Tabs component that is imported from the website
+
 .Editor {
   display: flex;
   height: 100vh;
+
+  @include websiteColors.light-mode-colors();
+
+  button {
+    cursor: pointer;
+  }
 
   input[type='file'] {
     position: fixed;
@@ -118,7 +126,7 @@
   .BlockAdder {
     display: flex;
     justify-content: center;
-    padding-bottom: var(--p-space-1);
+    padding: var(--p-space-2) 0;
   }
 
   .Block {
@@ -139,6 +147,7 @@
 .BlockActions {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 0.5rem;
 }
 
 .CustomRouteBanner {
@@ -195,11 +204,10 @@
   }
 }
 
-.Backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.25);
+.TextImageEditor {
+  display: flex;
+  gap: var(--p-space-4);
+  > * {
+    flex: 1;
+  }
 }

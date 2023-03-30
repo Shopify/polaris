@@ -10,6 +10,8 @@ const HEIGHT = 630;
 const interRegular = fs.readFileSync('./app/og.png/Inter-Regular.ttf');
 const interSemiBold = fs.readFileSync('./app/og.png/Inter-SemiBold.ttf');
 
+// TODO: Add caching
+
 export async function GET(request: NextRequest) {
   const {searchParams} = new URL(request.url);
   const id = searchParams.get('id');

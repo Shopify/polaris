@@ -40,6 +40,7 @@ import {
 import {
   ActionList,
   AlphaCard,
+  AlphaStack,
   AppProvider,
   Button,
   ButtonGroup,
@@ -52,7 +53,6 @@ import {
   PageActions,
   Popover,
   Select,
-  Tabs,
   TextField,
   Tooltip,
 } from '@shopify/polaris';
@@ -67,9 +67,10 @@ import enTranslations from '@shopify/polaris/locales/en.json';
 import {assertUnreachable, className, getImageDimensions} from '@/utils';
 import {getBreadcrumbs, getResolvedPage, getPageUrl} from '@/utils';
 import {useRouter, useSearchParams} from 'next/navigation';
-import reducer from './reducer';
+import reducer, {getNiceNameForBlockType} from './reducer';
 import {Action} from './types';
 import Image from 'next/image';
+import {Tabs, Tab} from '../Tabs';
 
 export const ContentContext = createContext<{
   state: State;
@@ -82,12 +83,17 @@ export const ContentContext = createContext<{
 export default function Editor({initialContent}: {initialContent: State}) {
   const [state, dispatch] = useReducer(reducer, initialContent);
   let persistToBackendTimer = useRef<NodeJS.Timeout | null>(null);
+  let isInitialLoad = useRef(true);
 
   const router = useRouter();
   const searchParams = useSearchParams();
   const editedPageId = searchParams?.get('page') || null;
 
   useEffect(() => {
+    if (isInitialLoad.current) {
+      isInitialLoad.current = false;
+      return;
+    }
     if (persistToBackendTimer.current) {
       clearTimeout(persistToBackendTimer.current);
     }
@@ -308,8 +314,8 @@ function PageEditor({editedPageId}: {editedPageId: string}) {
                   <Select
                     label="Layout"
                     options={[
-                      {value: 'blocks', label: 'Blocks'},
-                      {value: 'listing', label: 'Sub page listing'},
+                      {value: 'blocks', label: 'Article'},
+                      {value: 'listing', label: 'Overview page'},
                     ]}
                     value={editedPage.layout}
                     onChange={(layout: Page['layout']) =>
@@ -704,8 +710,10 @@ function BlockAdder({
           <Button
             onClick={() => setAdderIsVisible(true)}
             icon={PlusMinor}
-            plain
-          />
+            size="slim"
+          >
+            Add block
+          </Button>
         </div>
       }
       autofocusTarget="first-node"
@@ -714,21 +722,28 @@ function BlockAdder({
       <ActionList
         actionRole="menuitem"
         items={[
-          ...blockTypes.map((blockType) => ({
-            content: blockType,
-            onAction: () => {
-              dispatch({
-                type: 'ADD_BLOCK',
-                blockType,
-                pageId,
-                tabId,
-                parentBlockId,
-                index,
-              });
-              setAdderIsVisible(false);
-            },
-            icon: PlusMinor,
-          })),
+          ...blockTypes
+            .filter((blockType) => {
+              if (parentBlockId && blockType === 'TabbedContent') {
+                return false;
+              }
+              return true;
+            })
+            .map((blockType) => ({
+              content: getNiceNameForBlockType(blockType),
+              onAction: () => {
+                dispatch({
+                  type: 'ADD_BLOCK',
+                  blockType,
+                  pageId,
+                  tabId,
+                  parentBlockId,
+                  index,
+                });
+                setAdderIsVisible(false);
+              },
+              icon: PlusMinor,
+            })),
         ]}
       />
     </Popover>
@@ -771,7 +786,7 @@ function ImageBlockEditor({block, onChange}: BlockEditorProps<ImageBlock>) {
 
 function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
   return (
-    <>
+    <div className={styles.TextImageEditor}>
       <TextField
         type="text"
         multiline={true}
@@ -785,7 +800,7 @@ function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
         image={block.image}
         onChange={(image) => onChange({...block, image})}
       />
-    </>
+    </div>
   );
 }
 
@@ -842,7 +857,7 @@ function ProgressiveDisclosureEditor({
 
 function DoDontEditor({block, onChange}: BlockEditorProps<DoDontBlock>) {
   return (
-    <div>
+    <FormLayout>
       <TextField
         type="text"
         value={block.doMarkdown}
@@ -860,14 +875,12 @@ function DoDontEditor({block, onChange}: BlockEditorProps<DoDontBlock>) {
         autoComplete="off"
         multiline={true}
       />
-    </div>
+    </FormLayout>
   );
 }
 
 function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
-
-  const addTab = () => {
+  const addTab = () =>
     onChange({
       ...block,
       snippets: [
@@ -875,93 +888,90 @@ function CodeEditor({block, onChange}: BlockEditorProps<CodeBlock>) {
         {id: nanoid(), label: 'New tab', code: '', language: 'typescript'},
       ],
     });
-  };
 
-  const deleteTab = (index: number) => {
+  const deleteTab = (id: string) =>
     onChange({
       ...block,
-      snippets: block.snippets.filter((_, i) => i !== index),
+      snippets: block.snippets.filter((snippet) => snippet.id !== id),
     });
-  };
-
-  const selectedTab = block.snippets[selectedTabIndex];
 
   return (
     <div>
-      <button onClick={addTab}>+</button>
-
       <Tabs
-        tabs={block.snippets.map((snippet) => ({
-          id: snippet.id,
-          content: snippet.label,
-        }))}
-        selected={selectedTabIndex}
-        onSelect={(index) => setSelectedTabIndex(index)}
+        tabs={block.snippets.map(({id, label}) => ({id, label}))}
+        onAdd={addTab}
+        boxed
       >
-        {selectedTab && (
-          <FormLayout>
-            <TextField
-              type="text"
-              label="Snippet label"
-              value={selectedTab.label}
-              onChange={(label) => {
-                onChange({
-                  ...block,
-                  snippets: block.snippets.map((snippet, i) =>
-                    i === selectedTabIndex ? {...snippet, label} : snippet,
-                  ),
-                });
-              }}
-              autoComplete="off"
-            />
+        {block.snippets.map((snippet) => (
+          <Tab key={snippet.id}>
+            <FormLayout>
+              <TextField
+                type="text"
+                label="Snippet label"
+                value={snippet.label}
+                onChange={(label) => {
+                  onChange({
+                    ...block,
+                    snippets: block.snippets.map((thisSnippet) =>
+                      thisSnippet.id === snippet.id
+                        ? {...thisSnippet, label}
+                        : thisSnippet,
+                    ),
+                  });
+                }}
+                autoComplete="off"
+              />
 
-            <Select
-              label="Layout"
-              options={codeBlockLanguages.map((language) => ({
-                label: language,
-                value: language,
-              }))}
-              value={selectedTab.language}
-              onChange={(language) => {
-                const typedLanguage = language as CodeBlockLanguage;
-                onChange({
-                  ...block,
-                  snippets: block.snippets.map((snippet, i) =>
-                    i === selectedTabIndex
-                      ? {...snippet, language: typedLanguage}
-                      : snippet,
-                  ),
-                });
-              }}
-            />
+              <Select
+                label="Language"
+                options={codeBlockLanguages.map((language) => ({
+                  label: language,
+                  value: language,
+                }))}
+                value={snippet.language}
+                onChange={(language) => {
+                  const typedLanguage = language as CodeBlockLanguage;
+                  onChange({
+                    ...block,
+                    snippets: block.snippets.map((thisSnippet) =>
+                      thisSnippet.id === snippet.id
+                        ? {...thisSnippet, language: typedLanguage}
+                        : thisSnippet,
+                    ),
+                  });
+                }}
+              />
 
-            <TextField
-              type="text"
-              label="Code"
-              value={selectedTab.code}
-              onChange={(code) => {
-                onChange({
-                  ...block,
-                  snippets: block.snippets.map((snippet, i) =>
-                    i === selectedTabIndex ? {...snippet, code} : snippet,
-                  ),
-                });
-              }}
-              autoComplete="off"
-              multiline={true}
-            />
+              <TextField
+                type="text"
+                label="Code"
+                value={snippet.code}
+                onChange={(code) => {
+                  onChange({
+                    ...block,
+                    snippets: block.snippets.map((thisSnippet, i) =>
+                      thisSnippet.id === snippet.id
+                        ? {...thisSnippet, code}
+                        : thisSnippet,
+                    ),
+                  });
+                }}
+                autoComplete="off"
+                multiline={true}
+              />
 
-            {block.snippets.length > 1 && (
-              <Button
-                destructive
-                onClick={() => deleteTab(selectedTabIndex)}
-                outline
-              >
-                Delete tab
-              </Button>
-            )}
-          </FormLayout>
-        )}
+              {block.snippets.length > 1 && (
+                <Button
+                  destructive
+                  onClick={() => deleteTab(snippet.id)}
+                  outline
+                >
+                  Delete tab
+                </Button>
+              )}
+            </FormLayout>
+          </Tab>
+        ))}
       </Tabs>
     </div>
   );
@@ -972,68 +982,52 @@ function TabbedContentEditor({
   block,
   onChange,
 }: BlockEditorProps<TabbedContentBlock> & {pageId: string}) {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
-
-  const addTab = () => {
+  const addTab = () =>
     onChange({
       ...block,
       tabs: [...block.tabs, {id: nanoid(), label: 'New tab', blocks: []}],
     });
-  };
 
-  const deleteTab = (index: number) => {
-    onChange({
-      ...block,
-      tabs: block.tabs.filter((_, i) => i !== index),
-    });
-  };
-
-  const selectedTab = block.tabs[selectedTabIndex];
+  const deleteTab = (id: string) =>
+    onChange({...block, tabs: block.tabs.filter((tab) => tab.id !== id)});
 
   return (
     <div>
-      <button onClick={addTab}>+</button>
-
       <Tabs
-        tabs={block.tabs.map((tab) => ({
-          id: tab.id,
-          content: tab.label,
-        }))}
-        selected={selectedTabIndex}
-        onSelect={(index) => setSelectedTabIndex(index)}
+        tabs={block.tabs.map(({id, label}) => ({id, label}))}
+        onAdd={addTab}
+        boxed
       >
-        {selectedTab && (
-          <FormLayout>
-            <TextField
-              type="text"
-              label="Tab label"
-              value={selectedTab.label}
-              onChange={(label) => {
-                onChange({
-                  ...block,
-                  tabs: block.tabs.map((tab, i) =>
-                    i === selectedTabIndex ? {...tab, label} : tab,
-                  ),
-                });
-              }}
-              autoComplete="off"
-            />
+        {block.tabs.map((tab) => (
+          <Tab key={tab.id}>
+            <FormLayout>
+              <TextField
+                type="text"
+                label="Tab label"
+                value={tab.label}
+                onChange={(label) => {
+                  onChange({
+                    ...block,
+                    tabs: block.tabs.map((thisTab) =>
+                      thisTab.id === tab.id ? {...thisTab, label} : thisTab,
+                    ),
+                  });
+                }}
+                autoComplete="off"
+              />
 
-            <BlockList
-              pageId={pageId}
-              parentBlockId={block.id}
-              tabId={selectedTab.id}
-            />
+              <BlockList
+                pageId={pageId}
+                parentBlockId={block.id}
+                tabId={tab.id}
+              />
 
-            <Button
-              destructive
-              onClick={() => deleteTab(selectedTabIndex)}
-              outline
-            >
-              Delete tab
-            </Button>
-          </FormLayout>
-        )}
+              <Button destructive onClick={() => deleteTab(tab.id)} outline>
+                Delete tab
+              </Button>
+            </FormLayout>
+          </Tab>
+        ))}
       </Tabs>
     </div>
   );
@@ -1074,15 +1068,18 @@ function ImagePicker({
               )}
             />
           )}
-          <Button id={buttonId} onClick={() => setIsActive(true)}>
-            {imageIsValid ? 'Replace' : 'Select'} image
-          </Button>
-          {!imageIsValid && (
-            <InlineError
-              message={'Missing required information'}
-              fieldID={buttonId}
-            />
-          )}
+
+          <AlphaStack inlineAlign="start" gap="2">
+            <Button id={buttonId} onClick={() => setIsActive(true)}>
+              {imageIsValid ? 'Replace' : 'Select'} image
+            </Button>
+            {!imageIsValid && (
+              <InlineError
+                message={'Missing required information'}
+                fieldID={buttonId}
+              />
+            )}
+          </AlphaStack>
         </>
       }
       open={active}

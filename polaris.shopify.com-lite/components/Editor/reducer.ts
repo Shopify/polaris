@@ -498,6 +498,39 @@ export default function reducer(state: State, action: Action): State {
   assertUnreachable(action);
 }
 
+export function getNiceNameForBlockType(blockType: BlockType): string {
+  switch (blockType) {
+    case 'Markdown':
+      return 'Markdown';
+
+    case 'Image':
+      return 'Image';
+
+    case 'YoutubeVideo':
+      return 'Youtube video';
+
+    case 'SandboxEmbed':
+      return 'Sandbox embed';
+
+    case 'Code':
+      return 'Code block';
+
+    case 'TextImage':
+      return 'Two columns: Text and Image';
+
+    case 'ProgressiveDisclosure':
+      return 'Collapsible content';
+
+    case 'DoDont':
+      return "Dos and Don'ts";
+
+    case 'TabbedContent':
+      return 'Tabbed content';
+  }
+
+  return assertUnreachable(blockType);
+}
+
 function getEmptyBlock(
   blockType: BlockType,
   parentBlockId: string | null,
@@ -586,7 +619,7 @@ function getEmptyBlock(
       const block: TabbedContentBlock = {
         ...baseBlock,
         blockType,
-        tabs: [],
+        tabs: [{id: nanoid(), label: 'New tab', blocks: []}],
       };
       return block;
     }

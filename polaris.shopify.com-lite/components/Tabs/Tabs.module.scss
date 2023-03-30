@@ -10,6 +10,7 @@
     font-size: 0.9rem;
     transition: 0.1s linear;
     transition-property: color, background-color, border-color;
+    border: none; // When rendered inside Editor
 
     &:hover {
       background: var(--color-border);
@@ -42,7 +43,6 @@
       border: 1px solid var(--color-border);
       border-top: none;
       border-radius: 0 0 12px 12px;
-      margin-bottom: 2rem;
       background: var(--color-surface-subdued);
     }
   }

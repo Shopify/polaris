@@ -63,7 +63,10 @@ export default function ComponentMeta({
         Examples
       </h2>
       <Tabs
-        tabs={pageMeta.examples.map((example) => example.title)}
+        tabs={pageMeta.examples.map(({fileName, title}) => ({
+          id: fileName,
+          label: title,
+        }))}
         boxed={false}
       >
         {pageMeta.examples.map((example) => {

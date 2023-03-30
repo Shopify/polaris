@@ -86,12 +86,8 @@ async function loadProps(propName: string): Promise<{
     declaration.children?.forEach((child) => findReferences(child));
     declaration.signatures?.forEach((child) => findReferences(child));
   }
-  props.children?.forEach((prop) => {
-    findReferences(prop);
-  });
-  props.signatures?.forEach((prop) => {
-    findReferences(prop);
-  });
+  props.children?.forEach((prop) => findReferences(prop));
+  props.signatures?.forEach((prop) => findReferences(prop));
 
   const propsForComponent = props.children?.find(({name}) => name === propName);
   return {

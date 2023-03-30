@@ -15,7 +15,7 @@ function Code({snippets}: Props) {
   if (snippets.length > 1) {
     return (
       <div className={styles.Code}>
-        <Tabs tabs={snippets.map(({label}) => label)} boxed={false}>
+        <Tabs tabs={snippets.map(({id, label}) => ({id, label}))} boxed={false}>
           {snippets.map(({id, code, language}) => (
             <Tab key={id}>
               <HighlightedCode code={code} language={language} />
