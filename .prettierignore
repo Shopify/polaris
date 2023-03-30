@@ -3,4 +3,6 @@ dist
 node_modules
 /polaris-react/build
 /polaris-react/build-internal
+/polaris-patterns/build
+/polaris-patterns/build-internal
 /polaris.shopify.com/public/sandbox
