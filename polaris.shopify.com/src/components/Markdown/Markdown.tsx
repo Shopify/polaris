@@ -11,6 +11,7 @@ import type {Plugin} from 'unified';
 import {slugify} from '../../utils/various';
 import Code from '../Code';
 import {SideBySide} from './components';
+import YoutubeVideo from '../YoutubeVideo';
 
 // rehype-raw will strip the non-HTML-standard `meta` field from the node when
 // converting the parsed markdown to HTML, so we have to capture it in a
@@ -48,6 +49,7 @@ interface Props {
 
 const defaultMDXComponents: MDXComponents = {
   SideBySide: SideBySide as MDXComponent,
+  YoutubeVideo: YoutubeVideo as MDXComponent,
 };
 
 function Markdown({
