@@ -61,11 +61,7 @@ export function WithResponsivePadding() {
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-      <Box
-        background="bg"
-        paddingInlineEnd={{xs: '4', sm: '10'}}
-        border="dark"
-      >
+      <Box background="bg" paddingInlineEnd={{xs: '4', sm: '10'}} border="dark">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
     </AlphaStack>
