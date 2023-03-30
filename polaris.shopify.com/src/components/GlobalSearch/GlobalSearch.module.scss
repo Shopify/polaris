@@ -157,13 +157,23 @@
 .PromptAnswer {
   position: relative;
   margin-top: 2.5rem;
-  left: 1.5rem;
   font-size: var(--font-size-500);
   font-weight: var(--font-weight-400);
+  padding: 1.5rem;
 }
 
-.BlinkingCursor {
-  animation: blink 1s linear infinite;
+.DocsAIMessage {
+  background-color: #272727;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 12px;
+
+}
+
+.DocsAIToggle {
+  display: flex;
+  gap:10px;
+  background-color: #272727;
 }
 
 @keyframes blink {

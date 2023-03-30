@@ -24,6 +24,9 @@ const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   icons: 'Icons',
 };
 
+import StatusBadge from '../StatusBadge';
+import {StatusName} from '../../types';
+
 const SearchContext = createContext({id: '', currentItemId: ''});
 
 export function useGlobalSearchResult() {
@@ -241,15 +244,30 @@ function GlobalSearch() {
         <div className="dark-mode styles-for-site-but-not-polaris-examples">
           <Dialog.Panel className={styles.Results}>
             {searchMode === 'search' && (
-              <Search
-                value={searchTerm}
-                onChange={(evt) => setSearchTerm(evt.target.value)}
-                onKeyUp={handleKeyboardNavigation}
-                searchResultsCount={searchResultsCount}
-                currentItemId={currentItemId}
-                onSearchModeToggle={() => setSearchMode('ai')}
-                onClose={() => setIsOpen(false)}
-              />
+              <>
+                <Search
+                  value={searchTerm}
+                  onChange={(evt) => setSearchTerm(evt.target.value)}
+                  onKeyUp={handleKeyboardNavigation}
+                  searchResultsCount={searchResultsCount}
+                  currentItemId={currentItemId}
+                  onSearchModeToggle={() => setSearchMode('ai')}
+                  onClose={() => setIsOpen(false)}
+                />
+                <div className={styles.DocsAIMessage}>
+                  <button
+                    className={styles.DocsAIToggle}
+                    onClick={() => setSearchMode('ai')}
+                  >
+                    Docs AI{' '}
+                    <StatusBadge
+                      status={{message: '', value: StatusName.Beta}}
+                    />
+                  </button>
+                  Try our more contextual search results for Polaris
+                  documentation.
+                </div>
+              </>
             )}
             {searchMode === 'ai' && (
               <AIPrompt
@@ -279,7 +297,7 @@ function GlobalSearch() {
               )}
               {searchMode === 'ai' && promptResults.length < 1 && (
                 <h3 className={styles.PromptAnswer}>
-                  <span className={styles.BlinkingCursor}>|</span>
+                  Put the canned prompts and stuff in here
                 </h3>
               )}
               {searchMode === 'ai' && promptResults.length > 0 && (
@@ -289,7 +307,8 @@ function GlobalSearch() {
                       <>
                         {/* <p>{question}</p> */}
                         <h3 key={idx} className={styles.PromptAnswer}>
-                          <TypingAnimation message={answer} />
+                          {answer}
+                          {/* <TypingAnimation message={answer} /> */}
                         </h3>
                         {searchResults && (
                           <SearchResults
@@ -594,9 +613,6 @@ function Search({
         spellCheck={false}
         placeholder="Search"
       />
-      <button className={styles.SearchModeToggle} onClick={onSearchModeToggle}>
-        Try AI prompt <MagicMajor />
-      </button>
       <button className={styles.MobileCloseButton} onClick={onClose}>
         Close
       </button>
