@@ -54,11 +54,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  // const input = Array.isArray(req.query.p)
-  //   ? req.query.p.join(' ')
-  //   : req.query.p;
+  const input = Array.isArray(req.query.p)
+    ? req.query.p.join(' ')
+    : req.query.p;
 
-  const input = 'What does the Alpha Stack component do?';
+  // const input = 'What does the Alpha Stack component do?';
 
   if (!input) return res.status(400).send('A question must be provided');
 
@@ -70,7 +70,7 @@ export default async function handler(
     // );
 
     // need to handle if it fails
-    console.log(allContext.bits);
+    // console.log(allContext.bits);
     const embeddedInput = await generateEmbedding(input);
     const similarBits = getSimilarBits(
       embeddedInput,

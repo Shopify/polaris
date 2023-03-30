@@ -254,32 +254,53 @@ function GlobalSearch() {
                   onSearchModeToggle={() => setSearchMode('ai')}
                   onClose={() => setIsOpen(false)}
                 />
+                {/* {searchResults.length < 1 && ( */}
                 <div className={styles.DocsAIMessage}>
                   <button
                     className={styles.DocsAIToggle}
                     onClick={() => setSearchMode('ai')}
                   >
-                    Docs AI{' '}
+                    <span className={styles.DocsAIHeading}>Docs AI </span>
                     <StatusBadge
                       status={{message: '', value: StatusName.Beta}}
                     />
                   </button>
-                  Try our more contextual search results for Polaris
-                  documentation.
+                  <span>
+                    Try our more contextual search results for Polaris
+                    documentation.
+                  </span>
                 </div>
+                {/* )} */}
               </>
             )}
             {searchMode === 'ai' && (
-              <AIPrompt
-                value={prompt}
-                onChange={(evt) => setPrompt(evt.target.value)}
-                onKeyUp={handleKeyboardNavigation}
-                searchResultsCount={promptResults.length}
-                currentItemId={currentItemId}
-                onSearchModeToggle={() => setSearchMode('search')}
-                onClose={() => setIsOpen(false)}
-                onAskQuestion={handleAskQuestion}
-              />
+              <>
+                <AIPrompt
+                  value={prompt}
+                  onChange={(evt) => setPrompt(evt.target.value)}
+                  onKeyUp={handleKeyboardNavigation}
+                  searchResultsCount={promptResults.length}
+                  currentItemId={currentItemId}
+                  onSearchModeToggle={() => setSearchMode('search')}
+                  onClose={() => setIsOpen(false)}
+                  onAskQuestion={handleAskQuestion}
+                />
+                <div className={styles.DocsAIMessage}>
+                  <button
+                    className={styles.DocsAIToggle}
+                    onClick={() => setSearchMode('ai')}
+                  >
+                    <span className={styles.DocsAIHeading}>Docs AI </span>
+                    <StatusBadge
+                      status={{message: '', value: StatusName.Beta}}
+                    />
+                  </button>
+                  <span>
+                    Try our more contextual search results for Polaris
+                    documentation.
+                  </span>
+                </div>
+              </>
             )}
             <div
               className={styles.ResultsInner}
@@ -641,10 +662,14 @@ function AIPrompt({
 }) {
   return (
     <div className={styles.Header}>
-      <div className={styles.AIPromptIcon}>
+      {/* <div className={styles.AIPromptIcon}>
         <MagicMajor />
-      </div>
+      </div> */}
+      <button className={styles.SearchModeToggle} onClick={onSearchModeToggle}>
+        {'<'} Search
+      </button>
       <input
+        className={styles.AIInput}
         type="search"
         value={value}
         onChange={onChange}
@@ -662,9 +687,7 @@ function AIPrompt({
       <button className={styles.AskButton} onClick={onAskQuestion}>
         Send question
       </button>
-      <button className={styles.SearchModeToggle} onClick={onSearchModeToggle}>
-        Back to search
-      </button>
+
       <button className={styles.MobileCloseButton} onClick={onClose}>
         Close
       </button>

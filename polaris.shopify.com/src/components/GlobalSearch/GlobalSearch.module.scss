@@ -97,7 +97,7 @@
     align-items: center;
     gap: 0.5rem;
     top: 0;
-    right: 1.5rem;
+    left: 0.5rem;
     bottom: 0;
     max-height: 48px;
     margin: auto;
@@ -120,7 +120,7 @@
   .AskButton {
     position: absolute;
     top: 0;
-    right: 9.5rem;
+    right: 1.5rem;
     bottom: 0;
     max-height: 48px;
     margin: auto;
@@ -133,6 +133,10 @@
     @media screen and (max-width: $breakpointTablet) {
       display: none;
     }
+  }
+
+  .AIInput {
+    padding-left: 94px;
   }
 
   .MobileCloseButton {
@@ -167,13 +171,20 @@
   padding: 1rem;
   margin: 1rem;
   border-radius: 12px;
-
+  display: flex;
+  gap: 2rem;
 }
 
 .DocsAIToggle {
   display: flex;
   gap:10px;
   background-color: #272727;
+}
+
+.DocsAIHeading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
 }
 
 @keyframes blink {
