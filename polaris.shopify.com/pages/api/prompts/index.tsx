@@ -80,13 +80,13 @@ export default async function handler(
     const messages = messagesTemplate({input}, similarBits);
     const completion = await createChatCompletion(messages);
 
-    // let mostSimilar = [];
+    let mostSimilar = [];
 
-    // for (let i = 0; i <= 4; i++) {
-    //   mostSimilar.push(similarBits[i].slug);
-    // }
+    for (let i = 0; i <= 4; i++) {
+      mostSimilar.push(similarBits[i]?.slug);
+    }
 
-    return res.send({messages, completion});
+    return res.send({messages, completion, mostSimilar});
   } catch (error) {
     console.error(error);
     res.status(400).send(error);
