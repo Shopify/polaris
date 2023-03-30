@@ -1,5 +1,18 @@
 # polaris.shopify.com
 
+## 0.45.0
+
+### Minor Changes
+
+- [#8817](https://github.com/Shopify/polaris/pull/8817) [`be5ab42f6`](https://github.com/Shopify/polaris/commit/be5ab42f670a1f38295d77df5d511a000bb51817) Thanks [@jjgali](https://github.com/jjgali)! - Removed page https://polaris.shopify.com/design/design
+
+### Patch Changes
+
+- [#8806](https://github.com/Shopify/polaris/pull/8806) [`fe16e10bf`](https://github.com/Shopify/polaris/commit/fe16e10bf4c846c4efb3ec064525ec5cc38436a3) Thanks [@martenbjork](https://github.com/martenbjork)! - Removed legacy banner from some pages as they are not useful for readers
+
+- Updated dependencies [[`654d840e6`](https://github.com/Shopify/polaris/commit/654d840e654b3a0dc9de8c2ea7e03d0d34a8a4d0), [`c933547a2`](https://github.com/Shopify/polaris/commit/c933547a28f8de46e5d20eefdc4744b8996e8959)]:
+  - @shopify/polaris@10.40.0
+
 ## 0.44.0
 
 ### Minor Changes
