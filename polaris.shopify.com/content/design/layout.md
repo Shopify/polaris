@@ -17,24 +17,7 @@ keywords:
   - spacing
 description: Polaris layout components let you quickly build custom layouts without writing CSS code.
 ---
-<!-- 
-<style>
-  .video {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    margin-top: 1rem;
-  }
 
-  .video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-</style> -->
 
 ---
 
