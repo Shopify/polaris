@@ -28,7 +28,6 @@ Each layout component encapsulates CSS styles commonly found in the Shopify admi
 
 You can browse all [layout and structure components](/components/layout-and-structure), as well as view usage guidelines and examples for each component.
 
-
 ## Layout components vs writing CSS
 
 Polaris layout components provide several benefits over writing layout CSS code:
@@ -89,4 +88,4 @@ Admin UI card with text on one side, and a button on the opposite side. [Edit in
 
 ![](/images/foundations/design/layout/example3.png)
 
-<div as="YoutubeVideo" id="D_MsLKbdcGs"></div>
+<div as="YoutubeVideo" id="3ww0V5drMhk"></div>
