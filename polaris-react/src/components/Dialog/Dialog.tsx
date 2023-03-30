@@ -1,9 +1,13 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import type {SetStateAction, Dispatch} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {motion} from '@shopify/polaris-tokens';
 
-import {classNames} from '../../../../utilities/css';
+import {classNames} from '../../utilities/css';
+import {focusFirstFocusableNode} from '../../utilities/focus';
+import {Key} from '../../types';
+import {KeypressListener} from '../KeypressListener';
+import {TrapFocus} from '../TrapFocus';
 
 import styles from './Dialog.scss';
 
@@ -38,7 +42,7 @@ export function Dialog({
   setClosing,
   ...props
 }: DialogProps) {
-  const dialogNode = useRef<HTMLDialogElement>(null);
+  const containerNode = useRef<HTMLDivElement>(null);
   const classes = classNames(
     styles.Modal,
     small && styles.sizeSmall,
@@ -48,26 +52,62 @@ export function Dialog({
   );
   const TransitionChild = instant ? Transition : FadeUp;
 
+  useEffect(() => {
+    containerNode.current &&
+      !containerNode.current.contains(document.activeElement) &&
+      focusFirstFocusableNode(containerNode.current);
+  }, []);
+
+  const handleKeyDown = () => {
+    if (setClosing) {
+      setClosing(true);
+    }
+  };
+
+  const handleKeyUp = () => {
+    if (setClosing) {
+      setClosing(false);
+    }
+    onClose();
+  };
+
   return (
     <TransitionChild
       {...props}
-      nodeRef={dialogNode}
+      nodeRef={containerNode}
       mountOnEnter
       unmountOnExit
       timeout={parseInt(motion['duration-200'], 10)}
       onEntered={onEntered}
       onExited={onExited}
     >
-      <dialog
-        className={classes}
+      <div
+        className={styles.Container}
         data-polaris-layer
         data-polaris-overlay
-        ref={dialogNode}
-        aria-label={labelledBy}
-        aria-labelledby={labelledBy}
+        ref={containerNode}
       >
-        {children}
-      </dialog>
+        <TrapFocus>
+          <div
+            role="dialog"
+            aria-modal
+            aria-label={labelledBy}
+            aria-labelledby={labelledBy}
+            tabIndex={-1}
+            className={styles.Dialog}
+          >
+            <div className={classes}>
+              <KeypressListener
+                keyCode={Key.Escape}
+                keyEvent="keydown"
+                handler={handleKeyDown}
+              />
+              <KeypressListener keyCode={Key.Escape} handler={handleKeyUp} />
+              {children}
+            </div>
+          </div>
+        </TrapFocus>
+      </div>
     </TransitionChild>
   );
 }

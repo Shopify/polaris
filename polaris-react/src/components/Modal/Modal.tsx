@@ -231,12 +231,9 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   return (
     <WithinContentContext.Provider value>
       {activatorMarkup}
-      <Portal idPrefix="modal">
-        <TransitionGroup appear={animated} enter={animated} exit={animated}>
-          {dialog}
-        </TransitionGroup>
-        {backdrop}
-      </Portal>
+      <TransitionGroup appear={animated} enter={animated} exit={animated}>
+        {dialog}
+      </TransitionGroup>
     </WithinContentContext.Provider>
   );
 };
