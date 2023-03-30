@@ -411,7 +411,7 @@ export function IndexFilters({
                   disableQueryField={disabled || disableQueryField}
                   loading={loading || isActionLoading}
                   focused={filtersFocused}
-                  mountedState={state}
+                  mountedState={mdDown ? undefined : state}
                   borderlessQueryField
                 >
                   <Inline gap="3" align="start" blockAlign="center">

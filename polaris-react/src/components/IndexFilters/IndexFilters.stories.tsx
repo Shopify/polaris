@@ -326,7 +326,7 @@ export function Default() {
   }
 
   return (
-    <Card>
+    <Card padding="0">
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
@@ -344,7 +344,6 @@ export function Default() {
         tabs={tabs}
         selected={selected}
         onSelect={setSelected}
-        disableTabs={false}
         canCreateNewView
         onCreateNewView={onCreateNewView}
         filters={filters}
@@ -631,7 +630,6 @@ export function WithPinnedFilters() {
         tabs={tabs}
         selected={selected}
         onSelect={setSelected}
-        disableTabs={false}
         canCreateNewView
         onCreateNewView={onCreateNewView}
         filters={filters}
@@ -916,7 +914,6 @@ export function Disabled() {
         tabs={tabs}
         selected={selected}
         onSelect={setSelected}
-        disableTabs={false}
         canCreateNewView
         onCreateNewView={onCreateNewView}
         filters={filters}
