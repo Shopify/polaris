@@ -3,6 +3,7 @@ module.exports = {
     // '<rootDir>/polaris-for-vscode',
     '<rootDir>/polaris-icons',
     '<rootDir>/polaris-react',
+    '<rootDir>/polaris-patterns',
     '<rootDir>/polaris-tokens',
     // '<rootDir>/polaris.shopify.com',
     '<rootDir>/stylelint-polaris',
