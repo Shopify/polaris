@@ -18,6 +18,18 @@ keywords:
 description: Polaris layout components let you quickly build custom layouts without writing CSS code.
 ---
 
+<style>
+  .video {
+    max-width: 560px;
+    min-height: 315;
+    margin-top: 1rem;
+  }
+
+  .video iframe {
+    width: 100%;
+  }
+</style>
+
 ---
 
 <!-- <div>
@@ -72,13 +84,17 @@ To ensure designs are responsive, reference the breakpoints and examples in the 
 
 ## Layout component examples
 
-The following examples illustrate how the new layout components can be composed together to create admin UI elements. Each example is just one approach to building that particular UI, but many other combinations of layout components can result in the same outcome. To get more comfortable, try rebuilding these same UIs using a different combination of layout components.
+The following examples illustrate how the new layout components can be composed together to create admin UI elements. Each example is just one approach to building that particular UI, but many other combinations of layout components can result in the same outcome. To get more comfortable, follow along with the video walkthroughs or try rebuilding these same UIs using a different combination of layout components.
 
 ### Example 1
 
 Admin UI card with a horizontal dot button on one side, plus text and a button on the opposite side
 
 ![](/images/foundations/design/layout/example1.png)
+
+<div class="video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/D_MsLKbdcGs?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 [View Polaris Sandbox](https://polaris.shopify.com/sandbox?code=N4Igxg9gJgpiBcIA8AhCAPABABwIZSgEsA7AcwF4AdEANmoD5LjNMkBBAG2wAtcBhXACcojZi0zAA9ACppmJuPEAVbjEylc2HIIhaAzjAAuezIdWY9eMGoBGRgO4wYzGLjDdM7whyiYSp804eXABlQzcAa0w%2BCABbbAhiZ0MFRXVNTDdrbGNMCABXQQsrElJMWD1CUmZDCAjnE1wTADdcDnyYE25DQ2w9eElJBI4hQj0AOj1uXUIAMwBPcchYyVr64j1JSzdS1MVZSQBfPdYg3jDI9OwqEAAmakxZ-I4OAHVCKDNRRSlZE5YYu1Yhs-CYbPlvIZMPZCGZoiEQupBB9MPliLAimY1NNoJl0ZkwNlcnwEUiUbgesjwYZOv9HhBMeZIECQdgdNg6QdjmJFEhAflgSZmQKNjcAIyzIq4fK1Bh0lhIJQwdBQpo3DkgTCtZG4YiGG6qfClACyUDlPLSLAAmgUiokOCQ1HpaoI1GNiIBMAihumcmHmRnlrEkSpV30trBQMtqzGwI38hEgxHIwAAEgzCAAvRLhDgAEQgxmNJAZh3oSEkkZ6iTDvMk-MFNfEiuVqr06vN4cw%2Bc9UNmDNIRlMEEwrtiEGaaixOCaensDN89lUzHmBQ9rpHrig8yHFnCghSFsUBhepXGdPLIcMjfLZ1C4TAEUbvzpaCwpEIE5MK-yBOsehMtSYLEurbiSiJsj6%2B6EJ0eK%2BFkMA5CYtrlJ0VQ1HUDTyIe9JFM68wOmQmSUoQ1KdOMmAAJKGAA5EhhRARAzpajAgh6BS3hqCM35QssCRJHqnJHCcqAYNOBClCgHAQA%2BFz7jcAAsHZpKgUbVgASjAY4TpgAAKM5zsI5aVtG14VhgYY3lwvACMIohGeZTAgAANCAWKxJ0CAANogFJYBtDA8DOCAAC6Lkwp83B6F5ADsNAABzBYcQA)
 
@@ -88,6 +104,10 @@ Admin UI card with stacked elements, inline links, and a divider
 
 ![](/images/foundations/design/layout/example2.png)
 
+<div class="video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/VRRakuy85ss?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 [View Polaris sandbox](https://polaris.shopify.com/playroom/index.html?code=N4Igxg9gJgpiBcIA8AhCAPABABwIZSgEsA7AcwF4AdEADmoD5LjNMkBBAG2wAtcBhXACcojZi1aceuAMoAXXGADWmUrmxUQAFgZNx4pABUY6WZlwBnDdwBM1TADchhXMVlWY%2BEqQCyUHWL0WAAUAVwAjDkJzbhgoTA4XUhDcUhhzXUCkAHojE1FA1lzTCw1sO0gOCEENc3CoENj-ApY2MFlCexhMEkxZGMwAWyFFGFlzXpiATwByTswwmBhmfFg42QgzYjj7KMIIrvXMMBDzdYGYQXMAOgy9bKL8zJQORbihwVISAEliSOIYDQAViazSQABEOoRYIJMFlHncss9XvD9D8-l1cJFSMQangwDAALQLWQAd0WxBBBSQaJIXVU6mo2hAKKpRTMlmoZRAmAAZhBXAB1GCEUjcNzUcwwAZ7CAcPzM27NFgAUTIkWiiqpOWMsnowDs1AAvpqnvhUvQwTAebgQhxZNkUGaYCz9Fkaf8XSwkAAZEiKeh8XhkLqwa22%2B1ZX3Ef0m7Lu52xpGxQZCT7EeNAuzvNPPCBKVVQTMKgJPDAmvRhBSKUiCCAhLYaStKGt1rbUcviPAELwaJkdlhhKrQ3NKORCcUgIg7aHtksFQfCC4AJU8JwLY8EE9sIH78yHy9X5gLBY0247nv0bJKnMpSswQVrA2wpmOpwg50u3WYtWw2CqsmTQQYE%2BflxkOaIIGwL8JmFGFKjATFdxYBIyGSVJMBOLwYNYKN-WkbhIMIHlJkwABxGBZTzXB2n5TA2F-bJcPoG450ybU8g7B0MBdB0XliFFskkXgxyUR5BK4XgBGEUQuPQUQQAAGhAPopTSBAAG0QHgzEYHgJYQAAXSUkkoT6cwNIAdgANhoAzDSAA)
 
 ### Example 3
@@ -95,5 +115,10 @@ Admin UI card with stacked elements, inline links, and a divider
 Admin UI card with text on one side, and a button on the opposite side
 
 ![](/images/foundations/design/layout/example3.png)
+
+
+<div class="video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/3ww0V5drMhk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 [View Polaris sanbox](https://polaris.shopify.com/playroom/index.html?code=N4Igxg9gJgpiBcIA8AFAhgcxgPgDoDsACQpAQQBsAHACzQGUAXNMAa0IzUoF5cQAOXniLESFGmgDCaAE5QhIkUgCS%2BcgEt8MQmnUZ8PEAGdKzGAFoARjAYB3GDHy9CF8hFYU1eg2AcMY0pw5uXgAWQQIFBSQAFRgADwZ5SIVSMAY1ADc0P0IGajVDQlcwbLUIIjUAM0I1BgByQqsNDEIAV0MYKEJKiGlCQwY3Fmaa-AzfXoBPABoI5JFK1vJKtXJ1fBbe2GlDacJe-pg1kcppaFa0wznkpAB6WISkm4AhVoZB-GxU9Kyc4tLyndXu9yk9FLcVOscNcSLcxLQpLIknd4fQmKwhHd0FghCBpiA8jAALYwQwIADaIH%2B5Bg8AcIAAuvibGooHkyfByQB2ABsfGmAEYAAwhIUMgC%2BQA)
