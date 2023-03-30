@@ -474,7 +474,7 @@ export const color: {
     description: '',
   },
   'color-border-critical-subdued': {
-    value: colors.red[200],
+    value: colors.red[400],
     description: '',
   },
   'color-border-caution': {

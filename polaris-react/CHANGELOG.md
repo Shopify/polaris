@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.39.2
+
+### Patch Changes
+
+- [#8778](https://github.com/Shopify/polaris/pull/8778) [`a4f3838bb`](https://github.com/Shopify/polaris/commit/a4f3838bbd621fab0958906595c9776d42f3428f) Thanks [@kyledurand](https://github.com/kyledurand)! - Increased precision of chromatic snapshot diffs
+
+* [#8766](https://github.com/Shopify/polaris/pull/8766) [`8c5e9705c`](https://github.com/Shopify/polaris/commit/8c5e9705c39e3a959aa07c4d59c6fbcd90ab492c) Thanks [@laurkim](https://github.com/laurkim)! - Fixed types to ues `AlphaTabs` in `IndexFilter` stories
+
+- [#8801](https://github.com/Shopify/polaris/pull/8801) [`8217b5845`](https://github.com/Shopify/polaris/commit/8217b5845c7c07dbb6affab455d68eaf7b8051b3) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improved `useBreakpoints` browser support
+
 ## 10.39.1
 
 ### Patch Changes

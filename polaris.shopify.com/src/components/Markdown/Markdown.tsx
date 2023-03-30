@@ -93,10 +93,10 @@ function Markdown({
             return <h3>{children}</h3>;
           }
         },
-        img: ({src, alt}) =>
+        img: ({src, alt, style}) =>
           src ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={src} alt={alt ?? ''} className={styles.MarkdownImage} />
+            <img src={src} alt={alt ?? ''} className={styles.MarkdownImage} style={style} />
           ) : null,
         code: ({inline, children, className}) =>
           inline ? (

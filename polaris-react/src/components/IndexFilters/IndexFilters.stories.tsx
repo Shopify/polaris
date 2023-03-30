@@ -10,8 +10,7 @@ import {
   TextField,
   Card,
 } from '@shopify/polaris';
-
-import type {TabProps} from '../Tabs';
+import type {AlphaTabProps} from '@shopify/polaris';
 
 import {useSetIndexFiltersMode} from './hooks';
 import type {IndexFiltersProps} from './IndexFilters';
@@ -120,7 +119,7 @@ export function Default() {
     return true;
   };
 
-  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},
@@ -405,7 +404,7 @@ export function WithPinnedFilters() {
     return true;
   };
 
-  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},
@@ -692,7 +691,7 @@ export function Disabled() {
     return true;
   };
 
-  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},
