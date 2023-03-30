@@ -28,6 +28,7 @@ Each layout component encapsulates CSS styles commonly found in the Shopify admi
 
 You can browse all [layout and structure components](/components/layout-and-structure), as well as view usage guidelines and examples for each component.
 
+---
 
 ## Layout components vs writing CSS
 
