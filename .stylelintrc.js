@@ -25,6 +25,8 @@ module.exports = {
     'documentation/guides/legacy-polaris-v8-public-api.scss',
     'polaris-react/build/**/*.{css,scss}',
     'polaris-react/build-internal/**/*.{css,scss}',
+    'polaris-patterns/build/**/*.{css,scss}',
+    'polaris-patterns/build-internal/**/*.{css,scss}',
     'stylelint-polaris/tests/**/*.{css,scss}',
     // TODO: Remove and address stylelint errors
     'polaris.shopify.com/**/*.{css,scss}',
