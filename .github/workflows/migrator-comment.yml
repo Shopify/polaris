@@ -24,6 +24,9 @@ jobs:
       - name: Fetch base branch
         run: git fetch origin ${{ github.base_ref }}
 
+      - name: Fetch head branch
+        run: git fetch origin ${{ github.head_ref }}
+
       - name: Check for generic migrator comment in diff
         run: |
           commits="${{ github.base_ref }}...${{ github.head_ref }}"
