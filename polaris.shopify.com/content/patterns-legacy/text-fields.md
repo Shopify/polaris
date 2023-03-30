@@ -3,9 +3,6 @@ title: Text fields
 description: Text fields combine the field label (the title) and the input area. Inputs can vary from typed text to URLs to date pickers.
 icon: FormsMajor
 noIndex: true
-status:
-  value: Legacy
-  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - text fields
   - search
