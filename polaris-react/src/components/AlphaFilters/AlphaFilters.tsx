@@ -359,7 +359,16 @@ export function AlphaFilters({
         </div>
         {hideQueryField ? (
           <Box paddingInlineEnd="2" paddingBlockStart="2">
-            <Inline>{additionalContent}</Inline>
+            <Inline
+              align="start"
+              blockAlign="center"
+              gap={{
+                xs: '4',
+                md: '3',
+              }}
+            >
+              {additionalContent}
+            </Inline>
           </Box>
         ) : null}
       </div>
