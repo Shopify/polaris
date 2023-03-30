@@ -118,7 +118,7 @@ Admin UI card with text on one side, and a button on the opposite side
 
 
 <div class="video">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/3ww0V5drMhk?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/3ww0V5drMhk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 [View Polaris sanbox](https://polaris.shopify.com/playroom/index.html?code=N4Igxg9gJgpiBcIA8AFAhgcxgPgDoDsACQpAQQBsAHACzQGUAXNMAa0IzUoF5cQAOXniLESFGmgDCaAE5QhIkUgCS%2BcgEt8MQmnUZ8PEAGdKzGAFoARjAYB3GDHy9CF8hFYU1eg2AcMY0pw5uXgAWQQIFBSQAFRgADwZ5SIVSMAY1ADc0P0IGajVDQlcwbLUIIjUAM0I1BgByQqsNDEIAV0MYKEJKiGlCQwY3Fmaa-AzfXoBPABoI5JFK1vJKtXJ1fBbe2GlDacJe-pg1kcppaFa0wznkpAB6WISkm4AhVoZB-GxU9Kyc4tLyndXu9yk9FLcVOscNcSLcxLQpLIknd4fQmKwhHd0FghCBpiA8jAALYwQwIADaIH%2B5Bg8AcIAAuvibGooHkyfByQB2ABsfGmAEYAAwhIUMgC%2BQA)
