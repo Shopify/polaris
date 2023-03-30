@@ -42,6 +42,7 @@ import {
   AlphaCard,
   AlphaStack,
   AppProvider,
+  Box,
   Button,
   ButtonGroup,
   Checkbox,
@@ -53,6 +54,7 @@ import {
   PageActions,
   Popover,
   Select,
+  Text,
   TextField,
   Tooltip,
 } from '@shopify/polaris';
@@ -622,6 +624,9 @@ function BlockEditor({
     <>
       <AlphaCard key={block.id}>
         <div className={styles.BlockActions}>
+          <Text color="subdued" as="p" variant="bodySm">
+            {getNiceNameForBlockType(block.blockType)}
+          </Text>
           <ButtonGroup>
             <Button
               plain
@@ -765,7 +770,7 @@ function MarkdownBlockEditor({
       multiline={true}
       value={block.content}
       onChange={(content) => onChange({...block, content})}
-      label="Markdown content"
+      label="Content"
       autoComplete="off"
       placeholder={`# Heading
 
@@ -792,14 +797,16 @@ function TextImageEditor({block, onChange}: BlockEditorProps<TextImageBlock>) {
         multiline={true}
         value={block.content}
         onChange={(content) => onChange({...block, content})}
-        label="Markdown content"
+        label="Text"
         autoComplete="off"
       />
 
-      <ImagePicker
-        image={block.image}
-        onChange={(image) => onChange({...block, image})}
-      />
+      <Box paddingBlockStart="6">
+        <ImagePicker
+          image={block.image}
+          onChange={(image) => onChange({...block, image})}
+        />
+      </Box>
     </div>
   );
 }
@@ -813,7 +820,7 @@ function YoutubeVideoEditor({
       type="text"
       value={block.youtubeUrl}
       onChange={(youtubeUrl) => onChange({...block, youtubeUrl})}
-      label="Youtube video URL"
+      label="URL"
       autoComplete="off"
       placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     />
@@ -829,7 +836,7 @@ function SandboxEmbedEditor({
       type="text"
       value={block.embedUrl}
       onChange={(embedUrl) => onChange({...block, embedUrl})}
-      label="Sandbox embed URL"
+      label="URL"
       autoComplete="off"
     />
   );
@@ -1022,9 +1029,11 @@ function TabbedContentEditor({
                 tabId={tab.id}
               />
 
-              <Button destructive onClick={() => deleteTab(tab.id)} outline>
-                Delete tab
-              </Button>
+              {block.tabs.length > 1 && (
+                <Button destructive onClick={() => deleteTab(tab.id)} outline>
+                  Delete tab
+                </Button>
+              )}
             </FormLayout>
           </Tab>
         ))}
@@ -1064,7 +1073,7 @@ function ImagePicker({
               alt={image.alt}
               {...getImageDimensions(
                 {width: image.width, height: image.height},
-                200,
+                400,
               )}
             />
           )}

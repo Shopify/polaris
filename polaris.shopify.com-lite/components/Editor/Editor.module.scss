@@ -10,6 +10,12 @@
     cursor: pointer;
   }
 
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
   input[type='file'] {
     position: fixed;
     left: 200px;
@@ -146,8 +152,12 @@
 
 .BlockActions {
   display: flex;
-  justify-content: flex-end;
   margin-bottom: 0.5rem;
+
+  p {
+    margin-right: auto;
+    transform: translateY(-10%);
+  }
 }
 
 .CustomRouteBanner {
@@ -209,5 +219,6 @@
   gap: var(--p-space-4);
   > * {
     flex: 1;
+    max-width: 50% !important;
   }
 }
