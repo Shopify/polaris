@@ -18,13 +18,6 @@ keywords:
 description: Polaris layout components let you quickly build custom layouts without writing CSS code.
 ---
 
-
----
-
-<!-- <div>
-  <img src="/images/foundations/design/layout/layout-banner.png" alt="">
-</div> -->
-
 ![](/images/foundations/design/layout/layout-banner.png)
 
 ## What are layout components?
@@ -34,8 +27,6 @@ Polaris layout components define the structure and spacing of user interfaces in
 Each layout component encapsulates CSS styles commonly found in the Shopify admin. Passing different values to the component props will render different CSS styles.
 
 You can browse all [layout and structure components](/components/layout-and-structure), as well as view usage guidelines and examples for each component.
-
----
 
 
 ## Layout components vs writing CSS
