@@ -12,7 +12,7 @@ function MediaCardExample() {
       }}
       description="Discover how Shopify can power up your entrepreneurial journey."
       popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
-      enableDismissButton
+      onDismiss={() => console.log('clicked')}
     >
       <img
         alt=""

@@ -38,15 +38,8 @@ interface MediaCardProps {
    * @default 'medium'
    */
   size?: Size;
-  /**
-   * Render a dismiss `x` button in place of a popover + action list
-   * notes:
-   *   - this will override the display of a `Popover` via the `popoverActions` prop; and
-   *   - this will have _no_ affect unless `popoverActions.length` is 1
-   *
-   * @default false
-   */
-  enableDismissButton?: boolean,
+  /** Renders a dismiss `x` button in the top right corner of the card */
+  onDismiss?: () => void,
 }
 
 export function MediaCard({
@@ -58,7 +51,7 @@ export function MediaCard({
   popoverActions = [],
   portrait = false,
   size = 'medium',
-  enableDismissButton = false,
+  onDismiss,
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
@@ -76,13 +69,13 @@ export function MediaCard({
     headerMarkup = <div className={styles.Heading}>{headerContent}</div>;
   }
 
-  const dismissButtonMarkup = enableDismissButton && popoverActions.length === 1 ? (
+  const dismissButtonMarkup = onDismiss ? (
     <Button
       icon={CancelMinor}
-      onClick={() => popoverActions[0].onAction?.()}
+      onClick={() => onDismiss?.()}
       size="slim"
       plain
-      accessibilityLabel={popoverActions[0].accessibilityLabel ?? i18n.translate('Polaris.MediaCard.dismissButton')}
+      accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
     />
   ) : null;
 
@@ -99,21 +92,19 @@ export function MediaCard({
   const popoverActionsMarkup =
     popoverActions.length > 0 ? (
       <div className={styles.Popover}>
-        {dismissButtonMarkup
-          ? dismissButtonMarkup
-          : <Popover
-              active={popoverActive}
-              activator={popoverActivator}
-              onClose={togglePopoverActive}
-              preferredAlignment="left"
-              preferredPosition="below"
-            >
-              <ActionList
-                items={popoverActions}
-                onActionAnyItem={togglePopoverActive}
-              />
-            </Popover>
-        }
+        <Popover
+          active={popoverActive}
+          activator={popoverActivator}
+          onClose={togglePopoverActive}
+          preferredAlignment="left"
+          preferredPosition="below"
+        >
+          <ActionList
+            items={popoverActions}
+            onActionAnyItem={togglePopoverActive}
+          />
+        </Popover>
+        {dismissButtonMarkup}
       </div>
     ) : null;
 
@@ -166,6 +157,7 @@ export function MediaCard({
         <div className={infoContainerClassName}>
           <LegacyCard.Section>
             {popoverActionsMarkup}
+            {popoverActionsMarkup ? null : <div className={styles.Popover}>{dismissButtonMarkup}</div>}
             <LegacyStack vertical spacing="tight">
               {headerMarkup}
               <p className={styles.Description}>{description}</p>
