@@ -50,6 +50,8 @@ export const AlphaCard = ({
       padding={padding}
       shadow="md"
       borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
+      overflowX="hidden"
+      overflowY="hidden"
     >
       {children}
     </Box>

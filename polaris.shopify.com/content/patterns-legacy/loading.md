@@ -3,9 +3,6 @@ title: Loading
 description: Navigating the Shopify admin should be fast, meaningful, and focused. Intentional loading states deliver a continuous flow for merchants.
 icon: RefreshMajor
 noIndex: true
-status:
-  value: Legacy
-  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - page loading
   - loading
