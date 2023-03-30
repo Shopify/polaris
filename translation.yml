@@ -28,3 +28,4 @@ components:
     audience: merchant
     paths:
       - polaris-react/locales/{{language}}.json
+      - polaris-patterns/locales/{{language}}.json
