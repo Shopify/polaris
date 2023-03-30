@@ -1,0 +1,56 @@
+{
+  "name": "@shopify/polaris-patterns",
+  "description": "Shopify’s admin product pattern library",
+  "version": "1.0.0",
+  "private": false,
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify <dev@shopify.com>",
+  "homepage": "https://polaris.shopify.com/patterns",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "files": [
+    "build/",
+    "!build/ts/**/*.tsbuildinfo",
+    "!build/ts/**/tests/",
+    "locales/"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "**/configure.{js,mjs,esnext,ts}"
+  ],
+  "keywords": [
+    "shopify",
+    "polaris",
+    "react",
+    "components",
+    "component library",
+    "patterns",
+    "pattern library"
+  ],
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "esnext": "build/esnext/index.esnext",
+  "types": "build/ts/latest/src/index.d.ts",
+  "scripts": {},
+  "dependencies": {
+    "@shopify/polaris": "^10.39.1"
+  },
+  "devDependencies": {},
+  "browserslist": [
+    "last 3 chrome versions",
+    "last 3 firefox versions",
+    "last 3 opera versions",
+    "last 3 edge versions",
+    "last 3 safari versions",
+    "last 3 chromeandroid versions",
+    "last 1 firefoxandroid versions",
+    "ios >= 13.4"
+  ]
+}
