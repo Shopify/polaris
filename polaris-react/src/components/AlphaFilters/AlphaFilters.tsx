@@ -271,12 +271,13 @@ export function AlphaFilters({
     </div>
   );
 
-  const mountedStateStyles = mountedState
-    ? {
-        ...defaultFilterStyles,
-        ...transitionFilterStyles[mountedState],
-      }
-    : undefined;
+  const mountedStateStyles =
+    mountedState && !hideQueryField
+      ? {
+          ...defaultFilterStyles,
+          ...transitionFilterStyles[mountedState],
+        }
+      : undefined;
 
   const pinnedFiltersMarkup = pinnedFilters.map(
     ({key: filterKey, ...pinnedFilter}) => {
