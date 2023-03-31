@@ -40,3 +40,7 @@ examples:
 
 - To create the large-scale structure of pages, [use the Columns component](https://polaris.shopify.com/components/layout-and-structure/columns)
 - To display elements vertically, [use the AlphaStack component](https://polaris.shopify.com/components/alphastack)
+
+## Related resources
+
+- Inline props are named following the convention of CSS logical properties, such as 'padding-inline-start' and 'padding-block-start'. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).
