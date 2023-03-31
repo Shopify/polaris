@@ -38,7 +38,7 @@ interface MediaCardProps {
    * @default 'medium'
    */
   size?: Size;
-  /** Renders a dismiss `x` button in the top right corner of the card */
+  /** Callback when MediaCard is dismissed */
   onDismiss?: () => void,
 }
 
