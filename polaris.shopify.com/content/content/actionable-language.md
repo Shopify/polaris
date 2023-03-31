@@ -279,6 +279,36 @@ Links that aren’t in full sentences should use the {verb + noun} pattern and n
 
 <!-- end -->
 
+### “Learn more” links
+
+When linking out to documentation from help text in the admin, link the relevant key words. In general, don’t add another sentence starting with “Learn more...”, because it’s repetitive and takes up unnecessary space.
+
+<!-- dodont -->
+
+#### Do
+
+- This is a [read-only environment variable](https://shopify.dev/docs/custom-storefronts/oxygen/storefronts#environment-variables). It can’t be edited or deleted.
+
+#### Don’t
+
+- This is a read-only environment variable. It can’t be edited or deleted. Learn more about [read-only environment variables](https://shopify.dev/docs/custom-storefronts/oxygen/storefronts#environment-variables).
+
+<!-- end -->
+
+Only add a “Learn more...” sentence if the help text addresses more than one concept, each of which could be linked to their own help doc. In that situation, pick the most appropriate link and contextualize it with “Learn more...”.
+
+<!-- dodont -->
+
+#### Do
+
+- Storefront API tokens are unique per Hydrogen storefront but their permission scopes are shared by all Hydrogen storefronts. Learn more about [Storefront API tokens](https://shopify.dev/docs/api/usage/authentication#access-tokens-for-the-storefront-api).
+
+#### Don’t
+
+- [Storefront API tokens](https://shopify.dev/docs/api/usage/authentication#access-tokens-for-the-storefront-api) are unique per [Hydrogen storefront](https://shopify.dev/docs/custom-storefronts/oxygen/storefronts) but their [permission scopes](https://shopify.dev/docs/api/usage/access-scopes#unauthenticated-access-scopes) are shared across all Hydrogen storefronts.
+
+<!-- end -->
+
 ---
 
 ## Confirmations

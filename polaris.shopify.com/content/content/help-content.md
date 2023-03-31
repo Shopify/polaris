@@ -70,11 +70,13 @@ This example also illustrates that there’s still only a subset of merchants th
 ## “Learn more” links
 
 ​
-“Learn more” links take merchants to the Shopify Help Center for more detailed information than we can offer in the UI.
+“Learn more” links take merchants to the Shopify Help Center or Shopify.dev for more detailed information than we can offer in the UI.
 
-Make sure “learn more” links go to a Help Center page or heading that’s specific to the topic.
+Make sure “learn more” links go to a page or heading that’s specific to the topic.
 
 The Help Center is a rich resource, but for a merchant it’s not always a convenient time to read documentation. Landing on a dense page of information without knowing where to start is frustrating and disorienting. If there isn’t a page or heading specific to the topic you’re providing help for, work with the documentation team to create the right content.
+
+See the content guidelines for links for more about [formatting “learn more” links](/content/actionable-language#-learn-more--links).
 
 ### “Learn more” badges for settings
 
