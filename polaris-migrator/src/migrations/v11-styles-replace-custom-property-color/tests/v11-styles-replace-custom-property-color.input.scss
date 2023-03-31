@@ -1,3 +1,16 @@
 .basic {
   color: var(--p-text);
+  color: var(--p-interactive);
+  background: var(--p-surface);
+  background: var(--p-interactive);
+  background-color: var(--p-surface);
+  border: var(--p-border-width-1) solid var(--p-border);
+  border: var(--p-border-width-1) solid var(--p-interactive);
+  border-color: var(--p-border);
+  outline: var(--p-border-width-1) solid var(--p-border);
+  outline: var(--p-border-width-1) solid var(--p-interactive);
+  outline-color: var(--p-border);
+  fill: var(--p-icon);
+  fill: var(--p-interactive);
+  box-shadow: inset 0 0 var(--p-border-width-1) var(--p-border);
 }
