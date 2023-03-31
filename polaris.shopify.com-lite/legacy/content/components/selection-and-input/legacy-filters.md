@@ -1,6 +1,6 @@
 ---
-title: Filters
-description: Filters is a composite component that filters the items of a list or table.
+title: Legacy filters
+description: This is a legacy version of the Filters component, which is a composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters
@@ -10,17 +10,28 @@ keywords:
   - index
   - list filter
   - table
+status:
+  value: Legacy
+  message: This is a legacy component and will be deprecated. The new [Filters component](/components/selection-and-input/filters) can be used as a standalone component, but is used primarily within the [IndexFilters](/components/selection-and-input/index-filters) for sorting and filtering IndexTables. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: filters-with-a-resource-list.tsx
+  - fileName: legacy-filters-with-a-resource-list.tsx
     title: With a resource list
-  - fileName: filters-with-a-data-table.tsx
+  - fileName: legacy-filters-with-a-data-table.tsx
     title: With a data table
-  - fileName: filters-with-children-content.tsx
+  - fileName: legacy-filters-with-children-content.tsx
     title: With children content
-  - fileName: filters-disabled.tsx
+  - fileName: legacy-filters-disabled.tsx
     title: Disabled
-  - fileName: filters-with-query-field-hidden.tsx
+  - fileName: legacy-filters-some-disabled.tsx
+    title: Some disabled
+  - fileName: legacy-filters-without-clear-button.tsx
+    title: Without clear button
+  - fileName: legacy-filters-with-help-text.tsx
+    title: With help text
+  - fileName: legacy-filters-with-query-field-hidden.tsx
     title: With query field hidden
+  - fileName: legacy-filters-with-query-field-disabled.tsx
+    title: With query field disabled
 ---
 
 Merchants use filters to:

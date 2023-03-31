@@ -24,9 +24,9 @@ examples:
 
 Checkboxes should:
 
-- Work independently from each other: selecting one checkbox shouldn’t change the selection status of another checkbox in the list. The exception is when a checkbox is used to make a bulk selection of multiple items.
-- Be framed positively: for example, `Turn on notifications` instead of `Turn off notifications`
-- Always have a label when being used to toggling a setting on or off
+- Work independently from each other. Selecting one checkbox shouldn’t change the selection status of another checkbox in the list. The exception is when a checkbox is used to make a bulk selection of multiple items.
+- Be framed positively. For example, say “Publish store” instead of “Hide store”.
+- Always have a label when used to activate or deactivate a setting.
 - Be listed according to a logical order, whether it’s alphabetical, numerical, time-based, or some other clear system.
 - Link to more information or include a subtitle as required to provide more explanation. Don’t rely on tooltips to explain a checkbox.
 
