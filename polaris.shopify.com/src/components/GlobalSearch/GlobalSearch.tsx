@@ -15,6 +15,7 @@ import {KeyboardEventHandler} from 'react';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 import PatternThumbnailPreview from '../ThumbnailPreview';
 import ComponentThumbnail from '../ComponentThumbnail';
+import Markdown from '../Markdown';
 import {
   MagicMajor,
   CircleAlertMajor,
@@ -192,13 +193,13 @@ function GlobalSearch() {
         .then((json) => {
           console.log('got it');
 
-          const {completion} = json;
-          console.log(completion);
+          const {completion, mostSimilar} = json;
+          console.log(mostSimilar);
           setPromptResults((prev) => [
             {
               question: prompt,
               answer: completion,
-              // searchResults: data.searchResults,
+              sources: mostSimilar,
             },
             ...prev,
           ]);
@@ -339,13 +340,24 @@ function GlobalSearch() {
               {searchMode === 'ai' && promptResults.length > 0 && (
                 <>
                   {promptResults.map(
-                    ({question, answer, searchResults}, idx) => (
+                    ({question, answer, searchResults, sources}, idx) => (
                       <>
                         {/* <p>{question}</p> */}
-                        <h3 key={idx} className={styles.PromptAnswer}>
-                          {answer}
+                        <div key={idx} className={styles.PromptAnswer}>
+                          {/* {answer} */}
+                          <Markdown>{answer}</Markdown>
                           {/* <TypingAnimation message={answer} /> */}
-                        </h3>
+                          <div className={styles.AISources}>
+                            {sources.length > 0 && (
+                              <p className={styles.SourceTitle}>Sources:</p>
+                            )}
+                            <div className={styles.AISourceList}>
+                              {sources.map((source) => {
+                                return <p key={source}>{source}</p>;
+                              })}
+                            </div>
+                          </div>
+                        </div>
                         {searchResults && (
                           <SearchResults
                             searchResults={searchResults}
