@@ -5,9 +5,8 @@ import {
   getResponsiveProps,
   getResponsiveValue,
   sanitizeCustomProperties,
-  ResponsiveValue,
 } from '../../utilities/css';
-import type {ResponsiveProp} from '../../utilities/css';
+import type {ResponsiveValue, ResponsiveProp} from '../../utilities/css';
 
 import styles from './Columns.scss';
 

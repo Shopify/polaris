@@ -1,5 +1,58 @@
 # Changelog
 
+## 10.39.2
+
+### Patch Changes
+
+- [#8778](https://github.com/Shopify/polaris/pull/8778) [`a4f3838bb`](https://github.com/Shopify/polaris/commit/a4f3838bbd621fab0958906595c9776d42f3428f) Thanks [@kyledurand](https://github.com/kyledurand)! - Increased precision of chromatic snapshot diffs
+
+* [#8766](https://github.com/Shopify/polaris/pull/8766) [`8c5e9705c`](https://github.com/Shopify/polaris/commit/8c5e9705c39e3a959aa07c4d59c6fbcd90ab492c) Thanks [@laurkim](https://github.com/laurkim)! - Fixed types to ues `AlphaTabs` in `IndexFilter` stories
+
+- [#8801](https://github.com/Shopify/polaris/pull/8801) [`8217b5845`](https://github.com/Shopify/polaris/commit/8217b5845c7c07dbb6affab455d68eaf7b8051b3) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improved `useBreakpoints` browser support
+
+## 10.39.1
+
+### Patch Changes
+
+- [#8767](https://github.com/Shopify/polaris/pull/8767) [`abc739cc8`](https://github.com/Shopify/polaris/commit/abc739cc8e4d245c00f53666d449fcc392aaff8d) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed border-radius on navigation selected items
+
+* [#8753](https://github.com/Shopify/polaris/pull/8753) [`a52a15ffd`](https://github.com/Shopify/polaris/commit/a52a15ffd74552cbdfbfa030dca005e02da2b13c) Thanks [@chloerice](https://github.com/chloerice)! - Moved `SettingToggle` documentation content and assets to deprecated folders and updated redirects
+
+- [#8770](https://github.com/Shopify/polaris/pull/8770) [`e96b24e29`](https://github.com/Shopify/polaris/commit/e96b24e29671fbbbf4aa738f0f258332b8d00ab3) Thanks [@mrcthms](https://github.com/mrcthms)! - FIxed a bug where the `AlphaTabs` component was referencing an incorrect CSS class name
+
+## 10.39.0
+
+### Minor Changes
+
+- [#8731](https://github.com/Shopify/polaris/pull/8731) [`abe280b8c`](https://github.com/Shopify/polaris/commit/abe280b8c18b951f308a91d6d9cff510ae54c94c) Thanks [@kgKevGomez](https://github.com/kgKevGomez)! - Update IndexTable heading to support default sorting direction
+
+* [#8547](https://github.com/Shopify/polaris/pull/8547) [`109fb5d0e`](https://github.com/Shopify/polaris/commit/109fb5d0ebe65a515b1653572e55afd11c1bac10) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Updated SettingToggle component and documentation
+
+- [#8440](https://github.com/Shopify/polaris/pull/8440) [`f30c696b3`](https://github.com/Shopify/polaris/commit/f30c696b32d3acbeb9a790505239fe9a5d59633c) Thanks [@mrcthms](https://github.com/mrcthms)! - - Added the `IndexFilters` component, which combines redesigned `AlphaTabs` and `AlphaFilters` components to make searching, filtering, and saving `IndexTable` views a more consistent, intuitive experience for merchants
+  - Created the new `AlphaTabs` component to replace the current `Tabs` component
+  - Created the new `AlphaFilters` component to replace the current `Filters` component
+
+* [#8724](https://github.com/Shopify/polaris/pull/8724) [`8f96c2ded`](https://github.com/Shopify/polaris/commit/8f96c2ded6f4136603f0818563bde742364761ab) Thanks [@kyledurand](https://github.com/kyledurand)! - Deprecated backdrop prop on Icon
+
+### Patch Changes
+
+- [#8732](https://github.com/Shopify/polaris/pull/8732) [`e584de5be`](https://github.com/Shopify/polaris/commit/e584de5be69193aeb101aedae858b683a7156a77) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - [IndexTable] fixes sort icon flicker on right-aligned heading hover after selection
+
+* [#8707](https://github.com/Shopify/polaris/pull/8707) [`aa599a7cf`](https://github.com/Shopify/polaris/commit/aa599a7cf47d0587a8ebc135d4da23a9e359952e) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - [IndexTable] Prevent sort icon flash and animation on right-aligned headers after row selection
+
+- [#8754](https://github.com/Shopify/polaris/pull/8754) [`531d41286`](https://github.com/Shopify/polaris/commit/531d41286d780a83083e23931057a497025f8291) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed linting errors regarding incorrect importing of types
+
+* [#8727](https://github.com/Shopify/polaris/pull/8727) [`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491) Thanks [@laurkim](https://github.com/laurkim)! - Bumped `eslint-plugin-import`, `@typescript-eslint/**`, and `downlevel-dts` packages, added type import/export rules, and updated type imports
+
+- [#8716](https://github.com/Shopify/polaris/pull/8716) [`e701d3eae`](https://github.com/Shopify/polaris/commit/e701d3eae538626c83aed224d2811d232be67c61) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated which shadow tokens are being applied to the tooltip component
+
+* [#8740](https://github.com/Shopify/polaris/pull/8740) [`ec1ca5eb3`](https://github.com/Shopify/polaris/commit/ec1ca5eb3359127aeb429792cab0742b9df86f5e) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Tooltip` with `persistOnClick` set causing an error when clicked
+
+- [#8699](https://github.com/Shopify/polaris/pull/8699) [`28eb2e702`](https://github.com/Shopify/polaris/commit/28eb2e70270ec894024d802b5793ffca81727cba) Thanks [@AndrewMusgrave](https://github.com/AndrewMusgrave)! - Fix focus rings on IndexTable not correctly appearing
+
+- Updated dependencies [[`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491)]:
+  - @shopify/polaris-tokens@6.8.1
+
 ## 10.38.0
 
 ### Minor Changes

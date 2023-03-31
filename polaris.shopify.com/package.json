@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.41.0",
+  "version": "0.44.0",
   "private": true,
   "scripts": {
     "build": "yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
@@ -17,14 +17,14 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
-    "gen-assets": "node scripts/gen-assets.mjs && yarn get-props"
+    "gen-assets": "yarn get-props && node scripts/gen-assets.mjs"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
-    "@shopify/polaris": "^10.38.0",
+    "@shopify/polaris": "^10.39.2",
     "@shopify/polaris-icons": "^6.12.0",
-    "@shopify/polaris-tokens": "^6.8.0",
+    "@shopify/polaris-tokens": "^6.8.1",
     "@radix-ui/react-polymorphic": "^0.0.14",
     "@types/react-syntax-highlighter": "^15.5.6",
     "codesandbox": "^2.2.3",
@@ -46,6 +46,7 @@
     "remark-gfm": "^3.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "remark-unwrap-images": "^3.0.1",
+    "terminate": "^2.6.1",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
@@ -58,6 +59,7 @@
     "@types/prismjs": "^1.26.0",
     "@types/react": "18.0.15",
     "babel-plugin-preval": "^5.1.0",
+    "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
     "eslint": "8.10.0",
     "eslint-config-next": "^13.0.0",
@@ -66,9 +68,11 @@
     "generact": "^0.4.0",
     "get-site-urls": "3.0.0-alpha.1",
     "globby": "^11.1.0",
+    "is-ci": "^3.0.1",
     "js-yaml": "^4.1.0",
     "lodash.set": "^4.3.2",
     "marked": "^4.0.16",
+    "ora": "^6.2.0",
     "p-map": "^5.5.0",
     "playroom": "^0.28.0",
     "puppeteer": "^16.0.0",

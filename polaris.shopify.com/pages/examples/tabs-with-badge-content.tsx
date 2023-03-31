@@ -1,4 +1,4 @@
-import {Badge, LegacyCard, Tabs} from '@shopify/polaris';
+import {LegacyCard, Tabs, Badge} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 

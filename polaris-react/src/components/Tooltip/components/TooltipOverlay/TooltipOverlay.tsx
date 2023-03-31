@@ -2,10 +2,8 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
-import {
-  PositionedOverlayProps,
-  PositionedOverlay,
-} from '../../../PositionedOverlay';
+import {PositionedOverlay} from '../../../PositionedOverlay';
+import type {PositionedOverlayProps} from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
 import type {Width, Padding, BorderRadius} from '../../Tooltip';
 

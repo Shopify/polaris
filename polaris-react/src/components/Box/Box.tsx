@@ -1,4 +1,4 @@
-import React, {createElement, forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 import type {
   ColorsActionTokenAlias,
   ColorsBackdropTokenAlias,
@@ -12,10 +12,10 @@ import type {
 
 import {
   getResponsiveProps,
-  ResponsiveProp,
   classNames,
   sanitizeCustomProperties,
 } from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Box.scss';
 
@@ -336,7 +336,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as === 'ul' && styles.listReset,
     );
 
-    return createElement(
+    return React.createElement(
       as,
       {
         className,

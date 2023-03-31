@@ -6,7 +6,8 @@ import type {
   ActionListItemDescriptor,
 } from '../../../types';
 import {MenuGroup, RollupActions, Actions} from '../components';
-import {ActionMenu, ActionMenuProps} from '../ActionMenu';
+import {ActionMenu} from '../ActionMenu';
+import type {ActionMenuProps} from '../ActionMenu';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
 

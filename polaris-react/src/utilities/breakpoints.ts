@@ -1,10 +1,9 @@
 import {useState} from 'react';
-import {
+import {getMediaConditions, breakpoints} from '@shopify/polaris-tokens';
+import type {
   BreakpointsAlias,
   BreakpointsAliasDirection,
   BreakpointsTokenGroup,
-  getMediaConditions,
-  breakpoints,
 } from '@shopify/polaris-tokens';
 
 import {isServer} from './target';
@@ -126,13 +125,22 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
     const handler = () => setBreakpoints(getMatches());
 
     mediaQueryLists.forEach((mql) => {
-      mql.addEventListener('change', handler);
+      if (mql.addListener) {
+        mql.addListener(handler);
+      } else {
+        mql.addEventListener('change', handler);
+      }
     });
 
-    return () =>
+    return () => {
       mediaQueryLists.forEach((mql) => {
-        mql.removeEventListener('change', handler);
+        if (mql.removeListener) {
+          mql.removeListener(handler);
+        } else {
+          mql.removeEventListener('change', handler);
+        }
       });
+    };
   }, []);
 
   return breakpoints;

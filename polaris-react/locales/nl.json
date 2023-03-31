@@ -152,7 +152,9 @@
       "clearAllFilters": "Alle filters wissen",
       "clear": "Wissen",
       "clearLabel": "{filterName} wissen",
-      "moreFiltersWithCount": "Meer filters ({count})"
+      "moreFiltersWithCount": "Meer filters ({count})",
+      "addFilter": "Filter toevoegen",
+      "clearFilters": "Alles wissen"
     },
     "Modal": {
       "iFrameTitle": "opmaak hoofdtekst",
@@ -201,7 +203,50 @@
       "loadingLabel": "Pagina is aan het laden"
     },
     "Tabs": {
-      "toggleTabsLabel": "Meer tabbladen"
+      "toggleTabsLabel": "Meer weergaven",
+      "newViewAccessibilityLabel": "Nieuwe weergave aanmaken",
+      "newViewTooltip": "Weergave aanmaken",
+      "Tab": {
+        "rename": "Naam van weergave wijzigen",
+        "duplicate": "Weergave dupliceren",
+        "edit": "Weergave bewerken",
+        "editColumns": "Kolommen bewerken",
+        "delete": "Weergave verwijderen",
+        "copy": "Kopie van {name}",
+        "deleteModal": {
+          "title": "Weergave verwijderen?",
+          "description": "Je kunt dit niet ongedaan maken. De {viewName}-weergave is niet meer beschikbaar in het Shopify-beheercentrum.",
+          "cancel": "Annuleren",
+          "delete": "Weergave verwijderen"
+        }
+      },
+      "RenameModal": {
+        "title": "Naam van weergave wijzigen",
+        "label": "Naam",
+        "cancel": "Annuleren",
+        "create": "Opslaan",
+        "errors": {
+          "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Dubbele weergave",
+        "label": "Naam",
+        "cancel": "Annuleren",
+        "create": "Weergave aanmaken",
+        "errors": {
+          "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Nieuwe weergave aanmaken",
+        "label": "Naam",
+        "cancel": "Annuleren",
+        "create": "Weergave aanmaken",
+        "errors": {
+          "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "{children} verwijderen"
@@ -305,6 +350,40 @@
     "FullscreenBar": {
       "back": "Terug",
       "accessibilityLabel": "Volledig scherm-modus afsluiten"
+    },
+    "FilterPill": {
+      "clear": "Wissen"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Zoeken en filteren (F)",
+      "searchFilterAccessibilityLabel": "Resultaten zoeken en filteren",
+      "sort": "Resultaten sorteren",
+      "addView": "Nieuwe weergave toevoegen",
+      "newView": "Aangepast zoeken",
+      "SortButton": {
+        "ariaLabel": "Resultaten sorteren",
+        "tooltip": "Sorteren",
+        "title": "Sorteren op",
+        "sorting": {
+          "asc": "Oplopend",
+          "desc": "Aflopend",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Annuleren",
+        "update": "Bijwerken",
+        "save": "Opslaan",
+        "saveAs": "Opslaan als",
+        "modal": {
+          "title": "Weergave opslaan als",
+          "label": "Naam",
+          "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam.",
+          "save": "Opslaan",
+          "cancel": "Annuleren"
+        }
+      }
     }
   }
 }
