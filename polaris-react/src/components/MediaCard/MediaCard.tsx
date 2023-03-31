@@ -72,7 +72,7 @@ export function MediaCard({
   const dismissButtonMarkup = onDismiss ? (
     <Button
       icon={CancelMinor}
-      onClick={() => onDismiss?.()}
+      onClick={onDismiss}
       size="slim"
       plain
       accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
