@@ -35,7 +35,7 @@ Consider how the admin would look if it was cluttered with New badges or feature
 
 ### When not to use the New badge
 
-- Should never be used in the primary [navigation](/components/navigation) menu of the Shopify admin
+- Should never be used in the primary [navigation](/components/navigation/navigation) menu of the Shopify admin
 
 ## How long to use the New badge
 
