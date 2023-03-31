@@ -118,18 +118,6 @@ export default function Editor({initialContent}: {initialContent: State}) {
       <AppProvider i18n={enTranslations}>
         <div className={styles.Editor}>
           <div className={styles.PageNav}>
-            <Button
-              outline
-              size="slim"
-              onClick={() => {
-                const id = nanoid();
-                dispatch({type: 'ADD_PAGE', id, parentId: null});
-                router.replace(`/editor?page=${id}`);
-              }}
-            >
-              Add top level page
-            </Button>
-
             <ul>
               {state.pages
                 .filter((page) => page.parentId === null)
@@ -143,6 +131,20 @@ export default function Editor({initialContent}: {initialContent: State}) {
                   />
                 ))}
             </ul>
+
+            <Box paddingBlockStart="2">
+              <Button
+                outline
+                size="slim"
+                onClick={() => {
+                  const id = nanoid();
+                  dispatch({type: 'ADD_PAGE', id, parentId: null});
+                  router.replace(`/editor?page=${id}`);
+                }}
+              >
+                Add top level page
+              </Button>
+            </Box>
           </div>
 
           {editedPageId && <PageEditor editedPageId={editedPageId} />}
