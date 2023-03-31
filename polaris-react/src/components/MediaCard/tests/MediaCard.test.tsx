@@ -134,7 +134,7 @@ describe('<MediaCard>', () => {
     expect(videoCard).not.toContainReactComponent(Popover);
   });
 
-  it('does not render a Popover if enableDismissButton is true and only one popoverActions is provided', () => {
+  it('renders a dismiss button when onDismiss is passed', () => {
     const videoCard = mountWithApp(<MediaCard {...mockProps} onDismiss={() => {}} />);
 
     expect(videoCard).toContainReactComponent(Button, {
