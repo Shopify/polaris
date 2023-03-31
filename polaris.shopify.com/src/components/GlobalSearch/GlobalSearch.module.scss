@@ -158,6 +158,47 @@
   }
 }
 
+.AIIcon {
+  height: 3rem;
+  width: 3rem;
+
+  svg {
+    fill: var(--text-strong);
+  }
+}
+
+.AIBox {
+  background-color: #272727;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 12px;
+
+}
+
+.AICannedContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  padding: 1rem 10rem;
+
+  button {
+    background-color: #272727;
+  }
+}
+
+.AIExamplePrompts {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  flex: 1 1 0px;
+  align-items: center;
+
+  p {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
 .PromptAnswer {
   position: relative;
   font-size: var(--font-size-500);

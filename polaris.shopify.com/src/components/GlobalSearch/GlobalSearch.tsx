@@ -15,7 +15,13 @@ import {KeyboardEventHandler} from 'react';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 import PatternThumbnailPreview from '../ThumbnailPreview';
 import ComponentThumbnail from '../ComponentThumbnail';
-import {MagicMajor} from '@shopify/polaris-icons';
+import {
+  MagicMajor,
+  CircleAlertMajor,
+  AutomationMajor,
+  HintMajor,
+  RiskMajor,
+} from '@shopify/polaris-icons';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
   foundations: 'Foundations',
@@ -171,11 +177,21 @@ function GlobalSearch() {
   }, [isOpen]);
 
   // query the prompts endpoint
-  const handleAskQuestion = async () => {
+  const handleAskQuestion = async (passPrompt) => {
+    if (passPrompt && !passPrompt.target) {
+      console.log('prompt: ', passPrompt);
+
+      setPrompt(passPrompt);
+      console.log('set');
+    }
+
     if (prompt) {
+      console.log('fetching');
       fetch(`/api/prompts?p=${encodeURIComponent(prompt)}`)
         .then((data) => data.json())
         .then((json) => {
+          console.log('got it');
+
           const {completion} = json;
           console.log(completion);
           setPromptResults((prev) => [
@@ -277,6 +293,7 @@ function GlobalSearch() {
               <>
                 <AIPrompt
                   value={prompt}
+                  setPrompt={setPrompt}
                   onChange={(evt) => setPrompt(evt.target.value)}
                   onKeyUp={handleKeyboardNavigation}
                   searchResultsCount={promptResults.length}
@@ -317,9 +334,7 @@ function GlobalSearch() {
                 />
               )}
               {searchMode === 'ai' && promptResults.length < 1 && (
-                <h3 className={styles.PromptAnswer}>
-                  Put the canned prompts and stuff in here
-                </h3>
+                <Canned onAskQuestion={handleAskQuestion} />
               )}
               {searchMode === 'ai' && promptResults.length > 0 && (
                 <>
@@ -731,6 +746,76 @@ const TypingAnimation = ({message}) => {
       {text}
       <span className={styles.BlinkingCursor}>|</span>
     </span>
+  );
+};
+
+const Canned = ({onAskQuestion}) => {
+  function chooseExample(e) {
+    onAskQuestion(e.target.dataset.question);
+  }
+
+  return (
+    <div className={styles.AICannedContainer}>
+      <div className={styles.AIExamplePrompts}>
+        <div>
+          <div className={styles.AIIcon}>
+            <HintMajor />
+          </div>
+          <p>Examples</p>
+        </div>
+        <button
+          onClick={chooseExample}
+          className={styles.AIBox}
+          data-question="What does the Alpha Stack component do?"
+        >
+          What does the Alpha Stack component do? {'>>'}
+        </button>
+        <button
+          onClick={chooseExample}
+          className={styles.AIBox}
+          data-question="Can I set the horizontal direction of Bleed?"
+        >
+          Can I set the horizontal direction of Bleed? {'>>'}
+        </button>
+        <button
+          onClick={chooseExample}
+          className={styles.AIBox}
+          data-question="Is there a color for destructive buttons?"
+        >
+          Is there a color for destructive buttons? {'>>'}
+        </button>
+      </div>
+      <div className={styles.AIExamplePrompts}>
+        <div className={styles.AIIcon}>
+          <AutomationMajor />
+        </div>
+        <p>Capabilities</p>
+        <div className={styles.AIBox}>
+          Trained on entire Polaris documentation
+        </div>
+        <div className={styles.AIBox}>
+          Can answer questions from shopify.dev too
+        </div>
+        <div className={styles.AIBox}>
+          Gives actionable next steps for diving deeper
+        </div>
+      </div>
+      <div className={styles.AIExamplePrompts}>
+        <div className={styles.AIIcon}>
+          <RiskMajor />
+        </div>
+        <p>Limitaions</p>
+        <div className={styles.AIBox}>
+          May occasionally generate incorrect information
+        </div>
+        <div className={styles.AIBox}>
+          May occasionally produce harmful instructions or biased content
+        </div>
+        <div className={styles.AIBox}>
+          Limited knowledge of world and events after 2021
+        </div>
+      </div>
+    </div>
   );
 };
 
