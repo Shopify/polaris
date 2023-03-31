@@ -1,5 +1,6 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {
+import postcss from 'postcss';
+import type {
   Root,
   Result,
   Plugin,
@@ -10,7 +11,8 @@ import postcss, {
   Comment as PostCSSComment,
   AtRule,
 } from 'postcss';
-import valueParser, {
+import valueParser from 'postcss-value-parser';
+import type {
   Node,
   ParsedValue,
   FunctionNode,

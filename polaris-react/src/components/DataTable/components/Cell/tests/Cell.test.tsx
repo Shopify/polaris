@@ -1,4 +1,5 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import type {ReactElement} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 

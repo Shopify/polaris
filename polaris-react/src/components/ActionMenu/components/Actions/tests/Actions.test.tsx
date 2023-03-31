@@ -1,7 +1,8 @@
 import React, {useCallback, useState} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {ActionMenuProps, ActionMenu} from '../../..';
+import {ActionMenu} from '../../..';
+import type {ActionMenuProps} from '../../..';
 import {Actions, MenuGroup, RollupActions, SecondaryAction} from '../..';
 import {Tooltip} from '../../../../Tooltip';
 

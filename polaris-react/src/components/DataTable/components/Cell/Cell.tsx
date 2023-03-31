@@ -1,4 +1,5 @@
-import React, {FocusEventHandler, useRef} from 'react';
+import React, {useRef} from 'react';
+import type {FocusEventHandler} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';

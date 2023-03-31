@@ -1,17 +1,11 @@
 import React from 'react';
 import {mount} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {
-  BreakpointsTokenName,
-  breakpoints,
-  getMediaConditions,
-} from '@shopify/polaris-tokens';
+import {breakpoints, getMediaConditions} from '@shopify/polaris-tokens';
+import type {BreakpointsTokenName} from '@shopify/polaris-tokens';
 
-import {
-  BreakpointsDirectionAlias,
-  useBreakpoints,
-  getBreakpointsQueryEntries,
-} from '../breakpoints';
+import {useBreakpoints, getBreakpointsQueryEntries} from '../breakpoints';
+import type {BreakpointsDirectionAlias} from '../breakpoints';
 
 const mediaConditions = getMediaConditions(breakpoints);
 

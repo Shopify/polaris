@@ -1,0 +1,38 @@
+@import '../../../../../../styles/common';
+
+.DirectionButton {
+  // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
+  @include focus-ring;
+  border-radius: var(--p-border-radius-1);
+  padding: var(--p-space-05);
+  font-size: var(--p-font-size-100);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+
+  + .DirectionButton {
+    margin-top: var(--p-space-1);
+  }
+
+  &:focus-visible {
+    outline: 0;
+
+    // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
+    @include focus-ring($style: 'focused');
+  }
+}
+
+.DirectionButton-active {
+  background: var(--p-surface-selected);
+  color: var(--p-interactive);
+}
+
+.Label {
+  flex: 1;
+  margin-left: var(--p-space-1);
+}

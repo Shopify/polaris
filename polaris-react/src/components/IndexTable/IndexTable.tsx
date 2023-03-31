@@ -18,19 +18,16 @@ import {Spinner} from '../Spinner';
 import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
-import {
-  BulkActions,
-  BulkActionsProps,
-  useIsBulkActionsSticky,
-} from '../BulkActions';
+import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
+import type {BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
 import {
   useIndexValue,
   useIndexSelectionChange,
   SELECT_ALL_ITEMS,
   SelectionType,
-  IndexProviderProps,
 } from '../../utilities/index-provider';
+import type {IndexProviderProps} from '../../utilities/index-provider';
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
@@ -57,6 +54,11 @@ interface IndexTableHeadingBase {
   tooltipContent?: React.ReactNode;
   tooltipWidth?: Width;
   tooltipPersistsOnClick?: boolean;
+  /**
+   * The direction to sort the table rows on first click or keypress of this column heading.
+   * When not specified, the value from IndexTable.defaultSortDirection will be used.
+   */
+  defaultSortDirection?: IndexTableSortDirection;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -182,6 +184,19 @@ function IndexTableBase({
   const scrollingWithBar = useRef(false);
   const scrollingContainer = useRef(false);
   const lastSortedColumnIndex = useRef<number | undefined>(sortColumnIndex);
+  const renderAfterSelectEvent = useRef(false);
+  const lastSelectedItemsCount = useRef<number | 'All'>(0);
+  const hasSelected = useRef(false);
+
+  if (selectedItemsCount !== lastSelectedItemsCount.current) {
+    renderAfterSelectEvent.current = true;
+    lastSelectedItemsCount.current = selectedItemsCount;
+  }
+
+  if (!hasSelected.current && selectedItemsCount !== 0) {
+    hasSelected.current = true;
+  }
+
   const {
     bulkActionsIntersectionRef,
     tableMeasurerRef,
@@ -863,6 +878,8 @@ function IndexTableBase({
     index: number,
     direction: IndexTableSortDirection,
   ) {
+    renderAfterSelectEvent.current = false;
+    hasSelected.current = false;
     lastSortedColumnIndex.current = sortColumnIndex;
     onSort?.(index, direction);
   }
@@ -908,13 +925,16 @@ function IndexTableBase({
       const isCurrentlySorted = index === sortColumnIndex;
       const isPreviouslySorted =
         !isCurrentlySorted && index === lastSortedColumnIndex.current;
-
+      const isRenderAfterSelectEvent =
+        renderAfterSelectEvent.current ||
+        (!hasSelected.current && selectedItemsCount !== 0);
       const isAscending = sortDirection === 'ascending';
-      let newDirection: IndexTableSortDirection = defaultSortDirection;
+
+      let newDirection: IndexTableSortDirection =
+        heading.defaultSortDirection ?? defaultSortDirection;
+
       let SourceComponent =
-        defaultSortDirection === 'ascending'
-          ? SortAscendingMajor
-          : SortDescendingMajor;
+        newDirection === 'ascending' ? SortAscendingMajor : SortDescendingMajor;
       if (isCurrentlySorted) {
         newDirection = isAscending ? 'descending' : 'ascending';
         SourceComponent =
@@ -951,6 +971,7 @@ function IndexTableBase({
             heading?.alignment === 'end' &&
             styles['TableHeadingSortButton-heading-align-end-currently-sorted'],
           isPreviouslySorted &&
+            !isRenderAfterSelectEvent &&
             heading?.alignment === 'end' &&
             styles[
               'TableHeadingSortButton-heading-align-end-previously-sorted'
@@ -985,7 +1006,7 @@ function IndexTableBase({
 
       const tooltipDirection = isCurrentlySorted
         ? sortDirection!
-        : defaultSortDirection;
+        : newDirection;
 
       const sortTooltipContent = sortToggleLabels[index][tooltipDirection];
 

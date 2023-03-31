@@ -264,7 +264,6 @@ function ListboxWithSearchExample() {
           shadow
           style={{
             position: 'relative',
-            width: '310px',
             height: '292px',
             padding: 'var(--p-space-2) 0',
             borderBottomLeftRadius: 'var(--p-border-radius-2)',

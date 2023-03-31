@@ -1,5 +1,4 @@
 import React, {
-  ReactElement,
   useCallback,
   useEffect,
   useReducer,
@@ -20,19 +19,17 @@ import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
   ResourceListContext,
-  ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
 } from '../../utilities/resource-list';
-import {Select, SelectOption} from '../Select';
+import type {ResourceListSelectedItems} from '../../utilities/resource-list';
+import {Select} from '../Select';
+import type {SelectOption} from '../Select';
 import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
-import {
-  BulkActions,
-  BulkActionsProps,
-  useIsBulkActionsSticky,
-} from '../BulkActions';
+import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
+import type {BulkActionsProps} from '../BulkActions';
 import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 
@@ -41,7 +38,11 @@ import styles from './ResourceList.scss';
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-function getAllItemsOnPage<TItemType>(
+interface ResourceListItemData {
+  [data: string]: any;
+}
+
+function getAllItemsOnPage<TItemType extends ResourceListItemData>(
   items: TItemType[],
   idForItem: (item: TItemType, index: number) => string,
 ) {
@@ -57,7 +58,7 @@ const isBreakpointsXS = () => {
         parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
 };
 
-function defaultIdForItem<TItemType extends {id?: any}>(
+function defaultIdForItem<TItemType extends ResourceListItemData>(
   item: TItemType,
   index: number,
 ) {
@@ -66,10 +67,14 @@ function defaultIdForItem<TItemType extends {id?: any}>(
     : index.toString();
 }
 
-export interface ResourceListProps<TItemType = any> {
+export interface ResourceListProps<
+  TItemType extends ResourceListItemData = ResourceListItemData,
+> {
   /** Item data; each item is passed to renderItem */
   items: TItemType[];
   filterControl?: React.ReactNode;
+  /** Whether to remove all padding around the filter controls. Should be true if using Filters, and false if using LegacyFilters.  */
+  flushFilters?: boolean;
   /** The markup to display when no resources exist yet. Renders when set and items is empty. */
   emptyState?: React.ReactNode;
   /** The markup to display when no results are returned on search or filter of the list. Renders when `filterControl` is set, items are empty, and `emptyState` is not set.
@@ -119,15 +124,10 @@ export interface ResourceListProps<TItemType = any> {
   resolveItemId?(item: TItemType): string;
 }
 
-type ResourceListType = (<TItemType>(
-  value: ResourceListProps<TItemType>,
-) => ReactElement) & {
-  Item: typeof ResourceItem;
-};
-
-export const ResourceList: ResourceListType = function ResourceList<TItemType>({
+export function ResourceList<TItemType extends ResourceListItemData>({
   items,
   filterControl,
+  flushFilters,
   emptyState,
   emptySearchState,
   resourceName: resourceNameProp,
@@ -577,7 +577,9 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     ) : null;
 
   const filterControlMarkup = filterControl ? (
-    <div className={styles.FiltersWrapper}>{filterControl}</div>
+    <div className={classNames(!flushFilters && styles.FiltersWrapper)}>
+      {filterControl}
+    </div>
   ) : null;
 
   const sortingSelectMarkup =
@@ -769,6 +771,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       <div ref={bulkActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
-};
+}
 
 ResourceList.Item = ResourceItem;

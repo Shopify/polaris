@@ -11,10 +11,11 @@ import {Sticky} from '../../Sticky';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
-import {BulkActions, useIsBulkActionsSticky} from '../../BulkActions';
+import {BulkActions} from '../../BulkActions';
+import type {useIsBulkActionsSticky} from '../../BulkActions';
 import {SelectAllActions} from '../../SelectAllActions';
-import {IndexTable, IndexTableProps} from '../IndexTable';
-import type {IndexTableSortDirection} from '../IndexTable';
+import {IndexTable} from '../IndexTable';
+import type {IndexTableProps, IndexTableSortDirection} from '../IndexTable';
 import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
@@ -675,6 +676,26 @@ describe('<IndexTable>', () => {
           expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
       );
+
+      it('uses column defaultSortDirection instead of table defaultSortDirection', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            defaultSortDirection="ascending"
+            headings={[
+              {title: 'Foo'},
+              {title: 'Bar'},
+              {title: 'Baz', defaultSortDirection: 'descending'},
+            ]}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll('th')[3]).toContainReactComponent(
+          SortDescendingMajor,
+        );
+      });
     });
 
     describe('onSort', () => {

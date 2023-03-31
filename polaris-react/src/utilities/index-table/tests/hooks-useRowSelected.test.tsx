@@ -2,7 +2,9 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 // eslint-disable-next-line @shopify/strict-component-boundaries
-import {IndexTable, IndexTableProps} from '../../../components/IndexTable';
+import {IndexTable} from '../../../components/IndexTable';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import type {IndexTableProps} from '../../../components/IndexTable';
 import {useRowSelected} from '../hooks';
 
 function Component() {

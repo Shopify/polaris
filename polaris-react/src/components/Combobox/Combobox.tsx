@@ -1,16 +1,18 @@
 import React, {useState, useCallback, useMemo, Children, useRef} from 'react';
 
-import {Popover, PopoverPublicAPI} from '../Popover';
-import type {PopoverProps} from '../Popover';
+import {Popover} from '../Popover';
+import type {PopoverPublicAPI, PopoverProps} from '../Popover';
 import type {TextFieldProps} from '../TextField';
 import type {ListboxProps} from '../Listbox';
 import {
   ComboboxTextFieldContext,
-  ComboboxTextFieldType,
   ComboboxListboxContext,
+  ComboboxListboxOptionContext,
+} from '../../utilities/combobox';
+import type {
+  ComboboxTextFieldType,
   ComboboxListboxType,
   ComboboxListboxOptionType,
-  ComboboxListboxOptionContext,
 } from '../../utilities/combobox';
 
 import styles from './Combobox.scss';

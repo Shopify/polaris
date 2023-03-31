@@ -9,14 +9,10 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DataTableFiltersExample() {
-  const [availability, setAvailability] = useState<string[] | undefined>(
-    undefined,
-  );
-  const [productType, setProductType] = useState<string[] | undefined>(
-    undefined,
-  );
-  const [taggedWith, setTaggedWith] = useState<string | undefined>(undefined);
-  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
+  const [availability, setAvailability] = useState<string[]>([]);
+  const [productType, setProductType] = useState<string[]>([]);
+  const [taggedWith, setTaggedWith] = useState<string>('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleAvailabilityChange = useCallback(
     (value: string[]) => setAvailability(value),
@@ -34,22 +30,10 @@ function DataTableFiltersExample() {
     (value: string) => setQueryValue(value),
     [],
   );
-  const handleAvailabilityRemove = useCallback(
-    () => setAvailability(undefined),
-    [],
-  );
-  const handleProductTypeRemove = useCallback(
-    () => setProductType(undefined),
-    [],
-  );
-  const handleTaggedWithRemove = useCallback(
-    () => setTaggedWith(undefined),
-    [],
-  );
-  const handleQueryValueRemove = useCallback(
-    () => setQueryValue(undefined),
-    [],
-  );
+  const handleAvailabilityRemove = useCallback(() => setAvailability([]), []);
+  const handleProductTypeRemove = useCallback(() => setProductType([]), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAvailabilityRemove();
     handleProductTypeRemove();
@@ -116,7 +100,7 @@ function DataTableFiltersExample() {
   ];
 
   const appliedFilters = [];
-  if (availability && !isEmpty(availability)) {
+  if (!isEmpty(availability)) {
     const key = 'availability';
     appliedFilters.push({
       key,
@@ -124,7 +108,7 @@ function DataTableFiltersExample() {
       onRemove: handleAvailabilityRemove,
     });
   }
-  if (productType && !isEmpty(productType)) {
+  if (!isEmpty(productType)) {
     const key = 'productType';
     appliedFilters.push({
       key,
@@ -132,9 +116,10 @@ function DataTableFiltersExample() {
       onRemove: handleProductTypeRemove,
     });
   }
-  if (taggedWith && !isEmpty(taggedWith)) {
+  if (!isEmpty(taggedWith)) {
+    const key = 'taggedWith';
     appliedFilters.push({
-      key: 'taggedWith',
+      key,
       label: `Tagged with ${taggedWith}`,
       onRemove: handleTaggedWithRemove,
     });
@@ -146,6 +131,7 @@ function DataTableFiltersExample() {
         <LegacyCard.Section>
           <Filters
             queryValue={queryValue}
+            queryPlaceholder="Search items"
             filters={filters}
             appliedFilters={appliedFilters}
             onQueryChange={handleFiltersQueryChange}

@@ -1,4 +1,5 @@
-import core, {ASTPath, Collection, JSXAttribute, JSXElement} from 'jscodeshift';
+import type core from 'jscodeshift';
+import type {ASTPath, Collection, JSXAttribute, JSXElement} from 'jscodeshift';
 
 export function getJSXAttributes(
   j: core.JSCodeshift,

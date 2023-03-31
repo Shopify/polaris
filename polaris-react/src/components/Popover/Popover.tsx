@@ -17,14 +17,8 @@ import {Portal} from '../Portal';
 import {portal} from '../shared';
 import {useUniqueId} from '../../utilities/unique-id';
 
-import {
-  PopoverCloseSource,
-  PopoverAutofocusTarget,
-  Pane,
-  PopoverOverlay,
-  PopoverOverlayProps,
-  Section,
-} from './components';
+import {PopoverCloseSource, Pane, PopoverOverlay, Section} from './components';
+import type {PopoverAutofocusTarget, PopoverOverlayProps} from './components';
 import {setActivatorAttributes} from './set-activator-attributes';
 
 export {PopoverCloseSource};

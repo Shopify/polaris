@@ -1,8 +1,10 @@
-import React, {ComponentType} from 'react';
+import React from 'react';
+import type {ComponentType} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Tab, Panel, TabMeasurer} from '../components';
-import {LegacyTabs, LegacyTabsProps} from '../LegacyTabs';
+import {LegacyTabs} from '../LegacyTabs';
+import type {LegacyTabsProps} from '../LegacyTabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
 import {Popover} from '../../Popover';
 
