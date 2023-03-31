@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-adds dismiss button to MediaCard
+Added onDismiss callback to MediaCard
