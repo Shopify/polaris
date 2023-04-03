@@ -1,5 +1,6 @@
 ---
 title: Code of Conduct
+description: Respectful behaviors and interactions help us provide a welcoming community for all contributors.
 keywords:
   - open source
 order: 0
