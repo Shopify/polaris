@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Akce"
+      "popoverButton": "Akce",
+      "dismissButton": "Zavřít"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
