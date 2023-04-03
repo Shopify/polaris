@@ -30,7 +30,7 @@ This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card)
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
-<div style={{ paddingBottom: '2rem', height: '700px' }}>
+<div style={{ paddingBottom: '2rem', height: '600px' }}>
   {(____CODE____)()}
 </div>
 ```
@@ -132,16 +132,16 @@ function IndexFiltersDefault() {
     return true;
   };
   const sortOptions = [
-    {label: 'Order', value: 'order asc', directionLabel: 'Ascending'},
-    {label: 'Order', value: 'order desc', directionLabel: 'Descending'},
-    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
-    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
-    {label: 'Date', value: 'date asc', directionLabel: 'A-Z'},
-    {label: 'Date', value: 'date desc', directionLabel: 'Z-A'},
-    {label: 'Total', value: 'total asc', directionLabel: 'Ascending'},
-    {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
+    {label: 'Product', value: 'product asc', directionLabel: 'Ascending'},
+    {label: 'Product', value: 'product desc', directionLabel: 'Descending'},
+    {label: 'Status', value: 'status asc', directionLabel: 'A-Z'},
+    {label: 'Status', value: 'status desc', directionLabel: 'Z-A'},
+    {label: 'Type', value: 'type asc', directionLabel: 'A-Z'},
+    {label: 'Type', value: 'type desc', directionLabel: 'Z-A'},
+    {label: 'Vendor', value: 'vendor asc', directionLabel: 'Ascending'},
+    {label: 'Vendor', value: 'vendor desc', directionLabel: 'Descending'},
   ];
-  const [sortSelected, setSortSelected] = useState(['order asc']);
+  const [sortSelected, setSortSelected] = useState(['product asc']);
   const {mode, setMode} = useSetIndexFiltersMode();
   const onHandleCancel = () => {};
   const onHandleSave = async () => {
@@ -238,6 +238,7 @@ function IndexFiltersDefault() {
   const products = [
     {
       id: '1020',
+      price: '$200',
       product: '1ZPRESSO | J-MAX Manual Coffee Grinder',
       status: <Badge status="success">Active</Badge>,
       inventory: '20 in stock',
@@ -245,15 +246,8 @@ function IndexFiltersDefault() {
       vendor: 'Espresso Shot Coffee',
     },
     {
-      id: '1019',
-      product: 'Acaia Pearl',
-      status: <Badge status="success">Active</Badge>,
-      inventory: '20 in stock',
-      type: 'Brew Gear',
-      vendor: 'Espresso Shot Coffee',
-    },
-    {
       id: '1018',
+      price: '$200',
       product: 'Acaia Pearl Set',
       status: <Badge status="success">Active</Badge>,
       inventory: '2 in stock for 50 variants',
@@ -261,15 +255,8 @@ function IndexFiltersDefault() {
       vendor: 'Espresso Shot Coffee',
     },
     {
-      id: '1017',
-      product: 'AeroPress Brewer',
-      status: <Badge status="success">Active</Badge>,
-      inventory: '20 in stock',
-      type: 'Brew Gear',
-      vendor: 'Espresso Shot Coffee',
-    },
-    {
       id: '1016',
+      price: '$200',
       product: 'AeroPress Go Brewer',
       status: <Badge status="info">Draft</Badge>,
       inventory: '3 in stock for 50 variants',
@@ -278,6 +265,7 @@ function IndexFiltersDefault() {
     },
     {
       id: '1015',
+      price: '$200',
       product: 'Canadiano Brewer',
       status: <Badge status="success">Active</Badge>,
       inventory: '890 in stock for 50 variants',
@@ -286,6 +274,7 @@ function IndexFiltersDefault() {
     },
     {
       id: '1014',
+      price: '$200',
       product: 'Canadiano Brewer White Ash',
       status: <Badge status="success">Active</Badge>,
       inventory: '890 in stock for 50 variants',
@@ -300,7 +289,10 @@ function IndexFiltersDefault() {
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(products);
   const rowMarkup = products.map(
-    ({id, thumbnail, product, status, inventory, type, vendor}, index) => (
+    (
+      {id, thumbnail, product, price, status, inventory, type, vendor},
+      index,
+    ) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -314,6 +306,7 @@ function IndexFiltersDefault() {
           />
         </IndexTable.Cell>
         <IndexTable.Cell>{product}</IndexTable.Cell>
+        <IndexTable.Cell>{price}</IndexTable.Cell>
         <IndexTable.Cell>{status}</IndexTable.Cell>
         <IndexTable.Cell>{inventory}</IndexTable.Cell>
         <IndexTable.Cell>{type}</IndexTable.Cell>
@@ -371,9 +364,11 @@ function IndexFiltersDefault() {
             allResourcesSelected ? 'All' : selectedResources.length
           }
           onSelectionChange={handleSelectionChange}
+          sortable={[false, true, true, true, true, true, true]}
           headings={[
             {title: ''},
             {title: 'Product'},
+            {title: 'Price', alignment: 'end'},
             {title: 'Status'},
             {title: 'Inventory'},
             {title: 'Type'},
