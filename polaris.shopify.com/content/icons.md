@@ -1,5 +1,6 @@
 ---
 title: Icons
+description: Use icons to increase visual appeal and improve navigation, comprehension, and engagement.
 order: 9
 icon: IconsMajor
 ---
