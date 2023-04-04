@@ -6,7 +6,7 @@ hideFromNav: true
 
 ## How it helps merchants
 
-![Product details page](/images/patterns/resource-detail-cover-image.png)
+![Product details page](/images/patterns/resource-details-layout/resource-detail-cover-image.png)
 
 1. The page header provides easy access to actions and navigation. It spans the full width of the page to show merchants that these actions represent the page as a whole.
 2. The main content is split in two columns, primary content to the left and secondary content to the right. The primary content occupies two thirds of the page to give more space to what’s most important most of the time.
@@ -142,10 +142,10 @@ function ResourceDetailsLayout() {
 
 ### Useful to know
 
-- <span>Always use the default width. Full width tends to waste space and make the page harder to parse.</span> ![Details page with margins on either side of the main content](/images/patterns/resource-detail-usage-1.png)
-- <span>Group similar content in the same card.</span> ![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-detail-usage-2.png)
-- <span>Put information that defines the resource object in the primary column.</span> ![Product detail example](/images/patterns/resource-detail-usage-3.png)
-- <span>Put supporting information such as status, metadata, and summaries in the secondary column.</span> ![Product details page with the secondary column outlined](/images/patterns/resource-detail-usage-4.png)
-- <span>Arrange content in order of importance.</span> ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-detail-usage-5.png)
+- <span>Always use the default width. Full width tends to waste space and make the page harder to parse.</span> ![Details page with margins on either side of the main content](/images/patterns/resource-details-layout/resource-detail-usage-1.png)
+- <span>Group similar content in the same card.</span> ![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-details-layout/resource-detail-usage-2.png)
+- <span>Put information that defines the resource object in the primary column.</span> ![Product detail example](/images/patterns/resource-details-layout/resource-detail-usage-3.png)
+- <span>Put supporting information such as status, metadata, and summaries in the secondary column.</span> ![Product details page with the secondary column outlined](/images/patterns/resource-details-layout/resource-detail-usage-4.png)
+- <span>Arrange content in order of importance.</span> ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-details-layout/resource-detail-usage-5.png)
 
 </div>

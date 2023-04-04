@@ -10,7 +10,7 @@ This enables merchants to select a date or a date range from a list of preset da
 
 ## How it helps merchants
 
-![Option list with common suggested dates, such as “Today” and “Last 30 days”](/images/patterns/date-list-cover-image.png)
+![Option list with common suggested dates, such as “Today” and “Last 30 days”](/images/patterns/date-picking/date-list-cover-image.png)
 
 1. The date list provides merchants with suggested dates. This makes date picking simpler when useful dates are predictable and custom dates aren’t necessary.
 
@@ -120,8 +120,8 @@ function DateListPicker() {
 
 ### Useful to know
 
-- <span>In the button preview, set a default date range that a merchant will most likely use.</span> ![Button showing a calendar icon labeled “Today”](/images/patterns/date-list-usage-1.png)
-- <span>Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.</span> ![Option list with common suggested dates followed by ranges](/images/patterns/date-list-usage-2.png)
-- <span>A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.</span> ![Customer segment editor with a date list showing common ranges and related code snippets](/images/patterns/date-list-usage-3.png)
+- <span>In the button preview, set a default date range that a merchant will most likely use.</span> ![Button showing a calendar icon labeled “Today”](/images/patterns/date-picking/date-list-usage-1.png)
+- <span>Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.</span> ![Option list with common suggested dates followed by ranges](/images/patterns/date-picking/date-list-usage-2.png)
+- <span>A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.</span> ![Customer segment editor with a date list showing common ranges and related code snippets](/images/patterns/date-picking/date-list-usage-3.png)
 
 </div>

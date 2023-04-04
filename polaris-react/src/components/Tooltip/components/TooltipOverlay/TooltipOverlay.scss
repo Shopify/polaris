@@ -51,7 +51,6 @@
   animation: var(--p-keyframes-appear-below) var(--p-duration-50)
     var(--p-ease-in) var(--p-duration-100) 1 both;
 
-  // stylelint-disable-next-line -- Not a breakpoint
   @media (prefers-reduced-motion) {
     animation: none;
   }
@@ -61,7 +60,6 @@
   animation: var(--p-keyframes-appear-above) var(--p-duration-50)
     var(--p-ease-in) var(--p-duration-100) 1 both;
 
-  // stylelint-disable-next-line -- Not a breakpoint
   @media (prefers-reduced-motion) {
     animation: none;
   }
