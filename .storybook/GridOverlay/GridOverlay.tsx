@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 // eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../../src';
-import {classNames} from '../../src/utilities/css';
+import {EventListener} from '../../polaris-react/src';
+import {classNames} from '../../polaris-react/src/utilities/css';
 
 import './GridOverlay.css';
 

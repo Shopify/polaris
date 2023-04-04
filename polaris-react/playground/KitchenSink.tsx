@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {RenderPerformanceProfiler} from '../.storybook/RenderPerformanceProfiler';
+import {RenderPerformanceProfiler} from '../../.storybook/RenderPerformanceProfiler';
 
 interface Stories {
   [key: string]: React.ComponentType;
@@ -32,7 +32,7 @@ export function KitchenSink() {
       return (
         <div key={id}>
           <RenderPerformanceProfiler
-            id={id.replace('All Components/', '')}
+            id={id.replace('All components/', '')}
             kind={id}
             printToDOM
           >

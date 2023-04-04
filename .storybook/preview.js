@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {AppProvider} from '../src';
-import enTranslations from '../locales/en.json';
+import {AppProvider} from '../polaris-react/src';
+import enTranslations from '../polaris-react/locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions} from './manager';

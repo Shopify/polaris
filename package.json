@@ -42,7 +42,8 @@
     "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",
     "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1",
     "new-migration": "yarn workspace @shopify/polaris-migrator generate",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "storybook": "start-storybook -p 6006 --quiet"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -64,8 +65,16 @@
     "@shopify/eslint-plugin": "^42.0.1",
     "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.1.0",
+    "@shopify/storybook-a11y-test": "1.0.1",
+    "@storybook/addon-a11y": "^6.5.12",
+    "@storybook/addon-toolbars": "^6.5.12",
+    "@storybook/addon-viewport": "^6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
+    "@storybook/react": "^6.5.12",
     "@size-limit/preset-small-lib": "^5.0.3",
     "@types/jest": "^27.5.1",
+    "create-file-webpack": "^1.0.2",
     "downlevel-dts": "^0.11.0",
     "eslint": "^8.3.0",
     "execa": "^5.0.0",

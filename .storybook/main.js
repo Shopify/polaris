@@ -1,7 +1,7 @@
 const path = require('path');
 const spawn = require('child_process').spawn;
 const CreateFileWebpack = require('create-file-webpack');
-const postcssPlugins = require('../config/postcss-plugins');
+const postcssPlugins = require('../polaris-react/config/postcss-plugins');
 
 module.exports = {
   core: {
@@ -9,12 +9,17 @@ module.exports = {
   },
   stories: [
     {
-      directory: '../playground/',
+      directory: '../polaris-react/playground/',
       files: 'stories.tsx',
     },
     {
-      directory: '../src/components/',
+      directory: '../polaris-react/src/components/',
       titlePrefix: 'All components',
+      files: '**/*.stories.tsx',
+    },
+    {
+      directory: '../polaris-patterns/src/components/',
+      titlePrefix: 'Patterns',
       files: '**/*.stories.tsx',
     },
   ],
@@ -62,7 +67,7 @@ module.exports = {
 
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@shopify/polaris': path.resolve(__dirname, '..', 'src'),
+      '@shopify/polaris': path.resolve(__dirname, '..', 'polaris-react', 'src'),
     };
     return config;
   },
