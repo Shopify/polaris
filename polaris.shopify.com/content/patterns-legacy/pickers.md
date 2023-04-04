@@ -49,7 +49,7 @@ Pinning the most relevant options to the top of the picker helps merchants work 
 
 ### Searchable listbox
 
-![Searchable listbox pattern disected to illustrate how it's composed using the text field, listbox, listbox option, and listbox action components.](/images/foundations/patterns/pickers/searchable-listbox.png)
+![Searchable listbox pattern disected to illustrate how it's composed using the text field, listbox, listbox option, and listbox action components.](/images/patterns-legacy/pickers/searchable-listbox.png)
 
 The primary building block of resource picking experiences is the searchable listbox pattern. Searchable listboxes are composed of the [listbox](/components/lists/listbox) and [text field](/components/selection-and-input/text-field) components and can be displayed differently depending on what merchant problem you’re solving.
 
@@ -61,13 +61,13 @@ The location picker popover allows a merchant to select any location they have a
 
 The number of locations a merchant has can range dramatically, and the location experience should adapt to that number. Using progressive disclosure, we can introduce features as merchants need them.
 
-![1 location](/images/foundations/patterns/pickers/locations-1.png)
+![1 location](/images/patterns-legacy/pickers/locations-1.png)
 
 #### 1 location
 
 When a merchant only has one location, the button that opens the location picker should be hidden. There’s no need to access the experience when they can’t switch locations.
 
-![2–10 locations](/images/foundations/patterns/pickers/locations-2-to-10.png)
+![2–10 locations](/images/patterns-legacy/pickers/locations-2-to-10.png)
 
 #### 2–10 locations
 
@@ -79,7 +79,7 @@ In the location picker:
 - Make “All locations” the default selected location.
 - List all other locations in alphabetical order. Each location item shows the location name only.
 
-![11 or more locations](/images/foundations/patterns/pickers/locations-11-or-more.png)
+![11 or more locations](/images/patterns-legacy/pickers/locations-11-or-more.png)
 
 #### 11 or more locations
 
@@ -100,7 +100,7 @@ Location pickers are composed using the [button](/components/actions/button), [i
 
 Segment pickers allow merchants to select from or navigate to all of the customer segments they've created. Merchants start with one default customer segment: "All customers". From the query builder at the top of the segment detail page, merchants can add filters and conditions to create new segments.
 
-![Illustration of segment picker best practices](/images/foundations/patterns/pickers/segment-picker-best-practices.png)
+![Illustration of segment picker best practices](/images/patterns-legacy/pickers/segment-picker-best-practices.png)
 
 Similar to the location picker, customer segment pickers introduce features only as merchants need them. All segment picking experiences should:
 
@@ -108,13 +108,13 @@ Similar to the location picker, customer segment pickers introduce features only
 - Pin the active or selected segment below the "All customers" segment so merchants know what segment they're viewing or have picked
 - Sort segments by "Last edited date" so merchants can easily find and pick from the most relevant segments in the list
 
-![10 or less segments ](/images/foundations/patterns/pickers/customer-segments-1-to-10.png)
+![10 or less segments ](/images/patterns-legacy/pickers/customer-segments-1-to-10.png)
 
 #### 1 - 10 segments
 
 When a merchant has 10 customer segments or less, all segments should be visible in the list.
 
-![More than 10 customer segments](/images/foundations/patterns/pickers/customer-segments-11-or-more.png)
+![More than 10 customer segments](/images/patterns-legacy/pickers/customer-segments-11-or-more.png)
 
 #### 11 or more segments
 
@@ -127,7 +127,7 @@ When a merchant has 11 or more customer segments:
 
 #### Flow automations
 
-![Customer segment picker with more than 10 segments inside the Flow app workflow automation builder](/images/foundations/patterns/pickers/sheet-with-customer-segments-11-or-more.png)
+![Customer segment picker with more than 10 segments inside the Flow app workflow automation builder](/images/patterns-legacy/pickers/sheet-with-customer-segments-11-or-more.png)
 
 Shopify Flow is an automation app that helps merchants build workflows to automate marketing campaigns and other common tasks. When presenting the segment picker for merchants to build a customer related workflow automation, the list of segments is displayed directly in the action builder using the same progressive disclosure points as the customer segment picking popover.
 
