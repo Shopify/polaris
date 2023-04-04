@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.9.0
+
+### Minor Changes
+
+- [#8414](https://github.com/Shopify/polaris/pull/8414) [`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Migrate `color` custom properties from Polaris `v10` to `v11`
+
+### Patch Changes
+
+- [#8843](https://github.com/Shopify/polaris/pull/8843) [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated `color` alias tokens to improve color contrast
+
 ## 6.8.1
 
 ### Patch Changes
