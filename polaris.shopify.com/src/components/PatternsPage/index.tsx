@@ -8,13 +8,11 @@ import styles from './PatternsPage.module.scss';
 import Preview from '../ThumbnailPreview';
 import {patterns} from '../../utils/various';
 import UpdateBanner from '../UpdateBanner';
+import {FoundationsProps} from '../FoundationsPage/FoundationsPage';
 
-const description =
-  'Preferred solutions to common merchant goals in the admin.';
-
-export const PatternsPage = () => (
+export const PatternsPage = ({title, description}: FoundationsProps) => (
   <>
-    <PageMeta title="Patterns" description={description} />
+    <PageMeta title={title} description={description} />
 
     <Page>
       <Stack gap={'8'}>
