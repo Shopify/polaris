@@ -7,6 +7,8 @@ import type {
   ActionListItemDescriptor,
   ActionListSection,
 } from '../../../../types';
+import {Button} from '../../../Button';
+import {Inline} from '../../../Inline';
 
 export interface SectionProps {
   /** Section of action items */
@@ -57,6 +59,12 @@ export function Section({
     },
   );
 
+  const titleActionMarkup = section.titleAction ? (
+    <Button onClick={section.titleAction.onAction} plain size="micro">
+      {section.titleAction.content}
+    </Button>
+  ) : null;
+
   const titleMarkup = section.title ? (
     <Box
       paddingBlockStart="4"
@@ -64,9 +72,12 @@ export function Section({
       paddingBlockEnd="2"
       paddingInlineEnd="4"
     >
-      <Text as="p" variant="headingXs">
-        {section.title}
-      </Text>
+      <Inline blockAlign="stretch" align="center" gap="4">
+        <Text as="p" variant="headingXs">
+          {section.title}
+        </Text>
+        {titleActionMarkup}
+      </Inline>
     </Box>
   ) : null;
 

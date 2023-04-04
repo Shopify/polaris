@@ -63,6 +63,15 @@ const transitionFilterStyles = {
   },
 };
 
+interface Section {
+  title: string;
+  titleAction: {
+    content: string;
+    onAction(): void;
+  };
+  filters: FilterInterface[];
+}
+
 export interface AlphaFiltersProps {
   /** Currently entered text in the query field */
   queryValue?: string;
@@ -72,6 +81,7 @@ export interface AlphaFiltersProps {
   focused?: boolean;
   /** Available filters added to the filter bar. Shortcut filters are pinned to the front of the bar. */
   filters: FilterInterface[];
+  sections?: Section[];
   /** Applied filters which are rendered as filter pills. The remove callback is called with the respective key. */
   appliedFilters?: AppliedFilterInterface[];
   /** Callback when the query field is changed. */
@@ -123,6 +133,7 @@ export function AlphaFilters({
   loading,
   disableFilters,
   mountedState,
+  sections,
 }: AlphaFiltersProps) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
@@ -177,6 +188,15 @@ export function AlphaFilters({
         }, 0);
       },
     }));
+
+  const additionalSections = sections?.map((section) => ({
+    title: section.title,
+    titleAction: section.titleAction,
+    items: section.filters.map((filter) => ({
+      content: filter.label,
+      onAction: () => {},
+    })),
+  }));
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
@@ -316,7 +336,11 @@ export function AlphaFilters({
         activator={addFilterActivator}
         onClose={togglePopoverActive}
       >
-        <ActionList actionRole="menuitem" items={additionalFilters} />
+        <ActionList
+          actionRole="menuitem"
+          items={additionalFilters}
+          sections={additionalSections}
+        />
       </Popover>
     </div>
   ) : null;

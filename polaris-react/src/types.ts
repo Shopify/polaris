@@ -207,6 +207,10 @@ export interface ActionListItemDescriptor
 export interface ActionListSection {
   /** Section title */
   title?: string;
+  titleAction?: {
+    content: string;
+    onAction(): void;
+  };
   /** Collection of action items for the list */
   items: readonly ActionListItemDescriptor[];
 }
