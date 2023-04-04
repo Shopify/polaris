@@ -2,7 +2,7 @@ import {LegacyCard, Tabs, TabProps} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function TabsWithBadgeExample() {
+function TabsWithActionsExample() {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
@@ -98,4 +98,4 @@ function TabsWithBadgeExample() {
   );
 }
 
-export default withPolarisExample(TabsWithBadgeExample);
+export default withPolarisExample(TabsWithActionsExample);
