@@ -28,14 +28,14 @@ description: Space is the distance between objects in your design. It should be 
 ---
 
 <div class="space-hero">
-  <img src="/images/foundations/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit">
+  <img src="/images/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit">
 </div>
 
 ---
 
 ## Spacing must...
 
-![Illustrations of blocks representing each principle](/images/foundations/design/space/principles@2x.png)
+![Illustrations of blocks representing each principle](/images/design/space/principles@2x.png)
 
 ### 1. Create visual groupings
 
@@ -58,7 +58,7 @@ Use Polaris space tokens in a way that is consistent with the rest of the experi
 All measurements used across the experience (space, width, height, etc) must reference Polaris space units to guarantee visual consistency and balance.
 
 <div class="punit-img">
-  <img src="/images/foundations/design/space/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit">
+  <img src="/images/design/space/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit">
 </div>
 
 ### Space scale
@@ -86,7 +86,7 @@ All measurements used across the experience (space, width, height, etc) must ref
 Polaris units are more dense at a small scale, and less so as dimensions increase.
 This is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different spaces.
 
-![Examples of different variations of spacing](/images/foundations/design/space/spacing-scale-examples@2x.png)
+![Examples of different variations of spacing](/images/design/space/spacing-scale-examples@2x.png)
 
 Repeating the same amount of spacing (left) and using more variation (right).
 
@@ -97,7 +97,7 @@ Repeating the same amount of spacing (left) and using more variation (right).
 The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
 
 <video width="100%" height="auto" controls autoplay muted loop>
-  <source src="/images/foundations/design/space/column.mp4" type="video/mp4">
+  <source src="/images/design/space/column.mp4" type="video/mp4">
 </video>
 
 <br/>
@@ -105,7 +105,7 @@ The column grid is meant to give teams agency for page layouts, while still prov
 ### Breakpoints
 
 <video width="100%" height="auto" controls autoplay muted loop>
-  <source src="/images/foundations/design/space/breakpoints.mp4" type="video/mp4">
+  <source src="/images/design/space/breakpoints.mp4" type="video/mp4">
 </video>
 
 The grid adapts to the viewport width. The amount of columns will change depending on how much space there is. This is a recommendation for how much should be displayed horizontally. Less columns means less content.
@@ -131,7 +131,7 @@ The grid is meant to serve as a point of reference for page level design and ali
 The perception of any given page goes beyond the individual elements presented, and the space between them. People’s perception is heavily influenced by their own expectations and motivations.
 When designing, it’s key to consider that people look for patterns, and will always perceive things in their simplest form. For instance, a bunch of similar items stacked on top of each other will likely read as a list.
 
-![Different types of list items, such as menus, popovers, and dropdowns](/images/foundations/design/space/spacing-principles@2x.png)
+![Different types of list items, such as menus, popovers, and dropdowns](/images/design/space/spacing-principles@2x.png)
 
 <br/>
 
@@ -141,7 +141,7 @@ People look for patterns instinctively, and they lean of visual cues like:
 
 Grouping things based on physical appearance (shape, color, size, orientation).
 
-![Index table](/images/foundations/design/space/spacing-similarity@2x.png)
+![Index table](/images/design/space/spacing-similarity@2x.png)
 
 <br/>
 
@@ -149,7 +149,7 @@ Grouping things based on physical appearance (shape, color, size, orientation).
 
 Grouping things based on distance between objects.
 
-![Customers and orders page](/images/foundations/design/space/spacing-proximity@2x.png)
+![Customers and orders page](/images/design/space/spacing-proximity@2x.png)
 
 <br/>
 
@@ -157,7 +157,7 @@ Grouping things based on distance between objects.
 
 Grouping things based on the way they are arranged.
 
-![Tag multiselect popover and media card](/images/foundations/design/space/spacing-continuity@2x.png)
+![Tag multiselect popover and media card](/images/design/space/spacing-continuity@2x.png)
 
 Shadows inside popovers act as visual cues to indicate additional content when scrolled (left). Cards placed horizontally in a media carousel communicates related topics (right).
 
@@ -167,7 +167,7 @@ Shadows inside popovers act as visual cues to indicate additional content when s
 
 Grouping things that are implicitly enclosed by a larger object.
 
-![Order details page](/images/foundations/design/space/spacing-closure@2x.png)
+![Order details page](/images/design/space/spacing-closure@2x.png)
 
 <br/>
 
@@ -176,7 +176,7 @@ Grouping things that are implicitly enclosed by a larger object.
 Grouping things based on how they move.
 
 <video width="100%" height="auto" controls autoplay muted loop>
-  <source src="/images/foundations/design/space/common-fate.mp4" type="video/mp4">
+  <source src="/images/design/space/common-fate.mp4" type="video/mp4">
 </video>
 
 <br/>
@@ -185,7 +185,7 @@ Grouping things based on how they move.
 
 Grouping things that are explicitly enclosed by a larger object.
 
-![Customer details card](/images/foundations/design/space/spacing-common-region@2x.png)
+![Customer details card](/images/design/space/spacing-common-region@2x.png)
 
 Because people perceive these instinctively, we can use them as tools to create hierarchy, visual rhythm, and guide the user's eye to what’s important.
 
@@ -202,19 +202,19 @@ Like in music, different types of rhythm serve a different purpose, in design th
 
 <br/>
 
-![Example of data table](/images/foundations/design/space/spacing-regular-rhythm@2x.png)
+![Example of data table](/images/design/space/spacing-regular-rhythm@2x.png)
 
 **Regular rhythm** is predictable, which makes it a useful way to organize large sets of objects that have the same level of importance.
 
 <br/>
 
-![Location profile page](/images/foundations/design/space/spacing-flowing-rhythm@2x.png)
+![Location profile page](/images/design/space/spacing-flowing-rhythm@2x.png)
 
 **Flowing rhythm** is organic, and it can bring a high level of scannability to something that would be otherwise a random collection of objects.
 
 <br/>
 
-![Home page with progressive disclosure card](/images/foundations/design/space/spacing-progressive-rhythm@2x.png)
+![Home page with progressive disclosure card](/images/design/space/spacing-progressive-rhythm@2x.png)
 
 **Progressive rhythm** is a gradual progression, and is very effective in giving the eye a path to follow, along the progression. This is great to establish hierarchy and aid the user through a series of steps.
 
@@ -228,7 +228,7 @@ Rhythm plays another job in designs, it’s the norm that enables the introducti
 
 The overall perception people get from the space between information as a whole is density. It can range from tight to loose, and there is a very different purpose for each end of the spectrum.
 
-![Examples showign tigher versus looser spacing](/images/foundations/design/space/spacing-density@2x.png)
+![Examples showign tigher versus looser spacing](/images/design/space/spacing-density@2x.png)
 
 Tighter spacing (left) makes it easier to scan and comprehend large sets of data, like lists and tables. It also naturally enables one to fit more elements in a given page.
 Looser space (right) can help attract the user attention and make a layout feel more user-friendly.
@@ -241,7 +241,7 @@ Looser space (right) can help attract the user attention and make a layout feel 
 
 Contrast is meant to create sticking points that help make content easy to scan, highlight important pieces of information, or just to give viewers a moment to breathe.
 
-![Marketing page and empty state](/images/foundations/design/space/spacing-contrast@2x.png)
+![Marketing page and empty state](/images/design/space/spacing-contrast@2x.png)
 
 **Highlights (left)**: Callout cards are used to encourage merchants to take an action related to a new feature or opportunity.
 
@@ -249,7 +249,7 @@ Contrast is meant to create sticking points that help make content easy to scan,
 
 Contrast can play a role at very different levels, but it must be used sparingly, otherwise its effect gets diluted.
 
-![Examples on the analytics page to show contrast](/images/foundations/design/space/spacing-analytics@2x.png)
+![Examples on the analytics page to show contrast](/images/design/space/spacing-analytics@2x.png)
 
 Home feed overview (left) and location profile analytics (right).
 
@@ -269,11 +269,11 @@ That means designers must make optical corrections, using Polaris units until th
 
 Two things can have the same size, but feel unbalanced.
 
-![Before and after comparison of optical adjustment applied to a button](/images/foundations/design/space/spacing-weight-buttons@2x.png)
+![Before and after comparison of optical adjustment applied to a button](/images/design/space/spacing-weight-buttons@2x.png)
 
 Without optical adjustment, the disclosure icon appears too far from the right edge of the button. After optical correction, the perceived spacing is more balanced.
 
-![Before and after comparison of optical adjustment applied to an icon](/images/foundations/design/space/spacing-weight-icon@2x.png)
+![Before and after comparison of optical adjustment applied to an icon](/images/design/space/spacing-weight-icon@2x.png)
 
 The square icon seems larger compared to the circle icon without optical adjustment, however, they in fact have the same size and diameter. The shapes look visually closer to each other after decreasing the size of the square.
 
@@ -283,4 +283,4 @@ The square icon seems larger compared to the circle icon without optical adjustm
 
 Two things can have the same colour, but feel unbalanced.
 
-![Before and after comparison of applying the same colour versus slightly different colours to a banner component](/images/foundations/design/space/spacing-colour@2x.png)
+![Before and after comparison of applying the same colour versus slightly different colours to a banner component](/images/design/space/spacing-colour@2x.png)

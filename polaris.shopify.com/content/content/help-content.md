@@ -48,11 +48,11 @@ The following is an example of help content that was originally a card descripti
 
 #### Before
 
-![Before: help text as a card description](/images/foundations/patterns/help-content/before.png)
+![Before: help text as a card description](/images/content/help-content/before.png)
 
 #### After
 
-![After: help text close to the upload action](/images/foundations/patterns/help-content/after.png)
+![After: help text close to the upload action](/images/content/help-content/after.png)
 
 ---
 
@@ -81,7 +81,7 @@ The Help Center is a rich resource, but for a merchant it’s not always a conve
 ​
 “Learn more” badges show an information icon that takes you to the Help Center. These are different from tooltips. On large screens, they expand on hover to reveal a “Learn more” link.
 
-![“Learn more” badge interaction pattern](/images/foundations/patterns/help-content/learn-more-badges.png)
+![“Learn more” badge interaction pattern](/images/content/help-content/learn-more-badges.png)
 
 Use “learn more” badges:
 ​
