@@ -18,7 +18,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
   }
 
   return {
-    postcssPlugin: 'scss-remove-unused-imports',
+    postcssPlugin: 'scss-remove-unused-at-use',
     Once(root) {
       root.walkAtRules('use', (atRule) => {
         const atUseParams = atRule.params.replace(/(\s|\n|\r\n?)+/g, ' ');

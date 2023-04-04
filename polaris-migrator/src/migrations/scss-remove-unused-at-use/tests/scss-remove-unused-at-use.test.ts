@@ -1,11 +1,11 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'scss-remove-unused-import';
+const migration = 'scss-remove-unused-at-use';
 const fixtures = [
-  'scss-remove-unused-import',
-  'with-used-import',
-  'with-import-alias',
-  'with-used-import-alias',
+  'scss-remove-unused-at-use',
+  'with-used-at-use',
+  'with-at-use-namespace',
+  'with-used-at-use-namespace',
   'with-options',
   'with-configuration',
 ];
