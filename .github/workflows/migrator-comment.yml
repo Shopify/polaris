@@ -29,9 +29,8 @@ jobs:
 
       - name: Check for generic migrator comment in diff
         run: |
-          # The "|| true" is used so that matches are saved but it always exit with status 0.
-          # Without this, grep will exit with a status of 1 when no matches are found, ending the script.
-          files=$(git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | grep "\.scss$" || true)
+          commits="origin/${{ github.base_ref }}...origin/${{ github.head_ref }}"
+          files=$(git diff --name-only --diff-filter=d "$commits" -- "*.scss")
 
           if [ -n "$files" ]; then
             echo "SCSS files where modified."
@@ -41,11 +40,12 @@ jobs:
             exit 0
           fi
 
-          filesWithComment=$(git diff --unified=0 origin/${{ github.base_ref }}...origin/${{ github.head_ref }} -- "$files" | grep "^\+.*$COMMENT")
+          filesWithComment=$(git diff --unified=0 --diff-filter=d "$commits" -- $(echo $files) | grep "^\+.*$COMMENT" || true)
 
           if [ -n "$filesWithComment" ]; then
             echo "A migrator comment '$COMMENT' was added to a SCSS file in this PR."
-            echo "Please replace this with a disable description."
+            echo "Please provide a description for any Stylelint disable comments."
+            echo "If this is not applicable, you can add the '🤖Skip Comment Check' label to this PR."
             exit 1
           else
             echo "All good, no migrator comments were added."

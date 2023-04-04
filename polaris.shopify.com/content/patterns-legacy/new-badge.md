@@ -3,9 +3,6 @@ title: New badge
 description: The New badge can be used to inform merchants about the release of a feature that creates new value. It should be used sparingly and for a short time frame.
 icon: StarFilledMinor
 noIndex: true
-status:
-  value: Legacy
-  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - new badge
   - new features
@@ -38,7 +35,7 @@ Consider how the admin would look if it was cluttered with New badges or feature
 
 ### When not to use the New badge
 
-- Should never be used in the primary [navigation](/components/navigation) menu of the Shopify admin
+- Should never be used in the primary [navigation](/components/navigation/navigation) menu of the Shopify admin
 
 ## How long to use the New badge
 
