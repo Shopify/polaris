@@ -8,7 +8,7 @@ keywords:
 icon: SoundMajor
 ---
 
-![Visual representation of sound waves as concentric circles](/images/foundations/design/sounds/sound-intro@2x.png)
+![Visual representation of sound waves as concentric circles](/images/design/sounds/sound-intro@2x.png)
 
 ---
 

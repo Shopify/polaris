@@ -40,7 +40,7 @@ Use when:
 
 - An error applies to a text field and feedback can be provided while merchants are typing
 
-![Text field validation](/images/foundations/patterns/error-messages/text-field-validation-error@2x.png)
+![Text field validation](/images/content/error-messages/text-field-validation-error@2x.png)
 
 ### [Settings warning](#settings-warning)
 
@@ -48,7 +48,7 @@ Use when:
 
 - The form input is valid, but you want to warn merchants of a consequence they might not expect
 
-![Settings warning error](/images/foundations/patterns/error-messages/settings-warning@2x.png)
+![Settings warning error](/images/content/error-messages/settings-warning@2x.png)
 
 ### [Page-level banner: critical or warning](#page-level-banners)
 
@@ -59,9 +59,9 @@ Use when:
 - Multiple validation errors on the page need to be summarized
 - The error was delayed and it’s okay to inform merchants of the problem when they return to the page
 
-![Yellow page level banner](/images/foundations/patterns/error-messages/page-level-warning-banner@2x.png)
+![Yellow page level banner](/images/content/error-messages/page-level-warning-banner@2x.png)
 
-![Red page level banner](/images/foundations/patterns/error-messages/page-level-critical-banner@2x.png)
+![Red page level banner](/images/content/error-messages/page-level-critical-banner@2x.png)
 
 ### [Banner in a card or modal: critical or warning](#banners-in-cards-modals)
 
@@ -70,8 +70,8 @@ Use when:
 - An error applies to a single card within the page, a single section within a card, or a modal
 - You need to direct merchants to a page with multiple sections and you want to visually call out the section with the error
 
-![Yellow section level banner](/images/foundations/patterns/error-messages/section-level-warning@2x.png)
-![Yellow field level banner](/images/foundations/patterns/error-messages/field-level-warning-02@2x.png)
+![Yellow section level banner](/images/content/error-messages/section-level-warning@2x.png)
+![Yellow field level banner](/images/content/error-messages/field-level-warning-02@2x.png)
 
 ### [Exception list: critical or warning](#exception-list-errors)
 
@@ -79,9 +79,9 @@ Use when:
 
 - A message placed within or next to a component can help merchants make better decisions about routine tasks
 
-![Warning exception list error](/images/foundations/patterns/error-messages/exception-list-warning@2x.png)
+![Warning exception list error](/images/content/error-messages/exception-list-warning@2x.png)
 
-![Critical exception list error](/images/foundations/patterns/error-messages/high-risk-fraud@2x.png)
+![Critical exception list error](/images/content/error-messages/high-risk-fraud@2x.png)
 
 ### [Home notification: critical or warning](#home-notifications)
 
@@ -92,9 +92,9 @@ Use when:
 - A high-priority task must be completed immediately to continue using Shopify or avoid losing money
 - A feature doesn’t have a dedicated details page
 
-![Yellow home notification](/images/foundations/patterns/error-messages/home-notification-warning@2x.png)
+![Yellow home notification](/images/content/error-messages/home-notification-warning@2x.png)
 
-![Red home notification](/images/foundations/patterns/error-messages/home-notification-critical@2x.png)
+![Red home notification](/images/content/error-messages/home-notification-critical@2x.png)
 
 ### [Admin unavailable](#admin-unavailable-errors)
 
@@ -103,9 +103,9 @@ Use when:
 - A server error is preventing an entire page from being displayed, like with 400 or 500-series server errors
 - Account permissions are preventing someone from accessing Shopify
 
-![Admin page not found error](/images/foundations/patterns/error-messages/page-not-found@2x.png)
+![Admin page not found error](/images/content/error-messages/page-not-found@2x.png)
 
-![Admin page load error](/images/foundations/patterns/error-messages/admin-error@2x.png)
+![Admin page load error](/images/content/error-messages/admin-error@2x.png)
 
 ---
 
@@ -132,11 +132,11 @@ Examples of critical message types:
 
 #### Do
 
-![Red banner with high fraud risk message](/images/foundations/patterns/error-messages/red-banner@2x.png)
+![Red banner with high fraud risk message](/images/content/error-messages/red-banner@2x.png)
 
 #### Don’t
 
-![Yellow banner with high fraud risk message](/images/foundations/patterns/error-messages/yellow-banner@2x.png)
+![Yellow banner with high fraud risk message](/images/content/error-messages/yellow-banner@2x.png)
 
 <!-- end -->
 
@@ -146,11 +146,11 @@ The one exception to using red is in form validation errors because this is a st
 
 #### Do
 
-![Form validation with red banner](/images/foundations/patterns/error-messages/validation-banner-red@2x.png)
+![Form validation with red banner](/images/content/error-messages/validation-banner-red@2x.png)
 
 #### Don’t
 
-![Form validation with yellow banner](/images/foundations/patterns/error-messages/validation-banner-yellow@2x.png)
+![Form validation with yellow banner](/images/content/error-messages/validation-banner-yellow@2x.png)
 
 <!-- end -->
 
@@ -174,11 +174,11 @@ Examples of warning message types:
 
 #### Do
 
-![Yellow banner with warning message](/images/foundations/patterns/error-messages/yellow-do@2x.png)
+![Yellow banner with warning message](/images/content/error-messages/yellow-do@2x.png)
 
 #### Don’t
 
-![Red banner with warning message](/images/foundations/patterns/error-messages/yellow-dont@2x.png)
+![Red banner with warning message](/images/content/error-messages/yellow-dont@2x.png)
 
 <!-- end -->
 
@@ -194,7 +194,7 @@ Although error toast is still available, we discourage its use. Toast messages a
 
 #### Don’t
 
-![Toast error message](/images/foundations/patterns/error-messages/dont-toast-error@2x.png)
+![Toast error message](/images/content/error-messages/dont-toast-error@2x.png)
 
 ### Don’t use modals for errors
 
@@ -205,7 +205,7 @@ Modals block merchants until a decision is made, which is likely to make merchan
 
 #### Don’t
 
-![Modal error message](/images/foundations/patterns/error-messages/dont-modals-for-errors@2x.png)
+![Modal error message](/images/content/error-messages/dont-modals-for-errors@2x.png)
 
 ### Avoid using [home notifications](#home-notifications) for errors
 
@@ -219,7 +219,7 @@ One exception is errors for features that don‘t have a dedicated details page.
 
 #### Don’t
 
-![Home notification error message](/images/foundations/patterns/error-messages/dont-home-notification@2x.png)
+![Home notification error message](/images/content/error-messages/dont-home-notification@2x.png)
 
 <!-- end -->
 
@@ -252,7 +252,7 @@ Don’t use when:
 - Avoid using the word "invalid" to define an error. When appropriate, use "not valid" instead.
 - Since the message is directly below the text field, the copy only needs to explain why the error happened. Optionally, the message can clarify what to do next or offer a one-click fix.
 
-![Text field validation error](/images/foundations/patterns/error-messages/text-field-validation-error-no-cursor@2x.png)
+![Text field validation error](/images/content/error-messages/text-field-validation-error-no-cursor@2x.png)
 
 **Usage**
 
@@ -260,23 +260,23 @@ Do an initial validation check as soon as merchants finish typing in the field.
 
 Merchants can be considered to be finished typing only when keyboard focus moves away from the field and there is at least one character in the field. This helps avoid marking the field as not valid before merchants are really done typing.
 
-![Initial validation check with purple border](/images/foundations/patterns/error-messages/text-field-validation-purple-incorrect-input@2x.png)
+![Initial validation check with purple border](/images/content/error-messages/text-field-validation-purple-incorrect-input@2x.png)
 
 If the validation check fails, show an error message below the field.
 
-![Text field turns red](/images/foundations/patterns/error-messages/text-field-validation-error-no-cursor@2x.png)
+![Text field turns red](/images/content/error-messages/text-field-validation-error-no-cursor@2x.png)
 
 Once a field has an error, complete validation checks after each keystroke.
 
-![Text field validation with cursor by incorrect semi colon](/images/foundations/patterns/error-messages/text-field-validation-cursor@2x.png)
+![Text field validation with cursor by incorrect semi colon](/images/content/error-messages/text-field-validation-cursor@2x.png)
 
 Remove the error message as soon as the input becomes valid so merchants can immediately tell they fixed the issue.
 
-![Text field validation with purple border](/images/foundations/patterns/error-messages/text-field-validation-purple-border-cursor@2x.png)
+![Text field validation with purple border](/images/content/error-messages/text-field-validation-purple-border-cursor@2x.png)
 
 If the validation process is less than a second but not instant, show a spinner on the field to indicate validation progress.
 
-![Text field validation in loading state with spinner](/images/foundations/patterns/error-messages/text-field-validation-loading@2x.png)
+![Text field validation in loading state with spinner](/images/content/error-messages/text-field-validation-loading@2x.png)
 
 ---
 
@@ -320,7 +320,7 @@ Individual field error messages:
 
 - See content guidelines for [validation while typing](#validate-while-typing)
 
-![Red form validation banner](/images/foundations/patterns/error-messages/validation-banner-red@2x.png)
+![Red form validation banner](/images/content/error-messages/validation-banner-red@2x.png)
 
 Rather than pointing out that there are {x} number of errors, be more descriptive. Explain that in order to save or continue, {x} number of fields need to be changed. For the bullet point instructions, see if you can word them to be more actionable, for example, “Add a discount code,“ instead of “Discount can’t be blank.“
 
@@ -328,11 +328,11 @@ Rather than pointing out that there are {x} number of errors, be more descriptiv
 
 #### Do
 
-![Instructional validation banner](/images/foundations/patterns/error-messages/validation-banner-content-do@2x.png)
+![Instructional validation banner](/images/content/error-messages/validation-banner-content-do@2x.png)
 
 #### Don’t
 
-![Validation banner that only points out that there is an error](/images/foundations/patterns/error-messages/validation-banner-content-dont@2x.png)
+![Validation banner that only points out that there is an error](/images/content/error-messages/validation-banner-content-dont@2x.png)
 
 <!-- end -->
 
@@ -340,7 +340,7 @@ Rather than pointing out that there are {x} number of errors, be more descriptiv
 
 Always indicate submission progress. If the fields aren't valid, don’t clear or alter them on behalf of merchants during validation.
 
-![Spinner displaying on save](/images/foundations/patterns/error-messages/submission-progress@2x.png)
+![Spinner displaying on save](/images/content/error-messages/submission-progress@2x.png)
 
 If the form submission has a single error:
 
@@ -348,7 +348,7 @@ If the form submission has a single error:
 - Focus the field
 - Show an error message below the field
 
-![Validation error for a price entry field](/images/foundations/patterns/error-messages/input-validation@2x.png)
+![Validation error for a price entry field](/images/content/error-messages/input-validation@2x.png)
 
 If the form submission has multiple errors:
 
@@ -356,7 +356,7 @@ If the form submission has multiple errors:
 - Use a banner to display a summary of all the errors
 - Show an error message below each field that is not valid so merchants can scroll through and make corrections
 
-![Red form validation banner](/images/foundations/patterns/error-messages/validation-banner-red@2x.png)
+![Red form validation banner](/images/content/error-messages/validation-banner-red@2x.png)
 
 ---
 
@@ -386,7 +386,7 @@ Tip: Explore ways to prevent the warning message from showing at all. Look for o
   - Start by noting the action, then explain the consequence, “Changing {x} will affect {y}”
 - If available, link to a resource where merchants can learn more
 
-![In line warning banner below a drop down](/images/foundations/patterns/error-messages/settings-warning@2x.png)
+![In line warning banner below a drop down](/images/content/error-messages/settings-warning@2x.png)
 
 ---
 
@@ -418,7 +418,7 @@ Page-level banner errors should explain:
 
 #### Do
 
-![Error message with arrows pointing at different parts of the message](/images/foundations/patterns/error-messages/banner-breakdown@2x.png)
+![Error message with arrows pointing at different parts of the message](/images/content/error-messages/banner-breakdown@2x.png)
 
 #### Don’t
 
@@ -450,7 +450,7 @@ Calls to action should:
 - Open a dedicated error-correction view for more complex problems such as reviewing a risky order or editing an unverified customer address.
 - Provide a link to documentation for information that may be valuable but can’t fit in a brief error message.
 
-![Page level warning banner](/images/foundations/patterns/error-messages/page-level-warning-banner@2x.png)
+![Page level warning banner](/images/content/error-messages/page-level-warning-banner@2x.png)
 
 ### Banners in cards and modals
 
@@ -482,7 +482,7 @@ Don’t use when:
 - Try to add a next step, whether in a button or link
 - Use when there is more than one call to action
 
-## ![Warning banner at the top of a card below the card title](/images/foundations/patterns/error-messages/section-level-warning@2x.png)
+## ![Warning banner at the top of a card below the card title](/images/content/error-messages/section-level-warning@2x.png)
 
 ## Exception lists
 
@@ -518,9 +518,9 @@ Content should:
 - Links are optional but not common because the list item is actionable
 - Be concise
 
-![Exception list warning](/images/foundations/patterns/error-messages/exception-list-warning@2x.png)
+![Exception list warning](/images/content/error-messages/exception-list-warning@2x.png)
 
-![Exception list error](/images/foundations/patterns/error-messages/high-risk-fraud@2x.png)
+![Exception list error](/images/content/error-messages/high-risk-fraud@2x.png)
 
 ---
 
@@ -547,7 +547,7 @@ Don’t use for:
 - Error messages that should be displayed in context
 - Task-related errors like a problem with saving a page
 
-![Structure of home notification with a header, body content, and button](/images/foundations/patterns/error-messages/home-notification-anatomy@2x.png)
+![Structure of home notification with a header, body content, and button](/images/content/error-messages/home-notification-anatomy@2x.png)
 
 ### Warning home notifications
 
@@ -561,11 +561,11 @@ Warning home notifications are pre-emptive. They let merchants know that their f
 
 #### Do
 
-![Warning home notification with credit card expiry message](/images/foundations/patterns/error-messages/home-notification-warning@2x.png)
+![Warning home notification with credit card expiry message](/images/content/error-messages/home-notification-warning@2x.png)
 
 #### Don’t
 
-![Warning home notification with chargeback message](/images/foundations/patterns/error-messages/dont-home-notification@2x.png)
+![Warning home notification with chargeback message](/images/content/error-messages/dont-home-notification@2x.png)
 
 <!-- end -->
 
@@ -591,11 +591,11 @@ Critical home notifications can be used for these message types:
 
 #### Do
 
-![Critical home notification with account on hold message](/images/foundations/patterns/error-messages/home-notification-critical@2x.png)
+![Critical home notification with account on hold message](/images/content/error-messages/home-notification-critical@2x.png)
 
 #### Don’t
 
-![Critical home notification with out of stock message](/images/foundations/patterns/error-messages/dont-home-notification-02@2x.png)
+![Critical home notification with out of stock message](/images/content/error-messages/dont-home-notification-02@2x.png)
 
 <!-- end -->
 
@@ -617,11 +617,11 @@ Don’t use when:
 
 #### Do
 
-![Page not found error with internet connection message](/images/foundations/patterns/error-messages/page-not-found-02@2x.png)
+![Page not found error with internet connection message](/images/content/error-messages/page-not-found-02@2x.png)
 
 #### Don’t
 
-![Page not found error with oops, something went wrong message](/images/foundations/patterns/error-messages/dont-page-not-found@2x.png)
+![Page not found error with oops, something went wrong message](/images/content/error-messages/dont-page-not-found@2x.png)
 
 <!-- end -->
 
@@ -631,11 +631,11 @@ Don’t use internal language in error messages and avoid using question formats
 
 #### Do
 
-![Problem loading page error with troubleshooting tips](/images/foundations/patterns/error-messages/admin-error@2x.png)
+![Problem loading page error with troubleshooting tips](/images/content/error-messages/admin-error@2x.png)
 
 #### Don’t
 
-![Problem loading page error with content that talks about operational engineers](/images/foundations/patterns/error-messages/dont-admin-error@2x.png)
+![Problem loading page error with content that talks about operational engineers](/images/content/error-messages/dont-admin-error@2x.png)
 
 <!-- end -->
 
@@ -651,7 +651,7 @@ Headings should:
 - Body should help merchants troubleshoot the problem
 - Call to action should provide the most probable fix, like reloading the page, or going to the previous page or Shopify Home
 
-![Page not found error](/images/foundations/patterns/error-messages/page-not-found@2x.png)
+![Page not found error](/images/content/error-messages/page-not-found@2x.png)
 
 ---
 
@@ -673,8 +673,8 @@ Don’t use when:
 
 #### Do
 
-![Carrier may not be able to pick up package error message](/images/foundations/patterns/error-messages/warning-no-solution@2x.png)
-![Carrier may not be able to pick up package error message](/images/foundations/patterns/error-messages/warning-no-solution-2@2x.png)
+![Carrier may not be able to pick up package error message](/images/content/error-messages/warning-no-solution@2x.png)
+![Carrier may not be able to pick up package error message](/images/content/error-messages/warning-no-solution-2@2x.png)
 
 #### Don’t
 

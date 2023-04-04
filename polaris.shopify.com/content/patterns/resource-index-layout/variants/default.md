@@ -6,7 +6,7 @@ hideFromNav: true
 
 ## How it helps merchants
 
-![Products index page](/images/patterns/resource-index-cover-image.png)
+![Products index page](/images/patterns/resource-index-layout/resource-index-cover-image.png)
 
 1. The resource index layout is based on a single column to create a clear top-to-bottom hierarchy of tasks and to provide horizontal space for resource data.
 2. At the top of the page, merchants find the page title and actions that affect the index as a whole.
@@ -56,8 +56,8 @@ This pattern uses the [`Layout`](/components/layout-and-structure/layout), [`Pag
 
 ### Useful to know
 
-- <span>Use the resource type as page title.</span> ![“Orders” and “Gift cards” pages](/images/patterns/resource-index-usage-1.png)
-- <span>Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.</span> ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-usage-2.png)
-- <span>Set the page width to normal if the index doesn’t need full width.</span> ![Index page with margins on either side of the main content](/images/patterns/resource-index-usage-3.png)
+- <span>Use the resource type as page title.</span> ![“Orders” and “Gift cards” pages](/images/patterns/resource-index-layout/resource-index-usage-1.png)
+- <span>Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.</span> ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-layout/resource-index-usage-2.png)
+- <span>Set the page width to normal if the index doesn’t need full width.</span> ![Index page with margins on either side of the main content](/images/patterns/resource-index-layout/resource-index-usage-3.png)
 
 </div>
