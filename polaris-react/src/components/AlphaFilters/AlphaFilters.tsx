@@ -271,12 +271,13 @@ export function AlphaFilters({
     </div>
   );
 
-  const mountedStateStyles = mountedState
-    ? {
-        ...defaultFilterStyles,
-        ...transitionFilterStyles[mountedState],
-      }
-    : undefined;
+  const mountedStateStyles =
+    mountedState && !hideQueryField
+      ? {
+          ...defaultFilterStyles,
+          ...transitionFilterStyles[mountedState],
+        }
+      : undefined;
 
   const pinnedFiltersMarkup = pinnedFilters.map(
     ({key: filterKey, ...pinnedFilter}) => {
@@ -359,7 +360,16 @@ export function AlphaFilters({
         </div>
         {hideQueryField ? (
           <Box paddingInlineEnd="2" paddingBlockStart="2">
-            <Inline>{additionalContent}</Inline>
+            <Inline
+              align="start"
+              blockAlign="center"
+              gap={{
+                xs: '4',
+                md: '3',
+              }}
+            >
+              {additionalContent}
+            </Inline>
           </Box>
         ) : null}
       </div>

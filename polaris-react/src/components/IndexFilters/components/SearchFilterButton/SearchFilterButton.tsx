@@ -14,6 +14,7 @@ export interface SearchFilterButtonProps {
   disabled?: boolean;
   tooltipContent: string;
   hideFilters?: boolean;
+  hideQueryField?: boolean;
   style: CSSProperties;
 }
 
@@ -24,6 +25,7 @@ export function SearchFilterButton({
   tooltipContent,
   style,
   hideFilters,
+  hideQueryField,
 }: SearchFilterButtonProps) {
   const activator = (
     <div style={style}>
@@ -33,7 +35,7 @@ export function SearchFilterButton({
         disabled={disabled}
       >
         <Inline gap="0">
-          <Icon source={SearchMinor} color="base" />
+          {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
           {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
         </Inline>
       </FilterButton>
