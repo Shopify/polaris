@@ -151,23 +151,28 @@ export function MediaCard({
     size === 'small' && styles.sizeSmall,
   );
 
+  const popoverOrDismissMarkup =
+    popoverActionsMarkup || dismissButtonMarkup ? (
+      <Box
+        position="absolute"
+        insetBlockStart="4"
+        insetInlineEnd="5"
+        zIndex="var(--p-z-index-2)"
+      >
+        <Inline gap="1">
+          {popoverActionsMarkup}
+          {dismissButtonMarkup}
+        </Inline>
+      </Box>
+    ) : null;
+
   return (
     <LegacyCard>
       <div className={mediaCardClassName}>
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
           <LegacyCard.Section>
-            <Box
-              position="absolute"
-              insetBlockStart="4"
-              insetInlineEnd="5"
-              zIndex="var(--p-z-index-2)"
-            >
-              <Inline gap="1">
-                {popoverActionsMarkup}
-                {dismissButtonMarkup}
-              </Inline>
-            </Box>
+            {popoverOrDismissMarkup}
             <LegacyStack vertical spacing="tight">
               {headerMarkup}
               <p className={styles.Description}>{description}</p>
