@@ -135,7 +135,9 @@ describe('<MediaCard>', () => {
   });
 
   it('renders a dismiss button when onDismiss is passed', () => {
-    const videoCard = mountWithApp(<MediaCard {...mockProps} onDismiss={() => {}} />);
+    const videoCard = mountWithApp(
+      <MediaCard {...mockProps} onDismiss={() => {}} />,
+    );
 
     expect(videoCard).toContainReactComponent(Button, {
       accessibilityLabel: 'Dismiss',
