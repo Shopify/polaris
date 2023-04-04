@@ -710,7 +710,7 @@ npx @shopify/polaris-migrator react-rename-component-prop <path> --component=MyC
 
 <br />
 
-#### `scss-remove-unused-import`
+#### `scss-remove-unused-at-use`
 
 A generic codemod to remove unused `@use` imports in SCSS files.
 
@@ -726,7 +726,7 @@ A generic codemod to remove unused `@use` imports in SCSS files.
 <br />
 
 ```sh
-npx @shopify/polaris-migrator scss-remove-unused-import <path> --url='import/url'
+npx @shopify/polaris-migrator scss-remove-unused-at-use <path> --url='import/url'
 ```
 
 <br />

@@ -33,7 +33,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         }
 
         // const namespace = atUseParams.match(/as\s*((?:[^\s;])+)/)?.[1];
-        const atUseURLNamespace = atUseURL.split('/').at(-1);
+        const atUseURLNamespace = atUseURL.split('/').pop();
         const atUseNamespace = atUseAsNamespace || atUseURLNamespace;
 
         // Comment if the namespace is using an alias
