@@ -31,10 +31,13 @@
 }
 
 .FiltersWrapper {
-  background: var(--p-surface);
   border-bottom: var(--p-border-divider);
   height: 53px;
   overflow: hidden;
+
+  @media #{$p-breakpoints-sm-down} {
+    background: var(--p-surface);
+  }
 
   @media #{$p-breakpoints-md-up} {
     height: auto;
