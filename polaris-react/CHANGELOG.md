@@ -1,5 +1,20 @@
 # Changelog
 
+## 10.41.0
+
+### Minor Changes
+
+- [#8414](https://github.com/Shopify/polaris/pull/8414) [`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Migrate `color` custom properties from Polaris `v10` to `v11`
+
+### Patch Changes
+
+- [#8804](https://github.com/Shopify/polaris/pull/8804) [`7c965c632`](https://github.com/Shopify/polaris/commit/7c965c6323e8fd403216a6c762a767330efa8690) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed a few visual bugs in the `IndexFilters` component including preserving border radius when removing the search field and better alignment of children when removing the search field
+
+* [#8800](https://github.com/Shopify/polaris/pull/8800) [`db26d5dc7`](https://github.com/Shopify/polaris/commit/db26d5dc71778eb5b5cea75d4bbd54a187ac7dc9) Thanks [@samrose3](https://github.com/samrose3)! - Fixed scrollbar container displaying incorrectly when resizing Index Table
+
+* Updated dependencies [[`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5), [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c)]:
+  - @shopify/polaris-tokens@6.9.0
+
 ## 10.40.0
 
 ### Minor Changes
