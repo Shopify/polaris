@@ -8,5 +8,3 @@ status:
   value: New
   message: ''
 ---
-
-![Design system building blocks, with pattern block highlighted.](/images/foundations/patterns/patterns@2x.png)
