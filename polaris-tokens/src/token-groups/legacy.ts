@@ -21,26 +21,26 @@ export const legacy = {
   },
   'banner-border-default': {
     value:
-      'inset 0 1px 0 0 var(--p-color-border-strong), inset 0 0 0 1px var(--p-color-border-strong)',
+      'inset 0 1px 0 0 var(--p-border-neutral-subdued), inset 0 0 0 1px var(--p-border-neutral-subdued)',
   },
   'banner-border-success': {
     value:
-      'inset 0 1px 0 0 var(--p-color-border-success-subdued), inset 0 0 0 1px var(--p-color-border-success-subdued)',
+      'inset 0 1px 0 0 var(--p-border-success-subdued), inset 0 0 0 1px var(--p-border-success-subdued)',
   },
   'banner-border-highlight': {
     value:
-      'inset 0 1px 0 0 var(--p-color-border-info-subdued), inset 0 0 0 1px var(--p-color-border-info-subdued)',
+      'inset 0 1px 0 0 var(--p-border-highlight-subdued), inset 0 0 0 1px var(--p-border-highlight-subdued)',
   },
   'banner-border-warning': {
     value:
-      'inset 0 1px 0 0 var(--p-color-border-caution-subdued), inset 0 0 0 1px var(--p-color-border-caution-subdued)',
+      'inset 0 1px 0 0 var(--p-border-warning-subdued), inset 0 0 0 1px var(--p-border-warning-subdued)',
   },
   'banner-border-critical': {
     value:
-      'inset 0 1px 0 0 var(--p-color-border-critical-subdued), inset 0 0 0 1px var(--p-color-border-critical-subdued)',
+      'inset 0 1px 0 0 var(--p-border-critical-subdued), inset 0 0 0 1px var(--p-border-critical-subdued)',
   },
   'thin-border-subdued': {
-    value: '1px solid var(--p-color-border-subdued)',
+    value: '1px solid var(--p-border-subdued)',
   },
   'text-field-spinner-offset': {
     value: '2px',
