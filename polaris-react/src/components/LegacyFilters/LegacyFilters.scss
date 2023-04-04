@@ -80,7 +80,7 @@ $list-filters-footer-height: 70px;
   width: 100%;
   margin: 0;
   padding: var(--p-space-4) var(--p-space-5);
-  color: var(--p-text);
+  color: var(--p-color-text);
   border-radius: var(--p-border-radius-1);
   background: none;
   border: none;
@@ -94,7 +94,7 @@ $list-filters-footer-height: 70px;
 
   &:hover {
     cursor: pointer;
-    background-color: var(--p-surface-hovered);
+    background-color: var(--p-color-bg-hover);
     outline: var(--p-border-width-1) solid transparent;
   }
 
@@ -133,7 +133,7 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-4);
     width: calc(100% - var(--p-space-8));
     height: var(--p-space-025);
-    background-color: var(--p-surface-subdued);
+    background-color: var(--p-color-bg-subdued);
     display: block;
   }
 
@@ -154,7 +154,7 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-4);
     width: calc(100% - var(--p-space-8));
     height: var(--p-space-025);
-    background-color: var(--p-surface-subdued);
+    background-color: var(--p-color-bg-subdued);
     display: block;
   }
 
@@ -177,7 +177,7 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-4);
     width: calc(100% - var(--p-space-8));
     height: var(--p-space-025);
-    background-color: var(--p-surface-subdued);
+    background-color: var(--p-color-bg-subdued);
     display: block;
   }
 

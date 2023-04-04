@@ -6,7 +6,7 @@
   border-bottom: var(--p-border-divider);
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
-  background: var(--p-surface);
+  background: var(--p-color-bg);
 }
 
 @media #{$p-breakpoints-sm-down} {
@@ -36,7 +36,7 @@
   overflow: hidden;
 
   @media #{$p-breakpoints-sm-down} {
-    background: var(--p-surface);
+    background: var(--p-color-bg);
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -69,13 +69,13 @@
 }
 
 .AddFilter {
-  background: var(--p-surface-subdued);
+  background: var(--p-color-bg-subdued);
   border-radius: var(--p-border-radius-6);
-  border: var(--p-border-subdued) dashed var(--p-border-width-1);
+  border: var(--p-color-border-subdued) dashed var(--p-border-width-1);
   padding: 0 var(--p-space-2) 0 var(--p-space-3);
   height: 28px;
   cursor: pointer;
-  color: var(--p-text);
+  color: var(--p-color-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +87,7 @@
   @include focus-ring($border-width: var(--p-border-width-1));
 
   path {
-    fill: var(--p-icon);
+    fill: var(--p-color-icon);
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -100,27 +100,27 @@
 
   &:hover,
   &:focus {
-    background: var(--p-surface-hovered);
-    border-color: var(--p-border-hovered);
+    background: var(--p-color-bg-hover);
+    border-color: var(--p-color-border-hover);
 
     path {
-      fill: var(--p-icon-hovered);
+      fill: var(--p-color-icon-hover);
     }
   }
 
   &:active {
-    background: var(--p-surface-pressed);
-    border-color: var(--p-border-hovered);
+    background: var(--p-color-bg-active);
+    border-color: var(--p-color-border-hover);
   }
 
   &[aria-disabled='true'] {
-    background: var(--p-surface-disabled);
-    border-color: var(--p-border-disabled);
-    color: var(--p-text-disabled);
+    background: var(--p-color-bg-disabled);
+    border-color: var(--p-color-border-disabled);
+    color: var(--p-color-text-disabled);
     cursor: default;
 
     path {
-      fill: var(--p-icon-disabled);
+      fill: var(--p-color-icon-disabled);
     }
   }
 
@@ -168,7 +168,7 @@
     right: 0;
     display: flex;
     padding: var(--p-space-1) var(--p-space-4) var(--p-space-1) 0;
-    background: var(--p-surface);
+    background: var(--p-color-bg);
     margin-left: var(--p-space-2);
 
     &::before {
@@ -183,8 +183,8 @@
       background: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) 0%,
-        var(--p-surface) 70%,
-        var(--p-surface) 100%
+        var(--p-color-bg) 70%,
+        var(--p-color-bg) 100%
       );
       // stylelint-enable
     }

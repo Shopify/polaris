@@ -7,8 +7,8 @@ $Backdrop-opacity: 0.88;
   max-width: 500px;
   padding: var(--p-space-2) var(--p-space-3);
   border-radius: var(--p-border-radius-1);
-  background: var(--p-surface-dark);
-  color: var(--p-text-on-interactive);
+  background: var(--p-color-bg-inverse);
+  color: var(--p-color-text-on-color);
   margin-bottom: var(--p-space-5);
   box-shadow: var(--p-shadow-xl);
 
@@ -23,15 +23,15 @@ $Backdrop-opacity: 0.88;
 
 .Action {
   margin-left: var(--p-space-2);
-  color: var(--p-text-on-interactive);
+  color: var(--p-color-text-on-color);
 }
 
 .error {
-  background: var(--p-action-critical);
-  color: var(--p-text-on-critical);
+  background: var(--p-color-bg-critical-strong);
+  color: var(--p-color-text-on-color);
 
   .CloseButton {
-    color: var(--p-icon-on-critical);
+    color: var(--p-color-icon-on-color);
   }
 }
 
@@ -52,7 +52,7 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  color: var(--p-icon-subdued);
+  color: var(--p-color-icon-subdued);
   cursor: pointer;
   margin-left: var(--p-space-2);
 
@@ -66,6 +66,6 @@ $Backdrop-opacity: 0.88;
 
   &:focus,
   &:hover {
-    color: var(--p-text-on-interactive);
+    color: var(--p-color-text-on-color);
   }
 }

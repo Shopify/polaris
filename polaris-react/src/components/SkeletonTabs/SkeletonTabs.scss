@@ -9,7 +9,7 @@
   padding: calc(var(--p-space-5) + var(--p-space-05)) var(--p-space-4);
 
   &:first-child::before {
-    background-color: var(--p-border-hovered);
+    background-color: var(--p-color-border-hover);
   }
 
   &::before {

@@ -29,7 +29,7 @@ export function Default() {
 
 export function WithBackgroundSubdued() {
   return (
-    <AlphaCard background="surface-subdued">
+    <AlphaCard background="bg-subdued">
       <AlphaStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
@@ -85,7 +85,7 @@ export function WithSubduedSection() {
         marginInline={{xs: '4', sm: '5'}}
       >
         <Divider />
-        <Box background="surface-subdued" padding={{xs: '4', sm: '5'}}>
+        <Box background="bg-subdued" padding={{xs: '4', sm: '5'}}>
           <AlphaStack gap="2">
             <Text variant="headingSm" as="h3">
               Deactivated staff accounts

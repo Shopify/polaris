@@ -11,16 +11,16 @@
   border-radius: var(--p-border-radius-2);
 
   &:hover {
-    background: var(--p-surface-hovered);
+    background: var(--p-color-bg-hover);
 
     svg {
-      fill: var(--p-icon-hovered);
+      fill: var(--p-color-icon-hover);
     }
   }
 
   &:active,
   &.pressed {
-    background: var(--p-surface-pressed);
+    background: var(--p-color-bg-active);
   }
 
   &:focus-visible:not(:active) {
