@@ -1,7 +1,13 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {ActionList, Frame, Icon, TopBar, Text} from '@shopify/polaris';
-import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
+import {
+  ArrowLeftMinor,
+  QuestionMarkMajor,
+  EditMinor,
+  TickSmallMinor,
+  SearchMinor,
+} from '@shopify/polaris-icons';
 
 export default {
   component: TopBar,
@@ -49,15 +55,42 @@ export function Default() {
     <TopBar.UserMenu
       actions={[
         {
-          items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+          helpText: 'Jaded Pixel',
+          items: [
+            {
+              active: true,
+              content: 'Jaded Pixel',
+              prefix: <Avatar size="small" name="Jaded Pixel" />,
+              suffix: <Icon source={TickSmallMinor} />,
+            },
+            {
+              content: 'Jaded Pixel 2.0',
+              prefix: <Avatar size="small" name="Jaded Pixel 2.0" />,
+            },
+            {
+              content: 'View all 3 stores',
+              prefix: <Icon source={SearchMinor} />,
+            },
+          ],
         },
         {
           items: [{content: 'Community forums'}],
         },
+        {
+          items: [{content: 'Help Center'}],
+        },
+        {
+          items: [{content: 'Keyboard shortcuts'}],
+        },
+        {
+          title: 'Dharma Johnson',
+          helpText: 'dharma@jadedpixel.com',
+          items: [{content: 'Manage account'}, {content: 'Log out'}],
+        },
       ]}
       name="Dharma"
       detail="Jaded Pixel"
-      initials="D"
+      initials="JP"
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
     />

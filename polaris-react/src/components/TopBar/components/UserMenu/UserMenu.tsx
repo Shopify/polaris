@@ -1,18 +1,18 @@
 import React from 'react';
 
-import type {IconableAction} from '../../../../types';
 import {Avatar} from '../../../Avatar';
 import type {AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
 import {Menu} from '../Menu';
 import type {MenuProps} from '../Menu';
 import {Text} from '../../../Text';
+import type {ActionListProps} from '../../../ActionList';
 
 import styles from './UserMenu.scss';
 
 export interface UserMenuProps {
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
-  actions: {items: IconableAction[]}[];
+  actions: ActionListProps['sections'];
   /** Accepts a message that facilitates direct, urgent communication with the merchant through the user menu */
   message?: MenuProps['message'];
   /** A string detailing the merchant’s full name to be displayed in the user menu */
@@ -29,6 +29,8 @@ export interface UserMenuProps {
   open: boolean;
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
+  /** A custom activator that can be used when the default activator is not desired */
+  activatorContent?: React.ReactNode;
 }
 
 export function UserMenu({
@@ -41,10 +43,13 @@ export function UserMenu({
   onToggle,
   open,
   accessibilityLabel,
+  activatorContent,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
-  const activatorContentMarkup = (
+  const activatorContentMarkup = activatorContent ? (
+    activatorContent
+  ) : (
     <>
       <MessageIndicator active={showIndicator}>
         <Avatar

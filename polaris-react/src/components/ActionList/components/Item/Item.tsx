@@ -1,4 +1,5 @@
 import React from 'react';
+import {TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -80,11 +81,23 @@ export function Item({
     </span>
   );
 
-  const suffixMarkup = suffix && (
-    <Box>
-      <span className={styles.Suffix}>{suffix}</span>
-    </Box>
-  );
+  let suffixMarkup: React.ReactNode | null = null;
+
+  if (active) {
+    suffixMarkup = (
+      <Box>
+        <span className={styles.Suffix}>
+          <Icon source={TickSmallMinor} />
+        </span>
+      </Box>
+    );
+  } else if (suffix) {
+    suffixMarkup = suffix && (
+      <Box>
+        <span className={styles.Suffix}>{suffix}</span>
+      </Box>
+    );
+  }
 
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
