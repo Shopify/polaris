@@ -36,7 +36,7 @@
   overflow: hidden;
 
   @media #{$p-breakpoints-sm-down} {
-    background: var(--p-surface);
+    background: var(--p-color-bg);
   }
 
   @media #{$p-breakpoints-md-up} {
