@@ -1,5 +1,19 @@
 # @shopify/polaris-migrator
 
+## 0.17.0
+
+### Minor Changes
+
+- [#8257](https://github.com/Shopify/polaris/pull/8257) [`f25f3c73c`](https://github.com/Shopify/polaris/commit/f25f3c73c9b902647206de45bc98983477acc312) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added migration to replace color custom properties from Polaris v10 to v11
+
+* [#8827](https://github.com/Shopify/polaris/pull/8827) [`dc09b21da`](https://github.com/Shopify/polaris/commit/dc09b21da9c7a4575973300a6f94b774e6f603d1) Thanks [@samrose3](https://github.com/samrose3)! - Added migration to remove unused imports from SCSS files
+
+### Patch Changes
+
+- Updated dependencies [[`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5), [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c), [`0a981349d`](https://github.com/Shopify/polaris/commit/0a981349d70dfb7c60fabf1391aa4a3ec0dc9793)]:
+  - @shopify/polaris-tokens@6.9.0
+  - @shopify/stylelint-polaris@9.0.2
+
 ## 0.16.1
 
 ### Patch Changes

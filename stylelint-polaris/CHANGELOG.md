@@ -1,5 +1,14 @@
 # Changelog
 
+## 9.0.2
+
+### Patch Changes
+
+- [#8823](https://github.com/Shopify/polaris/pull/8823) [`0a981349d`](https://github.com/Shopify/polaris/commit/0a981349d70dfb7c60fabf1391aa4a3ec0dc9793) Thanks [@rdott](https://github.com/rdott)! - Added prefers-reduced-motion to media query allowed list for stylelint
+
+- Updated dependencies [[`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5), [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c)]:
+  - @shopify/polaris-tokens@6.9.0
+
 ## 9.0.1
 
 ### Patch Changes

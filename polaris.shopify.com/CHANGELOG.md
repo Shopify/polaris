@@ -1,5 +1,29 @@
 # polaris.shopify.com
 
+## 0.46.0
+
+### Minor Changes
+
+- [#8833](https://github.com/Shopify/polaris/pull/8833) [`475f2d8a0`](https://github.com/Shopify/polaris/commit/475f2d8a0988c751f8fec46919e3ac5f68287619) Thanks [@jjgali](https://github.com/jjgali)! - Added missing page descriptions.
+
+* [#8414](https://github.com/Shopify/polaris/pull/8414) [`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Migrate `color` custom properties from Polaris `v10` to `v11`
+
+### Patch Changes
+
+- [#8821](https://github.com/Shopify/polaris/pull/8821) [`9e23a6b65`](https://github.com/Shopify/polaris/commit/9e23a6b651ca221a642a258423d923ad0c98bdf8) Thanks [@laurkim](https://github.com/laurkim)! - Updated links for `Navigation` component in style guide to reflect recent component category structure
+
+* [#8836](https://github.com/Shopify/polaris/pull/8836) [`91d020ed9`](https://github.com/Shopify/polaris/commit/91d020ed957e8ec2e17394519c608c7f3db0fea2) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix patterns index page not pulling in front matter.
+
+- [#8798](https://github.com/Shopify/polaris/pull/8798) [`c606e6dcb`](https://github.com/Shopify/polaris/commit/c606e6dcb4cd5608a68350ebab198575de0c4d0b) Thanks [@samrose3](https://github.com/samrose3)! - Added Index Table example with disabled rows
+
+* [#8837](https://github.com/Shopify/polaris/pull/8837) [`4fa011ca6`](https://github.com/Shopify/polaris/commit/4fa011ca6f3bed9f04b706fb2d20a6e235f7750e) Thanks [@alex-page](https://github.com/alex-page)! - /public/images align to content directory structure
+
+- [#8827](https://github.com/Shopify/polaris/pull/8827) [`dc09b21da`](https://github.com/Shopify/polaris/commit/dc09b21da9c7a4575973300a6f94b774e6f603d1) Thanks [@samrose3](https://github.com/samrose3)! - Added migration to remove unused imports from SCSS files
+
+- Updated dependencies [[`7c965c632`](https://github.com/Shopify/polaris/commit/7c965c6323e8fd403216a6c762a767330efa8690), [`db26d5dc7`](https://github.com/Shopify/polaris/commit/db26d5dc71778eb5b5cea75d4bbd54a187ac7dc9), [`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5), [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c)]:
+  - @shopify/polaris@10.41.0
+  - @shopify/polaris-tokens@6.9.0
+
 ## 0.45.0
 
 ### Minor Changes
