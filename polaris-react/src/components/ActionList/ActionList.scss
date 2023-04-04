@@ -58,11 +58,6 @@
     svg {
       fill: var(--p-color-icon-interactive);
     }
-
-    &::before {
-      // stylelint-disable-next-line -- alignment for left tab style https://github.com/Shopify/polaris/pull/3619
-      @include list-selected-indicator;
-    }
   }
 
   &.destructive {

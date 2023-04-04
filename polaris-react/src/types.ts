@@ -212,7 +212,7 @@ export interface ActionListItemDescriptor
 
 export interface ActionListSection {
   /** Section title */
-  title?: string;
+  title?: string | React.ReactNode;
   /** Collection of action items for the list */
   items: readonly ActionListItemDescriptor[];
 }
