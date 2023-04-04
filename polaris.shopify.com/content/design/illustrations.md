@@ -7,7 +7,7 @@ keywords:
 icon: IllustrationMajor
 ---
 
-![The illustration of a chair, in simples straight lines, followed by a version with curves and some color, followed by a final version with filled shapes and shadows.](/images/foundations/design/illustrations/illustrations-intro@2x.png)
+![The illustration of a chair, in simples straight lines, followed by a version with curves and some color, followed by a final version with filled shapes and shadows.](/images/design/illustrations/illustrations-intro@2x.png)
 
 ---
 
@@ -33,19 +33,19 @@ Each illustration conveys one thing. The story is easy to understand, so merchan
 
 ## Elements of style
 
-![A color palette and illustrations using the color palette](/images/foundations/design/illustrations/illustrations-color@2x.png)
+![A color palette and illustrations using the color palette](/images/design/illustrations/illustrations-color@2x.png)
 
 ### Color
 
 Illustrations use a special set of colors designed to work well in the places where they show up. The palette is limited: individual illustrations use whites, grays, and two or three colors each. Colors are also less saturated than the surrounding UI, so they don’t distract from core interactions.
 
-![Illustrations of a flag, a teapot, a leaf, and various profiles of people of different ethnicities.](/images/foundations/design/illustrations/illustrations-shape@2x.png)
+![Illustrations of a flag, a teapot, a leaf, and various profiles of people of different ethnicities.](/images/design/illustrations/illustrations-shape@2x.png)
 
 ### Shape
 
 Objects have realistic proportions so they’re easy to recognize. Simple geometric shapes with rounded corners build images that are clear and approachable. Representations of people use more organic shapes.
 
-![An illustration of a laptop and an illustration of shipping boxes separated on a white background](/images/foundations/design/illustrations/illustrations-space@2x.png)
+![An illustration of a laptop and an illustration of shipping boxes separated on a white background](/images/design/illustrations/illustrations-space@2x.png)
 
 ### Space
 
@@ -53,7 +53,7 @@ The perspective is flat and two-dimensional so the entire area of the illustrati
 
 Each illustration has negative space around it so it feels balanced in the place it lives, and so its visual weight is the same as other illustrations that live in the same places.
 
-![An stylized illustration of a chair with red lines defining its angles, next to an illustration of the profile of a person, with red lines to emphasize where curves are used.](/images/foundations/design/illustrations/illustrations-line@2x.png)
+![An stylized illustration of a chair with red lines defining its angles, next to an illustration of the profile of a person, with red lines to emphasize where curves are used.](/images/design/illustrations/illustrations-line@2x.png)
 
 ### Line
 
@@ -61,7 +61,7 @@ Line makes and arranges shapes in the space. All illustrations have smooth lines
 
 Intersecting and continuous lines are a key element of the admin illustration style, but they aren’t forced. They make a simple illustration feel elegant and visually interesting without being distracting.
 
-![An intricate illustration of a shipping label, followed by an illustration of a sheet with a list of users, followed by a very simple illustration of an URL address bar.](/images/foundations/design/illustrations/illustrations-detail@2x.png)
+![An intricate illustration of a shipping label, followed by an illustration of a sheet with a list of users, followed by a very simple illustration of an URL address bar.](/images/design/illustrations/illustrations-detail@2x.png)
 
 ### Detail
 
@@ -73,25 +73,25 @@ Illustrations need some detail to make sense, but too much can be noisy. They ha
 
 There are places where illustrations always appear, and places where they’re used only sometimes.
 
-![An illustration of scissors cutting a coupon to indicate a page for discount code administration that has no discount codes saved.](/images/foundations/design/illustrations/illustrations-empty-states@2x.png)
+![An illustration of scissors cutting a coupon to indicate a page for discount code administration that has no discount codes saved.](/images/design/illustrations/illustrations-empty-states@2x.png)
 
 ### Empty states
 
 Merchants see an empty state illustration the first time they access a new part of the experience, before they’ve had the chance to do anything there yet. It introduces what they can do here, and sets expectations for what’s ahead.
 
-![An admin homecard with a small illustration next to some text describing how to customize a theme.](/images/foundations/design/illustrations/illustrations-onboarding@2x.png)
+![An admin homecard with a small illustration next to some text describing how to customize a theme.](/images/design/illustrations/illustrations-onboarding@2x.png)
 
 ### Onboarding
 
 Onboarding tasks help new merchants set up their store. Illustrations frame what each task is for. And by changing in appearance, they reinforce when a task is complete.
 
-![An illustration celebrating a store anniversary.](/images/foundations/design/illustrations/illustrations-announcements@2x.png)
+![An illustration celebrating a store anniversary.](/images/design/illustrations/illustrations-announcements@2x.png)
 
 ### Announcements
 
 Announcements let merchants know about something that might help their business. When the announcement celebrates a major merchant milestone or introduces an important product, illustration helps make it special or noticeable.
 
-![An illustration next to a card talking about Shopify Payments.](/images/foundations/design/illustrations/illustrations-spot@2x.png)
+![An illustration next to a card talking about Shopify Payments.](/images/design/illustrations/illustrations-spot@2x.png)
 
 ### Spot illustrations
 
