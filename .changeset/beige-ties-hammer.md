@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Removed the Exiting animation state from Popovers, causing them to close immediately instead of after a 100ms delay.
+Tweaked the margin of the "Clear all" link in the AlphaFilters component. Fixed the focus outline on the filters.
