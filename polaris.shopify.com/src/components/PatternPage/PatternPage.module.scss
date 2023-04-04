@@ -7,7 +7,7 @@
 }
 
 .TabGroup {
-  --tab-background: var(--p-surface-subdued);
+  --tab-background: var(--p-color-bg-subdued);
   --tab-background-pressed: rgba(250, 250, 250, 1);
   --tab-background-hover: rgba(241, 241, 241, 1);
   --tab-border: 1px solid #c9cccf;
@@ -83,7 +83,7 @@
     font-size: var(--font-size-400);
     font-weight: var(--font-weight-500);
     line-height: 1.33;
-    color: var(--p-text-disabled);
+    color: var(--p-color-text-disabled);
 
     &[aria-selected='true'] {
       color: var(--text-strong);
@@ -129,10 +129,10 @@
 .HowItHelps {
   & > img {
     display: block;
-    border: 1px solid var(--p-border-subdued);
+    border: 1px solid var(--p-color-border-subdued);
     aspect-ratio: 361.9/180.9;
     border-radius: 0.25rem;
-    background: var(--p-surface-depressed);
+    background: var(--p-color-bg-inset);
   }
   ol {
     --counter-offset: calc(24px + var(--p-space-2));
@@ -163,7 +163,7 @@
 
 .UsefulToKnow {
   img {
-    background: var(--p-surface-depressed);
+    background: var(--p-color-bg-inset);
     border-radius: var(--border-radius-400);
     border: 1px solid #c9cccf;
   }

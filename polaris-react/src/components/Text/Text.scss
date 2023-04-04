@@ -37,23 +37,23 @@
 }
 
 .success {
-  color: var(--p-text-success);
+  color: var(--p-color-text-success);
 }
 
 .critical {
-  color: var(--p-text-critical);
+  color: var(--p-color-text-critical);
 }
 
 .warning {
-  color: var(--p-text-warning);
+  color: var(--p-color-text-caution);
 }
 
 .subdued {
-  color: var(--p-text-subdued);
+  color: var(--p-color-text-subdued);
 }
 
 .text-inverse {
-  color: var(--p-text-on-dark);
+  color: var(--p-color-text-inverse);
 }
 
 .headingXs {
