@@ -31,12 +31,6 @@ $vertical-motion-offset: -5px;
   transform: none;
 }
 
-.PopoverOverlay-exiting {
-  opacity: 1;
-  transform: translateY(0);
-  transition-duration: var(--p-duration-0);
-}
-
 .measuring:not(.PopoverOverlay-exiting) {
   opacity: 0;
   transform: translateY($vertical-motion-offset);
