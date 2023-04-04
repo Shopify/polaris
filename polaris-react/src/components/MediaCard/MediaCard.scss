@@ -50,16 +50,6 @@
   }
 }
 
-.Popover {
-  position: absolute;
-  z-index: var(--p-z-index-2);
-  top: var(--p-space-4);
-  right: var(--p-space-5);
-  display: flex;
-  align-items: baseline;
-  gap: var(--p-space-2);
-}
-
 .Heading {
   margin-right: var(--p-space-8);
 }

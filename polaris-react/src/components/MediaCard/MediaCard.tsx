@@ -12,6 +12,8 @@ import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
 import {LegacyStack} from '../LegacyStack';
+import {Box} from '../Box';
+import {Inline} from '../Inline';
 
 import styles from './MediaCard.scss';
 
@@ -39,7 +41,7 @@ interface MediaCardProps {
    */
   size?: Size;
   /** Callback when MediaCard is dismissed */
-  onDismiss?: () => void,
+  onDismiss?: () => void;
 }
 
 export function MediaCard({
@@ -80,32 +82,31 @@ export function MediaCard({
   ) : null;
 
   const popoverActivator = (
-    <Button
-      icon={HorizontalDotsMinor}
-      onClick={togglePopoverActive}
-      size="slim"
-      plain
-      accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
-    />
+    <Inline blockAlign="center">
+      <Button
+        icon={HorizontalDotsMinor}
+        onClick={togglePopoverActive}
+        size="slim"
+        plain
+        accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
+      />
+    </Inline>
   );
 
   const popoverActionsMarkup =
     popoverActions.length > 0 ? (
-      <div className={styles.Popover}>
-        <Popover
-          active={popoverActive}
-          activator={popoverActivator}
-          onClose={togglePopoverActive}
-          preferredAlignment="left"
-          preferredPosition="below"
-        >
-          <ActionList
-            items={popoverActions}
-            onActionAnyItem={togglePopoverActive}
-          />
-        </Popover>
-        {dismissButtonMarkup}
-      </div>
+      <Popover
+        active={popoverActive}
+        activator={popoverActivator}
+        onClose={togglePopoverActive}
+        preferredAlignment="left"
+        preferredPosition="below"
+      >
+        <ActionList
+          items={popoverActions}
+          onActionAnyItem={togglePopoverActive}
+        />
+      </Popover>
     ) : null;
 
   const primaryActionMarkup = primaryAction ? (
@@ -156,8 +157,17 @@ export function MediaCard({
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
           <LegacyCard.Section>
-            {popoverActionsMarkup}
-            {popoverActionsMarkup ? null : <div className={styles.Popover}>{dismissButtonMarkup}</div>}
+            <Box
+              position="absolute"
+              insetBlockStart="4"
+              insetInlineEnd="5"
+              zIndex="var(--p-z-index-2)"
+            >
+              <Inline gap="1">
+                {popoverActionsMarkup}
+                {dismissButtonMarkup}
+              </Inline>
+            </Box>
             <LegacyStack vertical spacing="tight">
               {headerMarkup}
               <p className={styles.Description}>{description}</p>
