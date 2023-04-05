@@ -1,6 +1,4 @@
 const path = require('path');
-const spawn = require('child_process').spawn;
-const CreateFileWebpack = require('create-file-webpack');
 const postcssPlugins = require('../config/postcss-plugins');
 
 module.exports = {
@@ -56,7 +54,6 @@ module.exports = {
 
     config.module.rules = [...config.module.rules, ...extraRules];
 
-    // TODO: load the library instead?
     config.resolve.alias = {
       ...config.resolve.alias,
       '@shopify/polaris': path.resolve(
