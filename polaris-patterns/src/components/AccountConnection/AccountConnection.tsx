@@ -1,6 +1,7 @@
 import React from 'react';
 import type {Action} from '@shopify/polaris';
 import {
+  AppProvider,
   Avatar,
   buttonFrom,
   AlphaCard,
@@ -71,17 +72,19 @@ export function AccountConnection({
     : null;
 
   return (
-    <AlphaCard>
-      <SettingAction action={actionElement}>
-        <Inline gap="4">
-          {avatarMarkup}
-          <AlphaStack gap="2">
-            {titleMarkup}
-            {detailsMarkup}
-          </AlphaStack>
-        </Inline>
-      </SettingAction>
-      {termsOfServiceMarkup}
-    </AlphaCard>
+    <AppProvider i18n={{}}>
+      <AlphaCard>
+        <SettingAction action={actionElement}>
+          <Inline gap="4">
+            {avatarMarkup}
+            <AlphaStack gap="2">
+              {titleMarkup}
+              {detailsMarkup}
+            </AlphaStack>
+          </Inline>
+        </SettingAction>
+        {termsOfServiceMarkup}
+      </AlphaCard>
+    </AppProvider>
   );
 }
