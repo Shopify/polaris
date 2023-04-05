@@ -134,6 +134,16 @@ describe('<MediaCard>', () => {
     expect(videoCard).not.toContainReactComponent(Popover);
   });
 
+  it('renders a dismiss button when onDismiss is passed', () => {
+    const videoCard = mountWithApp(
+      <MediaCard {...mockProps} onDismiss={() => {}} />,
+    );
+
+    expect(videoCard).toContainReactComponent(Button, {
+      accessibilityLabel: 'Dismiss',
+    });
+  });
+
   it('renders in landscape mode by default', () => {
     const videoCard = mountWithApp(<MediaCard {...mockProps} />);
 

@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "アクション"
+      "popoverButton": "アクション",
+      "dismissButton": "閉じる"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

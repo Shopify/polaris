@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "编辑"
+      "popoverButton": "编辑",
+      "dismissButton": "忽略"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

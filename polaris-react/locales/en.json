@@ -335,6 +335,7 @@
       }
     },
     "MediaCard": {
+      "dismissButton": "Dismiss",
       "popoverButton": "Actions"
     },
     "VideoThumbnail": {

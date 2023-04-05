@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Åtgärder"
+      "popoverButton": "Åtgärder",
+      "dismissButton": "Avvisa"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

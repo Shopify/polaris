@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Toiminnat"
+      "popoverButton": "Toiminnat",
+      "dismissButton": "Hylkää"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
