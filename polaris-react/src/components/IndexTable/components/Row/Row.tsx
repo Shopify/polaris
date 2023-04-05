@@ -89,7 +89,7 @@ export const Row = memo(function Row({
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
-    hovered && styles['TableRow-hovered'],
+    hovered && !condensed && styles['TableRow-hovered'],
     disabled && styles['TableRow-disabled'],
     status && styles[variationName('status', status)],
     !selectable &&
