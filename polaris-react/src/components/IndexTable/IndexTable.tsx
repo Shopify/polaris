@@ -1161,7 +1161,7 @@ export function IndexTable({
 }: IndexTableProps) {
   return (
     <IndexProvider
-      selectable={selectable}
+      selectable={selectable && !condensed}
       itemCount={itemCount}
       selectedItemsCount={selectedItemsCount}
       resourceName={passedResourceName}

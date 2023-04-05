@@ -21,6 +21,7 @@ import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Tooltip} from '../../Tooltip';
+import {IndexProvider} from '../../IndexProvider';
 
 jest.mock('../utilities', () => ({
   ...jest.requireActual('../utilities'),
@@ -572,6 +573,18 @@ describe('<IndexTable>', () => {
       );
 
       expect(index).not.toContainReactComponent(BulkActions);
+    });
+
+    it('prevents rows from being selectable', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      expect(index).toContainReactComponent(IndexProvider, {
+        selectable: false,
+      });
     });
   });
 
