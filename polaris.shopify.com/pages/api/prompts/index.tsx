@@ -11,13 +11,13 @@ import divider from '../../../scripts/synapse/bits/divider.md.json' assert {type
 import type {Bit, TemplateArgs, Message} from 'synapse';
 
 const combined = [
-  // ...alphaCard.bits,
-  // ...alphaStack.bits,
-  // ...bleed.bits,
-  // ...box.bits,
-  // ...inline.bits,
-  // ...columns.bits,
-  // ...divider.bits,
+  ...alphaCard.bits,
+  ...alphaStack.bits,
+  ...bleed.bits,
+  ...box.bits,
+  ...inline.bits,
+  ...columns.bits,
+  ...divider.bits,
   ...colors.bits,
 ];
 
@@ -72,7 +72,8 @@ export default async function handler(
     // need to handle if it fails
     // console.log(allContext.bits);
     const embeddedInput = await generateEmbedding(input);
-    const similarBits = getSimilarBits(embeddedInput, [...colors.bits], 1500);
+    // console.log(colors.bits);
+    const similarBits = getSimilarBits(embeddedInput, allContext.bits, 1500);
     console.log(similarBits);
     const messages = messagesTemplate({input}, similarBits);
     const completion = await createChatCompletion(messages);

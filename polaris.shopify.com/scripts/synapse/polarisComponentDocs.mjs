@@ -1,4 +1,5 @@
 import {readFileSync} from 'fs';
+import {resolve} from 'path';
 import {unified} from 'unified';
 import remarkParse from 'remark-parse';
 import {visit} from 'unist-util-visit';
@@ -16,23 +17,48 @@ export default function polarisComponentDocs(options) {
     // add the front matter as an object to the file
     unified().use(matter).parse(file);
     // console.log(file.data.matter);
+    const slug = file.history[0].replace('.md', '').replace('./content', '');
+    const title = file.data.matter.title;
+    let exampleBits;
 
-    // console.log(stripIndents(contents));
-    console.log(JSON.stringify(stripIndents(contents)));
+    if (file.data.matter.examples?.length > 0) {
+      exampleBits = file.data.matter.examples.map((e) => {
+        const filepath = resolve(process.cwd(), `pages/examples/${e.fileName}`);
+        const example = readFileSync(filepath).toString();
+        return {
+          type: 'BitNode',
+          data: {
+            title: `${title} component ${e.title}`,
+            text: stripIndents(example),
+            slug,
+          },
+        };
+      });
+    }
+
+    console.log(exampleBits);
+
     // throw 'eh';
-    const bit = {
+    const docBit = {
       type: 'BitNode',
       data: {
         title: file.data.matter?.title,
         text: stripIndents(contents),
-        slug: 'polaris.shopify.com',
+        slug,
       },
     };
 
-    return {
+    // const allBits = [docBit, exampleBits];
+
+    // console.log(allBits);
+    // throw 'eh';
+
+    const constructed = {
       type: 'root',
-      children: [bit],
+      children: exampleBits ? [docBit, ...exampleBits] : [docBit],
     };
+
+    return constructed;
   };
 
   Object.assign(this, {Parser: parser});

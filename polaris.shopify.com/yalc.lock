@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "synapse": {
-      "signature": "7f64b342ca6cf3621a2179c19915d13e",
+      "signature": "3d4af4d0ceaa801e1c0333d5fe6c7c4d",
       "file": true,
       "replaced": "https://github.com/Shopify/synapse.git"
     }

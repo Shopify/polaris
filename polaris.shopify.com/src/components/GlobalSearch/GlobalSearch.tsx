@@ -113,7 +113,7 @@ function GlobalSearch() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
   const [searchMode, setSearchMode] = useState<'search' | 'ai'>('search');
-
+  const [isLoading, setIsLoading] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [promptResults, setPromptResults] = useState<
     {question: string; answer: string; searchResults: GroupedSearchResults}[]
@@ -188,6 +188,7 @@ function GlobalSearch() {
 
     if (prompt) {
       console.log('fetching');
+      setIsLoading(true);
       fetch(`/api/prompts?p=${encodeURIComponent(prompt)}`)
         .then((data) => data.json())
         .then((json) => {
@@ -203,6 +204,7 @@ function GlobalSearch() {
             },
             ...prev,
           ]);
+          setIsLoading(false);
         });
     }
   };
@@ -334,9 +336,19 @@ function GlobalSearch() {
                   resultsInRenderedOrder={resultsInRenderedOrder}
                 />
               )}
-              {searchMode === 'ai' && promptResults.length < 1 && (
-                <Canned onAskQuestion={handleAskQuestion} />
+              {searchMode === 'ai' && isLoading && (
+                <div className={styles.AILoading}>
+                  <p className={styles.AILoadingMessage}>
+                    Generating your response
+                  </p>
+                  <p>This may take a few seconds</p>
+                </div>
               )}
+              {searchMode === 'ai' &&
+                !isLoading &&
+                promptResults.length < 1 && (
+                  <Canned onAskQuestion={handleAskQuestion} />
+                )}
               {searchMode === 'ai' && promptResults.length > 0 && (
                 <>
                   {promptResults.map(
@@ -353,7 +365,7 @@ function GlobalSearch() {
                             )}
                             <div className={styles.AISourceList}>
                               {sources.map((source) => {
-                                return <p key={source}>{source}</p>;
+                                return source && <p key={source}>{source}</p>;
                               })}
                             </div>
                           </div>
