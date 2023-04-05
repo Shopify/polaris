@@ -62,19 +62,17 @@
     "preversion": "node ./scripts/readme-update-version"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^6.12.0",
-    "@shopify/polaris-tokens": "^6.8.1",
-    "@types/react": "*",
-    "@types/react-dom": "*",
-    "@types/react-transition-group": "^4.4.2",
     "react-fast-compare": "^3.2.0",
     "react-transition-group": "^4.4.2"
   },
   "peerDependencies": {
+    "@shopify/polaris-icons": "^6.12.0",
+    "@shopify/polaris-tokens": "^6.8.1",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
+    "@types/react-transition-group": "^4.4.2",
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
     "@changesets/get-release-plan": "^3.0.13",
@@ -108,6 +106,7 @@
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.0",
     "sass-loader": "^12.4.0",
+    "vite": "^4.2.1",
     "webpack": "5"
   },
   "browserslist": [
