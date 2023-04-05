@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {AppProvider} from '@shopify/polaris';
-import '@shopify/polaris/build/esm/styles.css';
+import '@shopify/polaris/build/esm/style.css';
 import enTranslations from '@shopify/polaris/locales/en.json';
 import {updateGrowFrameHeight} from '../src/components/GrowFrame';
 export default function FrameComponent({

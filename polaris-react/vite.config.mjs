@@ -18,6 +18,7 @@ export default defineConfig(() => {
   return {
     build: {
       outDir: 'dist',
+      minify: false,
       lib: {
         entry: './src/index.ts',
       },
@@ -28,18 +29,18 @@ export default defineConfig(() => {
         ],
         output: [
           {
+            format: 'esm',
+            dir: path.dirname(pkg.module),
+            preserveModules: true,
+            entryFileNames: '[name].js',
+            cssCodeSplit: false,
+          },
+          {
             format: 'cjs',
             dir: path.dirname(pkg.main),
             preserveModules: true,
             entryFileNames: '[name].js',
             exports: 'named',
-            cssCodeSplit: false,
-          },
-          {
-            format: 'esm',
-            dir: path.dirname(pkg.module),
-            preserveModules: true,
-            entryFileNames: '[name].js',
             cssCodeSplit: false,
           },
         ],
