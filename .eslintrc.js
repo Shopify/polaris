@@ -108,6 +108,9 @@ module.exports = {
       files: ['polaris-codemods/src/**/*.{ts,tsx}'],
       rules: {
         'import/no-default-export': 'off',
+        // Issue with inconsistent import order between node 14 and 16.
+        // This could be removed after dropping node 14 support.
+        'import/order': 'off',
       },
     },
     {
