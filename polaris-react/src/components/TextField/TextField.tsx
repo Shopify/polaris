@@ -697,7 +697,7 @@ function getRows(multiline?: boolean | number) {
 function normalizeAriaMultiline(multiline?: boolean | number) {
   if (!multiline) return undefined;
 
-  return Boolean(multiline) || multiline > 0
+  return Boolean(multiline) || (typeof multiline === 'number' && multiline > 0)
     ? {'aria-multiline': true}
     : undefined;
 }
