@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-updated InlineError and Toast components to use DiamondAlertMinor icon
+Updated `InlineError` and `Toast` components to use `DiamondAlertMinor` icon
