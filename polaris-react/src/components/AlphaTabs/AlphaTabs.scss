@@ -114,7 +114,7 @@
 }
 
 .Tab-active {
-  background: var(--p-color-bg-primary-subdued-selected);
+  background: var(--p-color-bg-primary-subdued-hover);
   color: var(--p-color-text-primary);
 
   &[aria-disabled='true'] {
@@ -124,7 +124,7 @@
 
   &:not([aria-disabled='true']):hover,
   &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-success-subdued-hover);
+    background-color: var(--p-color-bg-primary-subdued-hover);
     color: var(--p-color-text-primary-hover);
   }
 
