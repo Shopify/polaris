@@ -37,7 +37,7 @@ import {Badge} from '../../../Badge';
 import {Inline} from '../../../Inline';
 import {Text} from '../../../Text';
 import type {AlphaTabPropsWithAddedMethods, AlphaTabAction} from '../../types';
-import styles from '../../AlphaTabs.scss';
+import styles from '../../AlphaTabs.module.scss';
 
 import {RenameModal, DuplicateModal} from './components';
 

@@ -3,7 +3,7 @@ import React, {memo, useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {UnstyledLink} from '../../../UnstyledLink';
-import styles from '../../AlphaTabs.scss';
+import styles from '../../AlphaTabs.module.scss';
 
 export interface ItemProps {
   id: string;

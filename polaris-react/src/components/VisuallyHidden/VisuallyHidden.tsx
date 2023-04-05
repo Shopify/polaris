@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './VisuallyHidden.scss';
+import styles from './VisuallyHidden.module.scss';
 
 export interface VisuallyHiddenProps {
   /** The content to be hidden visually */

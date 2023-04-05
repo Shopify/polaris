@@ -4,7 +4,7 @@ import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 import {getResponsiveProps} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './Inline.scss';
+import styles from './Inline.module.scss';
 
 type Align =
   | 'start'

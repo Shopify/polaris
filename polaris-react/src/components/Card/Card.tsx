@@ -12,7 +12,7 @@ import {Popover} from '../Popover';
 
 // eslint-disable-next-line import/no-deprecated
 import {Header, Section, Subsection} from './components';
-import styles from './Card.scss';
+import styles from './Card.module.scss';
 
 export type {
   CardSectionProps,

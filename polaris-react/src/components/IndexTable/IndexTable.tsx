@@ -40,7 +40,7 @@ import type {
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
-import styles from './IndexTable.scss';
+import styles from './IndexTable.module.scss';
 
 interface IndexTableHeadingBase {
   /**

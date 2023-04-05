@@ -5,7 +5,7 @@ import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Image} from '../Image';
 
-import styles from './Avatar.scss';
+import styles from './Avatar.module.scss';
 
 type Size = 'extraSmall' | 'small' | 'medium' | 'large';
 

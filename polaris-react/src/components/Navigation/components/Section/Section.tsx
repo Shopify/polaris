@@ -11,7 +11,7 @@ import type {IconProps} from '../../../Icon';
 import {Text} from '../../../Text';
 import {Item} from '../Item';
 import type {ItemProps} from '../Item';
-import styles from '../../Navigation.scss';
+import styles from '../../Navigation.module.scss';
 import {Tooltip} from '../../../Tooltip';
 import type {TooltipProps} from '../../../Tooltip';
 

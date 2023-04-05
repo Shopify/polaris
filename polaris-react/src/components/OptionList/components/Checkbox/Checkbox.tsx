@@ -5,7 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {Icon} from '../../../Icon';
 
-import styles from './Checkbox.scss';
+import styles from './Checkbox.module.scss';
 
 export interface CheckboxProps {
   checked?: boolean;

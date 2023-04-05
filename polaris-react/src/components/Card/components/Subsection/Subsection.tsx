@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../../Card.scss';
+import styles from '../../Card.module.scss';
 
 export interface CardSubsectionProps {
   children?: React.ReactNode;

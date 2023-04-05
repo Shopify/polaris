@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './SkeletonBodyText.scss';
+import styles from './SkeletonBodyText.module.scss';
 
 export interface SkeletonBodyTextProps {
   /**

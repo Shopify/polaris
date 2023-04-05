@@ -6,7 +6,7 @@ import {isReactElement} from '../../utilities/is-react-element';
 
 import {Header} from './components';
 import type {HeaderProps} from './components';
-import styles from './Page.scss';
+import styles from './Page.module.scss';
 
 export interface PageProps extends HeaderProps {
   /** The contents of the page */

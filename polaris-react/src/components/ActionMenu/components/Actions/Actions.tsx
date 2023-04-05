@@ -14,7 +14,7 @@ import {SecondaryAction} from '../SecondaryAction';
 import {useEventListener} from '../../../../utilities/use-event-listener';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
-import styles from './Actions.scss';
+import styles from './Actions.module.scss';
 
 interface Props {
   /** Collection of page-level secondary actions */

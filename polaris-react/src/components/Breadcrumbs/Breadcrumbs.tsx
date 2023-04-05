@@ -7,7 +7,7 @@ import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {Text} from '../Text';
 
-import styles from './Breadcrumbs.scss';
+import styles from './Breadcrumbs.module.scss';
 
 export interface BreadcrumbsProps {
   /** @deprecated Collection of breadcrumbs */

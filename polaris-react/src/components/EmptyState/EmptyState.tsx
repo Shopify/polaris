@@ -10,7 +10,7 @@ import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 import {Inline} from '../Inline';
 
-import styles from './EmptyState.scss';
+import styles from './EmptyState.module.scss';
 
 export interface EmptyStateProps {
   /** The empty state heading */

@@ -9,7 +9,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {createAllowMultipleKey} from '../../utils';
 import {AlphaStack} from '../../../AlphaStack';
 
-import styles from './FileUpload.scss';
+import styles from './FileUpload.module.scss';
 
 export interface FileUploadProps {
   actionTitle?: string;

@@ -8,7 +8,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveValue, ResponsiveProp} from '../../utilities/css';
 
-import styles from './Columns.scss';
+import styles from './Columns.module.scss';
 
 type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];

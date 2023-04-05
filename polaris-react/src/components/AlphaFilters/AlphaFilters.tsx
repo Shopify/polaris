@@ -16,7 +16,7 @@ import {Box} from '../Box';
 import {Spinner} from '../Spinner';
 
 import {FilterPill, SearchField} from './components';
-import styles from './AlphaFilters.scss';
+import styles from './AlphaFilters.module.scss';
 
 const TRANSITION_DURATION = 'var(--p-duration-150)';
 const TRANSITION_MARGIN = '-36px';

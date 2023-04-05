@@ -18,7 +18,7 @@ import {Inline} from '../Inline';
 import {EventListener} from '../EventListener';
 
 import {BulkActionButton, BulkActionMenu} from './components';
-import styles from './BulkActions.scss';
+import styles from './BulkActions.module.scss';
 
 export type BulkAction = DisableableAction & BadgeAction;
 

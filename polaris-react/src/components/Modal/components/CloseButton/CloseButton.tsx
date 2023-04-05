@@ -5,7 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {Icon} from '../../../Icon';
 
-import styles from './CloseButton.scss';
+import styles from './CloseButton.module.scss';
 
 export interface CloseButtonProps {
   pressed?: boolean;

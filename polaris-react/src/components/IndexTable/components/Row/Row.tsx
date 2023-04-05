@@ -9,7 +9,7 @@ import {
 import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
-import styles from '../../IndexTable.scss';
+import styles from '../../IndexTable.module.scss';
 
 type RowStatus = 'success' | 'subdued';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;

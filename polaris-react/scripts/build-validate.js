@@ -52,14 +52,16 @@ function validateEsNextBuild() {
   // ESnext build
   assert.ok(fs.existsSync('./build/esnext/index.esnext'));
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.esnext'));
-  assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.css'));
+  assert.ok(
+    fs.existsSync('./build/esnext/components/Avatar/Avatar.module.css'),
+  );
   assert.ok(
     fs.existsSync('./build/esnext/components/AppProvider/AppProvider.css'),
   );
 
   // ESnext build css contains namespaced classes, and
   const cssContent = fs.readFileSync(
-    './build/esnext/components/Avatar/Avatar.css',
+    './build/esnext/components/Avatar/Avatar.module.css',
     'utf-8',
   );
   const cssKeyframesContent = fs.readFileSync(
@@ -73,11 +75,11 @@ function validateEsNextBuild() {
   );
 
   const jsContent = fs.readFileSync(
-    './build/esnext/components/Avatar/Avatar.scss.esnext',
+    './build/esnext/components/Avatar/Avatar.module.scss.esnext',
     'utf-8',
   );
 
-  assert.ok(jsContent.includes("import './Avatar.css';"));
+  assert.ok(jsContent.includes("import './Avatar.module.css';"));
   assert.ok(jsContent.includes('"Avatar": "Polaris-Avatar_z763p"'));
   assert.ok(jsContent.includes('"hidden": "Polaris-Avatar--hidden_riqie"'));
 }

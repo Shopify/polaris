@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Caption.scss';
+import styles from './Caption.module.scss';
 
 export interface CaptionProps {
   /** The content to use as a graph label or timestamp */

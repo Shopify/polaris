@@ -6,7 +6,7 @@ import {buttonsFrom} from '../../../Button';
 import {LegacyStack} from '../../../LegacyStack';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Text} from '../../../Text';
-import styles from '../../LegacyCard.scss';
+import styles from '../../LegacyCard.module.scss';
 
 export interface LegacyCardSectionProps {
   title?: React.ReactNode;

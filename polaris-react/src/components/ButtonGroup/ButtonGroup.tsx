@@ -4,7 +4,7 @@ import {classNames} from '../../utilities/css';
 import {elementChildren} from '../../utilities/components';
 
 import {Item} from './components';
-import styles from './ButtonGroup.scss';
+import styles from './ButtonGroup.module.scss';
 
 type Spacing = 'extraTight' | 'tight' | 'loose';
 

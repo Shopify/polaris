@@ -28,7 +28,7 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {Text} from '../Text';
 import {Box} from '../Box';
 
-import styles from './Banner.scss';
+import styles from './Banner.module.scss';
 
 export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
 

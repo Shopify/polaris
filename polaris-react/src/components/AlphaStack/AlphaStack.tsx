@@ -8,7 +8,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './AlphaStack.scss';
+import styles from './AlphaStack.module.scss';
 
 type Align =
   | 'start'

@@ -11,7 +11,7 @@ export const generateScopedName = function generateScopedName({
 } = {}) {
   return (name, filename) => {
     const cleanedFilename = filename.replace(/\?.*$/, '');
-    const componentName = basename(cleanedFilename, '.scss');
+    const componentName = basename(cleanedFilename, '.module.scss');
     const nestedComponentMatch =
       NESTED_COMPONENT_PATH_REGEX.exec(cleanedFilename);
 

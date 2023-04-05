@@ -9,7 +9,7 @@ import {AlphaStack} from '../AlphaStack';
 import {Box} from '../Box';
 import {Bleed} from '../Bleed';
 
-import styles from './ChoiceList.scss';
+import styles from './ChoiceList.module.scss';
 
 interface Choice {
   /** Value of the choice */

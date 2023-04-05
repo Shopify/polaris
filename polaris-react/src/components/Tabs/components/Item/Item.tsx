@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
-import styles from '../../Tabs.scss';
+import styles from '../../Tabs.module.scss';
 import {UnstyledLink} from '../../../UnstyledLink';
 
 export interface ItemProps {

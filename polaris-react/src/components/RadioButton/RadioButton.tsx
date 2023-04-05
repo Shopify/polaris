@@ -5,7 +5,7 @@ import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 
-import styles from './RadioButton.scss';
+import styles from './RadioButton.module.scss';
 
 export interface RadioButtonProps {
   /** Indicates the ID of the element that describes the the radio button*/

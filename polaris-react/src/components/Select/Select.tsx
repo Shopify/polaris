@@ -10,7 +10,7 @@ import {Icon} from '../Icon';
 import {Text} from '../Text';
 import type {Error} from '../../types';
 
-import styles from './Select.scss';
+import styles from './Select.module.scss';
 
 interface StrictOption {
   /** Machine value of the option; this is the value passed to `onChange` */

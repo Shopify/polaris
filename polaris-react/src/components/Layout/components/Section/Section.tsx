@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import styles from '../../Layout.scss';
+import styles from '../../Layout.module.scss';
 
 export interface SectionProps {
   children?: React.ReactNode;

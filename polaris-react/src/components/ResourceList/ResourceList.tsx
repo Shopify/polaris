@@ -33,7 +33,7 @@ import type {BulkActionsProps} from '../BulkActions';
 import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 
-import styles from './ResourceList.scss';
+import styles from './ResourceList.module.scss';
 
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;

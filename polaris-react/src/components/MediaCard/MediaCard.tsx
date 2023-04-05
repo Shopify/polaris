@@ -13,7 +13,7 @@ import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
 import {LegacyStack} from '../LegacyStack';
 
-import styles from './MediaCard.scss';
+import styles from './MediaCard.module.scss';
 
 type Size = 'small' | 'medium';
 

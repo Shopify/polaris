@@ -7,7 +7,7 @@ import {useUniqueId} from '../../../../utilities/unique-id';
 import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 
-import styles from './SearchField.scss';
+import styles from './SearchField.module.scss';
 
 export interface SearchFieldProps {
   /** Initial value for the input */

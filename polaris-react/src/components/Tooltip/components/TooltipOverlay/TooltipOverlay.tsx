@@ -7,7 +7,7 @@ import type {PositionedOverlayProps} from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
 import type {Width, Padding, BorderRadius} from '../../Tooltip';
 
-import styles from './TooltipOverlay.scss';
+import styles from './TooltipOverlay.module.scss';
 
 export interface TooltipOverlayProps {
   id: string;

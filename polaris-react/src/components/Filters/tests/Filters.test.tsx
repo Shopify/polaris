@@ -16,7 +16,7 @@ import {Filters} from '../Filters';
 import type {FiltersProps} from '../Filters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
 import * as focusUtils from '../../../utilities/focus';
-import styles from '../Filters.scss';
+import styles from '../Filters.module.scss';
 import {Focus} from '../../Focus';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;

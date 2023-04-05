@@ -6,7 +6,7 @@ import {elementChildren, wrapWithComponent} from '../../utilities/components';
 
 // eslint-disable-next-line import/no-deprecated
 import {Item} from './components';
-import styles from './Stack.scss';
+import styles from './Stack.module.scss';
 
 type Spacing =
   | 'extraTight'

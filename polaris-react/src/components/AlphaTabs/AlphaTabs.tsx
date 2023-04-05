@@ -16,7 +16,7 @@ import {usePrevious} from '../../utilities/use-previous';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 import type {AlphaTabProps, AlphaTabMeasurements} from './types';
 import {Tab, CreateViewModal, List, TabMeasurer, Panel} from './components';
-import styles from './AlphaTabs.scss';
+import styles from './AlphaTabs.module.scss';
 
 export interface AlphaTabsState {
   disclosureWidth: number;

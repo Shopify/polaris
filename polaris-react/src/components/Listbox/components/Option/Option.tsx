@@ -9,7 +9,7 @@ import {UnstyledLink} from '../../../UnstyledLink';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
 import {ActionContext} from '../../../../utilities/listbox/context';
 
-import styles from './Option.scss';
+import styles from './Option.module.scss';
 
 export interface OptionProps {
   // Unique item value

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 
-import styles from './TextStyle.scss';
+import styles from './TextStyle.module.scss';
 
 type Variation =
   | 'positive'

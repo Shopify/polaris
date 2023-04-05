@@ -4,7 +4,7 @@ import {ExitMajor} from '@shopify/polaris-icons';
 import {Icon} from '../Icon';
 import {useI18n} from '../../utilities/i18n';
 
-import styles from './FullscreenBar.scss';
+import styles from './FullscreenBar.module.scss';
 
 export interface FullscreenBarProps {
   /** Callback when back button is clicked */

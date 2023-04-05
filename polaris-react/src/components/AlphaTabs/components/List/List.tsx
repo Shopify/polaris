@@ -3,7 +3,7 @@ import type {KeyboardEvent} from 'react';
 
 import {Item} from '../Item';
 import type {AlphaTabProps} from '../../types';
-import styles from '../../AlphaTabs.scss';
+import styles from '../../AlphaTabs.module.scss';
 
 export interface ListProps {
   focusIndex: number;

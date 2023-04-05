@@ -9,7 +9,7 @@ import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {TrapFocus} from '../../../TrapFocus';
 
-import styles from './Dialog.scss';
+import styles from './Dialog.module.scss';
 
 type CSSTransitionProps = React.ComponentProps<typeof CSSTransition>;
 

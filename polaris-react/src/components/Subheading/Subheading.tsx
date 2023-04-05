@@ -2,7 +2,7 @@ import React from 'react';
 
 import type {HeadingTagName} from '../../types';
 
-import styles from './Subheading.scss';
+import styles from './Subheading.module.scss';
 
 export interface SubheadingProps {
   /**

@@ -6,7 +6,7 @@ import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
-import styles from '../../BulkActions.scss';
+import styles from '../../BulkActions.module.scss';
 
 export type BulkActionButtonProps = {
   disclosure?: boolean;

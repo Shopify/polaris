@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
 
-import styles from './Title.scss';
+import styles from './Title.module.scss';
 
 export interface TitleProps {
   /** Page title, in large type */

@@ -12,7 +12,7 @@ import {TrapFocus} from '../TrapFocus';
 import {Portal} from '../Portal';
 import {KeypressListener} from '../KeypressListener';
 
-import styles from './Sheet.scss';
+import styles from './Sheet.module.scss';
 
 const BOTTOM_CLASS_NAMES = {
   enter: classNames(styles.Bottom, styles.enterBottom),

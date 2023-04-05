@@ -4,7 +4,7 @@ import {AlertMinor} from '@shopify/polaris-icons';
 import {Icon} from '../Icon';
 import type {Error} from '../../types';
 
-import styles from './InlineError.scss';
+import styles from './InlineError.module.scss';
 
 export interface InlineErrorProps {
   /** Content briefly explaining how to resolve the invalid form field input. */

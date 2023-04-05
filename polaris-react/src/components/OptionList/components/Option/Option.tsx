@@ -8,7 +8,7 @@ import {Scrollable} from '../../../Scrollable';
 import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 
-import styles from './Option.scss';
+import styles from './Option.module.scss';
 
 type Alignment = 'top' | 'center' | 'bottom';
 

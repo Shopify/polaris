@@ -3,7 +3,7 @@ import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import type {HeadingTagName} from '../../types';
 
-import styles from './DisplayText.scss';
+import styles from './DisplayText.module.scss';
 
 type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 

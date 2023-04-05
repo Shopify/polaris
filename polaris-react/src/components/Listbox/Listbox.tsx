@@ -31,7 +31,7 @@ import {
   Loading,
   TextOption,
 } from './components';
-import styles from './Listbox.scss';
+import styles from './Listbox.module.scss';
 
 export enum AutoSelection {
   /** Default active option is the first selected option. If no options are selected, defaults to first interactive option. */

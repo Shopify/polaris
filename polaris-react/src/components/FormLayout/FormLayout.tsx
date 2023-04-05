@@ -4,7 +4,7 @@ import type {NamedExoticComponent} from 'react';
 import {wrapWithComponent, isElementOfType} from '../../utilities/components';
 
 import {Group, Item} from './components';
-import styles from './FormLayout.scss';
+import styles from './FormLayout.module.scss';
 
 export interface FormLayoutProps {
   /** The content to display inside the layout. */

@@ -5,7 +5,7 @@ import {wrapWithComponent} from '../../../../utilities/components';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {Box} from '../../../Box';
 import {Item} from '../Item';
-import styles from '../../FormLayout.scss';
+import styles from '../../FormLayout.module.scss';
 
 export interface GroupProps {
   children?: React.ReactNode;
