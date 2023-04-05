@@ -3,7 +3,10 @@ import path from 'path';
 
 import {defineConfig} from 'vite';
 
-import {keys} from './config/postcss-plugins';
+import {generateScopedName} from './config/rollup/namespaced-classname-module.mjs';
+
+// WEVE CHANGED THE ACTIONLIST.SCSS FILE TO ACTIONLIST.MODULE.SCSS TO GET THIS WORKING
+// REMEMBER TO CHANGE IT BACK YOU NONCES
 
 const pkg = JSON.parse(
   // eslint-disable-next-line node/no-unsupported-features/node-builtins
@@ -28,22 +31,24 @@ export default defineConfig(() => {
             format: 'cjs',
             dir: path.dirname(pkg.main),
             preserveModules: true,
-            entryFileNames: (chunkInfo) => {
-              console.log(Object.keys(chunkInfo), chunkInfo.type);
-              return `${chunkInfo.name}.js`;
-            },
+            entryFileNames: '[name].js',
             exports: 'named',
+            cssCodeSplit: false,
           },
           {
             format: 'esm',
             dir: path.dirname(pkg.module),
             preserveModules: true,
-            entryFileNames: (chunkInfo) => {
-              console.log(Object.keys(chunkInfo), chunkInfo.type);
-              return `${chunkInfo.name}.js`;
-            },
+            entryFileNames: '[name].js',
+            cssCodeSplit: false,
           },
         ],
+      },
+    },
+    css: {
+      modules: {
+        generateScopedName: generateScopedName({includeHash: false}),
+        globalModulePaths: [/global\.scss$/],
       },
     },
     define: {
