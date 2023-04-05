@@ -53,10 +53,10 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build packages
-        run: yarn build --filter=@shopify/polaris
+        run: yarn build --filter=@shopify/polaris-patterns
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: yarn workspace @shopify/polaris-patterns run storybook:build --quiet
 
       - name: Run accessibility test
         run: node ./polaris-patterns/scripts/accessibility-check.js
@@ -93,10 +93,10 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build packages
-        run: yarn build --filter=@shopify/polaris
+        run: yarn build --filter=@shopify/polaris-patterns
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: yarn workspace @shopify/polaris-patterns run storybook:build --quiet
 
       - name: Run Chromatic tests
         uses: chromaui/action@v1

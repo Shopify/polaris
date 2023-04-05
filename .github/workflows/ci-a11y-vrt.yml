@@ -1,4 +1,4 @@
-name: Accessibility and Visual Regression Tests
+name: Polaris React Accessibility and Visual Regression Tests
 
 on:
   push:
@@ -98,7 +98,7 @@ jobs:
       - name: Build Storybook
         run: yarn workspace @shopify/polaris run storybook:build --quiet
 
-      - name: Run polaris-react Chromatic tests
+      - name: Run Chromatic tests
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -108,4 +108,4 @@ jobs:
           exitZeroOnChanges: true
           exitOnceUploaded: true
         env:
-          STORYBOOK_GITHUB_SHA: ${{ github.sha }
+          STORYBOOK_GITHUB_SHA: ${{ github.sha }}
