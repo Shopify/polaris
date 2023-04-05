@@ -74,7 +74,6 @@
     "@storybook/addon-viewport": "^6.5.12",
     "@storybook/react": "^6.5.12",
     "change-case": "^3.1.0",
-    "create-file-webpack": "^1.0.2",
     "globby": "^11.1.0",
     "node-sass": "^7.0.1",
     "postcss": "^8.3.1",
