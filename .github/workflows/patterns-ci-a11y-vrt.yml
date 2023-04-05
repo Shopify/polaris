@@ -1,19 +1,19 @@
-name: Accessibility and Visual Regression Tests
+name: Polaris Patterns Accessibility and Visual Regression Tests
 
 on:
   push:
     branches:
       - main
-      - next
+      - polaris-patterns
     paths:
       - 'polaris-react/src/**'
-      - 'polaris-react/playground/**'
       - 'polaris-tokens/src/**'
+      - 'polaris-patterns/src/**'
   pull_request:
     paths:
       - 'polaris-react/src/**'
-      - 'polaris-react/playground/**'
       - 'polaris-tokens/src/**'
+      - 'polaris-patterns/src/**'
 
 jobs:
   accessibility_test:
@@ -44,7 +44,7 @@ jobs:
           path: |
             **/.turbo
             node_modules/.cache/turbo
-            polaris-react/build-internal/cache
+            polaris-patterns/build-internal/cache
           key: ${{ runner.os }}-accessibility-test-v1-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-accessibility-test-v1-
@@ -59,7 +59,7 @@ jobs:
         run: yarn workspace @shopify/polaris run storybook:build --quiet
 
       - name: Run accessibility test
-        run: node ./polaris-react/scripts/accessibility-check.js
+        run: node ./polaris-patterns/scripts/accessibility-check.js
         env:
           STORYBOOK_DISABLE_DOCS: 1
 
@@ -84,7 +84,7 @@ jobs:
           path: |
             **/.turbo
             node_modules/.cache/turbo
-            polaris-react/build-internal/cache
+            polaris-patterns/build-internal/cache
           key: ${{ runner.os }}-visual-regression-test-v1-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-visual-regression-test-v1-
@@ -98,14 +98,14 @@ jobs:
       - name: Build Storybook
         run: yarn workspace @shopify/polaris run storybook:build --quiet
 
-      - name: Run polaris-react Chromatic tests
+      - name: Run Chromatic tests
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           autoAcceptChanges: 'main'
-          storybookBuildDir: 'polaris-react/build-internal/storybook/static'
+          storybookBuildDir: 'polaris-patterns/build-internal/storybook/static'
           exitZeroOnChanges: true
           exitOnceUploaded: true
         env:
-          STORYBOOK_GITHUB_SHA: ${{ github.sha }
+          STORYBOOK_GITHUB_SHA: ${{ github.sha }}
