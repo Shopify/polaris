@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Azioni"
+      "popoverButton": "Azioni",
+      "dismissButton": "Ignora"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

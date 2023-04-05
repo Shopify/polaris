@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "動作"
+      "popoverButton": "動作",
+      "dismissButton": "關閉"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

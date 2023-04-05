@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "İşlemler"
+      "popoverButton": "İşlemler",
+      "dismissButton": "Kapat"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

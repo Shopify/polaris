@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "การดำเนินการ"
+      "popoverButton": "การดำเนินการ",
+      "dismissButton": "ปิด"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "작업"
+      "popoverButton": "작업",
+      "dismissButton": "무시"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
