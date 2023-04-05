@@ -251,12 +251,12 @@ It’s better for [internationalization](/foundations/internationalization) to h
 
 #### Do
 
-- Learn more about [Fraud Protect](https://www.shopify.com/fraud-protect).
+- Avoid chargeback costs with [Shopify Protect](https://www.shopify.com/fraud-protect).
 - Manage the [channels](/) you use to sell products and services.
 
 #### Don’t
 
-- [Learn more about Fraud Protect](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+- [Learn more about Shopify Protect](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 - [Manage the channels](/) you use to sell products and services.
 
 <!-- end -->
