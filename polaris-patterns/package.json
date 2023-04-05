@@ -84,7 +84,8 @@
     "react": "^18.2.0",
     "sass-loader": "^12.4.0",
     "webpack": "5",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "chromatic": "^6.17.3"
   },
   "browserslist": [
     "last 3 chrome versions",
