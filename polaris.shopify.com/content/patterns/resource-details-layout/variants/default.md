@@ -112,11 +112,11 @@ function ResourceDetailsLayout() {
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
                 <Bleed marginInline={{xs: 4, sm: 5}}>
-                  <Divider borderStyle="divider" />
+                  <Divider borderStyle="border-subdued" />
                 </Bleed>
               </Box>
               <SkeletonLabel />
-              <Divider borderStyle="divider" />
+              <Divider borderStyle="border-subdued" />
               <SkeletonBodyText />
             </AlphaStack>
           </AlphaCard>
