@@ -87,7 +87,7 @@ $spinner-size: 20px;
   @media #{$p-breakpoints-md-down} {
     position: relative;
     padding: var(--p-space-3) var(--p-space-4);
-    border-left: var(--p-border-divider);
+    border-left: var(--p-border-width-1) solid var(--p-color-border-subdued);
     gap: var(--p-space-2);
 
     &::before {
