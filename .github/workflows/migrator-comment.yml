@@ -25,7 +25,7 @@ jobs:
         run: git fetch --all
 
       - name: Checkout the feature branch
-        run: git checkout ${{ github.head_ref }}
+        run: git checkout ${{ github.head_ref }} --no-guess
 
       - name: Check for generic migrator comment in diff
         run: |
