@@ -162,6 +162,10 @@ export function FilterPill({
     </Button>
   );
 
+  if (disabled) {
+    return null;
+  }
+
   return (
     <div ref={elementRef}>
       <Popover

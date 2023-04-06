@@ -129,8 +129,6 @@ export function Filters({
   const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
   const hasMounted = useRef(false);
 
-  const enabledFilters = filters.filter((filter) => !filter.disabled);
-
   useEffect(() => {
     hasMounted.current = true;
   });
@@ -143,14 +141,14 @@ export function Filters({
   };
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
 
-  const pinnedFiltersFromPropsAndAppliedFilters = enabledFilters.filter(
+  const pinnedFiltersFromPropsAndAppliedFilters = filters.filter(
     ({pinned, key}) =>
       (Boolean(pinned) || appliedFilterKeys?.includes(key)) &&
       // Filters that are pinned in local state display at the end of our list
       !localPinnedFilters.find((filterKey) => filterKey === key),
   );
   const pinnedFiltersFromLocalState = localPinnedFilters
-    .map((key) => enabledFilters.find((filter) => filter.key === key))
+    .map((key) => filters.find((filter) => filter.key === key))
     .reduce<FilterInterface[]>(
       (acc, filter) => (filter ? [...acc, filter] : acc),
       [],
@@ -161,7 +159,7 @@ export function Filters({
     ...pinnedFiltersFromLocalState,
   ];
 
-  const additionalFilters = enabledFilters
+  const additionalFilters = filters
     .filter((filter) => !pinnedFilters.find(({key}) => key === filter.key))
     .map((filter) => ({
       content: filter.label,
@@ -204,7 +202,7 @@ export function Filters({
     onClearAll?.();
   };
 
-  const shouldShowAddButton = enabledFilters.some((filter) => !filter.pinned);
+  const shouldShowAddButton = filters.some((filter) => !filter.pinned);
 
   const additionalContent = useMemo(() => {
     return (

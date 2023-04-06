@@ -140,7 +140,7 @@ describe('<Filters />', () => {
     });
   });
 
-  it('will not render a disabled filter', () => {
+  it('will not render a disabled filter if pinned', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
     const filters = [
@@ -148,7 +148,7 @@ describe('<Filters />', () => {
       {
         key: 'disabled',
         label: 'Disabled',
-        pinned: false,
+        pinned: true,
         disabled: true,
         filter: <div>Filter</div>,
       },
@@ -157,6 +157,8 @@ describe('<Filters />', () => {
     const wrapper = mountWithApp(
       <Filters {...defaultProps} filters={filters} />,
     );
+
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
 
     wrapper.act(() => {
       wrapper
@@ -173,10 +175,6 @@ describe('<Filters />', () => {
       ],
     });
 
-    expect(wrapper).not.toContainReactComponent(ActionList, {
-      items: expect.arrayContaining([
-        expect.objectContaining({content: 'Disabled'}),
-      ]),
-    });
+    expect(wrapper.findAll(FilterPill)[1].domNode).toBeNull();
   });
 });
