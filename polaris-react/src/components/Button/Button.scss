@@ -244,9 +244,9 @@
 
 .primaryPlain {
   // stylelint-disable -- Polaris component custom properties
-  --pc-button-color: var(--p-color-bg-interactive-subdued-active);
-  --pc-button-text: var(--p-color-text-interactive-hover);
-  --pc-button-color-hover: var(--p-color-bg-interactive-subdued-active);
+  --pc-button-color: var(--p-color-bg-interactive-subdued);
+  --pc-button-text: var(--p-color-text-interactive);
+  --pc-button-color-hover: var(--p-color-bg-interactive-subdued-hover);
   --pc-button-color-active: var(--p-color-bg-interactive-subdued-active);
   --pc-button-color-depressed: var(--p-surface-selected-depressed);
   // stylelint-enable
