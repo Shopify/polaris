@@ -612,7 +612,7 @@ export function WithPinnedFilters() {
   }
 
   return (
-    <Card>
+    <Card padding="0">
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
@@ -896,7 +896,7 @@ export function Disabled() {
   }
 
   return (
-    <Card>
+    <Card padding="0">
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
