@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {AppProvider} from '@shopify/polaris';
+import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {breakpoints} from '@shopify/polaris-tokens';
 
