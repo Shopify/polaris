@@ -23,7 +23,7 @@ $item-wrapper-loading-height: 64px;
   }
 
   + .ResourceList {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   }
 }
 
@@ -36,7 +36,7 @@ $item-wrapper-loading-height: 64px;
   border-top-right-radius: var(--p-border-radius-2);
 
   + .ResourceList {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   }
 }
 
@@ -239,7 +239,7 @@ $item-wrapper-loading-height: 64px;
   max-width: 100%;
 
   + .ItemWrapper {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   }
 }
 
