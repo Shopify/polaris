@@ -26,6 +26,9 @@ examples:
   - fileName: index-filters-with-no-filters.tsx
     title: With no filters
     description: An IndexFilters component with only view management, search, and sorting.
+  - fileName: index-filters-with-no-search-or-filters.tsx
+    title: With no search or filters
+    description: An IndexFilters component with only view management and sorting.
 ---
 
 Merchants use filters to:
