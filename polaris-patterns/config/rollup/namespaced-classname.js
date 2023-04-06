@@ -49,7 +49,7 @@ function isComponent(className) {
 }
 
 function polarisClassName(className) {
-  return `Polaris-${className}`;
+  return `Polaris-Patterns-${className}`;
 }
 
 function subcomponentClassName(component, subcomponent) {
