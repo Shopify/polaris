@@ -7,21 +7,17 @@ function DividerWithBorderStylesExample() {
   return (
     <AlphaStack gap="5">
       <Text as="p" variant="bodyMd">
-        Base
+        Border subdued
       </Text>
-      <Divider borderStyle="base" />
+      <Divider borderStyle="border-subdued" />
       <Text as="p" variant="bodyMd">
-        Dark
+        Border
       </Text>
-      <Divider borderStyle="dark" />
+      <Divider borderStyle="border" />
       <Text as="p" variant="bodyMd">
-        Divider
+        Border inverse
       </Text>
-      <Divider borderStyle="divider" />
-      <Text as="p" variant="bodyMd">
-        Divider on dark
-      </Text>
-      <Divider borderStyle="divider-on-dark" />
+      <Divider borderStyle="border-inverse" />
       <Text as="p" variant="bodyMd">
         Transparent
       </Text>

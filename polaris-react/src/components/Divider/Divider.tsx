@@ -3,10 +3,9 @@ import React from 'react';
 import styles from './Divider.scss';
 
 export type BorderTokenAlias =
-  | 'base'
-  | 'dark'
-  | 'divider'
-  | 'divider-on-dark'
+  | 'border-subdued'
+  | 'border'
+  | 'border-inverse'
   | 'transparent';
 
 export interface DividerProps {
@@ -14,10 +13,10 @@ export interface DividerProps {
   borderStyle?: BorderTokenAlias;
 }
 
-export const Divider = ({borderStyle = 'divider'}: DividerProps) => {
+export const Divider = ({borderStyle = 'border-subdued'}: DividerProps) => {
   const style = {
     '--pc-divider-border-style': borderStyle
-      ? `var(--p-border-${borderStyle})`
+      ? `var(--p-border-width-1) solid var(--p-color-${borderStyle})`
       : undefined,
   } as React.CSSProperties;
 

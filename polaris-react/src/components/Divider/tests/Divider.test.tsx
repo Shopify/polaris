@@ -16,7 +16,7 @@ describe('<Divider />', () => {
   });
 
   it('renders custom style when passed in', () => {
-    const divider = mountWithApp(<Divider borderStyle="dark" />);
+    const divider = mountWithApp(<Divider borderStyle="border" />);
 
     expect(divider).toContainReactComponent('hr', {
       style: expect.objectContaining({
