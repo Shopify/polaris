@@ -195,6 +195,7 @@ function SecondaryActionFrom({action}: {action: Action}) {
         className={styles.SecondaryAction}
         url={action.url}
         external={action.external}
+        target={action.target}
       >
         <span className={styles.Text}>{action.content}</span>
       </UnstyledLink>
