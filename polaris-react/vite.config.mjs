@@ -53,7 +53,7 @@ export default defineConfig(() => {
       },
     },
     define: {
-      '{{POLARIS_VERSION}}': pkg.version,
+      '{{POLARIS_VERSION}}': `"${pkg.version}"`,
     },
   };
 });

@@ -64,7 +64,7 @@ export const globalTypes = {
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
-      showName: true,
+      title: 'React.StrictMode',
     },
   },
   profiler: {
@@ -75,7 +75,7 @@ export const globalTypes = {
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
-      showName: true,
+      title: 'React.Profiler',
     },
   },
   ...gridOptions,

@@ -1,7 +1,7 @@
 import React from 'react';
-import {AddonPanel, ArgsTable} from '@storybook/components';
-import {addons, types} from '@storybook/addons';
-import {useGlobals} from '@storybook/api';
+import {AddonPanel} from '@storybook/components';
+import {addons, types} from '@storybook/manager-api';
+// import {useGlobals} from '@storybook/api';
 import {create} from '@storybook/theming';
 
 const colors = {
@@ -89,16 +89,17 @@ export const gridOptions = {
 };
 
 function GridPanel(props) {
-  const [globals, updateGlobals] = useGlobals();
+  // const [globals, updateGlobals] = useGlobals();
 
   return (
     <AddonPanel {...props}>
-      <ArgsTable
-        inAddonPanel
-        rows={gridOptions}
-        args={globals}
-        updateArgs={updateGlobals}
-      />
+      Hello world
+      {/* <ArgsTable */}
+      {/*   inAddonPanel */}
+      {/*   rows={gridOptions} */}
+      {/*   args={globals} */}
+      {/*   updateArgs={updateGlobals} */}
+      {/* /> */}
     </AddonPanel>
   );
 }

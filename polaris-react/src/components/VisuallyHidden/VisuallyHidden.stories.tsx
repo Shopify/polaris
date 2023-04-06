@@ -1,12 +1,10 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  LegacyCard,
-  FormLayout,
-  Heading,
-  TextField,
-  VisuallyHidden,
-} from '@shopify/polaris';
+import {LegacyCard} from '../LegacyCard';
+import {FormLayout} from '../FormLayout';
+import {Heading} from '../Heading';
+import {TextField} from '../TextField';
+import {VisuallyHidden} from '.';
 
 export default {
   component: VisuallyHidden,

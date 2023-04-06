@@ -7,12 +7,19 @@ interface Stories {
 }
 
 const stories: Stories = {};
-const req = require.context('../src/components', true, /.stories.tsx$/);
-req.keys().forEach((filePath) =>
-  req(filePath).__namedExportsOrder.forEach((namedExport: string) => {
-    const componentName = `${filePath.split('/')[1]}:${namedExport}`;
-    stories[componentName] = req(filePath)[namedExport];
-  }),
+// @ts-expect-error import.meta.glob is a Vite-only equivalent of
+// require.context
+const modules = import.meta.glob('../src/components/**/*.stories.tsx', {
+  eager: true,
+});
+console.log(Object.keys(modules));
+Object.entries(modules).forEach(
+  ([filePath, namedExports]: [string, {string: any}]) => {
+    Object.entries(namedExports).forEach(([name, Story]) => {
+      const componentName = `${filePath.split('/')[1]}:${name}`;
+      stories[componentName] = Story;
+    });
+  },
 );
 
 export function KitchenSink() {
