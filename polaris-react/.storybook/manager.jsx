@@ -1,7 +1,8 @@
 import React from 'react';
 import {AddonPanel} from '@storybook/components';
+import {PureArgsTable} from '@storybook/blocks';
 import {addons, types} from '@storybook/manager-api';
-// import {useGlobals} from '@storybook/api';
+import {useGlobals} from '@storybook/api';
 import {create} from '@storybook/theming';
 
 const colors = {
@@ -50,8 +51,8 @@ addons.setConfig({
   }),
 });
 
-addons.register('polaris/global-controls', () => {
-  addons.add('grid/panel', {
+addons.register('global-controls', () => {
+  addons.add('global-controls/panel', {
     type: types.PANEL,
     title: 'Grid',
     match: ({viewMode}) => viewMode === 'story',
@@ -89,17 +90,17 @@ export const gridOptions = {
 };
 
 function GridPanel(props) {
-  // const [globals, updateGlobals] = useGlobals();
+  const [globals, updateGlobals] = useGlobals();
 
   return (
     <AddonPanel {...props}>
       Hello world
-      {/* <ArgsTable */}
-      {/*   inAddonPanel */}
-      {/*   rows={gridOptions} */}
-      {/*   args={globals} */}
-      {/*   updateArgs={updateGlobals} */}
-      {/* /> */}
+      <PureArgsTable
+        inAddonPanel
+        rows={gridOptions}
+        args={globals}
+        updateArgs={updateGlobals}
+      />
     </AddonPanel>
   );
 }

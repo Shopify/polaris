@@ -12,12 +12,13 @@ const stories: Stories = {};
 const modules = import.meta.glob('../src/components/**/*.stories.tsx', {
   eager: true,
 });
-console.log(Object.keys(modules));
 Object.entries(modules).forEach(
-  ([filePath, namedExports]: [string, {string: any}]) => {
-    Object.entries(namedExports).forEach(([name, Story]) => {
-      const componentName = `${filePath.split('/')[1]}:${name}`;
-      stories[componentName] = Story;
+  ([filePath, mod]: [string, {[key: string]: any}]) => {
+    mod.__namedExportsOrder.forEach((name: string) => {
+      const componentName = `${
+        filePath.replace('../src/components/', '').split('/')[0]
+      }:${name}`;
+      stories[componentName] = mod[name];
     });
   },
 );
