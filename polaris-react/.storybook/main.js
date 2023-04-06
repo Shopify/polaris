@@ -21,6 +21,7 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-toolbars',
     '@storybook/addon-viewport',
+    './preset.js',
   ],
   async viteFinal(config) {
     return mergeConfig(config, {
