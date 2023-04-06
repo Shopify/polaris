@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixed IndexFilter Clear Button textAllign to be left alligned
+Fixed IndexFilter popover's clear button text to be left alligned
