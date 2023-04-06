@@ -80,7 +80,7 @@ export interface AlphaFiltersProps {
   /** Whether the query field is focused. */
   focused?: boolean;
   /** Available filters added to the filter bar. Shortcut filters are pinned to the front of the bar. */
-  filters: FilterInterface[];
+  filters?: FilterInterface[];
   sections?: Section[];
   /** Applied filters which are rendered as filter pills. The remove callback is called with the respective key. */
   appliedFilters?: AppliedFilterInterface[];

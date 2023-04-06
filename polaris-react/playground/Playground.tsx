@@ -12,13 +12,20 @@ import {
 
 export function Playground() {
   const [accountStatus, setAccountStatus] = useState(null);
+  const [deliveryShipped, setDeliveryShipped] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
   const [taggedWith, setTaggedWith] = useState(null);
+  const [deliveryNotes, setDeliveryNotes] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
-  const [manage, setManage] = useState(false);
+  const [manageFilters, setManageFilters] = useState(false);
+
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
+    [],
+  );
+  const handleDeliveryShippedChange = useCallback(
+    (value) => setDeliveryShipped(value),
     [],
   );
   const handleMoneySpentChange = useCallback(
@@ -29,6 +36,10 @@ export function Playground() {
     (value) => setTaggedWith(value),
     [],
   );
+  const handleDeliveryNotesChange = useCallback(
+    (value) => setDeliveryNotes(value),
+    [],
+  );
   const handleFiltersQueryChange = useCallback(
     (value) => setQueryValue(value),
     [],
@@ -37,19 +48,28 @@ export function Playground() {
     () => setAccountStatus(null),
     [],
   );
+  const handleDeliveryShippedRemove = useCallback(
+    () => setDeliveryShipped(null),
+    [],
+  );
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleDeliveryNotesRemove = useCallback(() => setDeliveryNotes(null), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
     handleTaggedWithRemove();
     handleQueryValueRemove();
+    handleDeliveryShippedRemove();
+    handleDeliveryNotesRemove();
   }, [
     handleAccountStatusRemove,
     handleMoneySpentRemove,
     handleQueryValueRemove,
     handleTaggedWithRemove,
+    handleDeliveryShippedRemove,
+    handleDeliveryNotesRemove,
   ]);
 
   const filters = [
@@ -105,8 +125,46 @@ export function Playground() {
           onChange={handleMoneySpentChange}
         />
       ),
+      shortcut: true,
+      pinnned: true,
     },
   ];
+
+  const metafieldFilters = [
+    {
+      key: 'deliveryShipped',
+      label: 'Delivery shipped',
+      filter: (
+            <ChoiceList
+            title="Delivery shipped"
+            titleHidden
+            choices={[
+              {value: 'true', label: 'True'},
+              {value: 'false', label: 'False'},
+            ]}
+            selected={deliveryShipped || []}
+            onChange={handleDeliveryShippedChange}
+          />
+      ),
+    },
+    {
+      key: 'deliveryNotes',
+      label: 'Delivery notes',
+      filter: (
+        <TextField
+          label="Tagged with"
+          value={deliveryNotes}
+          onChange={handleDeliveryNotesChange}
+          autoComplete="off"
+          labelHidden
+        />
+      ),
+      shortcut: true,
+      pinned: true,
+    }
+  ];
+
+
 
   const appliedFilters = [];
   if (!isEmpty(accountStatus)) {
@@ -133,11 +191,34 @@ export function Playground() {
       onRemove: handleTaggedWithRemove,
     });
   }
+  if (!isEmpty(deliveryNotes)) {
+    const key = 'deliveryNotes';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, deliveryNotes),
+      onRemove: handleDeliveryNotesRemove,
+    });
+  }
+  if (!isEmpty(deliveryShipped)) {
+    const key = 'deliveryShipped';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, deliveryShipped),
+      onRemove: handleDeliveryShippedRemove,
+    });
+  }
+
+  const createdMetafields = {
+
+  }
+
 
   return (
     <div style={{height: '568px'}}>
       <LegacyCard>
-        <ResourceList
+        {manageFilters ? (
+          <div>
+            <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
             <AlphaFilters
@@ -146,12 +227,12 @@ export function Playground() {
               filters={filters}
               sections={[
                 {
-                  title: 'Metafields',
+                  title: 'Manage Filters',
                   titleAction: {
-                    content: 'Manage',
-                    onAction: () => setManage(true),
+                    content: 'Back',
+                    onAction: () => setManageFilters(false),
                   },
-                  filters,
+                  filters: metafieldFilters,
                 },
               ]}
               appliedFilters={appliedFilters}
@@ -194,6 +275,69 @@ export function Playground() {
             );
           }}
         />
+          </div>
+        ) : (
+          <div>
+            <ResourceList
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          filterControl={
+            <AlphaFilters
+              queryValue={queryValue}
+              queryPlaceholder="Searching in all"
+              filters={filters}
+              sections={[
+                {
+                  title: 'Metafields',
+                  titleAction: {
+                    content: 'Manage',
+                    onAction: () => setManageFilters(true),
+                  },
+                  filters: metafieldFilters,
+                },
+              ]}
+              appliedFilters={appliedFilters}
+              onQueryChange={handleFiltersQueryChange}
+              onQueryClear={handleQueryValueRemove}
+              onClearAll={handleFiltersClearAll}
+            />
+          }
+          flushFilters
+          items={[
+            {
+              id: 341,
+              url: '#',
+              name: 'Mae Jemison',
+              location: 'Decatur, USA',
+            },
+            {
+              id: 256,
+              url: '#',
+              name: 'Ellen Ochoa',
+              location: 'Los Angeles, USA',
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, location} = item;
+            const media = <Avatar customer size="medium" name={name} />;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <Text as="h3" fontWeight="bold">
+                  {name}
+                </Text>
+                <div>{location}</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+          </div>
+        )}
+
       </LegacyCard>
     </div>
   );
@@ -204,8 +348,12 @@ export function Playground() {
         return `Money spent is between $${value[0]} and $${value[1]}`;
       case 'taggedWith':
         return `Tagged with ${value}`;
+        case 'deliveryNotes':
+        return `Delivery notes: ${value}`;
       case 'accountStatus':
         return value.map((val) => `Customer ${val}`).join(', ');
+      case 'deliveryShipped':
+        return `Has it been delivered? ${value}`;
       default:
         return value;
     }
