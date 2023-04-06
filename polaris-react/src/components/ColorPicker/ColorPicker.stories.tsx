@@ -75,7 +75,7 @@ export function WithHexTextField() {
       minHeight: 'calc(100% - 0.125rem)',
       aspectRatio: '1 / 1',
       borderRadius: 'var(--p-border-radius-1)',
-      border: 'var(--p-border-divider)',
+      border: 'var(--p-border-width-1) solid var(--p-color-border-subdued)',
       backgroundColor: hsbToHex(color),
     },
     TextField: {
