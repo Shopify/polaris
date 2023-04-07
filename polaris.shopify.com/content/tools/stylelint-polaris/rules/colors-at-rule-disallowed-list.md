@@ -10,7 +10,7 @@ keywords:
 ```diff
 // Do
 + svg {
-+ fill: var(--p-icon-subdued);
++   fill: var(--p-icon-subdued);
 +}
 
 // Don't
