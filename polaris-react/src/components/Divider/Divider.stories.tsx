@@ -10,25 +10,21 @@ export function Default() {
   return <Divider />;
 }
 
-export function WithBorderStyles() {
+export function WithBorderColor() {
   return (
     <AlphaStack gap="5">
       <Text as="h1" variant="headingXs">
         Border subdued
       </Text>
-      <Divider borderStyle="border-subdued" />
+      <Divider borderColor="border-subdued" />
       <Text as="h1" variant="headingXs">
         Border
       </Text>
-      <Divider borderStyle="border" />
+      <Divider borderColor="border" />
       <Text as="h1" variant="headingXs">
         Border inverse
       </Text>
-      <Divider borderStyle="border-inverse" />
-      <Text as="h1" variant="headingXs">
-        Transparent
-      </Text>
-      <Divider borderStyle="transparent" />
+      <Divider borderColor="border-inverse" />
     </AlphaStack>
   );
 }

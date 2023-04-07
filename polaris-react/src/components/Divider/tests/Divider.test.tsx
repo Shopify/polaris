@@ -15,8 +15,8 @@ describe('<Divider />', () => {
     });
   });
 
-  it('renders custom style when passed in', () => {
-    const divider = mountWithApp(<Divider borderStyle="border" />);
+  it('renders custom border color when passed in', () => {
+    const divider = mountWithApp(<Divider borderColor="border" />);
 
     expect(divider).toContainReactComponent('hr', {
       style: expect.objectContaining({
