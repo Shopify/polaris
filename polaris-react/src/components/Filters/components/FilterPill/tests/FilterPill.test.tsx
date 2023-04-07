@@ -68,11 +68,9 @@ describe('<Filters />', () => {
       });
     });
 
-    it('will pass the disabled prop to the activator', () => {
+    it('will return null if disabled', () => {
       const wrapper = mountWithApp(<FilterPill {...defaultProps} disabled />);
-      expect(wrapper).toContainReactComponent(UnstyledButton, {
-        disabled: true,
-      });
+      expect(wrapper!.domNode).toBeNull();
     });
 
     it('will invoked the onClick prop when clicked, if present', () => {
