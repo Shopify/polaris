@@ -2,9 +2,9 @@
 
 .ContextualSaveBar {
   /* stylelint-disable -- polaris: Used to apply dark theme to action buttons */
-  --p-color-bg-subdued: var(--p-color-bg-inverse);
+  --p-color-bg: var(--p-color-bg-inverse);
   --p-color-text: var(--p-color-text-inverse);
-  --p-color-bg-subdued-hover: var(--p-color-bg-inverse-hover);
+  --p-color-bg-hover: var(--p-color-bg-inverse-hover);
   --p-color-bg-subdued-active: var(--p-color-bg-inverse-active);
   /* stylelint-enable */
   display: flex;
