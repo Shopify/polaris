@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.42.1
+
+### Patch Changes
+
+- [#8889](https://github.com/Shopify/polaris/pull/8889) [`d7d0462c7`](https://github.com/Shopify/polaris/commit/d7d0462c72a2541b43504aa214e7f827fc370cc2) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated `ContextualSaveBar` button `color` overrides
+
 ## 10.42.0
 
 ### Minor Changes
