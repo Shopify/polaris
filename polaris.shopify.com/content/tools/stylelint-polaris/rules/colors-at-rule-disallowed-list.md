@@ -14,7 +14,5 @@ keywords:
 +}
 
 // Don't
-- svg {
--  @include recolor-icon(--p-text-subdued);
--}
+- @include recolor-icon(--p-text-subdued);
 ```
