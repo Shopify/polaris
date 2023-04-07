@@ -1,5 +1,41 @@
 # Changelog
 
+## 10.42.1
+
+### Patch Changes
+
+- [#8889](https://github.com/Shopify/polaris/pull/8889) [`d7d0462c7`](https://github.com/Shopify/polaris/commit/d7d0462c72a2541b43504aa214e7f827fc370cc2) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated `ContextualSaveBar` button `color` overrides
+
+## 10.42.0
+
+### Minor Changes
+
+- [#8864](https://github.com/Shopify/polaris/pull/8864) [`5adc08f2d`](https://github.com/Shopify/polaris/commit/5adc08f2d7a29ffa40bfb88f7da6366068db2f44) Thanks [@bowen9284](https://github.com/bowen9284)! - Added support for setting a `target` on anchors rendered by `Button`, `Link`, `UnstyledButton` and `UnstyledLink`
+
+* [#8777](https://github.com/Shopify/polaris/pull/8777) [`d5ded2239`](https://github.com/Shopify/polaris/commit/d5ded22398024936d5e0450be169b3b4c4e06516) Thanks [@eric-blue](https://github.com/eric-blue)! - Added onDismiss callback to MediaCard
+
+- [#8873](https://github.com/Shopify/polaris/pull/8873) [`8a14f157f`](https://github.com/Shopify/polaris/commit/8a14f157fecde890321946e00e9f80bbd946ed85) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Update background color of active tab on index table to have more contrast. Also tweaked the hover state to better match this change.
+
+* [#8882](https://github.com/Shopify/polaris/pull/8882) [`6fdf22efc`](https://github.com/Shopify/polaris/commit/6fdf22efc682236652b3a9376ece70e6cd121644) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - revert basic button background back to white
+
+- [#8872](https://github.com/Shopify/polaris/pull/8872) [`0eb1a9173`](https://github.com/Shopify/polaris/commit/0eb1a91732942774533cc566585458f56dd8ede1) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Remove background overrides from banner buttons so they use default style
+
+* [#8863](https://github.com/Shopify/polaris/pull/8863) [`b63809227`](https://github.com/Shopify/polaris/commit/b6380922704e4d61e783429e1af21cf644d9daf1) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated `InlineError` and `Toast` components to use `DiamondAlertMinor` icon
+
+### Patch Changes
+
+- [#8841](https://github.com/Shopify/polaris/pull/8841) [`1803c7a2a`](https://github.com/Shopify/polaris/commit/1803c7a2aba57c11cfe8e0e7a0647318fa9867c9) Thanks [@martenbjork](https://github.com/martenbjork)! - Tweaked the margin of the "Clear all" link in the `AlphaFilters` component and fixed the focus outline on the `FilterPill`.
+
+* [#8776](https://github.com/Shopify/polaris/pull/8776) [`7a6a91dce`](https://github.com/Shopify/polaris/commit/7a6a91dce2d41110e439ba889143becc4b17e3c8) Thanks [@rdott](https://github.com/rdott)! - Fixed `IndexTable.Row` being selectable on small screens
+
+- [#8875](https://github.com/Shopify/polaris/pull/8875) [`81a2ab697`](https://github.com/Shopify/polaris/commit/81a2ab69767d0c86ab170126f645a09f5d03f1ab) Thanks [@melodyhabbouche](https://github.com/melodyhabbouche)! - Fixed IndexFilter popover's clear button text to be left alligned
+
+* [#8858](https://github.com/Shopify/polaris/pull/8858) [`d479fb08a`](https://github.com/Shopify/polaris/commit/d479fb08a287a0c9f28ca65a15802120350b505b) Thanks [@martenbjork](https://github.com/martenbjork)! - Fixed a type error in the TextField component
+
+- [#8839](https://github.com/Shopify/polaris/pull/8839) [`413380853`](https://github.com/Shopify/polaris/commit/41338085320a9e2ff65c39fceca1c0a2851623c3) Thanks [@martenbjork](https://github.com/martenbjork)! - Changed easing of Tooltips to use ease-out instead of ease-in
+
+* [#8846](https://github.com/Shopify/polaris/pull/8846) [`bfa0ce8de`](https://github.com/Shopify/polaris/commit/bfa0ce8de3c6336c3fdd74b355bb79cc2b9ff1c5) Thanks [@stefanlegg](https://github.com/stefanlegg)! - Support wrapping long titles in Banner
+
 ## 10.41.0
 
 ### Minor Changes
