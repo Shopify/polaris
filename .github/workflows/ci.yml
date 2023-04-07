@@ -51,7 +51,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build packages
-        run: yarn build
+        run: yarn build --filter=[HEAD^1]
 
       - name: Lint
         run: yarn lint --filter=[HEAD^1]
