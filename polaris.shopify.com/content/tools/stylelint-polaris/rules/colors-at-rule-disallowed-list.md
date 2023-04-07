@@ -9,7 +9,10 @@ keywords:
 
 ```diff
 // Do
-+ fill: var(--p-icon-subdued);
++ svg {
++   fill: var(--p-icon-subdued);
++}
+
 // Don't
-- fill: recolor-icon(--p-text-subdued);
+- @include recolor-icon(--p-text-subdued);
 ```
