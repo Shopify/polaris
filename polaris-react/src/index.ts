@@ -48,12 +48,6 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
-export {AlphaFilters} from './components/AlphaFilters';
-export type {AlphaFiltersProps} from './components/AlphaFilters';
-
-export {AlphaTabs} from './components/AlphaTabs';
-export type {AlphaTabsProps, AlphaTabProps} from './components/AlphaTabs';
-
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
 
@@ -363,7 +357,7 @@ export {Sticky} from './components/Sticky';
 export type {StickyProps} from './components/Sticky';
 
 export {Tabs} from './components/Tabs';
-export type {TabsProps} from './components/Tabs';
+export type {TabsProps, TabProps} from './components/Tabs';
 
 export {Tag} from './components/Tag';
 export type {TagProps} from './components/Tag';
