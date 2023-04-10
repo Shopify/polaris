@@ -53,9 +53,9 @@ export interface HeaderProps extends TitleProps {
   /** Page-level pagination */
   pagination?: PaginationProps;
   /** @deprecated Collection of breadcrumbs */
-  breadcrumbs?: BreadcrumbsProps['breadcrumbs'] | 'placeholder';
+  breadcrumbs?: BreadcrumbsProps['breadcrumbs'] | 'loading';
   /** A back action link */
-  backAction?: BreadcrumbsProps['backAction'] | 'placeholder';
+  backAction?: BreadcrumbsProps['backAction'] | 'loading';
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
@@ -116,7 +116,9 @@ export function Header({
     breadcrumbMarkup = (
       <div className={styles.BreadcrumbWrapper}>
         <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-          <Breadcrumbs backAction={backAction} />
+          <Breadcrumbs
+            {...(backAction === 'loading' ? {loading: true} : {backAction})}
+          />
         </Box>
       </div>
     );
@@ -127,33 +129,20 @@ export function Header({
     breadcrumbMarkup = (
       <div className={styles.BreadcrumbWrapper}>
         <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-          <Breadcrumbs breadcrumbs={breadcrumbs} />
+          <Breadcrumbs
+            {...(breadcrumbs === 'loading' ? {loading: true} : {breadcrumbs})}
+          />
         </Box>
       </div>
     );
   }
-
-  if (breadcrumbs === 'placeholder' || backAction === 'placeholder') {
-    breadcrumbMarkup = (
-      <Inline gap="4">
-        <Box
-          borderRadius="1"
-          background="surface-neutral"
-          minHeight="2.25rem"
-          maxHeight="2.25rem"
-          minWidth="2.25rem"
-          maxWidth="2.25rem"
-        />
-        <div />
-      </Inline>
-    );
-  }
+  const {loading, ...paginationProps} = pagination || {};
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
       <div className={styles.PaginationWrapper}>
         <Box printHidden>
-          <Pagination {...pagination} />
+          <Pagination loading={loading} {...paginationProps} />
         </Box>
       </div>
     ) : null;

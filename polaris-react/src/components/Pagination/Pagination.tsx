@@ -16,6 +16,8 @@ interface AccessibilityLabels {
 }
 
 export interface PaginationProps {
+  /** Renders skeleton content */
+  loading?: boolean;
   /** Keyboard shortcuts for the next button */
   nextKeys?: Key[];
   /** Keyboard shortcuts for the previous button */
@@ -45,6 +47,7 @@ export interface PaginationProps {
 }
 
 export function Pagination({
+  loading,
   hasNext,
   hasPrevious,
   nextURL,
@@ -60,6 +63,15 @@ export function Pagination({
   label,
 }: PaginationProps) {
   const i18n = useI18n();
+
+  if (loading) {
+    return (
+      <ButtonGroup>
+        <Button outline icon={ChevronLeftMinor} disabled />
+        <Button outline icon={ChevronRightMinor} disabled />
+      </ButtonGroup>
+    );
+  }
 
   const node: React.RefObject<HTMLElement> = createRef();
 

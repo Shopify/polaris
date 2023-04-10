@@ -8,9 +8,9 @@ import styles from './Title.scss';
 
 export interface TitleProps {
   /** Page title, in large type */
-  title?: string | 'placeholder';
+  title?: string | 'loading';
   /** Page subtitle, in regular type*/
-  subtitle?: string | 'placeholder';
+  subtitle?: string | 'loading';
   /** Important and non-interactive status information shown immediately after the title. */
   titleMetadata?: React.ReactNode;
   /** Removes spacing between title and subtitle */
@@ -29,7 +29,7 @@ export function Title({
   );
 
   let titleMarkup = title ? <h1 className={className}>{title}</h1> : null;
-  titleMarkup = title === 'placeholder' ? <SkeletonDisplayText /> : titleMarkup;
+  titleMarkup = title === 'loading' ? <SkeletonDisplayText /> : titleMarkup;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>
@@ -51,7 +51,7 @@ export function Title({
         compactTitle && styles.SubtitleCompact,
       )}
     >
-      {subtitle === 'placeholder' ? (
+      {subtitle === 'loading' ? (
         <SkeletonBodyText lines={1} />
       ) : (
         <p>{subtitle}</p>

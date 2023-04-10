@@ -5,28 +5,35 @@ import {Icon} from '../Icon';
 import {UnstyledLink} from '../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
-import {Text} from '../Text';
 import {Box} from '../Box';
-import {SkeletonBodyText} from '../SkeletonBodyText';
+import {Text} from '../Text';
 
 import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
+  /** Renders a skeleton in place of a backAction */
+  loading?: boolean;
   /** @deprecated Collection of breadcrumbs */
-  breadcrumbs?:
-    | (CallbackAction | LinkAction)
-    | (CallbackAction | LinkAction)[]
-    | 'placeholder';
+  breadcrumbs?: (CallbackAction | LinkAction) | (CallbackAction | LinkAction)[];
   /** Back action link */
-  backAction?: CallbackAction | LinkAction | 'placeholder';
+  backAction?: CallbackAction | LinkAction;
 }
 
-export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
-  if (breadcrumbs === 'placeholder' || backAction === 'placeholder') {
+export function Breadcrumbs({
+  breadcrumbs,
+  backAction,
+  loading,
+}: BreadcrumbsProps) {
+  if (loading) {
     return (
-      <Box maxWidth="60px" paddingBlockStart="4" paddingBlockEnd="4">
-        <SkeletonBodyText lines={1} />
-      </Box>
+      <Box
+        borderRadius="1"
+        background="bg-strong"
+        minHeight="2.25rem"
+        maxHeight="2.25rem"
+        minWidth="2.25rem"
+        maxWidth="2.25rem"
+      />
     );
   }
 
