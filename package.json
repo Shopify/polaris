@@ -36,7 +36,7 @@
     "format": "prettier . --write",
     "type-check": "tsc --build",
     "changeset": "changeset",
-    "gen-assets": "turbo run gen-assets --filter=polaris.shopify.com",
+    "gen-assets": "yarn workspace polaris.shopify.com gen-assets",
     "preversion-packages": "node scripts/preversion.js",
     "version-packages": "yarn preversion-packages && changeset version",
     "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",

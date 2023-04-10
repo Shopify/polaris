@@ -1,13 +1,13 @@
 {
+  "extends": "./tsconfig.options.json",
   "files": [],
   "references": [
     {"path": "./polaris-cli"},
     {"path": "./polaris-codemods"},
     {"path": "./polaris-for-vscode"},
+    {"path": "./polaris-icons"},
     {"path": "./polaris-migrator"},
     {"path": "./polaris-react"},
-    {"path": "./polaris-tokens"},
-    {"path": "./polaris.shopify.com"},
-    {"path": "./stylelint-polaris"}
+    {"path": "./polaris-tokens"}
   ]
 }

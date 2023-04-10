@@ -20,5 +20,6 @@
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx"
   ],
-  "exclude": ["./src/components/**/*.stories.tsx"]
+  "exclude": ["./src/components/**/*.stories.tsx"],
+  "references": [{"path": "../polaris-icons"}, {"path": "../polaris-tokens"}]
 }
