@@ -1,16 +1,13 @@
 import React from 'react';
 
-import {AppProvider} from '../src';
-import enTranslations from '../locales/en.json';
+import {AppProvider as PolarisAppProvider} from '@shopify/polaris';
 import {breakpoints} from '@shopify/polaris-tokens';
 
 function AppProviderDecorator(Story, context) {
-  if (context.args.omitAppProvider) return <Story {...context} />;
-
   return (
-    <AppProvider i18n={enTranslations}>
+    <PolarisAppProvider>
       <Story {...context} />
-    </AppProvider>
+    </PolarisAppProvider>
   );
 }
 
