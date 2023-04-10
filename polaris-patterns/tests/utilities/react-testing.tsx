@@ -8,8 +8,6 @@ import {
 import {PolarisTestProvider} from '@shopify/polaris';
 import type {WithPolarisTestProviderOptions} from '@shopify/polaris';
 
-import translations from '../../locales/en.json';
-
 export {createMount, mount, ReactTestingElement, CustomRoot};
 
 export const mountWithApp = createMount<
@@ -21,7 +19,7 @@ export const mountWithApp = createMount<
   },
   render(element, context) {
     return (
-      <PolarisTestProvider i18n={translations} {...context}>
+      <PolarisTestProvider i18n={{}} {...context}>
         {element}
       </PolarisTestProvider>
     );
