@@ -1,28 +1,22 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", ".next/**", "build/**", ".cache/**"],
+      "outputs": ["dist/**", "build/**", ".next/**", "!.next/cache/**"],
       "dependsOn": ["^build"]
     },
-    "test": {
-      "outputs": [],
-      "dependsOn": []
-    },
+    "test": {},
     "lint": {
       "outputs": [".eslintcache"]
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "clean": {
       "cache": false
     },
     "preversion": {
-      "cache": false
-    },
-    "gen-assets": {
       "cache": false
     }
   }

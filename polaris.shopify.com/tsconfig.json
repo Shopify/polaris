@@ -30,5 +30,5 @@
     "scripts/get-props/src/get-props.ts",
     "constants.js"
   ],
-  "exclude": ["node_modules", "scripts/get-props/testData"]
+  "exclude": ["scripts/get-props/testData"]
 }

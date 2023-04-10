@@ -41,6 +41,7 @@ jobs:
           path: |
             **/.eslintcache
             **/.turbo
+            **/*.tsbuildinfo
             node_modules/.cache/turbo
             polaris.shopify.com/.next/cache
           key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-${{ github.sha }}
@@ -50,7 +51,10 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Build packages
+      - name: Build essential packages
+        run: yarn build --filter="@shopify/polaris-icons" --filter="@shopify/polaris-tokens"
+
+      - name: Build only changed packages
         run: yarn build --filter=[HEAD^1]
 
       - name: Lint

@@ -7,5 +7,5 @@
     "rootDir": "src"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "references": [{"path": "../polaris-migrator"}]
 }
