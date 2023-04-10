@@ -110,24 +110,20 @@ const PatternsExample = ({
 
   const sandboxCode = example.sandboxContext
     ? formatCodeSnippet(
-        example.sandboxContext
-          .replace(/\\\#/g, "")
-          .replace(/____CODE____;?/, formattedCode)
+        example.sandboxContext.replace(/____CODE____;?/, formattedCode),
       )
     : formattedCode;
 
   const previewCode = example.previewContext
     ? formatCodeSnippet(
-        example.previewContext
-          .replace(/\\\#/g, "")
-          .replace(/____CODE____;?/, formattedCode)
+        example.previewContext.replace(/____CODE____;?/, formattedCode),
       )
     : formattedCode;
 
   const previewUrl = `/playroom/preview/index.html${createUrl({
     code: previewCode,
-    themes: ["locale:en"],
-    paramType: "search",
+    themes: ['locale:en'],
+    paramType: 'search',
   })}`;
 
   return (
