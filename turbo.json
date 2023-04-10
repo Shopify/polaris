@@ -3,7 +3,8 @@
   "pipeline": {
     "build": {
       "outputs": ["dist/**", "build/**", ".next/**", "!.next/cache/**"],
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputMode": "new-only"
     },
     "test": {},
     "lint": {
