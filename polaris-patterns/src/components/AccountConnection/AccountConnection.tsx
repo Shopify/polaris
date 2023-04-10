@@ -75,7 +75,7 @@ export function AccountConnection({
       <SettingAction action={actionElement}>
         <Inline gap="4">
           {avatarMarkup}
-          <AlphaStack gap="2">
+          <AlphaStack gap="3">
             {titleMarkup}
             {detailsMarkup}
           </AlphaStack>
