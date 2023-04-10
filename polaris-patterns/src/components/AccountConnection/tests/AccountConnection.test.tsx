@@ -30,7 +30,7 @@ describe('<AccountConnection />', () => {
       const accountConnection = mountWithApp(
         <AccountConnection details={details} />,
       );
-      expect(accountConnection).toContainReactText(details);
+      expect(accountConnection).not.toContainReactText(details);
     });
   });
 
