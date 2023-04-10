@@ -10,5 +10,5 @@
     "types": ["node", "jest"]
   },
   "include": ["src"],
-  "exclude": ["**/tests/*.tsx"]
+  "exclude": ["**/*.test.ts", "**/tests/*.tsx"]
 }
