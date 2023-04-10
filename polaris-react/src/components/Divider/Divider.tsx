@@ -10,7 +10,7 @@ export interface DividerProps {
 
 export const Divider = ({borderColor = 'border-subdued'}: DividerProps) => {
   const style = {
-    '--pc-divider-border-style': borderColor
+    '--pc-divider-border': borderColor
       ? `var(--p-border-width-1) solid var(--p-color-${borderColor})`
       : undefined,
   } as React.CSSProperties;

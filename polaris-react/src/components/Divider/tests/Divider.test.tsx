@@ -9,7 +9,7 @@ describe('<Divider />', () => {
 
     expect(divider).toContainReactComponent('hr', {
       style: {
-        '--pc-divider-border-style':
+        '--pc-divider-border':
           'var(--p-border-width-1) solid var(--p-color-border-subdued)',
       } as React.CSSProperties,
     });
@@ -20,7 +20,7 @@ describe('<Divider />', () => {
 
     expect(divider).toContainReactComponent('hr', {
       style: expect.objectContaining({
-        '--pc-divider-border-style':
+        '--pc-divider-border':
           'var(--p-border-width-1) solid var(--p-color-border)',
       }) as React.CSSProperties,
     });
