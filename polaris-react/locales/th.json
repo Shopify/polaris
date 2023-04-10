@@ -334,7 +334,7 @@
       "emptySearchTitle": "ไม่พบ {resourceNamePlural}",
       "emptySearchDescription": "ลองเปลี่ยนตัวกรองหรือคำค้นหา",
       "onboardingBadgeText": "ใหม่",
-      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}...",
+      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}…",
       "selectAllLabel": "เลือก {resourceNamePlural} ทั้งหมด",
       "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
       "undo": "เลิกทำ",
