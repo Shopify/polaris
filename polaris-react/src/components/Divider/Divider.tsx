@@ -1,25 +1,28 @@
 import React from 'react';
+import type {BorderWidthScale, ColorBorderAlias} from '@shopify/polaris-tokens';
 
 import styles from './Divider.scss';
 
-export type BorderTokenAlias =
-  | 'base'
-  | 'dark'
-  | 'divider'
-  | 'divider-on-dark'
-  | 'transparent';
-
 export interface DividerProps {
-  /** Divider border style */
-  borderStyle?: BorderTokenAlias;
+  borderColor?: ColorBorderAlias | 'transparent';
+  borderWidth?: BorderWidthScale;
 }
 
-export const Divider = ({borderStyle = 'divider'}: DividerProps) => {
-  const style = {
-    '--pc-divider-border-style': borderStyle
-      ? `var(--p-border-${borderStyle})`
-      : undefined,
-  } as React.CSSProperties;
+export const Divider = ({
+  borderColor = 'border-subdued',
+  borderWidth = '1',
+}: DividerProps) => {
+  const borderColorValue =
+    borderColor === 'transparent'
+      ? borderColor
+      : `var(--p-color-${borderColor})`;
 
-  return <hr className={styles.Divider} style={style} />;
+  return (
+    <hr
+      className={styles.Divider}
+      style={{
+        borderBlockStart: `var(--p-border-width-${borderWidth}) solid ${borderColorValue})`,
+      }}
+    />
+  );
 };

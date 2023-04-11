@@ -14,25 +14,21 @@ export function WithBorderStyles() {
   return (
     <AlphaStack gap="5">
       <Text as="h1" variant="headingXs">
-        Base
+        Default
       </Text>
-      <Divider borderStyle="base" />
+      <Divider />
       <Text as="h1" variant="headingXs">
         Dark
       </Text>
-      <Divider borderStyle="dark" />
-      <Text as="h1" variant="headingXs">
-        Divider
-      </Text>
-      <Divider borderStyle="divider" />
+      <Divider borderColor="border" />
       <Text as="h1" variant="headingXs">
         Divider on dark
       </Text>
-      <Divider borderStyle="divider-on-dark" />
+      <Divider borderColor="border-inverse" />
       <Text as="h1" variant="headingXs">
         Transparent
       </Text>
-      <Divider borderStyle="transparent" />
+      <Divider borderColor="transparent" />
     </AlphaStack>
   );
 }

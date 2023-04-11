@@ -6,26 +6,22 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function DividerWithBorderStylesExample() {
   return (
     <AlphaStack gap="5">
-      <Text as="p" variant="bodyMd">
-        Base
+      <Text as="h1" variant="headingXs">
+        Default
       </Text>
-      <Divider borderStyle="base" />
-      <Text as="p" variant="bodyMd">
+      <Divider />
+      <Text as="h1" variant="headingXs">
         Dark
       </Text>
-      <Divider borderStyle="dark" />
-      <Text as="p" variant="bodyMd">
-        Divider
-      </Text>
-      <Divider borderStyle="divider" />
-      <Text as="p" variant="bodyMd">
+      <Divider borderColor="border" />
+      <Text as="h1" variant="headingXs">
         Divider on dark
       </Text>
-      <Divider borderStyle="divider-on-dark" />
-      <Text as="p" variant="bodyMd">
+      <Divider borderColor="border-inverse" />
+      <Text as="h1" variant="headingXs">
         Transparent
       </Text>
-      <Divider borderStyle="transparent" />
+      <Divider borderColor="transparent" />
     </AlphaStack>
   );
 }
