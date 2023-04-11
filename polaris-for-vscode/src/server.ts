@@ -69,6 +69,7 @@ type GroupedCompletionItemPatterns = {
 
 const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
   breakpoints: /width/,
+  border: /border/,
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   colors:
