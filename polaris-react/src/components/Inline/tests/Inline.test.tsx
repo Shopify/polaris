@@ -13,15 +13,15 @@ describe('<Inline />', () => {
     ));
 
   it('renders its children', () => {
-    const stack = mountWithApp(<Inline>{renderChildren()}</Inline>);
+    const inline = mountWithApp(<Inline>{renderChildren()}</Inline>);
 
-    expect(stack).toContainReactText(childText);
+    expect(inline).toContainReactText(childText);
   });
 
   it('renders custom properties by default', () => {
-    const stack = mountWithApp(<Inline>{renderChildren()}</Inline>);
+    const inline = mountWithApp(<Inline>{renderChildren()}</Inline>);
 
-    expect(stack).toContainReactComponent('div', {
+    expect(inline).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-inline-wrap': 'wrap',
       }) as React.CSSProperties,
@@ -29,13 +29,13 @@ describe('<Inline />', () => {
   });
 
   it('overrides custom properties if they are passed in', () => {
-    const stack = mountWithApp(
+    const inline = mountWithApp(
       <Inline align="center" blockAlign="start" gap="10">
         {renderChildren()}
       </Inline>,
     );
 
-    expect(stack).toContainReactComponent('div', {
+    expect(inline).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-inline-align': 'center',
         '--pc-inline-block-align': 'start',
@@ -46,11 +46,11 @@ describe('<Inline />', () => {
   });
 
   it('accepts gap based on breakpoints', () => {
-    const stack = mountWithApp(
+    const inline = mountWithApp(
       <Inline gap={{xs: '2', md: '8'}}>{renderChildren()}</Inline>,
     );
 
-    expect(stack).toContainReactComponent('div', {
+    expect(inline).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-inline-wrap': 'wrap',
         '--pc-inline-gap-xs': 'var(--p-space-2)',

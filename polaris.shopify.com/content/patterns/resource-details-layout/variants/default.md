@@ -28,7 +28,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`Card`](/components/layout-and-structure/alpha-card), [`Stack`](/components/layout-and-structure/stack), [`Columns`](/components/layout-and-structure/columns) and [`Page`](/components/layout-and-structure/page) components.
+This pattern uses the [`Card`](/components/layout-and-structure/alpha-card), [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`Columns`](/components/layout-and-structure/columns) and [`Page`](/components/layout-and-structure/page) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -86,28 +86,28 @@ function ResourceDetailsLayout() {
       }}
     >
       <Columns columns={{xs: 1, md: '2fr 1fr'}} gap="4">
-        <Stack gap="4">
+        <AlphaStack gap="4">
           <Card roundedAbove="sm">
-            <Stack gap="4">
+            <AlphaStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
               <Box border="divider" borderRadius="base" minHeight="20rem" />
-            </Stack>
+            </AlphaStack>
           </Card>
           <Card roundedAbove="sm">
-            <Stack gap="4">
+            <AlphaStack gap="4">
               <SkeletonDisplayText size="small" />
               <Columns columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
               </Columns>
-            </Stack>
+            </AlphaStack>
           </Card>
-        </Stack>
-        <Stack gap={{xs: '4', md: '2'}}>
+        </AlphaStack>
+        <AlphaStack gap={{xs: '4', md: '2'}}>
           <Card roundedAbove="sm">
-            <Stack gap="4">
+            <AlphaStack gap="4">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
@@ -118,19 +118,19 @@ function ResourceDetailsLayout() {
               <SkeletonLabel />
               <Divider borderStyle="divider" />
               <SkeletonBodyText />
-            </Stack>
+            </AlphaStack>
           </Card>
           <Card roundedAbove="sm">
-            <Stack gap="4">
+            <AlphaStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="4rem" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel />
               <SkeletonBodyText />
-            </Stack>
+            </AlphaStack>
           </Card>
-        </Stack>
+        </AlphaStack>
       </Columns>
     </Page>
   );

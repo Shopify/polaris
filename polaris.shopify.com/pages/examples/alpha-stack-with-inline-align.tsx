@@ -1,30 +1,30 @@
 import React from 'react';
-import {Stack, Page, Inline, Text, Divider} from '@shopify/polaris';
+import {AlphaStack, Page, Inline, Text, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function StackWithInlineAlignExample() {
+function AlphaStackWithInlineAlignExample() {
   return (
     <Page>
-      <Stack gap="8">
-        <Stack inlineAlign="start">
+      <AlphaStack gap="8">
+        <AlphaStack inlineAlign="start">
           <Placeholder height="48px" width="320px" label="Start" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </Stack>
+        </AlphaStack>
         <Divider />
-        <Stack inlineAlign="center">
+        <AlphaStack inlineAlign="center">
           <Placeholder height="48px" width="320px" label="Center" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </Stack>
+        </AlphaStack>
         <Divider />
-        <Stack inlineAlign="end">
+        <AlphaStack inlineAlign="end">
           <Placeholder height="48px" width="320px" label="End" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </Stack>
-      </Stack>
+        </AlphaStack>
+      </AlphaStack>
     </Page>
   );
 }
@@ -62,4 +62,4 @@ const Placeholder = ({
   );
 };
 
-export default withPolarisExample(StackWithInlineAlignExample);
+export default withPolarisExample(AlphaStackWithInlineAlignExample);

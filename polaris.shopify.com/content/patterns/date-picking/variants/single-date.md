@@ -31,7 +31,7 @@ This enables merchants to type a specific date or pick it from a calendar.
 
 ## Using this pattern
 
-This pattern uses the [`Card`](/components/layout-and-structure/card), [`DatePicker`](/components/selection-and-input/date-picker), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
+This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`Card`](/components/layout-and-structure/card), [`DatePicker`](/components/selection-and-input/date-picker), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"sandboxContext","for":"example"}
@@ -93,7 +93,7 @@ function DatePickerExample() {
     }
   }, [selectedDate]);
   return (
-    <Stack inlineAlign="center" gap="4">
+    <AlphaStack inlineAlign="center" gap="4">
       <Box minWidth="276px" padding={{xs: 2}}>
         <Popover
           active={visible}
@@ -127,7 +127,7 @@ function DatePickerExample() {
           </Card>
         </Popover>
       </Box>
-    </Stack>
+    </AlphaStack>
   );
 }
 ```

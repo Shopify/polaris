@@ -8,7 +8,7 @@ import {
   Card,
   Button,
   Badge,
-  Stack,
+  AlphaStack,
   useBreakpoints,
 } from '@shopify/polaris';
 import {CircleInformationMajor} from '@shopify/polaris-icons';
@@ -119,7 +119,7 @@ export function WithPrimitiveComponents() {
   );
 
   const descriptionMarkup = (
-    <Stack gap="4">
+    <AlphaStack gap="4">
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
@@ -128,22 +128,22 @@ export function WithPrimitiveComponents() {
           <Inline align="start">{actionMarkup}</Inline>
         </Box>
       ) : null}
-    </Stack>
+    </AlphaStack>
   );
 
   return (
     <Card>
-      <Stack gap={{xs: '4', sm: '5'}}>
+      <AlphaStack gap={{xs: '4', sm: '5'}}>
         <Box width="100%">
-          <Stack gap={{xs: '2', sm: '4'}}>
+          <AlphaStack gap={{xs: '2', sm: '4'}}>
             {headerMarkup}
             {descriptionMarkup}
-          </Stack>
+          </AlphaStack>
         </Box>
         <Text variant="bodyMd" as="p">
           Your checkout is only accepting test payments.
         </Text>
-      </Stack>
+      </AlphaStack>
     </Card>
   );
 }
@@ -228,7 +228,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   );
 
   const descriptionMarkup = (
-    <Stack gap="4">
+    <AlphaStack gap="4">
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
@@ -237,22 +237,22 @@ export function WithPrimitiveComponentsAndLongTitle() {
           <Inline align="start">{actionMarkup}</Inline>
         </Box>
       ) : null}
-    </Stack>
+    </AlphaStack>
   );
 
   return (
     <Card>
-      <Stack gap={{xs: '4', sm: '5'}}>
+      <AlphaStack gap={{xs: '4', sm: '5'}}>
         <Box width="100%">
-          <Stack gap={{xs: '2', sm: '4'}}>
+          <AlphaStack gap={{xs: '2', sm: '4'}}>
             {headerMarkup}
             {descriptionMarkup}
-          </Stack>
+          </AlphaStack>
         </Box>
         <Text variant="bodyMd" as="p">
           Your checkout is only accepting test payments.
         </Text>
-      </Stack>
+      </AlphaStack>
     </Card>
   );
 }

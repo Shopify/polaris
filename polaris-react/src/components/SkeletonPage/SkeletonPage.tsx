@@ -3,7 +3,7 @@ import React from 'react';
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
-import {Stack} from '../Stack';
+import {AlphaStack} from '../AlphaStack';
 
 import styles from './SkeletonPage.scss';
 
@@ -70,7 +70,7 @@ export function SkeletonPage({
     ) : null;
 
   return (
-    <Stack gap="4" inlineAlign="center">
+    <AlphaStack gap="4" inlineAlign="center">
       <Box
         width="100%"
         padding="0"
@@ -86,7 +86,7 @@ export function SkeletonPage({
           maxWidth: 'none',
         })}
       >
-        <Stack>
+        <AlphaStack>
           <Box
             paddingBlockStart={{xs: '4', md: '5'}}
             paddingBlockEnd={{xs: '4', md: '5'}}
@@ -107,8 +107,8 @@ export function SkeletonPage({
           <Box paddingBlockEnd="2" width="100%">
             {children}
           </Box>
-        </Stack>
+        </AlphaStack>
       </Box>
-    </Stack>
+    </AlphaStack>
   );
 }

@@ -1,20 +1,20 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Stack} from '../Stack';
+import {AlphaStack} from '../AlphaStack';
 
 const text = 'This is a stack';
 const children = <p>{text}</p>;
 
-describe('<Stack />', () => {
+describe('<AlphaStack />', () => {
   it('renders children', () => {
-    const stack = mountWithApp(<Stack>{children}</Stack>);
+    const stack = mountWithApp(<AlphaStack>{children}</AlphaStack>);
 
     expect(stack).toContainReactComponent('p', {children: text});
   });
 
   it('renders custom properties by default', () => {
-    const stack = mountWithApp(<Stack>{children}</Stack>);
+    const stack = mountWithApp(<AlphaStack>{children}</AlphaStack>);
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
@@ -25,9 +25,9 @@ describe('<Stack />', () => {
 
   it('overrides custom properties if they are passed in', () => {
     const stack = mountWithApp(
-      <Stack inlineAlign="center" gap="10">
+      <AlphaStack inlineAlign="center" gap="10">
         {children}
-      </Stack>,
+      </AlphaStack>,
     );
 
     expect(stack).toContainReactComponent('div', {
@@ -40,7 +40,7 @@ describe('<Stack />', () => {
 
   it('accepts gap based on breakpoints', () => {
     const stack = mountWithApp(
-      <Stack gap={{xs: '2', md: '8'}}>{children}</Stack>,
+      <AlphaStack gap={{xs: '2', md: '8'}}>{children}</AlphaStack>,
     );
 
     expect(stack).toContainReactComponent('div', {

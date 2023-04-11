@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-.Stack {
+.AlphaStack {
   @include responsive-props('stack', 'gap', 'gap');
   // stylelint-disable -- Polaris component custom properties
   --pc-stack-align: initial;

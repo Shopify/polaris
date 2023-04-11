@@ -9,7 +9,7 @@ import {
   ChoiceList,
   RangeSlider,
   Badge,
-  Stack,
+  AlphaStack,
   Inline,
 } from '@shopify/polaris';
 import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
@@ -303,7 +303,7 @@ function IndexTableWithViewsSearchFilterSorting() {
         position={index}
       >
         <div style={{padding: '12px 16px', width: '100%'}}>
-          <Stack gap="1">
+          <AlphaStack gap="1">
             <Text as="span" variant="bodySm" color="subdued">
               {order} • {date}
             </Text>
@@ -319,7 +319,7 @@ function IndexTableWithViewsSearchFilterSorting() {
               {paymentStatus}
               {fulfillmentStatus}
             </Inline>
-          </Stack>
+          </AlphaStack>
         </div>
       </IndexTable.Row>
     ),

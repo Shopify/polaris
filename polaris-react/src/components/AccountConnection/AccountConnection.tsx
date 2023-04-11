@@ -8,7 +8,7 @@ import {Card} from '../Card';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
 import {Text} from '../Text';
-import {Stack} from '../Stack';
+import {AlphaStack} from '../AlphaStack';
 
 export interface AccountConnectionProps {
   /** Content to display as title */
@@ -73,10 +73,10 @@ export function AccountConnection({
       <SettingAction action={actionElement}>
         <Inline gap="4">
           {avatarMarkup}
-          <Stack gap="2">
+          <AlphaStack gap="2">
             {titleMarkup}
             {detailsMarkup}
-          </Stack>
+          </AlphaStack>
         </Inline>
       </SettingAction>
       {termsOfServiceMarkup}

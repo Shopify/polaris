@@ -48,6 +48,9 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
+export {AlphaStack} from './components/AlphaStack';
+export type {AlphaStackProps} from './components/AlphaStack';
+
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
 
@@ -349,9 +352,6 @@ export type {SkeletonThumbnailProps} from './components/SkeletonThumbnail';
 
 export {Spinner} from './components/Spinner';
 export type {SpinnerProps} from './components/Spinner';
-
-export {Stack} from './components/Stack';
-export type {StackProps} from './components/Stack';
 
 export {Sticky} from './components/Sticky';
 export type {StickyProps} from './components/Sticky';

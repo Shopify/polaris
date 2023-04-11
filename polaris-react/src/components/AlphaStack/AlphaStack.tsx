@@ -8,7 +8,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './Stack.scss';
+import styles from './AlphaStack.scss';
 
 type Align =
   | 'start'
@@ -24,7 +24,7 @@ type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface StackProps extends React.AriaAttributes {
+export interface AlphaStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
@@ -44,7 +44,7 @@ export interface StackProps extends React.AriaAttributes {
   reverseOrder?: boolean;
 }
 
-export const Stack = ({
+export const AlphaStack = ({
   as = 'div',
   children,
   align,
@@ -53,9 +53,9 @@ export const Stack = ({
   id,
   reverseOrder = false,
   ...restProps
-}: StackProps) => {
+}: AlphaStackProps) => {
   const className = classNames(
-    styles.Stack,
+    styles.AlphaStack,
     as === 'ul' && styles.listReset,
     as === 'fieldset' && styles.fieldsetReset,
   );

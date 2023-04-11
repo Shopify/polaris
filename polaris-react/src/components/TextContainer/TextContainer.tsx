@@ -13,7 +13,7 @@ export interface TextContainerProps {
   children?: React.ReactNode;
 }
 
-/** @deprecated Use Stack instead */
+/** @deprecated Use AlphaStack instead */
 export function TextContainer({spacing, children}: TextContainerProps) {
   const className = classNames(
     styles.TextContainer,

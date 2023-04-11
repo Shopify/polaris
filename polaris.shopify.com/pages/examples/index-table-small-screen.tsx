@@ -5,7 +5,7 @@ import {
   Text,
   Inline,
   Badge,
-  Stack,
+  AlphaStack,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -60,7 +60,7 @@ function SimpleSmallScreenIndexTableExample() {
         position={index}
       >
         <div style={{padding: '12px 16px', width: '100%'}}>
-          <Stack gap="1">
+          <AlphaStack gap="1">
             <Text as="span" variant="bodySm" color="subdued">
               {order} • {date}
             </Text>
@@ -76,7 +76,7 @@ function SimpleSmallScreenIndexTableExample() {
               {paymentStatus}
               {fulfillmentStatus}
             </Inline>
-          </Stack>
+          </AlphaStack>
         </div>
       </IndexTable.Row>
     ),

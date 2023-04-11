@@ -8,7 +8,7 @@ groups:
   - title: Layout primitives
     components:
       - Box
-      - Stack
+      - AlphaStack
       - Inline
       - Columns
       - Bleed

@@ -32,7 +32,7 @@ This enables merchants to select a date range.
 
 ## Using this pattern
 
-This pattern uses the [`Stack`](/components/layout-and-structure/stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`Columns`](/components/layout-and-structure/columns), [`DatePicker`](/components/selection-and-input/date-picker), [`Inline`](/components/layout-and-structure/inline), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
+This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`Columns`](/components/layout-and-structure/columns), [`DatePicker`](/components/selection-and-input/date-picker), [`Inline`](/components/layout-and-structure/inline), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -323,7 +323,7 @@ function DateRangePicker() {
             )}
           </Box>
           <Box padding={{xs: 5}} maxWidth={mdDown ? '320px' : '516px'}>
-            <Stack gap="4">
+            <AlphaStack gap="4">
               <Inline gap="2">
                 <div style={{flexGrow: 1}}>
                   <TextField
@@ -365,7 +365,7 @@ function DateRangePicker() {
                   allowRange
                 />
               </div>
-            </Stack>
+            </AlphaStack>
           </Box>
         </Columns>
       </Popover.Pane>

@@ -16,7 +16,7 @@ keywords:
 status:
   value: Deprecated
   message: >-
-    Grid was built prior to layout primitives like columns, inline, and stack. Comparatively, grid is difficult to learn, document, and understand its usage in a codebase.
+    Grid was built prior to layout primitives like Columns, Inline, and AlphaStack. Comparatively, grid is difficult to learn, document, and understand its usage in a codebase.
     The new layout primitives should be used in combination to achieve similar results to grid.
 examples:
   - fileName: grid-two-column.tsx
@@ -35,5 +35,5 @@ examples:
 
 ## Related components
 
-- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/layout-and-structure/stack)
+- To lay out a set of smaller components in a row, [use the AlphaStack component](https://polaris.shopify.com/components/layout-and-structure/alpha-stack)
 - To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)

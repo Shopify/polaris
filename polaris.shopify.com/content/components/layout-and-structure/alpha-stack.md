@@ -1,5 +1,5 @@
 ---
-title: Stack
+title: Alpha stack
 description: Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
@@ -15,15 +15,15 @@ status:
   value: Beta
   message: This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: stack-with-gap.tsx
+  - fileName: alpha-stack-with-gap.tsx
     title: Gap
     description: >-
       Control the vertical space between children using the `gap` prop.
-  - fileName: stack-with-align.tsx
+  - fileName: alpha-stack-with-align.tsx
     title: Align
     description: >-
       Control the vertical alignment of children using the `align` prop.
-  - fileName: stack-with-inline-align.tsx
+  - fileName: alpha-stack-with-inline-align.tsx
     title: Inline align
     description: >-
       Control the horizontal alignment of children using the `inlineAlign` prop.

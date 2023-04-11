@@ -1,14 +1,14 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, Stack} from '@shopify/polaris';
+import {Box, AlphaStack} from '@shopify/polaris';
 
 export default {
-  component: Stack,
-} as ComponentMeta<typeof Stack>;
+  component: AlphaStack,
+} as ComponentMeta<typeof AlphaStack>;
 
 export function Default() {
   return (
-    <Stack>
+    <AlphaStack>
       <Box background="bg" padding="1">
         01
       </Box>
@@ -18,13 +18,13 @@ export function Default() {
       <Box background="bg" padding="1">
         03
       </Box>
-    </Stack>
+    </AlphaStack>
   );
 }
 
 export function WithGap() {
   return (
-    <Stack gap="8">
+    <AlphaStack gap="8">
       <Box background="bg" padding="1">
         01
       </Box>
@@ -34,13 +34,13 @@ export function WithGap() {
       <Box background="bg" padding="1">
         03
       </Box>
-    </Stack>
+    </AlphaStack>
   );
 }
 
 export function WithResponsiveGap() {
   return (
-    <Stack gap={{xs: '4', md: '10'}}>
+    <AlphaStack gap={{xs: '4', md: '10'}}>
       <Box background="bg" padding="1">
         01
       </Box>
@@ -50,14 +50,14 @@ export function WithResponsiveGap() {
       <Box background="bg" padding="1">
         03
       </Box>
-    </Stack>
+    </AlphaStack>
   );
 }
 
 export function WithAlignStart() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <Stack gap="4" align="start">
+      <AlphaStack gap="4" align="start">
         <Box background="bg" padding="1">
           01
         </Box>
@@ -67,7 +67,7 @@ export function WithAlignStart() {
         <Box background="bg" padding="1">
           03
         </Box>
-      </Stack>
+      </AlphaStack>
     </div>
   );
 }
@@ -75,7 +75,7 @@ export function WithAlignStart() {
 export function WithAlignCenter() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <Stack gap="4" align="center">
+      <AlphaStack gap="4" align="center">
         <Box background="bg" padding="1">
           01
         </Box>
@@ -85,7 +85,7 @@ export function WithAlignCenter() {
         <Box background="bg" padding="1">
           03
         </Box>
-      </Stack>
+      </AlphaStack>
     </div>
   );
 }
@@ -93,7 +93,7 @@ export function WithAlignCenter() {
 export function WithAlignEnd() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <Stack gap="4" align="end">
+      <AlphaStack gap="4" align="end">
         <Box background="bg" padding="1">
           01
         </Box>
@@ -103,7 +103,7 @@ export function WithAlignEnd() {
         <Box background="bg" padding="1">
           03
         </Box>
-      </Stack>
+      </AlphaStack>
     </div>
   );
 }
@@ -111,7 +111,7 @@ export function WithAlignEnd() {
 export function WithAlignSpaceAround() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <Stack gap="4" align="space-around">
+      <AlphaStack gap="4" align="space-around">
         <Box background="bg" padding="1">
           01
         </Box>
@@ -121,7 +121,7 @@ export function WithAlignSpaceAround() {
         <Box background="bg" padding="1">
           03
         </Box>
-      </Stack>
+      </AlphaStack>
     </div>
   );
 }
@@ -129,7 +129,7 @@ export function WithAlignSpaceAround() {
 export function WithAlignSpaceBetween() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <Stack gap="4" align="space-between">
+      <AlphaStack gap="4" align="space-between">
         <Box background="bg" padding="1">
           01
         </Box>
@@ -139,7 +139,7 @@ export function WithAlignSpaceBetween() {
         <Box background="bg" padding="1">
           03
         </Box>
-      </Stack>
+      </AlphaStack>
     </div>
   );
 }
@@ -147,7 +147,7 @@ export function WithAlignSpaceBetween() {
 export function WithAlignSpaceEvenly() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <Stack gap="4" align="space-evenly">
+      <AlphaStack gap="4" align="space-evenly">
         <Box background="bg" padding="1">
           01
         </Box>
@@ -157,14 +157,14 @@ export function WithAlignSpaceEvenly() {
         <Box background="bg" padding="1">
           03
         </Box>
-      </Stack>
+      </AlphaStack>
     </div>
   );
 }
 
 export function WithInlineAlignStart() {
   return (
-    <Stack gap="4" inlineAlign="start">
+    <AlphaStack gap="4" inlineAlign="start">
       <Box background="bg" padding="1">
         01
       </Box>
@@ -174,13 +174,13 @@ export function WithInlineAlignStart() {
       <Box background="bg" padding="1">
         03
       </Box>
-    </Stack>
+    </AlphaStack>
   );
 }
 
 export function WithInlineAlignCenter() {
   return (
-    <Stack gap="4" inlineAlign="center">
+    <AlphaStack gap="4" inlineAlign="center">
       <Box background="bg" padding="1">
         01
       </Box>
@@ -190,13 +190,13 @@ export function WithInlineAlignCenter() {
       <Box background="bg" padding="1">
         03
       </Box>
-    </Stack>
+    </AlphaStack>
   );
 }
 
 export function WithInlineAlignEnd() {
   return (
-    <Stack gap="4" inlineAlign="end">
+    <AlphaStack gap="4" inlineAlign="end">
       <Box background="bg" padding="1">
         01
       </Box>
@@ -206,6 +206,6 @@ export function WithInlineAlignEnd() {
       <Box background="bg" padding="1">
         03
       </Box>
-    </Stack>
+    </AlphaStack>
   );
 }
