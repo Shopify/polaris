@@ -247,6 +247,7 @@
   li {
     &::before {
       content: '\2022';
+      padding-right: 0.95em;
     }
   }
 }
