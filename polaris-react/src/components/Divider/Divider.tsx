@@ -21,7 +21,7 @@ export const Divider = ({
     <hr
       className={styles.Divider}
       style={{
-        borderBlockStart: `var(--p-border-width-${borderWidth}) solid ${borderColorValue})`,
+        borderBlockStart: `var(--p-border-width-${borderWidth}) solid ${borderColorValue}`,
       }}
     />
   );
