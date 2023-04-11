@@ -214,6 +214,10 @@
   }
 }
 
+.ClearAll {
+  transform: translateY(-1px);
+}
+
 @media #{$p-breakpoints-md-down} {
   .ClearAll {
     margin-left: var(--p-space-2);
