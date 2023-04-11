@@ -79,6 +79,8 @@
     "prettier": "^2.5.0",
     "rollup": "^2.70.2",
     "rollup-plugin-node-externals": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "size-limit": "^5.0.3",
     "stylelint": "^14.15.0",
     "ts-node": "^10.7.0",

@@ -54,14 +54,12 @@
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "build-storybook -o build-internal/storybook/static"
   },
-  "dependencies": {
-    "@shopify/polaris": "^10.39.1",
-    "@shopify/polaris-icons": "^6.12.0",
-    "@shopify/polaris-tokens": "^6.8.1",
-    "@types/react": "^18.0.33"
-  },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0",
+    "@shopify/polaris": "^10.42.1",
+    "@shopify/polaris-icons": "^6.12.0",
+    "@shopify/polaris-tokens": "^6.8.1"
   },
   "devDependencies": {
     "@shopify/browserslist-config": "^3.0.0",
@@ -73,6 +71,7 @@
     "@storybook/addon-toolbars": "^6.5.12",
     "@storybook/addon-viewport": "^6.5.12",
     "@storybook/react": "^6.5.12",
+    "@types/react": "^18.0.33",
     "change-case": "^3.1.0",
     "globby": "^11.1.0",
     "node-sass": "^7.0.1",
@@ -81,10 +80,8 @@
     "postcss-modules": "^4.2.2",
     "postcss-pxtorem": "^5.1.1",
     "puppeteer": "^14.4.1",
-    "react": "^18.2.0",
     "sass-loader": "^12.4.0",
     "webpack": "5",
-    "react-dom": "^18.2.0",
     "chromatic": "^6.17.3"
   },
   "browserslist": [
