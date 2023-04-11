@@ -15,7 +15,7 @@
   padding-left: var(--p-space-3);
   padding-right: var(--p-space-3);
   border-width: 0;
-  border-right: var(--p-border-base);
+  border-right: var(--p-border-width-1) solid var(--p-color-border-subdued);
   background-color: var(--p-color-bg);
   font-weight: var(--p-font-weight-medium);
   cursor: pointer;

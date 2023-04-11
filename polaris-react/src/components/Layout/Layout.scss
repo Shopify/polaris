@@ -69,7 +69,7 @@ $relative-size: $primary-basis / $secondary-basis;
   + .AnnotatedSection {
     @media #{$p-breakpoints-sm-up} {
       padding-top: var(--p-space-4);
-      border-top: var(--p-border-divider);
+      border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     }
   }
 }

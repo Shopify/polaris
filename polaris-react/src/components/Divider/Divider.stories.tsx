@@ -18,11 +18,11 @@ export function WithBorderStyles() {
       </Text>
       <Divider />
       <Text as="h1" variant="headingXs">
-        Dark
+        Border
       </Text>
       <Divider borderColor="border" />
       <Text as="h1" variant="headingXs">
-        Divider on dark
+        Border inverse
       </Text>
       <Divider borderColor="border-inverse" />
       <Text as="h1" variant="headingXs">

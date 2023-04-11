@@ -18,7 +18,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   display: flex;
   flex: 1 1 auto;
   align-items: center;
-  border: var(--p-border-transparent);
+  border: var(--p-border-width-1) solid transparent;
   width: 100%;
   max-width: $search-max-width;
 }
