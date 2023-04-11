@@ -1,0 +1,52 @@
+{
+  "name": "@shopify/polaris-codemods",
+  "description": "Codemods for Polaris design system",
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
+  "author": "Shopify <dev@shopify.com>",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "shopify",
+    "polaris",
+    "codemods"
+  ],
+  "main": "codeshift.config.js",
+  "scripts": {
+    "build": "tsc --build",
+    "lint": "TIMING=1 eslint --cache .",
+    "test": "jest",
+    "clean": "rm -f .turbo node_modules dist *.tsbuildinfo",
+    "generate": "plop"
+  },
+  "dependencies": {
+    "@shopify/polaris-tokens": "^6.8.0",
+    "@shopify/stylelint-polaris": "^9.0.0",
+    "postcss": "^8.4.21",
+    "postcss-scss": "^4.0.6",
+    "postcss-value-parser": "^4.2.0",
+    "stylelint": "^14.15.0"
+  },
+  "peerDependencies": {
+    "jscodeshift": "^0.13.1"
+  },
+  "devDependencies": {
+    "@shopify/polaris": "^10.42.1",
+    "@types/jscodeshift": "^0.11.6",
+    "jscodeshift": "^0.13.1",
+    "plop": "^3.1.2",
+    "plop-dir": "^0.1.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.3.5"
+  }
+}

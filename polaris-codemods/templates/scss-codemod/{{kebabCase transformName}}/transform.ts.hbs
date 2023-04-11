@@ -1,0 +1,49 @@
+import type {FileInfo, API, Options} from 'jscodeshift';
+import postcss, {Plugin} from 'postcss';
+import valueParser from 'postcss-value-parser';
+
+import {scss, POLARIS_MIGRATOR_COMMENT} from '../../utilities/constants';
+import {
+  NamespaceOptions,
+  namespace,
+  isSassFunction,
+} from '../../utilities/sass';
+import {isKeyOf} from '../../utilities/type-guards';
+
+export const extensions = scss.extensions
+export const options = {
+  ...scss.options
+}
+
+export default function transformer(
+  file: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(file.source, {
+    syntax: require('postcss-scss'),
+  }).css;
+}
+
+const processed = Symbol('processed');
+
+interface PluginOptions extends Options, NamespaceOptions {}
+
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespacedHello = namespace('hello', options);
+
+  return {
+    postcssPlugin: 'v9-replace-sass-hello',
+    Declaration(decl) {
+      // @ts-expect-error - Skip if processed so we don't process it again
+      if (decl[processed]) return;
+      
+      if (isSassFunction(namespacedHello, node)) {
+        decl.value = 'world';
+      }
+
+      // @ts-expect-error - Mark the declaration as processed
+      decl[processed] = true;
+    },
+  };
+};

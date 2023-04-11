@@ -17,7 +17,7 @@ export function Default() {
 
 export function WithDarkBorder() {
   return (
-    <Box background="surface" padding="4" border="dark">
+    <Box background="bg" padding="4" border="dark">
       <Icon source={PaintBrushMajor} color="base" />
     </Box>
   );
@@ -25,7 +25,7 @@ export function WithDarkBorder() {
 
 export function WithBorderRadius() {
   return (
-    <Box background="surface" padding="4" borderRadius="2">
+    <Box background="bg" padding="4" borderRadius="2">
       <Icon source={PaintBrushMajor} color="highlight" />
     </Box>
   );

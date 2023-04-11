@@ -158,7 +158,7 @@
     },
     "Modal": {
       "iFrameTitle": "本文標記",
-      "modalWarning": "強制回應缺少以下必要屬性：{missingProps}"
+      "modalWarning": "互動視窗缺少以下必要屬性：{missingProps}"
     },
     "Pagination": {
       "previous": "上一頁",
@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "動作"
+      "popoverButton": "動作",
+      "dismissButton": "關閉"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

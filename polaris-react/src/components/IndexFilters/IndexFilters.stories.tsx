@@ -403,7 +403,7 @@ export function WithPinnedFilters() {
     return true;
   };
 
-  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},
@@ -689,7 +689,7 @@ export function Disabled() {
     return true;
   };
 
-  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},

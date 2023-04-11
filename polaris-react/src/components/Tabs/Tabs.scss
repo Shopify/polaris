@@ -241,7 +241,7 @@
 
   &:hover svg,
   &:focus svg {
-    fill: var(--p-icon);
+    fill: var(--p-color-icon);
   }
 
   &:not([aria-disabled='true']):hover,

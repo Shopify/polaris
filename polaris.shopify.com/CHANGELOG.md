@@ -1,5 +1,81 @@
 # polaris.shopify.com
 
+## 0.47.1
+
+### Patch Changes
+
+- Updated dependencies [[`d7d0462c7`](https://github.com/Shopify/polaris/commit/d7d0462c72a2541b43504aa214e7f827fc370cc2)]:
+  - @shopify/polaris@10.42.1
+
+## 0.47.0
+
+### Minor Changes
+
+- [#8829](https://github.com/Shopify/polaris/pull/8829) [`04e881882`](https://github.com/Shopify/polaris/commit/04e8818829d8eeee81582d483e2b99da9cf23c9e) Thanks [@gfscott](https://github.com/gfscott)! - Updated guidance for "Learn more" links.
+
+### Patch Changes
+
+- [#8777](https://github.com/Shopify/polaris/pull/8777) [`d5ded2239`](https://github.com/Shopify/polaris/commit/d5ded22398024936d5e0450be169b3b4c4e06516) Thanks [@eric-blue](https://github.com/eric-blue)! - Added onDismiss callback to MediaCard
+
+- Updated dependencies [[`1803c7a2a`](https://github.com/Shopify/polaris/commit/1803c7a2aba57c11cfe8e0e7a0647318fa9867c9), [`7a6a91dce`](https://github.com/Shopify/polaris/commit/7a6a91dce2d41110e439ba889143becc4b17e3c8), [`81a2ab697`](https://github.com/Shopify/polaris/commit/81a2ab69767d0c86ab170126f645a09f5d03f1ab), [`5adc08f2d`](https://github.com/Shopify/polaris/commit/5adc08f2d7a29ffa40bfb88f7da6366068db2f44), [`d5ded2239`](https://github.com/Shopify/polaris/commit/d5ded22398024936d5e0450be169b3b4c4e06516), [`8a14f157f`](https://github.com/Shopify/polaris/commit/8a14f157fecde890321946e00e9f80bbd946ed85), [`6fdf22efc`](https://github.com/Shopify/polaris/commit/6fdf22efc682236652b3a9376ece70e6cd121644), [`d479fb08a`](https://github.com/Shopify/polaris/commit/d479fb08a287a0c9f28ca65a15802120350b505b), [`413380853`](https://github.com/Shopify/polaris/commit/41338085320a9e2ff65c39fceca1c0a2851623c3), [`0eb1a9173`](https://github.com/Shopify/polaris/commit/0eb1a91732942774533cc566585458f56dd8ede1), [`bfa0ce8de`](https://github.com/Shopify/polaris/commit/bfa0ce8de3c6336c3fdd74b355bb79cc2b9ff1c5), [`b63809227`](https://github.com/Shopify/polaris/commit/b6380922704e4d61e783429e1af21cf644d9daf1)]:
+  - @shopify/polaris@10.42.0
+
+## 0.46.0
+
+### Minor Changes
+
+- [#8833](https://github.com/Shopify/polaris/pull/8833) [`475f2d8a0`](https://github.com/Shopify/polaris/commit/475f2d8a0988c751f8fec46919e3ac5f68287619) Thanks [@jjgali](https://github.com/jjgali)! - Added missing page descriptions.
+
+* [#8414](https://github.com/Shopify/polaris/pull/8414) [`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Migrate `color` custom properties from Polaris `v10` to `v11`
+
+### Patch Changes
+
+- [#8821](https://github.com/Shopify/polaris/pull/8821) [`9e23a6b65`](https://github.com/Shopify/polaris/commit/9e23a6b651ca221a642a258423d923ad0c98bdf8) Thanks [@laurkim](https://github.com/laurkim)! - Updated links for `Navigation` component in style guide to reflect recent component category structure
+
+* [#8836](https://github.com/Shopify/polaris/pull/8836) [`91d020ed9`](https://github.com/Shopify/polaris/commit/91d020ed957e8ec2e17394519c608c7f3db0fea2) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix patterns index page not pulling in front matter.
+
+- [#8798](https://github.com/Shopify/polaris/pull/8798) [`c606e6dcb`](https://github.com/Shopify/polaris/commit/c606e6dcb4cd5608a68350ebab198575de0c4d0b) Thanks [@samrose3](https://github.com/samrose3)! - Added Index Table example with disabled rows
+
+* [#8837](https://github.com/Shopify/polaris/pull/8837) [`4fa011ca6`](https://github.com/Shopify/polaris/commit/4fa011ca6f3bed9f04b706fb2d20a6e235f7750e) Thanks [@alex-page](https://github.com/alex-page)! - /public/images align to content directory structure
+
+- [#8827](https://github.com/Shopify/polaris/pull/8827) [`dc09b21da`](https://github.com/Shopify/polaris/commit/dc09b21da9c7a4575973300a6f94b774e6f603d1) Thanks [@samrose3](https://github.com/samrose3)! - Added migration to remove unused imports from SCSS files
+
+- Updated dependencies [[`7c965c632`](https://github.com/Shopify/polaris/commit/7c965c6323e8fd403216a6c762a767330efa8690), [`db26d5dc7`](https://github.com/Shopify/polaris/commit/db26d5dc71778eb5b5cea75d4bbd54a187ac7dc9), [`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5), [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c)]:
+  - @shopify/polaris@10.41.0
+  - @shopify/polaris-tokens@6.9.0
+
+## 0.45.0
+
+### Minor Changes
+
+- [#8817](https://github.com/Shopify/polaris/pull/8817) [`be5ab42f6`](https://github.com/Shopify/polaris/commit/be5ab42f670a1f38295d77df5d511a000bb51817) Thanks [@jjgali](https://github.com/jjgali)! - Removed page https://polaris.shopify.com/design/design
+
+### Patch Changes
+
+- [#8806](https://github.com/Shopify/polaris/pull/8806) [`fe16e10bf`](https://github.com/Shopify/polaris/commit/fe16e10bf4c846c4efb3ec064525ec5cc38436a3) Thanks [@martenbjork](https://github.com/martenbjork)! - Removed legacy banner from some pages as they are not useful for readers
+
+- Updated dependencies [[`654d840e6`](https://github.com/Shopify/polaris/commit/654d840e654b3a0dc9de8c2ea7e03d0d34a8a4d0), [`c933547a2`](https://github.com/Shopify/polaris/commit/c933547a28f8de46e5d20eefdc4744b8996e8959)]:
+  - @shopify/polaris@10.40.0
+
+## 0.44.0
+
+### Minor Changes
+
+- [#8718](https://github.com/Shopify/polaris/pull/8718) [`444d7b248`](https://github.com/Shopify/polaris/commit/444d7b248ea48bed37a4d5060413d5319225b05b) Thanks [@yurm04](https://github.com/yurm04)! - Added Layout resource page to polaris.shopify.com
+
+* [#8787](https://github.com/Shopify/polaris/pull/8787) [`2fa562db3`](https://github.com/Shopify/polaris/commit/2fa562db3fd6636bea260798be9cc239c3257f42) Thanks [@jjgali](https://github.com/jjgali)! - Cross linked to Layout documentation page from the Structure and layout component page.
+
+### Patch Changes
+
+- [#8786](https://github.com/Shopify/polaris/pull/8786) [`023c781e1`](https://github.com/Shopify/polaris/commit/023c781e12da67f622d07bbd6a372c59a8299339) Thanks [@samrose3](https://github.com/samrose3)! - Fix npm badge width on Tools pages
+
+* [#8746](https://github.com/Shopify/polaris/pull/8746) [`d2fcf18d5`](https://github.com/Shopify/polaris/commit/d2fcf18d5c5b36e299af830dd4376671490658c2) Thanks [@laurkim](https://github.com/laurkim)! - Added 'Related resources' section to layout components
+
+- [#8785](https://github.com/Shopify/polaris/pull/8785) [`94351645f`](https://github.com/Shopify/polaris/commit/94351645f2dec23781b2a5557230003828b55f1b) Thanks [@samrose3](https://github.com/samrose3)! - Fixed width of Listbox with search example"
+
+- Updated dependencies [[`a4f3838bb`](https://github.com/Shopify/polaris/commit/a4f3838bbd621fab0958906595c9776d42f3428f), [`8c5e9705c`](https://github.com/Shopify/polaris/commit/8c5e9705c39e3a959aa07c4d59c6fbcd90ab492c), [`8217b5845`](https://github.com/Shopify/polaris/commit/8217b5845c7c07dbb6affab455d68eaf7b8051b3)]:
+  - @shopify/polaris@10.39.2
+
 ## 0.43.0
 
 ### Minor Changes

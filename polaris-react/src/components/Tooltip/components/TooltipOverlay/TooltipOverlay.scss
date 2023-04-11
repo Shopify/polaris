@@ -31,14 +31,14 @@
     width: 0;
     border-width: var(--p-space-2);
     border-style: solid;
-    border-color: transparent transparent var(--p-surface) transparent;
+    border-color: transparent transparent var(--p-color-bg) transparent;
   }
 
   &.positionedAbove {
     &::after {
       top: auto;
       bottom: calc(var(--p-space-4) * -1);
-      border-color: var(--p-surface) transparent transparent transparent;
+      border-color: var(--p-color-bg) transparent transparent transparent;
     }
   }
 }
@@ -49,9 +49,8 @@
 
 .measured:not(.instant) {
   animation: var(--p-keyframes-appear-below) var(--p-duration-50)
-    var(--p-ease-in) var(--p-duration-100) 1 both;
+    var(--p-ease-out) var(--p-duration-100) 1 both;
 
-  // stylelint-disable-next-line -- Not a breakpoint
   @media (prefers-reduced-motion) {
     animation: none;
   }
@@ -59,9 +58,8 @@
 
 .measured.positionedAbove:not(.instant) {
   animation: var(--p-keyframes-appear-above) var(--p-duration-50)
-    var(--p-ease-in) var(--p-duration-100) 1 both;
+    var(--p-ease-out) var(--p-duration-100) 1 both;
 
-  // stylelint-disable-next-line -- Not a breakpoint
   @media (prefers-reduced-motion) {
     animation: none;
   }
@@ -74,8 +72,8 @@
 
 .Content {
   position: relative;
-  background-color: var(--p-surface);
-  color: var(--p-text);
+  background-color: var(--p-color-bg);
+  color: var(--p-color-text);
   word-break: break-word;
   // stylelint-disable-next-line -- Polaris component custom properties
   border-radius: var(--pc-tooltip-border-radius);

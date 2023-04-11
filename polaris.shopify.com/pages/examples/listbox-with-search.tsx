@@ -207,7 +207,9 @@ function ListboxWithSearchExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span style={{color: 'var(--p-color-text-interactive)'}}>
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -264,7 +266,6 @@ function ListboxWithSearchExample() {
           shadow
           style={{
             position: 'relative',
-            width: '310px',
             height: '292px',
             padding: 'var(--p-space-2) 0',
             borderBottomLeftRadius: 'var(--p-border-radius-2)',

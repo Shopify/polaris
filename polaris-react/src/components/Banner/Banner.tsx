@@ -85,7 +85,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 
   if (title) {
     headingMarkup = (
-      <Text as="h2" variant="headingMd">
+      <Text as="h2" variant="headingMd" breakWord>
         {title}
       </Text>
     );
@@ -195,6 +195,7 @@ function SecondaryActionFrom({action}: {action: Action}) {
         className={styles.SecondaryAction}
         url={action.url}
         external={action.external}
+        target={action.target}
       >
         <span className={styles.Text}>{action.content}</span>
       </UnstyledLink>

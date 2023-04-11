@@ -12,8 +12,8 @@
   padding: 0 var(--p-space-2);
 
   svg {
-    fill: var(--p-icon);
-    color: var(--p-icon-on-interactive);
+    fill: var(--p-color-icon);
+    color: var(--p-color-icon-on-color);
   }
 }
 
@@ -22,6 +22,6 @@
 }
 
 .disabledMedia svg {
-  fill: var(--p-icon-disabled);
-  color: var(--p-text-on-interactive);
+  fill: var(--p-color-icon-disabled);
+  color: var(--p-color-text-on-color);
 }

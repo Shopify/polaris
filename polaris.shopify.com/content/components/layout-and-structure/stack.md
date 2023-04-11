@@ -41,3 +41,7 @@ Stacks should:
 ## Related components
 
 - To display elements horizontally, [use the Inline component](https://polaris.shopify.com/components/inline)
+
+## Related resources
+
+- AlphaStack props are named following the convention of CSS logical properties, such as 'padding-inline-start' and 'padding-block-start'. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).

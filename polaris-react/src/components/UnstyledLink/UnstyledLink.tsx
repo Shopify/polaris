@@ -21,9 +21,18 @@ export const UnstyledLink = memo(
       return <LinkComponent {...unstyled.props} {...props} />;
     }
 
-    const {external, url, ...rest} = props;
-    const target = external ? '_blank' : undefined;
-    const rel = external ? 'noopener noreferrer' : undefined;
+    const {external, url, target: targetProp, ...rest} = props;
+
+    let target;
+
+    if (external) {
+      target = '_blank';
+    } else {
+      target = targetProp ?? undefined;
+    }
+
+    const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
+
     return (
       <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
     );

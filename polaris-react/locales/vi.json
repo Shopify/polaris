@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Thao tác"
+      "popoverButton": "Thao tác",
+      "dismissButton": "Bỏ qua"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

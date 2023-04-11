@@ -11,6 +11,7 @@ import type {Plugin} from 'unified';
 import {slugify} from '../../utils/various';
 import Code from '../Code';
 import {SideBySide} from './components';
+import YoutubeVideo from '../YoutubeVideo';
 
 // rehype-raw will strip the non-HTML-standard `meta` field from the node when
 // converting the parsed markdown to HTML, so we have to capture it in a
@@ -48,6 +49,7 @@ interface Props {
 
 const defaultMDXComponents: MDXComponents = {
   SideBySide: SideBySide as MDXComponent,
+  YoutubeVideo: YoutubeVideo as MDXComponent,
 };
 
 function Markdown({
@@ -93,10 +95,10 @@ function Markdown({
             return <h3>{children}</h3>;
           }
         },
-        img: ({src, alt}) =>
+        img: ({src, alt, style}) =>
           src ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={src} alt={alt ?? ''} className={styles.MarkdownImage} />
+            <img src={src} alt={alt ?? ''} className={styles.MarkdownImage} style={style} />
           ) : null,
         code: ({inline, children, className}) =>
           inline ? (

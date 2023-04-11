@@ -18,6 +18,6 @@
 
 .RequiredIndicator::after {
   content: '*';
-  color: var(--p-text-critical);
+  color: var(--p-color-text-critical);
   margin-left: var(--p-space-1);
 }

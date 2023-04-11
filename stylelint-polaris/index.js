@@ -397,9 +397,13 @@ const stylelintPolarisCoverageOptions = {
     {
       'polaris/media-query-allowed-list': {
         // Allowed media types and media conditions
-        // https://www.w3.org/TR/mediaquery5/#media
+        // https://www.w3.org/TR/mediaqueries-5/#media
         allowedMediaTypes: ['print', 'screen'],
-        allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
+        allowedMediaFeatureNames: [
+          'forced-colors',
+          '-ms-high-contrast',
+          'prefers-reduced-motion',
+        ],
         allowedScssInterpolations: [
           // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
           matchNameRegExp(

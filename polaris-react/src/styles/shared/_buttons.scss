@@ -13,13 +13,11 @@
   min-width: 36px;
   margin: 0;
   padding: $vertical-padding var(--p-space-4);
-  background: var(--p-surface);
+  background: var(--p-color-bg);
   box-shadow: var(--p-shadow-sm);
   border-radius: var(--p-border-radius-1);
-  color: var(--p-text);
-  border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
-  border-top-color: var(--p-border-subdued);
-  border-bottom-color: var(--p-border-shadow-subdued);
+  color: var(--p-color-text);
+  border: var(--p-border-width-1) solid var(--p-color-border-strong);
   line-height: 1;
   text-align: center;
   cursor: pointer;
@@ -28,11 +26,11 @@
   -webkit-tap-highlight-color: transparent;
 
   svg {
-    fill: var(--p-icon);
+    fill: var(--p-color-icon);
   }
 
   &:hover {
-    background: var(--p-action-secondary-hovered);
+    background: var(--p-color-bg-hover);
     outline: var(--p-border-width-1) solid transparent;
   }
 
@@ -44,7 +42,7 @@
   }
 
   &:active {
-    background: var(--p-action-secondary-pressed);
+    background: var(--p-color-bg-subdued-active);
     box-shadow: var(--p-shadow-sm);
 
     &::after {
@@ -54,10 +52,10 @@
   }
 
   &.pressed {
-    background: var(--p-action-secondary-depressed);
+    background: var(--p-color-bg-inset-strong);
     box-shadow: var(--p-shadow-inset-md);
-    color: var(--p-text-on-primary);
-    border-color: var(--p-border-depressed);
+    color: var(--p-color-text-on-color);
+    border-color: var(--p-color-border-inverse);
 
     svg {
       fill: currentColor;
@@ -72,12 +70,12 @@
 @mixin base-button-disabled {
   transition: none;
   box-shadow: none;
-  border-color: var(--p-border-disabled);
-  background: var(--p-surface-disabled);
-  color: var(--p-text-disabled);
+  border-color: var(--p-color-border-disabled);
+  background: var(--p-color-bg-disabled);
+  color: var(--p-color-text-disabled);
 
   svg {
-    fill: var(--p-icon-disabled);
+    fill: var(--p-color-icon-disabled);
   }
 }
 
