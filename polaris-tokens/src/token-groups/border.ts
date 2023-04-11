@@ -20,7 +20,7 @@ export type BorderTokenGroup = {
   [TokenName in BorderTokenName]: string;
 };
 
-export const shape: {
+export const border: {
   [TokenName in BorderTokenName]: MetadataProperties;
 } = {
   'border-radius-05': {
