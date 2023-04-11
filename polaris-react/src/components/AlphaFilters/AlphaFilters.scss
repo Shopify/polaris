@@ -216,6 +216,7 @@
 
 .ClearAll {
   margin-left: var(--p-space-1);
+  transform: translateY(-1px);
 }
 
 @media #{$p-breakpoints-md-down} {
