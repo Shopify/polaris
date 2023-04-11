@@ -1,0 +1,33 @@
+{
+  "name": "synapse",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/synapse.mjs",
+  "exports": {
+    ".": "./dist/synapse.mjs"
+  },
+  "types": "dist/synapse.d.ts",
+  "repository": "git@github.com:Shopify/synapse.git",
+  "author": "Dave Geddes <dave.geddes@shopify.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "npx tsup --watch",
+    "push-local-dep": "yarn build && yalc push --private",
+    "build": "npx tsup",
+    "test": "eval $(ejson2env config/secrets.development.ejson) && vitest run",
+    "test:watch": "eval $(ejson2env config/secrets.development.ejson) && vitest"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "common-tags": "^1.8.2",
+    "fast-glob": "^3.2.12",
+    "gpt3-tokenizer": "^1.1.5",
+    "graphql": "^16.6.0",
+    "openai": "^3.2.1",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2",
+    "vfile-reporter": "^7.0.5"
+  },
+  "yalcSig": "f319655e6b6b25728aa040dc2cbe8fa8"
+}
