@@ -15,6 +15,14 @@ import {KeyboardEventHandler} from 'react';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 import PatternThumbnailPreview from '../ThumbnailPreview';
 import ComponentThumbnail from '../ComponentThumbnail';
+import Markdown from '../Markdown';
+import {
+  MagicMajor,
+  CircleAlertMajor,
+  AutomationMajor,
+  HintMajor,
+  RiskMajor,
+} from '@shopify/polaris-icons';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
   foundations: 'Foundations',
@@ -22,6 +30,9 @@ const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   tokens: 'Tokens',
   icons: 'Icons',
 };
+
+import StatusBadge from '../StatusBadge';
+import {StatusName} from '../../types';
 
 const SearchContext = createContext({id: '', currentItemId: ''});
 
@@ -101,6 +112,13 @@ function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
+  const [searchMode, setSearchMode] = useState<'search' | 'ai'>('search');
+  const [isLoading, setIsLoading] = useState(false);
+  const [prompt, setPrompt] = useState('');
+  const [promptResults, setPromptResults] = useState<
+    {question: string; answer: string; searchResults: GroupedSearchResults}[]
+  >([]);
+
   const router = useRouter();
 
   let resultsInRenderedOrder: SearchResults = [];
@@ -159,6 +177,38 @@ function GlobalSearch() {
     }
   }, [isOpen]);
 
+  // query the prompts endpoint
+  const handleAskQuestion = async (passPrompt) => {
+    if (passPrompt && !passPrompt.target) {
+      console.log('prompt: ', passPrompt);
+
+      setPrompt(passPrompt);
+      console.log('set');
+    }
+
+    if (prompt) {
+      console.log('fetching');
+      setIsLoading(true);
+      fetch(`/api/prompts?p=${encodeURIComponent(prompt)}`)
+        .then((data) => data.json())
+        .then((json) => {
+          console.log('got it');
+
+          const {completion, mostSimilar} = json;
+          console.log(mostSimilar);
+          setPromptResults((prev) => [
+            {
+              question: prompt,
+              answer: completion,
+              sources: mostSimilar,
+            },
+            ...prev,
+          ]);
+          setIsLoading(false);
+        });
+    }
+  };
+
   const handleKeyboardNavigation: KeyboardEventHandler<HTMLDivElement> = (
     evt,
   ) => {
@@ -212,33 +262,65 @@ function GlobalSearch() {
         <div className={styles.PreventBackgroundInteractions}></div>
         <div className="dark-mode styles-for-site-but-not-polaris-examples">
           <Dialog.Panel className={styles.Results}>
-            {isOpen && (
-              <div className={styles.Header}>
-                <div className={styles.SearchIcon}>
-                  <SearchIcon />
-                </div>
-                <input
-                  type="search"
+            {searchMode === 'search' && (
+              <>
+                <Search
                   value={searchTerm}
                   onChange={(evt) => setSearchTerm(evt.target.value)}
-                  role="combobox"
-                  aria-controls="search-results"
-                  aria-expanded={searchResultsCount > 0}
-                  aria-activedescendant={currentItemId}
                   onKeyUp={handleKeyboardNavigation}
-                  autoComplete="off"
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  spellCheck={false}
-                  placeholder="Search"
+                  searchResultsCount={searchResultsCount}
+                  currentItemId={currentItemId}
+                  onSearchModeToggle={() => setSearchMode('ai')}
+                  onClose={() => setIsOpen(false)}
                 />
-                <button
-                  className={styles.MobileCloseButton}
-                  onClick={() => setIsOpen(false)}
-                >
-                  Close
-                </button>
-              </div>
+                {/* {searchResults.length < 1 && ( */}
+                <div className={styles.DocsAIMessage}>
+                  <button
+                    className={styles.DocsAIToggle}
+                    onClick={() => setSearchMode('ai')}
+                  >
+                    <span className={styles.DocsAIHeading}>Docs AI </span>
+                    <StatusBadge
+                      status={{message: '', value: StatusName.Beta}}
+                    />
+                  </button>
+                  <span>
+                    Try our more contextual search results for Polaris
+                    documentation.
+                  </span>
+                </div>
+                {/* )} */}
+              </>
+            )}
+            {searchMode === 'ai' && (
+              <>
+                <AIPrompt
+                  value={prompt}
+                  setPrompt={setPrompt}
+                  onChange={(evt) => setPrompt(evt.target.value)}
+                  onKeyUp={handleKeyboardNavigation}
+                  searchResultsCount={promptResults.length}
+                  currentItemId={currentItemId}
+                  onSearchModeToggle={() => setSearchMode('search')}
+                  onClose={() => setIsOpen(false)}
+                  onAskQuestion={handleAskQuestion}
+                />
+                <div className={styles.DocsAIMessage}>
+                  <button
+                    className={styles.DocsAIToggle}
+                    onClick={() => setSearchMode('ai')}
+                  >
+                    <span className={styles.DocsAIHeading}>Docs AI </span>
+                    <StatusBadge
+                      status={{message: '', value: StatusName.Beta}}
+                    />
+                  </button>
+                  <span>
+                    Try our more contextual search results for Polaris
+                    documentation.
+                  </span>
+                </div>
+              </>
             )}
             <div
               className={styles.ResultsInner}
@@ -246,13 +328,60 @@ function GlobalSearch() {
               role="listbox"
               aria-label="Search results"
             >
-              {searchResults && (
+              {searchMode === 'search' && searchResults && (
                 <SearchResults
                   searchResults={searchResults}
                   currentItemId={currentItemId}
                   searchTerm={searchTerm}
                   resultsInRenderedOrder={resultsInRenderedOrder}
                 />
+              )}
+              {searchMode === 'ai' && isLoading && (
+                <div className={styles.AILoading}>
+                  <p className={styles.AILoadingMessage}>
+                    Generating your response
+                  </p>
+                  <p>This may take a few seconds</p>
+                </div>
+              )}
+              {searchMode === 'ai' &&
+                !isLoading &&
+                promptResults.length < 1 && (
+                  <Canned onAskQuestion={handleAskQuestion} />
+                )}
+              {searchMode === 'ai' && promptResults.length > 0 && (
+                <>
+                  {promptResults.map(
+                    ({question, answer, searchResults, sources}, idx) => (
+                      <>
+                        {/* <p>{question}</p> */}
+                        <div key={idx} className={styles.PromptAnswer}>
+                          {/* {answer} */}
+                          <Markdown>{answer}</Markdown>
+                          {/* <TypingAnimation message={answer} /> */}
+                          <div className={styles.AISources}>
+                            {sources.length > 0 && (
+                              <p className={styles.SourceTitle}>Sources:</p>
+                            )}
+                            <div className={styles.AISourceList}>
+                              {sources.map((source) => {
+                                return source && <p key={source}>{source}</p>;
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                        {searchResults && (
+                          <SearchResults
+                            searchResults={searchResults}
+                            currentItemId={currentItemId}
+                            searchTerm={searchTerm}
+                            resultsInRenderedOrder={resultsInRenderedOrder}
+                          />
+                        )}
+                      </>
+                    ),
+                  )}
+                </>
               )}
             </div>
           </Dialog.Panel>
@@ -506,5 +635,212 @@ function ResultsGroup({
     </div>
   );
 }
+
+function Search({
+  value,
+  onChange,
+  onKeyUp,
+  onClose,
+  onSearchModeToggle,
+  searchResultsCount,
+  currentItemId,
+}: {
+  value: string;
+  onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyUp: KeyboardEventHandler<HTMLDivElement>;
+  onClose: () => void;
+  onSearchModeToggle: () => void;
+  searchResultsCount: number;
+  currentItemId: string;
+}) {
+  return (
+    <div className={styles.Header}>
+      <div className={styles.SearchIcon}>
+        <SearchIcon />
+      </div>
+      <input
+        type="search"
+        value={value}
+        onChange={onChange}
+        role="combobox"
+        aria-controls="search-results"
+        aria-expanded={searchResultsCount > 0}
+        aria-activedescendant={currentItemId}
+        onKeyUp={onKeyUp}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        placeholder="Search"
+      />
+      <button className={styles.MobileCloseButton} onClick={onClose}>
+        Close
+      </button>
+    </div>
+  );
+}
+
+function AIPrompt({
+  value,
+  onChange,
+  onKeyUp,
+  onClose,
+  onSearchModeToggle,
+  searchResultsCount,
+  currentItemId,
+  onAskQuestion,
+}: {
+  value: string;
+  onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyUp: KeyboardEventHandler<HTMLDivElement>;
+  onClose: () => void;
+  onSearchModeToggle: () => void;
+  searchResultsCount: number;
+  currentItemId: string;
+  onAskQuestion: () => Promise<void>;
+}) {
+  return (
+    <div className={styles.Header}>
+      {/* <div className={styles.AIPromptIcon}>
+        <MagicMajor />
+      </div> */}
+      <button className={styles.SearchModeToggle} onClick={onSearchModeToggle}>
+        {'<'} Search
+      </button>
+      <input
+        className={styles.AIInput}
+        type="search"
+        value={value}
+        onChange={onChange}
+        role="combobox"
+        aria-controls="search-results"
+        aria-expanded={searchResultsCount > 0}
+        aria-activedescendant={currentItemId}
+        onKeyUp={onKeyUp}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        placeholder="Ask a question"
+      />
+      <button className={styles.AskButton} onClick={onAskQuestion}>
+        Send question
+      </button>
+
+      <button className={styles.MobileCloseButton} onClick={onClose}>
+        Close
+      </button>
+    </div>
+  );
+}
+
+const TypingAnimation = ({message}) => {
+  const [text, setText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const messageSplit = message.split(' ');
+  console.log(message);
+
+  useEffect(() => {
+    let intervalId = null;
+
+    if (isTyping) {
+      intervalId = setInterval(() => {
+        setText(
+          (text) =>
+            text +
+            (messageSplit[text.split(' ').length] === undefined
+              ? ''
+              : messageSplit[text.length == 0 ? 0 : text.split(' ').length] +
+                ' '),
+        );
+        if (text.length === message.length) {
+          setIsTyping(false);
+        }
+        console.log('text', text);
+      }, 150);
+    } else {
+      clearInterval(intervalId);
+    }
+    return () => clearInterval(intervalId);
+  }, [isTyping, text, currentIndex, message]);
+
+  return (
+    <span>
+      {text}
+      <span className={styles.BlinkingCursor}>|</span>
+    </span>
+  );
+};
+
+const Canned = ({onAskQuestion}) => {
+  function chooseExample(e) {
+    onAskQuestion(e.target.dataset.question);
+  }
+
+  return (
+    <div className={styles.AICannedContainer}>
+      <div className={styles.AIExamplePrompts}>
+        <div>
+          <div className={styles.AIIcon}>
+            <HintMajor />
+          </div>
+          <p>Examples</p>
+        </div>
+        <button
+          onClick={chooseExample}
+          className={styles.AIBox}
+          data-question="What does the Alpha Stack component do?"
+        >
+          What does the Alpha Stack component do? {'>>'}
+        </button>
+        <button
+          onClick={chooseExample}
+          className={styles.AIBox}
+          data-question="Can I set the horizontal direction of Bleed?"
+        >
+          Can I set the horizontal direction of Bleed? {'>>'}
+        </button>
+        <button
+          onClick={chooseExample}
+          className={styles.AIBox}
+          data-question="Is there a color for destructive buttons?"
+        >
+          Is there a color for destructive buttons? {'>>'}
+        </button>
+      </div>
+      <div className={styles.AIExamplePrompts}>
+        <div className={styles.AIIcon}>
+          <AutomationMajor />
+        </div>
+        <p>Capabilities</p>
+        <div className={styles.AIBox}>
+          Trained on entire Polaris documentation
+        </div>
+        <div className={styles.AIBox}>
+          Can answer questions from shopify.dev too
+        </div>
+        <div className={styles.AIBox}>
+          Gives actionable next steps for diving deeper
+        </div>
+      </div>
+      <div className={styles.AIExamplePrompts}>
+        <div className={styles.AIIcon}>
+          <RiskMajor />
+        </div>
+        <p>Limitaions</p>
+        <div className={styles.AIBox}>
+          May occasionally generate incorrect information
+        </div>
+        <div className={styles.AIBox}>
+          May occasionally produce harmful instructions or biased content
+        </div>
+        <div className={styles.AIBox}>
+          Limited knowledge of world and events after 2021
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default GlobalSearch;
