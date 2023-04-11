@@ -41,7 +41,6 @@ jobs:
           path: |
             **/.eslintcache
             **/.turbo
-            **/*.tsbuildinfo
             node_modules/.cache/turbo
             polaris.shopify.com/.next/cache
           key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-${{ github.sha }}
