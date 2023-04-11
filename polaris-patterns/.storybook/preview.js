@@ -2,11 +2,21 @@ import React from 'react';
 
 import {AppProvider as PolarisAppProvider} from '@shopify/polaris';
 import {breakpoints} from '@shopify/polaris-tokens';
+import {I18nContext, I18nManager} from '@shopify/react-i18n';
+import translations from '../../polaris-react/locales/en.json';
 
 function AppProviderDecorator(Story, context) {
+  const i18nManager = new I18nManager({
+    locale: 'en',
+    currency: 'usd',
+    country: 'CA',
+  });
+
   return (
-    <PolarisAppProvider>
-      <Story {...context} />
+    <PolarisAppProvider i18n={translations}>
+      <I18nContext.Provider value={i18nManager}>
+        <Story {...context} />
+      </I18nContext.Provider>
     </PolarisAppProvider>
   );
 }
