@@ -283,6 +283,10 @@ button {
   }
 }
 
+[id] {
+  scroll-margin-top: var(--header-height);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
