@@ -78,7 +78,6 @@ const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
   font: /font|line-height/,
   motion: /animation/,
   shadow: /shadow/,
-  shape: /border/,
   spacing: /margin|padding|gap|top|left|right|bottom/,
   zIndex: /z-index/,
 };
