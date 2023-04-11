@@ -112,11 +112,11 @@ function ResourceDetailsLayout() {
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
                 <Bleed marginInline={{xs: 4, sm: 5}}>
-                  <Divider borderStyle="border-subdued" />
+                  <Divider />
                 </Bleed>
               </Box>
               <SkeletonLabel />
-              <Divider borderStyle="border-subdued" />
+              <Divider />
               <SkeletonBodyText />
             </AlphaStack>
           </AlphaCard>
@@ -147,5 +147,6 @@ function ResourceDetailsLayout() {
 - <span>Put information that defines the resource object in the primary column.</span> ![Product detail example](/images/patterns/resource-details-layout/resource-detail-usage-3.png)
 - <span>Put supporting information such as status, metadata, and summaries in the secondary column.</span> ![Product details page with the secondary column outlined](/images/patterns/resource-details-layout/resource-detail-usage-4.png)
 - <span>Arrange content in order of importance.</span> ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-details-layout/resource-detail-usage-5.png)
+- <span>Place unique page actions at the top of the actions list and typical object actions at the bottom.</span> ![Popover with unique page actions placed at the top, and typical object actions placed at the bottom](/images/patterns/resource-details-layout/resource-detail-usage-6.png)
 
 </div>
