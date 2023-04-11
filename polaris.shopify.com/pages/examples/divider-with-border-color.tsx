@@ -3,7 +3,7 @@ import {Divider, Text, AlphaStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function DividerWithBorderStylesExample() {
+function DividerWithBorderColorExample() {
   return (
     <AlphaStack gap="5">
       <Text as="h1" variant="headingXs">
@@ -26,4 +26,4 @@ function DividerWithBorderStylesExample() {
   );
 }
 
-export default withPolarisExample(DividerWithBorderStylesExample);
+export default withPolarisExample(DividerWithBorderColorExample);

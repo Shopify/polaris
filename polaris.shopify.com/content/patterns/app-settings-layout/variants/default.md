@@ -71,7 +71,7 @@ function AppSettingsLayoutExample() {
             </AlphaStack>
           </AlphaCard>
         </Columns>
-        {smUp ? <Divider borderStyle="base" /> : null}
+        {smUp ? <Divider /> : null}
         <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
           <Box
             as="section"
