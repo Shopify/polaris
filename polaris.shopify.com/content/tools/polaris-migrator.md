@@ -710,6 +710,27 @@ npx @shopify/polaris-migrator react-rename-component-prop <path> --component=MyC
 
 <br />
 
+#### `scss-remove-unused-at-use`
+
+A generic codemod to remove unused `@use` imports in SCSS files.
+
+```diff
+- @use 'global-styles/legacy';
+
+// No usages of the `legacy` namespace. Can be safely removed.
+.class {
+  color: blue;
+}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator scss-remove-unused-at-use <path> --url='import/url'
+```
+
+<br />
+
 ## Creating Migrations
 
 Sometimes referred to as "codemods", migrations are JavaScript functions which modify some code from one form to another (eg; to move between breaking versions of `@shopify/polaris`). ASTs (Abstract Syntax Trees) are used to "walk" through the code in discreet, strongly typed steps, called "nodes". All changes made to nodes (and thus the AST) are then written out as the new/"migrated" version of the code.

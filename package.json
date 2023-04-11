@@ -8,6 +8,7 @@
   "workspaces": {
     "packages": [
       "polaris-cli",
+      "polaris-codemods",
       "polaris-tokens",
       "polaris-for-vscode",
       "polaris-icons",
@@ -83,19 +84,19 @@
     "size-limit": "^5.0.3",
     "stylelint": "^14.15.0",
     "ts-node": "^10.7.0",
-    "turbo": "^1.8.5",
+    "turbo": "^1.8.8",
     "typescript": "^4.9.3"
   },
   "size-limit": [
     {
       "name": "polaris-react-cjs",
       "path": "polaris-react/build/cjs/index.js",
-      "limit": "245 kB"
+      "limit": "250 kB"
     },
     {
       "name": "polaris-react-esm",
       "path": "polaris-react/build/esm/index.js",
-      "limit": "160 kB"
+      "limit": "165 kB"
     },
     {
       "name": "polaris-react-esnext",

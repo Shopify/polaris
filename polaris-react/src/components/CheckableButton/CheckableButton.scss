@@ -2,7 +2,7 @@
 @import '../ResourceList/variables';
 
 .CheckableButton {
-  color: var(--p-text);
+  color: var(--p-color-text);
   font-size: var(--p-font-size-75);
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-1);
@@ -20,7 +20,7 @@
   width: auto;
 
   svg {
-    fill: var(--p-icon-on-interactive);
+    fill: var(--p-color-icon-on-color);
   }
 
   &:hover,

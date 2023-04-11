@@ -1,0 +1,68 @@
+.duration-simple-string-arg {
+  transition-duration: duration('none');
+  transition-duration: duration('fast');
+  transition-duration: duration('base');
+  transition-duration: duration('slow');
+  transition-duration: duration('slower');
+  transition-duration: duration('slowest');
+}
+
+.duration-simple-non-string-arg {
+  transition-duration: duration();
+  transition-duration: duration(none);
+  transition-duration: duration(fast);
+  transition-duration: duration(base);
+  transition-duration: duration(slow);
+  transition-duration: duration(slower);
+  transition-duration: duration(slowest);
+}
+
+.duration-compound-string-arg {
+  transition: opacity duration('none') linear;
+  transition: opacity duration('fast') linear;
+  transition: opacity duration('base') linear;
+  transition: opacity duration('slow') linear;
+  transition: opacity duration('slower') linear;
+  transition: opacity duration('slowest') linear;
+}
+
+.duration-compound-non-string-arg {
+  transition: opacity duration() linear;
+  transition: opacity duration(none) linear;
+  transition: opacity duration(fast) linear;
+  transition: opacity duration(base) linear;
+  transition: opacity duration(slow) linear;
+  transition: opacity duration(slower) linear;
+  transition: opacity duration(slowest) linear;
+}
+
+.duration-multiple-string-arg {
+  transition: opacity duration('none') linear, left duration('none') linear;
+  transition: opacity duration('fast') linear, left duration('fast') linear;
+  transition: opacity duration('base') linear, left duration('base') linear;
+  transition: opacity duration('slow') linear, left duration('slow') linear;
+  transition: opacity duration('slower') linear, left duration('slower') linear;
+  transition: opacity duration('slowest') linear,
+    left duration('slowest') linear;
+}
+
+.duration-multiple-non-string-arg {
+  transition: opacity duration() linear, left duration() linear;
+  transition: opacity duration(none) linear, left duration(none) linear;
+  transition: opacity duration(fast) linear, left duration(fast) linear;
+  transition: opacity duration(base) linear, left duration(base) linear;
+  transition: opacity duration(slow) linear, left duration(slow) linear;
+  transition: opacity duration(slower) linear, left duration(slower) linear;
+  transition: opacity duration(slowest) linear, left duration(slowest) linear;
+}
+
+.duration-edges {
+  // sass calculation
+  transition: (duration() - 33ms) fill linear 33ms;
+  // Duration + Delay
+  transition: opacity duration(slower) linear duration(fast);
+  // Duration + Delay after easing func
+  transition: opacity linear duration(slower) duration(fast);
+  // foobar isn't a valid duration key
+  transition-duration: duration(foobar);
+}

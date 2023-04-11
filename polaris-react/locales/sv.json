@@ -259,11 +259,12 @@
       "toggleMenuLabel": "Växla menyn",
       "SearchField": {
         "clearButtonLabel": "Rensa",
-        "search": "Sökning"
+        "search": "Sök"
       }
     },
     "MediaCard": {
-      "popoverButton": "Åtgärder"
+      "popoverButton": "Åtgärder",
+      "dismissButton": "Avvisa"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

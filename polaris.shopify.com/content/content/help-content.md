@@ -48,11 +48,11 @@ The following is an example of help content that was originally a card descripti
 
 #### Before
 
-![Before: help text as a card description](/images/foundations/patterns/help-content/before.png)
+![Before: help text as a card description](/images/content/help-content/before.png)
 
 #### After
 
-![After: help text close to the upload action](/images/foundations/patterns/help-content/after.png)
+![After: help text close to the upload action](/images/content/help-content/after.png)
 
 ---
 
@@ -70,20 +70,22 @@ This example also illustrates that there’s still only a subset of merchants th
 ## “Learn more” links
 
 ​
-“Learn more” links take merchants to the Shopify Help Center for more detailed information than we can offer in the UI.
+“Learn more” links take merchants to the Shopify Help Center or Shopify.dev for more detailed information than we can offer in the UI.
 
-Make sure “learn more” links go to a Help Center page or heading that’s specific to the topic.
+Make sure “Learn more” links go to a page or heading that’s specific to the topic.
 
 The Help Center is a rich resource, but for a merchant it’s not always a convenient time to read documentation. Landing on a dense page of information without knowing where to start is frustrating and disorienting. If there isn’t a page or heading specific to the topic you’re providing help for, work with the documentation team to create the right content.
+
+See the content guidelines for links for more about [formatting “Learn more” links](/content/actionable-language#-learn-more--links).
 
 ### “Learn more” badges for settings
 
 ​
 “Learn more” badges show an information icon that takes you to the Help Center. These are different from tooltips. On large screens, they expand on hover to reveal a “Learn more” link.
 
-![“Learn more” badge interaction pattern](/images/foundations/patterns/help-content/learn-more-badges.png)
+![“Learn more” badge interaction pattern](/images/content/help-content/learn-more-badges.png)
 
-Use “learn more” badges:
+Use “Learn more” badges:
 ​
 
 - Only in settings experiences, and only in card headers
@@ -91,5 +93,5 @@ Use “learn more” badges:
 
 Best practices:
 
-- Use regular “learn more” links for help topics specific to only a part of a card
-- Some cards benefit from a “learn more” badge in the heading in combination with “learn more” links or other help content in the card body
+- Use regular “Learn more” links for help topics specific to only a part of a card
+- Some cards benefit from a “Learn more” badge in the heading in combination with “Learn more” links or other help content in the card body

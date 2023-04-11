@@ -10,7 +10,7 @@ This enables merchants to select a date range.
 
 ## How it helps merchants
 
-![Date range picker with three numbered zones](/images/patterns/date-range-cover-image.png)
+![Date range picker with three numbered zones](/images/patterns/date-picking/date-range-cover-image.png)
 
 1. Providing multiple ways to select a date range gives merchants full flexibility. The list provides quick access to common options, the text input makes it easier to set large custom ranges, and the calendar is an intuitive way to set a more narrow scope.
 2. Displaying two months makes it easier for merchants to select date ranges that span across both.
@@ -389,8 +389,8 @@ function DateRangePicker() {
 
 ### Useful to know
 
-- <span>Pin any relevant, merchant-specific dates to the top of the option list.</span> ![List of date options such as “BFCM (2023)”](/images/patterns/date-range-usage-1.png)
-- <span>If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors)</span> ![Single-month calendar with a range of unselectable dates](/images/patterns/date-range-usage-2.png)
-- <span>If a merchant enters a nonexistent date, revert to the previously selected date.</span> ![Calendar with date inputs reading an incorrect date](/images/patterns/date-range-usage-3.png)
+- <span>Pin any relevant, merchant-specific dates to the top of the option list.</span> ![List of date options such as “BFCM (2023)”](/images/patterns/date-picking/date-range-usage-1.png)
+- <span>If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors)</span> ![Single-month calendar with a range of unselectable dates](/images/patterns/date-picking/date-range-usage-2.png)
+- <span>If a merchant enters a nonexistent date, revert to the previously selected date.</span> ![Calendar with date inputs reading an incorrect date](/images/patterns/date-picking/date-range-usage-3.png)
 
 </div>

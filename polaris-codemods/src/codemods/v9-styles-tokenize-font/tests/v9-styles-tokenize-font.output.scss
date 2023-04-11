@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'Custom Font';
+  font-weight: 400;
+}
+
+.font-size {
+  // LENGTHS
+  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-200);
+  // Ignore
+  font-size: 1em;
+  font-size: #{1px};
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: 10px;
+  font-size: 10px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: var(--p-font-size-75) + 1px;
+  font-size: 12px + 1px;
+
+  // REM FUNCTION
+  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-200);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: rem(1em);
+  font-size: rem(1em);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: rem(10px);
+  font-size: rem(10px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: rem($invalid);
+  font-size: rem($invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: rem();
+  font-size: rem();
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: rem(var(--p-font-size-75), $too-many-args);
+  font-size: rem(12px, $too-many-args);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: var(--p-font-size-75) 1px;
+  font-size: rem(12px) 1px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: rem(1px) var(--p-font-size-75);
+  font-size: rem(1px) 12px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: rem(#{10px + 2px}) var(--p-font-size-75);
+  font-size: rem(#{10px + 2px}) 12px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: var(--p-font-size-75) + #{10px + 2px};
+  font-size: rem(12px) + #{10px + 2px};
+}
+
+.font-weight {
+  // LENGTHS
+  font-weight: var(--p-font-weight-regular);
+  font-weight: var(--p-font-weight-bold);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-weight: 300;
+  font-weight: 300;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-weight: var(--p-font-weight-regular) + 300;
+  font-weight: 400 + 300;
+
+  // ALIAS
+  font-weight: var(--p-font-weight-regular);
+  font-weight: var(--p-font-weight-bold);
+  // Ignore
+  font-weight: inherit;
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-weight: bolder;
+  font-weight: bolder;
+}
+
+.font-line-height {
+  // LENGTHS
+  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-1);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: 10px;
+  line-height: 10px;
+
+  // REM FUNCTION
+  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-1);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: rem(1em);
+  line-height: rem(1em);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: rem(10px);
+  line-height: rem(10px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: rem($invalid);
+  line-height: rem($invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: rem();
+  line-height: rem();
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: rem(var(--p-font-line-height-1), $too-many-args);
+  line-height: rem(16px, $too-many-args);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: var(--p-font-line-height-1) 1px;
+  line-height: rem(16px) 1px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: rem(1px) var(--p-font-line-height-1);
+  line-height: rem(1px) 16px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: rem(#{10px + 6px}) var(--p-font-line-height-1);
+  line-height: rem(#{10px + 6px}) 16px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: var(--p-font-line-height-1) + #{10px + 6px};
+  line-height: rem(16px) + #{10px + 6px};
+}

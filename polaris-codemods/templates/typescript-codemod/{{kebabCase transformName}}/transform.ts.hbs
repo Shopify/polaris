@@ -1,0 +1,24 @@
+import type {API, FileInfo} from 'jscodeshift';
+
+import {typescript} from '../../utilities/constants';
+
+export const extensions = typescript.extensions;
+export const options = {};
+
+export default function transformer(
+  fileInfo: FileInfo,
+  {jscodeshift: j}: API,
+  _: Options,
+) {
+  const source = j(fileInfo.source);
+
+  source.findJSXElements('div').forEach((element) => {
+    element.replace(
+      j.jsxElement(element.node.openingElement, element.node.closingElement, [
+        j.stringLiteral('world'),
+      ]),
+    );
+  });
+
+  return source.toSource();
+}

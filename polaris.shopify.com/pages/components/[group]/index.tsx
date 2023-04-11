@@ -104,7 +104,7 @@ export default function GroupPage({
     ? relatedResources && (
         <Stack gap="4">
           <Text as="h4" variant="headingLg">
-            Related Resources
+            Related resources
           </Text>
           <ul>
             {relatedResources.map((resource) => (

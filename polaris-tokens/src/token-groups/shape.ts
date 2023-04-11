@@ -83,18 +83,18 @@ export const shape: {
     value: '5px',
   },
   'border-base': {
-    value: 'var(--p-border-width-1) solid var(--p-border-subdued)',
+    value: 'var(--p-border-width-1) solid var(--p-color-border-subdued)',
   },
   'border-dark': {
-    value: 'var(--p-border-width-1) solid var(--p-border)',
+    value: 'var(--p-border-width-1) solid var(--p-color-border)',
   },
   'border-transparent': {
     value: 'var(--p-border-width-1) solid transparent',
   },
   'border-divider': {
-    value: 'var(--p-border-width-1) solid var(--p-divider)',
+    value: 'var(--p-border-width-1) solid var(--p-color-border-subdued)',
   },
   'border-divider-on-dark': {
-    value: 'var(--p-border-width-1) solid var(--p-divider-dark)',
+    value: 'var(--p-border-width-1) solid var(--p-color-border-inverse)',
   },
 };

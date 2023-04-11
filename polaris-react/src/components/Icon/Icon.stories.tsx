@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Stack, Box, Icon} from '@shopify/polaris';
-import type {BoxProps} from '@shopify/polaris';
+import type {BoxProps, IconProps} from '@shopify/polaris';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -28,23 +28,29 @@ export function Colored() {
 }
 
 export function WithBackdrop() {
-  const BackdropIcon = ({color, backdrop = undefined}: any) => (
+  const BackdropIcon = ({
+    boxBackground,
+    iconColor,
+  }: {
+    boxBackground: BoxProps['background'];
+    iconColor: IconProps['color'];
+  }) => (
     <Box
-      background={`surface-${backdrop ?? color}` as BoxProps['background']}
+      background={boxBackground}
       padding="1"
       width="28px"
       borderRadius="full"
     >
-      <Icon source={CirclePlusMinor} color={color} />
+      <Icon source={CirclePlusMinor} color={iconColor} />
     </Box>
   );
   return (
     <Stack gap="1">
-      <BackdropIcon color="base" backdrop="neutral" />
-      <BackdropIcon color="highlight" />
-      <BackdropIcon color="success" />
-      <BackdropIcon color="warning" />
-      <BackdropIcon color="critical" />
+      <BackdropIcon iconColor="base" boxBackground="surface-subdued" />
+      <BackdropIcon iconColor="highlight" boxBackground="surface-highlight" />
+      <BackdropIcon iconColor="success" boxBackground="surface-success" />
+      <BackdropIcon iconColor="warning" boxBackground="surface-warning" />
+      <BackdropIcon iconColor="critical" boxBackground="surface-critical" />
     </Stack>
   );
 }

@@ -21,7 +21,7 @@
   }
 
   &:hover {
-    background-color: var(--p-surface-hovered);
+    background-color: var(--p-color-bg-hover);
   }
 
   &:focus {
@@ -29,11 +29,11 @@
   }
 
   &:active {
-    background-color: var(--p-surface-pressed);
+    background-color: var(--p-color-bg-active);
   }
 
   &.selected {
-    background-color: var(--p-surface-selected);
+    background-color: var(--p-color-bg-interactive-selected);
   }
 
   &.selected::before {
@@ -44,15 +44,15 @@
     left: calc(-1 * var(--p-space-1));
     height: 100%;
     width: var(--p-border-radius-1);
-    background-color: var(--p-interactive);
+    background-color: var(--p-color-bg-interactive);
     border-top-right-radius: var(--p-border-radius-1);
     border-bottom-right-radius: var(--p-border-radius-1);
     transform: translateX(-100%);
   }
 
   &.disabled {
-    background-color: var(--p-surface-disabled);
-    color: var(--p-text-disabled);
+    background-color: var(--p-color-bg-disabled);
+    color: var(--p-color-text-disabled);
     cursor: default;
   }
 }
@@ -64,7 +64,7 @@ li:first-of-type > .TextOption {
 // Focused by click
 [data-focused] .TextOption:not(.disabled) {
   outline: none;
-  background-color: var(--p-surface-selected);
+  background-color: var(--p-color-bg-interactive-selected);
   transition: background-color var(--p-duration-400);
 }
 

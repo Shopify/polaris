@@ -263,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Handlinger"
+      "popoverButton": "Handlinger",
+      "dismissButton": "Avvis"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {

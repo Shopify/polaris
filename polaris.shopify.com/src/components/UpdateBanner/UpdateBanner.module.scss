@@ -8,7 +8,7 @@
   padding: var(--p-space-5) var(--p-space-6);
   & > svg {
     flex-shrink: 0;
-    fill: var(--p-icon-highlight);
+    fill: var(--p-color-icon-info);
     /* Undo these overly perscriptive styles from Polaris Icons */
     filter: none;
     opacity: 1;

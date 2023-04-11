@@ -48,6 +48,7 @@ module.exports = function (api) {
       '.',
       // Note: The following projects use rootMode: 'upward' to inherit
       // and merge with this root level config.
+      './polaris-codemods',
       './polaris-migrator',
       './polaris-tokens',
       './polaris-icons',

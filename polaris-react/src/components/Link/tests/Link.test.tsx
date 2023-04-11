@@ -51,6 +51,32 @@ describe('<Link />', () => {
     });
   });
 
+  describe('target', () => {
+    it('adds target blank and noopener noreferrer', () => {
+      const link = mountWithApp(
+        <Link url="https://help.shopify.com/" target="_blank">
+          Shopify Help Center
+        </Link>,
+      );
+      const htmlLink = link.find('a');
+
+      expect(htmlLink?.props.target).toBe('_blank');
+      expect(htmlLink?.props.rel).toBe('noopener noreferrer');
+    });
+
+    it('does not override external prop', () => {
+      const link = mountWithApp(
+        <Link url="https://help.shopify.com/" external target="_top">
+          Shopify Help Center
+        </Link>,
+      );
+      const htmlLink = link.find('a');
+
+      expect(htmlLink?.props.target).toBe('_blank');
+      expect(htmlLink?.props.rel).toBe('noopener noreferrer');
+    });
+  });
+
   describe('monochrome link', () => {
     it('outputs a monochrome unstyled link if rendered within a banner', () => {
       const link = mountWithApp(

@@ -369,6 +369,7 @@ export function IndexFilters({
                             tooltipContent={searchFilterTooltip}
                             disabled={disabled}
                             hideFilters={hideFilters}
+                            hideQueryField={hideQueryField}
                             style={{
                               ...defaultStyle,
                               ...transitionStyles[state],

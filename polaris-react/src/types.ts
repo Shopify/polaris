@@ -37,6 +37,8 @@ export type IconSource =
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 
+export type Target = '_blank' | '_self' | '_parent' | '_top';
+
 export type Error =
   | string
   | React.ReactElement
@@ -49,6 +51,8 @@ export interface BaseButton {
   url?: string;
   /** Forces url to open in a new tab */
   external?: boolean;
+  /** Where to display the url */
+  target?: Target;
   /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
   download?: string | boolean;
   /** Allows the button to submit a form */
@@ -102,6 +106,8 @@ export interface Action {
   url?: string;
   /** Forces url to open in a new tab */
   external?: boolean;
+  /** Where to display the url */
+  target?: Target;
   /** Callback when an action takes place */
   onAction?(): void;
   /** Callback when mouse enter */

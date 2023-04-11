@@ -1,0 +1,8 @@
+@use 'global-styles/legacy-polaris-v8' as v8 with (
+  $var1: 1px,
+  $var2: 2px
+);
+
+.BaseCase {
+  padding: 16px;
+}

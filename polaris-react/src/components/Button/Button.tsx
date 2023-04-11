@@ -72,7 +72,10 @@ interface CommonButtonProps
   'data-primary-link'?: boolean;
 }
 
-type LinkButtonProps = Pick<ButtonProps, 'url' | 'external' | 'download'>;
+type LinkButtonProps = Pick<
+  ButtonProps,
+  'url' | 'external' | 'download' | 'target'
+>;
 
 type ActionButtonProps = Pick<
   ButtonProps,
@@ -98,6 +101,7 @@ export function Button({
   disabled,
   external,
   download,
+  target,
   submit,
   loading,
   pressed,
@@ -281,6 +285,7 @@ export function Button({
     url,
     external,
     download,
+    target,
   };
   const actionProps: ActionButtonProps = {
     submit,

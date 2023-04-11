@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithBorderRadiusExample() {
   return (
-    <Box background="surface" borderRadius="1">
+    <Box background="bg" borderRadius="1">
       <Placeholder label="Content inside a box" />
     </Box>
   );

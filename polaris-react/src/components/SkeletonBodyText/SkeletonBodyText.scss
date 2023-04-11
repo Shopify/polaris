@@ -5,7 +5,7 @@ $body-text-last-line-width: 80%;
 .SkeletonBodyText {
   height: var(--p-space-2);
   display: flex;
-  background-color: var(--p-surface-neutral);
+  background-color: var(--p-color-bg-strong);
   border-radius: var(--p-border-radius-1);
 
   @media screen and (-ms-high-contrast: active) {

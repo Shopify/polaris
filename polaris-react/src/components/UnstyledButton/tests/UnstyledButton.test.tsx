@@ -122,7 +122,7 @@ describe('<Button />', () => {
     });
 
     it('is false when not set', () => {
-      const button = mountWithApp(<UnstyledButton url="https://google.com" />);
+      const button = mountWithApp(<UnstyledButton url={mockUrl} />);
       expect(button).toContainReactComponent(UnstyledLink, {
         external: undefined,
       });
@@ -140,6 +140,41 @@ describe('<Button />', () => {
       expect(button).toContainReactComponent('a');
       expect(button).not.toContainReactComponent(UnstyledLink, {
         external: undefined,
+      });
+    });
+  });
+
+  describe('target', () => {
+    const mockUrl = 'https://google.com';
+
+    it('gets passed into the UnstyledLink', () => {
+      const button = mountWithApp(
+        <UnstyledButton url={mockUrl} target="_top" />,
+      );
+      expect(button).toContainReactComponent(UnstyledLink, {
+        target: '_top',
+      });
+    });
+
+    it('is undefined when not set', () => {
+      const button = mountWithApp(<UnstyledButton url={mockUrl} />);
+      expect(button).toContainReactComponent(UnstyledLink, {
+        target: undefined,
+      });
+    });
+
+    it('is not passed when `url` is missing', () => {
+      const button = mountWithApp(<UnstyledButton target="_top" />);
+      expect(button).toContainReactComponent('button');
+    });
+
+    it('is not passed when `url + disabled`', () => {
+      const button = mountWithApp(
+        <UnstyledButton url={mockUrl} target="_top" disabled />,
+      );
+      expect(button).toContainReactComponent('a');
+      expect(button).not.toContainReactComponent(UnstyledLink, {
+        target: undefined,
       });
     });
   });
