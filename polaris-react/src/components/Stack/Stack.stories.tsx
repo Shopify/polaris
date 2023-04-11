@@ -9,13 +9,13 @@ export default {
 export function Default() {
   return (
     <Stack>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         02
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         03
       </Box>
     </Stack>
@@ -25,13 +25,13 @@ export function Default() {
 export function WithGap() {
   return (
     <Stack gap="8">
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         02
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         03
       </Box>
     </Stack>
@@ -41,13 +41,13 @@ export function WithGap() {
 export function WithResponsiveGap() {
   return (
     <Stack gap={{xs: '4', md: '10'}}>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         02
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         03
       </Box>
     </Stack>
@@ -58,13 +58,13 @@ export function WithAlignStart() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
       <Stack gap="4" align="start">
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           02
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           03
         </Box>
       </Stack>
@@ -76,13 +76,13 @@ export function WithAlignCenter() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
       <Stack gap="4" align="center">
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           02
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           03
         </Box>
       </Stack>
@@ -94,13 +94,13 @@ export function WithAlignEnd() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
       <Stack gap="4" align="end">
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           02
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           03
         </Box>
       </Stack>
@@ -112,13 +112,13 @@ export function WithAlignSpaceAround() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
       <Stack gap="4" align="space-around">
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           02
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           03
         </Box>
       </Stack>
@@ -130,13 +130,13 @@ export function WithAlignSpaceBetween() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
       <Stack gap="4" align="space-between">
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           02
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           03
         </Box>
       </Stack>
@@ -148,13 +148,13 @@ export function WithAlignSpaceEvenly() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
       <Stack gap="4" align="space-evenly">
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           02
         </Box>
-        <Box background="surface" padding="1">
+        <Box background="bg" padding="1">
           03
         </Box>
       </Stack>
@@ -165,13 +165,13 @@ export function WithAlignSpaceEvenly() {
 export function WithInlineAlignStart() {
   return (
     <Stack gap="4" inlineAlign="start">
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         02
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         03
       </Box>
     </Stack>
@@ -181,13 +181,13 @@ export function WithInlineAlignStart() {
 export function WithInlineAlignCenter() {
   return (
     <Stack gap="4" inlineAlign="center">
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         02
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         03
       </Box>
     </Stack>
@@ -197,13 +197,13 @@ export function WithInlineAlignCenter() {
 export function WithInlineAlignEnd() {
   return (
     <Stack gap="4" inlineAlign="end">
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         02
       </Box>
-      <Box background="surface" padding="1">
+      <Box background="bg" padding="1">
         03
       </Box>
     </Stack>

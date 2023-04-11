@@ -46,11 +46,11 @@ export function WithBackdrop() {
   );
   return (
     <Stack gap="1">
-      <BackdropIcon iconColor="base" boxBackground="surface-subdued" />
-      <BackdropIcon iconColor="highlight" boxBackground="surface-highlight" />
-      <BackdropIcon iconColor="success" boxBackground="surface-success" />
-      <BackdropIcon iconColor="warning" boxBackground="surface-warning" />
-      <BackdropIcon iconColor="critical" boxBackground="surface-critical" />
+      <BackdropIcon iconColor="base" boxBackground="bg-subdued" />
+      <BackdropIcon iconColor="highlight" boxBackground="bg-info" />
+      <BackdropIcon iconColor="success" boxBackground="bg-success" />
+      <BackdropIcon iconColor="warning" boxBackground="bg-warning" />
+      <BackdropIcon iconColor="critical" boxBackground="bg-critical" />
     </Stack>
   );
 }
