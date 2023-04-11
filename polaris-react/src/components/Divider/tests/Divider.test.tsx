@@ -15,12 +15,23 @@ describe('<Divider />', () => {
     });
   });
 
-  it('renders custom style when passed in', () => {
+  it('renders custom border color when passed in', () => {
     const divider = mountWithApp(<Divider borderColor="border" />);
 
     expect(divider).toContainReactComponent('hr', {
       style: expect.objectContaining({
         borderBlockStart: 'var(--p-border-width-1) solid var(--p-color-border)',
+      }) as React.CSSProperties,
+    });
+  });
+
+  it('renders custom border width when passed in', () => {
+    const divider = mountWithApp(<Divider borderWidth="2" />);
+
+    expect(divider).toContainReactComponent('hr', {
+      style: expect.objectContaining({
+        borderBlockStart:
+          'var(--p-border-width-2) solid var(--p-color-border-subdued)',
       }) as React.CSSProperties,
     });
   });
