@@ -4,7 +4,15 @@ import type {BorderWidthScale, ColorBorderAlias} from '@shopify/polaris-tokens';
 import styles from './Divider.scss';
 
 export interface DividerProps {
+  /** 
+   * Divider border color
+   * @default 'border-subdued'
+   */
   borderColor?: ColorBorderAlias | 'transparent';
+  /** 
+   * Divider border width
+   * @default '1'
+   */
   borderWidth?: BorderWidthScale;
 }
 
