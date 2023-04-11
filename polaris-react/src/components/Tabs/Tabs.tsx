@@ -562,7 +562,7 @@ export const Tabs = ({
         padding={{
           md: '2',
         }}
-        background="surface"
+        background="bg"
         borderBlockEnd="divider"
         borderRadiusStartEnd="2"
         borderRadiusStartStart="2"

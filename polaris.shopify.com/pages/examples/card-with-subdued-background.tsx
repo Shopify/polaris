@@ -4,7 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
-    <Card background="surface-subdued">
+    <Card background="bg-subdued">
       <Text as="h2" variant="bodyMd">
         Content inside a card
       </Text>

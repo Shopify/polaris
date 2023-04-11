@@ -1,6 +1,6 @@
 import type {
   BreakpointsAlias,
-  ColorsTokenName,
+  ColorBackgroundAlias,
   ShapeBorderRadiusScale,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
@@ -10,19 +10,14 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
 
-type CardBackgroundColorTokenScale = Extract<
-  ColorsTokenName,
-  'surface' | 'surface-subdued'
->;
-
 type Spacing = ResponsiveProp<SpacingSpaceScale>;
 
 export interface CardProps {
   children?: React.ReactNode;
   /** Background color
-   * @default 'surface'
+   * @default 'bg'
    */
-  background?: CardBackgroundColorTokenScale;
+  background?: ColorBackgroundAlias;
   /** The spacing around the card
    * @default {xs: '4', sm: '5'}
    * @example
@@ -36,7 +31,7 @@ export interface CardProps {
 
 export const Card = ({
   children,
-  background = 'surface',
+  background = 'bg',
   padding = {xs: '4', sm: '5'},
   roundedAbove,
 }: CardProps) => {
