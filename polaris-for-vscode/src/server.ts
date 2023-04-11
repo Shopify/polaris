@@ -67,7 +67,10 @@ type GroupedCompletionItemPatterns = {
   [T in GroupedCompletionItemsKey]: RegExp;
 };
 
-const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
+const groupedCompletionItemPatterns: Omit<
+  GroupedCompletionItemPatterns,
+  'shape'
+> = {
   breakpoints: /width/,
   border: /border/,
   color:
@@ -78,7 +81,6 @@ const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
   font: /font|line-height/,
   motion: /animation/,
   shadow: /shadow/,
-  shape: /border/,
   spacing: /margin|padding|gap|top|left|right|bottom/,
   zIndex: /z-index/,
 };
