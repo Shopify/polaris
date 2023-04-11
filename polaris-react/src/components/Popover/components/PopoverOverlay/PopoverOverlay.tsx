@@ -269,7 +269,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           overflowY="hidden"
           background="bg"
           borderRadius="2"
-          outline="transparent"
+          outlineStyle="none"
         >
           {content}
         </Box>

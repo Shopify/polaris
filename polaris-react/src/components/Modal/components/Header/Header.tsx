@@ -39,7 +39,8 @@ export function Header({
       paddingBlockEnd="4"
       paddingInlineStart="5"
       paddingInlineEnd="5"
-      borderBlockEnd="divider"
+      borderBlockEndWidth="1"
+      borderColor="border-subdued"
     >
       <Columns columns={{xs: '1fr auto'}} gap="4">
         <Inline gap="4" blockAlign="center">

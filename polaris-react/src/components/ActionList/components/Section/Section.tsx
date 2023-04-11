@@ -102,7 +102,8 @@ export function Section({
     <Box
       as="li"
       role="presentation"
-      {...(!isFirst && {borderBlockStart: 'divider'})}
+      borderColor="border-subdued"
+      {...(!isFirst && {borderBlockStartWidth: '1'})}
       {...(!section.title && {paddingBlockStart: '2'})}
     >
       {sectionMarkup}

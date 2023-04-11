@@ -17,7 +17,7 @@ export function Default() {
 
 export function WithDarkBorder() {
   return (
-    <Box background="bg" padding="4" border="dark">
+    <Box background="bg" padding="4" borderWidth="1" borderColor="border">
       <Icon source={PaintBrushMajor} color="base" />
     </Box>
   );
@@ -34,14 +34,20 @@ export function WithBorderRadius() {
 export function WithResponsivePadding() {
   return (
     <AlphaStack gap="4">
-      <Box background="bg" padding={{xs: '2', sm: '8'}} border="dark">
+      <Box
+        background="bg"
+        padding={{xs: '2', sm: '8'}}
+        borderWidth="1"
+        borderColor="border"
+      >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
       <Box
         background="bg"
         padding="2"
         paddingBlockStart={{xs: '4', sm: '10'}}
-        border="dark"
+        borderWidth="1"
+        borderColor="border"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
@@ -49,7 +55,8 @@ export function WithResponsivePadding() {
         background="bg"
         padding="2"
         paddingBlockEnd={{xs: '4', sm: '10'}}
-        border="dark"
+        borderWidth="1"
+        borderColor="border"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
@@ -57,11 +64,17 @@ export function WithResponsivePadding() {
         background="bg"
         padding="2"
         paddingInlineStart={{xs: '4', sm: '10'}}
-        border="dark"
+        borderWidth="1"
+        borderColor="border"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-      <Box background="bg" paddingInlineEnd={{xs: '4', sm: '10'}} border="dark">
+      <Box
+        background="bg"
+        paddingInlineEnd={{xs: '4', sm: '10'}}
+        borderWidth="1"
+        borderColor="border"
+      >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
     </AlphaStack>

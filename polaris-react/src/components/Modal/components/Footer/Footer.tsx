@@ -34,7 +34,8 @@ export function Footer({
   return (
     <Inline gap="4" blockAlign="center">
       <Box
-        borderBlockStart="divider"
+        borderColor="border-subdued"
+        borderBlockStartWidth="1"
         minHeight="var(--p-space-16)"
         padding="4"
         width="100%"

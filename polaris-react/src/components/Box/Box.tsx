@@ -20,6 +20,7 @@ import styles from './Box.scss';
 
 type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 
+type LineStyles = 'solid' | 'dashed' | 'none';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
@@ -33,16 +34,10 @@ export interface BoxProps extends React.AriaAttributes {
   as?: Element;
   /** Background color */
   background?: ColorBackgroundAlias;
-  // /** Border style */
-  // border?: BorderTokenAlias;
-  // /** Vertical end border style */
-  // borderBlockEnd?: BorderTokenAlias;
-  // /** Horizontal start border style */
-  // borderInlineStart?: BorderTokenAlias;
-  // /** Horizontal end border style */
-  // borderInlineEnd?: BorderTokenAlias;
-  // /** Vertical start border style */
-  // borderBlockStart?: BorderTokenAlias;
+  /** Border color */
+  borderColor?: ColorBorderAlias | 'transparent';
+  /** Border style */
+  borderStyle?: LineStyles;
   /** Border radius */
   borderRadius?: BorderRadiusScale;
   /** Vertical end horizontal start border radius */
@@ -131,8 +126,10 @@ export interface BoxProps extends React.AriaAttributes {
   insetInlineEnd?: Spacing;
   /** Opacity of box */
   opacity?: string;
-  // /** Outline style */
-  // outline?: BorderTokenAlias;
+  /** Outline color */
+  outlineColor?: ColorBorderAlias | 'transparent';
+  /** Outline style */
+  outlineStyle?: LineStyles;
   /** Visually hide the contents during print */
   printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
@@ -146,11 +143,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     {
       as = 'div',
       background,
-      // border,
-      // borderBlockEnd,
-      // borderInlineStart,
-      // borderInlineEnd,
-      // borderBlockStart,
+      borderColor,
+      borderStyle = 'solid',
       borderWidth,
       borderBlockStartWidth,
       borderBlockEndWidth,
@@ -169,7 +163,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       maxWidth,
       overflowX,
       overflowY,
-      // outline,
+      outlineColor,
+      outlineStyle,
       padding,
       paddingBlockStart,
       paddingBlockEnd,
@@ -192,24 +187,23 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
+    const borderStyleValue = borderStyle
+      ? borderStyle
+      : (borderColor || borderWidth) ?? 'solid';
+
+    const outlineStyleValue = outlineStyle
+      ? outlineStyle
+      : (borderColor || borderWidth) ?? 'solid';
+
     const style = {
       '--pc-box-color': color ? `var(--p-color-${color})` : undefined,
       '--pc-box-background': background
         ? `var(--p-color-${background})`
         : undefined,
-      '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
-      '--pc-box-border-block-end': borderBlockEnd
-        ? `var(--p-border-${borderBlockEnd})`
+      '--pc-box-border-color': borderColor
+        ? `var(--p-color-${borderColor})`
         : undefined,
-      '--pc-box-border-inline-start': borderInlineStart
-        ? `var(--p-border-${borderInlineStart})`
-        : undefined,
-      '--pc-box-border-inline-end': borderInlineEnd
-        ? `var(--p-border-${borderInlineEnd})`
-        : undefined,
-      '--pc-box-border-block-start': borderBlockStart
-        ? `var(--p-border-${borderBlockStart})`
-        : undefined,
+      '--pc-box-border-style': borderStyleValue,
       '--pc-box-border-radius': borderRadius
         ? `var(--p-border-radius-${borderRadius})`
         : undefined,
@@ -243,7 +237,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,
       '--pc-box-max-width': maxWidth,
-      '--pc-box-outline': outline ? `var(--p-border-${outline})` : undefined,
+      '--pc-box-outline-color': outlineColor
+        ? `var(--p-color-${outlineColor})`
+        : undefined,
+      '--pc-box-outline-style': outlineStyleValue,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
       ...getResponsiveProps(
