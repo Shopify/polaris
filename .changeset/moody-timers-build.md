@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': minor
 ---
 
-add new personalized text icon
+Added PersonalizedTextMajor icon
