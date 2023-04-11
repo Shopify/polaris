@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': major
 ---
 
-Add new keyboard major + minor icons
+Added new keyboard major + minor icons
