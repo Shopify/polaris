@@ -182,11 +182,6 @@ const deprecated = [
     permanent: false,
   },
   {
-    source: '/components/card',
-    destination: '/components/deprecated/card',
-    permanent: false,
-  },
-  {
     source: '/components/display-text',
     destination: '/components/deprecated/display-text',
     permanent: false,
@@ -327,17 +322,17 @@ const imagesAndIcons = [
 const layoutAndStructure = [
   {
     source: '/components/alpha-card',
-    destination: '/components/layout-and-structure/alpha-card',
+    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
     source: '/components/structure/card',
-    destination: '/components/layout-and-structure/alpha-card',
+    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/card',
-    destination: '/components/layout-and-structure/alpha-card',
+    source: '/components/card',
+    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
@@ -353,11 +348,6 @@ const layoutAndStructure = [
   {
     source: '/components/callout-card',
     destination: '/components/layout-and-structure/callout-card',
-    permanent: false,
-  },
-  {
-    source: '/components/card',
-    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
@@ -431,17 +421,12 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/alpha-stack',
-    destination: '/components/layout-and-structure/stack',
-    permanent: false,
-  },
-  {
     source: '/components/stack',
-    destination: '/components/layout-and-structure/stack',
+    destination: '/components/layout-and-structure/alpha-stack',
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/stack',
+    source: '/components/alpha-stack',
     destination: '/components/layout-and-structure/alpha-stack',
     permanent: false,
   },
