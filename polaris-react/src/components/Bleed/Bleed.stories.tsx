@@ -42,7 +42,7 @@ export function Default() {
 
 export function WithVerticalDirection() {
   return (
-    <Box background="bg" padding="4" borderColor="border" borderWidth="1">
+    <Box background="bg" padding="4" borderColor="border-subdued" borderWidth="1">
       <Bleed marginBlock="6">
         <div style={styles} />
       </Bleed>
