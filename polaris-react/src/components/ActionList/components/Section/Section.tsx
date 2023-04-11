@@ -61,7 +61,7 @@ export function Section({
     <Box
       paddingBlockStart="4"
       paddingInlineStart="4"
-      paddingBlockEnd={'2'}
+      paddingBlockEnd="2"
       paddingInlineEnd="4"
     >
       <Text as="p" variant="headingXs">
