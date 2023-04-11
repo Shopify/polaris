@@ -5,6 +5,7 @@ import type {DisableableAction} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
+import {Tooltip} from '../../../Tooltip';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
 import styles from '../../BulkActions.scss';
 
@@ -36,29 +37,38 @@ export function BulkActionButton({
     }
   });
 
-  const buttonContent =
-    disclosure && !showContentInButton ? undefined : content;
+  const shouldShowDotsIcon = disclosure && !showContentInButton;
+
+  const buttonContent = shouldShowDotsIcon ? undefined : content;
+
+  const buttonMarkup = (
+    <Button
+      external={external}
+      url={url}
+      accessibilityLabel={shouldShowDotsIcon ? content : accessibilityLabel}
+      disclosure={disclosure && showContentInButton}
+      onClick={onAction}
+      disabled={disabled}
+      size="slim"
+      icon={
+        shouldShowDotsIcon ? (
+          <Icon source={HorizontalDotsMinor} color="base" />
+        ) : undefined
+      }
+    >
+      {buttonContent}
+    </Button>
+  );
 
   return (
     <div className={styles.BulkActionButton} ref={bulkActionButton}>
-      <Button
-        external={external}
-        url={url}
-        accessibilityLabel={
-          disclosure && !showContentInButton ? content : accessibilityLabel
-        }
-        disclosure={disclosure && showContentInButton}
-        onClick={onAction}
-        disabled={disabled}
-        size="slim"
-        icon={
-          disclosure && !showContentInButton ? (
-            <Icon source={HorizontalDotsMinor} color="base" />
-          ) : undefined
-        }
-      >
-        {buttonContent}
-      </Button>
+      {shouldShowDotsIcon ? (
+        <Tooltip content={content} preferredPosition="above">
+          {buttonMarkup}
+        </Tooltip>
+      ) : (
+        buttonMarkup
+      )}
       {indicator && <Indicator />}
     </div>
   );
