@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "api/vendor": true
+  },
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

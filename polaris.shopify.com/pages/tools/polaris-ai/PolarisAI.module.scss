@@ -1,0 +1,174 @@
+@import '../../../src/styles/variables.scss';
+@import '../../../src/styles/mixins.scss';
+
+.PolarisAIContainer {
+  max-width: 768px;
+  margin-left: 3rem;
+  height: 100vh;
+  --contatiner-color: #f8f8f8;
+  --dark-container-color: #e7e7e7;
+
+  .PromptInput {
+    position: sticky;
+    bottom: 1rem;
+    padding: 1rem;
+    border-radius: 3px;
+    box-shadow: var(--card-shadow);
+    z-index: 100;
+    background-color: var(--surface-subdued);
+    width: 100%;
+    max-width: 768px;
+  }
+
+  .DocsAIMessage {
+    background-color: #272727;
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 2rem;
+    color: rgb(176, 176, 188);
+
+    .DocsAIToggle {
+      display: flex;
+      gap:10px;
+      background-color: #272727;
+    }
+
+    .DocsAIHeading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+
+  .AICannedContainer {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    padding: 1rem 10rem;
+    background-color: var(--contatiner-color);
+    border-radius: 3px;
+
+    button {
+      background-color: var(--dark-container-color);
+    }
+  }
+
+  .AIExamplePrompts {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    flex: 1 1 0px;
+    align-items: center;
+
+    p {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  .AIIcon {
+    height: 3rem;
+    width: 3rem;
+    margin: auto;
+
+    svg {
+      fill: var(--text);
+    }
+  }
+
+  .AIBox {
+    background-color: var(--dark-container-color);
+    padding: 1rem;
+    text-align: center;
+    border-radius: 12px;
+
+  }
+
+  .AILoading {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .AILoadingMessage {
+    font-family: Menlo;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+
+  .AILoadingMessage:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4,end) 900ms infinite;
+    animation: ellipsis steps(4,end) 900ms infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+
+  @keyframes ellipsis {
+    to {
+      width: 1.25em;
+    }
+  }
+
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 1.25em;
+    }
+  }
+
+  .AISourceList {
+    display: flex;
+    gap: .5rem;
+
+    p {
+      --inline-pill-background: #272431;
+      --inline-pill-border-color: #DFD6FF;
+      --inline-pill-color: #987FFF;
+
+      display: inline-block;
+      padding: 0px 5px;
+      background: var(--inline-pill-background);
+      border: 0.5px solid var(--inline-pill-border-color);
+      border-radius: 3px;
+      color: var(--inline-pill-color);
+      vertical-align: bottom;
+      font-size: var(--font-size-100);
+      cursor: pointer;
+    }
+  }
+
+  .PromptAnswer {
+    position: relative;
+    font-size: var(--font-size-500);
+    font-weight: var(--font-weight-400);
+    padding: 1.5rem;
+
+    code {
+      --inline-pill-background: #f2f7fe;
+      --inline-pill-border-color: #103262;
+      --inline-pill-color: #103262;
+      @include dark-mode {
+        --inline-pill-background: #002852;
+        --inline-pill-border-color: #b5c9fa;
+        --inline-pill-color: #b5c9fa;
+      }
+      display: inline-block;
+      padding: 0px 5px;
+      background: var(--inline-pill-background);
+      border: 0.5px solid var(--inline-pill-border-color);
+      border-radius: 3px;
+      color: var(--inline-pill-color);
+      vertical-align: bottom;
+      font-size: var(--font-size-100);
+    }
+  }
+}
+
+
+
+
