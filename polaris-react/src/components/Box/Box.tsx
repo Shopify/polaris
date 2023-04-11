@@ -20,7 +20,7 @@ import styles from './Box.scss';
 
 type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 
-type LineStyles = 'solid' | 'dashed' | 'none';
+type LineStyles = 'solid' | 'dashed';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
@@ -144,7 +144,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as = 'div',
       background,
       borderColor,
-      borderStyle = 'solid',
+      borderStyle,
       borderWidth,
       borderBlockStartWidth,
       borderBlockEndWidth,
