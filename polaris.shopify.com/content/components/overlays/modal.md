@@ -31,10 +31,16 @@ examples:
     description: Use as the default option for a modal.
   - fileName: modal-with-primary-action.tsx
     title: With primary action
-    description: Use to let merchants take a key action.
+    description: Use when there is one key action to take in the modal.
   - fileName: modal-with-primary-and-secondary-actions.tsx
     title: With primary and secondary actions
-    description: Use to let merchants take key actions at the bottom of the modal.
+    description: Use when there are key actions to take in the modal.
+  - fileName: modal-with-custom-footer-content.tsx
+    title: With custom footer content
+    description: Use to display custom content in the modal footer.
+  - fileName: modal-with-actions-and-custom-footer-content.tsx
+    title: With actions and custom footer content
+    description: Use to display additional content left of the footer actions.
   - fileName: modal-large.tsx
     title: Large
     description: Use when you need to increase the width of your modal.
