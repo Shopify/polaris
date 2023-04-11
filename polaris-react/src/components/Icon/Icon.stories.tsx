@@ -46,7 +46,7 @@ export function WithBackdrop() {
   );
   return (
     <Stack gap="1">
-      <BackdropIcon iconColor="base" boxBackground="bg-subdued" />
+      <BackdropIcon iconColor="base" boxBackground="bg-strong" />
       <BackdropIcon iconColor="highlight" boxBackground="bg-info" />
       <BackdropIcon iconColor="success" boxBackground="bg-success" />
       <BackdropIcon iconColor="warning" boxBackground="bg-warning" />
