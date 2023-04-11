@@ -1,0 +1,15 @@
+name: Personalized text
+set: major
+description: Concept | Used to represent personalized text features.
+keywords:
+  - Personalized text
+  - Personalization
+  - Customer attributes
+  - Customer
+  - Dynamic content
+authors:
+  - Natalie Hercun
+version: 1
+date_added: 2023-04-11
+date_modified: YYYY-MM-DD
+exclusive_use: For use related to feature using personalized text
