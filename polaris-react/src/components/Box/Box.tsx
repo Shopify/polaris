@@ -2,7 +2,9 @@ import React, {forwardRef} from 'react';
 import type {
   ColorTextAlias,
   ColorBackgroundAlias,
-  ShapeBorderWidthScale,
+  ColorBorderAlias,
+  BorderWidthScale,
+  BorderRadiusScale,
   ShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
@@ -21,24 +23,7 @@ type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
-export type BorderTokenAlias =
-  | 'base'
-  | 'dark'
-  | 'divider'
-  | 'divider-on-dark'
-  | 'transparent';
-
 type Spacing = ResponsiveProp<SpacingSpaceScale>;
-
-export type BorderRadiusTokenScale =
-  | '05'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | 'full';
 
 export interface BoxProps extends React.AriaAttributes {
   children?: React.ReactNode;
@@ -48,36 +33,36 @@ export interface BoxProps extends React.AriaAttributes {
   as?: Element;
   /** Background color */
   background?: ColorBackgroundAlias;
-  /** Border style */
-  border?: BorderTokenAlias;
-  /** Vertical end border style */
-  borderBlockEnd?: BorderTokenAlias;
-  /** Horizontal start border style */
-  borderInlineStart?: BorderTokenAlias;
-  /** Horizontal end border style */
-  borderInlineEnd?: BorderTokenAlias;
-  /** Vertical start border style */
-  borderBlockStart?: BorderTokenAlias;
+  // /** Border style */
+  // border?: BorderTokenAlias;
+  // /** Vertical end border style */
+  // borderBlockEnd?: BorderTokenAlias;
+  // /** Horizontal start border style */
+  // borderInlineStart?: BorderTokenAlias;
+  // /** Horizontal end border style */
+  // borderInlineEnd?: BorderTokenAlias;
+  // /** Vertical start border style */
+  // borderBlockStart?: BorderTokenAlias;
   /** Border radius */
-  borderRadius?: BorderRadiusTokenScale;
+  borderRadius?: BorderRadiusScale;
   /** Vertical end horizontal start border radius */
-  borderRadiusEndStart?: BorderRadiusTokenScale;
+  borderRadiusEndStart?: BorderRadiusScale;
   /** Vertical end horizontal end border radius */
-  borderRadiusEndEnd?: BorderRadiusTokenScale;
+  borderRadiusEndEnd?: BorderRadiusScale;
   /** Vertical start horizontal start border radius */
-  borderRadiusStartStart?: BorderRadiusTokenScale;
+  borderRadiusStartStart?: BorderRadiusScale;
   /** Vertical start horizontal end border radius */
-  borderRadiusStartEnd?: BorderRadiusTokenScale;
+  borderRadiusStartEnd?: BorderRadiusScale;
   /** Border width */
-  borderWidth?: ShapeBorderWidthScale;
+  borderWidth?: BorderWidthScale;
   /** Vertical start border width */
-  borderBlockStartWidth?: ShapeBorderWidthScale;
+  borderBlockStartWidth?: BorderWidthScale;
   /** Vertical end border width */
-  borderBlockEndWidth?: ShapeBorderWidthScale;
+  borderBlockEndWidth?: BorderWidthScale;
   /** Horizontal start border width */
-  borderInlineStartWidth?: ShapeBorderWidthScale;
+  borderInlineStartWidth?: BorderWidthScale;
   /** Horizontal end border width */
-  borderInlineEndWidth?: ShapeBorderWidthScale;
+  borderInlineEndWidth?: BorderWidthScale;
   /** Color of children */
   color?: ColorTextAlias;
   /** HTML id attribute */
@@ -146,8 +131,8 @@ export interface BoxProps extends React.AriaAttributes {
   insetInlineEnd?: Spacing;
   /** Opacity of box */
   opacity?: string;
-  /** Outline style */
-  outline?: BorderTokenAlias;
+  // /** Outline style */
+  // outline?: BorderTokenAlias;
   /** Visually hide the contents during print */
   printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
@@ -161,11 +146,11 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     {
       as = 'div',
       background,
-      border,
-      borderBlockEnd,
-      borderInlineStart,
-      borderInlineEnd,
-      borderBlockStart,
+      // border,
+      // borderBlockEnd,
+      // borderInlineStart,
+      // borderInlineEnd,
+      // borderBlockStart,
       borderWidth,
       borderBlockStartWidth,
       borderBlockEndWidth,
@@ -184,7 +169,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       maxWidth,
       overflowX,
       overflowY,
-      outline,
+      // outline,
       padding,
       paddingBlockStart,
       paddingBlockEnd,
