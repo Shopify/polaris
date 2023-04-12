@@ -8,7 +8,7 @@ import {Bleed} from '../Bleed';
 import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
-import {Columns} from '../Columns';
+import {HorizontalGrid} from '../HorizontalGrid';
 import {HorizontalStack} from '../HorizontalStack';
 import type {HorizontalStackProps} from '../HorizontalStack';
 import {Popover} from '../Popover';
@@ -290,8 +290,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         paddingInlineEnd={{xs: '4', sm: '5'}}
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <Columns columns={{xs: '1fr auto'}}>
-          <Columns
+        <HorizontalGrid columns={{xs: '1fr auto'}}>
+          <HorizontalGrid
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
             gap="5"
           >
@@ -309,10 +309,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                 {children}
               </Box>
             </HorizontalStack>
-          </Columns>
+          </HorizontalGrid>
           {actionsMarkup}
           {disclosureMarkup}
-        </Columns>
+        </HorizontalGrid>
       </Box>
     );
 

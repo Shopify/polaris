@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-.Columns {
+.HorizontalGrid {
   @include responsive-props('columns', 'gap', 'gap');
   @include responsive-props(
     'columns',
