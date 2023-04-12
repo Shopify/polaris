@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-// eslint-disable-next-line import/no-deprecated
 import {Cell} from '../Cell';
 
 describe('<Cell />', () => {

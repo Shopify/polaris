@@ -1,16 +1,9 @@
 import React from 'react';
-import type {ComponentMeta} from '@storybook/react';
-import {Stack, Divider, Text} from '@shopify/polaris';
+import {Divider, Text, Stack} from '@shopify/polaris';
 
-export default {
-  component: Divider,
-} as ComponentMeta<typeof Divider>;
+import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-export function Default() {
-  return <Divider />;
-}
-
-export function WithBorderStyles() {
+function DividerWithBorderColorExample() {
   return (
     <Stack gap="5">
       <Text as="h1" variant="headingXs">
@@ -32,3 +25,5 @@ export function WithBorderStyles() {
     </Stack>
   );
 }
+
+export default withPolarisExample(DividerWithBorderColorExample);
