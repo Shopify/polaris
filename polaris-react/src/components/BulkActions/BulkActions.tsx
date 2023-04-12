@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from 'react';
+import React, {PureComponent, createRef, forwardRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {debounce} from '../../utilities/debounce';
@@ -10,10 +10,12 @@ import type {
   DisableableAction,
   ActionListSection,
   MenuGroupDescriptor,
+  Action,
 } from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
 import {Inline} from '../Inline';
+import {CheckableButton} from '../CheckableButton';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
@@ -25,6 +27,7 @@ export type BulkAction = DisableableAction & BadgeAction;
 type BulkActionListSection = ActionListSection;
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
+type AriaLive = 'off' | 'polite' | undefined;
 
 const MAX_PROMOTED_ACTIONS = 2;
 
@@ -33,6 +36,16 @@ const BUTTONS_NODE_ADDITIONAL_WIDTH = 64;
 export interface BulkActionsProps {
   /** List is in a selectable state */
   selectMode?: boolean;
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+  /** State of the bulk actions checkbox */
+  selected?: boolean | 'indeterminate';
+  /** Text to select all across pages */
+  paginatedSelectAllText?: string;
+  /** Action for selecting all across pages */
+  paginatedSelectAllAction?: Action;
+  /** Callback when the select all checkbox is clicked */
+  onToggleAll?(): void;
   /** Actions that will be given more prominence */
   promotedActions?: (BulkAction | MenuGroupDescriptor)[];
   /** List of actions */
@@ -43,10 +56,8 @@ export interface BulkActionsProps {
   onSelectModeToggle?(selectMode: boolean): void;
   /** Callback when more actions button is toggled */
   onMoreActionPopoverToggle?(isOpen: boolean): void;
-  /** If the BulkActions is currently sticky in view */
-  isSticky?: boolean;
-  /** The width of the BulkActions */
-  width: number;
+  /** Used for forwarding the ref */
+  innerRef?: React.Ref<any>;
 }
 
 type CombinedProps = BulkActionsProps & {
@@ -202,8 +213,20 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   render() {
-    const {selectMode, disabled, promotedActions, i18n, isSticky, width} =
-      this.props;
+    const {
+      selectMode,
+      disabled,
+      promotedActions,
+      i18n,
+      // isSticky,
+      // width,
+      paginatedSelectAllText,
+      paginatedSelectAllAction,
+      accessibilityLabel,
+      onToggleAll,
+      selected,
+      innerRef,
+    } = this.props;
 
     const actionSections = this.actionSections();
 
@@ -272,6 +295,19 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       combinedActions = [...rolledInPromotedActions];
     }
 
+    const hasTextAndAction = paginatedSelectAllText && paginatedSelectAllAction;
+
+    const ariaLive: AriaLive = hasTextAndAction ? 'polite' : undefined;
+
+    const checkableButtonProps = {
+      accessibilityLabel,
+      selected,
+      onToggleAll,
+      disabled,
+      ariaLive,
+      ref: innerRef,
+    };
+
     const actionsPopover =
       actionSections || rolledInPromotedActions.length > 0 || measuring ? (
         <div className={styles.Popover} ref={this.setMoreActionsNode}>
@@ -300,7 +336,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const groupContent =
       promotedActionsMarkup || actionsPopover ? (
-        <Inline gap="3">
+        <Inline gap="2" blockAlign="center">
+          <CheckableButton {...checkableButtonProps} />
           {promotedActionsMarkup}
           {actionsPopover}
         </Inline>
@@ -320,16 +357,10 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
         {(status: TransitionStatus) => {
           const groupClassName = classNames(
             styles.Group,
-            !isSticky && styles['Group-not-sticky'],
-            !measuring && isSticky && styles[`Group-${status}`],
-            measuring && styles['Group-measuring'],
+            status && styles[`Group-${status}`],
           );
           return (
-            <div
-              className={groupClassName}
-              ref={this.groupNode}
-              style={{width}}
-            >
+            <div className={groupClassName} ref={this.groupNode}>
               <EventListener event="resize" handler={this.handleResize} />
               <div
                 className={styles.ButtonGroupWrapper}
@@ -415,8 +446,11 @@ function instanceOfMenuGroupDescriptor(
   return 'title' in action;
 }
 
-export function BulkActions(props: BulkActionsProps) {
+export const BulkActions = forwardRef(function BulkActions(
+  props: BulkActionsProps,
+  ref,
+) {
   const i18n = useI18n();
 
-  return <BulkActionsInner {...props} i18n={i18n} />;
-}
+  return <BulkActionsInner {...props} i18n={i18n} innerRef={ref} />;
+});

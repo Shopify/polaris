@@ -28,9 +28,12 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
-import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
+import {BulkActions} from '../BulkActions';
 import type {BulkActionsProps} from '../BulkActions';
-import {SelectAllActions} from '../SelectAllActions';
+import {
+  SelectAllActions,
+  useIsSelectAllActionsSticky,
+} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 
 import styles from './ResourceList.scss';
@@ -164,14 +167,14 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   const checkableButtonRef = useRef<HTMLInputElement>(null);
 
   const {
-    bulkActionsIntersectionRef,
+    selectAllActionsIntersectionRef,
     tableMeasurerRef,
-    isBulkActionsSticky,
-    bulkActionsAbsoluteOffset,
-    bulkActionsMaxWidth,
-    bulkActionsOffsetLeft,
+    isSelectAllActionsSticky,
+    selectAllActionsAbsoluteOffset,
+    selectAllActionsMaxWidth,
+    selectAllActionsOffsetLeft,
     computeTableDimensions,
-  } = useIsBulkActionsSticky(selectMode);
+  } = useIsSelectAllActionsSticky(selectMode);
 
   useEffect(() => {
     computeTableDimensions();
@@ -274,7 +277,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     });
   };
 
-  const selectAllActionsAccessibilityLabel = () => {
+  const bulkActionsAccessibilityLabel = () => {
     const selectedItemsCount = selectedItems.length;
     const totalItemsCount = items.length;
     const allSelected = selectedItemsCount === totalItemsCount;
@@ -533,45 +536,48 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     }, 0);
   };
 
+  const selectAllActionsClassNames = classNames(
+    styles.SelectAllActionsWrapper,
+    isSelectAllActionsSticky && styles.SelectAllActionsWrapperSticky,
+  );
+
   const selectAllActionsMarkup = isSelectable ? (
-    <div className={styles.SelectAllActionsWrapper}>
+    <div
+      className={selectAllActionsClassNames}
+      style={{
+        top: isSelectAllActionsSticky
+          ? undefined
+          : selectAllActionsAbsoluteOffset,
+        width: selectAllActionsMaxWidth,
+        left: isSelectAllActionsSticky ? selectAllActionsOffsetLeft : undefined,
+      }}
+    >
       <SelectAllActions
         label={selectAllActionsLabel()}
-        accessibilityLabel={selectAllActionsAccessibilityLabel()}
-        selected={selectAllSelectState()}
-        onToggleAll={handleToggleAll}
         selectMode={selectMode}
         paginatedSelectAllAction={paginatedSelectAllAction()}
         paginatedSelectAllText={paginatedSelectAllText()}
         disabled={loading}
-        ref={checkableButtonRef}
+        isSticky={isSelectAllActionsSticky}
       />
     </div>
   ) : null;
 
-  const bulkActionClassNames = classNames(
-    styles.BulkActionsWrapper,
-    isBulkActionsSticky && styles.BulkActionsWrapperSticky,
-  );
+  const bulkActionClassNames = classNames(styles.BulkActionsWrapper);
 
   const bulkActionsMarkup =
-    isSelectable && selectMode && (bulkActions || promotedBulkActions) ? (
-      <div
-        className={bulkActionClassNames}
-        style={{
-          top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
-          width: bulkActionsMaxWidth,
-          left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
-        }}
-      >
+    isSelectable && (bulkActions || promotedBulkActions) ? (
+      <div className={bulkActionClassNames}>
         <BulkActions
           selectMode={selectMode}
           onSelectModeToggle={handleSelectMode}
           promotedActions={promotedBulkActions}
           actions={bulkActions}
           disabled={loading}
-          isSticky={isBulkActionsSticky}
-          width={bulkActionsMaxWidth}
+          accessibilityLabel={bulkActionsAccessibilityLabel()}
+          selected={selectAllSelectState()}
+          onToggleAll={handleToggleAll}
+          ref={checkableButtonRef}
         />
       </div>
     ) : null;
@@ -621,7 +627,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   const checkableButtonMarkup = isSelectable ? (
     <div className={styles.CheckableButtonWrapper}>
       <CheckableButton
-        accessibilityLabel={selectAllActionsAccessibilityLabel()}
+        accessibilityLabel={bulkActionsAccessibilityLabel()}
         label={headerTitle()}
         onToggleAll={handleToggleAll}
         disabled={loading}
@@ -674,12 +680,12 @@ export function ResourceList<TItemType extends ResourceListItemData>({
                   {sortingSelectMarkup}
                   {selectButtonMarkup}
                 </div>
-                {selectAllActionsMarkup}
+                {bulkActionsMarkup}
               </div>
             );
           }}
         </Sticky>
-        {bulkActionsMarkup}
+        {selectAllActionsMarkup}
       </div>
     );
 
@@ -768,7 +774,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
       </div>
-      <div ref={bulkActionsIntersectionRef} />
+      <div ref={selectAllActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
 }

@@ -3,7 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {BulkActions} from '../../BulkActions';
-import type {useIsBulkActionsSticky} from '../../BulkActions';
+import type {useIsSelectAllActionsSticky} from '../../SelectAllActions';
 import {SelectAllActions} from '../../SelectAllActions';
 import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
@@ -18,18 +18,19 @@ import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {ResourceList} from '../ResourceList';
 import styles from '../ResourceList.scss';
 
-jest.mock('../../BulkActions', () => ({
-  ...jest.requireActual('../../BulkActions'),
-  useIsBulkActionsSticky: jest.fn(),
+jest.mock('../../SelectAllActions', () => ({
+  ...jest.requireActual('../../SelectAllActions'),
+  useIsSelectAllActionsSticky: jest.fn(),
 }));
 
-function mockUseIsBulkActionsSticky(
-  args: ReturnType<typeof useIsBulkActionsSticky>,
+function mockUseIsSelectAllActionsSticky(
+  args: ReturnType<typeof useIsSelectAllActionsSticky>,
 ) {
-  const useIsBulkActionsSticky: jest.Mock =
-    jest.requireMock('../../BulkActions').useIsBulkActionsSticky;
+  const useIsSelectAllActionsSticky: jest.Mock = jest.requireMock(
+    '../../SelectAllActions',
+  ).useIsSelectAllActionsSticky;
 
-  useIsBulkActionsSticky.mockReturnValue(args);
+  useIsSelectAllActionsSticky.mockReturnValue(args);
 }
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
@@ -62,13 +63,13 @@ const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
 const defaultWindowWidth = window.innerWidth;
 
 describe('<ResourceList />', () => {
-  mockUseIsBulkActionsSticky({
-    bulkActionsIntersectionRef: {current: null},
+  mockUseIsSelectAllActionsSticky({
+    selectAllActionsIntersectionRef: {current: null},
     tableMeasurerRef: {current: null},
-    isBulkActionsSticky: false,
-    bulkActionsAbsoluteOffset: 0,
-    bulkActionsMaxWidth: 0,
-    bulkActionsOffsetLeft: 0,
+    isSelectAllActionsSticky: false,
+    selectAllActionsAbsoluteOffset: 0,
+    selectAllActionsMaxWidth: 0,
+    selectAllActionsOffsetLeft: 0,
     computeTableDimensions: jest.fn(),
   });
 
@@ -338,20 +339,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('selectAllActionsAccessibilityLabel', () => {
-    it('provides the SelectAllActions with the right accessibilityLabel if there’s 1 item and it isn’t selected', () => {
-      const resourceList = mountWithApp(
-        <ResourceList
-          items={singleItemWithID}
-          renderItem={renderItem}
-          bulkActions={bulkActions}
-        />,
-      );
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
-        accessibilityLabel: 'Select item',
-      });
-    });
-
-    it('provides the SelectAllActions with the right accessibilityLabel if there’s 1 item and it is selected', () => {
+    it('provides the BulkActions with the right accessibilityLabel if there’s 1 item and it is selected', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
@@ -360,12 +348,12 @@ describe('<ResourceList />', () => {
           selectedItems={['1']}
         />,
       );
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         accessibilityLabel: 'Deselect item',
       });
     });
 
-    it('provides the SelectAllActions with the right accessibilityLabel if there are multiple items and they are selected', () => {
+    it('provides the BulkActions with the right accessibilityLabel if there are multiple items and they are selected', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
@@ -374,20 +362,21 @@ describe('<ResourceList />', () => {
           selectedItems={['5', '6', '7']}
         />,
       );
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         accessibilityLabel: 'Deselect all 3 items',
       });
     });
 
-    it('provides the SelectAllActions with the right accessibilityLabel if there’s multiple items and some or none are selected', () => {
+    it('provides the BulkActions with the right accessibilityLabel if there’s multiple items and some are selected', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
           bulkActions={bulkActions}
+          selectedItems={['5', '6']}
         />,
       );
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         accessibilityLabel: 'Select all 3 items',
       });
     });
@@ -1028,7 +1017,7 @@ describe('<ResourceList />', () => {
           resourceList.find(CheckableButton)!.trigger('onToggleAll');
 
           const deselectAllCheckbox = resourceList
-            .find(SelectAllActions)!
+            .find(BulkActions)!
             .find(CheckableButton)!
             .find('input', {type: 'checkbox'})!;
 
@@ -1046,12 +1035,13 @@ describe('<ResourceList />', () => {
           );
 
           resourceList
-            .find(SelectAllActions)!
+            .find(BulkActions)!
             .find(CheckableButton)!
             .trigger('onToggleAll');
 
           const selectAllCheckableCheckbox = resourceList
-            .findAll(CheckableButton)[1]!
+            .find(BulkActions)!
+            .find(CheckableButton)!
             .find('input', {type: 'checkbox'})!;
 
           expect(document.activeElement).toBe(
@@ -1328,13 +1318,13 @@ describe('<ResourceList />', () => {
   describe('computeTableDimensions', () => {
     it('invokes the computeTableDimensions callback when the number of items changes', () => {
       const computeTableDimensions = jest.fn();
-      mockUseIsBulkActionsSticky({
-        bulkActionsIntersectionRef: {current: null},
+      mockUseIsSelectAllActionsSticky({
+        selectAllActionsIntersectionRef: {current: null},
         tableMeasurerRef: {current: null},
-        isBulkActionsSticky: false,
-        bulkActionsAbsoluteOffset: 0,
-        bulkActionsMaxWidth: 0,
-        bulkActionsOffsetLeft: 0,
+        isSelectAllActionsSticky: false,
+        selectAllActionsAbsoluteOffset: 0,
+        selectAllActionsMaxWidth: 0,
+        selectAllActionsOffsetLeft: 0,
         computeTableDimensions,
       });
       const newItems = [...itemsWithID, {id: 12, url: '//shopify.com'}];

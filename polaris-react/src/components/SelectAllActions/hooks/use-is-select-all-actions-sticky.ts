@@ -4,16 +4,18 @@ import {debounce} from '../../../utilities/debounce';
 
 const DEBOUNCE_PERIOD = 250;
 
-const PADDING_IN_SELECT_MODE = 92;
+const PADDING_IN_SELECT_MODE = 37;
 
-export function useIsBulkActionsSticky(selectMode: boolean) {
+export function useIsSelectAllActionsSticky(selectMode: boolean) {
   const hasIOSupport =
     typeof window !== 'undefined' && Boolean(window.IntersectionObserver);
-  const [isBulkActionsSticky, setIsSticky] = useState(false);
-  const [bulkActionsAbsoluteOffset, setBulkActionsAbsoluteOffset] = useState(0);
-  const [bulkActionsMaxWidth, setBulkActionsMaxWidth] = useState(0);
-  const [bulkActionsOffsetLeft, setBulkActionsOffsetLeft] = useState(0);
-  const bulkActionsIntersectionRef = useRef<HTMLDivElement>(null);
+  const [isSelectAllActionsSticky, setIsSticky] = useState(false);
+  const [selectAllActionsAbsoluteOffset, setSelectAllActionsAbsoluteOffset] =
+    useState(0);
+  const [selectAllActionsMaxWidth, setSelectAllActionsMaxWidth] = useState(0);
+  const [selectAllActionsOffsetLeft, setSelectAllActionsOffsetLeft] =
+    useState(0);
+  const selectAllActionsIntersectionRef = useRef<HTMLDivElement>(null);
   const tableMeasurerRef = useRef<HTMLDivElement>(null);
 
   const handleIntersect = (entries: IntersectionObserverEntry[]) => {
@@ -24,7 +26,7 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
 
   const options = {
     root: null,
-    rootMargin: '-12px',
+    rootMargin: '0px',
     threshold: 0,
   };
   const observerRef = useRef<IntersectionObserver | null>(
@@ -46,9 +48,9 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
     const maxWidth = box.width;
     const offsetLeft = box.left;
 
-    setBulkActionsAbsoluteOffset(offsetHeight);
-    setBulkActionsMaxWidth(maxWidth);
-    setBulkActionsOffsetLeft(offsetLeft);
+    setSelectAllActionsAbsoluteOffset(offsetHeight);
+    setSelectAllActionsMaxWidth(maxWidth);
+    setSelectAllActionsOffsetLeft(offsetLeft);
   }, [selectMode]);
 
   useEffect(() => {
@@ -74,7 +76,7 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
       return;
     }
 
-    const node = bulkActionsIntersectionRef.current;
+    const node = selectAllActionsIntersectionRef.current;
 
     if (node) {
       observer.observe(node);
@@ -83,15 +85,15 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
     return () => {
       observer?.disconnect();
     };
-  }, [bulkActionsIntersectionRef]);
+  }, [selectAllActionsIntersectionRef]);
 
   return {
-    bulkActionsIntersectionRef,
+    selectAllActionsIntersectionRef,
     tableMeasurerRef,
-    isBulkActionsSticky,
-    bulkActionsAbsoluteOffset,
-    bulkActionsMaxWidth,
-    bulkActionsOffsetLeft,
+    isSelectAllActionsSticky,
+    selectAllActionsAbsoluteOffset,
+    selectAllActionsMaxWidth,
+    selectAllActionsOffsetLeft,
     computeTableDimensions,
   };
 }
