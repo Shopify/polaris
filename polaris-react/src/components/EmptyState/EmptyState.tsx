@@ -8,7 +8,7 @@ import {buttonFrom} from '../Button';
 import {Image} from '../Image';
 import {Text} from '../Text';
 import {VerticalStack} from '../VerticalStack';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 
 import styles from './EmptyState.scss';
 
@@ -115,10 +115,10 @@ export function EmptyState({
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <Inline align="center" gap="2">
+      <HorizontalStack align="center" gap="2">
         {secondaryActionMarkup}
         {primaryActionMarkup}
-      </Inline>
+      </HorizontalStack>
     ) : null;
 
   const detailsMarkup =

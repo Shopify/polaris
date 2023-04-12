@@ -3,7 +3,7 @@ import React from 'react';
 import {Box} from '../../../Box';
 import {CloseButton} from '../CloseButton';
 import {Columns} from '../../../Columns';
-import {Inline} from '../../../Inline';
+import {HorizontalStack} from '../../../HorizontalStack';
 import {Text} from '../../../Text';
 
 export interface HeaderProps {
@@ -23,9 +23,9 @@ export function Header({
 }: HeaderProps) {
   const titleHiddenMarkup = (
     <Box position="absolute" insetInlineEnd="0" zIndex="1">
-      <Inline gap="4" align="end" blockAlign="center">
+      <HorizontalStack gap="4" align="end" blockAlign="center">
         <CloseButton titleHidden={titleHidden} onClick={onClose} />
-      </Inline>
+      </HorizontalStack>
     </Box>
   );
 
@@ -42,11 +42,11 @@ export function Header({
       borderBlockEnd="divider"
     >
       <Columns columns={{xs: '1fr auto'}} gap="4">
-        <Inline gap="4" blockAlign="center">
+        <HorizontalStack gap="4" blockAlign="center">
           <Text id={id} as="h2" variant="headingLg" breakWord>
             {children}
           </Text>
-        </Inline>
+        </HorizontalStack>
         <CloseButton
           pressed={closing}
           titleHidden={titleHidden}

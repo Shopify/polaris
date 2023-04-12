@@ -9,8 +9,8 @@ import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
 import {Columns} from '../Columns';
-import {Inline} from '../Inline';
-import type {InlineProps} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
+import type {HorizontalStackProps} from '../HorizontalStack';
 import {Popover} from '../Popover';
 import {UnstyledLink} from '../UnstyledLink';
 import type {AvatarProps} from '../Avatar';
@@ -202,7 +202,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <Inline
+        <HorizontalStack
           gap="4"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
@@ -210,7 +210,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         >
           {handleMarkup}
           {media}
-        </Inline>
+        </HorizontalStack>
       );
     }
 
@@ -296,7 +296,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             gap="5"
           >
             {ownedMarkup}
-            <Inline gap="4" blockAlign={getAlignment(verticalAlignment)}>
+            <HorizontalStack
+              gap="4"
+              blockAlign={getAlignment(verticalAlignment)}
+            >
               <Box
                 width="100%"
                 padding="0"
@@ -305,7 +308,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
               >
                 {children}
               </Box>
-            </Inline>
+            </HorizontalStack>
           </Columns>
           {actionsMarkup}
           {disclosureMarkup}
@@ -500,7 +503,9 @@ export function ResourceItem(props: ResourceItemProps) {
   );
 }
 
-function getAlignment(alignment?: Alignment): InlineProps['blockAlign'] {
+function getAlignment(
+  alignment?: Alignment,
+): HorizontalStackProps['blockAlign'] {
   switch (alignment) {
     case 'leading':
       return 'start';

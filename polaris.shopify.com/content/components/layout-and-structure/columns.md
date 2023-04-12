@@ -28,4 +28,4 @@ examples:
 ## Related components
 
 - For more control over padding and widths, [use the Box component](https://polaris.shopify.com/components/box)
-- To lay out a set of smaller components horizontally, [use the Inline component](https://polaris.shopify.com/components/inline)
+- To lay out a set of smaller components horizontally, [use the HorizontalStack component](https://polaris.shopify.com/components/horizontal-stack)

@@ -6,7 +6,7 @@ import {classNames} from '../../utilities/css';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {useToggle} from '../../utilities/use-toggle';
 import {useOnValueChange} from '../../utilities/use-on-value-change';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 import {Spinner} from '../Spinner';
 import {AlphaFilters} from '../AlphaFilters';
 import type {AlphaFiltersProps} from '../AlphaFilters';
@@ -320,7 +320,7 @@ export function IndexFilters({
             <div ref={defaultRef}>
               {mode !== IndexFiltersMode.Filtering ? (
                 <Container>
-                  <Inline
+                  <HorizontalStack
                     align="start"
                     blockAlign="center"
                     gap={{
@@ -384,7 +384,7 @@ export function IndexFilters({
                         ? updateButtonsMarkup
                         : null}
                     </div>
-                  </Inline>
+                  </HorizontalStack>
                 </Container>
               ) : null}
             </div>
@@ -417,7 +417,7 @@ export function IndexFilters({
                   mountedState={mdDown ? undefined : state}
                   borderlessQueryField
                 >
-                  <Inline gap="3" align="start" blockAlign="center">
+                  <HorizontalStack gap="3" align="start" blockAlign="center">
                     <div
                       style={{
                         ...defaultStyle,
@@ -427,7 +427,7 @@ export function IndexFilters({
                       {updateButtonsMarkup}
                     </div>
                     {sortMarkup}
-                  </Inline>
+                  </HorizontalStack>
                 </AlphaFilters>
               ) : null}
             </div>

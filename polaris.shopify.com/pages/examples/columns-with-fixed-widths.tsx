@@ -1,5 +1,5 @@
 import React from 'react';
-import {Columns, Text, Inline} from '@shopify/polaris';
+import {Columns, Text, HorizontalStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -30,7 +30,7 @@ const Placeholder = ({
           : 'none',
       }}
     >
-      <Inline gap="4" align="center" blockAlign="center">
+      <HorizontalStack gap="4" align="center" blockAlign="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
@@ -41,7 +41,7 @@ const Placeholder = ({
             {label}
           </Text>
         </div>
-      </Inline>
+      </HorizontalStack>
     </div>
   );
 };

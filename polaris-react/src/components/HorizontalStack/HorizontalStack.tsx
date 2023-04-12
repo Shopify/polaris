@@ -4,7 +4,7 @@ import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 import {getResponsiveProps} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './Inline.scss';
+import styles from './HorizontalStack.scss';
 
 type Align =
   | 'start'
@@ -17,7 +17,7 @@ type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface InlineProps extends React.AriaAttributes {
+export interface HorizontalStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** Horizontal alignment of children */
   align?: Align;
@@ -35,13 +35,13 @@ export interface InlineProps extends React.AriaAttributes {
   wrap?: boolean;
 }
 
-export const Inline = function Inline({
+export const HorizontalStack = function HorizontalStack({
   align,
   blockAlign,
   gap,
   wrap = true,
   children,
-}: InlineProps) {
+}: HorizontalStackProps) {
   const style = {
     '--pc-inline-align': align,
     '--pc-inline-block-align': blockAlign,
@@ -50,7 +50,7 @@ export const Inline = function Inline({
   } as React.CSSProperties;
 
   return (
-    <div className={styles.Inline} style={style}>
+    <div className={styles.HorizontalStack} style={style}>
       {children}
     </div>
   );

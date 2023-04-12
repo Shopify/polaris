@@ -1,5 +1,5 @@
 ---
-title: Inline
+title: Horizontal Stack
 description: Use to display children horizontally in a row. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
@@ -18,19 +18,19 @@ status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: inline-with-non-wrapping.tsx
+  - fileName: horizontal-stack-with-non-wrapping.tsx
     title: Non-wrapping
     description: >-
       The default wrapping behavior of children can be overridden using the `wrap` prop.
-  - fileName: inline-with-gap.tsx
+  - fileName: horizontal-stack-with-gap.tsx
     title: Gap
     description: >-
       Control the horizontal and vertical space between children using the `gap` prop. The `gap` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
-  - fileName: inline-with-block-align.tsx
+  - fileName: horizontal-stack-with-block-align.tsx
     title: Block align
     description: >-
       Control the vertical alignment of children using the `blockAlign` prop.
-  - fileName: inline-with-align.tsx
+  - fileName: horizontal-stack-with-align.tsx
     title: Align
     description: >-
       Control the horizontal alignment of children using the `align` prop.
