@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Renamed Columns to HorizontalGrid
+Renamed `Columns` to `HorizontalGrid`
