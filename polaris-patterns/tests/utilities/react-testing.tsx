@@ -7,8 +7,8 @@ import {
 } from '@shopify/react-testing';
 import {PolarisTestProvider} from '@shopify/polaris';
 import type {WithPolarisTestProviderOptions} from '@shopify/polaris';
-import {I18nManager, I18nContext} from '@shopify/react-i18n';
-import translations from '@shopify/polaris/locales/en.json';
+import polarisEnTranslations from '@shopify/polaris/locales/en.json';
+import {I18nContext, I18nManager} from '@shopify/react-i18n';
 
 export {createMount, mount, ReactTestingElement, CustomRoot};
 
@@ -27,11 +27,11 @@ export const mountWithApp = createMount<
     });
 
     return (
-      <PolarisTestProvider i18n={translations} {...context}>
-        <I18nContext.Provider value={i18nManager}>
+      <I18nContext.Provider value={i18nManager}>
+        <PolarisTestProvider i18n={{...polarisEnTranslations}} {...context}>
           {element}
-        </I18nContext.Provider>
-      </PolarisTestProvider>
+        </PolarisTestProvider>
+      </I18nContext.Provider>
     );
   },
 });
