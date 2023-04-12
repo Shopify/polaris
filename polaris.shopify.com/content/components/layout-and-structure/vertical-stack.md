@@ -40,7 +40,7 @@ Stacks should:
 
 ## Related components
 
-- To display elements horizontally, [use the Inline component](https://polaris.shopify.com/components/inline)
+- To display elements horizontally, [use the Inline component](https://polaris.shopify.com/components/horizontal-stack)
 
 ## Related resources
 

@@ -5,7 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
-import {Inline} from '../../../Inline';
+import {HorizontalStack} from '../../../HorizontalStack';
 import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
@@ -74,11 +74,11 @@ export function Toast({
     <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
-      <Inline gap="4" blockAlign="center">
+      <HorizontalStack gap="4" blockAlign="center">
         <Text as="span" fontWeight="medium">
           {content}
         </Text>
-      </Inline>
+      </HorizontalStack>
       {actionMarkup}
       {dismissMarkup}
     </div>

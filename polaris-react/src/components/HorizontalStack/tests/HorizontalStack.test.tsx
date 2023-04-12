@@ -1,9 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 
-describe('<Inline />', () => {
+describe('<HorizontalStack />', () => {
   const childText = 'Child';
   const renderChildren = () =>
     [0, 1].map((i) => (
@@ -13,13 +13,17 @@ describe('<Inline />', () => {
     ));
 
   it('renders its children', () => {
-    const stack = mountWithApp(<Inline>{renderChildren()}</Inline>);
+    const stack = mountWithApp(
+      <HorizontalStack>{renderChildren()}</HorizontalStack>,
+    );
 
     expect(stack).toContainReactText(childText);
   });
 
   it('renders custom properties by default', () => {
-    const stack = mountWithApp(<Inline>{renderChildren()}</Inline>);
+    const stack = mountWithApp(
+      <HorizontalStack>{renderChildren()}</HorizontalStack>,
+    );
 
     expect(stack).toContainReactComponent('div', {
       style: expect.objectContaining({
@@ -30,9 +34,9 @@ describe('<Inline />', () => {
 
   it('overrides custom properties if they are passed in', () => {
     const stack = mountWithApp(
-      <Inline align="center" blockAlign="start" gap="10">
+      <HorizontalStack align="center" blockAlign="start" gap="10">
         {renderChildren()}
-      </Inline>,
+      </HorizontalStack>,
     );
 
     expect(stack).toContainReactComponent('div', {
@@ -47,7 +51,9 @@ describe('<Inline />', () => {
 
   it('accepts gap based on breakpoints', () => {
     const stack = mountWithApp(
-      <Inline gap={{xs: '2', md: '8'}}>{renderChildren()}</Inline>,
+      <HorizontalStack gap={{xs: '2', md: '8'}}>
+        {renderChildren()}
+      </HorizontalStack>,
     );
 
     expect(stack).toContainReactComponent('div', {

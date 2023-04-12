@@ -11,7 +11,7 @@ import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
 import type {AppliedFilterInterface, FilterInterface} from '../../types';
 import {Link} from '../Link';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
 
@@ -232,7 +232,7 @@ export function AlphaFilters({
           md: '3',
         }}
       >
-        <Inline
+        <HorizontalStack
           align="start"
           blockAlign="center"
           gap={{
@@ -264,7 +264,7 @@ export function AlphaFilters({
             />
           </div>
           {additionalContent}
-        </Inline>
+        </HorizontalStack>
       </Box>
     </div>
   );
@@ -358,7 +358,7 @@ export function AlphaFilters({
         </div>
         {hideQueryField ? (
           <Box paddingInlineEnd="2" paddingBlockStart="2">
-            <Inline
+            <HorizontalStack
               align="start"
               blockAlign="center"
               gap={{
@@ -367,7 +367,7 @@ export function AlphaFilters({
               }}
             >
               {additionalContent}
-            </Inline>
+            </HorizontalStack>
           </Box>
         ) : null}
       </div>

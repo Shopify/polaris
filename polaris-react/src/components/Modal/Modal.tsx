@@ -8,7 +8,7 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
 import {Backdrop} from '../Backdrop';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';
@@ -157,9 +157,9 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 
     const body = loading ? (
       <Box padding="4">
-        <Inline gap="4" align="center" blockAlign="center">
+        <HorizontalStack gap="4" align="center" blockAlign="center">
           <Spinner />
-        </Inline>
+        </HorizontalStack>
       </Box>
     ) : (
       content

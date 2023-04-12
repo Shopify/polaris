@@ -2,8 +2,8 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
 import {VerticalStack} from '../VerticalStack';
+import {HorizontalStack} from '../HorizontalStack';
 
 import styles from './SkeletonPage.scss';
 
@@ -94,15 +94,15 @@ export function SkeletonPage({
             paddingInlineEnd={{xs: '4', sm: '0'}}
             width="100%"
           >
-            <Inline gap="4" align="space-between" blockAlign="center">
-              <Inline gap="4">
+            <HorizontalStack gap="4" align="space-between" blockAlign="center">
+              <HorizontalStack gap="4">
                 {breadcrumbMarkup}
                 <Box paddingBlockStart="1" paddingBlockEnd="1">
                   {titleContent}
                 </Box>
-              </Inline>
+              </HorizontalStack>
               {primaryActionMarkup}
-            </Inline>
+            </HorizontalStack>
           </Box>
           <Box paddingBlockEnd="2" width="100%">
             {children}

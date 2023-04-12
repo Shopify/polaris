@@ -1,5 +1,11 @@
 import React from 'react';
-import {VerticalStack, Inline, Text, Page, Divider} from '@shopify/polaris';
+import {
+  VerticalStack,
+  HorizontalStack,
+  Text,
+  Page,
+  Divider,
+} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -7,7 +13,7 @@ function InlineWithAlignExample() {
   return (
     <Page narrowWidth>
       <VerticalStack gap="16">
-        <Inline align="start">
+        <HorizontalStack align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" showBorder />
@@ -15,9 +21,9 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" showBorderTop />
           <Placeholder width="106px" height="20px" showBorder />
-        </Inline>
+        </HorizontalStack>
         <Divider />
-        <Inline align="center">
+        <HorizontalStack align="center">
           <Placeholder width="106px" label="Center" />
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" showBorder />
@@ -25,9 +31,9 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" showBorder />
-        </Inline>
+        </HorizontalStack>
         <Divider />
-        <Inline align="end">
+        <HorizontalStack align="end">
           <Placeholder width="106px" label="End" />
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" showBorder />
@@ -35,7 +41,7 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" showBorder />
-        </Inline>
+        </HorizontalStack>
       </VerticalStack>
     </Page>
   );
@@ -63,7 +69,7 @@ const Placeholder = ({
           : 'none',
       }}
     >
-      <Inline align="center">
+      <HorizontalStack align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
@@ -73,7 +79,7 @@ const Placeholder = ({
             {label}
           </Text>
         </div>
-      </Inline>
+      </HorizontalStack>
     </div>
   );
 };

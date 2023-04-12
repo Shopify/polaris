@@ -1,55 +1,55 @@
 import React from 'react';
-import {Inline, Text, VerticalStack, Divider} from '@shopify/polaris';
+import {HorizontalStack, Text, VerticalStack, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithBlockAlignExample() {
   return (
     <VerticalStack gap="8">
-      <Inline blockAlign="start">
+      <HorizontalStack blockAlign="start">
         <Placeholder width="106px" label="Start" />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
-      </Inline>
+      </HorizontalStack>
       <Divider />
-      <Inline blockAlign="center">
+      <HorizontalStack blockAlign="center">
         <Placeholder width="106px" label="Center" />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
-      </Inline>
+      </HorizontalStack>
       <Divider />
-      <Inline blockAlign="end">
+      <HorizontalStack blockAlign="end">
         <Placeholder width="106px" label="End" />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
         <Placeholder width="106px" height="20px" showBorder />
-      </Inline>
+      </HorizontalStack>
       <Divider />
-      <Inline blockAlign="baseline">
+      <HorizontalStack blockAlign="baseline">
         <Placeholder width="106px" label="Baseline" />
         <Placeholder width="106px" padding="0" label="text" showBorder />
         <Placeholder width="106px" padding="0" label="text" showBorder />
         <Placeholder width="106px" padding="0" label="text" showBorder />
         <Placeholder width="106px" padding="0" label="text" showBorder />
         <Placeholder width="106px" padding="0" label="text" showBorder />
-      </Inline>
+      </HorizontalStack>
       <Divider />
-      <Inline blockAlign="stretch">
+      <HorizontalStack blockAlign="stretch">
         <Placeholder width="106px" label="Strech" />
         <Placeholder width="106px" minHeight="20px" showBorder />
         <Placeholder width="106px" minHeight="20px" showBorder />
         <Placeholder width="106px" minHeight="20px" showBorder />
         <Placeholder width="106px" minHeight="20px" showBorder />
         <Placeholder width="106px" minHeight="20px" showBorder />
-      </Inline>
+      </HorizontalStack>
     </VerticalStack>
   );
 }
@@ -75,7 +75,7 @@ const Placeholder = ({
           : 'none',
       }}
     >
-      <Inline align="center">
+      <HorizontalStack align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
@@ -85,7 +85,7 @@ const Placeholder = ({
             {label}
           </Text>
         </div>
-      </Inline>
+      </HorizontalStack>
     </div>
   );
 };

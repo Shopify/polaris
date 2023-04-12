@@ -396,8 +396,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/inline',
-    destination: '/components/layout-and-structure/inline',
+    source: '/components/horizontal-stack',
+    destination: '/components/layout-and-structure/horizontal-stack',
     permanent: false,
   },
   {
