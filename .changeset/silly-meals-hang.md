@@ -3,4 +3,4 @@
 'polaris.shopify.com': minor
 ---
 
-Rename AlphaStack to VerticalStack
+Renamed AlphaStack to VerticalStack
