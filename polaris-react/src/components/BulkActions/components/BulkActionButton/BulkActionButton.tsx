@@ -37,21 +37,23 @@ export function BulkActionButton({
     }
   });
 
-  const shouldShowDotsIcon = disclosure && !showContentInButton;
+  const isActivatorForMoreActionsPopover = disclosure && !showContentInButton;
 
-  const buttonContent = shouldShowDotsIcon ? undefined : content;
+  const buttonContent = isActivatorForMoreActionsPopover ? undefined : content;
 
   const buttonMarkup = (
     <Button
       external={external}
       url={url}
-      accessibilityLabel={shouldShowDotsIcon ? content : accessibilityLabel}
+      accessibilityLabel={
+        isActivatorForMoreActionsPopover ? content : accessibilityLabel
+      }
       disclosure={disclosure && showContentInButton}
       onClick={onAction}
       disabled={disabled}
       size="slim"
       icon={
-        shouldShowDotsIcon ? (
+        isActivatorForMoreActionsPopover ? (
           <Icon source={HorizontalDotsMinor} color="base" />
         ) : undefined
       }
@@ -62,7 +64,7 @@ export function BulkActionButton({
 
   return (
     <div className={styles.BulkActionButton} ref={bulkActionButton}>
-      {shouldShowDotsIcon ? (
+      {isActivatorForMoreActionsPopover ? (
         <Tooltip content={content} preferredPosition="above">
           {buttonMarkup}
         </Tooltip>
