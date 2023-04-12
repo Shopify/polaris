@@ -53,7 +53,7 @@ function IndexFiltersWithFilteringMode() {
             {
               type: 'rename',
               onAction: () => {},
-              onPrimaryAction: async (value: string) => {
+              onPrimaryAction: async (value: string): Promise<boolean> => {
                 const newItemsStrings = tabs.map((item, idx) => {
                   if (idx === index) {
                     return value;
@@ -67,9 +67,9 @@ function IndexFiltersWithFilteringMode() {
             },
             {
               type: 'duplicate',
-              onPrimaryAction: async (name) => {
+              onPrimaryAction: async (value: string): Promise<boolean> => {
                 await sleep(1);
-                duplicateView(name);
+                duplicateView(value);
                 return true;
               },
             },

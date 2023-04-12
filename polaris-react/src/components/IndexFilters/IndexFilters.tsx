@@ -363,18 +363,20 @@ export function IndexFilters({
                       {isLoading && !mdDown && <Spinner size="small" />}
                       {mode === IndexFiltersMode.Default ? (
                         <>
-                          <SearchFilterButton
-                            onClick={handleClickFilterButton}
-                            aria-label={searchFilterAriaLabel}
-                            tooltipContent={searchFilterTooltip}
-                            disabled={disabled}
-                            hideFilters={hideFilters}
-                            hideQueryField={hideQueryField}
-                            style={{
-                              ...defaultStyle,
-                              ...transitionStyles[state],
-                            }}
-                          />
+                          {hideFilters && hideQueryField ? null : (
+                            <SearchFilterButton
+                              onClick={handleClickFilterButton}
+                              aria-label={searchFilterAriaLabel}
+                              tooltipContent={searchFilterTooltip}
+                              disabled={disabled}
+                              hideFilters={hideFilters}
+                              hideQueryField={hideQueryField}
+                              style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state],
+                              }}
+                            />
+                          )}
                           {sortMarkup}
                         </>
                       ) : null}
