@@ -5,7 +5,7 @@ import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
 import {Icon} from '../../../Icon';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
-import {Inline} from '../../../Inline';
+import {HorizontalStack} from '../../../HorizontalStack';
 import {FilterButton} from '../FilterButton';
 
 export interface SearchFilterButtonProps {
@@ -34,10 +34,10 @@ export function SearchFilterButton({
         aria-label={ariaLabel}
         disabled={disabled}
       >
-        <Inline gap="0">
+        <HorizontalStack gap="0">
           {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
           {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
-        </Inline>
+        </HorizontalStack>
       </FilterButton>
     </div>
   );

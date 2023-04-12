@@ -13,7 +13,7 @@ keywords:
   - padding
 status:
   value: Deprecated
-  message: The TextContainer is a simple layout component which was made redundant by the Stack component. Use Stack with `gap` values of 2, 4, and 5 to replicate layouts.
+  message: The TextContainer is a simple layout component which was made redundant by the VerticalStack component. Use VerticalStack with `gap` values of 2, 4, and 5 to replicate layouts.
 examples:
   - fileName: text-container-default.tsx
     title: Default
@@ -37,4 +37,4 @@ The closer the spacing, the closer the relationship between content topics. The 
 
 ## Related components
 
-- For more layout variations, or if you’re looking to vertically space components other than text, use [Stack](https://polaris.shopify.com/components/layout-and-structure/stack).
+- For more layout variations, or if you’re looking to vertically space components other than text, use [VerticalStack](https://polaris.shopify.com/components/layout-and-structure/vertical-stack).

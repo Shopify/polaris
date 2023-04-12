@@ -322,7 +322,12 @@ const imagesAndIcons = [
 const layoutAndStructure = [
   {
     source: '/components/alpha-card',
-    destination: '/components/layout-and-structure/alpha-card',
+    destination: '/components/layout-and-structure/card',
+    permanent: false,
+  },
+  {
+    source: '/components/card',
+    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
@@ -356,8 +361,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/columns',
-    destination: '/components/layout-and-structure/columns',
+    source: '/components/horizontal-grid',
+    destination: '/components/layout-and-structure/horizontal-grid',
     permanent: false,
   },
   {
@@ -391,8 +396,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/inline',
-    destination: '/components/layout-and-structure/inline',
+    source: '/components/horizontal-stack',
+    destination: '/components/layout-and-structure/horizontal-stack',
     permanent: false,
   },
   {
@@ -432,17 +437,12 @@ const layoutAndStructure = [
   },
   {
     source: '/components/layout-and-structure/alpha-stack',
-    destination: '/components/layout-and-structure/stack',
+    destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },
   {
     source: '/components/stack',
-    destination: '/components/layout-and-structure/stack',
-    permanent: false,
-  },
-  {
-    source: '/components/layout-and-structure/stack',
-    destination: '/components/layout-and-structure/alpha-stack',
+    destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },
 ];

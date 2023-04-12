@@ -1,6 +1,14 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Card, Stack, Bleed, Box, Divider, List, Text} from '@shopify/polaris';
+import {
+  Card,
+  VerticalStack,
+  Bleed,
+  Box,
+  Divider,
+  List,
+  Text,
+} from '@shopify/polaris';
 
 export default {
   component: Card,
@@ -9,12 +17,12 @@ export default {
 export function Default() {
   return (
     <Card>
-      <Stack gap="5">
+      <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </Stack>
+      </VerticalStack>
     </Card>
   );
 }
@@ -22,12 +30,12 @@ export function Default() {
 export function WithBackgroundSubdued() {
   return (
     <Card background="bg-subdued">
-      <Stack gap="5">
+      <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </Stack>
+      </VerticalStack>
     </Card>
   );
 }
@@ -35,12 +43,12 @@ export function WithBackgroundSubdued() {
 export function WithBorderRadiusRoundedAbove() {
   return (
     <Card roundedAbove="sm">
-      <Stack gap="5">
+      <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </Stack>
+      </VerticalStack>
     </Card>
   );
 }
@@ -48,12 +56,12 @@ export function WithBorderRadiusRoundedAbove() {
 export function WithResponsivePadding() {
   return (
     <Card padding={{xs: '5', sm: '6', md: '8'}} roundedAbove="sm">
-      <Stack gap={{xs: '4', sm: '5'}}>
+      <VerticalStack gap={{xs: '4', sm: '5'}}>
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </Stack>
+      </VerticalStack>
     </Card>
   );
 }
@@ -61,7 +69,7 @@ export function WithResponsivePadding() {
 export function WithSubduedSection() {
   return (
     <Card roundedAbove="sm">
-      <Stack gap="5">
+      <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Staff accounts
         </Text>
@@ -71,7 +79,7 @@ export function WithSubduedSection() {
             <List.Item>Ezequiel Manno</List.Item>
           </List>
         </Box>
-      </Stack>
+      </VerticalStack>
       <Bleed marginBlockEnd="5" marginInline="5">
         <Divider />
         <Box
@@ -80,7 +88,7 @@ export function WithSubduedSection() {
           borderRadiusEndEnd="2"
           padding="5"
         >
-          <Stack gap="2">
+          <VerticalStack gap="2">
             <Text variant="headingSm" as="h3">
               Deactivated staff accounts
             </Text>
@@ -88,7 +96,7 @@ export function WithSubduedSection() {
               <List.Item>Felix Crafford</List.Item>
               <List.Item>Ezequiel Manno</List.Item>
             </List>
-          </Stack>
+          </VerticalStack>
         </Box>
       </Bleed>
     </Card>
