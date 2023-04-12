@@ -54,7 +54,7 @@
   }
 
   + .Section {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
     @media print {
       border-top: 0;
@@ -101,7 +101,7 @@
   }
 
   .Header + & {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     margin-top: var(--p-space-5);
   }
 }
@@ -124,7 +124,7 @@
   + .Subsection {
     margin-top: var(--p-space-4);
     padding-top: var(--p-space-4);
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
     @media print {
       border-top: 0;
@@ -151,7 +151,7 @@
   }
 
   .Section-subdued + & {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     padding: var(--p-space-5);
   }
 }

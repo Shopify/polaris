@@ -117,7 +117,7 @@
   @include focus-ring($border-width: -1px);
 
   .ListItem + & {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   }
 
   &:not(.hasBulkActions, .selectMode) {
