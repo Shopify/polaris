@@ -54,8 +54,8 @@ export type {AlphaCardProps} from './components/AlphaCard';
 export {AlphaFilters} from './components/AlphaFilters';
 export type {AlphaFiltersProps} from './components/AlphaFilters';
 
-export {AlphaStack} from './components/AlphaStack';
-export type {AlphaStackProps} from './components/AlphaStack';
+export {VerticalStack} from './components/VerticalStack';
+export type {VerticalStackProps} from './components/VerticalStack';
 
 export {AlphaTabs} from './components/AlphaTabs';
 export type {AlphaTabsProps, AlphaTabProps} from './components/AlphaTabs';
