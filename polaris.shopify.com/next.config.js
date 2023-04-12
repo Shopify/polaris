@@ -430,6 +430,11 @@ const layoutAndStructure = [
     destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },
+  {
+    source: '/components/layout-and-structure/alpha-stack',
+    destination: '/components/layout-and-structure/vertical-stack',
+    permanent: false,
+  },
 ];
 
 const lists = [
