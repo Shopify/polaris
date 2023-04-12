@@ -149,7 +149,7 @@
 
 * [#8700](https://github.com/Shopify/polaris/pull/8700) [`47b03e639`](https://github.com/Shopify/polaris/commit/47b03e63956c3fd5a6e9ae479256c5b49a25882e) Thanks [@kyledurand](https://github.com/kyledurand)! - Added inheritance examples to Text component
 
-- [#8676](https://github.com/Shopify/polaris/pull/8676) [`b4a1c451f`](https://github.com/Shopify/polaris/commit/b4a1c451f9f911f81cd8c3d34b3a07743e72a346) Thanks [@laurkim](https://github.com/laurkim)! - Updated `VerticalStack` to support horizontal alignment with `inlineAlign` and vertical alignment with `align`
+- [#8676](https://github.com/Shopify/polaris/pull/8676) [`b4a1c451f`](https://github.com/Shopify/polaris/commit/b4a1c451f9f911f81cd8c3d34b3a07743e72a346) Thanks [@laurkim](https://github.com/laurkim)! - Updated `AlphaStack` to support horizontal alignment with `inlineAlign` and vertical alignment with `align`
 
 * [#8683](https://github.com/Shopify/polaris/pull/8683) [`41fc7726b`](https://github.com/Shopify/polaris/commit/41fc7726b19af606766e23291438660d93936879) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed typescript converted codesandbox examples
 
@@ -175,7 +175,7 @@
 
 - [#8674](https://github.com/Shopify/polaris/pull/8674) [`8d7e45a8d`](https://github.com/Shopify/polaris/commit/8d7e45a8d289094f15eb7693d7fa22306a1127bc) Thanks [@martenbjork](https://github.com/martenbjork)! - Add Typescript typings to Banner examples
 
-* [#8673](https://github.com/Shopify/polaris/pull/8673) [`9beee4850`](https://github.com/Shopify/polaris/commit/9beee4850e936c4f159b49a3b7a00ffe3cf85a53) Thanks [@martenbjork](https://github.com/martenbjork)! - Add Typescript typings to VerticalStack examples
+* [#8673](https://github.com/Shopify/polaris/pull/8673) [`9beee4850`](https://github.com/Shopify/polaris/commit/9beee4850e936c4f159b49a3b7a00ffe3cf85a53) Thanks [@martenbjork](https://github.com/martenbjork)! - Add Typescript typings to AlphaStack examples
 
 * Updated dependencies [[`243fd6224`](https://github.com/Shopify/polaris/commit/243fd622406612370efe40dd32dcd2025cf53db7), [`d340f8471`](https://github.com/Shopify/polaris/commit/d340f8471d330e8562c0dbb67d9f3aeae8699b65)]:
   - @shopify/polaris@10.37.0
@@ -198,9 +198,9 @@
 
 * [#8622](https://github.com/Shopify/polaris/pull/8622) [`613f637c9`](https://github.com/Shopify/polaris/commit/613f637c923f18b51faf8707f185513eaff028f8) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix minor layout bugs in app-settings-layout pattern code example
 
-- [#8379](https://github.com/Shopify/polaris/pull/8379) [`c8207636c`](https://github.com/Shopify/polaris/commit/c8207636cfd9493da8e0b5b1aaa4de01a5e521de) Thanks [@nayeobkim](https://github.com/nayeobkim)! - Updated documentation and guidance for `AlphaCard`, `VerticalStack`, `Box`, `Bleed`, `Columns`, and `Inline`
+- [#8379](https://github.com/Shopify/polaris/pull/8379) [`c8207636c`](https://github.com/Shopify/polaris/commit/c8207636cfd9493da8e0b5b1aaa4de01a5e521de) Thanks [@nayeobkim](https://github.com/nayeobkim)! - Updated documentation and guidance for `AlphaCard`, `AlphaStack`, `Box`, `Bleed`, `Columns`, and `Inline`
 
-* [#8614](https://github.com/Shopify/polaris/pull/8614) [`3526fc2fc`](https://github.com/Shopify/polaris/commit/3526fc2fcd3756024ad85bb8b107f9c7a36a7f74) Thanks [@laurkim](https://github.com/laurkim)! - Added best practices to `Text`, `AlphaCard`, and `VerticalStack`
+* [#8614](https://github.com/Shopify/polaris/pull/8614) [`3526fc2fc`](https://github.com/Shopify/polaris/commit/3526fc2fcd3756024ad85bb8b107f9c7a36a7f74) Thanks [@laurkim](https://github.com/laurkim)! - Added best practices to `Text`, `AlphaCard`, and `AlphaStack`
 
 - [#8616](https://github.com/Shopify/polaris/pull/8616) [`74f0bc42a`](https://github.com/Shopify/polaris/commit/74f0bc42a9eb4107328fed0bb13077e97853c597) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed icon page layout
 
@@ -404,7 +404,7 @@
 ### Patch Changes
 
 - [#8285](https://github.com/Shopify/polaris/pull/8285) [`e70f70862`](https://github.com/Shopify/polaris/commit/e70f7086261b7f036b90550a432bf9d72e7ed8a4) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed contrast issue on alpha status badge
-  Added default value to prop documentation for VerticalStack
+  Added default value to prop documentation for AlphaStack
 - Updated dependencies [[`e70f70862`](https://github.com/Shopify/polaris/commit/e70f7086261b7f036b90550a432bf9d72e7ed8a4), [`20bb1a668`](https://github.com/Shopify/polaris/commit/20bb1a668dcde8fcb87da35d5caaef2f0e387c01), [`f335aaf99`](https://github.com/Shopify/polaris/commit/f335aaf9968ff87b38559572f51a92b413f8aecd)]:
   - @shopify/polaris@10.27.1
 
@@ -541,7 +541,7 @@
 
 ### Minor Changes
 
-- [#7963](https://github.com/Shopify/polaris/pull/7963) [`f94cf1496`](https://github.com/Shopify/polaris/commit/f94cf149693eb7f1860eacda8c38cc5f5039dffe) Thanks [@aveline](https://github.com/aveline)! - Updated `VerticalStack` docs for `align` prop
+- [#7963](https://github.com/Shopify/polaris/pull/7963) [`f94cf1496`](https://github.com/Shopify/polaris/commit/f94cf149693eb7f1860eacda8c38cc5f5039dffe) Thanks [@aveline](https://github.com/aveline)! - Updated `AlphaStack` docs for `align` prop
 
 ### Patch Changes
 
@@ -597,7 +597,7 @@
 
 ### Patch Changes
 
-- [#7745](https://github.com/Shopify/polaris/pull/7745) [`70ed3137b`](https://github.com/Shopify/polaris/commit/70ed3137b7cb201ccb0b3715340d9f7794dd611d) Thanks [@laurkim](https://github.com/laurkim)! - Updated alpha status message that documentation is in development for `Bleed`, `Columns`, `Tiles`, `Inline`, `AlphaCard`, `VerticalStack`, and `Box`
+- [#7745](https://github.com/Shopify/polaris/pull/7745) [`70ed3137b`](https://github.com/Shopify/polaris/commit/70ed3137b7cb201ccb0b3715340d9f7794dd611d) Thanks [@laurkim](https://github.com/laurkim)! - Updated alpha status message that documentation is in development for `Bleed`, `Columns`, `Tiles`, `Inline`, `AlphaCard`, `AlphaStack`, and `Box`
 
 * [#7803](https://github.com/Shopify/polaris/pull/7803) [`23665dfd2`](https://github.com/Shopify/polaris/commit/23665dfd2b90ca7487f83560c148fe1d1f34dbe3) Thanks [@aveline](https://github.com/aveline)! - Added support for `ul` element on `Box`
 
@@ -613,13 +613,13 @@
 
 * [#7757](https://github.com/Shopify/polaris/pull/7757) [`f9e1985c9`](https://github.com/Shopify/polaris/commit/f9e1985c91e111bad0a1f35551c0c6293b16f132) Thanks [@aveline](https://github.com/aveline)! - Fixed typo in `responsive-props` mixin. Added jsdoc examples for responsive spacing props in `Box`.
 
-- [#7764](https://github.com/Shopify/polaris/pull/7764) [`9ab44a69f`](https://github.com/Shopify/polaris/commit/9ab44a69f96b9454803a2e22c70e0a5c8b0cfa85) Thanks [@laurkim](https://github.com/laurkim)! - Cleaned up prop descriptions and added missing default values for `Box`, `AlphaCard`, `VerticalStack`, `Columns`, `Tiles`, `Bleed`, and `Inline`
+- [#7764](https://github.com/Shopify/polaris/pull/7764) [`9ab44a69f`](https://github.com/Shopify/polaris/commit/9ab44a69f96b9454803a2e22c70e0a5c8b0cfa85) Thanks [@laurkim](https://github.com/laurkim)! - Cleaned up prop descriptions and added missing default values for `Box`, `AlphaCard`, `AlphaStack`, `Columns`, `Tiles`, `Bleed`, and `Inline`
 
-* [#7767](https://github.com/Shopify/polaris/pull/7767) [`cb24dbb9e`](https://github.com/Shopify/polaris/commit/cb24dbb9e0806f218a67dfec6f2cdce039dc0f7d) Thanks [@aveline](https://github.com/aveline)! - Updated `Box` and `VerticalStack` to accept aria attributes
+* [#7767](https://github.com/Shopify/polaris/pull/7767) [`cb24dbb9e`](https://github.com/Shopify/polaris/commit/cb24dbb9e0806f218a67dfec6f2cdce039dc0f7d) Thanks [@aveline](https://github.com/aveline)! - Updated `Box` and `AlphaStack` to accept aria attributes
 
 - [#7778](https://github.com/Shopify/polaris/pull/7778) [`e0c64cd5b`](https://github.com/Shopify/polaris/commit/e0c64cd5b15569c36504d535b8dae6599a1027a4) Thanks [@laurkim](https://github.com/laurkim)! - Removed link to deleted `Tiles` component and cleaned up links
 
-* [#7748](https://github.com/Shopify/polaris/pull/7748) [`ed3da747e`](https://github.com/Shopify/polaris/commit/ed3da747e1d70dfbcdfb907b13230f1d174cb0d1) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `spacing` prop to `gap` on `Inline`, `VerticalStack`, `Columns`, and `Tiles`
+* [#7748](https://github.com/Shopify/polaris/pull/7748) [`ed3da747e`](https://github.com/Shopify/polaris/commit/ed3da747e1d70dfbcdfb907b13230f1d174cb0d1) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `spacing` prop to `gap` on `Inline`, `AlphaStack`, `Columns`, and `Tiles`
 
 - [#7744](https://github.com/Shopify/polaris/pull/7744) [`28220456f`](https://github.com/Shopify/polaris/commit/28220456f67bb4e6e2df19ceb334635ca2d0f3a5) Thanks [@laurkim](https://github.com/laurkim)! - Fixed mapping for `TextStyle` `variation="strong"` to use `Text` `fontWeight="semibold"` instead of `fontWeight="bold"`
 
@@ -645,7 +645,7 @@
 
 ### Patch Changes
 
-- [#7711](https://github.com/Shopify/polaris/pull/7711) [`3984f26b6`](https://github.com/Shopify/polaris/commit/3984f26b69b93bf621392e16e2d842619c4fbdd4) Thanks [@nayeobkim](https://github.com/nayeobkim)! - Updated the related components copy in `VerticalStack`
+- [#7711](https://github.com/Shopify/polaris/pull/7711) [`3984f26b6`](https://github.com/Shopify/polaris/commit/3984f26b69b93bf621392e16e2d842619c4fbdd4) Thanks [@nayeobkim](https://github.com/nayeobkim)! - Updated the related components copy in `AlphaStack`
 
 * [#7569](https://github.com/Shopify/polaris/pull/7569) [`ffe1e9230`](https://github.com/Shopify/polaris/commit/ffe1e923092df65906ed7aeb0944bdfb8cb2375b) Thanks [@chazdean](https://github.com/chazdean)! - Updated `Tiles` component guidance and examples
 
@@ -747,7 +747,7 @@
 
 - [#7452](https://github.com/Shopify/polaris/pull/7452) [`8a05e840f`](https://github.com/Shopify/polaris/commit/8a05e840f0594e9d3ffa38397cb8d8e482fc97b6) Thanks [@gui-santos](https://github.com/gui-santos)! - fix visual bug in token page's navigation where text was breaking into two lines
 
-* [#7469](https://github.com/Shopify/polaris/pull/7469) [`a8d80cfd5`](https://github.com/Shopify/polaris/commit/a8d80cfd5630b659a10cf950d07fd91562b63814) Thanks [@chazdean](https://github.com/chazdean)! - Updated `VerticalStack` component docs
+* [#7469](https://github.com/Shopify/polaris/pull/7469) [`a8d80cfd5`](https://github.com/Shopify/polaris/commit/a8d80cfd5630b659a10cf950d07fd91562b63814) Thanks [@chazdean](https://github.com/chazdean)! - Updated `AlphaStack` component docs
 
 - [#7483](https://github.com/Shopify/polaris/pull/7483) [`7a78e07bf`](https://github.com/Shopify/polaris/commit/7a78e07bf1abb271b1f6bbd10042c24b6caddd85) Thanks [@laurkim](https://github.com/laurkim)! - Fixed missing `children` prop in `Columns` prop type
 
@@ -806,7 +806,7 @@
 
 ### Minor Changes
 
-- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added alpha pages for `VerticalStack`, `Box`, `Columns`, `Inline`, and `Tile` components. Updated `StatusBanner` to capitalize status value.
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added alpha pages for `AlphaStack`, `Box`, `Columns`, `Inline`, and `Tile` components. Updated `StatusBanner` to capitalize status value.
 
 * [#7353](https://github.com/Shopify/polaris/pull/7353) [`558b1cfae`](https://github.com/Shopify/polaris/commit/558b1cfae4b855f50b6fe69b3209e4aec4bc80c8) Thanks [@kyledurand](https://github.com/kyledurand)! - Ported codesandbox init code to React 18
 
@@ -828,7 +828,7 @@
 
 - [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `AlphaCard` `shadow` prop
 
-* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `fullWidth` prop to `VerticalStack` and updated styleguide docs
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `fullWidth` prop to `AlphaStack` and updated styleguide docs
 
 - [#7311](https://github.com/Shopify/polaris/pull/7311) [`fc05e3152`](https://github.com/Shopify/polaris/commit/fc05e31520b1ee4483a54a889a44fb3ac0959a62) Thanks [@martenbjork](https://github.com/martenbjork)! - Improved the layout on mobile
 
