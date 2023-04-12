@@ -24,7 +24,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`Stack`](/components/layout-and-structure/stack), [`Card`](/components/layout-and-structure/card), [`Columns`](/components/layout-and-structure/columns) and [`Box`](/components/layout-and-structure/box) components.
+This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Card`](/components/layout-and-structure/card), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Box`](/components/layout-and-structure/box) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -48,53 +48,53 @@ function AppSettingsLayoutExample() {
         },
       ]}
     >
-      <Stack gap={{xs: '8', sm: '4'}}>
-        <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
+      <VerticalStack gap={{xs: '8', sm: '4'}}>
+        <HorizontalGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
           <Box
             as="section"
             paddingInlineStart={{xs: 4, sm: 0}}
             paddingInlineEnd={{xs: 4, sm: 0}}
           >
-            <Stack gap="4">
+            <VerticalStack gap="4">
               <Text as="h3" variant="headingMd">
                 InterJambs
               </Text>
               <Text as="p" variant="bodyMd">
                 Interjambs are the rounded protruding bits of your puzzlie piece
               </Text>
-            </Stack>
+            </VerticalStack>
           </Box>
           <Card roundedAbove="sm">
-            <Stack gap="4">
+            <VerticalStack gap="4">
               <TextField label="Interjamb style" />
               <TextField label="Interjamb ratio" />
-            </Stack>
+            </VerticalStack>
           </Card>
-        </Columns>
+        </HorizontalGrid>
         {smUp ? <Divider /> : null}
-        <Columns columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
+        <HorizontalGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
           <Box
             as="section"
             paddingInlineStart={{xs: 4, sm: 0}}
             paddingInlineEnd={{xs: 4, sm: 0}}
           >
-            <Stack gap="4">
+            <VerticalStack gap="4">
               <Text as="h3" variant="headingMd">
                 Dimensions
               </Text>
               <Text as="p" variant="bodyMd">
                 Interjambs are the rounded protruding bits of your puzzlie piece
               </Text>
-            </Stack>
+            </VerticalStack>
           </Box>
           <Card roundedAbove="sm">
-            <Stack gap="4">
+            <VerticalStack gap="4">
               <TextField label="Horizontal" />
               <TextField label="Interjamb ratio" />
-            </Stack>
+            </VerticalStack>
           </Card>
-        </Columns>
-      </Stack>
+        </HorizontalGrid>
+      </VerticalStack>
     </Page>
   );
 }

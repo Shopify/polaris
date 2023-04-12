@@ -1,11 +1,11 @@
 import React from 'react';
-import {Stack, Box, Text, Inline} from '@shopify/polaris';
+import {VerticalStack, Box, Text, HorizontalStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithPaddingExample() {
   return (
-    <Stack gap="4">
+    <VerticalStack gap="4">
       <div
         style={{
           backgroundColor: 'var(--p-color-bg-info-strong)',
@@ -16,7 +16,7 @@ function BoxWithPaddingExample() {
           <Placeholder label="padding" childAlign="center" />
         </Box>
       </div>
-      <Inline gap="4">
+      <HorizontalStack gap="4">
         <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
           <Box paddingInlineStart="4" width="284px">
             <Placeholder label="paddingInlineStart" childAlign="start" />
@@ -27,8 +27,8 @@ function BoxWithPaddingExample() {
             <Placeholder label="paddingInlineEnd" childAlign="end" />
           </Box>
         </div>
-      </Inline>
-      <Inline gap="4">
+      </HorizontalStack>
+      <HorizontalStack gap="4">
         <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
           <Box paddingBlockStart="4" width="284px">
             <Placeholder label="paddingBlockStart" childAlign="center" />
@@ -39,8 +39,8 @@ function BoxWithPaddingExample() {
             <Placeholder label="paddingBlockEnd" childAlign="center" />
           </Box>
         </div>
-      </Inline>
-    </Stack>
+      </HorizontalStack>
+    </VerticalStack>
   );
 }
 
@@ -63,7 +63,7 @@ const Placeholder = ({
         width: width,
       }}
     >
-      <Inline gap="4" align={childAlign}>
+      <HorizontalStack gap="4" align={childAlign}>
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
@@ -73,7 +73,7 @@ const Placeholder = ({
             {label}
           </Text>
         </div>
-      </Inline>
+      </HorizontalStack>
     </div>
   );
 };

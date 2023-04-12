@@ -107,8 +107,8 @@ export type {CollapsibleProps} from './components/Collapsible';
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
 
-export {Columns} from './components/Columns';
-export type {ColumnsProps} from './components/Columns';
+export {HorizontalGrid} from './components/HorizontalGrid';
+export type {HorizontalGridProps} from './components/HorizontalGrid';
 
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
@@ -202,8 +202,8 @@ export type {IndexTableProps} from './components/IndexTable';
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
 
-export {Inline} from './components/Inline';
-export type {InlineProps} from './components/Inline';
+export {HorizontalStack} from './components/HorizontalStack';
+export type {HorizontalStackProps} from './components/HorizontalStack';
 
 export {InlineCode} from './components/InlineCode';
 export type {InlineCodeProps} from './components/InlineCode';
@@ -350,9 +350,6 @@ export type {SkeletonThumbnailProps} from './components/SkeletonThumbnail';
 export {Spinner} from './components/Spinner';
 export type {SpinnerProps} from './components/Spinner';
 
-export {Stack} from './components/Stack';
-export type {StackProps} from './components/Stack';
-
 export {Sticky} from './components/Sticky';
 export type {StickyProps} from './components/Sticky';
 
@@ -394,6 +391,9 @@ export type {UnstyledButtonProps} from './components/UnstyledButton';
 
 export {UnstyledLink} from './components/UnstyledLink';
 export type {UnstyledLinkProps} from './components/UnstyledLink';
+
+export {VerticalStack} from './components/VerticalStack';
+export type {VerticalStackProps} from './components/VerticalStack';
 
 export {VideoThumbnail} from './components/VideoThumbnail';
 

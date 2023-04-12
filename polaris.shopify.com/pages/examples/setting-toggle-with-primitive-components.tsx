@@ -1,11 +1,11 @@
 import {
   Text,
-  Inline,
+  HorizontalStack,
   Box,
   Card,
   Button,
   Badge,
-  Stack,
+  VerticalStack,
   useBreakpoints,
 } from '@shopify/polaris';
 import {CircleInformationMajor} from '@shopify/polaris-icons';
@@ -50,19 +50,19 @@ export function WithPrimitiveComponents() {
   );
 
   const settingTitle = title ? (
-    <Inline gap="2" wrap={false}>
-      <Inline gap="2" align="start" blockAlign="baseline">
+    <HorizontalStack gap="2" wrap={false}>
+      <HorizontalStack gap="2" align="start" blockAlign="baseline">
         <label htmlFor={toggleId}>
           <Text variant="headingMd" as="h6">
             {title}
           </Text>
         </label>
-        <Inline gap="2" align="center" blockAlign="center">
+        <HorizontalStack gap="2" align="center" blockAlign="center">
           {settingStatusMarkup}
           {helpLink}
-        </Inline>
-      </Inline>
-    </Inline>
+        </HorizontalStack>
+      </HorizontalStack>
+    </HorizontalStack>
   ) : null;
 
   const actionMarkup = (
@@ -79,43 +79,48 @@ export function WithPrimitiveComponents() {
 
   const headerMarkup = (
     <Box width="100%">
-      <Inline gap="12" align="space-between" blockAlign="start" wrap={false}>
+      <HorizontalStack
+        gap="12"
+        align="space-between"
+        blockAlign="start"
+        wrap={false}
+      >
         {settingTitle}
         {!mdDown ? (
           <Box minWidth="fit-content">
-            <Inline align="end">{actionMarkup}</Inline>
+            <HorizontalStack align="end">{actionMarkup}</HorizontalStack>
           </Box>
         ) : null}
-      </Inline>
+      </HorizontalStack>
     </Box>
   );
 
   const descriptionMarkup = (
-    <Stack gap="4">
+    <VerticalStack gap="4">
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
       {mdDown ? (
         <Box width="100%">
-          <Inline align="start">{actionMarkup}</Inline>
+          <HorizontalStack align="start">{actionMarkup}</HorizontalStack>
         </Box>
       ) : null}
-    </Stack>
+    </VerticalStack>
   );
 
   return (
     <Card>
-      <Stack gap={{xs: '4', sm: '5'}}>
+      <VerticalStack gap={{xs: '4', sm: '5'}}>
         <Box width="100%">
-          <Stack gap={{xs: '2', sm: '4'}}>
+          <VerticalStack gap={{xs: '2', sm: '4'}}>
             {headerMarkup}
             {descriptionMarkup}
-          </Stack>
+          </VerticalStack>
         </Box>
         <Text variant="bodyMd" as="p">
           Your checkout is only accepting test payments.
         </Text>
-      </Stack>
+      </VerticalStack>
     </Card>
   );
 }

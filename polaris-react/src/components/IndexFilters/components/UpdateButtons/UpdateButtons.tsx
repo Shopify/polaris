@@ -5,7 +5,7 @@ import {Modal} from '../../../Modal';
 import {TextField} from '../../../TextField';
 import {Form} from '../../../Form';
 import {FormLayout} from '../../../FormLayout';
-import {Inline} from '../../../Inline';
+import {HorizontalStack} from '../../../HorizontalStack';
 import {Button} from '../../../Button';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {useIsTouchDevice} from '../../../../utilities/use-is-touch-device';
@@ -120,11 +120,11 @@ export function UpdateButtons({
   }
 
   return (
-    <Inline align="start" blockAlign="center" gap="2">
+    <HorizontalStack align="start" blockAlign="center" gap="2">
       {cancelButtonMarkup}
       {primaryAction.type === 'save-as' ? (
         <Modal
-          activator={<Inline>{saveButton}</Inline>}
+          activator={<HorizontalStack>{saveButton}</HorizontalStack>}
           open={savedViewModalOpen}
           title={i18n.translate(
             'Polaris.IndexFilters.UpdateButtons.modal.title',
@@ -178,6 +178,6 @@ export function UpdateButtons({
       ) : (
         saveButton
       )}
-    </Inline>
+    </HorizontalStack>
   );
 }

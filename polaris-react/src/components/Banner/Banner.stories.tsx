@@ -1,11 +1,11 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  Stack,
+  VerticalStack,
   Banner,
   Button,
   LegacyCard,
-  Inline,
+  HorizontalStack,
   Link,
   List,
   Modal,
@@ -193,17 +193,17 @@ export function InACard() {
 export function WithEndJustifiedContent() {
   return (
     <Banner status="critical">
-      <Stack gap="1">
-        <Inline gap="4" align="space-between">
+      <VerticalStack gap="1">
+        <HorizontalStack gap="4" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
           </Text>
           <Link external url="https://example.com">
             Logs
           </Link>
-        </Inline>
+        </HorizontalStack>
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
-      </Stack>
+      </VerticalStack>
     </Banner>
   );
 }

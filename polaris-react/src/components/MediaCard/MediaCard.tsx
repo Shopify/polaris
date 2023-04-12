@@ -13,7 +13,7 @@ import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
 import {LegacyStack} from '../LegacyStack';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 
 import styles from './MediaCard.scss';
 
@@ -82,7 +82,7 @@ export function MediaCard({
   ) : null;
 
   const popoverActivator = (
-    <Inline blockAlign="center">
+    <HorizontalStack blockAlign="center">
       <Button
         icon={HorizontalDotsMinor}
         onClick={togglePopoverActive}
@@ -90,7 +90,7 @@ export function MediaCard({
         plain
         accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
       />
-    </Inline>
+    </HorizontalStack>
   );
 
   const popoverActionsMarkup =
@@ -159,10 +159,10 @@ export function MediaCard({
         insetInlineEnd="5"
         zIndex="var(--p-z-index-2)"
       >
-        <Inline gap="1">
+        <HorizontalStack gap="1">
           {popoverActionsMarkup}
           {dismissButtonMarkup}
-        </Inline>
+        </HorizontalStack>
       </Box>
     ) : null;
 
