@@ -3,7 +3,7 @@ import React from 'react';
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Box} from '../../../Box';
-import {Inline} from '../../../Inline';
+import {HorizontalStack} from '../../../HorizontalStack';
 
 export interface FooterProps {
   /** Primary action */
@@ -25,25 +25,25 @@ export function Footer({
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
-      <Inline gap="2">
+      <HorizontalStack gap="2">
         {secondaryActionButtons}
         {primaryActionButton}
-      </Inline>
+      </HorizontalStack>
     ) : null;
 
   return (
-    <Inline gap="4" blockAlign="center">
+    <HorizontalStack gap="4" blockAlign="center">
       <Box
         borderBlockStart="divider"
         minHeight="var(--p-space-16)"
         padding="4"
         width="100%"
       >
-        <Inline gap="4" blockAlign="center" align="space-between">
+        <HorizontalStack gap="4" blockAlign="center" align="space-between">
           <Box>{children}</Box>
           {actions}
-        </Inline>
+        </HorizontalStack>
       </Box>
-    </Inline>
+    </HorizontalStack>
   );
 }

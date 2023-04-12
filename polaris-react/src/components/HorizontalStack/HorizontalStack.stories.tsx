@@ -1,183 +1,183 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, Badge, Icon, Inline, Thumbnail} from '@shopify/polaris';
+import {Box, Badge, Icon, HorizontalStack, Thumbnail} from '@shopify/polaris';
 import {CapitalMajor, ImageMajor} from '@shopify/polaris-icons';
 
 export default {
-  component: Inline,
-} as ComponentMeta<typeof Inline>;
+  component: HorizontalStack,
+} as ComponentMeta<typeof HorizontalStack>;
 
 export function Default() {
   return (
-    <Inline>
+    <HorizontalStack>
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
       <Box>
         <Icon source={CapitalMajor} color="primary" />
       </Box>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithAlignStart() {
   return (
-    <Inline align="start" blockAlign="center" gap="1">
+    <HorizontalStack align="start" blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithAlignCenter() {
   return (
-    <Inline align="center" blockAlign="center" gap="1">
+    <HorizontalStack align="center" blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithAlignEnd() {
   return (
-    <Inline align="end" blockAlign="center" gap="1">
+    <HorizontalStack align="end" blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithAlignSpaceAround() {
   return (
-    <Inline align="space-around" gap="1">
+    <HorizontalStack align="space-around" gap="1">
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithAlignSpaceBetween() {
   return (
-    <Inline align="space-between" gap="1">
+    <HorizontalStack align="space-between" gap="1">
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithAlignSpaceEvenly() {
   return (
-    <Inline align="space-evenly" gap="1">
+    <HorizontalStack align="space-evenly" gap="1">
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithBlockAlignStart() {
   return (
-    <Inline blockAlign="start" gap="1">
+    <HorizontalStack blockAlign="start" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithBlockAlignCenter() {
   return (
-    <Inline blockAlign="center" gap="1">
+    <HorizontalStack blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithBlockAlignEnd() {
   return (
-    <Inline blockAlign="end" gap="1">
+    <HorizontalStack blockAlign="end" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithBlockAlignBaseline() {
   return (
-    <Inline blockAlign="baseline" gap="1">
+    <HorizontalStack blockAlign="baseline" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithBlockAlignStrech() {
   return (
-    <Inline blockAlign="stretch" gap="1">
+    <HorizontalStack blockAlign="stretch" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithAlignCenterBlockAlignCenter() {
   return (
-    <Inline align="center" blockAlign="center" gap="1">
+    <HorizontalStack align="center" blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithNonWrapping() {
   return (
-    <Inline wrap={false} gap="1">
+    <HorizontalStack wrap={false} gap="1">
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
       <Badge>Completed</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithGap() {
   return (
-    <Inline gap="8">
+    <HorizontalStack gap="8">
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
       <Badge>Completed</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }
 
 export function WithResponsiveGap() {
   return (
-    <Inline gap={{xs: '2', md: '4'}}>
+    <HorizontalStack gap={{xs: '2', md: '4'}}>
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
       <Badge>Completed</Badge>
-    </Inline>
+    </HorizontalStack>
   );
 }

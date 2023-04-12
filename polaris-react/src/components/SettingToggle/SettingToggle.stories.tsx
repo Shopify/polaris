@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   SettingToggle,
   Text,
-  Inline,
+  HorizontalStack,
   Box,
   AlphaCard,
   Button,
@@ -78,19 +78,19 @@ export function WithPrimitiveComponents() {
   );
 
   const settingTitle = title ? (
-    <Inline gap="2" wrap={false}>
-      <Inline gap="2" align="start" blockAlign="baseline">
+    <HorizontalStack gap="2" wrap={false}>
+      <HorizontalStack gap="2" align="start" blockAlign="baseline">
         <label htmlFor={toggleId}>
           <Text variant="headingMd" as="h6">
             {title}
           </Text>
         </label>
-        <Inline gap="2" align="center" blockAlign="center">
+        <HorizontalStack gap="2" align="center" blockAlign="center">
           {settingStatusMarkup}
           {helpLink}
-        </Inline>
-      </Inline>
-    </Inline>
+        </HorizontalStack>
+      </HorizontalStack>
+    </HorizontalStack>
   ) : null;
 
   const actionMarkup = (
@@ -107,14 +107,19 @@ export function WithPrimitiveComponents() {
 
   const headerMarkup = (
     <Box width="100%">
-      <Inline gap="12" align="space-between" blockAlign="start" wrap={false}>
+      <HorizontalStack
+        gap="12"
+        align="space-between"
+        blockAlign="start"
+        wrap={false}
+      >
         {settingTitle}
         {!mdDown ? (
           <Box minWidth="fit-content">
-            <Inline align="end">{actionMarkup}</Inline>
+            <HorizontalStack align="end">{actionMarkup}</HorizontalStack>
           </Box>
         ) : null}
-      </Inline>
+      </HorizontalStack>
     </Box>
   );
 
@@ -125,7 +130,7 @@ export function WithPrimitiveComponents() {
       </Text>
       {mdDown ? (
         <Box width="100%">
-          <Inline align="start">{actionMarkup}</Inline>
+          <HorizontalStack align="start">{actionMarkup}</HorizontalStack>
         </Box>
       ) : null}
     </VerticalStack>
@@ -187,19 +192,19 @@ export function WithPrimitiveComponentsAndLongTitle() {
   );
 
   const settingTitle = title ? (
-    <Inline gap="2" wrap={false}>
-      <Inline gap="2" align="start" blockAlign="baseline">
+    <HorizontalStack gap="2" wrap={false}>
+      <HorizontalStack gap="2" align="start" blockAlign="baseline">
         <label htmlFor={toggleId}>
           <Text variant="headingMd" as="h6">
             {title}
           </Text>
         </label>
-        <Inline gap="2" align="center" blockAlign="center">
+        <HorizontalStack gap="2" align="center" blockAlign="center">
           {settingStatusMarkup}
           {helpLink}
-        </Inline>
-      </Inline>
-    </Inline>
+        </HorizontalStack>
+      </HorizontalStack>
+    </HorizontalStack>
   ) : null;
 
   const actionMarkup = (
@@ -216,14 +221,19 @@ export function WithPrimitiveComponentsAndLongTitle() {
 
   const headerMarkup = (
     <Box width="100%">
-      <Inline gap="12" align="space-between" blockAlign="start" wrap={false}>
+      <HorizontalStack
+        gap="12"
+        align="space-between"
+        blockAlign="start"
+        wrap={false}
+      >
         {settingTitle}
         {!mdDown ? (
           <Box minWidth="fit-content">
-            <Inline align="end">{actionMarkup}</Inline>
+            <HorizontalStack align="end">{actionMarkup}</HorizontalStack>
           </Box>
         ) : null}
-      </Inline>
+      </HorizontalStack>
     </Box>
   );
 
@@ -234,7 +244,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
       </Text>
       {mdDown ? (
         <Box width="100%">
-          <Inline align="start">{actionMarkup}</Inline>
+          <HorizontalStack align="start">{actionMarkup}</HorizontalStack>
         </Box>
       ) : null}
     </VerticalStack>

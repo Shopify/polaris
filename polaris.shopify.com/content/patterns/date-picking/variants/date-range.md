@@ -32,7 +32,7 @@ This enables merchants to select a date range.
 
 ## Using this pattern
 
-This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`Columns`](/components/layout-and-structure/columns), [`DatePicker`](/components/selection-and-input/date-picker), [`Inline`](/components/layout-and-structure/inline), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
+This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`Columns`](/components/layout-and-structure/columns), [`DatePicker`](/components/selection-and-input/date-picker), [`HorizontalStack`](/components/layout-and-structure/horizontal-stack), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -324,7 +324,7 @@ function DateRangePicker() {
           </Box>
           <Box padding={{xs: 5}} maxWidth={mdDown ? '320px' : '516px'}>
             <VerticalStack gap="4">
-              <Inline gap="2">
+              <HorizontalStack gap="2">
                 <div style={{flexGrow: 1}}>
                   <TextField
                     role="combobox"
@@ -350,7 +350,7 @@ function DateRangePicker() {
                     autoComplete="off"
                   />
                 </div>
-              </Inline>
+              </HorizontalStack>
               <div>
                 <DatePicker
                   month={month}
@@ -371,12 +371,12 @@ function DateRangePicker() {
       </Popover.Pane>
       <Popover.Pane fixed>
         <Popover.Section>
-          <Inline align="end">
+          <HorizontalStack align="end">
             <Button onClick={cancel}>Cancel</Button>
             <Button primary onClick={apply}>
               Apply
             </Button>
-          </Inline>
+          </HorizontalStack>
         </Popover.Section>
       </Popover.Pane>
     </Popover>

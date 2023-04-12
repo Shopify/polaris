@@ -1,5 +1,11 @@
 import React from 'react';
-import {VerticalStack, Bleed, Box, Text, Inline} from '@shopify/polaris';
+import {
+  VerticalStack,
+  Bleed,
+  Box,
+  Text,
+  HorizontalStack,
+} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -40,7 +46,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         width: width,
       }}
     >
-      <Inline gap="4" align="center">
+      <HorizontalStack gap="4" align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
@@ -50,7 +56,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
             {label}
           </Text>
         </div>
-      </Inline>
+      </HorizontalStack>
     </div>
   );
 };

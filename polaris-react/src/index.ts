@@ -228,8 +228,8 @@ export type {IndexTableProps} from './components/IndexTable';
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
 
-export {Inline} from './components/Inline';
-export type {InlineProps} from './components/Inline';
+export {HorizontalStack} from './components/HorizontalStack';
+export type {HorizontalStackProps} from './components/HorizontalStack';
 
 export {InlineCode} from './components/InlineCode';
 export type {InlineCodeProps} from './components/InlineCode';
