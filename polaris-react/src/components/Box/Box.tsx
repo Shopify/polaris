@@ -190,13 +190,19 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
+    // eslint-disable-next-line no-nested-ternary
     const borderStyleValue = borderStyle
       ? borderStyle
-      : (borderColor || borderWidth) ?? 'solid';
+      : borderColor || borderWidth
+      ? 'solid'
+      : undefined;
 
+    // eslint-disable-next-line no-nested-ternary
     const outlineStyleValue = outlineStyle
       ? outlineStyle
-      : (borderColor || borderWidth) ?? 'solid';
+      : borderColor || borderWidth
+      ? 'solid'
+      : undefined;
 
     const style = {
       '--pc-box-color': color ? `var(--p-color-${color})` : undefined,
