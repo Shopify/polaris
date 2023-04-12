@@ -24,7 +24,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`VerticalStack`](/components/layout-and-structure/alpha-stack), [`AlphaCard`](/components/layout-and-structure/alpha-card), [`Columns`](/components/layout-and-structure/columns) and [`Box`](/components/layout-and-structure/box) components.
+This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`AlphaCard`](/components/layout-and-structure/alpha-card), [`Columns`](/components/layout-and-structure/columns) and [`Box`](/components/layout-and-structure/box) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
