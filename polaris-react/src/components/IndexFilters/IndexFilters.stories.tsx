@@ -1062,7 +1062,7 @@ export function WithQueryFieldAndFiltersHidden() {
         };
 
   return (
-    <Card>
+    <Card padding="0">
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
