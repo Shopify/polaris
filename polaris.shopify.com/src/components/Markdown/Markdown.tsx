@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import React from 'react';
-import styles from './Markdown.module.scss';
+import {ClipboardMinor} from '@shopify/polaris-icons';
 import {Box} from '../Box';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -12,6 +12,10 @@ import {slugify} from '../../utils/various';
 import Code from '../Code';
 import {SideBySide} from './components';
 import YoutubeVideo from '../YoutubeVideo';
+import Tooltip from '../Tooltip';
+import Icon from '../Icon';
+import {useCopyToClipboard} from '../../utils/hooks';
+import styles from './Markdown.module.scss';
 
 // rehype-raw will strip the non-HTML-standard `meta` field from the node when
 // converting the parsed markdown to HTML, so we have to capture it in a
@@ -83,14 +87,22 @@ function Markdown({
         },
         h2: ({children}) => {
           if (children.length === 1 && typeof children[0] === 'string') {
-            return <h2 id={slugify(children[0])}>{children}</h2>;
+            return (
+              <HeadingWithCopyButton id={slugify(children[0])} level={2}>
+                {children}
+              </HeadingWithCopyButton>
+            );
           } else {
             return <h2>{children}</h2>;
           }
         },
         h3: ({children}) => {
           if (children.length === 1 && typeof children[0] === 'string') {
-            return <h3 id={slugify(children[0])}>{children}</h3>;
+            return (
+              <HeadingWithCopyButton id={slugify(children[0])} level={3}>
+                {children}
+              </HeadingWithCopyButton>
+            );
           } else {
             return <h3>{children}</h3>;
           }
@@ -98,7 +110,12 @@ function Markdown({
         img: ({src, alt, style}) =>
           src ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={src} alt={alt ?? ''} className={styles.MarkdownImage} style={style} />
+            <img
+              src={src}
+              alt={alt ?? ''}
+              className={styles.MarkdownImage}
+              style={style}
+            />
           ) : null,
         code: ({inline, children, className}) =>
           inline ? (
@@ -118,6 +135,40 @@ function Markdown({
     >
       {text}
     </ReactMarkdown>
+  );
+}
+
+interface HeadingWithCopyButtonProps {
+  id: string;
+  level: number;
+  children: React.ReactNode;
+}
+
+function HeadingWithCopyButton({
+  id,
+  level,
+  children,
+}: HeadingWithCopyButtonProps) {
+  const Element = `h${level}` as 'h2' | 'h3';
+  const origin =
+    typeof window !== 'undefined'
+      ? window.location.origin
+      : 'https://polaris.shopify.com';
+  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const [copy, didJustCopy] = useCopyToClipboard(`${origin}${path}#${id}`);
+
+  return (
+    <Element id={id} className={styles.MarkdownHeading}>
+      {children}
+      <Tooltip
+        ariaLabel="Copy to clipboard"
+        renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
+      >
+        <button className={styles.MarkdownCopyButton} onClick={copy}>
+          <Icon source={ClipboardMinor} width={16} height={16} />
+        </button>
+      </Tooltip>
+    </Element>
   );
 }
 
