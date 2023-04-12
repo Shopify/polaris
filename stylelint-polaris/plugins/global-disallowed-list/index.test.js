@@ -1,6 +1,6 @@
 const {ruleName} = require('.');
 
-const config = [[/\$font-size-data/]];
+const config = [[/\$font-size-data/, /--p-token/]];
 
 testRule({
   ruleName,
@@ -24,6 +24,16 @@ testRule({
       column: 17,
       endLine: 1,
       endColumn: 32,
+    },
+    {
+      code: '.a { color: var(--p-token); }',
+      description: 'Uses something on the disallowed list',
+      message:
+        'Unexpected disallowed value "--p-token" (polaris/global-disallowed-list)',
+      line: 1,
+      column: 17,
+      endLine: 1,
+      endColumn: 26,
     },
   ],
 });
