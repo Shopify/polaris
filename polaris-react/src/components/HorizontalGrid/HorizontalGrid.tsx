@@ -8,15 +8,15 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveValue, ResponsiveProp} from '../../utilities/css';
 
-import styles from './Columns.scss';
+import styles from './HorizontalGrid.scss';
 
 type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];
 type Columns = ResponsiveProp<ColumnsType>;
 type Gap = ResponsiveProp<SpacingSpaceScale>;
-type ColumnsAlignItems = 'start' | 'end' | 'center';
+type HorizontalGridAlignItems = 'start' | 'end' | 'center';
 
-export interface ColumnsProps extends React.AriaAttributes {
+export interface HorizontalGridProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** The number of columns to display. Accepts either a single value or an object of values for different screen sizes.
    * @example
@@ -34,38 +34,48 @@ export interface ColumnsProps extends React.AriaAttributes {
    * @example
    * alignItems='start'
    */
-  alignItems?: ColumnsAlignItems;
+  alignItems?: HorizontalGridAlignItems;
 }
 
-export function Columns({children, columns, gap, alignItems}: ColumnsProps) {
+export function HorizontalGrid({
+  children,
+  columns,
+  gap,
+  alignItems,
+}: HorizontalGridProps) {
   const style = {
     ...getResponsiveValue(
       'columns',
       'grid-template-columns',
-      formatColumns(columns),
+      formatHorizontalGrid(columns),
     ),
     ...getResponsiveProps('columns', 'gap', 'space', gap),
     '--pc-columns-align-items': alignItems,
   } as React.CSSProperties;
 
   return (
-    <div className={styles.Columns} style={sanitizeCustomProperties(style)}>
+    <div
+      className={styles.HorizontalGrid}
+      style={sanitizeCustomProperties(style)}
+    >
       {children}
     </div>
   );
 }
 
-function formatColumns(columns?: Columns): ResponsiveValue {
+function formatHorizontalGrid(columns?: Columns): ResponsiveValue {
   if (
     typeof columns === 'object' &&
     columns !== null &&
     !Array.isArray(columns)
   ) {
     return Object.fromEntries(
-      Object.entries(columns).map(([breakpointAlias, breakpointColumns]) => [
-        breakpointAlias,
-        getColumnValue(breakpointColumns),
-      ]),
+      Object.entries(columns).map(
+        ([breakpointAlias, breakpointHorizontalGrid]) => [
+          breakpointAlias,
+          getColumnValue(breakpointHorizontalGrid),
+        ],
+      ),
     );
   }
 

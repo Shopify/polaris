@@ -1,12 +1,12 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Columns} from '..';
+import {HorizontalGrid} from '..';
 
-describe('Columns', () => {
+describe('HorizontalGrid', () => {
   it('only renders custom properties that match the properties passed in', () => {
     const columns = mountWithApp(
-      <Columns gap={{md: '1'}} alignItems="start" />,
+      <HorizontalGrid gap={{md: '1'}} alignItems="start" />,
     );
 
     expect(columns).toContainReactComponent('div', {
@@ -19,7 +19,7 @@ describe('Columns', () => {
 
   it('formats string columns', () => {
     const columns = mountWithApp(
-      <Columns columns={{xs: '1fr 1fr', lg: '1.5fr 0.5fr'}} />,
+      <HorizontalGrid columns={{xs: '1fr 1fr', lg: '1.5fr 0.5fr'}} />,
     );
 
     expect(columns).toContainReactComponent('div', {
@@ -31,7 +31,7 @@ describe('Columns', () => {
   });
 
   it('formats number columns', () => {
-    const columns = mountWithApp(<Columns columns={{xs: 1, md: 4}} />);
+    const columns = mountWithApp(<HorizontalGrid columns={{xs: 1, md: 4}} />);
 
     expect(columns).toContainReactComponent('div', {
       style: {
@@ -43,7 +43,7 @@ describe('Columns', () => {
 
   it('formats alias columns', () => {
     const columns = mountWithApp(
-      <Columns
+      <HorizontalGrid
         columns={{xs: ['oneHalf', 'oneHalf'], md: ['oneThird', 'twoThirds']}}
       />,
     );

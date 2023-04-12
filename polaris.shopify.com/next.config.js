@@ -361,8 +361,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/columns',
-    destination: '/components/layout-and-structure/columns',
+    source: '/components/horizontal-grid',
+    destination: '/components/layout-and-structure/horizontal-grid',
     permanent: false,
   },
   {
