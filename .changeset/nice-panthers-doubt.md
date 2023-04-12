@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Remove deprecated v9.0.0 custom properties, functions, mixins, and mixin maps from stylelint-polaris
+Remove deprecated v8 custom properties, functions, mixins, and mixin maps from stylelint-polaris
