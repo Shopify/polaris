@@ -57,12 +57,25 @@ export type {
 } from './token-groups/motion';
 
 export type {
+  ShadowTokenGroup,
+  ShadowTokenName,
+  ShadowAlias,
+} from './token-groups/shadow';
+
+export type {
   ShapeTokenGroup,
   ShapeTokenName,
   ShapeBorderRadiusScale,
   ShapeBorderRadiusAlias,
   ShapeBorderWidthScale,
 } from './token-groups/shape';
+
+export type {
+  BorderTokenGroup,
+  BorderTokenName,
+  BorderRadiusScale,
+  BorderWidthScale,
+} from './token-groups/border';
 
 export type {
   SpacingTokenGroup,

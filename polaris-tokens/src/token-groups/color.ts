@@ -5,6 +5,7 @@ export type ColorBackgroundAlias =
   | 'bg'
   | 'bg-active'
   | 'bg-app'
+  | 'bg-app-active'
   | 'bg-app-hover'
   | 'bg-app-selected'
   | 'bg-caution'
@@ -12,13 +13,13 @@ export type ColorBackgroundAlias =
   | 'bg-caution-subdued'
   | 'bg-caution-subdued-active'
   | 'bg-caution-subdued-hover'
+  | 'bg-critical'
   | 'bg-critical-strong'
   | 'bg-critical-strong-active'
   | 'bg-critical-strong-hover'
   | 'bg-critical-subdued'
   | 'bg-critical-subdued-active'
   | 'bg-critical-subdued-hover'
-  | 'bg-critical'
   | 'bg-disabled'
   | 'bg-hover'
   | 'bg-info'
@@ -137,6 +138,7 @@ export type ColorTextAlias =
   | 'text-magic-strong'
   | 'text-on-color'
   | 'text-primary'
+  | 'text-primary-hover'
   | 'text-subdued'
   | 'text-success'
   | 'text-success-strong'
@@ -184,7 +186,7 @@ export const color: {
     description: '',
   },
   'color-bg-subdued-active': {
-    value: colors.gray[400],
+    value: colors.gray[300],
     description: '',
   },
   'color-bg-disabled': {
@@ -193,6 +195,14 @@ export const color: {
   },
   'color-bg-interactive-disabled': {
     value: colors.gray[300],
+    description: '',
+  },
+  'color-bg-app': {
+    value: colors.gray[200],
+    description: '',
+  },
+  'color-bg-app-active': {
+    value: colors.gray[400],
     description: '',
   },
   'color-bg-app-hover': {
@@ -208,10 +218,6 @@ export const color: {
     description: '',
   },
   'color-bg-subdued-hover': {
-    value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-app': {
     value: colors.gray[200],
     description: '',
   },
@@ -452,7 +458,7 @@ export const color: {
     description: '',
   },
   'color-border-success-subdued': {
-    value: colors.green[200],
+    value: colors.green[400],
     description: '',
   },
   'color-border-critical-active': {
@@ -468,7 +474,7 @@ export const color: {
     description: '',
   },
   'color-border-critical-subdued': {
-    value: colors.red[200],
+    value: colors.red[400],
     description: '',
   },
   'color-border-caution': {
@@ -476,7 +482,7 @@ export const color: {
     description: '',
   },
   'color-border-caution-subdued': {
-    value: colors.yellow[200],
+    value: colors.yellow[400],
     description: '',
   },
   'color-border-info': {
@@ -484,7 +490,7 @@ export const color: {
     description: '',
   },
   'color-border-info-subdued': {
-    value: colors.teal[200],
+    value: colors.teal[400],
     description: '',
   },
   'color-border-interactive-active': {
@@ -564,7 +570,7 @@ export const color: {
     description: '',
   },
   'color-icon-info': {
-    value: colors.green[600],
+    value: colors.teal[600],
     description: '',
   },
   'color-icon-warning': {
@@ -623,13 +629,16 @@ export const color: {
     value: colors.green[900],
     description: '',
   },
-
   'color-text-success': {
     value: colors.green[700],
     description: '',
   },
   'color-text-primary': {
     value: colors.green[700],
+    description: '',
+  },
+  'color-text-primary-hover': {
+    value: colors.green[800],
     description: '',
   },
   'color-text-critical-strong': {

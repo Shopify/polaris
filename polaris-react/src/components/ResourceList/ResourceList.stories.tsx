@@ -3,9 +3,9 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   Avatar,
   Button,
-  Card,
+  LegacyCard,
   EmptyState,
-  Filters,
+  LegacyFilters,
   Layout,
   Page,
   ResourceItem,
@@ -20,7 +20,7 @@ export default {
 
 export function Default() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -49,7 +49,7 @@ export function Default() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -58,7 +58,7 @@ export function Default() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -68,7 +68,7 @@ export function WithEmptyState() {
   const filters = [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       disabled={!items.length}
       queryValue=""
       filters={filters}
@@ -94,7 +94,7 @@ export function WithEmptyState() {
     <Page title="Files">
       <Layout>
         <Layout.Section>
-          <Card>
+          <LegacyCard>
             <ResourceList
               emptyState={emptyStateMarkup}
               items={items}
@@ -102,7 +102,7 @@ export function WithEmptyState() {
               filterControl={filterControl}
               resourceName={{singular: 'file', plural: 'files'}}
             />
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -133,7 +133,7 @@ export function WithSelectionAndNoBulkActions() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -142,7 +142,7 @@ export function WithSelectionAndNoBulkActions() {
         onSelectionChange={setSelectedItems}
         selectable
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -157,7 +157,7 @@ export function WithSelectionAndNoBulkActions() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -213,7 +213,7 @@ export function WithBulkActions() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -223,7 +223,7 @@ export function WithBulkActions() {
         promotedBulkActions={promotedBulkActions}
         bulkActions={bulkActions}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -238,7 +238,7 @@ export function WithBulkActions() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -290,7 +290,7 @@ export function WithBulkActionsAndManyItems() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -300,7 +300,7 @@ export function WithBulkActionsAndManyItems() {
         promotedBulkActions={promotedBulkActions}
         bulkActions={bulkActions}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -315,7 +315,7 @@ export function WithBulkActionsAndManyItems() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -371,7 +371,7 @@ export function WithLoadingState() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -382,7 +382,7 @@ export function WithLoadingState() {
         bulkActions={bulkActions}
         loading
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -397,7 +397,7 @@ export function WithLoadingState() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -409,7 +409,7 @@ export function WithLoadingState() {
 
 export function WithTotalCount() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -438,7 +438,7 @@ export function WithTotalCount() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -449,13 +449,13 @@ export function WithTotalCount() {
         showHeader
         totalItemsCount={50}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithHeaderContent() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         headerContent="Customer details shown below"
         items={[
@@ -484,7 +484,7 @@ export function WithHeaderContent() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -494,7 +494,7 @@ export function WithHeaderContent() {
         }}
         showHeader
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -522,7 +522,7 @@ export function WithSorting() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -537,7 +537,7 @@ export function WithSorting() {
           console.log(`Sort option changed to ${selected}.`);
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -552,7 +552,7 @@ export function WithSorting() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -584,14 +584,14 @@ export function WithAlternateTool() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         items={items}
         renderItem={renderItem}
         resourceName={resourceName}
         alternateTool={<Button>Email customers</Button>}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -606,7 +606,7 @@ export function WithAlternateTool() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -679,7 +679,7 @@ export function WithFiltering() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -690,18 +690,18 @@ export function WithFiltering() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
         renderItem={renderItem}
         filterControl={filterControl}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -711,7 +711,7 @@ export function WithFiltering() {
     return (
       <ResourceItem id={id} url={url} media={media}>
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -791,7 +791,7 @@ export function WithACustomEmptySearchResultState() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -802,11 +802,11 @@ export function WithACustomEmptySearchResultState() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -814,7 +814,7 @@ export function WithACustomEmptySearchResultState() {
         filterControl={filterControl}
         emptySearchState={<div>This is a custom empty state</div>}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -824,7 +824,7 @@ export function WithACustomEmptySearchResultState() {
     return (
       <ResourceItem id={id} url={url} media={media}>
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -853,7 +853,7 @@ export function WithACustomEmptySearchResultState() {
 
 export function WithItemShortcutActions() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -894,7 +894,7 @@ export function WithItemShortcutActions() {
               shortcutActions={shortcutActions}
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -903,13 +903,13 @@ export function WithItemShortcutActions() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithPersistentItemShortcutActions() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -951,7 +951,7 @@ export function WithPersistentItemShortcutActions() {
               persistActions
             >
               <h3>
-                <Text variant="bodyMd" fontWeight="bold" as="span">
+                <Text fontWeight="bold" as="span">
                   {name}
                 </Text>
               </h3>
@@ -960,7 +960,7 @@ export function WithPersistentItemShortcutActions() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -1034,7 +1034,7 @@ export function WithMultiselect() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -1045,7 +1045,7 @@ export function WithMultiselect() {
         bulkActions={bulkActions}
         resolveItemId={resolveItemIds}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item, _, index) {
@@ -1061,7 +1061,7 @@ export function WithMultiselect() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>
@@ -1168,7 +1168,7 @@ export function WithAllOfItsElements() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -1179,11 +1179,11 @@ export function WithAllOfItsElements() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -1203,7 +1203,7 @@ export function WithAllOfItsElements() {
         }}
         filterControl={filterControl}
       />
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem(item) {
@@ -1222,7 +1222,7 @@ export function WithAllOfItsElements() {
         persistActions
       >
         <h3>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span">
             {name}
           </Text>
         </h3>

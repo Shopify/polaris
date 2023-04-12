@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  Card,
+  LegacyCard,
   ChoiceList,
   Text,
   List,
@@ -87,14 +87,14 @@ export function Default() {
 
   return (
     <Page narrowWidth>
-      <Card
+      <LegacyCard
         sectioned
         subdued
         title="Product availability"
         actions={salesChannelAction}
       >
         {salesChannelsCardMarkup}
-      </Card>
+      </LegacyCard>
       <Sheet
         open={sheetActive}
         onClose={toggleSheetActive}
@@ -347,7 +347,7 @@ export function WithSearchableListbox() {
         position: 'sticky',
         zIndex: 'var(--p-z-index-12)',
         width: '100%',
-        background: 'var(--p-surface)',
+        background: 'var(--p-color-bg)',
       }}
     >
       <StopPropagation>
@@ -390,7 +390,9 @@ export function WithSearchableListbox() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span style={{color: 'var(--p-color-text-interactive)'}}>
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -482,7 +484,7 @@ export function WithSearchableListbox() {
               <Text variant="headingMd" as="h2">
                 Look up customer segmentation membership
               </Text>
-              <Text variant="bodyMd" color="subdued" as="span">
+              <Text color="subdued" as="span">
                 Look up whether a customer is included in a segment.
               </Text>
             </TextContainer>

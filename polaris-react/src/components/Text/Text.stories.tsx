@@ -1,13 +1,13 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Stack, Text} from '@shopify/polaris';
+import {LegacyStack, Text} from '@shopify/polaris';
 
 export default {
   component: Text,
 } as ComponentMeta<typeof Text>;
 
 export const Variants = () => (
-  <Stack vertical>
+  <LegacyStack vertical>
     <Text as="h1" variant="heading4xl">
       Text with Heading4xl variant
     </Text>
@@ -41,11 +41,11 @@ export const Variants = () => (
     <Text as="p" variant="bodySm">
       Text with BodySm variant
     </Text>
-  </Stack>
+  </LegacyStack>
 );
 
 export const WithAlignment = () => (
-  <Stack vertical>
+  <LegacyStack vertical>
     <Text as="p" variant="bodyLg" alignment="start">
       Manage your Shopify store on-the-go with real-time notifications, access
       to your dashboard, and order management, all from your smartphone.
@@ -62,51 +62,59 @@ export const WithAlignment = () => (
       Manage your Shopify store on-the-go with real-time notifications, access
       to your dashboard, and order management, all from your smartphone.
     </Text>
-  </Stack>
+  </LegacyStack>
 );
 
 export const WithFontWeight = () => (
-  <Stack vertical>
-    <Text as="p" variant="bodyMd" fontWeight="bold">
+  <LegacyStack vertical>
+    <Text as="p" fontWeight="bold">
       Sales this year
     </Text>
-    <Text as="p" variant="bodyMd" fontWeight="semibold">
+    <Text as="p" fontWeight="semibold">
       Sales this year
     </Text>
-    <Text as="p" variant="bodyMd" fontWeight="medium">
+    <Text as="p" fontWeight="medium">
       Sales this year
     </Text>
-    <Text as="p" variant="bodyMd" fontWeight="regular">
+    <Text as="p" fontWeight="regular">
       Sales this year
     </Text>
-  </Stack>
+  </LegacyStack>
 );
 
 export const WithColor = () => (
-  <Stack vertical>
-    <Text as="p" variant="bodyMd" color="subdued">
+  <LegacyStack vertical>
+    <Text as="p" color="subdued">
       Use to de-emphasize a piece of text that is less important to merchants
       than other nearby text. May also be used to indicate when normal content
       is absent, for example, “No supplier listed”. Don’t use only for aesthetic
       effect.
     </Text>
-    <Text as="p" variant="bodyMd" color="success">
+    <Text as="p" color="success">
       Use in combination with a symbol showing an increasing value to indicate
       an upward trend.
     </Text>
-    <Text as="p" variant="bodyMd" color="warning">
+    <Text as="p" color="warning">
       Use to denote something that needs attention, or that merchants need to
       take action on.
     </Text>
-    <Text as="p" variant="bodyMd" color="critical">
+    <Text as="p" color="critical">
       Use in combination with a symbol showing a decreasing value to indicate a
       downward trend.
     </Text>
-  </Stack>
+  </LegacyStack>
+);
+
+export const WithInheritance = () => (
+  <Text as="p" variant="heading2xl" color="warning">
+    <Text as="span">This is a 2xl heading</Text>
+    <br />
+    <Text as="span">This is also a 2xl heading</Text>
+  </Text>
 );
 
 export const WithTruncate = () => (
-  <Text as="p" variant="bodyMd" truncate>
+  <Text as="p" truncate>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt vel
     lorem nec pretium. Vestibulum ante ipsum primis in faucibus orci luctus et
     ultrices posuere cubilia curae; Morbi sollicitudin ex nec imperdiet
@@ -115,5 +123,15 @@ export const WithTruncate = () => (
     ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
     Vestibulum vestibulum porttitor mollis. Nam dictum ante sed lobortis
     commodo. Ut luctus ut metus vel bibendum.
+  </Text>
+);
+
+export const ParentWithChild = () => (
+  <Text as="p" variant="bodySm" color="subdued">
+    Parent Text component with{' '}
+    <Text as="span" fontWeight="bold">
+      bold
+    </Text>{' '}
+    children
   </Text>
 );

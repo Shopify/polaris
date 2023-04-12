@@ -322,6 +322,13 @@ const stylelintPolarisCoverageOptions = {
     },
   ],
   conventions: {
+    'selector-disallowed-list': [
+      [/class[*^~]?='Polaris-[a-z_-]+'/gi],
+      {
+        message:
+          'Overriding Polaris styles is disallowed. Please consider contributing instead',
+      },
+    ],
     'polaris/custom-property-allowed-list': {
       // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
       allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
@@ -341,9 +348,13 @@ const stylelintPolarisCoverageOptions = {
     {
       'polaris/media-query-allowed-list': {
         // Allowed media types and media conditions
-        // https://www.w3.org/TR/mediaquery5/#media
+        // https://www.w3.org/TR/mediaqueries-5/#media
         allowedMediaTypes: ['print', 'screen'],
-        allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
+        allowedMediaFeatureNames: [
+          'forced-colors',
+          '-ms-high-contrast',
+          'prefers-reduced-motion',
+        ],
         allowedScssInterpolations: [
           // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
           matchNameRegExp(
@@ -441,15 +452,8 @@ const stylelintPolarisCoverageOptions = {
 /** @type {import('stylelint').Config} */
 module.exports = {
   customSyntax: 'postcss-scss',
-  reportNeedlessDisables: [
-    true,
-    {
-      // Report needless disables for all rules except layout coverage rules
-      // Note: This doesn't affect the default Stylelint behavior/reporting
-      // and is only need because we dynamically create these rule names
-      except: ['all', /^polaris\/layout\/.+$/],
-    },
-  ],
+  reportDescriptionlessDisables: true,
+  reportNeedlessDisables: true,
   reportInvalidScopeDisables: [
     true,
     {

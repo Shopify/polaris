@@ -8,6 +8,7 @@ keywords:
   - alpha
   - beta
   - stable
+  - legacy
   - deprecated
 order: 1
 ---
@@ -69,6 +70,18 @@ The component is bug free and works in most, if not all, environments. It’s re
 - Usability testing and feedback has been gathered on UX and DX
 - Documentation exists for component props, variants, accessibility guidelines, and usage
 - Manual and automated migration documentation exists
+
+---
+
+## Legacy
+
+The component is stable and has been supported in at least one past major release, but there are plans to replace its functionality with a new component or a combination of new components. Usage of legacy components is not discouraged, with the caveat that it will be deprecated and replaced in the next major release.
+
+### Requirements for legacy components
+
+- Documentation exists for the legacy component and includes any alternative components
+- The deprecation date has been announced and is at least one month away from the release date of the package that deprecated the component
+- Manual and automated migration paths are documented and have been available for at least one month
 
 ---
 

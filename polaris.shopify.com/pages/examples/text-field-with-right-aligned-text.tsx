@@ -1,4 +1,4 @@
-import {Stack, TextField} from '@shopify/polaris';
+import {LegacyStack, TextField} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,13 +6,13 @@ function RightAlignExample() {
   const [textFieldValue, setTextFieldValue] = useState('1');
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 
   return (
-    <Stack>
-      <Stack.Item fill>Price</Stack.Item>
+    <LegacyStack>
+      <LegacyStack.Item fill>Price</LegacyStack.Item>
       <TextField
         label="Price"
         labelHidden
@@ -21,7 +21,7 @@ function RightAlignExample() {
         autoComplete="off"
         align="right"
       />
-    </Stack>
+    </LegacyStack>
   );
 }
 

@@ -1,4 +1,4 @@
-import {Card, RangeSlider} from '@shopify/polaris';
+import {LegacyCard, RangeSlider} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,12 +6,12 @@ function RangeSliderWithPreciseRangeControlExample() {
   const [rangeValue, setRangeValue] = useState(4);
 
   const handleRangeSliderChange = useCallback(
-    (value) => setRangeValue(value),
+    (value: number) => setRangeValue(value),
     [],
   );
 
   return (
-    <Card sectioned title="Navigation branding">
+    <LegacyCard sectioned title="Navigation branding">
       <RangeSlider
         output
         label="Logo offset"
@@ -21,7 +21,7 @@ function RangeSliderWithPreciseRangeControlExample() {
         value={rangeValue}
         onChange={handleRangeSliderChange}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

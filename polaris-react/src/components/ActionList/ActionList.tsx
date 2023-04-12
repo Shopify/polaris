@@ -5,7 +5,8 @@ import {
   wrapFocusPreviousFocusableMenuItem,
 } from '../../utilities/focus';
 import {KeypressListener} from '../KeypressListener';
-import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
+import {Key} from '../../types';
+import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {Box} from '../Box';
 
 import {Section, Item} from './components';

@@ -3,10 +3,10 @@ import React, {
   useRef,
   useEffect,
   useCallback,
-  ReactNode,
   useMemo,
   Children,
 } from 'react';
+import type {ReactNode} from 'react';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
@@ -15,9 +15,9 @@ import {useComboboxListbox} from '../../utilities/combobox';
 import {
   ListboxContext,
   WithinListboxContext,
-  NavigableOption,
   scrollOptionIntoView,
 } from '../../utilities/listbox';
+import type {NavigableOption} from '../../utilities/listbox';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
 import {Text} from '../Text';
@@ -486,7 +486,7 @@ export function Listbox({
   return (
     <>
       {listeners}
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <Text as="span" visuallyHidden>
         <div aria-live="polite">{loading ? loading : null}</div>
       </Text>
       <ListboxContext.Provider value={listboxContext}>

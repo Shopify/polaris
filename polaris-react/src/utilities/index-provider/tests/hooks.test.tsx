@@ -4,13 +4,13 @@ import {mountWithApp, mount} from 'tests/utilities';
 import {
   IndexRowContext,
   IndexSelectionChangeContext,
-  IndexContextType,
   IndexContext,
 } from '../context';
-import {
+import type {IndexContextType} from '../context';
+import {SelectionType} from '../types';
+import type {
   BulkSelectionDataOptions,
   HandleBulkSelectionOptions,
-  SelectionType,
 } from '../types';
 import {
   useIndexRow,
@@ -189,7 +189,7 @@ describe('useBulkSelectionData', () => {
       singular: 'order',
       plural: 'orders',
     };
-    const paginatedSelectAllText = `All ${itemCount}+ ${resourceName.plural} are selected.`;
+    const paginatedSelectAllText = `All ${itemCount}+ ${resourceName.plural} are selected`;
     const mockComponent = mountWithApp(
       <MockComponent
         selectedItemsCount="All"

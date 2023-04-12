@@ -1,10 +1,10 @@
-import {AlphaCard, Text, AlphaStack} from '@shopify/polaris';
+import {AlphaCard, Text, VerticalStack} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaCardExample() {
   return (
-    <AlphaStack gap="4" fullWidth>
+    <VerticalStack gap="4">
       <AlphaCard>
         <Placeholder label="Content inside a card" />
       </AlphaCard>
@@ -17,7 +17,7 @@ function AlphaCardExample() {
       <AlphaCard padding="0">
         <Placeholder label="Content inside a card" />
       </AlphaCard>
-    </AlphaStack>
+    </VerticalStack>
   );
 }
 
@@ -25,14 +25,14 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#7B47F1',
+        background: 'var(--p-color-text-info)',
         height: height,
         width: width,
       }}
     >
       <div
         style={{
-          color: '#FFFFFF',
+          color: 'var(--p-color-text-on-color)',
         }}
       >
         <Text as="h2" variant="bodyMd">

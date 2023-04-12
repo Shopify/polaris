@@ -1,8 +1,8 @@
 import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
-import {AlphaStack, Text} from '@shopify/polaris';
-import Grid from '../../../src/components/Grid';
+import {Text} from '@shopify/polaris';
+import {Grid, GridItem} from '../../../src/components/Grid';
 import Page from '../../../src/components/Page';
 import TipBanner from '../../../src/components/TipBanner/TipBanner';
 import ComponentThumbnail from '../../../src/components/ComponentThumbnail';
@@ -11,6 +11,7 @@ import {stripMarkdownLinks} from '../../../src/utils/various';
 import PageMeta from '../../../src/components/PageMeta';
 import Longform from '../../../src/components/Longform';
 import Markdown from '../../../src/components/Markdown';
+import {Stack} from '../../../src/components/Stack';
 
 interface Group {
   title?: string;
@@ -45,12 +46,12 @@ export default function GroupPage({
   const relatedResources = frontMatter?.relatedResources;
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
-      <AlphaStack gap="4">
+      <Stack gap="4">
         <Text as="h4" variant="headingLg">
           {title}
         </Text>
         <p>{description}</p>
-      </AlphaStack>
+      </Stack>
       <Grid condensed>
         {components?.map((component) => {
           const componentSlug = component.replace(/ /g, '-').toLowerCase();
@@ -58,7 +59,7 @@ export default function GroupPage({
             ? `/components/${group}/${componentSlug}`
             : `/components/${componentSlug}`;
           return (
-            <Grid.Item
+            <GridItem
               key={component}
               title={component}
               description={stripMarkdownLinks(
@@ -83,7 +84,7 @@ export default function GroupPage({
           ? `/components/${group}/${component}`
           : `/components/${component}`;
         return (
-          <Grid.Item
+          <GridItem
             key={component}
             title={capitalize(component.replace(/-/g, ' '))}
             description={stripMarkdownLinks(
@@ -101,9 +102,9 @@ export default function GroupPage({
 
   const relatedResourcesMarkup = relatedResources
     ? relatedResources && (
-        <AlphaStack gap="4">
+        <Stack gap="4">
           <Text as="h4" variant="headingLg">
-            Related Resources
+            Related resources
           </Text>
           <ul>
             {relatedResources.map((resource) => (
@@ -111,11 +112,11 @@ export default function GroupPage({
                 key={resource}
                 style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
               >
-                <Markdown text={resource} />
+                <Markdown>{resource}</Markdown>
               </li>
             ))}
           </ul>
-        </AlphaStack>
+        </Stack>
       )
     : null;
 
@@ -125,15 +126,18 @@ export default function GroupPage({
         title={frontMatter?.title}
         description={frontMatter?.description}
       />
-      <AlphaStack gap="16">
-        <AlphaStack gap="4">
-          <Longform firstParagraphIsLede>
-            <p>{frontMatter?.description}</p>
-          </Longform>
+      <Stack gap="16">
+        <Stack gap="4">
+          {frontMatter?.description && (
+            <Longform firstParagraphIsLede>
+              <Markdown>{frontMatter?.description}</Markdown>
+            </Longform>
+          )}
+
           {groupsMarkup || componentsFromPaths}
-        </AlphaStack>
+        </Stack>
         {relatedResourcesMarkup}
-      </AlphaStack>
+      </Stack>
     </Page>
   );
 }

@@ -3,7 +3,7 @@ import React, {useMemo} from 'react';
 import type {ComplexAction} from '../../types';
 import {SettingAction} from '../SettingAction';
 import {buttonFrom} from '../Button';
-import {Card} from '../Card';
+import {LegacyCard} from '../LegacyCard';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 
 export interface SettingToggleProps {
@@ -17,23 +17,37 @@ export interface SettingToggleProps {
 
 const getUniqueSettingToggleId = globalIdGeneratorFactory('SettingToggle');
 
+/**
+ * @deprecated The SettingToggle component will be removed in v12.0.0.
+ * See the "With primitive components" example to learn how to compose
+ * setting toggles with layout and typography primitives.
+ * https://polaris.shopify.com/components/deprecated/setting-toggle
+ */
 export function SettingToggle({enabled, action, children}: SettingToggleProps) {
   const id = useMemo(getUniqueSettingToggleId, []);
 
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Deprecation: <SettingToggle /> is deprecated. This component will be removed in a future major version of Polaris. Use the primitive layout and typography components to compose a setting toggle card.
+      See the "With primitive components" example in https://polaris.shopify.com/components/deprecated/setting-toggle`,
+    );
+  }
+
   const actionMarkup = action
     ? buttonFrom(action, {
-        primary: !enabled,
         role: 'switch',
         id,
         ariaChecked: enabled ? 'true' : 'false',
+        size: 'slim',
       })
     : null;
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <SettingAction action={actionMarkup}>
         <label htmlFor={id}>{children}</label>
       </SettingAction>
-    </Card>
+    </LegacyCard>
   );
 }

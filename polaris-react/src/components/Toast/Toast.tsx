@@ -1,6 +1,7 @@
 import {memo} from 'react';
 
-import {ToastProps as ToastProps1, useFrame} from '../../utilities/frame';
+import {useFrame} from '../../utilities/frame';
+import type {ToastProps as ToastProps1} from '../../utilities/frame';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 

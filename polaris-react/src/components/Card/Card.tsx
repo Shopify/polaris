@@ -10,6 +10,7 @@ import {ActionList} from '../ActionList';
 import {Button, buttonFrom} from '../Button';
 import {Popover} from '../Popover';
 
+// eslint-disable-next-line import/no-deprecated
 import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
 
@@ -46,10 +47,13 @@ export interface CardProps {
 // subcomponents so explicitly state the subcomponents in the type definition.
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
-
+/** @deprecated Use AlphaCard instead. */
 export const Card: React.FunctionComponent<CardProps> & {
+  // eslint-disable-next-line import/no-deprecated
   Header: typeof Header;
+  // eslint-disable-next-line import/no-deprecated
   Section: typeof Section;
+  // eslint-disable-next-line import/no-deprecated
   Subsection: typeof Subsection;
 } = function Card({
   children,
@@ -63,6 +67,13 @@ export const Card: React.FunctionComponent<CardProps> & {
   secondaryFooterActionsDisclosureText,
   footerActionAlignment = 'right',
 }: CardProps) {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Card /> is deprecated. This component will be removed in a future major version of Polaris. Use <LegacyCard /> or <AlphaCard /> instead.',
+    );
+  }
+
   const i18n = useI18n();
   const {
     value: secondaryActionsPopoverOpen,
@@ -141,6 +152,9 @@ export const Card: React.FunctionComponent<CardProps> & {
   );
 };
 
+// eslint-disable-next-line import/no-deprecated
 Card.Header = Header;
+// eslint-disable-next-line import/no-deprecated
 Card.Section = Section;
+// eslint-disable-next-line import/no-deprecated
 Card.Subsection = Subsection;

@@ -19,13 +19,12 @@ import {
 import {
   ActionList,
   Badge,
-  Card,
   ContextualSaveBar,
   DropZone,
-  DropZoneProps,
   FormLayout,
   Frame,
   Layout,
+  LegacyCard,
   Loading,
   Modal,
   Navigation,
@@ -34,14 +33,16 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
-  Stack,
+  LegacyStack,
   Text,
+  // eslint-disable-next-line import/no-deprecated
   TextContainer,
   TextField,
   Thumbnail,
   Toast,
   TopBar,
 } from '../src';
+import type {DropZoneProps} from '../src';
 
 import styles from './DetailsPage.scss';
 
@@ -59,7 +60,7 @@ export function DetailsPage() {
   const [userMenuActive, setUserMenuActive] = useState(false);
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
-  const [navItemActive, setNavItemActive] = useState('');
+  const [navItemActive, setNavItemActive] = useState('products');
   const initialDescription =
     'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
   const [previewValue, setPreviewValue] = useState(initialDescription);
@@ -450,7 +451,7 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <Text as="span" variant="bodySm" visuallyHidden>
+    <Text as="span" visuallyHidden>
       <a
         href="#SkipToContent"
         id="SkipToContentTarget"
@@ -519,9 +520,9 @@ export function DetailsPage() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -538,9 +539,9 @@ export function DetailsPage() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   // ---- Page markup ----
@@ -595,7 +596,7 @@ export function DetailsPage() {
       <Layout>
         {skipToContentTarget}
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Title"
@@ -614,17 +615,17 @@ export function DetailsPage() {
                 multiline
               />
             </FormLayout>
-          </Card>
-          <Card title="Media" sectioned>
+          </LegacyCard>
+          <LegacyCard title="Media" sectioned>
             <DropZone onDrop={handleDropZoneDrop}>
               {uploadedFiles}
               {fileUpload}
             </DropZone>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
         <Layout.Section secondary>
-          <Card title="Organization">
-            <Card.Section>
+          <LegacyCard title="Organization">
+            <LegacyCard.Section>
               <Select
                 label="Product type"
                 options={options}
@@ -638,10 +639,10 @@ export function DetailsPage() {
                 onChange={setSelected}
                 value={selected}
               />
-            </Card.Section>
-            <Card.Section title="Collections" />
-            <Card.Section title="Tags" />
-          </Card>
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Collections" />
+            <LegacyCard.Section title="Tags" />
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -652,12 +653,12 @@ export function DetailsPage() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </SkeletonPage>

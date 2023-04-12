@@ -2,10 +2,8 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
-import {
-  PositionedOverlayProps,
-  PositionedOverlay,
-} from '../../../PositionedOverlay';
+import {PositionedOverlay} from '../../../PositionedOverlay';
+import type {PositionedOverlayProps} from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
 import type {Width, Padding, BorderRadius} from '../../Tooltip';
 
@@ -24,6 +22,7 @@ export interface TooltipOverlayProps {
   borderRadius?: BorderRadius;
   zIndexOverride?: number;
   onClose(): void;
+  instant?: boolean;
 }
 
 export function TooltipOverlay({
@@ -38,6 +37,7 @@ export function TooltipOverlay({
   padding,
   borderRadius,
   zIndexOverride,
+  instant,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const markup = active ? (
@@ -56,11 +56,14 @@ export function TooltipOverlay({
   function renderTooltip(
     overlayDetails: Parameters<PositionedOverlayProps['render']>[0],
   ) {
-    const {measuring, desiredHeight, positioning} = overlayDetails;
+    const {measuring, desiredHeight, positioning, chevronOffset} =
+      overlayDetails;
 
     const containerClassName = classNames(
       styles.TooltipOverlay,
       measuring && styles.measuring,
+      !measuring && styles.measured,
+      instant && styles.instant,
       positioning === 'above' && styles.positionedAbove,
     );
 
@@ -69,6 +72,7 @@ export function TooltipOverlay({
     const contentStyles = measuring ? undefined : {minHeight: desiredHeight};
 
     const style = {
+      '--pc-tooltip-chevron-x-pos': `${chevronOffset}px`,
       '--pc-tooltip-border-radius': borderRadius
         ? `var(--p-border-radius-${borderRadius})`
         : undefined,

@@ -149,11 +149,9 @@ export function Pagination({
 
   const labelTextMarkup =
     hasNext && hasPrevious ? (
-      <Text variant="bodyMd" as="span">
-        {label}
-      </Text>
+      <span>{label}</span>
     ) : (
-      <Text variant="bodyMd" color="subdued" as="span">
+      <Text color="subdued" as="span">
         {label}
       </Text>
     );

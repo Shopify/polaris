@@ -22,7 +22,8 @@ import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
 import {UnstyledLink} from '../UnstyledLink';
 import {Spinner} from '../Spinner';
-import {Icon, IconProps} from '../Icon';
+import {Icon} from '../Icon';
+import type {IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Text} from '../Text';
 import {Box} from '../Box';
@@ -84,7 +85,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 
   if (title) {
     headingMarkup = (
-      <Text as="h2" variant="headingMd">
+      <Text as="h2" variant="headingMd" breakWord>
         {title}
       </Text>
     );
@@ -194,6 +195,7 @@ function SecondaryActionFrom({action}: {action: Action}) {
         className={styles.SecondaryAction}
         url={action.url}
         external={action.external}
+        target={action.target}
       >
         <span className={styles.Text}>{action.content}</span>
       </UnstyledLink>

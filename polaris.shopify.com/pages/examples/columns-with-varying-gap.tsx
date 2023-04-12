@@ -1,30 +1,32 @@
 import React from 'react';
-import {Columns, Text, Inline} from '@shopify/polaris';
+import {Columns} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ColumnsWithVaryingGapExample() {
   return (
     <SpacingBackground>
-      <Columns gap={{xs: '2'}}>
-        <Placeholder height="320px" label="01" />
-        <Placeholder height="320px" label="02" />
-        <Placeholder height="320px" label="03" />
-        <Placeholder height="320px" label="04" />
-        <Placeholder height="320px" label="05" />
-        <Placeholder height="320px" label="06" />
+      <Columns gap="4" columns={3}>
+        <Placeholder height="320px" />
+        <Placeholder height="320px" />
+        <Placeholder height="320px" />
       </Columns>
     </SpacingBackground>
   );
 }
 
-const SpacingBackground = ({children, width = '100%'}) => {
+const SpacingBackground = ({
+  children,
+  width = '100%',
+}: {
+  children: React.ReactNode;
+  width?: string;
+}) => {
   return (
     <div
       style={{
-        background:
-          'repeating-linear-gradient(-45deg, #7B47F1, #7B47F1 1px, #E8D1FA 1px, #E8D1FA 7px)',
-        width: width ?? undefined,
+        background: 'var(--p-color-bg-success-subdued)',
+        width,
         height: 'auto',
       }}
     >
@@ -33,29 +35,16 @@ const SpacingBackground = ({children, width = '100%'}) => {
   );
 };
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+const Placeholder = ({height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
         display: 'inherit',
-        background: '#7B47F1',
+        background: 'var(--p-color-text-info)',
         height: height ?? undefined,
         width: width ?? undefined,
       }}
-    >
-      <Inline align="center" blockAlign="center">
-        <div
-          style={{
-            color: '#FFFFFF',
-            width: width ?? undefined,
-          }}
-        >
-          <Text as="h2" variant="bodyMd" fontWeight="medium" alignment="center">
-            {label}
-          </Text>
-        </div>
-      </Inline>
-    </div>
+    />
   );
 };
 

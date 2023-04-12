@@ -6,9 +6,9 @@ import {buttonFrom} from '../Button';
 import {SettingAction} from '../SettingAction';
 import {AlphaCard} from '../AlphaCard';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 import {Text} from '../Text';
-import {AlphaStack} from '../AlphaStack';
+import {VerticalStack} from '../VerticalStack';
 
 export interface AccountConnectionProps {
   /** Content to display as title */
@@ -55,7 +55,7 @@ export function AccountConnection({
   const titleMarkup = title ? title : accountName;
 
   const detailsMarkup = details ? (
-    <Text as="span" variant="bodyMd" color="subdued">
+    <Text as="span" color="subdued">
       {details}
     </Text>
   ) : null;
@@ -71,13 +71,13 @@ export function AccountConnection({
   return (
     <AlphaCard>
       <SettingAction action={actionElement}>
-        <Inline gap="4">
+        <HorizontalStack gap="4">
           {avatarMarkup}
-          <AlphaStack gap="2">
+          <VerticalStack gap="2">
             {titleMarkup}
             {detailsMarkup}
-          </AlphaStack>
-        </Inline>
+          </VerticalStack>
+        </HorizontalStack>
       </SettingAction>
       {termsOfServiceMarkup}
     </AlphaCard>

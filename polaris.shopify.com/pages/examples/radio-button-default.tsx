@@ -1,4 +1,4 @@
-import {Stack, RadioButton} from '@shopify/polaris';
+import {LegacyStack, RadioButton} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,12 +6,12 @@ function RadioButtonExample() {
   const [value, setValue] = useState('disabled');
 
   const handleChange = useCallback(
-    (_checked, newValue) => setValue(newValue),
+    (_: boolean, newValue: string) => setValue(newValue),
     [],
   );
 
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       <RadioButton
         label="Accounts are disabled"
         helpText="Customers will only be able to check out as guests."
@@ -28,7 +28,7 @@ function RadioButtonExample() {
         checked={value === 'optional'}
         onChange={handleChange}
       />
-    </Stack>
+    </LegacyStack>
   );
 }
 

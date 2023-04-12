@@ -1,24 +1,9 @@
-import {Button, Modal, Stack, TextContainer, TextField} from '@shopify/polaris';
-import {useState, useCallback, useRef} from 'react';
+import {Button, Modal, LegacyStack, TextContainer} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ModalWithPrimaryActionExample() {
-  const DISCOUNT_LINK = 'https://polaris.shopify.com/';
-
   const [active, setActive] = useState(true);
-  const node = useRef(null);
-
-  const handleClick = useCallback(() => {
-    node.current && node.current.input.focus();
-  }, []);
-
-  const handleFocus = useCallback(() => {
-    if (node.current == null) {
-      return;
-    }
-    node.current.input.select();
-    document.execCommand('copy');
-  }, []);
 
   const toggleModal = useCallback(() => setActive((active) => !active), []);
 
@@ -37,8 +22,8 @@ function ModalWithPrimaryActionExample() {
         }}
       >
         <Modal.Section>
-          <Stack vertical>
-            <Stack.Item>
+          <LegacyStack vertical>
+            <LegacyStack.Item>
               <TextContainer>
                 <p>
                   You can share this discount link with your customers via email
@@ -46,23 +31,8 @@ function ModalWithPrimaryActionExample() {
                   at checkout.
                 </p>
               </TextContainer>
-            </Stack.Item>
-            <Stack.Item fill>
-              <TextField
-                ref={node}
-                label="Discount link"
-                onFocus={handleFocus}
-                value={DISCOUNT_LINK}
-                onChange={() => {}}
-                autoComplete="off"
-                connectedRight={
-                  <Button primary onClick={handleClick}>
-                    Copy link
-                  </Button>
-                }
-              />
-            </Stack.Item>
-          </Stack>
+            </LegacyStack.Item>
+          </LegacyStack>
         </Modal.Section>
       </Modal>
     </div>

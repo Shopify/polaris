@@ -13,7 +13,15 @@ export interface ItemProps {
    */
 }
 
+/** @deprecated Use LegacyStack or VerticalStack instead. */
 export function Item({children, fill}: ItemProps) {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Stack /> is deprecated. This component will be removed in a future major version of Polaris. Use <LegacyStack /> or <VerticalStack /> instead.',
+    );
+  }
+
   const className = classNames(styles.Item, fill && styles['Item-fill']);
 
   return <div className={className}>{children}</div>;

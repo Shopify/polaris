@@ -152,7 +152,9 @@
       "clearAllFilters": "Rimuovi tutti i filtri",
       "clear": "Rimuovi",
       "clearLabel": "Rimuovi {filterName}",
-      "moreFiltersWithCount": "Altri filtri ({count})"
+      "moreFiltersWithCount": "Altri filtri ({count})",
+      "addFilter": "Aggiungi filtro",
+      "clearFilters": "Cancella tutto"
     },
     "Modal": {
       "iFrameTitle": "markup del testo",
@@ -174,7 +176,7 @@
       "showing": "Visualizzazione di {itemsCount} {resource}",
       "loading": "Caricamento {resource}",
       "selected": "{selectedItemsCount} selezionati",
-      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} nel tuo negozio sono selezionati.",
+      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} nel tuo negozio sono selezionati",
       "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural} nel tuo negozio",
       "emptySearchResultTitle": "Impossibile trovare {resourceNamePlural}",
       "emptySearchResultDescription": "Prova a cambiare i filtri o il termine di ricerca",
@@ -194,14 +196,57 @@
         "warningMessage": "Per offrire una migliore User Experience. È previsto solo un massimo di {maxPromotedActions} azioni promosse."
       },
       "showingTotalCount": "Visualizzazione di {itemsCount} su {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Tutti i {resourceNamePlural} {itemsLength}+ in questo filtro sono selezionati.",
+      "allFilteredItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} in questo filtro sono selezionati",
       "selectAllFilteredItems": "Seleziona tutti i {resourceNamePlural} {itemsLength}+ in questo filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Caricamento della pagina"
     },
     "Tabs": {
-      "toggleTabsLabel": "Altre schede"
+      "toggleTabsLabel": "Altre visualizzazioni",
+      "newViewAccessibilityLabel": "Crea nuova vista",
+      "newViewTooltip": "Crea vista",
+      "Tab": {
+        "rename": "Rinomina vista",
+        "duplicate": "Duplica vista",
+        "edit": "Modifica vista",
+        "editColumns": "Modifica colonne",
+        "delete": "Elimina vista",
+        "copy": "Copia di {name}",
+        "deleteModal": {
+          "title": "Eliminare la vista?",
+          "description": "L'operazione non può essere annullata. La vista {viewName} non sarà più disponibile nel pannello di controllo.",
+          "cancel": "Annulla",
+          "delete": "Elimina vista"
+        }
+      },
+      "RenameModal": {
+        "title": "Rinomina vista",
+        "label": "Nome",
+        "cancel": "Annulla",
+        "create": "Salva",
+        "errors": {
+          "sameName": "Esiste già una vista con questo nome. Scegli un nome diverso."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplica vista",
+        "label": "Nome",
+        "cancel": "Annulla",
+        "create": "Crea vista",
+        "errors": {
+          "sameName": "Esiste già una vista con questo nome. Scegli un nome diverso."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Crea nuova vista",
+        "label": "Nome",
+        "cancel": "Annulla",
+        "create": "Crea vista",
+        "errors": {
+          "sameName": "Esiste già una vista con questo nome. Scegli un nome diverso."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Rimuovi {children}"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Azioni"
+      "popoverButton": "Azioni",
+      "dismissButton": "Ignora"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -278,8 +324,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Articolo",
       "defaultItemPlural": "Articoli",
-      "allItemsSelected": "Tutti gli oltre {itemsLength} {resourceNamePlural} sono selezionati.",
-      "selected": "{selectedItemsCount} selezionati.",
+      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} sono selezionati",
+      "selected": "{selectedItemsCount} selezionati",
       "a11yCheckboxDeselectAllSingle": "Deseleziona {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleziona {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Deseleziona tutto: {itemsLength} {resourceNamePlural}",
@@ -291,7 +337,7 @@
       "onboardingBadgeText": "Novità",
       "resourceLoadingAccessibilityLabel": "Caricamento {resourceNamePlural} in corso",
       "selectAllLabel": "Seleziona tutto: {resourceNamePlural}",
-      "selected": "{selectedItemsCount} selezionati.",
+      "selected": "{selectedItemsCount} selezionati",
       "undo": "Annulla",
       "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Seleziona {resourceName}",
@@ -306,6 +352,40 @@
     "FullscreenBar": {
       "back": "Indietro",
       "accessibilityLabel": "Esci dalla modalità schermo intero"
+    },
+    "FilterPill": {
+      "clear": "Cancella"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Cerca e filtra (F)",
+      "searchFilterAccessibilityLabel": "Cerca e filtra risultati",
+      "sort": "Ordina i risultati",
+      "addView": "Aggiungi nuova vista",
+      "newView": "Ricerca personalizzata",
+      "SortButton": {
+        "ariaLabel": "Ordina i risultati",
+        "tooltip": "Ordina",
+        "title": "Ordina per",
+        "sorting": {
+          "asc": "Crescente",
+          "desc": "Decrescente",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Annulla",
+        "update": "Aggiorna",
+        "save": "Salva",
+        "saveAs": "Salva con nome",
+        "modal": {
+          "title": "Salva vista come",
+          "label": "Nome",
+          "sameName": "Esiste già una vista con questo nome. Scegli un nome diverso.",
+          "save": "Salva",
+          "cancel": "Annulla"
+        }
+      }
     }
   }
 }

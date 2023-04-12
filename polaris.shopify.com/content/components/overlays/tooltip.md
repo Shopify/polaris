@@ -18,6 +18,12 @@ examples:
   - fileName: tooltip-visible-only-with-child-interaction.tsx
     title: Visible only with child interaction
     description: Use when the tooltip overlays interactive elements when active, for example a form input. The `dismissOnMouseOut` prop prevents the tooltip from remaining active when mouse hover or focus leaves its `children` and enters the tooltip's content.
+  - fileName: tooltip-with-persistence-on-click.tsx
+    title: With persistence on click
+    description: Use to present a tooltip that remains open if activated by click or keypress.
+  - fileName: tooltip-with-suffix.tsx
+    title: With suffix
+    description: Use when merchants benefit from information supplemental to the tooltip content. For example, to present a keyboard shortcut beside the content of a tooltip that describes an icon button.
 ---
 
 ## Best practices

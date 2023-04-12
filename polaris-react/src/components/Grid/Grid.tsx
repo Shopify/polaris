@@ -26,11 +26,6 @@ export interface GridProps {
   gap?: Gap;
   children?: React.ReactNode;
 }
-/** **Experimental!**
- * This component is in alpha. Use with caution.
- * 6 column default for xs, sm, and md breakpoints.
- * 12 columns for lg, and xl.
- */
 export const Grid: React.FunctionComponent<GridProps> & {
   Cell: typeof Cell;
 } = function Grid({gap, areas, children, columns}: GridProps) {

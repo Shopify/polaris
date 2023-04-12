@@ -1,4 +1,4 @@
-import {Button, Modal, Stack, DropZone, Checkbox} from '@shopify/polaris';
+import {Button, Modal, LegacyStack, DropZone, Checkbox} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -8,7 +8,7 @@ function SmallModalExample() {
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-  const handleCheckbox = useCallback((value) => setChecked(value), []);
+  const handleCheckbox = useCallback((value: boolean) => setChecked(value), []);
 
   const activator = <Button onClick={toggleActive}>Open</Button>;
 
@@ -32,7 +32,7 @@ function SmallModalExample() {
         ]}
       >
         <Modal.Section>
-          <Stack vertical>
+          <LegacyStack vertical>
             <DropZone
               accept=".csv"
               errorOverlayText="File type must be .csv"
@@ -46,7 +46,7 @@ function SmallModalExample() {
               label="Overwrite existing customers that have the same email or phone"
               onChange={handleCheckbox}
             />
-          </Stack>
+          </LegacyStack>
         </Modal.Section>
       </Modal>
     </div>

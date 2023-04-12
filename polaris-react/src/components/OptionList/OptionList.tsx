@@ -9,7 +9,8 @@ import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
-import {Box, BoxProps} from '../Box';
+import {Box} from '../Box';
+import type {BoxProps} from '../Box';
 import {Text} from '../Text';
 import {Bleed} from '../Bleed';
 
@@ -136,7 +137,7 @@ export function OptionList({
             paddingBlockStart={isFirstOption ? undefined : '2'}
           >
             {titleMarkup}
-            <Bleed marginBlockStart={title ? undefined : '05'} marginInline="0">
+            <Bleed marginBlockStart={title ? undefined : '05'}>
               <Box
                 as="ul"
                 id={`${id}-${sectionIndex}`}

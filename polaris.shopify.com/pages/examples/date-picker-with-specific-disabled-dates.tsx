@@ -4,16 +4,14 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DatePickerExample() {
   const [{month, year}, setDate] = useState({month: 1, year: 2018});
-  const [selectedDates, setSelectedDates] = useState(
+  const [selectedDates, setSelectedDates] = useState<Date>(
     new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
   );
 
   const handleMonthChange = useCallback(
-    (month, year) => setDate({month, year}),
+    (month: number, year: number) => setDate({month, year}),
     [],
   );
-
-  const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   const disableSpecificDates = [
     new Date('Mon Feb 12 2018 00:00:00 GMT-0500 (EST)'),
@@ -25,7 +23,7 @@ function DatePickerExample() {
     <DatePicker
       month={month}
       year={year}
-      onChange={setSelectedDates}
+      onChange={({start}) => setSelectedDates(start)}
       onMonthChange={handleMonthChange}
       selected={selectedDates}
       disableDatesBefore={new Date('Sat Feb 03 2018 00:00:00 GMT-0500 (EST)')}

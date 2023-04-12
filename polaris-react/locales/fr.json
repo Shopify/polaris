@@ -140,7 +140,7 @@
         "rollupButton": "Afficher les actions"
       },
       "Actions": {
-        "moreActions": "Autres opérations"
+        "moreActions": "Autres actions"
       }
     },
     "Filters": {
@@ -152,7 +152,9 @@
       "clearAllFilters": "Effacer tous les filtres",
       "clear": "Effacer",
       "clearLabel": "Effacer {filterName}",
-      "moreFiltersWithCount": "Plus de filtres ({count})"
+      "moreFiltersWithCount": "Plus de filtres ({count})",
+      "addFilter": "Ajouter un filtre",
+      "clearFilters": "Tout effacer"
     },
     "Modal": {
       "iFrameTitle": "balisage du corps",
@@ -174,9 +176,9 @@
       "showing": "{itemsCount} {resource} sont affichés",
       "loading": "Chargement de {resource} en cours",
       "selected": "{selectedItemsCount} sélectionné(s)",
-      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de votre boutique sont sélectionnés.",
+      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de votre boutique est sélectionnée",
       "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural} de votre boutique",
-      "emptySearchResultTitle": "Pas de {resourceNamePlural} trouvés",
+      "emptySearchResultTitle": "{resourceNamePlural} introuvables",
       "emptySearchResultDescription": "Essayez de changer les filtres ou le terme de recherche",
       "selectButtonText": "Sélectionner",
       "a11yCheckboxDeselectAllSingle": "Désélectionner {resourceNameSingular}",
@@ -190,18 +192,61 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Actions",
-        "moreActionsActivatorLabel": "Autres opérations",
+        "moreActionsActivatorLabel": "Autres actions",
         "warningMessage": "Pour fournir une meilleure expérience utilisateur. Il ne doit y avoir que {maxPromotedActions} actions promues au maximum."
       },
       "showingTotalCount": "{itemsCount} sur {totalItemsCount} {resource} sont affichés",
-      "allFilteredItemsSelected": "La totalité des {resourceNamePlural}+ {itemsLength} de ce filtre sont sélectionnés.",
+      "allFilteredItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} de ce filtre est sélectionnée",
       "selectAllFilteredItems": "Sélectionner la totalité des éléments {resourceNamePlural}+ {itemsLength} de ce filtre"
     },
     "SkeletonPage": {
       "loadingLabel": "Chargement de la page"
     },
     "Tabs": {
-      "toggleTabsLabel": "Plus d’onglets"
+      "toggleTabsLabel": "Plus de vues",
+      "newViewAccessibilityLabel": "Créer une nouvelle vue",
+      "newViewTooltip": "Créer une vue",
+      "Tab": {
+        "rename": "Renommer la vue",
+        "duplicate": "Dupliquer la vue",
+        "edit": "Modifier la vue",
+        "editColumns": "Modifier les colonnes",
+        "delete": "Supprimer la vue",
+        "copy": "Copie de {name}",
+        "deleteModal": {
+          "title": "Supprimer la vue ?",
+          "description": "Cette opération est irréversible. La vue {viewName} ne sera plus disponible dans votre interface administrateur Shopify.",
+          "cancel": "Annuler",
+          "delete": "Supprimer la vue"
+        }
+      },
+      "RenameModal": {
+        "title": "Renommer la vue",
+        "label": "Nom",
+        "cancel": "Annuler",
+        "create": "Enregistrer",
+        "errors": {
+          "sameName": "Une vue portant ce nom existe déjà. Veuillez choisir un nom différent."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Dupliquer la vue",
+        "label": "Nom",
+        "cancel": "Annuler",
+        "create": "Créer une vue",
+        "errors": {
+          "sameName": "Une vue portant ce nom existe déjà. Veuillez choisir un nom différent."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Créer une nouvelle vue",
+        "label": "Nom",
+        "cancel": "Annuler",
+        "create": "Créer une vue",
+        "errors": {
+          "sameName": "Une vue portant ce nom existe déjà. Veuillez choisir un nom différent."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Supprimer {children}"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Actions"
+      "popoverButton": "Actions",
+      "dismissButton": "Rejeter"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -278,20 +324,20 @@
     "IndexProvider": {
       "defaultItemSingular": "Article",
       "defaultItemPlural": "Articles",
-      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} sont sélectionnés.",
-      "selected": "{selectedItemsCount} sélectionné(s)",
+      "allItemsSelected": "La totalité des {itemsLength}+ {resourceNamePlural} est sélectionnée",
+      "selected": "{selectedItemsCount} sélectionné(s)",
       "a11yCheckboxDeselectAllSingle": "Désélectionner {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Sélectionner {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Désélectionner la totalité des {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Sélectionner la totalité des {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
-      "emptySearchTitle": "Pas de {resourceNamePlural} trouvés",
+      "emptySearchTitle": "{resourceNamePlural} introuvables",
       "emptySearchDescription": "Essayez de changer les filtres ou le terme de recherche",
       "onboardingBadgeText": "Nouveau",
       "resourceLoadingAccessibilityLabel": "Chargement de {resourceNamePlural} en cours…",
       "selectAllLabel": "Sélectionner la totalité des {resourceNamePlural}",
-      "selected": "{selectedItemsCount} sélectionné(s)",
+      "selected": "{selectedItemsCount} sélectionné(s)",
       "undo": "Annuler",
       "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Sélectionner {resourceName}",
@@ -306,6 +352,40 @@
     "FullscreenBar": {
       "back": "Retour",
       "accessibilityLabel": "Quitter le mode plein écran"
+    },
+    "FilterPill": {
+      "clear": "Effacer"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Rechercher et filtrer (F)",
+      "searchFilterAccessibilityLabel": "Rechercher et filtrer les résultats",
+      "sort": "Trier vos résultats",
+      "addView": "Ajouter une nouvelle vue",
+      "newView": "Recherche personnalisée",
+      "SortButton": {
+        "ariaLabel": "Trier les résultats",
+        "tooltip": "Trier",
+        "title": "Trier par",
+        "sorting": {
+          "asc": "Ordre croissant",
+          "desc": "Ordre décroissant",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Annuler",
+        "update": "Actualiser",
+        "save": "Enregistrer",
+        "saveAs": "Enregistrer sous",
+        "modal": {
+          "title": "Enregistrer la vue sous",
+          "label": "Nom",
+          "sameName": "Une vue portant ce nom existe déjà. Veuillez choisir un nom différent.",
+          "save": "Enregistrer",
+          "cancel": "Annuler"
+        }
+      }
     }
   }
 }

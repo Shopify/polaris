@@ -1,12 +1,12 @@
-import {Card, OptionList} from '@shopify/polaris';
+import {LegacyCard, OptionList} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function OptionListWithSectionsExample() {
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<string[]>([]);
 
   return (
-    <Card>
+    <LegacyCard>
       <OptionList
         onChange={setSelected}
         sections={[
@@ -28,7 +28,7 @@ function OptionListWithSectionsExample() {
         selected={selected}
         allowMultiple
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

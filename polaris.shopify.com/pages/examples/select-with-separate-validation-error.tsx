@@ -1,10 +1,10 @@
 import {
-  Stack,
+  LegacyStack,
   FormLayout,
   TextField,
   Select,
   InlineError,
-  Card,
+  LegacyCard,
   Link,
   Text,
 } from '@shopify/polaris';
@@ -15,13 +15,16 @@ function SeparateValidationErrorExample() {
   const [weight, setWeight] = useState('12');
   const [unit, setUnit] = useState('');
 
-  const handleWeightChange = useCallback((value) => setWeight(value), []);
-  const handleUnitChange = useCallback((value) => setUnit(value), []);
+  const handleWeightChange = useCallback(
+    (value: string) => setWeight(value),
+    [],
+  );
+  const handleUnitChange = useCallback((value: string) => setUnit(value), []);
 
   const unitSelectID = 'unit';
   const errorMessage = generateErrorMessage();
   const formGroupMarkup = (
-    <Stack vertical spacing="extraTight">
+    <LegacyStack vertical spacing="extraTight">
       <FormLayout>
         <FormLayout.Group condensed>
           <TextField
@@ -44,10 +47,10 @@ function SeparateValidationErrorExample() {
         </FormLayout.Group>
       </FormLayout>
       <InlineError message={errorMessage} fieldID={unitSelectID} />
-    </Stack>
+    </LegacyStack>
   );
 
-  return <Card sectioned>{formGroupMarkup}</Card>;
+  return <LegacyCard sectioned>{formGroupMarkup}</LegacyCard>;
 
   function generateErrorMessage() {
     const weightError =
@@ -61,7 +64,7 @@ function SeparateValidationErrorExample() {
 
     return (
       <span>
-        <Text variant="bodyMd" color="critical" as="span">
+        <Text color="critical" as="span">
           <p>
             {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
             <Link>Manage shipping</Link>

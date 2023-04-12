@@ -1116,6 +1116,93 @@ describe('<TextField />', () => {
           expect(spy).not.toHaveBeenCalled();
         });
       });
+
+      describe('wheel events', () => {
+        let eventPropagationSpy: jest.SpyInstance;
+
+        beforeEach(() => {
+          eventPropagationSpy = jest.spyOn(Event.prototype, 'stopPropagation');
+        });
+
+        afterEach(() => {
+          eventPropagationSpy.mockReset();
+        });
+
+        it('stops event progagation when using the mousewheel over a focused input', () => {
+          const eventPropagationSpy = jest.spyOn(
+            Event.prototype,
+            'stopPropagation',
+          );
+
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="1"
+              onChange={noop}
+              autoComplete="off"
+              focused
+            />,
+          );
+
+          const wheelEvent = new WheelEvent('wheel', {deltaY: 1});
+          const input = element.find('input')!.domNode!;
+
+          input.focus();
+          input.dispatchEvent(wheelEvent);
+
+          expect(eventPropagationSpy).toHaveBeenCalled();
+        });
+
+        it('does not stop event progagation when using the mousewheel over a non-focused input', () => {
+          const eventPropagationSpy = jest.spyOn(
+            Event.prototype,
+            'stopPropagation',
+          );
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="1"
+              onChange={noop}
+              autoComplete="off"
+            />,
+          );
+
+          const wheelEvent = new WheelEvent('wheel', {deltaY: 1});
+          const input = element.find('input')!.domNode!;
+
+          input.dispatchEvent(wheelEvent);
+
+          expect(eventPropagationSpy).not.toHaveBeenCalled();
+        });
+
+        it('does not stop event progagation when using the mousewheel over a focused input on a non-number type', () => {
+          const eventPropagationSpy = jest.spyOn(
+            Event.prototype,
+            'stopPropagation',
+          );
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              value="1"
+              onChange={noop}
+              autoComplete="off"
+            />,
+          );
+
+          const wheelEvent = new WheelEvent('wheel', {deltaY: 1});
+          const input = element.find('input')!.domNode!;
+          input.focus();
+
+          input.dispatchEvent(wheelEvent);
+
+          expect(eventPropagationSpy).not.toHaveBeenCalled();
+        });
+      });
     });
   });
 

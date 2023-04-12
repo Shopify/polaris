@@ -1,5 +1,61 @@
 # Changelog
 
+## 6.10.0
+
+### Minor Changes
+
+- [#8906](https://github.com/Shopify/polaris/pull/8906) [`247f5eea8`](https://github.com/Shopify/polaris/commit/247f5eea859b3ab348dcb18c568f18d8d859140e) Thanks [@alex-page](https://github.com/alex-page)! - Add new border tokens that will replace shape in v11
+
+## 6.9.0
+
+### Minor Changes
+
+- [#8414](https://github.com/Shopify/polaris/pull/8414) [`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Migrate `color` custom properties from Polaris `v10` to `v11`
+
+### Patch Changes
+
+- [#8843](https://github.com/Shopify/polaris/pull/8843) [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated `color` alias tokens to improve color contrast
+
+## 6.8.1
+
+### Patch Changes
+
+- [#8727](https://github.com/Shopify/polaris/pull/8727) [`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491) Thanks [@laurkim](https://github.com/laurkim)! - Bumped `eslint-plugin-import`, `@typescript-eslint/**`, and `downlevel-dts` packages, added type import/export rules, and updated type imports
+
+## 6.8.0
+
+### Minor Changes
+
+- [#8572](https://github.com/Shopify/polaris/pull/8572) [`7d1c4f1db`](https://github.com/Shopify/polaris/commit/7d1c4f1db629ad9cfc68f65bd5f704127d10136e) Thanks [@lgriffee](https://github.com/lgriffee)! - Added a new `shadow` token group
+
+## 6.7.0
+
+### Minor Changes
+
+- [#8130](https://github.com/Shopify/polaris/pull/8130) [`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907) Thanks [@mrcthms](https://github.com/mrcthms)! - - Added a `suffix` prop to `Tooltip`
+  - Improved the UX of `Tooltip` by refining open and close animations and adding an arrow pointing to the center of the `activator`
+  - Added the `EmpemeralPresenceManager` to manage the presence of non-blocking overlays, like `Tooltip` and `Toast`
+
+## 6.6.1
+
+### Patch Changes
+
+- [#8456](https://github.com/Shopify/polaris/pull/8456) [`0e9fa8433`](https://github.com/Shopify/polaris/commit/0e9fa843397a9ec1d1a7eee70d0178d76dd231f8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated `border-caution-subdued` and `border-success-subdued` tokens to improve color contrast
+
+* [#8483](https://github.com/Shopify/polaris/pull/8483) [`b1768f037`](https://github.com/Shopify/polaris/commit/b1768f03795f224e760edc405dc5bfde298061cb) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Adjusted colors to meet color contrast requirements
+
+## 6.6.0
+
+### Minor Changes
+
+- [#8417](https://github.com/Shopify/polaris/pull/8417) [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added new magic tokens
+
+### Patch Changes
+
+- [#8428](https://github.com/Shopify/polaris/pull/8428) [`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `bg-app-active` and `text-primary-hover` `color` tokens
+
+* [#8427](https://github.com/Shopify/polaris/pull/8427) [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Fixed typo in `yellow-100` shade and lightened `blue-100` shade
+
 ## 6.5.1
 
 ### Patch Changes

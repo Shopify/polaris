@@ -24,7 +24,7 @@ function TopBarExample() {
     setSearchValue('');
   }, []);
 
-  const handleSearchChange = useCallback((value) => {
+  const handleSearchChange = useCallback((value: string) => {
     setSearchValue(value);
     setIsSearchActive(value.length > 0);
   }, []);
@@ -79,7 +79,7 @@ function TopBarExample() {
       activatorContent={
         <span>
           <Icon source={QuestionMarkMajor} />
-          <Text variant="bodySm" as="span" visuallyHidden>
+          <Text as="span" visuallyHidden>
             Secondary menu
           </Text>
         </span>

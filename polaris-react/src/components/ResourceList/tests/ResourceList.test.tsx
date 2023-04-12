@@ -2,7 +2,8 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
-import {BulkActions, useIsBulkActionsSticky} from '../../BulkActions';
+import {BulkActions} from '../../BulkActions';
+import type {useIsBulkActionsSticky} from '../../BulkActions';
 import {SelectAllActions} from '../../SelectAllActions';
 import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
@@ -939,12 +940,24 @@ describe('<ResourceList />', () => {
   });
 
   describe('BulkActions', () => {
-    it('renders on initial load when items are selected', () => {
+    it('renders on initial load when items are selected and bulkActions are present', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
           bulkActions={bulkActions}
+          selectedItems={['1']}
+        />,
+      );
+      expect(resourceList).toContainReactComponentTimes(BulkActions, 1);
+    });
+
+    it('renders on initial load when items are selected and promotedBulkActions are present', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          promotedBulkActions={promotedBulkActions}
           selectedItems={['1']}
         />,
       );
@@ -1267,7 +1280,7 @@ describe('<ResourceList />', () => {
       resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
 
       expect(resourceList).toContainReactComponent(SelectAllActions, {
-        paginatedSelectAllText: 'All 2+ customers in this filter are selected.',
+        paginatedSelectAllText: 'All 2+ customers in this filter are selected',
       });
     });
 
@@ -1307,7 +1320,7 @@ describe('<ResourceList />', () => {
       resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
 
       expect(resourceList).toContainReactComponent(SelectAllActions, {
-        paginatedSelectAllText: 'All 2+ customers in your store are selected.',
+        paginatedSelectAllText: 'All 2+ customers in your store are selected',
       });
     });
   });

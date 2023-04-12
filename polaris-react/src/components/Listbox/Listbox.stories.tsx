@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  Card,
+  LegacyCard,
   EmptySearchResult,
   Scrollable,
   TextField,
   Icon,
   Listbox,
-  Stack,
+  LegacyStack,
   AutoSelection,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
@@ -45,10 +45,10 @@ export function WithAction() {
         Item 2
       </Listbox.Option>
       <Listbox.Action value="ActionValue">
-        <Stack spacing="tight">
+        <LegacyStack spacing="tight">
           <Icon source={CirclePlusMinor} color="base" />
           <div>Add item</div>
-        </Stack>
+        </LegacyStack>
       </Listbox.Action>
     </Listbox>
   );
@@ -277,7 +277,9 @@ export function WithSearch() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span style={{color: 'var(--p-color-text-interactive)'}}>
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -314,7 +316,7 @@ export function WithSearch() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div
         style={{
           alignItems: 'stretch',
@@ -344,6 +346,6 @@ export function WithSearch() {
           {listboxMarkup}
         </Scrollable>
       </div>
-    </Card>
+    </LegacyCard>
   );
 }

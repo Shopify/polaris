@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import {CancelSmallMinor, AlertMinor} from '@shopify/polaris-icons';
+import {CancelSmallMinor, DiamondAlertMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
-import {Inline} from '../../../Inline';
+import {HorizontalStack} from '../../../HorizontalStack';
 import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
@@ -64,7 +64,7 @@ export function Toast({
 
   const leadingIconMarkup = error ? (
     <div className={styles.LeadingIcon}>
-      <Icon source={AlertMinor} color="base" />
+      <Icon source={DiamondAlertMinor} color="base" />
     </div>
   ) : null;
 
@@ -74,11 +74,11 @@ export function Toast({
     <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
-      <Inline blockAlign="center">
-        <Text as="span" variant="bodyMd" fontWeight="medium">
+      <HorizontalStack gap="4" blockAlign="center">
+        <Text as="span" fontWeight="medium">
           {content}
         </Text>
-      </Inline>
+      </HorizontalStack>
       {actionMarkup}
       {dismissMarkup}
     </div>

@@ -1,4 +1,4 @@
-import {Button, Modal, Stack, ChoiceList} from '@shopify/polaris';
+import {Button, Modal, LegacyStack, ChoiceList} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -10,8 +10,8 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
   const CSV_PLAIN = 'csv_plain';
 
   const [active, setActive] = useState(true);
-  const [selectedExport, setSelectedExport] = useState([]);
-  const [selectedExportAs, setSelectedExportAs] = useState([]);
+  const [selectedExport, setSelectedExport] = useState<string[]>([]);
+  const [selectedExportAs, setSelectedExportAs] = useState<string[]>([]);
 
   const handleModalChange = useCallback(() => setActive(!active), [active]);
 
@@ -22,12 +22,12 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
   };
 
   const handleSelectedExport = useCallback(
-    (value) => setSelectedExport(value),
+    (value: string[]) => setSelectedExport(value),
     [],
   );
 
   const handleSelectedExportAs = useCallback(
-    (value) => setSelectedExportAs(value),
+    (value: string[]) => setSelectedExportAs(value),
     [],
   );
 
@@ -52,8 +52,8 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
         ]}
       >
         <Modal.Section>
-          <Stack vertical>
-            <Stack.Item>
+          <LegacyStack vertical>
+            <LegacyStack.Item>
               <ChoiceList
                 title="Export"
                 choices={[
@@ -64,8 +64,8 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
                 selected={selectedExport}
                 onChange={handleSelectedExport}
               />
-            </Stack.Item>
-            <Stack.Item>
+            </LegacyStack.Item>
+            <LegacyStack.Item>
               <ChoiceList
                 title="Export as"
                 choices={[
@@ -79,8 +79,8 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
                 selected={selectedExportAs}
                 onChange={handleSelectedExportAs}
               />
-            </Stack.Item>
-          </Stack>
+            </LegacyStack.Item>
+          </LegacyStack>
         </Modal.Section>
       </Modal>
     </div>

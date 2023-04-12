@@ -3,7 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Subsection} from '../Subsection';
 
-describe('<Card.Subsection />', () => {
+describe('<LegacyCard.Subsection />', () => {
   it('can have any valid react element for children', () => {
     const childrenMarkup = <p>Some content</p>;
 

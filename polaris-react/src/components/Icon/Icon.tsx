@@ -14,7 +14,8 @@ type Color =
   | 'warning'
   | 'highlight'
   | 'success'
-  | 'primary';
+  | 'primary'
+  | 'magic';
 
 const COLORS_WITH_BACKDROPS = [
   'base',
@@ -29,7 +30,7 @@ export interface IconProps {
   source: IconSource;
   /** Set the color for the SVG fill */
   color?: Color;
-  /** Show a backdrop behind the icon */
+  /** @deprecated Use the Box component to create a backdrop */
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
@@ -97,7 +98,7 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
 
   return (
     <span className={className}>
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <Text as="span" visuallyHidden>
         {accessibilityLabel}
       </Text>
       {contentMarkup[sourceType]}

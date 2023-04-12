@@ -1,9 +1,9 @@
-import {Link, Page, Card, DataTable} from '@shopify/polaris';
+import {Link, Page, LegacyCard, DataTable, TableData} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function FullDataTableExample() {
-  const [sortedRows, setSortedRows] = useState(null);
+  const [sortedRows, setSortedRows] = useState<TableData[][] | null>(null);
 
   const initiallySortedRows = [
     [
@@ -49,13 +49,14 @@ function FullDataTableExample() {
 
   const rows = sortedRows ? sortedRows : initiallySortedRows;
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    (index: number, direction: 'ascending' | 'descending') =>
+      setSortedRows(sortCurrency(rows, index, direction)),
     [rows],
   );
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -81,14 +82,18 @@ function FullDataTableExample() {
           hasZebraStripingOnData
           increasedTableDensity
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 
-  function sortCurrency(rows, index, direction) {
+  function sortCurrency(
+    rows: TableData[][],
+    index: number,
+    direction: 'ascending' | 'descending',
+  ): TableData[][] {
     return [...rows].sort((rowA, rowB) => {
-      const amountA = parseFloat(rowA[index].substring(1));
-      const amountB = parseFloat(rowB[index].substring(1));
+      const amountA = parseFloat((rowA[index] || 0).toString().substring(1));
+      const amountB = parseFloat((rowB[index] || 0).toString().substring(1));
 
       return direction === 'descending' ? amountB - amountA : amountA - amountB;
     });

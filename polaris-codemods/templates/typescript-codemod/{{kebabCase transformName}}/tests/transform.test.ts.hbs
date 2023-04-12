@@ -1,0 +1,11 @@
+import {check} from '../../../utilities/test';
+
+const transform = '{{kebabCase transformName}}';
+const fixtures = ['transform'];
+
+for (const fixture of fixtures) {
+  check(__dirname, {
+    fixture,
+    transform,
+  });
+}

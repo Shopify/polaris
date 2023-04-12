@@ -1,7 +1,8 @@
 import path from 'path';
 
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
+import postcss from 'postcss';
+import type {Plugin} from 'postcss';
 import valueParser from 'postcss-value-parser';
 
 import {isSassFunction} from '../../utilities/sass';

@@ -15,7 +15,7 @@ keywords:
   - css grid
 status:
   value: Alpha
-  message: This component is slated to be deprecated in v11. Please consider using alternate layout primitive components such as Columns, Inline, or AlphaStack.
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
@@ -33,5 +33,5 @@ examples:
 
 ## Related components
 
-- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/layout-and-structure/alpha-stack)
+- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/layout-and-structure/vertical-stack)
 - To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)

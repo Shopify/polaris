@@ -19,15 +19,18 @@ import type {
   MenuGroupDescriptor,
   TooltipAction,
 } from '../../../../types';
-import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
-import {Pagination, PaginationProps} from '../../../Pagination';
+import {Breadcrumbs} from '../../../Breadcrumbs';
+import type {BreadcrumbsProps} from '../../../Breadcrumbs';
+import {Pagination} from '../../../Pagination';
+import type {PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
-import {Inline} from '../../../Inline';
+import {HorizontalStack} from '../../../HorizontalStack';
 
-import {Title, TitleProps} from './components';
+import {Title} from './components';
+import type {TitleProps} from './components';
 import styles from './Header.scss';
 
 type MaybeJSX = JSX.Element | null;
@@ -49,8 +52,10 @@ export interface HeaderProps extends TitleProps {
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
-  /** Collection of breadcrumbs */
+  /** @deprecated Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
+  /** A back action link */
+  backAction?: BreadcrumbsProps['backAction'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
@@ -77,6 +82,7 @@ export function Header({
   pagination,
   additionalNavigation,
   breadcrumbs,
+  backAction,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
@@ -91,6 +97,12 @@ export function Header({
       'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
     );
   }
+  if (breadcrumbs && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `breadcrumbs` prop on Page is deprecated and will be removed in the next major version. Please replace with a single `backAction`.',
+    );
+  }
 
   const isSingleRow =
     !primaryAction &&
@@ -99,15 +111,27 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
-  const breadcrumbMarkup =
+  let breadcrumbMarkup = null;
+  if (backAction) {
+    breadcrumbMarkup = (
+      <div className={styles.BreadcrumbWrapper}>
+        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+          <Breadcrumbs backAction={backAction} />
+        </Box>
+      </div>
+    );
+  } else if (
     (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
-    (!Array.isArray(breadcrumbs) && breadcrumbs) ? (
+    (!Array.isArray(breadcrumbs) && breadcrumbs)
+  ) {
+    breadcrumbMarkup = (
       <div className={styles.BreadcrumbWrapper}>
         <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </Box>
       </div>
-    ) : null;
+    );
+  }
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
@@ -119,9 +143,9 @@ export function Header({
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <Inline align="end">
+    <HorizontalStack gap="4" align="end">
       <Box printHidden>{additionalNavigation}</Box>
-    </Inline>
+    </HorizontalStack>
   ) : null;
 
   const pageTitleMarkup = (
@@ -170,17 +194,17 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
         }
       >
-        <Inline align="space-between" blockAlign="center">
+        <HorizontalStack gap="4" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {additionalNavigationMarkup}
           {paginationMarkup}
-        </Inline>
+        </HorizontalStack>
       </Box>
     ) : null;
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <Text variant="bodyMd" color="subdued" as="span">
+      <Text color="subdued" as="span">
         {additionalMetadata}
       </Text>
     </div>
@@ -241,7 +265,7 @@ export function Header({
         </ConditionalRender>
         <ConditionalRender condition={[slot5, slot6].some(notNull)}>
           <div className={styles.Row}>
-            <Inline>{slot5}</Inline>
+            <HorizontalStack gap="4">{slot5}</HorizontalStack>
             <ConditionalRender condition={slot6 != null}>
               <div className={styles.RightAlign}>{slot6}</div>
             </ConditionalRender>

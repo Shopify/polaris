@@ -12,6 +12,7 @@ import {toPascalCase} from '../../../../src/utils/various';
 import PageMeta from '../../../../src/components/PageMeta';
 import {Status, FilteredTypes, AllTypes} from '../../../../src/types';
 import StatusBanner from '../../../../src/components/StatusBanner';
+import UpdateBanner from '../../../../src/components/UpdateBanner';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
 
@@ -32,6 +33,7 @@ interface Props {
   };
   type: FilteredTypes;
   editPageLinkPath: string;
+  updateBannerMessage?: string;
 }
 
 const Components = ({
@@ -41,6 +43,7 @@ const Components = ({
   readme,
   status,
   type,
+  updateBannerMessage,
   editPageLinkPath,
 }: Props) => {
   const typedStatus: Status | undefined = status
@@ -59,19 +62,20 @@ const Components = ({
     ) : null;
 
   return (
-    <Page title={title} editPageLinkPath={editPageLinkPath}>
+    <Page title={title} editPageLinkPath={editPageLinkPath} isContentPage>
       <PageMeta title={title} description={description} />
 
       <Longform>
-        <Markdown text={description} />
+        <Markdown>{description}</Markdown>
         {typedStatus && <StatusBanner status={typedStatus} />}
+        {updateBannerMessage && <UpdateBanner message={updateBannerMessage} />}
         {componentExamples}
       </Longform>
 
       {propsTable}
 
       <Longform firstParagraphIsLede={false}>
-        <Markdown text={readme.body} />
+        <Markdown>{readme.body}</Markdown>
       </Longform>
     </Page>
   );
@@ -117,7 +121,7 @@ export const getStaticProps: GetStaticProps<
       },
     );
 
-    const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
+    const propsFilePath = path.resolve(process.cwd(), `.cache/props.json`);
     const fileContent = fs.readFileSync(propsFilePath, 'utf8');
     const allType: AllTypes = JSON.parse(fileContent);
 

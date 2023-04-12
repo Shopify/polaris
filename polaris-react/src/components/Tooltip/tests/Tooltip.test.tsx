@@ -405,6 +405,84 @@ describe('<Tooltip />', () => {
       jest.useRealTimers();
     });
   });
+
+  it('will not pass the instant prop when no tooltip is currently present', () => {
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: false,
+    });
+  });
+
+  it('will pass the instant prop when immediately re-entering the activator', () => {
+    jest.useFakeTimers();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    tooltip.act(() => jest.advanceTimersByTime(5));
+
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+    tooltip.act(() => jest.advanceTimersByTime(5));
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: true,
+    });
+  });
+
+  it('will remove the instant prop when re-entering the activator after a delay', () => {
+    jest.useFakeTimers();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    tooltip.act(() => jest.advanceTimersByTime(5));
+
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+    tooltip.act(() => jest.advanceTimersByTime(150));
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: false,
+    });
+  });
+
+  describe('overriding hover delay', () => {
+    it('will pass the instant prop when immediately re-entering the activator', () => {
+      jest.useFakeTimers();
+
+      const tooltip = mountWithApp(
+        <Tooltip content="Inner content" hoverDelay={1000}>
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+      tooltip.act(() => jest.advanceTimersByTime(1010));
+
+      findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+      tooltip.act(() => jest.advanceTimersByTime(5));
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+      expect(tooltip).toContainReactComponent(TooltipOverlay, {
+        instant: true,
+      });
+    });
+  });
 });
 
 function findWrapperComponent(tooltip: any) {

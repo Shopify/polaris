@@ -1,5 +1,6 @@
-import {Declaration} from 'postcss';
-import valueParser, {ParsedValue, Node} from 'postcss-value-parser';
+import type {Declaration} from 'postcss';
+import valueParser from 'postcss-value-parser';
+import type {ParsedValue, Node} from 'postcss-value-parser';
 
 import {
   isSassVariable,

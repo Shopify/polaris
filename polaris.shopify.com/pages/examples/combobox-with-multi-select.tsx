@@ -1,5 +1,5 @@
 import {
-  Stack,
+  LegacyStack,
   Tag,
   Listbox,
   Combobox,
@@ -25,12 +25,12 @@ function MultiAutoComboboxExample() {
     [],
   );
 
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
   const updateText = useCallback(
-    (value) => {
+    (value: string) => {
       setInputValue(value);
 
       if (value === '') {
@@ -48,7 +48,7 @@ function MultiAutoComboboxExample() {
   );
 
   const updateSelection = useCallback(
-    (selected) => {
+    (selected: string) => {
       if (selectedOptions.includes(selected)) {
         setSelectedOptions(
           selectedOptions.filter((option) => option !== selected),
@@ -57,17 +57,13 @@ function MultiAutoComboboxExample() {
         setSelectedOptions([...selectedOptions, selected]);
       }
 
-      const matchedOption = options.find((option) => {
-        return option.value.match(selected);
-      });
-
       updateText('');
     },
-    [options, selectedOptions, updateText],
+    [selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
-    (tag) => () => {
+    (tag: string) => () => {
       const options = [...selectedOptions];
       options.splice(options.indexOf(tag), 1);
       setSelectedOptions(options);
@@ -111,6 +107,7 @@ function MultiAutoComboboxExample() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
@@ -119,7 +116,7 @@ function MultiAutoComboboxExample() {
         ) : null}
       </Combobox>
       <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
+        <LegacyStack>{tagsMarkup}</LegacyStack>
       </TextContainer>
     </div>
   );

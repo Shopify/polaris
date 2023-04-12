@@ -31,12 +31,18 @@ examples:
   - fileName: index-table-default.tsx
     title: Default
     description: A index table with simple items and no bulk actions, sorting, or filtering.
-  - fileName: index-table-flush.tsx
-    title: Flush
-    description: A index table with simple items and no bulk actions, sorting, or filtering.
+  - fileName: index-table-with-views-search-filter-sorting.tsx
+    title: With saved views, search, filtering, and sorting
+    description: An index table with saved views, search, filtering, sorting, and bulk actions
+  - fileName: index-table-with-disabled-rows.tsx
+    title: With disabled rows
+    description: An index table with saved views, search, filtering, sorting, and bulk actions
   - fileName: index-table-small-screen.tsx
     title: Small screen
     description: A small screen index table with simple items and no bulk actions, sorting, or filtering.
+  - fileName: index-table-condensed-with-views-search-filter-sorting.tsx
+    title: Small screen with saved views, search, filtering, and sorting
+    description: A small screen index table with saved views, search, filtering, sorting, and bulk actions.
   - fileName: index-table-with-empty-state.tsx
     title: With empty state
     description: Use to explain the purpose of a index table when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
@@ -55,27 +61,15 @@ examples:
   - fileName: index-table-with-filtering.tsx
     title: With filtering
     description: Allows merchants to narrow the index table to a subset of the original items.
-  - fileName: index-table-with-row-status.tsx
-    title: With row status
-    description: An index table with rows differentiated by status.
   - fileName: index-table-with-sticky-last-column.tsx
     title: With sticky last column
     description: An index table with a sticky last column that stays visible on scroll. The last heading will also be sticky if not hidden.
   - fileName: index-table-with-row-navigation-link.tsx
     title: With row navigation link
     description: Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Link` with the `dataPrimaryLink` prop set to `true`, clicking the row will trigger navigation to the link's `url` instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
-  - fileName: index-table-with-clickable-button-column.tsx
-    title: With clickable button column
-    description: Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Button` with the `dataPrimaryLink` prop set to `true`, clicking the row will navigate to the `Button` `url` if set instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
   - fileName: index-table-without-checkboxes.tsx
     title: Without checkboxes
     description: An index table without checkboxes and bulk actions.
-  - fileName: index-table-with-all-of-its-elements.tsx
-    title: With all of its elements
-    description: Use as a broad example that includes most of the elements and props available to index table.
-  - fileName: index-table-small-screen-with-all-of-its-elements.tsx
-    title: Small screen with all of its elements
-    description: Use as a broad example that includes most of the elements and props available to index table.
 ---
 
 Index tables can also:
@@ -94,7 +88,8 @@ Using an index table in a project involves combining the following components an
 - IndexTable
 - [IndexTableRow](#index-table-row)
 - [IndexTableCell](#index-table-cell)
-- [Filters](https://polaris.shopify.com/components/filters) (optional)
+- [Filters](/components/selection-and-input/filters) (optional)
+- [IndexFilters](/components/selection-and-input/index-filters) (optional)
 - Pagination component (optional)
 
 The index table component provides the UI elements for list sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
@@ -131,6 +126,8 @@ Index tables should:
 - Support [filtering](https://polaris.shopify.com/components/filters) if the list can be long.
 - Paginate when the current list contains more than 50 items.
 - Use the [skeleton page](https://polaris.shopify.com/components/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
+- Numeric cells and titles should be right aligned with the [Text](https://polaris.shopify.com/components/text) component
+- Numeric cells should use the numeric style with the [Text](https://polaris.shopify.com/components/text) component
 
 Index tables can optionally:
 

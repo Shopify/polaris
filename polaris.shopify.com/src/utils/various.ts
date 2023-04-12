@@ -1,11 +1,26 @@
 import siteJson from '../../.cache/site.json';
-import {SiteJSON} from '../types';
+import {PatternFrontMatter, SiteJSON} from '../types';
+
+interface PatternJSON {
+  [key: string]: {
+    frontMatter: PatternFrontMatter;
+  };
+}
 
 const pages: SiteJSON = siteJson;
 
 const components = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
 );
+
+export const patterns: PatternJSON = Object.keys(pages)
+  .filter((slug) => slug.startsWith('patterns/'))
+  .sort((a, b) => a.localeCompare(b))
+  .reduce((memo, key) => {
+    // @ts-expect-error Yes it is compatible Typescript. Shhhh.
+    memo[key] = pages[key];
+    return memo;
+  }, {} as PatternJSON);
 
 export const getComponentCategories = (): string[] => {
   const componentCategories: string[] = [];
@@ -38,10 +53,14 @@ export const stripMarkdownLinks = (markdown: string): string => {
   });
 };
 
-export const className = (
-  ...classNames: (string | boolean | null | undefined)[]
-): string => {
-  return classNames.filter((className) => Boolean(className)).join(' ');
+type ValueOrArray<T> = T | ValueOrArray<T>[];
+export type ClassName = ValueOrArray<string | boolean | null | undefined>;
+
+export const className = (...classNames: ClassName[]): string => {
+  return classNames
+    .filter((c) => Boolean(c))
+    .flatMap((c) => (Array.isArray(c) ? className(...c) : c))
+    .join(' ');
 };
 
 export const toPascalCase = (str: string): string =>
@@ -51,3 +70,6 @@ export const toPascalCase = (str: string): string =>
 
 export const uppercaseFirst = (str: string): string =>
   str.charAt(0).toUpperCase() + str.slice(1);
+
+export const deslugify = (str: string): string =>
+  uppercaseFirst(str.replace(/-+/g, ' '));

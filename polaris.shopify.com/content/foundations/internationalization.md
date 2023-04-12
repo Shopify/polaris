@@ -54,13 +54,13 @@ When interfaces are localized, the content will often expand in length. In most 
 
 #### Do
 
-![Good example of flexible layouts with text expansion](/images/foundations/foundations/internationalization/info-hierarchy-do@2x.png)
+![Good example of flexible layouts with text expansion](/images/foundations/internationalization/info-hierarchy-do@2x.png)
 
 Lay out your elements in a way where text expansion doesn’t hinder your information hierarchy.
 
 #### Don’t
 
-![Bad example of flexible layouts with text expansion](/images/foundations/foundations/internationalization/info-hierarchy-dont@2x.png)
+![Bad example of flexible layouts with text expansion](/images/foundations/internationalization/info-hierarchy-dont@2x.png)
 
 Don’t rely on responsive stacking alone. It can often change the hierarchy of information of the layout. In this case, the text expansion causes the line break at the wrong spot, placing the button in the middle of the heading and content of this card.
 
@@ -70,13 +70,13 @@ Don’t rely on responsive stacking alone. It can often change the hierarchy of 
 
 #### Do
 
-![Good example of narrow columns with text expansion](/images/foundations/foundations/internationalization/narrow-columns-do@2x.png)
+![Good example of narrow columns with text expansion](/images/foundations/internationalization/narrow-columns-do@2x.png)
 
 Use single columns to stack elements flexibly to accomodate for text expansion.
 
 #### Don’t
 
-![Bad example of narrow columns with text expansion](/images/foundations/foundations/internationalization/narrow-columns-dont@2x.png)
+![Bad example of narrow columns with text expansion](/images/foundations/internationalization/narrow-columns-dont@2x.png)
 
 Avoid using narrow columns in smaller components. Ensure the right amount of padding for a clean interface.
 
@@ -99,13 +99,13 @@ Word order can change dramatically in translation. If the layout and functionali
 
 #### Do
 
-![Good example of avoiding sentence-based UI](/images/foundations/foundations/internationalization/sentence-based-ui-do@2x.png)
+![Good example of avoiding sentence-based UI](/images/foundations/internationalization/sentence-based-ui-do@2x.png)
 
 If content elements need to stay in a certain position on the page, implement them as separate labels, outside of sentences.
 
 #### Don’t
 
-![Bad example of sentence-based UI](/images/foundations/foundations/internationalization/sentence-based-ui-dont@2x.png)
+![Bad example of sentence-based UI](/images/foundations/internationalization/sentence-based-ui-dont@2x.png)
 
 Don’t place elements with a fixed position inside a sentence. The order of this sentence would often need to change in translation, which is impossible to do if the interface is built this way.
 
@@ -115,13 +115,13 @@ Don’t place elements with a fixed position inside a sentence. The order of thi
 
 #### Do
 
-![Good example of hyperlinking text](/images/foundations/foundations/internationalization/hyperlink-text-do@2x.png)
+![Good example of hyperlinking text](/images/foundations/internationalization/hyperlink-text-do@2x.png)
 
 When including links in body text, only use a single and descriptive term or a small part of a phrase as the link. Find out more about [links](/content/actionable-language#links).
 
 #### Don’t
 
-![Bad example of link within sentence](/images/foundations/foundations/internationalization/hyperlink-text-dont@2x.png)
+![Bad example of link within sentence](/images/foundations/internationalization/hyperlink-text-dont@2x.png)
 
 Don’t use full phrases as links. Word order changes might break the link into several parts when translated.
 
@@ -140,11 +140,11 @@ Don’t use full phrases as links. Word order changes might break the link into 
 
 Merchants in each locale have different cultural sensibilities. Use visuals, content, and interface formats that are useful and meaningful to merchants in all parts of the world.
 
-![Good example of icon usage](/images/foundations/foundations/internationalization/icons-meaning@2x.png)
+![Good example of icon usage](/images/foundations/internationalization/icons-meaning@2x.png)
 
 When possible, use universally known icons. Be mindful of when you use country-specific icons and where they are surfaced. Find out more about [icons](/design/icons).
 
-![Bad example of text fields](/images/foundations/foundations/internationalization/colors-cultural-context@2x.png)
+![Bad example of text fields](/images/foundations/internationalization/colors-cultural-context@2x.png)
 
 Be mindful of using colors to represent meaning. Colors can hold discrete connotations in different cultures. For example, in North America, green is used to indicate success and red for failure, as opposed to China, where red symbolizes prosperity and good fortune.
 

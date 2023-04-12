@@ -15,17 +15,17 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#F4E8FD',
+        background: 'var(--p-color-border-interactive-subdued)',
         height: height,
         width: width,
       }}
     >
       <div
         style={{
-          color: '#26282C',
+          color: 'var(--p-color-text)',
         }}
       >
-        <Text as="h2" variant="bodyMd" fontWeight="medium">
+        <Text as="p" variant="bodyMd">
           {label}
         </Text>
       </div>

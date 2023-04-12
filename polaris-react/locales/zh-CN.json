@@ -152,7 +152,9 @@
       "clearAllFilters": "清除所有筛选条件",
       "clear": "清除",
       "clearLabel": "清除 {filterName}",
-      "moreFiltersWithCount": "更多筛选条件（{count} 个）"
+      "moreFiltersWithCount": "更多筛选条件（{count} 个）",
+      "addFilter": "添加筛选条件",
+      "clearFilters": "全部清除"
     },
     "Modal": {
       "iFrameTitle": "正文标记",
@@ -174,7 +176,7 @@
       "showing": "显示 {itemsCount} 个 {resource}",
       "loading": "正在加载 {resource}",
       "selected": "已选择 {selectedItemsCount} 个",
-      "allItemsSelected": "已选择您商店中所有 {itemsLength}+ 个 {resourceNamePlural}。",
+      "allItemsSelected": "已选择您商店中所有 {itemsLength}+ 个{resourceNamePlural}。",
       "selectAllItems": "选择商店中所有 {itemsLength}+ 个 {resourceNamePlural}",
       "emptySearchResultTitle": "找不到 {resourceNamePlural}",
       "emptySearchResultDescription": "请尝试更改筛选条件或搜索词",
@@ -201,7 +203,50 @@
       "loadingLabel": "页面加载"
     },
     "Tabs": {
-      "toggleTabsLabel": "更多标签"
+      "toggleTabsLabel": "更多视图",
+      "newViewAccessibilityLabel": "创建新视图",
+      "newViewTooltip": "创建视图",
+      "Tab": {
+        "rename": "重命名视图",
+        "duplicate": "复制视图",
+        "edit": "编辑视图",
+        "editColumns": "编辑列",
+        "delete": "删除视图",
+        "copy": "{name} 的副本",
+        "deleteModal": {
+          "title": "删除视图？",
+          "description": "此操作无法撤销。您的后台中将不再提供 {viewName} 视图。",
+          "cancel": "取消",
+          "delete": "删除视图"
+        }
+      },
+      "RenameModal": {
+        "title": "重命名视图",
+        "label": "名称",
+        "cancel": "取消",
+        "create": "保存",
+        "errors": {
+          "sameName": "已存在具有此名称的视图。请选择其他名称。"
+        }
+      },
+      "DuplicateModal": {
+        "title": "复制视图",
+        "label": "名称",
+        "cancel": "取消",
+        "create": "创建视图",
+        "errors": {
+          "sameName": "已存在具有此名称的视图。请选择其他名称。"
+        }
+      },
+      "CreateViewModal": {
+        "title": "创建新视图",
+        "label": "名称",
+        "cancel": "取消",
+        "create": "创建视图",
+        "errors": {
+          "sameName": "已存在具有此名称的视图。请选择其他名称。"
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "删除 {children}"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "编辑"
+      "popoverButton": "编辑",
+      "dismissButton": "忽略"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -278,7 +324,7 @@
       "defaultItemSingular": "项",
       "defaultItemPlural": "项",
       "allItemsSelected": "已选择所有 {itemsLength}+ 个{resourceNamePlural}。",
-      "selected": "已选择 {selectedItemsCount} 项。",
+      "selected": "已选择 {selectedItemsCount} 个",
       "a11yCheckboxDeselectAllSingle": "取消选择 {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "选择 {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 个 {resourceNamePlural}",
@@ -290,7 +336,7 @@
       "onboardingBadgeText": "新",
       "resourceLoadingAccessibilityLabel": "正在加载 {resourceNamePlural}…",
       "selectAllLabel": "选择所有 {resourceNamePlural}",
-      "selected": "已选择 {selectedItemsCount} 项。",
+      "selected": "已选择 {selectedItemsCount} 个",
       "undo": "撤销",
       "selectAllItems": "选择所有 {itemsLength}+ 个 {resourceNamePlural}",
       "selectItem": "选择 {resourceName}",
@@ -305,6 +351,40 @@
     "FullscreenBar": {
       "back": "上一步",
       "accessibilityLabel": "退出全屏模式"
+    },
+    "FilterPill": {
+      "clear": "清除"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "搜索和筛选 (F)",
+      "searchFilterAccessibilityLabel": "搜索和筛选结果",
+      "sort": "对结果排序",
+      "addView": "添加新视图",
+      "newView": "自定义搜索",
+      "SortButton": {
+        "ariaLabel": "对结果排序",
+        "tooltip": "排序",
+        "title": "排序方式",
+        "sorting": {
+          "asc": "升序",
+          "desc": "降序",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "取消",
+        "update": "更新",
+        "save": "保存",
+        "saveAs": "另存为",
+        "modal": {
+          "title": "将视图另存为",
+          "label": "名称",
+          "sameName": "已存在具有此名称的视图。请选择其他名称。",
+          "save": "保存",
+          "cancel": "取消"
+        }
+      }
     }
   }
 }

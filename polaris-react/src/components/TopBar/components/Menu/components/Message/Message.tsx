@@ -1,11 +1,13 @@
 import React from 'react';
 
-import {Badge, BadgeProps} from '../../../../../Badge';
+import {Badge} from '../../../../../Badge';
+import type {BadgeProps} from '../../../../../Badge';
 import {Button} from '../../../../../Button';
 import {Text} from '../../../../../Text';
 import {Link} from '../../../../../Link';
 import {Popover} from '../../../../../Popover';
-import {Stack} from '../../../../../Stack';
+import {LegacyStack} from '../../../../../LegacyStack';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../../../TextContainer';
 
 import styles from './Message.scss';
@@ -35,7 +37,7 @@ export function Message({
   return (
     <div className={styles.Section}>
       <Popover.Section>
-        <Stack vertical spacing="tight">
+        <LegacyStack vertical spacing="tight">
           <TextContainer>
             <Text variant="headingMd" as="h2">
               {title}
@@ -49,7 +51,7 @@ export function Message({
           <Button plain onClick={onClick}>
             {actionContent}
           </Button>
-        </Stack>
+        </LegacyStack>
       </Popover.Section>
     </div>
   );

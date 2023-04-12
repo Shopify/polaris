@@ -1,5 +1,77 @@
 # Changelog
 
+## 9.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`247f5eea8`](https://github.com/Shopify/polaris/commit/247f5eea859b3ab348dcb18c568f18d8d859140e)]:
+  - @shopify/polaris-tokens@6.10.0
+
+## 9.0.2
+
+### Patch Changes
+
+- [#8823](https://github.com/Shopify/polaris/pull/8823) [`0a981349d`](https://github.com/Shopify/polaris/commit/0a981349d70dfb7c60fabf1391aa4a3ec0dc9793) Thanks [@rdott](https://github.com/rdott)! - Added prefers-reduced-motion to media query allowed list for stylelint
+
+- Updated dependencies [[`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5), [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c)]:
+  - @shopify/polaris-tokens@6.9.0
+
+## 9.0.1
+
+### Patch Changes
+
+- [#8727](https://github.com/Shopify/polaris/pull/8727) [`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491) Thanks [@laurkim](https://github.com/laurkim)! - Bumped `eslint-plugin-import`, `@typescript-eslint/**`, and `downlevel-dts` packages, added type import/export rules, and updated type imports
+
+- Updated dependencies [[`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491)]:
+  - @shopify/polaris-tokens@6.8.1
+
+## 9.0.0
+
+### Major Changes
+
+- [#8657](https://github.com/Shopify/polaris/pull/8657) [`764f17d86`](https://github.com/Shopify/polaris/commit/764f17d86c30c9f30bec6717c09f07b2e04e23f8) Thanks [@alex-page](https://github.com/alex-page)! - Turn on reportNeedlessDisables for all comments
+
+## 8.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`7d1c4f1db`](https://github.com/Shopify/polaris/commit/7d1c4f1db629ad9cfc68f65bd5f704127d10136e)]:
+  - @shopify/polaris-tokens@6.8.0
+
+## 8.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`6c0dda128`](https://github.com/Shopify/polaris/commit/6c0dda128a3626cd4a24a755fb2d0809c958f907)]:
+  - @shopify/polaris-tokens@6.7.0
+
+## 8.0.0
+
+### Major Changes
+
+- [#8467](https://github.com/Shopify/polaris/pull/8467) [`9ab93132a`](https://github.com/Shopify/polaris/commit/9ab93132a3e5f0c7c603184fb03ba452f9bc0a64) Thanks [@chloerice](https://github.com/chloerice)! - Configured `selector-disallowed-list` to disallow Polaris component class name overrides
+
+### Patch Changes
+
+- Updated dependencies [[`0e9fa8433`](https://github.com/Shopify/polaris/commit/0e9fa843397a9ec1d1a7eee70d0178d76dd231f8), [`b1768f037`](https://github.com/Shopify/polaris/commit/b1768f03795f224e760edc405dc5bfde298061cb)]:
+  - @shopify/polaris-tokens@6.6.1
+
+## 7.0.0
+
+### Major Changes
+
+- [#8451](https://github.com/Shopify/polaris/pull/8451) [`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c) Thanks [@qt314](https://github.com/qt314)! - report descriptionless disables
+
+## 6.0.2
+
+### Patch Changes
+
+- [#7877](https://github.com/Shopify/polaris/pull/7877) [`065df230a`](https://github.com/Shopify/polaris/commit/065df230a279d9dd1503337a523ca5c9a94acce9) Thanks [@chloerice](https://github.com/chloerice)! - - Updated the `polaris/custom-property-allowed-list` plugin tests for unified config
+  - Updated `polaris/custom-property-allowed-list` to report problems with tailored messages for each of the two configuration options
+  - Fixed metadata URLs for `polaris/*` plugins
+- Updated dependencies [[`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8)]:
+  - @shopify/polaris-tokens@6.6.0
+
 ## 6.0.1
 
 ### Patch Changes

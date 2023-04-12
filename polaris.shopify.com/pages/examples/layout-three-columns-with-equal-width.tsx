@@ -1,7 +1,7 @@
 import {
   Page,
   Layout,
-  Card,
+  LegacyCard,
   ResourceList,
   Thumbnail,
   Text,
@@ -14,18 +14,18 @@ function LayoutExample() {
     <Page fullWidth>
       <Layout>
         <Layout.Section oneThird>
-          <Card title="Florida" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+          <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text color="subdued" as="span">
                 455 units available
               </Text>
-            </Card.Section>
-            <Card.Section title="Items">
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 343,
+                    id: '343',
                     url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -38,7 +38,7 @@ function LayoutExample() {
                     ),
                   },
                   {
-                    id: 258,
+                    id: '258',
                     url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -70,22 +70,22 @@ function LayoutExample() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
         <Layout.Section oneThird>
-          <Card title="Nevada" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+          <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text color="subdued" as="span">
                 301 units available
               </Text>
-            </Card.Section>
-            <Card.Section title="Items">
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 344,
+                    id: '344',
                     url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -98,7 +98,7 @@ function LayoutExample() {
                     ),
                   },
                   {
-                    id: 259,
+                    id: '259',
                     url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -130,22 +130,22 @@ function LayoutExample() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
         <Layout.Section oneThird>
-          <Card title="Minneapolis" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <Text variant="bodyMd" color="subdued" as="span">
+          <LegacyCard title="Minneapolis" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text color="subdued" as="span">
                 1931 units available
               </Text>
-            </Card.Section>
-            <Card.Section title="Items">
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 345,
+                    id: '345',
                     url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -158,7 +158,7 @@ function LayoutExample() {
                     ),
                   },
                   {
-                    id: 260,
+                    id: '260',
                     url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -190,8 +190,8 @@ function LayoutExample() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>

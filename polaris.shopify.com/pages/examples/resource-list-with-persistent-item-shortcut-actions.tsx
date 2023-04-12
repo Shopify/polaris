@@ -1,22 +1,28 @@
-import {Card, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
+import {
+  LegacyCard,
+  ResourceList,
+  Avatar,
+  ResourceItem,
+  Text,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListExample() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
-            id: 110,
+            id: '110',
             url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
             latestOrderUrl: '#',
           },
           {
-            id: 210,
+            id: '210',
             url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
@@ -34,7 +40,7 @@ function ResourceListExample() {
                   url: latestOrderUrl,
                 },
               ]
-            : null;
+            : undefined;
 
           return (
             <ResourceItem
@@ -53,7 +59,7 @@ function ResourceListExample() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

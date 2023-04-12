@@ -8,7 +8,7 @@ order: 3
 [<img src="https://img.shields.io/npm/v/@shopify/polaris-migrator.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style="width: 95px" />](https://www.npmjs.com/package/@shopify/polaris-migrator)
 
 <picture>
-  <source srcset="/images/tools/polaris-migrator/polaris-migrator-demo.png" media="(prefers-reduced-motion: reduce)"></source> 
+  <source srcset="/images/tools/polaris-migrator/polaris-migrator-demo.png" media="(prefers-reduced-motion: reduce)"></source>
   <img srcset="/images/tools/polaris-migrator/polaris-migrator-demo.gif" alt="Demo of Polaris migrator">
 </picture>
 
@@ -25,9 +25,99 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ## Migrations
 
+### v11
+
+#### `v11-react-breadcrumbs-migrate-from-array`
+
+Replace legacy Page component `breadcrumbs` props with the new `backAction` prop which accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
+
+```diff
+- <Page breadcrumbs={[{url: '/testing', content: 'Home'}]}>
++ <Page backAction={{url: '/testing', content: 'Home'}}>
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-react-breadcrumbs-migrate-from-array <path>
+```
+
+<br />
+
+#### `v11-styles-replace-custom-property-border`
+
+Replace deprecated border CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- border-radius: var(--p-border-radius-base);
++ border-radius: var(--p-border-radius-1);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-border <path>
+```
+
+<br />
+
+#### `v11-styles-replace-custom-property-depth`
+
+Replace deprecated depth CSS custom properties with corresponding replacement static values.
+
+```diff
+- box-shadow: var(--p-shadow-transparent);
++ box-shadow: 0 0 0 0 transparent;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-depth <path>
+```
+
+<br />
+
+#### `v11-styles-replace-custom-property-zindex`
+
+Replace deprecated z-index CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- z-index: var(--p-z-1);
++ z-index: var(--p-z-index-1);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
+```
+
+<br />
+
+#### `v11-styles-replace-custom-property-legacy`
+
+Replace deprecated legacy CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
+- z-index: var(--p-override-loading-z-index);
++ z-index: var(--p-z-index-6);
+
+- width: var(--p-choice-size);
++ width: 20px;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-legacy <path>
+```
+
+<br />
+
 ### v10
 
-#### `v10-react-replace-text-component`
+#### `v10-react-replace-text-components`
 
 Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` with the new single `Text` component.
 
@@ -41,8 +131,10 @@ Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`
 <br />
 
 ```sh
-npx @shopify/polaris-migrator v10-react-replace-text-component <path>
+npx @shopify/polaris-migrator v10-react-replace-text-components <path>
 ```
+
+<br />
 
 ### v9
 
@@ -51,6 +143,8 @@ For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-r
 ```sh
 npx @shopify/polaris-migrator v9-<scss-migration> <path> --namespace="legacy-polaris-v8"
 ```
+
+<br />
 
 #### `v9-scss-replace-breakpoints`
 
@@ -66,6 +160,8 @@ Replace legacy static breakpoint mixins with the new Polaris [media query variab
 ```sh
 npx @shopify/polaris-migrator v9-scss-replace-breakpoints <path>
 ```
+
+<br />
 
 #### `v9-scss-replace-border`
 
@@ -85,6 +181,8 @@ Replace usage of the legacy SCSS `border()`) function in `border` declarations w
 npx @shopify/polaris-migrator v9-scss-replace-border <path>
 ```
 
+<br />
+
 #### `v9-scss-replace-border-radius`
 
 Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
@@ -102,6 +200,8 @@ Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` 
 ```sh
 npx @shopify/polaris-migrator v9-scss-replace-border-radius <path>
 ```
+
+<br />
 
 #### `v9-scss-replace-border-width`
 
@@ -121,6 +221,8 @@ Replace usage of the legacy SCSS `border-width()`) function in `border` and `bor
 npx @shopify/polaris-migrator v9-scss-replace-border-width <path>
 ```
 
+<br />
+
 #### `v9-scss-replace-color`
 
 Replace the legacy SCSS `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
@@ -137,6 +239,8 @@ Replace the legacy SCSS `color()` function with the supported CSS custom propert
 ```sh
 npx @shopify/polaris-migrator v9-scss-replace-color <path>
 ```
+
+<br />
 
 #### `v9-scss-replace-duration`
 
@@ -156,6 +260,8 @@ Replace the legacy SCSS `duration()` function with the corresponding Polaris [mo
 npx @shopify/polaris-migrator v9-scss-replace-duration <path>
 ```
 
+<br />
+
 #### `v9-scss-replace-easing`
 
 Replace the legacy SCSS `easing()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
@@ -174,6 +280,8 @@ Replace the legacy SCSS `easing()` function with the corresponding Polaris [moti
 npx @shopify/polaris-migrator v9-scss-replace-easing <path>
 ```
 
+<br />
+
 #### `v9-scss-replace-font-family`
 
 Replace legacy SCSS `font-family()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
@@ -188,6 +296,8 @@ Replace legacy SCSS `font-family()` function with the corresponding Polaris [fon
 ```sh
 npx @shopify/polaris-migrator v9-scss-replace-font-family <path>
 ```
+
+<br />
 
 #### `v9-scss-replace-font-size`
 
@@ -204,6 +314,8 @@ Replace legacy SCSS `font-size()` function with the corresponding Polaris [font]
 npx @shopify/polaris-migrator v9-scss-replace-font-size <path>
 ```
 
+<br />
+
 #### `v9-scss-replace-line-height`
 
 Replace legacy SCSS `line-height()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
@@ -218,6 +330,8 @@ Replace legacy SCSS `line-height()` function with the corresponding Polaris [fon
 ```sh
 npx @shopify/polaris-migrator v9-scss-replace-line-height <path>
 ```
+
+<br />
 
 #### `v9-scss-replace-spacing`
 
@@ -236,6 +350,8 @@ Replace the legacy SCSS `spacing()` function with the supported CSS custom prope
 npx @shopify/polaris-migrator v9-scss-replace-spacing <path>
 ```
 
+<br />
+
 #### `v9-scss-replace-text-emphasis`
 
 Replace legacy static mixins with their corresponding declarations and CSS custom properties.
@@ -251,6 +367,8 @@ Replace legacy static mixins with their corresponding declarations and CSS custo
 ```sh
 npx @shopify/polaris-migrator v9-scss-replace-text-emphasis <path>
 ```
+
+<br />
 
 #### `v9-scss-replace-z-index`
 
@@ -304,6 +422,8 @@ Be aware that this may also create additional code changes in your codebase, we 
 npx @shopify/polaris-migrator v9-scss-replace-z-index <path>
 ```
 
+<br />
+
 #### `v9-styles-tokenize-font`
 
 Replace legacy static font values with Polaris custom properties for `font-size`, `font-weight`, and `line-height` declarations.
@@ -324,6 +444,8 @@ Replace legacy static font values with Polaris custom properties for `font-size`
 ```sh
 npx @shopify/polaris-migrator v9-styles-tokenize-font <path>
 ```
+
+<br />
 
 #### `v9-styles-tokenize-motion`
 
@@ -361,6 +483,8 @@ Replace timings (`ms`, `s`) in transition declarations (`transition`, `transitio
 npx @shopify/polaris-migrator v9-styles-tokenize-motion <path>
 ```
 
+<br />
+
 #### `v9-styles-tokenize-shape`
 
 Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
@@ -381,6 +505,8 @@ Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, 
 ```sh
 npx @shopify/polaris-migrator v9-replace-border-declarations <path>
 ```
+
+<br />
 
 #### `v9-styles-tokenize-space`
 
@@ -403,6 +529,102 @@ Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations 
 npx @shopify/polaris-migrator v9-styles-tokenize-space <path>
 ```
 
+<br />
+
+#### `v9-styles-replace-custom-property-border`
+
+Replace deprecated border CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
+- border-radius: var(--p-border-radius-base);
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: var(--p-text-field-focus-ring-border-radius);
++ border-radius: 7px;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-border <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-depth`
+
+Replace deprecated depth CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
+- box-shadow: var(--p-button-drop-shadow);
++ box-shadow: var(--p-shadow-button);
+
+- box-shadow: 1px 1px var(--p-shadow-from-ambient-light);
++ box-shadow: 1px 1px rgba(23, 24, 24, 0.05);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-depth <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-font`
+
+Replace deprecated font CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- font-weight: var(--p-badge-font-weight);
++ font-weight: var(--p-font-weight-regular);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-font <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-motion`
+
+Replace deprecated motion CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- transition: transform var(--p-duration-1-0-0) var(--p-ease);
++ transition: transform var(--p-duration-100) var(--p-ease);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-motion <path>
+```
+
+<br />
+
+#### `v9-styles-replace-custom-property-legacy`
+
+Replace deprecated legacy CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
+- width: var(--p-icon-size);
++ width: var(--p-icon-size-small);
+
+- display: var(--p-override-none);
++ display: none;
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v9-styles-replace-custom-property-legacy <path>
+```
+
+<br />
+
 ### Generic migrations
 
 #### `styles-replace-custom-property`
@@ -417,23 +639,19 @@ A generic codemod to replace CSS custom properties with mapped values (either a 
 + animation-duration: 100ms;
 ```
 
-<br />
-
 This migration can be run in two ways:
 
 1. Using a combination of `--decl`, `--from`, and `--to` flags to replace a single custom property, or
 2. Using a `--maps` flag which points to a file defining replacements for multiple custom properties
 
-<br />
-
-Option 1:
+**Option 1:**
 
 ```sh
 npx @shopify/polaris-migrator styles-replace-custom-property \
   --decl="<name>" --from="<prop>" --to="<prop>" <path>
 ```
 
-Option 2:
+**Option 2:**
 
 ```sh
 npx @shopify/polaris-migrator styles-replace-custom-property \
@@ -453,6 +671,8 @@ export default {
 };
 ```
 
+<br />
+
 #### `styles-insert-stylelint-disable`
 
 Insert stylelint disable comments for [stylelint-polaris](../stylelint-polaris/) >= v5 so that
@@ -468,6 +688,8 @@ padding: 1rem;
 ```sh
 npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 ```
+
+<br />
 
 #### `react-rename-component-prop`
 
@@ -485,6 +707,29 @@ A generic codemod to rename any component prop.
 ```sh
 npx @shopify/polaris-migrator react-rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
 ```
+
+<br />
+
+#### `scss-remove-unused-at-use`
+
+A generic codemod to remove unused `@use` imports in SCSS files.
+
+```diff
+- @use 'global-styles/legacy';
+
+// No usages of the `legacy` namespace. Can be safely removed.
+.class {
+  color: blue;
+}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator scss-remove-unused-at-use <path> --url='import/url'
+```
+
+<br />
 
 ## Creating Migrations
 

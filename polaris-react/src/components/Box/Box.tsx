@@ -1,21 +1,18 @@
-import React, {createElement, forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 import type {
-  ColorsActionTokenAlias,
-  ColorsBackdropTokenAlias,
-  ColorsBackgroundTokenAlias,
-  ColorsOverlayTokenAlias,
-  ColorsSurfaceTokenAlias,
+  ColorTextAlias,
+  ColorBackgroundAlias,
   ShapeBorderWidthScale,
-  DepthShadowAlias,
+  ShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
 import {
   getResponsiveProps,
-  ResponsiveProp,
   classNames,
   sanitizeCustomProperties,
 } from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Box.scss';
 
@@ -23,23 +20,6 @@ type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
-
-export type ColorTokenScale =
-  | 'text'
-  | 'text-critical'
-  | 'text-disabled'
-  | 'text-highlight'
-  | 'text-on-critical'
-  | 'text-on-dark'
-  | 'text-on-interactive'
-  | 'text-on-primary'
-  | 'text-primary'
-  | 'text-primary-hovered'
-  | 'text-primary-pressed'
-  | 'text-subdued'
-  | 'text-subdued-on-dark'
-  | 'text-success'
-  | 'text-warning';
 
 export type BorderTokenAlias =
   | 'base'
@@ -60,13 +40,6 @@ export type BorderRadiusTokenScale =
   | '6'
   | 'full';
 
-export type BackgroundColors =
-  | ColorsBackdropTokenAlias
-  | ColorsBackgroundTokenAlias
-  | ColorsOverlayTokenAlias
-  | ColorsActionTokenAlias
-  | ColorsSurfaceTokenAlias;
-
 export interface BoxProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** HTML Element type
@@ -74,7 +47,7 @@ export interface BoxProps extends React.AriaAttributes {
    */
   as?: Element;
   /** Background color */
-  background?: BackgroundColors;
+  background?: ColorBackgroundAlias;
   /** Border style */
   border?: BorderTokenAlias;
   /** Vertical end border style */
@@ -106,7 +79,7 @@ export interface BoxProps extends React.AriaAttributes {
   /** Horizontal end border width */
   borderInlineEndWidth?: ShapeBorderWidthScale;
   /** Color of children */
-  color?: ColorTokenScale;
+  color?: ColorTextAlias;
   /** HTML id attribute */
   id?: string;
   /** Minimum height of container */
@@ -155,7 +128,7 @@ export interface BoxProps extends React.AriaAttributes {
     'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
   >;
   /** Shadow on box */
-  shadow?: DepthShadowAlias;
+  shadow?: ShadowAlias;
   /** Set tab order */
   tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
   /** Width of container */
@@ -235,8 +208,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     ref,
   ) => {
     const style = {
-      '--pc-box-color': color ? `var(--p-${color})` : undefined,
-      '--pc-box-background': background ? `var(--p-${background})` : undefined,
+      '--pc-box-color': color ? `var(--p-color-${color})` : undefined,
+      '--pc-box-background': background
+        ? `var(--p-color-${background})`
+        : undefined,
       '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
       '--pc-box-border-block-end': borderBlockEnd
         ? `var(--p-border-${borderBlockEnd})`
@@ -336,7 +311,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as === 'ul' && styles.listReset,
     );
 
-    return createElement(
+    return React.createElement(
       as,
       {
         className,

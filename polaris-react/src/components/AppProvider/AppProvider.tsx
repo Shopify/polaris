@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -12,8 +13,10 @@ import {
   StickyManager,
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
-import {LinkContext, LinkLikeComponent} from '../../utilities/link';
-import {FeaturesConfig, FeaturesContext} from '../../utilities/features';
+import {LinkContext} from '../../utilities/link';
+import type {LinkLikeComponent} from '../../utilities/link';
+import {FeaturesContext} from '../../utilities/features';
+import type {FeaturesConfig} from '../../utilities/features';
 import {
   UniqueIdFactory,
   UniqueIdFactoryContext,
@@ -83,8 +86,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   setBodyStyles = () => {
-    document.body.style.backgroundColor = 'var(--p-background)';
-    document.body.style.color = 'var(--p-text)';
+    document.body.style.backgroundColor = 'var(--p-color-bg-app)';
+    document.body.style.color = 'var(--p-color-text)';
   };
 
   render() {
@@ -101,7 +104,11 @@ export class AppProvider extends Component<AppProviderProps, State> {
                 <LinkContext.Provider value={link}>
                   <MediaQueryProvider>
                     <PortalsManager>
-                      <FocusManager>{children}</FocusManager>
+                      <FocusManager>
+                        <EphemeralPresenceManager>
+                          {children}
+                        </EphemeralPresenceManager>
+                      </FocusManager>
                     </PortalsManager>
                   </MediaQueryProvider>
                 </LinkContext.Provider>

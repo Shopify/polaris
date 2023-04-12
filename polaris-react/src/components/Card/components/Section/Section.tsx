@@ -3,7 +3,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import {Stack} from '../../../Stack';
+import {LegacyStack} from '../../../LegacyStack';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Text} from '../../../Text';
 import styles from '../../Card.scss';
@@ -19,6 +19,7 @@ export interface CardSectionProps {
   actions?: ComplexAction[];
 }
 
+/** @deprecated Use LegacyCard or AlphaCard instead. */
 export function Section({
   children,
   title,
@@ -28,6 +29,13 @@ export function Section({
   actions,
   hideOnPrint,
 }: CardSectionProps) {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Card /> is deprecated. This component will be removed in a future major version of Polaris. Use <LegacyCard /> or <AlphaCard /> instead.',
+    );
+  }
+
   const className = classNames(
     styles.Section,
     flush && styles['Section-flush'],
@@ -53,10 +61,10 @@ export function Section({
     titleMarkup || actionMarkup ? (
       <div className={styles.SectionHeader}>
         {actionMarkup ? (
-          <Stack alignment="baseline">
-            <Stack.Item fill>{titleMarkup}</Stack.Item>
+          <LegacyStack alignment="baseline">
+            <LegacyStack.Item fill>{titleMarkup}</LegacyStack.Item>
             {actionMarkup}
-          </Stack>
+          </LegacyStack>
         ) : (
           titleMarkup
         )}

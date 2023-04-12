@@ -1,0 +1,18 @@
+@use 'global-styles/legacy-polaris-v8';
+
+.my-class {
+  // Standard replacement
+  padding: legacy-polaris-v8.spacing();
+  padding: legacy-polaris-v8.spacing(loose);
+  // With multiple values
+  padding: legacy-polaris-v8.spacing() legacy-polaris-v8.spacing();
+  padding: legacy-polaris-v8.spacing() 0 legacy-polaris-v8.spacing() 0;
+  // With interpolation
+  padding: calc(50% - #{legacy-polaris-v8.spacing()});
+  // With negative interpolation
+  padding: -#{legacy-polaris-v8.spacing()};
+  // With other functions
+  padding: calc(
+    #{legacy-polaris-v8.rem(16px)} + #{legacy-polaris-v8.spacing()}
+  );
+}

@@ -36,7 +36,7 @@ export interface FormProps {
   /** Where to display response after form submittal */
   target?: Target;
   /** Callback when form is submitted */
-  onSubmit(event: React.FormEvent<HTMLFormElement>): void;
+  onSubmit(event: React.FormEvent<HTMLFormElement>): unknown;
 }
 
 export function Form({
@@ -70,7 +70,7 @@ export function Form({
   const autoCompleteInputs = normalizeAutoComplete(autoComplete);
 
   const submitMarkup = implicitSubmit ? (
-    <Text variant="bodySm" as="span" visuallyHidden>
+    <Text as="span" visuallyHidden>
       <button type="submit" aria-hidden="true" tabIndex={-1}>
         {i18n.translate('Polaris.Common.submit')}
       </button>

@@ -3,7 +3,8 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import type {Action, Error} from '../../types';
 import {buttonFrom} from '../Button';
-import {Label, LabelProps, labelID} from '../Label';
+import {Label, labelID} from '../Label';
+import type {LabelProps} from '../Label';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 
@@ -49,7 +50,7 @@ export function Labelled({
 
   const helpTextMarkup = helpText ? (
     <div className={styles.HelpText} id={helpTextID(id)}>
-      <Text as="span" variant="bodyMd" color="subdued" breakWord>
+      <Text as="span" color="subdued" breakWord>
         {helpText}
       </Text>
     </div>

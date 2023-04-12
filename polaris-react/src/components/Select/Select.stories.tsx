@@ -1,13 +1,13 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  Card,
+  LegacyCard,
   FormLayout,
   Icon,
   InlineError,
   Link,
   Select,
-  Stack,
+  LegacyStack,
   TextField,
   Text,
 } from '@shopify/polaris';
@@ -131,7 +131,7 @@ export function WithSeparateValidationError() {
   const unitSelectID = 'unit';
   const errorMessage = generateErrorMessage();
   const formGroupMarkup = (
-    <Stack vertical spacing="extraTight">
+    <LegacyStack vertical spacing="extraTight">
       <FormLayout>
         <FormLayout.Group condensed>
           <TextField
@@ -154,10 +154,10 @@ export function WithSeparateValidationError() {
         </FormLayout.Group>
       </FormLayout>
       <InlineError message={errorMessage} fieldID={unitSelectID} />
-    </Stack>
+    </LegacyStack>
   );
 
-  return <Card sectioned>{formGroupMarkup}</Card>;
+  return <LegacyCard sectioned>{formGroupMarkup}</LegacyCard>;
 
   function generateErrorMessage() {
     const weightError =
@@ -170,14 +170,12 @@ export function WithSeparateValidationError() {
     }
 
     return (
-      <span>
-        <Text variant="bodyMd" color="critical" as="span">
-          <p>
-            {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
-            <Link>Manage shipping</Link>
-          </p>
-        </Text>
-      </span>
+      <Text color="critical" as="span">
+        <p>
+          {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
+          <Link>Manage shipping</Link>
+        </p>
+      </Text>
     );
   }
 }

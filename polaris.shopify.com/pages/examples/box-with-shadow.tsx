@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithShadowExample() {
   return (
-    <Box shadow="base">
+    <Box shadow="md">
       <Placeholder label="Content inside a box" />
     </Box>
   );
@@ -15,17 +15,17 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#7B47F1',
+        background: 'var(--p-color-text-info)',
         height: height,
         width: width,
       }}
     >
       <div
         style={{
-          color: '#FFFFFF',
+          color: 'var(--p-color-text-on-color)',
         }}
       >
-        <Text as="h2" variant="bodyMd" fontWeight="medium">
+        <Text as="p" variant="bodyMd">
           {label}
         </Text>
       </div>

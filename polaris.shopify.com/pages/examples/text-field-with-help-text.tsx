@@ -8,7 +8,7 @@ function HelpTextExample() {
   );
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 

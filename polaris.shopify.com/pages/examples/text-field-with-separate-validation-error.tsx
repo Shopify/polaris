@@ -1,11 +1,11 @@
 import {
-  Stack,
+  LegacyStack,
   FormLayout,
   Select,
   TextField,
   InlineError,
   Button,
-  Card,
+  LegacyCard,
 } from '@shopify/polaris';
 import {DeleteMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
@@ -18,17 +18,17 @@ function SeparateValidationErrorExample() {
     useState('is equal to');
 
   const handleTextFieldValueChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 
   const handleSelectTypeChange = useCallback(
-    (value) => setSelectTypeValue(value),
+    (value: string) => setSelectTypeValue(value),
     [],
   );
 
   const handleSelectConditionChange = useCallback(
-    (value) => setSelectConditionValue(value),
+    (value: string) => setSelectConditionValue(value),
     [],
   );
 
@@ -39,8 +39,8 @@ function SeparateValidationErrorExample() {
     : '';
 
   const formGroupMarkup = (
-    <Stack wrap={false} alignment="leading" spacing="loose">
-      <Stack.Item fill>
+    <LegacyStack wrap={false} alignment="leading" spacing="loose">
+      <LegacyStack.Item fill>
         <FormLayout>
           <FormLayout.Group condensed>
             <Select
@@ -71,18 +71,18 @@ function SeparateValidationErrorExample() {
         <div style={{marginTop: '4px'}}>
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>
-      </Stack.Item>
+      </LegacyStack.Item>
       <Button icon={DeleteMinor} accessibilityLabel="Remove item" />
-    </Stack>
+    </LegacyStack>
   );
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <FormLayout>{formGroupMarkup}</FormLayout>
-    </Card>
+    </LegacyCard>
   );
 
-  function isValueInvalid(content) {
+  function isValueInvalid(content: string) {
     if (!content) {
       return true;
     }

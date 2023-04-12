@@ -30,7 +30,6 @@ export interface CellProps {
   row?: Cell;
   children?: React.ReactNode;
 }
-
 export function Cell({
   area: gridArea,
   column,

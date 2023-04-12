@@ -152,7 +152,9 @@
       "clearAllFilters": "ล้างตัวกรองทั้งหมด",
       "clear": "ล้าง",
       "clearLabel": "ล้าง {filterName}",
-      "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})"
+      "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})",
+      "addFilter": "เพิ่มตัวกรอง",
+      "clearFilters": "ล้างทั้งหมด"
     },
     "Modal": {
       "iFrameTitle": "มาร์กอัปเนื้อหา",
@@ -201,7 +203,50 @@
       "loadingLabel": "กำลังโหลดหน้า"
     },
     "Tabs": {
-      "toggleTabsLabel": "แท็บเพิ่มเติม"
+      "toggleTabsLabel": "มุมมองเพิ่มเติม",
+      "newViewAccessibilityLabel": "สร้างมุมมองใหม่",
+      "newViewTooltip": "สร้างมุมมอง",
+      "Tab": {
+        "rename": "เปลี่ยนชื่อมุมมอง",
+        "duplicate": "ทำซ้ำมุมมอง",
+        "edit": "แก้ไขมุมมอง",
+        "editColumns": "แก้ไขคอลัมน์",
+        "delete": "ลบมุมมอง",
+        "copy": "สำเนาของ {name}",
+        "deleteModal": {
+          "title": "ต้องการลบมุมมองหรือไม่",
+          "description": "การดำเนินการนี้ไม่สามารถเลิกทำได้ ไม่สามารถใช้มุมมอง {viewName} ในส่วน Shopify admin ของคุณได้อีกต่อไป",
+          "cancel": "ยกเลิก",
+          "delete": "ลบมุมมอง"
+        }
+      },
+      "RenameModal": {
+        "title": "เปลี่ยนชื่อมุมมอง",
+        "label": "ชื่อ",
+        "cancel": "ยกเลิก",
+        "create": "บันทึก",
+        "errors": {
+          "sameName": "มีมุมมองที่ใช้ชื่อนี้แล้ว โปรดเลือกชื่ออื่น"
+        }
+      },
+      "DuplicateModal": {
+        "title": "ทำซ้ำมุมมอง",
+        "label": "ชื่อ",
+        "cancel": "ยกเลิก",
+        "create": "สร้างมุมมอง",
+        "errors": {
+          "sameName": "มีมุมมองที่ใช้ชื่อนี้แล้ว โปรดเลือกชื่ออื่น"
+        }
+      },
+      "CreateViewModal": {
+        "title": "สร้างมุมมองใหม่",
+        "label": "ชื่อ",
+        "cancel": "ยกเลิก",
+        "create": "สร้างมุมมอง",
+        "errors": {
+          "sameName": "มีมุมมองที่ใช้ชื่อนี้แล้ว โปรดเลือกชื่ออื่น"
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "ลบ {children} ออก"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "การดำเนินการ"
+      "popoverButton": "การดำเนินการ",
+      "dismissButton": "ปิด"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -288,7 +334,7 @@
       "emptySearchTitle": "ไม่พบ {resourceNamePlural}",
       "emptySearchDescription": "ลองเปลี่ยนตัวกรองหรือคำค้นหา",
       "onboardingBadgeText": "ใหม่",
-      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}...",
+      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}…",
       "selectAllLabel": "เลือก {resourceNamePlural} ทั้งหมด",
       "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
       "undo": "เลิกทำ",
@@ -305,6 +351,40 @@
     "FullscreenBar": {
       "back": "ย้อนกลับ",
       "accessibilityLabel": "ออกจากโหมดเต็มหน้าจอ"
+    },
+    "FilterPill": {
+      "clear": "ล้าง"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "ค้นหาและกรอง (F)",
+      "searchFilterAccessibilityLabel": "ผลลัพธ์ของการค้นหาและกรอง",
+      "sort": "จัดเรียงผลลัพธ์ของคุณ",
+      "addView": "เพิ่มมุมมองใหม่",
+      "newView": "การค้นหาแบบกำหนดเอง",
+      "SortButton": {
+        "ariaLabel": "จัดเรียงผลลัพธ์",
+        "tooltip": "จัดเรียง",
+        "title": "จัดเรียงตาม",
+        "sorting": {
+          "asc": "น้อยไปมาก",
+          "desc": "มากไปน้อย",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "ยกเลิก",
+        "update": "อัปเดต",
+        "save": "บันทึก",
+        "saveAs": "บันทึกเป็น",
+        "modal": {
+          "title": "บันทึกมุมมองเป็น",
+          "label": "ชื่อ",
+          "sameName": "มีมุมมองที่ใช้ชื่อนี้แล้ว โปรดเลือกชื่ออื่น",
+          "save": "บันทึก",
+          "cancel": "ยกเลิก"
+        }
+      }
     }
   }
 }

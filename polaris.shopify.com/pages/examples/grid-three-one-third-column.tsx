@@ -1,4 +1,4 @@
-import {Page, Grid, Card} from '@shopify/polaris';
+import {Page, Grid, LegacyCard} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -7,14 +7,14 @@ function GridExample() {
     <Page fullWidth>
       <Grid columns={{sm: 3}}>
         <Grid.Cell columnSpan={{xs: 6, sm: 4, md: 4, lg: 8, xl: 8}}>
-          <Card title="Sales" sectioned>
+          <LegacyCard title="Sales" sectioned>
             <p>View a summary of your online store’s sales.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
-          <Card title="Orders" sectioned>
+          <LegacyCard title="Orders" sectioned>
             <p>View a summary of your online store’s orders.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
       </Grid>
     </Page>

@@ -4,7 +4,7 @@ import {
   ActionList,
   Avatar,
   Button,
-  Card,
+  LegacyCard,
   FormLayout,
   Popover,
   ResourceList,
@@ -215,7 +215,7 @@ export function WithLazyLoadedList() {
   }));
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <div style={{height: '280px'}}>
         <Popover
           sectioned
@@ -229,7 +229,7 @@ export function WithLazyLoadedList() {
           </Popover.Pane>
         </Popover>
       </div>
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem({name, initials}) {
@@ -429,8 +429,8 @@ export function WithSearchableListbox() {
     <div
       style={{
         fontSize: 'var(--p-font-size-300)',
-        color: 'var(--p-text)',
-        borderBottom: '1px dashed var(--p-border)',
+        color: 'var(--p-color-text)',
+        borderBottom: '1px dashed var(--p-color-border)',
       }}
     >
       <Link monochrome removeUnderline onClick={handleOpenPicker}>
@@ -483,7 +483,9 @@ export function WithSearchableListbox() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span style={{color: 'var(--p-color-text-interactive)'}}>
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 

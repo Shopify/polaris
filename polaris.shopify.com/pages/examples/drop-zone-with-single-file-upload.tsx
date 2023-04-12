@@ -1,14 +1,14 @@
-import {DropZone, Stack, Thumbnail, Text} from '@shopify/polaris';
+import {DropZone, LegacyStack, Thumbnail, Text} from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DropZoneExample() {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState<File>();
 
   const handleDropZoneDrop = useCallback(
-    (_dropFiles, acceptedFiles, _rejectedFiles) =>
-      setFile((file) => acceptedFiles[0]),
+    (_dropFiles: File[], acceptedFiles: File[], _rejectedFiles: File[]) =>
+      setFile(acceptedFiles[0]),
     [],
   );
 
@@ -16,7 +16,7 @@ function DropZoneExample() {
 
   const fileUpload = !file && <DropZone.FileUpload />;
   const uploadedFile = file && (
-    <Stack>
+    <LegacyStack>
       <Thumbnail
         size="small"
         alt={file.name}
@@ -32,7 +32,7 @@ function DropZoneExample() {
           {file.size} bytes
         </Text>
       </div>
-    </Stack>
+    </LegacyStack>
   );
 
   return (

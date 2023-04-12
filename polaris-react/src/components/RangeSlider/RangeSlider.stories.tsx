@@ -1,6 +1,11 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Card, RangeSlider, Stack, TextField} from '@shopify/polaris';
+import {
+  LegacyCard,
+  RangeSlider,
+  LegacyStack,
+  TextField,
+} from '@shopify/polaris';
 
 export default {
   component: RangeSlider,
@@ -15,14 +20,14 @@ export function Default() {
   );
 
   return (
-    <Card sectioned title="Background color">
+    <LegacyCard sectioned title="Background color">
       <RangeSlider
         label="Opacity percentage"
         value={rangeValue}
         onChange={handleRangeSliderChange}
         output
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -35,7 +40,7 @@ export function WithMinAndMax() {
   );
 
   return (
-    <Card sectioned title="Navigation branding">
+    <LegacyCard sectioned title="Navigation branding">
       <RangeSlider
         output
         label="Logo offset"
@@ -44,7 +49,7 @@ export function WithMinAndMax() {
         value={rangeValue}
         onChange={handleRangeSliderChange}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -57,7 +62,7 @@ export function WithSteps() {
   );
 
   return (
-    <Card sectioned title="Navigation branding">
+    <LegacyCard sectioned title="Navigation branding">
       <RangeSlider
         output
         label="Logo offset"
@@ -67,7 +72,7 @@ export function WithSteps() {
         value={rangeValue}
         onChange={handleRangeSliderChange}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -85,7 +90,7 @@ export function WithPrefixAndSuffix() {
   };
 
   return (
-    <Card sectioned title="Text color">
+    <LegacyCard sectioned title="Text color">
       <RangeSlider
         output
         label="Hue color mix"
@@ -96,7 +101,7 @@ export function WithPrefixAndSuffix() {
         prefix={<p>Hue</p>}
         suffix={<p style={suffixStyles}>{rangeValue}</p>}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
@@ -169,7 +174,7 @@ export function WithDualThumb() {
       : intermediateTextFieldValue[1];
 
   return (
-    <Card sectioned title="Minimum requirements">
+    <LegacyCard sectioned title="Minimum requirements">
       <div onKeyDown={handleEnterKeyPress}>
         <RangeSlider
           output
@@ -181,7 +186,7 @@ export function WithDualThumb() {
           step={step}
           onChange={handleRangeSliderChange}
         />
-        <Stack distribution="equalSpacing" spacing="extraLoose">
+        <LegacyStack distribution="equalSpacing" spacing="extraLoose">
           <TextField
             label="Min money spent"
             type="number"
@@ -206,8 +211,8 @@ export function WithDualThumb() {
             onBlur={handleUpperTextFieldBlur}
             autoComplete="off"
           />
-        </Stack>
+        </LegacyStack>
       </div>
-    </Card>
+    </LegacyCard>
   );
 }

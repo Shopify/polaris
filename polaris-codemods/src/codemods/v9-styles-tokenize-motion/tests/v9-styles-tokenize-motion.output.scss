@@ -1,0 +1,224 @@
+.easing {
+  transition-timing-function: var(--p-linear);
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'linear'. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: linear(1);
+  transition-timing-function: var(--p-ease);
+  transition-timing-function: var(--p-ease-in);
+  transition-timing-function: var(--p-ease-out);
+  transition-timing-function: var(--p-ease-in-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'cubic-bezier'. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-start'. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: step-start;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-end'. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: step-end;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'steps'. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: steps(1, jump-end);
+}
+
+.easing-shorthand {
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'linear'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) linear(1);
+  transition: opacity 300ms linear(1);
+  transition: opacity var(--p-duration-300) var(--p-ease);
+  transition: opacity var(--p-duration-300) var(--p-ease-in);
+  transition: opacity var(--p-duration-300) var(--p-ease-out);
+  transition: opacity var(--p-duration-300) var(--p-ease-in-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'cubic-bezier'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) cubic-bezier(0, 0, 1, 1);
+  transition: opacity 300ms cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-start'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) step-start;
+  transition: opacity 300ms step-start;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-end'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) step-end;
+  transition: opacity 300ms step-end;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'steps'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) steps(1, jump-end);
+  transition: opacity 300ms steps(1, jump-end);
+}
+
+.easing-multiple {
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'linear'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) linear(1), left var(--p-duration-300) linear(1);
+  transition: opacity 300ms linear(1), left 300ms linear(1);
+  transition: opacity var(--p-duration-300) var(--p-ease),
+    left var(--p-duration-300) var(--p-ease);
+  transition: opacity var(--p-duration-300) var(--p-ease-in),
+    left var(--p-duration-300) var(--p-ease-in);
+  transition: opacity var(--p-duration-300) var(--p-ease-out),
+    left var(--p-duration-300) var(--p-ease-out);
+  transition: opacity var(--p-duration-300) var(--p-ease-in-out),
+    left var(--p-duration-300) var(--p-ease-in-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'cubic-bezier'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) cubic-bezier(0, 0, 1, 1), left var(--p-duration-300) cubic-bezier(0, 0, 1, 1);
+  transition: opacity 300ms cubic-bezier(0, 0, 1, 1),
+    left 300ms cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-start'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) step-start, left var(--p-duration-300) step-start;
+  transition: opacity 300ms step-start, left 300ms step-start;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-end'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // warning: Unexpected easing function 'step-start'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) step-end, left var(--p-duration-300) step-start;
+  transition: opacity 300ms step-end, left 300ms step-start;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'steps'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity var(--p-duration-300) steps(1, jump-end), left var(--p-duration-300) steps(1, jump-end);
+  transition: opacity 300ms steps(1, jump-end), left 300ms steps(1, jump-end);
+}
+
+.duration {
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-50);
+  transition-duration: var(--p-duration-50);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-150);
+  transition-duration: var(--p-duration-150);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-250);
+  transition-duration: var(--p-duration-250);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-350);
+  transition-duration: var(--p-duration-350);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-450);
+  transition-duration: var(--p-duration-450);
+  transition-duration: var(--p-duration-500);
+  transition-duration: var(--p-duration-500);
+  transition-duration: var(--p-duration-5000);
+}
+
+.duration-shorthand {
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-5000) var(--p-linear);
+}
+
+.duration-multiple {
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear),
+    left var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear),
+    left var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear),
+    left var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear),
+    left var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear),
+    left var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear),
+    left var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear),
+    left var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear),
+    left var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear),
+    left var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear),
+    left var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-5000) var(--p-linear),
+    left var(--p-duration-5000) var(--p-linear);
+}
+
+.animation {
+  animation: var(--p-duration-300) var(--p-linear) fadeIn;
+  animation-duration: var(--p-duration-200);
+  animation-delay: var(--p-duration-200);
+  animation-timing-function: var(--p-ease);
+}
+
+.edge-cases {
+  // Without an easing function
+  transition: fill var(--p-duration-300);
+  // Duration comes after easing func
+  transition: opacity var(--p-linear) var(--p-duration-500);
+  // Duration + Delay
+  transition: opacity var(--p-duration-400) var(--p-linear)
+    var(--p-duration-300);
+  // Duration + Delay after easing func
+  transition: opacity var(--p-linear) var(--p-duration-400)
+    var(--p-duration-100);
+  // can't process variables
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Cannot statically analyze SCSS variable $foo.
+  transition-timing-function: $foo;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Cannot statically analyze SCSS variable $foo.
+  // transition: opacity $foo var(--p-duration-500);
+  transition: opacity $foo 0.5s;
+}

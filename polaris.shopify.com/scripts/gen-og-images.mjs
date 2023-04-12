@@ -4,6 +4,7 @@ import {existsSync} from 'fs';
 import path from 'path';
 import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 import pMap from 'p-map';
+import ora from 'ora';
 
 const sitemapPath = path.join(process.cwd(), 'public/sitemap.xml');
 const imgDir = path.join(process.cwd(), 'public/og-images');
@@ -51,20 +52,30 @@ const generateHTML = async (url, slug) => {
   if (
     url.startsWith('/foundations/') ||
     url.startsWith('/design/') ||
-    url.startsWith('/content/') ||
-    url.startsWith('/patterns/')
+    url.startsWith('/content/')
   ) {
-    const mdFilePath = path.join(process.cwd(), `content${url}.md`);
+    let mdFilePath = path.join(process.cwd(), `content${url}.md`);
+    if (!existsSync(mdFilePath)) {
+      // In case the markdown is nested in a folder instead of named after the
+      // url directly, we want to try /index.md instead
+      mdFilePath = path.join(process.cwd(), `content${url}/index.md`);
+      if (!existsSync(mdFilePath)) {
+        throw new Error(
+          `Failed to load content file for url ${url}. Tried content${url}.md, content${url}/index.md`,
+        );
+      }
+    }
     const markdownContent = await readFile(mdFilePath, 'utf-8');
     const {data} = matter(markdownContent);
-    if (!data.icon) return;
-    const iconFilePath = path.join(
-      process.cwd(),
-      `../polaris-icons/dist/svg/${data.icon}.svg`,
-    );
-    const iconData = await readFile(iconFilePath);
+    if (data.icon) {
+      const iconFilePath = path.join(
+        process.cwd(),
+        `../polaris-icons/dist/svg/${data.icon}.svg`,
+      );
+      const iconData = await readFile(iconFilePath);
 
-    htmlImg = `<div class="polaris-icon">${iconData}</div>`;
+      htmlImg = `<div class="polaris-icon">${iconData}</div>`;
+    }
   }
 
   const html = `
@@ -154,7 +165,11 @@ const generateHTML = async (url, slug) => {
 };
 
 const genOgImages = async () => {
-  if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
+  const spinner = ora('Generating Open Graph images from sitemap').start();
+  if (existsSync(imgDir)) {
+    await rm(imgDir, {recursive: true});
+  }
+
   await mkdir(imgDir, {recursive: true});
 
   const sitemap = await readFile(sitemapPath, 'utf-8');
@@ -166,6 +181,8 @@ const genOgImages = async () => {
     defaultViewport: {width: 1200, height: 630},
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
+
+  let completed = 0;
 
   const getPNG = async (url) => {
     try {
@@ -182,9 +199,11 @@ const genOgImages = async () => {
       }
       await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
       await page.close();
+      completed++;
+      spinner.text = `Generated ${completed} of ${urls.length} Open Graph images from sitemap`;
     } catch (error) {
-      console.error(`❌ Failed to generate png for ${url}`);
-      throw new Error(error);
+      spinner.fail(`Failed to generate Open Graph png for ${url}`);
+      throw error;
     }
   };
 
@@ -193,7 +212,9 @@ const genOgImages = async () => {
   await Promise.all(generateImages);
 
   await browser.close();
-  console.log(`✅ Created ${urls.length} og-images from sitemap`);
+  spinner.succeed(
+    `Generated ${urls.length} of ${urls.length} Open Graph images from sitemap`,
+  );
 };
 
 export default genOgImages;

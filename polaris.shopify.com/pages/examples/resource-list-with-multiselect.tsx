@@ -1,9 +1,18 @@
-import {Card, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
+import {
+  LegacyCard,
+  ResourceList,
+  Avatar,
+  ResourceItem,
+  Text,
+} from '@shopify/polaris';
+import type {ResourceListProps} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<
+    ResourceListProps['selectedItems']
+  >([]);
 
   const resourceName = {
     singular: 'customer',
@@ -12,37 +21,37 @@ function ResourceListExample() {
 
   const items = [
     {
-      id: 111,
+      id: '111',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 211,
+      id: '211',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
     {
-      id: 311,
+      id: '311',
       url: '#',
       name: 'Joe Smith',
       location: 'Arizona, USA',
     },
     {
-      id: 411,
+      id: '411',
       url: '#',
       name: 'Haden Jerado',
       location: 'Decatur, USA',
     },
     {
-      id: 511,
+      id: '511',
       url: '#',
       name: 'Tom Thommas',
       location: 'Florida, USA',
     },
     {
-      id: 611,
+      id: '611',
       url: '#',
       name: 'Emily Amrak',
       location: 'Texas, USA',
@@ -72,7 +81,7 @@ function ResourceListExample() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -83,10 +92,10 @@ function ResourceListExample() {
         bulkActions={bulkActions}
         resolveItemId={resolveItemIds}
       />
-    </Card>
+    </LegacyCard>
   );
 
-  function renderItem(item, _, index) {
+  function renderItem(item: typeof items[number], _: string, index: number) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -106,7 +115,7 @@ function ResourceListExample() {
     );
   }
 
-  function resolveItemIds({id}) {
+  function resolveItemIds({id}: {id: string}) {
     return id;
   }
 }

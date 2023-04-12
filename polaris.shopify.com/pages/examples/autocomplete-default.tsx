@@ -14,12 +14,12 @@ function AutocompleteExample() {
     ],
     [],
   );
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
   const updateText = useCallback(
-    (value) => {
+    (value: string) => {
       setInputValue(value);
 
       if (value === '') {
@@ -37,7 +37,7 @@ function AutocompleteExample() {
   );
 
   const updateSelection = useCallback(
-    (selected) => {
+    (selected: string[]) => {
       const selectedValue = selected.map((selectedItem) => {
         const matchedOption = options.find((option) => {
           return option.value.match(selectedItem);
@@ -46,7 +46,7 @@ function AutocompleteExample() {
       });
 
       setSelectedOptions(selected);
-      setInputValue(selectedValue[0]);
+      setInputValue(selectedValue[0] || '');
     },
     [options],
   );
@@ -58,6 +58,7 @@ function AutocompleteExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 

@@ -152,7 +152,9 @@
       "clearAllFilters": "Alle Filter löschen",
       "clear": "Löschen",
       "clearLabel": "{filterName} löschen",
-      "moreFiltersWithCount": "Weitere Filter ({count})"
+      "moreFiltersWithCount": "Weitere Filter ({count})",
+      "addFilter": "Filter hinzufügen",
+      "clearFilters": "Alles löschen"
     },
     "Modal": {
       "iFrameTitle": "Text-Markup",
@@ -174,7 +176,7 @@
       "showing": "{itemsCount} {resource} werden angezeigt",
       "loading": "{resource} wird geladen",
       "selected": "{selectedItemsCount} ausgewählt",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop sind ausgewählt.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in deinem Shop wurden ausgewählt",
       "selectAllItems": "Wähle alle {itemsLength}+ {resourceNamePlural} in deinem Shop aus",
       "emptySearchResultTitle": "Keine {resourceNamePlural} gefunden",
       "emptySearchResultDescription": "Versuche, die Filter oder den Suchbegriff zu ändern",
@@ -194,14 +196,57 @@
         "warningMessage": "Um eine bessere Benutzererfahrung zu bieten. Es sollte nur maximal {maxPromotedActions} beworbene Aktionen geben."
       },
       "showingTotalCount": "{itemsCount} von {totalItemsCount} {resource} werden angezeigt",
-      "allFilteredItemsSelected": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter sind ausgewählt.",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in diesem Filter wurden ausgewählt",
       "selectAllFilteredItems": "Alle {itemsLength} und {resourceNamePlural} in diesem Filter auswählen"
     },
     "SkeletonPage": {
       "loadingLabel": "Seite wird geladen"
     },
     "Tabs": {
-      "toggleTabsLabel": "Weitere Registerkarten"
+      "toggleTabsLabel": "Weitere Ansichten",
+      "newViewAccessibilityLabel": "Neue Ansicht erstellen",
+      "newViewTooltip": "Ansicht erstellen",
+      "Tab": {
+        "rename": "Ansicht umbenennen",
+        "duplicate": "Ansicht duplizieren",
+        "edit": "Ansicht bearbeiten",
+        "editColumns": "Spalten bearbeiten",
+        "delete": "Ansicht löschen",
+        "copy": "Kopie von {name}",
+        "deleteModal": {
+          "title": "Ansicht löschen?",
+          "description": "Diese Aktion kann nicht rückgängig gemacht werden. Die Ansicht \"{viewName}\" wird nicht länger in deinem Adminbereich zur Verfügung stehen.",
+          "cancel": "Abbrechen",
+          "delete": "Ansicht löschen"
+        }
+      },
+      "RenameModal": {
+        "title": "Ansicht umbenennen",
+        "label": "Name",
+        "cancel": "Abbrechen",
+        "create": "Speichern",
+        "errors": {
+          "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Ansicht duplizieren",
+        "label": "Name",
+        "cancel": "Abbrechen",
+        "create": "Ansicht erstellen",
+        "errors": {
+          "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Neue Ansicht erstellen",
+        "label": "Name",
+        "cancel": "Abbrechen",
+        "create": "Ansicht erstellen",
+        "errors": {
+          "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "{children} entfernen"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Aktionen"
+      "popoverButton": "Aktionen",
+      "dismissButton": "Ignorieren"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -277,8 +323,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Artikel",
       "defaultItemPlural": "Artikel",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} wurden ausgewählt.",
-      "selected": "{selectedItemsCount} ausgewählt.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} wurden ausgewählt",
+      "selected": "{selectedItemsCount} ausgewählt",
       "a11yCheckboxDeselectAllSingle": "Auswahl für {resourceNameSingular} aufheben",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} auswählen",
       "a11yCheckboxDeselectAllMultiple": "Auswahl für alle {itemsLength} {resourceNamePlural} aufheben",
@@ -290,7 +336,7 @@
       "onboardingBadgeText": "Neu",
       "resourceLoadingAccessibilityLabel": "{resourceNamePlural} werden geladen ...",
       "selectAllLabel": "Alle {resourceNamePlural} auswählen",
-      "selected": "{selectedItemsCount} ausgewählt.",
+      "selected": "{selectedItemsCount} ausgewählt",
       "undo": "Rückgängig machen",
       "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} auswählen",
       "selectItem": "{resourceName} auswählen",
@@ -305,6 +351,40 @@
     "FullscreenBar": {
       "back": "Zurück",
       "accessibilityLabel": "Vollbildmodus beenden"
+    },
+    "FilterPill": {
+      "clear": "Löschen"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Suchen und filtern (F)",
+      "searchFilterAccessibilityLabel": "Ergebnisse suchen und filtern",
+      "sort": "Ergebnisse sortieren",
+      "addView": "Eine neue Ansicht hinzufügen",
+      "newView": "Benutzerdefinierte Suche",
+      "SortButton": {
+        "ariaLabel": "Ergebnisse sortieren",
+        "tooltip": "Sortieren",
+        "title": "Sortieren nach",
+        "sorting": {
+          "asc": "Aufsteigend",
+          "desc": "Absteigend",
+          "az": "A–Z",
+          "za": "Z–A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Abbrechen",
+        "update": "Aktualisieren",
+        "save": "Speichern",
+        "saveAs": "Speichern unter",
+        "modal": {
+          "title": "Ansicht speichern als",
+          "label": "Name",
+          "sameName": "Eine Ansicht mit diesem Namen ist bereits vorhanden. Bitte wähle einen anderen Namen aus.",
+          "save": "Speichern",
+          "cancel": "Abbrechen"
+        }
+      }
     }
   }
 }

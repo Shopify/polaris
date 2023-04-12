@@ -152,7 +152,9 @@
       "clearAllFilters": "Borrar todos los filtros",
       "clear": "Borrar",
       "clearLabel": "Borrar {filterName}",
-      "moreFiltersWithCount": "Más filtros ({count})"
+      "moreFiltersWithCount": "Más filtros ({count})",
+      "addFilter": "Agregar filtro",
+      "clearFilters": "Borrar todo"
     },
     "Modal": {
       "iFrameTitle": "marcado body",
@@ -174,7 +176,7 @@
       "showing": "Se muestran {itemsCount} {resource}",
       "loading": "Cargando {resource}",
       "selected": "Seleccionados: {selectedItemsCount}",
-      "allItemsSelected": "Los más de {itemsLength} recursos de {resourceNamePlural} de la tienda están seleccionados.",
+      "allItemsSelected": "Los más de {itemsLength} {resourceNamePlural} de la tienda están seleccionados.",
       "selectAllItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural} de la tienda",
       "emptySearchResultTitle": "No se encontró ningún recurso de {resourceNamePlural}",
       "emptySearchResultDescription": "Prueba a cambiar los filtros o el término de búsqueda",
@@ -194,14 +196,57 @@
         "warningMessage": "Para ofrecer una mejor experiencia de usuario. Solo debe haber un máximo de {maxPromotedActions} acciones promocionadas."
       },
       "showingTotalCount": "Se muestran {itemsCount} de {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Los más de {itemsLength} recursos de {resourceNamePlural} de este filtro están seleccionados.",
+      "allFilteredItemsSelected": "Los más de {itemsLength} {resourceNamePlural} de este filtro están seleccionados.",
       "selectAllFilteredItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural} de este filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Cargando página"
     },
     "Tabs": {
-      "toggleTabsLabel": "Más pestañas"
+      "toggleTabsLabel": "Más vistas",
+      "newViewAccessibilityLabel": "Crear vista nueva",
+      "newViewTooltip": "Crear vista",
+      "Tab": {
+        "rename": "Cambiar nombre de vista",
+        "duplicate": "Duplicar vista",
+        "edit": "Editar vista",
+        "editColumns": "Editar columnas",
+        "delete": "Eliminar vista",
+        "copy": "Copia de {name}",
+        "deleteModal": {
+          "title": "¿Eliminar vista?",
+          "description": "Esta acción no se puede deshacer. La vista {viewName} ya no estará disponible en el panel de control.",
+          "cancel": "Cancelar",
+          "delete": "Eliminar vista"
+        }
+      },
+      "RenameModal": {
+        "title": "Renombrar vista",
+        "label": "Nombre",
+        "cancel": "Cancelar",
+        "create": "Guardar",
+        "errors": {
+          "sameName": "Ya existe una vista con este nombre. Elige otro nombre."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplicar vista",
+        "label": "Nombre",
+        "cancel": "Cancelar",
+        "create": "Crear vista",
+        "errors": {
+          "sameName": "Ya existe una vista con este nombre. Elige otro nombre."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Crear vista nueva",
+        "label": "Nombre",
+        "cancel": "Cancelar",
+        "create": "Crear vista",
+        "errors": {
+          "sameName": "Ya existe una vista con este nombre. Elige otro nombre."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Eliminar {children}"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Acciones"
+      "popoverButton": "Acciones",
+      "dismissButton": "Descartar"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -278,8 +324,8 @@
     "IndexProvider": {
       "defaultItemSingular": "Artículo",
       "defaultItemPlural": "Artículos",
-      "allItemsSelected": "Hay más de {itemsLength} {resourceNamePlural} seleccionados.",
-      "selected": "Seleccionados: {selectedItemsCount}.",
+      "allItemsSelected": "Los más de {itemsLength} {resourceNamePlural} están seleccionados.",
+      "selected": "Seleccionados: {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Deseleccionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleccionar {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Deseleccionar {itemsLength} {resourceNamePlural}",
@@ -291,7 +337,7 @@
       "onboardingBadgeText": "Nuevo",
       "resourceLoadingAccessibilityLabel": "Cargando {resourceNamePlural}...",
       "selectAllLabel": "Seleccionar los recursos de {resourceNamePlural}",
-      "selected": "Seleccionados: {selectedItemsCount}.",
+      "selected": "Seleccionados: {selectedItemsCount}",
       "undo": "Deshacer",
       "selectAllItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural}",
       "selectItem": "Seleccionar {resourceName}",
@@ -306,6 +352,40 @@
     "FullscreenBar": {
       "back": "Atrás",
       "accessibilityLabel": "Salir del modo de pantalla completa"
+    },
+    "FilterPill": {
+      "clear": "Borrar"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Buscar y filtrar (F)",
+      "searchFilterAccessibilityLabel": "Buscar y filtrar resultados",
+      "sort": "Ordenar los resultados",
+      "addView": "Agregar una vista nueva",
+      "newView": "Búsqueda personalizada",
+      "SortButton": {
+        "ariaLabel": "Ordenar los resultados",
+        "tooltip": "Ordenar",
+        "title": "Ordenar por",
+        "sorting": {
+          "asc": "Ascendente",
+          "desc": "Descendente",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Cancelar",
+        "update": "Modificar",
+        "save": "Guardar",
+        "saveAs": "Guardar como",
+        "modal": {
+          "title": "Guardar vista como",
+          "label": "Nombre",
+          "sameName": "Ya existe una vista con este nombre. Elige otro nombre.",
+          "save": "Guardar",
+          "cancel": "Cancelar"
+        }
+      }
     }
   }
 }

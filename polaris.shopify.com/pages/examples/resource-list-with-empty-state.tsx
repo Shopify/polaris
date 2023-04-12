@@ -1,25 +1,28 @@
 import {
-  Filters,
+  LegacyFilters,
   EmptyState,
   Page,
   Layout,
-  Card,
+  LegacyCard,
   ResourceList,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithEmptyStateExample() {
-  const items = [];
-  const appliedFilters = [];
-  const filters = [];
+  const items: any[] = [];
+  const appliedFilters: any[] = [];
+  const filters: any[] = [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       disabled={!items.length}
       queryValue=""
       filters={filters}
       appliedFilters={appliedFilters}
+      onClearAll={() => undefined}
+      onQueryChange={() => undefined}
+      onQueryClear={() => undefined}
     />
   );
 
@@ -41,15 +44,15 @@ function ResourceListWithEmptyStateExample() {
     <Page title="Files">
       <Layout>
         <Layout.Section>
-          <Card>
+          <LegacyCard>
             <ResourceList
               emptyState={emptyStateMarkup}
               items={items}
-              renderItem={() => {}}
+              renderItem={() => <></>}
               filterControl={filterControl}
               resourceName={{singular: 'file', plural: 'files'}}
             />
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>

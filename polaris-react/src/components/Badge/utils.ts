@@ -1,6 +1,7 @@
 import type {I18n} from '../../utilities/i18n';
 
-import {Progress, ProgressValue, Status, StatusValue} from './types';
+import {ProgressValue, StatusValue} from './types';
+import type {Progress, Status} from './types';
 
 export function getDefaultAccessibilityLabel(
   i18n: I18n,

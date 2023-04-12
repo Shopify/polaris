@@ -1,4 +1,5 @@
-import React, {useMemo, useState, useCallback, ContextType} from 'react';
+import React, {useMemo, useState, useCallback} from 'react';
+import type {ContextType} from 'react';
 
 import {FocusManagerContext} from '../../utilities/focus-manager';
 

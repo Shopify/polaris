@@ -1,17 +1,19 @@
 import React from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {CancelMinor, HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import type {ActionListItemDescriptor, ComplexAction} from '../../types';
-import {Card} from '../Card';
+import {LegacyCard} from '../LegacyCard';
 import {Button, buttonFrom} from '../Button';
 import {Text} from '../Text';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
-import {Stack} from '../Stack';
+import {LegacyStack} from '../LegacyStack';
+import {Box} from '../Box';
+import {HorizontalStack} from '../HorizontalStack';
 
 import styles from './MediaCard.scss';
 
@@ -38,6 +40,8 @@ interface MediaCardProps {
    * @default 'medium'
    */
   size?: Size;
+  /** Callback when MediaCard is dismissed */
+  onDismiss?: () => void;
 }
 
 export function MediaCard({
@@ -49,6 +53,7 @@ export function MediaCard({
   popoverActions = [],
   portrait = false,
   size = 'medium',
+  onDismiss,
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
@@ -66,32 +71,42 @@ export function MediaCard({
     headerMarkup = <div className={styles.Heading}>{headerContent}</div>;
   }
 
-  const popoverActivator = (
+  const dismissButtonMarkup = onDismiss ? (
     <Button
-      icon={HorizontalDotsMinor}
-      onClick={togglePopoverActive}
+      icon={CancelMinor}
+      onClick={onDismiss}
       size="slim"
       plain
-      accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
+      accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
     />
+  ) : null;
+
+  const popoverActivator = (
+    <HorizontalStack blockAlign="center">
+      <Button
+        icon={HorizontalDotsMinor}
+        onClick={togglePopoverActive}
+        size="slim"
+        plain
+        accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
+      />
+    </HorizontalStack>
   );
 
   const popoverActionsMarkup =
     popoverActions.length > 0 ? (
-      <div className={styles.Popover}>
-        <Popover
-          active={popoverActive}
-          activator={popoverActivator}
-          onClose={togglePopoverActive}
-          preferredAlignment="left"
-          preferredPosition="below"
-        >
-          <ActionList
-            items={popoverActions}
-            onActionAnyItem={togglePopoverActive}
-          />
-        </Popover>
-      </div>
+      <Popover
+        active={popoverActive}
+        activator={popoverActivator}
+        onClose={togglePopoverActive}
+        preferredAlignment="left"
+        preferredPosition="below"
+      >
+        <ActionList
+          items={popoverActions}
+          onActionAnyItem={togglePopoverActive}
+        />
+      </Popover>
     ) : null;
 
   const primaryActionMarkup = primaryAction ? (
@@ -136,21 +151,36 @@ export function MediaCard({
     size === 'small' && styles.sizeSmall,
   );
 
+  const popoverOrDismissMarkup =
+    popoverActionsMarkup || dismissButtonMarkup ? (
+      <Box
+        position="absolute"
+        insetBlockStart="4"
+        insetInlineEnd="5"
+        zIndex="var(--p-z-index-2)"
+      >
+        <HorizontalStack gap="1">
+          {popoverActionsMarkup}
+          {dismissButtonMarkup}
+        </HorizontalStack>
+      </Box>
+    ) : null;
+
   return (
-    <Card>
+    <LegacyCard>
       <div className={mediaCardClassName}>
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
-          <Card.Section>
-            {popoverActionsMarkup}
-            <Stack vertical spacing="tight">
+          <LegacyCard.Section>
+            {popoverOrDismissMarkup}
+            <LegacyStack vertical spacing="tight">
               {headerMarkup}
               <p className={styles.Description}>{description}</p>
               {actionMarkup}
-            </Stack>
-          </Card.Section>
+            </LegacyStack>
+          </LegacyCard.Section>
         </div>
       </div>
-    </Card>
+    </LegacyCard>
   );
 }

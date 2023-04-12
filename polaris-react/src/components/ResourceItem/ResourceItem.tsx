@@ -9,24 +9,23 @@ import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
 import {Columns} from '../Columns';
-import {Inline, InlineProps} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
+import type {HorizontalStackProps} from '../HorizontalStack';
 import {Popover} from '../Popover';
 import {UnstyledLink} from '../UnstyledLink';
 import type {AvatarProps} from '../Avatar';
 import type {DisableableAction} from '../../types';
 import type {ThumbnailProps} from '../Thumbnail';
-import {
-  useBreakpoints,
-  BreakpointsDirectionAlias,
-} from '../../utilities/breakpoints';
+import {useBreakpoints} from '../../utilities/breakpoints';
+import type {BreakpointsDirectionAlias} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
-  ResourceListSelectedItems,
 } from '../../utilities/resource-list';
+import type {ResourceListSelectedItems} from '../../utilities/resource-list';
 
 import styles from './ResourceItem.scss';
 
@@ -158,7 +157,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       persistActions = false,
       accessibilityLabel,
       name,
-      context: {selectable, selectMode, loading, resourceName},
+      context: {selectable, selectMode, hasBulkActions, loading, resourceName},
       i18n,
       verticalAlignment,
       dataHref,
@@ -203,14 +202,15 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <Inline
+        <HorizontalStack
+          gap="4"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
         >
           {handleMarkup}
           {media}
-        </Inline>
+        </HorizontalStack>
       );
     }
 
@@ -227,6 +227,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     const listItemClassName = classNames(
       styles.ListItem,
       focused && !focusedInner && styles.focused,
+      hasBulkActions && styles.hasBulkActions,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -289,13 +290,16 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         paddingInlineEnd={{xs: '4', sm: '5'}}
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <Columns columns={{xs: '1fr auto'}} gap="0">
+        <Columns columns={{xs: '1fr auto'}}>
           <Columns
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
             gap="5"
           >
             {ownedMarkup}
-            <Inline blockAlign={getAlignment(verticalAlignment)}>
+            <HorizontalStack
+              gap="4"
+              blockAlign={getAlignment(verticalAlignment)}
+            >
               <Box
                 width="100%"
                 padding="0"
@@ -304,7 +308,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
               >
                 {children}
               </Box>
-            </Inline>
+            </HorizontalStack>
           </Columns>
           {actionsMarkup}
           {disclosureMarkup}
@@ -499,7 +503,9 @@ export function ResourceItem(props: ResourceItemProps) {
   );
 }
 
-function getAlignment(alignment?: Alignment): InlineProps['blockAlign'] {
+function getAlignment(
+  alignment?: Alignment,
+): HorizontalStackProps['blockAlign'] {
   switch (alignment) {
     case 'leading':
       return 'start';

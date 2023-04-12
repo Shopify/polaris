@@ -1,7 +1,7 @@
 import {
   AppProvider,
   Page,
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   Text,
@@ -30,18 +30,18 @@ function AppProviderExample() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
               {
-                id: 341,
+                id: '341',
                 url: '#',
                 name: 'Mae Jemison',
                 location: 'Decatur, USA',
               },
               {
-                id: 256,
+                id: '256',
                 url: '#',
                 name: 'Ellen Ochoa',
                 location: 'Los Angeles, USA',
@@ -61,7 +61,7 @@ function AppProviderExample() {
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );

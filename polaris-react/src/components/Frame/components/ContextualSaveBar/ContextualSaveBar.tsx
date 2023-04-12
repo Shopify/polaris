@@ -2,10 +2,11 @@ import React, {useCallback} from 'react';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
-import {Stack} from '../../../Stack';
+import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import {classNames} from '../../../../utilities/css';
-import {ContextualSaveBarProps, useFrame} from '../../../../utilities/frame';
+import {useFrame} from '../../../../utilities/frame';
+import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
@@ -123,11 +124,11 @@ export function ContextualSaveBar({
             </Text>
           )}
           <div className={styles.ActionContainer}>
-            <Stack spacing="tight" wrap={false}>
+            <LegacyStack spacing="tight" wrap={false}>
               {secondaryMenu}
               {discardActionMarkup}
               {saveActionMarkup}
-            </Stack>
+            </LegacyStack>
           </div>
         </div>
       </div>

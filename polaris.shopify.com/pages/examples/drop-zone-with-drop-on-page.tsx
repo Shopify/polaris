@@ -1,13 +1,13 @@
-import {Stack, Thumbnail, DropZone, Page, Text} from '@shopify/polaris';
+import {LegacyStack, Thumbnail, DropZone, Page, Text} from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DropZoneWithDropOnPageExample() {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
 
   const handleDropZoneDrop = useCallback(
-    (dropFiles, _acceptedFiles, _rejectedFiles) =>
+    (dropFiles: File[], _acceptedFiles: File[], _rejectedFiles: File[]) =>
       setFiles((files) => [...files, ...dropFiles]),
     [],
   );
@@ -15,9 +15,9 @@ function DropZoneWithDropOnPageExample() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -33,16 +33,16 @@ function DropZoneWithDropOnPageExample() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   const uploadMessage = !uploadedFiles && <DropZone.FileUpload />;
 
   return (
     <Page
-      breadcrumbs={[{content: 'Products'}]}
+      breadcrumbs={[{content: 'Products', url: '/products'}]}
       title="Jar With Lock-Lid"
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
