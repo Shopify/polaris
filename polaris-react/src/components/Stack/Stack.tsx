@@ -41,7 +41,7 @@ export interface StackProps {
   distribution?: Distribution;
 }
 
-/** @deprecated Use LegacyStack or AlphaStack instead. */
+/** @deprecated Use LegacyStack or VerticalStack instead. */
 export const Stack = memo(function Stack({
   children,
   vertical,
@@ -53,7 +53,7 @@ export const Stack = memo(function Stack({
   if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
     console.warn(
-      'Deprecation: <Stack /> is deprecated. This component will be removed in a future major version of Polaris. Use <LegacyStack /> or <AlphaStack /> instead.',
+      'Deprecation: <Stack /> is deprecated. This component will be removed in a future major version of Polaris. Use <LegacyStack /> or <VerticalStack /> instead.',
     );
   }
 

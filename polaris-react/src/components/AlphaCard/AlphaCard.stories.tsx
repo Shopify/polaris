@@ -2,7 +2,7 @@ import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   AlphaCard,
-  AlphaStack,
+  VerticalStack,
   Bleed,
   Box,
   Divider,
@@ -17,12 +17,12 @@ export default {
 export function Default() {
   return (
     <AlphaCard>
-      <AlphaStack gap="5">
+      <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </AlphaStack>
+      </VerticalStack>
     </AlphaCard>
   );
 }
@@ -30,12 +30,12 @@ export function Default() {
 export function WithBackgroundSubdued() {
   return (
     <AlphaCard background="bg-subdued">
-      <AlphaStack gap="5">
+      <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </AlphaStack>
+      </VerticalStack>
     </AlphaCard>
   );
 }
@@ -43,12 +43,12 @@ export function WithBackgroundSubdued() {
 export function WithBorderRadiusRoundedAbove() {
   return (
     <AlphaCard roundedAbove="sm">
-      <AlphaStack gap="5">
+      <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </AlphaStack>
+      </VerticalStack>
     </AlphaCard>
   );
 }
@@ -56,12 +56,12 @@ export function WithBorderRadiusRoundedAbove() {
 export function WithResponsivePadding() {
   return (
     <AlphaCard padding={{xs: '5', sm: '6', md: '8'}} roundedAbove="sm">
-      <AlphaStack gap={{xs: '4', sm: '5'}}>
+      <VerticalStack gap={{xs: '4', sm: '5'}}>
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </AlphaStack>
+      </VerticalStack>
     </AlphaCard>
   );
 }
@@ -69,7 +69,7 @@ export function WithResponsivePadding() {
 export function WithSubduedSection() {
   return (
     <AlphaCard roundedAbove="sm">
-      <AlphaStack gap="5">
+      <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Staff accounts
         </Text>
@@ -79,14 +79,14 @@ export function WithSubduedSection() {
             <List.Item>Ezequiel Manno</List.Item>
           </List>
         </Box>
-      </AlphaStack>
+      </VerticalStack>
       <Bleed
         marginBlockEnd={{xs: '4', sm: '5'}}
         marginInline={{xs: '4', sm: '5'}}
       >
         <Divider />
         <Box background="bg-subdued" padding={{xs: '4', sm: '5'}}>
-          <AlphaStack gap="2">
+          <VerticalStack gap="2">
             <Text variant="headingSm" as="h3">
               Deactivated staff accounts
             </Text>
@@ -94,7 +94,7 @@ export function WithSubduedSection() {
               <List.Item>Felix Crafford</List.Item>
               <List.Item>Ezequiel Manno</List.Item>
             </List>
-          </AlphaStack>
+          </VerticalStack>
         </Box>
       </Bleed>
     </AlphaCard>
