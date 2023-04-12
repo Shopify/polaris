@@ -1,5 +1,5 @@
 ---
-title: Horizontal Stack
+title: Horizontal stack
 description: Use to display children horizontally in a row. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
