@@ -58,7 +58,8 @@ export function Default() {
           items: [
             {
               active: true,
-              content: 'Jaded Pixel',
+              content:
+                'Jaded Pixel Jaded Pixel Jaded Pixel Jaded Pixel Jaded Pixel Jaded Pixel',
               prefix: <Avatar size="small" name="Jaded Pixel" />,
               suffix: <Icon source={TickSmallMinor} />,
               truncate: true,
