@@ -27,7 +27,7 @@ export interface GridProps {
   gap?: Gap;
   children?: React.ReactNode;
 }
-/** @deprecated Use `Columns` instead or a combination of layout primitives (`Columns`, `Inline`, and `AlphaStack`) */
+
 export const Grid: React.FunctionComponent<GridProps> & {
   // eslint-disable-next-line import/no-deprecated
   Cell: typeof Cell;

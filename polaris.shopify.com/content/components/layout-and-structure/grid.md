@@ -1,7 +1,7 @@
 ---
 title: Grid
 description: Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
-category: Deprecated
+category: Layout and structure
 keywords:
   - one column
   - two column
@@ -13,11 +13,6 @@ keywords:
   - containers
   - full width containers
   - css grid
-status:
-  value: Deprecated
-  message: >-
-    Grid was built prior to layout primitives like columns, inline, and alpha stack. Comparatively, grid is difficult to learn, document, and understand its usage in a codebase.
-    The new layout primitives should be used in combination to achieve similar results to grid.
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
