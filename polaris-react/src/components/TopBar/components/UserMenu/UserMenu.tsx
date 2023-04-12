@@ -29,6 +29,8 @@ export interface UserMenuProps {
   open: boolean;
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
+  /** A custom activator that can be used when the default activator is not desired */
+  activatorContent?: React.ReactNode;
 }
 
 export function UserMenu({
@@ -41,10 +43,13 @@ export function UserMenu({
   onToggle,
   open,
   accessibilityLabel,
+  activatorContent,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
-  const activatorContentMarkup = (
+  const activatorContentMarkup = activatorContent ? (
+    activatorContent
+  ) : (
     <>
       <MessageIndicator active={showIndicator}>
         <Avatar

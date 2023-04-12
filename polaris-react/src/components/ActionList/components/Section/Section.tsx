@@ -57,18 +57,27 @@ export function Section({
     },
   );
 
-  const titleMarkup = section.title ? (
-    <Box
-      paddingBlockStart="4"
-      paddingInlineStart="4"
-      paddingBlockEnd="2"
-      paddingInlineEnd="4"
-    >
-      <Text as="p" variant="headingXs">
-        {section.title}
-      </Text>
-    </Box>
-  ) : null;
+  let titleMarkup: string | React.ReactNode = null;
+
+  if (section.title) {
+    titleMarkup =
+      typeof section.title === 'string' ? (
+        <Box
+          paddingBlockStart="4"
+          paddingInlineStart="4"
+          paddingBlockEnd="2"
+          paddingInlineEnd="4"
+        >
+          <Text as="p" variant="headingXs">
+            {section.title}
+          </Text>
+        </Box>
+      ) : (
+        <Box as="ul" padding="2">
+          {section.title}
+        </Box>
+      );
+  }
 
   let sectionRole: 'menu' | 'presentation' | undefined;
   switch (actionRole) {
