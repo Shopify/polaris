@@ -13,6 +13,9 @@ keywords:
   - containers
   - full width containers
   - css grid
+status:
+  value: Alpha
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
