@@ -12,6 +12,8 @@ import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
+import {Tooltip} from '../../../Tooltip';
+import {Truncate} from '../../../Truncate';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -34,6 +36,7 @@ export function Item({
   ellipsis,
   active,
   role,
+  truncate = false,
 }: ItemProps) {
   const className = classNames(
     styles.Item,
@@ -62,7 +65,15 @@ export function Item({
     );
   }
 
-  const contentText = ellipsis && content ? `${content}…` : content;
+  let contentText = null;
+
+  if (ellipsis && content) {
+    contentText = `${content}…`;
+  } else if (content) {
+    contentText = truncate ? truncateText(content) : content;
+  } else {
+    contentText = content;
+  }
 
   const contentMarkup = helpText ? (
     <>
@@ -102,7 +113,7 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack blockAlign="center" gap="4">
+    <HorizontalStack blockAlign="center" gap="4" wrap={!truncate}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
@@ -147,3 +158,14 @@ export function Item({
     </>
   );
 }
+
+const truncateText = (text: string) => {
+  const trimmedText = text.trim();
+  return trimmedText.length > 50 ? (
+    <Tooltip content={trimmedText} zIndexOverride={514}>
+      <Truncate>{trimmedText}</Truncate>
+    </Tooltip>
+  ) : (
+    trimmedText
+  );
+};
