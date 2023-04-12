@@ -55,17 +55,19 @@ export function Default() {
     <TopBar.UserMenu
       actions={[
         {
-          helpText: 'Jaded Pixel',
           items: [
             {
               active: true,
               content: 'Jaded Pixel',
               prefix: <Avatar size="small" name="Jaded Pixel" />,
               suffix: <Icon source={TickSmallMinor} />,
+              truncate: true,
             },
             {
-              content: 'Jaded Pixel 2.0',
+              content:
+                'Jaded Pixel 2.0 Jaded Pixel 2.0 Jaded Pixel 2.0 Jaded Pixel Pixel 2.0',
               prefix: <Avatar size="small" name="Jaded Pixel 2.0" />,
+              truncate: true,
             },
             {
               content: 'View all 3 stores',
@@ -84,7 +86,6 @@ export function Default() {
         },
         {
           title: 'Dharma Johnson',
-          helpText: 'dharma@jadedpixel.com',
           items: [{content: 'Manage account'}, {content: 'Log out'}],
         },
       ]}

@@ -4,6 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 import {Item} from '../Item';
 import {Text} from '../../../../Text';
 import {UnstyledLink} from '../../../../UnstyledLink';
+import {Truncate} from '../../../../Truncate';
 
 describe('<Item />', () => {
   it('adds a style property when the image prop is present', () => {
@@ -101,6 +102,16 @@ describe('<Item />', () => {
     expect(item).toContainReactComponent(UnstyledLink, {
       onClick: null,
     });
+  });
+
+  it('truncates content when truncate is true', () => {
+    const item = mountWithApp(
+      <Item
+        content="Test longer than usual string that probably overflows."
+        truncate
+      />,
+    );
+    expect(item).toContainReactComponent(Truncate);
   });
 });
 

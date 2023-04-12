@@ -204,6 +204,8 @@ export interface ActionListItemDescriptor
   suffix?: React.ReactNode;
   /**  Add an ellipsis suffix to action content */
   ellipsis?: boolean;
+  /** Truncate action content */
+  truncate?: boolean;
   /** Whether the action is active or not */
   active?: boolean;
   /** Defines a role for the action */
