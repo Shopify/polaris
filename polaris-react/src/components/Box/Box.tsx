@@ -250,8 +250,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         ? `var(--p-color-${outlineColor})`
         : undefined,
       '--pc-box-outline-style': outlineStyleValue,
-      '--pc-box-outline-width': borderWidth
-        ? `var(--p-outline-width-${borderWidth})`
+      '--pc-box-outline-width': outlineWidth
+        ? `var(--p-border-width-${outlineWidth})`
         : undefined,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
