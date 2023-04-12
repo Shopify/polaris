@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Box} from '../../../Box';
 import {CloseButton} from '../CloseButton';
-import {Columns} from '../../../Columns';
+import {HorizontalGrid} from '../../../HorizontalGrid';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Text} from '../../../Text';
 
@@ -41,7 +41,7 @@ export function Header({
       paddingInlineEnd="5"
       borderBlockEnd="divider"
     >
-      <Columns columns={{xs: '1fr auto'}} gap="4">
+      <HorizontalGrid columns={{xs: '1fr auto'}} gap="4">
         <HorizontalStack gap="4" blockAlign="center">
           <Text id={id} as="h2" variant="headingLg" breakWord>
             {children}
@@ -52,7 +52,7 @@ export function Header({
           titleHidden={titleHidden}
           onClick={onClose}
         />
-      </Columns>
+      </HorizontalGrid>
     </Box>
   );
 }

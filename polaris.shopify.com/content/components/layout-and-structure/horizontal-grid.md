@@ -1,5 +1,5 @@
 ---
-title: Columns
+title: Horizontal Grid
 description: Use to lay out children horizontally with equal gap between columns. Based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 category: Layout and structure
 keywords:

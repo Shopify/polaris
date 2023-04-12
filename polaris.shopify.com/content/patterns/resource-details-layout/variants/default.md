@@ -28,7 +28,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Columns`](/components/layout-and-structure/columns) and [`Page`](/components/layout-and-structure/page) components.
+This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Page`](/components/layout-and-structure/page) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -85,7 +85,7 @@ function ResourceDetailsLayout() {
         hasNext: true,
       }}
     >
-      <Columns columns={{xs: 1, md: '2fr 1fr'}} gap="4">
+      <HorizontalGrid columns={{xs: 1, md: '2fr 1fr'}} gap="4">
         <VerticalStack gap="4">
           <AlphaCard roundedAbove="sm">
             <VerticalStack gap="4">
@@ -98,10 +98,10 @@ function ResourceDetailsLayout() {
           <AlphaCard roundedAbove="sm">
             <VerticalStack gap="4">
               <SkeletonDisplayText size="small" />
-              <Columns columns={{xs: 1, md: 2}}>
+              <HorizontalGrid columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
-              </Columns>
+              </HorizontalGrid>
             </VerticalStack>
           </AlphaCard>
         </VerticalStack>
@@ -131,7 +131,7 @@ function ResourceDetailsLayout() {
             </VerticalStack>
           </AlphaCard>
         </VerticalStack>
-      </Columns>
+      </HorizontalGrid>
     </Page>
   );
 }
