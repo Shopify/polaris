@@ -104,6 +104,8 @@
     "postcss-modules": "^4.2.2",
     "postcss-pxtorem": "^5.1.1",
     "puppeteer": "^14.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^3.0.0",
     "sass-loader": "^12.4.0",
     "webpack": "5"
