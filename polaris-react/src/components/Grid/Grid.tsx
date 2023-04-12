@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-// eslint-disable-next-line import/no-deprecated
 import {Cell} from './components';
 import styles from './Grid.scss';
 
@@ -29,7 +28,6 @@ export interface GridProps {
 }
 
 export const Grid: React.FunctionComponent<GridProps> & {
-  // eslint-disable-next-line import/no-deprecated
   Cell: typeof Cell;
 } = function Grid({gap, areas, children, columns}: GridProps) {
   const style = {
@@ -50,15 +48,6 @@ export const Grid: React.FunctionComponent<GridProps> & {
     '--pc-grid-areas-xl': formatAreas(areas?.xl),
   } as React.CSSProperties;
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Deprecation: <Grid /> is deprecated. This component will be removed in a future major version of Polaris. Use <Columns /> instead or a combination of <Columns />, <Inline />, and <AlphaStack />',
-      );
-    }
-  }, []);
-
   return (
     <div className={styles.Grid} style={style}>
       {children}
@@ -71,5 +60,4 @@ export function formatAreas(areas?: string[]) {
   return `'${areas?.join(`' '`)}'`;
 }
 
-// eslint-disable-next-line import/no-deprecated
 Grid.Cell = Cell;
