@@ -63,6 +63,7 @@ module.exports = {
         'polaris-react',
         'src',
       ),
+      '@shopify/polaris-patterns': path.resolve(__dirname, '..', 'src'),
     };
     return config;
   },
