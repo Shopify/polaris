@@ -200,7 +200,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     // eslint-disable-next-line no-nested-ternary
     const outlineStyleValue = outlineStyle
       ? outlineStyle
-      : borderColor || borderWidth
+      : outlineColor || outlineWidth
       ? 'solid'
       : undefined;
 
