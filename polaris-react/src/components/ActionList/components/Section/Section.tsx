@@ -73,9 +73,7 @@ export function Section({
           </Text>
         </Box>
       ) : (
-        <Box as="ul" padding="2">
-          {section.title}
-        </Box>
+        <Box padding="2">{section.title}</Box>
       );
   }
 
