@@ -122,6 +122,8 @@ interface NonMutuallyExclusiveProps {
   role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
+  /** Increment value for numeric and date-time inputs when using Page Up or Page Down */
+  largeStep?: number;
   /** Enable automatic completion by the browser. Set to "off" when you do not want the browser to fill in info */
   autoComplete: string;
   /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
@@ -163,7 +165,7 @@ interface NonMutuallyExclusiveProps {
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
   /** When provided, callback fired instead of onChange when value is changed via the number step control  */
-  onStepperChange?(value: string, id: string): void;
+  onSpinButtonClick?(value: string, id: string): void;
   /** Callback fired when input is focused */
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
@@ -209,6 +211,7 @@ export function TextField({
   id: idProp,
   role,
   step,
+  largeStep,
   autoComplete,
   max,
   maxLength,
@@ -231,7 +234,7 @@ export function TextField({
   suggestion,
   onClearButtonClick,
   onChange,
-  onStepperChange,
+  onSpinButtonClick,
   onFocus,
   onBlur,
   borderless,
@@ -356,8 +359,8 @@ export function TextField({
     ) : null;
 
   const handleNumberChange = useCallback(
-    (steps: number) => {
-      if (onChange == null && onStepperChange == null) {
+    (steps: number, stepAmount = normalizedStep) => {
+      if (onChange == null && onSpinButtonClick == null) {
         return;
       }
       // Returns the length of decimal places in a number
@@ -370,15 +373,15 @@ export function TextField({
 
       // Making sure the new value has the same length of decimal places as the
       // step / value has.
-      const decimalPlaces = Math.max(dpl(numericValue), dpl(normalizedStep));
+      const decimalPlaces = Math.max(dpl(numericValue), dpl(stepAmount));
 
       const newValue = Math.min(
         Number(normalizedMax),
-        Math.max(numericValue + steps * normalizedStep, Number(normalizedMin)),
+        Math.max(numericValue + steps * stepAmount, Number(normalizedMin)),
       );
 
-      if (onStepperChange != null) {
-        onStepperChange(String(newValue.toFixed(decimalPlaces)), id);
+      if (onSpinButtonClick != null) {
+        onSpinButtonClick(String(newValue.toFixed(decimalPlaces)), id);
       } else if (onChange != null) {
         onChange(String(newValue.toFixed(decimalPlaces)), id);
       }
@@ -388,7 +391,7 @@ export function TextField({
       normalizedMax,
       normalizedMin,
       onChange,
-      onStepperChange,
+      onSpinButtonClick,
       normalizedStep,
       value,
     ],
@@ -546,6 +549,7 @@ export function TextField({
     onBlur: handleOnBlur,
     onClick: handleClickChild,
     onKeyPress: handleKeyPress,
+    onKeyDown: handleKeyDown,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
   });
@@ -658,6 +662,40 @@ export function TextField({
     }
 
     event.preventDefault();
+  }
+
+  function handleKeyDown(event: React.KeyboardEvent) {
+    if (type !== 'number') {
+      return;
+    }
+
+    const {key, which} = event;
+    if ((which === Key.Home || key === 'Home') && min !== undefined) {
+      if (onSpinButtonClick != null) {
+        onSpinButtonClick(String(min), id);
+      } else if (onChange != null) {
+        onChange(String(min), id);
+      }
+    }
+
+    if ((which === Key.End || key === 'End') && max !== undefined) {
+      if (onSpinButtonClick != null) {
+        onSpinButtonClick(String(max), id);
+      } else if (onChange != null) {
+        onChange(String(max), id);
+      }
+    }
+
+    if ((which === Key.PageUp || key === 'PageUp') && largeStep !== undefined) {
+      handleNumberChange(1, largeStep);
+    }
+
+    if (
+      (which === Key.PageDown || key === 'PageDown') &&
+      largeStep !== undefined
+    ) {
+      handleNumberChange(-1, largeStep);
+    }
   }
 
   function handleOnBlur(event: React.FocusEvent) {
