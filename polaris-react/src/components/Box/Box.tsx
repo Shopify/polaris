@@ -130,6 +130,8 @@ export interface BoxProps extends React.AriaAttributes {
   outlineColor?: ColorBorderAlias | 'transparent';
   /** Outline style */
   outlineStyle?: LineStyles;
+  /** Outline width */
+  outlineWidth?: BorderWidthScale;
   /** Visually hide the contents during print */
   printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
@@ -165,6 +167,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       overflowY,
       outlineColor,
       outlineStyle,
+      outlineWidth,
       padding,
       paddingBlockStart,
       paddingBlockEnd,
@@ -241,6 +244,9 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         ? `var(--p-color-${outlineColor})`
         : undefined,
       '--pc-box-outline-style': outlineStyleValue,
+      '--pc-box-outline-width': borderWidth
+        ? `var(--p-outline-width-${borderWidth})`
+        : undefined,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
       ...getResponsiveProps(
