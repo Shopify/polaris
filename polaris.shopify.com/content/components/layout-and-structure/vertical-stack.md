@@ -1,5 +1,5 @@
 ---
-title: VerticalStack
+title: Vertical stack
 description: Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
