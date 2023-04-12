@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaStack, Box, Icon} from '@shopify/polaris';
+import {VerticalStack, Box, Icon} from '@shopify/polaris';
 import type {BoxProps, IconProps} from '@shopify/polaris';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 
@@ -45,13 +45,13 @@ export function WithBackdrop() {
     </Box>
   );
   return (
-    <AlphaStack gap="1">
+    <VerticalStack gap="1">
       <BackdropIcon iconColor="base" boxBackground="bg-strong" />
       <BackdropIcon iconColor="highlight" boxBackground="bg-info" />
       <BackdropIcon iconColor="success" boxBackground="bg-success" />
       <BackdropIcon iconColor="warning" boxBackground="bg-warning" />
       <BackdropIcon iconColor="critical" boxBackground="bg-critical" />
-    </AlphaStack>
+    </VerticalStack>
   );
 }
 

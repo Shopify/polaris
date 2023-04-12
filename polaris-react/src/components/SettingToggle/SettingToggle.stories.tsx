@@ -8,7 +8,7 @@ import {
   AlphaCard,
   Button,
   Badge,
-  AlphaStack,
+  VerticalStack,
   useBreakpoints,
 } from '@shopify/polaris';
 import {CircleInformationMajor} from '@shopify/polaris-icons';
@@ -119,7 +119,7 @@ export function WithPrimitiveComponents() {
   );
 
   const descriptionMarkup = (
-    <AlphaStack gap="4">
+    <VerticalStack gap="4">
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
@@ -128,22 +128,22 @@ export function WithPrimitiveComponents() {
           <Inline align="start">{actionMarkup}</Inline>
         </Box>
       ) : null}
-    </AlphaStack>
+    </VerticalStack>
   );
 
   return (
     <AlphaCard>
-      <AlphaStack gap={{xs: '4', sm: '5'}}>
+      <VerticalStack gap={{xs: '4', sm: '5'}}>
         <Box width="100%">
-          <AlphaStack gap={{xs: '2', sm: '4'}}>
+          <VerticalStack gap={{xs: '2', sm: '4'}}>
             {headerMarkup}
             {descriptionMarkup}
-          </AlphaStack>
+          </VerticalStack>
         </Box>
         <Text variant="bodyMd" as="p">
           Your checkout is only accepting test payments.
         </Text>
-      </AlphaStack>
+      </VerticalStack>
     </AlphaCard>
   );
 }
@@ -228,7 +228,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   );
 
   const descriptionMarkup = (
-    <AlphaStack gap="4">
+    <VerticalStack gap="4">
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
@@ -237,22 +237,22 @@ export function WithPrimitiveComponentsAndLongTitle() {
           <Inline align="start">{actionMarkup}</Inline>
         </Box>
       ) : null}
-    </AlphaStack>
+    </VerticalStack>
   );
 
   return (
     <AlphaCard>
-      <AlphaStack gap={{xs: '4', sm: '5'}}>
+      <VerticalStack gap={{xs: '4', sm: '5'}}>
         <Box width="100%">
-          <AlphaStack gap={{xs: '2', sm: '4'}}>
+          <VerticalStack gap={{xs: '2', sm: '4'}}>
             {headerMarkup}
             {descriptionMarkup}
-          </AlphaStack>
+          </VerticalStack>
         </Box>
         <Text variant="bodyMd" as="p">
           Your checkout is only accepting test payments.
         </Text>
-      </AlphaStack>
+      </VerticalStack>
     </AlphaCard>
   );
 }

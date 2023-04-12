@@ -5,7 +5,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
-import {AlphaStack} from '../../../AlphaStack';
+import {VerticalStack} from '../../../VerticalStack';
 import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 import {Inline} from '../../../Inline';
@@ -178,10 +178,10 @@ export function FilterPill({
       >
         <div className={styles.PopoverWrapper}>
           <Popover.Section>
-            <AlphaStack gap="1">
+            <VerticalStack gap="1">
               {filter}
               {clearButtonMarkup}
-            </AlphaStack>
+            </VerticalStack>
           </Popover.Section>
         </div>
       </Popover>

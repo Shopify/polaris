@@ -26,7 +26,6 @@ export interface GridProps {
   gap?: Gap;
   children?: React.ReactNode;
 }
-
 export const Grid: React.FunctionComponent<GridProps> & {
   Cell: typeof Cell;
 } = function Grid({gap, areas, children, columns}: GridProps) {

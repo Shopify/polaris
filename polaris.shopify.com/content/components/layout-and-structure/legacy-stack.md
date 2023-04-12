@@ -20,7 +20,7 @@ keywords:
   - legacy stack
 status:
   value: Legacy
-  message: This is a legacy component and will be deprecated. The new [AlphaStack component](/components/layout-and-structure/alpha-stack) can be used in combination with the new layout primitives to achieve similar results to LegacyStack. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+  message: This is a legacy component and will be deprecated. The new [VerticalStack component](/components/layout-and-structure/vertical-stack) can be used in combination with the new layout primitives to achieve similar results to LegacyStack. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: legacy-stack-default.tsx
     title: Default
