@@ -161,11 +161,11 @@ export function Item({
 
 const truncateText = (text: string) => {
   const trimmedText = text.trim();
-  return trimmedText.length > 50 ? (
+  return (
     <Tooltip content={trimmedText} zIndexOverride={514}>
-      <Truncate>{trimmedText}</Truncate>
+      <div className={styles.Trimmed}>
+        <Truncate>{trimmedText}</Truncate>
+      </div>
     </Tooltip>
-  ) : (
-    trimmedText
   );
 };
