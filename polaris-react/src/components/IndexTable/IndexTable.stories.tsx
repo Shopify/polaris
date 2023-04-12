@@ -775,7 +775,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     return {
       id: `${num}`,
       url: '#',
-      name: 'Mae Jemison',
+      name: `Mae Jemison ${num}`,
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$24,00',
