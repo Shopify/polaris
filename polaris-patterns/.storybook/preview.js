@@ -1,8 +1,8 @@
 import React from 'react';
 import {breakpoints} from '@shopify/polaris-tokens';
 import {I18nContext, I18nManager} from '@shopify/react-i18n';
+import {AppProvider} from '@shopify/polaris';
 
-import {AppProvider} from '../src';
 import polarisEnTranslations from '../../polaris-react/locales/en.json';
 
 function AppProviderDecorator(Story, context) {

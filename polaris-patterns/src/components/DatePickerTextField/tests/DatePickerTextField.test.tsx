@@ -6,7 +6,7 @@ import {DatePicker} from '../../DatePicker';
 import {
   formatDateToYearMonthDayDateString,
   parseYearMonthDayDateString,
-} from '../../utilities/dates';
+} from '../../../utilities/dates';
 import type {Props} from '../DatePickerTextField';
 import {DatePickerTextField} from '../DatePickerTextField';
 

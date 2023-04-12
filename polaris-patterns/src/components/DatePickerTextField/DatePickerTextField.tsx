@@ -12,12 +12,12 @@ import {
 import {CalendarMinor} from '@shopify/polaris-icons';
 import {useI18n} from '@shopify/react-i18n';
 
-import {focusFirstFocusableNode} from '../utilities/focus';
+import {focusFirstFocusableNode} from '../../utilities/focus';
 import {
   isValidYearMonthDayDateString,
   parseYearMonthDayDateString,
   formatDateToYearMonthDayDateString,
-} from '../utilities/dates';
+} from '../../utilities/dates';
 import {DatePicker} from '../DatePicker';
 
 export interface Props {
