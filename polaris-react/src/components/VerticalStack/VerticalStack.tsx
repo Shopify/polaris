@@ -61,10 +61,10 @@ export const VerticalStack = ({
   );
 
   const style = {
-    '--pc-stack-align': align ? `${align}` : '',
-    '--pc-stack-inline-align': inlineAlign ? `${inlineAlign}` : '',
-    '--pc-stack-order': reverseOrder ? 'column-reverse' : 'column',
-    ...getResponsiveProps('stack', 'gap', 'space', gap),
+    '--pc-vertical-stack-align': align ? `${align}` : '',
+    '--pc-vertical-stack-inline-align': inlineAlign ? `${inlineAlign}` : '',
+    '--pc-vertical-stack-order': reverseOrder ? 'column-reverse' : 'column',
+    ...getResponsiveProps('vertical-stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
   return React.createElement(
