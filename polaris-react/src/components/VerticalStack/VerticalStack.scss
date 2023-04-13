@@ -1,19 +1,19 @@
 @import '../../styles/common';
 
 .VerticalStack {
-  @include responsive-props('stack', 'gap', 'gap');
+  @include responsive-props('vertical-stack', 'gap', 'gap');
   // stylelint-disable -- Polaris component custom properties
-  --pc-stack-align: initial;
-  --pc-stack-inline-align: initial;
-  --pc-stack-order: initial;
+  --pc-vertical-stack-align: initial;
+  --pc-vertical-stack-inline-align: initial;
+  --pc-vertical-stack-order: initial;
   // stylelint-enable
   display: flex;
   // stylelint-disable-next-line -- custom property to set flex direction
-  flex-direction: var(--pc-stack-order);
+  flex-direction: var(--pc-vertical-stack-order);
   // stylelint-disable-next-line -- custom property to set horizontal alignment
-  align-items: var(--pc-stack-inline-align);
+  align-items: var(--pc-vertical-stack-inline-align);
   // stylelint-disable-next-line -- custom property to set vertical alignment
-  justify-content: var(--pc-stack-align);
+  justify-content: var(--pc-vertical-stack-align);
 }
 
 .listReset {

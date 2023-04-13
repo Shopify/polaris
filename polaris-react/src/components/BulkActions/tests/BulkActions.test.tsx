@@ -3,6 +3,7 @@ import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../../ActionList';
+import {Tooltip} from '../../Tooltip';
 import {BulkActionButton, BulkActionMenu} from '../components';
 import type {BulkActionButtonProps} from '../components';
 import {BulkActions} from '../BulkActions';
@@ -304,6 +305,26 @@ describe('<BulkActions />', () => {
         bulkActions.find(BulkActionButton)?.trigger('onAction');
 
         expect(spy).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
+
+  describe('more actions', () => {
+    it('will be wrapped in a tooltip', () => {
+      const manyBulkActions = [
+        {content: 'Action'},
+        {content: 'Action 2'},
+        {content: 'Action 3'},
+        {content: 'Action 4'},
+        {content: 'Action 5'},
+        {content: 'Action 6'},
+      ];
+      const bulkActions = mountWithApp(
+        <BulkActions {...bulkActionProps} actions={manyBulkActions} />,
+      );
+
+      expect(bulkActions).toContainReactComponent(Tooltip, {
+        content: 'More actions',
       });
     });
   });

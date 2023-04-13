@@ -331,11 +331,6 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/structure/card',
-    destination: '/components/layout-and-structure/alpha-card',
-    permanent: false,
-  },
-  {
     source: '/components/layout-and-structure/card',
     destination: '/components/layout-and-structure/alpha-card',
     permanent: false,
@@ -353,11 +348,6 @@ const layoutAndStructure = [
   {
     source: '/components/callout-card',
     destination: '/components/layout-and-structure/callout-card',
-    permanent: false,
-  },
-  {
-    source: '/components/card',
-    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
@@ -396,7 +386,7 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/horizontal-stack',
+    source: '/components/inline',
     destination: '/components/layout-and-structure/horizontal-stack',
     permanent: false,
   },

@@ -10,10 +10,10 @@ import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
 import type {AppliedFilterInterface, FilterInterface} from '../../types';
-import {Link} from '../Link';
 import {HorizontalStack} from '../HorizontalStack';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
+import {Button} from '../Button';
 
 import {FilterPill, SearchField} from './components';
 import styles from './Filters.scss';
@@ -328,11 +328,14 @@ export function Filters({
             styles.MultiplePinnedFilterClearAll,
         )}
       >
-        <Link onClick={handleClearAllFilters} removeUnderline>
-          <Text variant="bodySm" fontWeight="semibold" as="span">
-            {i18n.translate('Polaris.Filters.clearFilters')}
-          </Text>
-        </Link>
+        <Button
+          size="micro"
+          plain
+          onClick={handleClearAllFilters}
+          removeUnderline
+        >
+          {i18n.translate('Polaris.Filters.clearFilters')}
+        </Button>
       </div>
     ) : null;
 
