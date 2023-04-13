@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-$content-max-width: 176px;
-
 .Item {
   // stylelint-disable -- Polaris component custom properties
   --pc-action-list-image-size: 20px;
@@ -125,8 +123,4 @@ $content-max-width: 176px;
   min-width: 0;
   max-width: 100%;
   flex: 1 1 auto;
-
-  .Trimmed {
-    max-width: $content-max-width;
-  }
 }

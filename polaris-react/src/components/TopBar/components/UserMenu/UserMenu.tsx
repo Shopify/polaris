@@ -43,12 +43,12 @@ export function UserMenu({
   onToggle,
   open,
   accessibilityLabel,
-  activatorContent,
+  customActivator,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
-  const activatorContentMarkup = activatorContent ? (
-    activatorContent
+  const activatorContentMarkup = customActivator ? (
+    customActivator
   ) : (
     <>
       <MessageIndicator active={showIndicator}>
