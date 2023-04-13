@@ -1,4 +1,5 @@
 import React from 'react';
+import {render} from '@testing-library/react';
 import {
   createMount,
   mount,
@@ -35,3 +36,6 @@ export const mountWithApp = createMount<
     );
   },
 });
+
+export const renderWithApp = (element: React.ReactElement) =>
+  render(<PolarisTestProvider i18n={{}}>{element}</PolarisTestProvider>);

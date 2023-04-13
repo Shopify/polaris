@@ -73,6 +73,7 @@
     "@storybook/addon-toolbars": "^6.5.12",
     "@storybook/addon-viewport": "^6.5.12",
     "@storybook/react": "^6.5.12",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^18.0.33",
     "change-case": "^3.1.0",
     "chromatic": "^6.17.3",
