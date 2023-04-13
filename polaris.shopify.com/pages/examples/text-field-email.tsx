@@ -5,7 +5,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function EmailFieldExample() {
   const [value, setValue] = useState('bernadette.lapresse@jadedpixel.com');
 
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange = useCallback(
+    (newValue: string) => setValue(newValue),
+    [],
+  );
 
   return (
     <TextField

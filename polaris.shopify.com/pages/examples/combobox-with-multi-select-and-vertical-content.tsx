@@ -5,17 +5,18 @@ import {
   EmptySearchResult,
   Combobox,
   Text,
+  AutoSelection,
 } from '@shopify/polaris';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function MultiselectTagComboboxExample() {
-  const [selectedTags, setSelectedTags] = useState(['Rustic']);
+  const [selectedTags, setSelectedTags] = useState<string[]>(['Rustic']);
   const [value, setValue] = useState('');
   const [suggestion, setSuggestion] = useState('');
 
   const handleActiveOptionChange = useCallback(
-    (activeOption) => {
+    (activeOption: string) => {
       const activeOptionIsAction = activeOption === value;
 
       if (!activeOptionIsAction && !selectedTags.includes(activeOption)) {
@@ -27,7 +28,7 @@ function MultiselectTagComboboxExample() {
     [value, selectedTags],
   );
   const updateSelection = useCallback(
-    (selected) => {
+    (selected: string) => {
       const nextSelectedTags = new Set([...selectedTags]);
 
       if (nextSelectedTags.has(selected)) {
@@ -43,7 +44,7 @@ function MultiselectTagComboboxExample() {
   );
 
   const removeTag = useCallback(
-    (tag) => () => {
+    (tag: string) => () => {
       updateSelection(tag);
     },
     [updateSelection],
@@ -55,7 +56,7 @@ function MultiselectTagComboboxExample() {
   }, [selectedTags]);
 
   const formatOptionText = useCallback(
-    (option) => {
+    (option: string) => {
       const trimValue = value.trim().toLocaleLowerCase();
       const matchIndex = option.toLocaleLowerCase().indexOf(trimValue);
 
@@ -137,7 +138,7 @@ function MultiselectTagComboboxExample() {
   const listboxMarkup =
     optionMarkup || actionMarkup || emptyStateMarkup ? (
       <Listbox
-        autoSelection="FIRST"
+        autoSelection={AutoSelection.None}
         onSelect={updateSelection}
         onActiveOptionChange={handleActiveOptionChange}
       >

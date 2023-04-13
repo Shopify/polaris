@@ -64,7 +64,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/at-rule-disallowed-list': {
         include: [
           // Legacy mixins
-          'color-icon',
           'recolor-icon',
           'ms-high-contrast-color',
         ].map(matchNameRegExp),
@@ -227,11 +226,9 @@ const stylelintPolarisCoverageOptions = {
   ],
   motion: [
     {
-      'function-disallowed-list': [
-        'control-icon-transition',
-        'duration',
-        'easing',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['control-icon-transition'].map(
+        matchNameRegExp,
+      ),
       'declaration-property-unit-disallowed-list': [
         {
           '/^animation/': ['ms', 's'],
@@ -244,13 +241,7 @@ const stylelintPolarisCoverageOptions = {
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
-        /\$duration-data/,
-        /\$polaris-duration-map/,
         /\$skeleton-shimmer-duration/,
-        /\$easing-data/,
-        // Legacy custom properties
-        /--p-duration-1-0-0/,
-        /--p-duration-1-5-0/,
       ],
     },
     {
@@ -269,11 +260,9 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'property-disallowed-list': ['text-transform'],
-      'function-disallowed-list': [
-        'font-family',
-        'font-size',
-        'line-height',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['font-size', 'line-height'].map(
+        matchNameRegExp,
+      ),
       'polaris/at-rule-disallowed-list': {
         include: [
           'truncate',
@@ -296,16 +285,10 @@ const stylelintPolarisCoverageOptions = {
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
-        /\$typography-condensed/,
-        /\$typography-condensed/,
         /\$base-font-size/,
         /\$line-height-data/,
-        /\$font-family-data/,
         /\$font-size-data/,
         /\$default-browser-font-size/,
-        // Legacy custom properties
-        /--p-button-font/,
-        /--p-badge-font/,
       ],
     },
     {
@@ -356,16 +339,10 @@ const stylelintPolarisCoverageOptions = {
         'control-slim-height',
         'mobile-nav-width',
         'thumbnail-size',
-        'icon-size',
         'top-bar-height',
       ].map(matchNameRegExp),
       'polaris/at-rule-disallowed-list': {
-        include: [
-          'layout-flex-fix',
-          'safe-area-for',
-          'skeleton-page-header-layout',
-          'skeleton-page-secondary-actions-layout',
-        ].map(matchNameRegExp),
+        include: ['layout-flex-fix', 'safe-area-for'].map(matchNameRegExp),
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
@@ -378,9 +355,6 @@ const stylelintPolarisCoverageOptions = {
         // Legacy custom properties
         /--p-range-slider-thumb-size-base/,
         /--p-range-slider-thumb-size-active/,
-        /--p-range-slider-thumb-scale/,
-        /--p-override-visible/,
-        /--p-icon-size/,
         /--p-choice-size/,
         /--p-icon-size-small/,
         /--p-icon-size-medium/,
@@ -392,7 +366,7 @@ const stylelintPolarisCoverageOptions = {
   ],
   spacing: [
     {
-      'function-disallowed-list': ['control-vertical-padding', 'spacing'].map(
+      'function-disallowed-list': ['control-vertical-padding'].map(
         matchNameRegExp,
       ),
       'declaration-property-unit-disallowed-list': [
@@ -405,8 +379,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$polaris-spacing/,
-        /\$spacing-data/,
-        /\$actions-vertical-spacing/,
         // Legacy custom properties
         /--p-button-group-item-spacing/,
         /--p-choice-margin/,
@@ -420,11 +392,6 @@ const stylelintPolarisCoverageOptions = {
   ],
   shape: [
     {
-      'function-disallowed-list': [
-        'border-radius',
-        'border-width',
-        'border',
-      ].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
           'border-width': disallowedUnits,
@@ -444,10 +411,6 @@ const stylelintPolarisCoverageOptions = {
         ].map(matchNameRegExp),
       },
       'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$border-radius-data/,
-        /\$border-width-data/,
-        /\$borders-data/,
         // Legacy custom properties
         /--p-border-radius-base/,
         /--p-border-radius-large/,
@@ -460,7 +423,6 @@ const stylelintPolarisCoverageOptions = {
         /--p-banner-border-highlight/,
         /--p-banner-border-warning/,
         /--p-banner-border-critical/,
-        /--p-text-field-focus-ring-border-radius/,
         /--p-text-field-focus-ring-offset/,
         /--p-border-base/,
         /--p-border-dark/,
@@ -572,9 +534,13 @@ const stylelintPolarisCoverageOptions = {
     {
       'polaris/media-query-allowed-list': {
         // Allowed media types and media conditions
-        // https://www.w3.org/TR/mediaquery5/#media
+        // https://www.w3.org/TR/mediaqueries-5/#media
         allowedMediaTypes: ['print', 'screen'],
-        allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
+        allowedMediaFeatureNames: [
+          'forced-colors',
+          '-ms-high-contrast',
+          'prefers-reduced-motion',
+        ],
         allowedScssInterpolations: [
           // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
           matchNameRegExp(
@@ -656,17 +622,11 @@ const stylelintPolarisCoverageOptions = {
         'available-names',
         'map-extend',
         'em',
-        'px',
         'rem',
       ].map(matchNameRegExp),
       'polaris/global-disallowed-list': [
         // Legacy variables
         / \* \$/,
-        // Legacy custom properties
-        /--p-override-none/,
-        /--p-override-one/,
-        /--p-override-zero/,
-        /--p-non-null-content/,
       ],
     },
     {
@@ -679,15 +639,7 @@ const stylelintPolarisCoverageOptions = {
 module.exports = {
   customSyntax: 'postcss-scss',
   reportDescriptionlessDisables: true,
-  reportNeedlessDisables: [
-    true,
-    {
-      // Report needless disables for all rules except layout coverage rules
-      // Note: This doesn't affect the default Stylelint behavior/reporting
-      // and is only need because we dynamically create these rule names
-      except: ['all', /^polaris\/layout\/.+$/],
-    },
-  ],
+  reportNeedlessDisables: true,
   reportInvalidScopeDisables: [
     true,
     {

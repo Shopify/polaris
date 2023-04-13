@@ -3,7 +3,8 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Checkbox} from '../../Checkbox';
 import {Scrollable} from '../../../../Scrollable';
-import {Option, OptionProps} from '../Option';
+import {Option} from '../Option';
+import type {OptionProps} from '../Option';
 
 describe('<Option />', () => {
   const defaultProps: OptionProps = {

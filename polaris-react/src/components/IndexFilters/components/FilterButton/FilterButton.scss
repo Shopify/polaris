@@ -1,0 +1,29 @@
+@import '../../../../styles/common';
+
+.FilterButton {
+  // stylelint-disable-next-line -- using base button styling
+  @include button-base;
+  // stylelint-disable-next-line -- required to make the 32px height with 20px icon and 1px border
+  padding: 5px;
+  min-height: 32px;
+  min-width: 32px;
+
+  cursor: pointer;
+}
+
+.FilterButton.Disabled {
+  background: var(--p-color-bg-disabled);
+  border-color: transparent;
+  box-shadow: none;
+  cursor: default;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: var(--p-color-bg-disabled);
+  }
+
+  path {
+    fill: var(--p-color-icon-subdued);
+  }
+}

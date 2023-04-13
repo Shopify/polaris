@@ -55,11 +55,11 @@ const CodesandboxButton = (props: Props) => {
         } as any,
         isBinary: false,
       },
-      'App.js': {
+      'App.tsx': {
         content: getAppCode(code),
         isBinary: false,
       },
-      'index.js': {
+      'index.tsx': {
         content: indexCode,
         isBinary: false,
       },
@@ -78,7 +78,7 @@ const CodesandboxButton = (props: Props) => {
       className={className}
     >
       <input type="hidden" name="parameters" value={parameters} />
-      <input type="hidden" name="query" value="module=App.js" />
+      <input type="hidden" name="query" value="module=App.tsx" />
       <button type="submit" className={styles.Button}>
         Edit in CodeSandbox
       </button>

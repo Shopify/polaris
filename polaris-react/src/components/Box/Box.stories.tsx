@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaStack, Box, Icon} from '@shopify/polaris';
+import {VerticalStack, Box, Icon} from '@shopify/polaris';
 import {PaintBrushMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -17,7 +17,7 @@ export function Default() {
 
 export function WithDarkBorder() {
   return (
-    <Box background="surface" padding="4" border="dark">
+    <Box background="bg" padding="4" border="dark">
       <Icon source={PaintBrushMajor} color="base" />
     </Box>
   );
@@ -25,7 +25,7 @@ export function WithDarkBorder() {
 
 export function WithBorderRadius() {
   return (
-    <Box background="surface" padding="4" borderRadius="2">
+    <Box background="bg" padding="4" borderRadius="2">
       <Icon source={PaintBrushMajor} color="highlight" />
     </Box>
   );
@@ -33,12 +33,12 @@ export function WithBorderRadius() {
 
 export function WithResponsivePadding() {
   return (
-    <AlphaStack gap="4">
-      <Box background="surface" padding={{xs: '2', sm: '8'}} border="dark">
+    <VerticalStack gap="4">
+      <Box background="bg" padding={{xs: '2', sm: '8'}} border="dark">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
       <Box
-        background="surface"
+        background="bg"
         padding="2"
         paddingBlockStart={{xs: '4', sm: '10'}}
         border="dark"
@@ -46,7 +46,7 @@ export function WithResponsivePadding() {
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
       <Box
-        background="surface"
+        background="bg"
         padding="2"
         paddingBlockEnd={{xs: '4', sm: '10'}}
         border="dark"
@@ -54,20 +54,16 @@ export function WithResponsivePadding() {
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
       <Box
-        background="surface"
+        background="bg"
         padding="2"
         paddingInlineStart={{xs: '4', sm: '10'}}
         border="dark"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-      <Box
-        background="surface"
-        paddingInlineEnd={{xs: '4', sm: '10'}}
-        border="dark"
-      >
+      <Box background="bg" paddingInlineEnd={{xs: '4', sm: '10'}} border="dark">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-    </AlphaStack>
+    </VerticalStack>
   );
 }

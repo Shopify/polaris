@@ -1,7 +1,8 @@
 import React, {memo, forwardRef} from 'react';
 
 import {unstyled} from '../shared';
-import {useLink, LinkLikeComponentProps} from '../../utilities/link';
+import {useLink} from '../../utilities/link';
+import type {LinkLikeComponentProps} from '../../utilities/link';
 
 // The script in the styleguide that generates the Props Explorer data expects
 // that the interface defining the props is defined in this file, not imported
@@ -20,9 +21,18 @@ export const UnstyledLink = memo(
       return <LinkComponent {...unstyled.props} {...props} />;
     }
 
-    const {external, url, ...rest} = props;
-    const target = external ? '_blank' : undefined;
-    const rel = external ? 'noopener noreferrer' : undefined;
+    const {external, url, target: targetProp, ...rest} = props;
+
+    let target;
+
+    if (external) {
+      target = '_blank';
+    } else {
+      target = targetProp ?? undefined;
+    }
+
+    const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
+
     return (
       <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
     );

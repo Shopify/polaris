@@ -3,7 +3,7 @@
 .PageActions {
   margin: 0 auto;
   padding: var(--p-space-5);
-  border-top: var(--p-border-divider);
+  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5) 0;

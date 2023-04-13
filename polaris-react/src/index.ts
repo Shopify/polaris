@@ -25,6 +25,8 @@ export type {
   MenuGroupDescriptor,
   ConnectedDisclosure,
   CheckboxHandles,
+  AppliedFilterInterface,
+  FilterInterface,
 } from './types';
 
 // AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
@@ -49,8 +51,14 @@ export type {ActionMenuProps} from './components/ActionMenu';
 export {AlphaCard} from './components/AlphaCard';
 export type {AlphaCardProps} from './components/AlphaCard';
 
-export {AlphaStack} from './components/AlphaStack';
-export type {AlphaStackProps} from './components/AlphaStack';
+export {AlphaFilters} from './components/AlphaFilters';
+export type {AlphaFiltersProps} from './components/AlphaFilters';
+
+export {VerticalStack} from './components/VerticalStack';
+export type {VerticalStackProps} from './components/VerticalStack';
+
+export {AlphaTabs} from './components/AlphaTabs';
+export type {AlphaTabsProps, AlphaTabProps} from './components/AlphaTabs';
 
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
@@ -119,8 +127,8 @@ export type {CollapsibleProps} from './components/Collapsible';
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
 
-export {Columns} from './components/Columns';
-export type {ColumnsProps} from './components/Columns';
+export {HorizontalGrid} from './components/HorizontalGrid';
+export type {HorizontalGridProps} from './components/HorizontalGrid';
 
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
@@ -168,11 +176,7 @@ export {ExceptionList} from './components/ExceptionList';
 export type {ExceptionListProps} from './components/ExceptionList';
 
 export {Filters} from './components/Filters';
-export type {
-  FiltersProps,
-  AppliedFilterInterface,
-  FilterInterface,
-} from './components/Filters';
+export type {FiltersProps} from './components/Filters';
 
 export {Focus} from './components/Focus';
 export type {FocusProps} from './components/Focus';
@@ -208,14 +212,24 @@ export type {IconProps} from './components/Icon';
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
+export {
+  IndexFilters,
+  useSetIndexFiltersMode,
+  IndexFiltersMode,
+} from './components/IndexFilters';
+export type {
+  IndexFiltersProps,
+  SortButtonChoice,
+} from './components/IndexFilters';
+
 export {IndexTable} from './components/IndexTable';
 export type {IndexTableProps} from './components/IndexTable';
 
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
 
-export {Inline} from './components/Inline';
-export type {InlineProps} from './components/Inline';
+export {HorizontalStack} from './components/HorizontalStack';
+export type {HorizontalStackProps} from './components/HorizontalStack';
 
 export {InlineCode} from './components/InlineCode';
 export type {InlineCodeProps} from './components/InlineCode';
@@ -249,8 +263,14 @@ export type {
   LegacyCardSubsectionProps,
 } from './components/LegacyCard';
 
+export {LegacyFilters} from './components/LegacyFilters';
+export type {LegacyFiltersProps} from './components/LegacyFilters';
+
 export {LegacyStack} from './components/LegacyStack';
 export type {LegacyStackProps} from './components/LegacyStack';
+
+export {LegacyTabs} from './components/LegacyTabs';
+export type {LegacyTabsProps} from './components/LegacyTabs';
 
 export {Link} from './components/Link';
 export type {LinkProps} from './components/Link';

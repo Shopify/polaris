@@ -2,7 +2,8 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Option} from '../components';
-import {OptionList, OptionListProps} from '../OptionList';
+import {OptionList} from '../OptionList';
+import type {OptionListProps} from '../OptionList';
 import type {OptionDescriptor} from '../../../types';
 
 describe('<OptionList />', () => {
@@ -539,12 +540,8 @@ function firstOption(
   options?: OptionDescriptor[],
   sections?: OptionListProps['sections'],
 ): string {
-  const firstOptionsValue =
-    options == null || options === [] ? '' : options[0].value;
-  const firstSectionOptionsValue =
-    sections == null || sections === [] || sections[0].options === []
-      ? ''
-      : sections[0].options[0].value;
+  const firstOptionsValue = options?.[0]?.value ?? '';
+  const firstSectionOptionsValue = sections?.[0]?.options?.[0]?.value ?? '';
   return firstOptionsValue || firstSectionOptionsValue;
 }
 

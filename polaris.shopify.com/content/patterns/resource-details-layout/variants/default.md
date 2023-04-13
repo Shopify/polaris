@@ -6,7 +6,7 @@ hideFromNav: true
 
 ## How it helps merchants
 
-![Product details page](/images/patterns/resource-detail-cover-image.png)
+![Product details page](/images/patterns/resource-details-layout/resource-detail-cover-image.png)
 
 1. The page header provides easy access to actions and navigation. It spans the full width of the page to show merchants that these actions represent the page as a whole.
 2. The main content is split in two columns, primary content to the left and secondary content to the right. The primary content occupies two thirds of the page to give more space to what’s most important most of the time.
@@ -28,7 +28,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`Columns`](/components/layout-and-structure/columns) and [`Page`](/components/layout-and-structure/page) components.
+This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Page`](/components/layout-and-structure/page) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -85,53 +85,53 @@ function ResourceDetailsLayout() {
         hasNext: true,
       }}
     >
-      <Columns columns={{xs: 1, md: '2fr 1fr'}} gap="4">
-        <AlphaStack gap="4">
+      <HorizontalGrid columns={{xs: 1, md: '2fr 1fr'}} gap="4">
+        <VerticalStack gap="4">
           <AlphaCard roundedAbove="sm">
-            <AlphaStack gap="4">
+            <VerticalStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
               <Box border="divider" borderRadius="base" minHeight="20rem" />
-            </AlphaStack>
+            </VerticalStack>
           </AlphaCard>
           <AlphaCard roundedAbove="sm">
-            <AlphaStack gap="4">
+            <VerticalStack gap="4">
               <SkeletonDisplayText size="small" />
-              <Columns columns={{xs: 1, md: 2}}>
+              <HorizontalGrid columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
-              </Columns>
-            </AlphaStack>
+              </HorizontalGrid>
+            </VerticalStack>
           </AlphaCard>
-        </AlphaStack>
-        <AlphaStack gap={{xs: '4', md: '2'}}>
+        </VerticalStack>
+        <VerticalStack gap={{xs: '4', md: '2'}}>
           <AlphaCard roundedAbove="sm">
-            <AlphaStack gap="4">
+            <VerticalStack gap="4">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
                 <Bleed marginInline={{xs: 4, sm: 5}}>
-                  <Divider borderStyle="divider" />
+                  <Divider />
                 </Bleed>
               </Box>
               <SkeletonLabel />
-              <Divider borderStyle="divider" />
+              <Divider />
               <SkeletonBodyText />
-            </AlphaStack>
+            </VerticalStack>
           </AlphaCard>
           <AlphaCard roundedAbove="sm">
-            <AlphaStack gap="4">
+            <VerticalStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="4rem" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel />
               <SkeletonBodyText />
-            </AlphaStack>
+            </VerticalStack>
           </AlphaCard>
-        </AlphaStack>
-      </Columns>
+        </VerticalStack>
+      </HorizontalGrid>
     </Page>
   );
 }
@@ -142,12 +142,11 @@ function ResourceDetailsLayout() {
 
 ### Useful to know
 
-|                                                                                                  |                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Always use the default width. Full width tends to waste space and make the page harder to parse. | ![Details page with margins on either side of the main content](/images/patterns/resource-detail-usage-1.png)                                           |
-| Group similar content in the same card.                                                          | ![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-detail-usage-2.png)                  |
-| Put information that defines the resource object in the primary column.                          | ![Product detail example](/images/patterns/resource-detail-usage-3.png)                                                                                 |
-| Put supporting information such as status, metadata, and summaries in the secondary column.      | ![Product details page with the secondary column outlined](/images/patterns/resource-detail-usage-4.png)                                                |
-| Arrange content in order of importance.                                                          | ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-detail-usage-5.png) |
+- <span>Always use the default width. Full width tends to waste space and make the page harder to parse.</span> ![Details page with margins on either side of the main content](/images/patterns/resource-details-layout/resource-detail-usage-1.png)
+- <span>Group similar content in the same card.</span> ![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-details-layout/resource-detail-usage-2.png)
+- <span>Put information that defines the resource object in the primary column.</span> ![Product detail example](/images/patterns/resource-details-layout/resource-detail-usage-3.png)
+- <span>Put supporting information such as status, metadata, and summaries in the secondary column.</span> ![Product details page with the secondary column outlined](/images/patterns/resource-details-layout/resource-detail-usage-4.png)
+- <span>Arrange content in order of importance.</span> ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-details-layout/resource-detail-usage-5.png)
+- <span>Place unique page actions at the top of the actions list and typical object actions at the bottom.</span> ![Popover with unique page actions placed at the top, and typical object actions placed at the bottom](/images/patterns/resource-details-layout/resource-detail-usage-6.png)
 
 </div>

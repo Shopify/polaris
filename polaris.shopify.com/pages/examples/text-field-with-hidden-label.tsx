@@ -6,10 +6,13 @@ function HiddenLabelExample() {
   const [value, setValue] = useState('12');
   const [selected, setSelected] = useState('yes');
 
-  const handleTextChange = useCallback((newValue) => setValue(newValue), []);
+  const handleTextChange = useCallback(
+    (newValue: string) => setValue(newValue),
+    [],
+  );
 
   const handleChoiceChange = useCallback(
-    (selections) => setSelected(selections[0]),
+    (selections: string[]) => setSelected(selections[0]),
     [],
   );
 

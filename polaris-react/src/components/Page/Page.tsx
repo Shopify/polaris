@@ -4,7 +4,8 @@ import {classNames} from '../../utilities/css';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
 
-import {Header, HeaderProps} from './components';
+import {Header} from './components';
+import type {HeaderProps} from './components';
 import styles from './Page.scss';
 
 export interface PageProps extends HeaderProps {

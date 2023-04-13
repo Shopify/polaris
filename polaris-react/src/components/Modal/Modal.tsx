@@ -8,12 +8,13 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
 import {Backdrop} from '../Backdrop';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';
 
-import {Dialog, Footer, FooterProps, Header, Section} from './components';
+import {Dialog, Footer, Header, Section} from './components';
+import type {FooterProps} from './components';
 import styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
@@ -156,9 +157,9 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 
     const body = loading ? (
       <Box padding="4">
-        <Inline gap="4" align="center" blockAlign="center">
+        <HorizontalStack gap="4" align="center" blockAlign="center">
           <Spinner />
-        </Inline>
+        </HorizontalStack>
       </Box>
     ) : (
       content

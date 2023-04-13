@@ -71,6 +71,13 @@ export type {
 } from './token-groups/shape';
 
 export type {
+  BorderTokenGroup,
+  BorderTokenName,
+  BorderRadiusScale,
+  BorderWidthScale,
+} from './token-groups/border';
+
+export type {
   SpacingTokenGroup,
   SpacingTokenName,
   SpacingSpaceScale,

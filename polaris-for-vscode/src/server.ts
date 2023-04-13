@@ -1,13 +1,16 @@
-import {createVar, metadata, MetadataGroup} from '@shopify/polaris-tokens';
+import {createVar, metadata} from '@shopify/polaris-tokens';
+import type {MetadataGroup} from '@shopify/polaris-tokens';
 import {
   createConnection,
   TextDocuments,
   ProposedFeatures,
+  CompletionItemKind,
+  TextDocumentSyncKind,
+} from 'vscode-languageserver/node';
+import type {
   InitializeParams,
   CompletionItem,
-  CompletionItemKind,
   TextDocumentPositionParams,
-  TextDocumentSyncKind,
   InitializeResult,
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
@@ -64,8 +67,12 @@ type GroupedCompletionItemPatterns = {
   [T in GroupedCompletionItemsKey]: RegExp;
 };
 
-const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
+const groupedCompletionItemPatterns: Omit<
+  GroupedCompletionItemPatterns,
+  'shape'
+> = {
   breakpoints: /width/,
+  border: /border/,
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   colors:
@@ -74,7 +81,6 @@ const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
   font: /font|line-height/,
   motion: /animation/,
   shadow: /shadow/,
-  shape: /border/,
   spacing: /margin|padding|gap|top|left|right|bottom/,
   zIndex: /z-index/,
 };

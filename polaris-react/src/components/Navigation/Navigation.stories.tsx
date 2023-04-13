@@ -25,6 +25,8 @@ export default {
 } as ComponentMeta<typeof Navigation>;
 
 export function Default() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -34,6 +36,8 @@ export function Default() {
               url: '#',
               label: 'Home',
               icon: HomeMinor,
+              matches: selected === 'home',
+              onClick: () => setSelected('home'),
             },
             {
               url: '#',
@@ -41,12 +45,16 @@ export function Default() {
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
+              matches: selected === 'orders',
+              onClick: () => setSelected('orders'),
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
+              matches: selected === 'products',
+              onClick: () => setSelected('products'),
             },
           ]}
         />
@@ -74,6 +82,8 @@ export function DisabledItemsWithoutUrls() {
 }
 
 export function WithMultipleSecondaryNavigations() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -81,51 +91,56 @@ export function WithMultipleSecondaryNavigations() {
           items={[
             {
               url: '#',
-              excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
-              excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
               subNavigationItems: [
                 {
                   url: '#',
-                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
-                  label: 'Collections',
+                  label: 'Drafts',
+                  onClick: () => setSelected('drafts'),
+                  matches: selected === 'drafts',
                 },
                 {
                   url: '#',
                   disabled: false,
-                  label: 'Inventory',
-                  excludePaths: ['#'],
+                  label: 'Shipping Labels',
+                  onClick: () => setSelected('shippinglabels'),
+                  matches: selected === 'shippinglabels',
                 },
               ],
             },
             {
               url: '#',
-              excludePaths: ['#'],
               label: 'Marketing',
               icon: MarketingMinor,
               badge: '15',
+              onClick: () => setSelected('marketing'),
+              matches: selected === 'marketing',
               subNavigationItems: [
                 {
                   url: '#',
-                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Reports',
+                  onClick: () => setSelected('reports'),
+                  matches: selected === 'reports',
                 },
                 {
                   url: '#',
-                  excludePaths: ['#'],
                   disabled: false,
                   label: 'Live view',
+                  onClick: () => setSelected('liveView'),
+                  matches: selected === 'liveView',
                 },
               ],
             },
@@ -133,20 +148,15 @@ export function WithMultipleSecondaryNavigations() {
               url: '#',
               label: 'Products',
               icon: ProductsMinor,
-              selected: true,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
               subNavigationItems: [
                 {
                   url: '#',
-                  excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
-                },
-                {
-                  url: '#',
-                  disabled: false,
-                  selected: true,
-                  label: 'Inventory',
+                  onClick: () => setSelected('collections'),
+                  matches: selected === 'collections',
                 },
               ],
             },
@@ -158,17 +168,20 @@ export function WithMultipleSecondaryNavigations() {
 }
 
 export function WithAnActiveRootItemWithSecondaryNavigationItems() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
         <Navigation.Section
-          duplicateRootItem
           items={[
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
@@ -176,25 +189,32 @@ export function WithAnActiveRootItemWithSecondaryNavigationItems() {
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
             },
             {
               url: '#',
               label: 'Products',
               icon: ProductsMinor,
               selected: true,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
               subNavigationItems: [
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  selected: false,
                   label: 'Collections',
+                  onClick: () => setSelected('collections'),
+                  matches: selected === 'collections',
                 },
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'Inventory',
+                  onClick: () => setSelected('inventory'),
+                  matches: selected === 'inventory',
                 },
               ],
             },
@@ -206,6 +226,8 @@ export function WithAnActiveRootItemWithSecondaryNavigationItems() {
 }
 
 export function WithASecondaryActionForASectionAndASectionTitle() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -216,18 +238,24 @@ export function WithASecondaryActionForASectionAndASectionTitle() {
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
             },
           ]}
         />
@@ -253,6 +281,8 @@ export function WithASecondaryActionForASectionAndASectionTitle() {
 }
 
 export function WithASecondaryActionForAnItem() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -263,12 +293,16 @@ export function WithASecondaryActionForAnItem() {
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
@@ -283,6 +317,8 @@ export function WithASecondaryActionForAnItem() {
               excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
             },
           ]}
         />
@@ -292,6 +328,8 @@ export function WithASecondaryActionForAnItem() {
 }
 
 export function WithMultipleSecondaryActionsForAnItem() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -302,6 +340,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
@@ -309,6 +349,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
               label: 'Orders',
               icon: OrdersMinor,
               badge: '123',
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
             },
             {
               url: '#',
@@ -316,6 +358,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
               label: 'Products',
               icon: ProductsMinor,
               badge: '2',
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
               secondaryActions: [
                 {
                   url: '#',
@@ -333,6 +377,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
               label: 'Long multi-line label',
               icon: PlusMinor,
               badge: '125',
+              onClick: () => setSelected('longMultiLineLabel'),
+              matches: selected === 'longMultiLineLabel',
               secondaryActions: [
                 {
                   url: '#',
@@ -358,6 +404,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
               label: 'Long truncated single-line text label',
               icon: PlusMinor,
               truncateText: true,
+              onClick: () => setSelected('longTruncatedSingleLineTextLabel'),
+              matches: selected === 'longTruncatedSingleLineTextLabel',
               secondaryActions: [
                 {
                   url: '#',
@@ -384,6 +432,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'New item',
+                  onClick: () => setSelected('newItem'),
+                  matches: selected === 'newItem',
                 },
               ],
             },
@@ -393,6 +443,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
               icon: PlusMinor,
               badge: '15',
               displayActionsOnHover: true,
+              onClick: () => setSelected('floatingActionsOnMultiLineTextLabel'),
+              matches: selected === 'floatingActionsOnMultiLineTextLabel',
               secondaryActions: [
                 {
                   url: '#',
@@ -419,12 +471,16 @@ export function WithMultipleSecondaryActionsForAnItem() {
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'Collections',
+                  onClick: () => setSelected('collections'),
+                  matches: selected === 'collections',
                 },
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'Inventory',
+                  onClick: () => setSelected('inventory'),
+                  matches: selected === 'inventory',
                 },
               ],
             },
@@ -436,6 +492,10 @@ export function WithMultipleSecondaryActionsForAnItem() {
               badge: '15',
               truncateText: true,
               displayActionsOnHover: true,
+              onClick: () =>
+                setSelected('floatingActionsOnTruncatedSingleLineTextLabel'),
+              matches:
+                selected === 'floatingActionsOnTruncatedSingleLineTextLabel',
               secondaryActions: [
                 {
                   url: '#',
@@ -462,6 +522,9 @@ export function WithMultipleSecondaryActionsForAnItem() {
               label: 'One floating action on multi-line text label',
               icon: PlusMinor,
               displayActionsOnHover: true,
+              onClick: () =>
+                setSelected('oneFloatingActionOnMultiLineTextLabel'),
+              matches: selected === 'oneFloatingActionOnMultiLineTextLabel',
               secondaryActions: [
                 {
                   url: '#',
@@ -481,6 +544,10 @@ export function WithMultipleSecondaryActionsForAnItem() {
               badge: '15',
               truncateText: true,
               displayActionsOnHover: true,
+              onClick: () =>
+                setSelected('oneFloatingActionOnTruncatedSingleLineTextLabel'),
+              matches:
+                selected === 'oneFloatingActionOnTruncatedSingleLineTextLabel',
               secondaryActions: [
                 {
                   url: '#',
@@ -498,6 +565,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
               icon: MarketingMinor,
               badge: '15',
               selected: true,
+              onClick: () => setSelected('marketing'),
+              matches: selected === 'marketing',
               secondaryActions: [
                 {
                   url: '#',
@@ -514,6 +583,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
               excludePaths: ['#'],
               label: 'Logout',
               icon: LogOutMinor,
+              onClick: () => setSelected('logout'),
+              matches: selected === 'logout',
             },
           ]}
         />
@@ -523,6 +594,8 @@ export function WithMultipleSecondaryActionsForAnItem() {
 }
 
 export function WithTruncationForVariousStates() {
+  const [selected, setSelected] = React.useState('longlabel');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -534,12 +607,16 @@ export function WithTruncationForVariousStates() {
               truncateText: true,
               icon: OrdersMinor,
               selected: false,
+              onClick: () => setSelected('longlabel'),
+              matches: selected === 'longlabel',
             },
             {
               url: '#',
               label: 'Not truncated',
               icon: OrdersMinor,
               selected: false,
+              onClick: () => setSelected('nottruncated'),
+              matches: selected === 'nottruncated',
             },
             {
               url: '#',
@@ -547,6 +624,8 @@ export function WithTruncationForVariousStates() {
               icon: OrdersMinor,
               selected: false,
               truncateText: true,
+              onClick: () => setSelected('lengthylabelwithsecondaryaction'),
+              matches: selected === 'lengthylabelwithsecondaryaction',
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
@@ -561,6 +640,10 @@ export function WithTruncationForVariousStates() {
               label: 'Lengthy non-truncated label with secondary action',
               icon: OrdersMinor,
               selected: false,
+              onClick: () =>
+                setSelected('lengthynontruncatedlabelwithsecondaryaction'),
+              matches:
+                selected === 'lengthynontruncatedlabelwithsecondaryaction',
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
@@ -577,6 +660,8 @@ export function WithTruncationForVariousStates() {
               truncateText: true,
               badge: 'Old',
               icon: HomeMinor,
+              onClick: () => setSelected('lengthylabelwithbadge'),
+              matches: selected === 'lengthylabelwithbadge',
             },
             {
               url: '#',
@@ -585,6 +670,8 @@ export function WithTruncationForVariousStates() {
               selected: false,
               truncateText: true,
               badge: 'Old',
+              onClick: () => setSelected('lengthylabelwithsecondaryaction'),
+              matches: selected === 'lengthylabelwithsecondaryaction',
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
@@ -600,18 +687,24 @@ export function WithTruncationForVariousStates() {
               icon: ProductsMinor,
               selected: true,
               truncateText: true,
+              onClick: () => setSelected('truncatedsecondarynavigationitems'),
+              matches: selected === 'truncatedsecondarynavigationitems',
               subNavigationItems: [
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'Something longer than collections',
+                  onClick: () => setSelected('somethinglonger'),
+                  matches: selected === 'somethinglonger',
                 },
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  label: 'Inventoy',
+                  label: 'Inventory',
+                  onClick: () => setSelected('inventory'),
+                  matches: selected === 'inventory',
                 },
               ],
             },
@@ -623,6 +716,8 @@ export function WithTruncationForVariousStates() {
 }
 
 export function WithSectionRollup() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -633,18 +728,24 @@ export function WithSectionRollup() {
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
             },
           ]}
           rollup={{
@@ -660,6 +761,8 @@ export function WithSectionRollup() {
 }
 
 export function WithSectionSeparator() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -670,18 +773,24 @@ export function WithSectionSeparator() {
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
               icon: OrdersMinor,
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
             },
           ]}
         />
@@ -692,6 +801,8 @@ export function WithSectionSeparator() {
               excludePaths: ['#'],
               label: 'Online Store',
               icon: OnlineStoreMinor,
+              onClick: () => setSelected('onlinestore'),
+              matches: selected === 'onlinestore',
             },
           ]}
           separator
@@ -702,6 +813,8 @@ export function WithSectionSeparator() {
 }
 
 export function WithVariousStatesAndSecondaryElements() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -712,12 +825,16 @@ export function WithVariousStatesAndSecondaryElements() {
               excludePaths: ['#'],
               label: 'Inactive item',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Item with indicator',
               icon: HomeMinor,
+              onClick: () => setSelected('itemwithindicator'),
+              matches: selected === 'itemwithindicator',
               subNavigationItems: [
                 {
                   url: '#',
@@ -725,6 +842,8 @@ export function WithVariousStatesAndSecondaryElements() {
                   disabled: false,
                   new: true,
                   label: 'New item',
+                  onClick: () => setSelected('newitem'),
+                  matches: selected === 'newitem',
                 },
               ],
             },
@@ -734,6 +853,8 @@ export function WithVariousStatesAndSecondaryElements() {
               label: 'New item',
               new: true,
               icon: HomeMinor,
+              onClick: () => setSelected('newitem2'),
+              matches: selected === 'newitem2',
             },
             {
               url: '#',
@@ -741,12 +862,16 @@ export function WithVariousStatesAndSecondaryElements() {
               label: 'Badged item',
               badge: 'Old',
               icon: HomeMinor,
+              onClick: () => setSelected('badgeditem'),
+              matches: selected === 'badgeditem',
             },
             {
               url: '#',
               label: 'Active with secondary action',
               icon: OrdersMinor,
               selected: true,
+              onClick: () => setSelected('activewithsecondaryaction'),
+              matches: selected === 'activewithsecondaryaction',
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
@@ -761,18 +886,24 @@ export function WithVariousStatesAndSecondaryElements() {
               label: 'Active item with sub navigation',
               icon: ProductsMinor,
               selected: true,
+              onClick: () => setSelected('activeitemwithsubnavigation'),
+              matches: selected === 'activeitemwithsubnavigation',
               subNavigationItems: [
                 {
                   url: window.location.href,
                   selected: true,
                   disabled: false,
                   label: 'Selected sub item',
+                  onClick: () => setSelected('selectedsubitem'),
+                  matches: selected === 'selectedsubitem',
                 },
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'Default sub item',
+                  onClick: () => setSelected('defaultsubitem'),
+                  matches: selected === 'defaultsubitem',
                 },
                 {
                   url: '#',
@@ -793,6 +924,8 @@ export function WithVariousStatesAndSecondaryElements() {
               url: '#',
               label: 'Overflow item',
               icon: MarketingMinor,
+              onClick: () => setSelected('overflowitem'),
+              matches: selected === 'overflowitem',
             },
           ]}
           rollup={{
@@ -850,6 +983,8 @@ export function WithVariousStatesAndSecondaryElements() {
 }
 
 export function WithAriaLabelledby() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
@@ -863,6 +998,8 @@ export function WithAriaLabelledby() {
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
@@ -870,12 +1007,16 @@ export function WithAriaLabelledby() {
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMinor,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
             },
           ]}
         />
@@ -885,6 +1026,8 @@ export function WithAriaLabelledby() {
 }
 
 export function UsingMajorIcons() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -895,6 +1038,8 @@ export function UsingMajorIcons() {
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMajor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
             },
             {
               url: '#',
@@ -902,18 +1047,24 @@ export function UsingMajorIcons() {
               label: 'Orders',
               icon: OrdersMajor,
               badge: '15',
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
               icon: ProductsMajor,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Customers',
               icon: CustomersMajor,
+              onClick: () => setSelected('customers'),
+              matches: selected === 'customers',
             },
           ]}
         />
@@ -923,6 +1074,8 @@ export function UsingMajorIcons() {
 }
 
 export function WithBadgeAndSecondaryAction() {
+  const [selected, setSelected] = React.useState('home');
+
   return (
     <Frame>
       <Navigation location="/">
@@ -933,6 +1086,8 @@ export function WithBadgeAndSecondaryAction() {
               excludePaths: ['#'],
               label: 'Home',
               icon: HomeMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'View your online store',
@@ -948,18 +1103,24 @@ export function WithBadgeAndSecondaryAction() {
               label: 'Orders',
               icon: OrdersMinor,
               badge: '15',
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
               subNavigationItems: [
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  label: 'Collections',
+                  label: 'Drafts',
+                  onClick: () => setSelected('drafts'),
+                  matches: selected === 'drafts',
                 },
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  label: 'Inventory',
+                  label: 'Shipping labels',
+                  onClick: () => setSelected('shippinglabels'),
+                  matches: selected === 'shippinglabels',
                 },
               ],
             },
@@ -969,6 +1130,8 @@ export function WithBadgeAndSecondaryAction() {
               label: 'Marketing',
               icon: MarketingMinor,
               badge: '15',
+              onClick: () => setSelected('marketing'),
+              matches: selected === 'marketing',
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'View your online store',
@@ -983,12 +1146,16 @@ export function WithBadgeAndSecondaryAction() {
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'Reports',
+                  onClick: () => setSelected('reports'),
+                  matches: selected === 'reports',
                 },
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'Live view',
+                  onClick: () => setSelected('liveView'),
+                  matches: selected === 'liveView',
                 },
               ],
             },
@@ -997,17 +1164,23 @@ export function WithBadgeAndSecondaryAction() {
               label: 'Products',
               icon: ProductsMinor,
               selected: true,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
               subNavigationItems: [
                 {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
                   label: 'Collections',
+                  onClick: () => setSelected('collections'),
+                  matches: selected === 'collections',
                 },
                 {
                   url: '#',
                   disabled: false,
                   label: 'Inventory',
+                  onClick: () => setSelected('inventory'),
+                  matches: selected === 'inventory',
                 },
               ],
             },

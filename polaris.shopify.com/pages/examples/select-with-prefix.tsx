@@ -6,7 +6,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function PrefixExample() {
   const [selected, setSelected] = useState('enabled');
 
-  const handleSelectChange = useCallback((value) => setSelected(value), []);
+  const handleSelectChange = useCallback(
+    (value: string) => setSelected(value),
+    [],
+  );
 
   const options = [
     {

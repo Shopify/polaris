@@ -1,7 +1,8 @@
 import React, {useRef, useState, useEffect} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Focus, FocusProps} from '../Focus';
+import {Focus} from '../Focus';
+import type {FocusProps} from '../Focus';
 
 describe('<Focus />', () => {
   it('will not focus any element if none are natively focusable', () => {

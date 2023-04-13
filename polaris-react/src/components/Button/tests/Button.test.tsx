@@ -75,6 +75,13 @@ describe('<Button />', () => {
     });
   });
 
+  describe('target', () => {
+    it('passes prop', () => {
+      const button = mountWithApp(<Button target="_top" />);
+      expect(button).toContainReactComponent(UnstyledButton, {target: '_top'});
+    });
+  });
+
   describe('disabled', () => {
     it('renders <UnstyledButton /> when url is not passed', () => {
       const button = mountWithApp(<Button disabled />);

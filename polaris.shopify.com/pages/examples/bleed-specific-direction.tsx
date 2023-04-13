@@ -1,32 +1,38 @@
 import React from 'react';
-import {AlphaStack, Bleed, Box, Text, Inline} from '@shopify/polaris';
+import {
+  VerticalStack,
+  Bleed,
+  Box,
+  Text,
+  HorizontalStack,
+} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedSpecificDirectionExample() {
   return (
-    <AlphaStack gap="6">
-      <Box background="surface" border="base" padding="8">
+    <VerticalStack gap="6">
+      <Box background="bg" border="base" padding="8">
         <Bleed marginInlineStart="8">
           <Placeholder label="marginInlineStart" />
         </Bleed>
       </Box>
-      <Box background="surface" border="base" padding="8">
+      <Box background="bg" border="base" padding="8">
         <Bleed marginInlineEnd="8">
           <Placeholder label="marginInlineEnd" />
         </Bleed>
       </Box>
-      <Box background="surface" border="base" padding="8">
+      <Box background="bg" border="base" padding="8">
         <Bleed marginBlockStart="8">
           <Placeholder label="marginBlockStart" />
         </Bleed>
       </Box>
-      <Box background="surface" border="base" padding="8">
+      <Box background="bg" border="base" padding="8">
         <Bleed marginBlockEnd="8">
           <Placeholder label="marginBlockEnd" />
         </Bleed>
       </Box>
-    </AlphaStack>
+    </VerticalStack>
   );
 }
 
@@ -40,17 +46,17 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         width: width,
       }}
     >
-      <Inline gap="4" align="center">
+      <HorizontalStack gap="4" align="center">
         <div
           style={{
-            color: '#FFFFFF',
+            color: 'var(--p-color-text-on-color)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="regular">
             {label}
           </Text>
         </div>
-      </Inline>
+      </HorizontalStack>
     </div>
   );
 };

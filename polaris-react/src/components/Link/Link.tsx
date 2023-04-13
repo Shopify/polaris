@@ -3,6 +3,7 @@ import React from 'react';
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {UnstyledLink} from '../UnstyledLink';
+import type {Target} from '../../types';
 
 import styles from './Link.scss';
 
@@ -15,6 +16,8 @@ export interface LinkProps {
   children?: React.ReactNode;
   /** Makes the link open in a new tab */
   external?: boolean;
+  /** Where to display the url */
+  target?: Target;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
   /** Removes text decoration underline to the link*/
@@ -32,6 +35,7 @@ export function Link({
   children,
   onClick,
   external,
+  target,
   id,
   monochrome,
   removeUnderline,
@@ -55,6 +59,7 @@ export function Link({
             className={className}
             url={url}
             external={external}
+            target={target}
             id={id}
             aria-label={accessibilityLabel}
             data-primary-link={dataPrimaryLink}

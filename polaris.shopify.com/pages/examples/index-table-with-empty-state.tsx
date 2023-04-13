@@ -2,21 +2,23 @@ import {
   EmptySearchResult,
   IndexTable,
   LegacyCard,
-  useIndexResourceState,
   Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function IndexTableWithCustomEmptyStateExample() {
-  const customers = [];
+  const customers: {
+    id: string;
+    name: string;
+    location: string;
+    orders: number;
+    amountSpent: string;
+  }[] = [];
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
   };
-
-  const {selectedResources, allResourcesSelected, handleSelectionChange} =
-    useIndexResourceState(customers);
 
   const emptyStateMarkup = (
     <EmptySearchResult
@@ -28,12 +30,7 @@ function IndexTableWithCustomEmptyStateExample() {
 
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-      >
+      <IndexTable.Row id={id} key={id} position={index}>
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
             {name}
@@ -59,10 +56,6 @@ function IndexTableWithCustomEmptyStateExample() {
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
-        selectedItemsCount={
-          allResourcesSelected ? 'All' : selectedResources.length
-        }
-        onSelectionChange={handleSelectionChange}
         emptyState={emptyStateMarkup}
         headings={[
           {title: 'Name'},
@@ -83,7 +76,6 @@ function IndexTableWithCustomEmptyStateExample() {
               </Text>
             ),
           },
-          ,
         ]}
       >
         {rowMarkup}

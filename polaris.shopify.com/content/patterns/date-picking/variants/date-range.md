@@ -10,7 +10,7 @@ This enables merchants to select a date range.
 
 ## How it helps merchants
 
-![Date range picker with three numbered zones](/images/patterns/date-range-cover-image.png)
+![Date range picker with three numbered zones](/images/patterns/date-picking/date-range-cover-image.png)
 
 1. Providing multiple ways to select a date range gives merchants full flexibility. The list provides quick access to common options, the text input makes it easier to set large custom ranges, and the calendar is an intuitive way to set a more narrow scope.
 2. Displaying two months makes it easier for merchants to select date ranges that span across both.
@@ -32,7 +32,7 @@ This enables merchants to select a date range.
 
 ## Using this pattern
 
-This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`Columns`](/components/layout-and-structure/columns), [`DatePicker`](/components/selection-and-input/date-picker), [`Inline`](/components/layout-and-structure/inline), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
+This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid), [`DatePicker`](/components/selection-and-input/date-picker), [`HorizontalStack`](/components/layout-and-structure/horizontal-stack), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -277,7 +277,7 @@ function DateRangePicker() {
       onClose={() => setPopoverActive(false)}
     >
       <Popover.Pane fixed>
-        <Columns
+        <HorizontalGrid
           columns={{
             xs: '1fr',
             mdDown: '1fr',
@@ -323,8 +323,8 @@ function DateRangePicker() {
             )}
           </Box>
           <Box padding={{xs: 5}} maxWidth={mdDown ? '320px' : '516px'}>
-            <AlphaStack gap="4">
-              <Inline gap="2">
+            <VerticalStack gap="4">
+              <HorizontalStack gap="2">
                 <div style={{flexGrow: 1}}>
                   <TextField
                     role="combobox"
@@ -350,7 +350,7 @@ function DateRangePicker() {
                     autoComplete="off"
                   />
                 </div>
-              </Inline>
+              </HorizontalStack>
               <div>
                 <DatePicker
                   month={month}
@@ -365,18 +365,18 @@ function DateRangePicker() {
                   allowRange
                 />
               </div>
-            </AlphaStack>
+            </VerticalStack>
           </Box>
-        </Columns>
+        </HorizontalGrid>
       </Popover.Pane>
       <Popover.Pane fixed>
         <Popover.Section>
-          <Inline align="end">
+          <HorizontalStack align="end">
             <Button onClick={cancel}>Cancel</Button>
             <Button primary onClick={apply}>
               Apply
             </Button>
-          </Inline>
+          </HorizontalStack>
         </Popover.Section>
       </Popover.Pane>
     </Popover>
@@ -389,10 +389,8 @@ function DateRangePicker() {
 
 ### Useful to know
 
-|                                                                                                |                                                                                                      |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Pin any relevant, merchant-specific dates to the top of the option list.                       | ![List of date options such as “BFCM (2023)”](/images/patterns/date-range-usage-1.png)               |
-| If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors) | ![Single-month calendar with a range of unselectable dates](/images/patterns/date-range-usage-2.png) |
-| If a merchant enters a nonexistent date, revert to the previously selected date.               | ![Calendar with date inputs reading an incorrect date](/images/patterns/date-range-usage-3.png)      |
+- <span>Pin any relevant, merchant-specific dates to the top of the option list.</span> ![List of date options such as “BFCM (2023)”](/images/patterns/date-picking/date-range-usage-1.png)
+- <span>If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors)</span> ![Single-month calendar with a range of unselectable dates](/images/patterns/date-picking/date-range-usage-2.png)
+- <span>If a merchant enters a nonexistent date, revert to the previously selected date.</span> ![Calendar with date inputs reading an incorrect date](/images/patterns/date-picking/date-range-usage-3.png)
 
 </div>

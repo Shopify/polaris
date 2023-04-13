@@ -1,6 +1,7 @@
 import type {Exact, MetadataBase} from './types';
 import {tokensToRems} from './utilities';
 import {breakpoints} from './token-groups/breakpoints';
+import {border} from './token-groups/border';
 import {depth} from './token-groups/depth';
 import {font} from './token-groups/font';
 import {legacy} from './token-groups/legacy';
@@ -14,6 +15,7 @@ import {zIndex} from './token-groups/zIndex';
 
 export const metadata = createMetadata({
   breakpoints: tokensToRems(breakpoints),
+  border: tokensToRems(border),
   color,
   colors,
   depth,

@@ -152,7 +152,9 @@
       "done": "Xong",
       "clearAllFilters": "Xóa tất cả bộ lọc",
       "clear": "Xóa",
-      "clearLabel": "Xóa {filterName}"
+      "clearLabel": "Xóa {filterName}",
+      "addFilter": "Thêm bộ lọc",
+      "clearFilters": "Xóa tất cả"
     },
     "Modal": {
       "iFrameTitle": "điểm đánh dấu nội dung",
@@ -201,7 +203,50 @@
       "loadingLabel": "Đang tải trang"
     },
     "Tabs": {
-      "toggleTabsLabel": "Tab khác"
+      "toggleTabsLabel": "Lượt xem khác",
+      "newViewAccessibilityLabel": "Tạo chế độ xem mới",
+      "newViewTooltip": "Tạo chế độ xem",
+      "Tab": {
+        "rename": "Đổi tên chế độ xem",
+        "duplicate": "Sao chép chế độ xem",
+        "edit": "Chỉnh sửa chế độ xem",
+        "editColumns": "Sửa cột",
+        "delete": "Xóa chế độ xem",
+        "copy": "Bản sao của {name}",
+        "deleteModal": {
+          "title": "Xóa chế độ xem?",
+          "description": "Thao tác này không thể hoàn tác. Chế độ xem {viewName} sẽ không còn trong trang quản trị nữa.",
+          "cancel": "Hủy",
+          "delete": "Xóa chế độ xem"
+        }
+      },
+      "RenameModal": {
+        "title": "Đổi tên chế độ xem",
+        "label": "Tên",
+        "cancel": "Hủy",
+        "create": "Lưu",
+        "errors": {
+          "sameName": "Chế độ xem có tên này đã tồn tại. Vui lòng chọn tên khác."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Sao chép chế độ xem",
+        "label": "Tên",
+        "cancel": "Hủy",
+        "create": "Tạo chế độ xem",
+        "errors": {
+          "sameName": "Chế độ xem có tên này đã tồn tại. Vui lòng chọn tên khác."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Tạo chế độ xem mới",
+        "label": "Tên",
+        "cancel": "Hủy",
+        "create": "Tạo chế độ xem",
+        "errors": {
+          "sameName": "Chế độ xem có tên này đã tồn tại. Vui lòng chọn tên khác."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Xóa {children}"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Thao tác"
+      "popoverButton": "Thao tác",
+      "dismissButton": "Bỏ qua"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -305,6 +351,40 @@
     "FullscreenBar": {
       "back": "Quay lại",
       "accessibilityLabel": "Thoát chế độ toàn màn hình"
+    },
+    "FilterPill": {
+      "clear": "Xóa"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Tìm kiếm và lọc (F)",
+      "searchFilterAccessibilityLabel": "Tìm kiếm và lọc kết quả",
+      "sort": "Sắp xếp kết quả",
+      "addView": "Thêm chế độ xem mới",
+      "newView": "Tìm kiếm tùy chỉnh",
+      "SortButton": {
+        "ariaLabel": "Sắp xếp kết quả",
+        "tooltip": "Sắp xếp",
+        "title": "Sắp xếp theo",
+        "sorting": {
+          "asc": "Tăng dần",
+          "desc": "Giảm dần",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Hủy",
+        "update": "Cập nhật",
+        "save": "Lưu",
+        "saveAs": "Lưu thành",
+        "modal": {
+          "title": "Lưu chế độ xem thành",
+          "label": "Tên",
+          "sameName": "Chế độ xem có tên này đã tồn tại. Vui lòng chọn tên khác.",
+          "save": "Lưu",
+          "cancel": "Hủy"
+        }
+      }
     }
   }
 }

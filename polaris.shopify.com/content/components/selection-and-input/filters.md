@@ -19,16 +19,8 @@ examples:
     title: With children content
   - fileName: filters-disabled.tsx
     title: Disabled
-  - fileName: filters-some-disabled.tsx
-    title: Some disabled
-  - fileName: filters-without-clear-button.tsx
-    title: Without clear button
-  - fileName: filters-with-help-text.tsx
-    title: With help text
   - fileName: filters-with-query-field-hidden.tsx
     title: With query field hidden
-  - fileName: filters-with-query-field-disabled.tsx
-    title: With query field disabled
 ---
 
 Merchants use filters to:

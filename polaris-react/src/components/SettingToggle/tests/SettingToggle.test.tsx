@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {SettingAction} from '../../SettingAction';
+// eslint-disable-next-line import/no-deprecated
 import {SettingToggle} from '../SettingToggle';
 import {Button} from '../../Button';
 
@@ -63,32 +64,6 @@ describe('<SettingToggle />', () => {
           });
         });
       });
-    });
-  });
-
-  describe('enabled', () => {
-    it('makes the button primary when not enabled', () => {
-      const action = {
-        content: 'Click me!',
-        onAction: noop,
-      };
-      const toggle = mountWithApp(<SettingToggle action={action} />);
-      const {primary} = getComponentProps(
-        toggle.find(SettingAction)!.prop('action'),
-      );
-      expect(primary).toBe(true);
-    });
-
-    it('makes the button secondary when enabled', () => {
-      const action = {
-        content: 'Click me!',
-        onAction: noop,
-      };
-      const toggle = mountWithApp(<SettingToggle action={action} enabled />);
-      const {primary} = getComponentProps(
-        toggle.find(SettingAction)!.prop('action'),
-      );
-      expect(primary).toBe(false);
     });
   });
 

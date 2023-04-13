@@ -152,11 +152,13 @@
       "clearAllFilters": "清除所有篩選條件",
       "clear": "清除",
       "clearLabel": "清除 {filterName}",
-      "moreFiltersWithCount": "更多篩選條件 ({count})"
+      "moreFiltersWithCount": "更多篩選條件 ({count})",
+      "addFilter": "新增篩選條件",
+      "clearFilters": "全部清除"
     },
     "Modal": {
       "iFrameTitle": "本文標記",
-      "modalWarning": "強制回應缺少以下必要屬性：{missingProps}"
+      "modalWarning": "互動視窗缺少以下必要屬性：{missingProps}"
     },
     "Pagination": {
       "previous": "上一頁",
@@ -201,7 +203,50 @@
       "loadingLabel": "頁面載入中"
     },
     "Tabs": {
-      "toggleTabsLabel": "更多分頁"
+      "toggleTabsLabel": "更多檢視畫面",
+      "newViewAccessibilityLabel": "建立新檢視畫面",
+      "newViewTooltip": "建立檢視畫面",
+      "Tab": {
+        "rename": "重新命名檢視畫面",
+        "duplicate": "複製檢視畫面",
+        "edit": "編輯檢視畫面",
+        "editColumns": "編輯欄",
+        "delete": "刪除檢視畫面",
+        "copy": "{name}的副本",
+        "deleteModal": {
+          "title": "是否要刪除檢視畫面？",
+          "description": "此動作無法復原。{viewName} 檢視畫面已無法在您的管理介面中使用。",
+          "cancel": "取消",
+          "delete": "刪除檢視畫面"
+        }
+      },
+      "RenameModal": {
+        "title": "重新命名檢視畫面",
+        "label": "名稱",
+        "cancel": "取消",
+        "create": "儲存",
+        "errors": {
+          "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。"
+        }
+      },
+      "DuplicateModal": {
+        "title": "複製檢視畫面",
+        "label": "名稱",
+        "cancel": "取消",
+        "create": "建立檢視畫面",
+        "errors": {
+          "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。"
+        }
+      },
+      "CreateViewModal": {
+        "title": "建立新檢視畫面",
+        "label": "名稱",
+        "cancel": "取消",
+        "create": "建立檢視畫面",
+        "errors": {
+          "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。"
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "移除 {children}"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "動作"
+      "popoverButton": "動作",
+      "dismissButton": "關閉"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -305,6 +351,40 @@
     "FullscreenBar": {
       "back": "返回",
       "accessibilityLabel": "退出全螢幕模式"
+    },
+    "FilterPill": {
+      "clear": "清除"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "搜尋及篩選 (F)",
+      "searchFilterAccessibilityLabel": "搜尋及篩選結果",
+      "sort": "排序搜尋結果",
+      "addView": "新增檢視畫面",
+      "newView": "自訂搜尋條件",
+      "SortButton": {
+        "ariaLabel": "排序搜尋結果",
+        "tooltip": "排序",
+        "title": "排序依據",
+        "sorting": {
+          "asc": "遞增",
+          "desc": "遞減",
+          "az": "由 A 到 Z",
+          "za": "由 Z 到 A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "取消",
+        "update": "更新",
+        "save": "儲存",
+        "saveAs": "另存新檔",
+        "modal": {
+          "title": "將檢視畫面另存為",
+          "label": "名稱",
+          "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。",
+          "save": "儲存",
+          "cancel": "取消"
+        }
+      }
     }
   }
 }

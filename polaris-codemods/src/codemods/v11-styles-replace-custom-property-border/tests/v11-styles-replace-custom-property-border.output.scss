@@ -1,0 +1,10 @@
+.border {
+  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-full);
+  border: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-color-border);
+  border: var(--p-border-width-1) solid transparent;
+  border: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-color-border-inverse);
+}

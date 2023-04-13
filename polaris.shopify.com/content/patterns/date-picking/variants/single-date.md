@@ -10,7 +10,7 @@ This enables merchants to type a specific date or pick it from a calendar.
 
 ## How it helps merchants
 
-![Date text input and a single-month calendar](/images/patterns/single-list-cover-image.png)
+![Date text input and a single-month calendar](/images/patterns/date-picking/single-list-cover-image.png)
 
 1. The text input gives merchants the option to use the keyboard to enter a date.
 2. A single month calendar allows merchants to select a date while seeing its relationship to other days.
@@ -93,7 +93,7 @@ function DatePickerExample() {
     }
   }, [selectedDate]);
   return (
-    <AlphaStack align="center" gap="4">
+    <VerticalStack inlineAlign="center" gap="4">
       <Box minWidth="276px" padding={{xs: 2}}>
         <Popover
           active={visible}
@@ -127,7 +127,7 @@ function DatePickerExample() {
           </AlphaCard>
         </Popover>
       </Box>
-    </AlphaStack>
+    </VerticalStack>
   );
 }
 ```
@@ -137,9 +137,7 @@ function DatePickerExample() {
 
 ### Useful to know
 
-|                                                                                                        |                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc. | ![Date input labeled “Expiry date”](/images/patterns/single-list-usage-1.png)                                                                          |
-| This pattern can be duplicated to allow users to add an end date or time.                              | ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/single-list-usage-2.png) |
+- <span>Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.</span> ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
+- <span>This pattern can be duplicated to allow users to add an end date or time.</span> ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
 
 </div>

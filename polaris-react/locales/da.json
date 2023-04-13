@@ -152,7 +152,9 @@
       "clearAllFilters": "Ryd alle filtre",
       "clear": "Ryd",
       "clearLabel": "Ryd {filterName}",
-      "moreFiltersWithCount": "Flere filtre: ({count})"
+      "moreFiltersWithCount": "Flere filtre: ({count})",
+      "addFilter": "Tilføj filter",
+      "clearFilters": "Ryd alt"
     },
     "Modal": {
       "iFrameTitle": "body markup",
@@ -201,7 +203,50 @@
       "loadingLabel": "Indlæser side"
     },
     "Tabs": {
-      "toggleTabsLabel": "Flere faner"
+      "toggleTabsLabel": "Flere visninger",
+      "newViewAccessibilityLabel": "Opret ny visning",
+      "newViewTooltip": "Opret visning",
+      "Tab": {
+        "rename": "Omdøb visning",
+        "duplicate": "Dupliker visning",
+        "edit": "Rediger visning",
+        "editColumns": "Rediger kolonner",
+        "delete": "Slet visning",
+        "copy": "Kopi af {name}",
+        "deleteModal": {
+          "title": "Vil du slette visningen?",
+          "description": "Dette kan ikke fortrydes. {viewName} visning vil ikke længere være tilgængelig i din administrator.",
+          "cancel": "Annuller",
+          "delete": "Slet visning"
+        }
+      },
+      "RenameModal": {
+        "title": "Omdøb visning",
+        "label": "Navn",
+        "cancel": "Annuller",
+        "create": "Gem",
+        "errors": {
+          "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Dupliker visning",
+        "label": "Navn",
+        "cancel": "Annuller",
+        "create": "Opret visning",
+        "errors": {
+          "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Opret ny visning",
+        "label": "Navn",
+        "cancel": "Annuller",
+        "create": "Opret visning",
+        "errors": {
+          "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Fjern {children}"
@@ -214,11 +259,12 @@
       "toggleMenuLabel": "Åbn/luk menuen",
       "SearchField": {
         "clearButtonLabel": "Ryd",
-        "search": "Søgning"
+        "search": "Søg"
       }
     },
     "MediaCard": {
-      "popoverButton": "Handlinger"
+      "popoverButton": "Handlinger",
+      "dismissButton": "Afvis"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -305,6 +351,40 @@
     "FullscreenBar": {
       "back": "Tilbage",
       "accessibilityLabel": "Afslut fuldskærmstilstand"
+    },
+    "FilterPill": {
+      "clear": "Ryd"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Søg og filtrer (F)",
+      "searchFilterAccessibilityLabel": "Søg og filtrer resultater",
+      "sort": "Sortér dine resultater",
+      "addView": "Tilføj en ny visning",
+      "newView": "Tilpasset søgning",
+      "SortButton": {
+        "ariaLabel": "Sortér resultaterne",
+        "tooltip": "Sortér",
+        "title": "Sortér efter",
+        "sorting": {
+          "asc": "Stigende",
+          "desc": "Faldende",
+          "az": "A-Å",
+          "za": "Å-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Annuller",
+        "update": "Opdater",
+        "save": "Gem",
+        "saveAs": "Gem som",
+        "modal": {
+          "title": "Gem visning som",
+          "label": "Navn",
+          "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn.",
+          "save": "Gem",
+          "cancel": "Annuller"
+        }
+      }
     }
   }
 }

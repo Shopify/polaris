@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.12.0
+
+### Minor Changes
+
+- [#6978](https://github.com/Shopify/polaris/pull/6978) [`0ad5a20f7`](https://github.com/Shopify/polaris/commit/0ad5a20f780ad24527083b4bb37f6a411350425f) Thanks [@chrisblinstrub](https://github.com/chrisblinstrub)! - Updated PinMajor and PinMinor icons. Added PinUnfilledMajor and PinUnfilledMinor icons.
+
+* [#8711](https://github.com/Shopify/polaris/pull/8711) [`ed376f714`](https://github.com/Shopify/polaris/commit/ed376f7144d30526649725764420e5a046de359f) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Add major and minor icons and yml for new Extend and Simplify icons
+
 ## 6.11.3
 
 ### Patch Changes
