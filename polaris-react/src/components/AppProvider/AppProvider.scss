@@ -10,14 +10,15 @@ html {
   line-height: var(--p-font-line-height-2);
   font-weight: var(--p-font-weight-regular);
   font-family: var(--p-font-family-sans);
+  color: var(--p-color-text);
 
+  // Antialiasing for OSX/iOS
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  // Fix font resize problem in iOS
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-
-  color: var(--p-color-text);
 
   position: relative;
 }
