@@ -1,6 +1,7 @@
 import React from 'react';
+import {fireEvent, act} from '@testing-library/react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {mountWithApp} from 'tests/utilities';
+import {renderWithApp} from 'tests/utilities';
 
 import {DateList} from '..';
 
@@ -39,7 +40,7 @@ describe('<DatePicker />', () => {
 
   describe('DateList', () => {
     it('renders date options', () => {
-      const datepicker = mountWithApp(
+      const datepicker = renderWithApp(
         <DateList
           selected={defaultRanges[0]}
           onChange={noop}
@@ -47,16 +48,14 @@ describe('<DatePicker />', () => {
         />,
       );
 
-      datepicker.find('button')?.trigger('onClick');
+      const trigger = datepicker.getByRole('button', {name: 'Today'});
+      act(() => {
+        fireEvent.click(trigger);
+      });
 
-      expect(
-        datepicker.findAllWhere<'li'>((node) => {
-          return (
-            node.is('li') &&
-            node.prop('className') === 'Polaris-OptionList-Option'
-          );
-        }),
-      ).toHaveLength(defaultRanges.length);
+      expect(datepicker.getAllByRole('button')).toHaveLength(
+        defaultRanges.length + 1,
+      );
     });
 
     it('triggers onChange with the expected value when an option is selected', () => {
