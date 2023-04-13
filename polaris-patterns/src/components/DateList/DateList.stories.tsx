@@ -46,11 +46,6 @@ export function Default() {
     }
   };
   return (
-    <DateList
-      options={ranges}
-      selected={selected}
-      onChange={handleOnChange}
-      onClose={() => {}}
-    />
+    <DateList options={ranges} selected={selected} onChange={handleOnChange} />
   );
 }
