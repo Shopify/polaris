@@ -162,10 +162,15 @@ export function Item({
 const truncateText = (text: string) => {
   const trimmedText = text.trim();
   return (
-    <Tooltip content={trimmedText} zIndexOverride={514}>
-      <div className={styles.Trimmed}>
+    <Tooltip
+      content={trimmedText}
+      zIndexOverride={514}
+      preferredPosition="above"
+      hoverDelay={1000}
+    >
+      <Text truncate as="p" variant="bodyMd">
         <Truncate>{trimmedText}</Truncate>
-      </div>
+      </Text>
     </Tooltip>
   );
 };
