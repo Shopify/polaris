@@ -11,5 +11,5 @@
 }
 
 .divider {
-  border-bottom: var(--p-border-divider);
+  border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
 }

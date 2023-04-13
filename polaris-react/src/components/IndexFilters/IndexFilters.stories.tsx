@@ -948,3 +948,148 @@ export function Disabled() {
     }
   }
 }
+
+export function WithQueryFieldAndFiltersHidden() {
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+  const [itemStrings, setItemStrings] = useState([
+    'All',
+    'Unpaid',
+    'Open',
+    'Closed',
+    'Local delivery',
+    'Local pickup',
+  ]);
+  const deleteView = (index: number) => {
+    const newItemStrings = [...itemStrings];
+    newItemStrings.splice(index, 1);
+    setItemStrings(newItemStrings);
+    setSelected(0);
+  };
+
+  const duplicateView = async (name: string) => {
+    setItemStrings([...itemStrings, name]);
+    setSelected(itemStrings.length);
+    await sleep(1);
+    return true;
+  };
+
+  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
+    content: item,
+    index,
+    onAction: () => {},
+    id: `${item}-${index}`,
+    isLocked: index === 0,
+    actions:
+      index === 0
+        ? []
+        : [
+            {
+              type: 'rename',
+              onAction: () => {},
+              onPrimaryAction: async (value: string) => {
+                const newItemsStrings = tabs.map((item, idx) => {
+                  if (idx === index) {
+                    return value;
+                  }
+                  return item.content;
+                });
+                await sleep(1);
+                setItemStrings(newItemsStrings);
+                return true;
+              },
+            },
+            {
+              type: 'duplicate',
+              onPrimaryAction: async (name) => {
+                await sleep(1);
+                duplicateView(name);
+                return true;
+              },
+            },
+            {
+              type: 'edit',
+            },
+            {
+              type: 'delete',
+              onPrimaryAction: async (id: string) => {
+                await sleep(1);
+                deleteView(index);
+                return true;
+              },
+            },
+          ],
+  }));
+  const [selected, setSelected] = useState(0);
+  const onCreateNewView = async (value: string) => {
+    await sleep(500);
+    setItemStrings([...itemStrings, value]);
+    setSelected(itemStrings.length);
+    return true;
+  };
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
+    {label: 'Order', value: 'order asc', directionLabel: 'Ascending'},
+    {label: 'Order', value: 'order desc', directionLabel: 'Descending'},
+    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
+    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
+    {label: 'Date', value: 'date asc', directionLabel: 'A-Z'},
+    {label: 'Date', value: 'date desc', directionLabel: 'Z-A'},
+    {label: 'Total', value: 'total asc', directionLabel: 'Ascending'},
+    {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
+  ];
+  const [sortSelected, setSortSelected] = useState(['order asc']);
+  const {mode, setMode} = useSetIndexFiltersMode();
+  const onHandleCancel = () => {};
+
+  const onHandleSave = async () => {
+    await sleep(1);
+    return true;
+  };
+
+  const primaryAction: IndexFiltersProps['primaryAction'] =
+    selected === 0
+      ? {
+          type: 'save-as',
+          onAction: onCreateNewView,
+          disabled: false,
+          loading: false,
+        }
+      : {
+          type: 'save',
+          onAction: onHandleSave,
+          disabled: false,
+          loading: false,
+        };
+
+  return (
+    <Card>
+      <IndexFilters
+        sortOptions={sortOptions}
+        sortSelected={sortSelected}
+        queryValue=""
+        queryPlaceholder="Searching in all"
+        onQueryChange={() => {}}
+        onQueryClear={() => {}}
+        onSort={setSortSelected}
+        primaryAction={primaryAction}
+        cancelAction={{
+          onAction: onHandleCancel,
+          disabled: false,
+          loading: false,
+        }}
+        tabs={tabs}
+        selected={selected}
+        onSelect={setSelected}
+        canCreateNewView
+        onCreateNewView={onCreateNewView}
+        filters={[]}
+        onClearAll={() => {}}
+        mode={mode}
+        setMode={setMode}
+        hideQueryField
+        hideFilters
+      />
+      <Table />
+    </Card>
+  );
+}

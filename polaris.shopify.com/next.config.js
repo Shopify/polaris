@@ -192,11 +192,6 @@ const deprecated = [
     permanent: false,
   },
   {
-    source: '/components/grid',
-    destination: '/components/deprecated/grid',
-    permanent: false,
-  },
-  {
     source: '/components/heading',
     destination: '/components/deprecated/heading',
     permanent: false,
@@ -336,18 +331,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/structure/card',
-    destination: '/components/layout-and-structure/alpha-card',
-    permanent: false,
-  },
-  {
     source: '/components/layout-and-structure/card',
     destination: '/components/layout-and-structure/alpha-card',
-    permanent: false,
-  },
-  {
-    source: '/components/alpha-stack',
-    destination: '/components/layout-and-structure/alpha-stack',
     permanent: false,
   },
   {
@@ -367,7 +352,7 @@ const layoutAndStructure = [
   },
   {
     source: '/components/columns',
-    destination: '/components/layout-and-structure/columns',
+    destination: '/components/layout-and-structure/horizontal-grid',
     permanent: false,
   },
   {
@@ -396,8 +381,13 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
+    source: '/components/grid',
+    destination: '/components/layout-and-structure/grid',
+    permanent: false,
+  },
+  {
     source: '/components/inline',
-    destination: '/components/layout-and-structure/inline',
+    destination: '/components/layout-and-structure/horizontal-stack',
     permanent: false,
   },
   {
@@ -436,13 +426,13 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/stack',
-    destination: '/components/layout-and-structure/stack',
+    source: '/components/layout-and-structure/stack',
+    destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/stack',
-    destination: '/components/layout-and-structure/alpha-stack',
+    source: '/components/layout-and-structure/alpha-stack',
+    destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },
 ];

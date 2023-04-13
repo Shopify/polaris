@@ -9,8 +9,8 @@ import {
   ChoiceList,
   RangeSlider,
   Badge,
-  AlphaStack,
-  Inline,
+  VerticalStack,
+  HorizontalStack,
 } from '@shopify/polaris';
 import type {IndexFiltersProps, AlphaTabProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
@@ -54,7 +54,7 @@ function IndexTableWithViewsSearchFilterSorting() {
             {
               type: 'rename',
               onAction: () => {},
-              onPrimaryAction: async (value: string) => {
+              onPrimaryAction: async (value: string): Promise<boolean> => {
                 const newItemsStrings = tabs.map((item, idx) => {
                   if (idx === index) {
                     return value;
@@ -68,9 +68,9 @@ function IndexTableWithViewsSearchFilterSorting() {
             },
             {
               type: 'duplicate',
-              onPrimaryAction: async (name) => {
+              onPrimaryAction: async (value: string): Promise<boolean> => {
                 await sleep(1);
-                duplicateView(name);
+                duplicateView(value);
                 return true;
               },
             },
@@ -310,23 +310,23 @@ function IndexTableWithViewsSearchFilterSorting() {
         position={index}
       >
         <div style={{padding: '12px 16px', width: '100%'}}>
-          <AlphaStack gap="1">
+          <VerticalStack gap="1">
             <Text as="span" variant="bodySm" color="subdued">
               {order} • {date}
             </Text>
-            <Inline align="space-between">
+            <HorizontalStack align="space-between">
               <Text as="span" variant="bodyMd" fontWeight="semibold">
                 {customer}
               </Text>
               <Text as="span" variant="bodyMd">
                 {total}
               </Text>
-            </Inline>
-            <Inline align="start" gap="1">
+            </HorizontalStack>
+            <HorizontalStack align="start" gap="1">
               {paymentStatus}
               {fulfillmentStatus}
-            </Inline>
-          </AlphaStack>
+            </HorizontalStack>
+          </VerticalStack>
         </div>
       </IndexTable.Row>
     ),

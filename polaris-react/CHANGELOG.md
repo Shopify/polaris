@@ -1,5 +1,18 @@
 # Changelog
 
+## 10.43.0
+
+### Minor Changes
+
+- [#8879](https://github.com/Shopify/polaris/pull/8879) [`2e65ec7bf`](https://github.com/Shopify/polaris/commit/2e65ec7bf260c43b3f9ceb44a25ff38c7311fb12) Thanks [@lgriffee](https://github.com/lgriffee)! - Migrate `border` custom properties from Polaris `v10` to `v11`
+
+* [#8909](https://github.com/Shopify/polaris/pull/8909) [`e4e589458`](https://github.com/Shopify/polaris/commit/e4e5894585e18818c15a2b8c2bd245e3e17f9d15) Thanks [@alex-page](https://github.com/alex-page)! - Replace borderStyle with borderColor and borderWidth in Divider
+
+### Patch Changes
+
+- Updated dependencies [[`247f5eea8`](https://github.com/Shopify/polaris/commit/247f5eea859b3ab348dcb18c568f18d8d859140e)]:
+  - @shopify/polaris-tokens@6.10.0
+
 ## 10.42.1
 
 ### Patch Changes

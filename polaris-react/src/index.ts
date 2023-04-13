@@ -54,8 +54,8 @@ export type {AlphaCardProps} from './components/AlphaCard';
 export {AlphaFilters} from './components/AlphaFilters';
 export type {AlphaFiltersProps} from './components/AlphaFilters';
 
-export {AlphaStack} from './components/AlphaStack';
-export type {AlphaStackProps} from './components/AlphaStack';
+export {VerticalStack} from './components/VerticalStack';
+export type {VerticalStackProps} from './components/VerticalStack';
 
 export {AlphaTabs} from './components/AlphaTabs';
 export type {AlphaTabsProps, AlphaTabProps} from './components/AlphaTabs';
@@ -127,8 +127,8 @@ export type {CollapsibleProps} from './components/Collapsible';
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
 
-export {Columns} from './components/Columns';
-export type {ColumnsProps} from './components/Columns';
+export {HorizontalGrid} from './components/HorizontalGrid';
+export type {HorizontalGridProps} from './components/HorizontalGrid';
 
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
@@ -228,8 +228,8 @@ export type {IndexTableProps} from './components/IndexTable';
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
 
-export {Inline} from './components/Inline';
-export type {InlineProps} from './components/Inline';
+export {HorizontalStack} from './components/HorizontalStack';
+export type {HorizontalStackProps} from './components/HorizontalStack';
 
 export {InlineCode} from './components/InlineCode';
 export type {InlineCodeProps} from './components/InlineCode';

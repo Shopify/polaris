@@ -1,11 +1,17 @@
 import React from 'react';
-import {AlphaStack, Bleed, Box, Text, Inline} from '@shopify/polaris';
+import {
+  VerticalStack,
+  Bleed,
+  Box,
+  Text,
+  HorizontalStack,
+} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedSpecificDirectionExample() {
   return (
-    <AlphaStack gap="6">
+    <VerticalStack gap="6">
       <Box
         background="bg"
         borderWidth="1"
@@ -46,7 +52,7 @@ function BleedSpecificDirectionExample() {
           <Placeholder label="marginBlockEnd" />
         </Bleed>
       </Box>
-    </AlphaStack>
+    </VerticalStack>
   );
 }
 
@@ -60,7 +66,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         width: width,
       }}
     >
-      <Inline gap="4" align="center">
+      <HorizontalStack gap="4" align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
@@ -70,7 +76,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
             {label}
           </Text>
         </div>
-      </Inline>
+      </HorizontalStack>
     </div>
   );
 };

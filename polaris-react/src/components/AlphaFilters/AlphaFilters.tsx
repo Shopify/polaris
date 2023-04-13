@@ -10,10 +10,10 @@ import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
 import type {AppliedFilterInterface, FilterInterface} from '../../types';
-import {Link} from '../Link';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
+import {Button} from '../Button';
 
 import {FilterPill, SearchField} from './components';
 import styles from './AlphaFilters.scss';
@@ -129,8 +129,6 @@ export function AlphaFilters({
   const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
   const hasMounted = useRef(false);
 
-  const enabledFilters = filters.filter((filter) => !filter.disabled);
-
   useEffect(() => {
     hasMounted.current = true;
   });
@@ -143,14 +141,14 @@ export function AlphaFilters({
   };
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
 
-  const pinnedFiltersFromPropsAndAppliedFilters = enabledFilters.filter(
+  const pinnedFiltersFromPropsAndAppliedFilters = filters.filter(
     ({pinned, key}) =>
       (Boolean(pinned) || appliedFilterKeys?.includes(key)) &&
       // Filters that are pinned in local state display at the end of our list
       !localPinnedFilters.find((filterKey) => filterKey === key),
   );
   const pinnedFiltersFromLocalState = localPinnedFilters
-    .map((key) => enabledFilters.find((filter) => filter.key === key))
+    .map((key) => filters.find((filter) => filter.key === key))
     .reduce<FilterInterface[]>(
       (acc, filter) => (filter ? [...acc, filter] : acc),
       [],
@@ -161,7 +159,7 @@ export function AlphaFilters({
     ...pinnedFiltersFromLocalState,
   ];
 
-  const additionalFilters = enabledFilters
+  const additionalFilters = filters
     .filter((filter) => !pinnedFilters.find(({key}) => key === filter.key))
     .map((filter) => ({
       content: filter.label,
@@ -204,7 +202,7 @@ export function AlphaFilters({
     onClearAll?.();
   };
 
-  const shouldShowAddButton = enabledFilters.some((filter) => !filter.pinned);
+  const shouldShowAddButton = filters.some((filter) => !filter.pinned);
 
   const additionalContent = useMemo(() => {
     return (
@@ -234,7 +232,7 @@ export function AlphaFilters({
           md: '3',
         }}
       >
-        <Inline
+        <HorizontalStack
           align="start"
           blockAlign="center"
           gap={{
@@ -266,7 +264,7 @@ export function AlphaFilters({
             />
           </div>
           {additionalContent}
-        </Inline>
+        </HorizontalStack>
       </Box>
     </div>
   );
@@ -331,11 +329,14 @@ export function AlphaFilters({
             styles.MultiplePinnedFilterClearAll,
         )}
       >
-        <Link onClick={handleClearAllFilters} removeUnderline>
-          <Text variant="bodySm" fontWeight="semibold" as="span">
-            {i18n.translate('Polaris.Filters.clearFilters')}
-          </Text>
-        </Link>
+        <Button
+          size="micro"
+          plain
+          onClick={handleClearAllFilters}
+          removeUnderline
+        >
+          {i18n.translate('Polaris.Filters.clearFilters')}
+        </Button>
       </div>
     ) : null;
 
@@ -360,7 +361,7 @@ export function AlphaFilters({
         </div>
         {hideQueryField ? (
           <Box paddingInlineEnd="2" paddingBlockStart="2">
-            <Inline
+            <HorizontalStack
               align="start"
               blockAlign="center"
               gap={{
@@ -369,7 +370,7 @@ export function AlphaFilters({
               }}
             >
               {additionalContent}
-            </Inline>
+            </HorizontalStack>
           </Box>
         ) : null}
       </div>

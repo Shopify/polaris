@@ -55,7 +55,7 @@ This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
 <!-- prettier-ignore -->
 ```javascript {"type":"livePreview","id":"example"}
 <Page divider>
-  <AlphaStack gap="16">Coming Soon</AlphaStack>
+  <VerticalStack gap="16">Coming Soon</VerticalStack>
 </Page>
 ```
 

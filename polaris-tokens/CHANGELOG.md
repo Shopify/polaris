@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.10.0
+
+### Minor Changes
+
+- [#8906](https://github.com/Shopify/polaris/pull/8906) [`247f5eea8`](https://github.com/Shopify/polaris/commit/247f5eea859b3ab348dcb18c568f18d8d859140e) Thanks [@alex-page](https://github.com/alex-page)! - Add new border tokens that will replace shape in v11
+
 ## 6.9.0
 
 ### Minor Changes

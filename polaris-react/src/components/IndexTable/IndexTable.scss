@@ -725,7 +725,7 @@ $scroll-bar-size: var(--p-space-2);
   transform: translateX(calc(-1 * var(--pc-index-table-translate-offset)));
   transition: transform var(--p-ease) var(--p-duration-200);
   display: flex;
-  border-top: var(--p-border-divider);
+  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   filter: none;
   align-items: center;
 }

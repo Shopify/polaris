@@ -3,9 +3,9 @@ import {
   LegacyCard,
   useIndexResourceState,
   Text,
-  Inline,
+  HorizontalStack,
   Badge,
-  AlphaStack,
+  VerticalStack,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -60,23 +60,23 @@ function SimpleSmallScreenIndexTableExample() {
         position={index}
       >
         <div style={{padding: '12px 16px', width: '100%'}}>
-          <AlphaStack gap="1">
+          <VerticalStack gap="1">
             <Text as="span" variant="bodySm" color="subdued">
               {order} • {date}
             </Text>
-            <Inline align="space-between">
+            <HorizontalStack align="space-between">
               <Text as="span" variant="bodyMd" fontWeight="semibold">
                 {customer}
               </Text>
               <Text as="span" variant="bodyMd">
                 {total}
               </Text>
-            </Inline>
-            <Inline align="start" gap="1">
+            </HorizontalStack>
+            <HorizontalStack align="start" gap="1">
               {paymentStatus}
               {fulfillmentStatus}
-            </Inline>
-          </AlphaStack>
+            </HorizontalStack>
+          </VerticalStack>
         </div>
       </IndexTable.Row>
     ),

@@ -5,6 +5,7 @@
   --pc-frame-button-size: var(--p-space-8);
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh; // For mobile browsers, fill the screen taking into account dynamic browser chrome
   display: flex;
   background-color: var(--p-color-bg-app);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaStack, Box, Icon} from '@shopify/polaris';
+import {VerticalStack, Box, Icon} from '@shopify/polaris';
 import {PaintBrushMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -33,7 +33,7 @@ export function WithBorderRadius() {
 
 export function WithResponsivePadding() {
   return (
-    <AlphaStack gap="4">
+    <VerticalStack gap="4">
       <Box
         background="bg"
         padding={{xs: '2', sm: '8'}}
@@ -77,6 +77,6 @@ export function WithResponsivePadding() {
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-    </AlphaStack>
+    </VerticalStack>
   );
 }

@@ -85,7 +85,7 @@ $vertical-motion-offset: -5px;
   max-width: 100%;
 
   + .Pane {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   }
 
   &:focus {
@@ -104,7 +104,7 @@ $vertical-motion-offset: -5px;
 
 .Section {
   + .Section {
-    border-top: var(--p-border-divider);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   }
 }
 
