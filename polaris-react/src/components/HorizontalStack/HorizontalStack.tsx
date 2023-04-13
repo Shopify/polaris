@@ -43,10 +43,10 @@ export const HorizontalStack = function HorizontalStack({
   children,
 }: HorizontalStackProps) {
   const style = {
-    '--pc-inline-align': align,
-    '--pc-inline-block-align': blockAlign,
-    '--pc-inline-wrap': wrap ? 'wrap' : 'nowrap',
-    ...getResponsiveProps('inline', 'gap', 'space', gap),
+    '--pc-horizontal-stack-align': align,
+    '--pc-horizontal-stack-block-align': blockAlign,
+    '--pc-horizontal-stack-wrap': wrap ? 'wrap' : 'nowrap',
+    ...getResponsiveProps('horizontal-stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
   return (

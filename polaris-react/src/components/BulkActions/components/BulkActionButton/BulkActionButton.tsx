@@ -5,6 +5,7 @@ import type {DisableableAction} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
+import {Tooltip} from '../../../Tooltip';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
 import styles from '../../BulkActions.scss';
 
@@ -36,29 +37,40 @@ export function BulkActionButton({
     }
   });
 
-  const buttonContent =
-    disclosure && !showContentInButton ? undefined : content;
+  const isActivatorForMoreActionsPopover = disclosure && !showContentInButton;
+
+  const buttonContent = isActivatorForMoreActionsPopover ? undefined : content;
+
+  const buttonMarkup = (
+    <Button
+      external={external}
+      url={url}
+      accessibilityLabel={
+        isActivatorForMoreActionsPopover ? content : accessibilityLabel
+      }
+      disclosure={disclosure && showContentInButton}
+      onClick={onAction}
+      disabled={disabled}
+      size="slim"
+      icon={
+        isActivatorForMoreActionsPopover ? (
+          <Icon source={HorizontalDotsMinor} color="base" />
+        ) : undefined
+      }
+    >
+      {buttonContent}
+    </Button>
+  );
 
   return (
     <div className={styles.BulkActionButton} ref={bulkActionButton}>
-      <Button
-        external={external}
-        url={url}
-        accessibilityLabel={
-          disclosure && !showContentInButton ? content : accessibilityLabel
-        }
-        disclosure={disclosure && showContentInButton}
-        onClick={onAction}
-        disabled={disabled}
-        size="slim"
-        icon={
-          disclosure && !showContentInButton ? (
-            <Icon source={HorizontalDotsMinor} color="base" />
-          ) : undefined
-        }
-      >
-        {buttonContent}
-      </Button>
+      {isActivatorForMoreActionsPopover ? (
+        <Tooltip content={content} preferredPosition="above">
+          {buttonMarkup}
+        </Tooltip>
+      ) : (
+        buttonMarkup
+      )}
       {indicator && <Indicator />}
     </div>
   );
