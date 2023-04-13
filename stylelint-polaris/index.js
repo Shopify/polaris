@@ -64,7 +64,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/at-rule-disallowed-list': {
         include: [
           // Legacy mixins
-          'color-icon',
           'recolor-icon',
           'ms-high-contrast-color',
         ].map(matchNameRegExp),
@@ -74,9 +73,6 @@ const stylelintPolarisCoverageOptions = {
         /\$polaris-colors/,
         /\$color-filter-palette-data/,
         /\$color-palette-data/,
-        // Legacy custom properties
-        /--p-override-transparent/,
-        /--p-badge-mix-blend-mode/,
       ],
     },
     {
@@ -85,11 +81,9 @@ const stylelintPolarisCoverageOptions = {
   ],
   motion: [
     {
-      'function-disallowed-list': [
-        'control-icon-transition',
-        'duration',
-        'easing',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['control-icon-transition'].map(
+        matchNameRegExp,
+      ),
       'declaration-property-unit-disallowed-list': [
         {
           '/^animation/': ['ms', 's'],
@@ -102,13 +96,7 @@ const stylelintPolarisCoverageOptions = {
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
-        /\$duration-data/,
-        /\$polaris-duration-map/,
         /\$skeleton-shimmer-duration/,
-        /\$easing-data/,
-        // Legacy custom properties
-        /--p-duration-1-0-0/,
-        /--p-duration-1-5-0/,
       ],
     },
     {
@@ -127,11 +115,9 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'property-disallowed-list': ['text-transform'],
-      'function-disallowed-list': [
-        'font-family',
-        'font-size',
-        'line-height',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['font-size', 'line-height'].map(
+        matchNameRegExp,
+      ),
       'polaris/at-rule-disallowed-list': {
         include: [
           'truncate',
@@ -154,16 +140,10 @@ const stylelintPolarisCoverageOptions = {
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
-        /\$typography-condensed/,
-        /\$typography-condensed/,
         /\$base-font-size/,
         /\$line-height-data/,
-        /\$font-family-data/,
         /\$font-size-data/,
         /\$default-browser-font-size/,
-        // Legacy custom properties
-        /--p-button-font/,
-        /--p-badge-font/,
       ],
     },
     {
@@ -214,16 +194,10 @@ const stylelintPolarisCoverageOptions = {
         'control-slim-height',
         'mobile-nav-width',
         'thumbnail-size',
-        'icon-size',
         'top-bar-height',
       ].map(matchNameRegExp),
       'polaris/at-rule-disallowed-list': {
-        include: [
-          'layout-flex-fix',
-          'safe-area-for',
-          'skeleton-page-header-layout',
-          'skeleton-page-secondary-actions-layout',
-        ].map(matchNameRegExp),
+        include: ['layout-flex-fix', 'safe-area-for'].map(matchNameRegExp),
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
@@ -236,9 +210,6 @@ const stylelintPolarisCoverageOptions = {
         // Legacy custom properties
         /--p-range-slider-thumb-size-base/,
         /--p-range-slider-thumb-size-active/,
-        /--p-range-slider-thumb-scale/,
-        /--p-override-visible/,
-        /--p-icon-size/,
         /--p-choice-size/,
       ],
     },
@@ -248,7 +219,7 @@ const stylelintPolarisCoverageOptions = {
   ],
   spacing: [
     {
-      'function-disallowed-list': ['control-vertical-padding', 'spacing'].map(
+      'function-disallowed-list': ['control-vertical-padding'].map(
         matchNameRegExp,
       ),
       'declaration-property-unit-disallowed-list': [
@@ -261,8 +232,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$polaris-spacing/,
-        /\$spacing-data/,
-        /\$actions-vertical-spacing/,
         // Legacy custom properties
         /--p-button-group-item-spacing/,
         /--p-choice-margin/,
@@ -275,11 +244,6 @@ const stylelintPolarisCoverageOptions = {
   ],
   shape: [
     {
-      'function-disallowed-list': [
-        'border-radius',
-        'border-width',
-        'border',
-      ].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
           'border-width': disallowedUnits,
@@ -299,10 +263,6 @@ const stylelintPolarisCoverageOptions = {
         ].map(matchNameRegExp),
       },
       'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$border-radius-data/,
-        /\$border-width-data/,
-        /\$borders-data/,
         // Legacy custom properties
         // /--p-border-radius-base/,
         /--p-border-radius-wide/,
@@ -314,7 +274,6 @@ const stylelintPolarisCoverageOptions = {
         /--p-banner-border-highlight/,
         /--p-banner-border-warning/,
         /--p-banner-border-critical/,
-        /--p-text-field-focus-ring-border-radius/,
         /--p-text-field-focus-ring-offset/,
       ],
     },
@@ -334,14 +293,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$shadows-data/,
-        // Legacy custom properties
-        /--p-button-drop-shadow/,
-        /--p-button-inner-shadow/,
-        /--p-button-pressed-inner-shadow/,
-        /--p-card-shadow/,
-        /--p-popover-shadow/,
-        /--p-modal-shadow/,
-        /--p-top-bar-shadow/,
       ],
     },
     {
@@ -485,17 +436,11 @@ const stylelintPolarisCoverageOptions = {
         'available-names',
         'map-extend',
         'em',
-        'px',
         'rem',
       ].map(matchNameRegExp),
       'polaris/global-disallowed-list': [
         // Legacy variables
         / \* \$/,
-        // Legacy custom properties
-        /--p-override-none/,
-        /--p-override-one/,
-        /--p-override-zero/,
-        /--p-non-null-content/,
       ],
     },
     {
