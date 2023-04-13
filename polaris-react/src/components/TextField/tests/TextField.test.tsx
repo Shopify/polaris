@@ -1074,7 +1074,7 @@ describe('<TextField />', () => {
         expect(spy).not.toHaveBeenCalled();
       });
 
-      describe('onSpinButtonClick()', () => {
+      describe('onSpinnerChange()', () => {
         it('is called with the new value when incrementing by step', () => {
           const spy = jest.fn();
           const element = mountWithApp(
@@ -1084,7 +1084,7 @@ describe('<TextField />', () => {
               type="number"
               value="2"
               step={4}
-              onSpinButtonClick={spy}
+              onSpinnerChange={spy}
               autoComplete="off"
             />,
           );
@@ -1103,7 +1103,7 @@ describe('<TextField />', () => {
               type="number"
               value="2"
               step={4}
-              onSpinButtonClick={onStepperSpy}
+              onSpinnerChange={onStepperSpy}
               onChange={onChangeSpy}
               autoComplete="off"
             />,
@@ -1124,7 +1124,7 @@ describe('<TextField />', () => {
               type="number"
               value="2"
               step={4}
-              onSpinButtonClick={onStepperSpy}
+              onSpinnerChange={onStepperSpy}
               onChange={onChangeSpy}
               autoComplete="off"
             />,
@@ -1225,7 +1225,7 @@ describe('<TextField />', () => {
           expect(spy).toHaveBeenCalledWith('100', 'MyTextField');
         });
 
-        it('calls onSpinButtonClick(min) if Home is pressed and min was provided', () => {
+        it('calls onSpinnerChange(min) if Home is pressed and min was provided', () => {
           const spy = jest.fn();
           const textField = mountWithApp(
             <TextField
@@ -1235,7 +1235,7 @@ describe('<TextField />', () => {
               value="10"
               min={1}
               step={1}
-              onSpinButtonClick={spy}
+              onSpinnerChange={spy}
               autoComplete="off"
             />,
           );
@@ -1246,7 +1246,7 @@ describe('<TextField />', () => {
           expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
         });
 
-        it('calls onSpinButtonClick(max) if End is pressed and max was provided', () => {
+        it('calls onSpinnerChange(max) if End is pressed and max was provided', () => {
           const spy = jest.fn();
           const textField = mountWithApp(
             <TextField
@@ -1256,7 +1256,7 @@ describe('<TextField />', () => {
               value="10"
               max={100}
               step={1}
-              onSpinButtonClick={spy}
+              onSpinnerChange={spy}
               autoComplete="off"
             />,
           );

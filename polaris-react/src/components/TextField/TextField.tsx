@@ -165,7 +165,7 @@ interface NonMutuallyExclusiveProps {
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
   /** When provided, callback fired instead of onChange when value is changed via the number step control  */
-  onSpinButtonClick?(value: string, id: string): void;
+  onSpinnerChange?(value: string, id: string): void;
   /** Callback fired when input is focused */
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
@@ -234,7 +234,7 @@ export function TextField({
   suggestion,
   onClearButtonClick,
   onChange,
-  onSpinButtonClick,
+  onSpinnerChange,
   onFocus,
   onBlur,
   borderless,
@@ -360,7 +360,7 @@ export function TextField({
 
   const handleNumberChange = useCallback(
     (steps: number, stepAmount = normalizedStep) => {
-      if (onChange == null && onSpinButtonClick == null) {
+      if (onChange == null && onSpinnerChange == null) {
         return;
       }
       // Returns the length of decimal places in a number
@@ -380,8 +380,8 @@ export function TextField({
         Math.max(numericValue + steps * stepAmount, Number(normalizedMin)),
       );
 
-      if (onSpinButtonClick != null) {
-        onSpinButtonClick(String(newValue.toFixed(decimalPlaces)), id);
+      if (onSpinnerChange != null) {
+        onSpinnerChange(String(newValue.toFixed(decimalPlaces)), id);
       } else if (onChange != null) {
         onChange(String(newValue.toFixed(decimalPlaces)), id);
       }
@@ -391,7 +391,7 @@ export function TextField({
       normalizedMax,
       normalizedMin,
       onChange,
-      onSpinButtonClick,
+      onSpinnerChange,
       normalizedStep,
       value,
     ],
@@ -671,16 +671,16 @@ export function TextField({
 
     const {key, which} = event;
     if ((which === Key.Home || key === 'Home') && min !== undefined) {
-      if (onSpinButtonClick != null) {
-        onSpinButtonClick(String(min), id);
+      if (onSpinnerChange != null) {
+        onSpinnerChange(String(min), id);
       } else if (onChange != null) {
         onChange(String(min), id);
       }
     }
 
     if ((which === Key.End || key === 'End') && max !== undefined) {
-      if (onSpinButtonClick != null) {
-        onSpinButtonClick(String(max), id);
+      if (onSpinnerChange != null) {
+        onSpinnerChange(String(max), id);
       } else if (onChange != null) {
         onChange(String(max), id);
       }
