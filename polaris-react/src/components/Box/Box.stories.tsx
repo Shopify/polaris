@@ -17,14 +17,14 @@ export function Default() {
 
 export function WithBorders() {
   return (
-    <VerticalStack gap="2">
+    <VerticalStack gap="4">
       <Box background="bg" padding="4" borderWidth="1" borderColor="border">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
       <Box
         background="bg"
         padding="4"
-        borderWidth="4"
+        borderWidth="1"
         borderStyle="dashed"
         borderColor="border-subdued"
       >
@@ -59,6 +59,57 @@ export function WithBorders() {
         padding="4"
         borderWidth="5"
         borderColor="border-critical"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+    </VerticalStack>
+  );
+}
+
+export function WithOutline() {
+  return (
+    <VerticalStack gap="4">
+      <Box background="bg" padding="4" outlineWidth="1" outlineColor="border">
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        outlineWidth="1"
+        outlineStyle="dashed"
+        outlineColor="border-subdued"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        outlineWidth="2"
+        outlineColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        outlineWidth="3"
+        outlineColor="border-success"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        outlineWidth="4"
+        outlineColor="border-caution"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        outlineWidth="5"
+        outlineColor="border-critical"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
