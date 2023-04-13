@@ -96,5 +96,16 @@ testRule({
       endLine: 1,
       endColumn: 28,
     },
+    {
+      code: '.a { --pc-foo: var(--pc-bar); }',
+      description: 'Using --pc- prefixed tokens is disallowed',
+      message: messages.rejected('--pc-foo', 'var(--pc-bar)', '--pc-', true, [
+        '--pc-bar',
+      ]),
+      line: 1,
+      column: 6,
+      endLine: 1,
+      endColumn: 30,
+    },
   ],
 });

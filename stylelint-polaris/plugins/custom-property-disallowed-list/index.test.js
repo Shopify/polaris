@@ -1,0 +1,108 @@
+const {messages, ruleName} = require('.');
+
+const config = [
+  {
+    disallowedProperties: ['--p-foo', /--p-bar/],
+    disallowedValues: {
+      '/.+/': ['--p-foo', /--p-bar/],
+    },
+  },
+];
+
+testRule({
+  ruleName,
+  plugins: [__dirname],
+  config,
+  accept: [
+    {
+      code: '.a { --p-foo-bar: red; }',
+      description: 'Defining allowed custom property',
+    },
+    {
+      code: '.a { color: var(--p-foo-bar); }',
+      description: 'Using allowed custom property value',
+    },
+    {
+      code: '.a { --p-foo-bar: var(--p-foo-bar); }',
+      description: 'Using allowed custom property and value',
+    },
+  ],
+
+  reject: [
+    {
+      code: '.a { --p-foo: red; }',
+      description: 'Defining disallowed custom property (literal)',
+      message: messages.rejected('--p-foo', 'red', true, undefined),
+      line: 1,
+      column: 6,
+      endLine: 1,
+      endColumn: 19,
+    },
+    {
+      code: '.a { --p-bar-foo: red; }',
+      description: 'Defining disallowed custom property (regex)',
+      message: messages.rejected('--p-bar-foo', 'red', true, undefined),
+      line: 1,
+      column: 6,
+      endLine: 1,
+      endColumn: 23,
+    },
+    {
+      code: '.a { color: var(--p-foo); }',
+      description: 'Defining disallowed custom property value (literal)',
+      message: messages.rejected('color', 'var(--p-foo)', false, ['--p-foo']),
+      line: 1,
+      column: 6,
+      endLine: 1,
+      endColumn: 26,
+    },
+    {
+      code: '.a { color: var(--p-bar-foo); }',
+      description: 'Defining disallowed custom property value (regex)',
+      message: messages.rejected('color', 'var(--p-bar-foo)', false, [
+        '--p-bar-foo',
+      ]),
+      line: 1,
+      column: 6,
+      endLine: 1,
+      endColumn: 30,
+    },
+    {
+      code: '.a { --p-foo: var(--p-bar); }',
+      description: 'Defining disallowed custom property and value',
+      message: messages.rejected('--p-foo', 'var(--p-bar)', true, ['--p-bar']),
+      line: 1,
+      column: 6,
+      endLine: 1,
+      endColumn: 28,
+    },
+    {
+      code: '.a { border: var(--p-foo) solid var(--p-bar); }',
+      description: 'Defining multiple disallowed custom property values',
+      message: messages.rejected(
+        'border',
+        'var(--p-foo) solid var(--p-bar)',
+        false,
+        ['--p-foo', '--p-bar'],
+      ),
+      line: 1,
+      column: 6,
+      endLine: 1,
+      endColumn: 46,
+    },
+    {
+      code: '.a { --p-foo: var(--p-foo) solid var(--p-bar); }',
+      description: 'Defining multiple disallowed custom properties and values',
+      message: messages.rejected(
+        '--p-foo',
+        'var(--p-foo) solid var(--p-bar)',
+        true,
+        ['--p-foo', '--p-bar'],
+      ),
+      line: 1,
+      column: 6,
+      endLine: 1,
+      endColumn: 47,
+    },
+  ],
+});

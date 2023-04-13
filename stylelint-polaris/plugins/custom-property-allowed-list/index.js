@@ -16,18 +16,23 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
    * @type {stylelint.RuleMessageFunc}
    */
   rejected: (prop, value, prefix, isInvalidProp, invalidValues) => {
-    if (isInvalidProp) {
-      return `Unexpected prefix "${prefix}" for defined custom property "${prop}" - Properties with prefixes "--p-" or "--pc-" cannot be defined outside of Polaris"`;
-    }
+    const invalidPropertyMessage = isInvalidProp
+      ? `Unexpected prefix "${prefix}" for defined custom property "${prop}" - Properties with prefixes "--p-" or "--pc-" cannot be defined outside of Polaris"`
+      : null;
 
-    if (invalidValues) {
-      const plural = invalidValues.length > 1;
-      return `Unexpected value "${value}" for property "${prop}" - Token${
-        plural ? 's' : ''
-      } ${invalidValues.map((token) => `"${token}"`).join(', ')} ${
-        plural ? 'are' : 'is'
-      } either private or ${plural ? 'do' : 'does'} not exist`;
-    }
+    const plural = invalidValues?.length > 1;
+
+    const invalidValueMessage = invalidValues
+      ? `Unexpected value "${value}" for property "${prop}" - Token${
+          plural ? 's' : ''
+        } ${invalidValues.map((token) => `"${token}"`).join(', ')} ${
+          plural ? 'are' : 'is'
+        } either private or ${plural ? 'do' : 'does'} not exist`
+      : null;
+
+    return [invalidPropertyMessage, invalidValueMessage]
+      .filter(Boolean)
+      .join('. ');
   },
 });
 
@@ -82,27 +87,12 @@ const {rule} = stylelint.createPlugin(
           value,
         );
 
-        if (isInvalidProperty) {
+        if (isInvalidProperty || invalidValues) {
           stylelint.utils.report({
             message: messages.rejected(
               prop,
               value,
               getCustomPropertyPrefix(prop),
-              isInvalidProperty,
-              invalidValues,
-            ),
-            node: decl,
-            result,
-            ruleName,
-          });
-        }
-
-        if (invalidValues) {
-          stylelint.utils.report({
-            message: messages.rejected(
-              prop,
-              value,
-              undefined,
               isInvalidProperty,
               invalidValues,
             ),
@@ -122,7 +112,9 @@ const {rule} = stylelint.createPlugin(
  * @returns {string}
  */
 function getCustomPropertyPrefix(property) {
-  return `--${property.split('-')[2]}-`;
+  return isCustomProperty(property)
+    ? `--${property.split('-')[2]}-`
+    : undefined;
 }
 
 /**
