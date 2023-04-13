@@ -15,11 +15,54 @@ export function Default() {
   );
 }
 
-export function WithDarkBorder() {
+export function WithBorders() {
   return (
-    <Box background="bg" padding="4" borderWidth="1" borderColor="border">
-      <Icon source={PaintBrushMajor} color="base" />
-    </Box>
+    <VerticalStack gap="2">
+      <Box background="bg" padding="4" borderWidth="1" borderColor="border">
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        borderWidth="4"
+        borderStyle="dashed"
+        borderColor="border-subdued"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        borderWidth="2"
+        borderColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        borderWidth="3"
+        borderColor="border-success"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        borderWidth="4"
+        borderColor="border-caution"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        borderWidth="5"
+        borderColor="border-critical"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+    </VerticalStack>
   );
 }
 
