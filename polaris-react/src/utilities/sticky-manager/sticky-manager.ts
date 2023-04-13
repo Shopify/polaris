@@ -89,8 +89,13 @@ export class StickyManager {
       return;
     }
 
+    const offsetTopToParent =
+      this.container instanceof HTMLDivElement
+        ? this.container.offsetTop
+        : getRectForNode(this.container).top;
+
+    const containerTop = offsetTopToParent + this.topBarOffset;
     const scrollTop = this.container ? scrollTopFor(this.container) : 0;
-    const containerTop = getRectForNode(this.container).top + this.topBarOffset;
 
     this.stickyItems.forEach((stickyItem) => {
       const {handlePositioning} = stickyItem;
