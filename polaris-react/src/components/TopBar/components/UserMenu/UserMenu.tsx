@@ -30,7 +30,7 @@ export interface UserMenuProps {
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
   /** A custom activator that can be used when the default activator is not desired */
-  activatorContent?: React.ReactNode;
+  customActivator?: React.ReactNode;
 }
 
 export function UserMenu({
