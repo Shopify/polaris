@@ -20,6 +20,8 @@ import {
 } from '../../utilities/dates';
 import {DatePicker} from '../DatePicker';
 
+import en from './translations/en.json';
+
 export interface Props {
   disabled?: boolean;
   disableDatesAfter?: Date;
@@ -69,11 +71,12 @@ export function DatePickerTextField({
   disableDatesAfter,
   datePlaceholder,
 }: Props) {
-  const [i18n] = useI18n();
+  const [i18n] = useI18n({fallback: en});
   const [visible, setVisible] = useState(false);
   const datePickerRef = useRef<HTMLDivElement>(null);
   const datePickerTextId = useId();
 
+  console.log(i18n.translate('hi'));
   // Formatting the date using the year, month, date, time args,
   // to avoid Date() errors when month or day is only a single digit.
 
