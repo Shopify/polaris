@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "Seg",
+        "tuesday": "Ter",
+        "wednesday": "Qua",
+        "thursday": "Qui",
+        "friday": "Sex",
+        "saturday": "Sáb",
+        "sunday": "Dom"
+      },
+      "long": {
+        "monday": "Segunda-feira",
+        "tuesday": "Terça-feira",
+        "wednesday": "Quarta-feira",
+        "thursday": "Quinta-feira",
+        "friday": "Sexta-feira",
+        "saturday": "Sábado",
+        "sunday": "Domingo"
+      }
+    },
+    "quarters": {
+      "q1": "1.º trim. {year}",
+      "q2": "2.º trim. {year}",
+      "q3": "3.º trim. {year}",
+      "q4": "4.º trim. {year}"
+    },
+    "months": {
+      "short": {
+        "january": "Jan",
+        "february": "Fev",
+        "march": "Mar",
+        "april": "Abr",
+        "may": "Maio",
+        "june": "Jun",
+        "july": "Jul",
+        "august": "Ago",
+        "september": "Set",
+        "october": "Out",
+        "november": "Nov",
+        "december": "Dez"
+      },
+      "long": {
+        "january": "Janeiro",
+        "february": "Fevereiro",
+        "march": "Março",
+        "april": "Abril",
+        "may": "Maio",
+        "june": "Junho",
+        "july": "Julho",
+        "august": "Agosto",
+        "september": "Setembro",
+        "october": "Outubro",
+        "november": "Novembro",
+        "december": "Dezembro"
+      }
+    }
+  }
+}

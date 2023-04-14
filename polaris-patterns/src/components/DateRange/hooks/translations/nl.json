@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "Aangepast",
+    "today": "Vandaag",
+    "yesterday": "Gisteren",
+    "last7days": "Afgelopen 7 dagen",
+    "last30days": "Afgelopen 30 dagen",
+    "last90days": "Afgelopen 90 dagen",
+    "lastMonth": "Afgelopen maand",
+    "lastYear": "Vorig jaar",
+    "weekToDate": "Week tot op heden",
+    "monthToDate": "Maand tot op heden",
+    "quarterToDate": "Kwartaal tot op heden",
+    "yearToDate": "Jaar tot op heden",
+    "firstQuarter": "1e kwartaal ({year})",
+    "secondQuarter": "2e kwartaal ({year})",
+    "thirdQuarter": "3e kwartaal ({year})",
+    "fourthQuarter": "4e kwartaal ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "Datumbereik",
+  "comparisonRanges": {
+    "previousPeriod": "Vorige periode",
+    "previousYear": "Vorig jaar",
+    "custom": "Aangepast",
+    "noComparison": "Geen vergelijking"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "Black Friday Cyber Monday",
+      "quarters": "Kwartalen"
+    }
+  },
+  "compare": "Vergelijken: "
+}

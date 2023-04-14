@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "กำหนดเอง",
+    "today": "วันนี้",
+    "yesterday": "เมื่อวาน",
+    "last7days": "7 วันที่ผ่านมา",
+    "last30days": "30 วันที่ผ่านมา",
+    "last90days": "90 วันที่ผ่านมา",
+    "lastMonth": "เดือนที่ผ่านมา",
+    "lastYear": "ปีที่ผ่านมา",
+    "weekToDate": "ต้นสัปดาห์ถึงปัจจุบัน",
+    "monthToDate": "ต้นเดือนถึงปัจจุบัน",
+    "quarterToDate": "ต้นไตรมาสถึงปัจจุบัน",
+    "yearToDate": "ต้นปีถึงปัจจุบัน",
+    "firstQuarter": "ไตรมาสที่ 1 ({year})",
+    "secondQuarter": "ไตรมาสที่ 2 ({year})",
+    "thirdQuarter": "ไตรมาสที่ 3 ({year})",
+    "fourthQuarter": "ไตรมาสที่ 4 ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "ช่วงวันที่",
+  "comparisonRanges": {
+    "previousPeriod": "ช่วงก่อนหน้า",
+    "previousYear": "ปีก่อนหน้า",
+    "custom": "กำหนดเอง",
+    "noComparison": "ไม่มีการเปรียบเทียบ"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "แบล็กฟรายเดย์และไซเบอร์มันเดย์",
+      "quarters": "ไตรมาส"
+    }
+  },
+  "compare": "เทียบกับ: "
+}

@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "จ.",
+        "tuesday": "อ.",
+        "wednesday": "พ.",
+        "thursday": "พฤ.",
+        "friday": "ศุ.",
+        "saturday": "ส.",
+        "sunday": "อา."
+      },
+      "long": {
+        "monday": "วันจันทร์",
+        "tuesday": "วันอังคาร",
+        "wednesday": "วันพุธ",
+        "thursday": "วันพฤหัสบดี",
+        "friday": "วันศุกร์",
+        "saturday": "วันเสาร์",
+        "sunday": "วันอาทิตย์"
+      }
+    },
+    "quarters": {
+      "q1": "ไตรมาส 1 {year}",
+      "q2": "ไตรมาส 2 {year}",
+      "q3": "ไตรมาส 3 {year}",
+      "q4": "ไตรมาส 4 {year}"
+    },
+    "months": {
+      "short": {
+        "january": "ม.ค.",
+        "february": "ก.พ.",
+        "march": "มี.ค.",
+        "april": "เม.ย.",
+        "may": "พฤษภาคม",
+        "june": "มิ.ย.",
+        "july": "ก.ค.",
+        "august": "ส.ค.",
+        "september": "ก.ย.",
+        "october": "ต.ค.",
+        "november": "พ.ย.",
+        "december": "ธ.ค."
+      },
+      "long": {
+        "january": "มกราคม",
+        "february": "กุมภาพันธ์",
+        "march": "มีนาคม",
+        "april": "เมษายน",
+        "may": "พฤษภาคม",
+        "june": "มิถุนายน",
+        "july": "กรกฎาคม",
+        "august": "สิงหาคม",
+        "september": "กันยายน",
+        "october": "ตุลาคม",
+        "november": "พฤศจิกายน",
+        "december": "ธันวาคม"
+      }
+    }
+  }
+}

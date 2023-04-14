@@ -1,0 +1,20 @@
+{
+  "cancel": "İptal",
+  "apply": "Uygula",
+  "comparisonText": "{comparisonRange} ile kıyaslandığında",
+  "dateRangeLabel": "Tarih aralığı",
+  "dateRanges": {
+    "custom": "Özel"
+  },
+  "comparisonCheckbox": "Önceki tarihlerle karşılaştır",
+  "comparisonLabel": "Şununla karşılaştır:",
+  "comparisonRanges": {
+    "previousPeriod": "Önceki dönem",
+    "previousYear": "Önceki yıl",
+    "custom": "Özel"
+  },
+  "TextFields": {
+    "starting": "Başlangıç",
+    "ending": "Bitiş"
+  }
+}

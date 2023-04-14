@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "Personalizado",
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "last7days": "Últimos 7 dias",
+    "last30days": "Últimos 30 dias",
+    "last90days": "Últimos 90 dias",
+    "lastMonth": "Mês passado",
+    "lastYear": "Ano passado",
+    "weekToDate": "Acumulado semanal",
+    "monthToDate": "Acumulado mensal",
+    "quarterToDate": "Acumulado trimestral",
+    "yearToDate": "Acumulado anual",
+    "firstQuarter": "1º trimestre ({year})",
+    "secondQuarter": "2º trimestre ({year})",
+    "thirdQuarter": "3º trimestre ({year})",
+    "fourthQuarter": "4º trimestre ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "Período",
+  "comparisonRanges": {
+    "previousPeriod": "Período anterior",
+    "previousYear": "Ano anterior",
+    "custom": "Personalizado",
+    "noComparison": "Sem comparação"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "Black Friday Cyber Monday",
+      "quarters": "Trimestres"
+    }
+  },
+  "compare": "Comparar: "
+}

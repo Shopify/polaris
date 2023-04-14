@@ -1,0 +1,20 @@
+{
+  "cancel": "Annuler",
+  "apply": "Appliquer",
+  "comparisonText": "par rapport au {comparisonRange}",
+  "dateRangeLabel": "Période",
+  "dateRanges": {
+    "custom": "Personnalisé"
+  },
+  "comparisonCheckbox": "Comparer à des dates antérieures",
+  "comparisonLabel": "Comparer à",
+  "comparisonRanges": {
+    "previousPeriod": "Période précédente",
+    "previousYear": "Année précédente",
+    "custom": "Personnalisé"
+  },
+  "TextFields": {
+    "starting": "À partir du",
+    "ending": "Jusqu’au"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "自訂",
+    "today": "今天",
+    "yesterday": "昨天",
+    "last7days": "過去 7 天",
+    "last30days": "過去 30 天",
+    "last90days": "過去 90 天",
+    "lastMonth": "上個月",
+    "lastYear": "去年",
+    "weekToDate": "本週至今",
+    "monthToDate": "本月至今",
+    "quarterToDate": "本季至今",
+    "yearToDate": "本年度至今",
+    "firstQuarter": "第 1 季 ({year})",
+    "secondQuarter": "第 2 季 ({year})",
+    "thirdQuarter": "第 3 季 ({year})",
+    "fourthQuarter": "第 4 季 ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "日期範圍",
+  "comparisonRanges": {
+    "previousPeriod": "上一期間",
+    "previousYear": "去年",
+    "custom": "自訂",
+    "noComparison": "沒有比較結果"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "黑色星期五和網購星期一",
+      "quarters": "季"
+    }
+  },
+  "compare": "比較： "
+}

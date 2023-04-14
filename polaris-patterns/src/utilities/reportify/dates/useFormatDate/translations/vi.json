@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "Thứ 2",
+        "tuesday": "Thứ 3",
+        "wednesday": "Thứ 4",
+        "thursday": "Thứ 5",
+        "friday": "Thứ 6",
+        "saturday": "Thứ 7",
+        "sunday": "Chủ nhật"
+      },
+      "long": {
+        "monday": "Thứ 2",
+        "tuesday": "Thứ 3",
+        "wednesday": "Thứ 4",
+        "thursday": "Thư 5",
+        "friday": "Thứ 6",
+        "saturday": "Thứ 7",
+        "sunday": "Chủ nhật"
+      }
+    },
+    "quarters": {
+      "q1": "Quý 1 {year}",
+      "q2": "Quý 2 {year}",
+      "q3": "Quý 3 {year}",
+      "q4": "Quý 4 {year}"
+    },
+    "months": {
+      "short": {
+        "january": "Tháng 1",
+        "february": "Tháng 2",
+        "march": "Tháng 3",
+        "april": "Tháng 4",
+        "may": "Tháng 5",
+        "june": "Tháng 6",
+        "july": "Tháng 7",
+        "august": "Tháng 8",
+        "september": "Tháng 9",
+        "october": "Tháng 10",
+        "november": "Tháng 11",
+        "december": "Tháng 12"
+      },
+      "long": {
+        "january": "Tháng 1",
+        "february": "Tháng 2",
+        "march": "Tháng 3",
+        "april": "Tháng 4",
+        "may": "Tháng 5",
+        "june": "Tháng 6",
+        "july": "Tháng 7",
+        "august": "Tháng 8",
+        "september": "Tháng 9",
+        "october": "Tháng 10",
+        "november": "Tháng 11",
+        "december": "Tháng 12"
+      }
+    }
+  }
+}

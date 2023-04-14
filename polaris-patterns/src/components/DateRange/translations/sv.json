@@ -1,0 +1,20 @@
+{
+  "cancel": "Avbryt",
+  "apply": "Tillämpa",
+  "comparisonText": "jämfört med {comparisonRange}",
+  "dateRangeLabel": "Datumintervall",
+  "dateRanges": {
+    "custom": "Anpassa"
+  },
+  "comparisonCheckbox": "Jämför med tidigare datum",
+  "comparisonLabel": "Jämför med",
+  "comparisonRanges": {
+    "previousPeriod": "Tidigare period",
+    "previousYear": "Föregående år",
+    "custom": "Anpassa"
+  },
+  "TextFields": {
+    "starting": "Börjar",
+    "ending": "Slutar"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "lun",
+        "tuesday": "mar",
+        "wednesday": "mié",
+        "thursday": "jue",
+        "friday": "vie",
+        "saturday": "sáb",
+        "sunday": "dom"
+      },
+      "long": {
+        "monday": "lunes",
+        "tuesday": "martes",
+        "wednesday": "miércoles",
+        "thursday": "jueves",
+        "friday": "viernes",
+        "saturday": "sábado",
+        "sunday": "Domingo"
+      }
+    },
+    "quarters": {
+      "q1": "Trim. 1 {year}",
+      "q2": "Trim. 2 {year}",
+      "q3": "Trim. 3 {year}",
+      "q4": "Trim. 4 {year}"
+    },
+    "months": {
+      "short": {
+        "january": "ene",
+        "february": "feb",
+        "march": "mar",
+        "april": "abr",
+        "may": "mayo",
+        "june": "jun",
+        "july": "jul",
+        "august": "ago",
+        "september": "sep",
+        "october": "oct",
+        "november": "nov",
+        "december": "dic"
+      },
+      "long": {
+        "january": "enero",
+        "february": "febrero",
+        "march": "marzo",
+        "april": "abril",
+        "may": "mayo",
+        "june": "junio",
+        "july": "julio",
+        "august": "agosto",
+        "september": "septiembre",
+        "october": "octubre",
+        "november": "noviembre",
+        "december": "diciembre"
+      }
+    }
+  }
+}

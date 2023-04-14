@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "Tilpasset",
+    "today": "I dag",
+    "yesterday": "I går",
+    "last7days": "Siste 7 dager",
+    "last30days": "Siste 30 dager",
+    "last90days": "Siste 90 dager",
+    "lastMonth": "Forrige måned",
+    "lastYear": "I fjor",
+    "weekToDate": "Uke til dags dato",
+    "monthToDate": "Måned til dags dato",
+    "quarterToDate": "Kvartal til dags dato",
+    "yearToDate": "År til dags dato",
+    "firstQuarter": "1. kvartal ({year})",
+    "secondQuarter": "2. kvartal ({year})",
+    "thirdQuarter": "3. kvartal ({year})",
+    "fourthQuarter": "4. kvartal ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "Datointervall",
+  "comparisonRanges": {
+    "previousPeriod": "Forrige periode",
+    "previousYear": "Forrige år",
+    "custom": "Tilpasset",
+    "noComparison": "Ingen sammenligning"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "Black Friday Cyber Monday",
+      "quarters": "Kvartaler"
+    }
+  },
+  "compare": "Sammenlign: "
+}

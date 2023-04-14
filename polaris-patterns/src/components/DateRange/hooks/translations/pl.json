@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "Niestandardowe",
+    "today": "Dzisiaj",
+    "yesterday": "Wczoraj",
+    "last7days": "Ostatnie 7 dni",
+    "last30days": "Ostatnie 30 dni",
+    "last90days": "Ostatnie 90 dni",
+    "lastMonth": "Ostatni miesiąc",
+    "lastYear": "Ostatni rok",
+    "weekToDate": "Od początku tygodnia",
+    "monthToDate": "Od początku miesiąca",
+    "quarterToDate": "Od początku kwartału",
+    "yearToDate": "Od początku roku",
+    "firstQuarter": "1. kwartał ({year})",
+    "secondQuarter": "2. kwartał ({year})",
+    "thirdQuarter": "3. kwartał ({year})",
+    "fourthQuarter": "4. kwartał ({year})",
+    "bfcm": "Black Friday Cyber Monday ({year})"
+  },
+  "dateRange": "Przedział dat",
+  "comparisonRanges": {
+    "previousPeriod": "Poprzedni okres",
+    "previousYear": "Poprzedni rok",
+    "custom": "Niestandardowe",
+    "noComparison": "Bez porównywania"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "Black Friday Cyber Monday",
+      "quarters": "Kwartały"
+    }
+  },
+  "compare": "Porównaj: "
+}

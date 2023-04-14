@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "Pzt",
+        "tuesday": "Sal",
+        "wednesday": "Çar",
+        "thursday": "Per",
+        "friday": "Cum",
+        "saturday": "Cmt",
+        "sunday": "Paz"
+      },
+      "long": {
+        "monday": "Pazartesi",
+        "tuesday": "Salı",
+        "wednesday": "Çarşamba",
+        "thursday": "Perşembe",
+        "friday": "Cuma",
+        "saturday": "Cumartesi",
+        "sunday": "Pazar"
+      }
+    },
+    "quarters": {
+      "q1": "{year} 1. Çeyreği",
+      "q2": "{year} 2. Çeyreği",
+      "q3": "{year} 3. Çeyreği",
+      "q4": "{year} 4. Çeyreği"
+    },
+    "months": {
+      "short": {
+        "january": "Oca",
+        "february": "Şub",
+        "march": "Mar",
+        "april": "Nis",
+        "may": "Mayıs",
+        "june": "Haz",
+        "july": "Tem",
+        "august": "Ağu",
+        "september": "Eyl",
+        "october": "Eki",
+        "november": "Kas",
+        "december": "Ara"
+      },
+      "long": {
+        "january": "Ocak",
+        "february": "Şubat",
+        "march": "Mart",
+        "april": "Nisan",
+        "may": "Mayıs",
+        "june": "Haziran",
+        "july": "Temmuz",
+        "august": "Ağustos",
+        "september": "Eylül",
+        "october": "Ekim",
+        "november": "Kasım",
+        "december": "Aralık"
+      }
+    }
+  }
+}
