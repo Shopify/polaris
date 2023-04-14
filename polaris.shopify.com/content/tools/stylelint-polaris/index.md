@@ -21,7 +21,7 @@ keywords:
 [<img src="https://img.shields.io/npm/v/@shopify/stylelint-polaris.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style="width: 95px" />](https://www.npmjs.com/package/@shopify/stylelint-polaris/)
 
 <picture>
-  <source srcset="/images/tools/stylelint-polaris/stylelint-demo.png" media="(prefers-reduced-motion: reduce)"></source> 
+  <source srcset="/images/tools/stylelint-polaris/stylelint-demo.png" media="(prefers-reduced-motion: reduce)"></source>
   <img srcset="/images/tools/stylelint-polaris/stylelint-demo.gif" alt="Demo of Stylelint Polaris">
 </picture>
 
@@ -93,6 +93,23 @@ There are over 40 rules configured in Stylelint Polaris to help you avoid errors
 - [Spacing](/tools/stylelint-polaris/rules#spacing)
 - [Typography](/tools/stylelint-polaris/rules#typography)
 - [Z-index](/tools/stylelint-polaris/rules#z-index)
+
+## Version Matchups
+
+| @shopify/stylelint-polaris | @shopify/polaris |
+| -------------------------- | ---------------- |
+| 1.0.0                      | 9.13.0          |
+| 2.0.0                      | 9.16.0          |
+| 3.0.0                      | 9.19.0          |
+| 4.0.0                      | 9.20.0          |
+| 5.0.0                      | 10.14.0         |
+| 6.0.0                      | 10.28.1         |
+| 7.0.0                      | 10.31.0         |
+| 8.0.0                      | 10.32.0         |
+| 9.0.0                      | 10.36.0         |
+| 10.0.0                     | 10.44.0         |
+
+_\*@shopify/stylelint-polaris v5.0.0 was the first stable release_
 
 ## Development
 
