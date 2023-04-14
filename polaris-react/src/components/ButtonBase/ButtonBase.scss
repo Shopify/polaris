@@ -1,0 +1,49 @@
+// @import '../../styles/common';
+
+.ButtonBase {
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: calc(-1 * (var(--p-border-width-1) + 1px));
+    right: calc(-1 * (var(--p-border-width-1) + 1px));
+    bottom: calc(-1 * (var(--p-border-width-1) + 1px));
+    left: calc(-1 * (var(--p-border-width-1) + 1px));
+    display: block;
+    pointer-events: none;
+    box-shadow: 0
+      0
+      0
+      calc(-1 * (var(--p-border-width-1) + 1px))
+      var(--p-color-border-interactive-focus);
+    transition: box-shadow var(--p-duration-100) var(--p-ease);
+    // Border radius needs to be configurable
+    border-radius: var(--p-border-radius-1);
+  }
+
+  &:hover {
+    background: var(--p-color-bg-subdued-hover);
+    outline: var(--p-border-width-1) solid transparent;
+  }
+
+  &:focus-visible {
+    box-shadow: var(--p-shadow-sm);
+    outline: 0;
+
+    &::after {
+        box-shadow: 0 0 0 2px var(--p-color-border-interactive-focus);
+        outline: var(--p-border-width-1) solid transparent;
+      }
+  }
+
+  @media (-ms-high-contrast: active) {
+    border: var(--p-border-width-1) solid windowText;
+  }
+}
