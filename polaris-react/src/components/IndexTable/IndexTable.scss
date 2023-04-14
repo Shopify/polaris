@@ -189,12 +189,12 @@ $loading-panel-height: 53px;
 }
 
 .TableRow-subdued {
-  color: var(--p-color-text-subdued);
+  color: white;
 }
 
 .TableRow-disabled {
   cursor: default;
-  color: var(--p-color-text-subdued);
+  color: white;
 }
 
 // Extra specificity is needed to address edge cases where the zebra striping is combined with other options
@@ -285,7 +285,7 @@ $loading-panel-height: 53px;
   align-items: center;
   justify-content: center;
   font-weight: var(--p-font-weight-medium);
-  color: var(--p-color-text-subdued);
+  color: white;
   font-size: var(--p-font-size-75);
 
   &:hover,
@@ -540,7 +540,7 @@ $loading-panel-height: 53px;
 
 .Table-sortable {
   .TableHeading {
-    background-color: var(--p-color-bg-subdued);
+    background-color: #1a1a1a;
   }
 }
 

@@ -76,20 +76,25 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   padding: 0 0 0 $search-icon-width;
   border: none;
   background-color: transparent;
+
   outline: none;
-  color: var(--p-color-text);
+  color: white;
   will-change: fill, color;
   transition: fill var(--p-duration-200) var(--p-ease),
     color var(--p-duration-200) var(--p-ease);
   appearance: textfield;
 
   &::placeholder {
-    color: var(--p-color-text);
+    color: #d4d4d4;
   }
 
   &::-webkit-search-decoration,
   &::-webkit-search-cancel-button {
     appearance: none;
+  }
+
+  &:focus {
+    color: white;
   }
 }
 
@@ -105,7 +110,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   transform: translateY(-50%);
 
   svg {
-    fill: var(--p-color-icon);
+    fill: #d4d4d4;
   }
 }
 
@@ -160,6 +165,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--p-color-bg-inset);
-  border-radius: var(--p-border-radius-1);
+  background-color: rgb(48, 48, 48);
+  border-radius: var(--p-border-radius-3);
+  border: 0.66px solid #616161;
 }

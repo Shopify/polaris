@@ -8,7 +8,8 @@ $icon-size: 20px;
   display: flex;
   height: $top-bar-height;
   box-shadow: var(--p-shadow-sm);
-  background-color: var(--p-color-bg);
+  background-color: black;
+  color: white;
   transition: var(--p-duration-200) background-color var(--p-ease-in-out);
 
   &::after {

@@ -12,8 +12,11 @@
 .Text {
   display: block;
   flex: 1 1 auto;
-  color: currentColor;
+  /* stylelint-disable-next-line polaris/colors/color-no-hex, color-no-hex -- fer a lil test */
+  color: #616161;
   -webkit-tap-highlight-color: transparent;
+  line-height: 1rem;
+  font-size: 12px;
 }
 
 .RequiredIndicator::after {
