@@ -5,9 +5,9 @@ import {
   buttonFrom,
   AlphaCard,
   Box,
-  Inline,
+  HorizontalStack,
   Text,
-  AlphaStack,
+  VerticalStack,
 } from '@shopify/polaris';
 
 import {SettingAction} from './components';
@@ -73,13 +73,13 @@ export function AccountConnection({
   return (
     <AlphaCard>
       <SettingAction action={actionElement}>
-        <Inline gap="4">
+        <HorizontalStack gap="4">
           {avatarMarkup}
-          <AlphaStack gap="2">
+          <VerticalStack gap="2">
             {titleMarkup}
             {detailsMarkup}
-          </AlphaStack>
-        </Inline>
+          </VerticalStack>
+        </HorizontalStack>
       </SettingAction>
       {termsOfServiceMarkup}
     </AlphaCard>
