@@ -20,18 +20,18 @@ testRule({
     },
     {
       code: '.a { color: var(--p-foo-bar); }',
-      description: 'Using allowed custom property value',
+      description: 'Defining allowed custom property value',
     },
     {
       code: '.a { --p-foo-bar: var(--p-foo-bar); }',
-      description: 'Using allowed custom property and value',
+      description: 'Defining allowed custom property and value',
     },
   ],
 
   reject: [
     {
       code: '.a { --p-foo: red; }',
-      description: 'Defining disallowed custom property (literal)',
+      description: 'Defining disallowed custom property (literal match)',
       message: messages.rejected('--p-foo', 'red', true, undefined),
       line: 1,
       column: 6,
@@ -40,7 +40,7 @@ testRule({
     },
     {
       code: '.a { --p-bar-baz: red; }',
-      description: 'Defining disallowed custom property (regex)',
+      description: 'Defining disallowed custom property (regex match)',
       message: messages.rejected('--p-bar-baz', 'red', true, undefined),
       line: 1,
       column: 6,
@@ -49,7 +49,7 @@ testRule({
     },
     {
       code: '.a { color: var(--p-foo); }',
-      description: 'Defining disallowed custom property value (literal)',
+      description: 'Defining disallowed custom property value (literal match)',
       message: messages.rejected('color', 'var(--p-foo)', false, ['--p-foo']),
       line: 1,
       column: 6,
@@ -58,7 +58,7 @@ testRule({
     },
     {
       code: '.a { color: var(--p-bar-baz); }',
-      description: 'Defining disallowed custom property value (regex)',
+      description: 'Defining disallowed custom property value (regex match)',
       message: messages.rejected('color', 'var(--p-bar-baz)', false, [
         '--p-bar-baz',
       ]),
@@ -92,7 +92,7 @@ testRule({
     },
     {
       code: '.a { --p-foo: var(--p-foo) solid var(--p-bar); }',
-      description: 'Defining multiple disallowed custom properties and values',
+      description: 'Defining multiple disallowed custom property and values',
       message: messages.rejected(
         '--p-foo',
         'var(--p-foo) solid var(--p-bar)',

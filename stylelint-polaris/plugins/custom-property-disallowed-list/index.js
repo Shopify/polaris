@@ -20,7 +20,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
       ? `Unexpected custom property definition "${prop}"`
       : null;
 
-    const plural = (invalidValues?.length ?? 0) > 1;
+    const plural = invalidValues?.length > 1;
 
     const invalidValueMessage = invalidValues
       ? `Unexpected value${plural ? 's' : ''} ${invalidValues
