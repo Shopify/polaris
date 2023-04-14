@@ -163,7 +163,7 @@
 
   .AddFilterActivatorMultiple {
     position: sticky;
-    z-index: var(--p-z-1);
+    z-index: var(--p-z-index-1);
     top: 0;
     right: 0;
     display: flex;
@@ -227,7 +227,7 @@
   .MultiplePinnedFilterClearAll {
     transform: translateX(-8px);
     position: relative;
-    z-index: var(--p-z-1);
+    z-index: var(--p-z-index-1);
     margin-left: 0;
     padding-right: var(--p-space-4);
   }
