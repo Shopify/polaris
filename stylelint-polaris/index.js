@@ -209,10 +209,31 @@ const disallowedVarsLayout = [
 
 const disallowedVarsSpace = [
   // Legacy custom properties
-  /--p-button-group-item-spacing/,
-  /--p-choice-margin/,
-  /--p-text-field-spinner-offset/,
-  /--p-frame-offset/,
+  '--p-button-group-item-spacing',
+  '--p-choice-margin',
+  '--p-text-field-spinner-offset',
+  '--p-frame-offset',
+];
+
+const disallowedVarsShape = [
+  // Legacy custom properties
+  '--p-border-radius-base',
+  '--p-border-radius-large',
+  '--p-border-radius-wide',
+  '--p-border-radius-half',
+  '--p-control-border-width',
+  '--p-thin-border-subdued',
+  '--p-banner-border-default',
+  '--p-banner-border-success',
+  '--p-banner-border-highlight',
+  '--p-banner-border-warning',
+  '--p-banner-border-critical',
+  '--p-text-field-focus-ring-offset',
+  '--p-border-base',
+  '--p-border-dark',
+  '--p-border-transparent',
+  '--p-border-divider',
+  '--p-border-divider-on-dark',
 ];
 
 /**
@@ -448,26 +469,10 @@ const stylelintPolarisCoverageOptions = {
           'no-focus-ring',
         ].map(matchNameRegExp),
       },
-      'polaris/global-disallowed-list': [
-        // Legacy custom properties
-        /--p-border-radius-base/,
-        /--p-border-radius-large/,
-        /--p-border-radius-wide/,
-        /--p-border-radius-half/,
-        /--p-control-border-width/,
-        /--p-thin-border-subdued/,
-        /--p-banner-border-default/,
-        /--p-banner-border-success/,
-        /--p-banner-border-highlight/,
-        /--p-banner-border-warning/,
-        /--p-banner-border-critical/,
-        /--p-text-field-focus-ring-offset/,
-        /--p-border-base/,
-        /--p-border-dark/,
-        /--p-border-transparent/,
-        /--p-border-divider/,
-        /--p-border-divider-on-dark/,
-      ],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsShape,
+        disallowedValues: {'/.+/': disallowedVarsShape},
+      },
     },
     {
       message: 'Please use a Polaris shape token',
