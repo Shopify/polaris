@@ -594,7 +594,7 @@ export const color: {
     description: '',
   },
   'color-icon-magic': {
-    value: colors.purple[600],
+    value: colors.purple[500],
     description: '',
   },
   'color-text': {
