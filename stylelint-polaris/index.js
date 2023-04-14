@@ -33,23 +33,6 @@ const disallowedUnits = [
   'pt',
 ];
 
-const disallowedVarsZIndex = [
-  // Legacy custom properties
-  '--p-override-loading-z-index',
-  '--p-z-1',
-  '--p-z-2',
-  '--p-z-3',
-  '--p-z-4',
-  '--p-z-5',
-  '--p-z-6',
-  '--p-z-7',
-  '--p-z-8',
-  '--p-z-9',
-  '--p-z-10',
-  '--p-z-11',
-  '--p-z-12',
-];
-
 const disallowedVarsColor = [
   // Legacy custom properties
   '--p-override-transparent',
@@ -198,6 +181,29 @@ const disallowedVarsColor = [
   '--p-action-critical',
 ];
 
+const disallowedVarsDepth = [
+  // Legacy custom properties
+  '--p-button-drop-shadow',
+  '--p-button-inner-shadow',
+  '--p-button-pressed-inner-shadow',
+  '--p-card-shadow',
+  '--p-popover-shadow',
+  '--p-modal-shadow',
+  '--p-top-bar-shadow',
+  '--p-shadow-transparent',
+  '--p-shadow-faint',
+  '--p-shadow-base',
+  '--p-shadow-deep',
+  '--p-shadow-button',
+  '--p-shadow-top-bar',
+  '--p-shadow-card',
+  '--p-shadow-popover',
+  '--p-shadow-layer',
+  '--p-shadow-modal',
+  '--p-shadows-inset-button',
+  '--p-shadows-inset-button-pressed',
+];
+
 const disallowedVarsLayout = [
   // Legacy custom properties
   '--p-range-slider-thumb-size-base',
@@ -205,14 +211,6 @@ const disallowedVarsLayout = [
   '--p-choice-size',
   '--p-icon-size-small',
   '--p-icon-size-medium',
-];
-
-const disallowedVarsSpace = [
-  // Legacy custom properties
-  '--p-button-group-item-spacing',
-  '--p-choice-margin',
-  '--p-text-field-spinner-offset',
-  '--p-frame-offset',
 ];
 
 const disallowedVarsShape = [
@@ -236,27 +234,29 @@ const disallowedVarsShape = [
   '--p-border-divider-on-dark',
 ];
 
-const disallowedVarsDepth = [
+const disallowedVarsSpace = [
   // Legacy custom properties
-  '--p-button-drop-shadow',
-  '--p-button-inner-shadow',
-  '--p-button-pressed-inner-shadow',
-  '--p-card-shadow',
-  '--p-popover-shadow',
-  '--p-modal-shadow',
-  '--p-top-bar-shadow',
-  '--p-shadow-transparent',
-  '--p-shadow-faint',
-  '--p-shadow-base',
-  '--p-shadow-deep',
-  '--p-shadow-button',
-  '--p-shadow-top-bar',
-  '--p-shadow-card',
-  '--p-shadow-popover',
-  '--p-shadow-layer',
-  '--p-shadow-modal',
-  '--p-shadows-inset-button',
-  '--p-shadows-inset-button-pressed',
+  '--p-button-group-item-spacing',
+  '--p-choice-margin',
+  '--p-text-field-spinner-offset',
+  '--p-frame-offset',
+];
+
+const disallowedVarsZIndex = [
+  // Legacy custom properties
+  '--p-override-loading-z-index',
+  '--p-z-1',
+  '--p-z-2',
+  '--p-z-3',
+  '--p-z-4',
+  '--p-z-5',
+  '--p-z-6',
+  '--p-z-7',
+  '--p-z-8',
+  '--p-z-9',
+  '--p-z-10',
+  '--p-z-11',
+  '--p-z-12',
 ];
 
 /**
