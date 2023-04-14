@@ -33,7 +33,7 @@ describe('<DatePicker />', () => {
   ];
   const noop = () => {};
 
-  beforeEach(() => {
+  beforeAll(() => {
     matchMedia.mock();
   });
 
