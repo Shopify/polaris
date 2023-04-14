@@ -236,6 +236,29 @@ const disallowedVarsShape = [
   '--p-border-divider-on-dark',
 ];
 
+const disallowedVarsDepth = [
+  // Legacy custom properties
+  '--p-button-drop-shadow',
+  '--p-button-inner-shadow',
+  '--p-button-pressed-inner-shadow',
+  '--p-card-shadow',
+  '--p-popover-shadow',
+  '--p-modal-shadow',
+  '--p-top-bar-shadow',
+  '--p-shadow-transparent',
+  '--p-shadow-faint',
+  '--p-shadow-base',
+  '--p-shadow-deep',
+  '--p-shadow-button',
+  '--p-shadow-top-bar',
+  '--p-shadow-card',
+  '--p-shadow-popover',
+  '--p-shadow-layer',
+  '--p-shadow-modal',
+  '--p-shadows-inset-button',
+  '--p-shadows-inset-button-pressed',
+];
+
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -487,29 +510,13 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'property-disallowed-list': ['text-shadow'],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsDepth,
+        disallowedValues: {'/.+/': disallowedVarsDepth},
+      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$shadows-data/,
-        // Legacy custom properties
-        /--p-button-drop-shadow/,
-        /--p-button-inner-shadow/,
-        /--p-button-pressed-inner-shadow/,
-        /--p-card-shadow/,
-        /--p-popover-shadow/,
-        /--p-modal-shadow/,
-        /--p-top-bar-shadow/,
-        /--p-shadow-transparent/,
-        /--p-shadow-faint/,
-        /--p-shadow-base/,
-        /--p-shadow-deep/,
-        /--p-shadow-button/,
-        /--p-shadow-top-bar/,
-        /--p-shadow-card/,
-        /--p-shadow-popover/,
-        /--p-shadow-layer/,
-        /--p-shadow-modal/,
-        /--p-shadows-inset-button/,
-        /--p-shadows-inset-button-pressed/,
       ],
     },
     {
