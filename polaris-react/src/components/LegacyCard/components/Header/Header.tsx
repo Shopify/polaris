@@ -21,7 +21,7 @@ export function Header({children, title, actions}: LegacyCardHeaderProps) {
   const titleMarkup = isValidElement(title) ? (
     title
   ) : (
-    <Text variant="headingMd" as="h2">
+    <Text variant="headingXs" as="h2">
       {title}
     </Text>
   );

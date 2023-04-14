@@ -36,7 +36,7 @@ export const AlphaCard = ({
   roundedAbove,
 }: AlphaCardProps) => {
   const breakpoints = useBreakpoints();
-  const defaultBorderRadius: BorderRadiusScale = '2';
+  const defaultBorderRadius: BorderRadiusScale = '3';
 
   let hasBorderRadius = !roundedAbove;
 
