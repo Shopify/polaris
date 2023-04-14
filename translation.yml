@@ -27,5 +27,6 @@ components:
   - name: 'default'
     scheme: react
     audience: merchant
+    owners: ['@Shopify/polaris-eng']
     paths:
       - polaris-react/locales/{{language}}.json
