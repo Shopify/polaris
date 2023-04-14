@@ -23,9 +23,9 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
     const plural = (invalidValues?.length ?? 0) > 1;
 
     const invalidValueMessage = invalidValues
-      ? `Unexpected value${plural ? 's' : ''} "${invalidValues.join(
-          ', ',
-        )}" for property "${prop}"`
+      ? `Unexpected value${plural ? 's' : ''} ${invalidValues
+          .map((token) => `"${token}"`)
+          .join(', ')} for property "${prop}"`
       : null;
 
     const message = [invalidPropertyMessage, invalidValueMessage]

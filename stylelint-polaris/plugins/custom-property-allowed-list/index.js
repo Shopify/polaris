@@ -30,9 +30,11 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
         } either private or ${plural ? 'do' : 'does'} not exist`
       : null;
 
-    return [invalidPropertyMessage, invalidValueMessage]
+    const message = [invalidPropertyMessage, invalidValueMessage]
       .filter(Boolean)
       .join('. ');
+
+    return message;
   },
 });
 

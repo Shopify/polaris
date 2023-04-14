@@ -39,9 +39,9 @@ testRule({
       endColumn: 19,
     },
     {
-      code: '.a { --p-bar-foo: red; }',
+      code: '.a { --p-bar-baz: red; }',
       description: 'Defining disallowed custom property (regex)',
-      message: messages.rejected('--p-bar-foo', 'red', true, undefined),
+      message: messages.rejected('--p-bar-baz', 'red', true, undefined),
       line: 1,
       column: 6,
       endLine: 1,
@@ -57,10 +57,10 @@ testRule({
       endColumn: 26,
     },
     {
-      code: '.a { color: var(--p-bar-foo); }',
+      code: '.a { color: var(--p-bar-baz); }',
       description: 'Defining disallowed custom property value (regex)',
-      message: messages.rejected('color', 'var(--p-bar-foo)', false, [
-        '--p-bar-foo',
+      message: messages.rejected('color', 'var(--p-bar-baz)', false, [
+        '--p-bar-baz',
       ]),
       line: 1,
       column: 6,
