@@ -207,6 +207,14 @@ const disallowedVarsLayout = [
   '--p-icon-size-medium',
 ];
 
+const disallowedVarsSpace = [
+  // Legacy custom properties
+  /--p-button-group-item-spacing/,
+  /--p-choice-margin/,
+  /--p-text-field-spinner-offset/,
+  /--p-frame-offset/,
+];
+
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -407,14 +415,13 @@ const stylelintPolarisCoverageOptions = {
           '/^gap/': disallowedUnits,
         },
       ],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsSpace,
+        disallowedValues: {'/.+/': disallowedVarsSpace},
+      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$polaris-spacing/,
-        // Legacy custom properties
-        /--p-button-group-item-spacing/,
-        /--p-choice-margin/,
-        /--p-text-field-spinner-offset/,
-        /--p-frame-offset/,
       ],
     },
     {
