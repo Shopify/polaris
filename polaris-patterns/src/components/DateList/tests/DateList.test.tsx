@@ -59,7 +59,7 @@ describe('<DatePicker />', () => {
       ).toHaveLength(defaultRanges.length);
     });
 
-    it('triggers onChange when an option is selected', () => {
+    it('triggers onChange with the expected value when an option is selected', () => {
       const spy = jest.fn();
       const datepicker = mountWithApp(
         <DateList
