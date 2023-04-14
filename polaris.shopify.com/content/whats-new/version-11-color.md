@@ -1,13 +1,13 @@
 ---
 title: Version 11 Color
 description: Learn about what changes were introduced to color in Polaris v11.
-imageUrl: /images/updates/type-new-to-old@2x.png
+imageUrl: /images/updates/new-colors-cover.png
 keywords:
   - color
   - tokens
 ---
 
-![Screen showing the new type styles](/images/updates/type-updates-feature@2x.png)
+![Preview of new alias tokens](/images/updates/new-colors-cover.png)
 
 ## Why are we making changes?
 
@@ -24,7 +24,7 @@ These were the main drivers for this update.
 
 We started with the colors themselves. Doing a full audit of the colors used in Polaris. Previously we actually didn’t have a defined color palette to generate tokens from. This led to massive sprawl and inconsistency of hue, saturation, and vibrancy within our colors. We learned that there were actually 22 different gray values in Polaris, some of which were nearly identical to each other, providing no value while introducing added complexity. Every hue had a different range of tints and shades with no consistency or relationship between them.
 
-[old-palette.png]
+![image of old color palette](/images/updates/old-palette.png)
 
 We took all these colors and generated a new color palette with 10 shades for each hue. Each shade should be meaningfully different from the ones next to it on the scale. This makes choices purposeful and clear and eliminates the sprawl and muddiness we had before.
 
@@ -38,13 +38,13 @@ There are now two types of color tokens in Polaris, only one of which is actuall
 
 These tokens are not available to use directly, rather, they are where we define the color palette itself. Each color has 10 total shades.
 
-[image of palette.png]
+![Image of new color palette](/images/updates/new-palette.png)
 
 ### Alias tokens
 
 These are the tokens used to actually build the admin. Each token references a palette token to define its value. For example, `--p-color-text-subdued` and `--p-color-icon` are all referencing the palette token `gray-800`.
 
-[image]
+![Image of new color palette](/images/updates/alias-tokens.png)
 
 This allows us two ways of updating colors in the admin. First, we can change the color itself by updating `gray-800`. That change then cascades to every token that is referencing it system wide.
 
