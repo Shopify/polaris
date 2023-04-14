@@ -58,5 +58,25 @@ describe('<DatePicker />', () => {
         }),
       ).toHaveLength(defaultRanges.length);
     });
+
+    it('triggers onChange when an option is selected', () => {
+      const spy = jest.fn();
+      const datepicker = mountWithApp(
+        <DateList
+          selected={defaultRanges[0]}
+          onChange={spy}
+          options={defaultRanges}
+        />,
+      );
+
+      datepicker.find('button')?.trigger('onClick');
+      datepicker
+        .findWhere<'button'>(
+          (node) => node.text() === defaultRanges[1].label && node.is('button'),
+        )
+        ?.trigger('onClick');
+
+      expect(spy).toHaveBeenCalledWith([defaultRanges[1].value]);
+    });
   });
 });
