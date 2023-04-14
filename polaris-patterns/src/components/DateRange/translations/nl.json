@@ -1,0 +1,20 @@
+{
+  "cancel": "Annuleren",
+  "apply": "Toepassen",
+  "comparisonText": "vergeleken met {comparisonRange}",
+  "dateRangeLabel": "Datumbereik",
+  "dateRanges": {
+    "custom": "Aangepast"
+  },
+  "comparisonCheckbox": "Vergelijken met eerdere datums",
+  "comparisonLabel": "Vergelijken met",
+  "comparisonRanges": {
+    "previousPeriod": "Vorige periode",
+    "previousYear": "Vorig jaar",
+    "custom": "Aangepast"
+  },
+  "TextFields": {
+    "starting": "Vanaf",
+    "ending": "Eindigt"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "cancel": "Abbrechen",
+  "apply": "Anwenden",
+  "comparisonText": "im Vergleich zu {comparisonRange}",
+  "dateRangeLabel": "Zeitraum",
+  "dateRanges": {
+    "custom": "Benutzerdefiniert"
+  },
+  "comparisonCheckbox": "Vergleich mit früheren Daten",
+  "comparisonLabel": "Vergleich mit",
+  "comparisonRanges": {
+    "previousPeriod": "Vorheriger Zeitraum",
+    "previousYear": "Vorheriges Jahr",
+    "custom": "Benutzerdefiniert"
+  },
+  "TextFields": {
+    "starting": "Von",
+    "ending": "Bis"
+  }
+}

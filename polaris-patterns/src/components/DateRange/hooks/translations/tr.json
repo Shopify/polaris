@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "Özel",
+    "today": "Bugün",
+    "yesterday": "Dün",
+    "last7days": "Son 7 gün",
+    "last30days": "Son 30 gün",
+    "last90days": "Son 90 gün",
+    "lastMonth": "Geçen ay",
+    "lastYear": "Geçen yıl",
+    "weekToDate": "Hafta başından bugüne",
+    "monthToDate": "Ay başından bugüne",
+    "quarterToDate": "Çeyrek başından bugüne",
+    "yearToDate": "Yıl başından bugüne",
+    "firstQuarter": "1. Çeyrek ({year})",
+    "secondQuarter": "2. Çeyrek ({year})",
+    "thirdQuarter": "3. Çeyrek ({year})",
+    "fourthQuarter": "4. Çeyrek ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "Tarih aralığı",
+  "comparisonRanges": {
+    "previousPeriod": "Önceki dönem",
+    "previousYear": "Önceki yıl",
+    "custom": "Özel",
+    "noComparison": "Karşılaştırma yok"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "Black Friday Cyber Monday",
+      "quarters": "Çeyrekler"
+    }
+  },
+  "compare": "Karşılaştırma: "
+}

@@ -1,0 +1,20 @@
+{
+  "cancel": "Peruuta",
+  "apply": "Käytä",
+  "comparisonText": "verrattuna: {comparisonRange}",
+  "dateRangeLabel": "Aikaväli",
+  "dateRanges": {
+    "custom": "Mukautettu"
+  },
+  "comparisonCheckbox": "Vertaa edellisiin päivämääriin",
+  "comparisonLabel": "Vertaa",
+  "comparisonRanges": {
+    "previousPeriod": "Edellinen jakso",
+    "previousYear": "Edellinen vuosi",
+    "custom": "Mukautettu"
+  },
+  "TextFields": {
+    "starting": "Alkaa",
+    "ending": "Loppuu"
+  }
+}

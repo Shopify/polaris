@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "Vlastní",
+    "today": "Dnes",
+    "yesterday": "Včera",
+    "last7days": "Posledních 7 dnů",
+    "last30days": "Posledních 30 dnů",
+    "last90days": "Posledních 90 dnů",
+    "lastMonth": "Minulý měsíc",
+    "lastYear": "Minulý rok",
+    "weekToDate": "Aktuální týden",
+    "monthToDate": "Aktuální měsíc",
+    "quarterToDate": "Aktuální čtvrtletí",
+    "yearToDate": "Aktuální rok",
+    "firstQuarter": "1. čtvrtletí ({year})",
+    "secondQuarter": "2. čtvrtletí ({year})",
+    "thirdQuarter": "3. čtvrtletí ({year})",
+    "fourthQuarter": "4. čtvrtletí ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "Rozmezí dat",
+  "comparisonRanges": {
+    "previousPeriod": "Předchozí období",
+    "previousYear": "Předchozí rok",
+    "custom": "Vlastní",
+    "noComparison": "Bez srovnání"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "Black Friday Cyber Monday",
+      "quarters": "Čtvrtletí"
+    }
+  },
+  "compare": "Srovnání: "
+}

@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "Lun",
+        "tuesday": "Mar",
+        "wednesday": "Mer",
+        "thursday": "Gio",
+        "friday": "Ven",
+        "saturday": "Sab",
+        "sunday": "Dom"
+      },
+      "long": {
+        "monday": "lunedì",
+        "tuesday": "martedì",
+        "wednesday": "mercoledì",
+        "thursday": "giovedì",
+        "friday": "venerdì",
+        "saturday": "sabato",
+        "sunday": "domenica"
+      }
+    },
+    "quarters": {
+      "q1": "1° trimestre {year}",
+      "q2": "2° trimestre {year}",
+      "q3": "3° trimestre {year}",
+      "q4": "4° trimestre {year}"
+    },
+    "months": {
+      "short": {
+        "january": "Gen",
+        "february": "Feb",
+        "march": "Mar",
+        "april": "Apr",
+        "may": "Maggio",
+        "june": "Giu",
+        "july": "Lug",
+        "august": "Ago",
+        "september": "Set",
+        "october": "Ott",
+        "november": "Nov",
+        "december": "Dic"
+      },
+      "long": {
+        "january": "Gennaio",
+        "february": "Febbraio",
+        "march": "Marzo",
+        "april": "Aprile",
+        "may": "Maggio",
+        "june": "Giugno",
+        "july": "Luglio",
+        "august": "Agosto",
+        "september": "Settembre",
+        "october": "Ottobre",
+        "november": "Novembre",
+        "december": "Dicembre"
+      }
+    }
+  }
+}

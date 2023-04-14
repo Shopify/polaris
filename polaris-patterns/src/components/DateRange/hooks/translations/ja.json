@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "カスタム",
+    "today": "今日",
+    "yesterday": "昨日",
+    "last7days": "過去7日間",
+    "last30days": "過去30日間",
+    "last90days": "過去90日間",
+    "lastMonth": "先月",
+    "lastYear": "昨年",
+    "weekToDate": "今週頭から今日まで",
+    "monthToDate": "月初から今日まで",
+    "quarterToDate": "四半期頭から今日まで",
+    "yearToDate": "今年頭から今日まで",
+    "firstQuarter": "第1四半期 ({year})",
+    "secondQuarter": "第2四半期 ({year})",
+    "thirdQuarter": "第3四半期 ({year})",
+    "fourthQuarter": "第4四半期 ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "日付範囲",
+  "comparisonRanges": {
+    "previousPeriod": "前期",
+    "previousYear": "前年",
+    "custom": "カスタム",
+    "noComparison": "比較なし"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "ブラックフライデー・サイバーマンデー",
+      "quarters": "四半期"
+    }
+  },
+  "compare": "比較： "
+}

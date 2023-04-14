@@ -1,0 +1,20 @@
+{
+  "cancel": "ยกเลิก",
+  "apply": "ปรับใช้",
+  "comparisonText": "เทียบกับ {comparisonRange}",
+  "dateRangeLabel": "ช่วงวันที่",
+  "dateRanges": {
+    "custom": "กำหนดเอง"
+  },
+  "comparisonCheckbox": "เทียบกับวันก่อนหน้า",
+  "comparisonLabel": "เทียบกับ",
+  "comparisonRanges": {
+    "previousPeriod": "ช่วงก่อนหน้า",
+    "previousYear": "ปีก่อนหน้า",
+    "custom": "กำหนดเอง"
+  },
+  "TextFields": {
+    "starting": "เริ่มตั้งแต่",
+    "ending": "สิ้นสุดที่"
+  }
+}

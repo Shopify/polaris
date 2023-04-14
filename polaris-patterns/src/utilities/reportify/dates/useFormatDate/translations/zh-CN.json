@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "星期一",
+        "tuesday": "星期二",
+        "wednesday": "星期三",
+        "thursday": "星期四",
+        "friday": "星期五",
+        "saturday": "星期六",
+        "sunday": "星期日"
+      },
+      "long": {
+        "monday": "星期一",
+        "tuesday": "星期二",
+        "wednesday": "星期三",
+        "thursday": "星期四",
+        "friday": "星期五",
+        "saturday": "星期六",
+        "sunday": "星期天"
+      }
+    },
+    "quarters": {
+      "q1": "{year}第 1 季度",
+      "q2": "{year}第 2 季度",
+      "q3": "{year}第 3 季度",
+      "q4": "{year}第 4 季度"
+    },
+    "months": {
+      "short": {
+        "january": "一月",
+        "february": "二月",
+        "march": "三月",
+        "april": "四月",
+        "may": "五月",
+        "june": "六月",
+        "july": "七月",
+        "august": "八月",
+        "september": "九月",
+        "october": "十月",
+        "november": "十一月",
+        "december": "十二月"
+      },
+      "long": {
+        "january": "一月",
+        "february": "二月",
+        "march": "三月",
+        "april": "四月",
+        "may": "五月",
+        "june": "六月",
+        "july": "七月",
+        "august": "八月",
+        "september": "九月",
+        "october": "十月",
+        "november": "十一月",
+        "december": "十二月"
+      }
+    }
+  }
+}
