@@ -60,7 +60,7 @@ describe('<DatePicker />', () => {
 
     it('triggers onChange with the expected value when an option is selected', () => {
       const spy = jest.fn();
-      const datepicker = mountWithApp(
+      const datepicker = renderWithApp(
         <DateList
           selected={defaultRanges[0]}
           onChange={spy}
@@ -68,12 +68,18 @@ describe('<DatePicker />', () => {
         />,
       );
 
-      datepicker.find('button')?.trigger('onClick');
-      datepicker
-        .findWhere<'button'>(
-          (node) => node.text() === defaultRanges[1].label && node.is('button'),
-        )
-        ?.trigger('onClick');
+      const trigger = datepicker.getByRole('button', {name: 'Today'});
+
+      act(() => {
+        fireEvent.click(trigger);
+      });
+      const option = datepicker.getByRole('button', {
+        name: defaultRanges[1].label,
+      });
+
+      act(() => {
+        fireEvent.click(option);
+      });
 
       expect(spy).toHaveBeenCalledWith([defaultRanges[1].value]);
     });
