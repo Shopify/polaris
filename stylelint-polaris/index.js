@@ -33,6 +33,23 @@ const disallowedUnits = [
   'pt',
 ];
 
+const disallowedVarsZIndex = [
+  // Legacy custom properties
+  '--p-override-loading-z-index',
+  '--p-z-1',
+  '--p-z-2',
+  '--p-z-3',
+  '--p-z-4',
+  '--p-z-5',
+  '--p-z-6',
+  '--p-z-7',
+  '--p-z-8',
+  '--p-z-9',
+  '--p-z-10',
+  '--p-z-11',
+  '--p-z-12',
+];
+
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -483,24 +500,14 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'function-disallowed-list': ['z-index'].map(matchNameRegExp),
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsZIndex,
+        disallowedValues: {'/.+/': disallowedVarsZIndex},
+      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$fixed-element-stacking-order/,
         /\$global-elements/,
-        // Legacy custom properties
-        /--p-override-loading-z-index/,
-        /--p-z-1/,
-        /--p-z-2/,
-        /--p-z-3/,
-        /--p-z-4/,
-        /--p-z-5/,
-        /--p-z-6/,
-        /--p-z-7/,
-        /--p-z-8/,
-        /--p-z-9/,
-        /--p-z-10/,
-        /--p-z-11/,
-        /--p-z-12/,
       ],
     },
     {
@@ -655,6 +662,7 @@ module.exports = {
     './plugins/global-disallowed-list',
     './plugins/at-rule-disallowed-list',
     './plugins/custom-property-allowed-list',
+    './plugins/custom-property-disallowed-list',
     './plugins/media-query-allowed-list',
     './plugins/declaration-property-value-disallowed-list',
   ],
