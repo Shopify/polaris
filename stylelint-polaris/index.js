@@ -198,6 +198,15 @@ const disallowedVarsColor = [
   '--p-action-critical',
 ];
 
+const disallowedVarsLayout = [
+  // Legacy custom properties
+  '--p-range-slider-thumb-size-base',
+  '--p-range-slider-thumb-size-active',
+  '--p-choice-size',
+  '--p-icon-size-small',
+  '--p-icon-size-medium',
+];
+
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -368,6 +377,10 @@ const stylelintPolarisCoverageOptions = {
       'polaris/at-rule-disallowed-list': {
         include: ['layout-flex-fix', 'safe-area-for'].map(matchNameRegExp),
       },
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsLayout,
+        disallowedValues: {'/.+/': disallowedVarsLayout},
+      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$layout-width-data/,
@@ -376,12 +389,6 @@ const stylelintPolarisCoverageOptions = {
         /\$large-thumbnail-size/,
         /\$medium-thumbnail-size/,
         /\$thumbnail-sizes/,
-        // Legacy custom properties
-        /--p-range-slider-thumb-size-base/,
-        /--p-range-slider-thumb-size-active/,
-        /--p-choice-size/,
-        /--p-icon-size-small/,
-        /--p-icon-size-medium/,
       ],
     },
     {
