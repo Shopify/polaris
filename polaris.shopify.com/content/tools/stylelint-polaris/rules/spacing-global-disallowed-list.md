@@ -1,6 +1,6 @@
 ---
 title: spacing/global-disallowed-list
-description: Disallows use of legacy spacing custom properties and Sass mixin data.
+description: Disallows use of legacy spacing Sass mixin data.
 keywords:
   - stylelint
   - spacing
@@ -8,8 +8,6 @@ keywords:
 ---
 
 ```diff
-// Do
-+ margin-bottom: var(--p-space-1);
 // Don't
-- margin-bottom: var(--p-text-field-spinner-offset);
+- @type map $spacing-data: $polaris-spacing;
 ```
