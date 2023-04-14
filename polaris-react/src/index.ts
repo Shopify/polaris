@@ -98,6 +98,12 @@ export type {BulkActionsProps as UnstableBulkActionsProps} from './components/Bu
 export {Button, buttonFrom, buttonsFrom} from './components/Button';
 export type {ButtonProps} from './components/Button';
 
+export {ButtonBase} from './components/ButtonBase';
+export type {ButtonBaseProps} from './components/ButtonBase';
+
+export {ButtonNew} from './components/ButtonNew';
+export type {ButtonNewProps} from './components/ButtonNew';
+
 export {ButtonGroup} from './components/ButtonGroup';
 export type {ButtonGroupProps} from './components/ButtonGroup';
 
