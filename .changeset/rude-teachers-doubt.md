@@ -2,4 +2,4 @@
 'polaris.shopify.com': minor
 ---
 
-Add whats new color page and update design/colors for the new color tokens
+Added what's new color page and updated design/colors for the new color tokens
