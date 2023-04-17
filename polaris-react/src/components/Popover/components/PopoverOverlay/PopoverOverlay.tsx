@@ -74,7 +74,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
-  private exitingTimer?: number;
   private overlayRef: React.RefObject<PositionedOverlay>;
 
   constructor(props: PopoverOverlayProps) {
@@ -113,12 +112,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     }
 
     if (!this.props.active && oldProps.active) {
-      this.changeTransitionStatus(TransitionStatus.Exiting, () => {
-        this.clearTransitionTimeout();
-        this.exitingTimer = window.setTimeout(() => {
-          this.setState({transitionStatus: TransitionStatus.Exited});
-        }, parseInt(motion['duration-100'], 10));
-      });
+      this.setState({transitionStatus: TransitionStatus.Exited});
     }
   }
 
@@ -171,10 +165,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   private clearTransitionTimeout() {
     if (this.enteringTimer) {
       window.clearTimeout(this.enteringTimer);
-    }
-
-    if (this.exitingTimer) {
-      window.clearTimeout(this.exitingTimer);
     }
   }
 

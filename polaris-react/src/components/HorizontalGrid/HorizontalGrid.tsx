@@ -45,12 +45,12 @@ export function HorizontalGrid({
 }: HorizontalGridProps) {
   const style = {
     ...getResponsiveValue(
-      'columns',
+      'horizontal-grid',
       'grid-template-columns',
       formatHorizontalGrid(columns),
     ),
-    ...getResponsiveProps('columns', 'gap', 'space', gap),
-    '--pc-columns-align-items': alignItems,
+    ...getResponsiveProps('horizontal-grid', 'gap', 'space', gap),
+    '--pc-horizontal-grid-align-items': alignItems,
   } as React.CSSProperties;
 
   return (
