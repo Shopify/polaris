@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
 import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+
 import {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
 export default {
@@ -73,11 +74,17 @@ function TopBarWrapper({
             ]
       }
       name={name ? name : 'Dharma'}
-      detail={detail ? detail : 'Jaded Pixel'}
+      detail={detail && detail}
       initials={initials ? initials : 'JD'}
       customActivator={customActivator}
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
+      message={{
+        title: 'Message title',
+        description: 'Message description',
+        link: {to: 'https://www.shopify.com', content: 'Link content'},
+        action: {content: 'Action content', onAction: () => {}},
+      }}
     />
   );
 
@@ -146,17 +153,40 @@ export function Default() {
       items: [{content: 'Community forums'}],
     },
   ];
+  return <TopBarWrapper userActions={userActions} name="Dharma" initials="D" />;
+}
+
+export function WithCustomActivator() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+
+  const customActivator = (
+    <>
+      <Avatar size="small" initials="JD" name="Dharma" />
+      <span style={{marginLeft: '0.5rem'}}>
+        <p style={{fontWeight: '500', whiteSpace: 'nowrap'}}>Dharma</p>
+      </span>
+    </>
+  );
+
   return (
     <TopBarWrapper
       userActions={userActions}
-      name="Dharm"
+      name="Dharma"
       detail="Jaded Pixel"
-      initials="D"
+      initials="JD"
+      customActivator={customActivator}
     />
   );
 }
 
-export function WithCustomActivator() {
+export function withMessage() {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],

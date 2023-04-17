@@ -51,13 +51,6 @@ export function UserMenu({
     customActivator
   ) : (
     <>
-      <MessageIndicator active={showIndicator}>
-        <Avatar
-          size="small"
-          source={avatar}
-          initials={initials && initials.replace(' ', '')}
-        />
-      </MessageIndicator>
       <span className={styles.Details}>
         <Text as="p" alignment="start" fontWeight="medium" truncate>
           {name}
@@ -72,6 +65,14 @@ export function UserMenu({
           {detail}
         </Text>
       </span>
+      <MessageIndicator active={showIndicator}>
+        <Avatar
+          shape="square"
+          size="small"
+          initials={initials && initials.replace(' ', '')}
+          source={avatar}
+        />
+      </MessageIndicator>
     </>
   );
 
