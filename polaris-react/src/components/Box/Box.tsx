@@ -209,8 +209,11 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-background': background
         ? `var(--p-color-${background})`
         : undefined,
+      // eslint-disable-next-line no-nested-ternary
       '--pc-box-border-color': borderColor
-        ? `var(--p-color-${borderColor})`
+        ? borderColor === 'transparent'
+          ? 'transparent'
+          : `var(--p-color-${borderColor})`
         : undefined,
       '--pc-box-border-style': borderStyleValue,
       '--pc-box-border-radius': borderRadius
