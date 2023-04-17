@@ -4,4 +4,4 @@
 'polaris.shopify.com': minor
 ---
 
-Add deprecated v10 custom properties to `stylelint-polaris` `global-disallowed-list` and enabled the `custom-property-disallowed-list` rule.
+Enabled the `custom-property-disallowed-list` rule and added deprecated v10 custom properties.
