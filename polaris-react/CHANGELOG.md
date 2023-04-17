@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.45.0
+
+### Minor Changes
+
+- [#8910](https://github.com/Shopify/polaris/pull/8910) [`91a9b77e6`](https://github.com/Shopify/polaris/commit/91a9b77e65f565728fbfa8887dc42c0705dbb4ba) Thanks [@alex-page](https://github.com/alex-page)! - <Box> Replaced outline, border, borderBlockEnd, borderBlockStart, borderInlineEnd, borderInlineStart properties with access to borderColor, borderWidth, outlineColor and outlineWidth
+
+### Patch Changes
+
+- [#8990](https://github.com/Shopify/polaris/pull/8990) [`9674cc906`](https://github.com/Shopify/polaris/commit/9674cc906eea70284d7a92a97a66024763afa5e5) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Update tokens for border of `Tabs` on hover and pressed state to create better quality interaction.
+
 ## 10.44.0
 
 ### Minor Changes
