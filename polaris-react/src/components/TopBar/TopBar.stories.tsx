@@ -1,13 +1,26 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {ActionList, Frame, Icon, TopBar, Text} from '@shopify/polaris';
+import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
 import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+import {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
 export default {
   component: TopBar,
 } as ComponentMeta<typeof TopBar>;
 
-export function Default() {
+function TopBarWrapper({
+  userActions,
+  name,
+  detail,
+  initials,
+  customActivator,
+}: {
+  userActions?: UserMenuProps['actions'];
+  name?: UserMenuProps['name'];
+  detail?: UserMenuProps['detail'];
+  initials?: UserMenuProps['initials'];
+  customActivator?: UserMenuProps['customActivator'];
+}) {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -47,17 +60,22 @@ export function Default() {
 
   const userMenuMarkup = (
     <TopBar.UserMenu
-      actions={[
-        {
-          items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
-        },
-        {
-          items: [{content: 'Community forums'}],
-        },
-      ]}
-      name="Dharma"
-      detail="Jaded Pixel"
-      initials="D"
+      actions={
+        userActions
+          ? userActions
+          : [
+              {
+                items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+              },
+              {
+                items: [{content: 'Community forums'}],
+              },
+            ]
+      }
+      name={name ? name : 'Dharma'}
+      detail={detail ? detail : 'Jaded Pixel'}
+      initials={initials ? initials : 'JD'}
+      customActivator={customActivator}
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
     />
@@ -116,5 +134,54 @@ export function Default() {
     <div style={{height: '250px'}}>
       <Frame topBar={topBarMarkup} logo={logo} />
     </div>
+  );
+}
+
+export function Default() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+  return (
+    <TopBarWrapper
+      userActions={userActions}
+      name="Dharm"
+      detail="Jaded Pixel"
+      initials="D"
+    />
+  );
+}
+
+export function WithCustomActivator() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+
+  const customActivator = (
+    <>
+      <span style={{marginRight: '0.5rem'}}>
+        <p style={{fontWeight: '500', whiteSpace: 'nowrap'}}>Dharma</p>
+      </span>
+      <Avatar shape="square" size="small" initials="JD" name="Dharma" />
+    </>
+  );
+
+  return (
+    <TopBarWrapper
+      userActions={userActions}
+      name="Dharma"
+      detail="Jaded Pixel"
+      initials="JD"
+      customActivator={customActivator}
+    />
   );
 }
