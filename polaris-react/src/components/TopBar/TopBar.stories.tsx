@@ -15,12 +15,14 @@ function TopBarWrapper({
   detail,
   initials,
   customActivator,
+  message,
 }: {
   userActions?: UserMenuProps['actions'];
   name?: UserMenuProps['name'];
   detail?: UserMenuProps['detail'];
   initials?: UserMenuProps['initials'];
   customActivator?: UserMenuProps['customActivator'];
+  message?: UserMenuProps['message'];
 }) {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
@@ -77,14 +79,9 @@ function TopBarWrapper({
       detail={detail && detail}
       initials={initials ? initials : 'JD'}
       customActivator={customActivator}
+      message={message}
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
-      message={{
-        title: 'Message title',
-        description: 'Message description',
-        link: {to: 'https://www.shopify.com', content: 'Link content'},
-        action: {content: 'Action content', onAction: () => {}},
-      }}
     />
   );
 
@@ -206,22 +203,18 @@ export function withMessage() {
     },
   ];
 
-  const customActivator = (
-    <>
-      <span style={{marginRight: '0.5rem'}}>
-        <p style={{fontWeight: '500', whiteSpace: 'nowrap'}}>Dharma</p>
-      </span>
-      <Avatar shape="square" size="small" initials="JD" name="Dharma" />
-    </>
-  );
-
   return (
     <TopBarWrapper
       userActions={userActions}
       name="Dharma"
       detail="Jaded Pixel"
       initials="JD"
-      customActivator={customActivator}
+      message={{
+        title: 'Message title',
+        description: 'Message description',
+        link: {to: 'https://www.shopify.com', content: 'Link content'},
+        action: {content: 'Action content', onClick: () => {}},
+      }}
     />
   );
 }
