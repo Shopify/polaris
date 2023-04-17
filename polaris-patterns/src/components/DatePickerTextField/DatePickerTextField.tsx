@@ -36,7 +36,6 @@ export interface Props {
   preferredAlignment?: PopoverProps['preferredAlignment'];
   preferredPosition?: PopoverProps['preferredPosition'];
   value: string;
-  datePlaceholder: string;
   onChange: (value: string) => void;
   onBlur?: (value: string) => void;
 }
@@ -67,7 +66,6 @@ export function DatePickerTextField({
   onBlur,
   disableDatesBefore,
   disableDatesAfter,
-  datePlaceholder,
 }: Props) {
   const [i18n] = useI18n();
   const [visible, setVisible] = useState(false);
@@ -213,7 +211,7 @@ export function DatePickerTextField({
       helpText={helpText}
       prefix={iconHidden ? undefined : <Icon source={CalendarMinor} />}
       value={formattedValue}
-      placeholder={datePlaceholder}
+      placeholder={i18n.translate('DatePickerTextField.placeholderDateValue')}
       onFocus={() => setVisible(Boolean(!disabled))}
       onChange={handleInputValueChange}
       onBlur={handleInputBlur as any}
