@@ -121,6 +121,16 @@ describe('<Menu />', () => {
     expect(menu).toContainReactComponent(Message);
   });
 
+  describe('isFullHeight', () => {
+    it('passes isFullHeight to popover as true', () => {
+      const menu = mountWithApp(<Menu {...defaultProps} open />);
+
+      expect(menu).toContainReactComponent(Popover, {
+        fullHeight: true,
+      });
+    });
+  });
+
   describe('accessibilityLabel', () => {
     it('passes accessibilityLabel to the popover activator', () => {
       const menu = mountWithApp(
