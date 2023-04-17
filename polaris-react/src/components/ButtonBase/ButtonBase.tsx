@@ -1,5 +1,4 @@
 import React from 'react';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {classNames} from '../../utilities/css';
 
@@ -7,17 +6,10 @@ import styles from './ButtonBase.scss';
 
 export type Target = '_blank' | '_self' | '_parent' | '_top';
 
-interface Props {
-  /** Sets the button type to determines behavior */
-  type?: 'button' | 'submit' | 'reset';
-  /** Sets the element type */
-  as?: 'button' | 'a';
-  /** Specifies the relationship between the linked resource and the current document */
-  rel?: string;
+interface CommonProps {
+  className?: string;
   /** A unique identifier for the button */
   id?: string;
-  /** A destination to link to, rendered in the href attribute of a link */
-  to?: string;
   /** Forces url to open in a new tab */
   external?: boolean;
   /** Where to display the url */
@@ -68,30 +60,41 @@ interface Props {
   onPointerDown?(): void;
 }
 
-type PolymorphicButtonBase = Polymorphic.ForwardRefComponent<'button', Props>;
+type ButtonProps = CommonProps & {
+  /** Sets the element to button */
+  as?: 'button';
+  /** Sets the button type to determines behavior */
+  type?: 'button' | 'submit' | 'reset';
+};
 
-export type ButtonBaseProps = Polymorphic.OwnProps<PolymorphicButtonBase>;
+type AnchorProps = CommonProps & {
+  /** Sets the element type to anchor */
+  as?: 'a';
+  /** Specifies the relationship between the linked resource and the current document */
+  rel?: string;
+  /** A destination to link to, rendered in the href attribute of a link */
+  to?: string;
+};
 
-export const ButtonBase = React.forwardRef((props, ref) => {
-  const {
-    className = '',
-    as: asProp = 'button',
-    disabled = false,
-    // Fix this
-    type = 'button',
-    ...restProps
-  } = props;
+export type ButtonBaseProps = ButtonProps | AnchorProps;
 
-  const Component = (restProps.to ? 'a' : asProp) as 'button';
+export const ButtonBase = React.forwardRef<'button' | 'a', ButtonBaseProps>(
+  (props, ref) => {
+    const {className = '', disabled = false, ...restProps} = props;
 
-  return (
-    <Component
-      ref={ref}
-      type={type}
-      className={classNames(styles.ButtonBase, className)}
-      {...restProps}
-    />
-  );
-}) as PolymorphicButtonBase;
+    if (props.as === 'a') {
+      return <a rel={props.rel} href={props.to} />;
+    }
+
+    return (
+      <button
+        ref={ref}
+        type={props.type}
+        className={classNames(styles.ButtonBase, className)}
+        {...restProps}
+      />
+    );
+  },
+);
 
 ButtonBase.displayName = 'ButtonBase';
