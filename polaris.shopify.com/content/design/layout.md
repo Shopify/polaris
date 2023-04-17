@@ -72,7 +72,7 @@ Admin UI card with a horizontal dot button on one side, plus text and a button o
 
 ![](/images/design/layout/example1.png)
 
-<div as="YoutubeVideo" id="D_MsLKbdcGs"></div>
+<div as="YoutubeVideo" id="PLFMcarQd9g"></div>
 
 ### Example 2
 
@@ -80,7 +80,7 @@ Admin UI card with stacked elements, inline links, and a divider. [Edit in sandb
 
 ![](/images/design/layout/example2.png)
 
-<div as="YoutubeVideo" id="VRRakuy85ss"></div>
+<div as="YoutubeVideo" id="P83g0XkJSSA"></div>
 
 ### Example 3
 
@@ -88,4 +88,4 @@ Admin UI card with text on one side, and a button on the opposite side. [Edit in
 
 ![](/images/design/layout/example3.png)
 
-<div as="YoutubeVideo" id="3ww0V5drMhk"></div>
+<div as="YoutubeVideo" id="EmkPsEGsQRM"></div>
