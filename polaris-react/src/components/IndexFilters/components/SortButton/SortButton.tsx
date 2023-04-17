@@ -118,7 +118,12 @@ export function SortButton({
       onClose={handleClose}
       fluidContent
     >
-      <Box minWidth="148px" padding="4" borderBlockEnd="divider">
+      <Box
+        minWidth="148px"
+        padding="4"
+        borderBlockEndWidth="1"
+        borderColor="border-subdued"
+      >
         <ChoiceList
           title={i18n.translate('Polaris.IndexFilters.SortButton.title')}
           choices={choiceListChoices}
