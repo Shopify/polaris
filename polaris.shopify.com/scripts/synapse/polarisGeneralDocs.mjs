@@ -1,11 +1,7 @@
-import {readFileSync} from 'fs';
-import {resolve} from 'path';
 import {unified} from 'unified';
-import remarkParse from 'remark-parse';
-import {visit} from 'unist-util-visit';
-import {Console} from 'console';
+// import remarkParse from 'remark-parse';
 import {stripIndents} from 'common-tags';
-import remarkFrontmatter from 'remark-frontmatter';
+// import remarkFrontmatter from 'remark-frontmatter';
 import matter from './matter.mjs';
 
 export default function polarisGeneralDocs(options) {

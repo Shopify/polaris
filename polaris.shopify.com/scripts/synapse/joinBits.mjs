@@ -3,7 +3,7 @@ import fs from 'fs';
 import {resolve} from 'path';
 
 function main() {
-  globby(['./**/bits/*.json']).then((paths) => {
+  globby(['.cache/**/embeddings/*.json']).then((paths) => {
     const all = {
       version: 1,
       embeddingModel: 'openai.com:text-embedding-ada-002',
@@ -16,14 +16,14 @@ function main() {
       const fileContents = JSON.parse(
         fs.readFileSync(resolve(path)).toString(),
       );
-      // console.log(fileContents.bits);
+      console.log(fileContents.bits);
 
       hold = [...hold, ...fileContents.bits];
     });
     all.bits = hold;
 
     fs.writeFileSync(
-      resolve('scripts/synapse/bits/', 'allBits.json'),
+      resolve('.cache/embeddings/', 'allBits.json'),
       JSON.stringify(all),
       {flag: 'w'},
     );

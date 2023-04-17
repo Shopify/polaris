@@ -1,17 +1,15 @@
 import {readFileSync} from 'fs';
 import {resolve} from 'path';
 import {unified} from 'unified';
-import remarkParse from 'remark-parse';
-import {visit} from 'unist-util-visit';
-import {Console} from 'console';
+// import remarkParse from 'remark-parse';
 import {stripIndents} from 'common-tags';
-import remarkFrontmatter from 'remark-frontmatter';
+// import remarkFrontmatter from 'remark-frontmatter';
 import matter from './matter.mjs';
 
 export default function polarisComponentDocs(options) {
   const parser = (contents, file) => {
     // turn the file into an AST
-    const tree = unified().use(remarkParse).use(remarkFrontmatter).parse(file);
+    // const tree = unified().use(remarkParse).use(remarkFrontmatter).parse(file);
     // console.log(tree);
 
     // add the front matter as an object to the file
