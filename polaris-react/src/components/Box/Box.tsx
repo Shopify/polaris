@@ -193,7 +193,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     // eslint-disable-next-line no-nested-ternary
     const borderStyleValue = borderStyle
       ? borderStyle
-      : borderColor || borderWidth
+      : borderColor ||
+        borderWidth ||
+        borderBlockStartWidth ||
+        borderBlockEndWidth ||
+        borderInlineStartWidth ||
+        borderInlineEndWidth
       ? 'solid'
       : undefined;
 
