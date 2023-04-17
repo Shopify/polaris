@@ -13,7 +13,6 @@ import {DatePickerTextField} from '../DatePickerTextField';
 describe('<DatePickerTextField />', () => {
   const defaultProps: Props = {
     value: '2019-10-17',
-    datePlaceholder: 'YYYY-MM-DD',
     label: 'Expected Arrival',
     onChange: () => {},
   };

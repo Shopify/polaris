@@ -3,6 +3,7 @@
  */
 module.exports = {
   presets: [['@shopify/babel-preset', {typescript: true, react: true}]],
+  plugins: [['@shopify/react-i18n/babel', {mode: 'with-explicit-paths'}]],
   babelrcRoots: [
     '.',
     // Note: The following projects use rootMode: 'upward' to inherit
