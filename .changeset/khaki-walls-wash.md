@@ -4,4 +4,4 @@
 '@shopify/stylelint-polaris': minor
 ---
 
-Enable `custom-property-disallowed-list` rule
+Enabled the `custom-property-disallowed-list` rule
