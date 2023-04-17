@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
 import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
 
-import {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
+import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
 export default {
   component: TopBar,
