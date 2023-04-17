@@ -1,16 +1,42 @@
 .Button {
-  background: var(--p-surface);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--p-background);
   color: var(--p-text);
-  border: var(--p-border-width-1) solid var(--p-border-neutral-subdued) ;
+  border: var(--p-border-width-1) solid var(--p-border);
+  box-shadow: var(--p-shadow-sm);
   padding-left: var(--p-space-4);
   padding-right: var(--p-space-4);
   border-radius: var(--p-border-radius-1);
   min-height: 36px;
+  min-width: 36px;
   font-weight: var(--p-font-weight-medium);
-}
 
-.disabled {
-  opacity: 0.5;
+  svg {
+    fill: var(--p-icon);
+  }
+
+  &:hover {
+    background: var(--p-background-hovered);
+  }
+
+  &:active {
+    background: var(--p-background-selected);
+    box-shadow: var(--p-shadow-sm), inset 0px 1px 0px rgba(0, 0, 0, 0.15);
+
+    &::after {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  &.disabled {
+    color: var(--p-text-disabled);
+    background: var(--p-background-subdued);
+    border-color: var(--p-border-disabled);
+  }
 }
 
 .hasIcon {
@@ -54,6 +80,20 @@
     fill: var(--p-icon-on-primary);
   }
 
+  &:hover {
+    background: var(--p-action-primary-hovered);
+  }
+
+  &:active {
+    background: var(--p-action-primary-depressed);
+  }
+
+  &.disabled {
+    color: var(--p-text-on-primary);
+    background: rgba(0, 128, 96, 0.5);
+    border-color: rgba(31, 33, 36, 0.2);
+  }
+
   &.toneCritical {
     background: var(--p-action-critical);
     color: var(--p-text-on-critical);
@@ -73,6 +113,15 @@
   border-width: 0;
   border-color: transparent;
   box-shadow: none;
+
+  &:hover {
+    background: var(--p-background-hovered);
+  }
+
+  &:active {
+    background: var(--p-background-selected);
+    box-shadow: none;
+  }
 
   &.toneCritical {
     color: var(--p-text-critical);
