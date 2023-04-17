@@ -65,9 +65,15 @@ const PolarisAI = () => {
   const [prompt, setPrompt] = useState('');
   const [completion, setCompletion] = useState<CompletionType>();
   const [isLoading, setIsLoading] = useState(false);
+  const [isUi, setIsUi] = useState(false);
 
   const handleSubmitPrompt = async () => {
     setIsLoading(true);
+
+    if (prompt.indexOf('/ui') >= 0) {
+      setIsUi(true);
+    }
+
     fetch(`/api/prompts?p=${encodeURIComponent(prompt)}`)
       .then((data) => data.json())
       .then((json) => {
@@ -82,10 +88,18 @@ const PolarisAI = () => {
       });
   };
 
+  const handleSlash = (evt) => {
+    evt.stopPropagation();
+    console.log('HAHA SERCH!');
+  };
+
   const handlePressEnter: KeyboardEventHandler<HTMLDivElement> = (evt) => {
     switch (evt.code) {
       case 'Enter':
         handleSubmitPrompt();
+        break;
+      case 'Slash':
+        handleSlash(evt);
         break;
     }
   };
@@ -104,19 +118,19 @@ const PolarisAI = () => {
             {/* {answer} */}
             <Markdown
               components={
-                {
-                  // code: ({inline, children, className}) =>
-                  //   inline ? (
-                  //     <code>{children}</code>
-                  //   ) : (
-                  //     <PatternsExample
-                  //       example={{
-                  //         code: children.toString(),
-                  //       }}
-                  //       patternName="An example"
-                  //       showCode
-                  //     />
-                  //   ),
+                isUi && {
+                  code: ({inline, children, className}) =>
+                    inline ? (
+                      <code>{children}</code>
+                    ) : (
+                      <PatternsExample
+                        example={{
+                          code: children.toString(),
+                        }}
+                        patternName="An example"
+                        showCode
+                      />
+                    ),
                 }
               }
             >
@@ -143,6 +157,7 @@ const PolarisAI = () => {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           onKeyUp={handlePressEnter}
+          onKeyDown={handlePressEnter}
         />
       </div>
     </Longform>

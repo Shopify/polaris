@@ -1,6 +1,6 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
 import {createChatCompletion, generateEmbedding, getSimilarBits} from 'synapse';
-import allBits from '../../../scripts/synapse/bits/allBits.json' assert {type: 'json'};
+import allBits from '../../../.cache/embeddings/allBits.json' assert {type: 'json'};
 import type {Bit, TemplateArgs, Message} from 'synapse';
 
 const messagesTemplate = (args: TemplateArgs, similarBits?: Bit[]) => {
@@ -32,13 +32,20 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const input = Array.isArray(req.query.p)
-    ? req.query.p.join(' ')
-    : req.query.p;
+  let input = Array.isArray(req.query.p) ? req.query.p.join(' ') : req.query.p;
 
   // const input = 'What does the Alpha Stack component do?';
 
   if (!input) return res.status(400).send('A question must be provided');
+
+  // construct slash commands if exist
+  if (input.indexOf('/ui') >= 0) {
+    input.replace('/ui', '');
+    input =
+      input +
+      `${input[length - 1] === '.' ? ' ' : '. '}` + // add a period
+      'Do not include any imports, do not wrap the code in a component, and hard code all values';
+  }
 
   try {
     // const aiResponse = await createContextualChatCompletion(

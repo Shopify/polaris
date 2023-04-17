@@ -7,6 +7,8 @@
 .shadowenv.d
 .turbo
 dist
+yalc.lock
+.yalc
 node_modules
 Session.vim
 /polaris-react/build
@@ -17,3 +19,6 @@ Session.vim
 /polaris.shopify.com/public/sitemap.xml
 /polaris.shopify.com/public/og-images
 /polaris.shopify.com/public/playroom
+/polaris.shopify.com/.yalc
+
+

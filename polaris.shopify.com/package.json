@@ -17,17 +17,21 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
-    "gen-assets": "yarn get-props && node scripts/gen-assets.mjs"
+    "gen-assets": "yarn get-props && node scripts/gen-assets.mjs",
+    "synapse:embeddings": "npx tsx ./.yalc/synapse/src/cli.ts embeddings",
+    "embeddings:join": "node ./scripts/synapse/joinBits.mjs",
+    "synapse": "yarn run synapse:embeddings && yarn run embeddings:join"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
+    "@radix-ui/react-polymorphic": "^0.0.14",
     "@shopify/polaris": "^10.42.1",
     "@shopify/polaris-icons": "^6.12.0",
     "@shopify/polaris-tokens": "^6.9.0",
-    "@radix-ui/react-polymorphic": "^0.0.14",
     "@types/react-syntax-highlighter": "^15.5.6",
     "codesandbox": "^2.2.3",
+    "common-tags": "^1.8.2",
     "endent": "^2.1.0",
     "framer-motion": "^6.5.1",
     "fuse.js": "^6.5.3",
@@ -36,18 +40,20 @@
     "lodash.throttle": "^4.1.1",
     "next": "^13.0.6",
     "prismjs": "^1.27.0",
-    "sharp": "^0.31.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.2",
     "react-merge-refs": "^2.0.1",
+    "react-syntax-highlighter": "^15.5.0",
     "rehype-slug": "^5.1.0",
     "remark-definition-list": "^1.2.0",
     "remark-gfm": "^3.0.1",
-    "react-syntax-highlighter": "^15.5.0",
     "remark-unwrap-images": "^3.0.1",
+    "sharp": "^0.31.2",
+    "synapse": "file:.yalc/synapse",
     "terminate": "^2.6.1",
-    "use-dark-mode": "^2.3.1"
+    "use-dark-mode": "^2.3.1",
+    "vfile-matter": "^4.0.1"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.10",
@@ -61,6 +67,7 @@
     "babel-plugin-preval": "^5.1.0",
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
+    "commander": "^10.0.0",
     "eslint": "8.10.0",
     "eslint-config-next": "^13.0.0",
     "execa": "^6.1.0",
@@ -79,6 +86,7 @@
     "rehype-raw": "^6.1.1",
     "sass": "^1.49.9",
     "style-loader": "^3.3.1",
+    "tsx": "^3.12.6",
     "typescript": "^4.7.4"
   }
 }

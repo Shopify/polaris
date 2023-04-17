@@ -1,13 +1,5 @@
 import path from 'path';
-import {readFileSync} from 'fs';
-import {resolve} from 'path';
-import {unified} from 'unified';
-import remarkParse from 'remark-parse';
-import {visit} from 'unist-util-visit';
-import {Console} from 'console';
 import {stripIndents} from 'common-tags';
-import remarkFrontmatter from 'remark-frontmatter';
-import matter from './matter.mjs';
 
 export default function polarisMigratorDocs(options) {
   const parser = (contents, file) => {
@@ -35,7 +27,7 @@ export default function polarisMigratorDocs(options) {
     //   });
     // }
 
-    console.log(file);
+    // console.log(file);
 
     // throw 'eh';
     const docBit = {
