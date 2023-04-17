@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {createRef, useCallback, useEffect, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
@@ -74,6 +74,47 @@ export function WithActionList() {
           actionRole="menuitem"
           items={[{content: 'Import'}, {content: 'Export'}]}
         />
+      </Popover>
+    </div>
+  );
+}
+
+export function WithMultiLineTextField() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [tagValue, setTagValue] = useState('');
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const handleTagValueChange = useCallback((value) => setTagValue(value), []);
+
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      Filter
+    </Button>
+  );
+
+  return (
+    <div style={{height: '280px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+        ariaHaspopup={false}
+        sectioned
+      >
+        <FormLayout>
+          <TextField
+            label="Tags"
+            value={tagValue}
+            onChange={handleTagValueChange}
+            autoComplete="off"
+            multiline={5}
+          />
+          <Button size="slim">Add filter</Button>
+        </FormLayout>
       </Popover>
     </div>
   );
