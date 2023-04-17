@@ -691,6 +691,25 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 
 <br />
 
+#### `react-rename-component`
+
+A generic codemod to rename any component and its prop type.
+
+```diff
+- <MyComponent prop />
++ <MyRenamedComponent prop />
+- export interface MyComponentPropType {}
++ export interface MyRenamedComponentPropType {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="MyComponent" --renameTo="MyRenamedComponent" --renamePropsFrom="MyComponentPropType" --renamePropsTo="MyRenamedComponentPropType"
+```
+
+<br />
+
 #### `react-rename-component-prop`
 
 A generic codemod to rename any component prop.
