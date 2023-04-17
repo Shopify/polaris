@@ -101,7 +101,7 @@
   &:not([aria-disabled='true']):active {
     background-color: var(--p-color-bg-active);
     color: var(--p-color-text);
-    z-index: var(--p-z-1);
+    z-index: var(--p-z-index-1);
   }
 
   path {
@@ -257,7 +257,7 @@
 
   &:not([aria-disabled='true']):active {
     background-color: var(--p-color-bg-active);
-    z-index: var(--p-z-1);
+    z-index: var(--p-z-index-1);
   }
 
   &[aria-disabled='true'] {

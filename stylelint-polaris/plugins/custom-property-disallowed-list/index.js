@@ -9,25 +9,23 @@ const {
   isString,
 } = require('../../utils');
 
-const ruleName = 'polaris/custom-property-allowed-list';
+const ruleName = 'polaris/custom-property-disallowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
    * @type {stylelint.RuleMessageFunc}
    */
-  rejected: (prop, value, prefix, isInvalidProp, invalidValues) => {
+  rejected: (prop, value, isInvalidProp, invalidValues) => {
     const invalidPropertyMessage = isInvalidProp
-      ? `Unexpected prefix "${prefix}" for defined custom property "${prop}" - Properties with prefixes "--p-" or "--pc-" cannot be defined outside of Polaris"`
+      ? `Unexpected custom property definition "${prop}"`
       : null;
 
     const plural = invalidValues?.length > 1;
 
     const invalidValueMessage = invalidValues
-      ? `Unexpected value "${value}" for property "${prop}" - Token${
-          plural ? 's' : ''
-        } ${invalidValues.map((token) => `"${token}"`).join(', ')} ${
-          plural ? 'are' : 'is'
-        } either private or ${plural ? 'do' : 'does'} not exist`
+      ? `Unexpected value${plural ? 's' : ''} ${invalidValues
+          .map((token) => `"${token}"`)
+          .join(', ')} for property "${prop}"`
       : null;
 
     const message = [invalidPropertyMessage, invalidValueMessage]
@@ -38,12 +36,12 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
   },
 });
 
-/** @typedef {(string | RegExp)[]} AllowedPatterns */
+/** @typedef {(string | RegExp)[]} DisallowedPatterns */
 
 /**
  * @typedef {Object} PrimaryOptions
- * @property {AllowedPatterns} [allowedProperties]
- * @property {{[property: string]: AllowedPatterns}} [allowedValues]
+ * @property {DisallowedPatterns} [disallowedProperties]
+ * @property {{[property: string]: DisallowedPatterns}} [disallowedValues]
  */
 
 const {rule} = stylelint.createPlugin(
@@ -55,36 +53,34 @@ const {rule} = stylelint.createPlugin(
         result,
         ruleName,
         {
-          actual: primary.allowedProperties,
-          possible: isAllowedPatterns,
+          actual: primary.disallowedProperties,
+          possible: isDisallowedPatterns,
           optional: true,
         },
         {
-          actual: primary.allowedValues,
-          possible: validateAllowedValuesOption,
+          actual: primary.disallowedValues,
+          possible: validateDisallowedValuesOption,
           optional: true,
         },
       );
 
       if (!validOptions) {
-        throw new Error(
-          `Invalid options were provided to the [${ruleName}] rule in your Stylelint config.\n`,
-        );
+        return;
       }
 
-      const {allowedProperties = [], allowedValues = {}} = primary;
+      const {disallowedProperties = [], disallowedValues = {}} = primary;
 
       root.walkDecls((decl) => {
         const prop = decl.prop;
         const value = decl.value;
 
         const isInvalidProperty = isInvalidCustomProperty(
-          allowedProperties,
+          disallowedProperties,
           prop,
         );
 
         const invalidValues = getInvalidCustomPropertyValues(
-          allowedValues,
+          disallowedValues,
           prop,
           value,
         );
@@ -94,7 +90,6 @@ const {rule} = stylelint.createPlugin(
             message: messages.rejected(
               prop,
               value,
-              getCustomPropertyPrefix(prop),
               isInvalidProperty,
               invalidValues,
             ),
@@ -109,57 +104,46 @@ const {rule} = stylelint.createPlugin(
 );
 
 /**
- * Returns the prefix of a custom property.
- * @param {string} property
- * @returns {string}
- */
-function getCustomPropertyPrefix(property) {
-  return isCustomProperty(property)
-    ? `--${property.split('-')[2]}-`
-    : undefined;
-}
-
-/**
- * @param {NonNullable<PrimaryOptions['allowedProperties']>} allowedProperties
+ * @param {NonNullable<PrimaryOptions['disallowedProperties']>} disallowedProperties
  * @param {string} property
  */
-function isInvalidCustomProperty(allowedProperties, property) {
+function isInvalidCustomProperty(disallowedProperties, property) {
   if (!isCustomProperty(property)) return false;
 
-  const isValid = allowedProperties.some((allowedProperty) => {
-    return matchesStringOrRegExp(property, allowedProperty);
+  const isInvalid = disallowedProperties.some((disallowedProperty) => {
+    return matchesStringOrRegExp(property, disallowedProperty);
   });
 
-  return !isValid;
+  return isInvalid;
 }
 
 /**
- * @param {NonNullable<PrimaryOptions['allowedValues']>} allowedValues
+ * @param {NonNullable<PrimaryOptions['disallowedValues']>} disallowedValues
  * @param {string} prop
  * @param {string} value
  * @returns {string[] | undefined}
  */
-function getInvalidCustomPropertyValues(allowedValues, prop, value) {
+function getInvalidCustomPropertyValues(disallowedValues, prop, value) {
   const invalidValues = [];
 
   const unprefixedProp = vendorUnprefixed(prop);
 
-  /** Property key for the allowed values option */
-  const propKey = Object.keys(allowedValues).find((propIdentifier) =>
+  /** Property key for the disallowed values option */
+  const propKey = Object.keys(disallowedValues).find((propIdentifier) =>
     matchesStringOrRegExp(unprefixedProp, propIdentifier),
   );
 
   if (!propKey) return;
 
-  const allowedPatterns = allowedValues[propKey];
+  const disallowedPatterns = disallowedValues[propKey];
 
-  if (!allowedPatterns.length) return;
+  if (!disallowedPatterns.length) return;
 
   valueParser(value).walk((node) => {
     if (
       node.type === 'word' &&
       isCustomProperty(node.value) &&
-      !matchesStringOrRegExp(node.value, allowedPatterns)
+      matchesStringOrRegExp(node.value, disallowedPatterns)
     ) {
       invalidValues.push(node.value);
     }
@@ -176,13 +160,13 @@ module.exports = {
 
 /**
  * Validates the input is an array of String or RegExp.
- * @param {unknown} allowedPatterns
- * @returns {allowedPatterns is AllowedPatterns}
+ * @param {unknown} disallowedPatterns
+ * @returns {disallowedPatterns is DisallowedPatterns}
  */
-function isAllowedPatterns(allowedPatterns) {
-  if (!Array.isArray(allowedPatterns)) return false;
+function isDisallowedPatterns(disallowedPatterns) {
+  if (!Array.isArray(disallowedPatterns)) return false;
 
-  for (const pattern of allowedPatterns) {
+  for (const pattern of disallowedPatterns) {
     if (!(isString(pattern) || isRegExp(pattern))) return false;
   }
 
@@ -190,13 +174,13 @@ function isAllowedPatterns(allowedPatterns) {
 }
 
 /**
- * @param {unknown} option - `primary.allowedValues` option.
+ * @param {unknown} option - `primary.disallowedValues` option.
  */
-function validateAllowedValuesOption(option) {
+function validateDisallowedValuesOption(option) {
   if (typeof option !== 'object' || option === null) return false;
 
-  for (const [property, allowedPatterns] of Object.entries(option)) {
-    if (!(isString(property) && isAllowedPatterns(allowedPatterns))) {
+  for (const [property, disallowedPatterns] of Object.entries(option)) {
+    if (!(isString(property) && isDisallowedPatterns(disallowedPatterns))) {
       return false;
     }
   }
