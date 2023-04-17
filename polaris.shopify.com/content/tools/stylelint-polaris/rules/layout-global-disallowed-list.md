@@ -1,6 +1,6 @@
 ---
 title: layout/global-disallowed-list
-description: Disallows use of legacy layout Sass mixin and map data.
+description: Disallows use of legacy layout Sass APIs.
 keywords:
   - stylelint
   - layout

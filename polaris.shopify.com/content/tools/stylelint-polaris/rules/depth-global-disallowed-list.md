@@ -1,6 +1,6 @@
 ---
 title: depth/global-disallowed-list
-description: Disallows use of legacy depth Sass mixin data.
+description: Disallows use of legacy depth Sass APIs.
 keywords:
   - stylelint
   - depth

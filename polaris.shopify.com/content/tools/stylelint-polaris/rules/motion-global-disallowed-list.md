@@ -1,6 +1,6 @@
 ---
 title: motion/global-disallowed-list
-description: Disallows use of legacy motion Sass mixin data.
+description: Disallows use of legacy motion Sass APIs.
 keywords:
   - stylelint
   - motion

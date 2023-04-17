@@ -1,6 +1,6 @@
 ---
 title: typography/global-disallowed-list
-description: Disallows use of legacy typography Sass mixin and map data.
+description: Disallows use of legacy typography Sass APIs.
 keywords:
   - stylelint
   - typography
