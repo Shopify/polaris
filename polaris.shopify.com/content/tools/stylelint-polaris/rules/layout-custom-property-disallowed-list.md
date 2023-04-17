@@ -1,6 +1,6 @@
 ---
 title: layout/custom-property-disallowed-list
-description: Disallows use of layout legacy custom properties.
+description: Disallows use of legacy layout custom properties.
 keywords:
   - stylelint
   - layout
