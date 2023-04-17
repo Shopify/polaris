@@ -2,4 +2,5 @@
 '@shopify/polaris': minor
 ---
 
-updates user menu to accept activator content prop
+- Added `customActivator` prop to `TopBar.UserMenu`
+- Added support for setting a `ReactNode ` on `ActionList` `Section` `title`
