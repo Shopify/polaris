@@ -62,7 +62,7 @@
     "preversion": "node ./scripts/readme-update-version"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^7.0.0",
+    "@shopify/polaris-icons": "^6.13.0",
     "@shopify/polaris-tokens": "^6.10.0",
     "@types/react": "*",
     "@types/react-dom": "*",

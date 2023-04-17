@@ -46,7 +46,7 @@
 * [#8912](https://github.com/Shopify/polaris/pull/8912) [`1cc47495a`](https://github.com/Shopify/polaris/commit/1cc47495a1f98e8c1a7eabec0ef0461153b33f1f) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated `BulkActions` to include wrapping tooltip on Popover activator
 
 * Updated dependencies [[`4880e3ed7`](https://github.com/Shopify/polaris/commit/4880e3ed71cade2f88d6211025e662ecb4a9e8ce), [`7349d4108`](https://github.com/Shopify/polaris/commit/7349d4108f22d1173aa6f4802df1c430bfc3c5ee), [`2bc90503d`](https://github.com/Shopify/polaris/commit/2bc90503d88cac89b021dc0114812c37c2f3258e)]:
-  - @shopify/polaris-icons@7.0.0
+  - @shopify/polaris-icons@6.13.0
 
 ## 10.43.0
 
@@ -424,8 +424,7 @@
 
 ### Minor Changes
 
-- [#8277](https://github.com/Shopify/polaris/pull/8277) [`a0f29cd4f`](https://github.com/Shopify/polaris/commit/a0f29cd4fa3e8f03f12e78dbbd7b2730ae2245e2) Thanks [@LauraAubin](https://github.com/LauraAubin)! - 1. Added persist on click and underline to Tooltip.
-  2. Added IndexTable header props to support Tooltip content, width, and persist on click.
+- [#8277](https://github.com/Shopify/polaris/pull/8277) [`a0f29cd4f`](https://github.com/Shopify/polaris/commit/a0f29cd4fa3e8f03f12e78dbbd7b2730ae2245e2) Thanks [@LauraAubin](https://github.com/LauraAubin)! - 1. Added persist on click and underline to Tooltip. 2. Added IndexTable header props to support Tooltip content, width, and persist on click.
 
 ### Patch Changes
 
