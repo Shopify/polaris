@@ -168,9 +168,20 @@ export function WithCustomActivator() {
 
   const customActivator = (
     <>
-      <Avatar size="small" initials="JD" name="Dharma" />
+      <Avatar size="small" initials="D" name="Dharma" />
       <span style={{marginLeft: '0.5rem'}}>
-        <p style={{fontWeight: '500', whiteSpace: 'nowrap'}}>Dharma</p>
+        <Text as="p" alignment="start" fontWeight="medium" truncate>
+          Dharma
+        </Text>
+        <Text
+          as="p"
+          variant="bodySm"
+          alignment="start"
+          color="subdued"
+          truncate
+        >
+          Jaded Pixel
+        </Text>
       </span>
     </>
   );
@@ -180,7 +191,6 @@ export function WithCustomActivator() {
       userActions={userActions}
       name="Dharma"
       detail="Jaded Pixel"
-      initials="JD"
       customActivator={customActivator}
     />
   );
