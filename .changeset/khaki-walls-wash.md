@@ -1,7 +1,7 @@
 ---
+'@shopify/stylelint-polaris': major
 '@shopify/polaris': minor
 'polaris.shopify.com': minor
-'@shopify/stylelint-polaris': minor
 ---
 
-Enabled the `custom-property-disallowed-list` rule
+Add deprecated v10 custom properties to `stylelint-polaris` `global-disallowed-list` and enabled the `custom-property-disallowed-list` rule.
