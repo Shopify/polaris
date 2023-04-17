@@ -1,0 +1,14 @@
+name: Unpublish packages
+
+on:
+  pull_request:
+
+jobs:
+  unpublish:
+    name: Unpublish packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unpublish packages
+        run: |
+          npm unpublish @shopify/polaris@10.44.0
+          npm unpublish @shopify/polaris-icons@7.0.0
