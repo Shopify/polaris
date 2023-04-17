@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Unpublish packages
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
         run: |
           npm unpublish @shopify/polaris@10.44.0
           npm unpublish @shopify/polaris-icons@7.0.0
