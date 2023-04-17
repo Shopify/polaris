@@ -67,6 +67,10 @@
   svg {
     fill: var(--p-icon-critical);
   }
+
+  &.disabled {
+    color:  rgba(197, 40, 12, 0.5);
+  }
 }
 
 .variantPrimary {
@@ -98,11 +102,23 @@
     background: var(--p-action-critical);
     color: var(--p-text-on-critical);
     border-width: 0;
-    border-color: transparent;
+    border-color: rgba(31, 33, 36, 0.2);
     box-shadow: var(--p-shadow-sm);
 
     svg {
       fill: var(--p-icon-on-critical);
+    }
+
+    &:hover {
+      background: var(--p-action-critical-hovered);
+    }
+
+    &:active {
+      background: var(--p-action-critical-depressed);
+    }
+
+    &.disabled {
+      background-color: rgba(197, 40, 12, 0.5);
     }
   }
 }
@@ -128,6 +144,10 @@
 
     svg {
       fill: var(--p-icon-critical);
+    }
+
+    &.disabled {
+      color:  rgba(197, 40, 12, 0.5);
     }
   }
 }
