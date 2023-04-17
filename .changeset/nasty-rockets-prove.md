@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Deprecated areas prop on Grid component
+Deprecated `Grid` `areas` prop
