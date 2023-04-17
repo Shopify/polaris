@@ -2,9 +2,6 @@ const path = require('path');
 const postcssPlugins = require('../config/postcss-plugins');
 
 module.exports = {
-  core: {
-    builder: 'webpack5',
-  },
   stories: [
     {
       directory: '../src/components/',
@@ -17,6 +14,12 @@ module.exports = {
     '@storybook/addon-toolbars',
     '@storybook/addon-viewport',
   ],
+  babel: (config) => {
+    return {
+      ...config,
+      rootMode: 'upward',
+    };
+  },
   webpackFinal: (config) => {
     const extraRules = [
       {
@@ -65,5 +68,9 @@ module.exports = {
       ),
     };
     return config;
+  },
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
   },
 };
