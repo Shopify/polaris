@@ -127,7 +127,7 @@ export interface BoxProps extends React.AriaAttributes {
   /** Opacity of box */
   opacity?: string;
   /** Outline color */
-  outlineColor?: ColorBorderAlias | 'transparent';
+  outlineColor?: ColorBorderAlias;
   /** Outline style */
   outlineStyle?: LineStyles;
   /** Outline width */
