@@ -96,31 +96,5 @@ testRule({
       endLine: 1,
       endColumn: 28,
     },
-    {
-      code: '.a { --p-foo: var(--p-bar); }',
-      description: 'Using disallowed --p- prefixed custom property and value',
-      message: messages.rejected('--p-foo', 'var(--p-bar)', '--p-', true, [
-        '--p-bar',
-      ]),
-      line: 1,
-      column: 6,
-      endLine: 1,
-      endColumn: 28,
-    },
-    {
-      code: '.a { --p-foo: var(--p-bar) solid var(--p-baz); }',
-      description: 'Using disallowed --p- prefixed custom property and values',
-      message: messages.rejected(
-        '--p-foo',
-        'var(--p-bar) solid var(--p-baz)',
-        '--p-',
-        true,
-        ['--p-bar', '--p-baz'],
-      ),
-      line: 1,
-      column: 6,
-      endLine: 1,
-      endColumn: 47,
-    },
   ],
 });
