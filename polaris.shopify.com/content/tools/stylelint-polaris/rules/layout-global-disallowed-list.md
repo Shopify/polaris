@@ -1,6 +1,6 @@
 ---
 title: layout/global-disallowed-list
-description: Disallows use of legacy custom properties and Sass mixin map data.
+description: Disallows use of legacy layout Sass APIs.
 keywords:
   - stylelint
   - layout
@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ <Checkbox />
++ width: 240px !default;
 // Don't
-- height: var(--p-choice-size);
+- width: $navigation-width;
 ```

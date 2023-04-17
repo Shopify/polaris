@@ -1,5 +1,17 @@
 # Changelog
 
+## 10.0.0
+
+### Major Changes
+
+- [#8973](https://github.com/Shopify/polaris/pull/8973) [`f1a3ad756`](https://github.com/Shopify/polaris/commit/f1a3ad756d73bf249583bdb47523a4b229a0c7cb) Thanks [@lgriffee](https://github.com/lgriffee)! - Enabled the `custom-property-disallowed-list` rule and added deprecated v10 custom properties.
+
+* [#8455](https://github.com/Shopify/polaris/pull/8455) [`80eb3ac55`](https://github.com/Shopify/polaris/commit/80eb3ac55c076eb336620cac8dc08cd212524afc) Thanks [@lgriffee](https://github.com/lgriffee)! - Remove deprecated v8 custom properties, functions, mixins, and mixin maps from stylelint-polaris
+
+### Minor Changes
+
+- [#8968](https://github.com/Shopify/polaris/pull/8968) [`dbe68efb4`](https://github.com/Shopify/polaris/commit/dbe68efb40fcd6261aee98b8784e0fca696c5b1b) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `custom-property-disallowed-list` rule
+
 ## 9.0.3
 
 ### Patch Changes

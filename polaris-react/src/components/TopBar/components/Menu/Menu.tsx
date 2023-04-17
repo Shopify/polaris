@@ -57,8 +57,6 @@ export function Menu(props: MenuProps) {
     />
   );
 
-  const isFullHeight = Boolean(message);
-
   return (
     <Popover
       activator={
@@ -76,7 +74,7 @@ export function Menu(props: MenuProps) {
       active={open}
       onClose={onClose}
       fixed
-      fullHeight={isFullHeight}
+      fullHeight
       preferredAlignment="right"
     >
       <ActionList onActionAnyItem={onClose} sections={actions} />

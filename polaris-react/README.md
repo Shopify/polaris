@@ -33,7 +33,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@10.43.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@10.44.0/build/esm/styles.css"
 />
 ```
 
@@ -70,7 +70,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@10.43.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@10.44.0/build/esm/styles.css"
 />
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: motion/global-disallowed-list
-description: Disallows use of legacy Polaris motion tokens.
+description: Disallows use of legacy motion Sass APIs.
 keywords:
   - stylelint
   - motion
@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ transition: var(--p-duration-100) var(--p-ease);
++ transition: var(--p-duration-500) var(--p-ease);
 // Don't
-- transition: var(--p-duration-1-0-0) var(--p-ease);
+- duration: $skeleton-shimmer-duration var(--p-ease);
 ```
