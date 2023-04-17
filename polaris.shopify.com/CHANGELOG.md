@@ -1,5 +1,31 @@
 # polaris.shopify.com
 
+## 0.49.0
+
+### Minor Changes
+
+- [#8876](https://github.com/Shopify/polaris/pull/8876) [`090d09683`](https://github.com/Shopify/polaris/commit/090d09683b7764837f4278a36faca1e531129d29) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated `IndexFilters` to support hiding both filters and search field
+
+* [#8973](https://github.com/Shopify/polaris/pull/8973) [`f1a3ad756`](https://github.com/Shopify/polaris/commit/f1a3ad756d73bf249583bdb47523a4b229a0c7cb) Thanks [@lgriffee](https://github.com/lgriffee)! - Enabled the `custom-property-disallowed-list` rule and added deprecated v10 custom properties.
+
+- [#8967](https://github.com/Shopify/polaris/pull/8967) [`45d978e7b`](https://github.com/Shopify/polaris/commit/45d978e7b1b61600b6e00a6dc8544c39a089a39e) Thanks [@lgriffee](https://github.com/lgriffee)! - Added a version matchup table to `stylelint-polaris` documentation
+
+* [#8986](https://github.com/Shopify/polaris/pull/8986) [`f70f586ee`](https://github.com/Shopify/polaris/commit/f70f586eec9a340bfef037cd4a93862389e83dba) Thanks [@laurkim](https://github.com/laurkim)! - Added documentation for the `react-rename-component` codemod
+
+- [#8935](https://github.com/Shopify/polaris/pull/8935) [`7f3053342`](https://github.com/Shopify/polaris/commit/7f30533421f43ff8062328a738f46743f403f8f9) Thanks [@alex-page](https://github.com/alex-page)! - Renamed `AlphaStack` to `VerticalStack`
+
+* [#8920](https://github.com/Shopify/polaris/pull/8920) [`2bad4e305`](https://github.com/Shopify/polaris/commit/2bad4e3058021efe6d2c73d8dd98798136e2f2ec) Thanks [@kyledurand](https://github.com/kyledurand)! - Added copy button to markdown headings with ids
+
+### Patch Changes
+
+- [#8915](https://github.com/Shopify/polaris/pull/8915) [`c8a130caf`](https://github.com/Shopify/polaris/commit/c8a130caf1cf7f652d708abaaa29183be0aebca4) Thanks [@kyledurand](https://github.com/kyledurand)! - Added scroll-margin-top to anchor links to prevent top bar overlay
+
+* [#8455](https://github.com/Shopify/polaris/pull/8455) [`80eb3ac55`](https://github.com/Shopify/polaris/commit/80eb3ac55c076eb336620cac8dc08cd212524afc) Thanks [@lgriffee](https://github.com/lgriffee)! - Remove deprecated v8 custom properties, functions, mixins, and mixin maps from stylelint-polaris
+
+* Updated dependencies [[`a2c9b1d24`](https://github.com/Shopify/polaris/commit/a2c9b1d24e70bb399358bb4cb31f2cc598128b8a), [`e8c5a2243`](https://github.com/Shopify/polaris/commit/e8c5a2243e8d2da26e94447413f0e5645999576f), [`090d09683`](https://github.com/Shopify/polaris/commit/090d09683b7764837f4278a36faca1e531129d29), [`bd64fa583`](https://github.com/Shopify/polaris/commit/bd64fa583d3f8e3c95288aa1cdfb6f9bf1e3e3fc), [`f1a3ad756`](https://github.com/Shopify/polaris/commit/f1a3ad756d73bf249583bdb47523a4b229a0c7cb), [`261355f07`](https://github.com/Shopify/polaris/commit/261355f07bc4a92d35585c648e4c0253634197cb), [`fcc543928`](https://github.com/Shopify/polaris/commit/fcc5439280807dc2c0ca4f98c526e47e1e77658a), [`4880e3ed7`](https://github.com/Shopify/polaris/commit/4880e3ed71cade2f88d6211025e662ecb4a9e8ce), [`7349d4108`](https://github.com/Shopify/polaris/commit/7349d4108f22d1173aa6f4802df1c430bfc3c5ee), [`2bc90503d`](https://github.com/Shopify/polaris/commit/2bc90503d88cac89b021dc0114812c37c2f3258e), [`f9366c22d`](https://github.com/Shopify/polaris/commit/f9366c22d9b8fa5d5d77e6ea1884bcfe1de0aeef), [`289dce569`](https://github.com/Shopify/polaris/commit/289dce569ad23d5c0773b576a40e0b2a0d4709c9), [`7f3053342`](https://github.com/Shopify/polaris/commit/7f30533421f43ff8062328a738f46743f403f8f9), [`421bb49dc`](https://github.com/Shopify/polaris/commit/421bb49dc1b2d73f9f3fde8cbccc56c3b03fe680), [`500eed660`](https://github.com/Shopify/polaris/commit/500eed66017697f3c7bffe58e88ac6ff312937a7), [`1cc47495a`](https://github.com/Shopify/polaris/commit/1cc47495a1f98e8c1a7eabec0ef0461153b33f1f)]:
+  - @shopify/polaris@10.44.0
+  - @shopify/polaris-icons@7.0.0
+
 ## 0.48.0
 
 ### Minor Changes

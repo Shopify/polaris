@@ -1,5 +1,43 @@
 # Changelog
 
+## 10.44.0
+
+### Minor Changes
+
+- [#8936](https://github.com/Shopify/polaris/pull/8936) [`a2c9b1d24`](https://github.com/Shopify/polaris/commit/a2c9b1d24e70bb399358bb4cb31f2cc598128b8a) Thanks [@alex-page](https://github.com/alex-page)! - Renamed Inline to HorizontalStack
+
+* [#8773](https://github.com/Shopify/polaris/pull/8773) [`e8c5a2243`](https://github.com/Shopify/polaris/commit/e8c5a2243e8d2da26e94447413f0e5645999576f) Thanks [@stefanlegg](https://github.com/stefanlegg)! - - Added an optional `onSpinnerChange` prop to`TextField`
+  - Added an optional `largeStep` prop to `TextField`
+  - Added `TextField` `Spinner` keypress interactions for Home, End, Page Up, Page Down
+
+- [#8876](https://github.com/Shopify/polaris/pull/8876) [`090d09683`](https://github.com/Shopify/polaris/commit/090d09683b7764837f4278a36faca1e531129d29) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated `IndexFilters` to support hiding both filters and search field
+
+* [#8973](https://github.com/Shopify/polaris/pull/8973) [`f1a3ad756`](https://github.com/Shopify/polaris/commit/f1a3ad756d73bf249583bdb47523a4b229a0c7cb) Thanks [@lgriffee](https://github.com/lgriffee)! - Enabled the `custom-property-disallowed-list` rule and added deprecated v10 custom properties.
+
+- [#8937](https://github.com/Shopify/polaris/pull/8937) [`fcc543928`](https://github.com/Shopify/polaris/commit/fcc5439280807dc2c0ca4f98c526e47e1e77658a) Thanks [@alex-page](https://github.com/alex-page)! - Renamed `Columns` to `HorizontalGrid`
+
+* [#8938](https://github.com/Shopify/polaris/pull/8938) [`289dce569`](https://github.com/Shopify/polaris/commit/289dce569ad23d5c0773b576a40e0b2a0d4709c9) Thanks [@alex-page](https://github.com/alex-page)! - Remove deprecation from `Grid` component
+
+- [#8935](https://github.com/Shopify/polaris/pull/8935) [`7f3053342`](https://github.com/Shopify/polaris/commit/7f30533421f43ff8062328a738f46743f403f8f9) Thanks [@alex-page](https://github.com/alex-page)! - Renamed `AlphaStack` to `VerticalStack`
+
+* [#8596](https://github.com/Shopify/polaris/pull/8596) [`421bb49dc`](https://github.com/Shopify/polaris/commit/421bb49dc1b2d73f9f3fde8cbccc56c3b03fe680) Thanks [@brendanrygus](https://github.com/brendanrygus)! - [Frame] Fix minimum height overflowing in iOS Webkit browsers
+
+- [#8953](https://github.com/Shopify/polaris/pull/8953) [`500eed660`](https://github.com/Shopify/polaris/commit/500eed66017697f3c7bffe58e88ac6ff312937a7) Thanks [@zakwarsame](https://github.com/zakwarsame)! - - Added `customActivator` prop to `TopBar.UserMenu`
+  - Added support for setting a `ReactNode` on `ActionList` `Section` `title`
+
+### Patch Changes
+
+- [#8842](https://github.com/Shopify/polaris/pull/8842) [`bd64fa583`](https://github.com/Shopify/polaris/commit/bd64fa583d3f8e3c95288aa1cdfb6f9bf1e3e3fc) Thanks [@martenbjork](https://github.com/martenbjork)! - Removed the Exiting animation state from Popovers, causing them to close immediately instead of after a 100ms delay.
+
+* [#8913](https://github.com/Shopify/polaris/pull/8913) [`261355f07`](https://github.com/Shopify/polaris/commit/261355f07bc4a92d35585c648e4c0253634197cb) Thanks [@mrcthms](https://github.com/mrcthms)! - Tweaked the vertical alignment of elements within the `AlphaFilters` component
+
+- [#8954](https://github.com/Shopify/polaris/pull/8954) [`f9366c22d`](https://github.com/Shopify/polaris/commit/f9366c22d9b8fa5d5d77e6ea1884bcfe1de0aeef) Thanks [@laurkim](https://github.com/laurkim)! - Updated custom property names to align with new component names for `HorizontalGrid`, `HorizontalStack`, and `VerticalStack`
+
+* [#8912](https://github.com/Shopify/polaris/pull/8912) [`1cc47495a`](https://github.com/Shopify/polaris/commit/1cc47495a1f98e8c1a7eabec0ef0461153b33f1f) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated `BulkActions` to include wrapping tooltip on Popover activator
+
+* Updated dependencies [[`4880e3ed7`](https://github.com/Shopify/polaris/commit/4880e3ed71cade2f88d6211025e662ecb4a9e8ce), [`7349d4108`](https://github.com/Shopify/polaris/commit/7349d4108f22d1173aa6f4802df1c430bfc3c5ee), [`2bc90503d`](https://github.com/Shopify/polaris/commit/2bc90503d88cac89b021dc0114812c37c2f3258e)]:
+  - @shopify/polaris-icons@7.0.0
+
 ## 10.43.0
 
 ### Minor Changes
