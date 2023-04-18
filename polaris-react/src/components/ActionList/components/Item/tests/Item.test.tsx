@@ -126,6 +126,16 @@ describe('<Item />', () => {
       position: 'middle',
     });
   });
+
+  it('does not truncate content when truncate prop is not set', () => {
+    const item = mountWithApp(
+      <Item
+        content="Test longer than usual string that probably overflows."
+        truncate={undefined}
+      />,
+    );
+    expect(item).not.toContainReactComponent(TruncateText);
+  });
 });
 
 function noop() {}

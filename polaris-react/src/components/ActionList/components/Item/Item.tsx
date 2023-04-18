@@ -33,7 +33,7 @@ export function Item({
   external,
   destructive,
   ellipsis,
-  truncate = 'end',
+  truncate,
   active,
   role,
 }: ItemProps) {
@@ -147,7 +147,7 @@ export const TruncateText = ({
   children,
   position = 'end',
 }: {
-  children: React.ReactNode;
+  children: string;
   position?: 'end' | 'middle';
 }) => {
   const textRef = useRef<HTMLSpanElement>(null);
@@ -167,6 +167,8 @@ export const TruncateText = ({
     </span>
   );
 
+  const truncatedText = middleTruncate(children, 40);
+
   return isOverflowing ? (
     <Tooltip
       zIndexOverride={514}
@@ -174,9 +176,7 @@ export const TruncateText = ({
       hoverDelay={1000}
       content={textRef.current?.innerText}
     >
-      {position === 'middle'
-        ? middleTruncate(textRef.current?.innerText || '', 40)
-        : text}
+      {position === 'middle' && truncatedText ? truncatedText : text}
     </Tooltip>
   ) : (
     text

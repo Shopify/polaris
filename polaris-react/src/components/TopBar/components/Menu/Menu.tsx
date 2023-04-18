@@ -3,11 +3,11 @@ import React from 'react';
 import {ActionList} from '../../../ActionList';
 import type {ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
+import {Box} from '../../../Box';
 
 import {Message} from './components';
 import type {MessageProps} from './components';
 import styles from './Menu.scss';
-import {Box} from '../../../Box';
 
 const USER_MENU_POPOVER_WIDTH = '360px';
 
@@ -28,6 +28,8 @@ export interface MenuProps {
   onClose(): void;
   /** A string that provides the accessibility labeling */
   accessibilityLabel?: string;
+  /** A boolean property indicating whether a custom activator is being used */
+  hasCustomActivator?: boolean;
 }
 
 export function Menu(props: MenuProps) {
@@ -39,6 +41,7 @@ export function Menu(props: MenuProps) {
     activatorContent,
     message,
     accessibilityLabel,
+    hasCustomActivator,
   } = props;
 
   const badgeProps = message &&
@@ -77,9 +80,10 @@ export function Menu(props: MenuProps) {
       active={open}
       onClose={onClose}
       fixed
+      fullHeight
       preferredAlignment="right"
     >
-      <Box width={USER_MENU_POPOVER_WIDTH}>
+      <Box width={hasCustomActivator ? undefined : USER_MENU_POPOVER_WIDTH}>
         <ActionList onActionAnyItem={onClose} sections={actions} />
         {messageMarkup}
       </Box>

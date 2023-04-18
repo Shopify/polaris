@@ -202,7 +202,7 @@ export interface ActionListItemDescriptor
   prefix?: React.ReactNode;
   /** Suffix source */
   suffix?: React.ReactNode;
-  /** @deprecated Add an ellipsis suffix to action content. ellipsis only adds `...` without truncating. User truncate instead. */
+  /** @deprecated Add an ellipsis suffix to action content. ellipsis appends `...` without truncating. Use truncate instead. */
   ellipsis?: boolean;
   /** Truncate the action content either at the beginning or at the end */
   truncate?: 'middle' | 'end';

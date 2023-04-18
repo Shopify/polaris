@@ -85,6 +85,7 @@ export function UserMenu({
       actions={actions}
       message={message}
       accessibilityLabel={accessibilityLabel}
+      hasCustomActivator={Boolean(customActivator)}
     />
   );
 }
