@@ -14,3 +14,32 @@
   #{$property}: calc(#{$spacing} + constant(safe-area-inset-#{$area}));
   #{$property}: calc(#{$spacing} + env(safe-area-inset-#{$area}));
 }
+
+@mixin custom-scrollbars() {
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    box-shadow: inset 0 56px white, inset 0 57px #ddd;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 100px;
+    transition: all 0.2s linear;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 1);
+    }
+  }
+}
