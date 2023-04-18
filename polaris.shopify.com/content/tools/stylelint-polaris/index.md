@@ -98,16 +98,16 @@ There are over 40 rules configured in Stylelint Polaris to help you avoid errors
 
 | @shopify/stylelint-polaris | @shopify/polaris |
 | -------------------------- | ---------------- |
-| 1.0.0                      | 9.13.0          |
-| 2.0.0                      | 9.16.0          |
-| 3.0.0                      | 9.19.0          |
-| 4.0.0                      | 9.20.0          |
-| 5.0.0                      | 10.14.0         |
-| 6.0.0                      | 10.28.1         |
-| 7.0.0                      | 10.31.0         |
-| 8.0.0                      | 10.32.0         |
-| 9.0.0                      | 10.36.0         |
-| 10.0.0                     | 10.44.0         |
+| 1.0.0                      | 9.13.0           |
+| 2.0.0                      | 9.16.0           |
+| 3.0.0                      | 9.19.0           |
+| 4.0.0                      | 9.20.0           |
+| 5.0.0                      | 10.14.0          |
+| 6.0.0                      | 10.28.1          |
+| 7.0.0                      | 10.31.0          |
+| 8.0.0                      | 10.32.0          |
+| 9.0.0                      | 10.36.0          |
+| 10.0.0                     | 10.44.0          |
 
 _\*@shopify/stylelint-polaris v5.0.0 was the first stable release_
 
@@ -160,7 +160,7 @@ module.exports = {
           'color-named': 'never'
           'color-no-hex': true,
         },
-        {message: 'Please use a Polaris color token: https://polaris.shopify.com/tokens/colors'},
+        {message: 'Please use a Polaris color token: https://polaris.shopify.com/tokens/color'},
       ],
     },
   },

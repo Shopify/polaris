@@ -91,12 +91,12 @@ const nextConfig = {
       },
       {
         source: '/tokens/all-tokens',
-        destination: '/tokens/colors',
+        destination: '/tokens/color',
         permanent: false,
       },
       {
         source: '/tokens',
-        destination: '/tokens/colors',
+        destination: '/tokens/color',
         permanent: false,
       },
       {

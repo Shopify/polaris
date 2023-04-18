@@ -28,7 +28,7 @@ type Category = keyof CategoryMap;
 
 const resourceLinks = {
   conventions: '',
-  colors: 'Polaris [color tokens](/tokens/colors)',
+  colors: 'Polaris [color tokens](/tokens/color)',
   motion: 'Polaris [motion tokens](/tokens/motion)',
   typography:
     'the [text component](/components/typography/text) or [font tokens](/tokens/font)',

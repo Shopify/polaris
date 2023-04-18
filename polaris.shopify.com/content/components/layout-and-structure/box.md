@@ -14,7 +14,7 @@ examples:
   - fileName: box-with-color.tsx
     title: Color
     description: >-
-      Background color of box and text color inside a box can be adjusted using the [Color tokens](https://polaris.shopify.com/tokens/colors).
+      Background color of box and text color inside a box can be adjusted using the [Color tokens](https://polaris.shopify.com/tokens/color).
   - fileName: box-with-border.tsx
     title: Border width
     description: >-
