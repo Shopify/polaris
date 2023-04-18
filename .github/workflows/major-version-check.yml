@@ -38,7 +38,7 @@ jobs:
             echo "No major version upgrade detected"
             exit 0
           else
-            echo "This PR contains a major version upgrade."
+            echo "This PR contains a major version upgrade which is only used for breaking changes."
             echo "If you are sure you want to perform this action, please add the '🤖Skip Major Check' label"
             exit 1
           fi
