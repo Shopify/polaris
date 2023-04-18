@@ -15,7 +15,7 @@ import type {
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-const {legacy, ...restTokenGroups} = metadata;
+const {...restTokenGroups} = metadata;
 
 const groupedCompletionItemTokenGroups = restTokenGroups;
 
@@ -69,15 +69,12 @@ type GroupedCompletionItemPatterns = {
 
 const groupedCompletionItemPatterns: Omit<
   GroupedCompletionItemPatterns,
-  'shape'
+  'colors' | 'depth' | 'legacy' | 'shape'
 > = {
-  breakpoints: /width/,
   border: /border/,
+  breakpoints: /width/,
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
-  colors:
-    /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
-  depth: /shadow/,
   font: /font|line-height/,
   motion: /animation/,
   shadow: /shadow/,
