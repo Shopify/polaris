@@ -15,7 +15,7 @@ Over the past year we have invested a lot of time and energy into creating a mor
 
 These were the main drivers for this update.
 
-1. Create a defined color palette to generate tokens from. This will eliminate color sprawl and ensure a more consistent and cohesive use of color across the admin.
+1. Create a defined color palette with multiple lightness values that is used to create new tokens. This will eliminate color sprawl and ensure a more consistent and cohesive use of color across the admin.
 2. Update key colors to bring more contrast and vibrancy into the admin. Key components like cards often were invisible to merchants because they had so little contrast to the app background itself. This really made it hard for merchants to quickly understand the structure of a given screen.
 3. Create a consistent and thoughtful naming convention that was much simpler and more intuitive for builders to use.
 4. Build an entirely new architecture that allows us to evolve and roll out design changes a lot easier. The previous architecture was rigid and didn’t let us easily cascade changes across the entire system.
