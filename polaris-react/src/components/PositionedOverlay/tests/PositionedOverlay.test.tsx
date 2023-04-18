@@ -58,6 +58,7 @@ describe('<PositionedOverlay />', () => {
         characterData: true,
         childList: true,
         subtree: true,
+        attributes: true,
       });
     });
 
