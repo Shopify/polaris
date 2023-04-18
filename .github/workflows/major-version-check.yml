@@ -12,7 +12,7 @@ on:
 jobs:
   check-changesets:
     if: |
-      !contains(github.event.pull_request.labels.*.name, '🤖 Skip Major Check')
+      !contains(github.event.pull_request.labels.*.name, '🤖Skip Major Check')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
