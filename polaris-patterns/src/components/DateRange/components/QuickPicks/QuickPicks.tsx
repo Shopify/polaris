@@ -1,11 +1,10 @@
 import {OptionList} from '@shopify/polaris';
-import {useCallback, useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 
-import type {QueryPeriod} from 'app/utilities/reportify';
-
+import type {QueryPeriod} from '../../../../utilities/reportify';
 import type {DateRange} from '../../types';
 
-import {QuickPicksSection} from './components/QuickPicksSection';
+import {QuickPicksSection} from './components';
 import styles from './QuickPicks.scss';
 
 export interface SectionDescriptor {

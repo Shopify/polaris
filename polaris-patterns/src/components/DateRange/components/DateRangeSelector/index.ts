@@ -1,3 +1,1 @@
-import DateRangeSelector from './DateRangeSelector';
-
-export default DateRangeSelector;
+export * from './DateRangeSelector';

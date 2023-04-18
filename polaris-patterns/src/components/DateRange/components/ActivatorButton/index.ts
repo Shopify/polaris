@@ -1,1 +1,1 @@
-export {ActivatorButton} from './ActivatorButton';
+export * from './ActivatorButton';

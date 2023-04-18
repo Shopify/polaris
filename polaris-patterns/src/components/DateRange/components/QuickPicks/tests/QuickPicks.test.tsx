@@ -1,6 +1,6 @@
+import React from 'react';
 import {OptionList} from '@shopify/polaris';
-
-import {mountWithAppContext} from 'tests/modern';
+import {mountWithApp} from 'tests/utilities';
 
 import type {DateRange} from '../../../types';
 import type {SectionDescriptor} from '../QuickPicks';
@@ -37,15 +37,13 @@ const sections: SectionDescriptor[] = [
 
 describe('<QuickPicks />', () => {
   it('renders the component', async () => {
-    const wrapper = await mountWithAppContext(
-      <QuickPicks onSelect={jest.fn()} />,
-    );
+    const wrapper = await mountWithApp(<QuickPicks onSelect={jest.fn()} />);
 
     expect(wrapper).toContainReactComponent(OptionList);
   });
 
   it('renders the recommended, regular and section quick picks', async () => {
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <QuickPicks
         recommended={recommended}
         options={options}
@@ -81,7 +79,7 @@ describe('<QuickPicks />', () => {
   it('calls on select with value and source as recommended when selecting a recommended option', async () => {
     const onSelect = jest.fn();
 
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <QuickPicks
         recommended={recommended}
         options={options}
@@ -114,7 +112,7 @@ describe('<QuickPicks />', () => {
   it('calls on select with value and source undefined when selecting a regular option', async () => {
     const onSelect = jest.fn();
 
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <QuickPicks
         recommended={recommended}
         options={options}

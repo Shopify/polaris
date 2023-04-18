@@ -1,4 +1,11 @@
-import type {TimeUnit} from '@shopify/reportify-react';
+export type TimeUnit =
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'week'
+  | 'month'
+  | 'year'
+  | 'second';
 
 export type DateFormatStyle = 'short' | 'long';
 

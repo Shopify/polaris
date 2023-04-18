@@ -1,8 +1,7 @@
 import {useI18n} from '@shopify/react-i18n';
 import {useCallback, useMemo} from 'react';
-import {useShop} from '@web-utilities/shop';
 
-import {ReportComparisonPeriodDateRange} from 'types/graphql/core-types';
+import type {QueryPeriod, DatePeriod} from '../../../utilities/reportify';
 import {
   getPreviousPeriod,
   formatQueryDatePeriod,
@@ -11,20 +10,23 @@ import {
   parsePeriod,
   periodsInMs,
   getPeriodLength,
-} from 'utilities/reportify';
-import type {QueryPeriod, DatePeriod} from 'utilities/reportify';
-
+} from '../../../utilities/reportify';
 import type {DateRange, ComparisonRange} from '../types';
+
+// WE REALLY DON'T WANT TO INGEST THIS CODE
+export enum ReportComparisonPeriodDateRange {
+  PreviousPeriod = 'PREVIOUS_PERIOD',
+  PreviousYear = 'PREVIOUS_YEAR',
+  Custom = 'CUSTOM',
+}
 
 export const comparisonRangeAlias = {
   ...ReportComparisonPeriodDateRange,
   NoComparison: 'NoComparison',
 };
 
-export function useDateRanges() {
+export function useDateRanges(timeZone: string) {
   const [i18n] = useI18n();
-
-  const {ianaTimezone: timeZone} = useShop();
 
   const getComparisonRangeText = useCallback(
     (alias: string) => {
@@ -68,7 +70,9 @@ export function useDateRanges() {
     }
   };
 
-  const quarterDateRanges: (givenNow: Date) => {} = (givenNow) =>
+  const quarterDateRanges: (givenNow: Date) => {[key: string]: any} = (
+    givenNow,
+  ) =>
     [1, 2, 3, 4].reduce((ranges, quantity) => {
       const now = new Date(givenNow);
       now.setDate(1);

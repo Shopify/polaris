@@ -1,7 +1,8 @@
+import React from 'react';
 import {Select} from '@shopify/polaris';
 import {useI18n} from '@shopify/react-i18n';
 
-import styles from '../../AnalyticsDatePicker.scss';
+import styles from '../../DateRange.scss';
 import type {DateRange} from '../../types';
 
 interface Props {
@@ -10,10 +11,9 @@ interface Props {
   setIsDirty: (isDirty: boolean) => void;
   setDateRange: (dateRange: DateRange) => void;
   setMonthShouldUpdate: (monthShouldUpdate: boolean) => void;
-  timeZone?: string;
 }
 
-export default function DateRangeSelector({
+export const DateRangeSelector = function DateRangeSelector({
   activeDateRange,
   setIsDirty,
   setDateRange,
@@ -57,4 +57,4 @@ export default function DateRangeSelector({
       />
     </div>
   );
-}
+};

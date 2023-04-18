@@ -1,5 +1,6 @@
 import {getDateTimeParts} from '@shopify/dates';
-import {padStart} from '@web-utilities/string';
+
+import {padStart} from '../format-query-date';
 
 export function formatQueryDate(date: Date, timeZone?: string) {
   const {year, month, day} = getDateTimeParts(date, timeZone);

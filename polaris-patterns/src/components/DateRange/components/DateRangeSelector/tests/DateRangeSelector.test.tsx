@@ -1,9 +1,8 @@
-import {mockI18n} from '@shopify/react-i18n-next';
+import React from 'react';
+import {mountWithApp, mockI18n} from 'tests/utilities';
 
-import datePickerTranslations from 'components/AnalyticsDatePicker/translations/en.json';
-import {mountWithAppContext} from 'tests/modern';
-
-import DateRangeSelector from '../DateRangeSelector';
+import datePickerTranslations from '../../../translations/en.json';
+import {DateRangeSelector} from '../DateRangeSelector';
 
 const mockProps = {
   activeDateRange: {
@@ -37,8 +36,10 @@ const mockProps = {
 describe('<DateRangeSelector', () => {
   it('renders the dateRanges', async () => {
     const translations = mockI18n(datePickerTranslations);
-    const wrapper = await mountWithAppContext(
+
+    const wrapper = await mountWithApp(
       <DateRangeSelector {...mockProps} />,
+      // @ts-expect-error i18n
       translations,
     );
 

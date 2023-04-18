@@ -1,4 +1,4 @@
-import {padStart} from '@web-utilities/string';
+import {padStart} from '../format-query-date';
 
 import {periodsInMs} from './periods-in-ms';
 
