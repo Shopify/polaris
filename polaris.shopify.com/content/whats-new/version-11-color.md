@@ -26,7 +26,7 @@ We started with an audit of the colors used in Polaris. Previously we didn’t h
 
 ![image of old color palette](/images/updates/old-palette.png)
 
-We took all these colors and generated a new color palette with 10 shades for each hue. Each shade should be meaningfully different from the ones next to it on the scale. This makes choices purposeful and clear and eliminates the sprawl and muddiness we had before.
+We took the previous colors and created a new color palette with 10 shades for each hue. Each shade should be meaningfully different from the ones next to it on the scale. This makes choices purposeful and clear and eliminates the sprawl and muddiness we had before.
 
 These colors power every token provided within the admin. This means that for the first time we can update a single color value within our palette and it will cascade down to every token referencing it, updating the entire admin from a single and simple change.
 
