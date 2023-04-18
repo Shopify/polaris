@@ -30,7 +30,7 @@ const resourceLinks = {
   border: 'Polaris [shape tokens](/tokens/border)',
   color: 'Polaris [color tokens](/tokens/color)',
   conventions: '',
-  depth: 'Polaris [depth tokens](/tokens/depth)',
+  shadow: 'Polaris [depth tokens](/tokens/shadow)',
   'media queries':
     'Polaris [breakpoint sass variables](/tokens/breakpoints#sass-variables)',
   layout: 'Polaris [layout components](/components)',
