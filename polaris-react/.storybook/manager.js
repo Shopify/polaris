@@ -1,7 +1,7 @@
 import React from 'react';
-import {AddonPanel, ArgsTable} from '@storybook/components';
-import {addons, types} from '@storybook/addons';
-import {useGlobals} from '@storybook/api';
+import {AddonPanel} from '@storybook/components';
+import {ArgsTable} from '@storybook/blocks';
+import {useGlobals, addons, types, ArgsTable} from '@storybook/manager-api';
 import {create} from '@storybook/theming';
 
 const colors = {
@@ -52,9 +52,9 @@ addons.setConfig({
 
 addons.register('polaris/global-controls', () => {
   addons.add('grid/panel', {
-    type: types.PANEL,
+    type: 'panel',
     title: 'Grid',
-    match: ({viewMode}) => viewMode === 'story',
+    // match: ({viewMode}) => viewMode === 'story',
     render: ({active, key}) => <GridPanel active={active} key={key} />,
   });
 });
