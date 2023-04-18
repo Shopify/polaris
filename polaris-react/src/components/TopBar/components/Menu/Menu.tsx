@@ -7,6 +7,9 @@ import {Popover} from '../../../Popover';
 import {Message} from './components';
 import type {MessageProps} from './components';
 import styles from './Menu.scss';
+import {Box} from '../../../Box';
+
+const USER_MENU_POPOVER_WIDTH = '360px';
 
 export interface MenuProps {
   /** Accepts an activator component that renders inside of a button that opens the menu */
@@ -74,11 +77,12 @@ export function Menu(props: MenuProps) {
       active={open}
       onClose={onClose}
       fixed
-      fullHeight
       preferredAlignment="right"
     >
-      <ActionList onActionAnyItem={onClose} sections={actions} />
-      {messageMarkup}
+      <Box width={USER_MENU_POPOVER_WIDTH}>
+        <ActionList onActionAnyItem={onClose} sections={actions} />
+        {messageMarkup}
+      </Box>
     </Popover>
   );
 }

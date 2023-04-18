@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Item} from '../Item';
+import {Item, TruncateText} from '../Item';
 import {Text} from '../../../../Text';
 import {UnstyledLink} from '../../../../UnstyledLink';
 
@@ -100,6 +100,30 @@ describe('<Item />', () => {
     );
     expect(item).toContainReactComponent(UnstyledLink, {
       onClick: null,
+    });
+  });
+
+  it('truncates at the end of content when truncate prop is set', () => {
+    const item = mountWithApp(
+      <Item
+        content="Test longer than usual string that probably overflows."
+        truncate="end"
+      />,
+    );
+    expect(item).toContainReactComponent(TruncateText, {
+      position: 'end',
+    });
+  });
+
+  it('truncates in the middle of content when truncate prop is set', () => {
+    const item = mountWithApp(
+      <Item
+        content="Test longer than usual string that probably overflows."
+        truncate="middle"
+      />,
+    );
+    expect(item).toContainReactComponent(TruncateText, {
+      position: 'middle',
     });
   });
 });

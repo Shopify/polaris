@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -11,6 +11,8 @@ import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
+import {Tooltip} from '../../../Tooltip';
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -31,6 +33,7 @@ export function Item({
   external,
   destructive,
   ellipsis,
+  truncate = 'end',
   active,
   role,
 }: ItemProps) {
@@ -61,7 +64,12 @@ export function Item({
     );
   }
 
-  const contentText = ellipsis && content ? `${content}…` : content;
+  let contentText: string | React.ReactNode = content || '';
+  if (ellipsis) {
+    contentText = `${content}…`;
+  } else if (truncate && content) {
+    contentText = <TruncateText position={truncate}>{content}</TruncateText>;
+  }
 
   const contentMarkup = helpText ? (
     <>
@@ -89,7 +97,7 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack blockAlign="center" gap="4">
+    <HorizontalStack blockAlign="center" gap="4" wrap={!truncate}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
@@ -132,5 +140,60 @@ export function Item({
       {scrollMarkup}
       {control}
     </>
+  );
+}
+
+export const TruncateText = ({
+  children,
+  position = 'end',
+}: {
+  children: React.ReactNode;
+  position?: 'end' | 'middle';
+}) => {
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useIsomorphicLayoutEffect(() => {
+    if (textRef.current) {
+      setIsOverflowing(
+        textRef.current.scrollWidth > textRef.current.offsetWidth,
+      );
+    }
+  }, [children]);
+
+  const text = (
+    <span ref={textRef} className={styles.Truncate}>
+      {children}
+    </span>
+  );
+
+  return isOverflowing ? (
+    <Tooltip
+      zIndexOverride={514}
+      preferredPosition="above"
+      hoverDelay={1000}
+      content={textRef.current?.innerText}
+    >
+      {position === 'middle'
+        ? middleTruncate(textRef.current?.innerText || '', 40)
+        : text}
+    </Tooltip>
+  ) : (
+    text
+  );
+};
+
+function middleTruncate(inputString: string, length: number, prefix = '…') {
+  const trimmedString = inputString.trim();
+  const stringLength = trimmedString.length;
+  const prefixLength = prefix.length;
+  if (stringLength <= length) return trimmedString;
+  const trimLength = (length - prefixLength) / 2;
+  const frontChars = Math.ceil(trimLength);
+  const backChars = Math.floor(trimLength);
+  return (
+    trimmedString.substr(0, frontChars) +
+    prefix +
+    trimmedString.substr(trimmedString.length - backChars)
   );
 }

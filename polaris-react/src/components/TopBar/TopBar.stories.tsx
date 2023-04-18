@@ -1,7 +1,13 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
-import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+import {
+  ArrowLeftMinor,
+  QuestionMarkMajor,
+  SearchMinor,
+  StoreMinor,
+  TickMinor,
+} from '@shopify/polaris-icons';
 
 import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
@@ -193,7 +199,7 @@ export function WithCustomActivator() {
   );
 }
 
-export function withMessage() {
+export function WithMessage() {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
@@ -217,4 +223,46 @@ export function withMessage() {
       }}
     />
   );
+}
+
+export function WithStoreItems() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      items: [
+        {
+          content: 'Jaded Pixel- Americas, Europe, Asia-Pacific, and India',
+          prefix: (
+            <Avatar
+              initials="JP"
+              size="small"
+              shape="square"
+              name="Jaded Pixel"
+            />
+          ),
+          truncate: 'end',
+        },
+        {
+          content: 'Snow Devil- Americas, Europe, Asia-Pacific, and India',
+          prefix: (
+            <Avatar
+              size="small"
+              shape="square"
+              initials="SD"
+              name="Snow Devil"
+            />
+          ),
+          truncate: 'middle',
+        },
+        {
+          content: 'All stores',
+          prefix: <Icon source={StoreMinor} />,
+        },
+      ],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+
+  return <TopBarWrapper userActions={userActions} name="Dharma" initials="D" />;
 }
