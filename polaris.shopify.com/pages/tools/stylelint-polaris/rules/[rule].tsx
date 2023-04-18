@@ -27,19 +27,19 @@ type CategoryMap = {
 type Category = keyof CategoryMap;
 
 const resourceLinks = {
+  border: 'Polaris [shape tokens](/tokens/border)',
+  color: 'Polaris [color tokens](/tokens/color)',
   conventions: '',
-  colors: 'Polaris [color tokens](/tokens/color)',
-  motion: 'Polaris [motion tokens](/tokens/motion)',
-  typography:
-    'the [text component](/components/typography/text) or [font tokens](/tokens/font)',
-  shape: 'Polaris [shape tokens](/tokens/shape)',
-  spacing: 'Polaris [spacing tokens](/tokens/spacing)',
   depth: 'Polaris [depth tokens](/tokens/depth)',
   'media queries':
     'Polaris [breakpoint sass variables](/tokens/breakpoints#sass-variables)',
-  'z-index': 'Polaris [z-index tokens](/tokens/z-index)',
   layout: 'Polaris [layout components](/components)',
   legacy: 'Polaris [components](/components) or [tokens](/tokens)',
+  motion: 'Polaris [motion tokens](/tokens/motion)',
+  spacing: 'Polaris [spacing tokens](/tokens/spacing)',
+  'z-index': 'Polaris [z-index tokens](/tokens/z-index)',
+  typography:
+    'the [text component](/components/typography/text) or [font tokens](/tokens/font)',
 };
 
 interface Props {
