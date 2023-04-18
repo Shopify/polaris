@@ -1,4 +1,4 @@
-import type {TimeUnit} from '@shopify/reportify-react';
+import type {TimeUnit} from './useFormatDate/types';
 
 export function getDateFormatOptions(
   overPeriod: TimeUnit = 'hour',

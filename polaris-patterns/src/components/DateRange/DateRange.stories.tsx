@@ -1,14 +1,17 @@
-import {useState} from 'react';
-import type {StoryFn} from '@storybook/react';
+import React, {useState} from 'react';
+import type {Meta, StoryFn} from '@storybook/react';
 import {Box} from '@shopify/polaris';
-import type {DatePeriod} from 'utilities/reportify';
 
-import {DateRange} from './DateRange';
+import type {DatePeriod} from '../../utilities/reportify';
+
+import {DateRangePicker} from './DateRange';
 import type {Props, QuickPicks} from './DateRange';
 
-export default {
-  component: DateRange,
+const meta: Meta = {
+  component: DateRangePicker,
 };
+
+export default meta;
 
 const mockQuickPicks: QuickPicks = {
   options: [
@@ -82,7 +85,7 @@ const Template: StoryFn<Props> = (args) => {
   };
 
   return (
-    <DatePicker
+    <DateRangePicker
       {...args}
       quickPicks={mockQuickPicks}
       datePeriod={reportingPeriod}
@@ -106,11 +109,11 @@ export const NoPopover: StoryFn<Props> = () => {
   return (
     <Box
       maxWidth="fit-content"
-      background="surface"
+      background="bg-primary"
       overflowX="hidden"
       overflowY="hidden"
     >
-      <DatePicker
+      <DateRangePicker
         quickPicks={mockQuickPicks}
         datePeriod={reportingPeriod}
         onChange={handleChange}

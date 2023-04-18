@@ -1,10 +1,10 @@
+import React from 'react';
 import {Button, Popover} from '@shopify/polaris';
-
-import {mountWithAppContext} from 'tests/modern';
+import {mountWithApp} from 'tests/utilities';
 
 import type {Props, QuickPicks} from '../DateRange';
-import {DatePicker} from '../DateRange';
-import TextFields from '../components/TextFields';
+import {DateRangePicker} from '../DateRange';
+import {TextFields} from '../components';
 
 const mockQuickPicks: QuickPicks = {
   options: [
@@ -45,9 +45,9 @@ const mockProps: Props = {
   quickPicks: mockQuickPicks,
 };
 
-describe('<DatePicker />', () => {
+describe('<DateRangePicker />', () => {
   it('renders the popover component', async () => {
-    const wrapper = await mountWithAppContext(<DatePicker {...mockProps} />);
+    const wrapper = await mountWithApp(<DateRangePicker {...mockProps} />);
 
     expect(wrapper).toContainReactComponent(Popover);
   });
@@ -55,8 +55,8 @@ describe('<DatePicker />', () => {
   it('applies the new reporting period when the apply button is clicked', async () => {
     const onChangeSpy = jest.fn();
 
-    const wrapper = await mountWithAppContext(
-      <DatePicker {...mockProps} onChange={onChangeSpy} />,
+    const wrapper = await mountWithApp(
+      <DateRangePicker {...mockProps} onChange={onChangeSpy} />,
     );
 
     const button = wrapper.find(Button);
@@ -91,8 +91,11 @@ describe('<DatePicker />', () => {
   });
 
   it('closes <Datapicker /> when popoverOptions.forcePopoverClose is true', async () => {
-    const wrapper = await mountWithAppContext(
-      <DatePicker {...mockProps} popoverOptions={{forcePopoverClose: false}} />,
+    const wrapper = await mountWithApp(
+      <DateRangePicker
+        {...mockProps}
+        popoverOptions={{forcePopoverClose: false}}
+      />,
     );
 
     const button = wrapper.find(Button);

@@ -1,4 +1,4 @@
-import {useId, useMemo, useState} from 'react';
+import React, {useId, useMemo, useState} from 'react';
 import {Collapsible, Icon, OptionList} from '@shopify/polaris';
 import {ChevronUpMinor, ChevronDownMinor} from '@shopify/polaris-icons';
 

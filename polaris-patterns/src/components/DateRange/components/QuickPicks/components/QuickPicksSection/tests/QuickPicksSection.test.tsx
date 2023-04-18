@@ -1,8 +1,8 @@
+import React from 'react';
 import {Collapsible} from '@shopify/polaris';
+import {mountWithApp} from 'tests/utilities';
 
-import {mountWithAppContext} from 'tests/modern';
-import type {DateRange} from 'components/AnalyticsDatePicker/types';
-
+import type {DateRange} from '../../../../../types';
 import {QuickPicksSection} from '../QuickPicksSection';
 
 describe('<QuickPicksSection />', () => {
@@ -19,7 +19,7 @@ describe('<QuickPicksSection />', () => {
         period: {since: '2022-09-28', until: '2022-09-28'},
       },
     ];
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <QuickPicksSection onChange={jest.fn()} options={options} />,
     );
 
@@ -27,7 +27,7 @@ describe('<QuickPicksSection />', () => {
   });
 
   it('does not render the component if there are no options', async () => {
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <QuickPicksSection onChange={jest.fn()} options={[]} />,
     );
 
@@ -43,7 +43,7 @@ describe('<QuickPicksSection />', () => {
       },
     ];
 
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <QuickPicksSection
         onChange={jest.fn()}
         options={options}
@@ -63,7 +63,7 @@ describe('<QuickPicksSection />', () => {
       },
     ];
 
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <QuickPicksSection
         onChange={jest.fn()}
         options={options}
@@ -90,7 +90,7 @@ describe('<QuickPicksSection />', () => {
       },
     ];
 
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <QuickPicksSection
         onChange={onChange}
         options={options}

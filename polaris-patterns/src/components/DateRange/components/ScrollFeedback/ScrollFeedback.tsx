@@ -1,6 +1,6 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ReactNode} from 'react';
-import {classNames} from '@shopify/css-utilities';
+import classNames from 'classnames';
 
 import styles from './ScrollFeedback.scss';
 

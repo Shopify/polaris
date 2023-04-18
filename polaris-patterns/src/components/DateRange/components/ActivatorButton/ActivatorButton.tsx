@@ -29,7 +29,7 @@ export const ActivatorButton = function ActivatorButton({
   dateRanges = [],
 }: Props) {
   const [i18n] = useI18n();
-  const {deriveDateRange} = useDateRanges();
+  const {deriveDateRange} = useDateRanges(timeZone || '');
 
   function getButtonText() {
     const dateRange = deriveDateRange(dateRanges, datePeriod, timeZone);

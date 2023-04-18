@@ -1,6 +1,7 @@
-import {mountWithAppContext} from 'tests/modern';
+import React from 'react';
+import {mountWithApp} from 'tests/utilities';
 
-import ActivatorButton from '../ActivatorButton';
+import {ActivatorButton} from '../ActivatorButton';
 
 const mockProps = {
   toggleViewer: () => {},
@@ -14,7 +15,7 @@ const mockProps = {
 
 describe('<ActivatorButton>', () => {
   it('renders the active date period', async () => {
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <ActivatorButton
         {...mockProps}
         datePeriod={{
@@ -28,7 +29,7 @@ describe('<ActivatorButton>', () => {
   });
 
   it('renders the date range title when applicable', async () => {
-    const wrapper = await mountWithAppContext(
+    const wrapper = await mountWithApp(
       <ActivatorButton
         {...mockProps}
         datePeriod={{

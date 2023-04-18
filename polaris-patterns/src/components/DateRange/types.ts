@@ -1,4 +1,4 @@
-import type {DatePeriod, QueryPeriod} from 'utilities/reportify';
+import type {DatePeriod, QueryPeriod} from '../../utilities/reportify';
 
 export interface DateRange {
   alias: string;

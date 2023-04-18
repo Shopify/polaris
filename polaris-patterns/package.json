@@ -57,7 +57,7 @@
   "peerDependencies": {
     "@shopify/polaris": "^10.42.1",
     "@shopify/polaris-icons": "^6.12.0",
-    "@shopify/polaris-tokens": "^6.8.1",
+    "@shopify/polaris-tokens": "^6.10.0",
     "@shopify/react-i18n": "^7.7.2",
     "react": "^18.2.0",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
@@ -66,6 +66,7 @@
     "@shopify/browserslist-config": "^3.0.0",
     "@shopify/jest-dom-mocks": "^3.0.5",
     "@shopify/polaris": "^10.42.1",
+    "@shopify/polaris-tokens": "^6.10.0",
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/react-i18n": "^7.7.2",
     "@shopify/react-testing": "^4.1.0",
@@ -102,6 +103,7 @@
     "ios >= 13.4"
   ],
   "dependencies": {
-    "@shopify/dates": "^2.0.3"
+    "@shopify/dates": "^2.0.3",
+    "classnames": "^2.3.2"
   }
 }

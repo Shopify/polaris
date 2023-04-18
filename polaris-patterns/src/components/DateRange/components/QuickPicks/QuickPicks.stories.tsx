@@ -1,15 +1,15 @@
-import {useState} from 'react';
-import type {StoryFn} from '@storybook/react';
+import React, {useState} from 'react';
+import type {Meta, StoryFn} from '@storybook/react';
 
 import type {DateRange} from '../../types';
 
 import type {QuickPick, SectionDescriptor} from './QuickPicks';
+import {QuickPicks} from './QuickPicks';
 
-import {QuickPicks} from '.';
-
-export default {
+const meta: Meta = {
   component: QuickPicks,
 };
+export default meta;
 
 const Template: StoryFn = () => {
   const recommended: DateRange[] = [

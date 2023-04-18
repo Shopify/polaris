@@ -1,10 +1,8 @@
-import {useShop} from '@web-utilities/shop';
 import {useI18n} from '@shopify/react-i18n';
 
-import {getDifferenceInDays} from 'utilities/dates';
-import {parsePeriod} from 'utilities/reportify';
-import type {QueryPeriod} from 'utilities/reportify';
-
+import type {QueryPeriod} from '../../../utilities/reportify';
+import {parsePeriod} from '../../../utilities/reportify';
+import {getDifferenceInDays} from '../../../utilities/dates';
 import {filterAndAdjustRangesAfter} from '../utilities';
 import type {DateRange} from '../types';
 import type {QuickPicks} from '../DateRange';
@@ -12,10 +10,9 @@ import type {QuickPicks} from '../DateRange';
 import {useDateRanges} from './useDateRanges';
 
 export function useReportQuickPicks(currentPeriod?: QueryPeriod | null) {
-  const {DateRanges, prepareComparisonRanges} = useDateRanges();
-
+  const timeZone = '';
+  const {DateRanges, prepareComparisonRanges} = useDateRanges(timeZone);
   const dateRanges = Object.values(DateRanges);
-  const {ianaTimezone: timeZone} = useShop();
   const today = new Date();
   const [i18n] = useI18n();
   const filteredDateRanges = filterAndAdjustRangesAfter(

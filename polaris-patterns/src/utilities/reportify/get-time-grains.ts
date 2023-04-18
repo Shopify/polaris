@@ -1,7 +1,10 @@
-import type {AliasableField} from '@shopify/reportify-react';
-
 import {periodsInMs, getPeriodLength} from './dates';
 import type {DatePeriod} from './types';
+
+export interface AliasableField {
+  alias: string;
+  field: string;
+}
 
 const hour: AliasableField = {alias: 'Hour', field: 'hour'};
 const day: AliasableField = {alias: 'Day', field: 'day'};

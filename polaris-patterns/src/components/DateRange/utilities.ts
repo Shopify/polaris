@@ -1,6 +1,7 @@
-import {unapplyTimeZoneOffset} from '@shopify/dates';
+import {getIanaTimeZone, unapplyTimeZoneOffset} from '@shopify/dates';
+import {CurrencyCode} from '@shopify/react-i18n';
 
-import {formatQueryDatePeriod, parsePeriod} from 'utilities/reportify';
+import {formatQueryDatePeriod, parsePeriod} from '../../utilities/reportify';
 
 import type {DateRange} from './types';
 
@@ -61,3 +62,10 @@ export function filterAndAdjustRangesAfter(
     });
   return [...rangesWithFutureUntilsAdjusted, ...nonFutureRanges];
 }
+
+export const defaultI18nDetails = {
+  locale: 'en',
+  currency: CurrencyCode.Usd,
+  country: 'CA',
+  timezone: getIanaTimeZone() || 'UTC',
+};

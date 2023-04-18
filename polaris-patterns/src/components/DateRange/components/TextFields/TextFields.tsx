@@ -1,18 +1,17 @@
-import {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Icon, useBreakpoints} from '@shopify/polaris';
 import {ArrowRightMinor} from '@shopify/polaris-icons';
 import {useI18n} from '@shopify/react-i18n';
 import {applyTimeZoneOffset, unapplyTimeZoneOffset} from '@shopify/dates';
 
-import {DatePickerTextField} from 'components/DatePickerTextField';
-import type {DatePeriod} from 'utilities/reportify';
+import {DatePickerTextField} from '../../../DatePickerTextField';
 import {
   formatDateToYearMonthDayDateString,
   isValidYearMonthDayDateString,
   parseYearMonthDayDateString,
-} from 'utilities/dates';
-
-import styles from '../../AnalyticsDatePicker.scss';
+} from '../../../../utilities/dates';
+import type {DatePeriod} from '../../../../utilities/reportify';
+import styles from '../../DateRange.scss';
 
 export interface Props {
   datePeriod: DatePeriod | null;
@@ -24,7 +23,11 @@ function isValidDate(date: string) {
   return date.length === 10 && isValidYearMonthDayDateString(date);
 }
 
-export default function TextFields({timeZone, datePeriod, onChange}: Props) {
+export const TextFields = function TextFields({
+  timeZone,
+  datePeriod,
+  onChange,
+}: Props) {
   const [i18n] = useI18n();
 
   const {smUp, mdDown, lgUp} = useBreakpoints();
@@ -118,6 +121,7 @@ export default function TextFields({timeZone, datePeriod, onChange}: Props) {
   return (
     <div className={styles.TextFields}>
       <DatePickerTextField
+        datePlaceholder="YYYY-MM-DD"
         label={i18n.translate('TextFields.starting')}
         labelHidden
         iconHidden
@@ -133,6 +137,7 @@ export default function TextFields({timeZone, datePeriod, onChange}: Props) {
       <DatePickerTextField
         label={i18n.translate('TextFields.ending')}
         labelHidden
+        datePlaceholder="YYYY-MM-DD"
         iconHidden
         hideDatePicker
         value={datesToDisplay?.until || ''}
@@ -142,4 +147,4 @@ export default function TextFields({timeZone, datePeriod, onChange}: Props) {
       />
     </div>
   );
-}
+};

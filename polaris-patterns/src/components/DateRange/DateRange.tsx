@@ -1,10 +1,10 @@
-import {useState, useEffect, useMemo, useCallback} from 'react';
+import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import type {ButtonProps, PopoverProps} from '@shopify/polaris';
 import {useBreakpoints, Popover, PopoverCloseSource} from '@shopify/polaris';
 import {useI18n} from '@shopify/react-i18n';
 import {applyTimeZoneOffset, getDateTimeParts} from '@shopify/dates';
-import {navBarCollapsed} from 'utilities/breakpoints';
 
+import {navBarCollapsed} from '../../utilities/breakpoints';
 import {
   parsePeriod,
   parseRelativeDate,
@@ -18,18 +18,14 @@ import {
   ActivatorButton,
   ActionButtons,
   DateRangeSelector,
+  QuickPicks,
   ScrollFeedback,
   TextFields,
 } from './components';
 import styles from './DateRange.scss';
 import type {DateRange} from './types';
 import {useDateRanges} from './hooks/useDateRanges';
-import type {
-  QuickPickSource,
-  QuickPick,
-  SectionDescriptor,
-} from './components/QuickPicks';
-import {QuickPicks} from './components/QuickPicks';
+import type {QuickPickSource, QuickPick, SectionDescriptor} from './components';
 
 export interface QuickPicks {
   options: DateRange[];
@@ -85,7 +81,7 @@ const defaultPopoverOptions: PopoverOptions = {
   onToggle: () => {},
 };
 
-export function DateRange({
+export function DateRangePicker({
   timeZone,
   fullWidth = true,
   datePeriod,
@@ -94,7 +90,7 @@ export function DateRange({
   popoverOptions = defaultPopoverOptions,
 }: Props) {
   const [_, ShareTranslations] = useI18n();
-  const {deriveDateRange} = useDateRanges();
+  const {deriveDateRange} = useDateRanges(timeZone || '');
 
   const combinedPopoverOptions = {...defaultPopoverOptions, ...popoverOptions};
   const {
@@ -336,7 +332,6 @@ export function DateRange({
                   setIsDirty={setIsDirty}
                   setDateRange={handleDateRangeSelect}
                   setMonthShouldUpdate={setMonthShouldUpdate}
-                  timeZone={timeZone}
                 />
               ) : (
                 <QuickPicks

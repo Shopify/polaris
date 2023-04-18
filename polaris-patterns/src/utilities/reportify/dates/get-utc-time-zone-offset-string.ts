@@ -1,5 +1,6 @@
 import {getTimeZoneOffset} from '@shopify/dates';
-import {padStart} from '@web-utilities/string';
+
+import {padStart} from '../format-query-date';
 
 export function getUTCTimeZoneOffsetString(
   date = new Date(),
