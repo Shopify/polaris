@@ -54,6 +54,8 @@ $nav-max-width: 360px;
   align-items: stretch;
   max-width: 100%;
 
+  @include custom-scrollbars();
+
   &:focus {
     outline: none;
   }

@@ -183,6 +183,8 @@ export function InAnApplication() {
 
   const navigationMarkup = (
     <Navigation location="/">
+      <div style={{minHeight: 800}}></div>
+
       <Navigation.Section
         items={[
           {
@@ -239,6 +241,7 @@ export function InAnApplication() {
           description="Jaded Pixel will use this as your account information."
         >
           <LegacyCard sectioned>
+            <div style={{height: 500}}></div>
             <FormLayout>
               <TextField
                 label="Full name"
