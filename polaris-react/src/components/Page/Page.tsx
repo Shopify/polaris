@@ -4,7 +4,7 @@ import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
 import {Box} from '../Box';
 import {Divider} from '../Divider';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 
 import {Header} from './components';
 import type {HeaderProps} from './components';
@@ -49,7 +49,7 @@ export function Page({
   if (fullWidth) pageWidth = '100%';
   if (narrowWidth) pageWidth = '41.375rem';
   return (
-    <Inline align="center">
+    <HorizontalStack align="center">
       <Box
         padding={{xs: '0'}}
         paddingInlineStart={{sm: '6'}}
@@ -70,6 +70,6 @@ export function Page({
           {children}
         </Box>
       </Box>
-    </Inline>
+    </HorizontalStack>
   );
 }

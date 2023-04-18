@@ -9,7 +9,7 @@ import {Page} from '../Page';
 import type {PageProps} from '../Page';
 import {Header} from '../components';
 import {Divider} from '../../Divider';
-import {Inline} from '../../Inline';
+import {HorizontalStack} from '../../HorizontalStack';
 
 window.matchMedia =
   window.matchMedia ||
@@ -304,7 +304,7 @@ describe('<Page />', () => {
     it('does not render border when divider is true and no header props exist', () => {
       const wrapper = mountWithApp(<Page divider />);
       expect(wrapper).not.toContainReactComponent(Divider);
-      expect(wrapper).toContainReactComponent(Inline);
+      expect(wrapper).toContainReactComponent(HorizontalStack);
     });
 
     it('does not render border when divider is false', () => {
