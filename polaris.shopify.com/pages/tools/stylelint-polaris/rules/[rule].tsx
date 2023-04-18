@@ -11,17 +11,16 @@ import {parseMarkdown} from '../../../../src/utils/markdown.mjs';
 import {MarkdownFile} from '../../../../src/types';
 
 type CategoryMap = {
+  border: string;
+  color: string;
   conventions: string;
-  colors: string;
-  motion: string;
-  typography: string;
-  shape: string;
-  spacing: string;
-  depth: string;
-  'media queries': string;
-  'z-index': string;
   layout: string;
-  legacy: string;
+  'media queries': string;
+  motion: string;
+  shadow: string;
+  spacing: string;
+  typography: string;
+  'z-index': string;
 };
 
 type Category = keyof CategoryMap;
@@ -30,12 +29,11 @@ const resourceLinks = {
   border: 'Polaris [shape tokens](/tokens/border)',
   color: 'Polaris [color tokens](/tokens/color)',
   conventions: '',
-  shadow: 'Polaris [depth tokens](/tokens/shadow)',
+  layout: 'Polaris [layout components](/components)',
   'media queries':
     'Polaris [breakpoint sass variables](/tokens/breakpoints#sass-variables)',
-  layout: 'Polaris [layout components](/components)',
-  legacy: 'Polaris [components](/components) or [tokens](/tokens)',
   motion: 'Polaris [motion tokens](/tokens/motion)',
+  shadow: 'Polaris [depth tokens](/tokens/shadow)',
   spacing: 'Polaris [spacing tokens](/tokens/spacing)',
   'z-index': 'Polaris [z-index tokens](/tokens/z-index)',
   typography:
