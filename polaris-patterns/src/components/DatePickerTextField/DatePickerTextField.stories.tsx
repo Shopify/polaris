@@ -35,7 +35,6 @@ const TemplateBlur: StoryFn<Props> = (args) => {
 
 const defaultArgs = {
   value: '2022-07-15',
-  datePlaceholder: 'YYYY-MM-DD',
   label: 'Date',
   onChange: () => {},
   onBlur: () => {},

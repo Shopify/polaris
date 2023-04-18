@@ -1,10 +1,10 @@
 import React, {useCallback, useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Meta} from '@storybook/react';
 import {AccountConnection, Link} from '@shopify/polaris';
 
 export default {
   component: AccountConnection,
-} as ComponentMeta<typeof AccountConnection>;
+} as Meta<typeof AccountConnection>;
 
 export function Default() {
   const [connected, setConnected] = useState(false);
