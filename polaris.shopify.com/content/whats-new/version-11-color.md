@@ -32,7 +32,7 @@ These colors power every token provided within the admin. This means that for th
 
 ## Color tokens
 
-There are now two types of color tokens in Polaris, only one of which is actually used by builders.
+There are now two types of color tokens in Polaris. The palette tokens which are private and used to create new aliases and the alias tokens which is what designers and developers use.
 
 ### Palette tokens
 
