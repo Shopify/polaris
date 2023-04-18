@@ -22,7 +22,7 @@ These were the main drivers for this update.
 
 ## Color palette
 
-We started with the colors themselves. Doing a full audit of the colors used in Polaris. Previously we actually didn’t have a defined color palette to generate tokens from. This led to massive sprawl and inconsistency of hue, saturation, and vibrancy within our colors. We learned that there were actually 22 different gray values in Polaris, some of which were nearly identical to each other, providing no value while introducing added complexity. Every hue had a different range of tints and shades with no consistency or relationship between them.
+We started with an audit of the colors used in Polaris. Previously we didn’t have a defined color palette to create tokens from. This led to massive sprawl and inconsistency of hue, saturation, and vibrancy within our colors. We learned that there were 22 different gray values in Polaris, some of which were nearly identical to each other, providing no value while introducing added complexity. Every hue had a different range of tints and shades with no consistency or relationship between them.
 
 ![image of old color palette](/images/updates/old-palette.png)
 
