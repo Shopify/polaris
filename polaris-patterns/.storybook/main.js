@@ -2,9 +2,6 @@ const path = require('path');
 const postcssPlugins = require('../config/postcss-plugins');
 
 module.exports = {
-  core: {
-    builder: 'webpack5',
-  },
   stories: [
     {
       directory: '../src/components/',
@@ -66,5 +63,9 @@ module.exports = {
       '@shopify/polaris-patterns': path.resolve(__dirname, '..', 'src'),
     };
     return config;
+  },
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
   },
 };

@@ -5,12 +5,15 @@ import {AppProvider} from '@shopify/polaris';
 
 import polarisEnTranslations from '../../polaris-react/locales/en.json';
 
+const i18nManager = new I18nManager({
+  locale: 'en',
+  currency: 'usd',
+  country: 'CA',
+});
+
 function AppProviderDecorator(Story, context) {
-  const i18nManager = new I18nManager({
-    locale: 'en',
-    currency: 'usd',
-    country: 'CA',
-  });
+  const {locale} = context.globals;
+  i18nManager.update({locale, currency: 'usd', country: 'CA'});
 
   return (
     <I18nContext.Provider value={i18nManager}>
@@ -34,3 +37,37 @@ const viewPorts = Object.entries({
 export const parameters = {viewport: {viewports: {...viewPorts}}};
 
 export const decorators = [AppProviderDecorator];
+
+export const globalTypes = {
+  locale: {
+    name: 'Locale',
+    description: 'Locale',
+    defaultValue: 'en',
+    toolbar: {
+      icon: 'flag',
+      items: [
+        'en',
+        'cs',
+        'da',
+        'de',
+        'es',
+        'fi',
+        'fr',
+        'it',
+        'ja',
+        'ko',
+        'nb',
+        'nl',
+        'pl',
+        'pt-BR',
+        'pt-PT',
+        'sv',
+        'th',
+        'tr',
+        'vi',
+        'zh-CN',
+        'zh-TW',
+      ],
+    },
+  },
+};
