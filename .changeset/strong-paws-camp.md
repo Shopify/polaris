@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-cli': major
+'@shopify/polaris-cli': minor
 ---
 
 Major version check
