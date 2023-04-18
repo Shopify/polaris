@@ -9,13 +9,12 @@ import Page from '../Page';
 
 interface Props {
   tokenGroup:
+    | 'border'
     | 'breakpoints'
-    | 'colors'
-    | 'depth'
+    | 'color'
     | 'font'
     | 'motion'
     | 'shadow'
-    | 'shape'
     | 'spacing'
     | 'zIndex';
 }
@@ -29,24 +28,20 @@ export type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    title: 'Colors',
-    url: `/tokens/colors`,
+    title: 'Color',
+    url: `/tokens/color`,
   },
   {
     title: 'Font',
     url: `/tokens/font`,
   },
   {
-    title: 'Shape',
-    url: `/tokens/shape`,
+    title: 'Border',
+    url: `/tokens/border`,
   },
   {
     title: 'Spacing',
     url: `/tokens/spacing`,
-  },
-  {
-    title: 'Depth',
-    url: `/tokens/depth`,
   },
   {
     title: 'Shadow',
@@ -84,13 +79,12 @@ function TokensPage({tokenGroup}: Props) {
   const router = useRouter();
 
   const tokens = {
+    border: tokensToFilteredArray(filter, allTokens.border),
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
-    colors: tokensToFilteredArray(filter, allTokens.colors),
-    depth: tokensToFilteredArray(filter, allTokens.depth),
+    color: tokensToFilteredArray(filter, allTokens.color),
     font: tokensToFilteredArray(filter, allTokens.font),
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shadow: tokensToFilteredArray(filter, allTokens.shadow),
-    shape: tokensToFilteredArray(filter, allTokens.shape),
     spacing: tokensToFilteredArray(filter, allTokens.spacing),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };
