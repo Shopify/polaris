@@ -4,6 +4,7 @@ import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
 import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
 
 import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
+import {useFeatures} from '../../utilities/features';
 
 export default {
   component: TopBar,
@@ -16,7 +17,6 @@ function TopBarWrapper({
   initials,
   customActivator,
   message,
-  se23,
 }: {
   userActions?: UserMenuProps['actions'];
   name?: UserMenuProps['name'];
@@ -24,8 +24,8 @@ function TopBarWrapper({
   initials?: UserMenuProps['initials'];
   customActivator?: UserMenuProps['customActivator'];
   message?: UserMenuProps['message'];
-  se23?: boolean;
 }) {
+  const {polarisSummerEditions2023: se23} = useFeatures();
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -159,12 +159,12 @@ export function Default(_, context) {
       userActions={userActions}
       name="Xquenda Andreev"
       initials="XA"
-      se23={context.globals.polarisSummerEditions2023}
     />
   );
 }
 
 export function WithCustomActivator(_, context) {
+  const {polarisSummerEditions2023} = useFeatures();
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
@@ -185,9 +185,7 @@ export function WithCustomActivator(_, context) {
           as="p"
           variant="bodySm"
           alignment="start"
-          color={
-            context.globals.polarisSummerEditions2023 ? undefined : 'subdued'
-          }
+          color={polarisSummerEditions2023 ? undefined : 'subdued'}
           truncate
         >
           Hem Canada
@@ -202,7 +200,6 @@ export function WithCustomActivator(_, context) {
       name="Xquenda Andreev"
       detail="Hem Canada"
       customActivator={customActivator}
-      se23={context.globals.polarisSummerEditions2023}
     />
   );
 }
@@ -229,7 +226,6 @@ export function WithMessage(_, context) {
         link: {to: 'https://www.shopify.com', content: 'Link content'},
         action: {content: 'Action content', onClick: () => {}},
       }}
-      se23={context.globals.polarisSummerEditions2023}
     />
   );
 }

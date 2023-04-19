@@ -229,6 +229,7 @@ export function WithADataTable(_, context) {
   const [productType, setProductType] = useState(null);
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const handleAvailabilityChange = useCallback(
     (value) => setAvailability(value),
@@ -344,7 +345,7 @@ export function WithADataTable(_, context) {
   return (
     <div style={{height: '568px'}}>
       <Card padding="0">
-        <Box padding={context.globals.polarisSummerEditions2023 ? '4' : '5'}>
+        <Box padding={polarisSummerEditions2023 ? '4' : '5'}>
           <LegacyFilters
             queryValue={queryValue}
             filters={filters}

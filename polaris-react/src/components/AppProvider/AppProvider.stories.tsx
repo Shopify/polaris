@@ -11,6 +11,8 @@ import {
   VerticalStack,
 } from '@shopify/polaris';
 
+import {useFeatures} from '../../utilities/features';
+
 export default {
   component: AppProvider,
   args: {omitAppProvider: true},
@@ -144,6 +146,7 @@ export function WithI18n(_, context) {
 }
 
 export function WithLinkComponent(_, context) {
+  // We can do this because the AppProviderDecorator wraps all Stories, even AppProvider.stories.tsx
   const CustomLinkComponent = ({children, url, ...rest}) => {
     return (
       <a
