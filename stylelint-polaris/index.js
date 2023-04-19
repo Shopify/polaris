@@ -574,7 +574,7 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris shadow token',
     },
   ],
-  space: [
+  spacing: [
     {
       'function-disallowed-list': ['control-vertical-padding'].map(
         matchNameRegExp,
