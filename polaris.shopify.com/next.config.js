@@ -351,7 +351,12 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/horizontal-grid',
+    source: '/components/layout-and-structure/columns',
+    destination: '/components/layout-and-structure/horizontal-grid',
+    permanent: false,
+  },
+  {
+    source: '/components/columns',
     destination: '/components/layout-and-structure/horizontal-grid',
     permanent: false,
   },

@@ -35,7 +35,12 @@ export function Default() {
 
 export function WithVerticalDirection() {
   return (
-    <Box background="bg" padding="4" border="base">
+    <Box
+      background="bg"
+      padding="4"
+      borderColor="border-subdued"
+      borderWidth="1"
+    >
       <Bleed marginBlock="6">
         <div style={styles} />
       </Bleed>
@@ -45,7 +50,12 @@ export function WithVerticalDirection() {
 
 export function WithHorizontalDirection() {
   return (
-    <Box background="bg" padding="4" border="base">
+    <Box
+      background="bg"
+      padding="4"
+      borderColor="border-subdued"
+      borderWidth="1"
+    >
       <Bleed marginInline="6">
         <div style={styles} />
       </Bleed>
@@ -57,25 +67,45 @@ export function WithSpecificDirection() {
   return (
     <LegacyStack vertical>
       <p>Block Start</p>
-      <Box background="bg" padding="4" border="base">
+      <Box
+        background="bg"
+        padding="4"
+        borderColor="border-subdued"
+        borderWidth="1"
+      >
         <Bleed marginInline="4" marginBlockStart="6">
           <div style={styles} />
         </Bleed>
       </Box>
       <p>Block End</p>
-      <Box background="bg" padding="4" border="base">
+      <Box
+        background="bg"
+        padding="4"
+        borderColor="border-subdued"
+        borderWidth="1"
+      >
         <Bleed marginInline="4" marginBlockEnd="6">
           <div style={styles} />
         </Bleed>
       </Box>
       <p>Inline Start</p>
-      <Box background="bg" padding="4" border="base">
+      <Box
+        background="bg"
+        padding="4"
+        borderColor="border-subdued"
+        borderWidth="1"
+      >
         <Bleed marginInline="0" marginInlineStart="6">
           <div style={styles} />
         </Bleed>
       </Box>
       <p>Inline End</p>
-      <Box background="bg" padding="4" border="base">
+      <Box
+        background="bg"
+        padding="4"
+        borderColor="border-subdued"
+        borderWidth="1"
+      >
         <Bleed marginInline="0" marginInlineEnd="6">
           <div style={styles} />
         </Bleed>
@@ -86,7 +116,12 @@ export function WithSpecificDirection() {
 
 export function WithAllDirection() {
   return (
-    <Box background="bg" padding="4" border="base">
+    <Box
+      background="bg"
+      padding="4"
+      borderColor="border-subdued"
+      borderWidth="1"
+    >
       <Bleed marginInline="6" marginBlock="6">
         <div style={styles} />
       </Bleed>
@@ -99,7 +134,8 @@ export function WithResponsiveHorizontalDirection() {
     <Box
       background="bg"
       padding={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}
-      border="base"
+      borderColor="border-subdued"
+      borderWidth="1"
     >
       <Bleed marginInline={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}>
         <div style={styles} />
