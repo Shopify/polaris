@@ -1,6 +1,6 @@
 ---
 title: z-index/global-disallowed-list
-description: Disallows the use of legacy z-index custom properties and Sass mixin data.
+description: Disallows use of legacy z-index Sass APIs.
 keywords:
   - stylelint
   - z-index
@@ -8,8 +8,6 @@ keywords:
 ---
 
 ```diff
-// Do
-+ z-index: var(--p-z-1);
 // Don't
-- z-index(toast, $fixed-element-stacking-order);
+- @type map $elevation-data: $global-elements;
 ```

@@ -2,7 +2,7 @@
 
 .Details {
   max-width: 160px;
-  margin-left: var(--p-space-2);
+  margin-right: var(--p-space-2);
 
   @media #{$p-breakpoints-md-down} {
     display: none;

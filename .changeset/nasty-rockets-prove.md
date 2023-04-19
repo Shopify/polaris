@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Renamed Inline to HorizontalStack
+Deprecated `Grid` `areas` prop
