@@ -15,7 +15,7 @@ interface Props {
     | 'font'
     | 'motion'
     | 'shadow'
-    | 'space'
+    | 'spacing'
     | 'zIndex';
 }
 
