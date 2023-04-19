@@ -332,7 +332,7 @@ const layoutAndStructure = [
   },
   {
     source: '/components/layout-and-structure/card',
-    destination: '/components/layout-and-structure/alpha-card',
+    destination: '/components/layout-and-structure/legacy-card',
     permanent: false,
   },
   {
