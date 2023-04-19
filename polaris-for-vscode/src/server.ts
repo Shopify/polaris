@@ -19,12 +19,9 @@ const excludedTokenGroupNames = ['colors', 'depth', 'legacy', 'shape'] as const;
 
 type ExcludedTokenGroupName = typeof excludedTokenGroupNames[number];
 
-type FilteredTokenGroupName = Exclude<
-  keyof typeof metadata,
-  ExcludedTokenGroupName
->;
+type TokenGroupName = Exclude<keyof typeof metadata, ExcludedTokenGroupName>;
 
-const filteredTokenGroups = Object.fromEntries(
+const tokenGroups = Object.fromEntries(
   Object.entries(metadata).filter(
     ([tokenGroupName]) =>
       !excludedTokenGroupNames.includes(
@@ -33,19 +30,17 @@ const filteredTokenGroups = Object.fromEntries(
   ),
 ) as unknown as Omit<typeof metadata, ExcludedTokenGroupName>;
 
-type FilteredTokenGroupCompletionItems = {
-  [F in FilteredTokenGroupName]: CompletionItem[];
+type TokenGroupCompletionItems = {
+  [T in TokenGroupName]: CompletionItem[];
 };
 
 /**
  * Grouped VS Code `CompletionItem`s for Polaris custom properties
  */
-const filteredTokenGroupCompletionItems = Object.fromEntries(
-  Object.entries(filteredTokenGroups).map(
-    ([filteredTokenGroupName, tokenGroup]: [string, MetadataGroup]) => {
-      const groupedCompletionItemProperties: CompletionItem[] = Object.entries(
-        tokenGroup,
-      ).map(
+const tokenGroupCompletionItems = Object.fromEntries(
+  Object.entries(tokenGroups).map(
+    ([tokenGroupName, tokenGroup]: [string, MetadataGroup]) => {
+      const completionItems: CompletionItem[] = Object.entries(tokenGroup).map(
         ([tokenName, tokenProperties]): CompletionItem => ({
           label: createVar(tokenName),
           insertText: `${createVar(tokenName)}`,
@@ -53,19 +48,19 @@ const filteredTokenGroupCompletionItems = Object.fromEntries(
           documentation: tokenProperties.description,
           filterText: createVar(tokenName),
           kind:
-            filteredTokenGroupName === 'color'
+            tokenGroupName === 'color'
               ? CompletionItemKind.Color
               : CompletionItemKind.Variable,
         }),
       );
 
-      return [filteredTokenGroupName, groupedCompletionItemProperties];
+      return [tokenGroupName, completionItems];
     },
   ),
-) as unknown as FilteredTokenGroupCompletionItems;
+) as unknown as TokenGroupCompletionItems;
 
-const allFilteredTokenGroupCompletionItems: CompletionItem[] = Object.values(
-  filteredTokenGroupCompletionItems,
+const allTokenGroupCompletionItems: CompletionItem[] = Object.values(
+  tokenGroupCompletionItems,
 ).flat();
 
 // Create a connection for the server, using Node's IPC as a transport.
@@ -75,11 +70,11 @@ const connection = createConnection(ProposedFeatures.all);
 // Create a simple text document manager.
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
-type FilteredCompletionItemPatterns = {
-  [F in FilteredTokenGroupName]: RegExp;
+type TokenGroupPatterns = {
+  [F in TokenGroupName]: RegExp;
 };
 
-const filteredCompletionItemPatterns: FilteredCompletionItemPatterns = {
+const tokenGroupPatterns: TokenGroupPatterns = {
   border: /border/,
   breakpoints: /width/,
   color:
@@ -124,13 +119,13 @@ connection.onCompletion(
     });
 
     for (const [tokenGroupName, pattern] of Object.entries(
-      filteredCompletionItemPatterns,
+      tokenGroupPatterns,
     )) {
       if (!pattern.test(currentText)) continue;
 
       const currentCompletionItems =
-        filteredTokenGroupCompletionItems[
-          tokenGroupName as keyof typeof filteredCompletionItemPatterns
+        tokenGroupCompletionItems[
+          tokenGroupName as keyof typeof tokenGroupPatterns
         ];
 
       matchedCompletionItems = matchedCompletionItems.concat(
@@ -144,7 +139,7 @@ connection.onCompletion(
     }
 
     // if there were no matches, send everything
-    return allFilteredTokenGroupCompletionItems;
+    return allTokenGroupCompletionItems;
   },
 );
 
