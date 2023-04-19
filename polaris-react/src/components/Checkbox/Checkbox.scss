@@ -26,8 +26,8 @@
     }
 
     ~ .Icon {
-      transition: opacity var(--p-duration-150) var(--p-ease),
-        transform var(--p-duration-150) var(--p-ease);
+      transition: opacity var(--p-motion-duration-150) var(--p-ease),
+        transform var(--p-motion-duration-150) var(--p-ease);
       transform: translate3d(-50%, -50%, 0) scale(1);
       opacity: 1;
     }
@@ -73,8 +73,8 @@
 
   transform: translate3d(-50%, -50%, 0) scale(0.25);
   opacity: 0;
-  transition: opacity var(--p-duration-100) var(--p-ease),
-    transform var(--p-duration-100) var(--p-ease);
+  transition: opacity var(--p-motion-duration-100) var(--p-ease),
+    transform var(--p-motion-duration-100) var(--p-ease);
 
   svg {
     fill: var(--p-color-icon-on-color);

@@ -9,7 +9,8 @@ $icon-size: 20px;
   height: $top-bar-height;
   box-shadow: var(--p-shadow-sm);
   background-color: var(--p-color-bg);
-  transition: var(--p-duration-200) background-color var(--p-ease-in-out);
+  transition: var(--p-motion-duration-200) background-color
+    var(--p-motion-ease-in-out);
 
   &::after {
     content: '';
@@ -73,7 +74,8 @@ $icon-size: 20px;
   padding: var(--p-space-2);
   border-radius: var(--p-border-radius-1);
   fill: var(--p-color-icon); // Icon will inherit this fill
-  transition: var(--p-duration-150) fill var(--p-ease) var(--p-duration-50);
+  transition: var(--p-motion-duration-150) fill var(--p-ease)
+    var(--p-motion-duration-50);
 
   &.focused:active {
     background-color: var(--p-color-bg-active);
