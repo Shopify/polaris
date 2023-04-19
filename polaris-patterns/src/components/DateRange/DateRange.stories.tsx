@@ -109,7 +109,7 @@ export const NoPopover: StoryFn<Props> = () => {
   return (
     <Box
       maxWidth="fit-content"
-      background="bg-primary"
+      background="bg-input"
       overflowX="hidden"
       overflowY="hidden"
     >
