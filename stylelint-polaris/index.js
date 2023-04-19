@@ -33,6 +33,27 @@ const disallowedUnits = [
   'pt',
 ];
 
+const disallowedVarsBorder = [
+  // Legacy custom properties
+  '--p-border-radius-base',
+  '--p-border-radius-large',
+  '--p-border-radius-wide',
+  '--p-border-radius-half',
+  '--p-control-border-width',
+  '--p-thin-border-subdued',
+  '--p-banner-border-default',
+  '--p-banner-border-success',
+  '--p-banner-border-highlight',
+  '--p-banner-border-warning',
+  '--p-banner-border-critical',
+  '--p-text-field-focus-ring-offset',
+  '--p-border-base',
+  '--p-border-dark',
+  '--p-border-transparent',
+  '--p-border-divider',
+  '--p-border-divider-on-dark',
+];
+
 const disallowedVarsColor = [
   // Legacy custom properties
   '--p-override-transparent',
@@ -181,7 +202,16 @@ const disallowedVarsColor = [
   '--p-action-critical',
 ];
 
-const disallowedVarsDepth = [
+const disallowedVarsLayout = [
+  // Legacy custom properties
+  '--p-range-slider-thumb-size-base',
+  '--p-range-slider-thumb-size-active',
+  '--p-choice-size',
+  '--p-icon-size-small',
+  '--p-icon-size-medium',
+];
+
+const disallowedVarsShadow = [
   // Legacy custom properties
   '--p-button-drop-shadow',
   '--p-button-inner-shadow',
@@ -202,36 +232,6 @@ const disallowedVarsDepth = [
   '--p-shadow-modal',
   '--p-shadows-inset-button',
   '--p-shadows-inset-button-pressed',
-];
-
-const disallowedVarsLayout = [
-  // Legacy custom properties
-  '--p-range-slider-thumb-size-base',
-  '--p-range-slider-thumb-size-active',
-  '--p-choice-size',
-  '--p-icon-size-small',
-  '--p-icon-size-medium',
-];
-
-const disallowedVarsShape = [
-  // Legacy custom properties
-  '--p-border-radius-base',
-  '--p-border-radius-large',
-  '--p-border-radius-wide',
-  '--p-border-radius-half',
-  '--p-control-border-width',
-  '--p-thin-border-subdued',
-  '--p-banner-border-default',
-  '--p-banner-border-success',
-  '--p-banner-border-highlight',
-  '--p-banner-border-warning',
-  '--p-banner-border-critical',
-  '--p-text-field-focus-ring-offset',
-  '--p-border-base',
-  '--p-border-dark',
-  '--p-border-transparent',
-  '--p-border-divider',
-  '--p-border-divider-on-dark',
 ];
 
 const disallowedVarsSpace = [
@@ -265,7 +265,36 @@ const disallowedVarsZIndex = [
 (e.g., Unexpected named color "blue" - Please use a Polaris color token Stylelint(polaris/colors/color-named)")
 */
 const stylelintPolarisCoverageOptions = {
-  colors: [
+  border: [
+    {
+      'declaration-property-unit-disallowed-list': [
+        {
+          'border-width': disallowedUnits,
+          border: disallowedUnits,
+          'border-radius': disallowedUnits,
+          'outline-offset': disallowedUnits,
+          outline: disallowedUnits,
+        },
+      ],
+      'polaris/at-rule-disallowed-list': {
+        include: [
+          'high-contrast-border',
+          'high-contrast-button-outline',
+          'high-contrast-outline',
+          'focus-ring',
+          'no-focus-ring',
+        ].map(matchNameRegExp),
+      },
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsBorder,
+        disallowedValues: {'/.+/': disallowedVarsBorder},
+      },
+    },
+    {
+      message: 'Please use a Polaris border token',
+    },
+  ],
+  color: [
     {
       'color-named': 'never',
       'color-no-hex': true,
@@ -309,77 +338,29 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris color token',
     },
   ],
-  motion: [
-    {
-      'function-disallowed-list': ['control-icon-transition'].map(
-        matchNameRegExp,
-      ),
-      'declaration-property-unit-disallowed-list': [
-        {
-          '/^animation/': ['ms', 's'],
-          '/^transition/': ['ms', 's'],
-        },
-      ],
-      'at-rule-disallowed-list': ['keyframes'],
-      'polaris/at-rule-disallowed-list': {
-        include: ['skeleton-shimmer'].map(matchNameRegExp),
+  conventions: {
+    'selector-disallowed-list': [
+      [/class[*^~]?='Polaris-[a-z_-]+'/gi],
+      {
+        message:
+          'Overriding Polaris styles is disallowed. Please consider contributing instead',
       },
-      'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$skeleton-shimmer-duration/,
-      ],
-    },
-    {
-      message: 'Please use a Polaris motion token',
-    },
-  ],
-  typography: [
-    {
-      'polaris/declaration-property-value-disallowed-list': {
-        'font-weight': [/(\$.*|[0-9]+)/],
+    ],
+    'polaris/custom-property-allowed-list': {
+      // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
+      allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
+      // Allows use of custom properties prefixed with `--p-` that are valid Polaris tokens
+      allowedValues: {
+        '/.+/': [
+          // Note: Order is important
+          // This pattern allows use of `--p-*` custom properties that are valid Polaris tokens
+          ...getCustomPropertyNames(tokens),
+          // This pattern flags unknown `--p-*` custom properties or usage of deprecated `--pc-*` custom properties private to polaris-react
+          /--(?!(p|pc)-).+/,
+        ],
       },
-      'declaration-property-unit-disallowed-list': [
-        {
-          '/^font/': disallowedUnits,
-          'line-height': disallowedUnits,
-        },
-      ],
-      'property-disallowed-list': ['text-transform'],
-      'function-disallowed-list': ['font-size', 'line-height'].map(
-        matchNameRegExp,
-      ),
-      'polaris/at-rule-disallowed-list': {
-        include: [
-          'truncate',
-          'text-breakword',
-          'text-emphasis-normal',
-          'text-emphasis-strong',
-          'text-emphasis-subdued',
-          'text-style-body',
-          'text-style-button-large',
-          'text-style-button',
-          'text-style-caption',
-          'text-style-display-large',
-          'text-style-display-medium',
-          'text-style-display-small',
-          'text-style-display-x-large',
-          'text-style-heading',
-          'text-style-input',
-          'text-style-subheading',
-        ].map(matchNameRegExp),
-      },
-      'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$base-font-size/,
-        /\$line-height-data/,
-        /\$font-size-data/,
-        /\$default-browser-font-size/,
-      ],
     },
-    {
-      message: 'Please use a Polaris font token or typography component',
-    },
-  ],
+  },
   layout: [
     {
       // 'declaration-property-value-disallowed-list': [
@@ -447,129 +428,47 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris layout component',
     },
   ],
-  spacing: [
+  legacy: [
     {
-      'function-disallowed-list': ['control-vertical-padding'].map(
-        matchNameRegExp,
-      ),
-      'declaration-property-unit-disallowed-list': [
-        {
-          '/^padding/': disallowedUnits,
-          '/^margin/': disallowedUnits,
-          '/^gap/': disallowedUnits,
-        },
-      ],
-      'polaris/custom-property-disallowed-list': {
-        disallowedProperties: disallowedVarsSpace,
-        disallowedValues: {'/.+/': disallowedVarsSpace},
-      },
-      'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$polaris-spacing/,
-      ],
-    },
-    {
-      message: 'Please use a Polaris spacing token',
-    },
-  ],
-  shape: [
-    {
-      'declaration-property-unit-disallowed-list': [
-        {
-          'border-width': disallowedUnits,
-          border: disallowedUnits,
-          'border-radius': disallowedUnits,
-          'outline-offset': disallowedUnits,
-          outline: disallowedUnits,
-        },
-      ],
+      // Legacy mixins
       'polaris/at-rule-disallowed-list': {
         include: [
-          'high-contrast-border',
-          'high-contrast-button-outline',
-          'high-contrast-outline',
-          'focus-ring',
-          'no-focus-ring',
+          'base-button-disabled',
+          'button-base',
+          'button-filled',
+          'button-full-width',
+          'button-outline-disabled',
+          'button-outline',
+          'control-backdrop',
+          'list-selected-indicator',
+          'plain-button-backdrop',
+          'unstyled-button',
+          'skeleton-content',
+          'unstyled-input',
+          'unstyled-link',
+          'unstyled-list',
+          'range-thumb-selectors',
+          'range-track-selectors',
+          'state',
+          'visually-hidden',
         ].map(matchNameRegExp),
       },
-      'polaris/custom-property-disallowed-list': {
-        disallowedProperties: disallowedVarsShape,
-        disallowedValues: {'/.+/': disallowedVarsShape},
-      },
-    },
-    {
-      message: 'Please use a Polaris shape token',
-    },
-  ],
-  depth: [
-    {
-      'function-disallowed-list': ['shadow'].map(matchNameRegExp),
-      'declaration-property-unit-disallowed-list': [
-        {
-          'box-shadow': disallowedUnits,
-        },
-      ],
-      'property-disallowed-list': ['text-shadow'],
-      'polaris/custom-property-disallowed-list': {
-        disallowedProperties: disallowedVarsDepth,
-        disallowedValues: {'/.+/': disallowedVarsDepth},
-      },
+      // Legacy functions
+      'function-disallowed-list': [
+        'available-names',
+        'map-extend',
+        'em',
+        'rem',
+      ].map(matchNameRegExp),
       'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$shadows-data/,
+        // Legacy variables
+        / \* \$/,
       ],
     },
     {
-      message: 'Please use a Polaris depth token',
+      message: 'Please use a Polaris token or component',
     },
   ],
-  'z-index': [
-    {
-      'declaration-property-value-allowed-list': [
-        {
-          'z-index': Object.keys(tokens.zIndex).map(
-            (token) => `var(${createVar(token)})`,
-          ),
-        },
-      ],
-      'function-disallowed-list': ['z-index'].map(matchNameRegExp),
-      'polaris/custom-property-disallowed-list': {
-        disallowedProperties: disallowedVarsZIndex,
-        disallowedValues: {'/.+/': disallowedVarsZIndex},
-      },
-      'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$fixed-element-stacking-order/,
-        /\$global-elements/,
-      ],
-    },
-    {
-      message: 'Please use a Polaris z-index token',
-    },
-  ],
-  conventions: {
-    'selector-disallowed-list': [
-      [/class[*^~]?='Polaris-[a-z_-]+'/gi],
-      {
-        message:
-          'Overriding Polaris styles is disallowed. Please consider contributing instead',
-      },
-    ],
-    'polaris/custom-property-allowed-list': {
-      // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
-      allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
-      // Allows use of custom properties prefixed with `--p-` that are valid Polaris tokens
-      allowedValues: {
-        '/.+/': [
-          // Note: Order is important
-          // This pattern allows use of `--p-*` custom properties that are valid Polaris tokens
-          ...getCustomPropertyNames(tokens),
-          // This pattern flags unknown `--p-*` custom properties or usage of deprecated `--pc-*` custom properties private to polaris-react
-          /--(?!(p|pc)-).+/,
-        ],
-      },
-    },
-  },
   'media-queries': [
     {
       'polaris/media-query-allowed-list': {
@@ -632,45 +531,146 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris breakpoint token',
     },
   ],
-  legacy: [
+  motion: [
     {
-      // Legacy mixins
+      'function-disallowed-list': ['control-icon-transition'].map(
+        matchNameRegExp,
+      ),
+      'declaration-property-unit-disallowed-list': [
+        {
+          '/^animation/': ['ms', 's'],
+          '/^transition/': ['ms', 's'],
+        },
+      ],
+      'at-rule-disallowed-list': ['keyframes'],
       'polaris/at-rule-disallowed-list': {
-        include: [
-          'base-button-disabled',
-          'button-base',
-          'button-filled',
-          'button-full-width',
-          'button-outline-disabled',
-          'button-outline',
-          'control-backdrop',
-          'list-selected-indicator',
-          'plain-button-backdrop',
-          'unstyled-button',
-          'skeleton-content',
-          'unstyled-input',
-          'unstyled-link',
-          'unstyled-list',
-          'range-thumb-selectors',
-          'range-track-selectors',
-          'state',
-          'visually-hidden',
-        ].map(matchNameRegExp),
+        include: ['skeleton-shimmer'].map(matchNameRegExp),
       },
-      // Legacy functions
-      'function-disallowed-list': [
-        'available-names',
-        'map-extend',
-        'em',
-        'rem',
-      ].map(matchNameRegExp),
       'polaris/global-disallowed-list': [
-        // Legacy variables
-        / \* \$/,
+        // Legacy mixin map-get data
+        /\$skeleton-shimmer-duration/,
       ],
     },
     {
-      message: 'Please use a Polaris token or component',
+      message: 'Please use a Polaris motion token',
+    },
+  ],
+  shadow: [
+    {
+      'function-disallowed-list': ['shadow'].map(matchNameRegExp),
+      'declaration-property-unit-disallowed-list': [
+        {
+          'box-shadow': disallowedUnits,
+        },
+      ],
+      'property-disallowed-list': ['text-shadow'],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsShadow,
+        disallowedValues: {'/.+/': disallowedVarsShadow},
+      },
+      'polaris/global-disallowed-list': [
+        // Legacy mixin map-get data
+        /\$shadows-data/,
+      ],
+    },
+    {
+      message: 'Please use a Polaris shadow token',
+    },
+  ],
+  spacing: [
+    {
+      'function-disallowed-list': ['control-vertical-padding'].map(
+        matchNameRegExp,
+      ),
+      'declaration-property-unit-disallowed-list': [
+        {
+          '/^padding/': disallowedUnits,
+          '/^margin/': disallowedUnits,
+          '/^gap/': disallowedUnits,
+        },
+      ],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsSpace,
+        disallowedValues: {'/.+/': disallowedVarsSpace},
+      },
+      'polaris/global-disallowed-list': [
+        // Legacy mixin map-get data
+        /\$polaris-spacing/,
+      ],
+    },
+    {
+      message: 'Please use a Polaris spacing token',
+    },
+  ],
+  typography: [
+    {
+      'polaris/declaration-property-value-disallowed-list': {
+        'font-weight': [/(\$.*|[0-9]+)/],
+      },
+      'declaration-property-unit-disallowed-list': [
+        {
+          '/^font/': disallowedUnits,
+          'line-height': disallowedUnits,
+        },
+      ],
+      'property-disallowed-list': ['text-transform'],
+      'function-disallowed-list': ['font-size', 'line-height'].map(
+        matchNameRegExp,
+      ),
+      'polaris/at-rule-disallowed-list': {
+        include: [
+          'truncate',
+          'text-breakword',
+          'text-emphasis-normal',
+          'text-emphasis-strong',
+          'text-emphasis-subdued',
+          'text-style-body',
+          'text-style-button-large',
+          'text-style-button',
+          'text-style-caption',
+          'text-style-display-large',
+          'text-style-display-medium',
+          'text-style-display-small',
+          'text-style-display-x-large',
+          'text-style-heading',
+          'text-style-input',
+          'text-style-subheading',
+        ].map(matchNameRegExp),
+      },
+      'polaris/global-disallowed-list': [
+        // Legacy mixin map-get data
+        /\$base-font-size/,
+        /\$line-height-data/,
+        /\$font-size-data/,
+        /\$default-browser-font-size/,
+      ],
+    },
+    {
+      message: 'Please use a Polaris font token or typography component',
+    },
+  ],
+  'z-index': [
+    {
+      'declaration-property-value-allowed-list': [
+        {
+          'z-index': Object.keys(tokens.zIndex).map(
+            (token) => `var(${createVar(token)})`,
+          ),
+        },
+      ],
+      'function-disallowed-list': ['z-index'].map(matchNameRegExp),
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsZIndex,
+        disallowedValues: {'/.+/': disallowedVarsZIndex},
+      },
+      'polaris/global-disallowed-list': [
+        // Legacy mixin map-get data
+        /\$fixed-element-stacking-order/,
+        /\$global-elements/,
+      ],
+    },
+    {
+      message: 'Please use a Polaris z-index token',
     },
   ],
 };
