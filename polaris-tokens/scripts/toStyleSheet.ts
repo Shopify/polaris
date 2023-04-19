@@ -36,7 +36,10 @@ export function getCustomProperties(tokenGroup: MetadataGroup) {
  */
 export function getKeyframes(motion: MetadataGroup) {
   return Object.entries(motion)
-    .filter(([token]) => token.startsWith('keyframes'))
+    .filter(
+      ([token]) =>
+        token.startsWith('motion-keyframes') || token.startsWith('keyframes'),
+    )
     .map(([token, {value}]) => `@keyframes p-${token}${value}`)
     .join('');
 }
