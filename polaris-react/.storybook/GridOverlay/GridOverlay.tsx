@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {EventListener} from '../../src';
 import {classNames} from '../../src/utilities/css';
 
-import './GridOverlay.css';
+import './GridOverlay.module.css';
 
 const COLUMNS_SMALL = 4;
 const COLUMNS_LARGE = 12;

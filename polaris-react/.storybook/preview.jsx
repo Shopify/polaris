@@ -1,11 +1,17 @@
+// This file is built using vite, so we can use `import.meta.env` to access environment variables.
+// This file is also built by the vite config in './main.js
+
 import React, {useRef, useEffect} from 'react';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
-import {gridOptions, featureFlagOptions} from './manager';
 import {breakpoints} from '@shopify/polaris-tokens';
+import {
+  gridOptions,
+  featureFlagOptions,
+} from './addons/global-controls-panel/manager';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -23,14 +29,12 @@ function AppProviderDecorator(Story, context) {
     polarisSummerEditions2023,
     polarisSummerEditions2023ShadowBevelOptOut,
   } = context.globals;
-
   if (context.args.omitAppProvider) return <Story {...context} />;
-
   return (
     <AppProvider
       features={{
         polarisSummerEditions2023:
-          process.env.STORYBOOK_SE23 === 'on'
+          import.meta.env.STORYBOOK_SE23 === 'on'
             ? true
             : polarisSummerEditions2023,
         polarisSummerEditions2023ShadowBevelOptOut,
@@ -129,8 +133,8 @@ export const globalTypes = {
       ],
     },
   },
-  ...featureFlagOptions,
   ...gridOptions,
+  ...featureFlagOptions,
 };
 const viewPorts = Object.entries({
   ...breakpoints,

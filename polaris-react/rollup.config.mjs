@@ -1,3 +1,5 @@
+// Vite is used by Storybook.
+// Rollup is used directly to build for prod.
 import {readFileSync} from 'fs';
 import * as path from 'path';
 
@@ -10,7 +12,7 @@ import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
 
 import {styles} from './config/rollup/plugin-styles.js';
-import {generateScopedName} from './config/rollup/namespaced-classname.js';
+import {generateScopedName} from './config/rollup/namespaced-classname.mjs';
 import postcssPlugins from './config/postcss-plugins.js';
 
 const pkg = JSON.parse(
@@ -47,6 +49,20 @@ function generateConfig({output, targets, stylesConfig}) {
       styles(stylesConfig),
     ],
     output,
+  };
+}
+
+function entryFileNames(ext) {
+  return (chunkInfo) => {
+    // To preserve backwards compatibility with previous Polaris versions,
+    // CSS Modules should be `<Name>.scss.esnext`, never
+    // `<Name>.module.scss.esnext`
+    if (chunkInfo.facadeModuleId.endsWith('.module.scss')) {
+      return `${chunkInfo.name.replace(/\.module$/, '.scss')}.${ext}`;
+    }
+
+    // Use regular pattern matching for everything else
+    return `[name].${ext}`;
   };
 }
 
