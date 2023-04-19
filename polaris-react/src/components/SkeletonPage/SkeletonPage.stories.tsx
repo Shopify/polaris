@@ -73,6 +73,11 @@ export function WithStaticContent() {
         content: 'Back to orders',
         onAction: () => console.log('back'),
       }}
+      pagination={{
+        hasNext: true,
+        hasPrevious: false,
+        accessibilityLabels: {next: 'Next page', previous: 'Previous page'},
+      }}
     >
       <Layout>
         <Layout.Section>
@@ -311,6 +316,56 @@ export function WithBackActionAndSubtitle() {
 export function WithSubtitle() {
   return (
     <SkeletonPage primaryAction subtitle>
+      <Layout>
+        <Layout.Section>
+          <LegacyCard sectioned>
+            <SkeletonBodyText />
+          </LegacyCard>
+          <LegacyCard sectioned>
+            <TextContainer>
+              <SkeletonDisplayText size="small" />
+              <SkeletonBodyText />
+            </TextContainer>
+          </LegacyCard>
+          <LegacyCard sectioned>
+            <TextContainer>
+              <SkeletonDisplayText size="small" />
+              <SkeletonBodyText />
+            </TextContainer>
+          </LegacyCard>
+        </Layout.Section>
+        <Layout.Section secondary>
+          <LegacyCard>
+            <LegacyCard.Section>
+              <TextContainer>
+                <SkeletonDisplayText size="small" />
+                <SkeletonBodyText lines={2} />
+              </TextContainer>
+            </LegacyCard.Section>
+            <LegacyCard.Section>
+              <SkeletonBodyText lines={1} />
+            </LegacyCard.Section>
+          </LegacyCard>
+          <LegacyCard subdued>
+            <LegacyCard.Section>
+              <TextContainer>
+                <SkeletonDisplayText size="small" />
+                <SkeletonBodyText lines={2} />
+              </TextContainer>
+            </LegacyCard.Section>
+            <LegacyCard.Section>
+              <SkeletonBodyText lines={2} />
+            </LegacyCard.Section>
+          </LegacyCard>
+        </Layout.Section>
+      </Layout>
+    </SkeletonPage>
+  );
+}
+
+export function WithPagination() {
+  return (
+    <SkeletonPage primaryAction subtitle pagination>
       <Layout>
         <Layout.Section>
           <LegacyCard sectioned>

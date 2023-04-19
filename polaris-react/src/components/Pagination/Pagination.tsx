@@ -66,9 +66,19 @@ export function Pagination({
 
   if (loading) {
     return (
-      <ButtonGroup>
-        <Button outline icon={ChevronLeftMinor} disabled />
-        <Button outline icon={ChevronRightMinor} disabled />
+      <ButtonGroup segmented>
+        <Button
+          accessibilityLabel={i18n.translate('Polaris.Pagination.previous')}
+          outline
+          icon={ChevronLeftMinor}
+          disabled
+        />
+        <Button
+          accessibilityLabel={i18n.translate('Polaris.Pagination.next')}
+          outline
+          icon={ChevronRightMinor}
+          disabled
+        />
       </ButtonGroup>
     );
   }

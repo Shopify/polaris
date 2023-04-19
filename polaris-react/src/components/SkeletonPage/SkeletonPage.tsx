@@ -15,13 +15,13 @@ export interface SkeletonPageProps {
   /** Decreases the maximum layout width. Intended for single-column layouts */
   narrowWidth?: boolean;
   /** Shows static conent or skeleton over the primary action */
-  primaryAction?: PageProps['primaryAction'] | true;
+  primaryAction?: PageProps['primaryAction'] | boolean;
   /** @deprecated Use backAction instead */
   breadcrumbs?: boolean;
-  /** Shows a skeleton over the backAction */
-  backAction?: PageProps['backAction'] | true;
-  /** Shows a skeleton over the pagination */
-  pagination?: PageProps['pagination'] | true;
+  /** Shows static content or a skeleton over the backAction */
+  backAction?: PageProps['backAction'] | boolean;
+  /** Shows static content or a skeleton over the pagination */
+  pagination?: PageProps['pagination'] | boolean;
   /** The child elements to render in the skeleton page. */
   children?: React.ReactNode;
 }
@@ -40,7 +40,7 @@ export function SkeletonPage({
   const i18n = useI18n();
 
   const primaryActionMarkup =
-    typeof primaryAction === 'boolean' ? (
+    primaryAction === true ? (
       <Box
         id="SkeletonPage-PrimaryAction"
         borderRadius="1"
@@ -59,10 +59,15 @@ export function SkeletonPage({
       fullWidth={fullWidth}
       primaryAction={primaryActionMarkup || primaryAction}
       backAction={
-        backAction === true || breadcrumbs === true ? 'loading' : backAction
+        typeof backAction === 'boolean' ? {loading: backAction} : backAction
+      }
+      breadcrumbs={
+        typeof breadcrumbs === 'boolean' ? {loading: breadcrumbs} : breadcrumbs
       }
       aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
-      pagination={pagination === true ? {loading: true} : pagination}
+      pagination={
+        typeof pagination === 'boolean' ? {loading: true} : pagination
+      }
     >
       {children}
     </Page>

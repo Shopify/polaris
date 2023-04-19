@@ -53,9 +53,9 @@ export interface HeaderProps extends TitleProps {
   /** Page-level pagination */
   pagination?: PaginationProps;
   /** @deprecated Collection of breadcrumbs */
-  breadcrumbs?: BreadcrumbsProps['breadcrumbs'] | 'loading';
+  breadcrumbs?: BreadcrumbsProps['breadcrumbs'] | {loading: boolean};
   /** A back action link */
-  backAction?: BreadcrumbsProps['backAction'] | 'loading';
+  backAction?: BreadcrumbsProps['backAction'] | {loading: boolean};
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
@@ -117,7 +117,9 @@ export function Header({
       <div className={styles.BreadcrumbWrapper}>
         <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
           <Breadcrumbs
-            {...(backAction === 'loading' ? {loading: true} : {backAction})}
+            {...('loading' in backAction
+              ? {loading: backAction.loading}
+              : {backAction})}
           />
         </Box>
       </div>
@@ -130,7 +132,9 @@ export function Header({
       <div className={styles.BreadcrumbWrapper}>
         <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
           <Breadcrumbs
-            {...(breadcrumbs === 'loading' ? {loading: true} : {breadcrumbs})}
+            {...('loading' in breadcrumbs
+              ? {loading: breadcrumbs.loading}
+              : {breadcrumbs})}
           />
         </Box>
       </div>
