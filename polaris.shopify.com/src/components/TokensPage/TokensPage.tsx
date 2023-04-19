@@ -40,8 +40,8 @@ const navItems: NavItem[] = [
     url: `/tokens/border`,
   },
   {
-    title: 'Space',
-    url: `/tokens/space`,
+    title: 'Spacing',
+    url: `/tokens/spacing`,
   },
   {
     title: 'Shadow',
