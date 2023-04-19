@@ -577,7 +577,7 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris shadow token',
     },
   ],
-  spacing: [
+  space: [
     {
       'function-disallowed-list': ['control-vertical-padding'].map(
         matchNameRegExp,
@@ -599,7 +599,7 @@ const stylelintPolarisCoverageOptions = {
       ],
     },
     {
-      message: 'Please use a Polaris spacing token',
+      message: 'Please use a Polaris space token',
     },
   ],
   typography: [
