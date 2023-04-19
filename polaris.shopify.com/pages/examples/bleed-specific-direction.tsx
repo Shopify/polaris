@@ -12,22 +12,42 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BleedSpecificDirectionExample() {
   return (
     <VerticalStack gap="6">
-      <Box background="bg" border="base" padding="8">
+      <Box
+        background="bg"
+        borderWidth="1"
+        borderColor="border-subdued"
+        padding="8"
+      >
         <Bleed marginInlineStart="8">
           <Placeholder label="marginInlineStart" />
         </Bleed>
       </Box>
-      <Box background="bg" border="base" padding="8">
+      <Box
+        background="bg"
+        borderWidth="1"
+        borderColor="border-subdued"
+        padding="8"
+      >
         <Bleed marginInlineEnd="8">
           <Placeholder label="marginInlineEnd" />
         </Bleed>
       </Box>
-      <Box background="bg" border="base" padding="8">
+      <Box
+        background="bg"
+        borderWidth="1"
+        borderColor="border-subdued"
+        padding="8"
+      >
         <Bleed marginBlockStart="8">
           <Placeholder label="marginBlockStart" />
         </Bleed>
       </Box>
-      <Box background="bg" border="base" padding="8">
+      <Box
+        background="bg"
+        borderWidth="1"
+        borderColor="border-subdued"
+        padding="8"
+      >
         <Bleed marginBlockEnd="8">
           <Placeholder label="marginBlockEnd" />
         </Bleed>

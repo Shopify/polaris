@@ -568,7 +568,8 @@ export const AlphaTabs = ({
           md: '2',
         }}
         background="bg"
-        borderBlockEnd="divider"
+        borderColor="border-subdued"
+        borderBlockEndWidth="1"
         borderRadiusStartEnd="2"
         borderRadiusStartStart="2"
       >

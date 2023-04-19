@@ -1,5 +1,7 @@
 # @shopify/polaris-cli
 
+## 0.1.29
+
 ## 0.1.28
 
 ### Patch Changes
