@@ -63,7 +63,7 @@ const OBSERVER_CONFIG = {
   childList: true,
   subtree: true,
   characterData: true,
-  attributes: true,
+  attributeFilter: ['style'],
 };
 
 export class PositionedOverlay extends PureComponent<
