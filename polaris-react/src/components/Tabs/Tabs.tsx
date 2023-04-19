@@ -563,7 +563,8 @@ export const Tabs = ({
           md: '2',
         }}
         background="bg"
-        borderBlockEnd="divider"
+        borderBlockEndWidth="1"
+        borderColor="border-subdued"
         borderRadiusStartEnd="2"
         borderRadiusStartStart="2"
       >
