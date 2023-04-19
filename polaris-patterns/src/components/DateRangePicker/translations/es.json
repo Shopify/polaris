@@ -1,0 +1,7 @@
+{
+  "periods": {
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "custom": "Personalizado"
+  }
+}

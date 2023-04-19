@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "Hủy",
+    "apply": "Áp dụng"
+  },
+  "comparedTo": "so với {date}",
+  "labels": {
+    "since": "Kể từ"
+  },
+  "periods": {
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua",
+    "last7Days": "7 ngày qua",
+    "last30Days": "30 ngày qua",
+    "lastMonth": "Tháng trước",
+    "last90Days": "90 ngày qua",
+    "lastYear": "Năm trước",
+    "weekToDate": "Từ đầu tuần đến hiện tại",
+    "custom": "Tùy chỉnh"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "Fermer",
+    "apply": "Appliquer"
+  },
+  "comparedTo": "par rapport au {date}",
+  "labels": {
+    "since": "Depuis"
+  },
+  "periods": {
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "last7Days": "7 derniers jours",
+    "last30Days": "30 derniers jours",
+    "lastMonth": "Mois dernier",
+    "last90Days": "90 derniers jours",
+    "lastYear": "Année dernière",
+    "weekToDate": "Semaine à ce jour",
+    "custom": "Personnalisé"
+  }
+}

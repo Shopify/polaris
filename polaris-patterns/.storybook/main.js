@@ -61,6 +61,12 @@ module.exports = {
         'src',
       ),
       '@shopify/polaris-patterns': path.resolve(__dirname, '..', 'src'),
+      '@shopify/polaris-tokens': path.resolve(
+        __dirname,
+        '..',
+        '..',
+        'polaris-tokens',
+      ),
     };
     return config;
   },

@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "Annuller",
+    "apply": "Anvend"
+  },
+  "comparedTo": "sammenlignet med {date}",
+  "labels": {
+    "since": "Siden"
+  },
+  "periods": {
+    "today": "I dag",
+    "yesterday": "I går",
+    "last7Days": "Seneste 7 dage",
+    "last30Days": "Seneste 30 dage",
+    "lastMonth": "Seneste måned",
+    "last90Days": "Seneste 90 dage",
+    "lastYear": "Seneste år",
+    "weekToDate": "Uge til dato",
+    "custom": "Tilpasset"
+  }
+}

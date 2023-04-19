@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "Avbryt",
+    "apply": "Tillämpa"
+  },
+  "comparedTo": "jämfört med {date}",
+  "labels": {
+    "since": "Sedan"
+  },
+  "periods": {
+    "today": "I dag",
+    "yesterday": "I går",
+    "last7Days": "De senaste 7 dagarna",
+    "last30Days": "De senaste 30 dagarna",
+    "lastMonth": "Förra månaden",
+    "last90Days": "De senaste 90 dagarna",
+    "lastYear": "Förra året",
+    "weekToDate": "Veckan hittills",
+    "custom": "Anpassa"
+  }
+}
