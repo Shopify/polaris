@@ -16,7 +16,7 @@ interface Props {
     | 'motion'
     | 'shadow'
     | 'shape'
-    | 'spacing'
+    | 'space'
     | 'zIndex';
 }
 
@@ -41,8 +41,8 @@ const navItems: NavItem[] = [
     url: `/tokens/shape`,
   },
   {
-    title: 'Spacing',
-    url: `/tokens/spacing`,
+    title: 'Space',
+    url: `/tokens/space`,
   },
   {
     title: 'Depth',

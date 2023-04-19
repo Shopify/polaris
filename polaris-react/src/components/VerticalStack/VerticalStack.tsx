@@ -1,5 +1,5 @@
 import React from 'react';
-import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
+import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {
   classNames,
@@ -22,7 +22,7 @@ type InlineAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
-type Gap = ResponsiveProp<SpacingSpaceScale>;
+type Gap = ResponsiveProp<SpaceScale>;
 
 export interface VerticalStackProps extends React.AriaAttributes {
   children?: React.ReactNode;

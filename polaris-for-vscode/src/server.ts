@@ -81,7 +81,7 @@ const groupedCompletionItemPatterns: Omit<
   font: /font|line-height/,
   motion: /animation/,
   shadow: /shadow/,
-  spacing: /margin|padding|gap|top|left|right|bottom/,
+  space: /margin|padding|gap|top|left|right|bottom/,
   zIndex: /z-index/,
 };
 
