@@ -100,7 +100,8 @@ export function OptionList({
             paddingInlineStart="2"
             paddingBlockEnd="2"
             paddingInlineEnd="2"
-            borderBlockStart={!isFirstOption ? 'divider' : undefined}
+            borderColor="border-subdued"
+            borderBlockStartWidth={!isFirstOption ? '1' : undefined}
           >
             <Text as="p" variant="headingXs">
               {title}

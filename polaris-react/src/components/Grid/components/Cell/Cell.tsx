@@ -24,6 +24,10 @@ interface Columns {
 }
 
 export interface CellProps {
+  /**
+   * Set grid-template-areas
+   * @deprecated Use nested layout components instead
+   */
   area?: string;
   column?: Cell;
   columnSpan?: Columns;
