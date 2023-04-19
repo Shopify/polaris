@@ -14,17 +14,6 @@ export type {
 } from './token-groups/breakpoints';
 
 export type {
-  ColorsTokenGroup,
-  ColorsTokenName,
-  ColorsBackgroundTokenAlias,
-  ColorsActionTokenAlias,
-  ColorsSurfaceTokenAlias,
-  ColorsBackdropTokenAlias,
-  ColorsOverlayTokenAlias,
-  ColorsBorderTokenAlias,
-} from './token-groups/colors';
-
-export type {
   ColorTokenGroup,
   ColorTokenName,
   ColorBackgroundAlias,
