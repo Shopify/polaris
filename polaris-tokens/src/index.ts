@@ -47,8 +47,6 @@ export type {
   FontWeightAlias,
 } from './token-groups/font';
 
-export type {LegacyTokenGroup, LegacyTokenName} from './token-groups/legacy';
-
 export type {
   MotionTokenGroup,
   MotionTokenName,
