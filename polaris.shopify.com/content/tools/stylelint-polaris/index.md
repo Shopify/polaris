@@ -89,7 +89,7 @@ There are over 40 rules configured in Stylelint Polaris to help you avoid errors
 - [Media queries](/tools/stylelint-polaris/rules#media-queries)
 - [Motion](/tools/stylelint-polaris/rules#motion)
 - [Shadow](/tools/stylelint-polaris/rules#shadow)
-- [Space](/tools/stylelint-polaris/rules#space)
+- [Spacing](/tools/stylelint-polaris/rules#spacing)
 - [Typography](/tools/stylelint-polaris/rules#typography)
 - [Z-index](/tools/stylelint-polaris/rules#z-index)
 
