@@ -138,17 +138,17 @@
 .variantTransparent {
   background: transparent;
   color: var(--p-text);
-  border-width: 0;
   border-color: transparent;
   box-shadow: none;
 
   &:hover {
-    background: var(--p-background-hovered);
+    background: var(--bg-hover);
+    border-color: var(--border-subdued);
   }
 
   &:active {
-    background: var(--p-background-selected);
-    box-shadow: none;
+    background: var(--bg-active);
+    // box-shadow: none;
   }
 
   &.toneCritical {
