@@ -80,6 +80,6 @@ Annotated section descriptions should:
 
 ## Related components
 
-- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/layout-and-structure/alpha-card)
+- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/layout-and-structure/card)
 - To lay out a set of smaller components in a row, [use the vertical stack component](https://polaris.shopify.com/components/layout-and-structure/vertical-stack)
 - To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)
