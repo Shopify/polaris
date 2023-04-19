@@ -59,7 +59,11 @@
     "@shopify/polaris-icons": "^6.12.0",
     "@shopify/polaris-tokens": "^6.8.1",
     "react": "^18.2.0",
-    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
+  },
+  "dependencies": {
+    "i18next": "^22.4.14",
+    "react-i18next": "^12.2.0",
     "@shopify/react-i18n": "^7.7.2"
   },
   "devDependencies": {
@@ -78,6 +82,7 @@
     "change-case": "^3.1.0",
     "chromatic": "^6.17.3",
     "globby": "^11.1.0",
+    "i18next": "^22.4.14",
     "node-sass": "^7.0.1",
     "postcss": "^8.3.1",
     "postcss-loader": "^4.2.0",
@@ -86,10 +91,10 @@
     "puppeteer": "^14.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.0",
     "sass-loader": "^12.4.0",
     "storybook": "^7.0.5",
-    "webpack": "5",
-    "@shopify/react-i18n": "^7.7.2"
+    "webpack": "5"
   },
   "browserslist": [
     "last 3 chrome versions",

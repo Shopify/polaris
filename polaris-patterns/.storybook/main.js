@@ -14,6 +14,12 @@ module.exports = {
     '@storybook/addon-toolbars',
     '@storybook/addon-viewport',
   ],
+  babel: (config) => {
+    return {
+      ...config,
+      rootMode: 'upward',
+    };
+  },
   webpackFinal: (config) => {
     const extraRules = [
       {

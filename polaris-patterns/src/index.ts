@@ -1,5 +1,8 @@
 import './configure';
 
+export {PolarisPatternsProvider} from './components/PolarisPatternsProvider';
+export type {PolarisPatternsProviderProps} from './components/PolarisPatternsProvider';
+
 export {AccountConnection} from './components/AccountConnection';
 export type {AccountConnectionProps} from './components/AccountConnection';
 
