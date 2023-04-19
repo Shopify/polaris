@@ -166,7 +166,11 @@ const PolarisAI = () => {
 
 const Loading = () => (
   <div className={styles.AILoading}>
-    <p className={styles.AILoadingMessage}>Generating your response</p>
+    <p className={styles.AILoadingMessage}>
+      Generating your response<span className={styles.dot1}>.</span>
+      <span className={styles.dot2}>.</span>
+      <span className={styles.dot3}>.</span>
+    </p>
     <p>This may take a few seconds</p>
   </div>
 );

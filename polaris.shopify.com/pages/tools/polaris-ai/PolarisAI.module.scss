@@ -99,28 +99,6 @@
     font-size: 1.3rem;
   }
 
-  .AILoadingMessage:after {
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: bottom;
-    -webkit-animation: ellipsis steps(4,end) 900ms infinite;
-    animation: ellipsis steps(4,end) 900ms infinite;
-    content: "\2026"; /* ascii code for the ellipsis character */
-    width: 0px;
-  }
-
-  @keyframes ellipsis {
-    to {
-      width: 1.25em;
-    }
-  }
-
-  @-webkit-keyframes ellipsis {
-    to {
-      width: 1.25em;
-    }
-  }
-
   .AISourceList {
     display: flex;
     gap: .5rem;
@@ -167,6 +145,72 @@
       font-size: var(--font-size-100);
     }
   }
+
+  .dot1 {
+    animation: visibility 2s linear infinite;
+   }
+   @keyframes visibility {
+    0% {
+    opacity: 1;
+    }
+    65% {
+    opacity: 1;
+    }
+    66% {
+    opacity: 0;
+    }
+    100% {
+    opacity: 0;
+    }
+   }
+
+   .dot2 {
+    animation: visibility2 2s linear infinite;
+   }
+   @keyframes visibility2 {
+    0% {
+     opacity: 0;
+    }
+    21% {
+     opacity: 0;
+    }
+    22% {
+     opacity: 1;
+    }
+    65% {
+     opacity: 1;
+    }
+    66% {
+     opacity: 0;
+    }
+    100% {
+     opacity: 0;
+    }
+   }
+
+   .dot3 {
+    animation: visibility3 2s linear infinite;
+   }
+   @keyframes visibility3 {
+    0% {
+     opacity: 0;
+    }
+    43% {
+     opacity: 0;
+    }
+    44% {
+     opacity: 1;
+    }
+    65% {
+     opacity: 1;
+    }
+    66% {
+     opacity: 0;
+    }
+    100% {
+     opacity: 0;
+    }
+   }
 }
 
 
