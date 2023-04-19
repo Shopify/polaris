@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "Zrušit",
+    "apply": "Použít"
+  },
+  "comparedTo": "srovnání s: {date}",
+  "labels": {
+    "since": "Od"
+  },
+  "periods": {
+    "today": "Dnes",
+    "yesterday": "Včera",
+    "last7Days": "Posledních 7 dnů",
+    "last30Days": "Posledních 30 dnů",
+    "lastMonth": "Minulý měsíc",
+    "last90Days": "Posledních 90 dnů",
+    "lastYear": "Minulý rok",
+    "weekToDate": "Aktuální týden",
+    "custom": "Vlastní"
+  }
+}

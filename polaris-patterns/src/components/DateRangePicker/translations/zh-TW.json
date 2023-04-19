@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "取消",
+    "apply": "套用"
+  },
+  "comparedTo": "與 {date} 相比",
+  "labels": {
+    "since": "開始時間"
+  },
+  "periods": {
+    "today": "今天",
+    "yesterday": "昨天",
+    "last7Days": "過去 7 天",
+    "last30Days": "過去 30 天",
+    "lastMonth": "上個月",
+    "last90Days": "過去 90 天",
+    "lastYear": "去年",
+    "weekToDate": "本週至今",
+    "custom": "自訂"
+  }
+}

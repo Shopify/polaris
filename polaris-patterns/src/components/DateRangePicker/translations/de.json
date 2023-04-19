@@ -1,0 +1,10 @@
+{
+  "buttons": {
+    "cancel": "Schließen"
+  },
+  "periods": {
+    "today": "Heute",
+    "yesterday": "Gestern",
+    "custom": "Benutzerdefiniert"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "ยกเลิก",
+    "apply": "ปรับใช้"
+  },
+  "comparedTo": "เทียบกับ {date}",
+  "labels": {
+    "since": "ตั้งแต่"
+  },
+  "periods": {
+    "today": "วันนี้",
+    "yesterday": "เมื่อวาน",
+    "last7Days": "7 วันที่ผ่านมา",
+    "last30Days": "30 วันที่ผ่านมา",
+    "lastMonth": "เดือนที่ผ่านมา",
+    "last90Days": "90 วันที่ผ่านมา",
+    "lastYear": "ปีที่ผ่านมา",
+    "weekToDate": "ต้นสัปดาห์ถึงปัจจุบัน",
+    "custom": "กำหนดเอง"
+  }
+}

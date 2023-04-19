@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "Annuleren",
+    "apply": "Toepassen"
+  },
+  "comparedTo": "vergeleken met {date}",
+  "labels": {
+    "since": "Vanaf"
+  },
+  "periods": {
+    "today": "Vandaag",
+    "yesterday": "Gisteren",
+    "last7Days": "Afgelopen 7 dagen",
+    "last30Days": "Afgelopen 30 dagen",
+    "lastMonth": "Afgelopen maand",
+    "last90Days": "Afgelopen 90 dagen",
+    "lastYear": "Vorig jaar",
+    "weekToDate": "Week tot op heden",
+    "custom": "Aangepast"
+  }
+}

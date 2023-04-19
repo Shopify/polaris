@@ -8,15 +8,6 @@ export function isValidYearMonthDayDateString(date: string) {
   return VALID_YYYY_MM_DD_DATE_REGEX.test(date) && isDate(date);
 }
 
-export function parseYearMonthDayDateString(input: string) {
-  // Date-only strings (e.g. "1970-01-01") are treated as UTC, not local time
-  // when using new Date()
-  // We need to split year, month, day to pass into new Date() separately
-  // to get a localized Date
-  const [year, month, day] = input.split('-');
-  return new Date(Number(year), Number(month) - 1, Number(day));
-}
-
 export function formatDateToYearMonthDayDateString(date: Date) {
   const year = String(date.getFullYear());
   let month = String(date.getMonth() + 1);
@@ -62,3 +53,60 @@ export function getDifferenceInDays(
 
   return Math.floor(absoluteDifferenceInDays);
 }
+
+export const isValidDate = (date: string) => {
+  return date.length === 10 && isValidYearMonthDayDateString(date);
+};
+
+export const today = () => new Date(new Date().setHours(0, 0, 0, 0));
+
+export const yesterday = () =>
+  new Date(
+    new Date(new Date().setDate(today().getDate() - 1)).setHours(0, 0, 0, 0),
+  );
+
+export const daysAgo = (days: number) =>
+  new Date(
+    new Date(new Date().setDate(today().getDate() - days)).setHours(0, 0, 0, 0),
+  );
+
+export const monthsAgo = (months: number) =>
+  new Date(
+    new Date(new Date().setMonth(today().getMonth() - months)).setHours(
+      0,
+      0,
+      0,
+      0,
+    ),
+  );
+
+export const firstDayOfWeek = () => {
+  const today = new Date();
+  return new Date(
+    new Date(today.setDate(today.getDate() - today.getDay())).setHours(
+      0,
+      0,
+      0,
+      0,
+    ),
+  );
+};
+
+export const yearsAgo = (years: number) =>
+  new Date(
+    new Date(new Date().setFullYear(today().getFullYear() - years)).setHours(
+      0,
+      0,
+      0,
+      0,
+    ),
+  );
+
+export const parseYearMonthDayDateString = (input: string) => {
+  // Date-only strings (e.g. "1970-01-01") are treated as UTC, not local time
+  // when using new Date()
+  // We need to split year, month, day to pass into new Date() separately
+  // to get a localized Date
+  const [year, month, day] = input.split('-');
+  return new Date(Number(year), Number(month) - 1, Number(day));
+};

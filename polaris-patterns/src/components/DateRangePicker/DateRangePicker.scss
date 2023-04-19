@@ -1,0 +1,25 @@
+@import '@shopify/polaris-tokens/dist/scss/media-queries.scss';
+
+.DateRangeWrapper {
+  display: flex;
+  align-items: center;
+  @media #{$p-breakpoints-sm-down} {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  padding-bottom: var(--p-space-4);
+}
+
+.DateRangeWrapper > *:nth-child(2) {
+  padding-left: var(--p-space-4);
+  @media #{$p-breakpoints-sm-down} {
+    padding-left: 0;
+    padding-top: var(--p-space-3);
+  }
+}
+
+.DateRangeWrapper > *:first-child {
+  @media #{$p-breakpoints-sm-down} {
+    width: 100%;
+  }
+}

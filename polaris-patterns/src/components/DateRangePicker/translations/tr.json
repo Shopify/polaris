@@ -1,0 +1,21 @@
+{
+  "buttons": {
+    "cancel": "İptal",
+    "apply": "Uygula"
+  },
+  "comparedTo": "{date} ile kıyaslandığında",
+  "labels": {
+    "since": "Şu zamandan itibaren:"
+  },
+  "periods": {
+    "today": "Bugün",
+    "yesterday": "Dün",
+    "last7Days": "Son 7 gün",
+    "last30Days": "Son 30 gün",
+    "lastMonth": "Geçen ay",
+    "last90Days": "Son 90 gün",
+    "lastYear": "Geçen yıl",
+    "weekToDate": "Hafta başından bugüne",
+    "custom": "Özel"
+  }
+}
