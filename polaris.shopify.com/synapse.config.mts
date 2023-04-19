@@ -39,6 +39,11 @@ export default defineConfig({
       plugins: [polarisGeneralDocs, embeddings, synapseStringify],
     },
     {
+      name: 'patterns-legacy',
+      source: ['./content/patterns-legacy/**/*.md'],
+      plugins: [polarisGeneralDocs, embeddings, synapseStringify],
+    },
+    {
       name: 'polaris-migrations',
       source: ['../polaris-migrator/src/migrations/**/*.tsx'],
       plugins: [polarisMigratorDocs, embeddings, synapseStringify],
