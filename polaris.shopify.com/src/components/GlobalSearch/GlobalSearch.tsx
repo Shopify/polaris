@@ -58,17 +58,8 @@ function captureSearchEvent(
     category: 'engagement',
   };
 
-  const googleParams = {
-    event_category: resultRank > 0 ? 'engagement' : 'exit',
-    event_label: selectedResult,
-    value: resultRank,
-  };
-
   if (process.env.NODE_ENV === 'production') {
-    // i honestly have no idea which one of thes is the right set up for the google analytics version we have so let's try both
-    // and keep the one that works
     window.gtag('event', 'customSearch', customParams);
-    window.gtag('event', 'Global Search', googleParams);
   }
 }
 
