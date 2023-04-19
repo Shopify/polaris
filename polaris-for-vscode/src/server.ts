@@ -15,9 +15,7 @@ import type {
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-const {legacy, ...restTokenGroups} = metadata;
-
-const groupedCompletionItemTokenGroups = restTokenGroups;
+const groupedCompletionItemTokenGroups = metadata;
 
 type GroupedCompletionItemsKey = keyof typeof groupedCompletionItemTokenGroups;
 
