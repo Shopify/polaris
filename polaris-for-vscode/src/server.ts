@@ -71,7 +71,7 @@ const connection = createConnection(ProposedFeatures.all);
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
 type TokenGroupPatterns = {
-  [F in TokenGroupName]: RegExp;
+  [T in TokenGroupName]: RegExp;
 };
 
 const tokenGroupPatterns: TokenGroupPatterns = {
