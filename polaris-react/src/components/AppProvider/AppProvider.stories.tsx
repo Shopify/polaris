@@ -75,7 +75,7 @@ export function Default(_, context) {
   );
 }
 
-export function WithI18n(_, context) {
+export function WithI18n() {
   return (
     <AppProvider
       i18n={{
@@ -136,6 +136,7 @@ export function WithI18n(_, context) {
 }
 
 export function WithLinkComponent(_, context) {
+  // We can do this because the AppProviderDecorator wraps all Stories, even AppProvider.stories.tsx
   const CustomLinkComponent = ({children, url, ...rest}) => {
     return (
       <a
