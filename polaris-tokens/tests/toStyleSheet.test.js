@@ -31,7 +31,6 @@ const mockTokens = {
   font: {},
   motion: {},
   legacyTokens: {},
-  shape: {},
   spacing: {},
   zIndex: {},
 };

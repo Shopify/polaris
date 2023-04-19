@@ -67,10 +67,7 @@ type GroupedCompletionItemPatterns = {
   [T in GroupedCompletionItemsKey]: RegExp;
 };
 
-const groupedCompletionItemPatterns: Omit<
-  GroupedCompletionItemPatterns,
-  'shape'
-> = {
+const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
   breakpoints: /width/,
   border: /border/,
   color:
