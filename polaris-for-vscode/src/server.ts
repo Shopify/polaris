@@ -15,7 +15,13 @@ import type {
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-const excludedTokenGroupNames = ['colors', 'depth', 'legacy', 'shape'] as const;
+const excludedTokenGroupNames = [
+  'colors',
+  'depth',
+  'legacy',
+  'spacing',
+  'shape',
+] as const;
 
 type ExcludedTokenGroupName = typeof excludedTokenGroupNames[number];
 

@@ -1,10 +1,10 @@
 ---
-title: spacing/global-disallowed-list
+title: space/global-disallowed-list
 description: Disallows use of legacy spacing Sass APIs.
 keywords:
   - stylelint
-  - spacing
-  - spacing rules
+  - space
+  - space
 ---
 
 ```diff
