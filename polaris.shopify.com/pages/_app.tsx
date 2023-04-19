@@ -13,7 +13,14 @@ import '../src/styles/globals.scss';
 const PUBLIC_GA_ID = 'UA-49178120-32';
 
 const gaPageView = (url: string) => {
-  window.gtag('config', PUBLIC_GA_ID, {page_path: url});
+  window.gtag('config', PUBLIC_GA_ID, {
+    page_path: url,
+    custom_map: {
+      metric1: 'search_term',
+      metric2: 'result_rank',
+      metric3: 'selected_result',
+    },
+  });
 };
 
 // Remove dark mode flicker. Minified version of https://github.com/donavon/use-dark-mode/blob/develop/noflash.js.txt
