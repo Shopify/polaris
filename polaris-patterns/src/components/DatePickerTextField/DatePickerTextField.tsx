@@ -10,7 +10,8 @@ import {
   TextField,
 } from '@shopify/polaris';
 import {CalendarMinor} from '@shopify/polaris-icons';
-import {useI18n} from '@shopify/react-i18n';
+import {I18nContext, useI18n} from '@shopify/react-i18n';
+import {useTranslation} from 'react-i18next';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
 import {
@@ -19,6 +20,7 @@ import {
   formatDateToYearMonthDayDateString,
 } from '../../utilities/dates';
 import {DatePicker} from '../DatePicker';
+import {useI18nManager} from '../PolarisPatternsProvider';
 
 export interface Props {
   disabled?: boolean;
@@ -48,7 +50,17 @@ const DISPLAY_DATE_FORMAT: Intl.DateTimeFormatOptions = {
   timeZone: 'UTC',
 };
 
-export function DatePickerTextField({
+export function DatePickerTextField(props: Props) {
+  const manager = useI18nManager();
+
+  return (
+    <I18nContext.Provider value={manager}>
+      <DatePickerTextFieldComponent {...props} />
+    </I18nContext.Provider>
+  );
+}
+
+export function DatePickerTextFieldComponent({
   value,
   label,
   hideDatePicker,
@@ -68,6 +80,8 @@ export function DatePickerTextField({
   disableDatesAfter,
 }: Props) {
   const [i18n] = useI18n();
+  const [t] = useTranslation();
+
   const [visible, setVisible] = useState(false);
   const datePickerRef = useRef<HTMLDivElement>(null);
   const datePickerTextId = useId();
@@ -211,7 +225,7 @@ export function DatePickerTextField({
       helpText={helpText}
       prefix={iconHidden ? undefined : <Icon source={CalendarMinor} />}
       value={formattedValue}
-      placeholder={i18n.translate('DatePickerTextField.placeholderDateValue')}
+      placeholder={t('DatePickerTextField.placeholderDateValue') || ''}
       onFocus={() => setVisible(Boolean(!disabled))}
       onChange={handleInputValueChange}
       onBlur={handleInputBlur as any}
