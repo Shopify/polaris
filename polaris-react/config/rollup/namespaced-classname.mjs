@@ -1,17 +1,19 @@
-const {basename} = require('path');
+import {basename} from 'path';
 
-const {camelCase} = require('change-case');
+import {camelCase} from 'change-case';
 
 const COMPONENT_REGEX = /^[A-Z]\w+$/;
 const SUBCOMPONENT_VARIATION_SELECTOR = /^\w+-\w+$/;
 const NESTED_COMPONENT_PATH_REGEX = /.*\/components\/(.*)\/components/;
 
-module.exports.generateScopedName = function generateScopedName({
-  includeHash = false,
-} = {}) {
+export function generateScopedName({includeHash = false} = {}) {
   return (name, filename) => {
-    const componentName = basename(filename, '.module.scss');
-    const nestedComponentMatch = NESTED_COMPONENT_PATH_REGEX.exec(filename);
+    // Vite's esbuild appends query params to files under certain circumstances,
+    // so we clean those off in order to get the actual file name.
+    const cleanedFilename = filename.replace(/\?.*$/, '');
+    const componentName = basename(cleanedFilename, '.module.scss');
+    const nestedComponentMatch =
+      NESTED_COMPONENT_PATH_REGEX.exec(cleanedFilename);
 
     const polarisComponentName =
       nestedComponentMatch && nestedComponentMatch.length > 1
@@ -42,7 +44,7 @@ module.exports.generateScopedName = function generateScopedName({
 
     return className + suffix;
   };
-};
+}
 
 function isComponent(className) {
   return COMPONENT_REGEX.test(className);

@@ -1,11 +1,17 @@
+// This file is built using vite, so we can use `import.meta.env` to access environment variables.
+// This file is also built by the vite config in './main.js
+
 import React, {useRef, useEffect} from 'react';
 
 import {AppProvider, FrameContext} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
-import {gridOptions, featureFlagOptions} from './manager';
 import {themeNameDefault, themeNames, themes} from '@shopify/polaris-tokens';
+import {
+  gridOptions,
+  featureFlagOptions,
+} from './addons/global-controls-panel/manager';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -21,8 +27,20 @@ function StrictModeDecorator(Story, context) {
 function AppProviderDecorator(Story, context) {
   if (context.args.omitAppProvider) return <Story {...context} />;
 
+  const features = Object.keys(featureFlagOptions).reduce(
+    (acc, featureFlag) => ({
+      ...acc,
+      [featureFlag]: context.globals[featureFlag],
+    }),
+    {},
+  );
+
   return (
-    <AppProvider theme={context.globals.theme} i18n={enTranslations}>
+    <AppProvider
+      theme={context.globals.theme}
+      features={features}
+      i18n={enTranslations}
+    >
       <FrameContext.Provider value={{}}>
         <Story {...context} />
       </FrameContext.Provider>
