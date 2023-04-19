@@ -18,7 +18,10 @@ type Gap = {
 };
 
 export interface GridProps {
-  /* Set grid-template-areas */
+  /**
+   * Set grid-template-areas
+   * @deprecated Use nested layout components instead
+   */
   areas?: Areas;
   /* Number of columns */
   columns?: Columns;
