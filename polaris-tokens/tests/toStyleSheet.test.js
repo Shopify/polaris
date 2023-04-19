@@ -30,7 +30,6 @@ const mockTokens = {
   depth: mockTokenGroup,
   font: {},
   motion: {},
-  legacyTokens: {},
   shape: {},
   spacing: {},
   zIndex: {},
