@@ -15,7 +15,7 @@ type CategoryMap = {
   colors: string;
   motion: string;
   typography: string;
-  shape: string;
+  border: string;
   spacing: string;
   depth: string;
   'media queries': string;
@@ -32,7 +32,7 @@ const resourceLinks = {
   motion: 'Polaris [motion tokens](/tokens/motion)',
   typography:
     'the [text component](/components/typography/text) or [font tokens](/tokens/font)',
-  shape: 'Polaris [shape tokens](/tokens/shape)',
+  border: 'Polaris [border tokens](/tokens/border)',
   spacing: 'Polaris [spacing tokens](/tokens/spacing)',
   depth: 'Polaris [depth tokens](/tokens/depth)',
   'media queries':

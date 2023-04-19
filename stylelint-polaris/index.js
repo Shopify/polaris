@@ -472,7 +472,7 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris spacing token',
     },
   ],
-  shape: [
+  border: [
     {
       'declaration-property-unit-disallowed-list': [
         {

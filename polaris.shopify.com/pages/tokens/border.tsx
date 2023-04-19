@@ -8,7 +8,7 @@ const Components: NextPage = () => {
     <>
       <PageMeta title="Shape tokens" />
 
-      <TokensPage tokenGroup={'shape'} />
+      <TokensPage tokenGroup={'border'} />
     </>
   );
 };

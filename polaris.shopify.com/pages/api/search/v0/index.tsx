@@ -74,13 +74,13 @@ const getSearchResults = (query?: string) => {
     });
   });
 
-  const {colors, depth, font, motion, shape, spacing, zIndex} = metadata;
+  const {colors, depth, font, motion, border, spacing, zIndex} = metadata;
   const tokenGroups = {
     colors,
     depth,
     font,
     motion,
-    shape,
+    border,
     spacing,
     zIndex,
   };
