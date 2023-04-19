@@ -16,9 +16,9 @@ const gaPageView = (url: string) => {
   window.gtag('config', PUBLIC_GA_ID, {
     page_path: url,
     custom_map: {
-      metric1: 'searchTerm',
-      metric2: 'resultRank',
-      metric3: 'selectedResult',
+      metric1: 'search_term',
+      metric2: 'result_rank',
+      metric3: 'selected_result',
     },
   });
 };

@@ -52,9 +52,9 @@ function captureSearchEvent(
   if (!searchTerm) return;
 
   const customParams = {
-    searchTerm,
-    resultRank,
-    selectedResult,
+    search_term: searchTerm,
+    result_rank: resultRank,
+    selected_result: selectedResult,
     category: 'engagement',
   };
 
