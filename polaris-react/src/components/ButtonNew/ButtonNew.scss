@@ -1,8 +1,10 @@
 :root {
   --border: #CACED3;
+  --border-subdued: #DDE0E4;
   --border-strong: #ABB1BA;
   --border-strong-hover: #87909B;
   --bg: #fff;
+  --bg-subdued: #F9FAFB;
   --bg-hover: #F1F2F4;
   --bg-active: #EBECEF;
 }
@@ -18,13 +20,11 @@
   border-bottom-color: var(--border-strong-hover);
   padding-left: var(--p-space-3);
   padding-right: var(--p-space-3);
-  // adding top/bottom padding to change position of text in active state
-  // padding-top: var(--p-space-2);
-  // padding-bottom: var(--p-space-2);
   border-radius: var(--p-border-radius-1);
   min-height: 36px;
   min-width: 36px;
   font-weight: var(--p-font-weight-medium);
+  // animation flashing when I set "all" - targeted each attribute for now
   transition: background-color var(--p-duration-100) var(--p-ease-out),
               border var(--p-duration-100) var(--p-ease-out),
               box-shadow var(--p-duration-100) var(--p-ease-out),
@@ -36,6 +36,8 @@
 
   &:hover {
     background: var(--bg-hover);
+    // trying different colors
+    // background: var(--bg-subdued);
     border-color: var(--border);
     border-bottom-color: var(--border);
 
@@ -44,13 +46,13 @@
 
   &:active {
     background: var(--bg-active);
-    border-color: -border;
+    // trying different colors
+    // background: var(--bg-hover);
+    border-color: transparent;
     box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.12),
     inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2);
-    // box-shadow: var(--p-shadow-sm), inset 0px 1px 0px rgba(0, 0, 0, 0.15);
     // this is just a hack for now
     padding-top: 3px;
-    // padding-bottom: 7px;
 
 
     &::after {
