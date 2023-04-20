@@ -1,6 +1,6 @@
 ---
 title: legacy/at-rule-disallowed-list
-description: Disallows use pf legacy Sass mixins.
+description: Disallows use of legacy Sass mixins.
 keywords:
   - stylelint
   - legacy
