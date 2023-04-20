@@ -2,7 +2,7 @@ import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss from 'postcss';
 import type {Plugin} from 'postcss';
 import valueParser from 'postcss-value-parser';
-import {colors as tokenColors, createVar} from '@shopify/polaris-tokens';
+import {createVar} from '@shopify/polaris-tokens';
 
 import {
   namespace,
@@ -12,6 +12,8 @@ import {
 } from '../../utilities/sass';
 import type {NamespaceOptions} from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
+
+import {colors as tokenColors} from './v9-legacy-colors';
 
 export default function scssReplaceColor(
   file: FileInfo,
