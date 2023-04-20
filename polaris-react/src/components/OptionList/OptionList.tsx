@@ -41,6 +41,8 @@ export interface OptionListProps {
   onChange(selected: string[]): void;
   /** Callback when pointer enters an option */
   onPointerEnterOption?(selected: string): void;
+  /** Callback when focusing an option */
+  onFocusOption?(selected: string): void;
 }
 
 export function OptionList({
@@ -55,6 +57,7 @@ export function OptionList({
   onChange,
   id: idProp,
   onPointerEnterOption,
+  onFocusOption,
 }: OptionListProps) {
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
@@ -104,6 +107,18 @@ export function OptionList({
     [normalizedOptions, onPointerEnterOption],
   );
 
+  const handleFocus = useCallback(
+    (sectionIndex: number, optionIndex: number) => {
+      if (!onFocusOption) return;
+
+      const selectedValue =
+        normalizedOptions[sectionIndex].options[optionIndex].value;
+
+      onFocusOption(selectedValue);
+    },
+    [normalizedOptions, onFocusOption],
+  );
+
   const optionsExist = normalizedOptions.length > 0;
 
   const optionsMarkup = optionsExist
@@ -143,6 +158,7 @@ export function OptionList({
                 verticalAlign={verticalAlign}
                 role={optionRole}
                 onPointerEnter={handlePointerEnter}
+                onFocus={handleFocus}
               />
             );
           });
