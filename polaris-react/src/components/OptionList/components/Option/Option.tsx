@@ -28,6 +28,7 @@ export interface OptionProps {
   onClick(section: number, option: number): void;
   /** Callback when pointer enters the option */
   onPointerEnter(section: number, option: number): void;
+  onFocus(section: number, option: number): void;
 }
 
 export function Option({
@@ -45,6 +46,7 @@ export function Option({
   index,
   verticalAlign,
   onPointerEnter,
+  onFocus,
 }: OptionProps) {
   const {value: focused, toggle: toggleFocused} = useToggle(false);
 
@@ -63,6 +65,12 @@ export function Option({
 
     onPointerEnter(section, index);
   }, [disabled, onPointerEnter, section, index]);
+
+  const handleFocus = useCallback(() => {
+    toggleFocused();
+
+    onFocus(section, index);
+  }, [toggleFocused, onFocus, section, index]);
 
   const mediaMarkup = media ? (
     <div className={styles.Media}>{media}</div>
@@ -110,7 +118,7 @@ export function Option({
       className={singleSelectClassName}
       onClick={handleClick}
       disabled={disabled}
-      onFocus={toggleFocused}
+      onFocus={handleFocus}
       onBlur={toggleFocused}
       aria-pressed={active}
     >
