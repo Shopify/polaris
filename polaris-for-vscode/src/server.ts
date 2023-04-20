@@ -15,7 +15,13 @@ import type {
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-const excludedTokenGroupNames = ['colors', 'depth', 'legacy', 'shape'] as const;
+const excludedTokenGroupNames = [
+  'colors',
+  'depth',
+  'legacy',
+  'spacing',
+  'shape',
+] as const;
 
 type ExcludedTokenGroupName = typeof excludedTokenGroupNames[number];
 
@@ -82,7 +88,7 @@ const tokenGroupPatterns: TokenGroupPatterns = {
   font: /font|line-height/,
   motion: /animation/,
   shadow: /shadow/,
-  spacing: /margin|padding|gap|top|left|right|bottom/,
+  space: /margin|padding|gap|top|left|right|bottom/,
   zIndex: /z-index/,
 };
 

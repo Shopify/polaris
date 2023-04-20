@@ -165,7 +165,7 @@ npx @shopify/polaris-migrator v9-scss-replace-breakpoints <path>
 
 #### `v9-scss-replace-border`
 
-Replace usage of the legacy SCSS `border()`) function in `border` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+Replace usage of the legacy SCSS `border()` function in `border` declarations with corresponding Polaris [shape](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v8-to-v9.md#border) token.
 
 ```diff
 - border: border();
@@ -185,7 +185,7 @@ npx @shopify/polaris-migrator v9-scss-replace-border <path>
 
 #### `v9-scss-replace-border-radius`
 
-Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` declarations with corresponding Polaris [shape](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v8-to-v9.md#border-radius) tokens.
 
 ```diff
 - border-radius: border-radius();
@@ -205,7 +205,7 @@ npx @shopify/polaris-migrator v9-scss-replace-border-radius <path>
 
 #### `v9-scss-replace-border-width`
 
-Replace usage of the legacy SCSS `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+Replace usage of the legacy SCSS `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [shape](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v8-to-v9.md#border-width) tokens.
 
 ```diff
 - border-width: border-width();
@@ -244,7 +244,7 @@ npx @shopify/polaris-migrator v9-scss-replace-color <path>
 
 #### `v9-scss-replace-duration`
 
-Replace the legacy SCSS `duration()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+Replace the legacy SCSS `duration()` function with the corresponding Polaris [motion](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v8-to-v9.md#duration) token.
 
 ```diff
 - transition-duration: legacy-polaris-v8.duration('slow');
@@ -264,7 +264,7 @@ npx @shopify/polaris-migrator v9-scss-replace-duration <path>
 
 #### `v9-scss-replace-easing`
 
-Replace the legacy SCSS `easing()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+Replace the legacy SCSS `easing()` function with the corresponding Polaris [motion](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v8-to-v9.md#easing) token.
 
 ```diff
 - transition-timing-function: legacy-polaris-v8.easing('in');
@@ -284,7 +284,7 @@ npx @shopify/polaris-migrator v9-scss-replace-easing <path>
 
 #### `v9-scss-replace-font-family`
 
-Replace legacy SCSS `font-family()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+Replace legacy SCSS `font-family()` function with the corresponding Polaris [font](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v8-to-v9.md#font-family) token.
 
 ```diff
 - font-family: font-family(monospace);
@@ -301,7 +301,7 @@ npx @shopify/polaris-migrator v9-scss-replace-font-family <path>
 
 #### `v9-scss-replace-font-size`
 
-Replace legacy SCSS `font-size()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+Replace legacy SCSS `font-size()` function with the corresponding Polaris [font](https://github.com/Shopify/polaris/blob/472e2f65ba4cbee05b458c135acc02b204a3d480/src/tokens/token-groups/font-size.json) token.
 
 ```diff
 - font-size: font-size(input, base);
@@ -318,7 +318,7 @@ npx @shopify/polaris-migrator v9-scss-replace-font-size <path>
 
 #### `v9-scss-replace-line-height`
 
-Replace legacy SCSS `line-height()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+Replace legacy SCSS `line-height()` function with the corresponding Polaris [font](https://github.com/Shopify/polaris/blob/175aa5200c686477174f80916529e3043a720af4/src/tokens/token-groups/line-height.json) token.
 
 ```diff
 - line-height: line-height(caption, base);
@@ -449,7 +449,7 @@ npx @shopify/polaris-migrator v9-styles-tokenize-font <path>
 
 #### `v9-styles-tokenize-motion`
 
-Replace timings (`ms`, `s`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) and animation declarations (`animation`, `animation-duration`, `animation-delay`, and `animation-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+Replace timings (`ms`, `s`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) and animation declarations (`animation`, `animation-duration`, `animation-delay`, and `animation-timing-function`) with the corresponding Polaris [motion](https://github.com/Shopify/polaris/blob/e11f52f04bea123219d7b5c96cda181de6471bb8/src/tokens/token-groups/motion.json) token.
 
 ```diff
 - transition-duration: 100ms;
@@ -487,7 +487,7 @@ npx @shopify/polaris-migrator v9-styles-tokenize-motion <path>
 
 #### `v9-styles-tokenize-shape`
 
-Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [shape](https://github.com/Shopify/polaris/blob/e11f52f04bea123219d7b5c96cda181de6471bb8/src/tokens/token-groups/shape.json) token.
 
 ```diff
 - border: 1px solid transparent;

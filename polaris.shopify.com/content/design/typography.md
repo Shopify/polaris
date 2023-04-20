@@ -58,7 +58,7 @@ Line length describes the width of the content. For longer body text, the recomm
 
 Color can be used to add contrast and reinforce the hierarchy between text.
 
-For example, one way to distinguish between a title and a subtitle is to apply `--p-text-color` to the title, and `--p-text-subdued` to the subtitle. Using a lighter color for secondary information provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.
+For example, one way to distinguish between a title and a subtitle is to apply `--p-color-text` to the title, and `--p-color-text-subdued` to the subtitle. Using a lighter color for secondary information provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.
 
 ![An image showing how you can use color to add hierarchy within text elements](/images/design/typography/text-color-different@2x.png)
 

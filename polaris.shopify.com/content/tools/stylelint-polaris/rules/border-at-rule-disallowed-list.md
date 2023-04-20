@@ -1,10 +1,10 @@
 ---
-title: shape/at-rule-disallowed-list
+title: border/at-rule-disallowed-list
 description: Disallows use of legacy Sass border mixins.
 keywords:
   - stylelint
-  - shape
-  - shape rules
+  - border
+  - border rules
 ---
 
 ```diff
@@ -19,7 +19,7 @@ NOTE: The `focus-ring` at rule does not currently have an equivalent token or co
 ```diff
 // Do
 + &:focus {
-  + outline: var(--p-border-width-2) solid var(--p-focused);
+  + outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus);
   + outline-offset: var(--p-space-05);
 + }
 // Don't
