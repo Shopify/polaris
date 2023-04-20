@@ -15,6 +15,7 @@ describe('<Option />', () => {
     index: 0,
     onClick: noop,
     onPointerEnter: noop,
+    onFocus: noop,
   };
 
   it('renders a checkbox if allowMultiple is true', () => {
@@ -98,6 +99,21 @@ describe('<Option />', () => {
       listItem.trigger('onPointerEnter');
 
       expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('onFocus', () => {
+    it('is called with section and index', () => {
+      const spy = jest.fn();
+      const {section, index} = defaultProps;
+
+      const listItem = mountWithApp(
+        <Option {...defaultProps} onFocus={spy} />,
+      ).find('button')!;
+      listItem.trigger('onFocus');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(section, index);
     });
   });
 
