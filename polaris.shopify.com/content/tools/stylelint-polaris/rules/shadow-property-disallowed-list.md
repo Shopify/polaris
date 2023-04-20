@@ -1,10 +1,10 @@
 ---
-title: depth/property-disallowed-list
+title: shadow/property-disallowed-list
 description: Disallows text shadow property.
 keywords:
   - stylelint
-  - depth
-  - depth rules
+  - shadow
+  - shadow rules
 ---
 
 Instead of using properties like `text-shadow`, make sure the text has proper contrast with the background so that it is readable without a shadow.
