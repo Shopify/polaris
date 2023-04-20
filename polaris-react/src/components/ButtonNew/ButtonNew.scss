@@ -1,10 +1,20 @@
 :root {
   --border: #CACED3;
+  --border-subdued: #DDE0E4;
   --border-strong: #ABB1BA;
   --border-strong-hover: #87909B;
   --bg: #fff;
+  --bg-subdued: #F9FAFB;
   --bg-hover: #F1F2F4;
   --bg-active: #EBECEF;
+  --bg-primary: #007A5C;
+  --bg-primary-hover: #125443;
+  --bg-primary-active: #0C3B2F;
+  --bg-critical: #C5280C;
+  --bg-critical-hover: #9F200A;
+  --bg-critical-active: #731807;
+
+  --text-on-color: #fff;
 }
 
 .Button {
@@ -18,13 +28,11 @@
   border-bottom-color: var(--border-strong-hover);
   padding-left: var(--p-space-3);
   padding-right: var(--p-space-3);
-  // adding top/bottom padding to change position of text in active state
-  // padding-top: var(--p-space-2);
-  // padding-bottom: var(--p-space-2);
   border-radius: var(--p-border-radius-1);
   min-height: 36px;
   min-width: 36px;
   font-weight: var(--p-font-weight-medium);
+  // animation flashing when I set "all" - targeted each attribute for now
   transition: background-color var(--p-duration-100) var(--p-ease-out),
               border var(--p-duration-100) var(--p-ease-out),
               box-shadow var(--p-duration-100) var(--p-ease-out),
@@ -36,6 +44,8 @@
 
   &:hover {
     background: var(--bg-hover);
+    // trying different colors
+    // background: var(--bg-subdued);
     border-color: var(--border);
     border-bottom-color: var(--border);
 
@@ -44,13 +54,13 @@
 
   &:active {
     background: var(--bg-active);
-    border-color: -border;
+    // trying different colors
+    // background: var(--bg-hover);
+    border-color: transparent;
     box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.12),
     inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2);
-    // box-shadow: var(--p-shadow-sm), inset 0px 1px 0px rgba(0, 0, 0, 0.15);
     // this is just a hack for now
     padding-top: 3px;
-    // padding-bottom: 7px;
 
 
     &::after {
@@ -100,7 +110,7 @@
 }
 
 .variantPrimary {
-  background: var(--p-action-primary);
+  background: var(--bg-primary);
   color: var(--p-text-on-primary);
   border-width: 0;
   border-color: transparent;
@@ -111,25 +121,35 @@
   }
 
   &:hover {
-    background: var(--p-action-primary-hovered);
+    background: var(--bg-primary-hover);
   }
 
   &:active {
-    background: var(--p-action-primary-depressed);
+    background: var(--bg-primary-active);
+    // slightly darker inset shadow for primary
+    box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
+    inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6);
   }
 
   &.disabled {
-    color: var(--p-text-on-primary);
+    color: var(--text-on-color);
     background: rgba(0, 128, 96, 0.5);
     border-color: rgba(31, 33, 36, 0.2);
   }
 
   &.toneCritical {
-    background: var(--p-action-critical);
-    color: var(--p-text-on-critical);
+    background: var(--bg-critical);
+    color: var(--text-on-color);
     border-width: 0;
-    border-color: rgba(31, 33, 36, 0.2);
-    box-shadow: var(--p-shadow-sm);
+    border-color: transparent;
+
+    &:hover {
+      background: var(--bg-critical-hover);
+    }
+
+    &:active {
+      background: var(--bg-critical-active);
+    }
 
     svg {
       fill: var(--p-icon-on-critical);
@@ -152,17 +172,17 @@
 .variantTransparent {
   background: transparent;
   color: var(--p-text);
-  border-width: 0;
   border-color: transparent;
+  border-width: 0px;
   box-shadow: none;
 
   &:hover {
-    background: var(--p-background-hovered);
+    background: var(--bg-hover);
   }
 
   &:active {
-    background: var(--p-background-selected);
-    box-shadow: none;
+    background: var(--bg-active);
+    // box-shadow: none;
   }
 
   &.toneCritical {
