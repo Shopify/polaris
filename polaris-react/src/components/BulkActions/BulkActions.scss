@@ -14,7 +14,7 @@ $bulk-actions-button-stacking-order: (
   opacity: 0;
   width: 100%;
   justify-content: center;
-  transition: var(--p-motion-duration-100) var(--p-ease);
+  transition: var(--p-motion-duration-100) var(--p-motion-ease);
   transition-property: transform, opacity;
   transform: translateY(120px);
   padding: 0 var(--p-space-4);

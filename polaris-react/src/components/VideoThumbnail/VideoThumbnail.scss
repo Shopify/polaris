@@ -90,7 +90,7 @@ $progress-bar-height: 6px;
   transform-origin: left;
   transform: scaleX(0);
   background-color: var(--p-color-border-info);
-  transition: transform var(--p-motion-duration-500) var(--p-ease);
+  transition: transform var(--p-motion-duration-500) var(--p-motion-ease);
 }
 
 .ProgressBar,

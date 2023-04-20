@@ -100,7 +100,7 @@
   pointer-events: none;
   will-change: opacity;
   cursor: pointer;
-  transition: opacity var(--p-motion-duration-100) var(--p-ease);
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
 
   svg {
     fill: var(--p-color-bg);

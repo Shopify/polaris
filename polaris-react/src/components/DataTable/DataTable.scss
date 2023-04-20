@@ -183,7 +183,7 @@
   display: flex;
   align-self: flex-end;
   opacity: 0;
-  transition: opacity var(--p-motion-duration-200) var(--p-ease);
+  transition: opacity var(--p-motion-duration-200) var(--p-motion-ease);
 }
 
 .Heading {
@@ -196,7 +196,7 @@
   justify-content: flex-end;
   align-items: baseline;
   color: var(--p-color-text);
-  transition: color var(--p-motion-duration-200) var(--p-ease);
+  transition: color var(--p-motion-duration-200) var(--p-motion-ease);
   cursor: pointer;
   padding: var(--p-space-2);
   margin: var(--p-space-2);

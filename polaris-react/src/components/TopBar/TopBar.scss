@@ -74,7 +74,7 @@ $icon-size: 20px;
   padding: var(--p-space-2);
   border-radius: var(--p-border-radius-1);
   fill: var(--p-color-icon); // Icon will inherit this fill
-  transition: var(--p-motion-duration-150) fill var(--p-ease)
+  transition: var(--p-motion-duration-150) fill var(--p-motion-ease)
     var(--p-motion-duration-50);
 
   &.focused:active {

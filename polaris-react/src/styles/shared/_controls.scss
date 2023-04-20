@@ -24,8 +24,8 @@
       background-color: var(--p-color-bg-interactive);
       opacity: 0;
       transform: scale(0.25);
-      transition: opacity var(--p-motion-duration-100) var(--p-ease),
-        transform var(--p-motion-duration-100) var(--p-ease);
+      transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
+        transform var(--p-motion-duration-100) var(--p-motion-ease);
     }
 
     &.hover,
