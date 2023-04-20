@@ -14,7 +14,7 @@ import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function IndexFiltersDefault() {
+function IndexFiltersDefaultExample() {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
@@ -396,4 +396,4 @@ function IndexFiltersDefault() {
   }
 }
 
-export default withPolarisExample(IndexFiltersDefault);
+export default withPolarisExample(IndexFiltersDefaultExample);
