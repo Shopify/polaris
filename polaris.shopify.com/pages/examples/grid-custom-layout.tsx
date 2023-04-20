@@ -20,33 +20,30 @@ function GridExample() {
           }}
         >
           <Grid.Cell area="product">
-            <div
-              style={{
-                height: '60px',
-                background: 'aquamarine',
-              }}
-            />
+            <Placeholder height="60px" />
           </Grid.Cell>
           <Grid.Cell area="sales">
-            <div
-              style={{
-                height: '60px',
-                background: 'aquamarine',
-              }}
-            />
+            <Placeholder height="60px" />
           </Grid.Cell>
           <Grid.Cell area="orders">
-            <div
-              style={{
-                height: '60px',
-                background: 'aquamarine',
-              }}
-            />
+            <Placeholder height="60px" />
           </Grid.Cell>
         </Grid>
       </LegacyCard>
     </Page>
   );
 }
+
+const Placeholder = ({height = 'auto', width = 'auto'}) => {
+  return (
+    <div
+      style={{
+        background: 'var(--p-color-text-info)',
+        height: height,
+        width: width,
+      }}
+    />
+  );
+};
 
 export default withPolarisExample(GridExample);
