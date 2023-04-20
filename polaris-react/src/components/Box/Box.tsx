@@ -6,7 +6,7 @@ import type {
   BorderWidthScale,
   BorderRadiusScale,
   ShadowAlias,
-  SpacingSpaceScale,
+  SpaceScale,
 } from '@shopify/polaris-tokens';
 
 import {
@@ -24,7 +24,7 @@ type LineStyles = 'solid' | 'dashed';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
-type Spacing = ResponsiveProp<SpacingSpaceScale>;
+type Spacing = ResponsiveProp<SpaceScale>;
 
 export interface BoxProps extends React.AriaAttributes {
   children?: React.ReactNode;

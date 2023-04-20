@@ -1,16 +1,14 @@
 # Changelog
 
-## 7.0.0
-
-### Major Changes
-
-- [#8919](https://github.com/Shopify/polaris/pull/8919) [`7349d4108`](https://github.com/Shopify/polaris/commit/7349d4108f22d1173aa6f4802df1c430bfc3c5ee) Thanks [@skparkk](https://github.com/skparkk)! - Added new keyboard major + minor icons
+## 6.13.0
 
 ### Minor Changes
 
 - [#8924](https://github.com/Shopify/polaris/pull/8924) [`4880e3ed7`](https://github.com/Shopify/polaris/commit/4880e3ed71cade2f88d6211025e662ecb4a9e8ce) Thanks [@tal87](https://github.com/tal87)! - Added PersonalizedTextMajor icon
 
 * [#8861](https://github.com/Shopify/polaris/pull/8861) [`2bc90503d`](https://github.com/Shopify/polaris/commit/2bc90503d88cac89b021dc0114812c37c2f3258e) Thanks [@AlejandroE](https://github.com/AlejandroE)! - Added ExploreImagesMajor
+
+- [#8919](https://github.com/Shopify/polaris/pull/8919) [`7349d4108`](https://github.com/Shopify/polaris/commit/7349d4108f22d1173aa6f4802df1c430bfc3c5ee) Thanks [@skparkk](https://github.com/skparkk)! - Added new keyboard major + minor icons
 
 ## 6.12.0
 

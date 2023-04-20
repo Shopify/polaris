@@ -18,7 +18,7 @@ type CategoryMap = {
   'media queries': string;
   motion: string;
   shadow: string;
-  spacing: string;
+  space: string;
   typography: string;
   'z-index': string;
 };
@@ -34,7 +34,7 @@ const resourceLinks = {
     'Polaris [breakpoint sass variables](/tokens/breakpoints#sass-variables)',
   motion: 'Polaris [motion tokens](/tokens/motion)',
   shadow: 'Polaris [depth tokens](/tokens/shadow)',
-  spacing: 'Polaris [spacing tokens](/tokens/spacing)',
+  space: 'Polaris [space tokens](/tokens/space)',
   'z-index': 'Polaris [z-index tokens](/tokens/z-index)',
   typography:
     'Polaris [text component](/components/typography/text) or [font tokens](/tokens/font)',

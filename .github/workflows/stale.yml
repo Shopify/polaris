@@ -21,17 +21,15 @@ jobs:
       - uses: actions/stale@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          days-before-issue-stale: 21
-          days-before-pr-stale: 30
-          days-before-close: 7
+          days-before-issue-stale: 180
+          days-before-pr-stale: 180
+          days-before-close: 30
           stale-issue-message: |-
             This issue seems inactive. If it's still relevant, please add a comment saying so. Otherwise, take no action.
-            → If there's no activity within a week, then a bot will automatically close this.
-            Thanks for helping to improve Shopify's design system and dev experience.
+            → If there's no activity within 30 days the issue will be automatically closed.
           stale-pr-message: |-
             This PR seems inactive. If it's still relevant, please add a comment saying so. Otherwise, take no action.
-            → If there's no activity within a week, then a bot will automatically close this.
-            Thanks for helping to improve Shopify's design system and dev experience.
+            → If there's no activity within 30 days the PR will be automatically closed.
           stale-issue-label: 'no-issue-activity'
           stale-pr-label: 'no-pr-activity'
           ascending: true

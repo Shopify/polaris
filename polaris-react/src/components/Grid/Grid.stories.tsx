@@ -89,7 +89,7 @@ export function CustomLayout() {
             <div
               style={{
                 height: '60px',
-                background: 'aquamarine',
+                background: 'var(--p-color-text-info)',
               }}
             />
           </Grid.Cell>
@@ -97,7 +97,7 @@ export function CustomLayout() {
             <div
               style={{
                 height: '60px',
-                background: 'aquamarine',
+                background: 'var(--p-color-text-info)',
               }}
             />
           </Grid.Cell>
@@ -105,7 +105,7 @@ export function CustomLayout() {
             <div
               style={{
                 height: '60px',
-                background: 'aquamarine',
+                background: 'var(--p-color-text-info)',
               }}
             />
           </Grid.Cell>

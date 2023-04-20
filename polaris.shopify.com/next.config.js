@@ -143,7 +143,9 @@ const nextConfig = {
       ...navigation,
       ...overlays,
       ...selectionAndInput,
+      ...stylelintPolaris,
       ...tables,
+      ...tokens,
       ...typography,
       ...utilities,
     ];
@@ -644,6 +646,34 @@ const selectionAndInput = [
   },
 ];
 
+const stylelintPolaris = [
+  {
+    source:
+      '/tools/stylelint-polaris/rules/spacing-custom-property-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/space-custom-property-disallowed-list',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/spacing-declaration-property-unit-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/space-declaration-property-unit-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/spacing-function-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/space-function-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/spacing-global-disallowed-list',
+    destination: '/tools/stylelint-polaris/rules/space-global-disallowed-list',
+    permanent: false,
+  },
+];
+
 const tables = [
   {
     source: '/components/table',
@@ -658,6 +688,14 @@ const tables = [
   {
     source: '/components/lists-and-tables/index-table',
     destination: '/components/tables/index-table',
+    permanent: false,
+  },
+];
+
+const tokens = [
+  {
+    source: '/tokens/spacing',
+    destination: '/tokens/space',
     permanent: false,
   },
 ];

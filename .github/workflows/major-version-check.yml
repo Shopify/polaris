@@ -1,0 +1,44 @@
+name: Major version in changeset
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  check-changesets:
+    if: |
+      !contains(github.event.pull_request.labels.*.name, '🤖Skip Major Check')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Checkout the feature branch
+        run: git checkout ${{ github.head_ref }} --
+
+      - name: Check major versions in changeset entries
+        run: |
+          commits="origin/${{ github.base_ref }}...origin/${{ github.head_ref }}"
+          changeset_files=$(git diff --name-only --diff-filter=d "$commits" -- ".changeset/*.md")
+
+          if [[ -z "$changeset_files" ]]; then
+            echo "No changeset files detected"
+            exit 0
+          fi
+
+          if ! echo "$changeset_files" | xargs grep -qE "^\s*[\"'].*?[\"']\s*:\s*major\s*$"; then
+            echo "No major version upgrade detected"
+            exit 0
+          else
+            echo "This PR contains a major version upgrade which is only used for breaking changes."
+            echo "If you are sure you want to perform this action, please add the '🤖Skip Major Check' label"
+            exit 1
+          fi
