@@ -14,15 +14,15 @@ examples:
   - fileName: box-with-color.tsx
     title: Color
     description: >-
-      Background color of box and text color inside a box can be adjusted using the [Color tokens](https://polaris.shopify.com/tokens/colors).
+      Background color of box and text color inside a box can be adjusted using the [Color tokens](https://polaris.shopify.com/tokens/color).
   - fileName: box-with-border.tsx
     title: Border width
     description: >-
-      Border width can be adjusted using the [Shape tokens](https://polaris.shopify.com/tokens/shape), and a subset of tokens allows different types of border.
+      Border width can be adjusted using the [Border tokens](https://polaris.shopify.com/tokens/border), and a subset of tokens allows different types of border.
   - fileName: box-with-border-radius.tsx
     title: Border radius
     description: >-
-      Border radius can be adjusted using the [Shape tokens](https://polaris.shopify.com/tokens/shape).
+      Border radius can be adjusted using the [Border tokens](https://polaris.shopify.com/tokens/border).
   - fileName: box-with-padding.tsx
     title: Padding
     description: >-

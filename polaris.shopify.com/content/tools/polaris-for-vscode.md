@@ -6,7 +6,7 @@ order: 1
 ---
 
 <picture>
-  <source srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.png" media="(prefers-reduced-motion: reduce)"></source> 
+  <source srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.png" media="(prefers-reduced-motion: reduce)"></source>
   <img srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.gif" alt="Demo of Polaris for VS Code tokens autocomplete">
 </picture>
 
@@ -14,7 +14,7 @@ order: 1
 
 ### Design Token Autocomplete
 
-Get code autocomplete suggestions for the [Polaris Design Tokens](https://polaris.shopify.com/tokens/colors#navigation)
+Get code autocomplete suggestions for the [Polaris Design Tokens](https://polaris.shopify.com/tokens/color#navigation)
 
 - 🗄️ Automatically works for CSS and Sass files
 - 🔍 Preview design token values in autocomplete description
