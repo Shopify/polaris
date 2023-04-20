@@ -72,7 +72,7 @@ function validateEsNextBuild() {
   assert.ok(cssKeyframesContent.includes('@keyframes p-keyframes-spin {'));
   assert.ok(
     cssKeyframesContent.includes(
-      '--p-motion-keyframes--spin:p-keyframes-spin;',
+      '--p-motion-keyframes-spin:p-keyframes-spin;',
     ),
   );
 
