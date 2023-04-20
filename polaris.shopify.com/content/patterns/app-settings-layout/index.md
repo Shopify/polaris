@@ -18,6 +18,6 @@ variants:
 - See another two-column layout in use in the [Resource detail layout](/patterns/resource-details-layout) pattern.
 - See a single-column layout in use in the [Resource index layout](/patterns/resource-index-layout) pattern.
 - Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
-- Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.
+- Check out the Polaris [Space](/design/space) guidelines to understand Polaris grid and spacing scale.
 
 </div>
