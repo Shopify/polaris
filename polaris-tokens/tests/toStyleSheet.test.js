@@ -43,7 +43,7 @@ const expectedKeyframes =
   '@keyframes p-motion-keyframes-token-1valueA@keyframes p-motion-keyframes-token-2valueB';
 
 const expectedKeyframesCustomProperties =
-  '--p-motion-keyframes-token-1:valueA;--p-motion-keyframes-token-2:valueB;';
+  '--p-motion-keyframes-token-1:p-motion-keyframes-token-1;--p-motion-keyframes-token-2:p-motion-keyframes-token-2;';
 
 describe('getCustomProperties', () => {
   it('creates a string of CSS custom properties', () => {

@@ -46,7 +46,9 @@ function validateStandardBuild() {
   assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton {'));
   assert.ok(cssContent.includes('@keyframes p-keyframes-bounce {'));
   assert.ok(
-    cssContent.includes('--p-motion-keyframes-bounce:p-keyframes-bounce;'),
+    cssContent.includes(
+      '--p-motion-keyframes-bounce:p-motion-keyframes-bounce;',
+    ),
   );
 }
 
@@ -72,7 +74,7 @@ function validateEsNextBuild() {
   assert.ok(cssKeyframesContent.includes('@keyframes p-keyframes-spin {'));
   assert.ok(
     cssKeyframesContent.includes(
-      '--p-motion-keyframes-spin:p-keyframes-spin;',
+      '--p-motion-keyframes-spin:p-motion-keyframes-spin;',
     ),
   );
 
