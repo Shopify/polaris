@@ -1,20 +1,21 @@
-import {AlphaCard, Text, VerticalStack} from '@shopify/polaris';
 import React from 'react';
+import {AlphaCard, Text, VerticalStack} from '@shopify/polaris';
+
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function AlphaCardExample() {
+function AlphaCardWithVaryingPaddingExample() {
   return (
     <VerticalStack gap="4">
-      <AlphaCard>
+      <AlphaCard roundedAbove="sm">
         <Placeholder label="Content inside a card" />
       </AlphaCard>
-      <AlphaCard padding="4">
+      <AlphaCard roundedAbove="sm" padding="4">
         <Placeholder label="Content inside a card" />
       </AlphaCard>
-      <AlphaCard padding="2">
+      <AlphaCard roundedAbove="sm" padding="2">
         <Placeholder label="Content inside a card" />
       </AlphaCard>
-      <AlphaCard padding="0">
+      <AlphaCard roundedAbove="sm" padding="0">
         <Placeholder label="Content inside a card" />
       </AlphaCard>
     </VerticalStack>
@@ -43,4 +44,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(AlphaCardExample);
+export default withPolarisExample(AlphaCardWithVaryingPaddingExample);

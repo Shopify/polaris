@@ -1,10 +1,11 @@
-import {AlphaCard, Text} from '@shopify/polaris';
 import React from 'react';
+import {AlphaCard, Text} from '@shopify/polaris';
+
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function AlphaCardExample() {
+function AlphaCardWithRoundedCornersExample() {
   return (
-    <AlphaCard roundedAbove="md">
+    <AlphaCard roundedAbove="sm">
       <Text as="h2" variant="bodyMd">
         Content inside a card
       </Text>
@@ -12,4 +13,4 @@ function AlphaCardExample() {
   );
 }
 
-export default withPolarisExample(AlphaCardExample);
+export default withPolarisExample(AlphaCardWithRoundedCornersExample);
