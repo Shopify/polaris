@@ -7,6 +7,8 @@ import {Badge} from '../../Badge';
 import {Item, Section} from '../components';
 import {Key} from '../../../types';
 import {KeypressListener} from '../../KeypressListener';
+import {HorizontalStack} from '../../HorizontalStack';
+import {Text} from '../../Text';
 
 describe('<ActionList />', () => {
   let mockOnActionAnyItem: jest.Mock;
@@ -235,5 +237,71 @@ describe('<ActionList />', () => {
     expect(document.activeElement).toStrictEqual(
       actionListButtons[actionListButtons.length - 1].domNode,
     );
+  });
+
+  it('wraps content when passed `overflow: wrap`', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        items={[
+          {
+            content: 'Add discount',
+            contentOverflow: 'wrap',
+            badge: {status: 'new', content: 'badge'},
+          },
+        ]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="option"
+      />,
+    );
+    expect(actionList).toContainReactComponent(HorizontalStack, {
+      wrap: false,
+    });
+  });
+
+  it('truncates content when passed `contentOverflow: truncate`', () => {
+    const content = 'Add discount';
+    const actionList = mountWithApp(
+      <ActionList
+        items={[
+          {
+            content,
+            contentOverflow: 'truncate',
+            badge: {status: 'new', content: 'badge'},
+          },
+        ]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="option"
+      />,
+    );
+    expect(actionList).toContainReactComponent(Text, {
+      as: 'span',
+      variant: 'bodyMd',
+      truncate: true,
+      children: content,
+    });
+  });
+
+  it('does not truncate when passed `ellipsis`', () => {
+    const content = 'Add discount';
+    const actionList = mountWithApp(
+      <ActionList
+        items={[
+          {
+            content,
+            contentOverflow: 'truncate',
+            ellipsis: true,
+            badge: {status: 'new', content: 'badge'},
+          },
+        ]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="option"
+      />,
+    );
+    expect(actionList).not.toContainReactComponent(Text, {
+      as: 'span',
+      variant: 'bodyMd',
+      truncate: true,
+      children: content,
+    });
   });
 });
