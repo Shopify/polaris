@@ -1,42 +1,39 @@
 import React from 'react';
+import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
+import type {ResponsiveProp} from '../../utilities/css';
 import {classNames, variationName} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {ButtonBase} from '../ButtonBase';
+import {Box} from '../Box';
 
 import styles from './ButtonNew.scss';
 
+type ButtonSizes = 'small' | 'medium' | 'large';
+type Spacing = ResponsiveProp<SpacingSpaceScale>;
 export interface ButtonNewProps {
   children?: React.ReactNode;
   /**
    * Changes the size of the button, giving it more or less padding
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ButtonSizes;
   variant?: 'primary' | 'secondary' | 'tertiary' | 'transparent';
   tone?: 'critical';
   disabled?: boolean;
+  /** Horizontal start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingInlineStart='4'
+   * paddingInlineStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  paddingInlineStart?: Spacing;
+  /** Horizontal end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingInlineEnd='4'
+   * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  paddingInlineEnd?: Spacing;
 }
-
-const hasChildOfType = (children: React.ReactNode, type: any) => {
-  let hasType = false;
-
-  React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child) && child.type === type) {
-      hasType = true;
-    } else if (
-      React.isValidElement(child) &&
-      (child as React.ReactElement).props.children
-    ) {
-      hasType = hasChildOfType(
-        (child as React.ReactElement).props.children,
-        type,
-      );
-    }
-  });
-
-  return hasType;
-};
 
 const DEFAULT_SIZE = 'medium';
 
@@ -46,16 +43,35 @@ export const ButtonNew = ({
   variant,
   tone,
   disabled,
+  paddingInlineStart,
+  paddingInlineEnd,
 }: ButtonNewProps) => {
-  const hasIcon = hasChildOfType(children, Icon);
   const className = classNames(
     styles.Button,
     disabled && styles.disabled,
-    hasIcon && styles.hasIcon,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     variant && styles[variationName('variant', variant)],
     tone && styles[variationName('tone', tone)],
   );
 
-  return <ButtonBase className={className}>{children}</ButtonBase>;
+  const inlinePadding = (size: ButtonSizes) => {
+    if (size === 'small') {
+      return '2';
+    } else if (size === 'large') {
+      return '4';
+    } else {
+      return '3';
+    }
+  };
+
+  return (
+    <ButtonBase className={className}>
+      <Box
+        paddingInlineStart={paddingInlineStart || inlinePadding(size)}
+        paddingInlineEnd={paddingInlineEnd || inlinePadding(size)}
+      >
+        {children}
+      </Box>
+    </ButtonBase>
+  );
 };
