@@ -662,6 +662,14 @@ const tables = [
   },
 ];
 
+const tokens = [
+  {
+    source: '/tokens/spacing',
+    destination: '/tokens/space',
+    permanent: false,
+  },
+];
+
 const typography = [
   {
     source: '/components/titles-and-text/text-style',
