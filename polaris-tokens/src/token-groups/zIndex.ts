@@ -14,7 +14,7 @@ export type ZIndexZScale =
   | '11'
   | '12';
 
-export type ZIndexTokenName = `z-index-${ZIndexZScale}` | `z-${ZIndexZScale}`;
+export type ZIndexTokenName = `z-index-${ZIndexZScale}`;
 
 export type ZIndexTokenGroup = {
   [TokenName in ZIndexTokenName]: string;
