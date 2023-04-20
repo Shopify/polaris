@@ -37,7 +37,7 @@ const resourceLinks = {
   spacing: 'Polaris [spacing tokens](/tokens/spacing)',
   'z-index': 'Polaris [z-index tokens](/tokens/z-index)',
   typography:
-    'the [text component](/components/typography/text) or [font tokens](/tokens/font)',
+    'Polaris [text component](/components/typography/text) or [font tokens](/tokens/font)',
 };
 
 interface Props {
