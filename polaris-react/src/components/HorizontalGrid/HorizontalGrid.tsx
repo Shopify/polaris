@@ -1,5 +1,5 @@
 import React from 'react';
-import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
+import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {
   getResponsiveProps,
@@ -13,7 +13,7 @@ import styles from './HorizontalGrid.scss';
 type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];
 type Columns = ResponsiveProp<ColumnsType>;
-type Gap = ResponsiveProp<SpacingSpaceScale>;
+type Gap = ResponsiveProp<SpaceScale>;
 type HorizontalGridAlignItems = 'start' | 'end' | 'center';
 
 export interface HorizontalGridProps extends React.AriaAttributes {
