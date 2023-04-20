@@ -9,8 +9,8 @@ keywords:
 
 ```diff
 // Do
-+ color: var(--p-color-text-disabled);
-+ background: var(--p-color-bg-inverse-hover);
++ color: var(--p-text-disabled);
++ background: var(--p-action-secondary-hovered-dark);
 // Don't
 - color: rgb(140, 145, 150);
 - background: color('hover');

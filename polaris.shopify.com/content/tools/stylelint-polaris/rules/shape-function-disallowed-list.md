@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ border-radius: var(--p-border-radius-1);
++ border-radius: var(--p-border-radius-base);
 // Don't
 - border-radius: border-radius();
 ```

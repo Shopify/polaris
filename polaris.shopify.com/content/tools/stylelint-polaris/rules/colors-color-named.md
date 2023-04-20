@@ -9,8 +9,8 @@ keywords:
 
 ```diff
 // Do
-+ color: var(--p-color-text);
-+ fill: var(--p-color-icon)
++ color: var(--p-text);
++ fill: var(--p-icon)
 // Don't
 - color: black;
 - fill: dimgray;
