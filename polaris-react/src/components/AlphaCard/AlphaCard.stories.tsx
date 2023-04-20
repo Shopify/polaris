@@ -11,7 +11,9 @@ import {
   Icon,
   Image,
   HorizontalStack,
+  LegacyStack,
   List,
+  ResourceList,
   Text,
   VerticalStack,
   secondaryActionsFrom,
@@ -24,7 +26,7 @@ export default {
 
 export function Default() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
@@ -37,7 +39,7 @@ export function Default() {
 
 export function WithBackgroundSubdued() {
   return (
-    <AlphaCard background="bg-subdued">
+    <AlphaCard background="bg-subdued" roundedAbove="sm">
       <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
@@ -135,6 +137,64 @@ export function WithSubduedSection() {
   );
 }
 
+export function WithSubsection() {
+  return (
+    <AlphaCard roundedAbove="sm">
+      <VerticalStack gap="5">
+        <Text as="h2" variant="headingMd">
+          Customer
+        </Text>
+        <Text as="p" variant="bodyMd">
+          John Smith
+        </Text>
+        <Bleed marginInline={{xs: '4', sm: '5'}}>
+          <Divider />
+          <Box padding={{xs: '4', sm: '5'}} paddingBlockEnd="0">
+            <Box paddingBlockEnd="2">
+              <Text as="h3" variant="headingSm">
+                Addresses
+              </Text>
+            </Box>
+            <VerticalStack gap="4">
+              <Box>
+                <Text as="p" variant="bodyMd">
+                  123 First St
+                </Text>
+                <Text as="p" variant="bodyMd">
+                  Somewhere
+                </Text>
+                <Text as="p" variant="bodyMd">
+                  The Universe
+                </Text>
+              </Box>
+              <Divider />
+              <Box>
+                <Text as="p" variant="bodyMd">
+                  123 Second St
+                </Text>
+                <Text as="p" variant="bodyMd">
+                  Somewhere
+                </Text>
+                <Text as="p" variant="bodyMd">
+                  The Universe
+                </Text>
+              </Box>
+            </VerticalStack>
+          </Box>
+        </Bleed>
+        <Bleed marginInline={{xs: '4', sm: '5'}}>
+          <Divider />
+          <Box paddingInlineStart="5" paddingBlockStart="5">
+            <Text as="p" variant="bodyMd">
+              A single subsection without a sibling has no visual appearance
+            </Text>
+          </Box>
+        </Bleed>
+      </VerticalStack>
+    </AlphaCard>
+  );
+}
+
 export function WithMultipleSections() {
   return (
     <AlphaCard roundedAbove="sm">
@@ -161,7 +221,7 @@ export function WithMultipleSections() {
   );
 }
 
-export function WithFlushSections() {
+export function WithFlushSection() {
   return (
     <AlphaCard roundedAbove="sm">
       <Bleed marginInline={{xs: '4', sm: '5'}} marginBlock={{xs: '4', sm: '5'}}>
@@ -256,9 +316,44 @@ export function WithMultipleTitledSections() {
   );
 }
 
+export function WithSectionsAndActions() {
+  return (
+    <AlphaCard roundedAbove="sm">
+      <VerticalStack gap="5">
+        <Text as="h2" variant="headingMd">
+          Customer
+        </Text>
+        <Text as="p" variant="bodyMd">
+          John Smith
+        </Text>
+        <Bleed marginInline={{xs: '4', sm: '5'}}>
+          <Divider />
+          <Box padding={{xs: '4', sm: '5'}} paddingBlockEnd="0">
+            <Box>
+              <Box paddingBlockEnd="2">
+                <HorizontalGrid columns="1fr auto">
+                  <Text as="h3" variant="headingSm">
+                    Contact Information
+                  </Text>
+                  <ButtonGroup>
+                    <Button plain>Edit</Button>
+                  </ButtonGroup>
+                </HorizontalGrid>
+              </Box>
+              <Text as="p" variant="bodyMd">
+                john.smith@example.com
+              </Text>
+            </Box>
+          </Box>
+        </Bleed>
+      </VerticalStack>
+    </AlphaCard>
+  );
+}
+
 export function WithCustomReactNodeTitle() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
         <Text as="h2" variant="headingMd">
           Products
@@ -274,8 +369,8 @@ export function WithCustomReactNodeTitle() {
       </VerticalStack>
       <Box paddingBlockStart="2">
         <List>
-          <List.Item>Felix Crafford</List.Item>
-          <List.Item>Ezequiel Manno</List.Item>
+          <List.Item>Socks</List.Item>
+          <List.Item>Super Shoes</List.Item>
         </List>
       </Box>
     </AlphaCard>
@@ -284,7 +379,7 @@ export function WithCustomReactNodeTitle() {
 
 export function WithSeparateHeader() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
         <HorizontalGrid columns="1fr auto">
           <Text as="h2" variant="headingMd">
@@ -310,7 +405,7 @@ export function WithSeparateHeader() {
 
 export function WithHeaderActions() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
         <HorizontalGrid columns="1fr auto">
           <Text as="h2" variant="headingMd">
@@ -331,7 +426,7 @@ export function WithHeaderActions() {
 
 export function WithFooterActions() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
         <Text as="h2" variant="headingMd">
           Shipment 1234
@@ -362,7 +457,7 @@ export function WithFooterActions() {
 
 export function WithMultipleFooterActions() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
         <Text as="h2" variant="headingMd">
           Shipment 1234
@@ -396,7 +491,7 @@ export function WithMultipleFooterActions() {
 
 export function WithCustomFooterActions() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
         <Text as="h2" variant="headingMd">
           Secure your account with 2-step authentication
@@ -406,7 +501,6 @@ export function WithCustomFooterActions() {
           in to your account. A special code will be required each time you log
           in, ensuring only you can access your account.
         </Text>
-
         <HorizontalStack align="end">
           <ButtonGroup>
             {secondaryActionsFrom({
@@ -422,12 +516,11 @@ export function WithCustomFooterActions() {
 
 export function WithDestructiveFooterActions() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
         <Text as="h2" variant="headingMd">
           Shipment 1234
         </Text>
-
         <Box>
           <Box paddingBlockEnd="2">
             <Text as="h2" variant="bodyMd" fontWeight="bold">
@@ -439,7 +532,6 @@ export function WithDestructiveFooterActions() {
             <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
           </List>
         </Box>
-
         <HorizontalStack align="end">
           <ButtonGroup>
             {secondaryActionsFrom({
@@ -455,7 +547,7 @@ export function WithDestructiveFooterActions() {
   );
 }
 
-export function WithSectionsAndActions() {
+export function WithDestructiveAction() {
   return (
     <AlphaCard roundedAbove="sm">
       <VerticalStack gap="5">
@@ -468,23 +560,138 @@ export function WithSectionsAndActions() {
         <Bleed marginInline={{xs: '4', sm: '5'}}>
           <Divider />
           <Box padding={{xs: '4', sm: '5'}} paddingBlockEnd="0">
-            <Box>
-              <Box paddingBlockEnd="2">
-                <HorizontalGrid columns="1fr auto">
-                  <Text as="h3" variant="headingSm">
-                    Contact Information
-                  </Text>
-                  <ButtonGroup>
-                    <Button plain>Edit</Button>
-                  </ButtonGroup>
-                </HorizontalGrid>
-              </Box>
+            <VerticalStack gap="2">
+              <HorizontalGrid columns="1fr auto">
+                <Text as="h3" variant="headingSm">
+                  Contact information
+                </Text>
+                <ButtonGroup>
+                  <Button plain destructive>
+                    Delete
+                  </Button>
+                  <Button plain>Edit</Button>
+                </ButtonGroup>
+              </HorizontalGrid>
               <Text as="p" variant="bodyMd">
                 john.smith@example.com
               </Text>
-            </Box>
+            </VerticalStack>
           </Box>
         </Bleed>
+      </VerticalStack>
+    </AlphaCard>
+  );
+}
+
+export function WithAllElements() {
+  return (
+    <AlphaCard roundedAbove="sm">
+      <VerticalStack gap="5">
+        <HorizontalGrid columns="1fr auto">
+          <Text as="h2" variant="headingMd">
+            Sales
+          </Text>
+          <ButtonGroup>
+            <Button plain>Total Sales</Button>
+            {secondaryActionsFrom({
+              secondaryActions: [
+                {content: 'Gross Sales'},
+                {content: 'Net Sales'},
+              ],
+              secondaryActionsDisclosureText: 'View Sales',
+              plainButton: true,
+            })}
+          </ButtonGroup>
+        </HorizontalGrid>
+        <Text as="p" variant="bodyMd">
+          You can use sales reports to see information about your customers’
+          orders based on criteria such as sales over time, by channel, or by
+          staff.
+        </Text>
+        <Bleed marginInline={{xs: '4', sm: '5'}}>
+          <Divider />
+          <Box padding={{xs: '4', sm: '5'}} paddingBlockEnd="0">
+            <Box paddingBlockEnd="2">
+              <Text as="h3" variant="headingSm">
+                Total Sales Breakdown
+              </Text>
+            </Box>
+            <ResourceList
+              resourceName={{singular: 'sale', plural: 'sales'}}
+              items={[
+                {
+                  sales: 'Orders',
+                  amount: 'USD$0.00',
+                  url: '#',
+                },
+                {
+                  sales: 'Returns',
+                  amount: '-USD$250.00',
+                  url: '#',
+                },
+              ]}
+              renderItem={(item) => {
+                const {sales, amount, url} = item;
+                return (
+                  <ResourceList.Item
+                    id={sales}
+                    url={url}
+                    accessibilityLabel={`View Sales for ${sales}`}
+                  >
+                    <LegacyStack>
+                      <LegacyStack.Item fill>{sales}</LegacyStack.Item>
+                      <LegacyStack.Item>{amount}</LegacyStack.Item>
+                    </LegacyStack>
+                  </ResourceList.Item>
+                );
+              }}
+            />
+          </Box>
+        </Bleed>
+        <Bleed
+          marginBlockEnd={{xs: '5', sm: '5'}}
+          marginInline={{xs: '4', sm: '5'}}
+        >
+          <Divider />
+          <Box background="bg-subdued" padding={{xs: '4', sm: '5'}}>
+            <VerticalStack gap="2">
+              <Text as="h3" variant="headingSm">
+                Deactivated reports
+              </Text>
+              <List>
+                <List.Item>Payouts</List.Item>
+                <List.Item>Total Sales By Channel</List.Item>
+              </List>
+            </VerticalStack>
+          </Box>
+        </Bleed>
+        <Bleed
+          marginBlockEnd={{xs: '4', sm: '5'}}
+          marginInline={{xs: '4', sm: '5'}}
+        >
+          <Divider />
+        </Bleed>
+        <Box paddingBlockStart="5">
+          <VerticalStack gap="2">
+            <Text as="h3" variant="headingSm">
+              Note
+            </Text>
+            <Text as="p" variant="bodyMd">
+              The sales reports are available only if your store is on the
+              Shopify plan or higher.
+            </Text>
+            <Box paddingBlockStart="3">
+              <HorizontalStack align="end">
+                <ButtonGroup>
+                  {secondaryActionsFrom({
+                    secondaryActions: [{content: 'Dismiss'}],
+                  })}
+                  <Button primary>Export Report</Button>
+                </ButtonGroup>
+              </HorizontalStack>
+            </Box>
+          </VerticalStack>
+        </Box>
       </VerticalStack>
     </AlphaCard>
   );
