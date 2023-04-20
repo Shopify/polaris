@@ -58,13 +58,13 @@ export function SkeletonPage({
       narrowWidth={narrowWidth}
       fullWidth={fullWidth}
       primaryAction={primaryActionMarkup || primaryAction}
+      aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
       backAction={
         typeof backAction === 'boolean' ? {loading: backAction} : backAction
       }
       breadcrumbs={
         typeof breadcrumbs === 'boolean' ? {loading: breadcrumbs} : breadcrumbs
       }
-      aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
       pagination={
         typeof pagination === 'boolean' ? {loading: true} : pagination
       }

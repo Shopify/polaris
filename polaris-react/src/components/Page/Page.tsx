@@ -19,7 +19,7 @@ export interface PageProps extends HeaderProps {
   /** Displays a divider between the page header and the page content */
   divider?: boolean;
   /** Aria role */
-  role?: React.AriaRole;
+  role?: Extract<React.AriaRole, 'status'>;
 }
 
 export function Page({
