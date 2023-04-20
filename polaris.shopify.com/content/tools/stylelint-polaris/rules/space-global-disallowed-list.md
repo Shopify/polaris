@@ -4,7 +4,7 @@ description: Disallows use of legacy spacing Sass APIs.
 keywords:
   - stylelint
   - space
-  - space
+  - space rules
 ---
 
 ```diff
