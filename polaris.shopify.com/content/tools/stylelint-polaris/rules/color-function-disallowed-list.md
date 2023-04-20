@@ -1,16 +1,16 @@
 ---
-title: colors/function-disallowed-list
+title: color/function-disallowed-list
 description: Disallows allows use of built in and legacy color functions.
 keywords:
   - stylelint
-  - colors
-  - colors rules
+  - color
+  - color rules
 ---
 
 ```diff
 // Do
-+ color: var(--p-text-disabled);
-+ background: var(--p-action-secondary-hovered-dark);
++ color: var(--p-color-text-disabled);
++ background: var(--p-color-bg-inverse-hover);
 // Don't
 - color: rgb(140, 145, 150);
 - background: color('hover');

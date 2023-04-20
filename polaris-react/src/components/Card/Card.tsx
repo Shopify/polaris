@@ -2,7 +2,7 @@ import type {
   BreakpointsAlias,
   ColorBackgroundAlias,
   BorderRadiusScale,
-  SpacingSpaceScale,
+  SpaceScale,
 } from '@shopify/polaris-tokens';
 import React from 'react';
 
@@ -10,7 +10,7 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
 
-type Spacing = ResponsiveProp<SpacingSpaceScale>;
+type Spacing = ResponsiveProp<SpaceScale>;
 
 export interface CardProps {
   children?: React.ReactNode;

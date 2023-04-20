@@ -11,35 +11,33 @@ import {parseMarkdown} from '../../../../src/utils/markdown.mjs';
 import {MarkdownFile} from '../../../../src/types';
 
 type CategoryMap = {
+  border: string;
+  color: string;
   conventions: string;
-  colors: string;
-  motion: string;
-  typography: string;
-  shape: string;
-  spacing: string;
-  depth: string;
-  'media queries': string;
-  'z-index': string;
   layout: string;
-  legacy: string;
+  'media queries': string;
+  motion: string;
+  shadow: string;
+  space: string;
+  typography: string;
+  'z-index': string;
 };
 
 type Category = keyof CategoryMap;
 
 const resourceLinks = {
+  border: 'Polaris [shape tokens](/tokens/border)',
+  color: 'Polaris [color tokens](/tokens/color)',
   conventions: '',
-  colors: 'Polaris [color tokens](/tokens/colors)',
-  motion: 'Polaris [motion tokens](/tokens/motion)',
-  typography:
-    'the [text component](/components/typography/text) or [font tokens](/tokens/font)',
-  shape: 'Polaris [shape tokens](/tokens/shape)',
-  spacing: 'Polaris [spacing tokens](/tokens/spacing)',
-  depth: 'Polaris [depth tokens](/tokens/depth)',
+  layout: 'Polaris [layout components](/components)',
   'media queries':
     'Polaris [breakpoint sass variables](/tokens/breakpoints#sass-variables)',
+  motion: 'Polaris [motion tokens](/tokens/motion)',
+  shadow: 'Polaris [depth tokens](/tokens/shadow)',
+  space: 'Polaris [space tokens](/tokens/space)',
   'z-index': 'Polaris [z-index tokens](/tokens/z-index)',
-  layout: 'Polaris [layout components](/components)',
-  legacy: 'Polaris [components](/components) or [tokens](/tokens)',
+  typography:
+    'Polaris [text component](/components/typography/text) or [font tokens](/tokens/font)',
 };
 
 interface Props {

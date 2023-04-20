@@ -1,10 +1,10 @@
 ---
-title: colors/global-disallowed-list
+title: color/global-disallowed-list
 description: Disallows use of legacy color Sass APIs.
 keywords:
   - stylelint
-  - colors
-  - colors rules
+  - color
+  - color rules
 ---
 
 ```diff

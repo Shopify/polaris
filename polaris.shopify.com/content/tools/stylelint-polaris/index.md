@@ -82,15 +82,14 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 
 There are over 40 rules configured in Stylelint Polaris to help you avoid errors and follow stylistic and non-stylistic conventions while building for the Shopify admin. These rules help us measure the Polaris design system's coverage in the Shopify admin code base using the following categories:
 
-- [Colors](/tools/stylelint-polaris/rules#colors)
+- [Border](/tools/stylelint-polaris/rules#border)
+- [Color](/tools/stylelint-polaris/rules#color)
 - [Conventions](/tools/stylelint-polaris/rules#conventions)
-- [Depth](/tools/stylelint-polaris/rules#depth)
 - [Layout](/tools/stylelint-polaris/rules#layout)
-- [Legacy](/tools/stylelint-polaris/rules#legacy)
 - [Media queries](/tools/stylelint-polaris/rules#media-queries)
 - [Motion](/tools/stylelint-polaris/rules#motion)
-- [Shape](/tools/stylelint-polaris/rules#shape)
-- [Spacing](/tools/stylelint-polaris/rules#spacing)
+- [Shadow](/tools/stylelint-polaris/rules#shadow)
+- [Space](/tools/stylelint-polaris/rules#space)
 - [Typography](/tools/stylelint-polaris/rules#typography)
 - [Z-index](/tools/stylelint-polaris/rules#z-index)
 
@@ -98,16 +97,16 @@ There are over 40 rules configured in Stylelint Polaris to help you avoid errors
 
 | @shopify/stylelint-polaris | @shopify/polaris |
 | -------------------------- | ---------------- |
-| 1.0.0                      | 9.13.0          |
-| 2.0.0                      | 9.16.0          |
-| 3.0.0                      | 9.19.0          |
-| 4.0.0                      | 9.20.0          |
-| 5.0.0                      | 10.14.0         |
-| 6.0.0                      | 10.28.1         |
-| 7.0.0                      | 10.31.0         |
-| 8.0.0                      | 10.32.0         |
-| 9.0.0                      | 10.36.0         |
-| 10.0.0                     | 10.44.0         |
+| 1.0.0                      | 9.13.0           |
+| 2.0.0                      | 9.16.0           |
+| 3.0.0                      | 9.19.0           |
+| 4.0.0                      | 9.20.0           |
+| 5.0.0                      | 10.14.0          |
+| 6.0.0                      | 10.28.1          |
+| 7.0.0                      | 10.31.0          |
+| 8.0.0                      | 10.32.0          |
+| 9.0.0                      | 10.36.0          |
+| 10.0.0                     | 10.44.0          |
 
 _\*@shopify/stylelint-polaris v5.0.0 was the first stable release_
 
@@ -126,7 +125,7 @@ _\*@shopify/stylelint-polaris v5.0.0 was the first stable release_
 module.exports = {
   rules: {
     'polaris/coverage': {
-      colors: {...}, // Standard Stylelint rules config
+      color: {...}, // Standard Stylelint rules config
       layout: {...}, // Standard Stylelint rules config
       motion: {
         'new-rule': 'new-rule-options',
@@ -155,12 +154,12 @@ Set a generic custom message on the `message` property of the secondary options 
 module.exports = {
   rules: {
     'polaris/coverage': {
-      colors: [
+      color: [
         {
           'color-named': 'never'
           'color-no-hex': true,
         },
-        {message: 'Please use a Polaris color token: https://polaris.shopify.com/tokens/colors'},
+        {message: 'Please use a Polaris color token: https://polaris.shopify.com/tokens/color'},
       ],
     },
   },
