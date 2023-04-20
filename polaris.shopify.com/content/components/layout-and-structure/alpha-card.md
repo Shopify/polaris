@@ -42,6 +42,60 @@ examples:
     title: Rounded corners
     description: >-
       Cards can have a border radius applied responsively with the `roundedAbove` prop.
+  - fileName: alpha-card-with-section.tsx
+    title: With section
+    description: >-
+      Use when you have a distinct piece of information to communicate to merchants.
+  - fileName: alpha-card-with-subdued-section.tsx
+    title: With subdued section
+    description: >-
+      Use to indicate when one of the sections in your card contains inactive or disabled content.
+  - fileName: alpha-card-with-subsection.tsx
+    title: With subsection
+    description: >-
+      Use when your card sections need further categorization.
+  - fileName: alpha-card-with-multiple-sections.tsx
+    title: With multiple sections
+    description: Use when you have two related but distinct pieces of information to communicate to merchants. Multiple sections can help break up complicated concepts to make them easier to scan and understand.
+  - fileName: alpha-card-with-flush-section.tsx
+    title: With flush section
+    description: Use when you need further control over the spacing of your card sections.
+  - fileName: alpha-card-with-titled-sections.tsx
+    title: With multiple titled sections
+    description: Use when you have a distinct piece of information to communicate to merchants that is complex enough to require a title to introduce it.
+  - fileName: alpha-card-with-multiple-titled-sections.tsx
+    title: With multiple titled sections
+    description: Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
+  - fileName: alpha-card-with-sections-and-actions.tsx
+    title: With sections and actions
+    description: Use when your card section has actions that apply only to that section.
+  - fileName: alpha-card-with-custom-react-node-title.tsx
+    title: With custom React Node title
+    description: Use to render custom content such as icons, links, or buttons in a card section’s header.
+  - fileName: alpha-card-with-separate-header.tsx
+    title: With separate header
+    description: Use to be able to use custom React elements as header content.
+  - fileName: alpha-card-with-header-actions.tsx
+    title: With header actions
+    description: Use for less important card actions, or actions merchants may do before reviewing the contents of the card. For example, merchants may want to add items to a card containing a long list, or enter a customer’s new address.
+  - fileName: alpha-card-with-footer-actions.tsx
+    title: With footer actions
+    description: Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information.
+  - fileName: alpha-card-with-multiple-footer-actions.tsx
+    title: With multiple footer actions
+    description: When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop in the `secondaryActionsFrom` utility function.
+  - fileName: alpha-card-with-custom-footer-actions.tsx
+    title: With custom footer actions
+    description: Use to present actionable content that is optional or not the primary purpose of the page.
+  - fileName: alpha-card-with-destructive-footer-actions.tsx
+    title: With destructive footer action
+    description: Use when a card action will delete merchant data or be otherwise difficult to recover from.
+  - fileName: alpha-card-with-destructive-action.tsx
+    title: With destructive action
+    description: Use when a card action applies only to one section and will delete merchant data or be otherwise difficult to recover from.
+  - fileName: alpha-card-with-all-elements.tsx
+    title: With all elements
+    description: Use as a broad example that includes using other layout components to build out the card.
 ---
 
 ## Best practices
