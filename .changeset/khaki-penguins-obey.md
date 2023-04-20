@@ -1,5 +1,5 @@
 ---
-'@shopify/stylelint-polaris': major
+'@shopify/stylelint-polaris': minor
 'polaris.shopify.com': minor
 ---
 
