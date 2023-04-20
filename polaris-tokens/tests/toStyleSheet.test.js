@@ -24,13 +24,12 @@ const mockMotionTokenGroup = {
 };
 
 const mockTokens = {
-  colors: {},
   border: {},
-  // Note: We don't need to assign mock values to the remaining static tokens.
-  depth: mockTokenGroup,
+  color: {},
   font: {},
   motion: {},
-  shape: {},
+  // Note: We don't need to assign mock values to the remaining static tokens.
+  shadow: mockTokenGroup,
   spacing: {},
   zIndex: {},
 };
