@@ -18,6 +18,7 @@ export function Item({
   id,
   badge,
   content,
+  contentOverflow,
   accessibilityLabel,
   helpText,
   url,
@@ -61,17 +62,27 @@ export function Item({
     );
   }
 
+  const truncate = !ellipsis && contentOverflow === 'truncate';
+
   const contentText = ellipsis && content ? `${content}…` : content;
+
+  const contentWrapper = truncate ? (
+    <Text as="span" variant="bodyMd" truncate={truncate}>
+      {contentText}
+    </Text>
+  ) : (
+    contentText
+  );
 
   const contentMarkup = helpText ? (
     <>
-      <Box>{contentText}</Box>
+      <Box>{contentWrapper}</Box>
       <Text color="subdued" as="span">
         {helpText}
       </Text>
     </>
   ) : (
-    contentText
+    contentWrapper
   );
 
   const badgeMarkup = badge && (
@@ -88,8 +99,12 @@ export function Item({
 
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
+  const wrapContainer = Boolean(
+    !contentOverflow || (contentOverflow === 'truncate' && ellipsis),
+  );
+
   const contentElement = (
-    <HorizontalStack blockAlign="center" gap="4">
+    <HorizontalStack blockAlign="center" gap="4" wrap={wrapContainer}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}

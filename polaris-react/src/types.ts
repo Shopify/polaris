@@ -192,6 +192,8 @@ export interface ActionListItemDescriptor
     status: 'new';
     content: string;
   };
+  /** Control visual display of long content */
+  contentOverflow?: 'wrap' | 'truncate';
   /** Additional hint text to display with item */
   helpText?: React.ReactNode;
   /** @deprecated Source of the icon */
