@@ -16,7 +16,7 @@ interface Props {
     | 'motion'
     | 'shadow'
     | 'shape'
-    | 'spacing'
+    | 'space'
     | 'zIndex';
 }
 
@@ -41,8 +41,8 @@ const navItems: NavItem[] = [
     url: `/tokens/shape`,
   },
   {
-    title: 'Spacing',
-    url: `/tokens/spacing`,
+    title: 'Space',
+    url: `/tokens/space`,
   },
   {
     title: 'Depth',
@@ -91,7 +91,7 @@ function TokensPage({tokenGroup}: Props) {
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shadow: tokensToFilteredArray(filter, allTokens.shadow),
     shape: tokensToFilteredArray(filter, allTokens.shape),
-    spacing: tokensToFilteredArray(filter, allTokens.spacing),
+    space: tokensToFilteredArray(filter, allTokens.space),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };
 

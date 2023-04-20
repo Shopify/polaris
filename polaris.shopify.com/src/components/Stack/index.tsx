@@ -1,10 +1,10 @@
 import {forwardRef} from 'react';
-import {type SpacingSpaceScale} from '@shopify/polaris-tokens';
+import {type SpaceScale} from '@shopify/polaris-tokens';
 import {Box, type WithAsProp} from '../Box';
 import styles from './Stack.module.scss';
 
 export interface StackProps {
-  gap?: SpacingSpaceScale;
+  gap?: SpaceScale;
 }
 
 export const Stack = forwardRef(

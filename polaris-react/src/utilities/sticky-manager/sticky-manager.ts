@@ -1,4 +1,4 @@
-import {spacing} from '@shopify/polaris-tokens';
+import {space} from '@shopify/polaris-tokens';
 
 import {debounce} from '../debounce';
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
@@ -135,7 +135,7 @@ export class StickyManager {
     }
 
     const stickyOffset = offset
-      ? this.getOffset(stickyNode) + parseInt(spacing['space-5'], 10)
+      ? this.getOffset(stickyNode) + parseInt(space['space-5'], 10)
       : this.getOffset(stickyNode);
 
     const scrollPosition = scrollTop + stickyOffset;

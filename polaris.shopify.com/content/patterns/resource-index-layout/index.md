@@ -19,6 +19,6 @@ variants:
 - Use the [Empty state component](/components/layout-and-structure/empty-state) when the resource index is empty.
 - Learn about the meaning of “resources” on the [Resource list](/components/lists/resource-list) component page
 - Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
-- Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.
+- Check out the Polaris [Space](/design/space) guidelines to understand Polaris grid and spacing scale.
 
 </div>
