@@ -18,6 +18,9 @@ function AlphaCardWithVaryingPaddingExample() {
       <AlphaCard roundedAbove="sm" padding="0">
         <Placeholder label="Content inside a card" />
       </AlphaCard>
+      <AlphaCard roundedAbove="sm" padding={{xs: '5', sm: '6', md: '8'}}>
+        <Placeholder label="Content inside a card" />
+      </AlphaCard>
     </VerticalStack>
   );
 }
