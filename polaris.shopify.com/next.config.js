@@ -648,6 +648,103 @@ const selectionAndInput = [
 
 const stylelintPolaris = [
   {
+    source: '/tools/stylelint-polaris/rules/colors-at-rule-disallowed-list',
+    destination: '/tools/stylelint-polaris/rules/color-at-rule-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/colors-color-named',
+    destination: '/tools/stylelint-polaris/rules/color-color-named',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/colors-color-no-hex',
+    destination: '/tools/stylelint-polaris/rules/color-color-no-hex',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/colors-custom-property-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/color-custom-property-disallowed-list',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/colors-declaration-property-value-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/color-declaration-property-value-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/colors-function-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/color-function-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/colors-global-disallowed-list',
+    destination: '/tools/stylelint-polaris/rules/color-global-disallowed-list',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/depth-custom-property-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/shadow-custom-property-disallowed-list',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/depth-declaration-property-unit-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/shadow-declaration-property-unit-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/depth-function-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/shadow-function-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/depth-global-disallowed-list',
+    destination: '/tools/stylelint-polaris/rules/shadow-global-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/depth-property-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/shadow-property-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/shape-at-rule-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/border-at-rule-disallowed-list',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/shape-custom-property-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/border-custom-property-disallowed-list',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/shape-declaration-property-unit-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/border-declaration-property-unit-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/shape-function-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/border-function-disallowed-list',
+    permanent: false,
+  },
+  {
     source:
       '/tools/stylelint-polaris/rules/spacing-custom-property-disallowed-list',
     destination:
@@ -694,8 +791,23 @@ const tables = [
 
 const tokens = [
   {
+    source: '/tokens/colors',
+    destination: '/tokens/color',
+    permanent: false,
+  },
+  {
+    source: '/tokens/shape',
+    destination: '/tokens/border',
+    permanent: false,
+  },
+  {
     source: '/tokens/spacing',
     destination: '/tokens/space',
+    permanent: false,
+  },
+  {
+    source: '/tokens/depth',
+    destination: '/tokens/shadow',
     permanent: false,
   },
 ];
