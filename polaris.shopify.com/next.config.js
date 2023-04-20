@@ -143,7 +143,9 @@ const nextConfig = {
       ...navigation,
       ...overlays,
       ...selectionAndInput,
+      ...stylelintPolaris,
       ...tables,
+      ...tokens,
       ...typography,
       ...utilities,
     ];
@@ -645,11 +647,6 @@ const selectionAndInput = [
 ];
 
 const stylelintPolaris = [
-  {
-    source: '/tools/stylelint-polaris/rules#spacing',
-    destination: '/tools/stylelint-polaris/rules#space',
-    permanent: false,
-  },
   {
     source:
       '/tools/stylelint-polaris/rules/spacing-custom-property-disallowed-list',
