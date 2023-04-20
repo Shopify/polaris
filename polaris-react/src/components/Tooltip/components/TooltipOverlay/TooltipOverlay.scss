@@ -48,7 +48,7 @@
 }
 
 .measured:not(.instant) {
-  animation: var(--p-motion-keyframes--appear-below) var(--p-motion-duration-50)
+  animation: var(--p-motion-keyframes-appear-below) var(--p-motion-duration-50)
     var(--p-motion-ease-out) var(--p-motion-duration-100) 1 both;
 
   @media (prefers-reduced-motion) {
@@ -57,7 +57,7 @@
 }
 
 .measured.positionedAbove:not(.instant) {
-  animation: var(--p-motion-keyframes--appear-above) var(--p-motion-duration-50)
+  animation: var(--p-motion-keyframes-appear-above) var(--p-motion-duration-50)
     var(--p-motion-ease-out) var(--p-motion-duration-100) 1 both;
 
   @media (prefers-reduced-motion) {
