@@ -4,6 +4,7 @@ import {
   SelectMinor,
   SearchMinor,
   PlusMinor,
+  ArchiveMinor,
 } from '@shopify/polaris-icons';
 import React from 'react';
 
