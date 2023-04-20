@@ -1,5 +1,5 @@
 import React from 'react';
-import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
+import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {getResponsiveProps} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
@@ -15,7 +15,7 @@ type Align =
   | 'space-evenly';
 type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
-type Gap = ResponsiveProp<SpacingSpaceScale>;
+type Gap = ResponsiveProp<SpaceScale>;
 
 export interface HorizontalStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
