@@ -80,26 +80,48 @@ export function Playground() {
             With icon
           </Text>
           <Box border="base" padding="4" borderRadius="2" background="bg">
-            <HorizontalStack gap="2" blockAlign="start">
-              <ButtonNew>
-                <HorizontalStack gap="1" blockAlign="center">
-                  <Icon source={PlusMinor} color="base" />
-                  Add variant
-                </HorizontalStack>
-              </ButtonNew>
-              <ButtonNew>
-                <HorizontalStack blockAlign="center">
-                  Edit
-                  <Icon source={CaretDownMinor} color="base" />
-                </HorizontalStack>
-              </ButtonNew>
-              <ButtonNew>
-                <HorizontalStack blockAlign="center">
-                  Location
-                  <Icon source={SelectMinor} color="base" />
-                </HorizontalStack>
-              </ButtonNew>
-            </HorizontalStack>
+            <VerticalStack gap="4" blockAlign="start">
+              <HorizontalStack gap="2" blockAlign="start">
+                <ButtonNew paddingInlineStart="2">
+                  <HorizontalStack gap="1" blockAlign="center">
+                    <Icon source={PlusMinor} color="base" />
+                    Add variant
+                  </HorizontalStack>
+                </ButtonNew>
+                <ButtonNew paddingInlineEnd="2">
+                  <HorizontalStack blockAlign="center">
+                    Edit
+                    <Icon source={CaretDownMinor} color="base" />
+                  </HorizontalStack>
+                </ButtonNew>
+                <ButtonNew paddingInlineEnd="2">
+                  <HorizontalStack blockAlign="center">
+                    Location
+                    <Icon source={SelectMinor} color="base" />
+                  </HorizontalStack>
+                </ButtonNew>
+              </HorizontalStack>
+              <HorizontalStack gap="2" blockAlign="start">
+                <ButtonNew size="small" paddingInlineStart="1">
+                  <HorizontalStack gap="1" blockAlign="center">
+                    <Icon source={PlusMinor} color="base" />
+                    Add variant
+                  </HorizontalStack>
+                </ButtonNew>
+                <ButtonNew size="small" paddingInlineEnd="1">
+                  <HorizontalStack blockAlign="center">
+                    Edit
+                    <Icon source={CaretDownMinor} color="base" />
+                  </HorizontalStack>
+                </ButtonNew>
+                <ButtonNew size="small" paddingInlineEnd="1">
+                  <HorizontalStack blockAlign="center">
+                    Location
+                    <Icon source={SelectMinor} color="base" />
+                  </HorizontalStack>
+                </ButtonNew>
+              </HorizontalStack>
+            </VerticalStack>
           </Box>
         </VerticalStack>
 
@@ -109,17 +131,25 @@ export function Playground() {
           </Text>
           <Box border="base" padding="4" borderRadius="2" background="bg">
             <HorizontalStack gap="2" blockAlign="start">
-              <ButtonNew size="small">
+              <ButtonNew
+                size="small"
+                paddingInlineStart="1"
+                paddingInlineEnd="1"
+              >
                 <HorizontalStack gap="1" blockAlign="center">
                   <Icon source={SearchMinor} color="base" />
                 </HorizontalStack>
               </ButtonNew>
-              <ButtonNew>
+              <ButtonNew paddingInlineStart="2" paddingInlineEnd="2">
                 <HorizontalStack blockAlign="center">
                   <Icon source={SearchMinor} color="base" />
                 </HorizontalStack>
               </ButtonNew>
-              <ButtonNew size="large">
+              <ButtonNew
+                size="large"
+                paddingInlineStart="3"
+                paddingInlineEnd="3"
+              >
                 <HorizontalStack blockAlign="center">
                   <Icon source={SearchMinor} color="base" />
                 </HorizontalStack>
