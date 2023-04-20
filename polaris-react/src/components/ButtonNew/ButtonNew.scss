@@ -7,6 +7,14 @@
   --bg-subdued: #F9FAFB;
   --bg-hover: #F1F2F4;
   --bg-active: #EBECEF;
+  --bg-primary: #007A5C;
+  --bg-primary-hover: #125443;
+  --bg-primary-active: #0C3B2F;
+  --bg-critical: #C5280C;
+  --bg-critical-hover: #9F200A;
+  --bg-critical-active: #731807;
+
+  --text-on-color: #fff;
 }
 
 .Button {
@@ -98,7 +106,7 @@
 }
 
 .variantPrimary {
-  background: var(--p-action-primary);
+  background: var(--bg-primary);
   color: var(--p-text-on-primary);
   border-width: 0;
   border-color: transparent;
@@ -109,25 +117,35 @@
   }
 
   &:hover {
-    background: var(--p-action-primary-hovered);
+    background: var(--bg-primary-hover);
   }
 
   &:active {
-    background: var(--p-action-primary-depressed);
+    background: var(--bg-primary-active);
+    // slightly darker inset shadow for primary
+    box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
+    inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6);
   }
 
   &.disabled {
-    color: var(--p-text-on-primary);
+    color: var(--text-on-color);
     background: rgba(0, 128, 96, 0.5);
     border-color: rgba(31, 33, 36, 0.2);
   }
 
   &.toneCritical {
-    background: var(--p-action-critical);
-    color: var(--p-text-on-critical);
+    background: var(--bg-critical);
+    color: var(--text-on-color);
     border-width: 0;
     border-color: transparent;
-    box-shadow: var(--p-shadow-sm);
+
+    &:hover {
+      background: var(--bg-critical-hover);
+    }
+
+    &:active {
+      background: var(--bg-critical-active);
+    }
 
     svg {
       fill: var(--p-icon-on-critical);
@@ -139,11 +157,11 @@
   background: transparent;
   color: var(--p-text);
   border-color: transparent;
+  border-width: 0px;
   box-shadow: none;
 
   &:hover {
     background: var(--bg-hover);
-    border-color: var(--border-subdued);
   }
 
   &:active {
