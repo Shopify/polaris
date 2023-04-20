@@ -63,15 +63,40 @@ export function Playground() {
             </Text>
           </VerticalStack>
           <Box border="base" padding="4" borderRadius="2" background="bg">
-            <HorizontalStack gap="2" blockAlign="start">
-              <ButtonNew variant="secondary" size="small">
-                Small
-              </ButtonNew>
-              <ButtonNew variant="secondary">Medium</ButtonNew>
-              <ButtonNew variant="secondary" size="large">
-                Large
-              </ButtonNew>
-            </HorizontalStack>
+            <VerticalStack gap="5">
+              <VerticalStack gap="1">
+                <Text as="p">Small</Text>
+                <HorizontalStack gap="2" blockAlign="start">
+                  <ButtonNew size="small">Secondary</ButtonNew>
+                  <ButtonNew variant="primary" size="small">
+                    Primary
+                  </ButtonNew>
+                  <ButtonNew variant="transparent" size="small">
+                    Transparent
+                  </ButtonNew>
+                </HorizontalStack>
+              </VerticalStack>
+              <VerticalStack gap="1">
+                <Text as="p">Medium</Text>
+                <HorizontalStack gap="2" blockAlign="start">
+                  <ButtonNew>Secondary</ButtonNew>
+                  <ButtonNew variant="primary">Primary</ButtonNew>
+                  <ButtonNew variant="transparent">Transparent</ButtonNew>
+                </HorizontalStack>
+              </VerticalStack>
+              <VerticalStack gap="1">
+                <Text as="p">Large</Text>
+                <HorizontalStack gap="2" blockAlign="start">
+                  <ButtonNew size="large">Secondary</ButtonNew>
+                  <ButtonNew variant="primary" size="large">
+                    Primary
+                  </ButtonNew>
+                  <ButtonNew variant="transparent" size="large">
+                    Transparent
+                  </ButtonNew>
+                </HorizontalStack>
+              </VerticalStack>
+            </VerticalStack>
           </Box>
         </VerticalStack>
 
@@ -168,13 +193,13 @@ export function Playground() {
           <Box border="base" padding="4" borderRadius="2" background="bg">
             <HorizontalStack gap="2" blockAlign="start">
               <ButtonNew variant="secondary" tone="critical">
-                Secondary
+                Delete
               </ButtonNew>
               <ButtonNew variant="primary" tone="critical">
-                Primary
+                Delete
               </ButtonNew>
               <ButtonNew variant="transparent" tone="critical">
-                Transparent
+                Delete
               </ButtonNew>
             </HorizontalStack>
           </Box>
