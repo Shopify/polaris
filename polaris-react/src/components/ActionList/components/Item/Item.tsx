@@ -176,7 +176,7 @@ export const TruncateText = ({
       hoverDelay={1000}
       content={textRef.current?.innerText}
     >
-      {position === 'middle' && truncatedText ? truncatedText : text}
+      {position === 'middle' ? <span>{truncatedText}</span> : text}
     </Tooltip>
   ) : (
     text
