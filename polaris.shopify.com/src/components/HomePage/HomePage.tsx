@@ -44,7 +44,7 @@ function HomePage({}: Props) {
             </p>
           </Link>
 
-          <Link href="/tokens/colors" className={styles.EntryPoint}>
+          <Link href="/tokens/color" className={styles.EntryPoint}>
             <h3>Tokens</h3>
             <p>
               Coded names that represent design decisions for color, spacing,

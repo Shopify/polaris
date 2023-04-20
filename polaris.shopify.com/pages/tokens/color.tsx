@@ -6,9 +6,9 @@ import PageMeta from '../../src/components/PageMeta';
 const Components: NextPage = () => {
   return (
     <>
-      <PageMeta title="Depth tokens" />
+      <PageMeta title="Color tokens" />
 
-      <TokensPage tokenGroup={'depth'} />
+      <TokensPage tokenGroup={'color'} />
     </>
   );
 };

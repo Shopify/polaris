@@ -1,8 +1,5 @@
 import React, {useEffect, useState, useRef, useCallback, useId} from 'react';
-import type {
-  BorderRadiusScale,
-  SpacingSpaceScale,
-} from '@shopify/polaris-tokens';
+import type {BorderRadiusScale, SpaceScale} from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
@@ -15,7 +12,7 @@ import type {TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
-export type Padding = 'default' | Extract<SpacingSpaceScale, '4'>;
+export type Padding = 'default' | Extract<SpaceScale, '4'>;
 export type BorderRadius = Extract<BorderRadiusScale, '1' | '2'>;
 
 export interface TooltipProps {

@@ -57,6 +57,12 @@ export type {
 } from './token-groups/spacing';
 
 export type {
+  SpaceTokenGroup,
+  SpaceTokenName,
+  SpaceScale,
+} from './token-groups/space';
+
+export type {
   ZIndexTokenGroup,
   ZIndexTokenName,
   ZIndexZScale,

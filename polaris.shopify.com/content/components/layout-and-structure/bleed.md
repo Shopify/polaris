@@ -19,7 +19,7 @@ examples:
   - fileName: bleed-specific-direction.tsx
     title: Specific direction
     description: >-
-      Negative margins can be added in a specific direction using the [Spacing tokens](https://polaris.shopify.com/tokens/spacing).
+      Negative margins can be added in a specific direction using the [Space tokens](https://polaris.shopify.com/tokens/space).
 ---
 
 ## Bleed values

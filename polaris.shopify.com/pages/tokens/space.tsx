@@ -6,9 +6,8 @@ import PageMeta from '../../src/components/PageMeta';
 const Components: NextPage = () => {
   return (
     <>
-      <PageMeta title="Shape tokens" />
-
-      <TokensPage tokenGroup={'shape'} />
+      <PageMeta title="Space tokens" />
+      <TokensPage tokenGroup={'space'} />
     </>
   );
 };

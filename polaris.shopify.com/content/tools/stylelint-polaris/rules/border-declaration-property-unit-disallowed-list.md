@@ -1,10 +1,10 @@
 ---
-title: shape/declaration-property-unit-disallowed-list
+title: border/declaration-property-unit-disallowed-list
 description: Disallows hard-coded `px`, `em`, and `rem` units in border property values.
 keywords:
   - stylelint
-  - shape
-  - shape rules
+  - border
+  - border rules
 ---
 
 ```diff

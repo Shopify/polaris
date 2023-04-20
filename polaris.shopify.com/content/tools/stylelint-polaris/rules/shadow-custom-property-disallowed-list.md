@@ -1,10 +1,10 @@
 ---
-title: depth/custom-property-disallowed-list
+title: shadow/custom-property-disallowed-list
 description: Disallows use of legacy shadow custom properties.
 keywords:
   - stylelint
-  - depth
-  - depth rules
+  - shadow
+  - shadow rules
 ---
 
 ```diff

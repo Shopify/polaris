@@ -7,6 +7,7 @@ import {font} from './token-groups/font';
 import {motion} from './token-groups/motion';
 import {shadow} from './token-groups/shadow';
 import {spacing} from './token-groups/spacing';
+import {space} from './token-groups/space';
 import {zIndex} from './token-groups/zIndex';
 
 export const metadata = createMetadata({
@@ -17,6 +18,7 @@ export const metadata = createMetadata({
   motion,
   shadow: tokensToRems(shadow),
   spacing: tokensToRems(spacing),
+  space: tokensToRems(space),
   zIndex,
 });
 

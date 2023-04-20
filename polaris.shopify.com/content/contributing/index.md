@@ -24,7 +24,7 @@ Contributions can seem intimidating, but they don’t have to be! Here are some 
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --- | --- |
 | _When available resources can solve a design problem_                        | _When a change or addition can solve a shared problem_                                  | _When a unique problem requires a unique solution_                                              |     |     |
 | Read [ Designing with a system ](/contributing/designing-with-a-system)      | Read [ When to contribute new patterns ](/contributing/when-to-contribute-new-patterns) | Share ideas in [ #admin-ux ](https://shopify.slack.com/archives/C039ZAKQ5AA)(Shopify employees) |     |     |
-| [ Review App Design Guidelines ](https://shopify.dev/apps/design-guidelines) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | Build with Polaris [ tokens ](https://polaris.shopify.com/tokens/colors)                        |     |     |
+| [ Review App Design Guidelines ](https://shopify.dev/apps/design-guidelines) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | Build with Polaris [ tokens ](https://polaris.shopify.com/tokens/color)                         |     |     |
 
 ## What makes a good contribution
 
