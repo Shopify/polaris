@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaCardWithRoundedCornersExample() {
   return (
-    <AlphaCard roundedAbove="sm">
+    <AlphaCard roundedAbove="md">
       <Text as="h2" variant="bodyMd">
         Content inside a card
       </Text>
