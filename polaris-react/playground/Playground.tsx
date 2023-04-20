@@ -1,7 +1,5 @@
 import {
-  ArchiveMinor,
   CaretDownMinor,
-  CirclePlusMinor,
   EditMajor,
   SelectMinor,
   SearchMinor,
@@ -24,8 +22,8 @@ import {
 
 export function Playground() {
   return (
-    <Page title="Playground">
-      <VerticalStack gap="6">
+    <Page title="Playground" narrowWidth>
+      <VerticalStack gap="12">
         <VerticalStack gap="2">
           <Text variant="headingMd" as="h2">
             Button base
@@ -168,18 +166,18 @@ export function Playground() {
           </Box>
         </VerticalStack>
 
-        <VerticalStack gap="2">
+        <VerticalStack gap="6">
           <VerticalStack>
             <Text variant="headingMd" as="h2">
               Background colors
             </Text>
-            <Text>
+            <Text as="p">
               Buttons on different background colors: `bg`, `bg-subdued`, and
               `bg-inverse`
             </Text>
           </VerticalStack>
 
-          <VerticalStack>
+          <VerticalStack gap="1">
             <Text as="h3" variant="headingSm">
               Default background
             </Text>
@@ -192,7 +190,7 @@ export function Playground() {
             </Box>
           </VerticalStack>
 
-          <VerticalStack>
+          <VerticalStack gap="1">
             <Text as="h3" variant="headingSm">
               Subdued background
             </Text>
@@ -210,7 +208,7 @@ export function Playground() {
             </Box>
           </VerticalStack>
 
-          <VerticalStack>
+          <VerticalStack gap="1">
             <Text as="h3" variant="headingSm">
               Inverse background
             </Text>
