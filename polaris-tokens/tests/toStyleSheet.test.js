@@ -30,7 +30,7 @@ const mockTokens = {
   motion: {},
   // Note: We don't need to assign mock values to the remaining static tokens.
   shadow: mockTokenGroup,
-  spacing: {},
+  space: {},
   zIndex: {},
 };
 

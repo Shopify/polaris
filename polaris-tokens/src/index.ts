@@ -51,12 +51,6 @@ export type {
 } from './token-groups/shadow';
 
 export type {
-  SpacingTokenGroup,
-  SpacingTokenName,
-  SpacingSpaceScale,
-} from './token-groups/spacing';
-
-export type {
   SpaceTokenGroup,
   SpaceTokenName,
   SpaceScale,
