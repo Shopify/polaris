@@ -644,6 +644,39 @@ const selectionAndInput = [
   },
 ];
 
+const stylelintPolaris = [
+  {
+    source: '/tools/stylelint-polaris/rules#spacing',
+    destination: '/tools/stylelint-polaris/rules#space',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/spacing-custom-property-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/space-custom-property-disallowed-list',
+    permanent: false,
+  },
+  {
+    source:
+      '/tools/stylelint-polaris/rules/spacing-declaration-property-unit-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/space-declaration-property-unit-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/spacing-function-disallowed-list',
+    destination:
+      '/tools/stylelint-polaris/rules/space-function-disallowed-list',
+    permanent: false,
+  },
+  {
+    source: '/tools/stylelint-polaris/rules/spacing-global-disallowed-list',
+    destination: '/tools/stylelint-polaris/rules/space-global-disallowed-list',
+    permanent: false,
+  },
+];
+
 const tables = [
   {
     source: '/components/table',
