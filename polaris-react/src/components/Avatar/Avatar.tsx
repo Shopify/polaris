@@ -109,8 +109,6 @@ export function Avatar({
     label = i18n.translate('Polaris.Avatar.labelWithInitials', {
       initials: splitInitials,
     });
-  } else {
-    label = i18n.translate('Polaris.Avatar.label');
   }
 
   const className = classNames(
@@ -175,7 +173,11 @@ export function Avatar({
   );
 
   return (
-    <span aria-label={label} role="img" className={className}>
+    <span
+      aria-label={label}
+      role={label ? 'img' : 'presentation'}
+      className={className}
+    >
       {svgMarkup}
       {imageMarkUp}
     </span>
