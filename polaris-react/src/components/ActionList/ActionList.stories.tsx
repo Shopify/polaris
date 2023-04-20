@@ -332,3 +332,62 @@ export function WithAPrefixAndASuffix() {
     </div>
   );
 }
+
+export function WithWrappedOrTruncatedContent() {
+  return (
+    <div style={{height: '250px', maxWidth: '200px'}}>
+      <ActionList
+        actionRole="menuitem"
+        items={[
+          {
+            content:
+              'A very long string that will wrap within the same line as the prefix and suffix',
+            contentOverflow: 'wrap',
+            prefix: (
+              <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="small"
+                alt="Black leather pet collar"
+              />
+            ),
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+          {
+            content: 'A very long string that will truncate',
+            contentOverflow: 'truncate',
+            prefix: <Avatar customer name="Farrah" size="small" />,
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+          {
+            content:
+              'A very long string that will wrap within the same line as the prefix and suffix',
+            contentOverflow: 'wrap',
+            helpText: 'with help text',
+            prefix: (
+              <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="small"
+                alt="Black leather pet collar"
+              />
+            ),
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+          {
+            content: 'A very long string that will truncate',
+            helpText: 'with help text',
+            contentOverflow: 'truncate',
+            prefix: <Avatar customer name="Farrah" size="small" />,
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+          {
+            content: 'A very long string with truncate and ellipsis',
+            ellipsis: true,
+            contentOverflow: 'truncate',
+            prefix: <Avatar customer name="Farrah" size="small" />,
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+        ]}
+      />
+    </div>
+  );
+}
