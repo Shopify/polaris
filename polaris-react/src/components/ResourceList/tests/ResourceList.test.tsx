@@ -2,7 +2,8 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
-import {BulkActions, useIsBulkActionsSticky} from '../../BulkActions';
+import {BulkActions} from '../../BulkActions';
+import type {useIsBulkActionsSticky} from '../../BulkActions';
 import {SelectAllActions} from '../../SelectAllActions';
 import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';

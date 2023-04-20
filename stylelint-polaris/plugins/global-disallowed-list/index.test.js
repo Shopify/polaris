@@ -1,6 +1,6 @@
 const {ruleName} = require('.');
 
-const config = [[/\$font-size-data/, /--p-button-font/]];
+const config = [[/\$font-size-data/, /--p-token/]];
 
 testRule({
   ruleName,
@@ -20,16 +20,6 @@ testRule({
       description: 'Uses something on the disallowed list',
       message:
         'Unexpected disallowed value "$font-size-data" (polaris/global-disallowed-list)',
-      line: 1,
-      column: 17,
-      endLine: 1,
-      endColumn: 32,
-    },
-    {
-      code: '.a { color: var(--p-button-font); }',
-      description: 'Uses something on the disallowed list',
-      message:
-        'Unexpected disallowed value "--p-button-font" (polaris/global-disallowed-list)',
       line: 1,
       column: 17,
       endLine: 1,

@@ -3,9 +3,6 @@ title: New badge
 description: The New badge can be used to inform merchants about the release of a feature that creates new value. It should be used sparingly and for a short time frame.
 icon: StarFilledMinor
 noIndex: true
-status:
-  value: Legacy
-  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - new badge
   - new features
@@ -18,7 +15,7 @@ keywords:
 
 There’s opportunity to expand on this documentation. If you’d like to share ideas, or evolve the guidance, join the [Github discussion](https://github.com/Shopify/polaris/discussions/6751) or jump straight to updating the [documentation](https://polaris.shopify.com/contributing/documentation).
 
-![Card with the new badge aligned to the right of the card heading](/images/foundations/patterns/new-badge/new-badge@2x.png)
+![Card with the new badge aligned to the right of the card heading](/images/patterns-legacy/new-badge/new-badge@2x.png)
 
 ## When to use the New badge
 
@@ -38,7 +35,7 @@ Consider how the admin would look if it was cluttered with New badges or feature
 
 ### When not to use the New badge
 
-- Should never be used in the primary [navigation](/components/navigation) menu of the Shopify admin
+- Should never be used in the primary [navigation](/components/navigation/navigation) menu of the Shopify admin
 
 ## How long to use the New badge
 

@@ -152,7 +152,9 @@
       "clearAllFilters": "Wyczyść wszystkie filtry",
       "clear": "Wyczyść",
       "clearLabel": "Wyczyść {filterName}",
-      "moreFiltersWithCount": "Więcej filtrów ({count})"
+      "moreFiltersWithCount": "Więcej filtrów ({count})",
+      "addFilter": "Dodaj filtr",
+      "clearFilters": "Wyczyść wszystko"
     },
     "Modal": {
       "iFrameTitle": "znacznik treści",
@@ -201,7 +203,50 @@
       "loadingLabel": "Ładowanie strony"
     },
     "Tabs": {
-      "toggleTabsLabel": "Więcej kart"
+      "toggleTabsLabel": "Więcej widoków",
+      "newViewAccessibilityLabel": "Utwórz nowy widok",
+      "newViewTooltip": "Utwórz widok",
+      "Tab": {
+        "rename": "Zmień nazwę widoku",
+        "duplicate": "Duplikuj widok",
+        "edit": "Edytuj widok",
+        "editColumns": "Edytuj kolumny",
+        "delete": "Usuń widok",
+        "copy": "Kopia {name}",
+        "deleteModal": {
+          "title": "Czy usunąć widok?",
+          "description": "Tej czynności nie można cofnąć. Widok {viewName} nie będzie już dostępny w Twoim panelu administracyjnym.",
+          "cancel": "Anuluj",
+          "delete": "Usuń widok"
+        }
+      },
+      "RenameModal": {
+        "title": "Zmień nazwę widoku",
+        "label": "Nazwa",
+        "cancel": "Anuluj",
+        "create": "Zapisz",
+        "errors": {
+          "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplikuj widok",
+        "label": "Nazwa",
+        "cancel": "Anuluj",
+        "create": "Utwórz widok",
+        "errors": {
+          "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Utwórz nowy widok",
+        "label": "Nazwisko",
+        "cancel": "Anuluj",
+        "create": "Utwórz widok",
+        "errors": {
+          "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Usuń {children}"
@@ -218,7 +263,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Czynności"
+      "popoverButton": "Czynności",
+      "dismissButton": "Odrzuć"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -307,6 +353,40 @@
     "FullscreenBar": {
       "back": "Powrót",
       "accessibilityLabel": "Zakończ tryb pełnoekranowy"
+    },
+    "FilterPill": {
+      "clear": "Wyczyść"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Wyszukaj i przefiltruj (F)",
+      "searchFilterAccessibilityLabel": "Wyszukaj i przefiltruj wyniki",
+      "sort": "Sortuj wyniki",
+      "addView": "Dodaj nowy widok",
+      "newView": "Niestandardowe wyszukiwanie",
+      "SortButton": {
+        "ariaLabel": "Sortuj wyniki",
+        "tooltip": "Sortuj",
+        "title": "Sortuj wg",
+        "sorting": {
+          "asc": "Rosnąco",
+          "desc": "Malejąco",
+          "az": "A–Z",
+          "za": "Z–A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Anuluj",
+        "update": "Aktualizuj",
+        "save": "Zapisz",
+        "saveAs": "Zapisz jako",
+        "modal": {
+          "title": "Zapisz widok jako",
+          "label": "Nazwisko",
+          "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę.",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        }
+      }
     }
   }
 }

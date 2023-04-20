@@ -186,7 +186,7 @@ export const color: {
     description: '',
   },
   'color-bg-subdued-active': {
-    value: colors.gray[400],
+    value: colors.gray[300],
     description: '',
   },
   'color-bg-disabled': {
@@ -218,7 +218,7 @@ export const color: {
     description: '',
   },
   'color-bg-subdued-hover': {
-    value: colors.gray[300],
+    value: colors.gray[200],
     description: '',
   },
   'color-bg-inset': {
@@ -474,7 +474,7 @@ export const color: {
     description: '',
   },
   'color-border-critical-subdued': {
-    value: colors.red[200],
+    value: colors.red[400],
     description: '',
   },
   'color-border-caution': {
@@ -570,7 +570,7 @@ export const color: {
     description: '',
   },
   'color-icon-info': {
-    value: colors.green[600],
+    value: colors.teal[600],
     description: '',
   },
   'color-icon-warning': {

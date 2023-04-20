@@ -1,0 +1,16 @@
+@import '../../../../styles/common';
+
+.Container {
+  border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-top-left-radius: var(--p-border-radius-2);
+  border-top-right-radius: var(--p-border-radius-2);
+  background: var(--p-color-bg);
+}
+
+@media #{$p-breakpoints-sm-down} {
+  .Container {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    height: 57px;
+  }
+}

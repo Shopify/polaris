@@ -6,9 +6,9 @@ import {buttonFrom} from '../Button';
 import {SettingAction} from '../SettingAction';
 import {Card} from '../Card';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
+import {HorizontalStack} from '../HorizontalStack';
 import {Text} from '../Text';
-import {Stack} from '../Stack';
+import {VerticalStack} from '../VerticalStack';
 
 export interface AccountConnectionProps {
   /** Content to display as title */
@@ -71,13 +71,13 @@ export function AccountConnection({
   return (
     <Card>
       <SettingAction action={actionElement}>
-        <Inline gap="4">
+        <HorizontalStack gap="4">
           {avatarMarkup}
-          <Stack gap="2">
+          <VerticalStack gap="2">
             {titleMarkup}
             {detailsMarkup}
-          </Stack>
-        </Inline>
+          </VerticalStack>
+        </HorizontalStack>
       </SettingAction>
       {termsOfServiceMarkup}
     </Card>

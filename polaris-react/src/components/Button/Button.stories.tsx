@@ -28,6 +28,14 @@ export function Plain() {
   return <Button plain>View shipping settings</Button>;
 }
 
+export function PlainPrimary() {
+  return (
+    <Button plain primary>
+      Save as
+    </Button>
+  );
+}
+
 export function PlainMonochrome() {
   return (
     <div>
@@ -53,6 +61,14 @@ export function Primary() {
 
 export function Destructive() {
   return <Button destructive>Delete theme</Button>;
+}
+
+export function Micro() {
+  return (
+    <>
+      <Button size="micro">Save</Button>
+    </>
+  );
 }
 
 export function Slim() {

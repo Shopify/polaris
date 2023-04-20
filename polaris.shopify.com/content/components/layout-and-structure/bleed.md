@@ -5,8 +5,8 @@ category: Layout and structure
 keywords:
   - layout
 status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+  value: Beta
+  message: This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: bleed-horizontal.tsx
     title: Horizontal
@@ -25,3 +25,7 @@ examples:
 ## Bleed values
 
 Content should never go beyond the edges of the parent container. Choose a bleed value that works within the containing layout.
+
+## Related resources
+
+- Bleed props are named following the convention of CSS logical properties, such as 'margin-inline-start' and 'margin-block-start'. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).

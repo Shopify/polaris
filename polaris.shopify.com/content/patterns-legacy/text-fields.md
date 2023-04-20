@@ -3,9 +3,6 @@ title: Text fields
 description: Text fields combine the field label (the title) and the input area. Inputs can vary from typed text to URLs to date pickers.
 icon: FormsMajor
 noIndex: true
-status:
-  value: Legacy
-  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - text fields
   - search
@@ -14,7 +11,7 @@ keywords:
 
 Text fields can be grouped in a form or placed individually in the UI. Placeholder text should generally be avoided in text fields. Help text can be used below the text input area to guide the user on acceptable inputs.
 
-![text-field-anatomy](/images/foundations/patterns/text-fields/text-field-anatomy@2x.png)
+![text-field-anatomy](/images/patterns-legacy/text-fields/text-field-anatomy@2x.png)
 
 ---
 
@@ -22,17 +19,17 @@ Text fields can be grouped in a form or placed individually in the UI. Placehold
 
 Field labels act as a title for the text field. Labels should typically be short and in noun form. For example, “Name”.
 
-![field-label-highlighted](/images/foundations/patterns/text-fields/field-label-highlighted@2x.png)
+![field-label-highlighted](/images/patterns-legacy/text-fields/field-label-highlighted@2x.png)
 
 <!-- dodont -->
 
 #### Do
 
-![do-example-form-fields](/images/foundations/patterns/text-fields/do-example-form-fields@2x.png)
+![do-example-form-fields](/images/patterns-legacy/text-fields/do-example-form-fields@2x.png)
 
 #### Don’t
 
-![dont-example-form-fields](/images/foundations/patterns/text-fields/dont-example-form-fields@2x.png)
+![dont-example-form-fields](/images/patterns-legacy/text-fields/dont-example-form-fields@2x.png)
 
 <!-- end -->
 
@@ -42,11 +39,11 @@ Edge case: When a text field isn’t part of a form and is placed individually o
 
 #### Do
 
-![](/images/foundations/patterns/text-fields/do-example-leave-a-comment@2x.png)
+![](/images/patterns-legacy/text-fields/do-example-leave-a-comment@2x.png)
 
 #### Don’t
 
-![](/images/foundations/patterns/text-fields/dont-example-comment@2x.png)
+![](/images/patterns-legacy/text-fields/dont-example-comment@2x.png)
 
 <!-- end -->
 
@@ -63,7 +60,7 @@ In general, avoid using placeholder text in text fields. It can pose a range of 
 
 Exception: Read the guidelines on [search fields](#search-and-email-fields).
 
-![blue-search-field-placeholder-text](/images/foundations/patterns/text-fields/blue-search-field-placeholder-text@2x.png)
+![blue-search-field-placeholder-text](/images/patterns-legacy/text-fields/blue-search-field-placeholder-text@2x.png)
 
 ---
 
@@ -82,25 +79,25 @@ Best practices:
 - Avoid repeating the field label. If the field label provides sufficient context for completing the action, then you likely don’t need to add help text.
 - If there’s not enough room to include both instructions and an example, then only include the example.
 
-![help-text](/images/foundations/patterns/text-fields/help-text@2x.png)
+![help-text](/images/patterns-legacy/text-fields/help-text@2x.png)
 
 <!-- dodont -->
 
 #### Do
 
-![do-example-help-text-customer-email](/images/foundations/patterns/text-fields/do-example-help-text-customer-email.png)
+![do-example-help-text-customer-email](/images/patterns-legacy/text-fields/do-example-help-text-customer-email.png)
 
 #### Don’t
 
-![dont-example-help-text-customer-email](/images/foundations/patterns/text-fields/dont-example-help-text-customer-email.png)
+![dont-example-help-text-customer-email](/images/patterns-legacy/text-fields/dont-example-help-text-customer-email.png)
 
 #### Do
 
-![do-example-help-text-domain](/images/foundations/patterns/text-fields/do-example-help-text-domain.png)
+![do-example-help-text-domain](/images/patterns-legacy/text-fields/do-example-help-text-domain.png)
 
 #### Don’t
 
-![dont-example-help-text-domain](/images/foundations/patterns/text-fields/dont-example-help-text-domain.png)
+![dont-example-help-text-domain](/images/patterns-legacy/text-fields/dont-example-help-text-domain.png)
 
 <!-- end -->
 
@@ -114,19 +111,19 @@ There are three types of text inputs:
 
 These are fields that require a specific format to be valid. They’re often used for tags, dates, and some tracking numbers. Modeled text is highly structured, so providing examples is useful. [Read more](#modeled-text-inputs)
 
-![modeled-text-inputs](/images/foundations/patterns/text-fields/modeled-text-inputs@2x.png)
+![modeled-text-inputs](/images/patterns-legacy/text-fields/modeled-text-inputs@2x.png)
 
 ### Free text inputs
 
 These are fields that accept short strings of text. They’re often used for SKUs, barcodes, and titles. Only provide example text if you know how the text should be structured, such as a tracking number or discount code. [Read more](#free-text-inputs)
 
-![free-text-input](/images/foundations/patterns/text-fields/free-text-input@2x.png)
+![free-text-input](/images/patterns-legacy/text-fields/free-text-input@2x.png)
 
 ### Multiline text inputs
 
 These are fields that are rendered as multiline textarea elements, as well as text input elements that accept long strings of text. They’re often used for product descriptions, order comments, and customer notes. Users can write whatever they want, so providing example text is less useful. [Read more](#multiline-text-inputs)
 
-![multiline-text-inputs](/images/foundations/patterns/text-fields/multiline-text-inputs.png)
+![multiline-text-inputs](/images/patterns-legacy/text-fields/multiline-text-inputs.png)
 
 ---
 
@@ -142,19 +139,19 @@ Modeled text inputs are text field inputs that require text to be formatted in a
 
 #### Do
 
-![do-example-modeled-text-inputs-options](/images/foundations/patterns/text-fields/do-example-modeled-text-inputs-options@2x.png)
+![do-example-modeled-text-inputs-options](/images/patterns-legacy/text-fields/do-example-modeled-text-inputs-options@2x.png)
 
 #### Don’t
 
-![dont-example-modeled-text-inputs-options](/images/foundations/patterns/text-fields/dont-example-modeled-text-inputs-options@2x.png)
+![dont-example-modeled-text-inputs-options](/images/patterns-legacy/text-fields/dont-example-modeled-text-inputs-options@2x.png)
 
 #### Do
 
-![do-example-modeled-text-inputs-expected-arrival](/images/foundations/patterns/text-fields/do-example-modeled-text-inputs-expected-arrival@2x.png)
+![do-example-modeled-text-inputs-expected-arrival](/images/patterns-legacy/text-fields/do-example-modeled-text-inputs-expected-arrival@2x.png)
 
 #### Don’t
 
-![dont-example-modeled-text-inputs-expected-arrival](/images/foundations/patterns/text-fields/dont-example-modeled-text-inputs-expected-arrival@2x.png)
+![dont-example-modeled-text-inputs-expected-arrival](/images/patterns-legacy/text-fields/dont-example-modeled-text-inputs-expected-arrival@2x.png)
 
 <!-- end -->
 
@@ -172,13 +169,13 @@ If a text field label has a call to action, there's no need to repeat it in the 
 
 For example, when a free text input is located independent of a form and has no surrounding context, you can make the field label a call to action.
 
-![free-text-input-leave-a-comment](/images/foundations/patterns/text-fields/free-text-input-leave-a-comment@2x.png)
+![free-text-input-leave-a-comment](/images/patterns-legacy/text-fields/free-text-input-leave-a-comment@2x.png)
 
 ### Point in the right direction
 
 If the text field label isn’t clear about where the user can find the information, use help text to guide them.
 
-![free-text-input-isbn](/images/foundations/patterns/text-fields/free-text-input-isbn@2x.png)
+![free-text-input-isbn](/images/patterns-legacy/text-fields/free-text-input-isbn@2x.png)
 
 ---
 
@@ -190,11 +187,11 @@ Don’t use placeholder text for free input titles, names, and descriptions; use
 
 #### Do
 
-![do-example-titles-names-descriptions](/images/foundations/patterns/text-fields/do-example-titles-names-descriptions@2x.png)
+![do-example-titles-names-descriptions](/images/patterns-legacy/text-fields/do-example-titles-names-descriptions@2x.png)
 
 #### Don’t
 
-![dont-example-titles-names-descriptions](/images/foundations/patterns/text-fields/dont-example-titles-names-descriptions@2x.png)
+![dont-example-titles-names-descriptions](/images/patterns-legacy/text-fields/dont-example-titles-names-descriptions@2x.png)
 
 <!-- end -->
 
@@ -210,19 +207,19 @@ Choose clear names for the field label, and don’t repeat it in the help text i
 
 #### Do
 
-![do-example-tracking-number](/images/foundations/patterns/text-fields/do-example-tracking-number@2x.png)
+![do-example-tracking-number](/images/patterns-legacy/text-fields/do-example-tracking-number@2x.png)
 
 #### Don’t
 
-![dont-example-tracking-number](/images/foundations/patterns/text-fields/dont-example-tracking-number@2x.png)
+![dont-example-tracking-number](/images/patterns-legacy/text-fields/dont-example-tracking-number@2x.png)
 
 #### Do
 
-![do-example-discount-code](/images/foundations/patterns/text-fields/do-example-discount-code@2x.png)
+![do-example-discount-code](/images/patterns-legacy/text-fields/do-example-discount-code@2x.png)
 
 #### Don’t
 
-![dont-example-discount-code](/images/foundations/patterns/text-fields/dont-example-discount-code@2x.png)
+![dont-example-discount-code](/images/patterns-legacy/text-fields/dont-example-discount-code@2x.png)
 
 <!-- end -->
 
@@ -245,11 +242,11 @@ We usually don’t know what will go in multiline fields, so providing example t
 
 #### Do
 
-![do-example-multiline-text-input](/images/foundations/patterns/text-fields/do-example-multiline-text-input@2x.png)
+![do-example-multiline-text-input](/images/patterns-legacy/text-fields/do-example-multiline-text-input@2x.png)
 
 #### Don’t
 
-![dont-example-multiline-text-input](/images/foundations/patterns/text-fields/dont-example-multiline-text-input@2x.png)
+![dont-example-multiline-text-input](/images/patterns-legacy/text-fields/dont-example-multiline-text-input@2x.png)
 
 <!-- end -->
 
@@ -263,19 +260,19 @@ Some comments and notes are not visible to customers, but some are. In the help 
 
 #### Do
 
-![do-example-comment](/images/foundations/patterns/text-fields/do-example-comment@2x.png)
+![do-example-comment](/images/patterns-legacy/text-fields/do-example-comment@2x.png)
 
 #### Don’t
 
-![dont-example-placeholder-text-as-comment](/images/foundations/patterns/text-fields/dont-example-placeholder-text-as-comment@2x.png)
+![dont-example-placeholder-text-as-comment](/images/patterns-legacy/text-fields/dont-example-placeholder-text-as-comment@2x.png)
 
 #### Do
 
-![do-example-note](/images/foundations/patterns/text-fields/do-example-note@2x.png)
+![do-example-note](/images/patterns-legacy/text-fields/do-example-note@2x.png)
 
 #### Don’t
 
-![dont-example-note](/images/foundations/patterns/text-fields/dont-example-note@2x.png)
+![dont-example-note](/images/patterns-legacy/text-fields/dont-example-note@2x.png)
 
 <!-- end -->
 
@@ -291,11 +288,11 @@ For standard text fields, avoid placeholder text. However, regular or floating p
 
 Placeholder text is a common, recognizable pattern for these field types. Moving the placeholder text outside of the text field box may seem out of place and negatively impact the visual design of some marketing pages.
 
-![blue-search-field-placeholder-text](/images/foundations/patterns/text-fields/blue-search-field-placeholder-text@2x.png)
+![blue-search-field-placeholder-text](/images/patterns-legacy/text-fields/blue-search-field-placeholder-text@2x.png)
 
 To make search, filter, and email entry fields more accessible, always move the placeholder text above the cursor while the field is in focus. This lets the user read the placeholder text as soon as they select the field.
 
-![search-field-placeholder-text](/images/foundations/patterns/text-fields/search-field-placeholder-text@2x.png)
+![search-field-placeholder-text](/images/patterns-legacy/text-fields/search-field-placeholder-text@2x.png)
 
 ---
 
@@ -305,4 +302,4 @@ There are some cases where help text clutters a page. For example, the minimalis
 
 As with standard placeholder text, the placeholder should float above the text entry once the field has been selected. It’s not easy for everyone to read the small print of the floating text, so use this method sparingly.
 
-![minimalist-design-placeholder-text](/images/foundations/patterns/text-fields/minimalist-design-placeholder-text@2x.png)
+![minimalist-design-placeholder-text](/images/patterns-legacy/text-fields/minimalist-design-placeholder-text@2x.png)

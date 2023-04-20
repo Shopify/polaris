@@ -8,7 +8,8 @@ import type {
 import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
-import {Box, BoxProps} from '../Box';
+import {Box} from '../Box';
+import type {BoxProps} from '../Box';
 import {Text} from '../Text';
 import {Bleed} from '../Bleed';
 
@@ -99,7 +100,8 @@ export function OptionList({
             paddingInlineStart="2"
             paddingBlockEnd="2"
             paddingInlineEnd="2"
-            borderBlockStart={!isFirstOption ? 'divider' : undefined}
+            borderColor="border-subdued"
+            borderBlockStartWidth={!isFirstOption ? '1' : undefined}
           >
             <Text as="p" variant="headingXs">
               {title}

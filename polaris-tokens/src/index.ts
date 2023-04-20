@@ -47,8 +47,6 @@ export type {
   FontWeightAlias,
 } from './token-groups/font';
 
-export type {LegacyTokenGroup, LegacyTokenName} from './token-groups/legacy';
-
 export type {
   MotionTokenGroup,
   MotionTokenName,
@@ -69,6 +67,13 @@ export type {
   ShapeBorderRadiusAlias,
   ShapeBorderWidthScale,
 } from './token-groups/shape';
+
+export type {
+  BorderTokenGroup,
+  BorderTokenName,
+  BorderRadiusScale,
+  BorderWidthScale,
+} from './token-groups/border';
 
 export type {
   SpacingTokenGroup,

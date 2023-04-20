@@ -5,7 +5,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function MultilineFieldExample() {
   const [value, setValue] = useState('1776 Barnes Street\nOrlando, FL 32801');
 
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange = useCallback(
+    (newValue: string) => setValue(newValue),
+    [],
+  );
 
   return (
     <TextField

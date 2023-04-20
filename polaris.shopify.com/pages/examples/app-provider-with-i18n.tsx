@@ -35,13 +35,13 @@ function AppProviderI18NExample() {
             showHeader
             items={[
               {
-                id: 341,
+                id: '341',
                 url: '#',
                 name: 'Mae Jemison',
                 location: 'Decatur, USA',
               },
               {
-                id: 256,
+                id: '256',
                 url: '#',
                 name: 'Ellen Ochoa',
                 location: 'Los Angeles, USA',

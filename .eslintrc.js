@@ -12,6 +12,7 @@ module.exports = {
     'plugin:@shopify/polaris',
     'plugin:@shopify/prettier',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: [
@@ -50,6 +51,7 @@ module.exports = {
       },
     ],
     '@babel/no-unused-expressions': 'off',
+    'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
     'import/named': 'off',
     'import/no-default-export': ['error'],
     'react/button-has-type': 'off',
@@ -60,6 +62,8 @@ module.exports = {
     '@shopify/no-ancestor-directory-import': 'error',
     '@shopify/react-prefer-private-members': 'off',
     '@typescript-eslint/array-type': ['error', {default: 'array'}],
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/naming-convention': 'off',
     'jsx-a11y/label-has-for': [
       2,
@@ -98,6 +102,23 @@ module.exports = {
       files: ['polaris-cli/src/**/*.{ts,tsx}'],
       rules: {
         'import/no-default-export': 'off',
+      },
+    },
+    {
+      files: ['polaris-codemods/src/**/*.{ts,tsx}'],
+      rules: {
+        'import/no-default-export': 'off',
+        // Issue with inconsistent import order between node 14 and 16.
+        // This could be removed after dropping node 14 support.
+        'import/order': 'off',
+      },
+    },
+    {
+      files: ['polaris-codemods/src/**/tests/*.{ts,tsx}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        '@shopify/jsx-no-hardcoded-content': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
       },
     },
     {

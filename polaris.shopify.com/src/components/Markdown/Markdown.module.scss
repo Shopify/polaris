@@ -1,0 +1,22 @@
+.MarkdownImage {
+  width: 100%;
+}
+
+.MarkdownCopyButton {
+  opacity: 0.5;
+  transition: opacity 100ms ease-in;
+  background: none;
+  outline: none;
+}
+
+.MarkdownHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-1);
+
+  &:hover {
+    .MarkdownCopyButton {
+      opacity: 1;
+    }
+  }
+}

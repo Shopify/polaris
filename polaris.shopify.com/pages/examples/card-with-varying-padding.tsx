@@ -1,10 +1,10 @@
-import {Card, Text, Stack} from '@shopify/polaris';
+import {Card, Text, VerticalStack} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
-    <Stack gap="4">
+    <VerticalStack gap="4">
       <Card>
         <Placeholder label="Content inside a card" />
       </Card>
@@ -17,7 +17,7 @@ function CardExample() {
       <Card padding="0">
         <Placeholder label="Content inside a card" />
       </Card>
-    </Stack>
+    </VerticalStack>
   );
 }
 
@@ -25,14 +25,14 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
-        background: '#20828D',
+        background: 'var(--p-color-text-info)',
         height: height,
         width: width,
       }}
     >
       <div
         style={{
-          color: '#FFFFFF',
+          color: 'var(--p-color-text-on-color)',
         }}
       >
         <Text as="h2" variant="bodyMd">

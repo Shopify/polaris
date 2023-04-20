@@ -38,7 +38,7 @@ describe('<SkeletonPage />', () => {
 
       expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
       expect(skeletonPage).not.toContainReactComponent(Box, {
-        background: 'surface-neutral',
+        background: 'bg-strong',
       });
     });
 
@@ -49,7 +49,7 @@ describe('<SkeletonPage />', () => {
         className: 'Title',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'surface-neutral',
+        background: 'bg-strong',
       });
     });
 
@@ -60,14 +60,19 @@ describe('<SkeletonPage />', () => {
         className: 'Title',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'surface-neutral',
+        background: 'bg-strong',
       });
     });
   });
 
   it('renders breadcrumbs', () => {
     const skeletonPage = mountWithApp(<SkeletonPage breadcrumbs />);
-    expect(skeletonPage).toContainReactComponent(SkeletonBodyText);
+    expect(skeletonPage).toContainReactComponent(Box, {
+      background: 'bg-strong',
+      minWidth: '2.25rem',
+      minHeight: '2.25rem',
+      maxWidth: '2.25rem',
+    });
   });
 
   describe('primaryAction', () => {

@@ -1,11 +1,11 @@
-import {Page, LegacyCard, DataTable} from '@shopify/polaris';
+import {Page, LegacyCard, DataTable, TableData} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function SortableDataTableExample() {
-  const [sortedRows, setSortedRows] = useState(null);
+  const [sortedRows, setSortedRows] = useState<TableData[][] | null>(null);
 
-  const initiallySortedRows = [
+  const initiallySortedRows: TableData[][] = [
     ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
     ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
     [
@@ -19,7 +19,8 @@ function SortableDataTableExample() {
   const rows = sortedRows ? sortedRows : initiallySortedRows;
 
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    (index: number, direction: 'ascending' | 'descending') =>
+      setSortedRows(sortCurrency(rows, index, direction)),
     [rows],
   );
 
@@ -52,10 +53,14 @@ function SortableDataTableExample() {
     </Page>
   );
 
-  function sortCurrency(rows, index, direction) {
+  function sortCurrency(
+    rows: TableData[][],
+    index: number,
+    direction: 'ascending' | 'descending',
+  ): TableData[][] {
     return [...rows].sort((rowA, rowB) => {
-      const amountA = parseFloat(rowA[index].substring(1));
-      const amountB = parseFloat(rowB[index].substring(1));
+      const amountA = parseFloat((rowA[index] || 0).toString().substring(1));
+      const amountB = parseFloat((rowB[index] || 0).toString().substring(1));
 
       return direction === 'descending' ? amountB - amountA : amountA - amountB;
     });

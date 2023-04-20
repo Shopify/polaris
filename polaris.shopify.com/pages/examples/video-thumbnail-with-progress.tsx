@@ -18,6 +18,7 @@ function VideoThumbnailExample() {
         videoProgress={45}
         showVideoProgress
         thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+        onClick={() => console.log('clicked')}
       />
     </MediaCard>
   );

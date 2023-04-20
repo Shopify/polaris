@@ -5,7 +5,7 @@ import {
   Button,
   LegacyCard,
   EmptyState,
-  Filters,
+  LegacyFilters,
   Layout,
   Page,
   ResourceItem,
@@ -68,7 +68,7 @@ export function WithEmptyState() {
   const filters = [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       disabled={!items.length}
       queryValue=""
       filters={filters}
@@ -679,7 +679,7 @@ export function WithFiltering() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -690,7 +690,7 @@ export function WithFiltering() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
@@ -791,7 +791,7 @@ export function WithACustomEmptySearchResultState() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -802,7 +802,7 @@ export function WithACustomEmptySearchResultState() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
@@ -1168,7 +1168,7 @@ export function WithAllOfItsElements() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -1179,7 +1179,7 @@ export function WithAllOfItsElements() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (

@@ -1,0 +1,30 @@
+@import '../../styles/common';
+
+.VerticalStack {
+  @include responsive-props('vertical-stack', 'gap', 'gap');
+  // stylelint-disable -- Polaris component custom properties
+  --pc-vertical-stack-align: initial;
+  --pc-vertical-stack-inline-align: initial;
+  --pc-vertical-stack-order: initial;
+  // stylelint-enable
+  display: flex;
+  // stylelint-disable-next-line -- custom property to set flex direction
+  flex-direction: var(--pc-vertical-stack-order);
+  // stylelint-disable-next-line -- custom property to set horizontal alignment
+  align-items: var(--pc-vertical-stack-inline-align);
+  // stylelint-disable-next-line -- custom property to set vertical alignment
+  justify-content: var(--pc-vertical-stack-align);
+}
+
+.listReset {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.fieldsetReset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}

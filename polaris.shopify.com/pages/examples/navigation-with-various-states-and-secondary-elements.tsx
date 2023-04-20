@@ -76,7 +76,6 @@ function NavigationExample() {
               subNavigationItems: [
                 {
                   url: location,
-                  selected: true,
                   disabled: false,
                   label: 'Selected sub item',
                 },

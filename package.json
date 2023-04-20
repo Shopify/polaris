@@ -8,6 +8,7 @@
   "workspaces": {
     "packages": [
       "polaris-cli",
+      "polaris-codemods",
       "polaris-tokens",
       "polaris-for-vscode",
       "polaris-icons",
@@ -26,8 +27,8 @@
     ]
   },
   "scripts": {
-    "build": "turbo run build --filter=!polaris.shopify.com && turbo run build --filter=polaris.shopify.com",
-    "dev": "turbo run dev --filter=@shopify/polaris... --parallel",
+    "build": "turbo run build",
+    "dev": "turbo run dev --filter=@shopify/polaris --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:watch": "jest --watch",
@@ -63,7 +64,6 @@
     "@rollup/pluginutils": "^5.0.2",
     "@shopify/cli": "^3.10.1",
     "@shopify/eslint-plugin": "^42.0.1",
-    "@shopify/prettier-config": "^1.1.2",
     "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.1.0",
     "@size-limit/preset-small-lib": "^5.0.3",
@@ -84,30 +84,29 @@
     "size-limit": "^5.0.3",
     "stylelint": "^14.15.0",
     "ts-node": "^10.7.0",
-    "turbo": "^1.2.8",
+    "turbo": "^1.8.8",
     "typescript": "^4.9.3"
   },
-  "prettier": "@shopify/prettier-config",
   "size-limit": [
     {
       "name": "polaris-react-cjs",
       "path": "polaris-react/build/cjs/index.js",
-      "limit": "230 kB"
+      "limit": "250 kB"
     },
     {
       "name": "polaris-react-esm",
       "path": "polaris-react/build/esm/index.js",
-      "limit": "150 kB"
+      "limit": "165 kB"
     },
     {
       "name": "polaris-react-esnext",
       "path": "polaris-react/build/esnext/index.esnext",
-      "limit": "205 kB"
+      "limit": "225 kB"
     },
     {
       "name": "polaris-react-css",
       "path": "polaris-react/build/esm/styles.css",
-      "limit": "45 kB"
+      "limit": "50 kB"
     }
   ]
 }

@@ -11,15 +11,17 @@ import {Sticky} from '../../Sticky';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
-import {BulkActions, useIsBulkActionsSticky} from '../../BulkActions';
+import {BulkActions} from '../../BulkActions';
+import type {useIsBulkActionsSticky} from '../../BulkActions';
 import {SelectAllActions} from '../../SelectAllActions';
-import {IndexTable, IndexTableProps} from '../IndexTable';
-import type {IndexTableSortDirection} from '../IndexTable';
+import {IndexTable} from '../IndexTable';
+import type {IndexTableProps, IndexTableSortDirection} from '../IndexTable';
 import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Tooltip} from '../../Tooltip';
+import {IndexProvider} from '../../IndexProvider';
 
 jest.mock('../utilities', () => ({
   ...jest.requireActual('../utilities'),
@@ -572,6 +574,18 @@ describe('<IndexTable>', () => {
 
       expect(index).not.toContainReactComponent(BulkActions);
     });
+
+    it('prevents rows from being selectable', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      expect(index).toContainReactComponent(IndexProvider, {
+        selectable: false,
+      });
+    });
   });
 
   describe('sorting', () => {
@@ -675,6 +689,26 @@ describe('<IndexTable>', () => {
           expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
       );
+
+      it('uses column defaultSortDirection instead of table defaultSortDirection', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            defaultSortDirection="ascending"
+            headings={[
+              {title: 'Foo'},
+              {title: 'Bar'},
+              {title: 'Baz', defaultSortDirection: 'descending'},
+            ]}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll('th')[3]).toContainReactComponent(
+          SortDescendingMajor,
+        );
+      });
     });
 
     describe('onSort', () => {

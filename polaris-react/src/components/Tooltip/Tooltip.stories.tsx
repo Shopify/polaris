@@ -232,7 +232,7 @@ export function ActivatorAsDiv() {
 
 export function WithSuffix() {
   return (
-    <Box padding="16">
+    <Box padding="16" background="bg">
       <LegacyStack>
         <ButtonGroup segmented fullWidth>
           <Tooltip content="Bold" suffix="⌘B" activatorWrapper="div">

@@ -1,71 +1,30 @@
-import React, {createElement, forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 import type {
-  ColorsActionTokenAlias,
-  ColorsBackdropTokenAlias,
-  ColorsBackgroundTokenAlias,
-  ColorsOverlayTokenAlias,
-  ColorsSurfaceTokenAlias,
-  ShapeBorderWidthScale,
-  DepthShadowAlias,
+  ColorTextAlias,
+  ColorBackgroundAlias,
+  ColorBorderAlias,
+  BorderWidthScale,
+  BorderRadiusScale,
+  ShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
 import {
   getResponsiveProps,
-  ResponsiveProp,
   classNames,
   sanitizeCustomProperties,
 } from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Box.scss';
 
 type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 
+type LineStyles = 'solid' | 'dashed';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
-export type ColorTokenScale =
-  | 'text'
-  | 'text-critical'
-  | 'text-disabled'
-  | 'text-highlight'
-  | 'text-on-critical'
-  | 'text-on-dark'
-  | 'text-on-interactive'
-  | 'text-on-primary'
-  | 'text-primary'
-  | 'text-primary-hovered'
-  | 'text-primary-pressed'
-  | 'text-subdued'
-  | 'text-subdued-on-dark'
-  | 'text-success'
-  | 'text-warning';
-
-export type BorderTokenAlias =
-  | 'base'
-  | 'dark'
-  | 'divider'
-  | 'divider-on-dark'
-  | 'transparent';
-
 type Spacing = ResponsiveProp<SpacingSpaceScale>;
-
-export type BorderRadiusTokenScale =
-  | '05'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | 'full';
-
-export type BackgroundColors =
-  | ColorsBackdropTokenAlias
-  | ColorsBackgroundTokenAlias
-  | ColorsOverlayTokenAlias
-  | ColorsActionTokenAlias
-  | ColorsSurfaceTokenAlias;
 
 export interface BoxProps extends React.AriaAttributes {
   children?: React.ReactNode;
@@ -74,39 +33,33 @@ export interface BoxProps extends React.AriaAttributes {
    */
   as?: Element;
   /** Background color */
-  background?: BackgroundColors;
+  background?: ColorBackgroundAlias;
+  /** Border color */
+  borderColor?: ColorBorderAlias | 'transparent';
   /** Border style */
-  border?: BorderTokenAlias;
-  /** Vertical end border style */
-  borderBlockEnd?: BorderTokenAlias;
-  /** Horizontal start border style */
-  borderInlineStart?: BorderTokenAlias;
-  /** Horizontal end border style */
-  borderInlineEnd?: BorderTokenAlias;
-  /** Vertical start border style */
-  borderBlockStart?: BorderTokenAlias;
+  borderStyle?: LineStyles;
   /** Border radius */
-  borderRadius?: BorderRadiusTokenScale;
+  borderRadius?: BorderRadiusScale;
   /** Vertical end horizontal start border radius */
-  borderRadiusEndStart?: BorderRadiusTokenScale;
+  borderRadiusEndStart?: BorderRadiusScale;
   /** Vertical end horizontal end border radius */
-  borderRadiusEndEnd?: BorderRadiusTokenScale;
+  borderRadiusEndEnd?: BorderRadiusScale;
   /** Vertical start horizontal start border radius */
-  borderRadiusStartStart?: BorderRadiusTokenScale;
+  borderRadiusStartStart?: BorderRadiusScale;
   /** Vertical start horizontal end border radius */
-  borderRadiusStartEnd?: BorderRadiusTokenScale;
+  borderRadiusStartEnd?: BorderRadiusScale;
   /** Border width */
-  borderWidth?: ShapeBorderWidthScale;
+  borderWidth?: BorderWidthScale;
   /** Vertical start border width */
-  borderBlockStartWidth?: ShapeBorderWidthScale;
+  borderBlockStartWidth?: BorderWidthScale;
   /** Vertical end border width */
-  borderBlockEndWidth?: ShapeBorderWidthScale;
+  borderBlockEndWidth?: BorderWidthScale;
   /** Horizontal start border width */
-  borderInlineStartWidth?: ShapeBorderWidthScale;
+  borderInlineStartWidth?: BorderWidthScale;
   /** Horizontal end border width */
-  borderInlineEndWidth?: ShapeBorderWidthScale;
+  borderInlineEndWidth?: BorderWidthScale;
   /** Color of children */
-  color?: ColorTokenScale;
+  color?: ColorTextAlias;
   /** HTML id attribute */
   id?: string;
   /** Minimum height of container */
@@ -155,7 +108,7 @@ export interface BoxProps extends React.AriaAttributes {
     'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
   >;
   /** Shadow on box */
-  shadow?: DepthShadowAlias;
+  shadow?: ShadowAlias;
   /** Set tab order */
   tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
   /** Width of container */
@@ -173,8 +126,12 @@ export interface BoxProps extends React.AriaAttributes {
   insetInlineEnd?: Spacing;
   /** Opacity of box */
   opacity?: string;
+  /** Outline color */
+  outlineColor?: ColorBorderAlias;
   /** Outline style */
-  outline?: BorderTokenAlias;
+  outlineStyle?: LineStyles;
+  /** Outline width */
+  outlineWidth?: BorderWidthScale;
   /** Visually hide the contents during print */
   printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
@@ -188,11 +145,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     {
       as = 'div',
       background,
-      border,
-      borderBlockEnd,
-      borderInlineStart,
-      borderInlineEnd,
-      borderBlockStart,
+      borderColor,
+      borderStyle,
       borderWidth,
       borderBlockStartWidth,
       borderBlockEndWidth,
@@ -211,7 +165,9 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       maxWidth,
       overflowX,
       overflowY,
-      outline,
+      outlineColor,
+      outlineStyle,
+      outlineWidth,
       padding,
       paddingBlockStart,
       paddingBlockEnd,
@@ -234,22 +190,37 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
+    // eslint-disable-next-line no-nested-ternary
+    const borderStyleValue = borderStyle
+      ? borderStyle
+      : borderColor ||
+        borderWidth ||
+        borderBlockStartWidth ||
+        borderBlockEndWidth ||
+        borderInlineStartWidth ||
+        borderInlineEndWidth
+      ? 'solid'
+      : undefined;
+
+    // eslint-disable-next-line no-nested-ternary
+    const outlineStyleValue = outlineStyle
+      ? outlineStyle
+      : outlineColor || outlineWidth
+      ? 'solid'
+      : undefined;
+
     const style = {
-      '--pc-box-color': color ? `var(--p-${color})` : undefined,
-      '--pc-box-background': background ? `var(--p-${background})` : undefined,
-      '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
-      '--pc-box-border-block-end': borderBlockEnd
-        ? `var(--p-border-${borderBlockEnd})`
+      '--pc-box-color': color ? `var(--p-color-${color})` : undefined,
+      '--pc-box-background': background
+        ? `var(--p-color-${background})`
         : undefined,
-      '--pc-box-border-inline-start': borderInlineStart
-        ? `var(--p-border-${borderInlineStart})`
+      // eslint-disable-next-line no-nested-ternary
+      '--pc-box-border-color': borderColor
+        ? borderColor === 'transparent'
+          ? 'transparent'
+          : `var(--p-color-${borderColor})`
         : undefined,
-      '--pc-box-border-inline-end': borderInlineEnd
-        ? `var(--p-border-${borderInlineEnd})`
-        : undefined,
-      '--pc-box-border-block-start': borderBlockStart
-        ? `var(--p-border-${borderBlockStart})`
-        : undefined,
+      '--pc-box-border-style': borderStyleValue,
       '--pc-box-border-radius': borderRadius
         ? `var(--p-border-radius-${borderRadius})`
         : undefined,
@@ -283,7 +254,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,
       '--pc-box-max-width': maxWidth,
-      '--pc-box-outline': outline ? `var(--p-border-${outline})` : undefined,
+      '--pc-box-outline-color': outlineColor
+        ? `var(--p-color-${outlineColor})`
+        : undefined,
+      '--pc-box-outline-style': outlineStyleValue,
+      '--pc-box-outline-width': outlineWidth
+        ? `var(--p-border-width-${outlineWidth})`
+        : undefined,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
       ...getResponsiveProps(
@@ -336,7 +313,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as === 'ul' && styles.listReset,
     );
 
-    return createElement(
+    return React.createElement(
       as,
       {
         className,

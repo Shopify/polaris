@@ -5,12 +5,33 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithColorExample() {
   return (
-    <Box background="color-bg-interactive-subdued-active">
-      <Text as="h2" variant="bodyMd" fontWeight="medium">
-        Content inside a box
-      </Text>
+    <Box background="bg-app-selected">
+      <Placeholder label="Content inside a box" />
     </Box>
   );
 }
+
+const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+  return (
+    <div
+      style={{
+        background: 'var(--p-color-border-interactive-subdued)',
+        height: height,
+        width: width,
+        borderRadius: 'inherit',
+      }}
+    >
+      <div
+        style={{
+          color: 'var(--p-color-text)',
+        }}
+      >
+        <Text as="p" variant="bodyMd">
+          {label}
+        </Text>
+      </div>
+    </div>
+  );
+};
 
 export default withPolarisExample(BoxWithColorExample);

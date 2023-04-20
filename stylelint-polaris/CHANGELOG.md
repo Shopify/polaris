@@ -1,5 +1,48 @@
 # Changelog
 
+## 10.0.0
+
+### Major Changes
+
+- [#8973](https://github.com/Shopify/polaris/pull/8973) [`f1a3ad756`](https://github.com/Shopify/polaris/commit/f1a3ad756d73bf249583bdb47523a4b229a0c7cb) Thanks [@lgriffee](https://github.com/lgriffee)! - Enabled the `custom-property-disallowed-list` rule and added deprecated v10 custom properties.
+
+* [#8455](https://github.com/Shopify/polaris/pull/8455) [`80eb3ac55`](https://github.com/Shopify/polaris/commit/80eb3ac55c076eb336620cac8dc08cd212524afc) Thanks [@lgriffee](https://github.com/lgriffee)! - Remove deprecated v8 custom properties, functions, mixins, and mixin maps from stylelint-polaris
+
+### Minor Changes
+
+- [#8968](https://github.com/Shopify/polaris/pull/8968) [`dbe68efb4`](https://github.com/Shopify/polaris/commit/dbe68efb40fcd6261aee98b8784e0fca696c5b1b) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `custom-property-disallowed-list` rule
+
+## 9.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`247f5eea8`](https://github.com/Shopify/polaris/commit/247f5eea859b3ab348dcb18c568f18d8d859140e)]:
+  - @shopify/polaris-tokens@6.10.0
+
+## 9.0.2
+
+### Patch Changes
+
+- [#8823](https://github.com/Shopify/polaris/pull/8823) [`0a981349d`](https://github.com/Shopify/polaris/commit/0a981349d70dfb7c60fabf1391aa4a3ec0dc9793) Thanks [@rdott](https://github.com/rdott)! - Added prefers-reduced-motion to media query allowed list for stylelint
+
+- Updated dependencies [[`01725d205`](https://github.com/Shopify/polaris/commit/01725d2057af75bb9e2346a936233fb9f40352e5), [`5f21c9069`](https://github.com/Shopify/polaris/commit/5f21c90699f0f8b2893ddfc6ba253a75b8c87d1c)]:
+  - @shopify/polaris-tokens@6.9.0
+
+## 9.0.1
+
+### Patch Changes
+
+- [#8727](https://github.com/Shopify/polaris/pull/8727) [`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491) Thanks [@laurkim](https://github.com/laurkim)! - Bumped `eslint-plugin-import`, `@typescript-eslint/**`, and `downlevel-dts` packages, added type import/export rules, and updated type imports
+
+- Updated dependencies [[`df0378cbc`](https://github.com/Shopify/polaris/commit/df0378cbcf926d901ee6dc4aab8a81535c873491)]:
+  - @shopify/polaris-tokens@6.8.1
+
+## 9.0.0
+
+### Major Changes
+
+- [#8657](https://github.com/Shopify/polaris/pull/8657) [`764f17d86`](https://github.com/Shopify/polaris/commit/764f17d86c30c9f30bec6717c09f07b2e04e23f8) Thanks [@alex-page](https://github.com/alex-page)! - Turn on reportNeedlessDisables for all comments
+
 ## 8.0.2
 
 ### Patch Changes

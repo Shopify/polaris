@@ -13,8 +13,10 @@ import {
   StickyManager,
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
-import {LinkContext, LinkLikeComponent} from '../../utilities/link';
-import {FeaturesConfig, FeaturesContext} from '../../utilities/features';
+import {LinkContext} from '../../utilities/link';
+import type {LinkLikeComponent} from '../../utilities/link';
+import {FeaturesContext} from '../../utilities/features';
+import type {FeaturesConfig} from '../../utilities/features';
 
 import './AppProvider.scss';
 import './global.scss';
@@ -77,8 +79,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   setBodyStyles = () => {
-    document.body.style.backgroundColor = 'var(--p-background)';
-    document.body.style.color = 'var(--p-text)';
+    document.body.style.backgroundColor = 'var(--p-color-bg-app)';
+    document.body.style.color = 'var(--p-color-text)';
   };
 
   render() {

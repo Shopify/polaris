@@ -1,11 +1,16 @@
 import React from 'react';
-import {Bleed, Box, Text, Inline} from '@shopify/polaris';
+import {Bleed, Box, Text, HorizontalStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedHorizontalExample() {
   return (
-    <Box background="surface" border="base" padding="8">
+    <Box
+      background="bg"
+      borderWidth="1"
+      borderColor="border-subdued"
+      padding="8"
+    >
       <Bleed marginInline="8">
         <Placeholder label="marginInline" />
       </Bleed>
@@ -23,17 +28,17 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         width: width,
       }}
     >
-      <Inline gap="4" align="center">
+      <HorizontalStack gap="4" align="center">
         <div
           style={{
-            color: '#FFFFFF',
+            color: 'var(--p-color-text-on-color)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="regular">
             {label}
           </Text>
         </div>
-      </Inline>
+      </HorizontalStack>
     </div>
   );
 };

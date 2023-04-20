@@ -96,13 +96,13 @@ Because CLDR formatting is limited, these guidelines will help you choose the ap
 
 Default to [short format](#short-format).
 
-![Short format in today’s sales card](/images/foundations/foundations/internationalization/do-use-short-format@2x.png)
+![Short format in today’s sales card](/images/foundations/internationalization/do-use-short-format@2x.png)
 
 #### Don’t
 
 Use [explicit format](#explicit-format) except when presenting store currency within in a mixed-currency context.
 
-![Incorrect explicit format in today’s sales card](/images/foundations/foundations/internationalization/dont-use-explicit-format@2x.png)
+![Incorrect explicit format in today’s sales card](/images/foundations/internationalization/dont-use-explicit-format@2x.png)
 
 <!-- end -->
 
@@ -111,15 +111,15 @@ Use [explicit format](#explicit-format) except when presenting store currency wi
 - Use explicit format when showing total amounts, an amount within a button, or in a paragraph
 - Use short format when showing non-total amounts with total amounts
 
-![](/images/foundations/foundations/internationalization/paid-status-explicit@2x.png)
+![](/images/foundations/internationalization/paid-status-explicit@2x.png)
 
 This example shows a scenario where the presentment currency is in USD, which is different than the store currency. The non-total amounts in the paid status card are in short format, and the total amounts are in explicit format.
 
-![](/images/foundations/foundations/internationalization/refund-non-store-currency@2x.png)
+![](/images/foundations/internationalization/refund-non-store-currency@2x.png)
 
 This example shows a scenario refunding an order that’s in a non-store currency.
 
-![](/images/foundations/foundations/internationalization/short-format-non-total@2x.png)
+![](/images/foundations/internationalization/short-format-non-total@2x.png)
 
 This example illustrates the use of short format for non-total amounts and explicit format for total amounts in a data table.
 
@@ -146,15 +146,15 @@ Always place the negative symbol before the currency and amount in either format
 - Default to explicit format whenever prices are customer-facing. Use short format for unit prices, itemized prices, and installment prices.
 - If there are enough indicators to let customers know which currency they’re looking at, short format may be sufficient. When using short format, make sure to always use explicit format for cart total, checkout total, and notification totals.
 
-![](/images/foundations/foundations/internationalization/short-format-installment-prices@2x.png)
+![](/images/foundations/internationalization/short-format-installment-prices@2x.png)
 
 This example shows the use of short format for installment prices.
 
-![](/images/foundations/foundations/internationalization/short-format-unit-prices@2x.png)
+![](/images/foundations/internationalization/short-format-unit-prices@2x.png)
 
 This example shows the use of short format for unit prices.
 
-![](/images/foundations/foundations/internationalization/short-format-itemized-prices@2x.png)
+![](/images/foundations/internationalization/short-format-itemized-prices@2x.png)
 
 This example shows the use of short format for itemized prices.
 

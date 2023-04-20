@@ -15,7 +15,7 @@
   grid-template-columns: repeat(4, 1fr);
   padding: 0 var(--p-space-3);
   margin: 0 auto;
-  background-color: var(--p-action-critical);
+  background-color: var(--p-color-bg-critical-strong);
   opacity: 0.25;
   pointer-events: none;
 }
@@ -29,7 +29,7 @@
 
 .Cell {
   height: 100%;
-  background-color: var(--p-surface);
+  background-color: var(--p-color-bg);
 }
 
 .inFrame {

@@ -16,7 +16,8 @@ import {UnstyledButton} from '../../UnstyledButton';
 import {UnstyledLink} from '../../UnstyledLink';
 import {BannerContext} from '../../../utilities/banner-context';
 import {WithinContentContext} from '../../../utilities/within-content-context';
-import {Banner, BannerHandles} from '../Banner';
+import {Banner} from '../Banner';
+import type {BannerHandles} from '../Banner';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -222,6 +223,33 @@ describe('<Banner />', () => {
     expect(unstyledLink).toHaveReactProps({
       target: '_blank',
       rel: 'noopener noreferrer',
+    });
+  });
+
+  it('creates a link with custom target in secondaryAction', () => {
+    const bannerWithSecondaryAction = mountWithApp(
+      <Banner
+        title="Test"
+        action={{
+          content: 'Primary action',
+        }}
+        secondaryAction={{
+          content: 'Secondary external link',
+          url: 'https://test.com',
+          target: '_top',
+        }}
+      >
+        Hello World
+      </Banner>,
+    );
+
+    const unstyledLink = bannerWithSecondaryAction
+      .find(UnstyledLink)!
+      .find('a');
+
+    expect(unstyledLink).toHaveReactProps({
+      target: '_top',
+      rel: undefined,
     });
   });
 

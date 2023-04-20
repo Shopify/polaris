@@ -5,7 +5,8 @@ import {
   wrapFocusPreviousFocusableMenuItem,
 } from '../../utilities/focus';
 import {KeypressListener} from '../KeypressListener';
-import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
+import {Key} from '../../types';
+import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {Box} from '../Box';
 
 import {Section, Item} from './components';
@@ -48,7 +49,7 @@ export function ActionList({
   const sectionMarkup = finalSections.map((section, index) => {
     return section.items.length > 0 ? (
       <Section
-        key={section.title || index}
+        key={typeof section.title === 'string' ? section.title : index}
         section={section}
         hasMultipleSections={hasMultipleSections}
         actionRole={actionRole}

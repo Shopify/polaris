@@ -54,9 +54,9 @@ function ScrollableExample() {
         <ol>
           <li>Account Activation</li>
         </ol>
-        <Scrollable.ScrollTo>
-          <p>2.1 Shopify Account</p>
-        </Scrollable.ScrollTo>
+
+        <Scrollable.ScrollTo />
+        <p>2.1 Shopify Account</p>
 
         <p>
           Subject to section 2.1.2, the person signing up for the Service will

@@ -2,57 +2,193 @@ import {
   TextField,
   IndexTable,
   LegacyCard,
-  Filters,
-  Select,
+  IndexFilters,
+  useSetIndexFiltersMode,
   useIndexResourceState,
   Text,
+  ChoiceList,
+  RangeSlider,
+  Badge,
+  IndexFiltersMode,
 } from '@shopify/polaris';
+import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function IndexTableWithFilteringExample() {
-  const customers = [
-    {
-      id: '3416',
-      url: '#',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$2,400',
-    },
-    {
-      id: '2566',
-      url: '#',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-    },
-  ];
-  const resourceName = {
-    singular: 'customer',
-    plural: 'customers',
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+  const [itemStrings, setItemStrings] = useState([
+    'All',
+    'Unpaid',
+    'Open',
+    'Closed',
+    'Local delivery',
+    'Local pickup',
+  ]);
+  const deleteView = (index: number) => {
+    const newItemStrings = [...itemStrings];
+    newItemStrings.splice(index, 1);
+    setItemStrings(newItemStrings);
+    setSelected(0);
   };
 
-  const {selectedResources, allResourcesSelected, handleSelectionChange} =
-    useIndexResourceState(customers);
-  const [taggedWith, setTaggedWith] = useState('VIP');
-  const [queryValue, setQueryValue] = useState(null);
-  const [sortValue, setSortValue] = useState('today');
+  const duplicateView = async (name: string) => {
+    setItemStrings([...itemStrings, name]);
+    setSelected(itemStrings.length);
+    await sleep(1);
+    return true;
+  };
 
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+  const tabs: TabProps[] = itemStrings.map((item, index) => ({
+    content: item,
+    index,
+    onAction: () => {},
+    id: `${item}-${index}`,
+    isLocked: index === 0,
+    actions:
+      index === 0
+        ? []
+        : [
+            {
+              type: 'rename',
+              onAction: () => {},
+              onPrimaryAction: async (value: string): Promise<boolean> => {
+                const newItemsStrings = tabs.map((item, idx) => {
+                  if (idx === index) {
+                    return value;
+                  }
+                  return item.content;
+                });
+                await sleep(1);
+                setItemStrings(newItemsStrings);
+                return true;
+              },
+            },
+            {
+              type: 'duplicate',
+              onPrimaryAction: async (value: string): Promise<boolean> => {
+                await sleep(1);
+                duplicateView(value);
+                return true;
+              },
+            },
+            {
+              type: 'edit',
+            },
+            {
+              type: 'delete',
+              onPrimaryAction: async () => {
+                await sleep(1);
+                deleteView(index);
+                return true;
+              },
+            },
+          ],
+  }));
+  const [selected, setSelected] = useState(0);
+  const onCreateNewView = async (value: string) => {
+    await sleep(500);
+    setItemStrings([...itemStrings, value]);
+    setSelected(itemStrings.length);
+    return true;
+  };
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
+    {label: 'Order', value: 'order asc', directionLabel: 'Ascending'},
+    {label: 'Order', value: 'order desc', directionLabel: 'Descending'},
+    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
+    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
+    {label: 'Date', value: 'date asc', directionLabel: 'A-Z'},
+    {label: 'Date', value: 'date desc', directionLabel: 'Z-A'},
+    {label: 'Total', value: 'total asc', directionLabel: 'Ascending'},
+    {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
+  ];
+  const [sortSelected, setSortSelected] = useState(['order asc']);
+  const {mode, setMode} = useSetIndexFiltersMode(IndexFiltersMode.Filtering);
+  const onHandleCancel = () => {};
+
+  const onHandleSave = async () => {
+    await sleep(1);
+    return true;
+  };
+
+  const primaryAction: IndexFiltersProps['primaryAction'] =
+    selected === 0
+      ? {
+          type: 'save-as',
+          onAction: onCreateNewView,
+          disabled: false,
+          loading: false,
+        }
+      : {
+          type: 'save',
+          onAction: onHandleSave,
+          disabled: false,
+          loading: false,
+        };
+  const [accountStatus, setAccountStatus] = useState<string[]>([]);
+  const [moneySpent, setMoneySpent] = useState<[number, number] | undefined>(
+    undefined,
+  );
+  const [taggedWith, setTaggedWith] = useState<string | undefined>('');
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
+
+  const handleAccountStatusChange = useCallback(
+    (value: string[]) => setAccountStatus(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
-  const handleClearAll = useCallback(() => {
+  const handleMoneySpentChange = useCallback(
+    (value: [number, number]) => setMoneySpent(value),
+    [],
+  );
+  const handleTaggedWithChange = useCallback(
+    (value: string) => setTaggedWith(value),
+    [],
+  );
+  const handleQueryValueChange = useCallback(
+    (value: string) => setQueryValue(value),
+    [],
+  );
+  const handleAccountStatusRemove = useCallback(() => setAccountStatus([]), []);
+  const handleMoneySpentRemove = useCallback(
+    () => setMoneySpent(undefined),
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+  const handleFiltersClearAll = useCallback(() => {
+    handleAccountStatusRemove();
+    handleMoneySpentRemove();
     handleTaggedWithRemove();
     handleQueryValueRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove]);
-  const handleSortChange = useCallback((value) => setSortValue(value), []);
+  }, [
+    handleQueryValueRemove,
+    handleTaggedWithRemove,
+    handleMoneySpentRemove,
+    handleAccountStatusRemove,
+  ]);
 
   const filters = [
+    {
+      key: 'accountStatus',
+      label: 'Account status',
+      filter: (
+        <ChoiceList
+          title="Account status"
+          titleHidden
+          choices={[
+            {label: 'Enabled', value: 'enabled'},
+            {label: 'Not invited', value: 'not invited'},
+            {label: 'Invited', value: 'invited'},
+            {label: 'Declined', value: 'declined'},
+          ]}
+          selected={accountStatus || []}
+          onChange={handleAccountStatusChange}
+          allowMultiple
+        />
+      ),
+      shortcut: true,
+    },
     {
       key: 'taggedWith',
       label: 'Tagged with',
@@ -67,26 +203,79 @@ function IndexTableWithFilteringExample() {
       ),
       shortcut: true,
     },
+    {
+      key: 'moneySpent',
+      label: 'Money spent',
+      filter: (
+        <RangeSlider
+          label="Money spent is between"
+          labelHidden
+          value={moneySpent || [0, 500]}
+          prefix="$"
+          output
+          min={0}
+          max={2000}
+          step={1}
+          onChange={handleMoneySpentChange}
+        />
+      ),
+    },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith',
+            label: disambiguateLabel('taggedWith', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
-  const sortOptions = [
-    {label: 'Today', value: 'today'},
-    {label: 'Yesterday', value: 'yesterday'},
-    {label: 'Last 7 days', value: 'lastWeek'},
+  const orders = [
+    {
+      id: '1020',
+      order: '#1020',
+      date: 'Jul 20 at 4:34pm',
+      customer: 'Jaydon Stanton',
+      total: '$969.44',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1019',
+      order: '#1019',
+      date: 'Jul 20 at 3:46pm',
+      customer: 'Ruben Westerfelt',
+      total: '$701.19',
+      paymentStatus: <Badge progress="partiallyComplete">Partially paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1018',
+      order: '#1018',
+      date: 'Jul 20 at 3.44pm',
+      customer: 'Leo Carder',
+      total: '$798.24',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
   ];
 
-  const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+  const resourceName = {
+    singular: 'order',
+    plural: 'orders',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(orders);
+
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -94,75 +283,60 @@ function IndexTableWithFilteringExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
-            {name}
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {order}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {orders}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {amountSpent}
-          </Text>
-        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>{total}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
     <LegacyCard>
-      <div style={{padding: '16px', display: 'flex'}}>
-        <div style={{flex: 1}}>
-          <Filters
-            queryValue={queryValue}
-            filters={filters}
-            appliedFilters={appliedFilters}
-            onQueryChange={setQueryValue}
-            onQueryClear={handleQueryValueRemove}
-            onClearAll={handleClearAll}
-          />
-        </div>
-        <div style={{paddingLeft: '0.25rem'}}>
-          <Select
-            labelInline
-            label="Sort by"
-            options={sortOptions}
-            value={sortValue}
-            onChange={handleSortChange}
-          />
-        </div>
-      </div>
+      <IndexFilters
+        sortOptions={sortOptions}
+        sortSelected={sortSelected}
+        queryValue={queryValue}
+        queryPlaceholder="Searching in all"
+        onQueryChange={handleQueryValueChange}
+        onQueryClear={() => {}}
+        onSort={setSortSelected}
+        primaryAction={primaryAction}
+        cancelAction={{
+          onAction: onHandleCancel,
+          disabled: false,
+          loading: false,
+        }}
+        tabs={tabs}
+        selected={selected}
+        onSelect={setSelected}
+        canCreateNewView
+        onCreateNewView={onCreateNewView}
+        filters={filters}
+        appliedFilters={appliedFilters}
+        onClearAll={handleFiltersClearAll}
+        mode={mode}
+        setMode={setMode}
+      />
       <IndexTable
         resourceName={resourceName}
-        itemCount={customers.length}
+        itemCount={orders.length}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
         headings={[
-          {title: 'Name'},
-          {title: 'Location'},
-          {
-            id: 'order-count',
-            title: (
-              <Text as="span" alignment="end">
-                Order count
-              </Text>
-            ),
-          },
-          {
-            id: 'amount-spent',
-            title: (
-              <Text as="span" alignment="end">
-                Amount spent
-              </Text>
-            ),
-          },
-          ,
+          {title: 'Order'},
+          {title: 'Date'},
+          {title: 'Customer'},
+          {title: 'Total', alignment: 'end'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
         ]}
       >
         {rowMarkup}
@@ -170,16 +344,20 @@ function IndexTableWithFilteringExample() {
     </LegacyCard>
   );
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string | string[]): string {
     switch (key) {
+      case 'moneySpent':
+        return `Money spent is between $${value[0]} and $${value[1]}`;
       case 'taggedWith':
         return `Tagged with ${value}`;
+      case 'accountStatus':
+        return (value as string[]).map((val) => `Customer ${val}`).join(', ');
       default:
-        return value;
+        return value as string;
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

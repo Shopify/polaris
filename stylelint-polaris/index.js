@@ -33,6 +33,232 @@ const disallowedUnits = [
   'pt',
 ];
 
+const disallowedVarsColor = [
+  // Legacy custom properties
+  '--p-override-transparent',
+  '--p-badge-mix-blend-mode',
+  '--p-text-warning',
+  '--p-text-success',
+  '--p-text-subdued-on-dark',
+  '--p-text-subdued',
+  '--p-text-primary-pressed',
+  '--p-text-primary-hovered',
+  '--p-text-primary',
+  '--p-text-on-primary',
+  '--p-text-on-interactive',
+  '--p-text-on-dark',
+  '--p-text-on-critical',
+  '--p-text-highlight',
+  '--p-text-disabled',
+  '--p-text-critical',
+  '--p-text',
+  '--p-surface-warning-subdued-pressed',
+  '--p-surface-warning-subdued-hovered',
+  '--p-surface-warning-subdued',
+  '--p-surface-warning',
+  '--p-surface-success-subdued-pressed',
+  '--p-surface-success-subdued-hovered',
+  '--p-surface-success-subdued ',
+  '--p-surface-success',
+  '--p-surface-subdued',
+  '--p-surface-selected-pressed',
+  '--p-surface-selected-hovered',
+  '--p-surface-selected',
+  '--p-surface-search-field-dark',
+  '--p-surface-search-field',
+  '--p-surface-primary-selected-pressed',
+  '--p-surface-primary-selected-hovered',
+  '--p-surface-primary-selected',
+  '--p-surface-pressed-dark',
+  '--p-surface-pressed',
+  '--p-surface-neutral-subdued-dark',
+  '--p-surface-neutral-subdued',
+  '--p-surface-neutral-pressed',
+  '--p-surface-neutral-hovered',
+  '--p-surface-neutral-disabled',
+  '--p-surface-neutral',
+  '--p-surface-hovered-dark',
+  '--p-surface-hovered',
+  '--p-surface-highlight-subdued-pressed',
+  '--p-surface-highlight-subdued-hovered',
+  '--p-surface-highlight-subdued',
+  '--p-surface-highlight',
+  '--p-surface-disabled',
+  '--p-surface-depressed',
+  '--p-surface-dark',
+  '--p-surface-critical-subdued-pressed',
+  '--p-surface-critical-subdued-hovered',
+  '--p-surface-critical-subdued-depressed',
+  '--p-surface-critical-subdued',
+  '--p-surface-critical',
+  '--p-surface-attention',
+  '--p-surface',
+  '--p-shadow-color-picker-dragger',
+  '--p-shadow-color-picker',
+  '--p-overlay',
+  '--p-interactive-pressed-on-dark',
+  '--p-interactive-pressed',
+  '--p-interactive-on-dark',
+  '--p-interactive-hovered',
+  '--p-interactive-disabled',
+  '--p-interactive-critical-pressed',
+  '--p-interactive-critical-hovered',
+  '--p-interactive-critical-disabled',
+  '--p-interactive-critical',
+  '--p-interactive',
+  '--p-icon-warning',
+  '--p-icon-success',
+  '--p-icon-subdued',
+  '--p-icon-pressed',
+  '--p-icon-on-primary',
+  '--p-icon-on-interactive',
+  '--p-icon-on-dark',
+  '--p-icon-on-critical',
+  '--p-icon-hovered',
+  '--p-icon-highlight',
+  '--p-icon-disabled',
+  '--p-icon-critical',
+  '--p-icon-attention',
+  '--p-icon',
+  '--p-hint-from-direct-light',
+  '--p-focused',
+  '--p-divider-dark',
+  '--p-divider',
+  '--p-decorative-two-text',
+  '--p-decorative-two-surface',
+  '--p-decorative-two-icon',
+  '--p-decorative-three-text',
+  '--p-decorative-three-surface',
+  '--p-decorative-three-icon',
+  '--p-decorative-one-text',
+  '--p-decorative-one-surface',
+  '--p-decorative-one-icon',
+  '--p-decorative-four-text',
+  '--p-decorative-four-surface',
+  '--p-decorative-four-icon',
+  '--p-decorative-five-text',
+  '--p-decorative-five-surface',
+  '--p-decorative-five-icon',
+  '--p-border-warning-subdued',
+  '--p-border-warning',
+  '--p-border-success-subdued',
+  '--p-border-success',
+  '--p-border-subdued',
+  '--p-border-shadow-subdued',
+  '--p-border-shadow',
+  '--p-border-on-dark',
+  '--p-border-neutral-subdued',
+  '--p-border-hovered',
+  '--p-border-highlight-subdued',
+  '--p-border-highlight',
+  '--p-border-disabled',
+  '--p-border-depressed',
+  '--p-border-critical-subdued',
+  '--p-border-critical-disabled',
+  '--p-border-critical',
+  '--p-border',
+  '--p-background-selected',
+  '--p-background-pressed',
+  '--p-background-hovered',
+  '--p-background',
+  '--p-backdrop',
+  '--p-action-secondary-pressed-dark',
+  '--p-action-secondary-pressed',
+  '--p-action-secondary-hovered-dark',
+  '--p-action-secondary-hovered',
+  '--p-action-secondary-disabled',
+  '--p-action-secondary-depressed',
+  '--p-action-secondary',
+  '--p-action-primary-pressed',
+  '--p-action-primary-hovered',
+  '--p-action-primary-disabled',
+  '--p-action-primary-depressed',
+  '--p-action-primary',
+  '--p-action-critical-pressed',
+  '--p-action-critical-hovered',
+  '--p-action-critical-disabled',
+  '--p-action-critical-depressed',
+  '--p-action-critical',
+];
+
+const disallowedVarsDepth = [
+  // Legacy custom properties
+  '--p-button-drop-shadow',
+  '--p-button-inner-shadow',
+  '--p-button-pressed-inner-shadow',
+  '--p-card-shadow',
+  '--p-popover-shadow',
+  '--p-modal-shadow',
+  '--p-top-bar-shadow',
+  '--p-shadow-transparent',
+  '--p-shadow-faint',
+  '--p-shadow-base',
+  '--p-shadow-deep',
+  '--p-shadow-button',
+  '--p-shadow-top-bar',
+  '--p-shadow-card',
+  '--p-shadow-popover',
+  '--p-shadow-layer',
+  '--p-shadow-modal',
+  '--p-shadows-inset-button',
+  '--p-shadows-inset-button-pressed',
+];
+
+const disallowedVarsLayout = [
+  // Legacy custom properties
+  '--p-range-slider-thumb-size-base',
+  '--p-range-slider-thumb-size-active',
+  '--p-choice-size',
+  '--p-icon-size-small',
+  '--p-icon-size-medium',
+];
+
+const disallowedVarsShape = [
+  // Legacy custom properties
+  '--p-border-radius-base',
+  '--p-border-radius-large',
+  '--p-border-radius-wide',
+  '--p-border-radius-half',
+  '--p-control-border-width',
+  '--p-thin-border-subdued',
+  '--p-banner-border-default',
+  '--p-banner-border-success',
+  '--p-banner-border-highlight',
+  '--p-banner-border-warning',
+  '--p-banner-border-critical',
+  '--p-text-field-focus-ring-offset',
+  '--p-border-base',
+  '--p-border-dark',
+  '--p-border-transparent',
+  '--p-border-divider',
+  '--p-border-divider-on-dark',
+];
+
+const disallowedVarsSpace = [
+  // Legacy custom properties
+  '--p-button-group-item-spacing',
+  '--p-choice-margin',
+  '--p-text-field-spinner-offset',
+  '--p-frame-offset',
+];
+
+const disallowedVarsZIndex = [
+  // Legacy custom properties
+  '--p-override-loading-z-index',
+  '--p-z-1',
+  '--p-z-2',
+  '--p-z-3',
+  '--p-z-4',
+  '--p-z-5',
+  '--p-z-6',
+  '--p-z-7',
+  '--p-z-8',
+  '--p-z-9',
+  '--p-z-10',
+  '--p-z-11',
+  '--p-z-12',
+];
+
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -64,19 +290,19 @@ const stylelintPolarisCoverageOptions = {
       'polaris/at-rule-disallowed-list': {
         include: [
           // Legacy mixins
-          'color-icon',
           'recolor-icon',
           'ms-high-contrast-color',
         ].map(matchNameRegExp),
+      },
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsColor,
+        disallowedValues: {'/.+/': disallowedVarsColor},
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$polaris-colors/,
         /\$color-filter-palette-data/,
         /\$color-palette-data/,
-        // Legacy custom properties
-        /--p-override-transparent/,
-        /--p-badge-mix-blend-mode/,
       ],
     },
     {
@@ -85,11 +311,9 @@ const stylelintPolarisCoverageOptions = {
   ],
   motion: [
     {
-      'function-disallowed-list': [
-        'control-icon-transition',
-        'duration',
-        'easing',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['control-icon-transition'].map(
+        matchNameRegExp,
+      ),
       'declaration-property-unit-disallowed-list': [
         {
           '/^animation/': ['ms', 's'],
@@ -102,13 +326,7 @@ const stylelintPolarisCoverageOptions = {
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
-        /\$duration-data/,
-        /\$polaris-duration-map/,
         /\$skeleton-shimmer-duration/,
-        /\$easing-data/,
-        // Legacy custom properties
-        /--p-duration-1-0-0/,
-        /--p-duration-1-5-0/,
       ],
     },
     {
@@ -127,11 +345,9 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'property-disallowed-list': ['text-transform'],
-      'function-disallowed-list': [
-        'font-family',
-        'font-size',
-        'line-height',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['font-size', 'line-height'].map(
+        matchNameRegExp,
+      ),
       'polaris/at-rule-disallowed-list': {
         include: [
           'truncate',
@@ -154,16 +370,10 @@ const stylelintPolarisCoverageOptions = {
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
-        /\$typography-condensed/,
-        /\$typography-condensed/,
         /\$base-font-size/,
         /\$line-height-data/,
-        /\$font-family-data/,
         /\$font-size-data/,
         /\$default-browser-font-size/,
-        // Legacy custom properties
-        /--p-button-font/,
-        /--p-badge-font/,
       ],
     },
     {
@@ -214,16 +424,14 @@ const stylelintPolarisCoverageOptions = {
         'control-slim-height',
         'mobile-nav-width',
         'thumbnail-size',
-        'icon-size',
         'top-bar-height',
       ].map(matchNameRegExp),
       'polaris/at-rule-disallowed-list': {
-        include: [
-          'layout-flex-fix',
-          'safe-area-for',
-          'skeleton-page-header-layout',
-          'skeleton-page-secondary-actions-layout',
-        ].map(matchNameRegExp),
+        include: ['layout-flex-fix', 'safe-area-for'].map(matchNameRegExp),
+      },
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsLayout,
+        disallowedValues: {'/.+/': disallowedVarsLayout},
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
@@ -233,13 +441,6 @@ const stylelintPolarisCoverageOptions = {
         /\$large-thumbnail-size/,
         /\$medium-thumbnail-size/,
         /\$thumbnail-sizes/,
-        // Legacy custom properties
-        /--p-range-slider-thumb-size-base/,
-        /--p-range-slider-thumb-size-active/,
-        /--p-range-slider-thumb-scale/,
-        /--p-override-visible/,
-        /--p-icon-size/,
-        /--p-choice-size/,
       ],
     },
     {
@@ -248,7 +449,7 @@ const stylelintPolarisCoverageOptions = {
   ],
   spacing: [
     {
-      'function-disallowed-list': ['control-vertical-padding', 'spacing'].map(
+      'function-disallowed-list': ['control-vertical-padding'].map(
         matchNameRegExp,
       ),
       'declaration-property-unit-disallowed-list': [
@@ -258,15 +459,13 @@ const stylelintPolarisCoverageOptions = {
           '/^gap/': disallowedUnits,
         },
       ],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsSpace,
+        disallowedValues: {'/.+/': disallowedVarsSpace},
+      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$polaris-spacing/,
-        /\$spacing-data/,
-        /\$actions-vertical-spacing/,
-        // Legacy custom properties
-        /--p-button-group-item-spacing/,
-        /--p-choice-margin/,
-        /--p-text-field-spinner-offset/,
       ],
     },
     {
@@ -275,11 +474,6 @@ const stylelintPolarisCoverageOptions = {
   ],
   shape: [
     {
-      'function-disallowed-list': [
-        'border-radius',
-        'border-width',
-        'border',
-      ].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
           'border-width': disallowedUnits,
@@ -298,25 +492,10 @@ const stylelintPolarisCoverageOptions = {
           'no-focus-ring',
         ].map(matchNameRegExp),
       },
-      'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$border-radius-data/,
-        /\$border-width-data/,
-        /\$borders-data/,
-        // Legacy custom properties
-        // /--p-border-radius-base/,
-        /--p-border-radius-wide/,
-        // /--p-border-radius-full/,
-        /--p-control-border-width/,
-        /--p-thin-border-subdued/,
-        /--p-banner-border-default/,
-        /--p-banner-border-success/,
-        /--p-banner-border-highlight/,
-        /--p-banner-border-warning/,
-        /--p-banner-border-critical/,
-        /--p-text-field-focus-ring-border-radius/,
-        /--p-text-field-focus-ring-offset/,
-      ],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsShape,
+        disallowedValues: {'/.+/': disallowedVarsShape},
+      },
     },
     {
       message: 'Please use a Polaris shape token',
@@ -331,17 +510,13 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'property-disallowed-list': ['text-shadow'],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsDepth,
+        disallowedValues: {'/.+/': disallowedVarsDepth},
+      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$shadows-data/,
-        // Legacy custom properties
-        /--p-button-drop-shadow/,
-        /--p-button-inner-shadow/,
-        /--p-button-pressed-inner-shadow/,
-        /--p-card-shadow/,
-        /--p-popover-shadow/,
-        /--p-modal-shadow/,
-        /--p-top-bar-shadow/,
       ],
     },
     {
@@ -358,12 +533,14 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'function-disallowed-list': ['z-index'].map(matchNameRegExp),
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsZIndex,
+        disallowedValues: {'/.+/': disallowedVarsZIndex},
+      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$fixed-element-stacking-order/,
         /\$global-elements/,
-        // Legacy custom properties
-        /--p-override-loading-z-index/,
       ],
     },
     {
@@ -397,9 +574,13 @@ const stylelintPolarisCoverageOptions = {
     {
       'polaris/media-query-allowed-list': {
         // Allowed media types and media conditions
-        // https://www.w3.org/TR/mediaquery5/#media
+        // https://www.w3.org/TR/mediaqueries-5/#media
         allowedMediaTypes: ['print', 'screen'],
-        allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
+        allowedMediaFeatureNames: [
+          'forced-colors',
+          '-ms-high-contrast',
+          'prefers-reduced-motion',
+        ],
         allowedScssInterpolations: [
           // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
           matchNameRegExp(
@@ -481,17 +662,11 @@ const stylelintPolarisCoverageOptions = {
         'available-names',
         'map-extend',
         'em',
-        'px',
         'rem',
       ].map(matchNameRegExp),
       'polaris/global-disallowed-list': [
         // Legacy variables
         / \* \$/,
-        // Legacy custom properties
-        /--p-override-none/,
-        /--p-override-one/,
-        /--p-override-zero/,
-        /--p-non-null-content/,
       ],
     },
     {
@@ -504,15 +679,7 @@ const stylelintPolarisCoverageOptions = {
 module.exports = {
   customSyntax: 'postcss-scss',
   reportDescriptionlessDisables: true,
-  reportNeedlessDisables: [
-    true,
-    {
-      // Report needless disables for all rules except layout coverage rules
-      // Note: This doesn't affect the default Stylelint behavior/reporting
-      // and is only need because we dynamically create these rule names
-      except: ['all', /^polaris\/layout\/.+$/],
-    },
-  ],
+  reportNeedlessDisables: true,
   reportInvalidScopeDisables: [
     true,
     {
@@ -528,6 +695,7 @@ module.exports = {
     './plugins/global-disallowed-list',
     './plugins/at-rule-disallowed-list',
     './plugins/custom-property-allowed-list',
+    './plugins/custom-property-disallowed-list',
     './plugins/media-query-allowed-list',
     './plugins/declaration-property-value-disallowed-list',
   ],

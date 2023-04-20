@@ -3,7 +3,8 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import type {Action, Error} from '../../types';
 import {buttonFrom} from '../Button';
-import {Label, LabelProps, labelID} from '../Label';
+import {Label, labelID} from '../Label';
+import type {LabelProps} from '../Label';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 

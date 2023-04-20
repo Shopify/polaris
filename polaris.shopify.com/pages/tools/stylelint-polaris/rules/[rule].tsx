@@ -33,7 +33,7 @@ const resourceLinks = {
   typography:
     'the [text component](/components/typography/text) or [font tokens](/tokens/font)',
   shape: 'Polaris [shape tokens](/tokens/shape)',
-  spacing: 'Polaris [spacking tokens](/tokens/spacing)',
+  spacing: 'Polaris [spacing tokens](/tokens/spacing)',
   depth: 'Polaris [depth tokens](/tokens/depth)',
   'media queries':
     'Polaris [breakpoint sass variables](/tokens/breakpoints#sass-variables)',

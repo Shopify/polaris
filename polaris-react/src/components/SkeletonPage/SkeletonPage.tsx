@@ -1,10 +1,9 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-import {SkeletonBodyText} from '../SkeletonBodyText';
 import {Box} from '../Box';
-import {Inline} from '../Inline';
-import {Stack} from '../Stack';
+import {VerticalStack} from '../VerticalStack';
+import {HorizontalStack} from '../HorizontalStack';
 
 import styles from './SkeletonPage.scss';
 
@@ -17,8 +16,10 @@ export interface SkeletonPageProps {
   narrowWidth?: boolean;
   /** Shows a skeleton over the primary action */
   primaryAction?: boolean;
-  /** Shows a skeleton over the breadcrumb */
+  /** @deprecated Use backAction instead */
   breadcrumbs?: boolean;
+  /** Shows a skeleton over the backAction */
+  backAction?: boolean;
   /** The child elements to render in the skeleton page. */
   children?: React.ReactNode;
 }
@@ -29,6 +30,7 @@ export function SkeletonPage({
   narrowWidth,
   primaryAction,
   title = '',
+  backAction,
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
@@ -38,7 +40,7 @@ export function SkeletonPage({
   ) : (
     <div className={styles.SkeletonTitle}>
       <Box
-        background="surface-neutral"
+        background="bg-strong"
         minWidth="120px"
         minHeight="28px"
         borderRadius="1"
@@ -50,20 +52,25 @@ export function SkeletonPage({
     <Box
       id="SkeletonPage-PrimaryAction"
       borderRadius="1"
-      background="surface-neutral"
+      background="bg-strong"
       minHeight="2.25rem"
       minWidth="6.25rem"
     />
   ) : null;
 
-  const breadcrumbMarkup = breadcrumbs ? (
-    <Box maxWidth="60px" paddingBlockStart="4" paddingBlockEnd="4">
-      <SkeletonBodyText lines={1} />
-    </Box>
-  ) : null;
+  const breadcrumbMarkup =
+    breadcrumbs || backAction ? (
+      <Box
+        borderRadius="1"
+        background="bg-strong"
+        minHeight="2.25rem"
+        minWidth="2.25rem"
+        maxWidth="2.25rem"
+      />
+    ) : null;
 
   return (
-    <Stack gap="4" align="center">
+    <VerticalStack gap="4" inlineAlign="center">
       <Box
         width="100%"
         padding="0"
@@ -79,7 +86,7 @@ export function SkeletonPage({
           maxWidth: 'none',
         })}
       >
-        <Stack>
+        <VerticalStack>
           <Box
             paddingBlockStart={{xs: '4', md: '5'}}
             paddingBlockEnd={{xs: '4', md: '5'}}
@@ -87,19 +94,21 @@ export function SkeletonPage({
             paddingInlineEnd={{xs: '4', sm: '0'}}
             width="100%"
           >
-            {breadcrumbMarkup}
-            <Inline gap="4" align="space-between" blockAlign="center">
-              <Box paddingBlockStart="1" paddingBlockEnd="1">
-                {titleContent}
-              </Box>
+            <HorizontalStack gap="4" align="space-between" blockAlign="center">
+              <HorizontalStack gap="4">
+                {breadcrumbMarkup}
+                <Box paddingBlockStart="1" paddingBlockEnd="1">
+                  {titleContent}
+                </Box>
+              </HorizontalStack>
               {primaryActionMarkup}
-            </Inline>
+            </HorizontalStack>
           </Box>
           <Box paddingBlockEnd="2" width="100%">
             {children}
           </Box>
-        </Stack>
+        </VerticalStack>
       </Box>
-    </Stack>
+    </VerticalStack>
   );
 }

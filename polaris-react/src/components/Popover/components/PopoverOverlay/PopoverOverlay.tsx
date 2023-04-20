@@ -12,16 +12,13 @@ import {overlay} from '../../../shared';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {KeypressListener} from '../../../KeypressListener';
-import {
-  PositionedOverlay,
-  PositionedOverlayProps,
-} from '../../../PositionedOverlay';
-import {Pane, PaneProps} from '../Pane';
+import {PositionedOverlay} from '../../../PositionedOverlay';
+import type {PositionedOverlayProps} from '../../../PositionedOverlay';
+import {Pane} from '../Pane';
+import type {PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
-import {
-  PortalsContainerElement,
-  PortalsManagerContext,
-} from '../../../../utilities/portals';
+import {PortalsManagerContext} from '../../../../utilities/portals';
+import type {PortalsContainerElement} from '../../../../utilities/portals';
 import {Box} from '../../../Box';
 
 export enum PopoverCloseSource {
@@ -77,7 +74,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
-  private exitingTimer?: number;
   private overlayRef: React.RefObject<PositionedOverlay>;
 
   constructor(props: PopoverOverlayProps) {
@@ -116,12 +112,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     }
 
     if (!this.props.active && oldProps.active) {
-      this.changeTransitionStatus(TransitionStatus.Exiting, () => {
-        this.clearTransitionTimeout();
-        this.exitingTimer = window.setTimeout(() => {
-          this.setState({transitionStatus: TransitionStatus.Exited});
-        }, parseInt(motion['duration-100'], 10));
-      });
+      this.setState({transitionStatus: TransitionStatus.Exited});
     }
   }
 
@@ -174,10 +165,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   private clearTransitionTimeout() {
     if (this.enteringTimer) {
       window.clearTimeout(this.enteringTimer);
-    }
-
-    if (this.exitingTimer) {
-      window.clearTimeout(this.exitingTimer);
     }
   }
 
@@ -270,9 +257,8 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           position="relative"
           overflowX="hidden"
           overflowY="hidden"
-          background="surface"
+          background="bg"
           borderRadius="2"
-          outline="transparent"
         >
           {content}
         </Box>

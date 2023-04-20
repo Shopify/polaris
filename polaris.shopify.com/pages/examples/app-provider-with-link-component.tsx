@@ -3,7 +3,14 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AppProviderLinkExample() {
-  const CustomLinkComponent = ({children, url, ...rest}) => {
+  const CustomLinkComponent = ({
+    children,
+    url,
+    ...rest
+  }: {
+    children?: React.ReactNode;
+    url: string;
+  }) => {
     return (
       <a
         href={url}
@@ -29,7 +36,7 @@ function AppProviderLinkExample() {
       }}
     >
       <Page
-        breadcrumbs={[{content: 'Products', url: '#'}]}
+        backAction={{content: 'Products', url: '#'}}
         title="Jar With Lock-Lid"
         primaryAction={{content: 'Save', disabled: true}}
         secondaryActions={[

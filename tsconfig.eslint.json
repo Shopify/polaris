@@ -8,6 +8,7 @@
   },
   "include": [
     // Paths to lint
+    "polaris-codemods",
     "polaris-for-vscode",
     "polaris-migrator",
     "polaris-react",

@@ -36,7 +36,7 @@ export interface FormProps {
   /** Where to display response after form submittal */
   target?: Target;
   /** Callback when form is submitted */
-  onSubmit(event: React.FormEvent<HTMLFormElement>): void;
+  onSubmit(event: React.FormEvent<HTMLFormElement>): unknown;
 }
 
 export function Form({

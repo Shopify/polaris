@@ -24,13 +24,16 @@ interface Columns {
 }
 
 export interface CellProps {
+  /**
+   * Set grid-template-areas
+   * @deprecated Use nested layout components instead
+   */
   area?: string;
   column?: Cell;
   columnSpan?: Columns;
   row?: Cell;
   children?: React.ReactNode;
 }
-/** @deprecated Use `Columns` instead or a combination of layout primitives (`Columns`, `Inline`, and `Stack`) */
 export function Cell({
   area: gridArea,
   column,

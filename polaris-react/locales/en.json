@@ -156,7 +156,43 @@
       "done": "Done",
       "clearAllFilters": "Clear all filters",
       "clear": "Clear",
-      "clearLabel": "Clear {filterName}"
+      "clearLabel": "Clear {filterName}",
+      "addFilter": "Add filter",
+      "clearFilters": "Clear all"
+    },
+    "FilterPill": {
+      "clear": "Clear"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Search and filter (F)",
+      "searchFilterAccessibilityLabel": "Search and filter results",
+      "sort": "Sort your results",
+      "addView": "Add a new view",
+      "newView": "Custom search",
+      "SortButton": {
+        "ariaLabel": "Sort the results",
+        "tooltip": "Sort",
+        "title": "Sort by",
+        "sorting": {
+          "asc": "Ascending",
+          "desc": "Descending",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Cancel",
+        "update": "Update",
+        "save": "Save",
+        "saveAs": "Save as",
+        "modal": {
+          "title": "Save view as",
+          "label": "Name",
+          "sameName": "A view with this name already exists. Please choose a different name.",
+          "save": "Save",
+          "cancel": "Cancel"
+        }
+      }
     },
     "IndexProvider": {
       "defaultItemSingular": "Item",
@@ -236,7 +272,50 @@
       "loadingLabel": "Page loading"
     },
     "Tabs": {
-      "toggleTabsLabel": "More tabs"
+      "newViewAccessibilityLabel": "Create new view",
+      "newViewTooltip": "Create view",
+      "toggleTabsLabel": "More views",
+      "Tab": {
+        "rename": "Rename view",
+        "duplicate": "Duplicate view",
+        "edit": "Edit view",
+        "editColumns": "Edit columns",
+        "delete": "Delete view",
+        "copy": "Copy of {name}",
+        "deleteModal": {
+          "title": "Delete view?",
+          "description": "This can’t be undone. {viewName} view will no longer be available in your admin.",
+          "cancel": "Cancel",
+          "delete": "Delete view"
+        }
+      },
+      "RenameModal": {
+        "title": "Rename view",
+        "label": "Name",
+        "cancel": "Cancel",
+        "create": "Save",
+        "errors": {
+          "sameName": "A view with this name already exists. Please choose a different name."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplicate view",
+        "label": "Name",
+        "cancel": "Cancel",
+        "create": "Create view",
+        "errors": {
+          "sameName": "A view with this name already exists. Please choose a different name."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Create new view",
+        "label": "Name",
+        "cancel": "Cancel",
+        "create": "Create view",
+        "errors": {
+          "sameName": "A view with this name already exists. Please choose a different name."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Remove {children}"
@@ -256,6 +335,7 @@
       }
     },
     "MediaCard": {
+      "dismissButton": "Dismiss",
       "popoverButton": "Actions"
     },
     "VideoThumbnail": {

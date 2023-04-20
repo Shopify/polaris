@@ -9,6 +9,7 @@ import {Tag} from '../../Tag';
 import {Resizer, Spinner} from '../components';
 import {TextField} from '../TextField';
 import styles from '../TextField.scss';
+import {Key} from '../../../types';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
@@ -1073,6 +1074,200 @@ describe('<TextField />', () => {
         expect(spy).not.toHaveBeenCalled();
       });
 
+      describe('onSpinnerChange()', () => {
+        it('is called with the new value when incrementing by step', () => {
+          const spy = jest.fn();
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="2"
+              step={4}
+              onSpinnerChange={spy}
+              autoComplete="off"
+            />,
+          );
+
+          element.findAll('div', {role: 'button'})[0].trigger('onClick');
+          expect(spy).toHaveBeenCalledWith('6', 'MyTextField');
+        });
+
+        it('is called with the new value instead of onChange when incrementing by step', () => {
+          const onStepperSpy = jest.fn();
+          const onChangeSpy = jest.fn();
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="2"
+              step={4}
+              onSpinnerChange={onStepperSpy}
+              onChange={onChangeSpy}
+              autoComplete="off"
+            />,
+          );
+
+          element.findAll('div', {role: 'button'})[0].trigger('onClick');
+          expect(onStepperSpy).toHaveBeenCalledWith('6', 'MyTextField');
+          expect(onChangeSpy).not.toHaveBeenCalled();
+        });
+
+        it('is not called when new values are typed', () => {
+          const onStepperSpy = jest.fn();
+          const onChangeSpy = jest.fn();
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="2"
+              step={4}
+              onSpinnerChange={onStepperSpy}
+              onChange={onChangeSpy}
+              autoComplete="off"
+            />,
+          );
+
+          element.find('input')!.trigger('onChange', {
+            currentTarget: {
+              value: '6',
+            },
+          });
+          expect(onStepperSpy).not.toHaveBeenCalled();
+          expect(onChangeSpy).toHaveBeenCalledWith('6', 'MyTextField');
+        });
+      });
+
+      describe('keydown events', () => {
+        it('decrements by largeStep when provided and Page Down is pressed', () => {
+          const spy = jest.fn();
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="10"
+              step={1}
+              largeStep={4}
+              onChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'PageDown',
+            which: Key.PageDown,
+          });
+          expect(spy).toHaveBeenCalledWith('6', 'MyTextField');
+        });
+
+        it('increments by largeStep when provided and Page Up is pressed', () => {
+          const spy = jest.fn();
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="10"
+              step={1}
+              largeStep={4}
+              onChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'PageUp',
+            which: Key.PageUp,
+          });
+          expect(spy).toHaveBeenCalledWith('14', 'MyTextField');
+        });
+
+        it('calls onChange(min) if Home is pressed and min was provided', () => {
+          const spy = jest.fn();
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="10"
+              min={1}
+              step={1}
+              onChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'Home',
+            which: Key.Home,
+          });
+          expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
+        });
+
+        it('calls onChange(max) if End is pressed and max was provided', () => {
+          const spy = jest.fn();
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="10"
+              max={100}
+              step={1}
+              onChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'End',
+            which: Key.End,
+          });
+          expect(spy).toHaveBeenCalledWith('100', 'MyTextField');
+        });
+
+        it('calls onSpinnerChange(min) if Home is pressed and min was provided', () => {
+          const spy = jest.fn();
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="10"
+              min={1}
+              step={1}
+              onSpinnerChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'Home',
+            which: Key.Home,
+          });
+          expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
+        });
+
+        it('calls onSpinnerChange(max) if End is pressed and max was provided', () => {
+          const spy = jest.fn();
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="10"
+              max={100}
+              step={1}
+              onSpinnerChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'End',
+            which: Key.End,
+          });
+          expect(spy).toHaveBeenCalledWith('100', 'MyTextField');
+        });
+      });
+
       describe('document events', () => {
         type EventCallback = (mockEventData?: {[key: string]: any}) => void;
 
@@ -1114,6 +1309,93 @@ describe('<TextField />', () => {
 
           jest.runOnlyPendingTimers();
           expect(spy).not.toHaveBeenCalled();
+        });
+      });
+
+      describe('wheel events', () => {
+        let eventPropagationSpy: jest.SpyInstance;
+
+        beforeEach(() => {
+          eventPropagationSpy = jest.spyOn(Event.prototype, 'stopPropagation');
+        });
+
+        afterEach(() => {
+          eventPropagationSpy.mockReset();
+        });
+
+        it('stops event progagation when using the mousewheel over a focused input', () => {
+          const eventPropagationSpy = jest.spyOn(
+            Event.prototype,
+            'stopPropagation',
+          );
+
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="1"
+              onChange={noop}
+              autoComplete="off"
+              focused
+            />,
+          );
+
+          const wheelEvent = new WheelEvent('wheel', {deltaY: 1});
+          const input = element.find('input')!.domNode!;
+
+          input.focus();
+          input.dispatchEvent(wheelEvent);
+
+          expect(eventPropagationSpy).toHaveBeenCalled();
+        });
+
+        it('does not stop event progagation when using the mousewheel over a non-focused input', () => {
+          const eventPropagationSpy = jest.spyOn(
+            Event.prototype,
+            'stopPropagation',
+          );
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="1"
+              onChange={noop}
+              autoComplete="off"
+            />,
+          );
+
+          const wheelEvent = new WheelEvent('wheel', {deltaY: 1});
+          const input = element.find('input')!.domNode!;
+
+          input.dispatchEvent(wheelEvent);
+
+          expect(eventPropagationSpy).not.toHaveBeenCalled();
+        });
+
+        it('does not stop event progagation when using the mousewheel over a focused input on a non-number type', () => {
+          const eventPropagationSpy = jest.spyOn(
+            Event.prototype,
+            'stopPropagation',
+          );
+          const element = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              value="1"
+              onChange={noop}
+              autoComplete="off"
+            />,
+          );
+
+          const wheelEvent = new WheelEvent('wheel', {deltaY: 1});
+          const input = element.find('input')!.domNode!;
+          input.focus();
+
+          input.dispatchEvent(wheelEvent);
+
+          expect(eventPropagationSpy).not.toHaveBeenCalled();
         });
       });
     });

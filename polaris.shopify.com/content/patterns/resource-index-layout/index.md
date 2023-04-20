@@ -3,11 +3,8 @@ title: Resource index layout
 description: Organize and take action on resource objects
 lede: Lets merchants organize and take action on resource objects.
 url: /patterns/resource-index-layout
-previewImg: /images/patterns/pattern-thumbnail-resource-index.png
+previewImg: /images/patterns/resource-index-layout/pattern-thumbnail-resource-index.png
 githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/8215
-hideFromNav: true
-draft: true
-noIndex: true
 variants:
   - 'variants/default.md'
 ---

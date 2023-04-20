@@ -65,8 +65,10 @@ function LegacyCardExample() {
             const {sales, amount, url} = item;
             return (
               <ResourceList.Item
+                id={sales.toLocaleLowerCase()}
                 url={url}
                 accessibilityLabel={`View Sales for ${sales}`}
+                onClick={() => console.log('clicked item', item)}
               >
                 <LegacyStack>
                   <LegacyStack.Item fill>{sales}</LegacyStack.Item>

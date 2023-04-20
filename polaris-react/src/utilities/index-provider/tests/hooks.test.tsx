@@ -4,13 +4,13 @@ import {mountWithApp, mount} from 'tests/utilities';
 import {
   IndexRowContext,
   IndexSelectionChangeContext,
-  IndexContextType,
   IndexContext,
 } from '../context';
-import {
+import type {IndexContextType} from '../context';
+import {SelectionType} from '../types';
+import type {
   BulkSelectionDataOptions,
   HandleBulkSelectionOptions,
-  SelectionType,
 } from '../types';
 import {
   useIndexRow,

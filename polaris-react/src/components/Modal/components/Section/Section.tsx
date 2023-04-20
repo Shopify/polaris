@@ -29,7 +29,7 @@ export function Section({
         as="section"
         padding={flush ? '0' : '5'}
         {...(titleHidden && {paddingInlineEnd: '0'})}
-        {...(subdued && {background: 'surface-subdued'})}
+        {...(subdued && {background: 'bg-subdued'})}
       >
         {children}
       </Box>

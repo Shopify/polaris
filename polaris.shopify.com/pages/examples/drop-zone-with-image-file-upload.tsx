@@ -10,12 +10,12 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DropZoneWithImageFileUpload() {
-  const [files, setFiles] = useState([]);
-  const [rejectedFiles, setRejectedFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
+  const [rejectedFiles, setRejectedFiles] = useState<File[]>([]);
   const hasError = rejectedFiles.length > 0;
 
   const handleDrop = useCallback(
-    (_droppedFiles, acceptedFiles, rejectedFiles) => {
+    (_droppedFiles: File[], acceptedFiles: File[], rejectedFiles: File[]) => {
       setFiles((files) => [...files, ...acceptedFiles]);
       setRejectedFiles(rejectedFiles);
     },

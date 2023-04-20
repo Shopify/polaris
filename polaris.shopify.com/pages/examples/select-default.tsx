@@ -5,7 +5,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function SelectExample() {
   const [selected, setSelected] = useState('today');
 
-  const handleSelectChange = useCallback((value) => setSelected(value), []);
+  const handleSelectChange = useCallback(
+    (value: string) => setSelected(value),
+    [],
+  );
 
   const options = [
     {label: 'Today', value: 'today'},

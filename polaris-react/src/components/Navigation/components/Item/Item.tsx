@@ -1,25 +1,20 @@
-import React, {
-  useEffect,
-  useContext,
-  useState,
-  MouseEvent,
-  ReactNode,
-  useRef,
-  useId,
-} from 'react';
+import React, {useEffect, useContext, useState, useRef, useId} from 'react';
+import type {MouseEvent, ReactNode} from 'react';
 
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
-import {Icon, IconProps} from '../../../Icon';
+import {Icon} from '../../../Icon';
+import type {IconProps} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import styles from '../../Navigation.scss';
-import {Tooltip, TooltipProps} from '../../../Tooltip';
+import {Tooltip} from '../../../Tooltip';
+import type {TooltipProps} from '../../../Tooltip';
 
 import {Secondary} from './components';
 
@@ -303,7 +298,6 @@ export function Item({
 
     const SecondaryNavigationClassName = classNames(
       styles.SecondaryNavigation,
-      showExpanded && styles.isExpanded,
       !icon && styles['SecondaryNavigation-noIcon'],
     );
 

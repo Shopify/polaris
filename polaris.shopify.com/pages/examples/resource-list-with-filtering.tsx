@@ -1,6 +1,6 @@
 import {
   TextField,
-  Filters,
+  LegacyFilters,
   Button,
   LegacyCard,
   ResourceList,
@@ -12,15 +12,21 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithFilteringExample() {
-  const [taggedWith, setTaggedWith] = useState('VIP');
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState<string | undefined>('VIP');
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: any) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
@@ -33,13 +39,13 @@ function ResourceListWithFilteringExample() {
 
   const items = [
     {
-      id: 108,
+      id: '108',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 208,
+      id: '208',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -63,18 +69,19 @@ function ResourceListWithFilteringExample() {
     },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith1',
-          label: disambiguateLabel('taggedWith1', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith1',
+            label: disambiguateLabel('taggedWith1', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -85,7 +92,7 @@ function ResourceListWithFilteringExample() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
@@ -99,7 +106,7 @@ function ResourceListWithFilteringExample() {
     </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: typeof items[number]) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -113,7 +120,7 @@ function ResourceListWithFilteringExample() {
     );
   }
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string): string {
     switch (key) {
       case 'taggedWith1':
         return `Tagged with ${value}`;
@@ -122,7 +129,7 @@ function ResourceListWithFilteringExample() {
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

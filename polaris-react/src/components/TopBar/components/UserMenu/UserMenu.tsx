@@ -1,9 +1,11 @@
 import React from 'react';
 
 import type {IconableAction} from '../../../../types';
-import {Avatar, AvatarProps} from '../../../Avatar';
+import {Avatar} from '../../../Avatar';
+import type {AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
-import {Menu, MenuProps} from '../Menu';
+import {Menu} from '../Menu';
+import type {MenuProps} from '../Menu';
 import {Text} from '../../../Text';
 
 import styles from './UserMenu.scss';
@@ -27,6 +29,8 @@ export interface UserMenuProps {
   open: boolean;
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
+  /** A custom activator that can be used when the default activator is not desired */
+  customActivator?: React.ReactNode;
 }
 
 export function UserMenu({
@@ -39,18 +43,14 @@ export function UserMenu({
   onToggle,
   open,
   accessibilityLabel,
+  customActivator,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
-  const activatorContentMarkup = (
+  const activatorContentMarkup = customActivator ? (
+    customActivator
+  ) : (
     <>
-      <MessageIndicator active={showIndicator}>
-        <Avatar
-          size="small"
-          source={avatar}
-          initials={initials && initials.replace(' ', '')}
-        />
-      </MessageIndicator>
       <span className={styles.Details}>
         <Text as="p" alignment="start" fontWeight="medium" truncate>
           {name}
@@ -65,6 +65,14 @@ export function UserMenu({
           {detail}
         </Text>
       </span>
+      <MessageIndicator active={showIndicator}>
+        <Avatar
+          shape="square"
+          size="small"
+          initials={initials && initials.replace(' ', '')}
+          source={avatar}
+        />
+      </MessageIndicator>
     </>
   );
 

@@ -19,15 +19,18 @@ import type {
   MenuGroupDescriptor,
   TooltipAction,
 } from '../../../../types';
-import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
-import {Pagination, PaginationProps} from '../../../Pagination';
+import {Breadcrumbs} from '../../../Breadcrumbs';
+import type {BreadcrumbsProps} from '../../../Breadcrumbs';
+import {Pagination} from '../../../Pagination';
+import type {PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
-import {Inline} from '../../../Inline';
+import {HorizontalStack} from '../../../HorizontalStack';
 
-import {Title, TitleProps} from './components';
+import {Title} from './components';
+import type {TitleProps} from './components';
 import styles from './Header.scss';
 
 type MaybeJSX = JSX.Element | null;
@@ -117,9 +120,9 @@ export function Header({
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <Inline gap="4" align="end">
+    <HorizontalStack gap="4" align="end">
       <Box printHidden>{additionalNavigation}</Box>
-    </Inline>
+    </HorizontalStack>
   ) : null;
 
   const pageTitleMarkup = (
@@ -168,11 +171,11 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
         }
       >
-        <Inline gap="4" align="space-between" blockAlign="center">
+        <HorizontalStack gap="4" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {additionalNavigationMarkup}
           {paginationMarkup}
-        </Inline>
+        </HorizontalStack>
       </Box>
     ) : null;
 
@@ -239,7 +242,7 @@ export function Header({
         </ConditionalRender>
         <ConditionalRender condition={[slot5, slot6].some(notNull)}>
           <div className={styles.Row}>
-            <Inline gap="4">{slot5}</Inline>
+            <HorizontalStack gap="4">{slot5}</HorizontalStack>
             <ConditionalRender condition={slot6 != null}>
               <div className={styles.RightAlign}>{slot6}</div>
             </ConditionalRender>
