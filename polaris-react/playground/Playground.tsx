@@ -1,7 +1,6 @@
 import {
   ArchiveMinor,
   CaretDownMinor,
-  CirclePlusMinor,
   EditMajor,
   SelectMinor,
   SearchMinor,
@@ -11,9 +10,7 @@ import React from 'react';
 
 import {
   ButtonNew,
-  AlphaCard,
   VerticalStack,
-  Bleed,
   Box,
   ButtonBase,
   Icon,
@@ -42,7 +39,6 @@ export function Playground() {
             </HorizontalStack>
           </Box>
         </VerticalStack>
-
         <VerticalStack gap="2">
           <Text variant="headingMd" as="h2">
             Variants
@@ -134,11 +130,27 @@ export function Playground() {
 
         <VerticalStack gap="2">
           <Text variant="headingMd" as="h2">
-            Fullwidth button
+            Full width
           </Text>
           <Box border="base" padding="4" borderRadius="2" background="bg">
             <VerticalStack gap="4">
               <ButtonNew>Full width button</ButtonNew>
+              <ButtonNew>
+                <HorizontalStack blockAlign="center" align="space-between">
+                  Right Aligned Disclosure
+                  <div>
+                    <Icon source={CaretDownMinor} color="base" />
+                  </div>
+                </HorizontalStack>
+              </ButtonNew>
+              <ButtonNew>
+                <HorizontalStack gap="2" blockAlign="center" align="center">
+                  <div>
+                    <Icon source={ArchiveMinor} color="base" />
+                  </div>
+                  Archive product
+                </HorizontalStack>
+              </ButtonNew>
             </VerticalStack>
           </Box>
         </VerticalStack>
