@@ -18,7 +18,7 @@ import {Button} from '../Button';
 import {FilterPill, SearchField} from './components';
 import styles from './AlphaFilters.scss';
 
-const TRANSITION_DURATION = 'var(--p-duration-150)';
+const TRANSITION_DURATION = 'var(--p-motion-duration-150)';
 const TRANSITION_MARGIN = '-36px';
 
 const defaultStyle = {

@@ -72,7 +72,8 @@
   padding: var(--p-space-4);
   white-space: nowrap;
   text-align: left;
-  transition: background-color var(--p-duration-200) var(--p-ease-in-out);
+  transition: background-color var(--p-motion-duration-200)
+    var(--p-motion-ease-in-out);
 
   .IncreasedTableDensity & {
     padding: var(--p-space-2) var(--p-space-4);
@@ -182,7 +183,7 @@
   display: flex;
   align-self: flex-end;
   opacity: 0;
-  transition: opacity var(--p-duration-200) var(--p-ease);
+  transition: opacity var(--p-motion-duration-200) var(--p-motion-ease);
 }
 
 .Heading {
@@ -195,7 +196,7 @@
   justify-content: flex-end;
   align-items: baseline;
   color: var(--p-color-text);
-  transition: color var(--p-duration-200) var(--p-ease);
+  transition: color var(--p-motion-duration-200) var(--p-motion-ease);
   cursor: pointer;
   padding: var(--p-space-2);
   margin: var(--p-space-2);
