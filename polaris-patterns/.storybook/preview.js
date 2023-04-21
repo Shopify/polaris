@@ -43,9 +43,7 @@ function AppProviderDecorator(Story, context) {
   return (
     <AppProvider i18n={translations.polaris}>
       <PolarisPatternsProvider
-        locale={locale}
-        country={country}
-        currency={currency}
+        i18nDetails={{locale, currency, country}}
         translations={translations.patterns}
       >
         <Story {...context} />

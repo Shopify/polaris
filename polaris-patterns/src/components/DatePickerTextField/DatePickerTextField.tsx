@@ -20,7 +20,7 @@ import {
   formatDateToYearMonthDayDateString,
 } from '../../utilities/dates';
 import {DatePicker} from '../DatePicker';
-import {useI18nManager} from '../PolarisPatternsProvider';
+import {useShopifyI18nManager} from '../PolarisPatternsProvider';
 
 export interface Props {
   disabled?: boolean;
@@ -51,7 +51,7 @@ const DISPLAY_DATE_FORMAT: Intl.DateTimeFormatOptions = {
 };
 
 export function DatePickerTextField(props: Props) {
-  const manager = useI18nManager();
+  const manager = useShopifyI18nManager();
 
   return (
     <I18nContext.Provider value={manager}>

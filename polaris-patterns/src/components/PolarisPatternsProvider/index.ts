@@ -1,4 +1,4 @@
 export {PolarisPatternsProvider} from './PolarisPatternsProvider';
 export type {Props as PolarisPatternsProviderProps} from './PolarisPatternsProvider';
 
-export {useAppLocale, useI18nManager} from './hooks';
+export {useI18nDetails, useShopifyI18nManager} from './hooks';

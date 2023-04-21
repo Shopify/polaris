@@ -1,27 +1,27 @@
 import {I18nManager} from '@shopify/react-i18n';
 import {useContext} from 'react';
 
-import {AppLocale} from './PolarisPatternsProvider';
+import {I18nDetails} from './PolarisPatternsProvider';
 
-export function useAppLocale() {
-  const locale = useContext(AppLocale);
+export function useI18nDetails() {
+  const i18nDetails = useContext(I18nDetails);
 
-  if (!locale) {
+  if (!i18nDetails) {
     throw new Error(
-      'No locale was provided. Make sure to wrap library components in a <PolarisPatternsProvider />.',
+      'No i18nDetails were provided. Make sure to wrap library components in a <PolarisPatternsProvider />.',
     );
   }
 
-  return locale;
+  return i18nDetails;
 }
 
-export function useI18nManager() {
-  const locale = useContext(AppLocale);
+export function useShopifyI18nManager() {
+  const i18nDetails = useContext(I18nDetails);
 
-  if (!locale) {
+  if (!i18nDetails) {
     throw new Error(
-      'No locale was provided. Make sure to wrap library components in a <PolarisPatternsProvider />.',
+      'No i18nDetails were provided. Make sure to wrap library components in a <PolarisPatternsProvider />.',
     );
   }
-  return new I18nManager(locale);
+  return new I18nManager(i18nDetails);
 }
