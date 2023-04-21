@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': minor
 ---
 
-Add any click attribution model icon
+Added any click attribution model icon
