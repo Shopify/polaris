@@ -22,12 +22,10 @@ export function DefinitionPopover({title, definition}: Props) {
   }
 
   function handleActivatorMouseEnter() {
-    console.log('handleActivatorMouseEnter');
     setHoverActive(true);
   }
 
   function handleActivatorMouseLeave() {
-    console.log('handleActivatorMouseLeave');
     setHoverActive(false);
   }
 

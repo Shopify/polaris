@@ -112,6 +112,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     }
 
     if (!this.props.active && oldProps.active) {
+      this.clearTransitionTimeout();
       this.setState({transitionStatus: TransitionStatus.Exited});
     }
   }
