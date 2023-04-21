@@ -85,12 +85,6 @@ $loading-panel-height: 53px;
   width: 100%;
   min-width: 100%;
   border-collapse: collapse;
-
-  &:not(.Table-select-mode) {
-    border-bottom-right-radius: var(--p-border-radius-2);
-    border-bottom-left-radius: var(--p-border-radius-2);
-    overflow: hidden;
-  }
 }
 
 .Table-scrolling {
@@ -676,7 +670,7 @@ $scroll-bar-size: var(--p-space-2);
 }
 
 .scrollBarContainerHidden {
-  height: 0;
+  margin-top: calc(var(--p-space-1) * -1);
   padding: 0;
 }
 
