@@ -710,7 +710,8 @@ function IndexTableBase({
   const tableClassNames = classNames(
     styles.Table,
     hasMoreLeftColumns && styles['Table-scrolling'],
-    selectMode && styles.disableTextSelection,
+    selectMode &&
+      classNames(styles.disableTextSelection, styles['Table-select-mode']),
     selectMode && shouldShowBulkActions && styles.selectMode,
     !selectable && styles['Table-unselectable'],
     canFitStickyColumn && styles['Table-sticky'],
