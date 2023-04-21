@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.11.0
+
+### Minor Changes
+
+- [#9016](https://github.com/Shopify/polaris/pull/9016) [`a47e9084d`](https://github.com/Shopify/polaris/commit/a47e9084dcbb0b9870bc58dd2214e82657efe8ad) Thanks [@alex-page](https://github.com/alex-page)! - Add new Space tokens and types to replace spacing in v11
+
 ## 6.10.0
 
 ### Minor Changes
