@@ -5,8 +5,8 @@
   overflow: hidden;
   will-change: max-height;
   transition-property: max-height;
-  transition-duration: var(--p-duration-100);
-  transition-timing-function: var(--p-ease-out);
+  transition-duration: var(--p-motion-duration-100);
+  transition-timing-function: var(--p-motion-ease-out);
 }
 
 // Stop children from being focused when fully closed
