@@ -287,8 +287,8 @@ $disabled-fade: 0.6;
       background: var(--p-color-bg-app-hover);
       visibility: hidden;
       opacity: 0;
-      transition: opacity var(--p-motion-duration-200) ease-in-out,
-        visibility var(--p-motion-duration-200) ease-in-out;
+      transition: opacity var(--p-duration-200) ease-in-out,
+        visibility var(--p-duration-200) ease-in-out;
 
       &::before {
         content: '';

@@ -65,7 +65,7 @@ li:first-of-type > .TextOption {
 [data-focused] .TextOption:not(.disabled) {
   outline: none;
   background-color: var(--p-color-bg-interactive-selected);
-  transition: background-color var(--p-motion-duration-400);
+  transition: background-color var(--p-duration-400);
 }
 
 .Content {
