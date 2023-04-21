@@ -79,8 +79,8 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   outline: none;
   color: var(--p-color-text);
   will-change: fill, color;
-  transition: fill var(--p-motion-duration-200) var(--p-motion-ease),
-    color var(--p-motion-duration-200) var(--p-motion-ease);
+  transition: fill var(--p-duration-200) var(--p-ease),
+    color var(--p-duration-200) var(--p-ease);
   appearance: textfield;
 
   &::placeholder {

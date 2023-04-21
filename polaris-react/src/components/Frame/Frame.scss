@@ -69,7 +69,7 @@
 
 .Navigation-enterActive {
   transform: translateX(0%);
-  transition: transform var(--p-motion-duration-300) var(--p-motion-ease-out);
+  transition: transform var(--p-duration-300) var(--p-ease-out);
 }
 
 .Navigation-exit {
@@ -78,7 +78,7 @@
 
 .Navigation-exitActive {
   transform: translateX(-100%);
-  transition: transform var(--p-motion-duration-300) var(--p-motion-ease-out);
+  transition: transform var(--p-duration-300) var(--p-ease-out);
 }
 
 .NavigationDismiss {
@@ -100,7 +100,7 @@
   pointer-events: none;
   will-change: opacity;
   cursor: pointer;
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
+  transition: opacity var(--p-duration-100) var(--p-ease);
 
   svg {
     fill: var(--p-color-bg);

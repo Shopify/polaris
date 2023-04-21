@@ -12,7 +12,7 @@
   height: 100%;
   transform-origin: 0;
   background-color: var(--p-color-icon-success);
-  transition: transform var(--p-motion-duration-500) linear;
+  transition: transform var(--p-duration-500) linear;
 
   @media screen and (-ms-high-contrast: active) {
     background-color: highlight;
