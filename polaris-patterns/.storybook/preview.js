@@ -9,6 +9,7 @@ import {
 } from '../src/components/PolarisPatternsProvider';
 import polarisEnTranslations from '../../polaris-react/locales/en.json';
 import patternsEnTranslations from '../locales/en.json';
+import {SUPPORTED_LOCALES} from '../src';
 
 const defaultTranslations = {
   polaris: polarisEnTranslations,
@@ -43,6 +44,7 @@ function AppProviderDecorator(Story, context) {
   return (
     <AppProvider i18n={translations.polaris}>
       <PolarisPatternsProvider
+        enFallback={patternsEnTranslations}
         i18nDetails={{locale, currency, country}}
         translations={translations.patterns}
       >
@@ -73,29 +75,7 @@ export const globalTypes = {
     defaultValue: 'en',
     toolbar: {
       icon: 'globe',
-      items: [
-        'en',
-        'cs',
-        'da',
-        'de',
-        'es',
-        'fi',
-        'fr',
-        'it',
-        'ja',
-        'ko',
-        'nb',
-        'nl',
-        'pl',
-        'pt-BR',
-        'pt-PT',
-        'sv',
-        'th',
-        'tr',
-        'vi',
-        'zh-CN',
-        'zh-TW',
-      ],
+      items: SUPPORTED_LOCALES,
     },
   },
   country: {

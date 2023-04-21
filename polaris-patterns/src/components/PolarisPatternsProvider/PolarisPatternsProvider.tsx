@@ -1,42 +1,49 @@
-import type {
-  I18nDetails as Details,
-  TranslationDictionary,
-} from '@shopify/react-i18n';
 import type {PropsWithChildren} from 'react';
 import React, {createContext, useEffect} from 'react';
 import {I18nextProvider, initReactI18next} from 'react-i18next';
 import {createInstance} from 'i18next';
 
-export interface Props {
-  i18nDetails: Details;
-  translations: TranslationDictionary;
-}
+import {DEFAULT_I18N_DETAILS} from '../../configure';
 
-export const i18next = createInstance({
-  fallbackLng: 'en',
-  debug: process.env.NODE_ENV === 'development',
+export const I18nDetails = createContext(DEFAULT_I18N_DETAILS);
+
+const i18next = createInstance({
+  fallbackLng: DEFAULT_I18N_DETAILS.locale,
   interpolation: {
     escapeValue: false,
   },
   resources: {},
+  returnNull: false,
 });
 
 i18next.use(initReactI18next).init();
 
-const DEFAULT_I18N_DETAILS: Details = {
-  locale: 'en',
-  country: 'CA',
-  currency: 'USD',
-  timezone: 'EST',
-};
+interface TranslationDictionary {
+  [key: string]: string | TranslationDictionary;
+}
 
-export const I18nDetails = createContext(DEFAULT_I18N_DETAILS);
+interface I18nDetails {
+  locale: string;
+  country?: string;
+  currency?: string;
+  timezone?: string;
+}
+
+export interface Props {
+  i18nDetails: I18nDetails;
+  translations: TranslationDictionary;
+  enFallback: TranslationDictionary;
+}
 
 export function PolarisPatternsProvider({
   translations,
   i18nDetails,
+  enFallback,
   children,
 }: PropsWithChildren<Props>) {
+  useEffect(() => {
+    i18next.addResourceBundle('en', 'translation', enFallback);
+  }, [enFallback]);
   useEffect(() => {
     i18next.changeLanguage(i18nDetails.locale);
     i18next.addResourceBundle(i18nDetails.locale, 'translation', translations);

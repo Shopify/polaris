@@ -225,7 +225,7 @@ export function DatePickerTextFieldComponent({
       helpText={helpText}
       prefix={iconHidden ? undefined : <Icon source={CalendarMinor} />}
       value={formattedValue}
-      placeholder={t('DatePickerTextField.placeholderDateValue') || ''}
+      placeholder={t('DatePickerTextField.placeholderDateValue')}
       onFocus={() => setVisible(Boolean(!disabled))}
       onChange={handleInputValueChange}
       onBlur={handleInputBlur as any}
