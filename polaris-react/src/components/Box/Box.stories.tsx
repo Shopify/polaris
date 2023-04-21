@@ -74,6 +74,28 @@ export function WithBorders() {
         background="bg"
         padding="4"
         borderWidth="5"
+        borderBlockStartWidth="1"
+        borderColor="border-critical"
+      >
+        <Text as="p">border-width: 5px solid red</Text>
+        <Text as="p">border-block-start: 1px solid red</Text>
+        <Box
+          background="bg"
+          padding="4"
+          borderWidth="4"
+          borderColor="border-caution"
+        >
+          <Text as="p">border-width: 4px solid yellow</Text>
+          <Text as="p" fontWeight="semibold">
+            Note: border-block-start will not inherit from the parent Box
+            component
+          </Text>
+        </Box>
+      </Box>
+      <Box
+        background="bg"
+        padding="4"
+        borderWidth="5"
         borderColor="transparent"
       >
         <Text as="p">5px solid transparent</Text>
