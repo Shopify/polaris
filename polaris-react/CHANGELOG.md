@@ -1,5 +1,18 @@
 # Changelog
 
+## 10.47.0
+
+### Minor Changes
+
+- [#8999](https://github.com/Shopify/polaris/pull/8999) [`a07c752fb`](https://github.com/Shopify/polaris/commit/a07c752fbe3be1638cc88c9edbd5a08557ac61c5) Thanks [@trishrempel](https://github.com/trishrempel)! - Exported constants `DEFAULT_LOCALE` and `SUPPORTED_LOCALES`
+
+### Patch Changes
+
+- [#9045](https://github.com/Shopify/polaris/pull/9045) [`f0d9fdf96`](https://github.com/Shopify/polaris/commit/f0d9fdf961f1949c15db8b33ff5a600a6321411e) Thanks [@laurkim](https://github.com/laurkim)! - Refactored `Box` border width properties to fix issues with cascading styles
+
+- Updated dependencies [[`bcdbaad00`](https://github.com/Shopify/polaris/commit/bcdbaad009bb0606544dff19b5b5fcb37ddc6f94)]:
+  - @shopify/polaris-tokens@6.12.0
+
 ## 10.46.0
 
 ### Minor Changes
