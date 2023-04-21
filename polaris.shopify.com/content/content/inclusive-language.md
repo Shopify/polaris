@@ -136,13 +136,9 @@ Note: When marketing, it’s okay to use these words to communicate the value of
 
 Complete this 3 question survey to get started
 
-Enter your email address and password
-
 #### Don’t
 
 Take a second to fill out this easy questionnaire
-
-Just put in your email address to get started
 
 <!-- end -->
 
