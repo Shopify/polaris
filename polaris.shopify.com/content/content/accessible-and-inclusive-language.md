@@ -64,7 +64,7 @@ To write accessible content:
 
 #### Disable, disabled
 
-Don’t describe actions or features as “disabled.” This can imply that being disabled is a negative state. Alternatives include “inactive,” “deactivated,” and “turn off.”
+Don’t label actions or features using “disable” or “disabled.” This can imply that being disabled is a negative state. Alternatives include “turn off,” “inactive,” and “deactivated.”
 
 Note: Because “disabled” is a valid state for HTML elements, it’s currently considered appropriate when talking about specific element states.
 
@@ -72,15 +72,11 @@ Note: Because “disabled” is a valid state for HTML elements, it’s currentl
 
 #### Do
 
-![setting-toggle-activate](/images/content/inclusive-language/setting-toggle-activate@2x.png)
-
-![setting-toggle-deactivate](/images/content/inclusive-language/setting-toggle-deactivate@2x.png)
+![Setting toggle for abandoned carts with a status label that says “On”. Action button is labeled “Turn off”.](/images/content/inclusive-language/setting-toggle-do@2x.png)
 
 #### Don’t
 
-![setting-toggle-enable](/images/content/inclusive-language/setting-toggle-enable@2x.png)
-
-![setting-toggle-disable](/images/content/inclusive-language/setting-toggle-disable@2x.png)
+![Setting toggle for abandoned carts with a status label that says “Off”. Action button is labeled “Turn on”.](/images/content/inclusive-language/setting-toggle-dont@2x.png)
 
 <!-- end -->
 
@@ -283,11 +279,11 @@ Gender is an important part of many people’s identity. Stereotypes and assumpt
 
 ### Internationalization
 
-Many languages lack ungendered options, like the English “they.” When possible, write in a way that avoids gendered language. For example, write “you” instead of a third person pronoun. Always choose the clearest option.
+Many languages lack ungendered options, like the English “they.” When possible, write in a way that avoids gendered language. For example, write “you” instead of a third person pronoun. You may need to work with a translator to avoid unintentionally gendering concepts. Always choose the clearest option.
 
 ### Recommended language
 
-Always use someone’s preferred gender and pronouns. If you’re not sure, use the pronouns “they/them.”
+Always use someone’s preferred gender and pronouns. If you’re not sure, use the pronouns “they/them.” This keeps the content inclusive, simple, and readable.
 
 <!-- dodont -->
 
@@ -301,13 +297,17 @@ Call the customer to confirm his or her address
 
 <!-- end -->
 
-Avoid asking for pronouns or gender, unless it’s required.
+If pronouns are necessary or useful to the experience, offer users an inclusive list of options that also allows them to opt out.
 
 <!-- dodont -->
 
+#### Do
+
+![Pronouns form field with only two options: “She/her” and “He/him”.](/images/content/inclusive-language/pronouns-option-list-do-example@2x.png)
+
 #### Don’t
 
-![form-with-gender-field](/images/content/inclusive-language/form-with-gender-field@2x.png)
+![Pronouns form field with multiple options including: “Prefer not to respond”, “She/her”, “He/him”, “They/them”,  and “Prefer to specify”.](/images/content/inclusive-language/pronouns-option-list-dont-example@2x.png)
 
 <!-- end -->
 
