@@ -3,10 +3,10 @@ import {Weekday, useI18n, I18nContext} from '@shopify/react-i18n';
 import type {DatePickerProps} from '@shopify/polaris';
 import {DatePicker as PolarisDatePicker} from '@shopify/polaris';
 
-import {useI18nManager} from '../PolarisPatternsProvider';
+import {useShopifyI18nManager} from '../PolarisPatternsProvider';
 
 export function DatePicker(props: DatePickerProps) {
-  const manager = useI18nManager();
+  const manager = useShopifyI18nManager();
 
   return (
     <I18nContext.Provider value={manager}>
