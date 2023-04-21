@@ -1,5 +1,23 @@
 # polaris.shopify.com
 
+## 0.50.0
+
+### Minor Changes
+
+- [#9022](https://github.com/Shopify/polaris/pull/9022) [`3d84040ee`](https://github.com/Shopify/polaris/commit/3d84040eed4688b6461410dfabbe321b9c6ba92c) Thanks [@yurm04](https://github.com/yurm04)! - Updated Google Analytics events for search
+
+* [#9006](https://github.com/Shopify/polaris/pull/9006) [`cbff4a131`](https://github.com/Shopify/polaris/commit/cbff4a13101abed155f0a272b2b26493d7d20017) Thanks [@lgriffee](https://github.com/lgriffee)! - Update `polaris.shopify.com` and `stylelint-polaris` config categories for new token groups
+
+### Patch Changes
+
+- [#9020](https://github.com/Shopify/polaris/pull/9020) [`1de6c2105`](https://github.com/Shopify/polaris/commit/1de6c210534802e5d36836046d5219a507fe63cb) Thanks [@gui-santos](https://github.com/gui-santos)! - add a -Example suffix to the names of IndexFilters' examples
+
+* [#8960](https://github.com/Shopify/polaris/pull/8960) [`b8810a915`](https://github.com/Shopify/polaris/commit/b8810a9150c30292bdd6039297ca3ebf7674dfe4) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Grid` custom layout example to use new color tokens
+
+* Updated dependencies [[`257eba484`](https://github.com/Shopify/polaris/commit/257eba484c0113b1bd6ca5bf3794937af454ac02), [`a47e9084d`](https://github.com/Shopify/polaris/commit/a47e9084dcbb0b9870bc58dd2214e82657efe8ad), [`a47e9084d`](https://github.com/Shopify/polaris/commit/a47e9084dcbb0b9870bc58dd2214e82657efe8ad), [`d608480cc`](https://github.com/Shopify/polaris/commit/d608480cccd16c641bc3bde45c7a494dc8cd94d4), [`656b151dc`](https://github.com/Shopify/polaris/commit/656b151dc9340e44c61c55277ff0f63f110f85d7), [`f2a77786e`](https://github.com/Shopify/polaris/commit/f2a77786eff26bcfe3f7064e65a765db63dcaa8a), [`942ec6213`](https://github.com/Shopify/polaris/commit/942ec6213a4e620088e65be8e2dc2deb53b9dcdf), [`b8810a915`](https://github.com/Shopify/polaris/commit/b8810a9150c30292bdd6039297ca3ebf7674dfe4)]:
+  - @shopify/polaris@10.46.0
+  - @shopify/polaris-tokens@6.11.0
+
 ## 0.49.1
 
 ### Patch Changes

@@ -1,5 +1,28 @@
 # Changelog
 
+## 10.46.0
+
+### Minor Changes
+
+- [#8542](https://github.com/Shopify/polaris/pull/8542) [`257eba484`](https://github.com/Shopify/polaris/commit/257eba484c0113b1bd6ca5bf3794937af454ac02) Thanks [@mathildebuenerd](https://github.com/mathildebuenerd)! - [OptionList] Add `onPointerEnterOption` prop
+
+* [#9016](https://github.com/Shopify/polaris/pull/9016) [`a47e9084d`](https://github.com/Shopify/polaris/commit/a47e9084dcbb0b9870bc58dd2214e82657efe8ad) Thanks [@alex-page](https://github.com/alex-page)! - Add new Space tokens and types to replace spacing in v11
+
+- [#8983](https://github.com/Shopify/polaris/pull/8983) [`d608480cc`](https://github.com/Shopify/polaris/commit/d608480cccd16c641bc3bde45c7a494dc8cd94d4) Thanks [@martenbjork](https://github.com/martenbjork)! - Updated Popover so that it resizes itself whenever a child element updates its style attribute. This makes the Popover automatically resize when it contains a <TextField /> with multiple lines.
+
+* [#8542](https://github.com/Shopify/polaris/pull/8542) [`656b151dc`](https://github.com/Shopify/polaris/commit/656b151dc9340e44c61c55277ff0f63f110f85d7) Thanks [@mathildebuenerd](https://github.com/mathildebuenerd)! - [OptionList] Add `onFocusOption` prop
+
+- [#8984](https://github.com/Shopify/polaris/pull/8984) [`f2a77786e`](https://github.com/Shopify/polaris/commit/f2a77786eff26bcfe3f7064e65a765db63dcaa8a) Thanks [@kyledurand](https://github.com/kyledurand)! - Deprecated `Grid` `areas` prop
+
+### Patch Changes
+
+- [#9040](https://github.com/Shopify/polaris/pull/9040) [`942ec6213`](https://github.com/Shopify/polaris/commit/942ec6213a4e620088e65be8e2dc2deb53b9dcdf) Thanks [@lgriffee](https://github.com/lgriffee)! - Remove opacity needless-disables
+
+* [#8960](https://github.com/Shopify/polaris/pull/8960) [`b8810a915`](https://github.com/Shopify/polaris/commit/b8810a9150c30292bdd6039297ca3ebf7674dfe4) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Grid` custom layout example to use new color tokens
+
+* Updated dependencies [[`a47e9084d`](https://github.com/Shopify/polaris/commit/a47e9084dcbb0b9870bc58dd2214e82657efe8ad)]:
+  - @shopify/polaris-tokens@6.11.0
+
 ## 10.45.0
 
 ### Minor Changes
