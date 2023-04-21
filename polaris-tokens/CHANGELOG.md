@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.12.0
+
+### Minor Changes
+
+- [#9004](https://github.com/Shopify/polaris/pull/9004) [`bcdbaad00`](https://github.com/Shopify/polaris/commit/bcdbaad009bb0606544dff19b5b5fcb37ddc6f94) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added new active state tokens Shopify Magic variants
+
 ## 6.11.0
 
 ### Minor Changes
