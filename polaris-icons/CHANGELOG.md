@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.14.0
+
+### Minor Changes
+
+- [#9049](https://github.com/Shopify/polaris/pull/9049) [`13b1a9109`](https://github.com/Shopify/polaris/commit/13b1a9109b996dd19f996b9bdf2a15b96c519c49) Thanks [@vngauv](https://github.com/vngauv)! - Added any click attribution model icon
+
 ## 6.13.0
 
 ### Minor Changes
