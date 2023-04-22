@@ -40,7 +40,7 @@ $sheet-desktop-width: 380px;
 
 .Bottom {
   will-change: transform;
-  transition: transform var(--p-motion-duration-300) var(--p-motion-ease);
+  transition: transform var(--p-duration-300) var(--p-ease);
   transform-origin: bottom;
 }
 
@@ -62,7 +62,7 @@ $sheet-desktop-width: 380px;
 
 .Right {
   will-change: transform;
-  transition: transform var(--p-motion-duration-300) var(--p-motion-ease);
+  transition: transform var(--p-duration-300) var(--p-ease);
   transform-origin: right;
 }
 
