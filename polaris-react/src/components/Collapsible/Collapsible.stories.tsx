@@ -33,8 +33,8 @@ export function Default() {
             open={open}
             id="basic-collapsible"
             transition={{
-              duration: 'var(--p-motion-duration-150)',
-              timingFunction: 'var(--p-motion-ease-in-out)',
+              duration: 'var(--p-duration-150)',
+              timingFunction: 'var(--p-ease-in-out)',
             }}
             expandOnPrint
           >
