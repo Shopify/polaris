@@ -80,7 +80,7 @@ $item-wrapper-loading-height: 64px;
   display: flex;
   min-height: resource-list(header-content-min-height);
   opacity: 1;
-  transition: opacity var(--p-motion-ease) var(--p-motion-duration-200);
+  transition: opacity var(--p-ease) var(--p-duration-200);
 
   .HeaderWrapper-inSelectMode & {
     opacity: 0;
