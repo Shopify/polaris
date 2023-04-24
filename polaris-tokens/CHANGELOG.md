@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.13.0
+
+### Minor Changes
+
+- [`acf89f6a9`](https://github.com/Shopify/polaris/commit/acf89f6a9fb58f557a57e92e4e54a3935c85f50c) Thanks [@lgriffee](https://github.com/lgriffee)! - Add motion prefix for motion tokens
+
 ## 6.12.0
 
 ### Minor Changes
