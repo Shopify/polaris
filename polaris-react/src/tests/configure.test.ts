@@ -3,7 +3,7 @@ import {resolve} from 'path';
 
 import yaml from 'js-yaml';
 
-import {DEFAULT_LOCALE, SUPPORTED_LOCALES} from '../configure';
+import {DEFAULT_LOCALE, SUPPORTED_LOCALES} from '..';
 
 describe('DEFAULT_LOCALE', () => {
   it('matches `source_language` in `translation.yml`', () => {
