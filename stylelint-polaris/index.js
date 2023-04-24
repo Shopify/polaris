@@ -211,6 +211,33 @@ const disallowedVarsLayout = [
   '--p-icon-size-medium',
 ];
 
+const disallowedVarsMotion = [
+  // Legacy custom properties
+  '--p-linear',
+  '--p-ease-in-out',
+  '--p-ease-out',
+  '--p-ease-in',
+  '--p-ease',
+  '--p-duration-0',
+  '--p-duration-50',
+  '--p-duration-100',
+  '--p-duration-150',
+  '--p-duration-200',
+  '--p-duration-250',
+  '--p-duration-300',
+  '--p-duration-350',
+  '--p-duration-400',
+  '--p-duration-450',
+  '--p-duration-500',
+  '--p-duration-5000',
+  '--p-keyframes-bounce',
+  '--p-keyframes-fade-in',
+  '--p-keyframes-pulse',
+  '--p-keyframes-spin',
+  '--p-keyframes-appear-above',
+  '--p-keyframes-appear-below',
+];
+
 const disallowedVarsShadow = [
   // Legacy custom properties
   '--p-button-drop-shadow',
@@ -542,6 +569,10 @@ const stylelintPolarisCoverageOptions = {
       'at-rule-disallowed-list': ['keyframes'],
       'polaris/at-rule-disallowed-list': {
         include: ['skeleton-shimmer'].map(matchNameRegExp),
+      },
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsMotion,
+        disallowedValues: {'/.+/': disallowedVarsMotion},
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
