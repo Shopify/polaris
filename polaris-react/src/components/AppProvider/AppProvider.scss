@@ -37,14 +37,14 @@ html {
 
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-
-  @include custom-scrollbars();
 }
 
 body {
   min-height: 100%;
   margin: 0;
   padding: 0;
+
+  @include custom-scrollbars();
 
   // hardcoding background color because app provider does not have access to
   // the --p-color-bg-app custom property. Will revisit best way to address in
