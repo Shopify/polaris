@@ -24,7 +24,7 @@ Accessing all of the available token groups
 // Token values only
 import {tokens} from '@shopify/polaris-tokens';
 
-console.log(tokens.color.bg); // 'rgba(246, 246, 247, 1)'
+console.log(tokens.color['color-bg']); // 'rgba(...)'
 
 // Tokens with metadata
 import {metadata} from '@shopify/polaris-tokens';
