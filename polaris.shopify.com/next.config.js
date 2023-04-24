@@ -134,6 +134,11 @@ const nextConfig = {
         destination: '/patterns-legacy/text-fields',
         permanent: true,
       },
+      {
+        source: '/patterns-legacy',
+        destination: '/patterns#legacy',
+        permanent: true,
+      },
       ...actions,
       ...deprecated,
       ...feedbackIndicators,
