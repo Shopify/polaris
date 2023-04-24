@@ -1,4 +1,5 @@
 import {useState, useEffect, createContext, useContext} from 'react';
+import Link from 'next/link';
 import {
   GroupedSearchResults,
   SearchResultCategory,
@@ -194,13 +195,13 @@ function GlobalSearch() {
         .then((json) => {
           console.log('got it');
 
-          const {completion, mostSimilar} = json;
-          console.log(mostSimilar);
+          const {completion, sources} = json;
+          console.log(sources);
           setPromptResults((prev) => [
             {
               question: prompt,
               answer: completion,
-              sources: mostSimilar,
+              sources,
             },
             ...prev,
           ]);
@@ -359,16 +360,25 @@ function GlobalSearch() {
                           {/* {answer} */}
                           <Markdown>{answer}</Markdown>
                           {/* <TypingAnimation message={answer} /> */}
-                          <div className={styles.AISources}>
-                            {sources.length > 0 && (
+                          {sources.length > 0 && (
+                            <div className={styles.AISources}>
                               <p className={styles.SourceTitle}>Sources:</p>
-                            )}
-                            <div className={styles.AISourceList}>
-                              {sources.map((source) => {
-                                return source && <p key={source}>{source}</p>;
-                              })}
+                              <div className={styles.AISourceList}>
+                                {sources.map((source) => {
+                                  console.log(source);
+                                  return (
+                                    source && (
+                                      <p key={source.slug}>
+                                        <Link href={source.slug}>
+                                          {source.title || source.slug}
+                                        </Link>
+                                      </p>
+                                    )
+                                  );
+                                })}
+                              </div>
                             </div>
-                          </div>
+                          )}
                         </div>
                         {searchResults && (
                           <SearchResults
