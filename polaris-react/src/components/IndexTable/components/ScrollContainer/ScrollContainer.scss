@@ -3,6 +3,7 @@
   overscroll-behavior-x: contain;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  border-radius: inherit;
 }
 
 .ScrollContainer::-webkit-scrollbar {
