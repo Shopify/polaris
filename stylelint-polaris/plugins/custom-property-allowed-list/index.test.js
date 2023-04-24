@@ -43,7 +43,7 @@ testRule({
         "Defining custom-properties that don't start with --p- or --pc- is allowed",
     },
     {
-      code: '.a { color: var(--p-text); }',
+      code: '.a { color: var(--p-color-text); }',
       description: 'Using custom-properties from polaris-tokens is allowed',
     },
   ],

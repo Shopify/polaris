@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0
+
+### Minor Changes
+
+- [#9010](https://github.com/Shopify/polaris/pull/9010) [`acde37f0f`](https://github.com/Shopify/polaris/commit/acde37f0ff4145b268ebcb5a65952c529e230cc5) Thanks [@lgriffee](https://github.com/lgriffee)! - Updates Polaris for VSCode completion items to new token groups
+
 ## 0.5.0
 
 ### Minor Changes

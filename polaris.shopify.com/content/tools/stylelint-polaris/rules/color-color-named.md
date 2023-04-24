@@ -1,16 +1,16 @@
 ---
-title: colors/color-named
+title: color/color-named
 description: Disallows named colors.
 keywords:
   - stylelint
-  - colors
-  - colors rules
+  - color
+  - color rules
 ---
 
 ```diff
 // Do
-+ color: var(--p-text);
-+ fill: var(--p-icon)
++ color: var(--p-color-text);
++ fill: var(--p-color-icon)
 // Don't
 - color: black;
 - fill: dimgray;

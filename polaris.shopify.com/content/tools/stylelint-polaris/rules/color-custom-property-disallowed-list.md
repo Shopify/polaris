@@ -1,10 +1,10 @@
 ---
-title: colors/custom-property-disallowed-list
+title: color/custom-property-disallowed-list
 description: Disallows use of legacy color custom properties.
 keywords:
   - stylelint
-  - colors
-  - colors rules
+  - color
+  - color rules
 ---
 
 ```diff
