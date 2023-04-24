@@ -7,6 +7,10 @@
   background: var(--surface);
   color: var(--text-strong);
   border: var(--border);
+
+  pre code {
+    width: 100%;
+  }
 }
 
 .TopBar {
