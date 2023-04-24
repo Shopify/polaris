@@ -43,6 +43,7 @@ function validateStandardBuild() {
   const cssContent = fs.readFileSync('./build/esm/styles.css', 'utf-8');
   assert.ok(cssContent.includes('.Polaris-Avatar {'));
   assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton {'));
+  assert.ok(cssContent.includes('@keyframes p-motion-keyframes-bounce {'));
   assert.ok(
     cssContent.includes(
       '--p-motion-keyframes-bounce:p-motion-keyframes-bounce;',
@@ -69,6 +70,9 @@ function validateEsNextBuild() {
     'utf-8',
   );
   assert.ok(cssContent.includes('.Polaris-Avatar_z763p {'));
+  assert.ok(
+    cssKeyframesContent.includes('@keyframes p-motion-keyframes-spin {'),
+  );
   assert.ok(
     cssKeyframesContent.includes(
       '--p-motion-keyframes-spin:p-motion-keyframes-spin;',
