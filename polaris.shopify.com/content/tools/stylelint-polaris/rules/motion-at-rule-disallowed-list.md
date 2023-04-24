@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ animation: var(--p-keyframes-spin) var(--p-duration-500) linear infinite;
++ animation: var(--p-motion-keyframes-spin) var(--p-motion-duration-500) linear infinite;
 // Don't
 - @keyframes spin {
 -  from {
