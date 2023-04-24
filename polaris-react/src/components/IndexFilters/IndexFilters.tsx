@@ -34,7 +34,7 @@ const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
 const TRANSITION_DURATION = 150;
 
 const defaultStyle = {
-  transition: `opacity ${TRANSITION_DURATION}ms var(--p-ease)`,
+  transition: `opacity ${TRANSITION_DURATION}ms var(--p-motion-ease)`,
   opacity: 0,
 };
 
