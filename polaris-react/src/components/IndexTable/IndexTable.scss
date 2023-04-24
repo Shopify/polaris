@@ -670,6 +670,8 @@ $scroll-bar-size: var(--p-space-2);
 }
 
 .scrollBarContainerHidden {
+  /* stylelint-disable-next-line polaris/z-index/declaration-property-value-allowed-list -- Move the scrollbar behind any content */
+  z-index: -1;
   margin-top: calc(var(--p-space-1) * -1);
   padding: 0;
 }
