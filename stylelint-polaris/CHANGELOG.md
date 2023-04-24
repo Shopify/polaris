@@ -1,5 +1,23 @@
 # Changelog
 
+## 10.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`bcdbaad00`](https://github.com/Shopify/polaris/commit/bcdbaad009bb0606544dff19b5b5fcb37ddc6f94)]:
+  - @shopify/polaris-tokens@6.12.0
+
+## 10.1.0
+
+### Minor Changes
+
+- [#9006](https://github.com/Shopify/polaris/pull/9006) [`cbff4a131`](https://github.com/Shopify/polaris/commit/cbff4a13101abed155f0a272b2b26493d7d20017) Thanks [@lgriffee](https://github.com/lgriffee)! - Update `polaris.shopify.com` and `stylelint-polaris` config categories for new token groups
+
+### Patch Changes
+
+- Updated dependencies [[`a47e9084d`](https://github.com/Shopify/polaris/commit/a47e9084dcbb0b9870bc58dd2214e82657efe8ad)]:
+  - @shopify/polaris-tokens@6.11.0
+
 ## 10.0.0
 
 ### Major Changes

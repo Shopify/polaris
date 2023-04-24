@@ -551,9 +551,9 @@ function TokenPreview({name, value}: TokenPreviewProps) {
   }
 
   // Z-index
-  else if (name.includes('z-')) {
+  else if (name.includes('z-index-')) {
     const layerCount = 12;
-    const number = parseInt(name.replace('z-', ''));
+    const number = parseInt(name.replace('z-index-', ''));
     return (
       <div
         {...previewDivAttributes}

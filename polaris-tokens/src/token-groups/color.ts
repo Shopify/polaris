@@ -43,9 +43,11 @@ export type ColorBackgroundAlias =
   | 'bg-inverse-hover'
   | 'bg-magic'
   | 'bg-magic-hover'
+  | 'bg-magic-active'
   | 'bg-magic-strong'
   | 'bg-magic-subdued'
   | 'bg-magic-subdued-hover'
+  | 'bg-magic-subdued-active'
   | 'bg-primary'
   | 'bg-primary-active'
   | 'bg-primary-hover'
@@ -397,12 +399,20 @@ export const color: {
     value: colors.purple[200],
     description: '',
   },
+  'color-bg-magic-active': {
+    value: colors.purple[300],
+    description: '',
+  },
   'color-bg-magic': {
     value: colors.purple[100],
     description: '',
   },
   'color-bg-magic-subdued-hover': {
     value: colors.purple[100],
+    description: '',
+  },
+  'color-bg-magic-subdued-active': {
+    value: colors.purple[200],
     description: '',
   },
   'color-bg-magic-subdued': {

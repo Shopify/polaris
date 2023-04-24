@@ -1,10 +1,10 @@
 ---
-title: shape/custom-property-disallowed-list
-description: Disallows use of legacy shape custom properties.
+title: border/custom-property-disallowed-list
+description: Disallows use of legacy border custom properties.
 keywords:
   - stylelint
-  - shape
-  - shape rules
+  - border
+  - border rules
 ---
 
 ```diff

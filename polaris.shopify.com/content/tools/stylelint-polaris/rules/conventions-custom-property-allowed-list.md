@@ -32,7 +32,7 @@ Flags declaration property values using private `--pc-*` tokens.
 
 ```diff
 // Do
-+ background: var(--p-action-secondary-depressed);
++ background: var(--p-color-bg-inset-strong);
 // Don't
 - background: var(--pc-button-color-depressed);
 ```

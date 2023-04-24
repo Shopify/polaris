@@ -1,16 +1,16 @@
 ---
-title: colors/at-rule-disallowed-list
+title: color/at-rule-disallowed-list
 description: Disallows use of legacy color mixins.
 keywords:
   - stylelint
-  - colors
-  - colors rules
+  - color
+  - color rules
 ---
 
 ```diff
 // Do
 + svg {
-+   fill: var(--p-icon-subdued);
++   fill: var(--p-color-icon-subdued);
 +}
 
 // Don't
