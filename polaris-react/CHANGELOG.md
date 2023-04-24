@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.47.2
+
+### Patch Changes
+
+- [#9039](https://github.com/Shopify/polaris/pull/9039) [`cda94e7a6`](https://github.com/Shopify/polaris/commit/cda94e7a6e7f17d3cda50473adda1bd73fb67166) Thanks [@matallo](https://github.com/matallo)! - Updated the focus helper functions, order of selectors for `button:not(:disabled):not([aria-disabled="true"]):not([tabindex="-1"])` was returning an error, moved `:not(:disabled)` to the end.
+
 ## 10.47.1
 
 ### Patch Changes
