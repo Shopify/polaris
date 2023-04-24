@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {UnstyledLink} from '../UnstyledLink';
 import type {Target} from '../../types';
@@ -11,17 +10,17 @@ export interface LinkProps {
   /** ID for the link */
   id?: string;
   /** The url to link to */
-  url?: string;
+  href?: string;
   /** The content to display inside the link */
   children?: React.ReactNode;
-  /** Makes the link open in a new tab */
-  external?: boolean;
   /** Where to display the url */
   target?: Target;
-  /** Makes the link color the same as the current text color and adds an underline */
-  monochrome?: boolean;
-  /** Removes text decoration underline to the link*/
-  removeUnderline?: boolean;
+  /** Sets the link color the same as the current text color */
+  tone?: 'current-color' | 'critical';
+  /** Sets text decoration underline on the link
+   * @default 'hover'
+   */
+  underline?: 'always' | 'hover' | 'none';
   /** Callback when a link is clicked */
   onClick?(): void;
   /** Descriptive text to be read to screenreaders */
@@ -31,54 +30,45 @@ export interface LinkProps {
 }
 
 export function Link({
-  url,
+  href,
   children,
   onClick,
-  external,
   target,
   id,
-  monochrome,
-  removeUnderline,
   accessibilityLabel,
   dataPrimaryLink,
+  tone,
+  underline,
 }: LinkProps) {
-  return (
-    <BannerContext.Consumer>
-      {(BannerContext) => {
-        const shouldBeMonochrome = monochrome || BannerContext;
+  const className = classNames(
+    styles.Link,
+    tone === 'current-color' && styles.currentColor,
+    tone === 'critical' && styles.critical,
+    underline === 'always' && styles.underline,
+  );
 
-        const className = classNames(
-          styles.Link,
-          shouldBeMonochrome && styles.monochrome,
-          removeUnderline && styles.removeUnderline,
-        );
-
-        return url ? (
-          <UnstyledLink
-            onClick={onClick}
-            className={className}
-            url={url}
-            external={external}
-            target={target}
-            id={id}
-            aria-label={accessibilityLabel}
-            data-primary-link={dataPrimaryLink}
-          >
-            {children}
-          </UnstyledLink>
-        ) : (
-          <button
-            type="button"
-            onClick={onClick}
-            className={className}
-            id={id}
-            aria-label={accessibilityLabel}
-            data-primary-link={dataPrimaryLink}
-          >
-            {children}
-          </button>
-        );
-      }}
-    </BannerContext.Consumer>
+  return href ? (
+    <UnstyledLink
+      onClick={onClick}
+      className={className}
+      url={href}
+      target={target}
+      id={id}
+      aria-label={accessibilityLabel}
+      data-primary-link={dataPrimaryLink}
+    >
+      {children}
+    </UnstyledLink>
+  ) : (
+    <button
+      type="button"
+      onClick={onClick}
+      className={className}
+      id={id}
+      aria-label={accessibilityLabel}
+      data-primary-link={dataPrimaryLink}
+    >
+      {children}
+    </button>
   );
 }

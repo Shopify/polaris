@@ -10,12 +10,12 @@
   font-size: inherit;
   font-weight: inherit;
   color: var(--p-color-text-interactive);
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
 
   &:hover {
     color: var(--p-color-text-interactive-hover);
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   &:focus:not(:active) {
@@ -47,7 +47,7 @@
   }
 }
 
-.monochrome {
+.currentColor {
   color: inherit;
 
   &:hover,
@@ -57,10 +57,6 @@
   }
 }
 
-.removeUnderline {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
+.underline {
+  text-decoration: underline;
 }

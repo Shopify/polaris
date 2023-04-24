@@ -8,7 +8,7 @@ import {Link} from '../Link';
 describe('<Link />', () => {
   it('calls onClick when clicking', () => {
     const spy = jest.fn();
-    const link = mountWithApp(<Link url="MyThing" onClick={spy} />);
+    const link = mountWithApp(<Link href="MyThing" onClick={spy} />);
     link.find('a')!.trigger('onClick');
     expect(spy).toHaveBeenCalled();
   });
@@ -19,7 +19,7 @@ describe('<Link />', () => {
   });
 
   it('renders an anchor if a url is provided', () => {
-    const link = mountWithApp(<Link url="MyThing" />);
+    const link = mountWithApp(<Link href="MyThing" />);
     expect(link).toContainReactComponentTimes('a', 1);
   });
 
@@ -32,41 +32,15 @@ describe('<Link />', () => {
 
     it('is passed down to an underlying UnstyledLink', () => {
       const id = 'MyID';
-      const link = mountWithApp(<Link url="https://shopify.com" id={id} />);
+      const link = mountWithApp(<Link href="https://shopify.com" id={id} />);
       expect(link).toContainReactComponent(UnstyledLink, {id});
-    });
-  });
-
-  describe('external link', () => {
-    it('adds target blank and noopener noreferrer if external', () => {
-      const link = mountWithApp(
-        <Link url="https://help.shopify.com/" external>
-          Shopify Help Center
-        </Link>,
-      );
-      const htmlLink = link.find('a');
-
-      expect(htmlLink?.props.target).toBe('_blank');
-      expect(htmlLink?.props.rel).toBe('noopener noreferrer');
     });
   });
 
   describe('target', () => {
     it('adds target blank and noopener noreferrer', () => {
       const link = mountWithApp(
-        <Link url="https://help.shopify.com/" target="_blank">
-          Shopify Help Center
-        </Link>,
-      );
-      const htmlLink = link.find('a');
-
-      expect(htmlLink?.props.target).toBe('_blank');
-      expect(htmlLink?.props.rel).toBe('noopener noreferrer');
-    });
-
-    it('does not override external prop', () => {
-      const link = mountWithApp(
-        <Link url="https://help.shopify.com/" external target="_top">
+        <Link href="https://help.shopify.com/" target="_blank">
           Shopify Help Center
         </Link>,
       );
@@ -78,45 +52,25 @@ describe('<Link />', () => {
   });
 
   describe('monochrome link', () => {
-    it('outputs a monochrome unstyled link if rendered within a banner', () => {
+    it('outputs a monochrome link', () => {
       const link = mountWithApp(
-        <Banner>
-          <Link url="https://examp.le">Some content</Link>
-        </Banner>,
+        <Link href="https://examp.le" tone="current-color">
+          Some content
+        </Link>,
       );
 
       expect(link).toContainReactComponent(UnstyledLink, {
-        className: expect.stringContaining('monochrome'),
+        className: expect.stringContaining('currentColor'),
       });
     });
 
-    it('does not output a monochrome unstyled link if it is not rendered within a banner', () => {
-      const link = mountWithApp(
-        <Link url="https://examp.le">Some content</Link>,
-      );
-
-      expect(link).not.toContainReactComponent(UnstyledLink, {
-        className: expect.stringContaining('monochrome'),
-      });
-    });
-
-    it('outputs a monochrome button if rendered within a banner', () => {
+    it('outputs a monochrome button', () => {
       const button = mountWithApp(
-        <Banner>
-          <Link>Some content</Link>
-        </Banner>,
+        <Link tone="current-color">Some content</Link>,
       );
 
       expect(button).toContainReactComponent('button', {
-        className: expect.stringContaining('monochrome'),
-      });
-    });
-
-    it('does not output a monochrome button if it is not rendered within a banner', () => {
-      const button = mountWithApp(<Link>Some content</Link>);
-
-      expect(button).not.toContainReactComponent('button', {
-        className: expect.stringContaining('monochrome'),
+        className: expect.stringContaining('currentColor'),
       });
     });
   });
@@ -138,7 +92,7 @@ describe('<Link />', () => {
 
       const link = mountWithApp(
         <Link
-          url="https://shopify.com"
+          href="https://shopify.com"
           accessibilityLabel={mockAccessibilityLabel}
         />,
       );
@@ -149,12 +103,12 @@ describe('<Link />', () => {
     });
   });
 
-  describe('removesUnderline', () => {
-    it('adds removeUnderline class to the link', () => {
-      const link = mountWithApp(<Link removeUnderline>Test</Link>);
+  describe('underline always', () => {
+    it('adds underline class to the link', () => {
+      const link = mountWithApp(<Link underline="always">Test</Link>);
 
       expect(link).toContainReactComponent('button', {
-        className: expect.stringContaining('removeUnderline'),
+        className: expect.stringContaining('underline'),
       });
     });
   });
@@ -162,7 +116,7 @@ describe('<Link />', () => {
   describe('dataPrimaryLink', () => {
     it('adds data-primary-link attribute to the link', () => {
       const link = mountWithApp(
-        <Link url="https://examp.le" dataPrimaryLink>
+        <Link href="https://examp.le" dataPrimaryLink>
           Test
         </Link>,
       );
