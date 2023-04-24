@@ -2746,6 +2746,19 @@
     stylelint-prettier "^2.0.0"
     stylelint-scss "^4.0.0"
 
+"@shopify/synapse@file:polaris.shopify.com/.yalc/@shopify/synapse":
+  version "1.0.2"
+  dependencies:
+    commander "^10.0.0"
+    common-tags "^1.8.2"
+    fast-glob "^3.2.12"
+    gpt3-tokenizer "^1.1.5"
+    graphql "^16.6.0"
+    openai "^3.2.1"
+    unified "^10.1.2"
+    unist-util-visit "^4.1.2"
+    vfile-reporter "^7.0.5"
+
 "@shopify/typescript-configs@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-5.1.0.tgz#f6e8fdd3291bf0a406578b2c6eb21f8c542d3c0a"
@@ -19955,19 +19968,6 @@ symbol.prototype.description@^1.0.0:
     get-symbol-description "^1.0.0"
     has-symbols "^1.0.2"
     object.getownpropertydescriptors "^2.1.2"
-
-"synapse@file:polaris.shopify.com/.yalc/synapse":
-  version "1.0.0"
-  dependencies:
-    commander "^10.0.0"
-    common-tags "^1.8.2"
-    fast-glob "^3.2.12"
-    gpt3-tokenizer "^1.1.5"
-    graphql "^16.6.0"
-    openai "^3.2.1"
-    unified "^10.1.2"
-    unist-util-visit "^4.1.2"
-    vfile-reporter "^7.0.5"
 
 synchronous-promise@^2.0.15:
   version "2.0.15"

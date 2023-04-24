@@ -1,4 +1,5 @@
-import {defineConfig, embeddings, synapseStringify} from 'synapse';
+import {defineConfig, embeddings, synapseStringify} from '@shopify/synapse';
+import path from 'path';
 // import remarkParse from 'remark-parse';
 // import remarkFrontmatter from 'remark-frontmatter';
 
@@ -7,6 +8,27 @@ import polarisComponentDocs from './scripts/synapse/polarisComponentDocs.mjs';
 import polarisGeneralDocs from './scripts/synapse/polarisGeneralDocs.mjs';
 import polarisMigratorDocs from './scripts/synapse/polarisMigratorDocs.mjs';
 
+// custom file save function to handle multiple index.md files
+function onFileSave(vFileName: string) {
+  const basename = path.basename(vFileName);
+
+  if (basename === 'index.md') {
+    let fileName = vFileName.replace(/^\/|^\.\/|(?<!^)\//g, (_, offset) => {
+      if (offset === 0) {
+        // if beginning of path is './' or '/' remove
+        return '';
+      } else {
+        // remove all other '/'s with '-'
+        return '-';
+      }
+    });
+
+    return fileName.replace('/', '-');
+  } else {
+    return path.basename(vFileName);
+  }
+}
+
 export default defineConfig({
   outputDir: './.cache/embeddings',
   synapses: [
@@ -14,6 +36,8 @@ export default defineConfig({
       name: 'token-docs',
       source: ['./scripts/synapse/polaris-color-tokens.txt'],
       plugins: [polarisTokenDocs, embeddings, synapseStringify],
+      outputDir: './.cache/embeddings/tokens',
+      onFileSave,
     },
     {
       name: 'component-docs',
@@ -36,6 +60,8 @@ export default defineConfig({
     {
       name: 'patterns-docs',
       source: ['./content/patterns/**/*.md'],
+      outputDir: './.cache/embeddings/patterns',
+      onFileSave,
       plugins: [polarisGeneralDocs, embeddings, synapseStringify],
     },
     {
