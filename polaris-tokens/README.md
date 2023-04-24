@@ -29,8 +29,8 @@ console.log(tokens.color['color-bg']); // 'rgba(...)'
 // Tokens with metadata
 import {metadata} from '@shopify/polaris-tokens';
 
-console.log(metadata.color.bg.value); // 'rgba(246, 246, 247, 1)'
-console.log(metadata.color.bg.description); // 'For use as a background color, in components such as Page and Frame backgrounds.'
+console.log(metadata.color['color-bg'].value); // 'rgba(...)'
+console.log(metadata.color['color-bg'].description); // 'For use as a background color, in components such as Page and Frame backgrounds.'
 ```
 
 #### CSS
