@@ -13,7 +13,7 @@ import {
 import type {NamespaceOptions} from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
-import {colors as tokenColors} from './v9-legacy-colors';
+import {colors as tokenColors} from './v10-legacy-colors';
 
 export default function scssReplaceColor(
   file: FileInfo,

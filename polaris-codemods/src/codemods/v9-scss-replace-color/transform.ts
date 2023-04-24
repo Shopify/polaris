@@ -2,7 +2,7 @@ import type {FileInfo, API, Options} from 'jscodeshift';
 import type {Plugin} from 'postcss';
 import postcss from 'postcss';
 import valueParser from 'postcss-value-parser';
-import {colors as tokenColors} from './v9-legacy-colors';
+import {colors as tokenColors} from './v10-legacy-colors';
 import {createVar} from '@shopify/polaris-tokens';
 
 import type {NamespaceOptions} from '../../utilities/sass';
