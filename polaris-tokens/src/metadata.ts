@@ -1,15 +1,11 @@
 import type {Exact, MetadataBase} from './types';
 import {tokensToRems} from './utilities';
-import {breakpoints} from './token-groups/breakpoints';
 import {border} from './token-groups/border';
-import {depth} from './token-groups/depth';
-import {font} from './token-groups/font';
+import {breakpoints} from './token-groups/breakpoints';
 import {color} from './token-groups/color';
-import {colors} from './token-groups/colors';
+import {font} from './token-groups/font';
 import {motion} from './token-groups/motion';
 import {shadow} from './token-groups/shadow';
-import {shape} from './token-groups/shape';
-import {spacing} from './token-groups/spacing';
 import {space} from './token-groups/space';
 import {zIndex} from './token-groups/zIndex';
 
@@ -17,13 +13,9 @@ export const metadata = createMetadata({
   breakpoints: tokensToRems(breakpoints),
   border: tokensToRems(border),
   color,
-  colors,
-  depth,
   font: tokensToRems(font),
   motion,
   shadow: tokensToRems(shadow),
-  shape: tokensToRems(shape),
-  spacing: tokensToRems(spacing),
   space: tokensToRems(space),
   zIndex,
 });

@@ -94,7 +94,7 @@ export function Sheet({
           classNames={
             isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
           }
-          timeout={parseInt(motion['duration-300'], 10)}
+          timeout={parseInt(motion['motion-duration-300'], 10)}
           in={open}
           mountOnEnter
           unmountOnExit

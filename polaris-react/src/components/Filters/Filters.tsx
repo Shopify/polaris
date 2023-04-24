@@ -22,7 +22,7 @@ const TRANSITION_DURATION = 'var(--p-motion-duration-150)';
 const TRANSITION_MARGIN = '-36px';
 
 const defaultStyle = {
-  transition: `opacity ${TRANSITION_DURATION} var(--p-ease)`,
+  transition: `opacity ${TRANSITION_DURATION} var(--p-motion-ease)`,
   opacity: 0,
 };
 
@@ -35,7 +35,7 @@ const transitionStyles = {
 };
 
 const defaultFilterStyles = {
-  transition: `opacity ${TRANSITION_DURATION} var(--p-ease), margin ${TRANSITION_DURATION} var(--p-ease)`,
+  transition: `opacity ${TRANSITION_DURATION} var(--p-motion-ease), margin ${TRANSITION_DURATION} var(--p-motion-ease)`,
   opacity: 0,
   marginTop: TRANSITION_MARGIN,
 };
