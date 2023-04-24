@@ -6,7 +6,7 @@
   margin-left: 3rem;
   height: 100vh;
   --contatiner-color: #f8f8f8;
-  --dark-container-color: #e7e7e7;
+  --dark-container-color: #272727;
 
   .PromptInput {
     position: sticky;
@@ -27,6 +27,7 @@
     display: flex;
     gap: 2rem;
     color: rgb(176, 176, 188);
+    margin-bottom: 1rem;
 
     .DocsAIToggle {
       display: flex;
@@ -46,7 +47,6 @@
     gap: 1rem;
     justify-content: space-around;
     padding: 1rem 10rem;
-    background-color: var(--contatiner-color);
     border-radius: 3px;
 
     button {

@@ -5,6 +5,7 @@ import {StatusName} from '../../../src/types';
 import {useState, KeyboardEventHandler, ReactNode} from 'react';
 import Markdown from '../../../src/components/Markdown';
 import PatternsExample from '../../../src/components/PatternsExample';
+import Link from 'next/link';
 import {
   MagicMajor,
   CircleAlertMajor,
@@ -17,7 +18,7 @@ type CompletionType =
   | {
       prompt?: string;
       completion?: string;
-      sources?: [string];
+      sources?: [Object];
     }
   | undefined;
 
@@ -69,6 +70,7 @@ const PolarisAI = () => {
 
   const handleSubmitPrompt = async () => {
     setIsLoading(true);
+    setIsUi(false);
 
     if (prompt.indexOf('/ui') >= 0) {
       setIsUi(true);
@@ -77,12 +79,12 @@ const PolarisAI = () => {
     fetch(`/api/prompts?p=${encodeURIComponent(prompt)}`)
       .then((data) => data.json())
       .then((json) => {
-        const {completion, mostSimilar} = json;
+        const {completion, sources} = json;
         console.log(completion);
         setCompletion({
           prompt,
           completion,
-          sources: mostSimilar,
+          sources,
         });
         setIsLoading(false);
       });
@@ -144,7 +146,16 @@ const PolarisAI = () => {
               <div className={styles.AISourceList}>
                 {completion.sources &&
                   completion.sources.map((source) => {
-                    return source && <p key={source}>{source}</p>;
+                    return (
+                      source &&
+                      source.slug && (
+                        <p key={source.slug}>
+                          <Link href={source.slug}>
+                            {source.title || source.slug}
+                          </Link>
+                        </p>
+                      )
+                    );
                   })}
               </div>
             </div>

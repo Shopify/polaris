@@ -1,7 +1,12 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
-import {createChatCompletion, generateEmbedding, getSimilarBits} from 'synapse';
+import {
+  createChatCompletion,
+  generateEmbedding,
+  getSimilarBits,
+} from '@shopify/synapse';
 import allBits from '../../../.cache/embeddings/allBits.json' assert {type: 'json'};
-import type {Bit, TemplateArgs, Message} from 'synapse';
+import siteJson from '../../../.cache/site.json' assert {type: 'json'};
+import type {Bit, TemplateArgs, Message} from '@shopify/synapse';
 
 const messagesTemplate = (args: TemplateArgs, similarBits?: Bit[]) => {
   const context = similarBits?.map((bit) => bit.text).join('\n');
@@ -11,8 +16,7 @@ const messagesTemplate = (args: TemplateArgs, similarBits?: Bit[]) => {
       role: 'system',
       // content: `Answer the question as accurately and thoroughly as possible using the provided context, and if you don't have the answer, say "I don't know".
       // If you have the answer, always start your answer with a { and end your answer with a }`,
-      content: `Answer the question as accurately and thoroughly as possible using the provided context, and if you don't have the answer, say "I don't know".
-      If you have the answer, respond using markdown. If the prompt starts with ~ui return only the Polaris react and css code that I can take and render on the page.`,
+      content: `You are the Polaris design system semantic search agent. Answer the question as accurately and thoroughly as possible using the provided context. When providing code, try to only use the Polaris design system. If you don't have the answer, say "I don't know". If you have the answer, respond using markdown.`,
     },
     {
       role: 'user',
@@ -40,12 +44,14 @@ export default async function handler(
 
   // construct slash commands if exist
   if (input.indexOf('/ui') >= 0) {
-    input.replace('/ui', '');
+    input = input.replace('/ui', '');
     input =
       input +
-      `${input[length - 1] === '.' ? ' ' : '. '}` + // add a period
+      `${input[input.length - 1] === '.' ? ' ' : '. '}` + // add a period
       'Do not include any imports, do not wrap the code in a component, and hard code all values';
   }
+
+  console.log(input);
 
   try {
     // const aiResponse = await createContextualChatCompletion(
@@ -64,13 +70,33 @@ export default async function handler(
     const messages = messagesTemplate({input}, similarBits);
     const completion = await createChatCompletion(messages);
 
-    let mostSimilar = [];
+    let mostSimilar = similarBits.slice(0, 4);
 
-    for (let i = 0; i <= 4; i++) {
-      mostSimilar.push(similarBits[i]?.slug);
-    }
+    let sources = mostSimilar.map((s) => {
+      const siteKey = s.slug.substring(1);
+      const siteObj = siteJson[siteKey];
+      return {
+        slug: s.slug,
+        title: siteObj?.frontMatter?.title || s.title,
+      };
+    });
 
-    return res.send({messages, completion, mostSimilar});
+    let unique = [];
+
+    sources.forEach((s) => {
+      let match = false;
+      unique.forEach((u) => {
+        // console.log(s.slug, u.slug);
+        if (u.slug === s.slug) {
+          match = true;
+        }
+      });
+      if (!match) {
+        unique.push(s);
+      }
+    });
+
+    return res.send({messages, completion, sources: unique});
   } catch (error) {
     console.error(error);
     res.status(400).send(error);
