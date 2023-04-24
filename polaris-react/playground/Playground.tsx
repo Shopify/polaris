@@ -107,43 +107,20 @@ export function Playground() {
           <Box border="base" padding="4" borderRadius="2" background="bg">
             <VerticalStack gap="4" blockAlign="start">
               <HorizontalStack gap="2" blockAlign="start">
-                <ButtonNew paddingInlineStart="2">
-                  <HorizontalStack gap="1" blockAlign="center">
-                    <Icon source={PlusMinor} color="base" />
-                    Add variant
-                  </HorizontalStack>
-                </ButtonNew>
-                <ButtonNew paddingInlineEnd="2">
-                  <HorizontalStack blockAlign="center">
-                    Edit
-                    <Icon source={CaretDownMinor} color="base" />
-                  </HorizontalStack>
-                </ButtonNew>
-                <ButtonNew paddingInlineEnd="2">
-                  <HorizontalStack blockAlign="center">
-                    Location
-                    <Icon source={SelectMinor} color="base" />
-                  </HorizontalStack>
-                </ButtonNew>
+                <ButtonNew iconPrefix={PlusMinor}>Add variant</ButtonNew>
+                <ButtonNew iconSuffix={CaretDownMinor}>Edit</ButtonNew>
+                <ButtonNew iconSuffix={SelectMinor}>Location</ButtonNew>
               </HorizontalStack>
               <HorizontalStack gap="2" blockAlign="start">
-                <ButtonNew size="small" paddingInlineStart="1">
-                  <HorizontalStack gap="1" blockAlign="center">
-                    <Icon source={PlusMinor} color="base" />
-                    Add variant
-                  </HorizontalStack>
+                <ButtonNew iconPrefix={PlusMinor} size="small">
+                  Add variant
                 </ButtonNew>
-                <ButtonNew size="small" paddingInlineEnd="1">
-                  <HorizontalStack blockAlign="center">
-                    Edit
-                    <Icon source={CaretDownMinor} color="base" />
-                  </HorizontalStack>
+                <ButtonNew size="small" iconSuffix={CaretDownMinor}>
+                  Edit
                 </ButtonNew>
-                <ButtonNew size="small" paddingInlineEnd="1">
-                  <HorizontalStack blockAlign="center">
-                    Location
-                    <Icon source={SelectMinor} color="base" />
-                  </HorizontalStack>
+
+                <ButtonNew size="small" iconSuffix={SelectMinor}>
+                  Location
                 </ButtonNew>
               </HorizontalStack>
             </VerticalStack>
@@ -156,25 +133,15 @@ export function Playground() {
           </Text>
           <Box border="base" padding="4" borderRadius="2" background="bg">
             <HorizontalStack gap="2" blockAlign="start">
-              <ButtonNew
-                size="small"
-                paddingInlineStart="1"
-                paddingInlineEnd="1"
-              >
-                <HorizontalStack gap="1" blockAlign="center">
-                  <Icon source={SearchMinor} color="base" />
-                </HorizontalStack>
+              <ButtonNew size="small">
+                <Icon source={SearchMinor} color="base" />
               </ButtonNew>
-              <ButtonNew paddingInlineStart="2" paddingInlineEnd="2">
+              <ButtonNew>
                 <HorizontalStack blockAlign="center">
                   <Icon source={SearchMinor} color="base" />
                 </HorizontalStack>
               </ButtonNew>
-              <ButtonNew
-                size="large"
-                paddingInlineStart="3"
-                paddingInlineEnd="3"
-              >
+              <ButtonNew size="large">
                 <HorizontalStack blockAlign="center">
                   <Icon source={SearchMinor} color="base" />
                 </HorizontalStack>

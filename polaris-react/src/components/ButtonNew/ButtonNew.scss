@@ -24,6 +24,8 @@
   justify-content: center;
   background: var(--bg);
   color: var(--p-text);
+  padding-left: var(--p-space-3);
+  padding-right: var(--p-space-3);
   border: var(--p-border-width-1) solid var(--border-strong);
   border-bottom-color: var(--border-strong-hover);
   border-radius: var(--p-border-radius-1);
@@ -74,9 +76,35 @@
   }
 }
 
+.iconPrefix {
+  padding-left: var(--p-space-2);
+
+  &.sizeSmall {
+    padding-left: var(--p-space-1);
+  }
+
+  &.sizeLarge {
+    padding-left: var(--p-space-3);
+  }
+}
+
+.iconSuffix {
+  padding-right: var(--p-space-2);
+
+  &.sizeSmall {
+    padding-right: var(--p-space-1);
+  }
+
+  &.sizeLarge {
+    padding-right: var(--p-space-3);
+  }
+}
+
 .sizeSmall {
   min-height: var(--p-font-line-height-4);
   min-width: 30px;
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
 }
 
 .sizeLarge {
@@ -85,6 +113,8 @@
   font-weight: var(--p-font-weight-medium);
   text-transform: initial;
   letter-spacing: initial;
+  padding-left: var(--p-space-4);
+  padding-right: var(--p-space-4);
 }
 
 .toneCritical {
