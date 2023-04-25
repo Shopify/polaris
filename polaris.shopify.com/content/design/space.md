@@ -33,7 +33,7 @@ description: Space is the distance between objects in your design. It should be 
 
 ---
 
-## Spacing must...
+## Space must...
 
 ![Illustrations of blocks representing each principle](/images/design/space/principles@2x.png)
 
@@ -43,7 +43,7 @@ The more items are related, the closer they should be to each other.
 
 ### 2. Complement function
 
-Use tighter spacing for large amounts of information, use looser spacing for more focused content.
+Use tighter space for large amounts of information, use looser space for more focused content.
 
 ### 3. Be harmonious
 
@@ -51,7 +51,7 @@ Use Polaris space tokens in a way that is consistent with the rest of the experi
 
 ---
 
-## Spacing tools
+## Space tools
 
 ### Polaris space units
 
@@ -86,9 +86,9 @@ All measurements used across the experience (space, width, height, etc) must ref
 Polaris units are more dense at a small scale, and less so as dimensions increase.
 This is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different spaces.
 
-![Examples of different variations of spacing](/images/design/space/spacing-scale-examples@2x.png)
+![Examples of different variations of space](/images/design/space/spacing-scale-examples@2x.png)
 
-Repeating the same amount of spacing (left) and using more variation (right).
+Repeating the same amount of space (left) and using more variation (right).
 
 <br/>
 
@@ -228,9 +228,9 @@ Rhythm plays another job in designs, it’s the norm that enables the introducti
 
 The overall perception people get from the space between information as a whole is density. It can range from tight to loose, and there is a very different purpose for each end of the spectrum.
 
-![Examples showign tigher versus looser spacing](/images/design/space/spacing-density@2x.png)
+![Examples showign tigher versus looser space](/images/design/space/spacing-density@2x.png)
 
-Tighter spacing (left) makes it easier to scan and comprehend large sets of data, like lists and tables. It also naturally enables one to fit more elements in a given page.
+Tighter space (left) makes it easier to scan and comprehend large sets of data, like lists and tables. It also naturally enables one to fit more elements in a given page.
 Looser space (right) can help attract the user attention and make a layout feel more user-friendly.
 
 ---
@@ -271,7 +271,7 @@ Two things can have the same size, but feel unbalanced.
 
 ![Before and after comparison of optical adjustment applied to a button](/images/design/space/spacing-weight-buttons@2x.png)
 
-Without optical adjustment, the disclosure icon appears too far from the right edge of the button. After optical correction, the perceived spacing is more balanced.
+Without optical adjustment, the disclosure icon appears too far from the right edge of the button. After optical correction, the perceived space is more balanced.
 
 ![Before and after comparison of optical adjustment applied to an icon](/images/design/space/spacing-weight-icon@2x.png)
 

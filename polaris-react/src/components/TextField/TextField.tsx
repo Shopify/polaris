@@ -28,6 +28,7 @@ type Type =
   | 'text'
   | 'email'
   | 'number'
+  | 'integer'
   | 'password'
   | 'search'
   | 'tel'
@@ -293,6 +294,7 @@ export function TextField({
   );
 
   const inputType = type === 'currency' ? 'text' : type;
+  const isNumericType = type === 'number' || type === 'integer';
 
   const prefixMarkup = prefix ? (
     <div className={styles.Prefix} id={`${id}-Prefix`} ref={prefixRef}>
@@ -373,7 +375,8 @@ export function TextField({
 
       // Making sure the new value has the same length of decimal places as the
       // step / value has.
-      const decimalPlaces = Math.max(dpl(numericValue), dpl(stepAmount));
+      const decimalPlaces =
+        type === 'integer' ? 0 : Math.max(dpl(numericValue), dpl(stepAmount));
 
       const newValue = Math.min(
         Number(normalizedMax),
@@ -393,6 +396,7 @@ export function TextField({
       onChange,
       onSpinnerChange,
       normalizedStep,
+      type,
       value,
     ],
   );
@@ -426,7 +430,7 @@ export function TextField({
   );
 
   const spinnerMarkup =
-    type === 'number' && step !== 0 && !disabled && !readOnly ? (
+    isNumericType && step !== 0 && !disabled && !readOnly ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
@@ -507,7 +511,7 @@ export function TextField({
   useEventListener('wheel', handleOnWheel, inputRef);
 
   function handleOnWheel(event: WheelEvent) {
-    if (document.activeElement === event.target && type === 'number') {
+    if (document.activeElement === event.target && isNumericType) {
       event.stopPropagation();
     }
   }
@@ -656,8 +660,15 @@ export function TextField({
 
   function handleKeyPress(event: React.KeyboardEvent) {
     const {key, which} = event;
-    const numbersSpec = /[\d.eE+-]$/;
-    if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
+    const numbersSpec = /[\d.,eE+-]$/;
+    const integerSpec = /[\deE+-]$/;
+
+    if (
+      !isNumericType ||
+      which === Key.Enter ||
+      (type === 'number' && numbersSpec.test(key)) ||
+      (type === 'integer' && integerSpec.test(key))
+    ) {
       return;
     }
 
@@ -665,7 +676,7 @@ export function TextField({
   }
 
   function handleKeyDown(event: React.KeyboardEvent) {
-    if (type !== 'number') {
+    if (!isNumericType) {
       return;
     }
 
