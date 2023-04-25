@@ -54,6 +54,8 @@ The following tokens have either been renamed or removed. You will need to repla
 
 ### Border
 
+To replace these deprecated border custom properties you can run the [v11-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-border) migration.
+
 | Deprecated Token             | Replacement Value                                             |
 | ---------------------------- | ------------------------------------------------------------- |
 | `--p-border-radius-base`     | `--p-border-radius-1`                                         |
@@ -66,6 +68,8 @@ The following tokens have either been renamed or removed. You will need to repla
 | `--p-border-divider-on-dark` | `var(--p-border-width-1) solid var(--p-color-border-inverse)` |
 
 ### Color
+
+To replace these deprecated color custom properties you can run the [v11-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-color) migration.
 
 | Deprecated Token                         | Replacement Value                                                                                                                                                                                                                                                          |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -214,6 +218,8 @@ The following tokens have either been renamed or removed. You will need to repla
 
 ### Depth
 
+To replace these deprecated depth custom properties you can run the [v11-styles-replace-custom-property-depth](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-depth) migration.
+
 | Deprecated Token                   | Replacement Value     |
 | ---------------------------------- | --------------------- |
 | `--p-shadow-transparent`           | `--p-shadow-none`     |
@@ -230,6 +236,8 @@ The following tokens have either been renamed or removed. You will need to repla
 | `--p-shadows-inset-button-pressed` | `--p-shadow-inset-md` |
 
 ### Legacy
+
+To replace these deprecated legacy custom properties you can run the [v11-styles-replace-custom-property-legacy](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-legacy) migration.
 
 | Deprecated Token                     | Replacement Value                                                                                                                                     |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -253,6 +261,8 @@ The following tokens have either been renamed or removed. You will need to repla
 | `--p-frame-offset`                   | `0`                                                                                                                                                   |
 
 ### Motion
+
+To replace these deprecated motion custom properties you can run the [v11-styles-replace-custom-property-motion](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-motion) migration.
 
 | Deprecated Token             | Replacement Value                   |
 | ---------------------------- | ----------------------------------- |
@@ -281,6 +291,8 @@ The following tokens have either been renamed or removed. You will need to repla
 | `--p-keyframes-appear-below` | `--p-motion-keyframes-appear-below` |
 
 ### Z-index
+
+To replace these deprecated z-index custom properties you can run the [v11-styles-replace-custom-property-zindex](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-zindex) migration.
 
 | Deprecated Token | Replacement Value |
 | ---------------- | ----------------- |
