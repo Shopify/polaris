@@ -20,4 +20,13 @@ describe('<FullscreenBar />', () => {
     bar.find('button')!.trigger('onClick');
     expect(mockOnAction).toHaveBeenCalledTimes(1);
   });
+
+  it('renders a button with the given text', () => {
+    const text = 'Exit';
+    const bar = mountWithApp(
+      <FullscreenBar onAction={() => {}} buttonText={text} />,
+    );
+
+    expect(bar).toContainReactText(text);
+  });
 });

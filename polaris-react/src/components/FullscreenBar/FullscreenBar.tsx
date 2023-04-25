@@ -11,9 +11,15 @@ export interface FullscreenBarProps {
   onAction: () => void;
   /** Render child elements */
   children?: React.ReactNode;
+  /** Button Text */
+  buttonText?: string;
 }
 
-export function FullscreenBar({onAction, children}: FullscreenBarProps) {
+export function FullscreenBar({
+  onAction,
+  children,
+  buttonText,
+}: FullscreenBarProps) {
   const i18n = useI18n();
 
   return (
@@ -24,7 +30,7 @@ export function FullscreenBar({onAction, children}: FullscreenBarProps) {
         aria-label={i18n.translate('Polaris.FullscreenBar.accessibilityLabel')}
       >
         <Icon source={ExitMajor} />
-        {i18n.translate('Polaris.FullscreenBar.back')}
+        {buttonText ? buttonText : i18n.translate('Polaris.FullscreenBar.back')}
       </button>
       {children}
     </div>
