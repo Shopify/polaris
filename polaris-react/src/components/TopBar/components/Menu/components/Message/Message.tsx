@@ -46,7 +46,7 @@ export function Message({
             <p>{description}</p>
           </TextContainer>
 
-          <Link url={to}>{linkContent}</Link>
+          <Link href={to}>{linkContent}</Link>
 
           <Button plain onClick={onClick}>
             {actionContent}
