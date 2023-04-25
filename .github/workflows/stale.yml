@@ -25,11 +25,13 @@ jobs:
           days-before-pr-stale: 180
           days-before-close: 30
           stale-issue-message: |-
-            This issue seems inactive. If it's still relevant, please add a comment saying so. Otherwise, take no action.
-            → If there's no activity within 30 days the issue will be automatically closed.
+            Hi! We noticed there hasn’t been activity on this issue in a while. After 30 days, it will close automatically.
+
+            If it’s still relevant, or you have updates, comment and let us know. And don’t worry, you can always re-open later if needed.
           stale-pr-message: |-
-            This PR seems inactive. If it's still relevant, please add a comment saying so. Otherwise, take no action.
-            → If there's no activity within 30 days the PR will be automatically closed.
+            Hi! We noticed there hasn’t been activity on this PR in a while. After 30 days, it will close automatically.
+
+            If it’s still relevant, or you have updates, comment and let us know. And don’t worry, you can always re-open later if needed.
           stale-issue-label: 'no-issue-activity'
           stale-pr-label: 'no-pr-activity'
           ascending: true
