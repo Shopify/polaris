@@ -23,8 +23,7 @@
   ],
   "sideEffects": [
     "**/*.css",
-    "**/*.scss",
-    "**/configure.{js,mjs,esnext,ts}"
+    "**/*.scss"
   ],
   "keywords": [
     "shopify",
