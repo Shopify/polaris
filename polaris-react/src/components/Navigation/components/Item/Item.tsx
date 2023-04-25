@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState, useRef} from 'react';
+import React, {useEffect, useContext, useState, useRef, useId} from 'react';
 import type {MouseEvent, ReactNode} from 'react';
 
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
@@ -12,7 +12,6 @@ import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../Navigation.scss';
 import {Tooltip} from '../../../Tooltip';
 import type {TooltipProps} from '../../../Tooltip';
@@ -104,7 +103,7 @@ export function Item({
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
-  const secondaryNavigationId = useUniqueId('SecondaryNavigation');
+  const secondaryNavigationId = useId();
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const navTextRef = useRef<HTMLSpanElement>(null);
   const [isTruncated, setIsTruncated] = useState(false);

@@ -26,12 +26,9 @@
     "@oclif/core": "^1.13.10",
     "@shopify/polaris-migrator": "^0.18.0"
   },
-  "devDependencies": {
-    "typescript": "^4.7.4"
-  },
   "engine-strict": true,
   "engines": {
-    "node": ">=14.13.1"
+    "node": "^16.17.0 || >=18.12.0"
   },
   "os": [
     "darwin",

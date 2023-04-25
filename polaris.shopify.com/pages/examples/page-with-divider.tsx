@@ -4,11 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
-    <Page
-      breadcrumbs={[{content: 'Settings', url: '#'}]}
-      title="General"
-      divider
-    >
+    <Page backAction={{content: 'Settings', url: '#'}} title="General" divider>
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
       </LegacyCard>

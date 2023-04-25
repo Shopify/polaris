@@ -8,7 +8,7 @@ groups:
   - title: Layout primitives
     components:
       - Box
-      - Alpha stack
+      - Stack
       - Inline
       - Horizontal grid
       - Bleed
@@ -17,7 +17,7 @@ groups:
 
   - title: Layout compositions
     components:
-      - Alpha card
+      - Card
       - Callout card
       - Media card
       - Empty state

@@ -1,8 +1,7 @@
-import React, {useState, useCallback, useRef} from 'react';
+import React, {useState, useCallback, useRef, useId} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
-import {useUniqueId} from '../../utilities/unique-id/hooks';
 import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
@@ -95,7 +94,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
   const [closing, setClosing] = useState(false);
 
-  const headerId = useUniqueId('modal-header');
+  const headerId = useId();
   const activatorRef = useRef<HTMLDivElement>(null);
 
   const i18n = useI18n();
