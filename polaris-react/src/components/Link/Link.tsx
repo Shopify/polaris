@@ -16,7 +16,7 @@ export interface LinkProps {
   /** Where to display the url */
   target?: Target;
   /** Sets the link color the same as the current text color */
-  tone?: 'current-color' | 'critical';
+  tone?: 'inherit' | 'critical';
   /** Sets text decoration underline on the link
    * @default 'hover'
    */
@@ -48,7 +48,7 @@ export function Link({
 }: LinkProps) {
   const className = classNames(
     styles.Link,
-    tone === 'current-color' && styles.currentColor,
+    tone === 'inherit' && styles.inherit,
     tone === 'critical' && styles.critical,
     underline === 'always' && styles.underline,
   );

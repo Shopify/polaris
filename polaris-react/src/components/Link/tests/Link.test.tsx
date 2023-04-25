@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Banner} from '../../Banner';
 import {UnstyledLink} from '../../UnstyledLink';
 import {Link} from '../Link';
 
@@ -54,23 +53,21 @@ describe('<Link />', () => {
   describe('monochrome link', () => {
     it('outputs a monochrome link', () => {
       const link = mountWithApp(
-        <Link href="https://examp.le" tone="current-color">
+        <Link href="https://examp.le" tone="inherit">
           Some content
         </Link>,
       );
 
       expect(link).toContainReactComponent(UnstyledLink, {
-        className: expect.stringContaining('currentColor'),
+        className: expect.stringContaining('inherit'),
       });
     });
 
     it('outputs a monochrome button', () => {
-      const button = mountWithApp(
-        <Link tone="current-color">Some content</Link>,
-      );
+      const button = mountWithApp(<Link tone="inherit">Some content</Link>);
 
       expect(button).toContainReactComponent('button', {
-        className: expect.stringContaining('currentColor'),
+        className: expect.stringContaining('inherit'),
       });
     });
   });
