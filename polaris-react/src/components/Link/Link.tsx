@@ -27,6 +27,11 @@ export interface LinkProps {
   accessibilityLabel?: string;
   /** Indicates whether or not the link is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
+  /**
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label) */
+  language?: string;
 }
 
 export function Link({
@@ -39,6 +44,7 @@ export function Link({
   dataPrimaryLink,
   tone,
   underline,
+  language,
 }: LinkProps) {
   const className = classNames(
     styles.Link,
@@ -56,6 +62,7 @@ export function Link({
       id={id}
       aria-label={accessibilityLabel}
       data-primary-link={dataPrimaryLink}
+      lang={language}
     >
       {children}
     </UnstyledLink>
@@ -67,6 +74,7 @@ export function Link({
       id={id}
       aria-label={accessibilityLabel}
       data-primary-link={dataPrimaryLink}
+      lang={language}
     >
       {children}
     </button>
