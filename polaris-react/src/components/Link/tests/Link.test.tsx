@@ -136,4 +136,17 @@ describe('<Link />', () => {
       expect(link).toContainReactComponent('button', selector);
     });
   });
+
+  describe('language', () => {
+    it('language is passed down', () => {
+      const link = mountWithApp(
+        <Link href="https://help.shopify.com/" language="fr">
+          Centre d'aide Shopify
+        </Link>,
+      );
+      const htmlLink = link.find('a');
+
+      expect(htmlLink?.props.lang).toBe('fr');
+    });
+  });
 });
