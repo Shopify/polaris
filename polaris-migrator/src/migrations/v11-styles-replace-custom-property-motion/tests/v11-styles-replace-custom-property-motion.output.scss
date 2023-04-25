@@ -1,0 +1,25 @@
+.motion {
+  transition-timing-function: var(--p-motion-linear);
+  transition-timing-function: var(--p-motion-ease-in-out);
+  transition-timing-function: var(--p-motion-ease-out);
+  transition-timing-function: var(--p-motion-ease-in);
+  transition-timing-function: var(--p-motion-ease);
+  transition-duration: var(--p-motion-duration-0);
+  transition-duration: var(--p-motion-duration-50);
+  transition-duration: var(--p-motion-duration-100);
+  transition-duration: var(--p-motion-duration-150);
+  transition-duration: var(--p-motion-duration-200);
+  transition-duration: var(--p-motion-duration-250);
+  transition-duration: var(--p-motion-duration-300);
+  transition-duration: var(--p-motion-duration-350);
+  transition-duration: var(--p-motion-duration-400);
+  transition-duration: var(--p-motion-duration-450);
+  transition-duration: var(--p-motion-duration-500);
+  transition-duration: var(--p-motion-duration-5000);
+  animation-name: var(--p-motion-keyframes-bounce);
+  animation-name: var(--p-motion-keyframes-fade-in);
+  animation-name: var(--p-motion-keyframes-pulse);
+  animation-name: var(--p-motion-keyframes-spin);
+  animation-name: var(--p-motion-keyframes-appear-above);
+  animation-name: var(--p-motion-keyframes-appear-below);
+}
