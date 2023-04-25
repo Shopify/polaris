@@ -33,8 +33,8 @@ export function Default() {
 }
 
 export function Number() {
-  const [value, setValue] = useState('1');
-  const [value1, setValue1] = useState('1');
+  const [value, setValue] = useState('1.0');
+  const [value1, setValue1] = useState('1.0');
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
   const handleChange1 = useCallback((newValue) => setValue1(newValue), []);
@@ -56,6 +56,22 @@ export function Number() {
         autoComplete="off"
       />
     </LegacyStack>
+  );
+}
+
+export function Integer() {
+  const [value, setValue] = useState('1');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  return (
+    <TextField
+      label="Integer"
+      type="integer"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+    />
   );
 }
 
