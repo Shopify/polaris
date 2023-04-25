@@ -11,5 +11,5 @@ keywords:
 // Do
 + transition: var(--p-motion-duration-500) var(--p-motion-ease);
 // Don't
-- duration: $skeleton-shimmer-duration var(--p-ease);
+- duration: $skeleton-shimmer-duration var(--p-motion-ease);
 ```

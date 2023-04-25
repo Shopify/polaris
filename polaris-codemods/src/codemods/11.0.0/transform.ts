@@ -6,15 +6,19 @@ import {scss, typescript} from '../../utilities/constants';
 import type {TransformInfoOptions} from '../../utilities/types';
 import * as v11ReactUpdatePageBreadcrumbs from '../v11-react-update-page-breadcrumbs/transform';
 import * as v11StylesReplaceCustomPropertyBorder from '../v11-styles-replace-custom-property-border/transform';
+import * as v11StylesReplaceCustomPropertyColor from '../v11-styles-replace-custom-property-color/transform';
 import * as v11StylesReplaceCustomPropertyDepth from '../v11-styles-replace-custom-property-depth/transform';
 import * as v11StylesReplaceCustomPropertyLegacy from '../v11-styles-replace-custom-property-legacy/transform';
+import * as v11StylesReplaceCustomPropertyMotion from '../v11-styles-replace-custom-property-motion/transform';
 import * as v11StylesReplaceCustomPropertyZIndex from '../v11-styles-replace-custom-property-z-index/transform';
 
 const transforms = [
   v11ReactUpdatePageBreadcrumbs,
   v11StylesReplaceCustomPropertyBorder,
+  v11StylesReplaceCustomPropertyColor,
   v11StylesReplaceCustomPropertyDepth,
   v11StylesReplaceCustomPropertyLegacy,
+  v11StylesReplaceCustomPropertyMotion,
   v11StylesReplaceCustomPropertyZIndex,
 ];
 
@@ -39,8 +43,10 @@ export const extensions = Array.from(
   new Set([
     ...v11ReactUpdatePageBreadcrumbs.extensions,
     ...v11StylesReplaceCustomPropertyBorder.extensions,
+    ...v11StylesReplaceCustomPropertyColor.extensions,
     ...v11StylesReplaceCustomPropertyDepth.extensions,
     ...v11StylesReplaceCustomPropertyLegacy.extensions,
+    ...v11StylesReplaceCustomPropertyMotion.extensions,
     ...v11StylesReplaceCustomPropertyZIndex.extensions,
   ]),
 );

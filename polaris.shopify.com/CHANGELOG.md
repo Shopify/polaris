@@ -1,5 +1,21 @@
 # polaris.shopify.com
 
+## 0.51.0
+
+### Minor Changes
+
+- [#9055](https://github.com/Shopify/polaris/pull/9055) [`1dc3948d3`](https://github.com/Shopify/polaris/commit/1dc3948d385120e3b12ece28a89b23374c198989) Thanks [@lgriffee](https://github.com/lgriffee)! - Added z-index token page visuals for new tokens
+
+* [#9074](https://github.com/Shopify/polaris/pull/9074) [`11cd5f674`](https://github.com/Shopify/polaris/commit/11cd5f67440bec59ffd3983fa02a7b65842063e6) Thanks [@lgriffee](https://github.com/lgriffee)! - Added deprecated v10 motion custom properties to stylelint-polaris
+
+- [#9044](https://github.com/Shopify/polaris/pull/9044) [`448cb0a58`](https://github.com/Shopify/polaris/commit/448cb0a58370e40ce4ac15dab48ea154d8fccafa) Thanks [@jjgali](https://github.com/jjgali)! - Updated inclusive language guidelines
+
+### Patch Changes
+
+- Updated dependencies [[`11cd5f674`](https://github.com/Shopify/polaris/commit/11cd5f67440bec59ffd3983fa02a7b65842063e6), [`acf89f6a9`](https://github.com/Shopify/polaris/commit/acf89f6a9fb58f557a57e92e4e54a3935c85f50c), [`edefb873a`](https://github.com/Shopify/polaris/commit/edefb873a3482f72dee12fe4fadcbd908461f3ed)]:
+  - @shopify/polaris@10.48.0
+  - @shopify/polaris-tokens@6.13.0
+
 ## 0.50.3
 
 ### Patch Changes
