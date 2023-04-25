@@ -225,7 +225,7 @@ describe('<Row />', () => {
   });
 
   it.each([
-    ['<Link>', () => <Link url="/" dataPrimaryLink />],
+    ['<Link>', () => <Link href="/" dataPrimaryLink />],
     ['<Button>', () => <Button url="/" dataPrimaryLink />],
   ])(
     'calls onNavigation when clicked %s',
