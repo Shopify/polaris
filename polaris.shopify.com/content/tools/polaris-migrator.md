@@ -27,7 +27,7 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ### v11
 
-#### `v11-react-breadcrumbs-migrate-from-array`
+#### `v11-react-update-page-breadcrumbs`
 
 Replace legacy Page component `breadcrumbs` props with the new `backAction` prop which accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
 
@@ -39,7 +39,7 @@ Replace legacy Page component `breadcrumbs` props with the new `backAction` prop
 <br />
 
 ```sh
-npx @shopify/polaris-migrator v11-react-breadcrumbs-migrate-from-array <path>
+npx @shopify/polaris-migrator v11-react-update-page-breadcrumbs <path>
 ```
 
 <br />
@@ -61,6 +61,23 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-border <path>
 
 <br />
 
+#### `v11-styles-replace-custom-property-color`
+
+Replace deprecated color CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- color: var(--p-text);;
++ color: var(--p-color-text);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-color <path>
+```
+
+<br />
+
 #### `v11-styles-replace-custom-property-depth`
 
 Replace deprecated depth CSS custom properties with corresponding replacement static values.
@@ -74,23 +91,6 @@ Replace deprecated depth CSS custom properties with corresponding replacement st
 
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-depth <path>
-```
-
-<br />
-
-#### `v11-styles-replace-custom-property-zindex`
-
-Replace deprecated z-index CSS custom properties with corresponding Polaris custom property replacement values.
-
-```diff
-- z-index: var(--p-z-1);
-+ z-index: var(--p-z-index-1);
-```
-
-<br />
-
-```sh
-npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
 ```
 
 <br />
@@ -111,6 +111,40 @@ Replace deprecated legacy CSS custom properties with corresponding replacement v
 
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-legacy <path>
+```
+
+<br />
+
+#### `v11-styles-replace-custom-property-motion`
+
+Replace deprecated motion CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- transition-timing-function: var(--p-linear);
++ transition-timing-function: var(--p-motion-linear);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-motion <path>
+```
+
+<br />
+
+#### `v11-styles-replace-custom-property-zindex`
+
+Replace deprecated z-index CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- z-index: var(--p-z-1);
++ z-index: var(--p-z-index-1);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
 ```
 
 <br />
