@@ -25,17 +25,13 @@ jobs:
           days-before-pr-stale: 180
           days-before-close: 30
           stale-issue-message: |-
-            Hi there! It looks like there hasn't been any activity on this issue in a while. If it's still relevant, we'd love to hear from you! Please leave a comment letting us know and we'll be happy to take a look.
+            Hi! We noticed there hasn’t been activity on this issue in a while. After 30 days, it will close automatically.
 
-            If you don't have any updates or this is no longer relevant, no worries - just take no action. Please note that if there's no activity within 30 days, the issue will be automatically closed. But don't worry, you can always reopen it if needed.
-
-            Thanks for contributing to Polaris!
+            If it’s still relevant, or you have updates, comment and let us know. And don’t worry, you can always re-open later if needed.
           stale-pr-message: |-
-            Hi there! It looks like there hasn't been any activity on this PR in a while. If it's still relevant, we'd love to hear from you! Please leave a comment letting us know and we'll be happy to take a look.
+            Hi! We noticed there hasn’t been activity on this PR in a while. After 30 days, it will close automatically.
 
-            If you don't have any updates or this is no longer relevant, no worries - just take no action. Please note that if there's no activity within 30 days, the PR will be automatically closed. But don't worry, you can always reopen it if needed.
-
-            Thanks for contributing to Polaris!
+            If it’s still relevant, or you have updates, comment and let us know. And don’t worry, you can always re-open later if needed.
           stale-issue-label: 'no-issue-activity'
           stale-pr-label: 'no-pr-activity'
           ascending: true
