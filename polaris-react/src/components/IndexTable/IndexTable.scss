@@ -11,7 +11,10 @@
   --pc-index-table-loading-panel: 37;
   // stylelint-enable
   position: relative;
-  border-radius: var(--p-border-radius-2);
+
+  @media #{$p-breakpoints-sm-up} {
+    border-radius: var(--p-border-radius-2);
+  }
 }
 
 .IndexTableWrapper {
