@@ -6,16 +6,18 @@ import styles from './ButtonBase.scss';
 
 export type Target = '_blank' | '_self' | '_parent' | '_top';
 
+type ButtonBaseElementType = 'button' | 'a';
+interface AsProp<T extends ButtonBaseElementType> {
+  as?: T;
+}
+type AsRef<T extends ButtonBaseElementType = 'button'> =
+  React.ComponentPropsWithRef<T>['ref'];
+
 interface CommonProps {
+  children: React.ReactNode;
   className?: string;
   /** A unique identifier for the button */
   id?: string;
-  /** Forces url to open in a new tab */
-  external?: boolean;
-  /** Where to display the url */
-  target?: Target;
-  /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
-  download?: string | boolean;
   /** Allows the button to submit a form */
   submit?: boolean;
   /** Disables the button, disallowing merchant interaction */
@@ -46,12 +48,6 @@ interface CommonProps {
   onFocus?(): void;
   /** Callback when focus leaves button */
   onBlur?(): void;
-  /** Callback when a keypress event is registered on the button */
-  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
-  /** Callback when a keyup event is registered on the button */
-  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
-  /** Callback when a keydown event is registered on the button */
-  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when mouse enter */
   onMouseEnter?(): void;
   /** Callback when element is touched */
@@ -59,42 +55,66 @@ interface CommonProps {
   /** Callback when pointerdown event is being triggered */
   onPointerDown?(): void;
 }
-
-type ButtonProps = CommonProps & {
-  /** Sets the element to button */
-  as?: 'button';
-  /** Sets the button type to determines behavior */
-  type?: 'button' | 'submit' | 'reset';
-};
-
-type AnchorProps = CommonProps & {
-  /** Sets the element type to anchor */
-  as?: 'a';
+interface AnchorProps {
+  ref?: AsRef<'a'>;
   /** Specifies the relationship between the linked resource and the current document */
   rel?: string;
   /** A destination to link to, rendered in the href attribute of a link */
-  to?: string;
+  href?: string;
+  /** Where to display the url */
+  target?: Target;
+  /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
+  download?: string | boolean;
+}
+interface ButtonProps {
+  ref?: AsRef;
+  /** Sets the button type to determines behavior */
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  /** Callback when a keypress event is registered on the button */
+  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when a keyup event is registered on the button */
+  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when a keydown event is registered on the button */
+  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+}
+
+type ButtonBaseProps<T extends ButtonBaseElementType = 'button'> = AsProp<T> &
+  (T extends 'a' ? AnchorProps : ButtonProps) &
+  CommonProps;
+
+type ButtonBaseComponent = (<T extends ButtonBaseElementType = 'button'>(
+  props: ButtonBaseProps<T>,
+  ref: AsRef<T>,
+) => React.ReactElement | null) & {
+  displayName?: string;
 };
 
-export type ButtonBaseProps = ButtonProps | AnchorProps;
-
-export const ButtonBase = React.forwardRef<'button' | 'a', ButtonBaseProps>(
-  (props, ref) => {
-    const {className = '', disabled = false, ...restProps} = props;
-
+export const ButtonBase = React.forwardRef(
+  <T extends ButtonBaseElementType = 'button'>(
+    props: ButtonBaseProps<T>,
+    ref?: AsRef<T>,
+  ) => {
     if (props.as === 'a') {
-      return <a rel={props.rel} href={props.to} />;
+      const {...restProps} = props as ButtonBaseProps<'a'>;
+
+      return <a ref={ref as AsRef<'a'>} {...restProps} />;
     }
 
+    const {
+      type = 'button',
+      className = '',
+      ...restProps
+    } = props as ButtonBaseProps;
     return (
       <button
-        ref={ref}
-        type={props.type}
+        type={type}
+        ref={ref as AsRef}
         className={classNames(styles.ButtonBase, className)}
         {...restProps}
       />
     );
   },
-);
+) as ButtonBaseComponent;
 
 ButtonBase.displayName = 'ButtonBase';
