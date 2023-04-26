@@ -15,11 +15,21 @@
   #{$property}: calc(#{$spacing} + env(safe-area-inset-#{$area}));
 }
 
-@mixin custom-scrollbars() {
-  overflow: overlay;
+@mixin custom-scrollbars($onRoot: false) {
+  scrollbar-width: thin;
+
+  @if $onRoot {
+    @supports selector(::-webkit-scrollbar-thumb) {
+      overflow-y: scroll;
+    }
+  }
 
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
+
+    @if $onRoot {
+      box-shadow: inset 0 56px white, inset 0 57px rgba(0, 0, 0, 0.1);
+    }
   }
 
   &::-webkit-scrollbar-track {
@@ -27,18 +37,18 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0);
     border-radius: 100px;
     transition: all 0.2s linear;
   }
 
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.4);
-  }
-
   &:hover {
     &::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 1);
+      background: rgba(0, 0, 0, 0.25);
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
     }
   }
 }
