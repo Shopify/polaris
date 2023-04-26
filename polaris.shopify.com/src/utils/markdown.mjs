@@ -1,6 +1,6 @@
 import yaml from 'js-yaml';
 
-const colorShades = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
+import * as colors from '../../../polaris-tokens/dist/esm/src/colors.mjs';
 
 export const parseMarkdown = (inputMarkdown) => {
   const readmeSections = inputMarkdown.split('---');
@@ -76,11 +76,14 @@ export const parseMarkdown = (inputMarkdown) => {
         .replace(/^<!-- colors -->/, '')
         .replace(/<!-- end -->$/, '')
         .trim();
-
-      const swatches = colorShades
+      const shades = colors[color] ?? [];
+      const swatches = Object.entries(shades)
+        .sort(([prevShade], [nextShade]) =>
+          Number(prevShade) < Number(nextShade) ? 1 : -1,
+        )
         .map(
-          (shade) =>
-            `<div><div class="colors-swatch" style="background-color: var(--p-${color}-${shade});"></div><div>${shade}</div></div>`,
+          ([shade, value]) =>
+            `<div><div class="colors-swatch" style="background-color: ${value};"></div><div>${shade}</div></div>`,
         )
         .join('');
 
