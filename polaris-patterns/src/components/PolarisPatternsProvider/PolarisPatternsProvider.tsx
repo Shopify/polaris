@@ -3,6 +3,7 @@ import React, {createContext, useEffect} from 'react';
 import {I18nextProvider, initReactI18next} from 'react-i18next';
 import {createInstance} from 'i18next';
 
+import enTranslations from '../../../locales/en.json';
 import {DEFAULT_I18N_DETAILS} from '../../configure';
 
 export const I18nDetails = createContext(DEFAULT_I18N_DETAILS);
@@ -12,7 +13,11 @@ const i18next = createInstance({
   interpolation: {
     escapeValue: false,
   },
-  resources: {},
+  resources: {
+    en: {
+      translation: enTranslations,
+    },
+  },
   returnNull: false,
 });
 
