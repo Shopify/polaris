@@ -36,7 +36,7 @@ export default defineConfig({
       name: 'token-docs',
       source: ['./scripts/synapse/polaris-color-tokens.txt'],
       plugins: [polarisTokenDocs, embeddings, synapseStringify],
-      outputDir: './.cache/embeddings/tokens',
+      // outputDir: './.cache/embeddings/tokens',
       onFileSave,
     },
     {
@@ -60,7 +60,6 @@ export default defineConfig({
     {
       name: 'patterns-docs',
       source: ['./content/patterns/**/*.md'],
-      outputDir: './.cache/embeddings/patterns',
       onFileSave,
       plugins: [polarisGeneralDocs, embeddings, synapseStringify],
     },

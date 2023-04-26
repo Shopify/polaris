@@ -36,7 +36,9 @@ export default function polarisMigratorDocs(options) {
         title:
           'Polaris migration for ' + path.basename(file.history[0], '.tsx'),
         text: stripIndents(contents),
-        slug: '/tools/migrations',
+        metadata: {
+          slug: '/tools/migrations',
+        },
       },
     };
 

@@ -42,10 +42,7 @@
     "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",
     "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1",
     "new-migration": "yarn workspace @shopify/polaris-migrator generate",
-    "postinstall": "patch-package",
-    "synapse:embeddings": "npx tsx ./.yalc/synapse/src/cli.ts embeddings",
-    "embeddings:join": "node ./scripts/synapse/joinBits.mjs",
-    "synapse": "yarn run synapse:embeddings && yarn run embeddings:join"
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

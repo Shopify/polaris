@@ -38,7 +38,9 @@ export default function polarisGeneralDocs(options) {
       data: {
         title,
         text: stripIndents(contents),
-        slug,
+        metadata: {
+          slug,
+        },
       },
     };
 
