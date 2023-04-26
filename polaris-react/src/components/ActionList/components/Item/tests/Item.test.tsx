@@ -110,6 +110,14 @@ describe('<Item />', () => {
       truncate: true,
     });
   });
+
+  it('does not truncate content when the truncate prop is false', () => {
+    const item = mountWithApp(<Item content="Test" truncate={false} />);
+    expect(item).toContainReactComponent(Text, {
+      children: 'Test',
+      truncate: false,
+    });
+  });
 });
 
 function noop() {}
