@@ -414,11 +414,17 @@ button {
 
 .colors {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--p-space-4);
   margin-bottom: var(--p-space-8);
   font-size: var(--font-size-75);
   font-weight: var(--p-font-weight-semibold);
+}
+
+@media (min-width: $breakpointTablet) {
+  .colors {
+    grid-template-columns: repeat(10, 1fr);
+  }
 }
 
 .colors-swatch {

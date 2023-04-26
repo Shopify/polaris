@@ -69,25 +69,36 @@ export const parseMarkdown = (inputMarkdown) => {
   }
 
   // Add some custom HTML to <!-- colors --> tags
-  const colorsRegex = /<!-- (colors) -->(.*?)<!-- end -->/gis;
+  const colorsRegex = /<!-- (colors) -->/gis;
   if (markdown.match(colorsRegex)) {
     markdown = markdown.replace(colorsRegex, (match) => {
-      const color = match
-        .replace(/^<!-- colors -->/, '')
-        .replace(/<!-- end -->$/, '')
-        .trim();
-      const shades = colors[color] ?? [];
-      const swatches = Object.entries(shades)
-        .sort(([prevShade], [nextShade]) =>
-          Number(prevShade) < Number(nextShade) ? 1 : -1,
-        )
-        .map(
-          ([shade, value]) =>
-            `<div><div class="colors-swatch" style="background-color: ${value};"></div><div>${shade}</div></div>`,
-        )
-        .join('');
+      const colorOrder = [
+        'gray',
+        'green',
+        'teal',
+        'blue',
+        'purple',
+        'red',
+        'orange',
+        'yellow',
+      ];
 
-      return `<div class="colors">${swatches}</div>`;
+      return colorOrder.reduce((acc, color) => {
+        const shades = colors[color] ?? [];
+        const swatches = Object.entries(shades)
+          .sort(([prevShade], [nextShade]) =>
+            Number(prevShade) < Number(nextShade) ? 1 : -1,
+          )
+          .map(
+            ([shade, value]) =>
+              `<div><div class="colors-swatch" style="background-color: ${value};"></div><div>${shade}</div></div>`,
+          )
+          .join('');
+
+        return `${acc}<h3>${capitalize(
+          color,
+        )}</h3><div class="colors">${swatches}</div>`;
+      }, '');
     });
   }
 
@@ -99,3 +110,7 @@ export const parseMarkdown = (inputMarkdown) => {
 
   return out;
 };
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
