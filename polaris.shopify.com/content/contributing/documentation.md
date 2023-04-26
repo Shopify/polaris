@@ -1,11 +1,12 @@
 ---
 title: Documenting in Polaris
+navTitle: Documentation
 keywords:
   - how to contribute to polaris documentation
   - how to contribute to the style guide
   - documenting in polaris
   - documentation guidelines
-order: 5
+order: 4
 ---
 
 Shopify teams create documentation for polaris.shopify.com, but open source contributors are welcome to make copy edits as well as update or add examples to [component documentation](/contributing/components).
