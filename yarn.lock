@@ -2746,8 +2746,10 @@
     stylelint-prettier "^2.0.0"
     stylelint-scss "^4.0.0"
 
-"@shopify/synapse@file:polaris.shopify.com/.yalc/@shopify/synapse":
-  version "1.0.2"
+"@shopify/synapse@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@shopify/synapse/-/synapse-1.1.0.tgz#67998fde128345542d694d177882110ed876b86f"
+  integrity sha512-2cbKoHkV2ka/+/IxEKxLxJq0MCQNQA366cOb556E0BiBihOQTH1vxRCs+0AEmVotQmru/LCjfCL0sirkC7YcSA==
   dependencies:
     commander "^10.0.0"
     common-tags "^1.8.2"

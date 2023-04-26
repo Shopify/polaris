@@ -18,7 +18,7 @@
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
     "gen-assets": "yarn get-props && node scripts/gen-assets.mjs",
-    "synapse:embeddings": "npx tsx ./.yalc/@shopify/synapse/src/cli.ts embeddings",
+    "synapse:embeddings": "npx tsx ./node_modules/@shopify/synapse/src/cli.ts",
     "embeddings:join": "node ./scripts/synapse/joinBits.mjs",
     "synapse": "yarn run synapse:embeddings && yarn run embeddings:join"
   },
@@ -29,7 +29,7 @@
     "@shopify/polaris": "^10.42.1",
     "@shopify/polaris-icons": "^6.12.0",
     "@shopify/polaris-tokens": "^6.9.0",
-    "@shopify/synapse": "file:.yalc/@shopify/synapse",
+    "@shopify/synapse": "1.1.0",
     "@types/react-syntax-highlighter": "^15.5.6",
     "codesandbox": "^2.2.3",
     "common-tags": "^1.8.2",
