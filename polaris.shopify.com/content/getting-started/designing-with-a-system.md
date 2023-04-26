@@ -4,7 +4,7 @@ keywords:
   - systems thinking
   - contribution guide
   - designing with a system
-order: 7
+order: 3
 ---
 
 ![Illustration of dozens of chairs of the same kind and a single chair of a diverent kind.](/images/contributing/designing-with-a-system/01.png)
