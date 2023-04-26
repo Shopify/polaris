@@ -1,5 +1,5 @@
 ---
-title: Designing with a system
+title: Building with Polaris
 keywords:
   - systems thinking
   - contribution guide
