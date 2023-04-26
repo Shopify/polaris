@@ -1,5 +1,7 @@
 import yaml from 'js-yaml';
 
+const colorShades = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
+
 export const parseMarkdown = (inputMarkdown) => {
   const readmeSections = inputMarkdown.split('---');
   const frontMatterSection = readmeSections[1];
@@ -63,6 +65,26 @@ export const parseMarkdown = (inputMarkdown) => {
         .replace(/<!-- end -->$/, '');
 
       return `<div class="tip-banner"><div class="tip-banner__header"><div><span class="Polaris-Icon Polaris-Icon--colorHighlight Polaris-Icon--applyColor"><span class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--regular Polaris-Text--visuallyHidden"></span><svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-9 3a1 1 0 1 0 2 0v-2a1 1 0 1 0-2 0v2zm0-6a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"></path></svg></span></div> <h4>Tip</h4></div>${matchWithoutComments}</div>`;
+    });
+  }
+
+  // Add some custom HTML to <!-- colors --> tags
+  const colorsRegex = /<!-- (colors) -->(.*?)<!-- end -->/gis;
+  if (markdown.match(colorsRegex)) {
+    markdown = markdown.replace(colorsRegex, (match) => {
+      const color = match
+        .replace(/^<!-- colors -->/, '')
+        .replace(/<!-- end -->$/, '')
+        .trim();
+
+      const swatches = colorShades
+        .map(
+          (shade) =>
+            `<div><div class="colors-swatch" style="background-color: var(--p-${color}-${shade});"></div><div>${shade}</div></div>`,
+        )
+        .join('');
+
+      return `<div class="colors">${swatches}</div>`;
     });
   }
 

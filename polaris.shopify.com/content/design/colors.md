@@ -36,9 +36,67 @@ The Polaris color palette is composed of 8 different colors, each with 10 unique
 
 ### Gray
 
+<!-- colors -->
+
+gray
+
+<!-- end -->
+
 ### Green
 
-// Extra colors
+<!-- colors -->
+
+green
+
+<!-- end -->
+
+### Teal
+
+<!-- colors -->
+
+teal
+
+<!-- end -->
+
+### Blue
+
+<!-- colors -->
+
+blue
+
+<!-- end -->
+
+### Purple
+
+<!-- colors -->
+
+purple
+
+<!-- end -->
+
+### Red
+
+<!-- colors -->
+
+red
+
+<!-- end -->
+
+### Orange
+
+<!-- colors -->
+
+orange
+
+<!-- end -->
+
+### Yellow
+
+<!-- colors -->
+
+yellow
+
+<!-- end -->
 
 ## Tokens
 

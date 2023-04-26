@@ -9,6 +9,7 @@ import '@shopify/polaris/build/esm/styles.css';
 import {className} from '../src/utils/various';
 import Frame from '../src/components/Frame';
 import '../src/styles/globals.scss';
+import '../src/styles/colors.scss';
 
 const PUBLIC_GA_ID = 'UA-49178120-32';
 
