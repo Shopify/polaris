@@ -1,0 +1,12 @@
+name: AnalyticsLine
+set: minor
+description: Used to represent a line chart.
+keywords:
+  - analytics
+  - graph
+  - line chart
+authors:
+  - Rachel Ng
+version: 1
+date_added: 2023-04-26
+date_modified: 2023-04-26

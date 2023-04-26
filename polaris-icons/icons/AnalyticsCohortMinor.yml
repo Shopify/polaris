@@ -1,0 +1,13 @@
+name: AnalyticsCohort
+set: minor
+description: Used to represent a cohort analysis.
+keywords:
+  - analytics
+  - graph
+  - cohort analysis
+  - reports
+authors:
+  - Rachel Ng
+version: 1
+date_added: 2023-04-26
+date_modified: 2023-04-26
