@@ -239,7 +239,7 @@ export function WithStoreItems() {
               name="Jaded Pixel"
             />
           ),
-          truncate: 'end',
+          truncate: true,
         },
         {
           content: 'Snow Devil- Americas, Europe, Asia-Pacific, and India',
@@ -251,7 +251,7 @@ export function WithStoreItems() {
               name="Snow Devil"
             />
           ),
-          truncate: 'middle',
+          truncate: true,
         },
         {
           content: 'All stores',

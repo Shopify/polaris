@@ -179,7 +179,7 @@ export function WithSections() {
                   content:
                     'Manage several customers at once with a CSV file import',
                   icon: CustomersMajor,
-                  truncate: 'end',
+                  truncate: true,
                 },
               ],
             },

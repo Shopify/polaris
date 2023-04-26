@@ -11,8 +11,6 @@ import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
-import {Tooltip} from '../../../Tooltip';
-import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -68,7 +66,11 @@ export function Item({
   if (ellipsis) {
     contentText = `${content}…`;
   } else if (truncate && content) {
-    contentText = <TruncateText position={truncate}>{content}</TruncateText>;
+    contentText = (
+      <Text as="span" variant="bodyMd" truncate>
+        {content}
+      </Text>
+    );
   }
 
   const contentMarkup = helpText ? (
@@ -140,60 +142,5 @@ export function Item({
       {scrollMarkup}
       {control}
     </>
-  );
-}
-
-export const TruncateText = ({
-  children,
-  position = 'end',
-}: {
-  children: string;
-  position?: 'end' | 'middle';
-}) => {
-  const textRef = useRef<HTMLSpanElement>(null);
-  const [isOverflowing, setIsOverflowing] = useState(false);
-
-  useIsomorphicLayoutEffect(() => {
-    if (textRef.current) {
-      setIsOverflowing(
-        textRef.current.scrollWidth > textRef.current.offsetWidth,
-      );
-    }
-  }, [children]);
-
-  const text = (
-    <span ref={textRef} className={styles.Truncate}>
-      {children}
-    </span>
-  );
-
-  const truncatedText = middleTruncate(children, 40);
-
-  return isOverflowing ? (
-    <Tooltip
-      zIndexOverride={514}
-      preferredPosition="above"
-      hoverDelay={1000}
-      content={textRef.current?.innerText}
-    >
-      {position === 'middle' ? <span>{truncatedText}</span> : text}
-    </Tooltip>
-  ) : (
-    text
-  );
-};
-
-function middleTruncate(inputString: string, length: number, prefix = '…') {
-  const trimmedString = inputString.trim();
-  const stringLength = trimmedString.length;
-  const prefixLength = prefix.length;
-  if (stringLength <= length) return trimmedString;
-  const trimLength = (length - prefixLength) / 2;
-  const frontChars = Math.ceil(trimLength);
-  const backChars = Math.floor(trimLength);
-  return (
-    trimmedString.substr(0, frontChars) +
-    prefix +
-    trimmedString.substr(trimmedString.length - backChars)
   );
 }
