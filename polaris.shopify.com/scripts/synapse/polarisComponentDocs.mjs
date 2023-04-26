@@ -31,7 +31,9 @@ export default function polarisComponentDocs(options) {
           data: {
             title: `${title} component ${e.title}`,
             text: stripIndents(example),
-            slug,
+            metadata: {
+              slug,
+            },
           },
         };
       });

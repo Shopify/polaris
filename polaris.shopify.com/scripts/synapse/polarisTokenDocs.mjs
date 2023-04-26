@@ -12,7 +12,9 @@ export default function polarisTokenDocs(options = {delim: '----------'}) {
         data: {
           title,
           text: stripIndents(bit),
-          slug: `/tokens/colors#${title.replace(/\n/, '')}`,
+          metadata: {
+            slug: `/tokens/colors#${title.replace(/\n/, '')}`,
+          },
         },
       };
     });

@@ -71,12 +71,14 @@ export default async function handler(
     const completion = await createChatCompletion(messages);
 
     let mostSimilar = similarBits.slice(0, 4);
-
+    console.log(mostSimilar);
+    // throw 'eh';
     let sources = mostSimilar.map((s) => {
-      const siteKey = s.slug.substring(1);
-      const siteObj = siteJson[siteKey];
+      const slug: string = s?.metadata?.slug;
+      const siteKey = slug?.substring(1);
+      const siteObj = slug && siteJson[siteKey];
       return {
-        slug: s.slug,
+        slug,
         title: siteObj?.frontMatter?.title || s.title,
       };
     });
@@ -85,9 +87,11 @@ export default async function handler(
 
     sources.forEach((s) => {
       let match = false;
+      const sSlug = s?.slug;
       unique.forEach((u) => {
+        const uSlug = u?.metadata?.slug;
         // console.log(s.slug, u.slug);
-        if (u.slug === s.slug) {
+        if (uSlug && uSlug === sSlug) {
           match = true;
         }
       });
