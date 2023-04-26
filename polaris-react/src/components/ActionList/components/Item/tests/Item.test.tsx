@@ -113,9 +113,9 @@ describe('<Item />', () => {
 
   it('does not truncate content when the truncate prop is false', () => {
     const item = mountWithApp(<Item content="Test" truncate={false} />);
-    expect(item).toContainReactComponent(Text, {
+    expect(item).not.toContainReactComponent(Text, {
       children: 'Test',
-      truncate: false,
+      truncate: true,
     });
   });
 });
