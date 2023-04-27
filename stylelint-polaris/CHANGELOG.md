@@ -1,5 +1,22 @@
 # Changelog
 
+## 12.0.0
+
+### Major Changes
+
+- [#9097](https://github.com/Shopify/polaris/pull/9097) [`a64e38948`](https://github.com/Shopify/polaris/commit/a64e3894834f7507834ed21736c932d44f10ff43) Thanks [@samrose3](https://github.com/samrose3)! - Re-enabled layout warnings for coverage rules
+
+## 11.0.0
+
+### Major Changes
+
+- [#9074](https://github.com/Shopify/polaris/pull/9074) [`11cd5f674`](https://github.com/Shopify/polaris/commit/11cd5f67440bec59ffd3983fa02a7b65842063e6) Thanks [@lgriffee](https://github.com/lgriffee)! - Added deprecated v10 motion custom properties to stylelint-polaris
+
+### Patch Changes
+
+- Updated dependencies [[`acf89f6a9`](https://github.com/Shopify/polaris/commit/acf89f6a9fb58f557a57e92e4e54a3935c85f50c)]:
+  - @shopify/polaris-tokens@6.13.0
+
 ## 10.1.1
 
 ### Patch Changes

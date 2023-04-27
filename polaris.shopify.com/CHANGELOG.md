@@ -1,5 +1,38 @@
 # polaris.shopify.com
 
+## 0.52.0
+
+### Minor Changes
+
+- [#9087](https://github.com/Shopify/polaris/pull/9087) [`efdcb10db`](https://github.com/Shopify/polaris/commit/efdcb10dbf1ac7a29b33f5e5e008ca1e011e5275) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated instances of "spacing" on `/design/space` to "space".
+
+* [#9088](https://github.com/Shopify/polaris/pull/9088) [`13e9b1e47`](https://github.com/Shopify/polaris/commit/13e9b1e47b9dff7dfb0c9d35511de001e46aa89a) Thanks [@lgriffee](https://github.com/lgriffee)! - Matched v11 migration docs to migrations folder
+
+- [#9099](https://github.com/Shopify/polaris/pull/9099) [`227490514`](https://github.com/Shopify/polaris/commit/22749051488cc9d2a80f92c3ca0fdbf97ce30fec) Thanks [@chazdean](https://github.com/chazdean)! - Updated `ButtonGroup` examples to include `Pressed with segmented buttons`
+
+### Patch Changes
+
+- [#9062](https://github.com/Shopify/polaris/pull/9062) [`32dae8638`](https://github.com/Shopify/polaris/commit/32dae86382534f8418ff52f713742cbc81eb72e7) Thanks [@jesstelford](https://github.com/jesstelford)! - Merge /patterns-legacy index page into /patterns to ease discovery (includes a redirect so old links continue to work)
+
+- Updated dependencies [[`722b818b4`](https://github.com/Shopify/polaris/commit/722b818b4c1a970de7802ae87d71409c6f228c19), [`6fd00eb7c`](https://github.com/Shopify/polaris/commit/6fd00eb7c4ca5fc7ea997e53e96f657b415e0a1d)]:
+  - @shopify/polaris@10.49.0
+
+## 0.51.0
+
+### Minor Changes
+
+- [#9055](https://github.com/Shopify/polaris/pull/9055) [`1dc3948d3`](https://github.com/Shopify/polaris/commit/1dc3948d385120e3b12ece28a89b23374c198989) Thanks [@lgriffee](https://github.com/lgriffee)! - Added z-index token page visuals for new tokens
+
+* [#9074](https://github.com/Shopify/polaris/pull/9074) [`11cd5f674`](https://github.com/Shopify/polaris/commit/11cd5f67440bec59ffd3983fa02a7b65842063e6) Thanks [@lgriffee](https://github.com/lgriffee)! - Added deprecated v10 motion custom properties to stylelint-polaris
+
+- [#9044](https://github.com/Shopify/polaris/pull/9044) [`448cb0a58`](https://github.com/Shopify/polaris/commit/448cb0a58370e40ce4ac15dab48ea154d8fccafa) Thanks [@jjgali](https://github.com/jjgali)! - Updated inclusive language guidelines
+
+### Patch Changes
+
+- Updated dependencies [[`11cd5f674`](https://github.com/Shopify/polaris/commit/11cd5f67440bec59ffd3983fa02a7b65842063e6), [`acf89f6a9`](https://github.com/Shopify/polaris/commit/acf89f6a9fb58f557a57e92e4e54a3935c85f50c), [`edefb873a`](https://github.com/Shopify/polaris/commit/edefb873a3482f72dee12fe4fadcbd908461f3ed)]:
+  - @shopify/polaris@10.48.0
+  - @shopify/polaris-tokens@6.13.0
+
 ## 0.50.3
 
 ### Patch Changes

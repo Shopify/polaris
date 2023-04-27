@@ -1,5 +1,24 @@
 # @shopify/polaris-migrator
 
+## 0.18.1
+
+### Patch Changes
+
+- Updated dependencies [[`a64e38948`](https://github.com/Shopify/polaris/commit/a64e3894834f7507834ed21736c932d44f10ff43)]:
+  - @shopify/stylelint-polaris@12.0.0
+
+## 0.18.0
+
+### Minor Changes
+
+- [#9068](https://github.com/Shopify/polaris/pull/9068) [`c47996bca`](https://github.com/Shopify/polaris/commit/c47996bcaf9ea3ef99f38d4fc63cc2512e794822) Thanks [@lgriffee](https://github.com/lgriffee)! - Created a migration to replace deprecated `motion` custom properties in `@shopify/polaris` v11.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`11cd5f674`](https://github.com/Shopify/polaris/commit/11cd5f67440bec59ffd3983fa02a7b65842063e6), [`acf89f6a9`](https://github.com/Shopify/polaris/commit/acf89f6a9fb58f557a57e92e4e54a3935c85f50c)]:
+  - @shopify/stylelint-polaris@11.0.0
+  - @shopify/polaris-tokens@6.13.0
+
 ## 0.17.4
 
 ### Patch Changes

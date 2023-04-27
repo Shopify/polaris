@@ -22,6 +22,15 @@ export const patterns: PatternJSON = Object.keys(pages)
     return memo;
   }, {} as PatternJSON);
 
+export const legacyPatterns: PatternJSON = Object.keys(pages)
+  .filter((slug) => slug.startsWith('patterns-legacy/'))
+  .sort((a, b) => a.localeCompare(b))
+  .reduce((memo, key) => {
+    // @ts-expect-error Yes it is compatible Typescript. Shhhh.
+    memo[key] = pages[key];
+    return memo;
+  }, {} as PatternJSON);
+
 export const getComponentCategories = (): string[] => {
   const componentCategories: string[] = [];
 
