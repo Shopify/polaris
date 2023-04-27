@@ -5,6 +5,7 @@ import {
   Popover,
   TextField,
 } from '@shopify/polaris';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 import React from 'react';
 
@@ -16,6 +17,14 @@ import {
 import {DateRangePicker} from '../DateRangePicker';
 
 describe('DateRangePicker', () => {
+  beforeAll(() => {
+    matchMedia.mock();
+  });
+
+  afterAll(() => {
+    matchMedia.restore();
+  });
+
   let mockOnChange: () => void;
   let defaultProps: React.ComponentProps<typeof DateRangePicker>;
 
