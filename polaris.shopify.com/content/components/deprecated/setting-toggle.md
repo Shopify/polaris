@@ -19,12 +19,12 @@ status:
   value: Deprecated
   message: The SettingToggle is a simple layout component that composes its children with a button in a card. This pattern should be built using the primitive layout and typography components. See the "With primitive components" example to learn how to build setting toggles with primitive components.
 examples:
-  - fileName: setting-toggle-deprecated.tsx
-    title: With deprecated component
-    description: The setting toggle component is deprecated. The "With primitive components" example is the recommended way to build the setting toggle pattern.
   - fileName: setting-toggle-with-primitive-components.tsx
     title: With primitive components
     description: Use to allow merchants to toggle a setting that has an on or off state. Display the name of the setting and provide a description so merchants have the context needed to decide whether or not to enable the setting.
+  - fileName: setting-toggle-deprecated.tsx
+    title: With deprecated component
+    description: The setting toggle component is deprecated. The "With primitive components" example is the recommended way to build the setting toggle pattern.
 ---
 
 ## Best practices
