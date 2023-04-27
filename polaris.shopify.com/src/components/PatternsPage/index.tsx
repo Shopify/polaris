@@ -47,12 +47,12 @@ export const PatternsPage = ({title, description}: FoundationsProps) => (
             ))}
         </Grid>
         <Longform>
-          <Heading as="h1" id="legacy" className={styles.Header}>
-            Legacy Patterns
+          <Heading as="h2" id="legacy" className={styles.Header}>
+            Archived documentation
           </Heading>
           <p>
-            Previously documented patterns are considered legacy and should not
-            be used for new projects. Use at your own risk.
+            These guidelines are safe to use and will be updated to the new
+            documentation format in the near future.
           </p>
         </Longform>
         <Grid>
