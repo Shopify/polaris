@@ -56,7 +56,9 @@ function MyApp({Component, pageProps}: AppProps) {
   }.png`;
 
   const isPolarisExample = router.asPath.startsWith('/examples');
-  const isPolarisSandbox = router.asPath.startsWith('/sandbox');
+  const isPolarisSandbox =
+    router.asPath.startsWith('/sandbox') ||
+    router.asPath.startsWith('/sandpack-two');
 
   useEffect(() => {
     document.documentElement.style.setProperty(
