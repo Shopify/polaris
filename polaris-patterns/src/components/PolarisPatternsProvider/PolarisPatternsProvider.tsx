@@ -1,57 +1,60 @@
 import type {PropsWithChildren} from 'react';
-import React, {createContext, useEffect} from 'react';
-import {I18nextProvider, initReactI18next} from 'react-i18next';
-import {createInstance} from 'i18next';
+import React, {useEffect} from 'react';
+import {I18nextProvider} from 'react-i18next';
 
-import {DEFAULT_I18N_DETAILS} from '../../configure';
+import {DEFAULT_I18N_DETAILS, I18NEXT_NAMESPACE} from './constants';
+import {i18next, I18nDetailsContext} from './i18n';
 
-export const I18nDetails = createContext(DEFAULT_I18N_DETAILS);
-
-const i18next = createInstance({
-  fallbackLng: DEFAULT_I18N_DETAILS.locale,
-  interpolation: {
-    escapeValue: false,
-  },
-  resources: {},
-  returnNull: false,
-});
-
-i18next.use(initReactI18next).init();
-
-interface TranslationDictionary {
+export interface TranslationDictionary {
   [key: string]: string | TranslationDictionary;
 }
 
-interface I18nDetails {
+export interface I18nDetails {
   locale: string;
-  country?: string;
-  currency?: string;
-  timezone?: string;
+  region?: string;
+  currencyCode?: string;
+  timeZone?: string;
 }
 
 export interface Props {
-  i18nDetails: I18nDetails;
-  translations: TranslationDictionary;
-  enFallback: TranslationDictionary;
+  /** User's current locale information.
+   * @default {locale: 'en', country: 'US', currency: 'USD'}
+   */
+  i18nDetails?: I18nDetails;
+  /** A locale's dictionary object. If not provided, only default english translations will be loaded. */
+  translations?: TranslationDictionary;
 }
 
 export function PolarisPatternsProvider({
   translations,
-  i18nDetails,
-  enFallback,
+  i18nDetails = DEFAULT_I18N_DETAILS,
   children,
 }: PropsWithChildren<Props>) {
   useEffect(() => {
-    i18next.addResourceBundle('en', 'translation', enFallback);
-  }, [enFallback]);
-  useEffect(() => {
-    i18next.changeLanguage(i18nDetails.locale);
-    i18next.addResourceBundle(i18nDetails.locale, 'translation', translations);
-  }, [i18nDetails, translations]);
+    if (!i18next.hasResourceBundle(i18nDetails.locale, I18NEXT_NAMESPACE)) {
+      i18next.addResourceBundle(
+        i18nDetails.locale,
+        I18NEXT_NAMESPACE,
+        translations,
+      );
+    } else if (i18nDetails.locale === DEFAULT_I18N_DETAILS.locale) {
+      i18next.addResourceBundle(
+        i18nDetails.locale,
+        I18NEXT_NAMESPACE,
+        translations,
+        true,
+        true,
+      );
+    }
+
+    if (i18next.language !== i18nDetails.locale) {
+      i18next.changeLanguage(i18nDetails.locale);
+    }
+  }, [i18nDetails.locale, translations]);
 
   return (
-    <I18nDetails.Provider value={i18nDetails}>
+    <I18nDetailsContext.Provider value={i18nDetails}>
       <I18nextProvider i18n={i18next}>{children}</I18nextProvider>
-    </I18nDetails.Provider>
+    </I18nDetailsContext.Provider>
   );
 }

@@ -1,7 +1,7 @@
-import './configure';
-
-export {DEFAULT_I18N_DETAILS, SUPPORTED_LOCALES} from './configure';
-
+export {
+  DEFAULT_I18N_DETAILS,
+  SUPPORTED_LOCALES,
+} from './components/PolarisPatternsProvider';
 export {PolarisPatternsProvider} from './components/PolarisPatternsProvider';
 export type {PolarisPatternsProviderProps} from './components/PolarisPatternsProvider';
 

@@ -17,7 +17,7 @@ const defaultTranslations = {
 };
 
 function AppProviderDecorator(Story, context) {
-  const {locale, country, currency} = context.globals;
+  const {locale, region, currencyCode} = context.globals;
   const [translations, setTranslations] = useState(defaultTranslations);
 
   useEffect(() => {
@@ -44,8 +44,7 @@ function AppProviderDecorator(Story, context) {
   return (
     <AppProvider i18n={translations.polaris}>
       <PolarisPatternsProvider
-        enFallback={patternsEnTranslations}
-        i18nDetails={{locale, currency, country}}
+        i18nDetails={{locale, region, currencyCode}}
         translations={translations.patterns}
       >
         <Story {...context} />
@@ -71,25 +70,22 @@ export const decorators = [AppProviderDecorator];
 export const globalTypes = {
   locale: {
     name: 'Locale',
-    description: 'Locale',
     defaultValue: 'en',
     toolbar: {
       icon: 'globe',
       items: SUPPORTED_LOCALES,
     },
   },
-  country: {
-    name: 'Country',
-    description: 'Country code',
+  region: {
+    name: 'Region',
     defaultValue: 'CA',
     toolbar: {
       icon: 'flag',
       items: ['CA', 'US', 'DE', 'AU'],
     },
   },
-  currency: {
-    name: 'Currency',
-    description: 'Currency code',
+  currencyCode: {
+    name: 'Currency code',
     defaultValue: 'USD',
     toolbar: {
       icon: 'credit',
