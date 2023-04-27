@@ -173,7 +173,9 @@ export function WithSeparateValidationError() {
       <Text color="critical" as="span">
         <p>
           {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
-          <Link underline="always">Manage shipping</Link>
+          <Link underline="always" tone="inherit">
+            Manage shipping
+          </Link>
         </p>
       </Text>
     );
