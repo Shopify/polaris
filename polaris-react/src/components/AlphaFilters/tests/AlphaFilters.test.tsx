@@ -79,6 +79,48 @@ describe('<AlphaFilters />', () => {
     });
   });
 
+  it('renders the unpinned disabled filters inside a Popover', () => {
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
+    const filters = [
+      ...defaultProps.filters,
+      {
+        key: 'disabled',
+        label: 'Disabled',
+        pinned: false,
+        disabled: true,
+        filter: <div>Filter</div>,
+      },
+    ];
+
+    const wrapper = mountWithApp(
+      <AlphaFilters {...defaultProps} filters={filters} />,
+    );
+
+    wrapper.act(() => {
+      wrapper
+        .find('button', {
+          'aria-label': 'Add filter',
+        })!
+        .trigger('onClick');
+    });
+
+    expect(wrapper).toContainReactComponent(ActionList, {
+      items: [
+        expect.objectContaining({
+          content: filters[0].label,
+        }),
+        expect.objectContaining({
+          content: filters[2].label,
+        }),
+        expect.objectContaining({
+          content: filters[3].label,
+          disabled: true,
+        }),
+      ],
+    });
+  });
+
   it('renders an applied filter', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
