@@ -30,7 +30,9 @@ export function Dismissible() {
     <Banner onDismiss={() => {}}>
       <p>
         Use your finance report to get detailed information about your business.{' '}
-        <Link url="">Let us know what you think</Link>
+        <Link underline="always" tone="inherit" href="">
+          Let us know what you think
+        </Link>
       </p>
     </Banner>
   );
@@ -104,8 +106,10 @@ export function Critical() {
     >
       <p>
         Before fulfilling this order or capturing payment, please{' '}
-        <Link url="">review the Risk Analysis</Link> and determine if this order
-        is fraudulent.
+        <Link underline="always" tone="inherit" href="">
+          review the Risk Analysis
+        </Link>{' '}
+        and determine if this order is fraudulent.
       </p>
     </Banner>
   );
@@ -180,7 +184,10 @@ export function InACard() {
         <Banner onDismiss={() => {}}>
           <p>
             Use your finance report to get detailed information about your
-            business. <Link url="">Let us know what you think</Link>
+            business.{' '}
+            <Link underline="always" tone="inherit" href="">
+              Let us know what you think
+            </Link>
           </p>
         </Banner>
 
@@ -198,7 +205,7 @@ export function WithEndJustifiedContent() {
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
           </Text>
-          <Link external url="https://example.com">
+          <Link tone="inherit" href="https://example.com" target="_blank">
             Logs
           </Link>
         </HorizontalStack>

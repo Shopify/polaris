@@ -239,11 +239,7 @@ export function WithTotalsInFooter() {
 export function WithRowHeadingLinks() {
   const rows = [
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -252,11 +248,7 @@ export function WithRowHeadingLinks() {
       '$122,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -265,11 +257,7 @@ export function WithRowHeadingLinks() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -304,11 +292,7 @@ export function WithAllOfItsElements() {
 
   const initiallySortedRows = [
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -317,11 +301,7 @@ export function WithAllOfItsElements() {
       '$121,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -330,11 +310,7 @@ export function WithAllOfItsElements() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -534,11 +510,7 @@ export function WithFixedColumns() {
 export function WithIncreasedDensityAndZebraStriping() {
   const rows = [
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -547,11 +519,7 @@ export function WithIncreasedDensityAndZebraStriping() {
       '$121,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -560,11 +528,7 @@ export function WithIncreasedDensityAndZebraStriping() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -608,11 +572,7 @@ export function WithIncreasedDensityAndZebraStriping() {
 export function WithStickyHeaderEnabled() {
   const rows = [
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -621,11 +581,7 @@ export function WithStickyHeaderEnabled() {
       '$121,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -634,11 +590,7 @@ export function WithStickyHeaderEnabled() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -647,11 +599,7 @@ export function WithStickyHeaderEnabled() {
       '$14,240.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -660,11 +608,7 @@ export function WithStickyHeaderEnabled() {
       '$121,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -673,11 +617,7 @@ export function WithStickyHeaderEnabled() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -686,11 +626,7 @@ export function WithStickyHeaderEnabled() {
       '$14,240.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -699,11 +635,7 @@ export function WithStickyHeaderEnabled() {
       '$121,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -712,11 +644,7 @@ export function WithStickyHeaderEnabled() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -725,11 +653,7 @@ export function WithStickyHeaderEnabled() {
       '$14,240.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -738,11 +662,7 @@ export function WithStickyHeaderEnabled() {
       '$121,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -751,11 +671,7 @@ export function WithStickyHeaderEnabled() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -764,11 +680,7 @@ export function WithStickyHeaderEnabled() {
       '$14,240.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -777,11 +689,7 @@ export function WithStickyHeaderEnabled() {
       '$121,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -790,11 +698,7 @@ export function WithStickyHeaderEnabled() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',
@@ -803,11 +707,7 @@ export function WithStickyHeaderEnabled() {
       '$14,240.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
+      <Link href="https://www.example.com" key="emerald-silk-gown">
         Emerald Silk Gown
       </Link>,
       '$875.00',
@@ -816,11 +716,7 @@ export function WithStickyHeaderEnabled() {
       '$121,500.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
+      <Link href="https://www.example.com" key="mauve-cashmere-scarf">
         Mauve Cashmere Scarf
       </Link>,
       '$230.00',
@@ -829,11 +725,7 @@ export function WithStickyHeaderEnabled() {
       '$19,090.00',
     ],
     [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
+      <Link href="https://www.example.com" key="navy-merino-wool">
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
       '$445.00',

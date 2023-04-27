@@ -7,30 +7,28 @@ export default {
 } as ComponentMeta<typeof Link>;
 
 export function Default() {
-  return <Link url="https://help.shopify.com/manual">fulfilling orders</Link>;
+  return <Link href="https://help.shopify.com/manual">fulfilling orders</Link>;
 }
 
-export function Monochrome() {
+export function Underlined() {
   return (
-    <Link monochrome url="https://help.shopify.com/manual">
+    <Link underline="always" href="https://help.shopify.com/manual">
       fulfilling orders
     </Link>
   );
 }
 
-export function MonochromeInABanner() {
+export function MonochromeAndUnderlinedInABanner() {
   return (
     <Banner>
       Learn more about{' '}
-      <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+      <Link
+        tone="inherit"
+        underline="always"
+        href="https://help.shopify.com/manual"
+      >
+        fulfilling orders
+      </Link>
     </Banner>
-  );
-}
-
-export function External() {
-  return (
-    <Link url="https://help.shopify.com/manual" external>
-      Shopify Help Center
-    </Link>
   );
 }
