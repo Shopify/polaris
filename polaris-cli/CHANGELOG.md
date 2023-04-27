@@ -1,5 +1,19 @@
 # @shopify/polaris-cli
 
+## 0.1.35
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.18.1
+
+## 0.1.34
+
+### Patch Changes
+
+- Updated dependencies [[`c47996bca`](https://github.com/Shopify/polaris/commit/c47996bcaf9ea3ef99f38d4fc63cc2512e794822)]:
+  - @shopify/polaris-migrator@0.18.0
+
 ## 0.1.33
 
 ## 0.1.32

@@ -736,7 +736,7 @@ describe('<TextField />', () => {
         expect(spy).toHaveBeenCalledWith('4', 'MyTextField');
       });
 
-      it('adds a decrement button that increases the value', () => {
+      it('adds a decrement button that decreases the value', () => {
         const spy = jest.fn();
         const element = mountWithApp(
           <TextField
@@ -1397,6 +1397,351 @@ describe('<TextField />', () => {
 
           expect(eventPropagationSpy).not.toHaveBeenCalled();
         });
+      });
+    });
+
+    describe('integer', () => {
+      it('adds an increment button that increases the value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            value="3"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+        expect(spy).toHaveBeenCalledWith('4', 'MyTextField');
+      });
+
+      it('adds a decrement button that decreases the value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            value="3"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
+      });
+
+      it('does not call the onChange if the value is not a integer', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            value="not a integer"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+
+        expect(spy).not.toHaveBeenCalled();
+      });
+
+      it('handles incrementing from no value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
+      });
+
+      it('passes the step prop to the input', () => {
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            step={6}
+            value="4"
+            onChange={noop}
+            autoComplete="off"
+          />,
+        );
+
+        expect(element).toContainReactComponent('input', {
+          step: 6,
+        });
+      });
+
+      it('uses the step prop when incrementing', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            step={2}
+            value="1"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+        expect(spy).toHaveBeenCalledWith('3', 'MyTextField');
+      });
+
+      it('rounds to the nearest whole number when the step prop is a decimal', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            step={3.1415}
+            value="1"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+        expect(spy).toHaveBeenCalledWith('4', 'MyTextField');
+      });
+
+      it('respects a min value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            min={2}
+            value="2"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('3', 'MyTextField');
+      });
+
+      it('respects a max value', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            max={2}
+            value="2"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('1', 'MyTextField');
+      });
+
+      it('brings an invalid value up to the min', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            min={2}
+            value="-1"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
+      });
+
+      it('brings an invalid value down to the max', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            max={2}
+            value="12"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[0]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
+      });
+
+      it('removes increment and decrement buttons when disabled', () => {
+        const element = mountWithApp(
+          <TextField
+            id="MyintegerField"
+            label="integerField"
+            type="integer"
+            autoComplete="off"
+            disabled
+          />,
+        );
+        expect(element).not.toContainReactComponent('[role="button"]');
+      });
+
+      it('removes increment and decrement buttons when readOnly', () => {
+        const element = mountWithApp(
+          <TextField
+            id="MyintegerField"
+            label="integerField"
+            type="integer"
+            autoComplete="off"
+            readOnly
+          />,
+        );
+        expect(element).not.toContainReactComponent(Spinner);
+      });
+
+      it('removes spinner buttons when type is integer and step is 0', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyintegerField"
+            label="integerField"
+            type="integer"
+            step={0}
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+        expect(element).not.toContainReactComponent(Spinner);
+      });
+
+      it('decrements on mouse down', () => {
+        jest.useFakeTimers();
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            value="3"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+        element
+          .findAll('div', {role: 'button'})[1]
+          .trigger('onMouseDown', {button: 0});
+
+        jest.runOnlyPendingTimers();
+        expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
+      });
+
+      it('stops decrementing on mouse up', () => {
+        jest.useFakeTimers();
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="integer"
+            value="3"
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        const buttonDiv = element.findAll('div', {role: 'button'})[1];
+
+        buttonDiv.trigger('onMouseDown', {button: 0});
+        buttonDiv.trigger('onMouseUp');
+
+        jest.runOnlyPendingTimers();
+        expect(spy).not.toHaveBeenCalled();
       });
     });
   });

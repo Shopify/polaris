@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ transition-duration: var(--p-duration-200);
++ transition-duration: var(--p-motion-duration-200);
 // Don't
 - transition-duration: 200ms;
 ```

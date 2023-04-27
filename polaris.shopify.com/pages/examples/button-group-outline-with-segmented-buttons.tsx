@@ -2,7 +2,7 @@ import {ButtonGroup, Button} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function ButtonGroupExample() {
+function ButtonGroupOutlineWithSegmentedButtonsExample() {
   return (
     <ButtonGroup segmented>
       <Button outline>Bold</Button>
@@ -12,4 +12,6 @@ function ButtonGroupExample() {
   );
 }
 
-export default withPolarisExample(ButtonGroupExample);
+export default withPolarisExample(
+  ButtonGroupOutlineWithSegmentedButtonsExample,
+);

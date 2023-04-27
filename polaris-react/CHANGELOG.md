@@ -1,5 +1,28 @@
 # Changelog
 
+## 10.49.0
+
+### Minor Changes
+
+- [#9051](https://github.com/Shopify/polaris/pull/9051) [`722b818b4`](https://github.com/Shopify/polaris/commit/722b818b4c1a970de7802ae87d71409c6f228c19) Thanks [@camielvs](https://github.com/camielvs)! - Added `integer` option for the `type` prop of TextField
+
+### Patch Changes
+
+- [#9108](https://github.com/Shopify/polaris/pull/9108) [`6fd00eb7c`](https://github.com/Shopify/polaris/commit/6fd00eb7c4ca5fc7ea997e53e96f657b415e0a1d) Thanks [@laurkim](https://github.com/laurkim)! - Refactored `Box` border radius properties to fix issues with cascading styles
+
+## 10.48.0
+
+### Minor Changes
+
+- [#9074](https://github.com/Shopify/polaris/pull/9074) [`11cd5f674`](https://github.com/Shopify/polaris/commit/11cd5f67440bec59ffd3983fa02a7b65842063e6) Thanks [@lgriffee](https://github.com/lgriffee)! - Added deprecated v10 motion custom properties to stylelint-polaris
+
+### Patch Changes
+
+- [#9067](https://github.com/Shopify/polaris/pull/9067) [`edefb873a`](https://github.com/Shopify/polaris/commit/edefb873a3482f72dee12fe4fadcbd908461f3ed) Thanks [@trishrempel](https://github.com/trishrempel)! - Exported constants `DEFAULT_LOCALE` and `SUPPORTED_LOCALES`
+
+- Updated dependencies [[`acf89f6a9`](https://github.com/Shopify/polaris/commit/acf89f6a9fb58f557a57e92e4e54a3935c85f50c)]:
+  - @shopify/polaris-tokens@6.13.0
+
 ## 10.47.2
 
 ### Patch Changes

@@ -211,6 +211,33 @@ const disallowedVarsLayout = [
   '--p-icon-size-medium',
 ];
 
+const disallowedVarsMotion = [
+  // Legacy custom properties
+  '--p-linear',
+  '--p-ease-in-out',
+  '--p-ease-out',
+  '--p-ease-in',
+  '--p-ease',
+  '--p-duration-0',
+  '--p-duration-50',
+  '--p-duration-100',
+  '--p-duration-150',
+  '--p-duration-200',
+  '--p-duration-250',
+  '--p-duration-300',
+  '--p-duration-350',
+  '--p-duration-400',
+  '--p-duration-450',
+  '--p-duration-500',
+  '--p-duration-5000',
+  '--p-keyframes-bounce',
+  '--p-keyframes-fade-in',
+  '--p-keyframes-pulse',
+  '--p-keyframes-spin',
+  '--p-keyframes-appear-above',
+  '--p-keyframes-appear-below',
+];
+
 const disallowedVarsShadow = [
   // Legacy custom properties
   '--p-button-drop-shadow',
@@ -360,42 +387,42 @@ const stylelintPolarisCoverageOptions = {
   },
   layout: [
     {
-      // 'declaration-property-value-disallowed-list': [
-      //   {
-      //     top: [/(?!var\(--p-).+$/],
-      //     bottom: [/(?!var\(--p-).+$/],
-      //     left: [/(?!var\(--p-).+$/],
-      //     right: [/(?!var\(--p-).+$/],
-      //     '/^width/': [/(?!var\(--p-).+$/],
-      //     '/^height/': [/(?!var\(--p-).+$/],
-      //   },
-      //   {severity: 'warning'},
-      // ],
-      // 'property-disallowed-list': [
-      //   [
-      //     'position',
-      //     'grid',
-      //     'flex',
-      //     'flex-grow',
-      //     'flex-shrink',
-      //     'flex-basis',
-      //     'justify-content',
-      //     'align-items',
-      //     'grid-row',
-      //     'grid-row-start',
-      //     'grid-row-end',
-      //     'grid-column',
-      //     'grid-column-start',
-      //     'grid-column-end',
-      //     'grid-template',
-      //     'grid-template-areas',
-      //     'grid-template-rows',
-      //     'grid-template-columns',
-      //     'grid-area',
-      //     'display',
-      //   ],
-      //   {severity: 'warning'},
-      // ],
+      'declaration-property-value-disallowed-list': [
+        {
+          top: [/(?!var\(--p-).+$/],
+          bottom: [/(?!var\(--p-).+$/],
+          left: [/(?!var\(--p-).+$/],
+          right: [/(?!var\(--p-).+$/],
+          '/^width/': [/(?!var\(--p-).+$/],
+          '/^height/': [/(?!var\(--p-).+$/],
+        },
+        {severity: 'warning'},
+      ],
+      'property-disallowed-list': [
+        [
+          'position',
+          'grid',
+          'flex',
+          'flex-grow',
+          'flex-shrink',
+          'flex-basis',
+          'justify-content',
+          'align-items',
+          'grid-row',
+          'grid-row-start',
+          'grid-row-end',
+          'grid-column',
+          'grid-column-start',
+          'grid-column-end',
+          'grid-template',
+          'grid-template-areas',
+          'grid-template-rows',
+          'grid-template-columns',
+          'grid-area',
+          'display',
+        ],
+        {severity: 'warning'},
+      ],
       'function-disallowed-list': [
         'nav-min-window-corrected',
         'control-height',
@@ -422,7 +449,8 @@ const stylelintPolarisCoverageOptions = {
       ],
     },
     {
-      message: 'Please use a Polaris layout component',
+      message:
+        'Consider using a Polaris layout component if applicable for this layout style',
     },
   ],
   legacy: [
@@ -542,6 +570,10 @@ const stylelintPolarisCoverageOptions = {
       'at-rule-disallowed-list': ['keyframes'],
       'polaris/at-rule-disallowed-list': {
         include: ['skeleton-shimmer'].map(matchNameRegExp),
+      },
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsMotion,
+        disallowedValues: {'/.+/': disallowedVarsMotion},
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
