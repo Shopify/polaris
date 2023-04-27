@@ -21,7 +21,7 @@ status:
 examples:
   - fileName: setting-toggle-with-primitive-components.tsx
     title: With primitive components
-    description: Use to allow merchants to toggle a setting that has an on or off state. Display the name of the setting and provide a description so merchants have the context needed to decide whether or not to enable the setting.
+    description: Use to allow merchants to toggle a setting that has an on or off state. Display the name of the setting and provide a description so merchants have the context needed to decide whether or not to enable the setting. This pattern is built using the layout and typography components, instead of the deprecated `SettingToggle` component.
   - fileName: setting-toggle-deprecated.tsx
     title: With deprecated component
     description: The setting toggle component is deprecated. The "With primitive components" example is the recommended way to build the setting toggle pattern.
