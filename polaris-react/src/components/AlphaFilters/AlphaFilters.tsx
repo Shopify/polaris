@@ -5,6 +5,7 @@ import type {TransitionStatus} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
 import {Popover} from '../Popover';
+import type {ActionListItemProps} from '../ActionList';
 import {ActionList} from '../ActionList';
 import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
@@ -159,22 +160,28 @@ export function AlphaFilters({
     ...pinnedFiltersFromLocalState,
   ];
 
-  const additionalFilters = filters
-    .filter((filter) => !pinnedFilters.find(({key}) => key === filter.key))
-    .map((filter) => ({
-      content: filter.label,
-      onAction: () => {
-        // PopoverOverlay will cause a rerender of the component and nuke the
-        // popoverActive state, so we set this as a microtask
-        setTimeout(() => {
-          setLocalPinnedFilters((currentLocalPinnedFilters) => [
-            ...new Set([...currentLocalPinnedFilters, filter.key]),
-          ]);
-          filter.onAction?.();
-          togglePopoverActive();
-        }, 0);
-      },
-    }));
+  const additionalFilters = filters.reduce<ActionListItemProps[]>(
+    (acc, filter) =>
+      !pinnedFilters.some(({key}) => key === filter.key)
+        ? (acc.push({
+            ...filter,
+            content: filter.label,
+            onAction: () => {
+              // PopoverOverlay will cause a rerender of the component and nuke the
+              // popoverActive state, so we set this as a microtask
+              setTimeout(() => {
+                setLocalPinnedFilters((currentLocalPinnedFilters) => [
+                  ...new Set([...currentLocalPinnedFilters, filter.key]),
+                ]);
+                filter.onAction?.();
+                togglePopoverActive();
+              }, 0);
+            },
+          }),
+          acc)
+        : acc,
+    [],
+  );
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
