@@ -3,7 +3,11 @@
   "display": "Next.js",
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -25,10 +29,14 @@
     "src",
     "pages",
     ".cache/*.json",
+    ".cache/embeddings/allBits.json",
     "**/*.json",
     "next-env.d.ts",
     "scripts/get-props/src/get-props.ts",
     "constants.js"
   ],
-  "exclude": ["node_modules", "scripts/get-props/testData"]
+  "exclude": [
+    "node_modules",
+    "scripts/get-props/testData"
+  ]
 }
