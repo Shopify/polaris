@@ -3,7 +3,7 @@
   "version": "0.47.1",
   "private": true,
   "scripts": {
-    "build": "yarn gen-assets && yarn synapse && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
+    "build": "yarn synapse && yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
     "dev": "yarn get-props && run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
