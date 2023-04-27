@@ -54,10 +54,10 @@ jobs:
         run: yarn build
 
       - name: Lint
-        run: yarn lint --filter=[HEAD^1]
+        run: yarn lint
 
       - name: Type check
         run: yarn type-check
 
       - name: Test
-        run: yarn test --filter=[HEAD^1]
+        run: yarn test
