@@ -6,8 +6,7 @@ function DataTableLinkExample() {
   const rows = [
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="emerald-silk-gown"
       >
         Emerald Silk Gown
@@ -19,8 +18,7 @@ function DataTableLinkExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="mauve-cashmere-scarf"
       >
         Mauve Cashmere Scarf
@@ -32,8 +30,7 @@ function DataTableLinkExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="navy-merino-wool"
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
