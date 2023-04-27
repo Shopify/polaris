@@ -185,7 +185,7 @@ function PopoverWithSearchableListboxExample() {
         borderBottom: '1px dashed var(--p-color-border)',
       }}
     >
-      <Link monochrome removeUnderline onClick={handleOpenPicker}>
+      <Link tone="inherit" onClick={handleOpenPicker}>
         <Text as="h1" variant="headingXl">
           {segments[selectedSegmentIndex].label}
         </Text>

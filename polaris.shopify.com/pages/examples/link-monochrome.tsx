@@ -4,7 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function LinkExample() {
   return (
-    <Link monochrome url="https://help.shopify.com/manual">
+    <Link tone="inherit" href="https://help.shopify.com/manual">
       fulfilling orders
     </Link>
   );

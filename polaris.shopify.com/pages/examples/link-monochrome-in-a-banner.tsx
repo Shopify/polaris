@@ -6,7 +6,7 @@ function LinkExample() {
   return (
     <Banner>
       Learn more about{' '}
-      <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+      <Link href="https://help.shopify.com/manual">fulfilling orders</Link>
     </Banner>
   );
 }

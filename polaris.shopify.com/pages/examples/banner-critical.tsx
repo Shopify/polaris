@@ -11,7 +11,7 @@ function BannerExample() {
     >
       <p>
         Before fulfilling this order or capturing payment, please{' '}
-        <Link url="">review the Risk Analysis</Link> and determine if this order
+        <Link href="">review the Risk Analysis</Link> and determine if this order
         is fraudulent.
       </p>
     </Banner>

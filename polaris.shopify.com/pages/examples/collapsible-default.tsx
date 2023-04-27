@@ -37,7 +37,7 @@ function CollapsibleExample() {
                 have shown an interest in your store. Reach out to them with
                 exclusive offers or updates about your products.
               </p>
-              <Link url="#">Test link</Link>
+              <Link href="#">Test link</Link>
             </TextContainer>
           </Collapsible>
         </LegacyStack>
