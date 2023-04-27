@@ -11,8 +11,7 @@ function DataTableWithFixedFirstColumnsExample() {
   const rows = [
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="emerald-silk-gown"
       >
         Emerald Silk Gown
@@ -26,8 +25,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="mauve-cashmere-scarf"
       >
         Mauve Cashmere Scarf
@@ -41,8 +39,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="navy-merino-wool"
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
@@ -56,8 +53,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="emerald-silk-gown"
       >
         Emerald Silk Gown
@@ -71,8 +67,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="mauve-cashmere-scarf"
       >
         Mauve Cashmere Scarf
@@ -86,8 +81,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="navy-merino-wool"
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
@@ -101,8 +95,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="emerald-silk-gown"
       >
         Emerald Silk Gown
@@ -116,8 +109,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="mauve-cashmere-scarf"
       >
         Mauve Cashmere Scarf
@@ -131,8 +123,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="navy-merino-wool"
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
@@ -146,8 +137,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="emerald-silk-gown"
       >
         Emerald Silk Gown
@@ -161,8 +151,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="mauve-cashmere-scarf"
       >
         Mauve Cashmere Scarf
@@ -176,8 +165,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="navy-merino-wool"
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
@@ -191,8 +179,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="emerald-silk-gown"
       >
         Emerald Silk Gown
@@ -206,8 +193,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="mauve-cashmere-scarf"
       >
         Mauve Cashmere Scarf
@@ -221,8 +207,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="navy-merino-wool"
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
@@ -236,8 +221,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="emerald-silk-gown"
       >
         Emerald Silk Gown
@@ -251,8 +235,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="mauve-cashmere-scarf"
       >
         Mauve Cashmere Scarf
@@ -266,8 +249,7 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
     [
       <Link
-        removeUnderline
-        url="https://www.example.com"
+        href="https://www.example.com"
         key="navy-merino-wool"
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt

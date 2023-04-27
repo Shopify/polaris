@@ -46,7 +46,7 @@ function ClickThroughLinkIndexTableExample() {
         <IndexTable.Cell>
           <Link
             dataPrimaryLink
-            url={url}
+            href={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
             <Text fontWeight="bold" as="span">
