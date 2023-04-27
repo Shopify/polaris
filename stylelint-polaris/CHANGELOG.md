@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.0.0
+
+### Major Changes
+
+- [#9097](https://github.com/Shopify/polaris/pull/9097) [`a64e38948`](https://github.com/Shopify/polaris/commit/a64e3894834f7507834ed21736c932d44f10ff43) Thanks [@samrose3](https://github.com/samrose3)! - Re-enabled layout warnings for coverage rules
+
 ## 11.0.0
 
 ### Major Changes
