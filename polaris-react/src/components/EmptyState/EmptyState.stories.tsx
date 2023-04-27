@@ -38,7 +38,7 @@ export function WithSubduedFooterContext() {
           <p>
             If you don’t want to add a transfer, you can import your inventory
             from{' '}
-            <Link monochrome url="/settings">
+            <Link href="/settings" tone="inherit" underline="always">
               settings
             </Link>
             .

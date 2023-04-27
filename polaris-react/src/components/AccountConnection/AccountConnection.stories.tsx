@@ -19,8 +19,10 @@ export function Default() {
   const terms = connected ? null : (
     <p>
       By clicking <strong>Connect</strong>, you agree to accept Sample App’s{' '}
-      <Link url="Example App">terms and conditions</Link>. You’ll pay a
-      commission rate of 15% on sales made through Sample App.
+      <Link href="Example App" underline="always">
+        terms and conditions
+      </Link>
+      . You’ll pay a commission rate of 15% on sales made through Sample App.
     </p>
   );
 
