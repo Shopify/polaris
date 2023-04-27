@@ -1,26 +1,55 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {breakpoints} from '@shopify/polaris-tokens';
-import {I18nContext, I18nManager} from '@shopify/react-i18n';
 import {AppProvider} from '@shopify/polaris';
+import {I18nManager, I18nContext} from '@shopify/react-i18n';
 
+import {
+  PolarisPatternsProvider,
+  useI18nManager,
+} from '../src/components/PolarisPatternsProvider';
 import polarisEnTranslations from '../../polaris-react/locales/en.json';
+import patternsEnTranslations from '../locales/en.json';
+import {SUPPORTED_LOCALES} from '../src';
 
-const i18nManager = new I18nManager({
-  locale: 'en',
-  currency: 'usd',
-  country: 'CA',
-});
+const defaultTranslations = {
+  polaris: polarisEnTranslations,
+  patterns: patternsEnTranslations,
+};
 
 function AppProviderDecorator(Story, context) {
-  const {locale} = context.globals;
-  i18nManager.update({locale, currency: 'usd', country: 'CA'});
+  const {locale, region, currencyCode} = context.globals;
+  const [translations, setTranslations] = useState(defaultTranslations);
+
+  useEffect(() => {
+    const importTranslations = async () => {
+      try {
+        const patternsTranslations = await import(
+          /* webpackChunkName: "Polaris-Patterns-i18n", webpackMode: "lazy-once" */ `../locales/${locale}.json`
+        );
+        const polarisTranslations = await import(
+          /* webpackChunkName: "Polaris-i18n", webpackMode: "lazy-once" */ `../../polaris-react/locales/${locale}.json`
+        );
+        setTranslations({
+          patterns: patternsTranslations.default,
+          polaris: polarisTranslations.default,
+        });
+      } catch {
+        setTranslations(defaultTranslations);
+      }
+    };
+
+    importTranslations();
+  }, [locale]);
 
   return (
-    <I18nContext.Provider value={i18nManager}>
-      <AppProvider i18n={{...polarisEnTranslations}}>
+    <AppProvider i18n={translations.polaris}>
+      <PolarisPatternsProvider
+        i18nDetails={{locale, region, currencyCode}}
+        translations={translations.patterns}
+      >
         <Story {...context} />
-      </AppProvider>
-    </I18nContext.Provider>
+      </PolarisPatternsProvider>
+    </AppProvider>
   );
 }
 
@@ -41,33 +70,26 @@ export const decorators = [AppProviderDecorator];
 export const globalTypes = {
   locale: {
     name: 'Locale',
-    description: 'Locale',
     defaultValue: 'en',
     toolbar: {
+      icon: 'globe',
+      items: SUPPORTED_LOCALES,
+    },
+  },
+  region: {
+    name: 'Region',
+    defaultValue: 'CA',
+    toolbar: {
       icon: 'flag',
-      items: [
-        'en',
-        'cs',
-        'da',
-        'de',
-        'es',
-        'fi',
-        'fr',
-        'it',
-        'ja',
-        'ko',
-        'nb',
-        'nl',
-        'pl',
-        'pt-BR',
-        'pt-PT',
-        'sv',
-        'th',
-        'tr',
-        'vi',
-        'zh-CN',
-        'zh-TW',
-      ],
+      items: ['CA', 'US', 'DE', 'AU'],
+    },
+  },
+  currencyCode: {
+    name: 'Currency code',
+    defaultValue: 'USD',
+    toolbar: {
+      icon: 'credit',
+      items: ['USD', 'CAD', 'AUD', 'GBP', 'EUR', 'JPY', 'CNY', 'DKK'],
     },
   },
 };

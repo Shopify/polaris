@@ -1,9 +1,21 @@
 import React from 'react';
-import {Weekday, useI18n} from '@shopify/react-i18n';
+import {Weekday, useI18n, I18nContext} from '@shopify/react-i18n';
 import type {DatePickerProps} from '@shopify/polaris';
 import {DatePicker as PolarisDatePicker} from '@shopify/polaris';
 
+import {useShopifyI18nManager} from '../PolarisPatternsProvider';
+
 export function DatePicker(props: DatePickerProps) {
+  const manager = useShopifyI18nManager();
+
+  return (
+    <I18nContext.Provider value={manager}>
+      <DatePickerComponent {...props} />
+    </I18nContext.Provider>
+  );
+}
+
+export function DatePickerComponent(props: DatePickerProps) {
   const [i18n] = useI18n();
 
   const weekStartsOn = toPolarisWeekStartsOn(i18n.weekStartDay());
