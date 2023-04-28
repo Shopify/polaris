@@ -1,5 +1,5 @@
 ---
-'polaris.shopify.com': minor
+'polaris.shopify.com': patch
 ---
 
 Fix migrator doc typo
