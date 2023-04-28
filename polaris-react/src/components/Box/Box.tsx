@@ -1,20 +1,16 @@
 import React, {forwardRef} from 'react';
 import type {
-  ColorTextAlias,
-  ColorBackgroundAlias,
   ColorBorderAlias,
   BorderWidthScale,
   BorderRadiusScale,
   ShadowAlias,
-  SpaceScale,
+  color,
+  spacing,
 } from '@shopify/polaris-tokens';
 
-import {
-  getResponsiveProps,
-  classNames,
-  sanitizeCustomProperties,
-} from '../../utilities/css';
-import type {ResponsiveProp} from '../../utilities/css';
+import {classNames, sanitizeCustomProperties} from '../../utilities/css';
+import type {ResponsiveValue} from '../../styles/atoms.css';
+import {mapResponsiveValue, atoms} from '../../styles/atoms.css';
 
 import styles from './Box.scss';
 
@@ -24,8 +20,6 @@ type LineStyles = 'solid' | 'dashed';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
-type Spacing = ResponsiveProp<SpaceScale>;
-
 export interface BoxProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** HTML Element type
@@ -33,7 +27,7 @@ export interface BoxProps extends React.AriaAttributes {
    */
   as?: Element;
   /** Background color */
-  background?: ColorBackgroundAlias;
+  background?: keyof typeof color;
   /** Border color */
   borderColor?: ColorBorderAlias | 'transparent';
   /** Border style */
@@ -59,7 +53,7 @@ export interface BoxProps extends React.AriaAttributes {
   /** Horizontal end border width */
   borderInlineEndWidth?: BorderWidthScale;
   /** Color of children */
-  color?: ColorTextAlias;
+  color?: keyof typeof color;
   /** HTML id attribute */
   id?: string;
   /** Minimum height of container */
@@ -77,31 +71,33 @@ export interface BoxProps extends React.AriaAttributes {
    * padding='4'
    * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  padding?: Spacing;
+  padding?: ResponsiveValue<keyof typeof spacing>;
   /** Vertical start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingBlockStart='4'
    * paddingBlockStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingBlockStart?: Spacing;
+  paddingBlockStart?: ResponsiveValue<keyof typeof spacing>;
   /** Vertical end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingBlockEnd='4'
    * paddingBlockEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingBlockEnd?: Spacing;
+  paddingBlockEnd?: ResponsiveValue<keyof typeof spacing>;
   /** Horizontal start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingInlineStart='4'
    * paddingInlineStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingInlineStart?: Spacing;
+  paddingInline?: ResponsiveValue<keyof typeof spacing>;
+  paddingBlock?: ResponsiveValue<keyof typeof spacing>;
+  paddingInlineStart?: ResponsiveValue<keyof typeof spacing>;
   /** Horizontal end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingInlineEnd='4'
    * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingInlineEnd?: Spacing;
+  paddingInlineEnd?: ResponsiveValue<keyof typeof spacing>;
   /** Aria role */
   role?: Extract<
     React.AriaRole,
@@ -117,13 +113,13 @@ export interface BoxProps extends React.AriaAttributes {
   /** Position of box */
   position?: Position;
   /** Top position of box */
-  insetBlockStart?: Spacing;
+  insetBlockStart?: ResponsiveValue<keyof typeof spacing>;
   /** Bottom position of box */
-  insetBlockEnd?: Spacing;
+  insetBlockEnd?: ResponsiveValue<keyof typeof spacing>;
   /** Left position of box */
-  insetInlineStart?: Spacing;
+  insetInlineStart?: ResponsiveValue<keyof typeof spacing>;
   /** Right position of box */
-  insetInlineEnd?: Spacing;
+  insetInlineEnd?: ResponsiveValue<keyof typeof spacing>;
   /** Opacity of box */
   opacity?: string;
   /** Outline color */
@@ -169,6 +165,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       outlineStyle,
       outlineWidth,
       padding,
+      paddingBlock,
+      paddingInline,
       paddingBlockStart,
       paddingBlockEnd,
       paddingInlineStart,
@@ -209,11 +207,33 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       ? 'solid'
       : undefined;
 
-    const style = {
-      '--pc-box-color': color ? `var(--p-color-${color})` : undefined,
-      '--pc-box-background': background
-        ? `var(--p-color-${background})`
+    const atomicClasses = atoms({
+      background,
+      color,
+      padding: padding
+        ? mapResponsiveValue(padding, (value) => value)
         : undefined,
+      paddingInline: paddingInline
+        ? mapResponsiveValue(paddingInline, (value) => value ?? padding)
+        : undefined,
+      paddingBlock: paddingBlock
+        ? mapResponsiveValue(paddingBlock, (value) => value ?? padding)
+        : undefined,
+      // paddingInlineStart: paddingInlineStart
+      //   ? mapResponsiveValue(paddingInlineStart, (value) => value ?? padding)
+      //   : undefined,
+      // paddingInlineEnd: paddingInlineEnd
+      //   ? mapResponsiveValue(paddingInlineEnd, (value) => value ?? padding)
+      //   : undefined,
+      // paddingBlockStart: paddingBlockStart
+      //   ? mapResponsiveValue(paddingBlockStart, (value) => value ?? padding)
+      //   : undefined,
+      // paddingBlockEnd: paddingBlockEnd
+      //   ? mapResponsiveValue(paddingBlockEnd, (value) => value ?? padding)
+      //   : undefined,
+    });
+
+    const style = {
       // eslint-disable-next-line no-nested-ternary
       '--pc-box-border-color': borderColor
         ? borderColor === 'transparent'
@@ -261,53 +281,15 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-outline-width': outlineWidth
         ? `var(--p-border-width-${outlineWidth})`
         : undefined,
-      '--pc-box-overflow-x': overflowX,
-      '--pc-box-overflow-y': overflowY,
-      ...getResponsiveProps(
-        'box',
-        'padding-block-end',
-        'space',
-        paddingBlockEnd || padding,
-      ),
-      ...getResponsiveProps(
-        'box',
-        'padding-block-start',
-        'space',
-        paddingBlockStart || padding,
-      ),
-      ...getResponsiveProps(
-        'box',
-        'padding-inline-start',
-        'space',
-        paddingInlineStart || padding,
-      ),
-      ...getResponsiveProps(
-        'box',
-        'padding-inline-end',
-        'space',
-        paddingInlineEnd || padding,
-      ),
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
       '--pc-box-width': width,
       position,
-      '--pc-box-inset-block-start': insetBlockStart
-        ? `var(--p-space-${insetBlockStart})`
-        : undefined,
-      '--pc-box-inset-block-end': insetBlockEnd
-        ? `var(--p-space-${insetBlockEnd})`
-        : undefined,
-      '--pc-box-inset-inline-start': insetInlineStart
-        ? `var(--p-space-${insetInlineStart})`
-        : undefined,
-      '--pc-box-inset-inline-end': insetInlineEnd
-        ? `var(--p-space-${insetInlineEnd})`
-        : undefined,
       zIndex,
       opacity,
     } as React.CSSProperties;
 
     const className = classNames(
-      styles.Box,
+      atomicClasses,
       visuallyHidden && styles.visuallyHidden,
       printHidden && styles.printHidden,
       as === 'ul' && styles.listReset,
