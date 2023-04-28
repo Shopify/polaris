@@ -143,7 +143,7 @@ describe('<Link />', () => {
       );
       const htmlLink = link.find('a');
 
-      expect(htmlLink?.props.lang).toBe('fr');
+      expect(htmlLink?.props.lang).toBe('it');
     });
   });
 });
