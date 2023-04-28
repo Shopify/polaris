@@ -16,7 +16,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
 
-  &:focus {
+  &:focus-visible {
     outline: var(--p-border-width-2) solid
       var(--p-color-border-interactive-focus);
     outline-offset: var(--p-space-05);
