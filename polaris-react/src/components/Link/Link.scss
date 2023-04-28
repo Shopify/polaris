@@ -18,7 +18,7 @@
     text-decoration: none;
   }
 
-  &:focus:not(:active) {
+  &:focus-visible {
     outline: var(--p-color-border-interactive-focus) auto
       var(--p-border-width-1);
   }
