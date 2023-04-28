@@ -1,0 +1,16 @@
+name: Dock Side
+set: major
+description: Used to represent a window that is docked to the right side of the admin
+keywords:
+  - magic
+  - chat
+  - window
+  - docked
+  - layout
+  - right
+authors:
+  - Jon Rundle
+version: 1
+date_added: 2023-04-28
+date_modified: 2023-04-28
+exclusive_use: Magic Chat

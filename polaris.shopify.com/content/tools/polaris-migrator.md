@@ -758,7 +758,7 @@ A generic codemod to rename any component prop.
 <br />
 
 ```sh
-npx @shopify/polaris-migrator react-rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
+npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="MyComponent" --from="prop" --to="newProp"
 ```
 
 <br />

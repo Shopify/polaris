@@ -1076,10 +1076,13 @@ function IndexTableBase({
       tableHeadingRects.current && tableHeadingRects.current.length > position
         ? {minWidth: tableHeadingRects.current[position].offsetWidth}
         : undefined;
+    const headingAlignment = heading.alignment || 'start';
 
     const headingContent = renderHeadingContent(heading, index);
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
+      headingAlignment === 'center' && styles['TableHeading-align-center'],
+      headingAlignment === 'end' && styles['TableHeading-align-end'],
       index === 0 && styles['StickyTableHeading-second'],
       index === 0 && !selectable && styles.unselectable,
     );

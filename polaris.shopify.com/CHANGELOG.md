@@ -1,5 +1,32 @@
 # polaris.shopify.com
 
+## 0.52.1
+
+### Patch Changes
+
+- [#9117](https://github.com/Shopify/polaris/pull/9117) [`00a531f7e`](https://github.com/Shopify/polaris/commit/00a531f7e6f8b70746f80a22df96abeb7ef27c69) Thanks [@lgriffee](https://github.com/lgriffee)! - Fix migrator doc typo
+
+- Updated dependencies [[`92fbd1308`](https://github.com/Shopify/polaris/commit/92fbd1308b6ea0ec22c3f628775e4fbbd5b0921e), [`c28ed7a9e`](https://github.com/Shopify/polaris/commit/c28ed7a9eaf99c856943d1caefa6742b0390b108), [`5dab4f154`](https://github.com/Shopify/polaris/commit/5dab4f154778c436a7428419aa6064234ee5f39d), [`4531592dd`](https://github.com/Shopify/polaris/commit/4531592dde226aa37fb3ee2e975caa99a9650789)]:
+  - @shopify/polaris-icons@6.15.0
+  - @shopify/polaris@10.49.1
+
+## 0.52.0
+
+### Minor Changes
+
+- [#9087](https://github.com/Shopify/polaris/pull/9087) [`efdcb10db`](https://github.com/Shopify/polaris/commit/efdcb10dbf1ac7a29b33f5e5e008ca1e011e5275) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated instances of "spacing" on `/design/space` to "space".
+
+* [#9088](https://github.com/Shopify/polaris/pull/9088) [`13e9b1e47`](https://github.com/Shopify/polaris/commit/13e9b1e47b9dff7dfb0c9d35511de001e46aa89a) Thanks [@lgriffee](https://github.com/lgriffee)! - Matched v11 migration docs to migrations folder
+
+- [#9099](https://github.com/Shopify/polaris/pull/9099) [`227490514`](https://github.com/Shopify/polaris/commit/22749051488cc9d2a80f92c3ca0fdbf97ce30fec) Thanks [@chazdean](https://github.com/chazdean)! - Updated `ButtonGroup` examples to include `Pressed with segmented buttons`
+
+### Patch Changes
+
+- [#9062](https://github.com/Shopify/polaris/pull/9062) [`32dae8638`](https://github.com/Shopify/polaris/commit/32dae86382534f8418ff52f713742cbc81eb72e7) Thanks [@jesstelford](https://github.com/jesstelford)! - Merge /patterns-legacy index page into /patterns to ease discovery (includes a redirect so old links continue to work)
+
+- Updated dependencies [[`722b818b4`](https://github.com/Shopify/polaris/commit/722b818b4c1a970de7802ae87d71409c6f228c19), [`6fd00eb7c`](https://github.com/Shopify/polaris/commit/6fd00eb7c4ca5fc7ea997e53e96f657b415e0a1d)]:
+  - @shopify/polaris@10.49.0
+
 ## 0.51.0
 
 ### Minor Changes
