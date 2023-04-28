@@ -3,6 +3,7 @@ title: Pickers
 description: Picker experiences help merchants browse, find, and select from multiple options. Use them for selecting locations, customer segments, and more.
 icon: LocationMajor
 noIndex: true
+url: /patterns-legacy/pickers
 keywords:
   - customer segments
   - locations

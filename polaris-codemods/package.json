@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris-codemods",
   "description": "Codemods for Polaris design system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@shopify/polaris-tokens": "^6.13.0",
-    "@shopify/stylelint-polaris": "^11.0.0",
+    "@shopify/stylelint-polaris": "^12.0.0",
     "postcss": "^8.4.21",
     "postcss-scss": "^4.0.6",
     "postcss-value-parser": "^4.2.0",
@@ -41,7 +41,7 @@
     "jscodeshift": "^0.13.1"
   },
   "devDependencies": {
-    "@shopify/polaris": "^10.48.0",
+    "@shopify/polaris": "^10.49.1",
     "@types/jscodeshift": "^0.11.6",
     "jscodeshift": "^0.13.1",
     "plop": "^3.1.2",
