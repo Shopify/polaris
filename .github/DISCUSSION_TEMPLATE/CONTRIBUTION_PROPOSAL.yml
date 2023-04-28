@@ -1,0 +1,75 @@
+name: Propose new contribution
+description: Propose a new major contribution to Polaris
+title: '[Contribution]: Proposal name'
+labels: ['contribution', 'untriaged']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out our contribution proposal!
+  - type: textarea
+    id: tldr
+    attributes:
+      label: TL;DR
+      description: Provide a short summary of your proposed contribution.
+      required: true
+  - type: input
+    id: champion
+    attributes:
+      label: Champion
+      description: Who is the primary contact for this contribution?
+    validations:
+      required: true
+  - type: input
+    id: stakeholders
+    attributes:
+      label: Stakeholders
+      description: List individuals or teams who will be impacted or should be involved in the implementation process.
+    validations:
+      required: true
+  - type: input
+    id: timeline
+    attributes:
+      label: Estimated timeline
+      description: When will you start this work, and when do you expect it to be complete?
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you solving?
+      description: Describe the user problem your solution improves or fixes.
+    validations:
+      required: true
+  - type: textarea
+    id: polaris-improvements
+    attributes:
+      label: How does your solution improve Polaris?
+      description: Describe how your solution improves the usability or scalability of the design system. List any known teams or experiences that will benefit from your solution.
+    validations:
+      required: true
+  - type: textarea
+    id: verified-solution
+    attributes:
+      label: Have you tested and verified your solution?
+      description: Include any data, user testing, or examples of your solution in production.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: What is the scope of work?
+      description: List any related system assets that need updating (documentation, component and icon libraries, Figma UI kits, etc.)
+      required: true
+  - type: textarea
+    id: existing-implementations
+    attributes:
+      label: WWhat is the impact on existing implementations, and do you have a plan to address it?
+      description: Include your plans for communicating and implementing this change across the Shopify admin.
+      required: true
+  - type: textarea
+    id: blockers
+    attributes:
+      label: Are there any known blockers or risks?
+      description: List any potential risks to completing or implementing this solution.
+      required: true
