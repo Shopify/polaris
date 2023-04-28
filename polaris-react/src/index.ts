@@ -236,9 +236,6 @@ export type {
   LegacyCardSubsectionProps,
 } from './components/LegacyCard';
 
-export {LegacyFilters} from './components/LegacyFilters';
-export type {LegacyFiltersProps} from './components/LegacyFilters';
-
 export {LegacyStack} from './components/LegacyStack';
 export type {LegacyStackProps} from './components/LegacyStack';
 
