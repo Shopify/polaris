@@ -1,4 +1,4 @@
-// import {spacing} from '@shopify/polaris-tokens';
+import {spacing as spacingTokens} from '@shopify/polaris-tokens';
 import {defineProperties, createSprinkles} from '@vanilla-extract/sprinkles';
 
 const colors = {
@@ -11,22 +11,15 @@ const colors = {
   // etc.
 };
 
-// const gaps = Object.fromEntries(
-//   Object.entries(spacing).map(([key, value]) => [key, value]),
-// );
-
-const gaps = {
-  none: 0,
-  small: '4px',
-  medium: '8px',
-  large: '16px',
-};
+const spacing = Object.fromEntries(
+  Object.entries(spacingTokens).map(([key, value]) => [key, value]),
+);
 
 const colorProperties = defineProperties({
   properties: {
     color: colors,
     background: colors,
-    gap: gaps,
+    padding: spacing,
   },
 });
 
