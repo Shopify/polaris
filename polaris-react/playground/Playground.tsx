@@ -1,22 +1,34 @@
 import React from 'react';
 
-import {HorizontalGrid, Page} from '../src';
+import {Box, HorizontalGrid, Page} from '../src';
 import {atoms} from '../src/styles/atoms.css';
 
-console.log(atoms);
 export function Playground() {
   return (
     <Page title="Playground">
       <HorizontalGrid columns={3} gap="1">
-        <div style={{background: 'red'}}>1</div>
-        <div style={{background: 'red'}}>2</div>
-        <div style={{background: 'red'}}>3</div>
+        <div className={atoms({background: 'color-bg'})}>1</div>
+        <div className={atoms({background: 'color-bg'})}>2</div>
+        <div className={atoms({background: 'color-bg'})}>3</div>
         <div
-          className={atoms({padding: 'space-3'})}
-          style={{background: 'red'}}
+          className={atoms({padding: 'space-3', background: 'color-bg-active'})}
         >
-          padded atom
+          inline atoms
         </div>
+        <Box
+          padding="space-3"
+          background="color-bg-caution"
+          color="color-text-primary"
+        >
+          Box with atoms
+        </Box>
+        <Box
+          background="color-bg-critical"
+          paddingInline={{xs: 'space-1', sm: 'space-3', md: 'space-6'}}
+          color="color-text-primary"
+        >
+          Box with responsive inline padding atoms
+        </Box>
       </HorizontalGrid>
     </Page>
   );
