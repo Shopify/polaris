@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out our contribution proposal!
+        Thanks for taking the time to fill out our contribution proposal! For minor contributions, feel free to use one of our [issue templates](https://github.com/Shopify/polaris/issues/new/choose).
   - type: textarea
     id: tldr
     attributes:
