@@ -1,5 +1,15 @@
 # polaris.shopify.com
 
+## 0.52.1
+
+### Patch Changes
+
+- [#9117](https://github.com/Shopify/polaris/pull/9117) [`00a531f7e`](https://github.com/Shopify/polaris/commit/00a531f7e6f8b70746f80a22df96abeb7ef27c69) Thanks [@lgriffee](https://github.com/lgriffee)! - Fix migrator doc typo
+
+- Updated dependencies [[`92fbd1308`](https://github.com/Shopify/polaris/commit/92fbd1308b6ea0ec22c3f628775e4fbbd5b0921e), [`c28ed7a9e`](https://github.com/Shopify/polaris/commit/c28ed7a9eaf99c856943d1caefa6742b0390b108), [`5dab4f154`](https://github.com/Shopify/polaris/commit/5dab4f154778c436a7428419aa6064234ee5f39d), [`4531592dd`](https://github.com/Shopify/polaris/commit/4531592dde226aa37fb3ee2e975caa99a9650789)]:
+  - @shopify/polaris-icons@6.15.0
+  - @shopify/polaris@10.49.1
+
 ## 0.52.0
 
 ### Minor Changes
