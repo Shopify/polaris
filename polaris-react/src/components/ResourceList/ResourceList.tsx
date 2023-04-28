@@ -62,7 +62,9 @@ function defaultIdForItem<TItemType extends ResourceListItemData>(
   item: TItemType,
   index: number,
 ): string {
-  return 'id' in item ? item.id : index.toString();
+  return Object.prototype.hasOwnProperty.call(item, 'id')
+    ? item.id
+    : index.toString();
 }
 
 export interface ResourceListProps<
