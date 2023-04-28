@@ -12,6 +12,7 @@ body:
     attributes:
       label: TL;DR
       description: Provide a short summary of your proposed contribution.
+    validations:
       required: true
   - type: input
     id: champion
