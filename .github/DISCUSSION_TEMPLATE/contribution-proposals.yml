@@ -65,7 +65,7 @@ body:
   - type: textarea
     id: existing-implementations
     attributes:
-      label: WWhat is the impact on existing implementations, and do you have a plan to address it?
+      label: What is the impact on existing implementations, and do you have a plan to address it?
       description: Include your plans for communicating and implementing this change across the Shopify admin.
       required: true
   - type: textarea
