@@ -137,8 +137,8 @@ describe('<Link />', () => {
   describe('language', () => {
     it('language is passed down', () => {
       const link = mountWithApp(
-        <Link href="https://help.shopify.com/" language="fr">
-          Centre d'aide Shopify
+        <Link href="https://help.shopify.com/" language="it">
+          Centro assistenza Shopify
         </Link>,
       );
       const htmlLink = link.find('a');
