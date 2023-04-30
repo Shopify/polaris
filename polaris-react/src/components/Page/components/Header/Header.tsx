@@ -52,7 +52,7 @@ export interface HeaderProps extends TitleProps {
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
-  /** @deprecated Collection of breadcrumbs */
+  /** @deprecated Collection of breadcrumbs. This has been replaced with backAction. */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
   /** A back action link */
   backAction?: BreadcrumbsProps['backAction'];
