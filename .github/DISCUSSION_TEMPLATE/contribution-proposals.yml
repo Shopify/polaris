@@ -1,6 +1,4 @@
 title: "New contribution proposal"
-description: Propose a new major contribution to Polaris
-title: '[Contribution]: Proposal name'
 labels: ['contribution', 'untriaged']
 body:
   - type: markdown
