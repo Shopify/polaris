@@ -367,7 +367,7 @@ export function AlphaFilters({
           </div>
         </div>
         {hideQueryField ? (
-          <Box paddingInlineEnd="2" paddingBlockStart="2">
+          <Box paddingInlineEnd="3" paddingBlockStart="2" paddingBlockEnd="2">
             <HorizontalStack
               align="start"
               blockAlign="center"
