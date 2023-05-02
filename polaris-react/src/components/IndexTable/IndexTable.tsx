@@ -170,6 +170,7 @@ function IndexTableBase({
   const loadingElement = useRef<HTMLDivElement>(null);
 
   const [tableInitialized, setTableInitialized] = useState(false);
+  const [stickyHeaderInitialized, setStickyHeaderInitialized] = useState(false);
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
   const [hideScrollContainer, setHideScrollContainer] =
     useState<boolean>(false);
@@ -218,6 +219,15 @@ function IndexTableBase({
       }
     },
     [tableInitialized],
+  );
+
+  const stickyHeaderRef = useCallback(
+    (node: Element | null) => {
+      if (node !== null && !stickyHeaderInitialized) {
+        setStickyHeaderInitialized(true);
+      }
+    },
+    [stickyHeaderInitialized],
   );
 
   const handleSelectAllItemsInStore = useCallback(() => {
@@ -455,6 +465,7 @@ function IndexTableBase({
     resizeTableHeadings,
     firstStickyHeaderElement,
     tableInitialized,
+    stickyHeaderInitialized,
   ]);
 
   useEffect(() => {
@@ -608,7 +619,11 @@ function IndexTableBase({
     ) : null;
 
   const stickyHeaderMarkup = (
-    <div className={stickyTableClassNames} role="presentation">
+    <div
+      ref={stickyHeaderRef}
+      className={stickyTableClassNames}
+      role="presentation"
+    >
       <Sticky boundingElement={stickyWrapper}>
         {(isSticky: boolean) => {
           const stickyHeaderClassNames = classNames(
