@@ -1,6 +1,5 @@
 import React, {useCallback, useMemo} from 'react';
 
-import {classNames} from '../../../../utilities/css';
 import {
   isDateBefore,
   isDateAfter,
@@ -30,6 +29,7 @@ export interface MonthProps {
   disableSpecificDates?: Date[];
   allowRange?: boolean;
   weekStartsOn: number;
+  isCurrentMonth: boolean;
   accessibilityLabelPrefixes: [string | undefined, string];
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
@@ -50,17 +50,12 @@ export function Month({
   month,
   year,
   weekStartsOn,
+  isCurrentMonth,
   accessibilityLabelPrefixes,
 }: MonthProps) {
   const i18n = useI18n();
 
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
-  const now = new Date();
-  const current = now.getMonth() === month && now.getFullYear() === year;
-  const className = classNames(
-    styles.Title,
-    current && styles['Month-current'],
-  );
   const weeks = useMemo(
     () => getWeeksForMonth(month, year, weekStartsOn),
     [month, weekStartsOn, year],
@@ -72,7 +67,7 @@ export function Month({
         `Polaris.DatePicker.daysAbbreviated.${weekdayName(weekday)}`,
       )}
       label={weekdayLabel(weekday)}
-      current={current && new Date().getDay() === weekday}
+      current={isCurrentMonth && new Date().getDay() === weekday}
     />
   ));
 
@@ -162,7 +157,7 @@ export function Month({
   return (
     <div className={styles.MonthContainer}>
       <table role="grid" className={styles.Month}>
-        <caption className={className}>
+        <caption className={styles.Title}>
           {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)}{' '}
           {year}
         </caption>
