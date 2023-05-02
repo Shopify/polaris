@@ -594,6 +594,16 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
+/**
+ * @deprecated The LegacyFilters component will be removed in the next
+ * major version. The Filters component can be used as a standalone
+ * component, but is used primarily within the IndexFilters for sorting
+ * and filtering IndexTables. See the Polaris component guide on how to
+ * use IndexFilters and Filters.
+ *
+ * https://polaris.shopify.com/components/selection-and-input/filters
+ * https://polaris.shopify.com/components/selection-and-input/index-filters
+ */
 export function LegacyFilters(props: LegacyFiltersProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
