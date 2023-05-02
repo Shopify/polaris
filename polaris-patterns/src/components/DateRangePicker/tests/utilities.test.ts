@@ -11,6 +11,7 @@ import {
   parseDate,
 } from '../utilities';
 import translations from '../translations/en.json';
+import {TimeUnit} from '../types';
 
 const i18n = mockI18n([translations]);
 const timeZone = 'America/New_York';
@@ -116,17 +117,21 @@ describe('utilities', () => {
 
       expect(formatQueryDate(comparisonPeriod!.since)).toBe('2023-03-27');
       expect(formatQueryDate(comparisonPeriod!.until)).toBe('2023-03-30');
-      expect(
-        getPeriodLength({
+      const expected = getPeriodLength(
+        {
           since: parseDate(reportingPeriod.since),
           until: parseDate(reportingPeriod.until),
-        }),
-      ).toBe(
-        getPeriodLength({
+        },
+        TimeUnit.Day,
+      );
+      const result = getPeriodLength(
+        {
           since: comparisonPeriod!.since,
           until: comparisonPeriod!.until,
-        }),
+        },
+        TimeUnit.Day,
       );
+      expect(expected).toBe(result);
     });
 
     it('calculates the comparison period between 2 months', () => {
