@@ -36,30 +36,6 @@ export function Default() {
       orders: 30,
       amountSpent: '$140',
     },
-    {
-      id: '2562',
-      url: '#',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-    },
-    {
-      id: '2563',
-      url: '#',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-    },
-    {
-      id: '2564',
-      url: '#',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-    },
   ];
   const resourceName = {
     singular: 'customer',
