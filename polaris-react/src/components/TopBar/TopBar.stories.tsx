@@ -30,7 +30,7 @@ function TopBarWrapper({
   customActivator?: UserMenuProps['customActivator'];
   message?: UserMenuProps['message'];
 }) {
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -85,6 +85,7 @@ function TopBarWrapper({
       detail={detail && detail}
       initials={initials ? initials : 'JD'}
       customActivator={customActivator}
+      customWidth="300px"
       message={message}
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
@@ -223,46 +224,4 @@ export function WithMessage() {
       }}
     />
   );
-}
-
-export function WithStoreItems() {
-  const userActions: UserMenuProps['actions'] = [
-    {
-      items: [
-        {
-          content: 'Jaded Pixel- Americas, Europe, Asia-Pacific, and India',
-          prefix: (
-            <Avatar
-              initials="JP"
-              size="small"
-              shape="square"
-              name="Jaded Pixel"
-            />
-          ),
-          truncate: true,
-        },
-        {
-          content: 'Snow Devil- Americas, Europe, Asia-Pacific, and India',
-          prefix: (
-            <Avatar
-              size="small"
-              shape="square"
-              initials="SD"
-              name="Snow Devil"
-            />
-          ),
-          truncate: true,
-        },
-        {
-          content: 'All stores',
-          prefix: <Icon source={StoreMinor} />,
-        },
-      ],
-    },
-    {
-      items: [{content: 'Community forums'}],
-    },
-  ];
-
-  return <TopBarWrapper userActions={userActions} name="Dharma" initials="D" />;
 }

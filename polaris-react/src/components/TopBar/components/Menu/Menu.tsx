@@ -9,8 +9,6 @@ import {Message} from './components';
 import type {MessageProps} from './components';
 import styles from './Menu.scss';
 
-const USER_MENU_POPOVER_WIDTH = '360px';
-
 export interface MenuProps {
   /** Accepts an activator component that renders inside of a button that opens the menu */
   activatorContent: React.ReactNode;
@@ -28,8 +26,8 @@ export interface MenuProps {
   onClose(): void;
   /** A string that provides the accessibility labeling */
   accessibilityLabel?: string;
-  /** A boolean property indicating whether a custom activator is being used */
-  hasCustomActivator?: boolean;
+  /** A custom width value that can be used to set the width of the menu */
+  customWidth?: string;
 }
 
 export function Menu(props: MenuProps) {
@@ -41,7 +39,7 @@ export function Menu(props: MenuProps) {
     activatorContent,
     message,
     accessibilityLabel,
-    hasCustomActivator,
+    customWidth,
   } = props;
 
   const badgeProps = message &&
@@ -83,10 +81,16 @@ export function Menu(props: MenuProps) {
       fullHeight
       preferredAlignment="right"
     >
-      <Box width={hasCustomActivator ? undefined : USER_MENU_POPOVER_WIDTH}>
-        <ActionList onActionAnyItem={onClose} sections={actions} />
-        {messageMarkup}
-      </Box>
+      <div className={styles.MenuItems}>
+        <Box width={customWidth}>
+          <ActionList
+            actionRole="menuitem"
+            onActionAnyItem={onClose}
+            sections={actions}
+          />
+          {messageMarkup}
+        </Box>
+      </div>
     </Popover>
   );
 }
