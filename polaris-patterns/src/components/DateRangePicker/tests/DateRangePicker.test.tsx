@@ -47,15 +47,19 @@ describe('DateRangePicker', () => {
       expect(wrapper).not.toContainReactComponent(DatePicker);
       expect(wrapper).toContainReactComponent(Popover, {active: false});
 
-      await wrapper.find(Button)?.trigger('onClick');
+      wrapper.act(() => {
+        wrapper.find(Button)?.trigger('onClick');
+      });
       expect(wrapper).toContainReactComponent(DatePicker);
       expect(wrapper).toContainReactComponent(Popover, {active: true});
     });
 
     it('displays the initial values in the input fields', async () => {
       const wrapper = await mountWithApp(<DateRangePicker {...defaultProps} />);
+      wrapper.act(() => {
+        wrapper.find(Button)?.trigger('onClick');
+      });
 
-      await wrapper.find(Button)?.trigger('onClick');
       const input1 = wrapper.find(TextField, {value: '2023-03-01'});
       expect(input1).not.toBeNull();
 
@@ -68,9 +72,14 @@ describe('DateRangePicker', () => {
         const wrapper = await mountWithApp(
           <DateRangePicker {...defaultProps} />,
         );
-        await wrapper.find(Button)?.trigger('onClick');
+        await wrapper.act(async () => {
+          await wrapper.find(Button)?.trigger('onClick');
+        });
 
-        await wrapper.find(OptionList)!.trigger('onChange', ['yesterday']);
+        await wrapper.act(async () => {
+          const optionList = await wrapper.find(OptionList);
+          await optionList!.trigger('onChange', ['yesterday']);
+        });
 
         const yesterday = formatDateToYearMonthDayDateString(daysAgo(1));
 
@@ -85,16 +94,19 @@ describe('DateRangePicker', () => {
         const wrapper = await mountWithApp(
           <DateRangePicker {...defaultProps} />,
         );
-        await wrapper.find(Button)?.trigger('onClick');
+
+        await wrapper.act(async () => {
+          await wrapper.find(Button)?.trigger('onClick');
+        });
 
         const inputs = await wrapper.findAll(TextField);
 
-        wrapper.act(() => {
-          inputs[0].trigger(
+        await wrapper.act(async () => {
+          await inputs[0].trigger(
             'onChange',
             formatDateToYearMonthDayDateString(daysAgo(7)),
           );
-          inputs[1].trigger(
+          await inputs[1].trigger(
             'onChange',
             formatDateToYearMonthDayDateString(today()),
           );
@@ -110,16 +122,19 @@ describe('DateRangePicker', () => {
         const wrapper = await mountWithApp(
           <DateRangePicker {...defaultProps} />,
         );
-        await wrapper.find(Button)?.trigger('onClick');
+
+        await wrapper.act(async () => {
+          await wrapper.find(Button)?.trigger('onClick');
+        });
 
         const inputs = await wrapper.findAll(TextField);
 
         const twoDaysAgo = formatDateToYearMonthDayDateString(daysAgo(2));
         const sameDay = formatDateToYearMonthDayDateString(today());
 
-        wrapper.act(() => {
-          inputs[0].trigger('onChange', twoDaysAgo);
-          inputs[1].trigger('onChange', sameDay);
+        await wrapper.act(async () => {
+          await inputs[0].trigger('onChange', twoDaysAgo);
+          await inputs[1].trigger('onChange', sameDay);
         });
 
         wrapper.act(() => {
@@ -141,20 +156,22 @@ describe('DateRangePicker', () => {
         const wrapper = await mountWithApp(
           <DateRangePicker {...defaultProps} />,
         );
-        await wrapper.find(Button)?.trigger('onClick');
+        await wrapper.act(async () => {
+          await wrapper.find(Button)?.trigger('onClick');
+        });
 
         let inputs = await wrapper.findAll(TextField);
 
         const twoDaysAgo = formatDateToYearMonthDayDateString(daysAgo(2));
         const sameDay = formatDateToYearMonthDayDateString(today());
 
-        wrapper.act(() => {
-          inputs[0].trigger('onChange', twoDaysAgo);
-          inputs[1].trigger('onChange', sameDay);
+        await wrapper.act(async () => {
+          await inputs[0].trigger('onChange', twoDaysAgo);
+          await inputs[1].trigger('onChange', sameDay);
         });
 
-        wrapper.act(() => {
-          wrapper.find(Button, {children: 'Cancel'})?.trigger('onClick');
+        await wrapper.act(async () => {
+          await wrapper.find(Button, {children: 'Cancel'})?.trigger('onClick');
         });
 
         inputs = await wrapper.findAll(TextField);
@@ -171,20 +188,23 @@ describe('DateRangePicker', () => {
         const wrapper = await mountWithApp(
           <DateRangePicker {...defaultProps} />,
         );
-        await wrapper.find(Button)?.trigger('onClick');
+
+        await wrapper.act(async () => {
+          await wrapper.find(Button)?.trigger('onClick');
+        });
 
         let inputs = await wrapper.findAll(TextField);
 
         const twoDaysAgo = formatDateToYearMonthDayDateString(daysAgo(2));
         const sameDay = formatDateToYearMonthDayDateString(today());
 
-        wrapper.act(() => {
-          inputs[0].trigger('onChange', twoDaysAgo);
-          inputs[1].trigger('onChange', sameDay);
+        await wrapper.act(async () => {
+          await inputs[0].trigger('onChange', twoDaysAgo);
+          await inputs[1].trigger('onChange', sameDay);
         });
 
-        wrapper.act(() => {
-          wrapper.find(Popover)?.trigger('onClose');
+        await wrapper.act(async () => {
+          await wrapper.find(Popover)?.trigger('onClose');
         });
 
         inputs = await wrapper.findAll(TextField);

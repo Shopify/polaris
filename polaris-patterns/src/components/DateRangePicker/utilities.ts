@@ -46,7 +46,6 @@ export const getComparisonPeriod = (
     );
 
     const periodLength = getPeriodLength(period, TimeUnit.Day);
-
     const compareSince = new Date(period.since);
     compareSince.setDate(period.since.getDate() - periodLength);
     const compareUntil = new Date(period.since);
