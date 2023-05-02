@@ -74,6 +74,8 @@ export interface SelectProps {
   onBlur?(): void;
   /** Visual required indicator, add an asterisk to label */
   requiredIndicator?: boolean;
+  /** Enable automatic completion by the browser */
+  autoComplete?: string;
 }
 
 const PLACEHOLDER_VALUE = '';
@@ -95,6 +97,7 @@ export function Select({
   onFocus,
   onBlur,
   requiredIndicator,
+  autoComplete,
 }: SelectProps) {
   const id = useUniqueId('Select', idProp);
   const labelHidden = labelInline ? true : labelHiddenProp;
@@ -184,6 +187,7 @@ export function Select({
             describedBy.length ? describedBy.join(' ') : undefined
           }
           aria-required={requiredIndicator}
+          autoComplete={autoComplete}
         >
           {optionsMarkup}
         </select>
