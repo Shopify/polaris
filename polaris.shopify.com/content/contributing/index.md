@@ -51,7 +51,7 @@ When proposing a major contribution to Polaris, consider the following:
 - What impact could my solution have on existing implementations?
 - Do I have the resources (people, time, tools, etc.) to follow through?
 
-Use the **contribution proposal template(new template link)** in GitHub Discussions to start a contribution proposal. Be sure to include any relevant explorations and documentation.
+Use the [contribution proposal template](https://github.com/Shopify/polaris/discussions/new?category=contribution-proposals) in GitHub Discussions to start a contribution proposal. Be sure to include any relevant explorations and documentation.
 
 ## How to contribute
 
