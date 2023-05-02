@@ -41,7 +41,7 @@ The design of an icon communicates tone, much like the content it’s paired wit
 
 ### Stick to the intended size
 
-Our system offers two icon sizes - major 20x20 and minor 16x16. Icons should not be scaled up or down. Every icon has been carefully crafted for their intended size and aligned to the pixel grid for sharpness and clarity. This ensures that icons can be easily understood and recognized by users.
+Our system offers two icon sizes: major (20x20) and minor (16x16). Icons should not be scaled up or down. Every icon has been carefully crafted for their intended size and aligned to the pixel grid for sharpness and clarity. This ensures that icons can be easily understood and recognized by users.
 
 ---
 
