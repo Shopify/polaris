@@ -10,6 +10,7 @@ describe('<Month />', () => {
     month: 0,
     year: 2018,
     weekStartsOn: 1,
+    isCurrentMonth: false,
     accessibilityLabelPrefixes: ['Start', 'End'] as [string, string],
   };
 

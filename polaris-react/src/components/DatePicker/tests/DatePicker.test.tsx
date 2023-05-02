@@ -116,6 +116,7 @@ describe('<DatePicker />', () => {
           year={year}
           onChange={spy}
           weekStartsOn={0}
+          isCurrentMonth={false}
         />,
       );
       const day = datePicker.findAll(Day);

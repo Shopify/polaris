@@ -159,8 +159,6 @@
 }
 
 .Header {
-  position: absolute;
-  top: var(--p-space-4);
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -171,6 +169,7 @@
   margin-top: var(--p-space-05);
   padding-bottom: var(--p-space-1);
   text-align: center;
+  display: none;
 }
 
 .Day-firstInRange {

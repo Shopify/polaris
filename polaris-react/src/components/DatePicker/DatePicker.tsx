@@ -229,6 +229,13 @@ export function DatePicker({
     secondDatePickerAccessibilityLabelPrefix,
   ];
 
+  const now = new Date();
+  const current = now.getMonth() === month && now.getFullYear() === year;
+
+  const datePickerTitleClassName = classNames(
+    current && styles['Month-current'],
+  );
+
   const secondDatePicker = multiMonth ? (
     <Month
       onFocus={handleFocus}
@@ -244,6 +251,7 @@ export function DatePicker({
       disableSpecificDates={disableSpecificDates}
       allowRange={allowRange}
       weekStartsOn={weekStartsOn}
+      isCurrentMonth={current}
       accessibilityLabelPrefixes={accessibilityLabelPrefixes}
     />
   ) : null;
@@ -272,6 +280,10 @@ export function DatePicker({
             handleMonthChangeClick(showPreviousMonth, showPreviousYear)
           }
         />
+        <div className={datePickerTitleClassName} aria-hidden>
+          {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)}{' '}
+          {year}
+        </div>
         <Button
           plain
           icon={ArrowRightMinor}
@@ -297,6 +309,7 @@ export function DatePicker({
           disableSpecificDates={disableSpecificDates}
           allowRange={allowRange}
           weekStartsOn={weekStartsOn}
+          isCurrentMonth={current}
           accessibilityLabelPrefixes={accessibilityLabelPrefixes}
         />
         {secondDatePicker}
