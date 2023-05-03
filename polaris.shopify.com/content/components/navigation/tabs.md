@@ -23,7 +23,7 @@ examples:
     description: Use to inform a piece of information about the tabs.
   - fileName: tabs-with-custom-disclosure.tsx
     title: With custom disclosure
-    description: Use to provide information about the popover contents
+    description: Use to provide information about the popover contents.
 ---
 
 ## Best practices
