@@ -278,6 +278,8 @@ if (isExecutedThroughCommandLine) {
   globby([
     '../polaris-react/src/**/*.ts',
     '../polaris-react/src/**/*.tsx',
+    '../polaris-patterns/src/**/*.ts',
+    '../polaris-patterns/src/**/*.tsx',
   ]).then((files) => {
     let filesWithoutTests = files.filter((file) => !file.endsWith('test.tsx'));
     const ast = getProps(filesWithoutTests);
