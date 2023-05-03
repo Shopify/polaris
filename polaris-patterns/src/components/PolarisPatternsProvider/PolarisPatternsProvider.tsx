@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {I18nextProvider} from 'react-i18next';
 
 import {DEFAULT_I18N_DETAILS, I18NEXT_NAMESPACE} from './constants';
-import {i18next, I18nDetailsContext} from './i18n';
+import {i18next} from './i18n';
 
 export interface TranslationDictionary {
   [key: string]: string | TranslationDictionary;
@@ -11,14 +11,11 @@ export interface TranslationDictionary {
 
 export interface I18nDetails {
   locale: string;
-  region?: string;
-  currencyCode?: string;
-  timeZone?: string;
 }
 
 export interface Props {
   /** User's current locale information.
-   * @default {locale: 'en', country: 'US', currency: 'USD'}
+   * @default {locale: 'en'}
    */
   i18nDetails?: I18nDetails;
   /** A locale's dictionary object. If not provided, only default english translations will be loaded. */
@@ -52,9 +49,5 @@ export function PolarisPatternsProvider({
     }
   }, [i18nDetails.locale, translations]);
 
-  return (
-    <I18nDetailsContext.Provider value={i18nDetails}>
-      <I18nextProvider i18n={i18next}>{children}</I18nextProvider>
-    </I18nDetailsContext.Provider>
-  );
+  return <I18nextProvider i18n={i18next}>{children}</I18nextProvider>;
 }

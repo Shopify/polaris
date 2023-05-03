@@ -1,9 +1,5 @@
-import type {I18nDetails} from '@shopify/react-i18n';
-
-export const DEFAULT_I18N_DETAILS: I18nDetails = {
+export const DEFAULT_I18N_DETAILS = {
   locale: 'en',
-  country: 'US',
-  currency: 'USD',
 };
 
 export const SUPPORTED_LOCALES = [
