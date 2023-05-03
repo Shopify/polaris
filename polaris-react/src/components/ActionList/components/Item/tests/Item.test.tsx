@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Item} from '../Item';
+import {Item, TruncateText} from '../Item';
 import {Text} from '../../../../Text';
 import {UnstyledLink} from '../../../../UnstyledLink';
 
@@ -103,20 +103,26 @@ describe('<Item />', () => {
     });
   });
 
-  it('truncates content when the truncate prop is true', () => {
-    const item = mountWithApp(<Item content="Test" truncate />);
-    expect(item).toContainReactComponent(Text, {
-      children: 'Test',
-      truncate: true,
+  it('truncates when the truncate prop is true', () => {
+    const item = mountWithApp(
+      <Item
+        content="Test longer than usual string that probably overflows."
+        truncate={true}
+      />,
+    );
+    expect(item).toContainReactComponent(TruncateText, {
+      children: 'Test longer than usual string that probably overflows.',
     });
   });
 
-  it('does not truncate content when the truncate prop is false', () => {
-    const item = mountWithApp(<Item content="Test" truncate={false} />);
-    expect(item).not.toContainReactComponent(Text, {
-      children: 'Test',
-      truncate: true,
-    });
+  it('does not truncate when the truncate prop is false', () => {
+    const item = mountWithApp(
+      <Item
+        content="Test longer than usual string that probably overflows."
+        truncate={false}
+      />,
+    );
+    expect(item).not.toContainReactComponent(TruncateText);
   });
 });
 

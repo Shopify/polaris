@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -11,6 +11,8 @@ import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
+import {Tooltip} from '../../../Tooltip';
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -64,11 +66,7 @@ export function Item({
 
   let contentText: string | React.ReactNode = content || '';
   if (truncate && content) {
-    contentText = (
-      <Text as="span" variant="bodyMd" truncate>
-        {content}
-      </Text>
-    );
+    contentText = <TruncateText>{content}</TruncateText>;
   } else if (ellipsis) {
     contentText = `${content}…`;
   }
@@ -144,3 +142,33 @@ export function Item({
     </>
   );
 }
+
+export const TruncateText = ({children}: {children: string}) => {
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  useIsomorphicLayoutEffect(() => {
+    if (textRef.current) {
+      setIsOverflowing(
+        textRef.current.scrollWidth > textRef.current.offsetWidth,
+      );
+    }
+  }, [children]);
+  const text = (
+    <span ref={textRef} className={styles.Truncate}>
+      {children}
+    </span>
+  );
+
+  return isOverflowing ? (
+    <Tooltip
+      zIndexOverride={514}
+      preferredPosition="above"
+      hoverDelay={1000}
+      content={textRef.current?.innerText}
+    >
+      {text}
+    </Tooltip>
+  ) : (
+    text
+  );
+};
