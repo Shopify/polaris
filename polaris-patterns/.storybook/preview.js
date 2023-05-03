@@ -1,12 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {breakpoints} from '@shopify/polaris-tokens';
 import {AppProvider} from '@shopify/polaris';
-import {I18nManager, I18nContext} from '@shopify/react-i18n';
 
-import {
-  PolarisPatternsProvider,
-  useI18nManager,
-} from '../src/components/PolarisPatternsProvider';
+import {PolarisPatternsProvider} from '../src/components/PolarisPatternsProvider';
 import polarisEnTranslations from '../../polaris-react/locales/en.json';
 import patternsEnTranslations from '../locales/en.json';
 import {SUPPORTED_LOCALES} from '../src';
@@ -17,7 +13,7 @@ const defaultTranslations = {
 };
 
 function AppProviderDecorator(Story, context) {
-  const {locale, region, currencyCode} = context.globals;
+  const {locale} = context.globals;
   const [translations, setTranslations] = useState(defaultTranslations);
 
   useEffect(() => {
@@ -44,7 +40,7 @@ function AppProviderDecorator(Story, context) {
   return (
     <AppProvider i18n={translations.polaris}>
       <PolarisPatternsProvider
-        i18nDetails={{locale, region, currencyCode}}
+        i18nDetails={{locale}}
         translations={translations.patterns}
       >
         <Story {...context} />
@@ -74,22 +70,6 @@ export const globalTypes = {
     toolbar: {
       icon: 'globe',
       items: SUPPORTED_LOCALES,
-    },
-  },
-  region: {
-    name: 'Region',
-    defaultValue: 'CA',
-    toolbar: {
-      icon: 'flag',
-      items: ['CA', 'US', 'DE', 'AU'],
-    },
-  },
-  currencyCode: {
-    name: 'Currency code',
-    defaultValue: 'USD',
-    toolbar: {
-      icon: 'credit',
-      items: ['USD', 'CAD', 'AUD', 'GBP', 'EUR', 'JPY', 'CNY', 'DKK'],
     },
   },
 };

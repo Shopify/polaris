@@ -11,14 +11,11 @@ export interface TranslationDictionary {
 
 export interface I18nDetails {
   locale: string;
-  region?: string;
-  currencyCode?: string;
-  timeZone?: string;
 }
 
 export interface Props {
   /** User's current locale information.
-   * @default {locale: 'en', country: 'US', currency: 'USD'}
+   * @default {locale: 'en'}
    */
   i18nDetails?: I18nDetails;
   /** A locale's dictionary object. If not provided, only default english translations will be loaded. */

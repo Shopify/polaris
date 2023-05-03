@@ -1,4 +1,3 @@
-import {I18nManager} from '@shopify/react-i18n';
 import {useContext} from 'react';
 
 import {I18nDetailsContext} from './i18n';
@@ -14,20 +13,4 @@ export function useI18nDetails() {
   }
 
   return i18nDetails;
-}
-
-export function useShopifyI18nManager() {
-  const {locale, region, currencyCode, timeZone} =
-    useContext(I18nDetailsContext);
-
-  if (!locale) {
-    throw new Error(providerErrorMessage);
-  }
-
-  return new I18nManager({
-    locale,
-    country: region,
-    currency: currencyCode,
-    timezone: timeZone,
-  });
 }
