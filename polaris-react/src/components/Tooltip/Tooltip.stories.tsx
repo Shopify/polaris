@@ -19,154 +19,171 @@ export default {
 
 export function Default() {
   return (
-    <Tooltip active content="This order has shipping labels.">
-      <Text variant="bodyLg" fontWeight="bold" as="span">
-        Order #1001
-      </Text>
-    </Tooltip>
+    <Box paddingBlockStart="24">
+      <Tooltip active content="This order has shipping labels.">
+        <Text variant="bodyLg" fontWeight="bold" as="span">
+          Order #1001
+        </Text>
+      </Tooltip>
+    </Box>
   );
 }
 
 export function Width() {
   return (
-    <LegacyStack spacing="extraLoose" distribution="fill">
-      <Tooltip active content="This content has the default width">
-        <LegacyStack spacing="extraTight">
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            Tooltip with
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
-            default
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            content width
-          </Text>
-          <Icon source={QuestionMarkMinor} color="base" />
-        </LegacyStack>
-      </Tooltip>
-      <Tooltip active content="This content has the wide width" width="wide">
-        <LegacyStack spacing="extraTight">
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            Tooltip with
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
-            wide
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            content width
-          </Text>
-          <Icon source={QuestionMarkMinor} color="base" />
-        </LegacyStack>
-      </Tooltip>
-    </LegacyStack>
+    <Box paddingBlockStart="24">
+      <HorizontalStack gap="8">
+        <Tooltip
+          active
+          content="This content has the default width and will break into a new line at 200px width"
+        >
+          <LegacyStack spacing="extraTight">
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              Tooltip with
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+              default
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              content width
+            </Text>
+            <Icon source={QuestionMarkMinor} color="base" />
+          </LegacyStack>
+        </Tooltip>
+        <Tooltip
+          active
+          content="This content has the wide width and will break into a new line at 275px width"
+          width="wide"
+        >
+          <LegacyStack spacing="extraTight">
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              Tooltip with
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+              wide
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              content width
+            </Text>
+            <Icon source={QuestionMarkMinor} color="base" />
+          </LegacyStack>
+        </Tooltip>
+      </HorizontalStack>
+    </Box>
   );
 }
 
 export function Padding() {
   return (
-    <LegacyStack spacing="extraLoose" distribution="fill">
-      <Tooltip active content="This content has default padding">
-        <LegacyStack spacing="extraTight">
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            Tooltip with
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
-            default
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            content padding
-          </Text>
-          <Icon source={QuestionMarkMinor} color="base" />
-        </LegacyStack>
-      </Tooltip>
-      <Tooltip
-        active
-        content="This content has padding of 4 (space-4 / 16px)"
-        padding="4"
-      >
-        <LegacyStack spacing="extraTight">
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            Tooltip with
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
-            4
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            content padding
-          </Text>
-          <Icon source={QuestionMarkMinor} color="base" />
-        </LegacyStack>
-      </Tooltip>
-    </LegacyStack>
+    <Box paddingBlockStart="24">
+      <HorizontalStack gap="8">
+        <Tooltip active content="This content has default padding">
+          <LegacyStack spacing="extraTight">
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              Tooltip with
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+              default
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              content padding
+            </Text>
+            <Icon source={QuestionMarkMinor} color="base" />
+          </LegacyStack>
+        </Tooltip>
+        <Tooltip
+          active
+          content="This content has padding of 4 (space-4 / 16px)"
+          padding="4"
+        >
+          <LegacyStack spacing="extraTight">
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              Tooltip with
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+              4
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              content padding
+            </Text>
+            <Icon source={QuestionMarkMinor} color="base" />
+          </LegacyStack>
+        </Tooltip>
+      </HorizontalStack>
+    </Box>
   );
 }
 
 export function BorderRadius() {
   return (
-    <LegacyStack spacing="extraLoose" distribution="fill">
-      <Tooltip
-        active
-        content="This content has the default (radius-1) border radius"
-      >
-        <LegacyStack spacing="extraTight">
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            Tooltip with
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
-            default
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            border radius
-          </Text>
-          <Icon source={QuestionMarkMinor} color="base" />
-        </LegacyStack>
-      </Tooltip>
-      <Tooltip
-        active
-        content="This content has a border radius of 2 (radius-2)"
-        borderRadius="2"
-      >
-        <LegacyStack spacing="extraTight">
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            Tooltip with
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
-            2
-          </Text>{' '}
-          <Text variant="bodyLg" fontWeight="medium" as="span">
-            border radius
-          </Text>
-          <Icon source={QuestionMarkMinor} color="base" />
-        </LegacyStack>
-      </Tooltip>
-    </LegacyStack>
+    <Box paddingBlockStart="24">
+      <HorizontalStack gap="8">
+        <Tooltip
+          active
+          content="This content has the default (radius-1) border radius"
+        >
+          <LegacyStack spacing="extraTight">
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              Tooltip with
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+              default
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              border radius
+            </Text>
+            <Icon source={QuestionMarkMinor} color="base" />
+          </LegacyStack>
+        </Tooltip>
+        <Tooltip
+          active
+          content="This content has a border radius of 2 (radius-2)"
+          borderRadius="2"
+        >
+          <LegacyStack spacing="extraTight">
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              Tooltip with
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+              2
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              border radius
+            </Text>
+            <Icon source={QuestionMarkMinor} color="base" />
+          </LegacyStack>
+        </Tooltip>
+      </HorizontalStack>
+    </Box>
   );
 }
 
 export function VisibleOnlyWithChildInteraction() {
   return (
-    <div style={{width: '200px'}}>
-      <ButtonGroup segmented fullWidth>
-        <Tooltip content="Bold" dismissOnMouseOut>
-          <Button>B</Button>
-        </Tooltip>
-        <Tooltip content="Italic" dismissOnMouseOut>
-          <Button>I</Button>
-        </Tooltip>
-        <Tooltip content="Underline" dismissOnMouseOut>
-          <Button>U</Button>
-        </Tooltip>
-        <Tooltip content="Strikethrough" dismissOnMouseOut>
-          <Button>S</Button>
-        </Tooltip>
-      </ButtonGroup>
-      <TextField
-        label="Product title"
-        autoComplete="off"
-        labelHidden
-        multiline
-      />
-    </div>
+    <Box paddingBlockStart="24">
+      <div style={{width: '200px'}}>
+        <ButtonGroup segmented fullWidth>
+          <Tooltip content="Bold" dismissOnMouseOut>
+            <Button>B</Button>
+          </Tooltip>
+          <Tooltip content="Italic" dismissOnMouseOut>
+            <Button>I</Button>
+          </Tooltip>
+          <Tooltip content="Underline" dismissOnMouseOut>
+            <Button>U</Button>
+          </Tooltip>
+          <Tooltip content="Strikethrough" dismissOnMouseOut>
+            <Button>S</Button>
+          </Tooltip>
+        </ButtonGroup>
+        <TextField
+          label="Product title"
+          autoComplete="off"
+          labelHidden
+          multiline
+        />
+      </div>
+    </Box>
   );
 }
 
@@ -219,15 +236,17 @@ export function WithHoverDelay() {
 
 export function ActivatorAsDiv() {
   return (
-    <Tooltip
-      active
-      content="This tooltip is rendered as a div"
-      activatorWrapper="div"
-    >
-      <Text variant="bodyLg" fontWeight="bold" as="span">
-        Order #1001
-      </Text>
-    </Tooltip>
+    <Box paddingBlockStart="24">
+      <Tooltip
+        active
+        content="This tooltip is rendered as a div"
+        activatorWrapper="div"
+      >
+        <Text variant="bodyLg" fontWeight="bold" as="span">
+          Order #1001
+        </Text>
+      </Tooltip>
+    </Box>
   );
 }
 
@@ -294,7 +313,7 @@ export function WithSuffix() {
                 </Text>
               </HorizontalStack>
             }
-            preferredPosition="above"
+            preferredPosition="below"
           >
             <Button>B</Button>
           </Tooltip>
@@ -307,7 +326,7 @@ export function WithSuffix() {
                 </Text>
               </HorizontalStack>
             }
-            preferredPosition="above"
+            preferredPosition="below"
           >
             <Button>I</Button>
           </Tooltip>
@@ -320,7 +339,7 @@ export function WithSuffix() {
                 </Text>
               </HorizontalStack>
             }
-            preferredPosition="above"
+            preferredPosition="below"
           >
             <Button>U</Button>
           </Tooltip>
@@ -333,7 +352,7 @@ export function WithSuffix() {
                 </Text>
               </HorizontalStack>
             }
-            preferredPosition="above"
+            preferredPosition="below"
           >
             <Button>S</Button>
           </Tooltip>
@@ -345,7 +364,7 @@ export function WithSuffix() {
 
 export function Alignment() {
   return (
-    <Box padding="0">
+    <Box paddingBlockStart="24">
       <LegacyStack>
         <ButtonGroup segmented fullWidth>
           <Tooltip content="Content is longer than the activator">
@@ -374,20 +393,27 @@ export function Alignment() {
 
 export function HasUnderline() {
   return (
-    <Tooltip active content="This tooltip has an underline" hasUnderline>
-      <Text variant="bodyLg" fontWeight="bold" as="span">
-        Order #1001
-      </Text>
-    </Tooltip>
+    <Box paddingBlockStart="24">
+      <Tooltip active content="This tooltip has an underline" hasUnderline>
+        <Text variant="bodyLg" fontWeight="bold" as="span">
+          Order #1001
+        </Text>
+      </Tooltip>
+    </Box>
   );
 }
 
 export function PersistOnClick() {
   return (
-    <Tooltip content="This tooltip can be clicked to stay open" persistOnClick>
-      <Text variant="bodyLg" fontWeight="bold" as="span">
-        Order #1001
-      </Text>
-    </Tooltip>
+    <Box paddingBlockStart="24">
+      <Tooltip
+        content="This tooltip can be clicked to stay open"
+        persistOnClick
+      >
+        <Text variant="bodyLg" fontWeight="bold" as="span">
+          Order #1001
+        </Text>
+      </Tooltip>
+    </Box>
   );
 }
