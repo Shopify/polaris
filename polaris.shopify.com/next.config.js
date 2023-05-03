@@ -204,6 +204,11 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/selection-and-input/legacy-filters',
+    destination: '/components/deprecated/legacy-filters',
+    permanent: false,
+  },
+  {
     source: '/components/setting-toggle',
     destination: '/components/deprecated/setting-toggle',
     permanent: false,

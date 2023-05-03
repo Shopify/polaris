@@ -11,7 +11,7 @@ import {
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function FiltersWithAResourceListExample() {
+function FiltersWithQueryFieldDisabledExample() {
   const [accountStatus, setAccountStatus] = useState<string[] | undefined>(
     undefined,
   );
@@ -158,6 +158,7 @@ function FiltersWithAResourceListExample() {
               onQueryChange={handleFiltersQueryChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}
+              disableQueryField
             />
           }
           flushFilters
@@ -205,7 +206,7 @@ function FiltersWithAResourceListExample() {
       case 'taggedWith':
         return `Tagged with ${value}`;
       case 'accountStatus':
-        return value?.map((val: string) => `Customer ${val}`).join(', ');
+        return value.map((val: string) => `Customer ${val}`).join(', ');
       default:
         return value;
     }
@@ -222,4 +223,4 @@ function FiltersWithAResourceListExample() {
   }
 }
 
-export default withPolarisExample(FiltersWithAResourceListExample);
+export default withPolarisExample(FiltersWithQueryFieldDisabledExample);

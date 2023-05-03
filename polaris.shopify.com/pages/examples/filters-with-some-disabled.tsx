@@ -10,9 +10,10 @@ import {
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function FiltersDisabledExample() {
+function FiltersWithSomeDisabledExample() {
   const [taggedWith, setTaggedWith] = useState<string>('');
   const [queryValue, setQueryValue] = useState<string>('');
+  const [vendor, setVendor] = useState<string | undefined>(undefined);
 
   const handleTaggedWithChange = useCallback(
     (value: string) => setTaggedWith(value),
@@ -22,13 +23,20 @@ function FiltersDisabledExample() {
     (value: string) => setQueryValue(value),
     [],
   );
+  const handleVendorChange = useCallback(
+    (value: string) => setVendor(value),
+    [],
+  );
+
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+  const handleVendorRemove = useCallback(() => setVendor(undefined), []);
 
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove]);
+    handleVendorRemove();
+  }, [handleQueryValueRemove, handleTaggedWithRemove, handleVendorRemove]);
 
   const filters = [
     {
@@ -45,17 +53,33 @@ function FiltersDisabledExample() {
       ),
       shortcut: true,
     },
+    {
+      key: 'vendor',
+      label: 'Vendor',
+      filter: (
+        <TextField
+          label="Vendor"
+          value={vendor}
+          onChange={handleVendorChange}
+          autoComplete="off"
+          labelHidden
+        />
+      ),
+      shortcut: true,
+      disabled: true,
+    },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith',
+            label: disambiguateLabel('taggedWith', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
   return (
     <div style={{height: '568px'}}>
@@ -71,7 +95,6 @@ function FiltersDisabledExample() {
               onQueryChange={handleQueryValueChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
-              disabled
             >
               <div style={{paddingLeft: '8px'}}>
                 <Button
@@ -141,4 +164,4 @@ function FiltersDisabledExample() {
   }
 }
 
-export default withPolarisExample(FiltersDisabledExample);
+export default withPolarisExample(FiltersWithSomeDisabledExample);

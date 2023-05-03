@@ -15,7 +15,7 @@ interface StrictOption {
   /** Machine value of the option; this is the value passed to `onChange` */
   value: string;
   /** Human-readable text for the option */
-  label: string;
+  label: React.ReactNode;
   /** Option will be visible, but not selectable */
   disabled?: boolean;
   /** Element to display to the left of the option label. Does not show in the dropdown. */
