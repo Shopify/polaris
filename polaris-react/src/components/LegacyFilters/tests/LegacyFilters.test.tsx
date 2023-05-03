@@ -12,6 +12,7 @@ import {Tag} from '../../Tag';
 import {TextField} from '../../TextField';
 import {Text} from '../../Text';
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyFilters} from '../LegacyFilters';
 import type {LegacyFiltersProps} from '../LegacyFilters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
