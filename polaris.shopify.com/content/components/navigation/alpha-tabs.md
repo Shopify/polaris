@@ -1,5 +1,5 @@
 ---
-title: Tabs
+title: Alpha tabs
 description: Use to alternate among related views within the same context.
 category: Navigation
 keywords:
@@ -11,17 +11,26 @@ keywords:
   - fitted tabs
   - segmented controls
   - scrollable
+status:
+  value: Alpha
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: tabs-default.tsx
+  - fileName: alpha-tabs-default.tsx
     title: Default
     description: Use for most cases, especially when the number of tabs may be more than three.
-  - fileName: tabs-fitted.tsx
+  - fileName: alpha-tabs-inside-of-a-card.tsx
+    title: Inside of a Card
+    description: Use to display tabs inside of a [Card](/components/layout-and-structure/card).
+  - fileName: alpha-tabs-fitted.tsx
     title: Fitted
     description: Use when tabs contain a few (2 or 3) items within a narrow column.
-  - fileName: tabs-with-badge-content.tsx
+  - fileName: alpha-tabs-with-actions.tsx
+    title: With actions
+    description: Use when tabs can be altered with actions.
+  - fileName: alpha-tabs-with-badge-content.tsx
     title: With badge content
     description: Use to inform a piece of information about the tabs.
-  - fileName: tabs-with-custom-disclosure.tsx
+  - fileName: alpha-tabs-with-custom-disclosure.tsx
     title: With custom disclosure
     description: Use to provide information about the popover contents.
 ---

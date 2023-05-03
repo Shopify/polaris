@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, AlphaTabs, Box} from '@shopify/polaris';
+import {LegacyCard, AlphaTabs} from '@shopify/polaris';
 
 export default {
   component: AlphaTabs,
@@ -26,6 +26,33 @@ export function Default() {
   }));
 
   return (
+    <AlphaTabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
+      <LegacyCard.Section title={tabs[selected].content}>
+        <p>Tab {selected} selected</p>
+      </LegacyCard.Section>
+    </AlphaTabs>
+  );
+}
+
+export function InsideOfACard() {
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = (selectedTabIndex: number) =>
+    setSelected(selectedTabIndex);
+
+  const tabs = [
+    'All',
+    'Unpaid',
+    'Open',
+    'Closed',
+    'Local delivery',
+    'Local pickup',
+  ].map((item, index) => ({
+    content: item,
+    index,
+    id: `${item}-${index}`,
+  }));
+  return (
     <LegacyCard>
       <AlphaTabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
         <LegacyCard.Section title={tabs[selected].content}>
@@ -40,7 +67,7 @@ export function Fitted() {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
+    (selectedTabIndex: number) => setSelected(selectedTabIndex),
     [],
   );
 
@@ -73,6 +100,13 @@ export function Fitted() {
     </LegacyCard>
   );
 }
+
+type AlphaTabAction =
+  | 'rename'
+  | 'edit'
+  | 'edit-columns'
+  | 'duplicate'
+  | 'delete';
 
 export function WithActions() {
   const sleep = (ms: number) =>
@@ -109,22 +143,22 @@ export function WithActions() {
         ? []
         : [
             {
-              type: 'rename',
+              type: 'rename' as AlphaTabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },
             {
-              type: 'duplicate',
+              type: 'duplicate' as AlphaTabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },
             {
-              type: 'edit',
+              type: 'edit' as AlphaTabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },
             {
-              type: 'delete',
+              type: 'delete' as AlphaTabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },
@@ -145,7 +179,7 @@ export function WithBadgeContent() {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
+    (selectedTabIndex: number) => setSelected(selectedTabIndex),
     [],
   );
 
@@ -185,7 +219,7 @@ export function WithCustomDisclosure() {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
+    (selectedTabIndex: number) => setSelected(selectedTabIndex),
     [],
   );
 
@@ -241,33 +275,5 @@ export function WithCustomDisclosure() {
         </LegacyCard.Section>
       </AlphaTabs>
     </LegacyCard>
-  );
-}
-
-export function OutsideOfCard() {
-  const [selected, setSelected] = useState(0);
-
-  const handleTabChange = (selectedTabIndex: number) =>
-    setSelected(selectedTabIndex);
-
-  const tabs = [
-    'All',
-    'Unpaid',
-    'Open',
-    'Closed',
-    'Local delivery',
-    'Local pickup',
-  ].map((item, index) => ({
-    content: item,
-    index,
-    id: `${item}-${index}`,
-  }));
-
-  return (
-    <AlphaTabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
-      <LegacyCard.Section title={tabs[selected].content}>
-        <p>Tab {selected} selected</p>
-      </LegacyCard.Section>
-    </AlphaTabs>
   );
 }
