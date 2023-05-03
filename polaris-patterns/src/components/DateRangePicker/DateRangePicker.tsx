@@ -44,7 +44,7 @@ import type {
   StringDatePeriod,
 } from './types';
 
-export interface Props {
+export interface DateRangePickerProps {
   onChange: (
     selectedRange: StringDatePeriod,
     comparisonRange: StringDatePeriod,
@@ -59,7 +59,7 @@ export const DateRangePicker = ({
   initialRange,
   showComparisonRange = false,
   timeZone = '',
-}: Props) => {
+}: DateRangePickerProps) => {
   const [i18n] = useI18n();
   const {mdDown, lgUp: shouldShowMultiMonth} = useBreakpoints();
   const customRangeTitle = i18n.translate('periods.custom');

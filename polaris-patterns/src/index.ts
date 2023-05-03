@@ -7,3 +7,9 @@ export {DatePickerTextField} from './components/DatePickerTextField';
 export type {DatePickerTextFieldProps} from './components/DatePickerTextField';
 export {DateList} from './components/DateList';
 export type {DateListProps} from './components/DateList';
+
+export {DateRangePicker} from './components/DateRangePicker';
+export type {
+  DateRangePickerProps,
+  StringDatePeriod,
+} from './components/DateRangePicker';

@@ -3,7 +3,7 @@ import type {Meta, StoryFn} from '@storybook/react';
 
 import type {StringDatePeriod} from './types';
 import {DateRangePicker} from './DateRangePicker';
-import type {Props} from './DateRangePicker';
+import type {DateRangePickerProps} from './DateRangePicker';
 
 const meta: Meta = {
   component: DateRangePicker,
@@ -11,7 +11,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<Props> = (args) => {
+const Template: StoryFn<DateRangePickerProps> = (args) => {
   const [selectedRange, setSelectedRange] = useState<StringDatePeriod | null>(
     null,
   );
@@ -26,7 +26,7 @@ const Template: StoryFn<Props> = (args) => {
   return <DateRangePicker {...args} showComparisonRange onChange={onChange} />;
 };
 
-const TemplateBlur: StoryFn<Props> = (args) => {
+const TemplateBlur: StoryFn<DateRangePickerProps> = (args) => {
   const [selectedRange, setSelectedRange] = useState<StringDatePeriod | null>(
     null,
   );
