@@ -74,7 +74,7 @@ export function Tooltip({
   dismissOnMouseOut,
   active: originalActive,
   hoverDelay,
-  preferredPosition = 'below',
+  preferredPosition = 'above',
   activatorWrapper = 'span',
   accessibilityLabel,
   width = 'default',
