@@ -5,6 +5,7 @@ import {
   insertJSXComment,
   removeJSXAttributes,
   renameProps,
+  replaceJSXAttributes,
 } from '../../utilities/jsx';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
@@ -32,26 +33,34 @@ export default function v12ReactReplaceLinkComponents(
       (attribute) => attribute.name.name === 'monochrome',
     );
 
-    if (monochromeAttribute) {
-      if (!monochromeAttribute || monochromeAttribute.value !== null) {
-        insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
-        return;
-      }
+    if (monochromeAttribute && monochromeAttribute.value !== null) {
+      insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+      return;
     }
+
+    const isMonochrome = Boolean(monochromeAttribute);
 
     const removeUnderlineAttribute = jsxAttributes.find(
       (attribute) => attribute.name.name === 'removeUnderline',
     );
 
-    if (removeUnderlineAttribute) {
-      if (
-        !removeUnderlineAttribute ||
-        removeUnderlineAttribute.value !== null
-      ) {
-        insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
-        return;
-      }
+    if (removeUnderlineAttribute && removeUnderlineAttribute.value !== null) {
+      insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+      return;
     }
+
+    const isNotUnderlined = Boolean(removeUnderlineAttribute);
+
+    const externalAttribute = jsxAttributes.find(
+      (attribute) => attribute.name.name === 'external',
+    );
+
+    if (externalAttribute && externalAttribute.value !== null) {
+      insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+      return;
+    }
+
+    const isExternal = Boolean(externalAttribute);
 
     const options = {
       componentName: localElementName,
@@ -64,14 +73,18 @@ export default function v12ReactReplaceLinkComponents(
 
     renameProps(j, source, componentName, props);
 
-    if (monochromeAttribute) {
+    if (isMonochrome) {
       insertJSXAttribute(j, element, 'tone', 'inherit');
       removeJSXAttributes(j, element, 'monochrome');
     }
 
-    if (removeUnderlineAttribute) {
-      insertJSXAttribute(j, element, 'underline', 'none');
-      removeJSXAttributes(j, element, 'removeUnderline');
+    if (isNotUnderlined) {
+      replaceJSXAttributes(j, element, 'removeUnderline', '', '');
+    }
+
+    if (isExternal) {
+      insertJSXAttribute(j, element, 'target', '_blank');
+      removeJSXAttributes(j, element, 'external');
     }
   });
 
