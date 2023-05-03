@@ -29,7 +29,7 @@ export interface TooltipProps {
   dismissOnMouseOut?: TooltipOverlayProps['preventInteraction'];
   /**
    * The direction the tooltip tries to display
-   * @default 'below'
+   * @default 'above'
    */
   preferredPosition?: TooltipOverlayProps['preferredPosition'];
   /**
