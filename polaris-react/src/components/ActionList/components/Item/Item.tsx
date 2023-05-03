@@ -63,14 +63,14 @@ export function Item({
   }
 
   let contentText: string | React.ReactNode = content || '';
-  if (ellipsis) {
-    contentText = `${content}…`;
-  } else if (truncate && content) {
+  if (truncate && content) {
     contentText = (
       <Text as="span" variant="bodyMd" truncate>
         {content}
       </Text>
     );
+  } else if (ellipsis) {
+    contentText = `${content}…`;
   }
 
   const contentMarkup = helpText ? (
