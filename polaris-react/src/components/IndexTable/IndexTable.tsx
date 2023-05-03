@@ -753,7 +753,7 @@ function IndexTableBase({
   const sharedMarkup = (
     <>
       <EventListener event="resize" handler={handleResize} />
-      <AfterInitialMount>{stickyHeaderMarkup}</AfterInitialMount>
+      {stickyHeaderMarkup}
     </>
   );
 
