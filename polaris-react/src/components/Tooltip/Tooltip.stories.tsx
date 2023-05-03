@@ -5,12 +5,12 @@ import {
   Button,
   ButtonGroup,
   Icon,
-  LegacyStack,
   TextField,
   Text,
   Tooltip,
   Box,
   HorizontalStack,
+  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
@@ -37,7 +37,7 @@ export function Width() {
           active
           content="This content has the default width and will break into a new line at 200px width"
         >
-          <LegacyStack spacing="extraTight">
+          <HorizontalStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -48,14 +48,14 @@ export function Width() {
               content width
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </LegacyStack>
+          </HorizontalStack>
         </Tooltip>
         <Tooltip
           active
           content="This content has the wide width and will break into a new line at 275px width"
           width="wide"
         >
-          <LegacyStack spacing="extraTight">
+          <HorizontalStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -66,7 +66,7 @@ export function Width() {
               content width
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </LegacyStack>
+          </HorizontalStack>
         </Tooltip>
       </HorizontalStack>
     </Box>
@@ -78,7 +78,7 @@ export function Padding() {
     <Box paddingBlockStart="24">
       <HorizontalStack gap="8">
         <Tooltip active content="This content has default padding">
-          <LegacyStack spacing="extraTight">
+          <HorizontalStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -89,14 +89,14 @@ export function Padding() {
               content padding
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </LegacyStack>
+          </HorizontalStack>
         </Tooltip>
         <Tooltip
           active
           content="This content has padding of 4 (space-4 / 16px)"
           padding="4"
         >
-          <LegacyStack spacing="extraTight">
+          <HorizontalStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -107,7 +107,7 @@ export function Padding() {
               content padding
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </LegacyStack>
+          </HorizontalStack>
         </Tooltip>
       </HorizontalStack>
     </Box>
@@ -122,7 +122,7 @@ export function BorderRadius() {
           active
           content="This content has the default (radius-1) border radius"
         >
-          <LegacyStack spacing="extraTight">
+          <HorizontalStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -133,14 +133,14 @@ export function BorderRadius() {
               border radius
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </LegacyStack>
+          </HorizontalStack>
         </Tooltip>
         <Tooltip
           active
           content="This content has a border radius of 2 (radius-2)"
           borderRadius="2"
         >
-          <LegacyStack spacing="extraTight">
+          <HorizontalStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -151,7 +151,7 @@ export function BorderRadius() {
               border radius
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </LegacyStack>
+          </HorizontalStack>
         </Tooltip>
       </HorizontalStack>
     </Box>
@@ -189,19 +189,19 @@ export function VisibleOnlyWithChildInteraction() {
 
 export function WithHoverDelay() {
   return (
-    <LegacyStack vertical>
-      <LegacyStack vertical>
+    <VerticalStack gap="4">
+      <VerticalStack gap="2">
         <Text variant="headingMd" fontWeight="bold" as="h1">
           TEXT EXAMPLE
         </Text>
-        <LegacyStack>
+        <HorizontalStack>
           <Tooltip content="This should appear right away.">
             <Text variant="bodyMd" fontWeight="semibold" as="span">
               No delay
             </Text>
           </Tooltip>
-        </LegacyStack>
-        <LegacyStack>
+        </HorizontalStack>
+        <HorizontalStack>
           <Tooltip
             hoverDelay={1000}
             content="This should appear after 1 second."
@@ -210,27 +210,28 @@ export function WithHoverDelay() {
               1 second hover delay
             </Text>
           </Tooltip>
-        </LegacyStack>
-      </LegacyStack>
-      <LegacyStack vertical>
+        </HorizontalStack>
+      </VerticalStack>
+
+      <VerticalStack gap="2">
         <Text variant="headingMd" fontWeight="bold" as="h1">
           BUTTON EXAMPLE
         </Text>
-        <LegacyStack>
+        <HorizontalStack>
           <Tooltip content="This should appear right away.">
             <Button>No delay</Button>
           </Tooltip>
-        </LegacyStack>
-        <LegacyStack>
+        </HorizontalStack>
+        <HorizontalStack>
           <Tooltip
             hoverDelay={2000}
             content="This should appear after 2 seconds."
           >
             <Button>2 seconds hover delay</Button>
           </Tooltip>
-        </LegacyStack>
-      </LegacyStack>
-    </LegacyStack>
+        </HorizontalStack>
+      </VerticalStack>
+    </VerticalStack>
   );
 }
 
@@ -253,7 +254,7 @@ export function ActivatorAsDiv() {
 export function WithSuffix() {
   return (
     <Box padding="16" background="bg">
-      <LegacyStack>
+      <HorizontalStack>
         <ButtonGroup segmented fullWidth>
           <Tooltip
             content={
@@ -357,7 +358,7 @@ export function WithSuffix() {
             <Button>S</Button>
           </Tooltip>
         </ButtonGroup>
-      </LegacyStack>
+      </HorizontalStack>
     </Box>
   );
 }
@@ -365,7 +366,7 @@ export function WithSuffix() {
 export function Alignment() {
   return (
     <Box paddingBlockStart="24">
-      <LegacyStack>
+      <HorizontalStack>
         <ButtonGroup segmented fullWidth>
           <Tooltip content="Content is longer than the activator">
             <Button>Bold</Button>
@@ -386,7 +387,7 @@ export function Alignment() {
             <Button>Strikethrough</Button>
           </Tooltip>
         </ButtonGroup>
-      </LegacyStack>
+      </HorizontalStack>
     </Box>
   );
 }
