@@ -37,7 +37,7 @@ Minor contributions—like copy edits, bug fixes, and icons—are often worthwhi
 
 Major contributions typically require more evaluation. This flowchart will help you decide whether or not your solution is right for Polaris. If you’re unsure, you can always reach out to the Polaris team directly.
 
-**[ FLOWCHART HERE ]**
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FAJNvON5VAAG5vZAnX6iuVJ%2FShould-I-contribute-to-Polaris%253F%3Fnode-id%3D0%253A1%26t%3DsSVh7oVMUM9KXOnB-1" allowfullscreen></iframe>
 
 Not every solution needs to be in Polaris. If a unique solution really is best for your users, you can still build with Polaris [tokens](/tokens) and best practices. This ensures that solutions with custom styles update with the rest of Polaris.
 
