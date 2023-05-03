@@ -66,6 +66,7 @@
     "@shopify/browserslist-config": "^3.0.0",
     "@shopify/jest-dom-mocks": "^3.0.5",
     "@shopify/polaris": "^10.42.1",
+    "@shopify/polaris-tokens": "^6.10.0",
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/react-i18n": "^7.7.2",
     "@shopify/react-testing": "^4.1.0",
