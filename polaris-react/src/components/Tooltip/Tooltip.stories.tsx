@@ -10,6 +10,7 @@ import {
   Text,
   Tooltip,
   Box,
+  HorizontalStack,
 } from '@shopify/polaris';
 
 export default {
@@ -235,31 +236,104 @@ export function WithSuffix() {
     <Box padding="16" background="bg">
       <LegacyStack>
         <ButtonGroup segmented fullWidth>
-          <Tooltip content="Bold" suffix="⌘B" activatorWrapper="div">
+          <Tooltip
+            content={
+              <HorizontalStack gap="2">
+                Bold
+                <Text as="span" variant="bodyMd" color="subdued">
+                  ⌘B
+                </Text>
+              </HorizontalStack>
+            }
+            activatorWrapper="div"
+          >
             <Button>B</Button>
           </Tooltip>
-          <Tooltip content="Italic" suffix="⌘I">
+          <Tooltip
+            content={
+              <HorizontalStack gap="2">
+                Italic
+                <Text as="span" variant="bodyMd" color="subdued">
+                  ⌘I
+                </Text>
+              </HorizontalStack>
+            }
+          >
             <Button>I</Button>
           </Tooltip>
-          <Tooltip content="Underline" suffix="⌘U">
-            <Button>U</Button>
-          </Tooltip>
-          <Tooltip content="Strikethrough" suffix="⌘S">
-            <Button>S</Button>
-          </Tooltip>
-          <Tooltip content="Bold" preferredPosition="above" suffix="⌘B">
-            <Button>B</Button>
-          </Tooltip>
-          <Tooltip content="Italic" preferredPosition="above" suffix="⌘U">
-            <Button>I</Button>
-          </Tooltip>
-          <Tooltip content="Underline" preferredPosition="above" suffix="⌘U">
+          <Tooltip
+            content={
+              <HorizontalStack gap="2">
+                Underline
+                <Text as="span" variant="bodyMd" color="subdued">
+                  ⌘U
+                </Text>
+              </HorizontalStack>
+            }
+          >
             <Button>U</Button>
           </Tooltip>
           <Tooltip
-            content="Strikethrough"
+            content={
+              <HorizontalStack gap="2">
+                Strikethrough
+                <Text as="span" variant="bodyMd" color="subdued">
+                  ⌘S
+                </Text>
+              </HorizontalStack>
+            }
+          >
+            <Button>S</Button>
+          </Tooltip>
+          <Tooltip
+            content={
+              <HorizontalStack gap="2">
+                Bold
+                <Text as="span" variant="bodyMd" color="subdued">
+                  ⌘B
+                </Text>
+              </HorizontalStack>
+            }
             preferredPosition="above"
-            suffix="⌘S"
+          >
+            <Button>B</Button>
+          </Tooltip>
+          <Tooltip
+            content={
+              <HorizontalStack gap="2">
+                Italic
+                <Text as="span" variant="bodyMd" color="subdued">
+                  ⌘I
+                </Text>
+              </HorizontalStack>
+            }
+            preferredPosition="above"
+          >
+            <Button>I</Button>
+          </Tooltip>
+          <Tooltip
+            content={
+              <HorizontalStack gap="2">
+                Underline
+                <Text as="span" variant="bodyMd" color="subdued">
+                  ⌘U
+                </Text>
+              </HorizontalStack>
+            }
+            preferredPosition="above"
+          >
+            <Button>U</Button>
+          </Tooltip>
+          <Tooltip
+            content={
+              <HorizontalStack gap="2">
+                Strikethrough
+                <Text as="span" variant="bodyMd" color="subdued">
+                  ⌘S
+                </Text>
+              </HorizontalStack>
+            }
+            preferredPosition="above"
           >
             <Button>S</Button>
           </Tooltip>
@@ -274,22 +348,22 @@ export function Alignment() {
     <Box padding="0">
       <LegacyStack>
         <ButtonGroup segmented fullWidth>
-          <Tooltip content="Content is longer than the activator" suffix="⌘B">
+          <Tooltip content="Content is longer than the activator">
             <Button>Bold</Button>
           </Tooltip>
-          <Tooltip content="Italic" suffix="⌘I">
+          <Tooltip content="Italic">
             <Button>Italic</Button>
           </Tooltip>
-          <Tooltip content="Underline" suffix="⌘U">
+          <Tooltip content="Underline">
             <Button>Activator is longer than the Tooltip</Button>
           </Tooltip>
-          <Tooltip content="Content is longer than the activator" suffix="⌘S">
+          <Tooltip content="Content is longer than the activator">
             <Button>Strikethrough</Button>
           </Tooltip>
-          <Tooltip content="Content is longer than the activator" suffix="⌘S">
+          <Tooltip content="Content is longer than the activator">
             <Button>Strikethrough</Button>
           </Tooltip>
-          <Tooltip content="Content is longer than the activator" suffix="⌘S">
+          <Tooltip content="Content is longer than the activator">
             <Button>Strikethrough</Button>
           </Tooltip>
         </ButtonGroup>
