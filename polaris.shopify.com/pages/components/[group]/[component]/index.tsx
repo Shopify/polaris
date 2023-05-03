@@ -1,6 +1,8 @@
 import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
+import ts from "typescript";
+import prettier from "prettier";
 import type {GetStaticPaths, GetStaticProps} from 'next';
 import ComponentExamples from '../../../../src/components/ComponentExamples';
 import type {ComponentExample} from '../../../../src/components/ComponentExamples';
@@ -88,7 +90,7 @@ export const getStaticProps: GetStaticProps<
   const componentSlug = context.params?.component;
   const groupSlug = context.params?.group;
   const relativeMdPath = `content/components/${groupSlug}/${componentSlug}.md`;
-
+  console.log('RMDP', relativeMdPath);
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
 
@@ -110,11 +112,32 @@ export const getStaticProps: GetStaticProps<
         let code = '';
 
         if (fs.existsSync(examplePath)) {
+          console.log('reading', examplePath)
           code = fs.readFileSync(examplePath, 'utf-8');
           code = code
             .split('\n')
             .filter((line) => !line.includes('withPolarisExample'))
             .join('\n');
+
+          // Take note of new lines before TS strips them
+          code = code.replaceAll('\n\n', '/*NEWLINE*/');
+
+          // Transpile tsx to jsx
+          code = ts.transpileModule(code,
+            {
+              compilerOptions:
+              {
+                target: ts.ScriptTarget.ESNext,
+                types: ["react"],
+                jsx: ts.JsxEmit.Preserve,
+              }
+            }).outputText;
+
+          // Put the new lines back
+          code = code.replaceAll('/*NEWLINE*/', '\n\n');
+
+          // Run through Prettier to bring back formatting
+          code = prettier.format(code, { parser: "babel", singleQuote: true, bracketSpacing: false, trailingComma: "all",   });
         }
 
         return {...example, code};
