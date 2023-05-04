@@ -24,6 +24,51 @@ export default {
   component: Popover,
 } as ComponentMeta<typeof Popover>;
 
+export function WithDynamicListContent() {
+  const [popoverActive, setPopoverActive] = useState(true);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const items = Array(10).fill('XXXXX');
+  const [displayItems, setDisplayItems] = useState([...items]);
+
+  const getNextPage = () => {
+    setDisplayItems((displayItems) => [...displayItems, ...items]);
+  };
+
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      Show alerts
+    </Button>
+  );
+
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+        zIndexOverride={100}
+        captureOverscroll
+        fixed
+        fullHeight
+        preferredAlignment="center"
+      >
+        <ul>
+          {displayItems.map((item, index) => (
+            <li key={`item-${index}`}>
+              <Button onClick={getNextPage}>{item}</Button>
+            </li>
+          ))}
+        </ul>
+      </Popover>
+    </div>
+  );
+}
+
 export function WithActionList() {
   const [activePopover, setActivePopover] = useState(null);
 
