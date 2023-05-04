@@ -278,3 +278,13 @@ Use to de-emphasize a piece of text that is less important to merchants than oth
   No supplier listed
 </Text>
 ```
+
+### With dotted underline
+
+Use to de-emphasize a piece of text that is less important to merchants than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
+
+```jsx
+<Text as="p" dottedUnderline>
+  Dotted underline
+</Text>
+```

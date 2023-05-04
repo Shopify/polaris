@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyStack, Text} from '@shopify/polaris';
+import {LegacyStack, Text, VerticalStack} from '@shopify/polaris';
 
 export default {
   component: Text,
@@ -124,6 +124,16 @@ export const WithTruncate = () => (
     Vestibulum vestibulum porttitor mollis. Nam dictum ante sed lobortis
     commodo. Ut luctus ut metus vel bibendum.
   </Text>
+);
+export const WithDottedUnderline = () => (
+  <VerticalStack>
+    <Text as="p" dottedUnderline>
+      This is a regular text
+    </Text>
+    <Text as="p" dottedUnderline>
+      This is a text with dotted underline
+    </Text>
+  </VerticalStack>
 );
 
 export const ParentWithChild = () => (

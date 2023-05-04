@@ -58,6 +58,8 @@ export interface TextProps {
   variant?: Variant;
   /** Visually hide the text */
   visuallyHidden?: boolean;
+  /** Add dotted underline */
+  dottedUnderline?: boolean;
 }
 
 export const Text = ({
@@ -72,6 +74,7 @@ export const Text = ({
   truncate = false,
   variant,
   visuallyHidden = false,
+  dottedUnderline = false,
 }: TextProps) => {
   const Component = as || (visuallyHidden ? 'span' : 'p');
 
@@ -86,6 +89,7 @@ export const Text = ({
     numeric && styles.numeric,
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
+    dottedUnderline && styles.dottedUnderline,
   );
 
   return (
