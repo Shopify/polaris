@@ -28,7 +28,7 @@ export interface TooltipOverlayProps {
 export function TooltipOverlay({
   active,
   activator,
-  preferredPosition = 'below',
+  preferredPosition = 'above',
   preventInteraction,
   id,
   children,
