@@ -105,18 +105,12 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const pane = this.contentNode.current?.children[0];
     pane?.addEventListener('scroll', () => {
       if (this.contentNode.current) {
-        console.log(
-          'current pane scrollTop',
-          this.contentNode.current?.children[0].scrollTop,
-        );
-        console.log(this.contentNode.current);
         const paneScrollTop = this.contentNode.current?.children[0].scrollTop;
 
         if (paneScrollTop) {
           this.scrollOffset = paneScrollTop;
         }
       }
-      console.log('scrollOffset', this.scrollOffset);
     });
   }
 
@@ -137,16 +131,16 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     }
 
     // restore saved scroll offset
-    setTimeout(
-      function () {
-        if (this.scrollOffset) {
-          console.log('restoring scrollOffset to', this.scrollOffset);
-          const contentDiv = this.contentNode.current;
-          contentDiv?.children[0].scrollTo(0, this.scrollOffset);
-        }
-      }.bind(this),
-      0,
-    );
+    const storedScrollOffset = this.scrollOffset;
+    const contentDiv = this.contentNode.current;
+    setTimeout(function () {
+      if (storedScrollOffset) {
+        contentDiv?.children[0].scrollTo({
+          top: storedScrollOffset,
+          behavior: 'instant' as ScrollBehavior,
+        });
+      }
+    }, 0);
   }
 
   componentWillUnmount() {
@@ -258,28 +252,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     if (Boolean(desiredHeight) && desiredHeight !== this.calculatedHeight) {
       this.calculatedHeight = desiredHeight;
     }
-
-    // const getContentStyles = () => {
-    //   // return measuring ? undefined : {height: desiredHeight};
-    //   if (!desiredHeight && !this.calculatedHeight && measuring) {
-    //     return undefined;
-    //   }
-
-    //   // const minHeight = Math.min(desiredHeight, this.calculatedHeight || 0);
-
-    //   return {height: desiredHeight || this.calculatedHeight};
-    // };
-
-    // const contentStyles = getContentStyles();
-
-    // const contentStyles = measuring
-    //   ? {
-    //       minHeight: Math.max(
-    //         this.contentNode.current?.clientHeight as unknown as number,
-    //         this.calculatedHeight || 0,
-    //       ),
-    //     }
-    //   : {height: desiredHeight};
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
 
