@@ -18,7 +18,7 @@ export interface LinkProps {
   /** Sets the link color the same as the current text color */
   tone?: 'inherit' | 'critical';
   /** Sets text decoration underline on the link
-   * @default 'hover'
+   * @default 'always'
    */
   underline?: 'always' | 'hover' | 'none';
   /** Callback when a link is clicked */
@@ -43,7 +43,7 @@ export function Link({
   accessibilityLabel,
   dataPrimaryLink,
   tone,
-  underline,
+  underline = 'always',
   language,
 }: LinkProps) {
   const className = classNames(
