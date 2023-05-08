@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixed the border radius of the DropZone component.
+Fixed the border radius of `DropZone`
