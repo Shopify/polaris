@@ -9,13 +9,12 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {classNames, sanitizeCustomProperties} from '../../utilities/css';
-import type {ResponsiveValue} from '../../styles/atoms.css';
-import {mapResponsiveValue, atoms} from '../../styles/atoms.css';
 
+import type {ResponsiveValue} from './Box.css';
+import {mapResponsiveValue, atoms} from './Box.css';
 import styles from './Box.scss';
 
 type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
-
 type LineStyles = 'solid' | 'dashed';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
@@ -219,18 +218,18 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingBlock: paddingBlock
         ? mapResponsiveValue(paddingBlock, (value) => value ?? padding)
         : undefined,
-      // paddingInlineStart: paddingInlineStart
-      //   ? mapResponsiveValue(paddingInlineStart, (value) => value ?? padding)
-      //   : undefined,
-      // paddingInlineEnd: paddingInlineEnd
-      //   ? mapResponsiveValue(paddingInlineEnd, (value) => value ?? padding)
-      //   : undefined,
-      // paddingBlockStart: paddingBlockStart
-      //   ? mapResponsiveValue(paddingBlockStart, (value) => value ?? padding)
-      //   : undefined,
-      // paddingBlockEnd: paddingBlockEnd
-      //   ? mapResponsiveValue(paddingBlockEnd, (value) => value ?? padding)
-      //   : undefined,
+      paddingInlineStart: paddingInlineStart
+        ? mapResponsiveValue(paddingInlineStart, (value) => value ?? padding)
+        : undefined,
+      paddingInlineEnd: paddingInlineEnd
+        ? mapResponsiveValue(paddingInlineEnd, (value) => value ?? padding)
+        : undefined,
+      paddingBlockStart: paddingBlockStart
+        ? mapResponsiveValue(paddingBlockStart, (value) => value ?? padding)
+        : undefined,
+      paddingBlockEnd: paddingBlockEnd
+        ? mapResponsiveValue(paddingBlockEnd, (value) => value ?? padding)
+        : undefined,
     });
 
     const style = {
