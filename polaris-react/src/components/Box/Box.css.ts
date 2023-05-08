@@ -1,13 +1,14 @@
 import {
+  //   breakpoints,
   color as colorTokens,
   spacing as spacingTokens,
 } from '@shopify/polaris-tokens';
-import type {ConditionalValue} from '@vanilla-extract/sprinkles';
 import {
   defineProperties,
   createSprinkles,
   createMapValueFn,
 } from '@vanilla-extract/sprinkles';
+import type {ConditionalValue} from '@vanilla-extract/sprinkles';
 
 const colors = Object.fromEntries(
   Object.entries(colorTokens).map(([key, value]) => [key, value]),
@@ -26,7 +27,12 @@ const colorProperties = defineProperties({
 
 const responsiveProperties = defineProperties({
   conditions: {
-    // These can be generated from tokens
+    // ...Object.fromEntries(
+    //   Object.entries(breakpoints).map(([key, value]) => [
+    //     key.split('-')[1],
+    //     {'@media': `screen and (min-width: ${value})`},
+    //   ]),
+    // ),
     xs: {},
     sm: {'@media': 'screen and (min-width: 490px)'},
     md: {'@media': 'screen and (min-width: 768px)'},
@@ -43,10 +49,10 @@ const responsiveProperties = defineProperties({
     paddingRight: spacing,
     paddingInline: spacing,
     paddingBlock: spacing,
-    // paddingBlockStart: spacing,
-    // paddingBlockEnd: spacing,
-    // paddingInlineStart: spacing,
-    // paddingInlineEnd: spacing,
+    paddingBlockStart: spacing,
+    paddingBlockEnd: spacing,
+    paddingInlineStart: spacing,
+    paddingInlineEnd: spacing,
   },
 });
 
