@@ -6,8 +6,25 @@ Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 - [Node support](#node-support)
 - [Components](#components)
-  - [Removed deprecated Collapsible argument](#removed-deprecated-collapsible-argument)
-  - [Removed KonamiCode component](#removed-konamicode-component)
+  - [Removed Collapsible deprecated preventMeasuringOnChildrenUpdate prop](#removed-collapsible-deprecated-preventMeasuringOnChildrenUpdate-prop)
+  - [Removed Page deprecated breadcrumbs prop](#removed-page-deprecated-breadcrumbs-prop)
+  - [Removed Breadcrumbs deprecated breadcrumbs prop](#removed-breadcrumbs-deprecated-breadcrumbs-prop)
+  - [Removed KonamiCode](#removed-konamicode)
+  - [Removed DisplayText](#removed-displaytext)
+  - [Removed Heading](#removed-heading)
+  - [Removed Subheading](#removed-subheading)
+  - [Removed Caption](#removed-caption)
+  - [Removed TextStyle](#removed-textstyle)
+  - [Removed VisuallyHidden](#removed-visuallyhidden)
+  - [Migrated Stack to LegacyStack](#migrated-stack-to-legacystack)
+  - [Migrated Card to LegacyCard](#migrated-card-to-legacycard)
+  - [Migrated Filters to LegacyFilters](#migrated-filters-to-legacyfilters)
+  - [Migrated Tabs to LegacyTabs](#migrated-tabs-to-legacytabs)
+  - [Renamed Inline](#renamed-inline)
+  - [Renamed AlphaStack](#renamed-alphastack)
+  - [Renamed AlphaCard](#renamed-alphacard)
+  - [Renamed AlphaFilters](#renamed-alphafilters)
+  - [Renamed AlphaTabs](#renamed-alphatabs)
 - [Tokens](#tokens)
   - [Border](#border)
   - [Color](#color)
@@ -38,15 +55,459 @@ Polaris no longer supports multiple versions of TypeScript with downlevel-dts. P
 
 ## Components
 
-### Removed deprecated Collapsible argument
+### Removed Collapsible deprecated preventMeasuringOnChildrenUpdate prop
 
-We've removed the following deprecated prop from the Collapsible component:
+The deprecated `preventMeasuringOnChildrenUpdate` prop has been removed from the `Collapsible` component and is no longer supported.
 
-`- preventMeasuringOnChildrenUpdate?: boolean;`
+### Removed Page deprecated breadcrumbs prop
 
-### Removed KonamiCode component
+The deprecated `breadcrumbs` prop has been removed from the `Page` component and is no longer supported. The new `backAction` prop serves the same functionality and accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
 
-We are removing low usage components from Polaris. We love fun but we also want to ensure we are shipping exactly what our users need. If you want to use this in your project feel free to copy the [component sourcecode](https://github.com/Shopify/polaris/blob/%40shopify/polaris%4010.24.0/polaris-react/src/components/KonamiCode/KonamiCode.tsx).
+To replace the `breadcrumbs` prop with `backAction`, you can run the [v11-react-update-page-breadcrumbs](https://polaris.shopify.com/tools/polaris-migrator#v11-react-update-page-breadcrumbs) migration:
+
+```diff
+- <Page breadcrumbs={[{url: '/testing', content: 'Home'}]}>
++ <Page backAction={{url: '/testing', content: 'Home'}}>
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v11-react-update-page-breadcrumbs <path>
+```
+
+<br />
+
+### Removed Breadcrumbs deprecated breadcrumbs prop
+
+The deprecated `breadcrumbs` prop has been removed from the `Breadcrumbs` component and is no longer supported. The new `backAction` prop serves the same functionality and accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
+
+To replace the `breadcrumbs` prop with `backAction`, you can run the generic [v11-react-update-page-breadcrumbs](https://polaris.shopify.com/tools/polaris-migrator#v11-react-update-page-breadcrumbs) migration:
+
+```diff
+- <Page breadcrumbs={[{url: '/testing', content: 'Home'}]}>
++ <Page backAction={{url: '/testing', content: 'Home'}}>
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Breadcrumbs" --from="breadcrumbs" --to="backAction"
+```
+
+<br />
+
+### Removed KonamiCode
+
+Low usage components are being removed from Polaris. We love fun but we also want to ensure we are shipping exactly what our users need. If you want to use this in your project feel free to copy the [component sourcecode](https://github.com/Shopify/polaris/blob/%40shopify/polaris%4010.24.0/polaris-react/src/components/KonamiCode/KonamiCode.tsx).
+
+### Removed DisplayText
+
+The `DisplayText` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
+
+To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v10-react-replace-text-components <path>
+```
+
+<br />
+
+To manually migrate `DisplayText` to `Text`, use the following methods:
+
+#### Small
+
+```diff
+- <DisplayText size="small">Sales this year</DisplayText>
++ <Text as="p" variant="headingLg">Sales this year</Text>
+```
+
+#### Medium
+
+```diff
+- <DisplayText size="medium">Sales this year</DisplayText>
++ <Text as="p" variant="headingXl">Sales this year</Text>
+```
+
+#### Large
+
+```diff
+- <DisplayText size="large">Sales this year</DisplayText>
++ <Text as="p" variant="heading2xl">Sales this year</Text>
+```
+
+#### Extra large
+
+```diff
+- <DisplayText size="extraLarge">Sales this year</DisplayText>
++ <Text as="p" variant="heading4xl">Sales this year</Text>
+```
+
+### Removed Heading
+
+The `Heading` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
+
+To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-components](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration:
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v10-react-replace-text-components <path>
+```
+
+<br />
+
+To manually migrate `Heading` to `Text`, use the following method:
+
+```diff
+- <Heading>Online store dashboard</Heading>
++ <Text as="h2" variant="headingMd">Online store dashboard</Text>
+```
+
+### Removed Subheading
+
+The `Subheading` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
+
+To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-components](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration:
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v10-react-replace-text-components <path>
+```
+
+<br />
+
+To manually migrate `Subheading` to `Text`, use the following method:
+
+```diff
+- <Subheading>Accounts</Subheading>
++ <Text as="h3" variant="headingXs">Accounts</Text>
+```
+
+### Removed Caption
+
+The `Caption` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
+
+To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-components](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration:
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v10-react-replace-text-components <path>
+```
+
+<br />
+
+To manually migrate `Caption` to `Text`, use the following method:
+
+```diff
+- <Caption>Received April 21, 2017</Caption>
++ <Text as="p" variant="bodySm">Received April 21, 2017</Text>
+```
+
+### Removed TextStyle
+
+The `TextStyle` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
+
+To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `TextStyle`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-components](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration:
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v10-react-replace-text-components <path>
+```
+
+<br />
+
+To manually migrate `TextStyle` to `Text`, use the following methods:
+
+#### Subdued
+
+```diff
+- <TextStyle variation="subdued">No supplier listed</TextStyle>
++ <Text as="span" color="subdued">No supplier listed</Text>
+```
+
+#### Strong
+
+```diff
+- <TextStyle variation="strong">No supplier listed</TextStyle>
++ <Text as="span" fontWeight="semibold">No supplier listed</Text>
+```
+
+#### Positive
+
+```diff
+- <TextStyle variation="positive">No supplier listed</TextStyle>
++ <Text as="span" color="success">No supplier listed</Text>
+```
+
+#### Negative
+
+```diff
+- <TextStyle variation="negative">No supplier listed</TextStyle>
++ <Text as="span" color="critical">No supplier listed</Text>
+```
+
+#### Warning
+
+```diff
+- <TextStyle variation="warning">No supplier listed</TextStyle>
++ <Text as="span" color="warning">No supplier listed</Text>
+```
+
+#### Code
+
+```diff
+- <TextStyle variation="code">No supplier listed</TextStyle>
++ <Text as="span"><InlineCode>No supplier listed</InlineCode></Text>
+```
+
+### Removed VisuallyHidden
+
+The `VisuallyHidden` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
+
+To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `VisuallyHidden`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-components](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration:
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v10-react-replace-text-components <path>
+```
+
+<br />
+
+To manually migrate `VisuallyHidden` to `Text`, use the following method:
+
+```diff
+- <VisuallyHidden>
+-   <Heading>Title and description</Heading>
+- </VisuallyHidden>
++ <Text visuallyHidden variant="headingMd" as="h2">Title and description</Text>
+```
+
+<br />
+
+### Migrated Stack to LegacyStack
+
+The `Stack` component was built prior to layout components such as `Box`, `HorizontalStack`, and `VerticalStack`. The layout components define the structure and spacing of user interfaces in a fast and composable way for consistent layouts across pages of an application. These components can be used to quickly create flexible pages and features without worrying about the underlying structure or CSS code.
+
+The `LegacyStack` component is a duplicate of the `Stack` component. To replace `Stack` with `LegacyStack`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <Stack prop />
++ <LegacyStack prop />
+- export interface StackProps {}
++ export interface LegacyStackProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Stack" --renameTo="LegacyStack" --renamePropsFrom="StackProps" --renamePropsTo="LegacyStackProps"
+```
+
+<br />
+
+### Migrated Card to LegacyCard
+
+The `Card` component was built prior to layout components such as `Box`. The layout components define the structure and spacing of user interfaces in a fast and composable way for consistent layouts across pages of an application. These components can be used to quickly create flexible pages and features without worrying about the underlying structure or CSS code, so we have created a new `Card` component using the layout primitives.
+
+The `LegacyCard` component is a duplicate of the `Card` component. To replace `Card` with `LegacyCard`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <Card prop />
++ <LegacyCard prop />
+- export interface CardProps {}
++ export interface LegacyCardProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Card" --renameTo="LegacyCard" --renamePropsFrom="CardProps" --renamePropsTo="LegacyCardProps"
+```
+
+<br />
+
+### Migrated Filters to LegacyFilters
+
+The `Filters` component has been updated with a new UI.
+
+The `LegacyFilters` component is a duplicate of the `Filters` component. To replace `Filters` with `LegacyFilters`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <Filters prop />
++ <LegacyFilters prop />
+- export interface FiltersProps {}
++ export interface LegacyFiltersProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Filters" --renameTo="LegacyFilters" --renamePropsFrom="FiltersProps" --renamePropsTo="LegacyFiltersProps"
+```
+
+<br />
+
+### Migrated Tabs to LegacyTabs
+
+The `Tabs` component has been updated with a new UI.
+
+The `LegacyTabs` component is a duplicate of the `Tabs` component. To replace `Tabs` with `LegacyTabs`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <Tabs prop />
++ <LegacyTabs prop />
+- export interface TabsProps {}
++ export interface LegacyTabsProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Tabs" --renameTo="LegacyTabs" --renamePropsFrom="TabsProps" --renamePropsTo="LegacyTabsProps"
+```
+
+<br />
+
+### Renamed Inline
+
+The `Inline` component has been renamed to `HorizontalStack`.
+
+To rename `Inline` to `HorizontalStack`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <Inline prop />
++ <HorizontalStack prop />
+- export interface InlineProps {}
++ export interface HorizontalStackProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Inline" --renameTo="HorizontalStack" --renamePropsFrom="InlineProps" --renamePropsTo="HorizontalStackProps"
+```
+
+<br />
+
+### Renamed AlphaStack
+
+The `AlphaStack` component has been renamed to `VerticalStack`.
+
+To rename `AlphaStack` to `VerticalStack`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <AlphaStack prop />
++ <VerticalStack prop />
+- export interface AlphaStackProps {}
++ export interface VerticalStackProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="AlphaStack" --renameTo="VerticalStack" --renamePropsFrom="AlphaStackProps" --renamePropsTo="VerticalStackProps"
+```
+
+<br />
+
+### Renamed AlphaCard
+
+The `AlphaCard` component has been renamed to `Card`.
+
+⚠️ Important: This migration can only be run after migrating usage of the existing `Card` component to `LegacyCard`! ⚠️
+
+We are planning on deprecating and removing the existing `Card` component in favor of the new, more flexible `AlphaCard` component. `AlphaCard` has been available since v10.5.0 of `@shopify/polaris`. If there are any existing instances of `Card` in the codebase, migrations to rename `Card` to `LegacyCard` **must be run first** before migrations to rename `AlphaCard` to `Card`. The API for these two compononents are incompatible and will cause errors.
+
+To rename `AlphaCard` to `Card`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <AlphaCard prop />
++ <Card prop />
+- export interface AlphaCardProps {}
++ export interface CardProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="AlphaCard" --renameTo="Card" --renamePropsFrom="AlphaCardProps" --renamePropsTo="CardProps"
+```
+
+<br />
+
+### Renamed AlphaFilters
+
+The `AlphaFilters` component has been renamed to `Filters`.
+
+⚠️ Important: This migration can only be run after migrating usage of the existing `Filters` component to `LegacyFilters`! ⚠️
+
+We are planning on deprecating and removing the existing `Filters` component in favor of the new `AlphaFilters` component with updated designs. `AlphaFilters` has been available since v10.39.0 of `@shopify/polaris`. If there are any existing instances of `Filters` in the codebase, migrations to rename `Filters` to `LegacyFilters` **must be run first** before migrations to rename `AlphaFilters` to `Filters`. The API for these two compononents are incompatible and will cause errors.
+
+To rename `AlphaFilters` to `Filters`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <AlphaFilters prop />
++ <Filters prop />
+- export interface AlphaFiltersProps {}
++ export interface FiltersProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="AlphaFilters" --renameTo="Filters" --renamePropsFrom="AlphaFiltersProps" --renamePropsTo="FiltersProps"
+```
+
+<br />
+
+### Renamed AlphaTabs
+
+The `AlphaTabs` component has been renamed to `Tabs`.
+
+⚠️ Important: This migration can only be run after migrating usage of the existing `Tabs` component to `LegacyTabs`! ⚠️
+
+We are planning on deprecating and removing the existing `Tabs` component in favor of the new `AlphaTabs` component with updated designs. `AlphaTabs` has been available since v10.39.0 of `@shopify/polaris`. If there are any existing instances of `Tabs` in the codebase, migrations to rename `Tabs` to `LegacyTabs` **must be run first** before migrations to rename `AlphaTabs` to `Tabs`. The API for these two compononents are incompatible and will cause errors.
+
+To rename `AlphaTabs` to `Tabs`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- <AlphaTabs prop />
++ <Tabs prop />
+- export interface AlphaTabsProps {}
++ export interface TabsProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="AlphaTabs" --renameTo="Tabs" --renamePropsFrom="AlphaTabsProps" --renamePropsTo="TabsProps"
+```
+
+<br />
+
+> Note: If the `AlphaTabProp` type is being used in the codebase, it requires an additional migration **after** `AlphaTabs` has been migrated and renamed to `Tabs`.
+
+To rename `AlphaTabProps` to `TabProps`, you can run the generic [react-rename-component](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration:
+
+```diff
+- export interface AlphaTabProps {}
++ export interface TabProps {}
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator react-rename-component <path> --renamePropsFrom="AlphaTabProps" --renamePropsTo="TabProps"
+```
+
+<br />
 
 ## Tokens
 
