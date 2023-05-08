@@ -1,10 +1,13 @@
 # Migrating from v10 to v11
 
-Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/releases/tag/v11.0.0)) features...
+Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/releases/tag/v11.0.0)) features changes to supported versions for dependencies, removal of components, renamed components, and token changes.
 
 ## Table of Contents
 
 - [Node support](#node-support)
+- [React support](#react-support)
+- [Webpack support](#webpack-support)
+- [TypeScript](#typescript)
 - [Components](#components)
   - [Removed Collapsible deprecated preventMeasuringOnChildrenUpdate prop](#removed-collapsible-deprecated-preventMeasuringOnChildrenUpdate-prop)
   - [Removed Page deprecated breadcrumbs prop](#removed-page-deprecated-breadcrumbs-prop)
