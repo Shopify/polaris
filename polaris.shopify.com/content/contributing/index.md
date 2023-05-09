@@ -11,7 +11,7 @@ newSection: true
 icon: MobilePlusMajor
 ---
 
-All Shopify employees, regardless of discipline, are encouraged to contribute to Polaris. We welcome everything from copy edits and bug fixes to new components and patterns. We also consider feedback from our open source community.
+Anyone, regardless of discipline, is encouraged to contribute to Polaris. We welcome everything from copy edits and bug fixes to new components.
 
 ## Should I contribute?
 
