@@ -98,7 +98,7 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack blockAlign="center" gap="4" wrap={!truncate}>
+    <HorizontalStack blockAlign="center" gap="3" wrap={!truncate}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
