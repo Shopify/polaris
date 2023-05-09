@@ -154,10 +154,8 @@ export const TruncateText = ({children}: {children: string}) => {
     }
   }, [children]);
   const text = (
-    <span ref={textRef}>
-      <Text as="span" truncate>
-        {children}
-      </Text>
+    <span ref={textRef} className={styles.Truncate}>
+      {children}
     </span>
   );
 
@@ -168,9 +166,13 @@ export const TruncateText = ({children}: {children: string}) => {
       hoverDelay={1000}
       content={textRef.current?.innerText}
     >
-      {text}
+      <Text as="span" truncate>
+        {children}
+      </Text>
     </Tooltip>
   ) : (
-    text
+    <Text as="span" truncate>
+      {text}
+    </Text>
   );
 };
