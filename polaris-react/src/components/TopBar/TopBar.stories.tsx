@@ -24,7 +24,7 @@ function TopBarWrapper({
   customActivator?: UserMenuProps['customActivator'];
   message?: UserMenuProps['message'];
 }) {
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -79,6 +79,7 @@ function TopBarWrapper({
       detail={detail && detail}
       initials={initials ? initials : 'JD'}
       customActivator={customActivator}
+      customWidth="300px"
       message={message}
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
@@ -193,7 +194,7 @@ export function WithCustomActivator() {
   );
 }
 
-export function withMessage() {
+export function WithMessage() {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
