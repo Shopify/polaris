@@ -27,7 +27,7 @@ Major contributions, like patterns or some components, typically require more ev
 
 Generally, we can classify contributions as minor or major. Minor contributions can be made by an individual or a small team, and the solution is often clear and simple. Major contributions usually introduce breaking changes to the system and require greater involvement from the Polaris team.
 
-Specific contribution types include:
+For example:
 
 - Bug fixes and documentation (minor)
 - Icon additions or updates (minor)
