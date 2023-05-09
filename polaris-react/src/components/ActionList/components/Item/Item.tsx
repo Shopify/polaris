@@ -159,6 +159,12 @@ export const TruncateText = ({children}: {children: string}) => {
     </span>
   );
 
+  const truncatedText = (
+    <Text as="span" truncate>
+      {isOverflowing ? children : text}
+    </Text>
+  );
+
   return isOverflowing ? (
     <Tooltip
       zIndexOverride={514}
@@ -166,13 +172,9 @@ export const TruncateText = ({children}: {children: string}) => {
       hoverDelay={1000}
       content={textRef.current?.innerText}
     >
-      <Text as="span" truncate>
-        {children}
-      </Text>
+      {truncatedText}
     </Tooltip>
   ) : (
-    <Text as="span" truncate>
-      {text}
-    </Text>
+    truncatedText
   );
 };
