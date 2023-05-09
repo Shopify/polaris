@@ -19,7 +19,7 @@
   scrollbar-width: thin;
 
   @if $onRoot {
-    @supports selector(::-webkit-scrollbar-thumb) {
+    @supports #{'\selector(*::-webkit-scrollbar-thumb)'} {
       overflow-y: scroll;
     }
   }
