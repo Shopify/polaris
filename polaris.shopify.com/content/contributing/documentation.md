@@ -19,7 +19,7 @@ Most documentation about the design system is meant for polaris.shopify.com. How
 
 Edits related to spelling, grammar, punctuation, or other typos should happen quickly and often. Both Shopify employees and open source contributors are welcome to submit copy edits.
 
-To fix any copy issues on polaris.shopify.com, [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
+To fix any copy issues on polaris.shopify.com, open a pull request in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
 
 Note: If you find copy issues in other Polaris resources, follow the steps for that resource’s contribution guidelines.
 
@@ -30,7 +30,7 @@ To expand or edit existing documentation:
 1. Draft your proposed changes in Google Docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
 2. Get feedback from subject matter experts or someone with high context around your changes, like a team member or your lead.
 3. Reach out to the Polaris team to review your changes for style guide alignment.
-4. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
+4. Open a pull request in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
 
 ## Adding new documentation
 
@@ -42,7 +42,7 @@ To create new documentation:
 
 2. Draft the content in Google docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
 3. Get feedback from subject matter experts, or someone with high context around your changes (team member, manager, etc.).
-4. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
+4. Open a pull request in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
 
 ## Removing documentation
 
@@ -51,4 +51,4 @@ It’s important that inaccurate or outdated information be removed as soon as p
 To remove documentation:
 
 1. Reach out to subject matter experts, or someone with high context around the existing content, to confirm its relevance and accuracy
-2. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo
+2. Open a pull request in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo

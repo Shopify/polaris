@@ -21,7 +21,7 @@ Bug fixes can be as simple as removing a typo, or as complex as refactoring a co
 
 Start planning your contribution as early as possible to account for the scope in your timeline. To get help with the strategy for your contribution early on, start a [discussion](https://github.com/Shopify/polaris/discussions/new) with the Polaris community. If you have a smaller question, reach out in #polaris if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you’re an open source contributor. Once you’ve decided on the best way to solve the problem, submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) issue. Then contribute the change by shipping a pull request.
 
-Often the changes you make to a component’s code impact the [documentation](/contributing/documentation) and [Figma UI Kit](/contributing/figma-ui-kit). If you work at Shopify, component contributions should be a team effort across disciplines. If you’re an open source contributor, we’ll work with you to update the Figma UI Kit once you [create an issue](https://github.com/Shopify/polaris/issues/new/choose) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the `Shopify/polaris` repo.
+Often the changes you make to a component’s code impact the [documentation](/contributing/documentation) and [Figma UI Kit](/contributing/figma-ui-kit). If you work at Shopify, component contributions should be a team effort across disciplines. If you’re an open source contributor, we’ll work with you to update the Figma UI Kit once you [create an issue](https://github.com/Shopify/polaris/issues/new/choose) or open a pull request in the `Shopify/polaris` repo.
 
 ## Update props
 
@@ -37,7 +37,7 @@ Components should be performant, accessible, and maintainable. When contributing
 - Address a pain point in the merchant experience
 - Reduce complexity of the source code
 
-If a component isn’t flexible enough to meet your project’s requirements, or you’re unsure whether a component is right for your use case, submit an [issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) outlining the problem and the approach you’re thinking about. We’re happy to collaborate to find a solution.
+If a component isn’t flexible enough to meet your project’s requirements, or you’re unsure whether a component is right for your use case, submit an [issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or open a pull request outlining the problem and the approach you’re thinking about. We’re happy to collaborate to find a solution.
 
 ### How to contribute
 
@@ -45,13 +45,12 @@ To add or update a prop:
 
 1. Explore and align on whether to add a new prop or update the types of an existing prop
 2. Submit or assign yourself to an existing [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md)
-3. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment)
-4. Add your change to the props interface
-5. Include or update the description comment
-6. Update the `@default` value if relevant in the props interface and in the props deconstruction at the start of the component’s definition
-7. Add tests to cover the changes
-8. Add examples to the component’s documentation
-9. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr)
+3. Add your change to the props interface
+4. Include or update the description comment
+5. Update the `@default` value if relevant in the props interface and in the props deconstruction at the start of the component’s definition
+6. Add tests to cover the changes
+7. Add examples to the component’s documentation
+8. Commit your changes and open a pull request
 
 ---
 
@@ -70,16 +69,15 @@ If you’re just getting started with contributing to Polaris React, look for is
 ### How to contribute
 
 1. Submit or assign yourself to a [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md).
-2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment).
-3. Assess the time and difficulty of finding and fixing the problem code.
-4. If you discover that fixing the bug is too complex or will take longer than you’re able to commit, that’s okay! Your findings will help the next developer move the needle on shipping a fix.
+2. Assess the time and difficulty of finding and fixing the problem code.
+3. If you discover that fixing the bug is too complex or will take longer than you’re able to commit, that’s okay! Your findings will help the next developer move the needle on shipping a fix.
    <br /> - Update the issue with a comment detailing your findings. Describe the problem code and share permalinks to the lines involved.
    <br /> - If you have a potential fix locally, commit and push your changes and open a draft pull request that links to the bug report.
    <br /> - Add or update the issue’s labels to indicate level of difficulty.
    <br /> - Unassign yourself from the issue.
-5. If after investigating you arrive at a solution to the issue:
+4. If after investigating you arrive at a solution to the issue:
    <br /> - Update the issue so everyone knows a fix is on the way.
-   <br /> - Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr).
+   <br /> - Commit your changes and open a pull request
 
 ---
 
@@ -106,6 +104,5 @@ The Deliver team partnered with the Polaris team to improve the UX of tag autoco
 ### How to contribute
 
 1. Submit or assign yourself to an existing [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [new component proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=&template=NEW_COMPONENT.md)
-2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment)
-3. Prototype and iterate on your proposal, testing with merchants as you iterate if possible
-4. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr)
+2. Prototype and iterate on your proposal, testing with merchants as you iterate if possible
+3. Commit your changes and open a pull request
