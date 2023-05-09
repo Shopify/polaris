@@ -47,7 +47,7 @@ With the exception of our Figma UI kits, all contributions to Polaris are made t
 - [Figma UI kit](/contributing/figma-ui-kit)
 - Patterns (reach out to #polaris directly in Slack)
 
-Minor contributions can usually be started directly through a GitHub pull request, but if you’re unsure, you can always check with the Polaris team. For major contributions, we recommend creating a contribution proposal.
+Minor or patch contributions can usually be started directly through a GitHub pull request, but if you’re unsure, you can always check with the Polaris team. For major contributions, we recommend creating a contribution proposal.
 
 ### Proposing a contribution
 
