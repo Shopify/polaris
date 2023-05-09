@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react';
+import {zIndex} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -163,10 +164,10 @@ export const TruncateText = ({children}: {children: string}) => {
 
   return isOverflowing ? (
     <Tooltip
-      zIndexOverride={514}
+      zIndexOverride={Number(zIndex['z-6'])}
       preferredPosition="above"
       hoverDelay={1000}
-      content={textRef.current?.innerText}
+      content={children}
     >
       <Text as="span" truncate>
         {children}
