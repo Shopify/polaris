@@ -1,5 +1,6 @@
 ---
 title: Contributing to Polaris React
+navTitle: Components
 description: Anyone is welcome to contribute to Polaris React components. There are several types of component contributions, but they typically fall under three categories; bug fix, enhancement, or new pattern.
 keywords:
   - components
@@ -13,7 +14,7 @@ keywords:
   - improve ux
   - improve accessibility
   - open source
-order: 2
+order: 1
 ---
 
 Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component’s documentation, or by adding new components or utilities. Often component contributions are a mix of these.

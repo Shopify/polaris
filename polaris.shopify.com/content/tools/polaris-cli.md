@@ -1,5 +1,6 @@
 ---
 title: Polaris CLI
+navTitle: CLI
 description: Commands for building Shopify Apps with Polaris.
 icon: CodeMajor
 order: 2

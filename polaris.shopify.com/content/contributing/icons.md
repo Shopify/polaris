@@ -1,12 +1,13 @@
 ---
 title: Contributing to Polaris Icons
+navTitle: Icons
 keywords:
   - icons
   - add a new icon
   - deprecate an icon
   - update an icon
   - how to contribute to polaris icons
-order: 1
+order: 3
 ---
 
 Polaris Icons are important visual aids that help merchants understand actions and concepts across the Shopify Admin. Whether your team needs to add, modify, or deprectate an icon, all designers and developers that work at Shopify are welcome to contribute.
