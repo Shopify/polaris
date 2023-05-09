@@ -65,7 +65,7 @@ export function Section({
         <Box
           paddingBlockStart="4"
           paddingInlineStart="4"
-          paddingBlockEnd="2"
+          paddingBlockEnd="0"
           paddingInlineEnd="4"
         >
           <Text as="p" variant="headingXs">
@@ -96,7 +96,6 @@ export function Section({
       <Box
         as="ul"
         padding="2"
-        {...(hasMultipleSections && {paddingBlockStart: '0'})}
         {...(sectionRole && {role: sectionRole})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
@@ -111,7 +110,6 @@ export function Section({
       role="presentation"
       borderColor="border-subdued"
       {...(!isFirst && {borderBlockStartWidth: '1'})}
-      {...(!section.title && {paddingBlockStart: '2'})}
     >
       {sectionMarkup}
     </Box>
