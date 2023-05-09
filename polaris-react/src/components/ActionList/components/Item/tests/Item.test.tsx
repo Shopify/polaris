@@ -107,7 +107,7 @@ describe('<Item />', () => {
     const item = mountWithApp(
       <Item
         content="Test longer than usual string that probably overflows."
-        truncate={true}
+        truncate
       />,
     );
     expect(item).toContainReactComponent(TruncateText, {
