@@ -69,7 +69,7 @@
 .Cell {
   font-weight: var(--p-font-weight-regular);
   color: var(--p-color-text);
-  padding: var(--p-space-4);
+  padding: var(--p-space-3) var(--p-space-4);
   white-space: nowrap;
   text-align: left;
   transition: background-color var(--p-motion-duration-200)
