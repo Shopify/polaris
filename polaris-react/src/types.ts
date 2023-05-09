@@ -398,6 +398,8 @@ export interface FilterInterface {
    * Whether or not the clear button is displayed
    */
   hideClearButton?: boolean;
+  /** Suffix source */
+  suffix?: React.ReactNode;
   /** Optional callback when filter is pressed */
   onAction?: () => void;
 }

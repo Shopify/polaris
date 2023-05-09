@@ -6,6 +6,7 @@ import {ActionList} from '../../ActionList';
 import {AlphaFilters} from '../AlphaFilters';
 import type {AlphaFiltersProps} from '../AlphaFilters';
 import {FilterPill} from '../components';
+import {Indicator} from '../../Indicator';
 
 describe('<AlphaFilters />', () => {
   let originalScroll: any;
@@ -77,6 +78,22 @@ describe('<AlphaFilters />', () => {
         expect.objectContaining({content: defaultProps.filters[2].label}),
       ],
     });
+  });
+
+  it('displays an indicator when the indicator prop is true', () => {
+    const filters = [
+      {
+        key: 'foo',
+        label: 'Foo',
+        pinned: false,
+        filter: <div>Filter</div>,
+      },
+    ];
+    const alphaFilters = mountWithApp(
+      <AlphaFilters {...defaultProps} filters={filters} indicator />,
+    );
+
+    expect(alphaFilters).toContainReactComponent(Indicator);
   });
 
   it('renders the unpinned disabled filters inside a Popover', () => {

@@ -15,6 +15,7 @@ import {HorizontalStack} from '../HorizontalStack';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
 import {Button} from '../Button';
+import {Indicator} from '../Indicator';
 
 import {FilterPill, SearchField} from './components';
 import styles from './AlphaFilters.scss';
@@ -101,6 +102,8 @@ export interface AlphaFiltersProps {
   borderlessQueryField?: boolean;
   /** Whether an asyncronous task is currently being run. */
   loading?: boolean;
+  /** Whether the indicator should be displayed. */
+  indicator?: boolean;
   mountedState?: TransitionStatus;
 }
 
@@ -124,6 +127,7 @@ export function AlphaFilters({
   loading,
   disableFilters,
   mountedState,
+  indicator,
 }: AlphaFiltersProps) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
@@ -199,6 +203,7 @@ export function AlphaFilters({
         >
           <span>{i18n.translate('Polaris.Filters.addFilter')}</span>
           <PlusMinor />
+          {indicator && <Indicator pulse={false} />}
         </UnstyledButton>
       </Text>
     </div>
