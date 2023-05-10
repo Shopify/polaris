@@ -32,25 +32,23 @@ To learn about best practices for designing and using Polaris icons, read the [i
 ## Add or edit an icon
 
 1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md)
-2. [Set up your development environment](/contributing/shipping-your-contribution#get-set-up)
-3. If you are adding an icon:
+2. If you are adding an icon:
    <br /> - Copy and rename the icon template files
    <br /> - Add the exported icon SVG to the `.svg` file
    <br /> - Add the icon metadata to the `.yml` file
-4. If you are editing an existing icon:
+3. If you are editing an existing icon:
    <br /> - Replace the existing icon SVG in the `.svg` file
    <br /> - Update the relevant metadata in the `.yml` file
-5. Run `yarn changeset` to add an entry to the change log and release notes
-6. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the Shopify/polaris GitHub repo
-7. Update the Polaris Icon Library in Figma
+4. Run `yarn changeset` to add an entry to the change log and release notes
+5. Commit your changes and open a pull request in the Shopify/polaris GitHub repo
+6. Update the Polaris Icon Library in Figma
 
 ## Deprecate an icon
 
 1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md).
-2. [Set up your development environment](/contributing/shipping-your-contribution#get-set-up).
-3. If you are deprecating an icon without replacement:
+2. If you are deprecating an icon without replacement:
    <br /> - Add `deprecated: true` to the icon’s `.yml` file.
-4. If you are deprecating an icon with replacement:
+3. If you are deprecating an icon with replacement:
    <br /> - Rename the icon’s `.svg` and `.yml` files.
    <br /> - Add `deprecated_aliases` to the `.yml` file.
    <br /> - List each of the icon’s previous names. For example, if you were to rename `OldMajor` to `NewMajor`, you would add these lines to `NewMajor.yml`:
@@ -61,6 +59,6 @@ To learn about best practices for designing and using Polaris icons, read the [i
      - OldMajor
    ```
 
-5. Run `yarn changeset` to add an entry to the change log and release notes.
-6. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the Shopify/polaris GitHub repo.
-7. Update the Polaris Icon Library in Figma.
+4. Run `yarn changeset` to add an entry to the change log and release notes.
+5. Commit your changes and open a pull request in the [Shopify/polaris](https://github.com/Shopify/polaris) GitHub repo.
+6. Update the Polaris Icon Library in Figma.
