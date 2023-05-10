@@ -70,7 +70,8 @@ The deprecated `preventMeasuringOnChildrenUpdate` prop has been removed from the
 
 The deprecated `breadcrumbs` prop has been removed from the `Page` component and is no longer supported. The new `backAction` prop serves the same functionality and accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
 
-**Migration**<br>
+#### Migration
+
 To replace the `breadcrumbs` prop with `backAction`, you can run the [v11-react-update-page-breadcrumbs](https://polaris.shopify.com/tools/polaris-migrator#v11-react-update-page-breadcrumbs) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```diff
@@ -82,7 +83,7 @@ To replace the `breadcrumbs` prop with `backAction`, you can run the [v11-react-
 npx @shopify/polaris-migrator v11-react-update-page-breadcrumbs <path>
 ```
 
-**Post-Migration Validation**
+#### Post-Migration Validation
 
 After migrating you can use the following RegExp to check for any additional instances of `<Page breadcrumbs="..." />` across all file types:
 
@@ -123,7 +124,8 @@ Low usage components are being removed from Polaris. We love fun but we also wan
 
 The `DisplayText` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
 
-**Automated Migration**
+#### Automated Migration
+
 To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-component](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```sh
@@ -136,38 +138,40 @@ Note if you only want to run this migration on `DisplayText` and not the other l
 npx @shopify/polaris-migrator v10-react-replace-text-components --componentName='DisplayText' <path>
 ```
 
-**Manual Migration**
+#### Manual Migration
+
 To manually migrate `DisplayText` to `Text`, use the following methods:
 
-_Small_
+##### Small
 
 ```diff
 - <DisplayText size="small">Sales this year</DisplayText>
 + <Text as="p" variant="headingLg">Sales this year</Text>
 ```
 
-_Medium_
+##### Medium
 
 ```diff
 - <DisplayText size="medium">Sales this year</DisplayText>
 + <Text as="p" variant="headingXl">Sales this year</Text>
 ```
 
-_Large_
+##### Large
 
 ```diff
 - <DisplayText size="large">Sales this year</DisplayText>
 + <Text as="p" variant="heading2xl">Sales this year</Text>
 ```
 
-_Extra large_
+##### Extra large
 
 ```diff
 - <DisplayText size="extraLarge">Sales this year</DisplayText>
 + <Text as="p" variant="heading4xl">Sales this year</Text>
 ```
 
-**Post-Migration Validation**
+#### Post-Migration Validation
+
 After migrating use the following to check for any additional instances of `DisplayText` across all file types:
 
 ```
@@ -182,7 +186,8 @@ Polaris-DisplayText
 
 The `Heading` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
 
-**Automated Migration**
+#### Automated Migration
+
 To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-components](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```sh
@@ -195,7 +200,8 @@ Note if you only want to run this migration on `Heading` and not the other legac
 npx @shopify/polaris-migrator v10-react-replace-text-components --componentName='Heading' <path>
 ```
 
-**Manual Migration**
+#### Manual Migration
+
 To manually migrate `Heading` to `Text`, use the following method:
 
 ```diff
@@ -203,7 +209,8 @@ To manually migrate `Heading` to `Text`, use the following method:
 + <Text as="h2" variant="headingMd">Online store dashboard</Text>
 ```
 
-**Post-Migration Validation**
+#### Post-Migration Validation
+
 After migrating use the following to check for any additional instances of `Heading` across all file types:
 
 ```
