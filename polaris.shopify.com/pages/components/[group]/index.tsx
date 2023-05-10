@@ -75,7 +75,7 @@ export default function GroupPage({
       </Grid>
       {tip && (
         <TipBanner title="Tip">
-          <Markdown>{tip}</Markdown>
+          <p>{tip}</p>
         </TipBanner>
       )}
     </>
