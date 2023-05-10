@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Banner} from '../../Banner';
 import {UnstyledLink} from '../../UnstyledLink';
 import {Link} from '../Link';
 
@@ -37,20 +36,6 @@ describe('<Link />', () => {
     });
   });
 
-  describe('external link', () => {
-    it('adds target blank and noopener noreferrer if external', () => {
-      const link = mountWithApp(
-        <Link url="https://help.shopify.com/" external>
-          Shopify Help Center
-        </Link>,
-      );
-      const htmlLink = link.find('a');
-
-      expect(htmlLink?.props.target).toBe('_blank');
-      expect(htmlLink?.props.rel).toBe('noopener noreferrer');
-    });
-  });
-
   describe('target', () => {
     it('adds target blank and noopener noreferrer', () => {
       const link = mountWithApp(
@@ -63,59 +48,17 @@ describe('<Link />', () => {
       expect(htmlLink?.props.target).toBe('_blank');
       expect(htmlLink?.props.rel).toBe('noopener noreferrer');
     });
-
-    it('does not override external prop', () => {
-      const link = mountWithApp(
-        <Link url="https://help.shopify.com/" external target="_top">
-          Shopify Help Center
-        </Link>,
-      );
-      const htmlLink = link.find('a');
-
-      expect(htmlLink?.props.target).toBe('_blank');
-      expect(htmlLink?.props.rel).toBe('noopener noreferrer');
-    });
   });
 
   describe('monochrome link', () => {
-    it('outputs a monochrome unstyled link if rendered within a banner', () => {
+    it('outputs a monochrome link', () => {
       const link = mountWithApp(
-        <Banner>
-          <Link url="https://examp.le">Some content</Link>
-        </Banner>,
+        <Link url="https://examp.le" monochrome>
+          Some content
+        </Link>,
       );
 
       expect(link).toContainReactComponent(UnstyledLink, {
-        className: expect.stringContaining('monochrome'),
-      });
-    });
-
-    it('does not output a monochrome unstyled link if it is not rendered within a banner', () => {
-      const link = mountWithApp(
-        <Link url="https://examp.le">Some content</Link>,
-      );
-
-      expect(link).not.toContainReactComponent(UnstyledLink, {
-        className: expect.stringContaining('monochrome'),
-      });
-    });
-
-    it('outputs a monochrome button if rendered within a banner', () => {
-      const button = mountWithApp(
-        <Banner>
-          <Link>Some content</Link>
-        </Banner>,
-      );
-
-      expect(button).toContainReactComponent('button', {
-        className: expect.stringContaining('monochrome'),
-      });
-    });
-
-    it('does not output a monochrome button if it is not rendered within a banner', () => {
-      const button = mountWithApp(<Link>Some content</Link>);
-
-      expect(button).not.toContainReactComponent('button', {
         className: expect.stringContaining('monochrome'),
       });
     });

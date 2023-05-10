@@ -18,18 +18,9 @@ export function Monochrome() {
   );
 }
 
-export function MonochromeInABanner() {
+export function RemoveUnderline() {
   return (
-    <Banner>
-      Learn more about{' '}
-      <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
-    </Banner>
-  );
-}
-
-export function External() {
-  return (
-    <Link url="https://help.shopify.com/manual" external>
+    <Link url="https://help.shopify.com/manual" removeUnderline>
       Shopify Help Center
     </Link>
   );
