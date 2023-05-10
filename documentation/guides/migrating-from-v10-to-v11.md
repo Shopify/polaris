@@ -753,23 +753,13 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-border <path>
 
 After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:
 
-<details>
-  <summary>Check RegExp for hardcoded <code>border</code> custom properties across all file types</summary>
-
 ```
 --p-border-radius-base|--p-border-radius-large|--p-border-radius-half|--p-border-base|--p-border-dark|--p-border-transparent|--p-border-divider|--p-border-divider-on-dark
 ```
 
-</details>
-
-<details>
-    <summary>Check RegExp for outdated <code>&lt;Divider border="..." /&gt;</code> props</summary>
-
 ```
 <Divider[^>\w](?:[^>]|\n)*?border
 ```
-
-</details>
 
 ### Color
 
