@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Recalculated IndexTable column widths when the sticky header is rendered.
+Recalculated IndexTable sticky header column widths inside of a `useIsomorphicLayoutEffect` after the table is updated.
