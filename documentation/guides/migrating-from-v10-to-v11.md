@@ -723,20 +723,20 @@ The following tokens have either been renamed or removed. You will need to repla
 
 ### Border
 
-To replace these deprecated border custom properties, you can run the [v11-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-border) migration.
+#### Automated Migration
+
+To replace these deprecated `border` custom properties, you can run the [v11-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-border) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - border: var(--p-border-divider);
 + border: var(--p-border-width-1) solid var(--p-color-border-subdued);
 ```
 
-<br />
-
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-border <path>
 ```
 
-<br />
+#### Manual Migration
 
 | Deprecated Token             | Replacement Value                                             |
 | ---------------------------- | ------------------------------------------------------------- |
@@ -749,9 +749,31 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-border <path>
 | `--p-border-divider`         | `var(--p-border-width-1) solid var(--p-color-border-subdued)` |
 | `--p-border-divider-on-dark` | `var(--p-border-width-1) solid var(--p-color-border-inverse)` |
 
+#### Post-Migration Validation
+
+After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:
+
+<details>
+  <summary>Check RegExp for hardcoded <code>border</code> custom properties across all file types</summary>
+
+```
+--p-border-radius-base|--p-border-radius-large|--p-border-radius-half|--p-border-base|--p-border-dark|--p-border-transparent|--p-border-divider|--p-border-divider-on-dark
+```
+
+</details>
+
+<details>
+    <summary>Check RegExp for outdated <code>&lt;Divider border="..." /&gt;</code> props</summary>
+
+```
+<Divider[^>\w](?:[^>]|\n)*?border
+```
+
+</details>
+
 ### Color
 
-To replace these deprecated color custom properties, you can run the [v11-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-color) migration.
+To replace these deprecated color custom properties, you can run the [v11-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-color) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - color: var(--p-text);
@@ -913,7 +935,7 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-color <path>
 
 ### Depth
 
-To replace these deprecated depth custom properties, you can run the [v11-styles-replace-custom-property-depth](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-depth) migration.
+To replace these deprecated depth custom properties, you can run the [v11-styles-replace-custom-property-depth](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-depth) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - box-shadow: var(--p-shadow-transparent);
@@ -945,7 +967,7 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-depth <path>
 
 ### Legacy
 
-To replace these deprecated legacy custom properties, you can run the [v11-styles-replace-custom-property-legacy](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-legacy) migration.
+To replace these deprecated legacy custom properties, you can run the [v11-styles-replace-custom-property-legacy](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-legacy) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - z-index: var(--p-override-loading-z-index);
@@ -986,7 +1008,7 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-legacy <path>
 
 ### Motion
 
-To replace these deprecated motion custom properties, you can run the [v11-styles-replace-custom-property-motion](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-motion) migration.
+To replace these deprecated motion custom properties, you can run the [v11-styles-replace-custom-property-motion](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-motion) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - transition-timing-function: var(--p-linear);
@@ -1029,7 +1051,7 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-motion <path>
 
 ### Z-index
 
-To replace these deprecated z-index custom properties, you can run the [v11-styles-replace-custom-property-zindex](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-zindex) migration.
+To replace these deprecated z-index custom properties, you can run the [v11-styles-replace-custom-property-zindex](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-zindex) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - z-index: var(--p-z-1);
