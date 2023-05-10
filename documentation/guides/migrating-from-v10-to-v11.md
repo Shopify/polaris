@@ -28,6 +28,7 @@ Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/release
   - [Renamed AlphaCard](#renamed-alpha-card)
   - [Renamed AlphaFilters](#renamed-alpha-filters)
   - [Renamed AlphaTabs](#renamed-alpha-tabs)
+  - [Recommended Component Migration Workflow](#recommended-component-migration-workflow)
 - [Tokens](#tokens)
   - [Border](#border)
   - [Color](#color)
@@ -35,6 +36,7 @@ Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/release
   - [Motion](#motion)
   - [Legacy](#legacy)
   - [Z-index](#z-index)
+  - [Recommended Token Migration Workflow](#recommended-token-migration-workflow)
 
 ## Node support
 
@@ -58,6 +60,8 @@ Polaris no longer supports multiple versions of TypeScript with `downlevel-dts`.
 
 ## Components
 
+The following components have either been renamed, migrated, or removed. Please review each component section to determine whether you can resolve these breaking changes with a migration or if they must be handled manually.
+
 ### Removed Collapsible deprecated preventMeasuringOnChildrenUpdate prop
 
 The deprecated `preventMeasuringOnChildrenUpdate` prop has been removed from the `Collapsible` component and is no longer supported.
@@ -66,7 +70,7 @@ The deprecated `preventMeasuringOnChildrenUpdate` prop has been removed from the
 
 The deprecated `breadcrumbs` prop has been removed from the `Page` component and is no longer supported. The new `backAction` prop serves the same functionality and accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
 
-To replace the `breadcrumbs` prop with `backAction`, you can run the [v11-react-update-page-breadcrumbs](https://polaris.shopify.com/tools/polaris-migrator#v11-react-update-page-breadcrumbs) migration.
+To replace the `breadcrumbs` prop with `backAction`, you can run the [v11-react-update-page-breadcrumbs](https://polaris.shopify.com/tools/polaris-migrator#v11-react-update-page-breadcrumbs) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```diff
 - <Page breadcrumbs={[{url: '/testing', content: 'Home'}]}>
@@ -80,6 +84,12 @@ npx @shopify/polaris-migrator v11-react-update-page-breadcrumbs <path>
 ```
 
 <br />
+
+After running this migration you can use the following RegExp to check for any additional instances of <Page breadcrumbs="..." /> across all file types:
+
+```
+<Page[^>\w](?:[^>]|\n)\*?breadcrumbs
+```
 
 ### Removed Breadcrumbs deprecated breadcrumbs prop
 
@@ -510,9 +520,42 @@ npx @shopify/polaris-migrator react-rename-component <path> --renamePropsFrom="A
 
 <br />
 
+### Recommended Component Migration Workflow
+
+When running component migrations we suggest following the following workflow:
+
+- Handle automatic migrations
+  ```sh
+  # Example migration
+  npx @shopify/polaris-migrator ...
+  # Stash files with "polaris-migrator:" comments
+  git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+  # Stage all migrated files without "polaris-migrator:" comments
+  git add .
+  # Format staged files only
+  git diff --staged --name-only | xargs npx prettier --write
+  #  Commit automatic migrations
+  git commit -m "Migrate X to Y"
+  ```
+- Handle manual migrations
+  ```sh
+  # Bring back the files with "polaris-migrator:" comments
+  git stash pop
+  ```
+  - Search for "polaris-migrator:" comments and handle manual migrations
+  - Search for Polaris class overrides and handle manual migrations (e.g. Polaris-Card)
+    ```sh
+    # Stage all manually migrated files
+    git add .
+    # Format staged files only
+    git diff --staged --name-only | xargs npx prettier --write
+    #  Commit manual migrations
+    git commit -m "Manually migrate X to Y"
+    ```
+
 ## Tokens
 
-The following tokens have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents.
+The following tokens have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents. Please review each token section for migrations that can be run to resolve these breaking changes.
 
 ### Border
 
@@ -851,3 +894,33 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
 | `--p-z-10`       | `--p-z-index-10`  |
 | `--p-z-11`       | `--p-z-index-11`  |
 | `--p-z-12`       | `--p-z-index-12`  |
+
+### Recommended Token Migration Workflow
+
+When running token migrations we suggest following the following workflow:
+
+- Handle automatic migrations
+  ```sh
+  # Example migration
+  npx @shopify/polaris-migrator ...
+  # Stage all migrated files
+  git add .
+  # Format staged files only
+  git diff --staged --name-only | xargs npx prettier --write
+  #  Commit automatic migrations
+  git commit -m "Migrate X custom properties from Polaris v10 to v11"
+  ```
+- Handle manual migrations
+  - Search for token RegExps and handle manual migrations
+    ```sh
+    # Stage all manually migrated files
+    git add .
+    # Format staged files only
+    git diff --staged --name-only | xargs npx prettier --write
+    #  Commit manual migrations
+    git commit -m "Manually migrate X custom properties from Polaris v10 to v11"
+    ```
+- Check `stylelint-polaris` for errors after all custom property migrations are finished
+  ```sh
+  npx stylelint <path>
+  ```
