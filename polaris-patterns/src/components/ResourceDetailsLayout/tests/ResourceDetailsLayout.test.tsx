@@ -1,18 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {ResourceDetailsLayout} from '../ResourceDetailsLayout';
 
 describe('<ResourceDetailsLayout />', () => {
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
-  afterEach(() => {
-    matchMedia.restore();
-  });
-
   it('renders children', () => {
     const layout = mountWithApp(
       <ResourceDetailsLayout>
