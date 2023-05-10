@@ -60,7 +60,7 @@ Polaris no longer supports multiple versions of TypeScript with `downlevel-dts`.
 
 ## Components
 
-The following components have either been renamed, migrated, or removed. Please review each component section to determine whether you can resolve these breaking changes with a migration or if they must be handled manually.
+The following components have either been renamed, migrated, or removed. Please review each component section to determine whether you can resolve these breaking changes with a migration and/or if they must be handled manually.
 
 ### Removed Collapsible deprecated preventMeasuringOnChildrenUpdate prop
 
@@ -88,7 +88,7 @@ npx @shopify/polaris-migrator v11-react-update-page-breadcrumbs <path>
 After migrating you can use the following RegExp to check for any additional instances of `<Page breadcrumbs="..." />` across all file types:
 
 ```
-<Page[^>\w](?:[^>]|\n)\*?breadcrumbs
+<Page[^>\w](?:[^>]|\n)*?breadcrumbs
 ```
 
 ### Removed Breadcrumbs deprecated breadcrumbs prop
@@ -105,7 +105,7 @@ To replace the `breadcrumbs` prop with `backAction`, you can run the generic [re
 ```
 
 ```sh
-npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Breadcrumbs" --from="breadcrumbs" --to="backAction"
+npx @shopify/polaris-migrator react-rename-component-prop --componentName="Breadcrumbs" --from="breadcrumbs" --to="backAction" <path>
 ```
 
 #### Post-Migration Validation
@@ -113,7 +113,7 @@ npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName
 After migrating you can use the following RegExp to check for any additional instances of `<Breadcrumbs breadcrumbs="..." />` across all file types:
 
 ```
-<Breadcrumbs[^>\w](?:[^>]|\n)\*?breadcrumbs
+<Breadcrumbs[^>\w](?:[^>]|\n)*?breadcrumbs
 ```
 
 ### Removed KonamiCode
@@ -130,6 +130,12 @@ To replace the six removed typography components (`DisplayText`, `Heading`, `Sub
 
 ```sh
 npx @shopify/polaris-migrator v10-react-replace-text-components <path>
+```
+
+Note if you only want to run this migration on `DisplayText` and not the other legacy text components you can run:
+
+```sh
+npx @shopify/polaris-migrator v10-react-replace-text-components --componentName='DisplayText' <path>
 ```
 
 #### Manual Migration
@@ -698,7 +704,7 @@ When running component migrations we suggest following the following workflow:
   git add .
   # Format staged files only
   git diff --staged --name-only | xargs npx prettier --write
-  #  Commit automated migrations
+  # Commit automated migrations
   git commit -m "Migrate X to Y"
   ```
 - Handle manual migrations
@@ -713,7 +719,7 @@ When running component migrations we suggest following the following workflow:
     git add .
     # Format staged files only
     git diff --staged --name-only | xargs npx prettier --write
-    #  Commit manual migrations
+    # Commit manual migrations
     git commit -m "Manually migrate X to Y"
     ```
 
@@ -1151,7 +1157,7 @@ When running token migrations we suggest following the following workflow:
   git add .
   # Format staged files only
   git diff --staged --name-only | xargs npx prettier --write
-  #  Commit automated migrations
+  # Commit automated migrations
   git commit -m "Migrate X custom properties from Polaris v10 to v11"
   ```
 - Handle manual migrations
@@ -1161,10 +1167,10 @@ When running token migrations we suggest following the following workflow:
     git add .
     # Format staged files only
     git diff --staged --name-only | xargs npx prettier --write
-    #  Commit manual migrations
+    # Commit manual migrations
     git commit -m "Manually migrate X custom properties from Polaris v10 to v11"
     ```
-- Check `stylelint-polaris` for errors after all custom property migrations are finished
+- Optionally if you use `stylelint-polaris`, you can check for errors after all custom property migrations are finished
   ```sh
   npx stylelint <path>
   ```
