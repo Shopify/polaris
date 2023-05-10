@@ -122,9 +122,9 @@ Low usage components are being removed from Polaris. We love fun but we also wan
 
 ### Removed DisplayText
 
-The `DisplayText` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
+The `DisplayText` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography tokens and improves our foundation for flexibility and composability, all in one component.
 
-#### Automated Migration
+#### Migration
 
 To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-component](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
@@ -138,9 +138,21 @@ Note if you only want to run this migration on `DisplayText` and not the other l
 npx @shopify/polaris-migrator v10-react-replace-text-components --componentName='DisplayText' <path>
 ```
 
-#### Manual Migration
+#### Post-Migration Validation
 
-To manually migrate `DisplayText` to `Text`, use the following methods:
+After migrating use the following to check for any additional instances of `DisplayText` across all file types:
+
+```
+<DisplayText
+```
+
+```
+Polaris-DisplayText
+```
+
+#### Replacement Maps
+
+These are suggested replacements for existing text style components, but ultimately the best replacement should be evaluated based on the context of the usage. The `Text` component also requires setting the semantically appropriate html element through the `as` prop.
 
 ##### Small
 
@@ -168,18 +180,6 @@ To manually migrate `DisplayText` to `Text`, use the following methods:
 ```diff
 - <DisplayText size="extraLarge">Sales this year</DisplayText>
 + <Text as="p" variant="heading4xl">Sales this year</Text>
-```
-
-#### Post-Migration Validation
-
-After migrating use the following to check for any additional instances of `DisplayText` across all file types:
-
-```
-<DisplayText
-```
-
-```
-Polaris-DisplayText
 ```
 
 ### Removed Heading
