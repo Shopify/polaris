@@ -16,12 +16,17 @@
 }
 
 @mixin custom-scrollbars($onRoot: false) {
+  --scrollbar-thumb-background: rgba(0, 0, 0, 0.25);
   scrollbar-width: thin;
 
   @if $onRoot {
-    @supports #{'\selector(*::-webkit-scrollbar-thumb)'} {
+    @supports #{'\selector(*::-webkit-scrollbar)'} {
       overflow-y: overlay;
     }
+  }
+
+  @if $onRoot == false {
+    overflow: overlay;
   }
 
   &::-webkit-scrollbar {
@@ -33,17 +38,18 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0);
+    background: var(--scrollbar-thumb-background);
     border-radius: 100px;
-    transition: all 0.2s linear;
   }
 
-  &:hover {
+  @if $onRoot == false {
     &::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0);
+    }
 
-      &:hover {
-        background: rgba(0, 0, 0, 0.5);
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb-background);
       }
     }
   }
