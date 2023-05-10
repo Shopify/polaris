@@ -8,7 +8,6 @@ import {Status, StatusName} from '../../types';
 import styles from './PatternsPage.module.scss';
 import Preview from '../ThumbnailPreview';
 import {patterns, legacyPatterns} from '../../utils/various';
-import UpdateBanner from '../UpdateBanner';
 import {FoundationsProps} from '../FoundationsPage/FoundationsPage';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 import StatusBanner from '../StatusBanner';
