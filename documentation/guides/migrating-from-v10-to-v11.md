@@ -83,6 +83,7 @@ npx @shopify/polaris-migrator v11-react-update-page-breadcrumbs <path>
 ```
 
 **Post-Migration Validation**
+
 After migrating you can use the following RegExp to check for any additional instances of `<Page breadcrumbs="..." />` across all file types:
 
 ```
