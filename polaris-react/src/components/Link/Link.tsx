@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {UnstyledLink} from '../UnstyledLink';
 import type {Target} from '../../types';
