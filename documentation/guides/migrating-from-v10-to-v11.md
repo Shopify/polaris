@@ -71,7 +71,6 @@ The deprecated `preventMeasuringOnChildrenUpdate` prop has been removed from the
 The deprecated `breadcrumbs` prop has been removed from the `Page` component and is no longer supported. The new `backAction` prop serves the same functionality and accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
 
 **Migration**
-
 To replace the `breadcrumbs` prop with `backAction`, you can run the [v11-react-update-page-breadcrumbs](https://polaris.shopify.com/tools/polaris-migrator#v11-react-update-page-breadcrumbs) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```diff
@@ -84,7 +83,6 @@ npx @shopify/polaris-migrator v11-react-update-page-breadcrumbs <path>
 ```
 
 **Post-Migration Validation**
-
 After migrating you can use the following RegExp to check for any additional instances of `<Page breadcrumbs="..." />` across all file types:
 
 ```
@@ -96,7 +94,6 @@ After migrating you can use the following RegExp to check for any additional ins
 The deprecated `breadcrumbs` prop has been removed from the `Breadcrumbs` component and is no longer supported. The new `backAction` prop serves the same functionality and accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L119-L128).
 
 **Migration**
-
 To replace the `breadcrumbs` prop with `backAction`, you can run the generic [react-rename-component-prop](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```diff
@@ -109,7 +106,6 @@ npx @shopify/polaris-migrator react-rename-component-prop --componentName="Bread
 ```
 
 **Post-Migration Validation**
-
 After migrating you can use the following RegExp to check for any additional instances of `<Breadcrumbs breadcrumbs="..." />` across all file types:
 
 ```
@@ -125,7 +121,6 @@ Low usage components are being removed from Polaris. We love fun but we also wan
 The `DisplayText` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
 
 **Automated Migration**
-
 To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-component](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```sh
@@ -139,7 +134,6 @@ npx @shopify/polaris-migrator v10-react-replace-text-components --componentName=
 ```
 
 **Manual Migration**
-
 To manually migrate `DisplayText` to `Text`, use the following methods:
 
 _Small_
@@ -171,7 +165,6 @@ _Extra large_
 ```
 
 **Post-Migration Validation**
-
 After migrating use the following to check for any additional instances of `DisplayText` across all file types:
 
 ```
@@ -187,7 +180,6 @@ Polaris-DisplayText
 The `Heading` component has been removed in favor of the `Text` component. The `Text` component simplifies designing with typography and improves our foundation for flexibility and composability, all in one component.
 
 **Automated Migration**
-
 To replace the six removed typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden`), you can run the [v10-react-replace-text-components](https://polaris.shopify.com/tools/polaris-migrator#v10-react-replace-text-components) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```sh
@@ -201,7 +193,6 @@ npx @shopify/polaris-migrator v10-react-replace-text-components --componentName=
 ```
 
 **Manual Migration**
-
 To manually migrate `Heading` to `Text`, use the following method:
 
 ```diff
@@ -210,7 +201,6 @@ To manually migrate `Heading` to `Text`, use the following method:
 ```
 
 **Post-Migration Validation**
-
 After migrating use the following to check for any additional instances of `Heading` across all file types:
 
 ```
