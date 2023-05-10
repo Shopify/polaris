@@ -143,6 +143,26 @@ describe('<AlphaFilters />', () => {
     });
   });
 
+  it('will not open the popover for an applied filter by default', () => {
+    const appliedFilters = [
+      {
+        ...defaultProps.filters[2],
+        label: 'Bux',
+        value: ['Bux'],
+        onRemove: jest.fn(),
+      },
+    ];
+    const wrapper = mountWithApp(
+      <AlphaFilters {...defaultProps} appliedFilters={appliedFilters} />,
+    );
+
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
+    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
+      label: 'Bux',
+      initialActive: false,
+    });
+  });
+
   it('correctly invokes the onRemove callback when clicking on an applied filter', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
