@@ -2,6 +2,8 @@ import type {PropsWithChildren} from 'react';
 import React from 'react';
 import {VerticalStack, HorizontalGrid, AlphaCard} from '@shopify/polaris';
 
+export type ResourceDetailsLayoutProps = PropsWithChildren;
+
 export const ResourceDetailsLayout: React.FunctionComponent<PropsWithChildren> & {
   PrimarySection: typeof PrimarySection;
   SecondarySection: typeof SecondarySection;
