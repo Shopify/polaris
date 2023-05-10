@@ -14,8 +14,6 @@ export interface LinkProps {
   url?: string;
   /** The content to display inside the link */
   children?: React.ReactNode;
-  /** Makes the link open in a new tab */
-  external?: boolean;
   /** Where to display the url */
   target?: Target;
   /** Makes the link color the same as the current text color and adds an underline */
@@ -34,7 +32,6 @@ export function Link({
   url,
   children,
   onClick,
-  external,
   target,
   id,
   monochrome,
@@ -42,43 +39,34 @@ export function Link({
   accessibilityLabel,
   dataPrimaryLink,
 }: LinkProps) {
-  return (
-    <BannerContext.Consumer>
-      {(BannerContext) => {
-        const shouldBeMonochrome = monochrome || BannerContext;
+  const className = classNames(
+    styles.Link,
+    monochrome && styles.monochrome,
+    removeUnderline && styles.removeUnderline,
+  );
 
-        const className = classNames(
-          styles.Link,
-          shouldBeMonochrome && styles.monochrome,
-          removeUnderline && styles.removeUnderline,
-        );
-
-        return url ? (
-          <UnstyledLink
-            onClick={onClick}
-            className={className}
-            url={url}
-            external={external}
-            target={target}
-            id={id}
-            aria-label={accessibilityLabel}
-            data-primary-link={dataPrimaryLink}
-          >
-            {children}
-          </UnstyledLink>
-        ) : (
-          <button
-            type="button"
-            onClick={onClick}
-            className={className}
-            id={id}
-            aria-label={accessibilityLabel}
-            data-primary-link={dataPrimaryLink}
-          >
-            {children}
-          </button>
-        );
-      }}
-    </BannerContext.Consumer>
+  return url ? (
+    <UnstyledLink
+      onClick={onClick}
+      className={className}
+      url={url}
+      target={target}
+      id={id}
+      aria-label={accessibilityLabel}
+      data-primary-link={dataPrimaryLink}
+    >
+      {children}
+    </UnstyledLink>
+  ) : (
+    <button
+      type="button"
+      onClick={onClick}
+      className={className}
+      id={id}
+      aria-label={accessibilityLabel}
+      data-primary-link={dataPrimaryLink}
+    >
+      {children}
+    </button>
   );
 }
