@@ -70,6 +70,8 @@ The deprecated `preventMeasuringOnChildrenUpdate` prop has been removed from the
 
 The deprecated `breadcrumbs` prop has been removed from the `Page` component and is no longer supported. The new `backAction` prop serves the same functionality and accepts a [`LinkAction` object](https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L113-L122).
 
+#### Migration
+
 To replace the `breadcrumbs` prop with `backAction`, you can run the [v11-react-update-page-breadcrumbs](https://polaris.shopify.com/tools/polaris-migrator#v11-react-update-page-breadcrumbs) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
 
 ```diff
@@ -77,13 +79,11 @@ To replace the `breadcrumbs` prop with `backAction`, you can run the [v11-react-
 + <Page backAction={{url: '/testing', content: 'Home'}}>
 ```
 
-<br />
-
 ```sh
 npx @shopify/polaris-migrator v11-react-update-page-breadcrumbs <path>
 ```
 
-<br />
+#### Migration RegExp Checks
 
 After running this migration you can use the following RegExp to check for any additional instances of <Page breadcrumbs="..." /> across all file types:
 
