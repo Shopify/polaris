@@ -10,6 +10,8 @@ import {
   Divider,
 } from '@shopify/polaris';
 
+export type AppSettingsLayoutProps = PropsWithChildren;
+
 export const AppSettingsLayout: React.FunctionComponent<PropsWithChildren> & {
   AnnotatedSection: typeof AnnotatedSection;
   Card: typeof Card;

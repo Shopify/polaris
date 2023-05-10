@@ -32,10 +32,8 @@ export function Default() {
           hideDivider
         >
           <AppSettingsLayout.Card>
-            <VerticalStack gap="4">
-              <TextField label="Interjamb style" autoComplete="off" />
-              <TextField label="Interjamb ratio" autoComplete="off" />
-            </VerticalStack>
+            <TextField label="Interjamb style" autoComplete="off" />
+            <TextField label="Interjamb ratio" autoComplete="off" />
           </AppSettingsLayout.Card>
         </AppSettingsLayout.AnnotatedSection>
         <AppSettingsLayout.AnnotatedSection
@@ -43,10 +41,8 @@ export function Default() {
           description="Size of your puzzlie piece"
         >
           <AppSettingsLayout.Card>
-            <VerticalStack gap="4">
-              <TextField label="Horizontal" autoComplete="off" />
-              <TextField label="Interjamb ratio" autoComplete="off" />
-            </VerticalStack>
+            <TextField label="Horizontal" autoComplete="off" />
+            <TextField label="Interjamb ratio" autoComplete="off" />
           </AppSettingsLayout.Card>
         </AppSettingsLayout.AnnotatedSection>
       </AppSettingsLayout>
