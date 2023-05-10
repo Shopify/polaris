@@ -725,7 +725,7 @@ The following tokens have either been renamed or removed. You will need to repla
 
 #### Automated Migration
 
-To replace these deprecated `border` custom properties, you can run the [v11-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-border) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+To replace these deprecated `shape` custom properties, you can run the [v11-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-border) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - border: var(--p-border-divider);
@@ -751,7 +751,7 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-border <path>
 
 #### Post-Migration Validation
 
-After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:
+After migrating use the following RegExp to check for any additional instances of `shape` custom properties across all file types:
 
 ```
 --p-border-radius-base|--p-border-radius-large|--p-border-radius-half|--p-border-base|--p-border-dark|--p-border-transparent|--p-border-divider|--p-border-divider-on-dark
@@ -763,20 +763,20 @@ After migrating use the following RegExp to check for any additional instances o
 
 ### Color
 
-To replace these deprecated color custom properties, you can run the [v11-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-color) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+#### Automated Migration
+
+To replace these deprecated `colors` custom properties, you can run the [v11-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-color) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - color: var(--p-text);
 + color: var(--p-color-text);
 ```
 
-<br />
-
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-color <path>
 ```
 
-<br />
+#### Manual Migration
 
 | Deprecated Token                         | Replacement Value                                                                                                                                                                                                                                                          |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -923,41 +923,43 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-color <path>
 | `--p-action-critical-depressed`          | `--p-color-bg-critical-strong-active`                                                                                                                                                                                                                                      |
 | `--p-action-critical`                    | `--p-color-bg-critical-strong`                                                                                                                                                                                                                                             |
 
-### Depth
+#### Post-Migration Validation
 
-To replace these deprecated depth custom properties, you can run the [v11-styles-replace-custom-property-depth](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-depth) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+After migrating use the following RegExp to check for any additional instances of `colors` custom properties across all file types:
 
-```diff
-- box-shadow: var(--p-shadow-transparent);
-+ box-shadow: 0 0 0 0 transparent;
+```
+--p-text-warning|--p-text-success|--p-text-subdued-on-dark|--p-text-subdued(?!-light|-neutral-light)|--p-text-primary-pressed|--p-text-primary-hovered|--p-text-primary|--p-text-on-primary|--p-text-on-interactive|--p-text-on-dark|--p-text-on-critical|--p-text-highlight|--p-text-disabled|--p-text-critical|--p-text(?!-field-spinner|-light|-subdued-light)|--p-surface-warning-subdued-pressed|--p-surface-warning-subdued-hovered|--p-surface-warning-subdued|--p-surface-warning|--p-surface-success-subdued-pressed|--p-surface-success-subdued-hovered|--p-surface-success-subdued|--p-surface-success|--p-surface-subdued|--p-surface-selected-pressed|--p-surface-selected-hovered|--p-surface-selected|--p-surface-search-field-dark|--p-surface-search-field|--p-surface-primary-selected-pressed|--p-surface-primary-selected-hovered|--p-surface-primary-selected|--p-surface-pressed-dark|--p-surface-pressed|--p-surface-neutral-subdued-dark|--p-surface-neutral-subdued|--p-surface-neutral-pressed|--p-surface-neutral-hovered|--p-surface-neutral-disabled|--p-surface-neutral(?!-light)|--p-surface-hovered-dark|--p-surface-hovered(?!-light)|--p-surface-highlight-subdued-pressed|--p-surface-highlight-subdued-hovered|--p-surface-highlight-subdued|--p-surface-highlight|--p-surface-disabled|--p-surface-depressed|--p-surface-dark|--p-surface-critical-subdued-pressed|--p-surface-critical-subdued-hovered|--p-surface-critical-subdued-depressed|--p-surface-critical-subdued|--p-surface-critical|--p-surface-attention|--p-surface(?!-hover|-interactive|-primary|-light|-neutral-light)|--p-shadow-color-picker-dragger|--p-shadow-color-picker|--p-overlay|--p-interactive-pressed-on-dark|--p-interactive-pressed|--p-interactive-on-dark|--p-interactive-hovered|--p-interactive-disabled|--p-interactive-critical-pressed|--p-interactive-critical-hovered|--p-interactive-critical-disabled|--p-interactive-critical|--p-interactive|--p-icon-warning|--p-icon-success|--p-icon-subdued|--p-icon-pressed|--p-icon-on-primary|--p-icon-on-interactive|--p-icon-on-dark|--p-icon-on-critical|--p-icon-hovered|--p-icon-highlight(?!--light)|--p-icon-disabled|--p-icon-critical|--p-icon-attention|--p-icon(?!-pinned|-hover|-light|-highlight--light)|--p-hint-from-direct-light|--p-focused|--p-divider-dark|--p-divider|--p-decorative-two-text|--p-decorative-two-surface|--p-decorative-two-icon|--p-decorative-three-text|--p-decorative-three-surface|--p-decorative-three-icon|--p-decorative-one-text|--p-decorative-one-surface|--p-decorative-one-icon|--p-decorative-four-text|--p-decorative-four-surface|--p-decorative-four-icon|--p-decorative-five-text|--p-decorative-five-surface|--p-decorative-five-icon|--p-border-warning-subdued|--p-border-warning|--p-border-success-subdued|--p-border-success|--p-border-subdued|--p-border-shadow-subdued|--p-border-shadow|--p-border-on-dark|--p-border-neutral-subdued|--p-border-hovered|--p-border-highlight-subdued|--p-border-highlight|--p-border-disabled|--p-border-depressed|--p-border-critical-subdued|--p-border-critical-disabled|--p-border-critical|--p-border(?!-width|-radius|-base|-dark|-transparent|-divider|-divider-on-dark)|--p-background-selected|--p-background-pressed|--p-background-hovered|--p-background|--p-backdrop|--p-action-secondary-pressed-dark|--p-action-secondary-pressed|--p-action-secondary-hovered-dark|--p-action-secondary-hovered|--p-action-secondary-disabled|--p-action-secondary-depressed|--p-action-secondary|--p-action-primary-pressed|--p-action-primary-hovered|--p-action-primary-disabled|--p-action-primary-depressed|--p-action-primary|--p-action-critical-pressed|--p-action-critical-hovered|--p-action-critical-disabled|--p-action-critical-depressed|--p-action-critical
 ```
 
-<br />
-
-```sh
-npx @shopify/polaris-migrator v11-styles-replace-custom-property-depth <path>
+```
+<AlphaCard[^>\w](?:[^>]|\n)*?background(?!="bg)
 ```
 
-<br />
+```
+<Box[^>\w](?:[^>]|\n)*?background(?!="bg)
+```
 
-| Deprecated Token                   | Replacement Value     |
-| ---------------------------------- | --------------------- |
-| `--p-shadow-transparent`           | `--p-shadow-none`     |
-| `--p-shadow-faint`                 | `--p-shadow-sm`       |
-| `--p-shadow-base`                  | `--p-shadow-md`       |
-| `--p-shadow-deep`                  | `--p-shadow-md`       |
-| `--p-shadow-button`                | `--p-shadow-sm`       |
-| `--p-shadow-top-bar`               | `--p-shadow-sm`       |
-| `--p-shadow-card`                  | `--p-shadow-md`       |
-| `--p-shadow-popover`               | `--p-shadow-xl`       |
-| `--p-shadow-layer`                 | `--p-shadow-2xl`      |
-| `--p-shadow-modal`                 | `--p-shadow-2xl`      |
-| `--p-shadows-inset-button`         | `--p-shadow-none`     |
-| `--p-shadows-inset-button-pressed` | `--p-shadow-inset-md` |
+```
+<Box[^>\w](?:[^>]|\n)*?color(?!="text)
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderColor(?!="border)
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?outlineColor(?!="border)
+```
+
+```
+<Divider[^>\w](?:[^>]|\n)*?borderColor(?!="border)
+```
 
 ### Legacy
 
-To replace these deprecated legacy custom properties, you can run the [v11-styles-replace-custom-property-legacy](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-legacy) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+#### Automated Migration
+
+To replace these deprecated `legacy` custom properties, you can run the [v11-styles-replace-custom-property-legacy](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-legacy) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - z-index: var(--p-override-loading-z-index);
@@ -967,13 +969,11 @@ To replace these deprecated legacy custom properties, you can run the [v11-style
 + width: 20px;
 ```
 
-<br />
-
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-legacy <path>
 ```
 
-<br />
+#### Manual Migration
 
 | Deprecated Token                     | Replacement Value                                                                                                                                     |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -996,22 +996,30 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-legacy <path>
 | `--p-range-slider-thumb-size-active` | `24px` / `1.5rem`                                                                                                                                     |
 | `--p-frame-offset`                   | `0`                                                                                                                                                   |
 
+#### Post-Migration Validation
+
+After migrating use the following RegExp to check for any additional instances of `legacy` custom properties across all file types:
+
+```
+--p-banner-border-critical|--p-banner-border-default|--p-banner-border-highlight|--p-banner-border-success|--p-banner-border-warning|--p-button-group-item-spacing|--p-choice-margin|--p-choice-size|--p-control-border-width|--p-frame-offset|--p-icon-size-medium|--p-icon-size-small|--p-override-loading-z-index|--p-range-slider-thumb-size-active|--p-range-slider-thumb-size-base|--p-text-field-focus-ring-offset|--p-text-field-spinner-offset|--p-thin-border-subdued
+```
+
 ### Motion
 
-To replace these deprecated motion custom properties, you can run the [v11-styles-replace-custom-property-motion](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-motion) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+#### Automated Migration
+
+To replace these deprecated `motion` custom properties, you can run the [v11-styles-replace-custom-property-motion](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-motion) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - transition-timing-function: var(--p-linear);
 + transition-timing-function: var(--p-motion-linear);
 ```
 
-<br />
-
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-motion <path>
 ```
 
-<br />
+#### Manual Migration
 
 | Deprecated Token             | Replacement Value                   |
 | ---------------------------- | ----------------------------------- |
@@ -1039,22 +1047,74 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-motion <path>
 | `--p-keyframes-appear-above` | `--p-motion-keyframes-appear-above` |
 | `--p-keyframes-appear-below` | `--p-motion-keyframes-appear-below` |
 
+#### Post-Migration Validation
+
+After migrating use the following RegExp to check for any additional instances of `motion` custom properties across all file types:
+
+```
+--p-duration-0|--p-duration-50|--p-duration-100|--p-duration-150|--p-duration-200|--p-duration-250|--p-duration-300|--p-duration-350|--p-duration-400|--p-duration-450|--p-duration-500|--p-duration-5000|--p-ease|--p-ease-in|--p-ease-out|--p-ease-in-out|--p-linear|--p-keyframes-bounce|--p-keyframes-fade-in|--p-keyframes-pulse|--p-keyframes-spin|--p-keyframes-appear-above|--p-keyframes-appear-below
+```
+
+### Shadow
+
+#### Automated Migration
+
+To replace these deprecated `depth` custom properties, you can run the [v11-styles-replace-custom-property-depth](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-depth) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+
+```diff
+- box-shadow: var(--p-shadow-transparent);
++ box-shadow: 0 0 0 0 transparent;
+```
+
+```sh
+npx @shopify/polaris-migrator v11-styles-replace-custom-property-depth <path>
+```
+
+#### Manual Migration
+
+| Deprecated Token                   | Replacement Value     |
+| ---------------------------------- | --------------------- |
+| `--p-shadow-transparent`           | `--p-shadow-none`     |
+| `--p-shadow-faint`                 | `--p-shadow-sm`       |
+| `--p-shadow-base`                  | `--p-shadow-md`       |
+| `--p-shadow-deep`                  | `--p-shadow-md`       |
+| `--p-shadow-button`                | `--p-shadow-sm`       |
+| `--p-shadow-top-bar`               | `--p-shadow-sm`       |
+| `--p-shadow-card`                  | `--p-shadow-md`       |
+| `--p-shadow-popover`               | `--p-shadow-xl`       |
+| `--p-shadow-layer`                 | `--p-shadow-2xl`      |
+| `--p-shadow-modal`                 | `--p-shadow-2xl`      |
+| `--p-shadows-inset-button`         | `--p-shadow-none`     |
+| `--p-shadows-inset-button-pressed` | `--p-shadow-inset-md` |
+
+#### Post-Migration Validation
+
+After migrating use the following RegExp to check for any additional instances of `depth` custom properties across all file types:
+
+```
+--p-shadow-base|--p-shadow-button|--p-shadow-card|--p-shadow-deep|--p-shadow-faint|--p-shadow-layer|--p-shadow-modal|--p-shadow-popover|--p-shadow-top-bar|--p-shadow-transparent|--p-shadows-inset-button|--p-shadows-inset-button-pressed
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?border
+```
+
 ### Z-index
 
-To replace these deprecated z-index custom properties, you can run the [v11-styles-replace-custom-property-zindex](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-zindex) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+#### Automated Migration
+
+To replace these deprecated `z-index` custom properties, you can run the [v11-styles-replace-custom-property-zindex](https://polaris.shopify.com/tools/polaris-migrator#v11-styles-replace-custom-property-zindex) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
 - z-index: var(--p-z-1);
 + z-index: var(--p-z-index-1);
 ```
 
-<br />
-
 ```sh
 npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
 ```
 
-<br />
+#### Manual Migration
 
 | Deprecated Token | Replacement Value |
 | ---------------- | ----------------- |
@@ -1070,6 +1130,14 @@ npx @shopify/polaris-migrator v11-styles-replace-custom-property-zindex <path>
 | `--p-z-10`       | `--p-z-index-10`  |
 | `--p-z-11`       | `--p-z-index-11`  |
 | `--p-z-12`       | `--p-z-index-12`  |
+
+#### Post-Migration Validation
+
+After migrating use the following RegExp to check for any additional instances of `z-index` custom properties across all file types:
+
+```
+--p-z-1|--p-z-2|--p-z-3|--p-z-4|--p-z-5|--p-z-6|--p-z-7|--p-z-8|--p-z-9|--p-z-10|--p-z-11|--p-z-12
+```
 
 ### Recommended Token Migration Workflow
 
