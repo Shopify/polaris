@@ -2,6 +2,8 @@
 hideFromNav: true
 ---
 
+As the Shopify admin UI continues to evolve, it's natural for teams to want to draw attention to new features and improvements. However, we strongly advise against using "new" badges or blue pips to highlight these additions within individual sections like Products, Orders, and Customers.
+
 ## When to highlight new features
 
 Features should have all 3 of the following characteristics before highlighting them to merchants with a New Badge or PIP:
@@ -12,16 +14,15 @@ Features should have all 3 of the following characteristics before highlighting 
 
 Things that generally meet this criteria are large and impactful. Examples could be entire new pages in settings or the introduction of an entirely new technology or capability. 
 
-## Avoid highlighting individual features within a page
-
-As the Shopify admin UI continues to evolve, it's natural for teams to want to draw attention to new features and improvements. However, we strongly advise against using "new" badges or blue pips to highlight these additions within individual sections like Products, Orders, and Customers.
-
-
 ### Why this should be avoided
 
-  **Inconsistency** - Different teams might use different methods to highlight features, leading to an inconsistent experience for merchants.
+ #### Inconsistency
+ 
+ Different teams might use different methods to highlight features, leading to an inconsistent experience for merchants.
   
-  **Visual clutter** - Over time, the admin UI may become cluttered with numerous badges and pips, making it difficult for merchants to focus on their primary tasks.
+#### Visual clutter
+
+Over time, the admin UI may become cluttered with numerous badges and pips, making it difficult for merchants to focus on their primary tasks.
 
 ## Ways to bring feature awareness
 
