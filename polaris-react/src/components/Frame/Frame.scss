@@ -426,9 +426,7 @@
     inset -1px 0px 0px hsla(0, 0%, 100%, 0.25);
   --elevation-2-sleek: inset 0px -1px 0px #b5b5b5, inset -1px 0px 0px #e3e3e3,
     inset 1px 0px 0px #e3e3e3, inset 0px 1px 0px #e3e3e3;
-  --elevation-1-sleek: 0px 1px 0px #e3e3e3, inset 0px -1px 0px #d4d4d4,
-    inset -1px 0px 0px #e3e3e3, inset 1px 0px 0px #e3e3e3,
-    inset 0px 1px 0px #e3e3e3;
+  --elevation-1-sleek: 0px 1.25px 0px #e3e3e3, 0 0 0 0.75px #e3e3e3;
   --elevation-8: 0px 8px 16px rgba(0, 0, 0, 0.22);
   --elevation-16: 0px 20px 20px -8px rgba(0, 0, 0, 0.28);
   --elevation-minus-1-darker: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
