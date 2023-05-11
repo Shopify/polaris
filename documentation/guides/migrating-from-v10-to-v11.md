@@ -1181,7 +1181,7 @@ After migrating use the following RegExp to check for any additional instances o
 
 ### Recommended token migration workflow
 
-When running token migrations we suggest following the following workflow:
+When running token migrations we suggest the following workflow:
 
 - Handle automated migrations
   ```sh
