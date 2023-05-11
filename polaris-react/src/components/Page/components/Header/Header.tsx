@@ -126,7 +126,7 @@ export function Header({
   ) {
     breadcrumbMarkup = (
       <div className={styles.BreadcrumbWrapper}>
-        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+        <Box maxWidth="100%" paddingInlineEnd="1" printHidden>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </Box>
       </div>

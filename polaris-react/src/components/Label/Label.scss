@@ -12,7 +12,8 @@
 .Text {
   display: block;
   flex: 1 1 auto;
-  color: currentColor;
+  font-size: 0.75rem;
+  color: var(--label-color);
   -webkit-tap-highlight-color: transparent;
 }
 

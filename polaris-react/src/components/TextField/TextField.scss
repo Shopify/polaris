@@ -13,7 +13,7 @@ $spinner-icon-size: 12px;
   position: relative;
   display: flex;
   align-items: center;
-  color: var(--p-color-text);
+  color: var(--label-color);
   cursor: text;
 
   svg {
@@ -87,8 +87,7 @@ $spinner-icon-size: 12px;
 
   > .Backdrop {
     background-color: var(--p-color-bg-disabled);
-    border-color: var(--p-color-border-disabled);
-    border-top-color: var(--p-color-border-disabled);
+    border: 0.66px solid var(--input-border);
   }
 
   svg {
@@ -215,11 +214,10 @@ $spinner-icon-size: 12px;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--p-color-bg);
-  border: var(--p-border-width-1) solid var(--p-color-border-input);
+  background-color: var(--input-surface-l2);
+  border: 0.66px solid var(--input-border);
   // stylelint-disable-next-line -- hard coded to address accessbility issue https://github.com/Shopify/polaris/issues/7838
-  border-top-color: #898f94;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--input-radius);
   pointer-events: none;
 }
 
