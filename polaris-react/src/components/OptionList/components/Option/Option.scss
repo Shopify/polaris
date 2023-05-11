@@ -78,7 +78,7 @@ $control-vertical-adjustment: 2px;
   }
 
   &.disabled {
-    background: var(--p-color-bg-disabled);
+    background: transparent;
     cursor: default;
     color: var(--p-color-text-disabled);
   }

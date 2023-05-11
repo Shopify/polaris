@@ -1,5 +1,6 @@
 ---
 title: Polaris Migrator
+navTitle: Migrator
 description: Codemod transformations to help upgrade your Polaris codebase.
 icon: ReplaceMajor
 order: 3
