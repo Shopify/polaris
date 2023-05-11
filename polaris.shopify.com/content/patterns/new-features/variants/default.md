@@ -12,14 +12,14 @@ Features should have all 3 of the following characteristics before highlighting 
 - It’s creating new and outsized value for merchants (not just an improved way of doing something they are already doing)
 - It’s worth distracting merchants from their current workflow to inform them about a whole new part of Shopify
 
-Things that generally meet this criteria are large and impactful. Examples could be entire new pages in settings or the introduction of an entirely new technology or capability. 
+Things that generally meet this criteria are large and impactful. Examples could be entire new pages in settings or the introduction of an entirely new technology or capability.
 
 ### Why this should be avoided
 
- #### Inconsistency
- 
- Different teams might use different methods to highlight features, leading to an inconsistent experience for merchants.
-  
+#### Inconsistency
+
+Different teams might use different methods to highlight features, leading to an inconsistent experience for merchants.
+
 #### Visual clutter
 
 Over time, the admin UI may become cluttered with numerous badges and pips, making it difficult for merchants to focus on their primary tasks.
@@ -43,5 +43,3 @@ They should have a short lifespan. The badge should disappear:
 - When the user has clicked on the interactive element it’s attached to, or
 - 5 days after they first saw it, or
 - after 3 sessions, such as landing on a page 3 times
-
-
