@@ -743,7 +743,9 @@ When running component migrations we suggest following the following workflow:
   git stash pop
   ```
   - Search for "polaris-migrator:" comments and handle manual migrations
+    <img src="https://screenshot.click/11-16-xiupv-koxqo.png" alt="VSCode search for polaris-migrator comments" />
   - Search for Polaris class overrides and handle manual migrations (e.g. `Polaris-Card`)
+    <img src="https://screenshot.click/11-15-2uyey-eewbj.png" alt="VSCode search for Polaris class overrides" />
     <br>
   ```sh
   # Stage all manually migrated files
@@ -1193,6 +1195,7 @@ When running token migrations we suggest following the following workflow:
   ```
 - Handle manual migrations
   - Search for token RegExps and handle manual migrations
+    <img src="https://screenshot.click/11-13-bo3gz-qjnpk.png" alt="RegExp VSCode search for legacy token instances" />
     <br>
 
 ```sh
