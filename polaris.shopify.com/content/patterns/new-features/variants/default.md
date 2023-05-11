@@ -14,7 +14,7 @@ Features should have all 3 of the following characteristics before highlighting 
 
 Things that generally meet this criteria are large and impactful. Examples could be entire new pages in settings or the introduction of an entirely new technology or capability.
 
-### Why this should be avoided
+### What we want to avoid
 
 #### Inconsistency
 
