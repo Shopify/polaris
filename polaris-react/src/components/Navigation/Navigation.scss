@@ -103,7 +103,7 @@ $disabled-fade: 0.6;
   position: relative;
 
   &:is(:hover, :focus-visible) {
-    background: var(--p-color-bg-app-hover);
+    background: var(--gray-08);
     color: var(--p-color-text);
     text-decoration: none;
   }
@@ -245,6 +245,7 @@ $disabled-fade: 0.6;
 .SecondaryActions {
   display: flex;
   height: nav(mobile-height);
+  display: none;
 
   &:last-child {
     margin-right: calc(var(--p-space-2) + var(--p-space-05));
@@ -385,7 +386,7 @@ $disabled-fade: 0.6;
     padding-left: calc(var(--p-space-8) + var(--p-space-3));
 
     &:hover {
-      color: var(--p-color-text-subdued);
+      background: var(--gray-08);
     }
 
     &:focus-visible {
@@ -477,6 +478,10 @@ $disabled-fade: 0.6;
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: calc(var(--p-space-5) + var(--p-space-05));
+
+  svg {
+    display: none;
+  }
 
   > :first-child {
     flex: 1 1 auto;

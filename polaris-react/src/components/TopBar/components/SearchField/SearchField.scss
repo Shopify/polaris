@@ -20,7 +20,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   align-items: center;
   border: var(--p-border-width-1) solid transparent;
   width: 100%;
-  max-width: $search-max-width;
+  max-width: 400px;
 }
 // We have both a focused class and a focus pseudo selector here
 // because we allow "faked" focus for when the search is still
@@ -160,6 +160,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--p-color-bg-inset);
-  border-radius: var(--p-border-radius-1);
+  background-color: var(--gray-15);
+  border-radius: var(--input-radius);
+  border: 0.66px solid var(--gray-13);
 }
