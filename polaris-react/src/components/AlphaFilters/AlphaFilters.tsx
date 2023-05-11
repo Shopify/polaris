@@ -298,7 +298,9 @@ export function AlphaFilters({
         <FilterPill
           key={filterKey}
           {...pinnedFilter}
-          initialActive={hasMounted.current && !pinnedFilter.pinned}
+          initialActive={
+            hasMounted.current && !pinnedFilter.pinned && !appliedFilter
+          }
           label={appliedFilter?.label || pinnedFilter.label}
           filterKey={filterKey}
           selected={appliedFilterKeys?.includes(filterKey)}

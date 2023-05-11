@@ -57,25 +57,23 @@ function ReactRenderProfiler(Story, context) {
 
 export const globalTypes = {
   strictMode: {
-    name: 'React.StrictMode',
     defaultValue: true,
     toolbar: {
+      title: 'React.StrictMode',
       items: [
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
-      showName: true,
     },
   },
   profiler: {
-    name: 'React.Profiler',
     defaultValue: false,
     toolbar: {
+      title: 'React.Profiler',
       items: [
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
-      showName: true,
     },
   },
   ...gridOptions,

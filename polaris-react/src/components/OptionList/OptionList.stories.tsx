@@ -135,3 +135,24 @@ export function InAPopover() {
     </div>
   );
 }
+
+export function WithDisabledOption() {
+  const [selected, setSelected] = useState([]);
+
+  return (
+    <LegacyCard>
+      <OptionList
+        title="Inventory Location"
+        onChange={setSelected}
+        options={[
+          {value: 'byward_market', label: 'Byward Market'},
+          {value: 'centretown', disabled: true, label: 'Centretown'},
+          {value: 'hintonburg', label: 'Hintonburg'},
+          {value: 'westboro', label: 'Westboro'},
+          {value: 'downtown', label: 'Downtown'},
+        ]}
+        selected={selected}
+      />
+    </LegacyCard>
+  );
+}
