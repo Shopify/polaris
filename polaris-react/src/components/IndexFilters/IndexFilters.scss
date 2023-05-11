@@ -30,6 +30,8 @@ $spinner-size: 20px;
 
 .TabsWrapper {
   flex: 1;
+  display: flex;
+  align-items: center;
   height: var(--p-space-12);
 }
 

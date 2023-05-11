@@ -4,6 +4,7 @@
   background-color: var(--admin-surface-l1);
   box-shadow: var(--elevation-1-sleek);
   outline: var(--p-border-width-1) solid transparent;
+  overflow: hidden;
 
   + .LegacyCard {
     margin-top: var(--p-space-4);

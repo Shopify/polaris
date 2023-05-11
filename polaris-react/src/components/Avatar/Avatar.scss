@@ -1,7 +1,7 @@
 .Avatar {
   // stylelint-disable -- Polaris component custom properties
   --pc-avatar-extra-small-size: 24px;
-  --pc-avatar-small-size: 32px;
+  --pc-avatar-small-size: 28px;
   --pc-avatar-medium-size: 40px;
   --pc-avatar-large-size: 60px;
   // stylelint-enable
@@ -41,7 +41,7 @@
 }
 
 .shapeSquare {
-  border-radius: var(--p-border-radius-05);
+  border-radius: var(--p-border-radius-1);
 
   .Text {
     font-size: var(--p-font-size-200);
