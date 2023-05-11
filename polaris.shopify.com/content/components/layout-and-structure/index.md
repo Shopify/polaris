@@ -8,8 +8,8 @@ groups:
   - title: Layout primitives
     components:
       - Box
-      - Alpha stack
-      - Inline
+      - Vertical stack
+      - Horizontal stack
       - Horizontal grid
       - Bleed
     description: All layouts and spacing should be handled using layout primitives. This keeps our components simple, flexible and composable.
