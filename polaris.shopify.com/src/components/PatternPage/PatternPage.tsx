@@ -18,6 +18,7 @@ import PageMeta from '../PageMeta';
 import {Stack} from '../Stack';
 import {Box} from '../Box';
 import Code from '../Code';
+import PropsTable from '../PropsTable';
 import {Lede} from '../Lede';
 import {Heading} from '../Heading';
 import PatternsExample from '../PatternsExample';
@@ -134,7 +135,7 @@ const TabbedVariants = (props: VariantRendererProps) => {
 
   return (
     <Tab.Group defaultIndex={0} selectedIndex={exampleIndex}>
-      <div className={styles.TabGroup} data-selected={exampleIndex}>
+      <div data-selected={exampleIndex}>
         <Tab.List className={styles.TabList} id="examples">
           {props.patternData.variants.map((variant) => (
             <Tab
@@ -301,6 +302,124 @@ const BaseMarkdown = ({
   </Markdown>
 );
 
+const Install = () => (
+  <Code
+    code={[
+      {
+        title: 'npm',
+        code: 'npm install @shopify/polaris-patterns --save',
+      },
+      {title: 'Yarn', code: 'yarn add @shopify/polaris-patterns'},
+    ]}
+  />
+);
+
+const PatternResources = () => {
+  return (
+    <Stack gap="4">
+      <PropsTable
+        hideHeadings
+        componentName={'AppSettingsLayout'}
+        types={{
+          AppSettingsLayoutProps: {
+            filePath: '',
+            name: 'AppSettingsLayout',
+            description: '',
+            members: [
+              {
+                filePath: '',
+                syntaxKind: 'PropertySignature',
+                name: 'children',
+                value: 'React.ReactNode',
+                description: 'The content to display inside the layout.',
+                isOptional: true,
+              },
+            ],
+            value: '',
+          },
+        }}
+      />
+      <PropsTable
+        hideHeadings
+        componentName={'AnnotatedSection'}
+        types={{
+          AnnotatedSectionProps: {
+            filePath: '',
+            name: 'AppSettingsLayout.AnnotatedSection',
+            description: '',
+            members: [
+              {
+                filePath: '',
+                syntaxKind: 'PropertySignature',
+                name: 'title',
+                value: 'React.ReactNode',
+                description: 'Section title.',
+                isOptional: true,
+              },
+              {
+                filePath: '',
+                syntaxKind: 'PropertySignature',
+                name: 'description',
+                value: 'React.ReactNode',
+                description: 'Section description.',
+                isOptional: true,
+              },
+              {
+                filePath: '',
+                syntaxKind: 'PropertySignature',
+                name: 'id',
+                value: 'string',
+                description: 'ID name for deep linking section title',
+                isOptional: true,
+              },
+              {
+                filePath: '',
+                syntaxKind: 'PropertySignature',
+                name: 'hideDivider',
+                value: 'boolean',
+                description:
+                  'Whether to hide the divider above the section. Typically the divider is hidden on the first section.',
+                isOptional: true,
+              },
+              {
+                filePath: '',
+                syntaxKind: 'PropertySignature',
+                name: 'children',
+                value: 'React.ReactNode',
+                description: 'The content to display inside the layout.',
+                isOptional: true,
+              },
+            ],
+            value: '',
+          },
+        }}
+      />
+      <PropsTable
+        hideHeadings
+        componentName={'Card'}
+        types={{
+          CardProps: {
+            filePath: '',
+            name: 'AppSettingsLayout.Card',
+            description: '',
+            members: [
+              {
+                filePath: '',
+                syntaxKind: 'PropertySignature',
+                name: 'children',
+                value: 'React.ReactNode',
+                description: 'The content to display inside the layout.',
+                isOptional: true,
+              },
+            ],
+            value: '',
+          },
+        }}
+      />
+    </Stack>
+  );
+};
+
 const defaultMdxComponents: MDXComponents = {
   Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
   Hero: ({children}) => <Box className={styles.Hero}>{children}</Box>,
@@ -320,6 +439,8 @@ const defaultMdxComponents: MDXComponents = {
   DefinitionTable: ({children}) => (
     <Box className={styles.DefinitionTable}>{children}</Box>
   ),
+  PropsTables: () => <PatternResources />,
+  Install: () => <Install />,
 };
 
 const PatternMarkdown = ({

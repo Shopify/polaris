@@ -151,7 +151,6 @@ const PatternsExample = ({
             {
               title: 'React',
               code: endent`
-                // This example is for guidance purposes. Copying it will come with caveats.
                 ${formattedCode}
               `,
             },

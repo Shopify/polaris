@@ -24,6 +24,101 @@ hideFromNav: true
 
 ## Using this pattern
 
+### Building with AppSettingsLayout
+
+#### Install Polaris patterns
+
+[Polaris patterns](https://github.com/Shopify/polaris/tree/3eefcc4382e6f2360c80266306e86eb4d9671255/polaris-patterns) is an opinionated UI library that provides out of the box implementations of common patterns in the Shopify Admin.
+
+<div as="Install"></div>
+
+#### Import the AppSettingsLayout component
+
+Import `AppSettingsLayout` from the patterns library along with any other Polaris components from the core library that you may need.
+
+```javascript
+import {Page} from '@shopify/polaris';
+import {AppSettingsLayout} from '@shopify/polaris-patterns';
+```
+
+#### Composition
+
+`AppSettingsLayout` has two subcomponents (see [props](#props) for each of these components' APIs.):
+
+- `AppSettingsLayout.AnnotatedSection`
+- `AppSettingsLayout.Card`
+
+A typical settings section is composed like this:
+
+```javascript
+<AppSettingsLayout.AnnotatedSection
+  title="InterJambs"
+  description="Interjambs are the rounded protruding bits of your puzzlie piece"
+  hideDivider
+>
+  <AppSettingsLayout.Card>{mySettingCardContent}</AppSettingsLayout.Card>
+</AppSettingsLayout.AnnotatedSection>
+```
+
+Set `hideDivider` to `true` on the first annotated section and `false` on subsequent sections.
+
+Then, wrap all of the annotated sections with `AppSettingsLayout`.
+
+#### Example
+
+```javascript {"type":"previewContext","for":"example"}
+<div style={{paddingBottom: '2rem'}}>{____CODE____()}</div>
+```
+
+```javascript {"type":"livePreview","id":"example"}
+// import {Page} from '@shopify/polaris';
+// import {AppSettingsLayout} from '@shopify/polaris-patterns';
+
+<Page
+  divider
+  primaryAction={{
+    content: 'View on your store',
+    disabled: true,
+    onAction: () => {},
+  }}
+  secondaryActions={[
+    {
+      content: 'Duplicate',
+      accessibilityLabel: 'Duplicate settings',
+      onAction: () => {},
+    },
+  ]}
+>
+  <AppSettingsLayout>
+    <AppSettingsLayout.AnnotatedSection
+      title="InterJambs"
+      description="Interjambs are the rounded protruding bits of your puzzlie piece"
+      hideDivider
+    >
+      <AppSettingsLayout.Card>
+        <TextField label="Interjamb style" autoComplete="off" />
+        <TextField label="Interjamb ratio" autoComplete="off" />
+      </AppSettingsLayout.Card>
+    </AppSettingsLayout.AnnotatedSection>
+    <AppSettingsLayout.AnnotatedSection
+      title="Dimensions"
+      description="Size of your puzzlie piece"
+    >
+      <AppSettingsLayout.Card>
+        <TextField label="Horizontal" autoComplete="off" />
+        <TextField label="Interjamb ratio" autoComplete="off" />
+      </AppSettingsLayout.Card>
+    </AppSettingsLayout.AnnotatedSection>
+  </AppSettingsLayout>
+</Page>
+```
+
+#### Props
+
+<div as="PropsTables"></div>
+
+### Building with primatives
+
 This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`AlphaCard`](/components/layout-and-structure/alpha-card), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Box`](/components/layout-and-structure/box) components.
 
 <!-- prettier-ignore -->
