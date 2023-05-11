@@ -9,6 +9,7 @@ import {className, toPascalCase} from '../../utils/various';
 interface Props {
   componentName: string;
   types: FilteredTypes;
+  hideHeadings?: boolean;
 }
 
 function syntaxKindToDeveloperFriendlyString(
@@ -29,7 +30,7 @@ const TypeContext = createContext<{
   types: FilteredTypes;
 }>({types: {}});
 
-function PropsTable({types, componentName}: Props) {
+function PropsTable({types, componentName, hideHeadings}: Props) {
   const feedbackTitle = '[polaris.shopify.com] Props table feedback';
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     feedbackTitle,
@@ -45,13 +46,15 @@ function PropsTable({types, componentName}: Props) {
   return (
     <TypeContext.Provider value={{types}}>
       <div className={styles.PropsTable}>
-        <Longform firstParagraphIsLede={false}>
-          <h2 id="props">Props</h2>
-          <p>
-            Want to help make this feature better? Please{' '}
-            <a href={feedbackUrl}>share your feedback</a>.
-          </p>
-        </Longform>
+        {hideHeadings ? null : (
+          <Longform firstParagraphIsLede={false}>
+            <h2 id="props">Props</h2>
+            <p>
+              Want to help make this feature better? Please{' '}
+              <a href={feedbackUrl}>share your feedback</a>.
+            </p>
+          </Longform>
+        )}
 
         {!propsAreDefinedUsingInterface && (
           <div className={styles.UnparsablePropsWarning}>
