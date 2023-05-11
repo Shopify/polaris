@@ -5,12 +5,6 @@
   align-items: center;
   gap: 0.5em;
 }
-.UpdateBanner {
-  width: 50%;
-  @media screen and (max-width: $breakpointDesktopSmall) {
-    width: 100%;
-  }
-}
 
 .Preview {
   aspect-ratio: 16/9;

@@ -19,7 +19,7 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
-updateBannerMessage: We are [adding patterns](/patterns) to our documentation. Check out related patterns, expect changes to happen, and [join the discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better!
+tip: Check out the [new patterns section](https://polaris.shopify.com/patterns) to learn how merchants prefer to select dates in different scenarios!
 examples:
   - fileName: page-default.tsx
     title: Default
