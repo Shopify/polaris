@@ -722,7 +722,7 @@ Polaris-AlphaTab
 
 ### Recommended component migration workflow
 
-When running component migrations we suggest following the following workflow:
+When running component migrations we suggest the following workflow:
 
 - Handle automated migrations
   ```sh
