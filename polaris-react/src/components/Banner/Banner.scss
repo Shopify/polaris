@@ -140,6 +140,8 @@
   margin-top: calc(-1 * var(--p-space-05));
   flex: 1 1 auto;
 
+  // stylelint-disable selector-no-qualifying-type, selector-max-specificity -- Polaris temporary workaround until
+  // Banner visual styles are updated
   a[class^='Link'],
   button[class^='Link'] {
     color: inherit;
@@ -150,6 +152,7 @@
       color: inherit;
     }
   }
+  // stylelint-enable selector-no-qualifying-type, selector-max-specificity
 }
 
 .withinContentContainer {
