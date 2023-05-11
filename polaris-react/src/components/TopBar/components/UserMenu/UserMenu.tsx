@@ -55,17 +55,8 @@ export function UserMenu({
   ) : (
     <>
       <span className={styles.Details}>
-        <Text as="p" alignment="start" fontWeight="medium" truncate>
+        <Text as="p" alignment="start" truncate>
           {name}
-        </Text>
-        <Text
-          as="p"
-          variant="bodySm"
-          alignment="start"
-          color="subdued"
-          truncate
-        >
-          {detail}
         </Text>
       </span>
       <MessageIndicator active={showIndicator}>
