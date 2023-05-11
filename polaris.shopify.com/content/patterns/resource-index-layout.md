@@ -1,5 +1,10 @@
 ---
-hideFromNav: true
+title: Resource index layout
+description: Organize and take action on resource objects
+lede: Lets merchants organize and take action on resource objects.
+url: /patterns/resource-index-layout
+previewImg: /images/patterns/resource-index-layout/pattern-thumbnail-resource-index.png
+githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/8215
 ---
 
 <div as="HowItHelps">
@@ -391,5 +396,17 @@ function IndexFiltersDefault() {
 - <span>Use the resource type as page title.</span> ![“Orders” and “Gift cards” pages](/images/patterns/resource-index-layout/resource-index-usage-1.png)
 - <span>Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.</span> ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-layout/resource-index-usage-2.png)
 - <span>Set the page width to normal if the index doesn’t need full width.</span> ![Index page with margins on either side of the main content](/images/patterns/resource-index-layout/resource-index-usage-3.png)
+
+</div>
+
+<div as="Stack" gap="4">
+
+## Related resources
+
+- The [Resource detail layout](/patterns/resource-details-layout) pattern is a complement to the resource index layout pattern.
+- Use the [Empty state component](/components/layout-and-structure/empty-state) when the resource index is empty.
+- Learn about the meaning of “resources” on the [Resource list](/components/lists/resource-list) component page
+- Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
+- Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.
 
 </div>
