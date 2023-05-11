@@ -272,7 +272,7 @@ To replace the six removed typography components (`DisplayText`, `Heading`, `Sub
 npx @shopify/polaris-migrator v10-react-replace-text-components <path>
 ```
 
-Note if you only want to run this migration on `Caption` and not the other legacy text components you can run:
+> **Note**: To migrate only the `Caption` component, the migration can be supplemented with the `--componentName='Caption'` flag.
 
 ```sh
 npx @shopify/polaris-migrator v10-react-replace-text-components --componentName='Caption' <path>
@@ -311,7 +311,7 @@ To replace the six removed typography components (`DisplayText`, `Heading`, `Sub
 npx @shopify/polaris-migrator v10-react-replace-text-components <path>
 ```
 
-Note if you only want to run this migration on `TextStyle` and not the other legacy text components you can run:
+> **Note**: To migrate only the `TextStyle` component, the migration can be supplemented with the `--componentName='TextStyle'` flag.
 
 ```sh
 npx @shopify/polaris-migrator v10-react-replace-text-components --componentName='TextStyle' <path>
@@ -387,7 +387,7 @@ To replace the six removed typography components (`DisplayText`, `Heading`, `Sub
 npx @shopify/polaris-migrator v10-react-replace-text-components <path>
 ```
 
-Note if you only want to run this migration on `VisuallyHidden` and not the other legacy text components you can run:
+> **Note**: To migrate only the `VisuallyHidden` component, the migration can be supplemented with the `--componentName='VisuallyHidden'` flag.
 
 ```sh
 npx @shopify/polaris-migrator v10-react-replace-text-components --componentName='VisuallyHidden' <path>
