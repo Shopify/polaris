@@ -7,8 +7,7 @@ $icon-size: 20px;
   position: relative;
   display: flex;
   height: $top-bar-height;
-  box-shadow: var(--p-shadow-sm);
-  background-color: var(--p-color-bg);
+  background-color: var(--topbar-bg-color);
   transition: var(--p-motion-duration-200) background-color
     var(--p-motion-ease-in-out);
 

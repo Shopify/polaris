@@ -30,6 +30,7 @@
   flex-wrap: nowrap;
   margin-top: 0;
   margin-left: 0;
+  gap: var(--p-space-2);
 
   .Item {
     position: relative;
@@ -57,12 +58,12 @@
 }
 
 .extraTight {
-  margin-top: calc(-1 * var(--p-space-1));
-  margin-left: calc(-1 * var(--p-space-1));
+  margin-top: calc(-1 * var(--p-space-2));
+  margin-left: calc(-1 * var(--p-space-2));
 
   .Item {
-    margin-top: var(--p-space-1);
-    margin-left: var(--p-space-1);
+    margin-top: var(--p-space-2);
+    margin-left: var(--p-space-2);
   }
 }
 

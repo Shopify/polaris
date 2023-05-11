@@ -1,8 +1,8 @@
 @import '../../styles/common';
 
 .Card {
-  background-color: var(--p-color-bg);
-  box-shadow: var(--p-shadow-md);
+  background-color: var(--admin-surface-l1);
+  box-shadow: var(--elevation-1-sleek);
   outline: var(--p-border-width-1) solid transparent;
 
   + .Card {
@@ -22,7 +22,7 @@
   }
 
   @media #{$p-breakpoints-sm-up} {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--radius-lg);
   }
 
   @media print {
@@ -46,7 +46,7 @@
   padding: var(--p-space-4) var(--p-space-4) 0;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-5) var(--p-space-5) 0;
+    padding: var(--p-space-4) var(--p-space-4) 0;
   }
 
   @media print and #{$p-breakpoints-sm-up} {
@@ -58,7 +58,7 @@
   padding: var(--p-space-4);
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-5);
+    padding: var(--p-space-4);
   }
 
   + .Section {
