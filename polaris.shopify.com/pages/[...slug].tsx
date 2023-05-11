@@ -28,7 +28,6 @@ const CatchAllTemplate: NextPage<Props> = ({
   noIndex,
   description,
   editPageLinkPath,
-  update,
 }: Props) => {
   const typedStatus: Status | undefined = status
     ? {
