@@ -483,7 +483,9 @@
   --status-badge-unfinished: #ffef9d;
   --search-width: 480px;
 
-  --p-color-border-interactive-focus: blac;
+  --p-color-border-interactive-focus: black;
+  --p-color-border-subdued: var(--admin-divider);
+  --p-color-bg-interactive: black;
 }
 
 .Frame {

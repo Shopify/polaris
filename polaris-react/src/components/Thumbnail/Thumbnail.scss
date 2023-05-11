@@ -15,7 +15,7 @@
   min-width: var(--pc-thumbnail-extra-small-size);
   max-width: 100%;
   border-radius: var(--p-border-radius-1);
-  border: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  // border: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   &::after {
     content: '';
