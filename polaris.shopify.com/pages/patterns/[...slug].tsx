@@ -28,10 +28,12 @@ const patternsContentAbsoluteDir = path.resolve(
 );
 
 const loadPatternAndVariants = (slug: string): Props => {
-  const markdownFilePath = path.resolve(
-    patternsContentAbsoluteDir,
-    `${slug}/index.md`,
-  );
+  let markdownFilePath = path.resolve(patternsContentAbsoluteDir, `${slug}`);
+  if (fs.existsSync(`${markdownFilePath}.md`)) {
+    markdownFilePath += '.md';
+  } else {
+    markdownFilePath += '/index.md';
+  }
 
   const {data, content} = readFrontMatter(markdownFilePath) as {
     data: PatternFrontMatter;

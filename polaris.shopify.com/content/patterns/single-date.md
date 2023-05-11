@@ -1,10 +1,11 @@
 ---
 title: Single date
-slug: single-date
-hideFromNav: true
+description: Select a date or a date range
+lede: Lets merchants select a date by typing a specific date or picking it from a calendar.
+url: /patterns/single-date
+previewImg: /images/patterns/date-picking/pattern-thumbnail-date-picking.png
+githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/7853
 ---
-
-This enables merchants to type a specific date or pick it from a calendar.
 
 <div as="HowItHelps">
 
@@ -139,5 +140,14 @@ function DatePickerExample() {
 
 - <span>Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.</span> ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
 - <span>This pattern can be duplicated to allow users to add an end date or time.</span> ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
+
+</div>
+<div as="Stack" gap="4">
+
+## Related resources
+
+- Programming timezones can be finicky. Get great tips in the article [UTC is for everyone right](https://zachholman.com/talk/utc-is-enough-for-everyone-right)?
+- Learn about date formatting in the [Grammar and mechanics](/content/grammar-and-mechanics#date) guidelines.
+- See how to craft effective button labels in the [Actionable language](/content/actionable-language) guidelines.
 
 </div>
