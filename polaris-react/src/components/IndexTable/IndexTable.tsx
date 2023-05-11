@@ -5,6 +5,7 @@ import {tokens, toPx, motion} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
+import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
@@ -440,7 +441,7 @@ function IndexTableBase({
     scrollingContainer.current = false;
   }, []);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     tableHeadings.current = getTableHeadingsBySelector(
       tableElement.current,
       '[data-index-table-heading]',
@@ -738,7 +739,7 @@ function IndexTableBase({
   const sharedMarkup = (
     <>
       <EventListener event="resize" handler={handleResize} />
-      <AfterInitialMount>{stickyHeaderMarkup}</AfterInitialMount>
+      {stickyHeaderMarkup}
     </>
   );
 
@@ -1071,11 +1072,6 @@ function IndexTableBase({
   }
 
   function renderStickyHeading(heading: IndexTableHeading, index: number) {
-    const position = index + 1;
-    const headingStyle =
-      tableHeadingRects.current && tableHeadingRects.current.length > position
-        ? {minWidth: tableHeadingRects.current[position].offsetWidth}
-        : undefined;
     const headingAlignment = heading.alignment || 'start';
 
     const headingContent = renderHeadingContent(heading, index);
@@ -1091,7 +1087,6 @@ function IndexTableBase({
       <div
         className={stickyHeadingClassName}
         key={getHeadingKey(heading)}
-        style={headingStyle}
         data-index-table-sticky-heading
       >
         {headingContent}
