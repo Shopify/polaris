@@ -1,5 +1,4 @@
 import React, {useState, createContext, useContext, useEffect} from 'react';
-import {Tab} from '@headlessui/react';
 import Link from 'next/link';
 
 import {
@@ -7,13 +6,12 @@ import {
   defListHastHandlers,
 } from 'remark-definition-list';
 
-import {useRouter} from 'next/router';
 import {visit} from 'unist-util-visit';
 import type {Node, Parent} from 'unist-util-visit';
 import type {Plugin} from 'unified';
 
 import InlinePill from '../InlinePill';
-import {PatternVariantFontMatter, PatternFrontMatter} from '../../types';
+import {PatternFrontMatter} from '../../types';
 import PageMeta from '../PageMeta';
 import {Stack} from '../Stack';
 import {Box} from '../Box';
@@ -32,7 +30,7 @@ export interface Props {
 }
 
 interface VariantRendererProps {
-  children: (_: Props['data']['variants'][number]) => JSX.Element;
+  children: (_: Props['data']) => JSX.Element;
   patternData: Props['data'];
 }
 
@@ -111,79 +109,6 @@ function codeAsContext(): Plugin {
       });
   };
 }
-
-const SingleVariant = ({
-  children,
-  patternData: {variants},
-}: VariantRendererProps) => children(variants[0]);
-
-const TabbedVariants = (props: VariantRendererProps) => {
-  const router = useRouter();
-  let exampleIndex = props.patternData.variants.findIndex(
-    ({data: {slug}}) => slug === router.query.slug?.[1],
-  );
-
-  if (exampleIndex === -1) {
-    exampleIndex = 0;
-  }
-
-  return (
-    <Tab.Group defaultIndex={0} selectedIndex={exampleIndex}>
-      <div className={styles.TabGroup} data-selected={exampleIndex}>
-        <Tab.List className={styles.TabList} id="examples">
-          {props.patternData.variants.map((variant) => (
-            <Tab
-              as={Link}
-              href={`/patterns/${router.query.slug?.[0]}/${variant.data.slug}`}
-              shallow
-              className={styles.Tab}
-              key={`${variant.data.slug}-tab`}
-            >
-              <span>{variant.data.title}</span>
-            </Tab>
-          ))}
-        </Tab.List>
-
-        <Tab.Panels>
-          {props.patternData.variants.map((variant) => (
-            <Tab.Panel
-              key={`${variant.data.slug}-panel`}
-              className={styles.TabPanel}
-            >
-              {props.children(variant)}
-            </Tab.Panel>
-          ))}
-        </Tab.Panels>
-      </div>
-    </Tab.Group>
-  );
-};
-
-const Variants = (props: {patternData: Props['data']}) => {
-  if (!props.patternData.variants?.length) {
-    return null;
-  }
-
-  const Container =
-    props.patternData.variants.length > 1 ? TabbedVariants : SingleVariant;
-
-  return (
-    <Container patternData={props.patternData}>
-      {(variant) => (
-        <Stack gap="8" className={styles.Variant}>
-          <PatternMarkdown
-            patternData={props.patternData}
-            patternName={`${props.patternData.title}${
-              variant.data.title ? ` > ${variant.data.title}` : ''
-            }`}
-          >
-            {variant.content}
-          </PatternMarkdown>
-        </Stack>
-      )}
-    </Container>
-  );
-};
 
 type MDXComponents = {
   [key: string]: React.ComponentType<
@@ -319,7 +244,6 @@ const defaultMdxComponents: MDXComponents = {
 
 const PatternMarkdown = ({
   children,
-  patternData,
   patternName,
 }: {
   children: string;
@@ -328,10 +252,7 @@ const PatternMarkdown = ({
 }) => (
   <BaseMarkdown
     patternName={patternName ?? ''}
-    mdxComponents={{
-      ...defaultMdxComponents,
-      Variants: () => <Variants patternData={patternData} />,
-    }}
+    mdxComponents={defaultMdxComponents}
   >
     {children}
   </BaseMarkdown>
