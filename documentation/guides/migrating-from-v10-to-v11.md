@@ -745,6 +745,7 @@ When running component migrations we suggest the following workflow:
   - Search for "polaris-migrator:" comments and handle manual migrations
   - Search for Polaris class overrides and handle manual migrations (e.g. `Polaris-Card`)
     <br>
+    <br>
   ```sh
   # Stage all manually migrated files
   git add .
