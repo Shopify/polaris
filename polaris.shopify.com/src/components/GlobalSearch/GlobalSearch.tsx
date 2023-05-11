@@ -23,7 +23,6 @@ const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   tokens: 'Tokens',
   icons: 'Icons',
 };
-import {logAnalyticsEvent} from '../../utils/analytics';
 import {v4 as uuidv4} from 'uuid';
 
 const SearchContext = createContext({id: '', currentItemId: ''});
@@ -47,7 +46,7 @@ function scrollToTop() {
 }
 
 function captureSearchClick(
-  uuid: string,
+  searchUuid: string,
   searchTerm: string,
   resultRank: number,
   gid: string,
@@ -57,7 +56,7 @@ function captureSearchClick(
   if (searchTerm.length < 3) return;
 
   const payload = {
-    search_uuid: uuid,
+    searchUuid,
     query: searchTerm,
     locale: document.documentElement.lang,
     gid,
@@ -65,19 +64,20 @@ function captureSearchClick(
     rank: resultRank,
   };
 
-  logAnalyticsEvent('searchClick', payload);
+  callServiceEndpoint('searchClick', payload);
 }
 
 function captureSearchQuery(
-  uuid: string,
+  searchUuid: string,
   searchTerm: string,
   results: SearchResults,
 ) {
   if (searchTerm.length < 3) return;
 
   const payload: any = {
-    uuid,
+    searchUuid,
     query: searchTerm,
+    locale: document.documentElement.lang,
   };
 
   results?.slice(0, 10).forEach((result: SearchResult, index: number) => {
@@ -85,27 +85,17 @@ function captureSearchQuery(
     payload[`url${index}`] = result.url;
   });
 
-  logAnalyticsEvent('searchQuery', payload);
+  callServiceEndpoint('searchQuery', payload);
 }
 
-function captureSearchEvent(
-  searchTerm: string,
-  resultRank: number,
-  selectedResult?: string,
-) {
-  // if nothings been searched we don't care about it
-  if (!searchTerm) return;
-
-  const customParams = {
-    search_term: searchTerm,
-    result_rank: resultRank,
-    selected_result: selectedResult,
-    category: 'engagement',
-  };
-
-  if (process.env.NODE_ENV === 'production') {
-    window.gtag('event', 'customSearch', customParams);
-  }
+function callServiceEndpoint(id: string, payload: any) {
+  fetch(`/api/service`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({id, payload}),
+  });
 }
 
 function scrollIntoView() {
