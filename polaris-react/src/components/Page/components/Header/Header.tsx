@@ -115,7 +115,7 @@ export function Header({
   if (backAction) {
     breadcrumbMarkup = (
       <div className={styles.BreadcrumbWrapper}>
-        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+        <Box maxWidth="100%" paddingInlineEnd="1" printHidden>
           <Breadcrumbs backAction={backAction} />
         </Box>
       </div>

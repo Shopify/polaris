@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 :root {
-  --item-min-height: var(--p-space-4);
+  --item-min-height: 28px;
   --item-min-width: 50px;
-  --item-vertical-padding: var(--p-space-2);
+  --item-vertical-padding: var(--p-space-1);
 }
 
 .Outer {
@@ -64,10 +64,10 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: var(--p-space-8);
+  height: 28px;
   padding: 0 var(--p-space-3);
   border: 0;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-2);
   background: var(--p-color-bg);
   color: var(--p-color-text-subdued);
   cursor: pointer;
@@ -114,24 +114,7 @@
 }
 
 .Tab-active {
-  background: var(--p-color-bg-primary-subdued-hover);
-  color: var(--p-color-text-primary);
-
-  &[aria-disabled='true'] {
-    background: var(--p-color-bg-disabled);
-    color: var(--p-color-text-disabled);
-  }
-
-  &:not([aria-disabled='true']):hover,
-  &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-primary-subdued-hover);
-    color: var(--p-color-text-primary-hover);
-  }
-
-  &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-success-subdued-active);
-    color: var(--p-color-text-primary);
-  }
+  background: var(--gray-06);
 }
 
 .Tab-hasActions {
@@ -186,7 +169,7 @@
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-2);
   color: inherit;
 
   &::-moz-focus-inner {

@@ -32,11 +32,11 @@ export interface AlphaCardProps {
 export const AlphaCard = ({
   children,
   background = 'bg',
-  padding = {xs: '4', sm: '5'},
+  padding = {xs: '4', sm: '4'},
   roundedAbove,
 }: AlphaCardProps) => {
   const breakpoints = useBreakpoints();
-  const defaultBorderRadius: BorderRadiusScale = '2';
+  const defaultBorderRadius: BorderRadiusScale = '3';
 
   let hasBorderRadius = !roundedAbove;
 
