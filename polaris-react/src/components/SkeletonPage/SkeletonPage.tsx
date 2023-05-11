@@ -70,45 +70,51 @@ export function SkeletonPage({
     ) : null;
 
   return (
-    <VerticalStack gap="4" inlineAlign="center">
-      <Box
-        width="100%"
-        padding="0"
-        paddingInlineStart={{sm: '6'}}
-        paddingInlineEnd={{sm: '6'}}
-        maxWidth="var(--pc-skeleton-page-max-width)"
-        aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
-        role="status"
-        {...(narrowWidth && {
-          maxWidth: 'var(--pc-skeleton-page-max-width-narrow)',
-        })}
-        {...(fullWidth && {
-          maxWidth: 'none',
-        })}
-      >
-        <VerticalStack>
-          <Box
-            paddingBlockStart={{xs: '4', md: '5'}}
-            paddingBlockEnd={{xs: '4', md: '5'}}
-            paddingInlineStart={{xs: '4', sm: '0'}}
-            paddingInlineEnd={{xs: '4', sm: '0'}}
-            width="100%"
-          >
-            <HorizontalStack gap="4" align="space-between" blockAlign="center">
-              <HorizontalStack gap="4">
-                {breadcrumbMarkup}
-                <Box paddingBlockStart="1" paddingBlockEnd="1">
-                  {titleContent}
-                </Box>
+    <div className={styles.SkeletonPage}>
+      <VerticalStack gap="4" inlineAlign="center">
+        <Box
+          width="100%"
+          padding="0"
+          paddingInlineStart={{sm: '6'}}
+          paddingInlineEnd={{sm: '6'}}
+          maxWidth="var(--pc-skeleton-page-max-width)"
+          aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
+          role="status"
+          {...(narrowWidth && {
+            maxWidth: 'var(--pc-skeleton-page-max-width-narrow)',
+          })}
+          {...(fullWidth && {
+            maxWidth: 'none',
+          })}
+        >
+          <VerticalStack>
+            <Box
+              paddingBlockStart={{xs: '4', md: '5'}}
+              paddingBlockEnd={{xs: '4', md: '5'}}
+              paddingInlineStart={{xs: '4', sm: '0'}}
+              paddingInlineEnd={{xs: '4', sm: '0'}}
+              width="100%"
+            >
+              <HorizontalStack
+                gap="4"
+                align="space-between"
+                blockAlign="center"
+              >
+                <HorizontalStack gap="4">
+                  {breadcrumbMarkup}
+                  <Box paddingBlockStart="1" paddingBlockEnd="1">
+                    {titleContent}
+                  </Box>
+                </HorizontalStack>
+                {primaryActionMarkup}
               </HorizontalStack>
-              {primaryActionMarkup}
-            </HorizontalStack>
-          </Box>
-          <Box paddingBlockEnd="2" width="100%">
-            {children}
-          </Box>
-        </VerticalStack>
-      </Box>
-    </VerticalStack>
+            </Box>
+            <Box paddingBlockEnd="2" width="100%">
+              {children}
+            </Box>
+          </VerticalStack>
+        </Box>
+      </VerticalStack>
+    </div>
   );
 }
