@@ -12,7 +12,7 @@ Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/release
   - [Removed `Collapsible` deprecated `preventMeasuringOnChildrenUpdate` prop](#removed-collapsible-deprecated-preventmeasuringonchildrenupdate-prop)
   - [Removed `Page` deprecated `breadcrumbs` prop](#removed-page-deprecated-breadcrumbs-prop)
   - [Removed `Breadcrumbs` deprecated `breadcrumbs` prop](#removed-breadcrumbs-deprecated-breadcrumbs-prop)
-  - [Removed `KonamiCode`](#removed-konami-code)
+  - [Removed `KonamiCode`](#removed-konamicode)
   - [Removed `DisplayText`](#removed-display-text)
   - [Removed `Heading`](#removed-heading)
   - [Removed `Subheading`](#removed-subheading)
