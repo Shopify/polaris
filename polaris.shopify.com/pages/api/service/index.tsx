@@ -1,8 +1,8 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
 
-const isProd = true; //process.env.NODE_ENV === 'production';
-const DEBUG_ANALYTICS = process.env.DEBUG_ANALYTICS === 'true';
-const ANALYTICS_URL = 'https://polaris.sfe.shopifysvc.com';
+const isProd = process.env.NODE_ENV === 'production';
+const debug = process.env.DEBUG_ANALYTICS === 'true';
+const ANALYTICS_URL = 'https://polaris.sfe.shopifyinternal.com/analytics';
 
 type Event = {
   id: string;
@@ -22,7 +22,7 @@ class AnalyticsProducer {
   public produce: AnalyticsProducerFunction;
 
   private produceLog(event: Event) {
-    if (!isProd && DEBUG_ANALYTICS) {
+    if (!isProd && debug) {
       console.log('Analytics event logged', event);
     }
   }
