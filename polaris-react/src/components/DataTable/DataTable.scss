@@ -198,7 +198,7 @@
   color: var(--p-color-text);
   transition: color var(--p-motion-duration-200) var(--p-motion-ease);
   cursor: pointer;
-  padding: var(--p-space-2);
+  padding: var(--p-space-1) var(--p-space-2);
   margin: var(--p-space-2);
 
   svg {
