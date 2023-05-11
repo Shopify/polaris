@@ -1,5 +1,10 @@
 ---
-hideFromNav: true
+title: Resource details layout
+description: Create, view, and edit resource objects
+lede: Lets merchants create, view, and edit resource objects.
+url: /patterns/resource-details-layout
+previewImg: /images/patterns/resource-details-layout/pattern-thumbnail-resource-details.png
+githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/8216
 ---
 
 <div as="HowItHelps">
@@ -148,5 +153,16 @@ function ResourceDetailsLayout() {
 - <span>Put supporting information such as status, metadata, and summaries in the secondary column.</span> ![Product details page with the secondary column outlined](/images/patterns/resource-details-layout/resource-detail-usage-4.png)
 - <span>Arrange content in order of importance.</span> ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-details-layout/resource-detail-usage-5.png)
 - <span>Place unique page actions at the top of the actions list and typical object actions at the bottom.</span> ![Popover with unique page actions placed at the top, and typical object actions placed at the bottom](/images/patterns/resource-details-layout/resource-detail-usage-6.png)
+
+</div>
+
+<div as="Stack" gap="4">
+
+## Related resources
+
+- The [Resource index layout](/patterns/resource-index-layout) pattern is a complement to the resource detail layout pattern.
+- Learn about the meaning of “resources” on the [Resource list](/components/lists/resource-list) component page
+- Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
+- Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.
 
 </div>
