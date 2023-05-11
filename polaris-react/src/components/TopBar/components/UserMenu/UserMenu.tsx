@@ -37,7 +37,6 @@ export interface UserMenuProps {
 
 export function UserMenu({
   name,
-  detail,
   avatar,
   initials,
   actions,
