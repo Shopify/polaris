@@ -233,7 +233,7 @@ To replace the six removed typography components (`DisplayText`, `Heading`, `Sub
 npx @shopify/polaris-migrator v10-react-replace-text-components <path>
 ```
 
-Note if you only want to run this migration on `Subheading` and not the other legacy text components you can run:
+> **Note**: To migrate only the `Subheading` component, the migration can be supplemented with the `--componentName='Subheading'` flag.
 
 ```sh
 npx @shopify/polaris-migrator v10-react-replace-text-components --componentName='Subheading' <path>
