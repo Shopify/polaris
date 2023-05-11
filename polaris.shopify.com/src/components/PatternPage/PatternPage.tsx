@@ -27,12 +27,7 @@ import Markdown from '../Markdown';
 import {SideBySide} from '../Markdown/components';
 
 export interface Props {
-  data: Omit<PatternFrontMatter, 'variants'> & {
-    variants: {
-      data: PatternVariantFontMatter;
-      content: string;
-    }[];
-  };
+  data: PatternFrontMatter;
   content: string;
 }
 
