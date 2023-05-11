@@ -29,7 +29,7 @@
   }
 
   &:hover {
-    background: var(--p-color-bg-hover);
+    background: var(--secondary-fill-hover);
     outline: var(--p-border-width-1) solid transparent;
   }
 
@@ -41,7 +41,6 @@
   }
 
   &:active {
-    background: var(--p-color-bg-subdued-active);
     box-shadow: var(--p-shadow-sm);
 
     &::after {
