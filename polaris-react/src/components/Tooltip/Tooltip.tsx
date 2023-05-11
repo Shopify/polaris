@@ -29,7 +29,7 @@ export interface TooltipProps {
   dismissOnMouseOut?: TooltipOverlayProps['preventInteraction'];
   /**
    * The direction the tooltip tries to display
-   * @default 'below'
+   * @default 'above'
    */
   preferredPosition?: TooltipOverlayProps['preferredPosition'];
   /**
@@ -74,7 +74,7 @@ export function Tooltip({
   dismissOnMouseOut,
   active: originalActive,
   hoverDelay,
-  preferredPosition = 'below',
+  preferredPosition = 'above',
   activatorWrapper = 'span',
   accessibilityLabel,
   width = 'default',

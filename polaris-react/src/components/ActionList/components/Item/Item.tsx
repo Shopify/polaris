@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
+import {zIndex} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -11,6 +12,8 @@ import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
+import {Tooltip} from '../../../Tooltip';
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -31,6 +34,7 @@ export function Item({
   external,
   destructive,
   ellipsis,
+  truncate,
   active,
   role,
 }: ItemProps) {
@@ -61,7 +65,12 @@ export function Item({
     );
   }
 
-  const contentText = ellipsis && content ? `${content}…` : content;
+  let contentText: string | React.ReactNode = content || '';
+  if (truncate && content) {
+    contentText = <TruncateText>{content}</TruncateText>;
+  } else if (ellipsis) {
+    contentText = `${content}…`;
+  }
 
   const contentMarkup = helpText ? (
     <>
@@ -89,7 +98,7 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack blockAlign="center" gap="3">
+    <HorizontalStack blockAlign="center" gap="3" wrap={!truncate}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
@@ -134,3 +143,37 @@ export function Item({
     </>
   );
 }
+
+export const TruncateText = ({children}: {children: string}) => {
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  useIsomorphicLayoutEffect(() => {
+    if (textRef.current) {
+      setIsOverflowing(
+        textRef.current.scrollWidth > textRef.current.offsetWidth,
+      );
+    }
+  }, [children]);
+  const text = (
+    <Text as="span" truncate>
+      <Box width="100%" ref={textRef}>
+        {children}
+      </Box>
+    </Text>
+  );
+
+  return isOverflowing ? (
+    <Tooltip
+      zIndexOverride={Number(zIndex['z-6'])}
+      preferredPosition="above"
+      hoverDelay={1000}
+      content={children}
+    >
+      <Text as="span" truncate>
+        {children}
+      </Text>
+    </Tooltip>
+  ) : (
+    text
+  );
+};

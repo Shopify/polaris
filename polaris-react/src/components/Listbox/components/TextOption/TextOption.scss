@@ -53,7 +53,7 @@
   }
 
   &.disabled {
-    background-color: var(--p-color-bg-disabled);
+    background-color: transparent;
     color: var(--p-color-text-disabled);
     cursor: default;
   }
