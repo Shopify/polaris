@@ -747,6 +747,7 @@ When running component migrations we suggest following the following workflow:
   - Search for Polaris class overrides and handle manual migrations (e.g. `Polaris-Card`)
     <img src="https://screenshot.click/11-15-2uyey-eewbj.png" alt="VSCode search for Polaris class overrides" />
     <br>
+    <br>
   ```sh
   # Stage all manually migrated files
   git add .
