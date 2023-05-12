@@ -48,9 +48,9 @@ function scrollToTop() {
 function captureSearchClick(
   searchUuid: string,
   searchTerm: string,
-  resultRank: number,
-  gid: string,
-  selectedResult: string,
+  resultRank?: number,
+  gid?: string,
+  selectedResult?: string,
 ) {
   // if we don't meet the minimum search query length, bail
   if (searchTerm.length < 3) return;
@@ -211,8 +211,10 @@ function GlobalSearch() {
       case 'Enter':
         if (resultsInRenderedOrder.length > 0) {
           setIsOpen(false);
+          const rank = currentResultIndex + 1;
           const url = resultsInRenderedOrder[currentResultIndex].url;
-          captureSearchEvent(searchTerm, currentResultIndex + 1, url);
+          const id = resultsInRenderedOrder[currentResultIndex].id;
+          captureSearchClick(uuid, searchTerm, rank, id, url);
           router.push(url);
         }
         break;
@@ -237,7 +239,7 @@ function GlobalSearch() {
         onClose={() => {
           setIsOpen(false);
           // on close we want to capture that no search result was selected
-          captureSearchEvent(searchTerm, 0);
+          captureSearchClick(uuid, searchTerm, 0);
         }}
       >
         <div className={styles.PreventBackgroundInteractions}></div>
@@ -337,7 +339,7 @@ function SearchResults({
                           url={url}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchEvent(searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, id, url)
                           }
                           renderPreview={() => (
                             <FoundationsThumbnail
