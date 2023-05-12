@@ -60,7 +60,7 @@ Polaris no longer supports multiple versions of TypeScript with `downlevel-dts`.
 
 ## Components
 
-The following components have either been renamed, migrated, or removed. Please review each component section to determine whether you can resolve these breaking changes with a migration or if they need to updated manually.
+The following components have either been renamed, migrated, or removed. Please review each component section to determine whether you can resolve these breaking changes with a migration or if they need to be updated manually.
 
 ### Removed `Collapsible` deprecated `preventMeasuringOnChildrenUpdate` prop
 
