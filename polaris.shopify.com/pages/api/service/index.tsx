@@ -1,8 +1,10 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
 
 const isProd = process.env.NODE_ENV === 'production';
-const debug = process.env.DEBUG_ANALYTICS === 'true';
-const ANALYTICS_URL = 'https://polaris.sfe.shopifyinternal.com/analytics';
+const enableLogs = process.env.DEBUG_ANALYTICS === 'true';
+const ANALYTICS_URL = isProd
+  ? 'https://polaris.sfe.shopifyinternal.com/analytics'
+  : 'http://localhost:3000/analytics'; // local service
 
 type Event = {
   id: string;
@@ -22,7 +24,7 @@ class AnalyticsProducer {
   public produce: AnalyticsProducerFunction;
 
   private produceLog(event: Event) {
-    if (!isProd && debug) {
+    if (!isProd && enableLogs) {
       console.log('Analytics event logged', event);
     }
   }
@@ -50,7 +52,7 @@ class AnalyticsProducer {
 }
 
 function logError(error: any) {
-  if (DEBUG_ANALYTICS) {
+  if (enableLogs) {
     console.error(error);
   }
 }
@@ -71,7 +73,7 @@ export async function captureAnalyticsEvent(id: string, payload: any) {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {body} = req;
 
-  if (!body || !body.id) {
+  if (!body || !body.id || !body.payload) {
     return res.status(400).send({});
   }
 
