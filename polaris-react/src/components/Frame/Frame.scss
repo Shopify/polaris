@@ -487,6 +487,9 @@
   --p-color-border-interactive: black;
   --p-color-border-info: black;
   --p-shadow-md: var(--elevation-1-sleek);
+  --p-color-bg-interactive-selected: var(--table-row-bg-selected);
+  --p-color-bg-interactive-subdued: var(--table-row-bg-selected);
+  --p-color-bg-interactive-subdued-hover: var(--table-row-bg-selected);
 }
 
 .Frame {
