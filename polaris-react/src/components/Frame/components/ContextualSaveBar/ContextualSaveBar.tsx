@@ -118,17 +118,19 @@ export function ContextualSaveBar({
         {contextControlMarkup}
         {logoMarkup}
         <div className={contentsClassName}>
-          {message && (
-            <Text as="h2" variant="headingMd" color="text-inverse" truncate>
-              {message}
-            </Text>
-          )}
-          <div className={styles.ActionContainer}>
-            <LegacyStack spacing="tight" wrap={false}>
-              {secondaryMenu}
-              {discardActionMarkup}
-              {saveActionMarkup}
-            </LegacyStack>
+          <div className={styles.ContentsInner}>
+            {message && (
+              <Text as="h2" variant="headingMd" color="text-inverse" truncate>
+                {message}
+              </Text>
+            )}
+            <div className={styles.ActionContainer}>
+              <LegacyStack spacing="tight" wrap={false}>
+                {secondaryMenu}
+                {discardActionMarkup}
+                {saveActionMarkup}
+              </LegacyStack>
+            </div>
           </div>
         </div>
       </div>

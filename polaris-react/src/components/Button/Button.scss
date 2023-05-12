@@ -220,6 +220,11 @@
   --pc-button-color-hover: var(--p-color-bg-primary-hover);
   --pc-button-color-active: var(--p-color-bg-primary-active);
   --pc-button-color-depressed: var(--p-color-bg-primary-active);
+
+  background-color: var(--success-fill);
+  box-shadow: var(--elevation-2-sleek-medium);
+  color: var(--success-text-onfill);
+
   // stylelint-enable
   svg {
     fill: var(--p-color-icon-on-color);
