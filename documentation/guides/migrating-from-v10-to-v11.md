@@ -140,7 +140,7 @@ npx @shopify/polaris-migrator v10-react-replace-text-components --componentName=
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `DisplayText` across all file types:
+After migrating, search for React instances or CSS class overrides of the `DisplayText` component across all file types in your project:
 
 ```
 <DisplayText
