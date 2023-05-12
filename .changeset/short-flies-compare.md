@@ -2,4 +2,4 @@
 '@shopify/polaris-migrator': minor
 ---
 
-Added migration to update `Link` component to use new props and values
+Added migration to replace `Link` `external` prop with `target="_blank"`
