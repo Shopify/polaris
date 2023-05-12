@@ -23,7 +23,7 @@ index 0000000..36a436c
 @@ -0,0 +1 @@
 +export default code => code;
 diff --git a/node_modules/playroom/lib/makeWebpackConfig.js b/node_modules/playroom/lib/makeWebpackConfig.js
-index 56defa7..1e7cf3b 100644
+index 56defa7..96ea807 100644
 --- a/node_modules/playroom/lib/makeWebpackConfig.js
 +++ b/node_modules/playroom/lib/makeWebpackConfig.js
 @@ -54,6 +54,9 @@ module.exports = async (playroomConfig, options) => {
@@ -36,6 +36,15 @@ index 56defa7..1e7cf3b 100644
        },
      },
      module: {
+@@ -163,7 +166,7 @@ module.exports = async (playroomConfig, options) => {
+   };
+ 
+   const theirConfig = playroomConfig.webpackConfig
+-    ? await playroomConfig.webpackConfig()
++    ? await playroomConfig.webpackConfig(options)
+     : makeDefaultWebpackConfig(playroomConfig);
+ 
+   return merge(ourConfig, theirConfig);
 diff --git a/node_modules/playroom/src/Playroom/Frame.tsx b/node_modules/playroom/src/Playroom/Frame.tsx
 index b175d74..ce3e7ef 100644
 --- a/node_modules/playroom/src/Playroom/Frame.tsx

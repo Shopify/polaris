@@ -33,15 +33,19 @@ module.exports = {
   port: 9000,
   openBrowser: false,
   paramType: 'search', // default is 'hash'
-  webpackConfig: () => ({
-    resolve: {
-      alias: {
-        '@shopify/polaris-patterns': path.resolve(
-          __dirname,
-          '../polaris-patterns/src',
-        ),
-      },
-    },
+  webpackConfig: ({production}) => ({
+    ...(!production
+      ? {
+          resolve: {
+            alias: {
+              '@shopify/polaris-patterns': path.resolve(
+                __dirname,
+                '../polaris-patterns/src',
+              ),
+            },
+          },
+        }
+      : {}),
     module: {
       rules: [
         {
@@ -50,7 +54,7 @@ module.exports = {
             path.resolve('./playroom'),
             path.resolve('./src'),
             path.resolve('./package.json'),
-            path.resolve('../polaris-patterns'),
+            ...(!production ? [path.resolve('../polaris-patterns')] : []),
           ],
           use: [
             {
