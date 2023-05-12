@@ -146,7 +146,7 @@ After migrating, search for React instances or CSS class overrides of the `Displ
 <DisplayText
 ```
 
-```
+```css
 Polaris-DisplayText
 ```
 
