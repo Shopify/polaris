@@ -202,13 +202,13 @@ npx @shopify/polaris-migrator v10-react-replace-text-components --componentName=
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `Heading` across all file types:
+After migrating, search for React instances or CSS class overrides of the `Heading` component across all file types in your project:
 
-```
+```jsx
 <Heading
 ```
 
-```
+```css
 Polaris-Heading
 ```
 
@@ -241,13 +241,13 @@ npx @shopify/polaris-migrator v10-react-replace-text-components --componentName=
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `Subheading` across all file types:
+After migrating, search for React instances or CSS class overrides of the `Subheading` component across all file types in your project:
 
-```
+```jsx
 <Subheading
 ```
 
-```
+```css
 Polaris-Subheading
 ```
 
@@ -280,13 +280,13 @@ npx @shopify/polaris-migrator v10-react-replace-text-components --componentName=
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `Caption` across all file types:
+After migrating, search for React instances or CSS class overrides of the `Caption` component across all file types in your project:
 
-```
+```jsx
 <Caption
 ```
 
-```
+```css
 Polaris-Caption
 ```
 
@@ -319,13 +319,13 @@ npx @shopify/polaris-migrator v10-react-replace-text-components --componentName=
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `TextStyle` across all file types:
+After migrating, search for React instances or CSS class overrides of the `TextStyle` component across all file types in your project:
 
-```
+```jsx
 <TextStyle
 ```
 
-```
+```css
 Polaris-TextStyle
 ```
 
@@ -395,13 +395,13 @@ npx @shopify/polaris-migrator v10-react-replace-text-components --componentName=
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `VisuallyHidden` across all file types:
+After migrating, search for React instances or CSS class overrides of the `VisuallyHidden` component across all file types in your project:
 
-```
+```jsx
 <VisuallyHidden
 ```
 
-```
+```css
 Polaris-VisuallyHidden
 ```
 
@@ -437,13 +437,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Stack"
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `Stack` across all file types:
+After migrating, search for React instances or CSS class overrides of the `Stack` component across all file types in your project:
 
-```
+```jsx
 <Stack
 ```
 
-```
+```css
 Polaris-Stack
 ```
 
@@ -468,13 +468,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Card" 
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `Card` across all file types:
+After migrating, search for React instances or CSS class overrides of the `Card` component across all file types in your project:
 
-```
+```jsx
 <Card
 ```
 
-```
+```css
 Polaris-Card
 ```
 
@@ -499,13 +499,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Filter
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `Filters` across all file types:
+After migrating, search for React instances or CSS class overrides of the `Filters` component across all file types in your project:
 
-```
+```jsx
 <Filters
 ```
 
-```
+```css
 Polaris-Filters
 ```
 
@@ -530,13 +530,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Tabs" 
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `Tabs` across all file types:
+After migrating, search for React instances or CSS class overrides of the `Tabs` component across all file types in your project:
 
-```
+```jsx
 <Tabs
 ```
 
-```
+```css
 Polaris-Tabs
 ```
 
@@ -561,13 +561,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="Inline
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `Inline` across all file types:
+After migrating, search for React instances or CSS class overrides of the `Inline` component across all file types in your project:
 
-```
+```jsx
 <Inline
 ```
 
-```
+```css
 Polaris-Inline
 ```
 
@@ -592,13 +592,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="AlphaS
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `AlphaStack` across all file types:
+After migrating, search for React instances or CSS class overrides of the `AlphaStack` component across all file types in your project:
 
-```
+```jsx
 <AlphaStack
 ```
 
-```
+```css
 Polaris-AlphaStack
 ```
 
@@ -627,13 +627,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="AlphaC
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `AlphaCard` across all file types:
+After migrating, search for React instances or CSS class overrides of the `AlphaCard` component across all file types in your project:
 
-```
+```jsx
 <AlphaCard
 ```
 
-```
+```css
 Polaris-AlphaCard
 ```
 
@@ -662,13 +662,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="AlphaF
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `AlphaFilters` across all file types:
+After migrating, search for React instances or CSS class overrides of the `AlphaFilters` component across all file types in your project:
 
-```
+```jsx
 <AlphaFilters
 ```
 
-```
+```css
 Polaris-AlphaFilters
 ```
 
@@ -710,13 +710,13 @@ npx @shopify/polaris-migrator react-rename-component <path> --renamePropsFrom="A
 
 #### Post-migration validation
 
-After migrating use the following to check for any additional instances of `AlphaTab` across all file types:
+After migrating, search for React instances or CSS class overrides of the `AlphaTab` component across all file types in your project:
 
-```
+```jsx
 <AlphaTab
 ```
 
-```
+```css
 Polaris-AlphaTab
 ```
 
