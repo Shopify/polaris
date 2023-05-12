@@ -9,7 +9,7 @@
 @mixin control-backdrop($style: base) {
   @if $style == base {
     position: relative;
-    border: var(--p-border-width-2) solid var(--p-color-border-input);
+    border: var(--p-border-width-1) solid var(--p-color-border-input);
     background-color: var(--p-color-bg);
     border-radius: var(--p-border-radius-1);
 
@@ -40,7 +40,7 @@
       opacity: 1;
       transform: scale(1);
       @media (-ms-high-contrast: active) {
-        border: var(--p-border-width-2) solid windowText;
+        border: var(--p-border-width-1) solid windowText;
       }
     }
   } @else if $style == disabled {
