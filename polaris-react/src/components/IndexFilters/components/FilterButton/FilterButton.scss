@@ -2,13 +2,16 @@
 
 .FilterButton {
   // stylelint-disable-next-line -- using base button styling
-  @include button-base;
+  @include unstyled-button();
+  border-radius: 10px;
   // stylelint-disable-next-line -- required to make the 32px height with 20px icon and 1px border
-  padding: 5px;
-  min-height: 32px;
-  min-width: 32px;
-
+  padding: 3px;
+  min-height: 24px;
+  min-width: 24px;
   cursor: pointer;
+  svg {
+    transform: scale(0.85);
+  }
 }
 
 .FilterButton.Disabled {
