@@ -34,11 +34,24 @@ module.exports = {
   openBrowser: false,
   paramType: 'search', // default is 'hash'
   webpackConfig: () => ({
+    resolve: {
+      alias: {
+        '@shopify/polaris-patterns': path.resolve(
+          __dirname,
+          '../polaris-patterns/src',
+        ),
+      },
+    },
     module: {
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          include: [path.resolve('./playroom'), path.resolve('./src')],
+          include: [
+            path.resolve('./playroom'),
+            path.resolve('./src'),
+            path.resolve('./package.json'),
+            path.resolve('../polaris-patterns'),
+          ],
           use: [
             {
               loader: require.resolve('babel-loader'),
@@ -48,8 +61,8 @@ module.exports = {
                     require.resolve('@babel/preset-env'),
                     {shippedProposals: true},
                   ],
-                  require.resolve('@babel/preset-react'),
                   require.resolve('@babel/preset-typescript'),
+                  require.resolve('@babel/preset-react'),
                 ],
                 plugins: [require.resolve('babel-plugin-preval')],
               },
@@ -58,9 +71,12 @@ module.exports = {
         },
         {
           test: /\.css$/i,
-          include: path.dirname(
-            require.resolve('@shopify/polaris/package.json'),
-          ),
+          include: [
+            path.dirname(require.resolve('@shopify/polaris/package.json')),
+            path.dirname(
+              require.resolve('@shopify/polaris-patterns/package.json'),
+            ),
+          ],
           use: ['style-loader', 'css-loader'],
         },
       ],

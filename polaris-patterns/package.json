@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris-patterns",
   "description": "Shopify’s admin product pattern library",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
