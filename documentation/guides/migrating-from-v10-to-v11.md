@@ -10,6 +10,7 @@ Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 - [TypeScript](#typescript)
 - [Components](#components)
   - [Removed `Collapsible` deprecated `preventMeasuringOnChildrenUpdate` prop](#removed-collapsible-deprecated-preventmeasuringonchildrenupdate-prop)
+  - [Removed `SkeletonPage` deprecated `breadcrumbs` prop](#removed-skeletonpage-deprecated-breadcrumbs-prop)
   - [Removed `Page` deprecated `breadcrumbs` prop](#removed-page-deprecated-breadcrumbs-prop)
   - [Removed `Breadcrumbs` deprecated `breadcrumbs` prop](#removed-breadcrumbs-deprecated-breadcrumbs-prop)
   - [Removed `KonamiCode`](#removed-konamicode)
@@ -65,6 +66,31 @@ The following components have either been renamed, migrated, or removed. Please 
 ### Removed `Collapsible` deprecated `preventMeasuringOnChildrenUpdate` prop
 
 The deprecated `preventMeasuringOnChildrenUpdate` prop has been removed from the `Collapsible` component and is no longer supported.
+
+### Removed `SkeletonPage` deprecated `breadcrumbs` prop
+
+The deprecated `breadcrumbs` prop has been removed from the `SkeletonPage` component and is no longer supported. The new `backAction` prop serves the same functionality and accepts a boolean.
+
+#### Migration
+
+To replace the `breadcrumbs` prop with `backAction`, you can run the generic [react-rename-component-prop](https://polaris.shopify.com/tools/polaris-migrator#generic-migrations) migration. Please reference the [recommended component migration workflow](#recommended-component-migration-workflow) section below for additional migration support.
+
+```diff
+- <SkeletonPage breadcrumbs>
++ <SkeletonPage backAction>
+```
+
+```sh
+npx @shopify/polaris-migrator react-rename-component-prop --componentName="SkeletonPage" --from="breadcrumbs" --to="backAction" <path>
+```
+
+#### Post-migration validation
+
+After migrating you can use the following RegExp to check for any additional instances of `<SkeletonPage breadcrumbs />` across all file types:
+
+```regex
+<SkeletonPage[^>\w](?:[^>]|\n)*?breadcrumbs
+```
 
 ### Removed `Page` deprecated `breadcrumbs` prop
 
