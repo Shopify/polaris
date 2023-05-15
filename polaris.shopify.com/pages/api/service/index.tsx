@@ -4,7 +4,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const enableLogs = process.env.DEBUG_ANALYTICS === 'true';
 const ANALYTICS_URL = isProd
   ? 'https://polaris.sfe.shopifyinternal.com/analytics'
-  : 'http://localhost:3000/analytics'; // local service
+  : 'http://localhost:3001/analytics'; // local service
 
 type Event = {
   id: string;
