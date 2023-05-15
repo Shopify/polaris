@@ -65,8 +65,8 @@ describe('<SkeletonPage />', () => {
     });
   });
 
-  it('renders breadcrumbs', () => {
-    const skeletonPage = mountWithApp(<SkeletonPage breadcrumbs />);
+  it('renders backAction', () => {
+    const skeletonPage = mountWithApp(<SkeletonPage backAction />);
     expect(skeletonPage).toContainReactComponent(Box, {
       background: 'bg-strong',
       minWidth: '2.25rem',
