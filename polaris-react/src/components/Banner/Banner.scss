@@ -142,8 +142,8 @@
 
   // stylelint-disable selector-no-qualifying-type, selector-max-specificity -- Polaris temporary workaround until
   // Banner visual styles are updated
-  a[class^='Link'],
-  button[class^='Link'] {
+  a[class*='Link'],
+  button[class*='Link'] {
     color: inherit;
 
     &:hover,
