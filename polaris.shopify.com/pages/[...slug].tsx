@@ -10,7 +10,6 @@ import Markdown from '../src/components/Markdown';
 import PageMeta from '../src/components/PageMeta';
 import {parseMarkdown} from '../src/utils/markdown.mjs';
 import {MarkdownFile, Status} from '../src/types';
-import UpdateBanner from '../src/components/UpdateBanner';
 
 interface Props {
   readme: MarkdownFile['readme'];
@@ -29,7 +28,6 @@ const CatchAllTemplate: NextPage<Props> = ({
   noIndex,
   description,
   editPageLinkPath,
-  update,
 }: Props) => {
   const typedStatus: Status | undefined = status
     ? {
@@ -44,7 +42,6 @@ const CatchAllTemplate: NextPage<Props> = ({
       <Longform>
         {description ? <Markdown>{description}</Markdown> : null}
         {typedStatus && <StatusBanner status={typedStatus} />}
-        {update && <UpdateBanner message={update} />}
         <Markdown>{readme}</Markdown>
       </Longform>
     </Page>
@@ -72,12 +69,11 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
     const {readme, frontMatter}: MarkdownFile = parseMarkdown(markdown);
-    const {title, description, update, status, noIndex} = frontMatter;
+    const {title, description, status, noIndex} = frontMatter;
     const props: Props = {
       title,
       status: status || null,
       description: description || null,
-      update: update || null,
       readme,
       noIndex: noIndex || false,
       editPageLinkPath,
