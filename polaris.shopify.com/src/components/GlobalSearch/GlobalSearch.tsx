@@ -3,6 +3,7 @@ import {
   GroupedSearchResults,
   SearchResultCategory,
   SearchResults,
+  SearchResult,
 } from '../../types';
 import {useThrottle} from '../../utils/hooks';
 import styles from './GlobalSearch.module.scss';
@@ -22,6 +23,7 @@ const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   tokens: 'Tokens',
   icons: 'Icons',
 };
+import {v4 as uuidv4} from 'uuid';
 
 const SearchContext = createContext({id: '', currentItemId: ''});
 
@@ -43,24 +45,57 @@ function scrollToTop() {
   overflowEl?.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function captureSearchEvent(
+function captureSearchClick(
+  searchUuid: string,
   searchTerm: string,
-  resultRank: number,
+  resultRank?: number,
+  gid?: string,
   selectedResult?: string,
 ) {
-  // if nothings been searched we don't care about it
-  if (!searchTerm) return;
+  // if we don't meet the minimum search query length, bail
+  if (searchTerm.length < 3) return;
 
-  const customParams = {
-    search_term: searchTerm,
-    result_rank: resultRank,
-    selected_result: selectedResult,
-    category: 'engagement',
+  const payload = {
+    searchUuid,
+    query: searchTerm,
+    locale: document.documentElement.lang,
+    gid,
+    url: selectedResult,
+    rank: resultRank,
   };
 
-  if (process.env.NODE_ENV === 'production') {
-    window.gtag('event', 'customSearch', customParams);
-  }
+  callServiceEndpoint('searchClick', payload);
+}
+
+function captureSearchQuery(
+  searchUuid: string,
+  searchTerm: string,
+  results: SearchResults,
+) {
+  if (searchTerm.length < 3) return;
+
+  const payload: any = {
+    searchUuid,
+    query: searchTerm,
+    locale: document.documentElement.lang,
+  };
+
+  results?.slice(0, 10).forEach((result: SearchResult, index: number) => {
+    payload[`gid${index}`] = result.id;
+    payload[`url${index}`] = result.url;
+  });
+
+  callServiceEndpoint('searchQuery', payload);
+}
+
+function callServiceEndpoint(id: string, payload: any) {
+  fetch(`/api/service`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({id, payload}),
+  });
 }
 
 function scrollIntoView() {
@@ -92,6 +127,7 @@ function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
+  const [uuid, setUuid] = useState('');
   const router = useRouter();
 
   let resultsInRenderedOrder: SearchResults = [];
@@ -124,6 +160,7 @@ function GlobalSearch() {
         setSearchResults(results);
       });
 
+    captureSearchQuery(uuid, searchTerm, resultsInRenderedOrder);
     setCurrentResultIndex(0);
     scrollToTop();
   }, 400);
@@ -147,6 +184,9 @@ function GlobalSearch() {
   useEffect(() => {
     if (!isOpen) {
       setSearchTerm('');
+      setUuid('');
+    } else {
+      setUuid(uuidv4());
     }
   }, [isOpen]);
 
@@ -171,8 +211,10 @@ function GlobalSearch() {
       case 'Enter':
         if (resultsInRenderedOrder.length > 0) {
           setIsOpen(false);
+          const rank = currentResultIndex + 1;
           const url = resultsInRenderedOrder[currentResultIndex].url;
-          captureSearchEvent(searchTerm, currentResultIndex + 1, url);
+          const id = resultsInRenderedOrder[currentResultIndex].id;
+          captureSearchClick(uuid, searchTerm, rank, id, url);
           router.push(url);
         }
         break;
@@ -197,7 +239,7 @@ function GlobalSearch() {
         onClose={() => {
           setIsOpen(false);
           // on close we want to capture that no search result was selected
-          captureSearchEvent(searchTerm, 0);
+          captureSearchClick(uuid, searchTerm, 0);
         }}
       >
         <div className={styles.PreventBackgroundInteractions}></div>
@@ -243,6 +285,7 @@ function GlobalSearch() {
                   currentItemId={currentItemId}
                   searchTerm={searchTerm}
                   resultsInRenderedOrder={resultsInRenderedOrder}
+                  uuid={uuid}
                 />
               )}
             </div>
@@ -258,11 +301,13 @@ function SearchResults({
   currentItemId,
   searchTerm,
   resultsInRenderedOrder,
+  uuid,
 }: {
   searchResults: GroupedSearchResults;
   currentItemId: string;
   searchTerm?: string;
   resultsInRenderedOrder: SearchResults;
+  uuid: string;
 }) {
   return (
     <>
@@ -294,7 +339,7 @@ function SearchResults({
                           url={url}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchEvent(searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, id, url)
                           }
                           renderPreview={() => (
                             <FoundationsThumbnail
@@ -334,7 +379,7 @@ function SearchResults({
                           title={title}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchEvent(searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, id, url)
                           }
                           renderPreview={() => (
                             <PatternThumbnailPreview
@@ -376,7 +421,7 @@ function SearchResults({
                           status={status}
                           customOnClick={() =>
                             searchTerm &&
-                            captureSearchEvent(searchTerm, rank, url)
+                            captureSearchClick(uuid, searchTerm, rank, id, url)
                           }
                           renderPreview={() => (
                             <ComponentThumbnail title={title} group={group} />
@@ -420,7 +465,8 @@ function SearchResults({
                         <TokenList.Item
                           category={category}
                           token={token}
-                          customOnClick={captureSearchEvent}
+                          uuid={uuid}
+                          customOnClick={captureSearchClick}
                           searchTerm={searchTerm}
                           rank={rank}
                         />
@@ -452,7 +498,8 @@ function SearchResults({
                       >
                         <IconGrid.Item
                           icon={icon}
-                          customOnClick={captureSearchEvent}
+                          uuid={uuid}
+                          customOnClick={captureSearchClick}
                           searchTerm={searchTerm}
                           rank={rank}
                         />
