@@ -4,13 +4,13 @@ import Longform from '../Longform';
 import {Grid, GridItem} from '../Grid';
 import {Stack} from '../Stack';
 import {Heading} from '../Heading';
-import {Status} from '../../types';
+import {Status, StatusName} from '../../types';
 import styles from './PatternsPage.module.scss';
 import Preview from '../ThumbnailPreview';
 import {patterns, legacyPatterns} from '../../utils/various';
-import UpdateBanner from '../UpdateBanner';
 import {FoundationsProps} from '../FoundationsPage/FoundationsPage';
 import FoundationsThumbnail from '../FoundationsThumbnail';
+import StatusBanner from '../StatusBanner';
 
 export const PatternsPage = ({title, description}: FoundationsProps) => (
   <>
@@ -25,9 +25,11 @@ export const PatternsPage = ({title, description}: FoundationsProps) => (
             </Heading>
             <p>{description}</p>
           </Longform>
-          <UpdateBanner
-            message={`Our pattern documentation is evolving. [Join our discussions](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better. The [legacy patterns documentation](#legacy) can still be used.`}
-            className={styles.UpdateBanner}
+          <StatusBanner
+            status={{
+              value: StatusName.New,
+              message: `The pattern documentation is evolving. [Join the discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better.`,
+            }}
           />
         </div>
         <Grid>
