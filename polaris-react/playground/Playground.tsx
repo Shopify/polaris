@@ -13,14 +13,6 @@ export function Playground() {
           <Button pressed>Label</Button>
           <Button icon={LocationsMinor}>Label</Button>
           <Button disclosure>Label</Button>
-          {/* <Button
-            connectedDisclosure={{
-              accessibilityLabel: 'Other save actions',
-              actions: [{content: 'Action'}],
-            }}
-          >
-            Label
-          </Button> */}
         </HorizontalStack>
 
         <HorizontalStack gap="4" blockAlign="end">
@@ -37,15 +29,6 @@ export function Playground() {
           <Button primary disclosure>
             Label
           </Button>
-          {/* <Button
-            primary
-            connectedDisclosure={{
-              accessibilityLabel: 'Other save actions',
-              actions: [{content: 'Action'}],
-            }}
-          >
-            Label
-          </Button> */}
         </HorizontalStack>
 
         <HorizontalStack gap="4" blockAlign="end">
@@ -62,15 +45,22 @@ export function Playground() {
           <Button destructive disclosure>
             Label
           </Button>
-          {/* <Button
-            destructive
-            connectedDisclosure={{
-              accessibilityLabel: 'Other save actions',
-              actions: [{content: 'Action'}],
-            }}
-          >
+        </HorizontalStack>
+
+        <HorizontalStack gap="4" blockAlign="end">
+          <Button plain>Label</Button>
+          <Button plain disabled>
             Label
-          </Button> */}
+          </Button>
+          <Button plain pressed>
+            Label
+          </Button>
+          <Button plain icon={LocationsMinor}>
+            Label
+          </Button>
+          <Button plain disclosure>
+            Label
+          </Button>
         </HorizontalStack>
       </VerticalStack>
     </Page>
