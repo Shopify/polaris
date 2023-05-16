@@ -88,7 +88,8 @@
     }
   }
 
-  &.disabled {
+  &.disabled,
+  &.disabled::after {
     transition: none;
     box-shadow: none;
   }
