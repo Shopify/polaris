@@ -382,7 +382,8 @@ $disabled-fade: 0.6;
     padding-left: calc(var(--p-space-8) + var(--p-space-3));
 
     &:hover {
-      background: url(./relationship-arrow.svg) no-repeat 0.75rem center;
+      background: url(https://polaris-design-uplift.shopify.io/admin-uplift/icons/relationship-arrow.svg)
+        no-repeat 0.75rem center;
     }
 
     &:focus-visible {
