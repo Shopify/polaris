@@ -8,14 +8,6 @@ export function Playground() {
     <Page title="Playground">
       <VerticalStack gap="8">
         <HorizontalStack gap="4" blockAlign="end">
-          <Button>Label</Button>
-          <Button disabled>Label</Button>
-          <Button pressed>Label</Button>
-          <Button icon={LocationsMinor}>Label</Button>
-          <Button disclosure>Label</Button>
-        </HorizontalStack>
-
-        <HorizontalStack gap="4" blockAlign="end">
           <Button primary>Label</Button>
           <Button primary disabled>
             Label
@@ -45,6 +37,14 @@ export function Playground() {
           <Button destructive disclosure>
             Label
           </Button>
+        </HorizontalStack>
+
+        <HorizontalStack gap="4" blockAlign="end">
+          <Button>Label</Button>
+          <Button disabled>Label</Button>
+          <Button pressed>Label</Button>
+          <Button icon={LocationsMinor}>Label</Button>
+          <Button disclosure>Label</Button>
         </HorizontalStack>
 
         <HorizontalStack gap="4" blockAlign="end">
