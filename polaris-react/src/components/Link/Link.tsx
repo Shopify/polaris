@@ -14,7 +14,9 @@ export interface LinkProps {
   url?: string;
   /** The content to display inside the link */
   children?: React.ReactNode;
-  /** Makes the link open in a new tab */
+  /** Makes the link open in a new tab
+   * @deprecated use `target` instead
+   */
   external?: boolean;
   /** Where to display the url */
   target?: Target;
