@@ -42,6 +42,8 @@ export interface ButtonProps extends BaseButton {
   disclosure?: 'down' | 'up' | 'select' | boolean;
   /** Renders a button that looks like a link */
   plain?: boolean;
+  /** Indicates a successful action */
+  success?: boolean;
   /** Makes `plain` and `outline` Button colors (text, borders, icons) the same as the current text color. Also adds an underline to `plain` Buttons */
   monochrome?: boolean;
   /** Removes underline from button text (including on interaction) when `monochrome` and `plain` are true */
@@ -126,6 +128,7 @@ export function Button({
   destructive,
   disclosure,
   plain,
+  success,
   monochrome,
   removeUnderline,
   size = DEFAULT_SIZE,
@@ -143,6 +146,7 @@ export function Button({
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
+    success && styles.success,
     primary && plain && styles.primaryPlain,
     isDisabled && styles.disabled,
     loading && styles.loading,
@@ -221,6 +225,7 @@ export function Button({
       size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
       textAlign && styles[variationName('textAlign', textAlign)],
       destructive && styles.destructive,
+      success && styles.success,
       connectedDisclosure.disabled && styles.disabled,
       styles.iconOnly,
       styles.ConnectedDisclosure,

@@ -200,9 +200,8 @@
   }
 
   /* PRIMARY DESTRUCTIVE */
-  &.destructive {
-    /* critical-fill */
-    background: rgba(229, 28, 0, 1);
+  &.destructive,
+  &.success {
     /* +2 Button (Primary) */
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.25),
       inset 1px 0px 0px rgba(255, 255, 255, 0.25),
@@ -215,6 +214,19 @@
       fill: rgba(255, 255, 255, 1);
     }
 
+    &:active,
+    &.pressed {
+      /* -1 (Darker) */
+      box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
+        inset 1px 0px 1px rgba(0, 0, 0, 0.2),
+        inset 0px 2px 1px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &.destructive {
+    /* critical-fill */
+    background: rgba(229, 28, 0, 1);
+
     &:hover {
       /* critical-fill-l2 */
       background: rgba(181, 38, 11, 1);
@@ -224,11 +236,12 @@
     &.pressed {
       /* critical-fill-l3 */
       background: rgba(142, 31, 11, 1);
-      /* -1 (Darker) */
-      box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
-        inset 1px 0px 1px rgba(0, 0, 0, 0.2),
-        inset 0px 2px 1px rgba(0, 0, 0, 0.6);
     }
+  }
+
+  &.success {
+    /* success-fill */
+    background: #29845a;
   }
 }
 
