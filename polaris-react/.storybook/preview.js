@@ -24,7 +24,7 @@ function AppProviderDecorator(Story, context) {
   return (
     <AppProvider
       feature={{
-        polaris_summer_editions_2023,
+         polarisSummerEditions2023,
       }}
       i18n={enTranslations}
     >
