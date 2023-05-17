@@ -1,5 +1,5 @@
 import React from 'react';
-import {LocationsMinor} from '@shopify/polaris-icons';
+import {DeleteMinor, PlusMinor} from '@shopify/polaris-icons';
 
 import {Button, HorizontalStack, Page, VerticalStack, Text} from '../src';
 
@@ -17,7 +17,7 @@ export function Playground() {
             <Button primary pressed>
               Label
             </Button>
-            <Button primary icon={LocationsMinor}>
+            <Button primary icon={PlusMinor}>
               Label
             </Button>
             <Button primary disclosure>
@@ -38,7 +38,7 @@ export function Playground() {
             <Button primary destructive pressed>
               Label
             </Button>
-            <Button primary destructive icon={LocationsMinor}>
+            <Button primary destructive icon={DeleteMinor}>
               Label
             </Button>
             <Button primary destructive disclosure>
@@ -53,7 +53,7 @@ export function Playground() {
             <Button>Label</Button>
             <Button disabled>Label</Button>
             <Button pressed>Label</Button>
-            <Button icon={LocationsMinor}>Label</Button>
+            <Button icon={PlusMinor}>Label</Button>
             <Button disclosure>Label</Button>
           </HorizontalStack>
         </VerticalStack>
@@ -68,7 +68,7 @@ export function Playground() {
             <Button destructive pressed>
               Label
             </Button>
-            <Button destructive icon={LocationsMinor}>
+            <Button destructive icon={DeleteMinor}>
               Label
             </Button>
             <Button destructive disclosure>
@@ -87,7 +87,7 @@ export function Playground() {
             <Button plain pressed>
               Label
             </Button>
-            <Button plain icon={LocationsMinor}>
+            <Button plain icon={PlusMinor}>
               Label
             </Button>
             <Button plain disclosure>
@@ -108,7 +108,7 @@ export function Playground() {
             <Button plain destructive pressed>
               Label
             </Button>
-            <Button plain destructive icon={LocationsMinor}>
+            <Button plain destructive icon={DeleteMinor}>
               Label
             </Button>
             <Button plain destructive disclosure>
