@@ -9,7 +9,7 @@ export function Playground() {
       <VerticalStack gap="8">
         <VerticalStack gap="2">
           <Text>primary</Text>
-          <HorizontalStack gap="4" blockAlign="end">
+          <HorizontalStack gap="5" blockAlign="end">
             <Button primary>Label</Button>
             <Button primary disabled>
               Label
@@ -20,6 +20,9 @@ export function Playground() {
             <Button primary icon={PlusMinor}>
               Label
             </Button>
+            <Button primary disabled icon={PlusMinor}>
+              Label
+            </Button>
             <Button primary disclosure>
               Label
             </Button>
@@ -28,7 +31,7 @@ export function Playground() {
 
         <VerticalStack gap="2">
           <Text>primary destructive</Text>
-          <HorizontalStack gap="4" blockAlign="end">
+          <HorizontalStack gap="5" blockAlign="end">
             <Button primary destructive>
               Label
             </Button>
@@ -41,6 +44,9 @@ export function Playground() {
             <Button primary destructive icon={DeleteMinor}>
               Label
             </Button>
+            <Button primary destructive disabled icon={DeleteMinor}>
+              Label
+            </Button>
             <Button primary destructive disclosure>
               Label
             </Button>
@@ -49,18 +55,21 @@ export function Playground() {
 
         <VerticalStack gap="2">
           <Text>default</Text>
-          <HorizontalStack gap="4" blockAlign="end">
+          <HorizontalStack gap="5" blockAlign="end">
             <Button>Label</Button>
             <Button disabled>Label</Button>
             <Button pressed>Label</Button>
             <Button icon={PlusMinor}>Label</Button>
+            <Button disabled icon={PlusMinor}>
+              Label
+            </Button>
             <Button disclosure>Label</Button>
           </HorizontalStack>
         </VerticalStack>
 
         <VerticalStack gap="2">
           <Text>destructive</Text>
-          <HorizontalStack gap="4" blockAlign="end">
+          <HorizontalStack gap="5" blockAlign="end">
             <Button destructive>Label</Button>
             <Button destructive disabled>
               Label
@@ -71,6 +80,9 @@ export function Playground() {
             <Button destructive icon={DeleteMinor}>
               Label
             </Button>
+            <Button destructive disabled icon={DeleteMinor}>
+              Label
+            </Button>
             <Button destructive disclosure>
               Label
             </Button>
@@ -79,7 +91,7 @@ export function Playground() {
 
         <VerticalStack gap="2">
           <Text>plain</Text>
-          <HorizontalStack gap="4" blockAlign="end">
+          <HorizontalStack gap="5" blockAlign="end">
             <Button plain>Label</Button>
             <Button plain disabled>
               Label
@@ -90,6 +102,9 @@ export function Playground() {
             <Button plain icon={PlusMinor}>
               Label
             </Button>
+            <Button plain disabled icon={PlusMinor}>
+              Label
+            </Button>
             <Button plain disclosure>
               Label
             </Button>
@@ -98,7 +113,7 @@ export function Playground() {
 
         <VerticalStack gap="2">
           <Text>plain destructive</Text>
-          <HorizontalStack gap="4" blockAlign="end">
+          <HorizontalStack gap="5" blockAlign="end">
             <Button plain destructive>
               Label
             </Button>
@@ -109,6 +124,9 @@ export function Playground() {
               Label
             </Button>
             <Button plain destructive icon={DeleteMinor}>
+              Label
+            </Button>
+            <Button plain destructive disabled icon={DeleteMinor}>
               Label
             </Button>
             <Button plain destructive disclosure>
