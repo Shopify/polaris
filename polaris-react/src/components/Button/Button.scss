@@ -1,25 +1,40 @@
 @import '../../styles/common';
 
 .Button {
+  --pc-button-segment: 10;
+  --pc-button-focused: 20;
+  --pc-button-disclosure-icon-offset: -6px;
+
   // stylelint-disable -- Polaris component custom properties
   position: relative;
   height: 28px;
   border-radius: 8px;
   padding: 4px 12px 4px 12px;
   border: none;
-  transition: all 100ms ease-out;
+  /* motion-curve-snappy */
+  transition: all 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
   cursor: pointer;
 
-  // font-family: 'Inter,-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif';
+  /* font-family will be Inter */
   font-size: 12px;
   font-weight: 500;
 
-  --pc-button-segment: 10;
-  --pc-button-focused: 20;
-  --pc-button-disclosure-icon-offset: -6px;
+  &:active,
+  &.pressed {
+    /* Moves the position of the text */
+    padding: 5px 12px 3px 12px;
 
-  &.disabled {
+    &::after {
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+
+  &.disabled,
+  &.disabled::after {
     pointer-events: none;
+    transition: none;
+    box-shadow: none;
   }
 }
 
@@ -58,26 +73,6 @@
 }
 
 /* VARIANT STYLES */
-.Button,
-.primary,
-.destructive {
-  &:active,
-  &.pressed {
-    /* Moves the position of the text */
-    padding: 5px 12px 3px 12px;
-
-    &::after {
-      background: transparent;
-      box-shadow: none;
-    }
-  }
-
-  &.disabled,
-  &.disabled::after {
-    transition: none;
-    box-shadow: none;
-  }
-}
 
 /* DEFAULT */
 .Button {
