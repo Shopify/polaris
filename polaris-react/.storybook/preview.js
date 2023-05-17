@@ -19,7 +19,7 @@ function StrictModeDecorator(Story, context) {
 }
 
 function AppProviderDecorator(Story, context) {
-  const {polaris_summer_editions_2023} = context.globals;
+  const {polarisSummerEditions2023} = context.globals;
   if (context.args.omitAppProvider) return <Story {...context} />;
   return (
     <AppProvider
