@@ -169,7 +169,7 @@ export function WithLinkComponent() {
 export function WithSummerEditionsFeature() {
   const [flagStatus, setFlagStatus] = useState(false);
   const CheckFeature = ({children}: {children: React.ReactNode}) => {
-    const {polaris_summer_editions_2023} = useFeatures();
+    const {polarisSummerEditions2023} = useFeatures();
     return (
       <AlphaCard>
         <VerticalStack gap="4">
