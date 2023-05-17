@@ -66,8 +66,8 @@ addons.register('polaris/global-controls', () => {
 });
 
 export const featureFlagOptions = {
-  polaris_summer_editions_2023: {
-    name: 'polaris_summer_editions_2023',
+  polarisSummerEditions2023: {
+    name: 'polarisSummerEditions2023',
     description: 'Toggle the summer editions feature flag',
     defaultValue: false,
     control: {type: 'boolean'},

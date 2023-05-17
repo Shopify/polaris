@@ -175,11 +175,11 @@ export function WithSummerEditionsFeature() {
         <VerticalStack gap="4">
           <Text
             as="h2"
-            variant={polaris_summer_editions_2023 ? 'headingXl' : 'bodyMd'}
-            color={polaris_summer_editions_2023 ? 'critical' : undefined}
+            variant={polarisSummerEditions2023 ? 'headingXl' : 'bodyMd'}
+            color={polarisSummerEditions2023 ? 'critical' : undefined}
           >
             {`Polaris Summer Editions flag is turned ${
-              polaris_summer_editions_2023 ? 'ON' : 'OFF'
+              polarisSummerEditions2023 ? 'ON' : 'OFF'
             }`}
           </Text>
 
@@ -189,10 +189,7 @@ export function WithSummerEditionsFeature() {
     );
   };
   return (
-    <AppProvider
-      features={{polaris_summer_editions_2023: flagStatus}}
-      i18n={{}}
-    >
+    <AppProvider features={{polarisSummerEditions2023: flagStatus}} i18n={{}}>
       <CheckFeature>
         <Box>
           <Button
