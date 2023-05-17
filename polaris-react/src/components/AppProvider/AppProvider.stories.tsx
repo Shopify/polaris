@@ -1,16 +1,19 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
+  Box,
+  Button,
   LegacyCard,
-  ContextualSaveBar,
-  Layout,
+  AlphaCard,
   Page,
   ResourceList,
-  SettingToggle,
   Text,
+  VerticalStack,
 } from '@shopify/polaris';
+
+import {useFeatures} from '@shopify/polaris/utilities/features';
 
 export default {
   component: AppProvider,
@@ -160,6 +163,44 @@ export function WithLinkComponent() {
       >
         <p>Page content</p>
       </Page>
+    </AppProvider>
+  );
+}
+
+export function WithSummerEditionsFeature() {
+  const [flagStatus, setFlagStatus] = useState(false);
+  const CheckFeature = ({children}: {children: React.ReactNode}) => {
+    const {polaris_summer_editions_2023} = useFeatures();
+    return (
+      <AlphaCard>
+        <VerticalStack gap="4">
+          <Text
+            as="h2"
+            variant={polaris_summer_editions_2023 ? 'headingXl' : 'bodyMd'}
+            color={polaris_summer_editions_2023 ? 'critical' : undefined}
+          >
+            {`Polaris Summer Editions flag is turned ${
+              polaris_summer_editions_2023 ? 'ON' : 'OFF'
+            }`}
+          </Text>
+
+          {children}
+        </VerticalStack>
+      </AlphaCard>
+    );
+  };
+  return (
+    <AppProvider features={{polaris_summer_editions_2023: true}} i18n={{}}>
+      <CheckFeature>
+        <Box>
+          <Button
+            primary
+            onClick={() => setFlagStatus((flagStatus) => !flagStatus)}
+          >
+            Toggle flag
+          </Button>
+        </Box>
+      </CheckFeature>
     </AppProvider>
   );
 }
