@@ -4,7 +4,7 @@ import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
-import {gridOptions, providerOptions} from './manager';
+import {gridOptions, featureFlagOptions} from './manager';
 import {breakpoints} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
@@ -81,7 +81,7 @@ export const globalTypes = {
       ],
     },
   },
-  ...providerOptions,
+  ...featureFlagOptions,
   ...gridOptions,
 };
 const viewPorts = Object.entries({
