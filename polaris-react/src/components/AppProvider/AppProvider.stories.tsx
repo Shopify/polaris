@@ -190,7 +190,10 @@ export function WithSummerEditionsFeature() {
     );
   };
   return (
-    <AppProvider features={{polaris_summer_editions_2023: true}} i18n={{}}>
+    <AppProvider
+      features={{polaris_summer_editions_2023: flagStatus}}
+      i18n={{}}
+    >
       <CheckFeature>
         <Box>
           <Button
