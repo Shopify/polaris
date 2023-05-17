@@ -164,7 +164,8 @@
   }
 
   &.disabled,
-  &.disabled.destructive {
+  &.disabled.destructive,
+  &.disabled.success {
     /* disabled-fill */
     background: #ebebeb;
     /* disabled-text-onfill */
@@ -175,6 +176,7 @@
       background: transparent;
       box-shadow: none;
     }
+
     svg {
       /* disabled-text-onfill */
       fill: rgba(255, 255, 255, 1);
@@ -242,6 +244,17 @@
   &.success {
     /* success-fill */
     background: #29845a;
+
+    &:hover {
+      /* success-fill-l2 */
+      background: #136f45;
+    }
+
+    &:active,
+    &.pressed {
+      /* success-fill-l3 */
+      background: #0c5132;
+    }
   }
 }
 
