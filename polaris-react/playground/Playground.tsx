@@ -1,14 +1,16 @@
 import React from 'react';
-import {DeleteMinor, PlusMinor} from '@shopify/polaris-icons';
+import {DeleteMinor, PlusMinor, TickMinor} from '@shopify/polaris-icons';
 
 import {Button, HorizontalStack, Page, VerticalStack, Text} from '../src';
 
 export function Playground() {
   return (
     <Page title="Playground">
-      <VerticalStack gap="8">
-        <VerticalStack gap="2">
-          <Text>primary</Text>
+      <VerticalStack gap="12">
+        <VerticalStack gap="4">
+          <Text variant="headingSm" as="h2">
+            primary
+          </Text>
           <HorizontalStack gap="5" blockAlign="end">
             <Button primary>Label</Button>
             <Button primary disabled>
@@ -27,10 +29,7 @@ export function Playground() {
               Label
             </Button>
           </HorizontalStack>
-        </VerticalStack>
 
-        <VerticalStack gap="2">
-          <Text>primary destructive</Text>
           <HorizontalStack gap="5" blockAlign="end">
             <Button primary destructive>
               Label
@@ -51,10 +50,33 @@ export function Playground() {
               Label
             </Button>
           </HorizontalStack>
+
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button primary success>
+              Label
+            </Button>
+            <Button primary success disabled>
+              Label
+            </Button>
+            <Button primary success pressed>
+              Label
+            </Button>
+            <Button primary success icon={TickMinor}>
+              Label
+            </Button>
+            <Button primary success disabled icon={TickMinor}>
+              Label
+            </Button>
+            <Button primary success disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
         </VerticalStack>
 
-        <VerticalStack gap="2">
-          <Text>default</Text>
+        <VerticalStack gap="4">
+          <Text variant="headingSm" as="h2">
+            default
+          </Text>
           <HorizontalStack gap="5" blockAlign="end">
             <Button>Label</Button>
             <Button disabled>Label</Button>
@@ -65,10 +87,7 @@ export function Playground() {
             </Button>
             <Button disclosure>Label</Button>
           </HorizontalStack>
-        </VerticalStack>
 
-        <VerticalStack gap="2">
-          <Text>destructive</Text>
           <HorizontalStack gap="5" blockAlign="end">
             <Button destructive>Label</Button>
             <Button destructive disabled>
@@ -89,8 +108,10 @@ export function Playground() {
           </HorizontalStack>
         </VerticalStack>
 
-        <VerticalStack gap="2">
-          <Text>plain</Text>
+        <VerticalStack gap="4">
+          <Text variant="headingSm" as="h2">
+            plain
+          </Text>
           <HorizontalStack gap="5" blockAlign="end">
             <Button plain>Label</Button>
             <Button plain disabled>
@@ -109,10 +130,7 @@ export function Playground() {
               Label
             </Button>
           </HorizontalStack>
-        </VerticalStack>
 
-        <VerticalStack gap="2">
-          <Text>plain destructive</Text>
           <HorizontalStack gap="5" blockAlign="end">
             <Button plain destructive>
               Label
