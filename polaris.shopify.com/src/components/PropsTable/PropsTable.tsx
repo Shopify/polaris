@@ -1,4 +1,10 @@
-import {createContext, useContext, useState} from 'react';
+import {
+  SyntheticEvent,
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from 'react';
 import {Type, FilteredTypes, StatusName} from '../../types';
 import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
@@ -6,9 +12,14 @@ import {motion, AnimatePresence} from 'framer-motion';
 import StatusBadge from '../StatusBadge';
 import {className, toPascalCase} from '../../utils/various';
 
+interface ComponentProp {
+  name: string;
+  propName: string;
+  type: FilteredTypes;
+}
 interface Props {
   componentName: string;
-  types: FilteredTypes;
+  componentProps: ComponentProp[];
 }
 
 function syntaxKindToDeveloperFriendlyString(
@@ -29,24 +40,59 @@ const TypeContext = createContext<{
   types: FilteredTypes;
 }>({types: {}});
 
-function PropsTable({types, componentName}: Props) {
+function PropsTable({componentName, componentProps}: Props) {
+  const [componentPropType, setComponentPropType] = useState<ComponentProp>(
+    () => {
+      return componentProps.find(
+        (componentProp) => componentProp.name === toPascalCase(componentName),
+      ) as ComponentProp;
+    },
+  );
+
+  useEffect(() => {
+    setComponentPropType(
+      componentProps.find(
+        (componentProp) => componentProp.name === toPascalCase(componentName),
+      ) as ComponentProp,
+    );
+  }, [componentProps, componentName]);
+
+  if (!componentProps || !componentProps.length) return;
   const feedbackTitle = '[polaris.shopify.com] Props table feedback';
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     feedbackTitle,
   )}&amp;labels=polaris.shopify.com`;
 
-  const propsName = `${toPascalCase(componentName).replace(/\s/g, '')}Props`;
-  const propsForComponent = types[propsName];
+  // const propsName = `${toPascalCase(componentPropType.name).replace(
+  //   /\s/g,
+  //   '',
+  // )}Props`;
+  const propsForComponent = componentPropType.type[componentPropType.propName];
+  const handleOnChange = (e: SyntheticEvent<HTMLSelectElement>) => {
+    const selectedComponentProp = componentProps.find(
+      (componentProp) => componentProp.propName === e.currentTarget.value,
+    );
+    if (selectedComponentProp) {
+      setComponentPropType(selectedComponentProp);
+    }
+  };
 
   if (!propsForComponent) throw new Error('Could not find props for component');
 
   const propsAreDefinedUsingInterface = !!propsForComponent.members;
 
   return (
-    <TypeContext.Provider value={{types}}>
+    <TypeContext.Provider value={{types: componentPropType.type}}>
       <div className={styles.PropsTable}>
         <Longform firstParagraphIsLede={false}>
           <h2 id="props">Props</h2>
+          <select onChange={handleOnChange}>
+            {componentProps.map((componentProp) => (
+              <option value={componentProp.propName}>
+                {componentProp.name}
+              </option>
+            ))}
+          </select>
           <p>
             Want to help make this feature better? Please{' '}
             <a href={feedbackUrl}>share your feedback</a>.
@@ -60,7 +106,7 @@ function PropsTable({types, componentName}: Props) {
         )}
 
         <AnimatePresence initial={false}>
-          <TypeTable types={types} type={propsForComponent} />
+          <TypeTable types={componentPropType.type} type={propsForComponent} />
         </AnimatePresence>
       </div>
     </TypeContext.Provider>

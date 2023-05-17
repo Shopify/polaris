@@ -1,4 +1,5 @@
 import fs from 'fs';
+import {useState} from 'react';
 import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
@@ -31,6 +32,11 @@ interface Props {
     body: string;
     header: string;
   };
+  componentProps: {
+    name: string;
+    propName: string;
+    type: any;
+  }[];
   type: FilteredTypes;
   editPageLinkPath: string;
   tip?: string;
@@ -42,6 +48,7 @@ const Components = ({
   title,
   readme,
   status,
+  componentProps,
   type,
   tip,
   editPageLinkPath,
@@ -57,8 +64,8 @@ const Components = ({
     <ComponentExamples examples={examples} />
   );
   const propsTable =
-    type && status?.value !== 'Deprecated' ? (
-      <PropsTable componentName={title} types={type} />
+    status?.value !== 'Deprecated' ? (
+      <PropsTable componentName={title} componentProps={componentProps} />
     ) : null;
 
   return (
@@ -75,7 +82,6 @@ const Components = ({
         )}
         {componentExamples}
       </Longform>
-
       {propsTable}
 
       <Longform firstParagraphIsLede={false}>
@@ -132,18 +138,40 @@ export const getStaticProps: GetStaticProps<
 
     const componentDirName = toPascalCase(`${data.frontMatter.title} `);
     const propName = toPascalCase(`${data.frontMatter.title} Props`);
+    let componentProps = [];
 
     let type = getRelevantTypes(
       allType,
       propName,
       `polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
     );
+    componentProps.push({propName, type, name: componentDirName});
+
+    if (data.frontMatter.subcomponents) {
+      const subComponentTypes = data.frontMatter.subcomponents.map(
+        (subcomponent: string) => {
+          const propName = toPascalCase(`${subcomponent} Props`);
+          return {
+            type: getRelevantTypes(
+              allType,
+              propName,
+              `polaris-react/src/components/${componentDirName}/components/${subcomponent}.tsx`,
+            ),
+            name: subcomponent,
+            propName,
+          };
+        },
+      );
+      componentProps.push(...subComponentTypes);
+    }
+    console.log(componentProps);
 
     const props: Props = {
       ...data.frontMatter,
       examples,
       tip,
       description,
+      componentProps,
       readme,
       type,
       editPageLinkPath,

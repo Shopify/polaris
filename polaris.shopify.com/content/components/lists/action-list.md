@@ -2,6 +2,9 @@
 title: Action list
 description: Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.
 category: Lists
+subcomponents:
+  - Item
+  - Section
 keywords:
   - ActionList
   - dropdown
