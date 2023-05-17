@@ -63,7 +63,7 @@
 .destructive {
   &:active,
   &.pressed {
-    /* Move the position of the text */
+    /* Moves the position of the text */
     padding: 5px 12px 3px 12px;
 
     &::after {
@@ -108,10 +108,19 @@
   }
 
   /* not sure this is accurate - this one had a border, others don't */
-  &.disabled {
-    background: #ebebeb;
-    // border: 1px solid #ebebeb;
+  &.disabled,
+  &.disabled.destructive {
+    background: transparent;
+    /* border on disabled state only, may need to do something sooner in the css to avoid jumpiness between state */
+    /* disabled-fill */
+    border: 1px solid #ebebeb;
+    /* disabled-text */
     color: #cccccc;
+
+    svg {
+      /* disabled-icon */
+      fill: rgba(204, 204, 204, 1);
+    }
   }
 
   &.destructive {
@@ -138,6 +147,7 @@
   color: #fff;
 
   svg {
+    /* accent-text-onfill */
     fill: rgba(255, 255, 255, 1);
   }
 
@@ -158,11 +168,22 @@
       inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6);
   }
 
-  /* not sure this is accurate */
-  &.disabled {
-    /* accent-text-onfill */
-    color: #fff;
+  &.disabled,
+  &.disabled.destructive {
+    /* disabled-fill */
     background: #ebebeb;
+    /* disabled-text-onfill */
+    color: #fff;
+    box-shadow: none;
+
+    &::after {
+      background: transparent;
+      box-shadow: none;
+    }
+    svg {
+      /* disabled-text-onfill */
+      fill: rgba(255, 255, 255, 1);
+    }
   }
 
   &::after {
@@ -195,6 +216,7 @@
     color: #fff;
 
     svg {
+      /* accent-text-onfill */
       fill: rgba(255, 255, 255, 1);
     }
 
@@ -211,12 +233,6 @@
       box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
         inset 1px 0px 1px rgba(0, 0, 0, 0.2),
         inset 0px 2px 1px rgba(0, 0, 0, 0.6);
-    }
-
-    /* not sure this is accurate */
-    &.disabled {
-      background: #ebebeb;
-      box-shadow: none;
     }
   }
 }
