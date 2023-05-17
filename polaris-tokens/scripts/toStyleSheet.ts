@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {Metadata, MetadataGroup} from '../src';
+import type {Metadata, MetadataGroup, MetadataUplift} from '../src';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
@@ -12,7 +12,7 @@ const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-export function getStaticCustomProperties(metadata: Metadata) {
+export function getStaticCustomProperties(metadata: Metadata | MetadataUplift) {
   return Object.entries(metadata)
     .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
     .join('');
@@ -44,7 +44,10 @@ export function getKeyframes(motion: MetadataGroup) {
     .join('');
 }
 
-export async function toStyleSheet(metadata: Metadata) {
+export async function toStyleSheet(
+  metadata: Metadata,
+  metadataUplift: MetadataUplift,
+) {
   if (!fs.existsSync(cssOutputDir)) {
     await fs.promises.mkdir(cssOutputDir, {recursive: true});
   }
@@ -53,7 +56,9 @@ export async function toStyleSheet(metadata: Metadata) {
   }
 
   const styles = `
-  :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
+  :root{color-scheme:light;${getStaticCustomProperties(
+    metadata,
+  )}.Polaris-summer-editions-2023{${getStaticCustomProperties(metadataUplift)}}}
   ${getKeyframes(metadata.motion)}
 `;
 

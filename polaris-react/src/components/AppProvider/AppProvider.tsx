@@ -15,7 +15,10 @@ import {
 } from '../../utilities/sticky-manager';
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
-import {FeaturesContext} from '../../utilities/features';
+import {
+  FeaturesContext,
+  summerEditions2023ClassName,
+} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 import {
   UniqueIdFactory,
@@ -111,7 +114,15 @@ export class AppProvider extends Component<AppProviderProps, State> {
                     <PortalsManager>
                       <FocusManager>
                         <EphemeralPresenceManager>
-                          {children}
+                          <div
+                            className={
+                              features.polarisSummerEditions2023
+                                ? summerEditions2023ClassName
+                                : undefined
+                            }
+                          >
+                            {children}
+                          </div>
                         </EphemeralPresenceManager>
                       </FocusManager>
                     </PortalsManager>
