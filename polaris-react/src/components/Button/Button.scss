@@ -76,7 +76,7 @@
 
 /* DEFAULT */
 .Button {
-  /* fill */
+  /* surface */
   background: #ffffff;
   /* +2 Button (Sleek, Light) */
   box-shadow: inset 0px -1px 0px #b5b5b5, inset -1px 0px 0px #e3e3e3,
@@ -85,7 +85,7 @@
   color: #303030;
 
   &:hover {
-    /* fill-l2 */
+    /* surface-l2 */
     background: #fafafa;
     /* +1 Button (Sleek) */
     box-shadow: inset 0px -1px 0px #cccccc, inset 1px 0px 0px #ebebeb,
@@ -94,7 +94,7 @@
 
   &:active,
   &.pressed {
-    /* fill-l3 */
+    /* surface-l3 */
     background: #f3f3f3;
     /* -1 */
     box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.12),
