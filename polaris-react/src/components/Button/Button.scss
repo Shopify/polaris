@@ -253,4 +253,9 @@
     background: rgba(0, 0, 0, 0.07);
     box-shadow: none;
   }
+
+  &.disabled,
+  &.disabled.destructive {
+    border: none;
+  }
 }
