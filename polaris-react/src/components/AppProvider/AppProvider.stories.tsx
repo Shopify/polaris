@@ -12,7 +12,6 @@ import {
   Text,
   VerticalStack,
 } from '@shopify/polaris';
-
 import {useFeatures} from '@shopify/polaris/utilities/features';
 
 export default {
