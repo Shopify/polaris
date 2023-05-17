@@ -94,7 +94,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {
       children,
       features = {
-        polaris_summer_editions_2023: false,
+        polarisSummerEditions2023: false,
       },
     } = this.props;
 
