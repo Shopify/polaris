@@ -163,6 +163,23 @@ describe('<AlphaFilters />', () => {
     });
   });
 
+  it('triggers the onAddFilterClick callback when the add filter button is clicked', () => {
+    const callbackFunction = jest.fn();
+    const wrapper = mountWithApp(
+      <AlphaFilters {...defaultProps} onAddFilterClick={callbackFunction} />,
+    );
+    wrapper.act(() => {
+      wrapper
+        .find('button', {
+          'aria-label': 'Add filter',
+        })!
+        .trigger('onClick');
+    });
+
+    expect(callbackFunction).toHaveBeenCalled();
+    expect(wrapper).toContainReactComponent(ActionList);
+  });
+
   it('correctly invokes the onRemove callback when clicking on an applied filter', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
