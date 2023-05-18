@@ -1,5 +1,6 @@
 export interface FeaturesConfig {
-  [key: string]: boolean;
+  polarisSummerEditions2023?: boolean;
+  [key: string]: boolean | undefined;
 }
 
 export interface Features {}
