@@ -58,7 +58,7 @@ export async function toStyleSheet(
   const styles = `
   :root{color-scheme:light;${getStaticCustomProperties(
     metadata,
-  )}.uplift{${getStaticCustomProperties(metadataUplift)}}}
+  )}.Polaris-summer-editions-2023{${getStaticCustomProperties(metadataUplift)}}}
   ${getKeyframes(metadata.motion)}
 `;
 

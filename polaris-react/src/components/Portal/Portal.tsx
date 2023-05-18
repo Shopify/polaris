@@ -3,7 +3,10 @@ import {createPortal} from 'react-dom';
 
 import {usePortalsManager} from '../../utilities/portals';
 import {useUniqueId} from '../../utilities/unique-id';
-import {useFeatures} from '../../utilities/features';
+import {
+  useFeatures,
+  summerEditions2023ClassName,
+} from '../../utilities/features';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -30,7 +33,9 @@ export function Portal({
     ? createPortal(
         <div
           data-portal-id={portalId}
-          className={polarisSummerEditions2023 ? 'uplift' : undefined}
+          className={
+            polarisSummerEditions2023 ? summerEditions2023ClassName : undefined
+          }
         >
           {children}
         </div>,
