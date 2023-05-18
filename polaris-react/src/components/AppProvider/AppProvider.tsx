@@ -84,7 +84,12 @@ export class AppProvider extends Component<AppProviderProps, State> {
   };
 
   render() {
-    const {children, features = {}} = this.props;
+    const {
+      children,
+      features = {
+        polarisSummerEditions2023: false,
+      },
+    } = this.props;
 
     const {intl, link} = this.state;
 
