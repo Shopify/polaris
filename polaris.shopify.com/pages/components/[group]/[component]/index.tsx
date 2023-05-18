@@ -48,7 +48,6 @@ const Components = ({
   readme,
   status,
   componentProps,
-  type,
   tip,
   editPageLinkPath,
 }: Props) => {
