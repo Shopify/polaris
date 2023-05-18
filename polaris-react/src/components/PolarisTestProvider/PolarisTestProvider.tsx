@@ -56,7 +56,7 @@ export function PolarisTestProvider({
   i18n,
   link,
   mediaQuery,
-  features = {},
+  features,
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
