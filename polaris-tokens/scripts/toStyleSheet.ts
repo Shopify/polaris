@@ -56,9 +56,11 @@ export async function toStyleSheet(
   }
 
   const styles = `
-  :root{color-scheme:light;${getStaticCustomProperties(
+  :where(html){color-scheme:light;${getStaticCustomProperties(
     metadata,
-  )}.Polaris-summer-editions-2023{${getStaticCustomProperties(metadataUplift)}}}
+  )}};html:where(.Polaris-summer-editions-2023){${getStaticCustomProperties(
+    metadataUplift,
+  )}}
   ${getKeyframes(metadata.motion)}
 `;
 

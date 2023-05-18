@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {AppProvider} from '../src';
+import {AppProvider, Frame} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
@@ -28,7 +28,9 @@ function AppProviderDecorator(Story, context) {
       }}
       i18n={enTranslations}
     >
-      <Story {...context} />
+      <Frame>
+        <Story {...context} />
+      </Frame>
     </AppProvider>
   );
 }

@@ -21,6 +21,11 @@ import type {
   ToastID,
   ToastPropsWithID,
 } from '../../utilities/frame';
+import type {FeaturesConfig} from '../../utilities/features';
+import {
+  summerEditions2023ClassName,
+  useFeatures,
+} from '../../utilities/features';
 
 import {
   ToastManager,
@@ -49,6 +54,8 @@ export interface FrameProps {
   showMobileNavigation?: boolean;
   /** Accepts a ref to the html anchor element you wish to focus when clicking the skip to content link */
   skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
+  /** Internal use */
+  _internalFeatures?: FeaturesConfig;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
 }
@@ -91,6 +98,10 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     }
     this.setGlobalRibbonRootProperty();
     this.setOffset();
+    document.documentElement.classList.toggle(
+      summerEditions2023ClassName,
+      this.props._internalFeatures?.polarisSummerEditions2023,
+    );
   }
 
   componentDidUpdate(prevProps: FrameProps) {
@@ -98,6 +109,10 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       this.setGlobalRibbonHeight();
     }
     this.setOffset();
+    document.documentElement.classList.toggle(
+      summerEditions2023ClassName,
+      this.props._internalFeatures?.polarisSummerEditions2023,
+    );
   }
 
   render() {
@@ -419,6 +434,14 @@ const navTransitionClasses = {
 export function Frame(props: FrameProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
+  const features = useFeatures();
 
-  return <FrameInner {...props} i18n={i18n} mediaQuery={mediaQuery} />;
+  return (
+    <FrameInner
+      {...props}
+      i18n={i18n}
+      mediaQuery={mediaQuery}
+      _internalFeatures={features}
+    />
+  );
 }

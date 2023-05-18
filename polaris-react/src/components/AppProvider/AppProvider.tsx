@@ -15,10 +15,7 @@ import {
 } from '../../utilities/sticky-manager';
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
-import {
-  FeaturesContext,
-  summerEditions2023ClassName,
-} from '../../utilities/features';
+import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 import {
   UniqueIdFactory,
@@ -111,18 +108,10 @@ export class AppProvider extends Component<AppProviderProps, State> {
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
                   <MediaQueryProvider>
-                    <PortalsManager features={features}>
+                    <PortalsManager>
                       <FocusManager>
                         <EphemeralPresenceManager>
-                          <div
-                            className={
-                              features.polarisSummerEditions2023
-                                ? summerEditions2023ClassName
-                                : undefined
-                            }
-                          >
-                            {children}
-                          </div>
+                          {children}
                         </EphemeralPresenceManager>
                       </FocusManager>
                     </PortalsManager>
