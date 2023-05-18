@@ -102,6 +102,8 @@ export interface AlphaFiltersProps {
   /** Whether an asyncronous task is currently being run. */
   loading?: boolean;
   mountedState?: TransitionStatus;
+  /** Callback when the add filter button is clicked. */
+  onAddFilterClick?: () => void;
 }
 
 export function AlphaFilters({
@@ -124,6 +126,7 @@ export function AlphaFilters({
   loading,
   disableFilters,
   mountedState,
+  onAddFilterClick,
 }: AlphaFiltersProps) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
@@ -138,6 +141,7 @@ export function AlphaFilters({
     setPopoverActive((popoverActive) => !popoverActive);
 
   const handleAddFilterClick = () => {
+    onAddFilterClick?.();
     togglePopoverActive();
   };
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
