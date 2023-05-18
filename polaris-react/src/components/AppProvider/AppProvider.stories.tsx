@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Args, ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
@@ -166,40 +166,30 @@ export function WithLinkComponent() {
   );
 }
 
-export function WithSummerEditionsFeature() {
-  const [flagStatus, setFlagStatus] = useState(false);
-  const CheckFeature = ({children}: {children: React.ReactNode}) => {
-    const {polarisSummerEditions2023} = useFeatures();
+export const WithSummerEditionsFeature = {
+  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => {
+    const CheckFeature = () => {
+      const {polarisSummerEditions2023} = useFeatures();
+      return (
+        <AlphaCard>
+          <VerticalStack gap="4">
+            <Text
+              as="h2"
+              variant={polarisSummerEditions2023 ? 'headingXl' : 'bodyMd'}
+              color={polarisSummerEditions2023 ? 'critical' : undefined}
+            >
+              {`Polaris Summer Editions flag is turned ${
+                polarisSummerEditions2023 ? 'ON' : 'OFF'
+              }`}
+            </Text>
+          </VerticalStack>
+        </AlphaCard>
+      );
+    };
     return (
-      <AlphaCard>
-        <VerticalStack gap="4">
-          <Text
-            as="h2"
-            variant={polarisSummerEditions2023 ? 'headingXl' : 'bodyMd'}
-            color={polarisSummerEditions2023 ? 'critical' : undefined}
-          >
-            {`Polaris Summer Editions flag is turned ${
-              polarisSummerEditions2023 ? 'ON' : 'OFF'
-            }`}
-          </Text>
-
-          {children}
-        </VerticalStack>
-      </AlphaCard>
+      <AppProvider features={{polarisSummerEditions2023}} i18n={{}}>
+        <CheckFeature />
+      </AppProvider>
     );
-  };
-  return (
-    <AppProvider features={{polarisSummerEditions2023: flagStatus}} i18n={{}}>
-      <CheckFeature>
-        <Box>
-          <Button
-            primary
-            onClick={() => setFlagStatus((flagStatus) => !flagStatus)}
-          >
-            Toggle flag
-          </Button>
-        </Box>
-      </CheckFeature>
-    </AppProvider>
-  );
-}
+  },
+};
