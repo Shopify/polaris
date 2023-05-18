@@ -404,4 +404,6 @@ export interface FilterInterface {
   onAction?: () => void;
   /** Suffix source */
   suffix?: React.ReactNode;
+  /** Optional section heading that this filter will go under  */
+  section?: string;
 }
