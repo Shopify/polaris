@@ -57,7 +57,7 @@ function PropsTable({componentName, componentProps}: Props) {
     );
   }, [componentProps, componentName]);
 
-  if (!componentProps || !componentProps.length) return;
+  if (!componentProps || !componentProps.length) return null;
   const feedbackTitle = '[polaris.shopify.com] Props table feedback';
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     feedbackTitle,
@@ -88,7 +88,10 @@ function PropsTable({componentName, componentProps}: Props) {
           <h2 id="props">Props</h2>
           <select onChange={handleOnChange}>
             {componentProps.map((componentProp) => (
-              <option value={componentProp.propName}>
+              <option
+                key={componentProp.propName}
+                value={componentProp.propName}
+              >
                 {componentProp.name}
               </option>
             ))}
