@@ -23,8 +23,8 @@ function AppProviderDecorator(Story, context) {
   if (context.args.omitAppProvider) return <Story {...context} />;
   return (
     <AppProvider
-      feature={{
-         polarisSummerEditions2023,
+      features={{
+        polarisSummerEditions2023,
       }}
       i18n={enTranslations}
     >
