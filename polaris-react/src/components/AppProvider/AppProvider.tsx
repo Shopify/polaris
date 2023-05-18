@@ -111,7 +111,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
               <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
                 <LinkContext.Provider value={link}>
                   <MediaQueryProvider>
-                    <PortalsManager>
+                    <PortalsManager features={features}>
                       <FocusManager>
                         <EphemeralPresenceManager>
                           <div
