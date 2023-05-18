@@ -418,3 +418,30 @@ export function PersistOnClick() {
     </Box>
   );
 }
+
+export function ActiveStates() {
+  return (
+    <Box paddingBlockStart="24">
+      <HorizontalStack gap="24">
+        <Tooltip content="This tooltip should never render" active={false}>
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Active false
+          </Text>
+        </Tooltip>
+        <Tooltip content="This tooltip should render on load and hover" active>
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Active true
+          </Text>
+        </Tooltip>
+        <Tooltip
+          content="This tooltip should render on hover"
+          active={undefined}
+        >
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Active undefined
+          </Text>
+        </Tooltip>
+      </HorizontalStack>
+    </Box>
+  );
+}
