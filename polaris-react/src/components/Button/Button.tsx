@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
+/* eslint-disable @shopify/jsx-no-hardcoded-content */
 import React, {useCallback, useState} from 'react';
 import {
   CaretDownMinor,
@@ -17,6 +19,7 @@ import {ActionList} from '../ActionList';
 import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
 import {useDisableClick} from '../../utilities/use-disable-interaction';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Button.scss';
 
@@ -135,11 +138,13 @@ export function Button({
   dataPrimaryLink,
 }: ButtonProps) {
   const i18n = useI18n();
+  const {polarisSummerEditions2023} = useFeatures();
 
   const isDisabled = disabled || loading;
 
   const className = classNames(
     styles.Button,
+    primary && polarisSummerEditions2023 && styles.Magenta,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
@@ -176,6 +181,7 @@ export function Button({
   );
   const iconMarkup = iconSource ? (
     <span className={classNames(styles.Icon, loading && styles.hidden)}>
+      {polarisSummerEditions2023 && <span>💥</span>}
       {iconSource}
     </span>
   ) : null;
