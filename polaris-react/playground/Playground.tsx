@@ -1,14 +1,37 @@
-import React from 'react';
-import {colorUplift} from '@shopify/polaris-tokens';
+import React, {useCallback, useState} from 'react';
 
-import {AlphaCard, Page} from '../src';
+import {ActionList, AlphaCard, Button, Page, Popover} from '../src';
 
 export function Playground() {
-  console.log(colorUplift);
+  const [popoverActive, setPopoverActive] = useState(true);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      More actions
+    </Button>
+  );
   return (
     <Page title="Playground">
       <AlphaCard padding="6">
-        <div style={{background: 'var(--p-color-admin-bg)'}}>new admin bg</div>
+        <Popover
+          active={popoverActive}
+          activator={activator}
+          autofocusTarget="first-node"
+          onClose={togglePopoverActive}
+        >
+          <div style={{background: 'var(--p-color-admin-bg)'}}>
+            new admin bg
+          </div>
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Import'}, {content: 'Export'}]}
+          />
+        </Popover>
       </AlphaCard>
     </Page>
   );

@@ -9,8 +9,8 @@ import {toStyleSheet} from './toStyleSheet';
 (async () => {
   await Promise.all([
     toTokenValues({...metadata, ...metadataUplift}),
-    toJSON(metadata),
+    toJSON({...metadata, ...metadataUplift}),
     toMediaConditions(metadata.breakpoints),
-    toStyleSheet(metadata),
+    toStyleSheet(metadata, metadataUplift as unknown as Metadata),
   ]);
 })();

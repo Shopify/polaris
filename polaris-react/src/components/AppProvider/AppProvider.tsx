@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {colorUplift} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
@@ -25,7 +26,6 @@ import {
 
 import './AppProvider.scss';
 import './global.scss';
-import {colorUplift} from '@shopify/polaris-tokens';
 
 interface State {
   intl: I18n;
@@ -101,12 +101,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
     const {intl, link} = this.state;
 
-    const newColors = Object.fromEntries(
-      Object.entries(colorUplift).map(([key, value]) => {
-        return [`--p-${key}`, value];
-      }),
-    );
-
     return (
       <FeaturesContext.Provider value={features}>
         <I18nContext.Provider value={intl}>
@@ -118,7 +112,15 @@ export class AppProvider extends Component<AppProviderProps, State> {
                     <PortalsManager>
                       <FocusManager>
                         <EphemeralPresenceManager>
-                          <div style={newColors}>{children}</div>
+                          <div
+                            className={
+                              features.polarisSummerEditions2023
+                                ? 'uplift'
+                                : undefined
+                            }
+                          >
+                            {children}
+                          </div>
                         </EphemeralPresenceManager>
                       </FocusManager>
                     </PortalsManager>

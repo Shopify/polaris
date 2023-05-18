@@ -36,6 +36,7 @@ export const metadataUplift = createMetadata({
 });
 
 export type Metadata = typeof metadata;
+export type MetadataUplift = typeof metadataUplift;
 
 /**
  * Identity function that simply returns the provided tokens with metadata, but additionally

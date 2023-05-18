@@ -3,6 +3,7 @@ import {createPortal} from 'react-dom';
 
 import {usePortalsManager} from '../../utilities/portals';
 import {useUniqueId} from '../../utilities/unique-id';
+import {useFeatures} from '../../utilities/features';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -16,6 +17,7 @@ export function Portal({
   onPortalCreated = noop,
 }: PortalProps) {
   const {container} = usePortalsManager();
+  const {polarisSummerEditions2023} = useFeatures();
 
   const uniqueId = useUniqueId('portal');
   const portalId = idPrefix !== '' ? `${idPrefix}-${uniqueId}` : uniqueId;
@@ -25,7 +27,15 @@ export function Portal({
   }, [onPortalCreated]);
 
   return container
-    ? createPortal(<div data-portal-id={portalId}>{children}</div>, container)
+    ? createPortal(
+        <div
+          data-portal-id={portalId}
+          className={polarisSummerEditions2023 ? 'uplift' : undefined}
+        >
+          {children}
+        </div>,
+        container,
+      )
     : null;
 }
 
