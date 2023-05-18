@@ -1,5 +1,4 @@
 import fs from 'fs';
-import {useState} from 'react';
 import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
