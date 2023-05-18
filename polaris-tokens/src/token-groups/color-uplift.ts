@@ -1,7 +1,10 @@
 import type {MetadataProperties} from '../types';
 import * as colors from '../colors-uplift';
 
-export type ColorBackgroundAlias = 'admin-bg' | 'admin-surface';
+export type ColorBackgroundAlias =
+  | 'admin-bg'
+  | 'admin-surface'
+  | 'primary-fill';
 
 export type ColorTokenName = `color-${ColorBackgroundAlias}`;
 
@@ -14,6 +17,10 @@ export const color: {
   },
   'color-admin-surface': {
     value: colors.gray['01'],
+    description: '',
+  },
+  'color-primary-fill': {
+    value: colors.gray['16'],
     description: '',
   },
 };
