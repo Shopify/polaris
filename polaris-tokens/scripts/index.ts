@@ -1,4 +1,5 @@
-import {metadata} from '../src';
+import type {Metadata} from '../src';
+import {metadata, metadataUplift} from '../src';
 
 import {toTokenValues} from './toTokenValues';
 import {toJSON} from './toJSON';
@@ -7,7 +8,7 @@ import {toStyleSheet} from './toStyleSheet';
 
 (async () => {
   await Promise.all([
-    toTokenValues(metadata),
+    toTokenValues({...metadata, ...metadataUplift} as Metadata),
     toJSON(metadata),
     toMediaConditions(metadata.breakpoints),
     toStyleSheet(metadata),

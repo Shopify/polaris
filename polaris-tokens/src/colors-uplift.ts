@@ -20,7 +20,26 @@ type Color = {
   [Scale in ColorScale]: string;
 };
 
-const azure: Color = {
+export const gray: Color = {
+  '01': 'rgba(255, 255, 255, 1)',
+  '02': 'rgba(253, 253, 253, 1)',
+  '03': 'rgba(250, 250, 250, 1)',
+  '04': 'rgba(247, 247, 247, 1)',
+  '05': 'rgba(243, 243, 243, 1)',
+  '06': 'rgba(241, 241, 241, 1)',
+  '07': 'rgba(235, 235, 235, 1)',
+  '08': 'rgba(227, 227, 227, 1)',
+  '09': 'rgba(212, 212, 212, 1)',
+  '10': 'rgba(204, 204, 204, 1)',
+  '11': 'rgba(181, 181, 181, 1)',
+  '12': 'rgba(138, 138, 138, 1)',
+  '13': 'rgba(97, 97, 97, 1)',
+  '14': 'rgba(74, 74, 74, 1)',
+  '15': 'rgba(48, 48, 48, 1)',
+  '16': 'rgba(26, 26, 26, 1)',
+};
+
+export const azure: Color = {
   '01': 'rgba(251, 253, 255, 1)',
   '02': 'rgba(242, 249, 255, 1)',
   '03': 'rgba(234, 244, 255, 1)',
@@ -39,7 +58,7 @@ const azure: Color = {
   '16': 'rgba(0, 33, 51, 1)',
 };
 
-const blue: Color = {
+export const blue: Color = {
   '01': 'rgba(252, 253, 255, 1)',
   '02': 'rgba(246, 248, 255, 1)',
   '03': 'rgba(240, 242, 255, 1)',
@@ -58,7 +77,7 @@ const blue: Color = {
   '16': 'rgba(0, 22, 51, 1)',
 };
 
-const cyan: Color = {
+export const cyan: Color = {
   '01': 'rgba(250, 255, 254, 1)',
   '02': 'rgba(231, 252, 248, 1)',
   '03': 'rgba(215, 251, 243, 1)',
@@ -77,7 +96,7 @@ const cyan: Color = {
   '16': 'rgba(5, 36, 30, 1)',
 };
 
-const green: Color = {
+export const green: Color = {
   '01': 'rgba(248, 255, 251, 1)',
   '02': 'rgba(227, 255, 237, 1)',
   '03': 'rgba(205, 254, 225, 1)',
@@ -96,7 +115,7 @@ const green: Color = {
   '16': 'rgba(9, 42, 27, 1)',
 };
 
-const lime: Color = {
+export const lime: Color = {
   '01': 'rgba(250, 255, 250, 1)',
   '02': 'rgba(228, 255, 229, 1)',
   '03': 'rgba(208, 255, 209, 1)',
@@ -115,7 +134,7 @@ const lime: Color = {
   '16': 'rgba(3, 33, 4, 1)',
 };
 
-const magenta: Color = {
+export const magenta: Color = {
   '01': 'rgba(255, 253, 255, 1)',
   '02': 'rgba(255, 245, 255, 1)',
   '03': 'rgba(253, 239, 253, 1)',
@@ -134,7 +153,7 @@ const magenta: Color = {
   '16': 'rgba(52, 6, 52, 1)',
 };
 
-const orange: Color = {
+export const orange: Color = {
   '01': 'rgba(255, 253, 250, 1)',
   '02': 'rgba(255, 247, 238, 1)',
   '03': 'rgba(255, 241, 227, 1)',
@@ -153,7 +172,7 @@ const orange: Color = {
   '16': 'rgba(37, 26, 0, 1)',
 };
 
-const purple: Color = {
+export const purple: Color = {
   '01': 'rgba(253, 253, 255, 1)',
   '02': 'rgba(248, 247, 255, 1)',
   '03': 'rgba(243, 241, 255, 1)',
@@ -172,7 +191,7 @@ const purple: Color = {
   '16': 'rgba(28, 0, 79, 1)',
 };
 
-const red: Color = {
+export const red: Color = {
   '01': 'rgba(255, 251, 251, 1)',
   '02': 'rgba(255, 246, 246, 1)',
   '03': 'rgba(255, 237, 236, 1)',
@@ -191,7 +210,7 @@ const red: Color = {
   '16': 'rgba(47, 10, 4, 1)',
 };
 
-const rose: Color = {
+export const rose: Color = {
   '01': 'rgba(255, 253, 253, 1)',
   '02': 'rgba(255, 246, 248, 1)',
   '03': 'rgba(255, 239, 243, 1)',
@@ -210,7 +229,7 @@ const rose: Color = {
   '16': 'rgba(62, 1, 28, 1)',
 };
 
-const teal: Color = {
+export const teal: Color = {
   '01': 'rgba(248, 255, 254, 1)',
   '02': 'rgba(232, 252, 250, 1)',
   '03': 'rgba(215, 250, 247, 1)',
@@ -229,7 +248,7 @@ const teal: Color = {
   '16': 'rgba(6, 44, 41, 1)',
 };
 
-const yellow: Color = {
+export const yellow: Color = {
   '01': 'rgba(255, 253, 246, 1)',
   '02': 'rgba(255, 248, 219, 1)',
   '03': 'rgba(255, 244, 191, 1)',

@@ -6,6 +6,7 @@ import {depth} from './token-groups/depth';
 import {font} from './token-groups/font';
 import {legacy} from './token-groups/legacy';
 import {color} from './token-groups/color';
+import {color as colorUplift} from './token-groups/color-uplift';
 import {colors} from './token-groups/colors';
 import {motion} from './token-groups/motion';
 import {shadow} from './token-groups/shadow';
@@ -28,6 +29,10 @@ export const metadata = createMetadata({
   spacing: tokensToRems(spacing),
   space: tokensToRems(space),
   zIndex,
+});
+
+export const metadataUplift = createMetadata({
+  colorUplift,
 });
 
 export type Metadata = typeof metadata;

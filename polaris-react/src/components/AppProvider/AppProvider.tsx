@@ -25,6 +25,7 @@ import {
 
 import './AppProvider.scss';
 import './global.scss';
+import {colorUplift} from '@shopify/polaris-tokens';
 
 interface State {
   intl: I18n;
@@ -100,6 +101,12 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
     const {intl, link} = this.state;
 
+    const newColors = Object.fromEntries(
+      Object.entries(colorUplift).map(([key, value]) => {
+        return [`--p-${key}`, value];
+      }),
+    );
+
     return (
       <FeaturesContext.Provider value={features}>
         <I18nContext.Provider value={intl}>
@@ -111,7 +118,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
                     <PortalsManager>
                       <FocusManager>
                         <EphemeralPresenceManager>
-                          {children}
+                          <div style={newColors}>{children}</div>
                         </EphemeralPresenceManager>
                       </FocusManager>
                     </PortalsManager>
