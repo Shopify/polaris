@@ -4,7 +4,7 @@ import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
-import {gridOptions} from './manager';
+import {gridOptions, featureFlagOptions} from './manager';
 import {breakpoints} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
@@ -19,10 +19,15 @@ function StrictModeDecorator(Story, context) {
 }
 
 function AppProviderDecorator(Story, context) {
+  const {polarisSummerEditions2023} = context.globals;
   if (context.args.omitAppProvider) return <Story {...context} />;
-
   return (
-    <AppProvider i18n={enTranslations}>
+    <AppProvider
+      feature={{
+         polarisSummerEditions2023,
+      }}
+      i18n={enTranslations}
+    >
       <Story {...context} />
     </AppProvider>
   );
@@ -76,6 +81,7 @@ export const globalTypes = {
       ],
     },
   },
+  ...featureFlagOptions,
   ...gridOptions,
 };
 const viewPorts = Object.entries({
