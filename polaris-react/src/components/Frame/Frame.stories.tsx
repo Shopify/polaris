@@ -1,5 +1,5 @@
 import React, {useCallback, useRef, useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Args, ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   AppProvider,
@@ -34,7 +34,19 @@ export default {
   parameters: {layout: 'fullscreen'},
 } as ComponentMeta<typeof Frame>;
 
-export function InAnApplication() {
+export const InAnApplication = {
+  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => (
+    <InAnApplicationComponent
+      polarisSummerEditions2023={polarisSummerEditions2023}
+    />
+  ),
+};
+
+function InAnApplicationComponent({
+  polarisSummerEditions2023,
+}: {
+  polarisSummerEditions2023: boolean;
+}) {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -353,6 +365,7 @@ export function InAnApplication() {
             },
           },
         }}
+        features={{polarisSummerEditions2023}}
       >
         <Frame
           logo={logo}
@@ -373,7 +386,19 @@ export function InAnApplication() {
   );
 }
 
-export function WithAnOffset() {
+export const WithAnOffset = {
+  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => (
+    <WithAnOffsetComponent
+      polarisSummerEditions2023={polarisSummerEditions2023}
+    />
+  ),
+};
+
+function WithAnOffsetComponent({
+  polarisSummerEditions2023,
+}: {
+  polarisSummerEditions2023: boolean;
+}) {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -692,6 +717,7 @@ export function WithAnOffset() {
             },
           },
         }}
+        features={{polarisSummerEditions2023}}
       >
         <Frame
           logo={logo}
