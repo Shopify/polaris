@@ -1,5 +1,6 @@
 import type {MetadataProperties} from '../types';
 import * as colors from '../colors';
+import * as colorsNext from '../colors-next';
 
 export type ColorBackgroundAlias =
   | 'bg'
@@ -146,11 +147,14 @@ export type ColorTextAlias =
   | 'text-success-strong'
   | 'text-warning-strong';
 
+type ColorNextAlias = 'admin-bg' | 'admin-surface' | 'primary-fill';
+
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
-  | `color-${ColorTextAlias}`;
+  | `color-${ColorTextAlias}`
+  | `color-${ColorNextAlias}`;
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
@@ -161,6 +165,7 @@ export const color: {
 } = {
   'color-bg-inverse': {
     value: colors.gray[900],
+    valueNext: colorsNext.gray[16],
     description: '',
   },
   'color-bg-inset-strong': {
@@ -705,6 +710,18 @@ export const color: {
   },
   'color-text-magic': {
     value: colors.purple[600],
+    description: '',
+  },
+  'color-admin-bg': {
+    value: colorsNext.gray[6],
+    description: '',
+  },
+  'color-admin-surface': {
+    value: colorsNext.gray[1],
+    description: '',
+  },
+  'color-primary-fill': {
+    value: colorsNext.gray[16],
     description: '',
   },
 };
