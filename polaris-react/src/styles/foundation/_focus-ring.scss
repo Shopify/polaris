@@ -37,6 +37,13 @@
       border-radius: $border-radius;
       @content;
     }
+
+    #{$se23} &::after {
+      top: calc(-1 * var(--p-space-025));
+      right: calc(-1 * var(--p-space-025));
+      bottom: calc(-1 * var(--p-space-025));
+      left: calc(-1 * var(--p-space-025));
+    }
   } @else if $style == 'focused' {
     &::after {
       box-shadow: 0 0 0 $stroke var(--p-color-border-interactive-focus);

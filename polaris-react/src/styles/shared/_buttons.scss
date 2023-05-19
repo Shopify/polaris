@@ -25,6 +25,16 @@
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 
+  #{$se23} & {
+    min-height: 28px;
+    min-width: 28px;
+    padding: var(--p-space-1) var(--p-space-3);
+    border-radius: var(--p-border-radius-2);
+    border: none;
+
+    @include focus-ring($size: 'wide', $border-width: var(--p-border-width-1));
+  }
+
   svg {
     fill: var(--p-color-icon);
   }
@@ -32,6 +42,11 @@
   &:hover {
     background: var(--p-color-bg-hover);
     outline: var(--p-border-width-1) solid transparent;
+
+    #{$se23} & {
+      --p-bg-hover: #FDFDFD;
+      background: var(--p-bg-hover);
+    }
   }
 
   &:focus-visible {
@@ -44,6 +59,13 @@
   &:active {
     background: var(--p-color-bg-subdued-active);
     box-shadow: var(--p-shadow-sm);
+
+    #{$se23} & {
+      --p-color-bg-app-selected: #FAFAFA;
+      --p-shadow-inset-md: inset -1px 0px 1px rgba(0, 0, 0, 0.12), inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2);
+      background: var(--p-color-bg-app-selected);
+      box-shadow: var(--p-shadow-inset-md);
+    }
 
     &::after {
       border: none;
@@ -73,6 +95,13 @@
   border-color: var(--p-color-border-disabled);
   background: var(--p-color-bg-disabled);
   color: var(--p-color-text-disabled);
+
+  #{$se23} & {
+    --p-disabled-fill: #EBEBEB;
+    --p-color-text-disabled: #CCCCCC;
+    background: var(--p-disabled-fill);
+    border-color: var(--p-disabled-fill);
+  }
 
   svg {
     fill: var(--p-color-icon-disabled);
