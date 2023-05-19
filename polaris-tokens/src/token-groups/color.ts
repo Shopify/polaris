@@ -1,6 +1,8 @@
 import type {MetadataProperties} from '../types';
 import * as colors from '../colors';
 
+import {experimentalColor} from './color-experimental';
+
 export type ColorBackgroundAlias =
   | 'bg'
   | 'bg-active'
@@ -253,6 +255,7 @@ export const color: {
   },
   'color-bg-primary': {
     value: colors.green[700],
+    valueOverride: experimentalColor['color-primary-fill'].value,
     description: '',
   },
   'color-bg-success-strong': {

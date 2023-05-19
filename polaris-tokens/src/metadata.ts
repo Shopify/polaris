@@ -6,6 +6,7 @@ import {depth} from './token-groups/depth';
 import {font} from './token-groups/font';
 import {legacy} from './token-groups/legacy';
 import {color} from './token-groups/color';
+import {experimentalColor} from './token-groups/color-experimental';
 import {colors} from './token-groups/colors';
 import {motion} from './token-groups/motion';
 import {shadow} from './token-groups/shadow';
@@ -30,7 +31,12 @@ export const metadata = createMetadata({
   zIndex,
 });
 
+export const experimentalMetaData = createMetadata({
+  experimentalColor,
+});
+
 export type Metadata = typeof metadata;
+export type ExperimentalMetadata = typeof experimentalMetaData;
 
 /**
  * Identity function that simply returns the provided tokens with metadata, but additionally
