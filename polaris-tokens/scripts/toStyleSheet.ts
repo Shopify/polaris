@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {Metadata, MetadataGroup} from '../src';
+import type {Metadata, MetadataGroup, ExperimentalMetadata} from '../src';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
@@ -12,22 +12,37 @@ const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-export function getStaticCustomProperties(metadata: Metadata) {
+export function getStaticCustomProperties(
+  metadata: Metadata | ExperimentalMetadata,
+  {experimental = false} = {},
+) {
   return Object.entries(metadata)
-    .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
+    .map(([_, tokenGroup]) => {
+      return getCustomProperties(tokenGroup, experimental);
+    })
     .join('');
 }
 
 /**
  * Creates CSS custom properties for a given metadata object.
  */
-export function getCustomProperties(tokenGroup: MetadataGroup) {
+export function getCustomProperties(
+  tokenGroup: MetadataGroup,
+  experimental = false,
+) {
   return Object.entries(tokenGroup)
-    .map(([token, {value}]) =>
-      token.startsWith('motion-keyframes') || token.startsWith('keyframes')
+    .map(([token, {value, valueExperimental, valueOverride}]) => {
+      if (experimental && (valueOverride || valueExperimental)) {
+        return `--p-${token}:${valueOverride ?? valueExperimental};`;
+      }
+
+      if (experimental) return;
+
+      return token.startsWith('motion-keyframes') ||
+        token.startsWith('keyframes')
         ? `--p-${token}:p-${token};`
-        : `--p-${token}:${value};`,
-    )
+        : `--p-${token}:${value};`;
+    })
     .join('');
 }
 
@@ -44,7 +59,10 @@ export function getKeyframes(motion: MetadataGroup) {
     .join('');
 }
 
-export async function toStyleSheet(metadata: Metadata) {
+export async function toStyleSheet(
+  metadata: Metadata,
+  metadataExperimental: ExperimentalMetadata,
+) {
   if (!fs.existsSync(cssOutputDir)) {
     await fs.promises.mkdir(cssOutputDir, {recursive: true});
   }
@@ -53,7 +71,12 @@ export async function toStyleSheet(metadata: Metadata) {
   }
 
   const styles = `
-  :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
+  :where(html){color-scheme:light;${getStaticCustomProperties(
+    metadata,
+  )}};html:where(.Polaris-Summer-Editions-2023){${getStaticCustomProperties(
+    {...metadata, ...metadataExperimental},
+    {experimental: true},
+  )}}
   ${getKeyframes(metadata.motion)}
 `;
 

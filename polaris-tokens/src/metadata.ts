@@ -4,6 +4,7 @@ import {border} from './token-groups/border';
 import {breakpoints} from './token-groups/breakpoints';
 import {color} from './token-groups/color';
 import {font} from './token-groups/font';
+import {experimentalColor} from './token-groups/color-experimental';
 import {motion} from './token-groups/motion';
 import {shadow} from './token-groups/shadow';
 import {space} from './token-groups/space';
@@ -20,7 +21,12 @@ export const metadata = createMetadata({
   zIndex,
 });
 
+export const experimentalMetaData = createMetadata({
+  experimentalColor,
+});
+
 export type Metadata = typeof metadata;
+export type ExperimentalMetadata = typeof experimentalMetaData;
 
 /**
  * Identity function that simply returns the provided tokens with metadata, but additionally
