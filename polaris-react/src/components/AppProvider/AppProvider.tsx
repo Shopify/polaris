@@ -18,8 +18,10 @@ import type {LinkLikeComponent} from '../../utilities/link';
 import {
   FeaturesContext,
   summerEditions2023ClassName,
+  FeaturesContext,
+  summerEditions2023ClassName,
 } from '../../utilities/features';
-import type {FeaturesConfig} from '../../utilities/features';
+import type {FeaturesConfig, FeaturesConfig} from '../../utilities/features';
 
 import './AppProvider.scss';
 import './global.scss';
