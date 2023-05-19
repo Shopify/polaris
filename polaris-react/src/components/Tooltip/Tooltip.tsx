@@ -89,7 +89,7 @@ export function Tooltip({
   const WrapperComponent: any = activatorWrapper;
   const {
     value: active,
-    setTrue: handleFocus,
+    setTrue: setActiveTrue,
     setFalse: handleBlur,
   } = useToggle(Boolean(originalActive));
 
@@ -107,6 +107,12 @@ export function Tooltip({
   const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const handleFocus = useCallback(() => {
+    if (originalActive !== false) {
+      setActiveTrue();
+    }
+  }, [originalActive, setActiveTrue]);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
