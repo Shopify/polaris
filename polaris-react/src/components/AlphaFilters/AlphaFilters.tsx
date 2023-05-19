@@ -5,12 +5,15 @@ import type {TransitionStatus} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
 import {Popover} from '../Popover';
-import type {ActionListItemProps} from '../ActionList';
 import {ActionList} from '../ActionList';
 import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
-import type {AppliedFilterInterface, FilterInterface} from '../../types';
+import type {
+  ActionListItemDescriptor,
+  AppliedFilterInterface,
+  FilterInterface,
+} from '../../types';
 import {HorizontalStack} from '../HorizontalStack';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
@@ -164,28 +167,59 @@ export function AlphaFilters({
     ...pinnedFiltersFromLocalState,
   ];
 
-  const additionalFilters = filters.reduce<ActionListItemProps[]>(
-    (acc, filter) =>
-      !pinnedFilters.some(({key}) => key === filter.key)
-        ? (acc.push({
-            ...filter,
-            content: filter.label,
-            onAction: () => {
-              // PopoverOverlay will cause a rerender of the component and nuke the
-              // popoverActive state, so we set this as a microtask
-              setTimeout(() => {
-                setLocalPinnedFilters((currentLocalPinnedFilters) => [
-                  ...new Set([...currentLocalPinnedFilters, filter.key]),
-                ]);
-                filter.onAction?.();
-                togglePopoverActive();
-              }, 0);
-            },
-          }),
-          acc)
-        : acc,
-    [],
+  const onFilterClick =
+    ({key, onAction}: FilterInterface) =>
+    () => {
+      // PopoverOverlay will cause a rerender of the component and nuke the
+      // popoverActive state, so we set this as a microtask
+      setTimeout(() => {
+        setLocalPinnedFilters((currentLocalPinnedFilters) => [
+          ...new Set([...currentLocalPinnedFilters, key]),
+        ]);
+        onAction?.();
+        togglePopoverActive();
+      }, 0);
+    };
+
+  const filterToActionItem = (filter: FilterInterface) => ({
+    ...filter,
+    content: filter.label,
+    onAction: onFilterClick(filter),
+  });
+
+  const unpinnedFilters = filters.filter(
+    (filter) => !pinnedFilters.some(({key}) => key === filter.key),
   );
+
+  const unsectionedFilters = unpinnedFilters
+    .filter((filter) => !filter.section)
+    .map(filterToActionItem);
+
+  const sectionedFilters = unpinnedFilters
+    .filter((filter) => filter.section)
+    .reduce(
+      (acc, filter) => {
+        const filterActionItem = filterToActionItem(filter);
+        const sectionIndex = acc.findIndex(
+          (section) => section.title === filter.section,
+        );
+
+        if (sectionIndex === -1) {
+          acc.push({
+            title: filter.section!,
+            items: [filterActionItem],
+          });
+        } else {
+          acc[sectionIndex].items.push(filterActionItem);
+        }
+
+        return acc;
+      },
+      [] as {
+        title: string;
+        items: ActionListItemDescriptor[];
+      }[],
+    );
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
@@ -198,7 +232,10 @@ export function AlphaFilters({
           onClick={handleAddFilterClick}
           aria-label={i18n.translate('Polaris.Filters.addFilter')}
           disabled={
-            disabled || additionalFilters.length === 0 || disableFilters
+            disabled ||
+            (unsectionedFilters.length === 0 &&
+              sectionedFilters.length === 0) ||
+            disableFilters
           }
         >
           <span>{i18n.translate('Polaris.Filters.addFilter')}</span>
@@ -327,7 +364,11 @@ export function AlphaFilters({
         activator={addFilterActivator}
         onClose={togglePopoverActive}
       >
-        <ActionList actionRole="menuitem" items={additionalFilters} />
+        <ActionList
+          actionRole="menuitem"
+          items={unsectionedFilters}
+          sections={sectionedFilters}
+        />
       </Popover>
     </div>
   ) : null;

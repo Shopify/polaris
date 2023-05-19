@@ -256,4 +256,69 @@ describe('<AlphaFilters />', () => {
 
     expect(wrapper.findAll(FilterPill)[1].domNode).toBeNull();
   });
+
+  it('renders filters with sections', () => {
+    const filtersWithSections = [
+      {
+        key: 'sectionfilter1',
+        label: 'SF1',
+        pinned: false,
+        filter: <div>SF1</div>,
+        section: 'Section One',
+      },
+      {
+        key: 'sectionfilter2',
+        label: 'SF2',
+        pinned: false,
+        filter: <div>SF1</div>,
+        section: 'Section Two',
+      },
+      {
+        key: 'sectionfilter3',
+        label: 'SF3',
+        pinned: false,
+        filter: <div>SF3</div>,
+        section: 'Section One',
+      },
+    ];
+
+    const wrapper = mountWithApp(
+      <AlphaFilters
+        {...defaultProps}
+        filters={[...defaultProps.filters, ...filtersWithSections]}
+      />,
+    );
+
+    wrapper.act(() => {
+      wrapper
+        .find('button', {
+          'aria-label': 'Add filter',
+        })!
+        .trigger('onClick');
+    });
+
+    expect(wrapper).toContainReactComponent(ActionList, {
+      sections: [
+        expect.objectContaining({
+          title: 'Section One',
+          items: [
+            expect.objectContaining({
+              content: filtersWithSections[0].label,
+            }),
+            expect.objectContaining({
+              content: filtersWithSections[2].label,
+            }),
+          ],
+        }),
+        expect.objectContaining({
+          title: 'Section Two',
+          items: [
+            expect.objectContaining({
+              content: filtersWithSections[1].label,
+            }),
+          ],
+        }),
+      ],
+    });
+  });
 });
