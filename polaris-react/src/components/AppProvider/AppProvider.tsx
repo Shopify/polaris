@@ -15,7 +15,10 @@ import {
 } from '../../utilities/sticky-manager';
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
-import {FeaturesContext} from '../../utilities/features';
+import {
+  FeaturesContext,
+  summerEditions2023ClassName,
+} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 import {
   UniqueIdFactory,
@@ -66,6 +69,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     if (document != null) {
       this.stickyManager.setContainer(document);
       this.setBodyStyles();
+      this.setRootAttributes();
     }
   }
 
@@ -74,6 +78,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
     linkComponent: prevLinkComponent,
   }: AppProviderProps) {
     const {i18n, linkComponent} = this.props;
+
+    this.setRootAttributes();
 
     if (i18n === prevI18n && linkComponent === prevLinkComponent) {
       return;
@@ -88,6 +94,13 @@ export class AppProvider extends Component<AppProviderProps, State> {
   setBodyStyles = () => {
     document.body.style.backgroundColor = 'var(--p-color-bg-app)';
     document.body.style.color = 'var(--p-color-text)';
+  };
+
+  setRootAttributes = () => {
+    document.documentElement.classList.toggle(
+      summerEditions2023ClassName,
+      this.props.features?.polarisSummerEditions2023,
+    );
   };
 
   render() {
