@@ -50,6 +50,8 @@ export const Card = ({
       padding={padding}
       shadow="md"
       borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
+      overflowX="hidden"
+      overflowY="hidden"
     >
       {children}
     </Box>
