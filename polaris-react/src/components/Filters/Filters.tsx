@@ -6,11 +6,14 @@ import type {TransitionStatus} from 'react-transition-group';
 import {useI18n} from '../../utilities/i18n';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
-import type {ActionListItemProps} from '../ActionList';
 import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
-import type {AppliedFilterInterface, FilterInterface} from '../../types';
+import type {
+  ActionListItemDescriptor,
+  AppliedFilterInterface,
+  FilterInterface,
+} from '../../types';
 import {HorizontalStack} from '../HorizontalStack';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
@@ -102,6 +105,8 @@ export interface FiltersProps {
   /** Whether an asyncronous task is currently being run. */
   loading?: boolean;
   mountedState?: TransitionStatus;
+  /** Callback when the add filter button is clicked. */
+  onAddFilterClick?: () => void;
 }
 
 export function Filters({
@@ -124,6 +129,7 @@ export function Filters({
   loading,
   disableFilters,
   mountedState,
+  onAddFilterClick,
 }: FiltersProps) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
@@ -138,6 +144,7 @@ export function Filters({
     setPopoverActive((popoverActive) => !popoverActive);
 
   const handleAddFilterClick = () => {
+    onAddFilterClick?.();
     togglePopoverActive();
   };
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
@@ -160,28 +167,59 @@ export function Filters({
     ...pinnedFiltersFromLocalState,
   ];
 
-  const additionalFilters = filters.reduce<ActionListItemProps[]>(
-    (acc, filter) =>
-      !pinnedFilters.some(({key}) => key === filter.key)
-        ? (acc.push({
-            ...filter,
-            content: filter.label,
-            onAction: () => {
-              // PopoverOverlay will cause a rerender of the component and nuke the
-              // popoverActive state, so we set this as a microtask
-              setTimeout(() => {
-                setLocalPinnedFilters((currentLocalPinnedFilters) => [
-                  ...new Set([...currentLocalPinnedFilters, filter.key]),
-                ]);
-                filter.onAction?.();
-                togglePopoverActive();
-              }, 0);
-            },
-          }),
-          acc)
-        : acc,
-    [],
+  const onFilterClick =
+    ({key, onAction}: FilterInterface) =>
+    () => {
+      // PopoverOverlay will cause a rerender of the component and nuke the
+      // popoverActive state, so we set this as a microtask
+      setTimeout(() => {
+        setLocalPinnedFilters((currentLocalPinnedFilters) => [
+          ...new Set([...currentLocalPinnedFilters, key]),
+        ]);
+        onAction?.();
+        togglePopoverActive();
+      }, 0);
+    };
+
+  const filterToActionItem = (filter: FilterInterface) => ({
+    ...filter,
+    content: filter.label,
+    onAction: onFilterClick(filter),
+  });
+
+  const unpinnedFilters = filters.filter(
+    (filter) => !pinnedFilters.some(({key}) => key === filter.key),
   );
+
+  const unsectionedFilters = unpinnedFilters
+    .filter((filter) => !filter.section)
+    .map(filterToActionItem);
+
+  const sectionedFilters = unpinnedFilters
+    .filter((filter) => filter.section)
+    .reduce(
+      (acc, filter) => {
+        const filterActionItem = filterToActionItem(filter);
+        const sectionIndex = acc.findIndex(
+          (section) => section.title === filter.section,
+        );
+
+        if (sectionIndex === -1) {
+          acc.push({
+            title: filter.section!,
+            items: [filterActionItem],
+          });
+        } else {
+          acc[sectionIndex].items.push(filterActionItem);
+        }
+
+        return acc;
+      },
+      [] as {
+        title: string;
+        items: ActionListItemDescriptor[];
+      }[],
+    );
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
@@ -194,7 +232,10 @@ export function Filters({
           onClick={handleAddFilterClick}
           aria-label={i18n.translate('Polaris.Filters.addFilter')}
           disabled={
-            disabled || additionalFilters.length === 0 || disableFilters
+            disabled ||
+            (unsectionedFilters.length === 0 &&
+              sectionedFilters.length === 0) ||
+            disableFilters
           }
         >
           <span>{i18n.translate('Polaris.Filters.addFilter')}</span>
@@ -276,12 +317,13 @@ export function Filters({
     </div>
   );
 
-  const mountedStateStyles = mountedState
-    ? {
-        ...defaultFilterStyles,
-        ...transitionFilterStyles[mountedState],
-      }
-    : undefined;
+  const mountedStateStyles =
+    mountedState && !hideQueryField
+      ? {
+          ...defaultFilterStyles,
+          ...transitionFilterStyles[mountedState],
+        }
+      : undefined;
 
   const pinnedFiltersMarkup = pinnedFilters.map(
     ({key: filterKey, ...pinnedFilter}) => {
@@ -297,7 +339,9 @@ export function Filters({
         <FilterPill
           key={filterKey}
           {...pinnedFilter}
-          initialActive={hasMounted.current && !pinnedFilter.pinned}
+          initialActive={
+            hasMounted.current && !pinnedFilter.pinned && !appliedFilter
+          }
           label={appliedFilter?.label || pinnedFilter.label}
           filterKey={filterKey}
           selected={appliedFilterKeys?.includes(filterKey)}
@@ -320,7 +364,11 @@ export function Filters({
         activator={addFilterActivator}
         onClose={togglePopoverActive}
       >
-        <ActionList actionRole="menuitem" items={additionalFilters} />
+        <ActionList
+          actionRole="menuitem"
+          items={unsectionedFilters}
+          sections={sectionedFilters}
+        />
       </Popover>
     </div>
   ) : null;
@@ -367,7 +415,16 @@ export function Filters({
         </div>
         {hideQueryField ? (
           <Box paddingInlineEnd="3" paddingBlockStart="2" paddingBlockEnd="2">
-            <HorizontalStack>{additionalContent}</HorizontalStack>
+            <HorizontalStack
+              align="start"
+              blockAlign="center"
+              gap={{
+                xs: '4',
+                md: '3',
+              }}
+            >
+              {additionalContent}
+            </HorizontalStack>
           </Box>
         ) : null}
       </div>
