@@ -1,7 +1,6 @@
 import type {MetadataProperties} from '../types';
 import * as colors from '../colors';
-
-import {experimentalColor} from './color-experimental';
+import * as colorsExperimental from '../colors-experimental';
 
 export type ColorBackgroundAlias =
   | 'bg'
@@ -148,11 +147,14 @@ export type ColorTextAlias =
   | 'text-success-strong'
   | 'text-warning-strong';
 
+type ColorExperimentalAlias = 'subdued-link';
+
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
-  | `color-${ColorTextAlias}`;
+  | `color-${ColorTextAlias}`
+  | `color-experimental-${ColorExperimentalAlias}`;
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
@@ -203,6 +205,7 @@ export const color: {
   },
   'color-bg-app': {
     value: colors.gray[200],
+    valueExperimental: colorsExperimental.gray[6],
     description: '',
   },
   'color-bg-app-active': {
@@ -227,6 +230,7 @@ export const color: {
   },
   'color-bg-inset': {
     value: colors.gray[200],
+    valueExperimental: colorsExperimental.gray[6],
     description: '',
   },
   'color-bg-hover': {
@@ -243,6 +247,7 @@ export const color: {
   },
   'color-bg': {
     value: colors.gray[50],
+    valueExperimental: colorsExperimental.gray[1],
     description: '',
   },
   'color-bg-primary-active': {
@@ -255,7 +260,7 @@ export const color: {
   },
   'color-bg-primary': {
     value: colors.green[700],
-    valueOverride: experimentalColor['color-primary-fill'].value,
+    valueExperimental: colorsExperimental.gray[16],
     description: '',
   },
   'color-bg-success-strong': {
@@ -372,6 +377,7 @@ export const color: {
   },
   'color-bg-interactive': {
     value: colors.blue[600],
+    valueExperimental: colorsExperimental.gray[16],
     description: '',
   },
   'color-bg-interactive-subdued-active': {
@@ -708,6 +714,11 @@ export const color: {
   },
   'color-text-magic': {
     value: colors.purple[600],
+    description: '',
+  },
+  // Experimental tokens
+  'color-experimental-subdued-link': {
+    value: colorsExperimental.blue[12],
     description: '',
   },
 };
