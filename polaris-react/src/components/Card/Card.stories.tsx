@@ -80,14 +80,12 @@ export function WithSubduedSection() {
           </List>
         </Box>
       </VerticalStack>
-      <Bleed marginBlockEnd="5" marginInline="5">
+      <Bleed
+        marginBlockEnd={{xs: '4', sm: '5'}}
+        marginInline={{xs: '4', sm: '5'}}
+      >
         <Divider />
-        <Box
-          background="bg-subdued"
-          borderRadiusEndStart="2"
-          borderRadiusEndEnd="2"
-          padding="5"
-        >
+        <Box background="bg-subdued" padding={{xs: '4', sm: '5'}}>
           <VerticalStack gap="2">
             <Text variant="headingSm" as="h3">
               Deactivated staff accounts
