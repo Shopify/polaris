@@ -12,7 +12,7 @@ import {toPascalCase} from '../../../../src/utils/various';
 import PageMeta from '../../../../src/components/PageMeta';
 import {Status, FilteredTypes, AllTypes} from '../../../../src/types';
 import StatusBanner from '../../../../src/components/StatusBanner';
-import UpdateBanner from '../../../../src/components/UpdateBanner';
+import TipBanner from '../../../../src/components/TipBanner/TipBanner';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
 
@@ -33,7 +33,7 @@ interface Props {
   };
   type: FilteredTypes;
   editPageLinkPath: string;
-  updateBannerMessage?: string;
+  tip?: string;
 }
 
 const Components = ({
@@ -43,7 +43,7 @@ const Components = ({
   readme,
   status,
   type,
-  updateBannerMessage,
+  tip,
   editPageLinkPath,
 }: Props) => {
   const typedStatus: Status | undefined = status
@@ -68,7 +68,11 @@ const Components = ({
       <Longform>
         <Markdown>{description}</Markdown>
         {typedStatus && <StatusBanner status={typedStatus} />}
-        {updateBannerMessage && <UpdateBanner message={updateBannerMessage} />}
+        {tip && (
+          <TipBanner title="Tip">
+            <Markdown>{tip}</Markdown>
+          </TipBanner>
+        )}
         {componentExamples}
       </Longform>
 
@@ -98,6 +102,7 @@ export const getStaticProps: GetStaticProps<
 
     const description = data.frontMatter.description;
     const body = data.readme;
+    const tip = data.frontMatter.tip || '';
 
     const readme = {description, body};
 
@@ -138,6 +143,7 @@ export const getStaticProps: GetStaticProps<
     const props: Props = {
       ...data.frontMatter,
       examples,
+      tip,
       description,
       readme,
       type,

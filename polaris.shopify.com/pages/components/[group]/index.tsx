@@ -73,7 +73,11 @@ export default function GroupPage({
           );
         })}
       </Grid>
-      {tip && <TipBanner title="Tip" message={tip} />}
+      {tip && (
+        <TipBanner title="Tip">
+          <p>{tip}</p>
+        </TipBanner>
+      )}
     </>
   ));
 

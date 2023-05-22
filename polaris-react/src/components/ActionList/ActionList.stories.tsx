@@ -15,6 +15,7 @@ import {
   ExportMinor,
   ImportMinor,
   EditMinor,
+  CustomersMajor,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -169,6 +170,17 @@ export function WithSections() {
               items: [
                 {content: 'Edit', icon: EditMinor},
                 {content: 'Delete', icon: DeleteMinor},
+              ],
+            },
+            {
+              title: 'More options',
+              items: [
+                {
+                  content:
+                    'Manage several customers at once with a CSV file import',
+                  icon: CustomersMajor,
+                  truncate: true,
+                },
               ],
             },
           ]}

@@ -33,6 +33,11 @@ This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertica
 </div>
 ```
 
+<!-- prettier-ignore -->
+```javascript {"type":"sandboxContext","for":"example"}
+{(____CODE____)()}
+```
+
 ```javascript {"type":"livePreview","id":"example"}
 function AppSettingsLayoutExample() {
   const {smUp} = useBreakpoints();

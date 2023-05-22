@@ -1,5 +1,6 @@
 ---
 title: Sandbox
+navTitle: Sandbox
 description: Effortless prototyping with Polaris components.
 order: 5
 icon: SandboxMajor

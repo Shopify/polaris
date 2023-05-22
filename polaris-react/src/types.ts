@@ -202,8 +202,10 @@ export interface ActionListItemDescriptor
   prefix?: React.ReactNode;
   /** Suffix source */
   suffix?: React.ReactNode;
-  /**  Add an ellipsis suffix to action content */
+  /** @deprecated Add an ellipsis suffix to action content. ellipsis appends `...` without truncating. Use truncate instead. */
   ellipsis?: boolean;
+  /** Truncate the action content either at the beginning or at the end */
+  truncate?: boolean;
   /** Whether the action is active or not */
   active?: boolean;
   /** Defines a role for the action */
@@ -400,4 +402,8 @@ export interface FilterInterface {
   hideClearButton?: boolean;
   /** Optional callback when filter is pressed */
   onAction?: () => void;
+  /** Suffix source */
+  suffix?: React.ReactNode;
+  /** Optional section heading that this filter will go under  */
+  section?: string;
 }

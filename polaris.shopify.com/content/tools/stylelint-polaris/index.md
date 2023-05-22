@@ -1,5 +1,6 @@
 ---
 title: Stylelint Polaris
+navTitle: Stylelint
 description: A configuration of Stylelint rules that promote adoption of the Polaris design system in consuming apps.
 icon: WandMajor
 collapseChildren: true
