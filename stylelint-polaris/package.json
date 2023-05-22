@@ -40,7 +40,7 @@
     "@shopify/polaris-tokens": "^6.13.0"
   },
   "peerDependencies": {
-    "stylelint": "^14.15.0"
+    "stylelint": "^14.15.0 || ^15.0.0"
   },
   "jest": {
     "preset": "jest-preset-stylelint"

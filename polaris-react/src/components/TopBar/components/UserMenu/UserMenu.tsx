@@ -31,6 +31,8 @@ export interface UserMenuProps {
   onToggle(): void;
   /** A custom activator that can be used when the default activator is not desired */
   customActivator?: React.ReactNode;
+  /** A width value that customizes the width of the user menu */
+  customWidth?: string;
 }
 
 export function UserMenu({
@@ -44,6 +46,7 @@ export function UserMenu({
   open,
   accessibilityLabel,
   customActivator,
+  customWidth,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
@@ -85,6 +88,7 @@ export function UserMenu({
       actions={actions}
       message={message}
       accessibilityLabel={accessibilityLabel}
+      customWidth={customWidth}
     />
   );
 }

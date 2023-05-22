@@ -28,7 +28,7 @@ export interface TooltipProps {
   dismissOnMouseOut?: TooltipOverlayProps['preventInteraction'];
   /**
    * The direction the tooltip tries to display
-   * @default 'below'
+   * @default 'above'
    */
   preferredPosition?: TooltipOverlayProps['preferredPosition'];
   /**
@@ -73,7 +73,7 @@ export function Tooltip({
   dismissOnMouseOut,
   active: originalActive,
   hoverDelay,
-  preferredPosition = 'below',
+  preferredPosition = 'above',
   activatorWrapper = 'span',
   accessibilityLabel,
   width = 'default',
@@ -88,7 +88,7 @@ export function Tooltip({
   const WrapperComponent: any = activatorWrapper;
   const {
     value: active,
-    setTrue: handleFocus,
+    setTrue: setActiveTrue,
     setFalse: handleBlur,
   } = useToggle(Boolean(originalActive));
 
@@ -106,6 +106,12 @@ export function Tooltip({
   const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const handleFocus = useCallback(() => {
+    if (originalActive !== false) {
+      setActiveTrue();
+    }
+  }, [originalActive, setActiveTrue]);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
