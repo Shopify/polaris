@@ -1,4 +1,5 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
+import base64 from 'base-64';
 
 const isProd = process.env.NODE_ENV === 'production';
 const enableLogs = process.env.DEBUG_ANALYTICS === 'true';
@@ -36,6 +37,10 @@ class AnalyticsProducer {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Basic ${
+              process.env.SERVICES_API &&
+              base64.encode(process.env.SERVICES_API)
+            }`,
           },
           body: JSON.stringify(event),
         });
