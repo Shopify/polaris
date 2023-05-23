@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.50.1
+
+### Patch Changes
+
+- [#9250](https://github.com/Shopify/polaris/pull/9250) [`1e4f450d1`](https://github.com/Shopify/polaris/commit/1e4f450d136bed599fc357f3f3758f6f446475bb) Thanks [@samrose3](https://github.com/samrose3)! - Fixed regression where sticky header column widths were incorrectly resized after bulk selection in the `IndexTable`.
+
 ## 10.50.0
 
 ### Minor Changes
