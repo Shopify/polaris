@@ -3,6 +3,8 @@ import React, {useCallback} from 'react';
 import {Text} from '../Text';
 import {useI18n} from '../../utilities/i18n';
 
+import styles from './Form.scss';
+
 type Enctype =
   | 'application/x-www-form-urlencoded'
   | 'multipart/form-data'
@@ -88,6 +90,7 @@ export function Form({
       noValidate={noValidate}
       target={target}
       onSubmit={handleSubmit}
+      className={styles.Form}
     >
       {submitMarkup}
       {children}
