@@ -81,6 +81,7 @@ export function Tag({
       onMouseUp={handleMouseUpByBlurring}
       disabled={disabled}
     >
+      {/* TODO update to new x icon */}
       <Icon source={CancelSmallMinor} />
     </button>
   ) : null;
