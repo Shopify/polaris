@@ -95,7 +95,6 @@ $button-size: 20px;
   vertical-align: middle;
   // TODO need font-weight 450 token
 
-  // TODO check if we need sm viewport up styling
   @media #{$p-breakpoints-sm-up} {
     font-size: var(--p-font-size-75);
     padding: var(--p-space-05) 0;
