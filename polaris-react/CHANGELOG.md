@@ -1,5 +1,60 @@
 # Changelog
 
+## 10.50.1
+
+### Patch Changes
+
+- [#9250](https://github.com/Shopify/polaris/pull/9250) [`1e4f450d1`](https://github.com/Shopify/polaris/commit/1e4f450d136bed599fc357f3f3758f6f446475bb) Thanks [@samrose3](https://github.com/samrose3)! - Fixed regression where sticky header column widths were incorrectly resized after bulk selection in the `IndexTable`.
+
+## 10.50.0
+
+### Minor Changes
+
+- [#9005](https://github.com/Shopify/polaris/pull/9005) [`487df3a4d`](https://github.com/Shopify/polaris/commit/487df3a4d7873c9ee95fba92734d4ee3602d6bdf) Thanks [@zakwarsame](https://github.com/zakwarsame)! - - Deprecated ellipsis and introduced a truncate prop to `ActionList` items.
+  - Added a custom width to the new `TopBar` user menu.
+
+* [#9145](https://github.com/Shopify/polaris/pull/9145) [`6ead43c3c`](https://github.com/Shopify/polaris/commit/6ead43c3cb23fdfeab2a14c44b90ae70f7f74556) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `LegacyFilters`
+
+- [#9197](https://github.com/Shopify/polaris/pull/9197) [`92214e8fd`](https://github.com/Shopify/polaris/commit/92214e8fddb6558aa675a298cf9bf4800657d53b) Thanks [@pt8o](https://github.com/pt8o)! - Added support for sectioning the `filters` of `IndexFilters` and `AlphaFilters`
+
+* [#9222](https://github.com/Shopify/polaris/pull/9222) [`a9d611401`](https://github.com/Shopify/polaris/commit/a9d6114012b3799467caade1c679d9de6474ea16) Thanks [@nat-king](https://github.com/nat-king)! - Added the `suffix` property to the FilterInterface
+
+- [#9147](https://github.com/Shopify/polaris/pull/9147) [`082fe4308`](https://github.com/Shopify/polaris/commit/082fe430846ded0b7a45b4f9b01d54e1790f4e8f) Thanks [@laurkim](https://github.com/laurkim)! - Added component pages and examples for `AlphaTabs` and `AlphaFilters` on style guide
+
+* [#9224](https://github.com/Shopify/polaris/pull/9224) [`b228b67f2`](https://github.com/Shopify/polaris/commit/b228b67f278b5e4ce0b85ad68407ef5af2d02d95) Thanks [@nat-king](https://github.com/nat-king)! - Added optional `onAddFilterClick` callback prop to the AlphaFilters component
+
+### Patch Changes
+
+- [#9166](https://github.com/Shopify/polaris/pull/9166) [`048502ceb`](https://github.com/Shopify/polaris/commit/048502ceb80db7b4881db5216c9c88578219401c) Thanks [@martenbjork](https://github.com/martenbjork)! - Fixed the border radius of `DropZone`
+
+* [#9155](https://github.com/Shopify/polaris/pull/9155) [`563af5094`](https://github.com/Shopify/polaris/commit/563af50940e52c57f89e0d372c6841de727bd30f) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Fix PortalsManager to avoid setting state synchronously during a render pass which prevented it from working properly with Suspense.
+
+- [#9248](https://github.com/Shopify/polaris/pull/9248) [`5548436ca`](https://github.com/Shopify/polaris/commit/5548436ca50fbf3d27655cefda2bb40174c5a4a9) Thanks [@chloerice](https://github.com/chloerice)! - Reverted support for `ReactNode` labels on `Select` `options`
+
+* [#9148](https://github.com/Shopify/polaris/pull/9148) [`11f4cef4a`](https://github.com/Shopify/polaris/commit/11f4cef4a8225ce1682af4e32320a3c1478d3ac4) Thanks [@samrose3](https://github.com/samrose3)! - Recalculated IndexTable sticky header column widths inside of a `useIsomorphicLayoutEffect` after the table is updated.
+
+- [#9231](https://github.com/Shopify/polaris/pull/9231) [`f7f160d0f`](https://github.com/Shopify/polaris/commit/f7f160d0f83090d1eac50de4b92b1fab4f9326b2) Thanks [@skparkk](https://github.com/skparkk)! - Fixed `Tooltip` rendering when `active` prop is false
+
+* [#9095](https://github.com/Shopify/polaris/pull/9095) [`9fdc798a5`](https://github.com/Shopify/polaris/commit/9fdc798a5b3cda6100fec78de2ee48d3e6d199ff) Thanks [@FCalabria](https://github.com/FCalabria)! - Improved spacing and types on `Select` component
+
+- [#9106](https://github.com/Shopify/polaris/pull/9106) [`2f2edd8fc`](https://github.com/Shopify/polaris/commit/2f2edd8fc285f7bb29193adc9cf6138a5444eeb3) Thanks [@samrose3](https://github.com/samrose3)! - Fixed padding on AlphaFilter in IndexFilter when hideQueryField is true
+
+* [#8957](https://github.com/Shopify/polaris/pull/8957) [`bb67c17da`](https://github.com/Shopify/polaris/commit/bb67c17da7838ccc460a50e1269848e236c8b29f) Thanks [@bsharrow](https://github.com/bsharrow)! - Fixed `FilterPill` so that it no longer opens an applied filter's popover by default
+
+- [#9154](https://github.com/Shopify/polaris/pull/9154) [`66d0adc9a`](https://github.com/Shopify/polaris/commit/66d0adc9a72a8f413e237730402202aaf5c4da1a) Thanks [@gui-santos](https://github.com/gui-santos)! - Change default value of Tooltip position to `above`
+
+* [#9206](https://github.com/Shopify/polaris/pull/9206) [`76ed72b41`](https://github.com/Shopify/polaris/commit/76ed72b41071c55b35e28d2d0859384b3b0da8c6) Thanks [@alllx](https://github.com/alllx)! - Fix IndexTable sticky column header overlap
+
+- [#9169](https://github.com/Shopify/polaris/pull/9169) [`84189fef1`](https://github.com/Shopify/polaris/commit/84189fef14cff113f82c0367b780f1684c69712a) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - [Popover] Updates fullHeight styles to prevent scroll position reset when Popover content changes
+
+* [#9195](https://github.com/Shopify/polaris/pull/9195) [`e9bbbb437`](https://github.com/Shopify/polaris/commit/e9bbbb437c0936e90c48876c49c20db1b7f6c852) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed critical color on progress bar
+
+- [#9160](https://github.com/Shopify/polaris/pull/9160) [`fed35736b`](https://github.com/Shopify/polaris/commit/fed35736bcc05a16c1d9cea5abaf594f93c3f08a) Thanks [@jbalsas](https://github.com/jbalsas)! - Adjusted colours of disabled `Listbox.TextOption` and `OptionList` components for better readability and a11y
+
+- Updated dependencies [[`5a9b011d1`](https://github.com/Shopify/polaris/commit/5a9b011d14a0cc575f4fd34d9e4d8fcfeb0cd597), [`4e343a180`](https://github.com/Shopify/polaris/commit/4e343a180c837ef29d8117c10053f82eb17bc29b), [`5be210bd5`](https://github.com/Shopify/polaris/commit/5be210bd54e95ad694e898750c3f40259b9216be)]:
+  - @shopify/polaris-tokens@6.14.0
+  - @shopify/polaris-icons@6.16.0
+
 ## 10.49.1
 
 ### Patch Changes

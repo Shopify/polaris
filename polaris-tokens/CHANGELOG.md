@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.14.0
+
+### Minor Changes
+
+- [#9144](https://github.com/Shopify/polaris/pull/9144) [`5a9b011d1`](https://github.com/Shopify/polaris/commit/5a9b011d14a0cc575f4fd34d9e4d8fcfeb0cd597) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Updated color-icon-magic to the correct shade of purple[500]
+
 ## 6.13.0
 
 ### Minor Changes
