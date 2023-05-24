@@ -232,7 +232,7 @@
 
 .primary {
   #{$se23} & {
-    &::after {
+    &::before {
       content: '';
       position: absolute;
       left: 2px;
@@ -269,7 +269,7 @@
     --pc-button-box-shadow: inset 0px -1px 0px #000000, inset 1px 0px 0px rgba(255, 255, 255, 0.25), inset -1px 0px 0px rgba(255, 255, 255, 0.25);
     &:active {
       --pc-button-box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2), inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6);
-      &::after {
+      &::before {
         opacity: 0;
       }
     }

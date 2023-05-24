@@ -31,8 +31,6 @@
     padding: var(--p-space-1) var(--p-space-3);
     border-radius: var(--p-border-radius-2);
     border: none;
-
-    @include focus-ring($size: 'wide', $border-width: var(--p-border-width-1));
   }
 
   svg {
