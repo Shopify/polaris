@@ -3,6 +3,7 @@ import type {Args, ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
+  Button,
   LegacyCard,
   Card,
   Page,
