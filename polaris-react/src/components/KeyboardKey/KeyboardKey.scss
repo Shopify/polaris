@@ -1,33 +1,37 @@
 @import '../../styles/common';
 
 $key-base-dimension: 28px;
+$se23-base-dimension: 20px;
 
 @mixin se23DefaultKeyboardKey() {
-  :where(#{$se23} &) {
-    height: $key-base-dimension;
-    display: inline-flex;
-    justify-content: center;
-    margin: 0 var(--p-space-05) var(--p-space-05);
-    border-radius: var(--p-border-radius-1);
-    color: var(--p-color-text);
-    font-weight: var(--p-font-weight-medium);
-    font-family: var(--p-font-family-sans);
-    text-align: center;
-    min-width: $key-base-dimension;
-    user-select: none;
-  }
+  height: $se23-base-dimension;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0 var(--p-space-05) var(--p-space-05);
+  border-radius: var(--p-border-radius-1);
+  color: var(--p-color-text);
+  font-weight: var(--p-font-weight-medium);
+  font-family: var(--p-font-family-sans);
+  padding: 0 var(--p-space-1);
+  text-align: center;
+  min-width: $se23-base-dimension;
+  user-select: none;
+  // stylelint-disable-next-line -- se23 missing token
+  font-weight: 450;
+  line-height: $se23-base-dimension;
+  font-size: var(--p-font-size-75);
+  background: var(--p-color-bg-subdued);
+  box-shadow: none;
 }
 
 @mixin se23KeyboardKeyOverride() {
-  :where(#{$se23} &) {
-    $key-base-dimension: 20px;
-    // stylelint-disable-next-line -- se23 missing token
-    font-weight: 450;
-    line-height: $key-base-dimension;
-    font-size: var(--p-font-size-75);
-    background: var(--p-color-bg-subdued);
-    box-shadow: none;
-  }
+  height: $se23-base-dimension;
+  // stylelint-disable-next-line -- se23 missing token
+  font-weight: 450;
+  line-height: $se23-base-dimension;
+  font-size: var(--p-font-size-75);
+  background: var(--p-color-bg-subdued);
+  box-shadow: none;
 }
 
 .KeyboardKey {
@@ -48,8 +52,9 @@ $key-base-dimension: 28px;
   text-align: center;
   min-width: $key-base-dimension;
   user-select: none;
-
-  @include se23KeyboardKeyOverride;
+  #{$se23} & {
+    @include se23DefaultKeyboardKey;
+  }
 }
 
 .small {
@@ -62,6 +67,8 @@ $key-base-dimension: 28px;
   height: var(--p-space-5);
   min-width: var(--p-space-5);
 
-  @include se23DefaultKeyboardKey;
-  @include se23KeyboardKeyOverride;
+  // no more small variant for se23, just default for now
+  #{$se23} & {
+    @include se23DefaultKeyboardKey;
+  }
 }
