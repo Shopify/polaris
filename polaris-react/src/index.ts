@@ -219,9 +219,6 @@ export type {KeyboardKeyProps} from './components/KeyboardKey';
 export {KeypressListener} from './components/KeypressListener';
 export type {KeypressListenerProps} from './components/KeypressListener';
 
-export {KonamiCode} from './components/KonamiCode';
-export type {KonamiCodeProps} from './components/KonamiCode';
-
 export {Label, labelID} from './components/Label';
 export type {LabelProps} from './components/Label';
 
