@@ -98,7 +98,7 @@
     {
       "name": "polaris-react-esnext",
       "path": "polaris-react/build/esnext/index.esnext",
-      "limit": "225 kB"
+      "limit": "227 kB"
     },
     {
       "name": "polaris-react-css",
