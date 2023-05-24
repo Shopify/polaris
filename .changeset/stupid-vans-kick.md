@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-Removed deprecated preventMeasuringOnChildUpdate prop on Collapsible
+Removed deprecated `preventMeasuringOnChildUpdate` prop on `Collapsible`
