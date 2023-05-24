@@ -8,7 +8,12 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 export function Default() {
-  return <Tag>Wholesale</Tag>;
+  return (
+    <LegacyStack>
+      <Tag>Wholesale</Tag>
+      <Tag disabled>Wholesale</Tag>
+    </LegacyStack>
+  );
 }
 
 export function Removable() {
