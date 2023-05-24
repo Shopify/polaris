@@ -44,8 +44,7 @@
     outline: var(--p-border-width-1) solid transparent;
 
     #{$se23} & {
-      --p-bg-hover: #FDFDFD;
-      background: var(--p-bg-hover);
+      --p-color-bg-hover: #FDFDFD;
     }
   }
 
@@ -63,8 +62,8 @@
     #{$se23} & {
       --p-color-bg-app-selected: #FAFAFA;
       --p-shadow-inset-md: inset -1px 0px 1px rgba(0, 0, 0, 0.12), inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2);
-      background: var(--p-color-bg-app-selected);
-      box-shadow: var(--p-shadow-inset-md);
+      --p-color-bg-subdued-active: --p-color-bg-active;
+      --p-shadow-sm: --p-shadow-inset-md;
     }
 
     &::after {
