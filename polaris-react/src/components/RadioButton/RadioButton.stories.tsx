@@ -32,6 +32,15 @@ export function Default() {
         checked={value === 'optional'}
         onChange={handleChange}
       />
+      <RadioButton
+        label="Accounts are required"
+        helpText="Customers must only check out with a customer account."
+        id="required"
+        name="accounts"
+        disabled
+        checked={value === 'required'}
+        onChange={handleChange}
+      />
     </LegacyStack>
   );
 }
