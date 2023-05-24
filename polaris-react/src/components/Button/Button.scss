@@ -280,6 +280,23 @@
         fill: var(--pc-button-text);
       }
     }
+
+    &.destructive {
+      // stylelint-disable -- Polaris component custom properties
+      --pc-button-color: var(--p-color-bg-critical-strong);
+      --pc-button-text: var(--p-color-text-on-color);
+      --pc-button-color-hover: var(--p-color-bg-critical-strong-hover);
+      --pc-button-color-active: var(--p-color-bg-critical-strong-active);
+      --pc-button-color-depressed: var(--p-color-bg-critical-strong-active);
+      // stylelint-enable
+      svg {
+        fill: var(--p-color-icon-on-color);
+      }
+
+      &.disabled {
+        background: var(--p-color-bg-disabled);
+      }
+    }
   }
   // stylelint-enable
 
@@ -306,6 +323,33 @@
 
   &.disabled {
     background: var(--p-color-bg-disabled);
+  }
+
+  #{$se23} & {
+    // stylelint-disable -- Polaris component custom properties
+    --p-color-bg-transparent-hover: #1A1A1A0D;
+    --p-color-bg-transparent-active: #1A1A1A12;
+
+    --pc-button-color: transparent;
+    --pc-button-text: var(--p-color-text-critical);
+    --pc-button-color-hover: var(--p-color-bg-transparent-hover);
+    --pc-button-color-active: var(--p-color-bg-transparent-active);
+    --pc-button-color-depressed: var(--p-color-bg-transparent-active);
+    --p-color-text-disabled: background: #CCCCCC;
+    // stylelint-enable
+
+    box-shadow: none;
+
+    svg {
+      fill: var(--pc-button-text);
+    }
+
+    &.disabled {
+      background: transparent;
+      svg {
+        fill: var(--p-color-text-disabled);
+      }
+    }
   }
 }
 
