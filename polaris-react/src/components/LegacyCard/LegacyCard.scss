@@ -5,6 +5,14 @@
   box-shadow: var(--p-shadow-md);
   outline: var(--p-border-width-1) solid transparent;
 
+  #{$se23} & {
+    /* stylelint-disable -- SE23 temporary styles */
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.07), inset 0px -1px 0px #d4d4d4,
+      inset -1px 0px 0px #e3e3e3, inset 1px 0px 0px #e3e3e3,
+      inset 0px 1px 0px #e3e3e3;
+    /* stylelint-enable */
+  }
+
   + .LegacyCard {
     margin-top: var(--p-space-4);
 
@@ -23,6 +31,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     border-radius: var(--p-border-radius-2);
+
+    #{$se23} & {
+      border-radius: var(--p-border-radius-3);
+    }
   }
 
   @media print {
@@ -64,6 +76,11 @@
   + .Section {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
+    #{$se23} & {
+      /* stylelint-disable-next-line polaris/color/function-disallowed-list -- se23 temporary styles */
+      border-top: 1px solid rgba(235, 235, 235, 1);
+    }
+
     @media print {
       border-top: 0;
     }
@@ -78,11 +95,21 @@
 .Section:first-child {
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
+
+  #{$se23} & {
+    border-top-left-radius: var(--p-border-radius-3);
+    border-top-right-radius: var(--p-border-radius-3);
+  }
 }
 
 .Section:last-child {
   border-bottom-left-radius: var(--p-border-radius-2);
   border-bottom-right-radius: var(--p-border-radius-2);
+
+  #{$se23} & {
+    border-bottom-left-radius: var(--p-border-radius-3);
+    border-bottom-right-radius: var(--p-border-radius-3);
+  }
 }
 
 .Section-fullWidth {
