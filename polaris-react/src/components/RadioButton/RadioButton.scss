@@ -46,14 +46,17 @@
     }
   }
 
+  #{$se23} &:disabled + .Backdrop,
+  .Backdrop:hover,
+  .Backdrop.hover {
+    // stylelint-disable-next-line -- Polaris component custom properties
+    --p-color-border-disabled: rgba(204, 204, 204, 1);
+    // stylelint-disable-next-line -- Polaris component custom properties
+    --p-color-bg-disabled: rgba(204, 204, 204, 1);
+    border-color: var(--p-color-border-disabled);
+  }
+
   &:disabled + .Backdrop {
-    #{$se23} & {
-      // stylelint-disable-next-line -- Polaris component custom properties
-      --p-color-border-disabled: rgba(204, 204, 204, 1);
-      // stylelint-disable-next-line -- Polaris component custom properties
-      --p-color-bg-disabled: rgba(204, 204, 204, 1);
-      --p-border-color-hover: ;
-    }
     border-color: var(--p-color-border-disabled);
     cursor: default;
     background-color: var(--p-color-bg-disabled);
@@ -71,7 +74,8 @@
     --p-color-border-input: rgba(138, 138, 138, 1);
     // stylelint-disable-next-line -- Polaris component custom properties
     --p-color-bg: #fff;
-    background-color: var(--p-color-bg);
+    // stylelint-disable-next-line -- Polaris component custom properties
+    --p-color-bg-interactive: #fff;
   }
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-icon-size-small: 8px;
@@ -94,11 +98,6 @@
   transition: border-color var(--p-motion-duration-100) var(--p-motion-ease);
 
   &::before {
-    #{$se23} & {
-      // stylelint-disable-next-line -- Polaris component custom properties
-      --p-color-bg-interactive: #fff;
-      background-color: var(--p-color-bg-interactive);
-    }
     content: '';
     position: absolute;
     top: 50%;
@@ -134,7 +133,6 @@
       // stylelint-disable-next-line -- Polaris component custom properties
       --p-color-border-input-hover: rgba(138, 138, 138, 1);
       border-width: var(--p--border-width-2);
-      border-color: var(--p-color-border-input-hover);
     }
     border-color: var(--p-color-border-input-hover);
   }
