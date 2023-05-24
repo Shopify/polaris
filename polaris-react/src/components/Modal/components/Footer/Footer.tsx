@@ -38,6 +38,8 @@ export function Footer({
         borderBlockStartWidth="1"
         minHeight="var(--p-space-16)"
         padding="4"
+        paddingInlineStart="5"
+        paddingInlineEnd="5"
         width="100%"
       >
         <HorizontalStack gap="4" blockAlign="center" align="space-between">
