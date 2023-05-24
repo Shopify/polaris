@@ -273,7 +273,13 @@
         opacity: 0;
       }
     }
+    &.disabled {
+      color: var(--pc-button-text);
 
+      svg {
+        fill: var(--pc-button-text);
+      }
+    }
   }
   // stylelint-enable
 
