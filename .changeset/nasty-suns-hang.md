@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Removed beta status from `Text`
+Updated `Text` component status from beta to stable
