@@ -13,6 +13,11 @@
   text-decoration: underline;
   cursor: pointer;
 
+  #{se23('.Link')} {
+    --p-color-text-interactive: red;
+    font-size: 1.5rem;
+  }
+
   &:hover {
     color: var(--p-color-text-interactive-hover);
     text-decoration: none;

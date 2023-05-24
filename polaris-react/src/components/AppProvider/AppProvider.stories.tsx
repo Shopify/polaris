@@ -11,6 +11,7 @@ import {
   ResourceList,
   Text,
   VerticalStack,
+  Link,
 } from '@shopify/polaris';
 import {useFeatures} from '@shopify/polaris/utilities/features';
 
@@ -189,6 +190,52 @@ export const WithSummerEditionsFeature = {
     return (
       <AppProvider features={{polarisSummerEditions2023}} i18n={{}}>
         <CheckFeature />
+      </AppProvider>
+    );
+  },
+};
+
+export const WithSummerEditionsEdgeCases = {
+  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => {
+    return (
+      <AppProvider features={{polarisSummerEditions2023}} i18n={{}}>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          /* Proposed approach */
+          
+          /* --p-color-text-interactive */
+          
+          /* Example of application override styles */
+          .my-paragraph {
+            --p-color-text-interactive: gold;
+          }
+          .my-custom-paragraph [class^='Link'] {
+            --p-color-text-interactive: lightgreen;
+          }
+          .my-custom-paragraph [class^='Link'] span {
+            color: lightsteelblue;
+          }
+      `,
+          }}
+        />
+
+        <AlphaCard>
+          <VerticalStack gap="4">
+            <p>
+              This paragraph <Link url="#test">contains a link component</Link>
+            </p>
+            <p className="my-paragraph">
+              My paragraph <Link url="#test">contains a link component</Link>
+            </p>
+            <p className="my-custom-paragraph">
+              My custom paragraph{' '}
+              <Link url="#test">
+                contains a <span>link component!</span>
+              </Link>
+            </p>
+          </VerticalStack>
+        </AlphaCard>
       </AppProvider>
     );
   },
