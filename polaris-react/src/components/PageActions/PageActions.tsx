@@ -42,9 +42,11 @@ export function PageActions({
     secondaryActionsMarkup = <>{secondaryActions}</>;
   }
 
+  const distribution = secondaryActionsMarkup ? 'equalSpacing' : 'trailing';
+
   return (
     <div className={styles.PageActions}>
-      <LegacyStack distribution="trailing" spacing="tight">
+      <LegacyStack distribution={distribution} spacing="tight">
         {secondaryActionsMarkup}
         {primaryActionMarkup}
       </LegacyStack>
