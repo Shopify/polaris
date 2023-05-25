@@ -712,94 +712,117 @@ export const color: {
   },
   'color-text': {
     value: colors.gray[900],
+    valueExperimental: colorsExperimental.gray[15],
     description: '',
   },
   'color-text-subdued': {
     value: colors.gray[800],
+    valueExperimental: colorsExperimental.gray[13],
     description: '',
   },
   'color-text-disabled': {
     value: colors.gray[700],
+    valueExperimental: colorsExperimental.gray[10],
     description: '',
   },
   'color-text-interactive-disabled': {
     value: colors.gray[700],
+    valueExperimental: colorsExperimental.gray[10],
     description: '',
   },
   'color-text-inverse-subdued': {
     value: colors.gray[600],
+    valueExperimental: colorsExperimental.gray[10],
     description: '',
   },
   'color-text-inverse': {
     value: colors.gray[200],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-text-on-color': {
     value: colors.gray[50],
+    valueExperimental: colorsExperimental.gray[1],
     description: '',
   },
   'color-text-success-strong': {
     value: colors.green[900],
+    valueExperimental: colorsExperimental.green[15],
     description: '',
   },
   'color-text-success': {
     value: colors.green[700],
+    valueExperimental: colorsExperimental.green[15],
     description: '',
   },
   'color-text-primary': {
     value: colors.green[700],
+    valueExperimental: colorsExperimental.gray[14],
     description: '',
   },
   'color-text-primary-hover': {
     value: colors.green[800],
+    valueExperimental: colorsExperimental.gray[14],
     description: '',
   },
   'color-text-critical-strong': {
     value: colors.red[900],
+    valueExperimental: colorsExperimental.red[14],
     description: '',
   },
   'color-text-critical-active': {
     value: colors.red[800],
+    valueExperimental: colorsExperimental.red[14],
     description: '',
   },
   'color-text-critical': {
     value: colors.red[600],
+    valueExperimental: colorsExperimental.red[14],
     description: '',
   },
   'color-text-caution-strong': {
     value: colors.yellow[900],
+    valueExperimental: colorsExperimental.yellow[15],
     description: '',
   },
   'color-text-caution': {
     value: colors.yellow[800],
+    valueExperimental: colorsExperimental.yellow[15],
     description: '',
   },
   'color-text-info-strong': {
     value: colors.teal[900],
+    valueExperimental: colorsExperimental.azure[14],
     description: '',
   },
   'color-text-info': {
     value: colors.teal[700],
+    valueExperimental: colorsExperimental.azure[14],
     description: '',
   },
   'color-text-warning-strong': {
     value: colors.orange[900],
+    valueExperimental: colorsExperimental.orange[16],
     description: '',
   },
   'color-text-interactive-active': {
     value: colors.blue[800],
+    valueExperimental: colorsExperimental.blue[15],
     description: '',
   },
   'color-text-interactive-hover': {
     value: colors.blue[700],
+    valueExperimental: colorsExperimental.blue[14],
     description: '',
   },
   'color-text-interactive': {
     value: colors.blue[600],
+    valueExperimental: colorsExperimental.blue[13],
     description: '',
   },
   'color-text-interactive-inverse': {
     value: colors.blue[400],
+    valueExperimental: colorsExperimental.blue[8],
     description: '',
   },
   'color-text-magic-strong': {
