@@ -430,106 +430,132 @@ export const color: {
   },
   'color-border-input-hover': {
     value: colors.gray[800],
+    valueExperimental: colorsExperimental.gray[13],
     description: '',
   },
   'color-border-inverse': {
     value: colors.gray[800],
+    valueExperimental: colorsExperimental.gray[13],
     description: '',
   },
   'color-border-strong-hover': {
     value: colors.gray[700],
+    valueExperimental: colorsExperimental.gray[9],
     description: '',
   },
   'color-border-input': {
     value: colors.gray[600],
+    valueExperimental: colorsExperimental.gray[12],
     description: '',
   },
   'color-border-hover': {
     value: colors.gray[600],
+    valueExperimental: colorsExperimental.gray[10],
     description: '',
   },
   'color-border-strong': {
     value: colors.gray[600],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-border': {
     value: colors.gray[500],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-border-disabled': {
     value: colors.gray[400],
+    valueExperimental: colorsExperimental.gray[7],
     description: '',
   },
   'color-border-subdued': {
     value: colors.gray[400],
+    valueExperimental: colorsExperimental.gray[10],
     description: '',
   },
   'color-border-interactive-disabled': {
     value: colors.gray[400],
+    valueExperimental: colorsExperimental.gray[7],
     description: '',
   },
   'color-border-primary': {
     value: colors.green[700],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-border-success': {
     value: colors.green[600],
+    valueExperimental: colorsExperimental.green[5],
     description: '',
   },
   'color-border-success-subdued': {
     value: colors.green[400],
+    valueExperimental: colorsExperimental.green[5],
     description: '',
   },
   'color-border-critical-active': {
     value: colors.red[900],
+    valueExperimental: colorsExperimental.red[11],
     description: '',
   },
   'color-border-critical-hover': {
     value: colors.red[800],
+    valueExperimental: colorsExperimental.red[10],
     description: '',
   },
   'color-border-critical': {
     value: colors.red[600],
+    valueExperimental: colorsExperimental.red[9],
     description: '',
   },
   'color-border-critical-subdued': {
     value: colors.red[400],
+    valueExperimental: colorsExperimental.red[9],
     description: '',
   },
   'color-border-caution': {
     value: colors.yellow[600],
+    valueExperimental: colorsExperimental.orange[7],
     description: '',
   },
   'color-border-caution-subdued': {
     value: colors.yellow[400],
+    valueExperimental: colorsExperimental.orange[7],
     description: '',
   },
   'color-border-info': {
     value: colors.teal[500],
+    valueExperimental: colorsExperimental.azure[9],
     description: '',
   },
   'color-border-info-subdued': {
     value: colors.teal[400],
+    valueExperimental: colorsExperimental.azure[9],
     description: '',
   },
   'color-border-interactive-active': {
     value: colors.blue[800],
+    valueExperimental: colorsExperimental.blue[15],
     description: '',
   },
   'color-border-interactive-hover': {
     value: colors.blue[700],
+    valueExperimental: colorsExperimental.blue[14],
     description: '',
   },
   'color-border-interactive': {
     value: colors.blue[500],
+    valueExperimental: colorsExperimental.blue[13],
     description: '',
   },
   'color-border-interactive-focus': {
     value: colors.blue[500],
+    valueExperimental: colorsExperimental.blue[13],
     description: '',
   },
   'color-border-interactive-subdued': {
     value: colors.blue[200],
+    valueExperimental: colorsExperimental.blue[13],
     description: '',
   },
   'color-border-magic-strong': {
