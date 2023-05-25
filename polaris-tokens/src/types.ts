@@ -6,6 +6,7 @@ export type Entries<T> = Entry<T>[];
 export interface MetadataProperties {
   description?: string;
   value: string;
+  valueExperimental?: string;
 }
 
 export interface MetadataGroup {
