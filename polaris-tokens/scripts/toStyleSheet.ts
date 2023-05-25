@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import type {Metadata, MetadataGroup} from '../src';
+import type {MetadataBase} from '../src/types';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
@@ -15,6 +16,31 @@ const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
 export function getStaticCustomProperties(metadata: Metadata) {
   return Object.entries(metadata)
     .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
+    .join('');
+}
+
+/**
+ * Creates static CSS custom properties overrides.
+ * Note: These values don't vary by color-scheme.
+ */
+export function getStaticCustomPropertiesExperimental(metadata: MetadataBase) {
+  return Object.entries(metadata)
+    .map(([_, tokenGroup]) =>
+      getCustomProperties(
+        Object.fromEntries(
+          Object.entries(tokenGroup)
+            // Only include tokens with `valueExperimental` prop
+            .filter(([_, metadataProperties]) =>
+              Boolean(metadataProperties.valueExperimental),
+            )
+            // Move `valueExperimental` to `value` position
+            .map(([tokenName, metadataProperties]) => [
+              tokenName,
+              {value: metadataProperties.valueExperimental!},
+            ]),
+        ),
+      ),
+    )
     .join('');
 }
 
@@ -53,7 +79,10 @@ export async function toStyleSheet(metadata: Metadata) {
   }
 
   const styles = `
-  :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
+  :where(html){color-scheme:light;${getStaticCustomProperties(metadata)}}
+  :where(html.Polaris-Summer-Editions-2023){${getStaticCustomPropertiesExperimental(
+    metadata,
+  )}}
   ${getKeyframes(metadata.motion)}
 `;
 
