@@ -165,42 +165,52 @@ export const color: {
 } = {
   'color-bg-inverse': {
     value: colors.gray[900],
+    valueExperimental: colorsExperimental.gray[16],
     description: '',
   },
   'color-bg-inset-strong': {
     value: colors.gray[800],
+    valueExperimental: colorsExperimental.gray[15],
     description: '',
   },
   'color-bg-inverse-hover': {
     value: colors.gray[800],
+    valueExperimental: colorsExperimental.gray[14],
     description: '',
   },
   'color-bg-inverse-active': {
     value: colors.gray[700],
+    valueExperimental: colorsExperimental.gray[13],
     description: '',
   },
   'color-bg-strong-hover': {
     value: colors.gray[500],
+    valueExperimental: colorsExperimental.gray[7],
     description: '',
   },
   'color-bg-strong-active': {
     value: colors.gray[500],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-bg-strong': {
     value: colors.gray[400],
+    valueExperimental: colorsExperimental.gray[6],
     description: '',
   },
   'color-bg-subdued-active': {
     value: colors.gray[300],
+    valueExperimental: colorsExperimental.gray[7],
     description: '',
   },
   'color-bg-disabled': {
     value: colors.gray[300],
+    valueExperimental: colorsExperimental.gray[1],
     description: '',
   },
   'color-bg-interactive-disabled': {
     value: colors.gray[300],
+    valueExperimental: colorsExperimental.gray[1],
     description: '',
   },
   'color-bg-app': {
@@ -214,18 +224,22 @@ export const color: {
   },
   'color-bg-app-hover': {
     value: colors.gray[300],
+    valueExperimental: colorsExperimental.gray[2],
     description: '',
   },
   'color-bg-app-selected': {
     value: colors.gray[300],
+    valueExperimental: colorsExperimental.gray[3],
     description: '',
   },
   'color-bg-active': {
     value: colors.gray[300],
+    valueExperimental: colorsExperimental.gray[3],
     description: '',
   },
   'color-bg-subdued-hover': {
     value: colors.gray[200],
+    valueExperimental: colorsExperimental.gray[6],
     description: '',
   },
   'color-bg-inset': {
@@ -235,14 +249,17 @@ export const color: {
   },
   'color-bg-hover': {
     value: colors.gray[200],
+    valueExperimental: colorsExperimental.gray[2],
     description: '',
   },
   'color-bg-subdued': {
     value: colors.gray[100],
+    valueExperimental: colorsExperimental.gray[5],
     description: '',
   },
   'color-bg-input': {
     value: colors.gray[50],
+    valueExperimental: colorsExperimental.gray[2],
     description: '',
   },
   'color-bg': {
@@ -252,10 +269,12 @@ export const color: {
   },
   'color-bg-primary-active': {
     value: colors.green[900],
+    valueExperimental: colorsExperimental.gray[14],
     description: '',
   },
   'color-bg-primary-hover': {
     value: colors.green[800],
+    valueExperimental: colorsExperimental.gray[15],
     description: '',
   },
   'color-bg-primary': {
@@ -265,14 +284,17 @@ export const color: {
   },
   'color-bg-success-strong': {
     value: colors.green[600],
+    valueExperimental: colorsExperimental.green[12],
     description: '',
   },
   'color-bg-success': {
     value: colors.green[300],
+    valueExperimental: colorsExperimental.green[3],
     description: '',
   },
   'color-bg-primary-subdued-active': {
     value: colors.green[200],
+    valueExperimental: colorsExperimental.gray[6],
     description: '',
   },
   'color-bg-success-subdued-active': {
@@ -281,98 +303,122 @@ export const color: {
   },
   'color-bg-success-subdued': {
     value: colors.green[100],
+    valueExperimental: colorsExperimental.green[3],
     description: '',
   },
   'color-bg-primary-subdued-hover': {
     value: colors.green[100],
+    valueExperimental: colorsExperimental.gray[7],
     description: '',
   },
   'color-bg-success-subdued-hover': {
     value: colors.green[50],
+    valueExperimental: colorsExperimental.green[5],
     description: '',
   },
   'color-bg-primary-subdued': {
     value: colors.green[50],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-bg-primary-subdued-selected': {
     value: colors.green[50],
+    valueExperimental: colorsExperimental.gray[6],
     description: '',
   },
   'color-bg-critical-strong-active': {
     value: colors.red[800],
+    valueExperimental: colorsExperimental.red[14],
     description: '',
   },
   'color-bg-critical-strong-hover': {
     value: colors.red[700],
+    valueExperimental: colorsExperimental.red[13],
     description: '',
   },
   'color-bg-critical-strong': {
     value: colors.red[600],
+    valueExperimental: colorsExperimental.red[12],
     description: '',
   },
   'color-bg-critical-subdued-active': {
     value: colors.red[200],
+    valueExperimental: colorsExperimental.red[6],
     description: '',
   },
   'color-bg-critical': {
     value: colors.red[200],
+    valueExperimental: colorsExperimental.red[4],
     description: '',
   },
   'color-bg-critical-subdued': {
     value: colors.red[100],
+    valueExperimental: colorsExperimental.red[4],
     description: '',
   },
   'color-bg-critical-subdued-hover': {
     value: colors.red[50],
+    valueExperimental: colorsExperimental.red[5],
     description: '',
   },
   'color-bg-caution-strong': {
     value: colors.yellow[600],
+    valueExperimental: colorsExperimental.yellow[6],
     description: '',
   },
   'color-bg-caution': {
     value: colors.yellow[300],
+    valueExperimental: colorsExperimental.yellow[4],
     description: '',
   },
   'color-bg-caution-subdued-active': {
     value: colors.yellow[200],
+    valueExperimental: colorsExperimental.yellow[4],
     description: '',
   },
   'color-bg-caution-subdued': {
     value: colors.yellow[100],
+    valueExperimental: colorsExperimental.yellow[2],
     description: '',
   },
   'color-bg-caution-subdued-hover': {
     value: colors.yellow[50],
+    valueExperimental: colorsExperimental.yellow[3],
     description: '',
   },
   'color-bg-info-strong': {
     value: colors.teal[600],
+    valueExperimental: colorsExperimental.azure[9],
     description: '',
   },
   'color-bg-info-subdued-active': {
     value: colors.teal[200],
+    valueExperimental: colorsExperimental.azure[6],
     description: '',
   },
   'color-bg-info': {
     value: colors.teal[200],
+    valueExperimental: colorsExperimental.azure[4],
     description: '',
   },
   'color-bg-info-subdued': {
     value: colors.teal[100],
+    valueExperimental: colorsExperimental.azure[4],
     description: '',
   },
   'color-bg-info-subdued-hover': {
     value: colors.teal[50],
+    valueExperimental: colorsExperimental.azure[5],
     description: '',
   },
   'color-bg-interactive-active': {
     value: colors.blue[800],
+    valueExperimental: colorsExperimental.gray[14],
     description: '',
   },
   'color-bg-interactive-hover': {
     value: colors.blue[700],
+    valueExperimental: colorsExperimental.gray[15],
     description: '',
   },
   'color-bg-interactive': {
@@ -382,22 +428,27 @@ export const color: {
   },
   'color-bg-interactive-subdued-active': {
     value: colors.blue[200],
+    valueExperimental: colorsExperimental.gray[6],
     description: '',
   },
   'color-bg-interactive-subdued-hover': {
     value: colors.blue[100],
+    valueExperimental: colorsExperimental.gray[7],
     description: '',
   },
   'color-bg-interactive-subdued': {
     value: colors.blue[50],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-bg-interactive-selected': {
     value: colors.blue[50],
+    valueExperimental: colorsExperimental.gray[6],
     description: '',
   },
   'color-bg-warning': {
     value: colors.orange[200],
+    valueExperimental: colorsExperimental.orange[7],
     description: '',
   },
   'color-bg-magic-strong': {
