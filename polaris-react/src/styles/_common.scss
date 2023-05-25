@@ -18,4 +18,4 @@
 
 @import '../../../node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
 
-$se23: "html[class*='Polaris-Summer-Editions-2023']";
+$se23: ":where(html[class*='Polaris-Summer-Editions-2023'])";
