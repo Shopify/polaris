@@ -470,7 +470,7 @@ export const color: {
   },
   'color-border-subdued': {
     value: colors.gray[400],
-    valueExperimental: colorsExperimental.gray[7],
+    valueExperimental: colorsExperimental.gray[10],
     description: '',
   },
   'color-border-interactive-disabled': {
