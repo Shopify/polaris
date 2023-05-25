@@ -79,8 +79,8 @@ export async function toStyleSheet(metadata: Metadata) {
   }
 
   const styles = `
-  :where(html){color-scheme:light;${getStaticCustomProperties(metadata)}}
-  :where(html.Polaris-Summer-Editions-2023){${getStaticCustomPropertiesExperimental(
+  :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
+  :root:where(.Polaris-Summer-Editions-2023){${getStaticCustomPropertiesExperimental(
     metadata,
   )}}
   ${getKeyframes(metadata.motion)}
