@@ -331,7 +331,7 @@ function IndexFiltersDefault() {
         },
       ]}
     >
-      <AlphaCard padding="0">
+      <Card padding="0">
         <IndexFilters
           sortOptions={sortOptions}
           sortSelected={sortSelected}
@@ -377,7 +377,7 @@ function IndexFiltersDefault() {
         >
           {rowMarkup}
         </IndexTable>
-      </AlphaCard>
+      </Card>
     </Page>
   );
 }

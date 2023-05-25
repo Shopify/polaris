@@ -9,6 +9,7 @@ import React from 'react';
 import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
+import {useFeatures} from '../../utilities/features';
 
 type Spacing = ResponsiveProp<SpaceScale>;
 
@@ -36,7 +37,21 @@ export const Card = ({
   roundedAbove,
 }: CardProps) => {
   const breakpoints = useBreakpoints();
-  const defaultBorderRadius: BorderRadiusScale = '2';
+  const {polarisSummerEditions2023} = useFeatures();
+  const defaultBorderRadius: BorderRadiusScale = polarisSummerEditions2023
+    ? '3'
+    : '2';
+
+  const isDefaultPadding =
+    typeof padding !== 'string' &&
+    padding?.xs === '4' &&
+    padding?.sm === '5' &&
+    padding.md === undefined &&
+    padding.lg === undefined &&
+    padding.xl === undefined;
+
+  const finalPadding: CardProps['padding'] =
+    isDefaultPadding && polarisSummerEditions2023 ? {xs: '4'} : padding;
 
   let hasBorderRadius = !roundedAbove;
 
@@ -47,8 +62,8 @@ export const Card = ({
   return (
     <Box
       background={background}
-      padding={padding}
-      shadow="md"
+      padding={finalPadding}
+      shadow={polarisSummerEditions2023 ? 'sm' : 'md'}
       borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
       overflowX="hidden"
       overflowY="hidden"
