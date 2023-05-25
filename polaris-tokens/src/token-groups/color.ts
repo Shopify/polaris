@@ -480,7 +480,7 @@ export const color: {
   },
   'color-border-primary': {
     value: colors.green[700],
-    valueExperimental: colorsExperimental.green[8],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-border-success': {
