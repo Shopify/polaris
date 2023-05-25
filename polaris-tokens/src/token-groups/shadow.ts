@@ -38,6 +38,8 @@ export const shadow: {
   },
   'shadow-sm': {
     value: '0px 1px 1px rgba(31, 33, 36, 0.1)',
+    valueExperimental:
+      '0px 1px 0px rgba(0, 0, 0, 0.07), inset 0px -1px 0px #d4d4d4, inset -1px 0px 0px #e3e3e3, inset 1px 0px 0px #e3e3e3, inset 0px 1px 0px #e3e3e3',
   },
   'shadow-md': {
     value:
