@@ -51,6 +51,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5) var(--p-space-5) 0;
+
+    #{$se23} & {
+      padding: var(--p-space-4) var(--p-space-4) 0;
+    }
   }
 
   @media print and #{$p-breakpoints-sm-up} {
@@ -63,6 +67,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5);
+
+    #{$se23} & {
+      padding: var(--p-space-4);
+    }
   }
 
   + .Section {
@@ -109,6 +117,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5) 0;
+
+    #{$se23} & {
+      padding: var(--p-space-4) 0;
+    }
   }
 }
 
@@ -143,6 +155,11 @@
     @media #{$p-breakpoints-sm-up} {
       padding-left: var(--p-space-5);
       padding-right: var(--p-space-5);
+
+      #{$se23} & {
+        padding-left: var(--p-space-4);
+        padding-right: var(--p-space-4);
+      }
     }
   }
 }
@@ -171,6 +188,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     padding: 0 var(--p-space-5) var(--p-space-5);
+
+    #{$se23} & {
+      padding: 0 var(--p-space-4) var(--p-space-4);
+    }
   }
 
   &.LeftJustified {
@@ -180,5 +201,9 @@
   .Section-subdued + & {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     padding: var(--p-space-5);
+
+    #{$se23} & {
+      padding: var(--p-space-4);
+    }
   }
 }
