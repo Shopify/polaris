@@ -619,10 +619,12 @@ export const color: {
   },
   'color-icon-hover': {
     value: colors.gray[900],
+    valueExperimental: colorsExperimental.gray[15],
     description: '',
   },
   'color-icon': {
     value: colors.gray[800],
+    valueExperimental: colorsExperimental.gray[14],
     description: '',
   },
   'color-icon-active': {
@@ -631,62 +633,77 @@ export const color: {
   },
   'color-icon-subdued': {
     value: colors.gray[700],
+    valueExperimental: colorsExperimental.gray[12],
     description: '',
   },
   'color-icon-disabled': {
     value: colors.gray[600],
+    valueExperimental: colorsExperimental.gray[10],
     description: '',
   },
   'color-icon-interactive-disabled': {
     value: colors.gray[600],
+    valueExperimental: colorsExperimental.gray[10],
     description: '',
   },
   'color-icon-inverse': {
     value: colors.gray[400],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-icon-on-color': {
     value: colors.gray[50],
+    valueExperimental: colorsExperimental.gray[1],
     description: '',
   },
   'color-icon-primary': {
     value: colors.green[700],
+    valueExperimental: colorsExperimental.gray[16],
     description: '',
   },
   'color-icon-success': {
     value: colors.green[600],
+    valueExperimental: colorsExperimental.green[12],
     description: '',
   },
   'color-icon-critical': {
     value: colors.red[600],
+    valueExperimental: colorsExperimental.red[12],
     description: '',
   },
   'color-icon-caution': {
     value: colors.yellow[700],
+    valueExperimental: colorsExperimental.orange[11],
     description: '',
   },
   'color-icon-info': {
     value: colors.teal[600],
+    valueExperimental: colorsExperimental.azure[12],
     description: '',
   },
   'color-icon-warning': {
     value: colors.orange[500],
+    valueExperimental: colorsExperimental.yellow[11],
     description: '',
   },
   'color-icon-interactive-active': {
     value: colors.blue[800],
+    valueExperimental: colorsExperimental.blue[15],
     description: '',
   },
   'color-icon-interactive-hover': {
     value: colors.blue[700],
+    valueExperimental: colorsExperimental.blue[14],
     description: '',
   },
   'color-icon-interactive': {
     value: colors.blue[600],
+    valueExperimental: colorsExperimental.blue[13],
     description: '',
   },
   'color-icon-interactive-inverse': {
     value: colors.blue[400],
+    valueExperimental: colorsExperimental.blue[8],
     description: '',
   },
   'color-icon-magic': {
