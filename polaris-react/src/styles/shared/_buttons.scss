@@ -54,14 +54,10 @@
   }
 
   &:active {
-    background: var(--p-color-bg-subdued-active);
-    box-shadow: var(--p-shadow-sm);
-
     #{$se23} & {
-      --p-color-bg-app-selected: #FAFAFA;
       --p-shadow-inset-md: inset -1px 0px 1px rgba(0, 0, 0, 0.12), inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2);
-      --p-color-bg-subdued-active: --p-color-bg-active;
       --p-shadow-sm: --p-shadow-inset-md;
+      background: var(--p-color-bg-active);
     }
 
     &::after {
@@ -94,10 +90,9 @@
   color: var(--p-color-text-disabled);
 
   #{$se23} & {
-    --p-disabled-fill: #EBEBEB;
+    --p-disabled-fill: #1A1A1A00;
     --p-color-text-disabled: #CCCCCC;
     background: var(--p-disabled-fill);
-    border-color: var(--p-disabled-fill);
   }
 
   svg {
