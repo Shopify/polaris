@@ -455,7 +455,7 @@ export const color: {
   },
   'color-border-strong': {
     value: colors.gray[600],
-    valueExperimental: colorsExperimental.gray[9],
+    valueExperimental: colorsExperimental.gray[8],
     description: '',
   },
   'color-border': {
