@@ -22,8 +22,13 @@ export const mountWithApp = createMount<
     return options;
   },
   render(element, context) {
+    const {features, ...rest} = context;
     return (
-      <PolarisTestProvider i18n={translations} {...context}>
+      <PolarisTestProvider
+        i18n={translations}
+        features={{...features, polarisSummerEditions2023: false}}
+        {...rest}
+      >
         {element}
       </PolarisTestProvider>
     );
