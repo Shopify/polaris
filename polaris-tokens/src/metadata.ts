@@ -4,7 +4,6 @@ import {border} from './token-groups/border';
 import {breakpoints} from './token-groups/breakpoints';
 import {color} from './token-groups/color';
 import {font} from './token-groups/font';
-import {colors} from './token-groups/colors';
 import {motion} from './token-groups/motion';
 import {shadow} from './token-groups/shadow';
 import {space} from './token-groups/space';
