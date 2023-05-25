@@ -566,12 +566,12 @@ export const color: {
   },
   'color-border-caution': {
     value: colors.yellow[600],
-    valueExperimental: colorsExperimental.orange[7],
+    valueExperimental: colorsExperimental.yellow[5],
     description: '',
   },
   'color-border-caution-subdued': {
     value: colors.yellow[400],
-    valueExperimental: colorsExperimental.orange[7],
+    valueExperimental: colorsExperimental.yellow[5],
     description: '',
   },
   'color-border-info': {
@@ -673,7 +673,7 @@ export const color: {
   },
   'color-icon-caution': {
     value: colors.yellow[700],
-    valueExperimental: colorsExperimental.orange[11],
+    valueExperimental: colorsExperimental.yellow[11],
     description: '',
   },
   'color-icon-info': {
@@ -683,7 +683,7 @@ export const color: {
   },
   'color-icon-warning': {
     value: colors.orange[500],
-    valueExperimental: colorsExperimental.yellow[11],
+    valueExperimental: colorsExperimental.orange[11],
     description: '',
   },
   'color-icon-interactive-active': {
