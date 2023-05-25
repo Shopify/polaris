@@ -16,7 +16,8 @@
   :where(#{$se23}) & {
     // stylelint-disable-next-line -- se23 bg-transparent-hover
     background-color: rgba(26, 25, 26, 0.05);
-    color: var(--p-color-text-subdued);
+    // stylelint-disable-next-line -- se23 text-subdued
+    color: #616161;
     // stylelint-disable-next-line -- se23 border radius 10px
     border-radius: 10px;
   }
