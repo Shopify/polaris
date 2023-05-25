@@ -213,10 +213,6 @@
   --pc-button-color-hover: var(--p-color-bg-primary-hover);
   --pc-button-color-active: var(--p-color-bg-primary-active);
   --pc-button-color-depressed: var(--p-color-bg-primary-active);
-
-  #{$se23} & {
-    --pc-button-color: var(--p-text);
-  }
   // stylelint-enable
 
   svg {
