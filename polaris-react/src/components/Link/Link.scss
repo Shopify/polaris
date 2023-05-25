@@ -13,9 +13,12 @@
   text-decoration: underline;
   cursor: pointer;
 
-  #{se23('.Link')} {
+  // #{$se23} & {
+  @include se23(&) {
+    /* stylelint-disable -- Beta flag override test */
     --p-color-text-interactive: red;
     font-size: 1.5rem;
+    /* stylelint-enable */
   }
 
   &:hover {

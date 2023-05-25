@@ -202,18 +202,17 @@ export const WithSummerEditionsEdgeCases = {
         <style
           dangerouslySetInnerHTML={{
             __html: `
-          /* Proposed approach */
-          
+          /* Default color token in Link component */
           /* --p-color-text-interactive */
-          
+
           /* Example of application override styles */
           .my-paragraph {
             --p-color-text-interactive: gold;
           }
-          .my-custom-paragraph [class^='Link'] {
+          .my-other-paragraph [class^='Link'] {
             --p-color-text-interactive: lightgreen;
           }
-          .my-custom-paragraph [class^='Link'] span {
+          .my-other-paragraph [class^='Link'] span {
             color: lightsteelblue;
           }
       `,
@@ -223,15 +222,22 @@ export const WithSummerEditionsEdgeCases = {
         <AlphaCard>
           <VerticalStack gap="4">
             <p>
-              This paragraph <Link url="#test">contains a link component</Link>
+              This paragraph{' '}
+              <Link url="#test">
+                should update color and size when beta flag is toggled
+              </Link>
             </p>
             <p className="my-paragraph">
-              My paragraph <Link url="#test">contains a link component</Link>
-            </p>
-            <p className="my-custom-paragraph">
-              My custom paragraph{' '}
+              My paragraph{' '}
               <Link url="#test">
-                contains a <span>link component!</span>
+                should update the size but keep the color override
+              </Link>
+            </p>
+            <p className="my-other-paragraph">
+              My other paragraph{' '}
+              <Link url="#test">
+                should update the size{' '}
+                <span>but keep the custom overrides</span>
               </Link>
             </p>
           </VerticalStack>
