@@ -663,12 +663,12 @@ export const color: {
   },
   'color-text-primary': {
     value: colors.green[700],
-    valueExperimental: colorsExperimental.green[14],
+    valueExperimental: colorsExperimental.gray[14],
     description: '',
   },
   'color-text-primary-hover': {
     value: colors.green[800],
-    valueExperimental: colorsExperimental.green[14],
+    valueExperimental: colorsExperimental.gray[14],
     description: '',
   },
   'color-text-critical-strong': {
