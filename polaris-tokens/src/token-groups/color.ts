@@ -440,7 +440,7 @@ export const color: {
   },
   'color-border-strong-hover': {
     value: colors.gray[700],
-    valueExperimental: colorsExperimental.gray[10],
+    valueExperimental: colorsExperimental.gray[9],
     description: '',
   },
   'color-border-input': {
