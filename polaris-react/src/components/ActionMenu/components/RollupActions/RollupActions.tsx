@@ -8,10 +8,8 @@ import type {
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {ActionList} from '../../../ActionList';
-import {Button} from '../../../Button';
 import {Popover} from '../../../Popover';
-
-import styles from './RollupActions.scss';
+import {UnstyledButton} from '../../../UnstyledButton';
 
 export interface RollupActionsProps {
   /** Accessibilty label */
@@ -36,17 +34,14 @@ export function RollupActions({
   }
 
   const activatorMarkup = (
-    <div className={styles.RollupActivator}>
-      <Button
-        outline
-        icon={HorizontalDotsMinor}
-        accessibilityLabel={
-          accessibilityLabel ||
-          i18n.translate('Polaris.ActionMenu.RollupActions.rollupButton')
-        }
-        onClick={toggleRollupOpen}
-      />
-    </div>
+    <UnstyledButton
+      icon={HorizontalDotsMinor}
+      accessibilityLabel={
+        accessibilityLabel ||
+        i18n.translate('Polaris.ActionMenu.RollupActions.rollupButton')
+      }
+      onClick={toggleRollupOpen}
+    />
   );
 
   return (

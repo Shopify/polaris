@@ -311,7 +311,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   });
 
   const groupedActionsMarkup = (
-    <ButtonGroup spacing="extraTight">
+    <ButtonGroup spacing="tight">
       {rollUppableActionsMarkup}
       {actionsMarkup}
       {groupsMarkup}
