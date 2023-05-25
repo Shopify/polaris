@@ -3,9 +3,8 @@ import type {Args, ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
-  Button,
   LegacyCard,
-  AlphaCard,
+  Card,
   Page,
   ResourceList,
   Text,
@@ -180,7 +179,7 @@ export const WithSummerEditionsFeature = {
   render: (_args: Args, {globals: {polarisSummerEditions2023}}) => {
     const CheckFeature = () => {
       return (
-        <AlphaCard>
+        <Card>
           <VerticalStack gap="4">
             <Text
               as="h2"
@@ -192,7 +191,7 @@ export const WithSummerEditionsFeature = {
               }`}
             </Text>
           </VerticalStack>
-        </AlphaCard>
+        </Card>
       );
     };
     return (
