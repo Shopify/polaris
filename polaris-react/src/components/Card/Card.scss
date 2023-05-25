@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-.LegacyCard {
+.Card {
   background-color: var(--p-color-bg);
   box-shadow: var(--p-shadow-md);
   outline: var(--p-border-width-1) solid transparent;
@@ -13,7 +13,15 @@
     /* stylelint-enable */
   }
 
-  + .LegacyCard {
+  + .Card {
+    margin-top: var(--p-space-4);
+
+    @media print {
+      margin-top: calc(-1 * var(--p-space-2));
+    }
+  }
+  /* stylelint-disable-next-line polaris/conventions/selector-disallowed-list -- Temporary override, will be removed in v11 */
+  + [class^='Polaris-LegacyCard'] {
     margin-top: var(--p-space-4);
 
     @media print {
