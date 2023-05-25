@@ -14,6 +14,10 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-top: calc(-1 * var(--p-space-4));
   margin-left: calc(-1 * var(--p-space-5));
 
+  #{$se23} & {
+    margin-left: calc(-1 * var(--p-space-4));
+  }
+
   @media print {
     body & {
       font-size: var(--p-font-size-75);
@@ -66,6 +70,10 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-top: var(--p-space-4);
   margin-left: var(--p-space-5);
 
+  #{$se23} & {
+    margin-left: var(--p-space-4);
+  }
+
   + .AnnotatedSection {
     @media #{$p-breakpoints-sm-up} {
       padding-top: var(--p-space-4);
@@ -79,6 +87,10 @@ $relative-size: $primary-basis / $secondary-basis;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--p-space-4));
   margin-left: calc(-1 * var(--p-space-5));
+
+  #{$se23} & {
+    margin-left: calc(-1 * var(--p-space-4));
+  }
 }
 
 .AnnotationContent {
@@ -89,12 +101,20 @@ $relative-size: $primary-basis / $secondary-basis;
   flex: 1 1 $secondary-basis;
   padding: var(--p-space-4) var(--p-space-5) 0;
 
+  #{$se23} & {
+    padding: var(--p-space-4) var(--p-space-4) 0;
+  }
+
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-4) 0 0;
   }
 
   @media #{$p-breakpoints-md-up} {
     padding: var(--p-space-5) var(--p-space-5) var(--p-space-5) 0;
+
+    #{$se23} & {
+      padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0;
+    }
   }
 }
 
@@ -104,4 +124,9 @@ $relative-size: $primary-basis / $secondary-basis;
   max-width: calc(100% - var(--p-space-5));
   margin-top: var(--p-space-4);
   margin-left: var(--p-space-5);
+
+  #{$se23} & {
+    max-width: calc(100% - var(--p-space-4));
+    margin-left: var(--p-space-4);
+  }
 }
