@@ -1,5 +1,17 @@
 # @shopify/polaris-migrator
 
+## 0.19.0
+
+### Minor Changes
+
+- [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for NodeJS version 14 and set version 16 as minimum supported version
+
+### Patch Changes
+
+- Updated dependencies [[`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806)]:
+  - @shopify/polaris-tokens@7.0.0
+  - @shopify/stylelint-polaris@13.0.0
+
 ## 0.18.2
 
 ### Patch Changes
