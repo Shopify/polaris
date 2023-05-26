@@ -194,17 +194,17 @@ export const color: {
   },
   'color-bg-strong-hover': {
     value: colors.gray[500],
-    valueExperimental: colorsExperimental.gray[7](),
+    valueExperimental: colorsExperimental.gray[9](),
     description: '',
   },
   'color-bg-strong-active': {
     value: colors.gray[500],
-    valueExperimental: colorsExperimental.gray[8](),
+    valueExperimental: colorsExperimental.gray[10](),
     description: '',
   },
   'color-bg-strong': {
     value: colors.gray[400],
-    valueExperimental: colorsExperimental.gray[6](),
+    valueExperimental: colorsExperimental.gray[8](),
     description: '',
   },
   'color-bg-subdued-active': {
