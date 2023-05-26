@@ -205,12 +205,12 @@ export const color: {
   },
   'color-bg-disabled': {
     value: colors.gray[300],
-    valueExperimental: colorsExperimental.gray[1],
+    valueExperimental: colorsExperimental.gray[7],
     description: '',
   },
   'color-bg-interactive-disabled': {
     value: colors.gray[300],
-    valueExperimental: colorsExperimental.gray[1],
+    valueExperimental: colorsExperimental.gray[7],
     description: '',
   },
   'color-bg-app': {
