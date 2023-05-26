@@ -163,7 +163,7 @@ export type ColorTokenName =
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
   | `color-${ColorTextAlias}`
-  | `color-experimental-${ColorExperimentalAlias}`;
+  | `color-${ColorExperimentalAlias}`;
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
@@ -843,39 +843,39 @@ export const color: {
     description: '',
   },
   // Experimental tokens
-  'color-experimental-subdued-link': {
+  'color-subdued-link': {
     value: colorsExperimental.blue[12],
     description: '',
   },
-  'color-experimental-bg-input-hover': {
+  'color-bg-input-hover': {
     value: colorsExperimental.gray[3](),
     description: '',
   },
-  'color-experimental-bg-input-active': {
+  'color-bg-input-active': {
     value: colorsExperimental.gray[4](),
     description: '',
   },
-  'color-experimental-bg-transparent': {
+  'color-bg-transparent': {
     value: colorsExperimental.gray[16](),
     description: '',
   },
-  'color-experimental-bg-transparent-subdued': {
+  'color-bg-transparent-subdued': {
     value: colorsExperimental.gray[16]('0.05'),
     description: '',
   },
-  'color-experimental-bg-transparent-hover': {
+  'color-bg-transparent-hover': {
     value: colorsExperimental.gray[16]('0.05'),
     description: '',
   },
-  'color-experimental-bg-transparent-active': {
+  'color-bg-transparent-active': {
     value: colorsExperimental.gray[16]('0.07'),
     description: '',
   },
-  'color-experimental-bg-inverse-transparent-hover': {
+  'color-bg-inverse-transparent-hover': {
     value: colorsExperimental.gray[1]('0.1'),
     description: '',
   },
-  'color-experimental-bg-inverse-transparent-active': {
+  'color-bg-inverse-transparent-active': {
     value: colorsExperimental.gray[1]('0.2'),
     description: '',
   },
