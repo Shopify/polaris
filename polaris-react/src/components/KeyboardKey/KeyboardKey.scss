@@ -16,18 +16,6 @@ $se23-base-dimension: 20px;
   text-align: center;
   min-width: $se23-base-dimension;
   user-select: none;
-  // stylelint-disable-next-line -- se23 missing token
-  font-weight: 450;
-  line-height: $se23-base-dimension;
-  font-size: var(--p-font-size-75);
-  background: var(--p-color-bg-subdued);
-  box-shadow: none;
-}
-
-@mixin se23KeyboardKeyOverride() {
-  height: $se23-base-dimension;
-  // stylelint-disable-next-line -- se23 missing token
-  font-weight: 450;
   line-height: $se23-base-dimension;
   font-size: var(--p-font-size-75);
   background: var(--p-color-bg-subdued);
