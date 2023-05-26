@@ -14,7 +14,6 @@
   color: var(--p-color-text);
 
   :where(#{$se23}) & {
-    // stylelint-disable-next-line -- se23 bg-transparent-hover
     background-color: var(--p-color-experimental-bg-transparent-subdued);
     color: var(--p-color-text-subdued);
     // stylelint-disable-next-line -- se23 border radius 10px
