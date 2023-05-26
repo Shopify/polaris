@@ -52,6 +52,8 @@ export interface ButtonProps extends BaseButton {
   connectedDisclosure?: ConnectedDisclosure;
   /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
+  /** Extra visual weight combined with indication of a positive action */
+  primarySuccess?: boolean;
 }
 
 interface CommonButtonProps
@@ -133,6 +135,7 @@ export function Button({
   fullWidth,
   connectedDisclosure,
   dataPrimaryLink,
+  primarySuccess,
 }: ButtonProps) {
   const i18n = useI18n();
 
@@ -155,6 +158,8 @@ export function Button({
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
     removeUnderline && styles.removeUnderline,
+    primarySuccess && styles.primary,
+    primarySuccess && styles.success,
   );
 
   const disclosureMarkup = disclosure ? (

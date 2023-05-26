@@ -318,8 +318,17 @@
         }
       }
     }
+
+    &.success {
+      // stylelint-disable -- Polaris component custom properties
+      --pc-button-color: var(--p-color-bg-success-strong);
+      --pc-button-text: var(--p-color-text-on-color);
+      --pc-button-color-hover: var(--p-color-bg-success-strong-hover);
+      --pc-button-color-active: var(--p-color-bg-success-strong-active);
+      --pc-button-color-depressed: var(--p-color-bg-success-strong-active);
+      // stylelint-enable
+    }
   }
-  // stylelint-enable
 
   svg {
     fill: var(--p-color-icon-on-color);
