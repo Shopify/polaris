@@ -16,8 +16,7 @@
   :where(#{$se23}) & {
     background-color: var(--p-color-experimental-bg-transparent-subdued);
     color: var(--p-color-text-subdued);
-    // stylelint-disable-next-line -- se23 border radius 10px
-    border-radius: 10px;
+    font-weight: var(--p-font-weight-medium);
   }
 
   @media print {
