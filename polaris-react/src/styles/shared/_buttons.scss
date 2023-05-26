@@ -55,8 +55,6 @@
 
   &:active {
     #{$se23} & {
-      --p-shadow-inset-md: inset -1px 0px 1px rgba(0, 0, 0, 0.12), inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2);
-      --p-shadow-sm: --p-shadow-inset-md;
       background: var(--p-color-bg-active);
     }
 
