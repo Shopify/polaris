@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import type {TabProps} from '@shopify/polaris';
 import {
   ChoiceList,
   Text,
@@ -10,7 +11,6 @@ import {
   TextField,
   Card,
 } from '@shopify/polaris';
-import type {AlphaTabProps} from '@shopify/polaris';
 
 import {useSetIndexFiltersMode} from './hooks';
 import type {IndexFiltersProps} from './IndexFilters';
@@ -119,7 +119,7 @@ export function Default() {
     return true;
   };
 
-  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
+  const tabs: TabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},
@@ -326,7 +326,7 @@ export function Default() {
   }
 
   return (
-    <Card>
+    <Card padding="0">
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
@@ -612,7 +612,7 @@ export function WithPinnedFilters() {
   }
 
   return (
-    <Card>
+    <Card padding="0">
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
@@ -896,7 +896,7 @@ export function Disabled() {
   }
 
   return (
-    <Card>
+    <Card padding="0">
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
@@ -1062,7 +1062,7 @@ export function WithQueryFieldAndFiltersHidden() {
         };
 
   return (
-    <Card>
+    <Card padding="0">
       <IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}

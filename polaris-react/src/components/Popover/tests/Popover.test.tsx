@@ -35,7 +35,7 @@ describe('<Popover />', () => {
       {
         active: false,
         ariaHaspopup: undefined,
-        id: 'Polarispopover1',
+        id: ':r0:',
         activatorDisabled: false,
       },
     );
@@ -54,7 +54,7 @@ describe('<Popover />', () => {
       {
         active: false,
         ariaHaspopup: undefined,
-        id: 'Polarispopover1',
+        id: ':r2:',
         activatorDisabled: true,
       },
     );

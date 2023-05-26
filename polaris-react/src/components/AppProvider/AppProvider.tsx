@@ -17,11 +17,6 @@ import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
 import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
-import {
-  UniqueIdFactory,
-  UniqueIdFactoryContext,
-  globalIdGeneratorFactory,
-} from '../../utilities/unique-id';
 
 import './AppProvider.scss';
 import './global.scss';
@@ -45,13 +40,11 @@ export interface AppProviderProps {
 export class AppProvider extends Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
-  private uniqueIdFactory: UniqueIdFactory;
 
   constructor(props: AppProviderProps) {
     super(props);
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
-    this.uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
     const {i18n, linkComponent} = this.props;
 
@@ -100,19 +93,17 @@ export class AppProvider extends Component<AppProviderProps, State> {
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>
-              <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
-                <LinkContext.Provider value={link}>
-                  <MediaQueryProvider>
-                    <PortalsManager>
-                      <FocusManager>
-                        <EphemeralPresenceManager>
-                          {children}
-                        </EphemeralPresenceManager>
-                      </FocusManager>
-                    </PortalsManager>
-                  </MediaQueryProvider>
-                </LinkContext.Provider>
-              </UniqueIdFactoryContext.Provider>
+              <LinkContext.Provider value={link}>
+                <MediaQueryProvider>
+                  <PortalsManager>
+                    <FocusManager>
+                      <EphemeralPresenceManager>
+                        {children}
+                      </EphemeralPresenceManager>
+                    </FocusManager>
+                  </PortalsManager>
+                </MediaQueryProvider>
+              </LinkContext.Provider>
             </StickyManagerContext.Provider>
           </ScrollLockManagerContext.Provider>
         </I18nContext.Provider>
