@@ -1,11 +1,11 @@
 ---
-'@shopify/polaris-cli': major
-'polaris-for-vscode': major
+'@shopify/polaris-cli': minor
+'polaris-for-vscode': minor
 '@shopify/polaris-icons': major
-'@shopify/polaris-migrator': major
+'@shopify/polaris-migrator': minor
 '@shopify/polaris': major
 '@shopify/polaris-tokens': major
-'polaris.shopify.com': major
+'polaris.shopify.com': minor
 '@shopify/stylelint-polaris': major
 ---
 
