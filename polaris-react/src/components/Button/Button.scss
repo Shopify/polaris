@@ -418,19 +418,24 @@
   #{$se23} & {
     --p-color-bg-transparent-hover: #1a1a1a0d;
     --p-color-bg-transparent-active: #1a1a1a12;
-    --p-color-text-interactive: --p-color-text;
+    --pc-button-text: var(--p-color-text);
 
     box-shadow: none;
 
+    path {
+      fill: var(--p-color-text);
+    }
+
     &:active {
       background-color: var(--p-color-bg-transparent-active);
-      color: var(--p-color-text);
+      color: var(--pc-button-text);
     }
 
     &:hover,
     &:focus:not(.disabled) {
       background-color: var(--p-color-bg-transparent-hover);
       text-decoration: none;
+      color: var(--pc-button-text);
     }
 
     &::before {
