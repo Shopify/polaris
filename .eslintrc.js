@@ -150,12 +150,6 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-default-export': 'off',
         'import/no-anonymous-default-export': 'off',
-        // We could omit this if we set `engines` fields properly
-        // As we don't set them then eslint thinks we're using node 8
-        'node/no-unsupported-features/node-builtins': [
-          'error',
-          {version: '>=16.0.0'},
-        ],
       },
     },
     {

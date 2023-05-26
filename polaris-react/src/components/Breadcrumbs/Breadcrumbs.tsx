@@ -10,29 +10,12 @@ import {Text} from '../Text';
 import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
-  /** @deprecated Collection of breadcrumbs */
-  breadcrumbs?: (CallbackAction | LinkAction) | (CallbackAction | LinkAction)[];
   /** Back action link */
-  backAction?: CallbackAction | LinkAction;
+  backAction: CallbackAction | LinkAction;
 }
 
-export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
-  const breadcrumb =
-    backAction ??
-    (Array.isArray(breadcrumbs)
-      ? breadcrumbs[breadcrumbs.length - 1]
-      : breadcrumbs);
-  if (breadcrumb == null) {
-    if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Please provide a value to backAction, it will become required in the next major release.',
-      );
-    }
-    return null;
-  }
-
-  const {content} = breadcrumb;
+export function Breadcrumbs({backAction}: BreadcrumbsProps) {
+  const {content} = backAction;
 
   const contentMarkup = (
     <>
@@ -46,13 +29,13 @@ export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
   );
 
   const breadcrumbMarkup =
-    'url' in breadcrumb ? (
+    'url' in backAction ? (
       <UnstyledLink
         key={content}
-        url={breadcrumb.url}
+        url={backAction.url}
         className={styles.Breadcrumb}
         onMouseUp={handleMouseUpByBlurring}
-        aria-label={breadcrumb.accessibilityLabel}
+        aria-label={backAction.accessibilityLabel}
       >
         {contentMarkup}
       </UnstyledLink>
@@ -60,10 +43,10 @@ export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
       <button
         key={content}
         className={styles.Breadcrumb}
-        onClick={breadcrumb.onAction}
+        onClick={backAction.onAction}
         onMouseUp={handleMouseUpByBlurring}
         type="button"
-        aria-label={breadcrumb.accessibilityLabel}
+        aria-label={backAction.accessibilityLabel}
       >
         {contentMarkup}
       </button>

@@ -4,12 +4,12 @@ import React, {
   useEffect,
   useRef,
   useCallback,
+  useId,
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Labelled, helpTextID, labelID} from '../Labelled';
 import type {LabelledProps} from '../Labelled';
@@ -244,8 +244,8 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
-
-  const id = useUniqueId('TextField', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);

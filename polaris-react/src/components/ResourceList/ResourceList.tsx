@@ -61,7 +61,7 @@ const isBreakpointsXS = () => {
 function defaultIdForItem<TItemType extends ResourceListItemData>(
   item: TItemType,
   index: number,
-) {
+): string {
   return Object.prototype.hasOwnProperty.call(item, 'id')
     ? item.id
     : index.toString();

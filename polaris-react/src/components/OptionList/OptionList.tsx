@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useId} from 'react';
 
 import type {
   Descriptor,
@@ -7,7 +7,6 @@ import type {
 } from '../../types';
 import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {Box} from '../Box';
 import type {BoxProps} from '../Box';
@@ -62,7 +61,8 @@ export function OptionList({
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
-  const id = useUniqueId('OptionList', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
   useDeepEffect(
     () => {

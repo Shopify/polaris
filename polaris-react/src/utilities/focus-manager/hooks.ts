@@ -1,6 +1,5 @@
-import {useContext, useMemo, useEffect} from 'react';
+import {useContext, useMemo, useEffect, useId} from 'react';
 
-import {useUniqueId} from '../unique-id';
 import {MissingAppProviderError} from '../errors';
 
 import {FocusManagerContext} from './context';
@@ -11,7 +10,7 @@ interface Options {
 
 export function useFocusManager({trapping}: Options) {
   const focusManager = useContext(FocusManagerContext);
-  const id = useUniqueId();
+  const id = useId();
 
   if (!focusManager) {
     throw new MissingAppProviderError('No FocusManager was provided.');
