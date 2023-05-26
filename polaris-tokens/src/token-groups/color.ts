@@ -851,37 +851,30 @@ export const color: {
     value: colorsExperimental.gray[3](),
     description: '',
   },
-  // bg-input-active: gr04
   'color-experimental-bg-input-active': {
     value: colorsExperimental.gray[4](),
     description: '',
   },
-  // bg-transparent: gr16–0%
   'color-experimental-bg-transparent': {
     value: colorsExperimental.gray[16](),
     description: '',
   },
-  // bg-transparent-subdued: gr16–5%
   'color-experimental-bg-transparent-subdued': {
     value: colorsExperimental.gray[16]('0.05'),
     description: '',
   },
-  // bg-transparent-hover: gr16–5%
   'color-experimental-bg-transparent-hover': {
     value: colorsExperimental.gray[16]('0.05'),
     description: '',
   },
-  // bg-transparent-active: gr16–7%
   'color-experimental-bg-transparent-active': {
     value: colorsExperimental.gray[16]('0.07'),
     description: '',
   },
-  // bg-inverse-transparent-hover: gr01–10%
   'color-experimental-bg-inverse-transparent-hover': {
     value: colorsExperimental.gray[1]('0.1'),
     description: '',
   },
-  // bg-inverse-transparent-active: gr01–20%
   'color-experimental-bg-inverse-transparent-active': {
     value: colorsExperimental.gray[1]('0.2'),
     description: '',
