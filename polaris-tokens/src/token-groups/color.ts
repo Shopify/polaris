@@ -68,14 +68,17 @@ export type ColorBackgroundAlias =
   | 'bg-success-subdued-active'
   | 'bg-success-subdued-hover'
   | 'bg-warning'
-  | 'experimental-bg-input-hover'
-  | 'experimental-bg-input-active'
-  | 'experimental-bg-transparent'
-  | 'experimental-bg-transparent-subdued'
-  | 'experimental-bg-transparent-hover'
-  | 'experimental-bg-transparent-active'
-  | 'experimental-bg-inverse-transparent-hover'
-  | 'experimental-bg-inverse-transparent-active';
+  | Extract<
+      ColorExperimentalAlias,
+      | 'experimental-bg-input-hover'
+      | 'experimental-bg-input-active'
+      | 'experimental-bg-transparent'
+      | 'experimental-bg-transparent-subdued'
+      | 'experimental-bg-transparent-hover'
+      | 'experimental-bg-transparent-active'
+      | 'experimental-bg-inverse-transparent-hover'
+      | 'experimental-bg-inverse-transparent-active'
+    >;
 
 export type ColorBorderAlias =
   | 'border'
@@ -153,14 +156,25 @@ export type ColorTextAlias =
   | 'text-subdued'
   | 'text-success'
   | 'text-success-strong'
-  | 'text-warning-strong'
-  | 'experimental-subdued-link';
+  | 'text-warning-strong';
+
+type ColorExperimentalAlias =
+  | 'experimental-subdued-link'
+  | 'experimental-bg-input-hover'
+  | 'experimental-bg-input-active'
+  | 'experimental-bg-transparent'
+  | 'experimental-bg-transparent-subdued'
+  | 'experimental-bg-transparent-hover'
+  | 'experimental-bg-transparent-active'
+  | 'experimental-bg-inverse-transparent-hover'
+  | 'experimental-bg-inverse-transparent-active';
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
-  | `color-${ColorTextAlias}`;
+  | `color-${ColorTextAlias}`
+  | `color-${ColorExperimentalAlias}`;
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
