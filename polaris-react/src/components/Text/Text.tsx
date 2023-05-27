@@ -33,7 +33,13 @@ type Alignment = 'start' | 'center' | 'end' | 'justify';
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
-type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
+type Color =
+  | 'success'
+  | 'critical'
+  | 'warning'
+  | 'subdued'
+  | 'text-inverse'
+  | 'text-on-color';
 
 export interface TextProps {
   /** Adjust horizontal alignment of text */

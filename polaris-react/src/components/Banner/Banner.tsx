@@ -12,7 +12,12 @@ import {
   CircleAlertMajor,
   DiamondAlertMajor,
 } from '@shopify/polaris-icons';
-import type {ColorBackgroundAlias} from '@shopify/polaris-tokens';
+import type {
+  ColorBackgroundAlias,
+  ColorTextAlias,
+  ColorIconAlias,
+} from '@shopify/polaris-tokens';
+import {color} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
 import {BannerContext} from '../../utilities/banner-context';
@@ -83,9 +88,6 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   const className = classNames(
     styles.Banner,
     status && styles[variationName('status', status)],
-    !status &&
-      polarisSummerEditions2023 &&
-      styles[variationName('status', 'info')],
     onDismiss && styles.hasDismiss,
     shouldShowFocus && styles.keyFocused,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
@@ -313,6 +315,7 @@ function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
 
 function PolarisSummerEditions2023Banner({
   status = 'info',
+  icon,
   hideIcon,
   onDismiss,
   action,
@@ -322,12 +325,22 @@ function PolarisSummerEditions2023Banner({
 }: BannerProps) {
   const withinContentContainer = useContext(WithinContentContext);
   const {smDown} = useBreakpoints();
+  const colors =
+    statusColorTokens[status][
+      withinContentContainer ? 'withinContentContainer' : 'withinPage'
+    ];
 
   const bannerIcon = hideIcon ? null : (
     <Box paddingInlineStart="05">
-      <Icon
-        source={polarisSummerEditions2023Icon(status, withinContentContainer)}
-      />
+      {icon ? (
+        <span style={{fill: color[`color-${colors.icon}`]}}>
+          <Icon source={icon} />
+        </span>
+      ) : (
+        <Icon
+          source={polarisSummerEditions2023Icon(status, withinContentContainer)}
+        />
+      )}
     </Box>
   );
 
@@ -357,17 +370,7 @@ function PolarisSummerEditions2023Banner({
     ) : null;
 
   const bannerTitle = title ? (
-    <Text
-      as="h2"
-      variant="headingSm"
-      color={
-        !withinContentContainer &&
-        (status === 'success' || status === 'critical')
-          ? 'text-inverse'
-          : undefined
-      }
-      breakWord
-    >
+    <Text as="h2" variant="headingSm" breakWord>
       {title}
     </Text>
   ) : null;
@@ -377,9 +380,10 @@ function PolarisSummerEditions2023Banner({
   return withinContentContainer ? (
     <Box
       width="100%"
-      background={`bg-${status}-subdued` as ColorBackgroundAlias}
+      background={colors.background}
       padding="2"
       borderRadius="2"
+      color={colors.text}
     >
       <HorizontalStack align="space-between" blockAlign="start" wrap={false}>
         <Box paddingInlineEnd={onDismiss ? '6' : undefined}>
@@ -403,12 +407,14 @@ function PolarisSummerEditions2023Banner({
     <Box width="100%">
       <VerticalStack align="space-between">
         <Box
-          background={`bg-${status}-strong` as ColorBackgroundAlias}
+          background={colors.background}
+          color={colors.text}
           borderRadiusStartStart={smDown ? undefined : '2'}
           borderRadiusStartEnd={smDown ? undefined : '2'}
           borderRadiusEndStart={hasContent || smDown ? undefined : '2'}
           borderRadiusEndEnd={hasContent || smDown ? undefined : '2'}
           padding={smDown ? '2' : '3'}
+          paddingInlineEnd={smDown ? '3' : '4'}
         >
           <HorizontalStack
             align="space-between"
@@ -436,6 +442,68 @@ function PolarisSummerEditions2023Banner({
   );
 }
 
+interface BannerColorAliases {
+  background: ColorBackgroundAlias;
+  text: ColorTextAlias;
+  icon: ColorIconAlias | ColorTextAlias;
+}
+
+interface BannerColors {
+  withinPage: BannerColorAliases;
+  withinContentContainer: BannerColorAliases;
+}
+
+const statusColorTokens: {[key in BannerStatus]: BannerColors} = {
+  success: {
+    withinPage: {
+      background: 'bg-success-strong',
+      text: 'text-on-color',
+      icon: 'icon-on-color',
+    },
+    withinContentContainer: {
+      background: 'bg-success-subdued',
+      text: 'text-success',
+      icon: 'experimental-icon-success-strong',
+    },
+  },
+  warning: {
+    withinPage: {
+      background: 'experimental-bg-warning-strong',
+      text: 'text-warning-strong',
+      icon: 'text-warning-strong',
+    },
+    withinContentContainer: {
+      background: 'experimental-bg-warning-subdued',
+      text: 'experimental-text-warning',
+      icon: 'experimental-icon-warning-strong',
+    },
+  },
+  critical: {
+    withinPage: {
+      background: 'bg-critical-strong',
+      text: 'text-on-color',
+      icon: 'icon-on-color',
+    },
+    withinContentContainer: {
+      background: 'bg-critical-subdued',
+      text: 'text-critical-strong',
+      icon: 'experimental-icon-critical-strong',
+    },
+  },
+  info: {
+    withinPage: {
+      background: 'bg-info-strong',
+      text: 'text-info-strong',
+      icon: 'text-info-strong',
+    },
+    withinContentContainer: {
+      background: 'bg-info-subdued',
+      text: 'text-info',
+      icon: 'experimental-icon-info-strong',
+    },
+  },
+};
+
 // Temporary way of getting new icons before they are added to the icon library.
 // Since the Icon component uses a data URI the color tokens have to be hardcoded here
 // to be added directly onto the svg string as a fill (this can't be done in scss or in Icon).
@@ -444,23 +512,14 @@ function polarisSummerEditions2023Icon(
   withinContentContainer: boolean,
   isClose = false,
 ) {
-  const textColor = {
-    '--p-color-text-critical': 'rgba(142, 31, 11, 1)',
-    '--p-color-text-warning': 'rgba(65, 45, 0, 1)',
-    '--p-color-text-success': 'rgba(8, 61, 37, 1)',
-    '--p-color-text-info': 'rgba(0, 82, 124, 1)',
-    '--p-color-text': 'rgba(48, 48, 48, 1)',
-    '--p-color-text-on-color': 'rgba(255, 255, 255, 1)',
-  };
-
-  let fill =
-    status === 'success' || status === 'critical'
-      ? textColor['--p-color-text-on-color']
-      : textColor['--p-color-text'];
-
-  if (withinContentContainer) {
-    fill = textColor[`--p-color-text-${status}`];
-  }
+  const fill =
+    color[
+      `color-${
+        statusColorTokens[status][
+          withinContentContainer ? 'withinContentContainer' : 'withinPage'
+        ].icon
+      }`
+    ];
 
   const Check = `<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M15.7127 5.15974C16.0387 5.41526 16.0959 5.88668 15.8403 6.21269L8.78953 15.2085C8.38612 15.7232 7.60536 15.7186 7.20812 15.1991L4.15427 11.2056C3.90266 10.8766 3.96542 10.4059 4.29445 10.1543C4.62349 9.90265 5.09419 9.96541 5.34581 10.2944L8.00735 13.7749L14.6597 5.28737C14.9153 4.96136 15.3867 4.90422 15.7127 5.15974Z' fill='${fill}'/></svg>`;
   const InfoOutline = `<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M10 15.5C6.96243 15.5 4.5 13.0376 4.5 10C4.5 6.96243 6.96243 4.5 10 4.5C13.0376 4.5 15.5 6.96243 15.5 10C15.5 13.0376 13.0376 15.5 10 15.5ZM3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10ZM11 7C11 7.55228 10.5523 8 10 8C9.44772 8 9 7.55228 9 7C9 6.44772 9.44772 6 10 6C10.5523 6 11 6.44772 11 7ZM10 9C10.4142 9 10.75 9.33579 10.75 9.75V13.25C10.75 13.6642 10.4142 14 10 14C9.58579 14 9.25 13.6642 9.25 13.25V9.75C9.25 9.33579 9.58579 9 10 9Z' fill='${fill}'/></svg>`;

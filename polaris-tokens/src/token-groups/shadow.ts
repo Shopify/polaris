@@ -10,7 +10,10 @@ export type ShadowAlias =
   | 'md'
   | 'lg'
   | 'xl'
-  | '2xl';
+  | '2xl'
+  | ShadowExperimentalAlias;
+
+type ShadowExperimentalAlias = 'experimental-card-md';
 
 export type ShadowTokenName = `shadow-${ShadowAlias}`;
 
@@ -56,5 +59,9 @@ export const shadow: {
   'shadow-2xl': {
     value:
       '0px 32px 32px rgba(31, 33, 36, 0.15), 0px 32px 56px -2px rgba(31, 33, 36, 0.16)',
+  },
+  'shadow-experimental-card-md': {
+    value:
+      '0px 3px 1px -1px rgba(0, 0, 0, 0.07), inset 0px -1px 0px rgba(0, 0, 0, 0.16), inset 1px 0px 0px rgba(0, 0, 0, 0.1), inset -1px 0px 0px rgba(0, 0, 0, 0.1), inset 0px 1px 0px rgba(255, 255, 255, 0.3)',
   },
 };
