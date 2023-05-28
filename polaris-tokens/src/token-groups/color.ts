@@ -814,7 +814,6 @@ export const color: {
   },
   'color-text-info-strong': {
     value: colors.teal[900],
-    // get approval to change this from 14 -> 16
     valueExperimental: colorsExperimental.azure[16],
     description: '',
   },
@@ -914,8 +913,7 @@ export const color: {
     description: '',
   },
   'color-experimental-icon-warning-strong': {
-    // get approval to change this from 13 -> 14
-    value: colorsExperimental.orange[14],
+    value: colorsExperimental.orange[13],
     description: '',
   },
   'color-experimental-icon-success-strong': {
