@@ -40,10 +40,6 @@
   &:hover {
     background: var(--p-color-bg-hover);
     outline: var(--p-border-width-1) solid transparent;
-
-    #{$se23} & {
-      --p-color-bg-hover: #FDFDFD;
-    }
   }
 
   &:focus-visible {
@@ -88,8 +84,6 @@
   color: var(--p-color-text-disabled);
 
   #{$se23} & {
-    --p-disabled-fill: #1A1A1A00;
-    --p-color-text-disabled: #CCCCCC;
     background: var(--p-disabled-fill);
   }
 
