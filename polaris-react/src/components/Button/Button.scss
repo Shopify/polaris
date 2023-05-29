@@ -332,9 +332,9 @@
       // stylelint-disable -- Polaris component custom properties
       --pc-button-color: var(--p-color-bg-success-strong);
       --pc-button-text: var(--p-color-text-on-color);
-      --pc-button-color-hover: var(--p-color-bg-success-strong-hover);
-      --pc-button-color-active: var(--p-color-bg-success-strong-active);
-      --pc-button-color-depressed: var(--p-color-bg-success-strong-active);
+      --pc-button-color-hover: var(--p-color-experimental-bg-success-strong-hover);
+      --pc-button-color-active: var(--p-color-experimental-bg-success-strong-active);
+      --pc-button-color-depressed: var(--p-color-experimental-bg-success-strong-active);
       // stylelint-enable
     }
   }
@@ -416,30 +416,43 @@
   }
 
   #{$se23} & {
-    --p-color-bg-transparent-hover: #1a1a1a0d;
-    --p-color-bg-transparent-active: #1a1a1a12;
     --pc-button-text: var(--p-color-text);
 
     box-shadow: none;
 
     path {
-      fill: var(--p-color-text);
+      fill: var(--pc-button-text);
     }
 
     &:active {
-      background-color: var(--p-color-bg-transparent-active);
+      background-color: var(--p-color-experimental-bg-transparent-active);
       color: var(--pc-button-text);
     }
 
     &:hover,
     &:focus:not(.disabled) {
-      background-color: var(--p-color-bg-transparent-hover);
+      background-color: var(--p-color-experimental-bg-transparent-hover);
       text-decoration: none;
       color: var(--pc-button-text);
     }
 
     &::before {
       display: none;
+    }
+
+    &.disabled {
+      background: transparent;
+      --pc-button-text: var(--p-color-text-disabled);
+    }
+
+    &.destructive {
+      --pc-button-color: transparent;
+      --pc-button-text: var(--p-color-text-critical);
+
+      &.disabled {
+        background: transparent;
+        --pc-button-text: var(--p-color-text-disabled);
+      }
     }
   }
 }
