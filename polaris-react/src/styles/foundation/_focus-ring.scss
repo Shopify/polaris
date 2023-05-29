@@ -38,10 +38,10 @@
       @content;
 
       #{$se23} & {
-      top: calc(-1 * var(--p-space-025));
-      right: calc(-1 * var(--p-space-025));
-      bottom: calc(-1 * var(--p-space-025));
-      left: calc(-1 * var(--p-space-025));
+        top: calc(-1 * var(--p-space-025));
+        right: calc(-1 * var(--p-space-025));
+        bottom: calc(-1 * var(--p-space-025));
+        left: calc(-1 * var(--p-space-025));
         border-radius: var(--p-border-radius-2);
       }
     }
