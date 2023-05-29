@@ -99,7 +99,7 @@
     --p-border-width-1: 0.66px;
     border: var(--p-border-width-1) solid var(--p-color-border-input);
   }
-  // stylelint-disable-next-line -- PSE23 temporary property overrides
+  // stylelint-disable-next-line -- Polaris component custom properties
   --pc-icon-size-small: 8px;
 
   // ::before is the selected dot, ::after the focus-ring
