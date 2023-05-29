@@ -10,6 +10,7 @@ import {Button} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import type {BannerProps} from '../../Banner';
 import {Icon} from '../../../Icon';
+import {useI18n} from '../../../../utilities/i18n';
 
 import {useBannerColors} from './utilities';
 
@@ -23,6 +24,7 @@ export function PolarisSummerEditions2023Banner({
   title,
   children,
 }: BannerProps) {
+  const i18n = useI18n();
   const withinContentContainer = useContext(WithinContentContext);
   const {smDown} = useBreakpoints();
   const {iconRGBA, backgroundColor, textColor, statusIcon, closeIcon} =
@@ -45,8 +47,7 @@ export function PolarisSummerEditions2023Banner({
       plain
       icon={closeIcon}
       onClick={onDismiss}
-      // se23: hard coded string copied from Banner, TODO make i18n key
-      accessibilityLabel="Dismiss notification"
+      accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
     />
   ) : null;
 
@@ -83,7 +84,7 @@ export function PolarisSummerEditions2023Banner({
       color={textColor}
     >
       <HorizontalStack align="space-between" blockAlign="start" wrap={false}>
-        <Box paddingInlineEnd={onDismiss ? '6' : undefined}>
+        <Box paddingInlineEnd={onDismiss ? '2' : undefined}>
           <HorizontalStack gap="2" wrap={false}>
             {bannerIcon}
             <VerticalStack gap="2">
@@ -95,9 +96,7 @@ export function PolarisSummerEditions2023Banner({
             </VerticalStack>
           </HorizontalStack>
         </Box>
-        <Box position="absolute" insetBlockStart="3" insetInlineEnd="3">
-          {dismissButton}
-        </Box>
+        {dismissButton}
       </HorizontalStack>
     </Box>
   ) : (
