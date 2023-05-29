@@ -30,6 +30,10 @@
   cursor: default;
 
   > .Label {
+    #{$se23} & {
+      // stylelint-disable-next-line -- PSE23 temporary property overrides
+      --p-color-text-disabled: rgba(204, 204, 204, 1);
+    }
     color: var(--p-color-text-disabled);
 
     &:hover {
