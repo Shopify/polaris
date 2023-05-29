@@ -168,7 +168,8 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     <BannerContext.Provider value>
       <div
         className={className}
-        tabIndex={polarisSummerEditions2023 ? -1 : 0}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
         ref={wrapperRef}
         role={ariaRoleType}
         aria-live={stopAnnouncements ? 'off' : 'polite'}
