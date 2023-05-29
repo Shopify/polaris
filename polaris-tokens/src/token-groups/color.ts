@@ -156,7 +156,9 @@ type ColorExperimentalBackgroundAlias =
   | 'experimental-bg-transparent-hover'
   | 'experimental-bg-transparent-active'
   | 'experimental-bg-inverse-transparent-hover'
-  | 'experimental-bg-inverse-transparent-active';
+  | 'experimental-bg-inverse-transparent-active'
+  | 'experimental-bg-success-strong-hover'
+  | 'experimental-bg-success-strong-active';
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
@@ -872,6 +874,14 @@ export const color: {
   },
   'color-experimental-bg-inverse-transparent-active': {
     value: colorsExperimental.gray[1]('0.2'),
+    description: '',
+  },
+  'color-experimental-bg-success-strong-hover': {
+    value: colorsExperimental.green[13],
+    description: '',
+  },
+  'color-experimental-bg-success-strong-active': {
+    value: colorsExperimental.green[14],
     description: '',
   },
 };
