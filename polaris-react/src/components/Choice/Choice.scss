@@ -4,7 +4,9 @@
   display: flex;
   justify-content: flex-start;
   padding: var(--p-space-1) 0;
-  align-items: center;
+  #{$se23} & {
+    align-items: center;
+  }
   cursor: pointer;
 
   @media #{$p-breakpoints-sm-up} {
