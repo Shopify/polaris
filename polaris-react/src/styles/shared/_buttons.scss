@@ -84,7 +84,7 @@
   color: var(--p-color-text-disabled);
 
   #{$se23} & {
-    background: var(--p-disabled-fill);
+    background: transparent;
   }
 
   svg {
