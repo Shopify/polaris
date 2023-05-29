@@ -289,7 +289,7 @@ export function TextField({
     readOnly && styles.readOnly,
     error && styles.error,
     multiline && styles.multiline,
-    focus && styles.focus,
+    focus && !disabled && styles.focus,
     borderless && styles.borderless,
   );
 
