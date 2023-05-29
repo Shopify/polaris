@@ -68,17 +68,7 @@ export type ColorBackgroundAlias =
   | 'bg-success-subdued-active'
   | 'bg-success-subdued-hover'
   | 'bg-warning'
-  | Extract<
-      ColorExperimentalAlias,
-      | 'experimental-bg-input-hover'
-      | 'experimental-bg-input-active'
-      | 'experimental-bg-transparent'
-      | 'experimental-bg-transparent-subdued'
-      | 'experimental-bg-transparent-hover'
-      | 'experimental-bg-transparent-active'
-      | 'experimental-bg-inverse-transparent-hover'
-      | 'experimental-bg-inverse-transparent-active'
-    >;
+  | ColorExperimentalBackgroundAlias;
 
 export type ColorBorderAlias =
   | 'border'
@@ -158,8 +148,7 @@ export type ColorTextAlias =
   | 'text-success-strong'
   | 'text-warning-strong';
 
-type ColorExperimentalAlias =
-  | 'experimental-subdued-link'
+type ColorExperimentalBackgroundAlias =
   | 'experimental-bg-input-hover'
   | 'experimental-bg-input-active'
   | 'experimental-bg-transparent'
@@ -173,8 +162,7 @@ export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
-  | `color-${ColorTextAlias}`
-  | `color-${ColorExperimentalAlias}`;
+  | `color-${ColorTextAlias}`;
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
@@ -854,10 +842,6 @@ export const color: {
     description: '',
   },
   // Experimental tokens
-  'color-experimental-subdued-link': {
-    value: colorsExperimental.blue[12],
-    description: '',
-  },
   'color-experimental-bg-input-hover': {
     value: colorsExperimental.gray[3](),
     description: '',
