@@ -3,7 +3,9 @@ import type {MetadataProperties} from '../types';
 type FontFamilyAlias = 'sans' | 'mono';
 
 export type FontSizeScale =
+  | '70'
   | '75'
+  | '80'
   | '100'
   | '200'
   | '300'
@@ -37,8 +39,14 @@ export const font: {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
+  'font-size-70': {
+    value: '11px',
+  },
   'font-size-75': {
     value: '12px',
+  },
+  'font-size-80': {
+    value: '13px',
   },
   'font-size-100': {
     value: '14px',
