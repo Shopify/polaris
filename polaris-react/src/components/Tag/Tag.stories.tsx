@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Icon, LegacyStack, Tag} from '@shopify/polaris';
+import {HorizontalStack, Icon, LegacyStack, Tag} from '@shopify/polaris';
 import {WandMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -39,7 +39,14 @@ export function Removable() {
 }
 
 export function Clickable() {
-  return <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>;
+  return (
+    <HorizontalStack gap="1">
+      <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
+      <Tag onClick={() => console.log('Clicked')} disabled>
+        Wholesale (clickable disabled)
+      </Tag>
+    </HorizontalStack>
+  );
 }
 
 export function WithLink() {
