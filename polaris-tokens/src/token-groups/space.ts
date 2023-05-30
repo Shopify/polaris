@@ -3,8 +3,11 @@ import type {MetadataProperties} from '../types';
 export type SpaceScale =
   | '0'
   | '025'
+  | '0_25'
   | '05'
+  | '0_5'
   | '1'
+  | '1_5'
   | '2'
   | '3'
   | '4'
@@ -34,11 +37,20 @@ export const space: {
   'space-025': {
     value: '1px',
   },
+  'space-0_25': {
+    value: '1px',
+  },
   'space-05': {
+    value: '2px',
+  },
+  'space-0_5': {
     value: '2px',
   },
   'space-1': {
     value: '4px',
+  },
+  'space-1_5': {
+    value: '6px',
   },
   'space-2': {
     value: '8px',
