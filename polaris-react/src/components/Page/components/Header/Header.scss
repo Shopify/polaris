@@ -32,6 +32,30 @@ $action-menu-rollup-computed-width: 40px;
       border: var(--p-border-width-1) solid var(--p-color-border-strong) !important;
       // stylelint-enable declaration-no-important
     }
+
+    #{$se23} & {
+      border: none !important;
+      background-color: var(--p-color-bg-strong);
+
+      &:hover,
+      &:active,
+      &:focus {
+        border: none !important;
+      }
+
+      &:hover {
+        background-color: var(--p-color-bg-strong-hover);
+      }
+
+      &:active,
+      &:focus {
+        background-color: var(--p-color-bg-strong-active);
+      }
+    }
+  }
+
+  #{$se23} & {
+    margin-left: var(--p-space-2);
   }
 }
 
@@ -70,6 +94,10 @@ $action-menu-rollup-computed-width: 40px;
     .RightAlign {
       margin-left: 0;
     }
+  }
+
+  #{$se23} & {
+    align-items: center;
   }
 }
 

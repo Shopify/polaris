@@ -14,7 +14,7 @@
     $border-radius: var(--p-border-radius-2);
   }
   @if $size == 'extra-wide' {
-    $border-radius: var(--p-border-radius-3);
+    $border-radius: 9px;
   }
 
   @if $style == 'base' {
