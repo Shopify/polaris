@@ -17,6 +17,7 @@ import {ActionList} from '../ActionList';
 import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
 import {useDisableClick} from '../../utilities/use-disable-interaction';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Button.scss';
 
@@ -141,10 +142,12 @@ export function Button({
 
   const isDisabled = disabled || loading;
 
+  const {polarisSummerEditions2023} = useFeatures();
+
   const className = classNames(
     styles.Button,
     primary && styles.primary,
-    outline && styles.outline,
+    outline && !polarisSummerEditions2023 && styles.outline,
     destructive && styles.destructive,
     primary && plain && styles.primaryPlain,
     isDisabled && styles.disabled,
