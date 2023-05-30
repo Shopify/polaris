@@ -1,9 +1,9 @@
 import React, {useEffect, useRef} from 'react';
 
-import {Tooltip} from '../../../Tooltip';
-import type {ButtonProps} from '../../../Button';
-import {Button} from '../../../Button';
 import {classNames} from '../../../../utilities/css';
+import {Tooltip} from '../../../Tooltip';
+import {Button} from '../../../Button';
+import type {ButtonProps} from '../../../Button';
 
 import styles from './SecondaryAction.scss';
 
@@ -30,16 +30,9 @@ export function SecondaryAction({
   }, [getOffsetWidth]);
 
   const buttonMarkup = (
-    <div
-      className={classNames(
-        styles.SecondaryAction,
-        destructive && styles.destructive,
-      )}
-    >
-      <Button onClick={onAction} {...rest}>
-        {children}
-      </Button>
-    </div>
+    <Button onClick={onAction} {...rest}>
+      {children}
+    </Button>
   );
 
   const actionMarkup = helpText ? (
@@ -48,5 +41,15 @@ export function SecondaryAction({
     buttonMarkup
   );
 
-  return <span ref={secondaryActionsRef}>{actionMarkup}</span>;
+  return (
+    <span
+      className={classNames(
+        styles.SecondaryAction,
+        destructive && styles.destructive,
+      )}
+      ref={secondaryActionsRef}
+    >
+      {actionMarkup}
+    </span>
+  );
 }

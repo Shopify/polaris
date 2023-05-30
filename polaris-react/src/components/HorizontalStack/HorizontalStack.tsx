@@ -14,17 +14,13 @@ type Align =
   | 'space-between'
   | 'space-evenly';
 type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
-type Element = 'div' | 'span' | 'ul' | 'li';
+
 type Gap = ResponsiveProp<SpaceScale>;
 
 export interface HorizontalStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** Horizontal alignment of children */
   align?: Align;
-  /** HTML Element type
-   * @default 'div'
-   */
-  as?: Element;
   /** Vertical alignment of children */
   blockAlign?: BlockAlign;
   /** The spacing between elements. Accepts a spacing token or an object of spacing tokens for different screen sizes.
@@ -41,13 +37,11 @@ export interface HorizontalStackProps extends React.AriaAttributes {
 
 export const HorizontalStack = function HorizontalStack({
   align,
-  as = 'div',
   blockAlign,
   gap,
   wrap = true,
   children,
 }: HorizontalStackProps) {
-  const Element = as;
   const style = {
     '--pc-horizontal-stack-align': align,
     '--pc-horizontal-stack-block-align': blockAlign,
@@ -56,8 +50,8 @@ export const HorizontalStack = function HorizontalStack({
   } as React.CSSProperties;
 
   return (
-    <Element className={styles.HorizontalStack} style={style}>
+    <div className={styles.HorizontalStack} style={style}>
       {children}
-    </Element>
+    </div>
   );
 };

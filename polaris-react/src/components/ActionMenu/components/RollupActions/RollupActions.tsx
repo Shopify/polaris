@@ -21,13 +21,16 @@ export interface RollupActionsProps {
   /** Collection of sectioned action items */
   sections?: ActionListSection[];
 }
+
 export function RollupActions({
   accessibilityLabel,
   items = [],
   sections = [],
 }: RollupActionsProps) {
   const i18n = useI18n();
+
   const {value: rollupOpen, toggle: toggleRollupOpen} = useToggle(false);
+
   if (items.length === 0 && sections.length === 0) {
     return null;
   }
