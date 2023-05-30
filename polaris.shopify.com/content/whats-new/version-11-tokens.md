@@ -29,7 +29,7 @@ We are currently in the process of reworking our token values to give product te
 
 ### Colors ➡️ Color
 
-We completely overhauled our color token values, naming conventions, and architecture. Please read our [What’s New Version 11 Color](https://polaris.shopify.com/whats-new/version-11-color) section for more in depth information about these changes.
+We completely overhauled our color token values, naming conventions, and architecture. Please read our [What’s New Version 11 Color](https://polaris.shopify.com/whats-new/version-11-color) section for more detailed information about these changes.
 
 _Find more in-depth information on migrating color tokens from v10 to v11 in our [migration guide](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v10-to-v11.md#color)._
 
