@@ -49,6 +49,7 @@
   }
 
   #{$se23} & {
+    /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
     @include focus-ring($size: 'extra-wide');
     border: none;
     background-color: transparent;
