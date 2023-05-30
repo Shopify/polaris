@@ -72,8 +72,17 @@ $button-size: 20px;
     padding: 0;
   }
 
+  #{$se23} & {
+    min-height: $height;
+    border-radius: var(--p-border-radius-2);
+  }
+
   @media #{$p-breakpoints-sm-up} {
     min-height: 24px;
+
+    #{$se23} & {
+      min-height: $height;
+    }
   }
 }
 
@@ -90,6 +99,12 @@ $button-size: 20px;
 
   @media #{$p-breakpoints-sm-up} {
     font-size: var(--p-font-size-75);
+    padding: var(--p-space-05) 0;
+  }
+
+  #{$se23} & {
+    min-height: $height;
+    line-height: var(--p-font-line-height-1);
     padding: var(--p-space-05) 0;
   }
 }
