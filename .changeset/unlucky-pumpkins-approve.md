@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Add internationalized accessibility label to Banner dismiss button
+Added internationalized accessibility label to Banner dismiss button
