@@ -10,7 +10,15 @@ export type BorderRadiusScale =
   | '6'
   | 'full';
 
-export type BorderWidthScale = '1' | '2' | '3' | '4' | '5';
+export type BorderWidthScale =
+  | '075'
+  | '0_75'
+  | '1'
+  | '1_5'
+  | '2'
+  | '3'
+  | '4'
+  | '5';
 
 export type BorderTokenName =
   | `border-radius-${BorderRadiusScale}`
@@ -47,8 +55,17 @@ export const border: {
   'border-radius-full': {
     value: '9999px',
   },
+  'border-width-075': {
+    value: '0.75px',
+  },
+  'border-width-0_75': {
+    value: '0.75px',
+  },
   'border-width-1': {
     value: '1px',
+  },
+  'border-width-1_5': {
+    value: '1.5px',
   },
   'border-width-2': {
     value: '2px',
