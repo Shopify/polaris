@@ -29,21 +29,17 @@
   @include button-base;
 
   #{$se23} & {
-    --p-depth-secondary-outset-2: inset 0px -1px 0px #b5b5b5,
-      inset -1px 0px 0px #e3e3e3, inset 1px 0px 0px #e3e3e3,
-      inset 0px 1px 0px #e3e3e3;
     // stylelint-disable -- Polaris component custom properties
-    --pc-button-box-shadow: var(--p-depth-secondary-outset-2);
+    --pc-button-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.25),
+      inset 1px 0px 0px rgba(255, 255, 255, 0.25),
+      inset -1px 0px 0px rgba(255, 255, 255, 0.25);
     --pc-button-border-disabled-border-box-shadow: 0px 0px 0px 1px #ebebeb;
     // stylelint-enable
-    box-shadow: var(--pc-button-box-shadow);
-
+    box-shadow: var(--pc-button-shadow);
     transition: box-shadow 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
 
     &:active {
-      --pc-button-box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.12),
-        inset 1px 0px 1px rgba(0, 0, 0, 0.12),
-        inset 0px 2px 1px rgba(0, 0, 0, 0.2);
+      --pc-button-shadow: var(--p-shadow-inset-md);
       // stylelint-disable selector-max-combinators -- se23
       .Content {
         transform: translateY(1px);
@@ -84,7 +80,6 @@
     transform: translateY(0);
     transition: transform 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
   }
-
   font-size: var(--p-font-size-100);
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-1);
@@ -220,10 +215,7 @@
     box-shadow: var(--p-shadow-sm);
 
     #{$se23} & {
-      --pc-button-box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.12),
-        inset 1px 0px 1px rgba(0, 0, 0, 0.12),
-        inset 0px 2px 1px rgba(0, 0, 0, 0.2);
-      box-shadow: var(--pc-button-box-shadow);
+      box-shadow: var(--pc-button-shadow);
     }
   }
 
@@ -255,6 +247,14 @@
 }
 
 .primary {
+  // stylelint-disable -- Polaris component custom properties
+  --pc-button-color: var(--p-color-bg-primary);
+  --pc-button-text: var(--p-color-text-on-color);
+  --pc-button-color-hover: var(--p-color-bg-primary-hover);
+  --pc-button-color-active: var(--p-color-bg-primary-active);
+  --pc-button-color-depressed: var(--p-color-bg-primary-active);
+  // stylelint-enable
+
   #{$se23} & {
     &::before {
       content: '';
@@ -265,6 +265,7 @@
       bottom: 3.5px;
 
       /* shine */
+      // stylelint-disable function-disallowed-list declaration-property-unit-disallowed-list -- se23 temporary styles
       background: linear-gradient(
         180deg,
         rgba(255, 255, 255, 0.2) 0%,
@@ -274,28 +275,19 @@
       border-radius: 6px;
       opacity: 1;
       transition: opacity 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
+      // stylelint-enable
     }
-  }
-}
 
-.primary {
-  // stylelint-disable -- Polaris component custom properties
-  --pc-button-color: var(--p-color-bg-primary);
-  --pc-button-text: var(--p-color-text-on-color);
-  --pc-button-color-hover: var(--p-color-bg-primary-hover);
-  --pc-button-color-active: var(--p-color-bg-primary-active);
-  --pc-button-color-depressed: var(--p-color-bg-primary-active);
-  // stylelint-enable
-
-  #{$se23} & {
     &:active {
-      --pc-button-box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
+      --pc-button-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
         inset 1px 0px 1px rgba(0, 0, 0, 0.2),
         inset 0px 2px 1px rgba(0, 0, 0, 0.6);
+
       &::before {
         opacity: 0;
       }
     }
+
     &.disabled {
       color: var(--pc-button-text);
 
@@ -303,6 +295,7 @@
         display: none;
       }
 
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       svg {
         fill: var(--pc-button-text);
       }
@@ -320,12 +313,15 @@
         fill: var(--p-color-icon-on-color);
       }
 
+      // stylelint-disable-next-line selector-max-class -- se23 temporary styles
       &.disabled {
         background: var(--p-color-bg-disabled);
 
         &::before {
           display: none;
         }
+
+        // stylelint-disable-next-line selector-max-combinators max-nesting-depth -- se23 temporary styles
         svg {
           fill: var(--pc-button-text);
         }
@@ -336,9 +332,15 @@
       // stylelint-disable -- Polaris component custom properties
       --pc-button-color: var(--p-color-bg-success-strong);
       --pc-button-text: var(--p-color-text-on-color);
-      --pc-button-color-hover: var(--p-color-experimental-bg-success-strong-hover);
-      --pc-button-color-active: var(--p-color-experimental-bg-success-strong-active);
-      --pc-button-color-depressed: var(--p-color-experimental-bg-success-strong-active);
+      --pc-button-color-hover: var(
+        --p-color-experimental-bg-success-strong-hover
+      );
+      --pc-button-color-active: var(
+        --p-color-experimental-bg-success-strong-active
+      );
+      --pc-button-color-depressed: var(
+        --p-color-experimental-bg-success-strong-active
+      );
       // stylelint-enable
     }
   }
@@ -360,6 +362,7 @@
   --pc-button-color-active: var(--p-color-bg-critical-strong-active);
   --pc-button-color-depressed: var(--p-color-bg-critical-strong-active);
   // stylelint-enable
+
   svg {
     fill: var(--p-color-icon-on-color);
   }
@@ -377,21 +380,20 @@
     --pc-button-color-depressed: var(--p-color-bg-active);
     // stylelint-enable
 
+    // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
     svg {
       fill: var(--pc-button-text);
     }
 
     &.disabled {
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       svg {
         fill: var(--p-color-text-disabled);
       }
     }
 
     &:active {
-      --pc-button-box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.12),
-        inset 1px 0px 1px rgba(0, 0, 0, 0.12),
-        inset 0px 2px 1px rgba(0, 0, 0, 0.2);
-      box-shadow: var(--pc-button-box-shadow);
+      box-shadow: var(--p-shadow-inset-md);
     }
   }
 }
@@ -421,9 +423,9 @@
 
   #{$se23} & {
     --pc-button-text: var(--p-color-text);
-
     box-shadow: none;
 
+    // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
     path {
       fill: var(--pc-button-text);
     }
@@ -445,17 +447,18 @@
     }
 
     &.disabled {
-      background: transparent;
       --pc-button-text: var(--p-color-text-disabled);
+      background: transparent;
     }
 
     &.destructive {
       --pc-button-color: transparent;
       --pc-button-text: var(--p-color-text-critical);
 
+      // stylelint-disable-next-line selector-max-class -- generated by polaris-migrator DO NOT COPY
       &.disabled {
-        background: transparent;
         --pc-button-text: var(--p-color-text-disabled);
+        background: transparent;
       }
     }
   }
@@ -573,11 +576,6 @@
 // in this case.
 // stylelint-disable selector-max-specificity, selector-max-class -- generated by polaris-migrator DO NOT COPY
 .plain {
-  #{$se23} & {
-    // stylelint-disable-next-line -- Polaris component custom properties
-    --p-color-text-interactive: --p-color-text;
-  }
-
   // stylelint-disable-next-line -- polaris/conventions/polaris/custom-property-allowed-list
   margin: calc(-1 * var(--pc-button-vertical-padding))
     calc(-1 * var(--p-space-2));
@@ -678,6 +676,7 @@
     }
 
     #{$se23} & {
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       svg {
         fill: var(--p-color-text-critical);
       }
@@ -757,8 +756,11 @@
   }
 
   #{$se23} & {
+    // stylelint-disable-next-line -- Polaris component custom properties
+    --p-color-text-interactive: --p-color-text;
     box-shadow: none;
 
+    // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
     svg {
       fill: var(--p-color-text);
     }
@@ -766,6 +768,7 @@
     &:active:active {
       color: var(--p-color-text-primary-hover);
 
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       .Content {
         transform: translateY(0);
       }
@@ -776,13 +779,17 @@
     &:focus:focus:not(.disabled) {
       text-decoration: none;
       color: var(--p-color-text-primary-hover);
+
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       svg {
-        fill: var(--p-color-text-primary-hovert);
+        fill: var(--p-color-text-primary-hover);
       }
     }
 
     &.disabled {
       box-shadow: none;
+
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       svg {
         fill: var(--p-color-text-disabled);
       }
