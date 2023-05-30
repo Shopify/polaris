@@ -1,13 +1,225 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Button, ButtonGroup} from '@shopify/polaris';
+import {
+  Button,
+  ButtonGroup,
+  Card,
+  HorizontalStack,
+  VerticalStack,
+  Text,
+} from '@shopify/polaris';
+import {PlusMinor, DeleteMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Button,
 } as ComponentMeta<typeof Button>;
 
 export function Default() {
-  return <Button>Add product</Button>;
+  return (
+    <div>
+      <VerticalStack gap="8">
+        <VerticalStack gap="4">
+          <Text as="h2">default</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button>Label</Button>
+            <Button disabled>Label</Button>
+            <Button icon={PlusMinor}>Label</Button>
+            <Button disabled icon={PlusMinor}>
+              Label
+            </Button>
+            <Button disclosure>Label</Button>
+          </HorizontalStack>
+          <Card>
+            <HorizontalStack gap="5" blockAlign="end">
+              <Button>Label</Button>
+              <Button disabled>Label</Button>
+              <Button icon={PlusMinor}>Label</Button>
+              <Button disabled icon={PlusMinor}>
+                Label
+              </Button>
+              <Button disclosure>Label</Button>
+            </HorizontalStack>
+          </Card>
+        </VerticalStack>
+        <VerticalStack gap="2">
+          <Text as="h2">destructive</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button destructive>Label</Button>
+            <Button destructive disabled>
+              Label
+            </Button>
+            <Button destructive icon={DeleteMinor}>
+              Label
+            </Button>
+            <Button destructive disabled icon={DeleteMinor}>
+              Label
+            </Button>
+            <Button destructive disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
+          <Card>
+            <HorizontalStack gap="5" blockAlign="end">
+              <Button destructive>Label</Button>
+              <Button destructive disabled>
+                Label
+              </Button>
+              <Button destructive icon={DeleteMinor}>
+                Label
+              </Button>
+              <Button destructive disabled icon={DeleteMinor}>
+                Label
+              </Button>
+              <Button destructive disclosure>
+                Label
+              </Button>
+            </HorizontalStack>
+          </Card>
+        </VerticalStack>
+        <VerticalStack gap="4">
+          <Text as="h2">primary</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button primary>Label</Button>
+            <Button primary disabled>
+              Label
+            </Button>
+            <Button primary icon={PlusMinor}>
+              Label
+            </Button>
+            <Button primary disabled icon={PlusMinor}>
+              Label
+            </Button>
+            <Button primary disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
+        </VerticalStack>
+
+        <VerticalStack gap="2">
+          <Text as="h2">primary destructive</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button primary destructive>
+              Label
+            </Button>
+            <Button primary destructive disabled>
+              Label
+            </Button>
+            <Button primary destructive icon={DeleteMinor}>
+              Label
+            </Button>
+            <Button primary destructive disabled icon={DeleteMinor}>
+              Label
+            </Button>
+            <Button primary destructive disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
+        </VerticalStack>
+
+        <VerticalStack gap="2">
+          <Text as="h2">primary sucess</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button primarySuccess>Label</Button>
+            <Button primarySuccess disabled>
+              Label
+            </Button>
+            <Button primarySuccess icon={DeleteMinor}>
+              Label
+            </Button>
+            <Button primarySuccess disabled icon={DeleteMinor}>
+              Label
+            </Button>
+            <Button primarySuccess disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
+        </VerticalStack>
+
+        <VerticalStack gap="2">
+          <Text as="h2">plain</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button plain>Label</Button>
+            <Button plain>Label</Button>
+            <Button plain disabled>
+              Label
+            </Button>
+            <Button plain icon={PlusMinor}>
+              Label
+            </Button>
+            <Button plain disabled icon={PlusMinor}>
+              Label
+            </Button>
+            <Button plain disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
+        </VerticalStack>
+
+        <VerticalStack gap="2">
+          <Text as="h2">plain destructive</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button plain destructive>
+              Label
+            </Button>
+            <Button plain destructive disabled>
+              Label
+            </Button>
+            <Button plain destructive icon={PlusMinor}>
+              Label
+            </Button>
+            <Button plain destructive disabled icon={PlusMinor}>
+              Label
+            </Button>
+            <Button plain destructive disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
+        </VerticalStack>
+
+        <VerticalStack gap="2">
+          <Text as="h2">primary plain</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button primary plain>
+              Label
+            </Button>
+            <Button primary plain disabled>
+              Label
+            </Button>
+            <Button primary plain icon={PlusMinor}>
+              Label
+            </Button>
+            <Button primary plain disabled icon={PlusMinor}>
+              Label
+            </Button>
+            <Button primary plain disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
+        </VerticalStack>
+
+        <VerticalStack gap="2">
+          <Text as="h2">primary plain destructive</Text>
+          <HorizontalStack gap="5" blockAlign="end">
+            <Button primary plain destructive>
+              Label
+            </Button>
+            <Button primary plain destructive disabled>
+              Label
+            </Button>
+            <Button primary plain destructive icon={PlusMinor}>
+              Label
+            </Button>
+            <Button primary plain destructive disabled icon={PlusMinor}>
+              Label
+            </Button>
+            <Button primary plain destructive disclosure>
+              Label
+            </Button>
+          </HorizontalStack>
+        </VerticalStack>
+      </VerticalStack>
+    </div>
+  );
 }
 
 export function Outline() {
