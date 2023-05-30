@@ -14,7 +14,7 @@ import {useI18n} from '../../../../utilities/i18n';
 
 import {useBannerColors} from './utilities';
 
-export function PolarisSummerEditions2023Banner({
+export function BannerExperimental({
   status = 'info',
   icon,
   hideIcon,

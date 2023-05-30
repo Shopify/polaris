@@ -30,7 +30,7 @@ import {Box} from '../Box';
 import {useFeatures} from '../../utilities/features';
 
 import styles from './Banner.scss';
-import {PolarisSummerEditions2023Banner} from './components';
+import {BannerExperimental} from './components';
 
 export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
 
@@ -178,7 +178,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         onBlur={handleBlur}
       >
         {polarisSummerEditions2023 ? (
-          <PolarisSummerEditions2023Banner {...props} />
+          <BannerExperimental {...props} />
         ) : (
           <>
             {dismissButton}
