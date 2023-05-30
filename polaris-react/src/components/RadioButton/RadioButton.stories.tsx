@@ -44,3 +44,32 @@ export function Default() {
     </LegacyStack>
   );
 }
+
+export function DisabledRadio() {
+  const [value, setValue] = useState('required');
+
+  const handleChange = useCallback(
+    (_checked, newValue) => setValue(newValue),
+    [],
+  );
+  return (
+    <LegacyStack vertical>
+      <RadioButton
+        label="Accounts are required"
+        id="required"
+        name="accounts"
+        checked={value === 'required'}
+        onChange={handleChange}
+        disabled
+      />
+      <RadioButton
+        label="Accounts are optional"
+        id="optional"
+        name="accounts"
+        checked={value === 'optional'}
+        onChange={handleChange}
+        disabled
+      />
+    </LegacyStack>
+  );
+}
