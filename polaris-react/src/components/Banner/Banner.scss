@@ -35,7 +35,6 @@
   &.keyFocused {
     outline: var(--p-border-width-2) solid
       var(--p-color-border-interactive-focus);
-    transition: outline var(--p-motion-duration-100) var(--p-motion-ease);
   }
 
   &.statusSuccess {
