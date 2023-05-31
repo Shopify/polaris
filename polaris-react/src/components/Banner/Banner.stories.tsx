@@ -12,6 +12,7 @@ import {
   Text,
   TextContainer,
 } from '@shopify/polaris';
+import {DiscountsMajor} from '@shopify/polaris-icons';
 
 export default {
   component: Banner,
@@ -205,5 +206,28 @@ export function WithEndJustifiedContent() {
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
       </VerticalStack>
     </Banner>
+  );
+}
+
+export function HideIcon() {
+  return (
+    <LegacyCard title="Edit customer" sectioned>
+      <Banner status="warning" hideIcon>
+        <Text as="p" fontWeight="semibold">
+          Changing the phone number for this customer will unsubscribe them from
+          SMS marketing text messages until they provide consent.
+        </Text>
+      </Banner>
+    </LegacyCard>
+  );
+}
+
+export function CustomIcon() {
+  return (
+    <Banner
+      status="info"
+      icon={DiscountsMajor}
+      title="Choose a plan and your discount will be applied at checkout."
+    />
   );
 }
