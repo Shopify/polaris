@@ -370,7 +370,7 @@ export const color: {
   },
   'color-bg-critical': {
     value: colors.red[200],
-    valueExperimental: colorsExperimental.red[4],
+    valueExperimental: colorsExperimental.red[6],
     description: '',
   },
   'color-bg-critical-subdued': {
@@ -690,7 +690,7 @@ export const color: {
   },
   'color-icon-critical': {
     value: colors.red[600],
-    valueExperimental: colorsExperimental.red[12],
+    valueExperimental: colorsExperimental.red[11],
     description: '',
   },
   'color-icon-caution': {
@@ -700,7 +700,7 @@ export const color: {
   },
   'color-icon-info': {
     value: colors.teal[600],
-    valueExperimental: colorsExperimental.azure[12],
+    valueExperimental: colorsExperimental.azure[11],
     description: '',
   },
   'color-icon-warning': {
