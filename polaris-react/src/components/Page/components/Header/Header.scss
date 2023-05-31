@@ -76,6 +76,10 @@ $action-menu-rollup-computed-width: 40px;
 
   &:first-child {
     min-height: 36px;
+
+    #{$se23} & {
+      min-height: 28px;
+    }
   }
 
   + .Row {

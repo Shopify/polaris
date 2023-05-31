@@ -15,8 +15,6 @@
     }
 
     #{$se23} & {
-      /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
-      @include focus-ring($size: 'extra-wide');
       background: var(--p-color-bg-strong);
       border-radius: var(--p-border-radius-2);
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
@@ -25,8 +23,11 @@
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:focus {
-        /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
-        @include focus-ring($style: 'focused');
+        /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 button overrides */
+        @include no-focus-ring;
+        outline: var(--p-border-width-2) solid
+          var(--p-color-border-interactive-focus);
+        outline-offset: var(--p-space-05);
         background: var(--p-color-bg-strong-active);
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */

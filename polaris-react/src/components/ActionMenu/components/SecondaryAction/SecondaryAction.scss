@@ -57,8 +57,6 @@
     // stylelint-disable-next-line selector-max-combinators -- se23
     a,
     button {
-      // stylelint-disable-next-line -- se23
-      @include focus-ring($size: 'extra-wide');
       border: none;
       min-height: 28px;
       padding: var(--p-space-1) var(--p-space-3);
@@ -72,6 +70,14 @@
       &:focus,
       &:active {
         background-color: var(--p-color-bg-strong-active) !important;
+      }
+      /* stylelint-disable-next-line selector-max-combinators -- se23 */
+      &:focus {
+        /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
+        @include no-focus-ring;
+        outline: var(--p-border-width-2) solid
+          var(--p-color-border-interactive-focus);
+        outline-offset: var(--p-space-05);
       }
     }
 
