@@ -294,7 +294,7 @@
 
     &:active {
       box-shadow: var(--p-shadow-inset-lg);
-      // stylelint-enable length-zero-no-unit, polaris/conventions/polaris/custom-property-allowed-list, polaris/color/function-disallowed-list
+      // stylelint-enable-next-line length-zero-no-unit
       &::before {
         opacity: 0;
       }
