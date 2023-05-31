@@ -11,6 +11,7 @@ import {Indicator} from '../../../Indicator';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
+import {useFeatures} from '../../../../utilities/features';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import styles from '../../Navigation.scss';
 import {Tooltip} from '../../../Tooltip';
@@ -57,6 +58,7 @@ export interface ItemProps extends ItemURLDetails {
   selected?: boolean;
   exactMatch?: boolean;
   new?: boolean;
+  addLine?: boolean;
   subNavigationItems?: SubNavigationItem[];
   /** @deprecated Use secondaryActions instead. */
   secondaryAction?: SecondaryAction;
@@ -91,6 +93,7 @@ export function Item({
   selected: selectedOverride,
   badge,
   new: isNew,
+  addLine,
   matches,
   exactMatch,
   matchPaths,
@@ -107,6 +110,9 @@ export function Item({
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const navTextRef = useRef<HTMLSpanElement>(null);
   const [isTruncated, setIsTruncated] = useState(false);
+  const {polarisSummerEditions2023} = useFeatures();
+  const [hoveredItemLabel, setHoveredItemLabel] = useState<string | null>(null);
+  // console.log({hoveredItemLabel});
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
@@ -198,6 +204,8 @@ export function Item({
               aria-disabled={disabled}
               aria-label={accessibilityLabel}
               onClick={getClickHandler(onClick)}
+              onMouseEnter={() => setHoveredItemLabel(label)}
+              onMouseLeave={() => setHoveredItemLabel(null)}
             >
               {iconMarkup}
               {itemLabelMarkup}
@@ -287,6 +295,8 @@ export function Item({
     selected && canBeActive && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
+    matches && polarisSummerEditions2023 && styles['Item-line-pointer'],
+    addLine && polarisSummerEditions2023 && styles['Item-line'],
   );
 
   let secondaryNavigationMarkup: ReactNode = null;
@@ -301,10 +311,14 @@ export function Item({
       !icon && styles['SecondaryNavigation-noIcon'],
     );
 
+    const matchesArrayPosition = subNavigationItems.findIndex(
+      ({matches}) => matches,
+    );
+
     secondaryNavigationMarkup = (
       <div className={SecondaryNavigationClassName}>
         <Secondary expanded={showExpanded} id={secondaryNavigationId}>
-          {subNavigationItems.map((item) => {
+          {subNavigationItems.map((item, index) => {
             const {label, ...rest} = item;
             const onClick = () => {
               if (onNavigationDismiss) {
@@ -321,6 +335,11 @@ export function Item({
                 key={label}
                 {...rest}
                 label={label}
+                addLine={
+                  polarisSummerEditions2023
+                    ? index < matchesArrayPosition
+                    : undefined
+                }
                 matches={item === longestMatch}
                 onClick={onClick}
                 truncateText={truncateText}
@@ -347,6 +366,8 @@ export function Item({
         aria-disabled={disabled}
         aria-label={accessibilityLabel}
         onClick={getClickHandler(onClick)}
+        onMouseEnter={() => setHoveredItemLabel(label)}
+        onMouseLeave={() => setHoveredItemLabel(null)}
         {...normalizeAriaAttributes(
           secondaryNavigationId,
           subNavigationItems.length > 0,
