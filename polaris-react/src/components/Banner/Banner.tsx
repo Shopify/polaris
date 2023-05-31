@@ -27,8 +27,10 @@ import type {IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Text} from '../Text';
 import {Box} from '../Box';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Banner.scss';
+import {BannerExperimental} from './components';
 
 export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
 
@@ -54,7 +56,10 @@ export interface BannerProps {
 }
 
 export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
-  {
+  props: BannerProps,
+  bannerRef,
+) {
+  const {
     icon,
     action,
     secondaryAction,
@@ -64,18 +69,19 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     onDismiss,
     stopAnnouncements,
     hideIcon,
-  }: BannerProps,
-  bannerRef,
-) {
+  } = props;
   const withinContentContainer = useContext(WithinContentContext);
   const i18n = useI18n();
   const {wrapperRef, handleKeyUp, handleBlur, handleMouseUp, shouldShowFocus} =
     useBannerFocus(bannerRef);
   const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(status);
   const iconName = icon || defaultIcon;
+  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Banner,
-    status && styles[variationName('status', status)],
+    !polarisSummerEditions2023 &&
+      status &&
+      styles[variationName('status', status)],
     onDismiss && styles.hasDismiss,
     shouldShowFocus && styles.keyFocused,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
@@ -171,18 +177,22 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         onKeyUp={handleKeyUp}
         onBlur={handleBlur}
       >
-        {dismissButton}
-
-        {hideIcon ? null : (
-          <Box paddingInlineEnd="4">
-            <Icon source={iconName} color={iconColor} />
-          </Box>
+        {polarisSummerEditions2023 ? (
+          <BannerExperimental {...props} />
+        ) : (
+          <>
+            {dismissButton}
+            {hideIcon ? null : (
+              <Box paddingInlineEnd="4">
+                <Icon source={iconName} color={iconColor} />
+              </Box>
+            )}
+            <div className={styles.ContentWrapper}>
+              {headingMarkup}
+              {contentMarkup}
+            </div>
+          </>
         )}
-
-        <div className={styles.ContentWrapper}>
-          {headingMarkup}
-          {contentMarkup}
-        </div>
       </div>
     </BannerContext.Provider>
   );
@@ -218,7 +228,9 @@ interface BannerAttributes {
   ariaRoleType: 'status' | 'alert';
 }
 
-function useBannerAttributes(status: BannerProps['status']): BannerAttributes {
+export function useBannerAttributes(
+  status: BannerProps['status'],
+): BannerAttributes {
   switch (status) {
     case 'success':
       return {
