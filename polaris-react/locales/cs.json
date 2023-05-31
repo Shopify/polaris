@@ -387,6 +387,9 @@
           "cancel": "Zrušit"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Zavřít notifikaci"
     }
   }
 }

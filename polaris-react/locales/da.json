@@ -385,6 +385,9 @@
           "cancel": "Annuller"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Afvis meddelelse"
     }
   }
 }
