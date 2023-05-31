@@ -102,7 +102,7 @@ export function Tag({
     );
 
   return (
-    <span className={className}>
+    <span className={className} aria-disabled={disabled}>
       {tagContent}
       {removeButton}
     </span>
