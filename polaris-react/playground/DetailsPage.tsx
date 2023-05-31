@@ -41,6 +41,8 @@ import {
   Thumbnail,
   Toast,
   TopBar,
+  FooterHelp,
+  Link,
 } from '../src';
 import type {DropZoneProps} from '../src';
 
@@ -709,6 +711,12 @@ export function DetailsPage() {
       {pageMarkup}
       {toastMarkup}
       {modalMarkup}
+      <FooterHelp>
+        Learn more about{' '}
+        <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
+          fulfilling orders
+        </Link>
+      </FooterHelp>
     </Frame>
   );
 }
