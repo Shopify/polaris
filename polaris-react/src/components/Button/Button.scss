@@ -53,6 +53,12 @@
       }
       // stylelint-enable selector-max-combinators
     }
+
+    &:focus,
+    &:focus-visible {
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      box-shadow: var(--pc-button-shadow);
+    }
   }
 
   &.disabled {
@@ -407,6 +413,12 @@
 
     &:active {
       box-shadow: var(--p-shadow-inset-md);
+    }
+
+    &:focus,
+    &:focus-visible {
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      box-shadow: var(--pc-button-shadow);
     }
   }
 }
