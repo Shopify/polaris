@@ -156,7 +156,7 @@
       --p-color-border-input-hover: rgba(138, 138, 138, 1);
       // stylelint-disable-next-line -- PSE23 temporary property overrides
       --p-border-width-2: 1px;
-      border-width: var(--p--border-width-2);
+      border-width: var(--p-border-width-2);
     }
     border-color: var(--p-color-border-input-hover);
   }
