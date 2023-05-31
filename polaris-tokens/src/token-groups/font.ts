@@ -12,7 +12,7 @@ export type FontSizeScale =
   | '600'
   | '700';
 
-export type FontExperimentalSizeScale = '70' | '80';
+type FontExperimentalSizeScale = '70' | '80';
 
 export type FontLineHeightScale = '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
