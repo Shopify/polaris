@@ -385,6 +385,9 @@
           "cancel": "キャンセル"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "通知を閉じる"
     }
   }
 }

@@ -385,6 +385,9 @@
           "cancel": "Abbrechen"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Benachrichtigung verwerfen"
     }
   }
 }
