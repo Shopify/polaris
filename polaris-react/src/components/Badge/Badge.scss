@@ -13,10 +13,16 @@
   border-radius: var(--p-border-radius-5);
   color: var(--p-color-text);
 
-  :where(#{$se23}) & {
+  #{$se23} & {
     background-color: var(--p-color-experimental-bg-transparent-subdued);
     color: var(--p-color-text-subdued);
     font-weight: var(--p-font-weight-medium);
+    border-radius: var(--p-border-radius-2);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-text-subdued);
+    }
   }
 
   @media print {
@@ -29,6 +35,11 @@
 
   #{$se23} & {
     color: var(--p-color-text-success);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-success);
+    }
   }
 }
 
@@ -37,6 +48,11 @@
 
   #{$se23} & {
     color: var(--p-color-text-info);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-info);
+    }
   }
 }
 
@@ -45,6 +61,11 @@
 
   #{$se23} & {
     color: var(--p-color-text-caution);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-caution);
+    }
   }
 }
 
@@ -52,7 +73,12 @@
   background-color: var(--p-color-bg-warning);
 
   #{$se23} & {
-    color: var(--p-color-text-warning-strong);
+    color: var(--p-color-experimental-text-warning);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-warning);
+    }
   }
 }
 
@@ -61,6 +87,11 @@
 
   #{$se23} & {
     color: var(--p-color-text-critical);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-critical);
+    }
   }
 }
 
