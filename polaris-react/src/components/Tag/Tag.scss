@@ -72,6 +72,14 @@ $button-size: 20px;
       @include focus-ring($size: 'wide');
       line-height: var(--p-font-line-height-1);
       padding: 0 calc(var(--p-space-1) + var(--p-space-05));
+
+      &:hover {
+        background: var(--p-color-bg-strong-hover);
+      }
+
+      &:active {
+        background: var(--p-color-bg-strong-active);
+      }
     }
   }
 
@@ -81,6 +89,16 @@ $button-size: 20px;
 
   &.linkable {
     padding: 0;
+
+    #{$se23} & {
+      &:hover {
+        background: var(--p-color-bg-strong-hover);
+      }
+
+      &:active {
+        background: var(--p-color-bg-strong-active);
+      }
+    }
   }
 
   #{$se23} & {
@@ -173,6 +191,15 @@ $button-size: 20px;
     margin-left: var(--p-space-05);
     width: 18px;
     height: 18px;
+    color: var(--p-color-icon-subdued);
+
+    &:hover {
+      color: var(--p-color-icon-primary);
+    }
+    /* stylelint-disable-next-line selector-max-combinators -- se23 */
+    svg {
+      fill: currentColor;
+    }
   }
 }
 
@@ -234,5 +261,19 @@ $button-size: 20px;
     @include focus-ring('wide');
     border-radius: var(--p-border-radius-2);
     padding: 0 calc(var(--p-space-1) + var(--p-space-05));
+
+    &:active {
+      background: var(--p-color-bg-strong-active);
+    }
+  }
+}
+
+#{$se23} {
+  .linkable.removable:hover {
+    background: var(--p-color-bg-strong-hover);
+    /* stylelint-disable-next-line selector-max-class, selector-max-combinators -- se23 */
+    .Button {
+      background: var(--p-color-bg-strong-active);
+    }
   }
 }

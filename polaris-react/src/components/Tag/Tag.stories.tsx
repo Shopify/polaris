@@ -8,7 +8,13 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 export function Default() {
-  return <Tag>Wholesale</Tag>;
+  return (
+    <HorizontalStack gap="1">
+      <Tag>Wholesale</Tag>
+      <Tag disabled>Disabled</Tag>
+      <Tag url="#">With URL</Tag>
+    </HorizontalStack>
+  );
 }
 
 export function Removable() {
@@ -30,7 +36,11 @@ export function Removable() {
   );
 
   const tagMarkup = selectedTags.map((option) => (
-    <Tag key={option} onRemove={removeTag(option)}>
+    <Tag
+      key={option}
+      onRemove={removeTag(option)}
+      disabled={option === 'Antique'}
+    >
       {option}
     </Tag>
   ));
