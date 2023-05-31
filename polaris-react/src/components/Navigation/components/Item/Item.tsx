@@ -6,7 +6,6 @@ import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
 import {Icon} from '../../../Icon';
-import type {IconProps} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
@@ -15,69 +14,13 @@ import {useFeatures} from '../../../../utilities/features';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import styles from '../../Navigation.scss';
 import {Tooltip} from '../../../Tooltip';
-import type {TooltipProps} from '../../../Tooltip';
 
-import {Secondary} from './components';
+import {MatchState} from './types';
+import type {ItemProps, SecondaryAction, ItemURLDetails} from './types';
+import {SecondaryNavigation} from './components';
 
 export const MAX_SECONDARY_ACTIONS = 2;
 const TOOLTIP_HOVER_DELAY = 1000;
-
-interface ItemURLDetails {
-  url?: string;
-  matches?: boolean;
-  exactMatch?: boolean;
-  matchPaths?: string[];
-  excludePaths?: string[];
-  external?: boolean;
-}
-
-export interface SubNavigationItem extends ItemURLDetails {
-  url: string;
-  label: string;
-  disabled?: boolean;
-  new?: boolean;
-  onClick?(): void;
-}
-
-interface SecondaryAction {
-  accessibilityLabel: string;
-  icon: IconProps['source'];
-  url?: string;
-  onClick?(): void;
-  tooltip?: TooltipProps;
-}
-
-type SecondaryActions = [SecondaryAction] | [SecondaryAction, SecondaryAction];
-
-export interface ItemProps extends ItemURLDetails {
-  icon?: IconProps['source'];
-  badge?: ReactNode;
-  label: string;
-  disabled?: boolean;
-  accessibilityLabel?: string;
-  selected?: boolean;
-  exactMatch?: boolean;
-  new?: boolean;
-  addLine?: boolean;
-  subNavigationItems?: SubNavigationItem[];
-  /** @deprecated Use secondaryActions instead. */
-  secondaryAction?: SecondaryAction;
-  secondaryActions?: SecondaryActions;
-  displayActionsOnHover?: boolean;
-  onClick?(): void;
-  onToggleExpandedState?(): void;
-  expanded?: boolean;
-  shouldResizeIcon?: boolean;
-  truncateText?: boolean;
-}
-
-enum MatchState {
-  MatchForced,
-  MatchUrl,
-  MatchPaths,
-  Excluded,
-  NoMatch,
-}
 
 export function Item({
   url,
@@ -94,6 +37,10 @@ export function Item({
   badge,
   new: isNew,
   addLine,
+  addHoverLine,
+  addHoverPointer,
+  onMouseEnter,
+  onMouseLeave,
   matches,
   exactMatch,
   matchPaths,
@@ -111,8 +58,6 @@ export function Item({
   const navTextRef = useRef<HTMLSpanElement>(null);
   const [isTruncated, setIsTruncated] = useState(false);
   const {polarisSummerEditions2023} = useFeatures();
-  const [hoveredItemLabel, setHoveredItemLabel] = useState<string | null>(null);
-  // console.log({hoveredItemLabel});
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
@@ -204,8 +149,6 @@ export function Item({
               aria-disabled={disabled}
               aria-label={accessibilityLabel}
               onClick={getClickHandler(onClick)}
-              onMouseEnter={() => setHoveredItemLabel(label)}
-              onMouseLeave={() => setHoveredItemLabel(null)}
             >
               {iconMarkup}
               {itemLabelMarkup}
@@ -297,6 +240,10 @@ export function Item({
     childIsActive && styles['Item-child-active'],
     matches && polarisSummerEditions2023 && styles['Item-line-pointer'],
     addLine && polarisSummerEditions2023 && styles['Item-line'],
+    addHoverPointer &&
+      polarisSummerEditions2023 &&
+      styles['Item-hover-pointer'],
+    addHoverLine && polarisSummerEditions2023 && styles['Item-hover-line'],
   );
 
   let secondaryNavigationMarkup: ReactNode = null;
@@ -306,48 +253,15 @@ export function Item({
       ({url: firstUrl}, {url: secondUrl}) => secondUrl.length - firstUrl.length,
     )[0];
 
-    const SecondaryNavigationClassName = classNames(
-      styles.SecondaryNavigation,
-      !icon && styles['SecondaryNavigation-noIcon'],
-    );
-
-    const matchesArrayPosition = subNavigationItems.findIndex(
-      ({matches}) => matches,
-    );
-
     secondaryNavigationMarkup = (
-      <div className={SecondaryNavigationClassName}>
-        <Secondary expanded={showExpanded} id={secondaryNavigationId}>
-          {subNavigationItems.map((item, index) => {
-            const {label, ...rest} = item;
-            const onClick = () => {
-              if (onNavigationDismiss) {
-                onNavigationDismiss();
-              }
-
-              if (item.onClick && item.onClick !== onNavigationDismiss) {
-                item.onClick();
-              }
-            };
-
-            return (
-              <Item
-                key={label}
-                {...rest}
-                label={label}
-                addLine={
-                  polarisSummerEditions2023
-                    ? index < matchesArrayPosition
-                    : undefined
-                }
-                matches={item === longestMatch}
-                onClick={onClick}
-                truncateText={truncateText}
-              />
-            );
-          })}
-        </Secondary>
-      </div>
+      <SecondaryNavigation
+        Item={Item}
+        icon={icon}
+        longestMatch={longestMatch}
+        subNavigationItems={subNavigationItems}
+        showExpanded={showExpanded}
+        truncateText={truncateText}
+      />
     );
   }
 
@@ -366,8 +280,6 @@ export function Item({
         aria-disabled={disabled}
         aria-label={accessibilityLabel}
         onClick={getClickHandler(onClick)}
-        onMouseEnter={() => setHoveredItemLabel(label)}
-        onMouseLeave={() => setHoveredItemLabel(null)}
         {...normalizeAriaAttributes(
           secondaryNavigationId,
           subNavigationItems.length > 0,
@@ -392,7 +304,15 @@ export function Item({
   };
 
   return (
-    <li className={className}>
+    <li
+      className={className}
+      onMouseEnter={() => {
+        onMouseEnter?.(label);
+      }}
+      onMouseLeave={() => {
+        onMouseLeave?.();
+      }}
+    >
       <div className={styles.ItemWrapper}>
         <div
           className={classNames(
