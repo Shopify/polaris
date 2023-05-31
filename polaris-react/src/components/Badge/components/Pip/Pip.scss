@@ -1,3 +1,5 @@
+@import '../../../../styles/common';
+
 .Pip {
   // stylelint-disable -- Polaris component custom properties
   --pc-pip-size: var(--p-space-2);
@@ -14,6 +16,15 @@
   border: var(--p-border-width-2) solid var(--pc-pip-color);
   border-radius: var(--p-border-radius-full);
   flex-shrink: 0;
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- se23 3px border radius
+    border-radius: 3px;
+    // stylelint-disable-next-line -- se23 1.25px border width
+    border-width: 1.25px;
+    // stylelint-disable-next-line -- se23 override
+    --pc-pip-color: var(--p-color-text-subdued);
+  }
 }
 
 .statusInfo {
@@ -39,6 +50,11 @@
 .statusWarning {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-caution);
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- se23 override
+    --pc-pip-color: var(--p-color-icon-warning);
+  }
 }
 
 .statusCritical {
