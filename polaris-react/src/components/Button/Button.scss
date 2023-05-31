@@ -46,6 +46,7 @@
     &:active {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       --pc-button-shadow: var(--p-shadow-inset-md);
+      background: var(--p-color-bg-active);
       // stylelint-disable selector-max-combinators -- se23
       .Content {
         transform: translateY(1px);

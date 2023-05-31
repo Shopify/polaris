@@ -50,10 +50,6 @@
   }
 
   &:active {
-    #{$se23} & {
-      background: var(--p-color-bg-active);
-    }
-
     &::after {
       border: none;
       box-shadow: none;
