@@ -222,11 +222,6 @@
     background: var(--pc-button-color-active);
     border-color: transparent;
     box-shadow: var(--p-shadow-sm);
-
-    #{$se23} & {
-      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
-      box-shadow: var(--pc-button-shadow);
-    }
   }
 
   &.pressed {
@@ -266,12 +261,15 @@
   // stylelint-enable
 
   #{$se23} & {
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+    box-shadow: var(--pc-button-shadow-primary);
+
     &::before {
       content: '';
       position: absolute;
       left: 2px;
       right: 2px;
-      top: 1.5px;
+      top: 0.5px;
       bottom: 3.5px;
 
       /* shine */
@@ -289,10 +287,7 @@
     }
 
     &:active {
-      // stylelint-disable length-zero-no-unit, polaris/conventions/polaris/custom-property-allowed-list, polaris/color/function-disallowed-list -- se23 temporary styles
-      --pc-button-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
-        inset 1px 0px 1px rgba(0, 0, 0, 0.2),
-        inset 0px 2px 1px rgba(0, 0, 0, 0.6);
+      box-shadow: var(--p-shadow-inset-lg);
       // stylelint-enable length-zero-no-unit, polaris/conventions/polaris/custom-property-allowed-list, polaris/color/function-disallowed-list
       &::before {
         opacity: 0;
