@@ -3,11 +3,8 @@ import type {MetadataProperties} from '../types';
 export type SpaceScale =
   | '0'
   | '025'
-  | '0_25'
   | '05'
-  | '0_5'
   | '1'
-  | '1_5'
   | '2'
   | '3'
   | '4'
@@ -22,7 +19,11 @@ export type SpaceScale =
   | '28'
   | '32';
 
-export type SpaceTokenName = `space-${SpaceScale}`;
+export type SpaceExperimentalScale = '1_5';
+
+export type SpaceTokenName =
+  | `space-${SpaceScale}`
+  | `space-experimental-${SpaceExperimentalScale}`;
 
 export type SpaceTokenGroup = {
   [TokenName in SpaceTokenName]: string;
@@ -37,19 +38,13 @@ export const space: {
   'space-025': {
     value: '1px',
   },
-  'space-0_25': {
-    value: '1px',
-  },
   'space-05': {
-    value: '2px',
-  },
-  'space-0_5': {
     value: '2px',
   },
   'space-1': {
     value: '4px',
   },
-  'space-1_5': {
+  'space-experimental-1_5': {
     value: '6px',
   },
   'space-2': {
