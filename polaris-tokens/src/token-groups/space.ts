@@ -19,7 +19,7 @@ export type SpaceScale =
   | '28'
   | '32';
 
-export type SpaceExperimentalScale = '1_5';
+type SpaceExperimentalScale = '1_5';
 
 export type SpaceTokenName =
   | `space-${SpaceScale}`
