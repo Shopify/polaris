@@ -13,7 +13,10 @@ export type ShadowAlias =
   | '2xl'
   | ShadowExperimentalAlias;
 
-type ShadowExperimentalAlias = 'experimental-card-md';
+type ShadowExperimentalAlias =
+  | 'experimental-card-sm'
+  | 'experimental-card-md'
+  | 'experimental-card-lg';
 
 export type ShadowTokenName = `shadow-${ShadowAlias}`;
 
@@ -26,6 +29,8 @@ export const shadow: {
 } = {
   'shadow-inset-lg': {
     value: 'inset 0px 0px 7px 2px rgba(31, 33, 36, 0.18)',
+    valueExperimental:
+      'inset -1px 0px 1px rgba(0, 0, 0, 0.2), inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6)',
   },
   'shadow-inset-md': {
     value: 'inset 0px 2px 4px rgba(31, 33, 36, 0.32)',
@@ -55,13 +60,23 @@ export const shadow: {
   'shadow-xl': {
     value:
       '0px 4px 18px -2px rgba(31, 33, 36, 0.08), 0px 12px 18px -2px rgba(31, 33, 36, 0.15)',
+    valueExperimental:
+      '0px 32px 32px rgba(23, 24, 24, 0.15), 0px 32px 56px -2px rgba(23, 24, 24, 0.16)',
   },
   'shadow-2xl': {
     value:
       '0px 32px 32px rgba(31, 33, 36, 0.15), 0px 32px 56px -2px rgba(31, 33, 36, 0.16)',
   },
+  'shadow-experimental-card-sm': {
+    value:
+      '0px 1px 0px rgba(0, 0, 0, 0.07), inset 0px -1px 0px #D4D4D4, inset -1px 0px 0px #E3E3E3, inset 1px 0px 0px #E3E3E3, inset 0px 1px 0px #E3E3E3',
+  },
   'shadow-experimental-card-md': {
     value:
       '0px 3px 1px -1px rgba(0, 0, 0, 0.07), inset 0px -1px 0px rgba(0, 0, 0, 0.16), inset 1px 0px 0px rgba(0, 0, 0, 0.1), inset -1px 0px 0px rgba(0, 0, 0, 0.1), inset 0px 1px 0px rgba(255, 255, 255, 0.3)',
+  },
+  'shadow-experimental-card-lg': {
+    value:
+      '0px 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0px -1px 0px #D4D4D4, inset -1px 0px 0px #E3E3E3, inset 1px 0px 0px #E3E3E3, inset 0px 1px 0px #E3E3E3',
   },
 };
