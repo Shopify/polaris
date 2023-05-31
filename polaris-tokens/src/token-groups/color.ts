@@ -119,7 +119,8 @@ export type ColorIconAlias =
   | 'icon-primary'
   | 'icon-subdued'
   | 'icon-success'
-  | 'icon-warning';
+  | 'icon-warning'
+  | ColorExperimentalIconAlias;
 
 export type ColorTextAlias =
   | 'text'
@@ -146,7 +147,8 @@ export type ColorTextAlias =
   | 'text-subdued'
   | 'text-success'
   | 'text-success-strong'
-  | 'text-warning-strong';
+  | 'text-warning-strong'
+  | ColorExperimentalTextAlias;
 
 type ColorExperimentalBackgroundAlias =
   | 'experimental-bg-input-hover'
@@ -158,7 +160,17 @@ type ColorExperimentalBackgroundAlias =
   | 'experimental-bg-inverse-transparent-hover'
   | 'experimental-bg-inverse-transparent-active'
   | 'experimental-bg-success-strong-hover'
-  | 'experimental-bg-success-strong-active';
+  | 'experimental-bg-success-strong-active'
+  | 'experimental-bg-warning-strong'
+  | 'experimental-bg-warning-subdued';
+
+type ColorExperimentalTextAlias = 'experimental-text-warning';
+
+type ColorExperimentalIconAlias =
+  | 'experimental-icon-info-strong'
+  | 'experimental-icon-success-strong'
+  | 'experimental-icon-warning-strong'
+  | 'experimental-icon-critical-strong';
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
@@ -802,7 +814,7 @@ export const color: {
   },
   'color-text-info-strong': {
     value: colors.teal[900],
-    valueExperimental: colorsExperimental.azure[14],
+    valueExperimental: colorsExperimental.azure[16],
     description: '',
   },
   'color-text-info': {
@@ -882,6 +894,34 @@ export const color: {
   },
   'color-experimental-bg-success-strong-active': {
     value: colorsExperimental.green[14],
+    description: '',
+  },
+  'color-experimental-bg-warning-subdued': {
+    value: colorsExperimental.orange[3],
+    description: '',
+  },
+  'color-experimental-bg-warning-strong': {
+    value: colorsExperimental.orange[9],
+    description: '',
+  },
+  'color-experimental-text-warning': {
+    value: colorsExperimental.orange[15],
+    description: '',
+  },
+  'color-experimental-icon-info-strong': {
+    value: colorsExperimental.azure[14],
+    description: '',
+  },
+  'color-experimental-icon-warning-strong': {
+    value: colorsExperimental.orange[13],
+    description: '',
+  },
+  'color-experimental-icon-success-strong': {
+    value: colorsExperimental.green[14],
+    description: '',
+  },
+  'color-experimental-icon-critical-strong': {
+    value: colorsExperimental.red[14],
     description: '',
   },
 };
