@@ -385,6 +385,9 @@
           "cancel": "Avbryt"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Avvisa avisering"
     }
   }
 }
