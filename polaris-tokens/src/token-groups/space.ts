@@ -19,7 +19,11 @@ export type SpaceScale =
   | '28'
   | '32';
 
-export type SpaceTokenName = `space-${SpaceScale}`;
+type SpaceExperimentalScale = '1_5';
+
+export type SpaceTokenName =
+  | `space-${SpaceScale}`
+  | `space-experimental-${SpaceExperimentalScale}`;
 
 export type SpaceTokenGroup = {
   [TokenName in SpaceTokenName]: string;
@@ -39,6 +43,9 @@ export const space: {
   },
   'space-1': {
     value: '4px',
+  },
+  'space-experimental-1_5': {
+    value: '6px',
   },
   'space-2': {
     value: '8px',
