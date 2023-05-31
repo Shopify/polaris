@@ -3,9 +3,7 @@ import type {MetadataProperties} from '../types';
 type FontFamilyAlias = 'sans' | 'mono';
 
 export type FontSizeScale =
-  | '70'
   | '75'
-  | '80'
   | '100'
   | '200'
   | '300'
@@ -14,6 +12,8 @@ export type FontSizeScale =
   | '600'
   | '700';
 
+export type FontSizeExperimentalScale = '70' | '80';
+
 export type FontLineHeightScale = '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
 export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
@@ -21,6 +21,7 @@ export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
 export type FontTokenName =
   | `font-family-${FontFamilyAlias}`
   | `font-size-${FontSizeScale}`
+  | `font-size-experimental-${FontSizeExperimentalScale}`
   | `font-weight-${FontWeightAlias}`
   | `font-line-height-${FontLineHeightScale}`;
 
@@ -39,13 +40,13 @@ export const font: {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
-  'font-size-70': {
+  'font-size-experimental-70': {
     value: '11px',
   },
   'font-size-75': {
     value: '12px',
   },
-  'font-size-80': {
+  'font-size-experimental-80': {
     value: '13px',
   },
   'font-size-100': {
