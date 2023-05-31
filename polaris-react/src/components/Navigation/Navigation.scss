@@ -196,7 +196,7 @@ $disabled-fade: 0.6;
 
   &:not(:first-child) {
     .ItemInnerWrapper {
-      border-top: var(--p-border-width-1) solid var(--p-color-bg-app);
+      border-top: var(--p-border-width-1) solid transparent;
     }
   }
 }
