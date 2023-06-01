@@ -15,6 +15,10 @@
   transform: none;
   transition: none;
 
+  #{$se23} & {
+    box-shadow: var(--p-shadow-xl);
+  }
+
   @media screen and (-ms-high-contrast: active) {
     border: var(--p-border-width-2) solid windowText;
   }

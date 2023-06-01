@@ -63,7 +63,7 @@ export const shadow: {
   'shadow-xl': {
     value:
       '0px 4px 18px -2px rgba(31, 33, 36, 0.08), 0px 12px 18px -2px rgba(31, 33, 36, 0.15)',
-    valueExperimental: 'box-shadow: 0px 12px 20px -8px rgba(0, 0, 0, 0.24);',
+    valueExperimental: '0px 12px 20px -8px rgba(0, 0, 0, 0.24)',
   },
   'shadow-2xl': {
     value:
