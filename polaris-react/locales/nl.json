@@ -385,6 +385,9 @@
           "cancel": "Annuleren"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Melding sluiten"
     }
   }
 }
