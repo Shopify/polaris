@@ -14,7 +14,7 @@ export default {
   component: Button,
 } as ComponentMeta<typeof Button>;
 
-export function Default() {
+export function All() {
   return (
     <div>
       <VerticalStack gap="8">
@@ -220,6 +220,10 @@ export function Default() {
       </VerticalStack>
     </div>
   );
+}
+
+export function Default() {
+  return <Button>Add product</Button>;
 }
 
 export function Outline() {
