@@ -6,7 +6,7 @@
   outline: var(--p-border-width-1) solid transparent;
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-experimental-card-sm);
+    box-shadow: var(--p-shadow-card-sm-experimental);
   }
 
   + .LegacyCard {
@@ -74,7 +74,7 @@
 
     #{$se23} & {
       border-top: var(--p-border-width-1) solid
-        var(--p-color-experimental-border-faint);
+        var(--p-color-border-faint-experimental);
     }
 
     @media print {
