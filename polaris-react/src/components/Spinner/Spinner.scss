@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $small-size: 20px;
 $large-size: 44px;
 
@@ -10,6 +12,10 @@ $large-size: 44px;
   animation: var(--p-motion-keyframes-spin) var(--p-motion-duration-500) linear
     infinite;
   fill: var(--p-color-border-info);
+
+  #{$se23} & {
+    fill: var(--p-color-bg-interactive);
+  }
 }
 
 .sizeSmall svg {
