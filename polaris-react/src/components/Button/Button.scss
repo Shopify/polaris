@@ -54,8 +54,8 @@
       // stylelint-enable selector-max-combinators
     }
 
-    &:focus,
-    &:focus-visible {
+    &:focus:not(.primary),
+    &:focus-visible:not(.primary) {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       box-shadow: var(--pc-button-shadow);
     }
@@ -305,6 +305,7 @@
     &.disabled {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       color: var(--pc-button-text);
+      background: var(--p-color-bg-disabled);
 
       &::before {
         display: none;
@@ -326,6 +327,11 @@
       --pc-button-color-depressed: var(--p-color-bg-critical-strong-active);
       // stylelint-enable
 
+      &:not(.disabled) {
+        // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+        box-shadow: var(--pc-button-shadow-primary);
+      }
+
       // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       svg {
         fill: var(--p-color-icon-on-color);
@@ -333,8 +339,6 @@
 
       // stylelint-disable-next-line selector-max-class -- se23 temporary styles
       &.disabled {
-        background: var(--p-color-bg-disabled);
-
         // stylelint-disable-next-line selector-max-class, max-nesting-depth -- se23 temporary styles
         &::before {
           display: none;
