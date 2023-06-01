@@ -72,7 +72,7 @@
         background-color: var(--p-color-bg-strong-active) !important;
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:focus {
+      &:focus:not(:active) {
         /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
         @include no-focus-ring;
         outline: var(--p-border-width-2) solid
@@ -85,20 +85,19 @@
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       a,
       button {
-        color: var(--p-color-text-on-color) !important;
-        background-color: var(--p-color-bg-critical-strong) !important;
+        color: var(--p-color-text-critical) !important;
         /* stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 */
         &:hover {
-          background-color: var(--p-color-bg-critical-strong-hover) !important;
+          background-color: var(--p-color-bg-strong-hover) !important;
         }
         /* stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 */
         &:focus,
         &:active {
-          background-color: var(--p-color-bg-critical-strong-active) !important;
+          background-color: var(--p-color-bg-strong-active) !important;
         }
         /* stylelint-disable-next-line selector-max-combinators, max-nesting-depth, selector-max-compound-selectors -- se23 */
         svg {
-          fill: var(--p-color-icon-critical);
+          fill: var(--p-color-text-critical);
         }
       }
     }
