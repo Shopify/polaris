@@ -1,6 +1,14 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
+  DeleteMinor,
+  PlusMinor,
+  ArrowDownMinor,
+  ExternalMinor,
+  ViewMinor,
+  MobileVerticalDotsMajor,
+} from '@shopify/polaris-icons';
+import {
   Badge,
   Button,
   LegacyCard,
@@ -8,7 +16,6 @@ import {
   PageActions,
   LegacyStack,
 } from '@shopify/polaris';
-import {PlusMinor, ArrowDownMinor, ExternalMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Page,
@@ -25,18 +32,22 @@ export function Default() {
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {
-          content: 'Duplicate',
-          accessibilityLabel: 'Secondary action label',
-          onAction: () => console.log('Duplicate action'),
+          content: 'Delete',
+          destructive: true,
+          icon: DeleteMinor,
+          accessibilityLabel: 'Delete action label',
+          onAction: () => console.log('Delete action'),
         },
         {
           content: 'View on your store',
+          icon: ViewMinor,
           onAction: () => console.log('View on your store action'),
         },
       ]}
       actionGroups={[
         {
           title: 'Promote',
+          icon: MobileVerticalDotsMajor,
           actions: [
             {
               content: 'Share on Facebook',

@@ -28,6 +28,7 @@ import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
 import {HorizontalStack} from '../../../HorizontalStack';
+import {useFeatures} from '../../../../utilities/features';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
@@ -86,6 +87,7 @@ export function Header({
   onActionRollup,
 }: HeaderProps) {
   const i18n = useI18n();
+  const {polarisSummerEditions2023} = useFeatures();
   const {isNavigationCollapsed} = useMediaQuery();
 
   if (additionalNavigation && process.env.NODE_ENV === 'development') {
@@ -212,8 +214,8 @@ export function Header({
   return (
     <Box
       position="relative"
-      paddingBlockStart={{xs: '4', md: '5'}}
-      paddingBlockEnd={{xs: '4', md: '5'}}
+      paddingBlockStart={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
+      paddingBlockEnd={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
       paddingInlineStart={{xs: '4', sm: '0'}}
       paddingInlineEnd={{xs: '4', sm: '0'}}
       visuallyHidden={titleHidden}
