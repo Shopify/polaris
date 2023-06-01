@@ -16,6 +16,7 @@ function TopBarWrapper({
   initials,
   customActivator,
   message,
+  se23,
 }: {
   userActions?: UserMenuProps['actions'];
   name?: UserMenuProps['name'];
@@ -23,6 +24,7 @@ function TopBarWrapper({
   initials?: UserMenuProps['initials'];
   customActivator?: UserMenuProps['customActivator'];
   message?: UserMenuProps['message'];
+  se23?: boolean;
 }) {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
@@ -54,11 +56,12 @@ function TopBarWrapper({
   }, []);
 
   const logo = {
-    width: 124,
-    topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+    width: se23 ? 92 : 96,
+    topBarSource: se23
+      ? 'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-monotone-white-7edf88561b256e005e9b9d003c283c39dcbd74ec844dfc9a3912edeec39b4d7e.svg'
+      : 'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg',
     url: '#',
-    accessibilityLabel: 'Jaded Pixel',
+    accessibilityLabel: 'Hem Canada',
   };
 
   const userMenuMarkup = (
@@ -75,7 +78,7 @@ function TopBarWrapper({
               },
             ]
       }
-      name={name ? name : 'Dharma'}
+      name={name ? name : 'Xquenda Andreev'}
       detail={detail && detail}
       initials={initials ? initials : 'JD'}
       customActivator={customActivator}
@@ -142,7 +145,7 @@ function TopBarWrapper({
   );
 }
 
-export function Default() {
+export function Default(_, context) {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
@@ -151,10 +154,17 @@ export function Default() {
       items: [{content: 'Community forums'}],
     },
   ];
-  return <TopBarWrapper userActions={userActions} name="Dharma" initials="D" />;
+  return (
+    <TopBarWrapper
+      userActions={userActions}
+      name="Xquenda Andreev"
+      initials="XA"
+      se23={context.globals.polarisSummerEditions2023}
+    />
+  );
 }
 
-export function WithCustomActivator() {
+export function WithCustomActivator(_, context) {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
@@ -166,19 +176,21 @@ export function WithCustomActivator() {
 
   const customActivator = (
     <>
-      <Avatar size="small" initials="D" name="Dharma" />
+      <Avatar size="small" initials="XA" name="Xquenda Andreev" />
       <span style={{marginLeft: '0.5rem'}}>
         <Text as="p" alignment="start" fontWeight="medium" truncate>
-          Dharma
+          Xquenda Andreev
         </Text>
         <Text
           as="p"
           variant="bodySm"
           alignment="start"
-          color="subdued"
+          color={
+            context.globals.polarisSummerEditions2023 ? undefined : 'subdued'
+          }
           truncate
         >
-          Jaded Pixel
+          Hem Canada
         </Text>
       </span>
     </>
@@ -187,14 +199,15 @@ export function WithCustomActivator() {
   return (
     <TopBarWrapper
       userActions={userActions}
-      name="Dharma"
-      detail="Jaded Pixel"
+      name="Xquenda Andreev"
+      detail="Hem Canada"
       customActivator={customActivator}
+      se23={context.globals.polarisSummerEditions2023}
     />
   );
 }
 
-export function WithMessage() {
+export function WithMessage(_, context) {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
@@ -207,15 +220,16 @@ export function WithMessage() {
   return (
     <TopBarWrapper
       userActions={userActions}
-      name="Dharma"
-      detail="Jaded Pixel"
-      initials="JD"
+      name="Xquenda Andreev"
+      detail="Hem Canada"
+      initials="XA"
       message={{
         title: 'Message title',
         description: 'Message description',
         link: {to: 'https://www.shopify.com', content: 'Link content'},
         action: {content: 'Action content', onClick: () => {}},
       }}
+      se23={context.globals.polarisSummerEditions2023}
     />
   );
 }
