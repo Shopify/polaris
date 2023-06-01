@@ -7,6 +7,7 @@ import {
   Icon,
   Popover,
   Thumbnail,
+  VerticalStack,
 } from '@shopify/polaris';
 import {
   TickSmallMinor,
@@ -21,6 +22,21 @@ import {
 export default {
   component: ActionList,
 } as ComponentMeta<typeof ActionList>;
+
+export function All() {
+  return (
+    <VerticalStack gap="16">
+      <InAPopover />
+      <WithIconsOrImage />
+      <WithAnIconAndASuffix />
+      <WithSections />
+      <WithSectionsNoTitles />
+      <WithDestructiveItem />
+      <WithHelpText />
+      <WithAPrefixAndASuffix />
+    </VerticalStack>
+  );
+}
 
 export function InAPopover() {
   const [active, setActive] = useState(true);

@@ -128,4 +128,10 @@
   min-width: 0;
   max-width: 100%;
   flex: 1 1 auto;
+
+  #{$se23} & {
+    // TODO: Perhaps we should make mixins for TextProps['variant'] styles
+    font-size: var(--p-font-size-80-experimental);
+    line-height: var(--p-font-line-height-2);
+  }
 }
