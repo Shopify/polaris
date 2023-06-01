@@ -54,6 +54,16 @@ $nav-animation-variables: (
     @include no-focus-ring;
   }
 
+  #{$se23} & {
+    &:focus-visible:not(:active) {
+      /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
+      @include no-focus-ring;
+      z-index: var(--p-z-index-1);
+      outline: var(--p-border-width-2) solid
+        var(--p-color-border-interactive-focus);
+    }
+  }
+
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-200);
     font-weight: var(--p-font-weight-medium);
