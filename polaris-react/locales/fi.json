@@ -385,6 +385,9 @@
           "cancel": "Peruuta"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Ohita ilmoitus"
     }
   }
 }

@@ -385,6 +385,9 @@
           "cancel": "Hủy"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Bỏ qua thông báo"
     }
   }
 }

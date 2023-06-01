@@ -385,6 +385,9 @@
           "cancel": "İptal"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Bildirimi kapat"
     }
   }
 }

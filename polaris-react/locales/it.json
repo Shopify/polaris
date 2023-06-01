@@ -386,6 +386,9 @@
           "cancel": "Annulla"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Elimina notifica"
     }
   }
 }

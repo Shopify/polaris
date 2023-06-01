@@ -386,6 +386,9 @@
           "cancel": "Annuler"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Rejeter la notification"
     }
   }
 }
