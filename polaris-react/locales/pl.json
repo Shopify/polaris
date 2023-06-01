@@ -387,6 +387,9 @@
           "cancel": "Anuluj"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "Odrzuć powiadomienie"
     }
   }
 }
