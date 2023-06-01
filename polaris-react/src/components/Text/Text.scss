@@ -88,7 +88,7 @@
 
   #{$se23} & {
     font-size: var(--p-font-size-100);
-    line-height: var(--p-font-line-height-7);
+    line-height: var(--p-font-line-height-2);
   }
 }
 
@@ -192,10 +192,6 @@
 .bodySm {
   font-size: var(--p-font-size-75);
   line-height: var(--p-font-line-height-1);
-
-  #{$se23} & {
-    font-size: var(--p-font-size-80-experimental);
-  }
 }
 
 .bodyMd {
