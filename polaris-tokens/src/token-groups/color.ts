@@ -98,7 +98,8 @@ export type ColorBorderAlias =
   | 'border-strong-hover'
   | 'border-subdued'
   | 'border-success'
-  | 'border-success-subdued';
+  | 'border-success-subdued'
+  | ColorExperimentalBorderAlias;
 
 export type ColorIconAlias =
   | 'icon'
@@ -171,6 +172,8 @@ type ColorExperimentalIconAlias =
   | 'experimental-icon-success-strong'
   | 'experimental-icon-warning-strong'
   | 'experimental-icon-critical-strong';
+
+type ColorExperimentalBorderAlias = 'experimental-border-faint';
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
@@ -922,6 +925,10 @@ export const color: {
   },
   'color-experimental-icon-critical-strong': {
     value: colorsExperimental.red[14],
+    description: '',
+  },
+  'color-experimental-border-faint': {
+    value: colorsExperimental.gray[7](),
     description: '',
   },
 };
