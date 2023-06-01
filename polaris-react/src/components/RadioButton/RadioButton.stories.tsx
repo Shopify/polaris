@@ -37,19 +37,17 @@ export function Default() {
 }
 
 export function DisabledRadio() {
-  const [value, setValue] = useState('required');
-
-  const handleChange = useCallback(
-    (_checked, newValue) => setValue(newValue),
-    [],
-  );
+  const handleChange = useCallback((_checked, newValue) => {
+    // eslint-disable-next-line no-alert
+    alert('This should never ever get called');
+  }, []);
   return (
     <LegacyStack vertical>
       <RadioButton
         label="Accounts are required"
         id="required"
         name="accounts"
-        checked={value === 'required'}
+        checked
         onChange={handleChange}
         disabled
       />
@@ -57,7 +55,6 @@ export function DisabledRadio() {
         label="Accounts are optional"
         id="optional"
         name="accounts"
-        checked={value === 'optional'}
         onChange={handleChange}
         disabled
       />
