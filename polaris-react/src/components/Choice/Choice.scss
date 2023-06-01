@@ -49,6 +49,8 @@
   #{$se23} & {
     // stylelint-disable-next-line -- PSE23 temporary property overrides
     --p-color-text-disabled: rgba(204, 204, 204, 1);
+    // the <Text/> component in the HelpText markup in Choice.tsx is set to `undefined` when the disabled prop is true
+    // Which tells it to inherit whatever color we specify here.
     color: var(--p-color-text-disabled);
   }
 }

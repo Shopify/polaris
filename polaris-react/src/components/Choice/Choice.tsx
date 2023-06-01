@@ -69,6 +69,8 @@ export function Choice({
     <div className={styles.HelpText} id={helpTextID(id)}>
       <Text
         as="span"
+        // `undefined` means color: inherit
+        // the nearest ancestor with a specified color is .Descriptions in Choice.scss
         color={!polarisSummerEditions2023 && !disabled ? 'subdued' : undefined}
       >
         {helpText}
