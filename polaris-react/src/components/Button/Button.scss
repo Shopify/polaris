@@ -54,8 +54,8 @@
       // stylelint-enable selector-max-combinators
     }
 
-    &:focus:not(.primary),
-    &:focus-visible:not(.primary) {
+    &:focus:not(.primary):not(.plain),
+    &:focus-visible:not(.primary):not(.plain) {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       box-shadow: var(--pc-button-shadow);
     }
