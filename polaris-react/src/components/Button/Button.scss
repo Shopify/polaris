@@ -398,6 +398,9 @@
     --pc-button-color-depressed: var(--p-color-bg-active);
     // stylelint-enable
 
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+    box-shadow: var(--pc-button-shadow);
+
     // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
     svg {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
