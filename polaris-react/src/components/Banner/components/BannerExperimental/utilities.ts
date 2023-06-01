@@ -47,19 +47,19 @@ const colorsByStatus: {[key in BannerStatus]: BannerColors} = {
     withinContentContainer: {
       background: 'bg-success-subdued',
       text: 'text-success',
-      icon: 'experimental-icon-success-strong',
+      icon: 'icon-success-strong-experimental',
     },
   },
   warning: {
     withinPage: {
-      background: 'experimental-bg-warning-strong',
+      background: 'bg-warning-strong-experimental',
       text: 'text-warning-strong',
       icon: 'text-warning-strong',
     },
     withinContentContainer: {
-      background: 'experimental-bg-warning-subdued',
-      text: 'experimental-text-warning',
-      icon: 'experimental-icon-warning-strong',
+      background: 'bg-warning-subdued-experimental',
+      text: 'text-warning-experimental',
+      icon: 'icon-warning-strong-experimental',
     },
   },
   critical: {
@@ -71,7 +71,7 @@ const colorsByStatus: {[key in BannerStatus]: BannerColors} = {
     withinContentContainer: {
       background: 'bg-critical-subdued',
       text: 'text-critical-strong',
-      icon: 'experimental-icon-critical-strong',
+      icon: 'icon-critical-strong-experimental',
     },
   },
   info: {
@@ -83,7 +83,7 @@ const colorsByStatus: {[key in BannerStatus]: BannerColors} = {
     withinContentContainer: {
       background: 'bg-info-subdued',
       text: 'text-info',
-      icon: 'experimental-icon-info-strong',
+      icon: 'icon-info-strong-experimental',
     },
   },
 };
