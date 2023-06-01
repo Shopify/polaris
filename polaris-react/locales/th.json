@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "ปิดการแจ้งเตือน"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "กำลังโหลด",
       "connectedDisclosureAccessibilityLabel": "การดำเนินการที่เกี่ยวข้อง"
@@ -385,9 +388,6 @@
           "cancel": "ยกเลิก"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "ปิดการแจ้งเตือน"
     }
   }
 }

@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "알림 무시"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "로드 중",
       "connectedDisclosureAccessibilityLabel": "관련 작업"
@@ -385,9 +388,6 @@
           "cancel": "취소"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "알림 무시"
     }
   }
 }

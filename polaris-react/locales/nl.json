@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Melding sluiten"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Laden",
       "connectedDisclosureAccessibilityLabel": "Gerelateerde acties"
@@ -385,9 +388,6 @@
           "cancel": "Annuleren"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "Melding sluiten"
     }
   }
 }

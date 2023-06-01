@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "關閉通知"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "載入中",
       "connectedDisclosureAccessibilityLabel": "相關動作"
@@ -385,9 +388,6 @@
           "cancel": "取消"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "關閉通知"
     }
   }
 }

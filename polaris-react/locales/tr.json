@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} - {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Bildirimi kapat"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Yükleniyor",
       "connectedDisclosureAccessibilityLabel": "İlgili işlemler"
@@ -385,9 +388,6 @@
           "cancel": "İptal"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "Bildirimi kapat"
     }
   }
 }
