@@ -1,3 +1,5 @@
+@import '../../../../styles/common';
+
 $close-button-width: calc(var(--p-space-12) + var(--p-space-1));
 
 .Section {
@@ -10,4 +12,9 @@ $close-button-width: calc(var(--p-space-12) + var(--p-space-1));
 
 .titleHidden {
   padding-right: $close-button-width;
+
+  #{$se23} & {
+    /* Add a space to account for the button's absolute position offset */
+    padding-right: calc($close-button-width + var(--p-space-1));
+  }
 }
