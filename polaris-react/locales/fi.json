@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Ohita ilmoitus"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Ladataan",
       "connectedDisclosureAccessibilityLabel": "Aiheeseen liittyvät toimenpiteet"
@@ -385,9 +388,6 @@
           "cancel": "Peruuta"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "Ohita ilmoitus"
     }
   }
 }

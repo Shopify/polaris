@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Descartar notificación"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Cargando",
       "connectedDisclosureAccessibilityLabel": "Acciones relacionadas"
@@ -386,9 +389,6 @@
           "cancel": "Cancelar"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "Descartar notificación"
     }
   }
 }
