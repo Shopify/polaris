@@ -10,7 +10,7 @@
   @media #{$p-breakpoints-md-down} {
     max-width: 100%;
     overflow: hidden;
-    height: 56px;
+    height: auto;
     padding: 0;
   }
 }
