@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Avvis varsel"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Laster inn",
       "connectedDisclosureAccessibilityLabel": "Relaterte handlinger"
@@ -385,9 +388,6 @@
           "cancel": "Avbryt"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "Avvis varsel"
     }
   }
 }

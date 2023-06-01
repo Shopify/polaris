@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Afvis meddelelse"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Indlæser",
       "connectedDisclosureAccessibilityLabel": "Relaterede handlinger"
@@ -385,9 +388,6 @@
           "cancel": "Annuller"
         }
       }
-    },
-    "Banner": {
-      "dismissButton": "Afvis meddelelse"
     }
   }
 }
