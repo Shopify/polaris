@@ -337,6 +337,10 @@
         fill: var(--p-color-icon-on-color);
       }
 
+      &:active {
+        box-shadow: var(--p-shadow-inset-lg);
+      }
+
       // stylelint-disable-next-line selector-max-class -- se23 temporary styles
       &.disabled {
         // stylelint-disable-next-line selector-max-class, max-nesting-depth -- se23 temporary styles
@@ -418,10 +422,6 @@
       svg {
         fill: var(--p-color-text-disabled);
       }
-    }
-
-    &:active {
-      box-shadow: var(--p-shadow-inset-md);
     }
 
     &:focus,
