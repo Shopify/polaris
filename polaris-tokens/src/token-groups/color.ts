@@ -68,7 +68,7 @@ export type ColorBackgroundAlias =
   | 'bg-success-subdued-active'
   | 'bg-success-subdued-hover'
   | 'bg-warning'
-  | ColorExperimentalBackgroundAlias;
+  | ColorBackgroundAliasExperimental;
 
 export type ColorBorderAlias =
   | 'border'
@@ -98,8 +98,7 @@ export type ColorBorderAlias =
   | 'border-strong-hover'
   | 'border-subdued'
   | 'border-success'
-  | 'border-success-subdued'
-  | ColorExperimentalBorderAlias;
+  | 'border-success-subdued';
 
 export type ColorIconAlias =
   | 'icon'
@@ -149,31 +148,29 @@ export type ColorTextAlias =
   | 'text-success'
   | 'text-success-strong'
   | 'text-warning-strong'
-  | ColorExperimentalTextAlias;
+  | ColorTextAliasExperimental;
 
-type ColorExperimentalBackgroundAlias =
-  | 'experimental-bg-input-hover'
-  | 'experimental-bg-input-active'
-  | 'experimental-bg-transparent'
-  | 'experimental-bg-transparent-subdued'
-  | 'experimental-bg-transparent-hover'
-  | 'experimental-bg-transparent-active'
-  | 'experimental-bg-inverse-transparent-hover'
-  | 'experimental-bg-inverse-transparent-active'
-  | 'experimental-bg-success-strong-hover'
-  | 'experimental-bg-success-strong-active'
-  | 'experimental-bg-warning-strong'
-  | 'experimental-bg-warning-subdued';
+type ColorBackgroundAliasExperimental =
+  | 'bg-input-hover-experimental'
+  | 'bg-input-active-experimental'
+  | 'bg-transparent-experimental'
+  | 'bg-transparent-subdued-experimental'
+  | 'bg-transparent-hover-experimental'
+  | 'bg-transparent-active-experimental'
+  | 'bg-inverse-transparent-hover-experimental'
+  | 'bg-inverse-transparent-active-experimental'
+  | 'bg-success-strong-hover-experimental'
+  | 'bg-success-strong-active-experimental'
+  | 'bg-warning-strong-experimental'
+  | 'bg-warning-subdued-experimental';
 
-type ColorExperimentalTextAlias = 'experimental-text-warning';
+type ColorTextAliasExperimental = 'text-warning-experimental';
 
 type ColorExperimentalIconAlias =
-  | 'experimental-icon-info-strong'
-  | 'experimental-icon-success-strong'
-  | 'experimental-icon-warning-strong'
-  | 'experimental-icon-critical-strong';
-
-type ColorExperimentalBorderAlias = 'experimental-border-faint';
+  | 'icon-info-strong-experimental'
+  | 'icon-success-strong-experimental'
+  | 'icon-warning-strong-experimental'
+  | 'icon-critical-strong-experimental';
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
@@ -859,76 +856,72 @@ export const color: {
     description: '',
   },
   // Experimental tokens
-  'color-experimental-bg-input-hover': {
+  'color-bg-input-hover-experimental': {
     value: colorsExperimental.gray[3](),
     description: '',
   },
-  'color-experimental-bg-input-active': {
+  'color-bg-input-active-experimental': {
     value: colorsExperimental.gray[4](),
     description: '',
   },
-  'color-experimental-bg-transparent': {
+  'color-bg-transparent-experimental': {
     value: colorsExperimental.gray[16](),
     description: '',
   },
-  'color-experimental-bg-transparent-subdued': {
+  'color-bg-transparent-subdued-experimental': {
     value: colorsExperimental.gray[16]('0.05'),
     description: '',
   },
-  'color-experimental-bg-transparent-hover': {
+  'color-bg-transparent-hover-experimental': {
     value: colorsExperimental.gray[16]('0.05'),
     description: '',
   },
-  'color-experimental-bg-transparent-active': {
+  'color-bg-transparent-active-experimental': {
     value: colorsExperimental.gray[16]('0.07'),
     description: '',
   },
-  'color-experimental-bg-inverse-transparent-hover': {
+  'color-bg-inverse-transparent-hover-experimental': {
     value: colorsExperimental.gray[1]('0.1'),
     description: '',
   },
-  'color-experimental-bg-inverse-transparent-active': {
+  'color-bg-inverse-transparent-active-experimental': {
     value: colorsExperimental.gray[1]('0.2'),
     description: '',
   },
-  'color-experimental-bg-success-strong-hover': {
+  'color-bg-success-strong-hover-experimental': {
     value: colorsExperimental.green[13],
     description: '',
   },
-  'color-experimental-bg-success-strong-active': {
+  'color-bg-success-strong-active-experimental': {
     value: colorsExperimental.green[14],
     description: '',
   },
-  'color-experimental-bg-warning-subdued': {
+  'color-bg-warning-subdued-experimental': {
     value: colorsExperimental.orange[3],
     description: '',
   },
-  'color-experimental-bg-warning-strong': {
+  'color-bg-warning-strong-experimental': {
     value: colorsExperimental.orange[9],
     description: '',
   },
-  'color-experimental-text-warning': {
+  'color-text-warning-experimental': {
     value: colorsExperimental.orange[15],
     description: '',
   },
-  'color-experimental-icon-info-strong': {
+  'color-icon-info-strong-experimental': {
     value: colorsExperimental.azure[14],
     description: '',
   },
-  'color-experimental-icon-warning-strong': {
+  'color-icon-warning-strong-experimental': {
     value: colorsExperimental.orange[13],
     description: '',
   },
-  'color-experimental-icon-success-strong': {
+  'color-icon-success-strong-experimental': {
     value: colorsExperimental.green[14],
     description: '',
   },
-  'color-experimental-icon-critical-strong': {
+  'color-icon-critical-strong-experimental': {
     value: colorsExperimental.red[14],
-    description: '',
-  },
-  'color-experimental-border-faint': {
-    value: colorsExperimental.gray[7](),
     description: '',
   },
 };
