@@ -16,6 +16,7 @@ $vertical-motion-offset: -5px;
   #{$se23} & {
     // TODO: Determine if this will come from tokens and if this should apply globally
     box-shadow: var(--p-shadow-card-lg-experimental);
+    border-radius: var(--p-border-radius-3);
   }
 }
 
