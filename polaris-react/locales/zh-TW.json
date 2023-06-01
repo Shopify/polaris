@@ -385,6 +385,9 @@
           "cancel": "取消"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "關閉通知"
     }
   }
 }

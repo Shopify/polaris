@@ -385,6 +385,9 @@
           "cancel": "취소"
         }
       }
+    },
+    "Banner": {
+      "dismissButton": "알림 무시"
     }
   }
 }
