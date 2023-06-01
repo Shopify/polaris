@@ -1,4 +1,4 @@
-import type {MetadataProperties} from '../types';
+import type {MetadataProperties, Experimental} from '../types';
 import * as colors from '../colors';
 import * as colorsExperimental from '../colors-experimental';
 
@@ -98,7 +98,8 @@ export type ColorBorderAlias =
   | 'border-strong-hover'
   | 'border-subdued'
   | 'border-success'
-  | 'border-success-subdued';
+  | 'border-success-subdued'
+  | ColorBorderAliasExperimental;
 
 export type ColorIconAlias =
   | 'icon'
@@ -120,7 +121,7 @@ export type ColorIconAlias =
   | 'icon-subdued'
   | 'icon-success'
   | 'icon-warning'
-  | ColorExperimentalIconAlias;
+  | ColorIconAliasExperimental;
 
 export type ColorTextAlias =
   | 'text'
@@ -150,27 +151,31 @@ export type ColorTextAlias =
   | 'text-warning-strong'
   | ColorTextAliasExperimental;
 
-type ColorBackgroundAliasExperimental =
-  | 'bg-input-hover-experimental'
-  | 'bg-input-active-experimental'
-  | 'bg-transparent-experimental'
-  | 'bg-transparent-subdued-experimental'
-  | 'bg-transparent-hover-experimental'
-  | 'bg-transparent-active-experimental'
-  | 'bg-inverse-transparent-hover-experimental'
-  | 'bg-inverse-transparent-active-experimental'
-  | 'bg-success-strong-hover-experimental'
-  | 'bg-success-strong-active-experimental'
-  | 'bg-warning-strong-experimental'
-  | 'bg-warning-subdued-experimental';
+type ColorBackgroundAliasExperimental = Experimental<
+  | 'bg-input-hover'
+  | 'bg-input-active'
+  | 'bg-transparent'
+  | 'bg-transparent-subdued'
+  | 'bg-transparent-hover'
+  | 'bg-transparent-active'
+  | 'bg-inverse-transparent-hover'
+  | 'bg-inverse-transparent-active'
+  | 'bg-success-strong-hover'
+  | 'bg-success-strong-active'
+  | 'bg-warning-strong'
+  | 'bg-warning-subdued'
+>;
 
-type ColorTextAliasExperimental = 'text-warning-experimental';
+type ColorTextAliasExperimental = Experimental<'text-warning'>;
 
-type ColorExperimentalIconAlias =
-  | 'icon-info-strong-experimental'
-  | 'icon-success-strong-experimental'
-  | 'icon-warning-strong-experimental'
-  | 'icon-critical-strong-experimental';
+type ColorIconAliasExperimental = Experimental<
+  | 'icon-info-strong'
+  | 'icon-success-strong'
+  | 'icon-warning-strong'
+  | 'icon-critical-strong'
+>;
+
+type ColorBorderAliasExperimental = Experimental<'border-faint'>;
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
@@ -922,6 +927,10 @@ export const color: {
   },
   'color-icon-critical-strong-experimental': {
     value: colorsExperimental.red[14],
+    description: '',
+  },
+  'color-border-faint-experimental': {
+    value: colorsExperimental.gray[7](),
     description: '',
   },
 };
