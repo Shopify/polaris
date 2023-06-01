@@ -30,21 +30,41 @@
 .statusInfo {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-info);
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- se23
+    --pc-pip-color: var(--p-color-icon-info);
+  }
 }
 
 .statusSuccess {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-success);
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- se23
+    --pc-pip-color: var(--p-color-icon-success);
+  }
 }
 
 .statusNew {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon);
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- se23
+    --pc-pip-color: var(--p-color-text-subdued);
+  }
 }
 
 .statusAttention {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-caution);
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- se23
+    --pc-pip-color: var(--p-color-icon-caution);
+  }
 }
 
 .statusWarning {
@@ -60,6 +80,11 @@
 .statusCritical {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-critical);
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- se23
+    --pc-pip-color: var(--p-color-icon-critical);
+  }
 }
 
 .progressIncomplete {

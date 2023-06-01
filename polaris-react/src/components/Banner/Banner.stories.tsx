@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
@@ -11,8 +12,9 @@ import {
   Modal,
   Text,
   TextContainer,
+  Card,
 } from '@shopify/polaris';
-import {DiscountsMajor} from '@shopify/polaris-icons';
+import {DiscountsMajor, DiscountsMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Banner,
@@ -229,5 +231,106 @@ export function CustomIcon() {
       icon={DiscountsMajor}
       title="Choose a plan and your discount will be applied at checkout."
     />
+  );
+}
+
+export function All() {
+  return (
+    <VerticalStack gap="3">
+      <Text as="h2" variant="headingMd">
+        With dismiss and actions
+      </Text>
+      <AllBanners
+        onDismiss={() => {}}
+        action={{content: 'Primary action'}}
+        secondaryAction={{content: 'Secondary action'}}
+      />
+      <Text as="h2" variant="headingMd">
+        Default by status
+      </Text>
+      <AllBanners />
+      <Text as="h2" variant="headingMd">
+        No title
+      </Text>
+      <AllBanners title={undefined} />
+      <Text as="h2" variant="headingMd">
+        Only title
+      </Text>
+      <AllBanners children={undefined} onDismiss={() => {}} />
+      <Text as="h2" variant="headingMd">
+        Hide icon
+      </Text>
+      <AllBanners hideIcon onDismiss={() => {}} />
+      <Text as="h2" variant="headingMd">
+        Custom icon
+      </Text>
+      <AllBanners icon={DiscountsMajor} onDismiss={() => {}} />
+      <Text as="h2" variant="headingMd">
+        In card
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card with dismiss
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners onDismiss={() => {}} />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card no title
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners title={undefined} onDismiss={() => {}} />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card no icon
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners hideIcon onDismiss={() => {}} />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card custom icon
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners icon={DiscountsMinor} onDismiss={() => {}} />
+      </LegacyCard>
+    </VerticalStack>
+  );
+}
+
+function AllBanners(props) {
+  return (
+    <VerticalStack>
+      <Banner
+        title="Default"
+        children={<Text as="p">Default status</Text>}
+        {...props}
+      />
+      <Banner
+        title="Info"
+        status="info"
+        children={<Text as="p">Info status</Text>}
+        {...props}
+      />
+      <Banner
+        title="Success"
+        status="success"
+        children={<Text as="p">Success status</Text>}
+        {...props}
+      />
+      <Banner
+        title="Warning"
+        status="warning"
+        children={<Text as="p">Warning status</Text>}
+        {...props}
+      />
+      <Banner
+        title="Critical"
+        status="critical"
+        children={<Text as="p">Critical status</Text>}
+        {...props}
+      />
+    </VerticalStack>
   );
 }
