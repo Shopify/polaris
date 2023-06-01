@@ -357,13 +357,13 @@
       --pc-button-color: var(--p-color-bg-success-strong);
       --pc-button-text: var(--p-color-text-on-color);
       --pc-button-color-hover: var(
-        --p-color-experimental-bg-success-strong-hover
+        --p-color-bg-success-strong-hover-experimental
       );
       --pc-button-color-active: var(
-        --p-color-experimental-bg-success-strong-active
+        --p-color-bg-success-strong-active-experimental
       );
       --pc-button-color-depressed: var(
-        --p-color-experimental-bg-success-strong-active
+        --p-color-bg-success-strong-active-experimental
       );
       // stylelint-enable
     }
@@ -467,7 +467,8 @@
     }
 
     &:active {
-      background-color: var(--p-color-experimental-bg-transparent-active);
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      background-color: var(--p-bg-transparent-active-color-experimental);
       box-shadow: none;
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       color: var(--pc-button-text);
@@ -480,7 +481,7 @@
 
     &:hover,
     &:focus:not(.disabled) {
-      background-color: var(--p-color-experimental-bg-transparent-hover);
+      background-color: var(--p-color-bg-transparent-hover-experimental);
       text-decoration: none;
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       color: var(--pc-button-text);
@@ -501,6 +502,11 @@
       --pc-button-color: transparent;
       --pc-button-text: var(--p-color-text-critical);
       // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
+
+      // stylelint-disable-next-line selector-max-class -- se23 temporary styles
+      &.destructive {
+        box-shadow: none;
+      }
 
       // stylelint-disable-next-line selector-max-class -- se23 temporary styles
       &.disabled {
