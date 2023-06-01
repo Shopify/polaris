@@ -15,7 +15,17 @@ export type FontSizeScale =
   | '700'
   | FontSizeScaleExperimental;
 
-export type FontLineHeightScale = '1' | '2' | '3' | '4' | '5' | '6' | '7';
+type FontLineHeightScaleExperimental = Experimental<'075'>;
+
+export type FontLineHeightScale =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | FontLineHeightScaleExperimental;
 
 export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
 
@@ -83,6 +93,9 @@ export const font: {
   },
   'font-weight-bold': {
     value: '700',
+  },
+  'font-line-height-075-experimental': {
+    value: '12px',
   },
   'font-line-height-1': {
     value: '16px',
