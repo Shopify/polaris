@@ -464,6 +464,11 @@
       background-color: var(--p-color-experimental-bg-transparent-active);
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       color: var(--pc-button-text);
+
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
+      .Content {
+        transform: translateY(0);
+      }
     }
 
     &:hover,
@@ -801,7 +806,7 @@
       fill: var(--p-color-text);
     }
 
-    &:active:active {
+    &:active {
       color: var(--p-color-text-primary-hover);
 
       // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
