@@ -80,7 +80,7 @@ export async function toStyleSheet(metadata: Metadata) {
 
   const styles = `
   :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
-  :root:where(.Polaris-Summer-Editions-2023){${getStaticCustomPropertiesExperimental(
+  html.Polaris-Summer-Editions-2023{${getStaticCustomPropertiesExperimental(
     metadata,
   )}}
   ${getKeyframes(metadata.motion)}

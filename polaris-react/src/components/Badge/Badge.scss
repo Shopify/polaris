@@ -14,7 +14,7 @@
   color: var(--p-color-text);
 
   #{$se23} & {
-    background-color: var(--p-color-experimental-bg-transparent-subdued);
+    background-color: var(--p-color-bg-transparent-subdued-experimental);
     color: var(--p-color-text-subdued);
     font-weight: var(--p-font-weight-medium);
     border-radius: var(--p-border-radius-2);
@@ -73,7 +73,7 @@
   background-color: var(--p-color-bg-warning);
 
   #{$se23} & {
-    color: var(--p-color-experimental-text-warning);
+    color: var(--p-color-text-warning-experimental);
 
     // stylelint-disable-next-line -- se23 svg fill override
     svg {

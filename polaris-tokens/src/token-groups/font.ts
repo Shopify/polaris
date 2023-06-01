@@ -1,6 +1,4 @@
-import type {MetadataProperties} from '../types';
-
-type Experimental<T extends string> = `${T}-experimental`;
+import type {MetadataProperties, Experimental} from '../types';
 
 type FontFamilyAlias = 'sans' | 'mono';
 

@@ -6,11 +6,7 @@
   outline: var(--p-border-width-1) solid transparent;
 
   #{$se23} & {
-    /* stylelint-disable -- SE23 temporary styles */
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.07), inset 0px -1px 0px #d4d4d4,
-      inset -1px 0px 0px #e3e3e3, inset 1px 0px 0px #e3e3e3,
-      inset 0px 1px 0px #e3e3e3;
-    /* stylelint-enable */
+    box-shadow: var(--p-shadow-card-sm-experimental);
   }
 
   + .LegacyCard {
@@ -77,8 +73,8 @@
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
     #{$se23} & {
-      /* stylelint-disable-next-line polaris/color/function-disallowed-list -- se23 temporary styles */
-      border-top: 1px solid rgba(235, 235, 235, 1);
+      border-top: var(--p-border-width-1) solid
+        var(--p-color-border-faint-experimental);
     }
 
     @media print {
