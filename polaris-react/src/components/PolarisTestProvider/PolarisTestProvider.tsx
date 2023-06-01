@@ -65,13 +65,18 @@ export function PolarisTestProvider({
 
   const stickyManager = useMemo(() => new StickyManager(), []);
 
+  const featuresConfig = useMemo(
+    () => ({...features, polarisSummerEditions2023: false}),
+    [features],
+  );
+
   const mergedFrame = createFrameContext(frame);
 
   const mergedMediaQuery = merge(defaultMediaQuery, mediaQuery);
 
   return (
     <Wrapper>
-      <FeaturesContext.Provider value={features}>
+      <FeaturesContext.Provider value={featuresConfig}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={scrollLockManager}>
             <StickyManagerContext.Provider value={stickyManager}>
