@@ -272,7 +272,7 @@ $disabled-fade: 0.6;
     margin-bottom: var(--p-space-1);
 
     #{$se23} & {
-      font-size: var(--p-font-experimental-size-80);
+      font-size: var(--p-font-size-80-experimental);
     }
   }
 }
@@ -432,7 +432,7 @@ $disabled-fade: 0.6;
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
       &:is(:hover, :focus-visible) {
-        background: var(--p-color-experimental-bg-transparent-hover);
+        background: var(--p-color-bg-transparent-hover-experimental);
       }
     }
 
@@ -457,7 +457,7 @@ $disabled-fade: 0.6;
       @include no-focus-ring;
 
       #{$se23} & {
-        background: var(--p-color-experimental-bg-transparent-active);
+        background: var(--p-color-bg-transparent-active-experimental);
       }
     }
 
@@ -485,7 +485,7 @@ $disabled-fade: 0.6;
   #{$se23} & {
     // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
     .ItemInnerWrapper-selected {
-      background-color: var(--p-color-experimental-bg-transparent-active);
+      background-color: var(--p-color-bg-transparent-active-experimental);
     }
   }
 
