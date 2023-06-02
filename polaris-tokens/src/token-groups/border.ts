@@ -18,8 +18,8 @@ export type BorderTokenName =
   | BorderExperimentalAlias;
 
 type BorderExperimentalAlias =
-  | 'border-experimental-width-1'
-  | 'border-experimental-width-2';
+  | 'border-width-1-experimental'
+  | 'border-width-2-experimental';
 
 export type BorderTokenGroup = {
   [TokenName in BorderTokenName]: string;
@@ -67,10 +67,10 @@ export const border: {
   'border-width-5': {
     value: '5px',
   },
-  'border-experimental-width-1': {
+  'border-width-1-experimental': {
     value: '0.66px',
   },
-  'border-experimental-width-2': {
+  'border-width-2-experimental': {
     value: '1px',
   },
 };
