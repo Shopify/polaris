@@ -1096,6 +1096,11 @@
   .Button,
   .Button::after {
     border-radius: 0;
+
+    // Bump specificity
+    #{$se23} & {
+      border-radius: 0;
+    }
   }
 
   > :first-child .Button,
@@ -1103,6 +1108,11 @@
     border-radius: 0;
     border-top-left-radius: var(--p-border-radius-1);
     border-bottom-left-radius: var(--p-border-radius-1);
+
+    #{$se23} & {
+      border-top-left-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-2);
+    }
   }
 
   > :last-child .Button,
@@ -1110,11 +1120,20 @@
     border-radius: 0;
     border-top-right-radius: var(--p-border-radius-1);
     border-bottom-right-radius: var(--p-border-radius-1);
+
+    #{$se23} & {
+      border-top-right-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-2);
+    }
   }
 
   > :last-child:first-child .Button,
   > :last-child:first-child .Button::after {
     border-radius: var(--p-border-radius-1);
+
+    #{$se23} & {
+      border-radius: var(--p-border-radius-2);
+    }
   }
 }
 
