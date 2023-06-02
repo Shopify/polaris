@@ -4,6 +4,7 @@
   background-color: var(--p-color-bg);
   box-shadow: var(--p-shadow-md);
   outline: var(--p-border-width-1) solid transparent;
+  overflow: clip;
 
   + .LegacyCard {
     margin-top: var(--p-space-4);
