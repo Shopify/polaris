@@ -17,6 +17,10 @@ body {
   color: var(--p-color-text);
 }
 
+#{$se23} body {
+  font-size: var(--p-font-size-80-experimental);
+}
+
 html,
 body,
 button {
