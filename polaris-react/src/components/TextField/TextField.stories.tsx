@@ -625,6 +625,7 @@ export function All() {
           value="Value"
           onChange={() => {}}
           autoComplete="off"
+          helpText="Help text"
           disabled
         />
         <TextField
