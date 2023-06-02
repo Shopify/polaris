@@ -64,6 +64,8 @@ export interface IndexFiltersProps
   onSortKeyChange?: (value: string) => void;
   /** Optional callback when using saved views and changing the sort direction */
   onSortDirectionChange?: (value: string) => void;
+  /** Callback when the add filter button is clicked, to be passed to AlphaFilters. */
+  onAddFilterClick?: () => void;
   /** The primary action to display  */
   primaryAction?: IndexFiltersPrimaryAction;
   /** The cancel action to display */
@@ -99,6 +101,7 @@ export function IndexFilters({
   onSort,
   onSortKeyChange,
   onSortDirectionChange,
+  onAddFilterClick,
   sortOptions,
   sortSelected,
   queryValue = '',
@@ -405,6 +408,7 @@ export function IndexFilters({
                   onQueryClear={handleClearSearch}
                   onQueryFocus={handleQueryFocus}
                   onQueryBlur={handleQueryBlur}
+                  onAddFilterClick={onAddFilterClick}
                   filters={filters}
                   appliedFilters={appliedFilters}
                   onClearAll={onClearAll}
