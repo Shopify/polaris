@@ -266,6 +266,17 @@ export function All() {
       </Text>
       <AllBanners icon={DiscountsMajor} onDismiss={() => {}} />
       <Text as="h2" variant="headingMd">
+        With links
+      </Text>
+      <AllBanners
+        onDismiss={() => {}}
+        children={
+          <>
+            Text with <Link url="">monochrome link</Link>.
+          </>
+        }
+      />
+      <Text as="h2" variant="headingMd">
         In card
       </Text>
       <LegacyCard sectioned>
@@ -294,6 +305,19 @@ export function All() {
       </Text>
       <LegacyCard sectioned>
         <AllBanners icon={DiscountsMinor} onDismiss={() => {}} />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card with links
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners
+          onDismiss={() => {}}
+          children={
+            <>
+              Text with <Link url="">monochrome link</Link>.
+            </>
+          }
+        />
       </LegacyCard>
     </VerticalStack>
   );

@@ -90,7 +90,7 @@ export function BannerExperimental({
             <VerticalStack gap="2">
               <VerticalStack gap="05">
                 {bannerTitle}
-                {children}
+                <div>{children}</div>
               </VerticalStack>
               {actionButtons}
             </VerticalStack>
@@ -128,7 +128,7 @@ export function BannerExperimental({
         {hasContent && (
           <Box padding={{xs: '3', sm: '4'}} paddingBlockStart="3">
             <VerticalStack gap="2">
-              {children}
+              <div>{children}</div>
               {actionButtons}
             </VerticalStack>
           </Box>
