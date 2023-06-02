@@ -10,8 +10,14 @@ import {
   LegacyStack,
   Tag,
   TextField,
+  Icon,
+  Tooltip,
 } from '@shopify/polaris';
-import {DeleteMinor} from '@shopify/polaris-icons';
+import {
+  DeleteMinor,
+  QuestionMarkMinor,
+  SearchMinor,
+} from '@shopify/polaris-icons';
 
 export default {
   component: TextField,
@@ -601,5 +607,224 @@ export function WithInlineSuggestion() {
         suggestion={suggestion}
       />
     </div>
+  );
+}
+
+export function All() {
+  return (
+    <FormLayout>
+      <FormLayout.Group>
+        <TextField
+          label="Default"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          label="Disabled"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+          disabled
+        />
+        <TextField
+          label="Read only"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+          readOnly
+        />
+        <TextField
+          label="Error"
+          value="Value"
+          onChange={() => {}}
+          error="Error message."
+          autoComplete="off"
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Number"
+          type="number"
+          value="5"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          label="With label action"
+          value="Value"
+          onChange={() => {}}
+          labelAction={{content: 'Action'}}
+          autoComplete="off"
+        />
+        <TextField
+          label="Placeholder"
+          value=""
+          onChange={() => {}}
+          placeholder="Example"
+          autoComplete="off"
+        />
+        <TextField
+          label="Help text"
+          type="email"
+          value="Value"
+          onChange={() => {}}
+          helpText="Help text."
+          autoComplete="email"
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Prefix"
+          type="number"
+          value="4"
+          onChange={() => {}}
+          prefix="$"
+          autoComplete="off"
+        />
+        <TextField
+          label="Prefix icon"
+          type="search"
+          value="Value"
+          onChange={() => {}}
+          prefix={<Icon source={SearchMinor} />}
+          autoComplete="off"
+        />
+        <TextField
+          label="Suffix tooltip"
+          value="Value"
+          onChange={() => {}}
+          suffix={
+            <Tooltip content="Hello world">
+              <Icon source={QuestionMarkMinor} />
+            </Tooltip>
+          }
+          autoComplete="off"
+        />
+        <TextField
+          label="Character count"
+          value="Value"
+          onChange={() => {}}
+          maxLength={20}
+          autoComplete="off"
+          showCharacterCount
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Clear button"
+          value="Value"
+          onChange={() => {}}
+          clearButton
+          onClearButtonClick={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          label="Required"
+          value="Value"
+          onChange={() => {}}
+          requiredIndicator
+          autoComplete="off"
+        />
+        <TextField
+          label="Monospaced"
+          value="Value"
+          onChange={() => {}}
+          monospaced
+          autoComplete="off"
+        />
+        <TextField
+          label="Borderless"
+          value="Value"
+          onChange={() => {}}
+          borderless
+          autoComplete="off"
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Shipping address"
+          value="Value"
+          onChange={() => {}}
+          multiline={4}
+          autoComplete="off"
+        />
+        <TextField
+          label="Multiline error"
+          value="Value"
+          onChange={() => {}}
+          error="Error message."
+          multiline={4}
+          autoComplete="off"
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Label hidden"
+          value=""
+          labelHidden
+          onChange={() => {}}
+          placeholder="Label hidden"
+          autoComplete="off"
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Connected"
+          type="number"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+          connectedLeft={<Button>Left</Button>}
+          connectedRight={<Button>Right</Button>}
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Search native"
+          type="search"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          label="Date native"
+          type="date"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          label="Date time native"
+          type="datetime-local"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Month native"
+          type="month"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          label="Time native"
+          type="time"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          label="Week native"
+          type="week"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+      </FormLayout.Group>
+    </FormLayout>
   );
 }
