@@ -14,7 +14,12 @@ export type BorderWidthScale = '1' | '2' | '3' | '4' | '5';
 
 export type BorderTokenName =
   | `border-radius-${BorderRadiusScale}`
-  | `border-width-${BorderWidthScale}`;
+  | `border-width-${BorderWidthScale}`
+  | BorderExperimentalAlias;
+
+type BorderExperimentalAlias =
+  | 'border-width-1-experimental'
+  | 'border-width-2-experimental';
 
 export type BorderTokenGroup = {
   [TokenName in BorderTokenName]: string;
@@ -61,5 +66,11 @@ export const border: {
   },
   'border-width-5': {
     value: '5px',
+  },
+  'border-width-1-experimental': {
+    value: '0.66px',
+  },
+  'border-width-2-experimental': {
+    value: '1px',
   },
 };
