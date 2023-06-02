@@ -153,7 +153,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         plain
         icon={CancelSmallMinor}
         onClick={onDismiss}
-        accessibilityLabel="Dismiss notification"
+        accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
       />
     </div>
   );

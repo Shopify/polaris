@@ -1,6 +1,5 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useContext, useEffect, useRef, useId} from 'react';
 
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {ScrollableContext} from '../../context';
 
 export function ScrollTo() {
@@ -15,7 +14,7 @@ export function ScrollTo() {
     scrollToPosition(anchorNode.current.offsetTop);
   }, [scrollToPosition]);
 
-  const id = useUniqueId(`ScrollTo`);
+  const id = useId();
   // eslint-disable-next-line jsx-a11y/anchor-is-valid
   return <a id={id} ref={anchorNode} />;
 }

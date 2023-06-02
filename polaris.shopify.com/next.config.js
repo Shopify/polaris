@@ -219,11 +219,6 @@ const deprecated = [
     permanent: false,
   },
   {
-    source: '/components/stack',
-    destination: '/components/deprecated/stack',
-    permanent: false,
-  },
-  {
     source: '/components/subheading',
     destination: '/components/deprecated/subheading',
     permanent: false,
@@ -339,12 +334,17 @@ const imagesAndIcons = [
 const layoutAndStructure = [
   {
     source: '/components/alpha-card',
-    destination: '/components/layout-and-structure/alpha-card',
+    destination: '/components/layout-and-structure/card',
+    permanent: false,
+  },
+  {
+    source: '/components/card',
+    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
     source: '/components/layout-and-structure/card',
-    destination: '/components/layout-and-structure/alpha-card',
+    destination: '/components/layout-and-structure/legacy-card',
     permanent: false,
   },
   {
@@ -443,12 +443,12 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/stack',
+    source: '/components/layout-and-structure/alpha-stack',
     destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/alpha-stack',
+    source: '/components/stack',
     destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },

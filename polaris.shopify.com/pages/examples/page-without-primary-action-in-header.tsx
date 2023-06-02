@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function PageExample() {
   return (
     <Page
-      breadcrumbs={[{content: 'Orders', url: '#'}]}
+      backAction={{content: 'Orders', url: '#'}}
       title="#1085"
       secondaryActions={[
         {content: 'Print'},

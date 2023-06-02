@@ -3,12 +3,12 @@ import React, {
   useRef,
   useImperativeHandle,
   useContext,
+  useId,
 } from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {useToggle} from '../../utilities/use-toggle';
-import {useUniqueId} from '../../utilities/unique-id';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
@@ -69,7 +69,8 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     ref,
   ) {
     const inputNode = useRef<HTMLInputElement>(null);
-    const id = useUniqueId('Checkbox', idProp);
+    const uniqId = useId();
+    const id = idProp ?? uniqId;
     const {
       value: mouseOver,
       setTrue: handleMouseOver,

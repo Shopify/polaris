@@ -32,6 +32,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Dismiss notification"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Loading",
       "connectedDisclosureAccessibilityLabel": "Related actions"

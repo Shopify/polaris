@@ -1,5 +1,25 @@
 # Changelog
 
+## 13.0.0
+
+### Major Changes
+
+- [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for NodeJS version 14 and set version 16 as minimum supported version
+
+### Patch Changes
+
+- Updated dependencies [[`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806)]:
+  - @shopify/polaris-tokens@7.0.0
+
+## 12.0.1
+
+### Patch Changes
+
+- [#9228](https://github.com/Shopify/polaris/pull/9228) [`6ae3295e7`](https://github.com/Shopify/polaris/commit/6ae3295e78518112e611185e7a8f9b6287bd985a) Thanks [@BPScott](https://github.com/BPScott)! - Widen stylelint peerDependency range to include v15
+
+- Updated dependencies [[`5a9b011d1`](https://github.com/Shopify/polaris/commit/5a9b011d14a0cc575f4fd34d9e4d8fcfeb0cd597)]:
+  - @shopify/polaris-tokens@6.14.0
+
 ## 12.0.0
 
 ### Major Changes

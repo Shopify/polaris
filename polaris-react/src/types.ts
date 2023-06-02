@@ -402,4 +402,8 @@ export interface FilterInterface {
   hideClearButton?: boolean;
   /** Optional callback when filter is pressed */
   onAction?: () => void;
+  /** Suffix source */
+  suffix?: React.ReactNode;
+  /** Optional section heading that this filter will go under  */
+  section?: string;
 }

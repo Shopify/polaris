@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Avvisa avisering"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Laddar",
       "connectedDisclosureAccessibilityLabel": "Relaterade åtgärder"

@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Bỏ qua thông báo"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Đang tải",
       "connectedDisclosureAccessibilityLabel": "Thao tác có liên quan"
