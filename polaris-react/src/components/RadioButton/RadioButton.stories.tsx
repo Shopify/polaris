@@ -35,3 +35,29 @@ export function Default() {
     </LegacyStack>
   );
 }
+
+export function DisabledRadio() {
+  const handleChange = useCallback((_checked, newValue) => {
+    // eslint-disable-next-line no-alert
+    alert('This should never ever get called');
+  }, []);
+  return (
+    <LegacyStack vertical>
+      <RadioButton
+        label="Accounts are required"
+        id="required"
+        name="accounts"
+        checked
+        onChange={handleChange}
+        disabled
+      />
+      <RadioButton
+        label="Accounts are optional"
+        id="optional"
+        name="accounts"
+        onChange={handleChange}
+        disabled
+      />
+    </LegacyStack>
+  );
+}

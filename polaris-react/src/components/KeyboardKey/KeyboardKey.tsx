@@ -14,7 +14,7 @@ export interface KeyboardKeyProps {
 export function KeyboardKey({children = '', size}: KeyboardKeyProps) {
   const {polarisSummerEditions2023} = useFeatures();
   const key =
-    !size && children.length > 1
+    !polarisSummerEditions2023 && !size && children.length > 1
       ? children.toLowerCase()
       : children.toUpperCase();
 

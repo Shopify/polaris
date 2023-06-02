@@ -175,7 +175,9 @@ type ColorIconAliasExperimental = Experimental<
   | 'icon-critical-strong'
 >;
 
-type ColorBorderAliasExperimental = Experimental<'border-faint'>;
+type ColorBorderAliasExperimental = Experimental<
+  'border-faint' | 'border-input-active'
+>;
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
@@ -864,6 +866,9 @@ export const color: {
   'color-bg-input-hover-experimental': {
     value: colorsExperimental.gray[3](),
     description: '',
+  },
+  'color-border-input-active-experimental': {
+    value: colorsExperimental.gray[16](),
   },
   'color-bg-input-active-experimental': {
     value: colorsExperimental.gray[4](),

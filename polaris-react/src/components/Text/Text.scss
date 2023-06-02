@@ -206,7 +206,6 @@
 .bodyLg {
   font-size: var(--p-font-size-200);
   line-height: var(--p-font-line-height-2);
-  // TODO: Should weight be here (even if regular is the default)?
 
   #{$se23} & {
     font-size: var(--p-font-size-100);

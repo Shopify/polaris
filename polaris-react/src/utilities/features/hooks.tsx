@@ -1,7 +1,7 @@
 import {useContext} from 'react';
 
-import {FeaturesContext} from './context';
 import type {FeaturesConfig} from './types';
+import {FeaturesContext} from './context';
 
 export function useFeatures() {
   const features = useContext(FeaturesContext);
@@ -14,7 +14,7 @@ export function useFeatures() {
 }
 
 /**
- * Temp child render prop for accessing features in class components.
+ * Temporary child render prop for accessing features in class components.
  */
 export function UseFeatures(props: {
   children: (featuresConfig: FeaturesConfig) => JSX.Element;
