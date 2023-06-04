@@ -111,11 +111,40 @@
   &[aria-disabled='true'] path {
     fill: var(--p-color-icon-disabled);
   }
+
+  #{$se23} & {
+    color: var(--p-color-text-primary);
+    // stylelint-disable-next-line -- No space token for 6px
+    padding: 6px var(--p-space-3);
+    height: 2rem;
+
+    &:not([aria-disabled='true']):hover {
+      background-color: var(--p-color-bg-subdued);
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):focus {
+      background-color: transparent;
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):active {
+      background-color: var(--p-color-bg-subdued);
+      color: var(--p-color-text-primary);
+      z-index: var(--p-z-index-1);
+    }
+
+    @media #{$p-breakpoints-md-up} {
+      font-size: var(--p-font-size-75);
+      line-height: var(--p-font-line-height-1);
+      height: 1.75rem;
+    }
+  }
 }
 
 .Tab-active {
   background: var(--p-color-bg-primary-subdued-hover);
-  color: var(--p-color-text-primary);
+  color: var(--p-color-text);
 
   &[aria-disabled='true'] {
     background: var(--p-color-bg-disabled);
@@ -132,10 +161,34 @@
     background-color: var(--p-color-bg-success-subdued-active);
     color: var(--p-color-text-primary);
   }
+
+  #{$se23} & {
+    background: var(--p-color-bg-subdued);
+    color: var(--p-color-text);
+
+    &[aria-disabled='true'] {
+      background: var(--p-color-bg-disabled);
+      color: var(--p-color-text-disabled);
+    }
+
+    &:not([aria-disabled='true']):hover,
+    &:not([aria-disabled='true']):focus {
+      background-color: var(--p-color-bg-subdued);
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):active {
+      background-color: var(--p-color-bg-subdued);
+    }
+  }
 }
 
 .Tab-hasActions {
   padding-right: var(--p-space-2);
+
+  #{$se23} & {
+    padding-right: var(--p-space-2);
+  }
 }
 
 .Tab-iconOnly {
@@ -266,6 +319,35 @@
 
     path {
       fill: var(--p-color-icon-disabled);
+    }
+  }
+
+  #{$se23} & {
+    background-color: transparent;
+    color: var(--p-color-text-primary);
+
+    // stylelint-disable-next-line selector-max-combinators -- Polaris component experimental styles
+    svg {
+      fill: var(--p-color-icon);
+    }
+
+    &[aria-disabled='true'] {
+      background: var(--p-color-bg-disabled);
+      color: var(--p-color-text-disabled);
+    }
+
+    &:not([aria-disabled='true']):hover {
+      background-color: var(--p-color-bg-interactive-subdued-active);
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):focus {
+      background-color: transparent;
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):active {
+      background-color: var(--p-color-bg-interactive-subdued-active);
     }
   }
 }

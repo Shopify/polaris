@@ -313,7 +313,7 @@ export const Tab = forwardRef(
         >
           <Text
             as="span"
-            variant={mdDown ? 'bodyMd' : 'bodySm'}
+            variant={mdDown ? 'bodyLg' : 'bodySm'}
             fontWeight="semibold"
           >
             {icon ?? content}
