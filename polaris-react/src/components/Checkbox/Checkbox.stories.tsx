@@ -83,6 +83,7 @@ export function Error() {
   return (
     <Checkbox
       label="Basic checkbox"
+      helpText="Some help text"
       error="Something went wrong"
       checked={checked}
       onChange={handleChange}
