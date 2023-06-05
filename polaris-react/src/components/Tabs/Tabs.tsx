@@ -195,7 +195,7 @@ export const Tabs = ({
           key={`${index}-${tab.id}`}
           id={tab.id}
           panelID={children ? tabPanelID : undefined}
-          disabled={disabled}
+          disabled={disabled || tab.disabled}
           siblingTabHasFocus={tabToFocus > -1}
           focused={index === tabToFocus}
           selected={index === selected}
