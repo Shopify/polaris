@@ -1,5 +1,29 @@
 # Changelog
 
+## 11.1.0
+
+### Minor Changes
+
+- [#9269](https://github.com/Shopify/polaris/pull/9269) [`bf3bc75a1`](https://github.com/Shopify/polaris/commit/bf3bc75a135da6819238bb72cf8807e598a331df) Thanks [@nat-king](https://github.com/nat-king)! - Added optional `onAddFilterClick` callback prop to the indexFilters component
+
+### Patch Changes
+
+- [#9295](https://github.com/Shopify/polaris/pull/9295) [`7e21fe093`](https://github.com/Shopify/polaris/commit/7e21fe093c021d0531e256b678221cfbb79e4412) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `initials` overflowing when `Avatar` is round
+
+* [#9343](https://github.com/Shopify/polaris/pull/9343) [`ae3208332`](https://github.com/Shopify/polaris/commit/ae32083324390a0012981a24f4b1e3c23f166735) Thanks [@qt314](https://github.com/qt314)! - Alphabetized locale files
+
+- [#9314](https://github.com/Shopify/polaris/pull/9314) [`e7d836819`](https://github.com/Shopify/polaris/commit/e7d836819ac33936136df2a79093c2a0e73146b4) Thanks [@FCalabria](https://github.com/FCalabria)! - Removed focus styles on TextField while disabled
+
+* [#9223](https://github.com/Shopify/polaris/pull/9223) [`221426aaf`](https://github.com/Shopify/polaris/commit/221426aaf10ddb8266b89d40edb5b18fba4b816b) Thanks [@aveline](https://github.com/aveline)! - Deprecated `external` prop in `Link` component
+
+- [#9229](https://github.com/Shopify/polaris/pull/9229) [`821535820`](https://github.com/Shopify/polaris/commit/821535820c97e1ea29ddf8421d52242322c18b17) Thanks [@aeperea](https://github.com/aeperea)! - Tabs update disabled state
+
+* [#9323](https://github.com/Shopify/polaris/pull/9323) [`cd43c8b47`](https://github.com/Shopify/polaris/commit/cd43c8b4747f97269c2710031bd0dda16386c224) Thanks [@qt314](https://github.com/qt314)! - Added internationalized accessibility label to Banner dismiss button
+
+- [#9263](https://github.com/Shopify/polaris/pull/9263) [`a3f3462a6`](https://github.com/Shopify/polaris/commit/a3f3462a66b2bb4bc0dbf23b336fa57d473ba190) Thanks [@mattkubej](https://github.com/mattkubej)! - Protect border radius of `LegacyCard` with overflow clip
+
+* [#9273](https://github.com/Shopify/polaris/pull/9273) [`e823538ad`](https://github.com/Shopify/polaris/commit/e823538ad27460bc026d37132713462700e577ea) Thanks [@aishad](https://github.com/aishad)! - Fixed inline padding on Modal Footer
+
 ## 11.0.1
 
 ### Patch Changes
