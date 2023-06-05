@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 .Badge {
   // stylelint-disable -- Polaris component custom properties
   --pc-badge-horizontal-padding: var(--p-space-2);
@@ -11,6 +13,18 @@
   border-radius: var(--p-border-radius-5);
   color: var(--p-color-text);
 
+  #{$se23} & {
+    background-color: var(--p-color-bg-transparent-subdued-experimental);
+    color: var(--p-color-text-subdued);
+    font-weight: var(--p-font-weight-medium);
+    border-radius: var(--p-border-radius-2);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-text-subdued);
+    }
+  }
+
   @media print {
     border: solid var(--p-border-width-1) var(--p-color-border);
   }
@@ -18,26 +32,88 @@
 
 .statusSuccess {
   background-color: var(--p-color-bg-success);
+
+  #{$se23} & {
+    color: var(--p-color-text-success);
+    background-color: var(--p-color-bg-success);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-success);
+    }
+  }
 }
 
 .statusInfo {
   background-color: var(--p-color-bg-info);
+
+  #{$se23} & {
+    color: var(--p-color-text-info);
+    background-color: var(--p-color-bg-info);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-info);
+    }
+  }
 }
 
 .statusAttention {
   background-color: var(--p-color-bg-caution);
+
+  #{$se23} & {
+    color: var(--p-color-text-caution);
+    background-color: var(--p-color-bg-caution);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-caution);
+    }
+  }
 }
 
 .statusWarning {
   background-color: var(--p-color-bg-warning);
+
+  #{$se23} & {
+    color: var(--p-color-text-warning-experimental);
+    background-color: var(--p-color-bg-warning);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-warning);
+    }
+  }
 }
 
 .statusCritical {
   background-color: var(--p-color-bg-critical);
+
+  #{$se23} & {
+    color: var(--p-color-text-critical);
+    background-color: var(--p-color-bg-critical);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-icon-critical);
+    }
+  }
 }
 
 .statusNew {
   border: none;
+
+  #{$se23} & {
+    background-color: var(--p-color-bg-transparent-subdued-experimental);
+    color: var(--p-color-text-subdued);
+    font-weight: var(--p-font-weight-bold);
+    border-radius: var(--p-border-radius-2);
+
+    // stylelint-disable-next-line -- se23 svg fill override
+    svg {
+      fill: var(--p-color-text-subdued);
+    }
+  }
 }
 
 .withinFilter {

@@ -10,7 +10,7 @@ import {
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function FiltersExample() {
+function FiltersWithChildrenContentExample() {
   const [taggedWith, setTaggedWith] = useState<string | undefined>(undefined);
   const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
@@ -89,6 +89,7 @@ function FiltersExample() {
               </div>
             </Filters>
           }
+          flushFilters
           items={[
             {
               id: '341',
@@ -144,4 +145,4 @@ function FiltersExample() {
   }
 }
 
-export default withPolarisExample(FiltersExample);
+export default withPolarisExample(FiltersWithChildrenContentExample);

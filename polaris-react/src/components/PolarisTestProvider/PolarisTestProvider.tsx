@@ -18,11 +18,6 @@ import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
 import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
-import {
-  UniqueIdFactory,
-  UniqueIdFactoryContext,
-  globalIdGeneratorFactory,
-} from '../../utilities/unique-id';
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
@@ -61,7 +56,7 @@ export function PolarisTestProvider({
   i18n,
   link,
   mediaQuery,
-  features = {},
+  features,
   frame,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
@@ -70,9 +65,9 @@ export function PolarisTestProvider({
 
   const stickyManager = useMemo(() => new StickyManager(), []);
 
-  const uniqueIdFactory = useMemo(
-    () => new UniqueIdFactory(globalIdGeneratorFactory),
-    [],
+  const featuresConfig = useMemo(
+    () => ({...features, polarisSummerEditions2023: false}),
+    [features],
   );
 
   const mergedFrame = createFrameContext(frame);
@@ -81,25 +76,23 @@ export function PolarisTestProvider({
 
   return (
     <Wrapper>
-      <FeaturesContext.Provider value={features}>
+      <FeaturesContext.Provider value={featuresConfig}>
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={scrollLockManager}>
             <StickyManagerContext.Provider value={stickyManager}>
-              <UniqueIdFactoryContext.Provider value={uniqueIdFactory}>
-                <LinkContext.Provider value={link}>
-                  <MediaQueryContext.Provider value={mergedMediaQuery}>
-                    <PortalsManager>
-                      <FocusManager>
-                        <EphemeralPresenceManager>
-                          <FrameContext.Provider value={mergedFrame}>
-                            {children}
-                          </FrameContext.Provider>
-                        </EphemeralPresenceManager>
-                      </FocusManager>
-                    </PortalsManager>
-                  </MediaQueryContext.Provider>
-                </LinkContext.Provider>
-              </UniqueIdFactoryContext.Provider>
+              <LinkContext.Provider value={link}>
+                <MediaQueryContext.Provider value={mergedMediaQuery}>
+                  <PortalsManager>
+                    <FocusManager>
+                      <EphemeralPresenceManager>
+                        <FrameContext.Provider value={mergedFrame}>
+                          {children}
+                        </FrameContext.Provider>
+                      </EphemeralPresenceManager>
+                    </FocusManager>
+                  </PortalsManager>
+                </MediaQueryContext.Provider>
+              </LinkContext.Provider>
             </StickyManagerContext.Provider>
           </ScrollLockManagerContext.Provider>
         </I18nContext.Provider>

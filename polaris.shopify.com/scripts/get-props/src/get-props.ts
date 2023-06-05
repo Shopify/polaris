@@ -309,7 +309,12 @@ export function getRelevantTypes(
   ast: AllTypes,
   name: string,
   filePath: string,
+  status: string,
 ): FilteredTypes {
+  if (status === 'Deprecated') {
+    return {};
+  }
+
   let matchingNode = ast[name][filePath];
 
   if (!matchingNode) {

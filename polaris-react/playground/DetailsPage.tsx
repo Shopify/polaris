@@ -41,8 +41,10 @@ import {
   Thumbnail,
   Toast,
   TopBar,
+  FooterHelp,
+  Link,
 } from '../src';
-import type {DropZoneProps} from '../src';
+import type {DropZoneProps, PageProps} from '../src';
 
 import styles from './DetailsPage.scss';
 
@@ -480,7 +482,7 @@ export function DetailsPage() {
     setPreviewValue(newValue);
   }, []);
 
-  const actions1 = [
+  const actions1: PageProps['secondaryActions'] = [
     {
       content: 'Duplicate',
       onAction: () => console.log('duplicate'),
@@ -490,17 +492,18 @@ export function DetailsPage() {
       onAction: () => console.log('print'),
     },
   ];
-  const actions2 = [
+  const actions2: PageProps['secondaryActions'] = [
     {
       content: 'Print',
       onAction: () => console.log('print'),
     },
   ];
 
-  const [actions, setActions] = useState(actions1);
+  const [actions, setActions] =
+    useState<PageProps['secondaryActions']>(actions1);
 
   const toggleActions = () => {
-    if (actions.length === 2) {
+    if (Array.isArray(actions) && actions.length === 2) {
       setActions(actions2);
     } else {
       setActions(actions1);
@@ -528,8 +531,7 @@ export function DetailsPage() {
             alt={file.name}
             source={
               validImageTypes.indexOf(file.type) > 0
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  URL.createObjectURL(file)
+                ? URL.createObjectURL(file)
                 : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
             }
           />
@@ -548,7 +550,7 @@ export function DetailsPage() {
   const actualPageMarkup = (
     <Page
       fullWidth
-      breadcrumbs={[{content: 'Products', url: '/products/31'}]}
+      backAction={{content: 'Products', url: '/products/31'}}
       title={title}
       titleMetadata={<Badge status="success">Success badge</Badge>}
       primaryAction={{
@@ -557,15 +559,17 @@ export function DetailsPage() {
         onAction: () => console.log('save'),
       }}
       additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
-      secondaryActions={[
-        ...actions,
-        {
-          content: 'View',
-          onAction: () => {
-            console.log(previewValue);
+      secondaryActions={
+        Array.isArray(actions) && [
+          ...actions,
+          {
+            content: 'View',
+            onAction: () => {
+              console.log(previewValue);
+            },
           },
-        },
-      ]}
+        ]
+      }
       actionGroups={[
         {
           title: 'Promote',
@@ -710,6 +714,12 @@ export function DetailsPage() {
       {pageMarkup}
       {toastMarkup}
       {modalMarkup}
+      <FooterHelp>
+        Learn more about{' '}
+        <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
+          fulfilling orders
+        </Link>
+      </FooterHelp>
     </Frame>
   );
 }

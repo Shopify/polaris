@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Benachrichtigung verwerfen"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Wird geladen",
       "connectedDisclosureAccessibilityLabel": "Ähnliche Aktionen"

@@ -4,6 +4,7 @@ import {classNames} from '../../utilities/css';
 import type {Error} from '../../types';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Choice.scss';
 
@@ -42,6 +43,7 @@ export function Choice({
   onMouseOut,
   onMouseOver,
 }: ChoiceProps) {
+  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
@@ -65,7 +67,12 @@ export function Choice({
 
   const helpTextMarkup = helpText ? (
     <div className={styles.HelpText} id={helpTextID(id)}>
-      <Text as="span" color="subdued">
+      <Text
+        as="span"
+        // `undefined` means color: inherit
+        // the nearest ancestor with a specified color is .Descriptions in Choice.scss
+        color={!polarisSummerEditions2023 && !disabled ? 'subdued' : undefined}
+      >
         {helpText}
       </Text>
     </div>

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useId} from 'react';
 import {SelectMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, helpTextID} from '../Labelled';
 import type {LabelledProps} from '../Labelled';
 import {Box} from '../Box';
@@ -16,7 +15,7 @@ interface StrictOption {
   /** Machine value of the option; this is the value passed to `onChange` */
   value: string;
   /** Human-readable text for the option */
-  label: React.ReactNode;
+  label: string;
   /** Option will be visible, but not selectable */
   disabled?: boolean;
   /** Element to display to the left of the option label. Does not show in the dropdown. */
@@ -96,7 +95,8 @@ export function Select({
   onBlur,
   requiredIndicator,
 }: SelectProps) {
-  const id = useUniqueId('Select', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
   const labelHidden = labelInline ? true : labelHiddenProp;
 
   const className = classNames(

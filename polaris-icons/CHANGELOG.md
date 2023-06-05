@@ -1,5 +1,25 @@
 # Changelog
 
+## 7.0.1
+
+### Patch Changes
+
+- [#9305](https://github.com/Shopify/polaris/pull/9305) [`753ff148f`](https://github.com/Shopify/polaris/commit/753ff148fbc5a74f0b1dd85d817bb2c0522d3001) Thanks [@samrose3](https://github.com/samrose3)! - Fixed npm release conflict with 7.0.0
+
+## 7.0.0
+
+### Major Changes
+
+- [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for NodeJS version 14 and set version 16 as minimum supported version
+
+## 6.16.0
+
+### Minor Changes
+
+- [#9153](https://github.com/Shopify/polaris/pull/9153) [`4e343a180`](https://github.com/Shopify/polaris/commit/4e343a180c837ef29d8117c10053f82eb17bc29b) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Updated thumbs up and down icons, major and minor sets
+
+* [#9109](https://github.com/Shopify/polaris/pull/9109) [`5be210bd5`](https://github.com/Shopify/polaris/commit/5be210bd54e95ad694e898750c3f40259b9216be) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated design for MarketingMajor icon
+
 ## 6.15.0
 
 ### Minor Changes

@@ -4,16 +4,13 @@
   background-color: var(--p-color-bg);
   box-shadow: var(--p-shadow-md);
   outline: var(--p-border-width-1) solid transparent;
+  overflow: clip;
+
+  #{$se23} & {
+    box-shadow: var(--p-shadow-card-sm-experimental);
+  }
 
   + .LegacyCard {
-    margin-top: var(--p-space-4);
-
-    @media print {
-      margin-top: calc(-1 * var(--p-space-2));
-    }
-  }
-  /* stylelint-disable-next-line polaris/conventions/selector-disallowed-list -- Temporary override, will be removed in v11 */
-  + [class^='Polaris-Card'] {
     margin-top: var(--p-space-4);
 
     @media print {
@@ -23,6 +20,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     border-radius: var(--p-border-radius-2);
+
+    #{$se23} & {
+      border-radius: var(--p-border-radius-3);
+    }
   }
 
   @media print {
@@ -47,6 +48,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5) var(--p-space-5) 0;
+
+    #{$se23} & {
+      padding: var(--p-space-4) var(--p-space-4) 0;
+    }
   }
 
   @media print and #{$p-breakpoints-sm-up} {
@@ -59,10 +64,19 @@
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5);
+
+    #{$se23} & {
+      padding: var(--p-space-4);
+    }
   }
 
   + .Section {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    #{$se23} & {
+      border-top: var(--p-border-width-1) solid
+        var(--p-color-border-faint-experimental);
+    }
 
     @media print {
       border-top: 0;
@@ -78,11 +92,21 @@
 .Section:first-child {
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
+
+  #{$se23} & {
+    border-top-left-radius: var(--p-border-radius-3);
+    border-top-right-radius: var(--p-border-radius-3);
+  }
 }
 
 .Section:last-child {
   border-bottom-left-radius: var(--p-border-radius-2);
   border-bottom-right-radius: var(--p-border-radius-2);
+
+  #{$se23} & {
+    border-bottom-left-radius: var(--p-border-radius-3);
+    border-bottom-right-radius: var(--p-border-radius-3);
+  }
 }
 
 .Section-fullWidth {
@@ -90,6 +114,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5) 0;
+
+    #{$se23} & {
+      padding: var(--p-space-4) 0;
+    }
   }
 }
 
@@ -124,6 +152,11 @@
     @media #{$p-breakpoints-sm-up} {
       padding-left: var(--p-space-5);
       padding-right: var(--p-space-5);
+
+      #{$se23} & {
+        padding-left: var(--p-space-4);
+        padding-right: var(--p-space-4);
+      }
     }
   }
 }
@@ -152,6 +185,10 @@
 
   @media #{$p-breakpoints-sm-up} {
     padding: 0 var(--p-space-5) var(--p-space-5);
+
+    #{$se23} & {
+      padding: 0 var(--p-space-4) var(--p-space-4);
+    }
   }
 
   &.LeftJustified {
@@ -161,5 +198,9 @@
   .Section-subdued + & {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     padding: var(--p-space-5);
+
+    #{$se23} & {
+      padding: var(--p-space-4);
+    }
   }
 }

@@ -1,4 +1,4 @@
-import {LegacyCard, Tabs, Badge} from '@shopify/polaris';
+import {LegacyCard, Tabs} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -13,21 +13,15 @@ function TabsWithBadgeExample() {
   const tabs = [
     {
       id: 'all-customers-fitted-3',
-      content: (
-        <span>
-          All <Badge status="new">10+</Badge>
-        </span>
-      ),
+      content: 'All',
+      badge: '10+',
       accessibilityLabel: 'All customers',
       panelID: 'all-customers-fitted-content-3',
     },
     {
       id: 'accepts-marketing-fitted-3',
-      content: (
-        <span>
-          Accepts marketing <Badge status="new">4</Badge>
-        </span>
-      ),
+      content: 'Accepts marketing',
+      badge: '4',
       panelID: 'accepts-marketing-fitted-content-3',
     },
   ];

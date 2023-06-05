@@ -16,6 +16,10 @@ export function Default() {
   return <Avatar customer name="Farrah" />;
 }
 
+export function LongInitials() {
+  return <Avatar initials="WWW" name="Woluwayemisi Wolu Weun-Jung" />;
+}
+
 export function ExtraSmall() {
   const [active, setActive] = useState(true);
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -67,32 +71,32 @@ export function SquareWithInitials() {
       <LegacyStack.Item>
         <Avatar
           shape="square"
-          initials="OE"
-          name="Oluwayemisi Eun-Jung"
+          initials="WW"
+          name="Woluwayemisi Weun-Jung"
           size="extraSmall"
         />
       </LegacyStack.Item>
       <LegacyStack.Item>
         <Avatar
           shape="square"
-          initials="OE"
-          name="Oluwayemisi Eun-Jung"
+          initials="WW"
+          name="Woluwayemisi Weun-Jung"
           size="small"
         />
       </LegacyStack.Item>
       <LegacyStack.Item>
         <Avatar
           shape="square"
-          initials="OE"
-          name="Oluwayemisi Eun-Jung"
+          initials="WW"
+          name="Woluwayemisi Weun-Jung"
           size="medium"
         />
       </LegacyStack.Item>
       <LegacyStack.Item>
         <Avatar
           shape="square"
-          initials="OE"
-          name="Oluwayemisi Eun-Jung"
+          initials="WW"
+          name="Woluwayemisi Weun-Jung"
           size="large"
         />
       </LegacyStack.Item>
@@ -123,16 +127,16 @@ export function SizesWithInitials() {
   return (
     <LegacyStack vertical>
       <LegacyStack.Item>
-        <Avatar initials="OE" name="Oluwayemisi Eun-Jung" size="extraSmall" />
+        <Avatar initials="WW" name="Woluwayemisi Weun-Jung" size="extraSmall" />
       </LegacyStack.Item>
       <LegacyStack.Item>
-        <Avatar initials="OE" name="Oluwayemisi Eun-Jung" size="small" />
+        <Avatar initials="WW" name="Woluwayemisi Weun-Jung" size="small" />
       </LegacyStack.Item>
       <LegacyStack.Item>
-        <Avatar initials="OE" name="Oluwayemisi Eun-Jung" size="medium" />
+        <Avatar initials="WW" name="Woluwayemisi Weun-Jung" size="medium" />
       </LegacyStack.Item>
       <LegacyStack.Item>
-        <Avatar initials="OE" name="Oluwayemisi Eun-Jung" size="large" />
+        <Avatar initials="WW" name="Woluwayemisi Weun-Jung" size="large" />
       </LegacyStack.Item>
     </LegacyStack>
   );

@@ -14,6 +14,10 @@
   background-color: var(--p-color-icon-success);
   transition: transform var(--p-motion-duration-500) linear;
 
+  #{$se23} & {
+    background-color: var(--p-color-bg-primary);
+  }
+
   @media screen and (-ms-high-contrast: active) {
     background-color: highlight;
   }

@@ -17,6 +17,26 @@ export default {
   component: Tooltip,
 } as ComponentMeta<typeof Tooltip>;
 
+export function All() {
+  return (
+    <VerticalStack gap="16">
+      <Default />
+      <PreferredPosition />
+      <Width />
+      <Padding />
+      <BorderRadius />
+      <VisibleOnlyWithChildInteraction />
+      <WithHoverDelay />
+      <ActivatorAsDiv />
+      <WithSuffix />
+      <Alignment />
+      <HasUnderline />
+      <PersistOnClick />
+      <ActiveStates />
+    </VerticalStack>
+  );
+}
+
 export function Default() {
   return (
     <Box paddingBlockStart="24">
@@ -25,6 +45,51 @@ export function Default() {
           Order #1001
         </Text>
       </Tooltip>
+    </Box>
+  );
+}
+
+export function PreferredPosition() {
+  return (
+    <Box paddingBlockStart="24">
+      <HorizontalStack gap="8">
+        <Tooltip
+          active
+          content="This content is positioned above the activator"
+          preferredPosition="above"
+        >
+          <HorizontalStack gap="1">
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              Tooltip positioned
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+              above
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              the activator
+            </Text>
+            <Icon source={QuestionMarkMinor} color="base" />
+          </HorizontalStack>
+        </Tooltip>
+        <Tooltip
+          active
+          content="This content is positioned above the activator"
+          preferredPosition="below"
+        >
+          <HorizontalStack gap="1">
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              Tooltip positioned
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+              below
+            </Text>{' '}
+            <Text variant="bodyLg" fontWeight="medium" as="span">
+              the activator
+            </Text>
+            <Icon source={QuestionMarkMinor} color="base" />
+          </HorizontalStack>
+        </Tooltip>
+      </HorizontalStack>
     </Box>
   );
 }
@@ -415,6 +480,33 @@ export function PersistOnClick() {
           Order #1001
         </Text>
       </Tooltip>
+    </Box>
+  );
+}
+
+export function ActiveStates() {
+  return (
+    <Box paddingBlockStart="24">
+      <HorizontalStack gap="24">
+        <Tooltip content="This tooltip should never render" active={false}>
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Active false
+          </Text>
+        </Tooltip>
+        <Tooltip content="This tooltip should render on load and hover" active>
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Active true
+          </Text>
+        </Tooltip>
+        <Tooltip
+          content="This tooltip should render on hover"
+          active={undefined}
+        >
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Active undefined
+          </Text>
+        </Tooltip>
+      </HorizontalStack>
     </Box>
   );
 }

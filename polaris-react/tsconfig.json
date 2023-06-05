@@ -4,7 +4,7 @@
     "composite": true,
     "emitDeclarationOnly": true,
     "importsNotUsedAsValues": "error",
-    "outDir": "build/ts/latest",
+    "outDir": "build/ts",
     "rootDir": "./",
     "strictFunctionTypes": false,
     "paths": {

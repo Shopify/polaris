@@ -17,7 +17,7 @@ groups:
 
   - title: Layout compositions
     components:
-      - Alpha card
+      - Card
       - Callout card
       - Media card
       - Empty state

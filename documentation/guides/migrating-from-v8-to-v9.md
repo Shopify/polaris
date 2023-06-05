@@ -303,7 +303,7 @@ This function has been deprecated, but the definition can be copied and used loc
 | `easing()`<br>`easing(base)` | `--p-ease`                             |
 | `easing(in)`                 | `--p-ease-in`                          |
 | `easing(out)`                | `--p-ease-out`                         |
-| `easing(excite)`             | `--p-ease-excite`                      |
+| `easing(excite)`             | `--p-ease`                             |
 | `easing(overshoot)`          | `cubic-bezier(0.07, 0.28, 0.32, 1.22)` |
 | `easing(anticipate)`         | `cubic-bezier(0.38, -0.4, 0.88, 0.65)` |
 
