@@ -13,12 +13,22 @@
     display: none;
   }
 
-  &:not(.disabled) {
-    #{$se23} & {
+  #{$se23} & {
+    &:not(.disabled) {
       &:hover {
         // stylelint-disable-next-line -- se23
         .Backdrop {
           border-color: var(--p-color-border-input-hover);
+        }
+      }
+
+      // stylelint-disable-next-line -- se23
+      .Input:active {
+        // stylelint-disable-next-line -- se23
+        ~ .Backdrop {
+          border: none;
+          box-shadow: var(--p-shadow-inset-md);
+          background-color: var(--p-color-bg-input-active-experimental);
         }
       }
     }
@@ -196,16 +206,6 @@
       outline: var(--p-border-width-2) solid
         var(--p-color-border-interactive-focus);
       outline-offset: var(--p-space-025);
-    }
-  }
-}
-
-.Input:active {
-  ~ .Backdrop {
-    #{$se23} & {
-      border: none;
-      box-shadow: var(--p-shadow-inset-md);
-      background-color: var(--p-color-bg-input-active-experimental);
     }
   }
 }
