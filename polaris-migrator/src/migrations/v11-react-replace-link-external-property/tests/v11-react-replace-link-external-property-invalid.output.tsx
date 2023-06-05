@@ -9,7 +9,7 @@ export function App() {
       {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
       <Link external={false}>Click Me</Link>
       {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
-      <Link external={condition ? 'true' : 'false'}>Click Me</Link>
+      <Link external={condition}>Click Me</Link>
     </>
   );
 }
