@@ -27,6 +27,7 @@ import {
   handleMouseUpByBlurring,
 } from '../../../../utilities/focus';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
+import {useFeatures} from '../../../../utilities/features';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Icon} from '../../../Icon';
@@ -73,6 +74,7 @@ export const Tab = forwardRef(
       null,
     );
     const {mdDown} = useBreakpoints();
+    const {polarisSummerEditions2023: se23} = useFeatures();
 
     const wasSelected = useRef(selected);
     const panelFocused = useRef(false);
@@ -289,6 +291,9 @@ export const Tab = forwardRef(
         </div>
       ) : null;
 
+    const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
+    const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
+
     const activator = (
       <BaseComponent
         id={id}
@@ -313,7 +318,7 @@ export const Tab = forwardRef(
         >
           <Text
             as="span"
-            variant={mdDown ? 'bodyLg' : 'bodySm'}
+            variant={se23 ? se23LabelVariant : labelVariant}
             fontWeight="semibold"
           >
             {icon ?? content}
