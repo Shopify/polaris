@@ -11,6 +11,7 @@
   }
 }
 
+// stylelint-disable-next-line -- se23 use Text component instead after se23
 .disabled > .HelpText > span {
   #{$se23} & {
     color: var(--p-color-text-disabled);

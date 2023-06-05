@@ -149,6 +149,10 @@ $spinner-icon-size: 12px;
     // Safari: date field alignment
     display: flex;
     align-items: center;
+    line-height: var(--p-font-line-height-3);
+    padding-top: var(--p-space-1_5-experimental);
+    padding-bottom: var(--p-space-1_5-experimental);
+    border: 0;
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -157,6 +161,7 @@ $spinner-icon-size: 12px;
 
     #{$se23} & {
       font-size: var(--p-font-size-80-experimental);
+      line-height: var(--p-font-line-height-2);
     }
   }
 
@@ -270,8 +275,11 @@ $spinner-icon-size: 12px;
   user-select: none;
 
   #{$se23} & {
+    line-height: var(--p-font-line-height-3);
+
     @media #{$p-breakpoints-md-up} {
       font-size: var(--p-font-size-80-experimental);
+      line-height: var(--p-font-line-height-2);
     }
   }
 }
@@ -316,8 +324,11 @@ $spinner-icon-size: 12px;
   text-align: right;
 
   #{$se23} & {
+    line-height: var(--p-font-line-height-3);
+
     @media #{$p-breakpoints-md-up} {
       font-size: var(--p-font-size-80-experimental);
+      line-height: var(--p-font-line-height-2);
     }
   }
 }
