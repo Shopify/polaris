@@ -65,6 +65,12 @@
     svg {
       fill: currentColor;
     }
+
+    #{$se23} & {
+      background: var(--p-color-bg-strong-active);
+      box-shadow: var(--p-shadow-inset-md);
+      color: var(--p-color-text);
+    }
   }
 
   @media (-ms-high-contrast: active) {
