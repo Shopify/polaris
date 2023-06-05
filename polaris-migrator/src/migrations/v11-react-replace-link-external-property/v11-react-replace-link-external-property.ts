@@ -1,4 +1,10 @@
-import type {API, FileInfo, JSXAttribute, JSXOpeningElement} from 'jscodeshift';
+import type {
+  API,
+  FileInfo,
+  JSXAttribute,
+  JSXOpeningElement,
+  Options,
+} from 'jscodeshift';
 
 import {
   insertJSXAttribute,
@@ -6,14 +12,48 @@ import {
   removeJSXAttributes,
 } from '../../utilities/jsx';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
+import {
+  normalizeImportSourcePaths,
+  hasImportSpecifier,
+  getImportSpecifierName,
+  hasImportDeclaration,
+} from '../../utilities/imports';
+
+export interface MigrationOptions extends Options {
+  relative?: boolean;
+}
 
 export default function v11ReactReplaceLinkComponents(
   fileInfo: FileInfo,
   {jscodeshift: j}: API,
+  options: MigrationOptions,
 ) {
   const source = j(fileInfo.source);
 
-  const localElementName = 'Link';
+  if (
+    !options.relative &&
+    !hasImportDeclaration(j, source, '@shopify/polaris')
+  ) {
+    return fileInfo.source;
+  }
+
+  const sourcePaths = normalizeImportSourcePaths(j, source, {
+    // @Todo remove assertion
+    relative: options.relative!,
+    from: 'Link',
+    to: 'Link',
+  });
+
+  if (!sourcePaths) return;
+  if (
+    !hasImportSpecifier(j, source, 'Link', sourcePaths.from) &&
+    !hasImportSpecifier(j, source, 'LinkProps', sourcePaths.from)
+  ) {
+    return;
+  }
+
+  const localElementName =
+    getImportSpecifierName(j, source, 'Link', sourcePaths.from) || 'Link';
 
   source.findJSXElements(localElementName).forEach((element) => {
     const allAttributes =
