@@ -7,7 +7,7 @@ export function App() {
   return (
     <>
       <Link external={false}>Click Me</Link>
-      <Link external={condition ? 'true' : 'false'}>Click Me</Link>
+      <Link external={condition}>Click Me</Link>
     </>
   );
 }
