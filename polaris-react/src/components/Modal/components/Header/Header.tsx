@@ -5,6 +5,7 @@ import {CloseButton} from '../CloseButton';
 import {HorizontalGrid} from '../../../HorizontalGrid';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Text} from '../../../Text';
+import {useFeatures} from '../../../../utilities/features';
 
 export interface HeaderProps {
   id: string;
@@ -21,16 +22,20 @@ export function Header({
   titleHidden,
   onClose,
 }: HeaderProps) {
-  const titleHiddenMarkup = (
-    <Box position="absolute" insetInlineEnd="0" zIndex="1">
-      <HorizontalStack gap="4" align="end" blockAlign="center">
-        <CloseButton titleHidden={titleHidden} onClick={onClose} />
-      </HorizontalStack>
-    </Box>
-  );
+  const {polarisSummerEditions2023} = useFeatures();
 
   if (titleHidden || !children) {
-    return titleHiddenMarkup;
+    return (
+      <Box
+        position="absolute"
+        insetInlineEnd={polarisSummerEditions2023 ? '1' : '0'}
+        zIndex="1"
+      >
+        <HorizontalStack gap="4" align="end" blockAlign="center">
+          <CloseButton titleHidden={titleHidden} onClick={onClose} />
+        </HorizontalStack>
+      </Box>
+    );
   }
 
   return (
@@ -39,12 +44,18 @@ export function Header({
       paddingBlockEnd="4"
       paddingInlineStart="5"
       paddingInlineEnd="5"
-      borderBlockEndWidth="1"
+      borderBlockEndWidth={polarisSummerEditions2023 ? undefined : '1'}
       borderColor="border-subdued"
+      background={polarisSummerEditions2023 ? 'bg-subdued' : undefined}
     >
       <HorizontalGrid columns={{xs: '1fr auto'}} gap="4">
         <HorizontalStack gap="4" blockAlign="center">
-          <Text id={id} as="h2" variant="headingLg" breakWord>
+          <Text
+            id={id}
+            as="h2"
+            variant={polarisSummerEditions2023 ? 'headingMd' : 'headingLg'}
+            breakWord
+          >
             {children}
           </Text>
         </HorizontalStack>

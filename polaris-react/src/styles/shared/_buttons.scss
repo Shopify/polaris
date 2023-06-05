@@ -25,6 +25,14 @@
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 
+  #{$se23} & {
+    min-height: 28px;
+    min-width: 28px;
+    padding: var(--p-space-1) var(--p-space-3);
+    border-radius: var(--p-border-radius-2);
+    border: none;
+  }
+
   svg {
     fill: var(--p-color-icon);
   }
@@ -42,9 +50,6 @@
   }
 
   &:active {
-    background: var(--p-color-bg-subdued-active);
-    box-shadow: var(--p-shadow-sm);
-
     &::after {
       border: none;
       box-shadow: none;
@@ -73,6 +78,10 @@
   border-color: var(--p-color-border-disabled);
   background: var(--p-color-bg-disabled);
   color: var(--p-color-text-disabled);
+
+  #{$se23} & {
+    background: transparent;
+  }
 
   svg {
     fill: var(--p-color-icon-disabled);

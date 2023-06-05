@@ -3,6 +3,7 @@ import type {MouseEvent, ReactNode} from 'react';
 
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 import {classNames} from '../../../../utilities/css';
+import {useFeatures} from '../../../../utilities/features';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
 import {Icon} from '../../../Icon';
@@ -107,6 +108,7 @@ export function Item({
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const navTextRef = useRef<HTMLSpanElement>(null);
   const [isTruncated, setIsTruncated] = useState(false);
+  const {polarisSummerEditions2023} = useFeatures();
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
@@ -284,7 +286,9 @@ export function Item({
   const itemClassName = classNames(
     styles.Item,
     disabled && styles['Item-disabled'],
-    selected && canBeActive && styles['Item-selected'],
+    polarisSummerEditions2023
+      ? (selected || childIsActive) && styles['Item-selected']
+      : selected && canBeActive && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
   );
@@ -376,7 +380,10 @@ export function Item({
         <div
           className={classNames(
             styles.ItemInnerWrapper,
-            selected && canBeActive && styles['ItemInnerWrapper-selected'],
+            polarisSummerEditions2023
+              ? (selected || childIsActive) &&
+                  styles['ItemInnerWrapper-selected']
+              : selected && canBeActive && styles['ItemInnerWrapper-selected'],
             displayActionsOnHover &&
               styles['ItemInnerWrapper-display-actions-on-hover'],
             disabled && styles.ItemInnerDisabled,
