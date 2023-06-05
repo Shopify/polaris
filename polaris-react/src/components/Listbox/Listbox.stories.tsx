@@ -371,17 +371,19 @@ export function All() {
           With disabled text option
         </Text>
         <LegacyCard>
-          <Listbox accessibilityLabel="Listbox with disabled item example">
-            <Listbox.Option value="UniqueValue-1">
-              <Listbox.TextOption>Item 1</Listbox.TextOption>
-            </Listbox.Option>
-            <Listbox.Option value="UniqueValue-2" disabled>
-              <Listbox.TextOption disabled>Item 2</Listbox.TextOption>
-            </Listbox.Option>
-            <Listbox.Option value="UniqueValue-3">
-              <Listbox.TextOption>Item 3</Listbox.TextOption>
-            </Listbox.Option>
-          </Listbox>
+          <Box paddingBlockStart="2" paddingBlockEnd="2">
+            <Listbox accessibilityLabel="Listbox with disabled item example">
+              <Listbox.Option value="UniqueValue-1">
+                <Listbox.TextOption>Item 1</Listbox.TextOption>
+              </Listbox.Option>
+              <Listbox.Option value="UniqueValue-2" disabled>
+                <Listbox.TextOption disabled>Item 2</Listbox.TextOption>
+              </Listbox.Option>
+              <Listbox.Option value="UniqueValue-3">
+                <Listbox.TextOption>Item 3</Listbox.TextOption>
+              </Listbox.Option>
+            </Listbox>
+          </Box>
         </LegacyCard>
       </VerticalStack>
       <Box paddingBlockEnd="3" />
@@ -726,17 +728,19 @@ export function WithSearch() {
 export function WithDisabledTextOption() {
   return (
     <LegacyCard>
-      <Listbox accessibilityLabel="Listbox with disabled item example">
-        <Listbox.Option value="UniqueValue-1">
-          <Listbox.TextOption>Item 1</Listbox.TextOption>
-        </Listbox.Option>
-        <Listbox.Option value="UniqueValue-2" disabled>
-          <Listbox.TextOption disabled>Item 2</Listbox.TextOption>
-        </Listbox.Option>
-        <Listbox.Option value="UniqueValue-3">
-          <Listbox.TextOption>Item 3</Listbox.TextOption>
-        </Listbox.Option>
-      </Listbox>
+      <Box paddingBlockStart="2" paddingBlockEnd="2">
+        <Listbox accessibilityLabel="Listbox with disabled item example">
+          <Listbox.Option value="UniqueValue-1">
+            <Listbox.TextOption>Item 1</Listbox.TextOption>
+          </Listbox.Option>
+          <Listbox.Option value="UniqueValue-2" disabled>
+            <Listbox.TextOption disabled>Item 2</Listbox.TextOption>
+          </Listbox.Option>
+          <Listbox.Option value="UniqueValue-3">
+            <Listbox.TextOption>Item 3</Listbox.TextOption>
+          </Listbox.Option>
+        </Listbox>
+      </Box>
     </LegacyCard>
   );
 }
