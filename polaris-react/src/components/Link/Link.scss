@@ -16,6 +16,10 @@
   &:hover {
     color: var(--p-color-text-interactive-hover);
     text-decoration: none;
+
+    #{$se23} & {
+      text-decoration: underline;
+    }
   }
 
   &:focus:not(:active) {

@@ -31,4 +31,13 @@
   &.titleHidden {
     margin: var(--p-space-2);
   }
+
+  #{$se23} & {
+    margin-top: calc(-1 * var(--p-space-1));
+    margin-bottom: calc(-1 * var(--p-space-1));
+
+    &.titleHidden {
+      margin: var(--p-space-2);
+    }
+  }
 }

@@ -57,7 +57,22 @@ addons.register('polaris/global-controls', () => {
     match: ({viewMode}) => viewMode === 'story',
     render: ({active, key}) => <GridPanel active={active} key={key} />,
   });
+  addons.add('provider/panel', {
+    type: types.PANEL,
+    title: 'Feature flags',
+    match: ({viewMode}) => viewMode === 'story',
+    render: ({active, key}) => <FeatureFlagPanel active={active} key={key} />,
+  });
 });
+
+export const featureFlagOptions = {
+  polarisSummerEditions2023: {
+    name: 'polarisSummerEditions2023',
+    description: 'Toggle the summer editions feature flag',
+    defaultValue: false,
+    control: {type: 'boolean'},
+  },
+};
 
 export const gridOptions = {
   showGrid: {
@@ -87,6 +102,20 @@ export const gridOptions = {
     options: ['above', 'below'],
   },
 };
+
+function FeatureFlagPanel(props) {
+  const [globals, updateGlobals] = useGlobals();
+  return (
+    <AddonPanel {...props}>
+      <ArgsTable
+        inAddonPanel
+        rows={featureFlagOptions}
+        args={globals}
+        updateArgs={updateGlobals}
+      />
+    </AddonPanel>
+  );
+}
 
 function GridPanel(props) {
   const [globals, updateGlobals] = useGlobals();

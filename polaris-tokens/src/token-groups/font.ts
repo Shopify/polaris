@@ -1,6 +1,8 @@
-import type {MetadataProperties} from '../types';
+import type {MetadataProperties, Experimental} from '../types';
 
 type FontFamilyAlias = 'sans' | 'mono';
+
+type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 
 export type FontSizeScale =
   | '75'
@@ -10,9 +12,20 @@ export type FontSizeScale =
   | '400'
   | '500'
   | '600'
-  | '700';
+  | '700'
+  | FontSizeScaleExperimental;
 
-export type FontLineHeightScale = '1' | '2' | '3' | '4' | '5' | '6' | '7';
+type FontLineHeightScaleExperimental = Experimental<'075'>;
+
+export type FontLineHeightScale =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | FontLineHeightScaleExperimental;
 
 export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
 
@@ -37,8 +50,14 @@ export const font: {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
+  'font-size-70-experimental': {
+    value: '11px',
+  },
   'font-size-75': {
     value: '12px',
+  },
+  'font-size-80-experimental': {
+    value: '13px',
   },
   'font-size-100': {
     value: '14px',
@@ -54,9 +73,11 @@ export const font: {
   },
   'font-size-500': {
     value: '28px',
+    valueExperimental: '30px',
   },
   'font-size-600': {
     value: '32px',
+    valueExperimental: '36px',
   },
   'font-size-700': {
     value: '40px',
@@ -72,6 +93,9 @@ export const font: {
   },
   'font-weight-bold': {
     value: '700',
+  },
+  'font-line-height-075-experimental': {
+    value: '12px',
   },
   'font-line-height-1': {
     value: '16px',

@@ -1,5 +1,9 @@
 import {createContext} from 'react';
 
-import type {Features} from './types';
+import type {FeaturesConfig} from './types';
 
-export const FeaturesContext = createContext<Features | undefined>(undefined);
+export const summerEditions2023ClassName = 'Polaris-Summer-Editions-2023';
+
+export const FeaturesContext = createContext<FeaturesConfig | undefined>(
+  undefined,
+);
