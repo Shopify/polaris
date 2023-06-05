@@ -7,7 +7,7 @@ import {
 } from '../../utilities/jsx';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
-export default function v12ReactReplaceLinkComponents(
+export default function v11ReactReplaceLinkComponents(
   fileInfo: FileInfo,
   {jscodeshift: j}: API,
 ) {
