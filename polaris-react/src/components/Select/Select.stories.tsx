@@ -205,8 +205,6 @@ export function All() {
           onChange={() => {}}
           error="Province is required"
         />
-      </FormLayout.Group>
-      <FormLayout.Group>
         <Select
           label="Required"
           options={['Ontario', 'Newfoundland and Labrador']}
@@ -214,6 +212,8 @@ export function All() {
           onChange={() => {}}
           requiredIndicator
         />
+      </FormLayout.Group>
+      <FormLayout.Group>
         <Select
           label="Placeholder"
           options={['Ontario', 'Newfoundland and Labrador']}
@@ -233,6 +233,15 @@ export function All() {
           options={['Ontario', 'Newfoundland and Labrador']}
           value="Ontario"
           helpText="Help text"
+          onChange={() => {}}
+        />
+        <Select
+          label="Long text"
+          options={[
+            'Ontario',
+            'Newfoundland and Labrador and Newfoundland and Labrador and Newfoundland and Labrador',
+          ]}
+          value="Newfoundland and Labrador and Newfoundland and Labrador and Newfoundland and Labrador"
           onChange={() => {}}
         />
       </FormLayout.Group>
