@@ -75,3 +75,17 @@ export function DisabledIndeterminate() {
     />
   );
 }
+
+export function Error() {
+  const [checked, setChecked] = useState<CheckboxState>('indeterminate');
+  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
+
+  return (
+    <Checkbox
+      label="Basic checkbox"
+      error="Something went wrong"
+      checked={checked}
+      onChange={handleChange}
+    />
+  );
+}
