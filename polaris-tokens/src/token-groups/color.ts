@@ -179,11 +179,32 @@ type ColorBorderAliasExperimental = Experimental<
   'border-faint' | 'border-input-active'
 >;
 
+type ColorAvatarAliasExperimental = Experimental<
+  | 'avatar-background-gray'
+  | 'avatar-background-magenta'
+  | 'avatar-background-yellow'
+  | 'avatar-background-cyan'
+  | 'avatar-background-azure'
+  | 'avatar-background-rose'
+  | 'avatar-text-magenta'
+  | 'avatar-text-yellow'
+  | 'avatar-text-cyan'
+  | 'avatar-text-azure'
+  | 'avatar-text-rose'
+  | 'avatar-icon-gray'
+  | 'avatar-icon-magenta'
+  | 'avatar-icon-yellow'
+  | 'avatar-icon-cyan'
+  | 'avatar-icon-azure'
+  | 'avatar-icon-rose'
+>;
+
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
-  | `color-${ColorTextAlias}`;
+  | `color-${ColorTextAlias}`
+  | `color-${ColorAvatarAliasExperimental}`;
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
@@ -936,6 +957,74 @@ export const color: {
   },
   'color-border-faint-experimental': {
     value: colorsExperimental.gray[7](),
+    description: '',
+  },
+  'color-avatar-background-gray-experimental': {
+    value: colorsExperimental.gray[11](),
+    description: '',
+  },
+  'color-avatar-background-magenta-experimental': {
+    value: colorsExperimental.magenta[14],
+    description: '',
+  },
+  'color-avatar-background-yellow-experimental': {
+    value: colorsExperimental.yellow[14],
+    description: '',
+  },
+  'color-avatar-background-cyan-experimental': {
+    value: colorsExperimental.cyan[14],
+    description: '',
+  },
+  'color-avatar-background-azure-experimental': {
+    value: colorsExperimental.azure[14],
+    description: '',
+  },
+  'color-avatar-background-rose-experimental': {
+    value: colorsExperimental.rose[14],
+    description: '',
+  },
+  'color-avatar-text-magenta-experimental': {
+    value: colorsExperimental.magenta[7],
+    description: '',
+  },
+  'color-avatar-text-yellow-experimental': {
+    value: colorsExperimental.yellow[7],
+    description: '',
+  },
+  'color-avatar-text-cyan-experimental': {
+    value: colorsExperimental.cyan[7],
+    description: '',
+  },
+  'color-avatar-text-azure-experimental': {
+    value: colorsExperimental.azure[7],
+    description: '',
+  },
+  'color-avatar-text-rose-experimental': {
+    value: colorsExperimental.rose[7],
+    description: '',
+  },
+  'color-avatar-icon-gray-experimental': {
+    value: colorsExperimental.gray[1](),
+    description: '',
+  },
+  'color-avatar-icon-magenta-experimental': {
+    value: colorsExperimental.magenta[11],
+    description: '',
+  },
+  'color-avatar-icon-yellow-experimental': {
+    value: colorsExperimental.yellow[11],
+    description: '',
+  },
+  'color-avatar-icon-cyan-experimental': {
+    value: colorsExperimental.cyan[11],
+    description: '',
+  },
+  'color-avatar-icon-azure-experimental': {
+    value: colorsExperimental.azure[11],
+    description: '',
+  },
+  'color-avatar-icon-rose-experimental': {
+    value: colorsExperimental.rose[11],
     description: '',
   },
 };
