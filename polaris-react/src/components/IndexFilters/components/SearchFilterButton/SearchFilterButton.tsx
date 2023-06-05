@@ -10,7 +10,7 @@ import {FilterButton} from '../FilterButton';
 
 export interface SearchFilterButtonProps {
   onClick: () => void;
-  'aria-label': string;
+  label: string;
   disabled?: boolean;
   tooltipContent: string;
   hideFilters?: boolean;
@@ -20,7 +20,7 @@ export interface SearchFilterButtonProps {
 
 export function SearchFilterButton({
   onClick,
-  'aria-label': ariaLabel,
+  label,
   disabled,
   tooltipContent,
   style,
@@ -31,14 +31,15 @@ export function SearchFilterButton({
     <div style={style}>
       <FilterButton
         onClick={onClick}
-        aria-label={ariaLabel}
+        label={label}
         disabled={disabled}
-      >
-        <HorizontalStack gap="0">
-          {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
-          {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
-        </HorizontalStack>
-      </FilterButton>
+        icon={
+          <HorizontalStack gap="0">
+            {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
+            {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
+          </HorizontalStack>
+        }
+      />
     </div>
   );
 

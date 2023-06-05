@@ -1,6 +1,12 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, Tabs} from '@shopify/polaris';
+import {
+  Tabs,
+  VerticalStack,
+  HorizontalStack,
+  Card,
+  Text,
+} from '@shopify/polaris';
 
 export default {
   component: Tabs,
@@ -27,9 +33,15 @@ export function Default() {
 
   return (
     <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
-      <LegacyCard.Section title={tabs[selected].content}>
-        <p>Tab {selected} selected</p>
-      </LegacyCard.Section>
+      <HorizontalStack gap="4">
+        <Text as="h2" variant="headingMd">
+          {tabs[selected].content}
+        </Text>
+
+        <Text as="p" variant="bodyMd">
+          Tab {selected} selected
+        </Text>
+      </HorizontalStack>
     </Tabs>
   );
 }
@@ -53,13 +65,19 @@ export function InsideOfACard() {
     id: `${item}-${index}`,
   }));
   return (
-    <LegacyCard>
+    <Card>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
-        <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
+        <HorizontalStack gap="4">
+          <Text as="h2" variant="headingMd">
+            {tabs[selected].content}
+          </Text>
+
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
+        </HorizontalStack>
       </Tabs>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -86,22 +104,23 @@ export function Fitted() {
   ];
 
   return (
-    <LegacyCard>
+    <Card>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
-        <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
+        <HorizontalStack gap="4">
+          <Text as="h2" variant="headingMd">
+            {tabs[selected].content}
+          </Text>
+
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
+        </HorizontalStack>
       </Tabs>
-    </LegacyCard>
+    </Card>
   );
 }
 
-type AlphaTabAction =
-  | 'rename'
-  | 'edit'
-  | 'edit-columns'
-  | 'duplicate'
-  | 'delete';
+type TabAction = 'rename' | 'edit' | 'edit-columns' | 'duplicate' | 'delete';
 
 export function WithActions() {
   const sleep = (ms: number) =>
@@ -138,22 +157,22 @@ export function WithActions() {
         ? []
         : [
             {
-              type: 'rename' as AlphaTabAction,
+              type: 'rename' as TabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },
             {
-              type: 'duplicate' as AlphaTabAction,
+              type: 'duplicate' as TabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },
             {
-              type: 'edit' as AlphaTabAction,
+              type: 'edit' as TabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },
             {
-              type: 'delete' as AlphaTabAction,
+              type: 'delete' as TabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },
@@ -195,13 +214,19 @@ export function WithBadgeContent() {
   ];
 
   return (
-    <LegacyCard>
+    <Card>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
-        <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
+        <VerticalStack gap="4">
+          <Text as="h2" variant="headingMd">
+            {tabs[selected].content}
+          </Text>
+
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
+        </VerticalStack>
       </Tabs>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -253,17 +278,102 @@ export function WithCustomDisclosure() {
   ];
 
   return (
-    <LegacyCard>
+    <Card>
       <Tabs
         tabs={tabs}
         selected={selected}
         onSelect={handleTabChange}
         disclosureText="Extra views"
       >
-        <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
+        <HorizontalStack gap="4">
+          <Text as="h2" variant="headingMd">
+            {tabs[selected].content}
+          </Text>
+
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
+        </HorizontalStack>
       </Tabs>
-    </LegacyCard>
+    </Card>
+  );
+}
+
+export function All() {
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = (selectedTabIndex: number) =>
+    setSelected(selectedTabIndex);
+
+  const tabs = [
+    'All',
+    'Unpaid',
+    'Open',
+    'Closed',
+    'Local delivery',
+    'Local pickup',
+    'Returning customers',
+    'New customers',
+    'Abandoned checkouts',
+    'Online store',
+    'POS',
+    'Facebook',
+    'Instagram',
+    'Twitter',
+    'Pinterest',
+    'Google',
+    'Referral',
+  ].map((item, index) => ({
+    content: item,
+    index,
+    badge: index % 2 === 0 ? index * 4 : undefined,
+    id: `${item}-${index}`,
+    actions:
+      index === 0
+        ? []
+        : [
+            {
+              type: 'rename' as TabAction,
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+            {
+              type: 'duplicate' as TabAction,
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+            {
+              type: 'edit' as TabAction,
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+            {
+              type: 'delete' as TabAction,
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+          ],
+  }));
+
+  return (
+    <VerticalStack gap="5">
+      <Card>
+        <Tabs
+          tabs={tabs}
+          selected={selected}
+          onSelect={handleTabChange}
+          canCreateNewView
+        />
+      </Card>
+
+      <Tabs
+        tabs={tabs}
+        selected={selected}
+        onSelect={handleTabChange}
+        canCreateNewView
+      />
+    </VerticalStack>
   );
 }

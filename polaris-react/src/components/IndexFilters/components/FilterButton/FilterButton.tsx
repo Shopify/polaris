@@ -1,33 +1,27 @@
 import React from 'react';
-import type {ReactNode} from 'react';
 
-import {UnstyledButton} from '../../../UnstyledButton';
-import {classNames} from '../../../../utilities/css';
-
-import styles from './FilterButton.scss';
+import {Button} from '../../../Button';
+import type {ButtonProps} from '../../../Button';
 
 export interface FilterButtonProps {
   onClick: () => void;
-  'aria-label': string;
-  children: ReactNode;
+  label: string;
+  icon: ButtonProps['icon'];
   disabled?: boolean;
 }
 
 export function FilterButton({
   onClick,
-  'aria-label': ariaLabel,
-  children,
+  label,
+  icon,
   disabled,
 }: FilterButtonProps) {
-  const classes = classNames(styles.FilterButton, disabled && styles.Disabled);
   return (
-    <UnstyledButton
-      className={classes}
+    <Button
+      icon={icon}
       onClick={onClick}
-      aria-label={ariaLabel}
       disabled={disabled}
-    >
-      {children}
-    </UnstyledButton>
+      accessibilityLabel={label}
+    />
   );
 }

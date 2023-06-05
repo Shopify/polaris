@@ -101,12 +101,11 @@ export function SortButton({
       hoverDelay={400}
     >
       <FilterButton
+        icon={SortMinor}
         onClick={handleClick}
-        aria-label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
+        label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
         disabled={disabled}
-      >
-        <Icon source={SortMinor} color="base" />
-      </FilterButton>
+      />
     </Tooltip>
   );
 
