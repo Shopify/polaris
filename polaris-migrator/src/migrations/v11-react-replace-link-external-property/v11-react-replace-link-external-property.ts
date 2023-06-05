@@ -7,6 +7,7 @@ import type {
 } from 'jscodeshift';
 
 import {
+  insertCommentBefore,
   insertJSXAttribute,
   insertJSXComment,
   removeJSXAttributes,
@@ -55,6 +56,13 @@ export default function v11ReactReplaceLinkComponents(
   const localElementName =
     getImportSpecifierName(j, source, 'Link', sourcePaths.from) || 'Link';
 
+  const localElementTypeName = getImportSpecifierName(
+    j,
+    source,
+    'LinkProps',
+    sourcePaths.from,
+  );
+
   source.findJSXElements(localElementName).forEach((element) => {
     const allAttributes =
       (j(element).find(j.JSXOpeningElement).get().value as JSXOpeningElement)
@@ -83,6 +91,21 @@ export default function v11ReactReplaceLinkComponents(
       removeJSXAttributes(j, element, 'external');
     }
   });
+
+  source
+    .find(j.Identifier)
+    .filter(
+      (path) =>
+        path.node.name === localElementName ||
+        path.node.name === localElementTypeName,
+    )
+    .forEach((path) => {
+      if (path.node.type !== 'Identifier') return;
+
+      if (path.parent.value.type === 'ImportSpecifier') return;
+
+      insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
+    });
 
   return source.toSource();
 }
