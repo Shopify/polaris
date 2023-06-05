@@ -6,11 +6,28 @@ import {
   Button,
   Popover,
   LegacyStack,
+  VerticalStack,
+  Box,
 } from '@shopify/polaris';
 
 export default {
   component: Avatar,
 } as ComponentMeta<typeof Avatar>;
+
+export function All() {
+  return (
+    <VerticalStack gap="4">
+      <Default />
+      <LongInitials />
+      <ExtraSmall />
+      <ExternalImage />
+      <Square />
+      <SquareWithInitials />
+      <Sizes />
+      <SizesWithInitials />
+    </VerticalStack>
+  );
+}
 
 export function Default() {
   return <Avatar customer name="Farrah" />;
@@ -30,7 +47,7 @@ export function ExtraSmall() {
   );
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{height: '144px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
           items={[
