@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.0.0
+
+### Major Changes
+
+- [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for NodeJS version 14 and set version 16 as minimum supported version
+
+## 6.14.0
+
+### Minor Changes
+
+- [#9144](https://github.com/Shopify/polaris/pull/9144) [`5a9b011d1`](https://github.com/Shopify/polaris/commit/5a9b011d14a0cc575f4fd34d9e4d8fcfeb0cd597) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Updated color-icon-magic to the correct shade of purple[500]
+
 ## 6.13.0
 
 ### Minor Changes

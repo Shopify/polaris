@@ -1,6 +1,14 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
+  DeleteMinor,
+  PlusMinor,
+  ArrowDownMinor,
+  ExternalMinor,
+  ViewMinor,
+  MobileVerticalDotsMajor,
+} from '@shopify/polaris-icons';
+import {
   Badge,
   Button,
   LegacyCard,
@@ -8,7 +16,6 @@ import {
   PageActions,
   LegacyStack,
 } from '@shopify/polaris';
-import {PlusMinor, ArrowDownMinor, ExternalMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Page,
@@ -17,7 +24,7 @@ export default {
 export function Default() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '#'}]}
+      backAction={{content: 'Products', url: '#'}}
       title="3/4 inch Leather pet collar"
       titleMetadata={<Badge status="success">Paid</Badge>}
       subtitle="Perfect for any pet"
@@ -25,19 +32,22 @@ export function Default() {
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {
-          content: 'Duplicate',
-          accessibilityLabel: 'Secondary action label',
-          onAction: () => console.log('Duplicate action'),
+          content: 'Delete',
+          destructive: true,
+          icon: DeleteMinor,
+          accessibilityLabel: 'Delete action label',
+          onAction: () => console.log('Delete action'),
         },
         {
           content: 'View on your store',
+          icon: ViewMinor,
           onAction: () => console.log('View on your store action'),
         },
       ]}
       actionGroups={[
         {
           title: 'Promote',
-          accessibilityLabel: 'Action group label',
+          icon: MobileVerticalDotsMajor,
           actions: [
             {
               content: 'Share on Facebook',
@@ -62,7 +72,7 @@ export function Default() {
 export function WithCustomPrimaryAction() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '#'}]}
+      backAction={{content: 'Settings', url: '#'}}
       title="General"
       primaryAction={
         <Button
@@ -86,7 +96,7 @@ export function WithCustomPrimaryAction() {
 export function WithoutPrimaryActionInHeader() {
   return (
     <Page
-      breadcrumbs={[{content: 'Orders', url: '#'}]}
+      backAction={{content: 'Orders', url: '#'}}
       title="#1085"
       secondaryActions={[
         {content: 'Print'},
@@ -166,7 +176,7 @@ export function WithToolTipAction() {
 export function WithSubtitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '#'}]}
+      backAction={{content: 'Products', url: '#'}}
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
@@ -202,7 +212,7 @@ export function WithExternalLink() {
 export function WithoutPagination() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '#'}]}
+      backAction={{content: 'Settings', url: '#'}}
       title="General"
       primaryAction={{content: 'Save'}}
     >
@@ -235,7 +245,7 @@ export function NarrowWidth() {
   return (
     <Page
       narrowWidth
-      breadcrumbs={[{content: 'Orders', url: '#'}]}
+      backAction={{content: 'Orders', url: '#'}}
       title="Add payment method"
       primaryAction={{content: 'Save', disabled: true}}
     >
@@ -289,7 +299,7 @@ export function WithActionGroups() {
 export function WithContentAfterTitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '#'}]}
+      backAction={{content: 'Products', url: '#'}}
       title="Jar With Lock-Lid"
       titleMetadata={<Badge status="attention">Verified</Badge>}
       primaryAction={{content: 'Save', disabled: true}}
@@ -311,11 +321,7 @@ export function WithContentAfterTitle() {
 
 export function WithDivider() {
   return (
-    <Page
-      breadcrumbs={[{content: 'Settings', url: '#'}]}
-      title="General"
-      divider
-    >
+    <Page backAction={{content: 'Settings', url: '#'}} title="General" divider>
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
       </LegacyCard>

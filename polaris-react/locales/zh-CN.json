@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "忽略通知"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "正在加载",
       "connectedDisclosureAccessibilityLabel": "相关操作"

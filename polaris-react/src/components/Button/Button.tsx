@@ -17,6 +17,7 @@ import {ActionList} from '../ActionList';
 import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
 import {useDisableClick} from '../../utilities/use-disable-interaction';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Button.scss';
 
@@ -52,6 +53,8 @@ export interface ButtonProps extends BaseButton {
   connectedDisclosure?: ConnectedDisclosure;
   /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
+  /** Extra visual weight combined with indication of a positive action */
+  primarySuccess?: boolean;
 }
 
 interface CommonButtonProps
@@ -133,15 +136,18 @@ export function Button({
   fullWidth,
   connectedDisclosure,
   dataPrimaryLink,
+  primarySuccess,
 }: ButtonProps) {
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
 
+  const {polarisSummerEditions2023} = useFeatures();
+
   const className = classNames(
     styles.Button,
     primary && styles.primary,
-    outline && styles.outline,
+    outline && !polarisSummerEditions2023 && styles.outline,
     destructive && styles.destructive,
     primary && plain && styles.primaryPlain,
     isDisabled && styles.disabled,
@@ -155,6 +161,8 @@ export function Button({
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
     removeUnderline && styles.removeUnderline,
+    primarySuccess && styles.primary,
+    primarySuccess && styles.success,
   );
 
   const disclosureMarkup = disclosure ? (

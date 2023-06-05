@@ -1,7 +1,6 @@
-import React, {useMemo, useCallback, useEffect} from 'react';
+import React, {useMemo, useId, useCallback, useEffect} from 'react';
 
 import {labelID} from '../../../Label';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {TextField as PolarisTextField} from '../../../TextField';
 import type {TextFieldProps} from '../../../TextField';
 import {useComboboxTextField} from '../../../../utilities/combobox';
@@ -29,7 +28,7 @@ export function TextField({
     onTextFieldBlur,
   } = comboboxTextFieldContext;
 
-  const uniqueId = useUniqueId('ComboboxTextField');
+  const uniqueId = useId();
   const textFieldId = useMemo(() => idProp || uniqueId, [uniqueId, idProp]);
 
   const labelId = useMemo(

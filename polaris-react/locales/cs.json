@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Zavřít notifikaci"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Načítání",
       "connectedDisclosureAccessibilityLabel": "Související akce"

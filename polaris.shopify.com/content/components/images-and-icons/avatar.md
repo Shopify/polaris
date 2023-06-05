@@ -22,6 +22,9 @@ examples:
   - fileName: avatar-default.tsx
     title: Default
     description: Use to present an avatar for a merchant, customer, or business.
+  - fileName: avatar-initials.tsx
+    title: Initials
+    description: Use to present an avatar with initials for a merchant, customer, or business.
   - fileName: avatar-extra-small.tsx
     title: Extra small
     description: Use to present an avatar in a condensed layout, such as a data table cell or an action list item.

@@ -2,7 +2,6 @@
 /// @param {String} $size - The size of the border radius on the focus ring.
 /// @param {String} $style - Focus ring state.
 /// @param {Number} $border-width - Optional negative offset (can be used to ensure the outline wraps the border).
-/// @param {Number} $delay - The transition delay in milliseconds.
 ///
 
 @mixin focus-ring($size: 'base', $border-width: 0, $style: 'base') {
@@ -35,9 +34,16 @@
         0
         $negative-offset
         var(--p-color-border-interactive-focus);
-      transition: box-shadow var(--p-motion-duration-100) var(--p-motion-ease);
       border-radius: $border-radius;
       @content;
+
+      #{$se23} & {
+        top: calc(-1 * var(--p-space-025));
+        right: calc(-1 * var(--p-space-025));
+        bottom: calc(-1 * var(--p-space-025));
+        left: calc(-1 * var(--p-space-025));
+        border-radius: var(--p-border-radius-2);
+      }
     }
   } @else if $style == 'focused' {
     &::after {

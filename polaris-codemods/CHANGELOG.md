@@ -1,5 +1,21 @@
 # @shopify/polaris-codemods
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [[`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806)]:
+  - @shopify/polaris-tokens@7.0.0
+  - @shopify/stylelint-polaris@13.0.0
+
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`5a9b011d1`](https://github.com/Shopify/polaris/commit/5a9b011d14a0cc575f4fd34d9e4d8fcfeb0cd597), [`6ae3295e7`](https://github.com/Shopify/polaris/commit/6ae3295e78518112e611185e7a8f9b6287bd985a)]:
+  - @shopify/polaris-tokens@6.14.0
+  - @shopify/stylelint-polaris@12.0.1
+
 ## 0.1.1
 
 ### Patch Changes

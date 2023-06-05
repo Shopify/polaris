@@ -5,7 +5,7 @@ import {
   Text,
   HorizontalStack,
   Box,
-  AlphaCard,
+  Card,
   Button,
   Badge,
   VerticalStack,
@@ -137,7 +137,7 @@ export function WithPrimitiveComponents() {
   );
 
   return (
-    <AlphaCard>
+    <Card>
       <VerticalStack gap={{xs: '4', sm: '5'}}>
         <Box width="100%">
           <VerticalStack gap={{xs: '2', sm: '4'}}>
@@ -149,7 +149,7 @@ export function WithPrimitiveComponents() {
           Your checkout is only accepting test payments.
         </Text>
       </VerticalStack>
-    </AlphaCard>
+    </Card>
   );
 }
 
@@ -251,7 +251,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   );
 
   return (
-    <AlphaCard>
+    <Card>
       <VerticalStack gap={{xs: '4', sm: '5'}}>
         <Box width="100%">
           <VerticalStack gap={{xs: '2', sm: '4'}}>
@@ -263,6 +263,6 @@ export function WithPrimitiveComponentsAndLongTitle() {
           Your checkout is only accepting test payments.
         </Text>
       </VerticalStack>
-    </AlphaCard>
+    </Card>
   );
 }

@@ -50,18 +50,6 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
-export {AlphaCard} from './components/AlphaCard';
-export type {AlphaCardProps} from './components/AlphaCard';
-
-export {AlphaFilters} from './components/AlphaFilters';
-export type {AlphaFiltersProps} from './components/AlphaFilters';
-
-export {VerticalStack} from './components/VerticalStack';
-export type {VerticalStackProps} from './components/VerticalStack';
-
-export {AlphaTabs} from './components/AlphaTabs';
-export type {AlphaTabsProps, AlphaTabProps} from './components/AlphaTabs';
-
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
 
@@ -106,16 +94,8 @@ export type {ButtonGroupProps} from './components/ButtonGroup';
 export {CalloutCard} from './components/CalloutCard';
 export type {CalloutCardProps} from './components/CalloutCard';
 
-export {Caption} from './components/Caption';
-export type {CaptionProps} from './components/Caption';
-
 export {Card} from './components/Card';
-export type {
-  CardProps,
-  CardSectionProps,
-  CardHeaderProps,
-  CardSubsectionProps,
-} from './components/Card';
+export type {CardProps} from './components/Card';
 
 export {Checkbox} from './components/Checkbox';
 export type {CheckboxProps} from './components/Checkbox';
@@ -155,9 +135,6 @@ export type {DatePickerProps, Range} from './components/DatePicker';
 
 export {DescriptionList} from './components/DescriptionList';
 export type {DescriptionListProps} from './components/DescriptionList';
-
-export {DisplayText} from './components/DisplayText';
-export type {DisplayTextProps} from './components/DisplayText';
 
 export {Divider} from './components/Divider';
 export type {DividerProps} from './components/Divider';
@@ -205,9 +182,6 @@ export type {FullscreenBarProps} from './components/FullscreenBar';
 export {Grid} from './components/Grid';
 export type {GridProps, CellProps as GridCellProps} from './components/Grid';
 
-export {Heading} from './components/Heading';
-export type {HeadingProps} from './components/Heading';
-
 export {Icon} from './components/Icon';
 export type {IconProps} from './components/Icon';
 
@@ -244,9 +218,6 @@ export type {KeyboardKeyProps} from './components/KeyboardKey';
 
 export {KeypressListener} from './components/KeypressListener';
 export type {KeypressListenerProps} from './components/KeypressListener';
-
-export {KonamiCode} from './components/KonamiCode';
-export type {KonamiCodeProps} from './components/KonamiCode';
 
 export {Label, labelID} from './components/Label';
 export type {LabelProps} from './components/Label';
@@ -381,17 +352,11 @@ export type {SkeletonThumbnailProps} from './components/SkeletonThumbnail';
 export {Spinner} from './components/Spinner';
 export type {SpinnerProps} from './components/Spinner';
 
-export {Stack} from './components/Stack';
-export type {StackProps} from './components/Stack';
-
 export {Sticky} from './components/Sticky';
 export type {StickyProps} from './components/Sticky';
 
-export {Subheading} from './components/Subheading';
-export type {SubheadingProps} from './components/Subheading';
-
 export {Tabs} from './components/Tabs';
-export type {TabsProps} from './components/Tabs';
+export type {TabsProps, TabProps} from './components/Tabs';
 
 export {Tag} from './components/Tag';
 export type {TagProps} from './components/Tag';
@@ -404,9 +369,6 @@ export type {TextContainerProps} from './components/TextContainer';
 
 export {TextField} from './components/TextField';
 export type {TextFieldProps} from './components/TextField';
-
-export {TextStyle} from './components/TextStyle';
-export type {TextStyleProps} from './components/TextStyle';
 
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
@@ -432,10 +394,10 @@ export type {UnstyledButtonProps} from './components/UnstyledButton';
 export {UnstyledLink} from './components/UnstyledLink';
 export type {UnstyledLinkProps} from './components/UnstyledLink';
 
-export {VideoThumbnail} from './components/VideoThumbnail';
+export {VerticalStack} from './components/VerticalStack';
+export type {VerticalStackProps} from './components/VerticalStack';
 
-export {VisuallyHidden} from './components/VisuallyHidden';
-export type {VisuallyHiddenProps} from './components/VisuallyHidden';
+export {VideoThumbnail} from './components/VideoThumbnail';
 
 export type {
   RGBColor,

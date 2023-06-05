@@ -546,7 +546,7 @@ function IndexTableBase({
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
-      timeout={parseInt(motion['duration-100'], 10)}
+      timeout={parseInt(motion['motion-duration-100'], 10)}
       nodeRef={loadingElement}
       appear
       unmountOnExit
@@ -739,7 +739,7 @@ function IndexTableBase({
   const sharedMarkup = (
     <>
       <EventListener event="resize" handler={handleResize} />
-      {stickyHeaderMarkup}
+      <AfterInitialMount>{stickyHeaderMarkup}</AfterInitialMount>
     </>
   );
 
@@ -1072,6 +1072,11 @@ function IndexTableBase({
   }
 
   function renderStickyHeading(heading: IndexTableHeading, index: number) {
+    const position = index + 1;
+    const headingStyle =
+      tableHeadingRects.current && tableHeadingRects.current.length > position
+        ? {minWidth: tableHeadingRects.current[position].offsetWidth}
+        : undefined;
     const headingAlignment = heading.alignment || 'start';
 
     const headingContent = renderHeadingContent(heading, index);
@@ -1087,6 +1092,7 @@ function IndexTableBase({
       <div
         className={stickyHeadingClassName}
         key={getHeadingKey(heading)}
+        style={headingStyle}
         data-index-table-sticky-heading
       >
         {headingContent}

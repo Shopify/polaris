@@ -7,7 +7,10 @@ export const withPolarisExample = (Component: ComponentType) => {
   const PolarisHOC = (props: any) => {
     return (
       <>
-        <AppProvider i18n={translations}>
+        <AppProvider
+          i18n={translations}
+          features={{polarisSummerEditions2023: false}}
+        >
           <div className={styles.Container}>
             <div id="polaris-example" className={styles.Example}>
               <Component {...props} />

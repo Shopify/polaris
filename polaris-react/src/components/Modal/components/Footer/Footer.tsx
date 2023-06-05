@@ -4,6 +4,7 @@ import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Box} from '../../../Box';
 import {HorizontalStack} from '../../../HorizontalStack';
+import {useFeatures} from '../../../../utilities/features';
 
 export interface FooterProps {
   /** Primary action */
@@ -19,6 +20,8 @@ export function Footer({
   secondaryActions,
   children,
 }: FooterProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
   const primaryActionButton =
     (primaryAction && buttonsFrom(primaryAction, {primary: true})) || null;
   const secondaryActionButtons =
@@ -35,9 +38,11 @@ export function Footer({
     <HorizontalStack gap="4" blockAlign="center">
       <Box
         borderColor="border-subdued"
-        borderBlockStartWidth="1"
+        borderBlockStartWidth={polarisSummerEditions2023 ? undefined : '1'}
         minHeight="var(--p-space-16)"
         padding="4"
+        paddingInlineStart="5"
+        paddingInlineEnd="5"
         width="100%"
       >
         <HorizontalStack gap="4" blockAlign="center" align="space-between">

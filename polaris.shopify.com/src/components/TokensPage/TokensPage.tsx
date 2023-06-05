@@ -65,13 +65,17 @@ function tokensToFilteredArray(
   filter: string,
   tokenGroup: MetadataGroup,
 ): TokenPropertiesWithName[] {
-  return Object.entries(tokenGroup)
-    .filter(([name]) => {
-      return name.toLowerCase().includes(filter.toLowerCase());
-    })
-    .map(([name, value]) => {
-      return {name, ...value};
-    });
+  return (
+    Object.entries(tokenGroup)
+      // se23: Temporarily filter out experimental tokens
+      .filter(([name]) => !name.includes('experimental'))
+      .filter(([name]) => {
+        return name.toLowerCase().includes(filter.toLowerCase());
+      })
+      .map(([name, value]) => {
+        return {name, ...value};
+      })
+  );
 }
 
 function TokensPage({tokenGroup}: Props) {

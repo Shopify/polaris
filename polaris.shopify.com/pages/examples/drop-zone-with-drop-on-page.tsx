@@ -42,7 +42,7 @@ function DropZoneWithDropOnPageExample() {
 
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      backAction={{content: 'Products', url: '/products'}}
       title="Jar With Lock-Lid"
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[

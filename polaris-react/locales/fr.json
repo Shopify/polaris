@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Rejeter la notification"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Chargement en cours",
       "connectedDisclosureAccessibilityLabel": "Actions associées"

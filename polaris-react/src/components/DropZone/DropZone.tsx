@@ -1,4 +1,11 @@
-import React, {useState, useRef, useCallback, useMemo, useEffect} from 'react';
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useMemo,
+  useEffect,
+  useId,
+} from 'react';
 import type {FunctionComponent} from 'react';
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
@@ -11,7 +18,6 @@ import {Labelled} from '../Labelled';
 import type {LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
 import {VerticalStack} from '../VerticalStack';
@@ -294,7 +300,8 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     adjustSize();
   });
 
-  const id = useUniqueId('DropZone', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
   const typeSuffix = capitalize(type);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);

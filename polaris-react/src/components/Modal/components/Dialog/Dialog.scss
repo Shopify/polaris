@@ -94,6 +94,12 @@ $large-width: 980px;
       height: unset;
     }
   }
+
+  #{$se23} & {
+    /* Setting background color on the header causes it to show through the
+       border radius, so we have to hide the overflow to maintain the radius */
+    overflow: hidden;
+  }
 }
 
 .animateFadeUp {

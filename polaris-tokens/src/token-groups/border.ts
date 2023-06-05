@@ -1,4 +1,4 @@
-import type {MetadataProperties} from '../types';
+import type {Experimental, MetadataProperties} from '../types';
 
 export type BorderRadiusScale =
   | '05'
@@ -10,7 +10,15 @@ export type BorderRadiusScale =
   | '6'
   | 'full';
 
-export type BorderWidthScale = '1' | '2' | '3' | '4' | '5';
+type BorderWidthScaleExperimental = Experimental<'1' | '2'>;
+
+export type BorderWidthScale =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | BorderWidthScaleExperimental;
 
 export type BorderTokenName =
   | `border-radius-${BorderRadiusScale}`
@@ -61,5 +69,11 @@ export const border: {
   },
   'border-width-5': {
     value: '5px',
+  },
+  'border-width-1-experimental': {
+    value: '0.66px',
+  },
+  'border-width-2-experimental': {
+    value: '1px',
   },
 };

@@ -28,7 +28,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Page`](/components/layout-and-structure/page) components.
+This pattern uses the [`Card`](/components/layout-and-structure/card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Page`](/components/layout-and-structure/page) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
@@ -47,7 +47,7 @@ function ResourceDetailsLayout() {
   const SkeletonLabel = (props) => {
     return (
       <Box
-        background="surface-neutral"
+        background="bg-strong"
         minHeight="1rem"
         maxWidth="5rem"
         borderRadius="base"
@@ -57,7 +57,7 @@ function ResourceDetailsLayout() {
   };
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      backAction={{content: 'Products', url: '/products'}}
       title="Product"
       secondaryActions={[
         {
@@ -87,15 +87,15 @@ function ResourceDetailsLayout() {
     >
       <HorizontalGrid columns={{xs: 1, md: '2fr 1fr'}} gap="4">
         <VerticalStack gap="4">
-          <AlphaCard roundedAbove="sm">
+          <Card roundedAbove="sm">
             <VerticalStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
               <Box border="divider" borderRadius="base" minHeight="20rem" />
             </VerticalStack>
-          </AlphaCard>
-          <AlphaCard roundedAbove="sm">
+          </Card>
+          <Card roundedAbove="sm">
             <VerticalStack gap="4">
               <SkeletonDisplayText size="small" />
               <HorizontalGrid columns={{xs: 1, md: 2}}>
@@ -103,10 +103,10 @@ function ResourceDetailsLayout() {
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
               </HorizontalGrid>
             </VerticalStack>
-          </AlphaCard>
+          </Card>
         </VerticalStack>
         <VerticalStack gap={{xs: '4', md: '2'}}>
-          <AlphaCard roundedAbove="sm">
+          <Card roundedAbove="sm">
             <VerticalStack gap="4">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
@@ -119,8 +119,8 @@ function ResourceDetailsLayout() {
               <Divider />
               <SkeletonBodyText />
             </VerticalStack>
-          </AlphaCard>
-          <AlphaCard roundedAbove="sm">
+          </Card>
+          <Card roundedAbove="sm">
             <VerticalStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
@@ -129,7 +129,7 @@ function ResourceDetailsLayout() {
               <SkeletonLabel />
               <SkeletonBodyText />
             </VerticalStack>
-          </AlphaCard>
+          </Card>
         </VerticalStack>
       </HorizontalGrid>
     </Page>

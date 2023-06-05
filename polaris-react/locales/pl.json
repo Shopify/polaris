@@ -24,6 +24,9 @@
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
+    "Banner": {
+      "dismissButton": "Odrzuć powiadomienie"
+    },
     "Button": {
       "spinnerAccessibilityLabel": "Ładowanie",
       "connectedDisclosureAccessibilityLabel": "Powiązane czynności"
