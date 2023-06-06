@@ -7,6 +7,7 @@ import type {
   ActionListItemDescriptor,
   ActionListSection,
 } from '../../../../types';
+import {useFeatures} from '../../../../utilities/features';
 
 export interface SectionProps {
   /** Section of action items */
@@ -28,6 +29,8 @@ export function Section({
   actionRole,
   onActionAnyItem,
 }: SectionProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
   const handleAction = (itemOnAction: ActionListItemDescriptor['onAction']) => {
     return () => {
       if (itemOnAction) {
@@ -41,9 +44,12 @@ export function Section({
   const actionMarkup = section.items.map(
     ({content, helpText, onAction, ...item}, index) => {
       return (
-        <li
+        <Box
+          as="li"
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
+          {...(polarisSummerEditions2023 &&
+            index !== 0 && {paddingBlockStart: '1'})}
         >
           <Item
             content={content}
@@ -52,7 +58,7 @@ export function Section({
             onAction={handleAction(onAction)}
             {...item}
           />
-        </li>
+        </Box>
       );
     },
   );
@@ -63,12 +69,24 @@ export function Section({
     titleMarkup =
       typeof section.title === 'string' ? (
         <Box
-          paddingBlockStart="4"
-          paddingInlineStart="4"
-          paddingBlockEnd="2"
-          paddingInlineEnd="4"
+          {...(polarisSummerEditions2023
+            ? {
+                paddingBlockStart: isFirst ? '4' : '3',
+                paddingInlineStart: '5',
+                paddingBlockEnd: '2',
+                paddingInlineEnd: '5',
+              }
+            : {
+                paddingBlockStart: '4',
+                paddingInlineStart: '4',
+                paddingBlockEnd: '2',
+                paddingInlineEnd: '4',
+              })}
         >
-          <Text as="p" variant="headingXs">
+          <Text
+            as="p"
+            variant={polarisSummerEditions2023 ? 'headingSm' : 'headingXs'}
+          >
             {section.title}
           </Text>
         </Box>
@@ -109,7 +127,11 @@ export function Section({
     <Box
       as="li"
       role="presentation"
-      borderColor="border-subdued"
+      borderColor={
+        polarisSummerEditions2023
+          ? 'border-faint-experimental'
+          : 'border-subdued'
+      }
       {...(!isFirst && {borderBlockStartWidth: '1'})}
       {...(!section.title && {paddingBlockStart: '2'})}
     >
