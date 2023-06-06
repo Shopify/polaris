@@ -6,7 +6,8 @@
 
   #{$se23} & {
     margin-right: 0;
-    padding: 0 var(--p-space-2) 0 calc(var(--p-space-5) / 2);
+    /* stylelint-disable-next-line -- se23 */
+    padding: 0 var(--p-space-2) 0 10px;
 
     /* stylelint-disable-next-line selector-max-combinators -- se23 */
     > p {

@@ -162,8 +162,10 @@ $icon-size: 20px;
   }
 
   #{$se23} & {
-    @media #{$p-breakpoints-md-down} {
-      padding: 0;
+    padding: 0;
+
+    @media #{$p-breakpoints-md-up} {
+      padding: 0 var(--p-space-6);
     }
   }
 }
