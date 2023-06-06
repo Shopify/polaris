@@ -44,7 +44,7 @@ export const TextOption = memo(function TextOption({
             <Checkbox disabled={disabled} checked={selected} label={children} />
           </div>
         ) : (
-          <HorizontalGrid columns={'1fr auto'}>
+          <HorizontalGrid columns="1fr auto">
             {children}
             {polarisSummerEditions2023 && selected ? (
               <Icon source={TickMinor} />

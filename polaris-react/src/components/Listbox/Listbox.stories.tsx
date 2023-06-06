@@ -14,6 +14,7 @@ import {
   Box,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
+
 import {useFeatures} from '../../utilities/features';
 
 export default {
