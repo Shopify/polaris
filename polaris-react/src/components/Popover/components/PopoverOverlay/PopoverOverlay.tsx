@@ -20,6 +20,7 @@ import styles from '../../Popover.scss';
 import {PortalsManagerContext} from '../../../../utilities/portals';
 import type {PortalsContainerElement} from '../../../../utilities/portals';
 import {Box} from '../../../Box';
+import {UseFeatures} from '../../../../utilities/features';
 
 export enum PopoverCloseSource {
   Click,
@@ -254,15 +255,19 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <Box
-          position="relative"
-          overflowX="hidden"
-          overflowY="hidden"
-          background="bg"
-          borderRadius="2"
-        >
-          {content}
-        </Box>
+        <UseFeatures>
+          {(features) => (
+            <Box
+              position="relative"
+              overflowX="hidden"
+              overflowY="hidden"
+              background="bg"
+              borderRadius={features.polarisSummerEditions2023 ? '3' : '2'}
+            >
+              {content}
+            </Box>
+          )}
+        </UseFeatures>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
