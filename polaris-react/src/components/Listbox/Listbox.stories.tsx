@@ -14,12 +14,15 @@ import {
   Box,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
+import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Listbox,
 } as ComponentMeta<typeof Listbox>;
 
 export function All() {
+  const {polarisSummerEditions2023} = useFeatures();
+
   interface CustomerSegment {
     id: string;
     label: string;
@@ -352,7 +355,7 @@ export function All() {
               shadow
               style={{
                 position: 'relative',
-                height: '292px',
+                height: polarisSummerEditions2023 ? '262px' : '292px',
                 padding: 'var(--p-space-2) 0',
                 borderBottomLeftRadius: 'var(--p-border-radius-2)',
                 borderBottomRightRadius: 'var(--p-border-radius-2)',
