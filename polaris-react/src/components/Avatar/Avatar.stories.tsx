@@ -5,9 +5,7 @@ import {
   Avatar,
   Button,
   Popover,
-  LegacyStack,
   VerticalStack,
-  Box,
   HorizontalStack,
 } from '@shopify/polaris';
 
@@ -82,6 +80,7 @@ export function CircleInitialsColorsSizes() {
         <Avatar initials="AC" size="extraSmall" />
         <Avatar initials="AB" size="extraSmall" />
         <Avatar initials="AE" size="extraSmall" />
+        <Avatar initials="WW" size="extraSmall" />
       </HorizontalStack>
       <HorizontalStack gap="4">
         <Avatar initials="AG" size="small" />
@@ -89,6 +88,7 @@ export function CircleInitialsColorsSizes() {
         <Avatar initials="AC" size="small" />
         <Avatar initials="AB" size="small" />
         <Avatar initials="AE" size="small" />
+        <Avatar initials="WW" size="small" />
       </HorizontalStack>
       <HorizontalStack gap="4">
         <Avatar initials="AG" size="medium" />
@@ -96,6 +96,7 @@ export function CircleInitialsColorsSizes() {
         <Avatar initials="AC" size="medium" />
         <Avatar initials="AB" size="medium" />
         <Avatar initials="AE" size="medium" />
+        <Avatar initials="WW" size="medium" />
       </HorizontalStack>
       <HorizontalStack gap="4">
         <Avatar initials="AG" size="large" />
@@ -103,6 +104,7 @@ export function CircleInitialsColorsSizes() {
         <Avatar initials="AC" size="large" />
         <Avatar initials="AB" size="large" />
         <Avatar initials="AE" size="large" />
+        <Avatar initials="WW" size="large" />
       </HorizontalStack>
     </VerticalStack>
   );
@@ -200,6 +202,7 @@ export function SquareInitialsColorsSizes() {
         <Avatar initials="AC" size="extraSmall" shape="square" />
         <Avatar initials="AB" size="extraSmall" shape="square" />
         <Avatar initials="AE" size="extraSmall" shape="square" />
+        <Avatar initials="WW" size="extraSmall" shape="square" />
       </HorizontalStack>
       <HorizontalStack gap="4">
         <Avatar initials="AG" size="small" shape="square" />
@@ -207,6 +210,7 @@ export function SquareInitialsColorsSizes() {
         <Avatar initials="AC" size="small" shape="square" />
         <Avatar initials="AB" size="small" shape="square" />
         <Avatar initials="AE" size="small" shape="square" />
+        <Avatar initials="WW" size="small" shape="square" />
       </HorizontalStack>
       <HorizontalStack gap="4">
         <Avatar initials="AG" size="medium" shape="square" />
@@ -214,6 +218,7 @@ export function SquareInitialsColorsSizes() {
         <Avatar initials="AC" size="medium" shape="square" />
         <Avatar initials="AB" size="medium" shape="square" />
         <Avatar initials="AE" size="medium" shape="square" />
+        <Avatar initials="WW" size="medium" shape="square" />
       </HorizontalStack>
       <HorizontalStack gap="4">
         <Avatar initials="AG" size="large" shape="square" />
@@ -221,6 +226,7 @@ export function SquareInitialsColorsSizes() {
         <Avatar initials="AC" size="large" shape="square" />
         <Avatar initials="AB" size="large" shape="square" />
         <Avatar initials="AE" size="large" shape="square" />
+        <Avatar initials="WW" size="large" shape="square" />
       </HorizontalStack>
     </VerticalStack>
   );
