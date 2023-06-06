@@ -15,6 +15,11 @@ jobs:
       (github.event.comment.body == '/snapit' || github.event.comment.body == '/snapshot-release')
     runs-on: ubuntu-latest
     steps:
+      - name: Debugging information
+        run: |
+          echo "Is PR: ${{ github.event.issue.pull_request }}"
+          echo "Comment body: '${{ github.event.comment.body }}'"
+
       - name: Enforce permission requirement
         uses: prince-chrismc/check-actor-permissions-action@v1
         with:
