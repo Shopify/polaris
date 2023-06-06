@@ -935,14 +935,18 @@
   }
 
   #{$se23} & {
+    // stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list
     min-height: var(--pc-button-large-min-height);
     min-width: var(--pc-button-large-min-height);
     padding: var(--pc-button-large-vertical-padding) var(--p-space-6);
+    // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
 
+    // stylelint-disable selector-max-combinators -- se23 temporary styles
     .Content {
       font-size: var(--p-font-size-100);
       line-height: var(--p-font-line-height-2);
     }
+    // stylelint-enable selector-max-combinators -- se23 temporary styles
   }
 }
 
