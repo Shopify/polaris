@@ -179,7 +179,7 @@ type ColorBorderAliasExperimental = Experimental<
   'border-faint' | 'border-input-active'
 >;
 
-type ColorAvatarAliasExperimental = Experimental<
+export type ColorAvatarAliasExperimental = Experimental<
   | 'avatar-background-gray'
   | 'avatar-background-magenta'
   | 'avatar-background-yellow'
