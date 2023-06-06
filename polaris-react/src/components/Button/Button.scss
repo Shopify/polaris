@@ -866,6 +866,11 @@
   padding-left: var(--p-space-2);
   padding-right: var(--p-space-2);
 
+  #{$se23} & {
+    padding-left: var(--p-space-1);
+    padding-right: var(--p-space-1);
+  }
+
   &.sizeLarge {
     padding-left: var(--p-space-3);
     padding-right: var(--p-space-3);
@@ -878,6 +883,10 @@
 
   .Icon:first-child {
     margin-left: 0;
+
+    #{$se23} & {
+      margin-left: 0;
+    }
   }
 
   .Icon:last-child {
