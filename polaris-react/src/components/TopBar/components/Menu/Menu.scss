@@ -2,6 +2,7 @@
 
 $activator-variables: (
   min-width: 36px,
+  min-height: 32px,
   focus-opacity: 0.85,
 );
 
@@ -39,6 +40,7 @@ $activator-variables: (
     background-color: var(--p-color-bg-inset-strong);
     border-radius: var(--p-border-radius-2);
     min-width: auto;
+    min-height: menu(min-height);
 
     &-userMenu {
       padding: var(--p-space-05);
