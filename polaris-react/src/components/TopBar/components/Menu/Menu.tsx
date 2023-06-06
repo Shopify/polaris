@@ -4,6 +4,8 @@ import {ActionList} from '../../../ActionList';
 import type {ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {Box} from '../../../Box';
+import {classNames} from '../../../../utilities/css';
+import {useFeatures} from '../../../../utilities/features';
 
 import {Message} from './components';
 import type {MessageProps} from './components';
@@ -28,6 +30,8 @@ export interface MenuProps {
   accessibilityLabel?: string;
   /** A custom width value that can be used to set the width of the menu */
   customWidth?: string;
+  /** A boolean property indicating whether the menu is being used as a user menu */
+  userMenu?: boolean;
 }
 
 export function Menu(props: MenuProps) {
@@ -40,7 +44,9 @@ export function Menu(props: MenuProps) {
     message,
     accessibilityLabel,
     customWidth,
+    userMenu,
   } = props;
+  const {polarisSummerEditions2023} = useFeatures();
 
   const badgeProps = message &&
     message.badge && {
@@ -67,7 +73,12 @@ export function Menu(props: MenuProps) {
         <div className={styles.ActivatorWrapper}>
           <button
             type="button"
-            className={styles.Activator}
+            className={classNames(
+              styles.Activator,
+              userMenu &&
+                polarisSummerEditions2023 &&
+                styles['Activator-userMenu'],
+            )}
             onClick={onOpen}
             aria-label={accessibilityLabel}
           >

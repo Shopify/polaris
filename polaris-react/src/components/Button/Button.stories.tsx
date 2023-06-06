@@ -8,7 +8,13 @@ import {
   VerticalStack,
   Text,
 } from '@shopify/polaris';
-import {PlusMinor, DeleteMinor, EditMajor} from '@shopify/polaris-icons';
+import {
+  PlusMinor,
+  DeleteMinor,
+  CancelSmallMinor,
+  EditMajor,
+  AddMajor,
+} from '@shopify/polaris-icons';
 
 export default {
   component: Button,
@@ -28,6 +34,27 @@ export function All() {
               Label
             </Button>
             <Button disclosure>Label</Button>
+            <Button
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
+            <Button
+              icon={EditMajor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
+            <Button
+              disabled
+              icon={PlusMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
+            <Button
+              icon={DeleteMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
           <Card>
             <HorizontalStack gap="5" blockAlign="end">
@@ -38,6 +65,17 @@ export function All() {
                 Label
               </Button>
               <Button disclosure>Label</Button>
+              <Button
+                icon={CancelSmallMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                disabled
+                icon={EditMajor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
             </HorizontalStack>
           </Card>
         </VerticalStack>
@@ -57,6 +95,19 @@ export function All() {
             <Button destructive disclosure>
               Label
             </Button>
+            <Button
+              destructive
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
+            <Button
+              disabled
+              destructive
+              icon={EditMajor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
           <Card>
             <HorizontalStack gap="5" blockAlign="end">
@@ -73,6 +124,19 @@ export function All() {
               <Button destructive disclosure>
                 Label
               </Button>
+              <Button
+                destructive
+                icon={CancelSmallMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                disabled
+                destructive
+                icon={EditMajor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
             </HorizontalStack>
           </Card>
         </VerticalStack>
@@ -92,6 +156,19 @@ export function All() {
             <Button primary disclosure>
               Label
             </Button>
+            <Button
+              primary
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
+            <Button
+              disabled
+              primary
+              icon={EditMajor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
         </VerticalStack>
 
@@ -113,6 +190,13 @@ export function All() {
             <Button primary destructive disclosure>
               Label
             </Button>
+            <Button
+              primary
+              destructive
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
         </VerticalStack>
 
@@ -132,6 +216,12 @@ export function All() {
             <Button primarySuccess disclosure>
               Label
             </Button>
+            <Button
+              primarySuccess
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
         </VerticalStack>
 
@@ -152,6 +242,19 @@ export function All() {
             <Button plain disclosure>
               Label
             </Button>
+            <Button
+              plain
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
+            <Button
+              disabled
+              plain
+              icon={EditMajor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
         </VerticalStack>
 
@@ -173,6 +276,13 @@ export function All() {
             <Button plain destructive disclosure>
               Label
             </Button>
+            <Button
+              plain
+              destructive
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
         </VerticalStack>
 
@@ -194,6 +304,21 @@ export function All() {
             <Button primary plain disclosure>
               Label
             </Button>
+            <Button
+              primary
+              plain
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
+            <Button
+              disabled
+              primary
+              plain
+              icon={EditMajor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
         </VerticalStack>
 
@@ -215,6 +340,14 @@ export function All() {
             <Button primary plain destructive disclosure>
               Label
             </Button>
+            <Button
+              primary
+              plain
+              destructive
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
           </HorizontalStack>
         </VerticalStack>
       </VerticalStack>
