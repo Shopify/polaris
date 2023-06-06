@@ -94,6 +94,10 @@ li:first-of-type > .TextOption {
 .Content {
   flex: 1 1 auto;
   display: flex;
+
+  #{$se23} & {
+    display: block;
+  }
 }
 
 .Checkbox {
