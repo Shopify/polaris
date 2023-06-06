@@ -41,6 +41,12 @@ export interface AppProviderProps {
 }
 
 export class AppProvider extends Component<AppProviderProps, State> {
+  static defaultProps: Partial<AppProviderProps> = {
+    features: {
+      polarisSummerEditions2023: false,
+    },
+  };
+
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
 
@@ -97,12 +103,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
   };
 
   render() {
-    const {
-      children,
-      features = {
-        polarisSummerEditions2023: false,
-      },
-    } = this.props;
+    const {children, features} = this.props;
 
     const {intl, link} = this.state;
 
