@@ -36,6 +36,15 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
+  const optionMarkup = (
+    <HorizontalGrid columns="1fr auto">
+      {children}
+      {polarisSummerEditions2023 && selected ? (
+        <Icon source={TickMinor} />
+      ) : null}
+    </HorizontalGrid>
+  );
+
   return (
     <div className={textOptionClassName}>
       <div className={styles.Content}>
@@ -44,12 +53,7 @@ export const TextOption = memo(function TextOption({
             <Checkbox disabled={disabled} checked={selected} label={children} />
           </div>
         ) : (
-          <HorizontalGrid columns="1fr auto">
-            {children}
-            {polarisSummerEditions2023 && selected ? (
-              <Icon source={TickMinor} />
-            ) : null}
-          </HorizontalGrid>
+          optionMarkup
         )}
       </div>
     </div>
