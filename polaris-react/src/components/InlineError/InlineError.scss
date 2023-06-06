@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 .InlineError {
   display: flex;
   color: var(--p-color-text-critical);
@@ -8,4 +10,15 @@
   fill: currentColor;
   margin-left: calc(-1 * var(--p-space-05));
   margin-right: calc(var(--p-space-05) + var(--p-space-1));
+
+  #{$se23} & {
+    fill: var(--p-color-icon-critical);
+
+    // stylelint-disable-next-line -- se23
+    svg {
+      padding: var(--p-space-05);
+      margin-left: var(--p-space-05);
+      margin-right: var(--p-space-05);
+    }
+  }
 }

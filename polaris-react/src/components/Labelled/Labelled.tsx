@@ -29,6 +29,8 @@ export interface LabelledProps {
   labelHidden?: boolean;
   /** Visual required indicator for the label */
   requiredIndicator?: boolean;
+  /** Labels signify a disabled control */
+  disabled?: boolean;
 }
 
 export function Labelled({
@@ -40,9 +42,13 @@ export function Labelled({
   children,
   labelHidden,
   requiredIndicator,
+  disabled,
   ...rest
 }: LabelledProps) {
-  const className = classNames(labelHidden && styles.hidden);
+  const className = classNames(
+    labelHidden && styles.hidden,
+    disabled && styles.disabled,
+  );
 
   const actionMarkup = action ? (
     <div className={styles.Action}>{buttonFrom(action, {plain: true})}</div>
