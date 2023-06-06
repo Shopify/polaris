@@ -12,10 +12,29 @@
   // stylelint-enable
   position: relative;
   border-radius: inherit;
+
+  #{$se23} & {
+    border-radius: 0;
+
+    @media #{$p-breakpoints-sm-up} {
+      border-radius: inherit;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+  }
 }
 
 .IndexTableWrapper {
   border-radius: inherit;
+
+  #{$se23} & {
+    border-radius: 0;
+
+    /* stylelint-disable-next-line selector-max-combinators -- se23 */
+    .IndexTableWrapper-scrollBarHidden {
+      border-radius: inherit;
+    }
+  }
 }
 
 .IndexTableWrapperWithBulkActions {
@@ -97,6 +116,13 @@ $loading-panel-height: 53px;
     background-color: var(--p-color-bg);
   }
 
+  .TableHeading-first,
+  .TableHeading-second {
+    #{$se23} & {
+      background-color: var(--p-color-bg-subdued);
+    }
+  }
+
   .TableCell-first,
   .TableHeading-first {
     filter: drop-shadow(1px 0 0 var(--p-color-border-subdued));
@@ -135,6 +161,15 @@ $loading-panel-height: 53px;
   cursor: pointer;
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
+  #{$se23} & {
+    border-top: var(--p-border-width-1) solid
+      var(--p-color-border-faint-experimental);
+
+    &:first-child {
+      border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    }
+  }
+
   &.TableRow-unclickable {
     cursor: auto;
   }
@@ -145,6 +180,10 @@ $loading-panel-height: 53px;
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-color-bg-primary-subdued-selected);
+
+      #{$se23} & {
+        background-color: var(--p-color-bg-success-subdued);
+      }
     }
   }
 
@@ -154,6 +193,24 @@ $loading-panel-height: 53px;
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-color-bg-subdued);
+    }
+  }
+
+  &.statusCritical {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity -- Necessary specificity override
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-color-bg-critical-subdued);
+    }
+  }
+
+  &.statusCaution {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity -- Necessary specificity override
+    &,
+    .TableCell-first,
+    .TableCell-first + .TableCell {
+      background-color: var(--p-color-bg-caution-subdued);
     }
   }
 
@@ -174,6 +231,11 @@ $loading-panel-height: 53px;
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-color-bg-interactive-selected);
+
+      #{$se23} & {
+        // Bump specificity
+        background-color: var(--p-color-bg-interactive-selected);
+      }
     }
   }
 
@@ -403,10 +465,18 @@ $loading-panel-height: 53px;
   text-align: left;
   padding: var(--p-space-2) var(--p-space-4);
   white-space: nowrap;
+
+  #{$se23} & {
+    padding: var(--p-space-1_5-experimental) var(--p-space-4);
+  }
 }
 
 .TableCell-flush {
   padding: 0;
+
+  #{$se23} & {
+    padding: 0;
+  }
 }
 
 .TableCell-first {
@@ -416,6 +486,10 @@ $loading-panel-height: 53px;
   z-index: var(--pc-index-table-sticky-cell);
   padding: var(--p-space-2) 0;
   vertical-align: middle;
+
+  #{$se23} & {
+    padding: var(--p-space-1_5-experimental) 0;
+  }
 }
 
 .TableCell-first + .TableCell {
@@ -517,6 +591,10 @@ $loading-panel-height: 53px;
   .statusSuccess {
     .TableCell:last-child {
       background-color: var(--p-color-bg-primary-subdued-selected);
+
+      #{$se23} & {
+        background-color: var(--p-color-bg-success-subdued);
+      }
     }
   }
 
@@ -664,6 +742,17 @@ $scroll-bar-size: var(--p-space-2);
   background-color: var(--p-color-bg);
   border-bottom-right-radius: var(--p-border-radius-2);
   border-bottom-left-radius: var(--p-border-radius-2);
+
+  #{$se23} & {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+
+    @media #{$p-breakpoints-sm-up} {
+      border-bottom-right-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-2);
+      padding: var(--p-space-05) var(--p-space-2);
+    }
+  }
 }
 
 .scrollBarContainerCondensed {
@@ -674,6 +763,11 @@ $scroll-bar-size: var(--p-space-2);
 .scrollBarContainerHidden {
   height: 0;
   padding: 0;
+
+  #{$se23} & {
+    // Specificity bump
+    padding: 0;
+  }
 }
 
 .ScrollBar {
