@@ -168,6 +168,7 @@ export function Select({
       labelHidden={labelHidden}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
+      disabled={disabled}
     >
       <div className={className}>
         <select
