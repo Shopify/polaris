@@ -4,6 +4,11 @@
   background-color: var(--p-color-bg);
   box-shadow: var(--p-shadow-md);
   outline: var(--p-border-width-1) solid transparent;
+  overflow: clip;
+
+  #{$se23} & {
+    box-shadow: var(--p-shadow-card-sm-experimental);
+  }
 
   #{$se23} & {
     box-shadow: var(--p-shadow-card-sm-experimental);
