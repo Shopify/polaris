@@ -14,6 +14,7 @@ import {HorizontalStack} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
 import {Tooltip} from '../../../Tooltip';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
+import {useFeatures} from '../../../../utilities/features';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -38,6 +39,8 @@ export function Item({
   active,
   role,
 }: ItemProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
@@ -75,7 +78,15 @@ export function Item({
   const contentMarkup = helpText ? (
     <>
       <Box>{contentText}</Box>
-      <Text color="subdued" as="span">
+      <Text
+        as="span"
+        variant={polarisSummerEditions2023 ? 'bodySm' : undefined}
+        color={
+          polarisSummerEditions2023 && (active || disabled)
+            ? undefined
+            : 'subdued'
+        }
+      >
         {helpText}
       </Text>
     </>
@@ -98,7 +109,11 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack blockAlign="center" gap="4" wrap={!truncate}>
+    <HorizontalStack
+      blockAlign="center"
+      gap={polarisSummerEditions2023 ? '2' : '4'}
+      wrap={!truncate}
+    >
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
