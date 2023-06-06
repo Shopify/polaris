@@ -14,7 +14,10 @@ export default function FrameComponent({
     updateGrowFrameHeight(`${document.body.scrollHeight}px`);
   });
   return (
-    <AppProvider i18n={theme || enTranslations}>
+    <AppProvider
+      i18n={theme || enTranslations}
+      features={{polarisSummerEditions2023: false}}
+    >
       <div id="polaris-sandbox-wrapper">{children}</div>
     </AppProvider>
   );
