@@ -1,6 +1,8 @@
 import type {MetadataProperties, Experimental} from '../types';
 
-type ShadowAliasExperimental = Experimental<'card-sm' | 'card-md' | 'card-lg'>;
+type ShadowAliasExperimental = Experimental<
+  'card-sm' | 'card-md' | 'card-lg' | 'button'
+>;
 
 export type ShadowAlias =
   | 'inset-lg'
@@ -81,5 +83,9 @@ export const shadow: {
   'shadow-card-lg-experimental': {
     value:
       '0px 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0px -1px 0px #D4D4D4, inset -1px 0px 0px #E3E3E3, inset 1px 0px 0px #E3E3E3, inset 0px 1px 0px #E3E3E3',
+  },
+  'shadow-button-experimental': {
+    value:
+      'inset 0px -1px 0px #B5B5B5, inset -1px 0px 0px #E3E3E3, inset 1px 0px 0px #E3E3E3, inset 0px 1px 0px #E3E3E3',
   },
 };

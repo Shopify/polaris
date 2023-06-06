@@ -50,6 +50,14 @@
     cursor: not-allowed;
     box-shadow: none;
   }
+
+  #{$se23} & {
+    color: var(--p-color-text);
+    background-color: var(--p-color-bg);
+    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    box-shadow: var(--p-shadow-button-experimental);
+    border-radius: var(--p-border-radius-2);
+  }
 }
 
 .ActionTitle {
