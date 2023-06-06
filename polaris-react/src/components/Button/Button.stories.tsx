@@ -8,7 +8,7 @@ import {
   VerticalStack,
   Text,
 } from '@shopify/polaris';
-import {PlusMinor, DeleteMinor, EditMinor} from '@shopify/polaris-icons';
+import {PlusMinor, DeleteMinor, EditMajor} from '@shopify/polaris-icons';
 
 export default {
   component: Button,
@@ -295,7 +295,7 @@ export function Large() {
   return (
     <HorizontalStack gap="5" blockAlign="end">
       <Button size="large">Create store</Button>
-      <Button size="large" accessibilityLabel="Edit" icon={EditMinor} />
+      <Button size="large" accessibilityLabel="Edit" icon={EditMajor} />
       <Button size="large" primary>
         Create store
       </Button>
