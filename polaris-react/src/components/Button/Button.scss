@@ -878,8 +878,10 @@
     padding-right: var(--p-space-3);
 
     #{$se23} & {
+      // stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list
       padding-left: var(--pc-button-large-vertical-padding);
       padding-right: var(--pc-button-large-vertical-padding);
+      // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
     }
   }
 
