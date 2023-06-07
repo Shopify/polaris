@@ -36,13 +36,13 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
-  const optionMarkup = (
+  const optionMarkup = polarisSummerEditions2023 ? (
     <HorizontalGrid columns="1fr auto">
       {children}
-      {polarisSummerEditions2023 && selected ? (
-        <Icon source={TickMinor} />
-      ) : null}
+      {selected ? <Icon source={TickMinor} /> : null}
     </HorizontalGrid>
+  ) : (
+    <>{children}</>
   );
 
   return (
