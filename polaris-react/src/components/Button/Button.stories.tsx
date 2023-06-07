@@ -229,7 +229,6 @@ export function All() {
           <Text as="h2">plain</Text>
           <HorizontalStack gap="5" blockAlign="end">
             <Button plain>Label</Button>
-            <Button plain>Label</Button>
             <Button plain disabled>
               Label
             </Button>
@@ -242,6 +241,9 @@ export function All() {
             <Button plain disclosure>
               Label
             </Button>
+            <Button plain disclosure disabled>
+              Label
+            </Button>
             <Button
               plain
               icon={CancelSmallMinor}
@@ -249,9 +251,9 @@ export function All() {
               accessibilityLabel="Dismiss"
             />
             <Button
-              disabled
               plain
-              icon={EditMajor}
+              disabled
+              icon={CancelSmallMinor}
               onClick={() => {}}
               accessibilityLabel="Dismiss"
             />
@@ -276,9 +278,20 @@ export function All() {
             <Button plain destructive disclosure>
               Label
             </Button>
+            <Button plain destructive disclosure disabled>
+              Label
+            </Button>
             <Button
               plain
               destructive
+              icon={CancelSmallMinor}
+              onClick={() => {}}
+              accessibilityLabel="Dismiss"
+            />
+            <Button
+              plain
+              destructive
+              disabled
               icon={CancelSmallMinor}
               onClick={() => {}}
               accessibilityLabel="Dismiss"
