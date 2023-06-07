@@ -49,7 +49,7 @@
     @include focus-ring($style: 'focused');
 
     #{$se23} & {
-      // @include focus-ring($size: 'wide');
+      // stylelint-disable-next-line -- se23 temporary styles
       @include no-focus-ring;
       outline: var(--p-border-width-2) solid
         var(--p-color-border-interactive-focus);
