@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Bumped `@types/react`and `@types/react-dom` to latest and added caret range
+Bumped `@types/react`and `@types/react-dom` to match dependency versions

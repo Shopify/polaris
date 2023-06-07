@@ -62,7 +62,7 @@
     "@types/lodash.throttle": "^4.1.7",
     "@types/marked": "^4.0.3",
     "@types/prismjs": "^1.26.0",
-    "@types/react": "^18.2.8",
+    "@types/react": "^18.2.0",
     "@types/uuid": "^9.0.1",
     "babel-plugin-preval": "^5.1.0",
     "chalk": "^5.2.0",
