@@ -580,19 +580,14 @@ export function Error() {
 }
 
 export function Disabled() {
-  const [files, setFiles] = useState([]);
-
-  const handleDropZoneDrop = useCallback(
-    (_dropFiles, acceptedFiles, _rejectedFiles) =>
-      setFiles((files) => [...files, ...acceptedFiles]),
-    [],
-  );
-
-  const fileUpload = !files.length && <DropZone.FileUpload />;
+  const handleDropZoneDrop = () => {
+    // eslint-disable-next-line no-alert
+    alert("this shouldn't be called");
+  };
 
   return (
     <DropZone disabled onDrop={handleDropZoneDrop}>
-      {fileUpload}
+      <DropZone.FileUpload />
     </DropZone>
   );
 }
