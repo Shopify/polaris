@@ -11,7 +11,7 @@ import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import styles from '../../IndexTable.scss';
 
-type RowStatus = 'success' | 'critical' | 'caution' | 'subdued';
+type RowStatus = 'success' | 'subdued';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
 export interface RowProps {

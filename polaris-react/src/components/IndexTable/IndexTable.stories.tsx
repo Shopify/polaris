@@ -1192,24 +1192,6 @@ export function WithRowStatus() {
       amountSpent: '$140',
       status: 'success',
     },
-    {
-      id: '3413',
-      url: '#',
-      name: 'Dentist',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-      status: 'caution',
-    },
-    {
-      id: '3414',
-      url: '#',
-      name: 'Elevator operator',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-      status: 'critical',
-    },
   ];
   const resourceName = {
     singular: 'customer',
