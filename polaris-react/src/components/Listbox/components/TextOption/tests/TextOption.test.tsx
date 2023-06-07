@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, mountWithApp} from 'tests/utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {TextOption} from '../TextOption';
 import {Listbox} from '../../..';
@@ -9,13 +9,13 @@ import {ComboboxListboxOptionContext} from '../../../../../utilities/combobox/co
 describe('TextOption', () => {
   it('renders children', () => {
     const child = 'child';
-    const textOption = mount(<TextOption>{child}</TextOption>);
+    const textOption = mountWithApp(<TextOption>{child}</TextOption>);
 
     expect(textOption).toContainReactText(child);
   });
 
   it('renders visually disabled text when disabled', () => {
-    const textOption = mount(<TextOption disabled>child</TextOption>);
+    const textOption = mountWithApp(<TextOption disabled>child</TextOption>);
 
     expect(textOption).toContainReactComponent('div', {
       className: 'TextOption disabled',
@@ -23,7 +23,7 @@ describe('TextOption', () => {
   });
 
   it('renders visually selected text when selected', () => {
-    const textOption = mount(<TextOption selected>child</TextOption>);
+    const textOption = mountWithApp(<TextOption selected>child</TextOption>);
 
     expect(textOption).toContainReactComponent('div', {
       className: 'TextOption selected',
