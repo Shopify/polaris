@@ -9,8 +9,8 @@ import {Box} from '../Box';
 import {HorizontalStack} from '../HorizontalStack';
 import {Text} from '../Text';
 import {VerticalStack} from '../VerticalStack';
-
 import {useFeatures} from '../../utilities/features';
+import {useBreakpoints} from '../../utilities/breakpoints';
 
 export interface AccountConnectionProps {
   /** Content to display as title */
@@ -39,6 +39,7 @@ export function AccountConnection({
   termsOfService,
 }: AccountConnectionProps) {
   const {polarisSummerEditions2023} = useFeatures();
+  const breakpoints = useBreakpoints();
 
   const initials = accountName
     ? accountName
@@ -73,7 +74,13 @@ export function AccountConnection({
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <Box paddingBlockStart="5">{termsOfService}</Box>
+    <Box
+      paddingBlockStart={
+        polarisSummerEditions2023 && breakpoints.mdUp ? '4' : '5'
+      }
+    >
+      {termsOfService}
+    </Box>
   ) : null;
 
   const actionElement = action
@@ -85,7 +92,7 @@ export function AccountConnection({
       <SettingAction action={actionElement}>
         <HorizontalStack gap="4">
           {avatarMarkup}
-          <VerticalStack gap="2">
+          <VerticalStack gap={polarisSummerEditions2023 ? '1' : '2'}>
             {titleMarkup}
             {detailsMarkup}
           </VerticalStack>
