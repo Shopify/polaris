@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
+// @ts-expect-error TS can't resolve the type of this import
 import * as jscodeshift from 'jscodeshift/src/Runner';
 import chalk from 'chalk';
 import isGitClean from 'is-git-clean';
