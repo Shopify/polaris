@@ -38,3 +38,28 @@ export function Default() {
     />
   );
 }
+
+export function WithAccountConnected() {
+  const [connected, setConnected] = useState(true);
+  const accountName = connected ? 'Jane Appleseed' : '';
+
+  const handleAction = useCallback(() => {
+    setConnected((connected) => !connected);
+  }, []);
+
+  const buttonText = connected ? 'Disconnect' : 'Connect';
+  const details = connected ? 'Account connected' : 'No account connected';
+
+  return (
+    <AccountConnection
+      accountName={accountName}
+      connected={connected}
+      title="Example App"
+      action={{
+        content: buttonText,
+        onAction: handleAction,
+      }}
+      details={details}
+    />
+  );
+}
