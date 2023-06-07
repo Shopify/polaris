@@ -60,7 +60,7 @@ export function AccountConnection({
   const titleContent = title ? title : accountName;
 
   const titleMarkup = polarisSummerEditions2023 ? (
-    <Text as="h1" variant="headingSm">
+    <Text as="h2" variant="headingSm">
       {titleContent}
     </Text>
   ) : (
