@@ -150,7 +150,7 @@ export function OptionList({
               <h2 className={styles.Title}>{title}</h2>
             ) : (
               <Text
-                as={polarisSummerEditions2023 ? 'p' : 'h2'}
+                as={polarisSummerEditions2023 ? 'p' : 'h3'}
                 variant="headingXs"
               >
                 {title}
