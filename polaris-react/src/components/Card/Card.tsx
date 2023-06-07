@@ -63,7 +63,7 @@ export const Card = ({
     <Box
       background={background}
       padding={finalPadding}
-      shadow={polarisSummerEditions2023 ? 'sm' : 'md'}
+      shadow={polarisSummerEditions2023 ? 'card-sm-experimental' : 'md'}
       borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
       overflowX="hidden"
       overflowY="hidden"
