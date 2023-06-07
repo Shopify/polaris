@@ -669,11 +669,6 @@
 
     svg {
       fill: var(--p-color-icon-interactive-hover);
-
-      #{$se23} & {
-        // Specificity bump
-        // fill: var(--p-color-icon-interactive-hover);
-      }
     }
 
     &:not(.removeUnderline) {
@@ -750,10 +745,6 @@
 
     #{$se23} & {
       box-shadow: none;
-
-      svg {
-        // fill: var(--p-color-icon-disabled);
-      }
     }
 
     &.loading {
