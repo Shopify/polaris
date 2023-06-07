@@ -60,6 +60,11 @@
 .RightContainer {
   display: flex;
 
+  /* Stop children of the filters from being overlapped due to buttons having a
+  * default min-width: 0.
+  * See more: https://stackoverflow.com/a/36247448 */
+  flex-shrink: 0;
+
   .Item > div > button {
     margin-right: calc(-1 * var(--p-space-025));
     border-radius: 0;
