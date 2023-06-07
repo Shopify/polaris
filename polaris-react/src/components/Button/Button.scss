@@ -40,6 +40,7 @@
       inset -1px 0px 0px rgba(255, 255, 255, 0.25);
     --pc-button-border-disabled-border-box-shadow: 0px 0px 0px 1px #ebebeb;
     --pc-button-large-min-height: 32px;
+    --pc-button-large-vertical-padding: var(--p-space-1_5-experimental);
     box-shadow: var(--pc-button-shadow);
     transition: box-shadow 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
     // stylelint-enable
@@ -875,6 +876,11 @@
   &.sizeLarge {
     padding-left: var(--p-space-3);
     padding-right: var(--p-space-3);
+
+    #{$se23} & {
+      padding-left: var(--pc-button-large-vertical-padding);
+      padding-right: var(--pc-button-large-vertical-padding);
+    }
   }
 
   &.sizeSlim {
@@ -947,12 +953,12 @@
     // stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list
     min-height: var(--pc-button-large-min-height);
     min-width: var(--pc-button-large-min-height);
-    padding: var(--pc-button-large-vertical-padding) var(--p-space-6);
+    padding: var(--pc-button-large-vertical-padding) var(--p-space-3);
     // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
 
     // stylelint-disable selector-max-combinators -- se23 temporary styles
     .Content {
-      font-size: var(--p-font-size-100);
+      font-size: var(--p-font-size-80);
       line-height: var(--p-font-line-height-2);
     }
     // stylelint-enable selector-max-combinators -- se23 temporary styles
