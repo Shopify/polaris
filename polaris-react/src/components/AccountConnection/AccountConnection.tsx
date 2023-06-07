@@ -10,6 +10,8 @@ import {HorizontalStack} from '../HorizontalStack';
 import {Text} from '../Text';
 import {VerticalStack} from '../VerticalStack';
 
+import {useFeatures} from '../../utilities/features';
+
 export interface AccountConnectionProps {
   /** Content to display as title */
   title?: React.ReactNode;
@@ -36,6 +38,8 @@ export function AccountConnection({
   details,
   termsOfService,
 }: AccountConnectionProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
   const initials = accountName
     ? accountName
         .split(/\s+/)
@@ -52,7 +56,15 @@ export function AccountConnection({
     />
   ) : null;
 
-  const titleMarkup = title ? title : accountName;
+  const titleContent = title ? title : accountName;
+
+  const titleMarkup = polarisSummerEditions2023 ? (
+    <Text as="h1" variant="headingSm">
+      {titleContent}
+    </Text>
+  ) : (
+    titleContent
+  );
 
   const detailsMarkup = details ? (
     <Text as="span" color="subdued">
