@@ -1,9 +1,11 @@
 import React, {useCallback} from 'react';
+import {RiskMinor} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
 import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
+import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
 import {useFrame} from '../../../../utilities/frame';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
@@ -118,11 +120,14 @@ export function ContextualSaveBar({
         {contextControlMarkup}
         {logoMarkup}
         <div className={contentsClassName}>
-          {message && (
-            <Text as="h2" variant="headingMd" color="text-inverse" truncate>
-              {message}
-            </Text>
-          )}
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <Icon source={RiskMinor} color="base" />
+            {message && (
+              <Text as="h2" variant="headingMd" color="text-inverse" truncate>
+                {message}
+              </Text>
+            )}
+          </div>
           <div className={styles.ActionContainer}>
             <LegacyStack spacing="tight" wrap={false}>
               {secondaryMenu}

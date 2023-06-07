@@ -252,12 +252,25 @@ function InAnApplicationComponent({
         >
           <LegacyCard sectioned>
             <FormLayout>
+              <Text variant="heading3xl" as="h2">
+                Top element
+              </Text>
               <TextField
                 label="Full name"
                 value={nameFieldValue}
                 onChange={handleNameFieldChange}
                 autoComplete="name"
               />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
               <TextField
                 type="email"
                 label="Email"
@@ -265,6 +278,20 @@ function InAnApplicationComponent({
                 onChange={handleEmailFieldChange}
                 autoComplete="email"
               />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <Text variant="heading3xl" as="h2">
+                Bottom element
+              </Text>
             </FormLayout>
           </LegacyCard>
         </Layout.AnnotatedSection>

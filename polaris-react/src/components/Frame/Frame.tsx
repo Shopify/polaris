@@ -93,11 +93,36 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     this.setOffset();
   }
 
-  componentDidUpdate(prevProps: FrameProps) {
+  componentDidUpdate(prevProps: FrameProps, prevState: State) {
     if (this.props.globalRibbon !== prevProps.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
     this.setOffset();
+
+    if (!prevState.showContextualSaveBar && this.state.showContextualSaveBar) {
+      const scrollElementHeight = 56;
+      const currentScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
+      window.scrollTo({
+        top: currentScrollPosition + scrollElementHeight,
+        behavior: 'auto',
+      });
+    } else if (
+      prevState.showContextualSaveBar &&
+      !this.state.showContextualSaveBar
+    ) {
+      const scrollElementHeight = 56;
+      const currentScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      if (currentScrollPosition + windowHeight < documentHeight) {
+        window.scrollTo({
+          top: currentScrollPosition - scrollElementHeight,
+          behavior: 'auto',
+        });
+      }
+    }
   }
 
   render() {
@@ -242,6 +267,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       topBar && styles.hasTopBar,
     );
 
+    const contentClassName = classNames(
+      styles.Content,
+      showContextualSaveBar && styles.ContentHasSaveBar,
+    );
+
     const navigationOverlayMarkup =
       showMobileNavigation && isNavigationCollapsed ? (
         <Backdrop
@@ -273,7 +303,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {skipMarkup}
           {topBarMarkup}
           {navigationMarkup}
-          {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main
@@ -281,7 +310,10 @@ class FrameInner extends PureComponent<CombinedProps, State> {
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
-            <div className={styles.Content}>{children}</div>
+            <div className={contentClassName}>
+              {contextualSaveBarMarkup}
+              {children}
+            </div>
           </main>
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}
