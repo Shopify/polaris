@@ -564,10 +564,18 @@ export function Error() {
   );
 
   return (
-    <DropZone error onDrop={handleDropZoneDrop}>
-      {uploadedFiles}
-      {fileUpload}
-    </DropZone>
+    <VerticalStack gap="2">
+      <div>
+        <Text as="h2" variant="headingMd">
+          Drop zone with error
+        </Text>
+        <Text as="p">Drag file in to see error state</Text>
+      </div>
+      <DropZone error onDrop={handleDropZoneDrop}>
+        {uploadedFiles}
+        {fileUpload}
+      </DropZone>
+    </VerticalStack>
   );
 }
 
