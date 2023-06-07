@@ -24,6 +24,11 @@ $item-wrapper-loading-height: 64px;
 
   + .ResourceList {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    #{$se23} & {
+      border-top: none;
+      @include item-separator;
+    }
   }
 }
 
@@ -37,6 +42,11 @@ $item-wrapper-loading-height: 64px;
 
   + .ResourceList {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    #{$se23} & {
+      border-top: none;
+      @include item-separator;
+    }
   }
 }
 
@@ -240,6 +250,11 @@ $item-wrapper-loading-height: 64px;
 
   + .ItemWrapper {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    #{$se23} & {
+      border-top: none;
+      @include item-separator;
+    }
   }
 }
 
