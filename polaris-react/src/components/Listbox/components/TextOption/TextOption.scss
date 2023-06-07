@@ -47,7 +47,9 @@
     background-color: var(--p-color-bg-active);
 
     #{$se23} & {
-      background-color: var(--p-color-bg-subdued-active);
+      &:not(.disabled) {
+        background-color: var(--p-color-bg-subdued-active);
+      }
     }
   }
 
