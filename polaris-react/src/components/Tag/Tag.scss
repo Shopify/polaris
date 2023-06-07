@@ -105,6 +105,10 @@ $button-size: 20px;
     min-height: $height;
     border-radius: var(--p-border-radius-2);
     padding-inline: calc(var(--p-space-1) + var(--p-space-05));
+
+    &.removable {
+      padding-inline-end: 0;
+    }
   }
 
   @media #{$p-breakpoints-sm-up} {
