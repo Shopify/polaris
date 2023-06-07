@@ -59,6 +59,11 @@
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       box-shadow: var(--pc-button-shadow);
     }
+
+    &:hover {
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      box-shadow: var(--pc-button-shadow-hover);
+    }
   }
 
   &.disabled {
@@ -302,6 +307,11 @@
       }
     }
 
+    &:hover {
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      box-shadow: var(--pc-button-shadow-primary);
+    }
+
     &.disabled {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       color: var(--pc-button-text);
@@ -477,6 +487,10 @@
       .Content {
         transform: translateY(0);
       }
+    }
+
+    &:hover {
+      box-shadow: none;
     }
 
     &:hover,
@@ -837,6 +851,7 @@
     // extra specificity to override some non-beta styles
     &:hover:hover,
     &:focus:focus:not(.disabled) {
+      box-shadow: none;
       text-decoration: none;
       color: var(--p-color-text-primary-hover);
 
