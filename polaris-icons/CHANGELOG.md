@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.1.0
+
+### Minor Changes
+
+- [#9328](https://github.com/Shopify/polaris/pull/9328) [`f907a55a1`](https://github.com/Shopify/polaris/commit/f907a55a1e144fb9d448ad55c5009b535bc598a4) Thanks [@richardmarquezshopify](https://github.com/richardmarquezshopify)! - Added GaugeMajor, GaugeMinor
+
 ## 7.0.1
 
 ### Patch Changes
