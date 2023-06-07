@@ -35,7 +35,7 @@ export function All() {
 
 export function Default() {
   const [connected, setConnected] = useState(false);
-  const accountName = connected ? 'Jane Appleseed' : '';
+  const accountName = connected ? 'Olive Eight' : '';
 
   const handleAction = useCallback(() => {
     setConnected((connected) => !connected);
@@ -68,7 +68,7 @@ export function Default() {
 
 export function WithAccountConnected() {
   const [connected, setConnected] = useState(true);
-  const accountName = connected ? 'Jane Appleseed' : '';
+  const accountName = connected ? 'Olive Eight' : '';
 
   const handleAction = useCallback(() => {
     setConnected((connected) => !connected);
