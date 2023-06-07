@@ -11,6 +11,7 @@
   // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
   display: flex;
   flex-grow: 1;
+  align-items: center;
 
   .CenterContainer {
     flex: 1 1 auto;
@@ -104,6 +105,7 @@
 
 .Wrapper {
   display: flex;
+  align-items: center;
 }
 
 .AuxiliaryContainer {
