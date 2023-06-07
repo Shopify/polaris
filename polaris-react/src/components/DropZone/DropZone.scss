@@ -167,7 +167,7 @@ $dropzone-stacking-order: (
   pointer-events: none;
 
   #{$se23} & {
-    border: var(--p-border-width-1-experimental) solid
+    border: var(--p-border-width-2-experimental) solid
       var(--p-color-border-input);
     background-color: var(--p-color-bg-subdued-active);
     color: var(--p-color-text);
@@ -185,6 +185,8 @@ $dropzone-stacking-order: (
   #{$se23} & {
     border-color: var(--p-color-border-critical);
     color: var(--p-color-text-critical);
+    border-style: $dropzone-border-style;
+    border-width: var(--p-border-width-1-experimental);
     background-color: var(--p-color-bg-critical-subdued);
   }
 }
