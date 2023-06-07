@@ -100,13 +100,24 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     this.setOffset();
 
     if (!prevState.showContextualSaveBar && this.state.showContextualSaveBar) {
+      let saveDisabled = false;
+      if (this.contextualSaveBar) {
+        if (this.contextualSaveBar.saveAction) {
+          if (this.contextualSaveBar.saveAction.disabled) {
+            saveDisabled = true;
+          }
+        }
+      }
       const scrollElementHeight = 56;
       const currentScrollPosition =
         window.pageYOffset || document.documentElement.scrollTop;
-      window.scrollTo({
-        top: currentScrollPosition + scrollElementHeight,
-        behavior: 'auto',
-      });
+
+      if (!saveDisabled || currentScrollPosition !== 0) {
+        window.scrollTo({
+          top: currentScrollPosition + scrollElementHeight,
+          behavior: 'auto',
+        });
+      }
     } else if (
       prevState.showContextualSaveBar &&
       !this.state.showContextualSaveBar

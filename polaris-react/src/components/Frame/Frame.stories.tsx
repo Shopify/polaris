@@ -149,6 +149,7 @@ function InAnApplicationComponent({
       message="Unsaved changes"
       saveAction={{
         onAction: handleSave,
+        disabled: true,
       }}
       discardAction={{
         onAction: handleDiscard,
