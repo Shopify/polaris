@@ -20,6 +20,7 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import type {BreakpointsDirectionAlias} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {UseFeatures} from '../../utilities/features';
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
@@ -167,33 +168,37 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
-        <div onClick={this.handleLargerSelectionArea}>
-          <Bleed marginBlock="2" marginInline="3">
-            <Box
-              zIndex="var(--pc-resource-item-content-stacking-order)"
-              paddingInlineStart="3"
-              paddingInlineEnd="3"
-              paddingBlockStart="3"
-              paddingBlockEnd="2"
-            >
-              <div onClick={stopPropagation}>
-                <div onChange={this.handleLargerSelectionArea}>
-                  <UseId>
-                    {(id) => (
-                      <Checkbox
-                        id={id}
-                        label={checkboxAccessibilityLabel}
-                        labelHidden
-                        checked={selected}
-                        disabled={loading}
-                      />
-                    )}
-                  </UseId>
-                </div>
-              </div>
-            </Box>
-          </Bleed>
-        </div>
+        <UseFeatures>
+          {({polarisSummerEditions2023}) => (
+            <div onClick={this.handleLargerSelectionArea}>
+              <Bleed marginBlock="2" marginInline="3">
+                <Box
+                  zIndex="var(--pc-resource-item-content-stacking-order)"
+                  paddingInlineStart="3"
+                  paddingInlineEnd="3"
+                  paddingBlockStart={polarisSummerEditions2023 ? '2' : '3'}
+                  paddingBlockEnd="2"
+                >
+                  <div onClick={stopPropagation}>
+                    <div onChange={this.handleLargerSelectionArea}>
+                      <UseId>
+                        {(id) => (
+                          <Checkbox
+                            id={id}
+                            label={checkboxAccessibilityLabel}
+                            labelHidden
+                            checked={selected}
+                            disabled={loading}
+                          />
+                        )}
+                      </UseId>
+                    </div>
+                  </div>
+                </Box>
+              </Bleed>
+            </div>
+          )}
+        </UseFeatures>
       );
     }
 
