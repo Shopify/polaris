@@ -83,10 +83,10 @@ function Table() {
       }
       onSelectionChange={handleSelectionChange}
       headings={[
-        {title: 'Name', flush: true},
-        {title: 'Location', flush: true},
-        {title: 'Order count', flush: true},
-        {title: 'Amount spent', flush: true},
+        {title: 'Name'},
+        {title: 'Location'},
+        {title: 'Order count'},
+        {title: 'Amount spent'},
       ]}
     >
       {rowMarkup}

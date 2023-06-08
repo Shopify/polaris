@@ -784,6 +784,7 @@ function IndexTableBase({
 
   const tableWrapperClassNames = classNames(
     styles.IndexTableWrapper,
+    hideScrollContainer && styles['IndexTableWrapper-scrollBarHidden'],
     Boolean(bulkActionsMarkup) &&
       selectMode &&
       styles.IndexTableWrapperWithBulkActions,

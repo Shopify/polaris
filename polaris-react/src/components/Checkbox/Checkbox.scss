@@ -16,11 +16,9 @@
       @include focus-ring($style: 'focused');
 
       #{$se23} & {
-        /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 checkbox overrides */
-        @include no-focus-ring;
         outline: var(--p-border-width-2) solid
           var(--p-color-border-interactive-focus);
-        outline-offset: var(--p-space-05);
+        outline-offset: var(--p-space-025);
       }
     }
   }
@@ -75,6 +73,8 @@
   @include focus-ring($border-width: var(--p-border-width-2));
 
   #{$se23} & {
+    /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 override */
+    @include no-focus-ring;
     border: var(--p-border-width-1-experimental) solid
       var(--p-color-border-input);
   }
