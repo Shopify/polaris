@@ -22,12 +22,12 @@ import {
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
+import {useFeatures} from '../../../../utilities/features';
 import {
   focusFirstFocusableNode,
   handleMouseUpByBlurring,
 } from '../../../../utilities/focus';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
-import {useFeatures} from '../../../../utilities/features';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Icon} from '../../../Icon';
@@ -280,8 +280,9 @@ export const Tab = forwardRef(
       selected && actions?.length && styles['Tab-hasActions'],
     );
 
+    const badgeStatusSelected = !se23 ? 'success' : undefined;
     const badgeMarkup = badge ? (
-      <Badge status={selected ? 'success' : 'new'}>{badge}</Badge>
+      <Badge status={selected ? badgeStatusSelected : 'new'}>{badge}</Badge>
     ) : null;
 
     const disclosureMarkup =
