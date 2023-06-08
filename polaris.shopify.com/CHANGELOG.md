@@ -1,5 +1,14 @@
 # polaris.shopify.com
 
+## 0.55.2
+
+### Patch Changes
+
+- [#9406](https://github.com/Shopify/polaris/pull/9406) [`5f4898b30`](https://github.com/Shopify/polaris/commit/5f4898b30ee3ab76c275257c7ad234176464f61b) Thanks [@chloerice](https://github.com/chloerice)! - Bumped `@types/react`and `@types/react-dom` to match dependency versions
+
+- Updated dependencies [[`f793875e2`](https://github.com/Shopify/polaris/commit/f793875e27bf298b916b8901d2c9ea58d4a88d5b), [`5f4898b30`](https://github.com/Shopify/polaris/commit/5f4898b30ee3ab76c275257c7ad234176464f61b)]:
+  - @shopify/polaris@11.1.2
+
 ## 0.55.1
 
 ### Patch Changes
