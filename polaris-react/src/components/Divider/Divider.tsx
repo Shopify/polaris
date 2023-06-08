@@ -23,19 +23,15 @@ export const Divider = ({
   borderWidth = '1',
 }: DividerProps) => {
   const {polarisSummerEditions2023} = useFeatures();
-  function se23BorderColor(borderColor: ColorBorderAlias) {
-    if (!polarisSummerEditions2023) return borderColor;
-    if (borderColor === 'border-subdued') {
-      return 'border-faint-experimental';
-    } else {
-      return borderColor;
-    }
-  }
 
   const borderColorValue =
     borderColor === 'transparent'
       ? borderColor
-      : `var(--p-color-${se23BorderColor(borderColor)})`;
+      : `var(--p-color-${
+          polarisSummerEditions2023 && borderColor === 'border-subdued'
+            ? 'border-faint-experimental'
+            : borderColor
+        })`;
 
   return (
     <hr
