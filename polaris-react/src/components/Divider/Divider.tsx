@@ -1,6 +1,8 @@
 import React from 'react';
 import type {BorderWidthScale, ColorBorderAlias} from '@shopify/polaris-tokens';
 
+import {useFeatures} from '../../utilities/features';
+
 import styles from './Divider.scss';
 
 export interface DividerProps {
@@ -20,10 +22,20 @@ export const Divider = ({
   borderColor = 'border-subdued',
   borderWidth = '1',
 }: DividerProps) => {
+  const {polarisSummerEditions2023} = useFeatures();
+  function se23BorderColor(borderColor: ColorBorderAlias) {
+    if (!polarisSummerEditions2023) return borderColor;
+    if (borderColor === 'border-subdued') {
+      return 'border-faint-experimental';
+    } else {
+      return borderColor;
+    }
+  }
+
   const borderColorValue =
     borderColor === 'transparent'
       ? borderColor
-      : `var(--p-color-${borderColor})`;
+      : `var(--p-color-${se23BorderColor(borderColor)})`;
 
   return (
     <hr
