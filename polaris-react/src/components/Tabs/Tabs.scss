@@ -126,6 +126,10 @@
     padding: var(--p-space-1_5-experimental) var(--p-space-3);
     height: 2rem;
 
+    &[aria-disabled='true'] {
+      color: var(--p-color-text-disabled);
+    }
+
     &:not([aria-disabled='true']):hover {
       background-color: var(--p-color-bg-subdued);
       color: var(--p-color-text-primary);
