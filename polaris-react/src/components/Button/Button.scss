@@ -864,7 +864,7 @@
 
     #{$se23} &:hover,
     #{$se23} &:focus:not(.disabled) {
-
+      // stylelint-disable-next-line selector-max-combinators -- se23
       svg {
         fill: var(--p-color-icon-interactive-hover);
       }
