@@ -468,10 +468,11 @@
   }
 
   #{$se23} & {
-    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+    // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
     --pc-button-color: transparent;
     --pc-button-text: var(--p-color-text);
     --pc-button-color-hover: var(--p-color-bg-transparent-hover-experimental);
+    // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
     box-shadow: none;
 
     // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
