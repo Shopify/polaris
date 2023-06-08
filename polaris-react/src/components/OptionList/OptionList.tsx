@@ -16,7 +16,6 @@ import {useFeatures} from '../../utilities/features';
 import {VerticalStack} from '../VerticalStack';
 
 import {Option} from './components';
-import styles from './OptionList.scss';
 
 type Alignment = 'top' | 'center' | 'bottom';
 
@@ -129,6 +128,7 @@ export function OptionList({
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
         const isFirstOption = sectionIndex === 0;
         const sectionPaddingBlockStart = polarisSummerEditions2023 ? '3' : '4';
+        const titleLevel = isFirstOption ? 'h2' : 'h3';
         const titleMarkup = title ? (
           <Box
             paddingBlockStart={isFirstOption ? '2' : sectionPaddingBlockStart}
@@ -146,16 +146,12 @@ export function OptionList({
             }
             borderBlockStartWidth={!isFirstOption ? '1' : undefined}
           >
-            {isFirstOption && polarisSummerEditions2023 ? (
-              <h2 className={styles.Title}>{title}</h2>
-            ) : (
-              <Text
-                as={polarisSummerEditions2023 ? 'p' : 'h3'}
-                variant="headingXs"
-              >
-                {title}
-              </Text>
-            )}
+            <Text
+              as={polarisSummerEditions2023 ? titleLevel : 'p'}
+              variant="headingXs"
+            >
+              {title}
+            </Text>
           </Box>
         ) : null;
         const optionsMarkup =
@@ -206,7 +202,7 @@ export function OptionList({
             paddingBlockStart={isFirstOption ? undefined : '2'}
           >
             {polarisSummerEditions2023 ? (
-              <VerticalStack gap="1">
+              <VerticalStack gap={isFirstOption && sections ? undefined : '1'}>
                 {titleMarkup}
                 {option}
               </VerticalStack>
