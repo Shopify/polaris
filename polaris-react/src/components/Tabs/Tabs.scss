@@ -122,8 +122,8 @@
 
   #{$se23} & {
     color: var(--p-color-text-primary);
-    // stylelint-disable-next-line -- No space token for 6px
-    padding: 6px var(--p-space-3);
+    border-radius: var(--p-border-radius-2);
+    padding: var(--p-space-1_5-experimental) var(--p-space-3);
     height: 2rem;
 
     &:not([aria-disabled='true']):hover {
