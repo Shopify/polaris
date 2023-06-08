@@ -104,6 +104,7 @@ export function UpdateButtons({
 
   const cancelButtonMarkup = (
     <Button
+      primary
       plain
       size="micro"
       onClick={cancelAction.onAction}
