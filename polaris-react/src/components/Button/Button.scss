@@ -829,9 +829,22 @@
       }
     }
 
+    &:focus-visible:not(:active) {
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
+      > .Content {
+        // stylelint-disable-next-line -- se23 temporary styles
+        @include no-focus-ring;
+        outline: var(--p-border-width-2) solid
+          var(--p-color-border-interactive-focus);
+        outline-offset: var(--p-space-05);
+        border-radius: var(--p-border-radius-2);
+      }
+    }
+
     &:focus,
     &:focus-visible {
       box-shadow: none;
+      outline: none;
     }
 
     // extra specificity to override some non-beta styles
