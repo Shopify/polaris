@@ -8,6 +8,7 @@ import {FormLayout} from '../../../FormLayout';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Button} from '../../../Button';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
+import {useFeatures} from '../../../../utilities/features';
 import {useIsTouchDevice} from '../../../../utilities/use-is-touch-device';
 import type {
   IndexFiltersPrimaryAction,
@@ -39,6 +40,7 @@ export function UpdateButtons({
   const [savedViewModalOpen, setSavedViewModalOpen] = useState(false);
   const container = useRef<HTMLDivElement>(null);
   const isTouchDevice = useIsTouchDevice();
+  const {polarisSummerEditions2023: se23} = useFeatures();
 
   useEffect(() => {
     if (!container.current || isTouchDevice) return;
@@ -86,6 +88,8 @@ export function UpdateButtons({
   const saveButton = (
     <Button
       size="micro"
+      primary={!se23 ? true : undefined}
+      plain={!se23 ? true : undefined}
       onClick={handleClickSaveButton}
       disabled={primaryAction?.disabled || disabled}
     >
@@ -104,8 +108,8 @@ export function UpdateButtons({
 
   const cancelButtonMarkup = (
     <Button
-      primary
       plain
+      primary={se23 ? true : undefined}
       size="micro"
       onClick={cancelAction.onAction}
       disabled={disabled}
