@@ -100,14 +100,11 @@
   #{$se23} & {
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-3);
-    font-weight: var(--p-font-weight-bold);
   }
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-3);
-
-    // TODO: Add beta flagged responsive styles
   }
 }
 
@@ -116,17 +113,18 @@
   line-height: var(--p-font-line-height-3);
   font-weight: var(--p-font-weight-semibold);
 
-  #{$se23} & {
-    font-size: var(--p-font-size-400);
-    line-height: var(--p-font-line-height-5);
-    font-weight: var(--p-font-weight-bold);
-  }
-
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-400);
     line-height: var(--p-font-line-height-4);
+  }
 
-    // TODO: Add beta flagged responsive styles
+  #{$se23} & {
+    font-size: var(--p-font-size-300);
+
+    @media #{$p-breakpoints-md-up} {
+      font-size: var(--p-font-size-400);
+      line-height: var(--p-font-line-height-5);
+    }
   }
 }
 
@@ -135,24 +133,31 @@
   line-height: var(--p-font-line-height-3);
   font-weight: var(--p-font-weight-semibold);
 
-  #{$se23} & {
-    font-size: var(--p-font-size-500);
-    line-height: var(--p-font-line-height-6);
-    font-weight: var(--p-font-weight-bold);
-  }
-
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-500);
     line-height: var(--p-font-line-height-5);
+  }
 
-    // TODO: Add beta flagged responsive styles
+  #{$se23} & {
+    font-size: var(--p-font-size-400);
+    line-height: var(--p-font-line-height-5);
+
+    @media #{$p-breakpoints-md-up} {
+      font-size: var(--p-font-size-500);
+      line-height: var(--p-font-line-height-6);
+    }
   }
 }
 
 @mixin se23-heading3xl {
-  font-size: var(--p-font-size-600);
-  line-height: var(--p-font-line-height-7);
-  font-weight: var(--p-font-weight-bold);
+  font-size: var(--p-font-size-500);
+  line-height: var(--p-font-line-height-6);
+  font-weight: var(--p-font-weight-semibold);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-600);
+    line-height: var(--p-font-line-height-7);
+  }
 }
 
 .heading3xl {
@@ -160,15 +165,13 @@
   line-height: var(--p-font-line-height-4);
   font-weight: var(--p-font-weight-semibold);
 
-  #{$se23} & {
-    @include se23-heading3xl;
-  }
-
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-600);
     line-height: var(--p-font-line-height-6);
+  }
 
-    // TODO: Add beta flagged responsive styles
+  #{$se23} & {
+    @include se23-heading3xl;
   }
 }
 
@@ -177,15 +180,13 @@
   line-height: var(--p-font-line-height-6);
   font-weight: var(--p-font-weight-bold);
 
-  #{$se23} & {
-    @include se23-heading3xl;
-  }
-
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-700);
     line-height: var(--p-font-line-height-7);
+  }
 
-    // TODO: Add beta flagged responsive styles
+  #{$se23} & {
+    @include se23-heading3xl;
   }
 }
 
