@@ -12,8 +12,11 @@ import {Box} from '../Box';
 import type {BoxProps} from '../Box';
 import {Text} from '../Text';
 import {Bleed} from '../Bleed';
+import {useFeatures} from '../../utilities/features';
+import {VerticalStack} from '../VerticalStack';
 
 import {Option} from './components';
+import styles from './OptionList.scss';
 
 type Alignment = 'top' | 'center' | 'bottom';
 
@@ -58,6 +61,7 @@ export function OptionList({
   onPointerEnterOption,
   onFocusOption,
 }: OptionListProps) {
+  const {polarisSummerEditions2023} = useFeatures();
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
@@ -124,18 +128,34 @@ export function OptionList({
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
         const isFirstOption = sectionIndex === 0;
+        const sectionPaddingBlockStart = polarisSummerEditions2023 ? '3' : '4';
         const titleMarkup = title ? (
           <Box
-            paddingBlockStart={isFirstOption ? '2' : '4'}
-            paddingInlineStart="2"
+            paddingBlockStart={isFirstOption ? '2' : sectionPaddingBlockStart}
+            paddingInlineStart={
+              polarisSummerEditions2023 ? '1_5-experimental' : '2'
+            }
             paddingBlockEnd="2"
-            paddingInlineEnd="2"
-            borderColor="border-subdued"
+            paddingInlineEnd={
+              polarisSummerEditions2023 ? '1_5-experimental' : '2'
+            }
+            borderColor={
+              polarisSummerEditions2023
+                ? 'border-faint-experimental'
+                : 'border-subdued'
+            }
             borderBlockStartWidth={!isFirstOption ? '1' : undefined}
           >
-            <Text as="p" variant="headingXs">
-              {title}
-            </Text>
+            {isFirstOption && polarisSummerEditions2023 ? (
+              <h2 className={styles.Title}>{title}</h2>
+            ) : (
+              <Text
+                as={polarisSummerEditions2023 ? 'p' : 'h3'}
+                variant="headingXs"
+              >
+                {title}
+              </Text>
+            )}
           </Box>
         ) : null;
         const optionsMarkup =
@@ -163,29 +183,50 @@ export function OptionList({
             );
           });
 
+        const option = (
+          <Bleed
+            marginBlockStart={
+              title || polarisSummerEditions2023 ? undefined : '05'
+            }
+          >
+            <Box
+              as="ul"
+              id={`${id}-${sectionIndex}`}
+              role={role as BoxProps['role']}
+            >
+              {optionsMarkup}
+            </Box>
+          </Bleed>
+        );
+
         return (
           <Box
             key={title || `noTitle-${sectionIndex}`}
             as="li"
             paddingBlockStart={isFirstOption ? undefined : '2'}
           >
-            {titleMarkup}
-            <Bleed marginBlockStart={title ? undefined : '05'}>
-              <Box
-                as="ul"
-                id={`${id}-${sectionIndex}`}
-                role={role as BoxProps['role']}
-              >
-                {optionsMarkup}
-              </Box>
-            </Bleed>
+            {polarisSummerEditions2023 ? (
+              <VerticalStack gap="1">
+                {titleMarkup}
+                {option}
+              </VerticalStack>
+            ) : (
+              <>
+                {titleMarkup}
+                {option}
+              </>
+            )}
           </Box>
         );
       })
     : null;
 
   return (
-    <Box as="ul" role={role as BoxProps['role']} padding="2">
+    <Box
+      as="ul"
+      role={role as BoxProps['role']}
+      padding={polarisSummerEditions2023 ? '1_5-experimental' : '2'}
+    >
       {optionsMarkup}
     </Box>
   );
