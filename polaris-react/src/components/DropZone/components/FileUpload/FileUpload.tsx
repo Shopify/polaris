@@ -1,5 +1,8 @@
 import React, {useContext} from 'react';
+import {UploadMajor} from '@shopify/polaris-icons';
 
+import {Icon} from '../../../Icon';
+import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
 import {Text} from '../../../Text';
@@ -18,6 +21,7 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
+  const {polarisSummerEditions2023} = useFeatures();
   const {size, measuring, type, disabled, allowMultiple} =
     useContext(DropZoneContext);
 
@@ -71,6 +75,18 @@ export function FileUpload(props: FileUploadProps) {
       break;
     case 'small':
       viewMarkup = <img width="20" src={uploadArrow} alt="" />;
+      if (polarisSummerEditions2023) {
+        viewMarkup = (
+          <div
+            className={classNames(
+              styles.UploadIcon,
+              disabled && styles.disabled,
+            )}
+          >
+            <Icon source={UploadMajor} />
+          </div>
+        );
+      }
       break;
   }
 
