@@ -6,6 +6,7 @@ import {
   HorizontalStack,
   Card,
   Text,
+  Bleed,
 } from '@shopify/polaris';
 
 export default {
@@ -66,17 +67,19 @@ export function InsideOfACard() {
   }));
   return (
     <Card>
-      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
-        <HorizontalStack gap="4">
-          <Text as="h2" variant="headingMd">
-            {tabs[selected].content}
-          </Text>
+      <Bleed>
+        <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
+          <HorizontalStack gap="4">
+            <Text as="h2" variant="headingMd">
+              {tabs[selected].content}
+            </Text>
 
-          <Text as="p" variant="bodyMd">
-            Tab {selected} selected
-          </Text>
-        </HorizontalStack>
-      </Tabs>
+            <Text as="p" variant="bodyMd">
+              Tab {selected} selected
+            </Text>
+          </HorizontalStack>
+        </Tabs>
+      </Bleed>
     </Card>
   );
 }
@@ -148,36 +151,38 @@ export function WithActions() {
     'Pinterest',
     'Google',
     'Referral',
-  ].map((item, index) => ({
-    content: item,
-    index,
-    id: `${item}-${index}`,
-    actions:
-      index === 0
-        ? []
-        : [
-            {
-              type: 'rename' as TabAction,
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'duplicate' as TabAction,
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'edit' as TabAction,
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'delete' as TabAction,
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-          ],
-  }));
+  ].map((item, index) => {
+    return {
+      content: item,
+      index,
+      id: `${item}-${index}`,
+      actions:
+        index === 0
+          ? []
+          : [
+              {
+                type: 'rename' as TabAction,
+                onAction: () => {},
+                onPrimaryAction: () => {},
+              },
+              {
+                type: 'duplicate' as TabAction,
+                onAction: () => {},
+                onPrimaryAction: () => {},
+              },
+              {
+                type: 'edit' as TabAction,
+                onAction: () => {},
+                onPrimaryAction: () => {},
+              },
+              {
+                type: 'delete' as TabAction,
+                onAction: () => {},
+                onPrimaryAction: () => {},
+              },
+            ],
+    };
+  });
 
   return (
     <Tabs
@@ -328,7 +333,7 @@ export function All() {
   ].map((item, index) => ({
     content: item,
     index,
-    badge: index % 2 === 0 ? index * 4 : undefined,
+    badge: index % 2 === 0 ? String(index * 4) : undefined,
     id: `${item}-${index}`,
     actions:
       index === 0
