@@ -20,6 +20,10 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: var(--p-space-3) var(--p-space-3) var(--p-space-5) var(--p-space-4);
+
+    #{$se23} & {
+      padding: var(--p-space-2);
+    }
   }
 }
 
