@@ -152,6 +152,7 @@ export type ColorTextAlias =
   | ColorTextAliasExperimental;
 
 type ColorBackgroundAliasExperimental = Experimental<
+  | 'bg-backdrop'
   | 'bg-input-hover'
   | 'bg-input-active'
   | 'bg-transparent'
@@ -166,13 +167,17 @@ type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-warning-subdued'
 >;
 
-type ColorTextAliasExperimental = Experimental<'text-warning'>;
+type ColorTextAliasExperimental = Experimental<
+  'text-warning' | 'text-critical-hover'
+>;
 
 type ColorIconAliasExperimental = Experimental<
   | 'icon-info-strong'
   | 'icon-success-strong'
   | 'icon-warning-strong'
   | 'icon-critical-strong'
+  | 'icon-critical-strong-hover'
+  | 'icon-critical-strong-active'
 >;
 
 type ColorBorderAliasExperimental = Experimental<
@@ -822,7 +827,7 @@ export const color: {
   },
   'color-text-critical-active': {
     value: colors.red[800],
-    valueExperimental: colorsExperimental.red[14],
+    valueExperimental: colorsExperimental.red[16],
     description: '',
   },
   'color-text-critical': {
@@ -884,6 +889,10 @@ export const color: {
     description: '',
   },
   // Experimental tokens
+  'color-bg-backdrop-experimental': {
+    value: colorsExperimental.gray[16]('0.75'),
+    description: '',
+  },
   'color-bg-input-hover-experimental': {
     value: colorsExperimental.gray[3](),
     description: '',
@@ -939,6 +948,10 @@ export const color: {
     value: colorsExperimental.orange[15],
     description: '',
   },
+  'color-text-critical-hover-experimental': {
+    value: colorsExperimental.red[15],
+    description: '',
+  },
   'color-icon-info-strong-experimental': {
     value: colorsExperimental.azure[14],
     description: '',
@@ -953,6 +966,14 @@ export const color: {
   },
   'color-icon-critical-strong-experimental': {
     value: colorsExperimental.red[14],
+    description: '',
+  },
+  'color-icon-critical-strong-hover-experimental': {
+    value: colorsExperimental.red[15],
+    description: '',
+  },
+  'color-icon-critical-strong-active-experimental': {
+    value: colorsExperimental.red[16],
     description: '',
   },
   'color-border-faint-experimental': {

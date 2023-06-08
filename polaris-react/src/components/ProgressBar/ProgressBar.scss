@@ -40,6 +40,11 @@
   --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-color-border-info);
   // stylelint-enable
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
+    --pc-progress-bar-indicator: var(--p-color-bg-info-strong);
+  }
 }
 
 .colorPrimary {
@@ -54,6 +59,11 @@
   --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-color-border-success);
   // stylelint-enable
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
+    --pc-progress-bar-indicator: var(--p-color-bg-success-strong);
+  }
 }
 
 .colorCritical {
@@ -61,6 +71,11 @@
   --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-color-bg-critical);
   // stylelint-enable
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
+    --pc-progress-bar-indicator: var(--p-color-bg-critical-strong);
+  }
 }
 
 .Indicator {

@@ -252,7 +252,30 @@ export function All() {
       <Text as="h2" variant="headingMd">
         No title
       </Text>
-      <AllBanners title={undefined} />
+      <AllBanners
+        title={undefined}
+        onDismiss={() => {}}
+        children={
+          <Text as="p">
+            Changing the phone number for this customer will unsubscribe them
+            from SMS marketing text messages until they provide consent.
+          </Text>
+        }
+      />
+      <Text as="h2" variant="headingMd">
+        No title with actions
+      </Text>
+      <AllBanners
+        title={undefined}
+        action={{content: 'Primary action'}}
+        secondaryAction={{content: 'Secondary action'}}
+        children={
+          <Text as="p">
+            Changing the phone number for this customer will unsubscribe them
+            from SMS marketing text messages until they provide consent.
+          </Text>
+        }
+      />
       <Text as="h2" variant="headingMd">
         Only title
       </Text>

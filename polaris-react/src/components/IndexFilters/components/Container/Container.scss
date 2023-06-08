@@ -5,6 +5,10 @@
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
   background: var(--p-color-bg);
+
+  #{$se23} & {
+    border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+  }
 }
 
 @media #{$p-breakpoints-sm-down} {

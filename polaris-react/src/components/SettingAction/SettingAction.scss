@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $feature-width: 350px;
 
 .SettingAction {
@@ -19,4 +21,12 @@ $feature-width: 350px;
 
 .Setting {
   flex: 1 0 $feature-width;
+}
+
+.Action {
+  #{$se23} & {
+    @media #{$p-breakpoints-md-up} {
+      margin-top: var(--p-space-6);
+    }
+  }
 }
