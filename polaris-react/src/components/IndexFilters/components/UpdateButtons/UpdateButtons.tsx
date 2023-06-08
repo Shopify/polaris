@@ -86,8 +86,6 @@ export function UpdateButtons({
   const saveButton = (
     <Button
       size="micro"
-      primary
-      plain
       onClick={handleClickSaveButton}
       disabled={primaryAction?.disabled || disabled}
     >
