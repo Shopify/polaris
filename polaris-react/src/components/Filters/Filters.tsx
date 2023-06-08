@@ -17,6 +17,7 @@ import type {
   FilterInterface,
 } from '../../types';
 import {HorizontalStack} from '../HorizontalStack';
+import type {BoxProps} from '../Box';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
 import {Button} from '../Button';
@@ -269,23 +270,36 @@ export function Filters({
     );
   }, [loading, children]);
 
-  const queryFieldMarkup = hideQueryField ? null : (
-    <div className={styles.Container}>
-      <Box
-        paddingBlockStart={{
+  const containerSpacing:
+    | {
+        paddingBlockStart: BoxProps['paddingBlockStart'];
+        paddingBlockEnd: BoxProps['paddingBlockEnd'];
+        paddingInlineStart: BoxProps['paddingInlineStart'];
+        paddingInlineEnd: BoxProps['paddingInlineEnd'];
+      }
+    | {padding: BoxProps['padding']} = se23
+    ? {
+        padding: '2',
+      }
+    : {
+        paddingBlockStart: {
           xs: '3',
           md: '2',
-        }}
-        paddingBlockEnd={{
+        },
+        paddingBlockEnd: {
           xs: '3',
           md: '2',
-        }}
-        paddingInlineStart="2"
-        paddingInlineEnd={{
+        },
+        paddingInlineStart: '2',
+        paddingInlineEnd: {
           xs: '4',
           md: '3',
-        }}
-      >
+        },
+      };
+
+  const queryFieldMarkup = hideQueryField ? null : (
+    <div className={styles.Container}>
+      <Box {...containerSpacing}>
         <HorizontalStack
           align="start"
           blockAlign="center"

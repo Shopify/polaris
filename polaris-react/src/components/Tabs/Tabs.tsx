@@ -564,10 +564,6 @@ export const Tabs = ({
           md: '2',
         }}
         background="bg"
-        borderColor={polarisSummerEditions2023 ? undefined : 'border-subdued'}
-        borderBlockEndWidth={polarisSummerEditions2023 ? undefined : '1'}
-        borderRadiusStartEnd="2"
-        borderRadiusStartStart="2"
       >
         {tabMeasurer}
         <div className={wrapperClassNames} ref={scrollRef}>

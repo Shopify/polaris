@@ -107,6 +107,10 @@ $spinner-size: 20px;
       // stylelint-enable
     }
   }
+
+  #{$se23} & {
+    padding: var(--p-space-3);
+  }
 }
 
 .ActionWrap svg {

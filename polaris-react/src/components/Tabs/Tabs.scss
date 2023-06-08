@@ -12,6 +12,10 @@
     overflow: hidden;
     height: 56px;
     padding: 0;
+
+    #{$se23} & {
+      height: unset;
+    }
   }
 }
 
@@ -19,7 +23,7 @@
   @media #{$p-breakpoints-md-down} {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: var(--p-space-3) var(--p-space-3) var(--p-space-5) var(--p-space-4);
+    padding: var(--p-space-3) var(--p-space-3) var(--p-space-3) var(--p-space-4);
 
     #{$se23} & {
       padding: var(--p-space-2);
