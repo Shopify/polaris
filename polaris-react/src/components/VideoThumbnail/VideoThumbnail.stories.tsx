@@ -39,6 +39,7 @@ export function Default() {
       <VideoThumbnail
         videoLength={80}
         thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+        onClick={() => {}}
       />
     </MediaCard>
   );
@@ -60,6 +61,7 @@ export function WithProgress() {
         videoProgress={45}
         showVideoProgress
         thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+        onClick={() => {}}
       />
     </MediaCard>
   );
