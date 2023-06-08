@@ -6,12 +6,33 @@ import {
   ButtonGroup,
   FullscreenBar,
   Text,
+  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
   component: FullscreenBar,
   parameters: {layout: 'fullscreen'},
 } as ComponentMeta<typeof FullscreenBar>;
+
+export function All() {
+  return (
+    <>
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With children
+        </Text>
+        <WithChildren />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          No children
+        </Text>
+        <NoChildren />
+      </VerticalStack>
+    </>
+  );
+}
 
 export function WithChildren() {
   const [isFullscreen, setFullscreen] = useState(true);
