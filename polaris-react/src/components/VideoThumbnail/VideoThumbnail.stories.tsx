@@ -1,10 +1,37 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {MediaCard, VideoThumbnail} from '@shopify/polaris';
+import {MediaCard, Text, VerticalStack, VideoThumbnail} from '@shopify/polaris';
 
 export default {
   component: VideoThumbnail,
 } as ComponentMeta<typeof VideoThumbnail>;
+
+export function All() {
+  return (
+    <VerticalStack gap="8">
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          Default
+        </Text>
+        <Default />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With progress
+        </Text>
+        <WithProgress />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          Outside media card
+        </Text>
+        <OutsideMediaCard />
+      </VerticalStack>
+    </VerticalStack>
+  );
+}
 
 export function Default() {
   return (
@@ -20,6 +47,7 @@ export function Default() {
       <VideoThumbnail
         videoLength={80}
         thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+        onClick={() => {}}
       />
     </MediaCard>
   );
@@ -41,7 +69,22 @@ export function WithProgress() {
         videoProgress={45}
         showVideoProgress
         thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+        onClick={() => {}}
       />
     </MediaCard>
+  );
+}
+
+export function OutsideMediaCard() {
+  return (
+    <div style={{height: '254px', width: '450px'}}>
+      <VideoThumbnail
+        videoLength={80}
+        videoProgress={45}
+        showVideoProgress
+        thumbnailUrl="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+        onClick={() => {}}
+      />
+    </div>
   );
 }
