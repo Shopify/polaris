@@ -144,7 +144,7 @@
 
 .Tab-active {
   background: var(--p-color-bg-primary-subdued-hover);
-  color: var(--p-color-text);
+  color: var(--p-color-text-primary);
 
   &[aria-disabled='true'] {
     background: var(--p-color-bg-disabled);
