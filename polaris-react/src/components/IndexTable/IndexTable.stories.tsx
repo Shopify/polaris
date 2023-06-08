@@ -1167,22 +1167,30 @@ export function WithFiltering() {
 export function WithRowStatus() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
-      name: 'Mae Jemison',
+      name: 'Astronaut',
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
-      status: 'success',
     },
     {
-      id: '2561',
+      id: '3411',
       url: '#',
-      name: 'Ellen Ochoa',
+      name: 'Baker',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      status: 'subdued',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Candlestick maker',
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
-      status: 'subdued',
+      status: 'success',
     },
   ];
   const resourceName = {
