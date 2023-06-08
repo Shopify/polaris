@@ -40,6 +40,9 @@
   right: var(--p-space-4);
   top: var(--p-space-4);
   position: absolute;
+  #{$se23} & svg {
+    fill: var(--p-color-icon-subdued);
+  }
 }
 
 .hasDismiss {
