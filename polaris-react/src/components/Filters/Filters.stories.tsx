@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import type {FiltersProps} from '@shopify/polaris';
 import {
   Avatar,
   Button,
@@ -11,6 +12,7 @@ import {
   ResourceList,
   TextField,
   Text,
+  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
@@ -26,11 +28,26 @@ export default {
   },
 } as ComponentMeta<typeof Filters>;
 
+export function All() {
+  return (
+    <VerticalStack gap="5">
+      <WithAResourceList />
+      <WithADataTable />
+      <WithChildrenContent />
+      <Disabled />
+      <SomeDisabled />
+      <WithQueryFieldHidden />
+      <WithQueryFieldDisabled />
+      <WithAdditionalFilterSections />
+    </VerticalStack>
+  );
+}
+
 export function WithAResourceList() {
   const [accountStatus, setAccountStatus] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
@@ -53,8 +70,8 @@ export function WithAResourceList() {
     [],
   );
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
@@ -123,7 +140,7 @@ export function WithAResourceList() {
     },
   ];
 
-  const appliedFilters = [];
+  const appliedFilters: FiltersProps['appliedFilters'] = [];
   if (!isEmpty(accountStatus)) {
     const key = 'accountStatus';
     appliedFilters.push({
@@ -168,13 +185,13 @@ export function WithAResourceList() {
           flushFilters
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
@@ -228,8 +245,8 @@ export function WithAResourceList() {
 export function WithADataTable() {
   const [availability, setAvailability] = useState(null);
   const [productType, setProductType] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleAvailabilityChange = useCallback(
     (value) => setAvailability(value),
@@ -249,8 +266,8 @@ export function WithADataTable() {
   );
   const handleAvailabilityRemove = useCallback(() => setAvailability(null), []);
   const handleProductTypeRemove = useCallback(() => setProductType(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAvailabilityRemove();
     handleProductTypeRemove();
@@ -316,7 +333,7 @@ export function WithADataTable() {
     },
   ];
 
-  const appliedFilters = [];
+  const appliedFilters: FiltersProps['appliedFilters'] = [];
   if (!isEmpty(availability)) {
     const key = 'availability';
     appliedFilters.push({
@@ -409,8 +426,8 @@ export function WithADataTable() {
 }
 
 export function WithChildrenContent() {
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -420,8 +437,8 @@ export function WithChildrenContent() {
     (value) => setQueryValue(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
 
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -485,13 +502,13 @@ export function WithChildrenContent() {
           flushFilters
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
@@ -539,8 +556,8 @@ export function WithChildrenContent() {
 }
 
 export function Disabled() {
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -550,8 +567,8 @@ export function Disabled() {
     (value) => setQueryValue(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
 
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -617,13 +634,13 @@ export function Disabled() {
           flushFilters
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
@@ -671,9 +688,9 @@ export function Disabled() {
 }
 
 export function SomeDisabled() {
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [vendor, setVendor] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [vendor, setVendor] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -685,9 +702,9 @@ export function SomeDisabled() {
   );
   const handleVendorChange = useCallback((value) => setVendor(value), []);
 
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
-  const handleVendorRemove = useCallback(() => setVendor(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+  const handleVendorRemove = useCallback(() => setVendor(''), []);
 
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -768,13 +785,13 @@ export function SomeDisabled() {
           flushFilters
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
@@ -824,8 +841,8 @@ export function SomeDisabled() {
 export function WithQueryFieldHidden() {
   const [accountStatus, setAccountStatus] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
@@ -848,8 +865,8 @@ export function WithQueryFieldHidden() {
     [],
   );
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
@@ -916,7 +933,7 @@ export function WithQueryFieldHidden() {
     },
   ];
 
-  const appliedFilters = [];
+  const appliedFilters: FiltersProps['appliedFilters'] = [];
   if (!isEmpty(accountStatus)) {
     const key = 'accountStatus';
     appliedFilters.push({
@@ -971,13 +988,13 @@ export function WithQueryFieldHidden() {
           flushFilters
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
@@ -1031,8 +1048,8 @@ export function WithQueryFieldHidden() {
 export function WithQueryFieldDisabled() {
   const [accountStatus, setAccountStatus] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
@@ -1055,8 +1072,8 @@ export function WithQueryFieldDisabled() {
     [],
   );
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
@@ -1123,7 +1140,7 @@ export function WithQueryFieldDisabled() {
     },
   ];
 
-  const appliedFilters = [];
+  const appliedFilters: FiltersProps['appliedFilters'] = [];
   if (!isEmpty(accountStatus)) {
     const key = 'accountStatus';
     appliedFilters.push({
@@ -1169,13 +1186,13 @@ export function WithQueryFieldDisabled() {
           flushFilters
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
@@ -1230,8 +1247,8 @@ export function WithAdditionalFilterSections() {
   const [accountStatus, setAccountStatus] = useState(null);
   const [accountId, setAccountId] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState('');
+  const [queryValue, setQueryValue] = useState('');
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
@@ -1256,8 +1273,8 @@ export function WithAdditionalFilterSections() {
   );
   const handleAccountIdRemove = useCallback(() => setAccountId(null), []);
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleAccountIdRemove();
@@ -1340,7 +1357,7 @@ export function WithAdditionalFilterSections() {
     },
   ];
 
-  const appliedFilters = [];
+  const appliedFilters: FiltersProps['appliedFilters'] = [];
   if (!isEmpty(accountStatus)) {
     const key = 'accountStatus';
     appliedFilters.push({
@@ -1393,13 +1410,13 @@ export function WithAdditionalFilterSections() {
           flushFilters
           items={[
             {
-              id: 341,
+              id: '341',
               url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
+              id: '256',
               url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',

@@ -2,6 +2,7 @@ import React, {useState, useCallback} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TabProps} from '@shopify/polaris';
 import {
+  VerticalStack,
   ChoiceList,
   Text,
   useIndexResourceState,
@@ -91,6 +92,17 @@ function Table() {
     >
       {rowMarkup}
     </IndexTable>
+  );
+}
+
+export function All() {
+  return (
+    <VerticalStack gap="5">
+      <Default />
+      <WithPinnedFilters />
+      <Disabled />
+      <WithQueryFieldAndFiltersHidden />
+    </VerticalStack>
   );
 }
 
@@ -403,7 +415,7 @@ export function WithPinnedFilters() {
     return true;
   };
 
-  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
+  const tabs: TabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},
@@ -689,7 +701,7 @@ export function Disabled() {
     return true;
   };
 
-  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
+  const tabs: TabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},
@@ -974,7 +986,7 @@ export function WithQueryFieldAndFiltersHidden() {
     return true;
   };
 
-  const tabs: AlphaTabProps[] = itemStrings.map((item, index) => ({
+  const tabs: TabProps[] = itemStrings.map((item, index) => ({
     content: item,
     index,
     onAction: () => {},

@@ -13,6 +13,19 @@ export default {
   component: Tabs,
 } as ComponentMeta<typeof Tabs>;
 
+export function All() {
+  return (
+    <VerticalStack gap="5">
+      <Default />
+      <InsideOfACard />
+      <Fitted />
+      <WithActions />
+      <WithBadgeContent />
+      <WithCustomDisclosure />
+    </VerticalStack>
+  );
+}
+
 export function Default() {
   const [selected, setSelected] = useState(0);
 
@@ -301,84 +314,5 @@ export function WithCustomDisclosure() {
         </HorizontalStack>
       </Tabs>
     </Card>
-  );
-}
-
-export function All() {
-  const sleep = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-  const [selected, setSelected] = useState(0);
-
-  const handleTabChange = (selectedTabIndex: number) =>
-    setSelected(selectedTabIndex);
-
-  const tabs = [
-    'All',
-    'Unpaid',
-    'Open',
-    'Closed',
-    'Local delivery',
-    'Local pickup',
-    'Returning customers',
-    'New customers',
-    'Abandoned checkouts',
-    'Online store',
-    'POS',
-    'Facebook',
-    'Instagram',
-    'Twitter',
-    'Pinterest',
-    'Google',
-    'Referral',
-  ].map((item, index) => ({
-    content: item,
-    index,
-    badge: index % 2 === 0 ? String(index * 4) : undefined,
-    id: `${item}-${index}`,
-    actions:
-      index === 0
-        ? []
-        : [
-            {
-              type: 'rename' as TabAction,
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'duplicate' as TabAction,
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'edit' as TabAction,
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-            {
-              type: 'delete' as TabAction,
-              onAction: () => {},
-              onPrimaryAction: () => {},
-            },
-          ],
-  }));
-
-  return (
-    <VerticalStack gap="5">
-      <Card>
-        <Tabs
-          tabs={tabs}
-          selected={selected}
-          onSelect={handleTabChange}
-          canCreateNewView
-        />
-      </Card>
-
-      <Tabs
-        tabs={tabs}
-        selected={selected}
-        onSelect={handleTabChange}
-        canCreateNewView
-      />
-    </VerticalStack>
   );
 }
