@@ -9,6 +9,9 @@ import {
   VerticalStack,
 } from '@shopify/polaris';
 
+import {useBreakpoints} from '../../utilities/breakpoints';
+import {useFeatures} from '../../utilities/features';
+
 export default {
   component: FullscreenBar,
   parameters: {layout: 'fullscreen'},
@@ -36,10 +39,36 @@ export function All() {
 
 export function WithChildren() {
   const [isFullscreen, setFullscreen] = useState(true);
+  const {polarisSummerEditions2023} = useFeatures();
+  const breakpoints = useBreakpoints();
 
   const handleActionClick = useCallback(() => {
     setFullscreen(false);
   }, []);
+
+  const titleContentMarkup = breakpoints.mdUp ? (
+    <Text as="p" variant="headingMd">
+      Join our email list
+    </Text>
+  ) : null;
+
+  const titleMarkup = polarisSummerEditions2023 ? (
+    <div
+      style={{
+        marginLeft: 'var(--p-space-2)',
+        marginRight: 'var(--p-space-4)',
+        flexGrow: 1,
+      }}
+    >
+      {titleContentMarkup}
+    </div>
+  ) : (
+    <div style={{marginLeft: '1rem', flexGrow: 1}}>
+      <Text as="p" variant="headingLg">
+        Page title
+      </Text>
+    </div>
+  );
 
   const fullscreenBarMarkup = (
     <FullscreenBar onAction={handleActionClick}>
@@ -54,11 +83,7 @@ export function WithChildren() {
         }}
       >
         <Badge status="info">Draft</Badge>
-        <div style={{marginLeft: '1rem', flexGrow: 1}}>
-          <Text as="p" variant="headingLg">
-            Page title
-          </Text>
-        </div>
+        {titleMarkup}
         <ButtonGroup>
           <Button onClick={() => {}}>Secondary Action</Button>
           <Button primary onClick={() => {}}>
