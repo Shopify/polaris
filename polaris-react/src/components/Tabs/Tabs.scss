@@ -121,6 +121,8 @@
   }
 
   #{$se23} & {
+    // stylelint-disable-next-line -- no way to set focus ring without mixin currently
+    @include focus-ring($size: 'wide');
     color: var(--p-color-text-primary);
     border-radius: var(--p-border-radius-2);
     padding: var(--p-space-1_5-experimental) var(--p-space-3);
@@ -138,6 +140,8 @@
     &:not([aria-disabled='true']):focus {
       background-color: transparent;
       color: var(--p-color-text-primary);
+      // stylelint-disable-next-line -- sshhh
+      @include focus-ring($size: 'wide', $style: 'focused');
     }
 
     &:not([aria-disabled='true']):active {

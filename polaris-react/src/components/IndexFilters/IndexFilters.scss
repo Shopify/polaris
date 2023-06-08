@@ -31,6 +31,14 @@ $spinner-size: 20px;
 .TabsWrapper {
   flex: 1;
   height: var(--p-space-12);
+
+  #{$se23} & {
+    height: 44px;
+
+    @media #{$p-breakpoints-md-down} {
+      height: var(--p-space-12);
+    }
+  }
 }
 
 .SmallScreenTabsWrapper {
@@ -109,7 +117,12 @@ $spinner-size: 20px;
   }
 
   #{$se23} & {
-    padding: var(--p-space-3);
+    padding: var(--p-space-1_5-experimental) var(--p-space-2);
+
+    @media #{$p-breakpoints-md-down} {
+      // stylelint-disable-next-line -- The ActionWrap container has a border-left on small screen that does not stretch to the height of its parent without the padding being 10px to make it perfect 48px/3rem height
+      height: 3rem;
+    }
   }
 }
 
