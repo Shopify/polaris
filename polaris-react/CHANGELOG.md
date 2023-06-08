@@ -1,5 +1,13 @@
 # Changelog
 
+## 11.1.2
+
+### Patch Changes
+
+- [#9392](https://github.com/Shopify/polaris/pull/9392) [`f793875e2`](https://github.com/Shopify/polaris/commit/f793875e27bf298b916b8901d2c9ea58d4a88d5b) Thanks [@mattkubej](https://github.com/mattkubej)! - Remove border radius from select all wrapper of `IndexTable`
+
+* [#9406](https://github.com/Shopify/polaris/pull/9406) [`5f4898b30`](https://github.com/Shopify/polaris/commit/5f4898b30ee3ab76c275257c7ad234176464f61b) Thanks [@chloerice](https://github.com/chloerice)! - Bumped `@types/react`and `@types/react-dom` to match dependency versions
+
 ## 11.1.1
 
 ### Patch Changes
