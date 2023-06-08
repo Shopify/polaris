@@ -116,13 +116,8 @@
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-400);
     line-height: var(--p-font-line-height-4);
-  }
 
-  #{$se23} & {
-    font-size: var(--p-font-size-300);
-
-    @media #{$p-breakpoints-md-up} {
-      font-size: var(--p-font-size-400);
+    #{$se23} & {
       line-height: var(--p-font-line-height-5);
     }
   }
@@ -133,17 +128,16 @@
   line-height: var(--p-font-line-height-3);
   font-weight: var(--p-font-weight-semibold);
 
-  @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-500);
-    line-height: var(--p-font-line-height-5);
-  }
-
   #{$se23} & {
     font-size: var(--p-font-size-400);
     line-height: var(--p-font-line-height-5);
+  }
 
-    @media #{$p-breakpoints-md-up} {
-      font-size: var(--p-font-size-500);
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-500);
+    line-height: var(--p-font-line-height-5);
+
+    #{$se23} & {
       line-height: var(--p-font-line-height-6);
     }
   }
@@ -210,7 +204,6 @@
 
   #{$se23} & {
     font-size: var(--p-font-size-100);
-    line-height: var(--p-font-line-height-2);
   }
 }
 
