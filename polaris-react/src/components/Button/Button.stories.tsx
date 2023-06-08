@@ -13,7 +13,6 @@ import {
   DeleteMinor,
   CancelSmallMinor,
   EditMajor,
-  AddMajor,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -425,7 +424,22 @@ export function Slim() {
 }
 
 export function Large() {
-  return <Button size="large">Create store</Button>;
+  return (
+    <VerticalStack gap="4">
+      <HorizontalStack gap="5" blockAlign="end">
+        <Button size="large">Create store</Button>
+        <Button size="large" accessibilityLabel="Edit" icon={EditMajor} />
+        <Button size="large" icon={PlusMinor} primary>
+          Create store
+        </Button>
+      </HorizontalStack>
+      <HorizontalStack gap="5" blockAlign="end">
+        <Button size="large" fullWidth>
+          Create store
+        </Button>
+      </HorizontalStack>
+    </VerticalStack>
+  );
 }
 
 export function FullWidth() {
