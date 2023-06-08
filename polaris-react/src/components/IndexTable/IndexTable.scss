@@ -1169,6 +1169,44 @@ $scroll-bar-size: var(--p-space-2);
   width: var(--pc-index-table-scroll-bar-content-width);
 }
 
+.Table,
+/* stylelint-disable-next-line selector-class-pattern */
+.Table-scrolling {
+  .Header {
+    color: var(--p-color-bg-inset-strong);
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    .TableCell {
+      background-color: var(--p-color-bg-subdued);
+      font-size: var(--p-font-size-75);
+      font-weight: var(--p-font-weight-medium);
+    }
+
+    &.TableRow-hovered.TableRow-disabled {
+      &,
+      .TableCell {
+        background-color: var(--p-color-bg-interactive-subdued-hover);
+      }
+    }
+
+    &.TableRow-selected {
+      &,
+      .TableCell {
+        background-color: var(--p-color-bg-interactive-subdued-hover);
+        color: var(--p-color-text);
+        font-weight: var(--p-font-weight-semibold);
+      }
+    }
+
+    &.TableRow-hovered.TableRow-selected {
+      &,
+      .TableCell {
+        background-color: var(--p-color-bg-interactive-subdued-active);
+      }
+    }
+  }
+}
+
 /* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- custom reset animation for right-aligned header */
 @keyframes right-aligned-sort-button-slide-out {
   0% {

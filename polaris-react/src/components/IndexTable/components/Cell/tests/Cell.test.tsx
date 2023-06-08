@@ -11,6 +11,18 @@ describe('<Cell />', () => {
     expect(cell).toContainReactComponent('td');
   });
 
+  it('renders a table header tag if provided the `header` prop', () => {
+    const cell = mountWithTable(<Cell header />);
+
+    expect(cell).toContainReactComponent('th');
+  });
+
+  it('forwards the `colSpan` prop', () => {
+    const cell = mountWithTable(<Cell colSpan={3} />);
+
+    expect(cell.find('td')).toHaveReactProps({colSpan: 3, scope: 'colgroup'});
+  });
+
   it('applies flushed styles when flush prop is true', () => {
     const cell = mountWithTable(<Cell flush />);
 

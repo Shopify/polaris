@@ -70,6 +70,9 @@ examples:
   - fileName: index-table-without-checkboxes.tsx
     title: Without checkboxes
     description: An index table without checkboxes and bulk actions.
+  - fileName: index-table-with-subheaders.tsx
+    title: With subheaders
+    description: An index table with logical subheaders
 ---
 
 Index tables can also:
@@ -180,15 +183,16 @@ An `IndexTableRow` is used to render a row representing an item within an `Index
 
 ### IndexTableRow properties
 
-| Prop     | Type       | Description                                                      |
-| -------- | ---------- | ---------------------------------------------------------------- |
-| id       | string     | A unique identifier for the row                                  |
-| selected | boolean    | A boolean property indicating whether the row is selected        |
-| position | number     | The index position of the row                                    |
-| subdued  | boolean    | A boolean property indicating whether the row should be subdued  |
-| status   | RowStatus  | A property indicating whether the row should have a status       |
-| disabled | boolean    | A boolean property indicating whether the row should be disabled |
-| onClick  | () => void | A function which overrides the default click behaviour           |
+| Prop     | Type                           | Description                                                          |
+| -------- | ------------------------------ | -------------------------------------------------------------------- |
+| id       | string                         | A unique identifier for the row                                      |
+| selected | boolean &#124; "indeterminate" | A boolean property indicating whether the row is selected            |
+| position | number                         | The index position of the row                                        |
+| subdued  | boolean                        | A boolean property indicating whether the row should be subdued      |
+| status   | RowStatus                      | A property indicating whether the row should have a status           |
+| disabled | boolean                        | A boolean property indicating whether the row should be disabled     |
+| header   | boolean                        | A boolean property indicating whether the row is a logical subheader |
+| onClick  | () => void                     | A function which overrides the default click behaviour               |
 
 ## IndexTableCell
 

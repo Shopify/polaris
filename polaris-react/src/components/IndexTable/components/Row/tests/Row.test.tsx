@@ -10,6 +10,8 @@ import {Row} from '../Row';
 import {Checkbox} from '../../Checkbox';
 import {Button} from '../../../../Button';
 import {Link} from '../../../../Link';
+import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
+import styles from '../../../IndexTable.scss';
 
 const defaultEvent = {
   preventDefault: noop,
@@ -82,6 +84,42 @@ describe('<Row />', () => {
     );
 
     expect(row).toContainReactComponent(RowHoveredContext.Provider);
+  });
+
+  it('applies the styles.TableRow class to the table row element', () => {
+    const row = mountWithTable(
+      <Row id="id" selected position={1}>
+        <td />
+      </Row>,
+    );
+
+    expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+      styles.TableRow,
+    );
+  });
+
+  it('applies the styles.Header class to the table row element', () => {
+    const row = mountWithTable(
+      <Row id="id" selected header position={1}>
+        <td />
+      </Row>,
+    );
+
+    expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+      styles.Header,
+    );
+  });
+
+  it('allows the checkbox to be indeterminate', () => {
+    const row = mountWithTable(
+      <Row id="id" selected="indeterminate" header position={1}>
+        <td />
+      </Row>,
+    );
+
+    expect(row.find(Row)?.find(PolarisCheckbox)?.prop('checked')).toBe(
+      'indeterminate',
+    );
   });
 
   it(`dispatches a mouse event when the row is clicked and selectMode is false`, () => {

@@ -8,12 +8,16 @@ export interface CellProps {
   children?: ReactNode;
   className?: string;
   flush?: boolean;
+  colSpan?: HTMLTableCellElement['colSpan'];
+  header?: boolean;
 }
 
 export const Cell = memo(function Cell({
   children,
   className,
   flush,
+  colSpan,
+  header,
 }: CellProps) {
   const cellClassName = classNames(
     className,
@@ -21,5 +25,15 @@ export const Cell = memo(function Cell({
     flush && styles['TableCell-flush'],
   );
 
-  return <td className={cellClassName}>{children}</td>;
+  const CellElement = header ? 'th' : 'td';
+
+  return (
+    <CellElement
+      className={cellClassName}
+      colSpan={colSpan}
+      scope={colSpan ? 'colgroup' : undefined}
+    >
+      {children}
+    </CellElement>
+  );
 });

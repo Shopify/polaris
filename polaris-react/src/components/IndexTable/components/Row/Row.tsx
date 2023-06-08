@@ -17,11 +17,12 @@ type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 export interface RowProps {
   children: React.ReactNode;
   id: string;
-  selected?: boolean;
+  selected?: boolean | 'indeterminate';
   position: number;
   subdued?: boolean;
   status?: RowStatus;
   disabled?: boolean;
+  header?: boolean;
   onNavigation?(id: string): void;
   onClick?(): void;
 }
@@ -34,6 +35,7 @@ export const Row = memo(function Row({
   subdued,
   status,
   disabled,
+  header,
   onNavigation,
   onClick,
 }: RowProps) {
@@ -85,7 +87,7 @@ export const Row = memo(function Row({
   }, []);
 
   const rowClassName = classNames(
-    styles.TableRow,
+    header ? styles.Header : styles.TableRow,
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],

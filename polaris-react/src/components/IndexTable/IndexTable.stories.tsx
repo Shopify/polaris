@@ -1,18 +1,22 @@
-import React, {useCallback, useState} from 'react';
+import React, {Fragment, useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {IndexFiltersProps} from '@shopify/polaris';
 import {
+  Icon,
+  HorizontalStack,
   Button,
   LegacyCard,
   EmptySearchResult,
   IndexFilters,
   useSetIndexFiltersMode,
-  IndexTable,
   Link,
   TextField,
   Text,
   useIndexResourceState,
 } from '@shopify/polaris';
+import {ChevronUpMinor} from '@shopify/polaris-icons';
+
+import {IndexTable} from './IndexTable';
 
 export default {
   component: IndexTable,
@@ -3591,10 +3595,10 @@ export function SmallScreenWithAllOfItsElements() {
   }
 }
 
-export function WithHeadingTooltips() {
+export function WithSubHeaders() {
   const customers = [
     {
-      id: '3410',
+      id: '3411',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -3602,31 +3606,23 @@ export function WithHeadingTooltips() {
       amountSpent: '$2,400',
     },
     {
-      id: '3411',
+      id: '2561',
       url: '#',
-      name: 'Joe Jemison',
-      location: 'Sydney, AU',
-      orders: 20,
-      amountSpent: '$1,400',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
     },
     {
-      id: '3412',
+      id: '2561',
       url: '#',
-      name: 'Sam Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$400',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
     },
     {
-      id: '3413',
-      url: '#',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$4,300',
-    },
-    {
-      id: '2563',
+      id: '2561',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -3639,34 +3635,54 @@ export function WithHeadingTooltips() {
     plural: 'customers',
   };
 
-  const {selectedResources, allResourcesSelected, handleSelectionChange} =
-    useIndexResourceState(customers);
-
   const rowMarkup = customers.map(
     ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-      >
-        <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
-            {name}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {orders}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {amountSpent}
-          </Text>
-        </IndexTable.Cell>
-      </IndexTable.Row>
+      <Fragment key={id}>
+        <IndexTable.Row
+          header
+          id={id}
+          position={index}
+          selected={index === 3 ? 'indeterminate' : index === 0}
+          disabled={index === 1}
+        >
+          <IndexTable.Cell colSpan={3}>May 31st 2023</IndexTable.Cell>
+          <IndexTable.Cell>
+            <HorizontalStack align="end">
+              <Button
+                accessibilityLabel="Expand subheader"
+                icon={ChevronUpMinor}
+                plain
+              />
+            </HorizontalStack>
+          </IndexTable.Cell>
+        </IndexTable.Row>
+        {new Array(2).fill('').map((_, rowIndex) => (
+          <IndexTable.Row
+            key={rowIndex}
+            id={id}
+            position={index}
+            selected={index === 0 || (index === 3 && rowIndex === 0)}
+            disabled={index === 1}
+          >
+            <IndexTable.Cell>
+              <Text fontWeight="bold" as="span">
+                {name}
+              </Text>
+            </IndexTable.Cell>
+            <IndexTable.Cell>{location}</IndexTable.Cell>
+            <IndexTable.Cell>
+              <Text as="span" alignment="end" numeric>
+                {orders}
+              </Text>
+            </IndexTable.Cell>
+            <IndexTable.Cell>
+              <Text as="span" alignment="end" numeric>
+                {amountSpent}
+              </Text>
+            </IndexTable.Cell>
+          </IndexTable.Row>
+        ))}
+      </Fragment>
     ),
   );
 
@@ -3675,21 +3691,17 @@ export function WithHeadingTooltips() {
       <IndexTable
         resourceName={resourceName}
         itemCount={customers.length}
-        selectedItemsCount={
-          allResourcesSelected ? 'All' : selectedResources.length
-        }
-        onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
-          {title: 'Location', tooltipContent: 'Strictly within the US'},
+          {title: 'Location'},
           {
             alignment: 'end',
             id: 'order-count',
             title: 'Order count',
-            new: true,
           },
           {
             alignment: 'end',
+            hidden: false,
             id: 'amount-spent',
             title: 'Amount spent',
           },
