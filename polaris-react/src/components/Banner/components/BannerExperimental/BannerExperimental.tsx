@@ -65,7 +65,6 @@ export function BannerExperimental({
   const dismissButton = onDismiss ? (
     <Button
       plain
-      primary
       icon={closeIcon}
       onClick={onDismiss}
       accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
@@ -178,7 +177,7 @@ function NoTitleBanner({
   dismissButton,
   children,
 }: PropsWithChildren<Omit<BannerLayoutProps, 'textColor' | 'bannerTitle'>>) {
-  const [blockAlign, setBlockAlgin] =
+  const [blockAlign, setBlockAlign] =
     useState<HorizontalStackProps['blockAlign']>('center');
   const contentNode = useRef<HTMLDivElement>(null);
   const iconNode = useRef<HTMLDivElement>(null);
@@ -190,9 +189,9 @@ function NoTitleBanner({
     if (!contentHeight || !iconBoxHeight) return;
 
     if (contentHeight > iconBoxHeight) {
-      setBlockAlgin('start');
+      setBlockAlign('start');
     } else {
-      setBlockAlgin('center');
+      setBlockAlign('center');
     }
   }, []);
 
