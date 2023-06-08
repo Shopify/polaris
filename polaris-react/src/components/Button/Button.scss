@@ -61,6 +61,11 @@
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       box-shadow: var(--pc-button-shadow);
     }
+
+    &:hover {
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      box-shadow: var(--pc-button-shadow-hover);
+    }
   }
 
   &.disabled {
@@ -304,6 +309,11 @@
       }
     }
 
+    &:hover {
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      box-shadow: var(--pc-button-shadow-primary);
+    }
+
     &.disabled {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       color: var(--pc-button-text);
@@ -479,6 +489,10 @@
       .Content {
         transform: translateY(0);
       }
+    }
+
+    &:hover {
+      box-shadow: none;
     }
 
     &:hover,
@@ -661,6 +675,10 @@
     color: var(--p-color-text-interactive-hover);
     background: transparent;
     box-shadow: none;
+
+    #{$se23} & {
+      box-shadow: none;
+    }
 
     svg {
       fill: var(--p-color-icon-interactive-hover);
@@ -846,7 +864,10 @@
 
     #{$se23} &:hover,
     #{$se23} &:focus:not(.disabled) {
-      fill: var(--p-color-icon-interactive-hover);
+      // stylelint-disable-next-line selector-max-combinators -- se23
+      svg {
+        fill: var(--p-color-icon-interactive-hover);
+      }
     }
 
     &:active svg,
