@@ -65,6 +65,7 @@ export function BannerExperimental({
   const dismissButton = onDismiss ? (
     <Button
       plain
+      primary
       icon={closeIcon}
       onClick={onDismiss}
       accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
@@ -127,7 +128,7 @@ function DefaultBanner({
   dismissButton,
   children,
 }: PropsWithChildren<Omit<BannerLayoutProps, 'onDismiss'>>) {
-  const {smDown} = useBreakpoints();
+  const {smUp} = useBreakpoints();
   const hasContent = children || actionButtons;
 
   return (
@@ -136,12 +137,12 @@ function DefaultBanner({
         <Box
           background={backgroundColor}
           color={textColor}
-          borderRadiusStartStart={smDown ? undefined : '2'}
-          borderRadiusStartEnd={smDown ? undefined : '2'}
-          borderRadiusEndStart={hasContent || smDown ? undefined : '2'}
-          borderRadiusEndEnd={hasContent || smDown ? undefined : '2'}
-          padding={{xs: '2', sm: '3'}}
-          paddingInlineEnd={{xs: '3', sm: '4'}}
+          borderRadiusStartStart={smUp ? '2' : undefined}
+          borderRadiusStartEnd={smUp ? '2' : undefined}
+          borderRadiusEndStart={!hasContent && smUp ? '2' : undefined}
+          borderRadiusEndEnd={!hasContent && smUp ? '2' : undefined}
+          padding={{xs: '2', md: '3'}}
+          paddingInlineEnd={{xs: '3', md: '4'}}
         >
           <HorizontalStack
             align="space-between"
@@ -157,7 +158,7 @@ function DefaultBanner({
           </HorizontalStack>
         </Box>
         {hasContent && (
-          <Box padding={{xs: '3', sm: '4'}} paddingBlockStart="3">
+          <Box padding={{xs: '3', md: '4'}} paddingBlockStart="3">
             <VerticalStack gap="2">
               <div>{children}</div>
               {actionButtons}
@@ -208,7 +209,12 @@ function NoTitleBanner({
   }, [handleResize]);
 
   return (
-    <Box width="100%" padding="3" borderRadius="2">
+    <Box
+      width="100%"
+      padding="3"
+      paddingInlineStart={{xs: '2', md: '3'}}
+      borderRadius="2"
+    >
       <HorizontalStack align="space-between" blockAlign="start" wrap={false}>
         <Box paddingInlineEnd={onDismiss ? '2' : undefined}>
           <HorizontalStack gap="2" wrap={false} blockAlign={blockAlign}>
@@ -262,7 +268,7 @@ function WithinContentContainerBanner({
             </VerticalStack>
           </HorizontalStack>
         </Box>
-        {dismissButton}
+        <Box padding="1">{dismissButton}</Box>
       </HorizontalStack>
     </Box>
   );
