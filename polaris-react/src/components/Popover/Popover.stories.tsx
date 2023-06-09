@@ -21,6 +21,8 @@ import {
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
+import {useFeatures} from '../../utilities/features';
+
 export default {
   component: Popover,
 } as ComponentMeta<typeof Popover>;
@@ -136,6 +138,16 @@ export function WithContentAndActions() {
     [],
   );
 
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const textMarkup = polarisSummerEditions2023 ? (
+    <Text as="h2" variant="headingSm">
+      Available sales channels
+    </Text>
+  ) : (
+    <p>Available sales channels</p>
+  );
+
   const activator = (
     <Button onClick={togglePopoverActive} disclosure>
       Sales channels
@@ -151,9 +163,7 @@ export function WithContentAndActions() {
         onClose={togglePopoverActive}
       >
         <Popover.Pane fixed>
-          <Popover.Section>
-            <p>Available sales channels</p>
-          </Popover.Section>
+          <Popover.Section>{textMarkup}</Popover.Section>
         </Popover.Pane>
         <Popover.Pane>
           <ActionList
