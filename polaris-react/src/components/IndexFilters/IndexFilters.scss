@@ -120,7 +120,6 @@ $spinner-size: 20px;
     padding: var(--p-space-1_5-experimental) var(--p-space-2);
 
     @media #{$p-breakpoints-md-down} {
-      // stylelint-disable-next-line -- The ActionWrap container has a border-left on small screen that does not stretch to the height of its parent without the padding being 10px to make it perfect 48px/3rem height
       height: 3rem;
     }
   }
