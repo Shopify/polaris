@@ -92,6 +92,8 @@ export interface IndexFiltersProps
   filteringAccessibilityLabel?: string;
   /** Optional override to the default Tooltip message for the button that toggles the filtering mode */
   filteringAccessibilityTooltip?: string;
+  /** If true, display a loading state in the filters area */
+  isFilterDataLoading?: boolean;
 }
 
 export function IndexFilters({
@@ -119,6 +121,7 @@ export function IndexFilters({
   disableQueryField,
   hideFilters,
   loading,
+  isFilterDataLoading,
   mode,
   setMode,
   disableStickyMode,
@@ -411,6 +414,7 @@ export function IndexFilters({
                   onAddFilterClick={onAddFilterClick}
                   filters={filters}
                   appliedFilters={appliedFilters}
+                  isFilterDataLoading={isFilterDataLoading}
                   onClearAll={onClearAll}
                   disableFilters={disabled}
                   hideFilters={hideFilters}

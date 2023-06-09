@@ -110,6 +110,8 @@ export interface FiltersProps {
   mountedState?: TransitionStatus;
   /** Callback when the add filter button is clicked. */
   onAddFilterClick?: () => void;
+  /** If true, display a loading state in the filters area */
+  isFilterDataLoading?: boolean;
 }
 
 export function Filters({
@@ -118,6 +120,7 @@ export function Filters({
   focused,
   filters,
   appliedFilters,
+  isFilterDataLoading,
   onQueryChange,
   onQueryClear,
   onQueryBlur,
@@ -241,7 +244,8 @@ export function Filters({
         disabled={
           disabled ||
           (unsectionedFilters.length === 0 && sectionedFilters.length === 0) ||
-          disableFilters
+          disableFilters ||
+          isFilterDataLoading
         }
       >
         <Text variant={se23 ? se23LabelVariant : labelVariant} as="span">
@@ -257,18 +261,19 @@ export function Filters({
     onClearAll?.();
   };
 
-  const shouldShowAddButton = filters.some((filter) => !filter.pinned);
+  const shouldShowAddButton =
+    filters.some((filter) => !filter.pinned) || isFilterDataLoading;
 
   const additionalContent = useMemo(() => {
     return (
       <>
         <div className={styles.Spinner}>
-          {loading ? <Spinner size="small" /> : null}
+          {loading || isFilterDataLoading ? <Spinner size="small" /> : null}
         </div>
         {children}
       </>
     );
-  }, [loading, children]);
+  }, [loading, children, isFilterDataLoading]);
 
   const containerSpacing:
     | {
@@ -415,7 +420,7 @@ export function Filters({
     ) : null;
 
   const filtersMarkup =
-    hideFilters || filters.length === 0 ? null : (
+    hideFilters || (filters.length === 0 && !isFilterDataLoading) ? null : (
       <div
         className={classNames(
           styles.FiltersWrapper,

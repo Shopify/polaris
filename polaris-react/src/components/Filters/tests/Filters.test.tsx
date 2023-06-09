@@ -6,6 +6,8 @@ import {ActionList} from '../../ActionList';
 import {Filters} from '../Filters';
 import type {FiltersProps} from '../Filters';
 import {FilterPill} from '../components';
+import {Spinner} from '../../Spinner';
+import {UnstyledButton} from '../../UnstyledButton';
 
 describe('<Filters />', () => {
   let originalScroll: any;
@@ -140,6 +142,17 @@ describe('<Filters />', () => {
     expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
       label: 'Bux',
       selected: true,
+    });
+  });
+
+  it('renders the spinner and a disabled add filter button if isFilterDataLoading is true', () => {
+    const wrapper = mountWithApp(
+      <Filters {...defaultProps} filters={[]} isFilterDataLoading />,
+    );
+
+    expect(wrapper).toContainReactComponent(Spinner);
+    expect(wrapper).toContainReactComponent(UnstyledButton, {
+      disabled: true,
     });
   });
 
