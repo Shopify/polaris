@@ -7,6 +7,7 @@ import React, {
   useCallback,
 } from 'react';
 import type {ColorTextAlias} from '@shopify/polaris-tokens';
+import {CancelMinor} from '@shopify/polaris-icons';
 
 import {Text} from '../../../Text';
 import {VerticalStack} from '../../../VerticalStack';
@@ -19,10 +20,11 @@ import {Box} from '../../../Box';
 import {Button} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import type {BannerProps} from '../../Banner';
-import {Icon} from '../../../Icon';
 import {useI18n} from '../../../../utilities/i18n';
+import {Icon} from '../../../Icon';
 
-import {useBannerColors} from './utilities';
+import {useBannerAttributes} from './utilities';
+import styles from './BannerExperimental.scss';
 
 interface BannerLayoutProps {
   backgroundColor: BoxProps['background'];
@@ -31,7 +33,6 @@ interface BannerLayoutProps {
   bannerIcon: React.ReactNode;
   actionButtons: React.ReactNode;
   dismissButton: React.ReactNode;
-  onDismiss: BannerProps['onDismiss'];
 }
 
 export function BannerExperimental({
@@ -46,25 +47,29 @@ export function BannerExperimental({
 }: BannerProps) {
   const i18n = useI18n();
   const withinContentContainer = useContext(WithinContentContext);
-  const isNoTitleBanner = !title && !withinContentContainer;
-  const {iconRGBA, backgroundColor, textColor, statusIcon, closeIcon} =
-    useBannerColors(status, isNoTitleBanner);
+  const {backgroundColor, textColor, iconColor, StatusIcon} =
+    useBannerAttributes(status);
 
-  const bannerIcon = hideIcon ? null : (
-    <Box paddingInlineStart={isNoTitleBanner ? '0' : '05'}>
-      {icon ? (
-        <span style={{fill: iconRGBA}}>
-          <Icon source={icon} />
-        </span>
-      ) : (
-        <Icon source={statusIcon} />
-      )}
-    </Box>
+  const isNoTitleBanner = !title && !withinContentContainer;
+
+  const statusIcon = (
+    <span className={styles[iconColor]}>
+      <Icon source={icon ?? StatusIcon} />
+    </span>
   );
+
+  const closeIcon = (
+    <span className={styles[isNoTitleBanner ? 'icon-subdued' : iconColor]}>
+      <Icon source={CancelMinor} />
+    </span>
+  );
+
+  const bannerIcon = hideIcon ? null : statusIcon;
 
   const dismissButton = onDismiss ? (
     <Button
       plain
+      primary
       icon={closeIcon}
       onClick={onDismiss}
       accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
@@ -94,7 +99,6 @@ export function BannerExperimental({
   ) : null;
 
   const bannerLayoutProps: BannerLayoutProps = {
-    onDismiss,
     backgroundColor,
     textColor,
     bannerTitle,
@@ -126,7 +130,7 @@ function DefaultBanner({
   actionButtons,
   dismissButton,
   children,
-}: PropsWithChildren<Omit<BannerLayoutProps, 'onDismiss'>>) {
+}: PropsWithChildren<BannerLayoutProps>) {
   const {smUp} = useBreakpoints();
   const hasContent = children || actionButtons;
 
@@ -136,12 +140,12 @@ function DefaultBanner({
         <Box
           background={backgroundColor}
           color={textColor}
-          borderRadiusStartStart={smUp ? '2' : undefined}
-          borderRadiusStartEnd={smUp ? '2' : undefined}
-          borderRadiusEndStart={!hasContent && smUp ? '2' : undefined}
-          borderRadiusEndEnd={!hasContent && smUp ? '2' : undefined}
-          padding={{xs: '2', md: '3'}}
-          paddingInlineEnd={{xs: '3', md: '4'}}
+          borderRadiusStartStart={smUp ? '3' : undefined}
+          borderRadiusStartEnd={smUp ? '3' : undefined}
+          borderRadiusEndStart={!hasContent && smUp ? '3' : undefined}
+          borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
+          padding="2"
+          shadow="banner-experimental"
         >
           <HorizontalStack
             align="space-between"
@@ -149,10 +153,12 @@ function DefaultBanner({
             gap="2"
             wrap={false}
           >
-            <HorizontalStack gap="2" wrap={false}>
-              {bannerIcon}
-              {bannerTitle}
-            </HorizontalStack>
+            <Box padding="1" paddingInlineStart={smUp ? '1' : '0'}>
+              <HorizontalStack gap="1_5-experimental" wrap={false}>
+                {bannerIcon}
+                {bannerTitle}
+              </HorizontalStack>
+            </Box>
             {dismissButton}
           </HorizontalStack>
         </Box>
@@ -170,7 +176,6 @@ function DefaultBanner({
 }
 
 function NoTitleBanner({
-  onDismiss,
   backgroundColor,
   bannerIcon,
   actionButtons,
@@ -208,26 +213,25 @@ function NoTitleBanner({
   }, [handleResize]);
 
   return (
-    <Box
-      width="100%"
-      padding="3"
-      paddingInlineStart={{xs: '2', md: '3'}}
-      borderRadius="2"
-    >
-      <HorizontalStack align="space-between" blockAlign="start" wrap={false}>
-        <Box paddingInlineEnd={onDismiss ? '2' : undefined}>
+    <Box width="100%" padding="2" borderRadius="3">
+      <HorizontalStack
+        align="space-between"
+        blockAlign={blockAlign}
+        wrap={false}
+      >
+        <Box padding="1" width="100%">
           <HorizontalStack gap="2" wrap={false} blockAlign={blockAlign}>
             <div ref={iconNode}>
               <Box background={backgroundColor} borderRadius="2" padding="1">
                 {bannerIcon}
               </Box>
             </div>
-            <div ref={contentNode}>
+            <Box ref={contentNode} width="100%">
               <VerticalStack gap="2">
                 <div>{children}</div>
                 {actionButtons}
               </VerticalStack>
-            </div>
+            </Box>
           </HorizontalStack>
         </Box>
         {dismissButton}
@@ -237,7 +241,6 @@ function NoTitleBanner({
 }
 
 function WithinContentContainerBanner({
-  onDismiss,
   backgroundColor,
   textColor,
   bannerTitle,
@@ -250,24 +253,26 @@ function WithinContentContainerBanner({
     <Box
       width="100%"
       background={backgroundColor}
-      padding="2"
+      padding="1"
       borderRadius="2"
       color={textColor}
     >
       <HorizontalStack align="space-between" blockAlign="start" wrap={false}>
-        <Box paddingInlineEnd={onDismiss ? '2' : undefined}>
-          <HorizontalStack gap="2" wrap={false}>
+        <Box padding="1" width="100%">
+          <HorizontalStack gap="1_5-experimental" wrap={false}>
             {bannerIcon}
-            <VerticalStack gap="2">
-              <VerticalStack gap="05">
-                {bannerTitle}
-                <div>{children}</div>
+            <Box width="100%">
+              <VerticalStack gap="2">
+                <VerticalStack gap="05">
+                  {bannerTitle}
+                  <div>{children}</div>
+                </VerticalStack>
+                {actionButtons}
               </VerticalStack>
-              {actionButtons}
-            </VerticalStack>
+            </Box>
           </HorizontalStack>
         </Box>
-        <Box padding="1">{dismissButton}</Box>
+        {dismissButton}
       </HorizontalStack>
     </Box>
   );

@@ -1,7 +1,7 @@
 import type {MetadataProperties, Experimental} from '../types';
 
 type ShadowAliasExperimental = Experimental<
-  'card-sm' | 'card-md' | 'card-lg' | 'button'
+  'card-sm' | 'card-md' | 'card-lg' | 'button' | 'banner'
 >;
 
 export type ShadowAlias =
@@ -87,5 +87,9 @@ export const shadow: {
   'shadow-button-experimental': {
     value:
       'inset 0px -1px 0px #B5B5B5, inset -1px 0px 0px #E3E3E3, inset 1px 0px 0px #E3E3E3, inset 0px 1px 0px #E3E3E3',
+  },
+  'shadow-banner-experimental': {
+    value:
+      'inset 1px 0px 0px rgba(0, 0, 0, 0.1), inset -1px 0px 0px rgba(0, 0, 0, 0.1), inset 0px 1px 0px rgba(255, 255, 255, 0.3)',
   },
 };

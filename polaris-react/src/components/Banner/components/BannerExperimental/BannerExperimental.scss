@@ -1,0 +1,43 @@
+@import '../../../../styles/common';
+
+@mixin recolor-icon-se23($fill-color: null) {
+  #{$se23} & {
+    // stylelint-disable-next-line -- se23
+    svg,
+    path {
+      fill: $fill-color;
+    }
+  }
+}
+
+.icon-on-color {
+  @include recolor-icon-se23(var(--p-color-icon-on-color));
+}
+
+.icon-success-strong-experimental {
+  @include recolor-icon-se23(var(--p-color-icon-success-strong-experimental));
+}
+
+.text-warning-strong {
+  @include recolor-icon-se23(var(--p-color-text-warning-strong));
+}
+
+.icon-warning-strong-experimental {
+  @include recolor-icon-se23(var(--p-color-icon-warning-strong-experimental));
+}
+
+.icon-critical-strong-experimental {
+  @include recolor-icon-se23(var(--p-color-icon-critical-strong-experimental));
+}
+
+.text-info-strong {
+  @include recolor-icon-se23(var(--p-color-text-info-strong));
+}
+
+.icon-info-strong-experimental {
+  @include recolor-icon-se23(var(--p-color-icon-info-strong-experimental));
+}
+
+.icon-subdued {
+  @include recolor-icon-se23(var(--p-color-icon-subdued));
+}
