@@ -181,7 +181,7 @@ type ColorIconAliasExperimental = Experimental<
 >;
 
 type ColorBorderAliasExperimental = Experimental<
-  'border-faint' | 'border-input-active'
+  'border-faint' | 'border-input-active' | 'border-critical-strong'
 >;
 
 export type ColorAvatarAliasExperimental = Experimental<
@@ -899,6 +899,9 @@ export const color: {
   },
   'color-border-input-active-experimental': {
     value: colorsExperimental.gray[16](),
+  },
+  'color-border-critical-strong-experimental': {
+    value: colorsExperimental.red[14],
   },
   'color-bg-input-active-experimental': {
     value: colorsExperimental.gray[4](),
