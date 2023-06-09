@@ -244,7 +244,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         actionsMarkup = breakpoints?.lgUp ? (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
-              {buttonsFrom(shortcutActions, {plain: true})}
+              {buttonsFrom(shortcutActions, {plain: true, primary: true})}
             </ButtonGroup>
           </div>
         ) : null;

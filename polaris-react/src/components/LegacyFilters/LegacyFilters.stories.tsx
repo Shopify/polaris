@@ -14,6 +14,8 @@ import {
   Text,
 } from '@shopify/polaris';
 
+import {useFeatures} from '../../utilities/features';
+
 export default {
   component: LegacyFilters,
   parameters: {
@@ -409,6 +411,7 @@ export function WithADataTable(_, context) {
 export function WithChildrenContent() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -470,7 +473,7 @@ export function WithChildrenContent() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   onClick={() => console.log('New filter saved')}
-                  size="large"
+                  size={polarisSummerEditions2023 ? 'large' : undefined}
                 >
                   Save
                 </Button>
@@ -533,6 +536,7 @@ export function WithChildrenContent() {
 }
 
 export function Disabled() {
+  const {polarisSummerEditions2023} = useFeatures();
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
 
@@ -598,7 +602,7 @@ export function Disabled() {
                 <Button
                   disabled
                   onClick={() => console.log('New filter saved')}
-                  size="large"
+                  size={polarisSummerEditions2023 ? 'large' : undefined}
                 >
                   Save
                 </Button>
@@ -664,6 +668,7 @@ export function SomeDisabled() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [vendor, setVendor] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -744,7 +749,7 @@ export function SomeDisabled() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
-                  size="large"
+                  size={polarisSummerEditions2023 ? 'large' : undefined}
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -810,6 +815,7 @@ export function SomeDisabled() {
 export function WithoutClearButton() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -873,7 +879,7 @@ export function WithoutClearButton() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
-                  size="large"
+                  size={polarisSummerEditions2023 ? 'large' : undefined}
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
