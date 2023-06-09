@@ -10,6 +10,7 @@ import {Tooltip} from '../../../Tooltip';
 import {Box} from '../../../Box';
 import type {SortButtonChoice} from '../../types';
 import {FilterButton} from '../FilterButton';
+import {useFeatures} from '../../../../utilities/features';
 
 import {DirectionButton} from './components';
 
@@ -36,6 +37,8 @@ export function SortButton({
   onChangeDirection,
 }: SortButtonProps) {
   const i18n = useI18n();
+  const {polarisSummerEditions2023: se23} = useFeatures();
+
   const [active, setActive] = useState(false);
   const [selectedValueKey, selectedDirection] = selected[0].split(' ');
 
@@ -94,6 +97,9 @@ export function SortButton({
     return currentKey === selectedValueKey;
   });
 
+  const iconMarkup = se23 ? SortMinor : undefined;
+  const childMarkup = !se23 ? <Icon source={SortMinor} color="base" /> : null;
+
   const sortButton = (
     <Tooltip
       content={i18n.translate('Polaris.IndexFilters.SortButton.tooltip')}
@@ -101,11 +107,12 @@ export function SortButton({
       hoverDelay={400}
     >
       <FilterButton
+        icon={iconMarkup}
         onClick={handleClick}
-        aria-label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
+        label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
         disabled={disabled}
       >
-        <Icon source={SortMinor} color="base" />
+        {childMarkup}
       </FilterButton>
     </Tooltip>
   );
@@ -122,7 +129,7 @@ export function SortButton({
         minWidth="148px"
         padding="4"
         borderBlockEndWidth="1"
-        borderColor="border-subdued"
+        borderColor={se23 ? 'border-faint-experimental' : 'border-subdued'}
       >
         <ChoiceList
           title={i18n.translate('Polaris.IndexFilters.SortButton.title')}

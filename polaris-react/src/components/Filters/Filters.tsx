@@ -9,12 +9,15 @@ import {ActionList} from '../ActionList';
 import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
+import {useBreakpoints} from '../../utilities/breakpoints';
+import {useFeatures} from '../../utilities/features';
 import type {
   ActionListItemDescriptor,
   AppliedFilterInterface,
   FilterInterface,
 } from '../../types';
 import {HorizontalStack} from '../HorizontalStack';
+import type {BoxProps} from '../Box';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
 import {Button} from '../Button';
@@ -132,6 +135,8 @@ export function Filters({
   onAddFilterClick,
 }: FiltersProps) {
   const i18n = useI18n();
+  const {mdDown} = useBreakpoints();
+  const {polarisSummerEditions2023: se23} = useFeatures();
   const [popoverActive, setPopoverActive] = useState(false);
   const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
   const hasMounted = useRef(false);
@@ -223,25 +228,27 @@ export function Filters({
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
+  const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
+  const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
+
   const addFilterActivator = (
     <div>
-      <Text variant="bodySm" as="p">
-        <UnstyledButton
-          type="button"
-          className={styles.AddFilter}
-          onClick={handleAddFilterClick}
-          aria-label={i18n.translate('Polaris.Filters.addFilter')}
-          disabled={
-            disabled ||
-            (unsectionedFilters.length === 0 &&
-              sectionedFilters.length === 0) ||
-            disableFilters
-          }
-        >
-          <span>{i18n.translate('Polaris.Filters.addFilter')}</span>
-          <PlusMinor />
-        </UnstyledButton>
-      </Text>
+      <UnstyledButton
+        type="button"
+        className={styles.AddFilter}
+        onClick={handleAddFilterClick}
+        aria-label={i18n.translate('Polaris.Filters.addFilter')}
+        disabled={
+          disabled ||
+          (unsectionedFilters.length === 0 && sectionedFilters.length === 0) ||
+          disableFilters
+        }
+      >
+        <Text variant={se23 ? se23LabelVariant : labelVariant} as="span">
+          {i18n.translate('Polaris.Filters.addFilter')}{' '}
+        </Text>
+        <PlusMinor />
+      </UnstyledButton>
     </div>
   );
 
@@ -263,23 +270,36 @@ export function Filters({
     );
   }, [loading, children]);
 
-  const queryFieldMarkup = hideQueryField ? null : (
-    <div className={styles.Container}>
-      <Box
-        paddingBlockStart={{
+  const containerSpacing:
+    | {
+        paddingBlockStart: BoxProps['paddingBlockStart'];
+        paddingBlockEnd: BoxProps['paddingBlockEnd'];
+        paddingInlineStart: BoxProps['paddingInlineStart'];
+        paddingInlineEnd: BoxProps['paddingInlineEnd'];
+      }
+    | {padding: BoxProps['padding']} = se23
+    ? {
+        padding: '2',
+      }
+    : {
+        paddingBlockStart: {
           xs: '3',
           md: '2',
-        }}
-        paddingBlockEnd={{
+        },
+        paddingBlockEnd: {
           xs: '3',
           md: '2',
-        }}
-        paddingInlineStart="2"
-        paddingInlineEnd={{
+        },
+        paddingInlineStart: '2',
+        paddingInlineEnd: {
           xs: '4',
           md: '3',
-        }}
-      >
+        },
+      };
+
+  const queryFieldMarkup = hideQueryField ? null : (
+    <div className={styles.Container}>
+      <Box {...containerSpacing}>
         <HorizontalStack
           align="start"
           blockAlign="center"

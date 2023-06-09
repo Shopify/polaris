@@ -13,7 +13,7 @@ interface TabActionDescriptor
   extends Omit<ActionListItemDescriptor, 'onAction'> {
   type: TabAction;
   onAction?: (name: string) => void;
-  onPrimaryAction?: (name: string) => Promise<boolean>;
+  onPrimaryAction?: (name: string) => Promise<boolean> | void;
 }
 
 export interface TabProps {
