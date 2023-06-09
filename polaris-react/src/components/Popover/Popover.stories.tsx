@@ -483,6 +483,8 @@ export function WithSearchableListbox() {
     }
   };
 
+  const {polarisSummerEditions2023} = useFeatures();
+
   const listboxId = 'SearchableListboxInPopover';
 
   /* Your app's feature/context specific activator here */
@@ -613,7 +615,7 @@ export function WithSearchableListbox() {
               style={{
                 position: 'relative',
                 width: '310px',
-                height: '292px',
+                height: polarisSummerEditions2023 ? '262px' : '292px',
                 padding: 'var(--p-space-2) 0',
                 borderBottomLeftRadius: 'var(--p-border-radius-2)',
                 borderBottomRightRadius: 'var(--p-border-radius-2)',
