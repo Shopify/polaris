@@ -15,7 +15,10 @@ export interface UnstyledLinkProps extends LinkLikeComponentProps {}
 // but eslint-plugin-react doesn't know that just yet
 // eslint-disable-next-line react/display-name
 export const UnstyledLink = memo(
-  forwardRef<any, UnstyledLinkProps>(function UnstyledLink(props, _ref) {
+  forwardRef<HTMLAnchorElement, UnstyledLinkProps>(function UnstyledLink(
+    props,
+    _ref,
+  ) {
     const LinkComponent = useLink();
     if (LinkComponent) {
       return <LinkComponent {...unstyled.props} {...props} ref={_ref} />;
