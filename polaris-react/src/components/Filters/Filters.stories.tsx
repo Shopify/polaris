@@ -28,21 +28,6 @@ export default {
   },
 } as ComponentMeta<typeof Filters>;
 
-export function All() {
-  return (
-    <VerticalStack gap="5">
-      <WithAResourceList />
-      <WithADataTable />
-      <WithChildrenContent />
-      <Disabled />
-      <SomeDisabled />
-      <WithQueryFieldHidden />
-      <WithQueryFieldDisabled />
-      <WithAdditionalFilterSections />
-    </VerticalStack>
-  );
-}
-
 export function WithAResourceList() {
   const [accountStatus, setAccountStatus] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);

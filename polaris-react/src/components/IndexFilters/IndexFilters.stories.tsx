@@ -95,17 +95,6 @@ function Table() {
   );
 }
 
-export function All() {
-  return (
-    <VerticalStack gap="5">
-      <Default />
-      <WithPinnedFilters />
-      <Disabled />
-      <WithQueryFieldAndFiltersHidden />
-    </VerticalStack>
-  );
-}
-
 export function Default() {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
