@@ -42,11 +42,7 @@ export function AnnotatedSection({
           <TextContainer
             spacing={polarisSummerEditions2023 ? 'tight' : undefined}
           >
-            <Text
-              id={id}
-              variant={polarisSummerEditions2023 ? 'bodyLg' : 'headingMd'}
-              as="h2"
-            >
+            <Text id={id} variant="headingMd" as="h2">
               {title}
             </Text>
             {descriptionMarkup && (
