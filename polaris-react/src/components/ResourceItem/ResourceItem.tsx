@@ -242,11 +242,18 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     if (shortcutActions && !loading) {
       if (persistActions) {
         actionsMarkup = breakpoints?.lgUp ? (
-          <div className={styles.Actions} onClick={stopPropagation}>
-            <ButtonGroup>
-              {buttonsFrom(shortcutActions, {plain: true, primary: true})}
-            </ButtonGroup>
-          </div>
+          <UseFeatures>
+            {({polarisSummerEditions2023}) => (
+              <div className={styles.Actions} onClick={stopPropagation}>
+                <ButtonGroup>
+                  {buttonsFrom(shortcutActions, {
+                    plain: true,
+                    primary: polarisSummerEditions2023,
+                  })}
+                </ButtonGroup>
+              </div>
+            )}
+          </UseFeatures>
         ) : null;
 
         const disclosureAccessibilityLabel = name
@@ -257,23 +264,27 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
         disclosureMarkup =
           !selectMode && breakpoints?.lgDown ? (
-            <div onClick={stopPropagation}>
-              <Popover
-                activator={
-                  <Button
-                    accessibilityLabel={disclosureAccessibilityLabel}
-                    onClick={this.handleActionsClick}
-                    plain
-                    primary
-                    icon={HorizontalDotsMinor}
-                  />
-                }
-                onClose={this.handleCloseRequest}
-                active={actionsMenuVisible}
-              >
-                <ActionList items={shortcutActions} />
-              </Popover>
-            </div>
+            <UseFeatures>
+              {({polarisSummerEditions2023}) => (
+                <div onClick={stopPropagation}>
+                  <Popover
+                    activator={
+                      <Button
+                        accessibilityLabel={disclosureAccessibilityLabel}
+                        onClick={this.handleActionsClick}
+                        plain
+                        primary={polarisSummerEditions2023}
+                        icon={HorizontalDotsMinor}
+                      />
+                    }
+                    onClose={this.handleCloseRequest}
+                    active={actionsMenuVisible}
+                  >
+                    <ActionList items={shortcutActions} />
+                  </Popover>
+                </div>
+              )}
+            </UseFeatures>
           ) : null;
       } else if (breakpoints?.lgUp) {
         actionsMarkup = (
