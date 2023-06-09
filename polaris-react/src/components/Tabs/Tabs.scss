@@ -137,7 +137,7 @@
       color: var(--p-color-text-primary);
     }
 
-    &:not([aria-disabled='true']):focus {
+    &:not([aria-disabled='true']):focus-visible {
       background-color: transparent;
       color: var(--p-color-text-primary);
       // stylelint-disable-next-line -- sshhh
