@@ -22,6 +22,11 @@
     .CenterContainer * {
       border-top-right-radius: var(--p-border-radius-1);
       border-bottom-right-radius: var(--p-border-radius-1);
+
+      #{$se23} & {
+        border-top-right-radius: var(--p-border-radius-2);
+        border-bottom-right-radius: var(--p-border-radius-2);
+      }
     }
   }
 }
