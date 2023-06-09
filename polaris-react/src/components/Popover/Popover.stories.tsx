@@ -17,12 +17,61 @@ import {
   Scrollable,
   EmptySearchResult,
   Text,
+  VerticalStack,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Popover,
 } as ComponentMeta<typeof Popover>;
+
+export function All() {
+  return (
+    <VerticalStack gap="8">
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With action list
+        </Text>
+        <WithActionList />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With content and actions
+        </Text>
+        <WithContentAndActions />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With form components
+        </Text>
+        <WithFormComponents />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With lazy loaded list
+        </Text>
+        <WithLazyLoadedList />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With searchable listbox
+        </Text>
+        <WithSearchableListbox />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With loading smaller content
+        </Text>
+        <WithLoadingSmallerContent />
+      </VerticalStack>
+    </VerticalStack>
+  );
+}
 
 export function WithActionList() {
   const [activePopover, setActivePopover] = useState(null);
