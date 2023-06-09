@@ -11,6 +11,7 @@
   // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
   display: flex;
   flex-grow: 1;
+  align-items: center;
 
   .CenterContainer {
     flex: 1 1 auto;
@@ -21,6 +22,11 @@
     .CenterContainer * {
       border-top-right-radius: var(--p-border-radius-1);
       border-bottom-right-radius: var(--p-border-radius-1);
+
+      #{$se23} & {
+        border-top-right-radius: var(--p-border-radius-2);
+        border-bottom-right-radius: var(--p-border-radius-2);
+      }
     }
   }
 }
@@ -59,6 +65,11 @@
 .RightContainer {
   display: flex;
 
+  /* Stop children of the filters from being overlapped due to buttons having a
+  * default min-width: 0.
+  * See more: https://stackoverflow.com/a/36247448 */
+  flex-shrink: 0;
+
   .Item > div > button {
     margin-right: calc(-1 * var(--p-space-025));
     border-radius: 0;
@@ -71,6 +82,10 @@
   .Item:first-of-type > div > button {
     border-top-left-radius: var(--p-border-radius-1);
     border-bottom-left-radius: var(--p-border-radius-1);
+    #{$se23} & {
+      border-top-left-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-2);
+    }
   }
 }
 
@@ -78,6 +93,10 @@
   .Item:first-of-type > div > button {
     border-top-left-radius: var(--p-border-radius-1);
     border-bottom-left-radius: var(--p-border-radius-1);
+    #{$se23} & {
+      border-top-left-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-2);
+    }
   }
 }
 
@@ -85,6 +104,11 @@
   .Item:last-child > div > button {
     border-top-right-radius: var(--p-border-radius-1);
     border-bottom-right-radius: var(--p-border-radius-1);
+
+    #{$se23} & {
+      border-top-right-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-2);
+    }
   }
 }
 
@@ -99,11 +123,16 @@
 .MoreFiltersButtonContainer.onlyButtonVisible {
   .Item > div > button {
     border-radius: var(--p-border-radius-1);
+
+    #{$se23} & {
+      border-radius: var(--p-border-radius-2);
+    }
   }
 }
 
 .Wrapper {
   display: flex;
+  align-items: center;
 }
 
 .AuxiliaryContainer {
