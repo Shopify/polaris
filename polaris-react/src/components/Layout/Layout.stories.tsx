@@ -2,6 +2,7 @@ import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
+  Box,
   LegacyCard,
   FormLayout,
   Text,
@@ -11,7 +12,6 @@ import {
   TextContainer,
   TextField,
   Thumbnail,
-  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
@@ -20,49 +20,43 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
-        <Text as="h2" variant="headingXl">
-          One column
-        </Text>
-        <OneColumn />
-      </VerticalStack>
+    <>
+      <Text as="h2" variant="headingXl">
+        One column
+      </Text>
+      <OneColumn />
+      <Box paddingBlockEnd="8" />
 
-      <VerticalStack gap="2">
-        <Text as="h2" variant="headingXl">
-          Two columns with primary and secondary widths
-        </Text>
-        <TwoColumnsWithPrimaryAndSecondaryWidths />
-      </VerticalStack>
+      <Text as="h2" variant="headingXl">
+        Two columns with primary and secondary widths
+      </Text>
+      <TwoColumnsWithPrimaryAndSecondaryWidths />
+      <Box paddingBlockEnd="8" />
 
-      <VerticalStack gap="4">
-        <Text as="h2" variant="headingXl">
-          Two columns with equal width
-        </Text>
-        <TwoColumnsWithEqualWidth />
-      </VerticalStack>
+      <Text as="h2" variant="headingXl">
+        Two columns with equal width
+      </Text>
+      <TwoColumnsWithEqualWidth />
+      <Box paddingBlockEnd="8" />
 
-      <VerticalStack gap="2">
-        <Text as="h2" variant="headingXl">
-          Three columns with equal width
-        </Text>
-        <ThreeColumnsWithEqualWidth />
-      </VerticalStack>
+      <Text as="h2" variant="headingXl">
+        Three columns with equal width
+      </Text>
+      <ThreeColumnsWithEqualWidth />
+      <Box paddingBlockEnd="8" />
 
-      <VerticalStack gap="2">
-        <Text as="h2" variant="headingXl">
-          Annotated
-        </Text>
-        <Annotated />
-      </VerticalStack>
+      <Text as="h2" variant="headingXl">
+        Annotated
+      </Text>
+      <Annotated />
+      <Box paddingBlockEnd="8" />
 
-      <VerticalStack gap="2">
-        <Text as="h2" variant="headingXl">
-          Annotated with banner at the top
-        </Text>
-        <AnnotatedWithBannerAtTheTop />
-      </VerticalStack>
-    </VerticalStack>
+      <Text as="h2" variant="headingXl">
+        Annotated with banner at the top
+      </Text>
+      <AnnotatedWithBannerAtTheTop />
+      <Box paddingBlockEnd="8" />
+    </>
   );
 }
 
