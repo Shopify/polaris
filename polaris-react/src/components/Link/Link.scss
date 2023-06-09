@@ -25,6 +25,12 @@
   &:focus:not(:active) {
     outline: var(--p-color-border-interactive-focus) auto
       var(--p-border-width-1);
+
+    #{$se23} & {
+      outline-width: var(--p-border-width-2);
+      outline-offset: var(--p-space-05);
+      border-radius: var(--p-border-radius-2);
+    }
   }
 
   &:active {
