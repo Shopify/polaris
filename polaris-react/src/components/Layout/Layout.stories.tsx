@@ -431,7 +431,7 @@ export function Annotated() {
     <Page fullWidth>
       <Layout>
         <Layout.AnnotatedSection
-          id="storeDetails"
+          id="storeDetails-annotated"
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
@@ -466,7 +466,7 @@ export function AnnotatedWithBannerAtTheTop() {
           </Banner>
         </Layout.Section>
         <Layout.AnnotatedSection
-          id="storeDetails"
+          id="storeDetails-annotatedWithBanner"
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
