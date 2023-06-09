@@ -7,12 +7,6 @@
   --pc-thumbnail-medium-size: 60px;
   --pc-thumbnail-large-size: 80px;
   // stylelint-enable
-
-  #{$se23} & {
-    --pc-thumbnail-extra-small-size: 40px;
-    --pc-thumbnail-small-size: 48px;
-  }
-
   position: relative;
   display: block;
   overflow: hidden;
@@ -24,6 +18,10 @@
   border: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   #{$se23} & {
+    // stylelint-disable -- Polaris component custom properties, se23 temporary styles
+    --pc-thumbnail-extra-small-size: 40px;
+    --pc-thumbnail-small-size: 48px;
+    // stylelint-enable
     border-radius: var(--p-border-radius-2);
     border: none;
   }
