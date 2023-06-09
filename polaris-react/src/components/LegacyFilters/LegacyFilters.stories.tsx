@@ -468,7 +468,10 @@ export function WithChildrenContent() {
               onClearAll={handleClearAll}
             >
               <div style={{paddingLeft: '8px'}}>
-                <Button onClick={() => console.log('New filter saved')}>
+                <Button
+                  onClick={() => console.log('New filter saved')}
+                  size="large"
+                >
                   Save
                 </Button>
               </div>
@@ -595,6 +598,7 @@ export function Disabled() {
                 <Button
                   disabled
                   onClick={() => console.log('New filter saved')}
+                  size="large"
                 >
                   Save
                 </Button>
@@ -740,6 +744,7 @@ export function SomeDisabled() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
+                  size="large"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -868,6 +873,7 @@ export function WithoutClearButton() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
+                  size="large"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
