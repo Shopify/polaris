@@ -34,7 +34,7 @@ export function Default() {
   ].map((item, index) => ({
     content: item,
     index,
-    id: `${item}-${index}-default`,
+    id: `${item.split(' ').join('-')}-${index}-default`,
   }));
 
   return (
@@ -62,7 +62,7 @@ export function InsideOfACard() {
   ].map((item, index) => ({
     content: item,
     index,
-    id: `${item}-${index}-inside-of-a-card`,
+    id: `${item.split(' ').join('-')}-${index}-inside-of-a-card`,
   }));
   return (
     <LegacyCard>
@@ -144,7 +144,7 @@ export function WithActions() {
   ].map((item, index) => ({
     content: item,
     index,
-    id: `${item}-${index}-with-actions`,
+    id: `${item.split(' ').join('-')}-${index}-with-actions`,
     actions:
       index === 0
         ? []
