@@ -369,7 +369,7 @@ export function IndexFilters({
                           {hideFilters && hideQueryField ? null : (
                             <SearchFilterButton
                               onClick={handleClickFilterButton}
-                              aria-label={searchFilterAriaLabel}
+                              label={searchFilterAriaLabel}
                               tooltipContent={searchFilterTooltip}
                               disabled={disabled}
                               hideFilters={hideFilters}
