@@ -11,11 +11,60 @@ import {
   TextContainer,
   TextField,
   Thumbnail,
+  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
   component: Layout,
 } as ComponentMeta<typeof Layout>;
+
+export function All() {
+  return (
+    <VerticalStack gap="8">
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          One column
+        </Text>
+        <OneColumn />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          Two columns with primary and secondary widths
+        </Text>
+        <TwoColumnsWithPrimaryAndSecondaryWidths />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          Two columns with equal width
+        </Text>
+        <TwoColumnsWithEqualWidth />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          Three columns with equal width
+        </Text>
+        <ThreeColumnsWithEqualWidth />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          Annotated
+        </Text>
+        <Annotated />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          Annotated with banner at the top
+        </Text>
+        <AnnotatedWithBannerAtTheTop />
+      </VerticalStack>
+    </VerticalStack>
+  );
+}
 
 export function OneColumn() {
   return (
