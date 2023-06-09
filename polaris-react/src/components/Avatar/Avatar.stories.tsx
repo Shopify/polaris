@@ -149,7 +149,7 @@ export function CircleImage() {
   return (
     <Avatar
       name="Image"
-      source="https://cdn.shopify.com/shopifycloud/brochure/assets/editions/winter2023/solution-6/logistics-73cf53933798ff67871370dc3e0e39f314061acee0de145700ff394474137b50.jpg?quality=100"
+      source="https://burst.shopifycdn.com/photos/woman-dressed-in-pale-colors.jpg"
     />
   );
 }
