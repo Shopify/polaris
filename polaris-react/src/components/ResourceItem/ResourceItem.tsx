@@ -264,6 +264,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                     accessibilityLabel={disclosureAccessibilityLabel}
                     onClick={this.handleActionsClick}
                     plain
+                    primary
                     icon={HorizontalDotsMinor}
                   />
                 }
