@@ -2,8 +2,9 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Avatar,
+  Box,
   Button,
-  LegacyCard,
+  Card,
   ChoiceList,
   DataTable,
   LegacyFilters,
@@ -12,6 +13,8 @@ import {
   TextField,
   Text,
 } from '@shopify/polaris';
+
+import {useFeatures} from '../../utilities/features';
 
 export default {
   component: LegacyFilters,
@@ -149,7 +152,7 @@ export function WithAResourceList() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -195,7 +198,7 @@ export function WithAResourceList() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
@@ -221,7 +224,7 @@ export function WithAResourceList() {
   }
 }
 
-export function WithADataTable() {
+export function WithADataTable(_, context) {
   const [availability, setAvailability] = useState(null);
   const [productType, setProductType] = useState(null);
   const [taggedWith, setTaggedWith] = useState(null);
@@ -340,8 +343,8 @@ export function WithADataTable() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
-        <LegacyCard.Section>
+      <Card padding="0">
+        <Box padding={context.globals.polarisSummerEditions2023 ? '4' : '5'}>
           <LegacyFilters
             queryValue={queryValue}
             filters={filters}
@@ -350,7 +353,7 @@ export function WithADataTable() {
             onQueryClear={handleQueryValueRemove}
             onClearAll={handleFiltersClearAll}
           />
-        </LegacyCard.Section>
+        </Box>
         <DataTable
           columnContentTypes={[
             'text',
@@ -379,7 +382,7 @@ export function WithADataTable() {
           ]}
           totals={['', '', '', 255, '$155,830.00']}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
@@ -408,6 +411,7 @@ export function WithADataTable() {
 export function WithChildrenContent() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -454,7 +458,7 @@ export function WithChildrenContent() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -465,135 +469,11 @@ export function WithChildrenContent() {
               onQueryChange={handleQueryValueChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
-            >
-              <div style={{paddingLeft: '8px'}}>
-                <Button onClick={() => console.log('New filter saved')}>
-                  Save
-                </Button>
-              </div>
-            </LegacyFilters>
-          }
-          items={[
-            {
-              id: 341,
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: 256,
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
-
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      default:
-        return value;
-    }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
-    }
-  }
-}
-
-export function Disabled() {
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
-
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
-
-  const handleClearAll = useCallback(() => {
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove]);
-
-  const filters = [
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-    },
-  ];
-
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <LegacyFilters
-              queryValue={queryValue}
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleQueryValueChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-              disabled
             >
               <div style={{paddingLeft: '8px'}}>
                 <Button
-                  disabled
                   onClick={() => console.log('New filter saved')}
+                  size={polarisSummerEditions2023 ? 'large' : undefined}
                 >
                   Save
                 </Button>
@@ -633,7 +513,136 @@ export function Disabled() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
+    </div>
+  );
+
+  function disambiguateLabel(key, value) {
+    switch (key) {
+      case 'taggedWith':
+        return `Tagged with ${value}`;
+      default:
+        return value;
+    }
+  }
+
+  function isEmpty(value) {
+    if (Array.isArray(value)) {
+      return value.length === 0;
+    } else {
+      return value === '' || value == null;
+    }
+  }
+}
+
+export function Disabled() {
+  const {polarisSummerEditions2023} = useFeatures();
+  const [taggedWith, setTaggedWith] = useState(null);
+  const [queryValue, setQueryValue] = useState(null);
+
+  const handleTaggedWithChange = useCallback(
+    (value) => setTaggedWith(value),
+    [],
+  );
+  const handleQueryValueChange = useCallback(
+    (value) => setQueryValue(value),
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+
+  const handleClearAll = useCallback(() => {
+    handleTaggedWithRemove();
+    handleQueryValueRemove();
+  }, [handleQueryValueRemove, handleTaggedWithRemove]);
+
+  const filters = [
+    {
+      key: 'taggedWith',
+      label: 'Tagged with',
+      filter: (
+        <TextField
+          label="Tagged with"
+          value={taggedWith}
+          onChange={handleTaggedWithChange}
+          autoComplete="off"
+          labelHidden
+        />
+      ),
+      shortcut: true,
+    },
+  ];
+
+  const appliedFilters = !isEmpty(taggedWith)
+    ? [
+        {
+          key: 'taggedWith',
+          label: disambiguateLabel('taggedWith', taggedWith),
+          onRemove: handleTaggedWithRemove,
+        },
+      ]
+    : [];
+
+  return (
+    <div style={{height: '568px'}}>
+      <Card padding="0">
+        <ResourceList
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          filterControl={
+            <LegacyFilters
+              queryValue={queryValue}
+              filters={filters}
+              appliedFilters={appliedFilters}
+              onQueryChange={handleQueryValueChange}
+              onQueryClear={handleQueryValueRemove}
+              onClearAll={handleClearAll}
+              disabled
+            >
+              <div style={{paddingLeft: '8px'}}>
+                <Button
+                  disabled
+                  onClick={() => console.log('New filter saved')}
+                  size={polarisSummerEditions2023 ? 'large' : undefined}
+                >
+                  Save
+                </Button>
+              </div>
+            </LegacyFilters>
+          }
+          items={[
+            {
+              id: 341,
+              url: '#',
+              name: 'Mae Jemison',
+              location: 'Decatur, USA',
+            },
+            {
+              id: 256,
+              url: '#',
+              name: 'Ellen Ochoa',
+              location: 'Los Angeles, USA',
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, location} = item;
+            const media = <Avatar customer size="medium" name={name} />;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <Text as="h3" fontWeight="bold">
+                  {name}
+                </Text>
+                <div>{location}</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+      </Card>
     </div>
   );
 
@@ -659,6 +668,7 @@ export function SomeDisabled() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [vendor, setVendor] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -724,7 +734,7 @@ export function SomeDisabled() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -739,6 +749,7 @@ export function SomeDisabled() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
+                  size={polarisSummerEditions2023 ? 'large' : undefined}
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -779,7 +790,7 @@ export function SomeDisabled() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
@@ -804,6 +815,7 @@ export function SomeDisabled() {
 export function WithoutClearButton() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -852,7 +864,7 @@ export function WithoutClearButton() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -867,6 +879,7 @@ export function WithoutClearButton() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
+                  size={polarisSummerEditions2023 ? 'large' : undefined}
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -907,7 +920,7 @@ export function WithoutClearButton() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
@@ -1052,7 +1065,7 @@ export function WithHelpText() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -1100,7 +1113,7 @@ export function WithHelpText() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
@@ -1249,7 +1262,7 @@ export function WithQueryFieldHidden() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -1296,7 +1309,7 @@ export function WithQueryFieldHidden() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
@@ -1445,7 +1458,7 @@ export function WithQueryFieldDisabled() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -1492,7 +1505,7 @@ export function WithQueryFieldDisabled() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 

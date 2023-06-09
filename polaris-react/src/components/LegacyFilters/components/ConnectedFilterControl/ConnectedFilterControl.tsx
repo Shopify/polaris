@@ -7,6 +7,7 @@ import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
+import {UseFeatures} from '../../../../utilities/features';
 
 import {Item} from './components';
 import styles from './ConnectedFilterControl.scss';
@@ -227,14 +228,19 @@ export class ConnectedFilterControl extends Component<
   ): React.ReactElement {
     const id = options?.proxy ? undefined : `Activator-${action.key}`;
     return (
-      <Button
-        onClick={action.onAction}
-        disclosure
-        disabled={this.props.disabled || action.disabled}
-        id={id}
-      >
-        {action.content}
-      </Button>
+      <UseFeatures>
+        {({polarisSummerEditions2023}) => (
+          <Button
+            onClick={action.onAction}
+            disclosure
+            disabled={this.props.disabled || action.disabled}
+            id={id}
+            size={polarisSummerEditions2023 ? 'large' : undefined}
+          >
+            {action.content}
+          </Button>
+        )}
+      </UseFeatures>
     );
   }
 
