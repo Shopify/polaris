@@ -19,6 +19,11 @@
   border-radius: var(--p-border-radius-1);
   width: auto;
 
+  #{$se23} & {
+    min-height: 24px;
+    min-width: 24px;
+  }
+
   svg {
     fill: var(--p-color-icon-on-color);
   }
@@ -37,6 +42,11 @@
   pointer-events: none;
   height: 20px;
   width: 20px;
+
+  #{$se23} & {
+    height: 18px;
+    width: 18px;
+  }
 }
 
 .Label {
@@ -48,4 +58,8 @@
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: var(--p-space-025) 0;
   margin-left: calc(var(--p-space-5) - var(--p-border-width-2));
+
+  #{$se23} & {
+    margin-left: var(--p-space-3);
+  }
 }

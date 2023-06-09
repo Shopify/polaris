@@ -204,15 +204,19 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <HorizontalStack
-          gap="4"
-          blockAlign={
-            media && selectable ? 'center' : getAlignment(verticalAlignment)
-          }
-        >
-          {handleMarkup}
-          {media}
-        </HorizontalStack>
+        <UseFeatures>
+          {({polarisSummerEditions2023}) => (
+            <HorizontalStack
+              gap={polarisSummerEditions2023 ? '3' : '4'}
+              blockAlign={
+                media && selectable ? 'center' : getAlignment(verticalAlignment)
+              }
+            >
+              {handleMarkup}
+              {media}
+            </HorizontalStack>
+          )}
+        </UseFeatures>
       );
     }
 
@@ -301,7 +305,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             <HorizontalGrid columns={{xs: '1fr auto'}}>
               <HorizontalGrid
                 columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
-                gap="5"
+                gap={polarisSummerEditions2023 ? '3' : '5'}
               >
                 {ownedMarkup}
                 <HorizontalStack
