@@ -60,6 +60,13 @@ export function All() {
 
       <VerticalStack gap="2">
         <Text as="h2" variant="headingXl">
+          With scrollable lazy loaded list
+        </Text>
+        <WithScrollableLazyLoadedList />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
           With searchable listbox
         </Text>
         <WithSearchableListbox />
@@ -287,6 +294,115 @@ export function WithLazyLoadedList() {
         >
           <Popover.Pane onScrolledToBottom={handleScrolledToBottom}>
             <ResourceList items={staffList} renderItem={renderItem} />
+          </Popover.Pane>
+        </Popover>
+      </div>
+    </LegacyCard>
+  );
+
+  function renderItem({name, initials}) {
+    return (
+      <ResourceList.Item
+        id={name}
+        media={<Avatar size="medium" name={name} initials={initials} />}
+        onClick={handleResourceListItemClick}
+      >
+        {name}
+      </ResourceList.Item>
+    );
+  }
+
+  function getInitials(name) {
+    return name
+      .split(' ')
+      .map((surnameOrFamilyName) => {
+        return surnameOrFamilyName.slice(0, 1);
+      })
+      .join('');
+  }
+}
+
+export function WithScrollableLazyLoadedList() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
+  const staff = [
+    'Abbey Mayert',
+    'Abbi Senger',
+    'Abdul Goodwin',
+    'Abdullah Borer',
+    'Abe Nader',
+    'Abigayle Smith',
+    'Abner Torphy',
+    'Abraham Towne',
+    'Abraham Vik',
+    'Ada Fisher',
+    'Adah Pouros',
+    'Adam Waelchi',
+    'Adan Zemlak',
+    'Addie Wehner',
+    'Addison Wexler',
+    'Alex Hernandez',
+  ];
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const handleScrolledToBottom = useCallback(() => {
+    const totalIndexes = staff.length;
+    const interval =
+      visibleStaffIndex + 3 < totalIndexes
+        ? 3
+        : totalIndexes - visibleStaffIndex;
+
+    console.log({interval});
+
+    if (interval > 0) {
+      setVisibleStaffIndex(visibleStaffIndex + interval);
+    }
+  }, [staff.length, visibleStaffIndex]);
+
+  const handleResourceListItemClick = useCallback(() => {}, []);
+
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      View staff
+    </Button>
+  );
+
+  const staffList = staff.slice(0, visibleStaffIndex).map((name) => ({
+    name,
+    initials: getInitials(name),
+  }));
+
+  return (
+    <LegacyCard sectioned>
+      <div style={{height: '280px'}}>
+        <Popover
+          sectioned
+          active={popoverActive}
+          activator={activator}
+          onClose={togglePopoverActive}
+          ariaHaspopup={false}
+        >
+          <Popover.Pane>
+            <Scrollable
+              shadow
+              style={{
+                position: 'relative',
+                width: polarisSummerEditions2023 ? '231px' : '310px',
+                height: polarisSummerEditions2023 ? '262px' : '292px',
+                padding: 'var(--p-space-2) 0',
+                borderBottomLeftRadius: 'var(--p-border-radius-2)',
+                borderBottomRightRadius: 'var(--p-border-radius-2)',
+              }}
+              onScrolledToBottom={handleScrolledToBottom}
+            >
+              <ResourceList items={staffList} renderItem={renderItem} />
+            </Scrollable>
           </Popover.Pane>
         </Popover>
       </div>
