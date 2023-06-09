@@ -20,6 +20,13 @@
       right: calc(-1 * var(--p-border-width-2));
       bottom: calc(-1 * var(--p-border-width-2));
       left: calc(-1 * var(--p-border-width-2));
+
+      #{$se23} & {
+        top: calc(-1 * var(--p-border-width-2-experimental));
+        right: calc(-1 * var(--p-border-width-2-experimental));
+        bottom: calc(-1 * var(--p-border-width-2-experimental));
+        left: calc(-1 * var(--p-border-width-2-experimental));
+      }
       border-radius: var(--p-border-radius-1);
       background-color: var(--p-color-bg-interactive);
       opacity: 0;
