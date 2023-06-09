@@ -10,6 +10,8 @@ import {KeypressListener} from '../KeypressListener';
 import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
 
+import styles from './Pagination.scss';
+
 interface AccessibilityLabels {
   previous: string;
   next: string;
@@ -161,7 +163,7 @@ export function Pagination({
   ) : null;
 
   return (
-    <nav aria-label={navLabel} ref={node}>
+    <nav aria-label={navLabel} ref={node} className={styles.Pagination}>
       {previousButtonEvents}
       {nextButtonEvents}
       <ButtonGroup segmented={!label}>
