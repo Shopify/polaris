@@ -1,10 +1,20 @@
-import React, {useContext} from 'react';
+import type {PropsWithChildren} from 'react';
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useContext,
+  useCallback,
+} from 'react';
+import type {ColorTextAlias} from '@shopify/polaris-tokens';
 
 import {Text} from '../../../Text';
 import {VerticalStack} from '../../../VerticalStack';
+import type {HorizontalStackProps} from '../../../HorizontalStack';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {WithinContentContext} from '../../../../utilities/within-content-context';
+import type {BoxProps} from '../../../Box';
 import {Box} from '../../../Box';
 import {Button} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
@@ -13,6 +23,16 @@ import {Icon} from '../../../Icon';
 import {useI18n} from '../../../../utilities/i18n';
 
 import {useBannerColors} from './utilities';
+
+interface BannerLayoutProps {
+  backgroundColor: BoxProps['background'];
+  textColor: ColorTextAlias;
+  bannerTitle: React.ReactNode;
+  bannerIcon: React.ReactNode;
+  actionButtons: React.ReactNode;
+  dismissButton: React.ReactNode;
+  onDismiss: BannerProps['onDismiss'];
+}
 
 export function BannerExperimental({
   status = 'info',
@@ -26,12 +46,12 @@ export function BannerExperimental({
 }: BannerProps) {
   const i18n = useI18n();
   const withinContentContainer = useContext(WithinContentContext);
-  const {smDown} = useBreakpoints();
+  const isNoTitleBanner = !title && !withinContentContainer;
   const {iconRGBA, backgroundColor, textColor, statusIcon, closeIcon} =
-    useBannerColors(status);
+    useBannerColors(status, isNoTitleBanner);
 
   const bannerIcon = hideIcon ? null : (
-    <Box paddingInlineStart="05">
+    <Box paddingInlineStart={isNoTitleBanner ? '0' : '05'}>
       {icon ? (
         <span style={{fill: iconRGBA}}>
           <Icon source={icon} />
@@ -73,9 +93,160 @@ export function BannerExperimental({
     </Text>
   ) : null;
 
-  const hasContent = children || action || secondaryAction;
+  const bannerLayoutProps: BannerLayoutProps = {
+    onDismiss,
+    backgroundColor,
+    textColor,
+    bannerTitle,
+    bannerIcon,
+    actionButtons,
+    dismissButton,
+  };
 
-  return withinContentContainer ? (
+  if (withinContentContainer) {
+    return (
+      <WithinContentContainerBanner {...bannerLayoutProps}>
+        {children}
+      </WithinContentContainerBanner>
+    );
+  }
+
+  if (isNoTitleBanner) {
+    return <NoTitleBanner {...bannerLayoutProps}>{children}</NoTitleBanner>;
+  }
+
+  return <DefaultBanner {...bannerLayoutProps}>{children}</DefaultBanner>;
+}
+
+function DefaultBanner({
+  backgroundColor,
+  textColor,
+  bannerTitle,
+  bannerIcon,
+  actionButtons,
+  dismissButton,
+  children,
+}: PropsWithChildren<Omit<BannerLayoutProps, 'onDismiss'>>) {
+  const {smUp} = useBreakpoints();
+  const hasContent = children || actionButtons;
+
+  return (
+    <Box width="100%">
+      <VerticalStack align="space-between">
+        <Box
+          background={backgroundColor}
+          color={textColor}
+          borderRadiusStartStart={smUp ? '2' : undefined}
+          borderRadiusStartEnd={smUp ? '2' : undefined}
+          borderRadiusEndStart={!hasContent && smUp ? '2' : undefined}
+          borderRadiusEndEnd={!hasContent && smUp ? '2' : undefined}
+          padding={{xs: '2', md: '3'}}
+          paddingInlineEnd={{xs: '3', md: '4'}}
+        >
+          <HorizontalStack
+            align="space-between"
+            blockAlign="center"
+            gap="2"
+            wrap={false}
+          >
+            <HorizontalStack gap="2" wrap={false}>
+              {bannerIcon}
+              {bannerTitle}
+            </HorizontalStack>
+            {dismissButton}
+          </HorizontalStack>
+        </Box>
+        {hasContent && (
+          <Box padding={{xs: '3', md: '4'}} paddingBlockStart="3">
+            <VerticalStack gap="2">
+              <div>{children}</div>
+              {actionButtons}
+            </VerticalStack>
+          </Box>
+        )}
+      </VerticalStack>
+    </Box>
+  );
+}
+
+function NoTitleBanner({
+  onDismiss,
+  backgroundColor,
+  bannerIcon,
+  actionButtons,
+  dismissButton,
+  children,
+}: PropsWithChildren<Omit<BannerLayoutProps, 'textColor' | 'bannerTitle'>>) {
+  const [blockAlign, setBlockAlign] =
+    useState<HorizontalStackProps['blockAlign']>('center');
+  const contentNode = useRef<HTMLDivElement>(null);
+  const iconNode = useRef<HTMLDivElement>(null);
+
+  const handleResize = useCallback(() => {
+    const contentHeight = contentNode?.current?.offsetHeight;
+    const iconBoxHeight = iconNode?.current?.offsetHeight;
+
+    if (!contentHeight || !iconBoxHeight) return;
+
+    if (contentHeight > iconBoxHeight) {
+      setBlockAlign('start');
+    } else {
+      setBlockAlign('center');
+    }
+  }, []);
+
+  useEffect(() => handleResize(), [handleResize]);
+
+  useEffect(() => {
+    if (!contentNode.current) return;
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
+
+  return (
+    <Box
+      width="100%"
+      padding="3"
+      paddingInlineStart={{xs: '2', md: '3'}}
+      borderRadius="2"
+    >
+      <HorizontalStack align="space-between" blockAlign="start" wrap={false}>
+        <Box paddingInlineEnd={onDismiss ? '2' : undefined}>
+          <HorizontalStack gap="2" wrap={false} blockAlign={blockAlign}>
+            <div ref={iconNode}>
+              <Box background={backgroundColor} borderRadius="2" padding="1">
+                {bannerIcon}
+              </Box>
+            </div>
+            <div ref={contentNode}>
+              <VerticalStack gap="2">
+                <div>{children}</div>
+                {actionButtons}
+              </VerticalStack>
+            </div>
+          </HorizontalStack>
+        </Box>
+        {dismissButton}
+      </HorizontalStack>
+    </Box>
+  );
+}
+
+function WithinContentContainerBanner({
+  onDismiss,
+  backgroundColor,
+  textColor,
+  bannerTitle,
+  bannerIcon,
+  actionButtons,
+  dismissButton,
+  children,
+}: PropsWithChildren<BannerLayoutProps>) {
+  return (
     <Box
       width="100%"
       background={backgroundColor}
@@ -96,44 +267,8 @@ export function BannerExperimental({
             </VerticalStack>
           </HorizontalStack>
         </Box>
-        {dismissButton}
+        <Box padding="1">{dismissButton}</Box>
       </HorizontalStack>
-    </Box>
-  ) : (
-    <Box width="100%">
-      <VerticalStack align="space-between">
-        <Box
-          background={backgroundColor}
-          color={textColor}
-          borderRadiusStartStart={smDown ? undefined : '2'}
-          borderRadiusStartEnd={smDown ? undefined : '2'}
-          borderRadiusEndStart={hasContent || smDown ? undefined : '2'}
-          borderRadiusEndEnd={hasContent || smDown ? undefined : '2'}
-          padding={{xs: '2', sm: '3'}}
-          paddingInlineEnd={{xs: '3', sm: '4'}}
-        >
-          <HorizontalStack
-            align="space-between"
-            blockAlign="center"
-            gap="2"
-            wrap={false}
-          >
-            <HorizontalStack gap="2" wrap={false}>
-              {bannerIcon}
-              {bannerTitle}
-            </HorizontalStack>
-            {dismissButton}
-          </HorizontalStack>
-        </Box>
-        {hasContent && (
-          <Box padding={{xs: '3', sm: '4'}} paddingBlockStart="3">
-            <VerticalStack gap="2">
-              <div>{children}</div>
-              {actionButtons}
-            </VerticalStack>
-          </Box>
-        )}
-      </VerticalStack>
     </Box>
   );
 }

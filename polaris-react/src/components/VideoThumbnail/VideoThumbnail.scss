@@ -73,6 +73,11 @@ $progress-bar-height: 6px;
   text-align: center;
   transition: background-color var(--p-motion-duration-200)
     var(--p-motion-ease-in);
+
+  #{$se23} & {
+    background-color: var(--p-color-bg-backdrop-experimental);
+    border-radius: var(--p-border-radius-2);
+  }
 }
 
 .Progress {
@@ -91,6 +96,10 @@ $progress-bar-height: 6px;
   transform: scaleX(0);
   background-color: var(--p-color-border-info);
   transition: transform var(--p-motion-duration-500) var(--p-motion-ease);
+
+  #{$se23} & {
+    background-color: var(--p-color-bg-primary);
+  }
 }
 
 .ProgressBar,

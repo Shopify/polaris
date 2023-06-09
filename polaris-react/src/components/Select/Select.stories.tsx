@@ -179,3 +179,88 @@ export function WithSeparateValidationError() {
     );
   }
 }
+
+export function All() {
+  return (
+    <FormLayout>
+      <FormLayout.Group>
+        <Select
+          label="Default"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+        />
+        <Select
+          label="Disabled"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          disabled
+          helpText="Help text"
+        />
+        <Select
+          label="Error"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          error="Province is required"
+        />
+        <Select
+          label="Required"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          requiredIndicator
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <Select
+          label="Placeholder"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value=""
+          placeholder="Placeholder"
+          onChange={() => {}}
+        />
+        <Select
+          label="Label action"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          labelAction={{content: 'Action'}}
+          onChange={() => {}}
+        />
+        <Select
+          label="Help text"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          helpText="Help text"
+          onChange={() => {}}
+        />
+        <Select
+          label="Long text"
+          options={[
+            'Ontario',
+            'Newfoundland and Labrador and Newfoundland and Labrador and Newfoundland and Labrador',
+          ]}
+          value="Newfoundland and Labrador and Newfoundland and Labrador and Newfoundland and Labrador"
+          onChange={() => {}}
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <Select
+          label="Label inline"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          labelInline
+        />
+        <Select
+          label="Label hidden"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Label hidden"
+          onChange={() => {}}
+          labelHidden
+        />
+      </FormLayout.Group>
+    </FormLayout>
+  );
+}

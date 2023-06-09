@@ -7,6 +7,7 @@ import {
   Icon,
   Popover,
   Thumbnail,
+  VerticalStack,
 } from '@shopify/polaris';
 import {
   TickSmallMinor,
@@ -21,6 +22,21 @@ import {
 export default {
   component: ActionList,
 } as ComponentMeta<typeof ActionList>;
+
+export function All() {
+  return (
+    <VerticalStack gap="16">
+      <InAPopover />
+      <WithIconsOrImage />
+      <WithAnIconAndASuffix />
+      <WithSections />
+      <WithSectionsNoTitles />
+      <WithDestructiveItem />
+      <WithHelpText />
+      <WithAPrefixAndASuffix />
+    </VerticalStack>
+  );
+}
 
 export function InAPopover() {
   const [active, setActive] = useState(true);
@@ -129,6 +145,12 @@ export function WithAnIconAndASuffix() {
               suffix: <Icon source={TickSmallMinor} />,
             },
             {content: 'Export file', icon: ExportMinor},
+            {
+              disabled: true,
+              content: 'Disable file',
+              icon: ImportMinor,
+              suffix: <Icon source={TickSmallMinor} />,
+            },
           ]}
         />
       </Popover>
@@ -307,6 +329,20 @@ export function WithHelpText() {
                 {
                   content: 'Blogs',
                   helpText: 'Manage blogs published to your Online Store',
+                },
+                {
+                  active: true,
+                  content: 'Active blogs',
+                  helpText: 'This is helpful text',
+                  icon: ImportMinor,
+                  suffix: <Icon source={TickSmallMinor} />,
+                },
+                {
+                  disabled: true,
+                  content: 'Disabled blogs',
+                  helpText: 'This is also helpful text',
+                  icon: ImportMinor,
+                  suffix: <Icon source={TickSmallMinor} />,
                 },
               ],
             },
