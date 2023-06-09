@@ -104,28 +104,30 @@ export function WithActionList() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover
-        active={activePopover === 'popover1'}
-        activator={activator}
-        autofocusTarget="first-node"
-        onClose={() => togglePopoverActive('popover1', true)}
-      >
-        <ActionList
-          actionRole="menuitem"
-          items={[{content: 'Import'}, {content: 'Export'}]}
-        />
-      </Popover>
-      <Popover
-        active={activePopover === 'popover2'}
-        activator={activator2}
-        autofocusTarget="first-node"
-        onClose={() => togglePopoverActive('popover2', true)}
-      >
-        <ActionList
-          actionRole="menuitem"
-          items={[{content: 'Import'}, {content: 'Export'}]}
-        />
-      </Popover>
+      <VerticalStack gap="4">
+        <Popover
+          active={activePopover === 'popover1'}
+          activator={activator}
+          autofocusTarget="first-node"
+          onClose={() => togglePopoverActive('popover1', true)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Import file'}, {content: 'Export file'}]}
+          />
+        </Popover>
+        <Popover
+          active={activePopover === 'popover2'}
+          activator={activator2}
+          autofocusTarget="first-node"
+          onClose={() => togglePopoverActive('popover2', true)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Import file'}, {content: 'Export file'}]}
+          />
+        </Popover>
+      </VerticalStack>
     </div>
   );
 }
