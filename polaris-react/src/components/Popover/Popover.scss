@@ -12,6 +12,11 @@ $vertical-motion-offset: -5px;
   box-shadow: var(--p-shadow-xl);
   border-radius: var(--p-border-radius-2);
   will-change: left, top;
+
+  #{$se23} & {
+    box-shadow: var(--p-shadow-card-lg-experimental);
+    border-radius: var(--p-border-radius-3);
+  }
 }
 
 .PopoverOverlay {

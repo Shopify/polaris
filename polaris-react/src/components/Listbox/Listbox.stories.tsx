@@ -9,12 +9,71 @@ import {
   Listbox,
   LegacyStack,
   AutoSelection,
+  VerticalStack,
+  Text,
+  Box,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
+
+import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Listbox,
 } as ComponentMeta<typeof Listbox>;
+
+export function All() {
+  return (
+    <VerticalStack gap="8">
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          Default
+        </Text>
+        <Default />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With loading
+        </Text>
+        <WithLoading />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With action
+        </Text>
+        <WithAction />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With custom element
+        </Text>
+        <WithCustomElement />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With search
+        </Text>
+        <WithSearch />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With disabled text option
+        </Text>
+        <WithDisabledTextOption />
+      </VerticalStack>
+      <Box paddingBlockEnd="3" />
+    </VerticalStack>
+  );
+}
 
 export function Default() {
   return (
@@ -75,6 +134,8 @@ export function WithCustomElement() {
 }
 
 export function WithSearch() {
+  const {polarisSummerEditions2023} = useFeatures();
+
   interface CustomerSegment {
     id: string;
     label: string;
@@ -336,7 +397,7 @@ export function WithSearch() {
           shadow
           style={{
             position: 'relative',
-            height: '292px',
+            height: polarisSummerEditions2023 ? '262px' : '292px',
             padding: 'var(--p-space-2) 0',
             borderBottomLeftRadius: 'var(--p-border-radius-2)',
             borderBottomRightRadius: 'var(--p-border-radius-2)',
@@ -353,17 +414,19 @@ export function WithSearch() {
 export function WithDisabledTextOption() {
   return (
     <LegacyCard>
-      <Listbox accessibilityLabel="Listbox with disabled item example">
-        <Listbox.Option value="UniqueValue-1">
-          <Listbox.TextOption>Item 1</Listbox.TextOption>
-        </Listbox.Option>
-        <Listbox.Option value="UniqueValue-2" disabled>
-          <Listbox.TextOption disabled>Item 2</Listbox.TextOption>
-        </Listbox.Option>
-        <Listbox.Option value="UniqueValue-3">
-          <Listbox.TextOption>Item 3</Listbox.TextOption>
-        </Listbox.Option>
-      </Listbox>
+      <Box paddingBlockStart="2" paddingBlockEnd="2">
+        <Listbox accessibilityLabel="Listbox with disabled item example">
+          <Listbox.Option value="UniqueValue-1">
+            <Listbox.TextOption>Item 1</Listbox.TextOption>
+          </Listbox.Option>
+          <Listbox.Option value="UniqueValue-2" disabled>
+            <Listbox.TextOption disabled>Item 2</Listbox.TextOption>
+          </Listbox.Option>
+          <Listbox.Option value="UniqueValue-3">
+            <Listbox.TextOption>Item 3</Listbox.TextOption>
+          </Listbox.Option>
+        </Listbox>
+      </Box>
     </LegacyCard>
   );
 }

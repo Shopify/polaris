@@ -1,8 +1,9 @@
 import React from 'react';
-import {DiamondAlertMinor} from '@shopify/polaris-icons';
+import {DiamondAlertMinor, CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
 import type {Error} from '../../types';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './InlineError.scss';
 
@@ -14,6 +15,8 @@ export interface InlineErrorProps {
 }
 
 export function InlineError({message, fieldID}: InlineErrorProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
   if (!message) {
     return null;
   }
@@ -21,7 +24,11 @@ export function InlineError({message, fieldID}: InlineErrorProps) {
   return (
     <div id={errorTextID(fieldID)} className={styles.InlineError}>
       <div className={styles.Icon}>
-        <Icon source={DiamondAlertMinor} />
+        <Icon
+          source={
+            polarisSummerEditions2023 ? CircleAlertMajor : DiamondAlertMinor
+          }
+        />
       </div>
       {message}
     </div>

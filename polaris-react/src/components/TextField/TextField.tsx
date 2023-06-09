@@ -591,6 +591,7 @@ export function TextField({
       labelHidden={labelHidden}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
+      disabled={disabled}
     >
       <Connected left={connectedLeft} right={connectedRight}>
         <div className={className} onClick={handleClick}>

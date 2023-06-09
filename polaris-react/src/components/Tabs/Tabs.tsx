@@ -12,6 +12,7 @@ import {Tooltip} from '../Tooltip';
 import {Text} from '../Text';
 import {Box} from '../Box';
 import {usePrevious} from '../../utilities/use-previous';
+import {useFeatures} from '../../utilities/features';
 
 import {getVisibleAndHiddenTabIndices} from './utilities';
 import type {TabProps, TabMeasurements} from './types';
@@ -70,7 +71,7 @@ export const Tabs = ({
   disclosureText,
 }: TabsProps) => {
   const i18n = useI18n();
-
+  const {polarisSummerEditions2023} = useFeatures();
   const {mdDown} = useBreakpoints();
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -563,8 +564,8 @@ export const Tabs = ({
           md: '2',
         }}
         background="bg"
-        borderColor="border-subdued"
-        borderBlockEndWidth="1"
+        borderColor={polarisSummerEditions2023 ? undefined : 'border-subdued'}
+        borderBlockEndWidth={polarisSummerEditions2023 ? undefined : '1'}
         borderRadiusStartEnd="2"
         borderRadiusStartStart="2"
       >

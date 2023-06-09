@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.1.0
+
+### Minor Changes
+
+- [#9385](https://github.com/Shopify/polaris/pull/9385) [`9c9e80ed1`](https://github.com/Shopify/polaris/commit/9c9e80ed132715e1c91ee2dc0b9fcc13adb3afea) Thanks [@kyledurand](https://github.com/kyledurand)! - Added new experimental tokens
+
 ## 7.0.0
 
 ### Major Changes
