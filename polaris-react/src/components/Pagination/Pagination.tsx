@@ -9,6 +9,8 @@ import {ButtonGroup} from '../ButtonGroup';
 import {KeypressListener} from '../KeypressListener';
 import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
+import {Box} from '../Box';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Pagination.scss';
 
@@ -62,6 +64,7 @@ export function Pagination({
   label,
 }: PaginationProps) {
   const i18n = useI18n();
+  const {polarisSummerEditions2023} = useFeatures();
 
   const node: React.RefObject<HTMLElement> = createRef();
 
@@ -159,14 +162,20 @@ export function Pagination({
     );
 
   const labelMarkup = label ? (
-    <div aria-live="polite">{labelTextMarkup}</div>
+    <Box
+      padding={polarisSummerEditions2023 ? '3' : undefined}
+      paddingBlockStart="0"
+      paddingBlockEnd="0"
+    >
+      <div aria-live="polite">{labelTextMarkup}</div>
+    </Box>
   ) : null;
 
   return (
     <nav aria-label={navLabel} ref={node} className={styles.Pagination}>
       {previousButtonEvents}
       {nextButtonEvents}
-      <ButtonGroup segmented={!label}>
+      <ButtonGroup segmented={!label || polarisSummerEditions2023}>
         {constructedPrevious}
         {labelMarkup}
         {constructedNext}
