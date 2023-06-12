@@ -22,6 +22,7 @@ import {
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
+import {useFeatures} from '../../../../utilities/features';
 import {
   focusFirstFocusableNode,
   handleMouseUpByBlurring,
@@ -73,6 +74,7 @@ export const Tab = forwardRef(
       null,
     );
     const {mdDown} = useBreakpoints();
+    const {polarisSummerEditions2023: se23} = useFeatures();
 
     const wasSelected = useRef(selected);
     const panelFocused = useRef(false);
@@ -278,8 +280,9 @@ export const Tab = forwardRef(
       selected && actions?.length && styles['Tab-hasActions'],
     );
 
+    const badgeStatusSelected = !se23 ? 'success' : undefined;
     const badgeMarkup = badge ? (
-      <Badge status={selected ? 'success' : 'new'}>{badge}</Badge>
+      <Badge status={selected ? badgeStatusSelected : 'new'}>{badge}</Badge>
     ) : null;
 
     const disclosureMarkup =
@@ -288,6 +291,9 @@ export const Tab = forwardRef(
           <Icon source={CaretDownMinor} />
         </div>
       ) : null;
+
+    const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
+    const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
 
     const activator = (
       <BaseComponent
@@ -313,7 +319,7 @@ export const Tab = forwardRef(
         >
           <Text
             as="span"
-            variant={mdDown ? 'bodyMd' : 'bodySm'}
+            variant={se23 ? se23LabelVariant : labelVariant}
             fontWeight="semibold"
           >
             {icon ?? content}

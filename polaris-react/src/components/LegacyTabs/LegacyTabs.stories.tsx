@@ -39,13 +39,11 @@ export function Default() {
   ];
 
   return (
-    <LegacyCard>
-      <LegacyTabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
-        <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
-        </LegacyCard.Section>
-      </LegacyTabs>
-    </LegacyCard>
+    <LegacyTabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
+      <LegacyCard.Section title={tabs[selected].content}>
+        <p>Tab {selected} selected</p>
+      </LegacyCard.Section>
+    </LegacyTabs>
   );
 }
 

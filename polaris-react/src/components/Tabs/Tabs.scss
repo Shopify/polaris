@@ -12,6 +12,10 @@
     overflow: hidden;
     height: 56px;
     padding: 0;
+
+    #{$se23} & {
+      height: unset;
+    }
   }
 }
 
@@ -19,7 +23,11 @@
   @media #{$p-breakpoints-md-down} {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: var(--p-space-3) var(--p-space-3) var(--p-space-5) var(--p-space-4);
+    padding: var(--p-space-3) var(--p-space-3) var(--p-space-3) var(--p-space-4);
+
+    #{$se23} & {
+      padding: var(--p-space-2);
+    }
   }
 }
 
@@ -111,6 +119,43 @@
   &[aria-disabled='true'] path {
     fill: var(--p-color-icon-disabled);
   }
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- no way to set focus ring without mixin currently
+    @include focus-ring($size: 'wide');
+    color: var(--p-color-text-primary);
+    border-radius: var(--p-border-radius-2);
+    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    height: 2rem;
+
+    &[aria-disabled='true'] {
+      color: var(--p-color-text-disabled);
+    }
+
+    &:not([aria-disabled='true']):hover {
+      background-color: var(--p-color-bg-subdued);
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):focus-visible {
+      background-color: transparent;
+      color: var(--p-color-text-primary);
+      // stylelint-disable-next-line -- sshhh
+      @include focus-ring($size: 'wide', $style: 'focused');
+    }
+
+    &:not([aria-disabled='true']):active {
+      background-color: var(--p-color-bg-subdued);
+      color: var(--p-color-text-primary);
+      z-index: var(--p-z-index-1);
+    }
+
+    @media #{$p-breakpoints-md-up} {
+      font-size: var(--p-font-size-75);
+      line-height: var(--p-font-line-height-1);
+      height: 1.75rem;
+    }
+  }
 }
 
 .Tab-active {
@@ -132,10 +177,34 @@
     background-color: var(--p-color-bg-success-subdued-active);
     color: var(--p-color-text-primary);
   }
+
+  #{$se23} & {
+    background: var(--p-color-bg-subdued);
+    color: var(--p-color-text);
+
+    &[aria-disabled='true'] {
+      background: var(--p-color-bg-disabled);
+      color: var(--p-color-text-disabled);
+    }
+
+    &:not([aria-disabled='true']):hover,
+    &:not([aria-disabled='true']):focus {
+      background-color: var(--p-color-bg-subdued);
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):active {
+      background-color: var(--p-color-bg-subdued);
+    }
+  }
 }
 
 .Tab-hasActions {
   padding-right: var(--p-space-2);
+
+  #{$se23} & {
+    padding-right: var(--p-space-2);
+  }
 }
 
 .Tab-iconOnly {
@@ -266,6 +335,35 @@
 
     path {
       fill: var(--p-color-icon-disabled);
+    }
+  }
+
+  #{$se23} & {
+    background-color: transparent;
+    color: var(--p-color-text-primary);
+
+    // stylelint-disable-next-line selector-max-combinators -- Polaris component experimental styles
+    svg {
+      fill: var(--p-color-icon);
+    }
+
+    &[aria-disabled='true'] {
+      background: var(--p-color-bg-disabled);
+      color: var(--p-color-text-disabled);
+    }
+
+    &:not([aria-disabled='true']):hover {
+      background-color: var(--p-color-bg-interactive-subdued-active);
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):focus {
+      background-color: transparent;
+      color: var(--p-color-text-primary);
+    }
+
+    &:not([aria-disabled='true']):active {
+      background-color: var(--p-color-bg-interactive-subdued-active);
     }
   }
 }
