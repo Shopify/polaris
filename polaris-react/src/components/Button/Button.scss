@@ -99,6 +99,7 @@
 .Content {
   #{$se23} & {
     font-size: var(--p-font-size-80-experimental);
+    line-height: var(--p-font-line-height-2);
     transform: translateY(0);
     // stylelint-disable-next-line polaris/motion/declaration-property-unit-disallowed-list -- se23 temporary styles
     transition: transform 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
@@ -110,7 +111,7 @@
   }
   font-size: var(--p-font-size-100);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-1);
   letter-spacing: initial;
   position: relative;
   display: flex;
@@ -169,6 +170,13 @@
   // This compensates for the typical icon used in buttons being
   // inset within its bounding box.
   margin-left: calc(-1 * (var(--p-space-1)));
+
+  #{$se23} & {
+    @media #{$p-breakpoints-md-up} {
+      margin-top: calc(-1 * var(--p-space-05));
+      margin-bottom: calc(-1 * var(--p-space-05));
+    }
+  }
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
@@ -952,8 +960,13 @@
   padding-right: var(--p-space-2);
 
   #{$se23} & {
-    padding-left: var(--p-space-1);
-    padding-right: var(--p-space-1);
+    padding-left: var(--p-space-1_5-experimental);
+    padding-right: var(--p-space-1_5-experimental);
+
+    @media #{$p-breakpoints-md-up} {
+      padding-left: var(--p-space-1);
+      padding-right: var(--p-space-1);
+    }
   }
 
   &.sizeLarge {
@@ -965,6 +978,11 @@
       padding-left: var(--pc-button-large-vertical-padding);
       padding-right: var(--pc-button-large-vertical-padding);
       // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+
+      @media #{$p-breakpoints-md-up} {
+        padding-left: var(--p-space-1_5-experimental);
+        padding-right: var(--p-space-1_5-experimental);
+      }
     }
   }
 
