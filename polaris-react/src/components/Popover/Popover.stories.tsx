@@ -305,6 +305,7 @@ export function WithLazyLoadedList() {
       <ResourceList.Item
         id={name}
         media={<Avatar size="medium" name={name} initials={initials} />}
+        verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
         {name}
@@ -414,6 +415,7 @@ export function WithScrollableLazyLoadedList() {
       <ResourceList.Item
         id={name}
         media={<Avatar size="medium" name={name} initials={initials} />}
+        verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
         {name}
