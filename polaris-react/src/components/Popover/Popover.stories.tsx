@@ -271,6 +271,8 @@ export function WithLazyLoadedList() {
 
   const handleResourceListItemClick = useCallback(() => {}, []);
 
+  const {polarisSummerEditions2023} = useFeatures();
+
   const activator = (
     <Button onClick={togglePopoverActive} disclosure>
       View staff
@@ -304,7 +306,13 @@ export function WithLazyLoadedList() {
     return (
       <ResourceList.Item
         id={name}
-        media={<Avatar size="medium" name={name} initials={initials} />}
+        media={
+          <Avatar
+            size={polarisSummerEditions2023 ? 'extraSmall' : 'medium'}
+            name={name}
+            initials={initials}
+          />
+        }
         verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
@@ -414,7 +422,13 @@ export function WithScrollableLazyLoadedList() {
     return (
       <ResourceList.Item
         id={name}
-        media={<Avatar size="medium" name={name} initials={initials} />}
+        media={
+          <Avatar
+            size={polarisSummerEditions2023 ? 'extraSmall' : 'medium'}
+            name={name}
+            initials={initials}
+          />
+        }
         verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
