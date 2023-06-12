@@ -137,31 +137,32 @@ function DefaultBanner({
   return (
     <Box width="100%">
       <VerticalStack align="space-between">
-        <Box
-          background={backgroundColor}
-          color={textColor}
-          borderRadiusStartStart={smUp ? '3' : undefined}
-          borderRadiusStartEnd={smUp ? '3' : undefined}
-          borderRadiusEndStart={!hasContent && smUp ? '3' : undefined}
-          borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
-          padding="2"
-          shadow="banner-experimental"
-        >
-          <HorizontalStack
-            align="space-between"
-            blockAlign="center"
-            gap="2"
-            wrap={false}
+        <div className={styles.Bar}>
+          <Box
+            background={backgroundColor}
+            color={textColor}
+            borderRadiusStartStart={smUp ? '3' : undefined}
+            borderRadiusStartEnd={smUp ? '3' : undefined}
+            borderRadiusEndStart={!hasContent && smUp ? '3' : undefined}
+            borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
+            padding="2"
           >
-            <Box padding="1" paddingInlineStart={smUp ? '1' : '0'}>
-              <HorizontalStack gap="1_5-experimental" wrap={false}>
-                {bannerIcon}
-                {bannerTitle}
-              </HorizontalStack>
-            </Box>
-            {dismissButton}
-          </HorizontalStack>
-        </Box>
+            <HorizontalStack
+              align="space-between"
+              blockAlign="center"
+              gap="2"
+              wrap={false}
+            >
+              <Box padding="1" paddingInlineStart={smUp ? '1' : '0'}>
+                <HorizontalStack gap="1_5-experimental" wrap={false}>
+                  {bannerIcon}
+                  {bannerTitle}
+                </HorizontalStack>
+              </Box>
+              {dismissButton}
+            </HorizontalStack>
+          </Box>
+        </div>
         {hasContent && (
           <Box padding={{xs: '3', md: '4'}} paddingBlockStart="3">
             <VerticalStack gap="2">
