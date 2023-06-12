@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './KeyboardKey.scss';
 
@@ -12,17 +11,12 @@ export interface KeyboardKeyProps {
   size?: Size;
 }
 export function KeyboardKey({children = '', size}: KeyboardKeyProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const key =
-    !polarisSummerEditions2023 && !size && children.length > 1
+    !size && children.length > 1
       ? children.toLowerCase()
       : children.toUpperCase();
 
-  const className = classNames(
-    styles.KeyboardKey,
-    size && styles[size],
-    polarisSummerEditions2023 && styles.small,
-  );
+  const className = classNames(styles.KeyboardKey, size && styles[size]);
 
   return <kbd className={className}>{key}</kbd>;
 }
