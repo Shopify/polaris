@@ -1,11 +1,12 @@
 import React, {PureComponent} from 'react';
 import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
-import {classNames} from '../../utilities/css';
+import {Box} from '../Box';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
+import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {Box} from '../Box';
+import {useFeatures} from '../../utilities/features';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
@@ -30,6 +31,7 @@ export interface LegacyTabsProps {
 
 type CombinedProps = LegacyTabsProps & {
   i18n: ReturnType<typeof useI18n>;
+  polarisSummerEditions2023: boolean | undefined;
 };
 
 interface State {
@@ -74,7 +76,15 @@ class TabsInner extends PureComponent<CombinedProps, State> {
   };
 
   render() {
-    const {tabs, selected, fitted, children, i18n, disclosureText} = this.props;
+    const {
+      tabs,
+      selected,
+      fitted,
+      children,
+      i18n,
+      disclosureText,
+      polarisSummerEditions2023,
+    } = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
 
@@ -159,7 +169,11 @@ class TabsInner extends PureComponent<CombinedProps, State> {
       <div>
         <Box
           borderBlockEndWidth="1"
-          borderColor="border-subdued"
+          borderColor={
+            polarisSummerEditions2023
+              ? 'border-faint-experimental'
+              : 'border-subdued'
+          }
           paddingInlineStart="2"
           paddingInlineEnd="2"
         >
@@ -389,6 +403,13 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
 
 export function LegacyTabs(props: LegacyTabsProps) {
   const i18n = useI18n();
+  const {polarisSummerEditions2023} = useFeatures();
 
-  return <TabsInner {...props} i18n={i18n} />;
+  return (
+    <TabsInner
+      {...props}
+      i18n={i18n}
+      polarisSummerEditions2023={polarisSummerEditions2023}
+    />
+  );
 }
