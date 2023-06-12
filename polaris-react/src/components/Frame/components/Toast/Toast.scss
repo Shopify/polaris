@@ -24,6 +24,10 @@ $Backdrop-opacity: 0.88;
 .Action {
   margin-left: var(--p-space-2);
   color: var(--p-color-text-on-color);
+
+  #{$se23} & {
+    margin-left: var(--p-space-4);
+  }
 }
 
 .error {
@@ -32,11 +36,19 @@ $Backdrop-opacity: 0.88;
 
   .CloseButton {
     color: var(--p-color-icon-on-color);
+
+    #{$se23} & {
+      color: var(--p-color-icon-on-color);
+    }
   }
 }
 
 .LeadingIcon {
   margin-right: var(--p-space-2);
+
+  #{$se23} & {
+    margin-right: var(--p-space-1_5-experimental);
+  }
 
   svg {
     fill: currentColor;
@@ -55,6 +67,10 @@ $Backdrop-opacity: 0.88;
   color: var(--p-color-icon-subdued);
   cursor: pointer;
   margin-left: var(--p-space-2);
+
+  #{$se23} & {
+    color: var(--p-color-icon-inverse);
+  }
 
   svg {
     fill: currentColor;
