@@ -13,18 +13,6 @@ export default {
   component: Toast,
 } as ComponentMeta<typeof Toast>;
 
-export function All() {
-  return (
-    <HorizontalStack gap="4">
-      <Default />
-      <WithAction />
-      <Error />
-      <MultipleMessages />
-      <WithCustomDuration />
-    </HorizontalStack>
-  );
-}
-
 export function Default() {
   const [active, setActive] = useState(false);
 
