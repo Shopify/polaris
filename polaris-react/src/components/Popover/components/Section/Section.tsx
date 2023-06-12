@@ -18,7 +18,7 @@ export function Section({children}: SectionProps) {
         paddingInlineStart={polarisSummerEditions2023 ? '5' : undefined}
         paddingInlineEnd={polarisSummerEditions2023 ? '5' : undefined}
         paddingBlockStart={polarisSummerEditions2023 ? '3' : undefined}
-        paddingBlockEnd={polarisSummerEditions2023 ? '2' : undefined}
+        paddingBlockEnd={polarisSummerEditions2023 ? '3' : undefined}
       >
         {children}
       </Box>
