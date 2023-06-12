@@ -162,6 +162,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   #{$se23} & {
     color: var(--p-color-text-primary);
     font-weight: var(--p-font-weight-semibold);
+    padding: var(--p-space-1_5-experimental) var(--p-space-3);
   }
 }
 
