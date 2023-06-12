@@ -27,6 +27,7 @@ import {Sheet} from '../Sheet';
 import {LegacyStack} from '../LegacyStack';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
+import {UseFeatures} from '../../utilities/features';
 
 import {ConnectedFilterControl, TagsWrapper} from './components';
 import type {ConnectedFilterControlProps} from './components';
@@ -231,11 +232,19 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
         : i18n.translate('Polaris.Filters.moreFilters');
 
     const rightActionMarkup = filters.length ? (
-      <div ref={this.moreFiltersButtonContainer}>
-        <Button onClick={this.toggleFilters} disabled={disabled}>
-          {moreFiltersLabel}
-        </Button>
-      </div>
+      <UseFeatures>
+        {({polarisSummerEditions2023}) => (
+          <div ref={this.moreFiltersButtonContainer}>
+            <Button
+              onClick={this.toggleFilters}
+              disabled={disabled}
+              size={polarisSummerEditions2023 ? 'large' : undefined}
+            >
+              {moreFiltersLabel}
+            </Button>
+          </div>
+        )}
+      </UseFeatures>
     ) : null;
 
     const filterResourceName = resourceName || {

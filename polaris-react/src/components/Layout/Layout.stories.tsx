@@ -2,6 +2,7 @@ import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
+  Box,
   LegacyCard,
   FormLayout,
   Text,
@@ -16,6 +17,48 @@ import {
 export default {
   component: Layout,
 } as ComponentMeta<typeof Layout>;
+
+export function All() {
+  return (
+    <>
+      <Text as="h2" variant="headingXl">
+        One column
+      </Text>
+      <OneColumn />
+      <Box paddingBlockEnd="8" />
+
+      <Text as="h2" variant="headingXl">
+        Two columns with primary and secondary widths
+      </Text>
+      <TwoColumnsWithPrimaryAndSecondaryWidths />
+      <Box paddingBlockEnd="8" />
+
+      <Text as="h2" variant="headingXl">
+        Two columns with equal width
+      </Text>
+      <TwoColumnsWithEqualWidth />
+      <Box paddingBlockEnd="8" />
+
+      <Text as="h2" variant="headingXl">
+        Three columns with equal width
+      </Text>
+      <ThreeColumnsWithEqualWidth />
+      <Box paddingBlockEnd="8" />
+
+      <Text as="h2" variant="headingXl">
+        Annotated
+      </Text>
+      <Annotated />
+      <Box paddingBlockEnd="8" />
+
+      <Text as="h2" variant="headingXl">
+        Annotated with banner at the top
+      </Text>
+      <AnnotatedWithBannerAtTheTop />
+      <Box paddingBlockEnd="8" />
+    </>
+  );
+}
 
 export function OneColumn() {
   return (
@@ -388,7 +431,7 @@ export function Annotated() {
     <Page fullWidth>
       <Layout>
         <Layout.AnnotatedSection
-          id="storeDetails"
+          id="storeDetails-annotated"
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
@@ -423,7 +466,7 @@ export function AnnotatedWithBannerAtTheTop() {
           </Banner>
         </Layout.Section>
         <Layout.AnnotatedSection
-          id="storeDetails"
+          id="storeDetails-annotatedWithBanner"
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >

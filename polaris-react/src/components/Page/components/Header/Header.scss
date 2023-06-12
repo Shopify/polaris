@@ -32,28 +32,6 @@ $action-menu-rollup-computed-width: 40px;
       border: var(--p-border-width-1) solid var(--p-color-border-strong) !important;
       // stylelint-enable declaration-no-important
     }
-
-    #{$se23} & {
-      /* stylelint-disable-next-line declaration-no-important -- se23 */
-      border: none !important;
-      background-color: var(--p-color-bg-strong);
-      /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:hover,
-      &:active,
-      &:focus {
-        /* stylelint-disable-next-line declaration-no-important -- se23 */
-        border: none !important;
-      }
-      /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:hover {
-        background-color: var(--p-color-bg-strong-hover);
-      }
-      /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:active,
-      &:focus {
-        background-color: var(--p-color-bg-strong-active);
-      }
-    }
   }
 
   #{$se23} & {

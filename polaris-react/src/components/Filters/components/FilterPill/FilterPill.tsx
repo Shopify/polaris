@@ -11,6 +11,7 @@ import {Text} from '../../../Text';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
+import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
 
@@ -47,6 +48,8 @@ export function FilterPill({
 }: FilterPillProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
+  const {polarisSummerEditions2023: se23} = useFeatures();
+
   const elementRef = useRef<HTMLDivElement>(null);
   const {
     value: focused,
@@ -106,9 +109,12 @@ export function FilterPill({
     styles.ToggleButton,
   );
 
+  const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
+  const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
+
   const wrappedLabel = (
     <div className={styles.Label}>
-      <Text variant={mdDown ? 'bodyMd' : 'bodySm'} as="span">
+      <Text variant={se23 ? se23LabelVariant : labelVariant} as="span">
         {label}
       </Text>
     </div>

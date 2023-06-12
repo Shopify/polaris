@@ -1,13 +1,27 @@
+@import '../../styles/common';
+
 $item-min-size: 220px;
 
+// stylelint-disable -- se23 overrides
 .FormLayout {
-  margin-top: calc(-1 * var(--p-space-4));
-  margin-left: calc(-1 * var(--p-space-5));
+  --pc-form-layout-gap: var(--p-space-5);
+  --pc-form-layout-item-top: var(--p-space-4);
+  #{$se23} & {
+    --pc-form-layout-gap: var(--p-space-2);
+    --pc-form-layout-item-top: var(--p-space-2);
+  }
+
+  margin-top: calc(-1 * var(--pc-form-layout-item-top));
+  margin-left: calc(-1 * var(--pc-form-layout-gap));
 }
 
 .Title {
   margin-bottom: calc(-1 * var(--p-space-2));
-  padding: var(--p-space-4) var(--p-space-5) 0;
+  padding: var(--pc-form-layout-item-top) var(--pc-form-layout-gap) 0;
+
+  #{$se23} & {
+    margin-bottom: 0;
+  }
 }
 
 .Items {
@@ -17,9 +31,10 @@ $item-min-size: 220px;
 
 .Item {
   flex: 1 1 $item-min-size;
-  margin-top: var(--p-space-4);
-  margin-left: var(--p-space-5);
-  max-width: calc(100% - var(--p-space-5));
+  margin-top: var(--pc-form-layout-item-top);
+  margin-left: var(--pc-form-layout-gap);
+  max-width: calc(100% - var(--pc-form-layout-gap));
+  // stylelint-enable
 
   .grouped & {
     min-width: $item-min-size;
