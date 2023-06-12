@@ -11,6 +11,10 @@
   background-color: var(--p-color-bg-strong);
   border-radius: var(--p-border-radius-1);
 
+  #{$se23} & {
+    border-radius: var(--p-border-radius-2);
+  }
+
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;
   }
