@@ -1,10 +1,42 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {DatePicker} from '@shopify/polaris';
+import {Box, Card, DatePicker, VerticalStack} from '@shopify/polaris';
 
 export default {
   component: DatePicker,
 } as ComponentMeta<typeof DatePicker>;
+
+export function All() {
+  return (
+    <VerticalStack gap="4">
+      <Box maxWidth="290px">
+        <Card>
+          <Default />
+        </Card>
+      </Box>
+      <Box maxWidth="556px">
+        <Card>
+          <Ranged />
+        </Card>
+      </Box>
+      <Box maxWidth="556px">
+        <Card>
+          <MultiMonthRanged />
+        </Card>
+      </Box>
+      <Box maxWidth="290px">
+        <Card>
+          <WithDisabledDateRanges />
+        </Card>
+      </Box>
+      <Box maxWidth="290px">
+        <Card>
+          <WithSpecificDisabledDates />
+        </Card>
+      </Box>
+    </VerticalStack>
+  );
+}
 
 export function Default() {
   const [{month, year}, setDate] = useState({month: 1, year: 2018});
