@@ -41,6 +41,46 @@
   &::after {
     border-radius: var(--p-border-radius-6);
   }
+
+  #{$se23} & {
+    background: var(--p-color-bg);
+    border-radius: var(--p-border-radius-2);
+    border: var(--p-color-border) dashed var(--p-border-width-1);
+
+    &:hover,
+    &:active {
+      border-style: solid;
+    }
+
+    &:hover,
+    &:focus {
+      background: transparent;
+    }
+
+    &:active {
+      background: var(--p-color-bg-subdued);
+    }
+
+    &.disabledFilterButton {
+      background: var(--p-color-bg-disabled);
+      border-color: var(--p-color-border-disabled);
+      color: var(--p-color-text-disabled);
+      cursor: default;
+    }
+
+    &.ActiveFilterButton {
+      background: var(--p-color-bg);
+      border-style: solid;
+
+      &:active {
+        background: var(--p-color-bg-subdued);
+      }
+    }
+
+    &::after {
+      border-radius: var(--p-border-radius-2);
+    }
+  }
 }
 
 .PlainButton {

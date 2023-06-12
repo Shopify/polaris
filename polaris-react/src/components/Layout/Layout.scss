@@ -75,6 +75,11 @@ $relative-size: $primary-basis / $secondary-basis;
   }
 
   + .AnnotatedSection {
+    #{$se23} & {
+      border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+      padding-top: var(--p-space-4);
+    }
+
     @media #{$p-breakpoints-sm-up} {
       padding-top: var(--p-space-4);
       border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
@@ -103,6 +108,10 @@ $relative-size: $primary-basis / $secondary-basis;
 
   #{$se23} & {
     padding: var(--p-space-4) var(--p-space-4) 0;
+
+    @media #{$p-breakpoints-md-down} {
+      padding-left: 0;
+    }
   }
 
   @media #{$p-breakpoints-sm-up} {

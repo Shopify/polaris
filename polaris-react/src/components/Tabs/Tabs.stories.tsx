@@ -1,11 +1,23 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, Tabs} from '@shopify/polaris';
+import {Tabs, VerticalStack, LegacyCard} from '@shopify/polaris';
 
 export default {
   component: Tabs,
 } as ComponentMeta<typeof Tabs>;
 
+export function All() {
+  return (
+    <VerticalStack gap="5">
+      <Default />
+      <InsideOfACard />
+      <Fitted />
+      <WithActions />
+      <WithBadgeContent />
+      <WithCustomDisclosure />
+    </VerticalStack>
+  );
+}
 export function Default() {
   const [selected, setSelected] = useState(0);
 
@@ -22,7 +34,7 @@ export function Default() {
   ].map((item, index) => ({
     content: item,
     index,
-    id: `${item}-${index}`,
+    id: `${item.split(' ').join('-')}-${index}-default`,
   }));
 
   return (
@@ -50,7 +62,7 @@ export function InsideOfACard() {
   ].map((item, index) => ({
     content: item,
     index,
-    id: `${item}-${index}`,
+    id: `${item.split(' ').join('-')}-${index}-inside-of-a-card`,
   }));
   return (
     <LegacyCard>
@@ -73,15 +85,15 @@ export function Fitted() {
 
   const tabs = [
     {
-      id: 'all-customers-fitted-3',
+      id: 'all-customers-fitted',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content-3',
+      panelID: 'all-customers-fitted-content',
     },
     {
-      id: 'accepts-marketing-fitted-3',
+      id: 'accepts-marketing-fitted',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-fitted-content-3',
+      panelID: 'accepts-marketing-fitted-content',
     },
   ];
 
@@ -132,7 +144,7 @@ export function WithActions() {
   ].map((item, index) => ({
     content: item,
     index,
-    id: `${item}-${index}`,
+    id: `${item.split(' ').join('-')}-${index}-with-actions`,
     actions:
       index === 0
         ? []
@@ -180,17 +192,17 @@ export function WithBadgeContent() {
 
   const tabs = [
     {
-      id: 'all-customers-fitted-3',
+      id: 'all-customers-with-badge',
       badge: '10+',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content-3',
+      panelID: 'all-customers-with-badge-content',
     },
     {
-      id: 'accepts-marketing-fitted-3',
+      id: 'accepts-marketing-with-badge',
       badge: '4',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-fitted-content-3',
+      panelID: 'accepts-marketing-with-badge-content',
     },
   ];
 
@@ -215,40 +227,40 @@ export function WithCustomDisclosure() {
 
   const tabs = [
     {
-      id: 'all-customers-4',
+      id: 'all-customers-with-custom-disclosure',
       content: 'All',
       accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content-4',
+      panelID: 'all-customers-with-custom-disclosure-content',
     },
     {
-      id: 'accepts-marketing-4',
+      id: 'accepts-marketing-with-custom-disclosure',
       content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content-4',
+      panelID: 'accepts-marketing-with-custom-disclosure-content',
     },
     {
-      id: 'repeat-customers-4',
+      id: 'repeat-customers-with-custom-disclosure',
       content: 'Repeat customers',
-      panelID: 'repeat-customers-content-4',
+      panelID: 'repeat-customers-with-custom-disclosure-content',
     },
     {
-      id: 'prospects-4',
+      id: 'prospects-with-custom-disclosure',
       content: 'Prospects',
-      panelID: 'prospects-content-4',
+      panelID: 'prospects-with-custom-disclosure-content',
     },
     {
-      id: 'opt-out-marketing-4',
+      id: 'opt-out-marketing-with-custom-disclosure',
       content: 'Opted out of marketing',
-      panelID: 'opt-out-content-4',
+      panelID: 'opt-out-with-custom-disclosure-content',
     },
     {
-      id: 'net-new-customers-4',
+      id: 'net-new-customers-with-custom-disclosure',
       content: 'Net new customers',
-      panelID: 'net-new-customers-content-4',
+      panelID: 'net-new-customers-with-custom-disclosure-content',
     },
     {
-      id: 'churned-customers-4',
+      id: 'churned-customers-with-custom-disclosure',
       content: 'Churned customers',
-      panelID: 'churned=customers-content-4',
+      panelID: 'churned=customers-with-custom-disclosure-content',
     },
   ];
 
