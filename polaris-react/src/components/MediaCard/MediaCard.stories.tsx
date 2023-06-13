@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {MediaCard, VideoThumbnail} from '@shopify/polaris';
+import {MediaCard, VerticalStack, VideoThumbnail} from '@shopify/polaris';
 
 export default {
   component: MediaCard,
@@ -188,5 +188,48 @@ export function WithDismissButtonAndPopoverActions() {
         src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
       />
     </MediaCard>
+  );
+}
+
+export function All() {
+  const image = (
+    <img
+      alt=""
+      width="100%"
+      height="100%"
+      style={{
+        objectFit: 'cover',
+        objectPosition: 'center',
+      }}
+      src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+    />
+  );
+
+  const MediaCardExample = (props) => (
+    <MediaCard
+      primaryAction={{
+        content: 'Learn about getting started',
+        onAction: () => {},
+      }}
+      secondaryAction={{
+        content: 'Learn more',
+        onAction: () => {},
+      }}
+      description="Discover how Shopify can power up your entrepreneurial journey."
+      popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
+      onDismiss={() => {}}
+      {...props}
+    >
+      {image}
+    </MediaCard>
+  );
+
+  return (
+    <VerticalStack gap="5">
+      <MediaCardExample title="Default medium" />
+      <MediaCardExample title="Default small" size="small" />
+      <MediaCardExample title="Portrait medium" portrait />
+      <MediaCardExample title="Portrait small" portrait size="small" />
+    </VerticalStack>
   );
 }
