@@ -1,11 +1,13 @@
 import React, {useEffect, useRef} from 'react';
 
-import {classNames} from '../../../../utilities/css';
 import {UnstyledLink} from '../../../UnstyledLink';
+import {Text} from '../../../Text';
+import {classNames} from '../../../../utilities/css';
 import {
   focusFirstFocusableNode,
   handleMouseUpByBlurring,
 } from '../../../../utilities/focus';
+import {useFeatures} from '../../../../utilities/features';
 import styles from '../../LegacyTabs.scss';
 
 export interface TabProps {
@@ -36,6 +38,7 @@ export function Tab({
   const wasSelected = useRef(selected);
   const panelFocused = useRef(false);
   const node = useRef<HTMLLIElement | null>(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   // A tab can start selected when it is moved from the disclosure dropdown
   // into the main list, so we need to send focus from the tab to the panel
@@ -86,6 +89,14 @@ export function Tab({
     selected && styles.Underline,
   );
 
+  const titleMarkup = polarisSummerEditions2023 ? (
+    <Text as="p" variant="bodySm">
+      {children}
+    </Text>
+  ) : (
+    <span className={styles.Title}>{children}</span>
+  );
+
   const markup = url ? (
     <UnstyledLink
       id={id}
@@ -99,7 +110,7 @@ export function Tab({
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
     >
-      <span className={styles.Title}>{children}</span>
+      {titleMarkup}
     </UnstyledLink>
   ) : (
     <button
