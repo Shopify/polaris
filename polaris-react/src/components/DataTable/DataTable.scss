@@ -8,6 +8,10 @@
   background-color: var(--p-color-bg);
   border-radius: var(--p-border-radius-2);
   overflow: hidden;
+
+  #{$se23} & {
+    border-radius: var(--p-border-radius-3);
+  }
 }
 
 .condensed {
@@ -63,6 +67,11 @@
 .TableRow + .TableRow {
   .Cell {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    #{$se23} & {
+      border-top: var(--p-border-width-1) solid
+        var(--p-color-border-faint-experimental);
+    }
   }
 }
 
@@ -103,6 +112,10 @@
   right: 0;
   bottom: 0;
   border-right: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+  #{$se23} & {
+    border-right: var(--p-border-width-1) solid var(--p-color-border);
+  }
 }
 
 .Cell-firstColumn {
@@ -127,6 +140,10 @@
   color: var(--p-color-text);
   border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
   border-top: 0;
+
+  #{$se23} & {
+    border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+  }
 
   .IncreasedTableDensity & {
     font-weight: var(--p-font-weight-medium);
@@ -273,6 +290,10 @@
   background: var(--p-color-bg-subdued);
   border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
+  #{$se23} & {
+    border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+  }
+
   .ZebraStripingOnData.ShowTotals & {
     background: var(--p-color-bg-subdued);
   }
@@ -304,6 +325,10 @@
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   border-bottom-left-radius: var(--p-border-radius-2);
   border-bottom-right-radius: var(--p-border-radius-2);
+
+  #{$se23} & {
+    border-top: var(--p-border-width-1) solid var(--p-color-border);
+  }
 
   .ZebraStripingOnData & {
     background: none;
