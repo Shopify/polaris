@@ -20,6 +20,13 @@ $key-base-dimension: 28px;
   text-align: center;
   min-width: $key-base-dimension;
   user-select: none;
+
+  #{$se23} & {
+    background: var(--p-color-bg-subdued);
+    border-radius: var(--p-border-radius-1);
+    color: var(--p-color-text-subdued);
+    box-shadow: none;
+  }
 }
 
 .small {
@@ -33,10 +40,7 @@ $key-base-dimension: 28px;
   min-width: var(--p-space-5);
 
   #{$se23} & {
-    background: var(--p-color-bg-subdued);
-    border-radius: var(--p-border-radius-1);
-    color: var(--p-color-text-subdued);
-    padding: var(--p-space-05) var(--p-space-1);
     line-height: var(--p-font-size-200);
+    padding: var(--p-space-05) var(--p-space-1);
   }
 }
