@@ -17,12 +17,70 @@ import {
   Scrollable,
   EmptySearchResult,
   Text,
+  VerticalStack,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
+
+import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Popover,
 } as ComponentMeta<typeof Popover>;
+
+export function All() {
+  return (
+    <VerticalStack gap="8">
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With action list
+        </Text>
+        <WithActionList />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With content and actions
+        </Text>
+        <WithContentAndActions />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With form components
+        </Text>
+        <WithFormComponents />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With lazy loaded list
+        </Text>
+        <WithLazyLoadedList />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With scrollable lazy loaded list
+        </Text>
+        <WithScrollableLazyLoadedList />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With searchable listbox
+        </Text>
+        <WithSearchableListbox />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With loading smaller content
+        </Text>
+        <WithLoadingSmallerContent />
+      </VerticalStack>
+    </VerticalStack>
+  );
+}
 
 export function WithActionList() {
   const [activePopover, setActivePopover] = useState(null);
@@ -53,28 +111,30 @@ export function WithActionList() {
 
   return (
     <div style={{height: '250px'}}>
-      <Popover
-        active={activePopover === 'popover1'}
-        activator={activator}
-        autofocusTarget="first-node"
-        onClose={() => togglePopoverActive('popover1', true)}
-      >
-        <ActionList
-          actionRole="menuitem"
-          items={[{content: 'Import'}, {content: 'Export'}]}
-        />
-      </Popover>
-      <Popover
-        active={activePopover === 'popover2'}
-        activator={activator2}
-        autofocusTarget="first-node"
-        onClose={() => togglePopoverActive('popover2', true)}
-      >
-        <ActionList
-          actionRole="menuitem"
-          items={[{content: 'Import'}, {content: 'Export'}]}
-        />
-      </Popover>
+      <VerticalStack gap="4">
+        <Popover
+          active={activePopover === 'popover1'}
+          activator={activator}
+          autofocusTarget="first-node"
+          onClose={() => togglePopoverActive('popover1', true)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Import file'}, {content: 'Export file'}]}
+          />
+        </Popover>
+        <Popover
+          active={activePopover === 'popover2'}
+          activator={activator2}
+          autofocusTarget="first-node"
+          onClose={() => togglePopoverActive('popover2', true)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Import file'}, {content: 'Export file'}]}
+          />
+        </Popover>
+      </VerticalStack>
     </div>
   );
 }
@@ -85,6 +145,16 @@ export function WithContentAndActions() {
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
     [],
+  );
+
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const textMarkup = polarisSummerEditions2023 ? (
+    <Text as="h2" variant="headingSm">
+      Available sales channels
+    </Text>
+  ) : (
+    <p>Available sales channels</p>
   );
 
   const activator = (
@@ -102,9 +172,7 @@ export function WithContentAndActions() {
         onClose={togglePopoverActive}
       >
         <Popover.Pane fixed>
-          <Popover.Section>
-            <p>Available sales channels</p>
-          </Popover.Section>
+          <Popover.Section>{textMarkup}</Popover.Section>
         </Popover.Pane>
         <Popover.Pane>
           <ActionList
@@ -203,6 +271,8 @@ export function WithLazyLoadedList() {
 
   const handleResourceListItemClick = useCallback(() => {}, []);
 
+  const {polarisSummerEditions2023} = useFeatures();
+
   const activator = (
     <Button onClick={togglePopoverActive} disclosure>
       View staff
@@ -236,7 +306,130 @@ export function WithLazyLoadedList() {
     return (
       <ResourceList.Item
         id={name}
-        media={<Avatar size="medium" name={name} initials={initials} />}
+        media={
+          <Avatar
+            size={polarisSummerEditions2023 ? 'extraSmall' : 'medium'}
+            name={name}
+            initials={initials}
+          />
+        }
+        verticalAlignment="center"
+        onClick={handleResourceListItemClick}
+      >
+        {name}
+      </ResourceList.Item>
+    );
+  }
+
+  function getInitials(name) {
+    return name
+      .split(' ')
+      .map((surnameOrFamilyName) => {
+        return surnameOrFamilyName.slice(0, 1);
+      })
+      .join('');
+  }
+}
+
+export function WithScrollableLazyLoadedList() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
+  const staff = [
+    'Abbey Mayert',
+    'Abbi Senger',
+    'Abdul Goodwin',
+    'Abdullah Borer',
+    'Abe Nader',
+    'Abigayle Smith',
+    'Abner Torphy',
+    'Abraham Towne',
+    'Abraham Vik',
+    'Ada Fisher',
+    'Adah Pouros',
+    'Adam Waelchi',
+    'Adan Zemlak',
+    'Addie Wehner',
+    'Addison Wexler',
+    'Alex Hernandez',
+  ];
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const handleScrolledToBottom = useCallback(() => {
+    const totalIndexes = staff.length;
+    const interval =
+      visibleStaffIndex + 3 < totalIndexes
+        ? 3
+        : totalIndexes - visibleStaffIndex;
+
+    console.log({interval});
+
+    if (interval > 0) {
+      setVisibleStaffIndex(visibleStaffIndex + interval);
+    }
+  }, [staff.length, visibleStaffIndex]);
+
+  const handleResourceListItemClick = useCallback(() => {}, []);
+
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      View staff
+    </Button>
+  );
+
+  const staffList = staff.slice(0, visibleStaffIndex).map((name) => ({
+    name,
+    initials: getInitials(name),
+  }));
+
+  return (
+    <LegacyCard sectioned>
+      <div style={{height: '280px'}}>
+        <Popover
+          sectioned
+          active={popoverActive}
+          activator={activator}
+          onClose={togglePopoverActive}
+          ariaHaspopup={false}
+        >
+          <Popover.Pane>
+            <Scrollable
+              shadow
+              style={{
+                position: 'relative',
+                width: polarisSummerEditions2023 ? '231px' : '310px',
+                height: polarisSummerEditions2023 ? '262px' : '292px',
+                padding: 'var(--p-space-2) 0',
+                borderBottomLeftRadius: 'var(--p-border-radius-2)',
+                borderBottomRightRadius: 'var(--p-border-radius-2)',
+              }}
+              onScrolledToBottom={handleScrolledToBottom}
+            >
+              <ResourceList items={staffList} renderItem={renderItem} />
+            </Scrollable>
+          </Popover.Pane>
+        </Popover>
+      </div>
+    </LegacyCard>
+  );
+
+  function renderItem({name, initials}) {
+    return (
+      <ResourceList.Item
+        id={name}
+        media={
+          <Avatar
+            size={polarisSummerEditions2023 ? 'extraSmall' : 'medium'}
+            name={name}
+            initials={initials}
+          />
+        }
+        verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
         {name}
@@ -422,6 +615,8 @@ export function WithSearchableListbox() {
     }
   };
 
+  const {polarisSummerEditions2023} = useFeatures();
+
   const listboxId = 'SearchableListboxInPopover';
 
   /* Your app's feature/context specific activator here */
@@ -483,7 +678,13 @@ export function WithSearchableListbox() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-color-text-interactive)'}}>
+      <span
+        style={{
+          color: polarisSummerEditions2023
+            ? 'var(--p-color-text-subdued)'
+            : 'var(--p-color-text-interactive)',
+        }}
+      >
         Show all 111 segments
       </span>
     </Listbox.Action>
@@ -552,7 +753,7 @@ export function WithSearchableListbox() {
               style={{
                 position: 'relative',
                 width: '310px',
-                height: '292px',
+                height: polarisSummerEditions2023 ? '262px' : '292px',
                 padding: 'var(--p-space-2) 0',
                 borderBottomLeftRadius: 'var(--p-border-radius-2)',
                 borderBottomRightRadius: 'var(--p-border-radius-2)',

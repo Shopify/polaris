@@ -85,6 +85,10 @@ $vertical-motion-offset: -5px;
 
   + .Pane {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    #{$se23} & {
+      border-top: none;
+    }
   }
 
   &:focus {

@@ -338,7 +338,13 @@ export function WithSearch() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-color-text-interactive)'}}>
+      <span
+        style={{
+          color: polarisSummerEditions2023
+            ? 'var(--p-color-text-subdued)'
+            : 'var(--p-color-text-interactive)',
+        }}
+      >
         Show all 111 segments
       </span>
     </Listbox.Action>
