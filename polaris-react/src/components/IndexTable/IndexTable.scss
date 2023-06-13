@@ -215,7 +215,6 @@ $loading-panel-height: 53px;
       background-color: var(--p-color-bg-interactive-selected);
 
       #{$se23} & {
-        // Bump specificity
         background-color: var(--p-color-bg-subdued-active);
       }
     }
@@ -655,7 +654,6 @@ $loading-panel-height: 53px;
       background-color: var(--p-color-bg-interactive-selected);
 
       #{$se23} & {
-        // Bump specificity
         background-color: var(--p-color-bg-subdued-active);
       }
     }
