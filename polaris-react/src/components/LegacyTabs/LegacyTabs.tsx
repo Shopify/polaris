@@ -1,11 +1,12 @@
 import React, {PureComponent} from 'react';
 import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 
-import {classNames} from '../../utilities/css';
+import {Box} from '../Box';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
+import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {Box} from '../Box';
+import {UseFeatures} from '../../utilities/features';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
@@ -157,47 +158,55 @@ class TabsInner extends PureComponent<CombinedProps, State> {
 
     return (
       <div>
-        <Box
-          borderBlockEndWidth="1"
-          borderColor="border-subdued"
-          paddingInlineStart="2"
-          paddingInlineEnd="2"
-        >
-          <TabMeasurer
-            tabToFocus={tabToFocus}
-            activator={activator}
-            selected={selected}
-            tabs={tabs}
-            siblingTabHasFocus={tabToFocus > -1}
-            handleMeasurement={this.handleMeasurement}
-          />
-          <ul
-            role="tablist"
-            className={classname}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            onKeyDown={handleKeyDown}
-            onKeyUp={this.handleKeyPress}
-          >
-            {tabsMarkup}
-            <li className={disclosureTabClassName} role="presentation">
-              <Popover
-                preferredPosition="below"
+        <UseFeatures>
+          {(features) => (
+            <Box
+              borderBlockEndWidth="1"
+              borderColor={
+                features.polarisSummerEditions2023
+                  ? 'border-faint-experimental'
+                  : 'border-subdued'
+              }
+              paddingInlineStart="2"
+              paddingInlineEnd="2"
+            >
+              <TabMeasurer
+                tabToFocus={tabToFocus}
                 activator={activator}
-                active={disclosureActivatorVisible && showDisclosure}
-                onClose={this.handleClose}
-                autofocusTarget="first-node"
+                selected={selected}
+                tabs={tabs}
+                siblingTabHasFocus={tabToFocus > -1}
+                handleMeasurement={this.handleMeasurement}
+              />
+              <ul
+                role="tablist"
+                className={classname}
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                onKeyDown={handleKeyDown}
+                onKeyUp={this.handleKeyPress}
               >
-                <List
-                  focusIndex={hiddenTabs.indexOf(tabToFocus)}
-                  disclosureTabs={disclosureTabs}
-                  onClick={this.handleTabClick}
-                  onKeyPress={this.handleKeyPress}
-                />
-              </Popover>
-            </li>
-          </ul>
-        </Box>
+                {tabsMarkup}
+                <li className={disclosureTabClassName} role="presentation">
+                  <Popover
+                    preferredPosition="below"
+                    activator={activator}
+                    active={disclosureActivatorVisible && showDisclosure}
+                    onClose={this.handleClose}
+                    autofocusTarget="first-node"
+                  >
+                    <List
+                      focusIndex={hiddenTabs.indexOf(tabToFocus)}
+                      disclosureTabs={disclosureTabs}
+                      onClick={this.handleTabClick}
+                      onKeyPress={this.handleKeyPress}
+                    />
+                  </Popover>
+                </li>
+              </ul>
+            </Box>
+          )}
+        </UseFeatures>
         {panelMarkup}
       </div>
     );

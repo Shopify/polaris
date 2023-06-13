@@ -1,10 +1,50 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, LegacyCard, LegacyTabs} from '@shopify/polaris';
+import {
+  Badge,
+  LegacyCard,
+  LegacyTabs,
+  Text,
+  VerticalStack,
+} from '@shopify/polaris';
 
 export default {
   component: LegacyTabs,
 } as ComponentMeta<typeof LegacyTabs>;
+
+export function All() {
+  return (
+    <VerticalStack gap="8">
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          Default
+        </Text>
+        <Default />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          Fitted
+        </Text>
+        <Fitted />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With badge content
+        </Text>
+        <WithBadgeContent />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With custom disclosure
+        </Text>
+        <WithCustomDisclosure />
+      </VerticalStack>
+    </VerticalStack>
+  );
+}
 
 export function Default() {
   const [selected, setSelected] = useState(0);
