@@ -448,8 +448,8 @@
   // stylelint-disable -- Polaris component custom properties
   --pc-button-color: var(--p-color-bg-interactive-subdued-active);
   --pc-button-text: var(--p-color-text-interactive-hover);
-  --pc-button-color-hover: var(--p-color-bg-transparent-hover-experimental);
-  --pc-button-color-active: var(--p-color-bg-transparent-active-experimental);
+  --pc-button-color-hover: var(--p-color-bg-interactive-subdued-active);
+  --pc-button-color-active: var(--p-color-bg-interactive-subdued-active);
   --pc-button-color-depressed: var(--p-surface-selected-depressed);
   // stylelint-enable
   box-shadow: none;
