@@ -146,34 +146,7 @@ export function All() {
         </VerticalStack>
         <VerticalStack gap="4">
           <Text as="h2">primary</Text>
-          <HorizontalStack gap="5" blockAlign="end">
-            <Button primary>Label</Button>
-            <Button primary disabled>
-              Label
-            </Button>
-            <Button primary icon={PlusMinor}>
-              Label
-            </Button>
-            <Button primary disabled icon={PlusMinor}>
-              Label
-            </Button>
-            <Button primary disclosure>
-              Label
-            </Button>
-            <Button
-              primary
-              icon={CancelSmallMinor}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-            <Button
-              disabled
-              primary
-              icon={EditMajor}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-          </HorizontalStack>
+          <Primary />
         </VerticalStack>
 
         <VerticalStack gap="2">
@@ -458,7 +431,70 @@ export function PlainDestructive() {
 }
 
 export function Primary() {
-  return <Button primary>Save theme</Button>;
+  return (
+    <VerticalStack gap="4">
+      <Box padding="4">
+        <HorizontalStack gap="5" blockAlign="end">
+          <Button primary>Label</Button>
+          <Button primary disabled>
+            Label
+          </Button>
+          <Button primary icon={PlusMinor}>
+            Label
+          </Button>
+          <Button primary disabled icon={PlusMinor}>
+            Label
+          </Button>
+          <Button primary disclosure>
+            Label
+          </Button>
+          <Button
+            primary
+            icon={CancelSmallMinor}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            primary
+            icon={EditMajor}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </HorizontalStack>
+      </Box>
+      <Card>
+        <HorizontalStack gap="5" blockAlign="end">
+          <Button primary>Label</Button>
+          <Button primary disabled>
+            Label
+          </Button>
+          <Button primary icon={PlusMinor}>
+            Label
+          </Button>
+          <Button primary disabled icon={PlusMinor}>
+            Label
+          </Button>
+          <Button primary disclosure>
+            Label
+          </Button>
+          <Button
+            primary
+            icon={CancelSmallMinor}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            primary
+            icon={EditMajor}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </HorizontalStack>
+      </Card>
+    </VerticalStack>
+  );
 }
 
 export function Destructive() {
