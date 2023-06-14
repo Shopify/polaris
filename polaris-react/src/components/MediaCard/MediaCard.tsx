@@ -16,7 +16,6 @@ import {Box} from '../Box';
 import {HorizontalStack} from '../HorizontalStack';
 import {useFeatures} from '../../utilities/features';
 import {VerticalStack} from '../VerticalStack';
-import {Bleed} from '../Bleed';
 
 import styles from './MediaCard.scss';
 
