@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-- Removed static tooltip on ActionList item
+- Fixed tooltip not disappearing when mouse leaves `ActionList.Item`
