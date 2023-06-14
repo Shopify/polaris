@@ -508,30 +508,37 @@ export const color: {
   },
   'color-bg-magic-strong': {
     value: colors.purple[500],
+    valueExperimental: colorsExperimental.purple[12],
     description: '',
   },
   'color-bg-magic-hover': {
     value: colors.purple[200],
+    valueExperimental: colorsExperimental.purple[7],
     description: '',
   },
   'color-bg-magic-active': {
     value: colors.purple[300],
+    valueExperimental: colorsExperimental.purple[8],
     description: '',
   },
   'color-bg-magic': {
     value: colors.purple[100],
+    valueExperimental: colorsExperimental.purple[6],
     description: '',
   },
   'color-bg-magic-subdued-hover': {
     value: colors.purple[100],
+    valueExperimental: colorsExperimental.purple[5],
     description: '',
   },
   'color-bg-magic-subdued-active': {
     value: colors.purple[200],
+    valueExperimental: colorsExperimental.purple[7],
     description: '',
   },
   'color-bg-magic-subdued': {
     value: colors.purple[50],
+    valueExperimental: colorsExperimental.purple[4],
     description: '',
   },
   'color-border-input-hover': {
@@ -666,10 +673,12 @@ export const color: {
   },
   'color-border-magic-strong': {
     value: colors.purple[500],
+    valueExperimental: colorsExperimental.purple[12],
     description: '',
   },
   'color-border-magic': {
     value: colors.purple[400],
+    valueExperimental: colorsExperimental.purple[10],
     description: '',
   },
   'color-icon-hover': {
@@ -763,6 +772,7 @@ export const color: {
   },
   'color-icon-magic': {
     value: colors.purple[500],
+    valueExperimental: colorsExperimental.purple[13],
     description: '',
   },
   'color-text': {
@@ -882,10 +892,12 @@ export const color: {
   },
   'color-text-magic-strong': {
     value: colors.purple[800],
+    valueExperimental: colorsExperimental.purple[15],
     description: '',
   },
   'color-text-magic': {
     value: colors.purple[600],
+    valueExperimental: colorsExperimental.purple[14],
     description: '',
   },
   // Experimental tokens
