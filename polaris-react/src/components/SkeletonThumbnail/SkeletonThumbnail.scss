@@ -12,6 +12,10 @@
   border-radius: var(--p-border-radius-1);
 
   #{$se23} & {
+    // stylelint-disable -- Polaris component custom properties, se23 temporary styles
+    --pc-skeleton-thumbnail-extra-small-size: 40px;
+    --pc-skeleton-thumbnail-small-size: 48px;
+    // stylelint-enable
     border-radius: var(--p-border-radius-2);
   }
 
