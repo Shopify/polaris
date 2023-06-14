@@ -1,13 +1,40 @@
 import type {Metadata} from './metadata';
 
+export const breakpointsAlias = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export type BreakpointsAlias = typeof breakpointsAlias[number];
+
+// From https://github.com/microsoft/TypeScript/issues/47874#issuecomment-1039157322
+type TupleOfLength<
+  N extends number,
+  T = any,
+  A extends T[] = [],
+> = N extends A['length'] ? A : TupleOfLength<N, T, [...A, T]>;
+
+export type ResponsiveObject<T> = {
+  [Breakpoint in BreakpointsAlias]?: T;
+};
+
 export type Entry<T> = [keyof T, T[keyof T]];
 export type Entries<T> = Entry<T>[];
 export type Experimental<T extends string> = `${T}-experimental`;
+export type Responsive<T> =
+  | T
+  | ResponsiveObject<T>
+  // In array form, each value is optional
+  | TupleOfLength<typeof breakpointsAlias['length'], T | undefined>;
+
+// From https://stackoverflow.com/a/60762482
+type GrowToSize<T, N extends number, A extends T[]> = A['length'] extends N
+  ? A
+  : GrowToSize<T, N, [...A, T]>;
+
+// From https://stackoverflow.com/a/60762482
+export type FixedArray<T, N extends number> = GrowToSize<T, N, []>;
 
 export interface MetadataProperties {
   description?: string;
   value: string;
-  valueExperimental?: string;
+  valueExperimental?: Responsive<string>;
 }
 
 export interface MetadataGroup {

@@ -1,9 +1,18 @@
-import type {Entry, Exact, MetadataGroup, Tokens, TokenGroup} from './types';
+import type {
+  Entry,
+  Exact,
+  MetadataGroup,
+  Tokens,
+  TokenGroup,
+  Responsive,
+  ResponsiveObject,
+} from './types';
 import type {
   breakpoints as metaBreakpointsTokenGroup,
   BreakpointsTokenGroup,
   BreakpointsTokenName,
 } from './token-groups/breakpoints';
+import {breakpointsAlias} from './types';
 
 const BASE_FONT_SIZE = 16;
 
@@ -211,4 +220,68 @@ export function isKeyOf<T extends {[key: string]: any}>(
   key: PropertyKey | undefined,
 ): key is keyof T {
   return Object.keys(obj).includes(key as string);
+}
+
+export function toResponsiveObject<T>(val: Responsive<T>): ResponsiveObject<T> {
+  if (Array.isArray(val)) {
+    let prev: T | undefined;
+    return breakpointsAlias.reduce((memo, breakpoint, index) => {
+      if (typeof val[index] !== 'undefined') {
+        memo[breakpoint] = val[index] ?? prev;
+        prev = memo[breakpoint];
+      }
+      return memo;
+    }, {} as ResponsiveObject<T>) as ResponsiveObject<T>;
+  }
+
+  if (typeof val !== 'object') {
+    return breakpointsAlias.reduce((memo, breakpoint) => {
+      memo[breakpoint] = val;
+      return memo;
+    }, {} as ResponsiveObject<T>) as ResponsiveObject<T>;
+  }
+
+  // Fill in any blanks in the object
+  // eg; { xs: '3px', lg: '10px' }
+  // => { xs: '3px', sm: '3px', md: '3px', lg: '10px', xl: '10px' }
+  let prev: T | undefined;
+  return breakpointsAlias.reduce(
+    (memo, breakpoint) => {
+      if (typeof memo[breakpoint] !== 'undefined') {
+        // Value is already set, so don't modify memo
+        // Instead, capture the value as the "prev" for later setting
+        prev = memo[breakpoint];
+      } else {
+        memo[breakpoint] = prev;
+      }
+      return memo;
+    },
+    {...val} as ResponsiveObject<T>,
+  ) as ResponsiveObject<T>;
+}
+
+// eg; { xs: '3px', sm: '3px', md: '3px', lg: '10px', xl: '10px' }
+// => { xs: '3px', lg: '10px' }
+export function makeResponsiveObjectSparse<T>(
+  val: ResponsiveObject<T>,
+): ResponsiveObject<T> {
+  let prev: T | undefined;
+  return breakpointsAlias.reduce(
+    (memo, breakpoint) => {
+      if (typeof memo[breakpoint] !== 'undefined') {
+        //
+        if (memo[breakpoint] === prev) {
+          // This matches the previous value we saw, so to make the object
+          // sparse we simply delete this now redundant key.
+          delete memo[breakpoint];
+        } else {
+          // Differs from the previous value, so leave it alone and capture that
+          // value for comparisons on the next go around.
+          prev = memo[breakpoint];
+        }
+      }
+      return memo;
+    },
+    {...val} as ResponsiveObject<T>,
+  ) as ResponsiveObject<T>;
 }
