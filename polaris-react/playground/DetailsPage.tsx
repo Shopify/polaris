@@ -555,7 +555,6 @@ export function DetailsPage() {
       titleMetadata={<Badge status="success">Success badge</Badge>}
       primaryAction={{
         content: 'Save this page',
-
         onAction: () => console.log('save'),
       }}
       additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
