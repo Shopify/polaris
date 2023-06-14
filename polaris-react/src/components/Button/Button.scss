@@ -550,6 +550,14 @@
         background: transparent;
       }
     }
+
+    &.iconOnly {
+      margin: calc(-1 * var(--p-space-1_5-experimental));
+      @media #{$p-breakpoints-md-up} {
+        margin-left: calc(-1 * var(--p-space-1));
+        margin-right: calc(-1 * var(--p-space-1));
+      }
+    }
   }
 }
 

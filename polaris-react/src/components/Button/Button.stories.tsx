@@ -383,21 +383,6 @@ export function PlainPrimary() {
           <Button primary plain disclosure>
             Label
           </Button>
-          <Button
-            primary
-            plain
-            icon={CancelSmallMinor}
-            onClick={() => {}}
-            accessibilityLabel="Dismiss"
-          />
-          <Button
-            disabled
-            primary
-            plain
-            icon={EditMajor}
-            onClick={() => {}}
-            accessibilityLabel="Dismiss"
-          />
         </HorizontalStack>
       </Box>
       <Card>
@@ -417,6 +402,10 @@ export function PlainPrimary() {
           <Button primary plain disclosure>
             Label
           </Button>
+        </HorizontalStack>
+      </Card>
+      <Card>
+        <HorizontalStack gap="5" blockAlign="end">
           <Button
             primary
             plain
