@@ -893,10 +893,6 @@
 
     svg {
       fill: var(--p-color-icon);
-
-      #{$se23} & {
-        fill: var(--p-color-icon-interactive);
-      }
     }
 
     &:hover svg {
