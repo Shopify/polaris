@@ -22,8 +22,9 @@ import {ButtonGroup} from '../../../ButtonGroup';
 import type {BannerProps} from '../../Banner';
 import {useI18n} from '../../../../utilities/i18n';
 import {Icon} from '../../../Icon';
+import {useEventListener} from '../../../../utilities/use-event-listener';
 
-import {useBannerAttributes} from './utilities';
+import {bannerAttributes} from './utilities';
 import styles from './BannerExperimental.scss';
 
 interface BannerLayoutProps {
@@ -47,79 +48,72 @@ export function BannerExperimental({
 }: BannerProps) {
   const i18n = useI18n();
   const withinContentContainer = useContext(WithinContentContext);
-  const {backgroundColor, textColor, iconColor, StatusIcon} =
-    useBannerAttributes(status);
+  const isInlineIconBanner = !title && !withinContentContainer;
+  const bannerColors =
+    bannerAttributes[status][
+      withinContentContainer ? 'withinContentContainer' : 'withinPage'
+    ];
 
-  const isNoTitleBanner = !title && !withinContentContainer;
-
-  const statusIcon = (
-    <span className={styles[iconColor]}>
-      <Icon source={icon ?? StatusIcon} />
-    </span>
-  );
-
-  const closeIcon = (
-    <span className={styles[isNoTitleBanner ? 'icon-subdued' : iconColor]}>
-      <Icon source={CancelMinor} />
-    </span>
-  );
-
-  const bannerIcon = hideIcon ? null : statusIcon;
-
-  const dismissButton = onDismiss ? (
-    <Button
-      plain
-      primary
-      icon={closeIcon}
-      onClick={onDismiss}
-      accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
-    />
-  ) : null;
-
-  const actionButtons =
-    action || secondaryAction ? (
-      <ButtonGroup>
-        {action && (
-          <Button onClick={action.onAction} {...action}>
-            {action.content}
-          </Button>
-        )}
-        {secondaryAction && (
-          <Button onClick={secondaryAction.onAction} {...secondaryAction}>
-            {secondaryAction.content}
-          </Button>
-        )}
-      </ButtonGroup>
-    ) : null;
-
-  const bannerTitle = title ? (
-    <Text as="h2" variant="headingSm" breakWord>
-      {title}
-    </Text>
-  ) : null;
-
-  const bannerLayoutProps: BannerLayoutProps = {
-    backgroundColor,
-    textColor,
-    bannerTitle,
-    bannerIcon,
-    actionButtons,
-    dismissButton,
+  const bannerSlots: BannerLayoutProps = {
+    backgroundColor: bannerColors.background,
+    textColor: bannerColors.text,
+    bannerTitle: title ? (
+      <Text as="h2" variant="headingSm" breakWord>
+        {title}
+      </Text>
+    ) : null,
+    bannerIcon: hideIcon ? null : (
+      <span className={styles[bannerColors.icon]}>
+        <Icon source={icon ?? bannerAttributes[status].icon} />
+      </span>
+    ),
+    actionButtons:
+      action || secondaryAction ? (
+        <ButtonGroup>
+          {action && (
+            <Button onClick={action.onAction} {...action}>
+              {action.content}
+            </Button>
+          )}
+          {secondaryAction && (
+            <Button onClick={secondaryAction.onAction} {...secondaryAction}>
+              {secondaryAction.content}
+            </Button>
+          )}
+        </ButtonGroup>
+      ) : null,
+    dismissButton: onDismiss ? (
+      <Button
+        plain
+        primary
+        icon={
+          <span
+            className={
+              styles[isInlineIconBanner ? 'icon-subdued' : bannerColors.icon]
+            }
+          >
+            <Icon source={CancelMinor} />
+          </span>
+        }
+        onClick={onDismiss}
+        accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
+      />
+    ) : null,
   };
 
   if (withinContentContainer) {
     return (
-      <WithinContentContainerBanner {...bannerLayoutProps}>
+      <WithinContentContainerBanner {...bannerSlots}>
         {children}
       </WithinContentContainerBanner>
     );
   }
 
-  if (isNoTitleBanner) {
-    return <NoTitleBanner {...bannerLayoutProps}>{children}</NoTitleBanner>;
+  if (isInlineIconBanner) {
+    return <InlineIconBanner {...bannerSlots}>{children}</InlineIconBanner>;
   }
 
-  return <DefaultBanner {...bannerLayoutProps}>{children}</DefaultBanner>;
+  return <DefaultBanner {...bannerSlots}>{children}</DefaultBanner>;
 }
 
 function DefaultBanner({
@@ -175,7 +169,7 @@ function DefaultBanner({
   );
 }
 
-function NoTitleBanner({
+function InlineIconBanner({
   backgroundColor,
   bannerIcon,
   actionButtons,
@@ -188,29 +182,18 @@ function NoTitleBanner({
   const iconNode = useRef<HTMLDivElement>(null);
 
   const handleResize = useCallback(() => {
-    const contentHeight = contentNode?.current?.offsetHeight;
-    const iconBoxHeight = iconNode?.current?.offsetHeight;
+    const contentHeight = contentNode.current?.offsetHeight;
+    const iconBoxHeight = iconNode.current?.offsetHeight;
 
     if (!contentHeight || !iconBoxHeight) return;
 
-    if (contentHeight > iconBoxHeight) {
-      setBlockAlign('start');
-    } else {
-      setBlockAlign('center');
-    }
+    contentHeight > iconBoxHeight
+      ? setBlockAlign('start')
+      : setBlockAlign('center');
   }, []);
 
   useEffect(() => handleResize(), [handleResize]);
-
-  useEffect(() => {
-    if (!contentNode.current) return;
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [handleResize]);
+  useEventListener('resize', handleResize);
 
   return (
     <Box width="100%" padding="2" borderRadius="3">

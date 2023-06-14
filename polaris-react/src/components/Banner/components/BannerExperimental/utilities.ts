@@ -1,4 +1,3 @@
-import {useContext} from 'react';
 import type {
   ColorBackgroundAlias,
   ColorIconAlias,
@@ -11,8 +10,7 @@ import {
   TickMinor,
 } from '@shopify/polaris-icons';
 
-import {WithinContentContext} from '../../../../utilities/within-content-context';
-import type {BannerProps, BannerStatus} from '../../Banner';
+import type {BannerStatus} from '../../Banner';
 import type {IconSource} from '../../../../types';
 
 interface BannerColorAliases {
@@ -27,22 +25,7 @@ interface BannerAttributes {
   icon: IconSource;
 }
 
-export function useBannerAttributes(status: BannerProps['status'] = 'info') {
-  const withinContentContainer = useContext(WithinContentContext);
-  const bannerColors =
-    bannerAttributes[status][
-      withinContentContainer ? 'withinContentContainer' : 'withinPage'
-    ];
-
-  return {
-    backgroundColor: bannerColors.background,
-    textColor: bannerColors.text,
-    iconColor: bannerColors.icon,
-    StatusIcon: bannerAttributes[status].icon,
-  };
-}
-
-const bannerAttributes: {[key in BannerStatus]: BannerAttributes} = {
+export const bannerAttributes: {[key in BannerStatus]: BannerAttributes} = {
   success: {
     withinPage: {
       background: 'bg-success-strong',
