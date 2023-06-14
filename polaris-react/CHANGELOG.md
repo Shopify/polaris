@@ -1,5 +1,16 @@
 # Changelog
 
+## 11.1.3
+
+### Patch Changes
+
+- [#9441](https://github.com/Shopify/polaris/pull/9441) [`f3b07cc15`](https://github.com/Shopify/polaris/commit/f3b07cc15aef9ef069601df2b956765f02360a48) Thanks [@asyncopation](https://github.com/asyncopation)! - Fixed inconsistent style prop between client and server rendering of `VerticalStack` component
+
+* [#9412](https://github.com/Shopify/polaris/pull/9412) [`cb581db66`](https://github.com/Shopify/polaris/commit/cb581db66d7f1fa3a86b9dd8874ca0b64a030e6a) Thanks [@jesstelford](https://github.com/jesstelford)! - Correctly pass ref through to UnstyledLink's child
+
+* Updated dependencies [[`91ebe5792`](https://github.com/Shopify/polaris/commit/91ebe57922d26e3acb61047c79d7a157952d5486)]:
+  - @shopify/polaris-tokens@7.2.0
+
 ## 11.1.2
 
 ### Patch Changes
