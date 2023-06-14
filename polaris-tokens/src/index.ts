@@ -5,6 +5,7 @@ export type {
   Tokens,
   MetadataProperties,
   MetadataGroup,
+  BreakpointsAlias,
 } from './types';
 
 export type {
@@ -17,7 +18,6 @@ export type {
 export type {
   BreakpointsTokenGroup,
   BreakpointsTokenName,
-  BreakpointsAlias,
 } from './token-groups/breakpoints';
 
 export type {
@@ -55,6 +55,8 @@ export type {
   SpaceTokenName,
   SpaceScale,
 } from './token-groups/space';
+
+export type {SizeTokenGroup, SizeTokenName} from './token-groups/size';
 
 export type {
   ZIndexTokenGroup,

@@ -2,7 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 import type {Metadata, MetadataGroup} from '../src';
-import type {MetadataBase} from '../src/types';
+import type {MetadataBase, BreakpointsAlias} from '../src/types';
+import {breakpointsAlias} from '../src/types';
+import {toResponsiveObject, makeResponsiveObjectSparse} from '../src/utilities';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
@@ -23,22 +25,27 @@ export function getStaticCustomProperties(metadata: Metadata) {
  * Creates static CSS custom properties overrides.
  * Note: These values don't vary by color-scheme.
  */
-export function getStaticCustomPropertiesExperimental(metadata: MetadataBase) {
+export function getStaticCustomPropertiesExperimental(
+  metadata: MetadataBase,
+  breakpoint: BreakpointsAlias,
+) {
   return Object.entries(metadata)
     .map(([_, tokenGroup]) =>
       getCustomProperties(
-        Object.fromEntries(
-          Object.entries(tokenGroup)
-            // Only include tokens with `valueExperimental` prop
-            .filter(([_, metadataProperties]) =>
-              Boolean(metadataProperties.valueExperimental),
-            )
-            // Move `valueExperimental` to `value` position
-            .map(([tokenName, metadataProperties]) => [
-              tokenName,
-              {value: metadataProperties.valueExperimental!},
-            ]),
-        ),
+        Object.keys(tokenGroup).reduce((memo, token) => {
+          if (typeof tokenGroup[token].valueExperimental === 'undefined') {
+            return memo;
+          }
+          const value = makeResponsiveObjectSparse(
+            toResponsiveObject(tokenGroup[token].valueExperimental),
+          )[breakpoint];
+
+          if (typeof value === 'undefined') {
+            return memo;
+          }
+          memo[token] = {value};
+          return memo;
+        }, {} as MetadataGroup),
       ),
     )
     .join('');
@@ -49,11 +56,15 @@ export function getStaticCustomPropertiesExperimental(metadata: MetadataBase) {
  */
 export function getCustomProperties(tokenGroup: MetadataGroup) {
   return Object.entries(tokenGroup)
-    .map(([token, {value}]) =>
-      token.startsWith('motion-keyframes') || token.startsWith('keyframes')
+    .map(([token, {value}]) => {
+      if (typeof value === 'undefined') {
+        return '';
+      }
+      return token.startsWith('motion-keyframes') ||
+        token.startsWith('keyframes')
         ? `--p-${token}:p-${token};`
-        : `--p-${token}:${value};`,
-    )
+        : `--p-${token}:${value};`;
+    })
     .join('');
 }
 
@@ -82,7 +93,20 @@ export async function toStyleSheet(metadata: Metadata) {
   :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
   html.Polaris-Summer-Editions-2023{${getStaticCustomPropertiesExperimental(
     metadata,
+    'xs',
   )}}
+${breakpointsAlias
+  .slice(1)
+  .map(
+    (alias) => `
+@media (min-width: ${metadata.breakpoints[`breakpoints-${alias}`].value}) {
+  html.Polaris-Summer-Editions-2023{${getStaticCustomPropertiesExperimental(
+    metadata,
+    alias,
+  )}}}
+`,
+  )
+  .join('')}
   ${getKeyframes(metadata.motion)}
 `;
 

@@ -1,6 +1,4 @@
-import type {MetadataProperties} from '../types';
-
-export type BreakpointsAlias = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+import type {BreakpointsAlias, MetadataProperties} from '../types';
 
 export type BreakpointsTokenName = `breakpoints-${BreakpointsAlias}`;
 
