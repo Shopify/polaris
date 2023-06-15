@@ -54,7 +54,7 @@ export function BannerExperimental({
       withinContentContainer ? 'withinContentContainer' : 'withinPage'
     ];
 
-  const bannerSlots: BannerLayoutProps = {
+  const sharedBannerProps: BannerLayoutProps = {
     backgroundColor: bannerColors.background,
     textColor: bannerColors.text,
     bannerTitle: title ? (
@@ -103,17 +103,19 @@ export function BannerExperimental({
 
   if (withinContentContainer) {
     return (
-      <WithinContentContainerBanner {...bannerSlots}>
+      <WithinContentContainerBanner {...sharedBannerProps}>
         {children}
       </WithinContentContainerBanner>
     );
   }
 
   if (isInlineIconBanner) {
-    return <InlineIconBanner {...bannerSlots}>{children}</InlineIconBanner>;
+    return (
+      <InlineIconBanner {...sharedBannerProps}>{children}</InlineIconBanner>
+    );
   }
 
-  return <DefaultBanner {...bannerSlots}>{children}</DefaultBanner>;
+  return <DefaultBanner {...sharedBannerProps}>{children}</DefaultBanner>;
 }
 
 function DefaultBanner({
