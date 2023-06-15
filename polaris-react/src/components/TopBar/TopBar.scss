@@ -9,8 +9,6 @@ $icon-size: 20px;
   height: $top-bar-height;
   box-shadow: var(--p-shadow-sm);
   background-color: var(--p-color-bg);
-  transition: var(--p-motion-duration-200) background-color
-    var(--p-motion-ease-in-out);
 
   #{$se23} & {
     background-color: var(--p-color-bg-inverse);
