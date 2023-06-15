@@ -37,6 +37,10 @@
 
   .IncreasedTableDensity & {
     padding: var(--p-space-2) var(--p-space-2) 0 var(--p-space-2);
+
+    #{$se23} & {
+      padding: var(--p-space-4) var(--p-space-3);
+    }
   }
 }
 
@@ -110,6 +114,18 @@
 
   .IncreasedTableDensity & {
     padding: var(--p-space-2) var(--p-space-4);
+
+    #{$se23} & {
+      padding: var(--p-space-1_5-experimental);
+
+      &:first-child {
+        padding-left: var(--p-space-3);
+      }
+
+      &:last-child {
+        padding-right: var(--p-space-3);
+      }
+    }
   }
 }
 
@@ -174,6 +190,11 @@
   .IncreasedTableDensity & {
     font-weight: var(--p-font-weight-medium);
     font-size: var(--p-font-size-75);
+
+    #{$se23} & {
+      font-weight: var(--p-font-weight-regular);
+      font-size: var(--p-font-size-80-experimental);
+    }
   }
 }
 
@@ -196,12 +217,24 @@
   .IncreasedTableDensity & {
     padding: var(--p-space-2) var(--p-space-3);
 
+    #{$se23} & {
+      padding: 0;
+    }
+
     &:first-child {
       padding-left: var(--p-space-3);
+
+      #{$se23} & {
+        padding-left: var(--p-space-2);
+      }
     }
 
     &:last-child {
       padding-right: var(--p-space-3);
+
+      #{$se23} & {
+        padding-right: var(--p-space-2);
+      }
     }
   }
 
@@ -280,6 +313,13 @@
     padding: 0;
     padding-right: var(--p-space-1);
     margin: 0;
+
+    #{$se23} & {
+      font-weight: var(--p-font-weight-regular);
+      font-size: var(--p-font-size-80-experimental);
+      margin: var(--p-space-1) 0;
+      padding: var(--p-space-1) var(--p-space-1_5-experimental);
+    }
   }
 
   &:hover {
@@ -386,6 +426,10 @@
   #{$se23} & {
     padding: var(--p-space-2) var(--p-space-3);
     border-top: var(--p-border-width-1) solid var(--p-color-border);
+  }
+
+  #{$se23} .IncreasedTableDensity & {
+    padding: var(--p-space-1_5-experimental) var(--p-space-3);
   }
 
   .ZebraStripingOnData & {
