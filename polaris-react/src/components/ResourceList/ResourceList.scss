@@ -85,6 +85,9 @@ $item-wrapper-loading-height: 64px;
   border-radius: var(--p-border-radius-2);
   #{$se23} & {
     min-height: 48px;
+    // This container conditionally includes a Select component for sorting
+    // We need dynamic padding values here to ensure the Select component and its container
+    // have adequate top and bottom spacing at each breakpoint.
     padding: var(--p-space-1_5-experimental) var(--p-space-3);
     @media #{$p-breakpoints-md-up} {
       padding: var(--p-space-2) var(--p-space-3);
@@ -110,6 +113,8 @@ $item-wrapper-loading-height: 64px;
   #{$se23} & {
     right: var(--p-space-3);
     left: var(--p-space-3);
+    // This container conditionally includes a Select component for sorting
+    // We need to ensure that there's no layout shift even when the Select component isn't rendered at each breakpoint.
     top: var(--p-space-1_5-experimental);
     min-height: 36px;
     @media #{$p-breakpoints-md-up} {
