@@ -1,8 +1,9 @@
 import React, {memo, useContext} from 'react';
 import {TickMinor} from '@shopify/polaris-icons';
 
+import {Box} from '../../../Box';
 import {Checkbox} from '../../../Checkbox';
-import {HorizontalGrid} from '../../../HorizontalGrid';
+import {HorizontalStack} from '../../../HorizontalStack';
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
 import {ComboboxListboxOptionContext} from '../../../../utilities/combobox/context';
@@ -36,14 +37,19 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
-  const optionMarkup = polarisSummerEditions2023 ? (
-    <HorizontalGrid columns="1fr auto">
-      {children}
-      {selected ? <Icon source={TickMinor} /> : null}
-    </HorizontalGrid>
-  ) : (
-    <>{children}</>
-  );
+  const optionMarkup =
+    polarisSummerEditions2023 && selected ? (
+      <Box width="100%">
+        <HorizontalStack align="space-between">
+          {children}
+          <HorizontalStack align="end">
+            <Icon source={TickMinor} />
+          </HorizontalStack>
+        </HorizontalStack>
+      </Box>
+    ) : (
+      <>{children}</>
+    );
 
   return (
     <div className={textOptionClassName}>
