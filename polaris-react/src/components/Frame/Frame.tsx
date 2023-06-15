@@ -51,6 +51,10 @@ export interface FrameProps {
   skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
+  /** A boolean property indicating whether their should be space on the right of the content area
+   * @default false
+   */
+  contentOffset?(): boolean;
 }
 
 type CombinedProps = FrameProps & {
@@ -112,6 +116,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       showMobileNavigation = false,
       skipToContentTarget,
       i18n,
+      contentOffset = false,
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
     const navClassName = classNames(
@@ -263,6 +268,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       removeContextualSaveBar: this.removeContextualSaveBar,
     };
 
+    const contentClassName = classNames(
+      styles.Content,
+      contentOffset && styles.ContentOffset,
+    );
+
     return (
       <FrameContext.Provider value={context}>
         <div
@@ -281,7 +291,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
-            <div className={styles.Content}>{children}</div>
+            <div className={contentClassName}>{children}</div>
           </main>
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}
