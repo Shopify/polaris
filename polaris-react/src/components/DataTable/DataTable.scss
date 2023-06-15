@@ -291,8 +291,10 @@
   margin: var(--p-space-2);
 
   #{$se23} & {
-    margin: var(--p-space-1) 0;
-    padding: var(--p-space-2) var(--p-space-1_5-experimental);
+    // stylelint-disable polaris/space/declaration-property-unit-disallowed-list -- Using hard coded px values to avoid cutting off the focus ring when overflow:hidden is applied via .Cell-truncate
+    margin: 3px;
+    padding: 9px 3px;
+    // stylelint-enable polaris/space/declaration-property-unit-disallowed-list
   }
 
   svg {
@@ -317,8 +319,10 @@
     #{$se23} & {
       font-weight: var(--p-font-weight-regular);
       font-size: var(--p-font-size-80-experimental);
-      margin: var(--p-space-1) 0;
-      padding: var(--p-space-1) var(--p-space-1_5-experimental);
+      // stylelint-disable polaris/space/declaration-property-unit-disallowed-list -- Using hard coded px values to avoid cutting off the focus ring when overflow:hidden is applied via .Cell-truncate
+      margin: 3px;
+      padding: 3px;
+      // stylelint-enable polaris/space/declaration-property-unit-disallowed-list
     }
   }
 
