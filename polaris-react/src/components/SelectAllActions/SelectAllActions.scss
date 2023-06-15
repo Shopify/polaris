@@ -6,6 +6,14 @@
   align-items: center;
   justify-content: flex-start;
   will-change: opacity;
+
+  #{$se23} & {
+    min-height: 36px;
+    display: flex;
+    @media #{$p-breakpoints-md-up} {
+      min-height: 32px;
+    }
+  }
 }
 
 .SelectAllActions-entering,

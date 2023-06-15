@@ -85,7 +85,10 @@ $item-wrapper-loading-height: 64px;
   border-radius: var(--p-border-radius-2);
   #{$se23} & {
     min-height: 48px;
-    padding: var(--p-space-3);
+    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    @media #{$p-breakpoints-md-up} {
+      padding: var(--p-space-2) var(--p-space-3);
+    }
   }
 }
 
@@ -107,8 +110,13 @@ $item-wrapper-loading-height: 64px;
   #{$se23} & {
     right: var(--p-space-3);
     left: var(--p-space-3);
-    top: var(--p-space-3);
-    min-height: 28px;
+    top: var(--p-space-1_5-experimental);
+    min-height: 36px;
+    @media #{$p-breakpoints-md-up} {
+      top: var(--p-space-2);
+      min-height: 32px;
+    }
+    align-items: center;
   }
 
   .HeaderWrapper-inSelectMode & {
