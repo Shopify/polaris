@@ -399,6 +399,7 @@
   #{$se23} & {
     // Specificity bump
     border-bottom: none;
+    border-top: var(--p-border-width-1) solid var(--p-color-border);
   }
 
   &:first-child {
