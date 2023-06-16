@@ -12,6 +12,7 @@ Session.vim
 /polaris-react/build
 /polaris-react/build-internal
 /polaris-react/src/styles/_media-queries.scss
+/polaris-react/playground/Playground.tsx
 /polaris-tokens/build
 /polaris.shopify.com/.cache/
 /polaris.shopify.com/public/sitemap.xml
