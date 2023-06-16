@@ -1,10 +1,19 @@
+type Experimental<T extends string> = `${T}-experimental`;
+
 export type Status =
   | 'info'
   | 'success'
   | 'warning'
   | 'critical'
   | 'attention'
-  | 'new';
+  | 'new'
+  | Experimental<'info-strong'>
+  | Experimental<'success-strong'>
+  | Experimental<'warning-strong'>
+  | Experimental<'critical-strong'>
+  | Experimental<'attention-strong'>
+  | Experimental<'read-only'>
+  | Experimental<'enabled'>;
 
 export enum StatusValue {
   Info = 'info',
