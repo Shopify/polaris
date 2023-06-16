@@ -137,10 +137,6 @@ export function Tooltip({
     };
   }, []);
 
-  useEffect(() => {
-    if (originalActive === false && active) handleBlur();
-  }, [originalActive, active, handleBlur]);
-
   const handleOpen = useCallback(() => {
     setShouldAnimate(!presenceList.tooltip && !active);
     onOpen?.();
@@ -164,6 +160,13 @@ export function Tooltip({
     },
     [handleBlur, handleClose, persistOnClick, togglePersisting],
   );
+
+  useEffect(() => {
+    if (originalActive === false && active) {
+      handleClose();
+      handleBlur();
+    }
+  }, [originalActive, active, handleClose, handleBlur]);
 
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
