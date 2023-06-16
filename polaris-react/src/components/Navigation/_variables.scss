@@ -56,11 +56,8 @@ $nav-animation-variables: (
 
   #{$se23} & {
     &:focus-visible:not(:active) {
-      /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
-      @include no-focus-ring;
       z-index: var(--p-z-index-1);
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
+      @include focus-ring-outline($offset: '0');
     }
   }
 

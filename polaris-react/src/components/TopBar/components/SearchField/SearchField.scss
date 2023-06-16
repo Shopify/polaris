@@ -73,9 +73,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
   #{$se23} & {
     // stylelint-disable-next-line -- se23
     ~ .Backdrop {
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
-      outline-offset: var(--p-space-05);
+      @include focus-ring-outline;
     }
 
     // stylelint-disable-next-line -- se23
