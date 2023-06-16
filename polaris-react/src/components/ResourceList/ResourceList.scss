@@ -114,11 +114,10 @@ $item-wrapper-loading-height: 64px;
   #{$se23} & {
     right: var(--p-space-3);
     left: var(--p-space-3);
+    // Regardless of the variable height of the content
+    // we just want it to be center aligned.
     top: 0;
     bottom: 0;
-
-    // This container conditionally includes a Select component for sorting
-    // We need to ensure that there's no layout shift even when the Select component isn't rendered at each breakpoint.
     align-items: center;
   }
 
