@@ -10,7 +10,11 @@
   overflow: hidden;
 
   #{$se23} & {
-    border-radius: var(--p-border-radius-3);
+    border-radius: 0;
+
+    @media #{$p-breakpoints-sm-up} {
+      border-radius: var(--p-border-radius-3);
+    }
   }
 }
 
@@ -447,6 +451,7 @@
   #{$se23} & {
     padding: var(--p-space-2) var(--p-space-3);
     border-top: var(--p-border-width-1) solid var(--p-color-border);
+    border-radius: 0;
   }
 
   #{$se23} .IncreasedTableDensity & {
