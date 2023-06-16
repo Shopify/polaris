@@ -137,6 +137,10 @@ export function Tooltip({
     };
   }, []);
 
+  useEffect(() => {
+    if (originalActive === false && active) handleBlur();
+  }, [originalActive, active, handleBlur]);
+
   const handleOpen = useCallback(() => {
     setShouldAnimate(!presenceList.tooltip && !active);
     onOpen?.();

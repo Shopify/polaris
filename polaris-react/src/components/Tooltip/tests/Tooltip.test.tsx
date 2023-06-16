@@ -47,6 +47,20 @@ describe('<Tooltip />', () => {
     );
   });
 
+  it('does not render when active prop is updated to false', () => {
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content" active={undefined}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
+
+    tooltip.setProps({active: false});
+    expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+  });
+
   it('passes preventInteraction to TooltipOverlay when dismissOnMouseOut is true', () => {
     const tooltip = mountWithApp(
       <Tooltip dismissOnMouseOut content="Inner content" active>
