@@ -50,21 +50,29 @@
   background: var(--p-color-text-subdued);
   border-radius: var(--p-border-radius-1);
 
+  #{$se23} & {
+    background: var(--p-color-icon-subdued);
+  }
+
   &:not(:last-of-type) {
     margin-right: var(--p-space-1);
   }
 
   #{$se23} &:first-of-type {
-    margin-left: var(--p-space-3);
+    margin-left: var(--p-space-1);
   }
 
   #{$se23} &:last-of-type {
-    margin-right: var(--p-space-3);
+    margin-right: var(--p-space-1);
   }
 }
 
 .Pip-visible {
   background: var(--p-color-text);
+
+  #{$se23} & {
+    background: var(--p-color-icon);
+  }
 }
 
 .ScrollContainer {
@@ -329,6 +337,10 @@
   &:hover {
     color: var(--p-color-text-interactive-hover);
 
+    #{$se23} & {
+      color: var(--p-color-text);
+    }
+
     .Icon {
       opacity: 1;
     }
@@ -364,6 +376,10 @@
 
   &:hover svg {
     fill: var(--p-color-icon-interactive-hover);
+
+    #{$se23} & {
+      fill: var(--p-color-icon);
+    }
   }
 
   .Heading:focus:not(:active) {
@@ -497,6 +513,10 @@
     visibility: visible;
     background-color: var(--p-color-bg);
     box-shadow: var(--p-shadow-md);
+
+    #{$se23} & {
+      box-shadow: var(--p-shadow-xs);
+    }
   }
 }
 
