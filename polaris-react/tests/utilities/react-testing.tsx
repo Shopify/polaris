@@ -26,7 +26,10 @@ export const mountWithApp = createMount<
     return (
       <PolarisTestProvider
         i18n={translations}
-        features={{...features, polarisSummerEditions2023: false}}
+        features={{
+          polarisSummerEditions2023: false,
+          ...features,
+        }}
         {...rest}
       >
         {element}

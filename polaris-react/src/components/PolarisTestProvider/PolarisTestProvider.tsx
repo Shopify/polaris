@@ -66,7 +66,10 @@ export function PolarisTestProvider({
   const stickyManager = useMemo(() => new StickyManager(), []);
 
   const featuresConfig = useMemo(
-    () => ({...features, polarisSummerEditions2023: false}),
+    () => ({
+      polarisSummerEditions2023: false,
+      ...features,
+    }),
     [features],
   );
 
