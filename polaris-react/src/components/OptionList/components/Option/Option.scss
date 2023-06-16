@@ -42,11 +42,7 @@ $control-vertical-adjustment: 2px;
     @include focus-ring($style: 'focused');
 
     #{$se23} & {
-      // stylelint-disable-next-line -- se23
-      @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
-      outline-offset: var(--p-space-025);
+      @include focus-ring-outline($offset: '025');
       background-color: var(--p-color-bg-subdued-hover);
     }
   }

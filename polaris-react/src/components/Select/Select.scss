@@ -219,11 +219,7 @@
 
     #{$se23} & {
       border-color: var(--p-color-border-input-active-experimental);
-      // stylelint-disable-next-line -- se23
-      @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
-      outline-offset: var(--p-space-025);
+      @include focus-ring-outline($offset: '025');
     }
   }
 }

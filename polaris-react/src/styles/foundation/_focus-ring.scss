@@ -51,3 +51,19 @@
     content: none;
   }
 }
+
+/// Sets the focus ring as an outline for an interactive element
+/// @param {String} $offset - Space between the focus ring and the element. Takes a spacing token or '0'. Defaults to '05'.
+/// @param {String} $radius - Border radius of the focus ring. Takes a border radius token. Defaults to border radius of element.
+///
+
+@mixin focus-ring-outline($offset: '05', $radius: null) {
+  // stylelint-disable-next-line -- string interpolation for token
+  $outline-offset: if($offset == '0', 0, var(--p-space-#{$offset}));
+  outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus);
+  outline-offset: $outline-offset;
+  @if $radius {
+    // stylelint-disable-next-line -- string interpolation for token
+    border-radius: var(--p-border-radius-#{$radius});
+  }
+}

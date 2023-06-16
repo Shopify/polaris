@@ -16,9 +16,7 @@
       @include focus-ring($style: 'focused');
 
       #{$se23} & {
-        outline: var(--p-border-width-2) solid
-          var(--p-color-border-interactive-focus);
-        outline-offset: var(--p-space-025);
+        @include focus-ring-outline($offset: '025');
       }
     }
   }
