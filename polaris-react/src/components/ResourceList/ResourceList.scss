@@ -219,6 +219,7 @@ $item-wrapper-loading-height: 64px;
   // se23: This is the initial value of flex, is there something else that mutates this in other components?
   @media #{$p-breakpoints-sm-up} {
     flex: 0 1 auto;
+    align-self: flex-start;
   }
 
   #{$se23} & {
@@ -230,6 +231,7 @@ $item-wrapper-loading-height: 64px;
       https://www.w3.org/TR/css-flexbox-1/#flex-lines
     */
     display: flex;
+    align-self: auto;
   }
 }
 
