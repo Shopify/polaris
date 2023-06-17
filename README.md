@@ -32,7 +32,7 @@ polaris/
 ### Install dependencies and build workspaces
 
 ```sh
-yarn && yarn build
+pnpm install && pnpm build
 ```
 
 ### Run a command
@@ -52,12 +52,12 @@ Run commands across all workspaces. This uses [`turbo run <command>`](https://tu
 
 | Command           | Runs                                                                                                                  |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `yarn changeset`  | Adds a new [changelog entry](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset) |
-| `yarn lint`       | Lints all workspaces                                                                                                  |
-| `yarn test`       | Tests all workspaces                                                                                                  |
-| `yarn type-check` | Build types and check for type errors                                                                                 |
-| `yarn clean`      | Remove generated files                                                                                                |
-| `yarn format`     | Format files with prettier                                                                                            |
+| `pnpm changeset`  | Adds a new [changelog entry](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset) |
+| `pnpm lint`       | Lints all workspaces                                                                                                  |
+| `pnpm test`       | Tests all workspaces                                                                                                  |
+| `pnpm type-check` | Build types and check for type errors                                                                                 |
+| `pnpm clean`      | Remove generated files                                                                                                |
+| `pnpm format`     | Format files with prettier                                                                                            |
 
 ## Contribute to this repo
 

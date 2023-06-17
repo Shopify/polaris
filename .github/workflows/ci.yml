@@ -29,10 +29,10 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
-      - name: Setup Node with v${{ matrix.node-version }}
+      - name: Setup Node with v${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node_version: ${{ matrix.node_version }}
           cache: yarn
 
       - name: Restore cache
@@ -48,16 +48,16 @@ jobs:
             ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install
 
       - name: Build packages
-        run: yarn build
+        run: pnpm build
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Type check
-        run: yarn type-check
+        run: pnpm type-check
 
       - name: Test
-        run: yarn test
+        run: pnpm test

@@ -440,3 +440,8 @@ function triggerOptionSelected(combobox: any) {
 }
 
 function noop() {}
+
+function dispatchKeyup(key: Key) {
+  const event: KeyboardEventInit & {keyCode: Key} = {keyCode: key};
+  document.dispatchEvent(new KeyboardEvent('keyup', event));
+}

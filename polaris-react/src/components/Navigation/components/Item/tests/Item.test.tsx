@@ -894,6 +894,48 @@ describe('<Nav.Item />', () => {
       });
     });
   });
+
+  describe('keyFocused', () => {
+    it('adds and removes a class to button when item was tabbed into focus and then blurred', () => {
+      const item = mountWithNavigationProvider(
+        <Item label="some label" disabled={false} />,
+      );
+
+      const event: KeyboardEventInit & {keyCode: Key} = {
+        keyCode: Key.Tab,
+      };
+
+      item.find('button')!.trigger('onKeyUp', event);
+      expect(item).toContainReactComponent('button', {
+        className: 'Item keyFocused',
+      });
+
+      item.find('button')!.trigger('onBlur');
+      expect(item).toContainReactComponent('button', {
+        className: 'Item',
+      });
+    });
+
+    it('adds and removes a class to a link when item was tabbed into focus and then blurred', () => {
+      const item = mountWithNavigationProvider(
+        <Item label="some label" disabled={false} url="https://shopify.com" />,
+      );
+
+      const event: KeyboardEventInit & {keyCode: Key} = {
+        keyCode: Key.Tab,
+      };
+
+      item.find('a')!.trigger('onKeyUp', event);
+      expect(item).toContainReactComponent('a', {
+        className: 'Item keyFocused',
+      });
+
+      item.find('a')!.trigger('onBlur');
+      expect(item).toContainReactComponent('a', {
+        className: 'Item',
+      });
+    });
+  });
 });
 
 function noop() {}
