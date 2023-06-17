@@ -23,8 +23,6 @@ interface NonMutuallyExclusiveProps {
   /** Icon to display to the left of the badge’s content. */
   icon?: IconSource;
   /**
-   * @deprecated
-   * Medium or small size.
    * @default 'medium'
    */
   size?: Size;

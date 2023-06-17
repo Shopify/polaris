@@ -32,4 +32,4 @@ export enum ProgressValue {
   Complete = 'complete',
 }
 
-export type Size = 'small' | 'medium';
+export type Size = 'small' | 'medium' | Experimental<'large'>;

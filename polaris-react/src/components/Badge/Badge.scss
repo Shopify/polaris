@@ -18,6 +18,7 @@
     color: var(--p-color-text-subdued);
     font-weight: var(--p-font-weight-medium);
     border-radius: var(--p-border-radius-2);
+    padding: var(--p-space-05) var(--p-space-1_5-experimental);
 
     // stylelint-disable-next-line -- se23 svg fill override
     svg {
@@ -236,6 +237,18 @@
   }
 }
 
+@mixin sizeLarge {
+  padding: var(--p-space-1) var(--p-space-2);
+}
+
+.sizeLarge-experimental {
+  @include sizeLarge;
+
+  #{$se23} & {
+    @include sizeLarge;
+  }
+}
+
 .withinFilter {
   border-radius: var(--p-border-radius-1);
 }
@@ -245,8 +258,16 @@
   // its bounding box.
   margin-left: calc(-1 * (var(--p-space-1)));
 
-  + *:not(.Icon) {
+  #{$se23} &:only-child {
+    margin-left: 0;
+  }
+
+  + * {
     margin-left: var(--p-space-1);
+
+    #{$se23} & {
+      margin-left: var(--p-space-1_5-experimental);
+    }
   }
 }
 
