@@ -29,7 +29,11 @@
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "test": "jest",
-    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo build"
+    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
+  },
+  "devDependencies": {
+    "@shopify/browserslist-config": "^3.0.0",
+    "ts-node": "^10.7.0"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",

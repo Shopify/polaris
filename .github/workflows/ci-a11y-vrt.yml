@@ -32,10 +32,10 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
-      - name: Setup Node with v18.12.0
-        uses: actions/setup-node@v3
+      - name: Setup Node with v16.13.0
+        uses: actions/setup-node@v2
         with:
-          node-version: 18.12.0
+          node-version: 16.13.0
           cache: yarn
 
       - name: Restore cache
@@ -50,13 +50,13 @@ jobs:
             ${{ runner.os }}-accessibility-test-v1-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install
 
       - name: Build packages
-        run: yarn build --filter=@shopify/polaris
+        run: yarn turbo run build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: pnpm --filter=@shopify/polaris storybook:build --quiet
 
       - name: Run accessibility test
         run: node ./polaris-react/scripts/accessibility-check.js
@@ -72,10 +72,10 @@ jobs:
         with:
           fetch-depth: 0 # Chromatic git history to track changes
 
-      - name: Setup Node with v18.12.0
-        uses: actions/setup-node@v3
+      - name: Setup Node with v16.13.0
+        uses: actions/setup-node@v2
         with:
-          node-version: 18.12.0
+          node-version: 16.13.0
           cache: yarn
 
       - name: Restore cache
@@ -90,13 +90,13 @@ jobs:
             ${{ runner.os }}-visual-regression-test-v1-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install
 
       - name: Build packages
-        run: yarn build --filter=@shopify/polaris
+        run: yarn turbo run build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: pnpm --filter=@shopify/polaris storybook:build --quiet
 
       - name: Run Chromatic tests
         uses: chromaui/action@v1

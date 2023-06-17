@@ -94,7 +94,7 @@ This example is for all platforms (must contain React code).
 
 ## Troubleshooting
 
-When running `yarn dev` or CI tests you may run into errors.
+When running `pnpm dev` or CI tests you may run into errors.
 Here are some common fixes.
 
 ### No examples found

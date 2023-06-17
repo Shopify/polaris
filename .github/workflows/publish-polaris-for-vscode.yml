@@ -13,31 +13,22 @@ jobs:
       - uses: actions/checkout@v3
         name: Checkout
 
-      - name: Free up space on GitHub image
-        run: |
-          # Based on the official advice:
-          # https://github.com/actions/virtual-environments/issues/2840#issuecomment-790492173
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v2
         name: Use Node.js 16.x
         with:
           node-version: 16
-          cache: yarn
+          cache: pnpm
 
       - name: Install dependencies
-        run: yarn
+        run: pnpm install
 
       - name: Build extension
-        run: yarn build --filter=polaris-for-vscode
+        run: yarn turbo run build --filter=polaris-for-vscode
 
       - name: Run Tests
-        run: yarn test --filter=polaris-for-vscode
+        run: yarn turbo run test --filter=polaris-for-vscode
 
       - name: Publish extension in the marketplace
-        run: yarn workspace polaris-for-vscode vsce publish
+        run: pnpm --filter=polaris-for-vscode exec vsce publish --no-dependencies
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}

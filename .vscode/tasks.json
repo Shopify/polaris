@@ -7,12 +7,12 @@
       "group": "build",
       "problemMatcher": [],
       "label": "npm: build",
-      "detail": "yarn build"
+      "detail": "pnpm build"
     },
     {
       "label": "polaris-for-vscode: start-dev",
       "type": "shell",
-      "command": "yarn workspace polaris-for-vscode run dev",
+      "command": "pnpm --filter=polaris-for-vscode dev",
       "group": "build",
       "isBackground": true,
       "presentation": {

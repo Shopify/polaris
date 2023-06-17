@@ -1,4 +1,4 @@
-## Custom property allowed list plugin
+## Allowed Custom Properties plugin
 
 The purpose of this plugin is to ensure that we're following our established conventions for Polaris custom properties, and only using custom properties that are generated Polaris tokens.
 
@@ -26,12 +26,12 @@ interface PrimaryOptions {
 }
 ```
 
-### How to configure
+### How to configure:
 
 ```js
 const stylelintConfig = {
   rules: {
-    'polaris/custom-property-allowed-list': {
+    'stylelint-polaris/custom-properties-allowed-list': {
       allowedProperties: ['/--pc-.+/'],
       allowedValues: {
         width: ['--p-space-0', '--p-space-1' /* etc... */],
@@ -48,13 +48,13 @@ const stylelintConfig = {
 ### Run all linters
 
 ```
-yarn lint
+pnpm lint
 ```
 
 OR
 
 ```
-yarn stylelint <file-glob>
+pnpm stylelint <file-glob>
 ```
 
 e.x.
@@ -62,23 +62,23 @@ e.x.
 ### Lint all files
 
 ```
-yarn stylelint **/*.scss
+pnpm stylelint **/*.scss
 ```
 
 ### Lint the TextContainer.scss file
 
 ```
-yarn stylelint src/components/typography/textContainer/TextContainer.scss
+pnpm stylelint src/components/TextContainer/TextContainer.scss
 ```
 
 e.x. output
 
 ```
-src/components/typography/textContainer/TextContainer.scss
-  4:3  ✖  Unexpected custom property [--p-text-container-spacing].        polaris/custom-property-allowed-list
-  6:5  ✖  Invalid custom properties [--p-text-container-spacing].         polaris/custom-property-allowed-list
- 15:3  ✖  Unexpected custom property [--p-text-container-spacing].        polaris/custom-property-allowed-list
- 19:3  ✖  Unexpected custom property [--p-text-container-spacing].        polaris/custom-property-allowed-list
+src/components/TextContainer/TextContainer.scss
+  4:3  ✖  Unexpected custom property [--p-text-container-spacing].        @shopify/custom-properties-allowed-list
+  6:5  ✖  Invalid custom properties [--p-text-container-spacing].         @shopify/custom-properties-allowed-list
+ 15:3  ✖  Unexpected custom property [--p-text-container-spacing].        @shopify/custom-properties-allowed-list
+ 19:3  ✖  Unexpected custom property [--p-text-container-spacing].        @shopify/custom-properties-allowed-list
 ```
 
 > Note: `--p-text-container-spacing` is not a valid Polaris custom property from [`tokens.ts`](../../../../src/tokens/tokens.ts). This custom property should use the local component prefix `--pc-` instead.
@@ -86,6 +86,6 @@ src/components/typography/textContainer/TextContainer.scss
 ## FUTURE
 
 - Think about how to keep polaris tokens in sync in both plugin and `polaris-react`
-  (e.g. If `@shopify/custom-property-allowed-list` plugin is separated from `polaris-react`)
+  (e.g. If `@shopify/custom-properties-allowed-list` plugin is separated from `polaris-react`)
   - Share token generator functions? (e.g. `getPolarisCustomProperty`)
 - Validate color-scheme tokens have the same key value pairs: https://github.com/Shopify/polaris-react/issues/4803
