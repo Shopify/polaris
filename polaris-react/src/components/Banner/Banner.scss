@@ -54,8 +54,7 @@
   }
 
   &.keyFocused {
-    outline: var(--p-border-width-2) solid
-      var(--p-color-border-interactive-focus);
+    @include focus-ring-outline($offset: '0');
   }
 
   &.statusSuccess {

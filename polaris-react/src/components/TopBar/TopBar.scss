@@ -56,10 +56,7 @@ $icon-size: 20px;
 
   #{$se23} & {
     &:focus-visible {
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
-      outline-offset: var(--p-space-1_5-experimental);
-      border-radius: var(--p-border-radius-2);
+      @include focus-ring-outline($offset: '1_5-experimental', $radius: '2');
     }
   }
 }

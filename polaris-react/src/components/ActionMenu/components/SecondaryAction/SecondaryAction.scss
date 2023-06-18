@@ -73,11 +73,7 @@
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:focus:not(:active) {
-        /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
-        @include no-focus-ring;
-        outline: var(--p-border-width-2) solid
-          var(--p-color-border-interactive-focus);
-        outline-offset: var(--p-space-05);
+        @include focus-ring-outline;
       }
     }
 
