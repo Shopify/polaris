@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
+import React, {useState, useRef, useEffect, useCallback, useMemo} from 'react';
 
 import {classNames} from '../../utilities/css';
 
@@ -39,6 +39,7 @@ export function Collapsible({
   onAnimationEnd,
 }: CollapsibleProps) {
   const [height, setHeight] = useState(0);
+  const heightMemo = useMemo(() => height, [height]);
   const [isOpen, setIsOpen] = useState(open);
   const [animationState, setAnimationState] = useState<AnimationState>('idle');
   const collapsibleContainer = useRef<HTMLDivElement>(null);
@@ -119,10 +120,16 @@ export function Collapsible({
         setHeight(collapsibleContainer.current.scrollHeight);
         setAnimationState('animating');
         break;
-      case 'animating':
-        setHeight(open ? collapsibleContainer.current.scrollHeight : 0);
+      case 'animating': {
+        const newHeight = open ? collapsibleContainer.current.scrollHeight : 0;
+        if (heightMemo === newHeight) {
+          setAnimationState('idle');
+          return;
+        }
+        setHeight(newHeight);
+      }
     }
-  }, [animationState, open, isOpen]);
+  }, [animationState, open, isOpen, heightMemo]);
 
   return (
     <div
