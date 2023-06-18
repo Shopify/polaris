@@ -1,0 +1,12 @@
+name: Chevron up
+set: major
+description: Used to denote the action of contracting a section to hide additional content.
+keywords:
+  - chevron
+  - up
+authors:
+  - Joe Thomas
+version: 1
+date_added: 2023-06-06
+date_modified: 2023-06-06
+exclusive_use:
