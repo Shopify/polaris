@@ -1,0 +1,100 @@
+.Canvas {
+  height: 100%;
+  background: #000;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+.Callout {
+  position: absolute;
+  box-shadow: inset 0 0 0 1px rgba(255, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.Empty {
+  padding: 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.Views {
+  padding: 2rem;
+  margin-bottom: 50px;
+  display: flex;
+  gap: 2rem;
+
+  .ViewLabel {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    background: #dd5408;
+    color: white;
+    padding: 0.125rem 0.33rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .ViewContent {
+    background: white;
+    min-width: 1000px;
+    max-width: 1000px;
+    min-height: 500px;
+    max-height: 70vh;
+    overflow: auto;
+    border-radius: 2px;
+    padding: 2rem;
+
+    &[data-is-selected='true'] {
+      box-shadow: 0 0 0 3px #dd5408;
+    }
+
+    &:hover * {
+      // box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0%);
+    }
+  }
+}
+
+.ChildHint {
+  height: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffffff,
+    #ffffff 2px,
+    #ffe0e0 2px,
+    #ffe0e0 4px
+  );
+  border-radius: 4px;
+  transition: all 0.1s ease-in-out;
+
+  button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    opacity: 0;
+    transition: all 0.1s 0.1s ease-in-out;
+    transform: scale(0.5);
+    max-width: 20px;
+    height: 20px;
+  }
+}
+
+.View:hover .ChildHint {
+  height: 50px;
+  min-width: 100px;
+  button {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

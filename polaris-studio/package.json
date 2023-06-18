@@ -1,0 +1,48 @@
+{
+  "name": "polaris-studio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "jest",
+    "create-component": "generact --root src/components src/components/Template/Template.tsx",
+    "app": "electron main.js",
+    "import-component-usage": "tsc scripts/importComponentUsage.ts --resolveJsonModule --esModuleInterop --skipLibCheck && node scripts/importComponentUsage.js && rm scripts/importComponentUsage.js && rm ./types.js",
+    "import-props": "cd src/scripts && tsc && node build/scripts/importProps.js"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.7",
+    "@reach/router": "^1.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-tooltip": "^5.7.5"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/node": "^18.14.0",
+    "@types/reach__router": "^1.3.11",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "electron": "^22.2.0",
+    "generact": "^0.4.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.4.3",
+    "sass": "^1.58.3",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.ts"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss|sass)$": "identity-obj-proxy"
+    }
+  }
+}
