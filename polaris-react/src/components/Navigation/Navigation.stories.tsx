@@ -891,7 +891,6 @@ export function WithVariousStatesAndSecondaryElements() {
               subNavigationItems: [
                 {
                   url: window.location.href,
-                  selected: true,
                   disabled: false,
                   label: 'Selected sub item',
                   onClick: () => setSelected('selectedsubitem'),
@@ -988,7 +987,7 @@ export function WithAriaLabelledby() {
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
-        <Text as="span" visuallyHidden>
+        <Text variant="bodySm" as="span" visuallyHidden>
           <p id="label-id">Hidden label</p>
         </Text>
         <Navigation.Section
