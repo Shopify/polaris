@@ -1,6 +1,7 @@
-import React from 'react';
-import type {SpaceScale} from '@shopify/polaris-tokens';
+import React, {Fragment, createElement} from 'react';
+import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
+import {Divider, type DividerProps} from '../Divider';
 import {
   classNames,
   sanitizeCustomProperties,
@@ -8,32 +9,22 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './VerticalStack.scss';
+import styles from './AlphaStack.scss';
 
-type Align =
-  | 'start'
-  | 'center'
-  | 'end'
-  | 'space-around'
-  | 'space-between'
-  | 'space-evenly';
-
-type InlineAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
+type Align = 'start' | 'end' | 'center';
 
 type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
-type Gap = ResponsiveProp<SpaceScale>;
+type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface VerticalStackProps extends React.AriaAttributes {
+export interface AlphaStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
    */
   as?: Element;
-  /** Vertical alignment of children */
-  align?: Align;
   /** Horizontal alignment of children */
-  inlineAlign?: InlineAlign;
+  align?: Align;
   /** The spacing between children */
   gap?: Gap;
   /** HTML id attribute */
@@ -42,38 +33,61 @@ export interface VerticalStackProps extends React.AriaAttributes {
    * @default false
    */
   reverseOrder?: boolean;
+  /** Render a <Divider /> between each stack child. Setting to `true` will
+   * render the default style of <Divider />
+   * @default false
+   */
+  withDivider?: boolean | DividerProps['borderStyle'];
 }
 
-export const VerticalStack = ({
+export const AlphaStack = ({
   as = 'div',
   children,
   align,
-  inlineAlign,
   gap,
   id,
   reverseOrder = false,
+  withDivider = false,
   ...restProps
-}: VerticalStackProps) => {
+}: AlphaStackProps) => {
   const className = classNames(
-    styles.VerticalStack,
+    styles.AlphaStack,
     (as === 'ul' || as === 'ol') && styles.listReset,
     as === 'fieldset' && styles.fieldsetReset,
   );
 
   const style = {
-    '--pc-vertical-stack-align': align ? `${align}` : null,
-    '--pc-vertical-stack-inline-align': inlineAlign ? `${inlineAlign}` : null,
-    '--pc-vertical-stack-order': reverseOrder ? 'column-reverse' : 'column',
-    ...getResponsiveProps('vertical-stack', 'gap', 'space', gap),
+    '--pc-stack-align': align ? `${align}` : '',
+    '--pc-stack-order': reverseOrder ? 'column-reverse' : 'column',
+    ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
-  return React.createElement(
+  let dividedChildren = children;
+
+  if (withDivider) {
+    const dividerProps =
+      typeof withDivider === 'boolean' ? {} : {borderStyle: withDivider};
+
+    dividedChildren = React.Children.map(children, (child, index) => {
+      if (index === 0) {
+        return child;
+      }
+      return (
+        <Fragment key={index}>
+          <Divider {...dividerProps} />
+          {child}
+        </Fragment>
+      );
+    });
+  }
+
+  return createElement(
     as,
     {
       className,
       style: sanitizeCustomProperties(style),
       ...restProps,
     },
-    children,
+    dividedChildren,
   );
 };
