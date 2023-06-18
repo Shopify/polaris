@@ -14,9 +14,9 @@ import type {ItemProps} from './components';
 
 export interface ActionListProps {
   /** Collection of actions for list */
-  items?: readonly ActionListItemDescriptor[];
+  items?: ActionListItemDescriptor[];
   /** Collection of sectioned action items */
-  sections?: readonly ActionListSection[];
+  sections?: ActionListSection[];
   /** Defines a specific role attribute for each action in the list */
   actionRole?: 'menuitem' | string;
   /** Callback when any item is clicked or keypressed */
@@ -31,7 +31,7 @@ export function ActionList({
   actionRole,
   onActionAnyItem,
 }: ActionListProps) {
-  let finalSections: readonly ActionListSection[] = [];
+  let finalSections: ActionListSection[] = [];
   const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
 
   if (items) {

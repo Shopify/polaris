@@ -1,0 +1,92 @@
+@import '../../../../../../styles/common';
+
+$activator-variables: (
+  min-width: rem(36px),
+  transition: (
+    background-color 0.1s,
+  ),
+  focus-opacity: 0.85,
+);
+
+@function menu($variable) {
+  @return map-get($activator-variables, $variable);
+}
+
+.ActivatorWrapper {
+  height: top-bar-height();
+  display: flex;
+  align-items: center;
+}
+
+.Activator {
+  @include unstyled-button;
+  @include focus-ring;
+  color: var(--p-text);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: menu(min-width);
+  padding: rem(6px) spacing(tight);
+  border: 0;
+  cursor: pointer;
+  transition: menu(transition);
+  margin-right: spacing(tight);
+  border-radius: border-radius();
+
+  &:focus {
+    @include focus-ring($style: 'focused');
+    background-color: var(
+      --top-bar-background-lighter,
+      var(--p-override-transparent)
+    );
+    outline: none;
+  }
+
+  &:hover {
+    background-color: var(
+      --top-bar-background-lighter,
+      var(--p-surface-hovered)
+    );
+  }
+
+  &:active,
+  &[aria-expanded='true'] {
+    background-color: var(
+      --top-bar-background-darker,
+      var(--p-surface-pressed)
+    );
+    outline: none;
+    transition: none;
+
+    &::after {
+      border: none;
+    }
+  }
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    margin: 0;
+
+    &:focus,
+    &:hover,
+    &:active,
+    &[aria-expanded='true'] {
+      background-color: transparent;
+      opacity: menu(focus-opacity);
+    }
+  }
+}
+
+.Section {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: border('divider');
+}
+
+.SectionWithoutTitle {
+  border-top: 0;
+}
+
+.SectionRight {
+  text-align: right;
+}

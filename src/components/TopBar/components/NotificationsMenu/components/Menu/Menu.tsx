@@ -1,16 +1,24 @@
 import React from 'react';
 
-import {ActionList, ActionListProps} from '../../../ActionList';
-import {Popover, PopoverProps} from '../../../Popover';
+import {classNames} from '../../../../../../utilities/css';
+import {Button} from '../../../../../Button';
+import {Heading} from '../../../../../Heading';
+import {TextContainer} from '../../../../../TextContainer';
+import {
+  NotificationList,
+  NotificationListProps,
+} from '../../../../../NotificationList';
+import {Popover, PopoverProps} from '../../../../../Popover';
 
-import {Message, MessageProps} from './components';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import type {MessageProps} from './components/Message';
 import styles from './Menu.scss';
 
 export interface MenuProps {
   /** Accepts an activator component that renders inside of a button that opens the menu */
   activatorContent: React.ReactNode;
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
-  actions: ActionListProps['sections'];
+  notifications?: NotificationListProps['sections'];
   /** Accepts a message that facilitates direct, urgent communication with the merchant through the menu */
   message?: MessageProps;
   /** A boolean property indicating whether the menu is currently open */
@@ -29,7 +37,7 @@ export interface MenuProps {
 
 export function Menu(props: MenuProps) {
   const {
-    actions,
+    notifications,
     onOpen,
     onClose,
     open,
@@ -39,27 +47,7 @@ export function Menu(props: MenuProps) {
     accessibilityLabel,
   } = props;
 
-  const badgeProps = message &&
-    message.badge && {
-      content: message.badge.content,
-      status: message.badge.status,
-    };
-  const linkProps = message &&
-    message.link && {to: message.link.to, content: message.link.content};
-  const messageMarkup = message && (
-    <Message
-      title={message.title}
-      description={message.description}
-      action={{
-        onClick: message.action.onClick,
-        content: message.action.content,
-      }}
-      link={linkProps}
-      badge={badgeProps}
-    />
-  );
-
-  const isFullHeight = Boolean(message);
+  const isFullHeight = Boolean(message) || Boolean(notifications);
 
   return (
     <Popover
@@ -82,8 +70,21 @@ export function Menu(props: MenuProps) {
       preferredAlignment="right"
       colorScheme={colorScheme}
     >
-      <ActionList onActionAnyItem={onClose} sections={actions} />
-      {messageMarkup}
+      <Popover.Section>
+        <TextContainer>
+          <Heading>{message && message.title}</Heading>
+        </TextContainer>
+      </Popover.Section>
+      <div className={classNames(styles.Section, styles.SectionWithoutTitle)}>
+        <NotificationList onActionAnyItem={onClose} sections={notifications} />
+      </div>
+      <div className={classNames(styles.Section, styles.SectionRight)}>
+        <Popover.Section>
+          <Button plain onClick={message && message.action.onClick}>
+            {message && message.action.content}
+          </Button>
+        </Popover.Section>
+      </div>
     </Popover>
   );
 }

@@ -60,6 +60,7 @@ export function DetailsPage() {
   const [searchActive, setSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [userMenuActive, setUserMenuActive] = useState(false);
+  const [notificationsMenuActive, setNotificationsMenuActive] = useState(false);
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('products');
@@ -107,6 +108,13 @@ export function DetailsPage() {
     () => setUserMenuActive((userMenuActive) => !userMenuActive),
     [],
   );
+  const toggleNotificationsMenuActive = useCallback(
+    () =>
+      setNotificationsMenuActive(
+        (notificationsMenuActive) => !notificationsMenuActive,
+      ),
+    [],
+  );
   const toggleMobileNavigationActive = useCallback(
     () =>
       setMobileNavigationActive(
@@ -130,6 +138,38 @@ export function DetailsPage() {
   const userMenuActions = [
     {
       items: [{content: 'Community forums'}],
+    },
+  ];
+
+  const notifications = [
+    {
+      title: 'The order edited invoice is being replaced on Oct. 22',
+      body:
+        "Any changes you've made the current template will be lost. View the template for more details.",
+      id: 'gid://shopify/AdminNotification/4',
+      createdAt: '2021-10-28T05:44:06Z',
+      isRead: true,
+    },
+    {
+      title: 'Monthly bill has been processed for $29.99USD.',
+      isRead: false,
+      id: 'gid://shopify/AdminNotification/3',
+      createdAt: '2021-10-28T05:44:06Z',
+    },
+    {
+      title: 'Billing payment failed',
+      body: 'Update your expired credit card to retry payment.',
+      id: 'gid://shopify/AdminNotification/2',
+      createdAt: '2021-10-28T05:44:06Z',
+      isRead: true,
+    },
+    {
+      title:
+        'Your credit card will expire before your next monthly bill is due',
+      body: 'Update your card so that your store can continue to be open.',
+      id: 'gid://shopify/AdminNotification/1',
+      createdAt: '2021-10-28T05:44:06Z',
+      isRead: true,
     },
   ];
 
@@ -185,6 +225,31 @@ export function DetailsPage() {
     />
   );
 
+  const notificationsMessage = {
+    title: 'Notifications',
+    action: {
+      onClick: () => {},
+      content: 'Dismiss all',
+    },
+  };
+
+  const notificationsMenuMarkup = (
+    <TopBar.NotificationsMenu
+      notifications={[
+        {
+          // items: [],
+          items: notifications,
+        },
+      ]}
+      unreadCount={2}
+      message={notificationsMessage}
+      open={notificationsMenuActive}
+      onToggle={toggleNotificationsMenuActive}
+      colorScheme="dark"
+      accessibilityLabel="Notifications menu"
+    />
+  );
+
   const searchResultsMarkup = (
     <ActionList
       items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
@@ -203,6 +268,7 @@ export function DetailsPage() {
     <TopBar
       showNavigationToggle
       userMenu={userMenuMarkup}
+      notificationsMenu={notificationsMenuMarkup}
       searchResultsVisible={searchActive}
       searchField={searchFieldMarkup}
       searchResults={searchResultsMarkup}

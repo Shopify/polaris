@@ -10,17 +10,30 @@ import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 
-import {SearchField, UserMenu, Search, Menu} from './components';
-import type {SearchFieldProps, UserMenuProps, SearchProps} from './components';
+import {
+  SearchField,
+  UserMenu,
+  NotificationsMenu,
+  Search,
+  Menu,
+} from './components';
+import type {
+  SearchFieldProps,
+  UserMenuProps,
+  NotificationsMenuProps,
+  SearchProps,
+} from './components';
 import styles from './TopBar.scss';
 
-export type {UserMenuProps, SearchFieldProps};
+export type {UserMenuProps, NotificationsMenuProps, SearchFieldProps};
 
 export interface TopBarProps {
   /** Toggles whether or not a navigation component has been provided. Controls the presence of the mobile nav toggle button */
   showNavigationToggle?: boolean;
   /** Accepts a user component that is made available as a static member of the top bar component and renders as the primary menu */
   userMenu?: React.ReactNode;
+  /** Accepts a user component that is made available as a static member of the top bar component and renders as the primary menu */
+  notificationsMenu?: React.ReactNode;
   /** Accepts a menu component that is made available as a static member of the top bar component */
   secondaryMenu?: React.ReactNode;
   /** Accepts a component that is used to help users switch between different contexts */
@@ -50,9 +63,11 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   Menu: typeof Menu;
   SearchField: typeof SearchField;
   UserMenu: typeof UserMenu;
+  NotificationsMenu: typeof NotificationsMenu;
 } = function TopBar({
   showNavigationToggle,
   userMenu,
+  notificationsMenu,
   searchResults,
   searchField,
   secondaryMenu,
@@ -147,6 +162,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       <div className={styles.Contents}>
         <div className={styles.SearchField}>{searchMarkup}</div>
         <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
+        {notificationsMenu}
         {userMenu}
       </div>
     </div>
@@ -156,3 +172,4 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 TopBar.Menu = Menu;
 TopBar.SearchField = SearchField;
 TopBar.UserMenu = UserMenu;
+TopBar.NotificationsMenu = NotificationsMenu;

@@ -1,0 +1,185 @@
+@import '../../styles/common';
+
+$image-size: rem(20px);
+$item-min-height: rem(40px);
+$item-vertical-padding: ($item-min-height - line-height(body)) / 2;
+$titleVerticalSpacing: spacing(tight) * 1.5;
+$breakpoint: em(640px);
+
+.ActionList {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.1rem;
+}
+
+.Section-withoutTitle:not(:first-child) {
+  border-top: border('divider');
+}
+
+.Actions {
+  list-style: none;
+  margin: 0;
+  border-top: border('divider');
+  padding: 0;
+}
+
+.ActionList,
+.Section:first-child {
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+  > .Section-withoutTitle .Actions {
+    border-top: none;
+  }
+}
+
+.Title {
+  @include text-style-subheading;
+  padding: spacing(extra-tight) spacing() $titleVerticalSpacing spacing();
+
+  &.firstSectionWithTitle {
+    padding-top: $titleVerticalSpacing;
+  }
+}
+
+.Item {
+  @include unstyled-button;
+  @include unstyled-link;
+  @include focus-ring;
+  display: block;
+  width: 100%;
+  min-height: $item-min-height;
+  text-align: left;
+  cursor: pointer;
+  padding: spacing() spacing() spacing() 4rem;
+  border-top: 1px solid var(--p-divider);
+  @media (forced-colors: active) {
+    @include high-contrast-border;
+  }
+
+  &:hover {
+    background-color: var(--p-surface-hovered);
+    text-decoration: none;
+
+    @include high-contrast-outline($border-width: border-width(thicker));
+
+    .CloseButton {
+      display: flex;
+    }
+  }
+
+  &.active {
+    @include recolor-icon(var(--p-interactive));
+    background-color: var(--p-surface-selected);
+
+    &::before {
+      @include list-selected-indicator;
+    }
+  }
+
+  &:active {
+    @include recolor-icon(var(--p-interactive));
+    background-color: var(--p-surface-pressed);
+  }
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
+    @include high-contrast-outline($border-width: border-width(thicker));
+  }
+
+  &.destructive {
+    @include recolor-icon(var(--p-icon-critical));
+    color: var(--p-interactive-critical);
+
+    &:hover {
+      background-color: var(--p-surface-critical-subdued-hovered);
+    }
+
+    // stylelint-disable-next-line selector-max-class
+    &:active,
+    &.active {
+      background-color: var(--p-surface-critical-subdued-pressed);
+    }
+  }
+
+  &.disabled {
+    background-image: none;
+    color: var(--p-text-disabled);
+
+    // stylelint-disable-next-line selector-max-class
+    .Prefix,
+    .Suffix {
+      @include recolor-icon(var(--p-icon-disabled));
+    }
+  }
+}
+
+.ContentWrapper {
+  display: flex;
+}
+
+.Prefix {
+  @include recolor-icon(var(--p-icon));
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  height: $image-size;
+  width: $image-size;
+  border-radius: border-radius();
+
+  // We need the negative margin to ensure that the image does not set
+  // the minimum height of the action item.
+  margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
+  background-size: cover;
+  background-position: center center;
+}
+
+.Badge {
+  margin-top: spacing(tight);
+}
+
+.ContentBlock,
+.ContentBlockInner {
+  display: block;
+}
+
+.Text {
+  @include layout-flex-fix;
+  flex: 1 1 auto;
+}
+
+.Heading {
+  font-size: rem(12px);
+}
+
+.Content {
+  flex: 1 1 100%;
+}
+
+.CloseButtonWrapper {
+  display: block;
+  width: 54px;
+  height: 40px;
+}
+
+.CloseButton {
+  display: none;
+  align-self: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: (-1 * spacing());
+  padding: 0 spacing();
+  border: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+
+  @include breakpoint-after($breakpoint) {
+    align-self: flex-start;
+    margin: (-1 * spacing(tight)) (-1 * spacing()) (-1 * spacing(tight)) 0;
+    padding: (1.5 * spacing(tight)) spacing() spacing(tight);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

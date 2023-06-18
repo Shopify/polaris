@@ -1,0 +1,124 @@
+@import '../../../../../../styles/common';
+
+$height: rem(20px);
+$small-height: rem(10px);
+$extra-small-height: rem(16px);
+$horizontal-padding: rem(6px);
+$vertical-padding: rem(3px);
+
+$pip-size: rem(10px);
+$pip-spacing: ($height - $pip-size) / 2;
+
+.Badge {
+  --p-component-badge-pip-color: var(--p-icon);
+  display: inline-flex;
+  align-items: center;
+  padding: $vertical-padding $horizontal-padding;
+  background-color: var(--p-surface-neutral);
+  border: var(--p-override-zero);
+  border-radius: $height;
+  font-size: rem(13px);
+  line-height: $extra-small-height;
+  color: var(--p-text);
+  font-weight: var(--p-badge-font-weight);
+
+  @media print {
+    border: solid rem(0.1px) var(--p-border);
+    border-radius: $height;
+  }
+}
+
+.sizeSmall {
+  font-size: rem(10px);
+  line-height: $small-height;
+}
+
+.statusSuccess {
+  --p-component-badge-pip-color: var(--p-icon-success);
+  background-color: var(--p-surface-success);
+  color: var(--p-text);
+}
+
+.statusInfo {
+  --p-component-badge-pip-color: var(--p-icon-highlight);
+  background-color: var(--p-surface-highlight);
+  color: var(--p-text);
+}
+
+.statusAttention {
+  --p-component-badge-pip-color: color('yellow', 'dark');
+  background-color: color('yellow', 'light');
+  color: var(--p-text);
+}
+
+.statusWarning {
+  --p-component-badge-pip-color: var(--p-icon-warning);
+  background-color: var(--p-surface-warning);
+  color: var(--p-text);
+}
+
+.statusCritical {
+  --p-component-badge-pip-color: var(--p-icon-critical);
+  background-color: var(--p-surface-critical);
+  color: var(--p-text);
+}
+
+.statusNew {
+  background-color: var(--p-surface-neutral);
+  color: var(--p-text);
+  font-weight: 500;
+  border: none;
+}
+
+.Pip {
+  color: var(--p-component-badge-pip-color);
+  height: $pip-size;
+  width: $pip-size;
+  margin: 0 spacing(extra-tight) 0 ($pip-spacing - $horizontal-padding);
+  border: border-width(thick) solid currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.progressIncomplete .Pip {
+  background: transparent;
+}
+
+.progressPartiallyComplete .Pip {
+  background: linear-gradient(
+    to top,
+    currentColor,
+    currentColor 50%,
+    transparent 50%,
+    transparent
+  );
+
+  // Background colors may be stripped when printing, but box-shadow is not.
+  // We don't want to use box-shadow as the screen style as it gives a very
+  // slight halo effect
+  @media print {
+    background: none;
+    // 100px is an arbitrarily large number so that you can't see the curvature
+    // of the box shadow. y-offset is 3px larger than the spread to make it look
+    // like it is half-way down the pip (which is 6px tall)
+    box-shadow: 0 -103px 0 -100px currentColor inset;
+  }
+}
+
+.progressComplete .Pip {
+  background: currentColor;
+
+  // Background colors may be stripped when printing, but box-shadow is not.
+  // We don't want to use box-shadow as the screen style as it gives a very
+  // slight halo effect
+  @media print {
+    background: none;
+    // 100px is an arbitrarily large number so that you can't see the curvature
+    // of the box shadow.
+    box-shadow: 0 0 0 100px currentColor inset;
+  }
+}
+
+.withinFilter {
+  border-radius: var(--p-border-radius-base);
+}

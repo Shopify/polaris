@@ -1,0 +1,28 @@
+@import '../../../../../../styles/common';
+
+$indicator-size: rem(12px);
+$indicator-position: rem(-3px);
+
+.MessageIndicatorWrapper {
+  position: relative;
+}
+
+.MessageIndicator {
+  position: absolute;
+  z-index: 1;
+  top: $indicator-position;
+  right: $indicator-position;
+  width: $indicator-size;
+  height: $indicator-size;
+  border-radius: 100%;
+  background-color: var(--p-icon-highlight);
+  border: solid rem(2px) var(--p-background);
+}
+
+.UnreadCount {
+  --p-surface-critical: var(--p-icon-critical);
+  --p-text: white;
+  position: absolute;
+  right: rem(-6px);
+  top: rem(-12px);
+}

@@ -1,32 +1,23 @@
 import React from 'react';
 
-import {Badge} from '../../../../../Badge';
-import type {BadgeProps} from '../../../../../Badge';
-import {Button} from '../../../../../Button';
-import {Text} from '../../../../../Text';
-import {Link} from '../../../../../Link';
-import {Popover} from '../../../../../Popover';
-import {LegacyStack} from '../../../../../LegacyStack';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../../../../../TextContainer';
+import {Badge, BadgeProps} from '../../../../../../../Badge';
+import {Button} from '../../../../../../../Button';
+import {Heading} from '../../../../../../../Heading';
+import {Link} from '../../../../../../../Link';
+import {Popover} from '../../../../../../../Popover';
+import {Stack} from '../../../../../../../Stack';
+import {TextContainer} from '../../../../../../../TextContainer';
 
 import styles from './Message.scss';
 
 export interface MessageProps {
   title: string;
-  description: string;
   action: {onClick(): void; content: string};
   link?: {to: string; content: string};
   badge?: {content: string; status: BadgeProps['status']};
 }
 
-export function Message({
-  title,
-  description,
-  action,
-  link,
-  badge,
-}: MessageProps) {
+export function Message({title, action, link, badge}: MessageProps) {
   const badgeMarkup = badge && (
     <Badge status={badge.status}>{badge.content}</Badge>
   );
@@ -38,13 +29,12 @@ export function Message({
   return (
     <div className={styles.Section}>
       <Popover.Section>
-        <LegacyStack vertical spacing="tight">
+        <Stack vertical spacing="tight">
           <TextContainer>
-            <Text variant="headingMd" as="h2">
+            <Heading>
               {title}
               {badgeMarkup}
-            </Text>
-            <p>{description}</p>
+            </Heading>
           </TextContainer>
 
           {linkMarkup}
@@ -52,7 +42,7 @@ export function Message({
           <Button plain onClick={onClick}>
             {actionContent}
           </Button>
-        </LegacyStack>
+        </Stack>
       </Popover.Section>
     </div>
   );

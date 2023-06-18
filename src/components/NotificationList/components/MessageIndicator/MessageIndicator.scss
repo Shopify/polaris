@@ -1,0 +1,18 @@
+@import '../../../../styles/common';
+
+$indicator-size: rem(8px);
+
+.MessageIndicatorWrapper {
+  position: relative;
+}
+
+.MessageIndicator {
+  position: absolute;
+  z-index: 1;
+  top: rem(6px);
+  right: rem(13px);
+  width: $indicator-size;
+  height: $indicator-size;
+  border-radius: 100%;
+  background-color: var(--p-interactive);
+}
