@@ -1,0 +1,20 @@
+{
+  "cancel": "取消",
+  "apply": "套用",
+  "comparisonText": "與 {comparisonRange} 相比",
+  "dateRangeLabel": "日期範圍",
+  "dateRanges": {
+    "custom": "自訂"
+  },
+  "comparisonCheckbox": "相比先前日期",
+  "comparisonLabel": "相比",
+  "comparisonRanges": {
+    "previousPeriod": "上一期間",
+    "previousYear": "去年",
+    "custom": "自訂"
+  },
+  "TextFields": {
+    "starting": "開始",
+    "ending": "結束"
+  }
+}

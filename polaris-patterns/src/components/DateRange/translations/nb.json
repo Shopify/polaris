@@ -1,0 +1,20 @@
+{
+  "cancel": "Avbryt",
+  "apply": "Bruk",
+  "comparisonText": "sammenlignet med {comparisonRange}",
+  "dateRangeLabel": "Datointervall",
+  "dateRanges": {
+    "custom": "Tilpasset"
+  },
+  "comparisonCheckbox": "Sammenlign med tidligere datoer",
+  "comparisonLabel": "Sammenlign med",
+  "comparisonRanges": {
+    "previousPeriod": "Forrige periode",
+    "previousYear": "Forrige år",
+    "custom": "Tilpasset"
+  },
+  "TextFields": {
+    "starting": "Starter",
+    "ending": "Slutter"
+  }
+}

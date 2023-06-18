@@ -1,0 +1,109 @@
+{
+  "name": "@shopify/polaris-patterns",
+  "description": "Shopify’s admin product pattern library",
+  "version": "0.0.0",
+  "private": false,
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify <dev@shopify.com>",
+  "homepage": "https://polaris.shopify.com/patterns",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "files": [
+    "build/",
+    "!build/ts/**/*.tsbuildinfo",
+    "!build/ts/**/tests/",
+    "locales/"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "**/configure.{js,mjs,esnext,ts}"
+  ],
+  "keywords": [
+    "shopify",
+    "polaris",
+    "react",
+    "components",
+    "component library",
+    "patterns",
+    "pattern library"
+  ],
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "esnext": "build/esnext/index.esnext",
+  "types": "build/ts/latest/src/index.d.ts",
+  "scripts": {
+    "build": "run-s build:types build:types-downlevel build:js build:validate",
+    "build:types": "tsc -b",
+    "build:types-downlevel": "downlevel-dts './build/ts/latest' './build/ts/3.4'",
+    "build:js": "rollup -c",
+    "build:validate": "node scripts/build-validate.js",
+    "dev": "yarn run storybook",
+    "lint": "run-p lint:*",
+    "lint:js": "TIMING=1 eslint --cache .",
+    "lint:styles": "stylelint '**/*.{css,scss}'",
+    "test": "jest",
+    "clean": "rm -rf .turbo node_modules build build-internal",
+    "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
+    "storybook": "storybook dev -p 6006 --quiet",
+    "storybook:build": "storybook build -o build-internal/storybook/static"
+  },
+  "peerDependencies": {
+    "@shopify/polaris": "^10.42.1",
+    "@shopify/polaris-icons": "^6.12.0",
+    "@shopify/polaris-tokens": "^6.10.0",
+    "@shopify/react-i18n": "^7.7.2",
+    "react": "^18.2.0",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@shopify/browserslist-config": "^3.0.0",
+    "@shopify/jest-dom-mocks": "^3.0.5",
+    "@shopify/polaris": "^10.42.1",
+    "@shopify/polaris-tokens": "^6.10.0",
+    "@shopify/postcss-plugin": "^5.0.1",
+    "@shopify/react-i18n": "^7.7.2",
+    "@shopify/react-testing": "^4.1.0",
+    "@shopify/storybook-a11y-test": "1.1.2",
+    "@storybook/addon-a11y": "^7.0.5",
+    "@storybook/addon-toolbars": "^7.0.5",
+    "@storybook/addon-viewport": "^7.0.5",
+    "@storybook/react": "^7.0.5",
+    "@storybook/react-webpack5": "^7.0.5",
+    "@types/react": "^18.0.33",
+    "change-case": "^3.1.0",
+    "chromatic": "^6.17.3",
+    "globby": "^11.1.0",
+    "node-sass": "^7.0.1",
+    "postcss": "^8.3.1",
+    "postcss-loader": "^4.2.0",
+    "postcss-modules": "^4.2.2",
+    "postcss-pxtorem": "^5.1.1",
+    "puppeteer": "^14.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass-loader": "^12.4.0",
+    "storybook": "^7.0.5",
+    "webpack": "5"
+  },
+  "browserslist": [
+    "last 3 chrome versions",
+    "last 3 firefox versions",
+    "last 3 opera versions",
+    "last 3 edge versions",
+    "last 3 safari versions",
+    "last 3 chromeandroid versions",
+    "last 1 firefoxandroid versions",
+    "ios >= 13.4"
+  ],
+  "dependencies": {
+    "@shopify/dates": "^2.0.3",
+    "classnames": "^2.3.2"
+  }
+}

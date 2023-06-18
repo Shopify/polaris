@@ -1,0 +1,20 @@
+{
+  "cancel": "Zrušit",
+  "apply": "Použít",
+  "comparisonText": "srovnání s: {comparisonRange}",
+  "dateRangeLabel": "Rozmezí dat",
+  "dateRanges": {
+    "custom": "Vlastní"
+  },
+  "comparisonCheckbox": "Srovnání s předchozími kalendářními daty",
+  "comparisonLabel": "Srovnání s:",
+  "comparisonRanges": {
+    "previousPeriod": "Předchozí období",
+    "previousYear": "Předchozí rok",
+    "custom": "Vlastní"
+  },
+  "TextFields": {
+    "starting": "Začátek",
+    "ending": "Konec"
+  }
+}

@@ -30,3 +30,4 @@ components:
     owners: ['@Shopify/polaris-eng']
     paths:
       - polaris-react/locales/{{language}}.json
+      - polaris-patterns/**/src/components/**/translations/{{language}}.json

@@ -1,4 +1,4 @@
-name: Accessibility and Visual Regression Tests
+name: Polaris React Accessibility and Visual Regression Tests
 
 on:
   push:

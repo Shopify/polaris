@@ -1,0 +1,20 @@
+{
+  "cancel": "Hủy",
+  "apply": "Áp dụng",
+  "comparisonText": "so với {comparisonRange}",
+  "dateRangeLabel": "Khoảng ngày",
+  "dateRanges": {
+    "custom": "Tùy chỉnh"
+  },
+  "comparisonCheckbox": "So sánh với các ngày trước",
+  "comparisonLabel": "So sánh với",
+  "comparisonRanges": {
+    "previousPeriod": "Kỳ trước",
+    "previousYear": "Năm trước",
+    "custom": "Tùy chỉnh"
+  },
+  "TextFields": {
+    "starting": "Bắt đầu",
+    "ending": "Kết thúc"
+  }
+}

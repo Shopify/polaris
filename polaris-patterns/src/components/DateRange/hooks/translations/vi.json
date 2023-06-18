@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "Tùy chỉnh",
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua",
+    "last7days": "7 ngày qua",
+    "last30days": "30 ngày qua",
+    "last90days": "90 ngày qua",
+    "lastMonth": "Tháng trước",
+    "lastYear": "Năm trước",
+    "weekToDate": "Từ đầu tuần đến hiện tại",
+    "monthToDate": "Từ đầu tháng đến hiện tại",
+    "quarterToDate": "Từ đầu quý đến hiện tại",
+    "yearToDate": "Từ đầu năm đến hiện tại",
+    "firstQuarter": "Quý I ({year})",
+    "secondQuarter": "Quý II ({year})",
+    "thirdQuarter": "Quý III ({year})",
+    "fourthQuarter": "Quý IV ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "Khoảng ngày",
+  "comparisonRanges": {
+    "previousPeriod": "Kỳ trước",
+    "previousYear": "Năm trước",
+    "custom": "Tùy chỉnh",
+    "noComparison": "Không so sánh"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "Black Friday Cyber Monday",
+      "quarters": "Quý"
+    }
+  },
+  "compare": "So sánh: "
+}

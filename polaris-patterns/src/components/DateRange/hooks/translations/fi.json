@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "Mukautettu",
+    "today": "Tänään",
+    "yesterday": "Eilen",
+    "last7days": "Viimeiset seitsemän päivää",
+    "last30days": "Viimeiset 30 päivää",
+    "last90days": "Viimeiset 90 päivää",
+    "lastMonth": "Viime kuukausi",
+    "lastYear": "Viime vuosi",
+    "weekToDate": "Viikko tähän asti",
+    "monthToDate": "Kuukausi tähän asti",
+    "quarterToDate": "Vuosineljännes tähän asti",
+    "yearToDate": "Vuosi tähän asti",
+    "firstQuarter": "1. vuosineljännes ({year})",
+    "secondQuarter": "2. vuosineljännes ({year})",
+    "thirdQuarter": "3. vuosineljännes ({year})",
+    "fourthQuarter": "4. vuosineljännes ({year})",
+    "bfcm": "BFCM ({year})"
+  },
+  "dateRange": "Aikaväli",
+  "comparisonRanges": {
+    "previousPeriod": "Edellinen jakso",
+    "previousYear": "Edellinen vuosi",
+    "custom": "Mukautettu",
+    "noComparison": "Ei verrattavaa"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "Black Friday Cyber Monday",
+      "quarters": "Vuosineljännekset"
+    }
+  },
+  "compare": "Vertaa: "
+}

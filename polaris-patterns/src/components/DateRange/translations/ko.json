@@ -1,0 +1,20 @@
+{
+  "cancel": "취소",
+  "apply": "적용",
+  "comparisonText": "비교 대상: {comparisonRange}",
+  "dateRangeLabel": "날짜 범위",
+  "dateRanges": {
+    "custom": "사용자 지정"
+  },
+  "comparisonCheckbox": "이전 날짜와 비교",
+  "comparisonLabel": "비교 대상",
+  "comparisonRanges": {
+    "previousPeriod": "이전 기간",
+    "previousYear": "전년도",
+    "custom": "사용자 지정"
+  },
+  "TextFields": {
+    "starting": "시작",
+    "ending": "종료"
+  }
+}

@@ -1,0 +1,110 @@
+@import '@shopify/polaris-tokens/dist/scss/media-queries.scss';
+
+.PopoverPicker {
+  display: flex;
+  align-items: center;
+}
+
+.DatePickerContainer {
+  display: flex;
+  min-height: 20rem; // legacy-polaris-v8.rem(334px);
+  @media #{$p-breakpoints-md-down} {
+    flex-direction: column;
+  }
+}
+
+.ButtonStyle {
+  display: inline-flex;
+}
+
+.Label {
+  padding-left: var(--p-space-2);
+}
+
+.DateRangeSelector {
+  border-right: var(--p-border-divider);
+  width: 13rem; // legacy-polaris-v8.rem(212px);
+  max-height: 20rem; // legacy-polaris-v8.rem(334px);
+  overflow-y: auto;
+
+  @media #{$p-breakpoints-md-down} {
+    border-right: none;
+    padding: var(--p-space-5);
+    padding-bottom: var(--p-space-1);
+    width: 100%;
+    max-width: 32rem; // legacy-polaris-v8.rem(516px);
+
+    overflow: hidden;
+  }
+}
+
+.ComparisonCheckbox {
+  margin: 0 0 calc(-1 * var(--p-space-2));
+}
+
+.ComparisonCheckboxHasBorder {
+  @media #{$p-breakpoints-xl-down} {
+    padding-top: var(--p-space-4);
+    margin-top: var(--p-space-6);
+    border-top: var(--p-border-divider);
+  }
+  // @include legacy-polaris-v8.breakpoint-before(common.$breakpoint-desktop-max) {
+  //   padding-top: var(--p-space-4);
+  //   margin-top: var(--p-space-6);
+  //   border-top: var(--p-border-divider);
+  // }
+}
+
+.SheetPickerContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.SheetPicker {
+  padding: var(--p-space-5);
+}
+
+.Footer {
+  padding: var(--p-space-4);
+  border-top: var(--p-border-width-1) solid var(--p-color-bg-info-subdued); // legacy-polaris-v8.color(sky);
+}
+
+.DatePicker {
+  padding: var(--p-space-5);
+  max-width: 32rem; // legacy-polaris-v8.rem(516px);
+  @media #{$p-breakpoints-md-up} and #{$p-breakpoints-lg-down} {
+    max-width: 20rem;
+    // max-width: legacy-polaris-v8.rem(320px);
+  }
+}
+
+.TextFieldsWrapper {
+  margin-bottom: var(--p-space-4);
+}
+
+.TextFields {
+  display: flex;
+  gap: var(--p-space-2);
+  align-items: center;
+  justify-content: center;
+
+  > * {
+    flex-grow: 1;
+  }
+}
+
+.BetaFlagHidden {
+  display: none;
+}
+
+.ArrowIcon {
+  flex-grow: 0;
+  height: var(--p-space-4);
+  width: var(--p-space-4);
+}
+
+.ActionButtonWrapper {
+  padding: var(--p-space-4);
+  border-top: var(--p-border-divider);
+}

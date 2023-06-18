@@ -1,0 +1,20 @@
+{
+  "cancel": "キャンセル",
+  "apply": "適用",
+  "comparisonText": "{comparisonRange}と比較",
+  "dateRangeLabel": "日付範囲",
+  "dateRanges": {
+    "custom": "カスタム"
+  },
+  "comparisonCheckbox": "以前の日付と比較",
+  "comparisonLabel": "次と比較：",
+  "comparisonRanges": {
+    "previousPeriod": "前期",
+    "previousYear": "前年",
+    "custom": "カスタム"
+  },
+  "TextFields": {
+    "starting": "開始",
+    "ending": "終了"
+  }
+}

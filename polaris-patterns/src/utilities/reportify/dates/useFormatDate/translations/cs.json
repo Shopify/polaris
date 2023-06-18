@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "Po",
+        "tuesday": "Út",
+        "wednesday": "St",
+        "thursday": "Čt",
+        "friday": "Pá",
+        "saturday": "So",
+        "sunday": "Ne"
+      },
+      "long": {
+        "monday": "Pondělí",
+        "tuesday": "Úterý",
+        "wednesday": "Středa",
+        "thursday": "Čtvrtek",
+        "friday": "Pátek",
+        "saturday": "Sobota",
+        "sunday": "Neděle"
+      }
+    },
+    "quarters": {
+      "q1": "1. čtvrtletí {year}",
+      "q2": "2. čtvrtletí {year}",
+      "q3": "3. čtvrtletí {year}",
+      "q4": "4. čtvrtletí {year}"
+    },
+    "months": {
+      "short": {
+        "january": "Led",
+        "february": "Úno",
+        "march": "Bře",
+        "april": "Dub",
+        "may": "Květen",
+        "june": "Čvn",
+        "july": "Čvc",
+        "august": "Srp",
+        "september": "Zář",
+        "october": "Říj",
+        "november": "Lis",
+        "december": "Pro"
+      },
+      "long": {
+        "january": "Leden",
+        "february": "Únor",
+        "march": "Březen",
+        "april": "Duben",
+        "may": "Květen",
+        "june": "Červen",
+        "july": "Červenec",
+        "august": "Srpen",
+        "september": "Září",
+        "october": "Říjen",
+        "november": "Listopad",
+        "december": "Prosinec"
+      }
+    }
+  }
+}

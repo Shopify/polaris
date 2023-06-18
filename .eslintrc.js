@@ -33,6 +33,8 @@ module.exports = {
     'dist',
     'polaris-react/build',
     'polaris-react/build-internal',
+    'polaris-patterns/build',
+    'polaris-patterns/build-internal',
   ],
   rules: {
     'func-style': 'off',
@@ -136,7 +138,10 @@ module.exports = {
       },
     },
     {
-      files: ['polaris-react/src/**/*.{ts,tsx}'],
+      files: [
+        'polaris-react/src/**/*.{ts,tsx}',
+        'polaris-patterns/src/**/*.{ts,tsx}',
+      ],
       extends: ['plugin:@shopify/typescript-type-checking'],
       rules: {
         '@typescript-eslint/prefer-readonly': 'off',
@@ -166,6 +171,7 @@ module.exports = {
       files: [
         'polaris-react/playground/*.tsx',
         'polaris-react/src/components/**/*.stories.tsx',
+        'polaris-patterns/src/components/**/*.stories.tsx',
       ],
       rules: {
         'react/prefer-stateless-function': 'off',

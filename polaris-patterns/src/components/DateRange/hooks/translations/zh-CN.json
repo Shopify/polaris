@@ -1,0 +1,35 @@
+{
+  "dateRanges": {
+    "custom": "自定义",
+    "today": "今天",
+    "yesterday": "昨天",
+    "last7days": "过去 7 天",
+    "last30days": "过去 30 天",
+    "last90days": "过去 90 天",
+    "lastMonth": "上个月",
+    "lastYear": "去年",
+    "weekToDate": "至今周数",
+    "monthToDate": "至今月数",
+    "quarterToDate": "至今季度数",
+    "yearToDate": "至今年数",
+    "firstQuarter": "第一季度（{year} 年）",
+    "secondQuarter": "第二季度（{year} 年）",
+    "thirdQuarter": "第三季度（{year} 年）",
+    "fourthQuarter": "第四季度（{year} 年）",
+    "bfcm": "BFCM（{year} 年）"
+  },
+  "dateRange": "日期范围",
+  "comparisonRanges": {
+    "previousPeriod": "上一时间段",
+    "previousYear": "前一年",
+    "custom": "自定义",
+    "noComparison": "无对比"
+  },
+  "quickPicks": {
+    "sections": {
+      "bfcm": "黑色星期五/网络星期一",
+      "quarters": "季度"
+    }
+  },
+  "compare": "对比： "
+}

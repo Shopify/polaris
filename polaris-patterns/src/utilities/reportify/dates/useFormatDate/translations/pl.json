@@ -1,0 +1,60 @@
+{
+  "DateFormats": {
+    "weekdays": {
+      "short": {
+        "monday": "Pon",
+        "tuesday": "Wt",
+        "wednesday": "Śr",
+        "thursday": "Czw",
+        "friday": "Pt",
+        "saturday": "Sob",
+        "sunday": "Ndz"
+      },
+      "long": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
+      }
+    },
+    "quarters": {
+      "q1": "Kw.1 {year}",
+      "q2": "Kw.2 {year}",
+      "q3": "Kw.3 {year}",
+      "q4": "Kw.4 {year}"
+    },
+    "months": {
+      "short": {
+        "january": "Sty",
+        "february": "Lut",
+        "march": "Mar",
+        "april": "Kwi",
+        "may": "Maj",
+        "june": "Cze",
+        "july": "Lip",
+        "august": "Sie",
+        "september": "Wrz",
+        "october": "Paź",
+        "november": "Lis",
+        "december": "Gru"
+      },
+      "long": {
+        "january": "Styczeń",
+        "february": "Luty",
+        "march": "Marzec",
+        "april": "Kwiecień",
+        "may": "Maj",
+        "june": "Czerwiec",
+        "july": "Lipiec",
+        "august": "Sierpień",
+        "september": "Wrzesień",
+        "october": "Październik",
+        "november": "Listopad",
+        "december": "Grudzień"
+      }
+    }
+  }
+}
