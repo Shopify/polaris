@@ -473,6 +473,22 @@ export function Micro() {
   );
 }
 
+export function Truncate() {
+  return (
+    <Box
+      maxWidth="100px"
+      borderColor="border"
+      borderWidth="1"
+      borderRadius="1"
+      overflowX="hidden"
+    >
+      <Button truncate>
+        Some very long button text that will not fit and will need to truncate
+      </Button>
+    </Box>
+  );
+}
+
 export function Slim() {
   return <Button size="slim">Save variant</Button>;
 }

@@ -125,6 +125,12 @@
   }
 }
 
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .textAlignLeft {
   justify-content: flex-start;
   text-align: left;
@@ -971,6 +977,10 @@
 .fullWidth {
   display: flex;
   width: 100%;
+}
+
+.truncateButton {
+  max-width: 100%;
 }
 
 .iconOnly {
