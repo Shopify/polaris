@@ -127,11 +127,7 @@ export function Section({
     <Box
       as="li"
       role="presentation"
-      borderColor={
-        polarisSummerEditions2023
-          ? 'border-faint-experimental'
-          : 'border-subdued'
-      }
+      borderColor="border-subdued"
       {...(!isFirst && {borderBlockStartWidth: '1'})}
       {...(!section.title && {paddingBlockStart: '2'})}
     >

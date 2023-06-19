@@ -162,9 +162,6 @@ $loading-panel-height: 53px;
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   #{$se23} & {
-    border-top: var(--p-border-width-1) solid
-      var(--p-color-border-faint-experimental);
-
     &:first-child {
       border-top: var(--p-border-width-1) solid var(--p-color-border);
     }
