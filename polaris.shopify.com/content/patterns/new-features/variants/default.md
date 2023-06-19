@@ -43,3 +43,5 @@ They should have a short lifespan. The badge should disappear:
 - When the user has clicked on the interactive element it’s attached to, or
 - 5 days after they first saw it, or
 - after 3 sessions, such as landing on a page 3 times
+
+They should be removed completely for all users ~1 month after launching to avoid visual clutter building up
