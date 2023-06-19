@@ -553,7 +553,7 @@ export const color: {
   },
   'color-border-strong-hover': {
     value: colors.gray[700],
-    valueExperimental: colorsExperimental.gray[9](),
+    valueExperimental: colorsExperimental.gray[11](),
     description: '',
   },
   'color-border-input': {
@@ -568,7 +568,7 @@ export const color: {
   },
   'color-border-strong': {
     value: colors.gray[600],
-    valueExperimental: colorsExperimental.gray[8](),
+    valueExperimental: colorsExperimental.gray[10](),
     description: '',
   },
   'color-border': {
@@ -583,7 +583,7 @@ export const color: {
   },
   'color-border-subdued': {
     value: colors.gray[400],
-    valueExperimental: colorsExperimental.gray[10](),
+    valueExperimental: colorsExperimental.gray[7](),
     description: '',
   },
   'color-border-interactive-disabled': {
