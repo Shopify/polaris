@@ -289,7 +289,7 @@ export const color: {
   },
   'color-bg-active': {
     value: colors.gray[300],
-    valueExperimental: colorsExperimental.gray[3](),
+    valueExperimental: colorsExperimental.gray[4](),
     description: '',
   },
   'color-bg-subdued-hover': {
@@ -304,7 +304,7 @@ export const color: {
   },
   'color-bg-hover': {
     value: colors.gray[200],
-    valueExperimental: colorsExperimental.gray[2](),
+    valueExperimental: colorsExperimental.gray[3](),
     description: '',
   },
   'color-bg-subdued': {
