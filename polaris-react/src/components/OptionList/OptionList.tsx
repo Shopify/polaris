@@ -139,11 +139,7 @@ export function OptionList({
             paddingInlineEnd={
               polarisSummerEditions2023 ? '1_5-experimental' : '2'
             }
-            borderColor={
-              polarisSummerEditions2023
-                ? 'border-faint-experimental'
-                : 'border-subdued'
-            }
+            borderColor="border-subdued"
             borderBlockStartWidth={!isFirstOption ? '1' : undefined}
           >
             <Text
