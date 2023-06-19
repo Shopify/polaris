@@ -899,20 +899,20 @@
       fill: var(--p-color-icon-hover);
     }
 
-    #{$se23} &:hover,
-    #{$se23} &:focus:not(:active, .pressed, .disabled) {
-      // stylelint-disable-next-line selector-max-combinators -- se23
-      svg {
-        fill: var(--p-color-icon-interactive-hover);
-      }
-    }
-
     &:active svg,
     &.pressed svg {
       fill: var(--p-color-icon-active);
 
       #{$se23} & {
-        fill: var(--p-color-icon-interactive-active);
+        // Specificity bump
+        fill: var(--p-color-icon-active);
+      }
+    }
+
+    &:focus svg {
+      #{$se23} & {
+        // Specificity bump
+        fill: var(--p-color-icon-hover);
       }
     }
 
@@ -939,12 +939,12 @@
       fill: var(--p-color-bg-critical-strong-hover);
 
       #{$se23} & {
-        fill: var(--p-color-icon-critical-strong-hover-experimental);
+        fill: var(--p-color-icon-critical-strong-experimental);
       }
     }
 
     #{$se23} &:focus:not(:active, .pressed, .disabled) svg {
-      fill: var(--p-color-icon-critical-strong-hover-experimental);
+      fill: var(--p-color-icon-critical-strong-experimental);
     }
 
     &:active svg,
@@ -952,7 +952,7 @@
       fill: var(--p-color-bg-critical-strong-active);
 
       #{$se23} & {
-        fill: var(--p-color-icon-critical-strong-active-experimental);
+        fill: var(--p-color-icon-critical-strong-experimental);
       }
     }
 
