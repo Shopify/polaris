@@ -677,6 +677,7 @@
 
   #{$se23} & {
     box-shadow: none;
+    // stylelint-disable-next-line -- polaris/conventions/polaris/custom-property-allowed-list
     margin: calc(-1 * var(--pc-button-vertical-padding))
       calc(-1 * var(--p-space-3));
   }
