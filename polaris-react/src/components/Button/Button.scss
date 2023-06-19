@@ -677,6 +677,8 @@
 
   #{$se23} & {
     box-shadow: none;
+    margin: calc(-1 * var(--pc-button-vertical-padding))
+      calc(-1 * var(--p-space-3));
   }
 
   svg {
