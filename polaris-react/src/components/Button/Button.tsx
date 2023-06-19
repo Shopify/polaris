@@ -55,6 +55,8 @@ export interface ButtonProps extends BaseButton {
   dataPrimaryLink?: boolean;
   /** Extra visual weight combined with indication of a positive action */
   primarySuccess?: boolean;
+  /** Truncate text overflow with ellipsis */
+  truncate?: boolean;
 }
 
 interface CommonButtonProps
@@ -137,6 +139,7 @@ export function Button({
   connectedDisclosure,
   dataPrimaryLink,
   primarySuccess,
+  truncate,
 }: ButtonProps) {
   const i18n = useI18n();
 
@@ -163,6 +166,7 @@ export function Button({
     removeUnderline && styles.removeUnderline,
     primarySuccess && styles.primary,
     primarySuccess && styles.success,
+    truncate && styles.truncateButton,
   );
 
   const disclosureMarkup = disclosure ? (
@@ -192,6 +196,7 @@ export function Button({
     <span
       className={classNames(
         styles.Text,
+        truncate && styles.truncate,
         removeUnderline && styles.removeUnderline,
       )}
       // Fixes Safari bug that doesn't re-render button text to correct color
