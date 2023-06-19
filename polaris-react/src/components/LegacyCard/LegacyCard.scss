@@ -73,11 +73,6 @@
   + .Section {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
-    #{$se23} & {
-      border-top: var(--p-border-width-1) solid
-        var(--p-color-border-faint-experimental);
-    }
-
     @media print {
       border-top: 0;
     }
