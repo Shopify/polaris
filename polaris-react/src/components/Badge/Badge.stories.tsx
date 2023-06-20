@@ -76,15 +76,11 @@ export function WithStatusAndProgressLabelOverride() {
 
 const TempIcon = () => (
   <svg viewBox="0 0 20 20">
-    <path d="M11 13.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="#5C5F62" />
-    <path
-      d="M10.75 6.25a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 1.5 0v-4Z"
-      fill="#5C5F62"
-    />
+    <path d="M11 13.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
+    <path d="M10.75 6.25a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 1.5 0v-4Z" />
     <path
       fill-rule="evenodd"
       d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"
-      fill="#5C5F62"
     />
   </svg>
 );
@@ -197,7 +193,7 @@ export function All() {
             </VerticalStack>
             <VerticalStack gap="2">
               <Text as="h2" variant="headingXs">
-                Status / Icon only
+                Status with icon only
               </Text>
               <HorizontalStack gap="2">
                 {statusEntries.map(([status]) => (

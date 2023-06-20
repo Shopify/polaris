@@ -207,8 +207,7 @@
   background-color: transparent;
 
   svg {
-    // stylelint-disable-next-line -- TODO: What token should this be?
-    fill: rgba(255, 255, 255, 0.45);
+    fill: var(--p-color-icon-subdued);
   }
 }
 
