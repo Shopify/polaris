@@ -8,6 +8,14 @@
   background-color: var(--p-color-bg);
   border-radius: var(--p-border-radius-2);
   overflow: hidden;
+
+  #{$se23} & {
+    border-radius: 0;
+
+    @media #{$p-breakpoints-sm-up} {
+      border-radius: var(--p-border-radius-3);
+    }
+  }
 }
 
 .condensed {
@@ -17,6 +25,10 @@
     justify-content: center;
     width: 100%;
     padding: var(--p-space-4) var(--p-space-2) 0;
+
+    #{$se23} & {
+      padding: var(--p-space-4) var(--p-space-3);
+    }
 
     @media #{$p-breakpoints-md-up} {
       justify-content: flex-end;
@@ -29,6 +41,10 @@
 
   .IncreasedTableDensity & {
     padding: var(--p-space-2) var(--p-space-2) 0 var(--p-space-2);
+
+    #{$se23} & {
+      padding: var(--p-space-4) var(--p-space-3);
+    }
   }
 }
 
@@ -38,13 +54,29 @@
   background: var(--p-color-text-subdued);
   border-radius: var(--p-border-radius-1);
 
+  #{$se23} & {
+    background: var(--p-color-icon-subdued);
+  }
+
   &:not(:last-of-type) {
+    margin-right: var(--p-space-1);
+  }
+
+  #{$se23} &:first-of-type {
+    margin-left: var(--p-space-1);
+  }
+
+  #{$se23} &:last-of-type {
     margin-right: var(--p-space-1);
   }
 }
 
 .Pip-visible {
   background: var(--p-color-text);
+
+  #{$se23} & {
+    background: var(--p-color-icon);
+  }
 }
 
 .ScrollContainer {
@@ -63,6 +95,11 @@
 .TableRow + .TableRow {
   .Cell {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    #{$se23} & {
+      border-top: var(--p-border-width-1) solid
+        var(--p-color-border-faint-experimental);
+    }
   }
 }
 
@@ -75,8 +112,32 @@
   transition: background-color var(--p-motion-duration-200)
     var(--p-motion-ease-in-out);
 
+  #{$se23} & {
+    padding: var(--p-space-2) var(--p-space-1_5-experimental);
+
+    &:first-child {
+      padding-left: var(--p-space-3);
+    }
+
+    &:last-child {
+      padding-right: var(--p-space-3);
+    }
+  }
+
   .IncreasedTableDensity & {
     padding: var(--p-space-2) var(--p-space-4);
+
+    #{$se23} & {
+      padding: var(--p-space-1_5-experimental);
+
+      &:first-child {
+        padding-left: var(--p-space-3);
+      }
+
+      &:last-child {
+        padding-right: var(--p-space-3);
+      }
+    }
   }
 }
 
@@ -103,6 +164,10 @@
   right: 0;
   bottom: 0;
   border-right: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+  #{$se23} & {
+    border-right: var(--p-border-width-1) solid var(--p-color-border);
+  }
 }
 
 .Cell-firstColumn {
@@ -128,24 +193,60 @@
   border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
   border-top: 0;
 
+  #{$se23} & {
+    padding-top: var(--p-space-3);
+    padding-bottom: var(--p-space-3);
+    border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+  }
+
   .IncreasedTableDensity & {
     font-weight: var(--p-font-weight-medium);
     font-size: var(--p-font-size-75);
+
+    #{$se23} & {
+      font-weight: var(--p-font-weight-regular);
+      font-size: var(--p-font-size-80-experimental);
+    }
   }
 }
 
 .Cell-sortable {
   padding: 0;
 
+  #{$se23} & {
+    // Specificity bump
+    padding: 0;
+
+    &:first-child {
+      padding-left: var(--p-space-2);
+    }
+
+    &:last-child {
+      padding-right: var(--p-space-2);
+    }
+  }
+
   .IncreasedTableDensity & {
     padding: var(--p-space-2) var(--p-space-3);
 
+    #{$se23} & {
+      padding: 0;
+    }
+
     &:first-child {
       padding-left: var(--p-space-3);
+
+      #{$se23} & {
+        padding-left: var(--p-space-2);
+      }
     }
 
     &:last-child {
       padding-right: var(--p-space-3);
+
+      #{$se23} & {
+        padding-right: var(--p-space-2);
+      }
     }
   }
 
@@ -201,6 +302,13 @@
   padding: var(--p-space-2);
   margin: var(--p-space-2);
 
+  #{$se23} & {
+    // stylelint-disable polaris/space/declaration-property-unit-disallowed-list -- Using hard coded px values to avoid cutting off the focus ring when overflow:hidden is applied via .Cell-truncate
+    margin: 3px;
+    padding: 9px 3px;
+    // stylelint-enable polaris/space/declaration-property-unit-disallowed-list
+  }
+
   svg {
     fill: var(--p-color-icon-disabled);
   }
@@ -219,10 +327,23 @@
     padding: 0;
     padding-right: var(--p-space-1);
     margin: 0;
+
+    #{$se23} & {
+      font-weight: var(--p-font-weight-regular);
+      font-size: var(--p-font-size-80-experimental);
+      // stylelint-disable polaris/space/declaration-property-unit-disallowed-list -- Using hard coded px values to avoid cutting off the focus ring when overflow:hidden is applied via .Cell-truncate
+      margin: 3px;
+      padding: 3px;
+      // stylelint-enable polaris/space/declaration-property-unit-disallowed-list
+    }
   }
 
   &:hover {
     color: var(--p-color-text-interactive-hover);
+
+    #{$se23} & {
+      color: var(--p-color-text);
+    }
 
     .Icon {
       opacity: 1;
@@ -259,6 +380,10 @@
 
   &:hover svg {
     fill: var(--p-color-icon-interactive-hover);
+
+    #{$se23} & {
+      fill: var(--p-color-icon);
+    }
   }
 
   .Heading:focus:not(:active) {
@@ -272,6 +397,10 @@
   font-weight: var(--p-font-weight-semibold);
   background: var(--p-color-bg-subdued);
   border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+  #{$se23} & {
+    border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+  }
 
   .ZebraStripingOnData.ShowTotals & {
     background: var(--p-color-bg-subdued);
@@ -287,12 +416,26 @@
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   border-bottom: none;
 
+  #{$se23} & {
+    // Specificity bump
+    border-bottom: none;
+    border-top: var(--p-border-width-1) solid var(--p-color-border);
+  }
+
   &:first-child {
     border-bottom-left-radius: var(--p-border-radius-2);
+
+    #{$se23} & {
+      border-radius: 0;
+    }
   }
 
   &:last-child {
     border-bottom-right-radius: var(--p-border-radius-2);
+
+    #{$se23} & {
+      border-radius: 0;
+    }
   }
 }
 
@@ -304,6 +447,16 @@
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   border-bottom-left-radius: var(--p-border-radius-2);
   border-bottom-right-radius: var(--p-border-radius-2);
+
+  #{$se23} & {
+    padding: var(--p-space-2) var(--p-space-3);
+    border-top: var(--p-border-width-1) solid var(--p-color-border);
+    border-radius: 0;
+  }
+
+  #{$se23} .IncreasedTableDensity & {
+    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+  }
 
   .ZebraStripingOnData & {
     background: none;
@@ -350,6 +503,10 @@
     .FixedFirstColumn {
       bottom: 0;
       top: auto;
+
+      #{$se23} & {
+        padding-left: var(--p-space-3);
+      }
     }
   }
 
@@ -361,6 +518,10 @@
     visibility: visible;
     background-color: var(--p-color-bg);
     box-shadow: var(--p-shadow-md);
+
+    #{$se23} & {
+      box-shadow: var(--p-shadow-xs);
+    }
   }
 }
 
