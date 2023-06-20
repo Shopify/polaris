@@ -523,8 +523,10 @@
     }
 
     &.disabled {
-      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       --pc-button-text: var(--p-color-text-disabled);
+      --pc-button-border-disabled-border-box-shadow: none;
+      // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       background: transparent;
     }
 
