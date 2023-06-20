@@ -25,6 +25,10 @@
   &:active,
   &.pressed {
     background: var(--p-color-bg-active);
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-transparent-active-experimental);
+    }
   }
 
   &:focus-visible:not(:active) {
