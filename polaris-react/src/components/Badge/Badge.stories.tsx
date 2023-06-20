@@ -9,7 +9,6 @@ import {
   Text,
   Box,
 } from '@shopify/polaris';
-import {ClockMajor} from '@shopify/polaris-icons';
 
 export default {
   component: Badge,
@@ -74,6 +73,21 @@ export function WithStatusAndProgressLabelOverride() {
     </Badge>
   );
 }
+
+const TempIcon = () => (
+  <svg viewBox="0 0 20 20">
+    <path d="M11 13.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="#5C5F62" />
+    <path
+      d="M10.75 6.25a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 1.5 0v-4Z"
+      fill="#5C5F62"
+    />
+    <path
+      fill-rule="evenodd"
+      d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"
+      fill="#5C5F62"
+    />
+  </svg>
+);
 
 export type Entry<T> = [keyof T, T[keyof T]];
 export type Entries<T> = Entry<T>[];
@@ -173,7 +187,7 @@ export function All() {
                   <Badge
                     key={status}
                     size={size}
-                    icon={ClockMajor}
+                    icon={TempIcon}
                     status={status === 'default' ? undefined : status}
                   >
                     {statusLabel}
@@ -190,7 +204,7 @@ export function All() {
                   <Badge
                     key={status}
                     size={size}
-                    icon={ClockMajor}
+                    icon={TempIcon}
                     status={status === 'default' ? undefined : status}
                   />
                 ))}

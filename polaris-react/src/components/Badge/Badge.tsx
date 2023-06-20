@@ -92,8 +92,7 @@ export function Badge({
 
   if (progress && !icon) {
     accessibilityMarkup = polarisSummerEditions2023 ? (
-      // TODO: Move this to CSS and add condition for medium and large sizes
-      <span style={{margin: '-2px 0 -2px -6px'}}>
+      <span className={styles.Icon}>
         <Icon
           accessibilityLabel={accessibilityLabel}
           source={progressIconMap[progress]}

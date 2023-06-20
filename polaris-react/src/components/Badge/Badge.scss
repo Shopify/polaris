@@ -18,7 +18,6 @@
     color: var(--p-color-text-subdued);
     font-weight: var(--p-font-weight-medium);
     border-radius: var(--p-border-radius-2);
-    padding: var(--p-space-05) var(--p-space-1_5-experimental);
 
     // stylelint-disable-next-line -- se23 svg fill override
     svg {
@@ -258,15 +257,24 @@
   // its bounding box.
   margin-left: calc(-1 * (var(--p-space-1)));
 
-  #{$se23} &:only-child {
-    margin-left: 0;
+  #{$se23} & {
+    margin: calc(-1 * var(--p-space-05)) 0 calc(-1 * var(--p-space-05))
+      calc(-1 * var(--p-space-2));
+  }
+
+  .sizeLarge-experimental & {
+    margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
+
+    #{$se23} & {
+      margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
+    }
   }
 
   + * {
     margin-left: var(--p-space-1);
 
     #{$se23} & {
-      margin-left: var(--p-space-1_5-experimental);
+      margin-left: 0;
     }
   }
 }
