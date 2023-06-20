@@ -153,6 +153,7 @@ export type ColorTextAlias =
 
 type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-backdrop'
+  | 'bg-secondary'
   | 'bg-input-hover'
   | 'bg-input-active'
   | 'bg-transparent'
@@ -903,6 +904,10 @@ export const color: {
   // Experimental tokens
   'color-bg-backdrop-experimental': {
     value: colorsExperimental.gray[16]('0.75'),
+    description: '',
+  },
+  'color-bg-secondary-experimental': {
+    value: colorsExperimental.gray[5](),
     description: '',
   },
   'color-bg-input-hover-experimental': {
