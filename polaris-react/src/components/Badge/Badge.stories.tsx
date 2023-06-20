@@ -85,8 +85,8 @@ const TempIcon = () => (
   </svg>
 );
 
-export type Entry<T> = [keyof T, T[keyof T]];
-export type Entries<T> = Entry<T>[];
+type Entry<T> = [keyof T, T[keyof T]];
+type Entries<T> = Entry<T>[];
 
 const statuses: {
   [S in 'default' | NonNullable<BadgeProps['status']>]: string;
