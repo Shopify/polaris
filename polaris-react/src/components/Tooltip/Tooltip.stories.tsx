@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {QuestionMarkMinor} from '@shopify/polaris-icons';
 import type {ComponentMeta} from '@storybook/react';
 import {
@@ -11,7 +11,9 @@ import {
   Box,
   HorizontalStack,
   VerticalStack,
+  Popover,
 } from '@shopify/polaris';
+import type {TooltipProps} from '@shopify/polaris';
 
 export default {
   component: Tooltip,
@@ -485,6 +487,10 @@ export function PersistOnClick() {
 }
 
 export function ActiveStates() {
+  const [popoverActive, setPopoverActive] = useState(false);
+  const [tooltipActive, setTooltipActive] =
+    useState<TooltipProps['active']>(true);
+
   return (
     <Box paddingBlockStart="24">
       <HorizontalStack gap="24">
@@ -504,6 +510,44 @@ export function ActiveStates() {
         >
           <Text variant="bodyLg" fontWeight="bold" as="span">
             Active undefined
+          </Text>
+        </Tooltip>
+        <Tooltip
+          content="This tooltip should hide when popover is active"
+          active={tooltipActive}
+        >
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            <Popover
+              active={popoverActive}
+              activator={
+                <button
+                  onClick={() => {
+                    setPopoverActive(true);
+                    setTooltipActive(false);
+                  }}
+                >
+                  Popover Activator
+                </button>
+              }
+              autofocusTarget="first-node"
+              preferredPosition="below"
+              preferredAlignment="left"
+              onClose={() => {
+                setPopoverActive(false);
+                setTooltipActive(true);
+              }}
+            >
+              <div style={{padding: '12px'}}>
+                <VerticalStack>
+                  <Text variant="bodyMd" fontWeight="bold" as="span">
+                    popoverActive: {popoverActive.toString()}
+                  </Text>
+                  <Text variant="bodyMd" fontWeight="bold" as="span">
+                    tooltipActive: {tooltipActive?.toString()}
+                  </Text>
+                </VerticalStack>
+              </div>
+            </Popover>
           </Text>
         </Tooltip>
       </HorizontalStack>

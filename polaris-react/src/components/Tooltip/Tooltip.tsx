@@ -161,6 +161,13 @@ export function Tooltip({
     [handleBlur, handleClose, persistOnClick, togglePersisting],
   );
 
+  useEffect(() => {
+    if (originalActive === false && active) {
+      handleClose();
+      handleBlur();
+    }
+  }, [originalActive, active, handleClose, handleBlur]);
+
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
       <TooltipOverlay
