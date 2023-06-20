@@ -80,7 +80,7 @@
   background-color: var(--p-color-bg-info-strong);
 
   svg {
-    fill: var(--p-color-icon-info-strong-experimental);
+    fill: var(--p-color-text-info-strong);
   }
 }
 
@@ -111,7 +111,7 @@
   background-color: var(--p-color-bg-caution-strong);
 
   svg {
-    fill: var(--p-color-icon);
+    fill: var(--p-color-text-caution);
   }
 }
 
@@ -142,8 +142,7 @@
   background-color: var(--p-color-bg-warning-strong-experimental);
 
   svg {
-    // TODO: Should this be an experimental icon color?
-    fill: var(--p-color-text-warning-strong);
+    fill: var(--p-color-text-warning-experimental);
   }
 }
 
@@ -164,7 +163,7 @@
 
     // stylelint-disable-next-line -- se23 svg fill override
     svg {
-      fill: var(--p-color-icon-critical);
+      fill: var(--p-color-icon-critical-strong-experimental);
     }
   }
 }
