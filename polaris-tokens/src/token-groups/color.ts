@@ -925,7 +925,7 @@ export const color: {
     description: '',
   },
   'color-bg-transparent-experimental': {
-    value: colorsExperimental.gray[16](),
+    value: colorsExperimental.gray[16]('0'),
     description: '',
   },
   'color-bg-transparent-subdued-experimental': {
