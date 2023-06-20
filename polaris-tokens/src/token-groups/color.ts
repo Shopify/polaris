@@ -154,6 +154,7 @@ export type ColorTextAlias =
 type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-backdrop'
   | 'bg-secondary'
+  | 'bg-secondary-disabled'
   | 'bg-input-hover'
   | 'bg-input-active'
   | 'bg-transparent'
@@ -310,7 +311,7 @@ export const color: {
   },
   'color-bg-subdued': {
     value: colors.gray[100],
-    valueExperimental: colorsExperimental.gray[5](),
+    valueExperimental: colorsExperimental.gray[4](),
     description: '',
   },
   'color-bg-input': {
@@ -908,6 +909,10 @@ export const color: {
   },
   'color-bg-secondary-experimental': {
     value: colorsExperimental.gray[5](),
+    description: '',
+  },
+  'color-bg-secondary-disabled-experimental': {
+    value: colorsExperimental.gray[4](),
     description: '',
   },
   'color-bg-input-hover-experimental': {
