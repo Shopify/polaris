@@ -16,7 +16,6 @@ import {Box} from '../Box';
 import {HorizontalStack} from '../HorizontalStack';
 import {useFeatures} from '../../utilities/features';
 import {VerticalStack} from '../VerticalStack';
-import {Bleed} from '../Bleed';
 
 import styles from './MediaCard.scss';
 
@@ -166,7 +165,7 @@ export function MediaCard({
     popoverActionsMarkup || dismissButtonMarkup ? (
       <Box
         position="absolute"
-        insetBlockStart="4"
+        insetBlockStart={polarisSummerEditions2023 ? undefined : '4'}
         insetInlineEnd="5"
         zIndex="var(--p-z-index-2)"
       >
@@ -187,9 +186,7 @@ export function MediaCard({
               <VerticalStack gap="2">
                 <HorizontalStack wrap={false} align="space-between" gap="2">
                   {headerMarkup}
-                  <Bleed marginBlock="1" marginInline="1">
-                    {popoverOrDismissMarkup}
-                  </Bleed>
+                  {popoverOrDismissMarkup}
                 </HorizontalStack>
                 <p className={styles.Description}>{description}</p>
                 {actionMarkup}
