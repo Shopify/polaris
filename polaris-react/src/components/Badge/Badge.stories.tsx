@@ -204,7 +204,7 @@ export function All() {
                 Status with icon only
               </Text>
               <HorizontalStack gap="2">
-                {statusEntries.map(([status]) => (
+                {filteredStatusEntries.map(([status]) => (
                   <Badge
                     key={status}
                     size={size}
