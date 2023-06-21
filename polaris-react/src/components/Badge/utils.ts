@@ -55,8 +55,12 @@ export function getDefaultAccessibilityLabel(
     case StatusValue.New:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
       break;
-
-    // TODO: Add ReadOnlyExperimental and EnabledExperimental
+    case StatusValue.ReadOnlyExperimental:
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.readOnly');
+      break;
+    case StatusValue.EnabledExperimental:
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.enabled');
+      break;
   }
 
   if (!status && progress) {
