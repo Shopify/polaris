@@ -320,7 +320,7 @@ export const Tab = forwardRef(
           <Text
             as="span"
             variant={se23 ? se23LabelVariant : labelVariant}
-            fontWeight="semibold"
+            fontWeight={se23 ? 'medium' : 'semibold'}
           >
             {icon ?? content}
           </Text>
