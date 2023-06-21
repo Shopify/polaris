@@ -10,6 +10,8 @@ import {
   Box,
 } from '@shopify/polaris';
 
+import {useFeatures} from '../../utilities/features';
+
 export default {
   component: Badge,
 } as ComponentMeta<typeof Badge>;
@@ -131,6 +133,12 @@ const sizes: {
 const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
 
 export function All() {
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const filteredStatusEntries = polarisSummerEditions2023
+    ? statusEntries
+    : statusEntries.filter(([status]) => !status.endsWith('-experimental'));
+
   return (
     <LegacyCard sectioned>
       {sizeEntries.map(([size, sizeLabel]) => (
@@ -144,7 +152,7 @@ export function All() {
                 Status only
               </Text>
               <HorizontalStack gap="2">
-                {statusEntries.map(([status, statusLabel]) => (
+                {filteredStatusEntries.map(([status, statusLabel]) => (
                   <Badge
                     key={status}
                     size={size}
@@ -161,7 +169,7 @@ export function All() {
               </Text>
               {progressEntries.map(([progress]) => (
                 <HorizontalStack key={progress} gap="2">
-                  {statusEntries.map(([status, statusLabel]) => (
+                  {filteredStatusEntries.map(([status, statusLabel]) => (
                     <Badge
                       key={status}
                       size={size}
@@ -179,7 +187,7 @@ export function All() {
                 Status with icon
               </Text>
               <HorizontalStack gap="2">
-                {statusEntries.map(([status, statusLabel]) => (
+                {filteredStatusEntries.map(([status, statusLabel]) => (
                   <Badge
                     key={status}
                     size={size}
