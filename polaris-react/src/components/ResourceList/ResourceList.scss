@@ -84,12 +84,13 @@ $item-wrapper-loading-height: 64px;
   background-color: var(--p-color-bg);
   border-radius: var(--p-border-radius-2);
   #{$se23} & {
-    min-height: 54px;
+    // This container conditionally includes a Select component for sorting
+    // It's 32px above md-up and 36px below
+    // This hardcoded min-height is to ensure the Select has uniform padding when it's 36px high
+    min-height: 52px;
     align-items: center;
     padding: var(--p-space-2) var(--p-space-3);
-    // This container conditionally includes a Select component for sorting
-    // We need dynamic height here to ensure the Select component and its container
-    // have consistent top and bottom spacing at each breakpoint.
+    // We reduce the min-height here to account for the Select shrinking to 32px at this breakpoint.
     @media #{$p-breakpoints-md-up} {
       min-height: 48px;
     }
