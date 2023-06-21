@@ -55,6 +55,8 @@ $nav-animation-variables: (
   }
 
   #{$se23} & {
+    padding-left: var(--p-space-1);
+
     &:focus-visible:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
       @include no-focus-ring;
@@ -115,6 +117,7 @@ $nav-animation-variables: (
 
   #{$se23} & {
     margin-top: var(--p-space-2);
+    margin-right: var(--p-space-2);
     margin-bottom: var(--p-space-2);
   }
 
@@ -124,8 +127,8 @@ $nav-animation-variables: (
     margin-bottom: var(--p-space-1);
 
     #{$se23} & {
-      margin-right: var(--p-space-2);
       margin-top: var(--p-space-1);
+      margin-right: var(--p-space-2);
       margin-bottom: var(--p-space-1);
     }
   }
