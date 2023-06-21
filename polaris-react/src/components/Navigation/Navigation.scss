@@ -263,6 +263,8 @@ $disabled-fade: 0.6;
 
   #{$se23} & {
     font-size: var(--p-font-size-100);
+    margin-top: var(--p-space-2);
+    margin-bottom: var(--p-space-2);
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -272,6 +274,8 @@ $disabled-fade: 0.6;
     margin-bottom: var(--p-space-1);
 
     #{$se23} & {
+      margin-top: var(--p-space-1);
+      margin-bottom: var(--p-space-1);
       font-size: var(--p-font-size-80-experimental);
     }
   }
@@ -478,6 +482,8 @@ $disabled-fade: 0.6;
     line-height: var(--p-space-5);
 
     #{$se23} & {
+      margin-top: var(--p-space-1);
+      margin-bottom: var(--p-space-1);
       font-weight: var(--p-font-weight-regular);
     }
   }
