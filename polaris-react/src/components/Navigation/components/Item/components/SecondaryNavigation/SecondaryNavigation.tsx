@@ -29,15 +29,15 @@ export function SecondaryNavigation({
   const {polarisSummerEditions2023} = useFeatures();
   const secondaryNavigationId = useId();
   const {onNavigationDismiss} = useContext(NavigationContext);
-  const [hoveredItemLabel, setHoveredItemLabel] = useState<
-    string | undefined
+  const [hoveredItem, setHoveredItem] = useState<
+    SubNavigationItem | undefined
   >();
 
-  const matchedItemPosition = subNavigationItems.findIndex(
-    ({matches}) => matches,
+  const matchedItemPosition = subNavigationItems.findIndex((item) =>
+    isEqual(item, longestMatch),
   );
-  const hoveredItemPosition = subNavigationItems.findIndex(
-    ({label}) => label === hoveredItemLabel,
+  const hoveredItemPosition = subNavigationItems.findIndex((item) =>
+    isEqual(item, hoveredItem),
   );
 
   return (
@@ -92,8 +92,8 @@ export function SecondaryNavigation({
                 addHoverPointer={
                   polarisSummerEditions2023 && index === hoveredItemPosition
                 }
-                onMouseEnter={() => setHoveredItemLabel(label)}
-                onMouseLeave={() => setHoveredItemLabel(undefined)}
+                onMouseEnter={() => setHoveredItem(item)}
+                onMouseLeave={() => setHoveredItem(undefined)}
                 matches={isEqual(item, longestMatch)}
                 onClick={onClick}
                 truncateText={truncateText}
