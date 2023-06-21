@@ -702,6 +702,7 @@
     @include focus-ring;
 
     #{$se23} & {
+      font-size: var(--p-font-size-100);
       // stylelint-disable-next-line -- se23 override
       @include no-focus-ring;
     }
