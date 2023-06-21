@@ -30,7 +30,7 @@ export function PageActions({
   if (isReactElement(primaryAction)) {
     primaryActionMarkup = <>{primaryAction}</>;
   } else if (primaryAction) {
-    primaryActionMarkup = buttonsFrom(primaryAction, {primary: true});
+    primaryActionMarkup = buttonsFrom(primaryAction, {primarySuccess: true});
   }
 
   let secondaryActionsMarkup: MaybeJSX = null;
