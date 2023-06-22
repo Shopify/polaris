@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 .FilterButton {
-  background: var(--p-color-bg-subdued);
+  background: var(--p-color-bg-secondary-experimental);
   border-radius: var(--p-border-radius-6);
   border: var(--p-color-border-subdued) dashed var(--p-border-width-1);
   cursor: pointer;
@@ -58,7 +58,7 @@
     }
 
     &:active {
-      background: var(--p-color-bg-subdued);
+      background: var(--p-color-bg-secondary-experimental);
     }
 
     &.disabledFilterButton {
@@ -73,7 +73,7 @@
       border-style: solid;
 
       &:active {
-        background: var(--p-color-bg-subdued);
+        background: var(--p-color-bg-secondary-experimental);
       }
     }
 

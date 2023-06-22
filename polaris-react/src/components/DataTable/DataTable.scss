@@ -148,7 +148,7 @@
   &.RowCountIsEven .TableRow:nth-child(2n + 1) .Cell,
   &.ShowTotalsInFooter .TableRow:nth-child(2n + 1) .Cell,
   &.ShowTotalsInFooter.RowCountIsEven .TableRow:nth-child(2n) .Cell {
-    background: var(--p-color-bg-subdued);
+    background: var(--p-color-bg-secondary-experimental);
   }
 }
 
@@ -390,7 +390,7 @@
 
 .Cell-total {
   font-weight: var(--p-font-weight-semibold);
-  background: var(--p-color-bg-subdued);
+  background: var(--p-color-bg-secondary-experimental);
   border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   #{$se23} & {
@@ -398,7 +398,7 @@
   }
 
   .ZebraStripingOnData.ShowTotals & {
-    background: var(--p-color-bg-subdued);
+    background: var(--p-color-bg-secondary-experimental);
   }
 
   .ZebraStripingOnData.ShowTotals.RowCountIsEven &,
@@ -436,7 +436,7 @@
 
 .Footer {
   padding: var(--p-space-4);
-  background: var(--p-color-bg-subdued);
+  background: var(--p-color-bg-secondary-experimental);
   color: var(--p-color-text-subdued);
   text-align: center;
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
