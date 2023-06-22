@@ -1,5 +1,23 @@
 # Changelog
 
+## 11.2.0
+
+### Minor Changes
+
+- [#9463](https://github.com/Shopify/polaris/pull/9463) [`9df26fc6c`](https://github.com/Shopify/polaris/commit/9df26fc6ce65534dfaddb072d56ee89470f67015) Thanks [@mateus](https://github.com/mateus)! - Removed TopBar background-color transition and fix search input on Safari
+
+* [#9300](https://github.com/Shopify/polaris/pull/9300) [`c0cdf2d2d`](https://github.com/Shopify/polaris/commit/c0cdf2d2d5ada1a8746eb4b3390a80e7f8aac847) Thanks [@zakwarsame](https://github.com/zakwarsame)! - - Fixed tooltip not disappearing when mouse leaves `ActionList.Item`
+
+### Patch Changes
+
+- [#9453](https://github.com/Shopify/polaris/pull/9453) [`b2a1b49b0`](https://github.com/Shopify/polaris/commit/b2a1b49b0c4ecbb9603366d930f2245742313a0c) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - - [CheckableButton]: Fix Checkbox alignment bug
+  - [ResourceList]: Fix Header alignment bug
+
+* [#9473](https://github.com/Shopify/polaris/pull/9473) [`2cc6761b6`](https://github.com/Shopify/polaris/commit/2cc6761b6ff667c1de9fb23a61cbadecfa92c4f9) Thanks [@skparkk](https://github.com/skparkk)! - Updated tooltip's visibility (open/closed state) when `active` prop is updated
+
+* Updated dependencies [[`b73666e63`](https://github.com/Shopify/polaris/commit/b73666e63c5ec5d0f47ecfb66683d8de0f79ab97), [`f9ceb4d02`](https://github.com/Shopify/polaris/commit/f9ceb4d0224b613b0ba1680bcb575714b1ad8300), [`84c015547`](https://github.com/Shopify/polaris/commit/84c015547c3b85938f326604216d819e1f31f6ab), [`bc141cf54`](https://github.com/Shopify/polaris/commit/bc141cf54497deb488f3b8e589e94741f06efd54)]:
+  - @shopify/polaris-tokens@7.3.0
+
 ## 11.1.3
 
 ### Patch Changes
