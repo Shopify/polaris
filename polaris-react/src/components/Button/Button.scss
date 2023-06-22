@@ -1248,6 +1248,7 @@
   #{$se23} & {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    margin-left: calc(-1 * var(--p-space-05));
 
     &::before {
       border-top-left-radius: 0;
