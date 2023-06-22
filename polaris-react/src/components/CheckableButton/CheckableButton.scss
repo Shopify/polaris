@@ -20,8 +20,11 @@
   width: auto;
 
   #{$se23} & {
-    min-height: 24px;
-    min-width: 24px;
+    // Checkable Button has no opinion on its own height, it simply fills its
+    // container
+    min-height: auto;
+    min-width: auto;
+    height: 100%;
   }
 
   svg {

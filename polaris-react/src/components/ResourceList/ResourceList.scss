@@ -239,6 +239,12 @@ $item-wrapper-loading-height: 64px;
 .CheckableButtonWrapper {
   display: none;
 
+  #{$se23} & {
+    // Checkable button has no opinion on its height, so we just fill the
+    // container
+    height: 100%;
+  }
+
   @media #{$p-breakpoints-sm-up} {
     flex: 1;
     display: block;
