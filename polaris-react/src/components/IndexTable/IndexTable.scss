@@ -14,7 +14,15 @@
   border-radius: inherit;
 
   #{$se23} & {
+    // stylelint-disable-next-line -- Polaris component custom properties
+    --pc-index-table-table-header-offset: 32px;
     border-radius: 0;
+
+    // This is to account for the changing Checkbox size at this breakpoint.
+    @media #{$p-breakpoints-md-up} {
+      // stylelint-disable-next-line -- Polaris component custom properties
+      --pc-index-table-table-header-offset: 30px;
+    }
 
     @media #{$p-breakpoints-sm-up} {
       border-radius: inherit;
@@ -291,8 +299,13 @@ $loading-panel-height: 53px;
 // stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators
 
 .TableHeading {
+  // stylelint-disable -- Polaris component custom properties
+  --pc-index-table-heading-padding-x: var(--p-space-4);
+  --pc-index-table-heading-padding-y: var(--p-space-2);
   background: var(--p-color-bg-subdued);
-  padding: var(--p-space-2) var(--p-space-4);
+  padding: var(--pc-index-table-heading-padding-y)
+    var(--pc-index-table-heading-padding-x);
+  // stylelint-enable
   text-align: left;
   font-weight: var(--p-font-weight-medium);
   color: var(--p-color-text-subdued);
@@ -302,10 +315,19 @@ $loading-panel-height: 53px;
 
   #{$se23} & {
     background: var(--p-color-bg-secondary-experimental);
-    padding: var(--p-space-1_5-experimental);
+    // stylelint-disable -- Polaris component custom properties
+    --pc-index-table-heading-padding-x: var(--p-space-1_5-experimental);
+    --pc-index-table-heading-padding-y: var(--p-space-1_5-experimental);
+    --pc-index-table-checkbox-offset-left: var(--p-space-3);
+    --pc-index-table-checkbox-offset-right: var(--p-space-2);
+    // stylelint-enable
     line-height: var(--p-font-line-height-1);
 
-    &:last-child {
+    &:first-child:not(.TableHeading-flush) {
+      padding-left: var(--p-space-3);
+    }
+
+    &:last-child:not(.TableHeading-flush) {
       padding-right: var(--p-space-3);
     }
   }
@@ -339,24 +361,32 @@ $loading-panel-height: 53px;
   padding: 0;
 
   #{$se23} & {
-    padding: 0;
+    // stylelint-disable -- se23 polaris component custom properties
+    /*
+      We specify 0rem here because our bundle process uses postcss-pxtorem.
+      This forceable converts 0px to 0 which is invalid for calcs but leaves rems alone.
+      See https://github.com/cuth/postcss-pxtorem/blob/122649015322214f8e9d1ac852eb11c0791b634b/index.js#L52
+    */
+    --pc-index-table-heading-padding-x: 0rem;
+    padding: var(--pc-index-table-heading-padding-y)
+      var(--pc-index-table-heading-padding-x);
+    // stylelint-enable
   }
 }
 
 .TableHeading-first {
   position: sticky;
   left: 0;
+  // stylelint-disable polaris/space/declaration-property-unit-disallowed-list -- hardcoding these values to avoid variable collision for pse23 specific changes.
+  // These should be removed post pse23, so these hardcoded values are temporary.
   padding-left: 16px;
   padding-right: 18px;
+  // stylelint-enable
   width: var(--p-space-5);
   // stylelint-disable-next-line -- first column (checkbox) overlaps other headings on horizontal scroll
   z-index: var(--pc-index-table-sticky-cell);
 
   #{$se23} & {
-    // stylelint-disable -- Polaris component custom properties
-    --pc-index-table-checkbox-offset-left: 15px;
-    --pc-index-table-checkbox-offset-right: 8px;
-    // stylelint-enable
     // stylelint-disable-next-line -- se23 specificity overrides
     padding-left: var(--pc-index-table-checkbox-offset-left);
     // stylelint-disable-next-line -- se23 specificity overrides
@@ -485,10 +515,18 @@ $loading-panel-height: 53px;
 
 .FirstStickyHeaderElement {
   padding-right: var(--p-space-05);
+  #{$se23} & {
+    padding-right: 0;
+  }
 }
 
 .TableHeading-second:not(.TableHeading-unselectable) {
   padding-left: 0;
+
+  #{$se23} &:not(.TableHeading-flush) {
+    // stylelint-disable-next-line -- Polaris custom property
+    padding-left: var(--pc-index-table-heading-padding-x);
+  }
 }
 
 .TableCell {
@@ -498,8 +536,12 @@ $loading-panel-height: 53px;
   padding: var(--p-space-2) var(--p-space-4);
   white-space: nowrap;
 
-  #{$se23} & {
+  #{$se23} &:not(.TableCell-flush) {
     padding: var(--p-space-1_5-experimental);
+
+    &:first-child {
+      padding-left: var(--p-space-3);
+    }
 
     &:last-child {
       padding-right: var(--p-space-3);
@@ -512,6 +554,10 @@ $loading-panel-height: 53px;
 
   #{$se23} & {
     padding: 0;
+    // stylelint-disable-next-line selector-max-combinators -- se23 override
+    :first-child {
+      padding: 0;
+    }
   }
 }
 
@@ -741,6 +787,15 @@ $loading-panel-height: 53px;
   @media #{$p-breakpoints-sm-up} {
     display: block;
   }
+
+  #{$se23} & {
+    // stylelint-disable-next-line -- Polaris custom property
+    padding: 0 var(--p-space-025) 0
+      calc(
+        var(--pc-index-table-checkbox-offset-right) +
+          var(--pc-index-table-heading-padding-x)
+      );
+  }
 }
 
 .StickyTableHeader-isSticky {
@@ -797,6 +852,15 @@ $loading-panel-height: 53px;
   // TODO: Remove this; condensed doesn't have bulk actions / select all
   &.StickyTableHeader-condensed {
     padding-top: calc(var(--p-space-2) + var(--p-space-05));
+  }
+
+  #{$se23} & {
+    // Note: this undoes top/left/right positioning from pre-se23
+    position: static;
+    padding-left: var(--p-space-3);
+    padding-top: var(--p-space-1_5-experimental);
+    padding-bottom: var(--p-space-1_5-experimental);
+    line-height: var(--p-font-line-height-1);
   }
 }
 
