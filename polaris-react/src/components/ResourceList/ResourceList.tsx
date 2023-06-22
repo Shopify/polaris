@@ -13,8 +13,6 @@ import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
@@ -28,6 +26,7 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
+import {useEventListener} from '../../utilities/use-event-listener';
 import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
 import type {BulkActionsProps} from '../BulkActions';
 import {SelectAllActions} from '../SelectAllActions';
@@ -209,6 +208,8 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     50,
     {leading: true, trailing: true, maxWait: 50},
   );
+
+  useEventListener('resize', handleResize);
 
   const isSelectable =
     Boolean(
@@ -679,7 +680,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
             );
           }}
         </Sticky>
-        {bulkActionsMarkup}
       </div>
     );
 
@@ -759,11 +759,11 @@ export function ResourceList<TItemType extends ResourceListItemData>({
 
   return (
     <ResourceListContext.Provider value={context}>
-      <EventListener event="resize" handler={handleResize} />
       <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
         {filterControlMarkup}
         {headerMarkup}
         {listMarkup}
+        {bulkActionsMarkup}
         {emptySearchStateMarkup}
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
