@@ -7,10 +7,6 @@
   cursor: pointer;
   color: var(--p-color-text);
 
-  #{$se23} & {
-    background: var(--p-color-bg-secondary-experimental);
-  }
-
   // stylelint-disable-next-line -- no way to set focus ring without mixin currently
   @include focus-ring($border-width: var(--p-border-width-1));
   // stylelint-disable-next-line selector-max-specificity -- specificity is required to override focus-ring mixin
@@ -47,7 +43,7 @@
   }
 
   #{$se23} & {
-    background: var(--p-color-bg);
+    background: var(--p-color-bg-secondary-experimental);
     border-radius: var(--p-border-radius-2);
     border: var(--p-color-border) dashed var(--p-border-width-1);
 
