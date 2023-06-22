@@ -140,8 +140,7 @@ function DefaultBanner({
           borderRadiusStartEnd={smUp ? '3' : undefined}
           borderRadiusEndStart={!hasContent && smUp ? '3' : undefined}
           borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
-          padding="2"
-          paddingInlineEnd={smUp ? '2' : '1'}
+          padding="3"
         >
           <HorizontalStack
             align="space-between"
@@ -149,12 +148,10 @@ function DefaultBanner({
             gap="2"
             wrap={false}
           >
-            <Box padding="1" paddingInlineStart={smUp ? '1' : '0'}>
-              <HorizontalStack gap="1" wrap={false}>
-                {bannerIcon}
-                {bannerTitle}
-              </HorizontalStack>
-            </Box>
+            <HorizontalStack gap="1" wrap={false}>
+              {bannerIcon}
+              {bannerTitle}
+            </HorizontalStack>
             {dismissButton}
           </HorizontalStack>
         </Box>
@@ -198,13 +195,13 @@ function InlineIconBanner({
   useEventListener('resize', handleResize);
 
   return (
-    <Box width="100%" padding="2" borderRadius="3">
+    <Box width="100%" padding="3" borderRadius="3">
       <HorizontalStack
         align="space-between"
         blockAlign={blockAlign}
         wrap={false}
       >
-        <Box padding="1" width="100%">
+        <Box width="100%">
           <HorizontalStack gap="2" wrap={false} blockAlign={blockAlign}>
             <div ref={iconNode}>
               <Box background={backgroundColor} borderRadius="2" padding="1">
@@ -238,25 +235,23 @@ function WithinContentContainerBanner({
     <Box
       width="100%"
       background={backgroundColor}
-      padding="1"
+      padding="2"
       borderRadius="2"
       color={textColor}
     >
       <HorizontalStack align="space-between" blockAlign="start" wrap={false}>
-        <Box padding="1" width="100%">
-          <HorizontalStack gap="1_5-experimental" wrap={false}>
-            {bannerIcon}
-            <Box width="100%">
-              <VerticalStack gap="2">
-                <VerticalStack gap="05">
-                  {bannerTitle}
-                  <div>{children}</div>
-                </VerticalStack>
-                {actionButtons}
+        <HorizontalStack gap="1_5-experimental" wrap={false}>
+          {bannerIcon}
+          <Box width="100%">
+            <VerticalStack gap="2">
+              <VerticalStack gap="05">
+                {bannerTitle}
+                <div>{children}</div>
               </VerticalStack>
-            </Box>
-          </HorizontalStack>
-        </Box>
+              {actionButtons}
+            </VerticalStack>
+          </Box>
+        </HorizontalStack>
         {dismissButton}
       </HorizontalStack>
     </Box>
