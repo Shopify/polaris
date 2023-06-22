@@ -1,11 +1,4 @@
-import React, {
-  useContext,
-  memo,
-  useEffect,
-  useRef,
-  useCallback,
-  Fragment,
-} from 'react';
+import React, {useContext, memo, useEffect, useRef, useCallback} from 'react';
 import type {ReactNode} from 'react';
 
 import {debounce} from '../../../../utilities/debounce';
@@ -21,18 +14,13 @@ import styles from './Checkbox.scss';
 
 export const Checkbox = memo(function Checkbox() {
   const i18n = useI18n();
-  const {resourceName, condensed} = useIndexValue();
+  const {resourceName} = useIndexValue();
   const {itemId, selected, disabled, onInteraction} = useContext(RowContext);
 
-  const wrapperClassName = classNames(
-    styles.Wrapper,
-    condensed ? styles.condensed : styles.expanded,
-  );
-
-  const Wrapper = condensed ? Fragment : CheckboxWrapper;
+  const wrapperClassName = classNames(styles.Wrapper);
 
   return (
-    <Wrapper>
+    <CheckboxWrapper>
       <div className={styles.TableCellContentContainer}>
         <div
           className={wrapperClassName}
@@ -50,7 +38,7 @@ export const Checkbox = memo(function Checkbox() {
           />
         </div>
       </div>
-    </Wrapper>
+    </CheckboxWrapper>
   );
 });
 
