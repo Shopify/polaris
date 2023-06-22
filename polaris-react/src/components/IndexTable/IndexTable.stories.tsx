@@ -21,7 +21,7 @@ export default {
 export function Default() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -29,7 +29,31 @@ export function Default() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -103,10 +127,10 @@ export function Default() {
   );
 }
 
-export function Flush() {
+export function Condensed() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -114,7 +138,141 @@ export function Flush() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+        condensed
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function Flush() {
+  const customers = [
+    {
+      id: '3410',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -193,7 +351,7 @@ export function Flush() {
 export function SmallScreen() {
   const customers = [
     {
-      id: '3412',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -201,7 +359,31 @@ export function SmallScreen() {
       amountSpent: '$2,400',
     },
     {
-      id: '2562',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -277,7 +459,7 @@ export function SmallScreen() {
 export function SmallScreenLoading() {
   const customers = [
     {
-      id: '3412',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -285,7 +467,31 @@ export function SmallScreenLoading() {
       amountSpent: '$2,400',
     },
     {
-      id: '2562',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -531,12 +737,36 @@ export function WithEmptyState() {
 export function WithBulkActions() {
   const customers = [
     {
-      id: '3413',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
+    },
+    {
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
     },
     {
       id: '2563',
@@ -639,12 +869,36 @@ export function WithBulkActions() {
 export function WithMultiplePromotedBulkActions() {
   const customers = [
     {
-      id: '3413',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
+    },
+    {
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
     },
     {
       id: '2563',
@@ -887,7 +1141,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
 export function WithLoadingState() {
   const customers = [
     {
-      id: '3415',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -895,7 +1149,31 @@ export function WithLoadingState() {
       amountSpent: '$2,400',
     },
     {
-      id: '2565',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -973,7 +1251,7 @@ export function WithLoadingState() {
 export function WithFiltering() {
   const customers = [
     {
-      id: '3416',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -981,7 +1259,31 @@ export function WithFiltering() {
       amountSpent: '$2,400',
     },
     {
-      id: '2566',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -1215,6 +1517,9 @@ export function WithRowStatus() {
             {name}
           </Text>
         </IndexTable.Cell>
+        <IndexTable.Cell>
+          <code>{status}</code>
+        </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
           <Text as="span" alignment="end" numeric>
@@ -1241,6 +1546,7 @@ export function WithRowStatus() {
         onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
+          {title: 'Status'},
           {title: 'Location'},
           {
             alignment: 'end',
@@ -1378,7 +1684,7 @@ export function WithStickyLastColumn() {
 export function WithRowNavigationLink() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -1386,7 +1692,31 @@ export function WithRowNavigationLink() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -1469,7 +1799,7 @@ export function WithRowNavigationLink() {
 export function WithClickableButtonColumn() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -1477,7 +1807,31 @@ export function WithClickableButtonColumn() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -1560,7 +1914,7 @@ export function WithClickableButtonColumn() {
 export function WithoutCheckboxes() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -1568,7 +1922,31 @@ export function WithoutCheckboxes() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -1635,7 +2013,7 @@ export function WithoutCheckboxes() {
 export function WithAllOfItsElements() {
   const customers = [
     {
-      id: '3417',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -1643,7 +2021,31 @@ export function WithAllOfItsElements() {
       amountSpent: '$2,400',
     },
     {
-      id: '2567',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -2230,7 +2632,7 @@ export function WithSortableCustomHeadings() {
 export function WithCustomTooltips() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -2238,7 +2640,31 @@ export function WithCustomTooltips() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -2323,7 +2749,7 @@ export function WithCustomTooltips() {
 export function WithZebraStriping() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -2331,7 +2757,31 @@ export function WithZebraStriping() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -2409,7 +2859,7 @@ export function WithZebraStriping() {
 export function WithZebraStripingCondensed() {
   const customers = [
     {
-      id: '3411',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -2417,7 +2867,31 @@ export function WithZebraStripingCondensed() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -2776,7 +3250,7 @@ export function WithZebraStripingAndWithoutCheckboxes() {
 export function SmallScreenWithAllOfItsElements() {
   const customers = [
     {
-      id: '3418',
+      id: '3410',
       url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
@@ -2784,7 +3258,31 @@ export function SmallScreenWithAllOfItsElements() {
       amountSpent: '$2,400',
     },
     {
-      id: '2568',
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
