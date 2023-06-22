@@ -33,7 +33,7 @@ describe('<PageActions />', () => {
     it('renders a button', () => {
       mountWithApp(<PageActions primaryAction={mockAction} />);
       expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {
-        primarySuccess: true
+        primarySuccess: true,
       });
     });
 
