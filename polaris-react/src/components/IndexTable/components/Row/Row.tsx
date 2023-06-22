@@ -9,21 +9,32 @@ import {
 import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
+import type {Range} from '../../../../utilities/index-provider/types';
 import styles from '../../IndexTable.scss';
 
 type RowStatus = 'success' | 'subdued' | 'critical';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
 export interface RowProps {
+  /**  */
   children: React.ReactNode;
+  /** A unique identifier for the row */
   id: string;
+  /** Whether the row is selected */
   selected?: boolean | 'indeterminate';
+  /** The zero-indexed position of the row. Used for Shift key multi-selection */
   position: number;
+  /** Whether the row should be subdued */
   subdued?: boolean;
+  /** Whether the row should have a status */
   status?: RowStatus;
+  /** Whether the row should be disabled */
   disabled?: boolean;
-  header?: boolean;
+  /** A tuple array with the first and last index of the range of rows that the subheader describes. All rows in the range are selected when the subheader row is selected. */
+  subHeaderRange?: Range;
+  /** Callback fired when the row is clicked and contains a data-primary-link */
   onNavigation?(id: string): void;
+  /** Callback fired when the row is clicked. Overrides the default click behaviour. */
   onClick?(): void;
 }
 
@@ -35,7 +46,7 @@ export const Row = memo(function Row({
   subdued,
   status,
   disabled,
-  header,
+  subHeaderRange,
   onNavigation,
   onClick,
 }: RowProps) {
@@ -50,15 +61,20 @@ export const Row = memo(function Row({
   const handleInteraction = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
       event.stopPropagation();
+      let selectionType = SelectionType.Single;
 
       if (('key' in event && event.key !== ' ') || !onSelectionChange) return;
-      const selectionType = event.nativeEvent.shiftKey
-        ? SelectionType.Multi
-        : SelectionType.Single;
 
-      onSelectionChange(selectionType, !selected, id, position);
+      if (event.nativeEvent.shiftKey) {
+        selectionType = SelectionType.Multi;
+      } else if (subHeaderRange) {
+        selectionType = SelectionType.Range;
+      }
+
+      const selection: string | Range = subHeaderRange ?? id;
+      onSelectionChange(selectionType, !selected, selection, position);
     },
-    [id, onSelectionChange, position, selected],
+    [id, onSelectionChange, selected, subHeaderRange, position],
   );
 
   const contextValue = useMemo(
@@ -87,7 +103,8 @@ export const Row = memo(function Row({
   }, []);
 
   const rowClassName = classNames(
-    header ? styles.Header : styles.TableRow,
+    styles.TableRow,
+    subHeaderRange && styles['TableRow-subheader'],
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
@@ -142,7 +159,6 @@ export const Row = memo(function Row({
   }
 
   const RowWrapper = condensed ? 'li' : 'tr';
-
   const checkboxMarkup = selectable ? <Checkbox /> : null;
 
   return (

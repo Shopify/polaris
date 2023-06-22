@@ -98,21 +98,21 @@ describe('<Row />', () => {
     );
   });
 
-  it('applies the styles.Header class to the table row element', () => {
+  it('applies the .TableRow-subheader class to the table row element when subHeaderRange is provided', () => {
     const row = mountWithTable(
-      <Row id="id" selected header position={1}>
+      <Row id="id" selected subHeaderRange={[0, 2]} position={1}>
         <td />
       </Row>,
     );
 
     expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
-      styles.Header,
+      styles['TableRow-subheader'],
     );
   });
 
   it('allows the checkbox to be indeterminate', () => {
     const row = mountWithTable(
-      <Row id="id" selected="indeterminate" header position={1}>
+      <Row id="id" selected="indeterminate" position={1}>
         <td />
       </Row>,
     );

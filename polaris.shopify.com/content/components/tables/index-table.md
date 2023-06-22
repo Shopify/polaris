@@ -200,10 +200,16 @@ An `IndexTableCell` is used to render a single cell within an `IndexTableRow`
 
 ### IndexTableCell properties
 
-| Prop      | Type    | Description                                                                      |
-| --------- | ------- | -------------------------------------------------------------------------------- |
-| flush     | boolean | A boolean property indicating whether the cell should remove the default padding |
-| className | string  | Adds a class to the cell, used for setting widths of a cell                      |
+| Prop       | Type                                                                              | Description                                                                                                                                                              |
+| ---------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| as?        | 'th' &#124; 'td'                                                                  | The table cell element to render. Render the cell as a `th` if it serves as a subheading. Defaults to `td`.                                                              |
+| id?        | string                                                                            | The unique ID to set on the cell element                                                                                                                                 |
+| children?  | ReactNode                                                                         | The cell contents                                                                                                                                                        |
+| className? | string                                                                            | Adds a class to the cell. Use to set a custom cell width.                                                                                                                |
+| flush?     | boolean                                                                           | Whether the cell padding should be removed. Defaults to false.                                                                                                           |
+| colSpan?   | [HTMLTableCellElement['colSpan']](https://www.w3schools.com/tags/att_colspan.asp) | For subheader cells -- The number of the columns that the cell element should extend to within the row.                                                                  |
+| scope?     | [HTMLTableCellElement['scope']](https://www.w3schools.com/tags/att_scope.asp)     | For subheader cells -- Indicates the cells that the `th` element relates to                                                                                              |
+| headers?   | [HTMLTableCellElement['headers']](https://www.w3schools.com/tags/att_headers.asp) | A space-separated list of the `th` cell IDs that describe or apply to it. Use for cells within a row that relate to a subheader cell in addition to their column header. |
 
 ---
 
