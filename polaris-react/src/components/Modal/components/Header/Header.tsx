@@ -46,9 +46,7 @@ export function Header({
       paddingInlineEnd="5"
       borderBlockEndWidth={polarisSummerEditions2023 ? undefined : '1'}
       borderColor="border-subdued"
-      background={
-        polarisSummerEditions2023 ? 'bg-secondary-experimental' : undefined
-      }
+      background={polarisSummerEditions2023 ? 'bg-subdued' : undefined}
     >
       <HorizontalGrid columns={{xs: '1fr auto'}} gap="4">
         <HorizontalStack gap="4" blockAlign="center">
