@@ -182,24 +182,28 @@ export function All() {
                 </HorizontalStack>
               ))}
             </VerticalStack>
-            <VerticalStack gap="2">
-              <Text as="h2" variant="headingXs">
-                Status with icon
-              </Text>
-              <HorizontalStack gap="2">
-                {filteredStatusEntries.map(([status, statusLabel]) => (
-                  <Badge
-                    key={status}
-                    size={size}
-                    icon={TempIcon}
-                    status={status === 'default' ? undefined : status}
-                  >
-                    {statusLabel}
-                  </Badge>
-                ))}
-              </HorizontalStack>
-            </VerticalStack>
-            <VerticalStack gap="2">
+            {/* Remove `size` condition when micro icons are available */}
+            {size === 'large-experimental' && (
+              <VerticalStack gap="2">
+                <Text as="h2" variant="headingXs">
+                  Status with icon
+                </Text>
+                <HorizontalStack gap="2">
+                  {filteredStatusEntries.map(([status, statusLabel]) => (
+                    <Badge
+                      key={status}
+                      size={size}
+                      icon={TempIcon}
+                      status={status === 'default' ? undefined : status}
+                    >
+                      {statusLabel}
+                    </Badge>
+                  ))}
+                </HorizontalStack>
+              </VerticalStack>
+            )}
+            {/* TODO: Re-enable the following examples when designs are available (post se23) */}
+            {/* <VerticalStack gap="2">
               <Text as="h2" variant="headingXs">
                 Status with icon only
               </Text>
@@ -213,7 +217,7 @@ export function All() {
                   />
                 ))}
               </HorizontalStack>
-            </VerticalStack>
+            </VerticalStack> */}
           </VerticalStack>
         </Box>
       ))}
