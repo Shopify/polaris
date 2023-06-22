@@ -37,6 +37,10 @@
 
 .subdued {
   background-color: var(--p-color-bg-subdued);
+
+  #{$se23} & {
+    background-color: var(--p-color-bg-secondary-experimental);
+  }
 }
 
 .Section-hideOnPrint,
@@ -136,6 +140,10 @@
 
 .Section-subdued {
   background-color: var(--p-color-bg-subdued);
+
+  #{$se23} & {
+    background-color: var(--p-color-bg-secondary-experimental);
+  }
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;
