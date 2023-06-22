@@ -59,6 +59,10 @@ $bulk-actions-button-stacking-order: (
   max-width: 100%;
   pointer-events: auto;
 
+  #{$se23} & {
+    box-shadow: var(--p-shadow-card-lg-experimental);
+  }
+
   @media #{$p-breakpoints-sm-down} {
     // stylelint-disable-next-line selector-max-combinators, selector-max-type -- the first item of button group on small screen needs to fill the space
     > div > div:first-child {
