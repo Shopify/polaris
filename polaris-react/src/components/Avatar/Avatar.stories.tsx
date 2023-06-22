@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import type {AvatarProps} from '@shopify/polaris';
 import {
   ActionList,
   Avatar,
@@ -7,23 +8,121 @@ import {
   Popover,
   VerticalStack,
   HorizontalStack,
+  Box,
+  Text,
 } from '@shopify/polaris';
+
+import type {STYLE_CLASSES} from './Avatar';
 
 export default {
   component: Avatar,
 } as ComponentMeta<typeof Avatar>;
 
+type Entry<T> = [keyof T, T[keyof T]];
+type Entries<T> = Entry<T>[];
+
+const shapes: {
+  [S in NonNullable<AvatarProps['shape']>]: string;
+} = {
+  square: 'Square',
+  round: 'Round',
+};
+
+const shapeEntries = Object.entries(shapes) as Entries<typeof shapes>;
+
+const sizes: {
+  [S in NonNullable<AvatarProps['size']>]: string;
+} = {
+  '2xl-experimental': 'XXL',
+  'xl-experimental': 'XL',
+  large: 'Large',
+  medium: 'Medium',
+  small: 'Small',
+  extraSmall: 'XS',
+};
+
+const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
+
+const styles: {
+  [S in typeof STYLE_CLASSES[number]]: string;
+} = {
+  one: 'AA',
+  two: 'AG',
+  three: 'AC',
+  four: 'AB',
+  five: 'AE',
+};
+
+const styleEntries = Object.entries(styles) as Entries<typeof styles>;
+
 export function All() {
   return (
     <VerticalStack gap="4">
-      <Default />
+      {shapeEntries.map(([shape, shapeLabel]) => (
+        <Box key={shape} paddingBlockEnd="2">
+          <VerticalStack gap="3">
+            <Text as="h2" variant="headingXl">
+              Shape: {shapeLabel}
+            </Text>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                Default
+              </Text>
+              <HorizontalStack gap="2" blockAlign="center">
+                {sizeEntries.map(([size]) => (
+                  <Avatar key={size} size={size} />
+                ))}
+              </HorizontalStack>
+            </VerticalStack>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                Default with customer
+              </Text>
+              <HorizontalStack gap="2" blockAlign="center">
+                {sizeEntries.map(([size]) => (
+                  <Avatar key={size} size={size} customer />
+                ))}
+              </HorizontalStack>
+            </VerticalStack>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                Default with name (all styles)
+              </Text>
+              <VerticalStack gap="2">
+                {styleEntries.map(([style, name]) => (
+                  <HorizontalStack key={style} gap="2" blockAlign="center">
+                    {sizeEntries.map(([size]) => (
+                      <Avatar key={size} name={name} size={size} />
+                    ))}
+                  </HorizontalStack>
+                ))}
+              </VerticalStack>
+            </VerticalStack>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                Default with initials (all styles)
+              </Text>
+              <VerticalStack gap="2">
+                {styleEntries.map(([style, initials]) => (
+                  <HorizontalStack key={style} gap="2" blockAlign="center">
+                    {sizeEntries.map(([size]) => (
+                      <Avatar key={size} initials={initials} size={size} />
+                    ))}
+                  </HorizontalStack>
+                ))}
+              </VerticalStack>
+            </VerticalStack>
+          </VerticalStack>
+        </Box>
+      ))}
+      {/* <Default />
       <CircleIconColorsSizes />
       <CircleInitialsColorsSizes />
       <CircleImage />
       <CircleInitialsLong />
       <CircleExtraSmallInContext />
       <SquareIconColorsSizes />
-      <SquareInitialsColorsSizes />
+      <SquareInitialsColorsSizes /> */}
     </VerticalStack>
   );
 }

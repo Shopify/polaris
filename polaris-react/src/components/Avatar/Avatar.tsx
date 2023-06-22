@@ -7,7 +7,14 @@ import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 
-type Size = 'extraSmall' | 'small' | 'medium' | 'large';
+type Experimental<T extends string> = `${T}-experimental`;
+
+type Size =
+  | 'extraSmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | Experimental<'xl' | '2xl'>;
 
 type Shape = 'square' | 'round';
 
@@ -17,7 +24,7 @@ enum Status {
   Errored = 'ERRORED',
 }
 
-export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
+export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'] as const;
 
 /**
  * Computes a rudimentary hash from a string by xoring the character codes
