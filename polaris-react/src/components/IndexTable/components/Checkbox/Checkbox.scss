@@ -15,6 +15,12 @@
   padding-left: var(--p-space-4);
 
   #{$se23} & {
-    padding-left: var(--p-space-3);
+    // Don't need an explicit width/height set, just let flexbox do its thing.
+    // Can remove this width/height once se23 becomes the default.
+    width: auto;
+    height: auto;
+    // Removed padding-left here to apply uniform padding-left globally
+    // This is to account for when `selectable={false}`
+    padding-left: 0;
   }
 }
