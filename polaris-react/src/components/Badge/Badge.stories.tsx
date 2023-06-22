@@ -1,13 +1,16 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import type {BadgeProps} from '@shopify/polaris';
 import {
   Badge,
   HorizontalStack,
   LegacyCard,
   VerticalStack,
   Text,
+  Box,
 } from '@shopify/polaris';
-import {ClockMajor} from '@shopify/polaris-icons';
+
+import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Badge,
@@ -73,129 +76,151 @@ export function WithStatusAndProgressLabelOverride() {
   );
 }
 
+const TempIcon = () => (
+  <svg viewBox="0 0 20 20">
+    <path d="M11 13.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
+    <path d="M10.75 6.25a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 1.5 0v-4Z" />
+    <path
+      fill-rule="evenodd"
+      d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"
+    />
+  </svg>
+);
+
+type Entry<T> = [keyof T, T[keyof T]];
+type Entries<T> = Entry<T>[];
+
+const statuses: {
+  [S in 'default' | NonNullable<BadgeProps['status']>]: string;
+} = {
+  default: 'Neutral',
+  info: 'Info',
+  success: 'Success',
+  warning: 'Warning',
+  attention: 'Attention',
+  critical: 'Critical',
+  new: 'New',
+  'read-only-experimental': 'Read-only',
+  'enabled-experimental': 'Enabled',
+  'info-strong-experimental': 'Info',
+  'success-strong-experimental': 'Success',
+  'warning-strong-experimental': 'Warning',
+  'attention-strong-experimental': 'Attention',
+  'critical-strong-experimental': 'Critical',
+};
+
+const statusEntries = Object.entries(statuses) as Entries<typeof statuses>;
+
+const progresses: {
+  [P in NonNullable<BadgeProps['progress']>]: string;
+} = {
+  complete: 'Complete',
+  partiallyComplete: 'Partially complete',
+  incomplete: 'Incomplete',
+};
+
+const progressEntries = Object.entries(progresses) as Entries<
+  typeof progresses
+>;
+
+const sizes: {
+  [P in Exclude<NonNullable<BadgeProps['size']>, 'small'>]: string;
+} = {
+  medium: 'Medium',
+  'large-experimental': 'Large',
+};
+
+const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
+
 export function All() {
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const filteredStatusEntries = polarisSummerEditions2023
+    ? statusEntries
+    : statusEntries.filter(([status]) => !status.endsWith('-experimental'));
+
   return (
     <LegacyCard sectioned>
-      <VerticalStack gap="5">
-        <VerticalStack gap="2">
-          <Text as="h2" variant="headingXs">
-            Default by status
-          </Text>
-          <HorizontalStack gap="4">
-            <Badge>Fulfilled</Badge>
-            <Badge status="info">Informational</Badge>
-            <Badge status="success">Success</Badge>
-            <Badge status="warning">Warning</Badge>
-            <Badge status="attention">Attention</Badge>
-            <Badge status="critical">Critical</Badge>
-            <Badge status="new">New</Badge>
-          </HorizontalStack>
-        </VerticalStack>
-        <VerticalStack gap="2">
-          <Text as="h2" variant="headingXs">
-            Complete
-          </Text>
-          <HorizontalStack gap="4">
-            <Badge progress="complete">Fulfilled</Badge>
-            <Badge progress="complete" status="info">
-              Informational
-            </Badge>
-            <Badge progress="complete" status="success">
-              Success
-            </Badge>
-            <Badge progress="complete" status="warning">
-              Warning
-            </Badge>
-            <Badge progress="complete" status="attention">
-              Attention
-            </Badge>
-            <Badge progress="complete" status="critical">
-              Critical
-            </Badge>
-            <Badge progress="complete" status="new">
-              New
-            </Badge>
-          </HorizontalStack>
-        </VerticalStack>
-        <VerticalStack gap="2">
-          <Text as="h2" variant="headingXs">
-            Partially complete
-          </Text>
-          <HorizontalStack gap="4">
-            <Badge progress="partiallyComplete">Fulfilled</Badge>
-            <Badge progress="partiallyComplete" status="info">
-              Informational
-            </Badge>
-            <Badge progress="partiallyComplete" status="success">
-              Success
-            </Badge>
-            <Badge progress="partiallyComplete" status="warning">
-              Warning
-            </Badge>
-            <Badge progress="partiallyComplete" status="attention">
-              Attention
-            </Badge>
-            <Badge progress="partiallyComplete" status="critical">
-              Critical
-            </Badge>
-            <Badge progress="partiallyComplete" status="new">
-              New
-            </Badge>
-          </HorizontalStack>
-        </VerticalStack>
-        <VerticalStack gap="2">
-          <Text as="h2" variant="headingXs">
-            Incomplete
-          </Text>
-          <HorizontalStack gap="4">
-            <Badge progress="incomplete">Fulfilled</Badge>
-            <Badge progress="incomplete" status="info">
-              Informational
-            </Badge>
-            <Badge progress="incomplete" status="success">
-              Success
-            </Badge>
-            <Badge progress="incomplete" status="warning">
-              Warning
-            </Badge>
-            <Badge progress="incomplete" status="attention">
-              Attention
-            </Badge>
-            <Badge progress="incomplete" status="critical">
-              Critical
-            </Badge>
-            <Badge progress="incomplete" status="new">
-              New
-            </Badge>
-          </HorizontalStack>
-        </VerticalStack>
-        <VerticalStack gap="2">
-          <Text as="h2" variant="headingXs">
-            Custom icon
-          </Text>
-          <HorizontalStack gap="4">
-            <Badge icon={ClockMajor}>Fulfilled</Badge>
-            <Badge icon={ClockMajor} status="info">
-              Informational
-            </Badge>
-            <Badge icon={ClockMajor} status="success">
-              Success
-            </Badge>
-            <Badge icon={ClockMajor} status="warning">
-              Warning
-            </Badge>
-            <Badge icon={ClockMajor} status="attention">
-              Attention
-            </Badge>
-            <Badge icon={ClockMajor} status="critical">
-              Critical
-            </Badge>
-            <Badge icon={ClockMajor} status="new">
-              New
-            </Badge>
-          </HorizontalStack>
-        </VerticalStack>
-      </VerticalStack>
+      {sizeEntries.map(([size, sizeLabel]) => (
+        <Box key={size} paddingBlockEnd="2">
+          <VerticalStack gap="3">
+            <Text as="h2" variant="headingXl">
+              Size: {sizeLabel}
+            </Text>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                Status only
+              </Text>
+              <HorizontalStack gap="2">
+                {filteredStatusEntries.map(([status, statusLabel]) => (
+                  <Badge
+                    key={status}
+                    size={size}
+                    status={status === 'default' ? undefined : status}
+                  >
+                    {statusLabel}
+                  </Badge>
+                ))}
+              </HorizontalStack>
+            </VerticalStack>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                Status with progress
+              </Text>
+              {progressEntries.map(([progress]) => (
+                <HorizontalStack key={progress} gap="2">
+                  {filteredStatusEntries.map(([status, statusLabel]) => (
+                    <Badge
+                      key={status}
+                      size={size}
+                      progress={progress}
+                      status={status === 'default' ? undefined : status}
+                    >
+                      {statusLabel}
+                    </Badge>
+                  ))}
+                </HorizontalStack>
+              ))}
+            </VerticalStack>
+            {/* Remove `size` condition when micro icons are available */}
+            {size === 'large-experimental' && (
+              <VerticalStack gap="2">
+                <Text as="h2" variant="headingXs">
+                  Status with icon
+                </Text>
+                <HorizontalStack gap="2">
+                  {filteredStatusEntries.map(([status, statusLabel]) => (
+                    <Badge
+                      key={status}
+                      size={size}
+                      icon={TempIcon}
+                      status={status === 'default' ? undefined : status}
+                    >
+                      {statusLabel}
+                    </Badge>
+                  ))}
+                </HorizontalStack>
+              </VerticalStack>
+            )}
+            {/* TODO: Re-enable the following examples when designs are available (post se23) */}
+            {/* <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                Status with icon only
+              </Text>
+              <HorizontalStack gap="2">
+                {filteredStatusEntries.map(([status]) => (
+                  <Badge
+                    key={status}
+                    size={size}
+                    icon={TempIcon}
+                    status={status === 'default' ? undefined : status}
+                  />
+                ))}
+              </HorizontalStack>
+            </VerticalStack> */}
+          </VerticalStack>
+        </Box>
+      ))}
     </LegacyCard>
   );
 }

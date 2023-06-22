@@ -44,6 +44,23 @@
   }
 }
 
+@mixin statusSuccess-strong {
+  color: var(--p-color-text-on-color);
+  background-color: var(--p-color-bg-success-strong);
+
+  svg {
+    fill: var(--p-color-icon-on-color);
+  }
+}
+
+.statusSuccess-strong-experimental {
+  @include statusSuccess-strong;
+
+  #{$se23} & {
+    @include statusSuccess-strong;
+  }
+}
+
 .statusInfo {
   background-color: var(--p-color-bg-info);
 
@@ -55,6 +72,23 @@
     svg {
       fill: var(--p-color-icon-info);
     }
+  }
+}
+
+@mixin statusInfo-strong {
+  color: var(--p-color-text-info-strong);
+  background-color: var(--p-color-bg-info-strong);
+
+  svg {
+    fill: var(--p-color-text-info-strong);
+  }
+}
+
+.statusInfo-strong-experimental {
+  @include statusInfo-strong;
+
+  #{$se23} & {
+    @include statusInfo-strong;
   }
 }
 
@@ -72,6 +106,23 @@
   }
 }
 
+@mixin statusAttention-strong {
+  color: var(--p-color-text-caution-strong);
+  background-color: var(--p-color-bg-caution-strong);
+
+  svg {
+    fill: var(--p-color-text-caution);
+  }
+}
+
+.statusAttention-strong-experimental {
+  @include statusAttention-strong;
+
+  #{$se23} & {
+    @include statusAttention-strong;
+  }
+}
+
 .statusWarning {
   background-color: var(--p-color-bg-warning);
 
@@ -86,6 +137,23 @@
   }
 }
 
+@mixin statusWarning-strong {
+  color: var(--p-color-text-warning-experimental);
+  background-color: var(--p-color-bg-warning-strong-experimental);
+
+  svg {
+    fill: var(--p-color-text-warning-experimental);
+  }
+}
+
+.statusWarning-strong-experimental {
+  @include statusWarning-strong;
+
+  #{$se23} & {
+    @include statusWarning-strong;
+  }
+}
+
 .statusCritical {
   background-color: var(--p-color-bg-critical);
 
@@ -95,8 +163,25 @@
 
     // stylelint-disable-next-line -- se23 svg fill override
     svg {
-      fill: var(--p-color-icon-critical);
+      fill: var(--p-color-icon-critical-strong-experimental);
     }
+  }
+}
+
+@mixin statusCritical-strong {
+  color: var(--p-color-text-on-color);
+  background-color: var(--p-color-bg-critical-strong);
+
+  svg {
+    fill: var(--p-color-icon-on-color);
+  }
+}
+
+.statusCritical-strong-experimental {
+  @include statusCritical-strong;
+
+  #{$se23} & {
+    @include statusCritical-strong;
   }
 }
 
@@ -116,6 +201,51 @@
   }
 }
 
+@mixin statusRead-only {
+  color: var(--p-color-text-subdued);
+  background-color: transparent;
+
+  svg {
+    fill: var(--p-color-icon-subdued);
+  }
+}
+
+.statusRead-only-experimental {
+  @include statusRead-only;
+
+  #{$se23} & {
+    @include statusRead-only;
+  }
+}
+
+@mixin statusEnabled {
+  color: var(--p-color-text);
+
+  svg {
+    fill: var(--p-color-icon-success);
+  }
+}
+
+.statusEnabled-experimental {
+  @include statusEnabled;
+
+  #{$se23} & {
+    @include statusEnabled;
+  }
+}
+
+@mixin sizeLarge {
+  padding: var(--p-space-1) var(--p-space-2);
+}
+
+.sizeLarge-experimental {
+  @include sizeLarge;
+
+  #{$se23} & {
+    @include sizeLarge;
+  }
+}
+
 .withinFilter {
   border-radius: var(--p-border-radius-1);
 }
@@ -125,8 +255,25 @@
   // its bounding box.
   margin-left: calc(-1 * (var(--p-space-1)));
 
-  + *:not(.Icon) {
+  #{$se23} & {
+    margin: calc(-1 * var(--p-space-05)) 0 calc(-1 * var(--p-space-05))
+      calc(-1 * var(--p-space-2));
+  }
+
+  .sizeLarge-experimental & {
+    margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
+
+    #{$se23} & {
+      margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
+    }
+  }
+
+  + * {
     margin-left: var(--p-space-1);
+
+    #{$se23} & {
+      margin-left: 0;
+    }
   }
 }
 
