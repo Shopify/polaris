@@ -8,6 +8,10 @@
 
   #{$se23} & {
     box-shadow: var(--p-shadow-card-sm-experimental);
+
+    @media print {
+      box-shadow: none;
+    }
   }
 
   + .LegacyCard {
@@ -66,7 +70,7 @@
     padding: var(--p-space-5);
 
     #{$se23} & {
-      padding: var(--p-space-4);
+      padding: var(--p-space-2) var(--p-space-4);
     }
   }
 
@@ -74,6 +78,10 @@
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
     @media print {
+      border-top: 0;
+    }
+
+    #{$se23} & {
       border-top: 0;
     }
   }
@@ -91,6 +99,7 @@
   #{$se23} & {
     border-top-left-radius: var(--p-border-radius-3);
     border-top-right-radius: var(--p-border-radius-3);
+    padding-top: var(--p-space-4);
   }
 }
 
@@ -101,6 +110,7 @@
   #{$se23} & {
     border-bottom-left-radius: var(--p-border-radius-3);
     border-bottom-right-radius: var(--p-border-radius-3);
+    padding-bottom: var(--p-space-4);
   }
 }
 
@@ -135,6 +145,21 @@
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     margin-top: var(--p-space-5);
   }
+
+  #{$se23} & {
+    border-top: 0;
+  }
+}
+
+.Section-subdued:last-child {
+  #{$se23} & {
+    padding: var(--p-space-4);
+
+    @media print {
+      padding-top: var(--p-space-2);
+      padding-bottom: var(--p-space-2);
+    }
+  }
 }
 
 .SectionHeader {
@@ -164,6 +189,12 @@
 
     @media print {
       border-top: 0;
+    }
+
+    #{$se23} & {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: var(--p-space-2);
     }
   }
 
@@ -196,6 +227,7 @@
 
     #{$se23} & {
       padding: var(--p-space-4);
+      border-top: 0;
     }
   }
 }
