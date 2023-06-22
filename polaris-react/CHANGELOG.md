@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.2.1
+
+### Patch Changes
+
+- [#9475](https://github.com/Shopify/polaris/pull/9475) [`ff8e9230d`](https://github.com/Shopify/polaris/commit/ff8e9230d4f53ddecc793057a842cbb5e19141ee) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added experimental `strong` variants and `large` size to `Badge` component
+
 ## 11.2.0
 
 ### Minor Changes
