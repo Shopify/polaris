@@ -1407,7 +1407,7 @@ export function WithFiltering() {
     (value) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -1442,7 +1442,7 @@ export function WithFiltering() {
       ]
     : [];
 
-  const sortOptions = [
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
     {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
     {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
@@ -1620,7 +1620,7 @@ export function WithRowStatus() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        status={status}
+        status={status as IndexTableRowProps['status']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1966,7 +1966,7 @@ export function WithClickableButtonColumn() {
         position={index}
       >
         <IndexTable.Cell>
-          <Button
+          <Link
             dataPrimaryLink
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
@@ -1974,7 +1974,7 @@ export function WithClickableButtonColumn() {
             <Text fontWeight="bold" as="span">
               {name}
             </Text>
-          </Button>
+          </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
@@ -2178,7 +2178,7 @@ export function WithAllOfItsElements() {
     (value) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -2234,7 +2234,7 @@ export function WithAllOfItsElements() {
       ]
     : [];
 
-  const sortOptions = [
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
     {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
     {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
@@ -2366,7 +2366,8 @@ export function WithAllOfItsElements() {
 
 export function WithSortableHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
-  const [sortDirection, setSortDirection] = useState('descending');
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableProps['sortDirection']>('descending');
 
   const sortToggleLabels = {
     0: {ascending: 'A-Z', descending: 'Z-A'},
@@ -2551,7 +2552,8 @@ export function WithSortableHeadings() {
 
 export function WithSortableCustomHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
-  const [sortDirection, setSortDirection] = useState('descending');
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableProps['sortDirection']>('descending');
 
   const sortToggleLabels = {
     0: {ascending: 'A-Z', descending: 'Z-A'},
@@ -3113,7 +3115,7 @@ export function WithZebraStripingAndRowStatus() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        status={status}
+        status={status as IndexTableRowProps['status']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -3415,7 +3417,7 @@ export function SmallScreenWithAllOfItsElements() {
     (value) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -3471,7 +3473,7 @@ export function SmallScreenWithAllOfItsElements() {
       ]
     : [];
 
-  const sortOptions = [
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
     {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
     {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
