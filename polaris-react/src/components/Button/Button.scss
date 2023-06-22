@@ -890,8 +890,9 @@
     margin: calc(-1 * var(--p-space-2));
 
     #{$se23} & {
-      // stylelint-disable-next-line -- custom px to align icons with line height
-      margin: calc(-1 * 3px) calc(-1 * var(--p-space-1_5-experimental));
+      margin: 0;
+      padding: 0;
+      min-height: var(--p-font-line-height-2);
     }
 
     svg {
