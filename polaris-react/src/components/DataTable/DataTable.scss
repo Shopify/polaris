@@ -148,7 +148,11 @@
   &.RowCountIsEven .TableRow:nth-child(2n + 1) .Cell,
   &.ShowTotalsInFooter .TableRow:nth-child(2n + 1) .Cell,
   &.ShowTotalsInFooter.RowCountIsEven .TableRow:nth-child(2n) .Cell {
-    background: var(--p-color-bg-secondary-experimental);
+    background: var(--p-color-bg-subdued);
+
+    #{$se23} & {
+      background: var(--p-color-bg-secondary-experimental);
+    }
   }
 }
 
@@ -390,15 +394,20 @@
 
 .Cell-total {
   font-weight: var(--p-font-weight-semibold);
-  background: var(--p-color-bg-secondary-experimental);
+  background: var(--p-color-bg-subdued);
   border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   #{$se23} & {
+    background: var(--p-color-bg-secondary-experimental);
     border-bottom: var(--p-border-width-1) solid var(--p-color-border);
   }
 
   .ZebraStripingOnData.ShowTotals & {
-    background: var(--p-color-bg-secondary-experimental);
+    background: var(--p-color-bg-subdued);
+
+    #{$se23} & {
+      background: var(--p-color-bg-secondary-experimental);
+    }
   }
 
   .ZebraStripingOnData.ShowTotals.RowCountIsEven &,
@@ -436,7 +445,7 @@
 
 .Footer {
   padding: var(--p-space-4);
-  background: var(--p-color-bg-secondary-experimental);
+  background: var(--p-color-bg-subdued);
   color: var(--p-color-text-subdued);
   text-align: center;
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
@@ -444,6 +453,7 @@
   border-bottom-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
+    background: var(--p-color-bg-secondary-experimental);
     padding: var(--p-space-2) var(--p-space-3);
     border-top: var(--p-border-width-1) solid var(--p-color-border);
     border-radius: 0;

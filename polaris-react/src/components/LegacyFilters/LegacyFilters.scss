@@ -133,8 +133,12 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-4);
     width: calc(100% - var(--p-space-8));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-secondary-experimental);
+    background-color: var(--p-color-bg-subdued);
     display: block;
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-secondary-experimental);
+    }
   }
 
   &::before {
@@ -154,8 +158,12 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-4);
     width: calc(100% - var(--p-space-8));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-secondary-experimental);
+    background-color: var(--p-color-bg-subdued);
     display: block;
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-secondary-experimental);
+    }
   }
 
   &::before {
@@ -177,8 +185,12 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-4);
     width: calc(100% - var(--p-space-8));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-secondary-experimental);
+    background-color: var(--p-color-bg-subdued);
     display: block;
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-secondary-experimental);
+    }
   }
 
   &::after {
