@@ -1,10 +1,21 @@
+type Experimental<T extends string> = `${T}-experimental`;
+
 export type Status =
   | 'info'
   | 'success'
   | 'warning'
   | 'critical'
   | 'attention'
-  | 'new';
+  | 'new'
+  | Experimental<
+      | 'info-strong'
+      | 'success-strong'
+      | 'warning-strong'
+      | 'critical-strong'
+      | 'attention-strong'
+      | 'read-only'
+      | 'enabled'
+    >;
 
 export enum StatusValue {
   Info = 'info',
@@ -13,6 +24,13 @@ export enum StatusValue {
   Critical = 'critical',
   Attention = 'attention',
   New = 'new',
+  InfoStrongExperimental = 'info-strong-experimental',
+  SuccessStrongExperimental = 'success-strong-experimental',
+  WarningStrongExperimental = 'warning-strong-experimental',
+  CriticalStrongExperimental = 'critical-strong-experimental',
+  AttentionStrongExperimental = 'attention-strong-experimental',
+  ReadOnlyExperimental = 'read-only-experimental',
+  EnabledExperimental = 'enabled-experimental',
 }
 
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
@@ -23,4 +41,4 @@ export enum ProgressValue {
   Complete = 'complete',
 }
 
-export type Size = 'small' | 'medium';
+export type Size = 'small' | 'medium' | Experimental<'large'>;
