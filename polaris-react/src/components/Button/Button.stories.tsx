@@ -81,6 +81,91 @@ export function All() {
             </HorizontalStack>
           </Card>
         </VerticalStack>
+        <VerticalStack gap="4">
+          <Text as="h2">outline destructive</Text>
+          <Box padding="4">
+            <HorizontalStack gap="5" blockAlign="end">
+              <Button outline destructive>
+                Label
+              </Button>
+              <Button outline destructive disabled>
+                Label
+              </Button>
+              <Button outline destructive icon={PlusMinor}>
+                Label
+              </Button>
+              <Button outline destructive disabled icon={PlusMinor}>
+                Label
+              </Button>
+              <Button outline destructive disclosure>
+                Label
+              </Button>
+              <Button
+                outline
+                destructive
+                icon={CancelSmallMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                outline
+                destructive
+                icon={EditMajor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                outline
+                destructive
+                disabled
+                icon={PlusMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                outline
+                destructive
+                icon={DeleteMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+            </HorizontalStack>
+          </Box>
+          <Card>
+            <HorizontalStack gap="5" blockAlign="end">
+              <Button outline destructive>
+                Label
+              </Button>
+              <Button outline destructive disabled>
+                Label
+              </Button>
+              <Button outline destructive icon={PlusMinor}>
+                Label
+              </Button>
+              <Button outline destructive disabled icon={PlusMinor}>
+                Label
+              </Button>
+              <Button outline destructive disclosure>
+                Label
+              </Button>
+              <Button
+                outline
+                destructive
+                icon={CancelSmallMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                outline
+                destructive
+                disabled
+                icon={EditMajor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+            </HorizontalStack>
+          </Card>
+        </VerticalStack>
         <VerticalStack gap="2">
           <Text as="h2">destructive</Text>
           <Box padding="4">
