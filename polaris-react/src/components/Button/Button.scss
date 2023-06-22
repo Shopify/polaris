@@ -554,11 +554,7 @@
     }
 
     &.iconOnly {
-      margin: calc(-1 * var(--p-space-1_5-experimental));
-      @media #{$p-breakpoints-md-up} {
-        margin-left: calc(-1 * var(--p-space-1));
-        margin-right: calc(-1 * var(--p-space-1));
-      }
+      margin: calc(-1 * var(--p-space-1));
     }
   }
 }
@@ -892,6 +888,11 @@
 
   &.iconOnly {
     margin: calc(-1 * var(--p-space-2));
+
+    #{$se23} & {
+      // stylelint-disable-next-line -- custom px to align icons with line height
+      margin: calc(-1 * 3px) calc(-1 * var(--p-space-1_5-experimental));
+    }
 
     svg {
       fill: var(--p-color-icon);
