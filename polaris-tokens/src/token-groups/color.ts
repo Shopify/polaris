@@ -186,24 +186,19 @@ type ColorBorderAliasExperimental = Experimental<
   'border-input-active' | 'border-critical-strong'
 >;
 
-export type ColorAvatarAliasExperimental = Experimental<
-  | 'avatar-background-gray'
-  | 'avatar-background-magenta'
-  | 'avatar-background-yellow'
-  | 'avatar-background-cyan'
-  | 'avatar-background-azure'
-  | 'avatar-background-rose'
-  | 'avatar-text-magenta'
-  | 'avatar-text-yellow'
-  | 'avatar-text-cyan'
-  | 'avatar-text-azure'
-  | 'avatar-text-rose'
-  | 'avatar-icon-gray'
-  | 'avatar-icon-magenta'
-  | 'avatar-icon-yellow'
-  | 'avatar-icon-cyan'
-  | 'avatar-icon-azure'
-  | 'avatar-icon-rose'
+type ColorAvatarAliasExperimental = Experimental<
+  | 'avatar-background'
+  | 'avatar-color'
+  | 'avatar-style-one-background'
+  | 'avatar-style-one-color'
+  | 'avatar-style-two-background'
+  | 'avatar-style-two-color'
+  | 'avatar-style-three-background'
+  | 'avatar-style-three-color'
+  | 'avatar-style-four-background'
+  | 'avatar-style-four-color'
+  | 'avatar-style-five-background'
+  | 'avatar-style-five-color'
 >;
 
 export type ColorTokenName =
@@ -1001,72 +996,52 @@ export const color: {
     value: colorsExperimental.red[16],
     description: '',
   },
-  'color-avatar-background-gray-experimental': {
+  'color-avatar-background-experimental': {
     value: colorsExperimental.gray[11](),
     description: '',
   },
-  'color-avatar-background-magenta-experimental': {
-    value: colorsExperimental.magenta[14],
-    description: '',
-  },
-  'color-avatar-background-yellow-experimental': {
-    value: colorsExperimental.yellow[14],
-    description: '',
-  },
-  'color-avatar-background-cyan-experimental': {
-    value: colorsExperimental.cyan[14],
-    description: '',
-  },
-  'color-avatar-background-azure-experimental': {
-    value: colorsExperimental.azure[14],
-    description: '',
-  },
-  'color-avatar-background-rose-experimental': {
-    value: colorsExperimental.rose[14],
-    description: '',
-  },
-  'color-avatar-text-magenta-experimental': {
-    value: colorsExperimental.magenta[7],
-    description: '',
-  },
-  'color-avatar-text-yellow-experimental': {
-    value: colorsExperimental.yellow[7],
-    description: '',
-  },
-  'color-avatar-text-cyan-experimental': {
-    value: colorsExperimental.cyan[7],
-    description: '',
-  },
-  'color-avatar-text-azure-experimental': {
-    value: colorsExperimental.azure[7],
-    description: '',
-  },
-  'color-avatar-text-rose-experimental': {
-    value: colorsExperimental.rose[7],
-    description: '',
-  },
-  'color-avatar-icon-gray-experimental': {
+  'color-avatar-color-experimental': {
     value: colorsExperimental.gray[1](),
     description: '',
   },
-  'color-avatar-icon-magenta-experimental': {
-    value: colorsExperimental.magenta[11],
+  'color-avatar-style-one-background-experimental': {
+    value: colorsExperimental.magenta[7],
     description: '',
   },
-  'color-avatar-icon-yellow-experimental': {
-    value: colorsExperimental.yellow[11],
+  'color-avatar-style-one-color-experimental': {
+    value: colorsExperimental.magenta[14],
     description: '',
   },
-  'color-avatar-icon-cyan-experimental': {
-    value: colorsExperimental.cyan[11],
+  'color-avatar-style-two-background-experimental': {
+    value: colorsExperimental.green[7],
     description: '',
   },
-  'color-avatar-icon-azure-experimental': {
-    value: colorsExperimental.azure[11],
+  'color-avatar-style-two-color-experimental': {
+    value: colorsExperimental.green[14],
     description: '',
   },
-  'color-avatar-icon-rose-experimental': {
-    value: colorsExperimental.rose[11],
+  'color-avatar-style-three-background-experimental': {
+    value: colorsExperimental.cyan[7],
+    description: '',
+  },
+  'color-avatar-style-three-color-experimental': {
+    value: colorsExperimental.cyan[14],
+    description: '',
+  },
+  'color-avatar-style-four-background-experimental': {
+    value: colorsExperimental.azure[7],
+    description: '',
+  },
+  'color-avatar-style-four-color-experimental': {
+    value: colorsExperimental.azure[14],
+    description: '',
+  },
+  'color-avatar-style-five-background-experimental': {
+    value: colorsExperimental.rose[7],
+    description: '',
+  },
+  'color-avatar-style-five-color-experimental': {
+    value: colorsExperimental.rose[14],
     description: '',
   },
 };

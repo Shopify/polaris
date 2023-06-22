@@ -26,8 +26,8 @@
     --pc-avatar-medium-size: 28px;
     --pc-avatar-large-size: 32px;
     // stylelint-enable
-    background: var(--p-color-avatar-background-gray-experimental);
-    color: var(--p-color-avatar-icon-gray-experimental);
+    background: var(--p-color-avatar-background-experimental);
+    color: var(--p-color-avatar-color-experimental);
   }
 
   @media (forced-colors: active) {
@@ -143,19 +143,13 @@
   background: rgba(255, 201, 107, 1);
 
   #{$se23} & {
-    background: var(--p-color-avatar-background-yellow-experimental);
+    background: var(--p-color-avatar-style-one-background-experimental);
+    color: var(--p-color-avatar-style-one-color-experimental);
   }
 
-  svg {
-    #{$se23} & {
-      color: var(--p-color-avatar-icon-yellow-experimental);
-    }
-  }
-
-  text {
-    #{$se23} & {
-      color: var(--p-color-avatar-text-yellow-experimental);
-    }
+  #{$se23} & svg,
+  #{$se23} & text {
+    color: var(--p-color-avatar-style-one-color-experimental);
   }
 }
 
@@ -166,19 +160,13 @@
   background: rgba(255, 196, 176, 1);
 
   #{$se23} & {
-    background: var(--p-color-avatar-background-magenta-experimental);
+    background: var(--p-color-avatar-style-two-background-experimental);
+    color: var(--p-color-avatar-style-two-color-experimental);
   }
 
-  svg {
-    #{$se23} & {
-      color: var(--p-color-avatar-icon-magenta-experimental);
-    }
-  }
-
-  text {
-    #{$se23} & {
-      color: var(--p-color-avatar-text-magenta-experimental);
-    }
+  #{$se23} & svg,
+  #{$se23} & text {
+    color: var(--p-color-avatar-style-two-color-experimental);
   }
 }
 
@@ -189,19 +177,13 @@
   background: rgba(146, 230, 181, 1);
 
   #{$se23} & {
-    background: var(--p-color-avatar-background-cyan-experimental);
+    background: var(--p-color-avatar-style-three-background-experimental);
+    color: var(--p-color-avatar-style-three-color-experimental);
   }
 
-  svg {
-    #{$se23} & {
-      color: var(--p-color-avatar-icon-cyan-experimental);
-    }
-  }
-
-  text {
-    #{$se23} & {
-      color: var(--p-color-avatar-text-cyan-experimental);
-    }
+  #{$se23} & svg,
+  #{$se23} & text {
+    color: var(--p-color-avatar-style-three-color-experimental);
   }
 }
 
@@ -212,19 +194,13 @@
   background: rgba(145, 224, 214, 1);
 
   #{$se23} & {
-    background: var(--p-color-avatar-background-azure-experimental);
+    background: var(--p-color-avatar-style-four-background-experimental);
+    color: var(--p-color-avatar-style-four-color-experimental);
   }
 
-  svg {
-    #{$se23} & {
-      color: var(--p-color-avatar-icon-azure-experimental);
-    }
-  }
-
-  text {
-    #{$se23} & {
-      color: var(--p-color-avatar-text-azure-experimental);
-    }
+  #{$se23} & svg,
+  #{$se23} & text {
+    color: var(--p-color-avatar-style-four-color-experimental);
   }
 }
 
@@ -235,19 +211,13 @@
   background: rgba(253, 201, 208, 1);
 
   #{$se23} & {
-    background: var(--p-color-avatar-background-rose-experimental);
+    background: var(--p-color-avatar-style-five-background-experimental);
+    color: var(--p-color-avatar-style-five-color-experimental);
   }
 
-  svg {
-    #{$se23} & {
-      color: var(--p-color-avatar-icon-rose-experimental);
-    }
-  }
-
-  text {
-    #{$se23} & {
-      color: var(--p-color-avatar-text-rose-experimental);
-    }
+  #{$se23} & svg,
+  #{$se23} & text {
+    color: var(--p-color-avatar-style-five-color-experimental);
   }
 }
 
