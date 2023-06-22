@@ -143,6 +143,7 @@
 
   #{$se23} & {
     background-color: var(--p-color-bg-secondary-experimental);
+    border-top: 0;
   }
 
   @media (-ms-high-contrast: active) {
@@ -152,10 +153,6 @@
   .Header + & {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     margin-top: var(--p-space-5);
-  }
-
-  #{$se23} & {
-    border-top: 0;
   }
 }
 
