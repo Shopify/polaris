@@ -70,7 +70,7 @@ export function All() {
               </Text>
               <HorizontalStack gap="2" blockAlign="center">
                 {sizeEntries.map(([size]) => (
-                  <Avatar key={size} size={size} />
+                  <Avatar key={size} shape={shape} size={size} />
                 ))}
               </HorizontalStack>
             </VerticalStack>
@@ -80,7 +80,7 @@ export function All() {
               </Text>
               <HorizontalStack gap="2" blockAlign="center">
                 {sizeEntries.map(([size]) => (
-                  <Avatar key={size} size={size} customer />
+                  <Avatar key={size} shape={shape} size={size} customer />
                 ))}
               </HorizontalStack>
             </VerticalStack>
@@ -92,7 +92,12 @@ export function All() {
                 {styleEntries.map(([style, name]) => (
                   <HorizontalStack key={style} gap="2" blockAlign="center">
                     {sizeEntries.map(([size]) => (
-                      <Avatar key={size} name={name} size={size} />
+                      <Avatar
+                        key={size}
+                        shape={shape}
+                        name={name}
+                        size={size}
+                      />
                     ))}
                   </HorizontalStack>
                 ))}
@@ -106,7 +111,12 @@ export function All() {
                 {styleEntries.map(([style, initials]) => (
                   <HorizontalStack key={style} gap="2" blockAlign="center">
                     {sizeEntries.map(([size]) => (
-                      <Avatar key={size} initials={initials} size={size} />
+                      <Avatar
+                        key={size}
+                        shape={shape}
+                        initials={initials}
+                        size={size}
+                      />
                     ))}
                   </HorizontalStack>
                 ))}
