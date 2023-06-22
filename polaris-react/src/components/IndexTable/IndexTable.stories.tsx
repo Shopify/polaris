@@ -3717,18 +3717,19 @@ export function WithSubHeaders() {
       selectedResources.includes(id),
     );
 
-    if (someCustomersSelected) selected = 'indeterminate';
-    else if (allCustomersSelected) selected = true;
+    if (allCustomersSelected) {
+      selected = true;
+    } else if (someCustomersSelected) {
+      selected = 'indeterminate';
+    }
 
     const selectableRows = rows.filter(({disabled}) => !disabled);
-    const childRowRange: IndexTableRowProps['headerRange'] = [
+    const childRowRange: IndexTableRowProps['subHeaderRange'] = [
       selectableRows.findIndex((row) => row.id === customers[0].id),
       selectableRows.findIndex(
         (row) => row.id === customers[customers.length - 1].id,
       ),
     ];
-
-    console.log(`Subheader ${orderDate} selected: ${selected}`);
 
     return (
       <Fragment key={subheaderId}>
