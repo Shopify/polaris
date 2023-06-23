@@ -1,8 +1,14 @@
 import React from 'react';
-import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
+import {
+  CaretDownMinor,
+  CaretUpMinor,
+  ChevronDownMinor,
+  ChevronUpMinor,
+} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
 import styles from '../../TextField.scss';
+import {useFeatures} from '../../../../utilities/features';
 
 type HandleStepFn = (step: number) => void;
 
@@ -16,6 +22,8 @@ export interface SpinnerProps {
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
   function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
+    const {polarisSummerEditions2023: se23} = useFeatures();
+
     function handleStep(step: number) {
       return () => onChange(step);
     }
@@ -39,7 +47,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={CaretUpMinor} />
+            <Icon source={se23 ? ChevronUpMinor : CaretUpMinor} />
           </div>
         </div>
         <div
@@ -52,7 +60,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={CaretDownMinor} />
+            <Icon source={se23 ? ChevronDownMinor : CaretDownMinor} />
           </div>
         </div>
       </div>
