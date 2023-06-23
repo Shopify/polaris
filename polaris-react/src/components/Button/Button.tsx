@@ -3,6 +3,8 @@ import {
   CaretDownMinor,
   CaretUpMinor,
   SelectMinor,
+  ChevronDownMinor,
+  ChevronUpMinor,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
@@ -165,13 +167,28 @@ export function Button({
     primarySuccess && styles.success,
   );
 
+  const disclosureUpIcon = polarisSummerEditions2023
+    ? ChevronUpMinor
+    : CaretUpMinor;
+  const disclosureDownIcon = polarisSummerEditions2023
+    ? ChevronDownMinor
+    : CaretDownMinor;
+
   const disclosureMarkup = disclosure ? (
     <span className={styles.Icon}>
       <div
         className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
         <Icon
-          source={loading ? 'placeholder' : getDisclosureIconSource(disclosure)}
+          source={
+            loading
+              ? 'placeholder'
+              : getDisclosureIconSource(
+                  disclosure,
+                  disclosureUpIcon,
+                  disclosureDownIcon,
+                )
+          }
         />
       </div>
     </span>
@@ -255,7 +272,11 @@ export function Button({
         tabIndex={disabled ? -1 : undefined}
       >
         <span className={styles.Icon}>
-          <Icon source={CaretDownMinor} />
+          <Icon
+            source={
+              polarisSummerEditions2023 ? ChevronDownMinor : CaretDownMinor
+            }
+          />
         </span>
       </button>
     );
@@ -340,10 +361,12 @@ function isIconSource(x: any): x is IconSource {
 
 function getDisclosureIconSource(
   disclosure: NonNullable<ButtonProps['disclosure']>,
+  upIcon: IconSource,
+  downIcon: IconSource,
 ) {
   if (disclosure === 'select') {
     return SelectMinor;
   }
 
-  return disclosure === 'up' ? CaretUpMinor : CaretDownMinor;
+  return disclosure === 'up' ? upIcon : downIcon;
 }
