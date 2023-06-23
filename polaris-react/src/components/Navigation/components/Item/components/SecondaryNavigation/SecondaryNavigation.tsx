@@ -16,6 +16,7 @@ export interface SecondaryNavigationProps {
   subNavigationItems: SubNavigationItem[];
   showExpanded: boolean;
   truncateText?: boolean;
+  secondaryNavigationId?: string;
 }
 
 export function SecondaryNavigation({
@@ -25,9 +26,10 @@ export function SecondaryNavigation({
   subNavigationItems,
   showExpanded,
   truncateText,
+  secondaryNavigationId,
 }: SecondaryNavigationProps) {
   const {polarisSummerEditions2023} = useFeatures();
-  const secondaryNavigationId = useId();
+  const uid = useId();
   const {onNavigationDismiss} = useContext(NavigationContext);
   const [hoveredItem, setHoveredItem] = useState<
     SubNavigationItem | undefined
@@ -48,7 +50,7 @@ export function SecondaryNavigation({
       )}
     >
       <Collapsible
-        id={secondaryNavigationId}
+        id={secondaryNavigationId || uid}
         open={showExpanded}
         transition={false}
       >

@@ -263,6 +263,7 @@ export function Item({
         subNavigationItems={subNavigationItems}
         showExpanded={showExpanded}
         truncateText={truncateText}
+        secondaryNavigationId={secondaryNavigationId}
       />
     );
   }
