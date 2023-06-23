@@ -156,9 +156,29 @@ $disabled-fade: 0.6;
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-app-selected);
     }
+
     &:active {
       background: var(--p-color-bg-app-selected);
     }
+
+    // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+    &.ItemInnerWrapper-display-actions-on-hover {
+      @media #{$p-breakpoints-md-up} {
+        .SecondaryActions {
+          background: var(--p-color-bg-app-selected);
+
+          &::before {
+            // stylelint-disable-next-line -- required for fade effect
+            background: linear-gradient(
+              to right,
+              rgba(0, 0, 0, 0),
+              var(--p-color-bg-app-selected) var(--p-space-8)
+            );
+          }
+        }
+      }
+    }
+    // stylelint-enable
   }
 }
 
@@ -365,6 +385,12 @@ $disabled-fade: 0.6;
   }
 
   @media #{$p-breakpoints-md-up} {
+    // This color is not derived from the global color variables because
+    // we should not stack two transparent colors on top of each other. The
+    // color in the background is already transparent.
+    // stylelint-disable-next-line -- required to match the background color
+    --secondary-actions-background-color: rgba(224, 224, 224, 1);
+
     .SecondaryActions {
       position: absolute;
       top: 0;
@@ -376,8 +402,8 @@ $disabled-fade: 0.6;
         visibility var(--p-motion-duration-200) ease-in-out;
 
       #{$se23} & {
-        // background-color: var(--p-color-bg-transparent-hover-experimental);
-        background-color: transparent;
+        background-color: var(--secondary-actions-background-color);
+        transition: none;
       }
 
       &::before {
@@ -396,12 +422,12 @@ $disabled-fade: 0.6;
         );
 
         #{$se23} & {
-          display: none;
-          // background: linear-gradient(
-          //   to right,
-          //   rgba(0, 0, 0, 0),
-          //   var(--p-color-bg-transparent-hover-experimental) var(--p-space-8)
-          // );
+          // stylelint-disable-next-line -- required for fade effect
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0),
+            var(--secondary-actions-background-color) var(--p-space-8)
+          );
         }
       }
     }
