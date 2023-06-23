@@ -619,6 +619,8 @@ $loading-panel-height: 53px;
     &.TableHeading-unselectable {
       position: sticky;
       left: 0;
+      // stylelint-disable-next-line -- second column (first heading item) overlaps other headings on horizontal scroll
+      z-index: var(--pc-index-table-sticky-cell);
     }
   }
 }
