@@ -260,6 +260,13 @@
       calc(-1 * var(--p-space-2));
   }
 
+  #{$se23} & svg {
+    // stylelint-disable -- Corrects conflicting alignment with ancestor elements
+    display: inline-block;
+    vertical-align: top;
+    // stylelint-enable
+  }
+
   .sizeLarge-experimental & {
     margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
 
