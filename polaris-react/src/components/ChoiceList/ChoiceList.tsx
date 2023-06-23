@@ -21,7 +21,7 @@ interface Choice {
   disabled?: boolean;
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
-  /** Indicates that the choice is aria-describedBy the error message*/
+  /** Indicates that the choice is aria-describedBy the error message */
   describedByError?: boolean;
   /**  Method to render children with a choice */
   renderChildren?(isSelected: boolean): React.ReactNode | false;

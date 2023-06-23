@@ -18,9 +18,9 @@ import {WithinListboxContext} from '../../utilities/listbox/context';
 import styles from './Checkbox.scss';
 
 export interface CheckboxProps {
-  /** Indicates the ID of the element that is controlled by the checkbox*/
+  /** Indicates the ID of the element that is controlled by the checkbox */
   ariaControls?: string;
-  /** Indicates the ID of the element that describes the checkbox*/
+  /** Indicates the ID of the element that describes the checkbox */
   ariaDescribedBy?: string;
   /** Label for the checkbox */
   label: React.ReactNode;
@@ -42,7 +42,7 @@ export interface CheckboxProps {
   error?: Error | boolean;
   /** Callback when checkbox is toggled */
   onChange?(newChecked: boolean, id: string): void;
-  /** Callback when checkbox is focussed */
+  /** Callback when checkbox is focused */
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;

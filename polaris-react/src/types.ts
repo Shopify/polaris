@@ -77,7 +77,7 @@ export interface BaseButton {
   ariaChecked?: 'false' | 'true';
   /** Callback when clicked */
   onClick?(): unknown;
-  /** Callback when button becomes focussed */
+  /** Callback when button becomes focused */
   onFocus?(): void;
   /** Callback when focus leaves button */
   onBlur?(): void;

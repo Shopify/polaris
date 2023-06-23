@@ -22,7 +22,7 @@ export interface LinkProps {
   target?: Target;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
-  /** Removes text decoration underline to the link*/
+  /** Removes text decoration underline to the link */
   removeUnderline?: boolean;
   /** Callback when a link is clicked */
   onClick?(): void;

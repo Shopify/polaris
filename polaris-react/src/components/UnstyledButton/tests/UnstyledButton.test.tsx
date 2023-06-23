@@ -461,7 +461,7 @@ describe('<Button />', () => {
   });
 
   describe('onFocus()', () => {
-    it('is called when the button is focussed', () => {
+    it('is called when the button is focused', () => {
       const onFocusSpy = jest.fn();
       const unstyledButton = mountWithApp(
         <UnstyledButton onFocus={onFocusSpy} />,
@@ -471,7 +471,7 @@ describe('<Button />', () => {
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('is called when the link is focussed', () => {
+    it('is called when the link is focused', () => {
       const onFocusSpy = jest.fn();
       const unstyledButton = mountWithApp(
         <UnstyledButton onFocus={onFocusSpy} url="https://google.com" />,
