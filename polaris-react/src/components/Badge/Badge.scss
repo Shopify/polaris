@@ -260,6 +260,12 @@
       calc(-1 * var(--p-space-2));
   }
 
+  #{$se23} & svg {
+    // Corrects conflicting alignment with ancestor elements
+    display: inline-block;
+    vertical-align: top;
+  }
+
   .sizeLarge-experimental & {
     margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
 
