@@ -261,10 +261,9 @@
   }
 
   #{$se23} & svg {
-    // stylelint-disable -- Corrects conflicting alignment with ancestor elements
+    // Corrects conflicting alignment with ancestor elements
     display: inline-block;
     vertical-align: top;
-    // stylelint-enable
   }
 
   .sizeLarge-experimental & {
