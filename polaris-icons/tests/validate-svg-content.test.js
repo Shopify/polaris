@@ -14,7 +14,7 @@ const configPerSet = new Map([
 ]);
 
 const allIconFiles = globby
-  .sync(path.resolve(__dirname, '../icons/new-icons/*.svg'))
+  .sync(path.resolve(__dirname, '../icons/*.svg'))
   .map((absoluteIconPath) => {
     // We don't care about the first item, only the groups matches
     const [, set] = nameRegex.exec(absoluteIconPath) || [];

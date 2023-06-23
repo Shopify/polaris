@@ -2,7 +2,7 @@ const path = require('path');
 
 const globby = require('globby');
 
-const iconBasePath = path.resolve(__dirname, '../icons/new-icons');
+const iconBasePath = path.resolve(__dirname, '../icons');
 
 const allSVGs = globby
   .sync('*.svg', {
