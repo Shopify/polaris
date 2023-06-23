@@ -1,5 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {CancelSmallMinor, CaretDownMinor} from '@shopify/polaris-icons';
+import {
+  CancelSmallMinor,
+  CaretDownMinor,
+  ChevronDownMinor,
+} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
@@ -143,7 +147,10 @@ export function FilterPill({
               <>
                 {wrappedLabel}
                 <div className={styles.IconWrapper}>
-                  <Icon source={CaretDownMinor} color="base" />
+                  <Icon
+                    source={se23 ? ChevronDownMinor : CaretDownMinor}
+                    color="base"
+                  />
                 </div>
               </>
             )}
