@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.2.2
+
+### Patch Changes
+
+- [#9521](https://github.com/Shopify/polaris/pull/9521) [`684384def`](https://github.com/Shopify/polaris/commit/684384def2583d9b7f47a7f97ca31e6a7e8d5606) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fixed vertical alignment issue with `svg` element in `Badge` component
+
 ## 11.2.1
 
 ### Patch Changes
