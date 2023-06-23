@@ -1,6 +1,8 @@
 name: Insert Dynamic Source
 set: major
-description: Used to represent inserting a dynamic source into an input field that supports multiple dynamic sources
+description: >-
+  Used to represent inserting a dynamic source into an input field that supports
+  multiple dynamic sources
 keywords:
   - dynamic source
   - data source
@@ -19,7 +21,8 @@ keywords:
   - database
 authors:
   - Russell Baylis
+  - Joe Thomas
 version: 1
 date_added: 2022-09-06
-date_modified: 2022-09-06
+date_modified: 2023-06-23
 exclusive_use:

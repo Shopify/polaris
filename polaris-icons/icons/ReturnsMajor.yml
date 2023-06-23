@@ -7,9 +7,8 @@ keywords:
   - order
 authors:
   - Jenna Stephens-Wells
+  - Joe Thomas
 version: 1
 date_added: 2022-11-29
-date_modified: 2022-11-29
-# Optional: fill exclusive_use if the icon should *only* be used
-# in specific areas of the admin (such as “Orders”):
+date_modified: 2023-06-23
 exclusive_use:
