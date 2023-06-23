@@ -148,6 +148,8 @@ $nav-max-width: 360px;
 }
 
 .ItemInnerWrapper-selected {
+  background-color: var(--p-color-bg-app-selected);
+
   #{$se23} & {
     background-color: var(--p-color-bg-app-selected);
 
