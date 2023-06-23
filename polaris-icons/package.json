@@ -20,8 +20,8 @@
     "build": "rollup -c",
     "clean": "rm -rf .turbo node_modules dist",
     "dev": "rollup -c -w",
-    "optimize": "yarn svgo -f icons",
-    "test": "jest"
+    "test": "jest",
+    "optimize": "yarn svgo -f icons"
   },
   "exports": {
     ".": {
