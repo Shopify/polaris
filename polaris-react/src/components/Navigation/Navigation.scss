@@ -858,7 +858,7 @@ $nav-max-width: 360px;
     }
 
     .Item-selected {
-      border-radius: 0;
+      border-radius: var(--p-border-radius-2);
 
       &:active,
       &:active:hover {
