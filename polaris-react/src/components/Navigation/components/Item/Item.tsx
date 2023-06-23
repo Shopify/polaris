@@ -7,7 +7,6 @@ import {useFeatures} from '../../../../utilities/features';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
 import {Icon} from '../../../Icon';
-import type {IconProps} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
@@ -15,68 +14,13 @@ import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import styles from '../../Navigation.scss';
 import {Tooltip} from '../../../Tooltip';
-import type {TooltipProps} from '../../../Tooltip';
+import {MatchState} from '../../types';
+import type {ItemProps, SecondaryAction, ItemURLDetails} from '../../types';
 
-import {Secondary} from './components';
+import {SecondaryNavigation} from './components';
 
 export const MAX_SECONDARY_ACTIONS = 2;
 const TOOLTIP_HOVER_DELAY = 1000;
-
-interface ItemURLDetails {
-  url?: string;
-  matches?: boolean;
-  exactMatch?: boolean;
-  matchPaths?: string[];
-  excludePaths?: string[];
-  external?: boolean;
-}
-
-export interface SubNavigationItem extends ItemURLDetails {
-  url: string;
-  label: string;
-  disabled?: boolean;
-  new?: boolean;
-  onClick?(): void;
-}
-
-interface SecondaryAction {
-  accessibilityLabel: string;
-  icon: IconProps['source'];
-  url?: string;
-  onClick?(): void;
-  tooltip?: TooltipProps;
-}
-
-type SecondaryActions = [SecondaryAction] | [SecondaryAction, SecondaryAction];
-
-export interface ItemProps extends ItemURLDetails {
-  icon?: IconProps['source'];
-  badge?: ReactNode;
-  label: string;
-  disabled?: boolean;
-  accessibilityLabel?: string;
-  selected?: boolean;
-  exactMatch?: boolean;
-  new?: boolean;
-  subNavigationItems?: SubNavigationItem[];
-  /** @deprecated Use secondaryActions instead. */
-  secondaryAction?: SecondaryAction;
-  secondaryActions?: SecondaryActions;
-  displayActionsOnHover?: boolean;
-  onClick?(): void;
-  onToggleExpandedState?(): void;
-  expanded?: boolean;
-  shouldResizeIcon?: boolean;
-  truncateText?: boolean;
-}
-
-enum MatchState {
-  MatchForced,
-  MatchUrl,
-  MatchPaths,
-  Excluded,
-  NoMatch,
-}
 
 export function Item({
   url,
@@ -101,6 +45,11 @@ export function Item({
   expanded,
   shouldResizeIcon,
   truncateText,
+  showVerticalLine,
+  showVerticalHoverLine,
+  showVerticalHoverPointer,
+  onMouseEnter,
+  onMouseLeave,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -291,6 +240,14 @@ export function Item({
       : selected && canBeActive && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
+    showVerticalLine && polarisSummerEditions2023 && styles['Item-line'],
+    matches && polarisSummerEditions2023 && styles['Item-line-pointer'],
+    showVerticalHoverLine &&
+      polarisSummerEditions2023 &&
+      styles['Item-hover-line'],
+    showVerticalHoverPointer &&
+      polarisSummerEditions2023 &&
+      styles['Item-hover-pointer'],
   );
 
   let secondaryNavigationMarkup: ReactNode = null;
@@ -300,39 +257,16 @@ export function Item({
       ({url: firstUrl}, {url: secondUrl}) => secondUrl.length - firstUrl.length,
     )[0];
 
-    const SecondaryNavigationClassName = classNames(
-      styles.SecondaryNavigation,
-      !icon && styles['SecondaryNavigation-noIcon'],
-    );
-
     secondaryNavigationMarkup = (
-      <div className={SecondaryNavigationClassName}>
-        <Secondary expanded={showExpanded} id={secondaryNavigationId}>
-          {subNavigationItems.map((item) => {
-            const {label, ...rest} = item;
-            const onClick = () => {
-              if (onNavigationDismiss) {
-                onNavigationDismiss();
-              }
-
-              if (item.onClick && item.onClick !== onNavigationDismiss) {
-                item.onClick();
-              }
-            };
-
-            return (
-              <Item
-                key={label}
-                {...rest}
-                label={label}
-                matches={item === longestMatch}
-                onClick={onClick}
-                truncateText={truncateText}
-              />
-            );
-          })}
-        </Secondary>
-      </div>
+      <SecondaryNavigation
+        ItemComponent={Item}
+        icon={icon}
+        longestMatch={longestMatch}
+        subNavigationItems={subNavigationItems}
+        showExpanded={showExpanded}
+        truncateText={truncateText}
+        secondaryNavigationId={secondaryNavigationId}
+      />
     );
   }
 
@@ -375,7 +309,13 @@ export function Item({
   };
 
   return (
-    <li className={className}>
+    <li
+      className={className}
+      onMouseEnter={() => {
+        onMouseEnter?.(label);
+      }}
+      onMouseLeave={onMouseLeave}
+    >
       <div className={styles.ItemWrapper}>
         <div
           className={classNames(
