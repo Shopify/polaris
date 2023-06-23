@@ -40,7 +40,7 @@ export const TextOption = memo(function TextOption({
   const optionMarkup =
     polarisSummerEditions2023 && selected ? (
       <Box width="100%">
-        <HorizontalStack align="space-between">
+        <HorizontalStack wrap={false} align="space-between" gap="2">
           {children}
           <HorizontalStack align="end">
             <Icon source={TickMinor} />
