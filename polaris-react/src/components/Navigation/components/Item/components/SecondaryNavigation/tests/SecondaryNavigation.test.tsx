@@ -110,7 +110,7 @@ describe('<SecondaryNavigation />', () => {
         });
       });
 
-      it('adds addHoverLine prop to all the Item components before the hovered item', () => {
+      it('adds showVerticalHoverLine prop to all the Item components before the hovered item', () => {
         const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
           features: {polarisSummerEditions2023: true},
         });
@@ -121,12 +121,12 @@ describe('<SecondaryNavigation />', () => {
         component.findAll(Item).forEach((item, index) => {
           const shouldAddHoverLine = index < hoveredIndex;
           expect(item).toHaveReactProps({
-            addHoverLine: shouldAddHoverLine,
+            showVerticalHoverLine: shouldAddHoverLine,
           });
         });
       });
 
-      it('adds addHoverPointer prop to the hovered item', () => {
+      it('adds showVerticalHoverPointer prop to the hovered item', () => {
         const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
           features: {polarisSummerEditions2023: true},
         });
@@ -136,12 +136,12 @@ describe('<SecondaryNavigation />', () => {
 
         component.findAll(Item).forEach((item, index) => {
           expect(item).toHaveReactProps({
-            addHoverPointer: index === hoveredIndex,
+            showVerticalHoverPointer: index === hoveredIndex,
           });
         });
       });
 
-      it('adds addLine prop to all the Item components before the matched item', () => {
+      it('adds showVerticalLine prop to all the Item components before the matched item', () => {
         const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
           features: {polarisSummerEditions2023: true},
         });
@@ -149,14 +149,14 @@ describe('<SecondaryNavigation />', () => {
         const indexWithMatchedItem = 1;
 
         component.findAll(Item).forEach((item, index) => {
-          const shouldAddLine = index < indexWithMatchedItem;
+          const shouldShowVerticalLine = index < indexWithMatchedItem;
           expect(item).toHaveReactProps({
-            addLine: shouldAddLine,
+            showVerticalLine: shouldShowVerticalLine,
           });
         });
       });
 
-      it('adds addLine prop to all the Item components before the hovered item when hovered item is before the matched item', () => {
+      it('adds showVerticalLine prop to all the Item components before the hovered item when hovered item is before the matched item', () => {
         const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
           features: {polarisSummerEditions2023: true},
         });
@@ -168,12 +168,13 @@ describe('<SecondaryNavigation />', () => {
         const indexWithMatchedItem = 1;
 
         component.findAll(Item).forEach((item, index) => {
-          const shouldAddHoverLineEmphasis = index < hoveredIndex;
-          const shouldAddLine =
-            !shouldAddHoverLineEmphasis && index < indexWithMatchedItem;
+          const shouldShowVerticalHoverLineEmphasis = index < hoveredIndex;
+          const shouldShowVerticalLine =
+            !shouldShowVerticalHoverLineEmphasis &&
+            index < indexWithMatchedItem;
 
           expect(item).toHaveReactProps({
-            addLine: shouldAddLine,
+            showVerticalLine: shouldShowVerticalLine,
           });
         });
       });

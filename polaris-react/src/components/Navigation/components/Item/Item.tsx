@@ -45,9 +45,9 @@ export function Item({
   expanded,
   shouldResizeIcon,
   truncateText,
-  addLine,
-  addHoverLine,
-  addHoverPointer,
+  showVerticalLine,
+  showVerticalHoverLine,
+  showVerticalHoverPointer,
   onMouseEnter,
   onMouseLeave,
 }: ItemProps) {
@@ -240,10 +240,12 @@ export function Item({
       : selected && canBeActive && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
-    addLine && polarisSummerEditions2023 && styles['Item-line'],
+    showVerticalLine && polarisSummerEditions2023 && styles['Item-line'],
     matches && polarisSummerEditions2023 && styles['Item-line-pointer'],
-    addHoverLine && polarisSummerEditions2023 && styles['Item-hover-line'],
-    addHoverPointer &&
+    showVerticalHoverLine &&
+      polarisSummerEditions2023 &&
+      styles['Item-hover-line'],
+    showVerticalHoverPointer &&
       polarisSummerEditions2023 &&
       styles['Item-hover-pointer'],
   );
@@ -312,9 +314,7 @@ export function Item({
       onMouseEnter={() => {
         onMouseEnter?.(label);
       }}
-      onMouseLeave={() => {
-        onMouseLeave?.();
-      }}
+      onMouseLeave={onMouseLeave}
     >
       <div className={styles.ItemWrapper}>
         <div

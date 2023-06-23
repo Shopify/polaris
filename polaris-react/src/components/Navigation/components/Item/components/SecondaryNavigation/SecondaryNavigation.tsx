@@ -70,15 +70,15 @@ export function SecondaryNavigation({
               }
             };
 
-            const shouldAddLine = polarisSummerEditions2023
+            const shouldShowVerticalLine = polarisSummerEditions2023
               ? index < matchedItemPosition
               : false;
 
-            const shouldAddHoverLine = polarisSummerEditions2023
+            const shouldShowVerticalHoverLine = polarisSummerEditions2023
               ? index < hoveredItemPosition
               : false;
 
-            const shouldAddHoverLineEmphasis =
+            const shouldShowVerticalHoverLineEmphasis =
               polarisSummerEditions2023 &&
               hoveredItemPosition < matchedItemPosition
                 ? index < hoveredItemPosition
@@ -89,9 +89,13 @@ export function SecondaryNavigation({
                 key={label}
                 {...rest}
                 label={label}
-                addLine={shouldAddHoverLineEmphasis ? undefined : shouldAddLine}
-                addHoverLine={shouldAddHoverLine}
-                addHoverPointer={
+                showVerticalLine={
+                  shouldShowVerticalHoverLineEmphasis
+                    ? undefined
+                    : shouldShowVerticalLine
+                }
+                showVerticalHoverLine={shouldShowVerticalHoverLine}
+                showVerticalHoverPointer={
                   polarisSummerEditions2023 && index === hoveredItemPosition
                 }
                 onMouseEnter={

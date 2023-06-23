@@ -21,9 +21,9 @@ export interface ItemProps extends ItemURLDetails {
   selected?: boolean;
   exactMatch?: boolean;
   new?: boolean;
-  addLine?: boolean;
-  addHoverLine?: boolean;
-  addHoverPointer?: boolean;
+  showVerticalLine?: boolean;
+  showVerticalHoverLine?: boolean;
+  showVerticalHoverPointer?: boolean;
   onMouseEnter?(label: string): void;
   onMouseLeave?(): void;
   subNavigationItems?: SubNavigationItem[];
