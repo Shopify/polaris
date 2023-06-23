@@ -110,6 +110,13 @@ $nav-max-width: 360px;
       background-color: transparent;
     }
   }
+
+  #{$se23} & {
+    // stylelint-disable-next-line selector-max-combinators -- se23
+    .Badge {
+      margin-right: 0;
+    }
+  }
 }
 
 .Item,
@@ -253,7 +260,7 @@ $nav-max-width: 360px;
 
   #{$se23} & {
     margin-top: var(--p-space-2);
-    margin-right: 0;
+    margin-right: var(--p-space-1);
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -262,7 +269,7 @@ $nav-max-width: 360px;
 
     #{$se23} & {
       margin-top: var(--p-space-1);
-      margin-right: 0;
+      margin-right: var(--p-space-1);
     }
   }
 }
@@ -380,10 +387,6 @@ $nav-max-width: 360px;
 }
 
 .ItemInnerWrapper-display-actions-on-hover {
-  #{$se23} & {
-    padding-right: var(--p-space-1);
-  }
-
   @media #{$p-breakpoints-md-up} {
     // This color is not derived from the global color variables because
     // we should not stack two transparent colors on top of each other. The
