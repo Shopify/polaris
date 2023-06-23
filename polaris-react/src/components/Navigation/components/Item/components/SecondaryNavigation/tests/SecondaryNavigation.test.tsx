@@ -84,6 +84,32 @@ describe('<SecondaryNavigation />', () => {
     });
 
     describe('with polarisSummerEditions2023 feature flag enabled', () => {
+      it('renders Item with onMouseLeave and onMouseEnter undefined when the item is disabled', () => {
+        const mockPropsWithDisabledItem = {
+          ...mockProps,
+          subNavigationItems: [
+            mockProps.subNavigationItems[0],
+            mockProps.subNavigationItems[1],
+            {
+              ...mockProps.subNavigationItems[2],
+              disabled: true,
+            },
+          ],
+        };
+
+        const component = mountWithApp(
+          <SecondaryNavigation {...mockPropsWithDisabledItem} />,
+          {
+            features: {polarisSummerEditions2023: true},
+          },
+        );
+
+        expect(component.findAll(Item)[2]).toHaveReactProps({
+          onMouseEnter: undefined,
+          onMouseLeave: undefined,
+        });
+      });
+
       it('adds addHoverLine prop to all the Item components before the hovered item', () => {
         const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
           features: {polarisSummerEditions2023: true},

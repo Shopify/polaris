@@ -92,8 +92,12 @@ export function SecondaryNavigation({
                 addHoverPointer={
                   polarisSummerEditions2023 && index === hoveredItemPosition
                 }
-                onMouseEnter={() => setHoveredItem(item)}
-                onMouseLeave={() => setHoveredItem(undefined)}
+                onMouseEnter={
+                  item.disabled ? undefined : () => setHoveredItem(item)
+                }
+                onMouseLeave={
+                  item.disabled ? undefined : () => setHoveredItem(undefined)
+                }
                 matches={isEqual(item, longestMatch)}
                 onClick={onClick}
                 truncateText={truncateText}

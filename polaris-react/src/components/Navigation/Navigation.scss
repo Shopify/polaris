@@ -97,8 +97,6 @@ $nav-max-width: 360px;
 }
 
 // Item styles
-$disabled-fade: 0.6;
-
 .Item {
   @include nav-item-attributes;
   position: relative;
@@ -234,13 +232,13 @@ $disabled-fade: 0.6;
 
 .Item-disabled {
   color: var(--p-color-text-disabled);
-  opacity: $disabled-fade;
+
+  .Text {
+    opacity: 0.6;
+  }
 
   .Icon {
-    // Re-apply another layer of opacity fade,
-    // as the new filled icons have a stronger visual presence
-    // than the old outlined ones.
-    opacity: $disabled-fade;
+    opacity: 0.4;
   }
 }
 
