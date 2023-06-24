@@ -6,12 +6,14 @@ import type {DeepPartial} from '@shopify/useful-types';
 import {IndexTable} from '../../../IndexTable';
 import type {IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
+import {SelectionType} from '../../../../../utilities/index-provider';
 import {Row} from '../Row';
 import {Checkbox} from '../../Checkbox';
 import {Button} from '../../../../Button';
 import {Link} from '../../../../Link';
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
 import styles from '../../../IndexTable.scss';
+import type {Range} from '../../../../../utilities/index-provider';
 
 const defaultEvent = {
   preventDefault: noop,
@@ -98,7 +100,7 @@ describe('<Row />', () => {
     );
   });
 
-  it('applies the .TableRow-subheader class to the table row element when subHeaderRange is provided', () => {
+  it('applies the .TableRow-subheader class to the table row element when a `subHeaderRange` is provided', () => {
     const row = mountWithTable(
       <Row id="id" selected subHeaderRange={[0, 2]} position={1}>
         <td />
@@ -343,6 +345,34 @@ describe('<Row />', () => {
     triggerOnClick(row, 1, defaultEvent);
 
     expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onSelectionChange with the `subHeaderRange` when present', () => {
+    const onSelectionChangeSpy = jest.fn();
+    const range: Range = [0, 1];
+    const row = mountWithTable(
+      <Row {...defaultProps} subHeaderRange={range}>
+        <th>
+          <a href="/">Child without data-primary-link</a>
+        </th>
+      </Row>,
+      {
+        indexTableProps: {
+          itemCount: 50,
+          selectedItemsCount: 0,
+          onSelectionChange: onSelectionChangeSpy,
+        },
+      },
+    );
+
+    triggerOnClick(row, 1, defaultEvent);
+
+    expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
+    expect(onSelectionChangeSpy).toHaveBeenCalledWith(
+      SelectionType.Range,
+      true,
+      range,
+    );
   });
 
   it('does not fire onClick handler when row is clicked and no primary link child present and table is not selectable', () => {

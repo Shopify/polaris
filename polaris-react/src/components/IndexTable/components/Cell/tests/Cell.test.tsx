@@ -39,7 +39,6 @@ describe('<Cell />', () => {
     const cell = mountWithTable(<Cell headers="last-order-date name" />);
 
     expect(cell.find('td')).toHaveReactProps({
-      colSpan: 3,
       headers: 'last-order-date name',
     });
   });
