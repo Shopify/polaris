@@ -14,6 +14,7 @@ export interface ItemURLDetails {
 
 export interface ItemProps extends ItemURLDetails {
   icon?: IconProps['source'];
+  matchedItemIcon?: IconProps['source'];
   badge?: ReactNode;
   label: string;
   disabled?: boolean;
