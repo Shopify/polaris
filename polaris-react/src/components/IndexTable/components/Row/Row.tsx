@@ -16,7 +16,7 @@ type RowStatus = 'success' | 'subdued' | 'critical';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
 export interface RowProps {
-  /**  */
+  /** Table header or data cells */
   children: React.ReactNode;
   /** A unique identifier for the row */
   id: string;

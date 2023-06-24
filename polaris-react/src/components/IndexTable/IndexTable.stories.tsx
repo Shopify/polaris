@@ -3746,7 +3746,7 @@ export function WithSubHeaders() {
             as="th"
             id={subheaderId}
           >
-            {orderDate}
+            {`Last order placed: ${orderDate}`}
           </IndexTable.Cell>
         </IndexTable.Row>
         {customers.map(
