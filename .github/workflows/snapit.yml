@@ -8,6 +8,15 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug
+        run: |
+          echo "github.event.issue.pull_request: ${{ github.event.issue.pull_request }}"
+          echo "github.event.comment.body: '${{ github.event.comment.body }}'"
+
   snapshot:
     name: Snapshot Release
     if: |
