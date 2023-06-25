@@ -7,6 +7,7 @@ import {
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+import type {WithPolarisTestProviderOptions} from '../../../../PolarisTestProvider';
 import {PolarisTestProvider} from '../../../../PolarisTestProvider';
 import type {MediaQueryContext} from '../../../../../utilities/media-query';
 import {Badge} from '../../../../Badge';
@@ -161,6 +162,7 @@ describe('<Nav.Item />', () => {
       {
         location: 'foo',
       },
+      {features: {polarisSummerEditions2023: true}},
     );
 
     expect(item).toContainReactComponent(Icon, {
@@ -186,6 +188,7 @@ describe('<Nav.Item />', () => {
       {
         location: 'bar',
       },
+      {features: {polarisSummerEditions2023: true}},
     );
 
     expect(item).toContainReactComponent(Icon, {
@@ -979,11 +982,13 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 function mountWithNavigationProvider(
   node: React.ReactElement,
   context: React.ContextType<typeof NavigationContext> = {location: ''},
+  options?: WithPolarisTestProviderOptions,
 ) {
   return mountWithApp(
     <NavigationContext.Provider value={context}>
       {node}
     </NavigationContext.Provider>,
+    {...options},
   );
 }
 

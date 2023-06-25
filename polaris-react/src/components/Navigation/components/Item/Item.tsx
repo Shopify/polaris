@@ -109,7 +109,9 @@ export function Item({
       : selectedOverride;
 
   const icon =
-    selected || childIsActive ? matchedItemIcon || baseIcon : baseIcon;
+    polarisSummerEditions2023 && (selected || childIsActive)
+      ? matchedItemIcon || baseIcon
+      : baseIcon;
 
   const iconMarkup = icon ? (
     <div
