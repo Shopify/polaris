@@ -90,6 +90,17 @@ export function Item({
     location,
   );
 
+  const matchingSubNavigationItems = subNavigationItems.filter((item) => {
+    const subMatchState = matchStateForItem(item, location);
+    return (
+      subMatchState === MatchState.MatchForced ||
+      subMatchState === MatchState.MatchUrl ||
+      subMatchState === MatchState.MatchPaths
+    );
+  });
+
+  const childIsActive = matchingSubNavigationItems.length > 0;
+
   const selected =
     selectedOverride == null
       ? matchState === MatchState.MatchForced ||
@@ -97,7 +108,8 @@ export function Item({
         matchState === MatchState.MatchPaths
       : selectedOverride;
 
-  const icon = selected ? matchedItemIcon || baseIcon : baseIcon;
+  const icon =
+    selected || childIsActive ? matchedItemIcon || baseIcon : baseIcon;
 
   const iconMarkup = icon ? (
     <div
@@ -219,17 +231,6 @@ export function Item({
   const outerContentMarkup = (
     <>{secondaryActionMarkup ? wrappedBadgeMarkup : null}</>
   );
-
-  const matchingSubNavigationItems = subNavigationItems.filter((item) => {
-    const subMatchState = matchStateForItem(item, location);
-    return (
-      subMatchState === MatchState.MatchForced ||
-      subMatchState === MatchState.MatchUrl ||
-      subMatchState === MatchState.MatchPaths
-    );
-  });
-
-  const childIsActive = matchingSubNavigationItems.length > 0;
 
   const showExpanded = selected || expanded || childIsActive;
 

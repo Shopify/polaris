@@ -168,6 +168,31 @@ describe('<Nav.Item />', () => {
     });
   });
 
+  it('renders matchedItemIcon when sub-navigation item is selected', () => {
+    const item = mountWithNavigationProvider(
+      <Item
+        label="some label"
+        url="foo"
+        icon={StarFilledMinor}
+        matchedItemIcon={StarOutlineMinor}
+        subNavigationItems={[
+          {
+            url: 'bar',
+            disabled: false,
+            label: 'sub-navigation item label',
+          },
+        ]}
+      />,
+      {
+        location: 'bar',
+      },
+    );
+
+    expect(item).toContainReactComponent(Icon, {
+      source: StarOutlineMinor,
+    });
+  });
+
   describe('with secondaryAction', () => {
     it('renders an UnstyledLink with props delegated', () => {
       const item = mountWithNavigationProvider(
@@ -508,7 +533,7 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponent('a', {
         'aria-expanded': false,
-        'aria-controls': expect.stringMatching(/^:r\d+:$/),
+        'aria-controls': expect.stringMatching(/^:r\d[a-z]?:$/),
       });
     });
 
