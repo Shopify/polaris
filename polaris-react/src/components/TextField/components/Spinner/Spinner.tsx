@@ -22,7 +22,7 @@ export interface SpinnerProps {
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
   function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
-    const {polarisSummerEditions2023: se23} = useFeatures();
+    const {polarisSummerEditions2023} = useFeatures();
 
     function handleStep(step: number) {
       return () => onChange(step);
@@ -47,7 +47,9 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={se23 ? ChevronUpMinor : CaretUpMinor} />
+            <Icon
+              source={polarisSummerEditions2023 ? ChevronUpMinor : CaretUpMinor}
+            />
           </div>
         </div>
         <div
@@ -60,7 +62,11 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={se23 ? ChevronDownMinor : CaretDownMinor} />
+            <Icon
+              source={
+                polarisSummerEditions2023 ? ChevronDownMinor : CaretDownMinor
+              }
+            />
           </div>
         </div>
       </div>

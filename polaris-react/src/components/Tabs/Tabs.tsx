@@ -74,7 +74,7 @@ export const Tabs = ({
   fitted,
   disclosureText,
 }: TabsProps) => {
-  const {polarisSummerEditions2023: se23} = useFeatures();
+  const {polarisSummerEditions2023} = useFeatures();
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
 
@@ -481,7 +481,7 @@ export const Tabs = ({
         )}
       >
         <Icon
-          source={se23 ? ChevronDownMinor : CaretDownMinor}
+          source={polarisSummerEditions2023 ? ChevronDownMinor : CaretDownMinor}
           color="subdued"
         />
       </div>

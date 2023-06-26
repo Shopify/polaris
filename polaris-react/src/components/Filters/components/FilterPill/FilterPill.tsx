@@ -52,7 +52,7 @@ export function FilterPill({
 }: FilterPillProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
-  const {polarisSummerEditions2023: se23} = useFeatures();
+  const {polarisSummerEditions2023} = useFeatures();
 
   const elementRef = useRef<HTMLDivElement>(null);
   const {
@@ -113,12 +113,16 @@ export function FilterPill({
     styles.ToggleButton,
   );
 
-  const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
+  const se23LabelVariant =
+    mdDown && polarisSummerEditions2023 ? 'bodyLg' : 'bodySm';
   const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
 
   const wrappedLabel = (
     <div className={styles.Label}>
-      <Text variant={se23 ? se23LabelVariant : labelVariant} as="span">
+      <Text
+        variant={polarisSummerEditions2023 ? se23LabelVariant : labelVariant}
+        as="span"
+      >
         {label}
       </Text>
     </div>
@@ -148,7 +152,11 @@ export function FilterPill({
                 {wrappedLabel}
                 <div className={styles.IconWrapper}>
                   <Icon
-                    source={se23 ? ChevronDownMinor : CaretDownMinor}
+                    source={
+                      polarisSummerEditions2023
+                        ? ChevronDownMinor
+                        : CaretDownMinor
+                    }
                     color="base"
                   />
                 </div>
