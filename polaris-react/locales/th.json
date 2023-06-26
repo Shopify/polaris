@@ -20,7 +20,9 @@
         "warning": "คำเตือน",
         "attention": "ระวัง",
         "new": "ใหม่",
-        "critical": "ร้ายแรง"
+        "critical": "ร้ายแรง",
+        "readOnly": "อ่านอย่างเดียว",
+        "enabled": "เปิดใช้แล้ว"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },

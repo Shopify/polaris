@@ -20,7 +20,9 @@
         "warning": "警告",
         "attention": "注意",
         "new": "全新功能",
-        "critical": "重要"
+        "critical": "重要",
+        "readOnly": "唯讀",
+        "enabled": "已啟用"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
