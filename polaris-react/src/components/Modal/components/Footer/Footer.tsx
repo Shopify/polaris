@@ -37,12 +37,12 @@ export function Footer({
   return (
     <HorizontalStack gap="4" blockAlign="center">
       <Box
-        borderColor="border-subdued"
-        borderBlockStartWidth={polarisSummerEditions2023 ? undefined : '1'}
-        minHeight="var(--p-space-16)"
+        borderColor={polarisSummerEditions2023 ? 'border' : 'border-subdued'}
+        borderBlockStartWidth="1"
+        minHeight={polarisSummerEditions2023 ? undefined : 'var(--p-space-16)'}
         padding="4"
-        paddingInlineStart="5"
-        paddingInlineEnd="5"
+        paddingInlineStart={polarisSummerEditions2023 ? undefined : '5'}
+        paddingInlineEnd={polarisSummerEditions2023 ? undefined : '5'}
         width="100%"
       >
         <HorizontalStack gap="4" blockAlign="center" align="space-between">
