@@ -328,9 +328,10 @@
     }
 
     &:hover {
+      // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       --pc-button-text: var(--p-color-text-inverse);
-      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       box-shadow: var(--pc-button-shadow-primary);
+      // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
 
       &::before {
         box-shadow: var(--p-shadow-button-primary-strong-hover-experimental);
@@ -338,10 +339,10 @@
     }
 
     &:active {
+      // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       --pc-button-text: var(--p-color-text-inverse-subdued);
-
-      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       background: var(--pc-button-color-active);
+      // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
       box-shadow: var(--p-shadow-inset-button-primary-experimental);
       // stylelint-enable-next-line length-zero-no-unit
       &::before {
@@ -374,6 +375,7 @@
       }
 
       &:hover {
+        // stylelint-disable-next-line max-nesting-depth -- se23 temporary styles
         &::before {
           box-shadow: var(--p-shadow-button-primary-hover-experimental);
         }
