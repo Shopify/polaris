@@ -18,4 +18,8 @@
 
 @import '../../../node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
 
+// Ideally we'd use :where here so we don't introduce higher specificity with the
+// tag+attribute selector.
+// However, we're still supporting iOS 12 for embedded web views in some apps, which
+// unfortunately doesn't support :where https://caniuse.com/?search=%3Awhere
 $se23: 'html[class*="Polaris-Summer-Editions-2023"]';
