@@ -24,7 +24,8 @@ const TOOLTIP_HOVER_DELAY = 1000;
 
 export function Item({
   url,
-  icon,
+  icon: baseIcon,
+  matchedItemIcon,
   label,
   subNavigationItems = [],
   secondaryAction,
@@ -83,6 +84,34 @@ export function Item({
       <Indicator pulse />
     </span>
   ) : null;
+
+  const matchState = matchStateForItem(
+    {url, matches, exactMatch, matchPaths, excludePaths},
+    location,
+  );
+
+  const matchingSubNavigationItems = subNavigationItems.filter((item) => {
+    const subMatchState = matchStateForItem(item, location);
+    return (
+      subMatchState === MatchState.MatchForced ||
+      subMatchState === MatchState.MatchUrl ||
+      subMatchState === MatchState.MatchPaths
+    );
+  });
+
+  const childIsActive = matchingSubNavigationItems.length > 0;
+
+  const selected =
+    selectedOverride == null
+      ? matchState === MatchState.MatchForced ||
+        matchState === MatchState.MatchUrl ||
+        matchState === MatchState.MatchPaths
+      : selectedOverride;
+
+  const icon =
+    polarisSummerEditions2023 && (selected || childIsActive)
+      ? matchedItemIcon ?? baseIcon
+      : baseIcon;
 
   const iconMarkup = icon ? (
     <div
@@ -204,29 +233,6 @@ export function Item({
   const outerContentMarkup = (
     <>{secondaryActionMarkup ? wrappedBadgeMarkup : null}</>
   );
-
-  const matchState = matchStateForItem(
-    {url, matches, exactMatch, matchPaths, excludePaths},
-    location,
-  );
-
-  const matchingSubNavigationItems = subNavigationItems.filter((item) => {
-    const subMatchState = matchStateForItem(item, location);
-    return (
-      subMatchState === MatchState.MatchForced ||
-      subMatchState === MatchState.MatchUrl ||
-      subMatchState === MatchState.MatchPaths
-    );
-  });
-
-  const childIsActive = matchingSubNavigationItems.length > 0;
-
-  const selected =
-    selectedOverride == null
-      ? matchState === MatchState.MatchForced ||
-        matchState === MatchState.MatchUrl ||
-        matchState === MatchState.MatchPaths
-      : selectedOverride;
 
   const showExpanded = selected || expanded || childIsActive;
 
