@@ -24,8 +24,8 @@ type Entries<T> = Entry<T>[];
 const shapes: {
   [S in NonNullable<AvatarProps['shape']>]: string;
 } = {
-  square: 'Square',
   round: 'Round',
+  square: 'Square',
 };
 
 const shapeEntries = Object.entries(shapes) as Entries<typeof shapes>;
