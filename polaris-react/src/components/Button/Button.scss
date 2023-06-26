@@ -397,7 +397,6 @@
       // stylelint-enable
 
       &:not(.disabled) {
-        // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
         box-shadow: none;
       }
 
