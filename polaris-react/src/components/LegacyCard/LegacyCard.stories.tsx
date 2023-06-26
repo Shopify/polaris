@@ -151,7 +151,8 @@ export function WithMultipleTitledSections() {
 
 export function WithSectionsAndActions() {
   return (
-    <LegacyCard title="Customer">
+    <LegacyCard sectioned title="Customer">
+      <p>hello world</p>
       <LegacyCard.Section>
         <p>John Smith</p>
       </LegacyCard.Section>
@@ -161,6 +162,7 @@ export function WithSectionsAndActions() {
       >
         <p>john.smith@example.com</p>
       </LegacyCard.Section>
+      <p>hello world</p>
     </LegacyCard>
   );
 }
