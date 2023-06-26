@@ -196,27 +196,19 @@ export function WithSubHeadersExample() {
                 disabled={disabled}
               >
                 <IndexTable.Cell
-                  headers={`${subheaderId} ${columnHeadings[0].id}`}
+                  headers={`${columnHeadings[0].id} ${subheaderId}`}
                 >
                   <Text variant="bodyMd" fontWeight="semibold" as="span">
                     {name}
                   </Text>
                 </IndexTable.Cell>
-                <IndexTable.Cell
-                  headers={`${subheaderId} ${columnHeadings[1].id}`}
-                >
-                  {location}
-                </IndexTable.Cell>
-                <IndexTable.Cell
-                  headers={`${subheaderId} ${columnHeadings[2].id}`}
-                >
+                <IndexTable.Cell>{location}</IndexTable.Cell>
+                <IndexTable.Cell>
                   <Text as="span" alignment="end" numeric>
                     {orders}
                   </Text>
                 </IndexTable.Cell>
-                <IndexTable.Cell
-                  headers={`${subheaderId} ${columnHeadings[3].id}`}
-                >
+                <IndexTable.Cell>
                   <Text as="span" alignment="end" numeric>
                     {amountSpent}
                   </Text>
