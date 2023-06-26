@@ -1,8 +1,13 @@
 import React from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {
+  PlusMinor,
+  StarFilledMinor,
+  StarOutlineMinor,
+} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+import type {WithPolarisTestProviderOptions} from '../../../../PolarisTestProvider';
 import {PolarisTestProvider} from '../../../../PolarisTestProvider';
 import type {MediaQueryContext} from '../../../../../utilities/media-query';
 import {Badge} from '../../../../Badge';
@@ -143,6 +148,51 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponentTimes(Badge, 1);
       expect(item.find(Badge)).toContainReactText('New');
+    });
+  });
+
+  it('renders matchedItemIcon when item is selected', () => {
+    const item = mountWithNavigationProvider(
+      <Item
+        label="some label"
+        url="foo"
+        icon={StarFilledMinor}
+        matchedItemIcon={StarOutlineMinor}
+      />,
+      {
+        location: 'foo',
+      },
+      {features: {polarisSummerEditions2023: true}},
+    );
+
+    expect(item).toContainReactComponent(Icon, {
+      source: StarOutlineMinor,
+    });
+  });
+
+  it('renders matchedItemIcon when sub-navigation item is selected', () => {
+    const item = mountWithNavigationProvider(
+      <Item
+        label="some label"
+        url="foo"
+        icon={StarFilledMinor}
+        matchedItemIcon={StarOutlineMinor}
+        subNavigationItems={[
+          {
+            url: 'bar',
+            disabled: false,
+            label: 'sub-navigation item label',
+          },
+        ]}
+      />,
+      {
+        location: 'bar',
+      },
+      {features: {polarisSummerEditions2023: true}},
+    );
+
+    expect(item).toContainReactComponent(Icon, {
+      source: StarOutlineMinor,
     });
   });
 
@@ -486,7 +536,7 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponent('a', {
         'aria-expanded': false,
-        'aria-controls': ':r18:',
+        'aria-controls': expect.stringMatching(/^:r\d[a-z]?:$/),
       });
     });
 
@@ -932,11 +982,13 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 function mountWithNavigationProvider(
   node: React.ReactElement,
   context: React.ContextType<typeof NavigationContext> = {location: ''},
+  options?: WithPolarisTestProviderOptions,
 ) {
   return mountWithApp(
     <NavigationContext.Provider value={context}>
       {node}
     </NavigationContext.Provider>,
+    {...options},
   );
 }
 
