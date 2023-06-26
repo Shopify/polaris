@@ -372,6 +372,7 @@
       &::before {
         // adjust shine for destructive and success buttons
         box-shadow: var(--p-shadow-button-primary-experimental);
+        background: none;
       }
 
       &:hover {
@@ -397,7 +398,7 @@
 
       &:not(.disabled) {
         // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
-        box-shadow: var(--pc-button-shadow-primary);
+        box-shadow: none;
       }
 
       // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
