@@ -10,6 +10,7 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
 import {useFeatures} from '../../utilities/features';
+import {WithinContentContext} from '../../utilities/within-content-context';
 
 type Spacing = ResponsiveProp<SpaceScale>;
 
@@ -60,15 +61,17 @@ export const Card = ({
   }
 
   return (
-    <Box
-      background={background}
-      padding={finalPadding}
-      shadow={polarisSummerEditions2023 ? 'card-sm-experimental' : 'md'}
-      borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
-      overflowX="hidden"
-      overflowY="hidden"
-    >
-      {children}
-    </Box>
+    <WithinContentContext.Provider value>
+      <Box
+        background={background}
+        padding={finalPadding}
+        shadow={polarisSummerEditions2023 ? 'card-sm-experimental' : 'md'}
+        borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
+        overflowX="hidden"
+        overflowY="hidden"
+      >
+        {children}
+      </Box>
+    </WithinContentContext.Provider>
   );
 };
