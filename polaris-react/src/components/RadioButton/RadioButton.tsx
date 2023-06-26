@@ -7,7 +7,7 @@ import {Choice, helpTextID} from '../Choice';
 import styles from './RadioButton.scss';
 
 export interface RadioButtonProps {
-  /** Indicates the ID of the element that describes the the radio button*/
+  /** Indicates the ID of the element that describes the the radio button */
   ariaDescribedBy?: string;
   /** Label for the radio button */
   label: React.ReactNode;
@@ -27,7 +27,7 @@ export interface RadioButtonProps {
   value?: string;
   /** Callback when the radio button is toggled */
   onChange?(newValue: boolean, id: string): void;
-  /** Callback when radio button is focussed */
+  /** Callback when radio button is focused */
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;
