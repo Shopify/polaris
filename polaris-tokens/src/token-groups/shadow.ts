@@ -78,7 +78,7 @@ export const shadow: {
   },
   'shadow-card-md-experimental': {
     value:
-      '0 3 1 -1 rgba(0, 0, 0, 0.07)  0 -1 0 0 rgba(0, 0, 0, 0.16)  1 0 0 0 rgba(227, 227, 227, 1)  -1 0 0 0 rgba(227, 227, 227, 1)  0 1 0 0 rgba(227, 227, 227, 1)',
+      '0 3 1 -1 rgba(0, 0, 0, 0.07),  0 -1 0 0 rgba(0, 0, 0, 0.16),  1 0 0 0 rgba(227, 227, 227, 1),  -1 0 0 0 rgba(227, 227, 227, 1),  0 1 0 0 rgba(227, 227, 227, 1)',
   },
   'shadow-card-lg-experimental': {
     value:
