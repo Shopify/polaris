@@ -22,7 +22,7 @@
   [class*='Navigation'] {
     /* stylelint-disable-next-line selector-max-combinators -- se23 */
     .ShopName {
-      color: var(--p-color-text);
+      color: var(--p-color-text-inverse);
     }
   }
 }
