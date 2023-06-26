@@ -110,7 +110,7 @@ export function Item({
 
   const icon =
     polarisSummerEditions2023 && (selected || childIsActive)
-      ? matchedItemIcon || baseIcon
+      ? matchedItemIcon ?? baseIcon
       : baseIcon;
 
   const iconMarkup = icon ? (
