@@ -103,7 +103,10 @@
   #{$se23} & {
     border-top-left-radius: var(--p-border-radius-3);
     border-top-right-radius: var(--p-border-radius-3);
-    padding-top: var(--p-space-4);
+
+    &:not(.Section-flush) {
+      padding-top: var(--p-space-4);
+    }
   }
 }
 
@@ -134,6 +137,10 @@
   padding: 0;
 
   @media #{$p-breakpoints-sm-up} {
+    padding: 0;
+  }
+
+  #{$se23} & {
     padding: 0;
   }
 }
