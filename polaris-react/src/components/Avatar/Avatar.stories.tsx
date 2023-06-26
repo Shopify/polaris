@@ -43,8 +43,10 @@ const sizes: {
 
 const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
 
-const styles: {
-  [S in typeof STYLE_CLASSES[number]]: string;
+type Style = typeof STYLE_CLASSES[number];
+
+const styleInitialsDefault: {
+  [S in Style]: string;
 } = {
   one: 'AA',
   two: 'AG',
@@ -53,7 +55,23 @@ const styles: {
   five: 'AE',
 };
 
-const styleEntries = Object.entries(styles) as Entries<typeof styles>;
+const styleInitialsDefaultEntries = Object.entries(
+  styleInitialsDefault,
+) as Entries<typeof styleInitialsDefault>;
+
+const styleInitialsLong: {
+  [S in Style]: string;
+} = {
+  one: 'AAA',
+  two: 'AAB',
+  three: 'AAC',
+  four: 'AAD',
+  five: 'AAE',
+};
+
+const styleInitialsLongEntries = Object.entries(styleInitialsLong) as Entries<
+  typeof styleInitialsLong
+>;
 
 export function All() {
   return (
@@ -76,7 +94,7 @@ export function All() {
             </VerticalStack>
             <VerticalStack gap="2">
               <Text as="h2" variant="headingXs">
-                Default with customer
+                With customer
               </Text>
               <HorizontalStack gap="2" blockAlign="center">
                 {sizeEntries.map(([size]) => (
@@ -86,16 +104,16 @@ export function All() {
             </VerticalStack>
             <VerticalStack gap="2">
               <Text as="h2" variant="headingXs">
-                Default with name (all styles)
+                With name (all styles)
               </Text>
               <VerticalStack gap="2">
-                {styleEntries.map(([style, name]) => (
+                {styleInitialsDefaultEntries.map(([style, initials]) => (
                   <HorizontalStack key={style} gap="2" blockAlign="center">
                     {sizeEntries.map(([size]) => (
                       <Avatar
                         key={size}
                         shape={shape}
-                        name={name}
+                        name={initials}
                         size={size}
                       />
                     ))}
@@ -105,16 +123,35 @@ export function All() {
             </VerticalStack>
             <VerticalStack gap="2">
               <Text as="h2" variant="headingXs">
-                Default with initials (all styles)
+                With default initials (all styles)
               </Text>
               <VerticalStack gap="2">
-                {styleEntries.map(([style, initials]) => (
+                {styleInitialsDefaultEntries.map(([style, initials]) => (
                   <HorizontalStack key={style} gap="2" blockAlign="center">
                     {sizeEntries.map(([size]) => (
                       <Avatar
                         key={size}
                         shape={shape}
                         initials={initials}
+                        size={size}
+                      />
+                    ))}
+                  </HorizontalStack>
+                ))}
+              </VerticalStack>
+            </VerticalStack>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                With long initials (all styles)
+              </Text>
+              <VerticalStack gap="2">
+                {styleInitialsLongEntries.map(([style, initialsLong]) => (
+                  <HorizontalStack key={style} gap="2" blockAlign="center">
+                    {sizeEntries.map(([size]) => (
+                      <Avatar
+                        key={size}
+                        shape={shape}
+                        initials={initialsLong}
                         size={size}
                       />
                     ))}
