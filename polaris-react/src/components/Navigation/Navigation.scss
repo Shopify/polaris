@@ -97,8 +97,6 @@ $nav-max-width: 360px;
 }
 
 // Item styles
-$disabled-fade: 0.6;
-
 .Item {
   @include nav-item-attributes;
   position: relative;
@@ -107,6 +105,17 @@ $disabled-fade: 0.6;
     background: var(--p-color-bg-app-hover);
     color: var(--p-color-text);
     text-decoration: none;
+
+    #{$se23} & {
+      background-color: transparent;
+    }
+  }
+
+  #{$se23} & {
+    // stylelint-disable-next-line selector-max-combinators -- se23
+    .Badge {
+      margin-right: 0;
+    }
   }
 }
 
@@ -116,6 +125,67 @@ $disabled-fade: 0.6;
 
   #{$se23} & {
     border-radius: var(--p-border-radius-2);
+  }
+}
+
+.ItemWrapper {
+  width: 100%;
+  padding: 0 var(--p-space-2);
+}
+
+.ItemInnerWrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+
+  &.ItemInnerDisabled {
+    pointer-events: none;
+  }
+
+  #{$se23} & {
+    &:is(:hover, :focus-visible) {
+      background: var(--p-color-bg-transparent-hover-experimental);
+    }
+
+    &:active {
+      background: var(--p-color-bg-transparent-active-experimental);
+    }
+  }
+}
+
+.ItemInnerWrapper-selected {
+  background-color: var(--p-color-bg-app-selected);
+
+  #{$se23} & {
+    background-color: var(--p-color-bg-app-selected);
+
+    &:is(:hover, :focus-visible) {
+      background: var(--p-color-bg-app-selected);
+    }
+
+    &:active {
+      background: var(--p-color-bg-app-selected);
+    }
+
+    // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+    &.ItemInnerWrapper-display-actions-on-hover {
+      @media #{$p-breakpoints-md-up} {
+        .SecondaryActions {
+          background: var(--p-color-bg-app-selected);
+
+          &::before {
+            // stylelint-disable-next-line -- required for fade effect
+            background: linear-gradient(
+              to right,
+              rgba(0, 0, 0, 0),
+              var(--p-color-bg-app-selected) var(--p-space-8)
+            );
+          }
+        }
+      }
+    }
+    // stylelint-enable
   }
 }
 
@@ -138,7 +208,7 @@ $disabled-fade: 0.6;
 
   #{$se23} & {
     &::before {
-      display: none;
+      background-color: transparent;
     }
   }
 
@@ -162,10 +232,6 @@ $disabled-fade: 0.6;
     @include no-focus-ring;
     color: var(--p-color-text-primary);
     background-color: var(--p-color-bg-app-active);
-
-    #{$se23} & {
-      background-color: var(--p-color-bg-strong);
-    }
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -175,13 +241,13 @@ $disabled-fade: 0.6;
 
 .Item-disabled {
   color: var(--p-color-text-disabled);
-  opacity: $disabled-fade;
+
+  .Text {
+    opacity: 0.6;
+  }
 
   .Icon {
-    // Re-apply another layer of opacity fade,
-    // as the new filled icons have a stronger visual presence
-    // than the old outlined ones.
-    opacity: $disabled-fade;
+    opacity: 0.4;
   }
 }
 
@@ -192,9 +258,19 @@ $disabled-fade: 0.6;
   margin-top: calc(var(--p-space-2) + var(--p-space-05));
   margin-right: var(--p-space-4);
 
+  #{$se23} & {
+    margin-top: var(--p-space-2);
+    margin-right: var(--p-space-1);
+  }
+
   @media #{$p-breakpoints-md-up} {
     margin: var(--p-space-1);
     margin-right: var(--p-space-2);
+
+    #{$se23} & {
+      margin-top: var(--p-space-1);
+      margin-right: var(--p-space-1);
+    }
   }
 }
 
@@ -233,26 +309,6 @@ $disabled-fade: 0.6;
   // stylelint-enable
 }
 
-.ItemWrapper {
-  width: 100%;
-  padding: 0 var(--p-space-2);
-}
-
-.ItemInnerWrapper {
-  position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  width: 100%;
-
-  &.ItemInnerDisabled {
-    pointer-events: none;
-  }
-}
-
-.ItemInnerWrapper-selected {
-  background-color: var(--p-color-bg-app-selected);
-}
-
 .Text {
   flex: 1 1 auto;
   font-size: var(--p-font-size-200);
@@ -263,6 +319,8 @@ $disabled-fade: 0.6;
 
   #{$se23} & {
     font-size: var(--p-font-size-100);
+    margin-top: var(--p-space-2);
+    margin-bottom: var(--p-space-2);
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -272,6 +330,8 @@ $disabled-fade: 0.6;
     margin-bottom: var(--p-space-1);
 
     #{$se23} & {
+      margin-top: var(--p-space-1);
+      margin-bottom: var(--p-space-1);
       font-size: var(--p-font-size-80-experimental);
     }
   }
@@ -290,12 +350,25 @@ $disabled-fade: 0.6;
   display: flex;
   height: nav(mobile-height);
 
+  #{$se23} & {
+    align-items: center;
+    height: calc(nav(mobile-height) - var(--p-space-1));
+  }
+
   &:last-child {
     margin-right: calc(var(--p-space-2) + var(--p-space-05));
+
+    #{$se23} & {
+      margin-right: var(--p-space-05);
+    }
   }
 
   @media #{$p-breakpoints-md-up} {
     height: nav(desktop-height);
+
+    #{$se23} & {
+      height: nav(desktop-height);
+    }
   }
 }
 
@@ -304,6 +377,10 @@ $disabled-fade: 0.6;
   display: flex;
   flex-wrap: nowrap;
 
+  #{$se23} & {
+    width: 100%;
+  }
+
   .SecondaryActions {
     margin-right: 0;
   }
@@ -311,6 +388,12 @@ $disabled-fade: 0.6;
 
 .ItemInnerWrapper-display-actions-on-hover {
   @media #{$p-breakpoints-md-up} {
+    // This color is not derived from the global color variables because
+    // we should not stack two transparent colors on top of each other. The
+    // color in the background is already transparent.
+    // stylelint-disable-next-line -- required to match the background color
+    --secondary-actions-background-color: rgba(224, 224, 224, 1);
+
     .SecondaryActions {
       position: absolute;
       top: 0;
@@ -320,6 +403,11 @@ $disabled-fade: 0.6;
       opacity: 0;
       transition: opacity var(--p-motion-duration-200) ease-in-out,
         visibility var(--p-motion-duration-200) ease-in-out;
+
+      #{$se23} & {
+        background-color: var(--secondary-actions-background-color);
+        transition: none;
+      }
 
       &::before {
         content: '';
@@ -335,6 +423,15 @@ $disabled-fade: 0.6;
           rgba(0, 0, 0, 0),
           var(--p-color-bg-app-hover) var(--p-space-8)
         );
+
+        #{$se23} & {
+          // stylelint-disable-next-line -- required for fade effect
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0),
+            var(--secondary-actions-background-color) var(--p-space-8)
+          );
+        }
       }
     }
 
@@ -349,8 +446,6 @@ $disabled-fade: 0.6;
 }
 
 .SecondaryAction {
-  // stylelint-disable-next-line -- non-link actions
-  @include unstyled-button;
   // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
   @include unstyled-button;
   display: flex;
@@ -359,6 +454,19 @@ $disabled-fade: 0.6;
   padding: var(--p-space-1) calc(var(--p-space-2) + var(--p-space-05));
   border-radius: var(--p-border-radius-1);
 
+  #{$se23} & {
+    padding: calc(var(--p-space-2) - var(--p-space-05)) var(--p-space-2);
+    height: 100%;
+    border-radius: var(--p-border-radius-2);
+
+    &:focus-visible:not(:active) {
+      /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
+      @include no-focus-ring;
+      outline: var(--p-border-width-2) solid
+        var(--p-color-border-interactive-focus);
+    }
+  }
+
   svg {
     fill: var(--p-color-icon);
   }
@@ -366,6 +474,11 @@ $disabled-fade: 0.6;
   @media #{$p-breakpoints-md-up} {
     height: nav(desktop-height);
     padding: var(--p-space-05);
+
+    #{$se23} & {
+      padding: calc(var(--p-space-1) - var(--p-space-05));
+      height: 100%;
+    }
   }
 
   &:hover,
@@ -373,6 +486,10 @@ $disabled-fade: 0.6;
   &:active {
     svg {
       fill: var(--p-color-icon-hover);
+    }
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-transparent-hover-experimental);
     }
 
     @media (-ms-high-contrast: active) {
@@ -429,10 +546,11 @@ $disabled-fade: 0.6;
 
     #{$se23} & {
       font-weight: var(--p-font-weight-regular);
+      padding-left: var(--p-space-8);
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
       &:is(:hover, :focus-visible) {
-        background: var(--p-color-bg-transparent-hover-experimental);
+        background: var(--p-color-bg-subdued-active);
       }
     }
 
@@ -457,7 +575,7 @@ $disabled-fade: 0.6;
       @include no-focus-ring;
 
       #{$se23} & {
-        background: var(--p-color-bg-transparent-active-experimental);
+        background: var(--p-color-bg-subdued-active);
       }
     }
 
@@ -478,6 +596,8 @@ $disabled-fade: 0.6;
     line-height: var(--p-space-5);
 
     #{$se23} & {
+      margin-top: var(--p-space-1);
+      margin-bottom: var(--p-space-1);
       font-weight: var(--p-font-weight-regular);
     }
   }
@@ -485,7 +605,7 @@ $disabled-fade: 0.6;
   #{$se23} & {
     // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
     .ItemInnerWrapper-selected {
-      background-color: var(--p-color-bg-transparent-active-experimental);
+      background-color: var(--p-color-bg-subdued-active);
     }
   }
 
@@ -588,6 +708,18 @@ $disabled-fade: 0.6;
     padding: var(--p-space-1) var(--p-space-4);
     border-radius: var(--p-border-radius-1);
 
+    #{$se23} & {
+      border-radius: var(--p-border-radius-2);
+
+      // stylelint-disable-next-line selector-max-combinators -- se23
+      &:focus-visible:not(:active) {
+        /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
+        @include no-focus-ring;
+        outline: var(--p-border-width-2) solid
+          var(--p-color-border-interactive-focus);
+      }
+    }
+
     // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
     svg {
       fill: var(--p-color-icon);
@@ -612,6 +744,10 @@ $disabled-fade: 0.6;
     &:focus {
       background: var(--p-color-bg-app-hover);
 
+      #{$se23} & {
+        background: var(--p-color-bg-transparent-hover-experimental);
+      }
+
       // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
       svg {
         fill: var(--p-color-icon-hover);
@@ -625,6 +761,10 @@ $disabled-fade: 0.6;
 
         img {
           filter: var(--p-filter-icon-on-interactive);
+
+          #{$se23} & {
+            filter: var(--p-color-icon-primary);
+          }
         }
         // stylelint-enable
       }
@@ -681,6 +821,10 @@ $disabled-fade: 0.6;
     img {
       // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
       filter: var(--p-filter-icon-action-primary);
+
+      #{$se23} & {
+        filter: var(--p-color-icon-primary);
+      }
     }
   }
 
@@ -695,6 +839,85 @@ $disabled-fade: 0.6;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.ListSecondary {
+  // stylelint-disable selector-max-class -- se23
+  #{$se23} & {
+    .Item {
+      position: relative;
+
+      &:hover {
+        color: var(--p-color-text-primary);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: var(--p-space-1);
+        width: 21px;
+        height: 28px;
+        border-radius: 0;
+      }
+    }
+
+    .Item-selected {
+      border-radius: var(--p-border-radius-2);
+
+      &:active,
+      &:active:hover {
+        // stylelint-disable-next-line -- se23
+        @include no-focus-ring;
+        color: var(--p-color-text-primary);
+        background-color: var(--p-color-bg-app);
+        font-weight: var(--p-font-weight-regular);
+      }
+    }
+
+    .Item-line,
+    .Item-line.Item-hover-line {
+      &::before {
+        /* Gray line icon */
+        // stylelint-disable-next-line function-url-scheme-allowed-list -- se23
+        content: url('data:image/svg+xml,%3Csvg%20width%3D%2221%22%20height%3D%2228%22%20viewBox%3D%220%200%2021%2028%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20x%3D%229%22%20width%3D%221.5%22%20height%3D%2228%22%20fill%3D%22%23B5B5B5%22%2F%3E%3C%2Fsvg%3E');
+      }
+    }
+
+    .Item-line-pointer,
+    .Item-line-pointer.Item-hover-pointer {
+      &::before {
+        /* Gray pointer icon */
+        // stylelint-disable-next-line function-url-scheme-allowed-list -- se23
+        content: url("data:image/svg+xml,%3Csvg%20width%3D'21'%20height%3D'28'%20viewBox%3D'0%200%2021%2028'%20fill%3D'none'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M19%2014.25H19.75V15.75H19V14.25ZM10.077%2013.362L10.7452%2013.0215V13.0215L10.077%2013.362ZM11.388%2014.673L11.7285%2014.0048H11.7285L11.388%2014.673ZM10.5%200V10.2H9V0H10.5ZM14.55%2014.25H19V15.75H14.55V14.25ZM10.5%2010.2C10.5%2011.0525%2010.5006%2011.6467%2010.5384%2012.1093C10.5755%2012.5632%2010.6446%2012.824%2010.7452%2013.0215L9.40873%2013.7025C9.18239%2013.2582%209.08803%2012.7781%209.04336%2012.2315C8.99942%2011.6936%209%2011.0277%209%2010.2H10.5ZM14.55%2015.75C13.7223%2015.75%2013.0564%2015.7506%2012.5185%2015.7066C11.9719%2015.662%2011.4918%2015.5676%2011.0475%2015.3413L11.7285%2014.0048C11.926%2014.1054%2012.1868%2014.1745%2012.6407%2014.2116C13.1033%2014.2494%2013.6975%2014.25%2014.55%2014.25V15.75ZM10.7452%2013.0215C10.9609%2013.4448%2011.3052%2013.7891%2011.7285%2014.0048L11.0475%2015.3413C10.3419%2014.9817%209.76825%2014.4081%209.40873%2013.7025L10.7452%2013.0215Z'%20fill%3D'%23B5B5B5'/%3E%3Cpath%20d%3D'M17%2012L20%2015L17%2018'%20stroke%3D'%23B5B5B5'%20stroke-width%3D'1.5'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'/%3E%3C/svg%3E%0A");
+      }
+    }
+
+    .Item-hover-line::before {
+      /* Light gray line icon */
+      // stylelint-disable-next-line function-url-scheme-allowed-list -- se23
+      content: url('data:image/svg+xml,%3Csvg%20width%3D%2221%22%20height%3D%2228%22%20viewBox%3D%220%200%2021%2028%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20x%3D%229%22%20width%3D%221.5%22%20height%3D%2228%22%20fill%3D%22%23CCCCCC%22%2F%3E%3C%2Fsvg%3E');
+    }
+
+    .Item-hover-pointer::before {
+      /* Light gray pointer icon */
+      // stylelint-disable-next-line function-url-scheme-allowed-list -- se23
+      content: url('data:image/svg+xml,%3Csvg%20width%3D%2221%22%20height%3D%2228%22%20viewBox%3D%220%200%2021%2028%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M19%2014.25H19.75V15.75H19V14.25ZM10.077%2013.362L10.7452%2013.0215V13.0215L10.077%2013.362ZM11.388%2014.673L11.7285%2014.0048H11.7285L11.388%2014.673ZM10.5%200V10.2H9V0H10.5ZM14.55%2014.25H19V15.75H14.55V14.25ZM10.5%2010.2C10.5%2011.0525%2010.5006%2011.6467%2010.5384%2012.1093C10.5755%2012.5632%2010.6446%2012.824%2010.7452%2013.0215L9.40873%2013.7025C9.18239%2013.2582%209.08803%2012.7781%209.04336%2012.2315C8.99942%2011.6936%209%2011.0277%209%2010.2H10.5ZM14.55%2015.75C13.7223%2015.75%2013.0564%2015.7506%2012.5185%2015.7066C11.9719%2015.662%2011.4918%2015.5676%2011.0475%2015.3413L11.7285%2014.0048C11.926%2014.1054%2012.1868%2014.1745%2012.6407%2014.2116C13.1033%2014.2494%2013.6975%2014.25%2014.55%2014.25V15.75ZM10.7452%2013.0215C10.9609%2013.4448%2011.3052%2013.7891%2011.7285%2014.0048L11.0475%2015.3413C10.3419%2014.9817%209.76825%2014.4081%209.40873%2013.7025L10.7452%2013.0215Z%22%20fill%3D%22%23CCCCCC%22%2F%3E%3Cpath%20d%3D%22M17%2012L20%2015L17%2018%22%20stroke%3D%22%23CCCCCC%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');
+    }
+
+    .Item-line.Item-hover-pointer::before {
+      /* Gray line icon with light gray pointer icon */
+      // stylelint-disable-next-line function-url-scheme-allowed-list -- se23
+      content: url('data:image/svg+xml,%3Csvg%20width%3D%2221%22%20height%3D%2228%22%20viewBox%3D%220%200%2021%2028%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M19%2014.25H19.75V15.75H19V14.25ZM10.077%2013.362L10.7452%2013.0215V13.0215L10.077%2013.362ZM11.388%2014.673L11.7285%2014.0048H11.7285L11.388%2014.673ZM10.5%200V10.2H9V0H10.5ZM14.55%2014.25H19V15.75H14.55V14.25ZM10.5%2010.2C10.5%2011.0525%2010.5006%2011.6467%2010.5384%2012.1093C10.5755%2012.5632%2010.6446%2012.824%2010.7452%2013.0215L9.40873%2013.7025C9.18239%2013.2582%209.08803%2012.7781%209.04336%2012.2315C8.99942%2011.6936%209%2011.0277%209%2010.2H10.5ZM14.55%2015.75C13.7223%2015.75%2013.0564%2015.7506%2012.5185%2015.7066C11.9719%2015.662%2011.4918%2015.5676%2011.0475%2015.3413L11.7285%2014.0048C11.926%2014.1054%2012.1868%2014.1745%2012.6407%2014.2116C13.1033%2014.2494%2013.6975%2014.25%2014.55%2014.25V15.75ZM10.7452%2013.0215C10.9609%2013.4448%2011.3052%2013.7891%2011.7285%2014.0048L11.0475%2015.3413C10.3419%2014.9817%209.76825%2014.4081%209.40873%2013.7025L10.7452%2013.0215Z%22%20fill%3D%22%23CCCCCC%22%2F%3E%3Cpath%20d%3D%22M17%2012L20%2015L17%2018%22%20stroke%3D%22%23CCCCCC%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M9%2018C9%2017.5858%209.33579%2017.25%209.75%2017.25C10.1642%2017.25%2010.5%2017.5858%2010.5%2018V28H9V18Z%22%20fill%3D%22%23B5B5B5%22%2F%3E%3C%2Fsvg%3E');
+    }
+
+    .Item-line-pointer.Item-hover-line::before {
+      /* Light gray line icon with gray pointer icon */
+      // stylelint-disable-next-line function-url-scheme-allowed-list -- se23
+      content: url('data:image/svg+xml,%3Csvg%20width%3D%2221%22%20height%3D%2228%22%20viewBox%3D%220%200%2021%2028%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M19%2014.25H19.75V15.75H19V14.25ZM10.077%2013.362L10.7452%2013.0215V13.0215L10.077%2013.362ZM11.388%2014.673L11.7285%2014.0048H11.7285L11.388%2014.673ZM10.5%200V10.2H9V0H10.5ZM14.55%2014.25H19V15.75H14.55V14.25ZM10.5%2010.2C10.5%2011.0525%2010.5006%2011.6467%2010.5384%2012.1093C10.5755%2012.5632%2010.6446%2012.824%2010.7452%2013.0215L9.40873%2013.7025C9.18239%2013.2582%209.08803%2012.7781%209.04336%2012.2315C8.99942%2011.6936%209%2011.0277%209%2010.2H10.5ZM14.55%2015.75C13.7223%2015.75%2013.0564%2015.7506%2012.5185%2015.7066C11.9719%2015.662%2011.4918%2015.5676%2011.0475%2015.3413L11.7285%2014.0048C11.926%2014.1054%2012.1868%2014.1745%2012.6407%2014.2116C13.1033%2014.2494%2013.6975%2014.25%2014.55%2014.25V15.75ZM10.7452%2013.0215C10.9609%2013.4448%2011.3052%2013.7891%2011.7285%2014.0048L11.0475%2015.3413C10.3419%2014.9817%209.76825%2014.4081%209.40873%2013.7025L10.7452%2013.0215Z%22%20fill%3D%22%23B5B5B5%22%2F%3E%3Cpath%20d%3D%22M17%2012L20%2015L17%2018%22%20stroke%3D%22%23B5B5B5%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M9%2018C9%2017.5858%209.33579%2017.25%209.75%2017.25C10.1642%2017.25%2010.5%2017.5858%2010.5%2018V28H9V18Z%22%20fill%3D%22%23CCCCCC%22%2F%3E%3C%2Fsvg%3E');
+    }
+  }
+  // stylelint-enable
 }
 
 .Indicator {

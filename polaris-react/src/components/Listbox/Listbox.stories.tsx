@@ -10,6 +10,7 @@ import {
   LegacyStack,
   AutoSelection,
   VerticalStack,
+  HorizontalStack,
   Text,
   Box,
 } from '@shopify/polaris';
@@ -52,7 +53,7 @@ export function All() {
         <Text as="h2" variant="headingXl">
           With custom element
         </Text>
-        <WithCustomElement />
+        <WithCustomOptions />
         <Box paddingBlockEnd="3" />
       </VerticalStack>
 
@@ -113,22 +114,70 @@ export function WithAction() {
   );
 }
 
-export function WithCustomElement() {
+export function WithCustomOptions() {
+  interface CustomerSegment {
+    id: string;
+    label: string;
+    value: string;
+    subscribers: number;
+  }
+
+  const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
+
+  const segments: CustomerSegment[] = [
+    {
+      label: 'All customers',
+      id: 'gid://shopify/CustomerSegment/1',
+      value: '0',
+      subscribers: 23,
+    },
+    {
+      label: 'VIP customers',
+      id: 'gid://shopify/CustomerSegment/2',
+      value: '1',
+      subscribers: 16,
+    },
+    {
+      label: 'New customers',
+      id: 'gid://shopify/CustomerSegment/3',
+      value: '2',
+      subscribers: 2,
+    },
+    {
+      label: 'Abandoned carts - last 30 days',
+      id: 'gid://shopify/CustomerSegment/4',
+      value: '3',
+      subscribers: 108,
+    },
+  ];
+
+  const handleSegmentSelect = (segmentIndex: string) => {
+    setSelectedSegmentIndex(Number(segmentIndex));
+  };
+
   return (
-    <Listbox accessibilityLabel="Listbox with custom element example">
-      <Listbox.Action value="ActionValue" divider>
-        Add item
-      </Listbox.Action>
-      <Listbox.Option value="UniqueValue-1">
-        <div>Item 1</div>
-      </Listbox.Option>
-      <Listbox.Option value="UniqueValue-2">
-        <div>Item 2</div>
-      </Listbox.Option>
-      <Listbox.Option value="UniqueValue-3">
-        <div>Item 3</div>
-      </Listbox.Option>
-      <Listbox.Loading accessibilityLabel="items are loading" />
+    <Listbox
+      onSelect={handleSegmentSelect}
+      accessibilityLabel="Listbox with custom element example"
+    >
+      {segments.map(({label, id, value, subscribers}) => {
+        const selected = segments[selectedSegmentIndex].value === value;
+
+        return (
+          <Listbox.Option key={id} value={value} selected={selected}>
+            <Listbox.TextOption selected={selected}>
+              <Box width="100%">
+                <HorizontalStack gap="2" align="space-between">
+                  {label}
+                  <Text as="span" color="subdued">
+                    {`${subscribers} subscribers`}
+                  </Text>
+                </HorizontalStack>
+              </Box>
+            </Listbox.TextOption>
+          </Listbox.Option>
+        );
+      })}
     </Listbox>
   );
 }

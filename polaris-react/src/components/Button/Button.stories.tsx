@@ -81,6 +81,91 @@ export function All() {
             </HorizontalStack>
           </Card>
         </VerticalStack>
+        <VerticalStack gap="4">
+          <Text as="h2">outline destructive</Text>
+          <Box padding="4">
+            <HorizontalStack gap="5" blockAlign="end">
+              <Button outline destructive>
+                Label
+              </Button>
+              <Button outline destructive disabled>
+                Label
+              </Button>
+              <Button outline destructive icon={PlusMinor}>
+                Label
+              </Button>
+              <Button outline destructive disabled icon={PlusMinor}>
+                Label
+              </Button>
+              <Button outline destructive disclosure>
+                Label
+              </Button>
+              <Button
+                outline
+                destructive
+                icon={CancelSmallMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                outline
+                destructive
+                icon={EditMajor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                outline
+                destructive
+                disabled
+                icon={PlusMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                outline
+                destructive
+                icon={DeleteMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+            </HorizontalStack>
+          </Box>
+          <Card>
+            <HorizontalStack gap="5" blockAlign="end">
+              <Button outline destructive>
+                Label
+              </Button>
+              <Button outline destructive disabled>
+                Label
+              </Button>
+              <Button outline destructive icon={PlusMinor}>
+                Label
+              </Button>
+              <Button outline destructive disabled icon={PlusMinor}>
+                Label
+              </Button>
+              <Button outline destructive disclosure>
+                Label
+              </Button>
+              <Button
+                outline
+                destructive
+                icon={CancelSmallMinor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+              <Button
+                outline
+                destructive
+                disabled
+                icon={EditMajor}
+                onClick={() => {}}
+                accessibilityLabel="Dismiss"
+              />
+            </HorizontalStack>
+          </Card>
+        </VerticalStack>
         <VerticalStack gap="2">
           <Text as="h2">destructive</Text>
           <Box padding="4">
@@ -204,37 +289,7 @@ export function All() {
 
         <VerticalStack gap="2">
           <Text as="h2">plain</Text>
-          <HorizontalStack gap="5" blockAlign="end">
-            <Button plain>Label</Button>
-            <Button plain disabled>
-              Label
-            </Button>
-            <Button plain icon={PlusMinor}>
-              Label
-            </Button>
-            <Button plain disabled icon={PlusMinor}>
-              Label
-            </Button>
-            <Button plain disclosure>
-              Label
-            </Button>
-            <Button plain disclosure disabled>
-              Label
-            </Button>
-            <Button
-              plain
-              icon={CancelSmallMinor}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-            <Button
-              plain
-              disabled
-              icon={CancelSmallMinor}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-          </HorizontalStack>
+          <Plain />
         </VerticalStack>
 
         <VerticalStack gap="2">
@@ -333,7 +388,41 @@ export function OutlineMonochrome() {
 }
 
 export function Plain() {
-  return <Button plain>View shipping settings</Button>;
+  return (
+    <Box padding="4">
+      <HorizontalStack gap="5" blockAlign="end">
+        <Button plain>Label</Button>
+        <Button plain disabled>
+          Label
+        </Button>
+        <Button plain icon={PlusMinor}>
+          Label
+        </Button>
+        <Button plain disabled icon={PlusMinor}>
+          Label
+        </Button>
+        <Button plain disclosure>
+          Label
+        </Button>
+        <Button plain disclosure disabled>
+          Label
+        </Button>
+        <Button
+          plain
+          icon={CancelSmallMinor}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+        <Button
+          plain
+          disabled
+          icon={CancelSmallMinor}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+      </HorizontalStack>
+    </Box>
+  );
 }
 
 export function PlainPrimary() {
@@ -356,21 +445,6 @@ export function PlainPrimary() {
           <Button primary plain disclosure>
             Label
           </Button>
-          <Button
-            primary
-            plain
-            icon={CancelSmallMinor}
-            onClick={() => {}}
-            accessibilityLabel="Dismiss"
-          />
-          <Button
-            disabled
-            primary
-            plain
-            icon={EditMajor}
-            onClick={() => {}}
-            accessibilityLabel="Dismiss"
-          />
         </HorizontalStack>
       </Box>
       <Card>
@@ -390,6 +464,10 @@ export function PlainPrimary() {
           <Button primary plain disclosure>
             Label
           </Button>
+        </HorizontalStack>
+      </Card>
+      <Card>
+        <HorizontalStack gap="5" blockAlign="end">
           <Button
             primary
             plain

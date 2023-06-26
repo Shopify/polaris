@@ -84,8 +84,16 @@ $item-wrapper-loading-height: 64px;
   background-color: var(--p-color-bg);
   border-radius: var(--p-border-radius-2);
   #{$se23} & {
-    min-height: 48px;
-    padding: var(--p-space-3);
+    // This container conditionally includes a Select component for sorting
+    // It's 32px above md-up and 36px below
+    // This hardcoded min-height is to ensure the Select has uniform padding when it's 36px high
+    min-height: 52px;
+    align-items: center;
+    padding: var(--p-space-2) var(--p-space-3);
+    // We reduce the min-height here to account for the Select shrinking to 32px at this breakpoint.
+    @media #{$p-breakpoints-md-up} {
+      min-height: 48px;
+    }
   }
 }
 
@@ -107,8 +115,10 @@ $item-wrapper-loading-height: 64px;
   #{$se23} & {
     right: var(--p-space-3);
     left: var(--p-space-3);
-    top: var(--p-space-2);
-    min-height: 28px;
+    // Regardless of the variable height of the content
+    // we just want it to be center aligned.
+    top: 0;
+    bottom: 0;
     align-items: center;
   }
 
@@ -207,14 +217,33 @@ $item-wrapper-loading-height: 64px;
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
   width: 100%;
 
+  // se23: This is the initial value of flex, is there something else that mutates this in other components?
   @media #{$p-breakpoints-sm-up} {
     flex: 0 1 auto;
     align-self: flex-start;
+  }
+
+  #{$se23} & {
+    /*
+      We do not want to worry about setting the height and width explicitly.
+      We want to inherits the height and width of its child (in this case the SelectAllActions component).
+
+      We do this using flexbox because "the cross size of each flex container is the minimum size necessary to contain the flex items" as per the spec.
+      https://www.w3.org/TR/css-flexbox-1/#flex-lines
+    */
+    display: flex;
+    align-self: auto;
   }
 }
 
 .CheckableButtonWrapper {
   display: none;
+
+  #{$se23} & {
+    // Checkable button has no opinion on its height, so we just fill the
+    // container
+    height: 100%;
+  }
 
   @media #{$p-breakpoints-sm-up} {
     flex: 1;

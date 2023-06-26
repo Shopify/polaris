@@ -163,6 +163,12 @@ export function Button({
     removeUnderline && styles.removeUnderline,
     primarySuccess && styles.primary,
     primarySuccess && styles.success,
+    polarisSummerEditions2023 &&
+      destructive &&
+      !outline &&
+      !plain &&
+      styles.primary,
+    polarisSummerEditions2023 && outline && destructive && styles.destructive,
   );
 
   const disclosureMarkup = disclosure ? (

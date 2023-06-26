@@ -20,7 +20,9 @@
         "warning": "경고",
         "attention": "주의",
         "new": "신규",
-        "critical": "중요"
+        "critical": "중요",
+        "readOnly": "읽기 전용",
+        "enabled": "활성화됨"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },

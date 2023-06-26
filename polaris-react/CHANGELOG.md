@@ -1,5 +1,46 @@
 # Changelog
 
+## 11.2.2
+
+### Patch Changes
+
+- [#9521](https://github.com/Shopify/polaris/pull/9521) [`684384def`](https://github.com/Shopify/polaris/commit/684384def2583d9b7f47a7f97ca31e6a7e8d5606) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fixed vertical alignment issue with `svg` element in `Badge` component
+
+## 11.2.1
+
+### Patch Changes
+
+- [#9475](https://github.com/Shopify/polaris/pull/9475) [`ff8e9230d`](https://github.com/Shopify/polaris/commit/ff8e9230d4f53ddecc793057a842cbb5e19141ee) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added experimental `strong` variants and `large` size to `Badge` component
+
+## 11.2.0
+
+### Minor Changes
+
+- [#9463](https://github.com/Shopify/polaris/pull/9463) [`9df26fc6c`](https://github.com/Shopify/polaris/commit/9df26fc6ce65534dfaddb072d56ee89470f67015) Thanks [@mateus](https://github.com/mateus)! - Removed TopBar background-color transition and fix search input on Safari
+
+* [#9300](https://github.com/Shopify/polaris/pull/9300) [`c0cdf2d2d`](https://github.com/Shopify/polaris/commit/c0cdf2d2d5ada1a8746eb4b3390a80e7f8aac847) Thanks [@zakwarsame](https://github.com/zakwarsame)! - - Fixed tooltip not disappearing when mouse leaves `ActionList.Item`
+
+### Patch Changes
+
+- [#9453](https://github.com/Shopify/polaris/pull/9453) [`b2a1b49b0`](https://github.com/Shopify/polaris/commit/b2a1b49b0c4ecbb9603366d930f2245742313a0c) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - - [CheckableButton]: Fix Checkbox alignment bug
+  - [ResourceList]: Fix Header alignment bug
+
+* [#9473](https://github.com/Shopify/polaris/pull/9473) [`2cc6761b6`](https://github.com/Shopify/polaris/commit/2cc6761b6ff667c1de9fb23a61cbadecfa92c4f9) Thanks [@skparkk](https://github.com/skparkk)! - Updated tooltip's visibility (open/closed state) when `active` prop is updated
+
+* Updated dependencies [[`b73666e63`](https://github.com/Shopify/polaris/commit/b73666e63c5ec5d0f47ecfb66683d8de0f79ab97), [`f9ceb4d02`](https://github.com/Shopify/polaris/commit/f9ceb4d0224b613b0ba1680bcb575714b1ad8300), [`84c015547`](https://github.com/Shopify/polaris/commit/84c015547c3b85938f326604216d819e1f31f6ab), [`bc141cf54`](https://github.com/Shopify/polaris/commit/bc141cf54497deb488f3b8e589e94741f06efd54)]:
+  - @shopify/polaris-tokens@7.3.0
+
+## 11.1.3
+
+### Patch Changes
+
+- [#9441](https://github.com/Shopify/polaris/pull/9441) [`f3b07cc15`](https://github.com/Shopify/polaris/commit/f3b07cc15aef9ef069601df2b956765f02360a48) Thanks [@asyncopation](https://github.com/asyncopation)! - Fixed inconsistent style prop between client and server rendering of `VerticalStack` component
+
+* [#9412](https://github.com/Shopify/polaris/pull/9412) [`cb581db66`](https://github.com/Shopify/polaris/commit/cb581db66d7f1fa3a86b9dd8874ca0b64a030e6a) Thanks [@jesstelford](https://github.com/jesstelford)! - Correctly pass ref through to UnstyledLink's child
+
+* Updated dependencies [[`91ebe5792`](https://github.com/Shopify/polaris/commit/91ebe57922d26e3acb61047c79d7a157952d5486)]:
+  - @shopify/polaris-tokens@7.2.0
+
 ## 11.1.2
 
 ### Patch Changes

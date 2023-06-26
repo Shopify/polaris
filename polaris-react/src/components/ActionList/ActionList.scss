@@ -30,6 +30,8 @@
     --pc-action-list-image-size: 16px;
     padding: var(--p-space-1_5-experimental) var(--p-space-3);
     border-radius: var(--p-border-radius-2);
+    align-items: center;
+    display: flex;
   }
 
   @media (forced-colors: active) {

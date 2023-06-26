@@ -32,7 +32,9 @@ describe('<PageActions />', () => {
 
     it('renders a button', () => {
       mountWithApp(<PageActions primaryAction={mockAction} />);
-      expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {primary: true});
+      expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {
+        primarySuccess: true,
+      });
     });
 
     it('renders a `ReactNode`', () => {

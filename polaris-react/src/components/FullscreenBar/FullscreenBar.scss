@@ -25,8 +25,6 @@
   cursor: pointer;
 
   #{$se23} & {
-    border-right: var(--p-border-width-1) solid
-      var(--p-color-border-faint-experimental);
     padding-left: var(--p-space-4);
     padding-right: var(--p-space-4);
   }

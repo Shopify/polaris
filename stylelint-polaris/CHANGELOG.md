@@ -1,5 +1,19 @@
 # Changelog
 
+## 13.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`b73666e63`](https://github.com/Shopify/polaris/commit/b73666e63c5ec5d0f47ecfb66683d8de0f79ab97), [`f9ceb4d02`](https://github.com/Shopify/polaris/commit/f9ceb4d0224b613b0ba1680bcb575714b1ad8300), [`84c015547`](https://github.com/Shopify/polaris/commit/84c015547c3b85938f326604216d819e1f31f6ab), [`bc141cf54`](https://github.com/Shopify/polaris/commit/bc141cf54497deb488f3b8e589e94741f06efd54)]:
+  - @shopify/polaris-tokens@7.3.0
+
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`91ebe5792`](https://github.com/Shopify/polaris/commit/91ebe57922d26e3acb61047c79d7a157952d5486)]:
+  - @shopify/polaris-tokens@7.2.0
+
 ## 13.0.1
 
 ### Patch Changes

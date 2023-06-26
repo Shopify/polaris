@@ -135,6 +135,10 @@
     &:not([aria-disabled='true']):hover {
       background-color: var(--p-color-bg-subdued);
       color: var(--p-color-text-primary);
+
+      #{$se23} & {
+        background-color: var(--p-color-bg-secondary-experimental);
+      }
     }
 
     &:not([aria-disabled='true']):focus-visible {
@@ -148,6 +152,10 @@
       background-color: var(--p-color-bg-subdued);
       color: var(--p-color-text-primary);
       z-index: var(--p-z-index-1);
+
+      #{$se23} & {
+        background-color: var(--p-color-bg-secondary-experimental);
+      }
     }
 
     @media #{$p-breakpoints-md-up} {
@@ -182,6 +190,10 @@
     background: var(--p-color-bg-subdued);
     color: var(--p-color-text);
 
+    #{$se23} & {
+      background: var(--p-color-bg-secondary-experimental);
+    }
+
     &[aria-disabled='true'] {
       background: var(--p-color-bg-disabled);
       color: var(--p-color-text-disabled);
@@ -191,10 +203,18 @@
     &:not([aria-disabled='true']):focus {
       background-color: var(--p-color-bg-subdued);
       color: var(--p-color-text-primary);
+
+      #{$se23} & {
+        background-color: var(--p-color-bg-secondary-experimental);
+      }
     }
 
     &:not([aria-disabled='true']):active {
       background-color: var(--p-color-bg-subdued);
+
+      #{$se23} & {
+        background-color: var(--p-color-bg-secondary-experimental);
+      }
     }
   }
 }

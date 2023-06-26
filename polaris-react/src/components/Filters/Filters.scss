@@ -156,7 +156,7 @@
   }
 
   #{$se23} & {
-    background: var(--p-color-bg);
+    background: var(--p-color-bg-secondary-experimental);
     border-radius: var(--p-border-radius-2);
     border: var(--p-color-border) dashed var(--p-border-width-1);
 
@@ -172,6 +172,10 @@
 
     &:active {
       background: var(--p-color-bg-subdued);
+
+      #{$se23} & {
+        background: var(--p-color-bg-secondary-experimental);
+      }
     }
 
     &::after {

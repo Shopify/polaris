@@ -116,7 +116,6 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
   will-change: fill, color;
   transition: fill var(--p-motion-duration-200) var(--p-motion-ease),
     color var(--p-motion-duration-200) var(--p-motion-ease);
-  appearance: textfield;
 
   #{$se23} & {
     padding: 0 $search-icon-width-se23 0 $search-icon-width-se23;

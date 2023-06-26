@@ -153,6 +153,9 @@ export type ColorTextAlias =
 
 type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-backdrop'
+  | 'bg-primary-disabled'
+  | 'bg-secondary'
+  | 'bg-secondary-disabled'
   | 'bg-input-hover'
   | 'bg-input-active'
   | 'bg-transparent'
@@ -181,7 +184,7 @@ type ColorIconAliasExperimental = Experimental<
 >;
 
 type ColorBorderAliasExperimental = Experimental<
-  'border-faint' | 'border-input-active' | 'border-critical-strong'
+  'border-input-active' | 'border-critical-strong'
 >;
 
 export type ColorAvatarAliasExperimental = Experimental<
@@ -289,7 +292,7 @@ export const color: {
   },
   'color-bg-active': {
     value: colors.gray[300],
-    valueExperimental: colorsExperimental.gray[3](),
+    valueExperimental: colorsExperimental.gray[4](),
     description: '',
   },
   'color-bg-subdued-hover': {
@@ -304,12 +307,12 @@ export const color: {
   },
   'color-bg-hover': {
     value: colors.gray[200],
-    valueExperimental: colorsExperimental.gray[2](),
+    valueExperimental: colorsExperimental.gray[3](),
     description: '',
   },
   'color-bg-subdued': {
     value: colors.gray[100],
-    valueExperimental: colorsExperimental.gray[5](),
+    valueExperimental: colorsExperimental.gray[4](),
     description: '',
   },
   'color-bg-input': {
@@ -508,30 +511,37 @@ export const color: {
   },
   'color-bg-magic-strong': {
     value: colors.purple[500],
+    valueExperimental: colorsExperimental.purple[12],
     description: '',
   },
   'color-bg-magic-hover': {
     value: colors.purple[200],
+    valueExperimental: colorsExperimental.purple[7],
     description: '',
   },
   'color-bg-magic-active': {
     value: colors.purple[300],
+    valueExperimental: colorsExperimental.purple[8],
     description: '',
   },
   'color-bg-magic': {
     value: colors.purple[100],
+    valueExperimental: colorsExperimental.purple[6],
     description: '',
   },
   'color-bg-magic-subdued-hover': {
     value: colors.purple[100],
+    valueExperimental: colorsExperimental.purple[5],
     description: '',
   },
   'color-bg-magic-subdued-active': {
     value: colors.purple[200],
+    valueExperimental: colorsExperimental.purple[7],
     description: '',
   },
   'color-bg-magic-subdued': {
     value: colors.purple[50],
+    valueExperimental: colorsExperimental.purple[4],
     description: '',
   },
   'color-border-input-hover': {
@@ -546,7 +556,7 @@ export const color: {
   },
   'color-border-strong-hover': {
     value: colors.gray[700],
-    valueExperimental: colorsExperimental.gray[9](),
+    valueExperimental: colorsExperimental.gray[11](),
     description: '',
   },
   'color-border-input': {
@@ -561,7 +571,7 @@ export const color: {
   },
   'color-border-strong': {
     value: colors.gray[600],
-    valueExperimental: colorsExperimental.gray[8](),
+    valueExperimental: colorsExperimental.gray[10](),
     description: '',
   },
   'color-border': {
@@ -576,7 +586,7 @@ export const color: {
   },
   'color-border-subdued': {
     value: colors.gray[400],
-    valueExperimental: colorsExperimental.gray[10](),
+    valueExperimental: colorsExperimental.gray[7](),
     description: '',
   },
   'color-border-interactive-disabled': {
@@ -666,10 +676,12 @@ export const color: {
   },
   'color-border-magic-strong': {
     value: colors.purple[500],
+    valueExperimental: colorsExperimental.purple[12],
     description: '',
   },
   'color-border-magic': {
     value: colors.purple[400],
+    valueExperimental: colorsExperimental.purple[10],
     description: '',
   },
   'color-icon-hover': {
@@ -763,6 +775,7 @@ export const color: {
   },
   'color-icon-magic': {
     value: colors.purple[500],
+    valueExperimental: colorsExperimental.purple[13],
     description: '',
   },
   'color-text': {
@@ -777,7 +790,7 @@ export const color: {
   },
   'color-text-disabled': {
     value: colors.gray[700],
-    valueExperimental: colorsExperimental.gray[10](),
+    valueExperimental: colorsExperimental.gray[11](),
     description: '',
   },
   'color-text-interactive-disabled': {
@@ -882,15 +895,29 @@ export const color: {
   },
   'color-text-magic-strong': {
     value: colors.purple[800],
+    valueExperimental: colorsExperimental.purple[15],
     description: '',
   },
   'color-text-magic': {
     value: colors.purple[600],
+    valueExperimental: colorsExperimental.purple[14],
     description: '',
   },
   // Experimental tokens
   'color-bg-backdrop-experimental': {
     value: colorsExperimental.gray[16]('0.75'),
+    description: '',
+  },
+  'color-bg-primary-disabled-experimental': {
+    value: colorsExperimental.gray[9](),
+    description: '',
+  },
+  'color-bg-secondary-experimental': {
+    value: colorsExperimental.gray[5](),
+    description: '',
+  },
+  'color-bg-secondary-disabled-experimental': {
+    value: colorsExperimental.gray[4](),
     description: '',
   },
   'color-bg-input-hover-experimental': {
@@ -908,7 +935,7 @@ export const color: {
     description: '',
   },
   'color-bg-transparent-experimental': {
-    value: colorsExperimental.gray[16](),
+    value: colorsExperimental.gray[16]('0'),
     description: '',
   },
   'color-bg-transparent-subdued-experimental': {
@@ -977,10 +1004,6 @@ export const color: {
   },
   'color-icon-critical-strong-active-experimental': {
     value: colorsExperimental.red[16],
-    description: '',
-  },
-  'color-border-faint-experimental': {
-    value: colorsExperimental.gray[7](),
     description: '',
   },
   'color-avatar-background-gray-experimental': {

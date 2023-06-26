@@ -22,10 +22,11 @@ $key-base-dimension: 28px;
   user-select: none;
 
   #{$se23} & {
-    background: var(--p-color-bg-subdued);
+    background: var(--p-color-bg-secondary-experimental);
     border-radius: var(--p-border-radius-1);
     color: var(--p-color-text-subdued);
     box-shadow: none;
+    margin-bottom: 0;
   }
 }
 

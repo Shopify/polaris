@@ -20,8 +20,11 @@
   width: auto;
 
   #{$se23} & {
-    min-height: 24px;
-    min-width: 24px;
+    // Checkable Button has no opinion on its own height, it simply fills its
+    // container
+    min-height: auto;
+    min-width: auto;
+    height: 100%;
   }
 
   svg {
@@ -40,13 +43,15 @@
 
 .Checkbox {
   pointer-events: none;
-  height: 20px;
-  width: 20px;
 
-  #{$se23} & {
-    height: 18px;
-    width: 18px;
-  }
+  /*
+      We do not want to worry about setting the height and width explicitly.
+      We want to inherits the height and width of its child (in this case the Checkbox component).
+
+      We do this using flexbox because "the cross size of each flex container is the minimum size necessary to contain the flex items" as per the spec.
+      https://www.w3.org/TR/css-flexbox-1/#flex-lines
+  */
+  display: flex;
 }
 
 .Label {
