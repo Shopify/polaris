@@ -20,7 +20,9 @@
         "warning": "Advarsel",
         "attention": "Bemærk",
         "new": "Nyhed",
-        "critical": "Kritisk"
+        "critical": "Kritisk",
+        "readOnly": "Skrivebeskyttet",
+        "enabled": "Aktiveret"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },

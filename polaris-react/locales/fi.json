@@ -20,7 +20,9 @@
         "warning": "Varoitus",
         "attention": "Huomio",
         "new": "Uusi",
-        "critical": "Kriittinen"
+        "critical": "Kriittinen",
+        "readOnly": "Vain luku",
+        "enabled": "Otettu käyttöön"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
