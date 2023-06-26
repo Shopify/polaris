@@ -20,7 +20,9 @@
         "warning": "Warnung",
         "attention": "Prüfung erforderlich",
         "new": "Neu",
-        "critical": "Kritisch"
+        "critical": "Kritisch",
+        "readOnly": "Schreibgeschützt",
+        "enabled": "Aktiviert"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
