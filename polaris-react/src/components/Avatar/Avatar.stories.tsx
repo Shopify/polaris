@@ -104,6 +104,21 @@ export function All() {
             </VerticalStack>
             <VerticalStack gap="2">
               <Text as="h2" variant="headingXs">
+                With image
+              </Text>
+              <HorizontalStack gap="2" blockAlign="center">
+                {sizeEntries.map(([size]) => (
+                  <Avatar
+                    key={size}
+                    shape={shape}
+                    size={size}
+                    source="https://burst.shopifycdn.com/photos/woman-dressed-in-pale-colors.jpg"
+                  />
+                ))}
+              </HorizontalStack>
+            </VerticalStack>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
                 With name (all styles)
               </Text>
               <VerticalStack gap="2">
@@ -162,14 +177,6 @@ export function All() {
           </VerticalStack>
         </Box>
       ))}
-      {/* <Default />
-      <CircleIconColorsSizes />
-      <CircleInitialsColorsSizes />
-      <CircleImage />
-      <CircleInitialsLong />
-      <CircleExtraSmallInContext />
-      <SquareIconColorsSizes />
-      <SquareInitialsColorsSizes /> */}
     </VerticalStack>
   );
 }
