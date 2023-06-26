@@ -17,6 +17,8 @@ import {
   ProductsMajor,
   ProductsMinor,
   ViewMinor,
+  StarFilledMinor,
+  StarOutlineMinor,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -1164,6 +1166,110 @@ export function WithBadgeAndSecondaryAction() {
               label: 'Products',
               icon: ProductsMinor,
               selected: true,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
+              subNavigationItems: [
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Collections',
+                  onClick: () => setSelected('collections'),
+                  matches: selected === 'collections',
+                },
+                {
+                  url: '#',
+                  disabled: false,
+                  label: 'Inventory',
+                  onClick: () => setSelected('inventory'),
+                  matches: selected === 'inventory',
+                },
+              ],
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
+export function ItemWithMatchedIcon() {
+  const [selected, setSelected] = React.useState('home');
+
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {
+              url: '#',
+              excludePaths: ['#'],
+              label: 'Home',
+              icon: StarFilledMinor,
+              matchedItemIcon: StarOutlineMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
+            },
+            {
+              url: '#',
+              excludePaths: ['#'],
+              label: 'Orders',
+              icon: StarFilledMinor,
+              matchedItemIcon: StarOutlineMinor,
+              badge: '15',
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
+              subNavigationItems: [
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Drafts',
+                  onClick: () => setSelected('drafts'),
+                  matches: selected === 'drafts',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Shipping labels',
+                  onClick: () => setSelected('shippinglabels'),
+                  matches: selected === 'shippinglabels',
+                },
+              ],
+            },
+            {
+              url: '#',
+              excludePaths: ['#'],
+              label: 'Marketing',
+              icon: StarFilledMinor,
+              matchedItemIcon: StarOutlineMinor,
+              onClick: () => setSelected('marketing'),
+              matches: selected === 'marketing',
+              subNavigationItems: [
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Reports',
+                  onClick: () => setSelected('reports'),
+                  matches: selected === 'reports',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Live view',
+                  onClick: () => setSelected('liveView'),
+                  matches: selected === 'liveView',
+                },
+              ],
+            },
+            {
+              url: '#',
+              label: 'Products',
+              icon: StarFilledMinor,
+              matchedItemIcon: StarOutlineMinor,
               onClick: () => setSelected('products'),
               matches: selected === 'products',
               subNavigationItems: [

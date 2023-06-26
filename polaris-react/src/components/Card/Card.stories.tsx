@@ -10,6 +10,8 @@ import {
   Text,
 } from '@shopify/polaris';
 
+import {useFeatures} from '../../utilities/features';
+
 export default {
   component: Card,
 } as ComponentMeta<typeof Card>;
@@ -28,8 +30,14 @@ export function Default() {
 }
 
 export function WithBackgroundSubdued() {
+  const {polarisSummerEditions2023} = useFeatures();
+
   return (
-    <Card background="bg-subdued">
+    <Card
+      background={
+        polarisSummerEditions2023 ? 'bg-secondary-experimental' : 'bg-subdued'
+      }
+    >
       <VerticalStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
@@ -67,6 +75,8 @@ export function WithResponsivePadding() {
 }
 
 export function WithSubduedSection() {
+  const {polarisSummerEditions2023} = useFeatures();
+
   return (
     <Card roundedAbove="sm">
       <VerticalStack gap="5">
@@ -85,7 +95,14 @@ export function WithSubduedSection() {
         marginInline={{xs: '4', sm: '5'}}
       >
         <Divider />
-        <Box background="bg-subdued" padding={{xs: '4', sm: '5'}}>
+        <Box
+          background={
+            polarisSummerEditions2023
+              ? 'bg-secondary-experimental'
+              : 'bg-subdued'
+          }
+          padding={{xs: '4', sm: '5'}}
+        >
           <VerticalStack gap="2">
             <Text variant="headingSm" as="h3">
               Deactivated staff accounts

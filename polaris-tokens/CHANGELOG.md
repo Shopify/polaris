@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.3.0
+
+### Minor Changes
+
+- [#9490](https://github.com/Shopify/polaris/pull/9490) [`f9ceb4d02`](https://github.com/Shopify/polaris/commit/f9ceb4d0224b613b0ba1680bcb575714b1ad8300) Thanks [@laurkim](https://github.com/laurkim)! - Added new experimental token
+
+### Patch Changes
+
+- [#9478](https://github.com/Shopify/polaris/pull/9478) [`b73666e63`](https://github.com/Shopify/polaris/commit/b73666e63c5ec5d0f47ecfb66683d8de0f79ab97) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - bg-hover and bg-active experimental values updated.
+
+* [#9452](https://github.com/Shopify/polaris/pull/9452) [`84c015547`](https://github.com/Shopify/polaris/commit/84c015547c3b85938f326604216d819e1f31f6ab) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Update PSE23 values for magic colors
+
+- [#9485](https://github.com/Shopify/polaris/pull/9485) [`bc141cf54`](https://github.com/Shopify/polaris/commit/bc141cf54497deb488f3b8e589e94741f06efd54) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix bg-transparent-experimental value
+
 ## 7.2.0
 
 ### Minor Changes

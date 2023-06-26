@@ -20,7 +20,9 @@
         "warning": "Waarschuwing",
         "attention": "Attentie",
         "new": "Nieuw",
-        "critical": "Kritiek"
+        "critical": "Kritiek",
+        "readOnly": "Alleen-lezen",
+        "enabled": "Ingeschakeld"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },

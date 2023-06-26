@@ -1,8 +1,13 @@
 import React from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {
+  PlusMinor,
+  StarFilledMinor,
+  StarOutlineMinor,
+} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+import type {WithPolarisTestProviderOptions} from '../../../../PolarisTestProvider';
 import {PolarisTestProvider} from '../../../../PolarisTestProvider';
 import type {MediaQueryContext} from '../../../../../utilities/media-query';
 import {Badge} from '../../../../Badge';
@@ -12,8 +17,8 @@ import {UnstyledButton} from '../../../../UnstyledButton';
 import {UnstyledLink} from '../../../../UnstyledLink';
 import {NavigationContext} from '../../../context';
 import {Item, ItemSecondaryAction, MAX_SECONDARY_ACTIONS} from '../Item';
-import type {ItemProps} from '../Item';
-import {Secondary} from '../components';
+import type {ItemProps} from '../../../types';
+import {SecondaryNavigation} from '../components';
 import {Tooltip} from '../../../../Tooltip';
 
 describe('<Nav.Item />', () => {
@@ -57,13 +62,17 @@ describe('<Nav.Item />', () => {
       },
     });
 
-    expect(item).toContainReactComponent(Secondary, {expanded: true});
+    expect(item).toContainReactComponent(SecondaryNavigation, {
+      showExpanded: true,
+    });
 
     matchMedia.setMedia(() => ({matches: false}));
     mediaAddListener();
     item.forceUpdate();
 
-    expect(item).toContainReactComponent(Secondary, {expanded: false});
+    expect(item).toContainReactComponent(SecondaryNavigation, {
+      showExpanded: false,
+    });
   });
 
   it('remains expanded on resize when navigationBarCollapsed and location matches', () => {
@@ -76,9 +85,13 @@ describe('<Nav.Item />', () => {
         getAttribute: () => '/admin/orders',
       },
     });
-    expect(item).toContainReactComponent(Secondary, {expanded: true});
+    expect(item).toContainReactComponent(SecondaryNavigation, {
+      showExpanded: true,
+    });
     matchMedia.setMedia(() => ({matches: false}));
-    expect(item).toContainReactComponent(Secondary, {expanded: true});
+    expect(item).toContainReactComponent(SecondaryNavigation, {
+      showExpanded: true,
+    });
   });
 
   describe('renders', () => {
@@ -135,6 +148,51 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponentTimes(Badge, 1);
       expect(item.find(Badge)).toContainReactText('New');
+    });
+  });
+
+  it('renders matchedItemIcon when item is selected', () => {
+    const item = mountWithNavigationProvider(
+      <Item
+        label="some label"
+        url="foo"
+        icon={StarFilledMinor}
+        matchedItemIcon={StarOutlineMinor}
+      />,
+      {
+        location: 'foo',
+      },
+      {features: {polarisSummerEditions2023: true}},
+    );
+
+    expect(item).toContainReactComponent(Icon, {
+      source: StarOutlineMinor,
+    });
+  });
+
+  it('renders matchedItemIcon when sub-navigation item is selected', () => {
+    const item = mountWithNavigationProvider(
+      <Item
+        label="some label"
+        url="foo"
+        icon={StarFilledMinor}
+        matchedItemIcon={StarOutlineMinor}
+        subNavigationItems={[
+          {
+            url: 'bar',
+            disabled: false,
+            label: 'sub-navigation item label',
+          },
+        ]}
+      />,
+      {
+        location: 'bar',
+      },
+      {features: {polarisSummerEditions2023: true}},
+    );
+
+    expect(item).toContainReactComponent(Icon, {
+      source: StarOutlineMinor,
     });
   });
 
@@ -444,31 +502,33 @@ describe('<Nav.Item />', () => {
     it('renders expanded when given url is a perfect match for location', () => {
       const item = itemForLocation('/admin/orders');
 
-      expect(item).toContainReactComponent(Secondary);
+      expect(item).toContainReactComponent(SecondaryNavigation);
     });
 
     it('renders expanded when a url is a startsWith match for location', () => {
       const item = itemForLocation('/admin/orders?foo=bar');
 
-      expect(item).toContainReactComponent(Secondary);
+      expect(item).toContainReactComponent(SecondaryNavigation);
     });
 
     it('renders expanded when a child is a perfect match for location', () => {
       const item = itemForLocation('/admin/draft_orders');
 
-      expect(item).toContainReactComponent(Secondary);
+      expect(item).toContainReactComponent(SecondaryNavigation);
     });
 
     it('renders expanded when a child is a startsWith match for location', () => {
       const item = itemForLocation('/admin/draft_orders?foo=bar');
 
-      expect(item).toContainReactComponent(Secondary);
+      expect(item).toContainReactComponent(SecondaryNavigation);
     });
 
     it('does not render expanded when parent and children both have no match on the location', () => {
       const item = itemForLocation('/admin/notARealRoute');
 
-      expect(item).toContainReactComponent(Secondary, {expanded: false});
+      expect(item).toContainReactComponent(SecondaryNavigation, {
+        showExpanded: false,
+      });
     });
 
     it('sets aria labels', () => {
@@ -476,7 +536,7 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponent('a', {
         'aria-expanded': false,
-        'aria-controls': ':r18:',
+        'aria-controls': expect.stringMatching(/^:r\d[a-z]?:$/),
       });
     });
 
@@ -524,7 +584,7 @@ describe('<Nav.Item />', () => {
       );
 
       item!
-        .find(Secondary)!
+        .find(SecondaryNavigation)!
         .find('a')!
         .trigger('onClick', {
           preventDefault: jest.fn(),
@@ -558,7 +618,7 @@ describe('<Nav.Item />', () => {
       );
 
       item!
-        .find(Secondary)!
+        .find(SecondaryNavigation)!
         .find('a')!
         .trigger('onClick', {
           preventDefault: jest.fn(),
@@ -575,19 +635,21 @@ describe('<Nav.Item />', () => {
     it('renders expanded when given url is a perfect match for location', () => {
       const item = itemForLocation('/admin/orders', {exactMatch: true});
 
-      expect(item).toContainReactComponent(Secondary);
+      expect(item).toContainReactComponent(SecondaryNavigation);
     });
 
     it('does not render expanded when no exact match on url', () => {
       const item = itemForLocation('/admin/orders/1', {exactMatch: true});
 
-      expect(item).toContainReactComponent(Secondary, {expanded: false});
+      expect(item).toContainReactComponent(SecondaryNavigation, {
+        showExpanded: false,
+      });
     });
 
     it('still renders expanded when there is a match on url for one of it`s children', () => {
       const item = itemForLocation('/admin/draft_orders', {exactMatch: true});
 
-      expect(item).toContainReactComponent(Secondary);
+      expect(item).toContainReactComponent(SecondaryNavigation);
     });
   });
 
@@ -920,11 +982,13 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 function mountWithNavigationProvider(
   node: React.ReactElement,
   context: React.ContextType<typeof NavigationContext> = {location: ''},
+  options?: WithPolarisTestProviderOptions,
 ) {
   return mountWithApp(
     <NavigationContext.Provider value={context}>
       {node}
     </NavigationContext.Provider>,
+    {...options},
   );
 }
 

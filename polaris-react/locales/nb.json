@@ -20,7 +20,9 @@
         "warning": "Advarsel",
         "attention": "Obs",
         "new": "Ny",
-        "critical": "Kritisk"
+        "critical": "Kritisk",
+        "readOnly": "Kun lesetilgang",
+        "enabled": "Aktivert"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
     },
