@@ -7,6 +7,15 @@
   overflow: clip;
 
   #{$se23} & {
+    :nth-child(1 of .Section) {
+      padding-top: var(--p-space-4);
+    }
+    :nth-last-child(1 of .Section) {
+      padding-bottom: var(--p-space-4);
+    }
+  }
+
+  #{$se23} & {
     box-shadow: var(--p-shadow-card-sm-experimental);
 
     @media print {
@@ -103,7 +112,6 @@
   #{$se23} & {
     border-top-left-radius: var(--p-border-radius-3);
     border-top-right-radius: var(--p-border-radius-3);
-    padding-top: var(--p-space-4);
   }
 }
 
@@ -114,7 +122,6 @@
   #{$se23} & {
     border-bottom-left-radius: var(--p-border-radius-3);
     border-bottom-right-radius: var(--p-border-radius-3);
-    padding-bottom: var(--p-space-4);
   }
 }
 
