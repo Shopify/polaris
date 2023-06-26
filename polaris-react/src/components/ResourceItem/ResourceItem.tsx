@@ -32,7 +32,7 @@ import styles from './ResourceItem.scss';
 type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 
 interface BaseProps {
-  /** Visually hidden text for screen readers used for item link*/
+  /** Visually hidden text for screen readers used for item link */
   accessibilityLabel?: string;
   /** Individual item name used by various text labels */
   name?: string;

@@ -379,7 +379,7 @@ describe('<Button />', () => {
   });
 
   describe('onFocus()', () => {
-    it('is called when the button is focussed', () => {
+    it('is called when the button is focused', () => {
       const onFocusSpy = jest.fn();
       const button = mountWithApp(<Button onFocus={onFocusSpy} />);
       button.find(UnstyledButton)!.trigger('onFocus');

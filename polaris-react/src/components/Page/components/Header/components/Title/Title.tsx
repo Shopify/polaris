@@ -9,7 +9,7 @@ import styles from './Title.scss';
 export interface TitleProps {
   /** Page title, in large type */
   title?: string;
-  /** Page subtitle, in regular type*/
+  /** Page subtitle, in regular type */
   subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. */
   titleMetadata?: React.ReactNode;
