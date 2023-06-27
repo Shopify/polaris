@@ -90,7 +90,9 @@ $nav-animation-variables: (
       margin: var(--p-space-05);
       height: var(--p-space-4);
       width: var(--p-space-4);
-      border-radius: var(--p-border-radius-1);
+      #{$se23} & {
+        border-radius: var(--p-border-radius-1);
+      }
     }
   }
 }
