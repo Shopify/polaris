@@ -497,7 +497,7 @@ $loading-panel-height: 53px;
   border-bottom: var(--p-border-width-2) dotted var(--p-color-border-subdued);
 
   #{$se23} & {
-    border-bottom: var(--p-border-width-2) dotted var(--p-color-border);
+    border-bottom: var(--p-border-width-2) dotted var(--p-color-border-strong);
   }
 }
 
