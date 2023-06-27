@@ -1,6 +1,10 @@
 import React, {useEffect, useCallback, useRef, useReducer} from 'react';
 import type {KeyboardEvent, FocusEvent} from 'react';
-import {CaretDownMinor, PlusMinor} from '@shopify/polaris-icons';
+import {
+  CaretDownMinor,
+  ChevronDownMinor,
+  PlusMinor,
+} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -12,6 +16,7 @@ import {Tooltip} from '../Tooltip';
 import {Text} from '../Text';
 import {Box} from '../Box';
 import {usePrevious} from '../../utilities/use-previous';
+import {useFeatures} from '../../utilities/features';
 
 import {getVisibleAndHiddenTabIndices} from './utilities';
 import type {TabProps, TabMeasurements} from './types';
@@ -69,6 +74,7 @@ export const Tabs = ({
   fitted,
   disclosureText,
 }: TabsProps) => {
+  const {polarisSummerEditions2023} = useFeatures();
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
 
@@ -474,7 +480,10 @@ export const Tabs = ({
             styles['IconWrap-open'],
         )}
       >
-        <Icon source={CaretDownMinor} color="subdued" />
+        <Icon
+          source={polarisSummerEditions2023 ? ChevronDownMinor : CaretDownMinor}
+          color="subdued"
+        />
       </div>
     </>
   );

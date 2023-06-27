@@ -18,6 +18,7 @@ import {
   EditMinor,
   DeleteMinor,
   CaretDownMinor,
+  ChevronDownMinor,
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
@@ -288,7 +289,7 @@ export const Tab = forwardRef(
     const disclosureMarkup =
       selected && actions?.length ? (
         <div className={classNames(styles.IconWrap)}>
-          <Icon source={CaretDownMinor} />
+          <Icon source={se23 ? ChevronDownMinor : CaretDownMinor} />
         </div>
       ) : null;
 
