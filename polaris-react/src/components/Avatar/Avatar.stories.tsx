@@ -174,6 +174,23 @@ export function All() {
                 ))}
               </VerticalStack>
             </VerticalStack>
+            <VerticalStack gap="2">
+              <Text as="h2" variant="headingXs">
+                With long and wide initials
+              </Text>
+              <VerticalStack gap="2">
+                <HorizontalStack gap="2" blockAlign="center">
+                  {sizeEntries.map(([size]) => (
+                    <Avatar
+                      key={size}
+                      shape={shape}
+                      size={size}
+                      initials="WWW"
+                    />
+                  ))}
+                </HorizontalStack>
+              </VerticalStack>
+            </VerticalStack>
           </VerticalStack>
         </Box>
       ))}
