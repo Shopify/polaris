@@ -327,17 +327,17 @@ export const color: {
   },
   'color-bg-primary-active': {
     value: colors.green[900],
-    valueExperimental: colorsExperimental.gray[14](),
+    valueExperimental: colorsExperimental.gray[16](),
     description: '',
   },
   'color-bg-primary-hover': {
     value: colors.green[800],
-    valueExperimental: colorsExperimental.gray[15](),
+    valueExperimental: colorsExperimental.gray[16](),
     description: '',
   },
   'color-bg-primary': {
     value: colors.green[700],
-    valueExperimental: colorsExperimental.gray[16](),
+    valueExperimental: colorsExperimental.gray[15](),
     description: '',
   },
   'color-bg-success-strong': {
