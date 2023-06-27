@@ -65,10 +65,20 @@
   @media print and #{$p-breakpoints-sm-up} {
     padding: var(--p-space-2) var(--p-space-4) 0;
   }
+
+  #{$se23} & {
+    + .Section {
+      padding-top: var(--p-space-4);
+    }
+  }
 }
 
 .Section {
   padding: var(--p-space-4);
+
+  #{$se23} & {
+    padding: var(--p-space-2) var(--p-space-4);
+  }
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5);
@@ -101,8 +111,12 @@
   border-top-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
-    border-top-left-radius: var(--p-border-radius-3);
-    border-top-right-radius: var(--p-border-radius-3);
+    border-radius: 0;
+
+    @media #{$p-breakpoints-sm-up} {
+      border-bottom-left-radius: var(--p-border-radius-3);
+      border-bottom-right-radius: var(--p-border-radius-3);
+    }
 
     &:not(.Section-flush) {
       padding-top: var(--p-space-4);
@@ -115,9 +129,13 @@
   border-bottom-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
-    border-bottom-left-radius: var(--p-border-radius-3);
-    border-bottom-right-radius: var(--p-border-radius-3);
+    border-radius: 0;
     padding-bottom: var(--p-space-4);
+
+    @media #{$p-breakpoints-sm-up} {
+      border-bottom-left-radius: var(--p-border-radius-3);
+      border-bottom-right-radius: var(--p-border-radius-3);
+    }
   }
 }
 
