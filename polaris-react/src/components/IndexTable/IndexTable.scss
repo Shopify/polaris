@@ -570,8 +570,8 @@ $loading-panel-height: 53px;
 
   #{$se23} & {
     padding: 0;
-    // stylelint-disable-next-line selector-max-combinators -- se23 override
-    :first-child {
+
+    &:first-child {
       padding: 0;
     }
   }
