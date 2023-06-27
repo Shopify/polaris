@@ -23,7 +23,10 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--p-color-bg-subdued-hover);
+    background-color: var(--p-color-bg-hover);
+    #{$se23} & {
+      background-color: var(--p-color-bg-subdued-hover);
+    }
 
     .Actions {
       // stylelint-disable-next-line selector-max-combinators -- show actions on hover
