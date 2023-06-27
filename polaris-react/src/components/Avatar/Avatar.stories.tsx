@@ -12,14 +12,13 @@ import {
   Text,
 } from '@shopify/polaris';
 
+import type {Entries} from '../../types';
+
 import type {STYLE_CLASSES} from './Avatar';
 
 export default {
   component: Avatar,
 } as ComponentMeta<typeof Avatar>;
-
-type Entry<T> = [keyof T, T[keyof T]];
-type Entries<T> = Entry<T>[];
 
 const shapes: {
   [S in NonNullable<AvatarProps['shape']>]: string;

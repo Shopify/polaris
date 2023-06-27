@@ -1,13 +1,12 @@
 import React, {useState, useCallback, useEffect} from 'react';
 
+import type {Experimental} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Image} from '../Image';
 
 import styles from './Avatar.scss';
-
-type Experimental<T extends string> = `${T}-experimental`;
 
 type Size =
   | 'extraSmall'

@@ -6,6 +6,10 @@ import type {IconProps} from './components/Icon';
 import type {ThumbnailProps} from './components/Thumbnail';
 /* eslint-enable @shopify/strict-component-boundaries */
 
+export type Entry<T> = [keyof T, T[keyof T]];
+export type Entries<T> = Entry<T>[];
+export type Experimental<T extends string> = `${T}-experimental`;
+
 export interface OptionDescriptor {
   /** Value of the option */
   value: string;
