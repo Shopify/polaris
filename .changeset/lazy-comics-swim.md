@@ -3,4 +3,4 @@
 ---
 
 Added experimental `xl` and `2xl` sizes
-Reintroduced `round` shape
+Reintroduced `round` shape styles
