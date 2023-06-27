@@ -57,6 +57,9 @@ $large-width: 980px;
     max-width: $small-width;
     margin: 0 auto;
     border-radius: var(--p-border-radius-2);
+    #{$se23} & {
+      border-radius: var(--p-border-radius-4);
+    }
   }
 
   &.limitHeight {

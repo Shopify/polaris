@@ -30,7 +30,8 @@ export function Section({
     <div className={className}>
       <Box
         as="section"
-        padding={flush ? '0' : '5'}
+        // eslint-disable-next-line no-nested-ternary
+        padding={flush ? '0' : polarisSummerEditions2023 ? '4' : '5'}
         {...(titleHidden && {paddingInlineEnd: '0'})}
         {...(subdued && {
           background: polarisSummerEditions2023
