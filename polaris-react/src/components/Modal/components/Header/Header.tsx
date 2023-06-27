@@ -24,13 +24,21 @@ export function Header({
 }: HeaderProps) {
   const {polarisSummerEditions2023} = useFeatures();
 
+  const headerPaddingInline = polarisSummerEditions2023 ? '4' : '5';
+  const headerPaddingBlock = '4';
+
   if (titleHidden || !children) {
-    return (
+    return polarisSummerEditions2023 ? (
       <Box
         position="absolute"
-        insetInlineEnd={polarisSummerEditions2023 ? '1' : '0'}
+        insetInlineEnd={headerPaddingInline}
+        insetBlockStart={headerPaddingBlock}
         zIndex="1"
       >
+        <CloseButton titleHidden={titleHidden} onClick={onClose} />
+      </Box>
+    ) : (
+      <Box position="absolute" insetInlineEnd="0" zIndex="1">
         <HorizontalStack gap="4" align="end" blockAlign="center">
           <CloseButton titleHidden={titleHidden} onClick={onClose} />
         </HorizontalStack>
@@ -42,10 +50,10 @@ export function Header({
     <Box
       paddingBlockStart="4"
       paddingBlockEnd="4"
-      paddingInlineStart="5"
-      paddingInlineEnd="5"
-      borderBlockEndWidth={polarisSummerEditions2023 ? undefined : '1'}
-      borderColor="border-subdued"
+      paddingInlineStart={headerPaddingInline}
+      paddingInlineEnd={headerPaddingInline}
+      borderBlockEndWidth="1"
+      borderColor={polarisSummerEditions2023 ? 'border' : 'border-subdued'}
       background={
         polarisSummerEditions2023 ? 'bg-secondary-experimental' : undefined
       }
