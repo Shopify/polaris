@@ -4,6 +4,7 @@ import {classNames} from '../../../../utilities/css';
 import {Tooltip} from '../../../Tooltip';
 import {Button} from '../../../Button';
 import type {ButtonProps} from '../../../Button';
+import {useFeatures} from '../../../../utilities/features';
 
 import styles from './SecondaryAction.scss';
 
@@ -22,6 +23,7 @@ export function SecondaryAction({
   ...rest
 }: SecondaryAction) {
   const secondaryActionsRef = useRef<HTMLSpanElement>(null);
+  const {polarisSummerEditions2023} = useFeatures();
 
   useEffect(() => {
     if (!getOffsetWidth || !secondaryActionsRef.current) return;
@@ -30,7 +32,12 @@ export function SecondaryAction({
   }, [getOffsetWidth]);
 
   const buttonMarkup = (
-    <Button onClick={onAction} {...rest}>
+    <Button
+      onClick={onAction}
+      destructive={polarisSummerEditions2023 ? destructive : undefined}
+      outline={polarisSummerEditions2023 ? rest.disabled : undefined}
+      {...rest}
+    >
       {children}
     </Button>
   );
@@ -43,10 +50,14 @@ export function SecondaryAction({
 
   return (
     <span
-      className={classNames(
-        styles.SecondaryAction,
-        destructive && styles.destructive,
-      )}
+      className={
+        polarisSummerEditions2023
+          ? undefined
+          : classNames(
+              styles.SecondaryAction,
+              destructive && styles.destructive,
+            )
+      }
       ref={secondaryActionsRef}
     >
       {actionMarkup}
