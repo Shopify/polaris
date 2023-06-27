@@ -32,6 +32,10 @@ export interface RowProps {
   disabled?: boolean;
   /** A tuple array with the first and last index of the range of rows that the subheader describes. All rows in the range are selected when the subheader row is selected. */
   subHeaderRange?: Range;
+  /** Label set on the row's checkbox
+   * @default "Select {resourceName}"
+   */
+  accessibilityLabel?: string;
   /** Callback fired when the row is clicked and contains a data-primary-link */
   onNavigation?(id: string): void;
   /** Callback fired when the row is clicked. Overrides the default click behaviour. */
@@ -47,6 +51,7 @@ export const Row = memo(function Row({
   status,
   disabled,
   subHeaderRange,
+  accessibilityLabel,
   onNavigation,
   onClick,
 }: RowProps) {
@@ -159,13 +164,16 @@ export const Row = memo(function Row({
   }
 
   const RowWrapper = condensed ? 'li' : 'tr';
-  const checkboxMarkup = selectable ? <Checkbox /> : null;
+  const checkboxMarkup = selectable ? (
+    <Checkbox accessibilityLabel={accessibilityLabel} />
+  ) : null;
 
   return (
     <RowContext.Provider value={contextValue}>
       <RowHoveredContext.Provider value={hovered}>
         <RowWrapper
           key={id}
+          id={id}
           className={rowClassName}
           onMouseEnter={setHoverIn}
           onMouseLeave={setHoverOut}

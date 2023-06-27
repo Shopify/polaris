@@ -3702,7 +3702,7 @@ export function WithSubHeaders() {
 
   const orders = groupRowsBy(
     'lastOrderDate',
-    (date) => `order-${date.split(' ').join('-')}`,
+    (date) => `last-order-date--${date.replace(',', '').split(' ').join('-')}`,
   );
 
   const rowMarkup = Object.keys(orders).map((orderDate, index) => {
@@ -3739,15 +3739,14 @@ export function WithSubHeaders() {
           position={position}
           selected={selected}
           disabled={index === 1}
+          accessibilityLabel={`Select all customers whose last order was placed on ${orderDate}`}
         >
-          <IndexTable.Cell
-            colSpan={4}
-            scope="colgroup"
-            as="th"
-            id={subheaderId}
-          >
+          <IndexTable.Cell scope="col" as="th" id={subheaderId}>
             {`Last order placed: ${orderDate}`}
           </IndexTable.Cell>
+          <IndexTable.Cell as="th" />
+          <IndexTable.Cell as="th" />
+          <IndexTable.Cell as="th" />
         </IndexTable.Row>
         {customers.map(
           (
@@ -3764,6 +3763,7 @@ export function WithSubHeaders() {
               >
                 <IndexTable.Cell
                   as="th"
+                  scope="row"
                   headers={`${columnHeadings[0].id} ${subheaderId}`}
                 >
                   <Text variant="bodyMd" fontWeight="semibold" as="span">

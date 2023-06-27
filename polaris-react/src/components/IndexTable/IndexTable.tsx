@@ -843,6 +843,7 @@ function IndexTableBase({
 
     const headingContent = (
       <th
+        id={heading.id}
         className={headingContentClassName}
         key={getHeadingKey(heading)}
         data-index-table-heading
