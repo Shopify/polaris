@@ -6,12 +6,12 @@ type ShadowAliasExperimental = Experimental<
   | 'card-lg'
   | 'button'
   | 'button-disabled'
-  | 'inset-button-primary'
+  | 'button-primary-inset'
   | 'button-primary-strong-hover'
   | 'button-primary-strong'
   | 'button-primary'
   | 'button-primary-hover'
-  | 'inset-button'
+  | 'button-inset'
 >;
 
 export type ShadowAlias =
@@ -101,7 +101,7 @@ export const shadow: {
   'shadow-button-disabled-experimental': {
     value: 'inset 0px 0px 0px 1px rgba(227, 227, 227, 1)',
   },
-  'shadow-inset-button-primary-experimental': {
+  'shadow-button-primary-inset-experimental': {
     value:
       '0px 2px 0px 0px #000 inset, 1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset, -1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset',
   },
@@ -121,7 +121,7 @@ export const shadow: {
     value:
       '-1px 0px 0px 0px rgba(255, 255, 255, 0.20) inset, 1px 0px 0px 0px rgba(255, 255, 255, 0.20) inset, 0px 0.5px 0px 0px rgba(0, 0, 0, 0.25), 0px -1.5px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.24) inset',
   },
-  'shadow-inset-button-experimental': {
+  'shadow-button-inset-experimental': {
     value:
       '0px 2px 0px 0px rgba(0, 0, 0, 0.60) inset, 1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset, -1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset',
   },

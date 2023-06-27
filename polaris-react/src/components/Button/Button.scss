@@ -343,7 +343,7 @@
       --pc-button-text: var(--p-color-text-inverse-subdued);
       background: var(--pc-button-color-active);
       // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
-      box-shadow: var(--p-shadow-inset-button-primary-experimental);
+      box-shadow: var(--p-shadow-button-primary-inset-experimental);
       // stylelint-enable-next-line length-zero-no-unit
       &::before {
         opacity: 0;
@@ -383,7 +383,7 @@
       }
 
       &:active {
-        box-shadow: var(--p-shadow-inset-button-experimental);
+        box-shadow: var(--p-shadow-button-inset-experimental);
       }
     }
 
