@@ -303,8 +303,7 @@
   // stylelint-enable
 
   #{$se23} & {
-    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
-    box-shadow: var(--pc-button-shadow-primary);
+    box-shadow: none;
 
     &::before {
       /* shine */
@@ -376,14 +375,28 @@
       }
 
       &:hover {
+        // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+        --pc-button-text: var(--p-color-text-inverse);
         // stylelint-disable-next-line max-nesting-depth -- se23 temporary styles
         &::before {
           box-shadow: var(--p-shadow-button-primary-hover-experimental);
         }
+
+        // stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 temporary styles
+        svg {
+          fill: var(--p-color-text-inverse);
+        }
       }
 
       &:active {
+        // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+        --pc-button-text: var(--p-color-text-inverse-subdued);
         box-shadow: var(--p-shadow-button-inset-experimental);
+
+        // stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 temporary styles
+        svg {
+          fill: var(--p-color-text-inverse-subdued);
+        }
       }
     }
 
@@ -438,7 +451,6 @@
         --p-color-bg-success-strong-active-experimental
       );
       // stylelint-enable
-
       box-shadow: none;
     }
   }
