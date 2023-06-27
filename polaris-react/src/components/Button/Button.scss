@@ -335,6 +335,11 @@
       &::before {
         box-shadow: var(--p-shadow-button-primary-strong-hover-experimental);
       }
+
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
+      svg {
+        fill: var(--p-color-text-inverse);
+      }
     }
 
     &:active {
@@ -346,6 +351,11 @@
       // stylelint-enable-next-line length-zero-no-unit
       &::before {
         opacity: 0;
+      }
+
+      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
+      svg {
+        fill: var(--p-color-text-inverse-subdued);
       }
     }
 
