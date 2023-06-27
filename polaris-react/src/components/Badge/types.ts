@@ -1,4 +1,4 @@
-type Experimental<T extends string> = `${T}-experimental`;
+import type {Experimental} from '../../types';
 
 export type Status =
   | 'info'
