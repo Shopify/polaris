@@ -459,6 +459,9 @@ export function All() {
         </LegacyCard.Section>
         <div />
       </LegacyCard>
+      <LegacyCard>
+        <div>Card content in div not in section</div>
+      </LegacyCard>
       <LegacyCard title="Card headings with top subdued">
         <LegacyCard.Section title="Section 1 heading" subdued>
           Subdued Section 1 content
