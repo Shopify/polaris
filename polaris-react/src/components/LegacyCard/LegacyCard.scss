@@ -9,6 +9,35 @@
   #{$se23} & {
     box-shadow: var(--p-shadow-card-sm-experimental);
 
+    // stylelint-disable -- se23
+    // Apply extra padding on first and last elements, only if they are direct children of .LegacyCard.
+    // Selecting direct children is necessary, otherwise sections wrapped in divs would get the extra padding.
+    // This could be simplified/made more accurate with :nth-child(1 of .Section) when made compatible.
+    // https://caniuse.com/css-nth-child-of
+
+    > .Section:first-child:not(.Section-flush) {
+      padding-top: var(--p-space-4);
+    }
+
+    > .Section:last-child:not(.Section-flush) {
+      padding-bottom: var(--p-space-4);
+    }
+
+    > .Header {
+      padding-top: var(--p-space-4);
+    }
+
+    // If another element is a direct child of LegacyCard, it is likely wrapping the sub components.
+    // Applying less extra padding since we cannot override an unknown decendant level without nth-child-of
+    > *:first-child:not(.Section):not(.Header):not(.Footer) {
+      padding-top: var(--p-space-2);
+    }
+
+    > *:last-child:not(.Section):not(.Header):not(.Footer) {
+      padding-bottom: var(--p-space-2);
+    }
+    // stylelint-enable
+
     @media print {
       box-shadow: none;
     }
@@ -58,7 +87,7 @@
     padding: var(--p-space-5) var(--p-space-5) 0;
 
     #{$se23} & {
-      padding: var(--p-space-4) var(--p-space-4) var(--p-space-2);
+      padding: var(--p-space-2) var(--p-space-4);
     }
   }
 
@@ -69,6 +98,10 @@
 
 .Section {
   padding: var(--p-space-4);
+
+  #{$se23} & {
+    padding: var(--p-space-2) var(--p-space-4);
+  }
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5);
@@ -101,11 +134,11 @@
   border-top-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
-    border-top-left-radius: var(--p-border-radius-3);
-    border-top-right-radius: var(--p-border-radius-3);
+    border-radius: 0;
 
-    &:not(.Section-flush) {
-      padding-top: var(--p-space-4);
+    @media #{$p-breakpoints-sm-up} {
+      border-top-left-radius: var(--p-border-radius-3);
+      border-top-right-radius: var(--p-border-radius-3);
     }
   }
 }
@@ -115,9 +148,12 @@
   border-bottom-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
-    border-bottom-left-radius: var(--p-border-radius-3);
-    border-bottom-right-radius: var(--p-border-radius-3);
-    padding-bottom: var(--p-space-4);
+    border-radius: 0;
+
+    @media #{$p-breakpoints-sm-up} {
+      border-bottom-left-radius: var(--p-border-radius-3);
+      border-bottom-right-radius: var(--p-border-radius-3);
+    }
   }
 }
 
@@ -150,26 +186,25 @@
 
   #{$se23} & {
     background-color: var(--p-color-bg-secondary-experimental);
-    border-top: 0;
+    padding: var(--p-space-3) var(--p-space-4);
   }
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;
   }
 
+  @media print {
+    padding-top: var(--p-space-2);
+    padding-bottom: var(--p-space-2);
+  }
+
   .Header + & {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     margin-top: var(--p-space-5);
-  }
-}
 
-.Section-subdued:last-child {
-  #{$se23} & {
-    padding: var(--p-space-4);
-
-    @media print {
-      padding-top: var(--p-space-2);
-      padding-bottom: var(--p-space-2);
+    #{$se23} & {
+      border-top: 0;
+      margin-top: 0;
     }
   }
 }
@@ -219,13 +254,13 @@
 .Footer {
   display: flex;
   justify-content: flex-end;
-  padding: 0 var(--p-space-4) var(--p-space-4);
+  padding: var(--p-space-2) var(--p-space-4) var(--p-space-4);
 
   @media #{$p-breakpoints-sm-up} {
     padding: 0 var(--p-space-5) var(--p-space-5);
 
     #{$se23} & {
-      padding: 0 var(--p-space-4) var(--p-space-4);
+      padding: var(--p-space-2) var(--p-space-4) var(--p-space-4);
     }
   }
 

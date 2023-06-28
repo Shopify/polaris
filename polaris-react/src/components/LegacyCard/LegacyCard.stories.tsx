@@ -13,6 +13,8 @@ import {
   LegacyStack,
   Text,
   TextContainer,
+  VerticalStack,
+  Box,
 } from '@shopify/polaris';
 import {ProductsMajor} from '@shopify/polaris-icons';
 
@@ -397,5 +399,188 @@ export function WithFlushedSections() {
         </TextContainer>
       </LegacyCard.Section>
     </LegacyCard>
+  );
+}
+
+export function All() {
+  return (
+    <VerticalStack gap="2">
+      <LegacyCard title="All headings">
+        <LegacyCard.Section title="Section 1 heading">
+          Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Section 2 heading">
+          Section 2 content
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="Non-text first item">
+        <LegacyCard.Section>
+          <Box
+            minHeight="50px"
+            borderRadius="2"
+            borderStyle="solid"
+            borderWidth="1"
+            borderColor="border"
+          />
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Section 2 heading">
+          Section 2 content
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Section>No titles Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section>No titles Section 2 content</LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <div>
+          <LegacyCard.Header title="Content wrapped in div" />
+          <LegacyCard.Section title="Section 1 heading">
+            Section 1 in div
+          </LegacyCard.Section>
+          <LegacyCard.Section title="Section 2 heading">
+            Section 2 in div
+          </LegacyCard.Section>
+        </div>
+      </LegacyCard>
+      <LegacyCard>
+        <div>
+          <LegacyCard.Section title="Section 1 heading">
+            Section 1 in div
+          </LegacyCard.Section>
+          <LegacyCard.Section title="Section 2 heading">
+            Section 2 in div
+          </LegacyCard.Section>
+        </div>
+      </LegacyCard>
+      <LegacyCard title="Non section last child">
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section>
+          Section 2 content, there is an empty div under this
+        </LegacyCard.Section>
+        <div />
+      </LegacyCard>
+      <LegacyCard title="Card headings with top subdued">
+        <LegacyCard.Section title="Section 1 heading" subdued>
+          Subdued Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Section 2 heading">
+          Section 2 content
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="Card headings with bottom subdued">
+        <LegacyCard.Section title="Section 1 heading">
+          Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Section 2 heading" subdued>
+          <p>Subdued section 2 content</p>
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="No section headings with top subdued">
+        <LegacyCard.Section subdued>
+          Subdued Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section>Section 2 content</LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="No section headings with bottom subdued">
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section subdued>
+          Subdued section 2 content
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Section subdued>
+          Subdued Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section>Section 2 content</LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section subdued>
+          Subdued section 2 content
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section subdued>
+          Subdued section 2 content
+        </LegacyCard.Section>
+        <LegacyCard.Section>Section 3 content</LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="Flush sections">
+        <LegacyCard.Section title="Section 1 heading">
+          Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Flush section heading" flush>
+          This should be flush
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard
+        secondaryFooterActions={[{content: 'Dismiss'}]}
+        primaryFooterAction={{content: 'Export Report'}}
+      >
+        <LegacyCard.Header
+          actions={[
+            {
+              content: 'Total Sales',
+            },
+          ]}
+          title="Sales"
+        >
+          <Popover
+            active={false}
+            activator={
+              <Button disclosure plain>
+                View Sales
+              </Button>
+            }
+            onClose={() => {}}
+          >
+            <ActionList
+              items={[{content: 'Gross Sales'}, {content: 'Net Sales'}]}
+            />
+          </Popover>
+        </LegacyCard.Header>
+        <LegacyCard.Section title="Total Sales Breakdown">
+          <ResourceList
+            resourceName={{singular: 'sale', plural: 'sales'}}
+            items={[
+              {
+                sales: 'Orders',
+                amount: 'USD$0.00',
+                url: '#',
+              },
+              {
+                sales: 'Returns',
+                amount: '-USD$250.00',
+                url: '#',
+              },
+            ]}
+            renderItem={(item) => {
+              const {sales, amount, url} = item;
+              return (
+                <ResourceList.Item
+                  url={url}
+                  accessibilityLabel={`View Sales for ${sales}`}
+                >
+                  <LegacyStack>
+                    <LegacyStack.Item fill>{sales}</LegacyStack.Item>
+                    <LegacyStack.Item>{amount}</LegacyStack.Item>
+                  </LegacyStack>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Deactivated reports" subdued>
+          Outside of subsection
+          <LegacyCard.Subsection>Inside of subsection</LegacyCard.Subsection>
+          Outside of subsection
+        </LegacyCard.Section>
+        <LegacyCard.Section>
+          The sales reports are available only if your store is on the Shopify
+          plan or higher.
+        </LegacyCard.Section>
+      </LegacyCard>
+    </VerticalStack>
   );
 }
