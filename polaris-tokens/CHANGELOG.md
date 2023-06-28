@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.3.1
+
+### Patch Changes
+
+- [#9507](https://github.com/Shopify/polaris/pull/9507) [`5065fc199`](https://github.com/Shopify/polaris/commit/5065fc1991518507607d81d1f1b667c26773cf4d) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Renamed all experimental `color-avatar-*` tokens
+
 ## 7.3.0
 
 ### Minor Changes
