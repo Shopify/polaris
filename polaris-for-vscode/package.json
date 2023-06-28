@@ -43,7 +43,7 @@
     "vscode-languageserver-textdocument": "^1.0.4"
   },
   "devDependencies": {
-    "@shopify/polaris-tokens": "^7.3.0",
+    "@shopify/polaris-tokens": "^7.3.1",
     "@types/node": "14.x",
     "@types/vscode": "^1.64.0",
     "@vscode/test-electron": "^2.1.2",

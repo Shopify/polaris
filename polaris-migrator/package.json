@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-migrator",
-  "version": "0.19.3",
+  "version": "0.19.4",
   "description": "Codemod transformations to help upgrade your Polaris codebase",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -36,8 +36,8 @@
     "generate": "plop"
   },
   "dependencies": {
-    "@shopify/polaris-tokens": "^7.3.0",
-    "@shopify/stylelint-polaris": "^13.0.3",
+    "@shopify/polaris-tokens": "^7.3.1",
+    "@shopify/stylelint-polaris": "^13.0.4",
     "chalk": "^4.1.0",
     "globby": "11.0.1",
     "is-git-clean": "^1.1.0",
@@ -55,7 +55,7 @@
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@shopify/polaris": "^11.2.2",
+    "@shopify/polaris": "^11.3.0",
     "plop": "^3.1.1",
     "plop-dir": "^0.0.5",
     "prettier": "^2.7.1",

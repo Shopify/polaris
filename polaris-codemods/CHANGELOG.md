@@ -1,5 +1,13 @@
 # @shopify/polaris-codemods
 
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies [[`5065fc199`](https://github.com/Shopify/polaris/commit/5065fc1991518507607d81d1f1b667c26773cf4d)]:
+  - @shopify/polaris-tokens@7.3.1
+  - @shopify/stylelint-polaris@13.0.4
+
 ## 0.1.6
 
 ### Patch Changes
