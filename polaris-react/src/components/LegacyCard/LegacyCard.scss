@@ -26,16 +26,6 @@
     > .Header {
       padding-top: var(--p-space-4);
     }
-
-    // If another element is a direct child of LegacyCard, it is likely wrapping the sub components.
-    // Applying less extra padding since we cannot override an unknown decendant level without nth-child-of
-    > *:first-child:not(.Section):not(.Header):not(.Footer) {
-      padding-top: var(--p-space-2);
-    }
-
-    > *:last-child:not(.Section):not(.Header):not(.Footer) {
-      padding-bottom: var(--p-space-2);
-    }
     // stylelint-enable
 
     @media print {
