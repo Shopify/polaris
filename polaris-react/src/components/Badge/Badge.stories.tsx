@@ -10,6 +10,7 @@ import {
   Box,
 } from '@shopify/polaris';
 
+import type {Entries} from '../../types';
 import {useFeatures} from '../../utilities/features';
 
 export default {
@@ -86,9 +87,6 @@ const TempIcon = () => (
     />
   </svg>
 );
-
-type Entry<T> = [keyof T, T[keyof T]];
-type Entries<T> = Entry<T>[];
 
 const statuses: {
   [S in 'default' | NonNullable<BadgeProps['status']>]: string;

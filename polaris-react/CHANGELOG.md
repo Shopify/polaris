@@ -1,5 +1,39 @@
 # Changelog
 
+## 11.3.0
+
+### Minor Changes
+
+- [#9500](https://github.com/Shopify/polaris/pull/9500) [`c689e640e`](https://github.com/Shopify/polaris/commit/c689e640ec4aa926bc0794bfdfd949f44ea0110b) Thanks [@mateus](https://github.com/mateus)! - Refactored SecondaryNavigation and changed how recursive nav items are rendered. New props were added to the
+  Item component to control the arrow indicators. The props `showVerticalLine`, `showVerticalHoverLine`, and
+  `showVerticalHoverPointer` are responsible for styling the items with the vertical lines for the selected and hover
+  states, and `onMouseEnter` and `onMouseLeave` are used to track user interactions and set the expected props.
+
+* [#9527](https://github.com/Shopify/polaris/pull/9527) [`ba9265c0d`](https://github.com/Shopify/polaris/commit/ba9265c0d151af92c5ce97dc4dde28cd3e411431) Thanks [@mateus](https://github.com/mateus)! - Added `matchedItemIcon` prop to the Navigation Item component. It takes an icon source that will be used when the item is selected.
+
+### Patch Changes
+
+- [#9486](https://github.com/Shopify/polaris/pull/9486) [`a4c876fde`](https://github.com/Shopify/polaris/commit/a4c876fdece246680522e17099a1843b333a95c7) Thanks [@jesstelford](https://github.com/jesstelford)! - - [IndexTable] Design updates
+
+* [#9507](https://github.com/Shopify/polaris/pull/9507) [`5065fc199`](https://github.com/Shopify/polaris/commit/5065fc1991518507607d81d1f1b667c26773cf4d) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added experimental `xl` and `2xl` sizes
+  Reintroduced `round` shape styles
+
+- [#9486](https://github.com/Shopify/polaris/pull/9486) [`e6774b926`](https://github.com/Shopify/polaris/commit/e6774b9263ac8b7c04e4f958256af60499838ee8) Thanks [@jesstelford](https://github.com/jesstelford)! - - [IndexTable] Cleanup obsolete mobile checkbox styles, update pse23 styles.
+
+* [#9538](https://github.com/Shopify/polaris/pull/9538) [`b4db546d1`](https://github.com/Shopify/polaris/commit/b4db546d16bbeb2bf54ce894e7879f8d36179d8e) Thanks [@mattkubej](https://github.com/mattkubej)! - Added the `WithinContentContext.Provider` to `Card`
+
+- [#9545](https://github.com/Shopify/polaris/pull/9545) [`d6aef7bdc`](https://github.com/Shopify/polaris/commit/d6aef7bdcc406c792bbdbc06bcde6061b9a81ed9) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - [IndexTable] Update TableHeadingUnderline styles for better contrast
+
+* [#9526](https://github.com/Shopify/polaris/pull/9526) [`29ac1839e`](https://github.com/Shopify/polaris/commit/29ac1839e28ba807742844d003b55f658d24d042) Thanks [@mattkubej](https://github.com/mattkubej)! - Establishes consistent naming of focused and cleans up spacing in documentation
+
+- [#9522](https://github.com/Shopify/polaris/pull/9522) [`5ac46f086`](https://github.com/Shopify/polaris/commit/5ac46f086d19ca80a1fa9cb081ac3eb8ccaa886f) Thanks [@samrose3](https://github.com/samrose3)! - Fixed overlapping heading when scrolling horizontally on unselectable IndexTable.
+
+* [#9486](https://github.com/Shopify/polaris/pull/9486) [`b3a778484`](https://github.com/Shopify/polaris/commit/b3a778484a61eef1c963a13d737af314dfa6e099) Thanks [@jesstelford](https://github.com/jesstelford)! - - [IndexTable] Fix various spacing issues surfaced with design changes
+  - [IndexTable] Fix margin bug on non selectable IndexTable.
+  - [IndexTable] Fix vertical alignment bug when bulk actions enabled.
+* Updated dependencies [[`5065fc199`](https://github.com/Shopify/polaris/commit/5065fc1991518507607d81d1f1b667c26773cf4d)]:
+  - @shopify/polaris-tokens@7.3.1
+
 ## 11.2.2
 
 ### Patch Changes

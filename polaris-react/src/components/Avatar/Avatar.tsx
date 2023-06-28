@@ -1,5 +1,6 @@
 import React, {useState, useCallback, useEffect} from 'react';
 
+import type {Experimental} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
@@ -7,7 +8,12 @@ import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 
-type Size = 'extraSmall' | 'small' | 'medium' | 'large';
+type Size =
+  | 'extraSmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | Experimental<'xl' | '2xl'>;
 
 type Shape = 'square' | 'round';
 
@@ -17,7 +23,7 @@ enum Status {
   Errored = 'ERRORED',
 }
 
-export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
+export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'] as const;
 
 /**
  * Computes a rudimentary hash from a string by xoring the character codes
