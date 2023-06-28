@@ -82,10 +82,6 @@ $nav-animation-variables: (
     display: block;
     height: var(--p-space-5);
     width: var(--p-space-5);
-
-    #{$se23} & {
-      border-radius: var(--p-border-radius-1);
-    }
   }
 
   .Icon-resized {
@@ -94,6 +90,12 @@ $nav-animation-variables: (
       margin: var(--p-space-05);
       height: var(--p-space-4);
       width: var(--p-space-4);
+    }
+
+    img {
+      #{$se23} & {
+        border-radius: var(--p-border-radius-1);
+      }
     }
   }
 }
