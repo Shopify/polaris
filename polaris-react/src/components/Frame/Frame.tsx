@@ -21,6 +21,7 @@ import type {
   ToastID,
   ToastPropsWithID,
 } from '../../utilities/frame';
+import {UseFeatures} from '../../utilities/features';
 
 import {
   ToastManager,
@@ -51,6 +52,10 @@ export interface FrameProps {
   skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
+  /** A boolean property indicating whether their should be space for a sidebar
+   * @default false
+   */
+  sidebar?: boolean;
 }
 
 type CombinedProps = FrameProps & {
@@ -64,6 +69,7 @@ interface State {
   loadingStack: number;
   toastMessages: ToastPropsWithID[];
   showContextualSaveBar: boolean;
+  polarisSummerEditions2023: boolean;
 }
 
 const APP_FRAME_MAIN = 'AppFrameMain';
@@ -78,6 +84,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     loadingStack: 0,
     toastMessages: [],
     showContextualSaveBar: false,
+    polarisSummerEditions2023: false,
   };
 
   private contextualSaveBar: ContextualSaveBarProps | null = null;
@@ -93,11 +100,52 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     this.setOffset();
   }
 
-  componentDidUpdate(prevProps: FrameProps) {
+  componentDidUpdate(prevProps: FrameProps, prevState: State) {
     if (this.props.globalRibbon !== prevProps.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
     this.setOffset();
+
+    if (this.state.polarisSummerEditions2023) {
+      if (
+        !prevState.showContextualSaveBar &&
+        this.state.showContextualSaveBar
+      ) {
+        let saveDisabled = false;
+        if (this.contextualSaveBar) {
+          if (this.contextualSaveBar.saveAction) {
+            if (this.contextualSaveBar.saveAction.disabled) {
+              saveDisabled = true;
+            }
+          }
+        }
+        const scrollElementHeight = 56;
+        const currentScrollPosition =
+          window.scrollY || document.documentElement.scrollTop;
+
+        if (!saveDisabled || currentScrollPosition !== 0) {
+          window.scrollTo({
+            top: currentScrollPosition + scrollElementHeight,
+            behavior: 'auto',
+          });
+        }
+      } else if (
+        prevState.showContextualSaveBar &&
+        !this.state.showContextualSaveBar
+      ) {
+        const scrollElementHeight = 56;
+        const currentScrollPosition =
+          window.scrollY || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        if (currentScrollPosition + windowHeight < documentHeight) {
+          window.scrollTo({
+            top: currentScrollPosition - scrollElementHeight,
+            behavior: 'auto',
+          });
+        }
+      }
+    }
   }
 
   render() {
@@ -178,16 +226,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const contextualSaveBarMarkup = (
-      <CSSAnimation
-        in={showContextualSaveBar}
-        className={styles.ContextualSaveBar}
-        type="fade"
-      >
-        <ContextualSaveBar {...this.contextualSaveBar} />
-      </CSSAnimation>
-    );
-
     const topBarMarkup = topBar ? (
       <div
         className={styles.TopBar}
@@ -242,6 +280,17 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       topBar && styles.hasTopBar,
     );
 
+    const contentClassName = classNames(
+      styles.Content,
+      showContextualSaveBar && styles.contentHasSaveBar,
+      this.props.sidebar && styles.contentHasSideBar,
+    );
+
+    const contextualSaveBarClassName = classNames(
+      styles.ContextualSaveBar,
+      this.props.sidebar && styles.hasSideBar,
+    );
+
     const navigationOverlayMarkup =
       showMobileNavigation && isNavigationCollapsed ? (
         <Backdrop
@@ -273,7 +322,21 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {skipMarkup}
           {topBarMarkup}
           {navigationMarkup}
-          {contextualSaveBarMarkup}
+          <UseFeatures>
+            {({polarisSummerEditions2023}) => {
+              return !polarisSummerEditions2023 ? (
+                <CSSAnimation
+                  in={showContextualSaveBar}
+                  className={styles.ContextualSaveBar}
+                  type="fade"
+                >
+                  <ContextualSaveBar {...this.contextualSaveBar} />
+                </CSSAnimation>
+              ) : (
+                <></>
+              );
+            }}
+          </UseFeatures>
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main
@@ -281,7 +344,33 @@ class FrameInner extends PureComponent<CombinedProps, State> {
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
-            <div className={styles.Content}>{children}</div>
+            <div className={contentClassName}>
+              <UseFeatures>
+                {({polarisSummerEditions2023}) => {
+                  if (
+                    polarisSummerEditions2023 !==
+                    this.state.polarisSummerEditions2023
+                  ) {
+                    if (polarisSummerEditions2023 !== undefined) {
+                      this.setState({polarisSummerEditions2023});
+                    }
+                  }
+
+                  return polarisSummerEditions2023 ? (
+                    <CSSAnimation
+                      in={showContextualSaveBar}
+                      className={contextualSaveBarClassName}
+                      type="fade"
+                    >
+                      <ContextualSaveBar {...this.contextualSaveBar} />
+                    </CSSAnimation>
+                  ) : (
+                    <></>
+                  );
+                }}
+              </UseFeatures>
+              {children}
+            </div>
           </main>
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}
