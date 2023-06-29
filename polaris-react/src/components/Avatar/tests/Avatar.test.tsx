@@ -169,4 +169,22 @@ describe('<Avatar />', () => {
       });
     });
   });
+
+  describe('accessibilityRole', () => {
+    it('is presentation role if name, initials, or accessibilityLabel not passed', () => {
+      const avatar = mountWithApp(<Avatar />);
+
+      expect(avatar).toContainReactComponent('span', {
+        role: 'presentation',
+      });
+    });
+
+    it('is img role if name passed', () => {
+      const avatar = mountWithApp(<Avatar name="Hello World" />);
+
+      expect(avatar).toContainReactComponent('span', {
+        role: 'img',
+      });
+    });
+  });
 });
