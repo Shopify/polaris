@@ -115,7 +115,6 @@ function IconsPage() {
       <div className={className(!useModal && styles.PageLayout)}>
         <div className={styles.IconGrids}>
           <SearchField
-            value={searchText}
             onChange={(value) => updateQueryParams(value)}
             placeholder="Search icons"
           />
