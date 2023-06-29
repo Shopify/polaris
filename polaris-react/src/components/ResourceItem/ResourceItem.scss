@@ -11,21 +11,39 @@
   overflow: visible;
 }
 
+// This class is only applied when the polarisSummerEditions2023 flag is enabled,
+// as such it doesn't need the #{$se23} selector.
 .ContainerWrapper {
+  // This class replaces the <Box/> component usage in ResourceItems 'containerMarkup' elements
+  // We want to specify a custom css property to ensure that the .CheckboxBleed padding and negative margin
+  // are calculated based on the padding on the parent container element.
+  // Box does not let us specify custom css properties unfortunately.
+
   // stylelint-disable -- Polaris component custom properties
-  --pc-item-padding: var(--p-space-3);
+  --pc-resource-item-padding: var(--p-space-3);
   z-index: var(--pc-resource-item-content-stacking-order);
-  // stylelint-enable
   position: relative;
-  padding: var(--pc-item-padding);
+  padding: var(--pc-resource-item-padding);
+  // stylelint-enable
 }
 
+// This class is only applied when the polarisSummerEditions2023 flag is enabled,
+// as such it doesn't need the #{$se23} selector.
 .CheckboxBleed {
-  margin: calc(-1 * var(--pc-item-padding));
+  // To ensure we reflect the alignment logic of the containing element to the children of this Bleed component.
+  display: flex;
+  align-items: inherit;
+  // This class replaces the <Bleed/> component usage in ResourceItems 'ownedMarkup' elements
+  // As we need to specify custom negative margins to  ensure the checkbox bleeds correctly
+  // and we want to specify height that we can't do on the <Bleed/> component at the moment.
+  // stylelint-disable -- Polaris component custom properties
+  margin: calc(-1 * var(--pc-resource-item-padding));
+  // This css variable is instantiated in ResourceItem.tsx
   margin-right: calc(-1 * var(--pc-resource-item-container-grid-gap));
-  height: calc(100% + calc(2 * var(--pc-item-padding)));
-  padding: var(--pc-item-padding);
+  height: calc(100% + calc(2 * var(--pc-resource-item-padding)));
+  padding: var(--pc-resource-item-padding);
   padding-right: var(--pc-resource-item-container-grid-gap);
+  // stylelint-enable
 }
 
 .ResourceItem {
