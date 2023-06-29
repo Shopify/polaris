@@ -109,16 +109,18 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack
-      blockAlign="center"
-      gap={polarisSummerEditions2023 ? '2' : '4'}
-      wrap={!truncate}
-    >
-      {prefixMarkup}
-      {textMarkup}
-      {badgeMarkup}
-      {suffixMarkup}
-    </HorizontalStack>
+    <Box width="100%">
+      <HorizontalStack
+        blockAlign="center"
+        gap={polarisSummerEditions2023 ? '2' : '4'}
+        wrap={!truncate}
+      >
+        {prefixMarkup}
+        {textMarkup}
+        {badgeMarkup}
+        {suffixMarkup}
+      </HorizontalStack>
+    </Box>
   );
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
