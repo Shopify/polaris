@@ -150,48 +150,42 @@ LegacyCard.Subsection = Subsection;
 function useLegacyCardPaddingObserverRef() {
   const legacyCardNode = useRef<HTMLDivElement>(null);
   const [firstSectionElement, setFirstSectionElement] =
-    useState<HTMLElement | null>(null);
-  const [lastSectionElement, setLastSectionElement] =
-    useState<HTMLElement | null>(null);
+    useState<Element | null>(null);
+  const [lastSectionElement, setLastSectionElement] = useState<Element | null>(
+    null,
+  );
 
   useEffect(() => {
     if (legacyCardNode.current) {
-      const updateFirstAndLastSections = () => {
-        // Reset first and last section padding
-        if (firstSectionElement) {
-          firstSectionElement.style.paddingTop = `var(--p-space-2)`;
-        }
-
-        if (lastSectionElement) {
-          lastSectionElement.style.paddingBottom = `var(--p-space-2)`;
-        }
+      const updateFirstAndLastSectionPadding = () => {
+        // Reset old first and last section padding
+        updatePadding(firstSectionElement, '2', 'top');
+        updatePadding(lastSectionElement, '2', 'bottom');
 
         // Get current first and last sections
         const currentElements = legacyCardNode.current?.querySelectorAll(
-          `.${styles.Section}:not(.${styles['Section-flush']}), .${styles.Header}, .${styles.Footer}`,
+          `.${styles.Section}, .${styles.Header}, .${styles.Footer}`,
         );
 
-        if (currentElements) {
-          const firstSection = currentElements[0] as HTMLElement;
-          const lastSection = currentElements[
-            currentElements.length - 1
-          ] as HTMLElement;
+        if (currentElements?.length) {
+          const firstSection = currentElements[0];
+          const lastSection = currentElements[currentElements.length - 1];
 
-          // Add extra padding to first and last sections then update state elements
-          if (firstSection) {
-            firstSection.style.paddingTop = 'var(--p-space-4)';
-            setFirstSectionElement(firstSection);
-          }
+          // Update current element padding
+          updatePadding(firstSection, '4', 'top');
+          updatePadding(lastSection, '4', 'bottom');
 
-          if (lastSection) {
-            lastSection.style.paddingBottom = 'var(--p-space-4)';
-            setLastSectionElement(lastSection);
-          }
+          // Update state with current elements
+          setFirstSectionElement(firstSection);
+          setLastSectionElement(lastSection);
         }
       };
 
-      updateFirstAndLastSections();
-      const observer = new MutationObserver(updateFirstAndLastSections);
+      // First initial render
+      updateFirstAndLastSectionPadding();
+
+      // Re-run when descendants are changed
+      const observer = new MutationObserver(updateFirstAndLastSectionPadding);
       observer.observe(legacyCardNode.current, {
         childList: true,
         subtree: true,
@@ -202,4 +196,20 @@ function useLegacyCardPaddingObserverRef() {
   }, [firstSectionElement, lastSectionElement]);
 
   return legacyCardNode;
+}
+
+function updatePadding(
+  element: Element | null,
+  space: SpaceScale,
+  area: 'top' | 'bottom',
+) {
+  if (!element || element.className.includes('flush')) return;
+
+  switch (area) {
+    case 'top':
+      (element as HTMLElement).style.paddingTop = `var(--p-space-${space})`;
+      return;
+    case 'bottom':
+      (element as HTMLElement).style.paddingBottom = `var(--p-space-${space})`;
+  }
 }
