@@ -249,3 +249,15 @@
     }
   }
 }
+
+.FirstSectionPadding {
+  #{$se23} & {
+    padding-top: var(--p-space-4);
+  }
+}
+
+.LastSectionPadding {
+  #{$se23} & {
+    padding-bottom: var(--p-space-4);
+  }
+}
