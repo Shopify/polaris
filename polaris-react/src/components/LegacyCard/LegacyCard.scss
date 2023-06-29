@@ -9,25 +9,6 @@
   #{$se23} & {
     box-shadow: var(--p-shadow-card-sm-experimental);
 
-    // stylelint-disable -- se23
-    // Apply extra padding on first and last elements, only if they are direct children of .LegacyCard.
-    // Selecting direct children is necessary, otherwise sections wrapped in divs would get the extra padding.
-    // This could be simplified/made more accurate with :nth-child(1 of .Section) when made compatible.
-    // https://caniuse.com/css-nth-child-of
-
-    > .Section:first-child:not(.Section-flush) {
-      padding-top: var(--p-space-4);
-    }
-
-    > .Section:last-child:not(.Section-flush) {
-      padding-bottom: var(--p-space-4);
-    }
-
-    > .Header {
-      padding-top: var(--p-space-4);
-    }
-    // stylelint-enable
-
     @media print {
       box-shadow: none;
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
@@ -68,6 +68,28 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
   } = useToggle(false);
+  const legacyCardNode = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const sectionNodes = legacyCardNode.current?.querySelectorAll(
+      `.${styles.Section}, .${styles.Header}, .${styles.Footer}`,
+    );
+
+    if (sectionNodes) {
+      const firstDescendant = sectionNodes[0] as HTMLElement;
+      const lastDescendant = sectionNodes[
+        sectionNodes.length - 1
+      ] as HTMLElement;
+
+      if (firstDescendant) {
+        firstDescendant.style.paddingTop = 'var(--p-space-4)';
+      }
+
+      if (lastDescendant) {
+        lastDescendant.style.paddingBottom = 'var(--p-space-4)';
+      }
+    }
+  }, []);
 
   const className = classNames(
     styles.LegacyCard,
@@ -132,7 +154,7 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
 
   return (
     <WithinContentContext.Provider value>
-      <div className={className}>
+      <div className={className} ref={legacyCardNode}>
         {headerMarkup}
         {content}
         {footerMarkup}
