@@ -19,6 +19,7 @@
 
   #{$se23} & {
     border-radius: var(--p-border-radius-2);
+    box-shadow: var(--p-shadow-border-inset-experimental);
   }
 
   &::after {
