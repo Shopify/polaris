@@ -184,7 +184,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
               return (
                 <div
                   className={styles.CheckboxBleed}
-                  onChange={this.handleLargerSelectionArea}
                   onClick={this.handleLargerSelectionArea}
                 >
                   <Box>{checkboxMarkup}</Box>
@@ -312,6 +311,11 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         );
       }
     }
+    // This is being specified, to ensure
+    // that the CheckboxBleed component in `ownedMarkup`
+    // calculates is margin-right and padding-right according to the
+    // HorizontalStack gap value below because HorizontalStack does not let us specify custom css properties as prop values.
+
     const pse23gridGap = '3';
     const containerMarkup = (
       <UseFeatures>
