@@ -38,7 +38,7 @@ export function CalloutCard({
 }: CalloutCardProps) {
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
-    ? buttonFrom(secondaryAction, {plain: true})
+    ? buttonFrom(secondaryAction, {plain: true, primary: true})
     : null;
 
   const buttonMarkup = secondaryActionMarkup ? (
