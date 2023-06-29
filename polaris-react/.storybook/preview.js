@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
@@ -60,6 +60,45 @@ function ReactRenderProfiler(Story, context) {
   );
 }
 
+/**
+ * Ensures all anchor tags in a Storybook story open in the same tab by setting their `target` attribute to `_self` if
+ * the target is not already set. This is to prevent the storybook preview iframe from navigating to the link target.
+ *
+ * Parameters:
+ * - `disableAnchorTargetOverride` - Disable the anchor target override for a specific story
+ */
+function AnchorTargetOverrideDecorator(Story, context) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const node = ref.current;
+
+    if (node && !context?.parameters?.disableAnchorTargetOverride) {
+      const updateAnchorTargets = () => {
+        node.querySelectorAll('a').forEach((anchor) => {
+          if (!anchor.getAttribute('target')) {
+            anchor.setAttribute('target', '_self');
+          }
+        });
+      };
+      const observer = new MutationObserver(updateAnchorTargets);
+
+      // Run the callback once immediately to update all existing anchor tags
+      updateAnchorTargets();
+
+      observer.observe(node, {childList: true, subtree: true});
+
+      return () => observer.disconnect();
+    }
+  }, []);
+
+  return (
+    <div ref={ref}>
+      <Story {...context} />
+    </div>
+  );
+}
+
 export const globalTypes = {
   strictMode: {
     defaultValue: true,
@@ -105,4 +144,5 @@ export const decorators = [
   StrictModeDecorator,
   AppProviderDecorator,
   ReactRenderProfiler,
+  AnchorTargetOverrideDecorator,
 ];
