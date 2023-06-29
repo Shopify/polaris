@@ -11,6 +11,23 @@
   overflow: visible;
 }
 
+.ContainerWrapper {
+  // stylelint-disable -- Polaris component custom properties
+  --pc-item-padding: var(--p-space-3);
+  z-index: var(--pc-resource-item-content-stacking-order);
+  // stylelint-enable
+  position: relative;
+  padding: var(--pc-item-padding);
+}
+
+.CheckboxBleed {
+  margin: calc(-1 * var(--pc-item-padding));
+  margin-right: calc(-1 * var(--pc-resource-item-container-grid-gap));
+  height: calc(100% + calc(2 * var(--pc-item-padding)));
+  padding: var(--pc-item-padding);
+  padding-right: var(--pc-resource-item-container-grid-gap);
+}
+
 .ResourceItem {
   // stylelint-disable -- Polaris component custom properties
   --pc-resource-item-min-height: 44px;
