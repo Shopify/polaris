@@ -1,4 +1,5 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
@@ -68,28 +69,7 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
   } = useToggle(false);
-  const legacyCardNode = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const sectionNodes = legacyCardNode.current?.querySelectorAll(
-      `.${styles.Section}, .${styles.Header}, .${styles.Footer}`,
-    );
-
-    if (sectionNodes) {
-      const firstDescendant = sectionNodes[0] as HTMLElement;
-      const lastDescendant = sectionNodes[
-        sectionNodes.length - 1
-      ] as HTMLElement;
-
-      if (firstDescendant) {
-        firstDescendant.style.paddingTop = 'var(--p-space-4)';
-      }
-
-      if (lastDescendant) {
-        lastDescendant.style.paddingBottom = 'var(--p-space-4)';
-      }
-    }
-  }, []);
+  const legacyCardNode = useLegacyCardPaddingObserverRef();
 
   const className = classNames(
     styles.LegacyCard,
@@ -166,3 +146,60 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
 LegacyCard.Header = Header;
 LegacyCard.Section = Section;
 LegacyCard.Subsection = Subsection;
+
+function useLegacyCardPaddingObserverRef() {
+  const legacyCardNode = useRef<HTMLDivElement>(null);
+  const [firstSectionElement, setFirstSectionElement] =
+    useState<HTMLElement | null>(null);
+  const [lastSectionElement, setLastSectionElement] =
+    useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (legacyCardNode.current) {
+      const updateFirstAndLastSections = () => {
+        // Reset first and last section padding
+        if (firstSectionElement) {
+          firstSectionElement.style.paddingTop = `var(--p-space-2)`;
+        }
+
+        if (lastSectionElement) {
+          lastSectionElement.style.paddingBottom = `var(--p-space-2)`;
+        }
+
+        // Get current first and last sections
+        const currentElements = legacyCardNode.current?.querySelectorAll(
+          `.${styles.Section}:not(.${styles['Section-flush']}), .${styles.Header}, .${styles.Footer}`,
+        );
+
+        if (currentElements) {
+          const firstSection = currentElements[0] as HTMLElement;
+          const lastSection = currentElements[
+            currentElements.length - 1
+          ] as HTMLElement;
+
+          // Add extra padding to first and last sections then update state elements
+          if (firstSection) {
+            firstSection.style.paddingTop = 'var(--p-space-4)';
+            setFirstSectionElement(firstSection);
+          }
+
+          if (lastSection) {
+            lastSection.style.paddingBottom = 'var(--p-space-4)';
+            setLastSectionElement(lastSection);
+          }
+        }
+      };
+
+      updateFirstAndLastSections();
+      const observer = new MutationObserver(updateFirstAndLastSections);
+      observer.observe(legacyCardNode.current, {
+        childList: true,
+        subtree: true,
+      });
+
+      return () => observer.disconnect();
+    }
+  }, [firstSectionElement, lastSectionElement]);
+
+  return legacyCardNode;
+}
