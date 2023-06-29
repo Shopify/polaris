@@ -549,6 +549,7 @@ export function All() {
         <DynamicChildren />
         <DynamicChildren />
       </LegacyCard>
+      <LegacyCard title="Only one header section" />
       <LegacyCard
         secondaryFooterActions={[{content: 'Dismiss'}]}
         primaryFooterAction={{content: 'Export Report'}}
