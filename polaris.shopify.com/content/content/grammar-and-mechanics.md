@@ -44,35 +44,35 @@ Details were added to the product
 
 ### Passive voice
 
-To tell if you’re using the passive voice, look out for:
+To tell if you’re using the passive voice, look out for the following signs:
 
 - When the object comes before the subject (“the item was purchased by the customer”)
-- Past tense verbs (“was added,” “was created,” and so on)
-- Forms of the verb “to be” (“was,” “is,” “were,” and so on)
+- Past tense verbs (“was added”, “was created")
+- Forms of the verb “to be” (“was”, “is”, “were”)
 
 You should almost always write in the active voice, but here’s when to use the passive voice:
 
 - To avoid referring to yourself or Shopify
 - To make it clear that you didn’t personally take an action or make a decision
-- If the object (thing being done) is more important than the subject (person doing the thing)
+- If the object (thing having action done to it) is more important than the subject (person doing the thing)
 
 <!-- dodont -->
 
 #### Do
 
 Invoices are created monthly and emailed to
-[marki.yeung@nomail.com](mailto:Marki.Yeung@nomail.com)
+[marki.yeung@nomail.com](mailto:Marki.Yeung@nomail.com).
 
 #### Don’t
 
 Shopify creates and emails your invoices monthly to
-[simran.robichaud@nomail.com](mailto:Simran.Robichaud@nomail.com)
+[simran.robichaud@nomail.com](mailto:Simran.Robichaud@nomail.com).
 
 <!-- end -->
 
 ### Contractions
 
-Contractions are abbreviated words. We use them to set a light and casual tone in the interface. The goal is to sound human, so avoid contracting verbs that sound awkward when you say them out loud, or have been phased out of modern day speech.
+Contractions are abbreviated words, such as "can't", "aren't", and "you're", and help set a light and casual tone. While you should use contractions in most cases, avoid contracting verbs that sound awkward when you say them out loud, or have been phased out of modern day speech.
 
 <!-- dodont -->
 
@@ -112,13 +112,13 @@ Use words and language that our merchants use. Avoid jargon or technical termino
 
 #### Do
 
-- We’ve made some changes to improve your store’s security
-- These products aren’t getting a lot of views, but visitors are adding them to their carts
+- We’ve made some changes to improve your store’s security.
+- These products aren’t getting a lot of views, but visitors are adding them to their carts.
 
 #### Don’t
 
-- Your SSL certificates were activated
-- These are your less popular products with the highest add-to-cart conversion
+- Your SSL certificates were activated.
+- These are your less popular products with the highest add-to-cart conversion.
 
 <!-- end -->
 
@@ -148,7 +148,7 @@ Create Purchase Order
 
 ### Product and feature names
 
-In general, if a feature or product isn’t unique to Shopify, don’t capitalize it (such as blogs, navigation, pages). If it’s unique to Shopify and marketable as its own product, capitalize it (such as Shopify Payments, or Frenzy).
+In general, if a feature or product isn’t unique to Shopify, such as blogs, navigation, or pages, then don’t capitalize it. If it’s unique to Shopify and marketable as its own product, such as Shopify Payments or Frenzy, then capitalize it.
 
 <!-- dodont -->
 
@@ -160,9 +160,9 @@ In general, if a feature or product isn’t unique to Shopify, don’t capitaliz
 
 #### Don’t
 
-- Blogs
-- Navigation
-- shopify payments
+- Pages
+- shopify app store
+- shopify balance
 
 <!-- end -->
 
@@ -170,7 +170,7 @@ In general, if a feature or product isn’t unique to Shopify, don’t capitaliz
 
 Respect the usage guidelines of any third-party intellectual property. For example, in US communications, Apple Pay requires you to include the trademark symbol (™) the first time Apple Pay appears in body copy.
 
-Review the third party’s brand usage guidelines to make sure you are using the company’s name and logo correctly.
+Review the third party’s brand usage guidelines to make sure you're using the company’s name and logo correctly.
 
 ### Job titles
 
@@ -189,7 +189,7 @@ Job titles should be capitalized when they come before or after a person’s nam
 
 - content strategist Jane Smith
 - Jane Smith, content strategist
-- Jane Smith is a Content Strategist
+- Jane Smith is a Content Strategist.
 - The Content Strategist redesigned the information architecture.
 
 <!-- end -->
@@ -214,7 +214,7 @@ ZIP/Postal code required
 
 ## Headings and subheadings
 
-See the content guidelines for [headings and subheadings](/content/actionable-language#headings-and-subheadings) in the actionable language section.
+Review the content guidelines for [headings and subheadings](/content/actionable-language#headings-and-subheadings) in the actionable language section.
 
 ---
 
@@ -222,17 +222,19 @@ See the content guidelines for [headings and subheadings](/content/actionable-la
 
 ### Bulleted
 
-Use a bulleted list when items are related but sequence or priority doesn’t matter.
+Use a bulleted list when items are related but sequence or priority doesn’t matter. Introduce the list with a full sentence and a colon.
+
+Capitalize the first word of the bullet.
 
 <!-- dodont -->
 
 #### Do
 
-Use Shopify Payments to:
+Using Shopify Payments in your store provides the following benefits:
 
-- Avoid the hassle of setting up a third-party payment gateway
-- Track your payout schedule from the Shopify admin
-- Minimize lost sales from chargebacks
+- Avoids the hassle of setting up a third-party payment gateway
+- Tracks your payout schedule from the Shopify admin
+- Minimizes lost sales from chargebacks
 
 #### Don’t
 
@@ -244,26 +246,58 @@ Use Shopify payments to
 
 <!-- end -->
 
-### Numbered
-
-Use a numbered list when item sequence or priority does matter, such as step-by-step instructions.
+If at least one of the bullet points requires a period due to having two sentences, then include punctuation on all the bullets. Avoid lists that have both single words and sentences as bullet points.
 
 <!-- dodont -->
 
 #### Do
 
-To set up Shopify Payments:
+You can add a custom domain to your store in the following ways:
 
-1.  Go to Settings from Shopify admin
-2.  Select Shopify Payments
-3.  Select Setup
+- Buying the domain directly though your Shopify store.
+- Buying the domain through a third-party provider and then pointing it to your Shopify store.
+- Transferring the domain from another Shopify store to your Shopify store. You must be the account owner of the other Shopify store.
+- Transferring the domain from a third-party domain provider to your Shopify store.
 
 #### Don’t
 
-To set up Shopify Payments:
+You can add a custom domain to your store in the following ways:
 
-1.  Go to Settings from Shopify admin Then select Shopify Payments
-2.  Select Setup
+- Buying the domain from Shopify
+- Transferring. This can take up to 48 hours.
+- Buying the domain from a third party, and then pointing the domain to your Shopify store
+
+<!-- end -->
+
+### Numbered
+
+Use a numbered list when item sequence or priority does matter. Introduce the list with a full sentence and a colon.
+
+If at least one of the numbered bullet points requires a period due to having two sentences, then include punctuation on all the bullets. Avoid lists that have both single words and sentences as bullet points.
+
+Capitalize the first word of the bullet.
+
+<!-- dodont -->
+
+#### Do
+
+When checking out from your online store, the customer goes through the following steps:
+
+1. Adds the products that they want to purchase to their cart
+2. Goes to the cart page and proceeds to the checkout
+3. Enters their shipping details
+4. Enters their payment details
+5. Confirms and places the order
+
+#### Don’t
+
+When checking out from your online store, the customer:
+
+1. adds the products that they want to purchase to their cart. This could be one or many products.
+2. goes to the cart page and proceeds to the checkout
+3. enters their shipping details
+4. enters their payment details
+5. confirms and places the order
 
 <!-- end -->
 
@@ -271,9 +305,9 @@ To set up Shopify Payments:
 
 #### Actions in a menu
 
-Menu lists give users a horizontal set of actions when space is limited. The order of actions is often based on logic such as most popular actions.
+Menu lists give users a horizontal set of actions when space is limited. The order of actions is often based on logic, such as most popular actions.
 
-Actions in a menu follow a {verb}+{noun} pattern. If there’s enough context, only a verb might be required.
+Actions in a menu follow a {verb}+{noun} pattern. If there’s enough context, then only a verb might be required.
 
 <!-- dodont -->
 
@@ -295,9 +329,9 @@ Actions in a menu follow a {verb}+{noun} pattern. If there’s enough context, o
 
 #### Nouns in a menu
 
-Menu lists give users a horizontal set of nouns when space is limited. The order of nouns is often based on logic such as most recent orders.
+Menu lists give users a horizontal set of nouns when space is limited. The order of nouns is often based on logic, such as most recent orders.
 
-Nouns in a menu should be concise but still give the user enough information so they can easily find and accurately select the item they want.
+Nouns in a menu should be concise, but still give the user enough information so that they can easily find and accurately select the item that they want.
 
 <!-- dodont -->
 
@@ -349,9 +383,9 @@ Company name
 - Introduce bulleted lists with a colon or a heading.
 - Don’t use commas at the end of list items (for bulleted or numbered lists).
 - If any list item contains two or more sentences, punctuate all list items.
-- If all list items are one sentence or fragments, don’t punctuate.
+- If all list items are one sentence or fragments, don’t punctuate. This doesn't apply to procedural steps, which should end with punctuation.
 - Never put a comma or semicolon at the end of a bulleted or numbered list item.
-  Treat each list item as a self-contained piece of information.
+- Treat each list item as a self-contained piece of information.
 
 ---
 
@@ -859,7 +893,7 @@ Your store accepts payments with GoCoin and Shopify Payments.
 
 #### Don’t
 
-Your store accepts payments with: GoCoin and Shopify Payments. Merchants store, womens clothing, customers credit cards
+Your store accepts payments with: GoCoin and Shopify Payments.
 
 <!-- end -->
 
