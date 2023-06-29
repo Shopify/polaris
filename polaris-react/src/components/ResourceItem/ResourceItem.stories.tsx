@@ -25,7 +25,8 @@ export function Default() {
         items={[
           {
             id: '6',
-            url: '#',
+            // url: '#',
+            onClick: () => console.log('BOOP'),
             title: 'How To Get Value From Wireframes',
             author: 'Jonathan Mangrove',
           },
@@ -34,12 +35,13 @@ export function Default() {
         onSelectionChange={setSelectedItems}
         selectable
         renderItem={(item) => {
-          const {id, url, title, author} = item;
+          const {id, url, onClick, title, author} = item;
           const authorMarkup = author ? <div>by {author}</div> : null;
           return (
             <ResourceItem
               id={id}
-              url={url}
+              // url={url}
+              onClick={onClick}
               accessibilityLabel={`View details for ${title}`}
               name={title}
             >

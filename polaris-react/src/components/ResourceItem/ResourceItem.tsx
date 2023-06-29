@@ -92,7 +92,6 @@ interface State {
 }
 
 type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
-
 class BaseResourceItem extends Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
@@ -162,42 +161,57 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
-
     if (selectable) {
       const checkboxAccessibilityLabel =
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
-
+      const checkboxMarkup = (
+        <UseId>
+          {(id) => (
+            <Checkbox
+              id={id}
+              label={checkboxAccessibilityLabel}
+              labelHidden
+              checked={selected}
+              disabled={loading}
+            />
+          )}
+        </UseId>
+      );
       handleMarkup = (
         <UseFeatures>
-          {({polarisSummerEditions2023}) => (
-            <div onClick={this.handleLargerSelectionArea}>
-              <Bleed marginBlock="2" marginInline="3">
-                <Box
-                  zIndex="var(--pc-resource-item-content-stacking-order)"
-                  paddingInlineStart="3"
-                  paddingInlineEnd="3"
-                  paddingBlockStart={polarisSummerEditions2023 ? '2' : '3'}
-                  paddingBlockEnd="2"
+          {({polarisSummerEditions2023}) => {
+            if (polarisSummerEditions2023) {
+              return (
+                <div
+                  className={styles.CheckboxBleed}
+                  onChange={this.handleLargerSelectionArea}
+                  onClick={this.handleLargerSelectionArea}
                 >
-                  <div onClick={stopPropagation}>
-                    <div onChange={this.handleLargerSelectionArea}>
-                      <UseId>
-                        {(id) => (
-                          <Checkbox
-                            id={id}
-                            label={checkboxAccessibilityLabel}
-                            labelHidden
-                            checked={selected}
-                            disabled={loading}
-                          />
-                        )}
-                      </UseId>
-                    </div>
-                  </div>
-                </Box>
-              </Bleed>
-            </div>
-          )}
+                  <Box>{checkboxMarkup}</Box>
+                </div>
+              );
+            } else {
+              return (
+                <div onClick={this.handleLargerSelectionArea}>
+                  <Bleed marginBlock="2" marginInline="3">
+                    <Box
+                      zIndex="var(--pc-resource-item-content-stacking-order)"
+                      paddingInlineStart="3"
+                      paddingInlineEnd="3"
+                      paddingBlockStart={polarisSummerEditions2023 ? '2' : '3'}
+                      paddingBlockEnd="2"
+                    >
+                      <div onClick={stopPropagation}>
+                        <div onChange={this.handleLargerSelectionArea}>
+                          {checkboxMarkup}
+                        </div>
+                      </div>
+                    </Box>
+                  </Bleed>
+                </div>
+              );
+            }
+          }}
         </UseFeatures>
       );
     }
@@ -298,30 +312,19 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         );
       }
     }
-
+    const pse23gridGap = '3';
     const containerMarkup = (
       <UseFeatures>
-        {({polarisSummerEditions2023}) => (
-          <Box
-            id={this.props.id}
-            position="relative"
-            padding="3"
-            paddingInlineStart={
-              polarisSummerEditions2023 ? '3' : {xs: '4', sm: '5'}
-            }
-            paddingInlineEnd={
-              polarisSummerEditions2023 ? '3' : {xs: '4', sm: '5'}
-            }
-            zIndex="var(--pc-resource-item-content-stacking-order)"
-          >
+        {({polarisSummerEditions2023}) => {
+          const contentsMarkup = (
             <HorizontalGrid columns={{xs: '1fr auto'}}>
               <HorizontalGrid
                 columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
-                gap={polarisSummerEditions2023 ? '3' : '5'}
+                gap={polarisSummerEditions2023 ? pse23gridGap : '5'}
               >
                 {ownedMarkup}
                 <HorizontalStack
-                  gap={polarisSummerEditions2023 ? '3' : '4'}
+                  gap={polarisSummerEditions2023 ? pse23gridGap : '4'}
                   blockAlign={getAlignment(verticalAlignment)}
                 >
                   <Box
@@ -337,8 +340,34 @@ class BaseResourceItem extends Component<CombinedProps, State> {
               {actionsMarkup}
               {disclosureMarkup}
             </HorizontalGrid>
-          </Box>
-        )}
+          );
+          if (polarisSummerEditions2023) {
+            return (
+              <div
+                id={this.props.id}
+                style={{
+                  // @ts-expect-error React doesn't have types for css vars on style obj.
+                  '--pc-resource-item-container-grid-gap': `var(--p-space-${pse23gridGap})`,
+                }}
+                className={styles.ContainerWrapper}
+              >
+                {contentsMarkup}
+              </div>
+            );
+          }
+          return (
+            <Box
+              id={this.props.id}
+              position="relative"
+              padding="3"
+              paddingInlineStart={{xs: '4', sm: '5'}}
+              paddingInlineEnd={{xs: '4', sm: '5'}}
+              zIndex="var(--pc-resource-item-content-stacking-order)"
+            >
+              {contentsMarkup}
+            </Box>
+          );
+        }}
       </UseFeatures>
     );
 
