@@ -204,6 +204,11 @@ $button-size: 20px;
     svg {
       fill: currentColor;
     }
+
+    &:focus-visible {
+      background: var(--p-color-bg-strong-hover);
+      color: var(--p-color-icon-primary);
+    }
   }
 }
 
