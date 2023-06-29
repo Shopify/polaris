@@ -459,6 +459,18 @@ export function All() {
         </LegacyCard.Section>
         <div />
       </LegacyCard>
+      <LegacyCard title="Sections are not siblings">
+        <div>
+          <LegacyCard.Section>
+            Section 1 content wrapped in its own div
+          </LegacyCard.Section>
+        </div>
+        <div>
+          <LegacyCard.Section>
+            Section 2 content wrapped in its own div
+          </LegacyCard.Section>
+        </div>
+      </LegacyCard>
       <LegacyCard>
         <div>Card content in div not in section</div>
       </LegacyCard>
