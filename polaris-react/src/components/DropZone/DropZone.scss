@@ -105,7 +105,7 @@ $dropzone-stacking-order: (
     }
   }
 
-  #{$se23} &:not(.focused, .isDisabled) {
+  #{$se23} &:not(.focused):not(.isDisabled) {
     // the additional .isDisabled argument in this :not invocation is to ensure we don't mess up disabled styles due to specificity.
     // Won't be necessary post SE23.
     &::after {
