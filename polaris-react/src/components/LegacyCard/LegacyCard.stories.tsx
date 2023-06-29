@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
@@ -402,6 +402,22 @@ export function WithFlushedSections() {
   );
 }
 
+const DynamicChildren = () => {
+  const [showChildren, setShowChildren] = useState(false);
+  return (
+    <div>
+      <LegacyCard.Section>
+        <Button onClick={() => setShowChildren(!showChildren)}>
+          {showChildren ? 'Hide ' : 'Show '}children
+        </Button>
+      </LegacyCard.Section>
+      {showChildren ? (
+        <LegacyCard.Section>Child section content</LegacyCard.Section>
+      ) : null}
+    </div>
+  );
+};
+
 export function All() {
   return (
     <VerticalStack gap="2">
@@ -528,6 +544,10 @@ export function All() {
         <LegacyCard.Section title="Flush section heading" flush>
           This should be flush
         </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="Dynamic children padding adjustment">
+        <DynamicChildren />
+        <DynamicChildren />
       </LegacyCard>
       <LegacyCard
         secondaryFooterActions={[{content: 'Dismiss'}]}
