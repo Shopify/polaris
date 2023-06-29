@@ -91,6 +91,12 @@ $nav-animation-variables: (
       height: var(--p-space-4);
       width: var(--p-space-4);
     }
+
+    img {
+      #{$se23} & {
+        border-radius: var(--p-border-radius-1);
+      }
+    }
   }
 }
 
