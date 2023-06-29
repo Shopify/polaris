@@ -361,6 +361,7 @@
   #{$se23} & {
     background-color: transparent;
     color: var(--p-color-text-primary);
+    border-radius: var(--p-border-radius-2);
 
     // stylelint-disable-next-line selector-max-combinators -- Polaris component experimental styles
     svg {
