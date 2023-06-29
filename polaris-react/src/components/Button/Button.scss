@@ -610,7 +610,7 @@
 
       &:hover,
       &:active {
-        --pc-button-text: var(--p-color-text);
+        --pc-button-text: var(--p-color-text-critical);
       }
       // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
 
