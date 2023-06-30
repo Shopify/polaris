@@ -101,15 +101,16 @@ export function ContextualSaveBar({
   );
 
   const logoMarkup =
-    alignContentFlush || contextControl ? null : (
+    alignContentFlush || contextControl || polarisSummerEditions2023 ? null : (
       <div className={styles.LogoContainer} style={{width}}>
         {imageMarkup}
       </div>
     );
 
-  const contextControlMarkup = contextControl ? (
-    <div className={styles.ContextControl}>{contextControl}</div>
-  ) : null;
+  const contextControlMarkup =
+    contextControl && !polarisSummerEditions2023 ? (
+      <div className={styles.ContextControl}>{contextControl}</div>
+    ) : null;
 
   const contentsClassName = classNames(
     styles.Contents,
