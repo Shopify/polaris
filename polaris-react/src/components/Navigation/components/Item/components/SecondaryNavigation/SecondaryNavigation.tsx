@@ -54,12 +54,7 @@ export function SecondaryNavigation({
         open={showExpanded}
         transition={false}
       >
-        <ul
-          className={classNames(
-            styles.List,
-            polarisSummerEditions2023 && styles.ListSecondary,
-          )}
-        >
+        <ul className={styles.List}>
           {subNavigationItems.map((item, index) => {
             const {label, ...rest} = item;
             const onClick = () => {
