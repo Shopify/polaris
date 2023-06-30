@@ -164,11 +164,6 @@
     background-color: transparent;
   }
 
-  @media print {
-    padding-top: var(--p-space-2);
-    padding-bottom: var(--p-space-2);
-  }
-
   .Header + & {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     margin-top: var(--p-space-5);
@@ -176,6 +171,17 @@
     #{$se23} & {
       border-top: 0;
       margin-top: 0;
+    }
+  }
+}
+
+.Section-subdued:last-child {
+  #{$se23} & {
+    padding: var(--p-space-4);
+
+    @media print {
+      padding-top: var(--p-space-2);
+      padding-bottom: var(--p-space-2);
     }
   }
 }
