@@ -17,7 +17,7 @@ import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
 
-export interface CheckboxProps {
+interface BaseCheckboxProps {
   /** Indicates the ID of the element that is controlled by the checkbox */
   ariaControls?: string;
   /** Indicates the ID of the element that describes the checkbox */
@@ -48,6 +48,26 @@ export interface CheckboxProps {
   onBlur?(): void;
 }
 
+interface ControlledHoverProps extends BaseCheckboxProps {
+  /** Cannot set onMouseOver when hovered is set */
+  onMouseOver?: never;
+  /** Cannot set onMouseOut when hovered is set*/
+  onMouseOut?: never;
+  /** Control the hovered state of the choice */
+  hovered: boolean;
+}
+
+interface UncontrolledHoverProps extends BaseCheckboxProps {
+  /** Callback when mouse over */
+  onMouseOver?(): void;
+  /** Callback when mouse out */
+  onMouseOut?(): void;
+  /** Cannot control hovered when onMouseOver or onMouseOut set */
+  hovered?: never;
+}
+
+export type CheckboxProps = ControlledHoverProps | UncontrolledHoverProps;
+
 export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
   function Checkbox(
     {
@@ -65,6 +85,9 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       onChange,
       onFocus,
       onBlur,
+      hovered,
+      onMouseOver,
+      onMouseOut,
     }: CheckboxProps,
     ref,
   ) {
@@ -117,7 +140,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
 
     const backdropClassName = classNames(
       styles.Backdrop,
-      mouseOver && styles.hover,
+      (typeof hovered !== 'undefined' ? hovered : mouseOver) && styles.hover,
     );
 
     const isIndeterminate = checked === 'indeterminate';
@@ -142,8 +165,23 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
         helpText={helpText}
         error={error}
         disabled={disabled}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
+        onMouseOver={
+          typeof hovered !== 'undefined'
+            ? undefined
+            : () => {
+                handleMouseOver();
+                onMouseOver?.();
+              }
+        }
+        onMouseOut={
+          typeof hovered !== 'undefined'
+            ? undefined
+            : () => {
+                handleMouseOut();
+                onMouseOut?.();
+              }
+        }
+        hovered={typeof hovered !== 'undefined' ? hovered : undefined}
       >
         <span className={wrapperClassName}>
           <input

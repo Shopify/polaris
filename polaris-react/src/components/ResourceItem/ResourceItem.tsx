@@ -21,6 +21,7 @@ import type {BreakpointsDirectionAlias} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {UseFeatures} from '../../utilities/features';
+import {useToggle} from '../../utilities/use-toggle';
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
@@ -164,54 +165,69 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     if (selectable) {
       const checkboxAccessibilityLabel =
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
-      const checkboxMarkup = (
-        <UseId>
-          {(id) => (
-            <Checkbox
-              id={id}
-              label={checkboxAccessibilityLabel}
-              labelHidden
-              checked={selected}
-              disabled={loading}
-            />
-          )}
-        </UseId>
-      );
       handleMarkup = (
-        <UseFeatures>
-          {({polarisSummerEditions2023}) => {
-            if (polarisSummerEditions2023) {
-              return (
-                <div
-                  className={styles.CheckboxBleed}
-                  onClick={this.handleLargerSelectionArea}
-                >
-                  <Box>{checkboxMarkup}</Box>
-                </div>
-              );
-            } else {
-              return (
-                <div onClick={this.handleLargerSelectionArea}>
-                  <Bleed marginBlock="2" marginInline="3">
-                    <Box
-                      zIndex="var(--pc-resource-item-content-stacking-order)"
-                      paddingInlineStart="3"
-                      paddingInlineEnd="3"
-                      paddingBlockStart={polarisSummerEditions2023 ? '2' : '3'}
-                      paddingBlockEnd="2"
-                    >
-                      <div onClick={stopPropagation}>
-                        <div onChange={this.handleLargerSelectionArea}>
-                          {checkboxMarkup}
-                        </div>
+        <UseToggle>
+          {({
+            value: mouseOver,
+            setTrue: handleMouseOver,
+            setFalse: handleMouseOut,
+          }) => {
+            const checkboxMarkup = (
+              <UseId>
+                {(id) => (
+                  <Checkbox
+                    id={id}
+                    label={checkboxAccessibilityLabel}
+                    labelHidden
+                    checked={selected}
+                    disabled={loading}
+                    hovered={mouseOver}
+                  />
+                )}
+              </UseId>
+            );
+            return (
+              <UseFeatures>
+                {({polarisSummerEditions2023}) => {
+                  if (polarisSummerEditions2023) {
+                    return (
+                      <div
+                        className={styles.CheckboxBleed}
+                        onClick={this.handleLargerSelectionArea}
+                        onMouseOver={handleMouseOver}
+                        onMouseOut={handleMouseOut}
+                      >
+                        <Box>{checkboxMarkup}</Box>
                       </div>
-                    </Box>
-                  </Bleed>
-                </div>
-              );
-            }
+                    );
+                  } else {
+                    return (
+                      <div onClick={this.handleLargerSelectionArea}>
+                        <Bleed marginBlock="2" marginInline="3">
+                          <Box
+                            zIndex="var(--pc-resource-item-content-stacking-order)"
+                            paddingInlineStart="3"
+                            paddingInlineEnd="3"
+                            paddingBlockStart={
+                              polarisSummerEditions2023 ? '2' : '3'
+                            }
+                            paddingBlockEnd="2"
+                          >
+                            <div onClick={stopPropagation}>
+                              <div onChange={this.handleLargerSelectionArea}>
+                                {checkboxMarkup}
+                              </div>
+                            </div>
+                          </Box>
+                        </Bleed>
+                      </div>
+                    );
+                  }
+                }}
+              </UseFeatures>
+            );
           }}
-        </UseFeatures>
+        </UseToggle>
       );
     }
 
@@ -583,6 +599,13 @@ function getAlignment(
     default:
       return 'start';
   }
+}
+
+function UseToggle(props: {
+  children(toggle: ReturnType<typeof useToggle>): JSX.Element;
+}) {
+  const toggle = useToggle(false);
+  return props.children(toggle);
 }
 
 function UseId(props: {children(id: string): JSX.Element}) {
