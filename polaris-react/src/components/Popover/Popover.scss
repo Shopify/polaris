@@ -14,8 +14,14 @@ $vertical-motion-offset: -5px;
   will-change: left, top;
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-card-lg-experimental);
     border-radius: var(--p-border-radius-3);
+
+    @include shadow-bevel(
+      $boxShadow: var(--p-shadow-md),
+      $borderRadius: var(--p-border-radius-3),
+      $mediaCondition: $p-breakpoints-xs-up,
+      $zIndex: 1
+    );
   }
 }
 
