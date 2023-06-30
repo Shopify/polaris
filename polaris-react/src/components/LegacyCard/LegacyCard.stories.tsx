@@ -475,6 +475,22 @@ export function All() {
         </LegacyCard.Section>
         <div />
       </LegacyCard>
+      <LegacyCard>
+        Direct child text
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section>
+          Section 2 content, there is an empty div under this
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <div>
+          <h2>Custom header in an h2</h2>
+        </div>
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section>
+          Section 2 content, there is an empty div under this
+        </LegacyCard.Section>
+      </LegacyCard>
       <LegacyCard title="Sections are not siblings">
         <div>
           <LegacyCard.Section>
