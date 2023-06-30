@@ -1,5 +1,16 @@
 # Changelog
 
+## 11.3.1
+
+### Patch Changes
+
+- [#9556](https://github.com/Shopify/polaris/pull/9556) [`c72d2f905`](https://github.com/Shopify/polaris/commit/c72d2f905df9197f4c476e6dbbd8808e0edd1018) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Restructured `Select` override selectors to patch Sass compilation issue
+
+* [#9031](https://github.com/Shopify/polaris/pull/9031) [`795ae3782`](https://github.com/Shopify/polaris/commit/795ae3782fbdd98b09993d99e062f40b268bab2d) Thanks [@danbrady](https://github.com/danbrady)! - Added support for `Avatar` being presentational
+
+* Updated dependencies [[`991d9fe69`](https://github.com/Shopify/polaris/commit/991d9fe696faaee22f112d30820943bff9f5ee35), [`75f08f32c`](https://github.com/Shopify/polaris/commit/75f08f32c2cf594a73d3d32276bab5bcf87490bf)]:
+  - @shopify/polaris-icons@7.2.0
+
 ## 11.3.0
 
 ### Minor Changes
