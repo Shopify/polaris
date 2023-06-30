@@ -5,7 +5,8 @@
 @mixin shadow-bevel(
   $boxShadow: null,
   $borderRadius: null,
-  $mediaCondition: null
+  $mediaCondition: null,
+  $content: ''
 ) {
   position: relative;
 
@@ -16,7 +17,7 @@
 
     // TODO: Determine if ::before/::after should be configurable
     &::before {
-      content: '';
+      content: $content;
       top: 0;
       left: 0;
       right: 0;
