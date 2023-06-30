@@ -16,12 +16,12 @@ import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
 import {FrameContext} from '../../utilities/frame';
+import {FeaturesContext} from '../../utilities/features';
 import type {
   ContextualSaveBarProps,
   ToastID,
   ToastPropsWithID,
 } from '../../utilities/frame';
-import {UseFeatures} from '../../utilities/features';
 
 import {
   ToastManager,
@@ -69,7 +69,6 @@ interface State {
   loadingStack: number;
   toastMessages: ToastPropsWithID[];
   showContextualSaveBar: boolean;
-  polarisSummerEditions2023: boolean;
 }
 
 const APP_FRAME_MAIN = 'AppFrameMain';
@@ -78,13 +77,15 @@ const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
 class FrameInner extends PureComponent<CombinedProps, State> {
+  static contextType = FeaturesContext;
+  context!: React.ContextType<typeof FeaturesContext>;
+
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
     loadingStack: 0,
     toastMessages: [],
     showContextualSaveBar: false,
-    polarisSummerEditions2023: false,
   };
 
   private contextualSaveBar: ContextualSaveBarProps | null = null;
@@ -106,7 +107,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     }
     this.setOffset();
 
-    if (this.state.polarisSummerEditions2023) {
+    if (this.context?.polarisSummerEditions2023) {
       if (
         !prevState.showContextualSaveBar &&
         this.state.showContextualSaveBar
@@ -291,6 +292,31 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       this.props.sidebar && styles.hasSideBar,
     );
 
+    const contextualSaveBarMarkup = this.context?.polarisSummerEditions2023 ? (
+      <></>
+    ) : (
+      <CSSAnimation
+        in={showContextualSaveBar}
+        className={styles.ContextualSaveBar}
+        type="fade"
+      >
+        <ContextualSaveBar {...this.contextualSaveBar} />
+      </CSSAnimation>
+    );
+
+    const experimentalContextualSaveBarMarkup = this.context
+      ?.polarisSummerEditions2023 ? (
+      <CSSAnimation
+        in={showContextualSaveBar}
+        className={contextualSaveBarClassName}
+        type="fade"
+      >
+        <ContextualSaveBar {...this.contextualSaveBar} />
+      </CSSAnimation>
+    ) : (
+      <></>
+    );
+
     const navigationOverlayMarkup =
       showMobileNavigation && isNavigationCollapsed ? (
         <Backdrop
@@ -322,21 +348,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {skipMarkup}
           {topBarMarkup}
           {navigationMarkup}
-          <UseFeatures>
-            {({polarisSummerEditions2023}) => {
-              return !polarisSummerEditions2023 ? (
-                <CSSAnimation
-                  in={showContextualSaveBar}
-                  className={styles.ContextualSaveBar}
-                  type="fade"
-                >
-                  <ContextualSaveBar {...this.contextualSaveBar} />
-                </CSSAnimation>
-              ) : (
-                <></>
-              );
-            }}
-          </UseFeatures>
+          {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main
@@ -345,30 +357,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
             <div className={contentClassName}>
-              <UseFeatures>
-                {({polarisSummerEditions2023}) => {
-                  if (
-                    polarisSummerEditions2023 !==
-                    this.state.polarisSummerEditions2023
-                  ) {
-                    if (polarisSummerEditions2023 !== undefined) {
-                      this.setState({polarisSummerEditions2023});
-                    }
-                  }
-
-                  return polarisSummerEditions2023 ? (
-                    <CSSAnimation
-                      in={showContextualSaveBar}
-                      className={contextualSaveBarClassName}
-                      type="fade"
-                    >
-                      <ContextualSaveBar {...this.contextualSaveBar} />
-                    </CSSAnimation>
-                  ) : (
-                    <></>
-                  );
-                }}
-              </UseFeatures>
+              {experimentalContextualSaveBarMarkup}
               {children}
             </div>
           </main>
