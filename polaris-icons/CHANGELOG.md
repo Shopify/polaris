@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.2.0
+
+### Minor Changes
+
+- [#9581](https://github.com/Shopify/polaris/pull/9581) [`991d9fe69`](https://github.com/Shopify/polaris/commit/991d9fe696faaee22f112d30820943bff9f5ee35) Thanks [@Rusty-UX](https://github.com/Rusty-UX)! - Added BoldMajor, BoldMinor, IndentMajor, IndentMinor, ItalicMajor, ItalicMinor, OrderedListMajor, OrderedListMinor, OutdentMajor, OutdentMinor, TextColorMajor, TextColorMinor, UnderlineMajor, UnderlineMinor icons
+
+* [#9580](https://github.com/Shopify/polaris/pull/9580) [`75f08f32c`](https://github.com/Shopify/polaris/commit/75f08f32c2cf594a73d3d32276bab5bcf87490bf) Thanks [@kyledurand](https://github.com/kyledurand)! - Added optimize script
+
 ## 7.1.0
 
 ### Minor Changes

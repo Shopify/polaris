@@ -929,7 +929,7 @@
     }
 
     #{$se23} &:hover,
-    #{$se23} &:focus:not(:active, .pressed, .disabled) {
+    #{$se23} &:focus:not(:active):not(.pressed):not(.disabled) {
       color: var(--p-color-text-critical-hover-experimental);
 
       // stylelint-disable-next-line -- se23 override
@@ -1038,7 +1038,7 @@
       }
     }
 
-    #{$se23} &:focus:not(:active, .pressed, .disabled) svg {
+    #{$se23} &:focus:not(:active):not(.pressed):not(.disabled) svg {
       fill: var(--p-color-icon-critical-strong-experimental);
     }
 
