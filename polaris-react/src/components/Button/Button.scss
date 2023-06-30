@@ -352,6 +352,7 @@
       // stylelint-enable-next-line length-zero-no-unit
       &::before {
         opacity: 1;
+        // stylelint-disable-next-line -- se23 overrides
         background: linear-gradient(
           180deg,
           rgba(255, 255, 255, 0.1) 0%,
@@ -412,11 +413,13 @@
 
       &:active {
         // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+        --pc-button-text: var(--p-color-text-inverse-subdued);
+        box-shadow: var(--p-shadow-button-inset-experimental);
+
+        // stylelint-disable-next-line -- se23 overrides
         &::before {
           opacity: 0;
         }
-        --pc-button-text: var(--p-color-text-inverse-subdued);
-        box-shadow: var(--p-shadow-button-inset-experimental);
 
         // stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 temporary styles
         svg {
