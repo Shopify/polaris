@@ -16,7 +16,12 @@
   transition: none;
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-xl);
+    @include shadow-bevel(
+      $boxShadow: var(--p-shadow-md),
+      $borderRadius: var(--pc-tooltip-border-radius),
+      $mediaCondition: $p-breakpoints-xs-up,
+      $zIndex: 1
+    );
   }
 
   @media screen and (-ms-high-contrast: active) {
