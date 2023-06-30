@@ -7,10 +7,23 @@
   overflow: clip;
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-card-sm-experimental);
+    box-shadow: var(--p-shadow-xs);
+
+    @include shadow-bevel(
+      $boxShadow: var(--p-shadow-xs),
+      $borderRadius: var(--p-border-radius-3),
+      $mediaCondition: $p-breakpoints-sm-up
+    );
 
     @media print {
       box-shadow: none;
+
+      @include shadow-bevel(
+        $boxShadow: none,
+        $borderRadius: none,
+        $mediaCondition: $p-breakpoints-xs-up,
+        $content: none
+      );
     }
   }
 
