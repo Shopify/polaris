@@ -201,6 +201,7 @@ function useLegacyCardPaddingObserverRef() {
       });
 
       return () => {
+        // Clean up by removing added classes
         updatePadding(firstSection, 'top', false);
         updatePadding(lastSection, 'bottom', false);
         observer.disconnect();
