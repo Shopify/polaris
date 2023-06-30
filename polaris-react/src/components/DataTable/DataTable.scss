@@ -15,6 +15,12 @@
     @media #{$p-breakpoints-sm-up} {
       border-radius: var(--p-border-radius-3);
     }
+
+    @include shadow-bevel(
+      $boxShadow: var(--p-shadow-xs),
+      $borderRadius: var(--p-border-radius-3),
+      $mediaCondition: $p-breakpoints-sm-up
+    );
   }
 }
 
