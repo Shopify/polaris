@@ -55,7 +55,13 @@ export function Month({
   const selectedRanges = useMemo(() => {
     if (!selected) return undefined;
 
-    return Array.isArray(selected) ? selected : [selected];
+    if (Array.isArray(selected)) {
+      if (selected.length === 0) return undefined;
+
+      return selected;
+    }
+
+    return [selected];
   }, [selected]);
 
   const i18n = useI18n();
