@@ -31,6 +31,8 @@ import {
 } from './components';
 import styles from './Frame.scss';
 
+const CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP = 56;
+
 export interface FrameProps {
   /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */
   logo?: Logo;
@@ -52,7 +54,7 @@ export interface FrameProps {
   skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
-  /** A boolean property indicating whether their should be space for a sidebar
+  /** A boolean property indicating whether there should be space for a sidebar
    * @default false
    */
   sidebar?: boolean;
@@ -112,21 +114,14 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         !prevState.showContextualSaveBar &&
         this.state.showContextualSaveBar
       ) {
-        let saveDisabled = false;
-        if (this.contextualSaveBar) {
-          if (this.contextualSaveBar.saveAction) {
-            if (this.contextualSaveBar.saveAction.disabled) {
-              saveDisabled = true;
-            }
-          }
-        }
-        const scrollElementHeight = 56;
+        const saveDisabled =
+          this.contextualSaveBar?.saveAction?.disabled ?? false;
         const currentScrollPosition =
           window.scrollY || document.documentElement.scrollTop;
 
         if (!saveDisabled || currentScrollPosition !== 0) {
           window.scrollTo({
-            top: currentScrollPosition + scrollElementHeight,
+            top: currentScrollPosition + CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP,
             behavior: 'auto',
           });
         }
@@ -134,14 +129,13 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         prevState.showContextualSaveBar &&
         !this.state.showContextualSaveBar
       ) {
-        const scrollElementHeight = 56;
         const currentScrollPosition =
           window.scrollY || document.documentElement.scrollTop;
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
         if (currentScrollPosition + windowHeight < documentHeight) {
           window.scrollTo({
-            top: currentScrollPosition - scrollElementHeight,
+            top: currentScrollPosition - CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP,
             behavior: 'auto',
           });
         }
