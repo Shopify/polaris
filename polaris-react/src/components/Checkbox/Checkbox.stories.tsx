@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Checkbox} from '@shopify/polaris';
+import {Checkbox, Box} from '@shopify/polaris';
 
 export default {
   component: Checkbox,
@@ -88,5 +88,31 @@ export function Error() {
       checked={checked}
       onChange={handleChange}
     />
+  );
+}
+
+export function ControlledHoverState() {
+  const [over, setOver] = useState<boolean>(false);
+  const [checked, setChecked] = useState<CheckboxState>(false);
+  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
+
+  return (
+    <div
+      onMouseOver={() => setOver(true)}
+      onMouseOut={() => setOver(false)}
+      onClick={() => setChecked(!checked)}
+      style={{
+        width: '100%',
+        padding: '2rem',
+        backgroundColor: 'var(--p-color-bg-info-strong)',
+      }}
+    >
+      <Checkbox
+        label="Controlled hover on checkbox"
+        checked={checked}
+        hovered={over}
+        onChange={handleChange}
+      />
+    </div>
   );
 }

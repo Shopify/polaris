@@ -35,7 +35,8 @@
   > .Label {
     color: var(--p-color-text-disabled);
 
-    &:hover {
+    &:hover,
+    .hovered & {
       cursor: default;
     }
 
@@ -86,7 +87,8 @@
 .Label {
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
+  &:hover,
+  .hovered & {
     cursor: pointer;
   }
 }

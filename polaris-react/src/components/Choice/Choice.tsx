@@ -8,7 +8,7 @@ import {useFeatures} from '../../utilities/features';
 
 import styles from './Choice.scss';
 
-export interface ChoiceProps {
+interface BaseChoiceProps {
   /** A unique identifier for the choice */
   id: string;
   /**	Label for the choice */
@@ -25,11 +25,27 @@ export interface ChoiceProps {
   helpText?: React.ReactNode;
   /** Callback when clicked */
   onClick?(): void;
+}
+
+interface ControlledHoverProps extends BaseChoiceProps {
+  /** Cannot set onMouseOver when hovered is set */
+  onMouseOver?: never;
+  /** Cannot set onMouseOut when hovered is set*/
+  onMouseOut?: never;
+  /** Control the hovered state of the choice */
+  hovered: boolean;
+}
+
+interface UncontrolledHoverProps extends BaseChoiceProps {
   /** Callback when mouse over */
   onMouseOver?(): void;
   /** Callback when mouse out */
   onMouseOut?(): void;
+  /** Cannot control hovered when onMouseOver or onMouseOut set */
+  hovered?: never;
 }
+
+export type ChoiceProps = ControlledHoverProps | UncontrolledHoverProps;
 
 export function Choice({
   id,
@@ -40,14 +56,16 @@ export function Choice({
   labelHidden,
   helpText,
   onClick,
-  onMouseOut,
   onMouseOver,
+  onMouseOut,
+  hovered,
 }: ChoiceProps) {
   const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
     disabled && styles.disabled,
+    hovered && styles.hovered,
   );
 
   const labelMarkup = (
@@ -55,8 +73,8 @@ export function Choice({
       className={className}
       htmlFor={id}
       onClick={onClick}
-      onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}
+      onMouseOver={typeof hovered !== 'undefined' ? undefined : onMouseOver}
+      onMouseOut={typeof hovered !== 'undefined' ? undefined : onMouseOut}
     >
       <span className={styles.Control}>{children}</span>
       <span className={styles.Label}>
