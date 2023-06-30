@@ -1,0 +1,19 @@
+name: Ordered list
+set: major
+description: Used to format text with a numbered list.
+keywords:
+  - text format
+  - italic
+  - italicize
+  - rich text
+  - rte
+  - format
+  - text
+  - text editing
+authors:
+  - Joe Thomas
+  - Russell Baylis
+version: 1
+date_added: 2023-06-30
+date_modified: 2023-06-30
+exclusive_use:

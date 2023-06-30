@@ -1,0 +1,17 @@
+name: Outdent
+set: minor
+description: Used to decrease text indentation with list formatting.
+keywords:
+  - text format
+  - list
+  - rich text
+  - rte
+  - format
+  - text
+  - text editing
+authors:
+  - Russell Baylis
+version: 1
+date_added: 2019-06-30
+date_modified: 2023-06-30
+exclusive_use:
