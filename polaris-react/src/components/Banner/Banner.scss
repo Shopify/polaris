@@ -20,25 +20,16 @@
     #{$se23} & {
       border-radius: var(--p-border-radius-3);
 
-      &::before {
-        content: '';
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        position: absolute;
-        border-radius: var(--p-border-radius-3);
-        box-shadow: var(--p-shadow-card-md-experimental);
-        pointer-events: none;
-
-        @media #{$p-breakpoints-sm-down} {
-          border-radius: 0;
-        }
-      }
-
       @media #{$p-breakpoints-sm-down} {
         border-radius: 0;
       }
+
+      // TODO: Determine if the above border-radius should be in shadow-bevel
+      @include shadow-bevel(
+        $boxShadow: var(--p-shadow-sm),
+        $borderRadius: var(--p-border-radius-3),
+        $mediaCondition: $p-breakpoints-sm-up
+      );
     }
   } @else {
     border-radius: var(--p-border-radius-1);

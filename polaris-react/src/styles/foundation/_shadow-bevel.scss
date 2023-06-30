@@ -1,0 +1,31 @@
+/// Applies a shadow-bevel effect to an element.
+/// @param $boxShadow - Polaris ShadowBorderAlias custom property.
+/// @param $borderRadius - Polaris BorderRadiusScale custom property.
+/// @param $mediaCondition - Media condition defining what breakpoint to apply shadow-bevel effect.
+@mixin shadow-bevel(
+  $boxShadow: null,
+  $borderRadius: null,
+  $mediaCondition: null
+) {
+  position: relative;
+
+  // stylelint-disable-next-line -- Consumers are responsibility for providing compliant breakpoints
+  @media #{$mediaCondition} {
+    // background-color: var(--color-bg);
+    box-shadow: $boxShadow;
+
+    // TODO: Determine if ::before/::after should be configurable
+    &::before {
+      content: '';
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      border-radius: $borderRadius;
+      box-shadow: var(--p-shadow-bevel-experimental);
+      pointer-events: none;
+      mix-blend-mode: luminosity;
+    }
+  }
+}
