@@ -625,6 +625,11 @@
       --pc-button-color-active: var(
         --p-color-bg-transparent-active-experimental
       );
+
+      &:hover,
+      &:active {
+        --pc-button-text: var(--p-color-text-critical);
+      }
       // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
 
       // stylelint-disable-next-line selector-max-class -- se23 temporary styles
