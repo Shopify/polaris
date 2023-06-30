@@ -49,12 +49,14 @@ export function AccountConnection({
     : undefined;
 
   const avatarMarkup = connected ? (
-    <Avatar
-      accessibilityLabel=""
-      name={accountName}
-      initials={initials}
-      source={avatarUrl}
-    />
+    <span>
+      <Avatar
+        accessibilityLabel=""
+        name={accountName}
+        initials={initials}
+        source={avatarUrl}
+      />
+    </span>
   ) : null;
 
   const titleContent = title ? title : accountName;
