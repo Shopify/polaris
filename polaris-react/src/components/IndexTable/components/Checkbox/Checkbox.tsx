@@ -39,7 +39,7 @@ export const Checkbox = memo(function Checkbox({
           onKeyUp={noop}
         >
           <PolarisCheckbox
-            id={itemId}
+            id={`Select-${itemId}`}
             label={label}
             labelHidden
             checked={selected}
