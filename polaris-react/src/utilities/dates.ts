@@ -41,24 +41,23 @@ export function getWeeksForMonth(
   return weeks;
 }
 
-export function dateIsInRange(day: Date | null, range: Range) {
+export function dateIsInRange(day: Date | null, ranges: Range[]) {
   if (day == null) {
     return false;
   }
 
-  const {start, end} = range;
-
-  return Boolean(start && day > start && end && day < end);
+  return ranges.some(({start, end}) =>
+    Boolean(start && day > start && end && day < end),
+  );
 }
 
-export function dateIsSelected(day: Date | null, range: Range) {
+export function dateIsSelected(day: Date | null, ranges: Range[]) {
   if (day == null) {
     return false;
   }
-  const {start, end} = range;
 
-  return Boolean(
-    (start && isSameDay(start, day)) || (end && isSameDay(end, day)),
+  return ranges.some(({start, end}) =>
+    Boolean((start && isSameDay(start, day)) || (end && isSameDay(end, day))),
   );
 }
 
@@ -70,32 +69,38 @@ export function isSameDay(day1: Date, day2: Date) {
   );
 }
 
-export function getNewRange(range: Range | undefined, selected: Date): Range {
-  if (range == null) {
-    return {start: selected, end: selected};
+export function getNewRange(
+  ranges: Range | Range[] | undefined,
+  selected: Date,
+): Range[] {
+  if (ranges == null) {
+    return [{start: selected, end: selected}];
+  }
+  if (Array.isArray(ranges)) {
+    return [...ranges, {start: selected, end: selected}];
   }
 
-  const {start, end} = range;
+  const {start, end} = ranges;
 
   if (end && (isDateAfter(start, end) || isDateBefore(start, end))) {
-    return {start: selected, end: selected};
+    return [{start: selected, end: selected}];
   }
 
   if (start) {
     if (isDateBefore(selected, start)) {
-      return {start: selected, end: selected};
+      return [{start: selected, end: selected}];
     }
-    return {start, end: selected};
+    return [{start, end: selected}];
   }
 
   if (end) {
     if (isDateBefore(selected, end)) {
-      return {start: selected, end};
+      return [{start: selected, end}];
     }
-    return {start: start || end, end: selected};
+    return [{start: start || end, end: selected}];
   }
 
-  return {start: selected, end: selected};
+  return [{start: selected, end: selected}];
 }
 
 export function getNextDisplayMonth(month: number): number {

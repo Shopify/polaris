@@ -21,7 +21,7 @@ import {monthName, weekdayName} from '../../utilities';
 
 export interface MonthProps {
   focusedDate?: Date;
-  selected?: Range;
+  selected?: Range | Range[];
   hoverDate?: Date;
   month: number;
   year: number;
@@ -31,7 +31,7 @@ export interface MonthProps {
   allowRange?: boolean;
   weekStartsOn: number;
   accessibilityLabelPrefixes: [string | undefined, string];
-  onChange?(date: Range): void;
+  onChange?(date: Range[]): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
 }
@@ -52,6 +52,12 @@ export function Month({
   weekStartsOn,
   accessibilityLabelPrefixes,
 }: MonthProps) {
+  const selectedRanges = useMemo(() => {
+    if (!selected) return undefined;
+
+    return Array.isArray(selected) ? selected : [selected];
+  }, [selected]);
+
   const i18n = useI18n();
 
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
@@ -78,9 +84,14 @@ export function Month({
 
   const handleDateClick = useCallback(
     (selectedDate: Date) => {
-      onChange(getNewRange(allowRange ? selected : undefined, selectedDate));
+      onChange(
+        getNewRange(
+          allowRange ? selectedRanges?.[0] : selectedRanges,
+          selectedDate,
+        ),
+      );
     },
-    [allowRange, onChange, selected],
+    [allowRange, onChange, selectedRanges],
   );
 
   const lastDayOfMonth = useMemo(
@@ -99,19 +110,22 @@ export function Month({
       (disableDatesAfter && isDateAfter(day, disableDatesAfter)) ||
       (disableSpecificDates && isDateDisabled(day, disableSpecificDates));
 
+    // We can surly take the first index, because an array must have been thrown if there are several ranged dates
     const isFirstSelectedDay =
-      allowRange && selected && isDateStart(day, selected);
+      allowRange && selectedRanges && isDateStart(day, selectedRanges[0]);
     const isLastSelectedDay =
       allowRange &&
-      selected &&
-      ((!isSameDay(selected.start, selected.end) && isDateEnd(day, selected)) ||
+      selectedRanges &&
+      ((!isSameDay(selectedRanges[0].start, selectedRanges[0].end) &&
+        isDateEnd(day, selectedRanges[0])) ||
         (hoverDate &&
-          isSameDay(selected.start, selected.end) &&
-          isDateAfter(hoverDate, selected.start) &&
+          isSameDay(selectedRanges[0].start, selectedRanges[0].end) &&
+          isDateAfter(hoverDate, selectedRanges[0].start) &&
           isSameDay(day, hoverDate) &&
           !isFirstSelectedDay));
     const rangeIsDifferent = !(
-      selected && isSameDay(selected.start, selected.end)
+      selectedRanges &&
+      isSameDay(selectedRanges[0].start, selectedRanges[0].end)
     );
     const isHoveringRight = hoverDate && isDateBefore(day, hoverDate);
     const [firstAccessibilityLabelPrefix, lastAccessibilityLabelPrefix] =
@@ -137,13 +151,13 @@ export function Month({
         onFocus={onFocus}
         onClick={handleDateClick}
         onHover={onHover}
-        selected={selected != null && dateIsSelected(day, selected)}
-        inRange={selected != null && dateIsInRange(day, selected)}
+        selected={selectedRanges != null && dateIsSelected(day, selectedRanges)}
+        inRange={selectedRanges != null && dateIsInRange(day, selectedRanges)}
         disabled={disabled}
         inHoveringRange={
-          selected != null &&
+          selectedRanges != null &&
           hoverDate != null &&
-          isInHoveringRange(day, selected, hoverDate)
+          isInHoveringRange(day, selectedRanges[0], hoverDate)
         }
         isLastSelectedDay={isLastSelectedDay}
         isFirstSelectedDay={isFirstSelectedDay}
