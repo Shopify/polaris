@@ -583,7 +583,7 @@
     &:active {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       --pc-button-text: var(--p-color-text);
-      box-shadow: var(--p-shadow-button-inset-experimental);
+      box-shadow: none;
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       color: var(--pc-button-text);
 
