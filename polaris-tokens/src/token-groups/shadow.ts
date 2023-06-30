@@ -1,9 +1,7 @@
 import type {MetadataProperties, Experimental} from '../types';
 
 type ShadowAliasExperimental = Experimental<
-  | 'card-sm'
-  | 'card-md'
-  | 'card-lg'
+  | 'bevel'
   | 'button'
   | 'button-disabled'
   | 'button-primary-inset'
@@ -82,17 +80,9 @@ export const shadow: {
       '0px 32px 32px rgba(31, 33, 36, 0.15), 0px 32px 56px -2px rgba(31, 33, 36, 0.16)',
     valueExperimental: '0px 20px 20px -8px rgba(0, 0, 0, 0.28)',
   },
-  'shadow-card-sm-experimental': {
+  'shadow-bevel-experimental': {
     value:
-      '0px 2px 0px rgba(0, 0, 0, 0.07), 0px 1px 0px rgba(0, 0, 0, 0.07), 1px 0px 0px #E3E3E3, -1px 0px 0px #E3E3E3, 0px -1px 0px #E3E3E3',
-  },
-  'shadow-card-md-experimental': {
-    value:
-      '0px 3px 1px -1px rgba(0, 0, 0, 0.07),  0px -1px 0px 0px rgba(0, 0, 0, 0.16),  1px 0px 0px 0px rgba(227, 227, 227, 1),  -1px 0px 0px 0px rgba(227, 227, 227, 1),  0px 1px 0px 0px rgba(227, 227, 227, 1)',
-  },
-  'shadow-card-lg-experimental': {
-    value:
-      '0px 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0px -1px 0px #D4D4D4, inset -1px 0px 0px #E3E3E3, inset 1px 0px 0px #E3E3E3, inset 0px 1px 0px #E3E3E3',
+      '1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, 0px 1px 0px 0px rgba(204, 204, 204, 0.5) inset',
   },
   'shadow-button-experimental': {
     value:
