@@ -6,7 +6,8 @@
   $boxShadow: null,
   $borderRadius: null,
   $mediaCondition: null,
-  $content: ''
+  $content: '',
+  $zIndex: 0
 ) {
   position: relative;
 
@@ -23,6 +24,8 @@
       right: 0;
       bottom: 0;
       position: absolute;
+      // stylelint-disable-next-line -- Consumers are responsibility for providing compliant z-index
+      z-index: $zIndex;
       border-radius: $borderRadius;
       box-shadow: var(--p-shadow-bevel-experimental);
       pointer-events: none;
