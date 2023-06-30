@@ -149,33 +149,43 @@ LegacyCard.Subsection = Subsection;
 
 function useLegacyCardPaddingObserverRef() {
   const {polarisSummerEditions2023} = useFeatures();
-  const legacyCardNode = useRef<HTMLDivElement>(null);
+  const legacyCard = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!polarisSummerEditions2023) {
       return;
     }
 
+    const legacyCardNode = legacyCard.current;
     let firstSection: Element | undefined;
     let lastSection: Element | undefined;
 
-    if (legacyCardNode.current) {
+    if (legacyCardNode) {
       const updateFirstAndLastSectionPadding = () => {
         // Reset old first and last section padding
         updatePadding(firstSection, 'top', false);
         updatePadding(lastSection, 'bottom', false);
 
-        // Get current first and last sections
-        const currentElements = legacyCardNode.current?.querySelectorAll(
+        // Get current first and last sections, return if they don't exist
+        const currentElements = legacyCardNode.querySelectorAll(
           `.${styles.Section}, .${styles.Header}, .${styles.Footer}`,
         );
+        if (!currentElements?.length) return;
 
-        if (currentElements?.length) {
-          firstSection = currentElements[0];
-          lastSection = currentElements[currentElements.length - 1];
+        const firstElement = currentElements[0];
+        const lastElement = currentElements[currentElements.length - 1];
 
-          // Update current element padding
+        // Update padding for first element if it is the first child or
+        // a descendant of the first child
+        if (legacyCardNode.firstChild?.contains(firstElement)) {
+          firstSection = firstElement;
           updatePadding(firstSection, 'top', true);
+        }
+
+        // Update padding for last element if it is the last child or
+        // a descendant of the last child
+        if (legacyCardNode.lastChild?.contains(lastElement)) {
+          lastSection = lastElement;
           updatePadding(lastSection, 'bottom', true);
         }
       };
@@ -185,7 +195,7 @@ function useLegacyCardPaddingObserverRef() {
 
       // Re-run when descendants are changed
       const observer = new MutationObserver(updateFirstAndLastSectionPadding);
-      observer.observe(legacyCardNode.current, {
+      observer.observe(legacyCardNode, {
         childList: true,
         subtree: true,
       });
@@ -198,7 +208,7 @@ function useLegacyCardPaddingObserverRef() {
     }
   }, [polarisSummerEditions2023]);
 
-  return legacyCardNode;
+  return legacyCard;
 }
 
 function updatePadding(
