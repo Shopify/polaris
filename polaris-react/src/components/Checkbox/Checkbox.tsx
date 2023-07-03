@@ -8,7 +8,6 @@ import React, {
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import {useToggle} from '../../utilities/use-toggle';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
@@ -71,11 +70,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const inputNode = useRef<HTMLInputElement>(null);
     const uniqId = useId();
     const id = idProp ?? uniqId;
-    const {
-      value: mouseOver,
-      setTrue: handleMouseOver,
-      setFalse: handleMouseOut,
-    } = useToggle(false);
     const isWithinListbox = useContext(WithinListboxContext);
 
     useImperativeHandle(ref, () => ({
@@ -115,11 +109,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
 
     const wrapperClassName = classNames(styles.Checkbox, error && styles.error);
 
-    const backdropClassName = classNames(
-      styles.Backdrop,
-      mouseOver && styles.hover,
-    );
-
     const isIndeterminate = checked === 'indeterminate';
     const isChecked = !isIndeterminate && Boolean(checked);
 
@@ -142,8 +131,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
         helpText={helpText}
         error={error}
         disabled={disabled}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
+        labelClassName={styles.ChoiceLabel}
       >
         <span className={wrapperClassName}>
           <input
@@ -166,7 +154,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             {...indeterminateAttributes}
           />
           <span
-            className={backdropClassName}
+            className={styles.Backdrop}
             onClick={stopPropagation}
             onKeyUp={stopPropagation}
           />
