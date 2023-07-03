@@ -48,6 +48,9 @@
       @include control-backdrop(disabled);
       #{$se23} & {
         border-color: var(--p-color-border-disabled);
+
+        // specificity buster, to prevent disabled from inheriting border-width on hover
+        border-width: var(--p-border-width-1-experimental);
       }
     }
   }
