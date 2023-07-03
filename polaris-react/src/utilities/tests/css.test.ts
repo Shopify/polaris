@@ -97,7 +97,7 @@ describe('getResponsiveProps', () => {
 
   it('treats falsey as a value', () => {
     expect(
-      getResponsiveProps('stack', 'space', 'space', {
+      getResponsiveProps<string | number>('stack', 'space', 'space', {
         md: 0,
         xl: '10',
       }),

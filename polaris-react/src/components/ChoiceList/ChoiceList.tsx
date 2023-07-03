@@ -112,6 +112,7 @@ export function ChoiceList({
             id={id}
             label={label}
             disabled={choiceDisabled || disabled}
+            fill={{xs: true, sm: false}}
             checked={choiceIsSelected(choice, selected)}
             helpText={helpText}
             onChange={handleChange}

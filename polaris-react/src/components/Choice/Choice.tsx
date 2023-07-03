@@ -1,33 +1,90 @@
 import React from 'react';
+import type {SpaceScale} from '@shopify/polaris-tokens';
 
-import {classNames} from '../../utilities/css';
-import type {Error} from '../../types';
+import {
+  getResponsiveProps,
+  getResponsiveValue,
+  classNames,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
+import type {Error, Never} from '../../types';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 import {useFeatures} from '../../utilities/features';
 
 import styles from './Choice.scss';
 
-export interface ChoiceProps {
+type Spacing = ResponsiveProp<SpaceScale>;
+
+export interface ChoiceBleedProps {
+  /** Spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * bleed='4'
+   * bleed={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  bleed?: Spacing;
+  /** Vertical start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * bleedBlockStart='4'
+   * bleedBlockStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  bleedBlockStart?: Spacing;
+  /** Vertical end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * bleedBlockEnd='4'
+   * bleedBlockEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  bleedBlockEnd?: Spacing;
+  /** Horizontal start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * bleedInlineStart='4'
+   * bleedInlineStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  bleedInlineStart?: Spacing;
+  /** Horizontal end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * bleedInlineEnd='4'
+   * bleedInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   */
+  bleedInlineEnd?: Spacing;
+}
+
+interface ChoiceBaseProps {
   /** A unique identifier for the choice */
   id: string;
   /**	Label for the choice */
   label: React.ReactNode;
   /** Whether the associated form control is disabled */
   disabled?: boolean;
-  /** Display an error message */
-  error?: Error | boolean;
   /** Visually hide the label */
   labelHidden?: boolean;
   /**  Content to display inside the choice */
   children?: React.ReactNode;
-  /** Additional text to aide in use */
-  helpText?: React.ReactNode;
   /** Callback when clicked */
   onClick?(): void;
-  /** Added to the wrapping label */
+  /** Added to the label element */
   labelClassName?: string;
+  /** Grow to fill the space. Equivalent to width: 100%; height: 100% */
+  fill?: ResponsiveProp<boolean>;
 }
+
+interface ChoiceDescriptionProps {
+  /** Display an error message */
+  error?: Error | boolean;
+  /** Additional text to aide in use. Will add a wrapping <div> */
+  helpText?: React.ReactNode;
+}
+
+type ChoicePropsWithDescriptions = ChoiceBaseProps &
+  ChoiceDescriptionProps &
+  Never<ChoiceBleedProps>;
+
+type ChoicePropsWithBleed = ChoiceBaseProps &
+  ChoiceBleedProps &
+  Never<ChoiceDescriptionProps>;
+
+export type ChoiceProps = ChoicePropsWithDescriptions | ChoicePropsWithBleed;
 
 export function Choice({
   id,
@@ -39,6 +96,12 @@ export function Choice({
   helpText,
   onClick,
   labelClassName,
+  fill,
+  bleed,
+  bleedBlockStart,
+  bleedBlockEnd,
+  bleedInlineStart,
+  bleedInlineEnd,
 }: ChoiceProps) {
   const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
@@ -48,8 +111,53 @@ export function Choice({
     labelClassName,
   );
 
+  const labelStyle = {
+    // Pass through overrides for bleed values if they're set by the prop
+    ...getResponsiveProps(
+      'choice',
+      'bleed-block-end',
+      'space',
+      bleedBlockEnd || bleed,
+    ),
+    ...getResponsiveProps(
+      'choice',
+      'bleed-block-start',
+      'space',
+      bleedBlockStart || bleed,
+    ),
+    ...getResponsiveProps(
+      'choice',
+      'bleed-inline-start',
+      'space',
+      bleedInlineStart || bleed,
+    ),
+    ...getResponsiveProps(
+      'choice',
+      'bleed-inline-end',
+      'space',
+      bleedInlineEnd || bleed,
+    ),
+    ...Object.fromEntries(
+      Object.entries(getResponsiveValue('choice', 'fill', fill)).map(
+        // Map "true" => "100%" and "false" => "auto" for use in
+        // inline/block-size calc()
+        ([key, value]) => [key, value ? '100%' : 'auto'],
+      ),
+    ),
+  } as React.CSSProperties;
+
   const labelMarkup = (
-    <label className={className} htmlFor={id} onClick={onClick}>
+    // NOTE: Can't use a Box here for a few reasons:
+    // - as="label" fails `Element` typecheck (even though the JS works)
+    // - Can't pass hard coded values to padding (forced to tokens)
+    // - Can't pass negative values to padding
+    // - Can't pass margins at all
+    <label
+      className={className}
+      htmlFor={id}
+      onClick={onClick}
+      style={sanitizeCustomProperties(labelStyle)}
+    >
       <span className={styles.Control}>{children}</span>
       <span className={styles.Label}>
         <span>{label}</span>

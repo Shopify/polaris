@@ -1,6 +1,8 @@
 import type {BreakpointsAlias} from '@shopify/polaris-tokens';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
 
+import {isObject} from './is-object';
+
 type Falsy = boolean | undefined | null | 0;
 
 type ResponsivePropConfig<T = string> = {
@@ -9,7 +11,11 @@ type ResponsivePropConfig<T = string> = {
 
 export type ResponsiveProp<T> = T | ResponsivePropConfig<T>;
 
-export type ResponsiveValue = undefined | ResponsiveProp<string>;
+export type ResponsiveValue<T = string> = undefined | ResponsiveProp<T>;
+
+type ResponsiveVariables<T> = {
+  [Breakpoint in `${string}-${BreakpointsAlias}`]?: T;
+};
 
 export function classNames(...classes: (string | Falsy)[]) {
   return classes.filter(Boolean).join(' ');
@@ -63,19 +69,17 @@ function makeResponsivePropsContiguous<T>(
   return result;
 }
 
-export function getResponsiveProps(
+export function getResponsiveProps<T = string>(
   componentName: string,
   componentProp: string,
   tokenSubgroup: string,
-  responsiveProp?: ResponsiveProp<string | number>,
-): {
-  [Breakpoint in `${string}-${BreakpointsAlias}`]?: string;
-} {
+  responsiveProp?: ResponsiveProp<T>,
+): ResponsiveVariables<T> {
   if (!responsiveProp) return {};
 
   let result: ResponsivePropConfig;
 
-  if (typeof responsiveProp === 'string') {
+  if (!isObject(responsiveProp)) {
     result = {
       [breakpointsAliases[0]]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
     };
@@ -96,20 +100,21 @@ export function getResponsiveProps(
       `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
       value,
     ]),
-  );
+  ) as unknown as ResponsiveVariables<T>;
 }
 
-export function getResponsiveValue(
+export function getResponsiveValue<T = string>(
   componentName: string,
   componentProp: string,
-  responsiveProp?: ResponsiveValue,
-) {
+  responsiveProp?: ResponsiveValue<T>,
+): ResponsiveVariables<T> {
   if (!responsiveProp) return {};
 
-  if (typeof responsiveProp === 'string') {
+  if (!isObject(responsiveProp)) {
     return {
-      [`--pc-${componentName}-${componentProp}-xs`]: responsiveProp,
-    };
+      [`--pc-${componentName}-${componentProp}-${breakpointsAliases[0]}`]:
+        responsiveProp,
+    } as ResponsiveVariables<T>;
   }
 
   return Object.fromEntries(
