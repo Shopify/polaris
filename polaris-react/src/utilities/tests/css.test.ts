@@ -40,4 +40,71 @@ describe('getResponsiveProps', () => {
       '--pc-stack-space-md': 'var(--p-space-8)',
     });
   });
+
+  describe('forceContiguous', () => {
+    it('is a noop for complete objects', () => {
+      expect(
+        getResponsiveProps(
+          'stack',
+          'space',
+          'space',
+          {
+            xs: '2',
+            sm: '4',
+            md: '8',
+            lg: '8',
+            xl: '10',
+          },
+          true,
+        ),
+      ).toMatchObject({
+        '--pc-stack-space-xs': 'var(--p-space-2)',
+        '--pc-stack-space-sm': 'var(--p-space-4)',
+        '--pc-stack-space-md': 'var(--p-space-8)',
+        '--pc-stack-space-lg': 'var(--p-space-8)',
+        '--pc-stack-space-xl': 'var(--p-space-10)',
+      });
+    });
+
+    it('fills in the blanks', () => {
+      expect(
+        getResponsiveProps(
+          'stack',
+          'space',
+          'space',
+          {
+            xs: '2',
+            sm: '4',
+            xl: '10',
+          },
+          true,
+        ),
+      ).toMatchObject({
+        '--pc-stack-space-xs': 'var(--p-space-2)',
+        '--pc-stack-space-sm': 'var(--p-space-4)',
+        '--pc-stack-space-md': 'var(--p-space-4)',
+        '--pc-stack-space-lg': 'var(--p-space-4)',
+        '--pc-stack-space-xl': 'var(--p-space-10)',
+      });
+    });
+
+    it('skips leading undefined values', () => {
+      expect(
+        getResponsiveProps(
+          'stack',
+          'space',
+          'space',
+          {
+            md: '4',
+            xl: '10',
+          },
+          true,
+        ),
+      ).toMatchObject({
+        '--pc-stack-space-md': 'var(--p-space-4)',
+        '--pc-stack-space-lg': 'var(--p-space-4)',
+        '--pc-stack-space-xl': 'var(--p-space-10)',
+      });
+    });
+  });
 });
