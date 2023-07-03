@@ -412,7 +412,12 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findAll('div')[6]!.trigger('onClick', {
+      const checkboxWrapperEl = wrapper.findWhere<'div'>(
+        (node) =>
+          node.is('div') && node.prop('className')!.includes('CheckboxWrapper'),
+      );
+
+      checkboxWrapperEl!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -427,7 +432,12 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findAll('div')[6]!.trigger('onClick', {
+      const checkboxWrapperEl = wrapper.findWhere<'div'>(
+        (node) =>
+          node.is('div') && node.prop('className')!.includes('CheckboxWrapper'),
+      );
+
+      checkboxWrapperEl!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: false},
       });
