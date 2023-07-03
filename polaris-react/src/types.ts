@@ -411,3 +411,30 @@ export interface FilterInterface {
   /** Optional section heading that this filter will go under  */
   section?: string;
 }
+
+/* Useful for defining mutually exclusive props such as:
+ *
+ * interface MessageBasics {
+ *   timestamp?: number;
+ * }
+ * interface MessageWithText extends MessageBasics {
+ *   text: string;
+ * }
+ * interface MessageWithAttachment extends MessageBasics {
+ *   attachment: string;
+ * }
+ * type Message =
+ *   | (MessageWithText & Never<MessageWithAttachment>)
+ *   | (MessageWithAttachment & Never<MessageWithText>);
+ *
+ * // 👍 OK
+ * let foo: Message = {attachment: 'a'}
+ * let bar: Message = {text: 'b'}
+ *
+ * // ❌ ERROR: Type '{ attachment: string; text: string; }' is not assignable to type 'Message'.
+ * let baz: Message = {attachment: 'a', text: 'b'}
+ */
+export type Never<T> = {
+  // The +? forces optionality of the type
+  [P in keyof T]+?: never;
+};
