@@ -25,10 +25,8 @@ export interface ChoiceProps {
   helpText?: React.ReactNode;
   /** Callback when clicked */
   onClick?(): void;
-  /** Callback when mouse over */
-  onMouseOver?(): void;
-  /** Callback when mouse out */
-  onMouseOut?(): void;
+  /** Added to the wrapping label */
+  labelClassName?: string;
 }
 
 export function Choice({
@@ -40,24 +38,18 @@ export function Choice({
   labelHidden,
   helpText,
   onClick,
-  onMouseOut,
-  onMouseOver,
+  labelClassName,
 }: ChoiceProps) {
   const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
     disabled && styles.disabled,
+    labelClassName,
   );
 
   const labelMarkup = (
-    <label
-      className={className}
-      htmlFor={id}
-      onClick={onClick}
-      onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}
-    >
+    <label className={className} htmlFor={id} onClick={onClick}>
       <span className={styles.Control}>{children}</span>
       <span className={styles.Label}>
         <span>{label}</span>
