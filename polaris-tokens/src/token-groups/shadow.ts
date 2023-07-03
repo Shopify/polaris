@@ -127,6 +127,6 @@ export const shadow: {
       '0px 2px 0px 0px rgba(0, 0, 0, 0.60) inset, 1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset, -1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset',
   },
   'shadow-border-inset-experimental': {
-    value: 'box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset',
+    value: '0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset',
   },
 };
