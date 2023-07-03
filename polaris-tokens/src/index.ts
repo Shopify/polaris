@@ -1,5 +1,6 @@
 export * from './metadata';
 export * from './utilities';
+export {breakpointsAliases} from './token-groups/breakpoints';
 export type {
   TokenGroup,
   Tokens,
