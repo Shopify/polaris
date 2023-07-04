@@ -117,7 +117,10 @@
   #{$se23} & {
     border-bottom-left-radius: var(--p-border-radius-3);
     border-bottom-right-radius: var(--p-border-radius-3);
-    padding-bottom: var(--p-space-4);
+
+    &:not(.Section-flush) {
+      padding-bottom: var(--p-space-4);
+    }
   }
 }
 
@@ -165,7 +168,9 @@
 
 .Section-subdued:last-child {
   #{$se23} & {
-    padding: var(--p-space-4);
+    &:not(.Section-flush) {
+      padding: var(--p-space-4);
+    }
 
     @media print {
       padding-top: var(--p-space-2);

@@ -399,3 +399,22 @@ export function WithFlushedSections() {
     </LegacyCard>
   );
 }
+
+export function WithStackedFlushSections() {
+  return (
+    <LegacyCard>
+      <LegacyCard.Header title="Online store dashboard" />
+      <LegacyCard.Section flush>
+        <TextContainer>
+          View a summary of your online store’s performance.
+        </TextContainer>
+      </LegacyCard.Section>
+      <LegacyCard.Section flush subdued>
+        <TextContainer>
+          View a summary of your online store’s performance, including sales,
+          visitors, top products, and referrals.
+        </TextContainer>
+      </LegacyCard.Section>
+    </LegacyCard>
+  );
+}
