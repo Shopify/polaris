@@ -27,12 +27,12 @@ enum Status {
 export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'] as const;
 
 const avatarStrokeWidth: {[S in Size]: string} = {
-  extraSmall: '1.5',
-  small: '1.5',
-  medium: '2',
-  large: '2',
+  extraSmall: '3',
+  small: '2.5',
+  medium: '2.5',
+  large: '2.5',
   'xl-experimental': '2',
-  '2xl-experimental': '2',
+  '2xl-experimental': '1.5',
 };
 
 /**
