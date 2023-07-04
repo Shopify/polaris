@@ -1359,6 +1359,7 @@
     }
 
     &:active {
+      // stylelint-disable-next-line selector-max-combinators -- se23
       .Icon {
         transform: translateY(1px);
       }
