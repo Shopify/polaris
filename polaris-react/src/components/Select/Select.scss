@@ -200,6 +200,7 @@
 
     #{$se23} & {
       border-color: var(--p-color-border-critical-strong-experimental);
+      border-width: var(--p-border-width-2-experimental);
       background-color: var(--p-color-bg-critical-subdued);
     }
   }
@@ -211,8 +212,9 @@
     @include focus-ring($style: 'focused');
 
     #{$se23} & {
-      border-color: var(--p-color-border-input-hover);
-      background-color: var(--p-color-bg-input-hover-experimental);
+      border-color: var(--p-color-border-input-active-experimental);
+      border-width: var(--p-border-width-2-experimental);
+      background-color: var(--p-color-bg-input-active-experimental);
       // stylelint-disable-next-line -- se23
       @include no-focus-ring;
       outline: var(--p-border-width-2) solid
