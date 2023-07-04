@@ -147,6 +147,11 @@ LegacyCard.Header = Header;
 LegacyCard.Section = Section;
 LegacyCard.Subsection = Subsection;
 
+/*
+ * Hook to add extra padding on first and last section elements.
+ * Replace with css nth-child of when made available on
+ * more browser versions https://caniuse.com/css-nth-child-of.
+ */
 function useLegacyCardPaddingObserverRef() {
   const {polarisSummerEditions2023} = useFeatures();
   const legacyCard = useRef<HTMLDivElement>(null);
