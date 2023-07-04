@@ -39,12 +39,22 @@ $spinner-icon-size: 12px;
     }
   }
 
-  &:not(.disabled) {
+  &:not(.disabled):not(.error) {
     #{$se23} & {
       &:hover {
         // stylelint-disable-next-line -- se23
         .Backdrop {
           border-color: var(--p-color-border-input-hover);
+          background-color: var(--p-color-bg-input-hover-experimental);
+        }
+      }
+
+      &:active {
+        // stylelint-disable-next-line -- se23
+        .Backdrop {
+          border-color: var(--p-color-border-input-active-experimental);
+          border-width: var(--p-border-width-2-experimental);
+          background-color: var(--p-color-bg-input-active-experimental);
         }
       }
     }
@@ -78,7 +88,9 @@ $spinner-icon-size: 12px;
     @include focus-ring($style: 'focused');
 
     #{$se23} & {
-      border-color: var(--p-color-border-input-active-experimental);
+      border-color: var(--p-color-border-input-hover);
+      background-color: var(--p-color-bg-input-hover-experimental);
+
       // stylelint-disable-next-line -- se23
       @include no-focus-ring;
       outline: var(--p-border-width-2) solid
@@ -93,8 +105,12 @@ $spinner-icon-size: 12px;
     // stylelint-disable-next-line -- se23
     .Input:hover ~ .Backdrop,
     .Input:focus-visible ~ .Backdrop {
-      border-width: var(--p-border-width-1);
       border-color: var(--p-color-border-critical-strong-experimental);
+      background-color: var(--p-color-bg-critical-subdued);
+    }
+    // stylelint-disable-next-line -- se23
+    .Input:active ~ .Backdrop {
+      border-width: var(--p-border-width-2-experimental);
     }
   }
 
@@ -104,7 +120,6 @@ $spinner-icon-size: 12px;
     border-color: var(--p-color-border-critical);
 
     #{$se23} & {
-      border-width: var(--p-border-width-1-experimental);
       border-color: var(--p-color-border-critical-strong-experimental);
     }
 
@@ -127,6 +142,10 @@ $spinner-icon-size: 12px;
     background-color: var(--p-color-bg-disabled);
     border-color: var(--p-color-border-disabled);
     border-top-color: var(--p-color-border-disabled);
+
+    #{$se23} & {
+      border: none;
+    }
   }
 
   svg {
@@ -276,6 +295,8 @@ $spinner-icon-size: 12px;
 
   #{$se23} & {
     border-radius: var(--p-border-radius-2);
+    border-width: var(--p-border-width-1-experimental);
+    background-color: var(--p-color-bg-input);
   }
 }
 
