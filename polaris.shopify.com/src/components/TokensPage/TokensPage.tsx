@@ -103,6 +103,45 @@ function TokensPage({tokenGroup}: Props) {
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
           <h1>Tokens</h1>
+          <p>To use Tokens:</p>
+          <h3>Installation</h3>
+          <p>Use the following command in your terminal. <br> npm install @shopify/polaris-tokens </p>
+          <h3>Usage</h3>
+          <p>In Javascript, to access all of the available token groups, use the following code 
+            <pre>
+              <code>
+                // Token values only
+                import {tokens} from '@shopify/polaris-tokens';
+                
+                console.log(tokens.color['color-bg']); // 'rgba(...)'
+                
+                // Tokens with metadata
+                import {metadata} from '@shopify/polaris-tokens';
+                
+                console.log(metadata.color['color-bg'].value); // 'rgba(...)'
+                console.log(metadata.color['color-bg'].description); // 'For use as a background color, in components such as Page and Frame backgrounds.'
+              </code>
+            </pre>
+          </p>
+          <p>In CSS, first import all of the css variables. CSS variables are prefixed with --p to signal that these variables are Polaris variables. Use the following code 
+            <pre>
+              <code>
+                import '@shopify/polaris-tokens/css/styles.css';
+  
+                div {
+                  background: var(--p-color-bg);
+                }  
+              </code>
+            </pre>
+          </p>
+           <p>In JSON, to access a specific token group file via the dist folder, use the following code 
+            <pre>
+              <code>
+                const spacing = require('@shopify/polaris-tokens/json/spacing.json');
+              </code>
+            </pre>
+          </p>
+          <p>For further details, refer to <a href="https://github.com/Shopify/polaris/tree/main/polaris-tokens#installation">this link on shopify's github repository.</a> </p>
         </div>
 
         <div className={styles.Tokens}>
