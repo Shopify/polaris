@@ -42,7 +42,8 @@
     --pc-button-large-vertical-padding: var(--p-space-2);
 
     box-shadow: var(--pc-button-shadow);
-    transition: box-shadow 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
+    transition: background-color 75ms var(--p-motion-ease-out),
+      box-shadow 75ms var(--p-motion-ease-out);
     // stylelint-enable
 
     &:active {
@@ -1358,7 +1359,6 @@
     }
 
     &:active {
-      // stylelint-disable selector-max-combinators -- se23
       .Icon {
         transform: translateY(1px);
       }

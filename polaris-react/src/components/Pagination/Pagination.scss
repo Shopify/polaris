@@ -8,14 +8,13 @@
       box-shadow: none !important;
       /* stylelint-enable */
       background-color: var(--p-color-bg-strong);
-      transition: background-color 75ms var(--p-motion-ease-out),
-        box-shadow 75ms var(--p-motion-ease-out);
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:hover {
         background-color: var(--p-color-bg-strong-hover);
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:active {
+        // stylelint-disable-next-line declaration-no-important
         box-shadow: var(--p-shadow-inset-md) !important;
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
