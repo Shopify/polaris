@@ -19,6 +19,7 @@
     }
 
     #{$se23} & {
+      // stylelint-disable-next-line -- se23 overrides
       svg {
         fill: var(--p-color-icon);
       }
@@ -52,6 +53,7 @@
 
   #{$se23} & {
     border-radius: var(--p-border-radius-2);
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 overrides
     margin: calc(-1 * var(--pc-mapped-actions-item-vertical-padding))
       calc(-1 * var(--p-space-3));
   }
@@ -94,6 +96,7 @@
     }
 
     #{$se23} & {
+      // stylelint-disable-next-line selector-max-combinators -- se23 overrides
       svg {
         fill: var(--p-color-icon-critical);
       }
