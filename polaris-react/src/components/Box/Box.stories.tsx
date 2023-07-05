@@ -212,3 +212,26 @@ export function WithResponsivePadding() {
     </VerticalStack>
   );
 }
+
+export function WithShadowBevel() {
+  const commonProps = {
+    padding: '4',
+    background: 'bg',
+  } as const;
+
+  return (
+    <VerticalStack gap="4">
+      <Box shadowBevel shadow="md" borderRadius="3" {...commonProps}>
+        Shadow bevel from xs up
+      </Box>
+      <Box
+        shadowBevel={{sm: true}}
+        shadow={{sm: 'md'}}
+        borderRadius={{sm: '3'}}
+        {...commonProps}
+      >
+        Shadow bevel from sm up
+      </Box>
+    </VerticalStack>
+  );
+}

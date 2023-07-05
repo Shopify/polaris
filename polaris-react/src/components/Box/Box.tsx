@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, {forwardRef} from 'react';
 import type {
   ColorTextAlias,
@@ -13,6 +14,7 @@ import {
   getResponsiveProps,
   classNames,
   sanitizeCustomProperties,
+  getResponsiveValue,
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
@@ -39,7 +41,7 @@ export interface BoxProps extends React.AriaAttributes {
   /** Border style */
   borderStyle?: LineStyles;
   /** Border radius */
-  borderRadius?: BorderRadiusScale;
+  borderRadius?: ResponsiveProp<BorderRadiusScale>;
   /** Vertical end horizontal start border radius */
   borderRadiusEndStart?: BorderRadiusScale;
   /** Vertical end horizontal end border radius */
@@ -108,7 +110,7 @@ export interface BoxProps extends React.AriaAttributes {
     'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
   >;
   /** Shadow on box */
-  shadow?: ShadowAlias;
+  shadow?: ResponsiveProp<ShadowAlias>;
   /** Set tab order */
   tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
   /** Width of container */
@@ -138,6 +140,16 @@ export interface BoxProps extends React.AriaAttributes {
   visuallyHidden?: boolean;
   /** z-index of box */
   zIndex?: string;
+  shadowBevel?: ResponsiveProp<
+    | boolean
+    | {
+        /**
+         * Stacking order of the pseudo-element
+         * @default '0'
+         */
+        zIndex?: string;
+      }
+  >;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -175,6 +187,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingInlineEnd,
       role,
       shadow,
+      shadowBevel,
       tabIndex,
       width,
       printHidden,
@@ -190,7 +203,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
-    // eslint-disable-next-line no-nested-ternary
     const borderStyleValue = borderStyle
       ? borderStyle
       : borderColor ||
@@ -202,7 +214,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       ? 'solid'
       : undefined;
 
-    // eslint-disable-next-line no-nested-ternary
     const outlineStyleValue = outlineStyle
       ? outlineStyle
       : outlineColor || outlineWidth
@@ -214,16 +225,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-background': background
         ? `var(--p-color-${background})`
         : undefined,
-      // eslint-disable-next-line no-nested-ternary
       '--pc-box-border-color': borderColor
         ? borderColor === 'transparent'
           ? 'transparent'
           : `var(--p-color-${borderColor})`
         : undefined,
       '--pc-box-border-style': borderStyleValue,
-      '--pc-box-border-radius': borderRadius
-        ? `var(--p-border-radius-${borderRadius})`
-        : undefined,
       '--pc-box-border-radius-end-start': borderRadiusEndStart
         ? `var(--p-border-radius-${borderRadiusEndStart})`
         : undefined,
@@ -287,7 +294,58 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         'space',
         paddingInlineEnd || padding,
       ),
-      '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
+      ...getResponsiveProps(
+        /* componentName */ 'box',
+        /* componentProp */ 'shadow',
+        /* tokenSubgroup */ 'shadow',
+        /* responsiveProp */ shadow,
+      ),
+      ...getResponsiveProps(
+        /* componentName */ 'box',
+        /* componentProp */ 'border-radius',
+        /* tokenSubgroup */ 'border-radius',
+        /* responsiveProp */ borderRadius,
+      ),
+      ...getResponsiveValue(
+        /* componentName */ 'box',
+        /* componentProp */ 'shadow-bevel-z-index',
+        typeof shadowBevel === 'undefined' || typeof shadowBevel === 'boolean'
+          ? '0'
+          : 'zIndex' in shadowBevel
+          ? shadowBevel.zIndex
+          : Object.fromEntries(
+              Object.entries(shadowBevel).map(([breakpointsAlias, config]) => [
+                breakpointsAlias,
+                typeof config === 'boolean' || !('zIndex' in config)
+                  ? '0'
+                  : config.zIndex,
+              ]),
+            ),
+      ),
+      ...getResponsiveValue(
+        /* componentName */ 'box',
+        /* componentProp */ 'shadow-bevel-content',
+        typeof shadowBevel === 'undefined'
+          ? 'none'
+          : typeof shadowBevel === 'boolean'
+          ? shadowBevel
+            ? '""'
+            : 'none'
+          : 'zIndex' in shadowBevel /* TODO: Add proper check */
+          ? '""'
+          : Object.fromEntries(
+              Object.entries(shadowBevel).map(([breakpointsAlias, config]) => [
+                breakpointsAlias,
+                typeof config === 'boolean'
+                  ? config
+                    ? '""'
+                    : 'none'
+                  : 'zIndex' in config /* TODO: Add proper check */
+                  ? '""'
+                  : 'none',
+              ]),
+            ),
+      ),
       '--pc-box-width': width,
       position,
       '--pc-box-inset-block-start': insetBlockStart
