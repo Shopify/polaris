@@ -269,7 +269,7 @@ $button-size: 20px;
     /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
     @include focus-ring('wide');
     border-radius: var(--p-border-radius-2);
-    padding: 0 calc(var(--p-space-1) + var(--p-space-05));
+    padding: 0;
 
     &:active {
       background: var(--p-color-bg-strong-active);
