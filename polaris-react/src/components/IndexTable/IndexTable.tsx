@@ -174,8 +174,6 @@ function IndexTableBase({
 
   const [tableInitialized, setTableInitialized] = useState(false);
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
-  const [hideScrollContainer, setHideScrollContainer] =
-    useState<boolean>(false);
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
@@ -303,11 +301,6 @@ function IndexTableBase({
       scrollBarElement.current.style.setProperty(
         '--pc-index-table-scroll-bar-content-width',
         `${tableElement.current.offsetWidth - SCROLL_BAR_PADDING}px`,
-      );
-
-      setHideScrollContainer(
-        scrollContainerElement.current?.offsetWidth ===
-          tableElement.current?.offsetWidth,
       );
     }
   }, [tableInitialized]);
@@ -693,7 +686,6 @@ function IndexTableBase({
   const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
     condensed && styles.scrollBarContainerCondensed,
-    hideScrollContainer && styles.scrollBarContainerHidden,
   );
 
   const scrollBarClassNames = classNames(
@@ -796,7 +788,6 @@ function IndexTableBase({
 
   const tableWrapperClassNames = classNames(
     styles.IndexTableWrapper,
-    hideScrollContainer && styles['IndexTableWrapper-scrollBarHidden'],
     Boolean(bulkActionsMarkup) &&
       selectMode &&
       styles.IndexTableWrapperWithBulkActions,
