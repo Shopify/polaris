@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.4.0
+
+### Minor Changes
+
+- [#9617](https://github.com/Shopify/polaris/pull/9617) [`af6337d60`](https://github.com/Shopify/polaris/commit/af6337d60e18cfd8adcc99aa425e1cc697b41ca0) Thanks [@samrose3](https://github.com/samrose3)! - Added Inter reference as preferred sans font family
+
 ## 7.3.1
 
 ### Patch Changes
