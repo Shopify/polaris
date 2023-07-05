@@ -648,6 +648,29 @@
 
     &.iconOnly {
       margin: calc(-1 * var(--p-space-1));
+
+      path {
+        fill: var(--p-color-icon-subdued);
+      }
+
+      &:active,
+      &:hover {
+        path {
+          fill: var(--p-color-icon);
+        }
+      }
+
+      &.destructive {
+        path {
+          fill: var(--p-color-text-critical);
+        }
+      }
+
+      &.disabled {
+        path {
+          fill: var(--p-color-icon-disabled);
+        }
+      }
     }
   }
 }
