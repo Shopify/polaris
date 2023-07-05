@@ -2,4 +2,4 @@
 '@shopify/polaris-tokens': minor
 ---
 
-Use Inter as preferred sans font family
+Added Inter reference as preferred sans font family
