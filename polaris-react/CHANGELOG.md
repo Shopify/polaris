@@ -1,5 +1,15 @@
 # Changelog
 
+## 11.4.0
+
+### Minor Changes
+
+- [#9560](https://github.com/Shopify/polaris/pull/9560) [`a9d08e16b`](https://github.com/Shopify/polaris/commit/a9d08e16bc310256b1ecd89c04bacec4e12718f0) Thanks [@dustinmalik](https://github.com/dustinmalik)! - Updated the placement of the contextual save bar and added `sidebar` prop to the Frame component to support sidebar in the admin.
+
+### Patch Changes
+
+- [#9564](https://github.com/Shopify/polaris/pull/9564) [`398079ccd`](https://github.com/Shopify/polaris/commit/398079ccd7f1f48499acccbf79cd88d0776161d9) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Remove unused mobile selectable styles
+
 ## 11.3.1
 
 ### Patch Changes
