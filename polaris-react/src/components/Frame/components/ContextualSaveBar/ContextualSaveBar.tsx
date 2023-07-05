@@ -1,15 +1,18 @@
 import React, {useCallback} from 'react';
+import {RiskMinor} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
 import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
+import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
 import {useFrame} from '../../../../utilities/frame';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
+import {useFeatures} from '../../../../utilities/features';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.scss';
@@ -30,6 +33,7 @@ export function ContextualSaveBar({
     toggle: toggleDiscardConfirmationModal,
     setFalse: closeDiscardConfirmationModal,
   } = useToggle(false);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const handleDiscardAction = useCallback(() => {
     if (discardAction && discardAction.onAction) {
@@ -97,15 +101,16 @@ export function ContextualSaveBar({
   );
 
   const logoMarkup =
-    alignContentFlush || contextControl ? null : (
+    alignContentFlush || contextControl || polarisSummerEditions2023 ? null : (
       <div className={styles.LogoContainer} style={{width}}>
         {imageMarkup}
       </div>
     );
 
-  const contextControlMarkup = contextControl ? (
-    <div className={styles.ContextControl}>{contextControl}</div>
-  ) : null;
+  const contextControlMarkup =
+    contextControl && !polarisSummerEditions2023 ? (
+      <div className={styles.ContextControl}>{contextControl}</div>
+    ) : null;
 
   const contentsClassName = classNames(
     styles.Contents,
@@ -118,10 +123,21 @@ export function ContextualSaveBar({
         {contextControlMarkup}
         {logoMarkup}
         <div className={contentsClassName}>
-          {message && (
-            <Text as="h2" variant="headingMd" color="text-inverse" truncate>
-              {message}
-            </Text>
+          {polarisSummerEditions2023 ? (
+            <div className={styles.MessageContainer}>
+              <Icon source={RiskMinor} color="base" />
+              {message && (
+                <Text as="h2" variant="headingMd" truncate>
+                  {message}
+                </Text>
+              )}
+            </div>
+          ) : (
+            message && (
+              <Text as="h2" variant="headingMd" color="text-inverse" truncate>
+                {message}
+              </Text>
+            )
           )}
           <div className={styles.ActionContainer}>
             <LegacyStack spacing="tight" wrap={false}>

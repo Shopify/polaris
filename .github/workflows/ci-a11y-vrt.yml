@@ -97,6 +97,10 @@ jobs:
 
       - name: Build Storybook
         run: yarn workspace @shopify/polaris run storybook:build --quiet
+        env:
+          STORYBOOK_GITHUB_SHA: ${{ github.sha }}
+          STORYBOOK_GITHUB_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+          STORYBOOK_GITHUB_PR: ${{ github.event.number }}
 
       - name: Run Chromatic tests
         uses: chromaui/action@v1
@@ -109,3 +113,5 @@ jobs:
           exitOnceUploaded: true
         env:
           STORYBOOK_GITHUB_SHA: ${{ github.sha }}
+          STORYBOOK_GITHUB_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+          STORYBOOK_GITHUB_PR: ${{ github.event.number }}

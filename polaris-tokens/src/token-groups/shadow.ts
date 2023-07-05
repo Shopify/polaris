@@ -5,6 +5,7 @@ type ShadowAliasExperimental = Experimental<
   | 'button'
   | 'button-disabled'
   | 'button-primary-inset'
+  | 'button-primary-strong-inset'
   | 'button-primary-strong-hover'
   | 'button-primary-strong'
   | 'button-primary'
@@ -95,17 +96,20 @@ export const shadow: {
     value:
       '0px 2px 0px 0px #000 inset, 1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset, -1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset',
   },
+  'shadow-button-primary-strong-inset-experimental': {
+    value: '0px 3px 0px 0px #000 inset',
+  },
   'shadow-button-primary-strong-hover-experimental': {
     value:
       '0px 1px 0px 0px rgba(255, 255, 255, 0.24) inset, 1px 0px 0px 0px rgba(255, 255, 255, 0.16) inset, -1px 0px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px -1.5px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 0px 0px 0.5px #1A1A1A',
   },
   'shadow-button-primary-strong-experimental': {
     value:
-      '0px 1px 0px 0px rgba(255, 255, 255, 0.24) inset, 1px 0px 0px 0px rgba(255, 255, 255, 0.20) inset, -1px 0px 0px 0px rgba(255, 255, 255, 0.20) inset, 0px -1.5px 0px 0px #000 inset, 0px 0px 0px 0.5px #1A1A1A',
+      '0px 2px 0px 0px rgba(255, 255, 255, 0.2) inset, 2px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, -2px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, 0px -1px 0px 1px #000 inset, 0px 1px 0px 0px #000 inset',
   },
   'shadow-button-primary-experimental': {
     value:
-      '-1px 0px 0px 0px rgba(255, 255, 255, 0.20) inset, 1px 0px 0px 0px rgba(255, 255, 255, 0.20) inset, 0px -1.5px 0px 0px rgba(0, 0, 0, 0.25) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.35) inset',
+      '0px 1px 0px 0px rgba(255, 255, 255, 0.4) inset, 1px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, -1px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, 0px -1.5px 0px 0px rgba(0, 0, 0, 0.25) inset',
   },
   'shadow-button-primary-hover-experimental': {
     value:
