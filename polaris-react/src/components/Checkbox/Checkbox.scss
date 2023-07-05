@@ -51,6 +51,8 @@
       @include control-backdrop(disabled);
       #{$se23} & {
         border: none;
+        border-color: var(--p-color-border-disabled);
+        background-color: var(--p-color-bg-disabled);
       }
     }
   }
@@ -62,6 +64,13 @@
 
       &::before {
         background: var(--p-color-border-disabled);
+      }
+      #{$se23} & {
+        background-color: var(--p-color-bg-disabled);
+        // stylelint-disable-next-line max-nesting-depth, selector-max-combinators -- pse23 override
+        &::before {
+          background: var(--p-color-bg-disabled);
+        }
       }
     }
   }
