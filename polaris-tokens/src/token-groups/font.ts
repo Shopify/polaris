@@ -44,7 +44,7 @@ export const font: {
 } = {
   'font-family-sans': {
     value:
-      "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+      "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
   },
   'font-family-mono': {
     value:
