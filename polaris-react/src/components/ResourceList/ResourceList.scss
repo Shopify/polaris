@@ -99,6 +99,11 @@ $item-wrapper-loading-height: 64px;
 
 .HeaderWrapper-isSticky {
   box-shadow: var(--p-shadow-md);
+
+  #{$se23} & {
+    box-shadow: var(--p-shadow-xs);
+    border-radius: 0;
+  }
 }
 
 .HeaderContentWrapper {
