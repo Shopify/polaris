@@ -19,7 +19,6 @@
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
       $borderRadius: var(--pc-tooltip-border-radius),
-      $mediaCondition: $p-breakpoints-xs-up,
       $zIndex: 1
     );
   }
