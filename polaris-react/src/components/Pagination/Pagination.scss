@@ -13,6 +13,11 @@
         background-color: var(--p-color-bg-strong-hover);
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
+      &:active {
+        /* stylelint-disable-next-line declaration-no-important -- se23 */
+        box-shadow: var(--p-shadow-inset-md) !important;
+      }
+      /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:active,
       &:focus {
         background-color: var(--p-color-bg-strong-active);

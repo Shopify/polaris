@@ -70,6 +70,7 @@
       &:focus,
       &:active {
         background-color: var(--p-color-bg-strong-active) !important;
+        box-shadow: var(--p-shadow-inset-md) !important;
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:focus:not(:active) {
