@@ -37,11 +37,6 @@
 
   #{$se23} & {
     border-radius: 0;
-
-    /* stylelint-disable-next-line selector-max-combinators -- se23 */
-    .IndexTableWrapper-scrollBarHidden {
-      border-radius: inherit;
-    }
   }
 }
 
@@ -771,6 +766,34 @@ $loading-panel-height: 53px;
   }
 }
 
+.TableRow-selected {
+  .TableCell {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+
+    &:first-child {
+      border-left: 2px solid black;
+    }
+
+    &:last-child {
+      border-right: 2px solid black;
+    }
+  }
+
+  + .TableRow-selected {
+    .TableCell {
+      border-top: 0;
+      border-bottom: 2px solid black;
+    }
+  }
+}
+
+.TableRow-selected:has(+ .TableRow-selected) {
+  .TableCell {
+    border-bottom: 0;
+  }
+}
+
 .Table-sortable {
   .TableHeading {
     background-color: var(--p-color-bg-subdued);
@@ -935,16 +958,6 @@ $scroll-bar-size: var(--p-space-2);
 .scrollBarContainerCondensed {
   visibility: hidden;
   pointer-events: none;
-}
-
-.scrollBarContainerHidden {
-  height: 0;
-  padding: 0;
-
-  #{$se23} & {
-    // Specificity bump
-    padding: 0;
-  }
 }
 
 .ScrollBar {
