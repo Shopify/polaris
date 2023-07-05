@@ -71,7 +71,7 @@
     padding: var(--p-space-5) var(--p-space-5) 0;
 
     #{$se23} & {
-      padding: var(--p-space-4) var(--p-space-4) 0;
+      padding: var(--p-space-2) var(--p-space-4);
     }
   }
 
@@ -82,6 +82,10 @@
 
 .Section {
   padding: var(--p-space-4);
+
+  #{$se23} & {
+    padding: var(--p-space-2) var(--p-space-4);
+  }
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5);
@@ -114,11 +118,11 @@
   border-top-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
-    border-top-left-radius: var(--p-border-radius-3);
-    border-top-right-radius: var(--p-border-radius-3);
+    border-radius: 0;
 
-    &:not(.Section-flush) {
-      padding-top: var(--p-space-4);
+    @media #{$p-breakpoints-sm-up} {
+      border-top-left-radius: var(--p-border-radius-3);
+      border-top-right-radius: var(--p-border-radius-3);
     }
   }
 }
@@ -128,9 +132,12 @@
   border-bottom-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
-    border-bottom-left-radius: var(--p-border-radius-3);
-    border-bottom-right-radius: var(--p-border-radius-3);
-    padding-bottom: var(--p-space-4);
+    border-radius: 0;
+
+    @media #{$p-breakpoints-sm-up} {
+      border-bottom-left-radius: var(--p-border-radius-3);
+      border-bottom-right-radius: var(--p-border-radius-3);
+    }
   }
 }
 
@@ -163,7 +170,7 @@
 
   #{$se23} & {
     background-color: var(--p-color-bg-secondary-experimental);
-    border-top: 0;
+    padding: var(--p-space-3) var(--p-space-4);
   }
 
   @media (-ms-high-contrast: active) {
@@ -173,6 +180,11 @@
   .Header + & {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
     margin-top: var(--p-space-5);
+
+    #{$se23} & {
+      border-top: 0;
+      margin-top: 0;
+    }
   }
 }
 
@@ -232,13 +244,13 @@
 .Footer {
   display: flex;
   justify-content: flex-end;
-  padding: 0 var(--p-space-4) var(--p-space-4);
+  padding: var(--p-space-2) var(--p-space-4) var(--p-space-4);
 
   @media #{$p-breakpoints-sm-up} {
     padding: 0 var(--p-space-5) var(--p-space-5);
 
     #{$se23} & {
-      padding: 0 var(--p-space-4) var(--p-space-4);
+      padding: var(--p-space-2) var(--p-space-4) var(--p-space-4);
     }
   }
 
@@ -254,5 +266,17 @@
       padding: var(--p-space-4);
       border-top: 0;
     }
+  }
+}
+
+.FirstSectionPadding {
+  #{$se23} & {
+    padding-top: var(--p-space-4);
+  }
+}
+
+.LastSectionPadding {
+  #{$se23} & {
+    padding-bottom: var(--p-space-4);
   }
 }

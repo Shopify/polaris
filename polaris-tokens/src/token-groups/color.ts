@@ -312,7 +312,7 @@ export const color: {
   },
   'color-bg-input': {
     value: colors.gray[50],
-    valueExperimental: colorsExperimental.gray[2](),
+    valueExperimental: colorsExperimental.gray[1](),
     description: '',
   },
   'color-bg': {

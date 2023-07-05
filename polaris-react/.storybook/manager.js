@@ -1,8 +1,8 @@
 import React from 'react';
-import {AddonPanel, ArgsTable} from '@storybook/components';
+import {AddonPanel, ArgsTable, Icons, IconButton} from '@storybook/components';
 import {addons, types} from '@storybook/addons';
 import {useGlobals} from '@storybook/api';
-import {create} from '@storybook/theming';
+import {styled, create} from '@storybook/theming';
 
 const colors = {
   primary: '#008060',
@@ -63,6 +63,12 @@ addons.register('polaris/global-controls', () => {
     match: ({viewMode}) => viewMode === 'story',
     render: ({active, key}) => <FeatureFlagPanel active={active} key={key} />,
   });
+  addons.add('github/link', {
+    type: types.TOOLEXTRA,
+    title: 'GitHub',
+    match: ({viewMode}) => viewMode === 'story' || viewMode === 'docs',
+    render: GitHubToolbar,
+  });
 });
 
 export const featureFlagOptions = {
@@ -102,6 +108,38 @@ export const gridOptions = {
     options: ['above', 'below'],
   },
 };
+
+const IconButtonLink = styled(IconButton)({
+  textDecoration: 'none',
+});
+
+function GitHubToolbar() {
+  let link;
+  let title;
+  let buttonText;
+
+  if (process.env.STORYBOOK_GITHUB_REPO_URL) {
+    link = `${process.env.STORYBOOK_GITHUB_REPO_URL}`;
+    title = 'View source on GitHub';
+    buttonText = 'GitHub';
+    if (process.env.STORYBOOK_GITHUB_PR) {
+      link = `${link}/pull/${process.env.STORYBOOK_GITHUB_PR}`;
+      title = `Built from PR #${process.env.STORYBOOK_GITHUB_PR}`;
+      buttonText = `PR #${process.env.STORYBOOK_GITHUB_PR}`;
+    } else if (process.env.STORYBOOK_GITHUB_SHA) {
+      link = `${link}/commit/${process.env.STORYBOOK_GITHUB_SHA}`;
+      title = `Built from commit ${process.env.STORYBOOK_GITHUB_SHA}`;
+      buttonText = <code>{process.env.STORYBOOK_GITHUB_SHA.slice(0, 7)}</code>;
+    }
+  }
+
+  return link ? (
+    <IconButtonLink as="a" href={link} title={title} target="_blank">
+      <Icons icon="github" />
+      &nbsp;{buttonText}
+    </IconButtonLink>
+  ) : null;
+}
 
 function FeatureFlagPanel(props) {
   const [globals, updateGlobals] = useGlobals();

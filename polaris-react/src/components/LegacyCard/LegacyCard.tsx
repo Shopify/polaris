@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
@@ -9,6 +9,7 @@ import type {DisableableAction, ComplexAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Button, buttonFrom} from '../Button';
 import {Popover} from '../Popover';
+import {useFeatures} from '../../utilities/features';
 
 import {Header, Section, Subsection} from './components';
 import styles from './LegacyCard.scss';
@@ -68,6 +69,7 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
   } = useToggle(false);
+  const legacyCard = useLegacyCardPaddingObserverRef();
 
   const className = classNames(
     styles.LegacyCard,
@@ -132,7 +134,7 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
 
   return (
     <WithinContentContext.Provider value>
-      <div className={className}>
+      <div className={className} ref={legacyCard}>
         {headerMarkup}
         {content}
         {footerMarkup}
@@ -144,3 +146,90 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
 LegacyCard.Header = Header;
 LegacyCard.Section = Section;
 LegacyCard.Subsection = Subsection;
+
+/*
+ * Hook to add extra padding on first and last section elements.
+ * Replace with css nth-child of when made available on
+ * more browser versions https://caniuse.com/css-nth-child-of.
+ */
+function useLegacyCardPaddingObserverRef() {
+  const {polarisSummerEditions2023} = useFeatures();
+  const legacyCard = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!polarisSummerEditions2023) {
+      return;
+    }
+
+    const legacyCardNode = legacyCard.current;
+    let firstSection: Element | undefined;
+    let lastSection: Element | undefined;
+
+    if (legacyCardNode) {
+      const updateFirstAndLastSectionPadding = () => {
+        // Reset old first and last section padding
+        updatePadding(firstSection, 'top', false);
+        updatePadding(lastSection, 'bottom', false);
+
+        // Get current first and last sections, return if they don't exist
+        const currentElements = legacyCardNode.querySelectorAll(
+          `.${styles.Section}, .${styles.Header}, .${styles.Footer}`,
+        );
+        if (!currentElements?.length) return;
+
+        const firstElement = currentElements[0];
+        const lastElement = currentElements[currentElements.length - 1];
+
+        // Update padding for first element if it is the first child or
+        // a descendant of the first child
+        if (legacyCardNode.firstChild?.contains(firstElement)) {
+          firstSection = firstElement;
+          updatePadding(firstSection, 'top', true);
+        }
+
+        // Update padding for last section no matter what child it is a
+        // descendant of
+        lastSection = lastElement;
+        updatePadding(lastSection, 'bottom', true);
+      };
+
+      // First initial render
+      updateFirstAndLastSectionPadding();
+
+      // Re-run when descendants are changed
+      const observer = new MutationObserver(updateFirstAndLastSectionPadding);
+      observer.observe(legacyCardNode, {
+        childList: true,
+        subtree: true,
+      });
+
+      return () => {
+        // Clean up by removing added classes
+        updatePadding(firstSection, 'top', false);
+        updatePadding(lastSection, 'bottom', false);
+        observer.disconnect();
+      };
+    }
+  }, [polarisSummerEditions2023]);
+
+  return legacyCard;
+}
+
+function updatePadding(
+  element: Element | undefined,
+  area: 'top' | 'bottom',
+  add: boolean,
+) {
+  if (!element || element.className.includes(styles['Section-flush'])) return;
+
+  switch (area) {
+    case 'top':
+      (element as HTMLElement).classList.toggle(
+        styles.FirstSectionPadding,
+        add,
+      );
+      return;
+    case 'bottom':
+      (element as HTMLElement).classList.toggle(styles.LastSectionPadding, add);
+  }
+}

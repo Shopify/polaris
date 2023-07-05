@@ -121,6 +121,12 @@ export function Item({
     </HorizontalStack>
   );
 
+  const contentWrapper = polarisSummerEditions2023 ? (
+    <Box width="100%">{contentElement}</Box>
+  ) : (
+    contentElement
+  );
+
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
 
   const control = url ? (
@@ -133,7 +139,7 @@ export function Item({
       onClick={disabled ? null : onAction}
       role={role}
     >
-      {contentElement}
+      {contentWrapper}
     </UnstyledLink>
   ) : (
     <button
@@ -147,7 +153,7 @@ export function Item({
       role={role}
       onMouseEnter={onMouseEnter}
     >
-      {contentElement}
+      {contentWrapper}
     </button>
   );
 
