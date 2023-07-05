@@ -106,7 +106,11 @@ export function Header({
 
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
-      <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+      <Box
+        maxWidth="100%"
+        paddingInlineEnd={polarisSummerEditions2023 ? '1' : '4'}
+        printHidden
+      >
         <Breadcrumbs backAction={backAction} />
       </Box>
     </div>
