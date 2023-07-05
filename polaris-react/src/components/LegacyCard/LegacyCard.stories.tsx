@@ -478,18 +478,17 @@ export function All() {
       <LegacyCard>
         Direct child text
         <LegacyCard.Section>Section 1 content</LegacyCard.Section>
-        <LegacyCard.Section>
-          Section 2 content, there is an empty div under this
-        </LegacyCard.Section>
+        <LegacyCard.Section>Section 2 content</LegacyCard.Section>
       </LegacyCard>
       <LegacyCard>
         <div>
           <h2>Custom header in an h2</h2>
         </div>
         <LegacyCard.Section>Section 1 content</LegacyCard.Section>
-        <LegacyCard.Section>
-          Section 2 content, there is an empty div under this
-        </LegacyCard.Section>
+        <LegacyCard.Section>Section 2 content</LegacyCard.Section>
+        <div>
+          <p>Custom footer in a p</p>
+        </div>
       </LegacyCard>
       <LegacyCard title="Sections are not siblings">
         <div>

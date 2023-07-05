@@ -69,7 +69,7 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
   } = useToggle(false);
-  const legacyCardNode = useLegacyCardPaddingObserverRef();
+  const legacyCard = useLegacyCardPaddingObserverRef();
 
   const className = classNames(
     styles.LegacyCard,
@@ -134,7 +134,7 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
 
   return (
     <WithinContentContext.Provider value>
-      <div className={className} ref={legacyCardNode}>
+      <div className={className} ref={legacyCard}>
         {headerMarkup}
         {content}
         {footerMarkup}
@@ -167,6 +167,7 @@ function useLegacyCardPaddingObserverRef() {
 
     if (legacyCardNode) {
       const updateFirstAndLastSectionPadding = () => {
+        console.log('updateFirstAndLastSectionPadding');
         // Reset old first and last section padding
         updatePadding(firstSection, 'top', false);
         updatePadding(lastSection, 'bottom', false);
@@ -187,12 +188,10 @@ function useLegacyCardPaddingObserverRef() {
           updatePadding(firstSection, 'top', true);
         }
 
-        // Update padding for last element if it is the last child or
-        // a descendant of the last child
-        if (legacyCardNode.lastChild?.contains(lastElement)) {
-          lastSection = lastElement;
-          updatePadding(lastSection, 'bottom', true);
-        }
+        // Update padding for last section no matter what child it is a
+        // descendant of
+        lastSection = lastElement;
+        updatePadding(lastSection, 'bottom', true);
       };
 
       // First initial render
