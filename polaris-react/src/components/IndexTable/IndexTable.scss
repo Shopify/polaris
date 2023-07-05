@@ -337,7 +337,6 @@ $loading-panel-height: 53px;
     --pc-index-table-checkbox-offset-left: var(--p-space-3);
     --pc-index-table-checkbox-offset-right: var(--p-space-2);
     // stylelint-enable
-    line-height: var(--p-font-line-height-1);
 
     &:first-child:not(.TableHeading-flush) {
       padding-left: var(--p-space-3);
@@ -846,6 +845,10 @@ $loading-panel-height: 53px;
   visibility: visible;
   background-color: var(--p-color-bg);
   box-shadow: var(--p-shadow-md);
+
+  #{$se23} & {
+    box-shadow: var(--p-shadow-xs);
+  }
 }
 
 .IndexTable:hover {
