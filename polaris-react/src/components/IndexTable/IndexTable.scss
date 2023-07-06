@@ -136,7 +136,7 @@ $loading-panel-height: 53px;
   .TableHeading-first,
   .TableHeading-second {
     #{$se23} & {
-      background-color: var(--p-color-bg-secondary-experimental);
+      background-color: var(--p-color-bg-subdued);
     }
   }
 
@@ -330,7 +330,6 @@ $loading-panel-height: 53px;
   border: 0;
 
   #{$se23} & {
-    background: var(--p-color-bg-secondary-experimental);
     // stylelint-disable -- Polaris component custom properties
     --pc-index-table-heading-padding-x: var(--p-space-1_5-experimental);
     --pc-index-table-heading-padding-y: var(--p-space-1_5-experimental);
@@ -366,10 +365,6 @@ $loading-panel-height: 53px;
 
 .TableHeading-sortable {
   background: var(--p-color-bg-subdued);
-
-  #{$se23} & {
-    background: var(--p-color-bg-secondary-experimental);
-  }
 }
 
 .TableHeading-flush {
@@ -702,7 +697,7 @@ $loading-panel-height: 53px;
       z-index: auto;
 
       #{$se23} & {
-        background-color: var(--p-color-bg-secondary-experimental);
+        background-color: var(--p-color-bg-subdued);
       }
     }
   }
@@ -773,10 +768,6 @@ $loading-panel-height: 53px;
 .Table-sortable {
   .TableHeading {
     background-color: var(--p-color-bg-subdued);
-
-    #{$se23} & {
-      background-color: var(--p-color-bg-secondary-experimental);
-    }
   }
 }
 
