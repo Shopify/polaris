@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Checkbox} from '@shopify/polaris';
+import {Checkbox, HorizontalStack} from '@shopify/polaris';
 
 export default {
   component: Checkbox,
@@ -34,45 +34,31 @@ export function Indeterminate() {
   );
 }
 
-export function DisabledUnchecked() {
-  const [checked, setChecked] = useState<CheckboxState>(false);
-  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
+export function DisabledStates() {
+  const handleChange = () => {
+    console.error('This should never be fired');
+  };
 
   return (
-    <Checkbox
-      label="Basic checkbox"
-      checked={checked}
-      disabled
-      onChange={handleChange}
-    />
-  );
-}
-
-export function DisabledChecked() {
-  const [checked, setChecked] = useState<CheckboxState>(true);
-  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
-
-  return (
-    <Checkbox
-      label="Basic checkbox"
-      checked={checked}
-      disabled
-      onChange={handleChange}
-    />
-  );
-}
-
-export function DisabledIndeterminate() {
-  const [checked, setChecked] = useState<CheckboxState>('indeterminate');
-  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
-
-  return (
-    <Checkbox
-      label="Basic checkbox"
-      checked={checked}
-      disabled
-      onChange={handleChange}
-    />
+    <HorizontalStack gap="2">
+      <Checkbox
+        label="Disabled unchecked checkbox"
+        disabled
+        onChange={handleChange}
+      />
+      <Checkbox
+        label="Disabled checked checkbox"
+        checked
+        disabled
+        onChange={handleChange}
+      />
+      <Checkbox
+        label="Disabled indeterminate checkbox"
+        checked="indeterminate"
+        disabled
+        onChange={handleChange}
+      />
+    </HorizontalStack>
   );
 }
 
