@@ -51,7 +51,6 @@
       @include control-backdrop(disabled);
       #{$se23} & {
         border: none;
-        border-color: var(--p-color-border-disabled);
         background-color: var(--p-color-bg-disabled);
       }
     }
