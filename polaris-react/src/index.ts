@@ -329,9 +329,6 @@ export type {SelectAllActionsProps} from './components/SelectAllActions';
 export {SettingToggle} from './components/SettingToggle';
 export type {SettingToggleProps} from './components/SettingToggle';
 
-export {ShadowBevel} from './components/ShadowBevel';
-export type {ShadowBevelProps} from './components/ShadowBevel';
-
 export {DATA_ATTRIBUTE} from './components/shared';
 
 export {Sheet} from './components/Sheet';

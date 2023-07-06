@@ -1,6 +1,8 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, ShadowBevel, VerticalStack, InlineCode} from '@shopify/polaris';
+import {Box, VerticalStack, InlineCode} from '@shopify/polaris';
+
+import {ShadowBevel} from './ShadowBevel';
 
 export default {
   component: ShadowBevel,
