@@ -57,13 +57,13 @@
       // stylelint-enable selector-max-combinators
     }
 
-    &:focus:not(.primary):not(.plain),
-    &:focus-visible:not(.primary):not(.plain) {
+    &:focus:not(.primary):not(.plain):not(.pressed),
+    &:focus-visible:not(.primary):not(.plain):not(.pressed) {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       box-shadow: var(--pc-button-shadow);
     }
 
-    &:hover {
+    &:hover:not(.pressed) {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       box-shadow: var(--pc-button-shadow-hover);
     }

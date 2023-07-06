@@ -19,7 +19,7 @@ export function WithSegmentedButtons() {
   return (
     <ButtonGroup segmented>
       <Button>Bold</Button>
-      <Button>Italic</Button>
+      <Button pressed>Italic</Button>
       <Button>Underline</Button>
     </ButtonGroup>
   );
