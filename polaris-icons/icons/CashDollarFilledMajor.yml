@@ -1,0 +1,12 @@
+name: Cash filled (dollar)
+set: major
+description: Used to represent Dollar currency.
+keywords:
+  - currency
+  - money
+authors:
+  - Joe Thomas
+version: 1
+date_added: 2023-07-06
+date_modified: 2023-07-06
+exclusive_use:

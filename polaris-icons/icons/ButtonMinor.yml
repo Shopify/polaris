@@ -1,6 +1,8 @@
 name: Button
 set: minor
-description: Used to represent a button block appearing as a sub-element of a section, page or layout.
+description: >-
+  Used to represent a button block appearing as a sub-element of a section, page
+  or layout.
 keywords:
   - button
   - press
@@ -9,7 +11,8 @@ keywords:
   - block
 authors:
   - Rozina Szogyenyi
+  - Joe Thomas
 version: 1
 date_added: 2021-08-18
-date_modified: 2021-08-18
+date_modified: 2023-06-23
 exclusive_use:
