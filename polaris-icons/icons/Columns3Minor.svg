@@ -1,3 +1,1 @@
-<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M16 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12Zm-2.667 2H16v12h-2.667V4ZM8.667 4h2.666v12H8.667V4Zm-2 0H4v12h2.667V4Z" fill="#5C5F62"/>
-</svg>
+<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-8a3 3 0 0 0-3-3h-8Zm5.25 1.5h-2.5v11h2.5v-11Zm1.5 0v11h1.25a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5h-1.25Zm-6.75 0h1.25v11h-1.25a1.5 1.5 0 0 1-1.5-1.5v-8a1.5 1.5 0 0 1 1.5-1.5Z" fill="#5C5F62"/></svg>
