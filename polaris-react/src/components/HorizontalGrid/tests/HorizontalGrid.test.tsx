@@ -12,6 +12,8 @@ describe('HorizontalGrid', () => {
     expect(horizontalGrid).toContainReactComponent('div', {
       style: {
         '--pc-horizontal-grid-gap-md': 'var(--p-space-1)',
+        '--pc-horizontal-grid-gap-lg': 'var(--p-space-1)',
+        '--pc-horizontal-grid-gap-xl': 'var(--p-space-1)',
         '--pc-horizontal-grid-align-items': 'start',
       } as React.CSSProperties,
     });
