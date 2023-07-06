@@ -25,6 +25,10 @@ describe('Box', () => {
     expect(box).toContainReactComponent('div', {
       style: {
         '--pc-box-padding-inline-start-xs': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-sm': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-md': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-lg': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-xl': 'var(--p-space-2)',
       } as React.CSSProperties,
     });
   });
@@ -39,9 +43,25 @@ describe('Box', () => {
     expect(box).toContainReactComponent('div', {
       style: {
         '--pc-box-padding-block-end-xs': 'var(--p-space-1)',
+        '--pc-box-padding-block-end-sm': 'var(--p-space-1)',
+        '--pc-box-padding-block-end-md': 'var(--p-space-1)',
+        '--pc-box-padding-block-end-lg': 'var(--p-space-1)',
+        '--pc-box-padding-block-end-xl': 'var(--p-space-1)',
         '--pc-box-padding-block-start-xs': 'var(--p-space-1)',
+        '--pc-box-padding-block-start-sm': 'var(--p-space-1)',
+        '--pc-box-padding-block-start-md': 'var(--p-space-1)',
+        '--pc-box-padding-block-start-lg': 'var(--p-space-1)',
+        '--pc-box-padding-block-start-xl': 'var(--p-space-1)',
         '--pc-box-padding-inline-end-xs': 'var(--p-space-1)',
+        '--pc-box-padding-inline-end-sm': 'var(--p-space-1)',
+        '--pc-box-padding-inline-end-md': 'var(--p-space-1)',
+        '--pc-box-padding-inline-end-lg': 'var(--p-space-1)',
+        '--pc-box-padding-inline-end-xl': 'var(--p-space-1)',
         '--pc-box-padding-inline-start-xs': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-sm': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-md': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-lg': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-xl': 'var(--p-space-2)',
       } as React.CSSProperties,
     });
   });
