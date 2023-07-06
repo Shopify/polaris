@@ -359,7 +359,6 @@
           rgba(255, 255, 255, 0.1) 0%,
           rgba(255, 255, 255, 0) 100%
         );
-        // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
         box-shadow: var(--p-shadow-button-primary-strong-inset-experimental);
       }
 
