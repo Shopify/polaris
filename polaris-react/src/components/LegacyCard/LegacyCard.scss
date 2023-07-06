@@ -105,7 +105,8 @@
   border-top-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
-    border-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 
     @media #{$p-breakpoints-sm-up} {
       border-top-left-radius: var(--p-border-radius-3);
@@ -119,7 +120,8 @@
   border-bottom-right-radius: var(--p-border-radius-2);
 
   #{$se23} & {
-    border-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 
     @media #{$p-breakpoints-sm-up} {
       border-bottom-left-radius: var(--p-border-radius-3);
