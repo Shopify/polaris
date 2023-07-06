@@ -1,5 +1,18 @@
 # Changelog
 
+## 11.4.4
+
+### Patch Changes
+
+- [#9634](https://github.com/Shopify/polaris/pull/9634) [`d3b75154f`](https://github.com/Shopify/polaris/commit/d3b75154f8df45752532f374c13f015dd3045054) Thanks [@qt314](https://github.com/qt314)! - Legacy card update experimental padding
+
+## 11.4.3
+
+### Patch Changes
+
+- Updated dependencies [[`e566211ef`](https://github.com/Shopify/polaris/commit/e566211ef79c9d178615a85895007bdef45d755e)]:
+  - @shopify/polaris-icons@7.3.0
+
 ## 11.4.2
 
 ### Patch Changes

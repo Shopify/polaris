@@ -1,6 +1,8 @@
 name: Shipment
 set: major
-description: Used to represent shipping-related events or actions such as shipping labels or tracking information.
+description: >-
+  Used to represent shipping-related events or actions such as shipping labels
+  or tracking information.
 keywords:
   - shipping
   - shipment
@@ -12,11 +14,9 @@ keywords:
   - tracking
   - truck
 authors:
-  # - Sasha Oliveira
-  # - Co-author’s name (optional)
-  # (delete this comment block)
   - N/A
+  - Joe Thomas
 version: 1
 date_added: 2019-03-01
-date_modified: 2019-03-01
+date_modified: 2023-06-23
 exclusive_use:

@@ -1,6 +1,8 @@
 name: Soft pack
 set: major
-description: Used to represent a soft pack envelope (or bubble mailer) that merchants can use to ship orders to their customers.
+description: >-
+  Used to represent a soft pack envelope (or bubble mailer) that merchants can
+  use to ship orders to their customers.
 keywords:
   - shipping
   - packaging
@@ -10,11 +12,9 @@ keywords:
   - bubblewrap
   - padded
 authors:
-  # - Sasha Oliveira
-  # - Co-author’s name (optional)
-  # (delete this comment block)
   - N/A
+  - Joe Thomas
 version: 1
 date_added: 2019-03-01
-date_modified: 2019-03-01
+date_modified: 2023-06-23
 exclusive_use:
