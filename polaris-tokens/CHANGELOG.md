@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.5.0
+
+### Minor Changes
+
+- [#9628](https://github.com/Shopify/polaris/pull/9628) [`6d4baffde`](https://github.com/Shopify/polaris/commit/6d4baffdeb63d4cb1265b201b8490677d25e8c5e) Thanks [@yurm04](https://github.com/yurm04)! - Added border-radius-1_5-experimental token
+
+* [#9606](https://github.com/Shopify/polaris/pull/9606) [`3536e3aa0`](https://github.com/Shopify/polaris/commit/3536e3aa006896ae31c9148832230322ceaa823d) Thanks [@jesstelford](https://github.com/jesstelford)! - Export `breakpointAliases` to JS, facilitating easy breakpoint size iterations.
+
+- [#9552](https://github.com/Shopify/polaris/pull/9552) [`58406fd98`](https://github.com/Shopify/polaris/commit/58406fd98db3561fb4e3f55fc44f51202a98024f) Thanks [@yurm04](https://github.com/yurm04)! - Added border shadow inset experimental token
+
+### Patch Changes
+
+- [#9621](https://github.com/Shopify/polaris/pull/9621) [`26053bd3f`](https://github.com/Shopify/polaris/commit/26053bd3f13920ff30ff29c78d55b000b017cef2) Thanks [@samrose3](https://github.com/samrose3)! - Only use Inter for experimental styles
+
 ## 7.4.0
 
 ### Minor Changes
