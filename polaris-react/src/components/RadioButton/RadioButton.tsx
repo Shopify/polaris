@@ -1,6 +1,5 @@
 import React, {useRef, useId} from 'react';
 
-import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 
@@ -52,12 +51,6 @@ export function RadioButton({
   const name = nameProp || id;
   const inputNode = useRef<HTMLInputElement>(null);
 
-  const {
-    value: mouseOver,
-    setTrue: handleMouseOver,
-    setFalse: handleMouseOut,
-  } = useToggle(false);
-
   const handleBlur = () => {
     onBlur && onBlur();
   };
@@ -79,11 +72,6 @@ export function RadioButton({
 
   const inputClassName = classNames(styles.Input);
 
-  const backdropClassName = classNames(
-    styles.Backdrop,
-    mouseOver && styles.hover,
-  );
-
   return (
     <Choice
       label={label}
@@ -91,8 +79,7 @@ export function RadioButton({
       disabled={disabled}
       id={id}
       helpText={helpText}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
+      labelClassName={styles.ChoiceLabel}
     >
       <span className={styles.RadioButton}>
         <input
@@ -109,7 +96,7 @@ export function RadioButton({
           aria-describedby={ariaDescribedBy}
           ref={inputNode}
         />
-        <span className={backdropClassName} />
+        <span className={styles.Backdrop} />
       </span>
     </Choice>
   );
