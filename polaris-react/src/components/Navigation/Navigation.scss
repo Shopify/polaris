@@ -124,7 +124,7 @@ $nav-max-width: 360px;
   #{$se23} & {
     // stylelint-disable-next-line selector-max-combinators -- se23
     .Badge {
-      margin-right: var(--p-space-04);
+      margin-right: 0;
     }
   }
 }
