@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.3.0
+
+### Minor Changes
+
+- [#9520](https://github.com/Shopify/polaris/pull/9520) [`e566211ef`](https://github.com/Shopify/polaris/commit/e566211ef79c9d178615a85895007bdef45d755e) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated all icon styles
+
 ## 7.2.0
 
 ### Minor Changes
