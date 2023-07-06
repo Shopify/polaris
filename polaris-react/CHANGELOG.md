@@ -1,5 +1,43 @@
 # Changelog
 
+## 11.4.2
+
+### Patch Changes
+
+- [#9612](https://github.com/Shopify/polaris/pull/9612) [`e552c9a15`](https://github.com/Shopify/polaris/commit/e552c9a154e541612b34e10281d79ed443866ede) Thanks [@jesstelford](https://github.com/jesstelford)! - - [Choice][checkbox][RadioButton] Use CSS-native `:hover` styling.
+
+  By using CSS-native hover styling, and pulling it up to the wrapping `<label>`
+  it avoids an issue where the browser would briefly detect hover with the
+  :hover pseudo selector setting `cursor: pointer`, but then get overwritten
+  with the JS onMouseOver styles 100ms later to `cursor: default`, resulting in
+  a flash of a pointy-hand for the cursor on disabled Checkbox.
+
+* [#9606](https://github.com/Shopify/polaris/pull/9606) [`3536e3aa0`](https://github.com/Shopify/polaris/commit/3536e3aa006896ae31c9148832230322ceaa823d) Thanks [@jesstelford](https://github.com/jesstelford)! - - [Internal]: Generate contiguous responsive CSS variables.
+
+  Ensures the CSS vars set via `style` props will override the responsive-props
+  SASS mixin which forces them to have a value of `initial`.
+
+  Forcing to `initial` is required when components are nested to avoid an outer
+  component accidentally setting a value for a nested component by specifying a
+  CSS variable (CSS vars are globally scoped and later-in-DOM has more
+  specificity).
+
+  However, `initial` is [not usable within a
+  `calc()`](https://polaris.shopify.com/sandbox?code=N4Igxg9gJgpiBcIA8UCWA3ABAZwC4E8AbGAXmGEwAcBDKNAOwHN5MAdcawsAClXtVypOmANSYAzACcYAWwCU7TAF8lAPlb1MmAMLV6AclyYArthiYkkWKr4ChhJAHorMVZj46Ayp4svVYTh45Jz8NJzR0dXoQABoQXAALWRhsBABtEEIIAOJ4GGiAXTiAd1QoRNT4NIKlIA),
+  so any unset values will not [fallback as they would when the browser
+  encounters a `var(--some-var-equals-initial, fallback)`](https://polaris.shopify.com/sandbox?code=N4Igxg9gJgpiBcIA8UCWA3ABAZwC4E8AbGAXmGEwHIBaagBzGuwgFsZr0BDAJ0vitQA7VLlSdClADSY6nKGkEBzfgB0QXbgApaDJq3YbpAZm4wWASjWYAvtYB8KwZkxJIsOxs3mkAejcw7TC5CAFcYbEwIADMXfzshETFCXzjMEOwYTFwAC0yo8UIAI04wAGsg8TDHXzR0OxBJEByzcIQAbRBCCDBxGHgYQRAAXUaAd1QoHOx2oesgA).
+
+  Adding this `forceContiguous` flag means we can be sure we're setting exactly
+  what the user asked for when passing in their prop, and not `initial`,
+  therefore retaining the existing behaviour while forward supporting the usage
+  of `calc()`. We still need the `initial` values to ensure any lower
+  breakpoints that are unset do not inherit parent values accidentally.
+
+- [#9621](https://github.com/Shopify/polaris/pull/9621) [`26053bd3f`](https://github.com/Shopify/polaris/commit/26053bd3f13920ff30ff29c78d55b000b017cef2) Thanks [@samrose3](https://github.com/samrose3)! - Only use Inter for experimental styles
+
+- Updated dependencies [[`6d4baffde`](https://github.com/Shopify/polaris/commit/6d4baffdeb63d4cb1265b201b8490677d25e8c5e), [`3536e3aa0`](https://github.com/Shopify/polaris/commit/3536e3aa006896ae31c9148832230322ceaa823d), [`58406fd98`](https://github.com/Shopify/polaris/commit/58406fd98db3561fb4e3f55fc44f51202a98024f), [`26053bd3f`](https://github.com/Shopify/polaris/commit/26053bd3f13920ff30ff29c78d55b000b017cef2)]:
+  - @shopify/polaris-tokens@7.5.0
+
 ## 11.4.1
 
 ### Patch Changes
