@@ -1,4 +1,4 @@
-name: Metafields
+name: Metafields filled
 set: minor
 description: Used to represent metafields
 keywords:
@@ -7,6 +7,6 @@ keywords:
 authors:
   - Joe Thomas
 version: 1
-date_added: 2023-06-23
-date_modified: 2023-06-23
+date_added: 2023-07-06
+date_modified: 2023-07-06
 exclusive_use:
