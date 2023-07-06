@@ -34,7 +34,6 @@
 
     &.sizeExtraSmall,
     &.sizeExtraSmall::after {
-      // stylelint-disable-next-line -- SE23 styling, no 6px radius token
       border-radius: var(--p-border-radius-1_5-experimental);
     }
 
