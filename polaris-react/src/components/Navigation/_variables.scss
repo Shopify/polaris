@@ -55,7 +55,7 @@ $nav-animation-variables: (
   }
 
   #{$se23} & {
-    padding-left: var(--p-space-1);
+    padding-left: var(--p-space-2);
 
     &:focus-visible:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
