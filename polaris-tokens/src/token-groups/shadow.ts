@@ -1,6 +1,7 @@
 import type {MetadataProperties, Experimental} from '../types';
 
 type ShadowAliasExperimental = Experimental<
+  | 'bevel'
   | 'card-sm'
   | 'card-md'
   | 'card-lg'
@@ -83,6 +84,10 @@ export const shadow: {
     value:
       '0px 32px 32px rgba(31, 33, 36, 0.15), 0px 32px 56px -2px rgba(31, 33, 36, 0.16)',
     valueExperimental: '0px 20px 20px -8px rgba(0, 0, 0, 0.28)',
+  },
+  'shadow-bevel-experimental': {
+    value:
+      '1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, 0px 1px 0px 0px rgba(204, 204, 204, 0.5) inset',
   },
   'shadow-card-sm-experimental': {
     value:

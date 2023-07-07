@@ -1,0 +1,30 @@
+/// Applies a shadow-bevel effect to an element.
+/// @param $boxShadow - Polaris ShadowBorderAlias custom property.
+/// @param $borderRadius - Polaris BorderRadiusScale custom property.
+/// @param $content - Declaration passed to the pseudo-element. Used for toggling the bevel effect.
+/// @param $zIndex - Declaration passed to the pseudo-element. Used for adjusting the stacking order.
+@mixin shadow-bevel(
+  $boxShadow: null,
+  $borderRadius: null,
+  $content: '',
+  $zIndex: 0
+) {
+  position: relative;
+  box-shadow: $boxShadow;
+  border-radius: $borderRadius;
+
+  &::before {
+    content: $content;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // stylelint-disable-next-line -- Not expected to use Polaris custom properties
+    z-index: $zIndex;
+    box-shadow: var(--p-shadow-bevel-experimental);
+    border-radius: $borderRadius;
+    pointer-events: none;
+    mix-blend-mode: luminosity;
+  }
+}
