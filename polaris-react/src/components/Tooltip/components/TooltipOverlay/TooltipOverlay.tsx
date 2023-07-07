@@ -84,6 +84,7 @@ export function TooltipOverlay({
 
     return (
       <div style={style} className={containerClassName} {...layer.props}>
+        <div className={styles.Tail} />
         <div
           id={id}
           role="tooltip"

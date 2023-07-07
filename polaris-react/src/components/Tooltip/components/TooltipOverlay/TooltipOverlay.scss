@@ -16,15 +16,40 @@
   transition: none;
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-xl);
+    // @include shadow-bevel(
+    //   $boxShadow: var(--p-shadow-md),
+    //   $borderRadius: var(--pc-tooltip-border-radius),
+    //   $zIndex: 1
+    // );
+    border: 1px solid lightgray;
   }
 
   @media screen and (-ms-high-contrast: active) {
     border: var(--p-border-width-2) solid windowText;
   }
 
+  .Tail {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 0 0 3px 0;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    transform: rotate(45deg);
+    position: absolute;
+    z-index: 1;
+    top: calc(var(--p-space-4) * -1);
+    // stylelint-disable-next-line -- No Polaris layout component offers this
+    left: calc(
+      var(--pc-tooltip-chevron-x-pos) - var(--p-space-2) - var(--p-space-4)
+    );
+
+    top: auto;
+    bottom: calc((-1 * var(--p-space-1)) - 0px);
+  }
+
   &::after {
-    content: '';
+    content: none;
     position: absolute;
     top: calc(var(--p-space-4) * -1);
     // stylelint-disable-next-line -- No Polaris layout component offers this

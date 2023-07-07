@@ -6,6 +6,7 @@ import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-ma
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 
 import {TooltipOverlay} from './components';
 import type {TooltipOverlayProps} from './components';
@@ -13,7 +14,10 @@ import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpaceScale, '4'>;
-export type BorderRadius = Extract<BorderRadiusScale, '1' | '2'>;
+export type BorderRadius = Extract<
+  BorderRadiusScale,
+  '1' | '2' | '1_5-experimental'
+>;
 
 export interface TooltipProps {
   /** The element that will activate to tooltip */
@@ -78,13 +82,18 @@ export function Tooltip({
   accessibilityLabel,
   width = 'default',
   padding = 'default',
-  borderRadius = '1',
+  borderRadius: borderRadiusProp,
   zIndexOverride,
   hasUnderline,
   persistOnClick,
   onOpen,
   onClose,
 }: TooltipProps) {
+  const {polarisSummerEditions} = useFeatures();
+
+  const borderRadius =
+    borderRadiusProp ?? (polarisSummerEditions ? '1_5-experimental' : '1');
+
   const WrapperComponent: any = activatorWrapper;
   const {
     value: active,
