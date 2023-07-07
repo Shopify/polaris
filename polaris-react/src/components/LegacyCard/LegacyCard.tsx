@@ -187,10 +187,12 @@ function useLegacyCardPaddingObserverRef() {
           updatePadding(firstSection, 'top', true);
         }
 
-        // Update padding for last section no matter what child it is a
-        // descendant of
-        lastSection = lastElement;
-        updatePadding(lastSection, 'bottom', true);
+        // Update padding for last element if it is the last child or
+        // a descendant of the last child
+        if (legacyCardNode.lastChild?.contains(lastElement)) {
+          lastSection = lastElement;
+          updatePadding(lastSection, 'bottom', true);
+        }
       };
 
       // First initial render
