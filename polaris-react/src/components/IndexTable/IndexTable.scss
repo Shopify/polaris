@@ -18,12 +18,6 @@
     --pc-index-table-table-header-offset: 32px;
     border-radius: 0;
 
-    // This is to account for the changing Checkbox size at this breakpoint.
-    @media #{$p-breakpoints-md-up} {
-      // stylelint-disable-next-line -- Polaris component custom properties
-      --pc-index-table-table-header-offset: 30px;
-    }
-
     @media #{$p-breakpoints-sm-up} {
       border-radius: inherit;
       border-start-start-radius: 0;
@@ -908,7 +902,7 @@ $loading-panel-height: 53px;
     padding-left: var(--p-space-3);
     padding-top: var(--p-space-1_5-experimental);
     padding-bottom: var(--p-space-1_5-experimental);
-    line-height: var(--p-font-line-height-1);
+    line-height: var(--p-font-line-height-2);
   }
 }
 
