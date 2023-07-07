@@ -5,7 +5,8 @@
     // stylelint-disable-next-line -- se23
     svg,
     path {
-      fill: $fill-color;
+      // stylelint-disable-next-line -- se23 to override button
+      fill: $fill-color !important;
     }
   }
 }
