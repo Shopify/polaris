@@ -7,11 +7,7 @@
   overflow: clip;
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-card-sm-experimental);
-
-    @media print {
-      box-shadow: none;
-    }
+    box-shadow: var(--p-shadow-xs);
   }
 
   + .LegacyCard {
@@ -26,12 +22,23 @@
     border-radius: var(--p-border-radius-2);
 
     #{$se23} & {
-      border-radius: var(--p-border-radius-3);
+      @include shadow-bevel(
+        $boxShadow: var(--p-shadow-xs),
+        $borderRadius: var(--p-border-radius-3)
+      );
     }
   }
 
   @media print {
     box-shadow: none;
+
+    #{$se23} & {
+      @include shadow-bevel(
+        $boxShadow: none,
+        $borderRadius: none,
+        $content: none
+      );
+    }
   }
 }
 
