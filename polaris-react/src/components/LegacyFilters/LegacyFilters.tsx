@@ -238,7 +238,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
             <Button
               onClick={this.toggleFilters}
               disabled={disabled}
-              size={polarisSummerEditions2023 ? 'large' : undefined}
+              size={polarisSummerEditions2023 ? 'large' : 'medium'}
             >
               {moreFiltersLabel}
             </Button>
