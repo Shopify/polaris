@@ -36,7 +36,6 @@
         $boxShadow: var(--p-shadow-xs),
         $borderRadius: var(--p-border-radius-3)
       );
-      border-radius: var(--p-border-radius-3);
 
       // stylelint-disable-next-line -- se23 override
       .Section:first-child {
@@ -58,7 +57,7 @@
     #{$se23} & {
       @include shadow-bevel(
         $boxShadow: none,
-        $borderRadius: none,
+        $borderRadius: var(--p-border-radius-0-experimental),
         $content: none
       );
     }
