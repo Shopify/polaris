@@ -469,7 +469,7 @@ export const Tabs = ({
 
   const disclosureButtonContent = (
     <>
-      <Text as="span" variant="bodySm" fontWeight="semibold">
+      <Text as="span" variant="bodySm" fontWeight="medium">
         {disclosureText ?? i18n.translate('Polaris.Tabs.toggleTabsLabel')}
       </Text>
       <div
@@ -584,6 +584,7 @@ export const Tabs = ({
                 <li className={disclosureTabClassName} role="presentation">
                   <Popover
                     preferredPosition="below"
+                    preferredAlignment="left"
                     activator={activator}
                     active={disclosureActivatorVisible && showDisclosure}
                     onClose={handleClose}
