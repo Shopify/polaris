@@ -23,7 +23,6 @@ export interface ItemProps extends ItemURLDetails {
   exactMatch?: boolean;
   new?: boolean;
   showVerticalLine?: boolean;
-  showVerticalHoverLine?: boolean;
   showVerticalHoverPointer?: boolean;
   onMouseEnter?(label: string): void;
   onMouseLeave?(): void;
