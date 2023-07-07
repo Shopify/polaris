@@ -143,6 +143,7 @@ $spinner-icon-size: 12px;
 
     #{$se23} & {
       border: none;
+      background-color: var(--p-color-bg-disabled);
     }
   }
 
