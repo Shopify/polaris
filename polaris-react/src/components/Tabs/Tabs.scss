@@ -195,7 +195,7 @@
     }
 
     &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
+      background-color: var(--p-color-bg-transparent-active-experimental);
     }
   }
 }
