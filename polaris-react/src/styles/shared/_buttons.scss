@@ -81,10 +81,12 @@
 
       &:hover {
         background: var(--p-color-bg-strong-hover);
+        box-shadow: var(--p-shadow-inset-md);
       }
 
       &:active {
         background: var(--p-color-bg-strong-active);
+        box-shadow: var(--p-shadow-inset-md);
       }
     }
   }
