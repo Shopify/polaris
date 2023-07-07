@@ -123,6 +123,7 @@ $nav-animation-variables: (
 
   #{$se23} & {
     // stylelint-disable -- se23
+    // This should match the value for --p-color-icon-primary i.e. #1a1a1a
     --pc-navigation-filter-icon-action-primary: invert(10%) sepia(11%)
       saturate(0%) hue-rotate(159deg) brightness(105%) contrast(102%);
     // stylelint-enable
