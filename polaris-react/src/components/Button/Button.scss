@@ -1019,10 +1019,19 @@
 
     svg {
       fill: var(--p-color-icon);
+
+      #{$se23} & {
+        fill: var(--p-color-icon-subdued);
+      }
     }
 
     &:hover svg {
       fill: var(--p-color-icon-hover);
+
+      #{$se23} & {
+        // Specificity bump
+        fill: var(--p-color-icon-hover);
+      }
     }
 
     &:active svg,
