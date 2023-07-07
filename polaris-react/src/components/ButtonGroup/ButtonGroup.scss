@@ -46,6 +46,7 @@
     line-height: normal;
 
     #{$se23} & {
+      // stylelint-disable-next-line polaris/z-index/declaration-property-value-allowed-list -- se23 temporary styles
       z-index: unset;
     }
 
