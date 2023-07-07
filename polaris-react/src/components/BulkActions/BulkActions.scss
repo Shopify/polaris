@@ -60,7 +60,10 @@ $bulk-actions-button-stacking-order: (
   pointer-events: auto;
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-card-lg-experimental);
+    @include shadow-bevel(
+      $boxShadow: var(--p-shadow-md),
+      $borderRadius: var(--p-border-radius-2)
+    );
   }
 
   @media #{$p-breakpoints-sm-down} {
