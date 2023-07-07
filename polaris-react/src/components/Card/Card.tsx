@@ -9,6 +9,7 @@ import React from 'react';
 import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
+import {ShadowBevel} from '../ShadowBevel';
 import {useFeatures} from '../../utilities/features';
 import {WithinContentContext} from '../../utilities/within-content-context';
 
@@ -62,16 +63,32 @@ export const Card = ({
 
   return (
     <WithinContentContext.Provider value>
-      <Box
-        background={background}
-        padding={finalPadding}
-        shadow={polarisSummerEditions2023 ? 'card-sm-experimental' : 'md'}
-        borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
-        overflowX="hidden"
-        overflowY="hidden"
-      >
-        {children}
-      </Box>
+      {polarisSummerEditions2023 ? (
+        <ShadowBevel
+          boxShadow="xs"
+          borderRadius={hasBorderRadius ? '3' : '0-experimental'}
+        >
+          <Box
+            background={background}
+            padding={finalPadding}
+            overflowX="hidden"
+            overflowY="hidden"
+          >
+            {children}
+          </Box>
+        </ShadowBevel>
+      ) : (
+        <Box
+          background={background}
+          padding={finalPadding}
+          shadow="md"
+          borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
+          overflowX="hidden"
+          overflowY="hidden"
+        >
+          {children}
+        </Box>
+      )}
     </WithinContentContext.Provider>
   );
 };
