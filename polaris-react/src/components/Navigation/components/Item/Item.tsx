@@ -327,8 +327,12 @@ export function Item({
           className={classNames(
             styles.ItemInnerWrapper,
             polarisSummerEditions2023
-              ? (selected || childIsActive) &&
-                  styles['ItemInnerWrapper-selected']
+              ? (selected &&
+                  childIsActive &&
+                  styles['ItemInnerWrapper-open']) ||
+                  (selected &&
+                    !childIsActive &&
+                    styles['ItemInnerWrapper-selected'])
               : selected && canBeActive && styles['ItemInnerWrapper-selected'],
             displayActionsOnHover &&
               styles['ItemInnerWrapper-display-actions-on-hover'],
