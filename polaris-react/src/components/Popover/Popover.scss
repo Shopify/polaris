@@ -16,8 +16,7 @@ $vertical-motion-offset: -5px;
   #{$se23} & {
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
-      $borderRadius: var(--p-border-radius-3),
-      $zIndex: 1
+      $borderRadius: var(--p-border-radius-3)
     );
   }
 }
