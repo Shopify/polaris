@@ -15,7 +15,11 @@
 
     #{$se23} & {
       border: none;
-      box-shadow: var(--p-shadow-sm);
+
+      @include shadow-bevel(
+        $boxShadow: var(--p-shadow-sm),
+        $borderRadius: var(--p-border-radius-0-experimental)
+      );
     }
 
     @media #{$p-breakpoints-sm-up} {
