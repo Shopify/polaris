@@ -71,6 +71,7 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-left: var(--p-space-5);
 
   #{$se23} & {
+    max-width: calc(100% - var(--p-space-4));
     margin-left: var(--p-space-4);
   }
 
