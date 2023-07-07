@@ -10,34 +10,29 @@
   }
 
   @if $in-page {
-    border-radius: var(--p-border-radius-2);
-
-    @media #{$p-breakpoints-sm-down} {
-      border-radius: 0;
-      border-width: var(--p-border-width-1) 0;
-    }
+    border-radius: 0;
+    border-width: var(--p-border-width-1) 0;
 
     #{$se23} & {
-      border-radius: var(--p-border-radius-3);
+      border: none;
 
-      &::before {
-        content: '';
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        position: absolute;
-        border-radius: var(--p-border-radius-3);
-        box-shadow: var(--p-shadow-card-md-experimental);
-        pointer-events: none;
+      @include shadow-bevel(
+        $boxShadow: var(--p-shadow-sm),
+        $borderRadius: var(--p-border-radius-0-experimental)
+      );
+    }
 
-        @media #{$p-breakpoints-sm-down} {
-          border-radius: 0;
-        }
-      }
+    @media #{$p-breakpoints-sm-up} {
+      border-width: var(--p-border-width-1);
+      border-radius: var(--p-border-radius-2);
 
-      @media #{$p-breakpoints-sm-down} {
-        border-radius: 0;
+      #{$se23} & {
+        border: none;
+
+        @include shadow-bevel(
+          $boxShadow: var(--p-shadow-sm),
+          $borderRadius: var(--p-border-radius-3)
+        );
       }
     }
   } @else {

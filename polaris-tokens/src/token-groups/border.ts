@@ -1,6 +1,6 @@
 import type {Experimental, MetadataProperties} from '../types';
 
-type BorderRadiusScaleExperimental = Experimental<'1_5'>;
+type BorderRadiusScaleExperimental = Experimental<'0' | '1_5'>;
 
 export type BorderRadiusScale =
   | '05'
@@ -34,6 +34,9 @@ export type BorderTokenGroup = {
 export const border: {
   [TokenName in BorderTokenName]: MetadataProperties;
 } = {
+  'border-radius-0-experimental': {
+    value: '0px',
+  },
   'border-radius-05': {
     value: '2px',
   },
