@@ -470,10 +470,12 @@ export function WithChildrenContent() {
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
             >
-              <div style={{paddingLeft: '8px'}}>
+              <div
+                style={polarisSummerEditions2023 ? {} : {paddingLeft: '8px'}}
+              >
                 <Button
                   onClick={() => console.log('New filter saved')}
-                  size={polarisSummerEditions2023 ? 'large' : undefined}
+                  size={polarisSummerEditions2023 ? 'large' : 'medium'}
                 >
                   Save
                 </Button>
@@ -598,11 +600,13 @@ export function Disabled() {
               onClearAll={handleClearAll}
               disabled
             >
-              <div style={{paddingLeft: '8px'}}>
+              <div
+                style={polarisSummerEditions2023 ? {} : {paddingLeft: '8px'}}
+              >
                 <Button
                   disabled
                   onClick={() => console.log('New filter saved')}
-                  size={polarisSummerEditions2023 ? 'large' : undefined}
+                  size={polarisSummerEditions2023 ? 'large' : 'medium'}
                 >
                   Save
                 </Button>
@@ -746,10 +750,12 @@ export function SomeDisabled() {
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
             >
-              <div style={{paddingLeft: '8px'}}>
+              <div
+                style={polarisSummerEditions2023 ? {} : {paddingLeft: '8px'}}
+              >
                 <Button
                   disabled
-                  size={polarisSummerEditions2023 ? 'large' : undefined}
+                  size={polarisSummerEditions2023 ? 'large' : 'medium'}
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -876,10 +882,12 @@ export function WithoutClearButton() {
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
             >
-              <div style={{paddingLeft: '8px'}}>
+              <div
+                style={polarisSummerEditions2023 ? {} : {paddingLeft: '8px'}}
+              >
                 <Button
                   disabled
-                  size={polarisSummerEditions2023 ? 'large' : undefined}
+                  size={polarisSummerEditions2023 ? 'large' : 'medium'}
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
