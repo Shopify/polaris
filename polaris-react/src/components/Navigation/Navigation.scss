@@ -141,6 +141,10 @@ $nav-max-width: 360px;
 .ItemWrapper {
   width: 100%;
   padding: 0 var(--p-space-2);
+
+  #{$se23} & {
+    padding: 0 var(--p-space-3);
+  }
 }
 
 .ItemInnerWrapper {
@@ -558,7 +562,7 @@ $nav-max-width: 360px;
     #{$se23} & {
       position: relative;
       font-weight: var(--p-font-weight-regular);
-      padding-left: var(--p-space-8);
+      padding-left: calc(var(--p-space-8) + var(--p-space-1));
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
       &:is(:hover, :focus-visible) {
@@ -571,7 +575,7 @@ $nav-max-width: 360px;
         content: '';
         position: absolute;
         top: 0;
-        left: var(--p-space-1);
+        left: var(--p-space-2);
         width: 21px;
         height: 28px;
         border-radius: 0;
@@ -776,7 +780,8 @@ $nav-max-width: 360px;
   }
 
   #{$se23} & {
-    padding-left: var(--p-space-3);
+    padding-left: var(--p-space-5);
+    padding-right: var(--p-space-1);
   }
 
   .Action {
