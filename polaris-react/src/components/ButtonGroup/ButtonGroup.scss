@@ -45,6 +45,10 @@
     margin-left: 0;
     line-height: normal;
 
+    #{$se23} & {
+      z-index: unset;
+    }
+
     &:not(:first-child) {
       margin-left: calc(-1 * var(--p-space-025));
     }
