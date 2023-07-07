@@ -46,6 +46,7 @@ export function SecondaryNavigation({
     <div
       className={classNames(
         styles.SecondaryNavigation,
+        showExpanded && styles.SecondaryNavigationOpen,
         !icon && styles['SecondaryNavigation-noIcon'],
       )}
     >
@@ -69,27 +70,12 @@ export function SecondaryNavigation({
               ? index < matchedItemPosition
               : false;
 
-            const shouldShowVerticalHoverLine = polarisSummerEditions2023
-              ? index < hoveredItemPosition
-              : false;
-
-            const shouldShowVerticalHoverLineEmphasis =
-              polarisSummerEditions2023 &&
-              hoveredItemPosition < matchedItemPosition
-                ? index < hoveredItemPosition
-                : false;
-
             return (
               <ItemComponent
                 key={label}
                 {...rest}
                 label={label}
-                showVerticalLine={
-                  shouldShowVerticalHoverLineEmphasis
-                    ? undefined
-                    : shouldShowVerticalLine
-                }
-                showVerticalHoverLine={shouldShowVerticalHoverLine}
+                showVerticalLine={shouldShowVerticalLine}
                 showVerticalHoverPointer={
                   polarisSummerEditions2023 && index === hoveredItemPosition
                 }
