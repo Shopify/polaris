@@ -1,0 +1,27 @@
+@import '../../styles/common';
+
+.ShadowBevel {
+  overflow: hidden;
+
+  @include responsive-props(
+    $componentName: 'shadow-bevel',
+    $componentProp: 'box-shadow',
+    $declarationProp: '--pc-shadow-bevel-box-shadow'
+  );
+  @include responsive-props(
+    $componentName: 'shadow-bevel',
+    $componentProp: 'border-radius',
+    $declarationProp: '--pc-shadow-bevel-border-radius'
+  );
+  @include responsive-props(
+    $componentName: 'shadow-bevel',
+    $componentProp: 'content',
+    $declarationProp: '--pc-shadow-bevel-content'
+  );
+
+  @include shadow-bevel(
+    $boxShadow: var(--pc-shadow-bevel-box-shadow),
+    $borderRadius: var(--pc-shadow-bevel-border-radius),
+    $content: var(--pc-shadow-bevel-content)
+  );
+}
