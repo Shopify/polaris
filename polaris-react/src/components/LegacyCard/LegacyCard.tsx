@@ -178,7 +178,7 @@ function useLegacyCardPaddingObserverRef() {
         if (!currentElements?.length) return;
 
         const firstElement = currentElements[0];
-        const lastElement = currentElements[currentElements.length - 1];
+        const lastElement = getMostSeniorLastElement(currentElements);
 
         // Update padding for first element if it is the first child or
         // a descendant of the first child
@@ -234,4 +234,21 @@ function updatePadding(
     case 'bottom':
       (element as HTMLElement).classList.toggle(styles.LastSectionPadding, add);
   }
+}
+
+/*
+ * Get the senior most last element in a node list ordered by
+ * a depth first traversal.
+ * https://www.w3.org/TR/selectors-api/#document-order
+ */
+function getMostSeniorLastElement(elements: NodeListOf<Element>) {
+  let lastElement = elements[0];
+
+  elements.forEach((element) => {
+    if (!lastElement.contains(element)) {
+      lastElement = element;
+    }
+  });
+
+  return lastElement;
 }

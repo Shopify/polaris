@@ -1,3 +1,4 @@
+import type {PropsWithChildren} from 'react';
 import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
@@ -402,22 +403,6 @@ export function WithFlushedSections() {
   );
 }
 
-const DynamicChildren = () => {
-  const [showChildren, setShowChildren] = useState(false);
-  return (
-    <div>
-      <LegacyCard.Section>
-        <Button onClick={() => setShowChildren(!showChildren)}>
-          {showChildren ? 'Hide ' : 'Show '}children
-        </Button>
-      </LegacyCard.Section>
-      {showChildren ? (
-        <LegacyCard.Section>Child section content</LegacyCard.Section>
-      ) : null}
-    </div>
-  );
-};
-
 export function All() {
   return (
     <VerticalStack gap="2">
@@ -431,13 +416,9 @@ export function All() {
       </LegacyCard>
       <LegacyCard title="Non-text first item">
         <LegacyCard.Section>
-          <Box
-            minHeight="50px"
-            borderRadius="2"
-            borderStyle="solid"
-            borderWidth="1"
-            borderColor="border"
-          />
+          <Box>
+            <LegacyCard.Section subdued>Section 1 content</LegacyCard.Section>
+          </Box>
         </LegacyCard.Section>
         <LegacyCard.Section title="Section 2 heading">
           Section 2 content
@@ -468,18 +449,6 @@ export function All() {
           </LegacyCard.Section>
         </div>
       </LegacyCard>
-      <LegacyCard title="Non section last child">
-        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
-        <LegacyCard.Section>
-          Section 2 content, there is an empty div under this
-        </LegacyCard.Section>
-        <div />
-      </LegacyCard>
-      <LegacyCard>
-        Direct child text
-        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
-        <LegacyCard.Section>Section 2 content</LegacyCard.Section>
-      </LegacyCard>
       <LegacyCard>
         <div>
           <h2>Custom header in an h2</h2>
@@ -504,34 +473,6 @@ export function All() {
       </LegacyCard>
       <LegacyCard>
         <div>Card content in div not in section</div>
-      </LegacyCard>
-      <LegacyCard title="Card headings with top subdued">
-        <LegacyCard.Section title="Section 1 heading" subdued>
-          Subdued Section 1 content
-        </LegacyCard.Section>
-        <LegacyCard.Section title="Section 2 heading">
-          Section 2 content
-        </LegacyCard.Section>
-      </LegacyCard>
-      <LegacyCard title="Card headings with bottom subdued">
-        <LegacyCard.Section title="Section 1 heading">
-          Section 1 content
-        </LegacyCard.Section>
-        <LegacyCard.Section title="Section 2 heading" subdued>
-          <p>Subdued section 2 content</p>
-        </LegacyCard.Section>
-      </LegacyCard>
-      <LegacyCard title="No section headings with top subdued">
-        <LegacyCard.Section subdued>
-          Subdued Section 1 content
-        </LegacyCard.Section>
-        <LegacyCard.Section>Section 2 content</LegacyCard.Section>
-      </LegacyCard>
-      <LegacyCard title="No section headings with bottom subdued">
-        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
-        <LegacyCard.Section subdued>
-          Subdued section 2 content
-        </LegacyCard.Section>
       </LegacyCard>
       <LegacyCard>
         <LegacyCard.Section subdued>
@@ -565,73 +506,53 @@ export function All() {
         <DynamicChildren />
       </LegacyCard>
       <LegacyCard title="Only one header section" />
-      <LegacyCard
-        secondaryFooterActions={[{content: 'Dismiss'}]}
-        primaryFooterAction={{content: 'Export Report'}}
-      >
-        <LegacyCard.Header
-          actions={[
-            {
-              content: 'Total Sales',
-            },
-          ]}
-          title="Sales"
-        >
-          <Popover
-            active={false}
-            activator={
-              <Button disclosure plain>
-                View Sales
-              </Button>
-            }
-            onClose={() => {}}
-          >
-            <ActionList
-              items={[{content: 'Gross Sales'}, {content: 'Net Sales'}]}
-            />
-          </Popover>
-        </LegacyCard.Header>
-        <LegacyCard.Section title="Total Sales Breakdown">
-          <ResourceList
-            resourceName={{singular: 'sale', plural: 'sales'}}
-            items={[
-              {
-                sales: 'Orders',
-                amount: 'USD$0.00',
-                url: '#',
-              },
-              {
-                sales: 'Returns',
-                amount: '-USD$250.00',
-                url: '#',
-              },
-            ]}
-            renderItem={(item) => {
-              const {sales, amount, url} = item;
-              return (
-                <ResourceList.Item
-                  url={url}
-                  accessibilityLabel={`View Sales for ${sales}`}
-                >
-                  <LegacyStack>
-                    <LegacyStack.Item fill>{sales}</LegacyStack.Item>
-                    <LegacyStack.Item>{amount}</LegacyStack.Item>
-                  </LegacyStack>
-                </ResourceList.Item>
-              );
-            }}
-          />
+      <LegacyCard>
+        <LegacyCard.Section title="First outside section">
+          <VerticalStack gap="2">
+            <Box>
+              <LegacyCard.Section subdued>
+                First nested section
+              </LegacyCard.Section>
+            </Box>
+            <Box>
+              <LegacyCard.Section subdued>
+                Second nested section
+              </LegacyCard.Section>
+            </Box>
+          </VerticalStack>
         </LegacyCard.Section>
-        <LegacyCard.Section title="Deactivated reports" subdued>
-          Outside of subsection
-          <LegacyCard.Subsection>Inside of subsection</LegacyCard.Subsection>
-          Outside of subsection
-        </LegacyCard.Section>
-        <LegacyCard.Section>
-          The sales reports are available only if your store is on the Shopify
-          plan or higher.
+        <LegacyCard.Section title="Second outside section">
+          <VerticalStack gap="2">
+            <Box>
+              <LegacyCard.Section subdued>
+                First nested section
+              </LegacyCard.Section>
+            </Box>
+            <Box>
+              <LegacyCard.Section subdued>
+                Second nested section
+              </LegacyCard.Section>
+            </Box>
+          </VerticalStack>
         </LegacyCard.Section>
       </LegacyCard>
+      <WithAllElements />
     </VerticalStack>
+  );
+}
+
+function DynamicChildren() {
+  const [showChildren, setShowChildren] = useState(false);
+  return (
+    <div>
+      <LegacyCard.Section>
+        <Button onClick={() => setShowChildren(!showChildren)}>
+          {showChildren ? 'Hide ' : 'Show '}children
+        </Button>
+      </LegacyCard.Section>
+      {showChildren ? (
+        <LegacyCard.Section>Child section content</LegacyCard.Section>
+      ) : null}
+    </div>
   );
 }
