@@ -45,6 +45,11 @@
     margin-left: 0;
     line-height: normal;
 
+    #{$se23} & {
+      // stylelint-disable-next-line polaris/z-index/declaration-property-value-allowed-list -- se23 temporary styles
+      z-index: unset;
+    }
+
     &:not(:first-child) {
       margin-left: calc(-1 * var(--p-space-025));
     }
