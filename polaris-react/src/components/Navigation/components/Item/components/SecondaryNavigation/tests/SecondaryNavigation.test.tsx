@@ -110,22 +110,6 @@ describe('<SecondaryNavigation />', () => {
         });
       });
 
-      it('adds showVerticalHoverLine prop to all the Item components before the hovered item', () => {
-        const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
-          features: {polarisSummerEditions2023: true},
-        });
-
-        const hoveredIndex = 2;
-        component.findAll(Item)[hoveredIndex].trigger('onMouseEnter');
-
-        component.findAll(Item).forEach((item, index) => {
-          const shouldAddHoverLine = index < hoveredIndex;
-          expect(item).toHaveReactProps({
-            showVerticalHoverLine: shouldAddHoverLine,
-          });
-        });
-      });
-
       it('adds showVerticalHoverPointer prop to the hovered item', () => {
         const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
           features: {polarisSummerEditions2023: true},
@@ -168,10 +152,7 @@ describe('<SecondaryNavigation />', () => {
         const indexWithMatchedItem = 1;
 
         component.findAll(Item).forEach((item, index) => {
-          const shouldShowVerticalHoverLineEmphasis = index < hoveredIndex;
-          const shouldShowVerticalLine =
-            !shouldShowVerticalHoverLineEmphasis &&
-            index < indexWithMatchedItem;
+          const shouldShowVerticalLine = index < indexWithMatchedItem;
 
           expect(item).toHaveReactProps({
             showVerticalLine: shouldShowVerticalLine,

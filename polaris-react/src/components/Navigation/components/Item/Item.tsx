@@ -47,7 +47,6 @@ export function Item({
   shouldResizeIcon,
   truncateText,
   showVerticalLine,
-  showVerticalHoverLine,
   showVerticalHoverPointer,
   onMouseEnter,
   onMouseLeave,
@@ -248,9 +247,6 @@ export function Item({
     childIsActive && styles['Item-child-active'],
     showVerticalLine && polarisSummerEditions2023 && styles['Item-line'],
     matches && polarisSummerEditions2023 && styles['Item-line-pointer'],
-    showVerticalHoverLine &&
-      polarisSummerEditions2023 &&
-      styles['Item-hover-line'],
     showVerticalHoverPointer &&
       polarisSummerEditions2023 &&
       styles['Item-hover-pointer'],
