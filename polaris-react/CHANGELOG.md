@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.4.5
+
+### Patch Changes
+
+- [#9647](https://github.com/Shopify/polaris/pull/9647) [`bdeaea99b`](https://github.com/Shopify/polaris/commit/bdeaea99b464d25659da2816ced6a8e267bb4469) Thanks [@qt314](https://github.com/qt314)! - LegacyCard fixed xs screen section border radii
+
 ## 11.4.4
 
 ### Patch Changes
