@@ -1,5 +1,5 @@
 import {Button, Popover, ActionList} from '@shopify/polaris';
-import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
+import {ArchiveMinor, DuplicateMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -25,8 +25,8 @@ function ActionListWithMediaExample() {
         <ActionList
           actionRole="menuitem"
           items={[
-            {content: 'Import file', icon: ImportMinor},
-            {content: 'Export file', icon: ExportMinor},
+            {content: 'Duplicate', icon: DuplicateMinor},
+            {content: 'Archive', icon: ArchiveMinor},
           ]}
         />
       </Popover>
