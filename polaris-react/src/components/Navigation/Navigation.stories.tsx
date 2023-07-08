@@ -505,9 +505,9 @@ export function WithMultipleSecondaryActionsForAnItem() {
             },
             {
               url: '#',
-              label: 'Floating actions on multi-line text label',
+              label: 'Floating action on long text label',
               icon: PlusMinor,
-              badge: '15',
+              truncateText: true,
               displayActionsOnHover: true,
               onClick: () => setSelected('floatingActionsOnMultiLineTextLabel'),
               matches: selected === 'floatingActionsOnMultiLineTextLabel',
