@@ -139,6 +139,12 @@ $nav-max-width: 360px;
 }
 
 .ItemWrapper {
+  // This color is not derived from the global color variables because
+  // we should not stack two transparent colors on top of each other. The
+  // color in the background is already transparent.
+  // stylelint-disable-next-line -- required to match the background color
+  --secondary-actions-on-hover-background-color: rgba(224, 224, 224, 1);
+
   width: 100%;
   padding: 0 var(--p-space-2);
 
@@ -160,6 +166,24 @@ $nav-max-width: 360px;
   #{$se23} & {
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-transparent-hover-experimental);
+
+      &.ItemInnerWrapper-display-actions-on-hover {
+        @media #{$p-breakpoints-md-up} {
+          .SecondaryActions {
+            background: var(--secondary-actions-on-hover-background-color);
+
+            &::before {
+              // stylelint-disable-next-line -- required for fade effect
+              background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0),
+                var(--secondary-actions-on-hover-background-color)
+                  var(--p-space-8)
+              );
+            }
+          }
+        }
+      }
     }
 
     &:active {
@@ -176,36 +200,49 @@ $nav-max-width: 360px;
 
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-app-selected);
+
+      // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+      &.ItemInnerWrapper-display-actions-on-hover {
+        @media #{$p-breakpoints-md-up} {
+          .SecondaryActions {
+            background: var(--p-color-bg-app-selected);
+
+            &::before {
+              // stylelint-disable-next-line -- required for fade effect
+              background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0),
+                var(--p-color-bg-app-selected) var(--p-space-8)
+              );
+            }
+          }
+        }
+      }
+      // stylelint-enable
     }
 
     &:active {
       background: var(--p-color-bg-transparent-active-experimental);
     }
+  }
 
-    // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
-    &.ItemInnerWrapper-display-actions-on-hover {
-      @media #{$p-breakpoints-md-up} {
-        .SecondaryActions {
-          background: var(--p-color-bg-app-selected);
+  .SecondaryActions {
+    background: var(--p-color-bg-app-selected);
 
-          &::before {
-            // stylelint-disable-next-line -- required for fade effect
-            background: linear-gradient(
-              to right,
-              rgba(0, 0, 0, 0),
-              var(--p-color-bg-app-selected) var(--p-space-8)
-            );
-          }
-        }
-      }
+    &::before {
+      // stylelint-disable-next-line -- required for fade effect
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        var(--p-color-bg-app-selected) var(--p-space-8)
+      );
     }
-    // stylelint-enable
   }
 }
 
 .ItemInnerWrapper-open {
   #{$se23} & {
-    background-color: transparent;
+    background-color: var(--secondary-actions-on-hover-background-color);
 
     &:active {
       background: var(--p-color-bg-transparent-active-experimental);
@@ -228,14 +265,15 @@ $nav-max-width: 360px;
             background: linear-gradient(
               to right,
               rgba(0, 0, 0, 0),
-              var(--p-color-bg-app-selected) var(--p-space-8)
+              var(--secondary-actions-on-hover-background-color)
+                var(--p-space-8)
             );
           }
         }
       }
     }
-    // stylelint-enable
   }
+  // stylelint-enable
 }
 
 .Item-selected {
@@ -444,12 +482,6 @@ $nav-max-width: 360px;
 
 .ItemInnerWrapper-display-actions-on-hover {
   @media #{$p-breakpoints-md-up} {
-    // This color is not derived from the global color variables because
-    // we should not stack two transparent colors on top of each other. The
-    // color in the background is already transparent.
-    // stylelint-disable-next-line -- required to match the background color
-    --secondary-actions-background-color: rgba(224, 224, 224, 1);
-
     .SecondaryActions {
       position: absolute;
       top: 0;
@@ -461,7 +493,10 @@ $nav-max-width: 360px;
         visibility var(--p-motion-duration-200) ease-in-out;
 
       #{$se23} & {
-        background-color: var(--secondary-actions-background-color);
+        z-index: var(--p-z-index-2);
+        background: var(--secondary-actions-on-hover-background-color);
+        padding: 0 var(--p-space-05);
+        margin-right: 0;
         border-radius: var(--p-border-radius-2);
         transition: none;
       }
@@ -482,12 +517,7 @@ $nav-max-width: 360px;
         );
 
         #{$se23} & {
-          // stylelint-disable-next-line -- required for fade effect
-          background: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0),
-            var(--secondary-actions-background-color) var(--p-space-8)
-          );
+          background: transparent;
         }
       }
     }
