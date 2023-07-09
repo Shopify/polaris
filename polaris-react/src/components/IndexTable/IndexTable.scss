@@ -239,6 +239,8 @@ $loading-panel-height: 53px;
       font-weight: var(--p-font-weight-medium);
       font-size: var(--p-font-size-75);
       background-color: var(--p-color-bg-subdued);
+      border-top: var(--p-border-width-1) solid var(--p-color-border);
+      border-bottom: var(--p-border-width-1) solid var(--p-color-border);
     }
 
     #{$se23} & {
@@ -247,6 +249,7 @@ $loading-panel-height: 53px;
       .TableCell-first,
       .TableCell-first + .TableCell {
         background-color: var(--p-color-bg-subdued);
+        border-color: var(--p-color-border);
       }
     }
   }
