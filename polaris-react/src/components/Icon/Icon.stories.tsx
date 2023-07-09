@@ -20,6 +20,7 @@ export function Colored() {
       <Icon source={CirclePlusMinor} color="primary" />
       <Icon source={CirclePlusMinor} color="highlight" />
       <Icon source={CirclePlusMinor} color="success" />
+      <Icon source={CirclePlusMinor} color="caution" />
       <Icon source={CirclePlusMinor} color="warning" />
       <Icon source={CirclePlusMinor} color="critical" />
       <Icon source={CirclePlusMinor} color="magic" />
@@ -49,6 +50,8 @@ export function WithBackdrop() {
       <BackdropIcon iconColor="base" boxBackground="bg-strong" />
       <BackdropIcon iconColor="highlight" boxBackground="bg-info" />
       <BackdropIcon iconColor="success" boxBackground="bg-success" />
+      <BackdropIcon iconColor="caution" boxBackground="bg-caution" />
+
       <BackdropIcon iconColor="warning" boxBackground="bg-warning" />
       <BackdropIcon iconColor="critical" boxBackground="bg-critical" />
     </VerticalStack>
