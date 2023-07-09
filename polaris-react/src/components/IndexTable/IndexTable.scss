@@ -283,29 +283,83 @@ $loading-panel-height: 53px;
 // Extra specificity is needed to address edge cases where the zebra striping is combined with other options
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators -- extra specificity needed for when combining props
 .ZebraStriping {
+  .Table-scrolling .TableRow:nth-child(2n + 1),
   .TableRow:nth-child(2n + 1) {
-    background: none;
+    // stylelint-disable-next-line selector-max-compound-selectors -- extra specificity needed for when combining props
+    &,
+    .TableCell:first-child,
+    .TableCell-first,
+    .TableCell-first + .TableCell,
+    .TableCell:last-child {
+      background-color: var(--p-color-bg);
+    }
   }
 
-  .TableRow:nth-child(2n),
-  .TableRow:nth-child(2n) .TableCell:first-child,
-  .TableRow:nth-child(2n) .TableCell:last-child {
-    background: var(--p-color-bg-subdued);
+  .Table-scrolling .TableRow:nth-child(2n),
+  .TableRow:nth-child(2n) {
+    // stylelint-disable-next-line selector-max-compound-selectors -- extra specificity needed for when combining props
+    &,
+    .TableCell:first-child,
+    .TableCell-first,
+    .TableCell-first + .TableCell,
+    .TableCell:last-child {
+      background: var(--p-color-bg-subdued);
 
-    #{$se23} & {
-      background: var(--p-color-bg-secondary-experimental);
+      #{$se23} & {
+        background: var(--p-color-bg-secondary-experimental);
+      }
     }
+  }
 
-    &:hover {
+  .Table-scrolling .TableRow-hovered:not(.TableRow-disabled):nth-child(2n + 1),
+  .TableRow-hovered:not(.TableRow-disabled):nth-child(2n + 1),
+  .Table-scrolling .TableRow-hovered:not(.TableRow-disabled):nth-child(2n),
+  .TableRow-hovered:not(.TableRow-disabled):nth-child(2n) {
+    // stylelint-disable-next-line selector-max-compound-selectors -- extra specificity needed for when combining props
+    &,
+    .TableCell:first-child,
+    .TableCell-first,
+    .TableCell-first + .TableCell,
+    .TableCell:last-child {
       background-color: var(--p-color-bg-hover);
     }
   }
 
-  .TableRow-hovered:nth-child(2n + 1),
-  .TableRow-hovered:nth-child(2n),
-  .TableRow-hovered:nth-child(2n) .TableCell:first-child,
-  .TableRow-hovered:nth-child(2n) .TableCell:last-child {
-    background-color: var(--p-color-bg-hover);
+  .Table-scrolling .TableRow-selected:nth-child(2n + 1),
+  .TableRow-selected:nth-child(2n + 1),
+  .Table-scrolling .TableRow-selected:nth-child(2n),
+  .TableRow-selected:nth-child(2n) {
+    // stylelint-disable-next-line selector-max-compound-selectors -- extra specificity needed for when combining props
+    &,
+    .TableCell:first-child,
+    .TableCell-first,
+    .TableCell-first + .TableCell,
+    .TableCell:last-child {
+      background-color: var(--p-color-bg-interactive-selected);
+
+      #{$se23} & {
+        background-color: var(--p-color-bg-primary-subdued-selected);
+      }
+    }
+  }
+
+  .Table-scrolling .TableRow-hovered.TableRow-selected:nth-child(2n + 1),
+  .TableRow-hovered.TableRow-selected:nth-child(2n + 1),
+  .Table-scrolling .TableRow-hovered.TableRow-selected:nth-child(2n),
+  .TableRow-hovered.TableRow-selected:nth-child(2n) {
+    // stylelint-disable-next-line selector-max-compound-selectors -- extra specificity needed for when combining props
+    &,
+    .TableCell:first-child,
+    .TableCell-first,
+    .TableCell-first + .TableCell,
+    .TableCell:last-child {
+      background-color: var(--p-color-bg-interactive-subdued-hover);
+      // Specificity of this selector is higher than the above, so post-se23 we
+      // can combine selectors to simplify this CSS / cascade.
+      #{$se23} & {
+        background-color: var(--p-color-bg-primary-subdued-hover);
+      }
+    }
   }
 }
 // stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators
