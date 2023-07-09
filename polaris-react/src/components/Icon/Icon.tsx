@@ -12,6 +12,7 @@ type Color =
   | 'critical'
   | 'interactive'
   | 'warning'
+  | 'caution'
   | 'highlight'
   | 'success'
   | 'primary'
@@ -23,6 +24,7 @@ const COLORS_WITH_BACKDROPS = [
   'highlight',
   'success',
   'warning',
+  'caution',
 ];
 
 export interface IconProps {

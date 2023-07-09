@@ -58,9 +58,19 @@
   fill: var(--p-color-icon-interactive);
 }
 
-.colorWarning {
+.colorCaution {
   svg {
     fill: var(--p-color-icon-caution);
+  }
+
+  &::before {
+    background-color: var(--p-color-bg-caution);
+  }
+}
+
+.colorWarning {
+  svg {
+    fill: var(--p-color-icon-warning);
   }
 
   &::before {
