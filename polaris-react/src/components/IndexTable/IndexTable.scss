@@ -766,31 +766,33 @@ $loading-panel-height: 53px;
   }
 }
 
-.TableRow-selected {
-  .TableCell {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-
-    &:first-child {
-      border-left: 2px solid black;
-    }
-
-    &:last-child {
-      border-right: 2px solid black;
-    }
-  }
-
-  + .TableRow-selected {
+@supports selector(:has(*)) {
+  .TableRow-selected {
     .TableCell {
-      border-top: 0;
+      border-top: 2px solid black;
       border-bottom: 2px solid black;
+
+      &:first-child {
+        border-left: 2px solid black;
+      }
+
+      &:last-child {
+        border-right: 2px solid black;
+      }
+    }
+
+    + .TableRow-selected {
+      .TableCell {
+        border-top: 0;
+        border-bottom: 2px solid black;
+      }
     }
   }
-}
 
-.TableRow-selected:has(+ .TableRow-selected) {
-  .TableCell {
-    border-bottom: 0;
+  .TableRow-selected:has(+ .TableRow-selected) {
+    .TableCell {
+      border-bottom: 0;
+    }
   }
 }
 
