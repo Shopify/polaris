@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.5.2
+
+### Patch Changes
+
+- [#9678](https://github.com/Shopify/polaris/pull/9678) [`e3297e524`](https://github.com/Shopify/polaris/commit/e3297e524666ff44246b661f5cca574660fefa8b) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Revert mutually exclusive union types on RadioButton
+
 ## 11.5.1
 
 ### Patch Changes
