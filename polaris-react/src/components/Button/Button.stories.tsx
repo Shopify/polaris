@@ -737,5 +737,15 @@ export function DisabledState() {
 }
 
 export function LoadingState() {
-  return <Button loading>Save product</Button>;
+  return (
+    <HorizontalStack gap="5">
+      <Button loading>Save product</Button>
+      <Button primary loading>
+        Save product
+      </Button>
+      <Button plain loading>
+        Save product
+      </Button>
+    </HorizontalStack>
+  );
 }
