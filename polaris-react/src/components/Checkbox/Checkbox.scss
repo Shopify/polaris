@@ -189,7 +189,7 @@
 // stylelint-disable-next-line selector-max-combinators, selector-max-type, selector-no-qualifying-type -- se23 override
 .animated svg path.checked {
   animation-name: pathAnimation, opacityAnimation;
-  animation-duration: var(--motion-duration-150);
+  animation-duration: var(--p-motion-duration-150);
   animation-fill-mode: forwards;
   // stylelint-disable-next-line declaration-property-value-disallowed-list -- se23 override
   animation-timing-function: linear;
