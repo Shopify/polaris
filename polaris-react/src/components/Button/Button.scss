@@ -775,7 +775,10 @@
 
   &,
   &:hover,
-  &.disabled {
+  &.disabled,
+  #{$se23} &,
+  #{$se23} &:hover,
+  #{$se23} &.disabled {
     color: transparent;
   }
 }
@@ -935,7 +938,8 @@
       background: none;
     }
 
-    &.loading {
+    &.loading,
+    #{$se23} &.loading {
       color: transparent;
     }
   }
