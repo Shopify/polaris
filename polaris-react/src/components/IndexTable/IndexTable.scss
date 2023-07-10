@@ -771,18 +771,14 @@ $loading-panel-height: 53px;
 
 // TODO
 @supports selector(:has(*)) {
-  // #{$se23} & {
-    #{$se23} .TableRow {
-      // border-top: none;
-      // border-bottom: var(--p-border-width-1) solid var(--p-color-bg);
-      border-left:  var(--p-border-width-1) solid var(--p-color-bg);
-      border-right:  var(--p-border-width-1) solid var(--p-color-bg);
+    .TableRow {
+      #{$se23} & {
+        border-left:  var(--p-border-width-1) solid var(--p-color-bg);
+        border-right:  var(--p-border-width-1) solid var(--p-color-bg);
 
-      &:last-child {
-        border-bottom: var(--p-border-width-1) solid var(--p-color-bg);
-      }
-      .TableCell {
-
+        &:last-child {
+          border-bottom: var(--p-border-width-1) solid var(--p-color-bg);
+        }
       }
     }
 
@@ -817,7 +813,6 @@ $loading-panel-height: 53px;
         }
       }
     }
-  // }
 }
 
 .Table-sortable {
