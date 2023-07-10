@@ -7,7 +7,7 @@
   $boxShadow: null,
   $borderRadius: null,
   $content: '',
-  $zIndex: 200
+  $zIndex: 0
 ) {
   position: relative;
   box-shadow: $boxShadow;

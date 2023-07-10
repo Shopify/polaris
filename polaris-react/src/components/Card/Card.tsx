@@ -67,6 +67,7 @@ export const Card = ({
         <ShadowBevel
           boxShadow="xs"
           borderRadius={hasBorderRadius ? '3' : '0-experimental'}
+          zIndex="3"
         >
           <Box
             background={background}

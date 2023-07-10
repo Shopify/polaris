@@ -9,7 +9,8 @@
   #{$se23} & {
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-xs),
-      $borderRadius: var(--p-border-radius-0-experimental)
+      $borderRadius: var(--p-border-radius-0-experimental),
+      $zIndex: 101
     );
   }
 
@@ -37,7 +38,8 @@
     #{$se23} & {
       @include shadow-bevel(
         $boxShadow: var(--p-shadow-xs),
-        $borderRadius: var(--p-border-radius-3)
+        $borderRadius: var(--p-border-radius-3),
+        $zIndex: 101
       );
 
       // stylelint-disable-next-line -- se23 override

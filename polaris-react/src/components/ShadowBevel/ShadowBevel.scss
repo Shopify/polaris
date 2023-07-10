@@ -22,6 +22,7 @@
   @include shadow-bevel(
     $boxShadow: var(--pc-shadow-bevel-box-shadow),
     $borderRadius: var(--pc-shadow-bevel-border-radius),
-    $content: var(--pc-shadow-bevel-content)
+    $content: var(--pc-shadow-bevel-content),
+    $zIndex: var(--pc-shadow-bevel-z-index)
   );
 }
