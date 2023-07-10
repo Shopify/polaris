@@ -819,7 +819,7 @@
     @include focus-ring;
 
     #{$se23} & {
-      line-height: var(--p-font-line-height-2);
+      line-height: var(--p-font-line-height-1);
       font-size: var(--p-font-size-80-experimental);
       // stylelint-disable-next-line -- se23 override
       @include no-focus-ring;
@@ -896,7 +896,7 @@
         outline: var(--p-border-width-2) solid
           var(--p-color-border-interactive-focus);
         outline-offset: var(--p-space-05);
-        border-radius: var(--p-border-radius-2);
+        border-radius: var(--p-border-radius-1_5-experimental);
       }
     }
   }
