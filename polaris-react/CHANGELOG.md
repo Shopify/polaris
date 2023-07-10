@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.5.1
+
+### Patch Changes
+
+- [#9675](https://github.com/Shopify/polaris/pull/9675) [`acc7e2bf1`](https://github.com/Shopify/polaris/commit/acc7e2bf1b21d650fd612a707b715b8e5f92af39) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Revert mutually exclusive union types on Choice and Checkbox.
+
 ## 11.5.0
 
 ### Minor Changes
