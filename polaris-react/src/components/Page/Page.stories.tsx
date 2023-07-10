@@ -188,6 +188,22 @@ export function WithSubtitle() {
   );
 }
 
+export function WithSubtitleAndAdditionalMetadata() {
+  return (
+    <Page
+      backAction={{content: 'Products', url: '#'}}
+      title="Invoice"
+      subtitle="Statement period: May 3, 2019 to June 2, 2019"
+      additionalMetadata="Net payment due: Within 60 days of receipt"
+      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
 export function WithExternalLink() {
   return (
     <Page
