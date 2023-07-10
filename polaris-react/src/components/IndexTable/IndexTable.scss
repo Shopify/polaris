@@ -769,21 +769,19 @@ $loading-panel-height: 53px;
   }
 }
 
-// TODO
-@supports selector(:has(*)) {
-    .TableRow {
-      #{$se23} & {
-        border-left:  var(--p-border-width-1) solid var(--p-color-bg);
-        border-right:  var(--p-border-width-1) solid var(--p-color-bg);
 
-        &:last-child {
-          border-bottom: var(--p-border-width-1) solid var(--p-color-bg);
-        }
+#{$se23} {
+  @supports selector(:has(*)) {
+    .TableRow {
+      border-left:  var(--p-border-width-1) solid var(--p-color-bg);
+      border-right:  var(--p-border-width-1) solid var(--p-color-bg);
+
+      &:last-child {
+        border-bottom: var(--p-border-width-1) solid var(--p-color-bg);
       }
     }
 
     .TableRow-selected {
-      #{$se23} & {
         .TableCell {
           border-top: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
           border-bottom: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
@@ -804,16 +802,60 @@ $loading-panel-height: 53px;
           }
         }
       }
-    }
 
     .TableRow-selected:has(+ .TableRow-selected) {
-      #{$se23} & {
         .TableCell {
           border-bottom: 0;
         }
-      }
     }
+  }
 }
+
+// TODO
+// @supports selector(:has(*)) {
+//     .TableRow {
+//       #{$se23} & {
+//         border-left:  var(--p-border-width-1) solid var(--p-color-bg);
+//         border-right:  var(--p-border-width-1) solid var(--p-color-bg);
+
+//         &:last-child {
+//           border-bottom: var(--p-border-width-1) solid var(--p-color-bg);
+//         }
+//       }
+//     }
+
+//     .TableRow-selected {
+//       #{$se23} & {
+//         .TableCell {
+//           border-top: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+//           border-bottom: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+
+//           &:first-child {
+//             border-left: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+//           }
+
+//           &:last-child {
+//             border-right: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+//           }
+//         }
+
+//         + .TableRow-selected {
+//           .TableCell {
+//             border-top: 0;
+//             border-bottom: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+//           }
+//         }
+//       }
+//     }
+
+//     .TableRow-selected:has(+ .TableRow-selected) {
+//       #{$se23} & {
+//         .TableCell {
+//           border-bottom: 0;
+//         }
+//       }
+//     }
+// }
 
 .Table-sortable {
   .TableHeading {
