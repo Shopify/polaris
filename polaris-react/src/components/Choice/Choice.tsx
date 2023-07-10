@@ -8,7 +8,7 @@ import {
   sanitizeCustomProperties,
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
-import type {Error, Never} from '../../types';
+import type {Error} from '../../types';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 import {useFeatures} from '../../utilities/features';
@@ -50,7 +50,7 @@ export interface ChoiceBleedProps {
   bleedInlineEnd?: Spacing;
 }
 
-interface ChoiceBaseProps {
+interface ChoiceProps extends ChoiceBleedProps {
   /** A unique identifier for the choice */
   id: string;
   /**	Label for the choice */
@@ -67,24 +67,11 @@ interface ChoiceBaseProps {
   labelClassName?: string;
   /** Grow to fill the space. Equivalent to width: 100%; height: 100% */
   fill?: ResponsiveProp<boolean>;
-}
-
-interface ChoiceDescriptionProps {
   /** Display an error message */
   error?: Error | boolean;
   /** Additional text to aide in use. Will add a wrapping <div> */
   helpText?: React.ReactNode;
 }
-
-type ChoicePropsWithDescriptions = ChoiceBaseProps &
-  ChoiceDescriptionProps &
-  Never<ChoiceBleedProps>;
-
-type ChoicePropsWithBleed = ChoiceBaseProps &
-  ChoiceBleedProps &
-  Never<ChoiceDescriptionProps>;
-
-export type ChoiceProps = ChoicePropsWithDescriptions | ChoicePropsWithBleed;
 
 export function Choice({
   id,
