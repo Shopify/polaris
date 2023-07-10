@@ -4,11 +4,10 @@ import {classNames} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import type {ChoiceBleedProps} from '../Choice';
-import type {Never} from '../../types';
 
 import styles from './RadioButton.scss';
 
-interface RadioButtonBaseProps {
+interface RadioButtonProps extends ChoiceBleedProps {
   /** Indicates the ID of the element that describes the the radio button */
   ariaDescribedBy?: string;
   /** Label for the radio button */
@@ -33,21 +32,9 @@ interface RadioButtonBaseProps {
   onBlur?(): void;
   /** Grow to fill the space. Equivalent to width: 100%; height: 100% */
   fill?: ResponsiveProp<boolean>;
-}
-
-interface RadioButtonDescriptionProps {
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
 }
-
-// "Description" and "Bleed" props are mutually exclusive
-export type RadioButtonProps =
-  | (RadioButtonBaseProps &
-      ChoiceBleedProps &
-      Never<RadioButtonDescriptionProps>)
-  | (RadioButtonBaseProps &
-      RadioButtonDescriptionProps &
-      Never<ChoiceBleedProps>);
 
 export function RadioButton({
   ariaDescribedBy: ariaDescribedByProp,
@@ -95,18 +82,14 @@ export function RadioButton({
 
   const inputClassName = classNames(styles.Input);
 
-  // passing in mutually exclusive props
-  const extraChoiceProps = helpText
-    ? {
-        helpText,
-      }
-    : {
-        bleed,
-        bleedBlockStart,
-        bleedBlockEnd,
-        bleedInlineStart,
-        bleedInlineEnd,
-      };
+  const extraChoiceProps = {
+    helpText,
+    bleed,
+    bleedBlockStart,
+    bleedBlockEnd,
+    bleedInlineStart,
+    bleedInlineEnd,
+  };
 
   return (
     <Choice
