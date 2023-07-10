@@ -213,7 +213,7 @@ export const Tab = forwardRef(
 
     const actionContent = {
       rename: {
-        icon: InfoMinor,
+        icon: EditMinor,
         content: i18n.translate('Polaris.Tabs.Tab.rename'),
       },
       duplicate: {
