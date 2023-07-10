@@ -249,12 +249,6 @@ $nav-max-width: 360px;
       background: var(--p-color-bg-transparent-active-experimental);
     }
 
-    // stylelint-disable-next-line selector-max-combinators -- se23
-    .Text {
-      /* stylelint-disable-next-line -- se23 */
-      font-weight: var(--p-font-weight-medium) !important;
-    }
-
     // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
     &.ItemInnerWrapper-display-actions-on-hover {
       @media #{$p-breakpoints-md-up} {
@@ -331,6 +325,15 @@ $nav-max-width: 360px;
 
   @media #{$p-breakpoints-md-up} {
     font-weight: var(--p-font-weight-medium);
+  }
+}
+
+.Item-child-active {
+  #{$se23} & {
+    // stylelint-disable-next-line selector-max-combinators -- necessary to override the specificity of the Text class
+    .Text {
+      font-weight: var(--p-font-weight-medium);
+    }
   }
 }
 
@@ -721,11 +724,18 @@ $nav-max-width: 360px;
         font-weight: var(--p-font-weight-semibold);
       }
 
+      // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
+      &:is(:hover, :focus-visible) {
+        background: var(--p-color-bg-app-selected);
+        color: var(--p-color-text-primary);
+      }
+
       // stylelint-disable-next-line selector-max-combinators -- se23
       &:active,
       &:active:hover {
         // stylelint-disable-next-line -- se23
         @include no-focus-ring;
+        background: var(--p-color-bg-app-selected);
         color: var(--p-color-text-primary);
         font-weight: var(--p-font-weight-regular);
       }
@@ -753,10 +763,6 @@ $nav-max-width: 360px;
 
   // stylelint-disable selector-max-class, selector-max-combinators -- se23
   #{$se23} & {
-    .ItemInnerWrapper-selected {
-      background-color: var(--p-color-bg-subdued-active);
-    }
-
     .Item-line,
     .Item-line.Item-hover-line {
       &::before {
