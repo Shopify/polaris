@@ -29,10 +29,6 @@ describe('getResponsiveProps', () => {
   it('takes a string and returns the custom property', () => {
     expect(getResponsiveProps('stack', 'space', 'space', '4')).toMatchObject({
       '--pc-stack-space-xs': 'var(--p-space-4)',
-      '--pc-stack-space-sm': 'var(--p-space-4)',
-      '--pc-stack-space-md': 'var(--p-space-4)',
-      '--pc-stack-space-lg': 'var(--p-space-4)',
-      '--pc-stack-space-xl': 'var(--p-space-4)',
     });
   });
 
@@ -41,10 +37,7 @@ describe('getResponsiveProps', () => {
       getResponsiveProps('stack', 'space', 'space', {xs: '2', md: '8'}),
     ).toMatchObject({
       '--pc-stack-space-xs': 'var(--p-space-2)',
-      '--pc-stack-space-sm': 'var(--p-space-2)',
       '--pc-stack-space-md': 'var(--p-space-8)',
-      '--pc-stack-space-lg': 'var(--p-space-8)',
-      '--pc-stack-space-xl': 'var(--p-space-8)',
     });
   });
 
@@ -66,22 +59,6 @@ describe('getResponsiveProps', () => {
     });
   });
 
-  it('fills in the blanks', () => {
-    expect(
-      getResponsiveProps('stack', 'space', 'space', {
-        xs: '2',
-        sm: '4',
-        xl: '10',
-      }),
-    ).toMatchObject({
-      '--pc-stack-space-xs': 'var(--p-space-2)',
-      '--pc-stack-space-sm': 'var(--p-space-4)',
-      '--pc-stack-space-md': 'var(--p-space-4)',
-      '--pc-stack-space-lg': 'var(--p-space-4)',
-      '--pc-stack-space-xl': 'var(--p-space-10)',
-    });
-  });
-
   it('does not fill in leading undefined values', () => {
     expect(
       getResponsiveProps('stack', 'space', 'space', {
@@ -90,7 +67,6 @@ describe('getResponsiveProps', () => {
       }),
     ).toMatchObject({
       '--pc-stack-space-md': 'var(--p-space-4)',
-      '--pc-stack-space-lg': 'var(--p-space-4)',
       '--pc-stack-space-xl': 'var(--p-space-10)',
     });
   });
@@ -103,7 +79,6 @@ describe('getResponsiveProps', () => {
       }),
     ).toMatchObject({
       '--pc-stack-space-md': 'var(--p-space-0)',
-      '--pc-stack-space-lg': 'var(--p-space-0)',
       '--pc-stack-space-xl': 'var(--p-space-10)',
     });
   });
@@ -116,7 +91,6 @@ describe('getResponsiveProps', () => {
       }),
     ).toMatchObject({
       '--pc-stack-space-lg': 'var(--p-space-10)',
-      '--pc-stack-space-xl': 'var(--p-space-10)',
     });
   });
 });

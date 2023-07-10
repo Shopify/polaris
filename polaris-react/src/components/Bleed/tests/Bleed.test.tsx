@@ -26,10 +26,6 @@ describe('<Bleed />', () => {
     expect(bleed).toContainReactComponent('div', {
       style: {
         '--pc-bleed-margin-inline-start-xs': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-start-sm': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-start-md': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-start-lg': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-start-xl': 'var(--p-space-2)',
       } as React.CSSProperties,
     });
   });
@@ -44,25 +40,9 @@ describe('<Bleed />', () => {
     expect(bleed).toContainReactComponent('div', {
       style: {
         '--pc-bleed-margin-block-start-xs': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-start-sm': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-start-md': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-start-lg': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-start-xl': 'var(--p-space-1)',
         '--pc-bleed-margin-block-end-xs': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-end-sm': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-end-md': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-end-lg': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-end-xl': 'var(--p-space-1)',
         '--pc-bleed-margin-inline-start-xs': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-start-sm': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-start-md': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-start-lg': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-start-xl': 'var(--p-space-2)',
         '--pc-bleed-margin-inline-end-xs': 'var(--p-space-3)',
-        '--pc-bleed-margin-inline-end-sm': 'var(--p-space-3)',
-        '--pc-bleed-margin-inline-end-md': 'var(--p-space-3)',
-        '--pc-bleed-margin-inline-end-lg': 'var(--p-space-3)',
-        '--pc-bleed-margin-inline-end-xl': 'var(--p-space-3)',
       } as React.CSSProperties,
     });
   });

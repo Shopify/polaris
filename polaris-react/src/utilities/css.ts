@@ -36,39 +36,23 @@ export function sanitizeCustomProperties(
 }
 
 /**
- * Given an object like so:
+ * Given params like so:
+ * (
+ *   'button',
+ *   'padding',
+ *   'spacing',
+ *   {
+ *     sm: "4",
+ *     lg: "6"
+ *   }
+ * )
+ * Converts it to an object like so:
  * {
- *   sm: 4,
- *   lg: 6
- * }
- * Fill in the blanks starting at >= sm (because it's the first one set):
- * {
- *   sm: 4,
- *   md: 4,
- *   lg: 6
- *   xl: 6
+ *   '--pc-button-padding-sm': 'var(--p-spacing-4)',
+ *   '--pc-button-padding-lg': 'var(--p-spacing-6)'
  * }
  *
  */
-function makeResponsivePropsContiguous<T>(
-  responsiveProp: ResponsivePropConfig<T>,
-): ResponsivePropConfig<T> {
-  const result: ResponsivePropConfig<T> = {};
-
-  let prev: T | undefined;
-
-  breakpointsAliases.forEach((breakpointAlias) => {
-    if (typeof responsiveProp[breakpointAlias] !== 'undefined') {
-      result[breakpointAlias] = responsiveProp[breakpointAlias];
-      prev = responsiveProp[breakpointAlias];
-    } else if (prev) {
-      result[breakpointAlias] = prev;
-    }
-  });
-
-  return result;
-}
-
 export function getResponsiveProps<T = string>(
   componentName: string,
   componentProp: string,
@@ -91,8 +75,6 @@ export function getResponsiveProps<T = string>(
       ]),
     );
   }
-
-  result = makeResponsivePropsContiguous(result);
 
   // Prefix each responsive key with the correct token name
   return Object.fromEntries(
