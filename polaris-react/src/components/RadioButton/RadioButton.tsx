@@ -7,7 +7,7 @@ import type {ChoiceBleedProps} from '../Choice';
 
 import styles from './RadioButton.scss';
 
-interface RadioButtonProps extends ChoiceBleedProps {
+export interface RadioButtonProps extends ChoiceBleedProps {
   /** Indicates the ID of the element that describes the the radio button */
   ariaDescribedBy?: string;
   /** Label for the radio button */
