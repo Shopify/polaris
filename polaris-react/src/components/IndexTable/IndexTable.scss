@@ -771,7 +771,7 @@ $loading-panel-height: 53px;
 
 
 #{$se23} {
-  @supports selector(:has(*)) {
+  // @supports selector(:has(*)) {
     .TableRow {
       border-left:  var(--p-border-width-1) solid var(--p-color-bg);
       border-right:  var(--p-border-width-1) solid var(--p-color-bg);
@@ -808,7 +808,7 @@ $loading-panel-height: 53px;
           border-bottom: 0;
         }
     }
-  }
+  // }
 }
 
 // TODO
