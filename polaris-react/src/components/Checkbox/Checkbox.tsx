@@ -13,12 +13,12 @@ import type {ChoiceBleedProps} from '../Choice';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
-import type {Error, CheckboxHandles, Never} from '../../types';
+import type {Error, CheckboxHandles} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
 
-interface CheckboxBaseProps {
+export interface CheckboxProps extends ChoiceBleedProps {
   /** Indicates the ID of the element that is controlled by the checkbox */
   ariaControls?: string;
   /** Indicates the ID of the element that describes the checkbox */
@@ -47,19 +47,11 @@ interface CheckboxBaseProps {
   labelClassName?: string;
   /** Grow to fill the space. Equivalent to width: 100%; height: 100% */
   fill?: ResponsiveProp<boolean>;
-}
-
-interface CheckboxDescriptionProps {
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
   /** Display an error message */
   error?: Error | boolean;
 }
-
-// "Description" and "Bleed" props are mutually exclusive
-export type CheckboxProps =
-  | (CheckboxBaseProps & ChoiceBleedProps & Never<CheckboxDescriptionProps>)
-  | (CheckboxBaseProps & CheckboxDescriptionProps & Never<ChoiceBleedProps>);
 
 export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
   function Checkbox(
@@ -144,20 +136,15 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       isIndeterminate && styles['Input-indeterminate'],
     );
 
-    // passing in mutually exclusive props
-    const extraChoiceProps =
-      helpText || error
-        ? {
-            helpText,
-            error,
-          }
-        : {
-            bleed,
-            bleedBlockStart,
-            bleedBlockEnd,
-            bleedInlineStart,
-            bleedInlineEnd,
-          };
+    const extraChoiceProps = {
+      helpText,
+      error,
+      bleed,
+      bleedBlockStart,
+      bleedBlockEnd,
+      bleedInlineStart,
+      bleedInlineEnd,
+    };
 
     return (
       <Choice

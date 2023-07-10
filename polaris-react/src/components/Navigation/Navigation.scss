@@ -139,6 +139,11 @@ $nav-max-width: 360px;
 }
 
 .ItemWrapper {
+  // This color is not derived from the global color variables because
+  // we should not stack two transparent colors on top of each other. The
+  // color in the background is already transparent.
+  // stylelint-disable-next-line -- required to match the background color
+  --secondary-actions-on-hover-background-color: rgba(224, 224, 224, 1);
   width: 100%;
   padding: 0 var(--p-space-2);
 
@@ -160,6 +165,26 @@ $nav-max-width: 360px;
   #{$se23} & {
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-transparent-hover-experimental);
+
+      // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+      &.ItemInnerWrapper-display-actions-on-hover {
+        @media #{$p-breakpoints-md-up} {
+          .SecondaryActions {
+            background: var(--secondary-actions-on-hover-background-color);
+
+            &::before {
+              // stylelint-disable-next-line -- required for fade effect
+              background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0),
+                var(--secondary-actions-on-hover-background-color)
+                  var(--p-space-8)
+              );
+            }
+          }
+        }
+      }
+      // stylelint-enable
     }
 
     &:active {
@@ -176,30 +201,43 @@ $nav-max-width: 360px;
 
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-app-selected);
+
+      // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+      &.ItemInnerWrapper-display-actions-on-hover {
+        @media #{$p-breakpoints-md-up} {
+          .SecondaryActions {
+            background: var(--p-color-bg-app-selected);
+
+            &::before {
+              // stylelint-disable-next-line -- required for fade effect
+              background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0),
+                var(--p-color-bg-app-selected) var(--p-space-8)
+              );
+            }
+          }
+        }
+      }
+      // stylelint-enable
     }
 
     &:active {
       background: var(--p-color-bg-transparent-active-experimental);
     }
+  }
 
-    // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
-    &.ItemInnerWrapper-display-actions-on-hover {
-      @media #{$p-breakpoints-md-up} {
-        .SecondaryActions {
-          background: var(--p-color-bg-app-selected);
+  .SecondaryActions {
+    background: var(--p-color-bg-app-selected);
 
-          &::before {
-            // stylelint-disable-next-line -- required for fade effect
-            background: linear-gradient(
-              to right,
-              rgba(0, 0, 0, 0),
-              var(--p-color-bg-app-selected) var(--p-space-8)
-            );
-          }
-        }
-      }
+    &::before {
+      // stylelint-disable-next-line -- required for fade effect
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        var(--p-color-bg-app-selected) var(--p-space-8)
+      );
     }
-    // stylelint-enable
   }
 }
 
@@ -211,31 +249,26 @@ $nav-max-width: 360px;
       background: var(--p-color-bg-transparent-active-experimental);
     }
 
-    // stylelint-disable-next-line selector-max-combinators -- se23
-    .Text {
-      /* stylelint-disable-next-line -- se23 */
-      font-weight: var(--p-font-weight-medium) !important;
-    }
-
     // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
     &.ItemInnerWrapper-display-actions-on-hover {
       @media #{$p-breakpoints-md-up} {
         .SecondaryActions {
-          background: var(--p-color-bg-app-selected);
+          background: var(--secondary-actions-on-hover-background-color);
 
           &::before {
             // stylelint-disable-next-line -- required for fade effect
             background: linear-gradient(
               to right,
               rgba(0, 0, 0, 0),
-              var(--p-color-bg-app-selected) var(--p-space-8)
+              var(--secondary-actions-on-hover-background-color)
+                var(--p-space-8)
             );
           }
         }
       }
     }
-    // stylelint-enable
   }
+  // stylelint-enable
 }
 
 .Item-selected {
@@ -292,6 +325,15 @@ $nav-max-width: 360px;
 
   @media #{$p-breakpoints-md-up} {
     font-weight: var(--p-font-weight-medium);
+  }
+}
+
+.Item-child-active {
+  #{$se23} & {
+    // stylelint-disable-next-line selector-max-combinators -- necessary to override the specificity of the Text class
+    .Text {
+      font-weight: var(--p-font-weight-medium);
+    }
   }
 }
 
@@ -444,12 +486,6 @@ $nav-max-width: 360px;
 
 .ItemInnerWrapper-display-actions-on-hover {
   @media #{$p-breakpoints-md-up} {
-    // This color is not derived from the global color variables because
-    // we should not stack two transparent colors on top of each other. The
-    // color in the background is already transparent.
-    // stylelint-disable-next-line -- required to match the background color
-    --secondary-actions-background-color: rgba(224, 224, 224, 1);
-
     .SecondaryActions {
       position: absolute;
       top: 0;
@@ -461,7 +497,10 @@ $nav-max-width: 360px;
         visibility var(--p-motion-duration-200) ease-in-out;
 
       #{$se23} & {
-        background-color: var(--secondary-actions-background-color);
+        z-index: var(--p-z-index-2);
+        background: var(--secondary-actions-on-hover-background-color);
+        padding: 0 var(--p-space-05);
+        margin-right: 0;
         border-radius: var(--p-border-radius-2);
         transition: none;
       }
@@ -482,12 +521,7 @@ $nav-max-width: 360px;
         );
 
         #{$se23} & {
-          // stylelint-disable-next-line -- required for fade effect
-          background: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0),
-            var(--secondary-actions-background-color) var(--p-space-8)
-          );
+          background: transparent;
         }
       }
     }
@@ -690,11 +724,18 @@ $nav-max-width: 360px;
         font-weight: var(--p-font-weight-semibold);
       }
 
+      // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
+      &:is(:hover, :focus-visible) {
+        background: var(--p-color-bg-app-selected);
+        color: var(--p-color-text-primary);
+      }
+
       // stylelint-disable-next-line selector-max-combinators -- se23
       &:active,
       &:active:hover {
         // stylelint-disable-next-line -- se23
         @include no-focus-ring;
+        background: var(--p-color-bg-app-selected);
         color: var(--p-color-text-primary);
         font-weight: var(--p-font-weight-regular);
       }
@@ -722,10 +763,6 @@ $nav-max-width: 360px;
 
   // stylelint-disable selector-max-class, selector-max-combinators -- se23
   #{$se23} & {
-    .ItemInnerWrapper-selected {
-      background-color: var(--p-color-bg-subdued-active);
-    }
-
     .Item-line,
     .Item-line.Item-hover-line {
       &::before {

@@ -1,5 +1,27 @@
 # Changelog
 
+## 11.5.2
+
+### Patch Changes
+
+- [#9678](https://github.com/Shopify/polaris/pull/9678) [`e3297e524`](https://github.com/Shopify/polaris/commit/e3297e524666ff44246b661f5cca574660fefa8b) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Revert mutually exclusive union types on RadioButton
+
+## 11.5.1
+
+### Patch Changes
+
+- [#9675](https://github.com/Shopify/polaris/pull/9675) [`acc7e2bf1`](https://github.com/Shopify/polaris/commit/acc7e2bf1b21d650fd612a707b715b8e5f92af39) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Revert mutually exclusive union types on Choice and Checkbox.
+
+## 11.5.0
+
+### Minor Changes
+
+- [#9593](https://github.com/Shopify/polaris/pull/9593) [`0f97293b0`](https://github.com/Shopify/polaris/commit/0f97293b0ef00a4e06b4ad85ebcdc3da6e7c932d) Thanks [@jesstelford](https://github.com/jesstelford)! - [Choice][checkbox][RadioButton] Add bleed + fill props to increase choice target sizes
+
+### Patch Changes
+
+- [#9669](https://github.com/Shopify/polaris/pull/9669) [`e27998256`](https://github.com/Shopify/polaris/commit/e279982569a3a07021afc79a426b51233e41a908) Thanks [@chloerice](https://github.com/chloerice)! - Reverted experimental `ActionList.Item` `icon` size
+
 ## 11.4.5
 
 ### Patch Changes

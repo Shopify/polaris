@@ -775,7 +775,10 @@
 
   &,
   &:hover,
-  &.disabled {
+  &.disabled,
+  #{$se23} &,
+  #{$se23} &:hover,
+  #{$se23} &.disabled {
     color: transparent;
   }
 }
@@ -816,7 +819,7 @@
     @include focus-ring;
 
     #{$se23} & {
-      line-height: var(--p-font-line-height-2);
+      line-height: var(--p-font-line-height-1);
       font-size: var(--p-font-size-80-experimental);
       // stylelint-disable-next-line -- se23 override
       @include no-focus-ring;
@@ -893,7 +896,7 @@
         outline: var(--p-border-width-2) solid
           var(--p-color-border-interactive-focus);
         outline-offset: var(--p-space-05);
-        border-radius: var(--p-border-radius-2);
+        border-radius: var(--p-border-radius-1_5-experimental);
       }
     }
   }
@@ -935,7 +938,8 @@
       background: none;
     }
 
-    &.loading {
+    &.loading,
+    #{$se23} &.loading {
       color: transparent;
     }
   }
@@ -1019,10 +1023,19 @@
 
     svg {
       fill: var(--p-color-icon);
+
+      #{$se23} & {
+        fill: var(--p-color-icon-subdued);
+      }
     }
 
     &:hover svg {
       fill: var(--p-color-icon-hover);
+
+      #{$se23} & {
+        // Specificity bump
+        fill: var(--p-color-icon-hover);
+      }
     }
 
     &:active svg,

@@ -17,6 +17,8 @@ import {
   ImportMinor,
   EditMinor,
   CustomersMajor,
+  DuplicateMinor,
+  ArchiveMinor,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -107,8 +109,8 @@ export function WithIconsOrImage() {
         <ActionList
           actionRole="menuitem"
           items={[
-            {content: 'Import file', icon: ImportMinor},
-            {content: 'Export file', icon: ExportMinor},
+            {content: 'Duplicate', icon: DuplicateMinor},
+            {content: 'Archive', icon: ArchiveMinor},
           ]}
         />
       </Popover>
