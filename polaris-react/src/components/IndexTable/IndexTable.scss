@@ -1073,3 +1073,41 @@ $scroll-bar-size: var(--p-space-2);
     opacity: 1;
   }
 }
+
+// TABLE SELECTION START HERE
+
+.TableRow {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.TableRow-selected::after {
+  border-right: 2px solid red;
+      border-left: 2px solid red;
+}
+
+.TableRow-selected + .TableRow-selected::after {
+  border-color: green;
+}
+
+.TableRow:not(.TableRow-selected) + .TableRow-selected::after {
+	border-top: 2px solid rebeccapurple;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+.TableRow-selected:has(+ .TableRow:not(.TableRow-selected))::after {
+	border-bottom: 2px solid blue;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
