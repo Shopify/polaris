@@ -136,7 +136,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       isIndeterminate && styles['Input-indeterminate'],
     );
 
-    // passing in mutually exclusive props
     const extraChoiceProps = {
       helpText,
       error,
