@@ -343,11 +343,6 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/card',
-    destination: '/components/layout-and-structure/legacy-card',
-    permanent: false,
-  },
-  {
     source: '/components/bleed',
     destination: '/components/layout-and-structure/bleed',
     permanent: false,
