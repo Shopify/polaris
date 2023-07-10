@@ -138,6 +138,9 @@ $loading-panel-height: 53px;
   .TableCell-first,
   .TableHeading-first {
     filter: drop-shadow(1px 0 0 var(--p-color-border-subdued));
+    #{$se23} & {
+      filter: drop-shadow(1px 0 0 var(--p-color-border-subdued)) drop-shadow(-1px 0 0 var(--p-color-border-subdued));
+    }
   }
 
   &.Table-sticky {
@@ -766,34 +769,55 @@ $loading-panel-height: 53px;
   }
 }
 
+// TODO
 @supports selector(:has(*)) {
-  .TableRow-selected {
-    .TableCell {
-      border-top: 2px solid black;
-      border-bottom: 2px solid black;
-
-      &:first-child {
-        border-left: 2px solid black;
-      }
+  // #{$se23} & {
+    #{$se23} .TableRow {
+      // border-top: none;
+      // border-bottom: var(--p-border-width-1) solid var(--p-color-bg);
+      border-left:  var(--p-border-width-1) solid var(--p-color-bg);
+      border-right:  var(--p-border-width-1) solid var(--p-color-bg);
 
       &:last-child {
-        border-right: 2px solid black;
+        border-bottom: var(--p-border-width-1) solid var(--p-color-bg);
       }
-    }
-
-    + .TableRow-selected {
       .TableCell {
-        border-top: 0;
-        border-bottom: 2px solid black;
+
       }
     }
-  }
 
-  .TableRow-selected:has(+ .TableRow-selected) {
-    .TableCell {
-      border-bottom: 0;
+    .TableRow-selected {
+      #{$se23} & {
+        .TableCell {
+          border-top: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+          border-bottom: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+
+          &:first-child {
+            border-left: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+          }
+
+          &:last-child {
+            border-right: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+          }
+        }
+
+        + .TableRow-selected {
+          .TableCell {
+            border-top: 0;
+            border-bottom: var(--p-border-width-1) solid var(--p-color-bg-primary-active);
+          }
+        }
+      }
     }
-  }
+
+    .TableRow-selected:has(+ .TableRow-selected) {
+      #{$se23} & {
+        .TableCell {
+          border-bottom: 0;
+        }
+      }
+    }
+  // }
 }
 
 .Table-sortable {
