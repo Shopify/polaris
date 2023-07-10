@@ -33,7 +33,7 @@
       var(--p-border-width-2);
     outline-offset: var(--p-space-05);
     // stylelint-disable-next-line polaris/border/declaration-property-unit-disallowed-list -- se23 override
-    border-radius: 6px;
+    border-radius: var(--p-border-radius-1_5-experimental);
   }
 
   &:active {
