@@ -15,6 +15,7 @@ import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import type {Error, CheckboxHandles} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Checkbox.scss';
 
@@ -84,6 +85,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const uniqId = useId();
     const id = idProp ?? uniqId;
     const isWithinListbox = useContext(WithinListboxContext);
+    const {polarisSummerEditions2023} = useFeatures();
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -130,6 +132,28 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       : {'aria-checked': isChecked};
 
     const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;
+
+    const animatedTickIcon = polarisSummerEditions2023 && !isIndeterminate;
+
+    const iconSourceSe23 = (
+      <svg
+        viewBox="0 0 16 16"
+        shapeRendering="geometricPrecision"
+        textRendering="geometricPrecision"
+      >
+        <path
+          className={classNames(checked && styles.checked)}
+          d="M1.5,5.5v0c.28207.3949,0,0,0,0v0"
+          transform="translate(2 2.980376)"
+          opacity="0"
+          fill="none"
+          stroke="#fff"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
 
     const inputClassName = classNames(
       styles.Input,
@@ -181,8 +205,13 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             onClick={stopPropagation}
             onKeyUp={stopPropagation}
           />
-          <span className={styles.Icon}>
-            <Icon source={iconSource} />
+          <span
+            className={classNames(
+              styles.Icon,
+              animatedTickIcon && styles.animated,
+            )}
+          >
+            {animatedTickIcon ? iconSourceSe23 : <Icon source={iconSource} />}
           </span>
         </span>
       </Choice>
