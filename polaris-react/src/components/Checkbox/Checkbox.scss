@@ -186,63 +186,31 @@
 }
 // stylelint-enable selector-max-specificity, selector-max-class, selector-max-combinators, selector-max-compound-selectors
 
-// stylelint-disable-next-line selector-max-combinators, selector-max-type, selector-no-qualifying-type -- se23 override
-.animated svg path.checked {
-  animation-name: pathAnimation, opacityAnimation;
-  animation-duration: var(--p-motion-duration-150);
-  animation-fill-mode: forwards;
-  // stylelint-disable-next-line declaration-property-value-disallowed-list -- se23 override
-  animation-timing-function: linear;
-  animation-direction: normal;
-  animation-iteration-count: 1;
+// stylelint-disable-next-line selector-max-combinators, selector-max-type -- se23 override
+.animated svg > path {
+  stroke-dasharray: 2;
+  stroke-dashoffset: 2;
+
+  // stylelint-disable-next-line selector-max-combinators, selector-max-type, selector-no-qualifying-type -- se23 override
+  &.checked {
+    animation-name: pathAnimation;
+    animation-duration: var(--p-motion-duration-150);
+    animation-fill-mode: forwards;
+    // stylelint-disable-next-line declaration-property-value-disallowed-list -- se23 override
+    animation-timing-function: linear;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    opacity: 1;
+  }
 }
 
 // stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- se23 override
 @keyframes pathAnimation {
-  0% {
-    d: path('M1.5,5.5L1.5,5.5C1.78207,5.8949,1.5,5.5,1.5,5.5L1.5,5.5');
+  from {
+    stroke-dashoffset: 2;
   }
 
-  33% {
-    d: path('M1.5,5.5L1.5,5.5C1.78207,5.8949,1.5,5.5,1.5,5.5L1.5,5.5');
-    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  40% {
-    d: path(
-      'M1.5,5.5L3.44655,8.22517C3.72862,8.62007,4.0576,8.68,4.0576,8.68L4.0576,8.68'
-    );
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-
-  80% {
-    d: path(
-      'M1.5,5.5L3.44655,8.22517C3.72862,8.62007,4.30578,8.64717,4.62362,8.28044L10.5,1.5'
-    );
-  }
-
-  100% {
-    d: path(
-      'M1.5,5.5L3.44655,8.22517C3.72862,8.62007,4.30578,8.64717,4.62362,8.28044L10.5,1.5'
-    );
-  }
-}
-
-// stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- se23 override
-@keyframes opacityAnimation {
-  0% {
-    opacity: 0;
-  }
-
-  32% {
-    opacity: 0;
-  }
-
-  33% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 1;
+  to {
+    stroke-dashoffset: 0;
   }
 }

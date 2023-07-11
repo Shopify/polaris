@@ -143,7 +143,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       >
         <path
           className={classNames(checked && styles.checked)}
-          d="M1.5,5.5v0c.28207.3949,0,0,0,0v0"
+          d="M1.5,5.5L3.44655,8.22517C3.72862,8.62007,4.30578,8.64717,4.62362,8.28044L10.5,1.5"
           transform="translate(2 2.980376)"
           opacity="0"
           fill="none"
@@ -151,6 +151,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          pathLength="1"
         />
       </svg>
     );
