@@ -1,0 +1,11 @@
+name: Sidekick
+set: major
+description: Used to represent an entry point into the Sidekick chat interface.
+keywords:
+  - sidekick
+authors:
+  - Jon Rundle
+version: 1
+date_added: 2023-07-11
+date_modified: 2023-07-11
+exclusive_use:
