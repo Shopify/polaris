@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-adds onMouseOut & onMouseOver callbacks on ResourceItem component
+Added support for setting `onMouseOut` and `onMouseOver` callbacks on `ResourceItem`
