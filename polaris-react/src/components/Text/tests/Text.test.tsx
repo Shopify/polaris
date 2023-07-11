@@ -112,4 +112,18 @@ describe('<Text />', () => {
       });
     });
   });
+
+  describe('textDecoration', () => {
+    it('adds text decoration line-through when passed', () => {
+      const headingText = mountWithApp(
+        <Text as="p" textDecorationLine="line-through">
+          {text}
+        </Text>,
+      );
+
+      expect(headingText).toContainReactComponent('p', {
+        className: expect.stringContaining('line-through'),
+      });
+    });
+  });
 });
