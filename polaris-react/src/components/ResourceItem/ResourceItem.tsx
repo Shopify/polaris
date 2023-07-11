@@ -433,7 +433,9 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
   private handleMouseOut = () => {
     this.state.focused && this.setState({focused: false, focusedInner: false});
-    onMouseOut();
+    if (this.props.onMouseOut) {
+      this.props.onMouseOut();
+    }
   };
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
