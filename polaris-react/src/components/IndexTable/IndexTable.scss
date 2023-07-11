@@ -352,6 +352,12 @@ $loading-panel-height: 53px;
 .TableHeading-align-end {
   text-align: right;
 
+  #{$se23} & {
+    @media #{$p-breakpoints-lg-up} {
+      padding-right: var(--p-space-8);
+    }
+  }
+
   [class*='TooltipContainer'] {
     justify-content: end;
   }
