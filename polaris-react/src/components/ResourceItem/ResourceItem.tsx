@@ -432,7 +432,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   };
 
   private handleMouseOut = () => {
-    const {onMouseOut = () => {}} = this.props;
     this.state.focused && this.setState({focused: false, focusedInner: false});
     onMouseOut();
   };
