@@ -17,7 +17,7 @@ $vertical-motion-offset: -5px;
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
       $borderRadius: var(--p-border-radius-3),
-      $zIndex: 1
+      $zIndex: 2
     );
   }
 }
