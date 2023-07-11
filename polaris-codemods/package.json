@@ -35,7 +35,7 @@
     "postcss": "^8.4.21",
     "postcss-scss": "^4.0.6",
     "postcss-value-parser": "^4.2.0",
-    "stylelint": "^14.15.0"
+    "stylelint": "^15.10.1"
   },
   "peerDependencies": {
     "jscodeshift": "^0.13.1"
