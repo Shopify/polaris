@@ -61,6 +61,10 @@ interface BaseProps {
   verticalAlignment?: Alignment;
   /** Prefetched url attribute to bind to the main element being returned */
   dataHref?: string;
+  /** Callback when mouse cursor is on item */
+  onMouseOver?: () => void;
+  /** Callback when mouse cursor leaves item */
+  onMouseOut?: () => void;
 }
 
 interface PropsWithUrl extends BaseProps {
@@ -157,6 +161,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       verticalAlignment,
       dataHref,
       breakpoints,
+      onMouseOver,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -368,6 +373,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             onKeyUp={this.handleKeyUp}
+            onMouseOver={onMouseOver}
             onMouseOut={this.handleMouseOut}
             data-href={url}
           >
@@ -408,6 +414,9 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
   private handleMouseOut = () => {
     this.state.focused && this.setState({focused: false, focusedInner: false});
+    if (this.props.onMouseOut) {
+      this.props.onMouseOut();
+    }
   };
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
