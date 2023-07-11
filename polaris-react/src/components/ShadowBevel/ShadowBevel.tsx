@@ -9,10 +9,12 @@ import styles from './ShadowBevel.scss';
 export interface ShadowBevelProps {
   as?: React.ElementType;
   children?: React.ReactNode;
-  /** Box shadow applied to the root element. */
+  /** The box-shadow applied to the root element. */
   boxShadow: ShadowAlias;
-  /** Border radius applied to both the root and pseudo elements. */
+  /** The border-radius applied to both the root and pseudo elements. */
   borderRadius: BorderRadiusScale;
+  /** The z-index applied to the pseudo element. */
+  zIndex?: string;
   /**
    * Enable/disable the bevel effect.
    * Note: This also disables the border-radius and box-shadow.
@@ -22,13 +24,21 @@ export interface ShadowBevelProps {
 }
 
 export function ShadowBevel(props: ShadowBevelProps) {
-  const {as = 'div', bevel = true, boxShadow, borderRadius, children} = props;
+  const {
+    as = 'div',
+    bevel = true,
+    borderRadius,
+    boxShadow,
+    children,
+    zIndex = '0',
+  } = props;
   const Component = as;
 
   return (
     <Component
       className={styles.ShadowBevel}
       style={{
+        '--pc-shadow-bevel-z-index': zIndex,
         ...getResponsiveValue(
           'shadow-bevel',
           'content',
@@ -45,7 +55,9 @@ export function ShadowBevel(props: ShadowBevelProps) {
           'shadow-bevel',
           'border-radius',
           mapResponsiveProp(bevel, (bevel) =>
-            bevel ? `var(--p-border-radius-${borderRadius})` : 'none',
+            bevel
+              ? `var(--p-border-radius-${borderRadius})`
+              : 'var(--p-border-radius-0-experimental)',
           ),
         ),
       }}
