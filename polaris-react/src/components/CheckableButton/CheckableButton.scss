@@ -66,5 +66,7 @@
 
   #{$se23} & {
     margin-left: var(--p-space-3);
+    // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- se23
+    line-height: 18px;
   }
 }
