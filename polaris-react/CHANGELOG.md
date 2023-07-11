@@ -1,5 +1,16 @@
 # Changelog
 
+## 11.5.3
+
+### Patch Changes
+
+- [#9668](https://github.com/Shopify/polaris/pull/9668) [`bed52546f`](https://github.com/Shopify/polaris/commit/bed52546f3852fea8f3c98505846a6f553dbd3c1) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Experimental `shadow-bevel` integration
+
+* [#9677](https://github.com/Shopify/polaris/pull/9677) [`50e496c12`](https://github.com/Shopify/polaris/commit/50e496c128e63e6e3f7be4cf085bbe7823657239) Thanks [@jesstelford](https://github.com/jesstelford)! - - Revert "[Internal]: Generate contiguous responsive CSS variables."
+
+* Updated dependencies [[`bed52546f`](https://github.com/Shopify/polaris/commit/bed52546f3852fea8f3c98505846a6f553dbd3c1)]:
+  - @shopify/polaris-tokens@7.5.1
+
 ## 11.5.2
 
 ### Patch Changes
