@@ -160,7 +160,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       verticalAlignment,
       dataHref,
       breakpoints,
-      onMouseOver = () => {},
+      onMouseOver,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
