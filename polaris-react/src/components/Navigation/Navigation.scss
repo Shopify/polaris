@@ -135,6 +135,8 @@ $nav-max-width: 360px;
 
   #{$se23} & {
     border-radius: var(--p-border-radius-2);
+    transition: background-color var(--p-motion-duration-100)
+      var(--p-motion-ease-out);
   }
 }
 
@@ -164,7 +166,7 @@ $nav-max-width: 360px;
 
   #{$se23} & {
     &:is(:hover, :focus-visible) {
-      background: var(--p-color-bg-transparent-hover-experimental);
+      background: var(--p-color-bg-subdued-hover);
 
       // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
       &.ItemInnerWrapper-display-actions-on-hover {
@@ -177,8 +179,7 @@ $nav-max-width: 360px;
               background: linear-gradient(
                 to right,
                 rgba(0, 0, 0, 0),
-                var(--secondary-actions-on-hover-background-color)
-                  var(--p-space-8)
+                var(--p-color-bg-subdued-hover) var(--p-space-8)
               );
             }
           }
@@ -188,7 +189,7 @@ $nav-max-width: 360px;
     }
 
     &:active {
-      background: var(--p-color-bg-transparent-active-experimental);
+      background-color: var(--p-color-bg-app-selected);
     }
   }
 }
@@ -198,6 +199,12 @@ $nav-max-width: 360px;
 
   #{$se23} & {
     background-color: var(--p-color-bg-app-selected);
+
+    // stylelint-disable-next-line selector-max-combinators -- Needed for precision on text
+    .Text {
+      color: var(--p-color-text);
+      letter-spacing: -0.005rem;
+    }
 
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-app-selected);
@@ -223,7 +230,7 @@ $nav-max-width: 360px;
     }
 
     &:active {
-      background: var(--p-color-bg-transparent-active-experimental);
+      background: var(--p-color-bg-app-selected);
     }
   }
 
@@ -246,7 +253,7 @@ $nav-max-width: 360px;
     background-color: transparent;
 
     &:active {
-      background: var(--p-color-bg-transparent-active-experimental);
+      background: var(--p-color-bg-app-selected);
     }
 
     // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
@@ -667,6 +674,13 @@ $nav-max-width: 360px;
 
       #{$se23} & {
         color: var(--p-color-text);
+        background: var(--p-color-bg-subdued-hover);
+
+        // stylelint-disable-next-line selector-max-class, max-nesting-depth, selector-max-combinators, selector-max-compound-selectors -- Needed for precision styling on text
+        .Text {
+          font-weight: var(--p-font-weight-medium);
+          letter-spacing: -0.005rem;
+        }
       }
     }
 
@@ -683,7 +697,7 @@ $nav-max-width: 360px;
       @include no-focus-ring;
 
       #{$se23} & {
-        background-color: var(--p-color-bg-subdued-active);
+        background-color: var(--p-color-bg-app-selected);
       }
     }
 
@@ -721,7 +735,8 @@ $nav-max-width: 360px;
 
       // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors -- necessary to override the specificity of the Text class
       .Text {
-        font-weight: var(--p-font-weight-semibold);
+        // stylelint-disable-next-line declaration-no-important -- necessary to override the specificity of the Text class
+        font-weight: var(--p-font-weight-semibold) !important;
       }
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
@@ -737,7 +752,6 @@ $nav-max-width: 360px;
         @include no-focus-ring;
         background: var(--p-color-bg-app-selected);
         color: var(--p-color-text-primary);
-        font-weight: var(--p-font-weight-regular);
       }
     }
 
