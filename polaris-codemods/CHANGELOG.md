@@ -1,5 +1,13 @@
 # @shopify/polaris-codemods
 
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies [[`bed52546f`](https://github.com/Shopify/polaris/commit/bed52546f3852fea8f3c98505846a6f553dbd3c1)]:
+  - @shopify/polaris-tokens@7.5.1
+  - @shopify/stylelint-polaris@13.0.7
+
 ## 0.1.9
 
 ### Patch Changes
