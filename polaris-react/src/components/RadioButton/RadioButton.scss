@@ -39,6 +39,9 @@
       &::before {
         #{$se23} & {
           background-color: var(--p-color-icon-on-color);
+          transition: opacity var(--p-motion-duration-150)
+              var(--p-motion-ease-out),
+            transform var(--p-motion-duration-150) var(--p-motion-ease-out);
         }
         transition: opacity var(--p-motion-duration-150) var(--p-motion-ease),
           transform var(--p-motion-duration-150) var(--p-motion-ease);
@@ -66,12 +69,11 @@
         background: var(--p-color-bg-input-hover-experimental);
       }
     }
-  }
 
-  &:checked:not([disabled]) + .Backdrop::before {
-    .ChoiceLabel:hover & {
+    .ChoiceLabel:active & {
       #{$se23} & {
-        background-color: var(--p-color-icon-subdued);
+        border-color: var(--p-color-bg-primary);
+        border-width: var(--p-border-width-2);
       }
     }
   }
@@ -110,6 +112,13 @@
   #{$se23} & {
     border-width: var(--p-border-width-1-experimental);
     background-color: var(--p-color-bg-input);
+    transition: border-color var(--p-motion-duration-100)
+      var(--p-motion-ease-out);
+
+    &::before {
+      transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
+        transform var(--p-motion-duration-100) var(--p-motion-ease-out);
+    }
   }
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-icon-size-small: 8px;
