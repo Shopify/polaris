@@ -80,9 +80,15 @@ index b175d74..ce3e7ef 100644
    const resolvedThemeName =
      themeName === '__PLAYROOM__NO_THEME__' ? null : themeName;
 diff --git a/node_modules/playroom/src/Playroom/Frames/Frames.tsx b/node_modules/playroom/src/Playroom/Frames/Frames.tsx
-index 5b4af43..3bb2615 100644
+index 5b4af43..4800827 100644
 --- a/node_modules/playroom/src/Playroom/Frames/Frames.tsx
 +++ b/node_modules/playroom/src/Playroom/Frames/Frames.tsx
+@@ -1,4 +1,4 @@
+-import React, { useRef } from 'react';
++import React, { useRef, useEffect, useState } from 'react';
+ import flatMap from 'lodash/flatMap';
+ import Iframe from './Iframe';
+ import { compileJsx } from '../../utils/compileJsx';
 @@ -6,7 +6,6 @@ import { PlayroomProps } from '../Playroom';
  import { Strong } from '../Strong/Strong';
  import { Text } from '../Text/Text';
@@ -91,7 +97,24 @@ index 5b4af43..3bb2615 100644
  
  import * as styles from './Frames.css';
  
-@@ -44,10 +43,9 @@ export default function Frames({ code, themes, widths }: FramesProps) {
+@@ -20,6 +19,16 @@ let renderCode = '<React.Fragment></React.Fragment>';
+ 
+ export default function Frames({ code, themes, widths }: FramesProps) {
+   const scrollingPanelRef = useRef<HTMLDivElement | null>(null);
++  const [params, setParams] = useState<string>('');
++
++  useEffect(() => {
++    const search = new URLSearchParams(window.location.search);
++    search.delete('code');
++    search.delete('theme');
++    if (search.size) {
++      setParams(`?${search.toString()}`)
++    }
++  }, []);
+ 
+   const frames = flatMap(widths, (width) =>
+     themes.map((theme) => ({
+@@ -44,10 +53,9 @@ export default function Frames({ code, themes, widths }: FramesProps) {
              <div className={styles.frameBorder} />
              <Iframe
                intersectionRootRef={scrollingPanelRef}
@@ -101,7 +124,7 @@ index 5b4af43..3bb2615 100644
 -              )}
 +              code={renderCode}
 +              themeName={frame.theme}
-+              src={`${playroomConfig.baseUrl}frame.html`}
++              src={`${playroomConfig.baseUrl}frame.html${params}`}
                className={styles.frame}
                style={{ width: frame.width }}
                data-testid="previewFrame"
@@ -245,3 +268,34 @@ index a1819bf..70ac15c 100644
  };
  
  export const formatForInsertion = ({
+diff --git a/node_modules/playroom/src/utils/usePreviewUrl.ts b/node_modules/playroom/src/utils/usePreviewUrl.ts
+index ec225dd..c1cce20 100644
+--- a/node_modules/playroom/src/utils/usePreviewUrl.ts
++++ b/node_modules/playroom/src/utils/usePreviewUrl.ts
+@@ -8,15 +8,24 @@ const baseUrl = window.location.href
+   .split(playroomConfig.paramType === 'hash' ? '#' : '?')[0]
+   .split('index.html')[0];
+ 
++const extraParams = new URLSearchParams(window.location.search);
++extraParams.delete('code');
++extraParams.delete('theme');
++
++let extraParamsStr = '';
++if (extraParams.size) {
++  extraParamsStr = `&${extraParams.toString()}`
++}
++
+ export default (theme: string) => {
+   const [{ code }] = useContext(StoreContext);
+ 
+   const isThemed = theme !== '__PLAYROOM__NO_THEME__';
+ 
+-  return createPreviewUrl({
++  return `${createPreviewUrl({
+     baseUrl,
+     code,
+     theme: isThemed ? theme : undefined,
+     paramType: playroomConfig.paramType,
+-  });
++  })}${extraParamsStr}`;
+ };
