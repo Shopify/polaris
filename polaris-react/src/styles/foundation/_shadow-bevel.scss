@@ -6,12 +6,14 @@
 @mixin shadow-bevel(
   $boxShadow: null,
   $borderRadius: null,
+  $border: none,
   $content: '',
   $zIndex: 0
 ) {
   position: relative;
   box-shadow: $boxShadow;
   border-radius: $borderRadius;
+  border: $border;
 
   &::before {
     content: $content;

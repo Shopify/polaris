@@ -17,7 +17,8 @@ import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
 import {
   FeaturesContext,
-  summerEditions2023ClassName,
+  classNamePolarisSummerEditions2023,
+  classNamePolarisSummerEditions2023ShadowBevelOptOut,
 } from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
@@ -44,6 +45,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
   static defaultProps: Partial<AppProviderProps> = {
     features: {
       polarisSummerEditions2023: false,
+      polarisSummerEditions2023ShadowBevelOptOut: false,
     },
   };
 
@@ -97,8 +99,13 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
   setRootAttributes = () => {
     document.documentElement.classList.toggle(
-      summerEditions2023ClassName,
+      classNamePolarisSummerEditions2023,
       this.props.features?.polarisSummerEditions2023,
+    );
+
+    document.documentElement.classList.toggle(
+      classNamePolarisSummerEditions2023ShadowBevelOptOut,
+      this.props.features?.polarisSummerEditions2023ShadowBevelOptOut,
     );
   };
 

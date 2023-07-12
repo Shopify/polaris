@@ -13,10 +13,24 @@ $Backdrop-opacity: 0.88;
   box-shadow: var(--p-shadow-xl);
 
   #{$se23} & {
+    // stylelint-disable -- Shadow bevel opt out custom properties
+    --pc-toast-shadow-bevel-content: '';
+    --pc-toast-shadow-bevel-border: none;
+    // stylelint-enable
+
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-lg),
-      $borderRadius: var(--p-border-radius-2)
+      $borderRadius: var(--p-border-radius-2),
+      $border: var(--pc-toast-shadow-bevel-border),
+      $content: var(--pc-toast-shadow-bevel-content)
     );
+
+    #{$se23ShadowBevelOptOut} & {
+      // stylelint-disable -- Shadow bevel opt out custom properties
+      --pc-toast-shadow-bevel-content: none;
+      --pc-toast-shadow-bevel-border: #{$se23ShadowBevelOptOutBorder};
+      // stylelint-enable
+    }
   }
 
   @media #{$p-breakpoints-sm-up} {

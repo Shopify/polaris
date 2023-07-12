@@ -7,9 +7,16 @@
   overflow: clip;
 
   #{$se23} & {
+    // stylelint-disable -- Shadow bevel opt out custom properties
+    --pc-legacy-card-shadow-bevel-content: '';
+    --pc-legacy-card-shadow-bevel-border: none;
+    // stylelint-enable
+
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-xs),
       $borderRadius: var(--p-border-radius-0-experimental),
+      $border: var(--pc-legacy-card-shadow-bevel-border),
+      $content: var(--pc-legacy-card-shadow-bevel-content),
       $zIndex: 101
     );
 
@@ -18,6 +25,13 @@
     h3 {
       font-size: var(--p-font-size-80-experimental);
     }
+  }
+
+  #{$se23ShadowBevelOptOut} & {
+    // stylelint-disable -- Shadow bevel opt out custom properties
+    --pc-legacy-card-shadow-bevel-content: none;
+    --pc-legacy-card-shadow-bevel-border: #{$se23ShadowBevelOptOutBorder};
+    // stylelint-enable
   }
 
   + .LegacyCard {
@@ -45,6 +59,8 @@
       @include shadow-bevel(
         $boxShadow: var(--p-shadow-xs),
         $borderRadius: var(--p-border-radius-3),
+        $border: var(--pc-legacy-card-shadow-bevel-border),
+        $content: var(--pc-legacy-card-shadow-bevel-content),
         $zIndex: 101
       );
 

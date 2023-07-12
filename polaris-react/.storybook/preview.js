@@ -19,12 +19,18 @@ function StrictModeDecorator(Story, context) {
 }
 
 function AppProviderDecorator(Story, context) {
-  const {polarisSummerEditions2023} = context.globals;
+  const {
+    polarisSummerEditions2023,
+    polarisSummerEditions2023ShadowBevelOptOut,
+  } = context.globals;
+
   if (context.args.omitAppProvider) return <Story {...context} />;
+
   return (
     <AppProvider
       features={{
         polarisSummerEditions2023,
+        polarisSummerEditions2023ShadowBevelOptOut,
       }}
       i18n={enTranslations}
     >
