@@ -16,10 +16,12 @@ import {
 } from '../../utilities/focus';
 import {Portal} from '../Portal';
 import {portal} from '../shared';
+import {classNames} from '../../utilities/css';
 
 import {PopoverCloseSource, Pane, PopoverOverlay, Section} from './components';
 import type {PopoverAutofocusTarget, PopoverOverlayProps} from './components';
 import {setActivatorAttributes} from './set-activator-attributes';
+import styles from './Popover.scss';
 
 export {PopoverCloseSource};
 export type {PopoverAutofocusTarget};
@@ -223,7 +225,10 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
     ) : null;
 
     return (
-      <WrapperComponent ref={activatorContainer}>
+      <WrapperComponent
+        ref={activatorContainer}
+        className={classNames('PopoverWrapper', active && 'Active')}
+      >
         {Children.only(activator)}
         {portal}
       </WrapperComponent>
