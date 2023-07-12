@@ -168,6 +168,9 @@ export function Item({
             className={classNames(
               styles.ItemInnerWrapper,
               disabled && styles.ItemInnerDisabled,
+              polarisSummerEditions2023
+                ? selectedOverride && styles['ItemInnerWrapper-selected']
+                : undefined,
             )}
           >
             <button
