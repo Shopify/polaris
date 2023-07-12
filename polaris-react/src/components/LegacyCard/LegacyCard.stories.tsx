@@ -17,7 +17,7 @@ import {
   VerticalStack,
   Box,
 } from '@shopify/polaris';
-import {ProductsMajor} from '@shopify/polaris-icons';
+import {ProductsMajor, CancelMajor} from '@shopify/polaris-icons';
 
 export default {
   component: LegacyCard,
@@ -535,6 +535,16 @@ export function All() {
             </Box>
           </VerticalStack>
         </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Header title="Header with icon button child">
+          <Button
+            icon={CancelMajor}
+            primary
+            plain
+            accessibilityLabel="Cancel button"
+          />
+        </LegacyCard.Header>
       </LegacyCard>
       <WithAllElements />
     </VerticalStack>
