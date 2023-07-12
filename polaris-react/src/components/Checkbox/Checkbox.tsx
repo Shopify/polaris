@@ -15,6 +15,7 @@ import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import type {Error, CheckboxHandles} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Checkbox.scss';
 
@@ -84,6 +85,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const uniqId = useId();
     const id = idProp ?? uniqId;
     const isWithinListbox = useContext(WithinListboxContext);
+    const {polarisSummerEditions2023} = useFeatures();
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -130,6 +132,29 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       : {'aria-checked': isChecked};
 
     const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;
+
+    const animatedTickIcon = polarisSummerEditions2023 && !isIndeterminate;
+
+    const iconSourceSe23 = (
+      <svg
+        viewBox="0 0 16 16"
+        shapeRendering="geometricPrecision"
+        textRendering="geometricPrecision"
+      >
+        <path
+          className={classNames(checked && styles.checked)}
+          d="M1.5,5.5L3.44655,8.22517C3.72862,8.62007,4.30578,8.64717,4.62362,8.28044L10.5,1.5"
+          transform="translate(2 2.980376)"
+          opacity="0"
+          fill="none"
+          stroke="#fff"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          pathLength="1"
+        />
+      </svg>
+    );
 
     const inputClassName = classNames(
       styles.Input,
@@ -181,8 +206,13 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             onClick={stopPropagation}
             onKeyUp={stopPropagation}
           />
-          <span className={styles.Icon}>
-            <Icon source={iconSource} />
+          <span
+            className={classNames(
+              styles.Icon,
+              animatedTickIcon && styles.animated,
+            )}
+          >
+            {animatedTickIcon ? iconSourceSe23 : <Icon source={iconSource} />}
           </span>
         </span>
       </Choice>
