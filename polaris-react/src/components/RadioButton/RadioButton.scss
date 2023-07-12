@@ -68,14 +68,6 @@
     }
   }
 
-  &:checked:not([disabled]) + .Backdrop::before {
-    .ChoiceLabel:hover & {
-      #{$se23} & {
-        background-color: var(--p-color-icon-subdued);
-      }
-    }
-  }
-
   &:disabled + .Backdrop {
     &,
     .ChoiceLabel:hover & {
