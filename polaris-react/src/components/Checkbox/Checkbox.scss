@@ -51,6 +51,10 @@
       opacity: 1;
 
       #{$se23} & {
+        transition: opacity var(--p-motion-duration-150)
+            var(--p-motion-ease-out),
+          transform var(--p-motion-duration-150) var(--p-motion-ease-out);
+
         // stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 override
         &.animated {
           transition: initial;
@@ -123,6 +127,9 @@
     transform var(--p-motion-duration-100) var(--p-motion-ease);
 
   #{$se23} & {
+    transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
+      transform var(--p-motion-duration-100) var(--p-motion-ease-out);
+
     &.animated {
       width: 12px;
       height: 12px;
