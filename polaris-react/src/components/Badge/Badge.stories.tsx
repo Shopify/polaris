@@ -222,3 +222,82 @@ export function All() {
     </LegacyCard>
   );
 }
+
+export function WithWrapping() {
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const filteredStatusEntries = polarisSummerEditions2023
+    ? statusEntries
+    : statusEntries.filter(([status]) => !status.endsWith('-experimental'));
+
+  return (
+    <LegacyCard sectioned>
+      <Box maxWidth="50px">
+        {sizeEntries.map(([size, sizeLabel]) => (
+          <Box key={size} paddingBlockEnd="2">
+            <VerticalStack gap="3">
+              <Text as="h2" variant="headingXl">
+                Size: {sizeLabel}
+              </Text>
+              <VerticalStack gap="2">
+                <Text as="h2" variant="headingXs">
+                  Status only
+                </Text>
+                <HorizontalStack gap="2">
+                  {filteredStatusEntries.map(([status, statusLabel]) => (
+                    <Badge
+                      key={status}
+                      size={size}
+                      status={status === 'default' ? undefined : status}
+                    >
+                      {`${statusLabel} ${status}`}
+                    </Badge>
+                  ))}
+                </HorizontalStack>
+              </VerticalStack>
+              <VerticalStack gap="2">
+                <Text as="h2" variant="headingXs">
+                  Status with progress
+                </Text>
+                {progressEntries.map(([progress]) => (
+                  <HorizontalStack key={progress} gap="2">
+                    {filteredStatusEntries.map(([status, statusLabel]) => (
+                      <Badge
+                        key={status}
+                        size={size}
+                        progress={progress}
+                        status={status === 'default' ? undefined : status}
+                      >
+                        {`${statusLabel} ${status}`}
+                      </Badge>
+                    ))}
+                  </HorizontalStack>
+                ))}
+              </VerticalStack>
+              {/* Remove `size` condition when micro icons are available */}
+              {size === 'large-experimental' && (
+                <VerticalStack gap="2">
+                  <Text as="h2" variant="headingXs">
+                    Status with icon
+                  </Text>
+                  <HorizontalStack gap="2">
+                    {filteredStatusEntries.map(([status, statusLabel]) => (
+                      <Badge
+                        key={status}
+                        size={size}
+                        icon={TempIcon}
+                        status={status === 'default' ? undefined : status}
+                      >
+                        {`${statusLabel} ${status}`}
+                      </Badge>
+                    ))}
+                  </HorizontalStack>
+                </VerticalStack>
+              )}
+            </VerticalStack>
+          </Box>
+        ))}
+      </Box>
+    </LegacyCard>
+  );
+}
