@@ -69,9 +69,7 @@
         background: var(--p-color-bg-input-hover-experimental);
       }
     }
-  }
 
-  + .Backdrop {
     .ChoiceLabel:active & {
       #{$se23} & {
         border-color: var(--p-color-bg-primary);
