@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.6.0
+
+### Minor Changes
+
+- [#9684](https://github.com/Shopify/polaris/pull/9684) [`92d7107e3`](https://github.com/Shopify/polaris/commit/92d7107e3f72a97d9c3d52620c1a8b068fddbcf9) Thanks [@ryanschingeck](https://github.com/ryanschingeck)! - Added support for setting `onMouseOut` and `onMouseOver` callbacks on `ResourceItem`
+
 ## 11.5.3
 
 ### Patch Changes
