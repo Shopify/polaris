@@ -71,6 +71,15 @@
     }
   }
 
+  + .Backdrop {
+    .ChoiceLabel:active & {
+      #{$se23} & {
+        border-color: var(--p-color-bg-primary);
+        border-width: var(--p-border-width-2);
+      }
+    }
+  }
+
   &:disabled + .Backdrop {
     &,
     .ChoiceLabel:hover & {
