@@ -1375,3 +1375,65 @@ export function ItemWithMatchedIcon() {
     </Frame>
   );
 }
+
+export function ItemsWithoutUrl() {
+  const [selected, setSelected] = React.useState('all');
+
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          title="Templates"
+          items={[
+            {
+              label: 'All',
+              selected: selected === 'all',
+              onClick: () => setSelected('all'),
+            },
+            {
+              label: 'Announcements',
+              selected: selected === 'announcements',
+              onClick: () => setSelected('announcements'),
+            },
+            {
+              label: 'Holidays and occasions',
+              selected: selected === 'holidays',
+              onClick: () => setSelected('holidays'),
+            },
+            {
+              label: 'Newsletters',
+              selected: selected === 'newsletters',
+              onClick: () => setSelected('newsletters'),
+            },
+            {
+              label: 'Product highlights',
+              selected: selected === 'productHighlights',
+              onClick: () => setSelected('productHighlights'),
+            },
+            {
+              label: 'Promotions',
+              selected: selected === 'promotions',
+              onClick: () => setSelected('promotions'),
+              disabled: true,
+            },
+          ]}
+        />
+        <Navigation.Section
+          title="Custom"
+          items={[
+            {
+              label: 'Your templates',
+              selected: selected === 'yourTemplates',
+              onClick: () => setSelected('yourTemplates'),
+            },
+            {
+              label: 'Recent emails',
+              selected: selected === 'recentEmails',
+              onClick: () => setSelected('recentEmails'),
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}

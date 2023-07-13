@@ -65,6 +65,8 @@
   margin-left: calc(var(--p-space-5) - var(--p-border-width-2));
 
   #{$se23} & {
-    margin-left: var(--p-space-3);
+    margin-left: calc(var(--p-space-3) + var(--p-space-025));
+    // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- se23
+    line-height: 18px;
   }
 }
