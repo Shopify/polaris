@@ -51,12 +51,11 @@
 
   .Tail {
     position: absolute;
-    top: calc(-1 * var(--p-space-2));
+    top: calc(-1 * var(--p-space-2) + 0.5px);
     // stylelint-disable-next-line -- Custom positioning not expected to align with Polaris tokens
     left: calc(
       var(--pc-tooltip-chevron-x-pos) - var(--p-space-2) - var(--p-space-4)
     );
-    transform: rotate(180deg);
     // stylelint-disable-next-line -- se23 overrides
     z-index: var(--pc-tooltip-tail-z-index);
   }
@@ -72,7 +71,8 @@
     .Tail {
       top: unset;
       bottom: calc(-1 * var(--p-space-2));
-      transform: rotate(0deg);
+      // stylelint-disable-next-line -- se23 overrides
+      filter: drop-shadow(0 4px 6px rgba(26, 26, 26, 0.16));
     }
   }
 }
