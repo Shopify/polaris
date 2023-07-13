@@ -49,9 +49,10 @@
     }
   }
 
+  // TailUp
   .Tail {
     position: absolute;
-    top: calc(-1 * var(--p-space-2) + 0.5px);
+    top: calc(-1 * var(--p-space-2) + 0.8px);
     // stylelint-disable-next-line -- Custom positioning not expected to align with Polaris tokens
     left: calc(
       var(--pc-tooltip-chevron-x-pos) - var(--p-space-2) - var(--p-space-4)
@@ -67,12 +68,13 @@
       border-color: var(--p-color-bg) transparent transparent transparent;
     }
 
+    // TailDown
     // stylelint-disable-next-line -- se23 overrides
     .Tail {
       top: unset;
       bottom: calc(-1 * var(--p-space-2));
       // stylelint-disable-next-line -- se23 overrides
-      filter: drop-shadow(0 4px 6px rgba(26, 26, 26, 0.16));
+      filter: drop-shadow(0 3px 2px rgba(26, 26, 26, 0.1));
     }
   }
 }
