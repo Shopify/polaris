@@ -14,8 +14,6 @@
     border-width: var(--p-border-width-1) 0;
 
     #{$se23} & {
-      border: none;
-
       @include shadow-bevel(
         $boxShadow: var(--p-shadow-sm),
         $borderRadius: var(--p-border-radius-0-experimental),
