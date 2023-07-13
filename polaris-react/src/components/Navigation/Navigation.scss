@@ -169,6 +169,9 @@ $nav-max-width: 360px;
   }
 
   #{$se23} & {
+    transition: background-color var(--p-motion-duration-100)
+      var(--p-motion-ease-out);
+
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-subdued-hover);
 
@@ -194,6 +197,23 @@ $nav-max-width: 360px;
 
     &:active {
       background-color: var(--p-color-bg-app-selected);
+
+      // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+      &.ItemInnerWrapper-display-actions-on-hover {
+        @media #{$p-breakpoints-md-up} {
+          .SecondaryActions {
+            &::before {
+              // stylelint-disable-next-line -- required for fade effect
+              background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0),
+                var(--p-color-bg-app-selected) var(--p-space-8)
+              );
+            }
+          }
+        }
+      }
+      // stylelint-enable
     }
   }
 }
