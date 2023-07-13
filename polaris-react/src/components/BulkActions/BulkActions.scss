@@ -60,24 +60,10 @@ $bulk-actions-button-stacking-order: (
   pointer-events: auto;
 
   #{$se23} & {
-    // stylelint-disable -- Shadow bevel opt out custom properties
-    --pc-bulk-actions-shadow-bevel-content: '';
-    --pc-bulk-actions-shadow-bevel-border: none;
-    // stylelint-enable
-
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
-      $borderRadius: var(--p-border-radius-2),
-      $border: var(--pc-bulk-actions-shadow-bevel-border),
-      $content: var(--pc-bulk-actions-shadow-bevel-content)
+      $borderRadius: var(--p-border-radius-2)
     );
-  }
-
-  #{$se23ShadowBevelOptOut} & {
-    // stylelint-disable -- Shadow bevel opt out custom properties
-    --pc-bulk-actions-shadow-bevel-content: none;
-    --pc-bulk-actions-shadow-bevel-border: #{$se23ShadowBevelOptOutBorder};
-    // stylelint-enable
   }
 
   @media #{$p-breakpoints-sm-down} {

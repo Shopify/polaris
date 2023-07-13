@@ -14,25 +14,11 @@ $vertical-motion-offset: -5px;
   will-change: left, top;
 
   #{$se23} & {
-    // stylelint-disable -- Shadow bevel opt out custom properties
-    --pc-popover-shadow-bevel-content: '';
-    --pc-popover-shadow-bevel-border: none;
-    // stylelint-enable
-
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
       $borderRadius: var(--p-border-radius-3),
-      $border: var(--pc-popover-shadow-bevel-border),
-      $content: var(--pc-popover-shadow-bevel-content),
       $zIndex: 2
     );
-  }
-
-  #{$se23ShadowBevelOptOut} & {
-    // stylelint-disable -- Shadow bevel opt out custom properties
-    --pc-popover-shadow-bevel-content: none;
-    --pc-popover-shadow-bevel-border: #{$se23ShadowBevelOptOutBorder};
-    // stylelint-enable
   }
 }
 

@@ -15,8 +15,6 @@
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-xs),
       $borderRadius: var(--p-border-radius-0-experimental),
-      $border: var(--pc-legacy-card-shadow-bevel-border),
-      $content: var(--pc-legacy-card-shadow-bevel-content),
       $zIndex: 101
     );
 
@@ -59,8 +57,6 @@
       @include shadow-bevel(
         $boxShadow: var(--p-shadow-xs),
         $borderRadius: var(--p-border-radius-3),
-        $border: var(--pc-legacy-card-shadow-bevel-border),
-        $content: var(--pc-legacy-card-shadow-bevel-content),
         $zIndex: 101
       );
 
@@ -85,6 +81,7 @@
       @include shadow-bevel(
         $boxShadow: none,
         $borderRadius: var(--p-border-radius-0-experimental),
+        $border: none,
         $content: none
       );
     }
