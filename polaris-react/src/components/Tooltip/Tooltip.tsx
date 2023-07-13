@@ -6,6 +6,7 @@ import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-ma
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 
 import {TooltipOverlay} from './components';
 import type {TooltipOverlayProps} from './components';
@@ -78,13 +79,18 @@ export function Tooltip({
   accessibilityLabel,
   width = 'default',
   padding = 'default',
-  borderRadius = '1',
+  borderRadius: borderRadiusProp,
   zIndexOverride,
   hasUnderline,
   persistOnClick,
   onOpen,
   onClose,
 }: TooltipProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const borderRadius =
+    borderRadiusProp || (polarisSummerEditions2023 ? '2' : '1');
+
   const WrapperComponent: any = activatorWrapper;
   const {
     value: active,
