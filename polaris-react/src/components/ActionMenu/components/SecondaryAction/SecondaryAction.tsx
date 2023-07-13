@@ -21,7 +21,7 @@ export function SecondaryAction({
   getOffsetWidth,
   ...rest
 }: SecondaryAction) {
-  const secondaryActionsRef = useRef<HTMLSpanElement>(null);
+  const secondaryActionsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!getOffsetWidth || !secondaryActionsRef.current) return;
@@ -42,7 +42,7 @@ export function SecondaryAction({
   );
 
   return (
-    <span
+    <div
       className={classNames(
         styles.SecondaryAction,
         destructive && styles.destructive,
@@ -50,6 +50,6 @@ export function SecondaryAction({
       ref={secondaryActionsRef}
     >
       {actionMarkup}
-    </span>
+    </div>
   );
 }
