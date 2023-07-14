@@ -22,7 +22,10 @@
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
       $borderRadius: var(--pc-tooltip-border-radius),
-      $zIndex: var(--pc-tooltip-shadow-bevel-z-index)
+      $zIndex: var(--pc-tooltip-shadow-bevel-z-index),
+      // The following arguments explicitly ignore the shadow-bevel opt out
+      $border: none,
+      $content: ''
     );
   }
 
