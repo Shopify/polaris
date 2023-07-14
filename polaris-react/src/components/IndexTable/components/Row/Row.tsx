@@ -105,7 +105,9 @@ export const Row = memo(function Row({
     hovered && !condensed && styles['TableRow-hovered'],
     disabled && styles['TableRow-disabled'],
     status && styles[variationName('status', status)],
-    selected && !selectedGroups[position + 1] && styles.lastOfGroup,
+    selected &&
+      !selectedGroups[position + 1] &&
+      styles['TableRow-selected-last'],
     !selectable &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],
