@@ -45,7 +45,13 @@ describe('useIndexRow', () => {
 
     mountWithApp(
       <IndexRowContext.Provider
-        value={{selectMode: true, condensed: true, selectable: true}}
+        value={{
+          selectMode: true,
+          condensed: true,
+          selectable: true,
+          selectedGroups: {},
+          setSelectedGroups: () => {},
+        }}
       >
         <MockComponent />
       </IndexRowContext.Provider>,
@@ -55,6 +61,8 @@ describe('useIndexRow', () => {
       selectMode: true,
       condensed: true,
       selectable: true,
+      selectedGroups: {},
+      setSelectedGroups: expect.any(Function),
     });
   });
 

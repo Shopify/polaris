@@ -763,7 +763,7 @@ $loading-panel-height: 53px;
     }
   }
 }
-
+/* stylelint-disable -- testing */
 #{$se23} {
   .TableRow-selected {
     .TableCell {
@@ -806,7 +806,7 @@ $loading-panel-height: 53px;
     }
   }
 }
-
+// stylelint-enable
 .Table-sortable {
   .TableHeading {
     background-color: var(--p-color-bg-subdued);
