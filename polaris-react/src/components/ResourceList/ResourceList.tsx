@@ -762,8 +762,8 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
         {filterControlMarkup}
         {headerMarkup}
-        {listMarkup}
         {bulkActionsMarkup}
+        {listMarkup}
         {emptySearchStateMarkup}
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
