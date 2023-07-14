@@ -1073,3 +1073,7 @@ $scroll-bar-size: var(--p-space-2);
     opacity: 1;
   }
 }
+
+.lastOfGroup {
+  border: 2px solid red;
+}

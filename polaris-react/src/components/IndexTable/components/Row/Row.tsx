@@ -37,7 +37,8 @@ export const Row = memo(function Row({
   onNavigation,
   onClick,
 }: RowProps) {
-  const {selectable, selectMode, condensed} = useIndexRow();
+  const {selectable, selectMode, condensed, selectedGroups, setSelectedGroups} =
+    useIndexRow();
   const onSelectionChange = useIndexSelectionChange();
   const {
     value: hovered,
@@ -54,9 +55,21 @@ export const Row = memo(function Row({
         ? SelectionType.Multi
         : SelectionType.Single;
 
+      setSelectedGroups((prevGroups) => {
+        const newGroup = selectedGroups[position];
+        const newGroups = {...prevGroups, [position]: !newGroup};
+        return newGroups;
+      });
       onSelectionChange(selectionType, !selected, id, position);
     },
-    [id, onSelectionChange, position, selected],
+    [
+      id,
+      onSelectionChange,
+      position,
+      selectedGroups,
+      selected,
+      setSelectedGroups,
+    ],
   );
 
   const contextValue = useMemo(
@@ -92,6 +105,7 @@ export const Row = memo(function Row({
     hovered && !condensed && styles['TableRow-hovered'],
     disabled && styles['TableRow-disabled'],
     status && styles[variationName('status', status)],
+    selected && !selectedGroups[position + 1] && styles.lastOfGroup,
     !selectable &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],

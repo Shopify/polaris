@@ -37,6 +37,12 @@ export interface IndexRowContextType {
   selectable: boolean;
   selectMode: boolean;
   condensed?: boolean;
+  selectedGroups: {[key: number]: boolean};
+  setSelectedGroups: React.Dispatch<
+    React.SetStateAction<{
+      [key: number]: boolean;
+    }>
+  >;
 }
 
 export const IndexRowContext = createContext<IndexRowContextType | undefined>(

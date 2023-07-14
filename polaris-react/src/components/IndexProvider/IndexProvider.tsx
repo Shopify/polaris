@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useState} from 'react';
 
 import {
   IndexContext,
@@ -33,6 +33,9 @@ export function IndexProvider({
     hasMoreItems,
     resourceName: passedResourceName,
   });
+  const [selectedGroups, setSelectedGroups] = useState<{
+    [key: number]: boolean;
+  }>({});
   const handleSelectionChange = useHandleBulkSelection({onSelectionChange});
 
   const contextValue = useMemo(
@@ -71,8 +74,10 @@ export function IndexProvider({
       selectable: isSelectableIndex,
       selectMode: selectMode && isSelectableIndex,
       condensed,
+      selectedGroups,
+      setSelectedGroups,
     }),
-    [condensed, selectMode, isSelectableIndex],
+    [isSelectableIndex, selectMode, condensed, selectedGroups],
   );
 
   return (
