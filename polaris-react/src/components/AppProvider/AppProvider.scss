@@ -16,7 +16,7 @@
   // stylelint-disable -- Shadow bevel opt out custom properties
   --pc-app-provider-shadow-bevel-content: none;
   --pc-app-provider-shadow-bevel-border: var(--p-border-width-1) solid
-    rgb(223, 223, 223);
+    var(--p-color-border);
   // stylelint-enable
 }
 
