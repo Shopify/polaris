@@ -78,6 +78,12 @@ export const featureFlagOptions = {
     defaultValue: false,
     control: {type: 'boolean'},
   },
+  polarisSummerEditions2023ShadowBevelOptOut: {
+    name: 'polarisSummerEditions2023ShadowBevelOptOut',
+    description: 'Toggle the shadow-bevel opt out feature flag',
+    defaultValue: false,
+    control: {type: 'boolean'},
+  },
 };
 
 export const gridOptions = {

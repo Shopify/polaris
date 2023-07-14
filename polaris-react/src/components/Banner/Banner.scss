@@ -14,11 +14,12 @@
     border-width: var(--p-border-width-1) 0;
 
     #{$se23} & {
-      border: none;
-
       @include shadow-bevel(
         $boxShadow: var(--p-shadow-sm),
-        $borderRadius: var(--p-border-radius-0-experimental)
+        $borderRadius: var(--p-border-radius-0-experimental),
+        // The following arguments explicitly ignore the shadow-bevel opt out
+        $border: none,
+        $content: ''
       );
     }
 
@@ -27,11 +28,12 @@
       border-radius: var(--p-border-radius-2);
 
       #{$se23} & {
-        border: none;
-
         @include shadow-bevel(
           $boxShadow: var(--p-shadow-sm),
-          $borderRadius: var(--p-border-radius-3)
+          $borderRadius: var(--p-border-radius-3),
+          // The following arguments explicitly ignore the shadow-bevel opt out
+          $border: none,
+          $content: ''
         );
       }
     }
