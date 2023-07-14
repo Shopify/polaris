@@ -70,6 +70,26 @@ export class AppProvider extends Component<AppProviderProps, State> {
       this.setBodyStyles();
       this.setRootAttributes();
     }
+
+    const parent = document.createElement('div');
+    parent.setAttribute('style', 'width:30px;height:30px;');
+    parent.classList.add('scrollbar-test');
+
+    const child = document.createElement('div');
+    child.setAttribute('style', 'width:100%;height:40px;overflow:scroll');
+    parent.appendChild(child);
+    document.body.appendChild(parent);
+
+    const scrollbarWidth =
+      30 -
+      (parent.firstChild
+        ? (parent.firstChild as HTMLDivElement).clientWidth
+        : 0);
+    document.documentElement.style.setProperty(
+      '--p-scrollbar-width',
+      `${scrollbarWidth}px`,
+    );
+    document.body.removeChild(parent);
   }
 
   componentDidUpdate({
