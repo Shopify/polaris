@@ -9,8 +9,6 @@ import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {EmptyState} from '../../EmptyState';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../../EventListener';
 import {Select} from '../../Select';
 import {Spinner} from '../../Spinner';
 import {ResourceItem} from '../../ResourceItem';
@@ -1231,10 +1229,11 @@ describe('<ResourceList />', () => {
           renderItem={renderItem}
         />,
       );
+      resourceList.act(() => {
+        setSmallScreen();
+        global.dispatchEvent(new Event('resize'));
+      });
 
-      setSmallScreen();
-      // eslint-disable-next-line import/no-deprecated
-      resourceList.find(EventListener)!.trigger('handler');
       expect(resourceList).toContainReactComponent(Select, {
         labelInline: false,
       });
