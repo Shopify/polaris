@@ -83,7 +83,7 @@ export function ContextualSaveBar({
 
   const saveActionMarkup = saveAction && (
     <Button
-      primarySuccess
+      primary
       url={saveAction.url}
       onClick={saveAction.onAction}
       loading={saveAction.loading}
