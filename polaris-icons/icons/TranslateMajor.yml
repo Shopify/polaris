@@ -1,5 +1,5 @@
-name: Language filled
-set: minor
+name: Translate
+set: major
 description: Used to represent internationalization or multiple language options.
 keywords:
   - language
@@ -7,6 +7,6 @@ keywords:
 authors:
   - Joe Thomas
 version: 1
-date_added: 2023-07-06
+date_added: 2023-07-17
 date_modified: 2023-07-17
 exclusive_use:
