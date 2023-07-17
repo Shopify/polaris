@@ -278,3 +278,18 @@ Use to de-emphasize a piece of text that is less important to merchants than oth
   No supplier listed
 </Text>
 ```
+
+### In a definition list
+
+Use as the `dt` and `dd` elements in a definition list
+
+```jsx
+<dl>
+  <Text as="dt" variant="bodyLg">
+    Definition Title
+  </Text>
+  <Text as="dd" variant="bodySm">
+    Definition Description
+  </Text>
+</dl>
+```
