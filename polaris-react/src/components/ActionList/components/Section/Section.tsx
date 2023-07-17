@@ -48,8 +48,6 @@ export function Section({
           as="li"
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
-          {...(polarisSummerEditions2023 &&
-            index !== 0 && {paddingBlockStart: '1'})}
         >
           <Item
             content={content}
@@ -71,9 +69,9 @@ export function Section({
         <Box
           {...(polarisSummerEditions2023
             ? {
-                paddingBlockStart: isFirst ? '4' : '3',
+                paddingBlockStart: '3',
+                paddingBlockEnd: '1',
                 paddingInlineStart: '5',
-                paddingBlockEnd: '2',
                 paddingInlineEnd: '5',
               }
             : {
