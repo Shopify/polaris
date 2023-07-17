@@ -168,6 +168,10 @@ type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-success-strong-active'
   | 'bg-warning-strong'
   | 'bg-warning-subdued'
+  | 'bg-transparent-disabled'
+  | 'bg-transparent-secondary-disabled'
+  | 'bg-transparent-primary-disabled'
+  | 'bg-transparent-primary'
 >;
 
 type ColorTextAliasExperimental = Experimental<
@@ -943,6 +947,22 @@ export const color: {
   },
   'color-bg-transparent-active-experimental': {
     value: colorsExperimental.gray[16]('0.07'),
+    description: '',
+  },
+  'color-bg-transparent-disabled-experimental': {
+    value: colorsExperimental.gray[16]('0.04'),
+    description: '',
+  },
+  'color-bg-transparent-secondary-disabled-experimental': {
+    value: colorsExperimental.gray[16]('0.08'),
+    description: '',
+  },
+  'color-bg-transparent-primary-disabled-experimental': {
+    value: colorsExperimental.gray[16]('0.18'),
+    description: '',
+  },
+  'color-bg-transparent-primary-experimental': {
+    value: colorsExperimental.gray[16]('0.60'),
     description: '',
   },
   'color-bg-inverse-transparent-hover-experimental': {
