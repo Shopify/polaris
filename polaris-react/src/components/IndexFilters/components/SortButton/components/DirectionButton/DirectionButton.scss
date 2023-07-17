@@ -16,6 +16,8 @@
   text-align: left;
 
   #{$se23} & {
+    // stylelint-disable-next-line -- se23 overrides
+    @include focus-ring($size: 'wide');
     border-radius: var(--p-border-radius-2);
     padding: var(--p-space-1) var(--p-space-3) var(--p-space-1) var(--p-space-2);
   }
@@ -32,7 +34,12 @@
     outline: 0;
 
     // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
-    @include focus-ring($style: 'focused', $style: 'base');
+    @include focus-ring($style: 'focused');
+
+    #{$se23} & {
+      // stylelint-disable-next-line -- se23 overrides
+      @include focus-ring($size: 'wide', $style: 'focused');
+    }
   }
 }
 
