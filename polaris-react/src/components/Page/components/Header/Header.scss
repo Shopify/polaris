@@ -17,16 +17,19 @@ $action-menu-rollup-computed-width: 40px;
   grid-area: breadcrumbs;
 
   #{$se23} & {
-    a, button {
+    a,
+    button {
       background-color: var(--p-color-bg-strong);
       border-radius: var(--p-border-radius-2);
       box-shadow: none;
 
+      // stylelint-disable-next-line -- SE23 ignore
       &:hover {
         box-shadow: none;
         background-color: var(--p-color-bg-strong-hover);
       }
 
+      // stylelint-disable-next-line -- SE23 ignore
       &:focus {
         background-color: var(--p-color-bg-strong-active);
         box-shadow: var(--p-shadow-inset-md) !important;
