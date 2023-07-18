@@ -132,6 +132,8 @@ export interface BoxProps extends React.AriaAttributes {
   outlineStyle?: LineStyles;
   /** Outline width */
   outlineWidth?: BorderWidthScale;
+  /** Adds display: flex */
+  flex?: boolean;
   /** Visually hide the contents during print */
   printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
@@ -159,6 +161,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderRadiusStartEnd,
       children,
       color,
+      flex,
       id,
       minHeight,
       minWidth,
@@ -304,6 +307,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         : undefined,
       zIndex,
       opacity,
+      display: flex ? 'flex' : undefined,
     } as React.CSSProperties;
 
     const className = classNames(
