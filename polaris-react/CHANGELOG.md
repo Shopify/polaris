@@ -1,5 +1,25 @@
 # Changelog
 
+## 11.7.0
+
+### Minor Changes
+
+- [#9725](https://github.com/Shopify/polaris/pull/9725) [`4d0186647`](https://github.com/Shopify/polaris/commit/4d018664742bc3c9e7c4b577d31dcd05d09a2a6f) Thanks [@felipeleusin](https://github.com/felipeleusin)! - [Text] Allows Text to work as dt/dd
+
+### Patch Changes
+
+- [#9704](https://github.com/Shopify/polaris/pull/9704) [`d80cc63d6`](https://github.com/Shopify/polaris/commit/d80cc63d667ea08bb1e7ed9ce184da9f087dcb9d) Thanks [@samrose3](https://github.com/samrose3)! - Fixed IndexTable content from overlapping the horizontal scrollbar
+
+* [#9715](https://github.com/Shopify/polaris/pull/9715) [`72acdded4`](https://github.com/Shopify/polaris/commit/72acdded4e06d135bce6b3ac0fffc1d73829d979) Thanks [@felipeleusin](https://github.com/felipeleusin)! - Fixes ContextualSaveBar and Frame styles to respect page layout
+
+- [#9510](https://github.com/Shopify/polaris/pull/9510) [`f17d78670`](https://github.com/Shopify/polaris/commit/f17d78670682861d38695d2715fcd0bdec855677) Thanks [@vladovidiu](https://github.com/vladovidiu)! - - `ResourceList` replace deprecated EventListener component with call to useEventListener() hook.
+  - `ResourceList` fix `BulkActions` UI not appearing when filters are enabled.
+
+* [#9706](https://github.com/Shopify/polaris/pull/9706) [`b2d9e2dce`](https://github.com/Shopify/polaris/commit/b2d9e2dced8d6f8c94c08e99a7e5b4a226d8cbcf) Thanks [@aveline](https://github.com/aveline)! - Adjust popover positioning for `ActionMenu` secondary actions
+
+* Updated dependencies [[`ad287e384`](https://github.com/Shopify/polaris/commit/ad287e3842eb7e1ebf2f63079e3ffbc20271f8bb), [`639395406`](https://github.com/Shopify/polaris/commit/6393954066675721b9d9a8c9543b78d97e8af19b), [`ae40558df`](https://github.com/Shopify/polaris/commit/ae40558dfc5ed5faabd7ba5812307a077b00a27f)]:
+  - @shopify/polaris-icons@7.4.0
+
 ## 11.6.0
 
 ### Minor Changes
