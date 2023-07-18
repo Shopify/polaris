@@ -80,8 +80,11 @@
           var(--p-color-border-interactive-focus);
         outline-offset: var(--p-space-05);
       }
-      &[aria-disabled="true"] {
-        background-color: var(--p-color-bg-transparent-disabled-experimental) !important;
+      // stylelint-disable-next-line selector-max-combinators -- se23
+      &[aria-disabled='true'] {
+        background-color: var(
+          --p-color-bg-transparent-disabled-experimental
+        ) !important;
       }
     }
 
