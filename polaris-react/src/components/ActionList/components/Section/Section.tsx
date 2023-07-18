@@ -48,8 +48,6 @@ export function Section({
           as="li"
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
-          {...(polarisSummerEditions2023 &&
-            index !== 0 && {paddingBlockStart: '1'})}
         >
           <Item
             content={content}
@@ -71,10 +69,10 @@ export function Section({
         <Box
           {...(polarisSummerEditions2023
             ? {
-                paddingBlockStart: isFirst ? '4' : '3',
-                paddingInlineStart: '5',
-                paddingBlockEnd: '2',
-                paddingInlineEnd: '5',
+                paddingBlockStart: '3',
+                paddingBlockEnd: '1',
+                paddingInlineStart: '4',
+                paddingInlineEnd: '4',
               }
             : {
                 paddingBlockStart: '4',
@@ -113,7 +111,7 @@ export function Section({
       {titleMarkup}
       <Box
         as="ul"
-        padding="2"
+        padding={polarisSummerEditions2023 ? '1_5-experimental' : '2'}
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         {...(sectionRole && {role: sectionRole})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
@@ -129,7 +127,9 @@ export function Section({
       role="presentation"
       borderColor="border-subdued"
       {...(!isFirst && {borderBlockStartWidth: '1'})}
-      {...(!section.title && {paddingBlockStart: '2'})}
+      {...(!section.title && {
+        paddingBlockStart: polarisSummerEditions2023 ? '1_5-experimental' : '2',
+      })}
     >
       {sectionMarkup}
     </Box>
