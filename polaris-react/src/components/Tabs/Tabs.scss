@@ -124,6 +124,7 @@
     // stylelint-disable-next-line -- no way to set focus ring without mixin currently
     @include focus-ring($size: 'wide');
     color: var(--p-color-text-primary);
+    background-color: transparent;
     border-radius: var(--p-border-radius-2);
     padding: var(--p-space-1_5-experimental) var(--p-space-3);
     height: 2rem;
