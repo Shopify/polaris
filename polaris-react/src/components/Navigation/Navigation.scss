@@ -139,7 +139,7 @@ $nav-max-width: 360px;
 
   #{$se23} & {
     border-radius: var(--p-border-radius-2);
-    transition: background-color var(--p-motion-duration-100)
+    transition: background-color var(--p-motion-duration-150)
       var(--p-motion-ease-out);
   }
 }
@@ -169,7 +169,7 @@ $nav-max-width: 360px;
   }
 
   #{$se23} & {
-    transition: background-color var(--p-motion-duration-100)
+    transition: background-color var(--p-motion-duration-150)
       var(--p-motion-ease-out);
 
     &:is(:hover, :focus-visible) {
