@@ -153,19 +153,23 @@ export type ColorTextAlias =
 
 type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-backdrop'
+  | 'bg-input-active'
+  | 'bg-input-hover'
+  | 'bg-inverse-transparent-active'
+  | 'bg-inverse-transparent-hover'
   | 'bg-primary-disabled'
   | 'bg-secondary'
   | 'bg-secondary-disabled'
-  | 'bg-input-hover'
-  | 'bg-input-active'
-  | 'bg-transparent'
-  | 'bg-transparent-subdued'
-  | 'bg-transparent-hover'
-  | 'bg-transparent-active'
-  | 'bg-inverse-transparent-hover'
-  | 'bg-inverse-transparent-active'
-  | 'bg-success-strong-hover'
   | 'bg-success-strong-active'
+  | 'bg-success-strong-hover'
+  | 'bg-transparent'
+  | 'bg-transparent-active'
+  | 'bg-transparent-disabled'
+  | 'bg-transparent-hover'
+  | 'bg-transparent-primary'
+  | 'bg-transparent-primary-disabled'
+  | 'bg-transparent-secondary-disabled'
+  | 'bg-transparent-subdued'
   | 'bg-warning-strong'
   | 'bg-warning-subdued'
 >;
@@ -943,6 +947,22 @@ export const color: {
   },
   'color-bg-transparent-active-experimental': {
     value: colorsExperimental.gray[16]('0.07'),
+    description: '',
+  },
+  'color-bg-transparent-disabled-experimental': {
+    value: colorsExperimental.gray[16]('0.04'),
+    description: '',
+  },
+  'color-bg-transparent-secondary-disabled-experimental': {
+    value: colorsExperimental.gray[16]('0.08'),
+    description: '',
+  },
+  'color-bg-transparent-primary-disabled-experimental': {
+    value: colorsExperimental.gray[16]('0.18'),
+    description: '',
+  },
+  'color-bg-transparent-primary-experimental': {
+    value: colorsExperimental.gray[16]('0.60'),
     description: '',
   },
   'color-bg-inverse-transparent-hover-experimental': {
