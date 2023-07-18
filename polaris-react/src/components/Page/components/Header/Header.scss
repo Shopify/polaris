@@ -15,6 +15,26 @@ $action-menu-rollup-computed-width: 40px;
 
 .BreadcrumbWrapper {
   grid-area: breadcrumbs;
+
+  #{$se23} & {
+    a, button {
+      background-color: var(--p-color-bg-strong);
+      border-radius: var(--p-border-radius-2);
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+        background-color: var(--p-color-bg-strong-hover);
+      }
+
+      &:focus {
+        background-color: var(--p-color-bg-strong-active);
+        box-shadow: var(--p-shadow-inset-md) !important;
+      }
+    }
+  }
+
+
 }
 
 .PaginationWrapper {
