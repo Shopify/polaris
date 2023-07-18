@@ -21,6 +21,8 @@ $nav-max-width: 360px;
   border-right: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   #{$se23} & {
+    // stylelint-disable-next-line -- Polaris component custom properties
+    --pc-navigation-letter-spacing-medium: -0.005rem;
     background-color: var(--p-color-bg-subdued-active);
     border-right: 0;
   }
@@ -227,7 +229,8 @@ $nav-max-width: 360px;
     // stylelint-disable-next-line selector-max-combinators -- Needed for precision on text
     .Text {
       color: var(--p-color-text);
-      letter-spacing: -0.005rem;
+      // stylelint-disable-next-line --  se23 component custom property
+      letter-spacing: var(--pc-navigation-letter-spacing-medium);
     }
 
     &:is(:hover, :focus-visible) {
@@ -718,7 +721,8 @@ $nav-max-width: 360px;
         // stylelint-disable-next-line selector-max-class, max-nesting-depth, selector-max-combinators, selector-max-compound-selectors -- Needed for precision styling on text
         .Text {
           font-weight: var(--p-font-weight-medium);
-          letter-spacing: -0.005rem;
+          // stylelint-disable-next-line --  se23 component custom property
+          letter-spacing: var(--pc-navigation-letter-spacing-medium);
         }
       }
     }
