@@ -71,8 +71,8 @@ export function Section({
             ? {
                 paddingBlockStart: '3',
                 paddingBlockEnd: '1',
-                paddingInlineStart: '4',
-                paddingInlineEnd: '4',
+                paddingInlineStart: '3',
+                paddingInlineEnd: '3',
               }
             : {
                 paddingBlockStart: '4',
