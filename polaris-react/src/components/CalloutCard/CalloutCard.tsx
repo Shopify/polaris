@@ -84,7 +84,12 @@ export function CalloutCard({
           <div className={styles.CalloutCard}>
             <div className={styles.Content}>
               <div className={styles.Title}>
-                <Text variant="headingMd" as="h2">
+                <Text
+                  variant={
+                    polarisSummerEditions2023 ? 'headingSm' : 'headingMd'
+                  }
+                  as="h2"
+                >
                   {title}
                 </Text>
               </div>
