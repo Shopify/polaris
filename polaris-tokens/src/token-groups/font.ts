@@ -29,7 +29,16 @@ export type FontLineHeightScale =
   | '7'
   | FontLineHeightScaleExperimental;
 
-export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
+type FontWeightAliasExperimental = Experimental<
+  'extra-medium' | 'extra-semibold'
+>;
+
+export type FontWeightAlias =
+  | 'regular'
+  | 'medium'
+  | 'semibold'
+  | 'bold'
+  | FontWeightAliasExperimental;
 
 export type FontTokenName =
   | `font-family-${FontFamilyAlias}`
@@ -90,12 +99,19 @@ export const font: {
   },
   'font-weight-regular': {
     value: '400',
+    valueExperimental: '450',
   },
   'font-weight-medium': {
     value: '500',
   },
+  'font-weight-extra-medium-experimental': {
+    value: '550',
+  },
   'font-weight-semibold': {
     value: '600',
+  },
+  'font-weight-extra-semibold-experimental': {
+    value: '650',
   },
   'font-weight-bold': {
     value: '700',
