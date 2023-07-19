@@ -84,7 +84,7 @@
       border-color: var(--p-color-border-disabled);
       cursor: default;
       #{$se23} & {
-        background-color: var(--p-color-bg-disabled);
+        background-color: var(--p-color-bg-transparent-secondary-disabled-experimental);
         border: none;
         // Duplicating this rule due to the specificity of the se23 selector
         // in earlier rules blasting it away.
