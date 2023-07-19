@@ -20,7 +20,7 @@ $action-menu-rollup-computed-width: 40px;
     /* stylelint-disable-next-line selector-max-combinators -- SE23 match button group */
     a,
     button {
-      background-color: var(--p-color-bg-strong);
+      background-color: transparent;
       border-radius: var(--p-border-radius-2);
       box-shadow: none;
 
