@@ -1,13 +1,15 @@
 .Scrollable {
   // stylelint-disable -- Polaris component custom properties
   --pc-scrollable-shadow-size: var(--p-space-5);
-  --pc-scrollable-shadow-color: rgba(0, 0, 0, 0.15);
+  --pc-scrollable-shadow-color: white;
   --pc-scrollable-shadow-bottom: inset 0
-    calc(-1 * var(--pc-scrollable-shadow-size)) var(--pc-scrollable-shadow-size)
     calc(-1 * var(--pc-scrollable-shadow-size))
+    calc(0.5 * var(--pc-scrollable-shadow-size))
+    calc(-0.5 * var(--pc-scrollable-shadow-size))
     var(--pc-scrollable-shadow-color);
   --pc-scrollable-shadow-top: inset 0 var(--pc-scrollable-shadow-size)
-    var(--pc-scrollable-shadow-size) calc(-1 * var(--pc-scrollable-shadow-size))
+    calc(0.5 * var(--pc-scrollable-shadow-size))
+    calc(-0.5 * var(--pc-scrollable-shadow-size))
     var(--pc-scrollable-shadow-color);
   --pc-scrollable-max-height: none;
   // stylelint-enable
