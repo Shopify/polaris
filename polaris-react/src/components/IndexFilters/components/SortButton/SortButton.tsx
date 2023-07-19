@@ -123,6 +123,7 @@ export function SortButton({
       activator={sortButton}
       autofocusTarget="first-node"
       onClose={handleClose}
+      preferredAlignment={se23 ? 'right' : undefined}
       fluidContent
     >
       <Box
