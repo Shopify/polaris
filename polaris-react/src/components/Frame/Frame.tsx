@@ -121,7 +121,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
         if (!saveDisabled || currentScrollPosition !== 0) {
           window.scrollTo({
-            top: currentScrollPosition + CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP,
+            top: currentScrollPosition,
             behavior: 'auto',
           });
         }

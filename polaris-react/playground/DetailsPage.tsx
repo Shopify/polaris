@@ -624,6 +624,93 @@ export function DetailsPage() {
               {fileUpload}
             </DropZone>
           </LegacyCard>
+          <LegacyCard title="Media" sectioned>
+            <DropZone onDrop={handleDropZoneDrop}>
+              {uploadedFiles}
+              {fileUpload}
+            </DropZone>
+          </LegacyCard>
+          <LegacyCard title="Media" sectioned>
+            <DropZone onDrop={handleDropZoneDrop}>
+              {uploadedFiles}
+              {fileUpload}
+            </DropZone>
+          </LegacyCard>
+          <LegacyCard title="Media" sectioned>
+            <DropZone onDrop={handleDropZoneDrop}>
+              {uploadedFiles}
+              {fileUpload}
+            </DropZone>
+          </LegacyCard>
+          <LegacyCard title="Media" sectioned>
+            <DropZone onDrop={handleDropZoneDrop}>
+              {uploadedFiles}
+              {fileUpload}
+            </DropZone>
+          </LegacyCard>
+        </Layout.Section>
+        <Layout.Section secondary>
+          <LegacyCard title="Organization">
+            <LegacyCard.Section>
+              <Select
+                label="Product type"
+                options={options}
+                onChange={setSelected}
+                value={selected}
+              />
+              <br />
+              <Select
+                label="Vendor"
+                options={options}
+                onChange={setSelected}
+                value={selected}
+              />
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Collections" />
+            <LegacyCard.Section title="Tags" />
+          </LegacyCard>
+        </Layout.Section>
+        <Layout.Section secondary>
+          <LegacyCard title="Organization">
+            <LegacyCard.Section>
+              <Select
+                label="Product type"
+                options={options}
+                onChange={setSelected}
+                value={selected}
+              />
+              <br />
+              <Select
+                label="Vendor"
+                options={options}
+                onChange={setSelected}
+                value={selected}
+              />
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Collections" />
+            <LegacyCard.Section title="Tags" />
+          </LegacyCard>
+        </Layout.Section>
+        <Layout.Section secondary>
+          <LegacyCard title="Organization">
+            <LegacyCard.Section>
+              <Select
+                label="Product type"
+                options={options}
+                onChange={setSelected}
+                value={selected}
+              />
+              <br />
+              <Select
+                label="Vendor"
+                options={options}
+                onChange={setSelected}
+                value={selected}
+              />
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Collections" />
+            <LegacyCard.Section title="Tags" />
+          </LegacyCard>
         </Layout.Section>
         <Layout.Section secondary>
           <LegacyCard title="Organization">
