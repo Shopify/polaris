@@ -59,6 +59,11 @@
         border-bottom-left-radius: var(--p-border-radius-3);
         border-bottom-right-radius: var(--p-border-radius-3);
       }
+
+      // stylelint-disable-next-line -- se23 override
+      .Section p:first-of-type {
+        max-width: 80ch;
+      }
     }
   }
 
