@@ -460,12 +460,12 @@ export const color: {
   },
   'color-bg-info-subdued': {
     value: colors.teal[100],
-    valueExperimental: colorsExperimental.azure[4],
+    valueExperimental: colorsExperimental.azure[3],
     description: '',
   },
   'color-bg-info-subdued-hover': {
     value: colors.teal[50],
-    valueExperimental: colorsExperimental.azure[5],
+    valueExperimental: colorsExperimental.azure[4],
     description: '',
   },
   'color-bg-interactive-active': {
