@@ -15,6 +15,29 @@ $action-menu-rollup-computed-width: 40px;
 
 .BreadcrumbWrapper {
   grid-area: breadcrumbs;
+
+  #{$se23} & {
+    /* stylelint-disable-next-line selector-max-combinators -- SE23 match button group */
+    a,
+    button {
+      background-color: transparent;
+      border-radius: var(--p-border-radius-2);
+      box-shadow: none;
+
+      /* stylelint-disable-next-line selector-max-combinators -- SE23 match button group */
+      &:hover {
+        box-shadow: none;
+        background-color: var(--p-color-bg-strong-hover);
+      }
+
+      /* stylelint-disable-next-line selector-max-combinators -- SE23 match button group */
+      &:focus {
+        background-color: var(--p-color-bg-strong-active);
+        /* stylelint-disable-next-line declaration-no-important -- SE23 match button group */
+        box-shadow: var(--p-shadow-inset-md) !important;
+      }
+    }
+  }
 }
 
 .PaginationWrapper {
