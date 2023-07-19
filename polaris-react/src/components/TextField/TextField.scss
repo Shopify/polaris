@@ -123,12 +123,21 @@ $spinner-icon-size: 12px;
   }
 }
 
-.readOnly > .Backdrop {
-  background-color: var(--p-color-bg-disabled);
+.readOnly {
+  > .Input {
+    #{$se23} & {
+      color: var(--p-color-text-subdued);
+    }
+  }
 
-  #{$se23} & {
-    // se23 -- specificity bump
+  > .Backdrop {
     background-color: var(--p-color-bg-disabled);
+
+    #{$se23} & {
+      // se23 -- specificity bump
+      background-color: var(--p-color-bg-transparent-disabled-experimental);
+      border-color: transparent;
+    }
   }
 }
 
@@ -143,7 +152,7 @@ $spinner-icon-size: 12px;
 
     #{$se23} & {
       border: none;
-      background-color: var(--p-color-bg-disabled);
+      background-color: var(--p-color-bg-transparent-disabled-experimental);
     }
   }
 
