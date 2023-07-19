@@ -40,11 +40,18 @@ export type FontWeightAlias =
   | 'bold'
   | FontWeightAliasExperimental;
 
+type FontLetterSpacingAliasExperimental = Experimental<
+  'tightest' | 'tighter' | 'tight' | 'normal'
+>;
+
+export type FontLetterSpacingAlias = FontLetterSpacingAliasExperimental;
+
 export type FontTokenName =
   | `font-family-${FontFamilyAlias}`
   | `font-size-${FontSizeScale}`
   | `font-weight-${FontWeightAlias}`
-  | `font-line-height-${FontLineHeightScale}`;
+  | `font-line-height-${FontLineHeightScale}`
+  | `font-letter-spacing-${FontLetterSpacingAlias}`;
 
 export type FontTokenGroup = {
   [TokenName in FontTokenName]: string;
@@ -139,5 +146,17 @@ export const font: {
   },
   'font-line-height-7': {
     value: '48px',
+  },
+  'font-letter-spacing-tightest-experimental': {
+    value: '-0.24px',
+  },
+  'font-letter-spacing-tighter-experimental': {
+    value: '-0.16px',
+  },
+  'font-letter-spacing-tight-experimental': {
+    value: '-0.08px',
+  },
+  'font-letter-spacing-normal-experimental': {
+    value: '0px',
   },
 };
