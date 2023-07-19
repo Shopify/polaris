@@ -530,17 +530,17 @@ export const color: {
   },
   'color-bg-magic-subdued-hover': {
     value: colors.purple[100],
-    valueExperimental: colorsExperimental.purple[5],
+    valueExperimental: colorsExperimental.purple[4],
     description: '',
   },
   'color-bg-magic-subdued-active': {
     value: colors.purple[200],
-    valueExperimental: colorsExperimental.purple[7],
+    valueExperimental: colorsExperimental.purple[6],
     description: '',
   },
   'color-bg-magic-subdued': {
     value: colors.purple[50],
-    valueExperimental: colorsExperimental.purple[4],
+    valueExperimental: colorsExperimental.purple[3],
     description: '',
   },
   'color-border-input-hover': {
