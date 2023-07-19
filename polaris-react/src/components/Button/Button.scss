@@ -1416,6 +1416,13 @@
     }
   }
 
+  .Button.pressed {
+    #{$se23} & {
+      // stylelint-disable-next-line -- se23 required for styling specificicty
+      clip-path: none !important;
+    }
+  }
+
   > :first-child .Button,
   > :first-child .Button::after {
     border-radius: 0;
