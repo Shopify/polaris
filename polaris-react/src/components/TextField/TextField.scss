@@ -141,7 +141,8 @@ $spinner-icon-size: 12px;
   }
 
   &.focus {
-    >.Backdrop {
+    // stylelint-disable-next-line selector-max-class -- se23
+    > .Backdrop {
       #{$se23} & {
         background-color: var(--p-color-bg-transparent-disabled-experimental);
         border-color: transparent;
