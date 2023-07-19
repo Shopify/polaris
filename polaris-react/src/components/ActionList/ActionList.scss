@@ -68,7 +68,11 @@
     outline: var(--p-border-width-3) solid transparent;
 
     #{$se23} & {
+      // stylelint-disable-next-line -- se23
+      @include no-focus-ring;
       background-color: var(--p-color-bg);
+      outline: var(--p-border-width-2) solid
+        var(--p-color-border-interactive-focus);
     }
   }
 
