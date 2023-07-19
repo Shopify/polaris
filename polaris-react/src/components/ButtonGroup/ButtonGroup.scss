@@ -56,7 +56,9 @@
 
     // stylelint-disable-next-line -- se23 specific styling
     + .Item:not(.selected) > button {
-      clip-path: inset(0 0 0 var(--p-space-025));
+      #{$se23} & {
+        clip-path: inset(0 0 0 var(--p-space-025));
+      }
     }
   }
 
