@@ -139,6 +139,15 @@ $spinner-icon-size: 12px;
       border-color: transparent;
     }
   }
+
+  &.focus {
+    >.Backdrop {
+      #{$se23} & {
+        background-color: var(--p-color-bg-transparent-disabled-experimental);
+        border-color: transparent;
+      }
+    }
+  }
 }
 
 .disabled {
