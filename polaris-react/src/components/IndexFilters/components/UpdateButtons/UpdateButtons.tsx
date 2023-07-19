@@ -22,7 +22,7 @@ interface UpdateIndexFiltersPrimaryAction
 
 export interface UpdateButtonsProps {
   primaryAction?: UpdateIndexFiltersPrimaryAction;
-  cancelAction: IndexFiltersCancelAction;
+  cancelAction?: IndexFiltersCancelAction;
   viewNames: string[];
   disabled?: boolean;
 }
@@ -111,12 +111,16 @@ export function UpdateButtons({
       plain
       primary={se23 ? true : undefined}
       size="micro"
-      onClick={cancelAction.onAction}
+      onClick={cancelAction?.onAction}
       disabled={disabled}
     >
       {i18n.translate('Polaris.IndexFilters.UpdateButtons.cancel')}
     </Button>
   );
+
+  if (!primaryAction && !cancelAction) {
+    return null;
+  }
 
   if (!primaryAction) {
     return cancelButtonMarkup;

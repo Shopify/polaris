@@ -51,9 +51,19 @@ type ExecutedCallback = (name: string) => Promise<boolean>;
 export interface IndexFiltersProps
   extends Omit<
       FiltersProps,
-      'focused' | 'children' | 'disableQueryField' | 'disableFilters'
+      | 'filters'
+      | 'focused'
+      | 'children'
+      | 'disableQueryField'
+      | 'disableFilters'
     >,
-    Pick<TabsProps, 'tabs' | 'onSelect' | 'selected'> {
+    Pick<TabsProps, 'onSelect'> {
+  /** Available filters added to the filter bar. Shortcut filters are pinned to the front of the bar. */
+  filters?: FiltersProps['filters'];
+  /** The items that map to each Tab. */
+  tabs?: TabsProps['tabs'];
+  /** The index of the currently selected Tab. */
+  selected?: TabsProps['selected'];
   /** The available sorting choices. If not present, the sort button will not show */
   sortOptions?: SortButtonChoice[];
   /** The currently selected sort choice. Required if using sorting */
@@ -69,13 +79,13 @@ export interface IndexFiltersProps
   /** The primary action to display  */
   primaryAction?: IndexFiltersPrimaryAction;
   /** The cancel action to display */
-  cancelAction: IndexFiltersCancelAction;
+  cancelAction?: IndexFiltersCancelAction;
   /** Optional callback invoked when a merchant begins to edit a view */
   onEditStart?: () => void;
   /** The current mode of the IndexFilters component. Used to determine which view to show */
   mode: IndexFiltersMode;
   /** Callback to set the mode of the IndexFilters component */
-  setMode: (mode: IndexFiltersMode) => void;
+  setMode?: (mode: IndexFiltersMode) => void;
   /** Will disable all the elements within the IndexFilters component */
   disabled?: boolean;
   /** Will disable just the query field */
@@ -166,7 +176,7 @@ export function IndexFilters({
   const {intersectionRef, measurerRef, indexFilteringHeight, isSticky} =
     useIsSticky(mode, Boolean(disableStickyMode), isFlushWhenSticky);
 
-  const viewNames = tabs.map(({content}) => content);
+  const viewNames = tabs?.map(({content}) => content);
 
   const handleChangeSortButton = useCallback(
     (value: string[]) => {
@@ -190,7 +200,7 @@ export function IndexFilters({
       async (name: string) => {
         const hasExecuted = await action?.(name);
         if (hasExecuted) {
-          setMode(IndexFiltersMode.Default);
+          setMode?.(IndexFiltersMode.Default);
           afterEffect?.();
         }
       },
@@ -200,8 +210,8 @@ export function IndexFilters({
   const onExecutedPrimaryAction = useExecutedCallback(primaryAction?.onAction);
 
   const onExecutedCancelAction = useCallback(() => {
-    cancelAction.onAction?.();
-    setMode(IndexFiltersMode.Default);
+    cancelAction?.onAction?.();
+    setMode?.(IndexFiltersMode.Default);
   }, [cancelAction, setMode]);
 
   const enhancedPrimaryAction = useMemo(() => {
@@ -214,26 +224,29 @@ export function IndexFilters({
   }, [onExecutedPrimaryAction, primaryAction]);
 
   const enhancedCancelAction = useMemo(() => {
-    return {
-      ...cancelAction,
-      onAction: onExecutedCancelAction,
-    };
+    return cancelAction
+      ? {
+          ...cancelAction,
+          onAction: onExecutedCancelAction,
+        }
+      : undefined;
   }, [cancelAction, onExecutedCancelAction]);
 
   const beginEdit = useCallback(() => {
-    setMode(IndexFiltersMode.Filtering);
+    setMode?.(IndexFiltersMode.Filtering);
     onEditStart?.();
   }, [onEditStart, setMode]);
 
   const updateButtonsMarkup = useMemo(
-    () => (
-      <UpdateButtons
-        primaryAction={enhancedPrimaryAction}
-        cancelAction={enhancedCancelAction}
-        viewNames={viewNames}
-        disabled={disabled}
-      />
-    ),
+    () =>
+      viewNames ? (
+        <UpdateButtons
+          primaryAction={enhancedPrimaryAction}
+          cancelAction={enhancedCancelAction}
+          viewNames={viewNames}
+          disabled={disabled}
+        />
+      ) : undefined,
     [enhancedPrimaryAction, enhancedCancelAction, disabled, viewNames],
   );
 
@@ -260,6 +273,14 @@ export function IndexFilters({
     disabled,
   ]);
 
+  if (mode !== IndexFiltersMode.Filtering && (!tabs || !filters)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Cannot have undefined tabs and/or filters and related props with mode: ${mode}`,
+    );
+    return null;
+  }
+
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
 
   function handleClickFilterButton() {
@@ -277,7 +298,7 @@ export function IndexFilters({
 
   function onPressEscape() {
     cancelAction?.onAction();
-    setMode(IndexFiltersMode.Default);
+    setMode?.(IndexFiltersMode.Default);
   }
 
   function handleClearSearch() {
@@ -346,8 +367,8 @@ export function IndexFilters({
                         }}
                       >
                         <Tabs
-                          tabs={tabs}
-                          selected={selected}
+                          tabs={tabs || []}
+                          selected={selected || 0}
                           onSelect={onSelect}
                           disabled={Boolean(
                             mode !== IndexFiltersMode.Default || disabled,
@@ -409,7 +430,7 @@ export function IndexFilters({
                   onQueryFocus={handleQueryFocus}
                   onQueryBlur={handleQueryBlur}
                   onAddFilterClick={onAddFilterClick}
-                  filters={filters}
+                  filters={filters || []}
                   appliedFilters={appliedFilters}
                   onClearAll={onClearAll}
                   disableFilters={disabled}
