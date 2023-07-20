@@ -1,7 +1,13 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
-import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+import {
+  ArrowLeftMinor,
+  TickSmallMinor,
+  ResetMinor,
+  QuestionMarkMajor,
+  SearchMinor,
+} from '@shopify/polaris-icons';
 
 import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
@@ -17,6 +23,7 @@ function TopBarWrapper({
   customActivator,
   message,
   se23,
+  indent,
 }: {
   userActions?: UserMenuProps['actions'];
   name?: UserMenuProps['name'];
@@ -25,6 +32,7 @@ function TopBarWrapper({
   customActivator?: UserMenuProps['customActivator'];
   message?: UserMenuProps['message'];
   se23?: boolean;
+  indent?: boolean;
 }) {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
@@ -86,6 +94,7 @@ function TopBarWrapper({
       message={message}
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
+      indent={indent}
     />
   );
 
@@ -230,6 +239,66 @@ export function WithMessage(_, context) {
         action: {content: 'Action content', onClick: () => {}},
       }}
       se23={context.globals.polarisSummerEditions2023}
+    />
+  );
+}
+
+export function WithUserMenu() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      items: [
+        {
+          content: 'Jaded Pixel',
+          prefix: (
+            <Avatar size="extraSmall" shape="square" name="Jaded Pixel" />
+          ),
+          truncate: true,
+          url: '#',
+        },
+        {
+          content: 'Jaded Pixel 2.0',
+          prefix: (
+            <Avatar size="extraSmall" shape="square" name="Jaded Pixel 2.0" />
+          ),
+          truncate: true,
+          url: '#',
+        },
+        {
+          id: 'otherStores',
+          content: 'Switch Organization',
+          prefix: <Icon source={ResetMinor} />,
+          url: '#',
+        },
+        {
+          id: 'viewAllStores',
+          content: 'View all 8 stores',
+          prefix: <Icon source={SearchMinor} />,
+          url: '#',
+        },
+      ],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+    {
+      items: [{content: 'Help Center'}],
+    },
+    {
+      items: [{content: 'Keyboard shortcuts'}],
+    },
+    {
+      title: 'Dharma Johnson',
+      items: [{content: 'Manage account'}, {content: 'Log out'}],
+    },
+  ];
+
+  return (
+    <TopBarWrapper
+      userActions={userActions}
+      name="Xquenda Andreev"
+      detail="Hem Canada"
+      initials="XA"
+      indent
     />
   );
 }
