@@ -31,6 +31,7 @@ import {
 } from './components';
 import styles from './Frame.scss';
 
+const PAGE_PADDING_TOP = 12;
 const CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP = 56;
 
 export interface FrameProps {
@@ -116,12 +117,17 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       ) {
         const saveDisabled =
           this.contextualSaveBar?.saveAction?.disabled ?? false;
+
         const currentScrollPosition =
           window.scrollY || document.documentElement.scrollTop;
 
-        if (!saveDisabled || currentScrollPosition !== 0) {
+        if (!saveDisabled) {
           window.scrollTo({
-            top: currentScrollPosition,
+            top:
+              currentScrollPosition <= CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP
+                ? currentScrollPosition + PAGE_PADDING_TOP
+                : currentScrollPosition +
+                  CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP,
             behavior: 'auto',
           });
         }
