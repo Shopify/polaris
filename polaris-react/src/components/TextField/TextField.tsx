@@ -683,11 +683,14 @@ export function TextField({
 
     const {key, which} = event;
 
-    if (type === 'integer' && key === 'ArrowUp') {
+    if (type === 'integer' && (key === 'ArrowUp' || which === Key.UpArrow)) {
       handleNumberChange(1);
       event.preventDefault();
     }
-    if (type === 'integer' && key === 'ArrowDown') {
+    if (
+      type === 'integer' &&
+      (key === 'ArrowDown' || which === Key.DownArrow)
+    ) {
       handleNumberChange(-1);
       event.preventDefault();
     }

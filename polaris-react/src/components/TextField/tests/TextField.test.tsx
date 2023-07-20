@@ -1747,13 +1747,15 @@ describe('<TextField />', () => {
       describe('keydown events', () => {
         it('decrements by 1 multiple of step when type is integer and ArrowDown is pressed', () => {
           const spy = jest.fn();
+          const initialValue = 10;
+          const step = 1;
           const textField = mountWithApp(
             <TextField
               id="MyTextField"
               label="TextField"
               type="integer"
-              value="10"
-              step={1}
+              value={initialValue.toString()}
+              step={step}
               onChange={spy}
               autoComplete="off"
             />,
@@ -1763,18 +1765,23 @@ describe('<TextField />', () => {
             which: Key.DownArrow,
             preventDefault: noop,
           });
-          expect(spy).toHaveBeenCalledWith('9', 'MyTextField');
+          expect(spy).toHaveBeenCalledWith(
+            (initialValue - step).toString(),
+            'MyTextField',
+          );
         });
 
         it('increments by 1 multiple of step when type is integer and ArrowUp is pressed', () => {
           const spy = jest.fn();
+          const initialValue = 10;
+          const step = 9;
           const textField = mountWithApp(
             <TextField
               id="MyTextField"
               label="TextField"
               type="integer"
-              value="10"
-              step={1}
+              value={initialValue.toString()}
+              step={step}
               largeStep={4}
               onChange={spy}
               autoComplete="off"
@@ -1785,7 +1792,10 @@ describe('<TextField />', () => {
             which: Key.UpArrow,
             preventDefault: noop,
           });
-          expect(spy).toHaveBeenCalledWith('11', 'MyTextField');
+          expect(spy).toHaveBeenCalledWith(
+            (initialValue + step).toString(),
+            'MyTextField',
+          );
         });
       });
     });
