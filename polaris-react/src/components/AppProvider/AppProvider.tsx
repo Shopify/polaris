@@ -42,13 +42,6 @@ export interface AppProviderProps {
 }
 
 export class AppProvider extends Component<AppProviderProps, State> {
-  static defaultProps: Partial<AppProviderProps> = {
-    features: {
-      polarisSummerEditions2023: false,
-      polarisSummerEditions2023ShadowBevelOptOut: false,
-    },
-  };
-
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
 
@@ -98,19 +91,33 @@ export class AppProvider extends Component<AppProviderProps, State> {
   };
 
   setRootAttributes = () => {
+    const features = this.getFeatures();
+
     document.documentElement.classList.toggle(
       classNamePolarisSummerEditions2023,
-      this.props.features?.polarisSummerEditions2023,
+      features.polarisSummerEditions2023,
     );
 
     document.documentElement.classList.toggle(
       classNamePolarisSummerEditions2023ShadowBevelOptOut,
-      this.props.features?.polarisSummerEditions2023ShadowBevelOptOut,
+      features.polarisSummerEditions2023ShadowBevelOptOut,
     );
   };
 
+  getFeatures = () => {
+    const {features} = this.props;
+
+    return {
+      ...features,
+      polarisSummerEditions2023: features?.polarisSummerEditions2023 ?? false,
+      polarisSummerEditions2023ShadowBevelOptOut:
+        features?.polarisSummerEditions2023ShadowBevelOptOut ?? false,
+    };
+  };
+
   render() {
-    const {children, features} = this.props;
+    const {children} = this.props;
+    const features = this.getFeatures();
 
     const {intl, link} = this.state;
 
