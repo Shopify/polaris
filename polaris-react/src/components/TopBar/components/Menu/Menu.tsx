@@ -2,7 +2,7 @@ import React from 'react';
 
 import {ActionList} from '../../../ActionList';
 import type {ActionListProps} from '../../../ActionList';
-import type {ActionListSection} from '../../../../types';
+import type {ActionListItemDescriptor} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Box} from '../../../Box';
 import {classNames} from '../../../../utilities/css';
@@ -36,6 +36,9 @@ export interface MenuProps {
   /** Whether to indent the menu items, or not */
   indent?: boolean;
 }
+
+const STORE_LIST_SECTION_ID = 'Stores';
+const OTHER_STORES_ID = 'otherStores';
 
 export function Menu(props: MenuProps) {
   const {
@@ -71,72 +74,15 @@ export function Menu(props: MenuProps) {
     />
   );
 
-  let storeListSection: ActionListSection | undefined = undefined;
-  let remainingSections: ActionListSection[] = [];
+  const {
+    indentedSectionMarkup,
+    remainingSections,
+    otherStoresMarkup,
+    hasStoreListSection,
+  } = buildSections(actions, indent);
 
-  if (actions) {
-    [storeListSection, ...remainingSections] = actions;
-  }
-
-  let otherStoresMarkup: React.ReactNode | null = null;
-
-  const storeListSectionItemMarkup = storeListSection?.items.map(
-    (
-      {
-        content,
-        id,
-        accessibilityLabel,
-        url,
-        onAction,
-        icon,
-        prefix,
-        suffix,
-        external,
-        truncate,
-        role,
-      },
-      index,
-    ) => {
-      const itemMarkup = (
-        <MenuItem
-          key={`${content}-${index}`}
-          content={content}
-          onAction={onAction}
-          id={id}
-          accessibilityLabel={accessibilityLabel}
-          url={url}
-          icon={icon}
-          prefix={prefix}
-          suffix={suffix}
-          external={external}
-          truncate={truncate}
-          role={role}
-        />
-      );
-
-      if (id === 'otherStores') {
-        otherStoresMarkup = (
-          <Box width="100%" paddingInlineEnd="2" insetInlineEnd="2">
-            {itemMarkup}
-          </Box>
-        );
-        return null;
-      }
-
-      return itemMarkup;
-    },
-  );
-
-  const indentedSectionMarkup = (
-    <div
-      className={classNames(
-        styles.StoreListSection,
-        indent && styles['StoreListSection-indent'],
-      )}
-    >
-      {storeListSection && storeListSectionItemMarkup}
-    </div>
-  );
+  const shouldRenderMenuItems =
+    indent && polarisSummerEditions2023 && hasStoreListSection;
 
   return (
     <Popover
@@ -164,7 +110,7 @@ export function Menu(props: MenuProps) {
       preferredAlignment="right"
     >
       <div className={styles.MenuItems}>
-        {indent && polarisSummerEditions2023 ? (
+        {shouldRenderMenuItems ? (
           <div className={styles.TopSection}>
             {indentedSectionMarkup}
             {otherStoresMarkup}
@@ -175,13 +121,100 @@ export function Menu(props: MenuProps) {
           <ActionList
             actionRole="menuitem"
             onActionAnyItem={onClose}
-            sections={
-              indent && polarisSummerEditions2023 ? remainingSections : actions
-            }
+            sections={shouldRenderMenuItems ? remainingSections : actions}
           />
           {messageMarkup}
         </Box>
       </div>
     </Popover>
   );
+}
+
+function generateMenuItem(
+  {
+    content,
+    id,
+    accessibilityLabel,
+    url,
+    onAction,
+    icon,
+    prefix,
+    suffix,
+    external,
+    truncate,
+    role,
+    active,
+  }: ActionListItemDescriptor,
+  index: number,
+) {
+  const itemMarkup = (
+    <MenuItem
+      key={`${content}-${index}`}
+      content={content}
+      onAction={onAction}
+      id={id}
+      accessibilityLabel={accessibilityLabel}
+      url={url}
+      icon={icon}
+      prefix={prefix}
+      suffix={suffix}
+      external={external}
+      truncate={truncate}
+      role={role}
+      active={active}
+    />
+  );
+
+  if (id === OTHER_STORES_ID) {
+    return {
+      itemMarkup: (
+        <Box width="100%" paddingInlineEnd="2" insetInlineEnd="2">
+          {itemMarkup}
+        </Box>
+      ),
+      isOtherStore: true,
+    };
+  }
+
+  return {itemMarkup, isOtherStore: false};
+}
+
+function buildSections(actions: ActionListProps['sections'], indent: boolean) {
+  if (!actions) {
+    return {indentedSectionMarkup: null, remainingSections: []};
+  }
+
+  let otherStoresMarkup: React.ReactNode = null;
+
+  const [storeListSection, ...remainingSections] = actions;
+  const hasStoreListSection = storeListSection?.id === STORE_LIST_SECTION_ID;
+
+  const storeListSectionItemMarkup = hasStoreListSection
+    ? storeListSection?.items.map((item, index) => {
+        const {itemMarkup, isOtherStore} = generateMenuItem(item, index);
+        if (isOtherStore) {
+          otherStoresMarkup = itemMarkup;
+          return null;
+        }
+        return itemMarkup;
+      })
+    : null;
+
+  const indentedSectionMarkup = (
+    <div
+      className={classNames(
+        styles.StoreListSection,
+        indent && styles['StoreListSection-indent'],
+      )}
+    >
+      {storeListSectionItemMarkup}
+    </div>
+  );
+
+  return {
+    indentedSectionMarkup,
+    remainingSections,
+    otherStoresMarkup,
+    hasStoreListSection,
+  };
 }

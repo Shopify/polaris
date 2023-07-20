@@ -54,3 +54,11 @@ $item-vertical-padding: calc((var(--p-space-3)) / 2);
     flex: 2 1 auto;
   }
 }
+
+.active {
+  cursor: default;
+  background-color: var(--p-color-bg-interactive-selected);
+  color: var(--p-color-text);
+  border-radius: var(--p-border-radius-2);
+  outline: var(--p-border-width-3) solid transparent;
+}
