@@ -125,6 +125,8 @@ export const Row = memo(function Row({
 
   if ((!disabled && selectable) || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
+      if (subHeaderRange) return;
+
       if (!tableRowRef.current || isNavigating.current) {
         return;
       }
