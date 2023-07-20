@@ -1,5 +1,13 @@
 # @shopify/polaris-migrator
 
+## 0.19.8
+
+### Patch Changes
+
+- Updated dependencies [[`5b85401fe`](https://github.com/Shopify/polaris/commit/5b85401fe56ee07f107358548669ed8f1d6ecceb), [`799819b68`](https://github.com/Shopify/polaris/commit/799819b687a319328bf36917ba79c6324197aba9)]:
+  - @shopify/polaris-tokens@7.5.2
+  - @shopify/stylelint-polaris@13.0.8
+
 ## 0.19.7
 
 ### Patch Changes
