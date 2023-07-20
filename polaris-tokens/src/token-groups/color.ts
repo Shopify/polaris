@@ -940,7 +940,7 @@ export const color: {
     description: '',
   },
   'color-bg-transparent-subdued-experimental': {
-    value: colorsExperimental.gray[16]('0.05'),
+    value: colorsExperimental.gray[16]('0.07'),
     description: '',
   },
   'color-bg-transparent-hover-experimental': {
