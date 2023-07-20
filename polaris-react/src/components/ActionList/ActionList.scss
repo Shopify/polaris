@@ -26,7 +26,11 @@
   color: inherit;
 
   #{$se23} & {
-    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    // stylelint-disable-next-line -- se23
+    @include focus-ring($size: 'wide');
+    /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 */
+    --pc-action-list-item-min-height: var(--p-space-8);
+    padding: var(--p-space-1_5-experimental);
     border-radius: var(--p-border-radius-2);
     align-items: center;
     display: flex;
