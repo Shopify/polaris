@@ -207,7 +207,8 @@
 
   .Input {
     + .Backdrop {
-      background-color: var(--p-color-border-critical);
+      // stylelint-disable-next-line -- gen2 styling
+      @include control-backdrop(error);
       #{$se23} & {
         background-color: var(--p-color-bg-critical-subdued);
         box-shadow: inset 0 0 0 var(--p-border-width-1-experimental)
@@ -216,11 +217,12 @@
     }
   }
 
-  .Backdrop:active {
-    background-color: var(--p-color-border-critical);
-    #{$se23} & {
-      box-shadow: inset 0 0 0 var(--p-space-05)
-        var(--p-color-bg-critical-strong-active);
+  .Backdrop {
+    &:active {
+      #{$se23} & {
+        box-shadow: inset 0 0 0 var(--p-space-05)
+          var(--p-color-bg-critical-strong-active);
+      }
     }
   }
 
