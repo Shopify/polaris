@@ -5,38 +5,11 @@ import {Icon} from '../../../../../Icon';
 import {UnstyledLink} from '../../../../../UnstyledLink';
 import {HorizontalStack} from '../../../../../HorizontalStack';
 import {Box} from '../../../../../Box';
-import type {IconSource} from '../../../../../../types';
+import type {ActionListItemDescriptor} from '../../../../../../types';
 import {classNames} from '../../../../../../utilities/css';
 import {TruncateText} from '../../../../../TruncateText';
 
 import styles from './MenuItem.scss';
-
-export interface MenuItemProps {
-  /** A unique identifier for the action */
-  id?: string;
-  /** Content to display inside the menu item */
-  content?: string;
-  /** Visually hidden text for screen readers */
-  accessibilityLabel?: string;
-  /** The url to link to, rendered in the action item */
-  url?: string;
-  /** Callback when clicked or keypressed */
-  onAction?(): void;
-  /** Icon to display */
-  icon?: IconSource;
-  /** Prefix content to display before the item content */
-  prefix?: ReactNode;
-  /** Suffix content to display after the item content */
-  suffix?: ReactNode;
-  /** Whether or not the menu item is active */
-  active?: boolean;
-  /** Whether or not the menu item is external */
-  external?: boolean;
-  /** Truncate content */
-  truncate?: boolean;
-  /** Role of the menu item */
-  role?: string;
-}
 
 export function MenuItem({
   id,
@@ -51,7 +24,7 @@ export function MenuItem({
   truncate,
   role,
   active = false,
-}: MenuItemProps) {
+}: ActionListItemDescriptor) {
   let prefixMarkup: ReactNode | null = null;
 
   if (prefix) {

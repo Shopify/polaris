@@ -91,7 +91,6 @@ export function Menu(props: MenuProps) {
 
   const titleMarkup: string | React.ReactNode = getTitleMarkup(
     hasStoreListSection,
-    polarisSummerEditions2023,
     storeListSection,
   );
 
@@ -236,29 +235,19 @@ function buildSections(actions: ActionListProps['sections'], indent: boolean) {
 
 const getTitleMarkup = (
   hasStoreListSection = false,
-  polarisSummerEditions2023 = false,
   storeListSection?: ActionListSection,
 ) => {
   if (!hasStoreListSection || !storeListSection?.title) return null;
 
   if (typeof storeListSection.title === 'string') {
-    const variant = polarisSummerEditions2023 ? 'headingSm' : 'headingXs';
+    const variant = 'headingSm';
 
     return (
       <Box
-        {...(polarisSummerEditions2023
-          ? {
-              paddingBlockStart: '3',
-              paddingBlockEnd: '1',
-              paddingInlineStart: '3',
-              paddingInlineEnd: '3',
-            }
-          : {
-              paddingBlockStart: '4',
-              paddingInlineStart: '4',
-              paddingBlockEnd: '2',
-              paddingInlineEnd: '4',
-            })}
+        paddingBlockStart="3"
+        paddingBlockEnd="1"
+        paddingInlineStart="3"
+        paddingInlineEnd="3"
       >
         <Text as="p" variant={variant}>
           {storeListSection.title}
