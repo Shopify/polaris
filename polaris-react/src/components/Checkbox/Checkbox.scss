@@ -84,8 +84,11 @@
         // We set the border-color to transparent here
         // in order for the background color to bleed all the way to the edge of the element.
         border-color: transparent;
-        background-color: var(--p-color-bg-transparent-secondary-disabled-experimental);
+        background-color: var(
+          --p-color-bg-transparent-secondary-disabled-experimental
+        );
 
+        // stylelint-disable-next-line max-nesting-depth, selector-max-combinators -- se23
         &::before {
           background-color: transparent;
         }
@@ -102,7 +105,9 @@
         background: var(--p-color-border-disabled);
       }
       #{$se23} & {
-        background-color: var(--p-color-bg-transparent-secondary-disabled-experimental);
+        background-color: var(
+          --p-color-bg-transparent-secondary-disabled-experimental
+        );
         // stylelint-disable-next-line max-nesting-depth, selector-max-combinators -- pse23 override
         &::before {
           background-color: transparent;
