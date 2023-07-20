@@ -34,6 +34,8 @@ export interface UserMenuProps {
   customActivator?: React.ReactNode;
   /** A width value that customizes the width of the user menu */
   customWidth?: string;
+  /** Whether to indent the menu items, or not */
+  indent?: boolean;
 }
 
 export function UserMenu({
@@ -48,6 +50,7 @@ export function UserMenu({
   accessibilityLabel,
   customActivator,
   customWidth,
+  indent,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
   const {polarisSummerEditions2023} = useFeatures();
@@ -94,6 +97,7 @@ export function UserMenu({
       accessibilityLabel={accessibilityLabel}
       customWidth={customWidth}
       userMenu
+      indent={indent}
     />
   );
 }

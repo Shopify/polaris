@@ -2,12 +2,13 @@ import React from 'react';
 
 import {ActionList} from '../../../ActionList';
 import type {ActionListProps} from '../../../ActionList';
+import type {ActionListSection} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Box} from '../../../Box';
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
 
-import {Message} from './components';
+import {MenuItem, Message} from './components';
 import type {MessageProps} from './components';
 import styles from './Menu.scss';
 
@@ -32,6 +33,8 @@ export interface MenuProps {
   customWidth?: string;
   /** A boolean property indicating whether the menu is being used as a user menu */
   userMenu?: boolean;
+  /** Whether to indent the menu items, or not */
+  indent?: boolean;
 }
 
 export function Menu(props: MenuProps) {
@@ -45,6 +48,7 @@ export function Menu(props: MenuProps) {
     accessibilityLabel,
     customWidth,
     userMenu,
+    indent,
   } = props;
   const {polarisSummerEditions2023} = useFeatures();
 
@@ -65,6 +69,67 @@ export function Menu(props: MenuProps) {
       link={{to: message.link.to, content: message.link.content}}
       badge={badgeProps}
     />
+  );
+
+  let storeListSection: ActionListSection | undefined = undefined;
+  let remainingSections: ActionListSection[] = [];
+
+  if (actions) {
+    [storeListSection, ...remainingSections] = actions;
+  }
+
+  console.log('actions', actions);
+  console.log('storeListSection', storeListSection);
+
+  let otherStoresMarkup: React.ReactNode | null = null;
+
+  const storeListSectionItemMarkup = storeListSection?.items.map(
+    (
+      {
+        content,
+        id,
+        accessibilityLabel,
+        url,
+        onAction,
+        icon,
+        prefix,
+        suffix,
+        external,
+        truncate,
+        role,
+      },
+      index,
+    ) => {
+      const itemMarkup = (
+        <MenuItem
+          key={`${content}-${index}`}
+          content={content}
+          onAction={onAction}
+          id={id}
+          accessibilityLabel={accessibilityLabel}
+          url={url}
+          icon={icon}
+          prefix={prefix}
+          suffix={suffix}
+          external={external}
+          truncate={truncate}
+          role={role}
+        />
+      );
+
+      if (id === 'otherStores') {
+        otherStoresMarkup = itemMarkup;
+        return null;
+      }
+
+      return itemMarkup;
+    },
+  );
+
+  const indentedSectionMarkup = (
+    <div className={styles.StoreListSection}>
+      {storeListSection && storeListSectionItemMarkup}
+    </div>
   );
 
   return (
@@ -93,11 +158,18 @@ export function Menu(props: MenuProps) {
       preferredAlignment="right"
     >
       <div className={styles.MenuItems}>
+        {indent ? (
+          <div className={styles.TopSection}>
+            {indentedSectionMarkup}
+            {otherStoresMarkup}
+          </div>
+        ) : null}
+
         <Box width={customWidth}>
           <ActionList
             actionRole="menuitem"
             onActionAnyItem={onClose}
-            sections={actions}
+            sections={indent ? remainingSections : actions}
           />
           {messageMarkup}
         </Box>
