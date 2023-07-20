@@ -125,7 +125,7 @@ $dropzone-stacking-order: (
   cursor: not-allowed;
 
   #{$se23} & {
-    background-color: var(--p-color-bg-input);
+    background-color: var(--p-color-bg-transparent-disabled-experimental);
     color: var(--p-color-text-disabled);
 
     // se23 - specificity bump
