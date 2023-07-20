@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.0
+
+### Minor Changes
+
+- [#9756](https://github.com/Shopify/polaris/pull/9756) [`c8e5779f0`](https://github.com/Shopify/polaris/commit/c8e5779f097c6509ff84deacf17c41d1b5ecfd41) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated bold and italic icon sets
+
 ## 7.4.0
 
 ### Minor Changes
