@@ -31,7 +31,7 @@ import {
 } from './components';
 import styles from './Frame.scss';
 
-const PAGE_PADDING_TOP = 12;
+const OFFSET_PADDING_TOP = 12;
 const CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP = 56;
 
 export interface FrameProps {
@@ -125,7 +125,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           window.scrollTo({
             top:
               currentScrollPosition <= CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP
-                ? currentScrollPosition + PAGE_PADDING_TOP
+                ? currentScrollPosition + OFFSET_PADDING_TOP
                 : currentScrollPosition +
                   CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP,
             behavior: 'auto',
