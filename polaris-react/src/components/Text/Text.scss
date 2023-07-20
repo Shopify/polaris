@@ -61,6 +61,10 @@
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-font-line-height-1);
   letter-spacing: var(--p-font-letter-spacing-normal-experimental);
+
+  #{$se23} & {
+    @include text-heading-sm-experimental;
+  }
 }
 
 @mixin text-heading-sm {
@@ -68,6 +72,10 @@
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-font-line-height-2);
   letter-spacing: var(--p-font-letter-spacing-normal-experimental);
+
+  #{$se23} & {
+    @include text-heading-sm-experimental;
+  }
 }
 
 @mixin text-heading-sm-experimental {
@@ -82,6 +90,10 @@
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-font-line-height-3);
   letter-spacing: var(--p-font-letter-spacing-normal-experimental);
+
+  #{$se23} & {
+    @include text-heading-md-experimental;
+  }
 }
 
 @mixin text-heading-md-experimental {
@@ -101,6 +113,10 @@
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-3);
   }
+
+  #{$se23} & {
+    @include text-heading-lg-experimental;
+  }
 }
 
 @mixin text-heading-lg-experimental {
@@ -119,6 +135,10 @@
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-400);
     line-height: var(--p-font-line-height-4);
+  }
+
+  #{$se23} & {
+    @include text-heading-xl-experimental;
   }
 }
 
@@ -146,6 +166,10 @@
     font-size: var(--p-font-size-500);
     line-height: var(--p-font-line-height-5);
   }
+
+  #{$se23} & {
+    @include text-heading-2xl-experimental;
+  }
 }
 
 @mixin text-heading-2xl-experimental {
@@ -170,6 +194,10 @@
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-600);
     line-height: var(--p-font-line-height-6);
+  }
+
+  #{$se23} & {
+    @include text-heading-3xl-experimental;
   }
 }
 
@@ -196,6 +224,10 @@
     font-size: var(--p-font-size-700);
     line-height: var(--p-font-line-height-7);
   }
+
+  #{$se23} & {
+    @include text-heading-3xl-experimental;
+  }
 }
 
 @mixin text-body-xs-experimental {
@@ -217,6 +249,10 @@
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-font-line-height-2);
   letter-spacing: var(--p-font-letter-spacing-normal-experimental);
+
+  #{$se23} & {
+    @include text-body-md-experimental;
+  }
 }
 
 @mixin text-body-md-experimental {
@@ -231,6 +267,10 @@
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-font-line-height-2);
   letter-spacing: var(--p-font-letter-spacing-normal-experimental);
+
+  #{$se23} & {
+    @include text-body-lg-experimental;
+  }
 }
 
 @mixin text-body-lg-experimental {
@@ -242,66 +282,34 @@
 
 .headingXs {
   @include text-heading-xs;
-
-  #{$se23} & {
-    @include text-heading-sm-experimental;
-  }
 }
 
 .headingSm {
   @include text-heading-sm;
-
-  #{$se23} & {
-    @include text-heading-sm-experimental;
-  }
 }
 
 .headingMd {
   @include text-heading-md;
-
-  #{$se23} & {
-    @include text-heading-md-experimental;
-  }
 }
 
 .headingLg {
   @include text-heading-lg;
-
-  #{$se23} & {
-    @include text-heading-lg-experimental;
-  }
 }
 
 .headingXl {
   @include text-heading-xl;
-
-  #{$se23} & {
-    @include text-heading-xl-experimental;
-  }
 }
 
 .heading2xl {
   @include text-heading-2xl;
-
-  #{$se23} & {
-    @include text-heading-2xl-experimental;
-  }
 }
 
 .heading3xl {
   @include text-heading-3xl;
-
-  #{$se23} & {
-    @include text-heading-3xl-experimental;
-  }
 }
 
 .heading4xl {
   @include text-heading-4xl;
-
-  #{$se23} & {
-    @include text-heading-3xl-experimental;
-  }
 }
 
 .bodySm {
@@ -310,18 +318,10 @@
 
 .bodyMd {
   @include text-body-md;
-
-  #{$se23} & {
-    @include text-body-md-experimental;
-  }
 }
 
 .bodyLg {
   @include text-body-lg;
-
-  #{$se23} & {
-    @include text-body-lg-experimental;
-  }
 }
 
 // font-weight must be below variant styles so
