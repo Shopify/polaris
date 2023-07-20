@@ -247,6 +247,7 @@ export function WithUserMenu() {
   const userActions: UserMenuProps['actions'] = [
     {
       id: 'Stores',
+      title: <Text as="p">Stores</Text>,
       items: [
         {
           content: 'Jaded Pixel',

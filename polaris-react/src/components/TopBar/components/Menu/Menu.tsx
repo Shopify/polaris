@@ -2,11 +2,15 @@ import React from 'react';
 
 import {ActionList} from '../../../ActionList';
 import type {ActionListProps} from '../../../ActionList';
-import type {ActionListItemDescriptor} from '../../../../types';
+import type {
+  ActionListItemDescriptor,
+  ActionListSection,
+} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Box} from '../../../Box';
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
+import {Text} from '../../../Text';
 
 import {MenuItem, Message} from './components';
 import type {MessageProps} from './components';
@@ -75,6 +79,7 @@ export function Menu(props: MenuProps) {
   );
 
   const {
+    storeListSection,
     indentedSectionMarkup,
     remainingSections,
     otherStoresMarkup,
@@ -82,7 +87,13 @@ export function Menu(props: MenuProps) {
   } = buildSections(actions, indent);
 
   const shouldRenderMenuItems =
-    indent && polarisSummerEditions2023 && hasStoreListSection;
+    polarisSummerEditions2023 && hasStoreListSection;
+
+  const titleMarkup: string | React.ReactNode = getTitleMarkup(
+    hasStoreListSection,
+    polarisSummerEditions2023,
+    storeListSection,
+  );
 
   return (
     <Popover
@@ -111,10 +122,13 @@ export function Menu(props: MenuProps) {
     >
       <div className={styles.MenuItems}>
         {shouldRenderMenuItems ? (
-          <div className={styles.TopSection}>
-            {indentedSectionMarkup}
-            {otherStoresMarkup}
-          </div>
+          <>
+            {titleMarkup}
+            <div className={styles.TopSection}>
+              {indentedSectionMarkup}
+              {otherStoresMarkup}
+            </div>
+          </>
         ) : null}
 
         <Box width={customWidth}>
@@ -212,9 +226,46 @@ function buildSections(actions: ActionListProps['sections'], indent: boolean) {
   );
 
   return {
+    storeListSection,
     indentedSectionMarkup,
     remainingSections,
     otherStoresMarkup,
     hasStoreListSection,
   };
 }
+
+const getTitleMarkup = (
+  hasStoreListSection = false,
+  polarisSummerEditions2023 = false,
+  storeListSection?: ActionListSection,
+) => {
+  if (!hasStoreListSection || !storeListSection?.title) return null;
+
+  if (typeof storeListSection.title === 'string') {
+    const variant = polarisSummerEditions2023 ? 'headingSm' : 'headingXs';
+
+    return (
+      <Box
+        {...(polarisSummerEditions2023
+          ? {
+              paddingBlockStart: '3',
+              paddingBlockEnd: '1',
+              paddingInlineStart: '3',
+              paddingInlineEnd: '3',
+            }
+          : {
+              paddingBlockStart: '4',
+              paddingInlineStart: '4',
+              paddingBlockEnd: '2',
+              paddingInlineEnd: '4',
+            })}
+      >
+        <Text as="p" variant={variant}>
+          {storeListSection.title}
+        </Text>
+      </Box>
+    );
+  }
+
+  return <Box padding="2">{storeListSection.title}</Box>;
+};

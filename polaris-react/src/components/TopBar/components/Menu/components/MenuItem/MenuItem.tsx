@@ -3,12 +3,13 @@ import type {ReactNode} from 'react';
 
 import {Icon} from '../../../../../Icon';
 import {UnstyledLink} from '../../../../../UnstyledLink';
-import styles from './MenuItem.scss';
 import {HorizontalStack} from '../../../../../HorizontalStack';
 import {Box} from '../../../../../Box';
-import {TruncateText} from '../../../../../ActionList/components';
 import type {IconSource} from '../../../../../../types';
 import {classNames} from '../../../../../../utilities/css';
+import {TruncateText} from '../../../../../TruncateText';
+
+import styles from './MenuItem.scss';
 
 export interface MenuItemProps {
   /** A unique identifier for the action */
