@@ -24,6 +24,39 @@ import type {FeaturesConfig} from '../../utilities/features';
 import './AppProvider.scss';
 import './global.scss';
 
+function measureScrollbars() {
+  const maxScrollbarWidth = 20;
+  const overflowParentHeight = 30;
+  const overflowChildHeight = 40;
+  const parentEl = document.createElement('div');
+  parentEl.setAttribute(
+    'style',
+    `position: absolute; opacity: 0; transform: translate3d(-9999px, -9999px, 0); pointer-events: none; width:${overflowParentHeight}px; height:${overflowParentHeight}px;`,
+  );
+
+  const child = document.createElement('div');
+  child.setAttribute(
+    'style',
+    `width:100%; height: ${overflowChildHeight}; overflow:scroll`,
+  );
+  parentEl.appendChild(child);
+  document.body.appendChild(parentEl);
+
+  let scrollbarWidth =
+    overflowParentHeight - (parentEl.firstChild as HTMLDivElement).clientWidth;
+
+  if (scrollbarWidth > maxScrollbarWidth) {
+    scrollbarWidth = maxScrollbarWidth;
+  }
+
+  document.documentElement.style.setProperty(
+    '--p-scrollbar-width',
+    `${scrollbarWidth}px`,
+  );
+
+  document.body.removeChild(parentEl);
+}
+
 interface State {
   intl: I18n;
   link: LinkLikeComponent | undefined;
@@ -70,31 +103,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
       this.setBodyStyles();
       this.setRootAttributes();
     }
-
-    const overflowParentHeight = 30;
-    const overflowChildHeight = 40;
-    const parentEl = document.createElement('div');
-    parentEl.setAttribute(
-      'style',
-      `width:${overflowParentHeight}px; height:${overflowParentHeight}px;`,
-    );
-
-    const child = document.createElement('div');
-    child.setAttribute(
-      'style',
-      `width:100%; height: ${overflowChildHeight}; overflow:scroll`,
-    );
-    parentEl.appendChild(child);
-    document.body.appendChild(parentEl);
-
-    const scrollbarWidth =
-      overflowParentHeight -
-      (parentEl.firstChild as HTMLDivElement).clientWidth;
-    document.documentElement.style.setProperty(
-      '--p-scrollbar-width',
-      `${scrollbarWidth}px`,
-    );
-    document.body.removeChild(parentEl);
+    measureScrollbars();
   }
 
   componentDidUpdate({
