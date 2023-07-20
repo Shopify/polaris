@@ -161,16 +161,20 @@
     transform var(--p-motion-duration-100) var(--p-motion-ease);
 
   #{$se23} & {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    transform: none;
+    top: calc(-1 * var(--p-space-05));
+    left: calc(-1 * var(--p-space-05));
+    bottom: calc(-1 * var(--p-space-05));
+    right: calc(-1 * var(--p-space-05));
+    transform: none !important;
 
     transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
       transform var(--p-motion-duration-100) var(--p-motion-ease-out);
 
     &.animated {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
       margin: var(--p-space-05);
       transform: none;
       transition: initial;
