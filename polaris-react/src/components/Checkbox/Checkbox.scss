@@ -165,6 +165,7 @@
     left: calc(-1 * var(--p-space-05));
     bottom: calc(-1 * var(--p-space-05));
     right: calc(-1 * var(--p-space-05));
+    /* stylelint-disable-next-line  -- se23 override */
     transform: none !important;
 
     transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
