@@ -148,13 +148,13 @@ export const font: {
     value: '48px',
   },
   'font-letter-spacing-tightest-experimental': {
-    value: '-0.24px',
+    value: '-0.54px',
   },
   'font-letter-spacing-tighter-experimental': {
-    value: '-0.16px',
+    value: '-0.3px',
   },
   'font-letter-spacing-tight-experimental': {
-    value: '-0.08px',
+    value: '-0.2px',
   },
   'font-letter-spacing-normal-experimental': {
     value: '0px',
