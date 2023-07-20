@@ -7,6 +7,7 @@ import {Label, labelID} from '../Label';
 import type {LabelProps} from '../Label';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Labelled.scss';
 
@@ -31,6 +32,8 @@ export interface LabelledProps {
   requiredIndicator?: boolean;
   /** Labels signify a disabled control */
   disabled?: boolean;
+  /** Labels signify a readOnly control */
+  readOnly?: boolean;
 }
 
 export function Labelled({
@@ -43,11 +46,15 @@ export function Labelled({
   labelHidden,
   requiredIndicator,
   disabled,
+  readOnly,
   ...rest
 }: LabelledProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
   const className = classNames(
     labelHidden && styles.hidden,
     disabled && styles.disabled,
+    polarisSummerEditions2023 && readOnly && styles.readOnly,
   );
 
   const actionMarkup = action ? (
