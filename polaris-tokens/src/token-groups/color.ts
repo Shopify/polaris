@@ -179,12 +179,14 @@ type ColorTextAliasExperimental = Experimental<
 >;
 
 type ColorIconAliasExperimental = Experimental<
+  | 'icon-critical-active'
+  | 'icon-critical-hover'
+  | 'icon-critical-strong-active'
+  | 'icon-critical-strong-hover'
+  | 'icon-critical-strong'
   | 'icon-info-strong'
   | 'icon-success-strong'
   | 'icon-warning-strong'
-  | 'icon-critical-strong'
-  | 'icon-critical-strong-hover'
-  | 'icon-critical-strong-active'
 >;
 
 type ColorBorderAliasExperimental = Experimental<
@@ -1018,6 +1020,14 @@ export const color: {
     description: '',
   },
   'color-icon-critical-strong-active-experimental': {
+    value: colorsExperimental.red[16],
+    description: '',
+  },
+  'color-icon-critical-hover-experimental': {
+    value: colorsExperimental.red[15],
+    description: '',
+  },
+  'color-icon-critical-active-experimental': {
     value: colorsExperimental.red[16],
     description: '',
   },
