@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
 import {
   ArrowLeftMinor,
-  TickSmallMinor,
+  TickMinor,
   ResetMinor,
   QuestionMarkMajor,
   SearchMinor,
@@ -255,7 +255,7 @@ export function WithUserMenu() {
           ),
           truncate: true,
           active: true,
-          suffix: <Icon source={TickSmallMinor} />,
+          suffix: <Icon source={TickMinor} />,
           url: '#',
         },
         {
