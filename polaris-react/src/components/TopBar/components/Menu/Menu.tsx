@@ -167,11 +167,7 @@ function generateMenuItem(
 
   if (id === OTHER_STORES_ID) {
     return {
-      itemMarkup: (
-        <Box width="100%" paddingInlineEnd="2" insetInlineEnd="2">
-          {itemMarkup}
-        </Box>
-      ),
+      itemMarkup,
       isOtherStore: true,
     };
   }
@@ -193,7 +189,11 @@ function buildSections(actions: ActionListProps['sections'], indent: boolean) {
     ? storeListSection?.items.map((item, index) => {
         const {itemMarkup, isOtherStore} = generateMenuItem(item, index);
         if (isOtherStore) {
-          otherStoresMarkup = itemMarkup;
+          otherStoresMarkup = (
+            <Box width="100%" paddingInlineEnd="2" insetInlineEnd="2">
+              {itemMarkup}
+            </Box>
+          );
           return null;
         }
         return itemMarkup;

@@ -176,7 +176,7 @@ export const TruncateText = ({children}: {children: string}) => {
     }
   }, [children]);
   const text = (
-    <Text as="span" variant="bodyMd" truncate>
+    <Text as="span" truncate>
       <Box width="100%" ref={textRef}>
         {children}
       </Box>
@@ -191,7 +191,7 @@ export const TruncateText = ({children}: {children: string}) => {
       content={children}
       dismissOnMouseOut
     >
-      <Text as="span" variant="bodyMd" truncate>
+      <Text as="span" truncate>
         {children}
       </Text>
     </Tooltip>

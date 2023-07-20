@@ -7,7 +7,6 @@ $item-vertical-padding: calc((var(--p-space-3)) / 2);
   @include unstyled-button;
   // stylelint-disable-next-line -- set focus styles
   @include focus-ring;
-
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -26,11 +25,11 @@ $item-vertical-padding: calc((var(--p-space-3)) / 2);
   &:focus-visible {
     // stylelint-disable-next-line -- set focus styles
     @include no-focus-ring;
-
     outline: var(--p-border-width-2) solid
       var(--p-color-border-interactive-focus);
     background-color: var(--p-color-bg);
   }
+
   &:hover {
     text-decoration: none;
     outline: var(--p-border-width-3) solid transparent;
@@ -61,4 +60,5 @@ $item-vertical-padding: calc((var(--p-space-3)) / 2);
   color: var(--p-color-text);
   border-radius: var(--p-border-radius-2);
   outline: var(--p-border-width-3) solid transparent;
+  font-weight: var(--p-font-weight-semibold);
 }

@@ -153,18 +153,18 @@ $activator-variables: (
     flex-direction: column;
     gap: var(--p-space-1);
     padding-right: var(--p-space-2);
-
-    &-indent {
-      margin-left: var(--p-space-6);
-    }
   }
+}
+
+.StoreListSection-indent {
+  margin-left: var(--p-space-6);
 }
 
 .TopSection::after {
   content: '';
   position: absolute;
   left: calc(var(--p-space-4) * -1);
-  width: calc(100% + var(--p-space-4));
   bottom: 0;
+  width: calc(100% + var(--p-space-4));
   border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
 }
