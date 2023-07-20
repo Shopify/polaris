@@ -24,34 +24,37 @@ import type {FeaturesConfig} from '../../utilities/features';
 import './AppProvider.scss';
 import './global.scss';
 
+const MAX_SCROLLBAR_WIDTH = 20;
+const SCROLLBAR_TEST_ELEMENT_PARENT_SIZE = 30;
+const SCROLLBAR_TEST_ELEMENT_CHILD_SIZE = 40;
+
 function measureScrollbars() {
-  const maxScrollbarWidth = 20;
-  const overflowParentHeight = 30;
-  const overflowChildHeight = 40;
   const parentEl = document.createElement('div');
   parentEl.setAttribute(
     'style',
-    `position: absolute; opacity: 0; transform: translate3d(-9999px, -9999px, 0); pointer-events: none; width:${overflowParentHeight}px; height:${overflowParentHeight}px;`,
+    `position: absolute; opacity: 0; transform: translate3d(-9999px, -9999px, 0); pointer-events: none; width:${SCROLLBAR_TEST_ELEMENT_PARENT_SIZE}px; height:${SCROLLBAR_TEST_ELEMENT_PARENT_SIZE}px;`,
   );
 
   const child = document.createElement('div');
   child.setAttribute(
     'style',
-    `width:100%; height: ${overflowChildHeight}; overflow:scroll`,
+    `width:100%; height: ${SCROLLBAR_TEST_ELEMENT_CHILD_SIZE}; overflow:scroll`,
   );
   parentEl.appendChild(child);
   document.body.appendChild(parentEl);
 
-  let scrollbarWidth =
-    overflowParentHeight - (parentEl.firstChild as HTMLDivElement).clientWidth;
+  const scrollbarWidth =
+    SCROLLBAR_TEST_ELEMENT_PARENT_SIZE -
+    (parentEl.firstElementChild?.clientWidth ?? 0);
 
-  if (scrollbarWidth > maxScrollbarWidth) {
-    scrollbarWidth = maxScrollbarWidth;
-  }
+  const scrollbarWidthWithSafetyHatch = Math.min(
+    scrollbarWidth,
+    MAX_SCROLLBAR_WIDTH,
+  );
 
   document.documentElement.style.setProperty(
     '--p-scrollbar-width',
-    `${scrollbarWidth}px`,
+    `${scrollbarWidthWithSafetyHatch}px`,
   );
 
   document.body.removeChild(parentEl);
