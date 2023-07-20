@@ -95,7 +95,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
     document.documentElement.classList.toggle(
       classNamePolarisSummerEditions2023,
-      features?.polarisSummerEditions2023,
+      features.polarisSummerEditions2023,
     );
 
     document.documentElement.classList.toggle(
