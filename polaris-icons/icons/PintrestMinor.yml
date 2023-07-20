@@ -1,18 +1,10 @@
 name: Pintrest
 set: minor
-description:
-  Pintrest logo
+description: Pintrest logo
 keywords:
-  # - synonym
-  # - another synonym
-  # - related shape or symbol
-  # (delete this comment block)
   - Pintrest
   - Social media
 authors:
-  # - Sasha Oliveira
-  # - Co-author’s name (optional)
-  # (delete this comment block)
   - Joe Thomas
 version: 1
 date_added: 2023-07-20
