@@ -118,7 +118,11 @@ export function Menu(props: MenuProps) {
       );
 
       if (id === 'otherStores') {
-        otherStoresMarkup = itemMarkup;
+        otherStoresMarkup = (
+          <Box width="100%" paddingInlineEnd="2" insetInlineEnd="2">
+            {itemMarkup}
+          </Box>
+        );
         return null;
       }
 
@@ -158,7 +162,7 @@ export function Menu(props: MenuProps) {
       preferredAlignment="right"
     >
       <div className={styles.MenuItems}>
-        {indent ? (
+        {indent && polarisSummerEditions2023 ? (
           <div className={styles.TopSection}>
             {indentedSectionMarkup}
             {otherStoresMarkup}
@@ -169,7 +173,9 @@ export function Menu(props: MenuProps) {
           <ActionList
             actionRole="menuitem"
             onActionAnyItem={onClose}
-            sections={indent ? remainingSections : actions}
+            sections={
+              indent && polarisSummerEditions2023 ? remainingSections : actions
+            }
           />
           {messageMarkup}
         </Box>
