@@ -683,6 +683,19 @@ export function TextField({
     }
 
     const {key, which} = event;
+
+    if (type === 'integer' && (key === 'ArrowUp' || which === Key.UpArrow)) {
+      handleNumberChange(1);
+      event.preventDefault();
+    }
+    if (
+      type === 'integer' &&
+      (key === 'ArrowDown' || which === Key.DownArrow)
+    ) {
+      handleNumberChange(-1);
+      event.preventDefault();
+    }
+
     if ((which === Key.Home || key === 'Home') && min !== undefined) {
       if (onSpinnerChange != null) {
         onSpinnerChange(String(min), id);
