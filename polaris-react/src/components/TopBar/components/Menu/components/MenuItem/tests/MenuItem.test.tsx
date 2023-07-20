@@ -1,9 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {TruncateText} from '../../../../../../ActionList/components';
 import {UnstyledLink} from '../../../../../../UnstyledLink';
 import {MenuItem} from '../MenuItem';
+import {TruncateText} from '../../../../../../TruncateText';
 
 describe('<MenuItem />', () => {
   it('fires onAction callback on click or keypress', () => {

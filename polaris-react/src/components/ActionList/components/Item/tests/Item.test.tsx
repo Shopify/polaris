@@ -1,9 +1,10 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Item, TruncateText} from '../Item';
+import {Item} from '../Item';
 import {Text} from '../../../../Text';
 import {UnstyledLink} from '../../../../UnstyledLink';
+import {TruncateText} from '../../../../TruncateText';
 
 describe('<Item />', () => {
   it('adds a style property when the image prop is present', () => {
