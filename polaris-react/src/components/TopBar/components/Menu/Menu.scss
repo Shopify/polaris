@@ -162,6 +162,6 @@ $activator-variables: (
   position: absolute;
   left: calc(var(--p-space-4) * -1);
   width: calc(100% + var(--p-space-4));
-  border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
   bottom: 0;
+  border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
 }
