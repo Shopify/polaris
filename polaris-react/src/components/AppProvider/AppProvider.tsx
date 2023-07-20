@@ -26,7 +26,8 @@ import './global.scss';
 
 const MAX_SCROLLBAR_WIDTH = 20;
 const SCROLLBAR_TEST_ELEMENT_PARENT_SIZE = 30;
-const SCROLLBAR_TEST_ELEMENT_CHILD_SIZE = 40;
+const SCROLLBAR_TEST_ELEMENT_CHILD_SIZE =
+  SCROLLBAR_TEST_ELEMENT_PARENT_SIZE + 10;
 
 function measureScrollbars() {
   const parentEl = document.createElement('div');
