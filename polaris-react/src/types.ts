@@ -217,6 +217,8 @@ export interface ActionListItemDescriptor
 }
 
 export interface ActionListSection {
+  /** Section identifier */
+  id?: string;
   /** Section title */
   title?: string | React.ReactNode;
   /** Collection of action items for the list */

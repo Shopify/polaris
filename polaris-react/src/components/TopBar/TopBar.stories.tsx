@@ -246,6 +246,7 @@ export function WithMessage(_, context) {
 export function WithUserMenu() {
   const userActions: UserMenuProps['actions'] = [
     {
+      id: 'Stores',
       items: [
         {
           content: 'Jaded Pixel',
@@ -253,6 +254,8 @@ export function WithUserMenu() {
             <Avatar size="extraSmall" shape="square" name="Jaded Pixel" />
           ),
           truncate: true,
+          active: true,
+          suffix: <Icon source={TickSmallMinor} />,
           url: '#',
         },
         {

@@ -8,6 +8,7 @@ import {HorizontalStack} from '../../../../../HorizontalStack';
 import {Box} from '../../../../../Box';
 import {TruncateText} from '../../../../../ActionList/components';
 import type {IconSource} from '../../../../../../types';
+import {classNames} from '../../../../../../utilities/css';
 
 export interface MenuItemProps {
   /** A unique identifier for the action */
@@ -26,6 +27,8 @@ export interface MenuItemProps {
   prefix?: ReactNode;
   /** Suffix content to display after the item content */
   suffix?: ReactNode;
+  /** Whether or not the menu item is active */
+  active?: boolean;
   /** Whether or not the menu item is external */
   external?: boolean;
   /** Truncate content */
@@ -46,6 +49,7 @@ export function MenuItem({
   external,
   truncate,
   role,
+  active = false,
 }: MenuItemProps) {
   let prefixMarkup: ReactNode | null = null;
 
@@ -90,7 +94,7 @@ export function MenuItem({
     <UnstyledLink
       id={id}
       url={url || ''}
-      className={styles.MenuItem}
+      className={classNames(styles.MenuItem, active && styles.active)}
       external={external}
       aria-label={accessibilityLabel}
       onClick={onAction}
