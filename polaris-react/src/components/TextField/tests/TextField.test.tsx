@@ -1743,6 +1743,51 @@ describe('<TextField />', () => {
         jest.runOnlyPendingTimers();
         expect(spy).not.toHaveBeenCalled();
       });
+
+      describe('keydown events', () => {
+        it('decrements by 1 multiple of step when type is integer and ArrowDown is pressed', () => {
+          const spy = jest.fn();
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="integer"
+              value="10"
+              step={1}
+              onChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'ArrowDown',
+            which: Key.DownArrow,
+            preventDefault: noop,
+          });
+          expect(spy).toHaveBeenCalledWith('9', 'MyTextField');
+        });
+
+        it('increments by 1 multiple of step when type is integer and ArrowUp is pressed', () => {
+          const spy = jest.fn();
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="integer"
+              value="10"
+              step={1}
+              largeStep={4}
+              onChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'ArrowUp',
+            which: Key.UpArrow,
+            preventDefault: noop,
+          });
+          expect(spy).toHaveBeenCalledWith('11', 'MyTextField');
+        });
+      });
     });
   });
 
