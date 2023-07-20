@@ -592,6 +592,7 @@ export function TextField({
       helpText={helpText}
       requiredIndicator={requiredIndicator}
       disabled={disabled}
+      readOnly={readOnly}
     >
       <Connected left={connectedLeft} right={connectedRight}>
         <div className={className} onClick={handleClick}>
