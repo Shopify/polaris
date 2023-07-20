@@ -131,7 +131,7 @@ $activator-variables: (
   position: relative;
 }
 
-.StoreListSection::before {
+.StoreListSection-indent::before {
   content: '';
   position: absolute;
   top: 0;
@@ -151,9 +151,12 @@ $activator-variables: (
   .StoreListSection {
     display: flex;
     flex-direction: column;
-    margin-left: var(--p-space-5);
     gap: var(--p-space-1);
     padding-right: var(--p-space-2);
+
+    &-indent {
+      margin-left: var(--p-space-6);
+    }
   }
 }
 

@@ -48,7 +48,7 @@ export function Menu(props: MenuProps) {
     accessibilityLabel,
     customWidth,
     userMenu,
-    indent,
+    indent = false,
   } = props;
   const {polarisSummerEditions2023} = useFeatures();
 
@@ -77,9 +77,6 @@ export function Menu(props: MenuProps) {
   if (actions) {
     [storeListSection, ...remainingSections] = actions;
   }
-
-  console.log('actions', actions);
-  console.log('storeListSection', storeListSection);
 
   let otherStoresMarkup: React.ReactNode | null = null;
 
@@ -131,7 +128,12 @@ export function Menu(props: MenuProps) {
   );
 
   const indentedSectionMarkup = (
-    <div className={styles.StoreListSection}>
+    <div
+      className={classNames(
+        styles.StoreListSection,
+        indent && styles['StoreListSection-indent'],
+      )}
+    >
       {storeListSection && storeListSectionItemMarkup}
     </div>
   );
