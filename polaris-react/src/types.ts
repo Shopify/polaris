@@ -217,12 +217,19 @@ export interface ActionListItemDescriptor
 }
 
 export interface ActionListSection {
-  /** Section identifier */
-  id?: string;
   /** Section title */
   title?: string | React.ReactNode;
   /** Collection of action items for the list */
   items: readonly ActionListItemDescriptor[];
+}
+
+export interface UserMenuTopSection {
+  /** Section title */
+  title?: string | React.ReactNode;
+  /** Items to indent within the top section */
+  indentItems?: readonly ActionListItemDescriptor[];
+  /** Items to display in the top section */
+  items?: readonly ActionListItemDescriptor[];
 }
 
 export interface ComplexAction

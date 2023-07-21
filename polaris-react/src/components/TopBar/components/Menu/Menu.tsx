@@ -4,7 +4,7 @@ import {ActionList} from '../../../ActionList';
 import type {ActionListProps} from '../../../ActionList';
 import type {
   ActionListItemDescriptor,
-  ActionListSection,
+  UserMenuTopSection,
 } from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Box} from '../../../Box';
@@ -37,12 +37,9 @@ export interface MenuProps {
   customWidth?: string;
   /** A boolean property indicating whether the menu is being used as a user menu */
   userMenu?: boolean;
-  /** Whether to indent the menu items, or not */
-  indent?: boolean;
+  /** The top section of the menu */
+  topSection?: UserMenuTopSection;
 }
-
-const STORE_LIST_SECTION_ID = 'Stores';
-const OTHER_STORES_ID = 'otherStores';
 
 export function Menu(props: MenuProps) {
   const {
@@ -55,7 +52,7 @@ export function Menu(props: MenuProps) {
     accessibilityLabel,
     customWidth,
     userMenu,
-    indent = false,
+    topSection,
   } = props;
   const {polarisSummerEditions2023} = useFeatures();
 
@@ -78,20 +75,15 @@ export function Menu(props: MenuProps) {
     />
   );
 
-  const {
-    storeListSection,
-    indentedSectionMarkup,
-    remainingSections,
-    otherStoresMarkup,
-    hasStoreListSection,
-  } = buildSections(actions, indent);
+  const {indentItems, indentedSectionMarkup, otherItemsMarkup} =
+    buildSections(topSection);
 
   const shouldRenderMenuItems =
-    polarisSummerEditions2023 && hasStoreListSection;
+    polarisSummerEditions2023 && Boolean(indentItems?.length);
 
   const titleMarkup: string | React.ReactNode = getTitleMarkup(
-    hasStoreListSection,
-    storeListSection,
+    shouldRenderMenuItems,
+    topSection,
   );
 
   return (
@@ -125,7 +117,7 @@ export function Menu(props: MenuProps) {
             {titleMarkup}
             <div className={styles.TopSection}>
               {indentedSectionMarkup}
-              {otherStoresMarkup}
+              {otherItemsMarkup}
             </div>
           </>
         ) : null}
@@ -134,7 +126,7 @@ export function Menu(props: MenuProps) {
           <ActionList
             actionRole="menuitem"
             onActionAnyItem={onClose}
-            sections={shouldRenderMenuItems ? remainingSections : actions}
+            sections={actions}
           />
           {messageMarkup}
         </Box>
@@ -178,64 +170,58 @@ function generateMenuItem(
     />
   );
 
-  if (id === OTHER_STORES_ID) {
+  return itemMarkup;
+}
+
+function buildSections(topSection?: UserMenuTopSection) {
+  if (!topSection) {
     return {
-      itemMarkup,
-      isOtherStore: true,
+      indentItems: undefined,
+      indentedSectionMarkup: null,
+      otherItemsMarkup: null,
+      otherItems: undefined,
     };
   }
 
-  return {itemMarkup, isOtherStore: false};
-}
+  let otherItemsMarkup: React.ReactNode = null;
 
-function buildSections(actions: ActionListProps['sections'], indent: boolean) {
-  if (!actions) {
-    return {indentedSectionMarkup: null, remainingSections: []};
-  }
+  const {indentItems, items: otherItems} = topSection;
 
-  let otherStoresMarkup: React.ReactNode = null;
+  const indentedSectionItemMarkup = indentItems?.map((item, index) => {
+    const itemMarkup = generateMenuItem(item, index);
+    return itemMarkup;
+  });
 
-  const [storeListSection, ...remainingSections] = actions;
-  const hasStoreListSection = storeListSection?.id === STORE_LIST_SECTION_ID;
-
-  const storeListSectionItemMarkup = hasStoreListSection
-    ? storeListSection?.items.map((item, index) => {
-        const {itemMarkup, isOtherStore} = generateMenuItem(item, index);
-        if (isOtherStore) {
-          otherStoresMarkup = (
-            <Box width="100%" paddingInlineEnd="2" insetInlineEnd="2">
-              {itemMarkup}
-            </Box>
-          );
-          return null;
-        }
-        return itemMarkup;
-      })
-    : null;
+  otherItemsMarkup = otherItems?.map((item, index) => {
+    const itemMarkup = generateMenuItem(item, index);
+    return (
+      <Box width="100%" paddingInlineEnd="2" insetInlineEnd="2">
+        {itemMarkup}
+      </Box>
+    );
+  });
 
   const indentedSectionMarkup = (
     <div
       className={classNames(
         styles.StoreListSection,
-        indent && styles['StoreListSection-indent'],
+        styles['StoreListSection-indent'],
       )}
     >
-      {storeListSectionItemMarkup}
+      {indentedSectionItemMarkup}
     </div>
   );
 
   return {
-    storeListSection,
+    indentItems,
     indentedSectionMarkup,
-    remainingSections,
-    otherStoresMarkup,
-    hasStoreListSection,
+    otherItemsMarkup,
   };
 }
 
 const getTitleMarkup = (
   hasStoreListSection = false,
-  storeListSection?: ActionListSection,
+  storeListSection?: UserMenuTopSection,
 ) => {
   if (!hasStoreListSection || !storeListSection?.title) return null;
 

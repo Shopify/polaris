@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type {IconableAction} from '../../../../types';
+import type {IconableAction, UserMenuTopSection} from '../../../../types';
 import {Avatar} from '../../../Avatar';
 import type {AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
@@ -34,8 +34,8 @@ export interface UserMenuProps {
   customActivator?: React.ReactNode;
   /** A width value that customizes the width of the user menu */
   customWidth?: string;
-  /** Whether to indent the menu items, or not */
-  indent?: boolean;
+  /**  Top section of the user menu */
+  topSection?: UserMenuTopSection;
 }
 
 export function UserMenu({
@@ -50,7 +50,7 @@ export function UserMenu({
   accessibilityLabel,
   customActivator,
   customWidth,
-  indent,
+  topSection,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
   const {polarisSummerEditions2023} = useFeatures();
@@ -98,7 +98,7 @@ export function UserMenu({
       accessibilityLabel={accessibilityLabel}
       customWidth={customWidth}
       userMenu
-      indent={indent}
+      topSection={topSection}
     />
   );
 }
