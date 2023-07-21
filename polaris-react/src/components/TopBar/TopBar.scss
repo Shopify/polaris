@@ -28,6 +28,7 @@ $icon-size: 20px;
   display: flex;
   // stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties
   width: calc(100vw - var(--pc-app-provider-scrollbar-width));
+  // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
 }
 
 .LogoDisplayControl {
