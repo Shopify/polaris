@@ -23,7 +23,7 @@ function TopBarWrapper({
   customActivator,
   message,
   se23,
-  indent,
+  topSection,
 }: {
   userActions?: UserMenuProps['actions'];
   name?: UserMenuProps['name'];
@@ -32,7 +32,7 @@ function TopBarWrapper({
   customActivator?: UserMenuProps['customActivator'];
   message?: UserMenuProps['message'];
   se23?: boolean;
-  indent?: boolean;
+  topSection?: UserMenuProps['topSection'];
 }) {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
@@ -94,7 +94,7 @@ function TopBarWrapper({
       message={message}
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
-      indent={indent}
+      topSection={topSection}
     />
   );
 
@@ -244,43 +244,44 @@ export function WithMessage(_, context) {
 }
 
 export function WithUserMenu() {
+  const storeListSection = {
+    id: 'Stores',
+    title: <Text as="p">Stores</Text>,
+    indentItems: [
+      {
+        content: 'Jaded Pixel',
+        prefix: <Avatar size="extraSmall" shape="square" name="Jaded Pixel" />,
+        truncate: true,
+        active: true,
+        suffix: <Icon source={TickMinor} />,
+        url: '#',
+      },
+      {
+        content: 'Jaded Pixel 2.0',
+        prefix: (
+          <Avatar size="extraSmall" shape="square" name="Jaded Pixel 2.0" />
+        ),
+        truncate: true,
+        url: '#',
+      },
+      {
+        id: 'viewAllStores',
+        content: 'View all 8 stores',
+        prefix: <Icon source={SearchMinor} />,
+        url: '#',
+      },
+    ],
+    items: [
+      {
+        id: 'otherStores',
+        content: 'Switch Organization',
+        prefix: <Icon source={ResetMinor} />,
+        url: '#',
+      },
+    ],
+  };
+
   const userActions: UserMenuProps['actions'] = [
-    {
-      id: 'Stores',
-      title: <Text as="p">Stores</Text>,
-      items: [
-        {
-          content: 'Jaded Pixel',
-          prefix: (
-            <Avatar size="extraSmall" shape="square" name="Jaded Pixel" />
-          ),
-          truncate: true,
-          active: true,
-          suffix: <Icon source={TickMinor} />,
-          url: '#',
-        },
-        {
-          content: 'Jaded Pixel 2.0',
-          prefix: (
-            <Avatar size="extraSmall" shape="square" name="Jaded Pixel 2.0" />
-          ),
-          truncate: true,
-          url: '#',
-        },
-        {
-          id: 'otherStores',
-          content: 'Switch Organization',
-          prefix: <Icon source={ResetMinor} />,
-          url: '#',
-        },
-        {
-          id: 'viewAllStores',
-          content: 'View all 8 stores',
-          prefix: <Icon source={SearchMinor} />,
-          url: '#',
-        },
-      ],
-    },
     {
       items: [{content: 'Community forums'}],
     },
@@ -302,7 +303,7 @@ export function WithUserMenu() {
       name="Xquenda Andreev"
       detail="Hem Canada"
       initials="XA"
-      indent
+      topSection={storeListSection}
     />
   );
 }
