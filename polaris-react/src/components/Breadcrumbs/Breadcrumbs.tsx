@@ -6,8 +6,6 @@ import {UnstyledLink} from '../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {Text} from '../Text';
-import {Button} from '../Button';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Breadcrumbs.scss';
 
@@ -18,7 +16,6 @@ export interface BreadcrumbsProps {
 
 export function Breadcrumbs({backAction}: BreadcrumbsProps) {
   const {content} = backAction;
-  const {polarisSummerEditions2023} = useFeatures();
 
   const contentMarkup = (
     <>
@@ -55,22 +52,5 @@ export function Breadcrumbs({backAction}: BreadcrumbsProps) {
       </button>
     );
 
-  const summerEditionsBreadcrumbMarkup = (
-    <Button
-      key={content}
-      url={'url' in backAction ? backAction.url : undefined}
-      onPointerDown={handleMouseUpByBlurring}
-      aria-label={backAction.accessibilityLabel}
-      icon={ArrowLeftMinor}
-      accessibilityLabel={content}
-    />
-  );
-
-  return (
-    <nav role="navigation">
-      {polarisSummerEditions2023
-        ? summerEditionsBreadcrumbMarkup
-        : breadcrumbMarkup}
-    </nav>
-  );
+  return <nav role="navigation">{breadcrumbMarkup}</nav>;
 }

@@ -96,7 +96,7 @@ export interface BaseButton {
   /** Callback when element is touched */
   onTouchStart?(): void;
   /** Callback when pointerdown event is being triggered */
-  onPointerDown?(event: React.PointerEvent<HTMLButtonElement>): void;
+  onPointerDown?(): void;
 }
 
 export interface Action {
