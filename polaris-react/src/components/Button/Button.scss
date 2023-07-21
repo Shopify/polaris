@@ -574,7 +574,6 @@
     --pc-button-color-active: var(--p-color-bg-transparent-active-experimental);
     // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
     box-shadow: none;
-    vertical-align: middle;
 
     // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
     path {
@@ -805,7 +804,6 @@
 
   #{$se23} & {
     box-shadow: none;
-    vertical-align: middle;
     // stylelint-disable-next-line -- polaris/conventions/polaris/custom-property-allowed-list
     margin: calc(-1 * var(--pc-button-vertical-padding))
       calc(-1 * var(--p-space-3));
