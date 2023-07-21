@@ -20,6 +20,8 @@ export interface LinkProps {
   external?: boolean;
   /** Where to display the url */
   target?: Target;
+  /** Defines the relationship between a linked resource and the current document */
+  rel?: Target;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
   /** Removes text decoration underline to the link */
@@ -38,6 +40,7 @@ export function Link({
   onClick,
   external,
   target,
+  rel,
   id,
   monochrome,
   removeUnderline,
@@ -62,6 +65,7 @@ export function Link({
             url={url}
             external={external}
             target={target}
+            rel={rel}
             id={id}
             aria-label={accessibilityLabel}
             data-primary-link={dataPrimaryLink}
