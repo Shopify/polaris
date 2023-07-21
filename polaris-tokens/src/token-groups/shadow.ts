@@ -6,8 +6,8 @@ type ShadowAliasExperimental = Experimental<
   | 'card-md'
   | 'card-lg'
   | 'button'
+  | 'button-hover'
   | 'button-disabled'
-  | 'button-primary-inset'
   | 'button-primary-strong-inset'
   | 'button-primary-strong-hover'
   | 'button-primary-strong'
@@ -105,12 +105,11 @@ export const shadow: {
     value:
       'inset 0px -1px 0px #B5B5B5, inset -1px 0px 0px #E3E3E3, inset 1px 0px 0px #E3E3E3, inset 0px 1px 0px #E3E3E3',
   },
+  'shadow-button-hover-experimental': {
+    value: `inset 0px -1px 0px #cccccc, inset 1px 0px 0px #ebebeb, inset -1px 0px 0px #ebebeb, inset 0px 1px 0px #ebebeb`,
+  },
   'shadow-button-disabled-experimental': {
     value: 'inset 0px 0px 0px 1px rgba(227, 227, 227, 1)',
-  },
-  'shadow-button-primary-inset-experimental': {
-    value:
-      '0px 2px 0px 0px #000 inset, 1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset, -1px 0px 1px 0px rgba(0, 0, 0, 0.20) inset',
   },
   'shadow-button-primary-strong-inset-experimental': {
     value: '0px 3px 0px 0px #000 inset',
