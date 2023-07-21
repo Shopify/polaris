@@ -1078,7 +1078,7 @@
       fill: var(--p-color-bg-critical-strong-hover);
 
       #{$se23} & {
-        fill: var(--p-color-icon-critical-hover-experimental);
+        fill: var(--p-color-icon-critical-strong-hover-experimental);
       }
     }
 
@@ -1091,7 +1091,7 @@
       fill: var(--p-color-bg-critical-strong-active);
 
       #{$se23} & {
-        fill: var(--p-color-icon-critical-active-experimental);
+        fill: var(--p-color-icon-critical-strong-active-experimental);
       }
     }
 

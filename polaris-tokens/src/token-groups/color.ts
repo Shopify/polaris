@@ -155,11 +155,8 @@ type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-backdrop'
   | 'bg-input-active'
   | 'bg-input-hover'
-  | 'bg-inverse-transparent-active'
-  | 'bg-inverse-transparent-hover'
   | 'bg-primary-disabled'
   | 'bg-secondary'
-  | 'bg-secondary-disabled'
   | 'bg-success-strong-active'
   | 'bg-success-strong-hover'
   | 'bg-transparent'
@@ -179,8 +176,6 @@ type ColorTextAliasExperimental = Experimental<
 >;
 
 type ColorIconAliasExperimental = Experimental<
-  | 'icon-critical-active'
-  | 'icon-critical-hover'
   | 'icon-critical-strong-active'
   | 'icon-critical-strong-hover'
   | 'icon-critical-strong'
@@ -917,10 +912,6 @@ export const color: {
     value: colorsExperimental.gray[5](),
     description: '',
   },
-  'color-bg-secondary-disabled-experimental': {
-    value: colorsExperimental.gray[4](),
-    description: '',
-  },
   'color-bg-input-hover-experimental': {
     value: colorsExperimental.gray[3](),
     description: '',
@@ -965,14 +956,6 @@ export const color: {
   },
   'color-bg-transparent-primary-experimental': {
     value: colorsExperimental.gray[16]('0.60'),
-    description: '',
-  },
-  'color-bg-inverse-transparent-hover-experimental': {
-    value: colorsExperimental.gray[1]('0.1'),
-    description: '',
-  },
-  'color-bg-inverse-transparent-active-experimental': {
-    value: colorsExperimental.gray[1]('0.2'),
     description: '',
   },
   'color-bg-success-strong-hover-experimental': {
@@ -1020,14 +1003,6 @@ export const color: {
     description: '',
   },
   'color-icon-critical-strong-active-experimental': {
-    value: colorsExperimental.red[16],
-    description: '',
-  },
-  'color-icon-critical-hover-experimental': {
-    value: colorsExperimental.red[15],
-    description: '',
-  },
-  'color-icon-critical-active-experimental': {
     value: colorsExperimental.red[16],
     description: '',
   },
