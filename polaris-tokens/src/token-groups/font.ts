@@ -29,9 +29,7 @@ export type FontLineHeightScale =
   | '7'
   | FontLineHeightScaleExperimental;
 
-type FontWeightAliasExperimental = Experimental<
-  'extra-medium' | 'extra-semibold'
->;
+type FontWeightAliasExperimental = Experimental<'extra-semibold'>;
 
 export type FontWeightAlias =
   | 'regular'
@@ -106,13 +104,9 @@ export const font: {
   },
   'font-weight-regular': {
     value: '400',
-    valueExperimental: '450',
   },
   'font-weight-medium': {
     value: '500',
-  },
-  'font-weight-extra-medium-experimental': {
-    value: '550',
   },
   'font-weight-semibold': {
     value: '600',
