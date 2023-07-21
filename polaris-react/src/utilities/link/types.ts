@@ -10,6 +10,8 @@ export interface LinkLikeComponentProps
   external?: boolean;
   /** Where to display the url */
   target?: Target;
+  /** Defines the relationship between a linked resource and the current document */
+  rel?: string;
   /** Makes the browser download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
   download?: string | boolean;
   [key: string]: any;
