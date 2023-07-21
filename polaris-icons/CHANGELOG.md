@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.6.0
+
+### Minor Changes
+
+- [#9777](https://github.com/Shopify/polaris/pull/9777) [`8228de0f6`](https://github.com/Shopify/polaris/commit/8228de0f61e49caeab538de36b19616e19daecce) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added social media icons
+
 ## 7.5.0
 
 ### Minor Changes
