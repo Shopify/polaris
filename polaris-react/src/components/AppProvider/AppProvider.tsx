@@ -54,7 +54,7 @@ function measureScrollbars() {
   );
 
   document.documentElement.style.setProperty(
-    '--p-scrollbar-width',
+    '--pc-app-provider-scrollbar-width',
     `${scrollbarWidthWithSafetyHatch}px`,
   );
 
