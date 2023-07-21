@@ -227,6 +227,7 @@ $sidebar-breakpoint: 1200px;
 
   min-width: 0;
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties
     max-width: calc(100vw - var(--pc-app-provider-scrollbar-width));
   }
 

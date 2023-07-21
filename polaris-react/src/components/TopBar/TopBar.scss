@@ -26,6 +26,7 @@ $icon-size: 20px;
 
 .Container {
   display: flex;
+  // stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties
   width: calc(100vw - var(--pc-app-provider-scrollbar-width));
 }
 
