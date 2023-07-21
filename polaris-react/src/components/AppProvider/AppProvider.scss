@@ -40,10 +40,6 @@ html,
 body,
 button {
   font-family: var(--p-font-family-sans);
-
-  #{$se23} & {
-    font-family: var(--p-font-family-sans-experimental);
-  }
 }
 
 html {
