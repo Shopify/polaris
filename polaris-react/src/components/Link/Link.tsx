@@ -21,7 +21,7 @@ export interface LinkProps {
   /** Where to display the url */
   target?: Target;
   /** Defines the relationship between a linked resource and the current document */
-  rel?: Target;
+  rel?: string;
   /** Makes the link color the same as the current text color and adds an underline */
   monochrome?: boolean;
   /** Removes text decoration underline to the link */
