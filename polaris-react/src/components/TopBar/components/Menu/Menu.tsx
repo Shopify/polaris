@@ -79,7 +79,7 @@ export function Menu(props: MenuProps) {
     buildSections(topSection);
 
   const shouldRenderMenuItems =
-    polarisSummerEditions2023 && Boolean(indentItems?.length);
+    polarisSummerEditions2023 && Boolean(indentItems);
 
   const titleMarkup: string | React.ReactNode = getTitleMarkup(
     shouldRenderMenuItems,
@@ -195,7 +195,12 @@ function buildSections(topSection?: UserMenuTopSection) {
   otherItemsMarkup = otherItems?.map((item, index) => {
     const itemMarkup = generateMenuItem(item, index);
     return (
-      <Box width="100%" paddingInlineEnd="2" insetInlineEnd="2">
+      <Box
+        key={`${item.content}-${index}`}
+        width="100%"
+        paddingInlineEnd="2"
+        insetInlineEnd="2"
+      >
         {itemMarkup}
       </Box>
     );
