@@ -23,7 +23,6 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
   align-items: center;
   border: var(--p-border-width-1) solid transparent;
   width: 100%;
-  max-width: $search-max-width;
 }
 // We have both a focused class and a focus pseudo selector here
 // because we allow "faked" focus for when the search is still
