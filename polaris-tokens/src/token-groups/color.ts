@@ -155,6 +155,7 @@ type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-backdrop'
   | 'bg-input-active'
   | 'bg-input-hover'
+  | 'bg-primary-disabled'
   | 'bg-secondary'
   | 'bg-success-strong-active'
   | 'bg-success-strong-hover'
@@ -901,6 +902,10 @@ export const color: {
   // Experimental tokens
   'color-bg-backdrop-experimental': {
     value: colorsExperimental.gray[16]('0.75'),
+    description: '',
+  },
+  'color-bg-primary-disabled-experimental': {
+    value: colorsExperimental.gray[9](),
     description: '',
   },
   'color-bg-secondary-experimental': {
