@@ -30,7 +30,14 @@
 
   #{$se23} & {
     // stylelint-disable -- Polaris component custom properties
-    --pc-button-shadow: var(--p-shadow-button-experimental);
+    --pc-button-shadow: inset 0px -1px 0px #b5b5b5, inset -1px 0px 0px #e3e3e3,
+      inset 1px 0px 0px #e3e3e3, inset 0px 1px 0px #e3e3e3;
+    --pc-button-shadow-hover: inset 0px -1px 0px #cccccc,
+      inset 1px 0px 0px #ebebeb, inset -1px 0px 0px #ebebeb,
+      inset 0px 1px 0px #ebebeb;
+    --pc-button-shadow-primary: inset 0px -1px 0px rgba(0, 0, 0, 0.25),
+      inset 1px 0px 0px rgba(255, 255, 255, 0.25),
+      inset -1px 0px 0px rgba(255, 255, 255, 0.25);
     --pc-button-large-min-height: 32px;
     --pc-button-large-vertical-padding: var(--p-space-2);
 
@@ -57,7 +64,8 @@
     }
 
     &:hover {
-      box-shadow: var(--p-shadow-button-hover-experimental);
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
+      box-shadow: var(--pc-button-shadow-hover);
     }
   }
 
