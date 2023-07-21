@@ -1,8 +1,6 @@
 import type {MetadataProperties, Experimental} from '../types';
 
-type FontFamilyAliasExperimental = Experimental<'sans'>;
-
-type FontFamilyAlias = 'sans' | 'mono' | FontFamilyAliasExperimental;
+type FontFamilyAlias = 'sans' | 'mono';
 
 type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 
@@ -47,10 +45,7 @@ export const font: {
   'font-family-sans': {
     value:
       "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-  },
-  'font-family-sans-experimental': {
-    value:
-      "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+      valueExperimental: "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
   },
   'font-family-mono': {
     value:
