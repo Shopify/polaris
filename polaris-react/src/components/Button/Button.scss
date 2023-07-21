@@ -57,7 +57,6 @@
     }
 
     &:hover {
-      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       box-shadow: var(--p-shadow-button-hover-experimental);
     }
   }
