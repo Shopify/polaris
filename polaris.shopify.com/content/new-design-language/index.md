@@ -2,7 +2,7 @@
 title: Beta access to our new design language
 description: |
   Polaris is developing version 12 to match Shopify's new design language.
-  This update will seamlessly update your app to about 70% and assist you in updating custom components using our tools and tokens.
+  This update will seamlessly update your apps design to about 70% and assist you in updating custom components using our tools and tokens.
   You can access the early beta release now if you want to update immediately instead of waiting for the stable release in September.
 hideFromNav: true
 keywords:
@@ -16,21 +16,21 @@ order: 0
 
 ## Timeline
 
-The Polaris beta releases runs until the stable public release planned for end of September.
+The Polaris beta releases will continue until the stable public version 12, scheduled for the end of September.
 We may publish updates to the beta at key development milestones for your development and testing environments.
-See the following table a timeline for each milestone.
+Refer to the table below for the timeline of each milestone:
 
 | Milestone                                                         | Version                                     | Date             |
 | ----------------------------------------------------------------- | ------------------------------------------- | ---------------- |
 | Initial beta release, update to early adopters who want to opt in | `v12.0.0-beta1`                             | July 26          |
 | Incremental beta releases                                         | `v12.0.0-beta2`<br/>`v12.0.0-beta3`<br/>etc | July – September |
-| Polaris release with stable API robust documentation and tooling  | `v12.0.0`                                   | End of September |
+| Polaris release with stable API, robust documentation and tooling | `v12.0.0`                                   | End of September |
 
-## What might break before the stable release
+## What might break before during beta
 
 We are **actively developing** this release and will continue to make breaking changes to the beta release until September.
 Our main areas of focus, listed below, will undergo **significant changes**.
-Additionally, we may identify other areas that require modifications to ensure the best possible stable release which we don't yet know.
+Additionally, we may identify other areas that require modifications to ensure the best possible stable release which are not mentioned yet.
 
 Areas we are actively working on:
 
@@ -43,12 +43,12 @@ Areas we are actively working on:
 - Documentation
 - Migration tooling
 
-The new design language introduces changes that may break your app implementations, particularly custom styling.
-You will need to review your app's UI and apply manual patch fixes.
-
 ## Still want to dive in early?
 
 We're excited about the new design language and understand if you're eager to start immediately despite the above mentioned trade-offs.
+The new design language introduces changes that may break your app implementations, particularly custom styling.
+You will need to review your app's UI and apply manual patch fixes.
+
 To assist you, we have prepared a collection of tips, documentation, and our own experience to help you on this early journey.
 
 ## Design philosophy
