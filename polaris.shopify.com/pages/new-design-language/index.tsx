@@ -20,9 +20,9 @@ const NewDesignLanguage = ({/*title, description, content*/}: ContentProps) => {
       <PageMeta description={/*description*/''} />
       <Page isContentPage>
         <Longform>
-          <h1>{title}</h1>
+          {/*<h1>{title}</h1>
           <p>{description}</p>
-          <Markdown>{content}</Markdown>
+          <Markdown>{content}</Markdown>*/}
         </Longform>
       </Page>
     </>
