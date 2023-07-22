@@ -5,6 +5,7 @@ import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
 import Page from '../../src/components/Page';
 import PageMeta from '../../src/components/PageMeta';
+import {MarkdownFile} from '../../src/types';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 
 export interface ContentProps {
