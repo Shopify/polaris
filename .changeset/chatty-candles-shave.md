@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': minor
 ---
 
-Update FirstViewMajor icon
+Updated FirstViewMajor icon
