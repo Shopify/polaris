@@ -134,7 +134,7 @@
     }
 
     &:not([aria-disabled='true']):hover {
-      background-color: var(--p-color-bg-transparent-subdued-experimental);
+      background-color: var(--p-color-bg-transparent-hover-experimental);
       color: var(--p-color-text-primary);
     }
 
@@ -356,7 +356,7 @@
     }
 
     &:not([aria-disabled='true']):hover {
-      background-color: var(--p-color-bg-secondary-experimental);
+      background-color: var(--p-color-bg-transparent-hover-experimental);
       color: var(--p-color-text-primary);
     }
 
