@@ -81,7 +81,12 @@ export function EmptyState({
 
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="4">
-      <Text as="span" color="subdued" alignment="center">
+      <Text
+        as="span"
+        color={polarisSummerEditions2023 ? undefined : 'subdued'}
+        alignment="center"
+        variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
+      >
         {footerContent}
       </Text>
     </Box>
@@ -108,7 +113,7 @@ export function EmptyState({
   const childrenMarkup = children ? (
     <Text
       as="span"
-      color="subdued"
+      color={polarisSummerEditions2023 ? undefined : 'subdued'}
       alignment="center"
       variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
     >
