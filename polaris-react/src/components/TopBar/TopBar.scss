@@ -13,9 +13,6 @@ $right-column: 1fr;
 
 .TopBar {
   position: relative;
-  display: grid;
-  grid-template-columns: $left-column $search-column $right-column;
-  align-items: center;
   height: $top-bar-height;
   box-shadow: var(--p-shadow-sm);
   background-color: var(--p-color-bg);
@@ -46,7 +43,9 @@ $right-column: 1fr;
 }
 
 .Container {
-  display: flex;
+  display: grid;
+  grid-template-columns: $left-column $search-column $right-column;
+  align-items: center;
   // stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties
   width: calc(100vw - var(--pc-app-provider-scrollbar-width));
   // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
