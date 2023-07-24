@@ -106,7 +106,12 @@ export function EmptyState({
   ) : null;
 
   const childrenMarkup = children ? (
-    <Text as="span" color="subdued" alignment="center">
+    <Text
+      as="span"
+      color="subdued"
+      alignment="center"
+      variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
+    >
       {children}
     </Text>
   ) : null;
