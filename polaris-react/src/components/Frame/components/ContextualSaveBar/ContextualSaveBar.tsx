@@ -66,6 +66,9 @@ export function ContextualSaveBar({
 
   const discardActionMarkup = discardAction && (
     <Button
+      plain={polarisSummerEditions2023}
+      primary={polarisSummerEditions2023}
+      size={polarisSummerEditions2023 ? 'large' : undefined}
       url={discardAction.url}
       onClick={discardActionHandler}
       loading={discardAction.loading}
@@ -83,7 +86,9 @@ export function ContextualSaveBar({
 
   const saveActionMarkup = saveAction && (
     <Button
-      primary
+      primary={!polarisSummerEditions2023}
+      primarySuccess={polarisSummerEditions2023}
+      size={polarisSummerEditions2023 ? 'large' : undefined}
       url={saveAction.url}
       onClick={saveAction.onAction}
       loading={saveAction.loading}
@@ -101,16 +106,15 @@ export function ContextualSaveBar({
   );
 
   const logoMarkup =
-    alignContentFlush || contextControl || polarisSummerEditions2023 ? null : (
+    alignContentFlush || contextControl ? null : (
       <div className={styles.LogoContainer} style={{width}}>
         {imageMarkup}
       </div>
     );
 
-  const contextControlMarkup =
-    contextControl && !polarisSummerEditions2023 ? (
-      <div className={styles.ContextControl}>{contextControl}</div>
-    ) : null;
+  const contextControlMarkup = contextControl ? (
+    <div className={styles.ContextControl}>{contextControl}</div>
+  ) : null;
 
   const contentsClassName = classNames(
     styles.Contents,
@@ -125,9 +129,9 @@ export function ContextualSaveBar({
         <div className={contentsClassName}>
           {polarisSummerEditions2023 ? (
             <div className={styles.MessageContainer}>
-              <Icon source={RiskMinor} color="base" />
+              <Icon source={RiskMinor} color="warning" />
               {message && (
-                <Text as="h2" variant="headingMd" truncate>
+                <Text as="h2" variant="headingMd" color="text-inverse" truncate>
                   {message}
                 </Text>
               )}
