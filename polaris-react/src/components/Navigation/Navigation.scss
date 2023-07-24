@@ -21,6 +21,8 @@ $nav-max-width: 360px;
   border-right: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   #{$se23} & {
+    // stylelint-disable-next-line -- Polaris component custom properties
+    --pc-navigation-letter-spacing-medium: -0.005rem;
     background-color: var(--p-color-bg-subdued-active);
     border-right: 0;
   }
@@ -126,6 +128,10 @@ $nav-max-width: 360px;
     .Badge {
       margin-right: 0;
     }
+
+    &::before {
+      opacity: 0;
+    }
   }
 }
 
@@ -135,6 +141,8 @@ $nav-max-width: 360px;
 
   #{$se23} & {
     border-radius: var(--p-border-radius-2);
+    transition: background-color var(--p-motion-duration-150)
+      var(--p-motion-ease-out);
   }
 }
 
@@ -163,8 +171,11 @@ $nav-max-width: 360px;
   }
 
   #{$se23} & {
+    transition: background-color var(--p-motion-duration-150)
+      var(--p-motion-ease-out);
+
     &:is(:hover, :focus-visible) {
-      background: var(--p-color-bg-transparent-hover-experimental);
+      background: var(--p-color-bg-subdued-hover);
 
       // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
       &.ItemInnerWrapper-display-actions-on-hover {
@@ -177,8 +188,7 @@ $nav-max-width: 360px;
               background: linear-gradient(
                 to right,
                 rgba(0, 0, 0, 0),
-                var(--secondary-actions-on-hover-background-color)
-                  var(--p-space-8)
+                var(--p-color-bg-subdued-hover) var(--p-space-8)
               );
             }
           }
@@ -188,7 +198,24 @@ $nav-max-width: 360px;
     }
 
     &:active {
-      background: var(--p-color-bg-transparent-active-experimental);
+      background-color: var(--p-color-bg-app-selected);
+
+      // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+      &.ItemInnerWrapper-display-actions-on-hover {
+        @media #{$p-breakpoints-md-up} {
+          .SecondaryActions {
+            &::before {
+              // stylelint-disable-next-line -- required for fade effect
+              background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0),
+                var(--p-color-bg-app-selected) var(--p-space-8)
+              );
+            }
+          }
+        }
+      }
+      // stylelint-enable
     }
   }
 }
@@ -198,6 +225,13 @@ $nav-max-width: 360px;
 
   #{$se23} & {
     background-color: var(--p-color-bg-app-selected);
+
+    // stylelint-disable-next-line selector-max-combinators -- Needed for precision on text
+    .Text {
+      color: var(--p-color-text);
+      // stylelint-disable-next-line --  se23 component custom property
+      letter-spacing: var(--pc-navigation-letter-spacing-medium);
+    }
 
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-app-selected);
@@ -223,7 +257,7 @@ $nav-max-width: 360px;
     }
 
     &:active {
-      background: var(--p-color-bg-transparent-active-experimental);
+      background: var(--p-color-bg-app-selected);
     }
   }
 
@@ -246,7 +280,7 @@ $nav-max-width: 360px;
     background-color: transparent;
 
     &:active {
-      background: var(--p-color-bg-transparent-active-experimental);
+      background: var(--p-color-bg-app-selected);
     }
 
     // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
@@ -333,6 +367,21 @@ $nav-max-width: 360px;
     // stylelint-disable-next-line selector-max-combinators -- necessary to override the specificity of the Text class
     .Text {
       font-weight: var(--p-font-weight-medium);
+    }
+
+    &::before {
+      /* Currently open - nib */
+      // stylelint-disable-next-line function-url-scheme-allowed-list -- se23
+      content: url('data:image/svg+xml,%3Csvg%20width%3D%2221%22%20height%3D%2228%22%20viewBox%3D%220%200%2021%2028%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M9%2024.75C9%2024.3358%209.33579%2024%209.75%2024V24C10.1642%2024%2010.5%2024.3358%2010.5%2024.75V28H9V24.75Z%22%20fill%3D%22%23B5B5B5%22%2F%3E%0A%3C%2Fsvg%3E');
+
+      position: absolute;
+      top: 0;
+      left: var(--p-space-2);
+      width: 21px;
+      height: 28px;
+      border-radius: 0;
+      opacity: 1;
+      transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-out);
     }
   }
 }
@@ -667,6 +716,14 @@ $nav-max-width: 360px;
 
       #{$se23} & {
         color: var(--p-color-text);
+        background: var(--p-color-bg-subdued-hover);
+
+        // stylelint-disable-next-line selector-max-class, max-nesting-depth, selector-max-combinators, selector-max-compound-selectors -- Needed for precision styling on text
+        .Text {
+          font-weight: var(--p-font-weight-medium);
+          // stylelint-disable-next-line --  se23 component custom property
+          letter-spacing: var(--pc-navigation-letter-spacing-medium);
+        }
       }
     }
 
@@ -683,7 +740,7 @@ $nav-max-width: 360px;
       @include no-focus-ring;
 
       #{$se23} & {
-        background-color: var(--p-color-bg-subdued-active);
+        background-color: var(--p-color-bg-app-selected);
       }
     }
 
@@ -721,7 +778,8 @@ $nav-max-width: 360px;
 
       // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors -- necessary to override the specificity of the Text class
       .Text {
-        font-weight: var(--p-font-weight-semibold);
+        // stylelint-disable-next-line declaration-no-important -- necessary to override the specificity of the Text class
+        font-weight: var(--p-font-weight-semibold) !important;
       }
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
@@ -737,7 +795,6 @@ $nav-max-width: 360px;
         @include no-focus-ring;
         background: var(--p-color-bg-app-selected);
         color: var(--p-color-text-primary);
-        font-weight: var(--p-font-weight-regular);
       }
     }
 

@@ -22,12 +22,18 @@ $contextual-save-height: 44px;
     --p-color-bg-hover: var(--p-color-bg-hover);
     --p-color-bg-subdued-active: var(--p-color-bg-subdued-active);
     /* stylelint-enable */
-    border-radius: var(--p-border-radius-3);
-    margin: var(--p-space-2);
+    margin-top: 0;
+    margin-bottom: 0;
     height: $contextual-save-height;
     background-color: var(--p-color-bg-input);
     color: var(--p-color-bg-inverse);
     box-shadow: var(--p-shadow-md);
+
+    @media #{$p-breakpoints-sm-up} {
+      border-radius: var(--p-border-radius-3);
+      margin-top: var(--p-space-2);
+      margin-bottom: var(--p-space-2);
+    }
   }
 
   .LogoContainer {

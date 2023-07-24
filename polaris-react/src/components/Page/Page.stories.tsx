@@ -173,6 +173,26 @@ export function WithToolTipAction() {
   );
 }
 
+export function WithBackActionOnAction() {
+  return (
+    <Page
+      backAction={{
+        content: 'Settings',
+        onAction: () => {
+          // eslint-disable-next-line no-alert
+          alert('Clicked back button');
+        },
+      }}
+      title="General"
+      divider
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
 export function WithSubtitle() {
   return (
     <Page

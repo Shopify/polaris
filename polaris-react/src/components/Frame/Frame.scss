@@ -178,6 +178,11 @@ $sidebar-breakpoint: 1200px;
     /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Only needed here */
     top: var(--pc-topbar-height);
 
+    /* stylelint-disable-next-line polaris/media-queries/polaris/at-rule-disallowed-list -- Need to respect the page margins */
+    @include page-layout;
+    // But don't want to respect the max-width
+    max-width: none;
+
     @media #{$p-breakpoints-md-up} {
       /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Only needed here */
       left: var(--pc-nav-width);

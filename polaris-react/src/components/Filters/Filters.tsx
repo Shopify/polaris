@@ -279,7 +279,10 @@ export function Filters({
       }
     | {padding: BoxProps['padding']} = se23
     ? {
-        padding: '2',
+        paddingInlineStart: '2',
+        paddingInlineEnd: '2',
+        paddingBlockStart: '1_5-experimental',
+        paddingBlockEnd: '1_5-experimental',
       }
     : {
         paddingBlockStart: {

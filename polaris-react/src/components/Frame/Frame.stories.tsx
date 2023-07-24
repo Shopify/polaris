@@ -1098,6 +1098,19 @@ function WithSidebarEnabled({
           {pageMarkup}
           {toastMarkup}
           {modalMarkup}
+          <div
+            style={{
+              position: 'fixed',
+              right: 0,
+              top: 'var(--pc-topbar-height)',
+              width: 'var(--pc-sidebar-width)',
+              height: '100vh',
+              background: 'var(--p-color-bg)',
+              padding: 'var(--p-space-2)',
+            }}
+          >
+            This is a sidebar
+          </div>
         </Frame>
       </AppProvider>
     </div>
