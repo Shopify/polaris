@@ -180,10 +180,12 @@ $nav-max-width: 360px;
 
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-subdued-hover);
+    }
 
-      // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
-      &.ItemInnerWrapper-display-actions-on-hover {
-        @media #{$p-breakpoints-md-up} {
+    // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+    &.ItemInnerWrapper-display-actions-on-hover {
+      @media #{$p-breakpoints-md-up} {
+        &:is(:hover, :focus-visible) {
           .SecondaryActions {
             background: var(--secondary-actions-on-hover-background-color);
 
@@ -195,6 +197,12 @@ $nav-max-width: 360px;
                 var(--p-color-bg-subdued-hover) var(--p-space-8)
               );
             }
+          }
+        }
+
+        &:is(:active) {
+          .SecondaryActions {
+            background: var(--p-color-bg-app-selected);
           }
         }
       }
