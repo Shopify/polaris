@@ -60,9 +60,10 @@ $bulk-actions-button-stacking-order: (
   pointer-events: auto;
 
   #{$se23} & {
+    padding: var(--p-space-3);
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
-      $borderRadius: var(--p-border-radius-2)
+      $borderRadius: var(--p-border-radius-3)
     );
   }
 
