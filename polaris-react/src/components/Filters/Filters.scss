@@ -248,12 +248,32 @@
 
 .ClearAll {
   margin-left: var(--p-space-1);
+
+  #{$se23} & {
+    margin-left: var(--p-space-2);
+
+    // stylelint-disable-next-line -- se23 overrides
+    span {
+      font-size: var(--p-font-size-75);
+      font-weight: var(--p-font-weight-medium);
+    }
+  }
 }
 
 @media #{$p-breakpoints-md-down} {
   .ClearAll {
     margin-left: var(--p-space-2);
     padding-right: var(--p-space-4);
+
+    #{$se23} & {
+      margin-left: 0;
+
+      // stylelint-disable-next-line -- se23 overrides
+      span {
+        font-size: var(--p-font-size-100);
+        font-weight: var(--p-font-weight-medium);
+      }
+    }
   }
 
   .MultiplePinnedFilterClearAll {
