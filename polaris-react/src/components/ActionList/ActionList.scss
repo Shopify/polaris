@@ -168,16 +168,18 @@
   }
 
   &.indented {
+    --pc-action-list-image-size: 24px;
     position: relative;
-    margin-left: var(--p-space-3);
+    margin-left: calc(var(--p-space-5) + var(--p-space-05));
 
     &::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: calc(var(--p-space-025) * -1);
       bottom: 0;
       left: 0;
       border-left: var(--p-border-width-1) solid var(--p-color-border);
+      margin-left: calc(var(--p-space-1_5-experimental) * -1);
     }
   }
 }

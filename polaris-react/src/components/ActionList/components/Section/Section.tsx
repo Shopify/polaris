@@ -8,6 +8,7 @@ import type {
   ActionListSection,
 } from '../../../../types';
 import {useFeatures} from '../../../../utilities/features';
+import {HorizontalStack} from '../../../HorizontalStack';
 
 export interface SectionProps {
   /** Section of action items */
@@ -43,19 +44,27 @@ export function Section({
   };
   const actionMarkup = section.items.map(
     ({content, helpText, onAction, ...item}, index) => {
+      const itemMarkup = (
+        <Item
+          content={content}
+          helpText={helpText}
+          role={actionRole}
+          onAction={handleAction(onAction)}
+          {...item}
+        />
+      );
+
       return (
         <Box
           as="li"
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
         >
-          <Item
-            content={content}
-            helpText={helpText}
-            role={actionRole}
-            onAction={handleAction(onAction)}
-            {...item}
-          />
+          {polarisSummerEditions2023 ? (
+            <HorizontalStack wrap={false}>{itemMarkup}</HorizontalStack>
+          ) : (
+            itemMarkup
+          )}
         </Box>
       );
     },
