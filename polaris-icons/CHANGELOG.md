@@ -1,5 +1,29 @@
 # Changelog
 
+## 7.6.0
+
+### Minor Changes
+
+- [#9777](https://github.com/Shopify/polaris/pull/9777) [`8228de0f6`](https://github.com/Shopify/polaris/commit/8228de0f61e49caeab538de36b19616e19daecce) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added social media icons
+
+## 7.5.0
+
+### Minor Changes
+
+- [#9756](https://github.com/Shopify/polaris/pull/9756) [`c8e5779f0`](https://github.com/Shopify/polaris/commit/c8e5779f097c6509ff84deacf17c41d1b5ecfd41) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated bold and italic icon sets
+
+## 7.4.0
+
+### Minor Changes
+
+- [#9727](https://github.com/Shopify/polaris/pull/9727) [`ad287e384`](https://github.com/Shopify/polaris/commit/ad287e3842eb7e1ebf2f63079e3ffbc20271f8bb) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated LanguageFilledMinor, LanguageMinor, and added TranslateMajor
+
+* [#9718](https://github.com/Shopify/polaris/pull/9718) [`ae40558df`](https://github.com/Shopify/polaris/commit/ae40558dfc5ed5faabd7ba5812307a077b00a27f) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated pin minor and pin unfilled minor
+
+### Patch Changes
+
+- [#9730](https://github.com/Shopify/polaris/pull/9730) [`639395406`](https://github.com/Shopify/polaris/commit/6393954066675721b9d9a8c9543b78d97e8af19b) Thanks [@lgriffee](https://github.com/lgriffee)! - Fixed distinction between ascending and descending sorting icons
+
 ## 7.3.0
 
 ### Minor Changes

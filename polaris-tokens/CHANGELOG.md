@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.5.2
+
+### Patch Changes
+
+- [#9748](https://github.com/Shopify/polaris/pull/9748) [`5b85401fe`](https://github.com/Shopify/polaris/commit/5b85401fe56ee07f107358548669ed8f1d6ecceb) Thanks [@jesstelford](https://github.com/jesstelford)! - Updated experimental bg-info-subdued colors.
+
+* [#9747](https://github.com/Shopify/polaris/pull/9747) [`799819b68`](https://github.com/Shopify/polaris/commit/799819b687a319328bf36917ba79c6324197aba9) Thanks [@jesstelford](https://github.com/jesstelford)! - Updated experimental bg-magic-subdued colors.
+
 ## 7.5.1
 
 ### Patch Changes

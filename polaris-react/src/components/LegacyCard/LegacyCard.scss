@@ -69,6 +69,7 @@
       @include shadow-bevel(
         $boxShadow: none,
         $borderRadius: var(--p-border-radius-0-experimental),
+        $border: none,
         $content: none
       );
     }

@@ -96,6 +96,7 @@ const catchAllTemplateExcludeList = [
   '/tools',
   '/tokens',
   '/sandbox',
+  '/new-design-language',
 ];
 
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {

@@ -144,6 +144,8 @@
     line-height: var(--p-font-line-height-5);
 
     #{$se23} & {
+      // Specificity bump
+      font-size: var(--p-font-size-500);
       line-height: var(--p-font-line-height-6);
     }
   }

@@ -1,5 +1,56 @@
 # Changelog
 
+## 11.9.0
+
+### Minor Changes
+
+- [#9761](https://github.com/Shopify/polaris/pull/9761) [`ce3e516a2`](https://github.com/Shopify/polaris/commit/ce3e516a2a0dd15a6cdf096d6f76c4740d96d23f) Thanks [@aveline](https://github.com/aveline)! - Added `readOnly` prop to `Labelled` component
+
+* [#9770](https://github.com/Shopify/polaris/pull/9770) [`571acc166`](https://github.com/Shopify/polaris/commit/571acc16692ffc5d0920a2811a3f59c7f3214708) Thanks [@zaquille-oneil](https://github.com/zaquille-oneil)! - Updating TextField to support ArrowUp and ArrowDown keypresses for "integer" type
+
+### Patch Changes
+
+- [#9765](https://github.com/Shopify/polaris/pull/9765) [`541e5920b`](https://github.com/Shopify/polaris/commit/541e5920b8218808b86c00f61ffc156de0e1b9ad) Thanks [@mattkubej](https://github.com/mattkubej)! - [TopBar] convert to grid and center align search field
+
+- Updated dependencies [[`8228de0f6`](https://github.com/Shopify/polaris/commit/8228de0f61e49caeab538de36b19616e19daecce)]:
+  - @shopify/polaris-icons@7.6.0
+
+## 11.8.0
+
+### Minor Changes
+
+- [#9733](https://github.com/Shopify/polaris/pull/9733) [`79e604b34`](https://github.com/Shopify/polaris/commit/79e604b340c4a80fcd45ab40a19c8210319bbea5) Thanks [@yurm04](https://github.com/yurm04)! - empty
+
+### Patch Changes
+
+- [#9749](https://github.com/Shopify/polaris/pull/9749) [`3b6d391a3`](https://github.com/Shopify/polaris/commit/3b6d391a3b002f9e827960fee05a6bc633ea449b) Thanks [@jesstelford](https://github.com/jesstelford)! - [IndexFilters] Sort popover aligned to right side of button.
+
+* [#9772](https://github.com/Shopify/polaris/pull/9772) [`6193ebe03`](https://github.com/Shopify/polaris/commit/6193ebe03b5387395537ff0530befa51f3e0905b) Thanks [@chloerice](https://github.com/chloerice)! - Fixed background color missing from `IndexTable.Cell` when fixed and in various states of interaction
+
+* Updated dependencies [[`c8e5779f0`](https://github.com/Shopify/polaris/commit/c8e5779f097c6509ff84deacf17c41d1b5ecfd41), [`5b85401fe`](https://github.com/Shopify/polaris/commit/5b85401fe56ee07f107358548669ed8f1d6ecceb), [`799819b68`](https://github.com/Shopify/polaris/commit/799819b687a319328bf36917ba79c6324197aba9)]:
+  - @shopify/polaris-icons@7.5.0
+  - @shopify/polaris-tokens@7.5.2
+
+## 11.7.0
+
+### Minor Changes
+
+- [#9725](https://github.com/Shopify/polaris/pull/9725) [`4d0186647`](https://github.com/Shopify/polaris/commit/4d018664742bc3c9e7c4b577d31dcd05d09a2a6f) Thanks [@felipeleusin](https://github.com/felipeleusin)! - [Text] Allows Text to work as dt/dd
+
+### Patch Changes
+
+- [#9704](https://github.com/Shopify/polaris/pull/9704) [`d80cc63d6`](https://github.com/Shopify/polaris/commit/d80cc63d667ea08bb1e7ed9ce184da9f087dcb9d) Thanks [@samrose3](https://github.com/samrose3)! - Fixed IndexTable content from overlapping the horizontal scrollbar
+
+* [#9715](https://github.com/Shopify/polaris/pull/9715) [`72acdded4`](https://github.com/Shopify/polaris/commit/72acdded4e06d135bce6b3ac0fffc1d73829d979) Thanks [@felipeleusin](https://github.com/felipeleusin)! - Fixes ContextualSaveBar and Frame styles to respect page layout
+
+- [#9510](https://github.com/Shopify/polaris/pull/9510) [`f17d78670`](https://github.com/Shopify/polaris/commit/f17d78670682861d38695d2715fcd0bdec855677) Thanks [@vladovidiu](https://github.com/vladovidiu)! - - `ResourceList` replace deprecated EventListener component with call to useEventListener() hook.
+  - `ResourceList` fix `BulkActions` UI not appearing when filters are enabled.
+
+* [#9706](https://github.com/Shopify/polaris/pull/9706) [`b2d9e2dce`](https://github.com/Shopify/polaris/commit/b2d9e2dced8d6f8c94c08e99a7e5b4a226d8cbcf) Thanks [@aveline](https://github.com/aveline)! - Adjust popover positioning for `ActionMenu` secondary actions
+
+* Updated dependencies [[`ad287e384`](https://github.com/Shopify/polaris/commit/ad287e3842eb7e1ebf2f63079e3ffbc20271f8bb), [`639395406`](https://github.com/Shopify/polaris/commit/6393954066675721b9d9a8c9543b78d97e8af19b), [`ae40558df`](https://github.com/Shopify/polaris/commit/ae40558dfc5ed5faabd7ba5812307a077b00a27f)]:
+  - @shopify/polaris-icons@7.4.0
+
 ## 11.6.0
 
 ### Minor Changes

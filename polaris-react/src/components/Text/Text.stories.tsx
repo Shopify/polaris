@@ -135,3 +135,14 @@ export const ParentWithChild = () => (
     children
   </Text>
 );
+
+export const InADefinitionList = () => (
+  <dl>
+    <Text as="dt" variant="bodyLg">
+      Definition Title
+    </Text>
+    <Text as="dd" variant="bodySm">
+      Definition Description
+    </Text>
+  </dl>
+);
