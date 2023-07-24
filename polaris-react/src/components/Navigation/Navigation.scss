@@ -618,8 +618,7 @@ $nav-max-width: 360px;
       #{$se23} & {
         // stylelint-disable-next-line -- se23
         .SecondaryActions {
-          // stylelint-disable-next-line -- required for specific styling se23
-          background-color: var(--p-color-bg-app-selected) !important;
+          background-color: var(--p-color-bg-app-selected);
         }
       }
     }
