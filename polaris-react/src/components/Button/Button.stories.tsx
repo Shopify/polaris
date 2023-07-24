@@ -588,7 +588,21 @@ export function Micro() {
 }
 
 export function Slim() {
-  return <Button size="slim">Save variant</Button>;
+  return (
+    <HorizontalStack gap="5">
+      <Button size="slim">Label</Button>
+      <Button primary size="slim">
+        Label
+      </Button>
+      <Button destructive size="slim">
+        Label
+      </Button>
+      <Button plain size="slim">
+        Label
+      </Button>
+      <Button size="slim" accessibilityLabel="Edit" icon={EditMajor} />
+    </HorizontalStack>
+  );
 }
 
 export function Large() {
