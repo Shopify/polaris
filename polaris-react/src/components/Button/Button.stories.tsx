@@ -589,18 +589,24 @@ export function Micro() {
 
 export function Slim() {
   return (
-    <HorizontalStack gap="5">
-      <Button size="slim">Label</Button>
-      <Button primary size="slim">
-        Label
-      </Button>
-      <Button destructive size="slim">
-        Label
-      </Button>
-      <Button plain size="slim">
-        Label
-      </Button>
-      <Button size="slim" accessibilityLabel="Edit" icon={EditMajor} />
+    <HorizontalStack gap="4" blockAlign="center">
+      <div>
+        <HorizontalStack gap="4">
+          <Button size="slim">Label</Button>
+          <Button primary size="slim">
+            Label
+          </Button>
+          <Button destructive size="slim">
+            Label
+          </Button>
+          <Button plain size="slim">
+            Label
+          </Button>
+        </HorizontalStack>
+      </div>
+      <div>
+        <Button size="slim" accessibilityLabel="Edit" icon={EditMajor} />
+      </div>
     </HorizontalStack>
   );
 }

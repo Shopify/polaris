@@ -1198,10 +1198,9 @@
   padding: var(--pc-button-slim-vertical-padding) var(--p-space-3);
 
   #{$se23} &:not(.iconOnly) {
-    padding-left: var(--p-space-2);
-    padding-right: var(--p-space-2);
+    padding: var(--p-space-1) var(--p-space-2);
+    min-height: var(--p-font-line-height-3);
   }
-
 }
 
 .sizeLarge {
