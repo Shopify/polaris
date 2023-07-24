@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {RiskMinor} from '@shopify/polaris-icons';
+import {CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
@@ -129,7 +129,7 @@ export function ContextualSaveBar({
         <div className={contentsClassName}>
           {polarisSummerEditions2023 ? (
             <div className={styles.MessageContainer}>
-              <Icon source={RiskMinor} color="warning" />
+              <Icon source={CircleAlertMajor} />
               {message && (
                 <Text as="h2" variant="headingMd" color="text-inverse" truncate>
                   {message}
