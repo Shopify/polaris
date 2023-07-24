@@ -59,6 +59,7 @@ export function Breadcrumbs({backAction}: BreadcrumbsProps) {
     <Button
       key={content}
       url={'url' in backAction ? backAction.url : undefined}
+      onClick={'onAction' in backAction ? backAction.onAction : undefined}
       onPointerDown={handleMouseUpByBlurring}
       aria-label={backAction.accessibilityLabel}
       icon={ArrowLeftMinor}
