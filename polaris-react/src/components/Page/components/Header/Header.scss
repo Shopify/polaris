@@ -128,7 +128,7 @@ $action-menu-rollup-computed-width: 40px;
     margin-left: calc(
       var(--p-space-5) * 2 + var(--p-space-2) + var(--p-space-1)
     );
-
+    // Because of this line, we need an additional #{$se23} & specificity buster for .noBreadcrumbs below.
     #{$se23} & {
       margin-left: calc(var(--p-space-5) + var(--p-space-2) + var(--p-space-1));
     }
@@ -136,6 +136,11 @@ $action-menu-rollup-computed-width: 40px;
 
   .noBreadcrumbs & {
     margin-left: 0;
+    // se23 override -- specificity buster for the above margin-left calculation
+    // see https://github.com/Shopify/polaris-summer-editions/issues/918
+    #{$se23} & {
+      margin-left: 0;
+    }
   }
 }
 
