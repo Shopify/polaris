@@ -149,6 +149,11 @@ $sidebar-breakpoint: 1200px;
   width: 100%;
   height: $top-bar-height;
 
+  #{$se23} {
+    z-index: var(--p-z-index-10);
+  }
+
+
   @media print {
     // stylelint-disable-next-line declaration-no-important -- Enforce print styles
     display: none !important;
