@@ -581,32 +581,42 @@ export function Destructive() {
 
 export function Micro() {
   return (
-    <>
-      <Button size="micro">Save</Button>
-    </>
-  );
-}
-
-export function Slim() {
-  return (
     <HorizontalStack gap="4" blockAlign="center">
       <div>
         <HorizontalStack gap="4">
-          <Button size="slim">Label</Button>
-          <Button primary size="slim">
+          <Button size="micro">Label</Button>
+          <Button primary size="micro">
             Label
           </Button>
-          <Button destructive size="slim">
+          <Button destructive size="micro">
             Label
           </Button>
-          <Button plain size="slim">
+          <Button plain size="micro">
             Label
           </Button>
         </HorizontalStack>
       </div>
       <div>
-        <Button size="slim" accessibilityLabel="Edit" icon={EditMajor} />
+        <Button size="micro" accessibilityLabel="Edit" icon={EditMajor} />
       </div>
+    </HorizontalStack>
+  );
+}
+
+export function Slim() {
+  return (
+    <HorizontalStack gap="5">
+      <Button size="slim">Label</Button>
+      <Button primary size="slim">
+        Label
+      </Button>
+      <Button destructive size="slim">
+        Label
+      </Button>
+      <Button plain size="slim">
+        Label
+      </Button>
+      <Button size="slim" accessibilityLabel="Edit" icon={EditMajor} />
     </HorizontalStack>
   );
 }
