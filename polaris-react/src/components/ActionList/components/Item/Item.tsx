@@ -38,6 +38,7 @@ export function Item({
   truncate,
   active,
   role,
+  indent,
 }: ItemProps) {
   const {polarisSummerEditions2023} = useFeatures();
 
@@ -46,6 +47,7 @@ export function Item({
     disabled && styles.disabled,
     destructive && styles.destructive,
     active && styles.active,
+    indent && styles.indented,
   );
 
   let prefixMarkup: React.ReactNode | null = null;

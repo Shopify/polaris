@@ -166,6 +166,20 @@
       }
     }
   }
+
+  &.indented {
+    position: relative;
+    margin-left: var(--p-space-3);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      border-left: var(--p-border-width-1) solid var(--p-color-border);
+    }
+  }
 }
 
 .Prefix {

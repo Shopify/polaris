@@ -1,7 +1,13 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
-import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+import {
+  ArrowLeftMinor,
+  QuestionMarkMajor,
+  ResetMinor,
+  SearchMinor,
+  TickMinor,
+} from '@shopify/polaris-icons';
 
 import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
@@ -230,6 +236,71 @@ export function WithMessage(_, context) {
         action: {content: 'Action content', onClick: () => {}},
       }}
       se23={context.globals.polarisSummerEditions2023}
+    />
+  );
+}
+
+export function WithUserMenu() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      id: 'Stores',
+      title: <Text as="p">Stores</Text>,
+      items: [
+        {
+          content: 'Jaded Pixel',
+          prefix: (
+            <Avatar size="extraSmall" shape="square" name="Jaded Pixel" />
+          ),
+          truncate: true,
+          suffix: <Icon source={TickMinor} />,
+          url: '#',
+          indent: true,
+        },
+        {
+          content: 'Jaded Pixel 2.0',
+          prefix: (
+            <Avatar size="extraSmall" shape="square" name="Jaded Pixel 2.0" />
+          ),
+          truncate: true,
+          url: '#',
+          indent: true,
+        },
+        {
+          id: 'viewAllStores',
+          content: 'View all 8 stores',
+          prefix: <Icon source={SearchMinor} />,
+          url: '#',
+          indent: true,
+        },
+        {
+          id: 'otherStores',
+          content: 'Switch Organization',
+          prefix: <Icon source={ResetMinor} />,
+          url: '#',
+        },
+      ],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+    {
+      items: [{content: 'Help Center'}],
+    },
+    {
+      items: [{content: 'Keyboard shortcuts'}],
+    },
+    {
+      title: 'Dharma Johnson',
+      items: [{content: 'Manage account'}, {content: 'Log out'}],
+    },
+  ];
+
+  return (
+    <TopBarWrapper
+      userActions={userActions}
+      name="Xquenda Andreev"
+      detail="Hem Canada"
+      initials="XA"
     />
   );
 }
