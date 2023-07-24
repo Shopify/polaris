@@ -9,6 +9,7 @@ import type {
 } from '../../../../types';
 import {useFeatures} from '../../../../utilities/features';
 import {HorizontalStack} from '../../../HorizontalStack';
+import {VerticalStack} from '../../../VerticalStack';
 
 export interface SectionProps {
   /** Section of action items */
@@ -119,13 +120,17 @@ export function Section({
     <>
       {titleMarkup}
       <Box
-        as="ul"
+        as={polarisSummerEditions2023 ? 'div' : 'ul'}
         padding={polarisSummerEditions2023 ? '1_5-experimental' : '2'}
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         {...(sectionRole && {role: sectionRole})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        {actionMarkup}
+        {polarisSummerEditions2023 ? (
+          <VerticalStack gap="1">{actionMarkup}</VerticalStack>
+        ) : (
+          actionMarkup
+        )}
       </Box>
     </>
   );
