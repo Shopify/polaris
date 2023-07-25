@@ -2,8 +2,10 @@
 
 .Item {
   // stylelint-disable -- Polaris component custom properties
-  --pc-action-list-image-size: 20px;
   --pc-action-list-item-min-height: var(--p-space-10);
+  &.default {
+    --pc-action-list-image-size: 20px;
+  }
   --pc-action-list-item-vertical-padding: calc(
     (var(--pc-action-list-item-min-height) - var(--p-font-line-height-2)) / 2
   );
@@ -183,6 +185,12 @@
       border-left: var(--p-border-width-1) solid var(--p-color-border);
       margin-left: calc(var(--p-space-1_5-experimental) * -1);
     }
+  }
+
+  .menu {
+    // stylelint-disable -- reset custom properties
+    --pc-action-list-image-size: 24px;
+    // stylelint-enable
   }
 }
 

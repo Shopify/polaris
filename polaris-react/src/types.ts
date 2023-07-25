@@ -212,8 +212,8 @@ export interface ActionListItemDescriptor
   truncate?: boolean;
   /** Whether the action is active or not */
   active?: boolean;
-  /** Whether to indent the item or not */
-  indent?: boolean;
+  /** The item variations */
+  variant?: 'default' | 'menu' | 'indented';
   /** Defines a role for the action */
   role?: string;
 }
