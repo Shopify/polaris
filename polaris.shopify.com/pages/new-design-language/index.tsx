@@ -2,27 +2,27 @@ import type {GetStaticProps} from 'next';
 import fs from 'fs';
 import path from 'path';
 import Longform from '../../src/components/Longform';
-// import Markdown from '../../src/components/Markdown';
+import Markdown from '../../src/components/Markdown';
 import Page from '../../src/components/Page';
 import PageMeta from '../../src/components/PageMeta';
 import {MarkdownFile} from '../../src/types';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 
-export interface ContentProps {
+interface ContentProps {
   title: string;
   description: string;
   content: string;
 }
 
-const NewDesignLanguage = ({/*title, description, content*/}: ContentProps) => {
+const NewDesignLanguage = (props: ContentProps) => {
   return (
     <>
-      <PageMeta description={/*description*/''} />
+      <PageMeta description={props.description} />
       <Page isContentPage>
         <Longform>
-          {/*<h1>{title}</h1>
-          <p>{description}</p>
-          <Markdown>{content}</Markdown>*/}
+          <h1>{props.title}</h1>
+          <Markdown>{props.description}</Markdown>
+          <Markdown>{props.content}</Markdown>
         </Longform>
       </Page>
     </>
