@@ -40,6 +40,7 @@
       inset -1px 0px 0px rgba(255, 255, 255, 0.25);
     --pc-button-large-min-height: 32px;
     --pc-button-large-vertical-padding: var(--p-space-2);
+    --pc-button-micro-min-height: var(--p-font-line-height-3);
 
     box-shadow: var(--pc-button-shadow);
     transition: background-color 75ms var(--p-motion-ease-out),
@@ -1181,9 +1182,10 @@
     line-height: var(--p-font-line-height-2);
   }
 
-  #{$se23} &:not(.iconOnly) {
+  #{$se23} & {
     padding: var(--p-space-1) var(--p-space-2);
-    min-height: var(--p-font-line-height-3);
+    // stylelint-disable-next-line -- custom property
+    min-height: var(--pc-button-micro-min-height);
 
     // stylelint-disable-next-line -- se23 override
     .Content {
@@ -1199,9 +1201,10 @@
       line-height: var(--p-font-line-height-1);
     }
 
-    #{$se23} &:not(.iconOnly) {
+    #{$se23} & {
       padding: var(--p-space-1) var(--p-space-2);
-      min-height: var(--p-font-line-height-3);
+      // stylelint-disable-next-line -- custom property
+      min-height: var(--pc-button-micro-min-height);
     }
   }
 }

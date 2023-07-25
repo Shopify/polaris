@@ -581,24 +581,18 @@ export function Destructive() {
 
 export function Micro() {
   return (
-    <HorizontalStack gap="4" blockAlign="center">
-      <div>
-        <HorizontalStack gap="4">
-          <Button size="micro">Label</Button>
-          <Button primary size="micro">
-            Label
-          </Button>
-          <Button destructive size="micro">
-            Label
-          </Button>
-          <Button plain size="micro">
-            Label
-          </Button>
-        </HorizontalStack>
-      </div>
-      <div>
-        <Button size="micro" accessibilityLabel="Edit" icon={EditMajor} />
-      </div>
+    <HorizontalStack gap="5">
+      <Button size="micro">Label</Button>
+      <Button primary size="micro">
+        Label
+      </Button>
+      <Button destructive size="micro">
+        Label
+      </Button>
+      <Button plain size="micro">
+        Label
+      </Button>
+      <Button size="micro" accessibilityLabel="Edit" icon={EditMajor} />
     </HorizontalStack>
   );
 }
