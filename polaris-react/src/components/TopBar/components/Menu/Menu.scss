@@ -125,6 +125,7 @@ $activator-variables: (
   // stylelint-disable -- Polaris component custom properties temporary override
   [class*='Polaris-ActionList__Item'] {
     --pc-action-list-item-min-height: var(--p-space-10) - var(--p-space-1);
+    --pc-action-list-image-size: 24px;
     // stylelint-enable
   }
 }

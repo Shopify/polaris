@@ -99,7 +99,9 @@ export function Section({
           </Text>
         </Box>
       ) : (
-        <Box padding="2">{section.title}</Box>
+        <Box padding="2" paddingInlineEnd="1_5-experimental">
+          {section.title}
+        </Box>
       );
   }
 
