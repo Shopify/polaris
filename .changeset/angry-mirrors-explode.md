@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added a prop to indent items to ActionList
+Added an `indent` prop to ActionList for applying left indentation space and border to items
