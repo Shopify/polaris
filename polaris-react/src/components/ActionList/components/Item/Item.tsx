@@ -49,7 +49,7 @@ export function Item({
     active && styles.active,
     variant === 'default' && styles.default,
     variant === 'indented' && styles.indented,
-    variant === 'menu' && styles.expanded,
+    variant === 'menu' && styles.menu,
   );
 
   let prefixMarkup: React.ReactNode | null = null;

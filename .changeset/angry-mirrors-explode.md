@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added an `indent` prop to ActionList for applying left indentation space and border to items
+Added a `variant` prop to ActionList for applying avatar size and left indentation space and border to items
