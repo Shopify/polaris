@@ -116,6 +116,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       showMobileNavigation = false,
       skipToContentTarget,
       i18n,
+      sidebar,
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
     const navClassName = classNames(
@@ -234,6 +235,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       styles.Frame,
       navigation && styles.hasNav,
       topBar && styles.hasTopBar,
+      sidebar && styles.hasSidebar,
     );
 
     const contextualSaveBarMarkup = (
