@@ -14,15 +14,15 @@ interface ContentProps {
   content: string;
 }
 
-const NewDesignLanguage = ({title, description, content}: ContentProps) => {
+const NewDesignLanguage = (props: ContentProps) => {
   return (
     <>
-      <PageMeta description={description} />
+      <PageMeta description={props.description} />
       <Page isContentPage>
         <Longform>
-          <h1>{title}</h1>
-          <Markdown>{description}</Markdown>
-          <Markdown>{content}</Markdown>
+          <h1>{props.title}</h1>
+          <Markdown>{props.description}</Markdown>
+          <Markdown>{props.content}</Markdown>
         </Longform>
       </Page>
     </>
