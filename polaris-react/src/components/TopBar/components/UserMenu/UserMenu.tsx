@@ -78,6 +78,7 @@ export function UserMenu({
           size={polarisSummerEditions2023 ? 'medium' : 'small'}
           initials={initials && initials.replace(' ', '')}
           source={avatar}
+          name={name}
         />
       </MessageIndicator>
     </>
