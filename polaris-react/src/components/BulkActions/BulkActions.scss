@@ -95,10 +95,11 @@ $bulk-actions-button-stacking-order: (
 
     #{$se23} & {
       background-color: var(--p-color-bg-strong);
-      // box-shadow: none;
+      box-shadow: none;
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:hover {
         background-color: var(--p-color-bg-strong-hover);
+        box-shadow: none;
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:focus-visible,
