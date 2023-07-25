@@ -150,7 +150,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
     return {
       ...features,
-      polarisSummerEditions2023: features?.polarisSummerEditions2023 ?? false,
+      polarisSummerEditions2023: features?.polarisSummerEditions2023 ?? true,
       polarisSummerEditions2023ShadowBevelOptOut:
         features?.polarisSummerEditions2023ShadowBevelOptOut ?? false,
     };
