@@ -8,6 +8,7 @@ description: |
   <br/>You can access the beta now or simply wait for the stable release in September
   <br/>_(be sure to read '[what might break](#what-might-break-before-during-beta)' below)_.
 hideFromNav: true
+noIndex: true
 keywords:
   - new design language
   - uplift
@@ -32,7 +33,7 @@ Refer to the table below for the timeline of each milestone:
 | Incremental beta releases                                         | `v12.0.0-beta2`<br/>`v12.0.0-beta3`<br/>etc | July – September |
 | Polaris release with stable API, robust documentation and tooling | `v12.0.0`                                   | End of September |
 
-## What might break before during beta
+## What might break during beta
 
 We are **actively developing** this release and will continue to make breaking changes to the beta release until September.
 Our main areas of focus, listed below, will undergo **significant changes**.
