@@ -1,13 +1,19 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
-  "changelog": ["@changesets/changelog-github", {"repo": "Shopify/polaris"}],
+  "changelog": false,
   "commit": false,
   "fixed": [],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [],
+  "ignore": [
+    "@shopify/polaris-cli",
+    "@shopify/polaris-codemods",
+    "@shopify/polaris-migrator",
+    "polaris.shopify.com",
+    "polaris-for-vscode"
+  ],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "updateInternalDependents": "always"
   }
