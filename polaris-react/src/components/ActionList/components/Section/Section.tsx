@@ -129,7 +129,9 @@ export function Section({
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
         {polarisSummerEditions2023 ? (
-          <VerticalStack gap="1">{actionMarkup}</VerticalStack>
+          <VerticalStack gap="1" as="ul">
+            {actionMarkup}
+          </VerticalStack>
         ) : (
           actionMarkup
         )}
