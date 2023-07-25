@@ -29,9 +29,9 @@ Refer to the table below for the timeline of each milestone:
 
 | Milestone                                                         | Version                                     | Date             |
 | ----------------------------------------------------------------- | ------------------------------------------- | ---------------- |
-| Initial beta release, update to early adopters who want to opt in | `v12.0.0-beta1`                             | July 26          |
-| Incremental beta releases                                         | `v12.0.0-beta2`<br/>`v12.0.0-beta3`<br/>etc | July – September |
-| Polaris release with stable API, robust documentation and tooling | `v12.0.0`                                   | End of September |
+| Initial beta release, update to early adopters who want to opt in | `12.0.0-beta.0`                             | July 26          |
+| Incremental beta releases                                         | `12.0.0-beta.1`<br/>`12.0.0-beta.2`<br/>etc | July – September |
+| Polaris release with stable API, robust documentation and tooling | `12.0.0`                                    | End of September |
 
 ## What might break during beta
 
