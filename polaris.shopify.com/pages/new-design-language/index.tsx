@@ -21,7 +21,8 @@ const NewDesignLanguage = ({title, description, content}: ContentProps) => {
       <Page isContentPage>
         <Longform>
           <h1>{title}</h1>
-          <Markdown>{`${description}\n\n${content}`}</Markdown>
+          <p>{description}</p>
+          <Markdown>{content}</Markdown>
         </Longform>
       </Page>
     </>
