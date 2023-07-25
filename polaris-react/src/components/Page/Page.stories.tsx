@@ -173,6 +173,26 @@ export function WithToolTipAction() {
   );
 }
 
+export function WithBackActionOnAction() {
+  return (
+    <Page
+      backAction={{
+        content: 'Settings',
+        onAction: () => {
+          // eslint-disable-next-line no-alert
+          alert('Clicked back button');
+        },
+      }}
+      title="General"
+      divider
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
 export function WithSubtitle() {
   return (
     <Page
@@ -192,6 +212,21 @@ export function WithSubtitleAndAdditionalMetadata() {
   return (
     <Page
       backAction={{content: 'Products', url: '#'}}
+      title="Invoice"
+      subtitle="Statement period: May 3, 2019 to June 2, 2019"
+      additionalMetadata="Net payment due: Within 60 days of receipt"
+      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithSubtitleAndAdditionalMetadataAndNoBackAction() {
+  return (
+    <Page
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       additionalMetadata="Net payment due: Within 60 days of receipt"

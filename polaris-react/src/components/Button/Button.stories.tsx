@@ -581,14 +581,38 @@ export function Destructive() {
 
 export function Micro() {
   return (
-    <>
-      <Button size="micro">Save</Button>
-    </>
+    <HorizontalStack gap="5">
+      <Button size="micro">Label</Button>
+      <Button primary size="micro">
+        Label
+      </Button>
+      <Button destructive size="micro">
+        Label
+      </Button>
+      <Button plain size="micro">
+        Label
+      </Button>
+      <Button size="micro" accessibilityLabel="Edit" icon={EditMajor} />
+    </HorizontalStack>
   );
 }
 
 export function Slim() {
-  return <Button size="slim">Save variant</Button>;
+  return (
+    <HorizontalStack gap="5">
+      <Button size="slim">Label</Button>
+      <Button primary size="slim">
+        Label
+      </Button>
+      <Button destructive size="slim">
+        Label
+      </Button>
+      <Button plain size="slim">
+        Label
+      </Button>
+      <Button size="slim" accessibilityLabel="Edit" icon={EditMajor} />
+    </HorizontalStack>
+  );
 }
 
 export function Large() {

@@ -16,7 +16,6 @@ import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
 import {FrameContext} from '../../utilities/frame';
-import {FeaturesContext} from '../../utilities/features';
 import type {
   ContextualSaveBarProps,
   ToastID,
@@ -30,8 +29,6 @@ import {
   CSSAnimation,
 } from './components';
 import styles from './Frame.scss';
-
-const CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP = 56;
 
 export interface FrameProps {
   /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */
@@ -79,9 +76,6 @@ const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
 class FrameInner extends PureComponent<CombinedProps, State> {
-  static contextType = FeaturesContext;
-  context!: React.ContextType<typeof FeaturesContext>;
-
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
@@ -103,44 +97,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     this.setOffset();
   }
 
-  componentDidUpdate(prevProps: FrameProps, prevState: State) {
+  componentDidUpdate(prevProps: FrameProps) {
     if (this.props.globalRibbon !== prevProps.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
     this.setOffset();
-
-    if (this.context?.polarisSummerEditions2023) {
-      if (
-        !prevState.showContextualSaveBar &&
-        this.state.showContextualSaveBar
-      ) {
-        const saveDisabled =
-          this.contextualSaveBar?.saveAction?.disabled ?? false;
-        const currentScrollPosition =
-          window.scrollY || document.documentElement.scrollTop;
-
-        if (!saveDisabled || currentScrollPosition !== 0) {
-          window.scrollTo({
-            top: currentScrollPosition + CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP,
-            behavior: 'auto',
-          });
-        }
-      } else if (
-        prevState.showContextualSaveBar &&
-        !this.state.showContextualSaveBar
-      ) {
-        const currentScrollPosition =
-          window.scrollY || document.documentElement.scrollTop;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        if (currentScrollPosition + windowHeight < documentHeight) {
-          window.scrollTo({
-            top: currentScrollPosition - CONTEXTUAL_SAVE_SCROLL_HEIGHT_FROM_TOP,
-            behavior: 'auto',
-          });
-        }
-      }
-    }
   }
 
   render() {
@@ -275,20 +236,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       topBar && styles.hasTopBar,
     );
 
-    const contentClassName = classNames(
-      styles.Content,
-      showContextualSaveBar && styles.contentHasSaveBar,
-      this.props.sidebar && styles.contentHasSideBar,
-    );
-
-    const contextualSaveBarClassName = classNames(
-      styles.ContextualSaveBar,
-      this.props.sidebar && styles.hasSideBar,
-    );
-
-    const contextualSaveBarMarkup = this.context?.polarisSummerEditions2023 ? (
-      <></>
-    ) : (
+    const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
         className={styles.ContextualSaveBar}
@@ -296,19 +244,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>
-    );
-
-    const experimentalContextualSaveBarMarkup = this.context
-      ?.polarisSummerEditions2023 ? (
-      <CSSAnimation
-        in={showContextualSaveBar}
-        className={contextualSaveBarClassName}
-        type="fade"
-      >
-        <ContextualSaveBar {...this.contextualSaveBar} />
-      </CSSAnimation>
-    ) : (
-      <></>
     );
 
     const navigationOverlayMarkup =
@@ -350,10 +285,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
-            <div className={contentClassName}>
-              {experimentalContextualSaveBarMarkup}
-              {children}
-            </div>
+            <div className={styles.Content}>{children}</div>
           </main>
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}

@@ -157,6 +157,10 @@ $nav-max-width: 360px;
 
   #{$se23} & {
     padding: 0 var(--p-space-3);
+
+    --secondary-actions-on-hover-background-color: var(
+      --p-color-bg-subdued-hover
+    );
   }
 }
 
@@ -176,10 +180,12 @@ $nav-max-width: 360px;
 
     &:is(:hover, :focus-visible) {
       background: var(--p-color-bg-subdued-hover);
+    }
 
-      // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
-      &.ItemInnerWrapper-display-actions-on-hover {
-        @media #{$p-breakpoints-md-up} {
+    // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
+    &.ItemInnerWrapper-display-actions-on-hover {
+      @media #{$p-breakpoints-md-up} {
+        &:is(:hover, :focus-visible) {
           .SecondaryActions {
             background: var(--secondary-actions-on-hover-background-color);
 
@@ -191,6 +197,12 @@ $nav-max-width: 360px;
                 var(--p-color-bg-subdued-hover) var(--p-space-8)
               );
             }
+          }
+        }
+
+        &:is(:active) {
+          .SecondaryActions {
+            background: var(--p-color-bg-app-selected);
           }
         }
       }
@@ -224,8 +236,6 @@ $nav-max-width: 360px;
   background-color: var(--p-color-bg-app-selected);
 
   #{$se23} & {
-    background-color: var(--p-color-bg-app-selected);
-
     // stylelint-disable-next-line selector-max-combinators -- Needed for precision on text
     .Text {
       color: var(--p-color-text);
@@ -233,7 +243,7 @@ $nav-max-width: 360px;
       letter-spacing: var(--pc-navigation-letter-spacing-medium);
     }
 
-    &:is(:hover, :focus-visible) {
+    &:is(:hover, :focus-visible, :focus-within) {
       background: var(--p-color-bg-app-selected);
 
       // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
@@ -264,6 +274,12 @@ $nav-max-width: 360px;
   .SecondaryActions {
     background: var(--p-color-bg-app-selected);
 
+    #{$se23} & {
+      background: var(--p-color-bg-app-selected);
+      border-top-right-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-2);
+    }
+
     &::before {
       // stylelint-disable-next-line -- required for fade effect
       background: linear-gradient(
@@ -271,6 +287,15 @@ $nav-max-width: 360px;
         rgba(0, 0, 0, 0),
         var(--p-color-bg-app-selected) var(--p-space-8)
       );
+
+      #{$se23} & {
+        // stylelint-disable-next-line -- required for fade effect
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0),
+          var(--p-color-bg-app-selected) var(--p-space-8)
+        );
+      }
     }
   }
 }
@@ -547,10 +572,11 @@ $nav-max-width: 360px;
 
       #{$se23} & {
         z-index: var(--p-z-index-2);
-        background: var(--secondary-actions-on-hover-background-color);
+        background: var(--p-color-bg-subdued-hover);
         padding: 0 var(--p-space-05);
         margin-right: 0;
-        border-radius: var(--p-border-radius-2);
+        border-top-right-radius: var(--p-border-radius-2);
+        border-bottom-right-radius: var(--p-border-radius-2);
         transition: none;
       }
 
@@ -570,7 +596,12 @@ $nav-max-width: 360px;
         );
 
         #{$se23} & {
-          background: transparent;
+          // stylelint-disable-next-line -- required for fade effect
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0),
+            var(--p-color-bg-subdued-hover) var(--p-space-8)
+          );
         }
       }
     }
@@ -580,6 +611,15 @@ $nav-max-width: 360px;
       .SecondaryActions {
         visibility: visible;
         opacity: 1;
+      }
+    }
+
+    &:active {
+      #{$se23} & {
+        // stylelint-disable-next-line -- se23
+        .SecondaryActions {
+          background-color: var(--p-color-bg-app-selected);
+        }
       }
     }
   }
@@ -690,7 +730,7 @@ $nav-max-width: 360px;
       padding-left: calc(var(--p-space-8) + var(--p-space-1));
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
-      &:is(:hover, :focus-visible) {
+      &:is(:hover, :focus-visible, :focus-within) {
         background: var(--p-color-bg-subdued-active);
         color: var(--p-color-text-primary);
       }
@@ -783,7 +823,7 @@ $nav-max-width: 360px;
       }
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
-      &:is(:hover, :focus-visible) {
+      &:is(:hover, :focus-visible, :focus-within) {
         background: var(--p-color-bg-app-selected);
         color: var(--p-color-text-primary);
       }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.7.0
+
+### Minor Changes
+
+- [#9810](https://github.com/Shopify/polaris/pull/9810) [`6bb284d11`](https://github.com/Shopify/polaris/commit/6bb284d11f100b5813c27ded6cc9779eb7fc9a49) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated FirstViewMajor icon
+
 ## 7.6.0
 
 ### Minor Changes
