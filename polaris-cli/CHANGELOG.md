@@ -1,5 +1,7 @@
 # @shopify/polaris-cli
 
+## 0.2.26-beta.0
+
 ## 0.2.25
 
 ## 0.2.24

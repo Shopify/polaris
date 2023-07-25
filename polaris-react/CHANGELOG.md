@@ -1,5 +1,19 @@
 # Changelog
 
+## 12.0.0-beta.0
+
+### Major Changes
+
+- [`1105368bf`](https://github.com/Shopify/polaris/commit/1105368bf91f3f177200f7faa01bb8b6f7bdf04f) Thanks [@samrose3](https://github.com/samrose3)! - Enabled the Summer Editions 2023 feature flag by default
+
+### Patch Changes
+
+- [#9773](https://github.com/Shopify/polaris/pull/9773) [`a5f68c9a5`](https://github.com/Shopify/polaris/commit/a5f68c9a554a879c41c57f642f2cd927bc47d996) Thanks [@jesstelford](https://github.com/jesstelford)! - [Scrollable] shadow overlays scrollable content correctly.
+
+* [#9764](https://github.com/Shopify/polaris/pull/9764) [`d3315de2e`](https://github.com/Shopify/polaris/commit/d3315de2e24ca2d17bdcaf402530e1fc472e3c79) Thanks [@andy-schneidr](https://github.com/andy-schneidr)! - Wrap SkeletonBodyText lines in a div (width 100%)
+
+- [#9828](https://github.com/Shopify/polaris/pull/9828) [`80c87bb1a`](https://github.com/Shopify/polaris/commit/80c87bb1a878eb29f917956572f8a645612a8343) Thanks [@felipeleusin](https://github.com/felipeleusin)! - [Frame] Applies margin to Content when using sidebar
+
 ## 11.9.1
 
 ### Patch Changes

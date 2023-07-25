@@ -12,5 +12,10 @@
     "polaris.shopify.com": "0.56.3",
     "@shopify/stylelint-polaris": "13.0.8"
   },
-  "changesets": []
+  "changesets": [
+    "new-maps-own",
+    "nice-zoos-vanish",
+    "sixty-ties-lick",
+    "twenty-candles-bathe"
+  ]
 }
