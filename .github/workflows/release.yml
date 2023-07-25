@@ -40,7 +40,6 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          title: 'Version Packages (beta)'
           version: yarn version-packages
           publish: yarn release
         env:
