@@ -212,6 +212,8 @@ export interface ActionListItemDescriptor
   truncate?: boolean;
   /** Whether the action is active or not */
   active?: boolean;
+  /** The item variations */
+  variant?: 'default' | 'menu' | 'indented';
   /** Defines a role for the action */
   role?: string;
 }
