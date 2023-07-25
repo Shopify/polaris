@@ -1,0 +1,16 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@shopify/polaris-cli": "0.2.25",
+    "@shopify/polaris-codemods": "0.1.11",
+    "polaris-for-vscode": "0.7.0",
+    "@shopify/polaris-icons": "7.7.0",
+    "@shopify/polaris-migrator": "0.19.8",
+    "@shopify/polaris": "11.9.1",
+    "@shopify/polaris-tokens": "7.5.2",
+    "polaris.shopify.com": "0.56.3",
+    "@shopify/stylelint-polaris": "13.0.8"
+  },
+  "changesets": []
+}
