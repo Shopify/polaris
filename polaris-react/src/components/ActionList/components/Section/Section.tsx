@@ -8,6 +8,8 @@ import type {
   ActionListSection,
 } from '../../../../types';
 import {useFeatures} from '../../../../utilities/features';
+import {HorizontalStack} from '../../../HorizontalStack';
+import {VerticalStack} from '../../../VerticalStack';
 
 export interface SectionProps {
   /** Section of action items */
@@ -43,19 +45,27 @@ export function Section({
   };
   const actionMarkup = section.items.map(
     ({content, helpText, onAction, ...item}, index) => {
+      const itemMarkup = (
+        <Item
+          content={content}
+          helpText={helpText}
+          role={actionRole}
+          onAction={handleAction(onAction)}
+          {...item}
+        />
+      );
+
       return (
         <Box
           as="li"
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
         >
-          <Item
-            content={content}
-            helpText={helpText}
-            role={actionRole}
-            onAction={handleAction(onAction)}
-            {...item}
-          />
+          {polarisSummerEditions2023 ? (
+            <HorizontalStack wrap={false}>{itemMarkup}</HorizontalStack>
+          ) : (
+            itemMarkup
+          )}
         </Box>
       );
     },
@@ -89,7 +99,9 @@ export function Section({
           </Text>
         </Box>
       ) : (
-        <Box padding="2">{section.title}</Box>
+        <Box padding="2" paddingInlineEnd="1_5-experimental">
+          {section.title}
+        </Box>
       );
   }
 
@@ -110,13 +122,19 @@ export function Section({
     <>
       {titleMarkup}
       <Box
-        as="ul"
+        as={polarisSummerEditions2023 ? 'div' : 'ul'}
         padding={polarisSummerEditions2023 ? '1_5-experimental' : '2'}
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         {...(sectionRole && {role: sectionRole})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        {actionMarkup}
+        {polarisSummerEditions2023 ? (
+          <VerticalStack gap="1" as="ul">
+            {actionMarkup}
+          </VerticalStack>
+        ) : (
+          actionMarkup
+        )}
       </Box>
     </>
   );
