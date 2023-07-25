@@ -8,7 +8,7 @@ import PageMeta from '../../src/components/PageMeta';
 import {MarkdownFile} from '../../src/types';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 
-export interface ContentProps {
+interface ContentProps {
   title: string;
   description: string;
   content: string;
@@ -21,7 +21,7 @@ const NewDesignLanguage = ({title, description, content}: ContentProps) => {
       <Page isContentPage>
         <Longform>
           <h1>{title}</h1>
-          <p>{description}</p>
+          <Markdown>{description}</Markdown>
           <Markdown>{content}</Markdown>
         </Longform>
       </Page>
