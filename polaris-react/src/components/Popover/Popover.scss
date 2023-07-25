@@ -62,8 +62,7 @@ $vertical-motion-offset: -5px;
 
 .ContentContainer {
   position: relative;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   background: var(--p-color-bg);
   border-radius: var(--p-space-2);
 
