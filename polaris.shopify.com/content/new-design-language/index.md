@@ -1,13 +1,19 @@
 ---
-title: Beta access to our new design language
+title: Beta access to Shopify's new design language
 description: |
-  Polaris is developing version 12 to match Shopify's new design language.
-  This update will seamlessly update your apps design to about 70% and assist you in updating custom components using our tools and tokens.
-  You can access the early beta release now if you want to update immediately instead of waiting for the stable release in September.
+  Polaris is developing version 12 for release in September.
+  To help apps match Shopify's new design language, this version is available in an early beta.
+  This beta will automatically update out-of-the-box/mainline Polaris components, with some additional work to update your custom components to seamlessly match Shopify's design.
+  The steps below will assist you in making these updates using our tools and tokens.
+  <br/>You can access the beta now or simply wait for the stable release in September
+  <br/>_(be sure to read '[what might break](#what-might-break-before-during-beta)' below)_.
 hideFromNav: true
 keywords:
   - new design language
   - uplift
+  - beta
+  - beta version
+  - beta release
   - new design
   - black button
   - How to get the new design language
@@ -30,7 +36,7 @@ Refer to the table below for the timeline of each milestone:
 
 We are **actively developing** this release and will continue to make breaking changes to the beta release until September.
 Our main areas of focus, listed below, will undergo **significant changes**.
-Additionally, we may identify other areas that require modifications to ensure the best possible stable release which are not mentioned yet.
+To ensure the best possible version 12, Polaris may also make breaking changes to other areas not yet listed.
 
 Areas we are actively working on:
 
@@ -45,29 +51,43 @@ Areas we are actively working on:
 
 ## Still want to dive in early?
 
-We're excited about the new design language and understand if you're eager to start immediately despite the above mentioned trade-offs.
-The new design language introduces changes that may break your app implementations, particularly custom styling.
-You will need to review your app's UI and apply manual patch fixes.
+We're excited about the new design language and understand if you want to quickly see how your app will look (particularly if you're applying to be a Built for Shopify app).
+Be aware that this is a beta and introduces changes that may break your app implementations, particularly custom styling.
+You will need to review your app's UI and manually patch fixes.
+
+To install the beta version run the following command:
+
+```sh
+npm install @shopify/polaris@v12.0.0-beta1
+```
+
+Or if you prefer yarn, use the following command instead:
+
+```sh
+yarn add @shopify/polaris@v12.0.0-beta1
+```
 
 To assist you, we have prepared a collection of tips, documentation, and our own experience to help you on this early journey.
 
 ## Design philosophy
 
 - Hierarchy primarily through typography reduces cognitive load and makes the important content easier to find
-- Black and white color palette reduces noise and ensures color serves as communication instead of decoration
+- Using black and white reduces noise and ensures color is used for signifiers and affordances instead of as decoration instead of decoration
 - Increased density enables a fuller picture of the task at hand
 - Visual dimension clearly distinguishes layers of importance and interactive elements
 - Delightful, tactile interactivity makes taking action feel powerful and gratifying
 
-To see the new design language component by component, check out our [Storybook](https://storybook.polaris.shopify.com/). To turn the new design language on in Storybook:
-Addon panel (bottom) > `Feature flags` tab > Toggle `polarisSummerEditions2023`
+Read more about the design philosophy in the blog post [Uplifting Shopify Polaris](TODO).
+
+To see the new design language component by component, check out our [Storybook](https://storybook.polaris.shopify.com/). To turn the new design language on in Storybook go to:
+Addon panel (bottom) > `Feature flags` tab and Toggle `polarisSummerEditions2023`
 
 ## Common UI updates and fixes to consider after upgrading to the Polaris beta
 
 ### A new web font
 
-The new design language comes with a web font called [Inter via google fonts](https://fonts.google.com/specimen/Inter).
-The beta references this font but doesn't load it.
+The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
+The beta references this font but doesn't load it. This will come later.
 
 <!-- prettier-ignore -->
 ```html
@@ -76,7 +96,7 @@ The beta references this font but doesn't load it.
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
 ```
 
-#### Heading size
+### Heading size
 
 The [`LegacyCard`](https://polaris.shopify.com/components/layout-and-structure/legacy-card) now also enforces that `h1` and `h2` content is `headingSm` (`--p-font-size-80-experimental`).
 If you want to use custom heading sizes, please refactor [`LegacyCard`](https://polaris.shopify.com/components/layout-and-structure/legacy-card) to [`Card`](https://polaris.shopify.com/components/layout-and-structure/card).
@@ -96,7 +116,6 @@ If you must use a divider, use the [`Divider`](https://polaris.shopify.com/compo
 ### Buttons
 
 Primary buttons went from green to black in the new design language.
-If you need a green button, use the `primarySuccess` variant.
 
 ```jsx
 <Button primarySuccess>It's not easy being green</Button>
@@ -105,7 +124,7 @@ If you need a green button, use the `primarySuccess` variant.
 ### Buttons beside inputs
 
 Default buttons have decreased in height and no longer match the height of some inputs, namely [`TextField`](https://polaris.shopify.com/components/selection-and-input/text-field) and [`Select`](https://polaris.shopify.com/components/selection-and-input/select).
-This is fixed by using the `large` size variant of [`Button`](https://polaris.shopify.com/components/actions/button).
+To get a buttons matching the height of input fields, use the large size by using the `large` size variant of [`Button`](https://polaris.shopify.com/components/actions/button).
 
 ```diff
 - <TextField connectedRight={<Button icon={DeleteMajor} />} />
@@ -212,7 +231,6 @@ If you're using these tokens in stylesheets or as component props, they may need
 | Token name                                                 | Example usage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--p-color-bg-backdrop-experimental`                       | [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) timestamp background                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `--p-color-bg-primary-disabled-experimental`               | TODO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `--p-color-bg-secondary-experimental`                      | Filter [`Button`](https://polaris.shopify.com/components/actions/button) background                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `--p-color-bg-input-hover-experimental`                    | [`TextFields`](https://polaris.shopify.com/components/selection-and-input/text-field), [`Select`](https://polaris.shopify.com/components/selection-and-input/select), [`Checkbox`](https://polaris.shopify.com/components/selection-and-input/checkbox), and [`DropZone`](https://polaris.shopify.com/components/selection-and-input/drop-zone) hover state                                                                                                                                                                     |
 | `--p-color-bg-input-active-experimental`                   | [`TextFields`](https://polaris.shopify.com/components/selection-and-input/text-field), [`Select`](https://polaris.shopify.com/components/selection-and-input/select), and [`DropZone`](https://polaris.shopify.com/components/selection-and-input/drop-zone) active state                                                                                                                                                                                                                                                       |
@@ -226,10 +244,8 @@ If you're using these tokens in stylesheets or as component props, they may need
 | `--p-color-bg-transparent-primary-experimental'`           | [`Checkbox`](https://polaris.shopify.com/components/selection-and-input/checkbox) + [`RadioButton`](https://polaris.shopify.com/components/selection-and-input/radio-button) in a active, read only state                                                                                                                                                                                                                                                                                                                       |
 | `--p-color-bg-success-strong-hover-experimental`           | [`Button`](https://polaris.shopify.com/components/actions/button) primary success hover state                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `--p-color-bg-success-strong-active-experimental`          | [`Button`](https://polaris.shopify.com/components/actions/button) primary success active state                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `--p-color-bg-warning-subdued-experimental`                | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) in [`Card`](https://polaris.shopify.com/components/layout-and-structure/card) with warning status                                                                                                                                                                                                                                                                                                                                                 |
-| TODO                                                       | [`Badge`](https://polaris.shopify.com/components/feedback-indicators/badge) with warning status                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `--p-color-bg-warning-strong-experimental`                 | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) title with warning status                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| TODO                                                       | [`Badge`](https://polaris.shopify.com/components/feedback-indicators/badge) strong with warning status                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `--p-color-bg-warning-subdued-experimental`                | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) in [`Card`](https://polaris.shopify.com/components/layout-and-structure/card) with warning status, [`Badge`](https://polaris.shopify.com/components/feedback-indicators/badge) with warning status                                                                                                                                                                                                                                                |
+| `--p-color-bg-warning-strong-experimental`                 | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) title with warning status, [`Badge`](https://polaris.shopify.com/components/feedback-indicators/badge) strong with warning status                                                                                                                                                                                                                                                                                                                 |
 | `--p-color-border-input-active-experimental`               | Active [`TextFields`](https://polaris.shopify.com/components/selection-and-input/text-field), [`Select`](https://polaris.shopify.com/components/selection-and-input/select), [`RadioButton`](https://polaris.shopify.com/components/selection-and-input/radio-button), [`Checkbox`](https://polaris.shopify.com/components/selection-and-input/checkbox), [`DropZone`](https://polaris.shopify.com/components/selection-and-input/drop-zone)                                                                                    |
 | `--p-color-border-critical-strong-experimental`            | Error state for [`TextFields`](https://polaris.shopify.com/components/selection-and-input/text-field), [`Select`](https://polaris.shopify.com/components/selection-and-input/select), [`Checkbox`](https://polaris.shopify.com/components/selection-and-input/checkbox), [`DropZone`](https://polaris.shopify.com/components/selection-and-input/drop-zone)                                                                                                                                                                     |
 | `--p-color-text-warning-experimental`                      | [`Badge`](https://polaris.shopify.com/components/feedback-indicators/badge) and [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) with warning status                                                                                                                                                                                                                                                                                                                                               |
@@ -237,9 +253,7 @@ If you're using these tokens in stylesheets or as component props, they may need
 | `--p-color-icon-info-strong-experimental`                  | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) with info status                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `--p-color-icon-warning-strong-experimental`               | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) with warning status                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `--p-color-icon-success-strong-experimental`               | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) with success status                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `--p-color-icon-critical-strong-experimental`              | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) with critical status                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| TODO                                                       | [`Page`](https://polaris.shopify.com/components/layout-and-structure/page) secondary destructive actions                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| TODO                                                       | [`Button`](https://polaris.shopify.com/components/actions/button) destructive (default, plain, & plain icon only)                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `--p-color-icon-critical-strong-experimental`              | [`Banner`](https://polaris.shopify.com/components/feedback-indicators/banner) with critical status, [`Page`](https://polaris.shopify.com/components/layout-and-structure/page) secondary destructive actions, [`Button`](https://polaris.shopify.com/components/actions/button) destructive (default, plain, & plain icon only)                                                                                                                                                                                                 |
 | `--p-color-icon-critical-strong-hover-experimental`        | [`Button`](https://polaris.shopify.com/components/actions/button) destructive plain + plain icon only                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `--p-color-icon-critical-strong-active-experimental`       | [`Button`](https://polaris.shopify.com/components/actions/button) destructive plain + plain icon only                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `--p-color-avatar-background-experimental`                 | [`Avatar`](https://polaris.shopify.com/components/images-and-icons/avatar) default background color                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -260,9 +274,6 @@ If you're using these tokens in stylesheets or as component props, they may need
 | Token name                                            | Example usage                                                                                                    |
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `--p-shadow-bevel-experimental`                       | An add-on shadow effect commonly paired with `shadow-xs` through to `shadow-2xl`                                 |
-| `--p-shadow-card-sm-experimental`                     | TODO                                                                                                             |
-| `--p-shadow-card-md-experimental`                     | TODO                                                                                                             |
-| `--p-shadow-card-lg-experimental`                     | TODO                                                                                                             |
 | `--p-shadow-button-experimental`                      | Basic (default) [`Button`](https://polaris.shopify.com/components/actions/button) default state                  |
 | `--p-shadow-button-disabled-experimental`             | Basic (default) [`Button`](https://polaris.shopify.com/components/actions/button) disabled state                 |
 | `--p-shadow-button-primary-inset-experimental`        | TODO                                                                                                             |
