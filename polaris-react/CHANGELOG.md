@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.10.1
+
+### Patch Changes
+
+- [#9839](https://github.com/Shopify/polaris/pull/9839) [`34349e61f`](https://github.com/Shopify/polaris/commit/34349e61f970e9f387e8fc74a42e4f0fe41ab955) Thanks [@qt314](https://github.com/qt314)! - Fix banner bug
+
 ## 11.10.0
 
 ### Minor Changes
