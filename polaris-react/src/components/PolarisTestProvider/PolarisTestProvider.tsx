@@ -67,7 +67,7 @@ export function PolarisTestProvider({
 
   const featuresConfig = useMemo(
     () => ({
-      polarisSummerEditions2023: false,
+      polarisSummerEditions2023: true,
       ...features,
     }),
     [features],
