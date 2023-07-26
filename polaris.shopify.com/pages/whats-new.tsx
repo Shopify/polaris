@@ -51,6 +51,21 @@ export const getStaticProps: GetStaticProps<
     return {title, description, slug, imageUrl};
   });
 
+  // Adding links to the collection without sub-pages
+  posts.unshift({
+    title: 'Shopify Polaris v12 beta',
+    description:
+      'You can access the beta now or simply wait for the stable release in September.',
+    slug: 'https://ux.shopify.com/uplifting-shopify-polaris-7c54fc6564d9',
+    imageUrl: '/images/updates/uplift-beta@2x.png',
+  });
+  posts.unshift({
+    title: 'Uplifting Shopify Polaris',
+    description: 'The process of evolving a large scale design system.',
+    slug: '/new-design-language',
+    imageUrl: '/images/updates/uplift-blogpost@2x.png',
+  });
+
   return {props: {title, description, posts}};
 };
 
