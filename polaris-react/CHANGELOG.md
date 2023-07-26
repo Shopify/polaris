@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.0.0-beta.0
+
+### Major Changes
+
+- [`c69524c3c`](https://github.com/Shopify/polaris/commit/c69524c3ca024383344cafe6ede8feda7c9e99eb) Thanks [@samrose3](https://github.com/samrose3)! - Enabled the Summer Editions 2023 feature flag by default
+
 ## 11.10.0
 
 ### Minor Changes
