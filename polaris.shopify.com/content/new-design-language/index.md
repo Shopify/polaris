@@ -59,13 +59,13 @@ You will need to review your app's UI and manually patch fixes.
 To install the beta version run the following command:
 
 ```sh
-npm install @shopify/polaris@v12.0.0-beta.1
+npm install @shopify/polaris@beta
 ```
 
 Or if you prefer yarn, use the following command instead:
 
 ```sh
-yarn add @shopify/polaris@v12.0.0-beta.1
+yarn add @shopify/polaris@beta
 ```
 
 To assist you, we have prepared a collection of tips, documentation, and our own experience to help you on this early journey.
