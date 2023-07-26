@@ -164,9 +164,15 @@ export function IndexFilters({
       event.preventDefault();
     }
 
-    if (key === '2') {
-      console.log('2 pressed');
-      onSelect && onSelect(2);
+    const numberedKey = Number(key);
+
+    if (
+      numberedKey >= 1 &&
+      numberedKey <= 9 &&
+      numberedKey !== selected + 1 &&
+      onSelect
+    ) {
+      onSelect && onSelect(numberedKey - 1);
     }
   });
 
