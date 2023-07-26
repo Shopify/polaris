@@ -12,5 +12,7 @@
     "polaris.shopify.com": "0.56.3",
     "@shopify/stylelint-polaris": "13.0.8"
   },
-  "changesets": []
+  "changesets": [
+    "nice-zoos-vanish"
+  ]
 }
