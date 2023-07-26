@@ -1,0 +1,49 @@
+.SearchField {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.Input {
+  flex-grow: 1;
+  border: var(--p-border-width-1) solid var(--p-color-border-input);
+  border-radius: var(--p-border-radius-2);
+  line-height: var(--p-font-line-height-2);
+  padding-inline: var(--p-space-1_5-experimental);
+  border-color: var(--p-color-border-input);
+
+  &:hover {
+    border-color: var(--p-color-border-input-hover);
+  }
+
+  &:active,
+  &:focus {
+    border-color: var(--p-color-border-input-active-experimental);
+  }
+}
+
+.borderless {
+  border-width: 0;
+}
+
+.focused {
+  outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus);
+  outline-offset: var(--p-space-025);
+}
+
+.ClearButton {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background: none;
+  border: none;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
+  cursor: pointer;
+}
+
+.ClearButton-focused {
+  opacity: 1;
+  pointer-events: auto;
+}
