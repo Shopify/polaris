@@ -49,8 +49,11 @@ export function BannerExperimental({
   const i18n = useI18n();
   const withinContentContainer = useContext(WithinContentContext);
   const isInlineIconBanner = !title && !withinContentContainer;
+  const bannerStatus = Object.keys(bannerAttributes).includes(status)
+    ? status
+    : 'info';
   const bannerColors =
-    bannerAttributes[status][
+    bannerAttributes[bannerStatus][
       withinContentContainer ? 'withinContentContainer' : 'withinPage'
     ];
 
@@ -64,7 +67,7 @@ export function BannerExperimental({
     ) : null,
     bannerIcon: hideIcon ? null : (
       <span className={styles[bannerColors.icon]}>
-        <Icon source={icon ?? bannerAttributes[status].icon} />
+        <Icon source={icon ?? bannerAttributes[bannerStatus].icon} />
       </span>
     ),
     actionButtons:
