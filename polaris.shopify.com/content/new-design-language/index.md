@@ -56,13 +56,16 @@ We're excited about the new design language and understand if you want to quickl
 Be aware that this is a beta and introduces changes that may break your app implementations, particularly custom styling.
 You will need to review your app's UI and manually patch fixes.
 
-To install the beta version run the following command:
+To prepare for Polaris version 12 make sure you're on the latest version 11.
+It's quick to update from v10 to v11 with our [migrator tool](https://polaris.shopify.com/tools/polaris-migrator) and [migration guide](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v10-to-v11.md).
+
+To install the v12 beta version run the following command:
 
 ```sh
 npm install @shopify/polaris@beta
 ```
 
-Or if you prefer yarn, use the following command instead:
+Or, if you prefer yarn, use the following command instead:
 
 ```sh
 yarn add @shopify/polaris@beta
