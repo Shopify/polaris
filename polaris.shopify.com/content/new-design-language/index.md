@@ -78,7 +78,7 @@ To assist you, we have prepared a collection of tips, documentation, and our own
 - Visual dimension clearly distinguishes layers of importance and interactive elements
 - Delightful, tactile interactivity makes taking action feel powerful and gratifying
 
-Read more about the design philosophy in the blog post [Uplifting Shopify Polaris](TODO).
+Read more about the design philosophy in the blog post [Uplifting Shopify Polaris](https://ux.shopify.com/uplifting-shopify-polaris-7c54fc6564d9).
 
 To see the new design language component by component, check out our [Storybook](https://storybook.polaris.shopify.com/). To turn the new design language on in Storybook go to:
 Addon panel (bottom) > `Feature flags` tab and Toggle `polarisSummerEditions2023`
