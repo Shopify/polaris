@@ -163,6 +163,11 @@ export function IndexFilters({
       onPressF();
       event.preventDefault();
     }
+
+    if (key === '2') {
+      console.log('2 pressed');
+      onSelect && onSelect(2);
+    }
   });
 
   const {intersectionRef, measurerRef, indexFilteringHeight, isSticky} =
