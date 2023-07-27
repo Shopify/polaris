@@ -167,10 +167,14 @@ export function IndexFilters({
     const numberedKey = Number(key);
 
     if (numberedKey >= 1 && numberedKey <= 9 && numberedKey !== selected + 1) {
-      onSelect?.(numberedKey - 1);
-      tabs[numberedKey - 1].onAction?.();
+      handleOnSelect(numberedKey - 1);
     }
   });
+
+  const handleOnSelect = (id: number) => {
+    console.log('handleOnSelect', id);
+    onSelect?.(id);
+  };
 
   const {intersectionRef, measurerRef, indexFilteringHeight, isSticky} =
     useIsSticky(mode, Boolean(disableStickyMode), isFlushWhenSticky);
@@ -357,7 +361,7 @@ export function IndexFilters({
                         <Tabs
                           tabs={tabs}
                           selected={selected}
-                          onSelect={onSelect}
+                          onSelect={handleOnSelect}
                           disabled={Boolean(
                             mode !== IndexFiltersMode.Default || disabled,
                           )}
