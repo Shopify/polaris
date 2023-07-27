@@ -157,7 +157,9 @@
 .PopoverWrapper {
   min-width: 185px;
   max-width: 300px;
+}
 
+.ClearButtonWrapper {
   #{$se23} & button {
     min-height: 0;
     padding: 0;
