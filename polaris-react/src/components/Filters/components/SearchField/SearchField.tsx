@@ -63,7 +63,7 @@ export function SearchField({
           borderlessQueryField && styles.borderless,
         )}
         value={value}
-        onChange={(event) => handleChange(event.currentTarget.value)}
+        onChange={(event) => handleChange(event?.currentTarget.value ?? value)}
         onFocus={onFocus}
         onBlur={onBlur}
         autoComplete="off"
