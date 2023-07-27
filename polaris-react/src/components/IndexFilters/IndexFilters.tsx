@@ -166,13 +166,9 @@ export function IndexFilters({
 
     const numberedKey = Number(key);
 
-    if (
-      numberedKey >= 1 &&
-      numberedKey <= 9 &&
-      numberedKey !== selected + 1 &&
-      onSelect
-    ) {
-      onSelect && onSelect(numberedKey - 1);
+    if (numberedKey >= 1 && numberedKey <= 9 && numberedKey !== selected + 1) {
+      onSelect?.(numberedKey - 1);
+      tabs[numberedKey - 1].onAction?.();
     }
   });
 
