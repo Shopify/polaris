@@ -2,11 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import type {HSBColor} from '../../../../utilities/color-types';
-import {
-  hsbToHex,
-  hsbToString,
-  hexToHsb,
-} from '../../../../utilities/color-transformers';
+import {hsbToHex, hexToHsb} from '../../../../utilities/color-transformers';
 import {
   isHexString,
   coerceToValidUserInput,
@@ -79,21 +75,9 @@ export function TextPicker({color, allowAlpha, onChange}: TextPickerProps) {
   );
   const valueForDisplay = isHexString(text) ? text.toUpperCase() : text;
 
-  const prefixClassNames = classNames(
-    styles.TextFieldSwatch,
-    allowAlpha && styles.AlphaAllowed,
-  );
-  const prefixStyle = {backgroundColor: hsbToString(color)};
-  const prefixMarkup = (
-    <div className={prefixClassNames}>
-      <div style={prefixStyle} className={styles.SwatchBackground} />
-    </div>
-  );
-
   return (
     <div id="TextPickerWrapper" onKeyDown={handleKeyDown} className={className}>
       <TextField
-        prefix={prefixMarkup}
         value={valueForDisplay}
         label={label}
         labelHidden
