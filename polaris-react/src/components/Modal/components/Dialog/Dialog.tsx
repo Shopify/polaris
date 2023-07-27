@@ -18,6 +18,7 @@ export interface DialogProps {
   instant?: boolean;
   children?: React.ReactNode;
   limitHeight?: boolean;
+  xlarge?: boolean;
   large?: boolean;
   small?: boolean;
   onClose(): void;
@@ -35,6 +36,7 @@ export function Dialog({
   onClose,
   onExited,
   onEntered,
+  xlarge,
   large,
   small,
   limitHeight,
@@ -47,6 +49,7 @@ export function Dialog({
     styles.Modal,
     small && styles.sizeSmall,
     large && styles.sizeLarge,
+    xlarge && styles.sizeXLarge,
     limitHeight && styles.limitHeight,
     fullScreen && styles.fullScreen,
   );

@@ -41,6 +41,8 @@ export interface ModalProps extends FooterProps {
   instant?: boolean;
   /** Automatically adds sections to modal */
   sectioned?: boolean;
+  /** Increases the modal width a lot */
+  xlarge?: boolean;
   /** Increases the modal width */
   large?: boolean;
   /** Decreases the modal width */
@@ -77,6 +79,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   instant,
   sectioned,
   loading,
+  xlarge,
   large,
   small,
   limitHeight,
@@ -198,6 +201,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         onClose={onClose}
         onEntered={handleEntered}
         onExited={handleExited}
+        xlarge={xlarge}
         large={large}
         small={small}
         limitHeight={limitHeight}

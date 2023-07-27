@@ -91,6 +91,12 @@ $large-width: 980px;
     }
   }
 
+  &.sizeXLarge {
+    @media #{$p-breakpoints-md-up} {
+      max-width: calc(100% - var(--p-space-16));
+    }
+  }
+
   &.fullScreen {
     height: 100%;
     @media #{$p-breakpoints-md-up} {
