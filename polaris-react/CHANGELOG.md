@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.10.2
+
+### Patch Changes
+
+- [#9849](https://github.com/Shopify/polaris/pull/9849) [`547d588c8`](https://github.com/Shopify/polaris/commit/547d588c8ef506378dedfac0704bd4b92839029f) Thanks [@rdott](https://github.com/rdott)! - Fixed padding on FilterPill Buttons
+
 ## 11.10.1
 
 ### Patch Changes
