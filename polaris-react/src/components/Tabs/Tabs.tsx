@@ -174,6 +174,7 @@ export const Tabs = ({
 
   const handleTabClick = useCallback(
     (id: string) => {
+      console.log('handleTabClick', id);
       const tab = tabs.find((aTab) => aTab.id === id);
       if (tab == null) {
         return null;
@@ -418,6 +419,7 @@ export const Tabs = ({
 
   const handleListTabClick = (id: string) => {
     handleTabClick(id);
+    console.log('id', id);
     handleClose();
     setState({
       isTabsFocused: true,
