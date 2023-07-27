@@ -2,15 +2,17 @@
   position: relative;
   display: flex;
   width: 100%;
+  padding-block: calc(var(--p-space-1_5-experimental) * 0.5);
+  margin-left: var(--p-space-05);
 }
 
 .Input {
   flex-grow: 1;
   border: var(--p-border-width-1) solid var(--p-color-border-input);
   border-radius: var(--p-border-radius-2);
-  line-height: var(--p-font-line-height-2);
-  padding-inline: var(--p-space-1_5-experimental);
+  line-height: var(--p-font-line-height-3);
   border-color: var(--p-color-border-input);
+  padding-inline: var(--p-space-1_5-experimental);
 
   &:hover {
     border-color: var(--p-color-border-input-hover);
