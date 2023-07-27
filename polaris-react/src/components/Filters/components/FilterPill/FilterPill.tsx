@@ -183,7 +183,7 @@ export function FilterPill({
   );
 
   const clearButtonMarkup = !hideClearButton && (
-    <div>
+    <div className={styles.ClearButtonWrapper}>
       <Button onClick={handleClear} plain disabled={!selected} textAlign="left">
         {i18n.translate('Polaris.FilterPill.clear')}
       </Button>
