@@ -1,31 +1,42 @@
+@import '../../../../styles/common';
+
 .SearchField {
   position: relative;
   display: flex;
-  width: 100%;
   padding-block: calc(var(--p-space-1_5-experimental) * 0.5);
   margin-left: var(--p-space-05);
 }
 
 .Input {
-  flex-grow: 1;
+  /* stylelint-disable-next-line polaris/typography/polaris/at-rule-disallowed-list -- Matching custom input with TextField */
+  @include text-style-input;
+  flex: 1;
   border: var(--p-border-width-1) solid var(--p-color-border-input);
-  border-radius: var(--p-border-radius-2);
-  line-height: var(--p-font-line-height-3);
+  border-radius: var(--p-border-radius-1);
   border-color: var(--p-color-border-input);
   padding-inline: var(--p-space-1_5-experimental);
 
   &:hover {
     border-color: var(--p-color-border-input-hover);
+    background-color: var(--p-color-bg-input-hover-experimental);
   }
 
   &:active,
   &:focus {
     border-color: var(--p-color-border-input-active-experimental);
+    border-width: var(--p-border-width-2-experimental);
+    background-color: var(--p-color-bg-input-active-experimental);
   }
 }
 
 .borderless {
   border-width: 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-width: 0;
+  }
 }
 
 .focused {
