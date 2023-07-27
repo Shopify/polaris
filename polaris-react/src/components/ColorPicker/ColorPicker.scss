@@ -197,11 +197,11 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .TextPicker {
-  width: 192px;
+  width: 148px;
   margin-top: var(--p-space-2);
 
   &.AlphaAllowed {
-    width: 180px;
+    width: 136px;
   }
 
   .fullWidth & {
@@ -211,11 +211,11 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 }
 
 .TextFieldSwatch {
-  width: var(--p-space-5);
-  height: var(--p-space-5);
-  margin-left: -(var(--p-space-1));
-  border-radius: 50%;
-  box-shadow: var(--p-shadow-deep);
+  width: control-height();
+  height: control-height();
+  margin: var(--p-space-2) var(--p-space-2) 0 0;
+  border: var(--p-border-width-1) solid var(--p-color-border-strong);
+  border-radius: 3px;
 
   &.AlphaAllowed {
     @include checkers;

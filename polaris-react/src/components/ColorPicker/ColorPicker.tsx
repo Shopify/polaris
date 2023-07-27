@@ -3,7 +3,11 @@ import React, {PureComponent} from 'react';
 import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
-import {hsbToRgb, hexToHsb} from '../../utilities/color-transformers';
+import {
+  hsbToRgb,
+  hsbToString,
+  hexToHsb,
+} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
@@ -123,6 +127,19 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       />
     ) : null;
 
+    const swatchClassNames = classNames(
+      styles.TextFieldSwatch,
+      allowAlpha && styles.AlphaAllowed,
+    );
+
+    const backgroundColor = hsbToString(color);
+
+    const swatchMarkup = (
+      <div className={swatchClassNames}>
+        <div style={{backgroundColor}} className={styles.SwatchBackground} />
+      </div>
+    );
+
     const hexPickerMarkup = (
       <TextPicker
         color={color}
@@ -137,6 +154,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
 
     const textFieldsMarkup = textEditor ? (
       <div className={styles.TextFields}>
+        {swatchMarkup}
         {hexPickerMarkup}
         {alphaFieldMarkup}
       </div>
