@@ -53,8 +53,8 @@ function ColorPicker({
 }: ColorPickerProps) {
   const colorNodeRef = useRef<HTMLDivElement | null>(null);
   const [pickerSize, setPickerSize] = useState({
-    width: 0,
-    height: 0,
+    width: colorNodeRef.current?.clientWidth ?? 0,
+    height: colorNodeRef.current?.clientHeight ?? 0,
   });
 
   const {hue, saturation, brightness, alpha: providedAlpha} = color;
