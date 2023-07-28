@@ -1,5 +1,6 @@
 export * from './metadata';
 export * from './utilities';
+export {breakpointsAliases} from './token-groups/breakpoints';
 export type {
   TokenGroup,
   Tokens,
@@ -8,21 +9,17 @@ export type {
 } from './types';
 
 export type {
+  BorderTokenGroup,
+  BorderTokenName,
+  BorderRadiusScale,
+  BorderWidthScale,
+} from './token-groups/border';
+
+export type {
   BreakpointsTokenGroup,
   BreakpointsTokenName,
   BreakpointsAlias,
 } from './token-groups/breakpoints';
-
-export type {
-  ColorsTokenGroup,
-  ColorsTokenName,
-  ColorsBackgroundTokenAlias,
-  ColorsActionTokenAlias,
-  ColorsSurfaceTokenAlias,
-  ColorsBackdropTokenAlias,
-  ColorsOverlayTokenAlias,
-  ColorsBorderTokenAlias,
-} from './token-groups/colors';
 
 export type {
   ColorTokenGroup,
@@ -34,20 +31,12 @@ export type {
 } from './token-groups/color';
 
 export type {
-  DepthTokenGroup,
-  DepthTokenName,
-  DepthShadowAlias,
-} from './token-groups/depth';
-
-export type {
   FontTokenGroup,
   FontTokenName,
   FontSizeScale,
   FontLineHeightScale,
   FontWeightAlias,
 } from './token-groups/font';
-
-export type {LegacyTokenGroup, LegacyTokenName} from './token-groups/legacy';
 
 export type {
   MotionTokenGroup,
@@ -61,27 +50,6 @@ export type {
   ShadowTokenName,
   ShadowAlias,
 } from './token-groups/shadow';
-
-export type {
-  ShapeTokenGroup,
-  ShapeTokenName,
-  ShapeBorderRadiusScale,
-  ShapeBorderRadiusAlias,
-  ShapeBorderWidthScale,
-} from './token-groups/shape';
-
-export type {
-  BorderTokenGroup,
-  BorderTokenName,
-  BorderRadiusScale,
-  BorderWidthScale,
-} from './token-groups/border';
-
-export type {
-  SpacingTokenGroup,
-  SpacingTokenName,
-  SpacingSpaceScale,
-} from './token-groups/spacing';
 
 export type {
   SpaceTokenGroup,

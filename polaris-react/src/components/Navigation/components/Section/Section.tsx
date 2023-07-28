@@ -1,16 +1,15 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useId} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useMediaQuery} from '../../../../utilities/media-query';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
 import {Icon} from '../../../Icon';
 import type {IconProps} from '../../../Icon';
 import {Text} from '../../../Text';
 import {Item} from '../Item';
-import type {ItemProps} from '../Item';
+import type {ItemProps} from '../../types';
 import styles from '../../Navigation.scss';
 import {Tooltip} from '../../../Tooltip';
 import type {TooltipProps} from '../../../Tooltip';
@@ -104,7 +103,7 @@ export function Section({
 
   const sectionHeadingMarkup = title && (
     <li className={styles.SectionHeading}>
-      <Text as="span" variant="headingXs" color="subdued">
+      <Text as="span" variant="bodySm" fontWeight="medium" color="subdued">
         {title}
       </Text>
       {actionMarkup}
@@ -187,7 +186,7 @@ export function Section({
     );
   }
 
-  const additionalItemsId = useUniqueId('AdditionalItems');
+  const additionalItemsId = useId();
 
   const activeItemsMarkup = rollup && additionalItems.length > 0 && (
     <li className={styles.RollupSection}>

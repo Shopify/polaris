@@ -7,6 +7,7 @@ import {
   Filters,
   Avatar,
   Text,
+  Button,
 } from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -120,24 +121,27 @@ function ResourceListFiltersExample() {
   ];
 
   const appliedFilters = [];
-  if (accountStatus && accountStatus.length > 0) {
+  if (!isEmpty(accountStatus)) {
+    const key = 'accountStatus';
     appliedFilters.push({
-      key: 'accountStatus',
-      label: accountStatus.map((val) => `Customer ${val}`).join(', '),
+      key,
+      label: disambiguateLabel(key, accountStatus),
       onRemove: handleAccountStatusRemove,
     });
   }
-  if (moneySpent) {
+  if (!isEmpty(moneySpent)) {
+    const key = 'moneySpent';
     appliedFilters.push({
-      key: 'moneySpent',
-      label: `Money spent is between $${moneySpent[0]} and $${moneySpent[1]}`,
+      key,
+      label: disambiguateLabel(key, moneySpent),
       onRemove: handleMoneySpentRemove,
     });
   }
-  if (taggedWith && !isEmpty(taggedWith)) {
+  if (!isEmpty(taggedWith)) {
+    const key = 'taggedWith';
     appliedFilters.push({
-      key: 'taggedWith',
-      label: `Tagged with ${taggedWith}`,
+      key,
+      label: disambiguateLabel(key, taggedWith),
       onRemove: handleTaggedWithRemove,
     });
   }
@@ -156,8 +160,18 @@ function ResourceListFiltersExample() {
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}
               hideQueryField
-            />
+            >
+              <Button
+                onClick={() => console.log('New filter saved')}
+                size="micro"
+                primary
+                plain
+              >
+                Save
+              </Button>
+            </Filters>
           }
+          flushFilters
           items={[
             {
               id: '341',
@@ -195,7 +209,22 @@ function ResourceListFiltersExample() {
     </div>
   );
 
-  function isEmpty(value: string): boolean {
+  function disambiguateLabel(key: string, value: any) {
+    switch (key) {
+      case 'moneySpent':
+        return `Money spent is between $${value[0]} and $${value[1]}`;
+      case 'taggedWith':
+        return `Tagged with ${value}`;
+      case 'accountStatus':
+        return value.map((val: string) => `Customer ${val}`).join(', ');
+      default:
+        return value;
+    }
+  }
+
+  function isEmpty(
+    value: string | string[] | [number, number] | undefined,
+  ): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

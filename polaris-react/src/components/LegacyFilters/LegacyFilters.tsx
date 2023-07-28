@@ -27,6 +27,7 @@ import {Sheet} from '../Sheet';
 import {LegacyStack} from '../LegacyStack';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
+import {UseFeatures} from '../../utilities/features';
 
 import {ConnectedFilterControl, TagsWrapper} from './components';
 import type {ConnectedFilterControlProps} from './components';
@@ -231,11 +232,19 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
         : i18n.translate('Polaris.Filters.moreFilters');
 
     const rightActionMarkup = filters.length ? (
-      <div ref={this.moreFiltersButtonContainer}>
-        <Button onClick={this.toggleFilters} disabled={disabled}>
-          {moreFiltersLabel}
-        </Button>
-      </div>
+      <UseFeatures>
+        {({polarisSummerEditions2023}) => (
+          <div ref={this.moreFiltersButtonContainer}>
+            <Button
+              onClick={this.toggleFilters}
+              disabled={disabled}
+              size={polarisSummerEditions2023 ? 'large' : 'medium'}
+            >
+              {moreFiltersLabel}
+            </Button>
+          </div>
+        )}
+      </UseFeatures>
     ) : null;
 
     const filterResourceName = resourceName || {
@@ -594,6 +603,16 @@ function getShortcutFilters(filters: FilterInterface[]) {
   return filters.filter((filter) => filter.shortcut === true);
 }
 
+/**
+ * @deprecated The LegacyFilters component will be removed in the next
+ * major version. The Filters component can be used as a standalone
+ * component, but is used primarily within the IndexFilters for sorting
+ * and filtering IndexTables. See the Polaris component guide on how to
+ * use IndexFilters and Filters.
+ *
+ * https://polaris.shopify.com/components/selection-and-input/filters
+ * https://polaris.shopify.com/components/selection-and-input/index-filters
+ */
 export function LegacyFilters(props: LegacyFiltersProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();

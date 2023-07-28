@@ -5,7 +5,7 @@ import type {
   BorderRadiusScale,
   ShadowAlias,
   color,
-  spacing,
+  space,
 } from '@shopify/polaris-tokens';
 
 import {classNames, sanitizeCustomProperties} from '../../utilities/css';
@@ -70,33 +70,33 @@ export interface BoxProps extends React.AriaAttributes {
    * padding='4'
    * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  padding?: ResponsiveValue<keyof typeof spacing>;
+  padding?: ResponsiveValue<keyof typeof space>;
   /** Vertical start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingBlockStart='4'
    * paddingBlockStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingBlockStart?: ResponsiveValue<keyof typeof spacing>;
+  paddingBlockStart?: ResponsiveValue<keyof typeof space>;
   /** Vertical end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingBlockEnd='4'
    * paddingBlockEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingBlockEnd?: ResponsiveValue<keyof typeof spacing>;
+  paddingBlockEnd?: ResponsiveValue<keyof typeof space>;
   /** Horizontal start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingInlineStart='4'
    * paddingInlineStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingInline?: ResponsiveValue<keyof typeof spacing>;
-  paddingBlock?: ResponsiveValue<keyof typeof spacing>;
-  paddingInlineStart?: ResponsiveValue<keyof typeof spacing>;
+  paddingInline?: ResponsiveValue<keyof typeof space>;
+  paddingBlock?: ResponsiveValue<keyof typeof space>;
+  paddingInlineStart?: ResponsiveValue<keyof typeof space>;
   /** Horizontal end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingInlineEnd='4'
    * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingInlineEnd?: ResponsiveValue<keyof typeof spacing>;
+  paddingInlineEnd?: ResponsiveValue<keyof typeof space>;
   /** Aria role */
   role?: Extract<
     React.AriaRole,
@@ -112,13 +112,13 @@ export interface BoxProps extends React.AriaAttributes {
   /** Position of box */
   position?: Position;
   /** Top position of box */
-  insetBlockStart?: ResponsiveValue<keyof typeof spacing>;
+  insetBlockStart?: ResponsiveValue<keyof typeof space>;
   /** Bottom position of box */
-  insetBlockEnd?: ResponsiveValue<keyof typeof spacing>;
+  insetBlockEnd?: ResponsiveValue<keyof typeof space>;
   /** Left position of box */
-  insetInlineStart?: ResponsiveValue<keyof typeof spacing>;
+  insetInlineStart?: ResponsiveValue<keyof typeof space>;
   /** Right position of box */
-  insetInlineEnd?: ResponsiveValue<keyof typeof spacing>;
+  insetInlineEnd?: ResponsiveValue<keyof typeof space>;
   /** Opacity of box */
   opacity?: string;
   /** Outline color */

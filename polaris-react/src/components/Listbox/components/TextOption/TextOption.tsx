@@ -1,9 +1,14 @@
 import React, {memo, useContext} from 'react';
+import {TickMinor} from '@shopify/polaris-icons';
 
+import {Box} from '../../../Box';
 import {Checkbox} from '../../../Checkbox';
+import {HorizontalStack} from '../../../HorizontalStack';
+import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
 import {ComboboxListboxOptionContext} from '../../../../utilities/combobox/context';
 import {ActionContext} from '../../../../utilities/listbox/context';
+import {useFeatures} from '../../../../utilities/features';
 
 import styles from './TextOption.scss';
 
@@ -22,6 +27,7 @@ export const TextOption = memo(function TextOption({
 }: TextOptionProps) {
   const {allowMultiple} = useContext(ComboboxListboxOptionContext);
   const isAction = useContext(ActionContext);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const textOptionClassName = classNames(
     styles.TextOption,
@@ -31,6 +37,20 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
+  const optionMarkup =
+    polarisSummerEditions2023 && selected ? (
+      <Box width="100%">
+        <HorizontalStack wrap={false} align="space-between" gap="2">
+          {children}
+          <HorizontalStack align="end">
+            <Icon source={TickMinor} />
+          </HorizontalStack>
+        </HorizontalStack>
+      </Box>
+    ) : (
+      <>{children}</>
+    );
+
   return (
     <div className={textOptionClassName}>
       <div className={styles.Content}>
@@ -39,7 +59,7 @@ export const TextOption = memo(function TextOption({
             <Checkbox disabled={disabled} checked={selected} label={children} />
           </div>
         ) : (
-          children
+          optionMarkup
         )}
       </div>
     </div>

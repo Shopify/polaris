@@ -1,5 +1,7 @@
 import yaml from 'js-yaml';
 
+import * as colors from '../../../polaris-tokens/dist/esm/src/colors.mjs';
+
 export const parseMarkdown = (inputMarkdown) => {
   const readmeSections = inputMarkdown.split('---');
   const frontMatterSection = readmeSections[1];
@@ -66,6 +68,40 @@ export const parseMarkdown = (inputMarkdown) => {
     });
   }
 
+  // Add some custom HTML to <!-- colors --> tags
+  const colorsRegex = /<!-- (colors) -->/gis;
+  if (markdown.match(colorsRegex)) {
+    markdown = markdown.replace(colorsRegex, (match) => {
+      const colorOrder = [
+        'gray',
+        'green',
+        'teal',
+        'blue',
+        'purple',
+        'red',
+        'orange',
+        'yellow',
+      ];
+
+      return colorOrder.reduce((acc, color) => {
+        const shades = colors[color] ?? [];
+        const swatches = Object.entries(shades)
+          .sort(([prevShade], [nextShade]) =>
+            Number(prevShade) < Number(nextShade) ? 1 : -1,
+          )
+          .map(
+            ([shade, value]) =>
+              `<div><div class="colors-swatch" style="background-color: ${value};"></div><div>${shade}</div></div>`,
+          )
+          .join('');
+
+        return `${acc}<h3>${capitalize(
+          color,
+        )}</h3><div class="colors">${swatches}</div>`;
+      }, '');
+    });
+  }
+
   const out = {
     frontMatter,
     description,
@@ -74,3 +110,7 @@ export const parseMarkdown = (inputMarkdown) => {
 
   return out;
 };
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

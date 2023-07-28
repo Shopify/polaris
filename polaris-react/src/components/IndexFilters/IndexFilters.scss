@@ -31,6 +31,14 @@ $spinner-size: 20px;
 .TabsWrapper {
   flex: 1;
   height: var(--p-space-12);
+
+  #{$se23} & {
+    height: 44px;
+
+    @media #{$p-breakpoints-md-down} {
+      height: var(--p-space-12);
+    }
+  }
 }
 
 .SmallScreenTabsWrapper {
@@ -105,6 +113,14 @@ $spinner-size: 20px;
         var(--p-color-bg)
       );
       // stylelint-enable
+    }
+  }
+
+  #{$se23} & {
+    padding: var(--p-space-1_5-experimental) var(--p-space-2);
+
+    @media #{$p-breakpoints-md-down} {
+      height: 3rem;
     }
   }
 }

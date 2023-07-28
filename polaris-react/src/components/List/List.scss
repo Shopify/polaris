@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 .List {
   padding-left: var(--p-space-5);
   margin-top: 0;
@@ -23,6 +25,10 @@
 .spacingLoose {
   .Item {
     margin-bottom: var(--p-space-2);
+
+    #{$se23} & {
+      margin-bottom: var(--p-space-1);
+    }
   }
 }
 

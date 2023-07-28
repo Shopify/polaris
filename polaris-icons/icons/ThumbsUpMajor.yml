@@ -8,11 +8,12 @@ keywords:
   - like
   - approve
   - positive
-  - yes
+  - 'yes'
   - upvote
 authors:
-  - Adam Whitcroft
+  - David Goligorsky
+  - Joe Thomas
 version: 1
 date_added: 2019-02-25
-date_modified: 2019-02-25
+date_modified: 2023-06-23
 exclusive_use:

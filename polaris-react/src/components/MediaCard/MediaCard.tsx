@@ -14,6 +14,8 @@ import {ButtonGroup} from '../ButtonGroup';
 import {LegacyStack} from '../LegacyStack';
 import {Box} from '../Box';
 import {HorizontalStack} from '../HorizontalStack';
+import {useFeatures} from '../../utilities/features';
+import {VerticalStack} from '../VerticalStack';
 
 import styles from './MediaCard.scss';
 
@@ -57,12 +59,16 @@ export function MediaCard({
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
+  const {polarisSummerEditions2023} = useFeatures();
 
   let headerMarkup = null;
   if (title) {
     const headerContent =
       typeof title === 'string' ? (
-        <Text variant="headingMd" as="h2">
+        <Text
+          variant={polarisSummerEditions2023 ? 'headingSm' : 'headingMd'}
+          as="h2"
+        >
           {title}
         </Text>
       ) : (
@@ -78,6 +84,7 @@ export function MediaCard({
       size="slim"
       plain
       accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
+      primary={polarisSummerEditions2023}
     />
   ) : null;
 
@@ -89,6 +96,7 @@ export function MediaCard({
         size="slim"
         plain
         accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
+        primary={polarisSummerEditions2023}
       />
     </HorizontalStack>
   );
@@ -115,7 +123,9 @@ export function MediaCard({
 
   const secondaryActionMarkup = secondaryAction ? (
     <div className={styles.SecondaryAction}>
-      {buttonFrom(secondaryAction, {plain: true})}
+      {polarisSummerEditions2023
+        ? buttonFrom(secondaryAction)
+        : buttonFrom(secondaryAction, {plain: true})}
     </div>
   ) : null;
 
@@ -155,11 +165,11 @@ export function MediaCard({
     popoverActionsMarkup || dismissButtonMarkup ? (
       <Box
         position="absolute"
-        insetBlockStart="4"
+        insetBlockStart={polarisSummerEditions2023 ? undefined : '4'}
         insetInlineEnd="5"
         zIndex="var(--p-z-index-2)"
       >
-        <HorizontalStack gap="1">
+        <HorizontalStack gap="1" wrap={!polarisSummerEditions2023}>
           {popoverActionsMarkup}
           {dismissButtonMarkup}
         </HorizontalStack>
@@ -171,14 +181,27 @@ export function MediaCard({
       <div className={mediaCardClassName}>
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
-          <LegacyCard.Section>
-            {popoverOrDismissMarkup}
-            <LegacyStack vertical spacing="tight">
-              {headerMarkup}
-              <p className={styles.Description}>{description}</p>
-              {actionMarkup}
-            </LegacyStack>
-          </LegacyCard.Section>
+          {polarisSummerEditions2023 ? (
+            <Box padding="5">
+              <VerticalStack gap="2">
+                <HorizontalStack wrap={false} align="space-between" gap="2">
+                  {headerMarkup}
+                  {popoverOrDismissMarkup}
+                </HorizontalStack>
+                <p className={styles.Description}>{description}</p>
+                {actionMarkup}
+              </VerticalStack>
+            </Box>
+          ) : (
+            <LegacyCard.Section>
+              {popoverOrDismissMarkup}
+              <LegacyStack vertical spacing="tight">
+                {headerMarkup}
+                <p className={styles.Description}>{description}</p>
+                {actionMarkup}
+              </LegacyStack>
+            </LegacyCard.Section>
+          )}
         </div>
       </div>
     </LegacyCard>

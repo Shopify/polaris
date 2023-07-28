@@ -26,6 +26,7 @@ export function KitchenSink() {
           'Sheet',
           'Frame',
           'Loading',
+          'AppProvider',
         ].includes(id.split(':')[0]),
     )
     .map(([id, Story]) => {

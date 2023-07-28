@@ -7,6 +7,7 @@ import {MessageIndicator} from '../../../MessageIndicator';
 import {Menu} from '../Menu';
 import type {MenuProps} from '../Menu';
 import {Text} from '../../../Text';
+import {useFeatures} from '../../../../utilities/features';
 
 import styles from './UserMenu.scss';
 
@@ -31,6 +32,8 @@ export interface UserMenuProps {
   onToggle(): void;
   /** A custom activator that can be used when the default activator is not desired */
   customActivator?: React.ReactNode;
+  /** A width value that customizes the width of the user menu */
+  customWidth?: string;
 }
 
 export function UserMenu({
@@ -44,8 +47,10 @@ export function UserMenu({
   open,
   accessibilityLabel,
   customActivator,
+  customWidth,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
+  const {polarisSummerEditions2023} = useFeatures();
 
   const activatorContentMarkup = customActivator ? (
     customActivator
@@ -55,22 +60,25 @@ export function UserMenu({
         <Text as="p" alignment="start" fontWeight="medium" truncate>
           {name}
         </Text>
-        <Text
-          as="p"
-          variant="bodySm"
-          alignment="start"
-          color="subdued"
-          truncate
-        >
-          {detail}
-        </Text>
+        <span className={styles.Message}>
+          <Text
+            as="p"
+            variant="bodySm"
+            alignment="start"
+            color="subdued"
+            truncate
+          >
+            {detail}
+          </Text>
+        </span>
       </span>
       <MessageIndicator active={showIndicator}>
         <Avatar
           shape="square"
-          size="small"
+          size={polarisSummerEditions2023 ? 'medium' : 'small'}
           initials={initials && initials.replace(' ', '')}
           source={avatar}
+          name={name}
         />
       </MessageIndicator>
     </>
@@ -85,6 +93,8 @@ export function UserMenu({
       actions={actions}
       message={message}
       accessibilityLabel={accessibilityLabel}
+      customWidth={customWidth}
+      userMenu
     />
   );
 }

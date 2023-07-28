@@ -204,6 +204,11 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/selection-and-input/legacy-filters',
+    destination: '/components/deprecated/legacy-filters',
+    permanent: false,
+  },
+  {
     source: '/components/setting-toggle',
     destination: '/components/deprecated/setting-toggle',
     permanent: false,
@@ -211,11 +216,6 @@ const deprecated = [
   {
     source: '/components/sheet',
     destination: '/components/deprecated/sheet',
-    permanent: false,
-  },
-  {
-    source: '/components/stack',
-    destination: '/components/deprecated/stack',
     permanent: false,
   },
   {
@@ -334,12 +334,12 @@ const imagesAndIcons = [
 const layoutAndStructure = [
   {
     source: '/components/alpha-card',
-    destination: '/components/layout-and-structure/alpha-card',
+    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/card',
-    destination: '/components/layout-and-structure/alpha-card',
+    source: '/components/card',
+    destination: '/components/layout-and-structure/card',
     permanent: false,
   },
   {
@@ -438,12 +438,12 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/stack',
+    source: '/components/layout-and-structure/alpha-stack',
     destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/alpha-stack',
+    source: '/components/stack',
     destination: '/components/layout-and-structure/vertical-stack',
     permanent: false,
   },

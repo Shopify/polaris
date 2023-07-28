@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import type {Root, Node, Element} from '@shopify/react-testing';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {BulkActions} from '../../BulkActions';
@@ -9,8 +10,6 @@ import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {EmptyState} from '../../EmptyState';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../../EventListener';
 import {Select} from '../../Select';
 import {Spinner} from '../../Spinner';
 import {ResourceItem} from '../../ResourceItem';
@@ -30,6 +29,15 @@ function mockUseIsBulkActionsSticky(
     jest.requireMock('../../BulkActions').useIsBulkActionsSticky;
 
   useIsBulkActionsSticky.mockReturnValue(args);
+}
+
+function getResourceItemCheckbox<T extends Root<unknown> | Element<unknown>>(
+  wrapper: T,
+) {
+  return wrapper.findWhere<'div'>(
+    (node: Node<unknown>) =>
+      node.is('div') && node.prop('className')!.includes('CheckboxWrapper'),
+  );
 }
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
@@ -407,10 +415,11 @@ describe('<ResourceList />', () => {
       );
       const resourceItem = resourceList.find(ResourceItem);
 
-      resourceItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(resourceItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
+
       expect(onSelectionChange).toHaveBeenCalled();
     });
   });
@@ -1101,13 +1110,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(firstItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(lastItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1126,13 +1135,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(firstItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(lastItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1170,13 +1179,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(firstItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(lastItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1202,13 +1211,13 @@ describe('<ResourceList />', () => {
       );
       // Sets {lastSelected: 0}
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(firstItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.findAll('div')[6]!.trigger('onClick', {
+      getResourceItemCheckbox(lastItem!)!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1231,10 +1240,11 @@ describe('<ResourceList />', () => {
           renderItem={renderItem}
         />,
       );
+      resourceList.act(() => {
+        setSmallScreen();
+        global.dispatchEvent(new Event('resize'));
+      });
 
-      setSmallScreen();
-      // eslint-disable-next-line import/no-deprecated
-      resourceList.find(EventListener)!.trigger('handler');
       expect(resourceList).toContainReactComponent(Select, {
         labelInline: false,
       });

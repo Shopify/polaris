@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useId} from 'react';
 import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {useUniqueId} from '../../../../utilities/unique-id';
 
 import {listboxSectionDataSelector} from './selectors';
 import {SectionContext} from './context';
@@ -15,15 +14,15 @@ interface SectionProps {
 }
 
 export function Section({children, divider = true, title}: SectionProps) {
-  const sectionId = useUniqueId('ListboxSection');
+  const id = useId();
 
   return (
-    <SectionContext.Provider value={sectionId}>
+    <SectionContext.Provider value={id}>
       <li role="presentation" {...listboxSectionDataSelector.props}>
         {title}
         <ul
           role="group"
-          aria-labelledby={sectionId}
+          aria-labelledby={id}
           className={classNames(
             styles.SectionGroup,
             !divider && styles.noDivider,

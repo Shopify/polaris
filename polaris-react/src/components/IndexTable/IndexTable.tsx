@@ -5,6 +5,7 @@ import {tokens, toPx, motion} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
+import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
@@ -37,6 +38,7 @@ import type {
   Width,
   TooltipOverlayProps,
 } from '../Tooltip';
+import {useFeatures} from '../../utilities/features';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -155,6 +157,7 @@ function IndexTableBase({
     selectedItemsCount,
     condensed,
   } = useIndexValue();
+  const {polarisSummerEditions2023} = useFeatures();
   const handleSelectionChange = useIndexSelectionChange();
   const i18n = useI18n();
 
@@ -268,7 +271,11 @@ function IndexTableBase({
           tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
 
         // update the min width of the checkbox to be the be the un-padded width of the first heading
-        if (selectable && firstStickyHeaderElement?.current) {
+        if (
+          selectable &&
+          firstStickyHeaderElement?.current &&
+          !polarisSummerEditions2023
+        ) {
           const elementStyle = getComputedStyle(tableHeadings.current[0]);
           const boxWidth = tableHeadings.current[0].offsetWidth;
           firstStickyHeaderElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
@@ -288,7 +295,7 @@ function IndexTableBase({
           heading.style.minWidth = `${minWidth}px`;
         });
       }),
-    [calculateFirstHeaderOffset, selectable],
+    [calculateFirstHeaderOffset, selectable, polarisSummerEditions2023],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -440,7 +447,7 @@ function IndexTableBase({
     scrollingContainer.current = false;
   }, []);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     tableHeadings.current = getTableHeadingsBySelector(
       tableElement.current,
       '[data-index-table-heading]',
@@ -486,7 +493,13 @@ function IndexTableBase({
 
   const stickyColumnHeader = (
     <div
-      className={styles.TableHeading}
+      className={classNames(
+        styles.TableHeading,
+        polarisSummerEditions2023 && selectable && styles['TableHeading-first'],
+        polarisSummerEditions2023 &&
+          headings[0].flush &&
+          styles['TableHeading-flush'],
+      )}
       key={getHeadingKey(headings[0])}
       style={stickyColumnHeaderStyle}
       data-index-table-sticky-heading
@@ -509,7 +522,7 @@ function IndexTableBase({
 
         {!selectable && (
           <div
-            className={styles.FirstStickyHeaderElement}
+            className={classNames(styles.FirstStickyHeaderElement)}
             ref={firstStickyHeaderElement}
           >
             {renderHeadingContent(headings[0], 0)}
@@ -545,7 +558,7 @@ function IndexTableBase({
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
-      timeout={parseInt(motion['duration-100'], 10)}
+      timeout={parseInt(motion['motion-duration-100'], 10)}
       nodeRef={loadingElement}
       appear
       unmountOnExit
@@ -783,6 +796,7 @@ function IndexTableBase({
 
   const tableWrapperClassNames = classNames(
     styles.IndexTableWrapper,
+    hideScrollContainer && styles['IndexTableWrapper-scrollBarHidden'],
     Boolean(bulkActionsMarkup) &&
       selectMode &&
       styles.IndexTableWrapperWithBulkActions,
@@ -1081,6 +1095,9 @@ function IndexTableBase({
     const headingContent = renderHeadingContent(heading, index);
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
+      polarisSummerEditions2023 &&
+        heading.flush &&
+        styles['TableHeading-flush'],
       headingAlignment === 'center' && styles['TableHeading-align-center'],
       headingAlignment === 'end' && styles['TableHeading-align-end'],
       index === 0 && styles['StickyTableHeading-second'],

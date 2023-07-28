@@ -4,10 +4,10 @@ import styles from './TipBanner.module.scss';
 
 interface Props {
   title: string;
-  message: string;
+  children: React.ReactNode;
 }
 
-function TipBanner({title, message}: Props) {
+function TipBanner({title, children}: Props) {
   return (
     <div className={styles.TipBanner}>
       <VerticalStack gap="2">
@@ -19,7 +19,7 @@ function TipBanner({title, message}: Props) {
             {title}
           </Text>
         </HorizontalStack>
-        <p>{message}</p>
+        {children}
       </VerticalStack>
     </div>
   );

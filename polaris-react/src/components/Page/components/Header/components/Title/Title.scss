@@ -6,10 +6,18 @@
   font-weight: var(--p-font-weight-semibold);
   font-size: var(--p-font-size-300);
   line-height: var(--p-font-line-height-3);
+
+  #{$se23} & {
+    font-weight: var(--p-font-weight-bold);
+  }
 }
 
 .TitleWithSubtitle {
   margin-top: var(--p-space-1);
+
+  #{$se23} & {
+    margin-top: 0;
+  }
 }
 
 .SubTitle {
@@ -18,6 +26,14 @@
 
   &.SubtitleCompact {
     margin-top: 0;
+
+    #{$se23} & {
+      margin-top: var(--p-space-05);
+    }
+  }
+
+  #{$se23} & {
+    margin-top: var(--p-space-05);
   }
 }
 
@@ -26,6 +42,10 @@
   flex-wrap: wrap;
   align-items: center;
   row-gap: var(--p-space-2);
+
+  #{$se23} & {
+    padding-block: var(--p-space-05);
+  }
 
   .Title {
     display: inline;

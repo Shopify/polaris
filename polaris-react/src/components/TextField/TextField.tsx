@@ -4,12 +4,12 @@ import React, {
   useEffect,
   useRef,
   useCallback,
+  useId,
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Labelled, helpTextID, labelID} from '../Labelled';
 import type {LabelledProps} from '../Labelled';
@@ -244,8 +244,8 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
-
-  const id = useUniqueId('TextField', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -289,7 +289,7 @@ export function TextField({
     readOnly && styles.readOnly,
     error && styles.error,
     multiline && styles.multiline,
-    focus && styles.focus,
+    focus && !disabled && styles.focus,
     borderless && styles.borderless,
   );
 
@@ -591,6 +591,8 @@ export function TextField({
       labelHidden={labelHidden}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
+      disabled={disabled}
+      readOnly={readOnly}
     >
       <Connected left={connectedLeft} right={connectedRight}>
         <div className={className} onClick={handleClick}>
@@ -681,6 +683,19 @@ export function TextField({
     }
 
     const {key, which} = event;
+
+    if (type === 'integer' && (key === 'ArrowUp' || which === Key.UpArrow)) {
+      handleNumberChange(1);
+      event.preventDefault();
+    }
+    if (
+      type === 'integer' &&
+      (key === 'ArrowDown' || which === Key.DownArrow)
+    ) {
+      handleNumberChange(-1);
+      event.preventDefault();
+    }
+
     if ((which === Key.Home || key === 'Home') && min !== undefined) {
       if (onSpinnerChange != null) {
         onSpinnerChange(String(min), id);

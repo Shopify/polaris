@@ -1,0 +1,18 @@
+name: Add untriaged label
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  label_issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Label issues
+        uses: andymckay/labeler@1.0.2
+        with:
+          add-labels: 'untriaged'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

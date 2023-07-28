@@ -1,7 +1,15 @@
-import React, {useState, useRef, useCallback, useMemo, useEffect} from 'react';
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useMemo,
+  useEffect,
+  useId,
+} from 'react';
 import type {FunctionComponent} from 'react';
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
+import {useFeatures} from '../../utilities/features';
 import {debounce} from '../../utilities/debounce';
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
@@ -11,7 +19,6 @@ import {Labelled} from '../Labelled';
 import type {LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
 import {VerticalStack} from '../VerticalStack';
@@ -138,6 +145,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const node = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
+  const {polarisSummerEditions2023} = useFeatures();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const adjustSize = useCallback(
@@ -294,7 +302,8 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     adjustSize();
   });
 
-  const id = useUniqueId('DropZone', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
   const typeSuffix = capitalize(type);
   const allowMultipleKey = createAllowMultipleKey(allowMultiple);
@@ -366,10 +375,21 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     color: 'critical' | 'interactive',
     text: string,
   ) {
+    let iconColor: 'critical' | 'interactive' | undefined = color;
+    const summerEditions = {
+      critical: 'critical',
+      interactive: undefined,
+    };
+    if (polarisSummerEditions2023) {
+      iconColor = summerEditions[color] as
+        | 'critical'
+        | 'interactive'
+        | undefined;
+    }
     return (
       <div className={styles.Overlay}>
         <VerticalStack gap="2" inlineAlign="center">
-          {size === 'small' && <Icon source={icon} color={color} />}
+          {size === 'small' && <Icon source={icon} color={iconColor} />}
           {(size === 'medium' || size === 'large') && (
             <Text variant="bodySm" as="p" fontWeight="bold">
               {text}

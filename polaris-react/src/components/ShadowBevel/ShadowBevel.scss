@@ -1,0 +1,30 @@
+@import '../../styles/common';
+
+.ShadowBevel {
+  overflow: hidden;
+  // stylelint-disable-next-line -- Explicitly set `0` to create a local stacking context. While the initial `z-index: auto` has a stack level of `0` within the current stacking context, it does not create a new local stacking context.
+  z-index: 0;
+
+  @include responsive-props(
+    $componentName: 'shadow-bevel',
+    $componentProp: 'box-shadow',
+    $declarationProp: '--pc-shadow-bevel-box-shadow'
+  );
+  @include responsive-props(
+    $componentName: 'shadow-bevel',
+    $componentProp: 'border-radius',
+    $declarationProp: '--pc-shadow-bevel-border-radius'
+  );
+  @include responsive-props(
+    $componentName: 'shadow-bevel',
+    $componentProp: 'content',
+    $declarationProp: '--pc-shadow-bevel-content'
+  );
+
+  @include shadow-bevel(
+    $boxShadow: var(--pc-shadow-bevel-box-shadow),
+    $borderRadius: var(--pc-shadow-bevel-border-radius),
+    $content: var(--pc-shadow-bevel-content),
+    $zIndex: var(--pc-shadow-bevel-z-index)
+  );
+}

@@ -1,10 +1,5 @@
 @import '../../../../styles/common';
 
-$expanded-height: 20px;
-$expanded-width: 36px;
-$condensed-height: 44px;
-$condensed-width: 50px;
-
 .TableCellContentContainer {
   display: flex;
   align-items: center;
@@ -14,16 +9,18 @@ $condensed-width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.expanded {
-  width: $expanded-width;
-  height: $expanded-height;
+  width: 36px;
+  height: 20px;
   padding-left: var(--p-space-4);
-}
 
-.condensed {
-  min-width: $condensed-width;
-  min-height: $condensed-height;
-  margin-right: calc(-1 * var(--p-space-4));
+  #{$se23} & {
+    // Don't need an explicit width/height set, just let flexbox do its thing.
+    // Can remove this width/height once se23 becomes the default.
+    width: auto;
+    height: auto;
+    // Removed padding-left here to apply uniform padding-left globally
+    // This is to account for when `selectable={false}`
+    padding-left: 0;
+  }
 }

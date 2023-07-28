@@ -1,6 +1,13 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Button, ButtonGroup, Frame, Page, Toast} from '@shopify/polaris';
+import {
+  Button,
+  ButtonGroup,
+  Frame,
+  HorizontalStack,
+  Page,
+  Toast,
+} from '@shopify/polaris';
 
 export default {
   component: Toast,
@@ -18,7 +25,7 @@ export function Default() {
   return (
     <div style={{height: '250px'}}>
       <Frame>
-        <Page title="Toast example">
+        <Page title="Default">
           <Button onClick={toggleActive}>Show Toast</Button>
           {toastMarkup}
         </Page>
@@ -52,7 +59,7 @@ export function MultipleMessages() {
   return (
     <div style={{height: '250px'}}>
       <Frame>
-        <Page title="Toast example">
+        <Page title="Multiple Messages">
           <ButtonGroup segmented>
             <Button onClick={toggleActiveOne}>Show toast 1</Button>
             <Button onClick={toggleActiveTwo}>Show toast 2</Button>
@@ -77,7 +84,7 @@ export function WithCustomDuration() {
   return (
     <div style={{height: '250px'}}>
       <Frame>
-        <Page title="Toast example">
+        <Page title="Custom Duration">
           <Button onClick={toggleActive}>Show Toast</Button>
           {toastMarkup}
         </Page>
@@ -106,7 +113,7 @@ export function WithAction() {
   return (
     <div style={{height: '250px'}}>
       <Frame>
-        <Page title="Toast example">
+        <Page title="Action">
           <Button onClick={toggleActive}>Show Toast</Button>
           {toastMarkup}
         </Page>
@@ -127,7 +134,7 @@ export function Error() {
   return (
     <div style={{height: '250px'}}>
       <Frame>
-        <Page title="Toast example">
+        <Page title="Error">
           <Button onClick={toggleActive}>Show Toast</Button>
           {toastMarkup}
         </Page>

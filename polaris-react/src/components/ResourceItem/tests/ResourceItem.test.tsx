@@ -412,7 +412,12 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findAll('div')[6]!.trigger('onClick', {
+      const checkboxWrapperEl = wrapper.findWhere<'div'>(
+        (node) =>
+          node.is('div') && node.prop('className')!.includes('CheckboxWrapper'),
+      );
+
+      checkboxWrapperEl!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -427,7 +432,12 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findAll('div')[6]!.trigger('onClick', {
+      const checkboxWrapperEl = wrapper.findWhere<'div'>(
+        (node) =>
+          node.is('div') && node.prop('className')!.includes('CheckboxWrapper'),
+      );
+
+      checkboxWrapperEl!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: false},
       });
@@ -654,6 +664,44 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
       expect(wrapper).toContainReactComponent(UnstyledLink, {tabIndex: 0});
+    });
+  });
+
+  describe('mouse events', () => {
+    it('triggers onMouseOver callback when mouse over event is triggered on container', () => {
+      const onMouseOverSpy = jest.fn();
+      const resourceItem = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectModeContext}>
+          <ResourceItem id={itemId} url={url} onMouseOver={onMouseOverSpy} />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(onMouseOverSpy).not.toHaveBeenCalled();
+
+      const wrapperDiv = resourceItem.find('div', {'data-href': url} as any);
+
+      wrapperDiv!.trigger('onMouseOver');
+
+      expect(onMouseOverSpy).toHaveBeenCalled();
+      onMouseOverSpy.mockRestore();
+    });
+
+    it('triggers onMouseOut callback when mouse out event is triggered on container', () => {
+      const onMouseOutSpy = jest.fn();
+      const resourceItem = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectModeContext}>
+          <ResourceItem id={itemId} url={url} onMouseOut={onMouseOutSpy} />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(onMouseOutSpy).not.toHaveBeenCalled();
+
+      const wrapperDiv = resourceItem.find('div', {'data-href': url} as any);
+
+      wrapperDiv!.trigger('onMouseOut');
+
+      expect(onMouseOutSpy).toHaveBeenCalled();
+      onMouseOutSpy.mockRestore();
     });
   });
 

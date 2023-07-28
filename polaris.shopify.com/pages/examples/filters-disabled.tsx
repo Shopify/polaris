@@ -10,9 +10,9 @@ import {
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function DisableAllFiltersExample() {
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
+function FiltersDisabledExample() {
+  const [taggedWith, setTaggedWith] = useState<string>('');
+  const [queryValue, setQueryValue] = useState<string>('');
 
   const handleTaggedWithChange = useCallback(
     (value: string) => setTaggedWith(value),
@@ -85,6 +85,7 @@ function DisableAllFiltersExample() {
               </div>
             </Filters>
           }
+          flushFilters
           items={[
             {
               id: '341',
@@ -122,7 +123,7 @@ function DisableAllFiltersExample() {
     </div>
   );
 
-  function disambiguateLabel(key: string, value: string) {
+  function disambiguateLabel(key: string, value: string): string {
     switch (key) {
       case 'taggedWith':
         return `Tagged with ${value}`;
@@ -131,7 +132,7 @@ function DisableAllFiltersExample() {
     }
   }
 
-  function isEmpty(value: string) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
@@ -140,4 +141,4 @@ function DisableAllFiltersExample() {
   }
 }
 
-export default withPolarisExample(DisableAllFiltersExample);
+export default withPolarisExample(FiltersDisabledExample);

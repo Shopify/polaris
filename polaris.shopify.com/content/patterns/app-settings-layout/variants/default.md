@@ -24,13 +24,18 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`AlphaCard`](/components/layout-and-structure/alpha-card), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Box`](/components/layout-and-structure/box) components.
+This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Card`](/components/layout-and-structure/card), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Box`](/components/layout-and-structure/box) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ paddingBottom: '2rem' }}>
   {(____CODE____)()}
 </div>
+```
+
+<!-- prettier-ignore -->
+```javascript {"type":"sandboxContext","for":"example"}
+{(____CODE____)()}
 ```
 
 ```javascript {"type":"livePreview","id":"example"}
@@ -64,12 +69,12 @@ function AppSettingsLayoutExample() {
               </Text>
             </VerticalStack>
           </Box>
-          <AlphaCard roundedAbove="sm">
+          <Card roundedAbove="sm">
             <VerticalStack gap="4">
               <TextField label="Interjamb style" />
               <TextField label="Interjamb ratio" />
             </VerticalStack>
-          </AlphaCard>
+          </Card>
         </HorizontalGrid>
         {smUp ? <Divider /> : null}
         <HorizontalGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
@@ -87,12 +92,12 @@ function AppSettingsLayoutExample() {
               </Text>
             </VerticalStack>
           </Box>
-          <AlphaCard roundedAbove="sm">
+          <Card roundedAbove="sm">
             <VerticalStack gap="4">
               <TextField label="Horizontal" />
               <TextField label="Interjamb ratio" />
             </VerticalStack>
-          </AlphaCard>
+          </Card>
         </HorizontalGrid>
       </VerticalStack>
     </Page>

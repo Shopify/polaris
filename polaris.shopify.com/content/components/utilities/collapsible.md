@@ -36,7 +36,7 @@ The collapsible component should:
 
 ## Content guidelines
 
-Collapsible containers are cards with expandable and collapsible functionality, and should follow the content guidelines for [cards](https://polaris.shopify.com/components/layout-and-structure/alpha-card#content-guidelines).
+Collapsible containers are cards with expandable and collapsible functionality, and should follow the content guidelines for [cards](https://polaris.shopify.com/components/layout-and-structure/legacy-card#content-guidelines).
 
 ---
 

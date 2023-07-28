@@ -1,5 +1,9 @@
 import React, {useEffect} from 'react';
-import {CancelSmallMinor, DiamondAlertMinor} from '@shopify/polaris-icons';
+import {
+  AlertMinor,
+  CancelSmallMinor,
+  DiamondAlertMinor,
+} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
@@ -9,6 +13,7 @@ import {HorizontalStack} from '../../../HorizontalStack';
 import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
+import {useFeatures} from '../../../../utilities/features';
 
 import styles from './Toast.scss';
 
@@ -54,9 +59,17 @@ export function Toast({
     </button>
   );
 
+  const {polarisSummerEditions2023} = useFeatures();
+
   const actionMarkup = action ? (
     <div className={styles.Action}>
-      <Button plain monochrome size="slim" onClick={action.onAction}>
+      <Button
+        plain
+        monochrome
+        removeUnderline={polarisSummerEditions2023}
+        size="slim"
+        onClick={action.onAction}
+      >
         {action.content}
       </Button>
     </div>
@@ -64,7 +77,10 @@ export function Toast({
 
   const leadingIconMarkup = error ? (
     <div className={styles.LeadingIcon}>
-      <Icon source={DiamondAlertMinor} color="base" />
+      <Icon
+        source={polarisSummerEditions2023 ? AlertMinor : DiamondAlertMinor}
+        color="base"
+      />
     </div>
   ) : null;
 

@@ -6,6 +6,8 @@ import {classNames} from '../../utilities/css';
 import styles from './Text.scss';
 
 type Element =
+  | 'dt'
+  | 'dd'
   | 'h1'
   | 'h2'
   | 'h3'

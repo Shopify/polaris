@@ -137,7 +137,7 @@ Add a menu item
 ## Related components
 
 - To create a video card, [use the video thumbnail component](https://polaris.shopify.com/components/video-thumbnail)
-- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/layout-and-structure/alpha-card)
+- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/layout-and-structure/card)
 - To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout-and-structure/layout)
 - To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/layout-and-structure/empty-state)
 

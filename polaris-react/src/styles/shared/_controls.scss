@@ -26,6 +26,10 @@
       transform: scale(0.25);
       transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
         transform var(--p-motion-duration-100) var(--p-motion-ease);
+
+      #{$se23} & {
+        content: none;
+      }
     }
 
     &.hover,

@@ -20,9 +20,14 @@
         "warning": "Cảnh báo",
         "critical": "Quan trọng",
         "attention": "Chú ý",
-        "new": "Mới"
+        "new": "Mới",
+        "readOnly": "Chỉ đọc",
+        "enabled": "Đã bật"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Bỏ qua thông báo"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Đang tải",

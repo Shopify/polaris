@@ -6,33 +6,19 @@ import {UnstyledLink} from '../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {Text} from '../Text';
+import {Button} from '../Button';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
-  /** @deprecated Collection of breadcrumbs */
-  breadcrumbs?: (CallbackAction | LinkAction) | (CallbackAction | LinkAction)[];
   /** Back action link */
-  backAction?: CallbackAction | LinkAction;
+  backAction: CallbackAction | LinkAction;
 }
 
-export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
-  const breadcrumb =
-    backAction ??
-    (Array.isArray(breadcrumbs)
-      ? breadcrumbs[breadcrumbs.length - 1]
-      : breadcrumbs);
-  if (breadcrumb == null) {
-    if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Please provide a value to backAction, it will become required in the next major release.',
-      );
-    }
-    return null;
-  }
-
-  const {content} = breadcrumb;
+export function Breadcrumbs({backAction}: BreadcrumbsProps) {
+  const {content} = backAction;
+  const {polarisSummerEditions2023} = useFeatures();
 
   const contentMarkup = (
     <>
@@ -46,13 +32,13 @@ export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
   );
 
   const breadcrumbMarkup =
-    'url' in breadcrumb ? (
+    'url' in backAction ? (
       <UnstyledLink
         key={content}
-        url={breadcrumb.url}
+        url={backAction.url}
         className={styles.Breadcrumb}
         onMouseUp={handleMouseUpByBlurring}
-        aria-label={breadcrumb.accessibilityLabel}
+        aria-label={backAction.accessibilityLabel}
       >
         {contentMarkup}
       </UnstyledLink>
@@ -60,14 +46,32 @@ export function Breadcrumbs({breadcrumbs, backAction}: BreadcrumbsProps) {
       <button
         key={content}
         className={styles.Breadcrumb}
-        onClick={breadcrumb.onAction}
+        onClick={backAction.onAction}
         onMouseUp={handleMouseUpByBlurring}
         type="button"
-        aria-label={breadcrumb.accessibilityLabel}
+        aria-label={backAction.accessibilityLabel}
       >
         {contentMarkup}
       </button>
     );
 
-  return <nav role="navigation">{breadcrumbMarkup}</nav>;
+  const summerEditionsBreadcrumbMarkup = (
+    <Button
+      key={content}
+      url={'url' in backAction ? backAction.url : undefined}
+      onClick={'onAction' in backAction ? backAction.onAction : undefined}
+      onPointerDown={handleMouseUpByBlurring}
+      aria-label={backAction.accessibilityLabel}
+      icon={ArrowLeftMinor}
+      accessibilityLabel={content}
+    />
+  );
+
+  return (
+    <nav role="navigation">
+      {polarisSummerEditions2023
+        ? summerEditionsBreadcrumbMarkup
+        : breadcrumbMarkup}
+    </nav>
+  );
 }

@@ -40,4 +40,57 @@ describe('getResponsiveProps', () => {
       '--pc-stack-space-md': 'var(--p-space-8)',
     });
   });
+
+  it('handles a full responsive object', () => {
+    expect(
+      getResponsiveProps('stack', 'space', 'space', {
+        xs: '2',
+        sm: '4',
+        md: '8',
+        lg: '8',
+        xl: '10',
+      }),
+    ).toMatchObject({
+      '--pc-stack-space-xs': 'var(--p-space-2)',
+      '--pc-stack-space-sm': 'var(--p-space-4)',
+      '--pc-stack-space-md': 'var(--p-space-8)',
+      '--pc-stack-space-lg': 'var(--p-space-8)',
+      '--pc-stack-space-xl': 'var(--p-space-10)',
+    });
+  });
+
+  it('does not fill in leading undefined values', () => {
+    expect(
+      getResponsiveProps('stack', 'space', 'space', {
+        md: '4',
+        xl: '10',
+      }),
+    ).toMatchObject({
+      '--pc-stack-space-md': 'var(--p-space-4)',
+      '--pc-stack-space-xl': 'var(--p-space-10)',
+    });
+  });
+
+  it('treats falsey as a value', () => {
+    expect(
+      getResponsiveProps<string | number>('stack', 'space', 'space', {
+        md: 0,
+        xl: '10',
+      }),
+    ).toMatchObject({
+      '--pc-stack-space-md': 'var(--p-space-0)',
+      '--pc-stack-space-xl': 'var(--p-space-10)',
+    });
+  });
+
+  it('ignores explicit "undefined" values', () => {
+    expect(
+      getResponsiveProps('stack', 'space', 'space', {
+        md: undefined,
+        lg: '10',
+      }),
+    ).toMatchObject({
+      '--pc-stack-space-lg': 'var(--p-space-10)',
+    });
+  });
 });

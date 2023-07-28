@@ -61,8 +61,8 @@ export const VerticalStack = ({
   );
 
   const style = {
-    '--pc-vertical-stack-align': align ? `${align}` : '',
-    '--pc-vertical-stack-inline-align': inlineAlign ? `${inlineAlign}` : '',
+    '--pc-vertical-stack-align': align ? `${align}` : null,
+    '--pc-vertical-stack-inline-align': inlineAlign ? `${inlineAlign}` : null,
     '--pc-vertical-stack-order': reverseOrder ? 'column-reverse' : 'column',
     ...getResponsiveProps('vertical-stack', 'gap', 'space', gap),
   } as React.CSSProperties;

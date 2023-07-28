@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 
-import {classNames} from '../../../../utilities/css';
 import {UnstyledLink} from '../../../UnstyledLink';
+import {classNames} from '../../../../utilities/css';
 import {
   focusFirstFocusableNode,
   handleMouseUpByBlurring,

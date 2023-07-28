@@ -44,4 +44,9 @@ body {
 .divider {
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
   padding-top: var(--p-space-8);
+
+  #{$se23} & {
+    border-top: 0;
+    padding-top: 0;
+  }
 }

@@ -6,6 +6,10 @@ import type {IconProps} from './components/Icon';
 import type {ThumbnailProps} from './components/Thumbnail';
 /* eslint-enable @shopify/strict-component-boundaries */
 
+export type Entry<T> = [keyof T, T[keyof T]];
+export type Entries<T> = Entry<T>[];
+export type Experimental<T extends string> = `${T}-experimental`;
+
 export interface OptionDescriptor {
   /** Value of the option */
   value: string;
@@ -77,7 +81,7 @@ export interface BaseButton {
   ariaChecked?: 'false' | 'true';
   /** Callback when clicked */
   onClick?(): unknown;
-  /** Callback when button becomes focussed */
+  /** Callback when button becomes focused */
   onFocus?(): void;
   /** Callback when focus leaves button */
   onBlur?(): void;
@@ -92,7 +96,7 @@ export interface BaseButton {
   /** Callback when element is touched */
   onTouchStart?(): void;
   /** Callback when pointerdown event is being triggered */
-  onPointerDown?(): void;
+  onPointerDown?(event: React.PointerEvent<HTMLButtonElement>): void;
 }
 
 export interface Action {
@@ -202,10 +206,14 @@ export interface ActionListItemDescriptor
   prefix?: React.ReactNode;
   /** Suffix source */
   suffix?: React.ReactNode;
-  /**  Add an ellipsis suffix to action content */
+  /** @deprecated Add an ellipsis suffix to action content. ellipsis appends `...` without truncating. Use truncate instead. */
   ellipsis?: boolean;
+  /** Truncate the action content either at the beginning or at the end */
+  truncate?: boolean;
   /** Whether the action is active or not */
   active?: boolean;
+  /** The item variations */
+  variant?: 'default' | 'menu' | 'indented';
   /** Defines a role for the action */
   role?: string;
 }
@@ -400,4 +408,35 @@ export interface FilterInterface {
   hideClearButton?: boolean;
   /** Optional callback when filter is pressed */
   onAction?: () => void;
+  /** Suffix source */
+  suffix?: React.ReactNode;
+  /** Optional section heading that this filter will go under  */
+  section?: string;
 }
+
+/* Useful for defining mutually exclusive props such as:
+ *
+ * interface MessageBasics {
+ *   timestamp?: number;
+ * }
+ * interface MessageWithText extends MessageBasics {
+ *   text: string;
+ * }
+ * interface MessageWithAttachment extends MessageBasics {
+ *   attachment: string;
+ * }
+ * type Message =
+ *   | (MessageWithText & Never<MessageWithAttachment>)
+ *   | (MessageWithAttachment & Never<MessageWithText>);
+ *
+ * // 👍 OK
+ * let foo: Message = {attachment: 'a'}
+ * let bar: Message = {text: 'b'}
+ *
+ * // ❌ ERROR: Type '{ attachment: string; text: string; }' is not assignable to type 'Message'.
+ * let baz: Message = {attachment: 'a', text: 'b'}
+ */
+export type Never<T> = {
+  // The +? forces optionality of the type
+  [P in keyof T]+?: never;
+};

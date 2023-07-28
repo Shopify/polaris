@@ -135,6 +135,10 @@ $list-filters-footer-height: 70px;
     height: var(--p-space-025);
     background-color: var(--p-color-bg-subdued);
     display: block;
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-secondary-experimental);
+    }
   }
 
   &::before {
@@ -156,6 +160,10 @@ $list-filters-footer-height: 70px;
     height: var(--p-space-025);
     background-color: var(--p-color-bg-subdued);
     display: block;
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-secondary-experimental);
+    }
   }
 
   &::before {
@@ -179,6 +187,10 @@ $list-filters-footer-height: 70px;
     height: var(--p-space-025);
     background-color: var(--p-color-bg-subdued);
     display: block;
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-secondary-experimental);
+    }
   }
 
   &::after {

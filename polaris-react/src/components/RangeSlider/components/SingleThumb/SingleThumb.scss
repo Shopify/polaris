@@ -155,8 +155,7 @@
     );
     box-shadow: 0 0 0 0 var(--p-color-border-interactive-focus);
     appearance: none;
-    transition: box-shadow var(--p-motion-duration-100) var(--p-motion-ease);
-    transition-property: border-color, box-shadow, transform;
+    transition-property: border-color, transform;
     transition-duration: var(--p-motion-duration-200);
     transition-timing-function: var(--p-motion-ease);
 

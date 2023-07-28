@@ -7,6 +7,7 @@ import {Label, labelID} from '../Label';
 import type {LabelProps} from '../Label';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Labelled.scss';
 
@@ -29,6 +30,10 @@ export interface LabelledProps {
   labelHidden?: boolean;
   /** Visual required indicator for the label */
   requiredIndicator?: boolean;
+  /** Labels signify a disabled control */
+  disabled?: boolean;
+  /** Labels signify a readOnly control */
+  readOnly?: boolean;
 }
 
 export function Labelled({
@@ -40,9 +45,17 @@ export function Labelled({
   children,
   labelHidden,
   requiredIndicator,
+  disabled,
+  readOnly,
   ...rest
 }: LabelledProps) {
-  const className = classNames(labelHidden && styles.hidden);
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const className = classNames(
+    labelHidden && styles.hidden,
+    disabled && styles.disabled,
+    polarisSummerEditions2023 && readOnly && styles.readOnly,
+  );
 
   const actionMarkup = action ? (
     <div className={styles.Action}>{buttonFrom(action, {plain: true})}</div>

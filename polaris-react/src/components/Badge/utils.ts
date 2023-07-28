@@ -33,22 +33,33 @@ export function getDefaultAccessibilityLabel(
 
   switch (status) {
     case StatusValue.Info:
+    case StatusValue.InfoStrongExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.info');
       break;
     case StatusValue.Success:
+    case StatusValue.SuccessStrongExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.success');
       break;
     case StatusValue.Warning:
+    case StatusValue.WarningStrongExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.warning');
       break;
     case StatusValue.Critical:
+    case StatusValue.CriticalStrongExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.critical');
       break;
     case StatusValue.Attention:
+    case StatusValue.AttentionStrongExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.attention');
       break;
     case StatusValue.New:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
+      break;
+    case StatusValue.ReadOnlyExperimental:
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.readOnly');
+      break;
+    case StatusValue.EnabledExperimental:
+      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.enabled');
       break;
   }
 

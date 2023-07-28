@@ -1,5 +1,7 @@
 export interface FeaturesConfig {
-  [key: string]: boolean;
+  polarisSummerEditions2023?: boolean;
+  polarisSummerEditions2023ShadowBevelOptOut?: boolean;
+  [key: string]: boolean | undefined;
 }
 
 export interface Features {}

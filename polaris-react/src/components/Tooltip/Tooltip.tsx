@@ -1,12 +1,12 @@
-import React, {useEffect, useState, useRef, useCallback} from 'react';
+import React, {useEffect, useState, useRef, useCallback, useId} from 'react';
 import type {BorderRadiusScale, SpaceScale} from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
+import {useFeatures} from '../../utilities/features';
 
 import {TooltipOverlay} from './components';
 import type {TooltipOverlayProps} from './components';
@@ -29,7 +29,7 @@ export interface TooltipProps {
   dismissOnMouseOut?: TooltipOverlayProps['preventInteraction'];
   /**
    * The direction the tooltip tries to display
-   * @default 'below'
+   * @default 'above'
    */
   preferredPosition?: TooltipOverlayProps['preferredPosition'];
   /**
@@ -74,22 +74,27 @@ export function Tooltip({
   dismissOnMouseOut,
   active: originalActive,
   hoverDelay,
-  preferredPosition = 'below',
+  preferredPosition = 'above',
   activatorWrapper = 'span',
   accessibilityLabel,
   width = 'default',
   padding = 'default',
-  borderRadius = '1',
+  borderRadius: borderRadiusProp,
   zIndexOverride,
   hasUnderline,
   persistOnClick,
   onOpen,
   onClose,
 }: TooltipProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
+  const borderRadius =
+    borderRadiusProp || (polarisSummerEditions2023 ? '2' : '1');
+
   const WrapperComponent: any = activatorWrapper;
   const {
     value: active,
-    setTrue: handleFocus,
+    setTrue: setActiveTrue,
     setFalse: handleBlur,
   } = useToggle(Boolean(originalActive));
 
@@ -101,12 +106,18 @@ export function Tooltip({
   const {presenceList, addPresence, removePresence} =
     useEphemeralPresenceManager();
 
-  const id = useUniqueId('TooltipContent');
+  const id = useId();
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
   const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const handleFocus = useCallback(() => {
+    if (originalActive !== false) {
+      setActiveTrue();
+    }
+  }, [originalActive, setActiveTrue]);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
@@ -155,6 +166,13 @@ export function Tooltip({
     },
     [handleBlur, handleClose, persistOnClick, togglePersisting],
   );
+
+  useEffect(() => {
+    if (originalActive === false && active) {
+      handleClose();
+      handleBlur();
+    }
+  }, [originalActive, active, handleClose, handleBlur]);
 
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">

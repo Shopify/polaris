@@ -1,13 +1,15 @@
 import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
+import {Text} from '../../../../../Text';
+import {useFeatures} from '../../../../../../utilities/features';
 
 import styles from './Title.scss';
 
 export interface TitleProps {
   /** Page title, in large type */
   title?: string;
-  /** Page subtitle, in regular type*/
+  /** Page subtitle, in regular type */
   subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. */
   titleMetadata?: React.ReactNode;
@@ -21,6 +23,7 @@ export function Title({
   titleMetadata,
   compactTitle,
 }: TitleProps) {
+  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Title,
     subtitle && styles.TitleWithSubtitle,
@@ -48,7 +51,9 @@ export function Title({
         compactTitle && styles.SubtitleCompact,
       )}
     >
-      <p>{subtitle}</p>
+      <Text as="p" variant={polarisSummerEditions2023 ? 'bodySm' : undefined}>
+        {subtitle}
+      </Text>
     </div>
   ) : null;
 

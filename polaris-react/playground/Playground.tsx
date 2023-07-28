@@ -1,20 +1,11 @@
 import React from 'react';
 
 import {Box, HorizontalGrid} from '../src';
-import {atoms} from '../src/styles/atoms.css';
 
 export function Playground() {
   return (
     <>
       <HorizontalGrid columns={3} gap="2">
-        <div className={atoms({background: 'color-bg'})}>1</div>
-        <div className={atoms({background: 'color-bg'})}>2</div>
-        <div className={atoms({background: 'color-bg'})}>3</div>
-        <div
-          className={atoms({padding: 'space-4', background: 'color-bg-active'})}
-        >
-          inline atoms
-        </div>
         <Box
           padding="space-4"
           background="color-bg-caution"

@@ -31,8 +31,7 @@ keywords:
   - educational opportunities
 ---
 
-These guidelines are based on our experience writing help documentation for the
-[Shopify Help Center](https://help.shopify.com/). They’re all intended to serve the same goal: to educate and empower Shopify merchants.
+These are the core guidelines used to produce the [Shopify Help Center](https://help.shopify.com/), as well as Shopify's internal documentation. They’re all intended to serve the same goal: to educate and empower Shopify's merchants and employees.
 
 To include a link to help documentation in your app or channel, use the
 [Footer help](/components/navigation/footer-help) component.
@@ -41,20 +40,23 @@ To include a link to help documentation in your app or channel, use the
 
 ## Plan for your audience
 
-The way you write your help documentation should change depending on the type of audience and their expectations. Take some time to plan for your audience.
+The way that you write your help documentation should change depending on your intended audience and their expectations. Take some time to understand your audience and determine the documentation that would suit them best. For example, if your audience is mainly in the United States, then you should use American English. For a more worldwide audience, British English is more common and expected.
+
+Reviewing your intended audience and understanding the language that they expect can improve the effectivenss of your help content, improve adoption of your product and features, and reduce support debt costs.
 
 ### Audience types
 
-Write help documentation for its intended audience. For any given document, we can expect a wide spectrum of Shopify users as an audience:
+Using Shopify as an example, there can be a wide spectrum of Shopify users as an audience. Often, individual pages are written with a certain audience in mind, as opposed to the whole help center being written with one central audience being considered.
 
 #### Prospective users
 
 - Not signed up yet, possibly on a free trial
+- Could be new to business, or could be looking to migrate an existing business
 
 #### Novice users
 
 - Signed up but might not have sold online before
-- Possibly not very computer-literate
+- Possibly not very computer literate
 - New to Shopify concepts and workflows
 
 #### Experienced, confident users
@@ -62,19 +64,19 @@ Write help documentation for its intended audience. For any given document, we c
 - Have been using Shopify for some time
 - Familiar with the basic concepts and workflows
 - Confident with computers
-- Able to try some customizations with guidance
+- Can try some customizations with guidance
 
 #### Highly technical users
 
 - Experienced and confident
 - Extensive computing experience
 - Happy to experiment and take risks
-- Experienced problem-solvers
-- Self serve through forums and help documentation
+- Experienced problem solvers
+- Self-serve through forums and help documentation
 
 ### Audience expectations
 
-Each of these different users will likely have different expectations for the same document. Let’s take a look at how that might play out:
+Each of these different users likely has different expectations for the same document. Let’s take a look at how that might play out:
 
 #### Prospective users
 
@@ -83,7 +85,7 @@ Each of these different users will likely have different expectations for the sa
 
 #### Novice users
 
-- Lots of hand-holding
+- Detailed explanations
 - Clear step-by-step instructions
 - Conceptual overviews
 - Definitions of terms
@@ -100,29 +102,45 @@ Each of these different users will likely have different expectations for the sa
 
 #### Highly technical users
 
-- Procedural instructions (can be to-the-point)
+- Procedural instructions (can be brief and direct)
 - Code fragments
-- Pointers to information sources
+- Links to information sources
 
-This is just one way to imagine the variety of users that fit into our audience.
-However we imagine their skill level, our aim for documentation remains the same: to accommodate a wide range of users and their objectives. We can do this by presenting information in a way that’s inclusive of different skill levels, different learning styles, and different workflows.
+This is just one way to imagine the variety of users that fit into Shopify's audience.
+
+Regardless of their skill level, the aim of the documentation remains the same: to accommodate a wide range of users and their objectives. This can be achieved by presenting information in a way that’s inclusive of different skill levels, learning styles, and workflows.
 
 ---
 
+## Core help content principles
+
+Before you begin organizing information on a page, review the following principles:
+
+* **Let readers fail fast**: If a reader is going to fail at the task at hand, then let them know quickly, instead of letting them get halfway through only for them to realize that they don't meet the requirements. If a reader can't complete a set of steps due to an unmet requirement, isn't eligible to use a feature, or is in a scenario where continuing to pursue an action is a waste of time, then you need to inform the reader of this fact as quickly as possible within the content. This respects a reader's time, and lets them find an appropriate solution faster.
+
+* **Provide all readers with a solution or next step**: Any given set of steps should include a solution or next step for a reader. For example, suppose that a set of steps has the successful result of adding a feature to their product, but there is a requirement to be on the latest version of the product. Before the steps are listed, a user should be told of the restriction, and provided a link for the steps on how to upgrade.
+
+* **Keep it factual**: To maintain a level of trust with your readers, you should remove marketing and promotional content from your help content. Help content can be used to explain the benefits of a product or feature, but should stick to the direct benefits and hedge all claims of making things "faster", "better" or "easier".
+
+* **Explain how a reader can use a feature, not what a feature can do for them**: Framing your content as how a reader can use a product or feature helps them better understand your content and imagine how it would fit into their own context.
+
 ## Use headings to organize your document
 
-Readers come to help documentation with different expectations and in different usage settings. For example:
+Readers come to help documentation with different expectations and in different usage settings:
 
-- One might be working through a long, multi-stage setup process to connect a third-party app into her admin
-- Another might be using her tablet to check out the details of Shopify POS and see if it could be used at her cafe
-- Another might be trying to make a quick edit to his storefront in the half hour he has left before going to pick up his kids from school
+- One might be working through a long, multi-stage setup process to connect a third-party app into their admin
+- Another might be using her tablet to check out the details of Shopify POS and see if it could be used at their cafe
+- Another might be trying to make a quick edit to his storefront in the half hour they have left before going to pick up their kids from school
 
-In all these different cases, the reader needs documentation that’s findable, usable, and relevant—in short, organized.
+In all these different cases, the reader needs documentation that’s findable, usable, and relevant. In other words, content that is organized.
+
+Headings help readers pinpoint the most relevant content on a page for them, and reduce the need to scan and browse content.
 
 ### Effective headings
 
-Effective headings make it clear to readers which sections of a document are most relevant to their current tasks (findability). Headings also provide them with a good sense of progress while they move from one task to the next
-(usability).
+Effective headings make it clear to readers which sections of a document are most relevant to their current tasks. The heading should directly reflect the result of any actions, or should summarize the content found within the section.
+
+Headings also provide readers with a good sense of progress while they move from one task to the next.
 
 ### Low-level headings
 
@@ -134,21 +152,21 @@ Maintain the heading hierarchy throughout the doc, and don’t skip heading leve
 
 ### Tips
 
-For page or topic-level headings, use short, gerund (ing-word) based statements.
+For page or topic-level headings, use short, gerund-based (verb ending in "ing") statements.
 
 <!-- dodont -->
 
 #### Do
 
-- Creating products from your admin
+- Creating products
 
 #### Don’t
 
-- Create products from your admin
+- Create products
 
 <!-- end -->
 
-For task-based headings within the document, use verb stems / imperatives.
+For task-based headings within the document, use imperatives.
 
 <!-- dodont -->
 
@@ -162,17 +180,17 @@ For task-based headings within the document, use verb stems / imperatives.
 
 <!-- end -->
 
-Avoid pronouns and articles in headings to keep them short.
+Avoid pronouns in headings.
 
 <!-- dodont -->
 
 #### Do
 
 - Connecting Facebook accounts
+- Connect a Facebook account
 
 #### Don’t
 
-- Connecting a Facebook account
 - Connecting your Facebook account
 
 <!-- end -->
@@ -188,7 +206,7 @@ Avoid long strings of nouns in a heading.
 
 #### Don’t
 
-- Creating product posts
+- Creating Point of Sale product collections
 - Creating product post pages
 
 <!-- end -->
@@ -249,7 +267,7 @@ Use sentence case for all headings, but no periods at the end. Format and capita
 
 <!-- end -->
 
-Use parallel structure in lists, headings, and pretty much everywhere else to encourage comprehension and recall.
+Use parallel structure in your content, such as in lists and headings, to encourage comprehension and recall.
 
 <!-- dodont -->
 
@@ -291,7 +309,6 @@ In general, use short lists (either numbered steps or bullets), which are easier
 ### Make tasks actionable
 
 Tell the user what they can do with your product, not what it can do. This means structuring documentation around user actions rather than product features.
-Readers aren’t there to read a spec: they want to keep their businesses up and running.
 
 <!-- dodont -->
 
@@ -336,9 +353,7 @@ Avoid telling the user to “find” or “locate” something in a task.
 
 <!-- end -->
 
-Use the action word “select” when you’re telling the reader to pick something from a set number of choices (like from a list or dropdown menu), and use
-“choose” when you’re telling the reader to make a choice that’s more open-ended
-(like “Choose what kind of store you want to open”).
+Use the action word “select” when you’re telling the reader to pick something from a set number of choices (like from a list or dropdown menu), and use “choose” when you’re telling the reader to make a choice that’s more open-ended (such as, “Choose what kind of store you want to open”).
 
 <!-- dodont -->
 
@@ -358,11 +373,11 @@ Use consistent phrasing when referring to the reader’s choice. Use the most di
 
 #### Do
 
-- If you want to add a product, click **Add product**.
+- If you want to add a product, then click **Add product**.
 
 #### Don’t
 
-- If you’d like to add a product, click **Add product**.
+- If you’d like to add a product, then click **Add product**.
 
 <!-- end -->
 
@@ -372,7 +387,7 @@ Avoid using “desired” in place of the more direct “want.”
 
 #### Do
 
-- Select the item you want to add to the order.
+- Select the item that you want to add to the order.
 
 #### Don’t
 
@@ -384,7 +399,7 @@ Avoid using “desired” in place of the more direct “want.”
 
 ## Structure conditional statements
 
-For conditional cases, start the step with “if” so the reader doesn’t have to read the whole sentence only to find out that the condition does not apply to them. It often helps to add a “then” to help the reader identify the condition and the outcome.
+For conditional cases, start the step with “if” so the reader doesn’t have to read the whole sentence only to find out that the condition doesn't apply to them. Always add a “then” after the condition to help the reader identify the condition and the outcome.
 
 <!-- dodont -->
 
@@ -402,12 +417,11 @@ For conditional cases, start the step with “if” so the reader doesn’t have
 
 ## Clarify results of actions
 
-Show results of actions in the same step as the task and be clear about where in the flow the reader is.
+Show results of actions in the same step as the task and be clear about where in the flow the reader is. In general, omit results statements unless the result is surprising or unexpected.
 
 ### Put actions and results in the same step
 
 If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).
-In general, omit results statements unless the result is surprising or unexpected.
 
 ### Mention earlier steps to reinforce order of tasks
 
@@ -419,10 +433,9 @@ For progress between tasks, begin a section with “Now that you’ve” or “A
 
 ### Use “make sure” and “confirm” for important tasks
 
-When asking the reader to confirm something, use:
+When asking the reader to confirm something, use one of the following terms:
 
-- “Make sure” in cases where there’s still a related important task (instead of
-  “check that” or “verify that”).
+- “Make sure” in cases where there’s still a related important task (instead of “check that” or “verify that”).
 - “Confirm” in cases where the reader has already been told to do something, and you’re now reminding them.
 
 ### Tips
@@ -459,11 +472,15 @@ Limit the future tense to cases that actually refer to the future.
 
 ## Use screenshots for clarity
 
-Screenshots help visual learners understand complex tasks and add context to the tasks you’re documenting. Use them wisely.
+Screenshots help visual learners understand complex tasks and add context to the tasks you’re documenting. However, they often go out of date quickly and can be expensive to translate. Use them wisely.
 
 ### Use screenshots for complex tasks
 
 In general, don’t use a screenshot to illustrate every step in a task. Instead, save screenshots for places where the interface is complicated.
+
+### Focus on the specific area of the action
+
+Include only the most relevant section of the screen or admin in the screenshot. Avoid taking a screenshot of an entire page, because this increases the likelihood of the image going out of date quickly.
 
 ### Make screenshots with equal margins
 
@@ -508,7 +525,7 @@ Think of the context that the reader is in and what they might be feeling and th
 
 ### Instructional tone
 
-Most people don’t want to spend time reading documentation. They want to learn what they need to know, and then move on. The language in documentation needs to be short, to the point, and task-oriented. That doesn’t mean your writing needs to be terse or dry.
+Most people don’t want to spend time reading documentation. They want to learn what they need to know, and then move on. The language in documentation needs to be short, to the point, and task oriented. That doesn’t mean your writing needs to be terse or dry.
 
 ### Lighter tone
 
@@ -544,7 +561,7 @@ Address the reader or user as “you.”
 
 #### Do
 
-- You can add products from the Products page in your Shopify admin.
+- You can add products from the **Products** page in your Shopify admin.
 
 #### Don’t
 
@@ -580,7 +597,7 @@ Use the active voice as much as possible, which generally sounds less formal tha
 
 ## Improve readability
 
-It’s important that the sentences you put together flow. Changing things up and knowing when things should be combined or separated will improve prose. Reading sentences that flow helps reader comprehension.
+It’s important that your sentences flow nicely. Changing things up by combining or separating phrases and ideas will improve prose. Reading sentences that flow helps with reader comprehension.
 
 ### Avoid choppy writing
 
@@ -595,6 +612,22 @@ Use linking adverbs, conjunctions, and prepositions liberally to avoid choppy wr
 #### Don’t
 
 - Click the button. The window opens.
+
+<!-- end -->
+
+### Place old or expected information first, and new information last
+
+Putting the context, expected information, or old information first helps reduce a reader's mental load while they read. When new information is first, it requires the reader to hold on to the information while trying to determine why it is relevant.
+
+<!-- dodont -->
+
+#### Do
+
+- This feature is available for stores in the United States, Canada, and Mexico.
+
+#### Don’t
+
+- Stores in the United States, Canada, and Mexico can use this feature.
 
 <!-- end -->
 

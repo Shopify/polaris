@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
+import {zIndex} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -11,6 +12,9 @@ import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
+import {Tooltip} from '../../../Tooltip';
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
+import {useFeatures} from '../../../../utilities/features';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -31,14 +35,21 @@ export function Item({
   external,
   destructive,
   ellipsis,
+  truncate,
   active,
   role,
+  variant = 'default',
 }: ItemProps) {
+  const {polarisSummerEditions2023} = useFeatures();
+
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
     destructive && styles.destructive,
     active && styles.active,
+    variant === 'default' && styles.default,
+    variant === 'indented' && styles.indented,
+    variant === 'menu' && styles.menu,
   );
 
   let prefixMarkup: React.ReactNode | null = null;
@@ -61,12 +72,25 @@ export function Item({
     );
   }
 
-  const contentText = ellipsis && content ? `${content}…` : content;
+  let contentText: string | React.ReactNode = content || '';
+  if (truncate && content) {
+    contentText = <TruncateText>{content}</TruncateText>;
+  } else if (ellipsis) {
+    contentText = `${content}…`;
+  }
 
   const contentMarkup = helpText ? (
     <>
       <Box>{contentText}</Box>
-      <Text color="subdued" as="span">
+      <Text
+        as="span"
+        variant={polarisSummerEditions2023 ? 'bodySm' : undefined}
+        color={
+          polarisSummerEditions2023 && (active || disabled)
+            ? undefined
+            : 'subdued'
+        }
+      >
         {helpText}
       </Text>
     </>
@@ -89,12 +113,22 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack blockAlign="center" gap="4">
+    <HorizontalStack
+      blockAlign="center"
+      gap={polarisSummerEditions2023 ? '1_5-experimental' : '4'}
+      wrap={!truncate}
+    >
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
       {suffixMarkup}
     </HorizontalStack>
+  );
+
+  const contentWrapper = polarisSummerEditions2023 ? (
+    <Box width="100%">{contentElement}</Box>
+  ) : (
+    contentElement
   );
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
@@ -109,7 +143,7 @@ export function Item({
       onClick={disabled ? null : onAction}
       role={role}
     >
-      {contentElement}
+      {contentWrapper}
     </UnstyledLink>
   ) : (
     <button
@@ -123,7 +157,7 @@ export function Item({
       role={role}
       onMouseEnter={onMouseEnter}
     >
-      {contentElement}
+      {contentWrapper}
     </button>
   );
 
@@ -134,3 +168,38 @@ export function Item({
     </>
   );
 }
+
+export const TruncateText = ({children}: {children: string}) => {
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  useIsomorphicLayoutEffect(() => {
+    if (textRef.current) {
+      setIsOverflowing(
+        textRef.current.scrollWidth > textRef.current.offsetWidth,
+      );
+    }
+  }, [children]);
+  const text = (
+    <Text as="span" truncate>
+      <Box width="100%" ref={textRef}>
+        {children}
+      </Box>
+    </Text>
+  );
+
+  return isOverflowing ? (
+    <Tooltip
+      zIndexOverride={Number(zIndex['z-index-6'])}
+      preferredPosition="above"
+      hoverDelay={1000}
+      content={children}
+      dismissOnMouseOut
+    >
+      <Text as="span" truncate>
+        {children}
+      </Text>
+    </Tooltip>
+  ) : (
+    text
+  );
+};

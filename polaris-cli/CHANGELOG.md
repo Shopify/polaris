@@ -1,5 +1,123 @@
 # @shopify/polaris-cli
 
+## 0.2.28
+
+## 0.2.27
+
+## 0.2.26
+
+## 0.2.25
+
+## 0.2.24
+
+## 0.2.23
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.19.8
+
+## 0.2.22
+
+## 0.2.21
+
+## 0.2.20
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.19.7
+
+## 0.2.19
+
+## 0.2.18
+
+## 0.2.17
+
+## 0.2.16
+
+## 0.2.15
+
+## 0.2.14
+
+## 0.2.13
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.19.6
+
+## 0.2.12
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.19.5
+
+## 0.2.11
+
+## 0.2.10
+
+## 0.2.9
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.19.4
+
+## 0.2.8
+
+## 0.2.7
+
+## 0.2.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.19.3
+
+## 0.2.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.19.2
+
+## 0.2.4
+
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.19.1
+
+## 0.2.2
+
+## 0.2.1
+
+## 0.2.0
+
+### Minor Changes
+
+- [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for multiple versions of TypeScript with `downlevel-dts`
+
+* [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for NodeJS version 14 and set version 16 as minimum supported version
+
+### Patch Changes
+
+- Updated dependencies [[`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806)]:
+  - @shopify/polaris-migrator@0.19.0
+
+## 0.1.38
+
+## 0.1.37
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.18.2
+
 ## 0.1.36
 
 ## 0.1.35

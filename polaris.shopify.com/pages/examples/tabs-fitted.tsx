@@ -2,7 +2,7 @@ import {LegacyCard, Tabs} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function FittedTabsExample() {
+function TabsFittedExample() {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
@@ -35,4 +35,4 @@ function FittedTabsExample() {
   );
 }
 
-export default withPolarisExample(FittedTabsExample);
+export default withPolarisExample(TabsFittedExample);
