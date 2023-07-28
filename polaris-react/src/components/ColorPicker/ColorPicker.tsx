@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';
@@ -53,9 +53,18 @@ function ColorPicker({
 }: ColorPickerProps) {
   const colorNodeRef = useRef<HTMLDivElement | null>(null);
   const [pickerSize, setPickerSize] = useState({
-    width: colorNodeRef.current?.clientWidth ?? 0,
-    height: colorNodeRef.current?.clientHeight ?? 0,
+    width: 0,
+    height: 0,
   });
+
+  useEffect(() => {
+    if (colorNodeRef.current) {
+      setPickerSize({
+        width: colorNodeRef.current?.clientWidth,
+        height: colorNodeRef.current?.clientHeight,
+      });
+    }
+  }, []);
 
   const {hue, saturation, brightness, alpha: providedAlpha} = color;
   const alpha = providedAlpha != null && allowAlpha ? providedAlpha : 1;
