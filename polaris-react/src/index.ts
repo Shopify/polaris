@@ -79,6 +79,9 @@ export type {BleedProps} from './components/Bleed';
 export {Box} from './components/Box';
 export type {BoxProps} from './components/Box';
 
+export {Boxo} from './components/Boxo';
+export type {BoxoProps} from './components/Boxo';
+
 export {Breadcrumbs} from './components/Breadcrumbs';
 export type {BreadcrumbsProps} from './components/Breadcrumbs';
 
