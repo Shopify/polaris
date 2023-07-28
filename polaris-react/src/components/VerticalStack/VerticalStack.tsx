@@ -42,6 +42,8 @@ export interface VerticalStackProps extends React.AriaAttributes {
    * @default false
    */
   reverseOrder?: boolean;
+  /** Aria role */
+  role?: Extract<React.AriaRole, 'none'>;
 }
 
 export const VerticalStack = ({
