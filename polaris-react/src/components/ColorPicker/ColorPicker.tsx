@@ -8,7 +8,7 @@ import {
   hsbToString,
   hexToHsb,
 } from '../../utilities/color-transformers';
-import type {HSBAColor} from '../../utilities/color-types';
+import type {HSBAColor, HSBColor} from '../../utilities/color-types';
 import {useEventListener} from '../../utilities/use-event-listener';
 
 import type {SlidableProps} from './components';
@@ -21,11 +21,16 @@ import {
 } from './components';
 import styles from './ColorPicker.scss';
 
+interface Color extends HSBColor {
+  /** Level of transparency */
+  alpha?: HSBAColor['alpha'];
+}
+
 export interface ColorPickerProps {
   /** ID for the element */
   id?: string;
   /** The currently selected color */
-  color: HSBAColor;
+  color: Color;
   /** Allow user to select an alpha value */
   allowAlpha?: boolean;
   /** Allow HuePicker to take the full width */
