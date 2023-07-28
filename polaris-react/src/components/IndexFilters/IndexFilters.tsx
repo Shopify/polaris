@@ -14,6 +14,7 @@ import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
 import {useFeatures} from '../../utilities/features';
+import type {Never} from '../../types';
 
 import {useIsSticky} from './hooks';
 import {
@@ -21,6 +22,10 @@ import {
   SortButton,
   SearchFilterButton,
   UpdateButtons,
+} from './components';
+import type {
+  SearchFilterButtonPropsHiddenQuery,
+  SearchFilterButtonPropsPeekQuery,
 } from './components';
 import type {
   IndexFiltersPrimaryAction,
@@ -49,10 +54,14 @@ const transitionStyles = {
 
 type ExecutedCallback = (name: string) => Promise<boolean>;
 
-export interface IndexFiltersProps
+interface IndexFiltersPropsBase
   extends Omit<
       FiltersProps,
-      'focused' | 'children' | 'disableQueryField' | 'disableFilters'
+      | 'focused'
+      | 'children'
+      | 'disableQueryField'
+      | 'disableFilters'
+      | 'hideQueryField'
     >,
     Pick<TabsProps, 'tabs' | 'onSelect' | 'selected'> {
   /** The available sorting choices. If not present, the sort button will not show */
@@ -95,6 +104,12 @@ export interface IndexFiltersProps
   filteringAccessibilityTooltip?: string;
 }
 
+export type IndexFiltersProps =
+  | ((IndexFiltersPropsBase & SearchFilterButtonPropsHiddenQuery) &
+      Never<SearchFilterButtonPropsPeekQuery>)
+  | ((IndexFiltersPropsBase & SearchFilterButtonPropsPeekQuery) &
+      Never<SearchFilterButtonPropsHiddenQuery>);
+
 export function IndexFilters({
   tabs,
   selected,
@@ -129,6 +144,7 @@ export function IndexFilters({
   filteringAccessibilityLabel,
   filteringAccessibilityTooltip,
   hideQueryField,
+  peekQueryField,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -375,7 +391,9 @@ export function IndexFilters({
                               tooltipContent={searchFilterTooltip}
                               disabled={disabled}
                               hideFilters={hideFilters}
-                              hideQueryField={hideQueryField}
+                              {...(hideQueryField
+                                ? {hideQueryField}
+                                : {peekQueryField})}
                               style={{
                                 ...defaultStyle,
                                 ...transitionStyles[state],
