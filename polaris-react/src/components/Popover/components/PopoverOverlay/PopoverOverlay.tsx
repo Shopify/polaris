@@ -19,7 +19,6 @@ import type {PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
 import {PortalsManagerContext} from '../../../../utilities/portals';
 import type {PortalsContainerElement} from '../../../../utilities/portals';
-import {Box} from '../../../Box';
 
 export enum PopoverCloseSource {
   Click,
@@ -107,7 +106,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, parseInt(motion['duration-100'], 10));
+        }, parseInt(motion['motion-duration-100'], 10));
       });
     }
 
@@ -231,18 +230,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fluidContent && styles['Content-fluidContent'],
     );
 
-    const content = (
-      <div
-        id={id}
-        tabIndex={autofocusTarget === 'none' ? undefined : -1}
-        className={contentClassNames}
-        style={contentStyles}
-        ref={this.contentNode}
-      >
-        {renderPopoverContent(children, {captureOverscroll, sectioned})}
-      </div>
-    );
-
     return (
       <div className={className} {...overlay.props}>
         <EventListener event="click" handler={this.handleClick} />
@@ -254,15 +241,17 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <Box
-          position="relative"
-          overflowX="hidden"
-          overflowY="hidden"
-          background="bg"
-          borderRadius="2"
-        >
-          {content}
-        </Box>
+        <div className={styles.ContentContainer}>
+          <div
+            id={id}
+            tabIndex={autofocusTarget === 'none' ? undefined : -1}
+            className={contentClassNames}
+            style={contentStyles}
+            ref={this.contentNode}
+          >
+            {renderPopoverContent(children, {captureOverscroll, sectioned})}
+          </div>
+        </div>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

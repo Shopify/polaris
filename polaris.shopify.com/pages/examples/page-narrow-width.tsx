@@ -6,7 +6,7 @@ function PageExample() {
   return (
     <Page
       narrowWidth
-      breadcrumbs={[{content: 'Orders', url: '#'}]}
+      backAction={{content: 'Orders', url: '#'}}
       title="Add payment method"
       primaryAction={{content: 'Save', disabled: true}}
     >

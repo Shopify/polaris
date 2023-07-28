@@ -20,9 +20,14 @@
         "warning": "Aviso",
         "attention": "Atenção",
         "new": "Novo",
-        "critical": "Crítico"
+        "critical": "Crítico",
+        "readOnly": "Só de leitura",
+        "enabled": "Ativado"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Ignorar notificação"
     },
     "Button": {
       "spinnerAccessibilityLabel": "A carregar",

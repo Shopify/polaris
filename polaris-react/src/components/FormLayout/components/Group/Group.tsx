@@ -1,11 +1,11 @@
-import React, {Children} from 'react';
+import React, {Children, useId} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {Box} from '../../../Box';
 import {Item} from '../Item';
 import styles from '../../FormLayout.scss';
+import {useFeatures} from '../../../../utilities/features';
 
 export interface GroupProps {
   children?: React.ReactNode;
@@ -15,9 +15,10 @@ export interface GroupProps {
 }
 
 export function Group({children, condensed, title, helpText}: GroupProps) {
+  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(condensed ? styles.condensed : styles.grouped);
 
-  const id = useUniqueId('FormLayoutGroup');
+  const id = useId();
 
   let helpTextElement = null;
   let helpTextID: undefined | string;
@@ -30,9 +31,9 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
       <Box
         id={helpTextID}
         paddingBlockStart="2"
-        paddingInlineStart="5"
+        paddingInlineStart={polarisSummerEditions2023 ? '2' : '5'}
         paddingBlockEnd="0"
-        paddingInlineEnd="5"
+        paddingInlineEnd={polarisSummerEditions2023 ? '2' : '5'}
         color="text-subdued"
       >
         {helpText}

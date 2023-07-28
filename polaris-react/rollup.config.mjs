@@ -33,7 +33,6 @@ function generateConfig({output, targets, stylesConfig}) {
         // Options that may be present on the `babelConfig` object but
         // we want to override
         envName: 'production',
-        // @ts-expect-error targets is a valid babel option but @types/babel__core doesn't know that yet
         targets,
       }),
       replace({
@@ -54,7 +53,7 @@ function generateConfig({output, targets, stylesConfig}) {
 /** @type {import('rollup').RollupOptions} */
 export default [
   generateConfig({
-    targets: 'extends @shopify/browserslist-config, node 12.20',
+    targets: [...pkg.browserslist, 'node 16.17.0'],
     stylesConfig: {
       mode: 'standalone',
       output: 'styles.css',
@@ -69,14 +68,14 @@ export default [
         format: 'cjs',
         dir: path.dirname(pkg.main),
         preserveModules: true,
-        entryFileNames: '[name][assetExtname].js',
+        entryFileNames: '[name].js',
         exports: 'named',
       },
       {
         format: 'esm',
         dir: path.dirname(pkg.module),
         preserveModules: true,
-        entryFileNames: '[name][assetExtname].js',
+        entryFileNames: '[name].js',
       },
     ],
   }),
@@ -95,7 +94,7 @@ export default [
         format: 'esm',
         dir: path.dirname(pkg.esnext),
         preserveModules: true,
-        entryFileNames: '[name][assetExtname].esnext',
+        entryFileNames: '[name].esnext',
       },
     ],
   }),

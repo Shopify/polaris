@@ -9,12 +9,72 @@ import {
   Listbox,
   LegacyStack,
   AutoSelection,
+  VerticalStack,
+  HorizontalStack,
+  Text,
+  Box,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
+
+import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Listbox,
 } as ComponentMeta<typeof Listbox>;
+
+export function All() {
+  return (
+    <VerticalStack gap="8">
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          Default
+        </Text>
+        <Default />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With loading
+        </Text>
+        <WithLoading />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="4">
+        <Text as="h2" variant="headingXl">
+          With action
+        </Text>
+        <WithAction />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With custom element
+        </Text>
+        <WithCustomOptions />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With search
+        </Text>
+        <WithSearch />
+        <Box paddingBlockEnd="3" />
+      </VerticalStack>
+
+      <VerticalStack gap="2">
+        <Text as="h2" variant="headingXl">
+          With disabled text option
+        </Text>
+        <WithDisabledTextOption />
+      </VerticalStack>
+      <Box paddingBlockEnd="3" />
+    </VerticalStack>
+  );
+}
 
 export function Default() {
   return (
@@ -54,27 +114,77 @@ export function WithAction() {
   );
 }
 
-export function WithCustomElement() {
+export function WithCustomOptions() {
+  interface CustomerSegment {
+    id: string;
+    label: string;
+    value: string;
+    subscribers: number;
+  }
+
+  const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
+
+  const segments: CustomerSegment[] = [
+    {
+      label: 'All customers',
+      id: 'gid://shopify/CustomerSegment/1',
+      value: '0',
+      subscribers: 23,
+    },
+    {
+      label: 'VIP customers',
+      id: 'gid://shopify/CustomerSegment/2',
+      value: '1',
+      subscribers: 16,
+    },
+    {
+      label: 'New customers',
+      id: 'gid://shopify/CustomerSegment/3',
+      value: '2',
+      subscribers: 2,
+    },
+    {
+      label: 'Abandoned carts - last 30 days',
+      id: 'gid://shopify/CustomerSegment/4',
+      value: '3',
+      subscribers: 108,
+    },
+  ];
+
+  const handleSegmentSelect = (segmentIndex: string) => {
+    setSelectedSegmentIndex(Number(segmentIndex));
+  };
+
   return (
-    <Listbox accessibilityLabel="Listbox with custom element example">
-      <Listbox.Action value="ActionValue" divider>
-        Add item
-      </Listbox.Action>
-      <Listbox.Option value="UniqueValue-1">
-        <div>Item 1</div>
-      </Listbox.Option>
-      <Listbox.Option value="UniqueValue-2">
-        <div>Item 2</div>
-      </Listbox.Option>
-      <Listbox.Option value="UniqueValue-3">
-        <div>Item 3</div>
-      </Listbox.Option>
-      <Listbox.Loading accessibilityLabel="items are loading" />
+    <Listbox
+      onSelect={handleSegmentSelect}
+      accessibilityLabel="Listbox with custom element example"
+    >
+      {segments.map(({label, id, value, subscribers}) => {
+        const selected = segments[selectedSegmentIndex].value === value;
+
+        return (
+          <Listbox.Option key={id} value={value} selected={selected}>
+            <Listbox.TextOption selected={selected}>
+              <Box width="100%">
+                <HorizontalStack gap="2" align="space-between">
+                  {label}
+                  <Text as="span" color="subdued">
+                    {`${subscribers} subscribers`}
+                  </Text>
+                </HorizontalStack>
+              </Box>
+            </Listbox.TextOption>
+          </Listbox.Option>
+        );
+      })}
     </Listbox>
   );
 }
 
 export function WithSearch() {
+  const {polarisSummerEditions2023} = useFeatures();
+
   interface CustomerSegment {
     id: string;
     label: string;
@@ -277,7 +387,13 @@ export function WithSearch() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-color-text-interactive)'}}>
+      <span
+        style={{
+          color: polarisSummerEditions2023
+            ? 'var(--p-color-text-subdued)'
+            : 'var(--p-color-text-interactive)',
+        }}
+      >
         Show all 111 segments
       </span>
     </Listbox.Action>
@@ -336,7 +452,7 @@ export function WithSearch() {
           shadow
           style={{
             position: 'relative',
-            height: '292px',
+            height: polarisSummerEditions2023 ? '262px' : '292px',
             padding: 'var(--p-space-2) 0',
             borderBottomLeftRadius: 'var(--p-border-radius-2)',
             borderBottomRightRadius: 'var(--p-border-radius-2)',
@@ -346,6 +462,26 @@ export function WithSearch() {
           {listboxMarkup}
         </Scrollable>
       </div>
+    </LegacyCard>
+  );
+}
+
+export function WithDisabledTextOption() {
+  return (
+    <LegacyCard>
+      <Box paddingBlockStart="2" paddingBlockEnd="2">
+        <Listbox accessibilityLabel="Listbox with disabled item example">
+          <Listbox.Option value="UniqueValue-1">
+            <Listbox.TextOption>Item 1</Listbox.TextOption>
+          </Listbox.Option>
+          <Listbox.Option value="UniqueValue-2" disabled>
+            <Listbox.TextOption disabled>Item 2</Listbox.TextOption>
+          </Listbox.Option>
+          <Listbox.Option value="UniqueValue-3">
+            <Listbox.TextOption>Item 3</Listbox.TextOption>
+          </Listbox.Option>
+        </Listbox>
+      </Box>
     </LegacyCard>
   );
 }

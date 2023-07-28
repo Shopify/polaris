@@ -1,5 +1,89 @@
 # @shopify/polaris-migrator
 
+## 0.19.8
+
+### Patch Changes
+
+- Updated dependencies [[`5b85401fe`](https://github.com/Shopify/polaris/commit/5b85401fe56ee07f107358548669ed8f1d6ecceb), [`799819b68`](https://github.com/Shopify/polaris/commit/799819b687a319328bf36917ba79c6324197aba9)]:
+  - @shopify/polaris-tokens@7.5.2
+  - @shopify/stylelint-polaris@13.0.8
+
+## 0.19.7
+
+### Patch Changes
+
+- Updated dependencies [[`bed52546f`](https://github.com/Shopify/polaris/commit/bed52546f3852fea8f3c98505846a6f553dbd3c1)]:
+  - @shopify/polaris-tokens@7.5.1
+  - @shopify/stylelint-polaris@13.0.7
+
+## 0.19.6
+
+### Patch Changes
+
+- Updated dependencies [[`6d4baffde`](https://github.com/Shopify/polaris/commit/6d4baffdeb63d4cb1265b201b8490677d25e8c5e), [`3536e3aa0`](https://github.com/Shopify/polaris/commit/3536e3aa006896ae31c9148832230322ceaa823d), [`58406fd98`](https://github.com/Shopify/polaris/commit/58406fd98db3561fb4e3f55fc44f51202a98024f), [`26053bd3f`](https://github.com/Shopify/polaris/commit/26053bd3f13920ff30ff29c78d55b000b017cef2)]:
+  - @shopify/polaris-tokens@7.5.0
+  - @shopify/stylelint-polaris@13.0.6
+
+## 0.19.5
+
+### Patch Changes
+
+- Updated dependencies [[`af6337d60`](https://github.com/Shopify/polaris/commit/af6337d60e18cfd8adcc99aa425e1cc697b41ca0)]:
+  - @shopify/polaris-tokens@7.4.0
+  - @shopify/stylelint-polaris@13.0.5
+
+## 0.19.4
+
+### Patch Changes
+
+- Updated dependencies [[`5065fc199`](https://github.com/Shopify/polaris/commit/5065fc1991518507607d81d1f1b667c26773cf4d)]:
+  - @shopify/polaris-tokens@7.3.1
+  - @shopify/stylelint-polaris@13.0.4
+
+## 0.19.3
+
+### Patch Changes
+
+- Updated dependencies [[`b73666e63`](https://github.com/Shopify/polaris/commit/b73666e63c5ec5d0f47ecfb66683d8de0f79ab97), [`f9ceb4d02`](https://github.com/Shopify/polaris/commit/f9ceb4d0224b613b0ba1680bcb575714b1ad8300), [`84c015547`](https://github.com/Shopify/polaris/commit/84c015547c3b85938f326604216d819e1f31f6ab), [`bc141cf54`](https://github.com/Shopify/polaris/commit/bc141cf54497deb488f3b8e589e94741f06efd54)]:
+  - @shopify/polaris-tokens@7.3.0
+  - @shopify/stylelint-polaris@13.0.3
+
+## 0.19.2
+
+### Patch Changes
+
+- Updated dependencies [[`91ebe5792`](https://github.com/Shopify/polaris/commit/91ebe57922d26e3acb61047c79d7a157952d5486)]:
+  - @shopify/polaris-tokens@7.2.0
+  - @shopify/stylelint-polaris@13.0.2
+
+## 0.19.1
+
+### Patch Changes
+
+- Updated dependencies [[`9c9e80ed1`](https://github.com/Shopify/polaris/commit/9c9e80ed132715e1c91ee2dc0b9fcc13adb3afea)]:
+  - @shopify/polaris-tokens@7.1.0
+  - @shopify/stylelint-polaris@13.0.1
+
+## 0.19.0
+
+### Minor Changes
+
+- [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for NodeJS version 14 and set version 16 as minimum supported version
+
+### Patch Changes
+
+- Updated dependencies [[`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806)]:
+  - @shopify/polaris-tokens@7.0.0
+  - @shopify/stylelint-polaris@13.0.0
+
+## 0.18.2
+
+### Patch Changes
+
+- Updated dependencies [[`5a9b011d1`](https://github.com/Shopify/polaris/commit/5a9b011d14a0cc575f4fd34d9e4d8fcfeb0cd597), [`6ae3295e7`](https://github.com/Shopify/polaris/commit/6ae3295e78518112e611185e7a8f9b6287bd985a)]:
+  - @shopify/polaris-tokens@6.14.0
+  - @shopify/stylelint-polaris@12.0.1
+
 ## 0.18.1
 
 ### Patch Changes

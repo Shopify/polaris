@@ -3,6 +3,8 @@ import {
   CaretDownMinor,
   CaretUpMinor,
   SelectMinor,
+  ChevronDownMinor,
+  ChevronUpMinor,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
@@ -17,6 +19,7 @@ import {ActionList} from '../ActionList';
 import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
 import {useDisableClick} from '../../utilities/use-disable-interaction';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './Button.scss';
 
@@ -52,6 +55,8 @@ export interface ButtonProps extends BaseButton {
   connectedDisclosure?: ConnectedDisclosure;
   /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
+  /** Extra visual weight combined with indication of a positive action */
+  primarySuccess?: boolean;
 }
 
 interface CommonButtonProps
@@ -133,15 +138,18 @@ export function Button({
   fullWidth,
   connectedDisclosure,
   dataPrimaryLink,
+  primarySuccess,
 }: ButtonProps) {
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
 
+  const {polarisSummerEditions2023} = useFeatures();
+
   const className = classNames(
     styles.Button,
     primary && styles.primary,
-    outline && styles.outline,
+    outline && !polarisSummerEditions2023 && styles.outline,
     destructive && styles.destructive,
     primary && plain && styles.primaryPlain,
     isDisabled && styles.disabled,
@@ -155,7 +163,22 @@ export function Button({
     icon && children == null && styles.iconOnly,
     connectedDisclosure && styles.connectedDisclosure,
     removeUnderline && styles.removeUnderline,
+    primarySuccess && styles.primary,
+    primarySuccess && styles.success,
+    polarisSummerEditions2023 &&
+      destructive &&
+      !outline &&
+      !plain &&
+      styles.primary,
+    polarisSummerEditions2023 && outline && destructive && styles.destructive,
   );
+
+  const disclosureUpIcon = polarisSummerEditions2023
+    ? ChevronUpMinor
+    : CaretUpMinor;
+  const disclosureDownIcon = polarisSummerEditions2023
+    ? ChevronDownMinor
+    : CaretDownMinor;
 
   const disclosureMarkup = disclosure ? (
     <span className={styles.Icon}>
@@ -163,7 +186,15 @@ export function Button({
         className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
         <Icon
-          source={loading ? 'placeholder' : getDisclosureIconSource(disclosure)}
+          source={
+            loading
+              ? 'placeholder'
+              : getDisclosureIconSource(
+                  disclosure,
+                  disclosureUpIcon,
+                  disclosureDownIcon,
+                )
+          }
         />
       </div>
     </span>
@@ -247,7 +278,11 @@ export function Button({
         tabIndex={disabled ? -1 : undefined}
       >
         <span className={styles.Icon}>
-          <Icon source={CaretDownMinor} />
+          <Icon
+            source={
+              polarisSummerEditions2023 ? ChevronDownMinor : CaretDownMinor
+            }
+          />
         </span>
       </button>
     );
@@ -332,10 +367,12 @@ function isIconSource(x: any): x is IconSource {
 
 function getDisclosureIconSource(
   disclosure: NonNullable<ButtonProps['disclosure']>,
+  upIcon: IconSource,
+  downIcon: IconSource,
 ) {
   if (disclosure === 'select') {
     return SelectMinor;
   }
 
-  return disclosure === 'up' ? CaretUpMinor : CaretDownMinor;
+  return disclosure === 'up' ? upIcon : downIcon;
 }

@@ -20,9 +20,14 @@
         "warning": "Uyarı",
         "attention": "Dikkat",
         "new": "Yeni",
-        "critical": "Kritik"
+        "critical": "Kritik",
+        "readOnly": "Salt okunur",
+        "enabled": "Etkinleştirildi"
       },
       "progressAndStatus": "{statusLabel} - {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Bildirimi kapat"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Yükleniyor",

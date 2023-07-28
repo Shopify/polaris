@@ -17,3 +17,7 @@ $resource-list-variables: (
 @function resource-list($variable) {
   @return map-get($resource-list-variables, $variable);
 }
+
+@mixin item-separator {
+  border-top: var(--p-border-width-1) solid var(--p-color-border);
+}

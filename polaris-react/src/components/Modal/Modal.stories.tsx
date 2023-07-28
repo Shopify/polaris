@@ -563,3 +563,90 @@ export function WithLongContentNoScroll() {
     </Modal>
   );
 }
+
+export function EmbeddedIframe() {
+  return (
+    <div style={{height: '500px'}}>
+      <Modal
+        title="Embedded iFrame Modal"
+        open
+        onClose={() => {}}
+        noScroll
+        primaryAction={{content: 'Save'}}
+        src={`data:text/html;charset=utf-8,
+<style>
+  /* Modified from Josh's Custom CSS Reset https://www.joshwcomeau.com/css/custom-css-reset/ */
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html, body { height: 100%; }
+  body { line-height: 1.5; -webkit-font-smoothing: antialiased; }
+</style>
+<main>
+  <h1>
+    Hello.
+  </h1>
+</main>`}
+      />
+    </div>
+  );
+}
+
+export function SectionedProp() {
+  return (
+    <div style={{height: '500px'}}>
+      <Modal
+        title="Sectioned modal"
+        open
+        onClose={() => {}}
+        sectioned
+        primaryAction={{content: 'Save'}}
+      >
+        <Text as="h1">First section</Text>
+        <Text as="p">Second section</Text>
+        <Modal.Section>
+          <Text as="p">Nested section</Text>
+        </Modal.Section>
+        <Text as="p">Fourth section</Text>
+      </Modal>
+    </div>
+  );
+}
+
+export function Loading() {
+  return (
+    <div style={{height: '500px'}}>
+      <Modal
+        title="Loading modal"
+        open
+        onClose={() => {}}
+        loading
+        primaryAction={{content: 'Save'}}
+      >
+        <Text as="h1">First section</Text>
+        <Text as="p">Second section</Text>
+        <Text as="p">Third section</Text>
+      </Modal>
+    </div>
+  );
+}
+
+export function Fullscreen() {
+  return (
+    <div style={{height: '500px'}}>
+      <Modal
+        title="Fullscreen modal"
+        open
+        onClose={() => {}}
+        sectioned
+        fullScreen
+        primaryAction={{content: 'Save'}}
+      >
+        <Text as="h1">Fullscreen on small displays</Text>
+        <Text as="p">
+          When <code>(max-width: 47.9975em)</code>, the modal will be made{' '}
+          <code>height: 100%</code>
+        </Text>
+      </Modal>
+    </div>
+  );
+}

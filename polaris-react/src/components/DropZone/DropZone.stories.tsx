@@ -39,8 +39,7 @@ export function Default() {
               alt={file.name}
               source={
                 validImageTypes.includes(file.type)
-                  ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                    window.URL.createObjectURL(file)
+                  ? window.URL.createObjectURL(file)
                   : NoteMinor
               }
             />
@@ -93,7 +92,6 @@ export function WithImageFileUpload() {
           <Thumbnail
             size="small"
             alt={file.name}
-            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
@@ -152,8 +150,7 @@ export function WithSingleFileUpload() {
         alt={file.name}
         source={
           validImageTypes.includes(file.type)
-            ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-              window.URL.createObjectURL(file)
+            ? window.URL.createObjectURL(file)
             : NoteMinor
         }
       />
@@ -194,8 +191,7 @@ export function WithDropOnPage() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -214,7 +210,7 @@ export function WithDropOnPage() {
 
   return (
     <Page
-      breadcrumbs={[{content: 'Products'}]}
+      backAction={{content: 'Products'}}
       title="Jar With Lock-Lid"
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
@@ -254,7 +250,6 @@ export function AcceptsOnlySVGFiles() {
           <Thumbnail
             size="small"
             alt={file.name}
-            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
@@ -319,8 +314,7 @@ export function Nested() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -349,21 +343,76 @@ export function Nested() {
 
 export function MediumSized() {
   return (
-    <div style={{width: 114, height: 114}}>
-      <DropZone>
-        <DropZone.FileUpload />
-      </DropZone>
-    </div>
+    <VerticalStack gap="4">
+      <VerticalStack gap="2">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Medium sized Drop zone
+          </Text>
+        </div>
+        <div style={{width: 114, height: 114}}>
+          <DropZone>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </VerticalStack>
+      <VerticalStack gap="2">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Medium sized Drop zone with label and hint
+          </Text>
+        </div>
+        <div style={{width: 140, height: 114}}>
+          <DropZone label="Field label">
+            <DropZone.FileUpload actionHint="Accepts .gif" />
+          </DropZone>
+        </div>
+      </VerticalStack>
+    </VerticalStack>
   );
 }
 
 export function SmallSized() {
   return (
-    <div style={{width: 50, height: 50}}>
-      <DropZone>
-        <DropZone.FileUpload />
-      </DropZone>
-    </div>
+    <VerticalStack gap="4">
+      <VerticalStack gap="2">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Small sized Drop zone
+          </Text>
+        </div>
+        <div style={{width: 50, height: 50}}>
+          <DropZone>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </VerticalStack>
+      <VerticalStack gap="2">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Small sized Drop zone with error
+          </Text>
+          <Text as="p">Drag file in to see error state</Text>
+        </div>
+        <div style={{width: 50, height: 50}}>
+          <DropZone error>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </VerticalStack>
+      <VerticalStack gap="2">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Small sized Drop zone with disabled state
+          </Text>
+        </div>
+        <div style={{width: 50, height: 50}}>
+          <DropZone disabled>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </VerticalStack>
+    </VerticalStack>
   );
 }
 
@@ -391,8 +440,7 @@ export function WithCustomFileUploadText() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -440,8 +488,7 @@ export function WithCustomFileDialogTrigger() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -475,5 +522,72 @@ export function WithCustomFileDialogTrigger() {
         {uploadedFiles}
       </DropZone>
     </LegacyCard>
+  );
+}
+
+export function Error() {
+  const [files, setFiles] = useState([]);
+
+  const handleDropZoneDrop = useCallback(
+    (_dropFiles, acceptedFiles, _rejectedFiles) =>
+      setFiles((files) => [...files, ...acceptedFiles]),
+    [],
+  );
+
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+  const fileUpload = !files.length && <DropZone.FileUpload />;
+  const uploadedFiles = files.length > 0 && (
+    <div style={{padding: '0'}}>
+      <VerticalStack gap="4">
+        {files.map((file, index) => (
+          <HorizontalStack gap="4" align="center" key={index}>
+            <Thumbnail
+              size="small"
+              alt={file.name}
+              source={
+                validImageTypes.includes(file.type)
+                  ? window.URL.createObjectURL(file)
+                  : NoteMinor
+              }
+            />
+            <div>
+              {file.name}{' '}
+              <Text variant="bodySm" as="p">
+                {file.size} bytes
+              </Text>
+            </div>
+          </HorizontalStack>
+        ))}
+      </VerticalStack>
+    </div>
+  );
+
+  return (
+    <VerticalStack gap="2">
+      <div>
+        <Text as="h2" variant="headingMd">
+          Drop zone with error
+        </Text>
+        <Text as="p">Drag file in to see error state</Text>
+      </div>
+      <DropZone error onDrop={handleDropZoneDrop}>
+        {uploadedFiles}
+        {fileUpload}
+      </DropZone>
+    </VerticalStack>
+  );
+}
+
+export function Disabled() {
+  const handleDropZoneDrop = () => {
+    // eslint-disable-next-line no-alert
+    alert("this shouldn't be called");
+  };
+
+  return (
+    <DropZone disabled onDrop={handleDropZoneDrop}>
+      <DropZone.FileUpload />
+    </DropZone>
   );
 }

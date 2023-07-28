@@ -249,4 +249,93 @@ describe('<LegacyCard />', () => {
 
     expect(legacyCard.find(Section)).toContainReactText('Some card content.');
   });
+
+  describe('useLegacyCardPaddingObserverRef', () => {
+    it('adds padding class to header and last section', () => {
+      mountWithApp(
+        <LegacyCard title="My heading">
+          <LegacyCard.Section title="Section 1 heading">
+            Section 1 content
+          </LegacyCard.Section>
+          <LegacyCard.Section title="Section 2 heading">
+            Section 2 content
+          </LegacyCard.Section>
+        </LegacyCard>,
+        {features: {polarisSummerEditions2023: true}},
+      );
+
+      const firstSection = document.querySelectorAll('.FirstSectionPadding');
+      const lastSection = document.querySelectorAll('.LastSectionPadding');
+
+      expect(firstSection).toHaveLength(1);
+      expect(lastSection).toHaveLength(1);
+      expect(firstSection[0].classList).toContain('Header');
+      expect(lastSection[0].classList).toContain('Section');
+      expect(lastSection[0].innerHTML).toContain('Section 2 content');
+    });
+
+    it('does not add first section class if the first child is custom', () => {
+      mountWithApp(
+        <LegacyCard>
+          <p>hello world</p>
+          <LegacyCard.Section title="Section 2 heading">
+            Section 2 content
+          </LegacyCard.Section>
+        </LegacyCard>,
+        {features: {polarisSummerEditions2023: true}},
+      );
+
+      const firstSection = document.querySelectorAll('.FirstSectionPadding');
+      const lastSection = document.querySelectorAll('.LastSectionPadding');
+
+      expect(firstSection).toHaveLength(0);
+      expect(lastSection).toHaveLength(1);
+      expect(lastSection[0].classList).toContain('Section');
+      expect(lastSection[0].innerHTML).toContain('Section 2 content');
+    });
+
+    it('does not add any classes if there are no subcomponent children', () => {
+      mountWithApp(
+        <LegacyCard>
+          <h2>hello world</h2>
+          <p>hello world</p>
+        </LegacyCard>,
+        {features: {polarisSummerEditions2023: true}},
+      );
+
+      const firstSection = document.querySelectorAll('.FirstSectionPadding');
+      const lastSection = document.querySelectorAll('.LastSectionPadding');
+
+      expect(firstSection).toHaveLength(0);
+      expect(lastSection).toHaveLength(0);
+    });
+
+    it('adds padding classes when sections are nested', () => {
+      mountWithApp(
+        <LegacyCard>
+          <div>
+            <div>
+              <LegacyCard.Header>Header</LegacyCard.Header>
+            </div>
+            <LegacyCard.Section title="Section 1 heading">
+              Section 1 content
+            </LegacyCard.Section>
+          </div>
+          <LegacyCard.Section title="Section 2 heading">
+            Section 2 content
+          </LegacyCard.Section>
+        </LegacyCard>,
+        {features: {polarisSummerEditions2023: true}},
+      );
+
+      const firstSection = document.querySelectorAll('.FirstSectionPadding');
+      const lastSection = document.querySelectorAll('.LastSectionPadding');
+
+      expect(firstSection).toHaveLength(1);
+      expect(lastSection).toHaveLength(1);
+      expect(firstSection[0].classList).toContain('Header');
+      expect(lastSection[0].classList).toContain('Section');
+      expect(lastSection[0].innerHTML).toContain('Section 2 content');
+    });
+  });
 });

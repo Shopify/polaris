@@ -1,5 +1,75 @@
 # Changelog
 
+## 7.7.0
+
+### Minor Changes
+
+- [#9810](https://github.com/Shopify/polaris/pull/9810) [`6bb284d11`](https://github.com/Shopify/polaris/commit/6bb284d11f100b5813c27ded6cc9779eb7fc9a49) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated FirstViewMajor icon
+
+## 7.6.0
+
+### Minor Changes
+
+- [#9777](https://github.com/Shopify/polaris/pull/9777) [`8228de0f6`](https://github.com/Shopify/polaris/commit/8228de0f61e49caeab538de36b19616e19daecce) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added social media icons
+
+## 7.5.0
+
+### Minor Changes
+
+- [#9756](https://github.com/Shopify/polaris/pull/9756) [`c8e5779f0`](https://github.com/Shopify/polaris/commit/c8e5779f097c6509ff84deacf17c41d1b5ecfd41) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated bold and italic icon sets
+
+## 7.4.0
+
+### Minor Changes
+
+- [#9727](https://github.com/Shopify/polaris/pull/9727) [`ad287e384`](https://github.com/Shopify/polaris/commit/ad287e3842eb7e1ebf2f63079e3ffbc20271f8bb) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated LanguageFilledMinor, LanguageMinor, and added TranslateMajor
+
+* [#9718](https://github.com/Shopify/polaris/pull/9718) [`ae40558df`](https://github.com/Shopify/polaris/commit/ae40558dfc5ed5faabd7ba5812307a077b00a27f) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated pin minor and pin unfilled minor
+
+### Patch Changes
+
+- [#9730](https://github.com/Shopify/polaris/pull/9730) [`639395406`](https://github.com/Shopify/polaris/commit/6393954066675721b9d9a8c9543b78d97e8af19b) Thanks [@lgriffee](https://github.com/lgriffee)! - Fixed distinction between ascending and descending sorting icons
+
+## 7.3.0
+
+### Minor Changes
+
+- [#9520](https://github.com/Shopify/polaris/pull/9520) [`e566211ef`](https://github.com/Shopify/polaris/commit/e566211ef79c9d178615a85895007bdef45d755e) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated all icon styles
+
+## 7.2.0
+
+### Minor Changes
+
+- [#9581](https://github.com/Shopify/polaris/pull/9581) [`991d9fe69`](https://github.com/Shopify/polaris/commit/991d9fe696faaee22f112d30820943bff9f5ee35) Thanks [@Rusty-UX](https://github.com/Rusty-UX)! - Added BoldMajor, BoldMinor, IndentMajor, IndentMinor, ItalicMajor, ItalicMinor, OrderedListMajor, OrderedListMinor, OutdentMajor, OutdentMinor, TextColorMajor, TextColorMinor, UnderlineMajor, UnderlineMinor icons
+
+* [#9580](https://github.com/Shopify/polaris/pull/9580) [`75f08f32c`](https://github.com/Shopify/polaris/commit/75f08f32c2cf594a73d3d32276bab5bcf87490bf) Thanks [@kyledurand](https://github.com/kyledurand)! - Added optimize script
+
+## 7.1.0
+
+### Minor Changes
+
+- [#9328](https://github.com/Shopify/polaris/pull/9328) [`f907a55a1`](https://github.com/Shopify/polaris/commit/f907a55a1e144fb9d448ad55c5009b535bc598a4) Thanks [@richardmarquezshopify](https://github.com/richardmarquezshopify)! - Added GaugeMajor, GaugeMinor
+
+## 7.0.1
+
+### Patch Changes
+
+- [#9305](https://github.com/Shopify/polaris/pull/9305) [`753ff148f`](https://github.com/Shopify/polaris/commit/753ff148fbc5a74f0b1dd85d817bb2c0522d3001) Thanks [@samrose3](https://github.com/samrose3)! - Fixed npm release conflict with 7.0.0
+
+## 7.0.0
+
+### Major Changes
+
+- [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for NodeJS version 14 and set version 16 as minimum supported version
+
+## 6.16.0
+
+### Minor Changes
+
+- [#9153](https://github.com/Shopify/polaris/pull/9153) [`4e343a180`](https://github.com/Shopify/polaris/commit/4e343a180c837ef29d8117c10053f82eb17bc29b) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Updated thumbs up and down icons, major and minor sets
+
+* [#9109](https://github.com/Shopify/polaris/pull/9109) [`5be210bd5`](https://github.com/Shopify/polaris/commit/5be210bd54e95ad694e898750c3f40259b9216be) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated design for MarketingMajor icon
+
 ## 6.15.0
 
 ### Minor Changes

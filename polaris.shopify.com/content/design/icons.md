@@ -39,6 +39,10 @@ Literal symbols are easier to understand than abstract symbols. When possible, u
 
 The design of an icon communicates tone, much like the content it’s paired with. Focus on the effectiveness of the message instead of its ability to delight. In other words, prioritize representing the function, rather than how nice it looks.
 
+### Stick to the intended size
+
+Our system offers two icon sizes: major (20x20) and minor (16x16). Icons should not be scaled up or down. Every icon has been carefully crafted for their intended size and aligned to the pixel grid for sharpness and clarity. This ensures that icons can be easily understood and recognized by users.
+
 ---
 
 ## Creating icons

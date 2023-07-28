@@ -63,8 +63,8 @@ export function ProgressBar({
   const parsedProgress = parseProgress(progress, warningMessage);
 
   const progressBarDuration = hasAppearAnimation
-    ? motion['duration-500']
-    : motion['duration-0'];
+    ? motion['motion-duration-500']
+    : motion['motion-duration-0'];
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (

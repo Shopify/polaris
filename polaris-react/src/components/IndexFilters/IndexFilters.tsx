@@ -8,11 +8,12 @@ import {useToggle} from '../../utilities/use-toggle';
 import {useOnValueChange} from '../../utilities/use-on-value-change';
 import {HorizontalStack} from '../HorizontalStack';
 import {Spinner} from '../Spinner';
-import {AlphaFilters} from '../AlphaFilters';
-import type {AlphaFiltersProps} from '../AlphaFilters';
-import {AlphaTabs} from '../AlphaTabs';
-import type {AlphaTabsProps} from '../AlphaTabs';
+import {Filters} from '../Filters';
+import type {FiltersProps} from '../Filters';
+import {Tabs} from '../Tabs';
+import type {TabsProps} from '../Tabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
+import {useFeatures} from '../../utilities/features';
 
 import {useIsSticky} from './hooks';
 import {
@@ -50,10 +51,10 @@ type ExecutedCallback = (name: string) => Promise<boolean>;
 
 export interface IndexFiltersProps
   extends Omit<
-      AlphaFiltersProps,
+      FiltersProps,
       'focused' | 'children' | 'disableQueryField' | 'disableFilters'
     >,
-    Pick<AlphaTabsProps, 'tabs' | 'onSelect' | 'selected'> {
+    Pick<TabsProps, 'tabs' | 'onSelect' | 'selected'> {
   /** The available sorting choices. If not present, the sort button will not show */
   sortOptions?: SortButtonChoice[];
   /** The currently selected sort choice. Required if using sorting */
@@ -64,6 +65,8 @@ export interface IndexFiltersProps
   onSortKeyChange?: (value: string) => void;
   /** Optional callback when using saved views and changing the sort direction */
   onSortDirectionChange?: (value: string) => void;
+  /** Callback when the add filter button is clicked, to be passed to AlphaFilters. */
+  onAddFilterClick?: () => void;
   /** The primary action to display  */
   primaryAction?: IndexFiltersPrimaryAction;
   /** The cancel action to display */
@@ -99,6 +102,7 @@ export function IndexFilters({
   onSort,
   onSortKeyChange,
   onSortDirectionChange,
+  onAddFilterClick,
   sortOptions,
   sortSelected,
   queryValue = '',
@@ -135,6 +139,7 @@ export function IndexFilters({
     setFalse: setFiltersUnFocused,
     setTrue: setFiltersFocused,
   } = useToggle(false);
+  const {polarisSummerEditions2023} = useFeatures();
 
   useOnValueChange(mode, (newMode) => {
     if (newMode === IndexFiltersMode.Filtering) {
@@ -342,7 +347,7 @@ export function IndexFilters({
                           ...transitionStyles[state],
                         }}
                       >
-                        <AlphaTabs
+                        <Tabs
                           tabs={tabs}
                           selected={selected}
                           onSelect={onSelect}
@@ -366,7 +371,7 @@ export function IndexFilters({
                           {hideFilters && hideQueryField ? null : (
                             <SearchFilterButton
                               onClick={handleClickFilterButton}
-                              aria-label={searchFilterAriaLabel}
+                              label={searchFilterAriaLabel}
                               tooltipContent={searchFilterTooltip}
                               disabled={disabled}
                               hideFilters={hideFilters}
@@ -398,13 +403,14 @@ export function IndexFilters({
           {(state) => (
             <div ref={filteringRef}>
               {mode === IndexFiltersMode.Filtering ? (
-                <AlphaFilters
+                <Filters
                   queryValue={queryValue}
                   queryPlaceholder={queryPlaceholder}
                   onQueryChange={handleChangeSearch}
                   onQueryClear={handleClearSearch}
                   onQueryFocus={handleQueryFocus}
                   onQueryBlur={handleQueryBlur}
+                  onAddFilterClick={onAddFilterClick}
                   filters={filters}
                   appliedFilters={appliedFilters}
                   onClearAll={onClearAll}
@@ -417,7 +423,11 @@ export function IndexFilters({
                   mountedState={mdDown ? undefined : state}
                   borderlessQueryField
                 >
-                  <HorizontalStack gap="3" align="start" blockAlign="center">
+                  <HorizontalStack
+                    gap={polarisSummerEditions2023 ? '2' : '3'}
+                    align="start"
+                    blockAlign="center"
+                  >
                     <div
                       style={{
                         ...defaultStyle,
@@ -428,7 +438,7 @@ export function IndexFilters({
                     </div>
                     {sortMarkup}
                   </HorizontalStack>
-                </AlphaFilters>
+                </Filters>
               ) : null}
             </div>
           )}

@@ -20,9 +20,14 @@
         "warning": "Varování",
         "attention": "Upozornění",
         "new": "Novinka",
-        "critical": "Kritické"
+        "critical": "Kritické",
+        "readOnly": "Pouze pro čtení",
+        "enabled": "Aktivováno"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Zavřít notifikaci"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Načítání",

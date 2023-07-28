@@ -7,10 +7,11 @@ import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {FilterButton} from '../FilterButton';
+import {useFeatures} from '../../../../utilities/features';
 
 export interface SearchFilterButtonProps {
   onClick: () => void;
-  'aria-label': string;
+  label: string;
   disabled?: boolean;
   tooltipContent: string;
   hideFilters?: boolean;
@@ -20,24 +21,33 @@ export interface SearchFilterButtonProps {
 
 export function SearchFilterButton({
   onClick,
-  'aria-label': ariaLabel,
+  label,
   disabled,
   tooltipContent,
   style,
   hideFilters,
   hideQueryField,
 }: SearchFilterButtonProps) {
+  const {polarisSummerEditions2023: se23} = useFeatures();
+
+  const iconMarkup = (
+    <HorizontalStack gap="0">
+      {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
+      {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
+    </HorizontalStack>
+  );
+
+  const childMarkup = !se23 ? iconMarkup : null;
+
   const activator = (
     <div style={style}>
       <FilterButton
         onClick={onClick}
-        aria-label={ariaLabel}
+        label={label}
         disabled={disabled}
+        icon={se23 ? iconMarkup : undefined}
       >
-        <HorizontalStack gap="0">
-          {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
-          {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
-        </HorizontalStack>
+        {childMarkup}
       </FilterButton>
     </div>
   );

@@ -1,5 +1,83 @@
 # Changelog
 
+## 7.5.2
+
+### Patch Changes
+
+- [#9748](https://github.com/Shopify/polaris/pull/9748) [`5b85401fe`](https://github.com/Shopify/polaris/commit/5b85401fe56ee07f107358548669ed8f1d6ecceb) Thanks [@jesstelford](https://github.com/jesstelford)! - Updated experimental bg-info-subdued colors.
+
+* [#9747](https://github.com/Shopify/polaris/pull/9747) [`799819b68`](https://github.com/Shopify/polaris/commit/799819b687a319328bf36917ba79c6324197aba9) Thanks [@jesstelford](https://github.com/jesstelford)! - Updated experimental bg-magic-subdued colors.
+
+## 7.5.1
+
+### Patch Changes
+
+- [#9668](https://github.com/Shopify/polaris/pull/9668) [`bed52546f`](https://github.com/Shopify/polaris/commit/bed52546f3852fea8f3c98505846a6f553dbd3c1) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Experimental `shadow-bevel` integration
+
+## 7.5.0
+
+### Minor Changes
+
+- [#9628](https://github.com/Shopify/polaris/pull/9628) [`6d4baffde`](https://github.com/Shopify/polaris/commit/6d4baffdeb63d4cb1265b201b8490677d25e8c5e) Thanks [@yurm04](https://github.com/yurm04)! - Added border-radius-1_5-experimental token
+
+* [#9606](https://github.com/Shopify/polaris/pull/9606) [`3536e3aa0`](https://github.com/Shopify/polaris/commit/3536e3aa006896ae31c9148832230322ceaa823d) Thanks [@jesstelford](https://github.com/jesstelford)! - Export `breakpointAliases` to JS, facilitating easy breakpoint size iterations.
+
+- [#9552](https://github.com/Shopify/polaris/pull/9552) [`58406fd98`](https://github.com/Shopify/polaris/commit/58406fd98db3561fb4e3f55fc44f51202a98024f) Thanks [@yurm04](https://github.com/yurm04)! - Added border shadow inset experimental token
+
+### Patch Changes
+
+- [#9621](https://github.com/Shopify/polaris/pull/9621) [`26053bd3f`](https://github.com/Shopify/polaris/commit/26053bd3f13920ff30ff29c78d55b000b017cef2) Thanks [@samrose3](https://github.com/samrose3)! - Only use Inter for experimental styles
+
+## 7.4.0
+
+### Minor Changes
+
+- [#9617](https://github.com/Shopify/polaris/pull/9617) [`af6337d60`](https://github.com/Shopify/polaris/commit/af6337d60e18cfd8adcc99aa425e1cc697b41ca0) Thanks [@samrose3](https://github.com/samrose3)! - Added Inter reference as preferred sans font family
+
+## 7.3.1
+
+### Patch Changes
+
+- [#9507](https://github.com/Shopify/polaris/pull/9507) [`5065fc199`](https://github.com/Shopify/polaris/commit/5065fc1991518507607d81d1f1b667c26773cf4d) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Renamed all experimental `color-avatar-*` tokens
+
+## 7.3.0
+
+### Minor Changes
+
+- [#9490](https://github.com/Shopify/polaris/pull/9490) [`f9ceb4d02`](https://github.com/Shopify/polaris/commit/f9ceb4d0224b613b0ba1680bcb575714b1ad8300) Thanks [@laurkim](https://github.com/laurkim)! - Added new experimental token
+
+### Patch Changes
+
+- [#9478](https://github.com/Shopify/polaris/pull/9478) [`b73666e63`](https://github.com/Shopify/polaris/commit/b73666e63c5ec5d0f47ecfb66683d8de0f79ab97) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - bg-hover and bg-active experimental values updated.
+
+* [#9452](https://github.com/Shopify/polaris/pull/9452) [`84c015547`](https://github.com/Shopify/polaris/commit/84c015547c3b85938f326604216d819e1f31f6ab) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Update PSE23 values for magic colors
+
+- [#9485](https://github.com/Shopify/polaris/pull/9485) [`bc141cf54`](https://github.com/Shopify/polaris/commit/bc141cf54497deb488f3b8e589e94741f06efd54) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix bg-transparent-experimental value
+
+## 7.2.0
+
+### Minor Changes
+
+- [#9455](https://github.com/Shopify/polaris/pull/9455) [`91ebe5792`](https://github.com/Shopify/polaris/commit/91ebe57922d26e3acb61047c79d7a157952d5486) Thanks [@laurkim](https://github.com/laurkim)! - Added new experimental tokens
+
+## 7.1.0
+
+### Minor Changes
+
+- [#9385](https://github.com/Shopify/polaris/pull/9385) [`9c9e80ed1`](https://github.com/Shopify/polaris/commit/9c9e80ed132715e1c91ee2dc0b9fcc13adb3afea) Thanks [@kyledurand](https://github.com/kyledurand)! - Added new experimental tokens
+
+## 7.0.0
+
+### Major Changes
+
+- [#7597](https://github.com/Shopify/polaris/pull/7597) [`9e1350e22`](https://github.com/Shopify/polaris/commit/9e1350e22f286ead5a735e0c4dc6623f530f9806) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed support for NodeJS version 14 and set version 16 as minimum supported version
+
+## 6.14.0
+
+### Minor Changes
+
+- [#9144](https://github.com/Shopify/polaris/pull/9144) [`5a9b011d1`](https://github.com/Shopify/polaris/commit/5a9b011d14a0cc575f4fd34d9e4d8fcfeb0cd597) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Updated color-icon-magic to the correct shade of purple[500]
+
 ## 6.13.0
 
 ### Minor Changes

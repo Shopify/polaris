@@ -1,12 +1,21 @@
 import type {BreakpointsAlias} from '@shopify/polaris-tokens';
+import {breakpointsAliases} from '@shopify/polaris-tokens';
+
+import {isObject} from './is-object';
 
 type Falsy = boolean | undefined | null | 0;
 
-export type ResponsiveProp<T> =
-  | T
-  | {
-      [Breakpoint in BreakpointsAlias]?: T;
-    };
+type ResponsivePropConfig<T = string> = {
+  [Breakpoint in BreakpointsAlias]?: T;
+};
+
+export type ResponsiveProp<T> = T | ResponsivePropConfig<T>;
+
+export type ResponsiveValue<T = string> = undefined | ResponsiveProp<T>;
+
+type ResponsiveVariables<T> = {
+  [Breakpoint in `${string}-${BreakpointsAlias}`]?: T;
+};
 
 export function classNames(...classes: (string | Falsy)[]) {
   return classes.filter(Boolean).join(' ');
@@ -26,50 +35,68 @@ export function sanitizeCustomProperties(
   return nonNullValues.length ? Object.fromEntries(nonNullValues) : undefined;
 }
 
-export function getResponsiveProps(
+/**
+ * Given params like so:
+ * (
+ *   'button',
+ *   'padding',
+ *   'spacing',
+ *   {
+ *     sm: "4",
+ *     lg: "6"
+ *   }
+ * )
+ * Converts it to an object like so:
+ * {
+ *   '--pc-button-padding-sm': 'var(--p-spacing-4)',
+ *   '--pc-button-padding-lg': 'var(--p-spacing-6)'
+ * }
+ *
+ */
+export function getResponsiveProps<T = string>(
   componentName: string,
   componentProp: string,
   tokenSubgroup: string,
-  responsiveProp?:
-    | string
-    | {
-        [Breakpoint in BreakpointsAlias]?: string;
-      },
-) {
+  responsiveProp?: ResponsiveProp<T>,
+): ResponsiveVariables<T> {
   if (!responsiveProp) return {};
 
-  if (typeof responsiveProp === 'string') {
-    return {
-      [`--pc-${componentName}-${componentProp}-xs`]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
+  let result: ResponsivePropConfig;
+
+  if (!isObject(responsiveProp)) {
+    result = {
+      [breakpointsAliases[0]]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
     };
+  } else {
+    result = Object.fromEntries(
+      Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => [
+        breakpointAlias,
+        `var(--p-${tokenSubgroup}-${aliasOrScale})`,
+      ]),
+    );
   }
 
+  // Prefix each responsive key with the correct token name
   return Object.fromEntries(
-    Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => [
+    Object.entries(result).map(([breakpointAlias, value]) => [
       `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
-      `var(--p-${tokenSubgroup}-${aliasOrScale})`,
+      value,
     ]),
-  );
+  ) as unknown as ResponsiveVariables<T>;
 }
 
-export type ResponsiveValue =
-  | undefined
-  | string
-  | {
-      [Breakpoint in BreakpointsAlias]?: string;
-    };
-
-export function getResponsiveValue(
+export function getResponsiveValue<T = string>(
   componentName: string,
   componentProp: string,
-  responsiveProp?: ResponsiveValue,
-) {
+  responsiveProp?: ResponsiveValue<T>,
+): ResponsiveVariables<T> {
   if (!responsiveProp) return {};
 
-  if (typeof responsiveProp === 'string') {
+  if (!isObject(responsiveProp)) {
     return {
-      [`--pc-${componentName}-${componentProp}-xs`]: responsiveProp,
-    };
+      [`--pc-${componentName}-${componentProp}-${breakpointsAliases[0]}`]:
+        responsiveProp,
+    } as ResponsiveVariables<T>;
   }
 
   return Object.fromEntries(

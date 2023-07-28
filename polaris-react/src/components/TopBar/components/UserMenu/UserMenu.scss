@@ -4,7 +4,27 @@
   max-width: 160px;
   margin-right: var(--p-space-2);
 
+  #{$se23} & {
+    margin-right: 0;
+    /* stylelint-disable-next-line -- se23 */
+    padding: 0 var(--p-space-2) 0 10px;
+
+    /* stylelint-disable-next-line selector-max-combinators -- se23 */
+    > p {
+      font-size: var(--p-font-size-75);
+      line-height: var(--p-font-line-height-1);
+    }
+  }
+
   @media #{$p-breakpoints-md-down} {
     display: none;
+  }
+}
+
+.Message > p {
+  #{$se23} & {
+    color: var(--p-color-text-inverse-subdued);
+    font-size: var(--p-font-size-70-experimental);
+    line-height: var(--p-font-line-height-075-experimental);
   }
 }

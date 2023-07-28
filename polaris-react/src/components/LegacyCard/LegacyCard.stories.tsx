@@ -1,4 +1,5 @@
-import React from 'react';
+import type {PropsWithChildren} from 'react';
+import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
@@ -13,8 +14,10 @@ import {
   LegacyStack,
   Text,
   TextContainer,
+  VerticalStack,
+  Box,
 } from '@shopify/polaris';
-import {ProductsMajor} from '@shopify/polaris-icons';
+import {ProductsMajor, CancelMajor} from '@shopify/polaris-icons';
 
 export default {
   component: LegacyCard,
@@ -397,5 +400,169 @@ export function WithFlushedSections() {
         </TextContainer>
       </LegacyCard.Section>
     </LegacyCard>
+  );
+}
+
+export function All() {
+  return (
+    <VerticalStack gap="2">
+      <LegacyCard title="All headings">
+        <LegacyCard.Section title="Section 1 heading">
+          Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Section 2 heading">
+          Section 2 content
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="Non-text first item">
+        <LegacyCard.Section>
+          <Box>
+            <LegacyCard.Section subdued>Section 1 content</LegacyCard.Section>
+          </Box>
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Section 2 heading">
+          Section 2 content
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Section>No titles Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section>No titles Section 2 content</LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <div>
+          <LegacyCard.Header title="Content wrapped in div" />
+          <LegacyCard.Section title="Section 1 heading">
+            Section 1 in div
+          </LegacyCard.Section>
+          <LegacyCard.Section title="Section 2 heading">
+            Section 2 in div
+          </LegacyCard.Section>
+        </div>
+      </LegacyCard>
+      <LegacyCard>
+        <div>
+          <LegacyCard.Section title="Section 1 heading">
+            Section 1 in div
+          </LegacyCard.Section>
+          <LegacyCard.Section title="Section 2 heading">
+            Section 2 in div
+          </LegacyCard.Section>
+        </div>
+      </LegacyCard>
+      <LegacyCard>
+        <div>
+          <h2>Custom header in an h2</h2>
+        </div>
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section>Section 2 content</LegacyCard.Section>
+        <div>
+          <p>Custom footer in a p</p>
+        </div>
+      </LegacyCard>
+      <LegacyCard title="Sections are not siblings">
+        <div>
+          <LegacyCard.Section>
+            Section 1 content wrapped in its own div
+          </LegacyCard.Section>
+        </div>
+        <div>
+          <LegacyCard.Section>
+            Section 2 content wrapped in its own div
+          </LegacyCard.Section>
+        </div>
+      </LegacyCard>
+      <LegacyCard>
+        <div>Card content in div not in section</div>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Section subdued>
+          Subdued Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section>Section 2 content</LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section subdued>
+          Subdued section 2 content
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Section>Section 1 content</LegacyCard.Section>
+        <LegacyCard.Section subdued>
+          Subdued section 2 content
+        </LegacyCard.Section>
+        <LegacyCard.Section>Section 3 content</LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="Flush sections">
+        <LegacyCard.Section title="Section 1 heading">
+          Section 1 content
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Flush section heading" flush>
+          This should be flush
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard title="Dynamic children padding adjustment">
+        <DynamicChildren />
+        <DynamicChildren />
+      </LegacyCard>
+      <LegacyCard title="Only one header section" />
+      <LegacyCard>
+        <LegacyCard.Section title="First outside section">
+          <VerticalStack gap="2">
+            <Box>
+              <LegacyCard.Section subdued>
+                First nested section
+              </LegacyCard.Section>
+            </Box>
+            <Box>
+              <LegacyCard.Section subdued>
+                Second nested section
+              </LegacyCard.Section>
+            </Box>
+          </VerticalStack>
+        </LegacyCard.Section>
+        <LegacyCard.Section title="Second outside section">
+          <VerticalStack gap="2">
+            <Box>
+              <LegacyCard.Section subdued>
+                First nested section
+              </LegacyCard.Section>
+            </Box>
+            <Box>
+              <LegacyCard.Section subdued>
+                Second nested section
+              </LegacyCard.Section>
+            </Box>
+          </VerticalStack>
+        </LegacyCard.Section>
+      </LegacyCard>
+      <LegacyCard>
+        <LegacyCard.Header title="Header with icon button child">
+          <Button
+            icon={CancelMajor}
+            primary
+            plain
+            accessibilityLabel="Cancel button"
+          />
+        </LegacyCard.Header>
+      </LegacyCard>
+      <WithAllElements />
+    </VerticalStack>
+  );
+}
+
+function DynamicChildren() {
+  const [showChildren, setShowChildren] = useState(false);
+  return (
+    <div>
+      <LegacyCard.Section>
+        <Button onClick={() => setShowChildren(!showChildren)}>
+          {showChildren ? 'Hide ' : 'Show '}children
+        </Button>
+      </LegacyCard.Section>
+      {showChildren ? (
+        <LegacyCard.Section>Child section content</LegacyCard.Section>
+      ) : null}
+    </div>
   );
 }

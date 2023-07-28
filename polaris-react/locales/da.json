@@ -20,9 +20,14 @@
         "warning": "Advarsel",
         "attention": "Bemærk",
         "new": "Nyhed",
-        "critical": "Kritisk"
+        "critical": "Kritisk",
+        "readOnly": "Skrivebeskyttet",
+        "enabled": "Aktiveret"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Afvis meddelelse"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Indlæser",

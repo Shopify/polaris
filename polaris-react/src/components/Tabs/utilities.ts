@@ -1,7 +1,7 @@
-import type {TabDescriptor} from './types';
+import type {TabProps} from './types';
 
 export function getVisibleAndHiddenTabIndices(
-  tabs: TabDescriptor[],
+  tabs: TabProps[],
   selected: number,
   disclosureWidth: number,
   tabWidths: number[],

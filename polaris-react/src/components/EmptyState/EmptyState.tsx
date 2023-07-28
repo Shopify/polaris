@@ -9,6 +9,7 @@ import {Image} from '../Image';
 import {Text} from '../Text';
 import {VerticalStack} from '../VerticalStack';
 import {HorizontalStack} from '../HorizontalStack';
+import {useFeatures} from '../../utilities/features';
 
 import styles from './EmptyState.scss';
 
@@ -47,6 +48,7 @@ export function EmptyState({
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
+  const {polarisSummerEditions2023} = useFeatures();
   const withinContentContainer = useContext(WithinContentContext);
   const imageContainedClass = classNames(
     imageContained && styles.imageContained,
@@ -79,7 +81,12 @@ export function EmptyState({
 
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="4">
-      <Text as="span" color="subdued" alignment="center">
+      <Text
+        as="span"
+        color={polarisSummerEditions2023 ? undefined : 'subdued'}
+        alignment="center"
+        variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
+      >
         {footerContent}
       </Text>
     </Box>
@@ -92,22 +99,31 @@ export function EmptyState({
     : null;
 
   const headingMarkup = heading ? (
-    <Box paddingBlockEnd="4">
-      <Text variant={headingSize} as="p" alignment="center">
+    <Box paddingBlockEnd={polarisSummerEditions2023 ? '1_5-experimental' : '4'}>
+      <Text
+        variant={polarisSummerEditions2023 ? 'headingMd' : headingSize}
+        as="p"
+        alignment="center"
+      >
         {heading}
       </Text>
     </Box>
   ) : null;
 
   const childrenMarkup = children ? (
-    <Text as="span" color="subdued" alignment="center">
+    <Text
+      as="span"
+      color={polarisSummerEditions2023 ? undefined : 'subdued'}
+      alignment="center"
+      variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
+    >
       {children}
     </Text>
   ) : null;
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <Box paddingBlockEnd="6">
+      <Box paddingBlockEnd={polarisSummerEditions2023 ? '4' : '6'}>
         {headingMarkup}
         {childrenMarkup}
       </Box>

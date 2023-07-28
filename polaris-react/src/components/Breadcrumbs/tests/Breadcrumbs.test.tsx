@@ -8,31 +8,25 @@ import {Text} from '../../Text';
 describe('<Breadcrumbs />', () => {
   describe('url', () => {
     it('uses <a> tags when passed a LinkAction', () => {
-      const linkBreadcrumbs: LinkAction[] = [
-        {
-          content: 'Products',
-          url: 'https://www.shopify.com',
-        },
-      ];
-
+      const linkBackAction: LinkAction = {
+        content: 'Products',
+        url: 'https://www.shopify.com',
+      };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
+        <Breadcrumbs backAction={linkBackAction} />,
       );
 
       expect(breadcrumbs).toContainReactComponentTimes('a', 1);
     });
 
     it('passes the accessibilityLabel through to <a> tag', () => {
-      const linkBreadcrumbs: LinkAction[] = [
-        {
-          content: 'Products',
-          url: 'https://shopify.com',
-          accessibilityLabel: 'Go to Products',
-        },
-      ];
-
+      const linkBackAction: LinkAction = {
+        content: 'Products',
+        url: 'https://shopify.com',
+        accessibilityLabel: 'Go to Products',
+      };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumbs={linkBreadcrumbs} />,
+        <Breadcrumbs backAction={linkBackAction} />,
       );
 
       expect(breadcrumbs).toContainReactComponent('a', {
@@ -43,31 +37,25 @@ describe('<Breadcrumbs />', () => {
 
   describe('onAction()', () => {
     it('uses <button> tags when passed a CallbackAction', () => {
-      const callbackBreadcrumbs: CallbackAction[] = [
-        {
-          content: 'Products',
-          onAction: noop,
-        },
-      ];
-
+      const callbackBackAction: CallbackAction = {
+        content: 'Products',
+        onAction: noop,
+      };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumbs={callbackBreadcrumbs} />,
+        <Breadcrumbs backAction={callbackBackAction} />,
       );
 
       expect(breadcrumbs).toContainReactComponentTimes('button', 1);
     });
 
     it('passes accessibilityLabel through to <button> tag', () => {
-      const callbackBreadcrumbs: CallbackAction[] = [
-        {
-          content: 'Products',
-          onAction: noop,
-          accessibilityLabel: 'Go to Products',
-        },
-      ];
-
+      const callbackBackAction: CallbackAction = {
+        content: 'Products',
+        onAction: noop,
+        accessibilityLabel: 'Go to Products',
+      };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumbs={callbackBreadcrumbs} />,
+        <Breadcrumbs backAction={callbackBackAction} />,
       );
 
       expect(breadcrumbs).toContainReactComponent('button', {
@@ -77,15 +65,12 @@ describe('<Breadcrumbs />', () => {
 
     it('triggers the callback function when clicked', () => {
       const spy = jest.fn();
-      const callbackBreadcrumbs: CallbackAction[] = [
-        {
-          content: 'Products',
-          onAction: spy,
-        },
-      ];
-
+      const callbackBackAction: CallbackAction = {
+        content: 'Products',
+        onAction: spy,
+      };
       const breadcrumbs = mountWithApp(
-        <Breadcrumbs breadcrumbs={callbackBreadcrumbs} />,
+        <Breadcrumbs backAction={callbackBackAction} />,
       );
 
       breadcrumbs.find('button')!.trigger('onClick');
@@ -93,36 +78,17 @@ describe('<Breadcrumbs />', () => {
     });
   });
 
-  const linkBreadcrumbs: LinkAction[] = [
-    {
+  it('renders breadcrumb content as a visually hidden label when the new design language is enabled', () => {
+    const linkBackAction: LinkAction = {
       content: 'Products',
       url: 'https://www.shopify.com',
-    },
-  ];
-
-  it('renders breadcrumb content as a visually hidden label when the new design language is enabled', () => {
-    const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={linkBreadcrumbs} />);
+    };
+    const wrapper = mountWithApp(<Breadcrumbs backAction={linkBackAction} />);
 
     expect(wrapper).toContainReactComponent(Text, {
       children: 'Products',
       visuallyHidden: true,
     });
-  });
-
-  it('renders when not passed an array', () => {
-    const breadcrumb: LinkAction = {
-      content: 'Products',
-      url: 'https://www.shopify.com',
-    };
-    const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={breadcrumb} />);
-
-    expect(wrapper.html()).not.toBe('');
-  });
-
-  it('renders nothing when empty', () => {
-    const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={[]} />);
-
-    expect(wrapper.html()).toBe('');
   });
 });
 

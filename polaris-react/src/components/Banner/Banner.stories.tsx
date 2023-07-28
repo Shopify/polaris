@@ -1,9 +1,11 @@
+/* eslint-disable react/no-children-prop */
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   VerticalStack,
   Banner,
   Button,
+  Card,
   LegacyCard,
   HorizontalStack,
   Link,
@@ -12,6 +14,7 @@ import {
   Text,
   TextContainer,
 } from '@shopify/polaris';
+import {DiscountsMajor, DiscountsMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Banner,
@@ -175,6 +178,25 @@ export function WithFocus() {
 
 export function InACard() {
   return (
+    <Card roundedAbove="sm">
+      <VerticalStack gap="3">
+        <Text as="h2" variant="headingMd">
+          Online store dashboard
+        </Text>
+        <Banner onDismiss={() => {}}>
+          <Text as="p">
+            Use your finance report to get detailed information about your
+            business. <Link url="">Let us know what you think</Link>
+          </Text>
+        </Banner>
+        <Text as="p">View a summary of your online store’s performance.</Text>
+      </VerticalStack>
+    </Card>
+  );
+}
+
+export function InALegacyCard() {
+  return (
     <LegacyCard title="Online store dashboard" sectioned>
       <TextContainer>
         <Banner onDismiss={() => {}}>
@@ -205,5 +227,176 @@ export function WithEndJustifiedContent() {
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
       </VerticalStack>
     </Banner>
+  );
+}
+
+export function HideIcon() {
+  return (
+    <LegacyCard title="Edit customer" sectioned>
+      <Banner status="warning" hideIcon>
+        <Text as="p" fontWeight="semibold">
+          Changing the phone number for this customer will unsubscribe them from
+          SMS marketing text messages until they provide consent.
+        </Text>
+      </Banner>
+    </LegacyCard>
+  );
+}
+
+export function CustomIcon() {
+  return (
+    <Banner
+      status="info"
+      icon={DiscountsMajor}
+      title="Choose a plan and your discount will be applied at checkout."
+    />
+  );
+}
+
+export function All() {
+  return (
+    <VerticalStack gap="3">
+      <Text as="h2" variant="headingMd">
+        With dismiss and actions
+      </Text>
+      <AllBanners
+        onDismiss={() => {}}
+        action={{content: 'Primary action'}}
+        secondaryAction={{content: 'Secondary action'}}
+      />
+      <Text as="h2" variant="headingMd">
+        Default by status
+      </Text>
+      <AllBanners />
+      <Text as="h2" variant="headingMd">
+        No title
+      </Text>
+      <AllBanners
+        title={undefined}
+        onDismiss={() => {}}
+        children={
+          <Text as="p">
+            Changing the phone number for this customer will unsubscribe them
+            from SMS marketing text messages until they provide consent.
+          </Text>
+        }
+      />
+      <Text as="h2" variant="headingMd">
+        No title with actions
+      </Text>
+      <AllBanners
+        title={undefined}
+        action={{content: 'Primary action'}}
+        secondaryAction={{content: 'Secondary action'}}
+        children={
+          <Text as="p">
+            Changing the phone number for this customer will unsubscribe them
+            from SMS marketing text messages until they provide consent.
+          </Text>
+        }
+      />
+      <Text as="h2" variant="headingMd">
+        Only title
+      </Text>
+      <AllBanners children={undefined} onDismiss={() => {}} />
+      <Text as="h2" variant="headingMd">
+        Hide icon
+      </Text>
+      <AllBanners hideIcon onDismiss={() => {}} />
+      <Text as="h2" variant="headingMd">
+        Custom icon
+      </Text>
+      <AllBanners icon={DiscountsMajor} onDismiss={() => {}} />
+      <Text as="h2" variant="headingMd">
+        With links
+      </Text>
+      <AllBanners
+        onDismiss={() => {}}
+        children={
+          <>
+            Text with <Link url="">monochrome link</Link>.
+          </>
+        }
+      />
+      <Text as="h2" variant="headingMd">
+        In card
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card with dismiss
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners onDismiss={() => {}} />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card no title
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners title={undefined} onDismiss={() => {}} />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card no icon
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners hideIcon onDismiss={() => {}} />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card custom icon
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners icon={DiscountsMinor} onDismiss={() => {}} />
+      </LegacyCard>
+      <Text as="h2" variant="headingMd">
+        In card with links
+      </Text>
+      <LegacyCard sectioned>
+        <AllBanners
+          onDismiss={() => {}}
+          children={
+            <>
+              Text with <Link url="">monochrome link</Link>.
+            </>
+          }
+        />
+      </LegacyCard>
+    </VerticalStack>
+  );
+}
+
+function AllBanners(props) {
+  return (
+    <VerticalStack>
+      <Banner
+        title="Default"
+        children={<Text as="p">Default status</Text>}
+        {...props}
+      />
+      <Banner
+        title="Info"
+        status="info"
+        children={<Text as="p">Info status</Text>}
+        {...props}
+      />
+      <Banner
+        title="Success"
+        status="success"
+        children={<Text as="p">Success status</Text>}
+        {...props}
+      />
+      <Banner
+        title="Warning"
+        status="warning"
+        children={<Text as="p">Warning status</Text>}
+        {...props}
+      />
+      <Banner
+        title="Critical"
+        status="critical"
+        children={<Text as="p">Critical status</Text>}
+        {...props}
+      />
+    </VerticalStack>
   );
 }

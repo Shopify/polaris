@@ -1,5 +1,6 @@
 ---
 title: Polaris for VS Code
+navTitle: VS Code
 description: Official VS Code extension for building with the Shopify Polaris design system.
 icon: HintMajor
 order: 1

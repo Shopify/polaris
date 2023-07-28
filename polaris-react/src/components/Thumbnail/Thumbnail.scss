@@ -17,6 +17,34 @@
   border-radius: var(--p-border-radius-1);
   border: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
+  #{$se23} & {
+    border-radius: var(--p-border-radius-2);
+    border: none;
+
+    &::after {
+      content: '';
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      border-radius: var(--p-border-radius-2);
+      box-shadow: var(--p-shadow-border-inset-experimental);
+    }
+
+    &.sizeExtraSmall,
+    &.sizeExtraSmall::after {
+      border-radius: var(--p-border-radius-1_5-experimental);
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      // stylelint-disable-next-line -- SE23 styling
+      padding-bottom: 100%;
+    }
+  }
+
   &::after {
     content: '';
     display: block;

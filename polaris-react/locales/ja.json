@@ -20,9 +20,14 @@
         "warning": "警告",
         "attention": "宛先",
         "new": "新規",
-        "critical": "クリティカル"
+        "critical": "クリティカル",
+        "readOnly": "読み取り専用",
+        "enabled": "有効"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "通知を閉じる"
     },
     "Button": {
       "spinnerAccessibilityLabel": "読み込み中",

@@ -20,9 +20,14 @@
         "warning": "Advarsel",
         "attention": "Obs",
         "new": "Ny",
-        "critical": "Kritisk"
+        "critical": "Kritisk",
+        "readOnly": "Kun lesetilgang",
+        "enabled": "Aktivert"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Avvis varsel"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laster inn",

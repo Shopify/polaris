@@ -43,7 +43,7 @@ function InlineWithBlockAlignExample() {
       </HorizontalStack>
       <Divider />
       <HorizontalStack blockAlign="stretch">
-        <Placeholder width="106px" label="Strech" />
+        <Placeholder width="106px" label="Stretch" />
         <Placeholder width="106px" minHeight="20px" showBorder />
         <Placeholder width="106px" minHeight="20px" showBorder />
         <Placeholder width="106px" minHeight="20px" showBorder />

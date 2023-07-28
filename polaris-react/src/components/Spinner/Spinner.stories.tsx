@@ -14,6 +14,16 @@ export default {
   component: Spinner,
 } as ComponentMeta<typeof Spinner>;
 
+export function All() {
+  return (
+    <>
+      <Default />
+      <Small />
+      <WithFocusManagement />
+    </>
+  );
+}
+
 export function Default() {
   return <Spinner accessibilityLabel="Spinner example" size="large" />;
 }

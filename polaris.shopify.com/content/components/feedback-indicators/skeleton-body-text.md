@@ -22,7 +22,7 @@ examples:
 Skeleton body text component should:
 
 - Be used with [Skeleton page](https://polaris.shopify.com/components/skeleton-page) when page content loads all at once. Together, these components give merchants an indication of what the page layout will be once loaded.
-- Be used on its own, inside any content container component (like a [card](https://polaris.shopify.com/components/layout-and-structure/alpha-card)), and when content loads after the main page load.
+- Be used on its own, inside any content container component (like a [card](https://polaris.shopify.com/components/layout-and-structure/card)), and when content loads after the main page load.
 - Try to match the number of lines to the content being loaded so it gives an accurate representation.
 
 ---

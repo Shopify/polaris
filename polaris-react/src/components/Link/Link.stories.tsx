@@ -4,6 +4,9 @@ import {Banner, Link} from '@shopify/polaris';
 
 export default {
   component: Link,
+  parameters: {
+    disableAnchorTargetOverride: true,
+  },
 } as ComponentMeta<typeof Link>;
 
 export function Default() {

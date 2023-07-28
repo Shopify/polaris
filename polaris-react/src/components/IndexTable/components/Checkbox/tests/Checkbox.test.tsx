@@ -104,88 +104,74 @@ describe('<Checkbox />', () => {
   });
 
   describe('CheckboxWrapper', () => {
-    describe('small screen', () => {
-      const defaultTableProps = {
-        indexProps: {condensed: true},
-      };
+    const defaultTableProps = {
+      indexProps: {},
+    };
 
-      it('does not render', () => {
-        const checkbox = mountWithTable(<Checkbox />, defaultTableProps);
+    it('renders', () => {
+      const checkbox = mountWithTable(<Checkbox />, defaultTableProps);
 
-        expect(checkbox).not.toContainReactComponent(CheckboxWrapper);
+      expect(checkbox).toContainReactComponent(CheckboxWrapper);
+    });
+
+    describe('--pc-checkbox-offset', () => {
+      it('sets `--pc-checkbox-offset` custom property when position is 0', () => {
+        mountWithTable(<Checkbox />, {
+          ...defaultTableProps,
+          rowProps: {position: 0},
+        });
+
+        expect(setRootPropertySpy).toHaveBeenLastCalledWith(
+          '--pc-checkbox-offset',
+          '0px',
+        );
+      });
+
+      it('updates `--pc-checkbox-offset` custom property on resize when position is 0', () => {
+        mountWithTable(<Checkbox />, {
+          ...defaultTableProps,
+          rowProps: {position: 0},
+        });
+        setGetBoundingClientRect(200);
+
+        act(() => {
+          window.dispatchEvent(new Event('resize'));
+        });
+
+        expect(setRootPropertySpy).toHaveBeenLastCalledWith(
+          '--pc-checkbox-offset',
+          '200px',
+        );
+      });
+
+      it('does not set `--pc-checkbox-offset` custom property when position is above 1', () => {
+        mountWithTable(<Checkbox />, {
+          ...defaultTableProps,
+          rowProps: {position: 1},
+        });
+
+        expect(setRootPropertySpy).not.toHaveBeenCalled();
+      });
+
+      it('does not update `--pc-checkbox-offset` custom property on resize when position is above 1', () => {
+        mountWithTable(<Checkbox />, {
+          ...defaultTableProps,
+          rowProps: {position: 1},
+        });
+        setGetBoundingClientRect(200);
+
+        act(() => {
+          window.dispatchEvent(new Event('resize'));
+        });
+
+        expect(setRootPropertySpy).not.toHaveBeenCalled();
       });
     });
 
-    describe('large screen', () => {
-      const defaultTableProps = {
-        indexProps: {condensed: false},
-      };
+    it('renders table data', () => {
+      const checkbox = mountWithTable(<Checkbox />, defaultTableProps);
 
-      it('renders', () => {
-        const checkbox = mountWithTable(<Checkbox />, defaultTableProps);
-
-        expect(checkbox).toContainReactComponent(CheckboxWrapper);
-      });
-
-      describe('--pc-checkbox-offset', () => {
-        it('sets `--pc-checkbox-offset` custom property when position is 0', () => {
-          mountWithTable(<Checkbox />, {
-            ...defaultTableProps,
-            rowProps: {position: 0},
-          });
-
-          expect(setRootPropertySpy).toHaveBeenLastCalledWith(
-            '--pc-checkbox-offset',
-            '0px',
-          );
-        });
-
-        it('updates `--pc-checkbox-offset` custom property on resize when position is 0', () => {
-          mountWithTable(<Checkbox />, {
-            ...defaultTableProps,
-            rowProps: {position: 0},
-          });
-          setGetBoundingClientRect(200);
-
-          act(() => {
-            window.dispatchEvent(new Event('resize'));
-          });
-
-          expect(setRootPropertySpy).toHaveBeenLastCalledWith(
-            '--pc-checkbox-offset',
-            '200px',
-          );
-        });
-
-        it('does not set `--pc-checkbox-offset` custom property when position is above 1', () => {
-          mountWithTable(<Checkbox />, {
-            ...defaultTableProps,
-            rowProps: {position: 1},
-          });
-
-          expect(setRootPropertySpy).not.toHaveBeenCalled();
-        });
-
-        it('does not update `--pc-checkbox-offset` custom property on resize when position is above 1', () => {
-          mountWithTable(<Checkbox />, {
-            ...defaultTableProps,
-            rowProps: {position: 1},
-          });
-          setGetBoundingClientRect(200);
-
-          act(() => {
-            window.dispatchEvent(new Event('resize'));
-          });
-
-          expect(setRootPropertySpy).not.toHaveBeenCalled();
-        });
-      });
-
-      it('renders table data', () => {
-        const checkbox = mountWithTable(<Checkbox />, defaultTableProps);
-
-        expect(checkbox.find(Checkbox)).toContainReactComponent('td');
-      });
+      expect(checkbox.find(Checkbox)).toContainReactComponent('td');
     });
   });
 

@@ -8,7 +8,7 @@ import {
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function DataTableFiltersExample() {
+function FiltersWithADataTableExample() {
   const [availability, setAvailability] = useState<string[]>([]);
   const [productType, setProductType] = useState<string[]>([]);
   const [taggedWith, setTaggedWith] = useState<string>('');
@@ -128,17 +128,15 @@ function DataTableFiltersExample() {
   return (
     <div style={{height: '568px'}}>
       <LegacyCard>
-        <LegacyCard.Section>
-          <Filters
-            queryValue={queryValue}
-            queryPlaceholder="Search items"
-            filters={filters}
-            appliedFilters={appliedFilters}
-            onQueryChange={handleFiltersQueryChange}
-            onQueryClear={handleQueryValueRemove}
-            onClearAll={handleFiltersClearAll}
-          />
-        </LegacyCard.Section>
+        <Filters
+          queryValue={queryValue}
+          queryPlaceholder="Search items"
+          filters={filters}
+          appliedFilters={appliedFilters}
+          onQueryChange={handleFiltersQueryChange}
+          onQueryClear={handleQueryValueRemove}
+          onClearAll={handleFiltersClearAll}
+        />
         <DataTable
           columnContentTypes={[
             'text',
@@ -193,4 +191,4 @@ function DataTableFiltersExample() {
   }
 }
 
-export default withPolarisExample(DataTableFiltersExample);
+export default withPolarisExample(FiltersWithADataTableExample);

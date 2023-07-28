@@ -3,6 +3,9 @@ import React from 'react';
 import {ActionList} from '../../../ActionList';
 import type {ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
+import {Box} from '../../../Box';
+import {classNames} from '../../../../utilities/css';
+import {useFeatures} from '../../../../utilities/features';
 
 import {Message} from './components';
 import type {MessageProps} from './components';
@@ -25,6 +28,10 @@ export interface MenuProps {
   onClose(): void;
   /** A string that provides the accessibility labeling */
   accessibilityLabel?: string;
+  /** A custom width value that can be used to set the width of the menu */
+  customWidth?: string;
+  /** A boolean property indicating whether the menu is being used as a user menu */
+  userMenu?: boolean;
 }
 
 export function Menu(props: MenuProps) {
@@ -36,7 +43,10 @@ export function Menu(props: MenuProps) {
     activatorContent,
     message,
     accessibilityLabel,
+    customWidth,
+    userMenu,
   } = props;
+  const {polarisSummerEditions2023} = useFeatures();
 
   const badgeProps = message &&
     message.badge && {
@@ -63,7 +73,12 @@ export function Menu(props: MenuProps) {
         <div className={styles.ActivatorWrapper}>
           <button
             type="button"
-            className={styles.Activator}
+            className={classNames(
+              styles.Activator,
+              userMenu &&
+                polarisSummerEditions2023 &&
+                styles['Activator-userMenu'],
+            )}
             onClick={onOpen}
             aria-label={accessibilityLabel}
           >
@@ -77,8 +92,16 @@ export function Menu(props: MenuProps) {
       fullHeight
       preferredAlignment="right"
     >
-      <ActionList onActionAnyItem={onClose} sections={actions} />
-      {messageMarkup}
+      <div className={styles.MenuItems}>
+        <Box width={customWidth}>
+          <ActionList
+            actionRole="menuitem"
+            onActionAnyItem={onClose}
+            sections={actions}
+          />
+          {messageMarkup}
+        </Box>
+      </div>
     </Popover>
   );
 }

@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['14.17.0', '16.13.0']
+        node-version: ['16.17.0', '18.12.0']
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -43,9 +43,9 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris.shopify.com/.next/cache
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-${{ github.sha }}
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v2-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-
+            ${{ runner.os }}-node${{ matrix.node-version }}-test-v2-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile

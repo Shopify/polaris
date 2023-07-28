@@ -14,16 +14,20 @@ export function Small() {
   return <ProgressBar progress={40} size="small" />;
 }
 
-export function Colored() {
+export function WithColors() {
   return (
     <div>
       <ProgressBar progress={70} color="primary" />
       <br />
       <ProgressBar progress={30} color="success" />
+      <br />
+      <ProgressBar progress={30} color="critical" />
+      <br />
+      <ProgressBar progress={30} color="highlight" />
     </div>
   );
 }
 
-export function NonAnimated() {
+export function WithNoAnimation() {
   return <ProgressBar progress={80} animated={false} />;
 }

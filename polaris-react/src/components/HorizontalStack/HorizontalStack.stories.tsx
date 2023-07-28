@@ -127,7 +127,7 @@ export function WithBlockAlignBaseline() {
   );
 }
 
-export function WithBlockAlignStrech() {
+export function WithBlockAlignStretch() {
   return (
     <HorizontalStack blockAlign="stretch" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />

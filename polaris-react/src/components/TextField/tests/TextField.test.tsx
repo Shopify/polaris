@@ -81,7 +81,7 @@ describe('<TextField />', () => {
     );
 
     expect(textField).toContainReactComponent('input', {
-      'aria-labelledby': 'PolarisTextField1Label',
+      'aria-labelledby': ':r2:Label',
     });
   });
 
@@ -221,7 +221,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        id: 'PolarisTextField1',
+        id: ':ra:',
       });
     });
 
@@ -334,7 +334,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisTextField1HelpText',
+        'aria-describedby': ':ri:HelpText',
       });
       expect(textField.find('div')).toContainReactText('Some help');
     });
@@ -373,7 +373,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisTextField1Error',
+        'aria-describedby': ':rk:Error',
       });
     });
 
@@ -411,7 +411,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisTextField1Error PolarisTextField1HelpText',
+        'aria-describedby': ':rm:Error :rm:HelpText',
       });
 
       expect(textField.find('div')).toContainReactText('Some error');
@@ -1742,6 +1742,61 @@ describe('<TextField />', () => {
 
         jest.runOnlyPendingTimers();
         expect(spy).not.toHaveBeenCalled();
+      });
+
+      describe('keydown events', () => {
+        it('decrements by 1 multiple of step when type is integer and ArrowDown is pressed', () => {
+          const spy = jest.fn();
+          const initialValue = 10;
+          const step = 1;
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="integer"
+              value={initialValue.toString()}
+              step={step}
+              onChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'ArrowDown',
+            which: Key.DownArrow,
+            preventDefault: noop,
+          });
+          expect(spy).toHaveBeenCalledWith(
+            (initialValue - step).toString(),
+            'MyTextField',
+          );
+        });
+
+        it('increments by 1 multiple of step when type is integer and ArrowUp is pressed', () => {
+          const spy = jest.fn();
+          const initialValue = 10;
+          const step = 9;
+          const textField = mountWithApp(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="integer"
+              value={initialValue.toString()}
+              step={step}
+              largeStep={4}
+              onChange={spy}
+              autoComplete="off"
+            />,
+          );
+          textField.find('input')!.trigger('onKeyDown', {
+            key: 'ArrowUp',
+            which: Key.UpArrow,
+            preventDefault: noop,
+          });
+          expect(spy).toHaveBeenCalledWith(
+            (initialValue + step).toString(),
+            'MyTextField',
+          );
+        });
       });
     });
   });

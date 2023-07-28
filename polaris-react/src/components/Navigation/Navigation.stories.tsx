@@ -17,6 +17,12 @@ import {
   ProductsMajor,
   ProductsMinor,
   ViewMinor,
+  StarFilledMinor,
+  StarOutlineMinor,
+  OrdersFilledMinor,
+  HomeFilledMinor,
+  ProductsFilledMinor,
+  MarketingFilledMinor,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -92,14 +98,16 @@ export function WithMultipleSecondaryNavigations() {
             {
               url: '#',
               label: 'Home',
-              icon: HomeMinor,
+              icon: HomeFilledMinor,
+              matchedItemIcon: HomeMinor,
               onClick: () => setSelected('home'),
               matches: selected === 'home',
             },
             {
               url: '#',
               label: 'Orders',
-              icon: OrdersMinor,
+              icon: OrdersFilledMinor,
+              matchedItemIcon: OrdersMinor,
               badge: '15',
               onClick: () => setSelected('orders'),
               matches: selected === 'orders',
@@ -122,9 +130,59 @@ export function WithMultipleSecondaryNavigations() {
             },
             {
               url: '#',
+              label: 'Products',
+              icon: ProductsFilledMinor,
+              matchedItemIcon: ProductsMinor,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
+              subNavigationItems: [
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Inventory',
+                  onClick: () => setSelected('inventory'),
+                  matches: selected === 'inventory',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Transfers',
+                  onClick: () => setSelected('transfers'),
+                  matches: selected === 'transfers',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Collections',
+                  onClick: () => setSelected('collections'),
+                  matches: selected === 'collections',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Gift cards',
+                  onClick: () => setSelected('giftcards'),
+                  matches: selected === 'giftcards',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Price lists',
+                  onClick: () => setSelected('pricelists'),
+                  matches: selected === 'pricelists',
+                },
+              ],
+            },
+            {
+              url: '#',
               label: 'Marketing',
-              icon: MarketingMinor,
-              badge: '15',
+              icon: MarketingFilledMinor,
+              matchedItemIcon: MarketingMinor,
               onClick: () => setSelected('marketing'),
               matches: selected === 'marketing',
               subNavigationItems: [
@@ -141,22 +199,6 @@ export function WithMultipleSecondaryNavigations() {
                   label: 'Live view',
                   onClick: () => setSelected('liveView'),
                   matches: selected === 'liveView',
-                },
-              ],
-            },
-            {
-              url: '#',
-              label: 'Products',
-              icon: ProductsMinor,
-              onClick: () => setSelected('products'),
-              matches: selected === 'products',
-              subNavigationItems: [
-                {
-                  url: '#',
-                  disabled: false,
-                  label: 'Collections',
-                  onClick: () => setSelected('collections'),
-                  matches: selected === 'collections',
                 },
               ],
             },
@@ -204,6 +246,22 @@ export function WithAnActiveRootItemWithSecondaryNavigationItems() {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
+                  label: 'Inventory',
+                  onClick: () => setSelected('inventory'),
+                  matches: selected === 'inventory',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Transfers',
+                  onClick: () => setSelected('transfers'),
+                  matches: selected === 'transfers',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
                   label: 'Collections',
                   onClick: () => setSelected('collections'),
                   matches: selected === 'collections',
@@ -212,9 +270,17 @@ export function WithAnActiveRootItemWithSecondaryNavigationItems() {
                   url: '#',
                   excludePaths: ['#'],
                   disabled: false,
-                  label: 'Inventory',
-                  onClick: () => setSelected('inventory'),
-                  matches: selected === 'inventory',
+                  label: 'Gift cards',
+                  onClick: () => setSelected('giftcards'),
+                  matches: selected === 'giftcards',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Price lists',
+                  onClick: () => setSelected('pricelists'),
+                  matches: selected === 'pricelists',
                 },
               ],
             },
@@ -969,6 +1035,21 @@ export function WithVariousStatesAndSecondaryElements() {
                 },
               },
             },
+            {
+              url: '#',
+              excludePaths: ['#'],
+              label: 'Square app-like icon',
+              icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M0.8 0C0.358172 0 0 0.358172 0 0.8V15.2C0 15.6418 0.358172 16 0.8 16H15.2C15.6418 16 16 15.6418 16 15.2V0.8C16 0.358172 15.6418 0 15.2 0H0.8ZM2.4 4.4C2.4 3.95817 2.75817 3.6 3.2 3.6H12.8C13.2418 3.6 13.6 3.95817 13.6 4.4V5.0786L8 8.2786L2.4 5.0786V4.4ZM8.79382 9.66779L13.6 6.9214V11.6C13.6 12.0418 13.2418 12.4 12.8 12.4H3.2C2.75817 12.4 2.4 12.0418 2.4 11.6V6.9214L7.20618 9.66779C7.69807 9.94887 8.30193 9.94887 8.79382 9.66779Z"/></svg>',
+              shouldResizeIcon: true,
+              secondaryAction: {
+                url: '#',
+                accessibilityLabel: 'View your online store',
+                icon: ViewMinor,
+                tooltip: {
+                  content: 'View your online store',
+                },
+              },
+            },
           ]}
           action={{
             accessibilityLabel: 'Add sales channel',
@@ -1183,6 +1264,172 @@ export function WithBadgeAndSecondaryAction() {
                   matches: selected === 'inventory',
                 },
               ],
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
+export function ItemWithMatchedIcon() {
+  const [selected, setSelected] = React.useState('home');
+
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {
+              url: '#',
+              excludePaths: ['#'],
+              label: 'Home',
+              icon: StarFilledMinor,
+              matchedItemIcon: StarOutlineMinor,
+              onClick: () => setSelected('home'),
+              matches: selected === 'home',
+            },
+            {
+              url: '#',
+              excludePaths: ['#'],
+              label: 'Orders',
+              icon: StarFilledMinor,
+              matchedItemIcon: StarOutlineMinor,
+              badge: '15',
+              onClick: () => setSelected('orders'),
+              matches: selected === 'orders',
+              subNavigationItems: [
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Drafts',
+                  onClick: () => setSelected('drafts'),
+                  matches: selected === 'drafts',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Shipping labels',
+                  onClick: () => setSelected('shippinglabels'),
+                  matches: selected === 'shippinglabels',
+                },
+              ],
+            },
+            {
+              url: '#',
+              excludePaths: ['#'],
+              label: 'Marketing',
+              icon: StarFilledMinor,
+              matchedItemIcon: StarOutlineMinor,
+              onClick: () => setSelected('marketing'),
+              matches: selected === 'marketing',
+              subNavigationItems: [
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Reports',
+                  onClick: () => setSelected('reports'),
+                  matches: selected === 'reports',
+                },
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Live view',
+                  onClick: () => setSelected('liveView'),
+                  matches: selected === 'liveView',
+                },
+              ],
+            },
+            {
+              url: '#',
+              label: 'Products',
+              icon: StarFilledMinor,
+              matchedItemIcon: StarOutlineMinor,
+              onClick: () => setSelected('products'),
+              matches: selected === 'products',
+              subNavigationItems: [
+                {
+                  url: '#',
+                  excludePaths: ['#'],
+                  disabled: false,
+                  label: 'Collections',
+                  onClick: () => setSelected('collections'),
+                  matches: selected === 'collections',
+                },
+                {
+                  url: '#',
+                  disabled: false,
+                  label: 'Inventory',
+                  onClick: () => setSelected('inventory'),
+                  matches: selected === 'inventory',
+                },
+              ],
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
+export function ItemsWithoutUrl() {
+  const [selected, setSelected] = React.useState('all');
+
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          title="Templates"
+          items={[
+            {
+              label: 'All',
+              selected: selected === 'all',
+              onClick: () => setSelected('all'),
+            },
+            {
+              label: 'Announcements',
+              selected: selected === 'announcements',
+              onClick: () => setSelected('announcements'),
+            },
+            {
+              label: 'Holidays and occasions',
+              selected: selected === 'holidays',
+              onClick: () => setSelected('holidays'),
+            },
+            {
+              label: 'Newsletters',
+              selected: selected === 'newsletters',
+              onClick: () => setSelected('newsletters'),
+            },
+            {
+              label: 'Product highlights',
+              selected: selected === 'productHighlights',
+              onClick: () => setSelected('productHighlights'),
+            },
+            {
+              label: 'Promotions',
+              selected: selected === 'promotions',
+              onClick: () => setSelected('promotions'),
+              disabled: true,
+            },
+          ]}
+        />
+        <Navigation.Section
+          title="Custom"
+          items={[
+            {
+              label: 'Your templates',
+              selected: selected === 'yourTemplates',
+              onClick: () => setSelected('yourTemplates'),
+            },
+            {
+              label: 'Recent emails',
+              selected: selected === 'recentEmails',
+              onClick: () => setSelected('recentEmails'),
             },
           ]}
         />

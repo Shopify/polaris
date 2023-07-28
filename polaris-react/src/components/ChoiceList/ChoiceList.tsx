@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useId} from 'react';
 
-import {useUniqueId} from '../../utilities/unique-id';
 import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
@@ -22,7 +21,7 @@ interface Choice {
   disabled?: boolean;
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
-  /** Indicates that the choice is aria-describedBy the error message*/
+  /** Indicates that the choice is aria-describedBy the error message */
   describedByError?: boolean;
   /**  Method to render children with a choice */
   renderChildren?(isSelected: boolean): React.ReactNode | false;
@@ -64,7 +63,8 @@ export function ChoiceList({
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
 
-  const name = useUniqueId('ChoiceList', nameProp);
+  const uniqName = useId();
+  const name = nameProp ?? uniqName;
   const finalName = allowMultiple ? `${name}[]` : name;
 
   const titleMarkup = title ? (
@@ -112,6 +112,7 @@ export function ChoiceList({
             id={id}
             label={label}
             disabled={choiceDisabled || disabled}
+            fill={{xs: true, sm: false}}
             checked={choiceIsSelected(choice, selected)}
             helpText={helpText}
             onChange={handleChange}

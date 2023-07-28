@@ -77,7 +77,7 @@ export function Dialog({
       nodeRef={containerNode}
       mountOnEnter
       unmountOnExit
-      timeout={parseInt(motion['duration-200'], 10)}
+      timeout={parseInt(motion['motion-duration-200'], 10)}
       onEntered={onEntered}
       onExited={onExited}
     >

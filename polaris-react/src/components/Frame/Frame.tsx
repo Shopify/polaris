@@ -51,6 +51,10 @@ export interface FrameProps {
   skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
+  /** A boolean property indicating whether there should be space for a sidebar
+   * @default false
+   */
+  sidebar?: boolean;
 }
 
 type CombinedProps = FrameProps & {
@@ -112,6 +116,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       showMobileNavigation = false,
       skipToContentTarget,
       i18n,
+      sidebar,
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
     const navClassName = classNames(
@@ -137,7 +142,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           appear={isNavigationCollapsed}
           exit={isNavigationCollapsed}
           in={showMobileNavigation}
-          timeout={parseInt(motion['duration-300'], 10)}
+          timeout={parseInt(motion['motion-duration-300'], 10)}
           classNames={navTransitionClasses}
         >
           <div
@@ -177,16 +182,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           <Loading />
         </div>
       ) : null;
-
-    const contextualSaveBarMarkup = (
-      <CSSAnimation
-        in={showContextualSaveBar}
-        className={styles.ContextualSaveBar}
-        type="fade"
-      >
-        <ContextualSaveBar {...this.contextualSaveBar} />
-      </CSSAnimation>
-    );
 
     const topBarMarkup = topBar ? (
       <div
@@ -240,6 +235,17 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       styles.Frame,
       navigation && styles.hasNav,
       topBar && styles.hasTopBar,
+      sidebar && styles.hasSidebar,
+    );
+
+    const contextualSaveBarMarkup = (
+      <CSSAnimation
+        in={showContextualSaveBar}
+        className={styles.ContextualSaveBar}
+        type="fade"
+      >
+        <ContextualSaveBar {...this.contextualSaveBar} />
+      </CSSAnimation>
     );
 
     const navigationOverlayMarkup =

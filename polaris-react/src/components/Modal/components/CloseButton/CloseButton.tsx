@@ -1,9 +1,11 @@
 import React from 'react';
-import {MobileCancelMajor} from '@shopify/polaris-icons';
+import {MobileCancelMajor, CancelMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
+import {useFeatures} from '../../../../utilities/features';
 import {Icon} from '../../../Icon';
+import {Button} from '../../../Button';
 
 import styles from './CloseButton.scss';
 
@@ -19,8 +21,18 @@ export function CloseButton({
   onClick,
 }: CloseButtonProps) {
   const i18n = useI18n();
+  const {polarisSummerEditions2023} = useFeatures();
 
-  return (
+  return polarisSummerEditions2023 ? (
+    <Button
+      primary
+      plain
+      pressed={pressed}
+      icon={CancelMajor}
+      onClick={onClick}
+      accessibilityLabel={i18n.translate('Polaris.Common.close')}
+    />
+  ) : (
     <button
       onClick={onClick}
       className={classNames(

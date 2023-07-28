@@ -26,10 +26,7 @@ export function mountWithListboxProvider(
     },
     render(element: React.ReactElement) {
       return (
-        <PolarisTestProvider
-          i18n={translations}
-          features={{newDesignLanguage: true}}
-        >
+        <PolarisTestProvider i18n={translations}>
           <ListboxContext.Provider value={context}>
             {element}
           </ListboxContext.Provider>

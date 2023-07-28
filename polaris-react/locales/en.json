@@ -28,9 +28,14 @@
         "warning": "Warning",
         "critical": "Critical",
         "attention": "Attention",
-        "new": "New"
+        "new": "New",
+        "readOnly": "Read-only",
+        "enabled": "Enabled"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Dismiss notification"
     },
     "Button": {
       "spinnerAccessibilityLabel": "Loading",

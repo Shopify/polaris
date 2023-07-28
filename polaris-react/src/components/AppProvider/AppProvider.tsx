@@ -15,13 +15,12 @@ import {
 } from '../../utilities/sticky-manager';
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
-import {FeaturesContext} from '../../utilities/features';
-import type {FeaturesConfig} from '../../utilities/features';
 import {
-  UniqueIdFactory,
-  UniqueIdFactoryContext,
-  globalIdGeneratorFactory,
-} from '../../utilities/unique-id';
+  FeaturesContext,
+  classNamePolarisSummerEditions2023,
+  classNamePolarisSummerEditions2023ShadowBevelOptOut,
+} from '../../utilities/features';
+import type {FeaturesConfig} from '../../utilities/features';
 
 import './AppProvider.scss';
 import './global.scss';
@@ -45,13 +44,11 @@ export interface AppProviderProps {
 export class AppProvider extends Component<AppProviderProps, State> {
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
-  private uniqueIdFactory: UniqueIdFactory;
 
   constructor(props: AppProviderProps) {
     super(props);
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
-    this.uniqueIdFactory = new UniqueIdFactory(globalIdGeneratorFactory);
 
     const {i18n, linkComponent} = this.props;
 
@@ -66,6 +63,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     if (document != null) {
       this.stickyManager.setContainer(document);
       this.setBodyStyles();
+      this.setRootAttributes();
     }
   }
 
@@ -74,6 +72,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
     linkComponent: prevLinkComponent,
   }: AppProviderProps) {
     const {i18n, linkComponent} = this.props;
+
+    this.setRootAttributes();
 
     if (i18n === prevI18n && linkComponent === prevLinkComponent) {
       return;
@@ -90,8 +90,34 @@ export class AppProvider extends Component<AppProviderProps, State> {
     document.body.style.color = 'var(--p-color-text)';
   };
 
+  setRootAttributes = () => {
+    const features = this.getFeatures();
+
+    document.documentElement.classList.toggle(
+      classNamePolarisSummerEditions2023,
+      features.polarisSummerEditions2023,
+    );
+
+    document.documentElement.classList.toggle(
+      classNamePolarisSummerEditions2023ShadowBevelOptOut,
+      features.polarisSummerEditions2023ShadowBevelOptOut,
+    );
+  };
+
+  getFeatures = () => {
+    const {features} = this.props;
+
+    return {
+      ...features,
+      polarisSummerEditions2023: features?.polarisSummerEditions2023 ?? false,
+      polarisSummerEditions2023ShadowBevelOptOut:
+        features?.polarisSummerEditions2023ShadowBevelOptOut ?? false,
+    };
+  };
+
   render() {
-    const {children, features = {}} = this.props;
+    const {children} = this.props;
+    const features = this.getFeatures();
 
     const {intl, link} = this.state;
 
@@ -100,19 +126,17 @@ export class AppProvider extends Component<AppProviderProps, State> {
         <I18nContext.Provider value={intl}>
           <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
             <StickyManagerContext.Provider value={this.stickyManager}>
-              <UniqueIdFactoryContext.Provider value={this.uniqueIdFactory}>
-                <LinkContext.Provider value={link}>
-                  <MediaQueryProvider>
-                    <PortalsManager>
-                      <FocusManager>
-                        <EphemeralPresenceManager>
-                          {children}
-                        </EphemeralPresenceManager>
-                      </FocusManager>
-                    </PortalsManager>
-                  </MediaQueryProvider>
-                </LinkContext.Provider>
-              </UniqueIdFactoryContext.Provider>
+              <LinkContext.Provider value={link}>
+                <MediaQueryProvider>
+                  <PortalsManager>
+                    <FocusManager>
+                      <EphemeralPresenceManager>
+                        {children}
+                      </EphemeralPresenceManager>
+                    </FocusManager>
+                  </PortalsManager>
+                </MediaQueryProvider>
+              </LinkContext.Provider>
             </StickyManagerContext.Provider>
           </ScrollLockManagerContext.Provider>
         </I18nContext.Provider>

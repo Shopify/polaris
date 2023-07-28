@@ -1,4 +1,6 @@
-import type {MetadataProperties} from '../types';
+import type {MetadataProperties, Experimental} from '../types';
+
+type SpaceScaleExperimental = Experimental<'1_5'>;
 
 export type SpaceScale =
   | '0'
@@ -17,7 +19,8 @@ export type SpaceScale =
   | '20'
   | '24'
   | '28'
-  | '32';
+  | '32'
+  | SpaceScaleExperimental;
 
 export type SpaceTokenName = `space-${SpaceScale}`;
 
@@ -39,6 +42,9 @@ export const space: {
   },
   'space-1': {
     value: '4px',
+  },
+  'space-1_5-experimental': {
+    value: '6px',
   },
   'space-2': {
     value: '8px',

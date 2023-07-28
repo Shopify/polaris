@@ -26,10 +26,16 @@
 
 .Title {
   margin-bottom: var(--p-space-5);
+  #{$se23} & {
+    margin-bottom: var(--p-space-2);
+  }
 }
 
 .Buttons {
   margin-top: var(--p-space-5);
+  #{$se23} & {
+    margin-top: var(--p-space-2);
+  }
 }
 
 .Container {
@@ -40,6 +46,9 @@
   right: var(--p-space-4);
   top: var(--p-space-4);
   position: absolute;
+  #{$se23} & svg {
+    fill: var(--p-color-icon-subdued);
+  }
 }
 
 .hasDismiss {

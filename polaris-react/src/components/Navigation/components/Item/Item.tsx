@@ -1,86 +1,31 @@
-import React, {useEffect, useContext, useState, useRef} from 'react';
+import React, {useEffect, useContext, useState, useRef, useId} from 'react';
 import type {MouseEvent, ReactNode} from 'react';
 
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 import {classNames} from '../../../../utilities/css';
+import {useFeatures} from '../../../../utilities/features';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
 import {Icon} from '../../../Icon';
-import type {IconProps} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import styles from '../../Navigation.scss';
 import {Tooltip} from '../../../Tooltip';
-import type {TooltipProps} from '../../../Tooltip';
+import {MatchState} from '../../types';
+import type {ItemProps, SecondaryAction, ItemURLDetails} from '../../types';
 
-import {Secondary} from './components';
+import {SecondaryNavigation} from './components';
 
 export const MAX_SECONDARY_ACTIONS = 2;
 const TOOLTIP_HOVER_DELAY = 1000;
 
-interface ItemURLDetails {
-  url?: string;
-  matches?: boolean;
-  exactMatch?: boolean;
-  matchPaths?: string[];
-  excludePaths?: string[];
-  external?: boolean;
-}
-
-export interface SubNavigationItem extends ItemURLDetails {
-  url: string;
-  label: string;
-  disabled?: boolean;
-  new?: boolean;
-  onClick?(): void;
-}
-
-interface SecondaryAction {
-  accessibilityLabel: string;
-  icon: IconProps['source'];
-  url?: string;
-  onClick?(): void;
-  tooltip?: TooltipProps;
-}
-
-type SecondaryActions = [SecondaryAction] | [SecondaryAction, SecondaryAction];
-
-export interface ItemProps extends ItemURLDetails {
-  icon?: IconProps['source'];
-  badge?: ReactNode;
-  label: string;
-  disabled?: boolean;
-  accessibilityLabel?: string;
-  selected?: boolean;
-  exactMatch?: boolean;
-  new?: boolean;
-  subNavigationItems?: SubNavigationItem[];
-  /** @deprecated Use secondaryActions instead. */
-  secondaryAction?: SecondaryAction;
-  secondaryActions?: SecondaryActions;
-  displayActionsOnHover?: boolean;
-  onClick?(): void;
-  onToggleExpandedState?(): void;
-  expanded?: boolean;
-  shouldResizeIcon?: boolean;
-  truncateText?: boolean;
-}
-
-enum MatchState {
-  MatchForced,
-  MatchUrl,
-  MatchPaths,
-  Excluded,
-  NoMatch,
-}
-
 export function Item({
   url,
-  icon,
+  icon: baseIcon,
+  matchedItemIcon,
   label,
   subNavigationItems = [],
   secondaryAction,
@@ -101,13 +46,18 @@ export function Item({
   expanded,
   shouldResizeIcon,
   truncateText,
+  showVerticalLine,
+  showVerticalHoverPointer,
+  onMouseEnter,
+  onMouseLeave,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
-  const secondaryNavigationId = useUniqueId('SecondaryNavigation');
+  const secondaryNavigationId = useId();
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const navTextRef = useRef<HTMLSpanElement>(null);
   const [isTruncated, setIsTruncated] = useState(false);
+  const {polarisSummerEditions2023} = useFeatures();
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
@@ -133,6 +83,34 @@ export function Item({
       <Indicator pulse />
     </span>
   ) : null;
+
+  const matchState = matchStateForItem(
+    {url, matches, exactMatch, matchPaths, excludePaths},
+    location,
+  );
+
+  const matchingSubNavigationItems = subNavigationItems.filter((item) => {
+    const subMatchState = matchStateForItem(item, location);
+    return (
+      subMatchState === MatchState.MatchForced ||
+      subMatchState === MatchState.MatchUrl ||
+      subMatchState === MatchState.MatchPaths
+    );
+  });
+
+  const childIsActive = matchingSubNavigationItems.length > 0;
+
+  const selected =
+    selectedOverride == null
+      ? matchState === MatchState.MatchForced ||
+        matchState === MatchState.MatchUrl ||
+        matchState === MatchState.MatchPaths
+      : selectedOverride;
+
+  const icon =
+    polarisSummerEditions2023 && (selected || childIsActive)
+      ? matchedItemIcon ?? baseIcon
+      : baseIcon;
 
   const iconMarkup = icon ? (
     <div
@@ -190,6 +168,9 @@ export function Item({
             className={classNames(
               styles.ItemInnerWrapper,
               disabled && styles.ItemInnerDisabled,
+              polarisSummerEditions2023
+                ? selectedOverride && styles['ItemInnerWrapper-selected']
+                : undefined,
             )}
           >
             <button
@@ -255,29 +236,6 @@ export function Item({
     <>{secondaryActionMarkup ? wrappedBadgeMarkup : null}</>
   );
 
-  const matchState = matchStateForItem(
-    {url, matches, exactMatch, matchPaths, excludePaths},
-    location,
-  );
-
-  const matchingSubNavigationItems = subNavigationItems.filter((item) => {
-    const subMatchState = matchStateForItem(item, location);
-    return (
-      subMatchState === MatchState.MatchForced ||
-      subMatchState === MatchState.MatchUrl ||
-      subMatchState === MatchState.MatchPaths
-    );
-  });
-
-  const childIsActive = matchingSubNavigationItems.length > 0;
-
-  const selected =
-    selectedOverride == null
-      ? matchState === MatchState.MatchForced ||
-        matchState === MatchState.MatchUrl ||
-        matchState === MatchState.MatchPaths
-      : selectedOverride;
-
   const showExpanded = selected || expanded || childIsActive;
 
   const canBeActive = subNavigationItems.length === 0 || !childIsActive;
@@ -285,9 +243,16 @@ export function Item({
   const itemClassName = classNames(
     styles.Item,
     disabled && styles['Item-disabled'],
-    selected && canBeActive && styles['Item-selected'],
+    polarisSummerEditions2023
+      ? (selected || childIsActive) && styles['Item-selected']
+      : selected && canBeActive && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
+    showVerticalLine && polarisSummerEditions2023 && styles['Item-line'],
+    matches && polarisSummerEditions2023 && styles['Item-line-pointer'],
+    showVerticalHoverPointer &&
+      polarisSummerEditions2023 &&
+      styles['Item-hover-pointer'],
   );
 
   let secondaryNavigationMarkup: ReactNode = null;
@@ -297,39 +262,16 @@ export function Item({
       ({url: firstUrl}, {url: secondUrl}) => secondUrl.length - firstUrl.length,
     )[0];
 
-    const SecondaryNavigationClassName = classNames(
-      styles.SecondaryNavigation,
-      !icon && styles['SecondaryNavigation-noIcon'],
-    );
-
     secondaryNavigationMarkup = (
-      <div className={SecondaryNavigationClassName}>
-        <Secondary expanded={showExpanded} id={secondaryNavigationId}>
-          {subNavigationItems.map((item) => {
-            const {label, ...rest} = item;
-            const onClick = () => {
-              if (onNavigationDismiss) {
-                onNavigationDismiss();
-              }
-
-              if (item.onClick && item.onClick !== onNavigationDismiss) {
-                item.onClick();
-              }
-            };
-
-            return (
-              <Item
-                key={label}
-                {...rest}
-                label={label}
-                matches={item === longestMatch}
-                onClick={onClick}
-                truncateText={truncateText}
-              />
-            );
-          })}
-        </Secondary>
-      </div>
+      <SecondaryNavigation
+        ItemComponent={Item}
+        icon={icon}
+        longestMatch={longestMatch}
+        subNavigationItems={subNavigationItems}
+        showExpanded={showExpanded}
+        truncateText={truncateText}
+        secondaryNavigationId={secondaryNavigationId}
+      />
     );
   }
 
@@ -372,12 +314,25 @@ export function Item({
   };
 
   return (
-    <li className={className}>
+    <li
+      className={className}
+      onMouseEnter={() => {
+        onMouseEnter?.(label);
+      }}
+      onMouseLeave={onMouseLeave}
+    >
       <div className={styles.ItemWrapper}>
         <div
           className={classNames(
             styles.ItemInnerWrapper,
-            selected && canBeActive && styles['ItemInnerWrapper-selected'],
+            polarisSummerEditions2023
+              ? (selected &&
+                  childIsActive &&
+                  styles['ItemInnerWrapper-open']) ||
+                  (selected &&
+                    !childIsActive &&
+                    styles['ItemInnerWrapper-selected'])
+              : selected && canBeActive && styles['ItemInnerWrapper-selected'],
             displayActionsOnHover &&
               styles['ItemInnerWrapper-display-actions-on-hover'],
             disabled && styles.ItemInnerDisabled,

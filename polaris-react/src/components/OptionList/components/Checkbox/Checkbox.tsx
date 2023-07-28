@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useId} from 'react';
 import {TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {Icon} from '../../../Icon';
 
 import styles from './Checkbox.scss';
@@ -28,7 +27,8 @@ export function Checkbox({
   value,
   role,
 }: CheckboxProps) {
-  const id = useUniqueId('Checkbox', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
   const className = classNames(styles.Checkbox, active && styles.active);
 

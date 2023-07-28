@@ -2,10 +2,12 @@ import type {Metadata} from './metadata';
 
 export type Entry<T> = [keyof T, T[keyof T]];
 export type Entries<T> = Entry<T>[];
+export type Experimental<T extends string> = `${T}-experimental`;
 
 export interface MetadataProperties {
   description?: string;
   value: string;
+  valueExperimental?: string;
 }
 
 export interface MetadataGroup {

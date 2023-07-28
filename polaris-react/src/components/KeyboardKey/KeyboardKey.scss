@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $key-base-dimension: 28px;
 
 .KeyboardKey {
@@ -18,6 +20,14 @@ $key-base-dimension: 28px;
   text-align: center;
   min-width: $key-base-dimension;
   user-select: none;
+
+  #{$se23} & {
+    background: var(--p-color-bg-secondary-experimental);
+    border-radius: var(--p-border-radius-1);
+    color: var(--p-color-text-subdued);
+    box-shadow: none;
+    margin-bottom: 0;
+  }
 }
 
 .small {
@@ -29,4 +39,9 @@ $key-base-dimension: 28px;
   font-size: var(--p-font-size-75);
   height: var(--p-space-5);
   min-width: var(--p-space-5);
+
+  #{$se23} & {
+    line-height: var(--p-font-size-200);
+    padding: var(--p-space-05) var(--p-space-1);
+  }
 }

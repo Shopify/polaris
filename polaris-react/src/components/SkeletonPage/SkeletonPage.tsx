@@ -16,8 +16,6 @@ export interface SkeletonPageProps {
   narrowWidth?: boolean;
   /** Shows a skeleton over the primary action */
   primaryAction?: boolean;
-  /** @deprecated Use backAction instead */
-  breadcrumbs?: boolean;
   /** Shows a skeleton over the backAction */
   backAction?: boolean;
   /** The child elements to render in the skeleton page. */
@@ -31,7 +29,6 @@ export function SkeletonPage({
   primaryAction,
   title = '',
   backAction,
-  breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
 
@@ -58,16 +55,15 @@ export function SkeletonPage({
     />
   ) : null;
 
-  const breadcrumbMarkup =
-    breadcrumbs || backAction ? (
-      <Box
-        borderRadius="1"
-        background="bg-strong"
-        minHeight="2.25rem"
-        minWidth="2.25rem"
-        maxWidth="2.25rem"
-      />
-    ) : null;
+  const backActionMarkup = backAction ? (
+    <Box
+      borderRadius="1"
+      background="bg-strong"
+      minHeight="2.25rem"
+      minWidth="2.25rem"
+      maxWidth="2.25rem"
+    />
+  ) : null;
 
   return (
     <VerticalStack gap="4" inlineAlign="center">
@@ -96,7 +92,7 @@ export function SkeletonPage({
           >
             <HorizontalStack gap="4" align="space-between" blockAlign="center">
               <HorizontalStack gap="4">
-                {breadcrumbMarkup}
+                {backActionMarkup}
                 <Box paddingBlockStart="1" paddingBlockEnd="1">
                   {titleContent}
                 </Box>
