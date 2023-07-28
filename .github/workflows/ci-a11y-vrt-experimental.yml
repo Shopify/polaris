@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - next
+      - beta
     paths:
       - 'polaris-react/src/**'
       - 'polaris-react/playground/**'
