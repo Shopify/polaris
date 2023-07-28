@@ -25,7 +25,7 @@ export interface ColorPickerProps {
   /** ID for the element */
   id?: string;
   /** The currently selected color */
-  color: Color;
+  color: HSBAColor;
   /** Allow user to select an alpha value */
   allowAlpha?: boolean;
   /** Allow HuePicker to take the full width */
