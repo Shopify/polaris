@@ -419,15 +419,15 @@ export interface FilterInterface {
  * interface MessageBasics {
  *   timestamp?: number;
  * }
- * interface MessageWithText extends MessageBasics {
+ * interface WithText {
  *   text: string;
  * }
- * interface MessageWithAttachment extends MessageBasics {
+ * interface WithAttachment {
  *   attachment: string;
  * }
  * type Message =
- *   | (MessageWithText & Never<MessageWithAttachment>)
- *   | (MessageWithAttachment & Never<MessageWithText>);
+ *   | ((MessageBasics & WithText) & Never<WithAttachment>)
+ *   | ((MessageBasics & WithAttachment) & Never<WithText>);
  *
  * // 👍 OK
  * let foo: Message = {attachment: 'a'}
@@ -440,3 +440,12 @@ export type Never<T> = {
   // The +? forces optionality of the type
   [P in keyof T]+?: never;
 };
+
+/* Super useful for debugging! From https://stackoverflow.com/a/69288824 */
+export type ExpandRecursively<T> = T extends (...args: infer A) => infer R
+  ? (...args: ExpandRecursively<A>) => ExpandRecursively<R>
+  : T extends object
+  ? T extends infer O
+    ? {[K in keyof O]: ExpandRecursively<O[K]>}
+    : never
+  : T;
