@@ -101,6 +101,7 @@ $activator-variables: (
     #{$se23} & {
       background-color: var(--p-color-bg-inverse-active);
 
+      // stylelint-disable -- se23 text needs to be lighter to pass a11y on --p-color-bg-inverse-active
       p {
         color: var(--p-color-text-inverse);
       }
