@@ -175,6 +175,7 @@
     // stylelint-enable
     position: relative;
     margin-left: calc(var(--p-space-5) + var(--p-space-05));
+    max-width: 94%;
 
     &::before {
       content: '';
