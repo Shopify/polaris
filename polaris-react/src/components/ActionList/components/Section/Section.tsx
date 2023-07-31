@@ -125,11 +125,15 @@ export function Section({
         as={polarisSummerEditions2023 ? 'div' : 'ul'}
         padding={polarisSummerEditions2023 ? '1_5-experimental' : '2'}
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
-        {...(sectionRole && {role: sectionRole})}
+        {...(sectionRole && !polarisSummerEditions2023 && {role: sectionRole})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
         {polarisSummerEditions2023 ? (
-          <VerticalStack gap="1" as="ul">
+          <VerticalStack
+            gap="1"
+            as="ul"
+            {...(sectionRole && {role: sectionRole})}
+          >
             {actionMarkup}
           </VerticalStack>
         ) : (

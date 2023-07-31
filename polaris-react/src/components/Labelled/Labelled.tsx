@@ -62,7 +62,11 @@ export function Labelled({
   ) : null;
 
   const helpTextMarkup = helpText ? (
-    <div className={styles.HelpText} id={helpTextID(id)}>
+    <div
+      className={styles.HelpText}
+      id={helpTextID(id)}
+      aria-disabled={disabled}
+    >
       <Text as="span" color="subdued" breakWord>
         {helpText}
       </Text>
