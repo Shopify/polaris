@@ -14,6 +14,4 @@ module.exports = {
     '\\.svg$': '<rootDir>/config/jest-transform-image.js',
   },
   watchPathIgnorePatterns: ['<rootDir>/build', '<rootDir>/node_modules'],
-  testPathIgnorePatterns:
-    process.env.SE23 === 'on' ? ['\\.preexperimental.test.tsx$'] : [],
 };
