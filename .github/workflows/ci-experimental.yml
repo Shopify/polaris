@@ -1,4 +1,4 @@
-name: CI
+name: CI experimental
 
 on:
   push:
@@ -44,9 +44,9 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris.shopify.com/.next/cache
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v2-${{ github.sha }}
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-experimental-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node-version }}-test-v2-
+            ${{ runner.os }}-node${{ matrix.node-version }}-test-experimental-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
@@ -61,4 +61,6 @@ jobs:
         run: yarn type-check
 
       - name: Test
+        env:
+          SE23: 'on'
         run: yarn test
