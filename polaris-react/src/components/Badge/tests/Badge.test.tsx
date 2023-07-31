@@ -33,19 +33,47 @@ describe('<Badge />', () => {
     });
   });
 
-  it('does not add pip styles when progress is not provided', () => {
-    const badge = mountWithApp(<Badge status="attention" />);
+  describe('polarisSummerEditions2023 false', () => {
+    it('does not add pip styles when progress is not provided', () => {
+      const badge = mountWithApp(<Badge status="attention" />, {
+        features: {polarisSummerEditions2023: false},
+      });
 
-    expect(badge).not.toContainReactComponent('span', {
-      className: 'Pip',
+      expect(badge).not.toContainReactComponent('span', {
+        className: 'Pip',
+      });
+    });
+
+    it('renders with pip styles when progress is provided', () => {
+      const badge = mountWithApp(<Badge progress="incomplete" />, {
+        features: {polarisSummerEditions2023: false},
+      });
+
+      expect(badge).toContainReactComponent('span', {
+        className: 'Pip progressIncomplete',
+      });
     });
   });
 
-  it('renders with pip styles when progress is provided', () => {
-    const badge = mountWithApp(<Badge progress="incomplete" />);
+  describe('polarisSummerEditions2023 true', () => {
+    it('does not add pip styles when progress is not provided', () => {
+      const badge = mountWithApp(<Badge status="attention" />, {
+        features: {polarisSummerEditions2023: true},
+      });
 
-    expect(badge).toContainReactComponent('span', {
-      className: 'Pip progressIncomplete',
+      expect(badge).not.toContainReactComponent(Icon, {
+        accessibilityLabel: 'Attention',
+      });
+    });
+
+    it('renders with pip styles when progress is provided', () => {
+      const badge = mountWithApp(<Badge progress="incomplete" />, {
+        features: {polarisSummerEditions2023: true},
+      });
+
+      expect(badge).toContainReactComponent(Icon, {
+        accessibilityLabel: 'Incomplete',
+      });
     });
   });
 
