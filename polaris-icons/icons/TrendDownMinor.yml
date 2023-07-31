@@ -1,0 +1,11 @@
+name: Trend Down
+set: minor
+description: Used to visually indicate an downward trend in data.
+keywords:
+  - analytics
+authors:
+  - Miru Alves
+  - Matt Vickers
+version: 1
+date_added: 2023-07-31
+date_modified: 2023-07-31
