@@ -1,4 +1,4 @@
-name: Accessibility and Visual Regression Tests
+name: Accessibility and Visual Regression Experimental Tests
 
 on:
   push:
@@ -46,9 +46,9 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris-react/build-internal/cache
-          key: ${{ runner.os }}-accessibility-test-v1-${{ github.sha }}
+          key: ${{ runner.os }}-accessibility-test-experimental-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-accessibility-test-v1-
+            ${{ runner.os }}-accessibility-test-experimental-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
@@ -57,7 +57,7 @@ jobs:
         run: yarn build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: STORYBOOK_SE23='on' yarn workspace @shopify/polaris run storybook:build --quiet
 
       - name: Run accessibility test
         run: node ./polaris-react/scripts/accessibility-check.js
@@ -86,9 +86,9 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris-react/build-internal/cache
-          key: ${{ runner.os }}-visual-regression-test-v1-${{ github.sha }}
+          key: ${{ runner.os }}-visual-regression-test-experimental-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-visual-regression-test-v1-
+            ${{ runner.os }}-visual-regression-test-experimental-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
