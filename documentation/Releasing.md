@@ -36,9 +36,9 @@ When merging this PR into `next`, a new prerelease is created with the `beta` di
 
 Steps for creating a new prerelease branch if `next` doesn't currently exist.
 
-1. create a new `next` branch for prerelease development
-2. run `yarn changeset pre enter beta`
-3. adjust the release workflow file (`.github/workflows/release.yml`) to run on the `next` branch:
+1. Create a new `next` branch for prerelease development
+2. Run `yarn changeset pre enter beta`
+3. Adjust the release workflow file (`.github/workflows/release.yml`) to run on the `next` branch:
     ```yml
     on:
       push:
@@ -46,9 +46,9 @@ Steps for creating a new prerelease branch if `next` doesn't currently exist.
           - main
           - next
     ```
-4. branch future work from the `next` branch
-5. create changesets, merge to the prerelease branch (`next`)
-6. releasing PRs should now be generated for the prerelease branch 🎉
+4. Branch future work from the `next` branch
+5. Create changesets, merge to the prerelease branch (`next`)
+6. Releasing PRs should now be generated for the prerelease branch 🎉
 
 ### Who can perform a version release?
 
