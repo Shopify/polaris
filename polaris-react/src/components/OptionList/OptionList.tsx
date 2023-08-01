@@ -135,7 +135,7 @@ export function OptionList({
             paddingInlineStart={
               polarisSummerEditions2023 ? '1_5-experimental' : '2'
             }
-            paddingBlockEnd="2"
+            paddingBlockEnd={polarisSummerEditions2023 ? '1' : '2'}
             paddingInlineEnd={
               polarisSummerEditions2023 ? '1_5-experimental' : '2'
             }
@@ -197,10 +197,10 @@ export function OptionList({
           <Box
             key={title || `noTitle-${sectionIndex}`}
             as="li"
-            paddingBlockStart={isFirstOption ? undefined : '2'}
+            paddingBlockStart={polarisSummerEditions2023 ? '0' : '2'}
           >
             {polarisSummerEditions2023 ? (
-              <VerticalStack gap={isFirstOption && sections ? undefined : '1'}>
+              <VerticalStack gap={isFirstOption && sections ? undefined : '0'}>
                 {titleMarkup}
                 {option}
               </VerticalStack>
