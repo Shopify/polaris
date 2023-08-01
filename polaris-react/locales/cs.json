@@ -363,7 +363,8 @@
       "clear": "Vymazat"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Hledejte a filtrujte (F)",
+      "searchFilterTooltip": "Hledejte a filtrujte",
+      "searchFilterTooltipWithShortcut": "Hledejte a filtrujte (F)",
       "searchFilterAccessibilityLabel": "Výsledky hledání a filtrování",
       "sort": "Seřadit výsledky",
       "addView": "Přidat nové zobrazení",

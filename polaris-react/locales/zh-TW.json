@@ -361,7 +361,8 @@
       "clear": "清除"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "搜尋及篩選 (F)",
+      "searchFilterTooltip": "搜尋及篩選",
+      "searchFilterTooltipWithShortcut": "搜尋及篩選 (F)",
       "searchFilterAccessibilityLabel": "搜尋及篩選結果",
       "sort": "排序搜尋結果",
       "addView": "新增檢視畫面",
