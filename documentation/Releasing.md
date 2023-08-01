@@ -28,6 +28,28 @@ We have a [GitHub action](https://github.com/changesets/action) that:
 - Performs a release when the `changeset-release/main` branch merged into the `main` branch
 - Recreates the `changeset-release/main` branch after the release is complete and opens a new **"[Version Packages](https://github.com/Shopify/polaris/pulls?q=is%3Apr+version+packages+is%3Aopen)"** PR
 
+### Prerelease (beta)
+
+Similar to the normal Changeset release workflow described above, a prerelease PR is created when merging work with changesets into the `next` branch. The **"[Version Packages (beta)](https://github.com/Shopify/polaris/pulls?q=is%3Apr+version+packages+beta+is%3Aopen)"** PR will contain all changes that will be included in the next major release.
+
+When merging this PR into `next`, a new prerelease is created with the `beta` dist tag. You can learn more about [prerelease support using Changesets here](https://github.com/changesets/changesets/blob/main/docs/prereleases.md).
+
+Steps for creating a new prerelease branch if `next` doesn't currently exist.
+
+1. Create a new `next` branch for prerelease development
+2. Run `yarn changeset pre enter beta`
+3. Adjust the release workflow file (`.github/workflows/release.yml`) to run on the `next` branch:
+    ```yml
+    on:
+      push:
+        branches:
+          - main
+          - next
+    ```
+4. Branch future work from the `next` branch
+5. Create changesets, merge to the prerelease branch (`next`)
+6. Releasing PRs should now be generated for the prerelease branch 🎉
+
 ### Who can perform a version release?
 
 Anyone at Shopify can perfom a version release. Ping the `@Shopify/polaris-team` on GitHub or the `@polaris-developers` team in the #polaris Slack channel for support.
