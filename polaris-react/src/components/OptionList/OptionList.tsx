@@ -197,7 +197,7 @@ export function OptionList({
           <Box
             key={title || `noTitle-${sectionIndex}`}
             as="li"
-            paddingBlockStart={polarisSummerEditions2023 ? '0' : '2'}
+            paddingBlockStart={polarisSummerEditions2023 ? '1' : '2'}
           >
             {polarisSummerEditions2023 ? (
               <VerticalStack gap={isFirstOption && sections ? undefined : '0'}>
