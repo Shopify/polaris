@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Exposes closeOnChildOverlayClick prop on IndexFilters to control the preventCloseOnChildOverlayClick prop on PopoverOverlay
+Added support for the ` Filters``closeOnChildOverlayClick ` prop to `IndexFilters`
