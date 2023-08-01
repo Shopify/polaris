@@ -189,7 +189,7 @@ export const TruncateText = ({children}: {children: string}) => {
 
   return isOverflowing ? (
     <Tooltip
-      zIndexOverride={Number(zIndex['z-index-6'])}
+      zIndexOverride={Number(zIndex['z-index-11'])}
       preferredPosition="above"
       hoverDelay={1000}
       content={children}
