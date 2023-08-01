@@ -37,6 +37,8 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
 
+type TextDecorationLine = 'line-through';
+
 export interface TextProps {
   /** Adjust horizontal alignment of text */
   alignment?: Alignment;
@@ -60,6 +62,8 @@ export interface TextProps {
   variant?: Variant;
   /** Visually hide the text */
   visuallyHidden?: boolean;
+  /** Add a line-through to the text */
+  textDecorationLine?: TextDecorationLine;
 }
 
 export const Text = ({
@@ -74,6 +78,7 @@ export const Text = ({
   truncate = false,
   variant,
   visuallyHidden = false,
+  textDecorationLine,
 }: TextProps) => {
   const Component = as || (visuallyHidden ? 'span' : 'p');
 
@@ -88,6 +93,7 @@ export const Text = ({
     numeric && styles.numeric,
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
+    textDecorationLine && styles[textDecorationLine],
   );
 
   return (

@@ -44,6 +44,10 @@ examples:
     title: Inheritance
     description: >-
       Inherits props from a parent Text container
+  - fileName: text-decoration.tsx
+    title: Decoration
+    description: >-
+      Use to define text decoration
 ---
 
 ## Variant tokens
