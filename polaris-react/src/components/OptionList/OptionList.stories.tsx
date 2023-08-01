@@ -130,13 +130,11 @@ export function InAPopover() {
             {
               value: 'byward_market',
               label: 'Byward Market',
-              active: true,
             },
             {value: 'centretown', label: 'Centretown'},
             {
               value: 'hintonburg',
               label: 'Hintonburg',
-              active: true,
             },
             {value: 'westboro', label: 'Westboro'},
             {value: 'downtown', label: 'Downtown'},
