@@ -1,7 +1,7 @@
 import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
-import {CaretDownMinor} from '@shopify/polaris-icons';
+import {CaretDownMinor, ChevronDownMinor} from '@shopify/polaris-icons';
 
 import {FilterPill} from '../FilterPill';
 import type {FilterPillProps} from '../FilterPill';
@@ -51,11 +51,13 @@ describe('<Filters />', () => {
       expect(wrapper).toContainReactText(defaultProps.label);
     });
 
-    it('renders with bodyMd variant when on a small screen', () => {
+    it('renders with bodyLg variant when on a small screen', () => {
       mockUseBreakpoints(true);
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />);
+      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
+        features: {polarisSummerEditions2023: true},
+      });
       expect(wrapper).toContainReactComponent(Text, {
-        variant: 'bodyMd',
+        variant: 'bodyLg',
         children: defaultProps.label,
       });
     });
@@ -83,18 +85,22 @@ describe('<Filters />', () => {
     });
 
     it('when not selected, renders a caret icon', () => {
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />);
+      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
+        features: {polarisSummerEditions2023: true},
+      });
       expect(wrapper.findAll(UnstyledButton)[0]).toContainReactComponent(Icon, {
-        source: CaretDownMinor,
+        source: ChevronDownMinor,
       });
     });
 
     it('when selected, does not render a caret icon', () => {
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} selected />);
+      const wrapper = mountWithApp(<FilterPill {...defaultProps} selected />, {
+        features: {polarisSummerEditions2023: true},
+      });
       expect(wrapper.findAll(UnstyledButton)[0]).not.toContainReactComponent(
         Icon,
         {
-          source: CaretDownMinor,
+          source: ChevronDownMinor,
         },
       );
     });
@@ -192,6 +198,42 @@ describe('<Filters />', () => {
       expect(scrollSpy).toHaveBeenCalledWith({
         left: 0,
       });
+    });
+  });
+
+  // se23 - small screen bodyMd text replaced with bodyLg
+  // CaretDownMinor replaced with ChevronDownMinor
+  describe('polarisSummerEditions2023 false', () => {
+    it('renders with bodyMd variant when on a small screen', () => {
+      mockUseBreakpoints(true);
+      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
+        features: {polarisSummerEditions2023: false},
+      });
+      expect(wrapper).toContainReactComponent(Text, {
+        variant: 'bodyMd',
+        children: defaultProps.label,
+      });
+    });
+
+    it('when not selected, renders a caret icon', () => {
+      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
+        features: {polarisSummerEditions2023: false},
+      });
+      expect(wrapper.findAll(UnstyledButton)[0]).toContainReactComponent(Icon, {
+        source: CaretDownMinor,
+      });
+    });
+
+    it('when selected, does not render a caret icon', () => {
+      const wrapper = mountWithApp(<FilterPill {...defaultProps} selected />, {
+        features: {polarisSummerEditions2023: false},
+      });
+      expect(wrapper.findAll(UnstyledButton)[0]).not.toContainReactComponent(
+        Icon,
+        {
+          source: CaretDownMinor,
+        },
+      );
     });
   });
 });

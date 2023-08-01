@@ -17,13 +17,17 @@ describe('<Header />', () => {
   describe('title', () => {
     it('renders a heading when defined', () => {
       const header = mountWithApp(<Header title="Staff accounts" />);
-      expect(header).toContainReactComponent(Text, {variant: 'headingMd'});
+      expect(header).toContainReactComponent(Text, {
+        as: 'h2',
+      });
     });
 
     it('renders the title directly if its a valid React element', () => {
       const title = <div>Staff accounts</div>;
       const header = mountWithApp(<Header title={title} />);
-      expect(header).not.toContainReactComponent(Text, {variant: 'headingLg'});
+      expect(header).not.toContainReactComponent(Text, {
+        as: 'h2',
+      });
       expect(header).toContainReactComponent('div', {
         children: 'Staff accounts',
       });
@@ -32,9 +36,7 @@ describe('<Header />', () => {
     it('is used as the content for the heading', () => {
       const title = 'Staff accounts';
       const header = mountWithApp(<Header title={title} />);
-      expect(header.find(Text, {variant: 'headingMd'})).toContainReactText(
-        title,
-      );
+      expect(header.find(Text, {as: 'h2'})).toContainReactText(title);
     });
   });
 
