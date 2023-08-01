@@ -146,3 +146,11 @@ export const InADefinitionList = () => (
     </Text>
   </dl>
 );
+
+export const WithTextDecoration = () => (
+  <LegacyStack vertical>
+    <Text as="p" textDecorationLine="line-through">
+      $100.00
+    </Text>
+  </LegacyStack>
+);
