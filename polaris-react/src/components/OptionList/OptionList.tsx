@@ -202,9 +202,17 @@ export function OptionList({
 
         // eslint-disable-next-line no-nested-ternary
         const blockStartPadding = isFirstOption
-          ? polarisSummerEditions2023
-            ? '1'
+          ? // eslint-disable-next-line no-nested-ternary
+            polarisSummerEditions2023
+            ? title
+              ? '1'
+              : '0'
             : undefined
+          : // eslint-disable-next-line no-nested-ternary
+          polarisSummerEditions2023
+          ? title
+            ? '05'
+            : '0'
           : '2';
 
         return (
