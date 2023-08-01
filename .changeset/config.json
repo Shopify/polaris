@@ -7,7 +7,13 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [],
+  "ignore": [
+    "@shopify/polaris-cli",
+    "@shopify/polaris-codemods",
+    "@shopify/polaris-migrator",
+    "polaris.shopify.com",
+    "polaris-for-vscode"
+  ],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "updateInternalDependents": "always"
   }
