@@ -30,7 +30,7 @@ We have a [GitHub action](https://github.com/changesets/action) that:
 
 ### Prerelease (beta)
 
-Similar to the normal Changeset release workflow described above, a prerelease PR is created when merging work with changesets into the `next` branch. The **"[Version Packages (beta)](https://github.com/Shopify/polaris/pulls?q=is%3Apr+version+packages+beta+is%3Aopen)"** PR will contain all changes that will part fot the next major release.
+Similar to the normal Changeset release workflow described above, a prerelease PR is created when merging work with changesets into the `next` branch. The **"[Version Packages (beta)](https://github.com/Shopify/polaris/pulls?q=is%3Apr+version+packages+beta+is%3Aopen)"** PR will contain all changes that will be included in the next major release.
 
 When merging this PR into `next`, a new prerelease is created with the `beta` dist tag. You can learn more about [prerelease support using Changesets here](https://github.com/changesets/changesets/blob/main/docs/prereleases.md).
 
