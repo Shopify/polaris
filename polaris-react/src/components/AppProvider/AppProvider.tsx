@@ -93,6 +93,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
   setRootAttributes = () => {
     const features = this.getFeatures();
 
+    document.documentElement.classList.add('p-theme-light');
+
     document.documentElement.classList.toggle(
       classNamePolarisSummerEditions2023,
       features.polarisSummerEditions2023,
