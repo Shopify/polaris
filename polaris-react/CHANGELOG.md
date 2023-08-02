@@ -1,5 +1,14 @@
 # Changelog
 
+## 12.0.0-beta.1
+
+### Patch Changes
+
+- [#9847](https://github.com/Shopify/polaris/pull/9847) [`85b68a358`](https://github.com/Shopify/polaris/commit/85b68a358a0390c243216ad8059d9bccf5f00594) Thanks [@qt314](https://github.com/qt314)! - Added `role` prop to `VerticalStack`
+
+- Updated dependencies [[`3fc3d5923`](https://github.com/Shopify/polaris/commit/3fc3d5923b5ed23c4a460bb2c40f31eab21e5f89), [`5dabf0fe0`](https://github.com/Shopify/polaris/commit/5dabf0fe050ababf9bd5f78fd4a1fa69098c95b2)]:
+  - @shopify/polaris-icons@7.8.0-beta.0
+
 ## 12.0.0-beta.0
 
 ### Major Changes

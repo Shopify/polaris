@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.8.0-beta.0
+
+### Minor Changes
+
+- [#9858](https://github.com/Shopify/polaris/pull/9858) [`3fc3d5923`](https://github.com/Shopify/polaris/commit/3fc3d5923b5ed23c4a460bb2c40f31eab21e5f89) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - Added SidekickMajor
+
+* [#9854](https://github.com/Shopify/polaris/pull/9854) [`5dabf0fe0`](https://github.com/Shopify/polaris/commit/5dabf0fe050ababf9bd5f78fd4a1fa69098c95b2) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updated CancelMajor and CancelMinor icons
+
 ## 7.7.0
 
 ### Minor Changes
