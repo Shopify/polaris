@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useId} from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {Text} from '../../../Text';
@@ -35,6 +35,7 @@ export function SearchField({
   borderlessQueryField,
 }: SearchFieldProps) {
   const i18n = useI18n();
+  const id = useId();
   const {polarisSummerEditions2023} = useFeatures();
   const inputRef = useRef<HTMLInputElement>(null);
   function handleChange(value: string) {
@@ -55,10 +56,11 @@ export function SearchField({
 
   return polarisSummerEditions2023 ? (
     <div className={styles.SearchField}>
-      <Text as="span" visuallyHidden>
+      <label className={styles.Label} htmlFor={id}>
         {placeholder}
-      </Text>
+      </label>
       <input
+        id={id}
         ref={inputRef}
         className={classNames(
           styles.Input,
@@ -70,7 +72,7 @@ export function SearchField({
         onFocus={onFocus}
         onBlur={onBlur}
         autoComplete="off"
-        placeholder={disabled ? undefined : placeholder}
+        placeholder={placeholder}
         disabled={disabled}
       />
       {value !== '' && (
