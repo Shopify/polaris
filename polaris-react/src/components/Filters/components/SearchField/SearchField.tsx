@@ -70,7 +70,7 @@ export function SearchField({
         onFocus={onFocus}
         onBlur={onBlur}
         autoComplete="off"
-        placeholder={placeholder}
+        placeholder={disabled ? undefined : placeholder}
         disabled={disabled}
       />
       {value !== '' && (

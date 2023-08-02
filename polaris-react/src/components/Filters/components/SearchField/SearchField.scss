@@ -27,6 +27,10 @@
     border-width: var(--p-border-width-2-experimental);
     background-color: var(--p-color-bg-input-active-experimental);
   }
+
+  &:disabled {
+    background-color: var(--p-color-bg-transparent-disabled-experimental);
+  }
 }
 
 .borderless {
@@ -39,7 +43,7 @@
   }
 }
 
-.focused {
+.focused:not(:disabled) {
   outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus);
   outline-offset: var(--p-space-025);
 }

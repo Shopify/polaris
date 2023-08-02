@@ -2,7 +2,6 @@ import React, {useState, useCallback} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TabProps} from '@shopify/polaris';
 import {
-  VerticalStack,
   ChoiceList,
   Text,
   useIndexResourceState,
