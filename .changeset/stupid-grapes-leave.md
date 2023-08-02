@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Rebuilt Filter SearchField
+Rebuilt `Filters` `SearchField`
