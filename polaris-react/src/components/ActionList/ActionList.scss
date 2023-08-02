@@ -227,4 +227,12 @@
   min-width: 0;
   max-width: 100%;
   flex: 1 1 auto;
+  display: block;
+  vertical-align: middle;
+
+  // stylelint-disable -- forces content to be block so vertical-align can do its thing
+  * {
+    display: block;
+  }
+  // stylelint-disable
 }
