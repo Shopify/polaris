@@ -128,14 +128,21 @@ export function OptionList({
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
         const isFirstOption = sectionIndex === 0;
         const sectionPaddingBlockStart = polarisSummerEditions2023 ? '3' : '4';
+        const firstOptionBlockStartPadding = polarisSummerEditions2023
+          ? '05'
+          : '2';
         const titleLevel = isFirstOption ? 'h2' : 'h3';
         const titleMarkup = title ? (
           <Box
-            paddingBlockStart={isFirstOption ? '2' : sectionPaddingBlockStart}
+            paddingBlockStart={
+              isFirstOption
+                ? firstOptionBlockStartPadding
+                : sectionPaddingBlockStart
+            }
             paddingInlineStart={
               polarisSummerEditions2023 ? '1_5-experimental' : '2'
             }
-            paddingBlockEnd="2"
+            paddingBlockEnd={polarisSummerEditions2023 ? '1' : '2'}
             paddingInlineEnd={
               polarisSummerEditions2023 ? '1_5-experimental' : '2'
             }
@@ -193,14 +200,29 @@ export function OptionList({
           </Bleed>
         );
 
+        // eslint-disable-next-line no-nested-ternary
+        const blockStartPadding = isFirstOption
+          ? // eslint-disable-next-line no-nested-ternary
+            polarisSummerEditions2023
+            ? title
+              ? '1'
+              : '0'
+            : undefined
+          : // eslint-disable-next-line no-nested-ternary
+          polarisSummerEditions2023
+          ? title
+            ? '05'
+            : '0'
+          : '2';
+
         return (
           <Box
             key={title || `noTitle-${sectionIndex}`}
             as="li"
-            paddingBlockStart={isFirstOption ? undefined : '2'}
+            paddingBlockStart={blockStartPadding}
           >
             {polarisSummerEditions2023 ? (
-              <VerticalStack gap={isFirstOption && sections ? undefined : '1'}>
+              <VerticalStack gap={isFirstOption && sections ? undefined : '0'}>
                 {titleMarkup}
                 {option}
               </VerticalStack>

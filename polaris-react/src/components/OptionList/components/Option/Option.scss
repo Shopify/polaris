@@ -81,6 +81,12 @@ $control-vertical-adjustment: 2px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+
+    &.select,
+    &.select:hover:not(.disabled),
+    &.active {
+      font-weight: var(--p-font-weight-semibold);
+    }
   }
 }
 
