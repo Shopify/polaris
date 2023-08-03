@@ -65,6 +65,30 @@ export function Multiple() {
   );
 }
 
+export function MultipleWithDisabledOption() {
+  const [selected, setSelected] = useState([]);
+
+  const handleChange = useCallback((value) => setSelected(value), []);
+
+  return (
+    <LegacyCard>
+      <OptionList
+        title="Manage sales channels availability"
+        onChange={handleChange}
+        options={[
+          {value: 'online_store', label: 'Online Store'},
+          {value: 'messenger', label: 'Messenger', disabled: true},
+          {value: 'facebook', label: 'Facebook'},
+          {value: 'wholesale', label: 'Wholesale'},
+          {value: 'buzzfeed', label: 'BuzzFeed'},
+        ]}
+        selected={selected}
+        allowMultiple
+      />
+    </LegacyCard>
+  );
+}
+
 export function WithSections() {
   const [selected, setSelected] = useState([]);
 
