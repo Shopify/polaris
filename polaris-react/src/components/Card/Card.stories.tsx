@@ -117,3 +117,27 @@ export function WithSubduedSection() {
     </Card>
   );
 }
+
+export function WithCriticalSection() {
+  const {polarisSummerEditions2023} = useFeatures();
+
+  return (
+    <Card roundedAbove="sm" background="bg-critical" hasCriticalStatus>
+      <VerticalStack gap="5">
+        <Text as="h3" variant="headingMd">
+          Alice account
+        </Text>
+        <Box paddingBlockEnd="5">
+          <List>
+            <List.Item>Felix Crafford</List.Item>
+            <List.Item>Ezequiel Manno</List.Item>
+          </List>
+        </Box>
+      </VerticalStack>
+      <Bleed
+        marginBlockEnd={{xs: '4', sm: '5'}}
+        marginInline={{xs: '4', sm: '5'}}
+      />
+    </Card>
+  );
+}
