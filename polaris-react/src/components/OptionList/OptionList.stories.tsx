@@ -21,11 +21,13 @@ export default {
 export function Default() {
   const [selected, setSelected] = useState([]);
 
+  const handleChange = useCallback((value) => setSelected(value), []);
+
   return (
     <LegacyCard>
       <OptionList
         title="Inventory Location"
-        onChange={setSelected}
+        onChange={handleChange}
         options={[
           {value: 'byward_market', label: 'Byward Market'},
           {value: 'centretown', label: 'Centretown'},
@@ -42,11 +44,13 @@ export function Default() {
 export function Multiple() {
   const [selected, setSelected] = useState([]);
 
+  const handleChange = useCallback((value) => setSelected(value), []);
+
   return (
     <LegacyCard>
       <OptionList
         title="Manage sales channels availability"
-        onChange={setSelected}
+        onChange={handleChange}
         options={[
           {value: 'online_store', label: 'Online Store'},
           {value: 'messenger', label: 'Messenger'},
@@ -64,10 +68,12 @@ export function Multiple() {
 export function WithSections() {
   const [selected, setSelected] = useState([]);
 
+  const handleChange = useCallback((value) => setSelected(value), []);
+
   return (
     <LegacyCard>
       <OptionList
-        onChange={setSelected}
+        onChange={handleChange}
         sections={[
           {
             options: [
@@ -105,6 +111,8 @@ export function InAPopover() {
   const [selected, setSelected] = useState([]);
   const [popoverActive, setPopoverActive] = useState(true);
 
+  const handleChange = useCallback((value) => setSelected(value), []);
+
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
     [],
@@ -125,18 +133,16 @@ export function InAPopover() {
       >
         <OptionList
           title="Inventory Location"
-          onChange={setSelected}
+          onChange={handleChange}
           options={[
             {
               value: 'byward_market',
               label: 'Byward Market',
-              active: true,
             },
             {value: 'centretown', label: 'Centretown'},
             {
               value: 'hintonburg',
               label: 'Hintonburg',
-              active: true,
             },
             {value: 'westboro', label: 'Westboro'},
             {value: 'downtown', label: 'Downtown'},
@@ -151,11 +157,13 @@ export function InAPopover() {
 export function WithDisabledOption() {
   const [selected, setSelected] = useState([]);
 
+  const handleChange = useCallback((value) => setSelected(value), []);
+
   return (
     <LegacyCard>
       <OptionList
         title="Inventory Location"
-        onChange={setSelected}
+        onChange={handleChange}
         options={[
           {value: 'byward_market', label: 'Byward Market'},
           {value: 'centretown', disabled: true, label: 'Centretown'},
