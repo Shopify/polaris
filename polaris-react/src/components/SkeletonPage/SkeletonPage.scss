@@ -14,6 +14,10 @@ $primary-action-button-width: 6.25rem;
   font-weight: var(--p-font-weight-semibold);
   font-size: var(--p-font-size-300);
   line-height: var(--p-font-line-height-4);
+
+  #{$se23} & {
+    font-weight: var(--p-font-weight-bold);
+  }
 }
 
 .SkeletonTitle {
