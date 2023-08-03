@@ -11,5 +11,5 @@ keywords:
 // Do
 + border-radius: var(--p-border-radius-2);
 // Don't
-- border-radius: var(--p-border-radius-large);
+- border-radius: var(--p-border-radius-wide);
 ```

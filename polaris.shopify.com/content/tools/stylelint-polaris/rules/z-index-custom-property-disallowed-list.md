@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ z-index: var(--p-z-index-1);
++ z-index: var(--p-z-index-6);
 // Don't
-- z-index: var(--p-z-1);
+- z-index: var(--p-override-loading-z-index);
 ```
