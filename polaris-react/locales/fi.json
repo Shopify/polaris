@@ -361,8 +361,7 @@
       "clear": "Tyhjennä"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Hae ja suodata",
-      "searchFilterTooltipWithShortcut": "Hae ja suodata (F)",
+      "searchFilterTooltip": "Haku ja suodatus",
       "searchFilterAccessibilityLabel": "Hae ja suodata tuloksia",
       "sort": "Lajittele tuloksesi",
       "addView": "Lisää uusi näkymä",
@@ -390,7 +389,8 @@
           "save": "Tallenna",
           "cancel": "Peruuta"
         }
-      }
+      },
+      "searchFilterTooltipWithShortcut": "Hae ja suodata (F)"
     }
   }
 }
