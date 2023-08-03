@@ -67,6 +67,15 @@ export function Default() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -77,12 +86,13 @@ export function Default() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -175,6 +185,16 @@ export function Condensed() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+      status: 'success',
+    },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
     },
   ];
   const resourceName = {
@@ -186,12 +206,13 @@ export function Condensed() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -286,6 +307,15 @@ export function Flush() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -296,12 +326,13 @@ export function Flush() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell flush>
           <Text fontWeight="bold" as="span">
@@ -396,6 +427,16 @@ export function SmallScreen() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+      status: 'success',
+    },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
     },
   ];
   const resourceName = {
@@ -407,12 +448,13 @@ export function SmallScreen() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <div style={{padding: '12px 16px'}}>
           <Text fontWeight="bold" as="p">
@@ -505,6 +547,15 @@ export function SmallScreenLoading() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -515,12 +566,13 @@ export function SmallScreenLoading() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <div style={{padding: '12px 16px'}}>
           <Text fontWeight="bold" as="p">
@@ -592,6 +644,26 @@ export function WithDisabledRows() {
       amountSpent: '$140',
       disabled: true,
     },
+    {
+      id: '3417',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'success',
+      disabled: true,
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+      disabled: true,
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -606,13 +678,14 @@ export function WithDisabledRows() {
     useIndexResourceState(selectableCustomers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent, disabled}, index) => (
+    ({id, name, location, orders, amountSpent, disabled, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
         disabled={disabled}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -877,6 +950,15 @@ export function WithBulkActions() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -908,12 +990,13 @@ export function WithBulkActions() {
   ];
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1009,6 +1092,15 @@ export function WithMultiplePromotedBulkActions() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -1066,12 +1158,13 @@ export function WithMultiplePromotedBulkActions() {
   ];
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1134,6 +1227,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$24,00',
+      status: num === 5 ? 'critical' : undefined,
     };
   });
 
@@ -1175,12 +1269,13 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   ];
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1281,6 +1376,15 @@ export function WithLoadingState() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -1291,12 +1395,13 @@ export function WithLoadingState() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1391,6 +1496,15 @@ export function WithFiltering() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -1448,12 +1562,13 @@ export function WithFiltering() {
   ];
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1685,7 +1800,7 @@ export function WithStickyLastColumn() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
-      status: 'Created',
+      createdStatus: 'Created',
       channel: 'Point of Sale',
       paymentStatus: 'Refunded',
       fulfillmentStatus: 'Fulfilled',
@@ -1697,10 +1812,23 @@ export function WithStickyLastColumn() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
-      status: 'Created',
+      createdStatus: 'Created',
       channel: 'Online Store',
       paymentStatus: 'Paid',
       fulfillmentStatus: 'Unfulfilled',
+    },
+    {
+      id: '2562',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      createdStatus: 'Created',
+      channel: 'Online Store',
+      paymentStatus: 'Paid',
+      fulfillmentStatus: 'Unfulfilled',
+      status: 'critical',
     },
   ];
   const resourceName = {
@@ -1720,6 +1848,7 @@ export function WithStickyLastColumn() {
         orders,
         amountSpent,
         status,
+        createdStatus,
         channel,
         paymentStatus,
         fulfillmentStatus,
@@ -1731,6 +1860,7 @@ export function WithStickyLastColumn() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1748,7 +1878,7 @@ export function WithStickyLastColumn() {
             {amountSpent}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{createdStatus}</IndexTable.Cell>
         <IndexTable.Cell>{channel}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
@@ -1833,6 +1963,15 @@ export function WithRowNavigationLink() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -1843,12 +1982,13 @@ export function WithRowNavigationLink() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, url, name, location, orders, amountSpent}, index) => (
+    ({id, url, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Link
@@ -1948,6 +2088,15 @@ export function WithClickableButtonColumn() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -1958,12 +2107,13 @@ export function WithClickableButtonColumn() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, url, name, location, orders, amountSpent}, index) => (
+    ({id, url, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Link
@@ -2063,6 +2213,15 @@ export function WithoutCheckboxes() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -2070,8 +2229,8 @@ export function WithoutCheckboxes() {
   };
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row id={id} key={id} position={index}>
+    ({id, name, location, orders, amountSpent, status}, index) => (
+      <IndexTable.Row id={id} key={id} position={index} status={status}>
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
             {name}
@@ -2162,6 +2321,15 @@ export function WithAllOfItsElements() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -2240,12 +2408,13 @@ export function WithAllOfItsElements() {
   ];
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -2429,6 +2598,19 @@ export function WithSortableHeadings() {
       paymentStatus: 'Not paid',
       notes: 'This customer has requested fragile delivery',
     },
+    {
+      id: '8742',
+      url: '#',
+      date: '2022-05-11',
+      name: 'Bradley Stevens',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
+      status: 'critical',
+    },
   ];
   const [sortedRows, setSortedRows] = useState(
     sortRows(initialRows, sortIndex, sortDirection),
@@ -2476,6 +2658,7 @@ export function WithSortableHeadings() {
         fulfillmentStatus,
         paymentStatus,
         notes,
+        status,
       },
       index,
     ) => (
@@ -2484,6 +2667,7 @@ export function WithSortableHeadings() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -2615,6 +2799,19 @@ export function WithSortableCustomHeadings() {
       paymentStatus: 'Not paid',
       notes: 'This customer has requested fragile delivery',
     },
+    {
+      id: '8742',
+      url: '#',
+      date: '2022-05-11',
+      name: 'Bradley Stevens',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
+      status: 'critical',
+    },
   ];
   const [sortedRows, setSortedRows] = useState(
     sortRows(initialRows, sortIndex, sortDirection),
@@ -2662,6 +2859,7 @@ export function WithSortableCustomHeadings() {
         fulfillmentStatus,
         paymentStatus,
         notes,
+        status,
       },
       index,
     ) => (
@@ -2670,6 +2868,7 @@ export function WithSortableCustomHeadings() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -2783,6 +2982,15 @@ export function WithCustomTooltips() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -2793,12 +3001,13 @@ export function WithCustomTooltips() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -3209,6 +3418,15 @@ export function WithZebraStripingAndRowStatus() {
       amountSpent: '$140',
       status: 'subdued',
     },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -3286,7 +3504,7 @@ export function WithZebraStripingAndStickyLastColumn() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
-      status: 'Created',
+      createdStatus: 'Created',
       channel: 'Point of Sale',
       paymentStatus: 'Refunded',
       fulfillmentStatus: 'Fulfilled',
@@ -3298,10 +3516,23 @@ export function WithZebraStripingAndStickyLastColumn() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
-      status: 'Created',
+      createdStatus: 'Created',
       channel: 'Online Store',
       paymentStatus: 'Paid',
       fulfillmentStatus: 'Unfulfilled',
+    },
+    {
+      id: '2565',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      createdStatus: 'Created',
+      channel: 'Online Store',
+      paymentStatus: 'Paid',
+      fulfillmentStatus: 'Unfulfilled',
+      status: 'critical',
     },
   ];
   const resourceName = {
@@ -3321,6 +3552,7 @@ export function WithZebraStripingAndStickyLastColumn() {
         orders,
         amountSpent,
         status,
+        createdStatus,
         channel,
         paymentStatus,
         fulfillmentStatus,
@@ -3332,6 +3564,7 @@ export function WithZebraStripingAndStickyLastColumn() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -3349,7 +3582,7 @@ export function WithZebraStripingAndStickyLastColumn() {
             {amountSpent}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{createdStatus}</IndexTable.Cell>
         <IndexTable.Cell>{channel}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
@@ -3410,6 +3643,16 @@ export function WithZebraStripingAndWithoutCheckboxes() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+      status: 'success',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
     },
   ];
   const resourceName = {
@@ -3418,8 +3661,8 @@ export function WithZebraStripingAndWithoutCheckboxes() {
   };
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row id={id} key={id} position={index}>
+    ({id, name, location, orders, amountSpent, status}, index) => (
+      <IndexTable.Row id={id} key={id} position={index} status={status}>
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
             {name}
@@ -3511,6 +3754,15 @@ export function SmallScreenWithAllOfItsElements() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -3589,12 +3841,13 @@ export function SmallScreenWithAllOfItsElements() {
   ];
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <div style={{padding: '.75rem 1rem'}}>
           <Text fontWeight="bold" as="p">
@@ -3758,6 +4011,15 @@ export function WithSubHeaders() {
       amountSpent: '$1,400',
       lastOrderDate: 'March 19, 2023',
     },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
 
   const columnHeadings = [
@@ -3863,7 +4125,16 @@ export function WithSubHeaders() {
         </IndexTable.Row>
         {customers.map(
           (
-            {id, name, location, orders, amountSpent, position, disabled},
+            {
+              id,
+              name,
+              location,
+              orders,
+              amountSpent,
+              position,
+              disabled,
+              status,
+            },
             rowIndex,
           ) => {
             return (
@@ -3873,6 +4144,7 @@ export function WithSubHeaders() {
                 position={position}
                 selected={selectedResources.includes(id)}
                 disabled={disabled}
+                status={status}
               >
                 <IndexTable.Cell
                   as="th"
