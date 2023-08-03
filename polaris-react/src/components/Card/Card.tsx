@@ -30,6 +30,7 @@ export interface CardProps {
   padding?: Spacing;
   /** Border radius value above a set breakpoint */
   roundedAbove?: BreakpointsAlias;
+  hasCriticalStatus?: boolean;
 }
 
 export const Card = ({
@@ -37,6 +38,7 @@ export const Card = ({
   background = 'bg',
   padding = {xs: '4', sm: '5'},
   roundedAbove,
+  hasCriticalStatus,
 }: CardProps) => {
   const breakpoints = useBreakpoints();
   const {polarisSummerEditions2023} = useFeatures();
@@ -87,6 +89,10 @@ export const Card = ({
           borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
           overflowX="hidden"
           overflowY="hidden"
+          borderColor={
+            hasCriticalStatus ? 'border-critical-subdued' : undefined
+          }
+          borderWidth="1"
         >
           {children}
         </Box>
