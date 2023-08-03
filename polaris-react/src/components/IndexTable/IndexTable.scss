@@ -203,6 +203,7 @@ $loading-panel-height: 53px;
 
   &.statusCritical {
     // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- added crtical status for suspended products
+    &,
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-color-bg-critical-subdued);
