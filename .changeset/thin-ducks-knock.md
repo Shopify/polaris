@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-add strong variation to the text tag
+Added support for rendering `Text` `as` a `strong` tag 
