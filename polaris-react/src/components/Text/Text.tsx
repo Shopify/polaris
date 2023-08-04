@@ -16,6 +16,7 @@ type Element =
   | 'h6'
   | 'p'
   | 'span'
+  | 'strong'
   | 'legend';
 
 type Variant =
