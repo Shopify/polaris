@@ -1494,6 +1494,15 @@ export function WithRowStatus() {
       amountSpent: '$140',
       status: 'success',
     },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
   ];
   const resourceName = {
     singular: 'customer',
