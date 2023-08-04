@@ -1,9 +1,10 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 
 import type {ActionListSection, MenuGroupDescriptor} from '../../../../types';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {SecondaryAction} from '../SecondaryAction';
+import {TextField} from '../../../TextField';
 
 import styles from './MenuGroup.scss';
 
@@ -38,6 +39,7 @@ export function MenuGroup({
   getOffsetWidth,
   sections,
 }: MenuGroupProps) {
+  const [searchText, setSeachText] = useState('');
   const handleClose = useCallback(() => {
     onClose(title);
   }, [onClose, title]);
@@ -75,6 +77,16 @@ export function MenuGroup({
     </SecondaryAction>
   );
 
+  const filteredActions = actions.filter((action) =>
+    action.content?.toLowerCase().includes(searchText.toLowerCase()),
+  );
+
+  const filteredSections = sections?.filter((section) =>
+    section.items.some((item) =>
+      item.content?.toLowerCase().includes(searchText.toLowerCase()),
+    ),
+  );
+
   return (
     <Popover
       active={Boolean(active)}
@@ -83,9 +95,16 @@ export function MenuGroup({
       onClose={handleClose}
       hideOnPrint
     >
+      <TextField
+        label="Search"
+        labelHidden
+        autoComplete=""
+        value={searchText}
+        onChange={(value) => setSeachText(value)}
+      />
       <ActionList
-        items={actions}
-        sections={sections}
+        items={filteredActions}
+        sections={filteredSections}
         onActionAnyItem={handleClose}
       />
       {details && <div className={styles.Details}>{details}</div>}
