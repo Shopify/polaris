@@ -347,7 +347,39 @@ describe('<Row />', () => {
     expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onSelectionChange with the `subHeaderRange` when present', () => {
+  it('calls onSelectionChange with the `subHeaderRange` when present and the row checkbox cell is clicked', () => {
+    const onSelectionChangeSpy = jest.fn();
+    const range: Range = [0, 1];
+    const row = mountWithTable(
+      <Row {...defaultProps} subHeaderRange={range}>
+        <th>
+          <a href="/">Child without data-primary-link</a>
+        </th>
+      </Row>,
+      {
+        indexTableProps: {
+          itemCount: 50,
+          selectedItemsCount: 0,
+          onSelectionChange: onSelectionChangeSpy,
+        },
+      },
+    );
+
+    row.find('div', {className: 'Wrapper'})!.triggerKeypath('onClick', {
+      stopPropagation: noop,
+      key: ' ',
+      nativeEvent: {},
+    });
+
+    expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
+    expect(onSelectionChangeSpy).toHaveBeenCalledWith(
+      SelectionType.Range,
+      true,
+      range,
+    );
+  });
+
+  it('does not call onSelectionChange with the `subHeaderRange` when present and the row is clicked', () => {
     const onSelectionChangeSpy = jest.fn();
     const range: Range = [0, 1];
     const row = mountWithTable(
@@ -367,12 +399,7 @@ describe('<Row />', () => {
 
     triggerOnClick(row, 1, defaultEvent);
 
-    expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
-    expect(onSelectionChangeSpy).toHaveBeenCalledWith(
-      SelectionType.Range,
-      true,
-      range,
-    );
+    expect(onSelectionChangeSpy).not.toHaveBeenCalled();
   });
 
   it('does not fire onClick handler when row is clicked and no primary link child present and table is not selectable', () => {
