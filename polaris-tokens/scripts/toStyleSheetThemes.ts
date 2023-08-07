@@ -1,11 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {ThemeVariantShape, TokenGroupShape} from '../src/themes/types';
+import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
 import type {Entry} from '../src/types';
-import {themeBase} from '../src/themes/base';
-import {themePartialLight} from '../src/themes/light';
-import {themePartialHighContrast} from '../src/themes/high-contrast';
+import {themeLight} from '../src/themes/light';
+import {themeLightHighContrastPartial} from '../src/themes/high-contrast';
 import {metadata as legacyMetadata} from '../src/metadata';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
@@ -14,9 +13,9 @@ const cssOutputPath = path.join(cssOutputDir, 'themes.css');
 const sassOutputPath = path.join(sassOutputDir, 'themes.scss');
 
 /** Creates CSS custom properties from a base, variant, or partial theme. */
-export function getThemeVars(theme: Partial<ThemeVariantShape>) {
-  return Object.entries(theme)
-    .map(([_, tokenGroup]) => getTokenGroupVars(tokenGroup))
+export function getThemeVars(theme: Partial<ThemeShape>) {
+  return Object.values(theme)
+    .map((tokenGroup) => getTokenGroupVars(tokenGroup || {}))
     .join('');
 }
 
@@ -24,10 +23,10 @@ export function getThemeVars(theme: Partial<ThemeVariantShape>) {
  * Creates CSS custom properties from a variant theme
  * replacing `value` with `valueExperimental`.
  */
-export function getThemeVariantVarsExperimental(theme: ThemeVariantShape) {
+export function getThemeVariantVarsExperimental(theme: ThemeShape) {
   return Object.entries(theme)
     .map((entry) => {
-      const [_, tokenGroup] = entry as Entry<ThemeVariantShape>;
+      const [_, tokenGroup] = entry as Entry<ThemeShape>;
 
       const tokenGroupExperimental = Object.fromEntries(
         Object.entries(tokenGroup)
@@ -80,12 +79,13 @@ export async function toStyleSheetThemes() {
   }
 
   const styles = `
-  :root{color-scheme:light;${getThemeVars(themeBase)}}
+  :root{color-scheme:light;${getThemeVars(themeLight)}}
   html.Polaris-Summer-Editions-2023{${getThemeVariantVarsExperimental(
     legacyMetadata,
   )}}
-  html.p-theme-light{${getThemeVars(themePartialLight)}}
-  html.p-theme-light-high-contrast{${getThemeVars(themePartialHighContrast)}}
+  html.p-theme-light-high-contrast{${getThemeVars(
+    themeLightHighContrastPartial,
+  )}}
 
   ${getKeyframes(legacyMetadata.motion)}
 `;

@@ -1,11 +1,7 @@
 import type {Entry, Exact} from '../types';
 
-import type {
-  ThemeBaseShape,
-  ThemePartialShape,
-  ThemeVariantShape,
-  TokenGroupShape,
-} from './types';
+import type {ThemeBase} from './base';
+import type {DeepPartial, ThemeShape, TokenGroupShape} from './types';
 
 /**
  * Identity function creator that simply returns the provided theme,
@@ -31,15 +27,13 @@ function createExact<T extends object>() {
   return <U extends Exact<T, U>>(theme: U) => theme;
 }
 
-export const createThemeBase = createExact<ThemeBaseShape>();
+export const createThemeBase = createExact<ThemeShape>();
 
-export const createThemeVariant = createExact<ThemeVariantShape>();
+export const createThemeVariantPartial = createExact<DeepPartial<ThemeBase>>();
 
-export const createThemePartial = createExact<ThemePartialShape>();
-
-export function withValueExperimental(
-  tokenGroup: TokenGroupShape,
-): TokenGroupShape {
+export function withValueExperimental<T extends TokenGroupShape>(
+  tokenGroup: T,
+) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(
       ([tokenName, tokenProperties]): Entry<TokenGroupShape> => [
@@ -49,5 +43,5 @@ export function withValueExperimental(
         },
       ],
     ),
-  );
+  ) as T;
 }

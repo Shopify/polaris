@@ -1,24 +1,17 @@
 export interface TokenProperties {
-  description?: string;
   value: string;
   valueExperimental?: string;
+  description?: string;
 }
 
 export interface TokenGroupShape {
   [tokenName: string]: TokenProperties;
 }
 
-export type ThemeBaseShape = Omit<ThemeVariantShape, 'color'>;
-
-export interface ThemeVariantShape {
-  breakpoints: TokenGroupShape;
-  border: TokenGroupShape;
-  color: TokenGroupShape;
-  font: TokenGroupShape;
-  motion: TokenGroupShape;
-  shadow: TokenGroupShape;
-  space: TokenGroupShape;
-  zIndex: TokenGroupShape;
+export interface ThemeShape {
+  [tokenGroupName: string]: TokenGroupShape;
 }
 
-export type ThemePartialShape = Partial<ThemeVariantShape>;
+export type DeepPartial<T> = T extends object
+  ? {[K in keyof T]?: DeepPartial<T[K]>}
+  : T;
