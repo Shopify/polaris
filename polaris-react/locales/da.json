@@ -361,7 +361,8 @@
       "clear": "Ryd"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Søg og filtrer (F)",
+      "searchFilterTooltip": "Søg og filtrer",
+      "searchFilterTooltipWithShortcut": "Søg og filtrer (F)",
       "searchFilterAccessibilityLabel": "Søg og filtrer resultater",
       "sort": "Sortér dine resultater",
       "addView": "Tilføj en ny visning",

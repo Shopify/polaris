@@ -95,7 +95,7 @@ function Table() {
   );
 }
 
-export function Default() {
+function BasicExample(props?: Partial<IndexFiltersProps>) {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
@@ -329,6 +329,7 @@ export function Default() {
   return (
     <Card padding="0">
       <IndexFilters
+        {...props}
         sortOptions={sortOptions}
         sortSelected={sortSelected}
         queryValue={queryValue}
@@ -377,6 +378,14 @@ export function Default() {
       return value === '' || value == null;
     }
   }
+}
+
+export function Default() {
+  return <BasicExample />;
+}
+
+export function WithoutKeyboardShortcuts() {
+  return <BasicExample disableKeyboardShortcuts />;
 }
 
 export function WithPinnedFilters() {

@@ -93,6 +93,8 @@ export interface IndexFiltersProps
   filteringAccessibilityLabel?: string;
   /** Optional override to the default Tooltip message for the button that toggles the filtering mode */
   filteringAccessibilityTooltip?: string;
+  /** Optional override to the default keyboard shortcuts available */
+  disableKeyboardShortcuts?: boolean;
 }
 
 export function IndexFilters({
@@ -129,6 +131,7 @@ export function IndexFilters({
   filteringAccessibilityLabel,
   filteringAccessibilityTooltip,
   hideQueryField,
+  disableKeyboardShortcuts,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -150,6 +153,8 @@ export function IndexFilters({
   });
 
   useEventListener('keydown', (event) => {
+    if (disableKeyboardShortcuts) return;
+
     const {key} = event;
     const tag = document?.activeElement?.tagName;
     if (mode !== IndexFiltersMode.Default && event.key === 'Escape') {
@@ -268,9 +273,12 @@ export function IndexFilters({
     beginEdit();
   }
 
+  const searchFilterTooltipLabelId = disableKeyboardShortcuts
+    ? 'Polaris.IndexFilters.searchFilterTooltip'
+    : 'Polaris.IndexFilters.searchFilterTooltipWithShortcut';
+
   const searchFilterTooltip =
-    filteringAccessibilityTooltip ||
-    i18n.translate('Polaris.IndexFilters.searchFilterTooltip');
+    filteringAccessibilityTooltip || i18n.translate(searchFilterTooltipLabelId);
   const searchFilterAriaLabel =
     filteringAccessibilityLabel ||
     i18n.translate('Polaris.IndexFilters.searchFilterAccessibilityLabel');
