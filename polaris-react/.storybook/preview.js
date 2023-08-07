@@ -137,7 +137,7 @@ export const globalTypes = {
     toolbar: {
       title: 'Theme',
       icon: 'circlehollow',
-      items: ['light', 'light-high-contrast'],
+      items: ['light', 'uplift'],
       dynamicTitle: true,
     },
   },

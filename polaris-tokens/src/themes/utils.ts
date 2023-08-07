@@ -39,6 +39,7 @@ export function withValueExperimental<T extends TokenGroupShape>(
       ([tokenName, tokenProperties]): Entry<TokenGroupShape> => [
         tokenName,
         {
+          ...tokenProperties,
           value: tokenProperties.valueExperimental ?? tokenProperties.value,
         },
       ],

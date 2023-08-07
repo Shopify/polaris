@@ -31,7 +31,7 @@ interface State {
 }
 
 export interface AppProviderProps {
-  theme?: 'light' | 'light-high-contrast';
+  theme?: 'light' | 'light-uplift';
   /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
@@ -96,13 +96,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const theme = this.getTheme();
 
     document.documentElement.classList.toggle(
-      'p-theme-light',
-      theme === 'light',
-    );
-
-    document.documentElement.classList.toggle(
-      'p-theme-light-high-contrast',
-      theme === 'light-high-contrast',
+      'p-theme-light-uplift',
+      theme === 'light-uplift',
     );
 
     document.documentElement.classList.toggle(

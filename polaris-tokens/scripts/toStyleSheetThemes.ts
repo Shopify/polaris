@@ -4,7 +4,7 @@ import path from 'path';
 import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
 import type {Entry} from '../src/types';
 import {themeLight} from '../src/themes/light';
-import {themeLightHighContrastPartial} from '../src/themes/high-contrast';
+import {themeLightUpliftPartial} from '../src/themes/light-uplift';
 import {metadata as legacyMetadata} from '../src/metadata';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
@@ -16,35 +16,6 @@ const sassOutputPath = path.join(sassOutputDir, 'themes.scss');
 export function getThemeVars(theme: Partial<ThemeShape>) {
   return Object.values(theme)
     .map((tokenGroup) => getTokenGroupVars(tokenGroup || {}))
-    .join('');
-}
-
-/**
- * Creates CSS custom properties from a variant theme
- * replacing `value` with `valueExperimental`.
- */
-export function getThemeVariantVarsExperimental(theme: ThemeShape) {
-  return Object.entries(theme)
-    .map((entry) => {
-      const [_, tokenGroup] = entry as Entry<ThemeShape>;
-
-      const tokenGroupExperimental = Object.fromEntries(
-        Object.entries(tokenGroup)
-          // Only include tokens with `valueExperimental` prop
-          .filter(([_, tokenProperties]) =>
-            Boolean(tokenProperties.valueExperimental),
-          )
-          // Move `valueExperimental` to `value` position
-          .map(
-            ([tokenName, tokenProperties]): Entry<TokenGroupShape> => [
-              tokenName,
-              {value: tokenProperties.valueExperimental!},
-            ],
-          ),
-      );
-
-      return getTokenGroupVars(tokenGroupExperimental);
-    })
     .join('');
 }
 
@@ -80,12 +51,7 @@ export async function toStyleSheetThemes() {
 
   const styles = `
   :root{color-scheme:light;${getThemeVars(themeLight)}}
-  html.Polaris-Summer-Editions-2023{${getThemeVariantVarsExperimental(
-    legacyMetadata,
-  )}}
-  html.p-theme-light-high-contrast{${getThemeVars(
-    themeLightHighContrastPartial,
-  )}}
+  html.Polaris-Summer-Editions-2023{${getThemeVars(themeLightUpliftPartial)}}
 
   ${getKeyframes(legacyMetadata.motion)}
 `;

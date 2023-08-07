@@ -5,8 +5,8 @@ import type {ThemeBase} from './base';
 import {themeBase} from './base';
 
 // Note: This partial theme is separate from the complete variant theme below
-// (as partials are inserted in a dedicated selector to avoid duplication)
-export const themeLightHighContrastPartial = createThemeVariantPartial({
+// (as partials are inserted in a dedicated selector to reduce duplication)
+export const themeLightUpliftPartial = createThemeVariantPartial({
   color: {
     'color-bg-app': {value: 'rgba(250, 250, 250, 1)'},
     'color-bg-strong': {value: 'rgba(192, 192, 192, 1)'},
@@ -17,7 +17,7 @@ export const themeLightHighContrastPartial = createThemeVariantPartial({
   },
 });
 
-export const themeLightHighContrast = deepmerge(
+export const themeLightUplift = deepmerge(
   themeBase,
-  themeLightHighContrastPartial,
+  themeLightUpliftPartial,
 ) as ThemeBase;
