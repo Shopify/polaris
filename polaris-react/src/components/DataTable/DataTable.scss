@@ -134,6 +134,20 @@
       }
     }
   }
+
+  .SparseTableDensity & {
+    #{$se23} & {
+      padding: var(--p-space-3) var(--p-space-4);
+
+      &:first-child {
+        padding-left: var(--p-space-4);
+      }
+
+      &:last-child {
+        padding-right: var(--p-space-4);
+      }
+    }
+  }
 }
 
 .ZebraStripingOnData {
