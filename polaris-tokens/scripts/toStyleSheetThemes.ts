@@ -93,12 +93,12 @@ export async function toStyleSheetThemes() {
 
   const styles = `
   :root{color-scheme:light;${getMetadataThemeVars(metadataThemeBase)}}
+  html.Polaris-Summer-Editions-2023{${getMetadataThemeVariantVarsExperimental(
+    legacyMetadata,
+  )}}
   html.p-theme-light{${getMetadataThemeVars(metadataThemePartialLight)}}
   html.p-theme-light-high-contrast{${getMetadataThemeVars(
     metadataThemePartialHighContrast,
-  )}}
-  html.Polaris-Summer-Editions-2023{${getMetadataThemeVariantVarsExperimental(
-    legacyMetadata,
   )}}
 
   ${getKeyframes(legacyMetadata.motion)}

@@ -1,9 +1,10 @@
-import type {Exact} from '../types';
+import type {Entry, Exact} from '../types';
 
 import type {
   MetadataThemeBaseShape,
   MetadataThemePartialShape,
   MetadataThemeVariantShape,
+  MetadataTokenGroupShape,
 } from './types';
 
 /**
@@ -37,3 +38,23 @@ export const createMetadataThemeVariant =
 
 export const createMetadataThemePartial =
   createExact<MetadataThemePartialShape>();
+
+export function withValueExperimental(
+  metadataTokenGroup: MetadataTokenGroupShape,
+): MetadataTokenGroupShape {
+  return Object.fromEntries(
+    Object.entries(metadataTokenGroup).map(
+      ([
+        tokenName,
+        metadataTokenProperties,
+      ]): Entry<MetadataTokenGroupShape> => [
+        tokenName,
+        {
+          value:
+            metadataTokenProperties.valueExperimental ??
+            metadataTokenProperties.value,
+        },
+      ],
+    ),
+  );
+}
