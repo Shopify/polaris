@@ -1,14 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {
-  MetadataThemeVariantShape,
-  MetadataTokenGroupShape,
-} from '../src/themes/types';
+import type {ThemeVariantShape, TokenGroupShape} from '../src/themes/types';
 import type {Entry} from '../src/types';
-import {metadataThemeBase} from '../src/themes/base';
-import {metadataThemePartialLight} from '../src/themes/light';
-import {metadataThemePartialHighContrast} from '../src/themes/high-contrast';
+import {themeBase} from '../src/themes/base';
+import {themePartialLight} from '../src/themes/light';
+import {themePartialHighContrast} from '../src/themes/high-contrast';
 import {metadata as legacyMetadata} from '../src/metadata';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
@@ -17,11 +14,9 @@ const cssOutputPath = path.join(cssOutputDir, 'themes.css');
 const sassOutputPath = path.join(sassOutputDir, 'themes.scss');
 
 /** Creates CSS custom properties from a base, variant, or partial theme. */
-export function getMetadataThemeVars(
-  metadataTheme: Partial<MetadataThemeVariantShape>,
-) {
-  return Object.entries(metadataTheme)
-    .map(([_, tokenGroup]) => getMetadataTokenGroupVars(tokenGroup))
+export function getThemeVars(theme: Partial<ThemeVariantShape>) {
+  return Object.entries(theme)
+    .map(([_, tokenGroup]) => getTokenGroupVars(tokenGroup))
     .join('');
 }
 
@@ -29,41 +24,34 @@ export function getMetadataThemeVars(
  * Creates CSS custom properties from a variant theme
  * replacing `value` with `valueExperimental`.
  */
-export function getMetadataThemeVariantVarsExperimental(
-  metadataTheme: MetadataThemeVariantShape,
-) {
-  return Object.entries(metadataTheme)
+export function getThemeVariantVarsExperimental(theme: ThemeVariantShape) {
+  return Object.entries(theme)
     .map((entry) => {
-      const [_, metadataTokenGroup] = entry as Entry<MetadataThemeVariantShape>;
+      const [_, tokenGroup] = entry as Entry<ThemeVariantShape>;
 
-      const metadataTokenGroupExperimental = Object.fromEntries(
-        Object.entries(metadataTokenGroup)
+      const tokenGroupExperimental = Object.fromEntries(
+        Object.entries(tokenGroup)
           // Only include tokens with `valueExperimental` prop
-          .filter(([_, metadataTokenProperties]) =>
-            Boolean(metadataTokenProperties.valueExperimental),
+          .filter(([_, tokenProperties]) =>
+            Boolean(tokenProperties.valueExperimental),
           )
           // Move `valueExperimental` to `value` position
           .map(
-            ([
+            ([tokenName, tokenProperties]): Entry<TokenGroupShape> => [
               tokenName,
-              metadataTokenProperties,
-            ]): Entry<MetadataTokenGroupShape> => [
-              tokenName,
-              {value: metadataTokenProperties.valueExperimental!},
+              {value: tokenProperties.valueExperimental!},
             ],
           ),
       );
 
-      return getMetadataTokenGroupVars(metadataTokenGroupExperimental);
+      return getTokenGroupVars(tokenGroupExperimental);
     })
     .join('');
 }
 
 /** Creates CSS custom properties from a token group. */
-export function getMetadataTokenGroupVars(
-  metadataTokenGroup: MetadataTokenGroupShape,
-) {
-  return Object.entries(metadataTokenGroup)
+export function getTokenGroupVars(tokenGroup: TokenGroupShape) {
+  return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
       token.startsWith('motion-keyframes') || token.startsWith('keyframes')
         ? `--p-${token}:p-${token};`
@@ -73,7 +61,7 @@ export function getMetadataTokenGroupVars(
 }
 
 /** Creates `@keyframes` rules for `motion-keyframes-*` tokens. */
-export function getKeyframes(motion: MetadataTokenGroupShape) {
+export function getKeyframes(motion: TokenGroupShape) {
   return Object.entries(motion)
     .filter(
       ([token]) =>
@@ -92,14 +80,12 @@ export async function toStyleSheetThemes() {
   }
 
   const styles = `
-  :root{color-scheme:light;${getMetadataThemeVars(metadataThemeBase)}}
-  html.Polaris-Summer-Editions-2023{${getMetadataThemeVariantVarsExperimental(
+  :root{color-scheme:light;${getThemeVars(themeBase)}}
+  html.Polaris-Summer-Editions-2023{${getThemeVariantVarsExperimental(
     legacyMetadata,
   )}}
-  html.p-theme-light{${getMetadataThemeVars(metadataThemePartialLight)}}
-  html.p-theme-light-high-contrast{${getMetadataThemeVars(
-    metadataThemePartialHighContrast,
-  )}}
+  html.p-theme-light{${getThemeVars(themePartialLight)}}
+  html.p-theme-light-high-contrast{${getThemeVars(themePartialHighContrast)}}
 
   ${getKeyframes(legacyMetadata.motion)}
 `;

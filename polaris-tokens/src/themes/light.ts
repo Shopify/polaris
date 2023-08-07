@@ -1,21 +1,21 @@
 import {color} from '../token-groups/color';
 
 import {
-  createMetadataThemeVariant,
-  createMetadataThemePartial,
+  createThemeVariant,
+  createThemePartial,
   withValueExperimental,
 } from './utils';
-import {metadataThemeBase} from './base';
+import {themeBase} from './base';
 
 // Note: This partial theme is separate from the complete variant theme below
 // (as partials are inserted in a dedicated selector to avoid duplication)
-export const metadataThemePartialLight = createMetadataThemePartial({
+export const themePartialLight = createThemePartial({
   color: withValueExperimental(color),
 });
 
-export const metadataThemeLight = createMetadataThemeVariant({
-  ...metadataThemeBase,
-  ...metadataThemePartialLight,
+export const themeLight = createThemeVariant({
+  ...themeBase,
+  ...themePartialLight,
 });
 
-export type MetadataThemeLight = typeof metadataThemeLight;
+export type ThemeLight = typeof themeLight;

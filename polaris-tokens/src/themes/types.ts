@@ -1,24 +1,24 @@
-export interface MetadataTokenProperties {
+export interface TokenProperties {
   description?: string;
   value: string;
   valueExperimental?: string;
 }
 
-export interface MetadataTokenGroupShape {
-  [tokenName: string]: MetadataTokenProperties;
+export interface TokenGroupShape {
+  [tokenName: string]: TokenProperties;
 }
 
-export type MetadataThemeBaseShape = Omit<MetadataThemeVariantShape, 'color'>;
+export type ThemeBaseShape = Omit<ThemeVariantShape, 'color'>;
 
-export interface MetadataThemeVariantShape {
-  breakpoints: MetadataTokenGroupShape;
-  border: MetadataTokenGroupShape;
-  color: MetadataTokenGroupShape;
-  font: MetadataTokenGroupShape;
-  motion: MetadataTokenGroupShape;
-  shadow: MetadataTokenGroupShape;
-  space: MetadataTokenGroupShape;
-  zIndex: MetadataTokenGroupShape;
+export interface ThemeVariantShape {
+  breakpoints: TokenGroupShape;
+  border: TokenGroupShape;
+  color: TokenGroupShape;
+  font: TokenGroupShape;
+  motion: TokenGroupShape;
+  shadow: TokenGroupShape;
+  space: TokenGroupShape;
+  zIndex: TokenGroupShape;
 }
 
-export type MetadataThemePartialShape = Partial<MetadataThemeVariantShape>;
+export type ThemePartialShape = Partial<ThemeVariantShape>;

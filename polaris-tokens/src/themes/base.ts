@@ -7,9 +7,9 @@ import {shadow} from '../token-groups/shadow';
 import {space} from '../token-groups/space';
 import {zIndex} from '../token-groups/zIndex';
 
-import {createMetadataThemeBase} from './utils';
+import {createThemeBase} from './utils';
 
-export const metadataThemeBase = createMetadataThemeBase({
+export const themeBase = createThemeBase({
   breakpoints: tokensToRems(breakpoints),
   border: tokensToRems(border),
   font: tokensToRems(font),
@@ -19,4 +19,4 @@ export const metadataThemeBase = createMetadataThemeBase({
   zIndex,
 });
 
-export type MetadataThemeBase = typeof metadataThemeBase;
+export type ThemeBase = typeof themeBase;

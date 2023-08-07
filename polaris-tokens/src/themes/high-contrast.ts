@@ -1,15 +1,15 @@
 import {color} from '../token-groups/color';
 
 import {
-  createMetadataThemeVariant,
-  createMetadataThemePartial,
+  createThemeVariant,
+  createThemePartial,
   withValueExperimental,
 } from './utils';
-import {metadataThemeBase} from './base';
+import {themeBase} from './base';
 
 // Note: This partial theme is separate from the complete variant theme below
 // (as partials are inserted in a dedicated selector to avoid duplication)
-export const metadataThemePartialHighContrast = createMetadataThemePartial({
+export const themePartialHighContrast = createThemePartial({
   color: {
     ...withValueExperimental(color),
     'color-bg-app': {value: 'rgba(250, 250, 250, 1)'},
@@ -21,9 +21,9 @@ export const metadataThemePartialHighContrast = createMetadataThemePartial({
   },
 });
 
-export const metadataThemeHighContrast = createMetadataThemeVariant({
-  ...metadataThemeBase,
-  ...metadataThemePartialHighContrast,
+export const themeHighContrast = createThemeVariant({
+  ...themeBase,
+  ...themePartialHighContrast,
 });
 
-export type MetadataThemeHighContrast = typeof metadataThemeHighContrast;
+export type ThemeHighContrast = typeof themeHighContrast;

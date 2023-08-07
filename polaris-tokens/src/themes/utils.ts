@@ -1,10 +1,10 @@
 import type {Entry, Exact} from '../types';
 
 import type {
-  MetadataThemeBaseShape,
-  MetadataThemePartialShape,
-  MetadataThemeVariantShape,
-  MetadataTokenGroupShape,
+  ThemeBaseShape,
+  ThemePartialShape,
+  ThemeVariantShape,
+  TokenGroupShape,
 } from './types';
 
 /**
@@ -31,28 +31,21 @@ function createExact<T extends object>() {
   return <U extends Exact<T, U>>(theme: U) => theme;
 }
 
-export const createMetadataThemeBase = createExact<MetadataThemeBaseShape>();
+export const createThemeBase = createExact<ThemeBaseShape>();
 
-export const createMetadataThemeVariant =
-  createExact<MetadataThemeVariantShape>();
+export const createThemeVariant = createExact<ThemeVariantShape>();
 
-export const createMetadataThemePartial =
-  createExact<MetadataThemePartialShape>();
+export const createThemePartial = createExact<ThemePartialShape>();
 
 export function withValueExperimental(
-  metadataTokenGroup: MetadataTokenGroupShape,
-): MetadataTokenGroupShape {
+  tokenGroup: TokenGroupShape,
+): TokenGroupShape {
   return Object.fromEntries(
-    Object.entries(metadataTokenGroup).map(
-      ([
-        tokenName,
-        metadataTokenProperties,
-      ]): Entry<MetadataTokenGroupShape> => [
+    Object.entries(tokenGroup).map(
+      ([tokenName, tokenProperties]): Entry<TokenGroupShape> => [
         tokenName,
         {
-          value:
-            metadataTokenProperties.valueExperimental ??
-            metadataTokenProperties.value,
+          value: tokenProperties.valueExperimental ?? tokenProperties.value,
         },
       ],
     ),
