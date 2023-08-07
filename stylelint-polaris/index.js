@@ -36,33 +36,6 @@ const disallowedUnits = [
 const disallowedVarsBorder = [
   // Legacy custom properties
   '--p-border-radius-wide',
-  '--p-control-border-width',
-  '--p-thin-border-subdued',
-  '--p-banner-border-default',
-  '--p-banner-border-success',
-  '--p-banner-border-highlight',
-  '--p-banner-border-warning',
-  '--p-banner-border-critical',
-  '--p-text-field-focus-ring-offset',
-];
-
-const disallowedVarsLayout = [
-  // Legacy custom properties
-  '--p-range-slider-thumb-size-base',
-  '--p-range-slider-thumb-size-active',
-  '--p-choice-size',
-];
-
-const disallowedVarsSpace = [
-  // Legacy custom properties
-  '--p-button-group-item-spacing',
-  '--p-choice-margin',
-  '--p-text-field-spinner-offset',
-];
-
-const disallowedVarsZIndex = [
-  // Legacy custom properties
-  '--p-override-loading-z-index',
 ];
 
 /**
@@ -208,10 +181,6 @@ const stylelintPolarisCoverageOptions = {
       ].map(matchNameRegExp),
       'polaris/at-rule-disallowed-list': {
         include: ['layout-flex-fix', 'safe-area-for'].map(matchNameRegExp),
-      },
-      'polaris/custom-property-disallowed-list': {
-        disallowedProperties: disallowedVarsLayout,
-        disallowedValues: {'/.+/': disallowedVarsLayout},
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
@@ -385,10 +354,6 @@ const stylelintPolarisCoverageOptions = {
           '/^gap/': disallowedUnits,
         },
       ],
-      'polaris/custom-property-disallowed-list': {
-        disallowedProperties: disallowedVarsSpace,
-        disallowedValues: {'/.+/': disallowedVarsSpace},
-      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$polaris-spacing/,
@@ -455,10 +420,6 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'function-disallowed-list': ['z-index'].map(matchNameRegExp),
-      'polaris/custom-property-disallowed-list': {
-        disallowedProperties: disallowedVarsZIndex,
-        disallowedValues: {'/.+/': disallowedVarsZIndex},
-      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$fixed-element-stacking-order/,
