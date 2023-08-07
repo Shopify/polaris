@@ -81,11 +81,18 @@ $control-vertical-adjustment: 2px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+
+    &.select,
+    &.select:hover:not(.disabled),
+    &.active {
+      font-weight: var(--p-font-weight-semibold);
+    }
   }
 }
 
 .Label,
-.SingleSelectOption {
+.SingleSelectOption,
+.MultiSelectOption {
   display: flex;
   align-items: flex-start;
   width: 100%;
@@ -140,6 +147,17 @@ $control-vertical-adjustment: 2px;
     background: transparent;
     cursor: default;
     color: var(--p-color-text-disabled);
+  }
+}
+
+.MultiSelectOption {
+  #{$se23} & {
+    &:active:not(.disabled),
+    &.select,
+    &.select:hover:not(.disabled),
+    &:hover:not(.disabled) {
+      background-color: transparent;
+    }
   }
 }
 

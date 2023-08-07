@@ -1,5 +1,20 @@
 # Changelog
 
+## 11.11.0
+
+### Minor Changes
+
+- [#9697](https://github.com/Shopify/polaris/pull/9697) [`c078d5d85`](https://github.com/Shopify/polaris/commit/c078d5d85420fe30f3cd19d2e801ae5b2ad4484c) Thanks [@nat-king](https://github.com/nat-king)! - Added optional prop `TextDecorationLine` to `Text` to include a line-through decoration
+
+### Patch Changes
+
+- [#9847](https://github.com/Shopify/polaris/pull/9847) [`85b68a358`](https://github.com/Shopify/polaris/commit/85b68a358a0390c243216ad8059d9bccf5f00594) Thanks [@qt314](https://github.com/qt314)! - Added `role` prop to `VerticalStack`
+
+* [#9863](https://github.com/Shopify/polaris/pull/9863) [`4061fd04d`](https://github.com/Shopify/polaris/commit/4061fd04db5458549b5743c61cf39ca9e67ab721) Thanks [@zakwarsame](https://github.com/zakwarsame)! - Fixed ActionList item overflow and tooltip zIndex
+
+* Updated dependencies [[`3fc3d5923`](https://github.com/Shopify/polaris/commit/3fc3d5923b5ed23c4a460bb2c40f31eab21e5f89), [`bac86a621`](https://github.com/Shopify/polaris/commit/bac86a6212467ed4695c4c979f7b5f5f4c6bf8e2), [`5dabf0fe0`](https://github.com/Shopify/polaris/commit/5dabf0fe050ababf9bd5f78fd4a1fa69098c95b2)]:
+  - @shopify/polaris-icons@7.8.0
+
 ## 11.10.2
 
 ### Patch Changes

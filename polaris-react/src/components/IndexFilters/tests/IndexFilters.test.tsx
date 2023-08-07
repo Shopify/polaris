@@ -124,6 +124,14 @@ describe('IndexFilters', () => {
     });
   });
 
+  it('renders the SearchFilterButton tooltipContent with keyboard shortcut by default', () => {
+    const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
+
+    expect(wrapper).toContainReactComponent(SearchFilterButton, {
+      tooltipContent: 'Search and filter (F)',
+    });
+  });
+
   it('onQueryChange gets called correctly', () => {
     const wrapper = mountWithApp(
       <IndexFilters {...defaultProps} mode={IndexFiltersMode.Filtering} />,
@@ -207,6 +215,28 @@ describe('IndexFilters', () => {
     });
   });
 
+  describe('pressing f', () => {
+    it('moves from Default mode to Filtering mode', () => {
+      const onEditStart = jest.fn();
+
+      mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          mode={IndexFiltersMode.Default}
+          onEditStart={onEditStart}
+        />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'f',
+        }),
+      );
+
+      expect(onEditStart).toHaveBeenCalled();
+    });
+  });
+
   describe('pressing escape', () => {
     it('does not call the cancelAction.onAction method when in Default mode', () => {
       mountWithApp(
@@ -251,6 +281,75 @@ describe('IndexFilters', () => {
       );
 
       expect(defaultProps.cancelAction.onAction).toHaveBeenCalled();
+    });
+  });
+
+  describe('disableKeyboardShortcuts', () => {
+    it('renders the SearchFilterButton tooltipContent without the keyboard shortcut', () => {
+      const wrapper = mountWithApp(
+        <IndexFilters {...defaultProps} disableKeyboardShortcuts />,
+      );
+
+      expect(wrapper).toContainReactComponent(SearchFilterButton, {
+        tooltipContent: 'Search and filter',
+      });
+    });
+
+    it('does not moves from Default mode to Filtering mode when pressing f', () => {
+      const onEditStart = jest.fn();
+
+      mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          mode={IndexFiltersMode.Default}
+          onEditStart={onEditStart}
+          disableKeyboardShortcuts
+        />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'f',
+        }),
+      );
+
+      expect(onEditStart).not.toHaveBeenCalled();
+    });
+
+    it('does not call the cancelAction.onAction method when pressing escape in Filtering mode', () => {
+      mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          mode={IndexFiltersMode.Filtering}
+          disableKeyboardShortcuts
+        />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Escape',
+        }),
+      );
+
+      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
+    });
+
+    it('does not call the cancelAction.onAction method when pressing escape in EditingColumns mode', () => {
+      mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          mode={IndexFiltersMode.EditingColumns}
+          disableKeyboardShortcuts
+        />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Escape',
+        }),
+      );
+
+      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
     });
   });
 

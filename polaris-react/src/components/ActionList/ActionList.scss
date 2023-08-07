@@ -1,5 +1,8 @@
 @import '../../styles/common';
 
+$indented-item-margin: calc(var(--p-space-5) + var(--p-space-05));
+$indented-item-width: calc(100% - #{$indented-item-margin});
+
 .Item {
   // stylelint-disable -- Polaris component custom properties
   --pc-action-list-item-min-height: var(--p-space-10);
@@ -174,7 +177,8 @@
     --pc-action-list-image-size: 24px;
     // stylelint-enable
     position: relative;
-    margin-left: calc(var(--p-space-5) + var(--p-space-05));
+    margin-left: $indented-item-margin;
+    max-width: $indented-item-width;
 
     &::before {
       content: '';

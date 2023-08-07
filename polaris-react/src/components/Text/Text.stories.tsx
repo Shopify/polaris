@@ -41,6 +41,9 @@ export const Variants = () => (
     <Text as="p" variant="bodySm">
       Text with BodySm variant
     </Text>
+    <Text as="strong" variant="bodySm">
+      Text as a strong tag
+    </Text>
   </LegacyStack>
 );
 
@@ -145,4 +148,12 @@ export const InADefinitionList = () => (
       Definition Description
     </Text>
   </dl>
+);
+
+export const WithTextDecoration = () => (
+  <LegacyStack vertical>
+    <Text as="p" textDecorationLine="line-through">
+      $100.00
+    </Text>
+  </LegacyStack>
 );
