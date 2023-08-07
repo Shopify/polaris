@@ -38,6 +38,16 @@ const disallowedVarsBorder = [
   '--p-border-radius-wide',
 ];
 
+const disallowedVarsColor = [
+  // Legacy custom properties
+  '--p-icon',
+];
+
+const disallowedVarsShadow = [
+  // Legacy custom properties
+  '--p-shadow-transparent',
+];
+
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -98,6 +108,10 @@ const stylelintPolarisCoverageOptions = {
           'recolor-icon',
           'ms-high-contrast-color',
         ].map(matchNameRegExp),
+      },
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsColor,
+        disallowedValues: {'/.+/': disallowedVarsColor},
       },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
@@ -333,6 +347,10 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'property-disallowed-list': ['text-shadow'],
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsShadow,
+        disallowedValues: {'/.+/': disallowedVarsShadow},
+      },
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$shadows-data/,
