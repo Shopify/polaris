@@ -31,6 +31,7 @@ interface State {
 }
 
 export interface AppProviderProps {
+  theme?: 'light' | 'light-high-contrast';
   /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
@@ -92,8 +93,17 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
   setRootAttributes = () => {
     const features = this.getFeatures();
+    const theme = this.getTheme();
 
-    document.documentElement.classList.add('p-theme-light');
+    document.documentElement.classList.toggle(
+      'p-theme-light',
+      theme === 'light',
+    );
+
+    document.documentElement.classList.toggle(
+      'p-theme-light-high-contrast',
+      theme === 'light-high-contrast',
+    );
 
     document.documentElement.classList.toggle(
       classNamePolarisSummerEditions2023,
@@ -105,6 +115,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
       features.polarisSummerEditions2023ShadowBevelOptOut,
     );
   };
+
+  getTheme = () => this.props.theme ?? 'light';
 
   getFeatures = () => {
     const {features} = this.props;

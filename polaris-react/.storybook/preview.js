@@ -22,12 +22,14 @@ function AppProviderDecorator(Story, context) {
   const {
     polarisSummerEditions2023,
     polarisSummerEditions2023ShadowBevelOptOut,
+    theme,
   } = context.globals;
 
   if (context.args.omitAppProvider) return <Story {...context} />;
 
   return (
     <AppProvider
+      theme={theme}
       features={{
         polarisSummerEditions2023:
           process.env.STORYBOOK_SE23 === 'on'
@@ -127,6 +129,16 @@ export const globalTypes = {
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
+    },
+  },
+  theme: {
+    description: 'Global theme for components',
+    defaultValue: 'light',
+    toolbar: {
+      title: 'Theme',
+      icon: 'circlehollow',
+      items: ['light', 'light-high-contrast'],
+      dynamicTitle: true,
     },
   },
   ...featureFlagOptions,
