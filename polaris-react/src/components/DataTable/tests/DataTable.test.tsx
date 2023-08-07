@@ -71,6 +71,52 @@ describe('<DataTable />', () => {
     expect(consoleSpy).not.toHaveBeenCalled();
   });
 
+  describe('tableDensity', () => {
+    it('uses default cell styles when tableDensity is not set', () => {
+      const dataTable = mountWithApp(
+        <DataTable columnContentTypes={[]} headings={[]} rows={[]} />,
+      );
+
+      expect(dataTable).toContainReactComponent('div', {
+        className: expect.not.stringContaining('IncreasedTableDensity'),
+      });
+
+      expect(dataTable).toContainReactComponent('div', {
+        className: expect.not.stringContaining('SparseTableDensity'),
+      });
+    });
+
+    it('uses applies the tableDensity=dense style', () => {
+      const dataTable = mountWithApp(
+        <DataTable
+          columnContentTypes={[]}
+          headings={[]}
+          rows={[]}
+          tableDensity="dense"
+        />,
+      );
+
+      expect(dataTable).toContainReactComponent('div', {
+        className: expect.stringContaining('IncreasedTableDensity'),
+      });
+    });
+
+    it('uses applies the tableDensity=sparse style', () => {
+      const dataTable = mountWithApp(
+        <DataTable
+          columnContentTypes={[]}
+          headings={[]}
+          rows={[]}
+          tableDensity="sparse"
+        />,
+      );
+
+      expect(dataTable).toContainReactComponent('div', {
+        className: expect.stringContaining('SparseTableDensity'),
+      });
+    });
+  });
+
   describe('columnContentTypes', () => {
     it('sets the provided contentType of Cells in each column', () => {
       const headings = ['Column 1', 'Column 2'];

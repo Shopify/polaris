@@ -28,6 +28,8 @@ export type TableData = string | number | React.ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
 
+export type TableDensityType = 'default' | 'dense' | 'sparse';
+
 const getRowClientHeights = (rows: NodeList | undefined) => {
   const heights: number[] = [];
   if (!rows) {
@@ -85,8 +87,10 @@ export interface DataTableProps {
   initialSortColumnIndex?: number;
   /** Callback fired on click or keypress of a sortable column heading. */
   onSort?(headingIndex: number, direction: SortDirection): void;
-  /** Increased density */
+  /** @deprecated Increased density */
   increasedTableDensity?: boolean;
+  /** Specify how dense the rows will appear in the table */
+  tableDensity?: TableDensityType;
   /** Add zebra striping to data rows */
   hasZebraStripingOnData?: boolean;
   /** Header becomes sticky and pins to top of table when scrolling  */
@@ -174,6 +178,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       footerContent,
       hideScrollIndicator = false,
       increasedTableDensity = false,
+      tableDensity = 'default',
       hasZebraStripingOnData = false,
       stickyHeader = false,
       hasFixedFirstColumn: fixedFirstColumn = false,
@@ -209,6 +214,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       styles.TableWrapper,
       condensed && styles.condensed,
       increasedTableDensity && styles.IncreasedTableDensity,
+      tableDensity === 'dense' && styles.IncreasedTableDensity,
+      tableDensity === 'sparse' && styles.SparseTableDensity,
       stickyHeader && styles.StickyHeaderEnabled,
     );
 
