@@ -361,7 +361,8 @@
       "clear": "クリア"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "検索と絞り込み (F)",
+      "searchFilterTooltip": "検索と絞り込み",
+      "searchFilterTooltipWithShortcut": "検索と絞り込み (F)",
       "searchFilterAccessibilityLabel": "検索と絞り込みの結果",
       "sort": "検索結果を並べ替える",
       "addView": "新たなビューを追加",
