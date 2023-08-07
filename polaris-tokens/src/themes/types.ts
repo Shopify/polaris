@@ -1,6 +1,5 @@
 export interface TokenProperties {
   value: string;
-  valueExperimental?: string;
   description?: string;
 }
 
