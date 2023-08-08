@@ -36,7 +36,9 @@ export function SecondaryAction({
   );
 
   const actionMarkup = helpText ? (
-    <Tooltip content={helpText}>{buttonMarkup}</Tooltip>
+    <Tooltip preferredPosition="below" content={helpText}>
+      {buttonMarkup}
+    </Tooltip>
   ) : (
     buttonMarkup
   );
