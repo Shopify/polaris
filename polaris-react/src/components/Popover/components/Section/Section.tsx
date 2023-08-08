@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Box} from '../../../Box';
 import {useFeatures} from '../../../../utilities/features';
-import styles from '../../Popover.scss';
+import styles from '../../Popover.module.scss';
 
 export interface SectionProps {
   children?: React.ReactNode;

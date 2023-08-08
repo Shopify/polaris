@@ -17,7 +17,7 @@ import {HorizontalStack} from '../HorizontalStack';
 import {useFeatures} from '../../utilities/features';
 import {VerticalStack} from '../VerticalStack';
 
-import styles from './MediaCard.scss';
+import styles from './MediaCard.module.scss';
 
 type Size = 'small' | 'medium';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import styles from '../../../FormLayout.scss';
+import styles from '../../../FormLayout.module.scss';
 import {TextField} from '../../../../TextField';
 import {Item} from '../Item';
 

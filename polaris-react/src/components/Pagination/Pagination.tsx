@@ -12,7 +12,7 @@ import {Tooltip} from '../Tooltip';
 import {Box} from '../Box';
 import {useFeatures} from '../../utilities/features';
 
-import styles from './Pagination.scss';
+import styles from './Pagination.module.scss';
 
 interface AccessibilityLabels {
   previous: string;

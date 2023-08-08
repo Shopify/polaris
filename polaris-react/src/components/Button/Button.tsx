@@ -21,7 +21,7 @@ import type {UnstyledButtonProps} from '../UnstyledButton';
 import {useDisableClick} from '../../utilities/use-disable-interaction';
 import {useFeatures} from '../../utilities/features';
 
-import styles from './Button.scss';
+import styles from './Button.module.scss';
 
 export interface ButtonProps extends BaseButton {
   /** The content to display inside the button */

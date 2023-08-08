@@ -15,7 +15,7 @@ import {useToggle} from '../../../../utilities/use-toggle';
 import {useFeatures} from '../../../../utilities/features';
 
 import {DiscardConfirmationModal} from './components';
-import styles from './ContextualSaveBar.scss';
+import styles from './ContextualSaveBar.module.scss';
 
 export function ContextualSaveBar({
   alignContentFlush,

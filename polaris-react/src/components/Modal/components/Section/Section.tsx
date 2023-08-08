@@ -4,7 +4,7 @@ import {Box} from '../../../Box';
 import {classNames} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
 
-import styles from './Section.scss';
+import styles from './Section.module.scss';
 
 export interface SectionProps {
   children?: React.ReactNode;

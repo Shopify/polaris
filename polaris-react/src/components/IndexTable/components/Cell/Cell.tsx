@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import styles from '../../IndexTable.scss';
+import styles from '../../IndexTable.module.scss';
 
 export interface CellProps {
   children?: ReactNode;

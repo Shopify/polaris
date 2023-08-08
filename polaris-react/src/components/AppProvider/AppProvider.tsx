@@ -22,8 +22,8 @@ import {
 } from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
-import './AppProvider.scss';
-import './global.scss';
+import './AppProvider.module.scss';
+import './global.module.scss';
 
 interface State {
   intl: I18n;

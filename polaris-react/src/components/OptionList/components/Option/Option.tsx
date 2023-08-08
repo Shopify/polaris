@@ -14,7 +14,7 @@ import type {HorizontalStackProps} from '../../../HorizontalStack';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
 
-import styles from './Option.scss';
+import styles from './Option.module.scss';
 
 type Alignment = 'top' | 'center' | 'bottom';
 

@@ -4,7 +4,7 @@ import {classNames} from '../../../../../../utilities/css';
 import {Text} from '../../../../../Text';
 import {useFeatures} from '../../../../../../utilities/features';
 
-import styles from './Title.scss';
+import styles from './Title.module.scss';
 
 export interface TitleProps {
   /** Page title, in large type */

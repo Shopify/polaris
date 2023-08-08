@@ -2,7 +2,7 @@ import React, {useRef, useState, useEffect} from 'react';
 
 import {classNames, variationName} from '../../../../utilities/css';
 
-import styles from './CSSAnimation.scss';
+import styles from './CSSAnimation.module.scss';
 
 type AnimationType = 'fade';
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import {classNames} from '../../../../utilities/css';
-import styles from '../../ButtonGroup.scss';
+import styles from '../../ButtonGroup.module.scss';
 
 export interface ItemProps {
   button: React.ReactElement;

@@ -32,7 +32,7 @@ import {useFeatures} from '../../../../utilities/features';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
-import styles from './Header.scss';
+import styles from './Header.module.scss';
 
 type MaybeJSX = JSX.Element | null;
 

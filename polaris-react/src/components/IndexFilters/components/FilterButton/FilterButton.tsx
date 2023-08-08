@@ -6,7 +6,7 @@ import {UnstyledButton} from '../../../UnstyledButton';
 import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 
-import styles from './FilterButton.scss';
+import styles from './FilterButton.module.scss';
 
 export interface FilterButtonProps {
   onClick: () => void;

@@ -10,7 +10,7 @@ import {ComboboxListboxOptionContext} from '../../../../utilities/combobox/conte
 import {ActionContext} from '../../../../utilities/listbox/context';
 import {useFeatures} from '../../../../utilities/features';
 
-import styles from './TextOption.scss';
+import styles from './TextOption.module.scss';
 
 export interface TextOptionProps {
   children: React.ReactNode;

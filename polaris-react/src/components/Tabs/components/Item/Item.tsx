@@ -3,7 +3,7 @@ import React, {memo, useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {UnstyledLink} from '../../../UnstyledLink';
-import styles from '../../Tabs.scss';
+import styles from '../../Tabs.module.scss';
 
 export interface ItemProps {
   id: string;

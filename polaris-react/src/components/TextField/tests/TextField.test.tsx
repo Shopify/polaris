@@ -8,7 +8,7 @@ import {Select} from '../../Select';
 import {Tag} from '../../Tag';
 import {Resizer, Spinner} from '../components';
 import {TextField} from '../TextField';
-import styles from '../TextField.scss';
+import styles from '../TextField.module.scss';
 import {Key} from '../../../types';
 
 describe('<TextField />', () => {

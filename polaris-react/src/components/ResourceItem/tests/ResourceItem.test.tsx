@@ -13,7 +13,7 @@ import {Thumbnail} from '../../Thumbnail';
 import {UnstyledLink} from '../../UnstyledLink';
 import {ResourceItem} from '../ResourceItem';
 import {ResourceListContext} from '../../../utilities/resource-list';
-import styles from '../ResourceItem.scss';
+import styles from '../ResourceItem.module.scss';
 
 describe('<ResourceItem />', () => {
   let spy: jest.SpyInstance;

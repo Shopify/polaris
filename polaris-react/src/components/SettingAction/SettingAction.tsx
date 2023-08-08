@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './SettingAction.scss';
+import styles from './SettingAction.module.scss';
 
 export interface SettingActionProps {
   action?: React.ReactNode;

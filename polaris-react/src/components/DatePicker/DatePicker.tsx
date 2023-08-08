@@ -18,7 +18,7 @@ import {useFeatures} from '../../utilities/features';
 
 import {monthName} from './utilities';
 import {Month} from './components';
-import styles from './DatePicker.scss';
+import styles from './DatePicker.module.scss';
 
 export type {Range};
 

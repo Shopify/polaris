@@ -4,7 +4,7 @@ import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
 import {Box} from '../../../Box';
 import {Item} from '../Item';
-import styles from '../../FormLayout.scss';
+import styles from '../../FormLayout.module.scss';
 import {useFeatures} from '../../../../utilities/features';
 
 export interface GroupProps {

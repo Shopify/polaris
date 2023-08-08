@@ -25,7 +25,7 @@ import {Icon} from '../../../Icon';
 import {useEventListener} from '../../../../utilities/use-event-listener';
 
 import {bannerAttributes} from './utilities';
-import styles from './BannerExperimental.scss';
+import styles from './BannerExperimental.module.scss';
 
 interface BannerLayoutProps {
   backgroundColor: BoxProps['background'];

@@ -8,7 +8,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import type {Width, Padding, BorderRadius} from '../../Tooltip';
 import {useFeatures} from '../../../../utilities/features';
 
-import styles from './TooltipOverlay.scss';
+import styles from './TooltipOverlay.module.scss';
 
 const tailUpPaths = (
   <>

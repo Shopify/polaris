@@ -6,7 +6,7 @@ import {Text} from '../Text';
 import {useI18n} from '../../utilities/i18n';
 import {useFeatures} from '../../utilities/features';
 
-import styles from './FullscreenBar.scss';
+import styles from './FullscreenBar.module.scss';
 
 export interface FullscreenBarProps {
   /** Callback when back button is clicked */
