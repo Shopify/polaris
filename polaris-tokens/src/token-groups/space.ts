@@ -32,7 +32,7 @@ export const space: {
   [TokenName in SpaceTokenName]: MetadataProperties;
 } = {
   'space-0': {
-    value: '0',
+    value: '0px',
   },
   'space-025': {
     value: '1px',
