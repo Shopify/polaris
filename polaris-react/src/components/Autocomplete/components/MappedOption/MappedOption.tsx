@@ -4,7 +4,7 @@ import type {OptionDescriptor, ArrayElement} from '../../../../types';
 import {Listbox} from '../../../Listbox';
 import {classNames} from '../../../../utilities/css';
 
-import styles from './MappedOption.scss';
+import styles from './MappedOption.module.scss';
 
 type MappedOption = ArrayElement<OptionDescriptor[]> & {
   selected: boolean;

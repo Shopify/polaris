@@ -7,7 +7,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {headerCell} from '../../../shared';
 import {Icon} from '../../../Icon';
 import type {SortDirection, VerticalAlign} from '../../types';
-import styles from '../../DataTable.scss';
+import styles from '../../DataTable.module.scss';
 import {Tooltip} from '../../../Tooltip';
 
 export interface CellProps {

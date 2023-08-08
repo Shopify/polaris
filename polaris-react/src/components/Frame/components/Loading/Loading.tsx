@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useI18n} from '../../../../utilities/i18n';
 import {useIsMountedRef} from '../../../../utilities/use-is-mounted-ref';
 
-import styles from './Loading.scss';
+import styles from './Loading.module.scss';
 
 const STUCK_THRESHOLD = 99;
 

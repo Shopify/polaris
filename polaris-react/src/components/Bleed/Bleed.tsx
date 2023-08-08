@@ -7,7 +7,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './Bleed.scss';
+import styles from './Bleed.module.scss';
 
 type Spacing = ResponsiveProp<SpaceScale>;
 

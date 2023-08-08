@@ -1,7 +1,7 @@
 import React from 'react';
 import type {BorderWidthScale, ColorBorderAlias} from '@shopify/polaris-tokens';
 
-import styles from './Divider.scss';
+import styles from './Divider.module.scss';
 
 export interface DividerProps {
   /**

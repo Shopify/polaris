@@ -29,7 +29,7 @@ import {Text} from '../Text';
 import {Box} from '../Box';
 import {useFeatures} from '../../utilities/features';
 
-import styles from './Banner.scss';
+import styles from './Banner.module.scss';
 import {BannerExperimental} from './components';
 
 export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';

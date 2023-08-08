@@ -12,7 +12,7 @@ import {UnstyledLink} from '../UnstyledLink';
 
 import {SearchField, UserMenu, Search, Menu} from './components';
 import type {SearchFieldProps, UserMenuProps, SearchProps} from './components';
-import styles from './TopBar.scss';
+import styles from './TopBar.module.scss';
 
 export type {UserMenuProps, SearchFieldProps};
 

@@ -8,7 +8,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './VerticalStack.scss';
+import styles from './VerticalStack.module.scss';
 
 type Align =
   | 'start'

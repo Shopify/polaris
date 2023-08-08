@@ -13,7 +13,7 @@ import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 import {useFeatures} from '../../utilities/features';
 
-import styles from './Choice.scss';
+import styles from './Choice.module.scss';
 
 type Spacing = ResponsiveProp<SpaceScale>;
 
@@ -157,7 +157,7 @@ export function Choice({
       <Text
         as="span"
         // `undefined` means color: inherit
-        // the nearest ancestor with a specified color is .Descriptions in Choice.scss
+        // the nearest ancestor with a specified color is .Descriptions in Choice.module.scss
         color={disabled && polarisSummerEditions2023 ? undefined : 'subdued'}
       >
         {helpText}

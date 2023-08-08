@@ -7,7 +7,7 @@ import {UnstyledButton} from '../../../../../UnstyledButton';
 import {Icon} from '../../../../../Icon';
 import {useFeatures} from '../../../../../../utilities/features';
 
-import styles from './DirectionButton.scss';
+import styles from './DirectionButton.module.scss';
 
 type DirectionButtonDirection = 'asc' | 'desc';
 

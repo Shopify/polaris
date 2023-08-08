@@ -5,7 +5,7 @@ import {Text} from '../../../Text';
 // eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../TextContainer';
 import {useFeatures} from '../../../../utilities/features';
-import styles from '../../Layout.scss';
+import styles from '../../Layout.module.scss';
 
 export interface AnnotatedSectionProps {
   children?: React.ReactNode;

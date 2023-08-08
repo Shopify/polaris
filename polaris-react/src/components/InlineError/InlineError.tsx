@@ -5,7 +5,7 @@ import {Icon} from '../Icon';
 import type {Error} from '../../types';
 import {useFeatures} from '../../utilities/features';
 
-import styles from './InlineError.scss';
+import styles from './InlineError.module.scss';
 
 export interface InlineErrorProps {
   /** Content briefly explaining how to resolve the invalid form field input. */

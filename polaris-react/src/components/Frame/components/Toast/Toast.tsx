@@ -15,7 +15,7 @@ import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
 import {useFeatures} from '../../../../utilities/features';
 
-import styles from './Toast.scss';
+import styles from './Toast.module.scss';
 
 export type {ToastProps};
 

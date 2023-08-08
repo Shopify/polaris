@@ -4,7 +4,7 @@ import {Slidable} from '../Slidable';
 import type {SlidableProps} from '../Slidable';
 import type {HSBColor} from '../../../../utilities/color-types';
 import {hsbToRgb} from '../../../../utilities/color-transformers';
-import styles from '../../ColorPicker.scss';
+import styles from '../../ColorPicker.module.scss';
 
 import {calculateDraggerY, alphaForDraggerY} from './utilities';
 

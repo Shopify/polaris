@@ -1,5 +1,5 @@
 @import '../../../../styles/common';
-@import '../../RangeSlider';
+@import '../../RangeSlider.module';
 
 @mixin range-track-selectors {
   &::-ms-track {

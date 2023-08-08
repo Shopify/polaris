@@ -10,7 +10,7 @@ import {EventListener} from '../../../EventListener';
 import {UseFeatures} from '../../../../utilities/features';
 
 import {Item} from './components';
-import styles from './ConnectedFilterControl.scss';
+import styles from './ConnectedFilterControl.module.scss';
 
 interface PopoverableAction extends DisableableAction {
   popoverOpen: boolean;

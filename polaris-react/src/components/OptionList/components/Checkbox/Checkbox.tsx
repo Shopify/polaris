@@ -4,7 +4,7 @@ import {TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../utilities/css';
 import {Icon} from '../../../Icon';
 
-import styles from './Checkbox.scss';
+import styles from './Checkbox.module.scss';
 
 export interface CheckboxProps {
   checked?: boolean;

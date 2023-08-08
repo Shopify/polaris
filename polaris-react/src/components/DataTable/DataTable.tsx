@@ -15,7 +15,7 @@ import {Cell, Navigation} from './components';
 import type {CellProps} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 import type {DataTableState, SortDirection, VerticalAlign} from './types';
-import styles from './DataTable.scss';
+import styles from './DataTable.module.scss';
 
 export type {SortDirection};
 

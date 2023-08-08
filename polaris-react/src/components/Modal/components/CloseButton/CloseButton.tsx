@@ -7,7 +7,7 @@ import {useFeatures} from '../../../../utilities/features';
 import {Icon} from '../../../Icon';
 import {Button} from '../../../Button';
 
-import styles from './CloseButton.scss';
+import styles from './CloseButton.module.scss';
 
 export interface CloseButtonProps {
   pressed?: boolean;

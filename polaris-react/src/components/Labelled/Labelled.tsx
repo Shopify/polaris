@@ -9,7 +9,7 @@ import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 import {useFeatures} from '../../utilities/features';
 
-import styles from './Labelled.scss';
+import styles from './Labelled.module.scss';
 
 export {labelID};
 

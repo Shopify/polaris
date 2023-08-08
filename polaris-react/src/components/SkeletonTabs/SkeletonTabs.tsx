@@ -3,7 +3,7 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 
-import styles from './SkeletonTabs.scss';
+import styles from './SkeletonTabs.module.scss';
 
 export interface SkeletonTabsProps {
   count?: number;

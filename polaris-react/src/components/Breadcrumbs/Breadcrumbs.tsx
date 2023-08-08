@@ -9,7 +9,7 @@ import {Text} from '../Text';
 import {Button} from '../Button';
 import {useFeatures} from '../../utilities/features';
 
-import styles from './Breadcrumbs.scss';
+import styles from './Breadcrumbs.module.scss';
 
 export interface BreadcrumbsProps {
   /** Back action link */

@@ -4,7 +4,7 @@ import type {SpaceScale} from '@shopify/polaris-tokens';
 import {getResponsiveProps} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './HorizontalStack.scss';
+import styles from './HorizontalStack.module.scss';
 
 type Align =
   | 'start'
