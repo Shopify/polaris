@@ -1,15 +1,15 @@
-import {metadata} from '../src';
+import {themes, themesPartials} from '../src/themes';
 
-import {toTokenValues} from './toTokenValues';
+import {toValues} from './toValues';
 import {toJSON} from './toJSON';
 import {toMediaConditions} from './toMediaConditions';
-import {toStyleSheetThemes} from './toStyleSheetThemes';
+import {toStyleSheet} from './toStyleSheet';
 
 (async () => {
   await Promise.all([
-    toTokenValues(metadata),
-    toJSON(metadata),
-    toMediaConditions(metadata.breakpoints),
-    toStyleSheetThemes(),
+    toValues(themes),
+    toJSON(themes),
+    toMediaConditions(themes.light.breakpoints),
+    toStyleSheet(themes, themesPartials),
   ]);
 })();

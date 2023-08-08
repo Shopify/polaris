@@ -1,21 +1,18 @@
 import fs from 'fs';
 import path from 'path';
 
+import type {Themes, ThemesPartials} from '../src/themes';
 import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
-import type {Entry} from '../src/types';
-import {themeLight} from '../src/themes/light';
-import {themeLightUpliftPartial} from '../src/themes/light-uplift';
-import {metadata as legacyMetadata} from '../src/metadata';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
-const cssOutputPath = path.join(cssOutputDir, 'themes.css');
-const sassOutputPath = path.join(sassOutputDir, 'themes.scss');
+const cssOutputPath = path.join(cssOutputDir, 'styles.css');
+const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
 
-/** Creates CSS custom properties from a base, variant, or partial theme. */
-export function getThemeVars(theme: Partial<ThemeShape>) {
+/** Creates CSS custom properties from a base or variant partial theme. */
+export function getThemeVars(theme: ThemeShape) {
   return Object.values(theme)
-    .map((tokenGroup) => getTokenGroupVars(tokenGroup || {}))
+    .map((tokenGroup) => getTokenGroupVars(tokenGroup))
     .join('');
 }
 
@@ -41,7 +38,10 @@ export function getKeyframes(motion: TokenGroupShape) {
     .join('');
 }
 
-export async function toStyleSheetThemes() {
+export async function toStyleSheet(
+  themes: Themes,
+  themesPartials: ThemesPartials,
+) {
   if (!fs.existsSync(cssOutputDir)) {
     await fs.promises.mkdir(cssOutputDir, {recursive: true});
   }
@@ -50,11 +50,19 @@ export async function toStyleSheetThemes() {
   }
 
   const styles = `
-  :root{color-scheme:light;${getThemeVars(themeLight)}}
-  html.Polaris-Summer-Editions-2023{${getThemeVars(themeLightUpliftPartial)}}
 
-  ${getKeyframes(legacyMetadata.motion)}
-`;
+  :root{color-scheme:light;${getThemeVars(themes.light)}}
+
+  ${Object.entries(themesPartials)
+    .map(
+      ([themeName, themePartial]) =>
+        `html.${themeName}{${getThemeVars(themePartial)}}`,
+    )
+    .join('\n')}
+
+  ${getKeyframes(themes.light.motion)}
+
+`.trim();
   // TODO: Add support for multi-theme keyframes
 
   await fs.promises.writeFile(cssOutputPath, styles);

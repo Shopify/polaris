@@ -14,6 +14,11 @@
       "import": "./dist/esm/build/index.mjs",
       "require": "./dist/cjs/build/index.js"
     },
+    "./themes": {
+      "types": "./dist/types/build/themes.d.ts",
+      "import": "./dist/esm/build/themes.mjs",
+      "require": "./dist/cjs/build/themes.js"
+    },
     "./json/*": "./dist/json/*",
     "./css/*": "./dist/css/*",
     "./scss/*": "./dist/scss/*"
@@ -58,5 +63,8 @@
   ],
   "dependencies": {
     "deepmerge": "^4.3.1"
+  },
+  "devDependencies": {
+    "change-case": "^4.1.2"
   }
 }

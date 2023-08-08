@@ -1,7 +1,6 @@
 import type {Exact} from '../types';
 
-import type {ThemeBase} from './base';
-import type {DeepPartial, ThemeShape} from './types';
+import type {ThemeShape, ThemeVariantPartialShape} from './types';
 
 /**
  * Identity function creator that simply returns the provided theme,
@@ -29,4 +28,5 @@ function createExact<T extends object>() {
 
 export const createThemeBase = createExact<ThemeShape>();
 
-export const createThemeVariantPartial = createExact<DeepPartial<ThemeBase>>();
+export const createThemeVariantPartial =
+  createExact<ThemeVariantPartialShape>();
