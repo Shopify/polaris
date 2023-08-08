@@ -95,6 +95,8 @@ export interface IndexFiltersProps
   filteringAccessibilityTooltip?: string;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
+  /** Optional override to the default keyboard shortcuts available */
+  disableKeyboardShortcuts?: boolean;
 }
 
 export function IndexFilters({
@@ -132,6 +134,7 @@ export function IndexFilters({
   filteringAccessibilityTooltip,
   hideQueryField,
   closeOnChildOverlayClick,
+  disableKeyboardShortcuts,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -153,6 +156,8 @@ export function IndexFilters({
   });
 
   useEventListener('keydown', (event) => {
+    if (disableKeyboardShortcuts) return;
+
     const {key} = event;
     const tag = document?.activeElement?.tagName;
     if (mode !== IndexFiltersMode.Default && event.key === 'Escape') {
@@ -271,9 +276,12 @@ export function IndexFilters({
     beginEdit();
   }
 
+  const searchFilterTooltipLabelId = disableKeyboardShortcuts
+    ? 'Polaris.IndexFilters.searchFilterTooltip'
+    : 'Polaris.IndexFilters.searchFilterTooltipWithShortcut';
+
   const searchFilterTooltip =
-    filteringAccessibilityTooltip ||
-    i18n.translate('Polaris.IndexFilters.searchFilterTooltip');
+    filteringAccessibilityTooltip || i18n.translate(searchFilterTooltipLabelId);
   const searchFilterAriaLabel =
     filteringAccessibilityLabel ||
     i18n.translate('Polaris.IndexFilters.searchFilterAccessibilityLabel');

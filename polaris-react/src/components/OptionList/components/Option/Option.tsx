@@ -100,6 +100,7 @@ export function Option({
     select && styles.select,
     verticalAlign && styles[variationName('verticalAlign', verticalAlign)],
     polarisSummerEditions2023 && allowMultiple && styles.CheckboxLabel,
+    polarisSummerEditions2023 && allowMultiple && styles.MultiSelectOption,
   );
 
   const checkBoxRole = role === 'option' ? 'presentation' : undefined;
