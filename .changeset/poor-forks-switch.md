@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Run CI tests for both polarisSummerEditions2023 states
+Updated CI tests to account for both polarisSummerEditions2023 beta flag states

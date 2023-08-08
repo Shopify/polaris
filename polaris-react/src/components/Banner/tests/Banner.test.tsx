@@ -766,14 +766,14 @@ describe('<BannerExperimental />', () => {
       expect(banner).toContainReactComponent(DefaultBanner);
     });
 
-    it('shows the InlineIconBanner variant by when there is no title and it is not in a content container', () => {
+    it('shows the InlineIconBanner variant by default when there is no title and it is not in a content container', () => {
       const banner = mountWithApp(<Banner />, {
         features: {polarisSummerEditions2023: true},
       });
       expect(banner).toContainReactComponent(InlineIconBanner);
     });
 
-    it('shows the WithinContentContainerBanner variant by when there is no title and it is in a content container', () => {
+    it('shows the WithinContentContainerBanner variant by default when there is no title and it is in a content container', () => {
       const card = mountWithApp(
         <Card>
           <Banner />

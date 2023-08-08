@@ -84,7 +84,7 @@ describe('<Filters />', () => {
       expect(spy).toHaveBeenCalledWith(defaultProps.filterKey);
     });
 
-    it('when not selected, renders a caret icon', () => {
+    it('when not selected, renders a chevron icon', () => {
       const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
         features: {polarisSummerEditions2023: true},
       });
@@ -93,7 +93,7 @@ describe('<Filters />', () => {
       });
     });
 
-    it('when selected, does not render a caret icon', () => {
+    it('when selected, does not render a chevron icon', () => {
       const wrapper = mountWithApp(<FilterPill {...defaultProps} selected />, {
         features: {polarisSummerEditions2023: true},
       });
