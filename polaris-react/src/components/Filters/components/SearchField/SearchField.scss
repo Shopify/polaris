@@ -1,0 +1,71 @@
+@import '../../../../styles/common';
+
+.SearchField {
+  position: relative;
+  display: flex;
+  padding-block: calc(var(--p-space-1_5-experimental) * 0.5);
+  margin-left: var(--p-space-05);
+}
+
+.Label {
+  /* stylelint-disable-next-line polaris/legacy/polaris/at-rule-disallowed-list -- Label needs to be hidden */
+  @include visually-hidden;
+}
+
+.Input {
+  /* stylelint-disable-next-line polaris/typography/polaris/at-rule-disallowed-list -- Matching custom input with TextField */
+  @include text-style-input;
+  flex: 1;
+  border: var(--p-border-width-1) solid var(--p-color-border-input);
+  border-radius: var(--p-border-radius-1);
+  border-color: var(--p-color-border-input);
+  padding-inline: var(--p-space-1_5-experimental);
+
+  &:hover {
+    border-color: var(--p-color-border-input-hover);
+    background-color: var(--p-color-bg-input-hover-experimental);
+  }
+
+  &:active,
+  &:focus {
+    border-color: var(--p-color-border-input-active-experimental);
+    border-width: var(--p-border-width-2-experimental);
+    background-color: var(--p-color-bg-input-active-experimental);
+  }
+
+  &:disabled {
+    background-color: var(--p-color-bg-transparent-disabled-experimental);
+  }
+}
+
+.borderless {
+  border-width: 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-width: 0;
+  }
+}
+
+.focused:not(:disabled) {
+  outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus);
+  outline-offset: var(--p-space-025);
+}
+
+.ClearButton {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background: none;
+  border: none;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
+  cursor: pointer;
+}
+
+.ClearButton-focused {
+  opacity: 1;
+  pointer-events: auto;
+}
