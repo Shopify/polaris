@@ -7,7 +7,7 @@ import type {
   ActionListItemDescriptor,
   ActionListSection,
 } from '../../../../types';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {VerticalStack} from '../../../VerticalStack';
 
 export interface SectionProps {
@@ -58,7 +58,7 @@ export function Section({
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
         >
-          <HorizontalStack wrap={false}>{itemMarkup}</HorizontalStack>
+          <InlineStack wrap={false}>{itemMarkup}</InlineStack>
         </Box>
       );
     },

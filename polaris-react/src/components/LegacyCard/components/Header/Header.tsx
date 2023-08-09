@@ -7,7 +7,7 @@ import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import styles from '../../LegacyCard.scss';
 import {useFeatures} from '../../../../utilities/features';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 
 export interface LegacyCardHeaderProps {
   title?: React.ReactNode;
@@ -36,18 +36,18 @@ export function Header({children, title, actions}: LegacyCardHeaderProps) {
     // eslint-disable-next-line no-nested-ternary
     actionMarkup || children ? (
       polarisSummerEditions2023 ? (
-        <HorizontalStack
+        <InlineStack
           wrap={false}
           gap="2"
           align="space-between"
           blockAlign="center"
         >
           {titleMarkup}
-          <HorizontalStack wrap={false} gap="4" blockAlign="center">
+          <InlineStack wrap={false} gap="4" blockAlign="center">
             {actionMarkup}
             {children}
-          </HorizontalStack>
-        </HorizontalStack>
+          </InlineStack>
+        </InlineStack>
       ) : (
         <LegacyStack alignment="baseline">
           <LegacyStack.Item fill>{titleMarkup}</LegacyStack.Item>
