@@ -1,15 +1,16 @@
+import React, {useState} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import React from 'react';
 
 import type {
-  ActionListItemDescriptor,
   ActionListSection,
+  ActionListItemDescriptor,
 } from '../../../../types';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {ActionList} from '../../../ActionList';
 import {Button} from '../../../Button';
 import {Popover} from '../../../Popover';
+import {TextField} from '../../../TextField';
 
 import styles from './RollupActions.scss';
 
@@ -28,6 +29,7 @@ export function RollupActions({
   sections = [],
 }: RollupActionsProps) {
   const i18n = useI18n();
+  const [searchText, setSeachText] = useState('');
 
   const {value: rollupOpen, toggle: toggleRollupOpen} = useToggle(false);
 
@@ -49,6 +51,16 @@ export function RollupActions({
     </div>
   );
 
+  const filteredItems = items.filter((item) =>
+    item.content?.toLowerCase().includes(searchText.toLowerCase()),
+  );
+
+  const filteredSections = sections?.filter((section) =>
+    section.items.some((item) =>
+      item.content?.toLowerCase().includes(searchText.toLowerCase()),
+    ),
+  );
+
   return (
     <Popover
       active={rollupOpen}
@@ -57,9 +69,16 @@ export function RollupActions({
       onClose={toggleRollupOpen}
       hideOnPrint
     >
+      <TextField
+        label="Search"
+        labelHidden
+        autoComplete=""
+        value={searchText}
+        onChange={(value) => setSeachText(value)}
+      />
       <ActionList
-        items={items}
-        sections={sections}
+        items={filteredItems}
+        sections={filteredSections}
         onActionAnyItem={toggleRollupOpen}
       />
     </Popover>
