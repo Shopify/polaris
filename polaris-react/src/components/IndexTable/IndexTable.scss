@@ -287,6 +287,14 @@ $loading-panel-height: 53px;
           background-color: var(--p-color-bg-success-subdued-hover);
         }
       }
+
+      &.TableRow-subdued {
+        &,
+        .TableCell-first,
+        .TableCell-first + .TableCell {
+          background-color: var(--p-color-bg-subdued-hover);
+        }
+      }
       // stylelint-enable selector-max-class, max-nesting-depth, selector-max-combinators, selector-max-compound-selectors -- se23 status hover styles
     }
   }
