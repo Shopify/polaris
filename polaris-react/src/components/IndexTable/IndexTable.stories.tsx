@@ -898,6 +898,30 @@ export function WithBulkActions() {
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
   ];
 
   const rowMarkup = customers.map(

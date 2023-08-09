@@ -1,16 +1,17 @@
-import React, {useRef} from 'react';
+import React, {useMemo, useRef, useState} from 'react';
 
+import type {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {Key} from '../../types';
 import {
   wrapFocusNextFocusableMenuItem,
   wrapFocusPreviousFocusableMenuItem,
 } from '../../utilities/focus';
-import {KeypressListener} from '../KeypressListener';
-import {Key} from '../../types';
-import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {Box} from '../Box';
+import {KeypressListener} from '../KeypressListener';
+import {TextField} from '../TextField';
 
-import {Section, Item} from './components';
 import type {ItemProps} from './components';
+import {Item, Section} from './components';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -33,6 +34,7 @@ export function ActionList({
 }: ActionListProps) {
   let finalSections: readonly ActionListSection[] = [];
   const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
+  const [searchText, setSeachText] = useState('');
 
   if (items) {
     finalSections = [{items}, ...sections];
@@ -46,7 +48,14 @@ export function ActionList({
   const elementTabIndex =
     hasMultipleSections && actionRole === 'menuitem' ? -1 : undefined;
 
-  const sectionMarkup = finalSections.map((section, index) => {
+  const filteredSections = finalSections?.map((section) => ({
+    ...section,
+    items: section.items.filter((item) =>
+      item.content?.toLowerCase().includes(searchText.toLowerCase()),
+    ),
+  }));
+
+  const sectionMarkup = filteredSections.map((section, index) => {
     return section.items.length > 0 ? (
       <Section
         key={typeof section.title === 'string' ? section.title : index}
@@ -99,6 +108,24 @@ export function ActionList({
       </>
     ) : null;
 
+  const totalActions =
+    finalSections?.reduce(
+      (acc: number, section) => acc + section.items.length,
+      0,
+    ) || 0;
+
+  const totalFilteredActions = useMemo(() => {
+    const totalSectionItems =
+      filteredSections?.reduce(
+        (acc: number, section) => acc + section.items.length,
+        0,
+      ) || 0;
+
+    return totalSectionItems;
+  }, [filteredSections]);
+
+  const showSearch = totalActions >= 10;
+
   return (
     <Box
       as={hasMultipleSections ? 'ul' : 'div'}
@@ -107,6 +134,19 @@ export function ActionList({
       tabIndex={elementTabIndex}
     >
       {listeners}
+
+      {showSearch && (
+        <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
+          <TextField
+            label="Search Actions"
+            autoComplete=""
+            labelHidden
+            placeholder="Search Actions"
+            value={searchText}
+            onChange={(value) => setSeachText(value)}
+          />
+        </Box>
+      )}
       {sectionMarkup}
     </Box>
   );
