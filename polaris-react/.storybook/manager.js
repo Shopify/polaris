@@ -75,7 +75,7 @@ export const featureFlagOptions = {
   polarisSummerEditions2023: {
     name: 'polarisSummerEditions2023',
     description: 'Toggle the summer editions feature flag',
-    defaultValue: false,
+    defaultValue: true,
     control: {type: 'boolean'},
   },
   polarisSummerEditions2023ShadowBevelOptOut: {
