@@ -2,8 +2,8 @@ import React from 'react';
 import type {ComponentProps} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {TextField} from '../../../../TextField';
 import {SearchField} from '..';
+import {UnstyledButton} from '../../../../UnstyledButton';
 
 describe('SearchField', () => {
   const defaultProps: ComponentProps<typeof SearchField> = {
@@ -18,21 +18,30 @@ describe('SearchField', () => {
 
   it('will call onChange when changed', () => {
     const props = {...defaultProps};
-    const wrapper = mountWithApp(<SearchField {...props} />);
-
-    wrapper.act(() => {
-      wrapper.find(TextField)!.trigger('onChange', 'test');
+    const spy = jest.fn();
+    const wrapper = mountWithApp(<SearchField {...props} onChange={spy} />, {
+      features: {
+        polarisSummerEditions2023: true,
+      },
     });
 
-    expect(props.onChange).toHaveBeenCalledWith('test');
+    wrapper.act(() => {
+      wrapper.find('input')!.trigger('onChange');
+    });
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('will call onChange correctly when clear button clicked', () => {
     const props = {...defaultProps};
-    const wrapper = mountWithApp(<SearchField {...props} />);
+    const wrapper = mountWithApp(<SearchField {...props} />, {
+      features: {
+        polarisSummerEditions2023: true,
+      },
+    });
 
     wrapper.act(() => {
-      wrapper.findAll(TextField)[0]?.trigger('onClearButtonClick');
+      wrapper.findAll(UnstyledButton)[0]?.trigger('onClick');
     });
 
     expect(props.onChange).toHaveBeenCalledWith('');
@@ -43,7 +52,7 @@ describe('SearchField', () => {
     const wrapper = mountWithApp(<SearchField {...props} />);
 
     wrapper.act(() => {
-      wrapper.findAll(TextField)[0]?.trigger('onFocus');
+      wrapper.findAll('input')[0]?.trigger('onFocus');
     });
 
     expect(props.onFocus).toHaveBeenCalledTimes(1);
@@ -54,7 +63,7 @@ describe('SearchField', () => {
     const wrapper = mountWithApp(<SearchField {...props} />);
 
     wrapper.act(() => {
-      wrapper.findAll(TextField)[0]?.trigger('onBlur');
+      wrapper.findAll('input')[0]?.trigger('onBlur');
     });
 
     expect(props.onBlur).toHaveBeenCalledTimes(1);
@@ -63,7 +72,7 @@ describe('SearchField', () => {
   it('will pass the placeholder', () => {
     const wrapper = mountWithApp(<SearchField {...defaultProps} />);
 
-    expect(wrapper).toContainReactComponent(TextField, {
+    expect(wrapper).toContainReactComponent('input', {
       placeholder: defaultProps.placeholder,
     });
   });

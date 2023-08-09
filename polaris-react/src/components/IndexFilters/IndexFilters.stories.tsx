@@ -2,7 +2,6 @@ import React, {useState, useCallback} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TabProps} from '@shopify/polaris';
 import {
-  VerticalStack,
   ChoiceList,
   Text,
   useIndexResourceState,
@@ -330,12 +329,13 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
     <Card padding="0">
       <IndexFilters
         {...props}
+        loading={queryValue !== ''}
         sortOptions={sortOptions}
         sortSelected={sortSelected}
         queryValue={queryValue}
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
-        onQueryClear={() => {}}
+        onQueryClear={() => setQueryValue('')}
         onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
