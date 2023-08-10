@@ -18,14 +18,14 @@ import {UnstyledButton} from '../../UnstyledButton';
 import {UnstyledLink} from '../../UnstyledLink';
 import {BannerContext} from '../../../utilities/banner-context';
 import {WithinContentContext} from '../../../utilities/within-content-context';
-import {Banner} from '../Banner';
-import type {BannerHandles, BannerStatus} from '../Banner';
-// eslint-disable-next-line @shopify/strict-component-boundaries -- se23 test will eventaully be beside component
 import {
+  Banner,
   DefaultBanner,
   InlineIconBanner,
   WithinContentContainerBanner,
-} from '../components/BannerExperimental/BannerExperimental';
+} from '../Banner';
+import type {BannerStatus} from '../Banner';
+import type {BannerHandles} from '../utilities';
 
 window.matchMedia =
   window.matchMedia ||
@@ -37,7 +37,7 @@ window.matchMedia =
     };
   };
 
-describe('<BannerExperimental />', () => {
+describe('<Banner />', () => {
   it('renders a title', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);
     expect(
