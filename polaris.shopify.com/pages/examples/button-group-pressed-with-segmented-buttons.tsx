@@ -14,7 +14,7 @@ function ButtonGroupPressedWithSegmentedButtonsExample() {
   );
 
   return (
-    <ButtonGroup segmented>
+    <ButtonGroup variant="segmented">
       <Button
         pressed={activeButtonIndex === 0}
         onClick={() => handleButtonClick(0)}
