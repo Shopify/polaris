@@ -1,5 +1,5 @@
 ---
-title: InlineStack stack
+title: Inline stack
 description: Use to display children horizontally in a row. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
