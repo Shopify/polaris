@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Button, ButtonGroup} from '@shopify/polaris';
+import {Button, ButtonGroup, VerticalStack} from '@shopify/polaris';
 
 export default {
   component: ButtonGroup,
@@ -89,11 +89,33 @@ export function WithSegmentedButtons() {
 
 export function OutlineWithSegmentedButtons() {
   return (
-    <ButtonGroup segmented>
+    <ButtonGroup variant="segmented">
       <Button>Bold</Button>
       <Button>Italic</Button>
       <Button>Underline</Button>
     </ButtonGroup>
+  );
+}
+
+export function WithAllGaps() {
+  return (
+    <VerticalStack gap="4">
+      <ButtonGroup gap="extraTight">
+        <Button outline>Bold</Button>
+        <Button outline>Italic</Button>
+        <Button outline>Underline</Button>
+      </ButtonGroup>
+      <ButtonGroup gap="tight">
+        <Button outline>Bold</Button>
+        <Button outline>Italic</Button>
+        <Button outline>Underline</Button>
+      </ButtonGroup>
+      <ButtonGroup gap="loose">
+        <Button outline>Bold</Button>
+        <Button outline>Italic</Button>
+        <Button outline>Underline</Button>
+      </ButtonGroup>
+    </VerticalStack>
   );
 }
 
