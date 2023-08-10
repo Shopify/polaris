@@ -183,7 +183,7 @@
 
 ### Major Changes
 
-- [#8451](https://github.com/Shopify/polaris/pull/8451) [`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c) Thanks [@qt314](https://github.com/qt314)! - report descriptionless disables
+- [#8451](https://github.com/Shopify/polaris/pull/8451) [`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c) Thanks [@sophschneider](https://github.com/sophschneider)! - report descriptionless disables
 
 ## 6.0.2
 
@@ -230,7 +230,7 @@
 
 ### Patch Changes
 
-- [#8208](https://github.com/Shopify/polaris/pull/8208) [`69d27dbf6`](https://github.com/Shopify/polaris/commit/69d27dbf63d360a7cb3722fa8cd16e605288b3b9) Thanks [@qt314](https://github.com/qt314)! - Re-enable non layout component related layout rules
+- [#8208](https://github.com/Shopify/polaris/pull/8208) [`69d27dbf6`](https://github.com/Shopify/polaris/commit/69d27dbf63d360a7cb3722fa8cd16e605288b3b9) Thanks [@sophschneider](https://github.com/sophschneider)! - Re-enable non layout component related layout rules
 
 ## 5.1.2
 
@@ -246,7 +246,7 @@
 
 ### Patch Changes
 
-- [#8097](https://github.com/Shopify/polaris/pull/8097) [`cd150396b`](https://github.com/Shopify/polaris/commit/cd150396b11f1a0abf6d4419c5c594dfdae3185d) Thanks [@qt314](https://github.com/qt314)! - Fix incorrect unit function categorization
+- [#8097](https://github.com/Shopify/polaris/pull/8097) [`cd150396b`](https://github.com/Shopify/polaris/commit/cd150396b11f1a0abf6d4419c5c594dfdae3185d) Thanks [@sophschneider](https://github.com/sophschneider)! - Fix incorrect unit function categorization
 
 ## 5.1.0
 
@@ -264,7 +264,7 @@
 
 - [#7954](https://github.com/Shopify/polaris/pull/7954) [`af0ceb8c6`](https://github.com/Shopify/polaris/commit/af0ceb8c6fae30c6aaa45bf89eef660ea45fd78e) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Use RegExp pattern to exclude reporting invalid scope disables and address memory issues
 
-* [#7919](https://github.com/Shopify/polaris/pull/7919) [`e7712e7a5`](https://github.com/Shopify/polaris/commit/e7712e7a57fddac939e65510fb257ac82442faa4) Thanks [@qt314](https://github.com/qt314)! - Deduped converage rules that were in multiple categories
+* [#7919](https://github.com/Shopify/polaris/pull/7919) [`e7712e7a5`](https://github.com/Shopify/polaris/commit/e7712e7a57fddac939e65510fb257ac82442faa4) Thanks [@sophschneider](https://github.com/sophschneider)! - Deduped converage rules that were in multiple categories
 
 ## 5.0.1
 
@@ -272,13 +272,13 @@
 
 - [#7866](https://github.com/Shopify/polaris/pull/7866) [`4b96147b3`](https://github.com/Shopify/polaris/commit/4b96147b32a89a393e8b6c5f7df1442f875248a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated `stylelint-polaris` to allow disabling specific coverage rules instead of entire categories
 
-* [#7906](https://github.com/Shopify/polaris/pull/7906) [`c8a294f51`](https://github.com/Shopify/polaris/commit/c8a294f51baae53b131a5f9014f6223fdf3ef5ee) Thanks [@qt314](https://github.com/qt314)! - Fixed config atRule and function regex to match whole word
+* [#7906](https://github.com/Shopify/polaris/pull/7906) [`c8a294f51`](https://github.com/Shopify/polaris/commit/c8a294f51baae53b131a5f9014f6223fdf3ef5ee) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed config atRule and function regex to match whole word
 
 - [#7868](https://github.com/Shopify/polaris/pull/7868) [`6cd75fd9a`](https://github.com/Shopify/polaris/commit/6cd75fd9a089791a79fe8aa7e43f6b54add47a45) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Update `package.json` to define a single entry point
 
 * [#7696](https://github.com/Shopify/polaris/pull/7696) [`bdf04a289`](https://github.com/Shopify/polaris/commit/bdf04a289e7a5b4c1e4717f5e162d00ea87c807b) Thanks [@chloerice](https://github.com/chloerice)! - Implemented custom message configuration support for polaris/coverage plugin
 
-- [#7898](https://github.com/Shopify/polaris/pull/7898) [`9206b7b13`](https://github.com/Shopify/polaris/commit/9206b7b130cb4d5b0a6ec110693d8b45248f8dcf) Thanks [@qt314](https://github.com/qt314)! - Bug fix to wrap z-index 'declaration-property-value-allowed-list' token value with "var"
+- [#7898](https://github.com/Shopify/polaris/pull/7898) [`9206b7b13`](https://github.com/Shopify/polaris/commit/9206b7b130cb4d5b0a6ec110693d8b45248f8dcf) Thanks [@sophschneider](https://github.com/sophschneider)! - Bug fix to wrap z-index 'declaration-property-value-allowed-list' token value with "var"
 
 ## 5.0.0
 
