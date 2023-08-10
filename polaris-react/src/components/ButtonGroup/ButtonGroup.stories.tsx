@@ -100,7 +100,7 @@ export function OutlineWithSegmentedButtons() {
 export function WithAllGaps() {
   return (
     <VerticalStack gap="4">
-      <ButtonGroup gap="extraTight">
+      <ButtonGroup gap="extraTight" connectedTop>
         <Button outline>Bold</Button>
         <Button outline>Italic</Button>
         <Button outline>Underline</Button>
