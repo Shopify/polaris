@@ -1,5 +1,8 @@
+import {createVar} from '../utilities';
+
 import type {ThemeVariantPartialShape} from './types';
 import type {ThemeBase} from './base';
+import {themeBase} from './base';
 import {themeLight} from './light';
 import {themeLightUplift, themeLightUpliftPartial} from './light-uplift';
 
@@ -21,3 +24,21 @@ export type ThemesPartials = {
 export const themesPartials: ThemesPartials = {
   'Polaris-Summer-Editions-2023': themeLightUpliftPartial,
 };
+
+export type ThemeVars = {
+  [TokenGroupName in keyof ThemeBase]: {
+    [TokenName in keyof ThemeBase[TokenGroupName]]: string;
+  };
+};
+
+export const themeVars = Object.fromEntries(
+  Object.entries(themeBase).map(([tokenGroupName, tokenGroup]) => [
+    tokenGroupName,
+    Object.fromEntries(
+      Object.keys(tokenGroup).map((tokenName) => [
+        tokenName,
+        `var(${createVar(tokenName)})`,
+      ]),
+    ),
+  ]),
+) as ThemeVars;

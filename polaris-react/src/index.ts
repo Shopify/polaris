@@ -35,7 +35,7 @@ export {DEFAULT_LOCALE, SUPPORTED_LOCALES} from './configure';
 // It should be first to ensure its CSS is first in compiled output
 // AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
 // It should be first to ensure its CSS is first in compiled output
-export {AppProvider} from './components/AppProvider';
+export {AppProvider, useThemeVars} from './components/AppProvider';
 export type {AppProviderProps} from './components/AppProvider';
 
 export {AccountConnection} from './components/AccountConnection';

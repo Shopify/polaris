@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import type {ThemeVars} from '@shopify/polaris-tokens';
+import {themeVars} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
@@ -24,6 +26,8 @@ import type {FeaturesConfig} from '../../utilities/features';
 
 import './AppProvider.scss';
 import './global.scss';
+
+const ThemeVarsContext = React.createContext<ThemeVars | null>(null);
 
 interface State {
   intl: I18n;
@@ -131,25 +135,39 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {intl, link} = this.state;
 
     return (
-      <FeaturesContext.Provider value={features}>
-        <I18nContext.Provider value={intl}>
-          <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-            <StickyManagerContext.Provider value={this.stickyManager}>
-              <LinkContext.Provider value={link}>
-                <MediaQueryProvider>
-                  <PortalsManager>
-                    <FocusManager>
-                      <EphemeralPresenceManager>
-                        {children}
-                      </EphemeralPresenceManager>
-                    </FocusManager>
-                  </PortalsManager>
-                </MediaQueryProvider>
-              </LinkContext.Provider>
-            </StickyManagerContext.Provider>
-          </ScrollLockManagerContext.Provider>
-        </I18nContext.Provider>
-      </FeaturesContext.Provider>
+      <ThemeVarsContext.Provider value={themeVars}>
+        <FeaturesContext.Provider value={features}>
+          <I18nContext.Provider value={intl}>
+            <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+              <StickyManagerContext.Provider value={this.stickyManager}>
+                <LinkContext.Provider value={link}>
+                  <MediaQueryProvider>
+                    <PortalsManager>
+                      <FocusManager>
+                        <EphemeralPresenceManager>
+                          {children}
+                        </EphemeralPresenceManager>
+                      </FocusManager>
+                    </PortalsManager>
+                  </MediaQueryProvider>
+                </LinkContext.Provider>
+              </StickyManagerContext.Provider>
+            </ScrollLockManagerContext.Provider>
+          </I18nContext.Provider>
+        </FeaturesContext.Provider>
+      </ThemeVarsContext.Provider>
     );
   }
+}
+
+export function useThemeVars() {
+  const themeVars = React.useContext(ThemeVarsContext);
+
+  if (!themeVars) {
+    throw new Error(
+      'No themeVars were provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
+    );
+  }
+
+  return themeVars;
 }

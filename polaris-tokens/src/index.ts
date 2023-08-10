@@ -1,6 +1,10 @@
 export * from './metadata';
 export * from './utilities';
 export {breakpointsAliases} from './token-groups/breakpoints';
+
+export type {ThemeVars} from './themes';
+export {themeVars} from './themes';
+
 export type {
   TokenGroup,
   Tokens,
