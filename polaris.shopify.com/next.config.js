@@ -398,8 +398,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/inline',
-    destination: '/components/layout-and-structure/horizontal-stack',
+    source: '/components/layout-and-structure/horizontal-stack',
+    destination: '/components/layout-and-structure/inline-stack',
     permanent: false,
   },
   {

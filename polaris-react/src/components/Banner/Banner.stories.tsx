@@ -7,7 +7,7 @@ import {
   Button,
   Card,
   LegacyCard,
-  HorizontalStack,
+  InlineStack,
   Link,
   List,
   Modal,
@@ -216,14 +216,14 @@ export function WithEndJustifiedContent() {
   return (
     <Banner status="critical">
       <VerticalStack gap="1">
-        <HorizontalStack gap="4" align="space-between">
+        <InlineStack gap="4" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
           </Text>
           <Link external url="https://example.com">
             Logs
           </Link>
-        </HorizontalStack>
+        </InlineStack>
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
       </VerticalStack>
     </Banner>

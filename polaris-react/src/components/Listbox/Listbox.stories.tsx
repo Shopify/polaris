@@ -10,7 +10,7 @@ import {
   LegacyStack,
   AutoSelection,
   VerticalStack,
-  HorizontalStack,
+  InlineStack,
   Text,
   Box,
 } from '@shopify/polaris';
@@ -167,12 +167,12 @@ export function WithCustomOptions() {
           <Listbox.Option key={id} value={value} selected={selected}>
             <Listbox.TextOption selected={selected}>
               <Box width="100%">
-                <HorizontalStack gap="2" align="space-between">
+                <InlineStack gap="2" align="space-between">
                   {label}
                   <Text as="span" color="subdued">
                     {`${subscribers} subscribers`}
                   </Text>
-                </HorizontalStack>
+                </InlineStack>
               </Box>
             </Listbox.TextOption>
           </Listbox.Option>

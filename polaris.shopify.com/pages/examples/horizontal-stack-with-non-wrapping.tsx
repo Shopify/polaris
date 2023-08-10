@@ -1,18 +1,18 @@
 import React from 'react';
-import {HorizontalStack} from '@shopify/polaris';
+import {InlineStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithNonWrappingExample() {
   return (
-    <HorizontalStack wrap={false}>
+    <InlineStack wrap={false}>
       <Placeholder width="106px" height="36px" />
       <Placeholder width="106px" height="20px" showBorder />
       <Placeholder width="106px" height="20px" showBorder />
       <Placeholder width="106px" height="20px" showBorder />
       <Placeholder width="106px" height="20px" showBorder />
       <Placeholder width="106px" height="20px" showBorder />
-    </HorizontalStack>
+    </InlineStack>
   );
 }
 
