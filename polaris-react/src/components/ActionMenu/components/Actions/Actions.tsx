@@ -13,7 +13,6 @@ import {useI18n} from '../../../../utilities/i18n';
 import {SecondaryAction} from '../SecondaryAction';
 import {useEventListener} from '../../../../utilities/use-event-listener';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './Actions.scss';
 
@@ -42,7 +41,6 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   const timesMeasured = useRef(0);
   const actionWidthsRef = useRef<number[]>([]);
   const rollupActiveRef = useRef<boolean | null>(null);
-  const {polarisSummerEditions2023} = useFeatures();
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
@@ -313,7 +311,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   });
 
   const groupedActionsMarkup = (
-    <ButtonGroup spacing={polarisSummerEditions2023 ? 'tight' : 'extraTight'}>
+    <ButtonGroup spacing="tight">
       {rollUppableActionsMarkup}
       {actionsMarkup}
       {groupsMarkup}
