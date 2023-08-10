@@ -6,13 +6,13 @@ import {elementChildren} from '../../utilities/components';
 import {Item} from './components';
 import styles from './ButtonGroup.scss';
 
-type Spacing = 'extraTight' | 'tight' | 'loose';
+type Gap = 'extraTight' | 'tight' | 'loose';
 
 type Variant = 'segmented';
 
 export interface ButtonGroupProps {
   /** Determines the space between button group items */
-  spacing?: Spacing;
+  gap?: Gap;
   /** Styling variant for group */
   variant?: Variant;
   /** Buttons will stretch/shrink to occupy the full width */
@@ -27,7 +27,7 @@ export interface ButtonGroupProps {
 
 export function ButtonGroup({
   children,
-  spacing,
+  gap,
   variant,
   fullWidth,
   connectedTop,
@@ -35,7 +35,7 @@ export function ButtonGroup({
 }: ButtonGroupProps) {
   const className = classNames(
     styles.ButtonGroup,
-    spacing && styles[spacing],
+    gap && styles[gap],
     variant && styles[variationName('variant', variant)],
     fullWidth && styles.fullWidth,
     noWrap && styles.noWrap,
