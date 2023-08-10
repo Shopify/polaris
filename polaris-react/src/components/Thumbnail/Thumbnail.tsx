@@ -8,6 +8,8 @@ import styles from './Thumbnail.scss';
 
 type Size = 'extraSmall' | 'small' | 'medium' | 'large';
 
+type Variant = 'transparent';
+
 export interface ThumbnailProps {
   /**
    * Size of thumbnail
@@ -18,20 +20,20 @@ export interface ThumbnailProps {
   source: string | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   /** Alt text for the thumbnail image */
   alt: string;
-  /** Transparent background */
-  transparent?: boolean;
+  /** Styling variant for thumbnail */
+  variant?: Variant;
 }
 
 export function Thumbnail({
   source,
   alt,
   size = 'medium',
-  transparent,
+  variant,
 }: ThumbnailProps) {
   const className = classNames(
     styles.Thumbnail,
     size && styles[variationName('size', size)],
-    transparent && styles.transparent,
+    variant && styles[variationName('variant', variant)],
   );
 
   const content =

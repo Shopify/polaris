@@ -63,3 +63,13 @@ export function Large() {
 export function WithComponentSource() {
   return <Thumbnail source={NoteMinor} size="large" alt="Small document" />;
 }
+
+export function Transparent() {
+  return (
+    <Thumbnail
+      source="https://burst.shopifycdn.com/photos/light-up-sneakers-women.jpg"
+      alt="Light up sneakers women"
+      variant="transparent"
+    />
+  );
+}
