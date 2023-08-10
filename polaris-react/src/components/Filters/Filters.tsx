@@ -110,6 +110,8 @@ export interface FiltersProps {
   mountedState?: TransitionStatus;
   /** Callback when the add filter button is clicked. */
   onAddFilterClick?: () => void;
+  /** Whether the filter should close when clicking inside another Popover. */
+  closeOnChildOverlayClick?: boolean;
 }
 
 export function Filters({
@@ -133,6 +135,7 @@ export function Filters({
   disableFilters,
   mountedState,
   onAddFilterClick,
+  closeOnChildOverlayClick,
 }: FiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -370,6 +373,7 @@ export function Filters({
           selected={appliedFilterKeys?.includes(filterKey)}
           onRemove={handleFilterPillRemove}
           disabled={pinnedFilter.disabled || disableFilters}
+          closeOnChildOverlayClick={closeOnChildOverlayClick}
         />
       );
     },

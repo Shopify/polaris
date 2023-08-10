@@ -262,6 +262,40 @@ $loading-panel-height: 53px;
         // other way around.
         background-color: var(--p-color-bg-hover);
       }
+
+      // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators, selector-max-compound-selectors -- se23 status hover styles
+      &.statusCritical {
+        &,
+        .TableCell-first,
+        .TableCell-first + .TableCell {
+          background-color: var(--p-color-bg-critical-subdued-hover);
+        }
+      }
+
+      &.statusSubdued {
+        &,
+        .TableCell-first,
+        .TableCell-first + .TableCell {
+          background-color: var(--p-color-bg-subdued-hover);
+        }
+      }
+
+      &.statusSuccess {
+        &,
+        .TableCell-first,
+        .TableCell-first + .TableCell {
+          background-color: var(--p-color-bg-success-subdued-hover);
+        }
+      }
+
+      &.TableRow-subdued {
+        &,
+        .TableCell-first,
+        .TableCell-first + .TableCell {
+          background-color: var(--p-color-bg-subdued-hover);
+        }
+      }
+      // stylelint-enable selector-max-class, max-nesting-depth, selector-max-combinators, selector-max-compound-selectors -- se23 status hover styles
     }
   }
 
