@@ -13,8 +13,8 @@ import {CancelMinor} from '@shopify/polaris-icons';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Text} from '../Text';
 import {VerticalStack} from '../VerticalStack';
-import type {HorizontalStackProps} from '../HorizontalStack';
-import {HorizontalStack} from '../HorizontalStack';
+import type {InlineStackProps} from '../InlineStack';
+import {InlineStack} from '../InlineStack';
 import type {BoxProps} from '../Box';
 import {Box} from '../Box';
 import {Button} from '../Button';
@@ -208,18 +208,18 @@ export function DefaultBanner({
           borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
           padding="3"
         >
-          <HorizontalStack
+          <InlineStack
             align="space-between"
             blockAlign="center"
             gap="2"
             wrap={false}
           >
-            <HorizontalStack gap="1" wrap={false}>
+            <InlineStack gap="1" wrap={false}>
               {bannerIcon}
               {bannerTitle}
-            </HorizontalStack>
+            </InlineStack>
             {dismissButton}
-          </HorizontalStack>
+          </InlineStack>
         </Box>
         {hasContent && (
           <Box padding={{xs: '3', md: '4'}} paddingBlockStart="3">
@@ -242,7 +242,7 @@ export function InlineIconBanner({
   children,
 }: PropsWithChildren<Omit<BannerLayoutProps, 'textColor' | 'bannerTitle'>>) {
   const [blockAlign, setBlockAlign] =
-    useState<HorizontalStackProps['blockAlign']>('center');
+    useState<InlineStackProps['blockAlign']>('center');
   const contentNode = useRef<HTMLDivElement>(null);
   const iconNode = useRef<HTMLDivElement>(null);
 
@@ -262,13 +262,9 @@ export function InlineIconBanner({
 
   return (
     <Box width="100%" padding="3" borderRadius="3">
-      <HorizontalStack
-        align="space-between"
-        blockAlign={blockAlign}
-        wrap={false}
-      >
+      <InlineStack align="space-between" blockAlign={blockAlign} wrap={false}>
         <Box width="100%">
-          <HorizontalStack gap="2" wrap={false} blockAlign={blockAlign}>
+          <InlineStack gap="2" wrap={false} blockAlign={blockAlign}>
             {bannerIcon ? (
               <div ref={iconNode}>
                 <Box background={backgroundColor} borderRadius="2" padding="1">
@@ -282,10 +278,10 @@ export function InlineIconBanner({
                 {actionButtons}
               </VerticalStack>
             </Box>
-          </HorizontalStack>
+          </InlineStack>
         </Box>
         {dismissButton}
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
@@ -307,13 +303,13 @@ export function WithinContentContainerBanner({
       borderRadius="2"
       color={textColor}
     >
-      <HorizontalStack
+      <InlineStack
         align="space-between"
         blockAlign="start"
         wrap={false}
         gap="2"
       >
-        <HorizontalStack gap="1_5-experimental" wrap={false}>
+        <InlineStack gap="1_5-experimental" wrap={false}>
           {bannerIcon}
           <Box width="100%">
             <VerticalStack gap="2">
@@ -324,9 +320,9 @@ export function WithinContentContainerBanner({
               {actionButtons}
             </VerticalStack>
           </Box>
-        </HorizontalStack>
+        </InlineStack>
         {dismissButton}
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
