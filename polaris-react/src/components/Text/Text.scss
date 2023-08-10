@@ -56,52 +56,31 @@
   color: var(--p-color-text-inverse);
 }
 
-@mixin se23-headingSm {
+@mixin _headingSm {
   font-size: var(--p-font-size-80-experimental);
   line-height: var(--p-font-line-height-2);
 }
 
 .headingXs {
-  font-size: var(--p-font-size-75);
-  line-height: var(--p-font-line-height-1);
   font-weight: var(--p-font-weight-semibold);
-
-  #{$se23} & {
-    @include se23-headingSm;
-  }
+  @include _headingSm;
 }
 
 .headingSm {
-  font-size: var(--p-font-size-100);
-  line-height: var(--p-font-line-height-2);
   font-weight: var(--p-font-weight-semibold);
-
-  #{$se23} & {
-    @include se23-headingSm;
-  }
+  @include _headingSm;
 }
 
 .headingMd {
-  font-size: var(--p-font-size-200);
-  line-height: var(--p-font-line-height-3);
+  font-size: var(--p-font-size-100);
+  line-height: var(--p-font-line-height-2);
   font-weight: var(--p-font-weight-semibold);
-
-  #{$se23} & {
-    font-size: var(--p-font-size-100);
-    line-height: var(--p-font-line-height-2);
-  }
 }
 
 .headingLg {
-  font-size: var(--p-font-size-200);
-  line-height: var(--p-font-line-height-2);
-  font-weight: var(--p-font-weight-semibold);
-
-  #{$se23} & {
-    font-size: var(--p-font-size-300);
-    line-height: var(--p-font-line-height-3);
-    font-weight: var(--p-font-weight-bold);
-  }
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-3);
+  font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-300);
@@ -112,46 +91,26 @@
 .headingXl {
   font-size: var(--p-font-size-300);
   line-height: var(--p-font-line-height-3);
-  font-weight: var(--p-font-weight-semibold);
-
-  #{$se23} & {
-    font-weight: var(--p-font-weight-bold);
-  }
+  font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-400);
-    line-height: var(--p-font-line-height-4);
-
-    #{$se23} & {
-      line-height: var(--p-font-line-height-5);
-    }
+    line-height: var(--p-font-line-height-5);
   }
 }
 
 .heading2xl {
-  font-size: var(--p-font-size-300);
-  line-height: var(--p-font-line-height-3);
-  font-weight: var(--p-font-weight-semibold);
-
-  #{$se23} & {
-    font-size: var(--p-font-size-400);
-    line-height: var(--p-font-line-height-5);
-    font-weight: var(--p-font-weight-bold);
-  }
+  font-size: var(--p-font-size-400);
+  line-height: var(--p-font-line-height-5);
+  font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-500);
-    line-height: var(--p-font-line-height-5);
-
-    #{$se23} & {
-      // Specificity bump
-      font-size: var(--p-font-size-500);
-      line-height: var(--p-font-line-height-6);
-    }
+    line-height: var(--p-font-line-height-6);
   }
 }
 
-@mixin se23-heading3xl {
+@mixin _heading3xl {
   font-size: var(--p-font-size-500);
   line-height: var(--p-font-line-height-6);
   font-weight: var(--p-font-weight-bold);
@@ -163,33 +122,11 @@
 }
 
 .heading3xl {
-  font-size: var(--p-font-size-400);
-  line-height: var(--p-font-line-height-4);
-  font-weight: var(--p-font-weight-semibold);
-
-  @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-600);
-    line-height: var(--p-font-line-height-6);
-  }
-
-  #{$se23} & {
-    @include se23-heading3xl;
-  }
+  @include _heading3xl;
 }
 
 .heading4xl {
-  font-size: var(--p-font-size-600);
-  line-height: var(--p-font-line-height-6);
-  font-weight: var(--p-font-weight-bold);
-
-  @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-700);
-    line-height: var(--p-font-line-height-7);
-  }
-
-  #{$se23} & {
-    @include se23-heading3xl;
-  }
+  @include _heading3xl;
 }
 
 .bodySm {
@@ -198,21 +135,13 @@
 }
 
 .bodyMd {
-  font-size: var(--p-font-size-100);
+  font-size: var(--p-font-size-80-experimental);
   line-height: var(--p-font-line-height-2);
-
-  #{$se23} & {
-    font-size: var(--p-font-size-80-experimental);
-  }
 }
 
 .bodyLg {
-  font-size: var(--p-font-size-200);
+  font-size: var(--p-font-size-100);
   line-height: var(--p-font-line-height-2);
-
-  #{$se23} & {
-    font-size: var(--p-font-size-100);
-  }
 }
 
 // font-weight must be below variant styles so
