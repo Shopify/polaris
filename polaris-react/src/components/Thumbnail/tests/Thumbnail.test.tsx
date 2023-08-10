@@ -18,17 +18,17 @@ describe('<Thumbnail />', () => {
   });
 
   describe('transparent', () => {
-    it('adds transparent class when transparent is true', () => {
+    it('adds transparent class when "transparent" is passed to variant', () => {
       const thumbnail = mountWithApp(<Thumbnail alt="" source="abc.jpg" />);
 
       expect(thumbnail).toContainReactComponent('span', {
         className: 'Thumbnail sizeMedium',
       });
 
-      thumbnail.setProps({transparent: true});
+      thumbnail.setProps({variant: 'transparent'});
 
       expect(thumbnail).toContainReactComponent('span', {
-        className: 'Thumbnail sizeMedium transparent',
+        className: 'Thumbnail sizeMedium variantTransparent',
       });
     });
   });
