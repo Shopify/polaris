@@ -93,6 +93,8 @@ export interface IndexFiltersProps
   filteringAccessibilityLabel?: string;
   /** Optional override to the default Tooltip message for the button that toggles the filtering mode */
   filteringAccessibilityTooltip?: string;
+  /** Whether the filter should close when clicking inside another Popover. */
+  closeOnChildOverlayClick?: boolean;
   /** Optional override to the default keyboard shortcuts available */
   disableKeyboardShortcuts?: boolean;
 }
@@ -131,6 +133,7 @@ export function IndexFilters({
   filteringAccessibilityLabel,
   filteringAccessibilityTooltip,
   hideQueryField,
+  closeOnChildOverlayClick,
   disableKeyboardShortcuts,
 }: IndexFiltersProps) {
   const i18n = useI18n();
@@ -430,6 +433,7 @@ export function IndexFilters({
                   focused={filtersFocused}
                   mountedState={mdDown ? undefined : state}
                   borderlessQueryField
+                  closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
                   <HorizontalStack
                     gap={polarisSummerEditions2023 ? '2' : '3'}

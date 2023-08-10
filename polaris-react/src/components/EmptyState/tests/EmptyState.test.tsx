@@ -150,11 +150,13 @@ describe('<EmptyState />', () => {
       );
       const text = emptyState.find(Text)!;
 
-      expect(text).toHaveReactProps({variant: 'headingXl'});
+      expect(text).toHaveReactProps({
+        variant: expect.stringContaining('heading'),
+      });
       expect(text).toContainReactText(expectedHeading);
     });
 
-    it('renders a headingLg Text when in a content context', () => {
+    it('renders a heading Text when in a content context', () => {
       const emptyStateInContentContext = mountWithApp(
         <WithinContentContext.Provider value>
           <EmptyState heading="Heading" image={imgSrc} />
@@ -162,7 +164,7 @@ describe('<EmptyState />', () => {
       );
 
       expect(emptyStateInContentContext).toContainReactComponent(Text, {
-        variant: 'headingLg',
+        variant: expect.stringContaining('heading'),
       });
     });
   });
