@@ -9,7 +9,6 @@ import {Box} from '../Box';
 import {HorizontalStack} from '../HorizontalStack';
 import {Text} from '../Text';
 import {VerticalStack} from '../VerticalStack';
-import {useFeatures} from '../../utilities/features';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
 export interface AccountConnectionProps {
@@ -38,7 +37,6 @@ export function AccountConnection({
   details,
   termsOfService,
 }: AccountConnectionProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const breakpoints = useBreakpoints();
 
   const initials = accountName
@@ -61,12 +59,10 @@ export function AccountConnection({
 
   const titleContent = title ? title : accountName;
 
-  const titleMarkup = polarisSummerEditions2023 ? (
+  const titleMarkup = (
     <Text as="h2" variant="headingSm">
       {titleContent}
     </Text>
-  ) : (
-    titleContent
   );
 
   const detailsMarkup = details ? (
@@ -76,13 +72,7 @@ export function AccountConnection({
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <Box
-      paddingBlockStart={
-        polarisSummerEditions2023 && breakpoints.mdUp ? '4' : '5'
-      }
-    >
-      {termsOfService}
-    </Box>
+    <Box paddingBlockStart={breakpoints.mdUp ? '4' : '5'}>{termsOfService}</Box>
   ) : null;
 
   const actionElement = action
@@ -94,7 +84,7 @@ export function AccountConnection({
       <SettingAction action={actionElement}>
         <HorizontalStack gap="4">
           {avatarMarkup}
-          <VerticalStack gap={polarisSummerEditions2023 ? '1' : '2'}>
+          <VerticalStack gap="1">
             {titleMarkup}
             {detailsMarkup}
           </VerticalStack>
