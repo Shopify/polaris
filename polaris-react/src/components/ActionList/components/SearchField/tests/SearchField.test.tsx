@@ -16,36 +16,6 @@ describe('<SearchField />', () => {
     });
   });
 
-  describe('focused', () => {
-    it('will give input focus when the focused prop is true', () => {
-      const textField = mountWithApp(
-        <SearchField value="" onChange={noop} focused />,
-      );
-
-      expect(document.activeElement).toBe(textField.find('input')!.domNode);
-    });
-
-    it('will give input focus if focus has been toggled', () => {
-      const textField = mountWithApp(
-        <SearchField value="" onChange={noop} focused={false} />,
-      );
-
-      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
-
-      textField.setProps({value: '', onChange: noop, focused: true});
-      expect(document.activeElement).toBe(textField.find('input')!.domNode);
-    });
-
-    it('will blur input if focused has been toggled', () => {
-      const textField = mountWithApp(
-        <SearchField value="" onChange={noop} focused />,
-      );
-
-      textField.setProps({value: '', onChange: noop, focused: false});
-      expect(document.activeElement).not.toBe(textField.find('input')!.domNode);
-    });
-  });
-
   describe('clear content', () => {
     it('will render a cancel icon when a value is provided', () => {
       const textField = mountWithApp(
@@ -66,32 +36,6 @@ describe('<SearchField />', () => {
       textField.find('button')!.trigger('onClick');
 
       expect(spy).toHaveBeenCalledWith('');
-    });
-  });
-
-  describe('onBlur()', () => {
-    it('is called when the text field is blurred', () => {
-      const spy = jest.fn();
-      const textField = mountWithApp(
-        <SearchField value="hello polaris" onChange={noop} onBlur={spy} />,
-      );
-
-      textField.find('div')!.trigger('onBlur');
-
-      expect(spy).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('onFocus', () => {
-    it('is called when the text field is focused', () => {
-      const spy = jest.fn();
-      const textField = mountWithApp(
-        <SearchField value="hello polaris" onChange={noop} onFocus={spy} />,
-      );
-
-      textField.find('div')!.trigger('onFocus');
-
-      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -125,16 +69,6 @@ describe('<SearchField />', () => {
         preventDefault: spy,
       });
       expect(spy).toHaveBeenCalled();
-    });
-  });
-
-  it('adds a "BackdropShowFocusBorder" class when "showFocusBorder" is passed', () => {
-    const textField = mountWithApp(
-      <SearchField value="" onChange={noop} showFocusBorder />,
-    );
-
-    expect(textField).toContainReactComponent('div', {
-      className: 'Backdrop BackdropShowFocusBorder',
     });
   });
 });
