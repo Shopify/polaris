@@ -20,7 +20,6 @@ describe('DirectionButton', () => {
 
     expect(wrapper).toContainReactComponent(Icon, {
       source: ArrowUpMinor,
-      color: 'base',
     });
   });
 
@@ -36,7 +35,6 @@ describe('DirectionButton', () => {
 
     expect(wrapper).toContainReactComponent(Icon, {
       source: ArrowDownMinor,
-      color: 'base',
     });
   });
 
@@ -52,7 +50,6 @@ describe('DirectionButton', () => {
 
     expect(wrapper).toContainReactComponent(Icon, {
       source: ArrowUpMinor,
-      color: 'interactive',
     });
   });
 

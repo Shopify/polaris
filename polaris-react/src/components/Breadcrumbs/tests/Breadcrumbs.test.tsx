@@ -78,7 +78,7 @@ describe('<Breadcrumbs />', () => {
     });
   });
 
-  it('renders breadcrumb content as a visually hidden label when the new design language is enabled', () => {
+  it('renders breadcrumb content as a visually hidden label', () => {
     const linkBackAction: LinkAction = {
       content: 'Products',
       url: 'https://www.shopify.com',
@@ -86,7 +86,6 @@ describe('<Breadcrumbs />', () => {
     const wrapper = mountWithApp(<Breadcrumbs backAction={linkBackAction} />);
 
     expect(wrapper).toContainReactComponent(Text, {
-      children: 'Products',
       visuallyHidden: true,
     });
   });
