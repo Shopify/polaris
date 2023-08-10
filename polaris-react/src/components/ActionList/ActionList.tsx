@@ -8,10 +8,10 @@ import {
 } from '../../utilities/focus';
 import {Box} from '../Box';
 import {KeypressListener} from '../KeypressListener';
-import {TextField} from '../TextField';
+import {useI18n} from '../../utilities/i18n';
 
+import {SearchField, Item, Section} from './components';
 import type {ItemProps} from './components';
-import {Item, Section} from './components';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -32,6 +32,8 @@ export function ActionList({
   actionRole,
   onActionAnyItem,
 }: ActionListProps) {
+  const i18n = useI18n();
+
   let finalSections: readonly ActionListSection[] = [];
   const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
   const [searchText, setSeachText] = useState('');
@@ -127,28 +129,28 @@ export function ActionList({
   const showSearch = totalActions >= 10;
 
   return (
-    <Box
-      as={hasMultipleSections ? 'ul' : 'div'}
-      ref={actionListRef}
-      role={elementRole}
-      tabIndex={elementTabIndex}
-    >
-      {listeners}
-
+    <>
       {showSearch && (
         <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
-          <TextField
-            label="Search Actions"
-            autoComplete=""
-            labelHidden
-            placeholder="Search Actions"
+          <SearchField
+            placeholder={i18n.translate(
+              'Polaris.ActionList.SearchField.search',
+            )}
             value={searchText}
             onChange={(value) => setSeachText(value)}
           />
         </Box>
       )}
-      {sectionMarkup}
-    </Box>
+      <Box
+        as={hasMultipleSections ? 'ul' : 'div'}
+        ref={actionListRef}
+        role={elementRole}
+        tabIndex={elementTabIndex}
+      >
+        {listeners}
+        {sectionMarkup}
+      </Box>
+    </>
   );
 }
 
