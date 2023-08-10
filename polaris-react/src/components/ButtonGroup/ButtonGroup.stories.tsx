@@ -27,13 +27,13 @@ export function WithSegmentedButtons() {
   );
   return (
     <div>
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button>Bold</Button>
         <Button pressed>Italic</Button>
         <Button>Underline</Button>
       </ButtonGroup>
       <br />
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button
           pressed={activeButtonIndex === 0}
           onClick={() => handleButtonClick(0)}

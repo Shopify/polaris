@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import {elementChildren} from '../../utilities/components';
 
 import {Item} from './components';
@@ -8,11 +8,13 @@ import styles from './ButtonGroup.scss';
 
 type Spacing = 'extraTight' | 'tight' | 'loose';
 
+type Variant = 'segmented';
+
 export interface ButtonGroupProps {
   /** Determines the space between button group items */
   spacing?: Spacing;
-  /** Join buttons as segmented group */
-  segmented?: boolean;
+  /** Styling variant for group */
+  variant?: Variant;
   /** Buttons will stretch/shrink to occupy the full width */
   fullWidth?: boolean;
   /** Remove top left and right border radius */
@@ -26,7 +28,7 @@ export interface ButtonGroupProps {
 export function ButtonGroup({
   children,
   spacing,
-  segmented,
+  variant,
   fullWidth,
   connectedTop,
   noWrap,
@@ -34,7 +36,7 @@ export function ButtonGroup({
   const className = classNames(
     styles.ButtonGroup,
     spacing && styles[spacing],
-    segmented && styles.segmented,
+    variant && styles[variationName('variant', variant)],
     fullWidth && styles.fullWidth,
     noWrap && styles.noWrap,
   );
@@ -46,7 +48,7 @@ export function ButtonGroup({
   return (
     <div
       className={className}
-      data-buttongroup-segmented={segmented}
+      data-buttongroup-variant={variant}
       data-buttongroup-connected-top={connectedTop}
       data-buttongroup-full-width={fullWidth}
       data-buttongroup-no-wrap={noWrap}
