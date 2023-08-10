@@ -1,33 +1,16 @@
 import React, {
   forwardRef,
-  useRef,
-  useState,
   useContext,
   useImperativeHandle,
+  useRef,
+  useState,
 } from 'react';
-import {
-  CancelSmallMinor,
-  CircleTickMajor,
-  CircleInformationMajor,
-  CircleAlertMajor,
-  DiamondAlertMajor,
-} from '@shopify/polaris-icons';
 
-import {classNames, variationName} from '../../utilities/css';
+import {classNames} from '../../utilities/css';
 import {BannerContext} from '../../utilities/banner-context';
-import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
-import {Button} from '../Button';
-import {ButtonGroup} from '../ButtonGroup';
-import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
-import {UnstyledLink} from '../UnstyledLink';
-import {Spinner} from '../Spinner';
-import {Icon} from '../Icon';
 import type {IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
-import {Text} from '../Text';
-import {Box} from '../Box';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Banner.scss';
 import {BannerExperimental} from './components';
@@ -59,109 +42,14 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   props: BannerProps,
   bannerRef,
 ) {
-  const {
-    icon,
-    action,
-    secondaryAction,
-    title,
-    children,
-    status,
-    onDismiss,
-    stopAnnouncements,
-    hideIcon,
-  } = props;
+  const {status, stopAnnouncements} = props;
   const withinContentContainer = useContext(WithinContentContext);
-  const i18n = useI18n();
   const {wrapperRef, handleKeyUp, handleBlur, handleMouseUp, shouldShowFocus} =
     useBannerFocus(bannerRef);
-  const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(status);
-  const iconName = icon || defaultIcon;
-  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Banner,
-    !polarisSummerEditions2023 &&
-      status &&
-      styles[variationName('status', status)],
-    onDismiss && styles.hasDismiss,
     shouldShowFocus && styles.keyFocused,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
-  );
-
-  let headingMarkup: React.ReactNode = null;
-
-  if (title) {
-    headingMarkup = (
-      <Text as="h2" variant="headingMd" breakWord>
-        {title}
-      </Text>
-    );
-  }
-
-  const spinnerMarkup = action?.loading ? (
-    <button
-      disabled
-      aria-busy
-      className={classNames(styles.Button, styles.loading)}
-    >
-      <span className={styles.Spinner}>
-        <Spinner
-          size="small"
-          accessibilityLabel={i18n.translate(
-            'Polaris.Button.spinnerAccessibilityLabel',
-          )}
-        />
-      </span>
-      {action.content}
-    </button>
-  ) : null;
-
-  const primaryActionMarkup = action ? (
-    <Box paddingInlineEnd="2">
-      {action.loading
-        ? spinnerMarkup
-        : unstyledButtonFrom(action, {
-            className: `${styles.Button} ${styles.PrimaryAction}`,
-          })}
-    </Box>
-  ) : null;
-
-  const secondaryActionMarkup = secondaryAction ? (
-    <SecondaryActionFrom action={secondaryAction} />
-  ) : null;
-
-  const actionMarkup =
-    action || secondaryAction ? (
-      <Box
-        paddingBlockStart={withinContentContainer ? '3' : '4'}
-        paddingBlockEnd={withinContentContainer ? '1' : undefined}
-      >
-        <ButtonGroup>
-          {primaryActionMarkup}
-          {secondaryActionMarkup}
-        </ButtonGroup>
-      </Box>
-    ) : null;
-
-  let contentMarkup: React.ReactNode = null;
-
-  if (children || actionMarkup) {
-    contentMarkup = (
-      <Box paddingBlockStart="05" paddingBlockEnd="05">
-        {children}
-        {actionMarkup}
-      </Box>
-    );
-  }
-
-  const dismissButton = onDismiss && (
-    <div className={styles.Dismiss}>
-      <Button
-        plain
-        icon={CancelSmallMinor}
-        onClick={onDismiss}
-        accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
-      />
-    </div>
   );
 
   return (
@@ -171,103 +59,19 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
         ref={wrapperRef}
-        role={ariaRoleType}
+        role={
+          status === 'warning' || status === 'critical' ? 'alert' : 'status'
+        }
         aria-live={stopAnnouncements ? 'off' : 'polite'}
         onMouseUp={handleMouseUp}
         onKeyUp={handleKeyUp}
         onBlur={handleBlur}
       >
-        {polarisSummerEditions2023 ? (
-          <BannerExperimental {...props} />
-        ) : (
-          <>
-            {dismissButton}
-            {hideIcon ? null : (
-              <Box paddingInlineEnd="4">
-                <Icon source={iconName} color={iconColor} />
-              </Box>
-            )}
-            <div className={styles.ContentWrapper}>
-              {headingMarkup}
-              {contentMarkup}
-            </div>
-          </>
-        )}
+        <BannerExperimental {...props} />
       </div>
     </BannerContext.Provider>
   );
 });
-
-function SecondaryActionFrom({action}: {action: Action}) {
-  if (action.url) {
-    return (
-      <UnstyledLink
-        className={styles.SecondaryAction}
-        url={action.url}
-        external={action.external}
-        target={action.target}
-      >
-        <span className={styles.Text}>{action.content}</span>
-      </UnstyledLink>
-    );
-  }
-
-  return (
-    <UnstyledButton
-      className={styles.SecondaryAction}
-      onClick={action.onAction}
-    >
-      <span className={styles.Text}>{action.content}</span>
-    </UnstyledButton>
-  );
-}
-
-interface BannerAttributes {
-  iconColor: IconProps['color'];
-  defaultIcon: IconProps['source'];
-  ariaRoleType: 'status' | 'alert';
-}
-
-export function useBannerAttributes(
-  status: BannerProps['status'],
-): BannerAttributes {
-  switch (status) {
-    case 'success':
-      return {
-        defaultIcon: CircleTickMajor,
-        iconColor: 'success',
-        ariaRoleType: 'status',
-      };
-
-    case 'info':
-      return {
-        defaultIcon: CircleInformationMajor,
-        iconColor: 'highlight',
-        ariaRoleType: 'status',
-      };
-
-    case 'warning':
-      return {
-        defaultIcon: CircleAlertMajor,
-        iconColor: 'warning',
-        ariaRoleType: 'alert',
-      };
-
-    case 'critical':
-      return {
-        defaultIcon: DiamondAlertMajor,
-        iconColor: 'critical',
-        ariaRoleType: 'alert',
-      };
-
-    default:
-      return {
-        defaultIcon: CircleInformationMajor,
-        iconColor: 'base',
-        ariaRoleType: 'status',
-      };
-  }
-}
 
 export interface BannerHandles {
   focus(): void;
