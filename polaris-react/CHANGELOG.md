@@ -8,7 +8,7 @@
 
 ### Patch Changes
 
-- [#9847](https://github.com/Shopify/polaris/pull/9847) [`85b68a358`](https://github.com/Shopify/polaris/commit/85b68a358a0390c243216ad8059d9bccf5f00594) Thanks [@qt314](https://github.com/qt314)! - Added `role` prop to `VerticalStack`
+- [#9847](https://github.com/Shopify/polaris/pull/9847) [`85b68a358`](https://github.com/Shopify/polaris/commit/85b68a358a0390c243216ad8059d9bccf5f00594) Thanks [@sophschneider](https://github.com/sophschneider)! - Added `role` prop to `VerticalStack`
 
 * [#9863](https://github.com/Shopify/polaris/pull/9863) [`4061fd04d`](https://github.com/Shopify/polaris/commit/4061fd04db5458549b5743c61cf39ca9e67ab721) Thanks [@zakwarsame](https://github.com/zakwarsame)! - Fixed ActionList item overflow and tooltip zIndex
 
@@ -25,7 +25,7 @@
 
 ### Patch Changes
 
-- [#9839](https://github.com/Shopify/polaris/pull/9839) [`34349e61f`](https://github.com/Shopify/polaris/commit/34349e61f970e9f387e8fc74a42e4f0fe41ab955) Thanks [@qt314](https://github.com/qt314)! - Fix banner bug
+- [#9839](https://github.com/Shopify/polaris/pull/9839) [`34349e61f`](https://github.com/Shopify/polaris/commit/34349e61f970e9f387e8fc74a42e4f0fe41ab955) Thanks [@sophschneider](https://github.com/sophschneider)! - Fix banner bug
 
 ## 11.10.0
 
@@ -144,13 +144,13 @@
 
 ### Patch Changes
 
-- [#9647](https://github.com/Shopify/polaris/pull/9647) [`bdeaea99b`](https://github.com/Shopify/polaris/commit/bdeaea99b464d25659da2816ced6a8e267bb4469) Thanks [@qt314](https://github.com/qt314)! - LegacyCard fixed xs screen section border radii
+- [#9647](https://github.com/Shopify/polaris/pull/9647) [`bdeaea99b`](https://github.com/Shopify/polaris/commit/bdeaea99b464d25659da2816ced6a8e267bb4469) Thanks [@sophschneider](https://github.com/sophschneider)! - LegacyCard fixed xs screen section border radii
 
 ## 11.4.4
 
 ### Patch Changes
 
-- [#9634](https://github.com/Shopify/polaris/pull/9634) [`d3b75154f`](https://github.com/Shopify/polaris/commit/d3b75154f8df45752532f374c13f015dd3045054) Thanks [@qt314](https://github.com/qt314)! - Legacy card update experimental padding
+- [#9634](https://github.com/Shopify/polaris/pull/9634) [`d3b75154f`](https://github.com/Shopify/polaris/commit/d3b75154f8df45752532f374c13f015dd3045054) Thanks [@sophschneider](https://github.com/sophschneider)! - Legacy card update experimental padding
 
 ## 11.4.3
 
@@ -311,15 +311,15 @@
 
 ### Patch Changes
 
-- [#9342](https://github.com/Shopify/polaris/pull/9342) [`6dcd69ab6`](https://github.com/Shopify/polaris/commit/6dcd69ab6efca522cf02b3585543792efb51476a) Thanks [@qt314](https://github.com/qt314)! - Fixed small screen horizontal overflow by changing `Banner` focus ring from `box-shadow` to `outline`
+- [#9342](https://github.com/Shopify/polaris/pull/9342) [`6dcd69ab6`](https://github.com/Shopify/polaris/commit/6dcd69ab6efca522cf02b3585543792efb51476a) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed small screen horizontal overflow by changing `Banner` focus ring from `box-shadow` to `outline`
 
-* [#9342](https://github.com/Shopify/polaris/pull/9342) [`6dcd69ab6`](https://github.com/Shopify/polaris/commit/6dcd69ab6efca522cf02b3585543792efb51476a) Thanks [@qt314](https://github.com/qt314)! - Removed unused transition delay param from focus-ring mixin
+* [#9342](https://github.com/Shopify/polaris/pull/9342) [`6dcd69ab6`](https://github.com/Shopify/polaris/commit/6dcd69ab6efca522cf02b3585543792efb51476a) Thanks [@sophschneider](https://github.com/sophschneider)! - Removed unused transition delay param from focus-ring mixin
 
-- [#9342](https://github.com/Shopify/polaris/pull/9342) [`6dcd69ab6`](https://github.com/Shopify/polaris/commit/6dcd69ab6efca522cf02b3585543792efb51476a) Thanks [@qt314](https://github.com/qt314)! - Add polarisSummerEditions2023 feature flag to AppProvider context.
+- [#9342](https://github.com/Shopify/polaris/pull/9342) [`6dcd69ab6`](https://github.com/Shopify/polaris/commit/6dcd69ab6efca522cf02b3585543792efb51476a) Thanks [@sophschneider](https://github.com/sophschneider)! - Add polarisSummerEditions2023 feature flag to AppProvider context.
 
-* [#9361](https://github.com/Shopify/polaris/pull/9361) [`52edd1faa`](https://github.com/Shopify/polaris/commit/52edd1faaf3b252e3344e5c23e3ea05c4e799180) Thanks [@qt314](https://github.com/qt314)! - Added `disabled` variant prop to Labelled
+* [#9361](https://github.com/Shopify/polaris/pull/9361) [`52edd1faa`](https://github.com/Shopify/polaris/commit/52edd1faaf3b252e3344e5c23e3ea05c4e799180) Thanks [@sophschneider](https://github.com/sophschneider)! - Added `disabled` variant prop to Labelled
 
-- [#9342](https://github.com/Shopify/polaris/pull/9342) [`6dcd69ab6`](https://github.com/Shopify/polaris/commit/6dcd69ab6efca522cf02b3585543792efb51476a) Thanks [@qt314](https://github.com/qt314)! - Add `primarySuccess` variant prop to `Button`
+- [#9342](https://github.com/Shopify/polaris/pull/9342) [`6dcd69ab6`](https://github.com/Shopify/polaris/commit/6dcd69ab6efca522cf02b3585543792efb51476a) Thanks [@sophschneider](https://github.com/sophschneider)! - Add `primarySuccess` variant prop to `Button`
 
 - Updated dependencies [[`9c9e80ed1`](https://github.com/Shopify/polaris/commit/9c9e80ed132715e1c91ee2dc0b9fcc13adb3afea), [`f907a55a1`](https://github.com/Shopify/polaris/commit/f907a55a1e144fb9d448ad55c5009b535bc598a4)]:
   - @shopify/polaris-tokens@7.1.0
@@ -335,7 +335,7 @@
 
 - [#9295](https://github.com/Shopify/polaris/pull/9295) [`7e21fe093`](https://github.com/Shopify/polaris/commit/7e21fe093c021d0531e256b678221cfbb79e4412) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `initials` overflowing when `Avatar` is round
 
-* [#9343](https://github.com/Shopify/polaris/pull/9343) [`ae3208332`](https://github.com/Shopify/polaris/commit/ae32083324390a0012981a24f4b1e3c23f166735) Thanks [@qt314](https://github.com/qt314)! - Alphabetized locale files
+* [#9343](https://github.com/Shopify/polaris/pull/9343) [`ae3208332`](https://github.com/Shopify/polaris/commit/ae32083324390a0012981a24f4b1e3c23f166735) Thanks [@sophschneider](https://github.com/sophschneider)! - Alphabetized locale files
 
 - [#9314](https://github.com/Shopify/polaris/pull/9314) [`e7d836819`](https://github.com/Shopify/polaris/commit/e7d836819ac33936136df2a79093c2a0e73146b4) Thanks [@FCalabria](https://github.com/FCalabria)! - Removed focus styles on TextField while disabled
 
@@ -343,7 +343,7 @@
 
 - [#9229](https://github.com/Shopify/polaris/pull/9229) [`821535820`](https://github.com/Shopify/polaris/commit/821535820c97e1ea29ddf8421d52242322c18b17) Thanks [@aeperea](https://github.com/aeperea)! - Tabs update disabled state
 
-* [#9323](https://github.com/Shopify/polaris/pull/9323) [`cd43c8b47`](https://github.com/Shopify/polaris/commit/cd43c8b4747f97269c2710031bd0dda16386c224) Thanks [@qt314](https://github.com/qt314)! - Added internationalized accessibility label to Banner dismiss button
+* [#9323](https://github.com/Shopify/polaris/pull/9323) [`cd43c8b47`](https://github.com/Shopify/polaris/commit/cd43c8b4747f97269c2710031bd0dda16386c224) Thanks [@sophschneider](https://github.com/sophschneider)! - Added internationalized accessibility label to Banner dismiss button
 
 - [#9263](https://github.com/Shopify/polaris/pull/9263) [`a3f3462a6`](https://github.com/Shopify/polaris/commit/a3f3462a66b2bb4bc0dbf23b336fa57d473ba190) Thanks [@mattkubej](https://github.com/mattkubej)! - Protect border radius of `LegacyCard` with overflow clip
 
@@ -492,7 +492,7 @@
 
 ### Patch Changes
 
-- [#9057](https://github.com/Shopify/polaris/pull/9057) [`65db7dd2b`](https://github.com/Shopify/polaris/commit/65db7dd2be650b49b54350ba458700d7c29e7c0d) Thanks [@qt314](https://github.com/qt314)! - Fixed PopoverOverlay not closing
+- [#9057](https://github.com/Shopify/polaris/pull/9057) [`65db7dd2b`](https://github.com/Shopify/polaris/commit/65db7dd2be650b49b54350ba458700d7c29e7c0d) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed PopoverOverlay not closing
 
 - Updated dependencies [[`13b1a9109`](https://github.com/Shopify/polaris/commit/13b1a9109b996dd19f996b9bdf2a15b96c519c49)]:
   - @shopify/polaris-icons@6.14.0
@@ -901,7 +901,7 @@
 
 - [#8383](https://github.com/Shopify/polaris/pull/8383) [`955832a3b`](https://github.com/Shopify/polaris/commit/955832a3bb653a334d782edd396b9519625134c1) Thanks [@chazdean](https://github.com/chazdean)! - Remove default spacing from `AlphaStack`
 
-* [#8349](https://github.com/Shopify/polaris/pull/8349) [`160d9c15b`](https://github.com/Shopify/polaris/commit/160d9c15b433bf01370c1244c5d725808562c673) Thanks [@qt314](https://github.com/qt314)! - Add hideIcon prop to Banner and update Banner styles for mobile web
+* [#8349](https://github.com/Shopify/polaris/pull/8349) [`160d9c15b`](https://github.com/Shopify/polaris/commit/160d9c15b433bf01370c1244c5d725808562c673) Thanks [@sophschneider](https://github.com/sophschneider)! - Add hideIcon prop to Banner and update Banner styles for mobile web
 
 ## 10.28.2
 
@@ -1201,7 +1201,7 @@
 
 - [#7890](https://github.com/Shopify/polaris/pull/7890) [`53d836dc2`](https://github.com/Shopify/polaris/commit/53d836dc22740d1f5ff22e9a8d3ce5604418ebeb) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed display bug with `BulkActions` when content in the table changes at the same time the bulk actions bar is visible
 
-* [#7846](https://github.com/Shopify/polaris/pull/7846) [`65131df18`](https://github.com/Shopify/polaris/commit/65131df18033e2f218b5a5e61c4ed0123584fb71) Thanks [@qt314](https://github.com/qt314)! - - Changed border radius of `focus-ring` to use shape tokens instead of adding an extra `1px`
+* [#7846](https://github.com/Shopify/polaris/pull/7846) [`65131df18`](https://github.com/Shopify/polaris/commit/65131df18033e2f218b5a5e61c4ed0123584fb71) Thanks [@sophschneider](https://github.com/sophschneider)! - - Changed border radius of `focus-ring` to use shape tokens instead of adding an extra `1px`
   - Updated `TextField` placeholder text to not change to a custom color on error
   - Delete an unused class in the `DataTable` and `IndexTable`
   - Replace some `px` values with tokens
@@ -1457,7 +1457,7 @@
 
 - [#7361](https://github.com/Shopify/polaris/pull/7361) [`b1b576403`](https://github.com/Shopify/polaris/commit/b1b5764035c6f138e24ad42c9c033c7ca7369a93) Thanks [@kyledurand](https://github.com/kyledurand)! - Use state callback in page actions
 
-* [#7319](https://github.com/Shopify/polaris/pull/7319) [`4b95fdc64`](https://github.com/Shopify/polaris/commit/4b95fdc64b4d30a39333e09623d347735636e771) Thanks [@qt314](https://github.com/qt314)! - Update the `VideoThumbnail` play button user experience
+* [#7319](https://github.com/Shopify/polaris/pull/7319) [`4b95fdc64`](https://github.com/Shopify/polaris/commit/4b95fdc64b4d30a39333e09623d347735636e771) Thanks [@sophschneider](https://github.com/sophschneider)! - Update the `VideoThumbnail` play button user experience
 
 ## 10.5.0
 
