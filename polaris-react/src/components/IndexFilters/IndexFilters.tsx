@@ -144,7 +144,7 @@ export function IndexFilters({
     value: filtersFocused,
     setFalse: setFiltersUnFocused,
     setTrue: setFiltersFocused,
-  } = useToggle(false);
+  } = useToggle(true);
   const {polarisSummerEditions2023} = useFeatures();
 
   useOnValueChange(mode, (newMode) => {
