@@ -5,7 +5,7 @@ import {
   Card,
   Button,
   Badge,
-  VerticalStack,
+  BlockStack,
   useBreakpoints,
 } from '@shopify/polaris';
 import {CircleInformationMajor} from '@shopify/polaris-icons';
@@ -96,7 +96,7 @@ export function WithPrimitiveComponents() {
   );
 
   const descriptionMarkup = (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
@@ -105,22 +105,22 @@ export function WithPrimitiveComponents() {
           <InlineStack align="start">{actionMarkup}</InlineStack>
         </Box>
       ) : null}
-    </VerticalStack>
+    </BlockStack>
   );
 
   return (
     <Card>
-      <VerticalStack gap={{xs: '4', sm: '5'}}>
+      <BlockStack gap={{xs: '4', sm: '5'}}>
         <Box width="100%">
-          <VerticalStack gap={{xs: '2', sm: '4'}}>
+          <BlockStack gap={{xs: '2', sm: '4'}}>
             {headerMarkup}
             {descriptionMarkup}
-          </VerticalStack>
+          </BlockStack>
         </Box>
         <Text variant="bodyMd" as="p">
           Your checkout is only accepting test payments.
         </Text>
-      </VerticalStack>
+      </BlockStack>
     </Card>
   );
 }

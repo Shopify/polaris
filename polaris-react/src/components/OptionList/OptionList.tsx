@@ -13,7 +13,7 @@ import type {BoxProps} from '../Box';
 import {Text} from '../Text';
 import {Bleed} from '../Bleed';
 import {useFeatures} from '../../utilities/features';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 
 import {Option} from './components';
 
@@ -222,10 +222,10 @@ export function OptionList({
             paddingBlockStart={blockStartPadding}
           >
             {polarisSummerEditions2023 ? (
-              <VerticalStack gap={isFirstOption && sections ? undefined : '0'}>
+              <BlockStack gap={isFirstOption && sections ? undefined : '0'}>
                 {titleMarkup}
                 {option}
-              </VerticalStack>
+              </BlockStack>
             ) : (
               <>
                 {titleMarkup}

@@ -18,7 +18,7 @@ import {
   Scrollable,
   EmptySearchResult,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -30,56 +30,56 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
+    <BlockStack gap="8">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With action list
         </Text>
         <WithActionList />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With content and actions
         </Text>
         <WithContentAndActions />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With form components
         </Text>
         <WithFormComponents />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With lazy loaded list
         </Text>
         <WithLazyLoadedList />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With scrollable lazy loaded list
         </Text>
         <WithScrollableLazyLoadedList />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With searchable listbox
         </Text>
         <WithSearchableListbox />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With loading smaller content
         </Text>
         <WithLoadingSmallerContent />
-      </VerticalStack>
-    </VerticalStack>
+      </BlockStack>
+    </BlockStack>
   );
 }
 
@@ -112,7 +112,7 @@ export function WithActionList() {
 
   return (
     <div style={{height: '250px'}}>
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Popover
           active={activePopover === 'popover1'}
           activator={activator}
@@ -135,7 +135,7 @@ export function WithActionList() {
             items={[{content: 'Import file'}, {content: 'Export file'}]}
           />
         </Popover>
-      </VerticalStack>
+      </BlockStack>
     </div>
   );
 }

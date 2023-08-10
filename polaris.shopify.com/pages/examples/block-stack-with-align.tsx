@@ -1,34 +1,34 @@
 import React from 'react';
-import {VerticalStack, InlineStack, Text, Divider} from '@shopify/polaris';
+import {BlockStack, InlineStack, Text, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function VerticalStackWithAlignExample() {
+function BlockStackWithAlignExample() {
   return (
     <>
       <Divider />
       <div style={{display: 'flex', height: '200px'}}>
-        <VerticalStack align="start">
+        <BlockStack align="start">
           <Placeholder height="48px" width="320px" label="Start" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
+        </BlockStack>
       </div>
       <Divider />
       <div style={{display: 'flex', height: '200px'}}>
-        <VerticalStack align="center">
+        <BlockStack align="center">
           <Placeholder height="48px" width="320px" label="Center" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
+        </BlockStack>
       </div>
       <Divider />
       <div style={{display: 'flex', height: '200px'}}>
-        <VerticalStack align="end">
+        <BlockStack align="end">
           <Placeholder height="48px" width="320px" label="End" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
+        </BlockStack>
       </div>
       <Divider />
     </>
@@ -68,4 +68,4 @@ const Placeholder = ({
   );
 };
 
-export default withPolarisExample(VerticalStackWithAlignExample);
+export default withPolarisExample(BlockStackWithAlignExample);

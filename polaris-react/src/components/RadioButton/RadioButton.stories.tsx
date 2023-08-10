@@ -4,7 +4,7 @@ import {
   RadioButton,
   LegacyStack,
   Card,
-  VerticalStack,
+  BlockStack,
   Text,
   Box,
   Divider,
@@ -83,11 +83,11 @@ export function WithBleed() {
   );
 
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="2">
+    <BlockStack gap="8">
+      <BlockStack gap="2">
         <Text as="h2">No Bleed</Text>
         <Card padding="4">
-          <VerticalStack gap="4">
+          <BlockStack gap="4">
             <RadioButton
               label="Accounts are disabled"
               checked={value1 === 'disabled'}
@@ -102,10 +102,10 @@ export function WithBleed() {
               checked={value1 === 'optional'}
               onChange={handleChange1}
             />
-          </VerticalStack>
+          </BlockStack>
         </Card>
-      </VerticalStack>
-      <VerticalStack gap="2">
+      </BlockStack>
+      <BlockStack gap="2">
         <Text as="h2">Bleed</Text>
         <Box width="min-content" background="bg" borderRadius="3">
           <div
@@ -136,7 +136,7 @@ export function WithBleed() {
             />
           </div>
         </Box>
-      </VerticalStack>
-    </VerticalStack>
+      </BlockStack>
+    </BlockStack>
   );
 }
