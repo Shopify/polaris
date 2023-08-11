@@ -144,16 +144,18 @@ export function IndexFilters({
     value: filtersFocused,
     setFalse: setFiltersUnFocused,
     setTrue: setFiltersFocused,
-  } = useToggle(true);
+  } = useToggle(mode === IndexFiltersMode.Filtering);
   const {polarisSummerEditions2023} = useFeatures();
 
-  useOnValueChange(mode, (newMode) => {
+  const handleModeChange = (newMode: IndexFiltersMode) => {
     if (newMode === IndexFiltersMode.Filtering) {
       setFiltersFocused();
     } else {
       setFiltersUnFocused();
     }
-  });
+  };
+
+  useOnValueChange(mode, handleModeChange);
 
   useEventListener('keydown', (event) => {
     if (disableKeyboardShortcuts) return;
