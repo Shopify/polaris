@@ -52,20 +52,17 @@ $bulk-actions-button-stacking-order: (
 .ButtonGroupWrapper {
   width: auto;
   justify-content: flex-start;
-  padding: var(--p-space-4);
+  padding: var(--p-space-3);
   background: var(--p-color-bg);
   border-radius: var(--p-border-radius-2);
   box-shadow: var(--p-shadow-md), var(--p-shadow-xl);
   max-width: 100%;
   pointer-events: auto;
 
-  #{$se23} & {
-    padding: var(--p-space-3);
-    @include shadow-bevel(
-      $boxShadow: var(--p-shadow-md),
-      $borderRadius: var(--p-border-radius-3)
-    );
-  }
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-md),
+    $borderRadius: var(--p-border-radius-3)
+  );
 
   @media #{$p-breakpoints-sm-down} {
     // stylelint-disable-next-line selector-max-combinators, selector-max-type -- the first item of button group on small screen needs to fill the space
