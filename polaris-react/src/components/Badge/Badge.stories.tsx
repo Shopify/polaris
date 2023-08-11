@@ -11,7 +11,6 @@ import {
 } from '@shopify/polaris';
 
 import type {Entries} from '../../types';
-import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Badge,
@@ -131,12 +130,6 @@ const sizes: {
 const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
 
 export function All() {
-  const {polarisSummerEditions2023} = useFeatures();
-
-  const filteredStatusEntries = polarisSummerEditions2023
-    ? statusEntries
-    : statusEntries.filter(([status]) => !status.endsWith('-experimental'));
-
   return (
     <LegacyCard sectioned>
       {sizeEntries.map(([size, sizeLabel]) => (
@@ -150,7 +143,7 @@ export function All() {
                 Status only
               </Text>
               <HorizontalStack gap="2">
-                {filteredStatusEntries.map(([status, statusLabel]) => (
+                {statusEntries.map(([status, statusLabel]) => (
                   <Badge
                     key={status}
                     size={size}
@@ -167,7 +160,7 @@ export function All() {
               </Text>
               {progressEntries.map(([progress]) => (
                 <HorizontalStack key={progress} gap="2">
-                  {filteredStatusEntries.map(([status, statusLabel]) => (
+                  {statusEntries.map(([status, statusLabel]) => (
                     <Badge
                       key={status}
                       size={size}
@@ -187,7 +180,7 @@ export function All() {
                   Status with icon
                 </Text>
                 <HorizontalStack gap="2">
-                  {filteredStatusEntries.map(([status, statusLabel]) => (
+                  {statusEntries.map(([status, statusLabel]) => (
                     <Badge
                       key={status}
                       size={size}
@@ -206,7 +199,7 @@ export function All() {
                 Status with icon only
               </Text>
               <HorizontalStack gap="2">
-                {filteredStatusEntries.map(([status]) => (
+                {statusEntries.map(([status]) => (
                   <Badge
                     key={status}
                     size={size}
