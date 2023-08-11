@@ -840,6 +840,16 @@
     }
   }
 
+  &.sizeMicro {
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
+    margin: calc(var(--pc-button-vertical-padding) * -1)
+      calc(var(--p-space-3) * -1);
+
+    > .Content {
+      font-size: var(--p-font-size-80-experimental);
+    }
+  }
+
   &.sizeSlim {
     // stylelint-disable -- custom properties
     margin-top: calc(-1 * var(--pc-button-slim-vertical-padding));
@@ -959,13 +969,13 @@
 }
 
 .sizeMicro {
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-2);
   padding: var(--p-space-1) var(--p-space-2);
   // stylelint-disable-next-line -- custom property
   min-height: var(--pc-button-micro-min-height);
 
   .Content {
-    font-size: var(--p-font-size-100);
+    font-size: var(--p-font-size-80-experimental);
     font-weight: var(--p-font-weight-medium);
     line-height: var(--p-font-line-height-2);
   }
