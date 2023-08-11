@@ -580,34 +580,6 @@ export function DetailsPage() {
           actions: [
             {
               content: 'Embed on a website',
-
-              onAction: () => console.log('embed'),
-            },
-            {
-              content: 'Toggle page actions',
-              onAction: toggleActions,
-            },
-            {
-              content: 'Embed on a website',
-
-              onAction: () => console.log('embed'),
-            },
-            {
-              content: 'Toggle page actions',
-              onAction: toggleActions,
-            },
-            {
-              content: 'Embed on a website',
-
-              onAction: () => console.log('embed'),
-            },
-            {
-              content: 'Toggle page actions',
-              onAction: toggleActions,
-            },
-            {
-              content: 'Embed on a website',
-
               onAction: () => console.log('embed'),
             },
             {
