@@ -4,7 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';
-import {Item, Section} from '../components';
+import {Item, SearchField, Section} from '../components';
 import {Key} from '../../../types';
 import {KeypressListener} from '../../KeypressListener';
 
@@ -235,5 +235,111 @@ describe('<ActionList />', () => {
     expect(document.activeElement).toStrictEqual(
       actionListButtons[actionListButtons.length - 1].domNode,
     );
+  });
+
+  it('does not render search with 9 or less items', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        items={[
+          {content: 'Item 1'},
+          {content: 'Item 2'},
+          {content: 'Item 3'},
+          {content: 'Item 4'},
+          {content: 'Item 5'},
+          {content: 'Item 6'},
+          {content: 'Item 7'},
+          {content: 'Item 8'},
+          {content: 'Item 9'},
+        ]}
+      />,
+    );
+
+    expect(actionList).not.toContainReactComponentTimes(SearchField, 1);
+  });
+
+  it('renders search with 10 or more items', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        items={[
+          {content: 'Item 1'},
+          {content: 'Item 2'},
+          {content: 'Item 3'},
+          {content: 'Item 4'},
+          {content: 'Item 5'},
+          {content: 'Item 6'},
+          {content: 'Item 7'},
+          {content: 'Item 8'},
+          {content: 'Item 9'},
+          {content: 'Item 10'},
+        ]}
+      />,
+    );
+
+    expect(actionList).toContainReactComponentTimes(SearchField, 1);
+  });
+
+  it('renders search with 10 or more items or section items', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        items={[{content: 'Item 1'}, {content: 'Item 2'}]}
+        sections={[
+          {
+            title: '',
+            items: [{content: 'Item 3'}, {content: 'Item 4'}],
+          },
+          {
+            title: '',
+            items: [
+              {content: 'Item 4'},
+              {content: 'Item 5'},
+              {content: 'Item 6'},
+              {content: 'Item 7'},
+              {content: 'Item 8'},
+              {content: 'Item 9'},
+              {content: 'Item 10'},
+            ],
+          },
+        ]}
+      />,
+    );
+
+    expect(actionList).toContainReactComponentTimes(SearchField, 1);
+  });
+
+  it('filters items and section items with case-insensitive search', () => {
+    const actionList = mountWithApp(
+      <ActionList
+        items={[{content: 'IteM 1'}, {content: 'Item 2'}]}
+        sections={[
+          {
+            title: 'Section 1',
+            items: [{content: 'Item 3'}, {content: 'Item 4'}],
+          },
+          {
+            title: 'Section 2',
+            items: [
+              {content: 'Item 4'},
+              {content: 'Item 5'},
+              {content: 'Item 6'},
+              {content: 'Item 7'},
+              {content: 'Item 8'},
+              {content: 'Item 9'},
+              {content: 'Item 10'},
+            ],
+          },
+        ]}
+      />,
+    );
+
+    const textField = actionList.find('input');
+    textField!.trigger('onChange', {
+      currentTarget: {
+        value: 'item 1',
+      },
+    });
+
+    expect(actionList).toContainReactComponentTimes(Item, 2);
+    // First Section will have no title since items without a section are grouped into a Section automatically
+    expect(actionList.findAll(Section)[1]).toContainReactText('Section 2');
   });
 });
