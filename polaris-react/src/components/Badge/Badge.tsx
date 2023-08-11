@@ -6,7 +6,6 @@ import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {Text} from '../Text';
 import {Icon} from '../Icon';
 import type {IconSource} from '../../types';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Badge.scss';
 import type {Progress, Size, Status} from './types';
@@ -70,7 +69,6 @@ export function Badge({
   statusAndProgressLabelOverride,
 }: BadgeProps) {
   const i18n = useI18n();
-  const {polarisSummerEditions2023} = useFeatures();
   const withinFilter = useContext(WithinFilterContext);
 
   const className = classNames(
@@ -91,19 +89,11 @@ export function Badge({
   );
 
   if (progress && !icon) {
-    accessibilityMarkup = polarisSummerEditions2023 ? (
+    accessibilityMarkup = (
       <span className={styles.Icon}>
         <Icon
           accessibilityLabel={accessibilityLabel}
           source={progressIconMap[progress]}
-        />
-      </span>
-    ) : (
-      <span className={styles.PipContainer}>
-        <Pip
-          progress={progress}
-          status={status}
-          accessibilityLabelOverride={accessibilityLabel}
         />
       </span>
     );
