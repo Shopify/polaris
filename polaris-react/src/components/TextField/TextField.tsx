@@ -161,6 +161,13 @@ interface NonMutuallyExclusiveProps {
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
+  /** Removes the border around the input. Used in the IndexFilters component. */
+  /** @deprecated Use variant="borderless" instead */
+  borderless?: boolean;
+  /** Styling options for the TextField
+   * @default 'inherit'
+   */
+  variant?: 'inherit' | 'borderless';
   /** Callback fired when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback fired when value is changed */
@@ -171,8 +178,6 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
-  /** Removes the border around the input. Used in the IndexFilters component. */
-  borderless?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -233,12 +238,13 @@ export function TextField({
   monospaced,
   selectTextOnFocus,
   suggestion,
+  borderless,
+  variant = 'inherit',
   onClearButtonClick,
   onChange,
   onSpinnerChange,
   onFocus,
   onBlur,
-  borderless,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -290,7 +296,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && !disabled && styles.focus,
-    borderless && styles.borderless,
+    (borderless || variant === 'borderless') && styles.borderless,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
