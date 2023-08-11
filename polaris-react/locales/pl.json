@@ -363,7 +363,8 @@
       "clear": "Wyczyść"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Wyszukaj i przefiltruj (F)",
+      "searchFilterTooltip": "Wyszukaj i przefiltruj",
+      "searchFilterTooltipWithShortcut": "Wyszukaj i przefiltruj (F)",
       "searchFilterAccessibilityLabel": "Wyszukaj i przefiltruj wyniki",
       "sort": "Sortuj wyniki",
       "addView": "Dodaj nowy widok",

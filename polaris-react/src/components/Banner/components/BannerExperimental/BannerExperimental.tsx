@@ -121,7 +121,7 @@ export function BannerExperimental({
   return <DefaultBanner {...sharedBannerProps}>{children}</DefaultBanner>;
 }
 
-function DefaultBanner({
+export function DefaultBanner({
   backgroundColor,
   textColor,
   bannerTitle,
@@ -171,7 +171,7 @@ function DefaultBanner({
   );
 }
 
-function InlineIconBanner({
+export function InlineIconBanner({
   backgroundColor,
   bannerIcon,
   actionButtons,
@@ -225,7 +225,7 @@ function InlineIconBanner({
   );
 }
 
-function WithinContentContainerBanner({
+export function WithinContentContainerBanner({
   backgroundColor,
   textColor,
   bannerTitle,
@@ -242,7 +242,12 @@ function WithinContentContainerBanner({
       borderRadius="2"
       color={textColor}
     >
-      <HorizontalStack align="space-between" blockAlign="start" wrap={false}>
+      <HorizontalStack
+        align="space-between"
+        blockAlign="start"
+        wrap={false}
+        gap="2"
+      >
         <HorizontalStack gap="1_5-experimental" wrap={false}>
           {bannerIcon}
           <Box width="100%">

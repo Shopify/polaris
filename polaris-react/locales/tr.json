@@ -361,7 +361,8 @@
       "clear": "Temizle"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Arama ve filtreleme (F)",
+      "searchFilterTooltip": "Arama ve filtreleme",
+      "searchFilterTooltipWithShortcut": "Arama ve filtreleme (F)",
       "searchFilterAccessibilityLabel": "Arama ve sonuçları filtreleme",
       "sort": "Sonuçlarınızı sıralayın",
       "addView": "Yeni bir görünüm ekle",

@@ -74,6 +74,7 @@ $action-menu-rollup-computed-width: 40px;
 .Row {
   display: flex;
   justify-content: space-between;
+  line-height: normal;
 
   &:first-child {
     min-height: 36px;

@@ -198,7 +198,7 @@
       "BulkActions": {
         "actionsActivatorLabel": "การดำเนินการ",
         "moreActionsActivatorLabel": "การดำเนินการเพิ่มเติม",
-        "warningMessage": "หากต้องการมอบประสบการณ์ใช้งานที่ดียิ่งขึ้นแก่ผู้ใช้ การดำเนินการที่ได้รับการโปรโมทไม่ควรมีมากเกิน {maxPromotedActions} รายการ"
+        "warningMessage": "หากต้องการมอบประสบการณ์ใช้งานที่ดียิ่งขึ้นแก่ผู้ใช้ การดำเนินการที่ได้รับการโปรโมตไม่ควรมีมากเกิน {maxPromotedActions} รายการ"
       },
       "showingTotalCount": "แสดง {resource} จำนวน {itemsCount} จาก {totalItemsCount} รายการ",
       "allFilteredItemsSelected": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการในตัวกรองนี้แล้ว",
@@ -220,7 +220,7 @@
         "copy": "สำเนาของ {name}",
         "deleteModal": {
           "title": "ต้องการลบมุมมองหรือไม่",
-          "description": "การดำเนินการนี้ไม่สามารถเลิกทำได้ ไม่สามารถใช้มุมมอง {viewName} ในส่วน Shopify admin ของคุณได้อีกต่อไป",
+          "description": "การดำเนินการนี้ไม่สามารถเลิกทำได้ ไม่สามารถใช้มุมมอง {viewName} ในส่วนผู้ดูแล Shopify ของคุณได้อีกต่อไป",
           "cancel": "ยกเลิก",
           "delete": "ลบมุมมอง"
         }
@@ -361,7 +361,8 @@
       "clear": "ล้าง"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "ค้นหาและกรอง (F)",
+      "searchFilterTooltip": "ค้นหาและกรอง",
+      "searchFilterTooltipWithShortcut": "ค้นหาและกรอง (F)",
       "searchFilterAccessibilityLabel": "ผลลัพธ์ของการค้นหาและกรอง",
       "sort": "จัดเรียงผลลัพธ์ของคุณ",
       "addView": "เพิ่มมุมมองใหม่",

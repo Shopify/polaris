@@ -29,7 +29,10 @@ function AppProviderDecorator(Story, context) {
   return (
     <AppProvider
       features={{
-        polarisSummerEditions2023,
+        polarisSummerEditions2023:
+          process.env.STORYBOOK_SE23 === 'on'
+            ? true
+            : polarisSummerEditions2023,
         polarisSummerEditions2023ShadowBevelOptOut,
       }}
       i18n={enTranslations}
