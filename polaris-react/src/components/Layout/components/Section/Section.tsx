@@ -5,10 +5,15 @@ import styles from '../../Layout.scss';
 
 export interface SectionProps {
   children?: React.ReactNode;
+  /** @deprecated Use `variant === 'oneThird'` instead */
   secondary?: boolean;
+  /** @deprecated Use `variant === 'fullWidth'` instead */
   fullWidth?: boolean;
+  /** @deprecated Use `variant === 'oneHalf'` instead */
   oneHalf?: boolean;
+  /** @deprecated Use `variant === 'oneThird'` instead */
   oneThird?: boolean;
+  variant?: 'oneHalf' | 'oneThird' | 'fullWidth';
 }
 
 export function Section({
@@ -17,13 +22,14 @@ export function Section({
   fullWidth,
   oneHalf,
   oneThird,
+  variant,
 }: SectionProps) {
   const className = classNames(
     styles.Section,
     secondary && styles['Section-secondary'],
-    fullWidth && styles['Section-fullWidth'],
-    oneHalf && styles['Section-oneHalf'],
-    oneThird && styles['Section-oneThird'],
+    (oneHalf || variant === 'oneHalf') && styles['Section-oneHalf'],
+    (oneThird || variant === 'oneThird') && styles['Section-oneThird'],
+    (fullWidth || variant === 'fullWidth') && styles['Section-fullWidth'],
   );
 
   return <div className={className}>{children}</div>;
