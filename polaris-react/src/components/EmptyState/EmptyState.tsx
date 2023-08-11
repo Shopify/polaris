@@ -1,7 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {WithinContentContext} from '../../utilities/within-content-context';
 import type {ComplexAction} from '../../types';
 import {Box} from '../Box';
 import {buttonFrom} from '../Button';
@@ -9,7 +8,6 @@ import {Image} from '../Image';
 import {Text} from '../Text';
 import {VerticalStack} from '../VerticalStack';
 import {HorizontalStack} from '../HorizontalStack';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './EmptyState.scss';
 
@@ -48,8 +46,6 @@ export function EmptyState({
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-  const withinContentContainer = useContext(WithinContentContext);
   const imageContainedClass = classNames(
     imageContained && styles.imageContained,
   );
@@ -81,49 +77,33 @@ export function EmptyState({
 
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="4">
-      <Text
-        as="span"
-        color={polarisSummerEditions2023 ? undefined : 'subdued'}
-        alignment="center"
-        variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
-      >
+      <Text as="span" alignment="center" variant="bodySm">
         {footerContent}
       </Text>
     </Box>
   ) : null;
-
-  const headingSize = withinContentContainer ? 'headingLg' : 'headingXl';
 
   const primaryActionMarkup = action
     ? buttonFrom(action, {primary: true, size: 'medium'})
     : null;
 
   const headingMarkup = heading ? (
-    <Box paddingBlockEnd={polarisSummerEditions2023 ? '1_5-experimental' : '4'}>
-      <Text
-        variant={polarisSummerEditions2023 ? 'headingMd' : headingSize}
-        as="p"
-        alignment="center"
-      >
+    <Box paddingBlockEnd="1_5-experimental">
+      <Text variant="headingMd" as="p" alignment="center">
         {heading}
       </Text>
     </Box>
   ) : null;
 
   const childrenMarkup = children ? (
-    <Text
-      as="span"
-      color={polarisSummerEditions2023 ? undefined : 'subdued'}
-      alignment="center"
-      variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
-    >
+    <Text as="span" alignment="center" variant="bodySm">
       {children}
     </Text>
   ) : null;
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <Box paddingBlockEnd={polarisSummerEditions2023 ? '4' : '6'}>
+      <Box paddingBlockEnd="4">
         {headingMarkup}
         {childrenMarkup}
       </Box>
