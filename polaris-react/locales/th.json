@@ -198,7 +198,7 @@
       "BulkActions": {
         "actionsActivatorLabel": "การดำเนินการ",
         "moreActionsActivatorLabel": "การดำเนินการเพิ่มเติม",
-        "warningMessage": "หากต้องการมอบประสบการณ์ใช้งานที่ดียิ่งขึ้นแก่ผู้ใช้ การดำเนินการที่ได้รับการโปรโมทไม่ควรมีมากเกิน {maxPromotedActions} รายการ"
+        "warningMessage": "หากต้องการมอบประสบการณ์ใช้งานที่ดียิ่งขึ้นแก่ผู้ใช้ การดำเนินการที่ได้รับการโปรโมตไม่ควรมีมากเกิน {maxPromotedActions} รายการ"
       },
       "showingTotalCount": "แสดง {resource} จำนวน {itemsCount} จาก {totalItemsCount} รายการ",
       "allFilteredItemsSelected": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการในตัวกรองนี้แล้ว",
