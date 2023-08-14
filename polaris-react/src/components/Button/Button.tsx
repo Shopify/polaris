@@ -163,9 +163,6 @@ export function Button({
     outline && destructive && styles.destructive,
   );
 
-  const disclosureUpIcon = ChevronUpMinor;
-  const disclosureDownIcon = ChevronDownMinor;
-
   const disclosureMarkup = disclosure ? (
     <span className={styles.Icon}>
       <div
@@ -177,8 +174,8 @@ export function Button({
               ? 'placeholder'
               : getDisclosureIconSource(
                   disclosure,
-                  disclosureUpIcon,
-                  disclosureDownIcon,
+                  ChevronUpMinor,
+                  ChevronDownMinor,
                 )
           }
         />
