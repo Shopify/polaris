@@ -338,8 +338,8 @@
     }
 
     svg {
-      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
-      fill: var(--pc-button-text);
+      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list, declaration-no-important -- override Spinner fill color
+      fill: var(--pc-button-text) !important;
     }
   }
 
