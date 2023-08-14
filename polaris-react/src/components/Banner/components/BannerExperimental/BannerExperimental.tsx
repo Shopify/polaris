@@ -206,11 +206,13 @@ export function InlineIconBanner({
       >
         <Box width="100%">
           <HorizontalStack gap="2" wrap={false} blockAlign={blockAlign}>
-            <div ref={iconNode}>
-              <Box background={backgroundColor} borderRadius="2" padding="1">
-                {bannerIcon}
-              </Box>
-            </div>
+            {bannerIcon ? (
+              <div ref={iconNode}>
+                <Box background={backgroundColor} borderRadius="2" padding="1">
+                  {bannerIcon}
+                </Box>
+              </div>
+            ) : null}
             <Box ref={contentNode} width="100%">
               <VerticalStack gap="2">
                 <div>{children}</div>
