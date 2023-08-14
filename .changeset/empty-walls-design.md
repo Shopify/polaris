@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': minor
+'@shopify/polaris': patch
 ---
 
-Added support for wrapping overflow of strings with no spacing within `Filters` popover
+Fixed wrapping overflow of strings with no spacing within `Filters` popover
