@@ -3,6 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   Avatar,
+  Box,
   Button,
   LegacyCard,
   FormLayout,
@@ -811,6 +812,47 @@ export function WithLoadingSmallerContent() {
             <p>Small content from the server</p>
           </div>
         )}
+      </Popover>
+    </div>
+  );
+}
+
+export function WithSubduedPane() {
+  const [popoverActive, setPopoverActive] = useState(true);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const activator = (
+    <Button
+      onClick={() => {
+        togglePopoverActive();
+      }}
+      disclosure
+    >
+      Show popover
+    </Button>
+  );
+
+  return (
+    <div style={{height: '280px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+      >
+        <Popover.Pane>
+          <Box padding="4">
+            <Text as="p">Popover content</Text>
+          </Box>
+        </Popover.Pane>
+        <Popover.Pane subdued>
+          <Box padding="4">
+            <Text as="p">Subdued popover pane</Text>
+          </Box>
+        </Popover.Pane>
       </Popover>
     </div>
   );
