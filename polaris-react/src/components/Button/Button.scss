@@ -326,7 +326,6 @@
       box-shadow: var(--p-shadow-button-primary-strong-experimental);
       border-radius: 9px;
       transition: opacity 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
-      mix-blend-mode: luminosity;
       // stylelint-enable
     }
 
