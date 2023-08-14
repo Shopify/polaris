@@ -329,7 +329,6 @@
     }
 
     &:hover {
-      // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       --pc-button-text: var(--p-color-text-inverse);
       // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
 
@@ -337,7 +336,6 @@
         box-shadow: var(--p-shadow-button-primary-strong-experimental);
       }
 
-      // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       svg {
         fill: var(--p-color-text-inverse);
       }
