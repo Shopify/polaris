@@ -296,6 +296,19 @@ export function All() {
         }
       />
       <Text as="h2" variant="headingMd">
+        No title with hidden icon
+      </Text>
+      <AllBanners
+        title={undefined}
+        hideIcon
+        children={
+          <Text as="p">
+            Changing the phone number for this customer will unsubscribe them
+            from SMS marketing text messages until they provide consent.
+          </Text>
+        }
+      />
+      <Text as="h2" variant="headingMd">
         Only title
       </Text>
       <AllBanners children={undefined} onDismiss={() => {}} />
