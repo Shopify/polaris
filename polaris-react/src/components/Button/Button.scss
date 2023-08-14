@@ -1017,9 +1017,13 @@
 
   .Content {
     font-size: var(--p-font-size-80-experimental);
-    font-weight: var(--p-font-weight-regular);
+    font-weight: var(--p-font-weight-medium);
     line-height: var(--p-font-line-height-2);
     letter-spacing: initial;
+
+    @media #{$p-breakpoints-md-up} {
+      line-height: var(--p-font-line-height-1);
+    }
   }
 }
 
