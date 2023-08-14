@@ -701,9 +701,7 @@
 .plain {
   // stylelint-disable-next-line -- polaris/conventions/polaris/custom-property-allowed-list
   margin: calc(-1 * var(--pc-button-vertical-padding))
-    calc(-1 * var(--p-space-2));
-  padding-left: var(--p-space-2);
-  padding-right: var(--p-space-2);
+    calc(-1 * var(--p-space-3));
   background: transparent;
   border: 0;
   box-shadow: none;
