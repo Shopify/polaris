@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  CaretDownMinor,
-  CaretUpMinor,
   ChevronDownMinor,
   ChevronUpMinor,
   PlusMinor,
@@ -222,9 +220,7 @@ describe('<Button />', () => {
         ],
       };
 
-      const button = mountWithApp(<Button connectedDisclosure={disclosure} />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
       expect(button).toContainReactComponentTimes('button', 2);
 
       const disclosureButton = button.findAll('button')[1];
@@ -460,9 +456,7 @@ describe('<Button />', () => {
 
   describe('disclosure', () => {
     it('assumes "down" if set to true', () => {
-      const button = mountWithApp(<Button disclosure />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const button = mountWithApp(<Button disclosure />);
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
@@ -470,9 +464,7 @@ describe('<Button />', () => {
     });
 
     it('is facing down if set to "down"', () => {
-      const button = mountWithApp(<Button disclosure="down" />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const button = mountWithApp(<Button disclosure="down" />);
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
@@ -480,9 +472,7 @@ describe('<Button />', () => {
     });
 
     it('is facing up if set to "up"', () => {
-      const button = mountWithApp(<Button disclosure="up" />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const button = mountWithApp(<Button disclosure="up" />);
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
@@ -542,58 +532,5 @@ describe('<Button />', () => {
       };
       expect(link).toContainReactComponent('button', selector);
     });
-  });
-});
-
-// se23 -- CaretDownMinor replaced with ChevronDownMinor
-describe('polarisSummerEditions2023 false', () => {
-  it('connects a disclosure icon button to the button', () => {
-    const disclosure = {
-      actions: [
-        {
-          content: 'Save and mark as ordered',
-        },
-      ],
-    };
-
-    const button = mountWithApp(<Button connectedDisclosure={disclosure} />, {
-      features: {polarisSummerEditions2023: false},
-    });
-    expect(button).toContainReactComponentTimes('button', 2);
-
-    const disclosureButton = button.findAll('button')[1];
-    expect(disclosureButton).toContainReactComponent(Icon, {
-      source: CaretDownMinor,
-    });
-  });
-
-  it('assumes "down" if set to true', () => {
-    const button = mountWithApp(<Button disclosure />, {
-      features: {polarisSummerEditions2023: false},
-    });
-    const disclosureIcon = button
-      .find('div', {className: styles.DisclosureIcon})!
-      .find(Icon);
-    expect(disclosureIcon).toHaveReactProps({source: CaretDownMinor});
-  });
-
-  it('is facing down if set to "down"', () => {
-    const button = mountWithApp(<Button disclosure="down" />, {
-      features: {polarisSummerEditions2023: false},
-    });
-    const disclosureIcon = button
-      .find('div', {className: styles.DisclosureIcon})!
-      .find(Icon);
-    expect(disclosureIcon).toHaveReactProps({source: CaretDownMinor});
-  });
-
-  it('is facing up if set to "up"', () => {
-    const button = mountWithApp(<Button disclosure="up" />, {
-      features: {polarisSummerEditions2023: false},
-    });
-    const disclosureIcon = button
-      .find('div', {className: styles.DisclosureIcon})!
-      .find(Icon);
-    expect(disclosureIcon).toHaveReactProps({source: CaretUpMinor});
   });
 });
