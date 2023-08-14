@@ -8,16 +8,14 @@ import {gridOptions, featureFlagOptions} from './manager';
 import {breakpoints} from '@shopify/polaris-tokens';
 import isChromatic from 'chromatic/isChromatic';
 
-// Use the document.fonts API to check if fonts have loaded
-// https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts API to
+// Use the document.fonts API to ensure fonts have fully loaded before rendering a story. Important for consistency when doing visual diffing in Chromatic.
+// See: https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts
 const fontLoader = async () => ({
   fonts: await document.fonts.ready,
 });
 
-/* 👇 It's configured as a global loader
- * See https://storybook.js.org/docs/react/writing-stories/loaders
- * to learn more about loaders
- */
+// Exporting as a loader from `preview.js` forces the promise to be resolved before EVERY story
+// See: https://storybook.js.org/docs/react/writing-stories/loaders
 export const loaders = isChromatic() && document.fonts ? [fontLoader] : [];
 
 function StrictModeDecorator(Story, context) {
