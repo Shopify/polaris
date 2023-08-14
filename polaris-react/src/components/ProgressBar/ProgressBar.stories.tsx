@@ -17,6 +17,14 @@ export function Small() {
 export function WithColors() {
   return (
     <div>
+      <ProgressBar progress={70} tone="primary" />
+      <br />
+      <ProgressBar progress={30} tone="success" />
+      <br />
+      <ProgressBar progress={30} tone="critical" />
+      <br />
+      <ProgressBar progress={30} tone="highlight" />
+      <br />
       <ProgressBar progress={70} color="primary" />
       <br />
       <ProgressBar progress={30} color="success" />

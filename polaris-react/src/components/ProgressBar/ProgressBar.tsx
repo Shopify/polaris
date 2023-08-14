@@ -8,7 +8,7 @@ import {useI18n} from '../../utilities/i18n';
 import styles from './ProgressBar.scss';
 
 type Size = 'small' | 'medium' | 'large';
-type Color = 'highlight' | 'primary' | 'success' | 'critical';
+type Tone = 'highlight' | 'primary' | 'success' | 'critical';
 
 export interface ProgressBarProps {
   /**
@@ -21,11 +21,8 @@ export interface ProgressBarProps {
    * @default 'medium'
    */
   size?: Size;
-  /**
-   * Color of progressbar
-   * @default 'highlight'
-   */
-  color?: Color;
+  /** @deprecated Use the `tone` prop to set the color */
+  color?: Tone;
   /**
    * Whether the fill animation is triggered
    * @default 'true'
@@ -35,12 +32,18 @@ export interface ProgressBarProps {
    * Id (ids) of element (elements) that describes progressbar
    */
   ariaLabelledBy?: string;
+  /**
+   * Color of progressbar
+   * @default 'highlight'
+   */
+  tone?: Tone;
 }
 
 export function ProgressBar({
   progress = 0,
   size = 'medium',
-  color = 'highlight',
+  color,
+  tone = color || 'highlight',
   animated: hasAppearAnimation = true,
   ariaLabelledBy,
 }: ProgressBarProps) {
@@ -50,7 +53,7 @@ export function ProgressBar({
   const className = classNames(
     styles.ProgressBar,
     size && styles[variationName('size', size)],
-    color && styles[variationName('color', color)],
+    tone && styles[variationName('tone', tone)],
   );
 
   const warningMessage = i18n.translate(
