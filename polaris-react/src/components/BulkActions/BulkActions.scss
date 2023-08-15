@@ -60,9 +60,10 @@ $bulk-actions-button-stacking-order: (
   pointer-events: auto;
 
   #{$se23} & {
+    padding: var(--p-space-3);
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
-      $borderRadius: var(--p-border-radius-2)
+      $borderRadius: var(--p-border-radius-3)
     );
   }
 
@@ -91,6 +92,45 @@ $bulk-actions-button-stacking-order: (
 
   button {
     display: flex;
+
+    #{$se23} & {
+      background-color: var(--p-color-bg-strong);
+      box-shadow: none;
+      /* stylelint-disable-next-line selector-max-combinators -- se23 */
+      &:hover {
+        background-color: var(--p-color-bg-strong-hover);
+        box-shadow: none;
+      }
+      /* stylelint-disable-next-line selector-max-combinators -- se23 */
+      &:focus-visible,
+      &:active {
+        background-color: var(--p-color-bg-strong-active);
+      }
+      /* stylelint-disable-next-line selector-max-combinators -- se23 */
+      &:focus-visible:not(:active) {
+        /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
+        @include no-focus-ring;
+        outline: var(--p-border-width-2) solid
+          var(--p-color-border-interactive-focus);
+        outline-offset: var(--p-space-05);
+      }
+      // stylelint-disable-next-line selector-max-combinators -- se23
+      &[aria-disabled='true'] {
+        background-color: var(--p-color-bg-transparent-disabled-experimental);
+      }
+    }
+  }
+
+  // Extra specificity
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity -- se23
+  &.BulkActionButton.BulkActionButton button {
+    #{$se23} & {
+      // stylelint-disable-next-line selector-max-class, selector-max-combinators -- se23
+      &:focus-visible,
+      &:active {
+        box-shadow: var(--p-shadow-inset-md);
+      }
+    }
   }
 }
 
