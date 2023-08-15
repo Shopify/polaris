@@ -1,5 +1,16 @@
 # Changelog
 
+## 14.0.0
+
+### Major Changes
+
+- [#9887](https://github.com/Shopify/polaris/pull/9887) [`a3da87e2e`](https://github.com/Shopify/polaris/commit/a3da87e2e52b7e4c3fc421bbe4122e763c39c1a1) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed deprecated v10 custom properties from stylelint-polaris disallowed lists
+
+### Patch Changes
+
+- Updated dependencies [[`36e4ee8af`](https://github.com/Shopify/polaris/commit/36e4ee8afbc7dbec6e65225384629afa83f64a75)]:
+  - @shopify/polaris-tokens@7.5.3
+
 ## 13.0.8
 
 ### Patch Changes

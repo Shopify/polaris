@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.8.1
+
+### Patch Changes
+
+- [#9879](https://github.com/Shopify/polaris/pull/9879) [`d1bee0f87`](https://github.com/Shopify/polaris/commit/d1bee0f87879c7dba57e0b3c4585d0addbe835c9) Thanks [@kyledurand](https://github.com/kyledurand)! - Optimized some unoptimized icons
+
 ## 7.8.0
 
 ### Minor Changes

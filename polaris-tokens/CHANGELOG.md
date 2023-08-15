@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.3
+
+### Patch Changes
+
+- [#9904](https://github.com/Shopify/polaris/pull/9904) [`36e4ee8af`](https://github.com/Shopify/polaris/commit/36e4ee8afbc7dbec6e65225384629afa83f64a75) Thanks [@benwolfram](https://github.com/benwolfram)! - Added a unit to the `space-0` token
+
 ## 7.5.2
 
 ### Patch Changes
