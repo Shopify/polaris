@@ -11,7 +11,6 @@ import type {ResponsiveProp} from '../../utilities/css';
 import type {Error} from '../../types';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Choice.scss';
 
@@ -90,7 +89,6 @@ export function Choice({
   bleedInlineStart,
   bleedInlineEnd,
 }: ChoiceProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
@@ -158,7 +156,7 @@ export function Choice({
         as="span"
         // `undefined` means color: inherit
         // the nearest ancestor with a specified color is .Descriptions in Choice.scss
-        color={disabled && polarisSummerEditions2023 ? undefined : 'subdued'}
+        color={disabled ? undefined : 'subdued'}
       >
         {helpText}
       </Text>
