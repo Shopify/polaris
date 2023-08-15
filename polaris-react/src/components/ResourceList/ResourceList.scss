@@ -48,7 +48,12 @@ $item-wrapper-loading-height: 64px;
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
 
-  + .ResourceList {
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators -- Ssshhhhh
+  + .ResourceList,
+  // Bulk actions get injected into the DOM between the wrapper and resource
+  // list dynamically when an item is checked, so we have to handle that case
+  // here.
+  + .BulkActionsWrapper + .ResourceList {
     border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
     #{$se23} & {
