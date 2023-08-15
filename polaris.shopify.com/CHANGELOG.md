@@ -1,5 +1,18 @@
 # polaris.shopify.com
 
+## 0.57.0
+
+### Minor Changes
+
+- [#9886](https://github.com/Shopify/polaris/pull/9886) [`d85099c89`](https://github.com/Shopify/polaris/commit/d85099c897473db2bd0a21b35b2c147b8032b39c) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated Polaris Stylelint version matchups chart
+
+### Patch Changes
+
+- Updated dependencies [[`d1bee0f87`](https://github.com/Shopify/polaris/commit/d1bee0f87879c7dba57e0b3c4585d0addbe835c9), [`1d82a3b12`](https://github.com/Shopify/polaris/commit/1d82a3b122fc1d47a14d978d180f3e9e5d5359e2), [`36e4ee8af`](https://github.com/Shopify/polaris/commit/36e4ee8afbc7dbec6e65225384629afa83f64a75), [`cb1dbbbd3`](https://github.com/Shopify/polaris/commit/cb1dbbbd3cd859ca4ac29d310b21b161b1bad485), [`3ae94cef0`](https://github.com/Shopify/polaris/commit/3ae94cef0579cf948452042df6c37eb2c867d565), [`0cbdbb4f5`](https://github.com/Shopify/polaris/commit/0cbdbb4f58896cfaa6624e799c4c426b170d8f86), [`93b902094`](https://github.com/Shopify/polaris/commit/93b9020942ec9228dc5ac80df0e323fd7d7bb51e), [`65ad4e27c`](https://github.com/Shopify/polaris/commit/65ad4e27cad4188b31e5172d245296a65672cf54), [`f0d288099`](https://github.com/Shopify/polaris/commit/f0d288099359a7b4fad93c8ea82d40bae520a44b), [`af0c9d4a2`](https://github.com/Shopify/polaris/commit/af0c9d4a250a605ee588fa033c9023f80401a0c8), [`5569ac69a`](https://github.com/Shopify/polaris/commit/5569ac69aea87fc80044b432917f45e69f4f22e9), [`f585a57e0`](https://github.com/Shopify/polaris/commit/f585a57e0359cff2d43e0a817a33b2126f255c7c), [`57d8d5506`](https://github.com/Shopify/polaris/commit/57d8d55068bfbca43a047f95452f40f7bfd1749e), [`535b3fc91`](https://github.com/Shopify/polaris/commit/535b3fc9145d8044f155b42c83fabf25009afcc7), [`00b831292`](https://github.com/Shopify/polaris/commit/00b831292d058d8489b2653d01f4a952f8c6fe28)]:
+  - @shopify/polaris-icons@7.8.1
+  - @shopify/polaris@11.12.0
+  - @shopify/polaris-tokens@7.5.3
+
 ## 0.56.7
 
 ### Patch Changes
