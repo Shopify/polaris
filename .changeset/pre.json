@@ -13,6 +13,7 @@
     "@shopify/stylelint-polaris": "13.0.8"
   },
   "changesets": [
-    "nice-zoos-vanish"
+    "nice-zoos-vanish",
+    "tall-chicken-repeat"
   ]
 }

@@ -1,5 +1,7 @@
 # Changelog
 
+## 12.0.0-beta.1
+
 ## 11.12.0
 
 ### Minor Changes
