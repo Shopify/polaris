@@ -18,6 +18,8 @@ interface PrimaryOptions {
 
 ### Configuration
 
+#### Example 1
+
 ```js
 const stylelintConfig = {
   rules: {
@@ -30,6 +32,26 @@ const stylelintConfig = {
     },
   },
 };
+```
+
+#### Example 2
+
+```js
+const disallowedVarsBorder = [
+  // Legacy custom properties
+  '--p-foo',
+  '--p-bar',
+];
+
+const stylelintOptions = {
+  border: [
+    {
+      'polaris/custom-property-disallowed-list': {
+        disallowedProperties: disallowedVarsBorder,
+        disallowedValues: {'/.+/': disallowedVarsBorder},
+      },
+    },
+  ],
 ```
 
 > Note: Property keys for `disallowedValues` are evaluated in order. Please ensure that you
