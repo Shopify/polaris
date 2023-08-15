@@ -24,14 +24,6 @@ export function WithColors() {
       <ProgressBar progress={30} tone="critical" />
       <br />
       <ProgressBar progress={30} tone="highlight" />
-      <br />
-      <ProgressBar progress={70} color="primary" />
-      <br />
-      <ProgressBar progress={30} color="success" />
-      <br />
-      <ProgressBar progress={30} color="critical" />
-      <br />
-      <ProgressBar progress={30} color="highlight" />
     </div>
   );
 }

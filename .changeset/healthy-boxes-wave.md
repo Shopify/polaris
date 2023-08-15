@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-Renamed `color` prop to `tone` for `ProgressBar` component and deprecated `color` prop
+Renamed `color` prop to `tone` for `ProgressBar` component

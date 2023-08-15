@@ -21,8 +21,6 @@ export interface ProgressBarProps {
    * @default 'medium'
    */
   size?: Size;
-  /** @deprecated Use the `tone` prop to set the color */
-  color?: Tone;
   /**
    * Whether the fill animation is triggered
    * @default 'true'
@@ -42,8 +40,7 @@ export interface ProgressBarProps {
 export function ProgressBar({
   progress = 0,
   size = 'medium',
-  color,
-  tone = color || 'highlight',
+  tone = 'highlight',
   animated: hasAppearAnimation = true,
   ariaLabelledBy,
 }: ProgressBarProps) {
