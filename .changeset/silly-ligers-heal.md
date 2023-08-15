@@ -1,6 +1,5 @@
 ---
-'@shopify/polaris': minor
+'@shopify/polaris': major
 ---
 
-Deprecated `secondary`, `fullWidth`, `oneHalf`, `oneThird` props on Layout.Section
-Added variant prop to Layout.Section to replace boolean props
+Replaced boolean props: `secondary`, `fullWidth`, `oneHalf`, `oneThird` on Layout.Section with `variant`
