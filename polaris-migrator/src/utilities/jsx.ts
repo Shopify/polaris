@@ -123,19 +123,54 @@ export function replaceJSXElement(
 }
 
 export function renameProps(
-  _j: core.JSCodeshift,
+  j: core.JSCodeshift,
   source: Collection<any>,
   componentName: string,
   props: {[from: string]: string},
+  newValue?: string,
 ) {
+  const [component, subcomponent] = componentName.split('.');
   const fromProps = Object.keys(props);
   const isFromProp = (prop: unknown): prop is keyof typeof props =>
     fromProps.includes(prop as string);
 
-  source.findJSXElements(componentName)?.forEach((path) => {
-    path.node.openingElement.attributes?.forEach((node) => {
+  if (component && subcomponent) {
+    source.find(j.JSXElement).forEach((element) => {
+      if (
+        element.node.openingElement.name.type === 'JSXMemberExpression' &&
+        element.node.openingElement.name.object.type === 'JSXIdentifier' &&
+        element.node.openingElement.name.object.name === component &&
+        element.node.openingElement.name.property.name === subcomponent
+      ) {
+        element.node.openingElement.attributes?.forEach((node) => {
+          if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
+            node.name.name = props[node.name.name];
+
+            if (newValue) {
+              node.value = {
+                type: 'StringLiteral',
+                value: newValue,
+              };
+            }
+          }
+        });
+      }
+    });
+    return;
+  }
+
+  source.findJSXElements(componentName)?.forEach((element) => {
+    // Handle basic elements
+    element.node.openingElement.attributes?.forEach((node) => {
       if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
         node.name.name = props[node.name.name];
+
+        if (newValue) {
+          node.value = {
+            type: 'StringLiteral',
+            value: newValue,
+          };
+        }
       }
     });
   });

@@ -15,7 +15,7 @@ export default function transformer(
   const componentName = options.componentName;
   const props = {[options.from]: options.to};
 
-  renameProps(j, source, componentName, props);
+  renameProps(j, source, componentName, props, options.newValue);
 
   return source.toSource();
 }
