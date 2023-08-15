@@ -143,7 +143,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       transitionStatus === TransitionStatus.Exiting &&
         styles['PopoverOverlay-exiting'],
     );
-
+    debugger;
     return (
       <PositionedOverlay
         ref={this.overlayRef}
