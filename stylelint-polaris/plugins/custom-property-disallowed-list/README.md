@@ -56,24 +56,3 @@ const stylelintOptions = {
 
 > Note: Property keys for `disallowedValues` are evaluated in order. Please ensure that you
 > order your property keys from most specific to least specific.
-
-## Example Documentation Page (polaris.shopify.com)
-
----
-
-title: border/custom-property-disallowed-list
-description: Disallows use of legacy border custom properties.
-keywords:
-
-- stylelint
-- border
-- border rules
-
----
-
-```diff
-// Do
-+ border-radius: var(--p-foo);
-// Don't
-- border-radius: var(--p-bar);
-```
