@@ -5,8 +5,9 @@ import type {ThemeBase} from './base';
 import {themeBase} from './base';
 import {themeLight} from './light';
 import {themeLightUplift, themeLightUpliftPartial} from './light-uplift';
+import {themeNameDefault, themeNameLightUplift} from './constants';
 
-export const themeNames = ['light', 'Polaris-Summer-Editions-2023'] as const;
+export const themeNames = [themeNameDefault, themeNameLightUplift] as const;
 
 export type ThemeName = typeof themeNames[number];
 
@@ -18,7 +19,7 @@ export const themes: Themes = {
 } as const;
 
 export type ThemesPartials = {
-  [T in Exclude<ThemeName, 'light'>]: ThemeVariantPartialShape;
+  [T in Exclude<ThemeName, typeof themeNameDefault>]: ThemeVariantPartialShape;
 };
 
 export const themesPartials: ThemesPartials = {

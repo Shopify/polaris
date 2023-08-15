@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-import type {ThemeVars} from '@shopify/polaris-tokens';
-import {themeVars} from '@shopify/polaris-tokens';
+import type {ThemeName} from '@shopify/polaris-tokens';
+import {
+  themeNames,
+  themeNameDefault,
+  createThemeClassName,
+} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
@@ -27,7 +31,7 @@ import type {FeaturesConfig} from '../../utilities/features';
 import './AppProvider.scss';
 import './global.scss';
 
-const ThemeVarsContext = React.createContext<ThemeVars | null>(null);
+const ThemeNameContext = React.createContext<ThemeName>(themeNameDefault);
 
 interface State {
   intl: I18n;
@@ -35,7 +39,7 @@ interface State {
 }
 
 export interface AppProviderProps {
-  theme?: 'light' | 'light-uplift';
+  theme?: ThemeName;
   /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
@@ -99,10 +103,12 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const features = this.getFeatures();
     const theme = this.getTheme();
 
-    document.documentElement.classList.toggle(
-      'p-theme-light-uplift',
-      theme === 'light-uplift',
-    );
+    themeNames.forEach((themeName) => {
+      document.documentElement.classList.toggle(
+        createThemeClassName(themeName),
+        theme === themeName,
+      );
+    });
 
     document.documentElement.classList.toggle(
       classNamePolarisSummerEditions2023,
@@ -115,7 +121,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     );
   };
 
-  getTheme = () => this.props.theme ?? 'light';
+  getTheme = () => this.props.theme ?? themeNameDefault;
 
   getFeatures = () => {
     const {features} = this.props;
@@ -131,11 +137,12 @@ export class AppProvider extends Component<AppProviderProps, State> {
   render() {
     const {children} = this.props;
     const features = this.getFeatures();
+    const theme = this.getTheme();
 
     const {intl, link} = this.state;
 
     return (
-      <ThemeVarsContext.Provider value={themeVars}>
+      <ThemeNameContext.Provider value={theme}>
         <FeaturesContext.Provider value={features}>
           <I18nContext.Provider value={intl}>
             <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
@@ -155,19 +162,19 @@ export class AppProvider extends Component<AppProviderProps, State> {
             </ScrollLockManagerContext.Provider>
           </I18nContext.Provider>
         </FeaturesContext.Provider>
-      </ThemeVarsContext.Provider>
+      </ThemeNameContext.Provider>
     );
   }
 }
 
-export function useThemeVars() {
-  const themeVars = React.useContext(ThemeVarsContext);
+export function useThemeName() {
+  const themeName = React.useContext(ThemeNameContext);
 
-  if (!themeVars) {
+  if (!themeName) {
     throw new Error(
-      'No themeVars were provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
+      'No themeName was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
     );
   }
 
-  return themeVars;
+  return themeName;
 }

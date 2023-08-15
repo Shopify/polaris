@@ -1,5 +1,7 @@
 import './configure';
 
+export {themeVars} from '@shopify/polaris-tokens';
+
 // Key is an enum, not a type. It probably shouldn't live in a file called types
 export {Key} from './types';
 
@@ -35,7 +37,7 @@ export {DEFAULT_LOCALE, SUPPORTED_LOCALES} from './configure';
 // It should be first to ensure its CSS is first in compiled output
 // AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
 // It should be first to ensure its CSS is first in compiled output
-export {AppProvider, useThemeVars} from './components/AppProvider';
+export {AppProvider, useThemeName} from './components/AppProvider';
 export type {AppProviderProps} from './components/AppProvider';
 
 export {AccountConnection} from './components/AccountConnection';
@@ -422,6 +424,7 @@ export {
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
+export {useCSSCustomProperty} from './utilities/use-css-custom-property';
 export {useEventListener} from './utilities/use-event-listener';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {

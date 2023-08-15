@@ -3,6 +3,7 @@ import path from 'path';
 
 import type {Themes, ThemesPartials} from '../src/themes';
 import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
+import {createThemeSelector} from '../src/themes/utils';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
@@ -56,7 +57,7 @@ export async function toStyleSheet(
   ${Object.entries(themesPartials)
     .map(
       ([themeName, themePartial]) =>
-        `html.${themeName}{${getThemeVars(themePartial)}}`,
+        `${createThemeSelector(themeName)}{${getThemeVars(themePartial)}}`,
     )
     .join('\n')}
 

@@ -1,6 +1,7 @@
 import type {Exact} from '../types';
 
 import type {ThemeShape, ThemeVariantPartialShape} from './types';
+import {themeNameLightUplift} from './constants';
 
 /**
  * Identity function creator that simply returns the provided theme,
@@ -30,3 +31,13 @@ export const createThemeBase = createExact<ThemeShape>();
 
 export const createThemeVariantPartial =
   createExact<ThemeVariantPartialShape>();
+
+export function createThemeClassName(themeName: string) {
+  return themeName === themeNameLightUplift
+    ? themeName
+    : `p-theme-${themeName}`;
+}
+
+export function createThemeSelector(themeName: string) {
+  return `html.${createThemeClassName(themeName)}`;
+}

@@ -5,7 +5,11 @@ import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions, featureFlagOptions} from './manager';
-import {breakpoints} from '@shopify/polaris-tokens';
+import {
+  breakpoints,
+  defaultThemeName,
+  themeNames,
+} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -133,11 +137,11 @@ export const globalTypes = {
   },
   theme: {
     description: 'Global theme for components',
-    defaultValue: 'light',
+    defaultValue: defaultThemeName,
     toolbar: {
       title: 'Theme',
       icon: 'circlehollow',
-      items: ['light', 'uplift'],
+      items: themeNames,
       dynamicTitle: true,
     },
   },
