@@ -237,7 +237,7 @@ describe('<ActionList />', () => {
     );
   });
 
-  it('does not render search with 9 or less items', () => {
+  it('does not render search with 7 or less items', () => {
     const actionList = mountWithApp(
       <ActionList
         items={[
@@ -248,8 +248,6 @@ describe('<ActionList />', () => {
           {content: 'Item 5'},
           {content: 'Item 6'},
           {content: 'Item 7'},
-          {content: 'Item 8'},
-          {content: 'Item 9'},
         ]}
       />,
     );
@@ -257,7 +255,7 @@ describe('<ActionList />', () => {
     expect(actionList).not.toContainReactComponentTimes(SearchField, 1);
   });
 
-  it('renders search with 10 or more items', () => {
+  it('renders search with 8 or more items', () => {
     const actionList = mountWithApp(
       <ActionList
         items={[
