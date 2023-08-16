@@ -273,11 +273,10 @@ function PrimaryActionMarkup({
   let actionMarkup: React.ReactNode;
   if (isInterface(primaryAction)) {
     const {primary: isPrimary, helpText} = primaryAction;
-    const primary = isPrimary === undefined ? true : isPrimary;
     const content = buttonFrom(
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
-        variant: 'primary',
+        variant: isPrimary ? 'primary' : 'default',
       },
     );
 
