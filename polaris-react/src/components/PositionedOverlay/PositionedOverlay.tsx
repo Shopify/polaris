@@ -320,7 +320,10 @@ export class PositionedOverlay extends PureComponent<
           preferredAlignment,
         );
 
-        const chevronOffset = activatorRect.center.x - horizontalPosition;
+        const chevronOffset =
+          activatorRect.center.x -
+          horizontalPosition +
+          overlayMargins.horizontal * 2;
 
         this.setState(
           {
