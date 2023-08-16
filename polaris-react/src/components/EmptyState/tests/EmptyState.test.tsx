@@ -34,7 +34,7 @@ describe('<EmptyState />', () => {
 
       expect(emptyState).toContainReactComponent(Button, {
         size: 'medium',
-        primary: true,
+        variant: 'primary',
       });
     });
 
