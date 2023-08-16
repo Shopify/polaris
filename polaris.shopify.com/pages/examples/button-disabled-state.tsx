@@ -6,13 +6,10 @@ function ButtonExample() {
   return (
     <ButtonGroup>
       <Button disabled>Buy shipping label</Button>
-      <Button primary disabled>
+      <Button variant="primary" disabled>
         Buy shipping label
       </Button>
-      <Button destructive disabled>
-        Buy shipping label
-      </Button>
-      <Button outline disabled>
+      <Button tone="critical" disabled>
         Buy shipping label
       </Button>
       <span style={{color: '#bf0711'}}>
@@ -20,10 +17,10 @@ function ButtonExample() {
           Buy shipping label
         </Button>
       </span>
-      <Button plain disabled>
+      <Button variant="plain" disabled>
         Buy shipping label
       </Button>
-      <Button plain destructive disabled>
+      <Button variant="plain" tone="critical" disabled>
         Buy shipping label
       </Button>
     </ButtonGroup>

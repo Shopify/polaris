@@ -6,7 +6,7 @@ function ButtonGroupDefaultExample() {
   return (
     <ButtonGroup>
       <Button>Cancel</Button>
-      <Button primary>Save</Button>
+      <Button variant="primary">Save</Button>
     </ButtonGroup>
   );
 }
