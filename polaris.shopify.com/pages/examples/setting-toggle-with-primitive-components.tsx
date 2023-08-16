@@ -43,7 +43,7 @@ export function WithPrimitiveComponents() {
 
   const helpLink = (
     <Button
-      plain
+      variant="plain"
       icon={CircleInformationMajor}
       accessibilityLabel="Learn more"
     />
