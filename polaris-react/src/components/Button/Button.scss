@@ -335,11 +335,6 @@
     &::before {
       display: none;
     }
-
-    svg {
-      // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list, declaration-no-important -- override Spinner fill color
-      fill: var(--pc-button-text) !important;
-    }
   }
 
   &.destructive,
@@ -690,7 +685,12 @@
 }
 
 .loading.disabled svg {
-  fill: var(--p-color-icon-subdued);
+  fill: var(--p-color-bg-interactive);
+}
+
+.primary.disabled svg {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- override Spinner fill color
+  fill: var(--pc-button-text);
 }
 
 // The way the designs work, we need to do lots of reaching down to
