@@ -17,7 +17,7 @@ import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
 
 import siteJson from '../../../../.cache/site.json';
 
-const pages: SiteJSON = siteJson;
+const pages: SiteJSON = siteJson as unknown as SiteJSON;
 
 const componentSlugs = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),

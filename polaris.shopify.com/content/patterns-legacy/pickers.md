@@ -5,6 +5,7 @@ noIndex: true
 seoDescription: false
 status:
   value: Legacy
+  message: Guidance in legacy patterns is still accurate and useful.
 keywords:
   - customer segments
   - locations
