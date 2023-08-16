@@ -137,6 +137,11 @@ export class PositionedOverlay extends PureComponent<
       zIndexOverride,
     } = this.props;
 
+    if (!document.fonts.check('12px Inter')) {
+      // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
+      return <p>Inter not loaded</p>;
+    }
+
     const style = {
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
@@ -315,10 +320,7 @@ export class PositionedOverlay extends PureComponent<
           preferredAlignment,
         );
 
-        const chevronOffset =
-          activatorRect.center.x -
-          horizontalPosition +
-          overlayMargins.horizontal * 2;
+        const chevronOffset = activatorRect.center.x - horizontalPosition;
 
         this.setState(
           {
