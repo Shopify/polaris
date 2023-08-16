@@ -18,3 +18,5 @@ export type ThemeVariantPartialShape = {
     [TokenName in keyof ThemeBase[TokenGroupName]]?: TokenProperties;
   };
 };
+
+export type CreateVarName<T extends string> = `--p-${T}`;

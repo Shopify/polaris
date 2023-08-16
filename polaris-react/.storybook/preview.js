@@ -7,7 +7,7 @@ import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions, featureFlagOptions} from './manager';
 import {
   breakpoints,
-  defaultThemeName,
+  themeNameDefault,
   themeNames,
 } from '@shopify/polaris-tokens';
 
@@ -137,7 +137,7 @@ export const globalTypes = {
   },
   theme: {
     description: 'Global theme for components',
-    defaultValue: defaultThemeName,
+    defaultValue: themeNameDefault,
     toolbar: {
       title: 'Theme',
       icon: 'circlehollow',

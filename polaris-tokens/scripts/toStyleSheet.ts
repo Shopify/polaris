@@ -4,6 +4,7 @@ import path from 'path';
 import type {Themes, ThemesPartials} from '../src/themes';
 import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
 import {createThemeSelector} from '../src/themes/utils';
+import {createVar} from '../src/utilities';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
@@ -11,19 +12,19 @@ const cssOutputPath = path.join(cssOutputDir, 'styles.css');
 const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
 
 /** Creates CSS custom properties from a base or variant partial theme. */
-export function getThemeVars(theme: ThemeShape) {
+export function getThemeDecls(theme: ThemeShape) {
   return Object.values(theme)
-    .map((tokenGroup) => getTokenGroupVars(tokenGroup))
+    .map((tokenGroup) => getTokenGroupDecls(tokenGroup))
     .join('');
 }
 
 /** Creates CSS custom properties from a token group. */
-export function getTokenGroupVars(tokenGroup: TokenGroupShape) {
+export function getTokenGroupDecls(tokenGroup: TokenGroupShape) {
   return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
       token.startsWith('motion-keyframes') || token.startsWith('keyframes')
-        ? `--p-${token}:p-${token};`
-        : `--p-${token}:${value};`,
+        ? `${createVar(token)}:p-${token};`
+        : `${createVar(token)}:${value};`,
     )
     .join('');
 }
@@ -52,12 +53,12 @@ export async function toStyleSheet(
 
   const styles = `
 
-  :root{color-scheme:light;${getThemeVars(themes.light)}}
+  :root{color-scheme:light;${getThemeDecls(themes.light)}}
 
   ${Object.entries(themesPartials)
     .map(
       ([themeName, themePartial]) =>
-        `${createThemeSelector(themeName)}{${getThemeVars(themePartial)}}`,
+        `${createThemeSelector(themeName)}{${getThemeDecls(themePartial)}}`,
     )
     .join('\n')}
 

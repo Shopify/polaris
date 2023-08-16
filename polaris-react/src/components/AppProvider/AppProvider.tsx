@@ -11,6 +11,7 @@ import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
+import {ThemeNameContext} from '../../utilities/use-theme-name';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -30,8 +31,6 @@ import type {FeaturesConfig} from '../../utilities/features';
 
 import './AppProvider.scss';
 import './global.scss';
-
-const ThemeNameContext = React.createContext<ThemeName>(themeNameDefault);
 
 interface State {
   intl: I18n;
@@ -165,16 +164,4 @@ export class AppProvider extends Component<AppProviderProps, State> {
       </ThemeNameContext.Provider>
     );
   }
-}
-
-export function useThemeName() {
-  const themeName = React.useContext(ThemeNameContext);
-
-  if (!themeName) {
-    throw new Error(
-      'No themeName was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
-    );
-  }
-
-  return themeName;
 }

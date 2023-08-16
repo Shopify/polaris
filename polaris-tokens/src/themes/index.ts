@@ -1,6 +1,6 @@
 import {createVar} from '../utilities';
 
-import type {ThemeVariantPartialShape} from './types';
+import type {ThemeVariantPartialShape, CreateVarName} from './types';
 import type {ThemeBase} from './base';
 import {themeBase} from './base';
 import {themeLight} from './light';
@@ -32,6 +32,20 @@ export type ThemeVars = {
   };
 };
 
+/**
+ * `themeBase` token properties converted to CSS variables.
+ *
+ * @example
+ * const themeBase = {
+ *   color: { 'color-bg': { value: '#111', description: '...' } }
+ *   font: { 'font-family': { value: 'Inter', description: '...' } }
+ * }
+ *
+ * const themeVars = {
+ *   color: { 'color-bg': 'var(--p-color-bg)' }
+ *   font: { 'font-family': 'var(--p-font-family)' }
+ * }
+ */
 export const themeVars = Object.fromEntries(
   Object.entries(themeBase).map(([tokenGroupName, tokenGroup]) => [
     tokenGroupName,
@@ -43,3 +57,22 @@ export const themeVars = Object.fromEntries(
     ),
   ]),
 ) as ThemeVars;
+
+/**
+ * `themeVars` token names converted to CSS variable names.
+ *
+ * @example
+ * const themeVars = {
+ *   color: { 'color-bg': 'var(--p-color-bg)' }
+ *   font: { 'font-family': 'var(--p-font-family)' }
+ * }
+ *
+ * type ThemeVarName = '--p-color-bg' | '--p-font-family' | ...
+ */
+export type ThemeVarName = {
+  [TokenGroupName in keyof ThemeVars]: {
+    [TokenName in keyof ThemeVars[TokenGroupName]]: TokenName extends string
+      ? CreateVarName<TokenName>
+      : never;
+  }[keyof ThemeVars[TokenGroupName]];
+}[keyof ThemeVars];
