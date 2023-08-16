@@ -1,11 +1,62 @@
 // Forked from https://github.com/remarkjs/strip-markdown/blob/eb799e9fdd01f04f28790839f302b6bd71d76c70/index.js
 // Modified to not mutate the node tree and instead extract the first paragraph
-type Content = import('mdast').Content;
-type Root = import('mdast').Root;
+/* TODO: Use the original module, but wrapped in a clone, like so:
+*
+import cloneDeep from 'lodash.clonedeep';
+import type {Content, Root, Paragraph} from 'mdast';
+import type {Transformer} from 'unified';
+import stripMarkdown from 'strip-markdown';
+
+type Options = Parameters<stripMarkdown>[0] & { dataKey?: string }
+
+export default function remarkExtractFirstParagraph(
+  options: Options  = {},
+): Transformer<Root> {
+  const dataKey = options.dataKey || 'firstParagraph';
+
+  const markdownStripper = stripMarkdown(options);
+
+  return (tree, file, done) => {
+    // Make a clone of the tree to avoid accidentally modifying it
+    const treeClone = cloneDeep(tree)
+    
+    // Process the tree to extract just the text nodes
+    const textTree: Nodes = markdownStripper(treeClone) ?? [];
+
+    const flattenedTextTree = (
+      Array.isArray(textTree) ? textTree : [textTree]
+    ).flatMap((node) =>
+      // Replace Root nodes with their direct children
+      node.type === 'root' ? node.children : [node],
+    ) as Content[];
+
+    const result = flattenedTextTree.find(
+      (node) => node?.type === 'paragraph' && node.children?.length,
+    ) as Paragraph | undefined;
+
+    if (!result) {
+      file.data[dataKey] = null;
+    } else {
+      // Grab all the text from the paragraph
+      file.data[dataKey] = result.children
+        .map((node: Node) => node.type === 'text' && node.value)
+        .filter(Boolean)
+        // Ensure there's at least one space between sentences, inline quotes, etc
+        .join(' ')
+        // Collapse multiple spaces (including new lines)
+        .replace(/\s+/s, ' ');
+    }
+
+    done();
+  };
+}
+*/
+import type {Content, Root, Paragraph} from 'mdast';
 type Node = Root | Content;
+type Nodes = Node | Node[];
+type MaybeNodes = Nodes | undefined;
 type Type = Node['type'];
-type HandlerReturn = Node | Node[] | undefined;
-type Handler = (node: any) => HandlerReturn;
+export type Handler = (node: any) => MaybeNodes;
 type Handlers = Partial<Record<Type, Handler>>;
 interface Options {
   keep?: Array<Type>;
@@ -110,79 +161,39 @@ export default function remarkExtractFirstParagraph(
   }
 
   return (tree, file, done) => {
-    let textTree: Node | Node[] = one(tree) ?? [];
+    // Process the tree to extract just the text nodes
+    const textTree: Nodes = one(tree) ?? [];
 
-    // always deal with arrays
-    textTree = Array.isArray(textTree) ? textTree : [textTree];
+    const flattenedTextTree = (
+      Array.isArray(textTree) ? textTree : [textTree]
+    ).flatMap((node) =>
+      // Replace Root nodes with their direct children
+      node.type === 'root' ? node.children : [node],
+    ) as Content[];
 
-    let flattenedTextTree: Content[] = [];
-    let index = -1;
-
-    // Flatten out the root nodes
-    while (++index < textTree.length) {
-      if (textTree[index].type === 'root') {
-        // @ts-expect-error: TS can't accurately narrow to the subset of unions
-        // which have '.children', but we can do it as a runtime check
-        flattenedTextTree.push(...textTree[index].children);
-      } else {
-        flattenedTextTree.push(textTree as unknown as Content);
-      }
-    }
-
-    let result: Node | undefined = undefined;
-
-    if (flattenedTextTree) {
-      let index = -1;
-
-      // Search for a node that is either itself a paragraph/text, or has an
-      // immediate child that is a paragraph/text.
-      while (++index < flattenedTextTree.length) {
-        if (!flattenedTextTree[index]) {
-          continue;
-        }
-
-        if (
-          flattenedTextTree[index].type === 'paragraph' ||
-          flattenedTextTree[index].type === 'text'
-        ) {
-          result = flattenedTextTree[index];
-          // @ts-expect-error: TS can't accurately narrow to the subset of unions
-          // which have '.children', but we can do it as a runtime check
-        } else if (Array.isArray(flattenedTextTree[index].children)) {
-          // @ts-expect-error: same as above
-          result = flattenedTextTree[index].children.find(
-            (node: Node) =>
-              node && (node.type === 'paragraph' || node.type === 'text'),
-          );
-        }
-
-        // Found it, so stop searching
-        if (result) {
-          break;
-        }
-      }
-    }
+    const result = flattenedTextTree.find(
+      (node) => node?.type === 'paragraph' && node.children?.length,
+    ) as Paragraph | undefined;
 
     if (!result) {
       file.data[dataKey] = null;
     } else {
-      if (result.type === 'text') {
-        file.data[dataKey] = result.value;
-      } else if (result.type === 'paragraph') {
-        // Grab all the text from the paragraph
-        file.data[dataKey] = result.children
-          .flatMap((node: Node) => 'value' in node && node.value)
-          .filter(Boolean)
-          .join(' ');
-      }
+      // Grab all the text from the paragraph
+      file.data[dataKey] = result.children
+        .map((node: Node) => node.type === 'text' && node.value)
+        .filter(Boolean)
+        // Ensure there's at least one space between sentences, inline quotes, etc
+        .join(' ')
+        // Collapse multiple spaces (including new lines)
+        .replace(/\s+/s, ' ');
     }
 
     done();
   };
 
-  function one(node: Node): Node | Node[] | undefined {
+  function one(node: Node): MaybeNodes {
     const type: Type = node.type;
-    let result: Node | Node[] | undefined = node;
+    let result: MaybeNodes = node;
 
     if (type in map) {
       const handler = map[type];
@@ -251,28 +262,28 @@ function clean(values: Node[]): Node[] {
 
 function image(
   node: import('mdast').Image | import('mdast').ImageReference,
-): HandlerReturn {
+): MaybeNodes {
   const title = 'title' in node ? node.title : '';
   const value = node.alt || title || '';
   return value ? {type: 'text', value} : undefined;
 }
 
-function text(node: import('mdast').Text): HandlerReturn {
+function text(node: import('mdast').Text): MaybeNodes {
   return {type: 'text', value: node.value};
 }
 
-function paragraph(node: import('mdast').Paragraph): HandlerReturn {
+function paragraph(node: import('mdast').Paragraph): MaybeNodes {
   return {type: 'paragraph', children: node.children};
 }
 
-function children(node: Extract<Node, import('unist').Parent>): HandlerReturn {
+function children(node: Extract<Node, import('unist').Parent>): MaybeNodes {
   return node.children;
 }
 
-function lineBreak(): HandlerReturn {
+function lineBreak(): MaybeNodes {
   return {type: 'text', value: '\n'};
 }
 
-function empty(): HandlerReturn {
+function empty(): MaybeNodes {
   return undefined;
 }

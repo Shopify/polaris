@@ -7,7 +7,9 @@ import remarkSlug from 'remark-slug';
 import {visit} from 'unist-util-visit';
 import type {Plugin} from 'unified';
 
-import remarkExtractFirstParagraph from './remark-extract-first-paragraph';
+import remarkExtractFirstParagraph, {
+  type Handler,
+} from './remark-extract-first-paragraph';
 
 export type DefaultScope = Record<string, unknown>;
 export type DefaultFrontmatter = Record<string, unknown>;
@@ -30,6 +32,16 @@ function codeMetaAsDataAttribute(): Plugin {
     });
   };
 }
+
+const passThroughChildren: Handler = (node) => {
+  if (Array.isArray(node)) {
+    return node.flatMap(
+      (childNode) =>
+        ('children' in childNode && childNode.children) || undefined,
+    );
+  }
+  return ('children' in node && node.children) || undefined;
+};
 
 // NOTE: This function can work on the client side, but it's meant to be used on
 // the server. To reduce client bundle size, this function should only be
@@ -63,8 +75,10 @@ export const serializeMdx = async <
               // Don't consider images at all
               'image',
               // Handle JSX elements by passing through their children
-              ['mdxJsxFlowElement', (node) => node.children || []],
-              ['mdxJsxTextElement', (node) => node.children || []],
+              ['mdxJsxFlowElement', passThroughChildren],
+              ['mdxJsxTextElement', passThroughChildren],
+              ['mdxFlowExpression', passThroughChildren],
+              ['mdxTextExpression', passThroughChildren],
             ],
           },
         ],
