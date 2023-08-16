@@ -130,10 +130,8 @@ export function renameProps(
   newValue?: string,
 ) {
   const [component, subcomponent] = componentName.split('.');
-  const fromProps = Object.keys(props);
-  const isFromProp = (prop: unknown): prop is keyof typeof props =>
-    fromProps.includes(prop as string);
 
+  // Handle compound components
   if (component && subcomponent) {
     source.find(j.JSXElement).forEach((element) => {
       if (
@@ -142,37 +140,19 @@ export function renameProps(
         element.node.openingElement.name.object.name === component &&
         element.node.openingElement.name.property.name === subcomponent
       ) {
-        element.node.openingElement.attributes?.forEach((node) => {
-          if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
-            node.name.name = props[node.name.name];
-
-            if (newValue) {
-              node.value = {
-                type: 'StringLiteral',
-                value: newValue,
-              };
-            }
-          }
-        });
+        element.node.openingElement.attributes?.forEach((node) =>
+          updateNode(j, node, props, newValue),
+        );
       }
     });
     return;
   }
 
+  // Handle basic components
   source.findJSXElements(componentName)?.forEach((element) => {
-    // Handle basic elements
-    element.node.openingElement.attributes?.forEach((node) => {
-      if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
-        node.name.name = props[node.name.name];
-
-        if (newValue) {
-          node.value = {
-            type: 'StringLiteral',
-            value: newValue,
-          };
-        }
-      }
-    });
+    element.node.openingElement.attributes?.forEach((node) =>
+      updateNode(j, node, props, newValue),
+    );
   });
 
   return source;
@@ -220,4 +200,20 @@ export function insertCommentBefore(
   if (exists) return;
 
   path.value.comments.push(j.commentBlock(content));
+}
+
+function updateNode(
+  j: core.JSCodeshift,
+  node: any,
+  props: {[from: string]: string},
+  newValue?: string,
+) {
+  const fromProps = Object.keys(props);
+  const isFromProp = (prop: unknown): prop is keyof typeof props =>
+    fromProps.includes(prop as string);
+  if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
+    node.name.name = props[node.name.name];
+    node.value = j.stringLiteral(newValue ?? node.value.value);
+    return node;
+  }
 }
