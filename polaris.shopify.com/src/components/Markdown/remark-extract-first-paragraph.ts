@@ -1,32 +1,23 @@
 // Forked from https://github.com/remarkjs/strip-markdown/blob/eb799e9fdd01f04f28790839f302b6bd71d76c70/index.js
-// Modified to not mutate the node tree
-/**
- * @typedef {import('mdast').Content} Content
- * @typedef {import('mdast').Root} Root
- * @typedef {Root|Content} Node
- * @typedef {Node['type']} Type
- *
- * @callback Handler
- * @param {any} node
- * @returns {Node|Node[]} node
- *
- * @typedef {Partial<Record<Type, Handler>>} Handlers
- *
- * @typedef Options
- *   Configuration.
- * @property {Array.<Type>|undefined} [keep]
- *   List of node types to leave unchanged.
- * @property {Array.<Type|[Type, Handler]>|undefined} [remove]
- *   List of additional node types to remove or replace.
- */
+// Modified to not mutate the node tree and instead extract the first paragraph
+type Content = import('mdast').Content;
+type Root = import('mdast').Root;
+type Node = Root | Content;
+type Type = Node['type'];
+type HandlerReturn = Node | Node[] | undefined;
+type Handler = (node: any) => HandlerReturn;
+type Handlers = Partial<Record<Type, Handler>>;
+interface Options {
+  keep?: Array<Type>;
+  remove?: Array<Type | [Type, Handler]>;
+  dataKey?: string;
+}
 
 /**
  * Expose modifiers for available node types.
  * Node types not listed here are not changed (but their children are).
- *
- * @type {Handlers}
  */
-const defaults = {
+const defaults: Handlers = {
   heading: paragraph,
   text,
   inlineCode: text,
@@ -68,11 +59,10 @@ const own = {}.hasOwnProperty;
  * the `dataKey` option).
  *
  * If no text is found, result is set to `null`.
- *
- * @type {import('unified').Plugin<[Options?] | void[], Root>}
- * @returns {import('unified').Transformer<Root>}
  */
-export default function remarkExtractFirstParagraph(options = {}) {
+export default function remarkExtractFirstParagraph(
+  options: Options = {},
+): import('unified').Transformer<Root> {
   const handlers = Object.assign({}, defaults);
   const remove = options.remove || [];
   const keep = options.keep || [];
@@ -90,14 +80,12 @@ export default function remarkExtractFirstParagraph(options = {}) {
     }
   }
 
-  /** @type {Handlers} */
-  let map = {};
+  let map: Handlers = {};
 
   if (keep.length === 0) {
     map = handlers;
   } else {
-    /** @type {Type} */
-    let key;
+    let key: Type;
 
     for (key in handlers) {
       if (!keep.includes(key)) {
@@ -121,34 +109,80 @@ export default function remarkExtractFirstParagraph(options = {}) {
     }
   }
 
-  // @ts-expect-error: assume content model (for root) matches.
   return (tree, file, done) => {
-    const textTree = one(tree);
-    const firstParagraph = (textTree.children ?? []).find(
-      (node) => node.type === 'paragraph' || node.type === 'text',
-    );
+    let textTree: Node | Node[] = one(tree) ?? [];
 
-    if (!firstParagraph) {
-      file.data[dataKey] = null;
-    } else {
-      if (firstParagraph.type === 'text') {
-        file.data[dataKey] = firstParagraph.value;
+    // always deal with arrays
+    textTree = Array.isArray(textTree) ? textTree : [textTree];
+
+    let flattenedTextTree: Content[] = [];
+    let index = -1;
+
+    // Flatten out the root nodes
+    while (++index < textTree.length) {
+      if (textTree[index].type === 'root') {
+        // @ts-expect-error: TS can't accurately narrow to the subset of unions
+        // which have '.children', but we can do it as a runtime check
+        flattenedTextTree.push(...textTree[index].children);
       } else {
-        file.data[dataKey] = firstParagraph.children[0]?.value;
+        flattenedTextTree.push(textTree as unknown as Content);
       }
     }
+
+    let result: Node | undefined = undefined;
+
+    if (flattenedTextTree) {
+      let index = -1;
+
+      // Search for a node that is either itself a paragraph/text, or has an
+      // immediate child that is a paragraph/text.
+      while (++index < flattenedTextTree.length) {
+        if (!flattenedTextTree[index]) {
+          continue;
+        }
+
+        if (
+          flattenedTextTree[index].type === 'paragraph' ||
+          flattenedTextTree[index].type === 'text'
+        ) {
+          result = flattenedTextTree[index];
+          // @ts-expect-error: TS can't accurately narrow to the subset of unions
+          // which have '.children', but we can do it as a runtime check
+        } else if (Array.isArray(flattenedTextTree[index].children)) {
+          // @ts-expect-error: same as above
+          result = flattenedTextTree[index].children.find(
+            (node: Node) =>
+              node && (node.type === 'paragraph' || node.type === 'text'),
+          );
+        }
+
+        // Found it, so stop searching
+        if (result) {
+          break;
+        }
+      }
+    }
+
+    if (!result) {
+      file.data[dataKey] = null;
+    } else {
+      if (result.type === 'text') {
+        file.data[dataKey] = result.value;
+      } else if (result.type === 'paragraph') {
+        // Grab all the text from the paragraph
+        file.data[dataKey] = result.children
+          .flatMap((node: Node) => 'value' in node && node.value)
+          .filter(Boolean)
+          .join(' ');
+      }
+    }
+
     done();
   };
 
-  /**
-   * @param {Node} node
-   * @returns {Node|Node[]}
-   */
-  function one(node) {
-    /** @type {Type} */
-    const type = node.type;
-    /** @type {Node|Node[]} */
-    let result = node;
+  function one(node: Node): Node | Node[] | undefined {
+    const type: Type = node.type;
+    let result: Node | Node[] | undefined = node;
 
     if (type in map) {
       const handler = map[type];
@@ -157,7 +191,7 @@ export default function remarkExtractFirstParagraph(options = {}) {
 
     result = Array.isArray(result) ? all(result) : result;
 
-    if ('children' in result) {
+    if (result && 'children' in result) {
       // shallow clone the result so we don't mutate the tree
       result = {
         ...result,
@@ -169,21 +203,16 @@ export default function remarkExtractFirstParagraph(options = {}) {
     return result;
   }
 
-  /**
-   * @param {Node[]} nodes
-   * @returns {Node[]}
-   */
-  function all(nodes) {
+  function all(nodes: Node[]): Node[] {
     let index = -1;
-    /** @type {Node[]} */
-    const result = [];
+    const result: Node[] = [];
 
     while (++index < nodes.length) {
       const value = one(nodes[index]);
 
       if (Array.isArray(value)) {
-        result.push(...value.flatMap((d) => one(d)));
-      } else {
+        result.push(...all(value));
+      } else if (value) {
         result.push(value);
       }
     }
@@ -194,16 +223,11 @@ export default function remarkExtractFirstParagraph(options = {}) {
 
 /**
  * Clean nodes: merges literals.
- *
- * @param {Node[]} values
- * @returns {Node[]}
  */
-function clean(values) {
+function clean(values: Node[]): Node[] {
   let index = 0;
-  /** @type {Node[]} */
-  const result = [];
-  /** @type {Node|undefined} */
-  let previous = values[0];
+  const result: Node[] = [];
+  let previous: Node = values[0];
 
   while (++index < values.length) {
     const value = values[index];
@@ -225,49 +249,30 @@ function clean(values) {
   return result;
 }
 
-/**
- * @type {Handler}
- * @param {import('mdast').Image|import('mdast').ImageReference} node
- */
-function image(node) {
+function image(
+  node: import('mdast').Image | import('mdast').ImageReference,
+): HandlerReturn {
   const title = 'title' in node ? node.title : '';
-  return {type: 'text', value: node.alt || title || ''};
+  const value = node.alt || title || '';
+  return value ? {type: 'text', value} : undefined;
 }
 
-/**
- * @type {Handler}
- * @param {import('mdast').Text} node
- */
-function text(node) {
+function text(node: import('mdast').Text): HandlerReturn {
   return {type: 'text', value: node.value};
 }
 
-/**
- * @type {Handler}
- * @param {import('mdast').Paragraph} node
- */
-function paragraph(node) {
+function paragraph(node: import('mdast').Paragraph): HandlerReturn {
   return {type: 'paragraph', children: node.children};
 }
 
-/**
- * @type {Handler}
- * @param {Extract<Node, import('unist').Parent>} node
- */
-function children(node) {
-  return node.children || [];
+function children(node: Extract<Node, import('unist').Parent>): HandlerReturn {
+  return node.children;
 }
 
-/**
- * @type {Handler}
- */
-function lineBreak() {
+function lineBreak(): HandlerReturn {
   return {type: 'text', value: '\n'};
 }
 
-/**
- * @type {Handler}
- */
-function empty() {
-  return {type: 'text', value: ''};
+function empty(): HandlerReturn {
+  return undefined;
 }
