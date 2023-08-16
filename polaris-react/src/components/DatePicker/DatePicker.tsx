@@ -262,7 +262,7 @@ export function DatePicker({
     >
       <div className={styles.Header}>
         <Button
-          plain
+          variant="plain"
           primary={polarisSummerEditions2023}
           icon={ArrowLeftMinor}
           accessibilityLabel={i18n.translate(
@@ -277,7 +277,7 @@ export function DatePicker({
           }
         />
         <Button
-          plain
+          variant="plain"
           primary={polarisSummerEditions2023}
           icon={ArrowRightMinor}
           accessibilityLabel={i18n.translate('Polaris.DatePicker.nextMonth', {

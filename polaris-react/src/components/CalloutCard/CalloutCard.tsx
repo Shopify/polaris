@@ -58,7 +58,7 @@ export function CalloutCard({
   const dismissButton = onDismiss ? (
     <div className={styles.Dismiss}>
       <Button
-        plain
+        variant="plain"
         icon={CancelSmallMinor}
         onClick={onDismiss}
         accessibilityLabel="Dismiss card"

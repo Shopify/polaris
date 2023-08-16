@@ -92,7 +92,7 @@ export function WithCustomFooterActions() {
           <LegacyStack distribution="trailing">
             <ButtonGroup>
               <Button>Enable two-step authentication</Button>
-              <Button plain>Learn more</Button>
+              <Button variant="plain">Learn more</Button>
             </ButtonGroup>
           </LegacyStack>
         </LegacyStack>
@@ -260,7 +260,7 @@ export function WithSeparateHeader() {
         <Popover
           active
           activator={
-            <Button disclosure plain>
+            <Button disclosure variant="plain">
               Add account
             </Button>
           }
@@ -318,7 +318,7 @@ export function WithAllElements() {
         <Popover
           active={false}
           activator={
-            <Button disclosure plain>
+            <Button disclosure variant="plain">
               View Sales
             </Button>
           }

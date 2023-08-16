@@ -124,7 +124,7 @@ export function Default() {
               accessibilityLabel="Cancel"
               icon={MobileCancelMajor}
               onClick={toggleSheetActive}
-              plain
+              variant="plain"
             />
           </div>
           <Scrollable style={{padding: '1rem', height: '100%'}}>
@@ -477,7 +477,7 @@ export function WithSearchableListbox() {
                 accessibilityLabel="Cancel"
                 icon={MobileCancelMajor}
                 onClick={handleCloseSheet}
-                plain
+                variant="plain"
               />
             </div>
             <TextContainer>

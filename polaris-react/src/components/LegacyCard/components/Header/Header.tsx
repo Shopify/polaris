@@ -18,7 +18,7 @@ export interface LegacyCardHeaderProps {
 export function Header({children, title, actions}: LegacyCardHeaderProps) {
   const {polarisSummerEditions2023} = useFeatures();
   const actionMarkup = actions ? (
-    <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
+    <ButtonGroup>{buttonsFrom(actions, {variant: 'plain'})}</ButtonGroup>
   ) : null;
 
   const titleMarkup = isValidElement(title) ? (

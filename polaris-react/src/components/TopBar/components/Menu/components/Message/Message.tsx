@@ -48,7 +48,7 @@ export function Message({
 
           <Link url={to}>{linkContent}</Link>
 
-          <Button plain onClick={onClick}>
+          <Button variant="plain" onClick={onClick}>
             {actionContent}
           </Button>
         </LegacyStack>

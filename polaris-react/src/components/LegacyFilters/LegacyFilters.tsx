@@ -308,7 +308,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
         </Text>
         <Button
           icon={CancelSmallMinor}
-          plain
+          variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
@@ -319,7 +319,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
       <div className={filtersContainerHeaderClassname}>
         <Button
           icon={CancelSmallMinor}
-          plain
+          variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
@@ -567,7 +567,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
 
     const clearButtonMarkup = !filter.hideClearButton && (
       <Button
-        plain
+        variant="plain"
         disabled={removeHandler == null}
         onClick={removeHandler}
         accessibilityLabel={i18n.translate('Polaris.Filters.clearLabel', {
