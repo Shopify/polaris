@@ -134,7 +134,7 @@ export function ActionList({
         <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
           <SearchField
             placeholder={i18n.translate(
-              'Polaris.ActionList.SearchField.search',
+              'Polaris.ActionList.SearchField.placeholder',
             )}
             value={searchText}
             onChange={(value) => setSeachText(value)}
