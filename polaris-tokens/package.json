@@ -55,5 +55,8 @@
   ],
   "files": [
     "dist"
-  ]
+  ],
+  "devDependencies": {
+    "deepmerge": "^4.3.1"
+  }
 }
