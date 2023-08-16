@@ -2284,7 +2284,7 @@ describe('<TextField />', () => {
         label="TextField"
         onChange={noop}
         autoComplete="off"
-        borderless
+        variant="borderless"
       />,
     );
 

@@ -161,10 +161,7 @@ interface NonMutuallyExclusiveProps {
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
-  /** Removes the border around the input. Used in the IndexFilters component. */
-  /** @deprecated Use variant="borderless" instead */
-  borderless?: boolean;
-  /** Styling options for the TextField
+  /** Visual styling options for the TextField
    * @default 'inherit'
    */
   variant?: 'inherit' | 'borderless';
@@ -238,7 +235,6 @@ export function TextField({
   monospaced,
   selectTextOnFocus,
   suggestion,
-  borderless,
   variant = 'inherit',
   onClearButtonClick,
   onChange,
@@ -296,7 +292,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && !disabled && styles.focus,
-    (borderless || variant === 'borderless') && styles.borderless,
+    styles[variant],
   );
 
   const inputType = type === 'currency' ? 'text' : type;
