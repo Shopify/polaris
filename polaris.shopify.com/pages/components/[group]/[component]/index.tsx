@@ -107,18 +107,16 @@ export const getStaticProps: GetStaticProps<
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
 
-    const mdx = await serializeMdx<FrontMatter>(componentMarkdown);
-    console.log('mdx: ', mdx);
+    const [result] = await serializeMdx<FrontMatter>(componentMarkdown);
 
     let descriptionMdx: SerializedMdx | null = null;
 
-    if (mdx.frontmatter.description) {
-      descriptionMdx = await serializeMdx(mdx.frontmatter.description);
-      console.log('description: ', descriptionMdx);
+    if (result.frontmatter?.description) {
+      [descriptionMdx] = await serializeMdx(result.frontmatter.description);
     }
 
     const examples = await Promise.all(
-      (mdx.frontmatter.examples || []).map(
+      (result.frontmatter.examples || []).map(
         async (example: ComponentExample) => {
           const examplePath = path.resolve(
             process.cwd(),
@@ -134,7 +132,7 @@ export const getStaticProps: GetStaticProps<
               .join('\n');
           }
 
-          const description = await serializeMdx(example.description);
+          const [description] = await serializeMdx(example.description);
 
           return {...example, description, code};
         },
@@ -145,8 +143,8 @@ export const getStaticProps: GetStaticProps<
     const fileContent = fs.readFileSync(propsFilePath, 'utf8');
     const allType: AllTypes = JSON.parse(fileContent);
 
-    const componentDirName = toPascalCase(`${mdx.frontmatter.title} `);
-    const propName = toPascalCase(`${mdx.frontmatter.title} Props`);
+    const componentDirName = toPascalCase(`${result.frontmatter.title} `);
+    const propName = toPascalCase(`${result.frontmatter.title} Props`);
 
     let type = getRelevantTypes(
       allType,
@@ -155,7 +153,7 @@ export const getStaticProps: GetStaticProps<
     );
 
     const props: Props = {
-      mdx,
+      mdx: result,
       examples,
       descriptionMdx,
       type,

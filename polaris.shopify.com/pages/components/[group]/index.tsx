@@ -12,6 +12,7 @@ import PageMeta from '../../../src/components/PageMeta';
 import Longform from '../../../src/components/Longform';
 import Markdown from '../../../src/components/Markdown';
 import {Stack} from '../../../src/components/Stack';
+import {serializeMdx} from '../../../src/components/Markdown/serialize';
 
 interface Group {
   title?: string;
@@ -107,14 +108,17 @@ export default function GroupPage({
             Related Resources
           </Text>
           <ul>
-            {relatedResources.map((resource) => (
-              <li
-                key={resource}
-                style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
-              >
-                <Markdown>{resource}</Markdown>
-              </li>
-            ))}
+            {relatedResources.map((resource) => {
+              const [result] = serializeMdx(resource);
+              return (
+                <li
+                  key={resource}
+                  style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
+                >
+                  <Markdown {...result} />
+                </li>
+              );
+            })}
           </ul>
         </Stack>
       )

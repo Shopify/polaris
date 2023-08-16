@@ -9,11 +9,26 @@ import UpdateBanner from '../../components/UpdateBanner';
 import {SideBySide} from './components/SideBySide';
 import {DoDont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
+import {serializeMdx} from './serialize';
 
-function Markdown(props: ComponentProps<typeof MDXRemote>) {
+type MarkdownProps =
+  | {
+      children: string;
+    }
+  | ComponentProps<typeof MDXRemote>;
+
+async function Markdown(props: MarkdownProps) {
+  let mdx: ComponentProps<typeof MDXRemote>;
+  if ('children' in props) {
+    const [result] = await serializeMdx(props.children);
+    mdx = result;
+  } else {
+    mdx = props;
+  }
+
   return (
     <MDXRemote
-      {...props}
+      {...mdx}
       components={{
         h1: ({id, children}) => (
           <Heading as="h1" id={id}>
@@ -40,8 +55,8 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
             {children}
           </Heading>
         ),
-        h5: ({id, children}) => (
-          <Heading as="h5" id={id}>
+        h6: ({id, children}) => (
+          <Heading as="h6" id={id}>
             {children}
           </Heading>
         ),

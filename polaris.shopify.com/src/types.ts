@@ -56,7 +56,7 @@ export interface FrontMatter {
   keywords?: (string | number)[];
   status?: {
     value: string;
-    message: string;
+    message?: string;
   };
   hideFromNav?: boolean;
 }
