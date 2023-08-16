@@ -208,12 +208,12 @@ function updateNode(
   props: {[from: string]: string},
   newValue?: string,
 ) {
-  const fromProps = Object.keys(props);
   const isFromProp = (prop: unknown): prop is keyof typeof props =>
-    fromProps.includes(prop as string);
-  if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
-    node.name.name = props[node.name.name];
-    node.value = j.stringLiteral(newValue ?? node.value.value);
-    return node;
-  }
+    Object.keys(props).includes(prop as string);
+
+  if (node.type !== 'JSXAttribute' && !isFromProp(node.name.name)) return node;
+
+  node.name.name = props[node.name.name];
+  node.value = j.stringLiteral(newValue ?? node.value.value);
+  return node;
 }
