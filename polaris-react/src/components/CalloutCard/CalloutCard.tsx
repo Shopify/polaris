@@ -41,8 +41,7 @@ export function CalloutCard({
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {
-        plain: true,
-        primary: polarisSummerEditions2023,
+        variant: 'primaryPlain',
       })
     : null;
 
