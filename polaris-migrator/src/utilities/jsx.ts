@@ -141,7 +141,7 @@ export function renameProps(
         element.node.openingElement.name.property.name === subcomponent
       ) {
         element.node.openingElement.attributes?.forEach((node) =>
-          updateNode(j, node, props, newValue),
+          updateNode(node, props, newValue),
         );
       }
     });
@@ -151,11 +151,28 @@ export function renameProps(
   // Handle basic components
   source.findJSXElements(componentName)?.forEach((element) => {
     element.node.openingElement.attributes?.forEach((node) =>
-      updateNode(j, node, props, newValue),
+      updateNode(node, props, newValue),
     );
   });
 
   return source;
+
+  function updateNode(
+    node: any,
+    props: {[from: string]: string},
+    newValue?: string,
+  ) {
+    const isFromProp = (prop: unknown): prop is keyof typeof props =>
+      Object.keys(props).includes(prop as string);
+
+    if (node.type !== 'JSXAttribute' && !isFromProp(node.name.name)) {
+      return node;
+    }
+
+    node.name.name = props[node.name.name];
+    node.value = j.stringLiteral(newValue ?? node.value.value);
+    return node;
+  }
 }
 
 export function insertJSXComment(
@@ -200,20 +217,4 @@ export function insertCommentBefore(
   if (exists) return;
 
   path.value.comments.push(j.commentBlock(content));
-}
-
-function updateNode(
-  j: core.JSCodeshift,
-  node: any,
-  props: {[from: string]: string},
-  newValue?: string,
-) {
-  const isFromProp = (prop: unknown): prop is keyof typeof props =>
-    Object.keys(props).includes(prop as string);
-
-  if (node.type !== 'JSXAttribute' && !isFromProp(node.name.name)) return node;
-
-  node.name.name = props[node.name.name];
-  node.value = j.stringLiteral(newValue ?? node.value.value);
-  return node;
 }
