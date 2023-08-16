@@ -9,9 +9,11 @@ import {
   RiskMinor,
   TickMinor,
 } from '@shopify/polaris-icons';
+import {useImperativeHandle, useRef, useState} from 'react';
 
-import type {BannerStatus} from '../../Banner';
-import type {IconSource} from '../../../../types';
+import type {IconSource} from '../../types';
+
+import type {BannerStatus} from './Banner';
 
 interface BannerColorAliases {
   background: ColorBackgroundAlias;
@@ -79,3 +81,43 @@ export const bannerAttributes: {[key in BannerStatus]: BannerAttributes} = {
     icon: InfoMinor,
   },
 };
+
+export interface BannerHandles {
+  focus(): void;
+}
+
+export function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [shouldShowFocus, setShouldShowFocus] = useState(false);
+
+  useImperativeHandle(
+    bannerRef,
+    () => ({
+      focus: () => {
+        wrapperRef.current?.focus();
+        setShouldShowFocus(true);
+      },
+    }),
+    [],
+  );
+
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.target === wrapperRef.current) {
+      setShouldShowFocus(true);
+    }
+  };
+
+  const handleBlur = () => setShouldShowFocus(false);
+  const handleMouseUp = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.currentTarget.blur();
+    setShouldShowFocus(false);
+  };
+
+  return {
+    wrapperRef,
+    handleKeyUp,
+    handleBlur,
+    handleMouseUp,
+    shouldShowFocus,
+  };
+}
