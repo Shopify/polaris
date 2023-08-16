@@ -13,7 +13,7 @@ function ButtonExample() {
         Buy shipping label
       </Button>
       <span style={{color: '#bf0711'}}>
-        <Button outline monochrome disabled>
+        <Button variant="monochromePlain" disabled>
           Buy shipping label
         </Button>
       </span>
