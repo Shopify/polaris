@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef, useId} from 'react';
+import React, {useState, useCallback, useRef, useId, cloneElement} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
@@ -95,7 +95,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const [closing, setClosing] = useState(false);
 
   const headerId = useId();
-  const activatorRef = useRef<HTMLDivElement>(null);
+  const activatorRef = useRef<HTMLElement>(null);
 
   const i18n = useI18n();
   const iframeTitle = i18n.translate('Polaris.Modal.iFrameTitle');
@@ -223,9 +223,9 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const animated = !instant;
 
   const activatorMarkup =
-    activator && !isRef(activator) ? (
-      <Box ref={activatorRef}>{activator}</Box>
-    ) : null;
+    activator && !isRef(activator)
+      ? cloneElement(activator, {ref: activatorRef})
+      : null;
 
   return (
     <WithinContentContext.Provider value>

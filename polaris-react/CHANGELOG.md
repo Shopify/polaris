@@ -1,5 +1,41 @@
 # Changelog
 
+## 11.12.0
+
+### Minor Changes
+
+- [#10042](https://github.com/Shopify/polaris/pull/10042) [`1d82a3b12`](https://github.com/Shopify/polaris/commit/1d82a3b122fc1d47a14d978d180f3e9e5d5359e2) Thanks [@m4thieulavoie](https://github.com/m4thieulavoie)! - introduce a subdued prop to the popover pane component
+
+* [#9868](https://github.com/Shopify/polaris/pull/9868) [`cb1dbbbd3`](https://github.com/Shopify/polaris/commit/cb1dbbbd3cd859ca4ac29d310b21b161b1bad485) Thanks [@mattkubej](https://github.com/mattkubej)! - Introduce disableKeyboardShortcuts prop to IndexFilters
+
+- [#9862](https://github.com/Shopify/polaris/pull/9862) [`93b902094`](https://github.com/Shopify/polaris/commit/93b9020942ec9228dc5ac80df0e323fd7d7bb51e) Thanks [@brittcorry](https://github.com/brittcorry)! - Added support for the ` Filters``closeOnChildOverlayClick ` prop to `IndexFilters`
+
+* [#9872](https://github.com/Shopify/polaris/pull/9872) [`f585a57e0`](https://github.com/Shopify/polaris/commit/f585a57e0359cff2d43e0a817a33b2126f255c7c) Thanks [@fatimasajadi](https://github.com/fatimasajadi)! - Add a critical status to the IndexTable
+
+### Patch Changes
+
+- [#10012](https://github.com/Shopify/polaris/pull/10012) [`3ae94cef0`](https://github.com/Shopify/polaris/commit/3ae94cef0579cf948452042df6c37eb2c867d565) Thanks [@melvinadu](https://github.com/melvinadu)! - Fixed wrapping overflow of strings with no spacing within `Filters` popover
+
+* [#9889](https://github.com/Shopify/polaris/pull/9889) [`0cbdbb4f5`](https://github.com/Shopify/polaris/commit/0cbdbb4f58896cfaa6624e799c4c426b170d8f86) Thanks [@chloerice](https://github.com/chloerice)! - Set the preferred position of `Pagination` and `Page` `secondaryActions` button tooltips to `below`
+
+- [#10045](https://github.com/Shopify/polaris/pull/10045) [`65ad4e27c`](https://github.com/Shopify/polaris/commit/65ad4e27cad4188b31e5172d245296a65672cf54) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed BannerExperimental no title hidden icon variant
+
+* [#9885](https://github.com/Shopify/polaris/pull/9885) [`f0d288099`](https://github.com/Shopify/polaris/commit/f0d288099359a7b4fad93c8ea82d40bae520a44b) Thanks [@bsharrow](https://github.com/bsharrow)! - `Aligned the`SkeletonPage``title`font-weight with the`Page` title
+
+- [#9860](https://github.com/Shopify/polaris/pull/9860) [`af0c9d4a2`](https://github.com/Shopify/polaris/commit/af0c9d4a250a605ee588fa033c9023f80401a0c8) Thanks [@sophschneider](https://github.com/sophschneider)! - Updated CI tests to account for both polarisSummerEditions2023 beta flag states
+
+* [#9874](https://github.com/Shopify/polaris/pull/9874) [`5569ac69a`](https://github.com/Shopify/polaris/commit/5569ac69aea87fc80044b432917f45e69f4f22e9) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Page` first `Header` row misalignment
+
+- [#9850](https://github.com/Shopify/polaris/pull/9850) [`57d8d5506`](https://github.com/Shopify/polaris/commit/57d8d55068bfbca43a047f95452f40f7bfd1749e) Thanks [@kyledurand](https://github.com/kyledurand)! - Rebuilt `Filters` `SearchField`
+
+* [#8988](https://github.com/Shopify/polaris/pull/8988) [`535b3fc91`](https://github.com/Shopify/polaris/commit/535b3fc9145d8044f155b42c83fabf25009afcc7) Thanks [@m4thieulavoie](https://github.com/m4thieulavoie)! - Added support for rendering `Text` `as` a `strong` tag
+
+- [#9912](https://github.com/Shopify/polaris/pull/9912) [`00b831292`](https://github.com/Shopify/polaris/commit/00b831292d058d8489b2653d01f4a952f8c6fe28) Thanks [@samrose3](https://github.com/samrose3)! - Fixed primary Button styles for Chrome on Android devices
+
+- Updated dependencies [[`d1bee0f87`](https://github.com/Shopify/polaris/commit/d1bee0f87879c7dba57e0b3c4585d0addbe835c9), [`36e4ee8af`](https://github.com/Shopify/polaris/commit/36e4ee8afbc7dbec6e65225384629afa83f64a75)]:
+  - @shopify/polaris-icons@7.8.1
+  - @shopify/polaris-tokens@7.5.3
+
 ## 11.11.0
 
 ### Minor Changes
