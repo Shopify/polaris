@@ -55,7 +55,11 @@
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
+<<<<<<< HEAD
     "@shopify/polaris": "^11.19.0",
+=======
+    "@shopify/polaris": "^12.0.0-beta.0",
+>>>>>>> 21958b762 (Use workspace version of @shopify/polaris (#10088))
     "plop": "^3.1.1",
     "plop-dir": "^0.0.5",
     "prettier": "^2.7.1",
