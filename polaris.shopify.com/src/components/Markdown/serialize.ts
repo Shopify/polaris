@@ -31,7 +31,7 @@ function codeMetaAsDataAttribute(): Plugin {
   };
 }
 
-// NOTE: This function can work on the client side, but it's meant to ve used on
+// NOTE: This function can work on the client side, but it's meant to be used on
 // the server. To reduce client bundle size, this function should only be
 // imported directly in a page level component, and not exported from this
 // folder's index file.
