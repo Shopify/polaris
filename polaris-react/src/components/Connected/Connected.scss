@@ -8,10 +8,7 @@
   // stylelint-enable
   position: relative;
   display: flex;
-
-  #{$se23} & {
-    align-items: center;
-  }
+  align-items: center;
 }
 
 .Item {
