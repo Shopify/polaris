@@ -53,8 +53,7 @@ export function Navigation({
   return (
     <div className={styles.Navigation} ref={setRef}>
       <Button
-        plain
-        primary={polarisSummerEditions2023}
+        variant="primaryPlain"
         icon={ChevronLeftMinor}
         disabled={isScrolledFarthestLeft}
         accessibilityLabel={leftA11yLabel}
@@ -62,8 +61,7 @@ export function Navigation({
       />
       {pipMarkup}
       <Button
-        plain
-        primary={polarisSummerEditions2023}
+        variant="primaryPlain"
         icon={ChevronRightMinor}
         disabled={isScrolledFarthestRight}
         accessibilityLabel={rightA11yLabel}

@@ -37,7 +37,7 @@ export function WithCustomPrimaryAction() {
     <PageActions
       primaryAction={
         <Button
-          primary
+          variant="primary"
           connectedDisclosure={{
             accessibilityLabel: 'Other save actions',
             actions: [{content: 'Save as draft'}],

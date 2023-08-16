@@ -10,7 +10,7 @@ export function Default() {
   return (
     <ButtonGroup>
       <Button>Cancel</Button>
-      <Button primary>Save</Button>
+      <Button variant="primary">Save</Button>
     </ButtonGroup>
   );
 }
@@ -114,7 +114,7 @@ export function NoWrapButtons() {
           <Button>Fourth</Button>
           <Button>Third</Button>
           <Button>Second</Button>
-          <Button primary>First</Button>
+          <Button variant="primary">First</Button>
         </ButtonGroup>
       </div>
       <br />
@@ -132,7 +132,7 @@ export function NoWrapButtons() {
           <Button>Fourth</Button>
           <Button>Third</Button>
           <Button>Second</Button>
-          <Button primary>First</Button>
+          <Button variant="primary">First</Button>
         </ButtonGroup>
       </div>
     </>

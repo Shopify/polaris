@@ -540,8 +540,7 @@ export function All() {
         <LegacyCard.Header title="Header with icon button child">
           <Button
             icon={CancelMajor}
-            primary
-            plain
+            variant="primaryPlain"
             accessibilityLabel="Cancel button"
           />
         </LegacyCard.Header>

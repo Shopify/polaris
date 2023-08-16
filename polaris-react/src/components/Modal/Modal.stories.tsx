@@ -106,7 +106,7 @@ export function WithPrimaryAction() {
                 onChange={() => {}}
                 autoComplete="off"
                 connectedRight={
-                  <Button primary onClick={handleClick}>
+                  <Button variant="primary" onClick={handleClick}>
                     Copy link
                   </Button>
                 }

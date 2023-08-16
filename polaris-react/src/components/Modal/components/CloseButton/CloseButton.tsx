@@ -25,8 +25,7 @@ export function CloseButton({
 
   return polarisSummerEditions2023 ? (
     <Button
-      primary
-      plain
+      variant="primaryPlain"
       pressed={pressed}
       icon={CancelMajor}
       onClick={onClick}

@@ -149,7 +149,7 @@ export function Default() {
             }}
           >
             <Button onClick={toggleSheetActive}>Cancel</Button>
-            <Button primary onClick={toggleSheetActive}>
+            <Button variant="primary" onClick={toggleSheetActive}>
               Done
             </Button>
           </div>

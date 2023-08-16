@@ -87,8 +87,7 @@ export function BannerExperimental({
       ) : null,
     dismissButton: onDismiss ? (
       <Button
-        plain
-        primary
+        variant="primaryPlain"
         icon={
           <span
             className={

@@ -326,7 +326,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
         <Text variant="headingLg" as="h3">
           {moreFiltersLabel}
         </Text>
-        <Button onClick={this.closeFilters} primary>
+        <Button onClick={this.closeFilters} variant="primary">
           {i18n.translate('Polaris.Filters.done')}
         </Button>
       </div>
@@ -345,7 +345,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
           {i18n.translate('Polaris.Filters.clearAllFilters')}
         </Button>
         <div ref={this.moreFiltersDoneButtonContainer}>
-          <Button onClick={this.closeFilters} primary>
+          <Button onClick={this.closeFilters} variant="primary">
             {i18n.translate('Polaris.Filters.done')}
           </Button>
         </div>

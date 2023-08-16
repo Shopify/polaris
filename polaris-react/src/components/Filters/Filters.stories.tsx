@@ -607,8 +607,7 @@ export function Disabled() {
                 <Button
                   disabled
                   size="micro"
-                  primary
-                  plain
+                  variant="primaryPlain"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -758,8 +757,7 @@ export function SomeDisabled() {
                 <Button
                   disabled
                   size="micro"
-                  primary
-                  plain
+                  variant="primaryPlain"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
