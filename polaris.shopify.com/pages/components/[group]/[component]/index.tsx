@@ -107,17 +107,15 @@ export const getStaticProps: GetStaticProps<
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
 
-    const mdx = await serializeMdx<FrontMatter>(componentMarkdown);
-    console.log('mdx: ', mdx);
+    const [mdx] = await serializeMdx<FrontMatter>(componentMarkdown);
 
     let descriptionMdx: SerializedMdx | null = null;
 
     if (mdx.frontmatter.description) {
-      descriptionMdx = await serializeMdx(mdx.frontmatter.description);
-      console.log('description: ', descriptionMdx);
+      [descriptionMdx] = await serializeMdx(mdx.frontmatter.description);
     }
 
-    const examples = await Promise.all(
+    const examples: Array<ComponentExampleSerialized> = await Promise.all(
       (mdx.frontmatter.examples || []).map(
         async (example: ComponentExample) => {
           const examplePath = path.resolve(
@@ -134,7 +132,7 @@ export const getStaticProps: GetStaticProps<
               .join('\n');
           }
 
-          const description = await serializeMdx(example.description);
+          const [description] = await serializeMdx(example.description);
 
           return {...example, description, code};
         },
