@@ -27,10 +27,6 @@ import {
 } from '../../utilities/jsx';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
-export interface MigrationOptions extends Options {
-  relative: boolean;
-}
-
 export interface ReplaceComponentMigrationOptions
   extends Options,
     PropsMapObject {
@@ -49,15 +45,9 @@ interface PropsMapObject {
 export default function reactReplaceComponents(
   fileInfo: FileInfo,
   {jscodeshift: j}: API,
-  options: MigrationOptions,
+  options: ReplaceComponentMigrationOptions,
 ) {
-  const source = j(fileInfo.source);
-
-  // if the current file does not import polaris, bail
-  if (!hasImportDeclaration(j, source, '@shopify/polaris')) {
-    return fileInfo.source;
-  }
-
+  // first check that we're getting all the required options
   const {
     fromComponent,
     toComponent,
@@ -73,12 +63,27 @@ export default function reactReplaceComponents(
     !toComponentProps ||
     !propMaps
   ) {
-    // bail if we're missing required options
-    console.log('bailing because missing options');
-    return fileInfo.source;
+    const optionsKeys = Object.keys(options);
+    const requiredOptions = [
+      'fromComponent',
+      'toComponent',
+      'fromComponentProps',
+      'toComponentProps',
+      'propMaps',
+    ];
+    const missing = requiredOptions.filter((key) => {
+      return !optionsKeys.includes(key);
+    });
+
+    throw new Error(`Missing required options values: ${missing.join(', ')}`);
   }
 
-  // console.log(fromComponent);
+  const source = j(fileInfo.source);
+
+  // if the current file does not import polaris, bail
+  if (!hasImportDeclaration(j, source, '@shopify/polaris')) {
+    return fileInfo.source;
+  }
 
   const sourcePaths = normalizeImportSourcePaths(j, source, {
     relative: options.relative,
@@ -88,12 +93,10 @@ export default function reactReplaceComponents(
 
   // if current file does not import anything, bail
   if (!sourcePaths) {
-    console.log('no sourcePaths');
     return;
   }
   // if current file does not import the 'from' component, bail
   if (!hasImportSpecifier(j, source, fromComponent, sourcePaths.from)) {
-    console.log('does not import', fromComponent);
     return;
   }
 
@@ -109,10 +112,8 @@ export default function reactReplaceComponents(
     sourcePaths.from,
   );
 
-  console.log(fromComponentProps);
-  console.log(localElementName, localElementTypeName, sourcePaths.from);
-  let canInsertFromComponentImport = false;
-  let canRemoveFromComponentImport = Boolean(!localElementTypeName);
+  let canInsertNewComponentImport = false;
+  let canRemoveOldComponentImport = Boolean(!localElementTypeName);
 
   // query for all JSX elements in the file and iterate over them
   source.findJSXElements(localElementName).forEach((element) => {
@@ -123,8 +124,11 @@ export default function reactReplaceComponents(
 
     // if any of the props aren't JSXAttribute (like spread/rest) then bail
     if (allAttributes.some((attribute) => attribute.type !== 'JSXAttribute')) {
-      canRemoveFromComponentImport = false;
-      // TODO insert a helpful message here probably
+      canRemoveOldComponentImport = false;
+      // eslint-disable-next-line no-console
+      console.log(
+        `Component props include non "JSXAttribute" type ex. {...spread} or {...rest}. Unable to migrate ${fileInfo.path}`,
+      );
       // insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
       return;
     }
@@ -147,17 +151,26 @@ export default function reactReplaceComponents(
       if (attributeValueNode) {
         // check the type also TODO check that it is a valid value
         if (attributeValueNode?.type === 'StringLiteral') {
-          const foundFromPropValue = attributeValueNode.value;
-          toPropValue = valueMap[foundFromPropValue];
+          const attributeValue = attributeValueNode.value;
+          const mappedValue = valueMap[attributeValue];
+
+          if (mappedValue) {
+            toPropValue = valueMap[attributeValue];
+          } else {
+            // if no valid value then we bail
+            canRemoveOldComponentImport = false;
+            insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+            return;
+          }
         } else {
           // if no valid value then we bail
-          canRemoveFromComponentImport = false;
+          canRemoveOldComponentImport = false;
           insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
           return;
         }
       }
 
-      canInsertFromComponentImport = true;
+      canInsertNewComponentImport = true;
 
       replaceJSXElement(j, element, toComponent);
       // all BlockStack components need a gap prop
@@ -181,7 +194,7 @@ export default function reactReplaceComponents(
       if (path.node.type !== 'Identifier') return;
 
       if (path.parent.value.type !== 'ImportSpecifier') {
-        canRemoveFromComponentImport = false;
+        canRemoveOldComponentImport = false;
       }
 
       insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
@@ -193,7 +206,7 @@ export default function reactReplaceComponents(
       }
     });
 
-  if (canInsertFromComponentImport) {
+  if (canInsertNewComponentImport) {
     if (!hasImportSpecifier(j, source, toComponent, sourcePaths.to)) {
       if (options.relative) {
         insertImportDeclaration(
@@ -209,7 +222,7 @@ export default function reactReplaceComponents(
     }
   }
 
-  if (canRemoveFromComponentImport) {
+  if (canRemoveOldComponentImport) {
     if (hasImportSpecifier(j, source, fromComponent, sourcePaths.from)) {
       removeImportSpecifier(j, source, fromComponent, sourcePaths.from);
     }
