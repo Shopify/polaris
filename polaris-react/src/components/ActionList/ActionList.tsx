@@ -126,7 +126,7 @@ export function ActionList({
     return totalSectionItems;
   }, [filteredSections]);
 
-  const showSearch = totalActions >= 10;
+  const showSearch = totalActions >= 8;
 
   return (
     <>
