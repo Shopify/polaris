@@ -1,6 +1,13 @@
 module.exports = {
   plugins: [
-    'removeDimensions',
+    {
+      /**
+       * removeDimensions is set to true to remove width and height attributes from SVGs.
+       * This allows the SVG to scale to the size of its container, making it more responsive.
+       */
+      name: 'removeDimensions',
+      active: true,
+    },
     {
       name: 'preset-default',
       params: {
@@ -10,12 +17,6 @@ module.exports = {
            * with smaller (minor) icons inside.
            */
           removeViewBox: false,
-
-          /**
-           * removeDimensions is set to true to remove width and height attributes from SVGs.
-           * This allows the SVG to scale to the size of its container, making it more responsive.
-           */
-          removeDimensions: true,
 
           /**
            * The following 2 settings are disabled to reduce rendering inconsistency
