@@ -47,7 +47,7 @@ export interface ButtonProps extends BaseButton {
   /** Sets the color treatment of the Button. */
   tone: 'default' | 'critical' | 'success';
   /** Changes the visual appearance of the Button. */
-  variant: 'default' | 'plain' | 'primary' | 'primaryPlain';
+  variant: 'default' | 'plain' | 'primary' | 'primaryPlain' | 'monochromePlain';
 }
 
 interface CommonButtonProps
@@ -137,6 +137,8 @@ export function Button({
     variant && variant === 'primary' && styles.primary,
     variant && variant === 'plain' && styles.plain,
     variant && variant === 'primaryPlain' && styles.primaryPlain,
+    variant && variant === 'monochromePlain' && styles.monochrome,
+    variant && variant === 'monochromePlain' && styles.plain,
     tone && tone === 'critical' && styles.destructive,
     tone && tone === 'success' && styles.success,
     isDisabled && styles.disabled,
