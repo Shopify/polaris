@@ -220,6 +220,8 @@ export function Button({
     const connectedDisclosureClassName = classNames(
       styles.Button,
       variant && variant === 'primary' && styles.primary,
+      variant && variant === 'monochromePlain' && styles.monochrome,
+      variant && variant === 'monochromePlain' && styles.plain,
       size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
       textAlign && styles[variationName('textAlign', textAlign)],
       destructive && styles.destructive,
