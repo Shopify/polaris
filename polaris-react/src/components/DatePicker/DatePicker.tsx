@@ -262,8 +262,7 @@ export function DatePicker({
     >
       <div className={styles.Header}>
         <Button
-          variant="plain"
-          primary={polarisSummerEditions2023}
+          variant={polarisSummerEditions2023 ? 'primaryPlain' : 'plain'}
           icon={ArrowLeftMinor}
           accessibilityLabel={i18n.translate(
             'Polaris.DatePicker.previousMonth',
@@ -277,8 +276,7 @@ export function DatePicker({
           }
         />
         <Button
-          variant="plain"
-          primary={polarisSummerEditions2023}
+          variant={polarisSummerEditions2023 ? 'primaryPlain' : 'plain'}
           icon={ArrowRightMinor}
           accessibilityLabel={i18n.translate('Polaris.DatePicker.nextMonth', {
             nextMonth,

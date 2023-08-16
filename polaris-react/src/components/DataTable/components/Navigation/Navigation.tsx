@@ -6,7 +6,6 @@ import {useI18n} from '../../../../utilities/i18n';
 import {Button} from '../../../Button';
 import type {ColumnVisibilityData} from '../../types';
 import styles from '../../DataTable.scss';
-import {useFeatures} from '../../../../utilities/features';
 
 export interface NavigationProps {
   columnVisibilityData: ColumnVisibilityData[];
@@ -28,7 +27,6 @@ export function Navigation({
   setRef = () => {},
 }: NavigationProps) {
   const i18n = useI18n();
-  const {polarisSummerEditions2023} = useFeatures();
 
   const pipMarkup = columnVisibilityData.map((column, index) => {
     if (index < fixedFirstColumns) return;

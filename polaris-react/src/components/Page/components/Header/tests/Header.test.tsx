@@ -94,7 +94,7 @@ describe('<Header />', () => {
       );
 
       expect(header).toContainReactComponent(Button, {
-        primary: true,
+        variant: 'primary',
         children: buttonContent,
       });
     });
@@ -110,7 +110,7 @@ describe('<Header />', () => {
       );
 
       expect(header).toContainReactComponent(Button, {
-        primary: false,
+        variant: 'default',
         children: buttonContent,
       });
     });

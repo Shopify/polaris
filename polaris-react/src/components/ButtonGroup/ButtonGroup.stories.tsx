@@ -90,9 +90,9 @@ export function WithSegmentedButtons() {
 export function OutlineWithSegmentedButtons() {
   return (
     <ButtonGroup segmented>
-      <Button outline>Bold</Button>
-      <Button outline>Italic</Button>
-      <Button outline>Underline</Button>
+      <Button>Bold</Button>
+      <Button>Italic</Button>
+      <Button>Underline</Button>
     </ButtonGroup>
   );
 }

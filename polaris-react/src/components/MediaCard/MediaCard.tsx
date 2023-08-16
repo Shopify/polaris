@@ -123,7 +123,7 @@ export function MediaCard({
     <div className={styles.SecondaryAction}>
       {polarisSummerEditions2023
         ? buttonFrom(secondaryAction)
-        : buttonFrom(secondaryAction, {plain: true})}
+        : buttonFrom(secondaryAction, {variant: 'plain'})}
     </div>
   ) : null;
 

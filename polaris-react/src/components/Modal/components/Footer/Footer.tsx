@@ -23,7 +23,7 @@ export function Footer({
   const {polarisSummerEditions2023} = useFeatures();
 
   const primaryActionButton =
-    (primaryAction && buttonsFrom(primaryAction, {primary: true})) || null;
+    (primaryAction && buttonsFrom(primaryAction, {variant: 'primary'})) || null;
   const secondaryActionButtons =
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =

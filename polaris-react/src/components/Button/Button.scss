@@ -984,9 +984,7 @@
         fill: currentColor;
       }
     }
-  }
 
-  &.plain {
     .Text:not(.removeUnderline) {
       text-decoration: underline;
     }

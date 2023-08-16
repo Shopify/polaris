@@ -10,7 +10,6 @@ import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
 import {Text} from '../Text';
 import {Image} from '../Image';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './CalloutCard.scss';
 
@@ -37,7 +36,6 @@ export function CalloutCard({
   secondaryAction,
   onDismiss,
 }: CalloutCardProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {
