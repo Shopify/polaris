@@ -156,7 +156,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   const dismissButton = onDismiss && (
     <div className={styles.Dismiss}>
       <Button
-        plain
+        variant="plain"
         icon={CancelSmallMinor}
         onClick={onDismiss}
         accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
