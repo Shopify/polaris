@@ -15,7 +15,8 @@ export function Default() {
       secondaryActions={[
         {
           content: 'Delete',
-          destructive: true,
+          tone: 'critical',
+          variant: 'primary',
         },
       ]}
     />
@@ -49,7 +50,8 @@ export function WithCustomPrimaryAction() {
       secondaryActions={[
         {
           content: 'Delete',
-          destructive: true,
+          tone: 'critical',
+          variant: 'primary',
         },
       ]}
     />

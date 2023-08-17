@@ -105,7 +105,9 @@ export function WithDestructiveFooterAction() {
   return (
     <LegacyCard
       title="Shipment 1234"
-      secondaryFooterActions={[{content: 'Cancel shipment', destructive: true}]}
+      secondaryFooterActions={[
+        {content: 'Cancel shipment', tone: 'critical', variant: 'primary'},
+      ]}
       primaryFooterAction={{content: 'Add tracking number'}}
     >
       <LegacyCard.Section title="Items">
@@ -207,7 +209,7 @@ export function WithDestructiveAction() {
       </LegacyCard.Section>
       <LegacyCard.Section
         title="Contact Information"
-        actions={[{content: 'Delete', destructive: true}, {content: 'Edit'}]}
+        actions={[{content: 'Delete', tone: 'critical'}, {content: 'Edit'}]}
       >
         <p>john.smith@example.com</p>
       </LegacyCard.Section>
