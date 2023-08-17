@@ -15,6 +15,8 @@ import Markdown from '../src/components/Markdown';
 import Page from '../src/components/Page';
 import PageMeta from '../src/components/PageMeta';
 import {Status} from '../src/types';
+import {parseMarkdown} from '../src/utils/markdown.mjs';
+import {MarkdownFile} from '../src/types';
 
 interface FrontMatter {
   title: string;
@@ -28,6 +30,15 @@ interface Props {
   mdx: SerializedMdx<FrontMatter>;
   seoDescription?: string;
   editPageLinkPath: string;
+}
+
+export interface WhatsNewListingProps {
+  posts: {
+    title: string;
+    description: string;
+    slug: string;
+    imageUrl: string;
+  }[];
 }
 
 const CatchAllTemplate = ({
@@ -46,6 +57,24 @@ const CatchAllTemplate = ({
 };
 
 const contentDir = 'content';
+const whatsNewDir = 'whats-new';
+
+const getWhatsNew = () => {
+  const globPath = path.resolve(process.cwd(), contentDir, whatsNewDir, '*.md');
+  const paths = globby
+    .sync(globPath)
+    .filter((path) => !path.endsWith('index.md'));
+
+  const posts: WhatsNewListingProps['posts'] = paths.map((path) => {
+    const markdown = fs.readFileSync(path, 'utf-8');
+    const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
+    const {title, description, imageUrl} = frontMatter;
+    const slug = path.replace(contentDir, '').replace('.md', '');
+    return {title, description, slug, imageUrl};
+  });
+
+  return posts;
+};
 
 export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   params,
@@ -68,29 +97,11 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 
     let scope = {};
 
-    if (pathIsDirectory) {
-      // const globPath = path.resolve(process.cwd(), 'content/whats-new/*.md');
-      // const paths = globby
-      //   .sync(globPath)
-      //   .filter((path) => !path.endsWith('index.md'));
-
-      // const posts: Props['posts'] = paths.map((path) => {
-      //   const markdown = fs.readFileSync(path, 'utf-8');
-      //   const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
-      //   const {title, description, imageUrl} = frontMatter;
-      //   const slug = path.replace(contentDir, '').replace('.md', '');
-      //   return {title, description, slug, imageUrl};
-      // });
+    if (pathIsDirectory && slugPath === 'content/whats-new') {
+      const posts = getWhatsNew();
 
       scope = {
-        posts: [
-          {
-            title: 'Upgrade to v20',
-            description: 'Hello',
-            slug: '/upgrade',
-            imageUrl: 'https://placekitten.com/300/300',
-          },
-        ],
+        posts,
       };
     }
 
