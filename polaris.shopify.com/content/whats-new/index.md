@@ -5,3 +5,5 @@ order: 0
 hideChildren: true
 icon: EmailNewsletterMajor
 ---
+
+<PostPreviewGrid posts={posts} />
