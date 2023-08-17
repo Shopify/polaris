@@ -126,14 +126,21 @@ export const serializeMdx = async <
   TScope = Record<string, unknown>,
 >(
   content: string,
-  mdxOptions?: Exclude<
-    Parameters<typeof serialize>[1],
-    undefined
-  >['mdxOptions'],
+  {
+    mdxOptions,
+    scope,
+  }: {
+    mdxOptions?: Exclude<
+      Parameters<typeof serialize>[1],
+      undefined
+    >['mdxOptions'];
+    scope?: Exclude<Parameters<typeof serialize>[1], undefined>['scope'];
+  } = {},
 ): Promise<[SerializedMdx<TFrontmatter, TScope>, Data]> => {
   const file = new VFile(content);
   const result = await serialize<TScope, TFrontmatter>(file, {
     parseFrontmatter: true,
+    scope,
     mdxOptions: {
       ...mdxOptions,
       remarkPlugins: [
