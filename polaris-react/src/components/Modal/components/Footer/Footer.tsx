@@ -3,7 +3,7 @@ import React from 'react';
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Box} from '../../../Box';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {useFeatures} from '../../../../utilities/features';
 
 export interface FooterProps {
@@ -28,14 +28,14 @@ export function Footer({
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
-      <HorizontalStack gap="2">
+      <InlineStack gap="2">
         {secondaryActionButtons}
         {primaryActionButton}
-      </HorizontalStack>
+      </InlineStack>
     ) : null;
 
   return (
-    <HorizontalStack gap="4" blockAlign="center">
+    <InlineStack gap="4" blockAlign="center">
       <Box
         borderColor={polarisSummerEditions2023 ? 'border' : 'border-subdued'}
         borderBlockStartWidth="1"
@@ -45,11 +45,11 @@ export function Footer({
         paddingInlineEnd={polarisSummerEditions2023 ? undefined : '5'}
         width="100%"
       >
-        <HorizontalStack gap="4" blockAlign="center" align="space-between">
+        <InlineStack gap="4" blockAlign="center" align="space-between">
           <Box>{children}</Box>
           {actions}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
-    </HorizontalStack>
+    </InlineStack>
   );
 }

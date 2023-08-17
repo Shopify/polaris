@@ -8,8 +8,8 @@ import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
 import {HorizontalGrid} from '../HorizontalGrid';
-import {HorizontalStack} from '../HorizontalStack';
-import type {HorizontalStackProps} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
+import type {InlineStackProps} from '../InlineStack';
 import {Popover} from '../Popover';
 import {UnstyledLink} from '../UnstyledLink';
 import type {AvatarProps} from '../Avatar';
@@ -174,7 +174,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     const itemPaddingBlock: React.ComponentProps<typeof Box>['padding'] = '3';
 
     const gapBetweenCheckboxAndMedia: React.ComponentProps<
-      typeof HorizontalStack
+      typeof InlineStack
     >['gap'] = polarisSummerEditions2023 ? '3' : '4';
     const gapBetweenOwnedAndChildren: React.ComponentProps<
       typeof HorizontalGrid
@@ -217,7 +217,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <HorizontalStack
+        <InlineStack
           gap={gapBetweenCheckboxAndMedia}
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
@@ -225,7 +225,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         >
           {handleMarkup}
           {media}
-        </HorizontalStack>
+        </InlineStack>
       );
     }
 
@@ -316,11 +316,11 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             gap={gapBetweenOwnedAndChildren}
           >
             {ownedMarkup}
-            <HorizontalStack blockAlign={getAlignment(verticalAlignment)}>
+            <InlineStack blockAlign={getAlignment(verticalAlignment)}>
               <Box width="100%" padding="0">
                 {children}
               </Box>
-            </HorizontalStack>
+            </InlineStack>
           </HorizontalGrid>
           {actionsMarkup}
           {disclosureMarkup}
@@ -525,9 +525,7 @@ export function ResourceItem(props: ResourceItemProps) {
   );
 }
 
-function getAlignment(
-  alignment?: Alignment,
-): HorizontalStackProps['blockAlign'] {
+function getAlignment(alignment?: Alignment): InlineStackProps['blockAlign'] {
   switch (alignment) {
     case 'leading':
       return 'start';

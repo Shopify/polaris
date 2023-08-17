@@ -152,7 +152,7 @@ You can resolve this in a number of ways:
   - spacing='loose'
   + spacing={undefined}
   ```
-  or for [`HorizontalStack`](https://polaris.shopify.com/components/layout-and-structure/horizontal-stack)
+  or for [`InlineStack`](https://polaris.shopify.com/components/layout-and-structure/inline-stack)
   ```diff
   - gap='5'
   + gap='4'

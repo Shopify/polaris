@@ -3,7 +3,7 @@ import React from 'react';
 import {Box} from '../../../Box';
 import {CloseButton} from '../CloseButton';
 import {HorizontalGrid} from '../../../HorizontalGrid';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import {useFeatures} from '../../../../utilities/features';
 
@@ -39,9 +39,9 @@ export function Header({
       </Box>
     ) : (
       <Box position="absolute" insetInlineEnd="0" zIndex="1">
-        <HorizontalStack gap="4" align="end" blockAlign="center">
+        <InlineStack gap="4" align="end" blockAlign="center">
           <CloseButton titleHidden={titleHidden} onClick={onClose} />
-        </HorizontalStack>
+        </InlineStack>
       </Box>
     );
   }
@@ -59,7 +59,7 @@ export function Header({
       }
     >
       <HorizontalGrid columns={{xs: '1fr auto'}} gap="4">
-        <HorizontalStack gap="4" blockAlign="center">
+        <InlineStack gap="4" blockAlign="center">
           <Text
             id={id}
             as="h2"
@@ -68,7 +68,7 @@ export function Header({
           >
             {children}
           </Text>
-        </HorizontalStack>
+        </InlineStack>
         <CloseButton
           pressed={closing}
           titleHidden={titleHidden}

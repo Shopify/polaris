@@ -10,7 +10,7 @@ import {Badge} from '../../../Badge';
 import {Text} from '../../../Text';
 import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';
 import {Tooltip} from '../../../Tooltip';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
@@ -106,16 +106,12 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack
-      blockAlign="center"
-      gap="1_5-experimental"
-      wrap={!truncate}
-    >
+    <InlineStack blockAlign="center" gap="1_5-experimental" wrap={!truncate}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
       {suffixMarkup}
-    </HorizontalStack>
+    </InlineStack>
   );
 
   const contentWrapper = <Box width="100%">{contentElement}</Box>;
