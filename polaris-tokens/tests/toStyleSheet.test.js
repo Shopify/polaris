@@ -1,7 +1,7 @@
 import {
-  getCustomProperties,
+  getThemeDecls,
+  getTokenGroupDecls,
   getKeyframes,
-  getStaticCustomProperties,
 } from '../scripts/toStyleSheet';
 
 const mockTokenGroup = {
@@ -23,7 +23,7 @@ const mockMotionTokenGroup = {
   },
 };
 
-const mockTokens = {
+const mockTheme = {
   border: {},
   color: {},
   font: {},
@@ -34,7 +34,7 @@ const mockTokens = {
   zIndex: {},
 };
 
-const expectedCustomProperties =
+const expectedThemeDecls =
   '--p-design-token-1:valueA;--p-design-token-2:valueB;';
 
 const expectedKeyframes =
@@ -43,18 +43,18 @@ const expectedKeyframes =
 const expectedKeyframesCustomProperties =
   '--p-motion-keyframes-token-1:p-motion-keyframes-token-1;--p-motion-keyframes-token-2:p-motion-keyframes-token-2;';
 
-describe('getCustomProperties', () => {
-  it('creates a string of CSS custom properties', () => {
-    const customProperties = getCustomProperties(mockTokenGroup);
+describe('getTokenGroupDecls', () => {
+  it('creates a string of CSS declarations', () => {
+    const tokenGroupDecls = getTokenGroupDecls(mockTokenGroup);
 
-    expect(customProperties).toBe(expectedCustomProperties);
+    expect(tokenGroupDecls).toBe(expectedThemeDecls);
   });
 
-  it('creates a string of CSS custom properties and keyframes at-rules from motion tokens', () => {
-    const customProperties = getCustomProperties(mockMotionTokenGroup);
+  it('creates a string of CSS declarations and keyframes at-rules from motion tokens', () => {
+    const tokenGroupDecls = getTokenGroupDecls(mockMotionTokenGroup);
 
-    expect(customProperties).toBe(
-      `${expectedCustomProperties}${expectedKeyframesCustomProperties}`,
+    expect(tokenGroupDecls).toBe(
+      `${expectedThemeDecls}${expectedKeyframesCustomProperties}`,
     );
   });
 });
@@ -67,10 +67,10 @@ describe('getKeyframes', () => {
   });
 });
 
-describe('getStaticCustomProperties', () => {
-  it('creates a string of static CSS custom properties', () => {
-    const staticCustomProperties = getStaticCustomProperties(mockTokens);
+describe('getThemeDecls', () => {
+  it('creates a string of CSS declarations', () => {
+    const themeDecls = getThemeDecls(mockTheme);
 
-    expect(staticCustomProperties).toBe(expectedCustomProperties);
+    expect(themeDecls).toBe(expectedThemeDecls);
   });
 });
