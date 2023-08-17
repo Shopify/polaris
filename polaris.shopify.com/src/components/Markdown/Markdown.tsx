@@ -12,6 +12,7 @@ import {SideBySide} from './components/SideBySide';
 import {DoDont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
 import PatternsExample from '../../components/PatternsExample';
+import WhatsNewListing from '../WhatsNewListing';
 
 function Markdown(props: ComponentProps<typeof MDXRemote>) {
   return (
@@ -163,9 +164,7 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
         StatusBanner,
         UpdateBanner,
         Lede,
-        PostPreviewGrid: ({posts}) => (
-          <pre>{JSON.stringify(posts, null, 2)}</pre>
-        ),
+        WhatsNewListing: ({posts}) => <WhatsNewListing posts={posts} />,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">
