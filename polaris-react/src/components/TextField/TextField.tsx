@@ -292,7 +292,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && !disabled && styles.focus,
-    styles[variant],
+    variant !== 'inherit' && styles[variant],
   );
 
   const inputType = type === 'currency' ? 'text' : type;
