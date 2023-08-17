@@ -6,4 +6,6 @@ hideChildren: true
 icon: EmailNewsletterMajor
 ---
 
-<PostPreviewGrid posts={posts} />
+# {frontmatter.title}
+
+<WhatsNewListing posts={posts} />
