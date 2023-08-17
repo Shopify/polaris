@@ -22,6 +22,7 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
+    "@juggle/resize-observer": "^3.4.0",
     "@shopify/polaris": "^10.37.0",
     "@shopify/polaris-icons": "^6.11.3",
     "@shopify/polaris-tokens": "^6.8.0",
@@ -34,6 +35,7 @@
     "gray-matter": "^4.0.3",
     "lodash.get": "^4.4.2",
     "lodash.throttle": "^4.1.1",
+    "nanoid": "^4.0.2",
     "next": "^13.0.6",
     "next-mdx-remote": "^4.4.1",
     "prismjs": "^1.27.0",
