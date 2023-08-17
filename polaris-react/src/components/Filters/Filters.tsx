@@ -16,7 +16,7 @@ import type {
   AppliedFilterInterface,
   FilterInterface,
 } from '../../types';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 import type {BoxProps} from '../Box';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
@@ -307,7 +307,7 @@ export function Filters({
       className={classNames(styles.Container, se23 && styles.ContainerUplift)}
     >
       <Box {...containerSpacing}>
-        <HorizontalStack
+        <InlineStack
           align="start"
           blockAlign="center"
           gap={{
@@ -339,7 +339,7 @@ export function Filters({
             />
           </div>
           {additionalContent}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
     </div>
   );
@@ -444,7 +444,7 @@ export function Filters({
         </div>
         {hideQueryField ? (
           <Box paddingInlineEnd="3" paddingBlockStart="2" paddingBlockEnd="2">
-            <HorizontalStack
+            <InlineStack
               align="start"
               blockAlign="center"
               gap={{
@@ -453,7 +453,7 @@ export function Filters({
               }}
             >
               {additionalContent}
-            </HorizontalStack>
+            </InlineStack>
           </Box>
         ) : null}
       </div>

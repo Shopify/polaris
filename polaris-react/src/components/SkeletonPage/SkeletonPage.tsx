@@ -3,7 +3,7 @@ import React from 'react';
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 import {VerticalStack} from '../VerticalStack';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 
 import styles from './SkeletonPage.scss';
 
@@ -90,15 +90,15 @@ export function SkeletonPage({
             paddingInlineEnd={{xs: '4', sm: '0'}}
             width="100%"
           >
-            <HorizontalStack gap="4" align="space-between" blockAlign="center">
-              <HorizontalStack gap="4">
+            <InlineStack gap="4" align="space-between" blockAlign="center">
+              <InlineStack gap="4">
                 {backActionMarkup}
                 <Box paddingBlockStart="1" paddingBlockEnd="1">
                   {titleContent}
                 </Box>
-              </HorizontalStack>
+              </InlineStack>
               {primaryActionMarkup}
-            </HorizontalStack>
+            </InlineStack>
           </Box>
           <Box paddingBlockEnd="2" width="100%">
             {children}

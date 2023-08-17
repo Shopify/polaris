@@ -9,7 +9,7 @@ import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
@@ -90,11 +90,11 @@ export function Toast({
     <div className={className} aria-live="assertive">
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
-      <HorizontalStack gap="4" blockAlign="center">
+      <InlineStack gap="4" blockAlign="center">
         <Text as="span" fontWeight="medium">
           {content}
         </Text>
-      </HorizontalStack>
+      </InlineStack>
       {actionMarkup}
       {dismissMarkup}
     </div>

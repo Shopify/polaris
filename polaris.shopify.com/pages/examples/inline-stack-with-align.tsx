@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   VerticalStack,
-  HorizontalStack,
+  InlineStack,
   Text,
   Page,
   Divider,
@@ -13,7 +13,7 @@ function InlineWithAlignExample() {
   return (
     <Page narrowWidth>
       <VerticalStack gap="16">
-        <HorizontalStack align="start">
+        <InlineStack align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" showBorder />
@@ -21,9 +21,9 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" showBorderTop />
           <Placeholder width="106px" height="20px" showBorder />
-        </HorizontalStack>
+        </InlineStack>
         <Divider />
-        <HorizontalStack align="center">
+        <InlineStack align="center">
           <Placeholder width="106px" label="Center" />
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" showBorder />
@@ -31,9 +31,9 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" showBorder />
-        </HorizontalStack>
+        </InlineStack>
         <Divider />
-        <HorizontalStack align="end">
+        <InlineStack align="end">
           <Placeholder width="106px" label="End" />
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" showBorder />
@@ -41,7 +41,7 @@ function InlineWithAlignExample() {
           <Placeholder width="106px" height="20px" showBorder />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" showBorder />
-        </HorizontalStack>
+        </InlineStack>
       </VerticalStack>
     </Page>
   );
@@ -69,7 +69,7 @@ const Placeholder = ({
           : 'none',
       }}
     >
-      <HorizontalStack align="center">
+      <InlineStack align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
@@ -79,7 +79,7 @@ const Placeholder = ({
             {label}
           </Text>
         </div>
-      </HorizontalStack>
+      </InlineStack>
     </div>
   );
 };

@@ -12,7 +12,7 @@ import {Button} from '../../../Button';
 import {VerticalStack} from '../../../VerticalStack';
 import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {useFeatures} from '../../../../utilities/features';
@@ -137,7 +137,7 @@ export function FilterPill({
 
   const activator = (
     <div className={buttonClasses}>
-      <HorizontalStack gap="0" wrap={false}>
+      <InlineStack gap="0" wrap={false}>
         <UnstyledButton
           onFocus={setFocusedTrue}
           onBlur={setFocusedFalse}
@@ -146,12 +146,7 @@ export function FilterPill({
           type="button"
           disabled={disabled}
         >
-          <HorizontalStack
-            wrap={false}
-            align="center"
-            blockAlign="center"
-            gap="0"
-          >
+          <InlineStack wrap={false} align="center" blockAlign="center" gap="0">
             {selected ? (
               <>{wrappedLabel}</>
             ) : (
@@ -169,7 +164,7 @@ export function FilterPill({
                 </div>
               </>
             )}
-          </HorizontalStack>
+          </InlineStack>
         </UnstyledButton>
 
         {selected ? (
@@ -185,7 +180,7 @@ export function FilterPill({
             </div>
           </UnstyledButton>
         ) : null}
-      </HorizontalStack>
+      </InlineStack>
     </div>
   );
 

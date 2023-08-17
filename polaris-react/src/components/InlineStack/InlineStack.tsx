@@ -4,7 +4,7 @@ import type {SpaceScale} from '@shopify/polaris-tokens';
 import {getResponsiveProps} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './HorizontalStack.scss';
+import styles from './InlineStack.scss';
 
 type Align =
   | 'start'
@@ -17,7 +17,7 @@ type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpaceScale>;
 
-export interface HorizontalStackProps extends React.AriaAttributes {
+export interface InlineStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** Horizontal alignment of children */
   align?: Align;
@@ -35,22 +35,22 @@ export interface HorizontalStackProps extends React.AriaAttributes {
   wrap?: boolean;
 }
 
-export const HorizontalStack = function HorizontalStack({
+export const InlineStack = function InlineStack({
   align,
   blockAlign,
   gap,
   wrap = true,
   children,
-}: HorizontalStackProps) {
+}: InlineStackProps) {
   const style = {
-    '--pc-horizontal-stack-align': align,
-    '--pc-horizontal-stack-block-align': blockAlign,
-    '--pc-horizontal-stack-wrap': wrap ? 'wrap' : 'nowrap',
-    ...getResponsiveProps('horizontal-stack', 'gap', 'space', gap),
+    '--pc-inline-stack-align': align,
+    '--pc-inline-stack-block-align': blockAlign,
+    '--pc-inline-stack-wrap': wrap ? 'wrap' : 'nowrap',
+    ...getResponsiveProps('inline-stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
   return (
-    <div className={styles.HorizontalStack} style={style}>
+    <div className={styles.InlineStack} style={style}>
       {children}
     </div>
   );

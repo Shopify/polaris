@@ -1,4 +1,4 @@
-import {Tooltip, Button, HorizontalStack, Text} from '@shopify/polaris';
+import {Tooltip, Button, InlineStack, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -7,12 +7,12 @@ function TooltipExample() {
     <div style={{padding: '75px 0'}}>
       <Tooltip
         content={
-          <HorizontalStack gap="2">
+          <InlineStack gap="2">
             Bold
             <Text as="span" variant="bodyMd" color="subdued">
               ⌘B
             </Text>
-          </HorizontalStack>
+          </InlineStack>
         }
       >
         <Button>B</Button>

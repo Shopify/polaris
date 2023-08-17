@@ -4,7 +4,7 @@ import {
   Button,
   ButtonGroup,
   Frame,
-  HorizontalStack,
+  InlineStack,
   Page,
   Toast,
   Modal,

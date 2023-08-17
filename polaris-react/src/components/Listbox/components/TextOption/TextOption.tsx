@@ -3,7 +3,7 @@ import {TickMinor} from '@shopify/polaris-icons';
 
 import {Box} from '../../../Box';
 import {Checkbox} from '../../../Checkbox';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
 import {ComboboxListboxOptionContext} from '../../../../utilities/combobox/context';
@@ -40,12 +40,12 @@ export const TextOption = memo(function TextOption({
   const optionMarkup =
     polarisSummerEditions2023 && selected ? (
       <Box width="100%">
-        <HorizontalStack wrap={false} align="space-between" gap="2">
+        <InlineStack wrap={false} align="space-between" gap="2">
           {children}
-          <HorizontalStack align="end">
+          <InlineStack align="end">
             <Icon source={TickMinor} />
-          </HorizontalStack>
-        </HorizontalStack>
+          </InlineStack>
+        </InlineStack>
       </Box>
     ) : (
       <>{children}</>
