@@ -24,7 +24,7 @@ import PatternsExample from '../PatternsExample';
 import Page from '../Page';
 import styles from './PatternPage.module.scss';
 import Markdown from '../Markdown';
-import {SideBySide} from '../Markdown/components';
+import {SideBySide} from '../Markdown/components/SideBySide';
 
 export interface Props {
   data: Omit<PatternFrontMatter, 'variants'> & {
@@ -209,7 +209,6 @@ const BaseMarkdown = ({
 }) => (
   <Markdown
     remarkPlugins={[codeAsContext, remarkDefinitionList]}
-    // @ts-expect-error incompatible type to remark-rehype in remark-definition-list package.
     remarkRehypeOptions={{handlers: defListHastHandlers}}
     mdxComponents={mdxComponents}
     components={{
@@ -254,6 +253,8 @@ const BaseMarkdown = ({
         </Box>
       ),
       code: function MdCode({
+        // @ts-expect-error Unsure how to tell react-markdown this prop is
+        // being injected by a plugin
         inline,
         // @ts-expect-error Unsure how to tell react-markdown this prop is
         // being injected by a plugin
