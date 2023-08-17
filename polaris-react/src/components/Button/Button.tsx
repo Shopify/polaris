@@ -45,14 +45,9 @@ export interface ButtonProps extends BaseButton {
   /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
   /** Sets the color treatment of the Button. */
-  tone?: 'default' | 'critical' | 'success';
+  tone?: 'critical' | 'success';
   /** Changes the visual appearance of the Button. */
-  variant?:
-    | 'default'
-    | 'plain'
-    | 'primary'
-    | 'primaryPlain'
-    | 'monochromePlain';
+  variant?: 'plain' | 'primary' | 'primaryPlain' | 'monochromePlain';
 }
 
 interface CommonButtonProps
@@ -130,8 +125,8 @@ export function Button({
   fullWidth,
   connectedDisclosure,
   dataPrimaryLink,
-  tone = 'default',
-  variant = 'default',
+  tone,
+  variant,
 }: ButtonProps) {
   const i18n = useI18n();
 
