@@ -40,11 +40,6 @@ $relative-size: $primary-basis / $secondary-basis;
   }
 }
 
-.Section-secondary {
-  flex: 1 1 $secondary-basis;
-  min-width: 0;
-}
-
 .Section-fullWidth {
   flex: 1 1 100%;
 }

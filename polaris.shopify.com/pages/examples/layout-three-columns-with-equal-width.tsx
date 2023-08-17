@@ -13,7 +13,7 @@ function LayoutExample() {
   return (
     <Page fullWidth>
       <Layout>
-        <Layout.Section oneThird>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
               <Text color="subdued" as="span">
@@ -73,7 +73,7 @@ function LayoutExample() {
             </LegacyCard.Section>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section oneThird>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
               <Text color="subdued" as="span">
@@ -133,7 +133,7 @@ function LayoutExample() {
             </LegacyCard.Section>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section oneThird>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Minneapolis" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
               <Text color="subdued" as="span">
