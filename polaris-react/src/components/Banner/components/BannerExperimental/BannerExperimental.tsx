@@ -23,8 +23,8 @@ import type {BannerProps} from '../../Banner';
 import {useI18n} from '../../../../utilities/i18n';
 import {Icon} from '../../../Icon';
 import {useEventListener} from '../../../../utilities/use-event-listener';
+import {bannerAttributes} from '../../utilities';
 
-import {bannerAttributes} from './utilities';
 import styles from './BannerExperimental.scss';
 
 interface BannerLayoutProps {
