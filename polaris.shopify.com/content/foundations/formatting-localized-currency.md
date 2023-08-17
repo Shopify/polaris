@@ -22,6 +22,10 @@ keywords:
   - japan
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 There’s a currency formatting framework to:
 
 - Help more merchants sell globally

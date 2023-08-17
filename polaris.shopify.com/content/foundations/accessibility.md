@@ -19,6 +19,10 @@ keywords:
   - diverse
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 This includes:
 
 - A beautiful and functional design
