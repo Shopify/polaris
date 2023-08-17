@@ -6,7 +6,7 @@ import {Box} from '../Box';
 import {buttonFrom} from '../Button';
 import {Image} from '../Image';
 import {Text} from '../Text';
-import {BlockStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 import {InlineStack} from '../InlineStack';
 
 import styles from './EmptyState.scss';
