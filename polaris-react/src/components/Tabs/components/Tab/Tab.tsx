@@ -36,7 +36,7 @@ import {Popover} from '../../../Popover';
 import {ActionList} from '../../../ActionList';
 import {Modal} from '../../../Modal';
 import {Badge} from '../../../Badge';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import type {TabPropsWithAddedMethods, TabAction} from '../../types';
 import styles from '../../Tabs.scss';
@@ -312,12 +312,7 @@ export const Tab = forwardRef(
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
-        <HorizontalStack
-          gap="2"
-          align="center"
-          blockAlign="center"
-          wrap={false}
-        >
+        <InlineStack gap="2" align="center" blockAlign="center" wrap={false}>
           <Text
             as="span"
             variant={se23 ? se23LabelVariant : labelVariant}
@@ -326,7 +321,7 @@ export const Tab = forwardRef(
             {icon ?? content}
           </Text>
           {badgeMarkup}
-        </HorizontalStack>
+        </InlineStack>
         {disclosureMarkup}
       </BaseComponent>
     );

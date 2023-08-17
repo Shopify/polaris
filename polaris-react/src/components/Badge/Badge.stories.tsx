@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import type {BadgeProps} from '@shopify/polaris';
 import {
   Badge,
-  HorizontalStack,
+  InlineStack,
   LegacyCard,
   VerticalStack,
   Text,
@@ -142,7 +142,7 @@ export function All() {
               <Text as="h2" variant="headingXs">
                 Status only
               </Text>
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 {statusEntries.map(([status, statusLabel]) => (
                   <Badge
                     key={status}
@@ -152,14 +152,14 @@ export function All() {
                     {statusLabel}
                   </Badge>
                 ))}
-              </HorizontalStack>
+              </InlineStack>
             </VerticalStack>
             <VerticalStack gap="2">
               <Text as="h2" variant="headingXs">
                 Status with progress
               </Text>
               {progressEntries.map(([progress]) => (
-                <HorizontalStack key={progress} gap="2">
+                <InlineStack key={progress} gap="2">
                   {statusEntries.map(([status, statusLabel]) => (
                     <Badge
                       key={status}
@@ -170,7 +170,7 @@ export function All() {
                       {statusLabel}
                     </Badge>
                   ))}
-                </HorizontalStack>
+                </InlineStack>
               ))}
             </VerticalStack>
             {/* Remove `size` condition when micro icons are available */}
@@ -179,7 +179,7 @@ export function All() {
                 <Text as="h2" variant="headingXs">
                   Status with icon
                 </Text>
-                <HorizontalStack gap="2">
+                <InlineStack gap="2">
                   {statusEntries.map(([status, statusLabel]) => (
                     <Badge
                       key={status}
@@ -190,7 +190,7 @@ export function All() {
                       {statusLabel}
                     </Badge>
                   ))}
-                </HorizontalStack>
+                </InlineStack>
               </VerticalStack>
             )}
             {/* TODO: Re-enable the following examples when designs are available (post se23) */}
@@ -198,7 +198,7 @@ export function All() {
               <Text as="h2" variant="headingXs">
                 Status with icon only
               </Text>
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 {statusEntries.map(([status]) => (
                   <Badge
                     key={status}
@@ -207,7 +207,7 @@ export function All() {
                     status={status === 'default' ? undefined : status}
                   />
                 ))}
-              </HorizontalStack>
+              </InlineStack>
             </VerticalStack> */}
           </VerticalStack>
         </Box>

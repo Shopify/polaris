@@ -1,94 +1,31 @@
+import type {PropsWithChildren} from 'react';
 import React, {
-  forwardRef,
-  useContext,
-  useRef,
-  useState,
   useEffect,
+  useState,
+  useRef,
+  useContext,
   useCallback,
 } from 'react';
-import type {PropsWithChildren} from 'react';
 import type {ColorTextAlias} from '@shopify/polaris-tokens';
 import {CancelMinor} from '@shopify/polaris-icons';
 
-import type {Action, DisableableAction, LoadableAction} from '../../types';
-import {Text} from '../Text';
-import {VerticalStack} from '../VerticalStack';
-import type {InlineStackProps} from '../InlineStack';
-import {InlineStack} from '../InlineStack';
-import type {BoxProps} from '../Box';
-import {Box} from '../Box';
-import {Button} from '../Button';
-import {ButtonGroup} from '../ButtonGroup';
-import {Icon} from '../Icon';
-import type {IconProps} from '../Icon';
-import {BannerContext} from '../../utilities/banner-context';
-import {WithinContentContext} from '../../utilities/within-content-context';
-import {classNames} from '../../utilities/css';
-import {useBreakpoints} from '../../utilities/breakpoints';
-import {useI18n} from '../../utilities/i18n';
-import {useEventListener} from '../../utilities/use-event-listener';
+import {Text} from '../../../Text';
+import {VerticalStack} from '../../../VerticalStack';
+import type {InlineStackProps} from '../../../InlineStack';
+import {InlineStack} from '../../../InlineStack';
+import {useBreakpoints} from '../../../../utilities/breakpoints';
+import {WithinContentContext} from '../../../../utilities/within-content-context';
+import type {BoxProps} from '../../../Box';
+import {Box} from '../../../Box';
+import {Button} from '../../../Button';
+import {ButtonGroup} from '../../../ButtonGroup';
+import type {BannerProps} from '../../Banner';
+import {useI18n} from '../../../../utilities/i18n';
+import {Icon} from '../../../Icon';
+import {useEventListener} from '../../../../utilities/use-event-listener';
+import {bannerAttributes} from '../../utilities';
 
-import styles from './Banner.scss';
-import type {BannerHandles} from './utilities';
-import {bannerAttributes, useBannerFocus} from './utilities';
-
-export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
-
-export interface BannerProps {
-  /** Title content for the banner. */
-  title?: string;
-  /** Status icon to display in the banner. Use only major icons */
-  icon?: IconProps['source'];
-  /** Renders the banner without a status icon. */
-  hideIcon?: boolean;
-  /** Sets the status of the banner. */
-  status?: BannerStatus;
-  /** The child elements to render in the banner. */
-  children?: React.ReactNode;
-  /** Action for banner */
-  action?: DisableableAction & LoadableAction;
-  /** Action | Displays a secondary action */
-  secondaryAction?: Action;
-  /** Callback when banner is dismissed */
-  onDismiss?(): void;
-  /** Disables screen reader announcements when changing the content of the banner */
-  stopAnnouncements?: boolean;
-}
-
-export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
-  props: BannerProps,
-  bannerRef,
-) {
-  const {status, stopAnnouncements} = props;
-  const withinContentContainer = useContext(WithinContentContext);
-  const {wrapperRef, handleKeyUp, handleBlur, handleMouseUp, shouldShowFocus} =
-    useBannerFocus(bannerRef);
-  const className = classNames(
-    styles.Banner,
-    shouldShowFocus && styles.keyFocused,
-    withinContentContainer ? styles.withinContentContainer : styles.withinPage,
-  );
-
-  return (
-    <BannerContext.Provider value>
-      <div
-        className={className}
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex={0}
-        ref={wrapperRef}
-        role={
-          status === 'warning' || status === 'critical' ? 'alert' : 'status'
-        }
-        aria-live={stopAnnouncements ? 'off' : 'polite'}
-        onMouseUp={handleMouseUp}
-        onKeyUp={handleKeyUp}
-        onBlur={handleBlur}
-      >
-        <BannerLayout {...props} />
-      </div>
-    </BannerContext.Provider>
-  );
-});
+import styles from './BannerExperimental.scss';
 
 interface BannerLayoutProps {
   backgroundColor: BoxProps['background'];
@@ -99,7 +36,7 @@ interface BannerLayoutProps {
   dismissButton: React.ReactNode;
 }
 
-export function BannerLayout({
+export function BannerExperimental({
   status = 'info',
   icon,
   hideIcon,
@@ -184,7 +121,7 @@ export function BannerLayout({
   return <DefaultBanner {...sharedBannerProps}>{children}</DefaultBanner>;
 }
 
-export function DefaultBanner({
+function DefaultBanner({
   backgroundColor,
   textColor,
   bannerTitle,
@@ -202,10 +139,10 @@ export function DefaultBanner({
         <Box
           background={backgroundColor}
           color={textColor}
-          borderStartStartRadius={smUp ? '3' : undefined}
-          borderStartEndRadius={smUp ? '3' : undefined}
-          borderEndStartRadius={!hasContent && smUp ? '3' : undefined}
-          borderEndEndRadius={!hasContent && smUp ? '3' : undefined}
+          borderRadiusStartStart={smUp ? '3' : undefined}
+          borderRadiusStartEnd={smUp ? '3' : undefined}
+          borderRadiusEndStart={!hasContent && smUp ? '3' : undefined}
+          borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
           padding="3"
         >
           <InlineStack
@@ -234,7 +171,7 @@ export function DefaultBanner({
   );
 }
 
-export function InlineIconBanner({
+function InlineIconBanner({
   backgroundColor,
   bannerIcon,
   actionButtons,
@@ -265,13 +202,11 @@ export function InlineIconBanner({
       <InlineStack align="space-between" blockAlign={blockAlign} wrap={false}>
         <Box width="100%">
           <InlineStack gap="2" wrap={false} blockAlign={blockAlign}>
-            {bannerIcon ? (
-              <div ref={iconNode}>
-                <Box background={backgroundColor} borderRadius="2" padding="1">
-                  {bannerIcon}
-                </Box>
-              </div>
-            ) : null}
+            <div ref={iconNode}>
+              <Box background={backgroundColor} borderRadius="2" padding="1">
+                {bannerIcon}
+              </Box>
+            </div>
             <Box ref={contentNode} width="100%">
               <VerticalStack gap="2">
                 <div>{children}</div>
@@ -286,7 +221,7 @@ export function InlineIconBanner({
   );
 }
 
-export function WithinContentContainerBanner({
+function WithinContentContainerBanner({
   backgroundColor,
   textColor,
   bannerTitle,

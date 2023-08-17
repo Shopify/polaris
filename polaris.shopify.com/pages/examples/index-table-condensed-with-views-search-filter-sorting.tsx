@@ -10,7 +10,7 @@ import {
   RangeSlider,
   Badge,
   VerticalStack,
-  HorizontalStack,
+  InlineStack,
 } from '@shopify/polaris';
 import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
@@ -307,18 +307,18 @@ function IndexTableWithViewsSearchFilterSorting() {
             <Text as="span" variant="bodySm" color="subdued">
               {order} • {date}
             </Text>
-            <HorizontalStack align="space-between">
+            <InlineStack align="space-between">
               <Text as="span" variant="bodyMd" fontWeight="semibold">
                 {customer}
               </Text>
               <Text as="span" variant="bodyMd">
                 {total}
               </Text>
-            </HorizontalStack>
-            <HorizontalStack align="start" gap="1">
+            </InlineStack>
+            <InlineStack align="start" gap="1">
               {paymentStatus}
               {fulfillmentStatus}
-            </HorizontalStack>
+            </InlineStack>
           </VerticalStack>
         </div>
       </IndexTable.Row>

@@ -9,7 +9,7 @@ import {
   Text,
   Tooltip,
   Box,
-  HorizontalStack,
+  InlineStack,
   VerticalStack,
   Popover,
 } from '@shopify/polaris';
@@ -54,13 +54,13 @@ export function Default() {
 export function PreferredPosition() {
   return (
     <Box paddingBlockStart="24">
-      <HorizontalStack gap="8">
+      <InlineStack gap="8">
         <Tooltip
           active
           content="This content is positioned above the activator"
           preferredPosition="above"
         >
-          <HorizontalStack gap="1">
+          <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip positioned
             </Text>{' '}
@@ -71,14 +71,14 @@ export function PreferredPosition() {
               the activator
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </HorizontalStack>
+          </InlineStack>
         </Tooltip>
         <Tooltip
           active
           content="This content is positioned above the activator"
           preferredPosition="below"
         >
-          <HorizontalStack gap="1">
+          <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip positioned
             </Text>{' '}
@@ -89,9 +89,9 @@ export function PreferredPosition() {
               the activator
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </HorizontalStack>
+          </InlineStack>
         </Tooltip>
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
@@ -99,12 +99,12 @@ export function PreferredPosition() {
 export function Width() {
   return (
     <Box paddingBlockStart="24">
-      <HorizontalStack gap="8">
+      <InlineStack gap="8">
         <Tooltip
           active
           content="This content has the default width and will break into a new line at 200px width"
         >
-          <HorizontalStack gap="1">
+          <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -115,14 +115,14 @@ export function Width() {
               content width
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </HorizontalStack>
+          </InlineStack>
         </Tooltip>
         <Tooltip
           active
           content="This content has the wide width and will break into a new line at 275px width"
           width="wide"
         >
-          <HorizontalStack gap="1">
+          <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -133,9 +133,9 @@ export function Width() {
               content width
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </HorizontalStack>
+          </InlineStack>
         </Tooltip>
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
@@ -143,9 +143,9 @@ export function Width() {
 export function Padding() {
   return (
     <Box paddingBlockStart="24">
-      <HorizontalStack gap="8">
+      <InlineStack gap="8">
         <Tooltip active content="This content has default padding">
-          <HorizontalStack gap="1">
+          <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -156,14 +156,14 @@ export function Padding() {
               content padding
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </HorizontalStack>
+          </InlineStack>
         </Tooltip>
         <Tooltip
           active
           content="This content has padding of 4 (space-4 / 16px)"
           padding="4"
         >
-          <HorizontalStack gap="1">
+          <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -174,9 +174,9 @@ export function Padding() {
               content padding
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </HorizontalStack>
+          </InlineStack>
         </Tooltip>
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
@@ -184,12 +184,12 @@ export function Padding() {
 export function BorderRadius() {
   return (
     <Box paddingBlockStart="24">
-      <HorizontalStack gap="8">
+      <InlineStack gap="8">
         <Tooltip
           active
           content="This content has the default (radius-1) border radius"
         >
-          <HorizontalStack gap="1">
+          <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -200,14 +200,14 @@ export function BorderRadius() {
               border radius
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </HorizontalStack>
+          </InlineStack>
         </Tooltip>
         <Tooltip
           active
           content="This content has a border radius of 2 (radius-2)"
           borderRadius="2"
         >
-          <HorizontalStack gap="1">
+          <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -218,9 +218,9 @@ export function BorderRadius() {
               border radius
             </Text>
             <Icon source={QuestionMarkMinor} color="base" />
-          </HorizontalStack>
+          </InlineStack>
         </Tooltip>
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
@@ -261,14 +261,14 @@ export function WithHoverDelay() {
         <Text variant="headingMd" fontWeight="bold" as="h1">
           TEXT EXAMPLE
         </Text>
-        <HorizontalStack>
+        <InlineStack>
           <Tooltip content="This should appear right away.">
             <Text variant="bodyMd" fontWeight="semibold" as="span">
               No delay
             </Text>
           </Tooltip>
-        </HorizontalStack>
-        <HorizontalStack>
+        </InlineStack>
+        <InlineStack>
           <Tooltip
             hoverDelay={1000}
             content="This should appear after 1 second."
@@ -277,26 +277,26 @@ export function WithHoverDelay() {
               1 second hover delay
             </Text>
           </Tooltip>
-        </HorizontalStack>
+        </InlineStack>
       </VerticalStack>
 
       <VerticalStack gap="2">
         <Text variant="headingMd" fontWeight="bold" as="h1">
           BUTTON EXAMPLE
         </Text>
-        <HorizontalStack>
+        <InlineStack>
           <Tooltip content="This should appear right away.">
             <Button>No delay</Button>
           </Tooltip>
-        </HorizontalStack>
-        <HorizontalStack>
+        </InlineStack>
+        <InlineStack>
           <Tooltip
             hoverDelay={2000}
             content="This should appear after 2 seconds."
           >
             <Button>2 seconds hover delay</Button>
           </Tooltip>
-        </HorizontalStack>
+        </InlineStack>
       </VerticalStack>
     </VerticalStack>
   );
@@ -321,16 +321,16 @@ export function ActivatorAsDiv() {
 export function WithSuffix() {
   return (
     <Box padding="16" background="bg">
-      <HorizontalStack>
+      <InlineStack>
         <ButtonGroup segmented fullWidth>
           <Tooltip
             content={
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 Bold
                 <Text as="span" variant="bodyMd" color="subdued">
                   ⌘B
                 </Text>
-              </HorizontalStack>
+              </InlineStack>
             }
             activatorWrapper="div"
           >
@@ -338,48 +338,48 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 Italic
                 <Text as="span" variant="bodyMd" color="subdued">
                   ⌘I
                 </Text>
-              </HorizontalStack>
+              </InlineStack>
             }
           >
             <Button>I</Button>
           </Tooltip>
           <Tooltip
             content={
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 Underline
                 <Text as="span" variant="bodyMd" color="subdued">
                   ⌘U
                 </Text>
-              </HorizontalStack>
+              </InlineStack>
             }
           >
             <Button>U</Button>
           </Tooltip>
           <Tooltip
             content={
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 Strikethrough
                 <Text as="span" variant="bodyMd" color="subdued">
                   ⌘S
                 </Text>
-              </HorizontalStack>
+              </InlineStack>
             }
           >
             <Button>S</Button>
           </Tooltip>
           <Tooltip
             content={
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 Bold
                 <Text as="span" variant="bodyMd" color="subdued">
                   ⌘B
                 </Text>
-              </HorizontalStack>
+              </InlineStack>
             }
             preferredPosition="below"
           >
@@ -387,12 +387,12 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 Italic
                 <Text as="span" variant="bodyMd" color="subdued">
                   ⌘I
                 </Text>
-              </HorizontalStack>
+              </InlineStack>
             }
             preferredPosition="below"
           >
@@ -400,12 +400,12 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 Underline
                 <Text as="span" variant="bodyMd" color="subdued">
                   ⌘U
                 </Text>
-              </HorizontalStack>
+              </InlineStack>
             }
             preferredPosition="below"
           >
@@ -413,19 +413,19 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 Strikethrough
                 <Text as="span" variant="bodyMd" color="subdued">
                   ⌘S
                 </Text>
-              </HorizontalStack>
+              </InlineStack>
             }
             preferredPosition="below"
           >
             <Button>S</Button>
           </Tooltip>
         </ButtonGroup>
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
@@ -433,7 +433,7 @@ export function WithSuffix() {
 export function Alignment() {
   return (
     <Box paddingBlockStart="24">
-      <HorizontalStack>
+      <InlineStack>
         <ButtonGroup segmented fullWidth>
           <Tooltip content="Content is longer than the activator">
             <Button>Bold</Button>
@@ -454,7 +454,7 @@ export function Alignment() {
             <Button>Strikethrough</Button>
           </Tooltip>
         </ButtonGroup>
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
@@ -493,7 +493,7 @@ export function ActiveStates() {
 
   return (
     <Box paddingBlockStart="24">
-      <HorizontalStack gap="24">
+      <InlineStack gap="24">
         <Tooltip content="This tooltip should never render" active={false}>
           <Text variant="bodyLg" fontWeight="bold" as="span">
             Active false
@@ -550,7 +550,7 @@ export function ActiveStates() {
             </Popover>
           </Text>
         </Tooltip>
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }

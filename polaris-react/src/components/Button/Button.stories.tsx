@@ -4,7 +4,7 @@ import {
   Button,
   ButtonGroup,
   Card,
-  HorizontalStack,
+  InlineStack,
   VerticalStack,
   Text,
   Box,
@@ -27,7 +27,7 @@ export function All() {
         <VerticalStack gap="4">
           <Text as="h2">default</Text>
           <Box padding="4">
-            <HorizontalStack gap="5" blockAlign="end">
+            <InlineStack gap="5" blockAlign="end">
               <Button>Label</Button>
               <Button disabled>Label</Button>
               <Button icon={PlusMinor}>Label</Button>
@@ -56,10 +56,10 @@ export function All() {
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
-            </HorizontalStack>
+            </InlineStack>
           </Box>
           <Card>
-            <HorizontalStack gap="5" blockAlign="end">
+            <InlineStack gap="5" blockAlign="end">
               <Button>Label</Button>
               <Button disabled>Label</Button>
               <Button icon={PlusMinor}>Label</Button>
@@ -78,13 +78,13 @@ export function All() {
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
-            </HorizontalStack>
+            </InlineStack>
           </Card>
         </VerticalStack>
         <VerticalStack gap="4">
           <Text as="h2">outline destructive</Text>
           <Box padding="4">
-            <HorizontalStack gap="5" blockAlign="end">
+            <InlineStack gap="5" blockAlign="end">
               <Button outline destructive>
                 Label
               </Button>
@@ -129,10 +129,10 @@ export function All() {
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
-            </HorizontalStack>
+            </InlineStack>
           </Box>
           <Card>
-            <HorizontalStack gap="5" blockAlign="end">
+            <InlineStack gap="5" blockAlign="end">
               <Button outline destructive>
                 Label
               </Button>
@@ -163,13 +163,13 @@ export function All() {
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
-            </HorizontalStack>
+            </InlineStack>
           </Card>
         </VerticalStack>
         <VerticalStack gap="2">
           <Text as="h2">destructive</Text>
           <Box padding="4">
-            <HorizontalStack gap="5" blockAlign="end">
+            <InlineStack gap="5" blockAlign="end">
               <Button destructive>Label</Button>
               <Button destructive disabled>
                 Label
@@ -196,10 +196,10 @@ export function All() {
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
-            </HorizontalStack>
+            </InlineStack>
           </Box>
           <Card>
-            <HorizontalStack gap="5" blockAlign="end">
+            <InlineStack gap="5" blockAlign="end">
               <Button destructive>Label</Button>
               <Button destructive disabled>
                 Label
@@ -226,7 +226,7 @@ export function All() {
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
-            </HorizontalStack>
+            </InlineStack>
           </Card>
         </VerticalStack>
         <VerticalStack gap="4">
@@ -236,7 +236,7 @@ export function All() {
 
         <VerticalStack gap="2">
           <Text as="h2">primary destructive</Text>
-          <HorizontalStack gap="5" blockAlign="end">
+          <InlineStack gap="5" blockAlign="end">
             <Button primary destructive>
               Label
             </Button>
@@ -259,12 +259,12 @@ export function All() {
               onClick={() => {}}
               accessibilityLabel="Dismiss"
             />
-          </HorizontalStack>
+          </InlineStack>
         </VerticalStack>
 
         <VerticalStack gap="2">
           <Text as="h2">primary sucess</Text>
-          <HorizontalStack gap="5" blockAlign="end">
+          <InlineStack gap="5" blockAlign="end">
             <Button primarySuccess>Label</Button>
             <Button primarySuccess disabled>
               Label
@@ -284,7 +284,7 @@ export function All() {
               onClick={() => {}}
               accessibilityLabel="Dismiss"
             />
-          </HorizontalStack>
+          </InlineStack>
         </VerticalStack>
 
         <VerticalStack gap="2">
@@ -294,7 +294,7 @@ export function All() {
 
         <VerticalStack gap="2">
           <Text as="h2">plain destructive</Text>
-          <HorizontalStack gap="5" blockAlign="end">
+          <InlineStack gap="5" blockAlign="end">
             <Button plain destructive>
               Label
             </Button>
@@ -328,7 +328,7 @@ export function All() {
               onClick={() => {}}
               accessibilityLabel="Dismiss"
             />
-          </HorizontalStack>
+          </InlineStack>
         </VerticalStack>
 
         <VerticalStack gap="2">
@@ -338,7 +338,7 @@ export function All() {
 
         <VerticalStack gap="2">
           <Text as="h2">primary plain destructive</Text>
-          <HorizontalStack gap="5" blockAlign="end">
+          <InlineStack gap="5" blockAlign="end">
             <Button primary plain destructive>
               Label
             </Button>
@@ -362,7 +362,7 @@ export function All() {
               onClick={() => {}}
               accessibilityLabel="Dismiss"
             />
-          </HorizontalStack>
+          </InlineStack>
         </VerticalStack>
       </VerticalStack>
     </div>
@@ -390,7 +390,7 @@ export function OutlineMonochrome() {
 export function Plain() {
   return (
     <Box padding="4">
-      <HorizontalStack gap="5" blockAlign="end">
+      <InlineStack gap="5" blockAlign="end">
         <Button plain>Label</Button>
         <Button plain disabled>
           Label
@@ -420,7 +420,7 @@ export function Plain() {
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
-      </HorizontalStack>
+      </InlineStack>
     </Box>
   );
 }
@@ -429,7 +429,7 @@ export function PlainPrimary() {
   return (
     <VerticalStack gap="4">
       <Box padding="4">
-        <HorizontalStack gap="5" blockAlign="end">
+        <InlineStack gap="5" blockAlign="end">
           <Button primary plain>
             Label
           </Button>
@@ -445,10 +445,10 @@ export function PlainPrimary() {
           <Button primary plain disclosure>
             Label
           </Button>
-        </HorizontalStack>
+        </InlineStack>
       </Box>
       <Card>
-        <HorizontalStack gap="5" blockAlign="end">
+        <InlineStack gap="5" blockAlign="end">
           <Button primary plain>
             Label
           </Button>
@@ -464,10 +464,10 @@ export function PlainPrimary() {
           <Button primary plain disclosure>
             Label
           </Button>
-        </HorizontalStack>
+        </InlineStack>
       </Card>
       <Card>
-        <HorizontalStack gap="5" blockAlign="end">
+        <InlineStack gap="5" blockAlign="end">
           <Button
             primary
             plain
@@ -483,7 +483,7 @@ export function PlainPrimary() {
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
-        </HorizontalStack>
+        </InlineStack>
       </Card>
     </VerticalStack>
   );
@@ -512,7 +512,7 @@ export function Primary() {
   return (
     <VerticalStack gap="4">
       <Box padding="4">
-        <HorizontalStack gap="5" blockAlign="end">
+        <InlineStack gap="5" blockAlign="end">
           <Button primary>Label</Button>
           <Button primary disabled>
             Label
@@ -539,10 +539,10 @@ export function Primary() {
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
-        </HorizontalStack>
+        </InlineStack>
       </Box>
       <Card>
-        <HorizontalStack gap="5" blockAlign="end">
+        <InlineStack gap="5" blockAlign="end">
           <Button primary>Label</Button>
           <Button primary disabled>
             Label
@@ -569,7 +569,7 @@ export function Primary() {
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
-        </HorizontalStack>
+        </InlineStack>
       </Card>
     </VerticalStack>
   );
@@ -581,7 +581,7 @@ export function Destructive() {
 
 export function Micro() {
   return (
-    <HorizontalStack gap="5">
+    <InlineStack gap="5">
       <Button size="micro">Label</Button>
       <Button primary size="micro">
         Label
@@ -593,13 +593,13 @@ export function Micro() {
         Label
       </Button>
       <Button size="micro" accessibilityLabel="Edit" icon={EditMajor} />
-    </HorizontalStack>
+    </InlineStack>
   );
 }
 
 export function Slim() {
   return (
-    <HorizontalStack gap="5">
+    <InlineStack gap="5">
       <Button size="slim">Label</Button>
       <Button primary size="slim">
         Label
@@ -611,25 +611,25 @@ export function Slim() {
         Label
       </Button>
       <Button size="slim" accessibilityLabel="Edit" icon={EditMajor} />
-    </HorizontalStack>
+    </InlineStack>
   );
 }
 
 export function Large() {
   return (
     <VerticalStack gap="4">
-      <HorizontalStack gap="5" blockAlign="end">
+      <InlineStack gap="5" blockAlign="end">
         <Button size="large">Create store</Button>
         <Button size="large" accessibilityLabel="Edit" icon={EditMajor} />
         <Button size="large" icon={PlusMinor} primary>
           Create store
         </Button>
-      </HorizontalStack>
-      <HorizontalStack gap="5" blockAlign="end">
+      </InlineStack>
+      <InlineStack gap="5" blockAlign="end">
         <Button size="large" fullWidth>
           Create store
         </Button>
-      </HorizontalStack>
+      </InlineStack>
     </VerticalStack>
   );
 }
@@ -762,7 +762,7 @@ export function DisabledState() {
 
 export function LoadingState() {
   return (
-    <HorizontalStack gap="5">
+    <InlineStack gap="5">
       <Button loading>Save product</Button>
       <Button primary loading>
         Save product
@@ -770,6 +770,6 @@ export function LoadingState() {
       <Button plain loading>
         Save product
       </Button>
-    </HorizontalStack>
+    </InlineStack>
   );
 }

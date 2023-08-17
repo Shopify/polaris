@@ -3,7 +3,7 @@ import {
   LegacyCard,
   useIndexResourceState,
   Text,
-  HorizontalStack,
+  InlineStack,
   Badge,
   VerticalStack,
 } from '@shopify/polaris';
@@ -64,18 +64,18 @@ function SimpleSmallScreenIndexTableExample() {
             <Text as="span" variant="bodySm" color="subdued">
               {order} • {date}
             </Text>
-            <HorizontalStack align="space-between">
+            <InlineStack align="space-between">
               <Text as="span" variant="bodyMd" fontWeight="semibold">
                 {customer}
               </Text>
               <Text as="span" variant="bodyMd">
                 {total}
               </Text>
-            </HorizontalStack>
-            <HorizontalStack align="start" gap="1">
+            </InlineStack>
+            <InlineStack align="start" gap="1">
               {paymentStatus}
               {fulfillmentStatus}
-            </HorizontalStack>
+            </InlineStack>
           </VerticalStack>
         </div>
       </IndexTable.Row>
