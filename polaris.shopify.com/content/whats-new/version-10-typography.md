@@ -10,6 +10,10 @@ keywords:
   - type styles
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ![Screen showing the new type styles](/images/updates/type-updates-feature@2x.png)
 
 ---

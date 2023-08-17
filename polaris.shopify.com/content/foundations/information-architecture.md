@@ -10,6 +10,10 @@ keywords:
   - navigation
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## Defining IA
 
 Information architecture is the practice of organizing, structuring, and labeling content in an effective and sustainable way. Whether you’re creating an app, part of the Shopify admin, a new feature, or an editorial page, these IA principles are here to help you make content usable and findable.
