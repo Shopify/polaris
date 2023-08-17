@@ -35,7 +35,7 @@
   height: progress-bar-height(large);
 }
 
-.colorHighlight {
+.toneHighlight {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-color-border-info);
@@ -47,14 +47,14 @@
   }
 }
 
-.colorPrimary {
+.tonePrimary {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-color-bg-primary);
   // stylelint-enable
 }
 
-.colorSuccess {
+.toneSuccess {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-color-border-success);
@@ -66,7 +66,7 @@
   }
 }
 
-.colorCritical {
+.toneCritical {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-strong);
   --pc-progress-bar-indicator: var(--p-color-bg-critical);
