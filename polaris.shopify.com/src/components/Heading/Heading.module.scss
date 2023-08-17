@@ -12,3 +12,9 @@
 .h4 {
   @include heading-4;
 }
+.h5 {
+  @include heading;
+}
+.h6 {
+  @include heading;
+}
