@@ -88,7 +88,7 @@ export function TwoColumnsWithPrimaryAndSecondaryWidths() {
             </p>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Tags" sectioned>
             <p>Add tags to your order.</p>
           </LegacyCard>
@@ -102,7 +102,7 @@ export function TwoColumnsWithEqualWidth() {
   return (
     <Page fullWidth>
       <Layout>
-        <Layout.Section oneHalf>
+        <Layout.Section variant="oneHalf">
           <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
               <Text color="subdued" as="span">
@@ -164,7 +164,7 @@ export function TwoColumnsWithEqualWidth() {
             </LegacyCard.Section>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section oneHalf>
+        <Layout.Section variant="oneHalf">
           <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
               <Text color="subdued" as="span">
@@ -235,7 +235,7 @@ export function ThreeColumnsWithEqualWidth() {
   return (
     <Page fullWidth>
       <Layout>
-        <Layout.Section oneThird>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
               <Text color="subdued" as="span">
@@ -297,7 +297,7 @@ export function ThreeColumnsWithEqualWidth() {
             </LegacyCard.Section>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section oneThird>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
               <Text color="subdued" as="span">
@@ -359,7 +359,7 @@ export function ThreeColumnsWithEqualWidth() {
             </LegacyCard.Section>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section oneThird>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Minneapolis" actions={[{content: 'Manage'}]}>
             <LegacyCard.Section>
               <Text color="subdued" as="span">

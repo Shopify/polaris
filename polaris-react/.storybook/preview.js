@@ -6,6 +6,7 @@ import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions, featureFlagOptions} from './manager';
 import {breakpoints} from '@shopify/polaris-tokens';
+import isChromatic from 'chromatic/isChromatic';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -19,6 +20,11 @@ function StrictModeDecorator(Story, context) {
 }
 
 function AppProviderDecorator(Story, context) {
+  // Use system font in chromatic snapshots to avoid async font loading flakiness
+  if (isChromatic()) {
+    document.getElementById('inter-font-link').removeAttribute('href');
+  }
+
   const {
     polarisSummerEditions2023,
     polarisSummerEditions2023ShadowBevelOptOut,
