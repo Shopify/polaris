@@ -19,6 +19,10 @@ keywords:
   - france
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 We want our merchants to experience Shopify in a way that’s appropriate and meaningful to them, no matter where they are in the world.
 
 We aim to build one experience that works for all merchants in all of our markets. However, when a certain experience doesn’t fit a specific market, we should tailor it.
