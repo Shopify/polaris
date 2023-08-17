@@ -7,8 +7,16 @@ export default function transformer(
   {jscodeshift: j}: API,
   options: Options,
 ) {
-  if (!options.componentName || !options.from || !options.to) {
-    throw new Error('Missing required options: componentName, from, to');
+  const componentParts = options.componentName?.split('.');
+  if (
+    !options.componentName ||
+    !options.from ||
+    !options.to ||
+    componentParts?.length > 2
+  ) {
+    throw new Error(
+      'Missing required options: componentName, from, to, or your compound component exceeds 2 levels',
+    );
   }
 
   const source = j(file.source);
