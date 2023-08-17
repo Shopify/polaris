@@ -163,6 +163,9 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
         StatusBanner,
         UpdateBanner,
         Lede,
+        PostPreviewGrid: ({posts}) => (
+          <pre>{JSON.stringify(posts, null, 2)}</pre>
+        ),
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">
