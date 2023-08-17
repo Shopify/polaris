@@ -218,6 +218,42 @@ index 9285b94..c268bdb 100644
        style={{
          ...style,
          transition: 'opacity .3s ease',
+diff --git a/node_modules/playroom/src/Playroom/Preview.tsx b/node_modules/playroom/src/Playroom/Preview.tsx
+index 0183aaf..2d1d5d5 100644
+--- a/node_modules/playroom/src/Playroom/Preview.tsx
++++ b/node_modules/playroom/src/Playroom/Preview.tsx
+@@ -43,6 +43,16 @@ export default ({ themes, components, FrameComponent }: PreviewProps) => {
+ 
+   const resolvedTheme = themeName ? themes[themeName] : null;
+ 
++  // The SplashScreen is in place for security concerns to help mitigate
++  // phishing attacks (an attacker could add arbitrary code to the URL which is
++  // runin the target's browser tricking them into entering credentials, etc),
++  // however it's superfulous when run as an embed in an iframe (where the
++  // attacker doesn't have control over the URL to set the code), so we remove
++  // it.
++  // See: https://github.com/seek-oss/playroom/issues/159#issuecomment-637945761
++  // Also: https://stackoverflow.com/a/18678703
++  const isInSameOriginIFrame = !!window.frameElement;
++
+   return (
+     <CatchErrors code={code}>
+       <div className={styles.renderContainer}>
+@@ -53,9 +63,11 @@ export default ({ themes, components, FrameComponent }: PreviewProps) => {
+           <RenderCode code={code} scope={components} />
+         </FrameComponent>
+       </div>
+-      <div className={styles.splashScreenContainer}>
+-        <SplashScreen />
+-      </div>
++      {!isInSameOriginIFrame ? (
++        <div className={styles.splashScreenContainer}>
++          <SplashScreen />
++        </div>)
++      : null}
+     </CatchErrors>
+   );
+ };
 diff --git a/node_modules/playroom/src/Playroom/constants.ts b/node_modules/playroom/src/Playroom/constants.ts
 new file mode 100644
 index 0000000..90c35d0
