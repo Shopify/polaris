@@ -29,3 +29,13 @@ Secondary, becomes oneThird:
 **TextField**
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="TextField" --from="borderless" --to="variant" --newValue="borderless"`
+
+**Box**
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndStart" --to="variant" --newValue="borderEndStartRadius"`
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndEnd" --to="variant" --newValue="borderEndEndRadius"`
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="variant" --newValue="borderStartStartRadius"`
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="variant" --newValue="borderStartEndRadius"`
