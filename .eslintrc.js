@@ -99,29 +99,6 @@ module.exports = {
   overrides: [
     ...packages.map((packageDir) => noExtraneousDependenciesConfig(packageDir)),
     {
-      files: ['polaris-cli/src/**/*.{ts,tsx}'],
-      rules: {
-        'import/no-default-export': 'off',
-      },
-    },
-    {
-      files: ['polaris-codemods/src/**/*.{ts,tsx}'],
-      rules: {
-        'import/no-default-export': 'off',
-        // Issue with inconsistent import order between node 14 and 16.
-        // This could be removed after dropping node 14 support.
-        'import/order': 'off',
-      },
-    },
-    {
-      files: ['polaris-codemods/src/**/tests/*.{ts,tsx}'],
-      rules: {
-        'import/no-extraneous-dependencies': 'off',
-        '@shopify/jsx-no-hardcoded-content': 'off',
-        '@typescript-eslint/ban-ts-comment': 'off',
-      },
-    },
-    {
       files: ['polaris-migrator/src/**/*.{ts,tsx}'],
       rules: {
         'import/no-default-export': 'off',

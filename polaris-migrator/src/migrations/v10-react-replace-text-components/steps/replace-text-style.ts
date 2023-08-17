@@ -23,9 +23,9 @@ import {
   removeImportDeclaration,
   removeImportSpecifier,
 } from '../../../utilities/imports';
-import type {MigrationOptions} from '../v10-react-replace-text-components';
-import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
-import {isKeyOf} from '../../../utilities/type-guards';
+import type {MigrationOptions} from '../transform';
+import {POLARIS_MIGRATOR_COMMENT} from '../../../utilities/constants';
+import {isKeyOf} from '../../../utilities/types';
 
 const variationMap = {
   strong: {fontWeight: 'semibold'},

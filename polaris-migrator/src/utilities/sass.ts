@@ -1,5 +1,4 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss from 'postcss';
 import type {
   Root,
   Result,
@@ -11,16 +10,17 @@ import type {
   Comment as PostCSSComment,
   AtRule,
 } from 'postcss';
-import valueParser from 'postcss-value-parser';
+import postcss from 'postcss';
 import type {
   Node,
   ParsedValue,
   FunctionNode,
   Dimension,
 } from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 import {toPx, getCustomPropertyNames, tokens} from '@shopify/polaris-tokens';
 
-import {POLARIS_MIGRATOR_COMMENT} from '../constants';
+import {POLARIS_MIGRATOR_COMMENT} from './constants';
 
 const defaultNamespace = '';
 
