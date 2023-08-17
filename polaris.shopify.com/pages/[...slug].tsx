@@ -66,7 +66,35 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
 
-    const [mdx, data] = await serializeMdx<FrontMatter>(markdown);
+    let scope = {};
+
+    if (pathIsDirectory) {
+      // const globPath = path.resolve(process.cwd(), 'content/whats-new/*.md');
+      // const paths = globby
+      //   .sync(globPath)
+      //   .filter((path) => !path.endsWith('index.md'));
+
+      // const posts: Props['posts'] = paths.map((path) => {
+      //   const markdown = fs.readFileSync(path, 'utf-8');
+      //   const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
+      //   const {title, description, imageUrl} = frontMatter;
+      //   const slug = path.replace(contentDir, '').replace('.md', '');
+      //   return {title, description, slug, imageUrl};
+      // });
+
+      scope = {
+        posts: [
+          {
+            title: 'Upgrade to v20',
+            description: 'Hello',
+            slug: '/upgrade',
+            imageUrl: 'https://placekitten.com/300/300',
+          },
+        ],
+      };
+    }
+
+    const [mdx, data] = await serializeMdx<FrontMatter>(markdown, {scope});
 
     const seoDescription =
       typeof mdx.frontmatter.seoDescription === 'string'
@@ -86,7 +114,6 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 };
 
 const catchAllTemplateExcludeList = [
-  '/whats-new',
   '/icons',
   '/foundations',
   '/design',
