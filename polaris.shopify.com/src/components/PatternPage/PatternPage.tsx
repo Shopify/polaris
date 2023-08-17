@@ -281,20 +281,18 @@ const BaseMarkdown = ({
           return (
             <PatternsExample
               example={{
-                code: (children?.[0] as string) ?? '',
+                code: (children as string) ?? '',
                 previewContext,
                 sandboxContext,
               }}
-              showCode={showCode}
-              onCodeToggle={() => toggleCode(!showCode)}
+              isCodeVisible={showCode}
+              onCodeVisibilityToggle={() => toggleCode(!showCode)}
               patternName={patternName ?? ''}
             />
           );
         }
 
-        return (
-          <Code code={{title: '', code: (children?.[0] as string) ?? ''}} />
-        );
+        return <Code code={{title: '', code: (children as string) ?? ''}} />;
       },
       ...components,
     }}
