@@ -28,6 +28,7 @@
 
     h4:first-child {
       @include heading-3;
+      margin-top: 1rem;
     }
 
     &:after {
