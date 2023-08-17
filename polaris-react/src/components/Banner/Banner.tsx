@@ -202,10 +202,10 @@ export function DefaultBanner({
         <Box
           background={backgroundColor}
           color={textColor}
-          borderRadiusStartStart={smUp ? '3' : undefined}
-          borderRadiusStartEnd={smUp ? '3' : undefined}
-          borderRadiusEndStart={!hasContent && smUp ? '3' : undefined}
-          borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
+          borderStartStartRadius={smUp ? '3' : undefined}
+          borderStartEndRadius={smUp ? '3' : undefined}
+          borderEndStartRadius={!hasContent && smUp ? '3' : undefined}
+          borderEndEndRadius={!hasContent && smUp ? '3' : undefined}
           padding="3"
         >
           <HorizontalStack
