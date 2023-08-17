@@ -34,7 +34,7 @@ export function WithDynamicContent() {
             </TextContainer>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
               <TextContainer>
@@ -78,7 +78,7 @@ export function WithStaticContent() {
             <SkeletonBodyText />
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Sales channels">
             <LegacyCard.Section>
               <SkeletonBodyText lines={2} />
@@ -122,7 +122,7 @@ export function WithNarrowWidth() {
             </TextContainer>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
               <TextContainer>
@@ -172,7 +172,7 @@ export function WithFullWidth() {
             </TextContainer>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
               <TextContainer>
@@ -222,7 +222,7 @@ export function WithBackAction() {
             </TextContainer>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
               <TextContainer>

@@ -30,7 +30,7 @@ function SkeletonExample() {
             </TextContainer>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
               <TextContainer>
