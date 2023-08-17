@@ -7,7 +7,6 @@ import {Box} from '../../components/Box';
 import {Stack} from '../../components/Stack';
 import StatusBanner from '../../components/StatusBanner';
 import {Lede} from '../../components/Lede';
-import UpdateBanner from '../../components/UpdateBanner';
 import {SideBySide} from './components/SideBySide';
 import {DoDont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
@@ -162,7 +161,6 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
         SideBySide,
         DoDont,
         StatusBanner,
-        UpdateBanner,
         Lede,
         WhatsNewListing: ({posts}) => <WhatsNewListing posts={posts} />,
         Tip: ({children}) => (
