@@ -10,15 +10,15 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 **Layout.Section**
 
-One third:
+- One third:
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneThird" --to="variant" --newValue="oneThird"`
 
-One half:
+- One half:
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneHalf" --to="variant" --newValue="oneHalf"`
 
-Full width:
+- Full width:
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="fullWidth" --to="variant" --newValue="fullWidth"`
 
@@ -39,3 +39,15 @@ Secondary, becomes oneThird:
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="variant" --newValue="borderStartStartRadius"`
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="variant" --newValue="borderStartEndRadius"`
+
+**HorizontalStack**
+
+`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"`
+
+**VerticalStack**
+
+`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"`
+
+**HorizontalGrid**
+
+`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`
