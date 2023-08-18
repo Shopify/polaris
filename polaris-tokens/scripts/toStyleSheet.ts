@@ -15,14 +15,14 @@ const sassOutputDir = path.join(__dirname, '../dist/scss');
 const cssOutputPath = path.join(cssOutputDir, 'styles.css');
 const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
 
-/** Creates CSS custom properties from a base or variant partial theme. */
+/** Creates CSS declarations from a base or variant partial theme. */
 export function getThemeDecls(theme: ThemeShape) {
   return Object.values(theme)
     .map((tokenGroup) => getTokenGroupDecls(tokenGroup))
     .join('');
 }
 
-/** Creates CSS custom properties from a token group. */
+/** Creates CSS declarations from a token group. */
 export function getTokenGroupDecls(tokenGroup: TokenGroupShape) {
   return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
