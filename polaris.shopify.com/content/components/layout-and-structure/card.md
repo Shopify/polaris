@@ -22,9 +22,7 @@ keywords:
   - subdued card for secondary content
   - callout
   - call out
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+status: Alpha
 examples:
   - fileName: card-default.tsx
     title: Default
@@ -43,6 +41,17 @@ examples:
     description: >-
       Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is a work in progress and ready for exploratory usage, with
+  breaking changes expected in minor version updates. Please use with caution.
+  Learn more about our [component
+  lifecycles](/getting-started/components-lifecycle).
+</StatusBanner>
 
 ## Best practices
 

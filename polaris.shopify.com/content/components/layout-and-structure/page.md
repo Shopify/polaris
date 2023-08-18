@@ -19,7 +19,6 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
-tip: Check out the [new patterns section](https://polaris.shopify.com/patterns) to learn how merchants prefer to select dates in different scenarios!
 examples:
   - fileName: page-default.tsx
     title: Default
@@ -61,6 +60,15 @@ examples:
     title: With content after title
     description: Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<TipBanner title="Tip">
+  Check out the [new patterns section](https://polaris.shopify.com/patterns) to
+  learn how merchants prefer to select dates in different scenarios!
+</TipBanner>
 
 ## Best practices
 

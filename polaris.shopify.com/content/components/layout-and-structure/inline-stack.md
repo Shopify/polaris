@@ -14,9 +14,7 @@ keywords:
   - vertical centering
   - horizontal row of components
   - stack
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+status: Alpha
 examples:
   - fileName: inline-stack-with-non-wrapping.tsx
     title: Non-wrapping
@@ -35,6 +33,17 @@ examples:
     description: >-
       Control the horizontal alignment of children using the `align` prop.
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is a work in progress and ready for exploratory usage, with
+  breaking changes expected in minor version updates. Please use with caution.
+  Learn more about our [component
+  lifecycles](/getting-started/components-lifecycle).
+</StatusBanner>
 
 ## Related components
 
