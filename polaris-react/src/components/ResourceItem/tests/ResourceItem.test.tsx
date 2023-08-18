@@ -8,7 +8,7 @@ import {Avatar} from '../../Avatar';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
 import {Checkbox} from '../../Checkbox';
-import {HorizontalStack} from '../../HorizontalStack';
+import {InlineStack} from '../../InlineStack';
 import {Thumbnail} from '../../Thumbnail';
 import {UnstyledLink} from '../../UnstyledLink';
 import {ResourceItem} from '../ResourceItem';
@@ -734,7 +734,7 @@ describe('<ResourceItem />', () => {
     it('renders with default flex-start alignment if not provided', () => {
       const resourceItem = mountWithApp(<ResourceItem id={itemId} url={url} />);
 
-      expect(resourceItem).toContainReactComponent(HorizontalStack);
+      expect(resourceItem).toContainReactComponent(InlineStack);
     });
 
     it('renders with leading vertical alignment', () => {
@@ -742,7 +742,7 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="leading" />,
       );
 
-      expect(resourceItem).toContainReactComponent(HorizontalStack, {
+      expect(resourceItem).toContainReactComponent(InlineStack, {
         blockAlign: 'start',
       });
     });
@@ -752,7 +752,7 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="center" />,
       );
 
-      expect(resourceItem).toContainReactComponent(HorizontalStack, {
+      expect(resourceItem).toContainReactComponent(InlineStack, {
         blockAlign: 'center',
       });
     });
@@ -762,7 +762,7 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="trailing" />,
       );
 
-      expect(resourceItem).toContainReactComponent(HorizontalStack, {
+      expect(resourceItem).toContainReactComponent(InlineStack, {
         blockAlign: 'end',
       });
     });
@@ -772,7 +772,7 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="fill" />,
       );
 
-      expect(resourceItem).toContainReactComponent(HorizontalStack, {
+      expect(resourceItem).toContainReactComponent(InlineStack, {
         blockAlign: 'stretch',
       });
     });
@@ -782,7 +782,7 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="baseline" />,
       );
 
-      expect(resourceItem).toContainReactComponent(HorizontalStack, {
+      expect(resourceItem).toContainReactComponent(InlineStack, {
         blockAlign: 'baseline',
       });
     });

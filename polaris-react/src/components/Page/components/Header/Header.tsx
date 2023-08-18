@@ -27,7 +27,7 @@ import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {useFeatures} from '../../../../utilities/features';
 
 import {Title} from './components';
@@ -126,9 +126,9 @@ export function Header({
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <HorizontalStack gap="4" align="end">
+    <InlineStack gap="4" align="end">
       <Box printHidden>{additionalNavigation}</Box>
-    </HorizontalStack>
+    </InlineStack>
   ) : null;
 
   const pageTitleMarkup = (
@@ -177,11 +177,11 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
         }
       >
-        <HorizontalStack gap="4" align="space-between" blockAlign="center">
+        <InlineStack gap="4" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {additionalNavigationMarkup}
           {paginationMarkup}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
     ) : null;
 
@@ -252,7 +252,7 @@ export function Header({
         </ConditionalRender>
         <ConditionalRender condition={[slot5, slot6].some(notNull)}>
           <div className={styles.Row}>
-            <HorizontalStack gap="4">{slot5}</HorizontalStack>
+            <InlineStack gap="4">{slot5}</InlineStack>
             <ConditionalRender condition={slot6 != null}>
               <div className={styles.RightAlign}>{slot6}</div>
             </ConditionalRender>

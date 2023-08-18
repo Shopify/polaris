@@ -4,7 +4,7 @@ import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 import {Box} from '../Box';
 import {Bleed} from '../Bleed';
 
@@ -133,18 +133,18 @@ export function ChoiceList({
   );
 
   return (
-    <VerticalStack
+    <BlockStack
       as="fieldset"
       gap={{xs: '4', md: '0'}}
       aria-invalid={error != null}
       id={finalName}
     >
       {titleMarkup}
-      <VerticalStack as="ul" gap={{xs: '4', md: '0'}}>
+      <BlockStack as="ul" gap={{xs: '4', md: '0'}}>
         {choicesMarkup}
-      </VerticalStack>
+      </BlockStack>
       {errorMarkup}
-    </VerticalStack>
+    </BlockStack>
   );
 }
 

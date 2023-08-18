@@ -1,5 +1,5 @@
 ---
-title: Vertical stack
+title: Block stack
 description: Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
@@ -15,15 +15,15 @@ status:
   value: Alpha
   message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
-  - fileName: vertical-stack-with-gap.tsx
+  - fileName: block-stack-with-gap.tsx
     title: Gap
     description: >-
       Control the vertical space between children using the `gap` prop.
-  - fileName: vertical-stack-with-align.tsx
+  - fileName: block-stack-with-align.tsx
     title: Align
     description: >-
       Control the vertical alignment of children using the `align` prop.
-  - fileName: vertical-stack-with-inline-align.tsx
+  - fileName: block-stack-with-inline-align.tsx
     title: Inline align
     description: >-
       Control the horizontal alignment of children using the `inlineAlign` prop.
@@ -40,7 +40,7 @@ Stacks should:
 
 ## Related components
 
-- To display elements horizontally, [use the HorizontalStack component](https://polaris.shopify.com/components/layout-and-structure/horizontal-stack)
+- To display elements horizontally, [use the InlineStack component](https://polaris.shopify.com/components/layout-and-structure/inline-stack)
 
 ## Related resources
 

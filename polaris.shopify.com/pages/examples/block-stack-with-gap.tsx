@@ -1,16 +1,16 @@
 import React from 'react';
-import {VerticalStack} from '@shopify/polaris';
+import {BlockStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function VerticalStackWithGapExample() {
+function BlockStackWithGapExample() {
   return (
     <SpacingBackground>
-      <VerticalStack gap="5">
+      <BlockStack gap="5">
         <Placeholder height="48px" />
         <Placeholder height="48px" />
         <Placeholder height="48px" />
-      </VerticalStack>
+      </BlockStack>
     </SpacingBackground>
   );
 }
@@ -40,4 +40,4 @@ const Placeholder = ({height = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(VerticalStackWithGapExample);
+export default withPolarisExample(BlockStackWithGapExample);

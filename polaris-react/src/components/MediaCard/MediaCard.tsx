@@ -13,9 +13,9 @@ import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
 import {LegacyStack} from '../LegacyStack';
 import {Box} from '../Box';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 import {useFeatures} from '../../utilities/features';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 
 import styles from './MediaCard.scss';
 
@@ -88,7 +88,7 @@ export function MediaCard({
   ) : null;
 
   const popoverActivator = (
-    <HorizontalStack blockAlign="center">
+    <InlineStack blockAlign="center">
       <Button
         icon={HorizontalDotsMinor}
         onClick={togglePopoverActive}
@@ -96,7 +96,7 @@ export function MediaCard({
         accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
         variant="primaryPlain"
       />
-    </HorizontalStack>
+    </InlineStack>
   );
 
   const popoverActionsMarkup =
@@ -167,10 +167,10 @@ export function MediaCard({
         insetInlineEnd="5"
         zIndex="var(--p-z-index-2)"
       >
-        <HorizontalStack gap="1" wrap={!polarisSummerEditions2023}>
+        <InlineStack gap="1" wrap={!polarisSummerEditions2023}>
           {popoverActionsMarkup}
           {dismissButtonMarkup}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
     ) : null;
 
@@ -181,14 +181,14 @@ export function MediaCard({
         <div className={infoContainerClassName}>
           {polarisSummerEditions2023 ? (
             <Box padding="5">
-              <VerticalStack gap="2">
-                <HorizontalStack wrap={false} align="space-between" gap="2">
+              <BlockStack gap="2">
+                <InlineStack wrap={false} align="space-between" gap="2">
                   {headerMarkup}
                   {popoverOrDismissMarkup}
-                </HorizontalStack>
+                </InlineStack>
                 <p className={styles.Description}>{description}</p>
                 {actionMarkup}
-              </VerticalStack>
+              </BlockStack>
             </Box>
           ) : (
             <LegacyCard.Section>

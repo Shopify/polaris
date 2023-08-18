@@ -1,37 +1,37 @@
 import React from 'react';
-import {VerticalStack, HorizontalStack, Text, Divider} from '@shopify/polaris';
+import {
+  BlockStack,
+  Page,
+  InlineStack,
+  Text,
+  Divider,
+} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function VerticalStackWithAlignExample() {
+function BlockStackWithInlineAlignExample() {
   return (
-    <>
-      <Divider />
-      <div style={{display: 'flex', height: '200px'}}>
-        <VerticalStack align="start">
+    <Page>
+      <BlockStack gap="8">
+        <BlockStack inlineAlign="start">
           <Placeholder height="48px" width="320px" label="Start" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
-      </div>
-      <Divider />
-      <div style={{display: 'flex', height: '200px'}}>
-        <VerticalStack align="center">
+        </BlockStack>
+        <Divider />
+        <BlockStack inlineAlign="center">
           <Placeholder height="48px" width="320px" label="Center" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
-      </div>
-      <Divider />
-      <div style={{display: 'flex', height: '200px'}}>
-        <VerticalStack align="end">
+        </BlockStack>
+        <Divider />
+        <BlockStack inlineAlign="end">
           <Placeholder height="48px" width="320px" label="End" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
-      </div>
-      <Divider />
-    </>
+        </BlockStack>
+      </BlockStack>
+    </Page>
   );
 }
 
@@ -53,7 +53,7 @@ const Placeholder = ({
           : 'none',
       }}
     >
-      <HorizontalStack align="center">
+      <InlineStack align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
@@ -63,9 +63,9 @@ const Placeholder = ({
             {label}
           </Text>
         </div>
-      </HorizontalStack>
+      </InlineStack>
     </div>
   );
 };
 
-export default withPolarisExample(VerticalStackWithAlignExample);
+export default withPolarisExample(BlockStackWithInlineAlignExample);

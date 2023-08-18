@@ -1,4 +1,4 @@
-import {VerticalStack, Icon, HorizontalStack, Text} from '@shopify/polaris';
+import {BlockStack, Icon, InlineStack, Text} from '@shopify/polaris';
 import {InfoMinor} from '@shopify/polaris-icons';
 import styles from './TipBanner.module.scss';
 
@@ -10,17 +10,17 @@ interface Props {
 function TipBanner({title, children}: Props) {
   return (
     <div className={styles.TipBanner}>
-      <VerticalStack gap="2">
-        <HorizontalStack gap="2">
+      <BlockStack gap="2">
+        <InlineStack gap="2">
           <div>
             <Icon source={InfoMinor} color="highlight" />
           </div>
           <Text as="h4" variant="headingMd">
             {title}
           </Text>
-        </HorizontalStack>
+        </InlineStack>
         {children}
-      </VerticalStack>
+      </BlockStack>
     </div>
   );
 }

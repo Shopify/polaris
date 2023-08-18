@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {MediaCard, VerticalStack, VideoThumbnail} from '@shopify/polaris';
+import {MediaCard, BlockStack, VideoThumbnail} from '@shopify/polaris';
 
 export default {
   component: MediaCard,
@@ -225,11 +225,11 @@ export function All() {
   );
 
   return (
-    <VerticalStack gap="5">
+    <BlockStack gap="5">
       <MediaCardExample title="Default medium" />
       <MediaCardExample title="Default small" size="small" />
       <MediaCardExample title="Portrait medium" portrait />
       <MediaCardExample title="Portrait small" portrait size="small" />
-    </VerticalStack>
+    </BlockStack>
   );
 }

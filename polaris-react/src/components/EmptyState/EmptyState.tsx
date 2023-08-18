@@ -6,8 +6,8 @@ import {Box} from '../Box';
 import {buttonFrom} from '../Button';
 import {Image} from '../Image';
 import {Text} from '../Text';
-import {VerticalStack} from '../VerticalStack';
-import {HorizontalStack} from '../HorizontalStack';
+import {BlockStack} from '../BlockStack';
+import {InlineStack} from '../InlineStack';
 
 import styles from './EmptyState.scss';
 
@@ -111,20 +111,20 @@ export function EmptyState({
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <HorizontalStack align="center" gap="2">
+      <InlineStack align="center" gap="2">
         {secondaryActionMarkup}
         {primaryActionMarkup}
-      </HorizontalStack>
+      </InlineStack>
     ) : null;
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
       <Box maxWidth={fullWidth ? '100%' : '400px'}>
-        <VerticalStack inlineAlign="center">
+        <BlockStack inlineAlign="center">
           {textContentMarkup}
           {actionsMarkup}
           {footerContentMarkup}
-        </VerticalStack>
+        </BlockStack>
       </Box>
     ) : null;
 
@@ -135,10 +135,10 @@ export function EmptyState({
       paddingBlockStart="5"
       paddingBlockEnd="16"
     >
-      <VerticalStack inlineAlign="center">
+      <BlockStack inlineAlign="center">
         {imageMarkup}
         {detailsMarkup}
-      </VerticalStack>
+      </BlockStack>
     </Box>
   );
 }

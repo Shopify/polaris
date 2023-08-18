@@ -7,7 +7,7 @@ import {Text} from '../../Text';
 import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
-import {HorizontalStack} from '../../HorizontalStack';
+import {InlineStack} from '../../InlineStack';
 
 describe('<EmptyState />', () => {
   let imgSrc =
@@ -50,12 +50,12 @@ describe('<EmptyState />', () => {
       });
     });
 
-    it('adds center align and spacing-2 to HorizontalStack', () => {
+    it('adds center align and spacing-2 to InlineStack', () => {
       const emptyState = mountWithApp(
         <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
       );
 
-      expect(emptyState).toContainReactComponent(HorizontalStack, {
+      expect(emptyState).toContainReactComponent(InlineStack, {
         align: 'center',
         gap: '2',
       });

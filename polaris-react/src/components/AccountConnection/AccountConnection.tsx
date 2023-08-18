@@ -6,9 +6,9 @@ import {buttonFrom} from '../Button';
 import {SettingAction} from '../SettingAction';
 import {Card} from '../Card';
 import {Box} from '../Box';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 import {Text} from '../Text';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
 export interface AccountConnectionProps {
@@ -82,13 +82,13 @@ export function AccountConnection({
   return (
     <Card>
       <SettingAction action={actionElement}>
-        <HorizontalStack gap="4">
+        <InlineStack gap="4">
           {avatarMarkup}
-          <VerticalStack gap="1">
+          <BlockStack gap="1">
             {titleMarkup}
             {detailsMarkup}
-          </VerticalStack>
-        </HorizontalStack>
+          </BlockStack>
+        </InlineStack>
       </SettingAction>
       {termsOfServiceMarkup}
     </Card>

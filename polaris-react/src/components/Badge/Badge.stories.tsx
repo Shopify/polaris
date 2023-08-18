@@ -3,9 +3,9 @@ import type {ComponentMeta} from '@storybook/react';
 import type {BadgeProps} from '@shopify/polaris';
 import {
   Badge,
-  HorizontalStack,
+  InlineStack,
   LegacyCard,
-  VerticalStack,
+  BlockStack,
   Text,
   Box,
 } from '@shopify/polaris';
@@ -134,15 +134,15 @@ export function All() {
     <LegacyCard sectioned>
       {sizeEntries.map(([size, sizeLabel]) => (
         <Box key={size} paddingBlockEnd="2">
-          <VerticalStack gap="3">
+          <BlockStack gap="3">
             <Text as="h2" variant="headingXl">
               Size: {sizeLabel}
             </Text>
-            <VerticalStack gap="2">
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 Status only
               </Text>
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 {statusEntries.map(([status, statusLabel]) => (
                   <Badge
                     key={status}
@@ -152,14 +152,14 @@ export function All() {
                     {statusLabel}
                   </Badge>
                 ))}
-              </HorizontalStack>
-            </VerticalStack>
-            <VerticalStack gap="2">
+              </InlineStack>
+            </BlockStack>
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 Status with progress
               </Text>
               {progressEntries.map(([progress]) => (
-                <HorizontalStack key={progress} gap="2">
+                <InlineStack key={progress} gap="2">
                   {statusEntries.map(([status, statusLabel]) => (
                     <Badge
                       key={status}
@@ -170,16 +170,16 @@ export function All() {
                       {statusLabel}
                     </Badge>
                   ))}
-                </HorizontalStack>
+                </InlineStack>
               ))}
-            </VerticalStack>
+            </BlockStack>
             {/* Remove `size` condition when micro icons are available */}
             {size === 'large-experimental' && (
-              <VerticalStack gap="2">
+              <BlockStack gap="2">
                 <Text as="h2" variant="headingXs">
                   Status with icon
                 </Text>
-                <HorizontalStack gap="2">
+                <InlineStack gap="2">
                   {statusEntries.map(([status, statusLabel]) => (
                     <Badge
                       key={status}
@@ -190,15 +190,15 @@ export function All() {
                       {statusLabel}
                     </Badge>
                   ))}
-                </HorizontalStack>
-              </VerticalStack>
+                </InlineStack>
+              </BlockStack>
             )}
             {/* TODO: Re-enable the following examples when designs are available (post se23) */}
-            {/* <VerticalStack gap="2">
+            {/* <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 Status with icon only
               </Text>
-              <HorizontalStack gap="2">
+              <InlineStack gap="2">
                 {statusEntries.map(([status]) => (
                   <Badge
                     key={status}
@@ -207,9 +207,9 @@ export function All() {
                     status={status === 'default' ? undefined : status}
                   />
                 ))}
-              </HorizontalStack>
-            </VerticalStack> */}
-          </VerticalStack>
+              </InlineStack>
+            </BlockStack> */}
+          </BlockStack>
         </Box>
       ))}
     </LegacyCard>

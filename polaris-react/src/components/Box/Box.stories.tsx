@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {VerticalStack, Text, Box, Icon} from '@shopify/polaris';
+import {BlockStack, Text, Box, Icon} from '@shopify/polaris';
 import {PaintBrushMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -17,7 +17,7 @@ export function Default() {
 
 export function WithBorders() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Box background="bg" padding="4" borderWidth="1" borderColor="border">
         <Text as="p">1px solid border</Text>
       </Box>
@@ -100,13 +100,13 @@ export function WithBorders() {
       >
         <Text as="p">5px solid transparent</Text>
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
 export function WithOutline() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Box background="bg" padding="4" outlineWidth="1" outlineColor="border">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
@@ -151,7 +151,7 @@ export function WithOutline() {
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -165,7 +165,7 @@ export function WithBorderRadius() {
 
 export function WithResponsivePadding() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Box
         background="bg"
         padding={{xs: '2', sm: '8'}}
@@ -209,6 +209,6 @@ export function WithResponsivePadding() {
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }

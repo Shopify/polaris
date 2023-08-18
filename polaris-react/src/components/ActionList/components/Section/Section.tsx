@@ -7,8 +7,8 @@ import type {
   ActionListItemDescriptor,
   ActionListSection,
 } from '../../../../types';
-import {HorizontalStack} from '../../../HorizontalStack';
-import {VerticalStack} from '../../../VerticalStack';
+import {InlineStack} from '../../../InlineStack';
+import {BlockStack} from '../../../BlockStack';
 
 export interface SectionProps {
   /** Section of action items */
@@ -58,7 +58,7 @@ export function Section({
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
         >
-          <HorizontalStack wrap={false}>{itemMarkup}</HorizontalStack>
+          <InlineStack wrap={false}>{itemMarkup}</InlineStack>
         </Box>
       );
     },
@@ -108,13 +108,9 @@ export function Section({
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        <VerticalStack
-          gap="1"
-          as="ul"
-          {...(sectionRole && {role: sectionRole})}
-        >
+        <BlockStack gap="1" as="ul" {...(sectionRole && {role: sectionRole})}>
           {actionMarkup}
-        </VerticalStack>
+        </BlockStack>
       </Box>
     </>
   );

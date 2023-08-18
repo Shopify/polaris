@@ -5,7 +5,7 @@ import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
 import {Icon} from '../../../Icon';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {FilterButton} from '../FilterButton';
 import {useFeatures} from '../../../../utilities/features';
 
@@ -31,10 +31,10 @@ export function SearchFilterButton({
   const {polarisSummerEditions2023: se23} = useFeatures();
 
   const iconMarkup = (
-    <HorizontalStack gap="0">
+    <InlineStack gap="0">
       {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
       {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
-    </HorizontalStack>
+    </InlineStack>
   );
 
   const childMarkup = !se23 ? iconMarkup : null;
