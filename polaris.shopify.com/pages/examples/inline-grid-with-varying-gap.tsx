@@ -1,16 +1,16 @@
 import React from 'react';
-import {HorizontalGrid} from '@shopify/polaris';
+import {InlineGrid} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function HorizontalGridWithVaryingGapExample() {
+function InlineGridWithVaryingGapExample() {
   return (
     <SpacingBackground>
-      <HorizontalGrid gap="4" columns={3}>
+      <InlineGrid gap="4" columns={3}>
         <Placeholder height="320px" />
         <Placeholder height="320px" />
         <Placeholder height="320px" />
-      </HorizontalGrid>
+      </InlineGrid>
     </SpacingBackground>
   );
 }
@@ -48,4 +48,4 @@ const Placeholder = ({height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(HorizontalGridWithVaryingGapExample);
+export default withPolarisExample(InlineGridWithVaryingGapExample);
