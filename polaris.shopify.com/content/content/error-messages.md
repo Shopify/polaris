@@ -682,9 +682,9 @@ Don’t use when:
 
 - Don’t use the “Something went wrong. Please try again in a few minutes.” message when there’s any option to offer more context.
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -697,7 +697,7 @@ Don’t use when:
 - 1 error
 - Invalid
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -707,7 +707,7 @@ These content guidelines are based on common copy mistakes. Avoid sounding overl
 
 Avoid the word “please” so it’s not overused throughout the admin. Don’t downplay serious problems.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -717,11 +717,11 @@ Avoid the word “please” so it’s not overused throughout the admin. Don’t
 
 - Today’s sales data **might** not be accurate, but **please don’t worry—it’s just temporary**.
 
-<!-- end -->
+</DoDont>
 
 Don’t use scary, technical words in error messages.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -731,11 +731,11 @@ Don’t use scary, technical words in error messages.
 
 - **Error** **Line items grams** must be greater than or equal to 0.
 
-<!-- end -->
+</DoDont>
 
 Error messages are not the place for hyperbole or injecting personality.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -750,11 +750,11 @@ Before fulfilling this order or capturing payment, review the Risk Analysis and 
 Looks like there’s a high fraud risk with this order. Better review the Risk
 Analysis to make sure the order is safe!
 
-<!-- end -->
+</DoDont>
 
 Don’t use internal Shopify terms. Only include the information merchants need.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -766,11 +766,11 @@ There’s a technical problem with Shopify that has prevented this page from loa
 
 - There’s a technical problem with Shopify that has prevented this page from loading. **Our operation engineers are aware of this problem and are working hard to get it solved**.
 
-<!-- end -->
+</DoDont>
 
 Keep Shopify out of the conversation. Focus on the information merchants need to complete their task efficiently.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -780,4 +780,4 @@ Keep Shopify out of the conversation. Focus on the information merchants need to
 
 - Before **we** can provide you with earnings from your store, **we** need some additional information. [Complete account setup]
 
-<!-- end -->
+</DoDont>
