@@ -212,3 +212,27 @@ export function isKeyOf<T extends {[key: string]: any}>(
 ): key is keyof T {
   return Object.keys(obj).includes(key as string);
 }
+
+/**
+ * Identity function creator that returns the provided input,
+ * but additionally validates the input matches the type exactly
+ * and infers all members.
+ *
+ * TODO: Replace all instances with `satisfies` when we upgrade
+ * to TypeScript >=4.9
+ *
+ * @example
+ * ```
+ * type ExampleShape = { [key: string]: string }
+ * const createExample = createExact<ExampleShape>()
+ *
+ * const example = createExample({
+ *  foo: 'bar',
+ * })
+ * ```
+ *
+ * Where `typeof example` is inferred as `{ foo: string }`
+ */
+export function createExact<T extends object>() {
+  return <U extends Exact<T, U>>(obj: U) => obj;
+}
