@@ -76,7 +76,7 @@ export function AccountConnection({
   ) : null;
 
   const actionElement = action
-    ? buttonFrom(action, {variant: connected ? 'default' : 'primary'})
+    ? buttonFrom(action, {variant: connected ? undefined : 'primary'})
     : null;
 
   return (

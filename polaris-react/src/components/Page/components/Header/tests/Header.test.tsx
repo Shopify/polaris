@@ -110,7 +110,6 @@ describe('<Header />', () => {
       );
 
       expect(header).toContainReactComponent(Button, {
-        variant: 'default',
         children: buttonContent,
       });
     });

@@ -277,7 +277,7 @@ function PrimaryActionMarkup({
     const content = buttonFrom(
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
-        variant: primary ? 'primary' : 'default',
+        variant: primary ? 'primary' : undefined,
       },
     );
 

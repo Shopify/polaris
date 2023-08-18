@@ -78,7 +78,6 @@ describe('<AccountConnection />', () => {
       expect(accountConnection).toContainReactComponent(Button, {
         children: action.content,
         onClick: action.onAction,
-        variant: 'default',
       });
     });
   });
