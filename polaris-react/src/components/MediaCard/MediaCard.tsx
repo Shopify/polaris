@@ -11,10 +11,8 @@ import {Text} from '../Text';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
-import {LegacyStack} from '../LegacyStack';
 import {Box} from '../Box';
 import {InlineStack} from '../InlineStack';
-import {useFeatures} from '../../utilities/features';
 import {BlockStack} from '../BlockStack';
 
 import styles from './MediaCard.scss';
@@ -59,22 +57,18 @@ export function MediaCard({
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
-  const {polarisSummerEditions2023} = useFeatures();
 
   let headerMarkup = null;
   if (title) {
     const headerContent =
       typeof title === 'string' ? (
-        <Text
-          variant={polarisSummerEditions2023 ? 'headingSm' : 'headingMd'}
-          as="h2"
-        >
+        <Text variant="headingSm" as="h2">
           {title}
         </Text>
       ) : (
         title
       );
-    headerMarkup = <div className={styles.Heading}>{headerContent}</div>;
+    headerMarkup = <div>{headerContent}</div>;
   }
 
   const dismissButtonMarkup = onDismiss ? (
@@ -84,7 +78,7 @@ export function MediaCard({
       size="slim"
       plain
       accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
-      primary={polarisSummerEditions2023}
+      primary
     />
   ) : null;
 
@@ -96,7 +90,7 @@ export function MediaCard({
         size="slim"
         plain
         accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
-        primary={polarisSummerEditions2023}
+        primary
       />
     </InlineStack>
   );
@@ -118,15 +112,11 @@ export function MediaCard({
     ) : null;
 
   const primaryActionMarkup = primaryAction ? (
-    <div className={styles.PrimaryAction}>{buttonFrom(primaryAction)}</div>
+    <div>{buttonFrom(primaryAction)}</div>
   ) : null;
 
   const secondaryActionMarkup = secondaryAction ? (
-    <div className={styles.SecondaryAction}>
-      {polarisSummerEditions2023
-        ? buttonFrom(secondaryAction)
-        : buttonFrom(secondaryAction, {plain: true})}
-    </div>
+    <div>{buttonFrom(secondaryAction)}</div>
   ) : null;
 
   const actionClassName = classNames(
@@ -163,13 +153,8 @@ export function MediaCard({
 
   const popoverOrDismissMarkup =
     popoverActionsMarkup || dismissButtonMarkup ? (
-      <Box
-        position="absolute"
-        insetBlockStart={polarisSummerEditions2023 ? undefined : '4'}
-        insetInlineEnd="5"
-        zIndex="var(--p-z-index-2)"
-      >
-        <InlineStack gap="1" wrap={!polarisSummerEditions2023}>
+      <Box position="absolute" insetInlineEnd="5" zIndex="var(--p-z-index-2)">
+        <InlineStack gap="1" wrap={false}>
           {popoverActionsMarkup}
           {dismissButtonMarkup}
         </InlineStack>
@@ -181,27 +166,16 @@ export function MediaCard({
       <div className={mediaCardClassName}>
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
-          {polarisSummerEditions2023 ? (
-            <Box padding="5">
-              <BlockStack gap="2">
-                <InlineStack wrap={false} align="space-between" gap="2">
-                  {headerMarkup}
-                  {popoverOrDismissMarkup}
-                </InlineStack>
-                <p className={styles.Description}>{description}</p>
-                {actionMarkup}
-              </BlockStack>
-            </Box>
-          ) : (
-            <LegacyCard.Section>
-              {popoverOrDismissMarkup}
-              <LegacyStack vertical spacing="tight">
+          <Box padding="5">
+            <BlockStack gap="2">
+              <InlineStack wrap={false} align="space-between" gap="2">
                 {headerMarkup}
-                <p className={styles.Description}>{description}</p>
-                {actionMarkup}
-              </LegacyStack>
-            </LegacyCard.Section>
-          )}
+                {popoverOrDismissMarkup}
+              </InlineStack>
+              <p className={styles.Description}>{description}</p>
+              {actionMarkup}
+            </BlockStack>
+          </Box>
         </div>
       </div>
     </LegacyCard>
