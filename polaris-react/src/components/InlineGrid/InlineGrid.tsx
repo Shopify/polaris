@@ -8,15 +8,15 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveValue, ResponsiveProp} from '../../utilities/css';
 
-import styles from './HorizontalGrid.scss';
+import styles from './InlineGrid.scss';
 
 type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];
 type Columns = ResponsiveProp<ColumnsType>;
 type Gap = ResponsiveProp<SpaceScale>;
-type HorizontalGridAlignItems = 'start' | 'end' | 'center';
+type InlineGridAlignItems = 'start' | 'end' | 'center';
 
-export interface HorizontalGridProps extends React.AriaAttributes {
+export interface InlineGridProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** The number of columns to display. Accepts either a single value or an object of values for different screen sizes.
    * @example
@@ -34,48 +34,43 @@ export interface HorizontalGridProps extends React.AriaAttributes {
    * @example
    * alignItems='start'
    */
-  alignItems?: HorizontalGridAlignItems;
+  alignItems?: InlineGridAlignItems;
 }
 
-export function HorizontalGrid({
+export function InlineGrid({
   children,
   columns,
   gap,
   alignItems,
-}: HorizontalGridProps) {
+}: InlineGridProps) {
   const style = {
     ...getResponsiveValue(
-      'horizontal-grid',
+      'inline-grid',
       'grid-template-columns',
-      formatHorizontalGrid(columns),
+      formatInlineGrid(columns),
     ),
-    ...getResponsiveProps('horizontal-grid', 'gap', 'space', gap),
-    '--pc-horizontal-grid-align-items': alignItems,
+    ...getResponsiveProps('inline-grid', 'gap', 'space', gap),
+    '--pc-inline-grid-align-items': alignItems,
   } as React.CSSProperties;
 
   return (
-    <div
-      className={styles.HorizontalGrid}
-      style={sanitizeCustomProperties(style)}
-    >
+    <div className={styles.InlineGrid} style={sanitizeCustomProperties(style)}>
       {children}
     </div>
   );
 }
 
-function formatHorizontalGrid(columns?: Columns): ResponsiveValue {
+function formatInlineGrid(columns?: Columns): ResponsiveValue {
   if (
     typeof columns === 'object' &&
     columns !== null &&
     !Array.isArray(columns)
   ) {
     return Object.fromEntries(
-      Object.entries(columns).map(
-        ([breakpointAlias, breakpointHorizontalGrid]) => [
-          breakpointAlias,
-          getColumnValue(breakpointHorizontalGrid),
-        ],
-      ),
+      Object.entries(columns).map(([breakpointAlias, breakpointInlineGrid]) => [
+        breakpointAlias,
+        getColumnValue(breakpointInlineGrid),
+      ]),
     );
   }
 

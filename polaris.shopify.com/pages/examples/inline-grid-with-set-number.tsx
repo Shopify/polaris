@@ -1,14 +1,14 @@
 import React from 'react';
-import {HorizontalGrid} from '@shopify/polaris';
+import {InlineGrid} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function HorizontalGridWithSetNumberExample() {
+function InlineGridWithSetNumberExample() {
   return (
-    <HorizontalGrid columns={2}>
+    <InlineGrid columns={2}>
       <Placeholder height="320px" />
       <Placeholder height="320px" showBorder />
-    </HorizontalGrid>
+    </InlineGrid>
   );
 }
 
@@ -28,4 +28,4 @@ const Placeholder = ({height = 'auto', width = 'auto', showBorder = false}) => {
   );
 };
 
-export default withPolarisExample(HorizontalGridWithSetNumberExample);
+export default withPolarisExample(InlineGridWithSetNumberExample);

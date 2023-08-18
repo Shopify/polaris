@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Box} from '../../../Box';
 import {CloseButton} from '../CloseButton';
-import {HorizontalGrid} from '../../../HorizontalGrid';
+import {InlineGrid} from '../../../InlineGrid';
 import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import {useFeatures} from '../../../../utilities/features';
@@ -58,7 +58,7 @@ export function Header({
         polarisSummerEditions2023 ? 'bg-secondary-experimental' : undefined
       }
     >
-      <HorizontalGrid columns={{xs: '1fr auto'}} gap="4">
+      <InlineGrid columns={{xs: '1fr auto'}} gap="4">
         <InlineStack gap="4" blockAlign="center">
           <Text
             id={id}
@@ -74,7 +74,7 @@ export function Header({
           titleHidden={titleHidden}
           onClick={onClose}
         />
-      </HorizontalGrid>
+      </InlineGrid>
     </Box>
   );
 }

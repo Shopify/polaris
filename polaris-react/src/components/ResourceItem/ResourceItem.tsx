@@ -7,7 +7,7 @@ import {Box} from '../Box';
 import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
-import {HorizontalGrid} from '../HorizontalGrid';
+import {InlineGrid} from '../InlineGrid';
 import {InlineStack} from '../InlineStack';
 import type {InlineStackProps} from '../InlineStack';
 import {Popover} from '../Popover';
@@ -177,7 +177,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       typeof InlineStack
     >['gap'] = polarisSummerEditions2023 ? '3' : '4';
     const gapBetweenOwnedAndChildren: React.ComponentProps<
-      typeof HorizontalGrid
+      typeof InlineGrid
     >['gap'] = polarisSummerEditions2023 ? '3' : '5';
 
     if (selectable) {
@@ -310,8 +310,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         paddingBlockEnd={itemPaddingBlock}
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <HorizontalGrid columns={{xs: '1fr auto'}}>
-          <HorizontalGrid
+        <InlineGrid columns={{xs: '1fr auto'}}>
+          <InlineGrid
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
             gap={gapBetweenOwnedAndChildren}
           >
@@ -321,10 +321,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                 {children}
               </Box>
             </InlineStack>
-          </HorizontalGrid>
+          </InlineGrid>
           {actionsMarkup}
           {disclosureMarkup}
-        </HorizontalGrid>
+        </InlineGrid>
       </Box>
     );
 

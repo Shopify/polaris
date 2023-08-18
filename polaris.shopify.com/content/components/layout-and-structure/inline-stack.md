@@ -38,7 +38,7 @@ examples:
 
 ## Related components
 
-- To create the large-scale structure of pages, [use the HorizontalGrid component](https://polaris.shopify.com/components/layout-and-structure/horizontal-grid)
+- To create the large-scale structure of pages, [use the InlineGrid component](https://polaris.shopify.com/components/layout-and-structure/inline-grid)
 - To display elements vertically, [use the VerticalStack component](https://polaris.shopify.com/components/vertical-stack)
 
 ## Related resources
