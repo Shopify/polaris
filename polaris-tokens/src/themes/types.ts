@@ -24,10 +24,12 @@ export type ThemeVariantPartialShape = {
   };
 };
 
+export type ThemeVariant = ThemeBase;
+
 export type ThemeName = typeof themeNames[number];
 
 export type Themes = {
-  [T in ThemeName]: ThemeBase;
+  [T in ThemeName]: ThemeVariant;
 };
 
 export type ThemesPartials = {

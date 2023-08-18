@@ -1,36 +1,20 @@
+import deepmerge from 'deepmerge';
+
 import type {Exact} from '../types';
+import {createExact} from '../utilities';
 
-import type {ThemeShape, ThemeVariantPartialShape} from './types';
+import type {ThemeVariant, ThemeVariantPartialShape} from './types';
 import {themeNameLightUplift} from './constants';
-
-/**
- * Identity function creator that returns the provided input,
- * but additionally validates the input matches the type exactly
- * and infers all members.
- *
- * TODO: Replace all instances with `satisfies` when we upgrade
- * to TypeScript >=4.9
- *
- * @example
- * ```
- * type ExampleShape = { [key: string]: string }
- * const createExample = createExact<ExampleShape>()
- *
- * const example = createExample({
- *  foo: 'bar',
- * })
- * ```
- *
- * Where `typeof example` is inferred as `{ foo: string }`
- */
-function createExact<T extends object>() {
-  return <U extends Exact<T, U>>(obj: U) => obj;
-}
-
-export const createThemeBase = createExact<ThemeShape>();
+import {themeBase} from './base';
 
 export const createThemeVariantPartial =
   createExact<ThemeVariantPartialShape>();
+
+export function createThemeVariant<
+  T extends Exact<ThemeVariantPartialShape, T>,
+>(themeVariantPartial: T): ThemeVariant {
+  return deepmerge(themeBase, themeVariantPartial);
+}
 
 export function createThemeClassName(themeName: string) {
   return themeName === themeNameLightUplift

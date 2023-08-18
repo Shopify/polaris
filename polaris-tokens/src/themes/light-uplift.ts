@@ -1,10 +1,6 @@
-import deepmerge from 'deepmerge';
-
 import * as colors from '../colors-experimental';
 
-import {createThemeVariantPartial} from './utils';
-import type {ThemeBase} from './base';
-import {themeBase} from './base';
+import {createThemeVariantPartial, createThemeVariant} from './utils';
 
 export const themeLightUpliftPartial = createThemeVariantPartial({
   motion: {
@@ -176,7 +172,4 @@ export const themeLightUpliftPartial = createThemeVariantPartial({
   },
 });
 
-export const themeLightUplift = deepmerge(
-  themeBase,
-  themeLightUpliftPartial,
-) as ThemeBase;
+export const themeLightUplift = createThemeVariant(themeLightUpliftPartial);
