@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Card, FormLayout, TextField, VerticalStack} from '@shopify/polaris';
+import {Card, FormLayout, TextField, BlockStack} from '@shopify/polaris';
 
 export default {
   component: FormLayout,
@@ -56,7 +56,7 @@ export function CondensedFieldGroup() {
 
 export function All() {
   return (
-    <VerticalStack gap="5">
+    <BlockStack gap="5">
       <Card>
         <FormLayout>
           <FormLayout.Group
@@ -102,6 +102,6 @@ export function All() {
           </FormLayout.Group>
         </FormLayout>
       </Card>
-    </VerticalStack>
+    </BlockStack>
   );
 }

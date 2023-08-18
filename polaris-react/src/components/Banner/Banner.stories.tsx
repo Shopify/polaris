@@ -2,7 +2,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  VerticalStack,
+  BlockStack,
   Banner,
   Button,
   Card,
@@ -179,7 +179,7 @@ export function WithFocus() {
 export function InACard() {
   return (
     <Card roundedAbove="sm">
-      <VerticalStack gap="3">
+      <BlockStack gap="3">
         <Text as="h2" variant="headingMd">
           Online store dashboard
         </Text>
@@ -190,7 +190,7 @@ export function InACard() {
           </Text>
         </Banner>
         <Text as="p">View a summary of your online store’s performance.</Text>
-      </VerticalStack>
+      </BlockStack>
     </Card>
   );
 }
@@ -215,7 +215,7 @@ export function InALegacyCard() {
 export function WithEndJustifiedContent() {
   return (
     <Banner status="critical">
-      <VerticalStack gap="1">
+      <BlockStack gap="1">
         <InlineStack gap="4" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
@@ -225,7 +225,7 @@ export function WithEndJustifiedContent() {
           </Link>
         </InlineStack>
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
-      </VerticalStack>
+      </BlockStack>
     </Banner>
   );
 }
@@ -255,7 +255,7 @@ export function CustomIcon() {
 
 export function All() {
   return (
-    <VerticalStack gap="3">
+    <BlockStack gap="3">
       <Text as="h2" variant="headingMd">
         With dismiss and actions
       </Text>
@@ -394,13 +394,13 @@ export function All() {
           }
         />
       </LegacyCard>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
 function AllBanners(props) {
   return (
-    <VerticalStack>
+    <BlockStack>
       <Banner
         title="Default"
         children={<Text as="p">Default status</Text>}
@@ -430,6 +430,6 @@ function AllBanners(props) {
         children={<Text as="p">Critical status</Text>}
         {...props}
       />
-    </VerticalStack>
+    </BlockStack>
   );
 }

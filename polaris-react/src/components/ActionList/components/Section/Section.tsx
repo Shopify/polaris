@@ -8,7 +8,7 @@ import type {
   ActionListSection,
 } from '../../../../types';
 import {InlineStack} from '../../../InlineStack';
-import {VerticalStack} from '../../../VerticalStack';
+import {BlockStack} from '../../../BlockStack';
 
 export interface SectionProps {
   /** Section of action items */
@@ -108,13 +108,9 @@ export function Section({
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        <VerticalStack
-          gap="1"
-          as="ul"
-          {...(sectionRole && {role: sectionRole})}
-        >
+        <BlockStack gap="1" as="ul" {...(sectionRole && {role: sectionRole})}>
           {actionMarkup}
-        </VerticalStack>
+        </BlockStack>
       </Box>
     </>
   );

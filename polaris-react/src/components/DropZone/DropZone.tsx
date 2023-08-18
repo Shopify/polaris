@@ -21,7 +21,7 @@ import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 import {useEventListener} from '../../utilities/use-event-listener';
 
 import {FileUpload} from './components';
@@ -388,14 +388,14 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     }
     return (
       <div className={styles.Overlay}>
-        <VerticalStack gap="2" inlineAlign="center">
+        <BlockStack gap="2" inlineAlign="center">
           {size === 'small' && <Icon source={icon} color={iconColor} />}
           {(size === 'medium' || size === 'large') && (
             <Text variant="bodySm" as="p" fontWeight="bold">
               {text}
             </Text>
           )}
-        </VerticalStack>
+        </BlockStack>
       </div>
     );
   }

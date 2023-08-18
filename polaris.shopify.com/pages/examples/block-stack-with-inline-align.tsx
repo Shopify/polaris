@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  VerticalStack,
+  BlockStack,
   Page,
   InlineStack,
   Text,
@@ -9,28 +9,28 @@ import {
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function VerticalStackWithInlineAlignExample() {
+function BlockStackWithInlineAlignExample() {
   return (
     <Page>
-      <VerticalStack gap="8">
-        <VerticalStack inlineAlign="start">
+      <BlockStack gap="8">
+        <BlockStack inlineAlign="start">
           <Placeholder height="48px" width="320px" label="Start" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
+        </BlockStack>
         <Divider />
-        <VerticalStack inlineAlign="center">
+        <BlockStack inlineAlign="center">
           <Placeholder height="48px" width="320px" label="Center" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
+        </BlockStack>
         <Divider />
-        <VerticalStack inlineAlign="end">
+        <BlockStack inlineAlign="end">
           <Placeholder height="48px" width="320px" label="End" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
-        </VerticalStack>
-      </VerticalStack>
+        </BlockStack>
+      </BlockStack>
     </Page>
   );
 }
@@ -68,4 +68,4 @@ const Placeholder = ({
   );
 };
 
-export default withPolarisExample(VerticalStackWithInlineAlignExample);
+export default withPolarisExample(BlockStackWithInlineAlignExample);
