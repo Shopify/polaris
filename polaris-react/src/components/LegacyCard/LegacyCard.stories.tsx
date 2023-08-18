@@ -14,7 +14,7 @@ import {
   LegacyStack,
   Text,
   TextContainer,
-  VerticalStack,
+  BlockStack,
   Box,
 } from '@shopify/polaris';
 import {ProductsMajor, CancelMajor} from '@shopify/polaris-icons';
@@ -405,7 +405,7 @@ export function WithFlushedSections() {
 
 export function All() {
   return (
-    <VerticalStack gap="2">
+    <BlockStack gap="2">
       <LegacyCard title="All headings">
         <LegacyCard.Section title="Section 1 heading">
           Section 1 content
@@ -508,7 +508,7 @@ export function All() {
       <LegacyCard title="Only one header section" />
       <LegacyCard>
         <LegacyCard.Section title="First outside section">
-          <VerticalStack gap="2">
+          <BlockStack gap="2">
             <Box>
               <LegacyCard.Section subdued>
                 First nested section
@@ -519,10 +519,10 @@ export function All() {
                 Second nested section
               </LegacyCard.Section>
             </Box>
-          </VerticalStack>
+          </BlockStack>
         </LegacyCard.Section>
         <LegacyCard.Section title="Second outside section">
-          <VerticalStack gap="2">
+          <BlockStack gap="2">
             <Box>
               <LegacyCard.Section subdued>
                 First nested section
@@ -533,7 +533,7 @@ export function All() {
                 Second nested section
               </LegacyCard.Section>
             </Box>
-          </VerticalStack>
+          </BlockStack>
         </LegacyCard.Section>
       </LegacyCard>
       <LegacyCard>
@@ -547,7 +547,7 @@ export function All() {
         </LegacyCard.Header>
       </LegacyCard>
       <WithAllElements />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 

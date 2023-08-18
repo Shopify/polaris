@@ -5,7 +5,7 @@ import React, {
   useContext,
   useId,
 } from 'react';
-import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
+import {MinusMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
@@ -15,7 +15,6 @@ import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
 import type {Error, CheckboxHandles} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Checkbox.scss';
 
@@ -85,7 +84,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const uniqId = useId();
     const id = idProp ?? uniqId;
     const isWithinListbox = useContext(WithinListboxContext);
-    const {polarisSummerEditions2023} = useFeatures();
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -131,11 +129,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       ? {indeterminate: 'true', 'aria-checked': 'mixed' as const}
       : {'aria-checked': isChecked};
 
-    const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;
-
-    const animatedTickIcon = polarisSummerEditions2023 && !isIndeterminate;
-
-    const iconSourceSe23 = (
+    const iconSource = (
       <svg
         viewBox="0 0 16 16"
         shapeRendering="geometricPrecision"
@@ -209,10 +203,10 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
           <span
             className={classNames(
               styles.Icon,
-              animatedTickIcon && styles.animated,
+              !isIndeterminate && styles.animated,
             )}
           >
-            {animatedTickIcon ? iconSourceSe23 : <Icon source={iconSource} />}
+            {isIndeterminate ? <Icon source={MinusMinor} /> : iconSource}
           </span>
         </span>
       </Choice>

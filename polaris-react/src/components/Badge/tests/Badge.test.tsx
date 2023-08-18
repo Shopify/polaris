@@ -35,18 +35,13 @@ describe('<Badge />', () => {
 
   it('does not add pip styles when progress is not provided', () => {
     const badge = mountWithApp(<Badge status="attention" />);
-
-    expect(badge).not.toContainReactComponent('span', {
-      className: 'Pip',
-    });
+    expect(badge).not.toContainReactComponent(Icon);
   });
 
   it('renders with pip styles when progress is provided', () => {
     const badge = mountWithApp(<Badge progress="incomplete" />);
 
-    expect(badge).toContainReactComponent('span', {
-      className: 'Pip progressIncomplete',
-    });
+    expect(badge).toContainReactComponent(Icon);
   });
 
   it('does not render an icon when icon is not provided', () => {

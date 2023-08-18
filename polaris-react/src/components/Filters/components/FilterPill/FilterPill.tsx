@@ -9,10 +9,10 @@ import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
-import {VerticalStack} from '../../../VerticalStack';
+import {BlockStack} from '../../../BlockStack';
 import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {useFeatures} from '../../../../utilities/features';
@@ -130,7 +130,7 @@ export function FilterPill({
 
   const activator = (
     <div className={buttonClasses}>
-      <HorizontalStack gap="0" wrap={false}>
+      <InlineStack gap="0" wrap={false}>
         <UnstyledButton
           onFocus={setFocusedTrue}
           onBlur={setFocusedFalse}
@@ -139,12 +139,7 @@ export function FilterPill({
           type="button"
           disabled={disabled}
         >
-          <HorizontalStack
-            wrap={false}
-            align="center"
-            blockAlign="center"
-            gap="0"
-          >
+          <InlineStack wrap={false} align="center" blockAlign="center" gap="0">
             {selected ? (
               <>{wrappedLabel}</>
             ) : (
@@ -162,7 +157,7 @@ export function FilterPill({
                 </div>
               </>
             )}
-          </HorizontalStack>
+          </InlineStack>
         </UnstyledButton>
 
         {selected ? (
@@ -178,7 +173,7 @@ export function FilterPill({
             </div>
           </UnstyledButton>
         ) : null}
-      </HorizontalStack>
+      </InlineStack>
     </div>
   );
 
@@ -206,10 +201,10 @@ export function FilterPill({
       >
         <div className={styles.PopoverWrapper}>
           <Popover.Section>
-            <VerticalStack gap="1">
+            <BlockStack gap="1">
               {filter}
               {clearButtonMarkup}
-            </VerticalStack>
+            </BlockStack>
           </Popover.Section>
         </div>
       </Popover>

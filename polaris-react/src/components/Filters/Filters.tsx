@@ -16,7 +16,7 @@ import type {
   AppliedFilterInterface,
   FilterInterface,
 } from '../../types';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 import type {BoxProps} from '../Box';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
@@ -110,6 +110,8 @@ export interface FiltersProps {
   mountedState?: TransitionStatus;
   /** Callback when the add filter button is clicked. */
   onAddFilterClick?: () => void;
+  /** Whether the filter should close when clicking inside another Popover. */
+  closeOnChildOverlayClick?: boolean;
 }
 
 export function Filters({
@@ -133,6 +135,7 @@ export function Filters({
   disableFilters,
   mountedState,
   onAddFilterClick,
+  closeOnChildOverlayClick,
 }: FiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -303,7 +306,7 @@ export function Filters({
   const queryFieldMarkup = hideQueryField ? null : (
     <div className={styles.Container}>
       <Box {...containerSpacing}>
-        <HorizontalStack
+        <InlineStack
           align="start"
           blockAlign="center"
           gap={{
@@ -335,7 +338,7 @@ export function Filters({
             />
           </div>
           {additionalContent}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
     </div>
   );
@@ -370,6 +373,7 @@ export function Filters({
           selected={appliedFilterKeys?.includes(filterKey)}
           onRemove={handleFilterPillRemove}
           disabled={pinnedFilter.disabled || disableFilters}
+          closeOnChildOverlayClick={closeOnChildOverlayClick}
         />
       );
     },
@@ -439,7 +443,7 @@ export function Filters({
         </div>
         {hideQueryField ? (
           <Box paddingInlineEnd="3" paddingBlockStart="2" paddingBlockEnd="2">
-            <HorizontalStack
+            <InlineStack
               align="start"
               blockAlign="center"
               gap={{
@@ -448,7 +452,7 @@ export function Filters({
               }}
             >
               {additionalContent}
-            </HorizontalStack>
+            </InlineStack>
           </Box>
         ) : null}
       </div>

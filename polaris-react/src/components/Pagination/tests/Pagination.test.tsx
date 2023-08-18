@@ -257,6 +257,7 @@ describe('<Pagination />', () => {
   it('the ButtonGroup is not segmented when there is a label', () => {
     const pagination = mountWithApp(
       <Pagination nextURL="/next" previousURL="/prev" label="Hello, world!" />,
+      {features: {polarisSummerEditions2023: false}},
     );
 
     expect(pagination).toContainReactComponent(ButtonGroup, {

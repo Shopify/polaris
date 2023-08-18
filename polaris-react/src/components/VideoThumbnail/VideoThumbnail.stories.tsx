@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {MediaCard, Text, VerticalStack, VideoThumbnail} from '@shopify/polaris';
+import {MediaCard, Text, BlockStack, VideoThumbnail} from '@shopify/polaris';
 
 export default {
   component: VideoThumbnail,
@@ -8,28 +8,28 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
+    <BlockStack gap="8">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With progress
         </Text>
         <WithProgress />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           Outside media card
         </Text>
         <OutsideMediaCard />
-      </VerticalStack>
-    </VerticalStack>
+      </BlockStack>
+    </BlockStack>
   );
 }
 

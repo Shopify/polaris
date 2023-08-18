@@ -58,6 +58,44 @@ describe('<Pane />', () => {
     });
   });
 
+  describe('subdued', () => {
+    it(`does not append the subdued class if the prop isn't provided`, () => {
+      const Children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = mountWithApp(
+        <Pane>
+          <Children />
+        </Pane>,
+      );
+
+      expect(popoverPane.find(Scrollable)?.props.className).not.toContain(
+        'Pane-subdued',
+      );
+    });
+
+    it('appends the subdued class if the prop isn provided', () => {
+      const Children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = mountWithApp(
+        <Pane subdued>
+          <Children />
+        </Pane>,
+      );
+
+      expect(popoverPane.find(Scrollable)?.props.className).toContain(
+        'Pane-subdued',
+      );
+    });
+  });
+
   describe('sectioned', () => {
     it('renders children in a Section when set to true', () => {
       const Children = () => (

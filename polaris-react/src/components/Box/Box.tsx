@@ -41,13 +41,13 @@ export interface BoxProps extends React.AriaAttributes {
   /** Border radius */
   borderRadius?: BorderRadiusScale;
   /** Vertical end horizontal start border radius */
-  borderRadiusEndStart?: BorderRadiusScale;
+  borderEndStartRadius?: BorderRadiusScale;
   /** Vertical end horizontal end border radius */
-  borderRadiusEndEnd?: BorderRadiusScale;
+  borderEndEndRadius?: BorderRadiusScale;
   /** Vertical start horizontal start border radius */
-  borderRadiusStartStart?: BorderRadiusScale;
+  borderStartStartRadius?: BorderRadiusScale;
   /** Vertical start horizontal end border radius */
-  borderRadiusStartEnd?: BorderRadiusScale;
+  borderStartEndRadius?: BorderRadiusScale;
   /** Border width */
   borderWidth?: BorderWidthScale;
   /** Vertical start border width */
@@ -153,10 +153,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderInlineStartWidth,
       borderInlineEndWidth,
       borderRadius,
-      borderRadiusEndStart,
-      borderRadiusEndEnd,
-      borderRadiusStartStart,
-      borderRadiusStartEnd,
+      borderEndStartRadius,
+      borderEndEndRadius,
+      borderStartStartRadius,
+      borderStartEndRadius,
       children,
       color,
       id,
@@ -224,17 +224,17 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-border-radius': borderRadius
         ? `var(--p-border-radius-${borderRadius})`
         : undefined,
-      '--pc-box-border-radius-end-start': borderRadiusEndStart
-        ? `var(--p-border-radius-${borderRadiusEndStart})`
+      '--pc-box-border-end-start-radius': borderEndStartRadius
+        ? `var(--p-border-radius-${borderEndStartRadius})`
         : undefined,
-      '--pc-box-border-radius-end-end': borderRadiusEndEnd
-        ? `var(--p-border-radius-${borderRadiusEndEnd})`
+      '--pc-box-border-end-end-radius': borderEndEndRadius
+        ? `var(--p-border-radius-${borderEndEndRadius})`
         : undefined,
-      '--pc-box-border-radius-start-start': borderRadiusStartStart
-        ? `var(--p-border-radius-${borderRadiusStartStart})`
+      '--pc-box-border-start-start-radius': borderStartStartRadius
+        ? `var(--p-border-radius-${borderStartStartRadius})`
         : undefined,
-      '--pc-box-border-radius-start-end': borderRadiusStartEnd
-        ? `var(--p-border-radius-${borderRadiusStartEnd})`
+      '--pc-box-border-start-end-radius': borderStartEndRadius
+        ? `var(--p-border-radius-${borderStartEndRadius})`
         : undefined,
       '--pc-box-border-width': borderWidth
         ? `var(--p-border-width-${borderWidth})`

@@ -204,8 +204,8 @@ export type {IndexTableProps} from './components/IndexTable';
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
 
-export {HorizontalStack} from './components/HorizontalStack';
-export type {HorizontalStackProps} from './components/HorizontalStack';
+export {InlineStack} from './components/InlineStack';
+export type {InlineStackProps} from './components/InlineStack';
 
 export {InlineCode} from './components/InlineCode';
 export type {InlineCodeProps} from './components/InlineCode';
@@ -394,8 +394,8 @@ export type {UnstyledButtonProps} from './components/UnstyledButton';
 export {UnstyledLink} from './components/UnstyledLink';
 export type {UnstyledLinkProps} from './components/UnstyledLink';
 
-export {VerticalStack} from './components/VerticalStack';
-export type {VerticalStackProps} from './components/VerticalStack';
+export {BlockStack} from './components/BlockStack';
+export type {BlockStackProps} from './components/BlockStack';
 
 export {VideoThumbnail} from './components/VideoThumbnail';
 
