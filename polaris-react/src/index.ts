@@ -109,8 +109,8 @@ export type {CollapsibleProps} from './components/Collapsible';
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
 
-export {HorizontalGrid} from './components/HorizontalGrid';
-export type {HorizontalGridProps} from './components/HorizontalGrid';
+export {InlineGrid} from './components/InlineGrid';
+export type {InlineGridProps} from './components/InlineGrid';
 
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
