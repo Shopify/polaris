@@ -136,6 +136,7 @@ export function Button({
     styles.Button,
     variant && variant === 'primary' && styles.primary,
     variant && variant === 'plain' && styles.plain,
+    variant && variant === 'primaryPlain' && styles.primary,
     variant && variant === 'primaryPlain' && styles.primaryPlain,
     variant && variant === 'monochromePlain' && styles.monochrome,
     variant && variant === 'monochromePlain' && styles.plain,
