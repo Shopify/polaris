@@ -12,11 +12,7 @@ $relative-size: $primary-basis / $secondary-basis;
   justify-content: center;
   align-items: flex-start;
   margin-top: calc(-1 * var(--p-space-4));
-  margin-left: calc(-1 * var(--p-space-5));
-
-  #{$se23} & {
-    margin-left: calc(-1 * var(--p-space-4));
-  }
+  margin-left: calc(-1 * var(--p-space-4));
 
   @media print {
     body & {
@@ -61,25 +57,13 @@ $relative-size: $primary-basis / $secondary-basis;
 
 .Section,
 .AnnotatedSection {
-  max-width: calc(100% - var(--p-space-5));
+  max-width: calc(100% - var(--p-space-4));
   margin-top: var(--p-space-4);
-  margin-left: var(--p-space-5);
-
-  #{$se23} & {
-    max-width: calc(100% - var(--p-space-4));
-    margin-left: var(--p-space-4);
-  }
+  margin-left: var(--p-space-4);
 
   + .AnnotatedSection {
-    #{$se23} & {
-      border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
-      padding-top: var(--p-space-4);
-    }
-
-    @media #{$p-breakpoints-sm-up} {
-      padding-top: var(--p-space-4);
-      border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
-    }
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    padding-top: var(--p-space-4);
   }
 }
 
@@ -87,11 +71,7 @@ $relative-size: $primary-basis / $secondary-basis;
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--p-space-4));
-  margin-left: calc(-1 * var(--p-space-5));
-
-  #{$se23} & {
-    margin-left: calc(-1 * var(--p-space-4));
-  }
+  margin-left: calc(-1 * var(--p-space-4));
 }
 
 .AnnotationContent {
@@ -100,38 +80,17 @@ $relative-size: $primary-basis / $secondary-basis;
 
 .Annotation {
   flex: 1 1 $secondary-basis;
-  padding: var(--p-space-4) var(--p-space-5) 0;
-
-  #{$se23} & {
-    padding: var(--p-space-4) var(--p-space-4) 0;
-
-    @media #{$p-breakpoints-md-down} {
-      padding-left: 0;
-    }
-  }
-
-  @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-4) 0 0;
-  }
+  padding: var(--p-space-4) var(--p-space-4) 0 0;
 
   @media #{$p-breakpoints-md-up} {
-    padding: var(--p-space-5) var(--p-space-5) var(--p-space-5) 0;
-
-    #{$se23} & {
-      padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0;
-    }
+    padding-bottom: var(--p-space-4);
   }
 }
 
 .Annotation,
 .AnnotationContent {
   min-width: 0;
-  max-width: calc(100% - var(--p-space-5));
+  max-width: calc(100% - var(--p-space-4));
   margin-top: var(--p-space-4);
-  margin-left: var(--p-space-5);
-
-  #{$se23} & {
-    max-width: calc(100% - var(--p-space-4));
-    margin-left: var(--p-space-4);
-  }
+  margin-left: var(--p-space-4);
 }
