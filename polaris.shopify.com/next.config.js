@@ -359,12 +359,12 @@ const layoutAndStructure = [
   },
   {
     source: '/components/layout-and-structure/columns',
-    destination: '/components/layout-and-structure/horizontal-grid',
+    destination: '/components/layout-and-structure/inline-grid',
     permanent: false,
   },
   {
     source: '/components/columns',
-    destination: '/components/layout-and-structure/horizontal-grid',
+    destination: '/components/layout-and-structure/inline-grid',
     permanent: false,
   },
   {

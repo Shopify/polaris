@@ -28,7 +28,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`Card`](/components/layout-and-structure/card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`InlineGrid`](/components/layout-and-structure/horizontal-grid) and [`Page`](/components/layout-and-structure/page) components.
+This pattern uses the [`Card`](/components/layout-and-structure/card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`InlineGrid`](/components/layout-and-structure/inline-grid) and [`Page`](/components/layout-and-structure/page) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}

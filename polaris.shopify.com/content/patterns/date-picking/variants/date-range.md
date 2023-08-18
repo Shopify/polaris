@@ -32,7 +32,7 @@ This enables merchants to select a date range.
 
 ## Using this pattern
 
-This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`InlineGrid`](/components/layout-and-structure/horizontal-grid), [`DatePicker`](/components/selection-and-input/date-picker), [`InlineStack`](/components/layout-and-structure/inline-stack), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
+This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`InlineGrid`](/components/layout-and-structure/inline-grid), [`DatePicker`](/components/selection-and-input/date-picker), [`InlineStack`](/components/layout-and-structure/inline-stack), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
