@@ -8,7 +8,6 @@ import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
 import {ComboboxListboxOptionContext} from '../../../../utilities/combobox/context';
 import {ActionContext} from '../../../../utilities/listbox/context';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './TextOption.scss';
 
@@ -27,7 +26,6 @@ export const TextOption = memo(function TextOption({
 }: TextOptionProps) {
   const {allowMultiple} = useContext(ComboboxListboxOptionContext);
   const isAction = useContext(ActionContext);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const textOptionClassName = classNames(
     styles.TextOption,
@@ -37,19 +35,18 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
-  const optionMarkup =
-    polarisSummerEditions2023 && selected ? (
-      <Box width="100%">
-        <InlineStack wrap={false} align="space-between" gap="2">
-          {children}
-          <InlineStack align="end">
-            <Icon source={TickMinor} />
-          </InlineStack>
+  const optionMarkup = selected ? (
+    <Box width="100%">
+      <InlineStack wrap={false} align="space-between" gap="2">
+        {children}
+        <InlineStack align="end">
+          <Icon source={TickMinor} />
         </InlineStack>
-      </Box>
-    ) : (
-      <>{children}</>
-    );
+      </InlineStack>
+    </Box>
+  ) : (
+    <>{children}</>
+  );
 
   return (
     <div className={textOptionClassName}>
