@@ -142,33 +142,33 @@
 }
 
 /* The various gaps between adjacent elements */
-.Heading1 {
+.Heading-h1 {
   margin-block: 1.5rem;
 }
 
-.Heading2 {
+.Heading-h2 {
   margin-block: 3rem 1rem;
 }
 
-.Heading3 {
+.Heading-h3 {
   margin-block: 1.5rem 1rem;
 }
 
-.Heading4,
-.Heading5,
-.Heading6,
+.Heading-h4,
+.Heading-h5,
+.Heading-h6,
 .List,
 .Paragraph,
 .HorizontalRule {
   margin-block: 1rem;
 }
 
-.Heading1,
-.Heading2,
-.Heading3,
-.Heading4,
-.Heading5,
-.Heading6,
+.Heading-h1,
+.Heading-h2,
+.Heading-h3,
+.Heading-h4,
+.Heading-h5,
+.Heading-h6,
 .Paragraph,
 .List {
   &:first-child {
@@ -176,8 +176,8 @@
   }
 }
 
-.Heading3,
-.Heading4 {
+.Heading-h3,
+.Heading-h4 {
   + .Paragraph,
   + .List {
     margin-top: -0.5rem;

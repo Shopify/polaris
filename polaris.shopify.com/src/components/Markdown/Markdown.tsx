@@ -1,53 +1,40 @@
-import React, {cloneElement, useState, type ComponentProps} from 'react';
+import React, {
+  cloneElement,
+  useState,
+  forwardRef,
+  type ComponentProps,
+} from 'react';
 import {MDXRemote} from 'next-mdx-remote';
+import {ClipboardMinor} from '@shopify/polaris-icons';
 
 import styles from './Markdown.module.scss';
 import Code, {InlineCode} from '../../components/Code';
-import {Box} from '../../components/Box';
+import {Box, type WithAsProp} from '../../components/Box';
 import {Stack} from '../../components/Stack';
 import StatusBanner from '../../components/StatusBanner';
+import TipBanner from '../../components/TipBanner';
 import {Lede} from '../../components/Lede';
 import {SideBySide} from './components/SideBySide';
+import YoutubeVideo from '../YoutubeVideo';
 import {DoDont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
 import PatternsExample from '../../components/PatternsExample';
 import WhatsNewListing from '../WhatsNewListing';
+import Tooltip from '../Tooltip';
+import Icon from '../Icon';
+import {useCopyToClipboard} from '../../utils/hooks';
 
 function Markdown(props: ComponentProps<typeof MDXRemote>) {
   return (
     <MDXRemote
       {...props}
       components={{
-        h1: ({id, children}) => (
-          <Heading as="h1" id={id} className={styles.Heading1}>
-            {children}
-          </Heading>
-        ),
-        h2: ({id, children}) => (
-          <Heading as="h2" id={id} className={styles.Heading2}>
-            {children}
-          </Heading>
-        ),
-        h3: ({id, children}) => (
-          <Heading as="h3" id={id} className={styles.Heading3}>
-            {children}
-          </Heading>
-        ),
-        h4: ({id, children}) => (
-          <Heading as="h4" id={id} className={styles.Heading4}>
-            {children}
-          </Heading>
-        ),
-        h5: ({id, children}) => (
-          <Heading as="h5" id={id} className={styles.Heading5}>
-            {children}
-          </Heading>
-        ),
-        h6: ({id, children}) => (
-          <Heading as="h6" id={id} className={styles.Heading5}>
-            {children}
-          </Heading>
-        ),
+        h1: (props) => <HeadingWithCopyButton as="h1" {...props} />,
+        h2: (props) => <HeadingWithCopyButton as="h2" {...props} />,
+        h3: (props) => <HeadingWithCopyButton as="h3" {...props} />,
+        h4: (props) => <HeadingWithCopyButton as="h4" {...props} />,
+        h5: (props) => <HeadingWithCopyButton as="h5" {...props} />,
+        h6: (props) => <HeadingWithCopyButton as="h6" {...props} />,
         ol: ({children}) => (
           <Stack as="ol" gap="2" className={[styles.List, styles.OrderedList]}>
             {children}
@@ -159,8 +146,10 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
           </Box>
         ),
         SideBySide,
+        YoutubeVideo,
         DoDont,
         StatusBanner,
+        TipBanner,
         Lede,
         WhatsNewListing: ({posts}) => <WhatsNewListing posts={posts} />,
         Tip: ({children}) => (
@@ -193,38 +182,37 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
   );
 }
 
-interface HeadingWithCopyButtonProps {
-  id: string;
-  level: number;
-  children: React.ReactNode;
-}
+export const HeadingWithCopyButton = forwardRef(
+  ({id, children, ...props}, ref) => {
+    const origin =
+      typeof window !== 'undefined'
+        ? window.location.origin
+        : 'https://polaris.shopify.com';
+    const path = typeof window !== 'undefined' ? window.location.pathname : '';
+    const [copy, didJustCopy] = useCopyToClipboard(`${origin}${path}#${id}`);
 
-function HeadingWithCopyButton({
-  id,
-  level,
-  children,
-}: HeadingWithCopyButtonProps) {
-  const Element = `h${level}` as 'h2' | 'h3';
-  const origin =
-    typeof window !== 'undefined'
-      ? window.location.origin
-      : 'https://polaris.shopify.com';
-  const path = typeof window !== 'undefined' ? window.location.pathname : '';
-  const [copy, didJustCopy] = useCopyToClipboard(`${origin}${path}#${id}`);
-
-  return (
-    <Element id={id} className={styles.MarkdownHeading}>
-      {children}
-      <Tooltip
-        ariaLabel="Copy to clipboard"
-        renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
+    return (
+      <Heading
+        as="h1"
+        id={id}
+        {...props}
+        className={styles[`Heading-${props.as}`]}
+        ref={ref}
       >
-        <button className={styles.MarkdownCopyButton} onClick={copy}>
-          <Icon source={ClipboardMinor} width={16} height={16} />
-        </button>
-      </Tooltip>
-    </Element>
-  );
-}
+        {children}
+        <Tooltip
+          ariaLabel="Copy to clipboard"
+          renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
+        >
+          <button className={styles.MarkdownCopyButton} onClick={copy}>
+            <Icon source={ClipboardMinor} width={16} height={16} />
+          </button>
+        </Tooltip>
+      </Heading>
+    );
+  },
+) as WithAsProp<{}, typeof Heading, 'h1'>;
+
+HeadingWithCopyButton.displayName = 'Heading';
 
 export default Markdown;
