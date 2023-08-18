@@ -8,7 +8,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './VerticalStack.scss';
+import styles from './BlockStack.scss';
 
 type Align =
   | 'start'
@@ -24,7 +24,7 @@ type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
 type Gap = ResponsiveProp<SpaceScale>;
 
-export interface VerticalStackProps extends React.AriaAttributes {
+export interface BlockStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
@@ -49,7 +49,7 @@ export interface VerticalStackProps extends React.AriaAttributes {
   >;
 }
 
-export const VerticalStack = ({
+export const BlockStack = ({
   as = 'div',
   children,
   align,
@@ -58,18 +58,18 @@ export const VerticalStack = ({
   id,
   reverseOrder = false,
   ...restProps
-}: VerticalStackProps) => {
+}: BlockStackProps) => {
   const className = classNames(
-    styles.VerticalStack,
+    styles.BlockStack,
     (as === 'ul' || as === 'ol') && styles.listReset,
     as === 'fieldset' && styles.fieldsetReset,
   );
 
   const style = {
-    '--pc-vertical-stack-align': align ? `${align}` : null,
-    '--pc-vertical-stack-inline-align': inlineAlign ? `${inlineAlign}` : null,
-    '--pc-vertical-stack-order': reverseOrder ? 'column-reverse' : 'column',
-    ...getResponsiveProps('vertical-stack', 'gap', 'space', gap),
+    '--pc-block-stack-align': align ? `${align}` : null,
+    '--pc-block-stack-inline-align': inlineAlign ? `${inlineAlign}` : null,
+    '--pc-block-stack-order': reverseOrder ? 'column-reverse' : 'column',
+    ...getResponsiveProps('block-stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
   return React.createElement(

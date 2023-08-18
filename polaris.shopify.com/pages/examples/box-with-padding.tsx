@@ -1,11 +1,11 @@
 import React from 'react';
-import {VerticalStack, Box, Text, InlineStack} from '@shopify/polaris';
+import {BlockStack, Box, Text, InlineStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithPaddingExample() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <div
         style={{
           backgroundColor: 'var(--p-color-bg-info-strong)',
@@ -40,7 +40,7 @@ function BoxWithPaddingExample() {
           </Box>
         </div>
       </InlineStack>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 

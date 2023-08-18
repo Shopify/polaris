@@ -2,7 +2,7 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 import {InlineStack} from '../InlineStack';
 
 import styles from './SkeletonPage.scss';
@@ -66,7 +66,7 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <VerticalStack gap="4" inlineAlign="center">
+    <BlockStack gap="4" inlineAlign="center">
       <Box
         width="100%"
         padding="0"
@@ -82,7 +82,7 @@ export function SkeletonPage({
           maxWidth: 'none',
         })}
       >
-        <VerticalStack>
+        <BlockStack>
           <Box
             paddingBlockStart={{xs: '4', md: '5'}}
             paddingBlockEnd={{xs: '4', md: '5'}}
@@ -103,8 +103,8 @@ export function SkeletonPage({
           <Box paddingBlockEnd="2" width="100%">
             {children}
           </Box>
-        </VerticalStack>
+        </BlockStack>
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }

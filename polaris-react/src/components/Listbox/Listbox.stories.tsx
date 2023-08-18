@@ -9,7 +9,7 @@ import {
   Listbox,
   LegacyStack,
   AutoSelection,
-  VerticalStack,
+  BlockStack,
   InlineStack,
   Text,
   Box,
@@ -24,55 +24,55 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
+    <BlockStack gap="8">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With loading
         </Text>
         <WithLoading />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With action
         </Text>
         <WithAction />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With custom element
         </Text>
         <WithCustomOptions />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With search
         </Text>
         <WithSearch />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With disabled text option
         </Text>
         <WithDisabledTextOption />
-      </VerticalStack>
+      </BlockStack>
       <Box paddingBlockEnd="3" />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
