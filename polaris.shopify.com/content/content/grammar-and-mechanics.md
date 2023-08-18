@@ -873,28 +873,26 @@ Always use apostrophes, not vertical (straight) quotes.
 
 #### Do
 
+{/* prettier-ignore */}
 - <span
     style={{
       fontSize: '5rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
     }}
-  >
-    ’
-  </span>
+  >’</span>
   <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
 
 #### Don’t
 
+{/* prettier-ignore */}
 - <span
     style={{
       fontSize: '5rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
     }}
-  >
-    '
-  </span>
+  >'</span>
 
 </DoDont>
 
@@ -1015,27 +1013,26 @@ Always use the ellipsis character, not three periods.
 
 #### Do
 
+{/* prettier-ignore */}
 <code
   style={{
     fontSize: '5rem',
     lineHeight: 0,
     backgroundColor: 'transparent',
   }}
->
-  …
-</code>
+>…</code>
 <kbd>option</kbd> +<kbd>;</kbd>
+
 #### Don’t
 
+{/* prettier-ignore */}
 <code
   style={{
     fontSize: '5rem',
     lineHeight: 0,
     backgroundColor: 'transparent',
   }}
->
-  ...
-</code>
+>...</code>
 
 </DoDont>
 
@@ -1276,58 +1273,53 @@ Always use smart (curly) quotes, not vertical (straight) quotes.
 
 #### Do
 
+{/* prettier-ignore */}
 - <span
     style={{
       fontSize: '5rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
     }}
-  >
-    ‘
-  </span>
+  >‘</span>
   <kbd>option</kbd> + <kbd>]</kbd>
+{/* prettier-ignore */}
 - <span
     style={{
       fontSize: '5rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
     }}
-  >
-    ’
-  </span>
+  >’</span>
   <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
+{/* prettier-ignore */}
 - <span
     style={{
       fontSize: '5rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
     }}
-  >
-    “
-  </span>
+  >“</span>
   <kbd>option</kbd> + <kbd>[</kbd>
+{/* prettier-ignore */}
 - <span
     style={{
       fontSize: '5rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
     }}
-  >
-    ”
-  </span>
+  >”</span>
   <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>[</kbd>
 
 #### Don’t
 
+{/* prettier-ignore */}
 - <span
     style={{
       fontSize: '5rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
     }}
-  >
-    "
-  </span>
+  >"</span>
   or
   <span
     style={{
@@ -1335,9 +1327,7 @@ Always use smart (curly) quotes, not vertical (straight) quotes.
       lineHeight: 0,
       verticalAlign: 'bottom',
     }}
-  >
-    '
-  </span>
+  >'</span>
 
 </DoDont>
 

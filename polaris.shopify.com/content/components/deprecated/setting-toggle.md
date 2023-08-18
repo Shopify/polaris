@@ -15,9 +15,7 @@ keywords:
   - on off
   - switch
   - adjuster
-status:
-  value: Deprecated
-  message: The SettingToggle is a simple layout component that composes its children with a button in a card. This pattern should be built using the primitive layout and typography components. See the "With primitive components" example to learn how to build setting toggles with primitive components.
+status: Deprecated
 examples:
   - fileName: setting-toggle-with-primitive-components.tsx
     title: With primitive components
@@ -26,6 +24,17 @@ examples:
     title: With deprecated component
     description: The setting toggle component is deprecated. The "With primitive components" example is the recommended way to build the setting toggle pattern.
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  The SettingToggle is a simple layout component that composes its children with
+  a button in a card. This pattern should be built using the primitive layout
+  and typography components. See the "With primitive components" example to
+  learn how to build setting toggles with primitive components.
+</StatusBanner>
 
 ## Best practices
 

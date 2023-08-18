@@ -1,5 +1,6 @@
 ---
 title: Pickers
+description: Picker experiences help merchants browse, find, and select from multiple options. Use them for selecting locations, customer segments, and more.
 icon: LocationMajor
 noIndex: true
 url: /patterns-legacy/pickers
@@ -22,16 +23,8 @@ keywords:
 
 # {frontmatter.title}
 
-<Lede>
-  Picker experiences help merchants browse, find, and select from multiple
-  options. Use them for selecting locations, customer segments, and more.
-</Lede>
+<Lede>{frontmatter.description}</Lede>
 
-<StatusBanner status={frontmatter.status}>
-  Guidance in legacy patterns is still accurate and useful.
-</StatusBanner>
-
-<Longform firstParagraphIsLede={false}>
 ## Best practices
 
 ### Use progressive disclosure
@@ -148,5 +141,3 @@ Shopify Flow is an automation app that helps merchants build workflows to automa
 Customer segment data can be fetched, created, or updated using the Shopify Admin [GraphQL API](https://shopify.dev/api/admin-graphql/2022-07/objects/Segment). Customer segments replace saved search in the customers section of the Admin. Check out the [Segmentation guide](https://shopify.dev/api/examples/customer-segments) for an overview of how to query segment members.
 
 Segment pickers are composed using the [listbox](/components/lists/listbox) and [text field](/components/selection-and-input/text-field) components to implement a searchable listbox. The searchable listbox is displayed inside of a [popover](/components/overlays/popover) component activated by a [button](/components/actions/button) component, or inside of a [sheet](/components/deprecated/sheet) component triggered by selecting a segment workflow template or by creating a custom workflow action. Get started by referencing the `Listbox` "With search", `Popover` "With searchable listbox", and `Sheet` "With searchable listbox" composition examples for React component code snippets.
-
-</Longform>

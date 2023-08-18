@@ -7,9 +7,7 @@ keywords:
   - columns
   - grid
   - responsive
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+status: Alpha
 examples:
   - fileName: inline-grid-with-varying-gap.tsx
     title: Gap
@@ -24,6 +22,17 @@ examples:
     description: >-
       Control the number of columns using the `columns` prop. Column numbers can be responsively set using the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is a work in progress and ready for exploratory usage, with
+  breaking changes expected in minor version updates. Please use with caution.
+  Learn more about our [component
+  lifecycles](/getting-started/components-lifecycle).
+</StatusBanner>
 
 ## Related components
 
