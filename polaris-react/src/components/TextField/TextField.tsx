@@ -161,6 +161,10 @@ interface NonMutuallyExclusiveProps {
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
+  /** Visual styling options for the TextField
+   * @default 'inherit'
+   */
+  variant?: 'inherit' | 'borderless';
   /** Callback fired when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback fired when value is changed */
@@ -171,8 +175,6 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
-  /** Removes the border around the input. Used in the IndexFilters component. */
-  borderless?: boolean;
   /** Disables the 1password extension on the text field */
   disable1Password?: boolean;
 }
@@ -235,13 +237,17 @@ export function TextField({
   monospaced,
   selectTextOnFocus,
   suggestion,
+  variant = 'inherit',
   onClearButtonClick,
   onChange,
   onSpinnerChange,
   onFocus,
   onBlur,
+<<<<<<< HEAD
   borderless,
   disable1Password,
+=======
+>>>>>>> 359614cf8 (Textfield add variant prop (#10036))
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -293,7 +299,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && !disabled && styles.focus,
-    borderless && styles.borderless,
+    variant !== 'inherit' && styles[variant],
   );
 
   const inputType = type === 'currency' ? 'text' : type;

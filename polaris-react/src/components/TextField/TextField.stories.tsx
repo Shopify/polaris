@@ -741,7 +741,7 @@ export function All() {
           label="Borderless"
           value="Value"
           onChange={() => {}}
-          borderless
+          variant="borderless"
           autoComplete="off"
         />
       </FormLayout.Group>
