@@ -9,7 +9,7 @@ keywords:
 
 ```diff
 // Do
-+ <HorizontalGrid />
++ <InlineGrid />
 // Don't
 - display: grid;
 ```
