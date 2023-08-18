@@ -4,13 +4,11 @@ import Longform from '../Longform';
 import {Grid, GridItem} from '../Grid';
 import {Stack} from '../Stack';
 import {Heading} from '../Heading';
-import {Status, StatusName} from '../../types';
 import styles from './PatternsPage.module.scss';
 import Preview from '../ThumbnailPreview';
 import {patterns, legacyPatterns} from '../../utils/various';
 import {FoundationsProps} from '../FoundationsPage/FoundationsPage';
 import FoundationsThumbnail from '../FoundationsThumbnail';
-import StatusBanner from '../StatusBanner';
 
 export const PatternsPage = ({title, description}: FoundationsProps) => (
   <>
@@ -25,12 +23,6 @@ export const PatternsPage = ({title, description}: FoundationsProps) => (
             </Heading>
             <p>{description}</p>
           </Longform>
-          <StatusBanner
-            status={{
-              value: StatusName.New,
-              message: `The pattern documentation is evolving. [Join the discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation) to make it better.`,
-            }}
-          />
         </div>
         <Grid>
           {Object.values(patterns)
@@ -44,7 +36,7 @@ export const PatternsPage = ({title, description}: FoundationsProps) => (
                 renderPreview={() => (
                   <Preview alt={pattern.title} src={pattern.previewImg} />
                 )}
-                status={pattern.status as Status}
+                status={pattern.status}
               />
             ))}
         </Grid>
@@ -72,7 +64,7 @@ export const PatternsPage = ({title, description}: FoundationsProps) => (
                     category={pattern.title.toLowerCase()}
                   />
                 )}
-                status={pattern.status as Status}
+                status={pattern.status}
               />
             ))}
         </Grid>
