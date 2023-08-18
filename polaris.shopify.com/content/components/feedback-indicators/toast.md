@@ -14,6 +14,9 @@ keywords:
   - popup
   - iframe
   - duration
+status:
+  value: Internal
+  message: This component is for internal use only. If you are developing an app, use the [App Bridge Toast](https://shopify.dev/docs/api/app-bridge/previous-versions/actions/toast).
 examples:
   - fileName: toast-default.tsx
     title: Default

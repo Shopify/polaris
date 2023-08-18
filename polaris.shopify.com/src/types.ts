@@ -162,6 +162,7 @@ export enum StatusName {
   Information = 'Information',
   Legacy = 'Legacy',
   Warning = 'Warning',
+  Internal = 'Internal',
 }
 
 export type Status = {

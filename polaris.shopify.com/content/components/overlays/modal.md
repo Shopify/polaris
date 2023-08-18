@@ -25,6 +25,9 @@ keywords:
   - overlay
   - dialog
   - alert
+status:
+  value: Internal
+  message: This component is for internal use only. If you are developing an app, use the [App Bridge Modal](https://shopify.dev/docs/api/app-bridge/previous-versions/actions/modal).
 examples:
   - fileName: modal-default.tsx
     title: Default

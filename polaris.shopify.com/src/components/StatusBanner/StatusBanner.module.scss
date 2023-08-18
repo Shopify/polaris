@@ -5,7 +5,8 @@
   background: var(--surface-subdued);
   border-radius: var(--border-radius-400);
 
-  &[data-value='alpha'] {
+  &[data-value='alpha'],
+  &[data-value='internal'] {
     background: var(--surface-attention);
   }
 

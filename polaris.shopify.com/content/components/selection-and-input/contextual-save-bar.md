@@ -10,6 +10,9 @@ keywords:
   - save
   - cancel
   - logo
+status:
+  value: Internal
+  message: This component is for internal use only. If you are developing an app, use the [App Bridge Contextual Save Bar](https://shopify.dev/docs/api/app-bridge/previous-versions/actions/contextualsavebar).
 examples:
   - fileName: contextual-save-bar-default.tsx
     title: Default
