@@ -267,7 +267,7 @@ You can add a custom domain to your store in the following ways:
 - Transferring. This can take up to 48 hours.
 - Buying the domain from a third party, and then pointing the domain to your Shopify store
 
-<!-- end -->
+</DoDont>
 
 ### Numbered
 
@@ -277,7 +277,7 @@ If at least one of the numbered bullet points requires a period due to having tw
 
 Capitalize the first word of the bullet.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
