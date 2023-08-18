@@ -59,6 +59,8 @@ export async function toStyleSheet(
         `${createThemeSelector(themeName)}{${getThemeDecls(themePartial)}}`,
     ),
     getKeyframes(themes.light.motion),
+    // Newline terminator
+    '',
   ]
     .flat()
     .join('\n');
