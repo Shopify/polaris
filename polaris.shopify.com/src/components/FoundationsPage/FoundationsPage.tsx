@@ -1,8 +1,6 @@
 import Page from '../Page';
 import PageMeta from '../PageMeta';
-import StatusBanner from '../StatusBanner';
 import styles from './FoundationsPage.module.scss';
-import {Status} from '../../types';
 import Longform from '../Longform';
 import {Stack} from '../Stack';
 import {Grid, GridItem, type GridItemProps} from '../Grid';
@@ -10,7 +8,6 @@ import FoundationsThumbnail from '../FoundationsThumbnail';
 
 export interface FoundationsProps {
   title: string;
-  status?: Status;
   description: string;
   items: Item[];
   noIndex?: boolean;
@@ -25,15 +22,8 @@ function FoundationsPage({
   title,
   description,
   items,
-  status,
   noIndex,
 }: FoundationsProps) {
-  const typedStatus: Status | undefined = status
-    ? {
-        value: status.value.toLowerCase() as Status['value'],
-        message: status.message,
-      }
-    : undefined;
   return (
     <div className={styles.FoundationsPage}>
       <PageMeta description={description} noIndex={noIndex} />
@@ -45,8 +35,6 @@ function FoundationsPage({
           <p>{description}</p>
         </Longform>
         <Stack gap="8">
-          {typedStatus ? <StatusBanner status={typedStatus} /> : null}
-
           <Grid>
             {items
               .sort((a, b) => a.title.localeCompare(b.title))
