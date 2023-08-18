@@ -55,20 +55,16 @@ export async function toStyleSheet(
     await fs.promises.mkdir(sassOutputDir, {recursive: true});
   }
 
-  const styles = `
-
-  :root{color-scheme:light;${getThemeDecls(themes.light)}}
-
-  ${Object.entries(themesPartials)
-    .map(
+  const styles = [
+    `:root{color-scheme:light;${getThemeDecls(themes.light)}}`,
+    Object.entries(themesPartials).map(
       ([themeName, themePartial]) =>
         `${createThemeSelector(themeName)}{${getThemeDecls(themePartial)}}`,
-    )
-    .join('\n')}
-
-  ${getKeyframes(themes.light.motion)}
-
-`.trim();
+    ),
+    getKeyframes(themes.light.motion),
+  ]
+    .flat()
+    .join('\n');
 
   await fs.promises.writeFile(cssOutputPath, styles);
   await fs.promises.writeFile(sassOutputPath, styles);
