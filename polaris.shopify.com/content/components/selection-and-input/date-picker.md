@@ -16,7 +16,6 @@ keywords:
   - date selector
   - date range picker
   - date range selector
-tip: Check out the [new patterns section](https://polaris.shopify.com/patterns) to learn how merchants prefer to select dates in different scenarios!
 examples:
   - fileName: date-picker-default.tsx
     title: Default
@@ -34,6 +33,15 @@ examples:
     title: With specific disabled dates
     description: Dates may be disabed if you do not want them to be selectable
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<TipBanner title="Tip">
+  Check out the [new patterns section](https://polaris.shopify.com/patterns) to
+  learn how merchants prefer to select dates in different scenarios!
+</TipBanner>
 
 ## Best practices
 

@@ -10,9 +10,7 @@ keywords:
   - index
   - list filter
   - table
-status:
-  value: Deprecated
-  message: This component is no longer supported. The new [Filters component](/components/selection-and-input/filters) can be used as a standalone component, but is used primarily within the [IndexFilters](/components/selection-and-input/index-filters) for sorting and filtering IndexTables.
+status: Deprecated
 examples:
   - fileName: legacy-filters-with-a-resource-list.tsx
     title: With a resource list
@@ -33,6 +31,18 @@ examples:
   - fileName: legacy-filters-with-query-field-disabled.tsx
     title: With query field disabled
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. The new [Filters
+  component](/components/selection-and-input/filters) can be used as a
+  standalone component, but is used primarily within the
+  [IndexFilters](/components/selection-and-input/index-filters) for sorting and
+  filtering IndexTables.
+</StatusBanner>
 
 Merchants use filters to:
 

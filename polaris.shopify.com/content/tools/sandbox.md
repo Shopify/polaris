@@ -9,3 +9,11 @@ status:
   value: Alpha
   message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<StatusBanner status={frontmatter.status.value}>
+  {frontmatter.status.message}
+</StatusBanner>
