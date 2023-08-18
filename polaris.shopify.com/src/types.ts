@@ -54,10 +54,7 @@ export interface FrontMatter {
   icon?: string;
   order?: number;
   keywords?: (string | number)[];
-  status?: {
-    value: string;
-    message: string;
-  };
+  status?: Status;
   hideFromNav?: boolean;
 }
 
@@ -164,10 +161,7 @@ export enum StatusName {
   Warning = 'Warning',
 }
 
-export type Status = {
-  value: StatusName;
-  message: string;
-};
+export type Status = StatusName;
 
 export interface QuickGuideRow {
   question: string;
