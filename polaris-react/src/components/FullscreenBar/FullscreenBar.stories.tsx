@@ -6,7 +6,7 @@ import {
   ButtonGroup,
   FullscreenBar,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
@@ -20,19 +20,19 @@ export default {
 export function All() {
   return (
     <>
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With children
         </Text>
         <WithChildren />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           No children
         </Text>
         <NoChildren />
-      </VerticalStack>
+      </BlockStack>
     </>
   );
 }

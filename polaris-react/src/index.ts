@@ -394,8 +394,8 @@ export type {UnstyledButtonProps} from './components/UnstyledButton';
 export {UnstyledLink} from './components/UnstyledLink';
 export type {UnstyledLinkProps} from './components/UnstyledLink';
 
-export {VerticalStack} from './components/VerticalStack';
-export type {VerticalStackProps} from './components/VerticalStack';
+export {BlockStack} from './components/BlockStack';
+export type {BlockStackProps} from './components/BlockStack';
 
 export {VideoThumbnail} from './components/VideoThumbnail';
 

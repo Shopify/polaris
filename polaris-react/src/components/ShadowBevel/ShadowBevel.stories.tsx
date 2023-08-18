@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {BoxProps} from '@shopify/polaris';
-import {Box, VerticalStack, InlineCode} from '@shopify/polaris';
+import {Box, BlockStack, InlineCode} from '@shopify/polaris';
 
 import {useFeatures} from '../../utilities/features';
 
@@ -34,7 +34,7 @@ export function Default() {
   ];
 
   return (
-    <VerticalStack gap="5">
+    <BlockStack gap="5">
       <ShadowBevel boxShadow="md" borderRadius="3">
         <Box background="bg" padding="4">
           Default
@@ -88,6 +88,6 @@ export function Default() {
         ))}
 
       <br />
-    </VerticalStack>
+    </BlockStack>
   );
 }

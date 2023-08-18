@@ -5,7 +5,7 @@ import {
   LegacyCard,
   LegacyTabs,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -14,42 +14,42 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
+    <BlockStack gap="8">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With URL tabs
         </Text>
         <WithUrlTabs />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           Fitted
         </Text>
         <Fitted />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With badge content
         </Text>
         <WithBadgeContent />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With custom disclosure
         </Text>
         <WithCustomDisclosure />
-      </VerticalStack>
-    </VerticalStack>
+      </BlockStack>
+    </BlockStack>
   );
 }
 

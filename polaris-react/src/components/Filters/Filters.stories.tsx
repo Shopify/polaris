@@ -12,7 +12,7 @@ import {
   ResourceList,
   TextField,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 
 export default {

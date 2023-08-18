@@ -2,7 +2,7 @@ import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Card,
-  VerticalStack,
+  BlockStack,
   Bleed,
   Box,
   Divider,
@@ -19,12 +19,12 @@ export default {
 export function Default() {
   return (
     <Card>
-      <VerticalStack gap="5">
+      <BlockStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </VerticalStack>
+      </BlockStack>
     </Card>
   );
 }
@@ -38,12 +38,12 @@ export function WithBackgroundSubdued() {
         polarisSummerEditions2023 ? 'bg-secondary-experimental' : 'bg-subdued'
       }
     >
-      <VerticalStack gap="5">
+      <BlockStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </VerticalStack>
+      </BlockStack>
     </Card>
   );
 }
@@ -51,12 +51,12 @@ export function WithBackgroundSubdued() {
 export function WithBorderRadiusRoundedAbove() {
   return (
     <Card roundedAbove="sm">
-      <VerticalStack gap="5">
+      <BlockStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </VerticalStack>
+      </BlockStack>
     </Card>
   );
 }
@@ -64,12 +64,12 @@ export function WithBorderRadiusRoundedAbove() {
 export function WithResponsivePadding() {
   return (
     <Card padding={{xs: '5', sm: '6', md: '8'}} roundedAbove="sm">
-      <VerticalStack gap={{xs: '4', sm: '5'}}>
+      <BlockStack gap={{xs: '4', sm: '5'}}>
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
-      </VerticalStack>
+      </BlockStack>
     </Card>
   );
 }
@@ -79,7 +79,7 @@ export function WithSubduedSection() {
 
   return (
     <Card roundedAbove="sm">
-      <VerticalStack gap="5">
+      <BlockStack gap="5">
         <Text as="h3" variant="headingMd">
           Staff accounts
         </Text>
@@ -89,7 +89,7 @@ export function WithSubduedSection() {
             <List.Item>Ezequiel Manno</List.Item>
           </List>
         </Box>
-      </VerticalStack>
+      </BlockStack>
       <Bleed
         marginBlockEnd={{xs: '4', sm: '5'}}
         marginInline={{xs: '4', sm: '5'}}
@@ -103,7 +103,7 @@ export function WithSubduedSection() {
           }
           padding={{xs: '4', sm: '5'}}
         >
-          <VerticalStack gap="2">
+          <BlockStack gap="2">
             <Text variant="headingSm" as="h3">
               Deactivated staff accounts
             </Text>
@@ -111,7 +111,7 @@ export function WithSubduedSection() {
               <List.Item>Felix Crafford</List.Item>
               <List.Item>Ezequiel Manno</List.Item>
             </List>
-          </VerticalStack>
+          </BlockStack>
         </Box>
       </Bleed>
     </Card>

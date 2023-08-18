@@ -15,7 +15,7 @@ import {LegacyStack} from '../LegacyStack';
 import {Box} from '../Box';
 import {InlineStack} from '../InlineStack';
 import {useFeatures} from '../../utilities/features';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 
 import styles from './MediaCard.scss';
 
@@ -183,14 +183,14 @@ export function MediaCard({
         <div className={infoContainerClassName}>
           {polarisSummerEditions2023 ? (
             <Box padding="5">
-              <VerticalStack gap="2">
+              <BlockStack gap="2">
                 <InlineStack wrap={false} align="space-between" gap="2">
                   {headerMarkup}
                   {popoverOrDismissMarkup}
                 </InlineStack>
                 <p className={styles.Description}>{description}</p>
                 {actionMarkup}
-              </VerticalStack>
+              </BlockStack>
             </Box>
           ) : (
             <LegacyCard.Section>

@@ -10,7 +10,7 @@ import {
   Tooltip,
   Box,
   InlineStack,
-  VerticalStack,
+  BlockStack,
   Popover,
 } from '@shopify/polaris';
 import type {TooltipProps} from '@shopify/polaris';
@@ -21,7 +21,7 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="16">
+    <BlockStack gap="16">
       <Default />
       <PreferredPosition />
       <Width />
@@ -35,7 +35,7 @@ export function All() {
       <HasUnderline />
       <PersistOnClick />
       <ActiveStates />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -256,8 +256,8 @@ export function VisibleOnlyWithChildInteraction() {
 
 export function WithHoverDelay() {
   return (
-    <VerticalStack gap="4">
-      <VerticalStack gap="2">
+    <BlockStack gap="4">
+      <BlockStack gap="2">
         <Text variant="headingMd" fontWeight="bold" as="h1">
           TEXT EXAMPLE
         </Text>
@@ -278,9 +278,9 @@ export function WithHoverDelay() {
             </Text>
           </Tooltip>
         </InlineStack>
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text variant="headingMd" fontWeight="bold" as="h1">
           BUTTON EXAMPLE
         </Text>
@@ -297,8 +297,8 @@ export function WithHoverDelay() {
             <Button>2 seconds hover delay</Button>
           </Tooltip>
         </InlineStack>
-      </VerticalStack>
-    </VerticalStack>
+      </BlockStack>
+    </BlockStack>
   );
 }
 
@@ -538,14 +538,14 @@ export function ActiveStates() {
               }}
             >
               <div style={{padding: '12px'}}>
-                <VerticalStack>
+                <BlockStack>
                   <Text variant="bodyMd" fontWeight="bold" as="span">
                     popoverActive: {popoverActive.toString()}
                   </Text>
                   <Text variant="bodyMd" fontWeight="bold" as="span">
                     tooltipActive: {tooltipActive?.toString()}
                   </Text>
-                </VerticalStack>
+                </BlockStack>
               </div>
             </Popover>
           </Text>

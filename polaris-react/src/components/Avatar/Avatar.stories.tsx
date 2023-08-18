@@ -6,7 +6,7 @@ import {
   Avatar,
   Button,
   Popover,
-  VerticalStack,
+  BlockStack,
   InlineStack,
   Box,
   Text,
@@ -74,14 +74,14 @@ const styleInitialsLongEntries = Object.entries(styleInitialsLong) as Entries<
 
 export function All() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       {shapeEntries.map(([shape, shapeLabel]) => (
         <Box key={shape} paddingBlockEnd="2">
-          <VerticalStack gap="3">
+          <BlockStack gap="3">
             <Text as="h2" variant="headingXl">
               Shape: {shapeLabel}
             </Text>
-            <VerticalStack gap="2">
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 Default
               </Text>
@@ -90,8 +90,8 @@ export function All() {
                   <Avatar key={size} shape={shape} size={size} />
                 ))}
               </InlineStack>
-            </VerticalStack>
-            <VerticalStack gap="2">
+            </BlockStack>
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 With customer
               </Text>
@@ -100,8 +100,8 @@ export function All() {
                   <Avatar key={size} shape={shape} size={size} customer />
                 ))}
               </InlineStack>
-            </VerticalStack>
-            <VerticalStack gap="2">
+            </BlockStack>
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 With image
               </Text>
@@ -115,12 +115,12 @@ export function All() {
                   />
                 ))}
               </InlineStack>
-            </VerticalStack>
-            <VerticalStack gap="2">
+            </BlockStack>
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 With name (all styles)
               </Text>
-              <VerticalStack gap="2">
+              <BlockStack gap="2">
                 {styleInitialsDefaultEntries.map(([style, initials]) => (
                   <InlineStack key={style} gap="2" blockAlign="center">
                     {sizeEntries.map(([size]) => (
@@ -133,13 +133,13 @@ export function All() {
                     ))}
                   </InlineStack>
                 ))}
-              </VerticalStack>
-            </VerticalStack>
-            <VerticalStack gap="2">
+              </BlockStack>
+            </BlockStack>
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 With default initials (all styles)
               </Text>
-              <VerticalStack gap="2">
+              <BlockStack gap="2">
                 {styleInitialsDefaultEntries.map(([style, initials]) => (
                   <InlineStack key={style} gap="2" blockAlign="center">
                     {sizeEntries.map(([size]) => (
@@ -152,13 +152,13 @@ export function All() {
                     ))}
                   </InlineStack>
                 ))}
-              </VerticalStack>
-            </VerticalStack>
-            <VerticalStack gap="2">
+              </BlockStack>
+            </BlockStack>
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 With long initials (all styles)
               </Text>
-              <VerticalStack gap="2">
+              <BlockStack gap="2">
                 {styleInitialsLongEntries.map(([style, initialsLong]) => (
                   <InlineStack key={style} gap="2" blockAlign="center">
                     {sizeEntries.map(([size]) => (
@@ -171,13 +171,13 @@ export function All() {
                     ))}
                   </InlineStack>
                 ))}
-              </VerticalStack>
-            </VerticalStack>
-            <VerticalStack gap="2">
+              </BlockStack>
+            </BlockStack>
+            <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
                 With long and wide initials
               </Text>
-              <VerticalStack gap="2">
+              <BlockStack gap="2">
                 <InlineStack gap="2" blockAlign="center">
                   {sizeEntries.map(([size]) => (
                     <Avatar
@@ -188,12 +188,12 @@ export function All() {
                     />
                   ))}
                 </InlineStack>
-              </VerticalStack>
-            </VerticalStack>
-          </VerticalStack>
+              </BlockStack>
+            </BlockStack>
+          </BlockStack>
         </Box>
       ))}
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -203,7 +203,7 @@ export function Default() {
 
 export function CircleIconColorsSizes() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <InlineStack gap="4">
         <Avatar customer size="extraSmall" />
         <Avatar name="AG" size="extraSmall" />
@@ -236,13 +236,13 @@ export function CircleIconColorsSizes() {
         <Avatar name="AB" size="large" />
         <Avatar name="AE" size="large" />
       </InlineStack>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
 export function CircleInitialsColorsSizes() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <InlineStack gap="4">
         <Avatar initials="AG" size="extraSmall" />
         <Avatar initials="AA" size="extraSmall" />
@@ -275,7 +275,7 @@ export function CircleInitialsColorsSizes() {
         <Avatar initials="AE" size="large" />
         <Avatar initials="WW" size="large" />
       </InlineStack>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -325,7 +325,7 @@ export function CircleImage() {
 
 export function SquareIconColorsSizes() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <InlineStack gap="4">
         <Avatar customer size="extraSmall" shape="square" />
         <Avatar name="AG" size="extraSmall" shape="square" />
@@ -358,13 +358,13 @@ export function SquareIconColorsSizes() {
         <Avatar name="AB" size="large" shape="square" />
         <Avatar name="AE" size="large" shape="square" />
       </InlineStack>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
 export function SquareInitialsColorsSizes() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <InlineStack gap="4">
         <Avatar initials="AG" size="extraSmall" shape="square" />
         <Avatar initials="AA" size="extraSmall" shape="square" />
@@ -397,6 +397,6 @@ export function SquareInitialsColorsSizes() {
         <Avatar initials="AE" size="large" shape="square" />
         <Avatar initials="WW" size="large" shape="square" />
       </InlineStack>
-    </VerticalStack>
+    </BlockStack>
   );
 }

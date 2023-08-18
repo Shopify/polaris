@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Tabs, VerticalStack, LegacyCard} from '@shopify/polaris';
+import {Tabs, BlockStack, LegacyCard} from '@shopify/polaris';
 
 export default {
   component: Tabs,
@@ -8,14 +8,14 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="5">
+    <BlockStack gap="5">
       <Default />
       <InsideOfACard />
       <Fitted />
       <WithActions />
       <WithBadgeContent />
       <WithCustomDisclosure />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 export function Default() {

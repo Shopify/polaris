@@ -8,7 +8,7 @@ import {Card} from '../Card';
 import {Box} from '../Box';
 import {InlineStack} from '../InlineStack';
 import {Text} from '../Text';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
 export interface AccountConnectionProps {
@@ -84,10 +84,10 @@ export function AccountConnection({
       <SettingAction action={actionElement}>
         <InlineStack gap="4">
           {avatarMarkup}
-          <VerticalStack gap="1">
+          <BlockStack gap="1">
             {titleMarkup}
             {detailsMarkup}
-          </VerticalStack>
+          </BlockStack>
         </InlineStack>
       </SettingAction>
       {termsOfServiceMarkup}

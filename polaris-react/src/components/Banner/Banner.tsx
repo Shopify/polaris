@@ -12,7 +12,6 @@ import {CancelMinor} from '@shopify/polaris-icons';
 
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Text} from '../Text';
-import {VerticalStack} from '../VerticalStack';
 import type {InlineStackProps} from '../InlineStack';
 import {InlineStack} from '../InlineStack';
 import type {BoxProps} from '../Box';
@@ -27,6 +26,7 @@ import {classNames} from '../../utilities/css';
 import {useBreakpoints} from '../../utilities/breakpoints';
 import {useI18n} from '../../utilities/i18n';
 import {useEventListener} from '../../utilities/use-event-listener';
+import {BlockStack} from '../BlockStack';
 
 import styles from './Banner.scss';
 import type {BannerHandles} from './utilities';
@@ -198,7 +198,7 @@ export function DefaultBanner({
 
   return (
     <Box width="100%">
-      <VerticalStack align="space-between">
+      <BlockStack align="space-between">
         <Box
           background={backgroundColor}
           color={textColor}
@@ -223,13 +223,13 @@ export function DefaultBanner({
         </Box>
         {hasContent && (
           <Box padding={{xs: '3', md: '4'}} paddingBlockStart="3">
-            <VerticalStack gap="2">
+            <BlockStack gap="2">
               <div>{children}</div>
               {actionButtons}
-            </VerticalStack>
+            </BlockStack>
           </Box>
         )}
-      </VerticalStack>
+      </BlockStack>
     </Box>
   );
 }
@@ -273,10 +273,10 @@ export function InlineIconBanner({
               </div>
             ) : null}
             <Box ref={contentNode} width="100%">
-              <VerticalStack gap="2">
+              <BlockStack gap="2">
                 <div>{children}</div>
                 {actionButtons}
-              </VerticalStack>
+              </BlockStack>
             </Box>
           </InlineStack>
         </Box>
@@ -312,13 +312,13 @@ export function WithinContentContainerBanner({
         <InlineStack gap="1_5-experimental" wrap={false}>
           {bannerIcon}
           <Box width="100%">
-            <VerticalStack gap="2">
-              <VerticalStack gap="05">
+            <BlockStack gap="2">
+              <BlockStack gap="05">
                 {bannerTitle}
                 <div>{children}</div>
-              </VerticalStack>
+              </BlockStack>
               {actionButtons}
-            </VerticalStack>
+            </BlockStack>
           </Box>
         </InlineStack>
         {dismissButton}

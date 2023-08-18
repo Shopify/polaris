@@ -9,7 +9,7 @@ import {
   Popover,
   TextField,
   Thumbnail,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 import {
   TickSmallMinor,
@@ -29,7 +29,7 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="16">
+    <BlockStack gap="16">
       <InAPopover />
       <WithIconsOrImage />
       <WithAnIconAndASuffix />
@@ -38,7 +38,7 @@ export function All() {
       <WithDestructiveItem />
       <WithHelpText />
       <WithAPrefixAndASuffix />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 

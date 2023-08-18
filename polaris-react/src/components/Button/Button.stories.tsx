@@ -5,7 +5,7 @@ import {
   ButtonGroup,
   Card,
   InlineStack,
-  VerticalStack,
+  BlockStack,
   Text,
   Box,
   Popover,
@@ -27,8 +27,8 @@ export default {
 export function All() {
   return (
     <div>
-      <VerticalStack gap="8">
-        <VerticalStack gap="4">
+      <BlockStack gap="8">
+        <BlockStack gap="4">
           <Text as="h2">default</Text>
           <Box padding="4">
             <InlineStack gap="5" blockAlign="end">
@@ -84,8 +84,8 @@ export function All() {
               />
             </InlineStack>
           </Card>
-        </VerticalStack>
-        <VerticalStack gap="4">
+        </BlockStack>
+        <BlockStack gap="4">
           <Text as="h2">outline destructive</Text>
           <Box padding="4">
             <InlineStack gap="5" blockAlign="end">
@@ -169,8 +169,8 @@ export function All() {
               />
             </InlineStack>
           </Card>
-        </VerticalStack>
-        <VerticalStack gap="2">
+        </BlockStack>
+        <BlockStack gap="2">
           <Text as="h2">destructive</Text>
           <Box padding="4">
             <InlineStack gap="5" blockAlign="end">
@@ -232,13 +232,13 @@ export function All() {
               />
             </InlineStack>
           </Card>
-        </VerticalStack>
-        <VerticalStack gap="4">
+        </BlockStack>
+        <BlockStack gap="4">
           <Text as="h2">primary</Text>
           <Primary />
-        </VerticalStack>
+        </BlockStack>
 
-        <VerticalStack gap="2">
+        <BlockStack gap="2">
           <Text as="h2">primary destructive</Text>
           <InlineStack gap="5" blockAlign="end">
             <Button primary destructive>
@@ -264,9 +264,9 @@ export function All() {
               accessibilityLabel="Dismiss"
             />
           </InlineStack>
-        </VerticalStack>
+        </BlockStack>
 
-        <VerticalStack gap="2">
+        <BlockStack gap="2">
           <Text as="h2">primary sucess</Text>
           <InlineStack gap="5" blockAlign="end">
             <Button primarySuccess>Label</Button>
@@ -289,14 +289,14 @@ export function All() {
               accessibilityLabel="Dismiss"
             />
           </InlineStack>
-        </VerticalStack>
+        </BlockStack>
 
-        <VerticalStack gap="2">
+        <BlockStack gap="2">
           <Text as="h2">plain</Text>
           <Plain />
-        </VerticalStack>
+        </BlockStack>
 
-        <VerticalStack gap="2">
+        <BlockStack gap="2">
           <Text as="h2">plain destructive</Text>
           <InlineStack gap="5" blockAlign="end">
             <Button plain destructive>
@@ -333,14 +333,14 @@ export function All() {
               accessibilityLabel="Dismiss"
             />
           </InlineStack>
-        </VerticalStack>
+        </BlockStack>
 
-        <VerticalStack gap="2">
+        <BlockStack gap="2">
           <Text as="h2">primary plain</Text>
           <PlainPrimary />
-        </VerticalStack>
+        </BlockStack>
 
-        <VerticalStack gap="2">
+        <BlockStack gap="2">
           <Text as="h2">primary plain destructive</Text>
           <InlineStack gap="5" blockAlign="end">
             <Button primary plain destructive>
@@ -367,8 +367,8 @@ export function All() {
               accessibilityLabel="Dismiss"
             />
           </InlineStack>
-        </VerticalStack>
-      </VerticalStack>
+        </BlockStack>
+      </BlockStack>
     </div>
   );
 }
@@ -431,7 +431,7 @@ export function Plain() {
 
 export function PlainPrimary() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Box padding="4">
         <InlineStack gap="5" blockAlign="end">
           <Button primary plain>
@@ -489,7 +489,7 @@ export function PlainPrimary() {
           />
         </InlineStack>
       </Card>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -514,7 +514,7 @@ export function PlainDestructive() {
 
 export function Primary() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Box padding="4">
         <InlineStack gap="5" blockAlign="end">
           <Button primary>Label</Button>
@@ -575,7 +575,7 @@ export function Primary() {
           />
         </InlineStack>
       </Card>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -621,7 +621,7 @@ export function Slim() {
 
 export function Large() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <InlineStack gap="5" blockAlign="end">
         <Button size="large">Create store</Button>
         <Button size="large" accessibilityLabel="Edit" icon={EditMajor} />
@@ -634,7 +634,7 @@ export function Large() {
           Create store
         </Button>
       </InlineStack>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
