@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-Consoliate boolean `Button` props into `variant` prop
+Consolidated boolean `Button` props into `variant` prop
