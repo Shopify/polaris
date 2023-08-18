@@ -960,8 +960,7 @@ export function WithQueryFieldHidden() {
               <Button
                 onClick={() => console.log('New filter saved')}
                 size="micro"
-                primary
-                plain
+                variant="primaryPlain"
               >
                 Save
               </Button>
