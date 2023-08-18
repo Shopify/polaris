@@ -26,7 +26,7 @@ export function getThemeDecls(theme: ThemeShape) {
 export function getTokenGroupDecls(tokenGroup: TokenGroupShape) {
   return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
-      token.startsWith('motion-keyframes') || token.startsWith('keyframes')
+      token.startsWith('motion-keyframes')
         ? `${createVar(token)}:p-${token};`
         : `${createVar(token)}:${value};`,
     )
@@ -36,10 +36,7 @@ export function getTokenGroupDecls(tokenGroup: TokenGroupShape) {
 /** Creates `@keyframes` rules for `motion-keyframes-*` tokens. */
 export function getKeyframes(motion: TokenGroupShape) {
   return Object.entries(motion)
-    .filter(
-      ([token]) =>
-        token.startsWith('motion-keyframes') || token.startsWith('keyframes'),
-    )
+    .filter(([token]) => token.startsWith('motion-keyframes'))
     .map(([token, {value}]) => `@keyframes p-${token}${value}`)
     .join('');
 }
