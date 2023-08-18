@@ -5,7 +5,6 @@ import {wrapWithComponent} from '../../../../utilities/components';
 import {Box} from '../../../Box';
 import {Item} from '../Item';
 import styles from '../../FormLayout.scss';
-import {useFeatures} from '../../../../utilities/features';
 
 export interface GroupProps {
   children?: React.ReactNode;
@@ -15,7 +14,6 @@ export interface GroupProps {
 }
 
 export function Group({children, condensed, title, helpText}: GroupProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(condensed ? styles.condensed : styles.grouped);
 
   const id = useId();
@@ -31,9 +29,9 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
       <Box
         id={helpTextID}
         paddingBlockStart="2"
-        paddingInlineStart={polarisSummerEditions2023 ? '2' : '5'}
+        paddingInlineStart="2"
         paddingBlockEnd="0"
-        paddingInlineEnd={polarisSummerEditions2023 ? '2' : '5'}
+        paddingInlineEnd="2"
         color="text-subdued"
       >
         {helpText}
