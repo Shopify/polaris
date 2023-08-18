@@ -16,8 +16,6 @@ import {
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
 
-import {useFeatures} from '../../utilities/features';
-
 export default {
   component: Listbox,
 } as ComponentMeta<typeof Listbox>;
@@ -183,8 +181,6 @@ export function WithCustomOptions() {
 }
 
 export function WithSearch() {
-  const {polarisSummerEditions2023} = useFeatures();
-
   interface CustomerSegment {
     id: string;
     label: string;
@@ -389,9 +385,7 @@ export function WithSearch() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: polarisSummerEditions2023
-            ? 'var(--p-color-text-subdued)'
-            : 'var(--p-color-text-interactive)',
+          color: 'var(--p-color-text-subdued)',
         }}
       >
         Show all 111 segments
@@ -452,7 +446,7 @@ export function WithSearch() {
           shadow
           style={{
             position: 'relative',
-            height: polarisSummerEditions2023 ? '262px' : '292px',
+            height: '262px',
             padding: 'var(--p-space-2) 0',
             borderBottomLeftRadius: 'var(--p-border-radius-2)',
             borderBottomRightRadius: 'var(--p-border-radius-2)',
