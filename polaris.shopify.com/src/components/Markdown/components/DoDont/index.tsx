@@ -54,12 +54,20 @@ export const DoDont = ({children}: PropsWithChildren) => {
     }
   }
 
+  if (!dos.length && !donts.length) {
+    return null;
+  }
+
   return (
     <Fragment>
       {prefix}
       <div className={styles.DoDont}>
-        <Box className={[styles.DoDontPart, styles.Do]}>{dos}</Box>
-        <Box className={[styles.DoDontPart, styles.Dont]}>{donts}</Box>
+        {dos.length ? (
+          <Box className={[styles.DoDontPart, styles.Do]}>{dos}</Box>
+        ) : null}
+        {donts.length ? (
+          <Box className={[styles.DoDontPart, styles.Dont]}>{donts}</Box>
+        ) : null}
       </div>
     </Fragment>
   );
