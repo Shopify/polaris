@@ -10,8 +10,8 @@ import {Scrollable} from '../../../Scrollable';
 import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 import {useFeatures} from '../../../../utilities/features';
-import type {HorizontalStackProps} from '../../../HorizontalStack';
-import {HorizontalStack} from '../../../HorizontalStack';
+import type {InlineStackProps} from '../../../InlineStack';
+import {InlineStack} from '../../../InlineStack';
 import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
 
 import styles from './Option.scss';
@@ -150,13 +150,13 @@ export function Option({
     >
       {polarisSummerEditions2023 ? (
         <>
-          <HorizontalStack
+          <InlineStack
             wrap={false}
             blockAlign={verticalAlignToBlockAlign(verticalAlign)}
           >
             {mediaMarkup}
             {label}
-          </HorizontalStack>
+          </InlineStack>
           {(select || active) && (
             <span className={styles.Icon}>
               <Icon source={TickMinor} />
@@ -189,7 +189,7 @@ export function Option({
 
 function verticalAlignToBlockAlign(
   verticalAlign?: Alignment,
-): HorizontalStackProps['blockAlign'] {
+): InlineStackProps['blockAlign'] {
   switch (verticalAlign) {
     case 'top':
       return 'start';

@@ -5,6 +5,7 @@ import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Card} from '..';
+import {ShadowBevel} from '../../ShadowBevel';
 
 const heading = <p>Online store dashboard</p>;
 const subheading = <p>View a summary of your online store performance</p>;
@@ -59,10 +60,8 @@ describe('Card', () => {
       </Card>,
     );
 
-    expect(card).toContainReactComponent('div', {
-      style: expect.objectContaining({
-        '--pc-box-border-radius': 'var(--p-border-radius-2)',
-      }),
+    expect(card).toContainReactComponent(ShadowBevel, {
+      borderRadius: '3',
     });
   });
 });

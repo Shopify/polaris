@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  CaretDownMinor,
-  CaretUpMinor,
+  ChevronDownMinor,
+  ChevronUpMinor,
   PlusMinor,
   SelectMinor,
 } from '@shopify/polaris-icons';
@@ -225,7 +225,7 @@ describe('<Button />', () => {
 
       const disclosureButton = button.findAll('button')[1];
       expect(disclosureButton).toContainReactComponent(Icon, {
-        source: CaretDownMinor,
+        source: ChevronDownMinor,
       });
     });
 
@@ -460,7 +460,7 @@ describe('<Button />', () => {
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: CaretDownMinor});
+      expect(disclosureIcon).toHaveReactProps({source: ChevronDownMinor});
     });
 
     it('is facing down if set to "down"', () => {
@@ -468,7 +468,7 @@ describe('<Button />', () => {
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: CaretDownMinor});
+      expect(disclosureIcon).toHaveReactProps({source: ChevronDownMinor});
     });
 
     it('is facing up if set to "up"', () => {
@@ -476,7 +476,7 @@ describe('<Button />', () => {
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: CaretUpMinor});
+      expect(disclosureIcon).toHaveReactProps({source: ChevronUpMinor});
     });
 
     it('is double-arrow if set to "select"', () => {

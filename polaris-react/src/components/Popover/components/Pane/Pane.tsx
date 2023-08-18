@@ -22,6 +22,11 @@ export interface PaneProps {
    * @default false
    */
   captureOverscroll?: boolean;
+  /**
+   * Sets a subdued background to the pane
+   * @default false
+   */
+  subdued?: boolean;
 }
 
 export function Pane({
@@ -30,11 +35,13 @@ export function Pane({
   sectioned,
   children,
   height,
+  subdued,
   onScrolledToBottom,
 }: PaneProps) {
   const className = classNames(
     styles.Pane,
     fixed && styles['Pane-fixed'],
+    subdued && styles['Pane-subdued'],
     captureOverscroll && styles['Pane-captureOverscroll'],
   );
   const content = sectioned

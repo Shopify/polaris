@@ -1,4 +1,9 @@
-import {SkeletonPage, Layout, LegacyCard, SkeletonBodyText} from '@shopify/polaris';
+import {
+  SkeletonPage,
+  Layout,
+  LegacyCard,
+  SkeletonBodyText,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -17,7 +22,7 @@ function SkeletonExample() {
             <SkeletonBodyText />
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Sales channels">
             <LegacyCard.Section>
               <SkeletonBodyText lines={2} />

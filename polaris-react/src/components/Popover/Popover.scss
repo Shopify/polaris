@@ -120,6 +120,10 @@ $vertical-motion-offset: -5px;
   flex: 0 0 auto;
 }
 
+.Pane-subdued {
+  background-color: var(--p-color-bg-subdued);
+}
+
 .Pane-captureOverscroll {
   overscroll-behavior: contain;
 }

@@ -1,10 +1,12 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {UploadMajor} from '@shopify/polaris-icons';
 
 import {Text} from '../../../../Text';
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
 import {uploadArrow as uploadArrowImage} from '../../../images';
+import {Icon} from '../../../../Icon';
 
 describe('<FileUpload />', () => {
   const defaultStates = {
@@ -83,11 +85,10 @@ describe('<FileUpload />', () => {
       >
         <FileUpload />
       </DropZoneContext.Provider>,
+      {features: {polarisSummerEditions2023: true}},
     );
 
-    expect(fileUpload).not.toContainReactComponent(Text);
-
-    expect(fileUpload).toContainReactComponentTimes('img', 1);
+    expect(fileUpload).toContainReactComponent(Icon, {source: UploadMajor});
   });
 
   it('sets a default actionTitle if the prop is provided then removed', () => {
@@ -138,4 +139,22 @@ describe('<FileUpload />', () => {
       });
     },
   );
+
+  // se23 - img replaced with Icon
+  describe('polarisSummerEditions2023 false', () => {
+    it('renders small view', () => {
+      const fileUpload = mountWithApp(
+        <DropZoneContext.Provider
+          value={{size: 'small', type: 'file', ...defaultStates}}
+        >
+          <FileUpload />
+        </DropZoneContext.Provider>,
+        {features: {polarisSummerEditions2023: false}},
+      );
+
+      expect(fileUpload).not.toContainReactComponent(Text);
+
+      expect(fileUpload).toContainReactComponentTimes('img', 1);
+    });
+  });
 });

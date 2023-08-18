@@ -1,5 +1,13 @@
 # @shopify/polaris-migrator
 
+## 0.19.9
+
+### Patch Changes
+
+- Updated dependencies [[`a3da87e2e`](https://github.com/Shopify/polaris/commit/a3da87e2e52b7e4c3fc421bbe4122e763c39c1a1), [`36e4ee8af`](https://github.com/Shopify/polaris/commit/36e4ee8afbc7dbec6e65225384629afa83f64a75)]:
+  - @shopify/stylelint-polaris@14.0.0
+  - @shopify/polaris-tokens@7.5.3
+
 ## 0.19.8
 
 ### Patch Changes
@@ -319,11 +327,11 @@
 
 ### Minor Changes
 
-- [#7726](https://github.com/Shopify/polaris/pull/7726) [`22c4107b3`](https://github.com/Shopify/polaris/commit/22c4107b3c369eb68da31980d208c09b3fc4ba37) Thanks [@qt314](https://github.com/qt314)! - Added migration to insert disable comments for @shopify/stylelint-polaris
+- [#7726](https://github.com/Shopify/polaris/pull/7726) [`22c4107b3`](https://github.com/Shopify/polaris/commit/22c4107b3c369eb68da31980d208c09b3fc4ba37) Thanks [@sophschneider](https://github.com/sophschneider)! - Added migration to insert disable comments for @shopify/stylelint-polaris
 
 ### Patch Changes
 
-- [#7836](https://github.com/Shopify/polaris/pull/7836) [`77736370e`](https://github.com/Shopify/polaris/commit/77736370eeddde18a2c11da102b88646f2263d99) Thanks [@qt314](https://github.com/qt314)! - Decouple polaris migrator test from stylelint config so it's easier to maintain
+- [#7836](https://github.com/Shopify/polaris/pull/7836) [`77736370e`](https://github.com/Shopify/polaris/commit/77736370eeddde18a2c11da102b88646f2263d99) Thanks [@sophschneider](https://github.com/sophschneider)! - Decouple polaris migrator test from stylelint config so it's easier to maintain
 
 - Updated dependencies [[`38b2a00a6`](https://github.com/Shopify/polaris/commit/38b2a00a6aa0c95d5df777c7d51023a8193f8090)]:
   - @shopify/stylelint-polaris@5.0.0
