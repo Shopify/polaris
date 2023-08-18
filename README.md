@@ -26,7 +26,6 @@ polaris/
 ├── polaris.shopify.com         # Documentation website
 └── stylelint-polaris           # Rules for custom property usage and mainline coverage
 ```
-
 ## Commands
 
 ### Install dependencies and build workspaces
