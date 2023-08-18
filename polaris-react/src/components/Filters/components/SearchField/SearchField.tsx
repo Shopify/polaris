@@ -105,7 +105,7 @@ export function SearchField({
       clearButton
       onClearButtonClick={handleClear}
       disabled={disabled}
-      borderless={borderlessQueryField}
+      variant={borderlessQueryField ? 'borderless' : undefined}
     />
   );
 }
