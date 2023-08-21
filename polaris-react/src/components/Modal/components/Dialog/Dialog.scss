@@ -42,6 +42,7 @@ $large-width: 980px;
   max-height: calc(100vh - #{$vertical-spacing});
   background: var(--p-color-bg);
   box-shadow: var(--p-shadow-2xl);
+  overflow: hidden;
 
   @media (forced-colors: active) {
     border: var(--p-border-width-1) solid transparent;
@@ -56,10 +57,7 @@ $large-width: 980px;
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
-    border-radius: var(--p-border-radius-2);
-    #{$se23} & {
-      border-radius: var(--p-border-radius-4);
-    }
+    border-radius: var(--p-border-radius-4);
   }
 
   &.limitHeight {
@@ -96,12 +94,6 @@ $large-width: 980px;
     @media #{$p-breakpoints-md-up} {
       height: unset;
     }
-  }
-
-  #{$se23} & {
-    /* Setting background color on the header causes it to show through the
-       border radius, so we have to hide the overflow to maintain the radius */
-    overflow: hidden;
   }
 }
 

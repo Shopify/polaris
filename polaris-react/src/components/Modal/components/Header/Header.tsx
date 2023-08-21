@@ -5,7 +5,6 @@ import {CloseButton} from '../CloseButton';
 import {InlineGrid} from '../../../InlineGrid';
 import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
-import {useFeatures} from '../../../../utilities/features';
 
 export interface HeaderProps {
   id: string;
@@ -22,26 +21,18 @@ export function Header({
   titleHidden,
   onClose,
 }: HeaderProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-
-  const headerPaddingInline = polarisSummerEditions2023 ? '4' : '5';
+  const headerPaddingInline = '4';
   const headerPaddingBlock = '4';
 
   if (titleHidden || !children) {
-    return polarisSummerEditions2023 ? (
+    return (
       <Box
         position="absolute"
         insetInlineEnd={headerPaddingInline}
         insetBlockStart={headerPaddingBlock}
         zIndex="1"
       >
-        <CloseButton titleHidden={titleHidden} onClick={onClose} />
-      </Box>
-    ) : (
-      <Box position="absolute" insetInlineEnd="0" zIndex="1">
-        <InlineStack gap="4" align="end" blockAlign="center">
-          <CloseButton titleHidden={titleHidden} onClick={onClose} />
-        </InlineStack>
+        <CloseButton onClick={onClose} />
       </Box>
     );
   }
@@ -53,27 +44,16 @@ export function Header({
       paddingInlineStart={headerPaddingInline}
       paddingInlineEnd={headerPaddingInline}
       borderBlockEndWidth="1"
-      borderColor={polarisSummerEditions2023 ? 'border' : 'border-subdued'}
-      background={
-        polarisSummerEditions2023 ? 'bg-secondary-experimental' : undefined
-      }
+      borderColor="border"
+      background="bg-secondary-experimental"
     >
       <InlineGrid columns={{xs: '1fr auto'}} gap="4">
         <InlineStack gap="4" blockAlign="center">
-          <Text
-            id={id}
-            as="h2"
-            variant={polarisSummerEditions2023 ? 'headingMd' : 'headingLg'}
-            breakWord
-          >
+          <Text id={id} as="h2" variant="headingMd" breakWord>
             {children}
           </Text>
         </InlineStack>
-        <CloseButton
-          pressed={closing}
-          titleHidden={titleHidden}
-          onClick={onClose}
-        />
+        <CloseButton pressed={closing} onClick={onClose} />
       </InlineGrid>
     </Box>
   );
