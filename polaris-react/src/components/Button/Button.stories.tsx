@@ -238,35 +238,35 @@ export function All() {
         </BlockStack>
 
         <BlockStack gap="2">
-          <Text as="h2">primary plain</Text>
-          <PlainPrimary />
+          <Text as="h2">tertiary</Text>
+          <Tertiary />
         </BlockStack>
 
         <BlockStack gap="2">
-          <Text as="h2">primary plain destructive</Text>
+          <Text as="h2">tertiary destructive</Text>
           <InlineStack gap="5" blockAlign="end">
-            <Button variant="primaryPlain" tone="critical">
+            <Button variant="tertiary" tone="critical">
               Label
             </Button>
-            <Button variant="primaryPlain" tone="critical" disabled>
+            <Button variant="tertiary" tone="critical" disabled>
               Label
             </Button>
-            <Button variant="primaryPlain" tone="critical" icon={PlusMinor}>
+            <Button variant="tertiary" tone="critical" icon={PlusMinor}>
               Label
             </Button>
             <Button
-              variant="primaryPlain"
+              variant="tertiary"
               tone="critical"
               disabled
               icon={PlusMinor}
             >
               Label
             </Button>
-            <Button variant="primaryPlain" tone="critical" disclosure>
+            <Button variant="tertiary" tone="critical" disclosure>
               Label
             </Button>
             <Button
-              variant="primaryPlain"
+              variant="tertiary"
               tone="critical"
               icon={CancelSmallMinor}
               onClick={() => {}}
@@ -321,39 +321,39 @@ export function Plain() {
   );
 }
 
-export function PlainPrimary() {
+export function Tertiary() {
   return (
     <BlockStack gap="4">
       <Box padding="4">
         <InlineStack gap="5" blockAlign="end">
-          <Button variant="primaryPlain">Label</Button>
-          <Button variant="primaryPlain" disabled>
+          <Button variant="tertiary">Label</Button>
+          <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button variant="primaryPlain" icon={PlusMinor}>
+          <Button variant="tertiary" icon={PlusMinor}>
             Label
           </Button>
-          <Button variant="primaryPlain" disabled icon={PlusMinor}>
+          <Button variant="tertiary" disabled icon={PlusMinor}>
             Label
           </Button>
-          <Button variant="primaryPlain" disclosure>
+          <Button variant="tertiary" disclosure>
             Label
           </Button>
         </InlineStack>
       </Box>
       <Card>
         <InlineStack gap="5" blockAlign="end">
-          <Button variant="primaryPlain">Label</Button>
-          <Button variant="primaryPlain" disabled>
+          <Button variant="tertiary">Label</Button>
+          <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button variant="primaryPlain" icon={PlusMinor}>
+          <Button variant="tertiary" icon={PlusMinor}>
             Label
           </Button>
-          <Button variant="primaryPlain" disabled icon={PlusMinor}>
+          <Button variant="tertiary" disabled icon={PlusMinor}>
             Label
           </Button>
-          <Button variant="primaryPlain" disclosure>
+          <Button variant="tertiary" disclosure>
             Label
           </Button>
         </InlineStack>
@@ -361,14 +361,14 @@ export function PlainPrimary() {
       <Card>
         <InlineStack gap="5" blockAlign="end">
           <Button
-            variant="primaryPlain"
+            variant="tertiary"
             icon={CancelSmallMinor}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
-            variant="primaryPlain"
+            variant="tertiary"
             icon={EditMajor}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
