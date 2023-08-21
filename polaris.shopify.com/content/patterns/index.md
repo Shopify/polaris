@@ -16,3 +16,16 @@ status: New
   discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation)
   to make it better.
 </StatusBanner>
+
+<RichCardGrid cards={posts} />
+
+<span id="legacy" />
+
+## Archived documentation
+
+<Lede>
+  These guidelines are safe to use and will be updated to the new documentation
+  format in the near future.
+</Lede>
+
+<RichCardGrid cards={legacyPatternPosts} />
