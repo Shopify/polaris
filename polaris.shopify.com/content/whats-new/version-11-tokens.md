@@ -1,7 +1,7 @@
 ---
 title: Version 11 Tokens
 description: Crafting a more robust and cohesive token system in Polaris.
-imageUrl: /images/updates/alias-tokens.png
+previewImg: /images/updates/alias-tokens.png
 keywords:
   - tokens
   - color

@@ -19,7 +19,7 @@ import YoutubeVideo from '../YoutubeVideo';
 import {DoDont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
 import PatternsExample from '../../components/PatternsExample';
-import WhatsNewListing from '../WhatsNewListing';
+import RichCardGrid from '../RichCardGrid';
 import Tooltip from '../Tooltip';
 import Icon from '../Icon';
 import {useCopyToClipboard} from '../../utils/hooks';
@@ -151,7 +151,7 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
         StatusBanner,
         TipBanner,
         Lede,
-        WhatsNewListing: ({posts}) => <WhatsNewListing posts={posts} />,
+        RichCardGrid: ({cards}) => <RichCardGrid cards={cards} />,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">
