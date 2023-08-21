@@ -7,7 +7,7 @@ import {toValues} from './toValues';
 
 (async () => {
   await Promise.all([
-    toJSON(themeDefault, themes),
+    toJSON(themeDefault),
     toMediaConditions(themeDefault.breakpoints),
     toStyleSheet(themeDefault, themesPartials),
     toValues(themeDefault, themes),
