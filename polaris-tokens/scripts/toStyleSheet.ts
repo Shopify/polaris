@@ -11,9 +11,9 @@ import {createThemeSelector} from '../src/themes/utils';
 import {createVar} from '../src/utilities';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
-const sassOutputDir = path.join(__dirname, '../dist/scss');
+const scssOutputDir = path.join(__dirname, '../dist/scss');
 const cssOutputPath = path.join(cssOutputDir, 'styles.css');
-const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
+const scssOutputPath = path.join(scssOutputDir, 'styles.scss');
 
 /** Creates CSS declarations from a base or variant partial theme. */
 export function getThemeDecls(theme: ThemeShape) {
@@ -42,23 +42,28 @@ export function getKeyframes(motion: TokenGroupShape) {
 }
 
 export async function toStyleSheet(
-  themes: Themes,
+  themeDefault: ThemeShape,
   themesPartials: ThemesPartials,
 ) {
-  if (!fs.existsSync(cssOutputDir)) {
-    await fs.promises.mkdir(cssOutputDir, {recursive: true});
-  }
-  if (!fs.existsSync(sassOutputDir)) {
-    await fs.promises.mkdir(sassOutputDir, {recursive: true});
-  }
+  await fs.promises.mkdir(cssOutputDir, {recursive: true}).catch((error) => {
+    if (error.code !== 'EEXIST') {
+      throw error;
+    }
+  });
+
+  await fs.promises.mkdir(scssOutputDir, {recursive: true}).catch((error) => {
+    if (error.code !== 'EEXIST') {
+      throw error;
+    }
+  });
 
   const styles = [
-    `:root{color-scheme:light;${getThemeDecls(themes.light)}}`,
+    `:root{color-scheme:light;${getThemeDecls(themeDefault)}}`,
     Object.entries(themesPartials).map(
       ([themeName, themePartial]) =>
         `${createThemeSelector(themeName)}{${getThemeDecls(themePartial)}}`,
     ),
-    getKeyframes(themes.light.motion),
+    getKeyframes(themeDefault.motion),
     // Newline terminator
     '',
   ]
@@ -66,5 +71,5 @@ export async function toStyleSheet(
     .join('\n');
 
   await fs.promises.writeFile(cssOutputPath, styles);
-  await fs.promises.writeFile(sassOutputPath, styles);
+  await fs.promises.writeFile(scssOutputPath, styles);
 }

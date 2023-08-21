@@ -1,21 +1,25 @@
 import fs from 'fs';
 import path from 'path';
 
-import {getMediaConditions, removeMetadata} from '../src';
-import type {MetaBreakpointsTokenGroup} from '../src';
+import {getMediaConditions} from '../src';
+import type {themeDefault} from '../src/themes';
+
+import {extractTokenGroupValues} from './utils';
 
 const scssOutputDir = path.join(__dirname, '../dist/scss');
 const scssOutputPath = path.join(scssOutputDir, 'media-queries.scss');
 
 export async function toMediaConditions(
-  breakpoints: MetaBreakpointsTokenGroup,
+  breakpoints: typeof themeDefault['breakpoints'],
 ) {
-  if (!fs.existsSync(scssOutputDir)) {
-    await fs.promises.mkdir(scssOutputDir, {recursive: true});
-  }
+  await fs.promises.mkdir(scssOutputDir, {recursive: true}).catch((error) => {
+    if (error.code !== 'EEXIST') {
+      throw error;
+    }
+  });
 
   const mediaConditionEntries = Object.entries(
-    getMediaConditions(removeMetadata(breakpoints)),
+    getMediaConditions(extractTokenGroupValues(breakpoints)),
   );
 
   const styles = mediaConditionEntries
