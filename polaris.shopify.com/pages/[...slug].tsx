@@ -4,7 +4,6 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import fs from 'fs';
-import path from 'path';
 import globby from 'globby';
 
 import {
@@ -32,14 +31,16 @@ interface Props {
   editPageLinkPath: string;
 }
 
-export interface WhatsNewListingProps {
-  posts: {
-    title: string;
-    description: string;
-    slug: string;
-    imageUrl: string;
-  }[];
-}
+export type RichCardGridProps = {
+  title: string;
+  description: string;
+  /* url is usually derived from the file path, but can be overwritten here */
+  url?: string;
+  previewImg?: string;
+  draft?: boolean;
+  status?: Status;
+  icon?: string;
+}[];
 
 const CatchAllTemplate = ({
   mdx,
@@ -57,71 +58,141 @@ const CatchAllTemplate = ({
 };
 
 const contentDir = 'content';
-const whatsNewDir = 'whats-new';
 
-const getWhatsNew = () => {
-  const globPath = path.resolve(process.cwd(), contentDir, whatsNewDir, '*.md');
-  const paths = globby
-    .sync(globPath)
-    .filter((path) => !path.endsWith('index.md'));
+// Grab only the portion of the filepath which is used in the URL into capture
+// group $1.
+// Examples here: https://regex101.com/r/y3VciS/1
+const slugExtracter = new RegExp(`^${contentDir}/(.*?)(/index)?\.md$`);
 
-  const posts: WhatsNewListingProps['posts'] = paths.map((path) => {
-    const markdown = fs.readFileSync(path, 'utf-8');
-    const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
-    const {title, description, imageUrl} = frontMatter;
-    const slug = path.replace(contentDir, '').replace('.md', '');
-    return {title, description, slug, imageUrl};
-  });
+const extractSlugFromPath = (filePath: string) =>
+  filePath.replace(slugExtracter, '/$1');
 
-  return posts;
+// NOTE: globby uses minimatch which only accepts posix paths
+const getRichCards = (pathGlob: string): RichCardGridProps => {
+  const markdownFiles = globby
+    .sync(pathGlob, {onlyFiles: true})
+    // TODO: How do we define different sort orders? In the frontmatter of the
+    // index page perhaps?
+    .sort((a, b) => a.localeCompare(b));
+
+  return (
+    markdownFiles
+      .map((markdownFilePath) => {
+        // NOTE: `markdownFilePath` will be in posix format from globby (fast-glob internally)
+        const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
+        // TODO: Replace with simpler frontmatter parsing / same frontmatter parser
+        // from next-mdx-remote to keep it consistent
+        const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
+        const {
+          title = null,
+          description = null,
+          url = extractSlugFromPath(markdownFilePath),
+          previewImg = null,
+          draft = null,
+          status = null,
+          icon = null,
+        } = frontMatter;
+        return {title, description, url, previewImg, draft, status, icon};
+      })
+      // Don't show 'draft' posts in prod/staging, but show them everywhere else
+      .filter(({draft}) => process.env.NODE_ENV !== 'production' || !draft)
+  );
+};
+
+type MiddlewareHandler = (end: () => void) => void;
+type Middleware = MiddlewareHandler | [() => boolean, MiddlewareHandler];
+
+// Simple middleware-like processor
+const middleware = (wares: Middleware[]) => {
+  let index = -1;
+
+  const end = () => {
+    // If 'end' is called, skip to the end of the array, thereby ending the
+    // while loop early
+    index = wares.length;
+  };
+
+  while (++index < wares.length) {
+    const middle = wares[index];
+    if (Array.isArray(middle)) {
+      if (middle[0]()) {
+        middle[1](end);
+      }
+    } else {
+      middle(end);
+    }
+  }
 };
 
 export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   params,
 }) => {
   const slug = params?.slug;
-  if (!slug)
-    throw new Error('Expected params.slug to be defined (as string[])');
 
-  const slugPath = `${contentDir}/${params.slug.join('/')}`;
+  if (!slug || !Array.isArray(slug)) {
+    throw new Error('Expected params.slug to be defined (as string[])');
+  }
+
+  // Always use posix paths which are compatible with all of: windows, *nix,
+  // MacOS, and URLs
+  const slugPath = [contentDir, ...params.slug].join('/');
+
   const pathIsDirectory =
     fs.existsSync(slugPath) && fs.lstatSync(slugPath).isDirectory();
+
   const mdRelativePath = pathIsDirectory
-    ? `${contentDir}/${params.slug.join('/')}/index.md`
-    : `${contentDir}/${params.slug.join('/')}.md`;
-  const mdFilePath = path.resolve(process.cwd(), mdRelativePath);
+    ? `${slugPath}/index.md`
+    : `${slugPath}.md`;
+
   const editPageLinkPath = `/polaris.shopify.com/${mdRelativePath}`;
 
-  if (fs.existsSync(mdFilePath)) {
-    const markdown = fs.readFileSync(mdFilePath, 'utf-8');
-
-    let scope = {};
-
-    if (pathIsDirectory && slugPath === 'content/whats-new') {
-      const posts = getWhatsNew();
-
-      scope = {
-        posts,
-      };
-    }
-
-    const [mdx, data] = await serializeMdx<FrontMatter>(markdown, {scope});
-
-    const seoDescription =
-      typeof mdx.frontmatter.seoDescription === 'string'
-        ? mdx.frontmatter.seoDescription
-        : (data.firstParagraph as string) ?? null;
-
-    const props: Props = {
-      mdx,
-      seoDescription,
-      editPageLinkPath,
-    };
-
-    return {props};
-  } else {
+  if (!fs.existsSync(mdRelativePath)) {
     return {notFound: true};
   }
+
+  const markdown = fs.readFileSync(mdRelativePath, 'utf-8');
+
+  const scope: Record<string, any> = {};
+
+  middleware([
+    // patterns page needs to know the legacy files also
+    [
+      () =>
+        pathIsDirectory &&
+        params.slug.length === 1 &&
+        params.slug[0] === 'patterns',
+      (end) => {
+        scope.posts = getRichCards(`${slugPath}/*/index.md`);
+        scope.legacyPatternPosts = getRichCards(
+          `${contentDir}/patterns-legacy/!(index).md`,
+        );
+        end();
+      },
+    ],
+    // index pages need to know the files in their folder
+    [
+      () => pathIsDirectory,
+      () => {
+        // Non-recursive search for .md files except index.md
+        scope.posts = getRichCards(`${slugPath}/!(index).md`);
+      },
+    ],
+  ]);
+
+  const [mdx, data] = await serializeMdx<FrontMatter>(markdown, {scope});
+
+  const seoDescription =
+    typeof mdx.frontmatter.seoDescription === 'string'
+      ? mdx.frontmatter.seoDescription
+      : (data.firstParagraph as string) ?? null;
+
+  const props: Props = {
+    mdx,
+    seoDescription,
+    editPageLinkPath,
+  };
+
+  return {props};
 };
 
 const catchAllTemplateExcludeList = [
@@ -129,39 +200,29 @@ const catchAllTemplateExcludeList = [
   '/foundations',
   '/design',
   '/content',
-  '/patterns',
-  '/patterns-legacy',
   '/tools',
   '/tokens',
   '/sandbox',
   '/new-design-language',
 ];
 
-function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
+function fileShouldNotBeRenderedWithCatchAllTemplate(
+  filePath: string,
+): boolean {
   return (
-    !path.startsWith('/components') &&
-    !path.includes('/tools/stylelint-polaris/rules') &&
-    // We want to render legacy pages but not new pattern pages.
-    !(path.startsWith('/patterns') && !path.startsWith('/patterns-legacy')) &&
-    !catchAllTemplateExcludeList.includes(path)
+    !filePath.startsWith('/components') &&
+    !filePath.includes('/tools/stylelint-polaris/rules') &&
+    // We want to render legacy pages & patterns index page, but not new pattern details pages.
+    !filePath.startsWith('/patterns/') &&
+    !catchAllTemplateExcludeList.includes(filePath)
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const globPath = [
-    path.resolve(process.cwd(), 'content/*.md'),
-    path.resolve(process.cwd(), 'content/**/*.md'),
-    path.resolve(process.cwd(), 'content/**/**/*.md'),
-    path.resolve(process.cwd(), 'content/**/**/**/*.md'),
-  ];
   const paths = globby
-    .sync(globPath)
-    .map((fileName: string) => {
-      return fileName
-        .replace(`${process.cwd()}/content`, '')
-        .replace('/index.md', '')
-        .replace('.md', '');
-    })
+    // Recursive search for all markdown files (globby requires posix paths)
+    .sync(`${contentDir}/**/*.md`)
+    .map(extractSlugFromPath)
     .filter(fileShouldNotBeRenderedWithCatchAllTemplate);
 
   return {
