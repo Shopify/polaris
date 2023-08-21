@@ -36,7 +36,7 @@ describe('<Avatar />', () => {
       const src = 'image/path/';
       const avatar = mountWithApp(<Avatar source={src} />);
       expect(avatar).toContainReactComponent('span', {
-        className: 'Avatar sizeMedium shapeRound',
+        className: 'Avatar sizeMedium',
       });
       expect(avatar).toContainReactComponent('span', {
         className: expect.not.stringContaining('styleOne'),
@@ -60,7 +60,7 @@ describe('<Avatar />', () => {
       const src = 'image/path/';
       const avatar = mountWithApp(<Avatar customer source={src} />);
       expect(avatar).toContainReactComponent('span', {
-        className: 'Avatar sizeMedium shapeRound',
+        className: 'Avatar sizeMedium',
       });
       expect(avatar).toContainReactComponent('span', {
         className: expect.not.stringContaining('styleOne'),
@@ -148,24 +148,6 @@ describe('<Avatar />', () => {
       const avatar = mountWithApp(<Avatar name="Hello World" />);
       expect(avatar).toContainReactComponent('span', {
         'aria-label': 'Hello World',
-      });
-    });
-  });
-
-  describe('shape', () => {
-    it('renders a square background when square is passed to shape', () => {
-      const avatar = mountWithApp(<Avatar initials="DL" shape="square" />);
-
-      expect(avatar).toContainReactComponent('span', {
-        className: expect.stringContaining('shapeSquare'),
-      });
-    });
-
-    it('renders a round background when square is not passed to shape', () => {
-      const avatar = mountWithApp(<Avatar initials="DL" />);
-
-      expect(avatar).toContainReactComponent('span', {
-        className: expect.stringContaining('shapeRound'),
       });
     });
   });
