@@ -13,6 +13,10 @@ keywords:
 order: 1
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ### Feedback and suggestions
 
 Have feedback, a question, or suggestion? [Create an issue](https://github.com/Shopify/polaris/issues/new) during any stage of a component’s lifecycle.
