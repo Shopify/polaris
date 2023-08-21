@@ -8,4 +8,4 @@ icon: EmailNewsletterMajor
 
 # {frontmatter.title}
 
-<WhatsNewListing posts={posts} />
+<RichCardGrid cards={posts} />
