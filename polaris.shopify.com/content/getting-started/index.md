@@ -18,6 +18,10 @@ order: 1
 icon: HintMajor
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## Design resources
 
 Shopify provides [Figma community resources](https://www.figma.com/@Shopify) for Polaris components, styles, and icons. If you are new to Figma, check out our [onboarding guide](https://www.figma.com/community/file/994263185745279952), or open Figma and start designing with the Polaris:
