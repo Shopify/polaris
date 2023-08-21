@@ -14,7 +14,6 @@ import {
 } from '../../utilities/dates';
 import type {Range} from '../../utilities/dates';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 
 import {monthName} from './utilities';
 import {Month} from './components';
@@ -251,8 +250,6 @@ export function DatePicker({
 
   const datePickerClassName = classNames(styles.DatePicker);
 
-  const {polarisSummerEditions2023} = useFeatures();
-
   return (
     <div
       id={id}
@@ -262,7 +259,7 @@ export function DatePicker({
     >
       <div className={styles.Header}>
         <Button
-          variant={polarisSummerEditions2023 ? 'primaryPlain' : 'plain'}
+          variant="tertiary"
           icon={ArrowLeftMinor}
           accessibilityLabel={i18n.translate(
             'Polaris.DatePicker.previousMonth',
@@ -276,7 +273,7 @@ export function DatePicker({
           }
         />
         <Button
-          variant={polarisSummerEditions2023 ? 'primaryPlain' : 'plain'}
+          variant="tertiary"
           icon={ArrowRightMinor}
           accessibilityLabel={i18n.translate('Polaris.DatePicker.nextMonth', {
             nextMonth,

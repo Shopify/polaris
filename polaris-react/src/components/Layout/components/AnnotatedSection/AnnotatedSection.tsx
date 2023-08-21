@@ -4,7 +4,6 @@ import {Box} from '../../../Box';
 import {Text} from '../../../Text';
 // eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../TextContainer';
-import {useFeatures} from '../../../../utilities/features';
 import styles from '../../Layout.scss';
 
 export interface AnnotatedSectionProps {
@@ -20,17 +19,11 @@ export function AnnotatedSection({
   description,
   id,
 }: AnnotatedSectionProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const descriptionMarkup =
-    // eslint-disable-next-line no-nested-ternary
     typeof description === 'string' ? (
-      polarisSummerEditions2023 ? (
-        <Text as="p" variant="bodyMd">
-          {description}
-        </Text>
-      ) : (
-        <p>{description}</p>
-      )
+      <Text as="p" variant="bodyMd">
+        {description}
+      </Text>
     ) : (
       description
     );
@@ -39,9 +32,7 @@ export function AnnotatedSection({
     <div className={styles.AnnotatedSection}>
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
-          <TextContainer
-            spacing={polarisSummerEditions2023 ? 'tight' : undefined}
-          >
+          <TextContainer spacing="tight">
             <Text id={id} variant="headingMd" as="h2">
               {title}
             </Text>
