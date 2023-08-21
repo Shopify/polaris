@@ -99,7 +99,7 @@ function FiltersWithSomeDisabledExample() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
-                  variant="primaryPlain"
+                  variant="tertiary"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
