@@ -51,7 +51,7 @@ export function Navigation({
   return (
     <div className={styles.Navigation} ref={setRef}>
       <Button
-        variant="primaryPlain"
+        variant="tertiary"
         icon={ChevronLeftMinor}
         disabled={isScrolledFarthestLeft}
         accessibilityLabel={leftA11yLabel}
@@ -59,7 +59,7 @@ export function Navigation({
       />
       {pipMarkup}
       <Button
-        variant="primaryPlain"
+        variant="tertiary"
         icon={ChevronRightMinor}
         disabled={isScrolledFarthestRight}
         accessibilityLabel={rightA11yLabel}

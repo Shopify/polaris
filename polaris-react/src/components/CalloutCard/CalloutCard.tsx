@@ -39,7 +39,7 @@ export function CalloutCard({
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {
-        variant: 'primaryPlain',
+        variant: 'tertiary',
       })
     : null;
 

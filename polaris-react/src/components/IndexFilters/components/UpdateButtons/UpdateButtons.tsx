@@ -106,7 +106,7 @@ export function UpdateButtons({
 
   const cancelButtonMarkup = (
     <Button
-      variant="primaryPlain"
+      variant="tertiary"
       size="micro"
       onClick={cancelAction.onAction}
       disabled={disabled}

@@ -254,7 +254,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
               {buttonsFrom(shortcutActions, {
-                variant: 'primaryPlain',
+                variant: 'tertiary',
               })}
             </ButtonGroup>
           </div>
@@ -274,7 +274,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                   <Button
                     accessibilityLabel={disclosureAccessibilityLabel}
                     onClick={this.handleActionsClick}
-                    variant="primaryPlain"
+                    variant="tertiary"
                     icon={HorizontalDotsMinor}
                   />
                 }

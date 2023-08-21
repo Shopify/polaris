@@ -66,7 +66,7 @@ export function ContextualSaveBar({
 
   const discardActionMarkup = discardAction && (
     <Button
-      variant="primaryPlain"
+      variant="tertiary"
       size={polarisSummerEditions2023 ? 'large' : undefined}
       url={discardAction.url}
       onClick={discardActionHandler}

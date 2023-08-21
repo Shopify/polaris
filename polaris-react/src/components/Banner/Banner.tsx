@@ -150,7 +150,7 @@ export function BannerLayout({
       ) : null,
     dismissButton: onDismiss ? (
       <Button
-        variant="primaryPlain"
+        variant="tertiary"
         icon={
           <span
             className={

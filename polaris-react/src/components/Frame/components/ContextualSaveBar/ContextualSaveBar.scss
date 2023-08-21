@@ -121,8 +121,8 @@
     }
   }
 
-  #{$se23} & [class*='Polaris-Button--primaryPlain'],
-  #{$se23} & [class*='Button-primaryPlain'] {
+  #{$se23} & [class*='Polaris-Button--tertiary'],
+  #{$se23} & [class*='Button-tertiary'] {
     --pc-button-color: var(--p-color-bg-inset-strong);
     --pc-button-color-hover: var(--p-color-bg-inverse-hover);
     --pc-button-color-active: var(--p-color-bg-inverse-active);
