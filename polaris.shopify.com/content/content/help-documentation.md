@@ -116,13 +116,13 @@ Regardless of their skill level, the aim of the documentation remains the same: 
 
 Before you begin organizing information on a page, review the following principles:
 
-* **Let readers fail fast**: If a reader is going to fail at the task at hand, then let them know quickly, instead of letting them get halfway through only for them to realize that they don't meet the requirements. If a reader can't complete a set of steps due to an unmet requirement, isn't eligible to use a feature, or is in a scenario where continuing to pursue an action is a waste of time, then you need to inform the reader of this fact as quickly as possible within the content. This respects a reader's time, and lets them find an appropriate solution faster.
+- **Let readers fail fast**: If a reader is going to fail at the task at hand, then let them know quickly, instead of letting them get halfway through only for them to realize that they don't meet the requirements. If a reader can't complete a set of steps due to an unmet requirement, isn't eligible to use a feature, or is in a scenario where continuing to pursue an action is a waste of time, then you need to inform the reader of this fact as quickly as possible within the content. This respects a reader's time, and lets them find an appropriate solution faster.
 
-* **Provide all readers with a solution or next step**: Any given set of steps should include a solution or next step for a reader. For example, suppose that a set of steps has the successful result of adding a feature to their product, but there is a requirement to be on the latest version of the product. Before the steps are listed, a user should be told of the restriction, and provided a link for the steps on how to upgrade.
+- **Provide all readers with a solution or next step**: Any given set of steps should include a solution or next step for a reader. For example, suppose that a set of steps has the successful result of adding a feature to their product, but there is a requirement to be on the latest version of the product. Before the steps are listed, a user should be told of the restriction, and provided a link for the steps on how to upgrade.
 
-* **Keep it factual**: To maintain a level of trust with your readers, you should remove marketing and promotional content from your help content. Help content can be used to explain the benefits of a product or feature, but should stick to the direct benefits and hedge all claims of making things "faster", "better" or "easier".
+- **Keep it factual**: To maintain a level of trust with your readers, you should remove marketing and promotional content from your help content. Help content can be used to explain the benefits of a product or feature, but should stick to the direct benefits and hedge all claims of making things "faster", "better" or "easier".
 
-* **Explain how a reader can use a feature, not what a feature can do for them**: Framing your content as how a reader can use a product or feature helps them better understand your content and imagine how it would fit into their own context.
+- **Explain how a reader can use a feature, not what a feature can do for them**: Framing your content as how a reader can use a product or feature helps them better understand your content and imagine how it would fit into their own context.
 
 ## Use headings to organize your document
 
@@ -619,7 +619,7 @@ Use linking adverbs, conjunctions, and prepositions liberally to avoid choppy wr
 
 Putting the context, expected information, or old information first helps reduce a reader's mental load while they read. When new information is first, it requires the reader to hold on to the information while trying to determine why it is relevant.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -629,7 +629,7 @@ Putting the context, expected information, or old information first helps reduce
 
 - Stores in the United States, Canada, and Mexico can use this feature.
 
-<!-- end -->
+</DoDont>
 
 ### Change up sentence structures
 
