@@ -29,6 +29,7 @@ interface Props {
   mdx: SerializedMdx<FrontMatter>;
   seoDescription?: string;
   editPageLinkPath: string;
+  isContentPage: boolean;
 }
 
 export type RichCardGridProps = {
@@ -46,11 +47,12 @@ const CatchAllTemplate = ({
   mdx,
   seoDescription,
   editPageLinkPath,
+  isContentPage,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const {title, noIndex = false} = mdx.frontmatter;
 
   return (
-    <Page editPageLinkPath={editPageLinkPath} isContentPage>
+    <Page editPageLinkPath={editPageLinkPath} isContentPage={isContentPage}>
       <PageMeta title={title} description={seoDescription} noIndex={noIndex} />
       <Markdown {...mdx} />
     </Page>
@@ -190,6 +192,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     mdx,
     seoDescription,
     editPageLinkPath,
+    isContentPage: !pathIsDirectory,
   };
 
   return {props};
