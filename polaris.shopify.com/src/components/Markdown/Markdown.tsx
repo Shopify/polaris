@@ -191,15 +191,12 @@ export const HeadingWithCopyButton = forwardRef(
     const path = typeof window !== 'undefined' ? window.location.pathname : '';
     const [copy, didJustCopy] = useCopyToClipboard(`${origin}${path}#${id}`);
 
-    return (
-      <Heading
-        as="h1"
-        id={id}
-        {...props}
-        className={styles[`Heading-${props.as}`]}
-        ref={ref}
-      >
-        {children}
+    const copyButton =
+      // remark-slug slugifies the header content before next-mdx-remote has a
+      // chance to replace the global scope variables with their actual value,
+      // resulting in an id of `frontmattertitle` for `# {frontmatter.title}`,
+      // so we filter that case out here.
+      !id || id.startsWith('frontmatter') ? null : (
         <Tooltip
           ariaLabel="Copy to clipboard"
           renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
@@ -208,6 +205,18 @@ export const HeadingWithCopyButton = forwardRef(
             <Icon source={ClipboardMinor} width={16} height={16} />
           </button>
         </Tooltip>
+      );
+
+    return (
+      <Heading
+        as="h1"
+        id={id}
+        {...props}
+        className={[styles.MarkdownHeading, styles[`Heading-${props.as}`]]}
+        ref={ref}
+      >
+        {children}
+        {copyButton}
       </Heading>
     );
   },
