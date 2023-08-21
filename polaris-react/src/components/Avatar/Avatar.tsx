@@ -15,8 +15,6 @@ type Size =
   | 'large'
   | Experimental<'xl' | '2xl'>;
 
-type Shape = 'square' | 'round';
-
 enum Status {
   Pending = 'PENDING',
   Loaded = 'LOADED',
@@ -60,11 +58,6 @@ export interface AvatarProps {
    * @default 'medium'
    */
   size?: Size;
-  /**
-   * Shape of avatar
-   * @default 'round'
-   */
-  shape?: Shape;
   /** The name of the person */
   name?: string;
   /** Initials of person to display */
@@ -86,7 +79,6 @@ export function Avatar({
   initials,
   customer,
   size = 'medium',
-  shape = 'round',
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
@@ -130,7 +122,6 @@ export function Avatar({
     styles.Avatar,
     size && styles[variationName('size', size)],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
-    shape && styles[variationName('shape', shape)],
     !customer &&
       !source &&
       styles[variationName('style', styleClass(nameString))],

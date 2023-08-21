@@ -18,6 +18,7 @@
   background: var(--p-color-avatar-background-experimental);
   color: var(--p-color-avatar-color-experimental);
   user-select: none;
+  border-radius: var(--p-border-radius-05);
 
   &.imageHasLoaded {
     background: transparent;
@@ -40,23 +41,6 @@
   font-weight: var(--p-font-weight-regular);
 
   &.long {
-    font-size: var(--p-font-size-75);
-  }
-}
-
-.shapeRound {
-  border-radius: var(--p-border-radius-05);
-}
-
-.shapeSquare {
-  border-radius: var(--p-border-radius-05);
-
-  .Text {
-    font-size: var(--p-font-size-200);
-    font-weight: var(--p-font-weight-regular);
-  }
-
-  .long {
     font-size: var(--p-font-size-75);
   }
 }
