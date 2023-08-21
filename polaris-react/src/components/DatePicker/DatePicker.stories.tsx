@@ -4,6 +4,9 @@ import {Box, Card, DatePicker, BlockStack} from '@shopify/polaris';
 
 export default {
   component: DatePicker,
+  parameters: {
+    chromatic: {delay: 300},
+  },
 } as ComponentMeta<typeof DatePicker>;
 
 export function All() {
