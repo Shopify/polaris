@@ -77,7 +77,7 @@ export function MediaCard({
       onClick={onDismiss}
       size="slim"
       accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
-      variant="primary"
+      variant="tertiary"
     />
   ) : null;
 
@@ -88,7 +88,7 @@ export function MediaCard({
         onClick={togglePopoverActive}
         size="slim"
         accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
-        variant="primary"
+        variant="tertiary"
       />
     </InlineStack>
   );
