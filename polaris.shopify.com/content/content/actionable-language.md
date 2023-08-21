@@ -282,7 +282,7 @@ Links that aren’t in full sentences should use the \{verb + noun\} pattern and
 
 When linking out to documentation from help text in the admin, link the relevant key words. In general, don’t add another sentence starting with “Learn more...”, because it’s repetitive and takes up unnecessary space.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -292,11 +292,11 @@ When linking out to documentation from help text in the admin, link the relevant
 
 - This is a read-only environment variable. It can’t be edited or deleted. Learn more about [read-only environment variables](https://shopify.dev/docs/custom-storefronts/oxygen/storefronts#environment-variables).
 
-<!-- end -->
+</DoDont>
 
 Only add a “Learn more...” sentence if the help text addresses more than one concept, each of which could be linked to their own help doc. In that situation, pick the most appropriate link and contextualize it with “Learn more...”.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -306,7 +306,7 @@ Only add a “Learn more...” sentence if the help text addresses more than on
 
 - [Storefront API tokens](https://shopify.dev/docs/api/usage/authentication#access-tokens-for-the-storefront-api) are unique per [Hydrogen storefront](https://shopify.dev/docs/custom-storefronts/oxygen/storefronts) but their [permission scopes](https://shopify.dev/docs/api/usage/access-scopes#unauthenticated-access-scopes) are shared across all Hydrogen storefronts.
 
-<!-- end -->
+</DoDont>
 
 ---
 
