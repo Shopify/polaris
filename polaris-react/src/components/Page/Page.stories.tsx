@@ -33,7 +33,7 @@ export function Default() {
       secondaryActions={[
         {
           content: 'Delete',
-          destructive: true,
+          tone: 'critical',
           icon: DeleteMinor,
           accessibilityLabel: 'Delete action label',
           onAction: () => console.log('Delete action'),
@@ -124,7 +124,7 @@ export function WithDestructiveSecondaryAction() {
   return (
     <Page
       title="General"
-      secondaryActions={[{content: 'Delete', destructive: true}]}
+      secondaryActions={[{content: 'Delete', tone: 'critical'}]}
     >
       <p>Page content</p>
     </Page>
