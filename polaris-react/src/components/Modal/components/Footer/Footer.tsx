@@ -20,7 +20,7 @@ export function Footer({
   children,
 }: FooterProps) {
   const primaryActionButton =
-    (primaryAction && buttonsFrom(primaryAction, {primary: true})) || null;
+    (primaryAction && buttonsFrom(primaryAction, {variant: 'primary'})) || null;
   const secondaryActionButtons =
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =

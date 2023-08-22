@@ -64,8 +64,7 @@ export function Toast({
   const actionMarkup = action ? (
     <div className={styles.Action}>
       <Button
-        plain
-        monochrome
+        variant="monochromePlain"
         removeUnderline={polarisSummerEditions2023}
         size="slim"
         onClick={action.onAction}

@@ -476,8 +476,7 @@ export function WithChildrenContent() {
                 <Button
                   onClick={() => console.log('New filter saved')}
                   size="micro"
-                  primary
-                  plain
+                  variant="tertiary"
                 >
                   Save
                 </Button>
@@ -607,8 +606,7 @@ export function Disabled() {
                 <Button
                   disabled
                   size="micro"
-                  primary
-                  plain
+                  variant="tertiary"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -758,8 +756,7 @@ export function SomeDisabled() {
                 <Button
                   disabled
                   size="micro"
-                  primary
-                  plain
+                  variant="tertiary"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -963,8 +960,7 @@ export function WithQueryFieldHidden() {
               <Button
                 onClick={() => console.log('New filter saved')}
                 size="micro"
-                primary
-                plain
+                variant="tertiary"
               >
                 Save
               </Button>

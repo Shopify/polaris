@@ -51,3 +51,6 @@ Secondary, becomes oneThird:
 **HorizontalGrid**
 
 `npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`
+
+**Button**
+// TODO

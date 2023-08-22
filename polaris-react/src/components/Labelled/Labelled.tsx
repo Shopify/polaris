@@ -55,7 +55,9 @@ export function Labelled({
   );
 
   const actionMarkup = action ? (
-    <div className={styles.Action}>{buttonFrom(action, {plain: true})}</div>
+    <div className={styles.Action}>
+      {buttonFrom(action, {variant: 'plain'})}
+    </div>
   ) : null;
 
   const helpTextMarkup = helpText ? (

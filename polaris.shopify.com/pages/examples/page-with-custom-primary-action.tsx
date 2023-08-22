@@ -9,7 +9,7 @@ function PageExample() {
       title="General"
       primaryAction={
         <Button
-          primary
+          variant="primary"
           connectedDisclosure={{
             accessibilityLabel: 'Other save actions',
             actions: [{content: 'Save as new'}],

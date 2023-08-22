@@ -76,8 +76,7 @@ function FiltersDisabledExample() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
-                  primary
-                  plain
+                  variant="tertiary"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save

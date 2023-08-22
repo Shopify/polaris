@@ -149,7 +149,7 @@ describe('<ResourceItem />', () => {
       const expectedLabel = `Actions for ${name}`;
 
       expect(item).toContainReactComponentTimes(Button, 1, {
-        plain: true,
+        variant: 'tertiary',
         accessibilityLabel: expectedLabel,
       });
     });

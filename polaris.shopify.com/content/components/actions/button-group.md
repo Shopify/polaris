@@ -25,9 +25,6 @@ examples:
   - fileName: button-group-with-segmented-buttons.tsx
     title: With segmented buttons
     description: Use to emphasize several buttons as a thematically-related set among other controls.
-  - fileName: button-group-outline-with-segmented-buttons.tsx
-    title: Outline with segmented buttons
-    description: Use to emphasize several buttons as a thematically-related set against shaded or colorful backgrounds.
   - fileName: button-group-pressed-with-segmented-buttons.tsx
     title: Pressed with segmented buttons
     description: Pressed buttons can be used in combination to create a toggle for other parts of the user interface.

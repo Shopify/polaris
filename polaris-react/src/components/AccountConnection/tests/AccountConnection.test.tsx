@@ -63,7 +63,7 @@ describe('<AccountConnection />', () => {
       expect(accountConnection).toContainReactComponent(Button, {
         children: action.content,
         onClick: action.onAction,
-        primary: true,
+        variant: 'primary',
       });
     });
 
@@ -78,7 +78,6 @@ describe('<AccountConnection />', () => {
       expect(accountConnection).toContainReactComponent(Button, {
         children: action.content,
         onClick: action.onAction,
-        primary: false,
       });
     });
   });

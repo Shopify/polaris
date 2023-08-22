@@ -25,12 +25,6 @@ examples:
   - fileName: button-default.tsx
     title: Default
     description: Used most in the interface. Only use another style if a button requires more or less visual weight.
-  - fileName: button-outline.tsx
-    title: Outline
-    description: Use against shaded or colorful backgrounds. An outline button will maintain the appropriate visual weight and won’t clash with the background color.
-  - fileName: button-outline-monochrome.tsx
-    title: Outline monochrome
-    description: Use against shaded or colorful backgrounds where matching the current text colors is more appropriate than the current outline theme.
   - fileName: button-plain.tsx
     title: Plain
     description: Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
