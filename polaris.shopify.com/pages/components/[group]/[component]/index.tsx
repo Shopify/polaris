@@ -54,8 +54,6 @@ const Components = ({
       }
     : undefined;
 
-  console.log(typedStatus);
-
   const componentExamples = Boolean(examples.length) && (
     <ComponentExamples examples={examples} />
   );
