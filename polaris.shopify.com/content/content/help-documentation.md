@@ -31,6 +31,10 @@ keywords:
   - educational opportunities
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 These are the core guidelines used to produce the [Shopify Help Center](https://help.shopify.com/), as well as Shopify's internal documentation. They’re all intended to serve the same goal: to educate and empower Shopify's merchants and employees.
 
 To include a link to help documentation in your app or channel, use the

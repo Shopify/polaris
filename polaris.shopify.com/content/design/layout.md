@@ -58,7 +58,7 @@ All layout components use the breakpoint scale and tokens. Consequently, conside
 To ensure designs are responsive, reference the breakpoints and examples in the Polaris [Space](/design/space) documentation.
 
 <video width="100%" height="auto" controls autoplay muted loop>
-  <source src="/images/design/space/breakpoints.mp4" type="video/mp4">
+  <source src="/images/design/space/breakpoints.mp4" type="video/mp4" />
   <p>Browser window resizing with the overlayed column grid dynamically adjusting to the size</p>
 </video>
 
