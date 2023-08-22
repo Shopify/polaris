@@ -40,16 +40,14 @@
 
   h2 {
     @include heading-2;
-    &:not(:first-child) {
-      margin-top: 3rem;
-    }
+
+    margin-top: 3rem;
   }
 
   h3 {
     @include heading-3;
-    &:not(:first-child) {
-      margin-top: 1.5rem;
-    }
+
+    margin-top: 1.5rem;
   }
 
   h4 {
