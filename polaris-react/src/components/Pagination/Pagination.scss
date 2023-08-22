@@ -2,26 +2,24 @@
 
 .Pagination {
   button {
-    #{$se23} & {
-      /* stylelint-disable declaration-no-important -- se23 */
-      border: none !important;
-      box-shadow: none !important;
-      /* stylelint-enable */
-      background-color: var(--p-color-bg-strong);
-      /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:hover {
-        background-color: var(--p-color-bg-strong-hover);
-      }
-      /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:active {
-        /* stylelint-disable-next-line declaration-no-important -- se23 */
-        box-shadow: var(--p-shadow-inset-md) !important;
-      }
-      /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:active,
-      &:focus {
-        background-color: var(--p-color-bg-strong-active);
-      }
+    /* stylelint-disable-next-line declaration-no-important -- override border */
+    border: none !important;
+    /* stylelint-disable-next-line declaration-no-important -- override box-shadow */
+    box-shadow: none !important;
+    background-color: var(--p-color-bg-strong);
+
+    &:hover {
+      background-color: var(--p-color-bg-strong-hover);
+    }
+
+    &:active {
+      /* stylelint-disable-next-line declaration-no-important -- override box shadow */
+      box-shadow: var(--p-shadow-inset-md) !important;
+    }
+
+    &:active,
+    &:focus {
+      background-color: var(--p-color-bg-strong-active);
     }
   }
 

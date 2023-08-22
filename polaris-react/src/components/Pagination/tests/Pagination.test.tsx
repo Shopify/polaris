@@ -287,7 +287,7 @@ describe('<Pagination />', () => {
   );
 
   describe('type: page', () => {
-    it('the ButtonGroup is not segmented when there is a label', () => {
+    it('the ButtonGroup is segmented when there is a label', () => {
       const pagination = mountWithApp(
         <Pagination
           nextURL="/next"
@@ -299,7 +299,7 @@ describe('<Pagination />', () => {
       );
 
       expect(pagination).toContainReactComponent(ButtonGroup, {
-        segmented: false,
+        segmented: true,
       });
     });
 
