@@ -86,49 +86,43 @@ export function All() {
           </Card>
         </BlockStack>
         <BlockStack gap="4">
-          <Text as="h2">outline destructive</Text>
+          <Text as="h2">destructive</Text>
           <Box padding="4">
             <InlineStack gap="5" blockAlign="end">
-              <Button outline destructive>
+              <Button tone="critical">Label</Button>
+              <Button tone="critical" disabled>
                 Label
               </Button>
-              <Button outline destructive disabled>
+              <Button tone="critical" icon={PlusMinor}>
                 Label
               </Button>
-              <Button outline destructive icon={PlusMinor}>
+              <Button tone="critical" disabled icon={PlusMinor}>
                 Label
               </Button>
-              <Button outline destructive disabled icon={PlusMinor}>
-                Label
-              </Button>
-              <Button outline destructive disclosure>
+              <Button tone="critical" disclosure>
                 Label
               </Button>
               <Button
-                outline
-                destructive
+                tone="critical"
                 icon={CancelSmallMinor}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
               <Button
-                outline
-                destructive
+                tone="critical"
                 icon={EditMajor}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
               <Button
-                outline
-                destructive
+                tone="critical"
                 disabled
                 icon={PlusMinor}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
               <Button
-                outline
-                destructive
+                tone="critical"
                 icon={DeleteMinor}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
@@ -137,31 +131,27 @@ export function All() {
           </Box>
           <Card>
             <InlineStack gap="5" blockAlign="end">
-              <Button outline destructive>
+              <Button tone="critical">Label</Button>
+              <Button tone="critical" disabled>
                 Label
               </Button>
-              <Button outline destructive disabled>
+              <Button tone="critical" icon={PlusMinor}>
                 Label
               </Button>
-              <Button outline destructive icon={PlusMinor}>
+              <Button tone="critical" disabled icon={PlusMinor}>
                 Label
               </Button>
-              <Button outline destructive disabled icon={PlusMinor}>
-                Label
-              </Button>
-              <Button outline destructive disclosure>
+              <Button tone="critical" disclosure>
                 Label
               </Button>
               <Button
-                outline
-                destructive
+                tone="critical"
                 icon={CancelSmallMinor}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
               <Button
-                outline
-                destructive
+                tone="critical"
                 disabled
                 icon={EditMajor}
                 onClick={() => {}}
@@ -171,69 +161,6 @@ export function All() {
           </Card>
         </BlockStack>
         <BlockStack gap="2">
-          <Text as="h2">destructive</Text>
-          <Box padding="4">
-            <InlineStack gap="5" blockAlign="end">
-              <Button destructive>Label</Button>
-              <Button destructive disabled>
-                Label
-              </Button>
-              <Button destructive icon={DeleteMinor}>
-                Label
-              </Button>
-              <Button destructive disabled icon={DeleteMinor}>
-                Label
-              </Button>
-              <Button destructive disclosure>
-                Label
-              </Button>
-              <Button
-                destructive
-                icon={CancelSmallMinor}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                disabled
-                destructive
-                icon={EditMajor}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-            </InlineStack>
-          </Box>
-          <Card>
-            <InlineStack gap="5" blockAlign="end">
-              <Button destructive>Label</Button>
-              <Button destructive disabled>
-                Label
-              </Button>
-              <Button destructive icon={DeleteMinor}>
-                Label
-              </Button>
-              <Button destructive disabled icon={DeleteMinor}>
-                Label
-              </Button>
-              <Button destructive disclosure>
-                Label
-              </Button>
-              <Button
-                destructive
-                icon={CancelSmallMinor}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                disabled
-                destructive
-                icon={EditMajor}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-            </InlineStack>
-          </Card>
-        </BlockStack>
-        <BlockStack gap="4">
           <Text as="h2">primary</Text>
           <Primary />
         </BlockStack>
@@ -241,24 +168,29 @@ export function All() {
         <BlockStack gap="2">
           <Text as="h2">primary destructive</Text>
           <InlineStack gap="5" blockAlign="end">
-            <Button primary destructive>
+            <Button variant="primary" tone="critical">
               Label
             </Button>
-            <Button primary destructive disabled>
+            <Button variant="primary" tone="critical" disabled>
               Label
             </Button>
-            <Button primary destructive icon={DeleteMinor}>
-              Label
-            </Button>
-            <Button primary destructive disabled icon={DeleteMinor}>
-              Label
-            </Button>
-            <Button primary destructive disclosure>
+            <Button variant="primary" tone="critical" icon={DeleteMinor}>
               Label
             </Button>
             <Button
-              primary
-              destructive
+              variant="primary"
+              tone="critical"
+              disabled
+              icon={DeleteMinor}
+            >
+              Label
+            </Button>
+            <Button variant="primary" tone="critical" disclosure>
+              Label
+            </Button>
+            <Button
+              variant="primary"
+              tone="critical"
               icon={CancelSmallMinor}
               onClick={() => {}}
               accessibilityLabel="Dismiss"
@@ -269,21 +201,29 @@ export function All() {
         <BlockStack gap="2">
           <Text as="h2">primary sucess</Text>
           <InlineStack gap="5" blockAlign="end">
-            <Button primarySuccess>Label</Button>
-            <Button primarySuccess disabled>
+            <Button variant="primary" tone="success">
               Label
             </Button>
-            <Button primarySuccess icon={DeleteMinor}>
+            <Button variant="primary" tone="success" disabled>
               Label
             </Button>
-            <Button primarySuccess disabled icon={DeleteMinor}>
-              Label
-            </Button>
-            <Button primarySuccess disclosure>
+            <Button variant="primary" tone="success" icon={DeleteMinor}>
               Label
             </Button>
             <Button
-              primarySuccess
+              variant="primary"
+              tone="success"
+              disabled
+              icon={DeleteMinor}
+            >
+              Label
+            </Button>
+            <Button variant="primary" tone="success" disclosure>
+              Label
+            </Button>
+            <Button
+              variant="primary"
+              tone="success"
               icon={CancelSmallMinor}
               onClick={() => {}}
               accessibilityLabel="Dismiss"
@@ -298,70 +238,40 @@ export function All() {
 
         <BlockStack gap="2">
           <Text as="h2">plain destructive</Text>
+          <PlainDestructive />
+        </BlockStack>
+
+        <BlockStack gap="2">
+          <Text as="h2">tertiary</Text>
+          <Tertiary />
+        </BlockStack>
+
+        <BlockStack gap="2">
+          <Text as="h2">tertiary destructive</Text>
           <InlineStack gap="5" blockAlign="end">
-            <Button plain destructive>
+            <Button variant="tertiary" tone="critical">
               Label
             </Button>
-            <Button plain destructive disabled>
+            <Button variant="tertiary" tone="critical" disabled>
               Label
             </Button>
-            <Button plain destructive icon={PlusMinor}>
-              Label
-            </Button>
-            <Button plain destructive disabled icon={PlusMinor}>
-              Label
-            </Button>
-            <Button plain destructive disclosure>
-              Label
-            </Button>
-            <Button plain destructive disclosure disabled>
+            <Button variant="tertiary" tone="critical" icon={PlusMinor}>
               Label
             </Button>
             <Button
-              plain
-              destructive
-              icon={CancelSmallMinor}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-            <Button
-              plain
-              destructive
+              variant="tertiary"
+              tone="critical"
               disabled
-              icon={CancelSmallMinor}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-          </InlineStack>
-        </BlockStack>
-
-        <BlockStack gap="2">
-          <Text as="h2">primary plain</Text>
-          <PlainPrimary />
-        </BlockStack>
-
-        <BlockStack gap="2">
-          <Text as="h2">primary plain destructive</Text>
-          <InlineStack gap="5" blockAlign="end">
-            <Button primary plain destructive>
+              icon={PlusMinor}
+            >
               Label
             </Button>
-            <Button primary plain destructive disabled>
-              Label
-            </Button>
-            <Button primary plain destructive icon={PlusMinor}>
-              Label
-            </Button>
-            <Button primary plain destructive disabled icon={PlusMinor}>
-              Label
-            </Button>
-            <Button primary plain destructive disclosure>
+            <Button variant="tertiary" tone="critical" disclosure>
               Label
             </Button>
             <Button
-              primary
-              plain
-              destructive
+              variant="tertiary"
+              tone="critical"
               icon={CancelSmallMinor}
               onClick={() => {}}
               accessibilityLabel="Dismiss"
@@ -377,48 +287,34 @@ export function Default() {
   return <Button>Add product</Button>;
 }
 
-export function Outline() {
-  return <Button outline>Add product</Button>;
-}
-
-export function OutlineMonochrome() {
-  return (
-    <div style={{color: '#bf0711'}}>
-      <Button monochrome outline>
-        Retry
-      </Button>
-    </div>
-  );
-}
-
 export function Plain() {
   return (
     <Box padding="4">
       <InlineStack gap="5" blockAlign="end">
-        <Button plain>Label</Button>
-        <Button plain disabled>
+        <Button variant="plain">Label</Button>
+        <Button variant="plain" disabled>
           Label
         </Button>
-        <Button plain icon={PlusMinor}>
+        <Button variant="plain" icon={PlusMinor}>
           Label
         </Button>
-        <Button plain disabled icon={PlusMinor}>
+        <Button variant="plain" disabled icon={PlusMinor}>
           Label
         </Button>
-        <Button plain disclosure>
+        <Button variant="plain" disclosure>
           Label
         </Button>
-        <Button plain disclosure disabled>
+        <Button variant="plain" disclosure disabled>
           Label
         </Button>
         <Button
-          plain
+          variant="plain"
           icon={CancelSmallMinor}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
         <Button
-          plain
+          variant="plain"
           disabled
           icon={CancelSmallMinor}
           onClick={() => {}}
@@ -429,43 +325,39 @@ export function Plain() {
   );
 }
 
-export function PlainPrimary() {
+export function Tertiary() {
   return (
     <BlockStack gap="4">
       <Box padding="4">
         <InlineStack gap="5" blockAlign="end">
-          <Button primary plain>
+          <Button variant="tertiary">Label</Button>
+          <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button primary plain disabled>
+          <Button variant="tertiary" icon={PlusMinor}>
             Label
           </Button>
-          <Button primary plain icon={PlusMinor}>
+          <Button variant="tertiary" disabled icon={PlusMinor}>
             Label
           </Button>
-          <Button primary plain disabled icon={PlusMinor}>
-            Label
-          </Button>
-          <Button primary plain disclosure>
+          <Button variant="tertiary" disclosure>
             Label
           </Button>
         </InlineStack>
       </Box>
       <Card>
         <InlineStack gap="5" blockAlign="end">
-          <Button primary plain>
+          <Button variant="tertiary">Label</Button>
+          <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button primary plain disabled>
+          <Button variant="tertiary" icon={PlusMinor}>
             Label
           </Button>
-          <Button primary plain icon={PlusMinor}>
+          <Button variant="tertiary" disabled icon={PlusMinor}>
             Label
           </Button>
-          <Button primary plain disabled icon={PlusMinor}>
-            Label
-          </Button>
-          <Button primary plain disclosure>
+          <Button variant="tertiary" disclosure>
             Label
           </Button>
         </InlineStack>
@@ -473,16 +365,14 @@ export function PlainPrimary() {
       <Card>
         <InlineStack gap="5" blockAlign="end">
           <Button
-            primary
-            plain
+            variant="tertiary"
             icon={CancelSmallMinor}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
-            primary
-            plain
+            variant="tertiary"
             icon={EditMajor}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
@@ -493,22 +383,43 @@ export function PlainPrimary() {
   );
 }
 
-export function PlainMonochrome() {
-  return (
-    <div>
-      Could not retrieve data.{' '}
-      <Button plain monochrome>
-        Try again
-      </Button>
-    </div>
-  );
-}
-
 export function PlainDestructive() {
   return (
-    <Button plain destructive>
-      Remove
-    </Button>
+    <InlineStack gap="5" blockAlign="end">
+      <Button variant="plain" tone="critical">
+        Label
+      </Button>
+      <Button variant="plain" tone="critical" disabled>
+        Label
+      </Button>
+      <Button variant="plain" tone="critical" icon={PlusMinor}>
+        Label
+      </Button>
+      <Button variant="plain" tone="critical" disabled icon={PlusMinor}>
+        Label
+      </Button>
+      <Button variant="plain" tone="critical" disclosure>
+        Label
+      </Button>
+      <Button variant="plain" tone="critical" disclosure disabled>
+        Label
+      </Button>
+      <Button
+        variant="plain"
+        tone="critical"
+        icon={CancelSmallMinor}
+        onClick={() => {}}
+        accessibilityLabel="Dismiss"
+      />
+      <Button
+        variant="plain"
+        tone="critical"
+        disabled
+        icon={CancelSmallMinor}
+        onClick={() => {}}
+        accessibilityLabel="Dismiss"
+      />
+    </InlineStack>
   );
 }
 
@@ -517,28 +428,28 @@ export function Primary() {
     <BlockStack gap="4">
       <Box padding="4">
         <InlineStack gap="5" blockAlign="end">
-          <Button primary>Label</Button>
-          <Button primary disabled>
+          <Button variant="primary">Label</Button>
+          <Button variant="primary" disabled>
             Label
           </Button>
-          <Button primary icon={PlusMinor}>
+          <Button variant="primary" icon={PlusMinor}>
             Label
           </Button>
-          <Button primary disabled icon={PlusMinor}>
+          <Button variant="primary" disabled icon={PlusMinor}>
             Label
           </Button>
-          <Button primary disclosure>
+          <Button variant="primary" disclosure>
             Label
           </Button>
           <Button
-            primary
+            variant="primary"
             icon={CancelSmallMinor}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
-            primary
+            variant="primary"
             icon={EditMajor}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
@@ -547,28 +458,28 @@ export function Primary() {
       </Box>
       <Card>
         <InlineStack gap="5" blockAlign="end">
-          <Button primary>Label</Button>
-          <Button primary disabled>
+          <Button variant="primary">Label</Button>
+          <Button variant="primary" disabled>
             Label
           </Button>
-          <Button primary icon={PlusMinor}>
+          <Button variant="primary" icon={PlusMinor}>
             Label
           </Button>
-          <Button primary disabled icon={PlusMinor}>
+          <Button variant="primary" disabled icon={PlusMinor}>
             Label
           </Button>
-          <Button primary disclosure>
+          <Button variant="primary" disclosure>
             Label
           </Button>
           <Button
-            primary
+            variant="primary"
             icon={CancelSmallMinor}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
-            primary
+            variant="primary"
             icon={EditMajor}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
@@ -580,20 +491,20 @@ export function Primary() {
 }
 
 export function Destructive() {
-  return <Button destructive>Delete theme</Button>;
+  return <Button tone="critical">Delete theme</Button>;
 }
 
 export function Micro() {
   return (
     <InlineStack gap="5">
       <Button size="micro">Label</Button>
-      <Button primary size="micro">
+      <Button variant="primary" size="micro">
         Label
       </Button>
-      <Button destructive size="micro">
+      <Button tone="critical" size="micro">
         Label
       </Button>
-      <Button plain size="micro">
+      <Button variant="plain" size="micro">
         Label
       </Button>
       <Button size="micro" accessibilityLabel="Edit" icon={EditMajor} />
@@ -605,13 +516,13 @@ export function Slim() {
   return (
     <InlineStack gap="5">
       <Button size="slim">Label</Button>
-      <Button primary size="slim">
+      <Button variant="primary" size="slim">
         Label
       </Button>
-      <Button destructive size="slim">
+      <Button tone="critical" size="slim">
         Label
       </Button>
-      <Button plain size="slim">
+      <Button variant="plain" size="slim">
         Label
       </Button>
       <Button size="slim" accessibilityLabel="Edit" icon={EditMajor} />
@@ -625,7 +536,7 @@ export function Large() {
       <InlineStack gap="5" blockAlign="end">
         <Button size="large">Create store</Button>
         <Button size="large" accessibilityLabel="Edit" icon={EditMajor} />
-        <Button size="large" icon={PlusMinor} primary>
+        <Button size="large" icon={PlusMinor} variant="primary">
           Create store
         </Button>
       </InlineStack>
@@ -644,7 +555,7 @@ export function FullWidth() {
 
 export function TextAligned() {
   return (
-    <Button plain textAlign="left">
+    <Button variant="plain" textAlign="left">
       This is a really long string of text that overflows onto the next line we
       need to put in a lot of words now you can see the alignment. It is very
       long but a customer could potentially name something this long.
@@ -682,7 +593,7 @@ export function PlainDisclosure() {
 
   return (
     <Button
-      plain
+      variant="plain"
       disclosure={expanded ? 'up' : 'down'}
       onClick={() => {
         setExpanded(!expanded);
@@ -725,7 +636,7 @@ export function Split() {
   return (
     <div style={{height: '100px'}}>
       <ButtonGroup segmented>
-        <Button primary>Save</Button>
+        <Button variant="primary">Save</Button>
 
         <div style={{width: '3px'}} />
 
@@ -734,7 +645,7 @@ export function Split() {
           preferredAlignment="right"
           activator={
             <Button
-              primary
+              variant="primary"
               onClick={() => setActive(true)}
               icon={ChevronDownMinor}
               accessibilityLabel="Other save actions"
@@ -780,24 +691,19 @@ export function DisabledState() {
   return (
     <ButtonGroup>
       <Button disabled>Buy shipping label</Button>
-      <Button primary disabled>
+      <Button variant="primary" disabled>
         Buy shipping label
       </Button>
-      <Button destructive disabled>
-        Buy shipping label
-      </Button>
-      <Button outline disabled>
+      <Button tone="critical" disabled>
         Buy shipping label
       </Button>
       <span style={{color: '#bf0711'}}>
-        <Button outline monochrome disabled>
-          Buy shipping label
-        </Button>
+        <Button disabled>Buy shipping label</Button>
       </span>
-      <Button plain disabled>
+      <Button variant="plain" disabled>
         Buy shipping label
       </Button>
-      <Button plain destructive disabled>
+      <Button variant="plain" tone="critical" disabled>
         Buy shipping label
       </Button>
     </ButtonGroup>
@@ -808,10 +714,10 @@ export function LoadingState() {
   return (
     <InlineStack gap="5">
       <Button loading>Save product</Button>
-      <Button primary loading>
+      <Button variant="primary" loading>
         Save product
       </Button>
-      <Button plain loading>
+      <Button variant="plain" loading>
         Save product
       </Button>
     </InlineStack>

@@ -99,8 +99,8 @@ export function WithPrimaryAction() {
               <LegacyStack.Item>
                 <TextContainer>
                   You can share this discount link with your customers via email
-                  or social media. Your discount will be automatically applied
-                  at checkout.
+                  or social media. Your discount will be automatically applied at
+                  checkout.
                 </TextContainer>
               </LegacyStack.Item>
               <LegacyStack.Item fill>
@@ -112,7 +112,7 @@ export function WithPrimaryAction() {
                   onChange={() => {}}
                   autoComplete="off"
                   connectedRight={
-                    <Button primary onClick={handleClick}>
+                    <Button variant="primary" onClick={handleClick}>
                       Copy link
                     </Button>
                   }

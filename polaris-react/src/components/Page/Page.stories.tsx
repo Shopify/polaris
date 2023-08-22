@@ -76,7 +76,7 @@ export function WithCustomPrimaryAction() {
       title="General"
       primaryAction={
         <Button
-          primary
+          variant="primary"
           connectedDisclosure={{
             accessibilityLabel: 'Other save actions',
             actions: [{content: 'Save as new'}],
@@ -113,7 +113,7 @@ export function WithoutPrimaryActionInHeader() {
           <LegacyStack.Item fill>
             <p>Buy postage and ship remaining 2 items</p>
           </LegacyStack.Item>
-          <Button primary>Continue</Button>
+          <Button variant="primary">Continue</Button>
         </LegacyStack>
       </LegacyCard>
     </Page>

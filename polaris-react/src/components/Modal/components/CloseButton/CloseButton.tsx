@@ -14,8 +14,7 @@ export function CloseButton({pressed, onClick}: CloseButtonProps) {
 
   return (
     <Button
-      primary
-      plain
+      variant="tertiary"
       pressed={pressed}
       icon={CancelMajor}
       onClick={onClick}

@@ -11,7 +11,7 @@ describe('<ButtonGroup />', () => {
       const buttonGroup = mountWithApp(
         <ButtonGroup>
           <Button>Cancel</Button>
-          <Button primary>Save</Button>
+          <Button variant="primary">Save</Button>
         </ButtonGroup>,
       );
       expect(buttonGroup).toContainReactComponentTimes(Item, 2);

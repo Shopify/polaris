@@ -413,10 +413,9 @@ export function Filters({
       >
         <Button
           size="micro"
-          plain
           onClick={handleClearAllFilters}
           removeUnderline
-          monochrome={se23}
+          variant="tertiary"
         >
           {i18n.translate('Polaris.Filters.clearFilters')}
         </Button>

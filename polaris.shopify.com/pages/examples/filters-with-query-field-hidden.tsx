@@ -164,8 +164,7 @@ function ResourceListFiltersExample() {
               <Button
                 onClick={() => console.log('New filter saved')}
                 size="micro"
-                primary
-                plain
+                variant="tertiary"
               >
                 Save
               </Button>

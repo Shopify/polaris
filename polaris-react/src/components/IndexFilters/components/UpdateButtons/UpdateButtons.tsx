@@ -88,8 +88,6 @@ export function UpdateButtons({
   const saveButton = (
     <Button
       size="micro"
-      primary={!se23 ? true : undefined}
-      plain={!se23 ? true : undefined}
       onClick={handleClickSaveButton}
       disabled={primaryAction?.disabled || disabled}
     >
@@ -108,8 +106,7 @@ export function UpdateButtons({
 
   const cancelButtonMarkup = (
     <Button
-      plain
-      primary={se23 ? true : undefined}
+      variant="tertiary"
       size="micro"
       onClick={cancelAction.onAction}
       disabled={disabled}

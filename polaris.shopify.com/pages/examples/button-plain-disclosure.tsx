@@ -7,7 +7,7 @@ function DisclosureButton() {
 
   return (
     <Button
-      plain
+      variant="plain"
       disclosure={expanded ? 'up' : 'down'}
       onClick={() => {
         setExpanded(!expanded);

@@ -35,7 +35,7 @@ function FullscreenBarExample() {
         </div>
         <ButtonGroup>
           <Button onClick={() => {}}>Secondary Action</Button>
-          <Button primary onClick={() => {}}>
+          <Button variant="primary" onClick={() => {}}>
             Primary Action
           </Button>
         </ButtonGroup>
