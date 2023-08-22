@@ -76,9 +76,8 @@ export function MediaCard({
       icon={CancelMinor}
       onClick={onDismiss}
       size="slim"
-      plain
       accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
-      primary
+      variant="tertiary"
     />
   ) : null;
 
@@ -88,9 +87,8 @@ export function MediaCard({
         icon={HorizontalDotsMinor}
         onClick={togglePopoverActive}
         size="slim"
-        plain
         accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
-        primary
+        variant="tertiary"
       />
     </InlineStack>
   );

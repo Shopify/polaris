@@ -92,7 +92,7 @@ export function WithCustomFooterActions() {
           <LegacyStack distribution="trailing">
             <ButtonGroup>
               <Button>Enable two-step authentication</Button>
-              <Button plain>Learn more</Button>
+              <Button variant="plain">Learn more</Button>
             </ButtonGroup>
           </LegacyStack>
         </LegacyStack>
@@ -105,7 +105,9 @@ export function WithDestructiveFooterAction() {
   return (
     <LegacyCard
       title="Shipment 1234"
-      secondaryFooterActions={[{content: 'Cancel shipment', destructive: true}]}
+      secondaryFooterActions={[
+        {content: 'Cancel shipment', tone: 'critical', variant: 'primary'},
+      ]}
       primaryFooterAction={{content: 'Add tracking number'}}
     >
       <LegacyCard.Section title="Items">
@@ -207,7 +209,7 @@ export function WithDestructiveAction() {
       </LegacyCard.Section>
       <LegacyCard.Section
         title="Contact Information"
-        actions={[{content: 'Delete', destructive: true}, {content: 'Edit'}]}
+        actions={[{content: 'Delete', tone: 'critical'}, {content: 'Edit'}]}
       >
         <p>john.smith@example.com</p>
       </LegacyCard.Section>
@@ -260,7 +262,7 @@ export function WithSeparateHeader() {
         <Popover
           active
           activator={
-            <Button disclosure plain>
+            <Button disclosure variant="plain">
               Add account
             </Button>
           }
@@ -318,7 +320,7 @@ export function WithAllElements() {
         <Popover
           active={false}
           activator={
-            <Button disclosure plain>
+            <Button disclosure variant="plain">
               View Sales
             </Button>
           }
@@ -540,8 +542,7 @@ export function All() {
         <LegacyCard.Header title="Header with icon button child">
           <Button
             icon={CancelMajor}
-            primary
-            plain
+            variant="tertiary"
             accessibilityLabel="Cancel button"
           />
         </LegacyCard.Header>

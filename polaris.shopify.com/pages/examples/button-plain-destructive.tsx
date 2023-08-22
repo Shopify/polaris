@@ -4,7 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ButtonExample() {
   return (
-    <Button plain destructive>
+    <Button variant="plain" tone="critical">
       Remove
     </Button>
   );

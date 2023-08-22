@@ -71,7 +71,7 @@ export function WithPrimitiveComponents() {
 
   const helpLink = (
     <Button
-      plain
+      variant="plain"
       icon={CircleInformationMajor}
       accessibilityLabel="Learn more"
     />
@@ -185,7 +185,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
 
   const helpLink = (
     <Button
-      plain
+      variant="plain"
       icon={CircleInformationMajor}
       accessibilityLabel="Learn more"
     />

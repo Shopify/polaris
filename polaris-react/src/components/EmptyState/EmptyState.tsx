@@ -84,7 +84,7 @@ export function EmptyState({
   ) : null;
 
   const primaryActionMarkup = action
-    ? buttonFrom(action, {primary: true, size: 'medium'})
+    ? buttonFrom(action, {variant: 'primary', size: 'medium'})
     : null;
 
   const headingMarkup = heading ? (

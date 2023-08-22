@@ -326,7 +326,7 @@ function SheetWithSearchableListboxExample() {
                 accessibilityLabel="Cancel"
                 icon={MobileCancelMajor}
                 onClick={handleCloseSheet}
-                plain
+                variant="plain"
               />
             </div>
             <TextContainer>

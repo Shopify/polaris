@@ -39,7 +39,7 @@ export function Section({
   );
 
   const actionMarkup = actions ? (
-    <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
+    <ButtonGroup>{buttonsFrom(actions, {variant: 'plain'})}</ButtonGroup>
   ) : null;
 
   const titleMarkup =

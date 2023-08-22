@@ -38,7 +38,6 @@ export function RollupActions({
   const activatorMarkup = (
     <div className={styles.RollupActivator}>
       <Button
-        outline
         icon={HorizontalDotsMinor}
         accessibilityLabel={
           accessibilityLabel ||
