@@ -7,9 +7,7 @@ import {Icon} from '../../../Icon';
 import type {ThumbnailProps} from '../../../Thumbnail';
 import type {AvatarProps} from '../../../Avatar';
 import {Scrollable} from '../../../Scrollable';
-import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import type {InlineStackProps} from '../../../InlineStack';
 import {InlineStack} from '../../../InlineStack';
 import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
@@ -30,7 +28,6 @@ export interface OptionProps {
   select?: boolean;
   allowMultiple?: boolean;
   verticalAlign?: Alignment;
-  role?: string;
   onClick(section: number, option: number): void;
   /** Callback when pointer enters the option */
   onPointerEnter(section: number, option: number): void;
@@ -46,7 +43,6 @@ export function Option({
   active,
   allowMultiple,
   disabled,
-  role,
   media,
   onClick,
   section,
@@ -56,7 +52,6 @@ export function Option({
   onFocus,
 }: OptionProps) {
   const {value: focused, toggle: toggleFocused} = useToggle(false);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const handleClick = useCallback(() => {
     if (disabled) {
@@ -99,43 +94,25 @@ export function Option({
     active && styles.active,
     select && styles.select,
     verticalAlign && styles[variationName('verticalAlign', verticalAlign)],
-    polarisSummerEditions2023 && allowMultiple && styles.CheckboxLabel,
-    polarisSummerEditions2023 && allowMultiple && styles.MultiSelectOption,
+    allowMultiple && styles.CheckboxLabel,
+    allowMultiple && styles.MultiSelectOption,
   );
-
-  const checkBoxRole = role === 'option' ? 'presentation' : undefined;
 
   const optionMarkup = allowMultiple ? (
     <label htmlFor={id} className={multiSelectClassName}>
       <div className={styles.Checkbox}>
-        {polarisSummerEditions2023 ? (
-          <PolarisCheckbox
-            id={id}
-            label=""
-            ariaDescribedBy={`${id}-label`}
-            value={value}
-            checked={select}
-            disabled={disabled}
-            onChange={handleClick}
-          />
-        ) : (
-          <Checkbox
-            id={id}
-            value={value}
-            checked={select}
-            active={active}
-            disabled={disabled}
-            onChange={handleClick}
-            role={checkBoxRole}
-          />
-        )}
+        <PolarisCheckbox
+          id={id}
+          label=""
+          ariaDescribedBy={`${id}-label`}
+          value={value}
+          checked={select}
+          disabled={disabled}
+          onChange={handleClick}
+        />
       </div>
       {mediaMarkup}
-      {polarisSummerEditions2023 ? (
-        <span id={`${id}-label`}>{label}</span>
-      ) : (
-        label
-      )}
+      <span id={`${id}-label`}>{label}</span>
     </label>
   ) : (
     <button
@@ -146,29 +123,22 @@ export function Option({
       disabled={disabled}
       onFocus={handleFocus}
       onBlur={toggleFocused}
-      aria-pressed={polarisSummerEditions2023 ? active || select : active}
+      aria-pressed={active || select}
     >
-      {polarisSummerEditions2023 ? (
-        <>
-          <InlineStack
-            wrap={false}
-            blockAlign={verticalAlignToBlockAlign(verticalAlign)}
-          >
-            {mediaMarkup}
-            {label}
-          </InlineStack>
-          {(select || active) && (
-            <span className={styles.Icon}>
-              <Icon source={TickMinor} />
-            </span>
-          )}
-        </>
-      ) : (
-        <>
+      <>
+        <InlineStack
+          wrap={false}
+          blockAlign={verticalAlignToBlockAlign(verticalAlign)}
+        >
           {mediaMarkup}
           {label}
-        </>
-      )}
+        </InlineStack>
+        {(select || active) && (
+          <span className={styles.Icon}>
+            <Icon source={TickMinor} />
+          </span>
+        )}
+      </>
     </button>
   );
 
