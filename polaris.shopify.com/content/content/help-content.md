@@ -9,6 +9,10 @@ keywords:
   - help
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 The goal of help content is to teach merchants:
 
 - How to complete a task or make a good decision for their business

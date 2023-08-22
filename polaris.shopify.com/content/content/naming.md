@@ -23,6 +23,10 @@ keywords:
   - acronym
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## Thoughtful naming
 
 Names influence how merchants and other audiences perceive and understand

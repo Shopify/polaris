@@ -14,6 +14,10 @@ keywords:
   - content tone
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## What are voice and tone?
 
 Shopify’s voice is a reflection of who we are. We should always sound like
