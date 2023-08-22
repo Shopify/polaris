@@ -19,6 +19,7 @@ import PageMeta from '../../../../src/components/PageMeta';
 import {Status, FilteredTypes, AllTypes} from '../../../../src/types';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
+import StatusBanner from '../../../../src/components/StatusBanner';
 
 interface FrontMatter {
   status?: Status;
@@ -46,11 +47,21 @@ const Components = ({
   type,
   editPageLinkPath,
 }: Props) => {
+  const typedStatus: Status | undefined = mdx?.frontmatter?.status?.value
+    ? {
+        value: mdx.frontmatter.status.value.toLowerCase() as Status['value'],
+        message: mdx.frontmatter.status.message,
+      }
+    : undefined;
+
+  console.log(typedStatus);
+
   const componentExamples = Boolean(examples.length) && (
     <ComponentExamples examples={examples} />
   );
+
   const propsTable =
-    type && mdx.frontmatter.status !== 'Deprecated' ? (
+    type && mdx?.frontmatter?.status?.value !== 'Deprecated' ? (
       <PropsTable componentName={mdx.frontmatter.title} types={type} />
     ) : null;
 
@@ -67,6 +78,7 @@ const Components = ({
 
       <Longform>
         {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
+        {typedStatus && <StatusBanner status={typedStatus} />}
         {componentExamples}
       </Longform>
 
