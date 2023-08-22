@@ -141,7 +141,7 @@ describe('<TrapFocus />', () => {
     expect(document.activeElement).toBe(trapFocus.find('a')!.domNode);
   });
 
-  it('does not focus the first focused node when the focusFirstNode prop is false', () => {
+  it('does not focus the first focusable node when the focusFirstNode prop is false', () => {
     const trapFocus = mountWithApp(
       <TrapFocus focusFirstNode={false}>
         <a href="/">
