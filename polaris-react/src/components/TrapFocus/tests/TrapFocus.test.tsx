@@ -141,6 +141,18 @@ describe('<TrapFocus />', () => {
     expect(document.activeElement).toBe(trapFocus.find('a')!.domNode);
   });
 
+  it('does not focus the first focused node when the focusFirstNode prop is false', () => {
+    const trapFocus = mountWithApp(
+      <TrapFocus focusFirstNode={false}>
+        <a href="/">
+          <TextField label="" value="" autoComplete="off" onChange={noop} />
+        </a>
+      </TrapFocus>,
+    );
+
+    expect(document.activeElement).not.toBe(trapFocus.find('a')!.domNode);
+  });
+
   it(`doesn't trade steal focus from another TrapFocus when multiple are rendered`, () => {
     const id = 'input';
     const trapFocus = mountWithApp(

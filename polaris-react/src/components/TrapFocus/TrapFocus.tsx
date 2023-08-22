@@ -17,16 +17,22 @@ import {portal} from '../shared';
 
 export interface TrapFocusProps {
   trapping?: boolean;
+  focusFirstNode?: boolean;
   children?: React.ReactNode;
 }
 
-export function TrapFocus({trapping = true, children}: TrapFocusProps) {
+export function TrapFocus({
+  trapping = true,
+  focusFirstNode = true,
+  children,
+}: TrapFocusProps) {
   const {canSafelyFocus} = useFocusManager({trapping});
   const focusTrapWrapper = useRef<HTMLDivElement>(null);
   const [disableFocus, setDisableFocus] = useState(true);
 
   useEffect(() => {
     const disable =
+      focusFirstNode &&
       canSafelyFocus &&
       !(
         focusTrapWrapper.current &&
@@ -36,7 +42,7 @@ export function TrapFocus({trapping = true, children}: TrapFocusProps) {
         : true;
 
     setDisableFocus(disable);
-  }, [canSafelyFocus, trapping]);
+  }, [canSafelyFocus, trapping, focusFirstNode]);
 
   const handleFocusIn = (event: FocusEvent) => {
     const containerContentsHaveFocus =
