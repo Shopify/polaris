@@ -146,7 +146,7 @@ export const getStaticProps: GetStaticProps<
       allType,
       propName,
       `polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
-      mdx.frontmatter.status || '',
+      mdx.frontmatter.status?.value || '',
     );
 
     const props: Props = {
