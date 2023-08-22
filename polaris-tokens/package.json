@@ -23,6 +23,13 @@
     "./css/*": "./dist/css/*",
     "./scss/*": "./dist/scss/*"
   },
+  "typesVersions": {
+    "*": {
+      "themes": [
+        "./dist/types/build/themes.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "build": "run-s build:*",
     "build:assets": "ts-node --skip-project scripts/index.ts",
