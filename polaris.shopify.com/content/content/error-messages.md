@@ -11,6 +11,10 @@ keywords:
   - error pages
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Error messages should:
 
 - Tell merchants what happened. If there’s a solution, explain it. If possible, offer a one-click fix with a button. If there’s

@@ -31,6 +31,10 @@ keywords:
   - inclusive content
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Clear and precise language creates a better experience for all users. Everyone interacting with Shopify should feel welcome and included.
 
 Start by involving different perspectives in the planning process. Limit assumptions or biases by testing your content with a diverse audience. Recruit research participants from a variety of backgrounds, including historically excluded groups. Be aware of bias, and let those with lived experiences guide the way.
