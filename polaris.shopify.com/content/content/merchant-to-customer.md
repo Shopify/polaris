@@ -13,6 +13,10 @@ keywords:
   - check out
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Merchant-to-customer content represents the merchant, not Shopify, and should optimize the customers’ online or retail store experience.
 
 Every UX discipline is encouraged to create content at Shopify. Use this guide when you’re writing content that a customer will see on a Shopify store or receive from a merchant.
