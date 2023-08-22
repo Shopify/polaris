@@ -161,7 +161,10 @@ export enum StatusName {
   Warning = 'Warning',
 }
 
-export type Status = StatusName;
+export type Status = {
+  value: StatusName;
+  message: string;
+};
 
 export interface QuickGuideRow {
   question: string;
