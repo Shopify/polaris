@@ -4,7 +4,9 @@ description: Applies negative margin to allow content to bleed out into the surr
 category: Layout and structure
 keywords:
   - layout
-status: Alpha
+status:
+  value: Alpha
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: bleed-horizontal.tsx
     title: Horizontal
@@ -19,17 +21,6 @@ examples:
     description: >-
       Negative margins can be added in a specific direction using the [Space tokens](https://polaris.shopify.com/tokens/space).
 ---
-
-# {frontmatter.title}
-
-<Lede>{frontmatter.description}</Lede>
-
-<StatusBanner status={frontmatter.status}>
-  This component is a work in progress and ready for exploratory usage, with
-  breaking changes expected in minor version updates. Please use with caution.
-  Learn more about our [component
-  lifecycles](/getting-started/components-lifecycle).
-</StatusBanner>
 
 ## Bleed values
 

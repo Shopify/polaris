@@ -21,7 +21,9 @@ keywords:
   - callout
   - call out
   - legacy card
-status: Legacy
+status:
+  value: Legacy
+  message: This is a legacy component and will be deprecated. The new [Card component](/components/layout-and-structure/card) can be used in combination with the new layout primitives to achieve similar results to LegacyCard. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: legacy-card-default.tsx
     title: Default
@@ -75,17 +77,6 @@ examples:
     title: With flushed sections
     description: Use when you need further control over the spacing of your card sections.
 ---
-
-# {frontmatter.title}
-
-<Lede>{frontmatter.description}</Lede>
-
-<StatusBanner status={frontmatter.status}>
-  This is a legacy component and will be deprecated. The new [Card
-  component](/components/layout-and-structure/card) can be used in combination
-  with the new layout primitives to achieve similar results to LegacyCard. Learn
-  more about our [component lifecycles](/getting-started/components-lifecycle).
-</StatusBanner>
 
 ## Best practices
 

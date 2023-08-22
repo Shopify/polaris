@@ -11,7 +11,9 @@ keywords:
   - vertical
   - margin
   - padding
-status: Deprecated
+status:
+  value: Deprecated
+  message: The TextContainer is a simple layout component which was made redundant by the VerticalStack component. Use VerticalStack with `gap` values of 2, 4, and 5 to replicate layouts.
 examples:
   - fileName: text-container-default.tsx
     title: Default
@@ -23,16 +25,6 @@ examples:
     title: Loose
     description: Use the loose spacing option to separate concepts that are independent of each other.
 ---
-
-# {frontmatter.title}
-
-<Lede>{frontmatter.description}</Lede>
-
-<StatusBanner status={frontmatter.status}>
-  The TextContainer is a simple layout component which was made redundant by the
-  VerticalStack component. Use VerticalStack with `gap` values of 2, 4, and 5 to
-  replicate layouts.
-</StatusBanner>
 
 ## Best practices
 
