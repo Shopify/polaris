@@ -1,5 +1,7 @@
 import './configure';
 
+export {themeVars} from '@shopify/polaris-tokens';
+
 // Key is an enum, not a type. It probably shouldn't live in a file called types
 export {Key} from './types';
 
