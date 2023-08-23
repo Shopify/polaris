@@ -151,7 +151,7 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
         StatusBanner,
         TipBanner,
         Lede,
-        RichCardGrid: ({cards}) => <RichCardGrid cards={cards} />,
+        RichCardGrid,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">
