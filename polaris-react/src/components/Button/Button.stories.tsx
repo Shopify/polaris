@@ -730,7 +730,11 @@ export function Split() {
           active={active}
           preferredAlignment="right"
           activator={
-            <Button onClick={() => setActive(true)} icon={ChevronDownMinor} />
+            <Button
+              onClick={() => setActive(true)}
+              icon={ChevronDownMinor}
+              accessibilityLabel="Other save actions"
+            />
           }
           autofocusTarget="first-node"
           onClose={() => setActive(false)}
