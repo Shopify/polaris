@@ -2,7 +2,6 @@ import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
 import {Text} from '../../../../../Text';
-import {useFeatures} from '../../../../../../utilities/features';
 
 import styles from './Title.scss';
 
@@ -23,7 +22,6 @@ export function Title({
   titleMetadata,
   compactTitle,
 }: TitleProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Title,
     subtitle && styles.TitleWithSubtitle,
@@ -51,7 +49,7 @@ export function Title({
         compactTitle && styles.SubtitleCompact,
       )}
     >
-      <Text as="p" variant={polarisSummerEditions2023 ? 'bodySm' : undefined}>
+      <Text as="p" variant="bodySm">
         {subtitle}
       </Text>
     </div>
