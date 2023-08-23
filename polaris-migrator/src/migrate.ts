@@ -20,7 +20,7 @@ export async function migrate(
 ) {
   const migrationFile = path.join(
     __dirname,
-    `./migrations/${migration}/${migration}.js`,
+    `./migrations/${migration}/transform.js`,
   );
 
   try {
