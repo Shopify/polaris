@@ -27,13 +27,13 @@ export function WithKeyboardNavigation() {
       <Pagination
         hasPrevious
         previousKeys={[74]}
-        previousTooltip="j"
+        previousTooltip="Previous (J)"
         onPrevious={() => {
           console.log('Previous');
         }}
         hasNext
         nextKeys={[75]}
-        nextTooltip="k"
+        nextTooltip="Next (K)"
         onNext={() => {
           console.log('Next');
         }}
