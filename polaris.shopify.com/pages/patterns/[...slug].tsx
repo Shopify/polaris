@@ -4,11 +4,20 @@ import path from 'path';
 import matter from 'gray-matter';
 import {readdir} from 'fs/promises';
 
-import PatternPage from '../../src/components/PatternPage';
+import PatternPage, {codeAsContext} from '../../src/components/PatternPage';
 import type {Props} from '../../src/components/PatternPage';
 import ComingSoon from '../../src/components/ComingSoon';
 import {PatternFrontMatter, PatternVariantFontMatter} from '../../src/types';
 import {serializeMdx} from '../../src/components/Markdown/serialize';
+import {
+  remarkDefinitionList,
+  defListHastHandlers,
+} from 'remark-definition-list';
+
+const mdxOptions = {
+  remarkPlugins: [codeAsContext, remarkDefinitionList],
+  remarkRehypeOptions: {handlers: defListHastHandlers},
+};
 
 const getDirectories = async (source: string) =>
   (await readdir(source, {withFileTypes: true}))
@@ -76,7 +85,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 
   try {
     ({data, content} = loadPatternAndVariants(slug));
-    [mdx] = await serializeMdx(content);
+    [mdx] = await serializeMdx(content, {mdxOptions});
   } catch (error) {
     console.error(error);
     // Fail gracefully
@@ -95,7 +104,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   }
 
   const mdxPromises = data.variants.map(async (v) => {
-    const [mdx] = await serializeMdx(v.content);
+    const [mdx] = await serializeMdx(v.content, {mdxOptions});
     return {
       data: v.data,
       content: mdx,
@@ -103,14 +112,15 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   });
 
   const mdxVariants = await Promise.all(mdxPromises);
-
-  console.log('VARIANTS', mdxVariants);
+  console.log('mdxVariants', JSON.stringify(mdxVariants, null, 2));
+  // console.log('VARIANTS', JSON.stringify(mdxVariants, null, 2));
+  // console.log('DATA.VARIANTS', JSON.stringify(data.variants, null, 2));
 
   return {
     props: {
       data: {
         ...data,
-        variants: {...mdxVariants},
+        mdxVariants: mdxVariants,
         draft: data.draft || false,
       },
       content: mdx,

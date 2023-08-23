@@ -46,7 +46,7 @@ const CodeVisibilityContext = createContext<[boolean, (arg: boolean) => any]>([
   () => {},
 ]);
 
-function codeAsContext(): Plugin {
+export function codeAsContext(): Plugin {
   return (tree) => {
     // Gather up all the code elements
     const codes: {
@@ -119,8 +119,8 @@ function codeAsContext(): Plugin {
 
 const SingleVariant = ({
   children,
-  patternData: {variants},
-}: VariantRendererProps) => children(variants[0]);
+  patternData: {mdxVariants},
+}: VariantRendererProps) => children(mdxVariants[0]);
 
 const TabbedVariants = (props: VariantRendererProps) => {
   const router = useRouter();
@@ -165,9 +165,13 @@ const TabbedVariants = (props: VariantRendererProps) => {
 };
 
 export const Variants = (props: {patternData: Props['data']}) => {
+  // console.log('variant props', JSON.stringify(props, null, 2));
   if (!props.patternData.variants?.length) {
+    console.log('nopeeee');
     return null;
   }
+
+  // console.log('IN VARIANTS COMPONENT', props.patternData);
 
   const Container =
     props.patternData.variants.length > 1 ? TabbedVariants : SingleVariant;
@@ -201,105 +205,177 @@ const BaseMarkdown = ({
   components,
   mdxComponents,
   patternName,
+  patternData,
 }: {
   children: string;
   components?: React.ComponentProps<typeof Markdown>['components'];
   mdxComponents?: MDXComponents;
   patternName?: string;
-}) => (
-  <Markdown
-    // remarkPlugins={[codeAsContext, remarkDefinitionList]}
-    // remarkRehypeOptions={{handlers: defListHastHandlers}}
-    // mdxComponents={mdxComponents}
-    {...children}
-    components={{
-      ...mdxComponents,
-      h1: ({children, id}) => (
-        <Heading id={id} as="h1">
-          {children}
-        </Heading>
-      ),
-      h2: ({children, id}) => (
-        <Heading id={id} as="h2">
-          {children}
-        </Heading>
-      ),
-      h3: ({children, id}) => (
-        <Heading id={id} as="h3">
-          {children}
-        </Heading>
-      ),
-      h4: ({children, id}) => (
-        <Heading id={id} as="h4">
-          {children}
-        </Heading>
-      ),
-      ol: ({children}) => (
-        <Stack as="ol" gap="2" className={[styles.List, styles.OrderedList]}>
-          {children}
-        </Stack>
-      ),
-      ul: ({children}) => (
-        <Stack as="ul" className={[styles.List, styles.UnorderedList]} gap="1">
-          {children}
-        </Stack>
-      ),
-      dl: ({children}) => (
-        <Box as="dl" className={styles.DefinitionList}>
-          {children}
-        </Box>
-      ),
-      strong: ({children}) => (
-        <Box as="strong" style={{fontWeight: 'var(--font-weight-700)'}}>
-          {children}
-        </Box>
-      ),
-      code: function MdCode({
-        // @ts-expect-error Unsure how to tell react-markdown this prop is
-        // being injected by a plugin
-        inline,
-        // @ts-expect-error Unsure how to tell react-markdown this prop is
-        // being injected by a plugin
-        meta,
-        children,
-      }) {
-        const [showCode, toggleCode] = useContext(CodeVisibilityContext);
+}) => {
+  // console.log('IN MARKDOWN', JSON.stringify(patternData, null, 2));
+  return (
+    <Markdown
+      // remarkPlugins={[codeAsContext, remarkDefinitionList]}
+      // remarkRehypeOptions={{handlers: defListHastHandlers}}
+      // mdxComponents={mdxComponents}
+      {...children}
+      scope={{data: patternData}}
+      components={{
+        ...mdxComponents,
+        h1: ({children, id}) => (
+          <Heading id={id} as="h1">
+            {children}
+          </Heading>
+        ),
+        h2: ({children, id}) => (
+          <Heading id={id} as="h2">
+            {children}
+          </Heading>
+        ),
+        h3: ({children, id}) => (
+          <Heading id={id} as="h3">
+            {children}
+          </Heading>
+        ),
+        h4: ({children, id}) => (
+          <Heading id={id} as="h4">
+            {children}
+          </Heading>
+        ),
+        ol: ({children}) => (
+          <Stack as="ol" gap="2" className={[styles.List, styles.OrderedList]}>
+            {children}
+          </Stack>
+        ),
+        ul: ({children}) => (
+          <Stack
+            as="ul"
+            className={[styles.List, styles.UnorderedList]}
+            gap="1"
+          >
+            {children}
+          </Stack>
+        ),
+        dl: ({children}) => (
+          <Box as="dl" className={styles.DefinitionList}>
+            {children}
+          </Box>
+        ),
+        strong: ({children}) => (
+          <Box as="strong" style={{fontWeight: 'var(--font-weight-700)'}}>
+            {children}
+          </Box>
+        ),
+        // code: function MdCode({
+        //   // @ts-expect-error Unsure how to tell react-markdown this prop is
+        //   // being injected by a plugin
+        //   inline,
+        //   // @ts-expect-error Unsure how to tell react-markdown this prop is
+        //   // being injected by a plugin
+        //   meta,
+        //   children,
+        // }) {
+        //   const [showCode, toggleCode] = useContext(CodeVisibilityContext);
+        //   console.log('isIninlne', inline);
+        //   if (inline) {
+        //     return <InlinePill>{children}</InlinePill>;
+        //   }
 
-        if (inline) {
-          return <InlinePill>{children}</InlinePill>;
-        }
+        //   let type, previewContext, sandboxContext;
 
-        let type, previewContext, sandboxContext;
+        //   if (meta) {
+        //     try {
+        //       ({type, previewContext, sandboxContext} = JSON.parse(meta));
+        //     } catch (error) {
+        //       console.warn(`code block meta is not parsable JSON: ${meta}`);
+        //     }
+        //   }
 
-        if (meta) {
+        //   if (type === 'livePreview') {
+        //     return (
+        //       <PatternsExample
+        //         example={{
+        //           code: (children as string) ?? '',
+        //           previewContext,
+        //           sandboxContext,
+        //         }}
+        //         isCodeVisible={showCode}
+        //         onCodeVisibilityToggle={() => toggleCode(!showCode)}
+        //         patternName={patternName ?? ''}
+        //       />
+        //     );
+        //   }
+
+        //   return <Code code={{title: '', code: (children as string) ?? ''}} />;
+        // },
+        code: function MDXCode({
+          children,
+          className,
+          // @ts-expect-error Unsure how to tell react-markdown this prop is
+          // being injected by a plugin
+          fenced,
+          // @ts-expect-error Unsure how to tell react-markdown this prop is
+          // being injected by a plugin
+          meta,
+        }) {
+          let type,
+            previewContext,
+            sandboxContext,
+            title,
+            isCodeVisible,
+            isActionsVisible;
+
           try {
-            ({type, previewContext, sandboxContext} = JSON.parse(meta));
+            ({
+              title,
+              type,
+              previewContext,
+              sandboxContext,
+              isCodeVisible,
+              isActionsVisible,
+            } = JSON.parse(meta ?? '{}'));
           } catch (error) {
             console.warn(`code block meta is not parsable JSON: ${meta}`);
           }
-        }
 
-        if (type === 'livePreview') {
+          const [showCode, toggleCode] = useContext(CodeVisibilityContext);
+
+          if (!fenced) {
+            return <InlinePill>{children}</InlinePill>;
+          }
+
+          if (type === 'livePreview') {
+            return (
+              <PatternsExample
+                example={{
+                  code: (children as string) ?? '',
+                  previewContext,
+                  sandboxContext,
+                }}
+                isCodeVisible={showCode}
+                isActionsVisible={isActionsVisible}
+                onCodeVisibilityToggle={() => toggleCode(!showCode)}
+                patternName={'Pattern Name'}
+              />
+            );
+          }
+
           return (
-            <PatternsExample
-              example={{
-                code: (children as string) ?? '',
-                previewContext,
-                sandboxContext,
+            <Code
+              code={{
+                className,
+                title: title ?? 'Example',
+                code: (children as string)?.toString() ?? '',
               }}
-              isCodeVisible={showCode}
-              onCodeVisibilityToggle={() => toggleCode(!showCode)}
-              patternName={patternName ?? ''}
             />
           );
-        }
-
-        return <Code code={{title: '', code: (children as string) ?? ''}} />;
-      },
-      ...components,
-    }}
-  />
-);
+        },
+        ...mdxComponents,
+        ...components,
+      }}
+    />
+  );
+};
 
 const defaultMdxComponents: MDXComponents = {
   Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
@@ -333,9 +409,13 @@ const PatternMarkdown = ({
 }) => (
   <BaseMarkdown
     patternName={patternName ?? ''}
+    patternData={patternData}
     mdxComponents={{
       ...defaultMdxComponents,
-      Variants: () => <Variants patternData={patternData} />,
+      Variants: ({patternData}) => {
+        // console.log('VARIANT PATTERNS', patternData);
+        return <Variants patternData={patternData} />;
+      },
     }}
   >
     {children}
@@ -352,7 +432,7 @@ export default function PatternPage(props: Props) {
   }, [props.content]);
 
   // props.data.variants = {...JSON.parse(props.data.variants)};
-  // console.log('PROPS', props);
+  // console.log('PROPS', JSON.stringify(props, null, 2));
 
   return (
     <>
