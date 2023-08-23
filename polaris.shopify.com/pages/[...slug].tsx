@@ -16,6 +16,7 @@ import PageMeta from '../src/components/PageMeta';
 import {Status} from '../src/types';
 import {parseMarkdown} from '../src/utils/markdown.mjs';
 import {MarkdownFile} from '../src/types';
+import type {RichCardGridProps} from '../src/components/RichCardGrid';
 
 interface FrontMatter {
   title: string;
@@ -23,6 +24,7 @@ interface FrontMatter {
   status?: Status;
   update?: string;
   seoDescription?: string;
+  order?: number;
 }
 
 interface Props {
@@ -32,16 +34,9 @@ interface Props {
   isContentPage: boolean;
 }
 
-export type RichCardGridProps = {
-  title: string;
-  description: string;
-  /* url is usually derived from the file path, but can be overwritten here */
-  url?: string;
-  previewImg?: string;
-  draft?: boolean;
-  status?: Status;
-  icon?: string;
-}[];
+interface SortedRichCardGridProps extends RichCardGridProps {
+  order: number;
+}
 
 const CatchAllTemplate = ({
   mdx,
@@ -59,6 +54,7 @@ const CatchAllTemplate = ({
   );
 };
 
+const DEFAULT_SORT_ORDER = 1000;
 const contentDir = 'content';
 
 // Grab only the portion of the filepath which is used in the URL into capture
@@ -70,16 +66,12 @@ const extractSlugFromPath = (filePath: string) =>
   filePath.replace(slugExtracter, '/$1');
 
 // NOTE: globby uses minimatch which only accepts posix paths
-const getRichCards = (pathGlob: string): RichCardGridProps => {
-  const markdownFiles = globby
-    .sync(pathGlob, {onlyFiles: true})
-    // TODO: How do we define different sort orders? In the frontmatter of the
-    // index page perhaps?
-    .sort((a, b) => a.localeCompare(b));
+const getRichCards = (pathGlob: string): RichCardGridProps[] => {
+  const markdownFiles = globby.sync(pathGlob, {onlyFiles: true});
 
   return (
     markdownFiles
-      .map((markdownFilePath) => {
+      .map((markdownFilePath): SortedRichCardGridProps => {
         // NOTE: `markdownFilePath` will be in posix format from globby (fast-glob internally)
         const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
         // TODO: Replace with simpler frontmatter parsing / same frontmatter parser
@@ -88,16 +80,36 @@ const getRichCards = (pathGlob: string): RichCardGridProps => {
         const {
           title = null,
           description = null,
+          // Default to the markdown file path, but allow overrides
           url = extractSlugFromPath(markdownFilePath),
           previewImg = null,
           draft = null,
           status = null,
           icon = null,
+          order,
         } = frontMatter;
-        return {title, description, url, previewImg, draft, status, icon};
+        return {
+          title,
+          description,
+          url,
+          previewImg,
+          draft,
+          status,
+          icon,
+          // Ensure pages with a defined order come first. Everything else gets
+          // puntted to the end
+          order: isNaN(parseInt(order)) ? DEFAULT_SORT_ORDER : order,
+        };
       })
       // Don't show 'draft' posts in prod/staging, but show them everywhere else
       .filter(({draft}) => process.env.NODE_ENV !== 'production' || !draft)
+      .sort(
+        (a, b) =>
+          // Sort by defined order first
+          a.order - b.order ||
+          // Then fallback to alphabetical sorting
+          a.title.localeCompare(b.title),
+      )
   );
 };
 
@@ -139,18 +151,20 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   // MacOS, and URLs
   const slugPath = [contentDir, ...params.slug].join('/');
 
-  const pathIsDirectory =
-    fs.existsSync(slugPath) && fs.lstatSync(slugPath).isDirectory();
+  let pathIsDirectory = false;
+  let mdRelativePath = `${slugPath}.md`;
 
-  const mdRelativePath = pathIsDirectory
-    ? `${slugPath}/index.md`
-    : `${slugPath}.md`;
+  // If this exact markdown file doesn't exist, we'll check for a matching
+  // directory name with an index.md file instead
+  if (!fs.existsSync(mdRelativePath)) {
+    mdRelativePath = `${slugPath}/index.md`;
+    if (!fs.existsSync(mdRelativePath)) {
+      return {notFound: true};
+    }
+    pathIsDirectory = true;
+  }
 
   const editPageLinkPath = `/polaris.shopify.com/${mdRelativePath}`;
-
-  if (!fs.existsSync(mdRelativePath)) {
-    return {notFound: true};
-  }
 
   const markdown = fs.readFileSync(mdRelativePath, 'utf-8');
 
@@ -200,10 +214,6 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 
 const catchAllTemplateExcludeList = [
   '/icons',
-  '/foundations',
-  '/design',
-  '/content',
-  '/tools',
   '/tokens',
   '/sandbox',
   '/new-design-language',

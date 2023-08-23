@@ -1,9 +1,9 @@
 import {Grid, GridItem} from '../Grid';
 import Preview from '../ThumbnailPreview';
 import FoundationsThumbnail from '../FoundationsThumbnail';
-import {Status} from '../../types';
+import type {Status, FoundationsCategory} from '../../types';
 
-export type RichCardGridProps = {
+export interface RichCardGridProps {
   title: string;
   description: string;
   /* url is usually derived from the file path, but can be overwritten here */
@@ -12,9 +12,15 @@ export type RichCardGridProps = {
   draft?: boolean;
   status?: Status;
   icon?: string;
-}[];
+}
 
-function RichCardGrid({cards}: {cards: RichCardGridProps}) {
+function RichCardGrid({
+  cards,
+  category,
+}: {
+  cards: RichCardGridProps[];
+  category?: FoundationsCategory;
+}) {
   return (
     <Grid>
       {cards
@@ -31,7 +37,9 @@ function RichCardGrid({cards}: {cards: RichCardGridProps}) {
               ) : (
                 <FoundationsThumbnail
                   icon={icon!}
-                  category={title.toLowerCase()}
+                  category={
+                    category ?? (title.toLowerCase() as FoundationsCategory)
+                  }
                 />
               )
             }
