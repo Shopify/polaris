@@ -164,7 +164,7 @@ const TabbedVariants = (props: VariantRendererProps) => {
   );
 };
 
-const Variants = (props: {patternData: Props['data']}) => {
+export const Variants = (props: {patternData: Props['data']}) => {
   if (!props.patternData.variants?.length) {
     return null;
   }
@@ -208,10 +208,12 @@ const BaseMarkdown = ({
   patternName?: string;
 }) => (
   <Markdown
-    remarkPlugins={[codeAsContext, remarkDefinitionList]}
-    remarkRehypeOptions={{handlers: defListHastHandlers}}
-    mdxComponents={mdxComponents}
+    // remarkPlugins={[codeAsContext, remarkDefinitionList]}
+    // remarkRehypeOptions={{handlers: defListHastHandlers}}
+    // mdxComponents={mdxComponents}
+    {...children}
     components={{
+      ...mdxComponents,
       h1: ({children, id}) => (
         <Heading id={id} as="h1">
           {children}
@@ -296,9 +298,7 @@ const BaseMarkdown = ({
       },
       ...components,
     }}
-  >
-    {children}
-  </Markdown>
+  />
 );
 
 const defaultMdxComponents: MDXComponents = {
@@ -350,6 +350,9 @@ export default function PatternPage(props: Props) {
     // current code toggle setting.
     toggleCode(true);
   }, [props.content]);
+
+  // props.data.variants = {...JSON.parse(props.data.variants)};
+  // console.log('PROPS', props);
 
   return (
     <>
