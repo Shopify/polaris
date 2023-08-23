@@ -119,11 +119,12 @@ export function codeAsContext(): Plugin {
 
 const SingleVariant = ({
   children,
-  patternData: {mdxVariants},
-}: VariantRendererProps) => children(mdxVariants[0]);
+  patternData: {variants},
+}: VariantRendererProps) => children(variants[0]);
 
 const TabbedVariants = (props: VariantRendererProps) => {
   const router = useRouter();
+  console.log(props);
   let exampleIndex = props.patternData.variants.findIndex(
     ({data: {slug}}) => slug === router.query.slug?.[1],
   );
@@ -165,31 +166,35 @@ const TabbedVariants = (props: VariantRendererProps) => {
 };
 
 export const Variants = (props: {patternData: Props['data']}) => {
-  // console.log('variant props', JSON.stringify(props, null, 2));
+  console.log('VARIANT PROPS', JSON.stringify(props, null, 2));
   if (!props.patternData.variants?.length) {
     console.log('nopeeee');
     return null;
   }
 
-  // console.log('IN VARIANTS COMPONENT', props.patternData);
+  console.log('IN VARIANTS COMPONENT', props.patternData);
+  console.log('IN VARIANTS COMPONENT', props.patternData.variants.length);
 
   const Container =
     props.patternData.variants.length > 1 ? TabbedVariants : SingleVariant;
 
   return (
     <Container patternData={props.patternData}>
-      {(variant) => (
-        <Stack gap="8" className={styles.Variant}>
-          <PatternMarkdown
-            patternData={props.patternData}
-            patternName={`${props.patternData.title}${
-              variant.data.title ? ` > ${variant.data.title}` : ''
-            }`}
-          >
-            {variant.content}
-          </PatternMarkdown>
-        </Stack>
-      )}
+      {(variant) => {
+        console.log('IN CONTAINER', variant);
+        return (
+          <Stack gap="8" className={styles.Variant}>
+            <PatternMarkdown
+              patternData={props.patternData}
+              patternName={`${props.patternData.title}${
+                variant.data.title ? ` > ${variant.data.title}` : ''
+              }`}
+            >
+              {variant.mdx}
+            </PatternMarkdown>
+          </Stack>
+        );
+      }}
     </Container>
   );
 };
