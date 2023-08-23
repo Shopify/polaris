@@ -74,17 +74,7 @@ export function WithCustomPrimaryAction() {
     <Page
       backAction={{content: 'Settings', url: '#'}}
       title="General"
-      primaryAction={
-        <Button
-          variant="primary"
-          connectedDisclosure={{
-            accessibilityLabel: 'Other save actions',
-            actions: [{content: 'Save as new'}],
-          }}
-        >
-          Save
-        </Button>
-      }
+      primaryAction={<Button variant="primary">Save</Button>}
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -133,19 +123,7 @@ export function WithDestructiveSecondaryAction() {
 
 export function WithCustomSecondaryAction() {
   return (
-    <Page
-      title="General"
-      secondaryActions={
-        <Button
-          connectedDisclosure={{
-            accessibilityLabel: 'Other save actions',
-            actions: [{content: 'Save as new'}],
-          }}
-        >
-          Save
-        </Button>
-      }
-    >
+    <Page title="General" secondaryActions={<Button>Save</Button>}>
       <p>Page content</p>
     </Page>
   );

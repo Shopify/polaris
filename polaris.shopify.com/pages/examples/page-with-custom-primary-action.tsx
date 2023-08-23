@@ -7,17 +7,7 @@ function PageExample() {
     <Page
       backAction={{content: 'Settings', url: '#'}}
       title="General"
-      primaryAction={
-        <Button
-          variant="primary"
-          connectedDisclosure={{
-            accessibilityLabel: 'Other save actions',
-            actions: [{content: 'Save as new'}],
-          }}
-        >
-          Save
-        </Button>
-      }
+      primaryAction={<Button variant="primary">Save</Button>}
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>

@@ -5,18 +5,15 @@ import {
   ChevronUpMinor,
 } from '@shopify/polaris-icons';
 
-import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
+import type {BaseButton, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import type {MouseUpBlurHandler} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
-import {Popover} from '../Popover';
-import {ActionList} from '../ActionList';
 import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
-import {useDisableClick} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';
 
@@ -134,7 +131,7 @@ export function Button({
     variant === 'tertiary' && styles.tertiary,
     variant === 'monochromePlain' && styles.monochrome,
     variant === 'monochromePlain' && styles.plain,
-    tone === 'critical' && styles.destructive,
+    tone === 'critical' && styles.critical,
     tone === 'success' && styles.success,
     isDisabled && styles.disabled,
     loading && styles.loading,
