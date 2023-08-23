@@ -84,6 +84,17 @@ export interface TokenPropertiesWithName extends MetadataProperties {
   name: string;
 }
 
+// TODO: Why does this differ from searchResultCategoris below?
+export const foundationsCategories = [
+  'foundations',
+  'design',
+  'content',
+  'patterns',
+  'tools',
+] as const;
+
+export type FoundationsCategory = typeof foundationsCategories[number];
+
 export const searchResultCategories = [
   'foundations',
   'components',
