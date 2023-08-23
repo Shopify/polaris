@@ -5,3 +5,9 @@ description: Polaris is the design system for the Shopify admin. It’s the shar
 newSection: true
 icon: VocabularyMajor
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RichCardGrid cards={posts} category="foundations" />
