@@ -28,7 +28,6 @@ import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
 import {InlineStack} from '../../../InlineStack';
-import {useFeatures} from '../../../../utilities/features';
 import {FilterActionsProvider} from '../../../FilterActionsProvider';
 
 import {Title} from './components';
@@ -91,7 +90,6 @@ export function Header({
   onActionRollup,
 }: HeaderProps) {
   const i18n = useI18n();
-  const {polarisSummerEditions2023} = useFeatures();
   const {isNavigationCollapsed} = useMediaQuery();
 
   if (additionalNavigation && process.env.NODE_ENV === 'development') {
@@ -110,11 +108,7 @@ export function Header({
 
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
-      <Box
-        maxWidth="100%"
-        paddingInlineEnd={polarisSummerEditions2023 ? '1' : '4'}
-        printHidden
-      >
+      <Box maxWidth="100%" paddingInlineEnd="1" printHidden>
         <Breadcrumbs backAction={backAction} />
       </Box>
     </div>
@@ -191,11 +185,7 @@ export function Header({
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <Text
-        color="subdued"
-        as="span"
-        variant={polarisSummerEditions2023 ? 'bodySm' : undefined}
-      >
+      <Text color="subdued" as="span" variant="bodySm">
         {additionalMetadata}
       </Text>
     </div>
@@ -226,8 +216,8 @@ export function Header({
   return (
     <Box
       position="relative"
-      paddingBlockStart={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
-      paddingBlockEnd={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
+      paddingBlockStart={{xs: '4', md: '6'}}
+      paddingBlockEnd={{xs: '4', md: '6'}}
       paddingInlineStart={{xs: '4', sm: '0'}}
       paddingInlineEnd={{xs: '4', sm: '0'}}
       visuallyHidden={titleHidden}

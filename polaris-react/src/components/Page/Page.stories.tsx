@@ -184,7 +184,6 @@ export function WithBackActionOnAction() {
         },
       }}
       title="General"
-      divider
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -363,16 +362,6 @@ export function WithContentAfterTitle() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
-      </LegacyCard>
-    </Page>
-  );
-}
-
-export function WithDivider() {
-  return (
-    <Page backAction={{content: 'Settings', url: '#'}} title="General" divider>
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
       </LegacyCard>

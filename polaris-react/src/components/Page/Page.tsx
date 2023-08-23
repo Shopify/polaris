@@ -15,17 +15,9 @@ export interface PageProps extends HeaderProps {
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
   narrowWidth?: boolean;
-  /** Displays a divider between the page header and the page content */
-  divider?: boolean;
 }
 
-export function Page({
-  children,
-  fullWidth,
-  narrowWidth,
-  divider,
-  ...rest
-}: PageProps) {
+export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
   const pageClassName = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
@@ -43,10 +35,7 @@ export function Page({
     (rest.actionGroups != null && rest.actionGroups.length > 0) ||
     rest.backAction != null;
 
-  const contentClassName = classNames(
-    !hasHeaderContent && styles.Content,
-    divider && hasHeaderContent && styles.divider,
-  );
+  const contentClassName = classNames(!hasHeaderContent && styles.Content);
 
   const headerMarkup = hasHeaderContent ? (
     <Header filterActions {...rest} />
