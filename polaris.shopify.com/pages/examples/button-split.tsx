@@ -8,13 +8,14 @@ function ButtonExample() {
   return (
     <div style={{height: '100px'}}>
       <ButtonGroup segmented>
-        <Button>Save</Button>
+        <Button primary>Save</Button>
 
         <Popover
           active={active}
           preferredAlignment="right"
           activator={
             <Button
+              primary
               onClick={() => setActive(true)}
               icon={ChevronDownMinor}
               accessibilityLabel="Other save actions"
