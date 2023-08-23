@@ -51,7 +51,7 @@ export interface ButtonProps extends BaseButton {
   removeUnderline?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
-  /** Disclosure button connected right of the button. Toggles a popover action list. */
+  /** @deprecated See the split example to replicate this prop */
   connectedDisclosure?: ConnectedDisclosure;
   /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
