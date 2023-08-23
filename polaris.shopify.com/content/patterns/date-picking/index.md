@@ -13,7 +13,7 @@ variants:
 
 <Variants patternData={data} />
 
-<div as="Stack" gap="4">
+<Stack gap="4">
 
 ## Related resources
 
@@ -21,4 +21,4 @@ variants:
 - Learn about date formatting in the [Grammar and mechanics](/content/grammar-and-mechanics#date) guidelines.
 - See how to craft effective button labels in the [Actionable language](/content/actionable-language) guidelines.
 
-</div>
+</Stack>
