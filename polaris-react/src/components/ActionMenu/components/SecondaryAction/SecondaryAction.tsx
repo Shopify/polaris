@@ -47,7 +47,7 @@ export function SecondaryAction({
     <div
       className={classNames(
         styles.SecondaryAction,
-        tone === 'critical' && styles.destructive,
+        tone === 'critical' && styles.critical,
       )}
       ref={secondaryActionsRef}
     >
