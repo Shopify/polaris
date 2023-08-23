@@ -23,8 +23,6 @@ import styles from './Button.scss';
 export interface ButtonProps extends BaseButton {
   /** The content to display inside the button */
   children?: string | string[];
-  /** Indicates a dangerous or potentially negative action */
-  destructive?: boolean;
   /**
    * Changes the size of the button, giving it more or less padding
    * @default 'medium'
@@ -117,7 +115,6 @@ export function Button({
   onTouchStart,
   onPointerDown,
   icon,
-  destructive,
   disclosure,
   removeUnderline,
   size = DEFAULT_SIZE,
@@ -220,12 +217,12 @@ export function Button({
   if (connectedDisclosure) {
     const connectedDisclosureClassName = classNames(
       styles.Button,
-      variant && variant === 'primary' && styles.primary,
-      variant && variant === 'monochromePlain' && styles.monochrome,
-      variant && variant === 'monochromePlain' && styles.plain,
+      variant === 'primary' && styles.primary,
+      variant === 'monochromePlain' && styles.monochrome,
+      variant === 'monochromePlain' && styles.plain,
       size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
       textAlign && styles[variationName('textAlign', textAlign)],
-      destructive && styles.destructive,
+      tone === 'critical' && styles.destructive,
       connectedDisclosure.disabled && styles.disabled,
       styles.iconOnly,
       styles.ConnectedDisclosure,
