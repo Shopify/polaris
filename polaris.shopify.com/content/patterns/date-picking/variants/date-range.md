@@ -6,7 +6,7 @@ hideFromNav: true
 
 This enables merchants to select a date range.
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -16,7 +16,7 @@ This enables merchants to select a date range.
 2. Displaying two months makes it easier for merchants to select date ranges that span across both.
 3. Selecting a date range may require multiple steps, so merchants prefer to explicitly confirm their selection, unlike the single date picker which closes on selection.
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
@@ -26,9 +26,9 @@ This enables merchants to select a date range.
 **Schedule an event**
 : When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+<Usage>
 
 ## Using this pattern
 
@@ -384,8 +384,8 @@ function DateRangePicker() {
 }
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
+<UsefulToKnow>
 
 ### Useful to know
 
@@ -393,4 +393,4 @@ function DateRangePicker() {
 - <span>If a date cannot be selected, indicate it with the [disabled text color token](/tokens/color)</span> ![Single-month calendar with a range of unselectable dates](/images/patterns/date-picking/date-range-usage-2.png)
 - <span>If a merchant enters a nonexistent date, revert to the previously selected date.</span> ![Calendar with date inputs reading an incorrect date](/images/patterns/date-picking/date-range-usage-3.png)
 
-</div>
+</UsefulToKnow>
