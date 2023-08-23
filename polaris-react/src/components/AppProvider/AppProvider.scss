@@ -55,6 +55,17 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+/*
+  To support dynamic type in iOS, we need to set Apple's
+  system font and then define font-families and rem-based
+  font-sizes on descendant elements:
+*/
+@supports (font: -apple-system-body) {
+  html {
+    font: -apple-system-body;
+  }
+}
+
 body {
   min-height: 100%;
   margin: 0;
