@@ -18,38 +18,14 @@
   transform: none;
   transition: none;
 
-  #{$se23} & {
-    @include shadow-bevel(
-      $boxShadow: var(--p-shadow-md),
-      $borderRadius: var(--pc-tooltip-border-radius),
-      $zIndex: var(--pc-tooltip-shadow-bevel-z-index),
-      // The following arguments explicitly ignore the shadow-bevel opt out
-      $border: none,
-      $content: ''
-    );
-  }
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-md),
+    $borderRadius: var(--pc-tooltip-border-radius),
+    $zIndex: var(--pc-tooltip-shadow-bevel-z-index)
+  );
 
   @media screen and (-ms-high-contrast: active) {
     border: var(--p-border-width-2) solid windowText;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: calc(var(--p-space-4) * -1);
-    // stylelint-disable-next-line -- No Polaris layout component offers this
-    left: calc(
-      var(--pc-tooltip-chevron-x-pos) - var(--p-space-2) - var(--p-space-4)
-    );
-    height: 0;
-    width: 0;
-    border-width: var(--p-space-2);
-    border-style: solid;
-    border-color: transparent transparent var(--p-color-bg) transparent;
-
-    #{$se23} & {
-      content: none;
-    }
   }
 
   // TailUp
@@ -61,7 +37,7 @@
       var(--pc-tooltip-chevron-x-pos) - var(--p-space-1_5-experimental) -
         var(--p-space-4)
     );
-    // stylelint-disable-next-line -- se23 overrides
+    // stylelint-disable-next-line -- set z-index
     z-index: var(--pc-tooltip-tail-z-index);
   }
 
@@ -73,11 +49,11 @@
     }
 
     // TailDown
-    // stylelint-disable-next-line -- se23 overrides
+    // stylelint-disable-next-line -- TailDown styles
     .Tail {
       top: unset;
       bottom: calc(-1 * var(--p-space-2));
-      // stylelint-disable-next-line -- se23 overrides
+      // stylelint-disable-next-line -- set filter styles
       filter: drop-shadow(0 3px 2px rgba(26, 26, 26, 0.1));
     }
   }
