@@ -2,7 +2,7 @@
 hideFromNav: true
 ---
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -12,7 +12,7 @@ hideFromNav: true
 2. The main content is split in two columns, primary content to the left and secondary content to the right. The primary content occupies two thirds of the page to give more space to what’s most important most of the time.
 3. Content is placed in cards, and similar content is grouped in the same card. This helps merchant find and focus on specific subtasks.
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
@@ -22,9 +22,9 @@ hideFromNav: true
 **Create resource objects**
 : Using the resource detail layout when merchants create new resources teaches them both what a resource page looks like and how edit one later.
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+<Usage>
 
 ## Using this pattern
 
@@ -137,8 +137,8 @@ function ResourceDetailsLayout() {
 }
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
+<UsefulToKnow>
 
 ### Useful to know
 
@@ -149,4 +149,4 @@ function ResourceDetailsLayout() {
 - <span>Arrange content in order of importance.</span> ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-details-layout/resource-detail-usage-5.png)
 - <span>Place unique page actions at the top of the actions list and typical object actions at the bottom.</span> ![Popover with unique page actions placed at the top, and typical object actions placed at the bottom](/images/patterns/resource-details-layout/resource-detail-usage-6.png)
 
-</div>
+</UsefulToKnow>

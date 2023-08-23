@@ -9,6 +9,6 @@ variants:
   - 'variants/default.md'
 ---
 
-<div as="Variants"></div>
+<Variants patternData={data} />
 
-<div as="Stack" gap="4">
+<Stack gap="4" />
