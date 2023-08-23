@@ -34,7 +34,7 @@ This enables merchants to select a date range.
 
 This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`InlineGrid`](/components/layout-and-structure/inline-grid), [`DatePicker`](/components/selection-and-input/date-picker), [`InlineStack`](/components/layout-and-structure/inline-stack), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{
   paddingLeft: "2rem",
@@ -47,7 +47,7 @@ This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertica
 </div>
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
