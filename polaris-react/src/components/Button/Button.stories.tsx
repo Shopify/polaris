@@ -8,12 +8,16 @@ import {
   VerticalStack,
   Text,
   Box,
+  Popover,
+  ActionList,
+  Divider,
 } from '@shopify/polaris';
 import {
   PlusMinor,
   DeleteMinor,
   CancelSmallMinor,
   EditMajor,
+  ChevronDownMinor,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -717,17 +721,57 @@ export function SelectDisclosure() {
 }
 
 export function Split() {
+  const [active, setActive] = React.useState(false);
   return (
     <div style={{height: '100px'}}>
-      <Button
-        primary
-        connectedDisclosure={{
-          accessibilityLabel: 'Other save actions',
-          actions: [{content: 'Save as draft'}],
-        }}
-      >
-        Save
-      </Button>
+      <ButtonGroup segmented>
+        <Button primary>Save</Button>
+
+        <div style={{width: '3px'}} />
+
+        <Popover
+          active={active}
+          preferredAlignment="right"
+          activator={
+            <Button
+              primary
+              onClick={() => setActive(true)}
+              icon={ChevronDownMinor}
+              accessibilityLabel="Other save actions"
+            />
+          }
+          autofocusTarget="first-node"
+          onClose={() => setActive(false)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Save as draft'}]}
+          />
+        </Popover>
+      </ButtonGroup>
+
+      <ButtonGroup segmented>
+        <Button>Save</Button>
+
+        <Popover
+          active={active}
+          preferredAlignment="right"
+          activator={
+            <Button
+              onClick={() => setActive(true)}
+              icon={ChevronDownMinor}
+              accessibilityLabel="Other save actions"
+            />
+          }
+          autofocusTarget="first-node"
+          onClose={() => setActive(false)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Save as draft'}]}
+          />
+        </Popover>
+      </ButtonGroup>
     </div>
   );
 }
