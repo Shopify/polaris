@@ -11,7 +11,7 @@ variants:
   - 'variants/date-list.md'
 ---
 
-<div as="Variants"></div>
+<Variants patternData={data} />
 
 <div as="Stack" gap="4">
 

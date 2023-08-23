@@ -28,7 +28,7 @@ function codeAsContext(): Plugin {
       meta: Record<string, any>;
     }[] = [];
     visit(tree, 'code', (node, index, parent) => {
-      console.log('visiting code:', JSON.stringify(node, null, 2));
+      // console.log('visiting code:', JSON.stringify(node, null, 2));
       if (node.meta) {
         try {
           codes.push({
