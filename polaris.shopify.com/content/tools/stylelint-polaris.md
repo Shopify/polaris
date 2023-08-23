@@ -19,11 +19,22 @@ keywords:
   - css
 ---
 
-[<img src="https://img.shields.io/npm/v/@shopify/stylelint-polaris.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style="width: 95px" />](https://www.npmjs.com/package/@shopify/stylelint-polaris/)
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+[<img src="https://img.shields.io/npm/v/@shopify/stylelint-polaris.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style={{ width: '95px'}} />](https://www.npmjs.com/package/@shopify/stylelint-polaris/)
 
 <picture>
-  <source srcset="/images/tools/stylelint-polaris/stylelint-demo.png" media="(prefers-reduced-motion: reduce)"></source>
-  <img srcset="/images/tools/stylelint-polaris/stylelint-demo.gif" alt="Demo of Stylelint Polaris">
+  <source
+    srcset="/images/tools/stylelint-polaris/stylelint-demo.png"
+    media="(prefers-reduced-motion: reduce)"
+  />
+  <img
+    srcset="/images/tools/stylelint-polaris/stylelint-demo.gif"
+    alt="Demo of Stylelint Polaris"
+    style={{width: '100%'}}
+  />
 </picture>
 
 ## Installation

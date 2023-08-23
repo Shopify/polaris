@@ -4,3 +4,9 @@ description: These are the principles that shape how we design all the experienc
 order: 3
 icon: PaintBrushMajor
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RichCardGrid cards={posts} category="design" />
