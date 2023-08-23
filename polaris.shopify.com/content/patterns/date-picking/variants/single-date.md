@@ -6,7 +6,7 @@ hideFromNav: true
 
 This enables merchants to type a specific date or pick it from a calendar.
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -15,7 +15,7 @@ This enables merchants to type a specific date or pick it from a calendar.
 1. The text input gives merchants the option to use the keyboard to enter a date.
 2. A single month calendar allows merchants to select a date while seeing its relationship to other days.
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
@@ -25,9 +25,9 @@ This enables merchants to type a specific date or pick it from a calendar.
 **Input memorable dates to forms**
 : An example of this is entering a birthdate.
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+<Usage>
 
 ## Using this pattern
 
@@ -132,12 +132,12 @@ function DatePickerExample() {
 }
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
+<UsefulToKnow>
 
 ### Useful to know
 
 - <span>Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.</span> ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
 - <span>This pattern can be duplicated to allow users to add an end date or time.</span> ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
 
-</div>
+</UsefulToKnow>
