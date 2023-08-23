@@ -36,7 +36,7 @@ The `@shopify/polaris` code style guide provides guidelines and best practices f
 - Follow the recommended folder structure for components, utilities, and tests.
 - Import modules and components in alphabetical order.
 - Group related functions and variables together within a file.
-- Include JSDoc tags to describe default prop values
+- Include [JSDoc tags](https://jsdoc.app/) to describe default prop values
 
 ## Examples and Code Snippets
 
