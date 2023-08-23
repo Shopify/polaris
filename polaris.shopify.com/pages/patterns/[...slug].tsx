@@ -103,16 +103,23 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     };
   }
 
+  // console.log('DATA VARIANTS', JSON.stringify(data.variants, null, 2));
+
   const mdxPromises = data.variants.map(async (v) => {
     const [mdx] = await serializeMdx(v.content, {mdxOptions});
-    return {
-      data: v.data,
-      content: mdx,
-    };
+    return mdx;
   });
 
   const mdxVariants = await Promise.all(mdxPromises);
-  console.log('mdxVariants', JSON.stringify(mdxVariants, null, 2));
+
+  data.variants.forEach(async (v, index) => {
+    // const [mdx] = await serializeMdx(v.content, {mdxOptions});
+    data.variants[index].mdx = mdxVariants[index];
+  });
+
+  // console.log('DATA VARIANTS', JSON.stringify(data.variants, null, 2));
+
+  // console.log('mdxVariants', JSON.stringify(mdxVariants, null, 2));
   // console.log('VARIANTS', JSON.stringify(mdxVariants, null, 2));
   // console.log('DATA.VARIANTS', JSON.stringify(data.variants, null, 2));
 
@@ -120,7 +127,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     props: {
       data: {
         ...data,
-        mdxVariants: mdxVariants,
+        // mdxVariants: mdxVariants,
         draft: data.draft || false,
       },
       content: mdx,
