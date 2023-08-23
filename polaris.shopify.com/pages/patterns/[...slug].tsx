@@ -8,6 +8,7 @@ import PatternPage from '../../src/components/PatternPage';
 import type {Props} from '../../src/components/PatternPage';
 import ComingSoon from '../../src/components/ComingSoon';
 import {PatternFrontMatter, PatternVariantFontMatter} from '../../src/types';
+import {serializeMdx} from '../../src/components/Markdown/serialize';
 
 const getDirectories = async (source: string) =>
   (await readdir(source, {withFileTypes: true}))
@@ -71,10 +72,11 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 
   const slug = pattern[0];
   const variant = pattern[1];
-  let data, content;
+  let data, content, mdx;
 
   try {
     ({data, content} = loadPatternAndVariants(slug));
+    [mdx] = await serializeMdx(content);
   } catch (error) {
     console.error(error);
     // Fail gracefully
@@ -92,13 +94,26 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     };
   }
 
+  const mdxPromises = data.variants.map(async (v) => {
+    const [mdx] = await serializeMdx(v.content);
+    return {
+      data: v.data,
+      content: mdx,
+    };
+  });
+
+  const mdxVariants = await Promise.all(mdxPromises);
+
+  console.log('VARIANTS', mdxVariants);
+
   return {
     props: {
       data: {
         ...data,
+        variants: {...mdxVariants},
         draft: data.draft || false,
       },
-      content,
+      content: mdx,
     },
   };
 };
