@@ -28,14 +28,14 @@ hideFromNav: true
 
 This pattern uses the [`Card`](/components/layout-and-structure/card), [`Badge`](/components/feedback-indicators/badge), [`ChoiceList`](/components/selection-and-input/choice-list), [`IndexFilter`](/components/selection-and-input/index-filters), [`IndexTable`](/components/tables/index-table) and [`Page`](/components/layout-and-structure/page) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ paddingBottom: '2rem', height: '600px' }}>
   {(____CODE____)()}
 </div>
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
