@@ -33,12 +33,12 @@ This enables merchants to type a specific date or pick it from a calendar.
 
 This pattern uses the [`Card`](/components/layout-and-structure/card), [`DatePicker`](/components/selection-and-input/date-picker), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 {(____CODE____)()}
 ```

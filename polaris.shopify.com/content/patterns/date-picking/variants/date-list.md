@@ -29,7 +29,7 @@ This enables merchants to select a date or a date range from a list of preset da
 
 This pattern uses the [`Button`](/components/actions/button), [`OptionList`](/components/lists/option-list) and [`Popover`](/components/overlays/popover) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{
   display: 'flex',
@@ -43,7 +43,7 @@ This pattern uses the [`Button`](/components/actions/button), [`OptionList`](/co
 </div>
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```

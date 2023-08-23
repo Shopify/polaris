@@ -30,14 +30,14 @@ hideFromNav: true
 
 This pattern uses the [`Card`](/components/layout-and-structure/card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`InlineGrid`](/components/layout-and-structure/inline-grid) and [`Page`](/components/layout-and-structure/page) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ paddingBottom: '2rem' }}>
   {(____CODE____)()}
 </div>
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```

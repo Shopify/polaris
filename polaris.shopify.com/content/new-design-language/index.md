@@ -93,7 +93,7 @@ Addon panel (bottom) > `Feature flags` tab and Toggle `polarisSummerEditions2023
 The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
 The beta references this font but doesn't load it. This will come later.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com/" />
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous" />
