@@ -63,7 +63,6 @@ export interface GridItemProps {
   title: string;
   url: string;
   description?: string;
-  deepLinks?: {url: string; text: string}[];
   renderPreview?: () => React.ReactNode;
   status?: Status;
   customOnClick?: React.MouseEventHandler<HTMLAnchorElement>;
@@ -73,16 +72,7 @@ export interface GridItemProps {
 
 export const GridItem = forwardRef(
   (
-    {
-      as = 'li',
-      title,
-      description,
-      url,
-      deepLinks,
-      renderPreview,
-      status,
-      customOnClick,
-    },
+    {as = 'li', title, description, url, renderPreview, status, customOnClick},
     ref,
   ) => {
     const searchAttributes = useGlobalSearchResult();
@@ -100,15 +90,6 @@ export const GridItem = forwardRef(
             <p>{stripMarkdownLinks(description || '')}</p>
           </a>
         </Link>
-        {deepLinks && (
-          <ul className={styles.DeepLinks}>
-            {deepLinks.map(({url, text}) => (
-              <li key={text}>
-                <a href={url}>{text}</a>
-              </li>
-            ))}
-          </ul>
-        )}
       </Box>
     );
   },
