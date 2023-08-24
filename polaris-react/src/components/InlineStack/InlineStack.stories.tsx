@@ -14,7 +14,7 @@ export function Default() {
       <Badge>Two</Badge>
       <Badge>Three</Badge>
       <Box>
-        <Icon source={CapitalMajor} color="primary" />
+        <Icon source={CapitalMajor} tone="primary" />
       </Box>
     </InlineStack>
   );

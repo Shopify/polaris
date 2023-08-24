@@ -60,7 +60,7 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 **Icon**
 
-- Backdrop, this is not a patter in the new Polaris design language. If you must use a backdrop on your icon, use Box
+- Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
 
 ```tsx
 <Box background={boxBackground} padding="1" width="28px" borderRadius="full">

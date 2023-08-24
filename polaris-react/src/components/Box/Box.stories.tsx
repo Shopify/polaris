@@ -10,7 +10,7 @@ export default {
 export function Default() {
   return (
     <Box>
-      <Icon source={PaintBrushMajor} color="base" />
+      <Icon source={PaintBrushMajor} tone="base" />
     </Box>
   );
 }
@@ -108,7 +108,7 @@ export function WithOutline() {
   return (
     <BlockStack gap="4">
       <Box background="bg" padding="4" outlineWidth="1" outlineColor="border">
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -117,7 +117,7 @@ export function WithOutline() {
         outlineStyle="dashed"
         outlineColor="border-subdued"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -125,7 +125,7 @@ export function WithOutline() {
         outlineWidth="2"
         outlineColor="border-info"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -133,7 +133,7 @@ export function WithOutline() {
         outlineWidth="3"
         outlineColor="border-success"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -141,7 +141,7 @@ export function WithOutline() {
         outlineWidth="4"
         outlineColor="border-caution"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -149,7 +149,7 @@ export function WithOutline() {
         outlineWidth="5"
         outlineColor="border-critical"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
     </BlockStack>
   );
@@ -158,7 +158,7 @@ export function WithOutline() {
 export function WithBorderRadius() {
   return (
     <Box background="bg" padding="4" borderRadius="2">
-      <Icon source={PaintBrushMajor} color="highlight" />
+      <Icon source={PaintBrushMajor} tone="highlight" />
     </Box>
   );
 }
@@ -172,7 +172,7 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -181,7 +181,7 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -190,7 +190,7 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -199,7 +199,7 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -207,7 +207,7 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
     </BlockStack>
   );

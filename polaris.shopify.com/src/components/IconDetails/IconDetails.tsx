@@ -36,7 +36,7 @@ function IconDetails({fileName, iconData}: Props) {
 
   const reactExamples = {
     imports: `import {\n  ${fileName}\n} from '@shopify/polaris-icons';`,
-    componentUsage: `<Icon\n  source={${fileName}}\n  color="base"\n/>`,
+    componentUsage: `<Icon\n  source={${fileName}}\n  tone="base"\n/>`,
   };
   const figmaUIKitURl =
     'https://www.figma.com/community/file/1110993965108325096';
