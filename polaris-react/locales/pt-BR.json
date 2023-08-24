@@ -30,8 +30,7 @@
       "dismissButton": "Dispensar notificação"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Carregando",
-      "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
+      "spinnerAccessibilityLabel": "Carregando"
     },
     "Common": {
       "checkbox": "caixa de seleção",
