@@ -3,11 +3,9 @@ import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {Text} from '../../../Text';
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import {Icon} from '../../../Icon';
 import {useI18n} from '../../../../utilities/i18n';
 import {UnstyledButton} from '../../../UnstyledButton';
-import {TextField} from '../../../TextField';
 
 import styles from './SearchField.scss';
 
@@ -36,7 +34,6 @@ export function SearchField({
 }: SearchFieldProps) {
   const i18n = useI18n();
   const id = useId();
-  const {polarisSummerEditions2023} = useFeatures();
   const inputRef = useRef<HTMLInputElement>(null);
   function handleChange(value: string) {
     onChange(value);
@@ -54,7 +51,7 @@ export function SearchField({
     }
   }
 
-  return polarisSummerEditions2023 ? (
+  return (
     <div className={styles.SearchField}>
       <label className={styles.Label} htmlFor={id}>
         {placeholder}
@@ -91,21 +88,5 @@ export function SearchField({
         </UnstyledButton>
       )}
     </div>
-  ) : (
-    <TextField
-      value={value}
-      onChange={handleChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      label={placeholder}
-      labelHidden
-      autoComplete="off"
-      focused={focused}
-      placeholder={placeholder}
-      clearButton
-      onClearButtonClick={handleClear}
-      disabled={disabled}
-      variant={borderlessQueryField ? 'borderless' : undefined}
-    />
   );
 }
