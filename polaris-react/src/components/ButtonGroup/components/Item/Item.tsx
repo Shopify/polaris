@@ -18,7 +18,7 @@ export function Item({button}: ItemProps) {
   const className = classNames(
     styles.Item,
     focused && styles['Item-focused'],
-    button.props.plain && styles['Item-plain'],
+    button.props.variant === 'plain' && styles['Item-plain'],
   );
 
   return (

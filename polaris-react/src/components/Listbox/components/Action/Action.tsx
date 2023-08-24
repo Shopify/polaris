@@ -19,7 +19,7 @@ export function Action(props: ActionProps) {
 
   const iconMarkup = icon && (
     <div className={styles.Icon}>
-      <Icon color="subdued" source={icon} />
+      <Icon tone="subdued" source={icon} />
     </div>
   );
 
