@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import type {ThemeName} from '@shopify/polaris-tokens';
+import {themeNameDefault} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
+import {ThemeNameContext} from '../../utilities/use-theme-name';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -115,32 +118,40 @@ export class AppProvider extends Component<AppProviderProps, State> {
     };
   };
 
+  getThemeName = (): ThemeName =>
+    this.getFeatures().polarisSummerEditions2023
+      ? 'Polaris-Summer-Editions-2023'
+      : themeNameDefault;
+
   render() {
     const {children} = this.props;
     const features = this.getFeatures();
+    const themeName = this.getThemeName();
 
     const {intl, link} = this.state;
 
     return (
-      <FeaturesContext.Provider value={features}>
-        <I18nContext.Provider value={intl}>
-          <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-            <StickyManagerContext.Provider value={this.stickyManager}>
-              <LinkContext.Provider value={link}>
-                <MediaQueryProvider>
-                  <PortalsManager>
-                    <FocusManager>
-                      <EphemeralPresenceManager>
-                        {children}
-                      </EphemeralPresenceManager>
-                    </FocusManager>
-                  </PortalsManager>
-                </MediaQueryProvider>
-              </LinkContext.Provider>
-            </StickyManagerContext.Provider>
-          </ScrollLockManagerContext.Provider>
-        </I18nContext.Provider>
-      </FeaturesContext.Provider>
+      <ThemeNameContext.Provider value={themeName}>
+        <FeaturesContext.Provider value={features}>
+          <I18nContext.Provider value={intl}>
+            <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+              <StickyManagerContext.Provider value={this.stickyManager}>
+                <LinkContext.Provider value={link}>
+                  <MediaQueryProvider>
+                    <PortalsManager>
+                      <FocusManager>
+                        <EphemeralPresenceManager>
+                          {children}
+                        </EphemeralPresenceManager>
+                      </FocusManager>
+                    </PortalsManager>
+                  </MediaQueryProvider>
+                </LinkContext.Provider>
+              </StickyManagerContext.Provider>
+            </ScrollLockManagerContext.Provider>
+          </I18nContext.Provider>
+        </FeaturesContext.Provider>
+      </ThemeNameContext.Provider>
     );
   }
 }
