@@ -138,34 +138,33 @@ export const serializeMdx = async <
   } = {},
 ): Promise<[SerializedMdx<TFrontmatter, TScope>, Data]> => {
   const file = new VFile(content);
-  const remarkPlugins = [
-    [remarkGfm, {tablePipeAlign: true}],
-    remarkUnwrapImages,
-    remarkSlug,
-    ...(mdxOptions?.remarkPlugins ?? []),
-    codeAsContext,
-    codeMetaAsDataAttribute,
-    [
-      remarkExtractFirstParagraph,
-      {
-        remove: [
-          // Don't consider images at all
-          'image',
-          // Handle JSX elements by passing through their children
-          ['mdxJsxFlowElement', passThroughChildren],
-          ['mdxJsxTextElement', passThroughChildren],
-          ['mdxFlowExpression', passThroughChildren],
-          ['mdxTextExpression', passThroughChildren],
-        ],
-      },
-    ],
-  ];
   const result = await serialize<TScope, TFrontmatter>(file, {
     parseFrontmatter: true,
     scope,
     mdxOptions: {
       ...mdxOptions,
-      remarkPlugins: [...mdxOptions?.remarkPlugins, ...remarkPlugins],
+      remarkPlugins: [
+        [remarkGfm, {tablePipeAlign: true}],
+        remarkUnwrapImages,
+        remarkSlug,
+        ...(mdxOptions?.remarkPlugins ?? []),
+        codeAsContext,
+        codeMetaAsDataAttribute,
+        [
+          remarkExtractFirstParagraph,
+          {
+            remove: [
+              // Don't consider images at all
+              'image',
+              // Handle JSX elements by passing through their children
+              ['mdxJsxFlowElement', passThroughChildren],
+              ['mdxJsxTextElement', passThroughChildren],
+              ['mdxFlowExpression', passThroughChildren],
+              ['mdxTextExpression', passThroughChildren],
+            ],
+          },
+        ],
+      ],
     },
   });
   return [result, file.data];
