@@ -46,14 +46,8 @@ const Components = ({
   descriptionMdx,
   type,
   editPageLinkPath,
+  typedStatus,
 }: Props) => {
-  const typedStatus: Status | undefined = mdx?.frontmatter?.status?.value
-    ? {
-        value: mdx.frontmatter.status.value.toLowerCase() as Status['value'],
-        message: mdx.frontmatter.status.message,
-      }
-    : undefined;
-
   const componentExamples = Boolean(examples.length) && (
     <ComponentExamples examples={examples} />
   );
@@ -76,7 +70,11 @@ const Components = ({
 
       <Longform>
         {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
-        {typedStatus && <StatusBanner status={typedStatus} />}
+        {typedStatus && (
+          <StatusBanner status={typedStatus}>
+            {typedStatus.message}
+          </StatusBanner>
+        )}
         {componentExamples}
       </Longform>
 
@@ -149,8 +147,19 @@ export const getStaticProps: GetStaticProps<
       mdx.frontmatter.status?.value || '',
     );
 
+    let typedStatus;
+
+    if (mdx.frontmatter.status?.value) {
+      const [message] = await serializeMdx(mdx.frontmatter.status.message);
+      typedStatus = {
+        value: mdx.frontmatter.status.value.toLowerCase() as Status['value'],
+        mdx: message,
+      };
+    }
+
     const props: Props = {
       mdx,
+      typedStatus,
       examples,
       descriptionMdx,
       type,
