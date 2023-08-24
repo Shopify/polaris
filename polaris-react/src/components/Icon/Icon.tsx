@@ -13,7 +13,7 @@ type Tone =
   | 'warning'
   | 'critical'
   | 'interactive'
-  | 'highlight'
+  | 'info'
   | 'success'
   | 'primary'
   | 'magic';
