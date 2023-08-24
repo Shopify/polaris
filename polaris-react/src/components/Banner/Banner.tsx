@@ -32,7 +32,7 @@ import styles from './Banner.scss';
 import type {BannerHandles} from './utilities';
 import {bannerAttributes, useBannerFocus} from './utilities';
 
-export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
+export type BannerTone = 'success' | 'info' | 'warning' | 'critical';
 
 export interface BannerProps {
   /** Title content for the banner. */
@@ -42,7 +42,7 @@ export interface BannerProps {
   /** Renders the banner without a status icon. */
   hideIcon?: boolean;
   /** Sets the status of the banner. */
-  status?: BannerStatus;
+  tone?: BannerTone;
   /** The child elements to render in the banner. */
   children?: React.ReactNode;
   /** Action for banner */
@@ -59,7 +59,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   props: BannerProps,
   bannerRef,
 ) {
-  const {status, stopAnnouncements} = props;
+  const {tone, stopAnnouncements} = props;
   const withinContentContainer = useContext(WithinContentContext);
   const {wrapperRef, handleKeyUp, handleBlur, handleMouseUp, shouldShowFocus} =
     useBannerFocus(bannerRef);
@@ -76,9 +76,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
         ref={wrapperRef}
-        role={
-          status === 'warning' || status === 'critical' ? 'alert' : 'status'
-        }
+        role={tone === 'warning' || tone === 'critical' ? 'alert' : 'status'}
         aria-live={stopAnnouncements ? 'off' : 'polite'}
         onMouseUp={handleMouseUp}
         onKeyUp={handleKeyUp}
@@ -100,7 +98,7 @@ interface BannerLayoutProps {
 }
 
 export function BannerLayout({
-  status = 'info',
+  tone = 'info',
   icon,
   hideIcon,
   onDismiss,
@@ -112,11 +110,11 @@ export function BannerLayout({
   const i18n = useI18n();
   const withinContentContainer = useContext(WithinContentContext);
   const isInlineIconBanner = !title && !withinContentContainer;
-  const bannerStatus = Object.keys(bannerAttributes).includes(status)
-    ? status
+  const bannerTone = Object.keys(bannerAttributes).includes(tone)
+    ? tone
     : 'info';
   const bannerColors =
-    bannerAttributes[bannerStatus][
+    bannerAttributes[bannerTone][
       withinContentContainer ? 'withinContentContainer' : 'withinPage'
     ];
 
@@ -130,7 +128,7 @@ export function BannerLayout({
     ) : null,
     bannerIcon: hideIcon ? null : (
       <span className={styles[bannerColors.icon]}>
-        <Icon source={icon ?? bannerAttributes[bannerStatus].icon} />
+        <Icon source={icon ?? bannerAttributes[bannerTone].icon} />
       </span>
     ),
     actionButtons:

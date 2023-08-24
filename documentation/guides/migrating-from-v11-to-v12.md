@@ -54,3 +54,7 @@ Secondary, becomes oneThird:
 
 **Button**
 // TODO
+
+**Banner**
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Banner" --from="status" --to="tone"`
