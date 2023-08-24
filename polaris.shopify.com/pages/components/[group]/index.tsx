@@ -12,6 +12,7 @@ import PageMeta from '../../../src/components/PageMeta';
 import Longform from '../../../src/components/Longform';
 import Markdown from '../../../src/components/Markdown';
 import {Stack} from '../../../src/components/Stack';
+import {serializeMdx} from '../../../src/components/Markdown/serialize';
 
 interface Group {
   title?: string;
@@ -40,10 +41,11 @@ export default function GroupPage({
   group,
   components: componentPaths,
   frontMatter,
+  description,
+  relatedResources,
   componentDescriptions,
 }: Props) {
   const groups = frontMatter?.groups;
-  const relatedResources = frontMatter?.relatedResources;
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
       <Stack gap="4">
@@ -104,21 +106,23 @@ export default function GroupPage({
     </Grid>
   );
 
-  const relatedResourcesMarkup = relatedResources
-    ? relatedResources && (
+  const relatedResourcesMarkup = relatedResources.length
+    ? relatedResources[0] && (
         <Stack gap="4">
           <Text as="h4" variant="headingLg">
             Related resources
           </Text>
           <ul>
-            {relatedResources.map((resource) => (
-              <li
-                key={resource}
-                style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
-              >
-                <Markdown>{resource}</Markdown>
-              </li>
-            ))}
+            {relatedResources.map((resource) =>
+              resource ? (
+                <li
+                  key={resource}
+                  style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
+                >
+                  <Markdown {...resource} />
+                </li>
+              ) : null,
+            )}
           </ul>
         </Stack>
       )
@@ -132,9 +136,9 @@ export default function GroupPage({
       />
       <Stack gap="16">
         <Stack gap="4">
-          {frontMatter?.description && (
+          {description && (
             <Longform firstParagraphIsLede>
-              <Markdown>{frontMatter?.description}</Markdown>
+              <Markdown {...description} />
             </Longform>
           )}
 
@@ -185,11 +189,29 @@ export async function getStaticProps(context: {params: {group: string}}) {
     );
 
     const {frontMatter, readme} = parseMarkdown(componentMarkdown);
+    const [mdx] = await serializeMdx<FrontMatter>(componentMarkdown);
+    let mdxDescription, mdxRelatedResources;
+
+    if (mdx.frontmatter.description) {
+      [mdxDescription] = await serializeMdx(mdx.frontmatter.description);
+    }
+
+    if (mdx.frontmatter.relatedResources) {
+      const serializedRelatedResources = mdx.frontmatter.relatedResources.map(
+        async (r) => {
+          return await serializeMdx(r);
+        },
+      );
+
+      mdxRelatedResources = Promise.all(serializedRelatedResources);
+    }
 
     return {
       props: {
         group,
-        frontMatter,
+        frontMatter: mdx.frontmatter,
+        description: mdxDescription,
+        relatedResources: mdxRelatedResources ?? [],
         readme,
         editPageLinkPath,
         components,
