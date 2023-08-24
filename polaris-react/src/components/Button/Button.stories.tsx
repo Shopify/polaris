@@ -635,13 +635,16 @@ export function Split() {
   return (
     <div style={{height: '100px'}}>
       <ButtonGroup segmented>
-        <Button>Save</Button>
+        <Button variant="primary">Save</Button>
+
+        <div style={{width: '0px'}} />
 
         <Popover
           active={active}
           preferredAlignment="right"
           activator={
             <Button
+              variant="primary"
               onClick={() => setActive(true)}
               icon={ChevronDownMinor}
               accessibilityLabel="Other save actions"
