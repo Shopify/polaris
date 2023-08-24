@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {
   CancelSmallMinor,
-  CaretDownMinor,
   ChevronDownMinor,
 } from '@shopify/polaris-icons';
 
@@ -15,7 +14,6 @@ import {Text} from '../../../Text';
 import {InlineStack} from '../../../InlineStack';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
-import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
 
@@ -52,7 +50,6 @@ export function FilterPill({
 }: FilterPillProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
-  const {polarisSummerEditions2023} = useFeatures();
 
   const elementRef = useRef<HTMLDivElement>(null);
   const {
@@ -120,16 +117,11 @@ export function FilterPill({
     styles.ToggleButton,
   );
 
-  const se23LabelVariant =
-    mdDown && polarisSummerEditions2023 ? 'bodyLg' : 'bodySm';
-  const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
+  const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
 
   const wrappedLabel = (
     <div className={styles.Label}>
-      <Text
-        variant={polarisSummerEditions2023 ? se23LabelVariant : labelVariant}
-        as="span"
-      >
+      <Text variant={labelVariant} as="span">
         {label}
       </Text>
     </div>
@@ -153,14 +145,7 @@ export function FilterPill({
               <>
                 {wrappedLabel}
                 <div className={styles.IconWrapper}>
-                  <Icon
-                    source={
-                      polarisSummerEditions2023
-                        ? ChevronDownMinor
-                        : CaretDownMinor
-                    }
-                    tone="base"
-                  />
+                  <Icon source={ChevronDownMinor} tone="base" />
                 </div>
               </>
             )}

@@ -1,9 +1,9 @@
 @import '../../../../styles/common';
 
 .FilterButton {
-  background: var(--p-color-bg-subdued);
-  border-radius: var(--p-border-radius-6);
-  border: var(--p-color-border-subdued) dashed var(--p-border-width-1);
+  background: var(--p-color-bg);
+  border-radius: var(--p-border-radius-2);
+  border: var(--p-color-border) dashed var(--p-border-width-1);
   cursor: pointer;
   color: var(--p-color-text);
 
@@ -26,8 +26,22 @@
     }
   }
 
+  &:hover,
+  &:active {
+    border-style: solid;
+  }
+
+  &:hover,
+  &:focus {
+    background: transparent;
+  }
+
+  &:active {
+    background: var(--p-color-bg-subdued);
+  }
+
   &.disabledFilterButton {
-    background: var(--p-color-bg-disabled);
+    background: var(--p-color-bg-transparent-disabled-experimental);
     border-color: var(--p-color-border-disabled);
     color: var(--p-color-text-disabled);
     cursor: default;
@@ -36,58 +50,14 @@
   &.ActiveFilterButton {
     background: var(--p-color-bg);
     border-style: solid;
-  }
-
-  &::after {
-    border-radius: var(--p-border-radius-6);
-  }
-
-  #{$se23} & {
-    background: var(--p-color-bg-secondary-experimental);
-    border-radius: var(--p-border-radius-2);
-    border: var(--p-color-border) dashed var(--p-border-width-1);
-
-    &:hover,
-    &:active {
-      border-style: solid;
-    }
-
-    &:hover,
-    &:focus {
-      background: transparent;
-    }
 
     &:active {
       background: var(--p-color-bg-subdued);
-
-      #{$se23} & {
-        background: var(--p-color-bg-secondary-experimental);
-      }
     }
+  }
 
-    &.disabledFilterButton {
-      background: var(--p-color-bg-disabled);
-      border-color: var(--p-color-border-disabled);
-      color: var(--p-color-text-disabled);
-      cursor: default;
-    }
-
-    &.ActiveFilterButton {
-      background: var(--p-color-bg);
-      border-style: solid;
-
-      &:active {
-        background: var(--p-color-bg-subdued);
-
-        #{$se23} & {
-          background: var(--p-color-bg-secondary-experimental);
-        }
-      }
-    }
-
-    &::after {
-      border-radius: var(--p-border-radius-2);
-    }
+  &::after {
+    border-radius: var(--p-border-radius-2);
   }
 }
 
@@ -161,7 +131,7 @@
 }
 
 .ClearButtonWrapper {
-  #{$se23} & button {
+  button {
     min-height: 0;
     padding: 0;
     margin: 0;

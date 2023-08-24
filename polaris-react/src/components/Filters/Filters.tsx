@@ -10,7 +10,6 @@ import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
 import {useBreakpoints} from '../../utilities/breakpoints';
-import {useFeatures} from '../../utilities/features';
 import type {
   ActionListItemDescriptor,
   AppliedFilterInterface,
@@ -139,7 +138,6 @@ export function Filters({
 }: FiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
-  const {polarisSummerEditions2023: se23} = useFeatures();
   const [popoverActive, setPopoverActive] = useState(false);
   const hasMounted = useRef(false);
 
@@ -230,8 +228,7 @@ export function Filters({
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
-  const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
-  const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
+  const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
 
   const addFilterActivator = (
     <div>
@@ -246,7 +243,7 @@ export function Filters({
           disableFilters
         }
       >
-        <Text variant={se23 ? se23LabelVariant : labelVariant} as="span">
+        <Text variant={labelVariant} as="span">
           {i18n.translate('Polaris.Filters.addFilter')}{' '}
         </Text>
         <PlusMinor />
@@ -272,39 +269,21 @@ export function Filters({
     );
   }, [loading, children]);
 
-  const containerSpacing:
-    | {
-        paddingBlockStart: BoxProps['paddingBlockStart'];
-        paddingBlockEnd: BoxProps['paddingBlockEnd'];
-        paddingInlineStart: BoxProps['paddingInlineStart'];
-        paddingInlineEnd: BoxProps['paddingInlineEnd'];
-      }
-    | {padding: BoxProps['padding']} = se23
-    ? {
-        paddingInlineStart: '2',
-        paddingInlineEnd: '2',
-        paddingBlockStart: '2',
-        paddingBlockEnd: '2',
-      }
-    : {
-        paddingBlockStart: {
-          xs: '3',
-          md: '2',
-        },
-        paddingBlockEnd: {
-          xs: '3',
-          md: '2',
-        },
-        paddingInlineStart: '2',
-        paddingInlineEnd: {
-          xs: '4',
-          md: '3',
-        },
-      };
+  const containerSpacing: {
+    paddingBlockStart: BoxProps['paddingBlockStart'];
+    paddingBlockEnd: BoxProps['paddingBlockEnd'];
+    paddingInlineStart: BoxProps['paddingInlineStart'];
+    paddingInlineEnd: BoxProps['paddingInlineEnd'];
+  } = {
+    paddingInlineStart: '2',
+    paddingInlineEnd: '2',
+    paddingBlockStart: '2',
+    paddingBlockEnd: '2',
+  };
 
   const queryFieldMarkup = hideQueryField ? null : (
     <div
-      className={classNames(styles.Container, se23 && styles.ContainerUplift)}
+      className={classNames(styles.Container, styles.ContainerUplift)}
     >
       <Box {...containerSpacing}>
         <InlineStack
@@ -415,7 +394,7 @@ export function Filters({
           size="micro"
           onClick={handleClearAllFilters}
           removeUnderline
-          variant="tertiary"
+          variant="monochromePlain"
         >
           {i18n.translate('Polaris.Filters.clearFilters')}
         </Button>
