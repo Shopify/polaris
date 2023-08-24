@@ -8,6 +8,13 @@
         "rollupButton": "View actions"
       }
     },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Clear",
+        "search": "Search",
+        "placeholder": "Search actions"
+      }
+    },
     "Avatar": {
       "label": "Avatar",
       "labelWithInitials": "Avatar with initials {initials}"
