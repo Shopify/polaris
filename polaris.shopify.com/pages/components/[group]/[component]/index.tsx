@@ -147,7 +147,7 @@ export const getStaticProps: GetStaticProps<
       mdx.frontmatter.status?.value || '',
     );
 
-    let typedStatus;
+    let typedStatus = null;
 
     if (mdx.frontmatter.status?.value) {
       const [message] = await serializeMdx(mdx.frontmatter.status.message);
