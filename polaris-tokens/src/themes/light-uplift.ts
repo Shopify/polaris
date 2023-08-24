@@ -173,3 +173,5 @@ export const themeLightUpliftPartial = createThemeVariantPartial({
 });
 
 export const themeLightUplift = createThemeVariant(themeLightUpliftPartial);
+
+export type ThemeLightUplift = typeof themeLightUplift;
