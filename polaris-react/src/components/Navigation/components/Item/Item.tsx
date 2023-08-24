@@ -3,7 +3,6 @@ import type {MouseEvent, ReactNode} from 'react';
 
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
 import {Icon} from '../../../Icon';
@@ -57,7 +56,6 @@ export function Item({
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const navTextRef = useRef<HTMLSpanElement>(null);
   const [isTruncated, setIsTruncated] = useState(false);
-  const {polarisSummerEditions2023} = useFeatures();
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
@@ -108,9 +106,7 @@ export function Item({
       : selectedOverride;
 
   const icon =
-    polarisSummerEditions2023 && (selected || childIsActive)
-      ? matchedItemIcon ?? baseIcon
-      : baseIcon;
+    selected || childIsActive ? matchedItemIcon ?? baseIcon : baseIcon;
 
   const iconMarkup = icon ? (
     <div
@@ -168,9 +164,7 @@ export function Item({
             className={classNames(
               styles.ItemInnerWrapper,
               disabled && styles.ItemInnerDisabled,
-              polarisSummerEditions2023
-                ? selectedOverride && styles['ItemInnerWrapper-selected']
-                : undefined,
+              selectedOverride && styles['ItemInnerWrapper-selected'],
             )}
           >
             <button
@@ -238,21 +232,15 @@ export function Item({
 
   const showExpanded = selected || expanded || childIsActive;
 
-  const canBeActive = subNavigationItems.length === 0 || !childIsActive;
-
   const itemClassName = classNames(
     styles.Item,
     disabled && styles['Item-disabled'],
-    polarisSummerEditions2023
-      ? (selected || childIsActive) && styles['Item-selected']
-      : selected && canBeActive && styles['Item-selected'],
+    (selected || childIsActive) && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
-    showVerticalLine && polarisSummerEditions2023 && styles['Item-line'],
-    matches && polarisSummerEditions2023 && styles['Item-line-pointer'],
-    showVerticalHoverPointer &&
-      polarisSummerEditions2023 &&
-      styles['Item-hover-pointer'],
+    showVerticalLine && styles['Item-line'],
+    matches && styles['Item-line-pointer'],
+    showVerticalHoverPointer && styles['Item-hover-pointer'],
   );
 
   let secondaryNavigationMarkup: ReactNode = null;
@@ -325,14 +313,10 @@ export function Item({
         <div
           className={classNames(
             styles.ItemInnerWrapper,
-            polarisSummerEditions2023
-              ? (selected &&
-                  childIsActive &&
-                  styles['ItemInnerWrapper-open']) ||
-                  (selected &&
-                    !childIsActive &&
-                    styles['ItemInnerWrapper-selected'])
-              : selected && canBeActive && styles['ItemInnerWrapper-selected'],
+            (selected && childIsActive && styles['ItemInnerWrapper-open']) ||
+              (selected &&
+                !childIsActive &&
+                styles['ItemInnerWrapper-selected']),
             displayActionsOnHover &&
               styles['ItemInnerWrapper-display-actions-on-hover'],
             disabled && styles.ItemInnerDisabled,
