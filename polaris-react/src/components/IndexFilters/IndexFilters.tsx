@@ -6,7 +6,7 @@ import {classNames} from '../../utilities/css';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {useToggle} from '../../utilities/use-toggle';
 import {useOnValueChange} from '../../utilities/use-on-value-change';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 import {Spinner} from '../Spinner';
 import {Filters} from '../Filters';
 import type {FiltersProps} from '../Filters';
@@ -336,7 +336,7 @@ export function IndexFilters({
             <div ref={defaultRef}>
               {mode !== IndexFiltersMode.Filtering ? (
                 <Container>
-                  <HorizontalStack
+                  <InlineStack
                     align="start"
                     blockAlign="center"
                     gap={{
@@ -400,7 +400,7 @@ export function IndexFilters({
                         ? updateButtonsMarkup
                         : null}
                     </div>
-                  </HorizontalStack>
+                  </InlineStack>
                 </Container>
               ) : null}
             </div>
@@ -435,7 +435,7 @@ export function IndexFilters({
                   borderlessQueryField
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
-                  <HorizontalStack
+                  <InlineStack
                     gap={polarisSummerEditions2023 ? '2' : '3'}
                     align="start"
                     blockAlign="center"
@@ -449,7 +449,7 @@ export function IndexFilters({
                       {updateButtonsMarkup}
                     </div>
                     {sortMarkup}
-                  </HorizontalStack>
+                  </InlineStack>
                 </Filters>
               ) : null}
             </div>

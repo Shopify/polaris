@@ -10,7 +10,6 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
 import {ShadowBevel} from '../ShadowBevel';
-import {useFeatures} from '../../utilities/features';
 import {WithinContentContext} from '../../utilities/within-content-context';
 
 type Spacing = ResponsiveProp<SpaceScale>;
@@ -35,25 +34,11 @@ export interface CardProps {
 export const Card = ({
   children,
   background = 'bg',
-  padding = {xs: '4', sm: '5'},
+  padding = {xs: '4'},
   roundedAbove,
 }: CardProps) => {
   const breakpoints = useBreakpoints();
-  const {polarisSummerEditions2023} = useFeatures();
-  const defaultBorderRadius: BorderRadiusScale = polarisSummerEditions2023
-    ? '3'
-    : '2';
-
-  const isDefaultPadding =
-    typeof padding !== 'string' &&
-    padding?.xs === '4' &&
-    padding?.sm === '5' &&
-    padding.md === undefined &&
-    padding.lg === undefined &&
-    padding.xl === undefined;
-
-  const finalPadding: CardProps['padding'] =
-    isDefaultPadding && polarisSummerEditions2023 ? {xs: '4'} : padding;
+  const defaultBorderRadius: BorderRadiusScale = '3';
 
   let hasBorderRadius = !roundedAbove;
 
@@ -63,34 +48,21 @@ export const Card = ({
 
   return (
     <WithinContentContext.Provider value>
-      {polarisSummerEditions2023 ? (
-        <ShadowBevel
-          boxShadow="xs"
-          borderRadius={hasBorderRadius ? '3' : '0-experimental'}
-          zIndex="32"
-        >
-          <Box
-            background={background}
-            padding={finalPadding}
-            overflowX="hidden"
-            overflowY="hidden"
-            minHeight="100%"
-          >
-            {children}
-          </Box>
-        </ShadowBevel>
-      ) : (
+      <ShadowBevel
+        boxShadow="xs"
+        borderRadius={hasBorderRadius ? defaultBorderRadius : '0-experimental'}
+        zIndex="32"
+      >
         <Box
           background={background}
-          padding={finalPadding}
-          shadow="md"
-          borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
+          padding={padding}
           overflowX="hidden"
           overflowY="hidden"
+          minHeight="100%"
         >
           {children}
         </Box>
-      )}
+      </ShadowBevel>
     </WithinContentContext.Provider>
   );
 };

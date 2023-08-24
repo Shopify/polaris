@@ -359,12 +359,12 @@ const layoutAndStructure = [
   },
   {
     source: '/components/layout-and-structure/columns',
-    destination: '/components/layout-and-structure/horizontal-grid',
+    destination: '/components/layout-and-structure/inline-grid',
     permanent: false,
   },
   {
     source: '/components/columns',
-    destination: '/components/layout-and-structure/horizontal-grid',
+    destination: '/components/layout-and-structure/inline-grid',
     permanent: false,
   },
   {
@@ -397,11 +397,12 @@ const layoutAndStructure = [
     destination: '/components/layout-and-structure/grid',
     permanent: false,
   },
-  {
-    source: '/components/inline',
-    destination: '/components/layout-and-structure/horizontal-stack',
-    permanent: false,
-  },
+  // TODO: Re-enable this redirect once the new inline stack component is released
+  // {
+  //   source: '/components/layout-and-structure/horizontal-stack',
+  //   destination: '/components/layout-and-structure/inline-stack',
+  //   permanent: false,
+  // },
   {
     source: '/components/structure/layout',
     destination: '/components/layout-and-structure/layout',

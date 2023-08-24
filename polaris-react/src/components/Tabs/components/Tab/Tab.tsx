@@ -17,13 +17,11 @@ import {
   Columns3Minor,
   EditMinor,
   DeleteMinor,
-  CaretDownMinor,
   ChevronDownMinor,
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
-import {useFeatures} from '../../../../utilities/features';
 import {
   focusFirstFocusableNode,
   handleMouseUpByBlurring,
@@ -36,7 +34,7 @@ import {Popover} from '../../../Popover';
 import {ActionList} from '../../../ActionList';
 import {Modal} from '../../../Modal';
 import {Badge} from '../../../Badge';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import type {TabPropsWithAddedMethods, TabAction} from '../../types';
 import styles from '../../Tabs.scss';
@@ -75,7 +73,6 @@ export const Tab = forwardRef(
       null,
     );
     const {mdDown} = useBreakpoints();
-    const {polarisSummerEditions2023: se23} = useFeatures();
 
     const wasSelected = useRef(selected);
     const panelFocused = useRef(false);
@@ -281,20 +278,16 @@ export const Tab = forwardRef(
       selected && actions?.length && styles['Tab-hasActions'],
     );
 
-    const badgeStatusSelected = !se23 ? 'success' : undefined;
     const badgeMarkup = badge ? (
-      <Badge status={selected ? badgeStatusSelected : 'new'}>{badge}</Badge>
+      <Badge status={selected ? undefined : 'new'}>{badge}</Badge>
     ) : null;
 
     const disclosureMarkup =
       selected && actions?.length ? (
         <div className={classNames(styles.IconWrap)}>
-          <Icon source={se23 ? ChevronDownMinor : CaretDownMinor} />
+          <Icon source={ChevronDownMinor} />
         </div>
       ) : null;
-
-    const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
-    const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
 
     const activator = (
       <BaseComponent
@@ -312,21 +305,16 @@ export const Tab = forwardRef(
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
-        <HorizontalStack
-          gap="2"
-          align="center"
-          blockAlign="center"
-          wrap={false}
-        >
+        <InlineStack gap="2" align="center" blockAlign="center" wrap={false}>
           <Text
             as="span"
-            variant={se23 ? se23LabelVariant : labelVariant}
-            fontWeight={se23 ? 'medium' : 'semibold'}
+            variant={mdDown ? 'bodyLg' : 'bodySm'}
+            fontWeight="medium"
           >
             {icon ?? content}
           </Text>
           {badgeMarkup}
-        </HorizontalStack>
+        </InlineStack>
         {disclosureMarkup}
       </BaseComponent>
     );

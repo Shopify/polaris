@@ -1,8 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Checkbox} from '../../Checkbox';
-import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
+import {Checkbox} from '../../../../Checkbox';
 import {Scrollable} from '../../../../Scrollable';
 import {Option} from '../Option';
 import type {OptionProps} from '../Option';
@@ -20,10 +19,8 @@ describe('<Option />', () => {
   };
 
   it('renders a checkbox if allowMultiple is true', () => {
-    const checkbox = mountWithApp(<Option {...defaultProps} allowMultiple />, {
-      features: {polarisSummerEditions2023: true},
-    });
-    expect(checkbox).toContainReactComponent(PolarisCheckbox);
+    const checkbox = mountWithApp(<Option {...defaultProps} allowMultiple />);
+    expect(checkbox).toContainReactComponent(Checkbox);
   });
 
   it('renders a button if allowMultiple is false or undefined', () => {
@@ -123,9 +120,10 @@ describe('<Option />', () => {
 
   it('sets the pass through props for Checkbox if multiple items are allowed', () => {
     const {id, value, select, disabled} = defaultProps;
-    const checkbox = mountWithApp(<Option {...defaultProps} allowMultiple />, {
-      features: {polarisSummerEditions2023: true},
-    }).find(PolarisCheckbox)!;
+    const checkbox = mountWithApp(
+      <Option {...defaultProps} allowMultiple />,
+      {},
+    ).find(Checkbox)!;
 
     expect(checkbox.prop('id')).toBe(id);
     expect(checkbox.prop('value')).toBe(value);
@@ -200,49 +198,6 @@ describe('<Option />', () => {
       expect(option).toContainReactComponent('label', {
         className: expect.stringContaining('Label verticalAlignBottom'),
       });
-    });
-  });
-
-  // se23 - Custom checbox replaced with PolarisCheckbox
-  // 'onChange' event replaced with 'onClick'
-  describe('polarisSummerEditions2023 false', () => {
-    it('renders a checkbox if allowMultiple is true', () => {
-      const checkbox = mountWithApp(
-        <Option {...defaultProps} allowMultiple />,
-        {
-          features: {polarisSummerEditions2023: false},
-        },
-      );
-      expect(checkbox).toContainReactComponent(Checkbox);
-    });
-
-    it('calls onClick with section and index if option is not disabled and multiple options are allowed', () => {
-      const spy = jest.fn();
-      const {section, index} = defaultProps;
-
-      const input = mountWithApp(
-        <Option {...defaultProps} onClick={spy} allowMultiple />,
-        {features: {polarisSummerEditions2023: false}},
-      ).find('input')!;
-      input.trigger('onChange');
-
-      expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(section, index);
-    });
-
-    it('sets the pass through props for Checkbox if multiple items are allowed', () => {
-      const {id, value, select, disabled} = defaultProps;
-      const checkbox = mountWithApp(
-        <Option {...defaultProps} allowMultiple />,
-        {
-          features: {polarisSummerEditions2023: false},
-        },
-      ).find(Checkbox)!;
-
-      expect(checkbox.prop('id')).toBe(id);
-      expect(checkbox.prop('value')).toBe(value);
-      expect(checkbox.prop('checked')).toBe(select);
-      expect(checkbox.prop('disabled')).toBe(disabled);
     });
   });
 });

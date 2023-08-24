@@ -5,9 +5,9 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function ProgressBarExample() {
   return (
     <div style={{width: 225}}>
-      <ProgressBar progress={70} color="primary" />
+      <ProgressBar progress={70} tone="primary" />
       <br />
-      <ProgressBar progress={30} color="success" />
+      <ProgressBar progress={30} tone="success" />
     </div>
   );
 }

@@ -6,7 +6,7 @@ function ButtonExample() {
   return (
     <div style={{height: '100px'}}>
       <Button
-        primary
+        variant="primary"
         connectedDisclosure={{
           accessibilityLabel: 'Other save actions',
           actions: [{content: 'Save as draft'}],

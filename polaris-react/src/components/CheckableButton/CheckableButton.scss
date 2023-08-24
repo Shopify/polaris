@@ -9,8 +9,7 @@
   letter-spacing: initial;
   display: flex;
   align-items: center;
-  min-height: 36px;
-  min-width: 36px;
+  gap: calc(var(--p-space-3) + var(--p-space-025));
   margin: 0;
   cursor: pointer;
   user-select: none;
@@ -19,13 +18,11 @@
   border-radius: var(--p-border-radius-1);
   width: auto;
 
-  #{$se23} & {
-    // Checkable Button has no opinion on its own height, it simply fills its
-    // container
-    min-height: auto;
-    min-width: auto;
-    height: 100%;
-  }
+  // Checkable Button has no opinion on its own height, it simply fills its
+  // container
+  min-height: auto;
+  min-width: auto;
+  height: 100%;
 
   svg {
     fill: var(--p-color-icon-on-color);
@@ -62,11 +59,6 @@
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: var(--p-space-025) 0;
-  margin-left: calc(var(--p-space-5) - var(--p-border-width-2));
-
-  #{$se23} & {
-    margin-left: calc(var(--p-space-3) + var(--p-space-025));
-    // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- se23
-    line-height: 18px;
-  }
+  // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- se23
+  line-height: 18px;
 }

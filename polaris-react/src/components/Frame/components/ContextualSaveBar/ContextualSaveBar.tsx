@@ -66,8 +66,7 @@ export function ContextualSaveBar({
 
   const discardActionMarkup = discardAction && (
     <Button
-      plain={polarisSummerEditions2023}
-      primary={polarisSummerEditions2023}
+      variant="tertiary"
       size={polarisSummerEditions2023 ? 'large' : undefined}
       url={discardAction.url}
       onClick={discardActionHandler}
@@ -86,8 +85,8 @@ export function ContextualSaveBar({
 
   const saveActionMarkup = saveAction && (
     <Button
-      primary={!polarisSummerEditions2023}
-      primarySuccess={polarisSummerEditions2023}
+      variant="primary"
+      tone="success"
       size={polarisSummerEditions2023 ? 'large' : undefined}
       url={saveAction.url}
       onClick={saveAction.onAction}

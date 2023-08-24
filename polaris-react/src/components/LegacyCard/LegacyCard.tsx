@@ -83,7 +83,7 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
   const content = sectioned ? <Section>{children}</Section> : children;
 
   const primaryFooterActionMarkup = primaryFooterAction
-    ? buttonFrom(primaryFooterAction, {primary: true})
+    ? buttonFrom(primaryFooterAction, {variant: 'primary'})
     : null;
 
   let secondaryFooterActionsMarkup = null;

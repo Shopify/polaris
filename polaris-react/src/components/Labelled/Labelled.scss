@@ -6,22 +6,16 @@
 }
 
 .disabled > .LabelWrapper {
-  #{$se23} & {
-    color: var(--p-color-text-disabled);
-  }
+  color: var(--p-color-text-disabled);
 }
 
-// stylelint-disable-next-line -- se23 use Text component instead after se23
+// stylelint-disable-next-line -- color override since Text component doesn't support this color token
 .disabled > .HelpText > span {
-  #{$se23} & {
-    color: var(--p-color-text-disabled);
-  }
+  color: var(--p-color-text-disabled);
 }
 
 .readOnly > .LabelWrapper {
-  #{$se23} & {
-    color: var(--p-color-text-subdued);
-  }
+  color: var(--p-color-text-subdued);
 }
 
 .LabelWrapper {

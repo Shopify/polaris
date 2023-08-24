@@ -33,7 +33,7 @@ export function Default() {
       secondaryActions={[
         {
           content: 'Delete',
-          destructive: true,
+          tone: 'critical',
           icon: DeleteMinor,
           accessibilityLabel: 'Delete action label',
           onAction: () => console.log('Delete action'),
@@ -76,7 +76,7 @@ export function WithCustomPrimaryAction() {
       title="General"
       primaryAction={
         <Button
-          primary
+          variant="primary"
           connectedDisclosure={{
             accessibilityLabel: 'Other save actions',
             actions: [{content: 'Save as new'}],
@@ -113,7 +113,7 @@ export function WithoutPrimaryActionInHeader() {
           <LegacyStack.Item fill>
             <p>Buy postage and ship remaining 2 items</p>
           </LegacyStack.Item>
-          <Button primary>Continue</Button>
+          <Button variant="primary">Continue</Button>
         </LegacyStack>
       </LegacyCard>
     </Page>
@@ -124,7 +124,7 @@ export function WithDestructiveSecondaryAction() {
   return (
     <Page
       title="General"
-      secondaryActions={[{content: 'Delete', destructive: true}]}
+      secondaryActions={[{content: 'Delete', tone: 'critical'}]}
     >
       <p>Page content</p>
     </Page>
@@ -184,7 +184,6 @@ export function WithBackActionOnAction() {
         },
       }}
       title="General"
-      divider
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -363,16 +362,6 @@ export function WithContentAfterTitle() {
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
-      </LegacyCard>
-    </Page>
-  );
-}
-
-export function WithDivider() {
-  return (
-    <Page backAction={{content: 'Settings', url: '#'}} title="General" divider>
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
       </LegacyCard>

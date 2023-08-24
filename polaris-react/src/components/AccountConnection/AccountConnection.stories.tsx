@@ -1,12 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  AccountConnection,
-  Box,
-  Link,
-  Text,
-  VerticalStack,
-} from '@shopify/polaris';
+import {AccountConnection, Box, Link, Text, BlockStack} from '@shopify/polaris';
 
 import {useFeatures} from '../../utilities/features';
 
@@ -17,20 +11,20 @@ export default {
 export function All() {
   return (
     <>
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
-      <VerticalStack gap="4">
+      </BlockStack>
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With account connected
         </Text>
         <WithAccountConnected />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
     </>
   );
 }

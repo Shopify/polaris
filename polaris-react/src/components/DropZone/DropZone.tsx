@@ -9,7 +9,6 @@ import React, {
 import type {FunctionComponent} from 'react';
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
-import {useFeatures} from '../../utilities/features';
 import {debounce} from '../../utilities/debounce';
 import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
@@ -21,7 +20,7 @@ import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 import {useEventListener} from '../../utilities/use-event-listener';
 
 import {FileUpload} from './components';
@@ -145,7 +144,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const node = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const dragTargets = useRef<EventTarget[]>([]);
-  const {polarisSummerEditions2023} = useFeatures();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const adjustSize = useCallback(
@@ -341,12 +339,12 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     !internalError &&
     !error &&
     overlay &&
-    overlayMarkup(UploadMajor, 'interactive', overlayTextWithDefault);
+    overlayMarkup(UploadMajor, overlayTextWithDefault);
 
   const dragErrorOverlay =
     dragging &&
     (internalError || error) &&
-    overlayMarkup(CircleAlertMajor, 'critical', errorOverlayTextWithDefault);
+    overlayMarkup(CircleAlertMajor, errorOverlayTextWithDefault, 'critical');
 
   const context = useMemo(
     () => ({
@@ -372,30 +370,19 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
   function overlayMarkup(
     icon: FunctionComponent,
-    color: 'critical' | 'interactive',
     text: string,
+    color?: 'critical',
   ) {
-    let iconColor: 'critical' | 'interactive' | undefined = color;
-    const summerEditions = {
-      critical: 'critical',
-      interactive: undefined,
-    };
-    if (polarisSummerEditions2023) {
-      iconColor = summerEditions[color] as
-        | 'critical'
-        | 'interactive'
-        | undefined;
-    }
     return (
       <div className={styles.Overlay}>
-        <VerticalStack gap="2" inlineAlign="center">
-          {size === 'small' && <Icon source={icon} color={iconColor} />}
+        <BlockStack gap="2" inlineAlign="center">
+          {size === 'small' && <Icon source={icon} color={color} />}
           {(size === 'medium' || size === 'large') && (
             <Text variant="bodySm" as="p" fontWeight="bold">
               {text}
             </Text>
           )}
-        </VerticalStack>
+        </BlockStack>
       </div>
     );
   }

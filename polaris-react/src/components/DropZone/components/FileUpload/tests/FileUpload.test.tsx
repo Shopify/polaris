@@ -85,7 +85,6 @@ describe('<FileUpload />', () => {
       >
         <FileUpload />
       </DropZoneContext.Provider>,
-      {features: {polarisSummerEditions2023: true}},
     );
 
     expect(fileUpload).toContainReactComponent(Icon, {source: UploadMajor});
@@ -139,22 +138,4 @@ describe('<FileUpload />', () => {
       });
     },
   );
-
-  // se23 - img replaced with Icon
-  describe('polarisSummerEditions2023 false', () => {
-    it('renders small view', () => {
-      const fileUpload = mountWithApp(
-        <DropZoneContext.Provider
-          value={{size: 'small', type: 'file', ...defaultStates}}
-        >
-          <FileUpload />
-        </DropZoneContext.Provider>,
-        {features: {polarisSummerEditions2023: false}},
-      );
-
-      expect(fileUpload).not.toContainReactComponent(Text);
-
-      expect(fileUpload).toContainReactComponentTimes('img', 1);
-    });
-  });
 });

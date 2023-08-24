@@ -7,9 +7,8 @@ import type {
   ActionListItemDescriptor,
   ActionListSection,
 } from '../../../../types';
-import {useFeatures} from '../../../../utilities/features';
-import {HorizontalStack} from '../../../HorizontalStack';
-import {VerticalStack} from '../../../VerticalStack';
+import {InlineStack} from '../../../InlineStack';
+import {BlockStack} from '../../../BlockStack';
 
 export interface SectionProps {
   /** Section of action items */
@@ -31,8 +30,6 @@ export function Section({
   actionRole,
   onActionAnyItem,
 }: SectionProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-
   const handleAction = (itemOnAction: ActionListItemDescriptor['onAction']) => {
     return () => {
       if (itemOnAction) {
@@ -61,11 +58,7 @@ export function Section({
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
         >
-          {polarisSummerEditions2023 ? (
-            <HorizontalStack wrap={false}>{itemMarkup}</HorizontalStack>
-          ) : (
-            itemMarkup
-          )}
+          <InlineStack wrap={false}>{itemMarkup}</InlineStack>
         </Box>
       );
     },
@@ -77,24 +70,12 @@ export function Section({
     titleMarkup =
       typeof section.title === 'string' ? (
         <Box
-          {...(polarisSummerEditions2023
-            ? {
-                paddingBlockStart: '3',
-                paddingBlockEnd: '1',
-                paddingInlineStart: '3',
-                paddingInlineEnd: '3',
-              }
-            : {
-                paddingBlockStart: '4',
-                paddingInlineStart: '4',
-                paddingBlockEnd: '2',
-                paddingInlineEnd: '4',
-              })}
+          paddingBlockStart="3"
+          paddingBlockEnd="1"
+          paddingInlineStart="3"
+          paddingInlineEnd="3"
         >
-          <Text
-            as="p"
-            variant={polarisSummerEditions2023 ? 'headingSm' : 'headingXs'}
-          >
+          <Text as="p" variant="headingSm">
             {section.title}
           </Text>
         </Box>
@@ -122,23 +103,14 @@ export function Section({
     <>
       {titleMarkup}
       <Box
-        as={polarisSummerEditions2023 ? 'div' : 'ul'}
-        padding={polarisSummerEditions2023 ? '1_5-experimental' : '2'}
+        as="div"
+        padding="1_5-experimental"
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
-        {...(sectionRole && !polarisSummerEditions2023 && {role: sectionRole})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        {polarisSummerEditions2023 ? (
-          <VerticalStack
-            gap="1"
-            as="ul"
-            {...(sectionRole && {role: sectionRole})}
-          >
-            {actionMarkup}
-          </VerticalStack>
-        ) : (
-          actionMarkup
-        )}
+        <BlockStack gap="1" as="ul" {...(sectionRole && {role: sectionRole})}>
+          {actionMarkup}
+        </BlockStack>
       </Box>
     </>
   );
@@ -150,7 +122,7 @@ export function Section({
       borderColor="border-subdued"
       {...(!isFirst && {borderBlockStartWidth: '1'})}
       {...(!section.title && {
-        paddingBlockStart: polarisSummerEditions2023 ? '1_5-experimental' : '2',
+        paddingBlockStart: '1_5-experimental',
       })}
     >
       {sectionMarkup}

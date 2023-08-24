@@ -5,7 +5,7 @@ import {Modal} from '../../../Modal';
 import {TextField} from '../../../TextField';
 import {Form} from '../../../Form';
 import {FormLayout} from '../../../FormLayout';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Button} from '../../../Button';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {useFeatures} from '../../../../utilities/features';
@@ -88,8 +88,6 @@ export function UpdateButtons({
   const saveButton = (
     <Button
       size="micro"
-      primary={!se23 ? true : undefined}
-      plain={!se23 ? true : undefined}
       onClick={handleClickSaveButton}
       disabled={primaryAction?.disabled || disabled}
     >
@@ -108,8 +106,7 @@ export function UpdateButtons({
 
   const cancelButtonMarkup = (
     <Button
-      plain
-      primary={se23 ? true : undefined}
+      variant="tertiary"
       size="micro"
       onClick={cancelAction.onAction}
       disabled={disabled}
@@ -123,11 +120,11 @@ export function UpdateButtons({
   }
 
   return (
-    <HorizontalStack align="start" blockAlign="center" gap={se23 ? '1' : '2'}>
+    <InlineStack align="start" blockAlign="center" gap={se23 ? '1' : '2'}>
       {cancelButtonMarkup}
       {primaryAction.type === 'save-as' ? (
         <Modal
-          activator={<HorizontalStack>{saveButton}</HorizontalStack>}
+          activator={<InlineStack>{saveButton}</InlineStack>}
           open={savedViewModalOpen}
           title={i18n.translate(
             'Polaris.IndexFilters.UpdateButtons.modal.title',
@@ -181,6 +178,6 @@ export function UpdateButtons({
       ) : (
         saveButton
       )}
-    </HorizontalStack>
+    </InlineStack>
   );
 }

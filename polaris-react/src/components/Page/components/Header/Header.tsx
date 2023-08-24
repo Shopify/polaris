@@ -27,8 +27,7 @@ import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
-import {HorizontalStack} from '../../../HorizontalStack';
-import {useFeatures} from '../../../../utilities/features';
+import {InlineStack} from '../../../InlineStack';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
@@ -87,7 +86,6 @@ export function Header({
   onActionRollup,
 }: HeaderProps) {
   const i18n = useI18n();
-  const {polarisSummerEditions2023} = useFeatures();
   const {isNavigationCollapsed} = useMediaQuery();
 
   if (additionalNavigation && process.env.NODE_ENV === 'development') {
@@ -106,11 +104,7 @@ export function Header({
 
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
-      <Box
-        maxWidth="100%"
-        paddingInlineEnd={polarisSummerEditions2023 ? '1' : '4'}
-        printHidden
-      >
+      <Box maxWidth="100%" paddingInlineEnd="1" printHidden>
         <Breadcrumbs backAction={backAction} />
       </Box>
     </div>
@@ -126,9 +120,9 @@ export function Header({
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <HorizontalStack gap="4" align="end">
+    <InlineStack gap="4" align="end">
       <Box printHidden>{additionalNavigation}</Box>
-    </HorizontalStack>
+    </InlineStack>
   ) : null;
 
   const pageTitleMarkup = (
@@ -177,21 +171,17 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
         }
       >
-        <HorizontalStack gap="4" align="space-between" blockAlign="center">
+        <InlineStack gap="4" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {additionalNavigationMarkup}
           {paginationMarkup}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
     ) : null;
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <Text
-        color="subdued"
-        as="span"
-        variant={polarisSummerEditions2023 ? 'bodySm' : undefined}
-      >
+      <Text color="subdued" as="span" variant="bodySm">
         {additionalMetadata}
       </Text>
     </div>
@@ -222,8 +212,8 @@ export function Header({
   return (
     <Box
       position="relative"
-      paddingBlockStart={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
-      paddingBlockEnd={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
+      paddingBlockStart={{xs: '4', md: '6'}}
+      paddingBlockEnd={{xs: '4', md: '6'}}
       paddingInlineStart={{xs: '4', sm: '0'}}
       paddingInlineEnd={{xs: '4', sm: '0'}}
       visuallyHidden={titleHidden}
@@ -252,7 +242,7 @@ export function Header({
         </ConditionalRender>
         <ConditionalRender condition={[slot5, slot6].some(notNull)}>
           <div className={styles.Row}>
-            <HorizontalStack gap="4">{slot5}</HorizontalStack>
+            <InlineStack gap="4">{slot5}</InlineStack>
             <ConditionalRender condition={slot6 != null}>
               <div className={styles.RightAlign}>{slot6}</div>
             </ConditionalRender>
@@ -277,7 +267,7 @@ function PrimaryActionMarkup({
     const content = buttonFrom(
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
-        primary,
+        variant: primary ? 'primary' : undefined,
       },
     );
 

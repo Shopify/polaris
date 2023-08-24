@@ -58,31 +58,10 @@ describe('Card', () => {
         {heading}
         {subheading}
       </Card>,
-      {features: {polarisSummerEditions2023: true}},
     );
 
     expect(card).toContainReactComponent(ShadowBevel, {
       borderRadius: '3',
-    });
-  });
-
-  // se23 -- default borderRadius changed from '2' to '3', border radius on ShadowBevel instead of Box
-  describe('polarisSummerEditions2023 false', () => {
-    it('sets default border radius when roundedAbove breakpoint passed in', () => {
-      setMediaWidth('breakpoints-sm');
-      const card = mountWithApp(
-        <Card roundedAbove="sm">
-          {heading}
-          {subheading}
-        </Card>,
-        {features: {polarisSummerEditions2023: false}},
-      );
-
-      expect(card).toContainReactComponent('div', {
-        style: expect.objectContaining({
-          '--pc-box-border-radius': 'var(--p-border-radius-2)',
-        }),
-      });
     });
   });
 });

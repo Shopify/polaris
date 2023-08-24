@@ -76,4 +76,3 @@ Controls in simple option lists are [buttons](https://polaris.shopify.com/compon
 If you customize the option list, you can provide ARIA roles that fit the context. These roles must be valid according to the [W3C ARIA specification](https://www.w3.org/TR/wai-aria-1.1/) to be conveyed correctly to screen reader users.
 
 - The `role` prop adds an ARIA role to the option list wrapper
-- The `optionRole` prop adds an ARIA role to the option list items

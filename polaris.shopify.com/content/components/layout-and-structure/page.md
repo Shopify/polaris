@@ -60,9 +60,6 @@ examples:
   - fileName: page-with-content-after-title.tsx
     title: With content after title
     description: Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
-  - fileName: page-with-divider.tsx
-    title: With divider
-    description: Use when the page needs visual separation between the page header and the content.
 ---
 
 ## Best practices

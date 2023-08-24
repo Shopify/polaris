@@ -9,14 +9,12 @@ import {
   Listbox,
   LegacyStack,
   AutoSelection,
-  VerticalStack,
-  HorizontalStack,
+  BlockStack,
+  InlineStack,
   Text,
   Box,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
-
-import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Listbox,
@@ -24,55 +22,55 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
+    <BlockStack gap="8">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With loading
         </Text>
         <WithLoading />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="4">
+      <BlockStack gap="4">
         <Text as="h2" variant="headingXl">
           With action
         </Text>
         <WithAction />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With custom element
         </Text>
         <WithCustomOptions />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With search
         </Text>
         <WithSearch />
         <Box paddingBlockEnd="3" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="2">
+      <BlockStack gap="2">
         <Text as="h2" variant="headingXl">
           With disabled text option
         </Text>
         <WithDisabledTextOption />
-      </VerticalStack>
+      </BlockStack>
       <Box paddingBlockEnd="3" />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -167,12 +165,12 @@ export function WithCustomOptions() {
           <Listbox.Option key={id} value={value} selected={selected}>
             <Listbox.TextOption selected={selected}>
               <Box width="100%">
-                <HorizontalStack gap="2" align="space-between">
+                <InlineStack gap="2" align="space-between">
                   {label}
                   <Text as="span" color="subdued">
                     {`${subscribers} subscribers`}
                   </Text>
-                </HorizontalStack>
+                </InlineStack>
               </Box>
             </Listbox.TextOption>
           </Listbox.Option>
@@ -183,8 +181,6 @@ export function WithCustomOptions() {
 }
 
 export function WithSearch() {
-  const {polarisSummerEditions2023} = useFeatures();
-
   interface CustomerSegment {
     id: string;
     label: string;
@@ -389,9 +385,7 @@ export function WithSearch() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: polarisSummerEditions2023
-            ? 'var(--p-color-text-subdued)'
-            : 'var(--p-color-text-interactive)',
+          color: 'var(--p-color-text-subdued)',
         }}
       >
         Show all 111 segments
@@ -452,7 +446,7 @@ export function WithSearch() {
           shadow
           style={{
             position: 'relative',
-            height: polarisSummerEditions2023 ? '262px' : '292px',
+            height: '262px',
             padding: 'var(--p-space-2) 0',
             borderBottomLeftRadius: 'var(--p-border-radius-2)',
             borderBottomRightRadius: 'var(--p-border-radius-2)',

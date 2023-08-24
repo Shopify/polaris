@@ -15,7 +15,7 @@ function LegacyCardExample() {
           <LegacyStack distribution="trailing">
             <ButtonGroup>
               <Button>Enable two-step authentication</Button>
-              <Button plain>Learn more</Button>
+              <Button variant="plain">Learn more</Button>
             </ButtonGroup>
           </LegacyStack>
         </LegacyStack>
