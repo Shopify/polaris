@@ -9,6 +9,7 @@ import PageMeta from '../../../../src/components/PageMeta';
 import {uppercaseFirst} from '../../../../src/utils/various';
 import {MarkdownFile} from '../../../../src/types';
 import {parseMarkdown} from '../../../../src/utils/markdown.mjs';
+import {serializeMdx} from '../../../../src/components/Markdown/serialize';
 
 export interface RulesProps {
   title: string;
@@ -16,7 +17,7 @@ export interface RulesProps {
   content: string;
 }
 
-const FoundationsCategory = ({title, description, content}: RulesProps) => {
+const FoundationsCategory = ({title, description, mdx}: RulesProps) => {
   return (
     <>
       <PageMeta description={description} />
@@ -24,7 +25,7 @@ const FoundationsCategory = ({title, description, content}: RulesProps) => {
         <Longform>
           <h1>{title}</h1>
           <p>{description}</p>
-          <Markdown>{content}</Markdown>
+          <Markdown {...mdx} />
         </Longform>
       </Page>
     </>
@@ -34,12 +35,13 @@ const FoundationsCategory = ({title, description, content}: RulesProps) => {
 export const getStaticProps: GetStaticProps<RulesProps> = async () => {
   const {title, description} = indexPageMetadata();
   const content = ruleListMarkdown();
+  const [mdx] = await serializeMdx(content);
 
   return {
     props: {
       title,
       description,
-      content,
+      mdx,
     },
   };
 };
