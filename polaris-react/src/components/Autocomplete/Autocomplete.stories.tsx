@@ -70,7 +70,7 @@ export function Default() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -271,7 +271,7 @@ export function WithMultipleSections() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -348,7 +348,7 @@ export function WithLoading() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -551,7 +551,7 @@ export function WithEmptyState() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );

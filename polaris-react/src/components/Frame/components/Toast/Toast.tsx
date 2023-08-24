@@ -78,7 +78,7 @@ export function Toast({
     <div className={styles.LeadingIcon}>
       <Icon
         source={polarisSummerEditions2023 ? AlertMinor : DiamondAlertMinor}
-        color="base"
+        tone="base"
       />
     </div>
   ) : null;

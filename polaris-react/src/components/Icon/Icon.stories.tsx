@@ -1,7 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {BlockStack, Box, Icon} from '@shopify/polaris';
-import type {BoxProps, IconProps} from '@shopify/polaris';
+import {Icon} from '@shopify/polaris';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -15,43 +14,16 @@ export function Default() {
 export function Colored() {
   return (
     <div>
-      <Icon source={CirclePlusMinor} color="base" />
-      <Icon source={CirclePlusMinor} color="subdued" />
-      <Icon source={CirclePlusMinor} color="primary" />
-      <Icon source={CirclePlusMinor} color="highlight" />
-      <Icon source={CirclePlusMinor} color="success" />
-      <Icon source={CirclePlusMinor} color="warning" />
-      <Icon source={CirclePlusMinor} color="critical" />
-      <Icon source={CirclePlusMinor} color="magic" />
+      <Icon source={CirclePlusMinor} tone="base" />
+      <Icon source={CirclePlusMinor} tone="subdued" />
+      <Icon source={CirclePlusMinor} tone="primary" />
+      <Icon source={CirclePlusMinor} tone="info" />
+      <Icon source={CirclePlusMinor} tone="success" />
+      <Icon source={CirclePlusMinor} tone="caution" />
+      <Icon source={CirclePlusMinor} tone="warning" />
+      <Icon source={CirclePlusMinor} tone="critical" />
+      <Icon source={CirclePlusMinor} tone="magic" />
     </div>
-  );
-}
-
-export function WithBackdrop() {
-  const BackdropIcon = ({
-    boxBackground,
-    iconColor,
-  }: {
-    boxBackground: BoxProps['background'];
-    iconColor: IconProps['color'];
-  }) => (
-    <Box
-      background={boxBackground}
-      padding="1"
-      width="28px"
-      borderRadius="full"
-    >
-      <Icon source={CirclePlusMinor} color={iconColor} />
-    </Box>
-  );
-  return (
-    <BlockStack gap="1">
-      <BackdropIcon iconColor="base" boxBackground="bg-strong" />
-      <BackdropIcon iconColor="highlight" boxBackground="bg-info" />
-      <BackdropIcon iconColor="success" boxBackground="bg-success" />
-      <BackdropIcon iconColor="warning" boxBackground="bg-warning" />
-      <BackdropIcon iconColor="critical" boxBackground="bg-critical" />
-    </BlockStack>
   );
 }
 
@@ -72,5 +44,5 @@ export function WithCustomSVGAndColor() {
     );
   };
 
-  return <Icon source={iconContent} color="warning" />;
+  return <Icon source={iconContent} tone="warning" />;
 }
