@@ -391,6 +391,13 @@
         }
       },
       "searchFilterTooltipWithShortcut": "Hae ja suodata (F)"
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Tyhjennä",
+        "search": "Hae",
+        "placeholder": "Hae toimintoja"
+      }
     }
   }
 }
