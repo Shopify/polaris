@@ -30,8 +30,7 @@
       "dismissButton": "Avvis varsel"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laster inn",
-      "connectedDisclosureAccessibilityLabel": "Relaterte handlinger"
+      "spinnerAccessibilityLabel": "Laster inn"
     },
     "Common": {
       "checkbox": "avmerkingsboks",
