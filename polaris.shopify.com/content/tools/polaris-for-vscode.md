@@ -6,9 +6,13 @@ icon: HintMajor
 order: 1
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 <picture>
   <source srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.png" media="(prefers-reduced-motion: reduce)"></source>
-  <img srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.gif" alt="Demo of Polaris for VS Code tokens autocomplete">
+  <img style={{maxWidth: "100%" }} srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.gif" alt="Demo of Polaris for VS Code tokens autocomplete" />
 </picture>
 
 ## Features
