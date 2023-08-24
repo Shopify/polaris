@@ -12,12 +12,10 @@ $Backdrop-opacity: 0.88;
   margin-bottom: var(--p-space-5);
   box-shadow: var(--p-shadow-xl);
 
-  #{$se23} & {
-    @include shadow-bevel(
-      $boxShadow: var(--p-shadow-lg),
-      $borderRadius: var(--p-border-radius-2)
-    );
-  }
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-lg),
+    $borderRadius: var(--p-border-radius-2)
+  );
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-3);
@@ -29,12 +27,8 @@ $Backdrop-opacity: 0.88;
 }
 
 .Action {
-  margin-left: var(--p-space-2);
+  margin-left: var(--p-space-4);
   color: var(--p-color-text-on-color);
-
-  #{$se23} & {
-    margin-left: var(--p-space-4);
-  }
 }
 
 .error {
@@ -43,19 +37,11 @@ $Backdrop-opacity: 0.88;
 
   .CloseButton {
     color: var(--p-color-icon-on-color);
-
-    #{$se23} & {
-      color: var(--p-color-icon-on-color);
-    }
   }
 }
 
 .LeadingIcon {
-  margin-right: var(--p-space-2);
-
-  #{$se23} & {
-    margin-right: var(--p-space-1_5-experimental);
-  }
+  margin-right: var(--p-space-1_5-experimental);
 
   svg {
     fill: currentColor;
@@ -71,13 +57,9 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  color: var(--p-color-icon-subdued);
+  color: var(--p-color-icon-inverse);
   cursor: pointer;
   margin-left: var(--p-space-2);
-
-  #{$se23} & {
-    color: var(--p-color-icon-inverse);
-  }
 
   svg {
     fill: currentColor;
