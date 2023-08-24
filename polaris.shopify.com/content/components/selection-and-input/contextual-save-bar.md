@@ -41,12 +41,12 @@ The contextual save bar component should:
 
 ## Content guidelines
 
-Messages in the contextual save bar component should be informative, clear, and concise. They should follow the {adjective}+{noun} pattern. Don’t use full sentences.
+Messages in the contextual save bar component should be informative, clear, and concise. They should follow the \{adjective}+\{noun} pattern. Don’t use full sentences.
 
 The standard message content is
 
 - “Unsaved changes” when editing existing content
-- “Unsaved {resource name}” when creating a new object
+- “Unsaved \{resource name}” when creating a new object
 
 <DoDont>
 
