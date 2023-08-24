@@ -7,7 +7,6 @@ import {LegacyStack} from '../../../LegacyStack';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Text} from '../../../Text';
 import styles from '../../LegacyCard.scss';
-import {useFeatures} from '../../../../utilities/features';
 
 export interface LegacyCardSectionProps {
   title?: React.ReactNode;
@@ -29,7 +28,6 @@ export function Section({
   actions,
   hideOnPrint,
 }: LegacyCardSectionProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const className = classNames(
     styles.Section,
     flush && styles['Section-flush'],
@@ -44,11 +42,7 @@ export function Section({
 
   const titleMarkup =
     typeof title === 'string' ? (
-      <Text
-        variant="headingSm"
-        as="h3"
-        fontWeight={polarisSummerEditions2023 ? 'medium' : 'semibold'}
-      >
+      <Text variant="headingSm" as="h3" fontWeight="medium">
         {title}
       </Text>
     ) : (
