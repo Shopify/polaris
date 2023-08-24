@@ -23,32 +23,28 @@
   fill: var(--p-color-icon-subdued);
 }
 
-.toneCritical {
-  svg {
-    fill: var(--p-color-icon-critical);
-  }
+.toneCaution svg {
+  fill: var(--p-color-icon-caution);
+}
+
+.toneWarning svg {
+  fill: var(--p-color-icon-warning);
+}
+
+.toneCritical svg {
+  fill: var(--p-color-icon-critical);
 }
 
 .toneInteractive svg {
   fill: var(--p-color-icon-interactive);
 }
 
-.toneWarning {
-  svg {
-    fill: var(--p-color-icon-warning);
-  }
+.toneHighlight svg {
+  fill: var(--p-color-icon-info);
 }
 
-.toneHighlight {
-  svg {
-    fill: var(--p-color-icon-info);
-  }
-}
-
-.toneSuccess {
-  svg {
-    fill: var(--p-color-icon-success);
-  }
+.toneSuccess svg {
+  fill: var(--p-color-icon-success);
 }
 
 .tonePrimary svg {

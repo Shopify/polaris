@@ -9,9 +9,10 @@ import styles from './Icon.scss';
 type Tone =
   | 'base'
   | 'subdued'
+  | 'caution'
+  | 'warning'
   | 'critical'
   | 'interactive'
-  | 'warning'
   | 'highlight'
   | 'success'
   | 'primary'

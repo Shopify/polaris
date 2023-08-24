@@ -11,6 +11,7 @@ function IconExample() {
       <Icon source={CirclePlusMinor} tone="primary" />
       <Icon source={CirclePlusMinor} tone="highlight" />
       <Icon source={CirclePlusMinor} tone="success" />
+      <Icon source={CirclePlusMinor} tone="caution" />
       <Icon source={CirclePlusMinor} tone="warning" />
       <Icon source={CirclePlusMinor} tone="critical" />
     </div>
