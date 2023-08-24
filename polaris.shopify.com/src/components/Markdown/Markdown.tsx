@@ -26,7 +26,6 @@ import {useCopyToClipboard} from '../../utils/hooks';
 import {Variants} from '../PatternPage/PatternPage';
 
 function Markdown(props: ComponentProps<typeof MDXRemote>) {
-  // console.log('SCOPE', props.scope);
   return (
     <MDXRemote
       {...props}
