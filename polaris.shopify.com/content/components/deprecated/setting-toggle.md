@@ -47,7 +47,7 @@ The setting toggle component should only be used when:
 
 If the setting is dependent on other settings, uses progressive disclosure, or has options that are not a simple “On”/“Off”, use a different UI element such as [Checkbox](https://polaris.shopify.com/components/selection-and-input/checkbox) or [Radio button](https://polaris.shopify.com/components/selection-and-input/radio-button).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -61,7 +61,7 @@ Don't include additional settings or inputs.
 
 ![Setting toggle dont](/images/components/deprecated/setting-toggle/Dont.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -74,7 +74,7 @@ The setting toggle title should:
 - Be the setting name, written as a noun or gerund (-ing) phrase (“Test mode” or “Automatic order archiving”)
 - Represent the experience when the setting is turned on—even if the setting restricts, limits, removes, or hides functionality
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -88,13 +88,13 @@ The setting toggle title should:
 - Automatically archive the order
 - Allow customers to manage returns
 
-<!-- end -->
+</DoDont>
 
 ### On/Off button
 
 The button for the setting toggle should always say either “Turn on” or “Turn off” depending on whether the setting can be turned on or off.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -108,7 +108,7 @@ The button for the setting toggle should always say either “Turn on” or “T
 - Activate
 - Deactivate
 
-<!-- end -->
+</DoDont>
 
 ### Supporting content
 
