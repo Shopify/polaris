@@ -22,7 +22,7 @@ const fixtures = [
   {
     name: 'react-rename-compound-component-prop-with-new-value',
     options: {
-      componentName: 'MyComponent.SubComponent',
+      componentName: 'MyComponent.CompoundComponent',
       from: 'prop',
       to: 'newProp',
       newValue: 'new-value',
