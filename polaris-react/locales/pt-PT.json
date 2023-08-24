@@ -30,8 +30,7 @@
       "dismissButton": "Ignorar notificação"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "A carregar",
-      "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
+      "spinnerAccessibilityLabel": "A carregar"
     },
     "Common": {
       "checkbox": "caixa de verificação",

@@ -30,8 +30,7 @@
       "dismissButton": "Benachrichtigung verwerfen"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Wird geladen",
-      "connectedDisclosureAccessibilityLabel": "Ähnliche Aktionen"
+      "spinnerAccessibilityLabel": "Wird geladen"
     },
     "Common": {
       "checkbox": "Kontrollkästchen",

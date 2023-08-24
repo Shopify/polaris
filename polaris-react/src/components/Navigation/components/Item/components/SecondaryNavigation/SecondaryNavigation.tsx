@@ -2,7 +2,6 @@ import React, {useId, useContext, useState} from 'react';
 import isEqual from 'react-fast-compare';
 
 import {classNames} from '../../../../../../utilities/css';
-import {useFeatures} from '../../../../../../utilities/features';
 import type {IconProps} from '../../../../../Icon';
 import {Collapsible} from '../../../../../Collapsible';
 import {NavigationContext} from '../../../../context';
@@ -28,7 +27,6 @@ export function SecondaryNavigation({
   truncateText,
   secondaryNavigationId,
 }: SecondaryNavigationProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const uid = useId();
   const {onNavigationDismiss} = useContext(NavigationContext);
   const [hoveredItem, setHoveredItem] = useState<
@@ -66,9 +64,7 @@ export function SecondaryNavigation({
               }
             };
 
-            const shouldShowVerticalLine = polarisSummerEditions2023
-              ? index < matchedItemPosition
-              : false;
+            const shouldShowVerticalLine = index < matchedItemPosition;
 
             return (
               <ItemComponent
@@ -76,9 +72,7 @@ export function SecondaryNavigation({
                 {...rest}
                 label={label}
                 showVerticalLine={shouldShowVerticalLine}
-                showVerticalHoverPointer={
-                  polarisSummerEditions2023 && index === hoveredItemPosition
-                }
+                showVerticalHoverPointer={index === hoveredItemPosition}
                 onMouseEnter={
                   item.disabled ? undefined : () => setHoveredItem(item)
                 }

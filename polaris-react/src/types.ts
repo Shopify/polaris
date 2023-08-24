@@ -258,17 +258,6 @@ export interface MenuGroupDescriptor extends BadgeAction {
   onClick?(openActions: () => void): void;
 }
 
-export interface ConnectedDisclosure {
-  /** Visually hidden label for the connected disclosure button.
-   * @default 'Related actions'
-   */
-  accessibilityLabel?: string;
-  /** Whether or not the disclosure is disabled */
-  disabled?: boolean;
-  /** List of actions */
-  actions: ActionListItemDescriptor[];
-}
-
 export enum Key {
   Backspace = 8,
   Tab = 9,

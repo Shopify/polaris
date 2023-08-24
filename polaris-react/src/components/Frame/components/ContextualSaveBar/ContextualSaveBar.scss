@@ -71,8 +71,9 @@
   flex-direction: row;
   gap: var(--p-space-2);
 
-  #{$se23} & [class*='Polaris-Icon__Svg'],
-  #{$se23} & [class*='Icon-Svg'] {
+  // stylelint-disable -- Icon overrides specific to Contextual Save Bar
+  & [class*='Polaris-Icon__Svg'],
+  & [class*='Icon-Svg'] {
     fill: var(--p-color-text-inverse);
   }
 }
@@ -80,18 +81,18 @@
 .ActionContainer {
   flex-shrink: 0;
 
-  // Button overrides specific to Contextual Save Bar
-  /* stylelint-disable -- summer edition overrides */
-  #{$se23} & [class*='Polaris-Button--primary'],
-  #{$se23} & [class*='Button-primary'] {
+  & [class*='Polaris-Button--primary'],
+  & [class*='Button-primary'] {
     --pc-color-text: rgba(48, 48, 48, 1);
     --pc-button-text: var(--pc-color-text);
     --pc-button-color: rgba(255, 255, 255, 1);
     --pc-button-color-hover: rgba(250, 250, 250, 1);
     --pc-button-color-active: rgba(247, 247, 247, 1);
     --pc-button-color-depressed: rgba(247, 247, 247, 1);
-    --pc-button-color-disabled:  rgba(255, 255, 255, 0.2);
-    --pc-button-shadow-inset: 0px 2px 1px 0px rgba(26, 26, 26, 0.2) inset, 1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset, -1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset;
+    --pc-button-color-disabled: rgba(255, 255, 255, 0.2);
+    --pc-button-shadow-inset: 0px 2px 1px 0px rgba(26, 26, 26, 0.2) inset,
+      1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset,
+      -1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset;
 
     &::before {
       top: 0;
@@ -115,21 +116,21 @@
     }
 
     &[class*='Polaris-Button--disabled'],
-    &[class*='Button-disabled']{
+    &[class*='Button-disabled'] {
       --pc-button-text: var(--p-color-text-subdued);
       background: var(--pc-button-color-disabled);
     }
   }
 
-  #{$se23} & [class*='Polaris-Button--tertiary'],
-  #{$se23} & [class*='Button-tertiary'] {
+  & [class*='Polaris-Button--tertiary'],
+  & [class*='Button-tertiary'] {
     --pc-button-color: var(--p-color-bg-inset-strong);
     --pc-button-color-hover: var(--p-color-bg-inverse-hover);
     --pc-button-color-active: var(--p-color-bg-inverse-active);
     --pc-button-text: var(--p-color-text-inverse);
 
     &::after {
-     content: none;
+      content: none;
     }
 
     &:hover {

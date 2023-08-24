@@ -30,8 +30,7 @@
       "dismissButton": "Odrzuć powiadomienie"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Ładowanie",
-      "connectedDisclosureAccessibilityLabel": "Powiązane czynności"
+      "spinnerAccessibilityLabel": "Ładowanie"
     },
     "Common": {
       "checkbox": "pole wyboru",
