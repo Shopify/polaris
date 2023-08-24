@@ -483,7 +483,6 @@ describe('<OptionList />', () => {
 
         const inputWrapper = mountWithApp(
           <OptionList {...defaultProps} onChange={spy} allowMultiple />,
-          {features: {polarisSummerEditions2023: true}},
         ).find('input');
 
         inputWrapper!.trigger('onClick');
@@ -504,7 +503,6 @@ describe('<OptionList />', () => {
             selected={selected}
             allowMultiple
           />,
-          {features: {polarisSummerEditions2023: true}},
         ).find('input');
 
         inputWrapper!.trigger('onClick');
@@ -528,7 +526,6 @@ describe('<OptionList />', () => {
             selected={selected}
             allowMultiple
           />,
-          {features: {polarisSummerEditions2023: true}},
         ).find('input');
 
         inputWrapper!.trigger('onClick');
@@ -582,72 +579,6 @@ describe('<OptionList />', () => {
       optionWrappers.forEach((option) => {
         expect(option.props.verticalAlign).toBeUndefined();
       });
-    });
-  });
-
-  // se23 - 'onChange' event replaced with 'onClick'
-  describe('polarisSummerEditions2023 false', () => {
-    it('selects an item when nothing was selected', () => {
-      const spy = jest.fn();
-      const {options, sections} = defaultProps;
-
-      const inputWrapper = mountWithApp(
-        <OptionList {...defaultProps} onChange={spy} allowMultiple />,
-        {features: {polarisSummerEditions2023: false}},
-      ).find('input');
-
-      inputWrapper!.trigger('onChange');
-
-      expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith([firstOption(options, sections)]);
-    });
-
-    it('selects an item when multiple items are selected', () => {
-      const spy = jest.fn();
-      const {options, sections} = defaultProps;
-      const selected = ['11', '8'];
-
-      const inputWrapper = mountWithApp(
-        <OptionList
-          {...defaultProps}
-          onChange={spy}
-          selected={selected}
-          allowMultiple
-        />,
-        {features: {polarisSummerEditions2023: false}},
-      ).find('input');
-
-      inputWrapper!.trigger('onChange');
-
-      expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith([
-        firstOption(options, sections),
-        ...selected,
-      ]);
-    });
-
-    it('deselects an item when it is already selected', () => {
-      const spy = jest.fn();
-      const {options, sections} = defaultProps;
-      const selected = ['10', '8', '5'];
-
-      const inputWrapper = mountWithApp(
-        <OptionList
-          {...defaultProps}
-          onChange={spy}
-          selected={selected}
-          allowMultiple
-        />,
-        {features: {polarisSummerEditions2023: false}},
-      ).find('input');
-
-      inputWrapper!.trigger('onChange');
-
-      const valueToCheck = firstOption(options, sections);
-      const newSelected = selected.filter((value) => value !== valueToCheck);
-
-      expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(newSelected);
     });
   });
 });
