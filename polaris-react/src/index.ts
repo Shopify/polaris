@@ -23,7 +23,6 @@ export type {
   ComplexAction,
   MenuActionDescriptor,
   MenuGroupDescriptor,
-  ConnectedDisclosure,
   CheckboxHandles,
   AppliedFilterInterface,
   FilterInterface,

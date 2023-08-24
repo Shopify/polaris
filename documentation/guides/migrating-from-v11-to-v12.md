@@ -53,4 +53,5 @@ Secondary, becomes oneThird:
 `npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`
 
 **Button**
-// TODO
+
+- connectedDisclosure: [See the updated split example](https://polaris.shopify.com/components/actions/button)

@@ -45,8 +45,7 @@
       "dismissButton": "Dismiss notification"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Loading",
-      "connectedDisclosureAccessibilityLabel": "Related actions"
+      "spinnerAccessibilityLabel": "Loading"
     },
     "Common": {
       "checkbox": "checkbox",

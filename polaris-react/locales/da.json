@@ -30,8 +30,7 @@
       "dismissButton": "Afvis meddelelse"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Indlæser",
-      "connectedDisclosureAccessibilityLabel": "Relaterede handlinger"
+      "spinnerAccessibilityLabel": "Indlæser"
     },
     "Common": {
       "checkbox": "afkrydsningsfelt",

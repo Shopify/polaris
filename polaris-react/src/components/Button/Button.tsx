@@ -1,22 +1,19 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import {
   SelectMinor,
   ChevronDownMinor,
   ChevronUpMinor,
 } from '@shopify/polaris-icons';
 
-import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
+import type {BaseButton, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import type {MouseUpBlurHandler} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
-import {Popover} from '../Popover';
-import {ActionList} from '../ActionList';
 import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
-import {useDisableClick} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';
 
@@ -38,8 +35,6 @@ export interface ButtonProps extends BaseButton {
   removeUnderline?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
-  /** @deprecated See the split example to replicate this prop */
-  connectedDisclosure?: ConnectedDisclosure;
   /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
   /** Sets the color treatment of the Button. */
@@ -120,7 +115,6 @@ export function Button({
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
-  connectedDisclosure,
   dataPrimaryLink,
   tone,
   variant,
@@ -137,7 +131,7 @@ export function Button({
     variant === 'tertiary' && styles.tertiary,
     variant === 'monochromePlain' && styles.monochrome,
     variant === 'monochromePlain' && styles.plain,
-    tone === 'critical' && styles.destructive,
+    tone === 'critical' && styles.critical,
     tone === 'success' && styles.success,
     isDisabled && styles.disabled,
     loading && styles.loading,
@@ -146,7 +140,6 @@ export function Button({
     textAlign && styles[variationName('textAlign', textAlign)],
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
-    connectedDisclosure && styles.connectedDisclosure,
     removeUnderline && styles.removeUnderline,
   );
 
@@ -205,69 +198,6 @@ export function Button({
     </span>
   ) : null;
 
-  const [disclosureActive, setDisclosureActive] = useState(false);
-  const toggleDisclosureActive = useCallback(() => {
-    setDisclosureActive((disclosureActive) => !disclosureActive);
-  }, []);
-
-  const handleClick = useDisableClick(disabled, toggleDisclosureActive);
-
-  let connectedDisclosureMarkup;
-
-  if (connectedDisclosure) {
-    const connectedDisclosureClassName = classNames(
-      styles.Button,
-      variant === 'primary' && styles.primary,
-      variant === 'monochromePlain' && styles.monochrome,
-      variant === 'monochromePlain' && styles.plain,
-      size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
-      textAlign && styles[variationName('textAlign', textAlign)],
-      tone === 'critical' && styles.destructive,
-      connectedDisclosure.disabled && styles.disabled,
-      styles.iconOnly,
-      styles.ConnectedDisclosure,
-    );
-
-    const defaultLabel = i18n.translate(
-      'Polaris.Button.connectedDisclosureAccessibilityLabel',
-    );
-
-    const {disabled, accessibilityLabel: disclosureLabel = defaultLabel} =
-      connectedDisclosure;
-
-    const connectedDisclosureActivator = (
-      <button
-        type="button"
-        className={connectedDisclosureClassName}
-        aria-disabled={disabled}
-        aria-label={disclosureLabel}
-        aria-describedby={ariaDescribedBy}
-        aria-checked={ariaChecked}
-        onClick={handleClick}
-        onMouseUp={handleMouseUpByBlurring}
-        tabIndex={disabled ? -1 : undefined}
-      >
-        <span className={styles.Icon}>
-          <Icon source={ChevronDownMinor} />
-        </span>
-      </button>
-    );
-
-    connectedDisclosureMarkup = (
-      <Popover
-        active={disclosureActive}
-        onClose={toggleDisclosureActive}
-        activator={connectedDisclosureActivator}
-        preferredAlignment="right"
-      >
-        <ActionList
-          items={connectedDisclosure.actions}
-          onActionAnyItem={toggleDisclosureActive}
-        />
-      </Popover>
-    );
-  }
-
   const commonProps: CommonButtonProps = {
     id,
     className,
@@ -313,14 +243,7 @@ export function Button({
     </UnstyledButton>
   );
 
-  return connectedDisclosureMarkup ? (
-    <div className={styles.ConnectedDisclosureWrapper}>
-      {buttonMarkup}
-      {connectedDisclosureMarkup}
-    </div>
-  ) : (
-    buttonMarkup
-  );
+  return buttonMarkup;
 }
 
 function isIconSource(x: any): x is IconSource {

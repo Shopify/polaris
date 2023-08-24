@@ -30,8 +30,7 @@
       "dismissButton": "Elimina notifica"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Caricamento in corso",
-      "connectedDisclosureAccessibilityLabel": "Azioni correlate"
+      "spinnerAccessibilityLabel": "Caricamento in corso"
     },
     "Common": {
       "checkbox": "casella di spunta",

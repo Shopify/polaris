@@ -30,8 +30,7 @@
       "dismissButton": "Rejeter la notification"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Chargement en cours",
-      "connectedDisclosureAccessibilityLabel": "Actions associées"
+      "spinnerAccessibilityLabel": "Chargement en cours"
     },
     "Common": {
       "checkbox": "case à cocher",
