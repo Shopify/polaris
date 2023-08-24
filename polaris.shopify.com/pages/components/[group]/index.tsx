@@ -40,12 +40,14 @@ interface Props {
 export default function GroupPage({
   group,
   components: componentPaths,
-  frontMatter,
+  // frontMatter,
   description,
   relatedResources,
+  mdx,
   componentDescriptions,
 }: Props) {
-  const groups = frontMatter?.groups;
+  const {frontmatter} = mdx;
+  const groups = frontmatter?.groups;
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
       <Stack gap="4">
@@ -106,33 +108,11 @@ export default function GroupPage({
     </Grid>
   );
 
-  const relatedResourcesMarkup = relatedResources.length
-    ? relatedResources[0] && (
-        <Stack gap="4">
-          <Text as="h4" variant="headingLg">
-            Related resources
-          </Text>
-          <ul>
-            {relatedResources.map((resource) =>
-              resource ? (
-                <li
-                  key={resource}
-                  style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
-                >
-                  <Markdown {...resource} />
-                </li>
-              ) : null,
-            )}
-          </ul>
-        </Stack>
-      )
-    : null;
-
   return (
-    <Page title={frontMatter?.title}>
+    <Page title={frontmatter?.title}>
       <PageMeta
-        title={frontMatter?.title}
-        description={frontMatter?.description}
+        title={frontmatter?.title}
+        description={frontmatter?.description}
       />
       <Stack gap="16">
         <Stack gap="4">
@@ -144,7 +124,9 @@ export default function GroupPage({
 
           {groupsMarkup || componentsFromPaths}
         </Stack>
-        {relatedResourcesMarkup}
+        <Stack gap="4">
+          <Markdown {...mdx} />
+        </Stack>
       </Stack>
     </Page>
   );
@@ -188,31 +170,18 @@ export async function getStaticProps(context: {params: {group: string}}) {
       'utf-8',
     );
 
-    const {frontMatter, readme} = parseMarkdown(componentMarkdown);
     const [mdx] = await serializeMdx<FrontMatter>(componentMarkdown);
-    let mdxDescription, mdxRelatedResources;
+    let description;
 
     if (mdx.frontmatter.description) {
-      [mdxDescription] = await serializeMdx(mdx.frontmatter.description);
-    }
-
-    if (mdx.frontmatter.relatedResources) {
-      const serializedRelatedResources = mdx.frontmatter.relatedResources.map(
-        async (r) => {
-          return await serializeMdx(r);
-        },
-      );
-
-      mdxRelatedResources = Promise.all(serializedRelatedResources);
+      [description] = await serializeMdx(mdx.frontmatter.description);
     }
 
     return {
       props: {
         group,
-        frontMatter: mdx.frontmatter,
-        description: mdxDescription,
-        relatedResources: mdxRelatedResources ?? [],
-        readme,
+        mdx,
+        description,
         editPageLinkPath,
         components,
         componentDescriptions: Object.fromEntries(componentDescriptions),
