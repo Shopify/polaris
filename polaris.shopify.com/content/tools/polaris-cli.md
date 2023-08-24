@@ -10,7 +10,7 @@ keywords:
   - polaris cli
 ---
 
-[<img src="https://img.shields.io/npm/v/@shopify/polaris-cli.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style="width: 95px" />](https://www.npmjs.com/package/@shopify/polaris-cli)
+[<img src="https://img.shields.io/npm/v/@shopify/polaris-cli.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style={{width: "95px"}} />](https://www.npmjs.com/package/@shopify/polaris-cli)
 
 ## Installation
 
