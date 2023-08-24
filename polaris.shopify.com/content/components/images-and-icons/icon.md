@@ -21,9 +21,6 @@ examples:
   - fileName: icon-colored.tsx
     title: Colored
     description: Apply a color to the icon.
-  - fileName: icon-with-backdrop.tsx
-    title: With backdrop
-    description: Apply a backdrop to the icon.
   - fileName: icon-with-custom-svg.tsx
     title: With custom SVG
     description: Specify an SVG as a string to render it in an image tag, instead of an inline SVG to prevent script injection.

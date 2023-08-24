@@ -13,7 +13,7 @@ function IconWithReactChild() {
     );
   };
 
-  return <Icon source={iconContent} color="warning" />;
+  return <Icon source={iconContent} tone="warning" />;
 }
 
 export default withPolarisExample(IconWithReactChild);

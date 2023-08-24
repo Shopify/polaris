@@ -22,7 +22,7 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="fullWidth" --to="variant" --newValue="fullWidth"`
 
-Secondary, becomes oneThird:
+- Secondary, becomes oneThird:
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="secondary" --to="variant" --newValue="oneThird"`
 
@@ -55,3 +55,19 @@ Secondary, becomes oneThird:
 **Button**
 
 - connectedDisclosure: [See the updated split example](https://polaris.shopify.com/components/actions/button)
+
+// TODO - Boolean prop to tone, variant migration
+
+**Icon**
+
+- Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
+
+```tsx
+<Box background={boxBackground} padding="1" width="28px" borderRadius="full">
+  <Icon source={CirclePlusMinor} color={iconColor} />
+</Box>
+```
+
+- Color
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="color" --to="tone"`

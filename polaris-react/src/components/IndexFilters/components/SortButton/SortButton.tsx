@@ -99,7 +99,7 @@ export function SortButton({
 
   const iconMarkup = polarisSummerEditions2023 ? SortMinor : undefined;
   const childMarkup = !polarisSummerEditions2023 ? (
-    <Icon source={SortMinor} color="base" />
+    <Icon source={SortMinor} tone="base" />
   ) : null;
 
   const sortButton = (

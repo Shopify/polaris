@@ -13,86 +13,43 @@
   color: var(--p-color-bg);
 }
 
-.hasBackdrop {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin: var(--p-space-1);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: calc(-1 * var(--p-space-1));
-    bottom: calc(-1 * var(--p-space-1));
-    left: calc(-1 * var(--p-space-1));
-    right: calc(-1 * var(--p-space-1));
-    border-radius: var(--p-border-radius-full);
-  }
+.toneBase svg {
+  fill: var(--p-color-icon);
 }
 
-.colorBase {
-  svg {
-    fill: var(--p-color-icon);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-strong);
-  }
-}
-
-.colorSubdued svg {
+.toneSubdued svg {
   fill: var(--p-color-icon-subdued);
 }
 
-.colorCritical {
-  svg {
-    fill: var(--p-color-icon-critical);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-critical);
-  }
+.toneCaution svg {
+  fill: var(--p-color-icon-caution);
 }
 
-.colorInteractive svg {
+.toneWarning svg {
+  fill: var(--p-color-icon-warning);
+}
+
+.toneCritical svg {
+  fill: var(--p-color-icon-critical);
+}
+
+.toneInteractive svg {
   fill: var(--p-color-icon-interactive);
 }
 
-.colorWarning {
-  svg {
-    fill: var(--p-color-icon-caution);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-warning);
-  }
+.toneInfo svg {
+  fill: var(--p-color-icon-info);
 }
 
-.colorHighlight {
-  svg {
-    fill: var(--p-color-icon-info);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-info);
-  }
+.toneSuccess svg {
+  fill: var(--p-color-icon-success);
 }
 
-.colorSuccess {
-  svg {
-    fill: var(--p-color-icon-success);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-success);
-  }
-}
-
-.colorPrimary svg {
+.tonePrimary svg {
   fill: var(--p-color-icon-primary);
 }
 
-.colorMagic svg {
+.toneMagic svg {
   fill: var(--p-color-icon-magic);
 }
 
