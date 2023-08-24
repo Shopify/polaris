@@ -28,6 +28,10 @@
     // stylelint-enable
     background: var(--p-color-avatar-background-experimental);
     color: var(--p-color-avatar-color-experimental);
+
+    &.imageHasLoaded {
+      background: transparent;
+    }
   }
 
   @media (forced-colors: active) {
