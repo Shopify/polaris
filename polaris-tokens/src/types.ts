@@ -3,6 +3,7 @@ import type {Metadata} from './metadata';
 export type Entry<T> = [keyof T, T[keyof T]];
 export type Entries<T> = Entry<T>[];
 export type Experimental<T extends string> = `${T}-experimental`;
+export type CreateVarName<T extends string> = `--p-${T}`;
 
 export interface MetadataProperties {
   description?: string;

@@ -1,9 +1,8 @@
 import {createVar} from '../utilities';
 
-import type {Themes, ThemesPartials} from './types';
+import type {Themes, ThemesPartials, ThemeVars} from './types';
 import {themeLight} from './light';
 import {themeLightUplift, themeLightUpliftPartial} from './light-uplift';
-import type {ThemeBase} from './base';
 import {themeBase} from './base';
 
 export {themeDefault} from './constants';
@@ -15,12 +14,6 @@ export const themes: Themes = {
 
 export const themesPartials: ThemesPartials = {
   'Polaris-Summer-Editions-2023': themeLightUpliftPartial,
-};
-
-export type ThemeVars = {
-  [TokenGroupName in keyof ThemeBase]: {
-    [TokenName in keyof ThemeBase[TokenGroupName]]: string;
-  };
 };
 
 /**
