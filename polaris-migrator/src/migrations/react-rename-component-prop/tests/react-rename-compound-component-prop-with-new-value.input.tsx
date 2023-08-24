@@ -1,21 +1,10 @@
 import React from 'react';
 
-interface MyComponentProps {
-  prop?: string;
-  newProp?: string;
-  children?: React.ReactNode;
-}
+declare function MyComponent(props: any): JSX.Element;
+declare function SubComponent(props: any): JSX.Element;
+declare function Child(props: any): JSX.Element;
 
-const Child = (props: {prop: string}) => <>{props.prop}</>;
-
-function MyComponent(props: MyComponentProps) {
-  const value = props.newProp ?? props.prop;
-  return <div data-prop={value}>{props.children}</div>;
-}
-
-function SubComponent({...props}: any) {
-  return <div {...props} />;
-}
+MyComponent.SubComponent = SubComponent;
 
 export function App() {
   return (
@@ -26,5 +15,3 @@ export function App() {
     </MyComponent>
   );
 }
-
-MyComponent.SubComponent = SubComponent;
