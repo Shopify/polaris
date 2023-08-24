@@ -13,10 +13,8 @@
   color: var(--p-color-bg);
 }
 
-.toneBase {
-  svg {
-    fill: var(--p-color-icon);
-  }
+.toneBase svg {
+  fill: var(--p-color-icon);
 }
 
 .toneSubdued svg {
@@ -39,7 +37,7 @@
   fill: var(--p-color-icon-interactive);
 }
 
-.toneHighlight svg {
+.toneInfo svg {
   fill: var(--p-color-icon-info);
 }
 
