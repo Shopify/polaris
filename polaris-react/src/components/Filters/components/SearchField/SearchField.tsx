@@ -87,7 +87,7 @@ export function SearchField({
           <Text as="span" visuallyHidden>
             {i18n.translate('Polaris.Common.clear')}
           </Text>
-          <Icon source={CircleCancelMinor} color="subdued" />
+          <Icon source={CircleCancelMinor} tone="subdued" />
         </UnstyledButton>
       )}
     </div>

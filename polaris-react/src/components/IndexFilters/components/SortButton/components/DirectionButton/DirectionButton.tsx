@@ -39,7 +39,7 @@ export function DirectionButton({
     <UnstyledButton className={classes} onClick={handleClick}>
       <Icon
         source={direction === 'asc' ? ArrowUpMinor : ArrowDownMinor}
-        color={
+        tone={
           // eslint-disable-next-line no-nested-ternary
           polarisSummerEditions2023 ? 'base' : active ? 'interactive' : 'base'
         }

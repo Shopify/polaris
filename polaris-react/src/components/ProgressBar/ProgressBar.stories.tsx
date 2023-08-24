@@ -23,7 +23,7 @@ export function WithColors() {
       <br />
       <ProgressBar progress={30} tone="critical" />
       <br />
-      <ProgressBar progress={30} tone="highlight" />
+      <ProgressBar progress={30} tone="info" />
     </div>
   );
 }

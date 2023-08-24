@@ -152,7 +152,7 @@ export function FilterPill({
                         ? ChevronDownMinor
                         : CaretDownMinor
                     }
-                    color="base"
+                    tone="base"
                   />
                 </div>
               </>
@@ -169,7 +169,7 @@ export function FilterPill({
             disabled={disabled}
           >
             <div className={styles.IconWrapper}>
-              <Icon source={CancelSmallMinor} color="base" />
+              <Icon source={CancelSmallMinor} tone="base" />
             </div>
           </UnstyledButton>
         ) : null}

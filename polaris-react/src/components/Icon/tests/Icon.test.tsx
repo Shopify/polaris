@@ -41,10 +41,10 @@ describe('<Icon />', () => {
 
   describe('color', () => {
     it('renders a color class when color prop is provided', () => {
-      const element = mountWithApp(<Icon source="placeholder" color="base" />);
+      const element = mountWithApp(<Icon source="placeholder" tone="base" />);
 
       expect(element).toContainReactComponent('span', {
-        className: 'Icon colorBase applyColor',
+        className: 'Icon toneBase applyColor',
       });
     });
   });

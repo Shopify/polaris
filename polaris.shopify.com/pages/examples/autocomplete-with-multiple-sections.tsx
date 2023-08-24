@@ -92,7 +92,7 @@ function AutocompleteExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
       autoComplete="off"
     />

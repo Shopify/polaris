@@ -13,7 +13,7 @@ function TipBanner({title, children}: Props) {
       <BlockStack gap="2">
         <InlineStack gap="2">
           <div>
-            <Icon source={InfoMinor} color="highlight" />
+            <Icon source={InfoMinor} tone="info" />
           </div>
           <Text as="h4" variant="headingMd">
             {title}
