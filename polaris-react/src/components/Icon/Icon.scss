@@ -13,86 +13,49 @@
   color: var(--p-color-bg);
 }
 
-.hasBackdrop {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin: var(--p-space-1);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: calc(-1 * var(--p-space-1));
-    bottom: calc(-1 * var(--p-space-1));
-    left: calc(-1 * var(--p-space-1));
-    right: calc(-1 * var(--p-space-1));
-    border-radius: var(--p-border-radius-full);
-  }
-}
-
-.colorBase {
+.toneBase {
   svg {
     fill: var(--p-color-icon);
   }
-
-  &::before {
-    background-color: var(--p-color-bg-strong);
-  }
 }
 
-.colorSubdued svg {
+.toneSubdued svg {
   fill: var(--p-color-icon-subdued);
 }
 
-.colorCritical {
+.toneCritical {
   svg {
     fill: var(--p-color-icon-critical);
   }
-
-  &::before {
-    background-color: var(--p-color-bg-critical);
-  }
 }
 
-.colorInteractive svg {
+.toneInteractive svg {
   fill: var(--p-color-icon-interactive);
 }
 
-.colorWarning {
+.toneWarning {
   svg {
-    fill: var(--p-color-icon-caution);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-warning);
+    fill: var(--p-color-icon-warning);
   }
 }
 
-.colorHighlight {
+.toneHighlight {
   svg {
     fill: var(--p-color-icon-info);
   }
-
-  &::before {
-    background-color: var(--p-color-bg-info);
-  }
 }
 
-.colorSuccess {
+.toneSuccess {
   svg {
     fill: var(--p-color-icon-success);
   }
-
-  &::before {
-    background-color: var(--p-color-bg-success);
-  }
 }
 
-.colorPrimary svg {
+.tonePrimary svg {
   fill: var(--p-color-icon-primary);
 }
 
-.colorMagic svg {
+.toneMagic svg {
   fill: var(--p-color-icon-magic);
 }
 

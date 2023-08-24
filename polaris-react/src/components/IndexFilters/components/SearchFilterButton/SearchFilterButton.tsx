@@ -32,8 +32,8 @@ export function SearchFilterButton({
 
   const iconMarkup = (
     <InlineStack gap="0">
-      {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
-      {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
+      {hideQueryField ? null : <Icon source={SearchMinor} tone="base" />}
+      {hideFilters ? null : <Icon source={FilterMinor} tone="base" />}
     </InlineStack>
   );
 

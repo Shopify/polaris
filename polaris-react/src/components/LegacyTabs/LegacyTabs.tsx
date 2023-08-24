@@ -141,13 +141,13 @@ class TabsInner extends PureComponent<CombinedProps, State> {
               source={
                 polarisSummerEditions2023 ? ChevronDownMinor : CaretDownMinor
               }
-              color="subdued"
+              tone="subdued"
             />
           )}
         </UseFeatures>
       </>
     ) : (
-      <Icon source={HorizontalDotsMinor} color="subdued" />
+      <Icon source={HorizontalDotsMinor} tone="subdued" />
     );
 
     const disclosureButton = (

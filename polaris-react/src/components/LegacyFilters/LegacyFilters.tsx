@@ -200,7 +200,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
                 </Text>
               </h3>
               <span className={styles.FilterTriggerIcon}>
-                <Icon source={icon} color="base" />
+                <Icon source={icon} tone="base" />
               </span>
             </div>
             {appliedFilterBadgeMarkup}
