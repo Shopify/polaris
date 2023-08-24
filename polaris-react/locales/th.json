@@ -30,8 +30,7 @@
       "dismissButton": "ปิดการแจ้งเตือน"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "กำลังโหลด",
-      "connectedDisclosureAccessibilityLabel": "การดำเนินการที่เกี่ยวข้อง"
+      "spinnerAccessibilityLabel": "กำลังโหลด"
     },
     "Common": {
       "checkbox": "ช่องทำเครื่องหมาย",

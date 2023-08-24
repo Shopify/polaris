@@ -30,8 +30,7 @@
       "dismissButton": "Zavřít notifikaci"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Načítání",
-      "connectedDisclosureAccessibilityLabel": "Související akce"
+      "spinnerAccessibilityLabel": "Načítání"
     },
     "Common": {
       "checkbox": "zaškrtávací pole",
