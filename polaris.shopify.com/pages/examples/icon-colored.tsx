@@ -9,7 +9,7 @@ function IconExample() {
       <Icon source={CirclePlusMinor} tone="base" />
       <Icon source={CirclePlusMinor} tone="subdued" />
       <Icon source={CirclePlusMinor} tone="primary" />
-      <Icon source={CirclePlusMinor} tone="highlight" />
+      <Icon source={CirclePlusMinor} tone="info" />
       <Icon source={CirclePlusMinor} tone="success" />
       <Icon source={CirclePlusMinor} tone="caution" />
       <Icon source={CirclePlusMinor} tone="warning" />
