@@ -188,7 +188,7 @@ export function Pagination({
             blockAlign="center"
           >
             {labelMarkup}
-            <ButtonGroup segmented>
+            <ButtonGroup variant="segmented">
               {constructedPrevious}
               {constructedNext}
             </ButtonGroup>
@@ -217,7 +217,7 @@ export function Pagination({
     <nav aria-label={navLabel} ref={node} className={styles.Pagination}>
       {previousButtonEvents}
       {nextButtonEvents}
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         {constructedPrevious}
         {labelMarkup}
         {constructedNext}

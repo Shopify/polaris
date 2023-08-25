@@ -576,7 +576,7 @@ export function Pressed() {
   }, [isFirstButtonActive]);
 
   return (
-    <ButtonGroup segmented>
+    <ButtonGroup variant="segmented">
       <Button pressed={isFirstButtonActive} onClick={handleFirstButtonClick}>
         First button
       </Button>
@@ -634,7 +634,7 @@ export function Split() {
   const [active, setActive] = React.useState(false);
   return (
     <div style={{height: '100px'}}>
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button variant="primary">Save</Button>
 
         <div style={{width: '3px'}} />
@@ -660,7 +660,7 @@ export function Split() {
         </Popover>
       </ButtonGroup>
 
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button>Save</Button>
 
         <Popover
