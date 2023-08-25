@@ -59,6 +59,6 @@
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: var(--p-space-025) 0;
-  // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- se23
+  // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- custom label line height
   line-height: 18px;
 }
