@@ -580,7 +580,6 @@ export function DetailsPage() {
           actions: [
             {
               content: 'Embed on a website',
-
               onAction: () => console.log('embed'),
             },
             {

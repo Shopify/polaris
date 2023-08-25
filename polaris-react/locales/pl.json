@@ -392,6 +392,13 @@
           "cancel": "Anuluj"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Wyczyść",
+        "search": "Szukaj",
+        "placeholder": "Szukaj czynności"
+      }
     }
   }
 }

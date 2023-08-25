@@ -390,6 +390,13 @@
           "cancel": "Annuleren"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Wissen",
+        "search": "Zoeken",
+        "placeholder": "Zoekacties"
+      }
     }
   }
 }

@@ -390,6 +390,13 @@
           "cancel": "Avbryt"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Rensa",
+        "search": "Sök",
+        "placeholder": "Sök åtgärder"
+      }
     }
   }
 }

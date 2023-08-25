@@ -390,6 +390,13 @@
           "cancel": "キャンセル"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "クリア",
+        "search": "検索",
+        "placeholder": "アクションを検索"
+      }
     }
   }
 }
