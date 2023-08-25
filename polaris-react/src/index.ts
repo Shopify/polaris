@@ -66,11 +66,7 @@ export {
 export type {BadgeProps} from './components/Badge';
 
 export {Banner} from './components/Banner';
-export type {
-  BannerProps,
-  BannerStatus,
-  BannerHandles,
-} from './components/Banner';
+export type {BannerProps, BannerTone, BannerHandles} from './components/Banner';
 
 export {Bleed} from './components/Bleed';
 export type {BleedProps} from './components/Bleed';

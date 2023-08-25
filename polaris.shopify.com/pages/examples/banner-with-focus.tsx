@@ -11,7 +11,7 @@ function BannerWithFocusExample() {
     <Banner
       title="High risk of fraud detected"
       onDismiss={() => {}}
-      status="critical"
+      tone="critical"
       ref={banner}
     >
       <p>
