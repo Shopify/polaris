@@ -7,8 +7,8 @@
 @mixin shadow-bevel(
   $boxShadow: null,
   $borderRadius: null,
-  $border: var(--pc-app-provider-shadow-bevel-border),
-  $content: var(--pc-app-provider-shadow-bevel-content),
+  $border: null,
+  $content: '',
   $zIndex: 0
 ) {
   position: relative;

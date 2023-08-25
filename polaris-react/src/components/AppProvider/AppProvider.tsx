@@ -18,7 +18,6 @@ import type {LinkLikeComponent} from '../../utilities/link';
 import {
   FeaturesContext,
   classNamePolarisSummerEditions2023,
-  classNamePolarisSummerEditions2023ShadowBevelOptOut,
 } from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
@@ -97,11 +96,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
       classNamePolarisSummerEditions2023,
       features.polarisSummerEditions2023,
     );
-
-    document.documentElement.classList.toggle(
-      classNamePolarisSummerEditions2023ShadowBevelOptOut,
-      features.polarisSummerEditions2023ShadowBevelOptOut,
-    );
   };
 
   getFeatures = () => {
@@ -110,8 +104,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
     return {
       ...features,
       polarisSummerEditions2023: features?.polarisSummerEditions2023 ?? true,
-      polarisSummerEditions2023ShadowBevelOptOut:
-        features?.polarisSummerEditions2023ShadowBevelOptOut ?? false,
     };
   };
 
