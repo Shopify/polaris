@@ -10,7 +10,6 @@ import {
 } from '@shopify/polaris';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
-import {useFeatures} from '../../utilities/features';
 
 export default {
   component: FullscreenBar,
@@ -39,7 +38,6 @@ export function All() {
 
 export function WithChildren() {
   const [isFullscreen, setFullscreen] = useState(true);
-  const {polarisSummerEditions2023} = useFeatures();
   const breakpoints = useBreakpoints();
 
   const handleActionClick = useCallback(() => {
@@ -52,7 +50,7 @@ export function WithChildren() {
     </Text>
   ) : null;
 
-  const titleMarkup = polarisSummerEditions2023 ? (
+  const titleMarkup = (
     <div
       style={{
         marginLeft: 'var(--p-space-2)',
@@ -61,12 +59,6 @@ export function WithChildren() {
       }}
     >
       {titleContentMarkup}
-    </div>
-  ) : (
-    <div style={{marginLeft: '1rem', flexGrow: 1}}>
-      <Text as="p" variant="headingLg">
-        Page title
-      </Text>
     </div>
   );
 
