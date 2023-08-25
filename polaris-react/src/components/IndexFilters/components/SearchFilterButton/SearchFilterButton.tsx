@@ -6,7 +6,7 @@ import {Icon} from '../../../Icon';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
 import {InlineStack} from '../../../InlineStack';
-import {FilterButton} from '../FilterButton';
+import {Button} from '../../../Button';
 
 export interface SearchFilterButtonProps {
   onClick: () => void;
@@ -36,11 +36,12 @@ export function SearchFilterButton({
 
   const activator = (
     <div style={style}>
-      <FilterButton
+      <Button
+        size="slim"
         onClick={onClick}
-        label={label}
         disabled={disabled}
         icon={iconMarkup}
+        accessibilityLabel={label}
       />
     </div>
   );

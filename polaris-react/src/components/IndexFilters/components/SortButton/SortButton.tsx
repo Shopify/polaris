@@ -8,7 +8,7 @@ import type {ChoiceListProps} from '../../../ChoiceList';
 import {Tooltip} from '../../../Tooltip';
 import {Box} from '../../../Box';
 import type {SortButtonChoice} from '../../types';
-import {FilterButton} from '../FilterButton';
+import {Button} from '../../../Button';
 
 import {DirectionButton} from './components';
 
@@ -100,11 +100,14 @@ export function SortButton({
       preferredPosition="above"
       hoverDelay={400}
     >
-      <FilterButton
+      <Button
+        size="slim"
         icon={SortMinor}
         onClick={handleClick}
-        label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
         disabled={disabled}
+        accessibilityLabel={i18n.translate(
+          'Polaris.IndexFilters.SortButton.ariaLabel',
+        )}
       />
     </Tooltip>
   );
