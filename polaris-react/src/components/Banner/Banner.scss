@@ -26,19 +26,13 @@
 .withinPage {
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-sm),
-    $borderRadius: var(--p-border-radius-0-experimental),
-    // The following arguments explicitly ignore the shadow-bevel opt out
-    $border: none,
-    $content: ''
+    $borderRadius: var(--p-border-radius-0-experimental)
   );
 
   @media #{$p-breakpoints-sm-up} {
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-sm),
-      $borderRadius: var(--p-border-radius-3),
-      // The following arguments explicitly ignore the shadow-bevel opt out
-      $border: none,
-      $content: ''
+      $borderRadius: var(--p-border-radius-3)
     );
   }
 
