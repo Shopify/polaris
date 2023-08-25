@@ -158,7 +158,7 @@ export function WithOutline() {
 export function WithBorderRadius() {
   return (
     <Box background="bg" padding="4" borderRadius="2">
-      <Icon source={PaintBrushMajor} tone="highlight" />
+      <Icon source={PaintBrushMajor} tone="info" />
     </Box>
   );
 }
