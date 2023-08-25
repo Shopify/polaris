@@ -248,7 +248,7 @@ describe('<Pagination />', () => {
     );
 
     expect(pagination).toContainReactComponent(ButtonGroup, {
-      segmented: true,
+      variant: 'segmented',
     });
     expect(pagination).toContainReactComponent(Button, {url: '/prev'});
     expect(pagination).toContainReactComponent(Button, {url: '/next'});
@@ -260,7 +260,7 @@ describe('<Pagination />', () => {
     );
 
     expect(pagination).toContainReactComponent(ButtonGroup, {
-      segmented: true,
+      variant: 'segmented',
     });
   });
 });

@@ -4,7 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ButtonGroupExample() {
   return (
-    <ButtonGroup segmented>
+    <ButtonGroup variant="segmented">
       <Button>Bold</Button>
       <Button>Italic</Button>
       <Button>Underline</Button>

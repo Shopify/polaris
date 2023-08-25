@@ -7,7 +7,7 @@ function ButtonExample() {
   const [active, setActive] = React.useState(false);
   return (
     <div style={{height: '100px'}}>
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button variant="primary">Save</Button>
         <div style={{width: '0px'}} />
         <Popover

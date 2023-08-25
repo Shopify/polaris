@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Button, ButtonGroup} from '@shopify/polaris';
+import {Button, ButtonGroup, BlockStack} from '@shopify/polaris';
 
 export default {
   component: ButtonGroup,
@@ -27,13 +27,13 @@ export function WithSegmentedButtons() {
   );
   return (
     <div>
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button>Bold</Button>
         <Button pressed>Italic</Button>
         <Button>Underline</Button>
       </ButtonGroup>
       <br />
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button
           pressed={activeButtonIndex === 0}
           onClick={() => handleButtonClick(0)}
@@ -89,11 +89,33 @@ export function WithSegmentedButtons() {
 
 export function OutlineWithSegmentedButtons() {
   return (
-    <ButtonGroup segmented>
+    <ButtonGroup variant="segmented">
       <Button>Bold</Button>
       <Button>Italic</Button>
       <Button>Underline</Button>
     </ButtonGroup>
+  );
+}
+
+export function WithAllGaps() {
+  return (
+    <BlockStack gap="4">
+      <ButtonGroup gap="extraTight" connectedTop>
+        <Button>Bold</Button>
+        <Button>Italic</Button>
+        <Button>Underline</Button>
+      </ButtonGroup>
+      <ButtonGroup gap="tight">
+        <Button>Bold</Button>
+        <Button>Italic</Button>
+        <Button>Underline</Button>
+      </ButtonGroup>
+      <ButtonGroup gap="loose">
+        <Button>Bold</Button>
+        <Button>Italic</Button>
+        <Button>Underline</Button>
+      </ButtonGroup>
+    </BlockStack>
   );
 }
 
