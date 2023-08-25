@@ -30,6 +30,7 @@ interface FrontMatter {
 
 interface Props {
   mdx: SerializedMdx<FrontMatter>;
+  status: Status | null;
   descriptionMdx: SerializedMdx | null;
   examples: ComponentExampleSerialized[];
   type: FilteredTypes;
@@ -46,7 +47,7 @@ const Components = ({
   descriptionMdx,
   type,
   editPageLinkPath,
-  typedStatus,
+  status,
 }: Props) => {
   const componentExamples = Boolean(examples.length) && (
     <ComponentExamples examples={examples} />
@@ -70,11 +71,7 @@ const Components = ({
 
       <Longform>
         {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
-        {typedStatus && (
-          <StatusBanner status={typedStatus}>
-            {typedStatus.message}
-          </StatusBanner>
-        )}
+        {status && <StatusBanner status={status} />}
         {componentExamples}
       </Longform>
 
@@ -147,11 +144,11 @@ export const getStaticProps: GetStaticProps<
       mdx.frontmatter.status?.value || '',
     );
 
-    let typedStatus = null;
+    let status = null;
 
-    if (mdx.frontmatter.status?.value) {
+    if (mdx.frontmatter?.status?.value && mdx.frontmatter.status.message) {
       const [message] = await serializeMdx(mdx.frontmatter.status.message);
-      typedStatus = {
+      status = {
         value: mdx.frontmatter.status.value.toLowerCase() as Status['value'],
         mdx: message,
       };
@@ -159,7 +156,7 @@ export const getStaticProps: GetStaticProps<
 
     const props: Props = {
       mdx,
-      typedStatus,
+      status,
       examples,
       descriptionMdx,
       type,

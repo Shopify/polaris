@@ -1,5 +1,6 @@
 import {MetadataProperties} from '@shopify/polaris-tokens';
 import {Icon} from '@shopify/polaris-icons/metadata';
+import {SerializedMdx} from './components/Markdown/serialize';
 
 export type PatternExample = {
   code: string;
@@ -174,7 +175,8 @@ export enum StatusName {
 
 export type Status = {
   value: StatusName;
-  message: string;
+  message?: string;
+  mdx?: SerializedMdx;
 };
 
 export interface QuickGuideRow {
