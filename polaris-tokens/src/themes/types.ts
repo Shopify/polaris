@@ -1,33 +1,33 @@
-import type {ThemeBase} from './base';
+import type {MetaThemeBase} from './base';
 import type {themeNames} from './constants';
 
-export interface TokenProperties {
+export type ThemeName = typeof themeNames[number];
+
+export interface MetaTokenProperties {
   value: string;
   description?: string;
 }
 
-export interface TokenGroupShape {
-  [tokenName: string]: TokenProperties;
+export interface MetaTokenGroupShape {
+  [tokenName: string]: MetaTokenProperties;
 }
 
-export interface ThemeShape {
-  [tokenGroupName: string]: TokenGroupShape;
+export interface MetaThemeShape {
+  [tokenGroupName: string]: MetaTokenGroupShape;
 }
 
 type ExcludeMotionKeyframes<T> = T extends `motion-keyframes-${string}`
   ? never
   : T;
 
-export type ThemeVariantPartialShape = {
-  [TokenGroupName in keyof Omit<ThemeBase, 'breakpoints'>]?: {
-    [TokenName in keyof ThemeBase[TokenGroupName] as ExcludeMotionKeyframes<TokenName>]?: TokenProperties;
+export type MetaThemeVariantPartialShape = {
+  [TokenGroupName in keyof Omit<MetaThemeBase, 'breakpoints'>]?: {
+    [TokenName in keyof MetaThemeBase[TokenGroupName] as ExcludeMotionKeyframes<TokenName>]?: MetaTokenProperties;
   };
 };
 
-export type ThemeVariant = ThemeBase;
+export type MetaThemeVariant = MetaThemeBase;
 
-export type ThemeName = typeof themeNames[number];
-
-export type ThemePartials = {
-  [T in ThemeName]: ThemeVariantPartialShape;
+export type MetaThemeVariantPartials = {
+  [T in ThemeName]: MetaThemeVariantPartialShape;
 };

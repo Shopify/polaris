@@ -3,17 +3,17 @@ import deepmerge from 'deepmerge';
 import type {Exact} from '../types';
 import {createExact} from '../utilities';
 
-import type {ThemeVariant, ThemeVariantPartialShape} from './types';
+import type {MetaThemeVariant, MetaThemeVariantPartialShape} from './types';
 import {themeNameLightUplift} from './constants';
-import {themeBase} from './base';
+import {metaThemeBase} from './base';
 
-export const createThemeVariantPartial =
-  createExact<ThemeVariantPartialShape>();
+export const createMetaThemeVariantPartial =
+  createExact<MetaThemeVariantPartialShape>();
 
-export function createThemeVariant<
-  T extends Exact<ThemeVariantPartialShape, T>,
->(themeVariantPartial: T): ThemeVariant {
-  return deepmerge(themeBase, themeVariantPartial);
+export function createMetaThemeVariant<
+  T extends Exact<MetaThemeVariantPartialShape, T>,
+>(metaThemeVariantPartial: T): MetaThemeVariant {
+  return deepmerge(metaThemeBase, metaThemeVariantPartial);
 }
 
 export function createThemeClassName(themeName: string) {

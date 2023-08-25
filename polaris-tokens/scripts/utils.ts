@@ -1,33 +1,32 @@
-import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
+import type {MetaThemeShape, MetaTokenGroupShape} from '../src/themes/types';
 import type {Entry} from '../src/types';
 
-export type ExtractTokenGroupValues<T extends TokenGroupShape> = {
+export type ExtractMetaTokenGroupValues<T extends MetaTokenGroupShape> = {
   [K in keyof T]: T[K]['value'];
 };
 
-export function extractTokenGroupValues<T extends TokenGroupShape>(
-  tokenGroup: T,
+export function extractMetaTokenGroupValues<T extends MetaTokenGroupShape>(
+  metaTokenGroup: T,
 ) {
   return Object.fromEntries(
-    Object.entries(tokenGroup).map(
+    Object.entries(metaTokenGroup).map(
       ([tokenName, {value}]): Entry<
-        ExtractTokenGroupValues<TokenGroupShape>
+        ExtractMetaTokenGroupValues<MetaTokenGroupShape>
       > => [tokenName, value],
     ),
-  ) as ExtractTokenGroupValues<T>;
+  ) as ExtractMetaTokenGroupValues<T>;
 }
 
-export type ExtractThemeValues<T extends ThemeShape> = {
-  [K in keyof T]: ExtractTokenGroupValues<T[K]>;
+export type ExtractMetaThemeValues<T extends MetaThemeShape> = {
+  [K in keyof T]: ExtractMetaTokenGroupValues<T[K]>;
 };
 
-export function extractThemeValues<T extends ThemeShape>(theme: T) {
+export function extractMetaThemeValues<T extends MetaThemeShape>(metaTheme: T) {
   return Object.fromEntries(
-    Object.entries(theme).map(
-      ([tokenGroupName, tokenGroup]): Entry<ExtractThemeValues<ThemeShape>> => [
-        tokenGroupName,
-        extractTokenGroupValues(tokenGroup),
-      ],
+    Object.entries(metaTheme).map(
+      ([tokenGroupName, metaTokenGroup]): Entry<
+        ExtractMetaThemeValues<MetaThemeShape>
+      > => [tokenGroupName, extractMetaTokenGroupValues(metaTokenGroup)],
     ),
-  ) as ExtractThemeValues<T>;
+  ) as ExtractMetaThemeValues<T>;
 }

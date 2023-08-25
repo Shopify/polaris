@@ -1,7 +1,7 @@
-import {themeDefault} from './themes';
+import {metaThemeDefault} from './themes';
 import type {Exact, MetadataBase} from './types';
 
-export const metadata = themeDefault;
+export const metadata = metaThemeDefault;
 
 export type Metadata = typeof metadata;
 

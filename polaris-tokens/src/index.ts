@@ -8,9 +8,7 @@ export type {
   MetadataGroup,
 } from './types';
 
-export {themeVars} from './themes';
-
-export type {ThemeName, ThemeVarName, ThemeVars} from './themes/types';
+export type {ThemeName} from './themes/types';
 
 export {themeNameDefault} from './themes/constants';
 

@@ -1,14 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
-import {camelCase, camelCaseTransformMerge} from 'change-case';
-
 import type {Entry, Entries} from '../src/types';
-import type {ThemeShape} from '../src/themes/types';
-import {createThemeVariant, themePartials, themeDefault} from '../src/themes';
+import type {MetaThemeShape} from '../src/themes/types';
+import {
+  createMetaThemeVariant,
+  metaThemeVariantPartials,
+  metaThemeDefault,
+} from '../src/themes';
 
-import type {ExtractThemeValues} from './utils';
-import {extractThemeValues, extractTokenGroupValues} from './utils';
+import type {ExtractMetaThemeValues} from './utils';
+import {extractMetaThemeValues, extractMetaTokenGroupValues} from './utils';
 
 const outputDir = path.join(__dirname, '../build');
 
@@ -19,37 +21,43 @@ export async function toValues() {
     }
   });
 
-  const themeDefaultEntries: Entries<ExtractThemeValues<ThemeShape>> =
-    Object.entries(themeDefault).map(
-      ([tokenGroupName, tokenGroup]): Entry<ExtractThemeValues<ThemeShape>> => [
-        tokenGroupName,
-        extractTokenGroupValues(tokenGroup),
-      ],
-    );
+  const metaThemeDefaultEntries: Entries<
+    ExtractMetaThemeValues<MetaThemeShape>
+  > = Object.entries(metaThemeDefault).map(
+    ([tokenGroupName, metaTokenGroup]): Entry<
+      ExtractMetaThemeValues<MetaThemeShape>
+    > => [tokenGroupName, extractMetaTokenGroupValues(metaTokenGroup)],
+  );
 
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
 
     [
       `export * from '../src/index';`,
-      themeDefaultEntries.map(createExport),
-      createExport(['tokens', Object.fromEntries(themeDefaultEntries)]),
+      metaThemeDefaultEntries.map(createExport),
+      createExport(['tokens', Object.fromEntries(metaThemeDefaultEntries)]),
       createExport([
         'themePartials',
         Object.fromEntries(
-          Object.entries(themePartials).map(([themeName, themePartial]) => [
-            themeName,
-            extractThemeValues(themePartial),
-          ]),
+          Object.entries(metaThemeVariantPartials).map(
+            ([themeName, metaThemeVariantPartial]) => [
+              themeName,
+              extractMetaThemeValues(metaThemeVariantPartial),
+            ],
+          ),
         ),
       ]),
       createExport([
         'themes',
         Object.fromEntries(
-          Object.entries(themePartials).map(([themeName, themePartial]) => [
-            themeName,
-            extractThemeValues(createThemeVariant(themePartial)),
-          ]),
+          Object.entries(metaThemeVariantPartials).map(
+            ([themeName, metaThemeVariantPartial]) => [
+              themeName,
+              extractMetaThemeValues(
+                createMetaThemeVariant(metaThemeVariantPartial),
+              ),
+            ],
+          ),
         ),
       ]),
     ]

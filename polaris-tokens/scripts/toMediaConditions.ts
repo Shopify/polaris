@@ -2,9 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 import {getMediaConditions} from '../src';
-import {themeDefault} from '../src/themes';
+import {metaThemeDefault} from '../src/themes';
 
-import {extractTokenGroupValues} from './utils';
+import {extractMetaTokenGroupValues} from './utils';
 
 const scssOutputDir = path.join(__dirname, '../dist/scss');
 const scssOutputPath = path.join(scssOutputDir, 'media-queries.scss');
@@ -17,7 +17,9 @@ export async function toMediaConditions() {
   });
 
   const mediaConditionEntries = Object.entries(
-    getMediaConditions(extractTokenGroupValues(themeDefault.breakpoints)),
+    getMediaConditions(
+      extractMetaTokenGroupValues(metaThemeDefault.breakpoints),
+    ),
   );
 
   const styles = mediaConditionEntries

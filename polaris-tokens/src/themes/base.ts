@@ -8,11 +8,11 @@ import {shadow} from '../token-groups/shadow';
 import {space} from '../token-groups/space';
 import {zIndex} from '../token-groups/zIndex';
 
-import type {ThemeShape} from './types';
+import type {MetaThemeShape} from './types';
 
-const createThemeBase = createExact<ThemeShape>();
+const createMetaThemeBase = createExact<MetaThemeShape>();
 
-export const themeBase = createThemeBase({
+export const metaThemeBase = createMetaThemeBase({
   breakpoints: tokensToRems(breakpoints),
   border: tokensToRems(border),
   color,
@@ -23,4 +23,4 @@ export const themeBase = createThemeBase({
   zIndex,
 });
 
-export type ThemeBase = typeof themeBase;
+export type MetaThemeBase = typeof metaThemeBase;
