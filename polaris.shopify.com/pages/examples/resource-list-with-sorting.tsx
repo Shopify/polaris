@@ -50,7 +50,7 @@ function ResourceListWithSortingExample() {
     </LegacyCard>
   );
 
-  function renderItem(item: typeof items[number]) {
+  function renderItem(item: (typeof items)[number]) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 

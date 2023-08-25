@@ -39,34 +39,47 @@
 }
 
 .duration-multiple-string-arg {
-  transition: opacity legacy-polaris-v8.duration('none') linear,
+  transition:
+    opacity legacy-polaris-v8.duration('none') linear,
     left legacy-polaris-v8.duration('none') linear;
-  transition: opacity legacy-polaris-v8.duration('fast') linear,
+  transition:
+    opacity legacy-polaris-v8.duration('fast') linear,
     left legacy-polaris-v8.duration('fast') linear;
-  transition: opacity legacy-polaris-v8.duration('base') linear,
+  transition:
+    opacity legacy-polaris-v8.duration('base') linear,
     left legacy-polaris-v8.duration('base') linear;
-  transition: opacity legacy-polaris-v8.duration('slow') linear,
+  transition:
+    opacity legacy-polaris-v8.duration('slow') linear,
     left legacy-polaris-v8.duration('slow') linear;
-  transition: opacity legacy-polaris-v8.duration('slower') linear,
+  transition:
+    opacity legacy-polaris-v8.duration('slower') linear,
     left legacy-polaris-v8.duration('slower') linear;
-  transition: opacity legacy-polaris-v8.duration('slowest') linear,
+  transition:
+    opacity legacy-polaris-v8.duration('slowest') linear,
     left legacy-polaris-v8.duration('slowest') linear;
 }
 
 .duration-multiple-non-string-arg {
-  transition: opacity legacy-polaris-v8.duration() linear,
+  transition:
+    opacity legacy-polaris-v8.duration() linear,
     left legacy-polaris-v8.duration() linear;
-  transition: opacity legacy-polaris-v8.duration(none) linear,
+  transition:
+    opacity legacy-polaris-v8.duration(none) linear,
     left legacy-polaris-v8.duration(none) linear;
-  transition: opacity legacy-polaris-v8.duration(fast) linear,
+  transition:
+    opacity legacy-polaris-v8.duration(fast) linear,
     left legacy-polaris-v8.duration(fast) linear;
-  transition: opacity legacy-polaris-v8.duration(base) linear,
+  transition:
+    opacity legacy-polaris-v8.duration(base) linear,
     left legacy-polaris-v8.duration(base) linear;
-  transition: opacity legacy-polaris-v8.duration(slow) linear,
+  transition:
+    opacity legacy-polaris-v8.duration(slow) linear,
     left legacy-polaris-v8.duration(slow) linear;
-  transition: opacity legacy-polaris-v8.duration(slower) linear,
+  transition:
+    opacity legacy-polaris-v8.duration(slower) linear,
     left legacy-polaris-v8.duration(slower) linear;
-  transition: opacity legacy-polaris-v8.duration(slowest) linear,
+  transition:
+    opacity legacy-polaris-v8.duration(slowest) linear,
     left legacy-polaris-v8.duration(slowest) linear;
 }
 

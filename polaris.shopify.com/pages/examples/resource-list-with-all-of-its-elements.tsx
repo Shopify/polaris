@@ -152,7 +152,7 @@ function ResourceListExample() {
     </LegacyCard>
   );
 
-  function renderItem(item: typeof items[number]) {
+  function renderItem(item: (typeof items)[number]) {
     const {id, url, name, location, latestOrderUrl} = item;
     const media = <Avatar customer size="medium" name={name} />;
     const shortcutActions = latestOrderUrl

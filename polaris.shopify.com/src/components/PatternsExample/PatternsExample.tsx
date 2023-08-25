@@ -27,8 +27,8 @@ const PlayroomButton = ({
         code: endent`
           {/* [Polaris Pattern] ${patternName} */}
           {/* Generated on ${getISOStringYear()} from ${
-          window.location.href
-        } */}
+            window.location.href
+          } */}
           {/* This example is for guidance purposes. Copying it will come with caveats. */}
           ${/* intentional blank line */ ''}
           ${code}

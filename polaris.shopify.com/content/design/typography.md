@@ -153,8 +153,14 @@ Add this to your CSS to preload system fonts and set up browsers for legibility:
 ```css
 html {
   /* Load system fonts */
-  font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI,
-    Roboto, Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    San Francisco,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    sans-serif;
 
   /* Make type rendering look crisper */
   -webkit-font-smoothing: antialiased;

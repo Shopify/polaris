@@ -7,7 +7,7 @@ export const tokenGroupKeys = Object.keys(tokens) as TokenGroupKey[];
 
 const formats = ['json', 'css'] as const;
 
-type Format = typeof formats[number];
+type Format = (typeof formats)[number];
 
 function isFormat(format: unknown): format is Format {
   return formats.includes(format as Format);

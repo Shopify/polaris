@@ -5,7 +5,7 @@ import type {MetadataProperties} from '../types';
 export const breakpointsAliases = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
 // Convert the Tuple to a union
-export type BreakpointsAlias = typeof breakpointsAliases[number];
+export type BreakpointsAlias = (typeof breakpointsAliases)[number];
 
 export type BreakpointsTokenName = `breakpoints-${BreakpointsAlias}`;
 

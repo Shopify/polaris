@@ -201,8 +201,8 @@ function triggerCheckboxEvent(
     checkbox
       // We're looking for the Checkbox without the table wrapper to avoid deep filtering
       .find(Checkbox)
-      ?.findWhere((el: any) =>
-        el.prop('className')?.includes('Wrapper'),
+      ?.findWhere(
+        (el: any) => el.prop('className')?.includes('Wrapper'),
       ) as ElementType<any>
   )?.trigger(eventType, {
     stopPropagation: () => {},

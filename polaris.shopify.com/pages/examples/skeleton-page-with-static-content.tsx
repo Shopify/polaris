@@ -1,4 +1,9 @@
-import {SkeletonPage, Layout, LegacyCard, SkeletonBodyText} from '@shopify/polaris';
+import {
+  SkeletonPage,
+  Layout,
+  LegacyCard,
+  SkeletonBodyText,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
