@@ -344,7 +344,7 @@ export function WithADataTable(_, context) {
   return (
     <div style={{height: '568px'}}>
       <Card padding="0">
-        <Box padding={context.globals.polarisSummerEditions2023 ? '4' : '5'}>
+        <Box padding="4">
           <LegacyFilters
             queryValue={queryValue}
             filters={filters}
@@ -411,7 +411,6 @@ export function WithADataTable(_, context) {
 export function WithChildrenContent() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -470,12 +469,10 @@ export function WithChildrenContent() {
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
             >
-              <div
-                style={polarisSummerEditions2023 ? {} : {paddingLeft: '8px'}}
-              >
+              <div>
                 <Button
                   onClick={() => console.log('New filter saved')}
-                  size={polarisSummerEditions2023 ? 'large' : 'medium'}
+                  size="large"
                 >
                   Save
                 </Button>
@@ -538,7 +535,6 @@ export function WithChildrenContent() {
 }
 
 export function Disabled() {
-  const {polarisSummerEditions2023} = useFeatures();
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
 
@@ -600,13 +596,11 @@ export function Disabled() {
               onClearAll={handleClearAll}
               disabled
             >
-              <div
-                style={polarisSummerEditions2023 ? {} : {paddingLeft: '8px'}}
-              >
+              <div>
                 <Button
                   disabled
                   onClick={() => console.log('New filter saved')}
-                  size={polarisSummerEditions2023 ? 'large' : 'medium'}
+                  size="large"
                 >
                   Save
                 </Button>
@@ -672,7 +666,6 @@ export function SomeDisabled() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [vendor, setVendor] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -750,12 +743,10 @@ export function SomeDisabled() {
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
             >
-              <div
-                style={polarisSummerEditions2023 ? {} : {paddingLeft: '8px'}}
-              >
+              <div>
                 <Button
                   disabled
-                  size={polarisSummerEditions2023 ? 'large' : 'medium'}
+                  size="large"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -821,7 +812,6 @@ export function SomeDisabled() {
 export function WithoutClearButton() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
@@ -882,12 +872,10 @@ export function WithoutClearButton() {
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
             >
-              <div
-                style={polarisSummerEditions2023 ? {} : {paddingLeft: '8px'}}
-              >
+              <div>
                 <Button
                   disabled
-                  size={polarisSummerEditions2023 ? 'large' : 'medium'}
+                  size="large"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
