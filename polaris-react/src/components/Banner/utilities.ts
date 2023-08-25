@@ -13,7 +13,7 @@ import {useImperativeHandle, useRef, useState} from 'react';
 
 import type {IconSource} from '../../types';
 
-import type {BannerStatus} from './Banner';
+import type {BannerTone} from './Banner';
 
 interface BannerColorAliases {
   background: ColorBackgroundAlias;
@@ -27,7 +27,7 @@ interface BannerAttributes {
   icon: IconSource;
 }
 
-export const bannerAttributes: {[key in BannerStatus]: BannerAttributes} = {
+export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
   success: {
     withinPage: {
       background: 'bg-success-strong',
