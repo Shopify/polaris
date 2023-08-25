@@ -32,13 +32,13 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 **Box**
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndStart" --to="variant" --newValue="borderEndStartRadius"`
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndEnd" --to="variant" --newValue="borderEndEndRadius"`
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="variant" --newValue="borderStartStartRadius"`
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="variant" --newValue="borderStartEndRadius"`
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"`
 
 **HorizontalStack**
 
@@ -57,6 +57,16 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 - connectedDisclosure: [See the updated split example](https://polaris.shopify.com/components/actions/button)
 
 // TODO - Boolean prop to tone, variant migration
+
+**ButtonGroup**
+
+- Spacing
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="spacing" --to="gap"`
+
+- Segmented
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="segmented" --to="variant" --newValue="segmented"`
 
 **Banner**
 
