@@ -1,6 +1,6 @@
 import * as colors from '../colors-experimental';
 
-import {createThemeVariantPartial, createThemeVariant} from './utils';
+import {createThemeVariantPartial} from './utils';
 
 export const themeLightUpliftPartial = createThemeVariantPartial({
   motion: {
@@ -171,7 +171,3 @@ export const themeLightUpliftPartial = createThemeVariantPartial({
     'color-text-magic': {value: colors.purple[14]},
   },
 });
-
-export const themeLightUplift = createThemeVariant(themeLightUpliftPartial);
-
-export type ThemeLightUplift = typeof themeLightUplift;

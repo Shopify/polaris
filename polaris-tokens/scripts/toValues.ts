@@ -4,14 +4,15 @@ import path from 'path';
 import {camelCase, camelCaseTransformMerge} from 'change-case';
 
 import type {Entry, Entries} from '../src/types';
-import type {Themes, ThemeShape} from '../src/themes/types';
+import type {ThemeShape} from '../src/themes/types';
+import {createThemeVariant, themePartials, themeDefault} from '../src/themes';
 
 import type {ExtractThemeValues} from './utils';
 import {extractThemeValues, extractTokenGroupValues} from './utils';
 
 const outputDir = path.join(__dirname, '../build');
 
-export async function toValues(themeDefault: ThemeShape, themes: Themes) {
+export async function toValues() {
   await fs.promises.mkdir(outputDir).catch((error) => {
     if (error.code !== 'EEXIST') {
       throw error;
@@ -33,21 +34,26 @@ export async function toValues(themeDefault: ThemeShape, themes: Themes) {
       `export * from '../src/index';`,
       themeDefaultEntries.map(createExport),
       createExport(['tokens', Object.fromEntries(themeDefaultEntries)]),
+      createExport([
+        'themePartials',
+        Object.fromEntries(
+          Object.entries(themePartials).map(([themeName, themePartial]) => [
+            themeName,
+            extractThemeValues(themePartial),
+          ]),
+        ),
+      ]),
+      createExport([
+        'themes',
+        Object.fromEntries(
+          Object.entries(themePartials).map(([themeName, themePartial]) => [
+            themeName,
+            extractThemeValues(createThemeVariant(themePartial)),
+          ]),
+        ),
+      ]),
     ]
       .flat()
-      .join('\n'),
-  );
-
-  await fs.promises.writeFile(
-    path.join(outputDir, 'themes.ts'),
-    Object.entries(themes)
-      .map(([themeName, theme]): string =>
-        createExport([
-          // https://github.com/blakeembrey/change-case/blob/040a079f007879cb0472ba4f7cc2e1d3185e90ba/packages/camel-case/README.md?plain=1#L28
-          camelCase(themeName, {transform: camelCaseTransformMerge}),
-          extractThemeValues(theme),
-        ]),
-      )
       .join('\n'),
   );
 }

@@ -14,21 +14,9 @@
       "import": "./dist/esm/build/index.mjs",
       "require": "./dist/cjs/build/index.js"
     },
-    "./themes": {
-      "types": "./dist/types/build/themes.d.ts",
-      "import": "./dist/esm/build/themes.mjs",
-      "require": "./dist/cjs/build/themes.js"
-    },
     "./json/*": "./dist/json/*",
     "./css/*": "./dist/css/*",
     "./scss/*": "./dist/scss/*"
-  },
-  "typesVersions": {
-    "*": {
-      "themes": [
-        "./dist/types/build/themes.d.ts"
-      ]
-    }
   },
   "scripts": {
     "build": "run-s build:*",

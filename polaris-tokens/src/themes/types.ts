@@ -1,7 +1,7 @@
 import type {CreateVarName} from '../types';
 
 import type {ThemeBase} from './base';
-import type {themeNames, themeNameDefault} from './constants';
+import type {themeNames} from './constants';
 
 export interface TokenProperties {
   value: string;
@@ -30,12 +30,8 @@ export type ThemeVariant = ThemeBase;
 
 export type ThemeName = typeof themeNames[number];
 
-export type Themes = {
-  [T in ThemeName]: ThemeVariant;
-};
-
-export type ThemesPartials = {
-  [T in Exclude<ThemeName, typeof themeNameDefault>]: ThemeVariantPartialShape;
+export type ThemePartials = {
+  [T in ThemeName]: ThemeVariantPartialShape;
 };
 
 export type ThemeVars = {

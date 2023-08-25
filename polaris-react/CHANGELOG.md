@@ -1,5 +1,21 @@
 # Changelog
 
+## 11.13.0
+
+### Minor Changes
+
+- [#10086](https://github.com/Shopify/polaris/pull/10086) [`5a5b3795a`](https://github.com/Shopify/polaris/commit/5a5b3795afa484db637fd5e151866149fd932b42) Thanks [@joelzwarrington](https://github.com/joelzwarrington)! - [Modal] Activator no longer wrapped in Box
+
+* [#10183](https://github.com/Shopify/polaris/pull/10183) [`7891c7ed9`](https://github.com/Shopify/polaris/commit/7891c7ed961da9bb0bfbfeea9ca8e7432875074e) Thanks [@kyledurand](https://github.com/kyledurand)! - Deprecate connectedDisclosure prop on button
+
+- [#10181](https://github.com/Shopify/polaris/pull/10181) [`219be15aa`](https://github.com/Shopify/polaris/commit/219be15aa2d49e6f2f2b0eb3108fbfa3f1faa621) Thanks [@ssetem](https://github.com/ssetem)! - Added support for [Dynamic Type](https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically) in iOS
+
+### Patch Changes
+
+- [#10056](https://github.com/Shopify/polaris/pull/10056) [`5ecaafc2b`](https://github.com/Shopify/polaris/commit/5ecaafc2bf21d922b0b86dacb71cc5db9d4fe66c) Thanks [@jesstelford](https://github.com/jesstelford)! - [ResourceList] Remove layout jank when bulk actions enabled and item selected
+
+* [`bc1f4aab1`](https://github.com/Shopify/polaris/commit/bc1f4aab13ce4f73488d9ced20f4b18dee4b8220) Thanks [@samrose3](https://github.com/samrose3)! - Reduced surrounding margin of Tooltip to allow for interaction with nearby UI elements.
+
 ## 11.12.0
 
 ### Minor Changes

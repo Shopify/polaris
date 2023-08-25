@@ -1,12 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {
-  Themes,
-  ThemeShape,
-  ThemesPartials,
-  TokenGroupShape,
-} from '../src/themes/types';
+import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
+import {themePartials, themeDefault} from '../src/themes';
+import {themeNameDefault} from '../src/themes/constants';
 import {createThemeSelector} from '../src/themes/utils';
 import {createVar} from '../src/utilities';
 
@@ -41,10 +38,7 @@ export function getKeyframes(motion: TokenGroupShape) {
     .join('');
 }
 
-export async function toStyleSheet(
-  themeDefault: ThemeShape,
-  themesPartials: ThemesPartials,
-) {
+export async function toStyleSheet() {
   await fs.promises.mkdir(cssOutputDir, {recursive: true}).catch((error) => {
     if (error.code !== 'EEXIST') {
       throw error;
@@ -57,9 +51,13 @@ export async function toStyleSheet(
     }
   });
 
+  const themePartialsEntries = Object.entries(themePartials).filter(
+    ([themeName]) => themeName !== themeNameDefault,
+  );
+
   const styles = [
     `:root{color-scheme:light;${getThemeDecls(themeDefault)}}`,
-    Object.entries(themesPartials).map(
+    themePartialsEntries.map(
       ([themeName, themePartial]) =>
         `${createThemeSelector(themeName)}{${getThemeDecls(themePartial)}}`,
     ),

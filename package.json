@@ -7,8 +7,6 @@
   },
   "workspaces": {
     "packages": [
-      "polaris-cli",
-      "polaris-codemods",
       "polaris-tokens",
       "polaris-for-vscode",
       "polaris-icons",

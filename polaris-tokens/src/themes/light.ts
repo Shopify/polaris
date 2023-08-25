@@ -1,5 +1,3 @@
-import {themeBase} from './base';
+import {createThemeVariantPartial} from './utils';
 
-export const themeLight = themeBase;
-
-export type ThemeLight = typeof themeLight;
+export const themeLightPartial = createThemeVariantPartial({});
