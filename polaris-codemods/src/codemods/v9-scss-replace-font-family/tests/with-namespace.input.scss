@@ -1,8 +1,0 @@
-@use 'global-styles/legacy-polaris-v8';
-
-.font-family {
-  font-family: sans-serif;
-  font-family: legacy-polaris-v8.font-family();
-  font-family: legacy-polaris-v8.font-family(base);
-  font-family: legacy-polaris-v8.font-family(monospace);
-}

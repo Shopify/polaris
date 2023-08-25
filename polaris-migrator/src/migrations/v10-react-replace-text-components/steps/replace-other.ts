@@ -24,9 +24,9 @@ import {
   removeImportDeclaration,
   removeImportSpecifier,
 } from '../../../utilities/imports';
-import type {MigrationOptions} from '../v10-react-replace-text-components';
-import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
-import {isKeyOf} from '../../../utilities/type-guards';
+import type {MigrationOptions} from '../transform';
+import {POLARIS_MIGRATOR_COMMENT} from '../../../utilities/constants';
+import {isKeyOf} from '../../../utilities/types';
 
 export const components = {
   Heading: {
@@ -59,7 +59,7 @@ function replaceOtherComponent(
   j: JSCodeshift,
   source: Collection,
   componentName: keyof typeof components,
-  relative: boolean,
+  relative?: boolean,
 ) {
   const {variant, as, validElements, defaultElement} =
     components[componentName];

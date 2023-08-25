@@ -1,5 +1,14 @@
 # polaris.shopify.com
 
+## 0.57.1
+
+### Patch Changes
+
+- [#10186](https://github.com/Shopify/polaris/pull/10186) [`b340df129`](https://github.com/Shopify/polaris/commit/b340df1295610906d531f28c065e10c4bcc63bd4) Thanks [@m4thieulavoie](https://github.com/m4thieulavoie)! - Fixed landing page for sandbox
+
+- Updated dependencies [[`5a5b3795a`](https://github.com/Shopify/polaris/commit/5a5b3795afa484db637fd5e151866149fd932b42), [`7891c7ed9`](https://github.com/Shopify/polaris/commit/7891c7ed961da9bb0bfbfeea9ca8e7432875074e), [`5ecaafc2b`](https://github.com/Shopify/polaris/commit/5ecaafc2bf21d922b0b86dacb71cc5db9d4fe66c), [`bc1f4aab1`](https://github.com/Shopify/polaris/commit/bc1f4aab13ce4f73488d9ced20f4b18dee4b8220), [`219be15aa`](https://github.com/Shopify/polaris/commit/219be15aa2d49e6f2f2b0eb3108fbfa3f1faa621)]:
+  - @shopify/polaris@11.13.0
+
 ## 0.57.0
 
 ### Minor Changes

@@ -391,6 +391,13 @@
           "cancel": "取消"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "清除",
+        "search": "搜索",
+        "placeholder": "搜索操作"
+      }
     }
   }
 }
