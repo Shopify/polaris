@@ -2,35 +2,23 @@
 @import './variables';
 
 $navigation-column-width: 240px;
-$search-column-width: 580px;
-$search-column-width-se23: 480px;
+$search-column-width: 480px;
 
 $left-column: 1fr;
 $left-column-md-up: minmax($navigation-column-width, 1fr);
 $search-column: minmax(auto, $search-column-width);
-$search-column-se23: minmax(auto, $search-column-width-se23);
 $right-column: 1fr;
 
 .TopBar {
   position: relative;
   height: $top-bar-height;
-  box-shadow: var(--p-shadow-sm);
-  background-color: var(--p-color-bg);
+  box-shadow: var(--p-shadow-xs);
+  background-color: var(--p-color-bg-inverse);
   gap: var(--p-space-1);
-
-  #{$se23} & {
-    background-color: var(--p-color-bg-inverse);
-    box-shadow: var(--p-shadow-xs);
-    grid-template-columns: $left-column $search-column-se23 $right-column;
-  }
 
   @media #{$p-breakpoints-md-up} {
     gap: var(--p-space-6);
     grid-template-columns: $left-column-md-up $search-column $right-column;
-
-    #{$se23} & {
-      grid-template-columns: $left-column-md-up $search-column-se23 $right-column;
-    }
   }
 
   &::after {
@@ -81,13 +69,11 @@ $right-column: 1fr;
 .LogoLink {
   display: block;
 
-  #{$se23} & {
-    &:focus-visible {
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
-      outline-offset: var(--p-space-1_5-experimental);
-      border-radius: var(--p-border-radius-2);
-    }
+  &:focus-visible {
+    outline: var(--p-border-width-2) solid
+      var(--p-color-border-interactive-focus);
+    outline-offset: var(--p-space-1_5-experimental);
+    border-radius: var(--p-border-radius-2);
   }
 }
 
@@ -112,25 +98,18 @@ $right-column: 1fr;
   margin-right: var(--p-space-2);
   padding: var(--p-space-2);
   border-radius: var(--p-border-radius-1);
-  fill: var(--p-color-icon); // Icon will inherit this fill
+  fill: var(--p-color-icon-inverse);
   transition: var(--p-motion-duration-150) fill var(--p-motion-ease)
     var(--p-motion-duration-50);
 
-  #{$se23} & {
-    fill: var(--p-color-icon-inverse);
-  }
-
   &.focused:active {
-    background-color: var(--p-color-bg-active);
+    background-color: var(--p-color-bg-inverse-hover);
   }
 
   &:hover {
-    background-color: var(--p-color-bg-hover);
-
-    #{$se23} & {
-      background-color: var(--p-color-bg-inverse-hover);
-    }
+    background-color: var(--p-color-bg-inverse-hover);
   }
+
   // This increases hit point size.
   &::after {
     content: '';
@@ -186,9 +165,5 @@ $right-column: 1fr;
 }
 
 .SecondaryMenu svg {
-  fill: var(--p-color-icon);
-
-  #{$se23} & {
-    fill: var(--p-color-icon-inverse);
-  }
+  fill: var(--p-color-icon-inverse);
 }
