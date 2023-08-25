@@ -24,7 +24,7 @@ import {
   InlineIconBanner,
   WithinContentContainerBanner,
 } from '../Banner';
-import type {BannerStatus} from '../Banner';
+import type {BannerTone} from '../Banner';
 import type {BannerHandles} from '../utilities';
 
 window.matchMedia =
@@ -244,7 +244,7 @@ describe('<Banner />', () => {
           banner.current && banner.current.focus();
         }, []);
 
-        return <Banner ref={banner} status="critical" />;
+        return <Banner ref={banner} tone="critical" />;
       }
 
       const testComponent = mountWithApp(<Test />);
@@ -357,14 +357,11 @@ describe('<Banner />', () => {
       ['info', 'status'],
       ['warning', 'alert'],
       ['critical', 'alert'],
-    ])(
-      'aria role when status is %s',
-      (status: BannerStatus, role: 'string') => {
-        const banner = mountWithApp(<Banner status={status} />);
+    ])('aria role when status is %s', (tone: BannerTone, role: 'string') => {
+      const banner = mountWithApp(<Banner tone={tone} />);
 
-        expect(banner).toContainReactComponent('div', {role});
-      },
-    );
+      expect(banner).toContainReactComponent('div', {role});
+    });
   });
 
   describe('icon', () => {
@@ -373,8 +370,8 @@ describe('<Banner />', () => {
       ['info', InfoMinor],
       ['warning', RiskMinor],
       ['critical', DiamondAlertMinor],
-    ])('icon when status is %s', (status: BannerStatus, icon: any) => {
-      const banner = mountWithApp(<Banner status={status} />);
+    ])('icon when status is %s', (tone: BannerTone, icon: any) => {
+      const banner = mountWithApp(<Banner tone={tone} />);
 
       expect(banner).toContainReactComponent(Icon, {
         source: icon,

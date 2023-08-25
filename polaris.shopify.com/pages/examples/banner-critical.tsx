@@ -7,7 +7,7 @@ function BannerExample() {
     <Banner
       title="High risk of fraud detected"
       action={{content: 'Review risk analysis'}}
-      status="critical"
+      tone="critical"
     >
       <p>
         Before fulfilling this order or capturing payment, please{' '}

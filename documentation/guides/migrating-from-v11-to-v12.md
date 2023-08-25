@@ -58,6 +58,10 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 // TODO - Boolean prop to tone, variant migration
 
+**Banner**
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Banner" --from="status" --to="tone"`
+
 **Icon**
 
 - Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
