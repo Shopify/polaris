@@ -10,8 +10,6 @@ import {
   Text,
 } from '@shopify/polaris';
 
-import {useFeatures} from '../../utilities/features';
-
 export default {
   component: Card,
 } as ComponentMeta<typeof Card>;
@@ -30,14 +28,8 @@ export function Default() {
 }
 
 export function WithBackgroundSubdued() {
-  const {polarisSummerEditions2023} = useFeatures();
-
   return (
-    <Card
-      background={
-        polarisSummerEditions2023 ? 'bg-secondary-experimental' : 'bg-subdued'
-      }
-    >
+    <Card background="bg-secondary-experimental">
       <BlockStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
@@ -75,8 +67,6 @@ export function WithResponsivePadding() {
 }
 
 export function WithSubduedSection() {
-  const {polarisSummerEditions2023} = useFeatures();
-
   return (
     <Card roundedAbove="sm">
       <BlockStack gap="5">
@@ -96,11 +86,7 @@ export function WithSubduedSection() {
       >
         <Divider />
         <Box
-          background={
-            polarisSummerEditions2023
-              ? 'bg-secondary-experimental'
-              : 'bg-subdued'
-          }
+          background="bg-secondary-experimental"
           padding={{xs: '4', sm: '5'}}
         >
           <BlockStack gap="2">

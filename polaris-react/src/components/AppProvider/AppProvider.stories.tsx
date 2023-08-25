@@ -1,14 +1,12 @@
 import React from 'react';
-import type {Args, ComponentMeta} from '@storybook/react';
+import type {ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
   LegacyCard,
-  Card,
   Page,
   ResourceList,
   Text,
-  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -37,7 +35,7 @@ export function Default(_, context) {
         },
       }}
       features={{
-        polarisSummerEditions2023: context.globals.polarisSummerEditions2023,
+        polarisSummerEditions2023: true,
       }}
     >
       <Page>
@@ -100,7 +98,7 @@ export function WithI18n(_, context) {
         },
       }}
       features={{
-        polarisSummerEditions2023: context.globals.polarisSummerEditions2023,
+        polarisSummerEditions2023: true,
       }}
     >
       <Page>
@@ -161,7 +159,7 @@ export function WithLinkComponent(_, context) {
       linkComponent={CustomLinkComponent}
       i18n={{}}
       features={{
-        polarisSummerEditions2023: context.globals.polarisSummerEditions2023,
+        polarisSummerEditions2023: true,
       }}
     >
       <Page
@@ -174,30 +172,3 @@ export function WithLinkComponent(_, context) {
     </AppProvider>
   );
 }
-
-export const WithSummerEditionsFeature = {
-  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => {
-    const CheckFeature = () => {
-      return (
-        <Card>
-          <BlockStack gap="4">
-            <Text
-              as="h2"
-              variant={polarisSummerEditions2023 ? 'headingXl' : 'bodyMd'}
-              color={polarisSummerEditions2023 ? 'critical' : undefined}
-            >
-              {`Polaris Summer Editions flag is turned ${
-                polarisSummerEditions2023 ? 'ON' : 'OFF'
-              }`}
-            </Text>
-          </BlockStack>
-        </Card>
-      );
-    };
-    return (
-      <AppProvider features={{polarisSummerEditions2023}} i18n={{}}>
-        <CheckFeature />
-      </AppProvider>
-    );
-  },
-};
