@@ -14,8 +14,6 @@ import {
   Text,
 } from '@shopify/polaris';
 
-import {useFeatures} from '../../utilities/features';
-
 export default {
   component: LegacyFilters,
   parameters: {

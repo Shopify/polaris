@@ -35,18 +35,10 @@ export default {
 } as ComponentMeta<typeof Frame>;
 
 export const InAnApplication = {
-  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => (
-    <InAnApplicationComponent
-      polarisSummerEditions2023={polarisSummerEditions2023}
-    />
-  ),
+  render: (_args: Args) => <InAnApplicationComponent />,
 };
 
-function InAnApplicationComponent({
-  polarisSummerEditions2023,
-}: {
-  polarisSummerEditions2023: boolean;
-}) {
+function InAnApplicationComponent() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -365,7 +357,7 @@ function InAnApplicationComponent({
             },
           },
         }}
-        features={{polarisSummerEditions2023}}
+        features={{polarisSummerEditions2023: true}}
       >
         <Frame
           logo={logo}
@@ -387,18 +379,10 @@ function InAnApplicationComponent({
 }
 
 export const WithAnOffset = {
-  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => (
-    <WithAnOffsetComponent
-      polarisSummerEditions2023={polarisSummerEditions2023}
-    />
-  ),
+  render: (_args: Args) => <WithAnOffsetComponent />,
 };
 
-function WithAnOffsetComponent({
-  polarisSummerEditions2023,
-}: {
-  polarisSummerEditions2023: boolean;
-}) {
+function WithAnOffsetComponent() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -717,7 +701,7 @@ function WithAnOffsetComponent({
             },
           },
         }}
-        features={{polarisSummerEditions2023}}
+        features={{polarisSummerEditions2023: true}}
       >
         <Frame
           logo={logo}
@@ -745,16 +729,10 @@ function WithAnOffsetComponent({
 }
 
 export const WithSidebar = {
-  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => (
-    <WithSidebarEnabled polarisSummerEditions2023={polarisSummerEditions2023} />
-  ),
+  render: (_args: Args) => <WithSidebarEnabled />,
 };
 
-function WithSidebarEnabled({
-  polarisSummerEditions2023,
-}: {
-  polarisSummerEditions2023: boolean;
-}) {
+function WithSidebarEnabled() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -1082,7 +1060,7 @@ function WithSidebarEnabled({
             },
           },
         }}
-        features={{polarisSummerEditions2023}}
+        features={{polarisSummerEditions2023: true}}
       >
         <Frame
           logo={logo}
