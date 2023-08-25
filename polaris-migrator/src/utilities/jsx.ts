@@ -1,5 +1,5 @@
-import type core from 'jscodeshift';
 import type {ASTPath, Collection, JSXAttribute, JSXElement} from 'jscodeshift';
+import type core from 'jscodeshift';
 
 export function getJSXAttributes(
   j: core.JSCodeshift,
@@ -123,24 +123,56 @@ export function replaceJSXElement(
 }
 
 export function renameProps(
-  _j: core.JSCodeshift,
+  j: core.JSCodeshift,
   source: Collection<any>,
   componentName: string,
   props: {[from: string]: string},
+  newValue?: string,
 ) {
-  const fromProps = Object.keys(props);
-  const isFromProp = (prop: unknown): prop is keyof typeof props =>
-    fromProps.includes(prop as string);
+  const [component, subcomponent] = componentName.split('.');
 
-  source.findJSXElements(componentName)?.forEach((path) => {
-    path.node.openingElement.attributes?.forEach((node) => {
-      if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
-        node.name.name = props[node.name.name];
+  // Handle compound components
+  if (component && subcomponent) {
+    source.find(j.JSXElement).forEach((element) => {
+      if (
+        element.node.openingElement.name.type === 'JSXMemberExpression' &&
+        element.node.openingElement.name.object.type === 'JSXIdentifier' &&
+        element.node.openingElement.name.object.name === component &&
+        element.node.openingElement.name.property.name === subcomponent
+      ) {
+        element.node.openingElement.attributes?.forEach((node) =>
+          updateNode(node, props, newValue),
+        );
       }
     });
+    return;
+  }
+
+  // Handle basic components
+  source.findJSXElements(componentName)?.forEach((element) => {
+    element.node.openingElement.attributes?.forEach((node) =>
+      updateNode(node, props, newValue),
+    );
   });
 
   return source;
+
+  function updateNode(
+    node: any,
+    props: {[from: string]: string},
+    newValue?: string,
+  ) {
+    const isFromProp = (prop: unknown): prop is keyof typeof props =>
+      Object.keys(props).includes(prop as string);
+
+    if (!(node.type === 'JSXAttribute' && isFromProp(node.name.name))) {
+      return node;
+    }
+
+    node.name.name = props[node.name.name];
+    node.value = j.stringLiteral(newValue ?? node.value.value);
+    return node;
+  }
 }
 
 export function insertJSXComment(

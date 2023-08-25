@@ -1,5 +1,19 @@
 # @shopify/polaris-migrator
 
+## 0.20.0
+
+### Minor Changes
+
+- [#10101](https://github.com/Shopify/polaris/pull/10101) [`e6a2d352a`](https://github.com/Shopify/polaris/commit/e6a2d352aeb628c662ca86bb7c8b91ce695ff640) Thanks [@samrose3](https://github.com/samrose3)! - Removed the `@shopify/polaris-cli` and `@shopify/polaris-codemods` package in favor of using only the `@shopify/polaris-migrator`.
+
+  Removing these packages will provide the following benefits:
+
+  - Improve CI time by removing extra packages from our build, test, and lint workflows
+  - Reduce confusion on where to add new migrations or update previous migrations
+  - Clean up ESLint configs, reduce changelog entries, and remove package dependencies
+
+* [#10071](https://github.com/Shopify/polaris/pull/10071) [`23c1391aa`](https://github.com/Shopify/polaris/commit/23c1391aa694526ce467c74de7c19d330f03ea67) Thanks [@kyledurand](https://github.com/kyledurand)! - Added support for compound components and adding new prop values in the react-rename-component-prop migration
+
 ## 0.19.9
 
 ### Patch Changes

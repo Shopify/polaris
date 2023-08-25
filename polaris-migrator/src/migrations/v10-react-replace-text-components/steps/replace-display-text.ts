@@ -14,7 +14,7 @@ import {
   insertJSXComment,
   insertCommentBefore,
 } from '../../../utilities/jsx';
-import {isKeyOf} from '../../../utilities/type-guards';
+import {isKeyOf} from '../../../utilities/types';
 import {
   getImportSpecifierName,
   hasImportSpecifier,
@@ -25,8 +25,8 @@ import {
   removeImportDeclaration,
   removeImportSpecifier,
 } from '../../../utilities/imports';
-import type {MigrationOptions} from '../v10-react-replace-text-components';
-import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
+import type {MigrationOptions} from '../transform';
+import {POLARIS_MIGRATOR_COMMENT} from '../../../utilities/constants';
 
 const displayTextElements = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p']);
 

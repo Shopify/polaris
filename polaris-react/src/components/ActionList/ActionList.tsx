@@ -1,15 +1,16 @@
-import React, {useRef} from 'react';
+import React, {useMemo, useRef, useState} from 'react';
 
+import type {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {Key} from '../../types';
 import {
   wrapFocusNextFocusableMenuItem,
   wrapFocusPreviousFocusableMenuItem,
 } from '../../utilities/focus';
-import {KeypressListener} from '../KeypressListener';
-import {Key} from '../../types';
-import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {Box} from '../Box';
+import {KeypressListener} from '../KeypressListener';
+import {useI18n} from '../../utilities/i18n';
 
-import {Section, Item} from './components';
+import {SearchField, Item, Section} from './components';
 import type {ItemProps} from './components';
 
 export interface ActionListProps {
@@ -31,8 +32,11 @@ export function ActionList({
   actionRole,
   onActionAnyItem,
 }: ActionListProps) {
+  const i18n = useI18n();
+
   let finalSections: readonly ActionListSection[] = [];
   const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
+  const [searchText, setSeachText] = useState('');
 
   if (items) {
     finalSections = [{items}, ...sections];
@@ -46,7 +50,14 @@ export function ActionList({
   const elementTabIndex =
     hasMultipleSections && actionRole === 'menuitem' ? -1 : undefined;
 
-  const sectionMarkup = finalSections.map((section, index) => {
+  const filteredSections = finalSections?.map((section) => ({
+    ...section,
+    items: section.items.filter((item) =>
+      item.content?.toLowerCase().includes(searchText.toLowerCase()),
+    ),
+  }));
+
+  const sectionMarkup = filteredSections.map((section, index) => {
     return section.items.length > 0 ? (
       <Section
         key={typeof section.title === 'string' ? section.title : index}
@@ -99,16 +110,47 @@ export function ActionList({
       </>
     ) : null;
 
+  const totalActions =
+    finalSections?.reduce(
+      (acc: number, section) => acc + section.items.length,
+      0,
+    ) || 0;
+
+  const totalFilteredActions = useMemo(() => {
+    const totalSectionItems =
+      filteredSections?.reduce(
+        (acc: number, section) => acc + section.items.length,
+        0,
+      ) || 0;
+
+    return totalSectionItems;
+  }, [filteredSections]);
+
+  const showSearch = totalActions >= 8;
+
   return (
-    <Box
-      as={hasMultipleSections ? 'ul' : 'div'}
-      ref={actionListRef}
-      role={elementRole}
-      tabIndex={elementTabIndex}
-    >
-      {listeners}
-      {sectionMarkup}
-    </Box>
+    <>
+      {showSearch && (
+        <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
+          <SearchField
+            placeholder={i18n.translate(
+              'Polaris.ActionList.SearchField.placeholder',
+            )}
+            value={searchText}
+            onChange={(value) => setSeachText(value)}
+          />
+        </Box>
+      )}
+      <Box
+        as={hasMultipleSections ? 'ul' : 'div'}
+        ref={actionListRef}
+        role={elementRole}
+        tabIndex={elementTabIndex}
+      >
+        {listeners}
+        {sectionMarkup}
+      </Box>
+    </>
   );
 }
 

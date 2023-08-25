@@ -391,6 +391,13 @@
           "cancel": "ยกเลิก"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "ล้าง",
+        "search": "ค้นหา",
+        "placeholder": "ค้นหาการดำเนินการ"
+      }
     }
   }
 }

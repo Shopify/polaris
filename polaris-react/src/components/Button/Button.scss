@@ -1441,6 +1441,7 @@
   }
 
   > :first-child .Button,
+  > :first-child .Button::before,
   > :first-child .Button::after {
     border-radius: 0;
     border-top-left-radius: var(--p-border-radius-1);
@@ -1453,6 +1454,7 @@
   }
 
   > :last-child .Button,
+  > :last-child .Button::before,
   > :last-child .Button::after {
     border-radius: 0;
     border-top-right-radius: var(--p-border-radius-1);
@@ -1476,11 +1478,13 @@
 
 [data-buttongroup-connected-top='true'] {
   > :first-child .Button,
+  > :first-child .Button::before,
   > :first-child .Button::after {
     border-top-left-radius: 0;
   }
 
   > :last-child .Button,
+  > :last-child .Button::before,
   > :last-child .Button::after {
     border-top-right-radius: 0;
   }
