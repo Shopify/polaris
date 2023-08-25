@@ -10,12 +10,8 @@
   @media #{$p-breakpoints-md-down} {
     max-width: 100%;
     overflow: hidden;
-    height: 56px;
+    height: unset;
     padding: 0;
-
-    #{$se23} & {
-      height: unset;
-    }
   }
 }
 
@@ -23,11 +19,7 @@
   @media #{$p-breakpoints-md-down} {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: var(--p-space-3) var(--p-space-3) var(--p-space-3) var(--p-space-4);
-
-    #{$se23} & {
-      padding: var(--p-space-2);
-    }
+    padding: var(--p-space-2);
   }
 }
 
@@ -65,19 +57,19 @@
 
 .Tab {
   // stylelint-disable-next-line -- no way to set focus ring without mixin currently
-  @include focus-ring;
+  @include focus-ring($size: 'wide');
   // stylelint-disable-next-line -- required to reset button styles on touch screens
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: var(--p-space-8);
-  padding: 0 var(--p-space-3);
+  height: 2rem;
+  padding: var(--p-space-1_5-experimental) var(--p-space-3);
   border: 0;
-  border-radius: var(--p-border-radius-1);
-  background: var(--p-color-bg);
-  color: var(--p-color-text-subdued);
+  border-radius: var(--p-border-radius-2);
+  background-color: transparent;
+  color: var(--p-color-text-primary);
   cursor: pointer;
   text-decoration: none;
   width: 100%;
@@ -91,12 +83,27 @@
   &[aria-disabled='true'] {
     cursor: default;
     color: var(--p-color-text-disabled);
+
+    path {
+      fill: var(--p-color-icon-disabled);
+    }
   }
 
-  &:not([aria-disabled='true']):hover,
+  &:not([aria-disabled='true']):hover {
+    background-color: var(--p-color-bg-transparent-hover-experimental);
+    color: var(--p-color-text-primary);
+  }
+
   &:not([aria-disabled='true']):focus {
     background-color: var(--p-color-bg-hover);
     color: var(--p-color-text);
+  }
+
+  &:not([aria-disabled='true']):focus-visible {
+    background-color: transparent;
+    color: var(--p-color-text-primary);
+    // stylelint-disable-next-line -- set focus ring using mixin
+    @include focus-ring($size: 'wide', $style: 'focused');
   }
 
   // stylelint-disable-next-line selector-max-specificity -- specificity required to override focus ring
@@ -107,8 +114,8 @@
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-active);
-    color: var(--p-color-text);
+    background-color: var(--p-color-bg-secondary-experimental);
+    color: var(--p-color-text-primary);
     z-index: var(--p-z-index-1);
   }
 
@@ -116,52 +123,17 @@
     fill: currentColor;
   }
 
-  &[aria-disabled='true'] path {
-    fill: var(--p-color-icon-disabled);
-  }
-
-  #{$se23} & {
-    // stylelint-disable-next-line -- no way to set focus ring without mixin currently
-    @include focus-ring($size: 'wide');
-    color: var(--p-color-text-primary);
-    background-color: transparent;
-    border-radius: var(--p-border-radius-2);
-    padding: var(--p-space-1_5-experimental) var(--p-space-3);
-    height: 2rem;
-
-    &[aria-disabled='true'] {
-      color: var(--p-color-text-disabled);
-    }
-
-    &:not([aria-disabled='true']):hover {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
-    }
-
-    &:not([aria-disabled='true']):focus-visible {
-      background-color: transparent;
-      color: var(--p-color-text-primary);
-      // stylelint-disable-next-line -- sshhh
-      @include focus-ring($size: 'wide', $style: 'focused');
-    }
-
-    &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-secondary-experimental);
-      color: var(--p-color-text-primary);
-      z-index: var(--p-z-index-1);
-    }
-
-    @media #{$p-breakpoints-md-up} {
-      font-size: var(--p-font-size-75);
-      line-height: var(--p-font-line-height-1);
-      height: 1.75rem;
-    }
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-75);
+    line-height: var(--p-font-line-height-1);
+    height: 1.75rem;
   }
 }
 
 .Tab-active {
-  background: var(--p-color-bg-primary-subdued-hover);
-  color: var(--p-color-text-primary);
+  background: var(--p-color-bg-transparent-active-experimental);
+  border-radius: var(--p-border-radius-2);
+  color: var(--p-color-text);
 
   &[aria-disabled='true'] {
     background: var(--p-color-bg-disabled);
@@ -170,43 +142,18 @@
 
   &:not([aria-disabled='true']):hover,
   &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-primary-subdued-hover);
-    color: var(--p-color-text-primary-hover);
-  }
-
-  &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-success-subdued-active);
+    background-color: var(--p-color-bg-transparent-hover-experimental);
     color: var(--p-color-text-primary);
   }
 
-  #{$se23} & {
-    background: var(--p-color-bg-transparent-active-experimental);
-    color: var(--p-color-text);
-    border-radius: var(--p-border-radius-2);
-
-    &[aria-disabled='true'] {
-      background: var(--p-color-bg-disabled);
-      color: var(--p-color-text-disabled);
-    }
-
-    &:not([aria-disabled='true']):hover,
-    &:not([aria-disabled='true']):focus {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
-    }
-
-    &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-transparent-active-experimental);
-    }
+  &:not([aria-disabled='true']):active {
+    background-color: var(--p-color-bg-transparent-active-experimental);
+    color: var(--p-color-text-primary);
   }
 }
 
 .Tab-hasActions {
   padding-right: var(--p-space-2);
-
-  #{$se23} & {
-    padding-right: var(--p-space-2);
-  }
 }
 
 .Tab-iconOnly {
@@ -299,25 +246,34 @@
   @include unstyled-button;
   height: 100%;
   background-color: transparent;
-  color: var(--p-color-text-subdued);
+  color: var(--p-color-text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-2);
   padding: 0 var(--p-space-2) 0 var(--p-space-3);
   margin-top: var(--p-space-025);
   border: none;
   outline: none;
+
+  svg {
+    fill: var(--p-color-icon);
+  }
 
   &:hover svg,
   &:focus svg {
     fill: var(--p-color-icon);
   }
 
-  &:not([aria-disabled='true']):hover,
+  &:not([aria-disabled='true']):hover {
+    background-color: var(--p-color-bg-transparent-hover-experimental);
+    color: var(--p-color-text-primary);
+  }
+
   &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-hover);
+    background-color: transparent;
+    color: var(--p-color-text-primary);
   }
 
   &:not([aria-disabled='true']):focus-visible {
@@ -327,46 +283,17 @@
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-active);
+    background-color: var(--p-color-bg-secondary-experimental);
     z-index: var(--p-z-index-1);
   }
 
   &[aria-disabled='true'] {
     cursor: default;
     color: var(--p-color-text-disabled);
+    background: var(--p-color-bg-disabled);
 
     path {
       fill: var(--p-color-icon-disabled);
-    }
-  }
-
-  #{$se23} & {
-    background-color: transparent;
-    color: var(--p-color-text-primary);
-    border-radius: var(--p-border-radius-2);
-
-    // stylelint-disable-next-line selector-max-combinators -- Polaris component experimental styles
-    svg {
-      fill: var(--p-color-icon);
-    }
-
-    &[aria-disabled='true'] {
-      background: var(--p-color-bg-disabled);
-      color: var(--p-color-text-disabled);
-    }
-
-    &:not([aria-disabled='true']):hover {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
-    }
-
-    &:not([aria-disabled='true']):focus {
-      background-color: transparent;
-      color: var(--p-color-text-primary);
-    }
-
-    &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-secondary-experimental);
     }
   }
 }

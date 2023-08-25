@@ -30,8 +30,7 @@
       "dismissButton": "Bildirimi kapat"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Yükleniyor",
-      "connectedDisclosureAccessibilityLabel": "İlgili işlemler"
+      "spinnerAccessibilityLabel": "Yükleniyor"
     },
     "Common": {
       "checkbox": "onay kutusu",

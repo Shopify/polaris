@@ -1,0 +1,30 @@
+@import '../../styles/common';
+
+.BlockStack {
+  @include responsive-props('block-stack', 'gap', 'gap');
+  // stylelint-disable -- Polaris component custom properties
+  --pc-block-stack-align: initial;
+  --pc-block-stack-inline-align: initial;
+  --pc-block-stack-order: initial;
+  // stylelint-enable
+  display: flex;
+  // stylelint-disable-next-line -- custom property to set flex direction
+  flex-direction: var(--pc-block-stack-order);
+  // stylelint-disable-next-line -- custom property to set horizontal alignment
+  align-items: var(--pc-block-stack-inline-align);
+  // stylelint-disable-next-line -- custom property to set vertical alignment
+  justify-content: var(--pc-block-stack-align);
+}
+
+.listReset {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.fieldsetReset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}

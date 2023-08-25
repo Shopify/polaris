@@ -30,8 +30,7 @@
       "dismissButton": "Avvisa avisering"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laddar",
-      "connectedDisclosureAccessibilityLabel": "Relaterade åtgärder"
+      "spinnerAccessibilityLabel": "Laddar"
     },
     "Common": {
       "checkbox": "kryssruta",

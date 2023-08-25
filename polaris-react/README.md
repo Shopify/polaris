@@ -70,7 +70,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@11.13.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@12.0.0-beta.0/build/esm/styles.css"
 />
 ```
 

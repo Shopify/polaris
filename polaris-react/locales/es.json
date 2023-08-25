@@ -30,8 +30,7 @@
       "dismissButton": "Descartar notificación"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Cargando",
-      "connectedDisclosureAccessibilityLabel": "Acciones relacionadas"
+      "spinnerAccessibilityLabel": "Cargando"
     },
     "Common": {
       "checkbox": "casilla de verificación",

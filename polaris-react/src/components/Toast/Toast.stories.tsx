@@ -4,7 +4,7 @@ import {
   Button,
   ButtonGroup,
   Frame,
-  HorizontalStack,
+  InlineStack,
   Page,
   Toast,
 } from '@shopify/polaris';
@@ -60,7 +60,7 @@ export function MultipleMessages() {
     <div style={{height: '250px'}}>
       <Frame>
         <Page title="Multiple Messages">
-          <ButtonGroup segmented>
+          <ButtonGroup variant="segmented">
             <Button onClick={toggleActiveOne}>Show toast 1</Button>
             <Button onClick={toggleActiveTwo}>Show toast 2</Button>
           </ButtonGroup>

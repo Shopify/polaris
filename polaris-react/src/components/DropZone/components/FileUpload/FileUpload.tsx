@@ -2,15 +2,13 @@ import React, {useContext} from 'react';
 import {UploadMajor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
-import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
 import {Text} from '../../../Text';
-import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
 import {createAllowMultipleKey} from '../../utils';
-import {VerticalStack} from '../../../VerticalStack';
+import {BlockStack} from '../../../BlockStack';
 
 import styles from './FileUpload.scss';
 
@@ -21,7 +19,6 @@ export interface FileUploadProps {
 
 export function FileUpload(props: FileUploadProps) {
   const i18n = useI18n();
-  const {polarisSummerEditions2023} = useFeatures();
   const {size, measuring, type, disabled, allowMultiple} =
     useContext(DropZoneContext);
 
@@ -59,34 +56,29 @@ export function FileUpload(props: FileUploadProps) {
   switch (size) {
     case 'large':
       viewMarkup = (
-        <VerticalStack inlineAlign="center" gap="2">
+        <BlockStack inlineAlign="center" gap="2">
           {actionMarkup}
           {actionHintMarkup}
-        </VerticalStack>
+        </BlockStack>
       );
       break;
     case 'medium':
       viewMarkup = (
-        <VerticalStack inlineAlign="center" gap="2">
+        <BlockStack inlineAlign="center" gap="2">
           {actionMarkup}
           {actionHintMarkup}
-        </VerticalStack>
+        </BlockStack>
       );
       break;
     case 'small':
-      viewMarkup = <img width="20" src={uploadArrow} alt="" />;
-      if (polarisSummerEditions2023) {
-        viewMarkup = (
-          <div
-            className={classNames(
-              styles.UploadIcon,
-              disabled && styles.disabled,
-            )}
-          >
-            <Icon source={UploadMajor} />
-          </div>
-        );
-      }
+      viewMarkup = (
+        <div
+          className={classNames(styles.UploadIcon, disabled && styles.disabled)}
+        >
+          <Icon source={UploadMajor} />
+        </div>
+      );
+
       break;
   }
 

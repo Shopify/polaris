@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {HorizontalStack, Thumbnail, VerticalStack} from '@shopify/polaris';
+import {InlineStack, Thumbnail, BlockStack} from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -9,15 +9,15 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="4">
-      <HorizontalStack gap="4" blockAlign="center">
+    <BlockStack gap="4">
+      <InlineStack gap="4" blockAlign="center">
         <ExtraSmall />
         <Small />
         <Default />
         <Large />
-      </HorizontalStack>
+      </InlineStack>
       <WithComponentSource />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 

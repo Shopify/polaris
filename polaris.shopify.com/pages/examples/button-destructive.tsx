@@ -3,7 +3,7 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ButtonExample() {
-  return <Button destructive>Delete theme</Button>;
+  return <Button tone="critical">Delete theme</Button>;
 }
 
 export default withPolarisExample(ButtonExample);

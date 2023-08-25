@@ -30,8 +30,7 @@
       "dismissButton": "알림 무시"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "로드 중",
-      "connectedDisclosureAccessibilityLabel": "관련 작업"
+      "spinnerAccessibilityLabel": "로드 중"
     },
     "Common": {
       "checkbox": "확인란",

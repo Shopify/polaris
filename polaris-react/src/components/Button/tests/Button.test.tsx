@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  CaretDownMinor,
-  CaretUpMinor,
   ChevronDownMinor,
   ChevronUpMinor,
   PlusMinor,
@@ -9,13 +7,10 @@ import {
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
-import {ActionList} from '../../ActionList';
 import {Icon} from '../../Icon';
-import {Popover} from '../../Popover';
 import {Spinner} from '../../Spinner';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Button} from '../Button';
-import en from '../../../../locales/en.json';
 import styles from '../Button.scss';
 
 describe('<Button />', () => {
@@ -212,140 +207,6 @@ describe('<Button />', () => {
     });
   });
 
-  describe('connectedDisclosure', () => {
-    it('connects a disclosure icon button to the button', () => {
-      const disclosure = {
-        actions: [
-          {
-            content: 'Save and mark as ordered',
-          },
-        ],
-      };
-
-      const button = mountWithApp(<Button connectedDisclosure={disclosure} />, {
-        features: {polarisSummerEditions2023: true},
-      });
-      expect(button).toContainReactComponentTimes('button', 2);
-
-      const disclosureButton = button.findAll('button')[1];
-      expect(disclosureButton).toContainReactComponent(Icon, {
-        source: ChevronDownMinor,
-      });
-    });
-
-    it('sets a custom aria-label on the disclosure button when accessibilityLabel is provided', () => {
-      const connectedDisclosureLabel = 'More save actions';
-      const disclosure = {
-        accessibilityLabel: connectedDisclosureLabel,
-        actions: [
-          {
-            content: 'Save and mark as ordered',
-          },
-        ],
-      };
-
-      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
-
-      const disclosureButton = button.findAll('button')[1];
-      expect(disclosureButton).toHaveReactProps({
-        'aria-label': connectedDisclosureLabel,
-      });
-    });
-
-    it('sets a default aria-label on the disclosure button when accessibilityLabel is not provided', () => {
-      const connectedDisclosureLabel =
-        en.Polaris.Button.connectedDisclosureAccessibilityLabel;
-
-      const disclosure = {
-        actions: [
-          {
-            content: 'Save and mark as ordered',
-          },
-        ],
-      };
-
-      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
-      const disclosureButton = button.findAll('button')[1];
-
-      expect(disclosureButton).toHaveReactProps({
-        'aria-label': connectedDisclosureLabel,
-      });
-    });
-
-    it('disables the disclosure button when disabled is true', () => {
-      const disclosure = {
-        disabled: true,
-        actions: [
-          {
-            content: 'Save and mark as ordered',
-          },
-        ],
-      };
-
-      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
-      const disclosureButton = button.findAll('button')[1];
-
-      expect(disclosureButton).toHaveReactProps({
-        'aria-disabled': true,
-      });
-    });
-
-    it('renders an ActionList with the actions set', () => {
-      const actions = [
-        {
-          content: 'Save and mark as ordered',
-        },
-      ];
-
-      const disclosure = {actions};
-      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
-      const disclosureButton = button.findAll('button')[1]!;
-
-      disclosureButton.trigger('onClick');
-
-      const actionList = button.find(Popover)!.find(ActionList);
-      expect(actionList).toHaveReactProps({
-        items: expect.arrayContaining(actions),
-      });
-    });
-
-    it('sets tabIndex to -1 on the disclosure button when disabled is true', () => {
-      const disclosure = {
-        disabled: true,
-        actions: [
-          {
-            content: 'Save and mark as ordered',
-          },
-        ],
-      };
-
-      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
-      const disclosureButton = button.findAll('button')[1];
-
-      expect(disclosureButton).toHaveReactProps({
-        tabIndex: -1,
-      });
-    });
-
-    it('sets tabIndex to undefined on the disclosure button when disabled is false', () => {
-      const disclosure = {
-        disabled: false,
-        actions: [
-          {
-            content: 'Save and mark as ordered',
-          },
-        ],
-      };
-
-      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
-      const disclosureButton = button.findAll('button')[1];
-
-      expect(disclosureButton).toHaveReactProps({
-        tabIndex: undefined,
-      });
-    });
-  });
-
   describe('onClick()', () => {
     it('is called when the button is clicked', () => {
       const onClickSpy = jest.fn();
@@ -460,9 +321,7 @@ describe('<Button />', () => {
 
   describe('disclosure', () => {
     it('assumes "down" if set to true', () => {
-      const button = mountWithApp(<Button disclosure />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const button = mountWithApp(<Button disclosure />);
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
@@ -470,9 +329,7 @@ describe('<Button />', () => {
     });
 
     it('is facing down if set to "down"', () => {
-      const button = mountWithApp(<Button disclosure="down" />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const button = mountWithApp(<Button disclosure="down" />);
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
@@ -480,9 +337,7 @@ describe('<Button />', () => {
     });
 
     it('is facing up if set to "up"', () => {
-      const button = mountWithApp(<Button disclosure="up" />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const button = mountWithApp(<Button disclosure="up" />);
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
@@ -542,58 +397,5 @@ describe('<Button />', () => {
       };
       expect(link).toContainReactComponent('button', selector);
     });
-  });
-});
-
-// se23 -- CaretDownMinor replaced with ChevronDownMinor
-describe('polarisSummerEditions2023 false', () => {
-  it('connects a disclosure icon button to the button', () => {
-    const disclosure = {
-      actions: [
-        {
-          content: 'Save and mark as ordered',
-        },
-      ],
-    };
-
-    const button = mountWithApp(<Button connectedDisclosure={disclosure} />, {
-      features: {polarisSummerEditions2023: false},
-    });
-    expect(button).toContainReactComponentTimes('button', 2);
-
-    const disclosureButton = button.findAll('button')[1];
-    expect(disclosureButton).toContainReactComponent(Icon, {
-      source: CaretDownMinor,
-    });
-  });
-
-  it('assumes "down" if set to true', () => {
-    const button = mountWithApp(<Button disclosure />, {
-      features: {polarisSummerEditions2023: false},
-    });
-    const disclosureIcon = button
-      .find('div', {className: styles.DisclosureIcon})!
-      .find(Icon);
-    expect(disclosureIcon).toHaveReactProps({source: CaretDownMinor});
-  });
-
-  it('is facing down if set to "down"', () => {
-    const button = mountWithApp(<Button disclosure="down" />, {
-      features: {polarisSummerEditions2023: false},
-    });
-    const disclosureIcon = button
-      .find('div', {className: styles.DisclosureIcon})!
-      .find(Icon);
-    expect(disclosureIcon).toHaveReactProps({source: CaretDownMinor});
-  });
-
-  it('is facing up if set to "up"', () => {
-    const button = mountWithApp(<Button disclosure="up" />, {
-      features: {polarisSummerEditions2023: false},
-    });
-    const disclosureIcon = button
-      .find('div', {className: styles.DisclosureIcon})!
-      .find(Icon);
-    expect(disclosureIcon).toHaveReactProps({source: CaretUpMinor});
   });
 });

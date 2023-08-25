@@ -1,9 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {BoxProps} from '@shopify/polaris';
-import {Box, VerticalStack, InlineCode} from '@shopify/polaris';
-
-import {useFeatures} from '../../utilities/features';
+import {Box, BlockStack, InlineCode} from '@shopify/polaris';
 
 import {ShadowBevel} from './ShadowBevel';
 
@@ -12,8 +10,6 @@ export default {
 } as ComponentMeta<typeof ShadowBevel>;
 
 export function Default() {
-  const {polarisSummerEditions2023} = useFeatures();
-
   const colors: BoxProps[] = [
     {
       background: 'bg-success-strong',
@@ -34,7 +30,7 @@ export function Default() {
   ];
 
   return (
-    <VerticalStack gap="5">
+    <BlockStack gap="5">
       <ShadowBevel boxShadow="md" borderRadius="3">
         <Box background="bg" padding="4">
           Default
@@ -74,20 +70,19 @@ export function Default() {
         </Box>
       </ShadowBevel>
 
-      {polarisSummerEditions2023 &&
-        colors.map(({background, color}) => (
-          <ShadowBevel
-            key={`${background}-${color}`}
-            boxShadow="md"
-            borderRadius="3"
-          >
-            <Box background={background} color={color} padding="4">
-              {background}
-            </Box>
-          </ShadowBevel>
-        ))}
+      {colors.map(({background, color}) => (
+        <ShadowBevel
+          key={`${background}-${color}`}
+          boxShadow="md"
+          borderRadius="3"
+        >
+          <Box background={background} color={color} padding="4">
+            {background}
+          </Box>
+        </ShadowBevel>
+      ))}
 
       <br />
-    </VerticalStack>
+    </BlockStack>
   );
 }

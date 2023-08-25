@@ -9,7 +9,6 @@ import type {DisableableAction, ComplexAction} from '../../types';
 import {ActionList} from '../ActionList';
 import {Button, buttonFrom} from '../Button';
 import {Popover} from '../Popover';
-import {useFeatures} from '../../utilities/features';
 
 import {Header, Section, Subsection} from './components';
 import styles from './LegacyCard.scss';
@@ -83,7 +82,7 @@ export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
   const content = sectioned ? <Section>{children}</Section> : children;
 
   const primaryFooterActionMarkup = primaryFooterAction
-    ? buttonFrom(primaryFooterAction, {primary: true})
+    ? buttonFrom(primaryFooterAction, {variant: 'primary'})
     : null;
 
   let secondaryFooterActionsMarkup = null;
@@ -153,14 +152,9 @@ LegacyCard.Subsection = Subsection;
  * more browser versions https://caniuse.com/css-nth-child-of.
  */
 function useLegacyCardPaddingObserverRef() {
-  const {polarisSummerEditions2023} = useFeatures();
   const legacyCard = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!polarisSummerEditions2023) {
-      return;
-    }
-
     const legacyCardNode = legacyCard.current;
     let firstSection: Element | undefined;
     let lastSection: Element | undefined;
@@ -212,7 +206,7 @@ function useLegacyCardPaddingObserverRef() {
         observer.disconnect();
       };
     }
-  }, [polarisSummerEditions2023]);
+  }, []);
 
   return legacyCard;
 }

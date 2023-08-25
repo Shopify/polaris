@@ -261,7 +261,6 @@ describe('<LegacyCard />', () => {
             Section 2 content
           </LegacyCard.Section>
         </LegacyCard>,
-        {features: {polarisSummerEditions2023: true}},
       );
 
       const firstSection = document.querySelectorAll('.FirstSectionPadding');
@@ -282,7 +281,6 @@ describe('<LegacyCard />', () => {
             Section 2 content
           </LegacyCard.Section>
         </LegacyCard>,
-        {features: {polarisSummerEditions2023: true}},
       );
 
       const firstSection = document.querySelectorAll('.FirstSectionPadding');
@@ -300,7 +298,6 @@ describe('<LegacyCard />', () => {
           <h2>hello world</h2>
           <p>hello world</p>
         </LegacyCard>,
-        {features: {polarisSummerEditions2023: true}},
       );
 
       const firstSection = document.querySelectorAll('.FirstSectionPadding');
@@ -325,7 +322,6 @@ describe('<LegacyCard />', () => {
             Section 2 content
           </LegacyCard.Section>
         </LegacyCard>,
-        {features: {polarisSummerEditions2023: true}},
       );
 
       const firstSection = document.querySelectorAll('.FirstSectionPadding');

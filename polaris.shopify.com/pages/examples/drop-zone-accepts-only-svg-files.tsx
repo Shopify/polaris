@@ -43,10 +43,7 @@ function DropZoneAcceptingSVGFilesExample() {
   );
 
   const errorMessage = hasError && (
-    <Banner
-      title="The following images couldn’t be uploaded:"
-      status="critical"
-    >
+    <Banner title="The following images couldn’t be uploaded:" tone="critical">
       <List type="bullet">
         {rejectedFiles.map((file, index) => (
           <List.Item key={index}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {VerticalStack, Text, Box, Icon} from '@shopify/polaris';
+import {BlockStack, Text, Box, Icon} from '@shopify/polaris';
 import {PaintBrushMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -10,14 +10,14 @@ export default {
 export function Default() {
   return (
     <Box>
-      <Icon source={PaintBrushMajor} color="base" />
+      <Icon source={PaintBrushMajor} tone="base" />
     </Box>
   );
 }
 
 export function WithBorders() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Box background="bg" padding="4" borderWidth="1" borderColor="border">
         <Text as="p">1px solid border</Text>
       </Box>
@@ -100,15 +100,15 @@ export function WithBorders() {
       >
         <Text as="p">5px solid transparent</Text>
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
 export function WithOutline() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Box background="bg" padding="4" outlineWidth="1" outlineColor="border">
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -117,7 +117,7 @@ export function WithOutline() {
         outlineStyle="dashed"
         outlineColor="border-subdued"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -125,7 +125,7 @@ export function WithOutline() {
         outlineWidth="2"
         outlineColor="border-info"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -133,7 +133,7 @@ export function WithOutline() {
         outlineWidth="3"
         outlineColor="border-success"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -141,7 +141,7 @@ export function WithOutline() {
         outlineWidth="4"
         outlineColor="border-caution"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -149,30 +149,30 @@ export function WithOutline() {
         outlineWidth="5"
         outlineColor="border-critical"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
 export function WithBorderRadius() {
   return (
     <Box background="bg" padding="4" borderRadius="2">
-      <Icon source={PaintBrushMajor} color="highlight" />
+      <Icon source={PaintBrushMajor} tone="info" />
     </Box>
   );
 }
 
 export function WithResponsivePadding() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Box
         background="bg"
         padding={{xs: '2', sm: '8'}}
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -181,7 +181,7 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -190,7 +190,7 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -199,7 +199,7 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
@@ -207,8 +207,8 @@ export function WithResponsivePadding() {
         borderWidth="1"
         borderColor="border"
       >
-        <Icon source={PaintBrushMajor} color="base" />
+        <Icon source={PaintBrushMajor} tone="base" />
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }

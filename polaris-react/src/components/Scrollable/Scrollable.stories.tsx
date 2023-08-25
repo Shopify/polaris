@@ -7,7 +7,7 @@ import {
   Banner,
   Box,
   Text,
-  VerticalStack,
+  BlockStack,
   FormLayout,
   TextField,
 } from '@shopify/polaris';
@@ -1170,7 +1170,7 @@ export function UsingInstantScrollToFromRef() {
 
 export function WithShadowOverComplexChildren() {
   return (
-    <VerticalStack gap="4">
+    <BlockStack gap="4">
       <Text as="p" variant="bodyLg" fontWeight="bold">
         NOTE: Red shadow is for demo/debug purposes only.
         <br />
@@ -1293,6 +1293,6 @@ export function WithShadowOverComplexChildren() {
           </p>
         </Box>
       </Scrollable>
-    </VerticalStack>
+    </BlockStack>
   );
 }

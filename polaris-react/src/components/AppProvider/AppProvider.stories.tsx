@@ -8,7 +8,7 @@ import {
   Page,
   ResourceList,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -180,7 +180,7 @@ export const WithSummerEditionsFeature = {
     const CheckFeature = () => {
       return (
         <Card>
-          <VerticalStack gap="4">
+          <BlockStack gap="4">
             <Text
               as="h2"
               variant={polarisSummerEditions2023 ? 'headingXl' : 'bodyMd'}
@@ -190,7 +190,7 @@ export const WithSummerEditionsFeature = {
                 polarisSummerEditions2023 ? 'ON' : 'OFF'
               }`}
             </Text>
-          </VerticalStack>
+          </BlockStack>
         </Card>
       );
     };

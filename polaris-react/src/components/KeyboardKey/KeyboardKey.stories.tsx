@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {KeyboardKey, Card, Text, VerticalStack} from '@shopify/polaris';
+import {KeyboardKey, Card, Text, BlockStack} from '@shopify/polaris';
 
 export default {
   component: KeyboardKey,
@@ -75,7 +75,7 @@ export function Small() {
 
 export function All() {
   return (
-    <VerticalStack gap="2">
+    <BlockStack gap="2">
       <Text as="h2" variant="headingMd">
         Default
       </Text>
@@ -92,6 +92,6 @@ export function All() {
         <KeyboardKey size="small">⌘</KeyboardKey>
         <KeyboardKey size="small">h</KeyboardKey>
       </Card>
-    </VerticalStack>
+    </BlockStack>
   );
 }

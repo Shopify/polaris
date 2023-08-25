@@ -2,7 +2,6 @@ import React, {useState, useCallback, useEffect} from 'react';
 
 import type {Experimental} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Image} from '../Image';
@@ -15,8 +14,6 @@ type Size =
   | 'medium'
   | 'large'
   | Experimental<'xl' | '2xl'>;
-
-type Shape = 'square' | 'round';
 
 enum Status {
   Pending = 'PENDING',
@@ -61,11 +58,6 @@ export interface AvatarProps {
    * @default 'medium'
    */
   size?: Size;
-  /**
-   * Shape of avatar
-   * @default 'round'
-   */
-  shape?: Shape;
   /** The name of the person */
   name?: string;
   /** Initials of person to display */
@@ -87,15 +79,12 @@ export function Avatar({
   initials,
   customer,
   size = 'medium',
-  shape = 'round',
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
 
   const [status, setStatus] = useState<Status>(Status.Pending);
-
-  const {polarisSummerEditions2023} = useFeatures();
 
   // If the source changes, set the status back to pending
   useEffect(() => {
@@ -133,7 +122,6 @@ export function Avatar({
     styles.Avatar,
     size && styles[variationName('size', size)],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
-    shape && styles[variationName('shape', shape)],
     !customer &&
       !source &&
       styles[variationName('style', styleClass(nameString))],
@@ -163,7 +151,7 @@ export function Avatar({
   // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
   const verticalOffset = '0.35em';
 
-  const avatarPath = polarisSummerEditions2023 ? (
+  const avatarPath = (
     <>
       <path
         fill="none"
@@ -180,11 +168,6 @@ export function Avatar({
         stroke-linejoin="round"
       />
     </>
-  ) : (
-    <path
-      fill="currentColor"
-      d="M8.28 27.5A14.95 14.95 0 0120 21.8c4.76 0 8.97 2.24 11.72 5.7a14.02 14.02 0 01-8.25 5.91 14.82 14.82 0 01-6.94 0 14.02 14.02 0 01-8.25-5.9zM13.99 12.78a6.02 6.02 0 1112.03 0 6.02 6.02 0 01-12.03 0z"
-    />
   );
 
   const avatarBody =

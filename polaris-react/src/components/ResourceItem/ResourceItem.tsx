@@ -7,9 +7,9 @@ import {Box} from '../Box';
 import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
-import {HorizontalGrid} from '../HorizontalGrid';
-import {HorizontalStack} from '../HorizontalStack';
-import type {HorizontalStackProps} from '../HorizontalStack';
+import {InlineGrid} from '../InlineGrid';
+import {InlineStack} from '../InlineStack';
+import type {InlineStackProps} from '../InlineStack';
 import {Popover} from '../Popover';
 import {UnstyledLink} from '../UnstyledLink';
 import type {AvatarProps} from '../Avatar';
@@ -174,10 +174,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     const itemPaddingBlock: React.ComponentProps<typeof Box>['padding'] = '3';
 
     const gapBetweenCheckboxAndMedia: React.ComponentProps<
-      typeof HorizontalStack
+      typeof InlineStack
     >['gap'] = polarisSummerEditions2023 ? '3' : '4';
     const gapBetweenOwnedAndChildren: React.ComponentProps<
-      typeof HorizontalGrid
+      typeof InlineGrid
     >['gap'] = polarisSummerEditions2023 ? '3' : '5';
 
     if (selectable) {
@@ -217,7 +217,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <HorizontalStack
+        <InlineStack
           gap={gapBetweenCheckboxAndMedia}
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
@@ -225,7 +225,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         >
           {handleMarkup}
           {media}
-        </HorizontalStack>
+        </InlineStack>
       );
     }
 
@@ -254,8 +254,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
               {buttonsFrom(shortcutActions, {
-                plain: true,
-                primary: polarisSummerEditions2023,
+                variant: 'tertiary',
               })}
             </ButtonGroup>
           </div>
@@ -275,8 +274,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                   <Button
                     accessibilityLabel={disclosureAccessibilityLabel}
                     onClick={this.handleActionsClick}
-                    plain
-                    primary={polarisSummerEditions2023}
+                    variant="tertiary"
                     icon={HorizontalDotsMinor}
                   />
                 }
@@ -291,7 +289,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <Box position="absolute" insetBlockStart="4" insetInlineEnd="5">
-              <ButtonGroup segmented>
+              <ButtonGroup variant="segmented">
                 {buttonsFrom(shortcutActions, {size: 'slim'})}
               </ButtonGroup>
             </Box>
@@ -310,21 +308,21 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         paddingBlockEnd={itemPaddingBlock}
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <HorizontalGrid columns={{xs: '1fr auto'}}>
-          <HorizontalGrid
+        <InlineGrid columns={{xs: '1fr auto'}}>
+          <InlineGrid
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
             gap={gapBetweenOwnedAndChildren}
           >
             {ownedMarkup}
-            <HorizontalStack blockAlign={getAlignment(verticalAlignment)}>
+            <InlineStack blockAlign={getAlignment(verticalAlignment)}>
               <Box width="100%" padding="0">
                 {children}
               </Box>
-            </HorizontalStack>
-          </HorizontalGrid>
+            </InlineStack>
+          </InlineGrid>
           {actionsMarkup}
           {disclosureMarkup}
-        </HorizontalGrid>
+        </InlineGrid>
       </Box>
     );
 
@@ -525,9 +523,7 @@ export function ResourceItem(props: ResourceItemProps) {
   );
 }
 
-function getAlignment(
-  alignment?: Alignment,
-): HorizontalStackProps['blockAlign'] {
+function getAlignment(alignment?: Alignment): InlineStackProps['blockAlign'] {
   switch (alignment) {
     case 'leading':
       return 'start';

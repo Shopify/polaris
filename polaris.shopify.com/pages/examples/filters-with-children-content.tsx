@@ -81,8 +81,7 @@ function FiltersWithChildrenContentExample() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   onClick={() => console.log('New filter saved')}
-                  primary
-                  plain
+                  variant="tertiary"
                 >
                   Save
                 </Button>

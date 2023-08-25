@@ -9,7 +9,7 @@ import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
@@ -64,8 +64,7 @@ export function Toast({
   const actionMarkup = action ? (
     <div className={styles.Action}>
       <Button
-        plain
-        monochrome
+        variant="monochromePlain"
         removeUnderline={polarisSummerEditions2023}
         size="slim"
         onClick={action.onAction}
@@ -79,7 +78,7 @@ export function Toast({
     <div className={styles.LeadingIcon}>
       <Icon
         source={polarisSummerEditions2023 ? AlertMinor : DiamondAlertMinor}
-        color="base"
+        tone="base"
       />
     </div>
   ) : null;
@@ -90,11 +89,11 @@ export function Toast({
     <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
-      <HorizontalStack gap="4" blockAlign="center">
+      <InlineStack gap="4" blockAlign="center">
         <Text as="span" fontWeight="medium">
           {content}
         </Text>
-      </HorizontalStack>
+      </InlineStack>
       {actionMarkup}
       {dismissMarkup}
     </div>

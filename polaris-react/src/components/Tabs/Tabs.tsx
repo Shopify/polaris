@@ -482,7 +482,7 @@ export const Tabs = ({
       >
         <Icon
           source={polarisSummerEditions2023 ? ChevronDownMinor : CaretDownMinor}
-          color="subdued"
+          tone="subdued"
         />
       </div>
     </>
