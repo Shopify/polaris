@@ -391,6 +391,13 @@
           "cancel": "취소"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "지우기",
+        "search": "검색",
+        "placeholder": "작업 검색"
+      }
     }
   }
 }

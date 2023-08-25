@@ -393,6 +393,13 @@
         }
       },
       "searchFilterTooltipWithShortcut": "Hledejte a filtrujte (F)"
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Vymazat",
+        "search": "Hledat",
+        "placeholder": "Vyhledejte akce"
+      }
     }
   }
 }

@@ -391,6 +391,13 @@
         }
       },
       "searchFilterTooltipWithShortcut": "搜尋和篩選 (F)"
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "清除",
+        "search": "搜尋",
+        "placeholder": "搜尋動作"
+      }
     }
   }
 }
