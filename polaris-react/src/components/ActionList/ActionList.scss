@@ -96,12 +96,9 @@ $indented-item-width: calc(100% - #{$indented-item-margin});
   &.disabled {
     background-image: none;
     color: var(--p-color-text-disabled);
+    cursor: default;
 
-    #{$se23} & {
-      cursor: default;
-    }
-
-    #{$se23} &:hover {
+    &:hover {
       background-color: unset;
     }
 

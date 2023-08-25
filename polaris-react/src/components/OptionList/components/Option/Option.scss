@@ -86,7 +86,7 @@ $control-vertical-adjustment: 2px;
   &.select,
   &.select:hover:not(.disabled) {
     background-color: var(--p-color-bg-subdued-active);
-    // stylelint-disable-next-line -- se23 no way to select parent Checkbox class without :has()
+    // stylelint-disable-next-line -- no way to select parent Checkbox class without :has()
     &.CheckboxLabel {
       background-color: transparent;
     }
