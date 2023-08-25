@@ -7,7 +7,6 @@ import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
 import {InlineStack} from '../../../InlineStack';
 import {FilterButton} from '../FilterButton';
-import {useFeatures} from '../../../../utilities/features';
 
 export interface SearchFilterButtonProps {
   onClick: () => void;
@@ -28,8 +27,6 @@ export function SearchFilterButton({
   hideFilters,
   hideQueryField,
 }: SearchFilterButtonProps) {
-  const {polarisSummerEditions2023: se23} = useFeatures();
-
   const iconMarkup = (
     <InlineStack gap="0">
       {hideQueryField ? null : <Icon source={SearchMinor} tone="base" />}
@@ -37,18 +34,14 @@ export function SearchFilterButton({
     </InlineStack>
   );
 
-  const childMarkup = !se23 ? iconMarkup : null;
-
   const activator = (
     <div style={style}>
       <FilterButton
         onClick={onClick}
         label={label}
         disabled={disabled}
-        icon={se23 ? iconMarkup : undefined}
-      >
-        {childMarkup}
-      </FilterButton>
+        icon={iconMarkup}
+      />
     </div>
   );
 

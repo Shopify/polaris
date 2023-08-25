@@ -2,7 +2,6 @@ import React, {useState, useMemo} from 'react';
 import {SortMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
-import {Icon} from '../../../Icon';
 import {Popover} from '../../../Popover';
 import {ChoiceList} from '../../../ChoiceList';
 import type {ChoiceListProps} from '../../../ChoiceList';
@@ -10,7 +9,6 @@ import {Tooltip} from '../../../Tooltip';
 import {Box} from '../../../Box';
 import type {SortButtonChoice} from '../../types';
 import {FilterButton} from '../FilterButton';
-import {useFeatures} from '../../../../utilities/features';
 
 import {DirectionButton} from './components';
 
@@ -37,7 +35,6 @@ export function SortButton({
   onChangeDirection,
 }: SortButtonProps) {
   const i18n = useI18n();
-  const {polarisSummerEditions2023} = useFeatures();
 
   const [active, setActive] = useState(false);
   const [selectedValueKey, selectedDirection] = selected[0].split(' ');
@@ -97,11 +94,6 @@ export function SortButton({
     return currentKey === selectedValueKey;
   });
 
-  const iconMarkup = polarisSummerEditions2023 ? SortMinor : undefined;
-  const childMarkup = !polarisSummerEditions2023 ? (
-    <Icon source={SortMinor} tone="base" />
-  ) : null;
-
   const sortButton = (
     <Tooltip
       content={i18n.translate('Polaris.IndexFilters.SortButton.tooltip')}
@@ -109,13 +101,11 @@ export function SortButton({
       hoverDelay={400}
     >
       <FilterButton
-        icon={iconMarkup}
+        icon={SortMinor}
         onClick={handleClick}
         label={i18n.translate('Polaris.IndexFilters.SortButton.ariaLabel')}
         disabled={disabled}
-      >
-        {childMarkup}
-      </FilterButton>
+      />
     </Tooltip>
   );
 
@@ -130,11 +120,10 @@ export function SortButton({
     >
       <Box
         minWidth="148px"
-        padding={polarisSummerEditions2023 ? undefined : '4'}
-        paddingInlineStart={polarisSummerEditions2023 ? '3' : undefined}
-        paddingInlineEnd={polarisSummerEditions2023 ? '3' : undefined}
-        paddingBlockStart={polarisSummerEditions2023 ? '2' : undefined}
-        paddingBlockEnd={polarisSummerEditions2023 ? '2' : undefined}
+        paddingInlineStart="3"
+        paddingInlineEnd="3"
+        paddingBlockStart="2"
+        paddingBlockEnd="2"
         borderBlockEndWidth="1"
         borderColor="border-subdued"
       >
@@ -146,15 +135,10 @@ export function SortButton({
         />
       </Box>
       <Box
-        padding={polarisSummerEditions2023 ? undefined : '4'}
-        paddingInlineStart={
-          polarisSummerEditions2023 ? '1_5-experimental' : undefined
-        }
-        paddingInlineEnd={
-          polarisSummerEditions2023 ? '1_5-experimental' : undefined
-        }
-        paddingBlockStart={polarisSummerEditions2023 ? '2' : undefined}
-        paddingBlockEnd={polarisSummerEditions2023 ? '2' : undefined}
+        paddingInlineStart="1_5-experimental"
+        paddingInlineEnd="1_5-experimental"
+        paddingBlockStart="2"
+        paddingBlockEnd="2"
       >
         <DirectionButton
           direction="asc"
