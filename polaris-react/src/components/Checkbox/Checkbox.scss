@@ -10,8 +10,8 @@
     border-width: 0;
     box-shadow: inset 0 0 0 var(--p-border-width-1-experimental)
       var(--p-color-border-input);
-    transition: border-color var(--p-motion-duration-100)
-        var(--p-motion-ease-out),
+    transition:
+      border-color var(--p-motion-duration-100) var(--p-motion-ease-out),
       border-width var(--p-motion-duration-100) var(--p-motion-ease-out),
       box-shadow var(--p-motion-duration-100) var(--p-motion-ease-out);
 
@@ -73,14 +73,15 @@
     }
 
     ~ .Icon {
-      transition: opacity var(--p-motion-duration-150) var(--p-motion-ease),
+      transition:
+        opacity var(--p-motion-duration-150) var(--p-motion-ease),
         transform var(--p-motion-duration-150) var(--p-motion-ease);
       transform: translate3d(-50%, -50%, 0) scale(1);
       opacity: 1;
 
       #{$se23} & {
-        transition: opacity var(--p-motion-duration-150)
-            var(--p-motion-ease-out),
+        transition:
+          opacity var(--p-motion-duration-150) var(--p-motion-ease-out),
           transform var(--p-motion-duration-150) var(--p-motion-ease-out);
 
         // stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 override
@@ -165,7 +166,8 @@
 
   transform: translate3d(-50%, -50%, 0) scale(0.25);
   opacity: 0;
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
+  transition:
+    opacity var(--p-motion-duration-100) var(--p-motion-ease),
     transform var(--p-motion-duration-100) var(--p-motion-ease);
 
   #{$se23} & {
@@ -176,7 +178,8 @@
     /* stylelint-disable-next-line  -- se23 override */
     transform: none !important;
 
-    transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
+    transition:
+      opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
       transform var(--p-motion-duration-100) var(--p-motion-ease-out);
 
     &.animated {

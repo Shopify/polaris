@@ -63,33 +63,58 @@
 .easing-multiple-string-arg {
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
-  transition: opacity 300ms easing('anticipate'),
+  transition:
+    opacity 300ms easing('anticipate'),
     left 300ms easing('anticipate');
-  transition: opacity 300ms var(--p-ease), left 300ms var(--p-ease);
+  transition:
+    opacity 300ms var(--p-ease),
+    left 300ms var(--p-ease);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
-  transition: opacity 300ms easing('excite'), left 300ms easing('excite');
-  transition: opacity 300ms var(--p-ease-in), left 300ms var(--p-ease-in);
-  transition: opacity 300ms var(--p-ease-out), left 300ms var(--p-ease-out);
+  transition:
+    opacity 300ms easing('excite'),
+    left 300ms easing('excite');
+  transition:
+    opacity 300ms var(--p-ease-in),
+    left 300ms var(--p-ease-in);
+  transition:
+    opacity 300ms var(--p-ease-out),
+    left 300ms var(--p-ease-out);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
-  transition: opacity 300ms easing('overshoot'), left 300ms easing('overshoot');
+  transition:
+    opacity 300ms easing('overshoot'),
+    left 300ms easing('overshoot');
 }
 
 .easing-multiple-non-string-arg {
-  transition: opacity 300ms var(--p-ease), left 300ms var(--p-ease);
+  transition:
+    opacity 300ms var(--p-ease),
+    left 300ms var(--p-ease);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
-  transition: opacity 300ms easing(anticipate), left 300ms easing(anticipate);
-  transition: opacity 300ms var(--p-ease), left 300ms var(--p-ease);
+  transition:
+    opacity 300ms easing(anticipate),
+    left 300ms easing(anticipate);
+  transition:
+    opacity 300ms var(--p-ease),
+    left 300ms var(--p-ease);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
-  transition: opacity 300ms easing(excite), left 300ms easing(excite);
-  transition: opacity 300ms var(--p-ease-in), left 300ms var(--p-ease-in);
-  transition: opacity 300ms var(--p-ease-out), left 300ms var(--p-ease-out);
+  transition:
+    opacity 300ms easing(excite),
+    left 300ms easing(excite);
+  transition:
+    opacity 300ms var(--p-ease-in),
+    left 300ms var(--p-ease-in);
+  transition:
+    opacity 300ms var(--p-ease-out),
+    left 300ms var(--p-ease-out);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
-  transition: opacity 300ms easing(overshoot), left 300ms easing(overshoot);
+  transition:
+    opacity 300ms easing(overshoot),
+    left 300ms easing(overshoot);
 }
 
 $easingFunc: 'ease-in';
@@ -107,5 +132,7 @@ $easingFunc: 'ease-in';
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
   // transition: opacity 300ms var(--p-ease), left 300ms easing(overshoot);
-  transition: opacity 300ms easing(base), left 300ms easing(overshoot);
+  transition:
+    opacity 300ms easing(base),
+    left 300ms easing(overshoot);
 }

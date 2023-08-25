@@ -96,7 +96,7 @@ function ListboxWithSearchExample() {
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
   const [filteredSegments, setFilteredSegments] = useState<
-    typeof segments[number][]
+    (typeof segments)[number][]
   >([]);
 
   const handleClickShowAll = () => {

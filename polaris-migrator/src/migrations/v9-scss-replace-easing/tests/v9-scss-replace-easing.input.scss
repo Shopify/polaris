@@ -37,23 +37,48 @@
 }
 
 .easing-multiple-string-arg {
-  transition: opacity 300ms easing('anticipate'),
+  transition:
+    opacity 300ms easing('anticipate'),
     left 300ms easing('anticipate');
-  transition: opacity 300ms easing('base'), left 300ms easing('base');
-  transition: opacity 300ms easing('excite'), left 300ms easing('excite');
-  transition: opacity 300ms easing('in'), left 300ms easing('in');
-  transition: opacity 300ms easing('out'), left 300ms easing('out');
-  transition: opacity 300ms easing('overshoot'), left 300ms easing('overshoot');
+  transition:
+    opacity 300ms easing('base'),
+    left 300ms easing('base');
+  transition:
+    opacity 300ms easing('excite'),
+    left 300ms easing('excite');
+  transition:
+    opacity 300ms easing('in'),
+    left 300ms easing('in');
+  transition:
+    opacity 300ms easing('out'),
+    left 300ms easing('out');
+  transition:
+    opacity 300ms easing('overshoot'),
+    left 300ms easing('overshoot');
 }
 
 .easing-multiple-non-string-arg {
-  transition: opacity 300ms easing(), left 300ms easing();
-  transition: opacity 300ms easing(anticipate), left 300ms easing(anticipate);
-  transition: opacity 300ms easing(base), left 300ms easing(base);
-  transition: opacity 300ms easing(excite), left 300ms easing(excite);
-  transition: opacity 300ms easing(in), left 300ms easing(in);
-  transition: opacity 300ms easing(out), left 300ms easing(out);
-  transition: opacity 300ms easing(overshoot), left 300ms easing(overshoot);
+  transition:
+    opacity 300ms easing(),
+    left 300ms easing();
+  transition:
+    opacity 300ms easing(anticipate),
+    left 300ms easing(anticipate);
+  transition:
+    opacity 300ms easing(base),
+    left 300ms easing(base);
+  transition:
+    opacity 300ms easing(excite),
+    left 300ms easing(excite);
+  transition:
+    opacity 300ms easing(in),
+    left 300ms easing(in);
+  transition:
+    opacity 300ms easing(out),
+    left 300ms easing(out);
+  transition:
+    opacity 300ms easing(overshoot),
+    left 300ms easing(overshoot);
 }
 
 $easingFunc: 'ease-in';
@@ -64,5 +89,7 @@ $easingFunc: 'ease-in';
   // Can only handle hard coded values
   transition-timing-function: easing($easingFunc);
   // Value replacement with legacy easing function value
-  transition: opacity 300ms easing(base), left 300ms easing(overshoot);
+  transition:
+    opacity 300ms easing(base),
+    left 300ms easing(overshoot);
 }

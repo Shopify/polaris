@@ -183,7 +183,9 @@ $breakpointNav: $breakpointTablet;
   &.isCurrent {
     background: var(--surface);
     font-weight: var(--font-weight-500);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.033), 0 2px 50px rgba(0, 0, 0, 0.033);
+    box-shadow:
+      0 2px 5px rgba(0, 0, 0, 0.033),
+      0 2px 50px rgba(0, 0, 0, 0.033);
 
     &:before {
       content: '';

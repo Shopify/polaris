@@ -95,7 +95,7 @@ function ResourceListExample() {
     </LegacyCard>
   );
 
-  function renderItem(item: typeof items[number], _: string, index: number) {
+  function renderItem(item: (typeof items)[number], _: string, index: number) {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 

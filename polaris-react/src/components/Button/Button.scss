@@ -10,14 +10,16 @@
   );
   --pc-button-slim-vertical-padding: calc(
     (
-        var(--pc-button-slim-min-height) - var(--p-font-line-height-2) -
-          var(--p-space-05)
+        var(--pc-button-slim-min-height) - var(--p-font-line-height-2) - var(
+            --p-space-05
+          )
       ) / 2
   );
   --pc-button-large-vertical-padding: calc(
     (
-        var(--pc-button-large-min-height) - var(--p-font-line-height-2) -
-          var(--p-space-05)
+        var(--pc-button-large-min-height) - var(--p-font-line-height-2) - var(
+            --p-space-05
+          )
       ) / 2
   );
   --pc-button-spinner-size: 20px;
@@ -43,7 +45,8 @@
     --pc-button-micro-min-height: var(--p-font-line-height-3);
 
     box-shadow: var(--pc-button-shadow);
-    transition: background-color 75ms var(--p-motion-ease-out),
+    transition:
+      background-color 75ms var(--p-motion-ease-out),
       box-shadow 75ms var(--p-motion-ease-out);
     // stylelint-enable
 

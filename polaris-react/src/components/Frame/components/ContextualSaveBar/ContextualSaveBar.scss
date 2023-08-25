@@ -90,8 +90,10 @@
     --pc-button-color-hover: rgba(250, 250, 250, 1);
     --pc-button-color-active: rgba(247, 247, 247, 1);
     --pc-button-color-depressed: rgba(247, 247, 247, 1);
-    --pc-button-color-disabled:  rgba(255, 255, 255, 0.2);
-    --pc-button-shadow-inset: 0px 2px 1px 0px rgba(26, 26, 26, 0.2) inset, 1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset, -1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset;
+    --pc-button-color-disabled: rgba(255, 255, 255, 0.2);
+    --pc-button-shadow-inset: 0px 2px 1px 0px rgba(26, 26, 26, 0.2) inset,
+      1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset,
+      -1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset;
 
     &::before {
       top: 0;
@@ -115,7 +117,7 @@
     }
 
     &[class*='Polaris-Button--disabled'],
-    &[class*='Button-disabled']{
+    &[class*='Button-disabled'] {
       --pc-button-text: var(--p-color-text-subdued);
       background: var(--pc-button-color-disabled);
     }
@@ -129,7 +131,7 @@
     --pc-button-text: var(--p-color-text-inverse);
 
     &::after {
-     content: none;
+      content: none;
     }
 
     &:hover {

@@ -42,7 +42,7 @@ const sizes: {
 
 const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
 
-type Style = typeof STYLE_CLASSES[number];
+type Style = (typeof STYLE_CLASSES)[number];
 
 const styleInitialsDefault: {
   [S in Style]: string;

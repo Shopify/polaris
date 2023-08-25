@@ -52,8 +52,8 @@ export function ActionList({
 
   const filteredSections = finalSections?.map((section) => ({
     ...section,
-    items: section.items.filter((item) =>
-      item.content?.toLowerCase().includes(searchText.toLowerCase()),
+    items: section.items.filter(
+      (item) => item.content?.toLowerCase().includes(searchText.toLowerCase()),
     ),
   }));
 

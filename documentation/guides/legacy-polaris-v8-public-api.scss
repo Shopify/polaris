@@ -1575,7 +1575,8 @@ $nav-min-window: em(layout-width(page-with-nav));
       background-color: var(--p-interactive);
       opacity: 0;
       transform: scale(0.25);
-      transition: opacity duration(fast) var(--p-ease),
+      transition:
+        opacity duration(fast) var(--p-ease),
         transform duration(fast) var(--p-ease);
     }
 

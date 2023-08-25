@@ -10,8 +10,8 @@ function ModalExample() {
 
   const handleClose = useCallback(() => {
     setActive(false);
-    requestAnimationFrame(() =>
-      button.current?.querySelector('button')?.focus(),
+    requestAnimationFrame(
+      () => button.current?.querySelector('button')?.focus(),
     );
   }, []);
 

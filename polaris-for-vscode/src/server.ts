@@ -17,7 +17,7 @@ import {TextDocument} from 'vscode-languageserver-textdocument';
 
 const excludedTokenGroupNames = [] as const;
 
-type ExcludedTokenGroupName = typeof excludedTokenGroupNames[number];
+type ExcludedTokenGroupName = (typeof excludedTokenGroupNames)[number];
 
 type TokenGroupName = Exclude<keyof typeof metadata, ExcludedTokenGroupName>;
 

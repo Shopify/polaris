@@ -39,11 +39,12 @@
       &::before {
         #{$se23} & {
           background-color: var(--p-color-icon-on-color);
-          transition: opacity var(--p-motion-duration-150)
-              var(--p-motion-ease-out),
+          transition:
+            opacity var(--p-motion-duration-150) var(--p-motion-ease-out),
             transform var(--p-motion-duration-150) var(--p-motion-ease-out);
         }
-        transition: opacity var(--p-motion-duration-150) var(--p-motion-ease),
+        transition:
+          opacity var(--p-motion-duration-150) var(--p-motion-ease),
           transform var(--p-motion-duration-150) var(--p-motion-ease);
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -118,7 +119,8 @@
       var(--p-motion-ease-out);
 
     &::before {
-      transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
+      transition:
+        opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
         transform var(--p-motion-duration-100) var(--p-motion-ease-out);
     }
   }
@@ -156,7 +158,8 @@
     width: var(--pc-icon-size-small);
     background-color: var(--p-color-bg-interactive);
     border-radius: var(--p-border-radius-full);
-    transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
+    transition:
+      opacity var(--p-motion-duration-100) var(--p-motion-ease),
       transform var(--p-motion-duration-100) var(--p-motion-ease);
 
     @media (forced-colors: active) {

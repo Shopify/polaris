@@ -11,7 +11,9 @@
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: inset 0 0 0 1px var(--border-color), 0 0 0 5px var(--surface);
+    box-shadow:
+      inset 0 0 0 1px var(--border-color),
+      0 0 0 5px var(--surface);
     pointer-events: none;
     border-radius: var(--border-radius-400);
   }
