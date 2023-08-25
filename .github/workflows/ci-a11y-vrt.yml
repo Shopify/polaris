@@ -8,11 +8,13 @@ on:
     paths:
       - 'polaris-react/src/**'
       - 'polaris-react/playground/**'
+      - 'polaris-react/.storybook/**'
       - 'polaris-tokens/src/**'
   pull_request:
     paths:
       - 'polaris-react/src/**'
       - 'polaris-react/playground/**'
+      - 'polaris-react/.storybook/**'
       - 'polaris-tokens/src/**'
 
 jobs:
@@ -45,9 +47,9 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris-react/build-internal/cache
-          key: ${{ runner.os }}-accessibility-test-v1-${{ github.sha }}
+          key: ${{ runner.os }}-accessibility-test-v2-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-accessibility-test-v1-
+            ${{ runner.os }}-accessibility-test-v2-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
@@ -85,9 +87,9 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris-react/build-internal/cache
-          key: ${{ runner.os }}-visual-regression-test-v1-${{ github.sha }}
+          key: ${{ runner.os }}-visual-regression-test-v2-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-visual-regression-test-v1-
+            ${{ runner.os }}-visual-regression-test-v2-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile

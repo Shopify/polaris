@@ -174,30 +174,3 @@ export function WithLinkComponent(_, context) {
     </AppProvider>
   );
 }
-
-export const WithSummerEditionsFeature = {
-  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => {
-    const CheckFeature = () => {
-      return (
-        <Card>
-          <BlockStack gap="4">
-            <Text
-              as="h2"
-              variant={polarisSummerEditions2023 ? 'headingXl' : 'bodyMd'}
-              color={polarisSummerEditions2023 ? 'critical' : undefined}
-            >
-              {`Polaris Summer Editions flag is turned ${
-                polarisSummerEditions2023 ? 'ON' : 'OFF'
-              }`}
-            </Text>
-          </BlockStack>
-        </Card>
-      );
-    };
-    return (
-      <AppProvider features={{polarisSummerEditions2023}} i18n={{}}>
-        <CheckFeature />
-      </AppProvider>
-    );
-  },
-};

@@ -71,20 +71,7 @@ addons.register('polaris/global-controls', () => {
   });
 });
 
-export const featureFlagOptions = {
-  polarisSummerEditions2023: {
-    name: 'polarisSummerEditions2023',
-    description: 'Toggle the summer editions feature flag',
-    defaultValue: true,
-    control: {type: 'boolean'},
-  },
-  polarisSummerEditions2023ShadowBevelOptOut: {
-    name: 'polarisSummerEditions2023ShadowBevelOptOut',
-    description: 'Toggle the shadow-bevel opt out feature flag',
-    defaultValue: false,
-    control: {type: 'boolean'},
-  },
-};
+export const featureFlagOptions = {};
 
 export const gridOptions = {
   showGrid: {
