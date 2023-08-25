@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {ThemeShape} from '../src/themes/types';
+import {themeDefault} from '../src/themes';
 
 const outputDir = path.join(__dirname, '../dist/json');
 
-export async function toJSON(themeDefault: ThemeShape) {
+export async function toJSON() {
   await fs.promises.mkdir(outputDir, {recursive: true}).catch((error) => {
     if (error.code !== 'EEXIST') {
       throw error;
