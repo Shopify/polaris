@@ -637,7 +637,7 @@ export function Split() {
       <ButtonGroup variant="segmented">
         <Button variant="primary">Save</Button>
 
-        <div style={{width: '0px'}} />
+        <div style={{width: '3px'}} />
 
         <Popover
           active={active}
@@ -645,6 +645,29 @@ export function Split() {
           activator={
             <Button
               variant="primary"
+              onClick={() => setActive(true)}
+              icon={ChevronDownMinor}
+              accessibilityLabel="Other save actions"
+            />
+          }
+          autofocusTarget="first-node"
+          onClose={() => setActive(false)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Save as draft'}]}
+          />
+        </Popover>
+      </ButtonGroup>
+
+      <ButtonGroup variant="segmented">
+        <Button>Save</Button>
+
+        <Popover
+          active={active}
+          preferredAlignment="right"
+          activator={
+            <Button
               onClick={() => setActive(true)}
               icon={ChevronDownMinor}
               accessibilityLabel="Other save actions"

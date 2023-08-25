@@ -390,6 +390,13 @@
           "cancel": "Avbryt"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Tøm",
+        "search": "Søk",
+        "placeholder": "Søk i handlinger"
+      }
     }
   }
 }

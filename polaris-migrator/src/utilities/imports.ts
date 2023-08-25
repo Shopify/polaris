@@ -1,5 +1,5 @@
-import type core from 'jscodeshift';
 import type {Collection} from 'jscodeshift';
+import type core from 'jscodeshift';
 
 export function hasImportDeclaration(
   j: core.JSCodeshift,
@@ -221,10 +221,16 @@ export function removeImportSpecifier(
   getImportSpecifier(j, source, specifier, sourcePath).remove();
 }
 
+interface NormalizeImportSourcePathsOptions {
+  relative?: boolean;
+  from: string;
+  to: string;
+}
+
 export function normalizeImportSourcePaths(
   j: core.JSCodeshift,
   source: Collection<any>,
-  options = {
+  options: NormalizeImportSourcePathsOptions = {
     relative: false,
     from: '',
     to: '',

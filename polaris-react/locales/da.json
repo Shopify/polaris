@@ -390,6 +390,13 @@
           "cancel": "Annuller"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Ryd",
+        "search": "Søg",
+        "placeholder": "Søg efter handlinger"
+      }
     }
   }
 }

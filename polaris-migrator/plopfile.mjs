@@ -10,10 +10,10 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 // eslint-disable-next-line import/no-default-export
 export default async function run(plop) {
   plop.setGenerator(
-    'scss-migration',
+    'scss',
     await plopDir({
       plop,
-      templateDir: path.join(__dirname, './templates/scss-migration'),
+      templateDir: path.join(__dirname, './templates/scss'),
       outputDir: path.join(__dirname, './src/migrations'),
       prompts: [
         {
@@ -27,10 +27,10 @@ export default async function run(plop) {
   );
 
   plop.setGenerator(
-    'typescript-migration',
+    'typescript',
     await plopDir({
       plop,
-      templateDir: path.join(__dirname, './templates/typescript-migration'),
+      templateDir: path.join(__dirname, './templates/typescript'),
       outputDir: path.join(__dirname, './src/migrations'),
       prompts: [
         {

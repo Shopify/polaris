@@ -1,8 +1,0 @@
-@use 'global-styles/legacy-polaris-v8';
-
-.my-class {
-  color: legacy-polaris-v8.color('ink');
-  color: legacy-polaris-v8.color('ink', 'lighter');
-  color: legacy-polaris-v8.color('ink', 'lighter', #f2ece4);
-  color: var(--p-surface, legacy-polaris-v8.color('white'));
-}

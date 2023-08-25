@@ -390,6 +390,13 @@
           "cancel": "İptal"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Temizle",
+        "search": "Ara",
+        "placeholder": "Eylemleri arayın"
+      }
     }
   }
 }

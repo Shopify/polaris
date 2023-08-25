@@ -390,6 +390,13 @@
           "cancel": "Hủy"
         }
       }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Xóa",
+        "search": "Tìm kiếm",
+        "placeholder": "Tìm kiếm thao tác"
+      }
     }
   }
 }
