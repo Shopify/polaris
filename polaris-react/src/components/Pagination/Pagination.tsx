@@ -175,7 +175,7 @@ export function Pagination({
     <nav aria-label={navLabel} ref={node} className={styles.Pagination}>
       {previousButtonEvents}
       {nextButtonEvents}
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         {constructedPrevious}
         {labelMarkup}
         {constructedNext}

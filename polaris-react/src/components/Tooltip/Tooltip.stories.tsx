@@ -229,7 +229,7 @@ export function VisibleOnlyWithChildInteraction() {
   return (
     <Box paddingBlockStart="24">
       <div style={{width: '200px'}}>
-        <ButtonGroup segmented fullWidth>
+        <ButtonGroup variant="segmented" fullWidth>
           <Tooltip content="Bold" dismissOnMouseOut>
             <Button>B</Button>
           </Tooltip>
@@ -322,7 +322,7 @@ export function WithSuffix() {
   return (
     <Box padding="16" background="bg">
       <InlineStack>
-        <ButtonGroup segmented fullWidth>
+        <ButtonGroup variant="segmented" fullWidth>
           <Tooltip
             content={
               <InlineStack gap="2">
@@ -434,7 +434,7 @@ export function Alignment() {
   return (
     <Box paddingBlockStart="24">
       <InlineStack>
-        <ButtonGroup segmented fullWidth>
+        <ButtonGroup variant="segmented" fullWidth>
           <Tooltip content="Content is longer than the activator">
             <Button>Bold</Button>
           </Tooltip>

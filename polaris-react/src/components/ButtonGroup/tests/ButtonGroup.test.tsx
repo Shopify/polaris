@@ -29,14 +29,15 @@ describe('<ButtonGroup />', () => {
       expect(item.find(Button)).toContainReactText('Cancel');
     });
 
-    it('adds a data-buttongroup-segmented to the outter div when segmented', () => {
+    it('adds a data-buttongroup-variant to the outter div when variant is passed', () => {
+      const variant = 'segmented';
       const buttonGroup = mountWithApp(
-        <ButtonGroup segmented>
+        <ButtonGroup variant={variant}>
           <Button />
         </ButtonGroup>,
       );
       const selector: any = {
-        'data-buttongroup-segmented': true,
+        'data-buttongroup-variant': variant,
       };
       expect(buttonGroup).toContainReactComponent('div', selector);
     });
