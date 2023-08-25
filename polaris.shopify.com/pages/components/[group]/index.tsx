@@ -12,7 +12,10 @@ import PageMeta from '../../../src/components/PageMeta';
 import Longform from '../../../src/components/Longform';
 import Markdown from '../../../src/components/Markdown';
 import {Stack} from '../../../src/components/Stack';
-import {serializeMdx} from '../../../src/components/Markdown/serialize';
+import {
+  SerializedMdx,
+  serializeMdx,
+} from '../../../src/components/Markdown/serialize';
 
 interface Group {
   title?: string;
@@ -35,14 +38,14 @@ interface Props {
   componentDescriptions?: {
     [key: string]: string;
   };
+  description: SerializedMdx;
+  mdx: SerializedMdx<FrontMatter>;
 }
 
 export default function GroupPage({
   group,
   components: componentPaths,
-  // frontMatter,
   description,
-  relatedResources,
   mdx,
   componentDescriptions,
 }: Props) {
