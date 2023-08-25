@@ -77,7 +77,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       (scrollY: number, options: ScrollToOptions = {}) => {
         const optionsBehavior = options.behavior || 'smooth';
         const behavior = prefersReducedMotion() ? 'auto' : optionsBehavior;
-        // @ts-expect-error TS removed "instant" option but browsers support it.
+        // @ts-expect-error TS removed "instant" option but browsers support it
         scrollArea.current?.scrollTo({top: scrollY, behavior});
       },
       [],
@@ -85,6 +85,20 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
 
     const defaultRef = useRef();
     useImperativeHandle(forwardedRef || defaultRef, () => ({scrollTo}));
+
+    const handleShadowPlacement = (
+      showTopShadow: boolean,
+      showBottomShadow: boolean,
+    ) => {
+      console.log(
+        'PLACING SHADOWS: ',
+        `TOP ${showTopShadow ? 'VISIBLE' : 'HIDDEN'}`,
+        `BOTTOM ${showBottomShadow ? 'VISIBLE' : 'HIDDEN'}`,
+      );
+
+      setTopShadow(showTopShadow);
+      setBottomShadow(showBottomShadow);
+    };
 
     const handleScroll = useCallback(() => {
       const currentScrollArea = scrollArea.current;
@@ -101,10 +115,11 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
           scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
         );
 
-        setTopShadow(isBelowTopOfScroll);
-        setBottomShadow(!isAtBottomOfScroll);
+        handleShadowPlacement(isBelowTopOfScroll, !isAtBottomOfScroll);
 
         if (canScroll && isAtBottomOfScroll && onScrolledToBottom) {
+          setTopShadow(isBelowTopOfScroll);
+          setBottomShadow(!isAtBottomOfScroll);
           onScrolledToBottom();
         }
       });
