@@ -3,16 +3,19 @@ import {AlertTriangleIcon} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
-// eslint-disable-next-line import/no-deprecated
-import {LegacyStack} from '../../../LegacyStack';
+import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
+import type {
+  ContextualSaveBarProps,
+  ContextualSaveBarAction,
+} from '../../../../utilities/frame';
 import {useFrame} from '../../../../utilities/frame';
-import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
+import {isInterface} from '../../../../utilities/is-interface';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.module.scss';
@@ -77,25 +80,34 @@ export function ContextualSaveBar({
     </Button>
   );
 
+  let saveActionMarkup;
+
   const saveActionContent =
-    saveAction && saveAction.content
+    saveAction && 'content' in saveAction
       ? saveAction.content
       : i18n.translate('Polaris.ContextualSaveBar.save');
 
-  const saveActionMarkup = saveAction && (
-    <Button
-      variant="primary"
-      tone="success"
-      size="large"
-      url={saveAction.url}
-      onClick={saveAction.onAction}
-      loading={saveAction.loading}
-      disabled={saveAction.disabled}
-      accessibilityLabel={saveAction.content}
-    >
-      {saveActionContent}
-    </Button>
-  );
+  if (saveAction && isInterface(saveAction)) {
+    const {url, loading, disabled, onAction} =
+      saveAction as ContextualSaveBarAction;
+
+    saveActionMarkup = (
+      <Button
+        variant="primary"
+        tone="success"
+        size="large"
+        onClick={onAction}
+        url={url}
+        loading={loading}
+        disabled={disabled}
+        accessibilityLabel={saveActionContent}
+      >
+        {saveActionContent}
+      </Button>
+    );
+  } else {
+    saveActionMarkup = saveAction;
+  }
 
   const width = getWidth(logo, 104);
 
@@ -134,11 +146,11 @@ export function ContextualSaveBar({
             )}
           </div>
           <div className={styles.ActionContainer}>
-            <LegacyStack spacing="tight" wrap={false}>
+            <InlineStack gap="200" wrap={false}>
               {secondaryMenu}
               {discardActionMarkup}
               {saveActionMarkup}
-            </LegacyStack>
+            </InlineStack>
           </div>
         </div>
       </div>

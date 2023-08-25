@@ -13,7 +13,7 @@ export interface Logo {
   width?: number;
 }
 
-interface ContextualSaveBarAction {
+export interface ContextualSaveBarAction {
   /** A destination to link to */
   url?: string;
   /** Content the action displays */
@@ -40,7 +40,7 @@ export interface ContextualSaveBarProps {
   /** Accepts a string of content that will be rendered to the left of the actions */
   message?: string;
   /** Save or commit contextual save bar action with text defaulting to 'Save' */
-  saveAction?: ContextualSaveBarAction;
+  saveAction?: ContextualSaveBarAction | React.JSX.Element;
   /** Discard or cancel contextual save bar action with text defaulting to 'Discard' */
   discardAction?: ContextualSaveBarCombinedActionProps;
   /** Remove the normal max-width on the contextual save bar */
