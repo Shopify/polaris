@@ -16,7 +16,6 @@ function TopBarWrapper({
   initials,
   customActivator,
   message,
-  se23,
 }: {
   userActions?: UserMenuProps['actions'];
   name?: UserMenuProps['name'];
@@ -24,7 +23,6 @@ function TopBarWrapper({
   initials?: UserMenuProps['initials'];
   customActivator?: UserMenuProps['customActivator'];
   message?: UserMenuProps['message'];
-  se23?: boolean;
 }) {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
@@ -56,10 +54,9 @@ function TopBarWrapper({
   }, []);
 
   const logo = {
-    width: se23 ? 92 : 96,
-    topBarSource: se23
-      ? 'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-monotone-white-7edf88561b256e005e9b9d003c283c39dcbd74ec844dfc9a3912edeec39b4d7e.svg'
-      : 'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg',
+    width: 92,
+    topBarSource:
+      'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-monotone-white-7edf88561b256e005e9b9d003c283c39dcbd74ec844dfc9a3912edeec39b4d7e.svg',
     url: '#',
     accessibilityLabel: 'Hem Canada',
   };
@@ -145,7 +142,7 @@ function TopBarWrapper({
   );
 }
 
-export function Default(_, context) {
+export function Default() {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
@@ -159,12 +156,11 @@ export function Default(_, context) {
       userActions={userActions}
       name="Xquenda Andreev"
       initials="XA"
-      se23={context.globals.polarisSummerEditions2023}
     />
   );
 }
 
-export function WithCustomActivator(_, context) {
+export function WithCustomActivator() {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
@@ -181,15 +177,7 @@ export function WithCustomActivator(_, context) {
         <Text as="p" alignment="start" fontWeight="medium" truncate>
           Xquenda Andreev
         </Text>
-        <Text
-          as="p"
-          variant="bodySm"
-          alignment="start"
-          color={
-            context.globals.polarisSummerEditions2023 ? undefined : 'subdued'
-          }
-          truncate
-        >
+        <Text as="p" variant="bodySm" alignment="start" truncate>
           Hem Canada
         </Text>
       </span>
@@ -202,12 +190,11 @@ export function WithCustomActivator(_, context) {
       name="Xquenda Andreev"
       detail="Hem Canada"
       customActivator={customActivator}
-      se23={context.globals.polarisSummerEditions2023}
     />
   );
 }
 
-export function WithMessage(_, context) {
+export function WithMessage() {
   const userActions: UserMenuProps['actions'] = [
     {
       items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
@@ -229,7 +216,6 @@ export function WithMessage(_, context) {
         link: {to: 'https://www.shopify.com', content: 'Link content'},
         action: {content: 'Action content', onClick: () => {}},
       }}
-      se23={context.globals.polarisSummerEditions2023}
     />
   );
 }

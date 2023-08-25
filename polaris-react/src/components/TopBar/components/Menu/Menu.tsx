@@ -5,7 +5,6 @@ import type {ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {Box} from '../../../Box';
 import {classNames} from '../../../../utilities/css';
-import {useFeatures} from '../../../../utilities/features';
 
 import {Message} from './components';
 import type {MessageProps} from './components';
@@ -46,7 +45,6 @@ export function Menu(props: MenuProps) {
     customWidth,
     userMenu,
   } = props;
-  const {polarisSummerEditions2023} = useFeatures();
 
   const badgeProps = message &&
     message.badge && {
@@ -75,9 +73,7 @@ export function Menu(props: MenuProps) {
             type="button"
             className={classNames(
               styles.Activator,
-              userMenu &&
-                polarisSummerEditions2023 &&
-                styles['Activator-userMenu'],
+              userMenu && styles['Activator-userMenu'],
             )}
             onClick={onOpen}
             aria-label={accessibilityLabel}
