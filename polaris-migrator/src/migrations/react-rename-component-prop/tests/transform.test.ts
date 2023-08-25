@@ -16,16 +16,25 @@ const fixtures = [
       componentName: 'MyComponent',
       from: 'prop',
       to: 'newProp',
-      newValue: 'new value',
+      newValue: 'new-value',
     },
   },
   {
     name: 'react-rename-compound-component-prop-with-new-value',
     options: {
-      componentName: 'MyComponent.SubComponent',
+      componentName: 'MyComponent.CompoundComponent',
       from: 'prop',
       to: 'newProp',
-      newValue: 'new value',
+      newValue: 'new-value',
+    },
+  },
+  {
+    name: 'react-rename-component-prop-with-boolean',
+    options: {
+      componentName: 'MyComponent',
+      from: 'booleanProp',
+      to: 'variant',
+      newValue: 'boolean-prop-value',
     },
   },
 ];

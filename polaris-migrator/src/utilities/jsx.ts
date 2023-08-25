@@ -165,7 +165,7 @@ export function renameProps(
     const isFromProp = (prop: unknown): prop is keyof typeof props =>
       Object.keys(props).includes(prop as string);
 
-    if (node.type !== 'JSXAttribute' && !isFromProp(node.name.name)) {
+    if (!(node.type === 'JSXAttribute' && isFromProp(node.name.name))) {
       return node;
     }
 
