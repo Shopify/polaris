@@ -7,7 +7,6 @@ import {MessageIndicator} from '../../../MessageIndicator';
 import {Menu} from '../Menu';
 import type {MenuProps} from '../Menu';
 import {Text} from '../../../Text';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './UserMenu.scss';
 
@@ -50,7 +49,6 @@ export function UserMenu({
   customWidth,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const activatorContentMarkup = customActivator ? (
     customActivator
@@ -74,7 +72,7 @@ export function UserMenu({
       </span>
       <MessageIndicator active={showIndicator}>
         <Avatar
-          size={polarisSummerEditions2023 ? 'medium' : 'small'}
+          size="medium"
           initials={initials && initials.replace(' ', '')}
           source={avatar}
           name={name}
