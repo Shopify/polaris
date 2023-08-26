@@ -22,5 +22,3 @@ export const metaThemeBase = createMetaThemeBase({
   space: tokensToRems(space),
   zIndex,
 });
-
-export type MetaThemeBase = typeof metaThemeBase;
