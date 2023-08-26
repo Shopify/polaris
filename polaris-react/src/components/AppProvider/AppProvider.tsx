@@ -7,7 +7,7 @@ import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
-import {ThemeNameContext} from '../../utilities/use-theme-name';
+import {ThemeContext, getTheme} from '../../utilities/use-theme';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -131,7 +131,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {intl, link} = this.state;
 
     return (
-      <ThemeNameContext.Provider value={themeName}>
+      <ThemeContext.Provider value={getTheme(themeName)}>
         <FeaturesContext.Provider value={features}>
           <I18nContext.Provider value={intl}>
             <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
@@ -151,7 +151,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
             </ScrollLockManagerContext.Provider>
           </I18nContext.Provider>
         </FeaturesContext.Provider>
-      </ThemeNameContext.Provider>
+      </ThemeContext.Provider>
     );
   }
 }
