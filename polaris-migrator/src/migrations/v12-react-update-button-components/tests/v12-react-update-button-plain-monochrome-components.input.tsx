@@ -6,19 +6,19 @@ export function App() {
   const isPolarisUplift = true;
   return (
     <>
-      <Button plain primary>
+      <Button plain monochrome>
         Edit
       </Button>
-      <Button primary plain>
+      <Button monochrome plain>
         Edit
       </Button>
-      <Button plain primary={isPolarisUplift}>
+      <Button plain monochrome={isPolarisUplift}>
         Edit
       </Button>
-      <Button plain={isPolarisUplift} primary>
+      <Button plain={isPolarisUplift} monochrome>
         Edit
       </Button>
-      <Button icon={PhoneMajor} plain primary />
+      <Button icon={PhoneMajor} plain monochrome />
     </>
   );
 }

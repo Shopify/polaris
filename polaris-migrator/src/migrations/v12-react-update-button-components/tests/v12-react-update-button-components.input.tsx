@@ -11,9 +11,6 @@ export function App() {
       <Button icon={PhoneMajor} size="large" monochrome outline>
         Call
       </Button>
-      <Button plain monochrome>
-        Edit
-      </Button>
       <Button plain>Edit</Button>
     </>
   );

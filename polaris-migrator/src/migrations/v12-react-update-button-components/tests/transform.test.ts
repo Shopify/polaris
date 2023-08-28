@@ -4,6 +4,7 @@ const transform = 'v12-react-update-button-components';
 const fixtures = [
   'v12-react-update-button-components',
   'v12-react-update-button-primary-plain-components',
+  'v12-react-update-button-plain-monochrome-components',
 ];
 
 for (const fixture of fixtures) {
