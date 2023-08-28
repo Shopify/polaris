@@ -166,16 +166,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
 
-    const itemPaddingInline: React.ComponentProps<typeof Box>['padding'] = '3';
-    const itemPaddingBlock: React.ComponentProps<typeof Box>['padding'] = '3';
-
-    const gapBetweenCheckboxAndMedia: React.ComponentProps<
-      typeof InlineStack
-    >['gap'] = '3';
-    const gapBetweenOwnedAndChildren: React.ComponentProps<
-      typeof InlineGrid
-    >['gap'] = '3';
-
     if (selectable) {
       const checkboxAccessibilityLabel =
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
@@ -194,14 +184,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                 labelHidden
                 checked={selected}
                 disabled={loading}
-                bleedInlineStart={itemPaddingInline}
-                bleedInlineEnd={
-                  media
-                    ? gapBetweenCheckboxAndMedia
-                    : gapBetweenOwnedAndChildren
-                }
-                bleedBlockStart={itemPaddingBlock}
-                bleedBlockEnd={itemPaddingBlock}
+                bleedInlineStart="3"
+                bleedInlineEnd="3"
+                bleedBlockStart="3"
+                bleedBlockEnd="3"
                 fill
                 labelClassName={styles.CheckboxLabel}
               />
@@ -214,7 +200,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     if (media || selectable) {
       ownedMarkup = (
         <InlineStack
-          gap={gapBetweenCheckboxAndMedia}
+          gap="3"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
@@ -298,16 +284,16 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       <Box
         id={this.props.id}
         position="relative"
-        paddingInlineStart={itemPaddingInline}
-        paddingInlineEnd={itemPaddingInline}
-        paddingBlockStart={itemPaddingBlock}
-        paddingBlockEnd={itemPaddingBlock}
+        paddingInlineStart="3"
+        paddingInlineEnd="3"
+        paddingBlockStart="3"
+        paddingBlockEnd="3"
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
         <InlineGrid columns={{xs: '1fr auto'}}>
           <InlineGrid
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
-            gap={gapBetweenOwnedAndChildren}
+            gap="3"
           >
             {ownedMarkup}
             <InlineStack blockAlign={getAlignment(verticalAlignment)}>
