@@ -104,7 +104,6 @@ export function FilterPill({
     selected && styles.ActiveFilterButton,
     popoverActive && styles.FocusFilterButton,
     focused && styles.focusedFilterButton,
-    disabled && styles.disabledFilterButton,
   );
 
   const clearButtonClassNames = classNames(
@@ -136,7 +135,6 @@ export function FilterPill({
           onClick={togglePopoverActive}
           className={toggleButtonClassNames}
           type="button"
-          disabled={disabled}
         >
           <InlineStack wrap={false} align="center" blockAlign="center" gap="0">
             {selected ? (
@@ -158,7 +156,6 @@ export function FilterPill({
             className={clearButtonClassNames}
             type="button"
             aria-label={i18n.translate('Polaris.FilterPill.clear')}
-            disabled={disabled}
           >
             <div className={styles.IconWrapper}>
               <Icon source={CancelSmallMinor} tone="base" />
@@ -189,7 +186,7 @@ export function FilterPill({
   return (
     <div ref={elementRef}>
       <Popover
-        active={popoverActive && !disabled}
+        active={popoverActive}
         activator={activator}
         key={filterKey}
         onClose={handlePopoverClose}
