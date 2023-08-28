@@ -58,7 +58,7 @@ export const shadow: {
     value: 'none',
   },
   'shadow-xs': {
-    value: '0px 0px 2px rgba(31, 33, 36, 0.24)',
+    value: '0px 1px 0px rgba(0, 0, 0, 0.07)',
     valueExperimental: '0px 1px 0px rgba(0, 0, 0, 0.07)',
   },
   'shadow-sm': {

@@ -268,7 +268,7 @@ export const color: {
     description: '',
   },
   'color-bg-app': {
-    value: colors.gray[200],
+    value: colorsExperimental.gray[6](),
     valueExperimental: colorsExperimental.gray[6](),
     description: '',
   },
@@ -571,7 +571,7 @@ export const color: {
     description: '',
   },
   'color-border': {
-    value: colors.gray[500],
+    value: colorsExperimental.gray[8](),
     valueExperimental: colorsExperimental.gray[8](),
     description: '',
   },
@@ -775,7 +775,7 @@ export const color: {
     description: '',
   },
   'color-text': {
-    value: colors.gray[900],
+    value: colorsExperimental.gray[15](),
     valueExperimental: colorsExperimental.gray[15](),
     description: '',
   },
