@@ -8,10 +8,12 @@ export function App() {
       <Button destructive disabled>
         Delete App
       </Button>
-      <Button icon={PhoneMajor} size="large" monochrome>
+      <Button icon={PhoneMajor} size="large">
         Call
       </Button>
       <Button plain>Edit</Button>
+      <Button>Monochrome</Button>
+      <Button>Outline</Button>
     </>
   );
 }

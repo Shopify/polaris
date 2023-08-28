@@ -12,6 +12,8 @@ export function App() {
         Call
       </Button>
       <Button plain>Edit</Button>
+      <Button monochrome>Monochrome</Button>
+      <Button outline>Outline</Button>
     </>
   );
 }

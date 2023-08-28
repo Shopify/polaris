@@ -39,6 +39,7 @@ export default function transformer(
 
   // Remove `outline` prop from Button
   removeProp(j, source, componentName, 'outline');
+  removeProp(j, source, componentName, 'monochrome');
 
   return source.toSource();
 }
