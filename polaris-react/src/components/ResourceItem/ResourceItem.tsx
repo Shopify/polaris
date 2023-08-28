@@ -19,7 +19,6 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import type {BreakpointsDirectionAlias} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
@@ -85,7 +84,6 @@ interface PropsFromWrapper {
   breakpoints?: BreakpointsMatches;
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
-  features: ReturnType<typeof useFeatures>;
 }
 
 interface State {
@@ -157,7 +155,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, hasBulkActions, loading, resourceName},
       i18n,
-      features: {polarisSummerEditions2023},
       verticalAlignment,
       dataHref,
       breakpoints,
@@ -168,17 +165,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
-
-    const itemPaddingInline: React.ComponentProps<typeof Box>['padding'] =
-      polarisSummerEditions2023 ? '3' : {xs: '4', sm: '5'};
-    const itemPaddingBlock: React.ComponentProps<typeof Box>['padding'] = '3';
-
-    const gapBetweenCheckboxAndMedia: React.ComponentProps<
-      typeof InlineStack
-    >['gap'] = polarisSummerEditions2023 ? '3' : '4';
-    const gapBetweenOwnedAndChildren: React.ComponentProps<
-      typeof InlineGrid
-    >['gap'] = polarisSummerEditions2023 ? '3' : '5';
 
     if (selectable) {
       const checkboxAccessibilityLabel =
@@ -198,14 +184,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                 labelHidden
                 checked={selected}
                 disabled={loading}
-                bleedInlineStart={itemPaddingInline}
-                bleedInlineEnd={
-                  media
-                    ? gapBetweenCheckboxAndMedia
-                    : gapBetweenOwnedAndChildren
-                }
-                bleedBlockStart={itemPaddingBlock}
-                bleedBlockEnd={itemPaddingBlock}
+                bleedInlineStart="3"
+                bleedInlineEnd="3"
+                bleedBlockStart="3"
+                bleedBlockEnd="3"
                 fill
                 labelClassName={styles.CheckboxLabel}
               />
@@ -218,7 +200,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     if (media || selectable) {
       ownedMarkup = (
         <InlineStack
-          gap={gapBetweenCheckboxAndMedia}
+          gap="3"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
@@ -302,16 +284,16 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       <Box
         id={this.props.id}
         position="relative"
-        paddingInlineStart={itemPaddingInline}
-        paddingInlineEnd={itemPaddingInline}
-        paddingBlockStart={itemPaddingBlock}
-        paddingBlockEnd={itemPaddingBlock}
+        paddingInlineStart="3"
+        paddingInlineEnd="3"
+        paddingBlockStart="3"
+        paddingBlockEnd="3"
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
         <InlineGrid columns={{xs: '1fr auto'}}>
           <InlineGrid
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
-            gap={gapBetweenOwnedAndChildren}
+            gap="3"
           >
             {ownedMarkup}
             <InlineStack blockAlign={getAlignment(verticalAlignment)}>
@@ -511,14 +493,12 @@ function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
 
 export function ResourceItem(props: ResourceItemProps) {
   const breakpoints = useBreakpoints();
-  const features = useFeatures();
   return (
     <BaseResourceItem
       {...props}
       breakpoints={breakpoints}
       context={useContext(ResourceListContext)}
       i18n={useI18n()}
-      features={features}
     />
   );
 }
