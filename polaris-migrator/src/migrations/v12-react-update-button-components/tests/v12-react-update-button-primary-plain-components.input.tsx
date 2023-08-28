@@ -3,18 +3,18 @@ import {Button} from '@shopify/polaris';
 import {PhoneMajor} from '@shopify/polaris-icons';
 
 export function App() {
+  const isPolarisUplift = true;
   return (
     <>
-      <Button destructive outline disabled>
-        Delete App
-      </Button>
-      <Button icon={PhoneMajor} size="large" monochrome outline>
-        Call
-      </Button>
-      <Button plain monochrome>
+      <Button plain primary>
         Edit
       </Button>
-      <Button plain>Edit</Button>
+      <Button plain primary={isPolarisUplift}>
+        Edit
+      </Button>
+      <Button plain={isPolarisUplift} primary>
+        Edit
+      </Button>
     </>
   );
 }

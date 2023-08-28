@@ -2,19 +2,13 @@ import {check} from '../../../utilities/check';
 
 const transform = 'v12-react-update-button-components';
 const fixtures = [
-  {
-    name: 'v12-react-update-button-components',
-    options: {
-      componentName: 'Button',
-      removeProp: 'outline',
-    },
-  },
+  'v12-react-update-button-components',
+  'v12-react-update-button-primary-plain-components',
 ];
 
 for (const fixture of fixtures) {
   check(__dirname, {
-    fixture: fixture.name,
+    fixture,
     transform,
-    options: fixture.options,
   });
 }
