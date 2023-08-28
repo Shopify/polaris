@@ -58,7 +58,6 @@ describe('<Option />', () => {
 
     const input = mountWithApp(
       <Option {...defaultProps} onClick={spy} allowMultiple />,
-      {features: {polarisSummerEditions2023: true}},
     ).find('input')!;
     input.trigger('onClick');
 

@@ -27,7 +27,7 @@ export const mountWithApp = createMount<
       <PolarisTestProvider
         i18n={translations}
         features={{
-          polarisSummerEditions2023: process.env.SE23 === 'on',
+          polarisSummerEditions2023: true,
           ...features,
         }}
         {...rest}

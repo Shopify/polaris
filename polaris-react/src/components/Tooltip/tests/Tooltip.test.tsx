@@ -359,7 +359,6 @@ describe('<Tooltip />', () => {
         <Tooltip content="Inner content">
           <Link>link content</Link>
         </Tooltip>,
-        {features: {polarisSummerEditions2023: true}},
       );
 
       findWrapperComponent(tooltip)!.trigger('onMouseOver');
@@ -507,26 +506,6 @@ describe('<Tooltip />', () => {
       findWrapperComponent(tooltip)!.trigger('onMouseOver');
       expect(tooltip).toContainReactComponent(TooltipOverlay, {
         instant: true,
-      });
-    });
-  });
-
-  // se23 - default border radius 1 replaced with 2
-  describe('polarisSummerEditions2023 false', () => {
-    it('renders content with the default border radius', () => {
-      const tooltip = mountWithApp(
-        <Tooltip content="Inner content">
-          <Link>link content</Link>
-        </Tooltip>,
-        {features: {polarisSummerEditions2023: false}},
-      );
-
-      findWrapperComponent(tooltip)!.trigger('onMouseOver');
-
-      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
-        style: expect.objectContaining({
-          '--pc-tooltip-border-radius': 'var(--p-border-radius-1)',
-        }) as React.CSSProperties,
       });
     });
   });
