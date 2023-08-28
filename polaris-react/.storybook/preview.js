@@ -25,21 +25,12 @@ function AppProviderDecorator(Story, context) {
     document.getElementById('inter-font-link').removeAttribute('href');
   }
 
-  const {
-    polarisSummerEditions2023,
-    polarisSummerEditions2023ShadowBevelOptOut,
-  } = context.globals;
-
   if (context.args.omitAppProvider) return <Story {...context} />;
 
   return (
     <AppProvider
       features={{
-        polarisSummerEditions2023:
-          process.env.STORYBOOK_SE23 === 'on'
-            ? true
-            : polarisSummerEditions2023,
-        polarisSummerEditions2023ShadowBevelOptOut,
+        polarisSummerEditions2023: true,
       }}
       i18n={enTranslations}
     >
