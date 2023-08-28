@@ -1,9 +1,5 @@
 import React, {useEffect} from 'react';
-import {
-  AlertMinor,
-  CancelSmallMinor,
-  DiamondAlertMinor,
-} from '@shopify/polaris-icons';
+import {AlertMinor, CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
@@ -13,7 +9,6 @@ import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './Toast.scss';
 
@@ -59,13 +54,11 @@ export function Toast({
     </button>
   );
 
-  const {polarisSummerEditions2023} = useFeatures();
-
   const actionMarkup = action ? (
     <div className={styles.Action}>
       <Button
         variant="monochromePlain"
-        removeUnderline={polarisSummerEditions2023}
+        removeUnderline
         size="slim"
         onClick={action.onAction}
       >
@@ -76,10 +69,7 @@ export function Toast({
 
   const leadingIconMarkup = error ? (
     <div className={styles.LeadingIcon}>
-      <Icon
-        source={polarisSummerEditions2023 ? AlertMinor : DiamondAlertMinor}
-        tone="base"
-      />
+      <Icon source={AlertMinor} tone="base" />
     </div>
   ) : null;
 

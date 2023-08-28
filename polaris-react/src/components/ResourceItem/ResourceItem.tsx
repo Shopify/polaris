@@ -19,7 +19,6 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import type {BreakpointsDirectionAlias} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
@@ -85,7 +84,6 @@ interface PropsFromWrapper {
   breakpoints?: BreakpointsMatches;
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
-  features: ReturnType<typeof useFeatures>;
 }
 
 interface State {
@@ -157,7 +155,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, hasBulkActions, loading, resourceName},
       i18n,
-      features: {polarisSummerEditions2023},
       verticalAlignment,
       dataHref,
       breakpoints,
@@ -169,16 +166,15 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
 
-    const itemPaddingInline: React.ComponentProps<typeof Box>['padding'] =
-      polarisSummerEditions2023 ? '3' : {xs: '4', sm: '5'};
+    const itemPaddingInline: React.ComponentProps<typeof Box>['padding'] = '3';
     const itemPaddingBlock: React.ComponentProps<typeof Box>['padding'] = '3';
 
     const gapBetweenCheckboxAndMedia: React.ComponentProps<
       typeof InlineStack
-    >['gap'] = polarisSummerEditions2023 ? '3' : '4';
+    >['gap'] = '3';
     const gapBetweenOwnedAndChildren: React.ComponentProps<
       typeof InlineGrid
-    >['gap'] = polarisSummerEditions2023 ? '3' : '5';
+    >['gap'] = '3';
 
     if (selectable) {
       const checkboxAccessibilityLabel =
@@ -511,14 +507,12 @@ function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
 
 export function ResourceItem(props: ResourceItemProps) {
   const breakpoints = useBreakpoints();
-  const features = useFeatures();
   return (
     <BaseResourceItem
       {...props}
       breakpoints={breakpoints}
       context={useContext(ResourceListContext)}
       i18n={useI18n()}
-      features={features}
     />
   );
 }
