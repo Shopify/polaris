@@ -162,7 +162,6 @@ describe('<Nav.Item />', () => {
       {
         location: 'foo',
       },
-      {features: {polarisSummerEditions2023: true}},
     );
 
     expect(item).toContainReactComponent(Icon, {
@@ -188,7 +187,6 @@ describe('<Nav.Item />', () => {
       {
         location: 'bar',
       },
-      {features: {polarisSummerEditions2023: true}},
     );
 
     expect(item).toContainReactComponent(Icon, {

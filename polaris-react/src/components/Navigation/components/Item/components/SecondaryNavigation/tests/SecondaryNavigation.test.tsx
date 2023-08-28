@@ -83,80 +83,69 @@ describe('<SecondaryNavigation />', () => {
       });
     });
 
-    describe('with polarisSummerEditions2023 feature flag enabled', () => {
-      it('renders Item with onMouseLeave and onMouseEnter undefined when the item is disabled', () => {
-        const mockPropsWithDisabledItem = {
-          ...mockProps,
-          subNavigationItems: [
-            mockProps.subNavigationItems[0],
-            mockProps.subNavigationItems[1],
-            {
-              ...mockProps.subNavigationItems[2],
-              disabled: true,
-            },
-          ],
-        };
-
-        const component = mountWithApp(
-          <SecondaryNavigation {...mockPropsWithDisabledItem} />,
+    it('renders Item with onMouseLeave and onMouseEnter undefined when the item is disabled', () => {
+      const mockPropsWithDisabledItem = {
+        ...mockProps,
+        subNavigationItems: [
+          mockProps.subNavigationItems[0],
+          mockProps.subNavigationItems[1],
           {
-            features: {polarisSummerEditions2023: true},
+            ...mockProps.subNavigationItems[2],
+            disabled: true,
           },
-        );
+        ],
+      };
 
-        expect(component.findAll(Item)[2]).toHaveReactProps({
-          onMouseEnter: undefined,
-          onMouseLeave: undefined,
+      const component = mountWithApp(
+        <SecondaryNavigation {...mockPropsWithDisabledItem} />,
+      );
+
+      expect(component.findAll(Item)[2]).toHaveReactProps({
+        onMouseEnter: undefined,
+        onMouseLeave: undefined,
+      });
+    });
+
+    it('adds showVerticalHoverPointer prop to the hovered item', () => {
+      const component = mountWithApp(<SecondaryNavigation {...mockProps} />);
+
+      const hoveredIndex = 2;
+      component.findAll(Item)[hoveredIndex].trigger('onMouseEnter');
+
+      component.findAll(Item).forEach((item, index) => {
+        expect(item).toHaveReactProps({
+          showVerticalHoverPointer: index === hoveredIndex,
         });
       });
+    });
 
-      it('adds showVerticalHoverPointer prop to the hovered item', () => {
-        const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
-          features: {polarisSummerEditions2023: true},
-        });
+    it('adds showVerticalLine prop to all the Item components before the matched item', () => {
+      const component = mountWithApp(<SecondaryNavigation {...mockProps} />);
 
-        const hoveredIndex = 2;
-        component.findAll(Item)[hoveredIndex].trigger('onMouseEnter');
+      const indexWithMatchedItem = 1;
 
-        component.findAll(Item).forEach((item, index) => {
-          expect(item).toHaveReactProps({
-            showVerticalHoverPointer: index === hoveredIndex,
-          });
+      component.findAll(Item).forEach((item, index) => {
+        const shouldShowVerticalLine = index < indexWithMatchedItem;
+        expect(item).toHaveReactProps({
+          showVerticalLine: shouldShowVerticalLine,
         });
       });
+    });
 
-      it('adds showVerticalLine prop to all the Item components before the matched item', () => {
-        const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
-          features: {polarisSummerEditions2023: true},
-        });
+    it('adds showVerticalLine prop to all the Item components before the hovered item when hovered item is before the matched item', () => {
+      const component = mountWithApp(<SecondaryNavigation {...mockProps} />);
 
-        const indexWithMatchedItem = 1;
+      // Make sure the hovered item is before the matched item
+      const hoveredIndex = 0;
+      component.findAll(Item)[hoveredIndex].trigger('onMouseEnter');
 
-        component.findAll(Item).forEach((item, index) => {
-          const shouldShowVerticalLine = index < indexWithMatchedItem;
-          expect(item).toHaveReactProps({
-            showVerticalLine: shouldShowVerticalLine,
-          });
-        });
-      });
+      const indexWithMatchedItem = 1;
 
-      it('adds showVerticalLine prop to all the Item components before the hovered item when hovered item is before the matched item', () => {
-        const component = mountWithApp(<SecondaryNavigation {...mockProps} />, {
-          features: {polarisSummerEditions2023: true},
-        });
+      component.findAll(Item).forEach((item, index) => {
+        const shouldShowVerticalLine = index < indexWithMatchedItem;
 
-        // Make sure the hovered item is before the matched item
-        const hoveredIndex = 0;
-        component.findAll(Item)[hoveredIndex].trigger('onMouseEnter');
-
-        const indexWithMatchedItem = 1;
-
-        component.findAll(Item).forEach((item, index) => {
-          const shouldShowVerticalLine = index < indexWithMatchedItem;
-
-          expect(item).toHaveReactProps({
-            showVerticalLine: shouldShowVerticalLine,
-          });
+        expect(item).toHaveReactProps({
+          showVerticalLine: shouldShowVerticalLine,
         });
       });
     });
