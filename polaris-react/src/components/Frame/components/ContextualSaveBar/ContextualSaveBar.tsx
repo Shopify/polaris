@@ -12,7 +12,6 @@ import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
-import {useFeatures} from '../../../../utilities/features';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.scss';
@@ -33,7 +32,6 @@ export function ContextualSaveBar({
     toggle: toggleDiscardConfirmationModal,
     setFalse: closeDiscardConfirmationModal,
   } = useToggle(false);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const handleDiscardAction = useCallback(() => {
     if (discardAction && discardAction.onAction) {
@@ -67,7 +65,7 @@ export function ContextualSaveBar({
   const discardActionMarkup = discardAction && (
     <Button
       variant="tertiary"
-      size={polarisSummerEditions2023 ? 'large' : undefined}
+      size="large"
       url={discardAction.url}
       onClick={discardActionHandler}
       loading={discardAction.loading}
@@ -87,7 +85,7 @@ export function ContextualSaveBar({
     <Button
       variant="primary"
       tone="success"
-      size={polarisSummerEditions2023 ? 'large' : undefined}
+      size="large"
       url={saveAction.url}
       onClick={saveAction.onAction}
       loading={saveAction.loading}
@@ -126,22 +124,14 @@ export function ContextualSaveBar({
         {contextControlMarkup}
         {logoMarkup}
         <div className={contentsClassName}>
-          {polarisSummerEditions2023 ? (
-            <div className={styles.MessageContainer}>
-              <Icon source={CircleAlertMajor} />
-              {message && (
-                <Text as="h2" variant="headingMd" color="text-inverse" truncate>
-                  {message}
-                </Text>
-              )}
-            </div>
-          ) : (
-            message && (
+          <div className={styles.MessageContainer}>
+            <Icon source={CircleAlertMajor} />
+            {message && (
               <Text as="h2" variant="headingMd" color="text-inverse" truncate>
                 {message}
               </Text>
-            )
-          )}
+            )}
+          </div>
           <div className={styles.ActionContainer}>
             <LegacyStack spacing="tight" wrap={false}>
               {secondaryMenu}
