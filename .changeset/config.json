@@ -8,8 +8,6 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@shopify/polaris-cli",
-    "@shopify/polaris-codemods",
     "@shopify/polaris-migrator",
     "polaris.shopify.com",
     "polaris-for-vscode"
