@@ -38,7 +38,7 @@
   &::before {
     content: '';
     display: block;
-    // stylelint-disable-next-line -- SE23 styling
+    // stylelint-disable-next-line -- set padding
     padding-bottom: 100%;
   }
 }
