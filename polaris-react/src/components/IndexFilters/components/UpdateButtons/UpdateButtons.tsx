@@ -8,7 +8,6 @@ import {FormLayout} from '../../../FormLayout';
 import {InlineStack} from '../../../InlineStack';
 import {Button} from '../../../Button';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
-import {useFeatures} from '../../../../utilities/features';
 import {useIsTouchDevice} from '../../../../utilities/use-is-touch-device';
 import type {
   IndexFiltersPrimaryAction,
@@ -40,7 +39,6 @@ export function UpdateButtons({
   const [savedViewModalOpen, setSavedViewModalOpen] = useState(false);
   const container = useRef<HTMLDivElement>(null);
   const isTouchDevice = useIsTouchDevice();
-  const {polarisSummerEditions2023: se23} = useFeatures();
 
   useEffect(() => {
     if (!container.current || isTouchDevice) return;
@@ -120,7 +118,7 @@ export function UpdateButtons({
   }
 
   return (
-    <InlineStack align="start" blockAlign="center" gap={se23 ? '1' : '2'}>
+    <InlineStack align="start" blockAlign="center" gap="1">
       {cancelButtonMarkup}
       {primaryAction.type === 'save-as' ? (
         <Modal

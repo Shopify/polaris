@@ -2,9 +2,9 @@
 
 .DirectionButton {
   // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
-  @include focus-ring;
-  border-radius: var(--p-border-radius-1);
-  padding: var(--p-space-05);
+  @include focus-ring($size: 'wide');
+  border-radius: var(--p-border-radius-2);
+  padding: var(--p-space-1) var(--p-space-3) var(--p-space-1) var(--p-space-2);
   font-size: var(--p-font-size-100);
   display: flex;
   align-items: center;
@@ -15,14 +15,7 @@
   background: none;
   text-align: left;
 
-  #{$se23} & {
-    // stylelint-disable-next-line -- se23 overrides
-    @include focus-ring($size: 'wide');
-    border-radius: var(--p-border-radius-2);
-    padding: var(--p-space-1) var(--p-space-3) var(--p-space-1) var(--p-space-2);
-  }
-
-  #{$se23} &:hover {
+  &:hover {
     background-color: var(--p-color-bg-transparent-hover-experimental);
   }
 
@@ -34,34 +27,20 @@
     outline: 0;
 
     // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
-    @include focus-ring($style: 'focused');
-
-    #{$se23} & {
-      // stylelint-disable-next-line -- se23 overrides
-      @include focus-ring($size: 'wide', $style: 'focused');
-    }
+    @include focus-ring($size: 'wide', $style: 'focused');
   }
 }
 
 .DirectionButton-active {
-  background: var(--p-color-bg-interactive-selected);
-  color: var(--p-color-text-interactive);
-
-  #{$se23} & {
-    color: var(--p-color-text);
-    background: var(--p-color-bg-transparent-active-experimental);
-  }
+  color: var(--p-color-text);
+  background: var(--p-color-bg-transparent-active-experimental);
 }
 
 .Label {
   flex: 1;
-  margin-left: var(--p-space-1);
-
-  #{$se23} & {
-    color: var(--p-color-text);
-    margin-left: var(--p-space-05);
-    font-size: var(--p-font-size-75);
-    font-weight: var(--p-font-weight-medium);
-    line-height: var(--p-font-line-height-1);
-  }
+  color: var(--p-color-text);
+  margin-left: var(--p-space-05);
+  font-size: var(--p-font-size-75);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-1);
 }
