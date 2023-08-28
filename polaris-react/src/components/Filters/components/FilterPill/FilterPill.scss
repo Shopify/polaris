@@ -40,13 +40,6 @@
     background: var(--p-color-bg-subdued);
   }
 
-  &.disabledFilterButton {
-    background: var(--p-color-bg-transparent-disabled-experimental);
-    border-color: var(--p-color-border-disabled);
-    color: var(--p-color-text-disabled);
-    cursor: default;
-  }
-
   &.ActiveFilterButton {
     background: var(--p-color-bg);
     border-style: solid;
