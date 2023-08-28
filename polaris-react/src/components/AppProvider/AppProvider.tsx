@@ -15,10 +15,7 @@ import {
 } from '../../utilities/sticky-manager';
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
-import {
-  FeaturesContext,
-  classNamePolarisSummerEditions2023,
-} from '../../utilities/features';
+import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
 import './AppProvider.scss';
@@ -62,7 +59,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
     if (document != null) {
       this.stickyManager.setContainer(document);
       this.setBodyStyles();
-      this.setRootAttributes();
     }
   }
 
@@ -71,8 +67,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
     linkComponent: prevLinkComponent,
   }: AppProviderProps) {
     const {i18n, linkComponent} = this.props;
-
-    this.setRootAttributes();
 
     if (i18n === prevI18n && linkComponent === prevLinkComponent) {
       return;
@@ -89,27 +83,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
     document.body.style.color = 'var(--p-color-text)';
   };
 
-  setRootAttributes = () => {
-    const features = this.getFeatures();
-
-    document.documentElement.classList.toggle(
-      classNamePolarisSummerEditions2023,
-      features.polarisSummerEditions2023,
-    );
-  };
-
-  getFeatures = () => {
-    const {features} = this.props;
-
-    return {
-      ...features,
-      polarisSummerEditions2023: features?.polarisSummerEditions2023 ?? true,
-    };
-  };
-
   render() {
-    const {children} = this.props;
-    const features = this.getFeatures();
+    const {children, features} = this.props;
 
     const {intl, link} = this.state;
 
