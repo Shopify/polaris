@@ -13,7 +13,6 @@ import type {FiltersProps} from '../Filters';
 import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
-import {useFeatures} from '../../utilities/features';
 
 import {useIsSticky} from './hooks';
 import {
@@ -145,7 +144,6 @@ export function IndexFilters({
     setFalse: setFiltersUnFocused,
     setTrue: setFiltersFocused,
   } = useToggle(mode === IndexFiltersMode.Filtering);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const handleModeChange = (newMode: IndexFiltersMode) => {
     if (newMode === IndexFiltersMode.Filtering) {
@@ -438,11 +436,7 @@ export function IndexFilters({
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
                   <div className={styles.ButtonWrap}>
-                    <InlineStack
-                      gap={polarisSummerEditions2023 ? '2' : '3'}
-                      align="start"
-                      blockAlign="center"
-                    >
+                    <InlineStack gap="2" align="start" blockAlign="center">
                       <div
                         style={{
                           ...defaultStyle,

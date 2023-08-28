@@ -5,7 +5,6 @@ import {ArrowDownMinor, ArrowUpMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../../../../../utilities/css';
 import {UnstyledButton} from '../../../../../UnstyledButton';
 import {Icon} from '../../../../../Icon';
-import {useFeatures} from '../../../../../../utilities/features';
 
 import styles from './DirectionButton.scss';
 
@@ -26,8 +25,6 @@ export function DirectionButton({
   direction,
   value,
 }: DirectionButtonProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-
   const classes = classNames(
     styles.DirectionButton,
     active && styles['DirectionButton-active'],
@@ -39,10 +36,7 @@ export function DirectionButton({
     <UnstyledButton className={classes} onClick={handleClick}>
       <Icon
         source={direction === 'asc' ? ArrowUpMinor : ArrowDownMinor}
-        tone={
-          // eslint-disable-next-line no-nested-ternary
-          polarisSummerEditions2023 ? 'base' : active ? 'interactive' : 'base'
-        }
+        tone="base"
       />
       <span className={styles.Label}>{children}</span>
     </UnstyledButton>
