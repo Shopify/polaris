@@ -15,7 +15,7 @@ function SmallModalExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        small
+        size="small"
         activator={activator}
         open={active}
         onClose={toggleActive}
