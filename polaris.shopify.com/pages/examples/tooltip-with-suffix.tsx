@@ -9,7 +9,7 @@ function TooltipExample() {
         content={
           <InlineStack gap="2">
             Bold
-            <Text as="span" variant="bodyMd" color="subdued">
+            <Text as="span" variant="bodyMd" tone="subdued">
               ⌘B
             </Text>
           </InlineStack>

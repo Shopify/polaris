@@ -167,7 +167,7 @@ export function WithCustomOptions() {
               <Box width="100%">
                 <InlineStack gap="2" align="space-between">
                   {label}
-                  <Text as="span" color="subdued">
+                  <Text as="span" tone="subdued">
                     {`${subscribers} subscribers`}
                   </Text>
                 </InlineStack>

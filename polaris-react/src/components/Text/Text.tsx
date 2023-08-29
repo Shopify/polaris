@@ -36,7 +36,7 @@ type Alignment = 'start' | 'center' | 'end' | 'justify';
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
-type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
+type Tone = 'success' | 'critical' | 'caution' | 'subdued' | 'text-inverse';
 
 type TextDecorationLine = 'line-through';
 
@@ -49,8 +49,8 @@ export interface TextProps {
   breakWord?: boolean;
   /** Text to display */
   children: ReactNode;
-  /** Adjust color of text */
-  color?: Color;
+  /** Adjust tone of text */
+  tone?: Tone;
   /** Adjust weight of text */
   fontWeight?: FontWeight;
   /** HTML id attribute */
@@ -72,7 +72,7 @@ export const Text = ({
   as,
   breakWord,
   children,
-  color,
+  tone,
   fontWeight,
   id,
   numeric = false,
@@ -90,7 +90,7 @@ export const Text = ({
     (alignment || truncate) && styles.block,
     alignment && styles[alignment],
     breakWord && styles.break,
-    color && styles[color],
+    tone && styles[tone],
     numeric && styles.numeric,
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,

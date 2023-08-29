@@ -20,7 +20,7 @@ export function Header({children}: HeaderProps) {
         paddingBlockEnd="2"
         paddingInlineEnd="4"
       >
-        <Text as="span" variant="headingXs" color="subdued">
+        <Text as="span" variant="headingXs" tone="subdued">
           {children}
         </Text>
       </Box>

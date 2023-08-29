@@ -76,7 +76,7 @@ export function MappedAction({
     <div className={styles.Text}>
       <div className={contentOverflowStyle}>{contentText}</div>
       {helpText ? (
-        <Text color="subdued" as="span">
+        <Text tone="subdued" as="span">
           {helpText}
         </Text>
       ) : null}

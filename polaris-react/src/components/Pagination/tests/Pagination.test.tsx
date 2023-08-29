@@ -151,7 +151,7 @@ describe('<Pagination />', () => {
       const pagination = mountWithApp(<Pagination label="test" />);
 
       expect(pagination).toContainReactComponent(Text, {
-        color: 'subdued',
+        tone: 'subdued',
       });
     });
   });

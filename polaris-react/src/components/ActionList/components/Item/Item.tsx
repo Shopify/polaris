@@ -82,7 +82,7 @@ export function Item({
       <Text
         as="span"
         variant="bodySm"
-        color={active || disabled ? undefined : 'subdued'}
+        tone={active || disabled ? undefined : 'subdued'}
       >
         {helpText}
       </Text>
