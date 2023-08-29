@@ -24,9 +24,9 @@ describe('<EmptySearchResult />', () => {
       <EmptySearchResult title="Foo" description="Bar" />,
     );
     const subdued = wrapper.findWhere(
-      (wrap) => wrap.is(Text) && wrap.prop('color') === 'subdued',
+      (wrap) => wrap.is(Text) && wrap.prop('tone') === 'subdued',
     );
-    expect(wrapper).toContainReactComponent(Text, {color: 'subdued'});
+    expect(wrapper).toContainReactComponent(Text, {tone: 'subdued'});
     expect(subdued).toContainReactText('Bar');
   });
 

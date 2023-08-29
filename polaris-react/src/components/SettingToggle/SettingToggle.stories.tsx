@@ -125,7 +125,7 @@ export function WithPrimitiveComponents() {
 
   const descriptionMarkup = (
     <BlockStack gap="4">
-      <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
+      <Text id={descriptionId} variant="bodyMd" as="p" tone="subdued">
         {description}
       </Text>
       {mdDown ? (
@@ -239,7 +239,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
 
   const descriptionMarkup = (
     <BlockStack gap="4">
-      <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
+      <Text id={descriptionId} variant="bodyMd" as="p" tone="subdued">
         {description}
       </Text>
       {mdDown ? (

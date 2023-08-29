@@ -651,7 +651,7 @@ describe('<LegacyFilters />', () => {
         });
 
         expect(toggleButton!).toContainReactComponent(Text, {
-          color: 'subdued',
+          tone: 'subdued',
         });
       });
     });
@@ -688,7 +688,7 @@ describe('<LegacyFilters />', () => {
             });
 
             expect(toggleButton).toContainReactComponent(Text, {
-              color: 'subdued',
+              tone: 'subdued',
             });
           });
       });
@@ -708,7 +708,7 @@ describe('<LegacyFilters />', () => {
             });
 
             expect(toggleButton).toContainReactComponent(Text, {
-              color: undefined,
+              tone: undefined,
             });
           });
       });
