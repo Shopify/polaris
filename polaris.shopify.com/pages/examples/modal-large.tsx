@@ -15,7 +15,7 @@ function LargeModalExample() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        large
+        size="large"
         activator={activator}
         open={active}
         onClose={toggleActive}
