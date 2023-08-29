@@ -63,7 +63,7 @@ export function UserMenu({
             as="p"
             variant="bodySm"
             alignment="start"
-            color="subdued"
+            tone="subdued"
             truncate
           >
             {detail}

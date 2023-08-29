@@ -52,10 +52,10 @@ describe('<Text />', () => {
     });
   });
 
-  describe('color', () => {
-    it('renders children with color', () => {
+  describe('tone', () => {
+    it('renders children with tone', () => {
       const headingText = mountWithApp(
-        <Text as="h2" variant="heading3xl" color="success">
+        <Text as="h2" variant="heading3xl" tone="success">
           {text}
         </Text>,
       );

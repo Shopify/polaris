@@ -189,7 +189,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
               <h3 className={styles.FilterTriggerTitle}>
                 <Text
                   as="span"
-                  color={
+                  tone={
                     this.props.disabled || filter.disabled
                       ? 'subdued'
                       : undefined
@@ -351,7 +351,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
           </Button>
         ) : (
           <div className={styles.EmptyFooterState}>
-            <Text color="subdued" as="span">
+            <Text tone="subdued" as="span">
               <p>{i18n.translate('Polaris.Filters.noFiltersApplied')}</p>
             </Text>
           </div>
@@ -426,7 +426,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
 
     const helpTextMarkup = helpText ? (
       <div id="FiltersHelpText" className={styles.HelpText}>
-        <Text color="subdued" as="span">
+        <Text tone="subdued" as="span">
           {helpText}
         </Text>
       </div>

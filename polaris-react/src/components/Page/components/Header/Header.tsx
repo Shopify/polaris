@@ -185,7 +185,7 @@ export function Header({
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <Text color="subdued" as="span" variant="bodySm">
+      <Text tone="subdued" as="span" variant="bodySm">
         {additionalMetadata}
       </Text>
     </div>

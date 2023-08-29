@@ -66,7 +66,7 @@ export function Labelled({
       id={helpTextID(id)}
       aria-disabled={disabled}
     >
-      <Text as="span" color="subdued" breakWord>
+      <Text as="span" tone="subdued" breakWord>
         {helpText}
       </Text>
     </div>

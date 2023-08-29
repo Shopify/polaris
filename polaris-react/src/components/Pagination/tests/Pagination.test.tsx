@@ -310,7 +310,7 @@ describe('<Pagination />', () => {
         );
 
         expect(pagination).toContainReactComponent(Text, {
-          color: 'subdued',
+          tone: 'subdued',
         });
       });
     });

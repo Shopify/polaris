@@ -470,7 +470,7 @@ export function WithSearchableListbox() {
                 marginBottom: 'var(--p-space-2)',
               }}
             >
-              <Text as="h3" variant="headingXs" color="subdued">
+              <Text as="h3" variant="headingXs" tone="subdued">
                 Action
               </Text>
               <Button
@@ -484,7 +484,7 @@ export function WithSearchableListbox() {
               <Text variant="headingMd" as="h2">
                 Look up customer segmentation membership
               </Text>
-              <Text color="subdued" as="span">
+              <Text tone="subdued" as="span">
                 Look up whether a customer is included in a segment.
               </Text>
             </TextContainer>
