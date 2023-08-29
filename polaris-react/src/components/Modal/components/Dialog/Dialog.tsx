@@ -3,7 +3,7 @@ import type {SetStateAction, Dispatch} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {motion} from '@shopify/polaris-tokens';
 
-import {classNames} from '../../../../utilities/css';
+import {classNames, variationName} from '../../../../utilities/css';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
@@ -42,9 +42,7 @@ export function Dialog({
   const containerNode = useRef<HTMLDivElement>(null);
   const classes = classNames(
     styles.Modal,
-    size === 'small' && styles.sizeSmall,
-    size === 'large' && styles.sizeLarge,
-    size === 'fullScreen' && styles.fullScreen,
+    size && styles[variationName('size', size)],
     limitHeight && styles.limitHeight,
   );
   const TransitionChild = instant ? Transition : FadeUp;
