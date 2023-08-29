@@ -127,7 +127,7 @@ export function ContextualSaveBar({
           <div className={styles.MessageContainer}>
             <Icon source={CircleAlertMajor} />
             {message && (
-              <Text as="h2" variant="headingMd" color="text-inverse" truncate>
+              <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
                 {message}
               </Text>
             )}

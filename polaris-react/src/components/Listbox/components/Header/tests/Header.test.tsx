@@ -29,7 +29,7 @@ describe('Header', () => {
     expect(header.find(Box)).toContainReactComponent(Text, {
       as: 'span',
       variant: 'headingXs',
-      color: 'subdued',
+      tone: 'subdued',
     });
   });
 

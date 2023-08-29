@@ -304,7 +304,7 @@ function IndexTableWithViewsSearchFilterSorting() {
       >
         <div style={{padding: '12px 16px', width: '100%'}}>
           <BlockStack gap="1">
-            <Text as="span" variant="bodySm" color="subdued">
+            <Text as="span" variant="bodySm" tone="subdued">
               {order} • {date}
             </Text>
             <InlineStack align="space-between">

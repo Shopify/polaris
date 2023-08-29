@@ -36,10 +36,10 @@ examples:
     title: Weight
     description: >-
       Use to give text a range of font weights.
-  - fileName: text-color.tsx
-    title: Color
+  - fileName: text-tone.tsx
+    title: Tone
     description: >-
-      Use to set text color.
+      Use to set text tone (color).
   - fileName: text-inheritance.tsx
     title: Inheritance
     description: >-

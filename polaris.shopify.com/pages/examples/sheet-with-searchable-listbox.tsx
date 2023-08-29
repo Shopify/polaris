@@ -319,7 +319,7 @@ function SheetWithSearchableListboxExample() {
                 marginBottom: 'var(--p-space-2)',
               }}
             >
-              <Text variant="headingXs" as="h3" color="subdued">
+              <Text variant="headingXs" as="h3" tone="subdued">
                 Action
               </Text>
               <Button
@@ -333,7 +333,7 @@ function SheetWithSearchableListboxExample() {
               <Text variant="headingMd" as="h2">
                 Look up customer segmentation membership
               </Text>
-              <Text color="subdued" as="span">
+              <Text tone="subdued" as="span">
                 Look up whether a customer is included in a segment.
               </Text>
             </TextContainer>

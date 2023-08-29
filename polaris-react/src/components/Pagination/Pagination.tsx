@@ -160,7 +160,7 @@ export function Pagination({
     hasNext && hasPrevious ? (
       <span>{label}</span>
     ) : (
-      <Text color="subdued" as="span">
+      <Text tone="subdued" as="span">
         {label}
       </Text>
     );
