@@ -225,6 +225,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       styles.ListItem,
       focused && !focusedInner && styles.focused,
       hasBulkActions && styles.hasBulkActions,
+      selectable && styles.selectable,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
