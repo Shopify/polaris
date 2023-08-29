@@ -181,18 +181,6 @@ describe('<Header />', () => {
     });
   });
 
-  describe('additionalNavigation', () => {
-    it('renders element if passed', () => {
-      const TestComponent = () => <div />;
-
-      const header = mountWithApp(
-        <Header {...mockProps} additionalNavigation={<TestComponent />} />,
-      );
-
-      expect(header).toContainReactComponent(TestComponent);
-    });
-  });
-
   describe('action menu', () => {
     const mockSecondaryActions: HeaderProps['secondaryActions'] = [
       {content: 'mock content 1'},
