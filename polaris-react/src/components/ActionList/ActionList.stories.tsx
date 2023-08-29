@@ -398,3 +398,70 @@ export function WithFiltering() {
     </div>
   );
 }
+
+export function WithSearch() {
+  const [active, setActive] = useState(true);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
+
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          sections={[
+            {
+              items: [
+                {content: 'Import file', icon: ImportMinor},
+                {content: 'Export file', icon: ExportMinor},
+              ],
+            },
+            {
+              items: [
+                {content: 'Edit', icon: EditMinor},
+                {content: 'Delete', icon: DeleteMinor},
+              ],
+            },
+            {
+              items: [
+                {
+                  content: 'Blog posts',
+                  helpText: 'Manage your blog articles',
+                },
+                {
+                  content: 'Blogs',
+                  helpText: 'Manage blogs published to your Online Store',
+                },
+                {
+                  active: true,
+                  content: 'Active blogs',
+                  helpText: 'This is helpful text',
+                  icon: ImportMinor,
+                  suffix: <Icon source={TickSmallMinor} />,
+                },
+                {
+                  disabled: true,
+                  content: 'Disabled blogs',
+                  helpText: 'This is also helpful text',
+                  icon: ImportMinor,
+                  suffix: <Icon source={TickSmallMinor} />,
+                },
+              ],
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}

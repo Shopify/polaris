@@ -35,10 +35,10 @@ $spinner-icon-size: 12px;
     }
   }
 
-  // stylelint-disable-next-line -- se23
+  // stylelint-disable-next-line selector-max-specificity -- set Backdrop styles
   &:not(.disabled):not(.error):not(.readOnly)
     > .Input:hover:not(:focus-visible) {
-    // stylelint-disable-next-line -- se23
+    // stylelint-disable-next-line -- set Backdrop styles
     ~ .Backdrop {
       border-color: var(--p-color-border-input-hover);
       background-color: var(--p-color-bg-input-hover-experimental);
@@ -74,7 +74,7 @@ $spinner-icon-size: 12px;
     border-width: var(--p-border-width-2-experimental);
     background-color: var(--p-color-bg-input-active-experimental);
 
-    // stylelint-disable-next-line -- se23
+    // stylelint-disable-next-line -- remove focus ring mixin
     @include no-focus-ring;
     outline: var(--p-border-width-2) solid
       var(--p-color-border-interactive-focus);
@@ -83,13 +83,14 @@ $spinner-icon-size: 12px;
 }
 
 .error {
-  // stylelint-disable-next-line -- se23
+  // stylelint-disable-next-line -- set Backdrop styles
   .Input:hover ~ .Backdrop,
   .Input:focus-visible ~ .Backdrop {
     border-color: var(--p-color-border-critical-strong-experimental);
     background-color: var(--p-color-bg-critical-subdued);
   }
-  // stylelint-disable-next-line -- se23
+
+  // stylelint-disable-next-line -- set Backdrop styles
   .Input:active ~ .Backdrop,
   .Input:focus-visible ~ .Backdrop {
     border-width: var(--p-border-width-2-experimental);
@@ -113,13 +114,12 @@ $spinner-icon-size: 12px;
   }
 
   > .Backdrop {
-    // se23 -- specificity bump
     background-color: var(--p-color-bg-transparent-disabled-experimental);
     border-color: transparent;
   }
 
   &.focus {
-    // stylelint-disable-next-line selector-max-class -- se23
+    // stylelint-disable-next-line selector-max-class -- set Backdrop styles
     > .Backdrop {
       background-color: var(--p-color-bg-transparent-disabled-experimental);
       border-color: transparent;
