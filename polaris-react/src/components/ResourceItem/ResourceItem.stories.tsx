@@ -78,6 +78,22 @@ export function SelectableWithMedia() {
             name: 'Yi So-Yeon',
             location: 'Gwangju, South Korea',
           },
+          {
+            id: '146',
+            url: '#',
+            avatarSource:
+              'https://burst.shopifycdn.com/photos/woman-standing-in-front-of-yellow-background.jpg?width=746',
+            name: 'Jane Smith',
+            location: 'Manhattan, New York',
+          },
+          {
+            id: '147',
+            url: '#',
+            avatarSource:
+              'https://burst.shopifycdn.com/photos/relaxing-in-headphones.jpg?width=746',
+            name: 'Grace Baker',
+            location: 'Los Angeles, California',
+          },
         ]}
         renderItem={(item) => {
           const {id, url, avatarSource, name, location} = item;
