@@ -14,6 +14,13 @@ export function App() {
       <Button plain>Edit</Button>
       <Button monochrome>Monochrome</Button>
       <Button outline>Outline</Button>
+      <Button destructive>Destructive</Button>
+      <Button destructive outline>
+        Destructive outline
+      </Button>
+      <Button destructive plain>
+        Destructive plain
+      </Button>
     </>
   );
 }
