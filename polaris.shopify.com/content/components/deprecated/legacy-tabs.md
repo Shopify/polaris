@@ -1,7 +1,7 @@
 ---
 title: Legacy tabs
 description: Use to alternate among related views within the same context.
-category: Navigation
+category: Deprecated
 keywords:
   - layout
   - navigate
@@ -12,8 +12,8 @@ keywords:
   - segmented controls
   - scrollable
 status:
-  value: Legacy
-  message: This is a legacy component and will be deprecated. The new [Tabs component](/components/navigation/tabs) can be used as a standalone component, but is used primarily within [IndexFilters](/components/selection-and-input/index-filters) for navigating and creating saved views of filtered IndexTables. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+  value: Deprecated
+  message: This component is no longer supported. The new [Tabs component](/components/navigation/tabs) can be used as a standalone component, but is used primarily within [IndexFilters](/components/selection-and-input/index-filters) for navigating and creating saved views of filtered IndexTables. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: legacy-tabs-default.tsx
     title: Default

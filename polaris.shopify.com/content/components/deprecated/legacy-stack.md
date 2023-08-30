@@ -1,7 +1,7 @@
 ---
 title: Legacy stack
 description: This is the legacy version of the Stack component which is in the process of being updated to a more flexible and composable API. Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack.
-category: Layout and structure
+category: Deprecated
 keywords:
   - rows
   - vertical centering
@@ -19,8 +19,8 @@ keywords:
   - layout
   - legacy stack
 status:
-  value: Legacy
-  message: This is a legacy component and will be deprecated. The new [VerticalStack component](/components/layout-and-structure/vertical-stack) can be used in combination with the new layout primitives to achieve similar results to LegacyStack. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+  value: Deprecated
+  message: This component is no longer supported. The new [VerticalStack component](/components/layout-and-structure/vertical-stack) can be used in combination with the new layout primitives to achieve similar results to LegacyStack. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: legacy-stack-default.tsx
     title: Default
