@@ -225,6 +225,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       styles.ListItem,
       focused && !focusedInner && styles.focused,
       hasBulkActions && styles.hasBulkActions,
+      selected && styles.selected,
       selectable && styles.selectable,
     );
 

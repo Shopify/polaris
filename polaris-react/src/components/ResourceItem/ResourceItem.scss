@@ -152,15 +152,27 @@
       }
     }
 
-    // stylelint-disable-next-line selector-max-class -- override border radius for selectable items
+    // stylelint-disable-next-line selector-max-class -- set border radius for selectable items
     &.selectable {
       border-radius: var(--p-border-radius-0-experimental);
 
       @media #{$p-breakpoints-sm-up} {
-        // stylelint-disable-next-line -- override border radius for last selectable item to match ResourceList border radius
+        // stylelint-disable-next-line -- set border radius for last selectable item to match ResourceList border radius
         &:last-child {
           border-bottom-left-radius: var(--p-border-radius-3);
           border-bottom-right-radius: var(--p-border-radius-3);
+        }
+
+        // stylelint-disable-next-line -- set border radius for last selectable item to match BulkActions border radius
+        &.hasBulkActions {
+          // stylelint-disable-next-line -- set border radius for last selectable item to match BulkActions border radius
+          &:last-child {
+            // stylelint-disable-next-line -- set border radius for last selectable item to match BulkActions border radius
+            &.selected {
+              border-bottom-left-radius: var(--p-border-radius-0-experimental);
+              border-bottom-right-radius: var(--p-border-radius-0-experimental);
+            }
+          }
         }
       }
     }
