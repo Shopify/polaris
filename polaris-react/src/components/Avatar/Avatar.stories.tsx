@@ -23,12 +23,12 @@ export default {
 const sizes: {
   [S in NonNullable<AvatarProps['size']>]: string;
 } = {
-  '2xl-experimental': 'XXL',
-  'xl-experimental': 'XL',
+  '2xl': 'XXL',
+  xl: 'XL',
   large: 'Large',
   medium: 'Medium',
   small: 'Small',
-  extraSmall: 'XS',
+  xs: 'XS',
 };
 
 const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
@@ -84,7 +84,7 @@ export function All() {
             </Text>
             <InlineStack gap="2" blockAlign="center">
               {sizeEntries.map(([size]) => (
-                <Avatar key={size} size={size} customer />
+                <Avatar key={size} size={size} />
               ))}
             </InlineStack>
           </BlockStack>
@@ -194,13 +194,11 @@ export function ExtraSmallInContext() {
           items={[
             {
               content: 'Chet Baker',
-              prefix: <Avatar customer size="extraSmall" name="Chet Baker" />,
+              prefix: <Avatar size="extraSmall" name="Chet Baker" />,
             },
             {
               content: 'Farrah Fawcett',
-              prefix: (
-                <Avatar customer size="extraSmall" name="Farrah Fawcett" />
-              ),
+              prefix: <Avatar size="extraSmall" name="Farrah Fawcett" />,
             },
           ]}
         />

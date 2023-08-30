@@ -8,6 +8,16 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 ## Quick migration guide
 
+**Avatar**
+
+- Customer
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Avatar" --from="customer" --to=""`
+
+- Size
+
+`... coming soon`
+
 **Badge**
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`

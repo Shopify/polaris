@@ -1,6 +1,5 @@
 import React, {useState, useCallback, useEffect} from 'react';
 
-import type {Experimental} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
@@ -8,12 +7,7 @@ import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 
-type Size =
-  | 'extraSmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | Experimental<'xl' | '2xl'>;
+type Size = 'xs' | 'small' | 'medium' | 'large' | 'xl' | '2xl';
 
 enum Status {
   Pending = 'PENDING',
@@ -24,12 +18,12 @@ enum Status {
 export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'] as const;
 
 const avatarStrokeWidth: {[S in Size]: string} = {
-  extraSmall: '3',
+  xs: '3',
   small: '2.5',
   medium: '2.5',
   large: '2.5',
-  'xl-experimental': '2',
-  '2xl-experimental': '1.5',
+  xl: '2',
+  '2xl': '1.5',
 };
 
 /**
@@ -62,8 +56,6 @@ export interface AvatarProps {
   name?: string;
   /** Initials of person to display */
   initials?: string;
-  /** Whether the avatar is for a customer */
-  customer?: boolean;
   /** URL of the avatar image which falls back to initials if the image fails to load */
   source?: string;
   /** Callback fired when the image fails to load  */
@@ -77,7 +69,6 @@ export function Avatar({
   source,
   onError,
   initials,
-  customer,
   size = 'medium',
   accessibilityLabel,
 }: AvatarProps) {
@@ -122,9 +113,7 @@ export function Avatar({
     styles.Avatar,
     size && styles[variationName('size', size)],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
-    !customer &&
-      !source &&
-      styles[variationName('style', styleClass(nameString))],
+    !source && styles[variationName('style', styleClass(nameString))],
   );
 
   const textClassName = classNames(
@@ -170,21 +159,20 @@ export function Avatar({
     </>
   );
 
-  const avatarBody =
-    customer || !initials ? (
-      avatarPath
-    ) : (
-      <text
-        className={textClassName}
-        x="50%"
-        y="50%"
-        dy={verticalOffset}
-        fill="currentColor"
-        textAnchor="middle"
-      >
-        {initials}
-      </text>
-    );
+  const avatarBody = !initials ? (
+    avatarPath
+  ) : (
+    <text
+      className={textClassName}
+      x="50%"
+      y="50%"
+      dy={verticalOffset}
+      fill="currentColor"
+      textAnchor="middle"
+    >
+      {initials}
+    </text>
+  );
 
   const svgMarkup = hasImage ? null : (
     <span className={styles.Initials}>
