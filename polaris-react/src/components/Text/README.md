@@ -13,6 +13,7 @@ keywords:
   - critical
   - warning
   - subdued
+  - disabled
   - regular
   - medium
   - semibold
@@ -276,6 +277,16 @@ Use to de-emphasize a piece of text that is less important to merchants than oth
 ```jsx
 <Text as="p" color="subdued">
   No supplier listed
+</Text>
+```
+
+### With color disabled
+
+Use to denote something that is disabled, that merchants could not take action on.
+
+```jsx
+<Text as="p" color="disabled">
+  Disabled step
 </Text>
 ```
 
