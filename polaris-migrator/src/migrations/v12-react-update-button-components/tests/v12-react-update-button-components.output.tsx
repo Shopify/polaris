@@ -14,11 +14,11 @@ export function App() {
       <Button variant="plain">Edit</Button>
       <Button>Monochrome</Button>
       <Button>Outline</Button>
-      <Button tone="critical" variant="primary">
+      <Button variant="primary" tone="critical">
         Destructive
       </Button>
       <Button tone="critical">Destructive outline</Button>
-      <Button tone="critical" variant="plain">
+      <Button variant="plain" tone="critical">
         Destructive plain
       </Button>
     </>
