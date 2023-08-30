@@ -33,7 +33,7 @@ export function Default() {
 export function Tight() {
   return (
     <DescriptionList
-      spacing="tight"
+      gap="tight"
       items={[
         {
           term: 'Logistics',
