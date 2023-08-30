@@ -175,21 +175,6 @@ export function renameProps(
   }
 }
 
-export function removeProp(
-  j: core.JSCodeshift,
-  source: Collection<any>,
-  componentName: string,
-  prop: string,
-) {
-  source
-    .findJSXElements(componentName)
-    .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === prop)
-    .remove();
-
-  return source;
-}
-
 export function insertJSXComment(
   j: core.JSCodeshift,
   element: ASTPath<any>,
