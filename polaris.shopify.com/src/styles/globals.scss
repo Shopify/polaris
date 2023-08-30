@@ -94,6 +94,11 @@
   --border-radius-round: 1000px;
 }
 
+::view-transition-old(page),
+::view-transition-new(page) {
+  animation-duration: 300ms;
+}
+
 .light-mode,
 .dark-mode {
   --focus-outline: 0 0 0 2px var(--text-strong);
@@ -438,7 +443,7 @@ button {
   margin-bottom: var(--p-space-2);
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     padding-bottom: 75%;
   }
