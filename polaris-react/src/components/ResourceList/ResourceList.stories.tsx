@@ -20,7 +20,7 @@ export default {
 
 export function Default() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -94,7 +94,7 @@ export function WithEmptyState() {
     <Page title="Files">
       <Layout>
         <Layout.Section>
-          <Card padding="0">
+          <Card padding="0" roundedAbove="sm">
             <ResourceList
               emptyState={emptyStateMarkup}
               items={items}
@@ -133,7 +133,7 @@ export function WithSelectionAndNoBulkActions() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -213,7 +213,7 @@ export function WithBulkActions() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -290,7 +290,7 @@ export function WithBulkActionsAndManyItems() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -371,7 +371,7 @@ export function WithLoadingState() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -409,7 +409,7 @@ export function WithLoadingState() {
 
 export function WithTotalCount() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -455,7 +455,7 @@ export function WithTotalCount() {
 
 export function WithHeaderContent() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         headerContent="Customer details shown below"
         items={[
@@ -522,7 +522,7 @@ export function WithSorting() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -584,7 +584,7 @@ export function WithAlternateTool() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         items={items}
         renderItem={renderItem}
@@ -694,7 +694,7 @@ export function WithFiltering() {
   );
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -806,7 +806,7 @@ export function WithACustomEmptySearchResultState() {
   );
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -853,7 +853,7 @@ export function WithACustomEmptySearchResultState() {
 
 export function WithItemShortcutActions() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -909,7 +909,7 @@ export function WithItemShortcutActions() {
 
 export function WithPersistentItemShortcutActions() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -1034,7 +1034,7 @@ export function WithMultiselect() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -1183,7 +1183,7 @@ export function WithAllOfItsElements() {
   );
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
