@@ -11,8 +11,9 @@ import type {
   MetaThemeVariantPartialShape,
   MetaTokenGroupShape,
   ThemeBase,
+  ThemeName,
   ThemeVariant,
-  ThemeVariantPartialShape,
+  ThemeVariantPartialsShape,
 } from './types';
 import {themeNameLightUplift} from './constants';
 import {metaThemeBase} from './base';
@@ -36,11 +37,15 @@ export function createThemeSelector(themeName: string) {
   return `html.${createThemeClassName(themeName)}`;
 }
 
-export function getCreateThemeVariant(themeBase: ThemeBase) {
-  return function createThemeVariant<
-    T extends Exact<ThemeVariantPartialShape, T>,
-  >(themeVariantPartial: T): ThemeVariant {
-    return deepmerge(themeBase, themeVariantPartial);
+export function createGetTheme(
+  themeBase: ThemeBase,
+  themeVariantPartials: ThemeVariantPartialsShape,
+) {
+  return function getTheme(themeName: ThemeName): ThemeVariant {
+    return deepmerge(
+      themeBase,
+      themeVariantPartials[themeName],
+    ) as ThemeVariant;
   };
 }
 

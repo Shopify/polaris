@@ -18,12 +18,20 @@ export async function toValues() {
   });
 
   const themeDefault = extractMetaThemeValues(metaThemeDefault);
+  const themeVariantPartials = Object.fromEntries(
+    Object.entries(metaThemeVariantPartials).map(
+      ([themeName, metaThemeVariantPartial]) => [
+        themeName,
+        extractMetaThemeValues(metaThemeVariantPartial),
+      ],
+    ),
+  );
 
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
 
     [
-      `import {getCreateThemeVariant} from '../src/themes/utils';`,
+      `import {createGetTheme} from '../src/themes/utils';`,
       `export * from '../src/index';`,
       Object.entries(themeDefault).map(createExportConst),
       createExportConst(['tokens', themeDefault]),
@@ -40,21 +48,13 @@ export async function toValues() {
           ),
         ),
       ]),
-      createExportConst([
-        'themePartials',
-        Object.fromEntries(
-          Object.entries(metaThemeVariantPartials).map(
-            ([themeName, metaThemeVariantPartial]) => [
-              themeName,
-              extractMetaThemeValues(metaThemeVariantPartial),
-            ],
-          ),
-        ),
-      ]),
       createExport(
-        `const createThemeVariant = getCreateThemeVariant(${JSON.stringify(
-          themeDefault,
-        )});`,
+        [
+          'const getTheme = createGetTheme(',
+          `${JSON.stringify(themeDefault)},`,
+          `${JSON.stringify(themeVariantPartials)},`,
+          `);`,
+        ].join(''),
       ),
     ]
       .flat()

@@ -10,6 +10,9 @@ export type ThemeVariant = ExtractMetaThemeValues<MetaThemeVariant>;
 export type ThemeVariantPartialShape = CreateThemeVariantPartialShape<
   MetaTokenProperties['value']
 >;
+export type ThemeVariantPartialsShape = {
+  [T in ThemeName]: ThemeVariantPartialShape;
+};
 
 export interface MetaTokenProperties {
   value: string;

@@ -3,8 +3,7 @@ import path from 'path';
 
 import {getMediaConditions} from '../src';
 import {metaThemeDefault} from '../src/themes';
-
-import {extractMetaTokenGroupValues} from './utils';
+import {extractMetaTokenGroupValues} from '../src/themes/utils';
 
 const scssOutputDir = path.join(__dirname, '../dist/scss');
 const scssOutputPath = path.join(scssOutputDir, 'media-queries.scss');
