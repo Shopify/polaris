@@ -4,9 +4,10 @@ import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';
-import {Item, SearchField, Section} from '../components';
+import {Item, Section} from '../components';
 import {Key} from '../../../types';
 import {KeypressListener} from '../../KeypressListener';
+import {TextField} from '../../TextField';
 
 describe('<ActionList />', () => {
   let mockOnActionAnyItem: jest.Mock;
@@ -253,7 +254,7 @@ describe('<ActionList />', () => {
       />,
     );
 
-    expect(actionList).not.toContainReactComponentTimes(SearchField, 1);
+    expect(actionList).not.toContainReactComponentTimes(TextField, 1);
   });
 
   it('renders search with 8 or more items', () => {
@@ -275,7 +276,7 @@ describe('<ActionList />', () => {
       />,
     );
 
-    expect(actionList).toContainReactComponentTimes(SearchField, 1);
+    expect(actionList).toContainReactComponentTimes(TextField, 1);
   });
 
   it('does not renders search with 8 and no allowFiltering', () => {
@@ -325,7 +326,7 @@ describe('<ActionList />', () => {
       />,
     );
 
-    expect(actionList).toContainReactComponentTimes(SearchField, 1);
+    expect(actionList).toContainReactComponentTimes(TextField, 1);
   });
 
   it('filters items and section items with case-insensitive search', () => {
