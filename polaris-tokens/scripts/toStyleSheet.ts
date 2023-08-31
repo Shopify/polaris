@@ -1,76 +1,50 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {Metadata, MetadataGroup} from '../src';
-import type {MetadataBase} from '../src/types';
+import type {
+  Themes,
+  ThemeShape,
+  ThemesPartials,
+  TokenGroupShape,
+} from '../src/themes/types';
+import {createThemeSelector} from '../src/themes/utils';
+import {createVar} from '../src/utilities';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
 const cssOutputPath = path.join(cssOutputDir, 'styles.css');
 const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
 
-/**
- * Creates static CSS custom properties.
- * Note: These values don't vary by color-scheme.
- */
-export function getStaticCustomProperties(metadata: Metadata) {
-  return Object.entries(metadata)
-    .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
+/** Creates CSS declarations from a base or variant partial theme. */
+export function getThemeDecls(theme: ThemeShape) {
+  return Object.values(theme)
+    .map((tokenGroup) => getTokenGroupDecls(tokenGroup))
     .join('');
 }
 
-/**
- * Creates static CSS custom properties overrides.
- * Note: These values don't vary by color-scheme.
- */
-export function getStaticCustomPropertiesExperimental(metadata: MetadataBase) {
-  return Object.entries(metadata)
-    .map(([_, tokenGroup]) =>
-      getCustomProperties(
-        Object.fromEntries(
-          Object.entries(tokenGroup)
-            // Only include tokens with `valueExperimental` prop
-            .filter(([_, metadataProperties]) =>
-              Boolean(metadataProperties.valueExperimental),
-            )
-            // Move `valueExperimental` to `value` position
-            .map(([tokenName, metadataProperties]) => [
-              tokenName,
-              {value: metadataProperties.valueExperimental!},
-            ]),
-        ),
-      ),
-    )
-    .join('');
-}
-
-/**
- * Creates CSS custom properties for a given metadata object.
- */
-export function getCustomProperties(tokenGroup: MetadataGroup) {
+/** Creates CSS declarations from a token group. */
+export function getTokenGroupDecls(tokenGroup: TokenGroupShape) {
   return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
-      token.startsWith('motion-keyframes') || token.startsWith('keyframes')
-        ? `--p-${token}:p-${token};`
-        : `--p-${token}:${value};`,
+      token.startsWith('motion-keyframes')
+        ? `${createVar(token)}:p-${token};`
+        : `${createVar(token)}:${value};`,
     )
     .join('');
 }
 
-/**
- * Concatenates the `keyframes` token-group into a single string.
- */
-export function getKeyframes(motion: MetadataGroup) {
+/** Creates `@keyframes` rules for `motion-keyframes-*` tokens. */
+export function getKeyframes(motion: TokenGroupShape) {
   return Object.entries(motion)
-    .filter(
-      ([token]) =>
-        token.startsWith('motion-keyframes') || token.startsWith('keyframes'),
-    )
+    .filter(([token]) => token.startsWith('motion-keyframes'))
     .map(([token, {value}]) => `@keyframes p-${token}${value}`)
     .join('');
 }
 
-export async function toStyleSheet(metadata: Metadata) {
+export async function toStyleSheet(
+  themes: Themes,
+  themesPartials: ThemesPartials,
+) {
   if (!fs.existsSync(cssOutputDir)) {
     await fs.promises.mkdir(cssOutputDir, {recursive: true});
   }
@@ -78,13 +52,18 @@ export async function toStyleSheet(metadata: Metadata) {
     await fs.promises.mkdir(sassOutputDir, {recursive: true});
   }
 
-  const styles = `
-  :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
-  html.Polaris-Summer-Editions-2023{${getStaticCustomPropertiesExperimental(
-    metadata,
-  )}}
-  ${getKeyframes(metadata.motion)}
-`;
+  const styles = [
+    `:root{color-scheme:light;${getThemeDecls(themes.light)}}`,
+    Object.entries(themesPartials).map(
+      ([themeName, themePartial]) =>
+        `${createThemeSelector(themeName)}{${getThemeDecls(themePartial)}}`,
+    ),
+    getKeyframes(themes.light.motion),
+    // Newline terminator
+    '',
+  ]
+    .flat()
+    .join('\n');
 
   await fs.promises.writeFile(cssOutputPath, styles);
   await fs.promises.writeFile(sassOutputPath, styles);

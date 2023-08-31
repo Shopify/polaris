@@ -1,4 +1,5 @@
 import {metadata} from '../src';
+import {themes, themesPartials} from '../src/themes';
 
 import {toTokenValues} from './toTokenValues';
 import {toJSON} from './toJSON';
@@ -10,6 +11,6 @@ import {toStyleSheet} from './toStyleSheet';
     toTokenValues(metadata),
     toJSON(metadata),
     toMediaConditions(metadata.breakpoints),
-    toStyleSheet(metadata),
+    toStyleSheet(themes, themesPartials),
   ]);
 })();
