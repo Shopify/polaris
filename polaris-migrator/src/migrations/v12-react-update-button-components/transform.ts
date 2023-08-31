@@ -31,6 +31,8 @@ export default function transformer(
     const allAttributes = openingElement.attributes ?? [];
     const jsxAttributes = allAttributes as JSXAttribute[];
 
+    // Find the boolean props we want to update
+    // and ensure they are not set to a conditional value
     const plain = jsxAttributes.find(
       (attribute) => attribute.name.name === 'plain',
     );
@@ -56,6 +58,7 @@ export default function transformer(
     );
     const isDestructiveValid = destructive?.value === null;
 
+    // A collection of the booleans that will be updated to a variant
     const variantAttributes = [
       plain,
       monochrome,
@@ -64,6 +67,7 @@ export default function transformer(
       primarySuccess,
     ].filter(Boolean);
 
+    // Set flags
     let canRemovePlain = false;
     let canRemoveMonochrome = false;
     let canRemovePrimary = false;
@@ -225,6 +229,7 @@ export default function transformer(
       }
     }
 
+    // Remove the boolean attributes based on the checks
     if (plain && canRemovePlain) {
       plain.name.name = '';
       plain.value = null;
@@ -255,6 +260,7 @@ export default function transformer(
       destructive.value = null;
     }
 
+    // Add the variant attribute based on the checks
     if (variantValue && openingElement && openingElement.attributes) {
       openingElement.attributes.push(
         j.jsxAttribute(
@@ -264,6 +270,7 @@ export default function transformer(
       );
     }
 
+    // Add the tone attribute based on the checks
     if (toneValue && openingElement && openingElement.attributes) {
       openingElement.attributes.push(
         j.jsxAttribute(j.jsxIdentifier('tone'), j.stringLiteral(toneValue)),
