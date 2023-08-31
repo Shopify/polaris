@@ -1,6 +1,6 @@
+import {createContext, useContext} from 'react';
 import type {ThemeName} from '@shopify/polaris-tokens';
 import {themes, themeNameDefault} from '@shopify/polaris-tokens';
-import {createContext, useContext} from 'react';
 
 export function getTheme(themeName: ThemeName) {
   return themes[themeName];
