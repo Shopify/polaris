@@ -44,6 +44,10 @@ export function ActionList({
     finalSections = sections;
   }
 
+  const isFilterable = finalSections?.some((section) =>
+    section.items.some((item) => typeof item.content === 'string'),
+  );
+
   const hasMultipleSections = finalSections.length > 1;
   const elementRole =
     hasMultipleSections && actionRole === 'menuitem' ? 'menu' : undefined;
@@ -52,8 +56,10 @@ export function ActionList({
 
   const filteredSections = finalSections?.map((section) => ({
     ...section,
-    items: section.items.filter((item) =>
-      item.content?.toLowerCase().includes(searchText.toLowerCase()),
+    items: section.items.filter(({content}) =>
+      typeof content === 'string'
+        ? content?.toLowerCase().includes(searchText.toLowerCase())
+        : content,
     ),
   }));
 
@@ -130,7 +136,7 @@ export function ActionList({
 
   return (
     <>
-      {showSearch && (
+      {showSearch && isFilterable && (
         <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
           <SearchField
             placeholder={i18n.translate(
