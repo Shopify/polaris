@@ -3,6 +3,7 @@ import {CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import {Icon} from '../../../Icon';

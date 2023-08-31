@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {ButtonGroup} from '../../ButtonGroup';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../../LegacyStack';
 import {buttonsFrom} from '../../Button';
 import {PageActions} from '../PageActions';
@@ -15,11 +16,13 @@ describe('<PageActions />', () => {
   describe('<LegacyStack />', () => {
     it('renders a stack component', () => {
       const pageActions = mountWithApp(<PageActions />);
+      // eslint-disable-next-line import/no-deprecated
       expect(pageActions).toContainReactComponentTimes(LegacyStack, 1);
     });
 
     it('passes spacing tight to Stack', () => {
       const pageActions = mountWithApp(<PageActions />);
+      // eslint-disable-next-line import/no-deprecated
       const stack = pageActions.find(LegacyStack);
       expect(stack).toHaveReactProps({
         spacing: 'tight',

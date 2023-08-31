@@ -24,6 +24,7 @@ import {
   FormLayout,
   Frame,
   Layout,
+  // eslint-disable-next-line import/no-deprecated
   LegacyCard,
   Loading,
   Modal,
@@ -33,6 +34,7 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
+  // eslint-disable-next-line import/no-deprecated
   LegacyStack,
   Text,
   // eslint-disable-next-line import/no-deprecated

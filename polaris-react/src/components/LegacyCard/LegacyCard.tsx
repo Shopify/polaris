@@ -46,7 +46,7 @@ export interface LegacyCardProps {
 // subcomponents so explicitly state the subcomponents in the type definition.
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
-
+/** @deprecated Use the Card component instead */
 export const LegacyCard: React.FunctionComponent<LegacyCardProps> & {
   Header: typeof Header;
   Section: typeof Section;

@@ -386,7 +386,7 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     event.stopPropagation();
   }
 }
-
+/** @deprecated Use the Tabs component instead */
 export function LegacyTabs(props: LegacyTabsProps) {
   const i18n = useI18n();
 
