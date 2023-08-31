@@ -22,7 +22,7 @@ function ActionListWithPrefixSuffixExample() {
           },
           {
             content: 'Or there',
-            prefix: <Avatar customer name="Farrah" size="small" />,
+            prefix: <Avatar name="Farrah" size="large" />,
             suffix: <Icon source={ChevronRightMinor} />,
           },
         ]}
