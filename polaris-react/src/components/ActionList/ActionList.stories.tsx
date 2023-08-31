@@ -374,7 +374,7 @@ export function WithAPrefixAndASuffix() {
           },
           {
             content: 'Or there',
-            prefix: <Avatar name="Farrah" size="small" />,
+            prefix: <Avatar name="Farrah" size="large" />,
             suffix: <Icon source={ChevronRightMinor} />,
           },
         ]}
