@@ -45,6 +45,10 @@ export function ActionList({
     finalSections = sections;
   }
 
+  const isFilterable = finalSections?.some((section) =>
+    section.items.some((item) => typeof item.content === 'string'),
+  );
+
   const hasMultipleSections = finalSections.length > 1;
   const elementRole =
     hasMultipleSections && actionRole === 'menuitem' ? 'menu' : undefined;
@@ -133,7 +137,7 @@ export function ActionList({
 
   return (
     <>
-      {showSearch && (
+      {showSearch && isFilterable && (
         <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
           <SearchField
             placeholder={i18n.translate(
