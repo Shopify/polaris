@@ -1,5 +1,21 @@
 # Changelog
 
+## 11.14.0
+
+### Minor Changes
+
+- [#9907](https://github.com/Shopify/polaris/pull/9907) [`ef7ddb4ac`](https://github.com/Shopify/polaris/commit/ef7ddb4ac8fd1557fecda638c99bc64035224754) Thanks [@MaxCloutier](https://github.com/MaxCloutier)! - Add a search field to filter ActionList that have more than 10 items
+
+### Patch Changes
+
+- [#10288](https://github.com/Shopify/polaris/pull/10288) [`cd1578230`](https://github.com/Shopify/polaris/commit/cd1578230c4cfdce510f3ad889859892370932dd) Thanks [@ssetem](https://github.com/ssetem)! - Only apply apple dynamic text to mobile breakpoint
+
+* [#10292](https://github.com/Shopify/polaris/pull/10292) [`72f55e32f`](https://github.com/Shopify/polaris/commit/72f55e32f81c1f639698f8556a76057114a2cf53) Thanks [@kyledurand](https://github.com/kyledurand)! - Added check for string type before calling string method
+
+- [#10211](https://github.com/Shopify/polaris/pull/10211) [`ac044b3c9`](https://github.com/Shopify/polaris/commit/ac044b3c96441da6cb28e280e799321c8f557341) Thanks [@peterlazzarino](https://github.com/peterlazzarino)! - Ensure Avatar has no background color if an source prop is passed in to allow for transparent images
+
+* [#10287](https://github.com/Shopify/polaris/pull/10287) [`9b14e231a`](https://github.com/Shopify/polaris/commit/9b14e231af6b6de9fb6f8c6efd7c7c2523183cdb) Thanks [@laurkim](https://github.com/laurkim)! - Fixed focus ring and input text styles on `ActionList.SearchField` component
+
 ## 11.13.0
 
 ### Minor Changes
