@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fix action list filtering to accept components
+Fixed action list filtering to accept multiple item content types
