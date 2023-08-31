@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {themeDefault} from '../src/themes';
+import {metaThemeDefault} from '../src/themes';
 
 const outputDir = path.join(__dirname, '../dist/json');
 
@@ -12,9 +12,11 @@ export async function toJSON() {
     }
   });
 
-  for (const [tokenGroupName, tokenGroup] of Object.entries(themeDefault)) {
+  for (const [tokenGroupName, metaTokenGroup] of Object.entries(
+    metaThemeDefault,
+  )) {
     const filePath = path.join(outputDir, `${tokenGroupName}.json`);
 
-    await fs.promises.writeFile(filePath, JSON.stringify(tokenGroup));
+    await fs.promises.writeFile(filePath, JSON.stringify(metaTokenGroup));
   }
 }

@@ -1,6 +1,6 @@
 import {
-  getThemeDecls,
-  getTokenGroupDecls,
+  getMetaThemeDecls,
+  getMetaTokenGroupDecls,
   getKeyframes,
 } from '../scripts/toStyleSheet';
 
@@ -43,15 +43,15 @@ const expectedKeyframes =
 const expectedKeyframesCustomProperties =
   '--p-motion-keyframes-token-1:p-motion-keyframes-token-1;--p-motion-keyframes-token-2:p-motion-keyframes-token-2;';
 
-describe('getTokenGroupDecls', () => {
+describe('getMetaTokenGroupDecls', () => {
   it('creates a string of CSS declarations', () => {
-    const tokenGroupDecls = getTokenGroupDecls(mockTokenGroup);
+    const tokenGroupDecls = getMetaTokenGroupDecls(mockTokenGroup);
 
     expect(tokenGroupDecls).toBe(expectedThemeDecls);
   });
 
   it('creates a string of CSS declarations and keyframes at-rules from motion tokens', () => {
-    const tokenGroupDecls = getTokenGroupDecls(mockMotionTokenGroup);
+    const tokenGroupDecls = getMetaTokenGroupDecls(mockMotionTokenGroup);
 
     expect(tokenGroupDecls).toBe(
       `${expectedThemeDecls}${expectedKeyframesCustomProperties}`,
@@ -67,9 +67,9 @@ describe('getKeyframes', () => {
   });
 });
 
-describe('getThemeDecls', () => {
+describe('getMetaThemeDecls', () => {
   it('creates a string of CSS declarations', () => {
-    const themeDecls = getThemeDecls(mockTheme);
+    const themeDecls = getMetaThemeDecls(mockTheme);
 
     expect(themeDecls).toBe(expectedThemeDecls);
   });

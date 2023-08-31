@@ -1,3 +1,5 @@
-import {createThemeVariantPartial} from './utils';
+import {createMetaThemeVariant, createMetaThemeVariantPartial} from './utils';
 
-export const themeLightPartial = createThemeVariantPartial({});
+export const metaThemeLightPartial = createMetaThemeVariantPartial({});
+
+export const metaThemeLight = createMetaThemeVariant(metaThemeLightPartial);

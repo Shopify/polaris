@@ -1,14 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import {camelCase, camelCaseTransformMerge} from 'change-case';
-
-import type {Entry, Entries} from '../src/types';
-import type {ThemeShape} from '../src/themes/types';
-import {createThemeVariant, themePartials, themeDefault} from '../src/themes';
-
-import type {ExtractThemeValues} from './utils';
-import {extractThemeValues, extractTokenGroupValues} from './utils';
+import {metaThemeVariants, metaThemeDefault} from '../src/themes';
+import {extractMetaThemeValues} from '../src/themes/utils';
 
 const outputDir = path.join(__dirname, '../build');
 
@@ -19,37 +13,24 @@ export async function toValues() {
     }
   });
 
-  const themeDefaultEntries: Entries<ExtractThemeValues<ThemeShape>> =
-    Object.entries(themeDefault).map(
-      ([tokenGroupName, tokenGroup]): Entry<ExtractThemeValues<ThemeShape>> => [
-        tokenGroupName,
-        extractTokenGroupValues(tokenGroup),
-      ],
-    );
+  const themeDefault = extractMetaThemeValues(metaThemeDefault);
 
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
 
     [
       `export * from '../src/index';`,
-      themeDefaultEntries.map(createExport),
-      createExport(['tokens', Object.fromEntries(themeDefaultEntries)]),
-      createExport([
-        'themePartials',
-        Object.fromEntries(
-          Object.entries(themePartials).map(([themeName, themePartial]) => [
-            themeName,
-            extractThemeValues(themePartial),
-          ]),
-        ),
-      ]),
+      Object.entries(themeDefault).map(createExport),
+      createExport(['tokens', themeDefault]),
       createExport([
         'themes',
         Object.fromEntries(
-          Object.entries(themePartials).map(([themeName, themePartial]) => [
-            themeName,
-            extractThemeValues(createThemeVariant(themePartial)),
-          ]),
+          Object.entries(metaThemeVariants).map(
+            ([themeName, metaThemeVariant]) => [
+              themeName,
+              extractMetaThemeValues(metaThemeVariant),
+            ],
+          ),
         ),
       ]),
     ]

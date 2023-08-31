@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
-import {themePartials, themeDefault} from '../src/themes';
+import type {MetaThemeShape, MetaTokenGroupShape} from '../src/themes/types';
+import {metaThemeVariantPartials, metaThemeDefault} from '../src/themes';
 import {themeNameDefault} from '../src/themes/constants';
 import {createThemeSelector} from '../src/themes/utils';
 import {createVar} from '../src/utilities';
@@ -13,28 +13,28 @@ const cssOutputPath = path.join(cssOutputDir, 'styles.css');
 const scssOutputPath = path.join(scssOutputDir, 'styles.scss');
 
 /** Creates CSS declarations from a base or variant partial theme. */
-export function getThemeDecls(theme: ThemeShape) {
-  return Object.values(theme)
-    .map((tokenGroup) => getTokenGroupDecls(tokenGroup))
+export function getMetaThemeDecls(metaTheme: MetaThemeShape) {
+  return Object.values(metaTheme)
+    .map((metaTokenGroup) => getMetaTokenGroupDecls(metaTokenGroup))
     .join('');
 }
 
 /** Creates CSS declarations from a token group. */
-export function getTokenGroupDecls(tokenGroup: TokenGroupShape) {
-  return Object.entries(tokenGroup)
-    .map(([token, {value}]) =>
-      token.startsWith('motion-keyframes')
-        ? `${createVar(token)}:p-${token};`
-        : `${createVar(token)}:${value};`,
+export function getMetaTokenGroupDecls(metaTokenGroup: MetaTokenGroupShape) {
+  return Object.entries(metaTokenGroup)
+    .map(([tokenName, {value}]) =>
+      tokenName.startsWith('motion-keyframes')
+        ? `${createVar(tokenName)}:p-${tokenName};`
+        : `${createVar(tokenName)}:${value};`,
     )
     .join('');
 }
 
 /** Creates `@keyframes` rules for `motion-keyframes-*` tokens. */
-export function getKeyframes(motion: TokenGroupShape) {
+export function getKeyframes(motion: MetaTokenGroupShape) {
   return Object.entries(motion)
-    .filter(([token]) => token.startsWith('motion-keyframes'))
-    .map(([token, {value}]) => `@keyframes p-${token}${value}`)
+    .filter(([tokenName]) => tokenName.startsWith('motion-keyframes'))
+    .map(([tokenName, {value}]) => `@keyframes p-${tokenName}${value}`)
     .join('');
 }
 
@@ -51,17 +51,19 @@ export async function toStyleSheet() {
     }
   });
 
-  const themePartialsEntries = Object.entries(themePartials).filter(
-    ([themeName]) => themeName !== themeNameDefault,
-  );
+  const metaThemeVariantPartialsEntries = Object.entries(
+    metaThemeVariantPartials,
+  ).filter(([themeName]) => themeName !== themeNameDefault);
 
   const styles = [
-    `:root{color-scheme:light;${getThemeDecls(themeDefault)}}`,
-    themePartialsEntries.map(
-      ([themeName, themePartial]) =>
-        `${createThemeSelector(themeName)}{${getThemeDecls(themePartial)}}`,
+    `:root{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
+    metaThemeVariantPartialsEntries.map(
+      ([themeName, metaThemeVariantPartial]) =>
+        `${createThemeSelector(themeName)}{${getMetaThemeDecls(
+          metaThemeVariantPartial,
+        )}}`,
     ),
-    getKeyframes(themeDefault.motion),
+    getKeyframes(metaThemeDefault.motion),
     // Newline terminator
     '',
   ]
