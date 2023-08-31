@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../../../LegacyStack';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Text} from '../../../Text';

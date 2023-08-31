@@ -3,6 +3,7 @@ import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
 // eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../TextContainer';

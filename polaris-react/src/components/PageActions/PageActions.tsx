@@ -5,6 +5,7 @@ import type {
   DisableableAction,
   LoadableAction,
 } from '../../types';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {ButtonGroup} from '../ButtonGroup';
 import {buttonsFrom} from '../Button';
