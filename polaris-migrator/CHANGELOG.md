@@ -1,5 +1,15 @@
 # @shopify/polaris-migrator
 
+## 0.21.0
+
+### Minor Changes
+
+- [#10246](https://github.com/Shopify/polaris/pull/10246) [`1947b4691`](https://github.com/Shopify/polaris/commit/1947b469144f8e0567fb69f06391a3fecbfe5b11) Thanks [@kyledurand](https://github.com/kyledurand)! - Added the ability to migrate prop values
+
+### Patch Changes
+
+- [#10215](https://github.com/Shopify/polaris/pull/10215) [`e4a6d47ab`](https://github.com/Shopify/polaris/commit/e4a6d47abd338b820737fec5acb1a566c38a1913) Thanks [@aveline](https://github.com/aveline)! - Fixed a bug in the rename prop migration
+
 ## 0.20.0
 
 ### Minor Changes
