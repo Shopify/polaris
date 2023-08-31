@@ -53,11 +53,11 @@ export function ActionList({
 
   const filteredSections = finalSections?.map((section) => ({
     ...section,
-    items: section.items.filter((item) => {
-      return textContent(item.content)
+    items: section.items.filter((item) =>
+      textContent(item.content)
         .toLowerCase()
-        .includes(searchText.toLowerCase());
-    }),
+        .includes(searchText.toLowerCase()),
+    ),
   }));
 
   const sectionMarkup = filteredSections.map((section, index) => {
