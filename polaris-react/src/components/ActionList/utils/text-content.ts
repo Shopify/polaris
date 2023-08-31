@@ -9,7 +9,7 @@ export function textContent(
   if (typeof elem === 'string') {
     return elem;
   }
-  const children = elem.props && elem.props.children;
+  const children = elem.props?.children;
   if (children instanceof Array) {
     return children.map(textContent).join('');
   } else if (typeof elem?.type === 'function') {
