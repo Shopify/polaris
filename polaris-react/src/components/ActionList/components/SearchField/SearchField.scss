@@ -34,7 +34,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
   color: var(--p-color-text);
 
   #{$se23} & {
-    color: var(--p-color-text-inverse);
+    color: var(--p-color-text);
   }
 
   &::placeholder {
@@ -229,8 +229,13 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
   pointer-events: none;
 
   #{$se23} & {
+    // stylelint-disable-next-line -- opt for outline instead of focus-ring mixin
+    @include no-focus-ring;
     border-radius: var(--p-border-radius-2);
     border-width: var(--p-border-width-1-experimental);
     background-color: var(--p-color-bg-input);
+    outline: var(--p-border-width-2) solid
+      var(--p-color-border-interactive-focus);
+    outline-offset: var(--p-space-05);
   }
 }
