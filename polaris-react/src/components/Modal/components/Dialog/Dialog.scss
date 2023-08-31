@@ -89,7 +89,7 @@ $large-width: 980px;
     }
   }
 
-  &.fullScreen {
+  &.sizeFullScreen {
     height: 100%;
     @media #{$p-breakpoints-md-up} {
       height: unset;

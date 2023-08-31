@@ -66,7 +66,7 @@ export function AccountConnection({
   );
 
   const detailsMarkup = details ? (
-    <Text as="span" color="subdued">
+    <Text as="span" tone="subdued">
       {details}
     </Text>
   ) : null;

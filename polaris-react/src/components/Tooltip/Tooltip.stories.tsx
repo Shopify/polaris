@@ -64,7 +64,7 @@ export function PreferredPosition() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip positioned
             </Text>{' '}
-            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            <Text variant="bodyLg" fontWeight="bold" as="span" tone="success">
               above
             </Text>{' '}
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -82,7 +82,7 @@ export function PreferredPosition() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip positioned
             </Text>{' '}
-            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            <Text variant="bodyLg" fontWeight="bold" as="span" tone="success">
               below
             </Text>{' '}
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -108,7 +108,7 @@ export function Width() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
-            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            <Text variant="bodyLg" fontWeight="bold" as="span" tone="success">
               default
             </Text>{' '}
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -126,7 +126,7 @@ export function Width() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
-            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            <Text variant="bodyLg" fontWeight="bold" as="span" tone="success">
               wide
             </Text>{' '}
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -149,7 +149,7 @@ export function Padding() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
-            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            <Text variant="bodyLg" fontWeight="bold" as="span" tone="success">
               default
             </Text>{' '}
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -167,7 +167,7 @@ export function Padding() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
-            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            <Text variant="bodyLg" fontWeight="bold" as="span" tone="success">
               4
             </Text>{' '}
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -193,7 +193,7 @@ export function BorderRadius() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
-            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            <Text variant="bodyLg" fontWeight="bold" as="span" tone="success">
               default
             </Text>{' '}
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -211,7 +211,7 @@ export function BorderRadius() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
-            <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            <Text variant="bodyLg" fontWeight="bold" as="span" tone="success">
               2
             </Text>{' '}
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -327,7 +327,7 @@ export function WithSuffix() {
             content={
               <InlineStack gap="2">
                 Bold
-                <Text as="span" variant="bodyMd" color="subdued">
+                <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘B
                 </Text>
               </InlineStack>
@@ -340,7 +340,7 @@ export function WithSuffix() {
             content={
               <InlineStack gap="2">
                 Italic
-                <Text as="span" variant="bodyMd" color="subdued">
+                <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘I
                 </Text>
               </InlineStack>
@@ -352,7 +352,7 @@ export function WithSuffix() {
             content={
               <InlineStack gap="2">
                 Underline
-                <Text as="span" variant="bodyMd" color="subdued">
+                <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘U
                 </Text>
               </InlineStack>
@@ -364,7 +364,7 @@ export function WithSuffix() {
             content={
               <InlineStack gap="2">
                 Strikethrough
-                <Text as="span" variant="bodyMd" color="subdued">
+                <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘S
                 </Text>
               </InlineStack>
@@ -376,7 +376,7 @@ export function WithSuffix() {
             content={
               <InlineStack gap="2">
                 Bold
-                <Text as="span" variant="bodyMd" color="subdued">
+                <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘B
                 </Text>
               </InlineStack>
@@ -389,7 +389,7 @@ export function WithSuffix() {
             content={
               <InlineStack gap="2">
                 Italic
-                <Text as="span" variant="bodyMd" color="subdued">
+                <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘I
                 </Text>
               </InlineStack>
@@ -402,7 +402,7 @@ export function WithSuffix() {
             content={
               <InlineStack gap="2">
                 Underline
-                <Text as="span" variant="bodyMd" color="subdued">
+                <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘U
                 </Text>
               </InlineStack>
@@ -415,7 +415,7 @@ export function WithSuffix() {
             content={
               <InlineStack gap="2">
                 Strikethrough
-                <Text as="span" variant="bodyMd" color="subdued">
+                <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘S
                 </Text>
               </InlineStack>

@@ -217,7 +217,7 @@ export function Large() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        large
+        size="large"
         activator={activator}
         open={active}
         onClose={toggleActive}
@@ -268,7 +268,7 @@ export function Small() {
   return (
     <div style={{height: '500px'}}>
       <Modal
-        small
+        size="small"
         activator={activator}
         open={active}
         onClose={toggleActive}
@@ -638,7 +638,7 @@ export function Fullscreen() {
         open
         onClose={() => {}}
         sectioned
-        fullScreen
+        size="fullScreen"
         primaryAction={{content: 'Save'}}
       >
         <Text as="h1">Fullscreen on small displays</Text>

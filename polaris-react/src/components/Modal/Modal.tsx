@@ -19,6 +19,8 @@ import styles from './Modal.scss';
 const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
 
+export type ModalSize = 'small' | 'large' | 'fullScreen';
+
 export interface ModalProps extends FooterProps {
   /** Whether the modal is open or not */
   open: boolean;
@@ -41,10 +43,8 @@ export interface ModalProps extends FooterProps {
   instant?: boolean;
   /** Automatically adds sections to modal */
   sectioned?: boolean;
-  /** Increases the modal width */
-  large?: boolean;
-  /** Decreases the modal width */
-  small?: boolean;
+  /** The size of the modal */
+  size?: ModalSize;
   /** Limits modal height on large sceens with scrolling */
   limitHeight?: boolean;
   /** Replaces modal content with a spinner while a background action is being performed */
@@ -61,8 +61,6 @@ export interface ModalProps extends FooterProps {
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
   /** Removes Scrollable container from the modal content */
   noScroll?: boolean;
-  /** Sets modal to the height of the viewport on small screens */
-  fullScreen?: boolean;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -77,8 +75,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   instant,
   sectioned,
   loading,
-  large,
-  small,
+  size,
   limitHeight,
   footer,
   primaryAction,
@@ -89,7 +86,6 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onIFrameLoad,
   onTransitionEnd,
   noScroll,
-  fullScreen,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
   const [closing, setClosing] = useState(false);
@@ -198,10 +194,8 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         onClose={onClose}
         onEntered={handleEntered}
         onExited={handleExited}
-        large={large}
-        small={small}
+        size={size}
         limitHeight={limitHeight}
-        fullScreen={fullScreen}
         setClosing={setClosing}
       >
         <Header

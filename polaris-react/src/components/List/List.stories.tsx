@@ -28,7 +28,7 @@ export function Numbered() {
 
 export function ExtraTight() {
   return (
-    <List spacing="extraTight">
+    <List gap="extraTight">
       <List.Item>Yellow shirt</List.Item>
       <List.Item>Red shirt</List.Item>
       <List.Item>Green shirt</List.Item>

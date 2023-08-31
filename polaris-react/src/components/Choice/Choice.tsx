@@ -156,7 +156,7 @@ export function Choice({
         as="span"
         // `undefined` means color: inherit
         // the nearest ancestor with a specified color is .Descriptions in Choice.scss
-        color={disabled ? undefined : 'subdued'}
+        tone={disabled ? undefined : 'subdued'}
       >
         {helpText}
       </Text>

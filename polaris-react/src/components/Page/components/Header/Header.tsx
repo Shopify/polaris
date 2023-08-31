@@ -58,8 +58,6 @@ export interface HeaderProps extends TitleProps {
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
-  /** @deprecated Additional navigation markup */
-  additionalNavigation?: React.ReactNode;
   // Additional meta data
   additionalMetadata?: React.ReactNode | string;
   /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
@@ -78,7 +76,6 @@ export function Header({
   titleHidden = false,
   primaryAction,
   pagination,
-  additionalNavigation,
   backAction,
   secondaryActions = [],
   actionGroups = [],
@@ -87,13 +84,6 @@ export function Header({
 }: HeaderProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
-
-  if (additionalNavigation && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
-    );
-  }
 
   const isSingleRow =
     !primaryAction &&
@@ -118,12 +108,6 @@ export function Header({
         </Box>
       </div>
     ) : null;
-
-  const additionalNavigationMarkup = additionalNavigation ? (
-    <InlineStack gap="4" align="end">
-      <Box printHidden>{additionalNavigation}</Box>
-    </InlineStack>
-  ) : null;
 
   const pageTitleMarkup = (
     <div className={styles.TitleWrapper}>
@@ -163,7 +147,7 @@ export function Header({
   }
 
   const navigationMarkup =
-    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
+    breadcrumbMarkup || paginationMarkup ? (
       <Box
         printHidden
         paddingBlockEnd="1"
@@ -173,7 +157,6 @@ export function Header({
       >
         <InlineStack gap="4" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
-          {additionalNavigationMarkup}
           {paginationMarkup}
         </InlineStack>
       </Box>
@@ -181,7 +164,7 @@ export function Header({
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <Text color="subdued" as="span" variant="bodySm">
+      <Text tone="subdued" as="span" variant="bodySm">
         {additionalMetadata}
       </Text>
     </div>
@@ -197,10 +180,9 @@ export function Header({
     title && title.length > LONG_TITLE && styles.longTitle,
   );
 
-  const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
+  const {slot1, slot2, slot3, slot4, slot5} = determineLayout({
     actionMenuMarkup,
     additionalMetadataMarkup,
-    additionalNavigationMarkup,
     breadcrumbMarkup,
     isNavigationCollapsed,
     pageTitleMarkup,
@@ -240,12 +222,9 @@ export function Header({
             </ConditionalRender>
           </div>
         </ConditionalRender>
-        <ConditionalRender condition={[slot5, slot6].some(notNull)}>
+        <ConditionalRender condition={[slot5].some(notNull)}>
           <div className={styles.Row}>
             <InlineStack gap="4">{slot5}</InlineStack>
-            <ConditionalRender condition={slot6 != null}>
-              <div className={styles.RightAlign}>{slot6}</div>
-            </ConditionalRender>
           </div>
         </ConditionalRender>
       </div>
@@ -316,7 +295,6 @@ function notNull(value: any) {
 function determineLayout({
   actionMenuMarkup,
   additionalMetadataMarkup,
-  additionalNavigationMarkup,
   breadcrumbMarkup,
   isNavigationCollapsed,
   pageTitleMarkup,
@@ -326,7 +304,6 @@ function determineLayout({
 }: {
   actionMenuMarkup: MaybeJSX;
   additionalMetadataMarkup: MaybeJSX;
-  additionalNavigationMarkup: MaybeJSX;
   breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
   pageTitleMarkup: JSX.Element;
@@ -338,7 +315,7 @@ function determineLayout({
   // |----------------------------------------------------|
   // | slot1 | slot2 |                    | slot3 | slot4 |
   // |----------------------------------------------------|
-  // | slot5 |                                    | slot6 |
+  // | slot5 |                                            |
   // |----------------------------------------------------|
   //
   const layouts = {
@@ -349,7 +326,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition:
         isNavigationCollapsed &&
@@ -364,7 +340,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition: isNavigationCollapsed,
     },
@@ -375,7 +350,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition:
         !isNavigationCollapsed &&
@@ -396,7 +370,6 @@ function determineLayout({
         ),
         slot4: paginationMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition: !isNavigationCollapsed,
     },

@@ -159,12 +159,12 @@ describe('<Modal>', () => {
   describe('large', () => {
     it('passes large to Dialog if true', () => {
       const modal = mountWithApp(
-        <Modal title="foo" large onClose={jest.fn()} open>
+        <Modal title="foo" size="large" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {large: true});
+      expect(modal).toContainReactComponent(Dialog, {size: 'large'});
     });
 
     it('does not pass large to Dialog be default', () => {
@@ -174,19 +174,19 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {large: undefined});
+      expect(modal).toContainReactComponent(Dialog, {size: undefined});
     });
   });
 
   describe('small', () => {
     it('passes small to Dialog if true', () => {
       const modal = mountWithApp(
-        <Modal title="foo" small onClose={jest.fn()} open>
+        <Modal title="foo" size="small" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {small: true});
+      expect(modal).toContainReactComponent(Dialog, {size: 'small'});
     });
 
     it('does not pass small to Dialog by default', () => {
@@ -196,7 +196,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {small: undefined});
+      expect(modal).toContainReactComponent(Dialog, {size: undefined});
     });
   });
 
@@ -225,12 +225,12 @@ describe('<Modal>', () => {
   describe('fullScreen', () => {
     it('passes fullScreen to Dialog if true', () => {
       const modal = mountWithApp(
-        <Modal title="foo" fullScreen onClose={jest.fn()} open>
+        <Modal title="foo" size="fullScreen" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {fullScreen: true});
+      expect(modal).toContainReactComponent(Dialog, {size: 'fullScreen'});
     });
 
     it('does not pass fullScreen to Dialog be default', () => {
@@ -240,7 +240,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {fullScreen: undefined});
+      expect(modal).toContainReactComponent(Dialog, {size: undefined});
     });
   });
 
