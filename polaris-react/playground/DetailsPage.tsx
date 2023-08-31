@@ -624,7 +624,7 @@ export function DetailsPage() {
             </DropZone>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section variant="oneThird">
+        <Layout.Section secondary>
           <LegacyCard title="Organization">
             <LegacyCard.Section>
               <Select
