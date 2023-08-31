@@ -55,7 +55,7 @@ export function ActionList({
     ...section,
     items: section.items.filter((item) =>
       textContent(item.content)
-        .toLowerCase()
+        ?.toLowerCase()
         .includes(searchText.toLowerCase()),
     ),
   }));

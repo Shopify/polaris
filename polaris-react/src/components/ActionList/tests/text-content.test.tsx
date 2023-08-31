@@ -4,7 +4,7 @@ import {textContent} from '../utils/text-content';
 
 describe('textContent', () => {
   it('returns empty string when empty', () => {
-    expect(textContent()).toBe('');
+    expect(textContent()).toBeUndefined();
   });
 
   it('returns text string when string is given', () => {
