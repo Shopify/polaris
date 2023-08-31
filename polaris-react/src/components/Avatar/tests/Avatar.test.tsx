@@ -71,7 +71,7 @@ describe('<Avatar />', () => {
   describe('Initials', () => {
     it('renders initials if the Image onError prop is triggered and the Intials are provided', () => {
       const avatar = mountWithApp(
-        <Avatar size="large" initials="DL" source="image/path/" />,
+        <Avatar size="2xl" initials="DL" source="image/path/" />,
       );
 
       expect(avatar).toContainReactComponent(Image);
@@ -97,12 +97,7 @@ describe('<Avatar />', () => {
     it('gets invoked in the event of an error', () => {
       const spy = jest.fn();
       const avatar = mountWithApp(
-        <Avatar
-          size="large"
-          initials="DL"
-          source="image/path/"
-          onError={spy}
-        />,
+        <Avatar size="2xl" initials="DL" source="image/path/" onError={spy} />,
       );
 
       avatar.find(Image)!.trigger('onError');
@@ -114,7 +109,7 @@ describe('<Avatar />', () => {
     it('re-renders the image if a the source prop is changed after an error', () => {
       const workingSrc = 'image/goodPath/';
       const avatar = mountWithApp(
-        <Avatar size="large" initials="DL" source="image/path/" />,
+        <Avatar size="2xl" initials="DL" source="image/path/" />,
       );
       avatar.find(Image)!.trigger('onError');
 
