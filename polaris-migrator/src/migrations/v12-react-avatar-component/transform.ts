@@ -6,11 +6,7 @@ import {
   hasImportSpecifier,
   normalizeImportSourcePaths,
 } from '../../utilities/imports';
-import {
-  getJSXAttributes,
-  removeJSXAttributes,
-  replaceJSXAttributes,
-} from '../../utilities/jsx';
+import {removeJSXAttributes, replaceJSXAttributes} from '../../utilities/jsx';
 
 export interface MigrationOptions extends Options {
   relative?: boolean;
@@ -48,26 +44,22 @@ export default function transformer(
     getImportSpecifierName(j, source, 'Avatar', sourcePaths.from) || 'Avatar';
 
   // Find all JSX elements with the name 'Avatar'
-  const avatarElements = source.findJSXElements(localElementName);
-
-  // Define the mapping of old sizes to new sizes
-  const sizeMapping: {[key: string]: string} = {
-    extraSmall: 'small',
-    small: 'large',
-    medium: 'xl',
-    large: '2xl',
-  };
-
-  avatarElements.forEach((element) => {
+  source.findJSXElements(localElementName).forEach((element) => {
     // Remove the 'customer' prop
     removeJSXAttributes(j, element, 'customer');
-
     // Replace the 'size' prop value with the new size
-    const sizeAttribute = getJSXAttributes(j, element, 'size').at(0).get();
-    const oldSize = sizeAttribute.value.value;
-    const newSize = sizeMapping[oldSize] || oldSize;
-    replaceJSXAttributes(j, element, 'size', 'size', newSize);
+    replaceJSXAttributes(j, element, 'size', 'size', sizeMapping);
   });
 
   return source.toSource();
 }
+
+// Define the mapping of old sizes to new sizes
+const sizeMapping = {
+  extraSmall: 'small',
+  small: 'large',
+  medium: 'xl',
+  large: '2xl',
+  'xl-experimental': 'xl',
+  '2xl-experimental': '2xl',
+};

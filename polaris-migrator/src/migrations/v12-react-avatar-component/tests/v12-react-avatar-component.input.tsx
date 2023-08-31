@@ -8,6 +8,8 @@ export function App() {
       <Avatar customer size="small" />
       <Avatar customer size="medium" />
       <Avatar customer size="large" />
+      <Avatar size="xl-experimental" />
+      <Avatar size="2xl-experimental" />
     </>
   );
 }
