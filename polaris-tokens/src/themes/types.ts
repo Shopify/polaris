@@ -29,14 +29,11 @@ type ExcludeMotionKeyframes<T> = T extends `motion-keyframes-${string}`
   ? never
   : T;
 
-type CreateThemeVariantPartialShape<T> = {
+export type MetaThemeVariantPartialShape = {
   [TokenGroupName in keyof Omit<MetaThemeBase, 'breakpoints'>]?: {
-    [TokenName in keyof MetaThemeBase[TokenGroupName] as ExcludeMotionKeyframes<TokenName>]?: T;
+    [TokenName in keyof MetaThemeBase[TokenGroupName] as ExcludeMotionKeyframes<TokenName>]?: MetaTokenProperties;
   };
 };
-
-export type MetaThemeVariantPartialShape =
-  CreateThemeVariantPartialShape<MetaTokenProperties>;
 
 export type MetaThemeVariantPartials = {
   [T in ThemeName]: MetaThemeVariantPartialShape;
