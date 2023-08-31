@@ -77,20 +77,34 @@ export default function transformer(
     let variantValue = '';
     let toneValue = '';
 
+    // Checks for combinations
+    const isPrimaryAndPlain =
+      plain && primary && isPlainValid && isPrimaryValid;
+    const isPrimaryAndDestructive =
+      primary && destructive && isPrimaryValid && isDestructiveValid;
+    const isPlainAndMonochrome =
+      plain && monochrome && isPlainValid && isMonochromeValid;
+    const isPlainAndDestructive =
+      plain && destructive && isPlainValid && isDestructiveValid;
+    const isMonochromeAndOutline =
+      monochrome && outline && isMonochromeValid && isOutlineValid;
+    const isOutlineAndDestructive =
+      outline && destructive && isOutlineValid && isDestructiveValid;
+
     if (plain) {
       if (variantAttributes.length > 2) {
         insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
         return;
       }
-      if (plain && primary && isPlainValid && isPrimaryValid) {
+      if (isPrimaryAndPlain) {
         canRemovePlain = true;
         canRemovePrimary = true;
         variantValue = 'tertiary';
-      } else if (plain && monochrome && isPlainValid && isMonochromeValid) {
+      } else if (isPlainAndMonochrome) {
         canRemovePlain = true;
         canRemoveMonochrome = true;
         variantValue = 'monochromePlain';
-      } else if (plain && destructive && isPlainValid && isDestructiveValid) {
+      } else if (isPlainAndDestructive) {
         canRemovePlain = true;
         canRemoveDestructive = true;
         variantValue = 'plain';
@@ -109,10 +123,10 @@ export default function transformer(
         insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
         return;
       }
-      if (monochrome && outline && isMonochromeValid && isOutlineValid) {
+      if (isMonochromeAndOutline) {
         canRemoveMonochrome = true;
         canRemoveOutline = true;
-      } else if (plain && monochrome && isPlainValid && isMonochromeValid) {
+      } else if (isPlainAndMonochrome) {
         canRemovePlain = true;
         canRemoveMonochrome = true;
         variantValue = 'monochromePlain';
@@ -129,16 +143,11 @@ export default function transformer(
         insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
         return;
       }
-      if (plain && primary && isPlainValid && isPrimaryValid) {
+      if (isPrimaryAndPlain) {
         canRemovePlain = true;
         canRemovePrimary = true;
         variantValue = 'tertiary';
-      } else if (
-        primary &&
-        destructive &&
-        isPrimaryValid &&
-        isDestructiveValid
-      ) {
+      } else if (isPrimaryAndDestructive) {
         canRemovePrimary = true;
         canRemoveDestructive = true;
         variantValue = 'primary';
@@ -157,11 +166,11 @@ export default function transformer(
         insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
         return;
       }
-      if (outline && destructive && isOutlineValid && isDestructiveValid) {
+      if (isOutlineAndDestructive) {
         canRemoveOutline = true;
         canRemoveDestructive = true;
         toneValue = 'critical';
-      } else if (monochrome && outline && isMonochromeValid && isOutlineValid) {
+      } else if (isMonochromeAndOutline) {
         canRemoveMonochrome = true;
         canRemoveOutline = true;
       } else if (outline && isOutlineValid) {
@@ -188,26 +197,16 @@ export default function transformer(
     }
 
     if (destructive) {
-      if (plain && destructive && isPlainValid && isDestructiveValid) {
+      if (isPlainAndDestructive) {
         canRemovePlain = true;
         canRemoveDestructive = true;
         variantValue = 'plain';
         toneValue = 'critical';
-      } else if (
-        outline &&
-        destructive &&
-        isOutlineValid &&
-        isDestructiveValid
-      ) {
+      } else if (isOutlineAndDestructive) {
         canRemoveOutline = true;
         canRemoveDestructive = true;
         toneValue = 'critical';
-      } else if (
-        primary &&
-        destructive &&
-        isPrimaryValid &&
-        isDestructiveValid
-      ) {
+      } else if (isPrimaryAndDestructive) {
         canRemovePrimary = true;
         canRemoveDestructive = true;
         variantValue = 'primary';
