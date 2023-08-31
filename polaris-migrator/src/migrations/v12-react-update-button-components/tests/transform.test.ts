@@ -5,6 +5,7 @@ const fixtures = [
   'v12-react-update-button-components',
   'v12-react-update-button-primary-plain-components',
   'v12-react-update-button-plain-monochrome-components',
+  'v12-react-update-button-self-closing',
 ];
 
 for (const fixture of fixtures) {
