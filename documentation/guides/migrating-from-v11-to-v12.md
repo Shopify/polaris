@@ -10,13 +10,19 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 **Avatar**
 
-- Customer
+- Remove the `customer` prop
+- Replace the `size` prop with the new mapping below
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Avatar" --from="customer" --to=""`
+`npx @shopify/polaris-migrator v12-react-avatar-component <path>`
 
-- Size
-
-`... coming soon`
+| Before                    | After         |
+| ------------------------- | ------------- |
+| `size="extraSmall"`       | `size="small" |
+| `size="small"`            | `size="large" |
+| `size="medium"`           | `size="xl"    |
+| `size="large"`            | `size="2xl"   |
+| `size="xl-experimental"`  | `size="xl"    |
+| `size="2xl-experimental"` | `size="2xl"   |
 
 **Badge**
 
