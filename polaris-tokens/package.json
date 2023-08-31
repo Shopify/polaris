@@ -57,6 +57,7 @@
     "dist"
   ],
   "devDependencies": {
+    "change-case": "^4.1.2",
     "deepmerge": "^4.3.1"
   }
 }

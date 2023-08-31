@@ -1,19 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {
-  Themes,
-  ThemeShape,
-  ThemesPartials,
-  TokenGroupShape,
-} from '../src/themes/types';
+import type {ThemeShape, TokenGroupShape} from '../src/themes/types';
+import {themePartials, themeDefault} from '../src/themes';
+import {themeNameDefault} from '../src/themes/constants';
 import {createThemeSelector} from '../src/themes/utils';
 import {createVar} from '../src/utilities';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
-const sassOutputDir = path.join(__dirname, '../dist/scss');
+const scssOutputDir = path.join(__dirname, '../dist/scss');
 const cssOutputPath = path.join(cssOutputDir, 'styles.css');
-const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
+const scssOutputPath = path.join(scssOutputDir, 'styles.scss');
 
 /** Creates CSS declarations from a base or variant partial theme. */
 export function getThemeDecls(theme: ThemeShape) {
@@ -41,24 +38,30 @@ export function getKeyframes(motion: TokenGroupShape) {
     .join('');
 }
 
-export async function toStyleSheet(
-  themes: Themes,
-  themesPartials: ThemesPartials,
-) {
-  if (!fs.existsSync(cssOutputDir)) {
-    await fs.promises.mkdir(cssOutputDir, {recursive: true});
-  }
-  if (!fs.existsSync(sassOutputDir)) {
-    await fs.promises.mkdir(sassOutputDir, {recursive: true});
-  }
+export async function toStyleSheet() {
+  await fs.promises.mkdir(cssOutputDir, {recursive: true}).catch((error) => {
+    if (error.code !== 'EEXIST') {
+      throw error;
+    }
+  });
+
+  await fs.promises.mkdir(scssOutputDir, {recursive: true}).catch((error) => {
+    if (error.code !== 'EEXIST') {
+      throw error;
+    }
+  });
+
+  const themePartialsEntries = Object.entries(themePartials).filter(
+    ([themeName]) => themeName !== themeNameDefault,
+  );
 
   const styles = [
-    `:root{color-scheme:light;${getThemeDecls(themes.light)}}`,
-    Object.entries(themesPartials).map(
+    `:root{color-scheme:light;${getThemeDecls(themeDefault)}}`,
+    themePartialsEntries.map(
       ([themeName, themePartial]) =>
         `${createThemeSelector(themeName)}{${getThemeDecls(themePartial)}}`,
     ),
-    getKeyframes(themes.light.motion),
+    getKeyframes(themeDefault.motion),
     // Newline terminator
     '',
   ]
@@ -66,5 +69,5 @@ export async function toStyleSheet(
     .join('\n');
 
   await fs.promises.writeFile(cssOutputPath, styles);
-  await fs.promises.writeFile(sassOutputPath, styles);
+  await fs.promises.writeFile(scssOutputPath, styles);
 }
