@@ -1,6 +1,6 @@
 import * as colors from '../colors-experimental';
 
-import {createMetaThemeVariantPartial} from './utils';
+import {createMetaThemeVariant, createMetaThemeVariantPartial} from './utils';
 
 export const metaThemeLightUpliftPartial = createMetaThemeVariantPartial({
   motion: {
@@ -171,3 +171,7 @@ export const metaThemeLightUpliftPartial = createMetaThemeVariantPartial({
     'color-text-magic': {value: colors.purple[14]},
   },
 });
+
+export const metaThemeLightUplift = createMetaThemeVariant(
+  metaThemeLightUpliftPartial,
+);

@@ -21,6 +21,10 @@ export interface MetaThemeShape {
   [tokenGroupName: string]: MetaTokenGroupShape;
 }
 
+export type MetaThemeVariants = {
+  [T in ThemeName]: MetaThemeVariant;
+};
+
 type ExcludeMotionKeyframes<T> = T extends `motion-keyframes-${string}`
   ? never
   : T;
