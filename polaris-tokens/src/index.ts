@@ -12,8 +12,6 @@ export type {ThemeName} from './themes/types';
 
 export {themeNameDefault} from './themes/constants';
 
-export {createThemeSelector} from './themes/utils';
-
 export type {
   BorderTokenGroup,
   BorderTokenName,
