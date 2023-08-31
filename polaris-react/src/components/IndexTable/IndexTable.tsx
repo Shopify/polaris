@@ -13,6 +13,7 @@ import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {SelectAllActions} from '../SelectAllActions';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';

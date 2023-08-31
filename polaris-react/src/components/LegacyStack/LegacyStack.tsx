@@ -39,7 +39,7 @@ export interface LegacyStackProps {
   /** Adjust horizontal alignment of elements */
   distribution?: Distribution;
 }
-
+/** @deprecated Use the BlockStack component instead */
 export const LegacyStack = memo(function Stack({
   children,
   vertical,

@@ -1,7 +1,7 @@
 ---
 title: Legacy card
 description: This is the legacy version of the Card component which is in the process of being updated to a more flexible and composable API. Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
-category: Layout and structure
+category: Deprecated
 keywords:
   - layout
   - container
@@ -22,8 +22,8 @@ keywords:
   - call out
   - legacy card
 status:
-  value: Legacy
-  message: This is a legacy component and will be deprecated. The new [Card component](/components/layout-and-structure/card) can be used in combination with the new layout primitives to achieve similar results to LegacyCard. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+  value: Deprecated
+  message: This component is no longer supported. The new [Card component](/components/layout-and-structure/card) can be used in combination with the new layout primitives to achieve similar results to LegacyCard. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: legacy-card-default.tsx
     title: Default

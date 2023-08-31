@@ -24,6 +24,7 @@ import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 // eslint-disable-next-line import/no-deprecated
 import {Sheet} from '../Sheet';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';

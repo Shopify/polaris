@@ -3,6 +3,7 @@ import type {ComponentType} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Tab, Panel, TabMeasurer} from '../components';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyTabs} from '../LegacyTabs';
 import type {LegacyTabsProps} from '../LegacyTabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';

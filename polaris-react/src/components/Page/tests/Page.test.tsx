@@ -4,6 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import type {ActionMenuProps} from '../../ActionMenu';
 import {Badge} from '../../Badge';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../../LegacyCard';
 import {Page} from '../Page';
 import type {PageProps} from '../Page';
@@ -36,6 +37,7 @@ describe('<Page />', () => {
     it('renders its children', () => {
       const card = <LegacyCard />;
       const page = mountWithApp(<Page {...mockProps}>{card}</Page>);
+      // eslint-disable-next-line import/no-deprecated
       expect(page).toContainReactComponent(LegacyCard);
     });
   });

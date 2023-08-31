@@ -3,6 +3,7 @@ import React from 'react';
 import {useI18n} from '../../utilities/i18n';
 import {Text} from '../Text';
 import {Image} from '../Image';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 
 import {emptySearch} from './illustrations';

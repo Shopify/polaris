@@ -6,6 +6,7 @@ import {Button} from '../../Button';
 import {Popover} from '../../Popover';
 import {ActionList} from '../../ActionList';
 import {WithinContentContext} from '../../../utilities/within-content-context';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
 import {Section} from '../components';
 
@@ -60,6 +61,7 @@ describe('<LegacyCard />', () => {
         <LegacyCard.Header />
       </LegacyCard>,
     );
+    // eslint-disable-next-line import/no-deprecated
     expect(legacyCard).toContainReactComponent(LegacyCard.Header);
   });
 
@@ -71,6 +73,7 @@ describe('<LegacyCard />', () => {
     );
 
     expect(legacyCard).toContainReactComponent(Button);
+    // eslint-disable-next-line import/no-deprecated
     expect(legacyCard).toContainReactComponent(LegacyCard.Header);
   });
 
