@@ -31,7 +31,9 @@ export interface ButtonProps extends BaseButton {
   fullWidth?: boolean;
   /** Displays the button with a disclosure icon. Defaults to `down` when set to true */
   disclosure?: 'down' | 'up' | 'select' | boolean;
-  /** Removes underline from button text (including on interaction) */
+  /** Removes underline from button text (including on interaction)
+   * @deprecated Use a variant instead
+   */
   removeUnderline?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
