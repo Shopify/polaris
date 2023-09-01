@@ -18,7 +18,7 @@ export interface MessageProps {
   description: string;
   action: {onClick(): void; content: string};
   link: {to: string; content: string};
-  badge?: {content: string; status: BadgeProps['status']};
+  badge?: {content: string; tone: BadgeProps['tone']};
 }
 
 export function Message({
@@ -28,9 +28,7 @@ export function Message({
   link,
   badge,
 }: MessageProps) {
-  const badgeMarkup = badge && (
-    <Badge status={badge.status}>{badge.content}</Badge>
-  );
+  const badgeMarkup = badge && <Badge tone={badge.tone}>{badge.content}</Badge>;
 
   const {to, content: linkContent} = link;
   const {onClick, content: actionContent} = action;

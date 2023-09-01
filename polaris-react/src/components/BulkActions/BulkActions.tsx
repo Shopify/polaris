@@ -352,7 +352,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     for (const action of actions) {
       for (const item of action.items) {
-        if (item.badge?.status === 'new') return true;
+        if (item.badge?.tone === 'new') return true;
       }
     }
 

@@ -52,7 +52,7 @@ export function WithPrimitiveComponents() {
 
   const {mdDown} = useBreakpoints();
 
-  const badgeStatus = enabled ? 'success' : undefined;
+  const badgeTone = enabled ? 'success' : undefined;
 
   const badgeContent = enabled ? 'On' : 'Off';
 
@@ -62,8 +62,8 @@ export function WithPrimitiveComponents() {
 
   const settingStatusMarkup = (
     <Badge
-      status={badgeStatus}
-      statusAndProgressLabelOverride={`Setting is ${badgeContent}`}
+      tone={badgeTone}
+      toneAndProgressLabelOverride={`Setting is ${badgeContent}`}
     >
       {badgeContent}
     </Badge>
@@ -165,7 +165,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
 
   const {mdDown} = useBreakpoints();
 
-  const badgeStatus = enabled ? 'success' : undefined;
+  const badgeTone = enabled ? 'success' : undefined;
 
   const badgeContent = enabled ? 'On' : 'Off';
 
@@ -176,8 +176,8 @@ export function WithPrimitiveComponentsAndLongTitle() {
 
   const settingStatusMarkup = (
     <Badge
-      status={badgeStatus}
-      statusAndProgressLabelOverride={`Setting is ${badgeContent}`}
+      tone={badgeTone}
+      toneAndProgressLabelOverride={`Setting is ${badgeContent}`}
     >
       {badgeContent}
     </Badge>

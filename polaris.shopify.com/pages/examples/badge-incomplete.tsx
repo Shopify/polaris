@@ -4,7 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BadgeExample() {
   return (
-    <Badge progress="incomplete" status="attention">
+    <Badge progress="incomplete" tone="attention">
       Unfulfilled
     </Badge>
   );
