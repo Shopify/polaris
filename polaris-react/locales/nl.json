@@ -14,7 +14,7 @@
         "partiallyComplete": "Gedeeltelijk voltooid",
         "complete": "Voltooid"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Info",
         "success": "Geslaagd",
         "warning": "Waarschuwing",
@@ -24,7 +24,7 @@
         "readOnly": "Alleen-lezen",
         "enabled": "Ingeschakeld"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Melding sluiten"

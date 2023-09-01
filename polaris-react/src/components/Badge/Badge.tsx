@@ -16,7 +16,7 @@ const DEFAULT_SIZE: Size = 'medium';
 interface NonMutuallyExclusiveProps {
   /** The content to display inside the badge. */
   children?: string;
-  /** Colors and labels the badge with the given status. */
+  /** Colors and labels the badge with the given tone. */
   tone?: Tone;
   /** Render a pip showing the progress of a given task. */
   progress?: Progress;

@@ -34,32 +34,32 @@ export function getDefaultAccessibilityLabel(
   switch (tone) {
     case ToneValue.Info:
     case ToneValue.InfoStrong:
-      toneLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.info');
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.info');
       break;
     case ToneValue.Success:
     case ToneValue.SuccessStrong:
-      toneLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.success');
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.success');
       break;
     case ToneValue.Warning:
     case ToneValue.WarningStrong:
-      toneLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.warning');
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.warning');
       break;
     case ToneValue.Critical:
     case ToneValue.CriticalStrong:
-      toneLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.critical');
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.critical');
       break;
     case ToneValue.Attention:
     case ToneValue.AttentionStrong:
-      toneLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.attention');
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.attention');
       break;
     case ToneValue.New:
-      toneLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.new');
       break;
     case ToneValue.ReadOnly:
-      toneLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.readOnly');
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.readOnly');
       break;
     case ToneValue.Enabled:
-      toneLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.enabled');
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.enabled');
       break;
   }
 

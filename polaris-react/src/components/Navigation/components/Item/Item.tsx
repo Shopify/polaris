@@ -123,7 +123,7 @@ export function Item({
   if (isNew) {
     badgeMarkup = (
       <Badge tone="new">
-        {i18n.translate('Polaris.Badge.STATUS_LABELS.new')}
+        {i18n.translate('Polaris.Badge.TONE_LABELS.new')}
       </Badge>
     );
   } else if (typeof badge === 'string') {
