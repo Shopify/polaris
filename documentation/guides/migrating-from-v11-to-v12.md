@@ -5,6 +5,12 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 ## Table of Contents
 
 - [Quick migration guide](#quick-migration-guide)
+- [Tokens](#tokens)
+  - [Color](#color)
+  - [Font](#font)
+  - [Shadow](#shadow)
+  - [Space](#space)
+  - [Recommended token migration workflow](#recommended-token-migration-workflow)
 
 ## Quick migration guide
 
@@ -113,3 +119,172 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 **DescriptionList**
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="DescriptionList" --from="spacing" --to="gap"`
+
+## Tokens
+
+The following tokens have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents. Please review each token section for migrations that can be run to resolve these breaking changes.
+
+### Color
+
+#### Migration
+
+To replace these deprecated `color` custom properties, you can run the [v12-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-color) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+
+```diff
+- color: var(--p-color-XX);
++ color: var(--p-color-XX);
+```
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path>
+```
+
+#### Post-migration validation
+
+After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
+
+```
+--p-color-XX|--p-color-XX|...
+```
+
+```
+<COMPONENT_NAME[^>\w](?:[^>]|\n)*?PROP_NAME(?!="XX)
+```
+
+#### Replacement maps
+
+| Deprecated Token | Replacement Value |
+| ---------------- | ----------------- |
+| `--p-color-XX`   | `--p-color-XX`    |
+
+### Font
+
+#### Migration
+
+To replace these deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+
+```diff
+- font-size: var(--p-font-XX);
++ font-size: var(--p-font-XX);
+```
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path>
+```
+
+#### Post-migration validation
+
+After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
+
+```
+--p-font-XX|--p-font-XX|...
+```
+
+```
+<COMPONENT_NAME[^>\w](?:[^>]|\n)*?PROP_NAME(?!="XX)
+```
+
+#### Replacement maps
+
+| Deprecated Token | Replacement Value |
+| ---------------- | ----------------- |
+| `--p-font-XX`    | `--p-font-XX`     |
+
+### Shadow
+
+#### Migration
+
+To replace these deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+
+```diff
+- box-shadow: var(--p-shadow-XX);
++ box-shadow: var(--p-shadow-XX);
+```
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
+```
+
+#### Post-migration validation
+
+After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
+
+```
+--p-shadow-XX|--p-shadow-XX|...
+```
+
+```
+<COMPONENT_NAME[^>\w](?:[^>]|\n)*?PROP_NAME(?!="XX)
+```
+
+#### Replacement maps
+
+| Deprecated Token | Replacement Value |
+| ---------------- | ----------------- |
+| `--p-shadow-XX`  | `--p-shadow-XX`   |
+
+### Space
+
+#### Migration
+
+To replace these deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+
+```diff
+- padding: var(--p-space-XX);
++ padding: var(--p-space-XX);
+```
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
+```
+
+#### Post-migration validation
+
+After migrating use the following RegExp to check for any additional instances of `space` custom properties across all file types:
+
+```
+--p-space-XX|--p-space-XX|...
+```
+
+```
+<COMPONENT_NAME[^>\w](?:[^>]|\n)*?PROP_NAME(?!="XX)
+```
+
+#### Replacement maps
+
+| Deprecated Token | Replacement Value |
+| ---------------- | ----------------- |
+| `--p-space-XX`   | `--p-space-XX`    |
+
+### Recommended token migration workflow
+
+When running token migrations we suggest the following workflow:
+
+- Handle automated migrations
+  ```sh
+  # Example migration
+  npx @shopify/polaris-migrator ...
+  # Stage all migrated files
+  git add .
+  # Format staged files only
+  git diff --staged --name-only | xargs npx prettier --write
+  # Commit automated migrations
+  git commit -m "Migrate X custom properties from Polaris v11 to v12"
+  ```
+- Handle manual migrations
+  - Search for token RegExps and handle manual migrations
+    <br>
+
+```sh
+# Stage all manually migrated files
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+# Commit manual migrations
+git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
+```
+
+- Optionally if you use `stylelint-polaris`, you can check for errors after all custom property migrations are finished
+  ```sh
+  npx stylelint <path>
+  ```
