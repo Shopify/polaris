@@ -87,7 +87,6 @@ export function Tooltip({
   onClose,
 }: TooltipProps) {
   const {polarisSummerEditions2023} = useFeatures();
-
   const borderRadius =
     borderRadiusProp || (polarisSummerEditions2023 ? '2' : '1');
 
