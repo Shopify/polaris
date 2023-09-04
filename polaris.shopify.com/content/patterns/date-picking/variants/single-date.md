@@ -43,7 +43,7 @@ This pattern uses the [`Card`](/components/layout-and-structure/card), [`DatePic
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Date picking > Single date"}
 function DatePickerExample() {
   function nodeContainsDescendant(rootNode, descendant) {
     if (rootNode === descendant) {
@@ -137,7 +137,13 @@ function DatePickerExample() {
 
 ### Useful to know
 
-- <span>Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.</span> ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
-- <span>This pattern can be duplicated to allow users to add an end date or time.</span> ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
+- <span>
+    Labels need to simply depict the task at hand. Whether that be a start date,
+    end date, start time etc.
+  </span> ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
+- <span>
+    This pattern can be duplicated to allow users to add an end date or time.
+  </span> ![“Active dates” section with “start date” and “end date” inputs, toggled
+  on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
 
 </UsefulToKnow>
