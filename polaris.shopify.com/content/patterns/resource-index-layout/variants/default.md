@@ -40,7 +40,7 @@ This pattern uses the [`Card`](/components/layout-and-structure/card), [`Badge`]
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Resource index layout"}
 function IndexFiltersDefault() {
   function disambiguateLabel(key, value) {
     switch (key) {
@@ -386,7 +386,12 @@ function IndexFiltersDefault() {
 ### Useful to know
 
 - <span>Use the resource type as page title.</span> ![“Orders” and “Gift cards” pages](/images/patterns/resource-index-layout/resource-index-usage-1.png)
-- <span>Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.</span> ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-layout/resource-index-usage-2.png)
-- <span>Set the page width to normal if the index doesn’t need full width.</span> ![Index page with margins on either side of the main content](/images/patterns/resource-index-layout/resource-index-usage-3.png)
+- <span>
+    Always use the primary action in the top right corner for resource creation.
+    Remove the button if there is no such functionality.
+  </span> ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-layout/resource-index-usage-2.png)
+- <span>
+    Set the page width to normal if the index doesn’t need full width.
+  </span> ![Index page with margins on either side of the main content](/images/patterns/resource-index-layout/resource-index-usage-3.png)
 
 </UsefulToKnow>
