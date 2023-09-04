@@ -12,20 +12,14 @@ import {PatternExample} from '../../types';
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
 
-const PlayroomButton = ({
-  code,
-  patternName,
-}: {
-  code: string;
-  patternName: string;
-}) => {
+const PlayroomButton = ({code, title}: {code: string; title?: string}) => {
   const [encodedUrl, setEncodedUrl] = useState('');
   useEffect(() => {
     setEncodedUrl(
       createUrl({
         baseUrl: '/sandbox/',
         code: endent`
-          {/* [Polaris Pattern] ${patternName} */}
+          ${title ? `{/* ${title} */}` : ''}
           {/* Generated on ${getISOStringYear()} from ${
           window.location.href
         } */}
@@ -38,7 +32,7 @@ const PlayroomButton = ({
         paramType: 'search',
       }),
     );
-  }, [code, patternName]);
+  }, [code, title]);
 
   return (
     <a
@@ -54,7 +48,7 @@ const PlayroomButton = ({
 
 const PatternsExample = ({
   example,
-  patternName,
+  title,
   isCodeVisible = false,
   isActionsVisible = true,
   defaultHeight = '400px',
@@ -62,7 +56,7 @@ const PatternsExample = ({
   onCodeVisibilityToggle,
 }: {
   example: PatternExample;
-  patternName: string;
+  title?: string;
   isCodeVisible?: boolean;
   isActionsVisible?: boolean;
   defaultHeight?: string;
@@ -144,10 +138,7 @@ const PatternsExample = ({
           isActionsVisible
             ? () => (
                 <Fragment>
-                  <PlayroomButton
-                    code={sandboxCode}
-                    patternName={patternName}
-                  />
+                  <PlayroomButton code={sandboxCode} title={title} />
                   <LinkButton onClick={handleCodeToggle}>
                     {showCodeValue ? 'Hide code' : 'Show code'}
                   </LinkButton>

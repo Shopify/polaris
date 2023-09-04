@@ -51,9 +51,10 @@ This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
 
 <!-- The "id" here is used by the "for" of the above context codeblocks. -->
 <!-- Must have "type":"livePreview" to be rendered as a live preview. -->
+<!-- "title" will show up in the exported Sandbox code. -->
 
 {/* prettier-ignore */}
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Some awesome variant"}
 <Page divider>
   <BlockStack gap="16">Coming Soon</BlockStack>
 </Page>

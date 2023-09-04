@@ -11,7 +11,7 @@ variants:
   - 'variants/date-list.md'
 ---
 
-<Variants patternData={data} />
+<Variants variants={frontmatter.variants} />
 
 <Stack gap="4">
 

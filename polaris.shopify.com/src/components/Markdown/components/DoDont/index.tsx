@@ -26,6 +26,7 @@ export const DoDont = ({children}: PropsWithChildren) => {
   while (
     i < childrenArray.length &&
     childrenArray[i].type !== 'h4' &&
+    // @ts-expect-error This property _can_ exist
     childrenArray[i].type?.name !== 'h4'
   ) {
     prefix.push(childrenArray[i]);
@@ -47,6 +48,7 @@ export const DoDont = ({children}: PropsWithChildren) => {
     while (
       i < childrenArray.length &&
       childrenArray[i].type !== 'h4' &&
+      // @ts-expect-error This property _can_ exist
       childrenArray[i].type?.name !== 'h4'
     ) {
       target.push(childrenArray[i]);
