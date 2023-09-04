@@ -48,7 +48,7 @@ This pattern uses the [`Button`](/components/actions/button), [`OptionList`](/co
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Date picking > Date list"}
 function DateListPicker() {
   const ranges = [
     {
@@ -120,8 +120,18 @@ function DateListPicker() {
 
 ### Useful to know
 
-- <span>In the button preview, set a default date range that a merchant will most likely use.</span> ![Button showing a calendar icon labeled “Today”](/images/patterns/date-picking/date-list-usage-1.png)
-- <span>Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.</span> ![Option list with common suggested dates followed by ranges](/images/patterns/date-picking/date-list-usage-2.png)
-- <span>A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.</span> ![Customer segment editor with a date list showing common ranges and related code snippets](/images/patterns/date-picking/date-list-usage-3.png)
+- <span>
+    In the button preview, set a default date range that a merchant will most
+    likely use.
+  </span> ![Button showing a calendar icon labeled “Today”](/images/patterns/date-picking/date-list-usage-1.png)
+- <span>
+    Single dates should be at the top of the list, followed by date ranges from
+    smallest to largest ranges.
+  </span> ![Option list with common suggested dates followed by ranges](/images/patterns/date-picking/date-list-usage-2.png)
+- <span>
+    A date list can be modified to serve unique situations, like providing
+    suggested search queries in the customer segment editor.
+  </span> ![Customer segment editor with a date list showing common ranges and related
+  code snippets](/images/patterns/date-picking/date-list-usage-3.png)
 
 </UsefulToKnow>

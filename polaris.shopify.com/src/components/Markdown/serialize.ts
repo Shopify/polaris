@@ -4,6 +4,10 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import {VFile, type Data} from 'vfile';
 import remarkGfm from 'remark-gfm';
 import remarkSlug from 'remark-slug';
+import {
+  remarkDefinitionList,
+  defListHastHandlers,
+} from 'remark-definition-list';
 import {visit, type Node, type Parent} from 'unist-util-visit';
 import type {Plugin} from 'unified';
 
@@ -138,6 +142,7 @@ export const serializeMdx = async <
   } = {},
 ): Promise<[SerializedMdx<TFrontmatter, TScope>, Data]> => {
   const file = new VFile(content);
+
   const result = await serialize<TScope, TFrontmatter>(file, {
     parseFrontmatter: true,
     scope,
@@ -147,6 +152,7 @@ export const serializeMdx = async <
         [remarkGfm, {tablePipeAlign: true}],
         remarkUnwrapImages,
         remarkSlug,
+        remarkDefinitionList,
         ...(mdxOptions?.remarkPlugins ?? []),
         codeAsContext,
         codeMetaAsDataAttribute,
@@ -165,6 +171,7 @@ export const serializeMdx = async <
           },
         ],
       ],
+      remarkRehypeOptions: {handlers: defListHastHandlers},
     },
   });
   return [result, file.data];

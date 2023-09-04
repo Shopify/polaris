@@ -4,19 +4,19 @@ hideFromNav: true
 
 <HowItHelps>
 
-  ## How it helps merchants
+## How it helps merchants
 
-  ![App settings page with two columns](/images/patterns/app-settings-layout/app-settings-cover-image.png)
+![App settings page with two columns](/images/patterns/app-settings-layout/app-settings-cover-image.png)
 
-  1. In the left column, glanceable labels and descriptions are listed to make it easier for merchants to scan the page and quickly find what they are looking for.
-  2. In the right column, settings are grouped in cards to make it easier for merchants to configure a setting after it's been found, or to configure multiple settings that might belong together.
+1. In the left column, glanceable labels and descriptions are listed to make it easier for merchants to scan the page and quickly find what they are looking for.
+2. In the right column, settings are grouped in cards to make it easier for merchants to configure a setting after it's been found, or to configure multiple settings that might belong together.
 
 <DefinitionTable>
 
-  ### Use when merchants need to:
+### Use when merchants need to:
 
-  **Find and change app settings**
-  : This pattern is used specifically for finding and updating individual app settings within the Shopify admin.
+**Find and change app settings**
+: This pattern is used specifically for finding and updating individual app settings within the Shopify admin.
 
 </DefinitionTable>
 
@@ -40,7 +40,7 @@ This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertica
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"App settings layout"}
 function AppSettingsLayoutExample() {
   const {smUp} = useBreakpoints();
   return (
@@ -110,10 +110,13 @@ function AppSettingsLayoutExample() {
 </Usage>
 <UsefulToKnow>
 
-  ### Useful to know
+### Useful to know
 
-  - <span>Don't include a description unless it's helpful.</span> ![Section header with no description on an app settings page](/images/patterns/app-settings-layout/app-settings-usage-1.png)
-  - <span>Place grouped settings within cards.</span> ![App settings page with section headings and grouped settings](/images/patterns/app-settings-layout/app-settings-usage-2.png)
-  - <span>Stack all setting groups vertically on the page.</span> ![App settings page with two vertically stacked sections](/images/patterns/app-settings-layout/app-settings-usage-3.png)
+- <span>Don't include a description unless it's helpful.</span> ![Section header
+  with no description on an app settings page](/images/patterns/app-settings-layout/app-settings-usage-1.png)
+- <span>Place grouped settings within cards.</span> ![App settings page with section
+  headings and grouped settings](/images/patterns/app-settings-layout/app-settings-usage-2.png)
+- <span>Stack all setting groups vertically on the page.</span> ![App settings page
+  with two vertically stacked sections](/images/patterns/app-settings-layout/app-settings-usage-3.png)
 
 </UsefulToKnow>

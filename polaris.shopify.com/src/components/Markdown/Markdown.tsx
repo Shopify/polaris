@@ -1,10 +1,13 @@
 import React, {
   cloneElement,
   useState,
+  createContext,
+  useContext,
   forwardRef,
-  type ComponentProps,
+  type ComponentType,
+  type PropsWithChildren,
 } from 'react';
-import {MDXRemote} from 'next-mdx-remote';
+import {MDXRemote, type MDXRemoteProps} from 'next-mdx-remote';
 import {ClipboardMinor} from '@shopify/polaris-icons';
 
 import styles from './Markdown.module.scss';
@@ -23,9 +26,120 @@ import RichCardGrid from '../RichCardGrid';
 import Tooltip from '../Tooltip';
 import Icon from '../Icon';
 import {useCopyToClipboard} from '../../utils/hooks';
-import {Variants} from '../PatternPage/PatternPage';
 
-function Markdown(props: ComponentProps<typeof MDXRemote>) {
+const CodeVisibilityContext = createContext<[boolean, (arg: boolean) => void]>([
+  false,
+  () => {},
+]);
+
+const useCodeVisibility = () => useContext(CodeVisibilityContext);
+
+export const CodeVisibilityProvider: ComponentType<
+  PropsWithChildren<{
+    /**
+     * This value will be overwritten by the outer-most context provider
+     */
+    showCode: boolean;
+    /**
+     * This value will be overwritten by the outer-most context provider
+     */
+    setShowCode: (arg: boolean) => void;
+  }>
+> = ({children, showCode, setShowCode}) => {
+  // Attempt to inherit from parent context if it's set
+  const [codeVisibleFromContext, setShowCodeFromContext] = useCodeVisibility();
+
+  return (
+    <CodeVisibilityContext.Provider
+      value={[
+        codeVisibleFromContext ?? showCode,
+        setShowCodeFromContext ?? setShowCode,
+      ]}
+    >
+      {children}
+    </CodeVisibilityContext.Provider>
+  );
+};
+
+interface FencedCodeMeta {
+  title?: string;
+  type?: string;
+  previewContext?: string;
+  sandboxContext?: string;
+  isActionsVisible?: boolean;
+  isCodeVisible?: boolean;
+}
+
+const FencedCodeWithVisibilityToggle: ComponentType<
+  PropsWithChildren<{
+    className?: string;
+    meta?: FencedCodeMeta;
+  }>
+> = ({
+  children,
+  className,
+  meta: {title, type, previewContext, sandboxContext, isActionsVisible} = {},
+}) => {
+  const [showCode, setShowCode] = useCodeVisibility();
+
+  if (type === 'livePreview') {
+    return (
+      <PatternsExample
+        example={{
+          code: (children as string) ?? '',
+          previewContext,
+          sandboxContext,
+        }}
+        isCodeVisible={showCode}
+        isActionsVisible={isActionsVisible}
+        onCodeVisibilityToggle={() => setShowCode(!showCode)}
+        title={title ?? 'Pattern Name'}
+      />
+    );
+  }
+
+  return (
+    <Code
+      code={{
+        className,
+        title: title ?? 'Example',
+        code: (children as string)?.toString() ?? '',
+      }}
+    />
+  );
+};
+
+const FencedCode: ComponentType<
+  PropsWithChildren<{className?: string; meta?: string}>
+> = ({meta, ...props}) => {
+  let parsedMeta: FencedCodeMeta = {};
+
+  try {
+    parsedMeta = JSON.parse(meta ?? '{}');
+  } catch (error) {
+    console.warn(`code block meta is not parsable JSON: ${meta}`);
+  }
+
+  const [showCode, setShowCode] = useState<boolean>(
+    parsedMeta.isCodeVisible ?? false,
+  );
+
+  return (
+    // Note: toggle state will get overridden by any parent context providers
+    <CodeVisibilityProvider showCode={showCode} setShowCode={setShowCode}>
+      <FencedCodeWithVisibilityToggle {...props} meta={parsedMeta} />
+    </CodeVisibilityProvider>
+  );
+};
+
+export type MarkdownProps<
+  TFrontMatter,
+  TScope extends Record<string, unknown>,
+> = MDXRemoteProps<TScope, TFrontMatter>;
+
+function Markdown<TFrontMatter, TScope extends Record<string, unknown>>(
+  props: MarkdownProps<TFrontMatter, TScope>,
+): JSX.Element {
   return (
     <MDXRemote
       {...props}
@@ -78,68 +192,20 @@ function Markdown(props: ComponentProps<typeof MDXRemote>) {
         // `code` could be an inline code element, or a fanced code block coming
         // from `pre`
         code: function MDXCode({
-          children,
-          className,
           // @ts-expect-error Unsure how to tell react-markdown this prop is
           // being injected by a plugin
           fenced,
-          // @ts-expect-error Unsure how to tell react-markdown this prop is
-          // being injected by a plugin
-          meta,
+          ...props
         }) {
-          let type,
-            previewContext,
-            sandboxContext,
-            title,
-            isCodeVisible,
-            isActionsVisible;
-
-          try {
-            ({
-              title,
-              type,
-              previewContext,
-              sandboxContext,
-              isCodeVisible,
-              isActionsVisible,
-            } = JSON.parse(meta ?? '{}'));
-          } catch (error) {
-            console.warn(`code block meta is not parsable JSON: ${meta}`);
-          }
-
-          const [showCode, setShowCode] = useState<boolean>(isCodeVisible);
-
           if (!fenced) {
             return (
-              <InlineCode className={styles.InlineCode}>{children}</InlineCode>
+              <InlineCode className={[styles.InlineCode, props.className]}>
+                {props.children}
+              </InlineCode>
             );
           }
 
-          if (type === 'livePreview') {
-            return (
-              <PatternsExample
-                example={{
-                  code: (children as string) ?? '',
-                  previewContext,
-                  sandboxContext,
-                }}
-                isCodeVisible={showCode}
-                isActionsVisible={isActionsVisible}
-                onCodeVisibilityToggle={() => setShowCode(!showCode)}
-                patternName={'Pattern Name'}
-              />
-            );
-          }
-
-          return (
-            <Code
-              code={{
-                className,
-                title: title ?? 'Example',
-                code: (children as string)?.toString() ?? '',
-              }}
-            />
-          );
+          return <FencedCode {...props} />;
         },
         table: (props) => (
           <Box className={styles.TableWrapper}>
@@ -224,110 +290,5 @@ export const HeadingWithCopyButton = forwardRef(
 ) as WithAsProp<{}, typeof Heading, 'h1'>;
 
 HeadingWithCopyButton.displayName = 'Heading';
-
-const patternComponents = {
-  h1: ({children, id}) => (
-    <Heading id={id} as="h1">
-      {children}
-    </Heading>
-  ),
-  h2: ({children, id}) => (
-    <Heading id={id} as="h2">
-      {children}
-    </Heading>
-  ),
-  h3: ({children, id}) => (
-    <Heading id={id} as="h3">
-      {children}
-    </Heading>
-  ),
-  h4: ({children, id}) => (
-    <Heading id={id} as="h4">
-      {children}
-    </Heading>
-  ),
-  ol: ({children}) => (
-    <Stack as="ol" gap="2" className={[styles.List, styles.OrderedList]}>
-      {children}
-    </Stack>
-  ),
-  ul: ({children}) => (
-    <Stack as="ul" className={[styles.List, styles.UnorderedList]} gap="1">
-      {children}
-    </Stack>
-  ),
-  dl: ({children}) => (
-    <Box as="dl" className={styles.DefinitionList}>
-      {children}
-    </Box>
-  ),
-  strong: ({children}) => (
-    <Box as="strong" style={{fontWeight: 'var(--font-weight-700)'}}>
-      {children}
-    </Box>
-  ),
-  code: function MdCode({
-    // @ts-expect-error Unsure how to tell react-markdown this prop is
-    // being injected by a plugin
-    inline,
-    // @ts-expect-error Unsure how to tell react-markdown this prop is
-    // being injected by a plugin
-    meta,
-    children,
-  }) {
-    const [showCode, toggleCode] = useContext(CodeVisibilityContext);
-
-    if (inline) {
-      return <InlinePill>{children}</InlinePill>;
-    }
-
-    let type, previewContext, sandboxContext;
-
-    if (meta) {
-      try {
-        ({type, previewContext, sandboxContext} = JSON.parse(meta));
-      } catch (error) {
-        console.warn(`code block meta is not parsable JSON: ${meta}`);
-      }
-    }
-
-    if (type === 'livePreview') {
-      return (
-        <PatternsExample
-          example={{
-            code: (children as string) ?? '',
-            previewContext,
-            sandboxContext,
-          }}
-          isCodeVisible={showCode}
-          onCodeVisibilityToggle={() => toggleCode(!showCode)}
-          patternName={patternName ?? ''}
-        />
-      );
-    }
-
-    return <Code code={{title: '', code: (children as string) ?? ''}} />;
-  },
-
-  Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
-  Hero: ({children}) => <Box className={styles.Hero}>{children}</Box>,
-  HowItHelps: ({children}) => (
-    <Stack gap="4" className={styles.HowItHelps}>
-      {children}
-    </Stack>
-  ),
-  Usage: ({children}) => (
-    <Stack gap="4" className={styles.Usage}>
-      {children}
-    </Stack>
-  ),
-  UsefulToKnow: ({children}) => (
-    <SideBySide className={styles.UsefulToKnow}>{children}</SideBySide>
-  ),
-  DefinitionTable: ({children}) => (
-    <Box className={styles.DefinitionTable}>{children}</Box>
-  ),
-  Variants: ({patternData}) => <Variants patternData={patternData} />,
-};
 
 export default Markdown;

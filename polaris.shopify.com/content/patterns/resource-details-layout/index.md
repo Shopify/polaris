@@ -9,7 +9,7 @@ variants:
   - 'variants/default.md'
 ---
 
-<Variants patternData={data} />
+<Variants variants={frontmatter.variants} />
 
 <Stack gap="4">
 
