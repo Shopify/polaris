@@ -1,4 +1,5 @@
-import {Fragment, useEffect, useState} from 'react';
+import {Fragment, useRef, useEffect, useState, useCallback} from 'react';
+import {flushSync} from 'react-dom';
 import {format} from 'prettier/standalone';
 import babel from 'prettier/parser-babel';
 import endent from 'endent';
@@ -9,6 +10,10 @@ import GrowFrame from '../GrowFrame';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
 import {PatternExample} from '../../types';
+import {className as classNames} from '../../utils/various';
+import {useViewTransition} from '../../utils/hooks';
+import {MaximizeMinor, MinimizeMinor} from '@shopify/polaris-icons';
+import Icon from '../Icon';
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
 
@@ -63,15 +68,85 @@ const PatternsExample = ({
   showCode?: boolean;
   onCodeToggle?: () => void;
 }) => {
-  const isControlled = typeof showCode === 'undefined';
+  const dialogRef: React.RefObject<HTMLDialogElement> = useRef(null);
+  const maximizeButtonRef: React.RefObject<HTMLSpanElement> = useRef(null);
+
+  const transition = useViewTransition();
+
   const [codeActive, toggleCode] = useState(false);
+  const [dialogActive, toggleDialog] = useState(false);
+
+  const isControlled = typeof showCode === 'undefined';
   const showCodeValue = isControlled ? codeActive : showCode;
+
+  const handleScrollLock = (lock: boolean) => {
+    if (lock) {
+      document
+        ?.querySelector('html')
+        ?.setAttribute('style', 'overflow: hidden;');
+    } else {
+      document?.querySelector('html')?.removeAttribute('style');
+    }
+  };
+
   const handleCodeToggle = () => {
     if (onCodeToggle) onCodeToggle();
     if (isControlled) {
       toggleCode((codeActive) => !codeActive);
     }
   };
+
+  const handleMaximize = async () => {
+    const dialog = dialogRef.current;
+    const maximizeButton = maximizeButtonRef.current;
+
+    return await transition(() => {
+      if (dialog && maximizeButton) {
+        handleScrollLock(true);
+        toggleDialog(true);
+        dialog.showModal();
+
+        // @ts-ignore
+        maximizeButton.style.viewTransitionName = 'dialog';
+      }
+      // @ts-ignore
+      maximizeButton.style.viewTransitionName = '';
+    });
+  };
+
+  const handleMinimize = useCallback(async () => {
+    const dialog = dialogRef.current;
+    const maximizeButton = maximizeButtonRef.current;
+
+    return await transition(() => {
+      if (dialog && maximizeButton) {
+        handleScrollLock(false);
+        toggleDialog(false);
+        dialog.close();
+
+        // @ts-ignore
+        maximizeButton.style.viewTransitionName = 'dialog';
+      }
+      // @ts-ignore
+      maximizeButton.style.viewTransitionName = '';
+    });
+  }, [transition]);
+
+  /* Escape to close with the <dialog> element is supposed to "just work", but it only worked here when the backdrop was the active element. Leaving this for now even though it doesn't work. <dialog> is an anomoly because of the top-layer...  */
+  useEffect(() => {
+    if (dialogActive) {
+      const handleKeyDownEscape = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+          handleMinimize();
+        }
+      };
+
+      window.addEventListener('keyup', handleKeyDownEscape);
+
+      return () => window.removeEventListener('keyup', handleKeyDownEscape);
+    }
+  }, [dialogActive, handleMinimize]);
+
   const formatCodeSnippet = (code: string) => {
     let prettifiedCode;
 
@@ -126,16 +201,61 @@ const PatternsExample = ({
     paramType: 'search',
   })}`;
 
-  return (
-    <Stack gap="2" className={styles.SpecificityBuster}>
+  const exampleMarkup = (
+    <ExampleWrapper
+      className={classNames(styles.ExampleWrapper)}
+      renderFrameActions={() => (
+        <Fragment>
+          <LinkButton
+            tabIndex={0}
+            className={classNames(
+              styles.PositionedLink,
+              dialogActive && styles.focus,
+            )}
+            aria-label="View enlarged example"
+            onClick={handleMaximize}
+          >
+            <span
+              ref={maximizeButtonRef}
+              className={styles.AnimatedBackground}
+            />
+            <Icon source={MaximizeMinor} />
+          </LinkButton>
+          <PlayroomButton code={sandboxCode} patternName={patternName} />
+          <LinkButton onClick={handleCodeToggle}>
+            {showCodeValue ? 'Hide code' : 'Show code'}
+          </LinkButton>
+        </Fragment>
+      )}
+    >
+      <GrowFrame
+        id="live-preview-iframe"
+        defaultHeight={'400px'}
+        src={previewUrl}
+      />
+    </ExampleWrapper>
+  );
+
+  const expandedExampleMarkup = (
+    <dialog
+      ref={dialogRef}
+      className={classNames(styles.Dialog, dialogActive && styles.open)}
+      // onClose={handleMinimize}
+    >
+      <div className={styles.PreventBackgroundInteractions} />
       <ExampleWrapper
         className={styles.ExampleWrapper}
         renderFrameActions={() => (
           <Fragment>
-            <PlayroomButton code={sandboxCode} patternName={patternName} />
-            <LinkButton onClick={handleCodeToggle}>
-              {showCodeValue ? 'Hide code' : 'Show code'}
+            <LinkButton
+              tabIndex={0}
+              className={styles.PositionedLink}
+              aria-label="Close enlarged example"
+              onClick={handleMinimize}
+            >
+              <Icon source={MinimizeMinor} />
             </LinkButton>
+            <PlayroomButton code={sandboxCode} patternName={patternName} />
           </Fragment>
         )}
       >
@@ -145,20 +265,29 @@ const PatternsExample = ({
           src={previewUrl}
         />
       </ExampleWrapper>
-      {showCodeValue ? (
-        <Code
-          code={[
-            {
-              title: 'React',
-              code: endent`
+    </dialog>
+  );
+
+  return (
+    <>
+      {expandedExampleMarkup}
+      <Stack gap="2" className={styles.SpecificityBuster}>
+        {exampleMarkup}
+        {showCodeValue ? (
+          <Code
+            code={[
+              {
+                title: 'React',
+                code: endent`
                 // This example is for guidance purposes. Copying it will come with caveats.
                 ${formattedCode}
               `,
-            },
-          ]}
-        />
-      ) : null}
-    </Stack>
+              },
+            ]}
+          />
+        ) : null}
+      </Stack>
+    </>
   );
 };
 

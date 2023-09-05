@@ -3,7 +3,7 @@ import React, {useEffect, useRef} from 'react';
 export default function ViewTransition({children}) {
   useEffect(() => {
     if (document.startViewTransition !== undefined) {
-      document.startViewTransition(() => {
+      return document.startViewTransition(() => {
         console.log('Calling startViewTransition');
 
         return new Promise((resolve) => {
@@ -11,7 +11,13 @@ export default function ViewTransition({children}) {
         });
       });
     }
-  });
+
+    // router.events.on('routeChangeStart', handler);
+
+    return () => {
+      // router.events.off('routeChangeStart', handler);
+    };
+  }, []);
 
   return children;
 }
