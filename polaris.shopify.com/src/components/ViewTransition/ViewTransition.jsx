@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
-import {useRouter} from 'next/router';
+// import {useRouter} from 'next/router';
 
 export default function ViewTransition({children}) {
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     const handler = () => {
       if (document.startViewTransition !== undefined) {
-        document.startViewTransition(async () => {
+        return document.startViewTransition(async () => {
           return await new Promise((resolve) => {
             return resolve(true);
           });
@@ -15,12 +15,12 @@ export default function ViewTransition({children}) {
       }
     };
 
-    router.events.on('routeChangeStart', handler);
+    // router.events.on('routeChangeStart', handler);
 
     return () => {
-      router.events.off('routeChangeStart', handler);
+      // router.events.off('routeChangeStart', handler);
     };
-  }, [router.events]);
+  }, []);
 
   return children;
 }
