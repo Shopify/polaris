@@ -385,20 +385,21 @@ function DateRangePicker() {
 ```
 
 </Usage>
-<UsefulToKnow>
 
 ### Useful to know
 
-- <span>
-    Pin any relevant, merchant-specific dates to the top of the option list.
-  </span> ![List of date options such as “BFCM (2023)”](/images/patterns/date-picking/date-range-usage-1.png)
-- <span>
-    If a date cannot be selected, indicate it with the [disabled text color
-    token](/tokens/color)
-  </span> ![Single-month calendar with a range of unselectable dates](/images/patterns/date-picking/date-range-usage-2.png)
-- <span>
-    If a merchant enters a nonexistent date, revert to the previously selected
-    date.
-  </span> ![Calendar with date inputs reading an incorrect date](/images/patterns/date-picking/date-range-usage-3.png)
+<SideBySide>
 
-</UsefulToKnow>
+- Pin any relevant, merchant-specific dates to the top of the option list.
+
+  ![List of date options such as “BFCM (2023)”](/images/patterns/date-picking/date-range-usage-1.png)
+
+- If a date cannot be selected, indicate it with the [disabled text color token](/tokens/color)
+
+  ![Single-month calendar with a range of unselectable dates](/images/patterns/date-picking/date-range-usage-2.png)
+
+- If a merchant enters a nonexistent date, revert to the previously selected date.
+
+  ![Calendar with date inputs reading an incorrect date](/images/patterns/date-picking/date-range-usage-3.png)
+
+</SideBySide>
