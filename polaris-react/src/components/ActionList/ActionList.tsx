@@ -12,6 +12,7 @@ import {useI18n} from '../../utilities/i18n';
 
 import {SearchField, Item, Section} from './components';
 import type {ItemProps} from './components';
+import {textContent} from './utils/text-content';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -53,7 +54,9 @@ export function ActionList({
   const filteredSections = finalSections?.map((section) => ({
     ...section,
     items: section.items.filter((item) =>
-      item.content?.toLowerCase().includes(searchText.toLowerCase()),
+      textContent(item.content)
+        ?.toLowerCase()
+        .includes(searchText.toLowerCase()),
     ),
   }));
 
