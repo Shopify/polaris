@@ -8,7 +8,11 @@ import type {
 } from 'jscodeshift';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../utilities/constants';
-import {hasImportDeclaration} from '../../utilities/imports';
+import {
+  getImportSpecifierName,
+  hasImportDeclaration,
+  hasImportSpecifier,
+} from '../../utilities/imports';
 import {insertJSXComment} from '../../utilities/jsx';
 
 export default function transformer(
@@ -17,14 +21,20 @@ export default function transformer(
   _: Options,
 ) {
   const source = j(fileInfo.source);
-  const componentName = 'Button';
 
-  if (!hasImportDeclaration(j, source, '@shopify/polaris')) {
+  // If `Button` component name is not imported, exit
+  if (
+    !hasImportDeclaration(j, source, '@shopify/polaris') &&
+    !hasImportSpecifier(j, source, 'Button', '@shopify/polaris')
+  ) {
     return fileInfo.source;
   }
 
+  const localElementName =
+    getImportSpecifierName(j, source, 'Button', '@shopify/polaris') || 'Button';
+
   // For each instance of a `Button` get all the attributes and update accordingly
-  source.findJSXElements(componentName).forEach((element: ASTPath<any>) => {
+  source.findJSXElements(localElementName).forEach((element: ASTPath<any>) => {
     const openingElement = j(element).find(j.JSXOpeningElement).get()
       .value as JSXOpeningElement;
 
