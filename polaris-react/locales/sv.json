@@ -14,7 +14,7 @@
         "partiallyComplete": "Delvis slutförd",
         "complete": "Slutförd"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Info",
         "success": "Lyckades",
         "warning": "Varning",
@@ -24,7 +24,7 @@
         "readOnly": "Skrivskyddad",
         "enabled": "Aktiverat"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Avvisa avisering"

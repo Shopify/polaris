@@ -26,7 +26,7 @@ export function Default() {
     <Page
       backAction={{content: 'Products', url: '#'}}
       title="3/4 inch Leather pet collar"
-      titleMetadata={<Badge status="success">Paid</Badge>}
+      titleMetadata={<Badge tone="success">Paid</Badge>}
       subtitle="Perfect for any pet"
       compactTitle
       primaryAction={{content: 'Save', disabled: true}}
@@ -329,7 +329,7 @@ export function WithContentAfterTitle() {
     <Page
       backAction={{content: 'Products', url: '#'}}
       title="Jar With Lock-Lid"
-      titleMetadata={<Badge status="attention">Verified</Badge>}
+      titleMetadata={<Badge tone="attention">Verified</Badge>}
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {content: 'Duplicate'},

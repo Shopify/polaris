@@ -8,6 +8,12 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 ## Quick migration guide
 
+**Badge**
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`
+
 **Layout.Section**
 
 - One third:

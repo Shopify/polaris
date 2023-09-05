@@ -14,7 +14,7 @@
         "partiallyComplete": "一部完了済み",
         "complete": "完了"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "情報",
         "success": "成功しました",
         "warning": "警告",
@@ -24,7 +24,7 @@
         "readOnly": "読み取り専用",
         "enabled": "有効"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "通知を閉じる"

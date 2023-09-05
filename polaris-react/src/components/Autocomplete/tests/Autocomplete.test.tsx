@@ -223,7 +223,7 @@ describe('<Autocomplete/>', () => {
             disabled: false,
             destructive: true,
             badge: {
-              status: 'new' as const,
+              tone: 'new' as const,
               content: 'new',
             },
           };
@@ -250,7 +250,7 @@ describe('<Autocomplete/>', () => {
             disabled: false,
             destructive: true,
             badge: {
-              status: 'new' as const,
+              tone: 'new' as const,
               content: 'new',
             },
           };

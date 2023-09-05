@@ -7,7 +7,7 @@ function PageExample() {
     <Page
       backAction={{content: 'Products', url: '#'}}
       title="3/4 inch Leather pet collar"
-      titleMetadata={<Badge status="success">Paid</Badge>}
+      titleMetadata={<Badge tone="success">Paid</Badge>}
       subtitle="Perfect for any pet"
       compactTitle
       primaryAction={{content: 'Save', disabled: true}}

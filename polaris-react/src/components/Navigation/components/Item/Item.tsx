@@ -122,12 +122,12 @@ export function Item({
   let badgeMarkup: ReactNode = null;
   if (isNew) {
     badgeMarkup = (
-      <Badge status="new">
-        {i18n.translate('Polaris.Badge.STATUS_LABELS.new')}
+      <Badge tone="new">
+        {i18n.translate('Polaris.Badge.TONE_LABELS.new')}
       </Badge>
     );
   } else if (typeof badge === 'string') {
-    badgeMarkup = <Badge status="new">{badge}</Badge>;
+    badgeMarkup = <Badge tone="new">{badge}</Badge>;
   } else {
     badgeMarkup = badge;
   }

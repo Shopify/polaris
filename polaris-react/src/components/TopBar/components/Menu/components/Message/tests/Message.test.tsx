@@ -29,10 +29,7 @@ describe('<Message />', () => {
 
   it('renders a badge when the badge prop is provided', () => {
     const message = mountWithApp(
-      <Message
-        {...messageProps}
-        badge={{content: 'new', status: 'new' as 'new'}}
-      />,
+      <Message {...messageProps} badge={{content: 'new', tone: 'new'}} />,
     );
 
     expect(message).toContainReactComponent(Badge);

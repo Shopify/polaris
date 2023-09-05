@@ -128,7 +128,7 @@ describe('<Nav.Item />', () => {
       );
 
       expect(item).toContainReactComponent(Badge, {
-        status: 'new',
+        tone: 'new',
         children: '1',
       });
     });

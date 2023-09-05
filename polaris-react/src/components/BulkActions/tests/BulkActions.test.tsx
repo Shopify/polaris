@@ -34,13 +34,13 @@ const bulkActionProps: Props = {
 
 describe('<BulkActions />', () => {
   describe('actions', () => {
-    it('indicator is passed to BulkActionButton when actions contain a new status for badge', () => {
+    it('indicator is passed to BulkActionButton when actions contain a new tone for badge', () => {
       const bulkActions = mountWithApp(
         <BulkActions
           {...bulkActionProps}
           promotedActions={[]}
           actions={[
-            {content: 'Action', badge: {status: 'new', content: 'Badge'}},
+            {content: 'Action', badge: {tone: 'new', content: 'Badge'}},
           ]}
         />,
       );
