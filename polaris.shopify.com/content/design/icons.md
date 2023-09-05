@@ -25,6 +25,10 @@ keywords:
 
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## Principles
 
 ### Simple over detailed

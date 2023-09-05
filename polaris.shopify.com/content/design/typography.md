@@ -8,6 +8,10 @@ keywords:
 icon: TypeMajor
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ![An illustration of letters constructed from lego blocks](/images/design/typography/text-featured@2x.png)
 
 ## Working with typography

@@ -18,6 +18,10 @@ keywords:
 description: Polaris layout components let you quickly build custom layouts without writing CSS code.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ![](/images/design/layout/layout-banner.png)
 
 ## What are layout components?
