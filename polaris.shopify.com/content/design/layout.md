@@ -42,25 +42,39 @@ Polaris layout components provide several benefits over writing layout CSS code:
 
 Layout components are intended to solve about 80% of layout use cases. But they won’t solve everything. For unique cases, leverage [Polaris design tokens](/tokens/color) to write your own CSS styles. When building with layout components, keep the following behaviors and limitations in mind.
 
-<SideBySide>
+<Grid>
+  <Grid.Cell columnSpan={{xs: 6, lg: 5}}>
+    **Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /> <br /> Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.
+  </Grid.Cell>
 
-- **Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /> <br /> Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.
+  <Grid.Cell columnSpan={{xs: 6, lg: 7}}>
+    ![Card, InlineGrid, Divider, and InlineStack components assembled together to create admin UI element](/images/design/layout/single-purpose-composible-flexible@2x.png)
+  </Grid.Cell>
 
-  ![Card, InlineGrid, Divider, and InlineStack components assembled together to create admin UI element](/images/design/layout/single-purpose-composible-flexible@2x.png)
+  <Grid.Cell columnSpan={{xs: 6, lg: 5}}>
+    **Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /> <br /> Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.
+  </Grid.Cell>
 
-- **Layout components shouldn’t affect anything outside of their borders.** They should only impact components rendered inside of them. The exception is the [Bleed](/components/layout-and-structure/bleed) component.
+  <Grid.Cell columnSpan={{xs: 6, lg: 7}}>
+    ![Card, InlineGrid, Divider, and InlineStack components assembled together to create admin UI element](/images/design/layout/single-purpose-composible-flexible@2x.png)
+  </Grid.Cell>
 
-  ![Admin card with whitespace between each UI element](/images/design/layout/outside-borders@2x.png)
+  <Grid.Cell columnSpan={{xs: 6, lg: 5}}>
+    **Layout components shouldn’t affect anything outside of their borders.** They should only impact components rendered inside of them. The exception is the [Bleed](/components/layout-and-structure/bleed) component.
+  </Grid.Cell>
 
-- **Layout components have a default spacing of 0.** There isn’t a perfect default, so add spacing with intention. For more information, refer to the [Space](/design/space) guide.
+  <Grid.Cell columnSpan={{xs: 6, lg: 7}}>
+    ![Admin card with whitespace between each UI element](/images/design/layout/outside-borders@2x.png)
+  </Grid.Cell>
 
-  ![Admin card with the padding around and between the elements increased](/images/design/layout/default-spacing@2x.png)
+  <Grid.Cell columnSpan={{xs: 6, lg: 5}}>
+    **Layout component behaviors rely on Polaris tokens.** Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a [Polaris design token](/tokens/color).
+  </Grid.Cell>
 
-- **Layout component behaviors rely on Polaris tokens.** Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a [Polaris design token](/tokens/color).
-
-  ![Admin UI element with color and spacing design tokens called out](/images/design/layout/tokens@2x.png)
-
-</SideBySide>
+  <Grid.Cell columnSpan={{xs: 6, lg: 7}}>
+    ![Admin UI element with color and spacing design tokens called out](/images/design/layout/tokens@2x.png)
+  </Grid.Cell>
+</Grid>
 
 ## Breakpoints and spacing
 
@@ -70,10 +84,9 @@ To ensure designs are responsive, reference the breakpoints and examples in the 
 
 <video width="100%" height="auto" controls autoPlay muted loop>
   <source src="/images/design/space/breakpoints.mp4" type="video/mp4" />
-  <p>
-    Browser window resizing with the overlayed column grid dynamically adjusting
-    to the size
-  </p>
+
+  Browser window resizing with the overlayed column grid dynamically adjusting
+  to the size
 </video>
 
 ## Layout component examples
