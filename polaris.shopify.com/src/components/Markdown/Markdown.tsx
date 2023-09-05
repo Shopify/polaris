@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import {MDXRemote, type MDXRemoteProps} from 'next-mdx-remote';
 import {ClipboardMinor} from '@shopify/polaris-icons';
+import {Grid} from '@shopify/polaris';
 
 import styles from './Markdown.module.scss';
 import Code, {InlineCode} from '../../components/Code';
@@ -213,6 +214,7 @@ function Markdown<TFrontMatter, TScope extends Record<string, unknown>>(
           </Box>
         ),
         SideBySide,
+        Grid,
         YoutubeVideo,
         DoDont,
         StatusBanner,
