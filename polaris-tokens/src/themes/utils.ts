@@ -10,6 +10,7 @@ import type {
   MetaThemeVariant,
   MetaThemeVariantPartialShape,
   MetaTokenGroupShape,
+  ThemeName,
 } from './types';
 import {themeNameLightUplift} from './constants';
 import {metaThemeBase} from './base';
@@ -23,13 +24,13 @@ export function createMetaThemeVariant<
   return deepmerge(metaThemeBase, metaThemeVariantPartial);
 }
 
-export function createThemeClassName(themeName: string) {
+export function createThemeClassName(themeName: ThemeName) {
   return themeName === themeNameLightUplift
     ? themeName
     : `p-theme-${themeName}`;
 }
 
-export function createThemeSelector(themeName: string) {
+export function createThemeSelector(themeName: ThemeName) {
   return `html.${createThemeClassName(themeName)}`;
 }
 

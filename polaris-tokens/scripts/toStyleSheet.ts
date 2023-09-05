@@ -6,6 +6,7 @@ import {metaThemeVariantPartials, metaThemeDefault} from '../src/themes';
 import {themeNameDefault} from '../src/themes/constants';
 import {createThemeSelector} from '../src/themes/utils';
 import {createVar} from '../src/utilities';
+import type {Entries} from '../src/types';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const scssOutputDir = path.join(__dirname, '../dist/scss');
@@ -53,7 +54,9 @@ export async function toStyleSheet() {
 
   const metaThemeVariantPartialsEntries = Object.entries(
     metaThemeVariantPartials,
-  ).filter(([themeName]) => themeName !== themeNameDefault);
+  ).filter(([themeName]) => themeName !== themeNameDefault) as Entries<
+    Omit<typeof metaThemeVariantPartials, typeof themeNameDefault>
+  >;
 
   const styles = [
     `:root{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
