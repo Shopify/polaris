@@ -46,8 +46,8 @@ function IndexFiltersDefault() {
     switch (key) {
       case 'type':
         return value.map((val) => `type: ${val}`).join(', ');
-      case 'status':
-        return value.map((val) => `status: ${val}`).join(', ');
+      case 'tone':
+        return value.map((val) => `tone: ${val}`).join(', ');
       default:
         return value;
     }
@@ -134,8 +134,8 @@ function IndexFiltersDefault() {
   const sortOptions = [
     {label: 'Product', value: 'product asc', directionLabel: 'Ascending'},
     {label: 'Product', value: 'product desc', directionLabel: 'Descending'},
-    {label: 'Status', value: 'status asc', directionLabel: 'A-Z'},
-    {label: 'Status', value: 'status desc', directionLabel: 'Z-A'},
+    {label: 'Status', value: 'tone asc', directionLabel: 'A-Z'},
+    {label: 'Status', value: 'tone desc', directionLabel: 'Z-A'},
     {label: 'Type', value: 'type asc', directionLabel: 'A-Z'},
     {label: 'Type', value: 'type desc', directionLabel: 'Z-A'},
     {label: 'Vendor', value: 'vendor asc', directionLabel: 'Ascending'},
@@ -162,7 +162,7 @@ function IndexFiltersDefault() {
           disabled: false,
           loading: false,
         };
-  const [status, setStatus] = useState(undefined);
+  const [tone, setStatus] = useState(undefined);
   const [type, setType] = useState(undefined);
   const [queryValue, setQueryValue] = useState('');
   const handleStatusChange = useCallback((value) => setStatus(value), []);
@@ -181,18 +181,18 @@ function IndexFiltersDefault() {
   }, [handleStatusRemove, handleQueryValueRemove, handleTypeRemove]);
   const filters = [
     {
-      key: 'status',
+      key: 'tone',
       label: 'Status',
       filter: (
         <ChoiceList
-          title="status"
+          title="tone"
           titleHidden
           choices={[
             {label: 'Active', value: 'active'},
             {label: 'Draft', value: 'draft'},
             {label: 'Archived', value: 'archived'},
           ]}
-          selected={status || []}
+          selected={tone || []}
           onChange={handleStatusChange}
           allowMultiple
         />
@@ -219,11 +219,11 @@ function IndexFiltersDefault() {
     },
   ];
   const appliedFilters = [];
-  if (status && !isEmpty(status)) {
-    const key = 'status';
+  if (tone && !isEmpty(tone)) {
+    const key = 'tone';
     appliedFilters.push({
       key,
-      label: disambiguateLabel(key, status),
+      label: disambiguateLabel(key, tone),
       onRemove: handleStatusRemove,
     });
   }
@@ -240,7 +240,7 @@ function IndexFiltersDefault() {
       id: '1020',
       price: '$200',
       product: '1ZPRESSO | J-MAX Manual Coffee Grinder',
-      status: <Badge status="success">Active</Badge>,
+      tone: <Badge tone="success">Active</Badge>,
       inventory: '20 in stock',
       type: 'Brew Gear',
       vendor: 'Espresso Shot Coffee',
@@ -249,7 +249,7 @@ function IndexFiltersDefault() {
       id: '1018',
       price: '$200',
       product: 'Acaia Pearl Set',
-      status: <Badge status="success">Active</Badge>,
+      tone: <Badge tone="success">Active</Badge>,
       inventory: '2 in stock for 50 variants',
       type: 'Brew Gear',
       vendor: 'Espresso Shot Coffee',
@@ -258,7 +258,7 @@ function IndexFiltersDefault() {
       id: '1016',
       price: '$200',
       product: 'AeroPress Go Brewer',
-      status: <Badge status="info">Draft</Badge>,
+      tone: <Badge tone="info">Draft</Badge>,
       inventory: '3 in stock for 50 variants',
       type: 'Brew Gear',
       vendor: 'Espresso Shot Coffee',
@@ -267,7 +267,7 @@ function IndexFiltersDefault() {
       id: '1015',
       price: '$200',
       product: 'Canadiano Brewer',
-      status: <Badge status="success">Active</Badge>,
+      tone: <Badge tone="success">Active</Badge>,
       inventory: '890 in stock for 50 variants',
       type: 'Brew Merch',
       vendor: 'Espresso Shot Coffee',
@@ -276,7 +276,7 @@ function IndexFiltersDefault() {
       id: '1014',
       price: '$200',
       product: 'Canadiano Brewer White Ash',
-      status: <Badge status="success">Active</Badge>,
+      tone: <Badge tone="success">Active</Badge>,
       inventory: '890 in stock for 50 variants',
       type: 'Brew Gear',
       vendor: 'Espresso Shot Coffee',
@@ -289,10 +289,7 @@ function IndexFiltersDefault() {
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(products);
   const rowMarkup = products.map(
-    (
-      {id, thumbnail, product, price, status, inventory, type, vendor},
-      index,
-    ) => (
+    ({id, thumbnail, product, price, tone, inventory, type, vendor}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -307,7 +304,7 @@ function IndexFiltersDefault() {
         </IndexTable.Cell>
         <IndexTable.Cell>{product}</IndexTable.Cell>
         <IndexTable.Cell>{price}</IndexTable.Cell>
-        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{tone}</IndexTable.Cell>
         <IndexTable.Cell>{inventory}</IndexTable.Cell>
         <IndexTable.Cell>{type}</IndexTable.Cell>
         <IndexTable.Cell>{vendor}</IndexTable.Cell>

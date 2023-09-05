@@ -5,9 +5,9 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BadgeExample() {
   return (
     <Badge
-      status="success"
+      tone="success"
       progress="complete"
-      statusAndProgressLabelOverride="Status: Published. Your online store is visible."
+      toneAndProgressLabelOverride="Status: Published. Your online store is visible."
     >
       Published
     </Badge>

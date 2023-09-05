@@ -134,7 +134,7 @@ describe('<ActionList />', () => {
     const actionList = mountWithApp(
       <ActionList
         items={[
-          {content: 'Add discount', badge: {status: 'new', content: 'badge'}},
+          {content: 'Add discount', badge: {tone: 'new', content: 'badge'}},
         ]}
         onActionAnyItem={mockOnActionAnyItem}
         actionRole="option"
@@ -142,7 +142,7 @@ describe('<ActionList />', () => {
     );
     expect(actionList).toContainReactComponent(Badge, {
       children: 'badge',
-      status: 'new',
+      tone: 'new',
     });
   });
 

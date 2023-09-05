@@ -23,7 +23,7 @@
   }
 }
 
-.statusSuccess {
+.toneSuccess {
   background-color: var(--p-color-bg-success);
   color: var(--p-color-text-success);
 
@@ -32,7 +32,7 @@
   }
 }
 
-.statusSuccess-strong-experimental {
+.toneSuccess-strong {
   color: var(--p-color-text-on-color);
   background-color: var(--p-color-bg-success-strong);
 
@@ -41,7 +41,7 @@
   }
 }
 
-.statusInfo {
+.toneInfo {
   background-color: var(--p-color-bg-info);
   color: var(--p-color-text-info);
 
@@ -50,7 +50,7 @@
   }
 }
 
-.statusInfo-strong-experimental {
+.toneInfo-strong {
   color: var(--p-color-text-info-strong);
   background-color: var(--p-color-bg-info-strong);
 
@@ -59,7 +59,7 @@
   }
 }
 
-.statusAttention {
+.toneAttention {
   background-color: var(--p-color-bg-caution);
   color: var(--p-color-text-caution);
 
@@ -68,7 +68,7 @@
   }
 }
 
-.statusAttention-strong-experimental {
+.toneAttention-strong {
   color: var(--p-color-text-caution-strong);
   background-color: var(--p-color-bg-caution-strong);
 
@@ -77,7 +77,7 @@
   }
 }
 
-.statusWarning {
+.toneWarning {
   background-color: var(--p-color-bg-warning);
   color: var(--p-color-text-warning-experimental);
 
@@ -86,7 +86,7 @@
   }
 }
 
-.statusWarning-strong-experimental {
+.toneWarning-strong {
   color: var(--p-color-text-warning-experimental);
   background-color: var(--p-color-bg-warning-strong-experimental);
 
@@ -95,7 +95,7 @@
   }
 }
 
-.statusCritical {
+.toneCritical {
   background-color: var(--p-color-bg-critical);
   color: var(--p-color-text-critical);
 
@@ -104,7 +104,7 @@
   }
 }
 
-.statusCritical-strong-experimental {
+.toneCritical-strong {
   color: var(--p-color-text-on-color);
   background-color: var(--p-color-bg-critical-strong);
 
@@ -113,7 +113,7 @@
   }
 }
 
-.statusNew {
+.toneNew {
   border: none;
   background-color: var(--p-color-bg-transparent-subdued-experimental);
   color: var(--p-color-text-subdued);
@@ -125,7 +125,7 @@
   }
 }
 
-.statusRead-only-experimental {
+.toneRead-only {
   color: var(--p-color-text-subdued);
   background-color: transparent;
 
@@ -134,7 +134,7 @@
   }
 }
 
-.statusEnabled-experimental {
+.toneEnabled {
   color: var(--p-color-text);
 
   svg {
@@ -142,7 +142,7 @@
   }
 }
 
-.sizeLarge-experimental {
+.sizeLarge {
   padding: var(--p-space-1) var(--p-space-2);
 }
 
@@ -160,7 +160,7 @@
     vertical-align: top;
   }
 
-  .sizeLarge-experimental & {
+  .sizeLarge & {
     margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
   }
 

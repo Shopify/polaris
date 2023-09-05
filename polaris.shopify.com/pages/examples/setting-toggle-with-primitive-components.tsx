@@ -34,8 +34,8 @@ export function WithPrimitiveComponents() {
 
   const settingStatusMarkup = (
     <Badge
-      status={badgeStatus}
-      statusAndProgressLabelOverride={`Setting is ${badgeContent}`}
+      tone={badgeStatus}
+      toneAndProgressLabelOverride={`Setting is ${badgeContent}`}
     >
       {badgeContent}
     </Badge>

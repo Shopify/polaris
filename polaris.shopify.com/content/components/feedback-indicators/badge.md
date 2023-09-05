@@ -1,23 +1,23 @@
 ---
 title: Badge
-description: Badges are used to inform merchants of the status of an object or of an action that’s been taken.
+description: Badges are used to inform merchants of the tone of an object or of an action that’s been taken.
 category: Feedback indicators
 keywords:
   - pills
-  - status indicators
+  - tone indicators
   - color-coded indicators
   - informational badge
   - success badge
   - attention badge
   - warning badge
   - critical badge
-  - object status
-  - status
+  - object tone
+  - tone
   - alert
 examples:
   - fileName: badge-default.tsx
     title: Default
-    description: Use to give a non-critical status update on a piece of information or action.
+    description: Use to give a non-critical tone update on a piece of information or action.
   - fileName: badge-small.tsx
     title: Small
     description: Use in layouts with minimal space, like inside of an `IndexTable` cell.
@@ -45,16 +45,16 @@ examples:
   - fileName: badge-complete.tsx
     title: Complete
     description: Use to indicate when a given task has been completed. For example, when merchants have fulfilled an order.
-  - fileName: badge-with-status-and-progress-label-override.tsx
-    title: With statusAndProgressLabelOverride
-    description: Use when the status and progress accessibilityLabels are not appropriate to a given context.
+  - fileName: badge-with-tone-and-progress-label-override.tsx
+    title: With toneAndProgressLabelOverride
+    description: Use when the tone and progress accessibilityLabels are not appropriate to a given context.
 ---
 
 ## Best practices
 
 Badges benefit merchants by:
 
-- Using established color patterns so that merchants can quickly identify their status or importance level
+- Using established color patterns so that merchants can quickly identify their tone or importance level
 - Being clearly labeled with short, scannable text
 - Being positioned to clearly identify the object they’re informing or labelling
 
@@ -66,11 +66,11 @@ Badges benefit merchants by:
 
 Badge labels should:
 
-- Use a single word to describe the status of an object.
+- Use a single word to describe the tone of an object.
 - Only use two words if you need to describe a complex state. For example, “Partially refunded” and “Partially fulfilled”.
-- Always describe the status in the past tense. For example, refunded not refund.
+- Always describe the tone in the past tense. For example, refunded not refund.
 
-The available badges for financial status are:
+The available badges for financial tone are:
 
 - Authorized
 - Pending
@@ -82,7 +82,7 @@ The available badges for financial status are:
 - Partially refunded
 - Refunded
 
-The available badges for fulfillment status are:
+The available badges for fulfillment tone are:
 
 - Fulfilled
 - Complete
@@ -94,7 +94,7 @@ The available badges for fulfillment status are:
 
 #### Don’t
 
-Don’t use alternatives to existing badge options. Only create a new badge option if there aren’t any existing options to communicate the status you need.
+Don’t use alternatives to existing badge options. Only create a new badge option if there aren’t any existing options to communicate the tone you need.
 
 <!-- end -->
 

@@ -60,7 +60,7 @@ export type {BackdropProps} from './components/Backdrop';
 
 export {
   Badge,
-  StatusValue as BadgeStatusValue,
+  ToneValue as BadgeStatusValue,
   ProgressValue as BadgeProgressValue,
 } from './components/Badge';
 export type {BadgeProps} from './components/Badge';

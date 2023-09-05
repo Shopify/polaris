@@ -51,7 +51,7 @@ export function WithCustomTitle() {
   const customTitle = (
     <>
       <span>Customize the style of your checkout </span>
-      <Badge status="new">New</Badge>
+      <Badge tone="new">New</Badge>
     </>
   );
 

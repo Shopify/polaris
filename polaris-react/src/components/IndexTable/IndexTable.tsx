@@ -921,7 +921,7 @@ function IndexTableBase({
       headingContent = (
         <LegacyStack wrap={false} alignment="center">
           <span>{heading.title}</span>
-          <Badge status="new">
+          <Badge tone="new">
             {i18n.translate('Polaris.IndexTable.onboardingBadgeText')}
           </Badge>
         </LegacyStack>

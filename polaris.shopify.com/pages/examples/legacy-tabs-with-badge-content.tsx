@@ -15,7 +15,7 @@ function TabsWithBadgeExample() {
       id: 'all-customers-fitted-3',
       content: (
         <span>
-          All <Badge status="new">10+</Badge>
+          All <Badge tone="new">10+</Badge>
         </span>
       ),
       accessibilityLabel: 'All customers',
@@ -25,7 +25,7 @@ function TabsWithBadgeExample() {
       id: 'accepts-marketing-fitted-3',
       content: (
         <span>
-          Accepts marketing <Badge status="new">4</Badge>
+          Accepts marketing <Badge tone="new">4</Badge>
         </span>
       ),
       panelID: 'accepts-marketing-fitted-content-3',

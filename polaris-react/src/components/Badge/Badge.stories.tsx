@@ -21,32 +21,32 @@ export function Default() {
 }
 
 export function Informational() {
-  return <Badge status="info">Draft</Badge>;
+  return <Badge tone="info">Draft</Badge>;
 }
 
 export function Success() {
-  return <Badge status="success">Active</Badge>;
+  return <Badge tone="success">Active</Badge>;
 }
 
 export function Attention() {
-  return <Badge status="attention">Open</Badge>;
+  return <Badge tone="attention">Open</Badge>;
 }
 
 export function Warning() {
-  return <Badge status="warning">On hold</Badge>;
+  return <Badge tone="warning">On hold</Badge>;
 }
 
 export function Critical() {
-  return <Badge status="critical">Action required</Badge>;
+  return <Badge tone="critical">Action required</Badge>;
 }
 
 export function New() {
-  return <Badge status="new">Fulfilled</Badge>;
+  return <Badge tone="new">Fulfilled</Badge>;
 }
 
 export function Incomplete() {
   return (
-    <Badge progress="incomplete" status="attention">
+    <Badge progress="incomplete" tone="attention">
       Unfulfilled
     </Badge>
   );
@@ -54,7 +54,7 @@ export function Incomplete() {
 
 export function PartiallyComplete() {
   return (
-    <Badge progress="partiallyComplete" status="warning">
+    <Badge progress="partiallyComplete" tone="warning">
       Partially fulfilled
     </Badge>
   );
@@ -64,12 +64,12 @@ export function Complete() {
   return <Badge progress="complete">Fulfilled</Badge>;
 }
 
-export function WithStatusAndProgressLabelOverride() {
+export function WithToneAndProgressLabelOverride() {
   return (
     <Badge
-      status="success"
+      tone="success"
       progress="complete"
-      statusAndProgressLabelOverride="Status: Published. Your online store is visible."
+      toneAndProgressLabelOverride="Tone: Published. Your online store is visible."
     >
       Published
     </Badge>
@@ -87,8 +87,8 @@ const TempIcon = () => (
   </svg>
 );
 
-const statuses: {
-  [S in 'default' | NonNullable<BadgeProps['status']>]: string;
+const tones: {
+  [S in 'default' | NonNullable<BadgeProps['tone']>]: string;
 } = {
   default: 'Neutral',
   info: 'Info',
@@ -97,16 +97,16 @@ const statuses: {
   attention: 'Attention',
   critical: 'Critical',
   new: 'New',
-  'read-only-experimental': 'Read-only',
-  'enabled-experimental': 'Enabled',
-  'info-strong-experimental': 'Info',
-  'success-strong-experimental': 'Success',
-  'warning-strong-experimental': 'Warning',
-  'attention-strong-experimental': 'Attention',
-  'critical-strong-experimental': 'Critical',
+  'read-only': 'Read-only',
+  enabled: 'Enabled',
+  'info-strong': 'Info',
+  'success-strong': 'Success',
+  'warning-strong': 'Warning',
+  'attention-strong': 'Attention',
+  'critical-strong': 'Critical',
 };
 
-const statusEntries = Object.entries(statuses) as Entries<typeof statuses>;
+const toneEntries = Object.entries(tones) as Entries<typeof tones>;
 
 const progresses: {
   [P in NonNullable<BadgeProps['progress']>]: string;
@@ -124,7 +124,7 @@ const sizes: {
   [P in Exclude<NonNullable<BadgeProps['size']>, 'small'>]: string;
 } = {
   medium: 'Medium',
-  'large-experimental': 'Large',
+  large: 'Large',
 };
 
 const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
@@ -140,54 +140,54 @@ export function All() {
             </Text>
             <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
-                Status only
+                Tone only
               </Text>
               <InlineStack gap="2">
-                {statusEntries.map(([status, statusLabel]) => (
+                {toneEntries.map(([tone, toneLabel]) => (
                   <Badge
-                    key={status}
+                    key={tone}
                     size={size}
-                    status={status === 'default' ? undefined : status}
+                    tone={tone === 'default' ? undefined : tone}
                   >
-                    {statusLabel}
+                    {toneLabel}
                   </Badge>
                 ))}
               </InlineStack>
             </BlockStack>
             <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
-                Status with progress
+                Tone with progress
               </Text>
               {progressEntries.map(([progress]) => (
                 <InlineStack key={progress} gap="2">
-                  {statusEntries.map(([status, statusLabel]) => (
+                  {toneEntries.map(([tone, toneLabel]) => (
                     <Badge
-                      key={status}
+                      key={tone}
                       size={size}
                       progress={progress}
-                      status={status === 'default' ? undefined : status}
+                      tone={tone === 'default' ? undefined : tone}
                     >
-                      {statusLabel}
+                      {toneLabel}
                     </Badge>
                   ))}
                 </InlineStack>
               ))}
             </BlockStack>
             {/* Remove `size` condition when micro icons are available */}
-            {size === 'large-experimental' && (
+            {size === 'large' && (
               <BlockStack gap="2">
                 <Text as="h2" variant="headingXs">
-                  Status with icon
+                  Tone with icon
                 </Text>
                 <InlineStack gap="2">
-                  {statusEntries.map(([status, statusLabel]) => (
+                  {toneEntries.map(([tone, toneLabel]) => (
                     <Badge
-                      key={status}
+                      key={tone}
                       size={size}
                       icon={TempIcon}
-                      status={status === 'default' ? undefined : status}
+                      tone={tone === 'default' ? undefined : tone}
                     >
-                      {statusLabel}
+                      {toneLabel}
                     </Badge>
                   ))}
                 </InlineStack>
@@ -196,15 +196,15 @@ export function All() {
             {/* TODO: Re-enable the following examples when designs are available (post se23) */}
             {/* <BlockStack gap="2">
               <Text as="h2" variant="headingXs">
-                Status with icon only
+                Tone with icon only
               </Text>
               <InlineStack gap="2">
-                {statusEntries.map(([status]) => (
+                {toneEntries.map(([tone]) => (
                   <Badge
-                    key={status}
+                    key={tone}
                     size={size}
                     icon={TempIcon}
-                    status={status === 'default' ? undefined : status}
+                    tone={tone === 'default' ? undefined : tone}
                   />
                 ))}
               </InlineStack>

@@ -168,7 +168,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
       const appliedFilterContent = this.getAppliedFilterContent(filter.key);
       const appliedFilterBadgeMarkup = appliedFilterContent ? (
         <div className={styles.AppliedFilterBadgeContainer}>
-          <Badge status="new">{appliedFilterContent}</Badge>
+          <Badge tone="new">{appliedFilterContent}</Badge>
         </div>
       ) : null;
 

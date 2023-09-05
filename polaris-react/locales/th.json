@@ -14,7 +14,7 @@
         "partiallyComplete": "เสร็จสมบูรณ์แล้วบางส่วน",
         "complete": "เสร็จสมบูรณ์"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "ข้อมูล",
         "success": "สำเร็จ",
         "warning": "คำเตือน",
@@ -24,7 +24,7 @@
         "readOnly": "อ่านอย่างเดียว",
         "enabled": "เปิดใช้แล้ว"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "ปิดการแจ้งเตือน"
