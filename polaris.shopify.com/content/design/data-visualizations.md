@@ -10,6 +10,10 @@ This section outlines data visualization practices at Shopify and how to leverag
 
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## Data visualizations at Shopify
 
 The data visualization process always begins with a set of data, a question, and analysis of the data to find the answer. Each visualization should focus on answering a single question about the dataset. For example, “What are my sales over time?”

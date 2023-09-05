@@ -12,6 +12,10 @@ keywords:
 description: Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping  the content become more useful and understandable.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 {/* inline css styling for html video and images */}
 
 <style>
