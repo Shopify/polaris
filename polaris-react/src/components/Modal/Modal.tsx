@@ -63,7 +63,7 @@ export interface ModalProps extends FooterProps {
   noScroll?: boolean;
   /** Sets modal to the height of the viewport on small screens */
   fullScreen?: boolean;
-}
+  }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
   Section: typeof Section;
@@ -90,7 +90,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onTransitionEnd,
   noScroll,
   fullScreen,
-}: ModalProps) {
+  }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
   const [closing, setClosing] = useState(false);
 
@@ -203,7 +203,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         limitHeight={limitHeight}
         fullScreen={fullScreen}
         setClosing={setClosing}
-      >
+              >
         <Header
           titleHidden={titleHidden}
           id={headerId}
@@ -231,10 +231,10 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     <WithinContentContext.Provider value>
       {activatorMarkup}
       <Portal idPrefix="modal">
+        {backdrop}
         <TransitionGroup appear={animated} enter={animated} exit={animated}>
           {dialog}
         </TransitionGroup>
-        {backdrop}
       </Portal>
     </WithinContentContext.Provider>
   );

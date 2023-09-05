@@ -54,6 +54,49 @@ export function Default() {
   );
 }
 
+export function WithModalInModal() {
+  const [active, setActive] = useState(true);
+  const [innerActive, setInnerActive] = useState(true);
+
+  const handleChange = useCallback(() => setActive(!active), [active]);
+
+  const activator = <Button onClick={handleChange}>Open</Button>;
+
+  return (
+    <div style={{height: '500px'}}>
+      <>
+        <Modal
+          large
+          activator={activator}
+          open={active}
+          onClose={handleChange}
+          title="Outer modal"
+          primaryAction={{
+            content: 'Done',
+            onAction: handleChange,
+          }}
+        >
+          <Modal.Section>
+            <Button onClick={() => setInnerActive(!innerActive)}>
+              Open inner modal
+            </Button>
+          </Modal.Section>
+          <Modal
+            small
+            title="Inner Modal"
+            open={innerActive}
+            onClose={() => setInnerActive(!innerActive)}
+          >
+            <Modal.Section>
+              <TextContainer>Inner Modal</TextContainer>
+            </Modal.Section>
+          </Modal>
+        </Modal>
+      </>
+    </div>
+  );
+}
+
 export function WithPrimaryAction() {
   const discountLink = 'https://polaris.shopify.com/';
 
