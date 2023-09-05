@@ -17,5 +17,7 @@ export function textContent(
   } else if (typeof elem?.type === 'function') {
     return textContent(elem.type());
   }
+
+  // for a react component that isn't an array, it'll recursively keep going until it gets to a string.
   return textContent(children);
 }
