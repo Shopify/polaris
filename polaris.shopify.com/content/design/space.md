@@ -97,7 +97,7 @@ Repeating the same amount of space (left) and using more variation (right).
 
 The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
 
-<video width="100%" height="auto" controls autoplay muted loop>
+<video width="100%" height="auto" controls autoPlay muted loop>
   <source src="/images/design/space/column.mp4" type="video/mp4">
 </video>
 
@@ -105,7 +105,7 @@ The column grid is meant to give teams agency for page layouts, while still prov
 
 ### Breakpoints
 
-<video width="100%" height="auto" controls autoplay muted loop>
+<video width="100%" height="auto" controls autoPlay muted loop>
   <source src="/images/design/space/breakpoints.mp4" type="video/mp4">
 </video>
 
@@ -176,7 +176,7 @@ Grouping things that are implicitly enclosed by a larger object.
 
 Grouping things based on how they move.
 
-<video width="100%" height="auto" controls autoplay muted loop>
+<video width="100%" height="auto" controls autoPlay muted loop>
   <source src="/images/design/space/common-fate.mp4" type="video/mp4">
 </video>
 
