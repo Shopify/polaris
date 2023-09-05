@@ -14,7 +14,7 @@
         "partiallyComplete": "部分完成",
         "complete": "完成"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "信息",
         "success": "成功",
         "warning": "警告",
@@ -24,7 +24,7 @@
         "readOnly": "只读",
         "enabled": "已启用"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "忽略通知"

@@ -14,7 +14,7 @@
         "partiallyComplete": "Delvis fullført",
         "complete": "Ferdig"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Info",
         "success": "Vellykket",
         "warning": "Advarsel",
@@ -24,7 +24,7 @@
         "readOnly": "Kun lesetilgang",
         "enabled": "Aktivert"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Avvis varsel"

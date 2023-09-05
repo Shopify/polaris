@@ -59,7 +59,7 @@ export function MappedAction({
 
   const badgeMarkup = badge && (
     <span className={styles.Suffix}>
-      <Badge status={badge.status}>{badge.content}</Badge>
+      <Badge tone={badge.tone}>{badge.content}</Badge>
     </span>
   );
 

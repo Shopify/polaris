@@ -14,7 +14,7 @@
         "partiallyComplete": "Osittain valmis",
         "complete": "Valmis"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Tiedot",
         "success": "Onnistui",
         "warning": "Varoitus",
@@ -24,7 +24,7 @@
         "readOnly": "Vain luku",
         "enabled": "Otettu käyttöön"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Ohita ilmoitus"

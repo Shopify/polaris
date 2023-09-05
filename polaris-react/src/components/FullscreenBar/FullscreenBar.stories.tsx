@@ -74,7 +74,7 @@ export function WithChildren() {
           paddingRight: '1rem',
         }}
       >
-        <Badge status="info">Draft</Badge>
+        <Badge tone="info">Draft</Badge>
         {titleMarkup}
         <ButtonGroup>
           <Button onClick={() => {}}>Secondary Action</Button>

@@ -29,7 +29,7 @@
         "partiallyComplete": "Partially complete",
         "complete": "Complete"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Info",
         "success": "Success",
         "warning": "Warning",
@@ -39,7 +39,7 @@
         "readOnly": "Read-only",
         "enabled": "Enabled"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Dismiss notification"

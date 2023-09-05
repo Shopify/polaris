@@ -14,7 +14,7 @@
         "partiallyComplete": "일부 완료",
         "complete": "완료"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "정보",
         "success": "성공",
         "warning": "경고",
@@ -24,7 +24,7 @@
         "readOnly": "읽기 전용",
         "enabled": "활성화됨"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "알림 무시"

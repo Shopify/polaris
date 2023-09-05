@@ -279,7 +279,7 @@ export const Tab = forwardRef(
     );
 
     const badgeMarkup = badge ? (
-      <Badge status={selected ? undefined : 'new'}>{badge}</Badge>
+      <Badge tone={selected ? undefined : 'new'}>{badge}</Badge>
     ) : null;
 
     const disclosureMarkup =

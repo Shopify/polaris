@@ -3,7 +3,7 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BadgeExample() {
-  return <Badge status="attention">Open</Badge>;
+  return <Badge tone="attention">Open</Badge>;
 }
 
 export default withPolarisExample(BadgeExample);

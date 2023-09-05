@@ -14,7 +14,7 @@
         "partiallyComplete": "Částečně dokončeno",
         "complete": "Dokončeno"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Informace",
         "success": "Úspěch",
         "warning": "Varování",
@@ -24,7 +24,7 @@
         "readOnly": "Pouze pro čtení",
         "enabled": "Aktivováno"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Zavřít notifikaci"

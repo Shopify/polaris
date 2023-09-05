@@ -8,7 +8,7 @@ import {Icon} from '../Icon';
 import type {IconSource} from '../../types';
 
 import styles from './Badge.scss';
-import type {Progress, Size, Status} from './types';
+import type {Progress, Size, Tone} from './types';
 import {Pip} from './components';
 import {getDefaultAccessibilityLabel} from './utils';
 
@@ -16,8 +16,8 @@ const DEFAULT_SIZE: Size = 'medium';
 interface NonMutuallyExclusiveProps {
   /** The content to display inside the badge. */
   children?: string;
-  /** Colors and labels the badge with the given status. */
-  status?: Status;
+  /** Colors and labels the badge with the given tone. */
+  tone?: Tone;
   /** Render a pip showing the progress of a given task. */
   progress?: Progress;
   /** Icon to display to the left of the badge’s content. */
@@ -27,7 +27,7 @@ interface NonMutuallyExclusiveProps {
    */
   size?: Size;
   /** Pass a custom accessibilityLabel */
-  statusAndProgressLabelOverride?: string;
+  toneAndProgressLabelOverride?: string;
 }
 
 export type BadgeProps = NonMutuallyExclusiveProps &
@@ -62,25 +62,25 @@ const progressIconMap: {[P in Progress]: IconSource} = {
 
 export function Badge({
   children,
-  status,
+  tone,
   progress,
   icon,
   size = DEFAULT_SIZE,
-  statusAndProgressLabelOverride,
+  toneAndProgressLabelOverride,
 }: BadgeProps) {
   const i18n = useI18n();
   const withinFilter = useContext(WithinFilterContext);
 
   const className = classNames(
     styles.Badge,
-    status && styles[variationName('status', status)],
+    tone && styles[variationName('tone', tone)],
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     withinFilter && styles.withinFilter,
   );
 
-  const accessibilityLabel = statusAndProgressLabelOverride
-    ? statusAndProgressLabelOverride
-    : getDefaultAccessibilityLabel(i18n, progress, status);
+  const accessibilityLabel = toneAndProgressLabelOverride
+    ? toneAndProgressLabelOverride
+    : getDefaultAccessibilityLabel(i18n, progress, tone);
 
   let accessibilityMarkup = Boolean(accessibilityLabel) && (
     <Text as="span" visuallyHidden>
@@ -111,7 +111,7 @@ export function Badge({
         <Text
           as="span"
           variant="bodySm"
-          fontWeight={status === 'new' ? 'medium' : undefined}
+          fontWeight={tone === 'new' ? 'medium' : undefined}
         >
           {children}
         </Text>

@@ -14,7 +14,7 @@
         "partiallyComplete": "Parcialmente concluído",
         "complete": "Concluído"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Informações",
         "success": "Sucesso",
         "warning": "Aviso",
@@ -24,7 +24,7 @@
         "readOnly": "Só de leitura",
         "enabled": "Ativado"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Ignorar notificação"

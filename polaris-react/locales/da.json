@@ -14,7 +14,7 @@
         "partiallyComplete": "Delvist fuldført",
         "complete": "Fuldført"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Info",
         "success": "Succes",
         "warning": "Advarsel",
@@ -24,7 +24,7 @@
         "readOnly": "Skrivebeskyttet",
         "enabled": "Aktiveret"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{statusLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Afvis meddelelse"
