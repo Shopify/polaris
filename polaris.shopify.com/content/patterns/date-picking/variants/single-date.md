@@ -133,17 +133,17 @@ function DatePickerExample() {
 ```
 
 </Usage>
-<UsefulToKnow>
 
 ### Useful to know
 
-- <span>
-    Labels need to simply depict the task at hand. Whether that be a start date,
-    end date, start time etc.
-  </span> ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
-- <span>
-    This pattern can be duplicated to allow users to add an end date or time.
-  </span> ![“Active dates” section with “start date” and “end date” inputs, toggled
-  on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
+<SideBySide>
 
-</UsefulToKnow>
+- Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.
+
+  ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
+
+- This pattern can be duplicated to allow users to add an end date or time.
+
+  ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
+
+</SideBySide>
