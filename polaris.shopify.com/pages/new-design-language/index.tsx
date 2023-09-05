@@ -5,12 +5,9 @@ import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
 import Page from '../../src/components/Page';
 import PageMeta from '../../src/components/PageMeta';
-import {MarkdownFile} from '../../src/types';
+import type {MarkdownFile, SerializedMdx} from '../../src/types';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
-import {
-  SerializedMdx,
-  serializeMdx,
-} from '../../src/components/Markdown/serialize';
+import {serializeMdx} from '../../src/components/Markdown/serialize';
 
 interface ContentProps {
   title: string;
