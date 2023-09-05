@@ -42,14 +42,25 @@ Polaris layout components provide several benefits over writing layout CSS code:
 
 Layout components are intended to solve about 80% of layout use cases. But they won’t solve everything. For unique cases, leverage [Polaris design tokens](/tokens/color) to write your own CSS styles. When building with layout components, keep the following behaviors and limitations in mind.
 
-<div as="SideBySide">
+<SideBySide>
 
-- <span>**Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /><br />Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.</span> ![Card, InlineGrid, Divider, and InlineStack components assembled together to create admin UI element](/images/design/layout/single-purpose-composible-flexible@2x.png)
-- <span>**Layout components shouldn’t affect anything outside of their borders.** They should only impact components rendered inside of them. The exception is the [Bleed](/components/layout-and-structure/bleed) component.</span> ![Admin card with whitespace between each UI element](/images/design/layout/outside-borders@2x.png)
-- <span>**Layout components have a default spacing of 0.** There isn’t a perfect default, so add spacing with intention. For more information, refer to the [Space](/design/space) guide.</span> ![Admin card with the padding around and between the elements increased](/images/design/layout/default-spacing@2x.png)
-- <span>**Layout component behaviors rely on Polaris tokens.** Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a [Polaris design token](/tokens/color).</span> ![Admin UI element with color and spacing design tokens called out](/images/design/layout/tokens@2x.png)
+- **Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /> <br /> Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.
 
-</div>
+  ![Card, InlineGrid, Divider, and InlineStack components assembled together to create admin UI element](/images/design/layout/single-purpose-composible-flexible@2x.png)
+
+- **Layout components shouldn’t affect anything outside of their borders.** They should only impact components rendered inside of them. The exception is the [Bleed](/components/layout-and-structure/bleed) component.
+
+  ![Admin card with whitespace between each UI element](/images/design/layout/outside-borders@2x.png)
+
+- **Layout components have a default spacing of 0.** There isn’t a perfect default, so add spacing with intention. For more information, refer to the [Space](/design/space) guide.
+
+  ![Admin card with the padding around and between the elements increased](/images/design/layout/default-spacing@2x.png)
+
+- **Layout component behaviors rely on Polaris tokens.** Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a [Polaris design token](/tokens/color).
+
+  ![Admin UI element with color and spacing design tokens called out](/images/design/layout/tokens@2x.png)
+
+</SideBySide>
 
 ## Breakpoints and spacing
 
@@ -57,9 +68,12 @@ All layout components use the breakpoint scale and tokens. Consequently, conside
 
 To ensure designs are responsive, reference the breakpoints and examples in the Polaris [Space](/design/space) documentation.
 
-<video width="100%" height="auto" controls autoplay muted loop>
+<video width="100%" height="auto" controls autoPlay muted loop>
   <source src="/images/design/space/breakpoints.mp4" type="video/mp4" />
-  <p>Browser window resizing with the overlayed column grid dynamically adjusting to the size</p>
+  <p>
+    Browser window resizing with the overlayed column grid dynamically adjusting
+    to the size
+  </p>
 </video>
 
 ## Layout component examples
@@ -72,7 +86,7 @@ Admin UI card with a horizontal dot button on one side, plus text and a button o
 
 ![](/images/design/layout/example1.png)
 
-<div as="YoutubeVideo" id="PLFMcarQd9g"></div>
+<YoutubeVideo id="PLFMcarQd9g" />
 
 ### Example 2
 
@@ -80,7 +94,7 @@ Admin UI card with stacked elements, inline links, and a divider. [Edit in sandb
 
 ![](/images/design/layout/example2.png)
 
-<div as="YoutubeVideo" id="P83g0XkJSSA"></div>
+<YoutubeVideo id="P83g0XkJSSA" />
 
 ### Example 3
 
@@ -88,4 +102,4 @@ Admin UI card with text on one side, and a button on the opposite side. [Edit in
 
 ![](/images/design/layout/example3.png)
 
-<div as="YoutubeVideo" id="EmkPsEGsQRM"></div>
+<YoutubeVideo id="EmkPsEGsQRM" />

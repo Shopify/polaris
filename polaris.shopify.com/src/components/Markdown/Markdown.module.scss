@@ -17,7 +17,7 @@
     /* Using before elements as they respond to layout unlike ::marker, so we
     * can wrap the li's in a <Stack> and use the gap property */
     &::before {
-      display: inline-block;
+      display: var(--list-bullet-display, inline-block);
       position: absolute;
       flex-shrink: 0;
       width: var(--list-bullet-width);

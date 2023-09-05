@@ -7,7 +7,7 @@ hideFromNav: true
 <!-- Optional when only 1 variant -->
 {description}
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -15,7 +15,7 @@ hideFromNav: true
 
 {ordered list}
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
@@ -23,9 +23,10 @@ hideFromNav: true
 <!-- **{term}** -->
 <!-- : {definition} -->
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+
+<Usage>
 
 ## Using this pattern
 
@@ -60,11 +61,18 @@ This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
 </Page>
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
 
 ### Useful to know
 
-{A 2 column table with images in the 2nd column}
+<SideBySide>
 
-</div>
+- This text will be in the left hand column.
+
+  ![This image will be in the right hand column](https://placekitten.com/500/400)
+
+- This text will be in the left hand column.
+
+  ![This image will be in the right hand column](https://placekitten.com/500/400)
+
+</SideBySide>
