@@ -12,6 +12,10 @@ keywords:
 
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## Using color
 
 ![](/images/design/colors/color-usage-123@2x.png)
