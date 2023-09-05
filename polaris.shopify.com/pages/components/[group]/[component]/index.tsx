@@ -8,15 +8,17 @@ import type {
   ComponentExampleSerialized,
 } from '../../../../src/components/ComponentExamples';
 import Longform from '../../../../src/components/Longform';
-import {
-  serializeMdx,
-  type SerializedMdx,
-} from '../../../../src/components/Markdown/serialize';
+import {serializeMdx} from '../../../../src/components/Markdown/serialize';
 import Markdown from '../../../../src/components/Markdown';
 import Page from '../../../../src/components/Page';
 import {toPascalCase} from '../../../../src/utils/various';
 import PageMeta from '../../../../src/components/PageMeta';
-import {Status, FilteredTypes, AllTypes} from '../../../../src/types';
+import type {
+  Status,
+  FilteredTypes,
+  AllTypes,
+  SerializedMdx,
+} from '../../../../src/types';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
 import StatusBanner from '../../../../src/components/StatusBanner';

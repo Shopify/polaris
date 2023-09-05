@@ -19,7 +19,7 @@
     "next-build": "next build",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
-    "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
+    "get-props": "./scripts/get-props/src/get-props.ts",
     "gen-assets": "yarn get-props && node scripts/gen-assets.mjs"
   },
   "dependencies": {
@@ -90,6 +90,7 @@
     "puppeteer": "^16.0.0",
     "sass": "^1.49.9",
     "style-loader": "^3.3.1",
+    "ts-node": "^10.7.0",
     "typescript": "^4.9.3"
   }
 }

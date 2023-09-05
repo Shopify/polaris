@@ -4,7 +4,11 @@ import Link from 'next/link';
 
 import {useRouter} from 'next/router';
 
-import {PatternVariantFontMatter, PatternFrontMatter} from '../../types';
+import type {
+  PatternVariantFontMatter,
+  PatternFrontMatter,
+  SerializedMdx,
+} from '../../types';
 import PageMeta from '../PageMeta';
 import {Stack} from '../Stack';
 import {Box} from '../Box';
@@ -14,7 +18,6 @@ import Page from '../Page';
 import styles from './PatternPage.module.scss';
 import Markdown, {CodeVisibilityProvider} from '../Markdown';
 import {SideBySide} from '../Markdown/components/SideBySide';
-import {type SerializedMdx} from '../Markdown/serialize';
 
 export type PatternMDX = SerializedMdx<
   Omit<PatternFrontMatter, 'variants'> & {

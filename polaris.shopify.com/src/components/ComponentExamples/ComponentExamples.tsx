@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {type SerializedMdx} from '../Markdown/serialize';
+import type {SerializedMdx} from '../../types';
 import styles from './ComponentExamples.module.scss';
 import CodesandboxButton from '../CodesandboxButton';
 import Code from '../Code';

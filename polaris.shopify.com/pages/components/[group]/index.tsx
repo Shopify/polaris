@@ -12,10 +12,8 @@ import PageMeta from '../../../src/components/PageMeta';
 import Longform from '../../../src/components/Longform';
 import Markdown from '../../../src/components/Markdown';
 import {Stack} from '../../../src/components/Stack';
-import {
-  SerializedMdx,
-  serializeMdx,
-} from '../../../src/components/Markdown/serialize';
+import type {SerializedMdx} from '../../../src/types';
+import {serializeMdx} from '../../../src/components/Markdown/serialize';
 
 interface Group {
   title?: string;
