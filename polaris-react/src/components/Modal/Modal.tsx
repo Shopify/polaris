@@ -63,6 +63,8 @@ export interface ModalProps extends FooterProps {
   noScroll?: boolean;
   /** Sets modal to the height of the viewport on small screens */
   fullScreen?: boolean;
+  /** Sets the backdrop to zIndexOverride and the Dialog to zIndexOverride + 1 */
+  zIndexOverride?: number;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -90,6 +92,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onTransitionEnd,
   noScroll,
   fullScreen,
+  zIndexOverride,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
   const [closing, setClosing] = useState(false);
@@ -203,6 +206,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         limitHeight={limitHeight}
         fullScreen={fullScreen}
         setClosing={setClosing}
+        zIndexOverride={zIndexOverride ? zIndexOverride + 1 : undefined}
       >
         <Header
           titleHidden={titleHidden}
@@ -217,7 +221,13 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Dialog>
     );
 
-    backdrop = <Backdrop setClosing={setClosing} onClick={onClose} />;
+    backdrop = (
+      <Backdrop
+        setClosing={setClosing}
+        onClick={onClose}
+        zIndexOverride={zIndexOverride}
+      />
+    );
   }
 
   const animated = !instant;

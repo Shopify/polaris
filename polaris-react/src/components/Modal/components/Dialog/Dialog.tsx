@@ -26,6 +26,7 @@ export interface DialogProps {
   in?: boolean;
   fullScreen?: boolean;
   setClosing?: Dispatch<SetStateAction<boolean>>;
+  zIndexOverride?: number;
 }
 
 export function Dialog({
@@ -40,6 +41,7 @@ export function Dialog({
   limitHeight,
   fullScreen,
   setClosing,
+  zIndexOverride,
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
@@ -50,6 +52,9 @@ export function Dialog({
     limitHeight && styles.limitHeight,
     fullScreen && styles.fullScreen,
   );
+  const style = {
+    zIndex: zIndexOverride ?? undefined,
+  };
   const TransitionChild = instant ? Transition : FadeUp;
 
   useEffect(() => {
@@ -83,6 +88,7 @@ export function Dialog({
     >
       <div
         className={styles.Container}
+        style={style}
         data-polaris-layer
         data-polaris-overlay
         ref={containerNode}
