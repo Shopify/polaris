@@ -17,7 +17,6 @@ export async function toValues() {
 
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
-
     [
       `export * from '../src/index';`,
       Object.entries(themeDefault).map(createExport),
