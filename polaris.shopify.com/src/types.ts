@@ -1,6 +1,14 @@
-import {MetadataProperties} from '@shopify/polaris-tokens';
-import {Icon} from '@shopify/polaris-icons/metadata';
-import {SerializedMdx} from './components/Markdown/serialize';
+import type {MetadataProperties} from '@shopify/polaris-tokens';
+import type {Icon} from '@shopify/polaris-icons/metadata';
+import type {MDXRemoteSerializeResult} from 'next-mdx-remote';
+
+type DefaultScope = Record<string, unknown>;
+type DefaultFrontmatter = Record<string, unknown>;
+
+export type SerializedMdx<
+  TFrontmatter = DefaultFrontmatter,
+  TScope = DefaultScope,
+> = MDXRemoteSerializeResult<TScope, TFrontmatter>;
 
 export type PatternExample = {
   code: string;

@@ -14,13 +14,7 @@ import type {Plugin} from 'unified';
 import remarkExtractFirstParagraph, {
   type Handler,
 } from './remark-extract-first-paragraph';
-
-export type DefaultScope = Record<string, unknown>;
-export type DefaultFrontmatter = Record<string, unknown>;
-export type SerializedMdx<
-  TFrontmatter = DefaultFrontmatter,
-  TScope = DefaultScope,
-> = MDXRemoteSerializeResult<TScope, TFrontmatter>;
+import type {SerializedMdx} from '../../types';
 
 function codeAsContext(): Plugin {
   return (tree) => {

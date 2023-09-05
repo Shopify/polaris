@@ -6,14 +6,11 @@ import type {
 import fs from 'fs';
 import globby from 'globby';
 
-import {
-  serializeMdx,
-  type SerializedMdx,
-} from '../src/components/Markdown/serialize';
+import {serializeMdx} from '../src/components/Markdown/serialize';
 import Markdown from '../src/components/Markdown';
 import Page from '../src/components/Page';
 import PageMeta from '../src/components/PageMeta';
-import {Status} from '../src/types';
+import type {Status, SerializedMdx} from '../src/types';
 import {parseMarkdown} from '../src/utils/markdown.mjs';
 import {MarkdownFile} from '../src/types';
 import type {RichCardGridProps} from '../src/components/RichCardGrid';
