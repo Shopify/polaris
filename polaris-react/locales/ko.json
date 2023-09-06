@@ -18,13 +18,13 @@
         "info": "정보",
         "success": "성공",
         "warning": "경고",
-        "attention": "주의",
+        "attention": "수신자",
         "new": "신규",
         "critical": "중요",
         "readOnly": "읽기 전용",
         "enabled": "활성화됨"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "알림 무시"

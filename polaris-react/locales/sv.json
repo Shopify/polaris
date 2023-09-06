@@ -18,13 +18,13 @@
         "info": "Info",
         "success": "Lyckades",
         "warning": "Varning",
-        "attention": "Observera",
-        "new": "Nytt",
+        "attention": "Mottagare",
+        "new": "Ny",
         "critical": "Kritisk",
         "readOnly": "Skrivskyddad",
-        "enabled": "Aktiverat"
+        "enabled": "Aktiverad"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Avvisa avisering"

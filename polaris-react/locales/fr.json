@@ -24,7 +24,7 @@
         "readOnly": "Lecture seule",
         "enabled": "Activé"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Rejeter la notification"

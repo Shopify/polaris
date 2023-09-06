@@ -16,15 +16,15 @@
       },
       "TONE_LABELS": {
         "info": "情報",
-        "success": "成功しました",
+        "success": "成功",
         "warning": "警告",
-        "attention": "宛先",
+        "attention": "注意",
         "new": "新規",
-        "critical": "クリティカル",
+        "critical": "重大",
         "readOnly": "読み取り専用",
         "enabled": "有効"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "通知を閉じる"

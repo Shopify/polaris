@@ -24,7 +24,7 @@
         "readOnly": "Salt okunur",
         "enabled": "Etkinleştirildi"
       },
-      "progressAndTone": "{statusLabel} - {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Bildirimi kapat"
