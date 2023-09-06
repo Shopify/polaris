@@ -24,8 +24,10 @@ export default function transformer(
 
   // If `Button` component name is not imported, exit
   if (
-    !hasImportDeclaration(j, source, '@shopify/polaris') &&
-    !hasImportSpecifier(j, source, 'Button', '@shopify/polaris')
+    !(
+      hasImportDeclaration(j, source, '@shopify/polaris') &&
+      hasImportSpecifier(j, source, 'Button', '@shopify/polaris')
+    )
   ) {
     return fileInfo.source;
   }
