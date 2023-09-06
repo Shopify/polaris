@@ -1,8 +1,12 @@
 import React from 'react';
 
-import {Page} from '../src';
+import {Page, useThemeVars} from '../src';
 
 export function Playground() {
+  const themeVars = useThemeVars();
+
+  console.log('themeVars:', themeVars);
+
   return (
     <Page title="Playground">
       {/* Add the code you want to test in here */}

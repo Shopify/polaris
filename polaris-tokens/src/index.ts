@@ -1,6 +1,12 @@
 export * from './metadata';
 export * from './utilities';
 export {breakpointsAliases} from './token-groups/breakpoints';
+
+export type {ThemeName, ThemeVarName, ThemeVars} from './themes';
+export {themeNames, themeVars} from './themes';
+export {themeNameDefault} from './themes/constants';
+export {createThemeClassName, createThemeSelector} from './themes/utils';
+
 export type {
   TokenGroup,
   Tokens,

@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
+import type {ThemeName} from '@shopify/polaris-tokens';
+import {
+  themeNames,
+  themeNameDefault,
+  createThemeClassName,
+} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
+import {ThemeNameContext} from '../../utilities/use-theme-name';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -68,6 +75,7 @@ interface State {
 }
 
 export interface AppProviderProps {
+  theme?: ThemeName;
   /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
@@ -130,6 +138,14 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
   setRootAttributes = () => {
     const features = this.getFeatures();
+    const theme = this.getTheme();
+
+    themeNames.forEach((themeName) => {
+      document.documentElement.classList.toggle(
+        createThemeClassName(themeName),
+        theme === themeName,
+      );
+    });
 
     document.documentElement.classList.toggle(
       classNamePolarisSummerEditions2023,
@@ -141,6 +157,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
       features.polarisSummerEditions2023ShadowBevelOptOut,
     );
   };
+
+  getTheme = () => this.props.theme ?? themeNameDefault;
 
   getFeatures = () => {
     const {features} = this.props;
@@ -156,29 +174,32 @@ export class AppProvider extends Component<AppProviderProps, State> {
   render() {
     const {children} = this.props;
     const features = this.getFeatures();
+    const theme = this.getTheme();
 
     const {intl, link} = this.state;
 
     return (
-      <FeaturesContext.Provider value={features}>
-        <I18nContext.Provider value={intl}>
-          <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-            <StickyManagerContext.Provider value={this.stickyManager}>
-              <LinkContext.Provider value={link}>
-                <MediaQueryProvider>
-                  <PortalsManager>
-                    <FocusManager>
-                      <EphemeralPresenceManager>
-                        {children}
-                      </EphemeralPresenceManager>
-                    </FocusManager>
-                  </PortalsManager>
-                </MediaQueryProvider>
-              </LinkContext.Provider>
-            </StickyManagerContext.Provider>
-          </ScrollLockManagerContext.Provider>
-        </I18nContext.Provider>
-      </FeaturesContext.Provider>
+      <ThemeNameContext.Provider value={theme}>
+        <FeaturesContext.Provider value={features}>
+          <I18nContext.Provider value={intl}>
+            <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+              <StickyManagerContext.Provider value={this.stickyManager}>
+                <LinkContext.Provider value={link}>
+                  <MediaQueryProvider>
+                    <PortalsManager>
+                      <FocusManager>
+                        <EphemeralPresenceManager>
+                          {children}
+                        </EphemeralPresenceManager>
+                      </FocusManager>
+                    </PortalsManager>
+                  </MediaQueryProvider>
+                </LinkContext.Provider>
+              </StickyManagerContext.Provider>
+            </ScrollLockManagerContext.Provider>
+          </I18nContext.Provider>
+        </FeaturesContext.Provider>
+      </ThemeNameContext.Provider>
     );
   }
 }

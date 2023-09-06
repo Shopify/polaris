@@ -11,7 +11,7 @@ const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 /** @type {import('rollup').RollupOptions} */
 export default {
-  input: 'build/index.ts',
+  input: ['build/index.ts', 'build/themes.ts'],
   output: [
     {
       format: /** @type {const} */ ('cjs'),

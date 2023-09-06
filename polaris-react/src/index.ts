@@ -1,5 +1,7 @@
 import './configure';
 
+export {themeVars} from '@shopify/polaris-tokens';
+
 // Key is an enum, not a type. It probably shouldn't live in a file called types
 export {Key} from './types';
 
@@ -422,6 +424,7 @@ export {
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
+export {useThemeVarDecl} from './utilities/use-theme-var-decl';
 export {useEventListener} from './utilities/use-event-listener';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {

@@ -5,9 +5,8 @@ export type Entries<T> = Entry<T>[];
 export type Experimental<T extends string> = `${T}-experimental`;
 
 export interface MetadataProperties {
-  description?: string;
   value: string;
-  valueExperimental?: string;
+  description?: string;
 }
 
 export interface MetadataGroup {

@@ -88,7 +88,6 @@ export const motion: {
   },
   'motion-ease-out': {
     value: 'cubic-bezier(0, 0, 0.58, 1)',
-    valueExperimental: 'cubic-bezier(0.19,0.91,0.38,1)',
     description: 'Starts at top speed and finishes slowly. Use sparingly.',
   },
   'motion-ease-in-out': {
