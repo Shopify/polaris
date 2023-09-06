@@ -65,6 +65,10 @@ export interface FrontMatter {
   keywords?: (string | number)[];
   status?: Status;
   hideFromNav?: boolean;
+  featured?: boolean;
+  previewImg?: string;
+  expanded?: boolean;
+  releasedIn?: string | number; // Add this line
 }
 
 export interface PatternFrontMatter extends Omit<FrontMatter, 'description'> {
@@ -171,15 +175,7 @@ export enum Breakpoints {
   DesktopLarge = 1600,
 }
 
-export enum StatusName {
-  New = 'New',
-  Deprecated = 'Deprecated',
-  Alpha = 'Alpha',
-  Beta = 'Beta',
-  Information = 'Information',
-  Legacy = 'Legacy',
-  Warning = 'Warning',
-}
+export type StatusName = string;
 
 export type Status = {
   value: StatusName;
@@ -239,4 +235,5 @@ export interface NavItem {
   children?: NavJSON;
   expanded?: boolean;
   hideFromNav?: boolean;
+  featured?: boolean;
 }
