@@ -16,24 +16,10 @@ description: Space is the distance between objects in your design. It should be 
 
 <Lede>{frontmatter.description}</Lede>
 
-{/* inline css styling for html video and images */}
-
-<style>
-.space-hero {
-  margin: 40px -30px 40px -30px;
-}
-
-.punit-img {
-  display: block;
-  margin: 40px auto 40px auto;
-  width: 75%;
-}
-</style>
-
 ---
 
-<div class="space-hero">
-  <img src="/images/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit">
+<div style={{margin: "40px -30px 40px -30px"}}>
+  <img src="/images/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit" />
 </div>
 
 ---
@@ -62,8 +48,12 @@ Use Polaris space tokens in a way that is consistent with the rest of the experi
 
 All measurements used across the experience (space, width, height, etc) must reference Polaris space units to guarantee visual consistency and balance.
 
-<div class="punit-img">
-  <img src="/images/design/space/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit">
+<div style={{
+  display: "block",
+  margin: "40px auto 40px auto",
+  width: "75%",
+}}>
+  <img src="/images/design/space/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit" />
 </div>
 
 ### Space scale
@@ -102,7 +92,7 @@ Repeating the same amount of space (left) and using more variation (right).
 The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
 
 <video width="100%" height="auto" controls autoPlay muted loop>
-  <source src="/images/design/space/column.mp4" type="video/mp4">
+  <source src="/images/design/space/column.mp4" type="video/mp4" />
 </video>
 
 <br />
@@ -110,7 +100,7 @@ The column grid is meant to give teams agency for page layouts, while still prov
 ### Breakpoints
 
 <video width="100%" height="auto" controls autoPlay muted loop>
-  <source src="/images/design/space/breakpoints.mp4" type="video/mp4">
+  <source src="/images/design/space/breakpoints.mp4" type="video/mp4" />
 </video>
 
 The grid adapts to the viewport width. The amount of columns will change depending on how much space there is. This is a recommendation for how much should be displayed horizontally. Less columns means less content.
@@ -181,7 +171,7 @@ Grouping things that are implicitly enclosed by a larger object.
 Grouping things based on how they move.
 
 <video width="100%" height="auto" controls autoPlay muted loop>
-  <source src="/images/design/space/common-fate.mp4" type="video/mp4">
+  <source src="/images/design/space/common-fate.mp4" type="video/mp4" />
 </video>
 
 <br />
