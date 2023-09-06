@@ -16,15 +16,15 @@
       },
       "TONE_LABELS": {
         "info": "Info",
-        "success": "Avvenuto",
+        "success": "Operazione riuscita",
         "warning": "Avvertimento",
         "attention": "Attenzione",
-        "new": "Novità",
+        "new": "Nuovo",
         "critical": "Critico",
         "readOnly": "Sola lettura",
         "enabled": "Abilitato"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Elimina notifica"

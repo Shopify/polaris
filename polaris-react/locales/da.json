@@ -15,16 +15,16 @@
         "complete": "Fuldført"
       },
       "TONE_LABELS": {
-        "info": "Info",
-        "success": "Succes",
+        "info": "Oplysninger",
+        "success": "Gennemført",
         "warning": "Advarsel",
         "attention": "Bemærk",
-        "new": "Nyhed",
+        "new": "Nye",
         "critical": "Kritisk",
         "readOnly": "Skrivebeskyttet",
         "enabled": "Aktiveret"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Afvis meddelelse"

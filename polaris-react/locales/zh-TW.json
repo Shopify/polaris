@@ -19,12 +19,12 @@
         "success": "成功",
         "warning": "警告",
         "attention": "注意",
-        "new": "全新功能",
+        "new": "新",
         "critical": "重要",
         "readOnly": "唯讀",
         "enabled": "已啟用"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "關閉通知"
