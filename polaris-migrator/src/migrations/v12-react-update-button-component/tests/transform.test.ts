@@ -1,11 +1,11 @@
 import {check} from '../../../utilities/check';
 
-const transform = 'v12-react-update-button-components';
+const transform = 'v12-react-update-button-component';
 const fixtures = [
-  'v12-react-update-button-components',
+  'v12-react-update-button-component',
   'v12-react-update-button-local-name',
-  'v12-react-update-button-primary-plain-components',
-  'v12-react-update-button-plain-monochrome-components',
+  'v12-react-update-button-primary-plain-component',
+  'v12-react-update-button-plain-monochrome-component',
   'v12-react-update-button-self-closing',
 ];
 
