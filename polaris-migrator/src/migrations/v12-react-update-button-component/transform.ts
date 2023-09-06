@@ -13,7 +13,7 @@ import {
   hasImportDeclaration,
   hasImportSpecifier,
 } from '../../utilities/imports';
-import {insertJSXComment} from '../../utilities/jsx';
+import {insertCommentBefore, insertJSXComment} from '../../utilities/jsx';
 
 export default function transformer(
   fileInfo: FileInfo,
@@ -26,7 +26,8 @@ export default function transformer(
   if (
     !(
       hasImportDeclaration(j, source, '@shopify/polaris') &&
-      hasImportSpecifier(j, source, 'Button', '@shopify/polaris')
+      (hasImportSpecifier(j, source, 'Button', '@shopify/polaris') ||
+        hasImportSpecifier(j, source, 'ButtonProps', '@shopify/polaris'))
     )
   ) {
     return fileInfo.source;
@@ -34,6 +35,13 @@ export default function transformer(
 
   const localElementName =
     getImportSpecifierName(j, source, 'Button', '@shopify/polaris') || 'Button';
+
+  const localElementTypeName = getImportSpecifierName(
+    j,
+    source,
+    'ButtonProps',
+    '@shopify/polaris',
+  );
 
   // For each instance of a `Button` get all the attributes and update accordingly
   source.findJSXElements(localElementName).forEach((element: ASTPath<any>) => {
@@ -294,5 +302,20 @@ export default function transformer(
       );
     }
   });
+
+  source
+    .find(j.Identifier)
+    .filter(
+      (path) =>
+        path.node.name === localElementName ||
+        path.node.name === localElementTypeName,
+    )
+    .forEach((path) => {
+      if (path.node.type !== 'Identifier') return;
+
+      if (path.parent.value.type === 'ImportSpecifier') return;
+
+      insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
+    });
   return source.toSource();
 }

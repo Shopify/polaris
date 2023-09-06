@@ -1,12 +1,21 @@
 import React from 'react';
+import type {ButtonProps} from '@shopify/polaris';
 import {Button} from '@shopify/polaris';
 import {PhoneMajor} from '@shopify/polaris-icons';
+
+declare function CustomButton(
+  props: /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  ButtonProps,
+): JSX.Element;
 
 export function App() {
   const hasFormError = false;
   const polarisSummerEditions2023Enabled = true;
   const disabled = false;
   const primary = true;
+  const MyButton =
+    /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+    Button;
   return (
     <>
       <Button disabled tone="critical">
@@ -59,6 +68,8 @@ export function App() {
       >
         Button
       </Button>
+      <MyButton plain>My Button</MyButton>
+      <CustomButton plain />
     </>
   );
 }
