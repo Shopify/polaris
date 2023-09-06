@@ -12,6 +12,7 @@ export interface RichCardGridProps {
   draft?: boolean;
   status?: Status;
   icon?: string;
+  featured?: boolean;
 }
 
 function RichCardGrid({
