@@ -84,6 +84,7 @@ const getRichCards = (pathGlob: string): RichCardGridProps[] => {
           status = null,
           icon = null,
           order,
+          featured = null,
         } = frontMatter;
         return {
           title,
@@ -93,6 +94,7 @@ const getRichCards = (pathGlob: string): RichCardGridProps[] => {
           draft,
           status,
           icon,
+          featured,
           // Ensure pages with a defined order come first. Everything else gets
           // puntted to the end
           order: isNaN(parseInt(order)) ? DEFAULT_SORT_ORDER : order,
