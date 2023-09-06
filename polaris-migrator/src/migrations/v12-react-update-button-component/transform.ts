@@ -43,6 +43,12 @@ export default function transformer(
     const allAttributes = openingElement.attributes ?? [];
     const jsxAttributes = allAttributes as JSXAttribute[];
 
+    // Check for spread syntax on props
+    if (allAttributes.some((attribute) => attribute.type !== 'JSXAttribute')) {
+      insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+      return;
+    }
+
     // Find the boolean props we want to update
     // and ensure they are not set to a conditional value
     const plain = jsxAttributes.find(
