@@ -1,16 +1,23 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
+import {useRouter} from 'next/router';
 
 export default function ViewTransition({children}) {
-  useEffect(() => {
-    if (document.startViewTransition !== undefined) {
-      document.startViewTransition(() => {
-        console.log('Calling startViewTransition');
+  const {beforePopState, isReady} = useRouter();
 
-        return new Promise((resolve) => {
-          return resolve(true);
+  useEffect(() => {
+    beforePopState(() => {
+      if (isReady && document.startViewTransition !== undefined) {
+        document.startViewTransition(async () => {
+          console.log('Calling startViewTransition');
+
+          return await new Promise((resolve) => {
+            return resolve(true);
+          });
         });
-      });
-    }
+      }
+
+      return true;
+    });
   });
 
   return children;

@@ -96,7 +96,7 @@
 
 ::view-transition-old(page),
 ::view-transition-new(page) {
-  animation-duration: 300ms;
+  animation: var(--p-motion-keyframes-fade-in);
 }
 
 .light-mode,
