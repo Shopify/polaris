@@ -26,6 +26,7 @@ import PatternsExample from '../../components/PatternsExample';
 import RichCardGrid from '../RichCardGrid';
 import Tooltip from '../Tooltip';
 import Icon from '../Icon';
+import {FeaturedCardGrid} from '../FeaturedCardGrid';
 import {useCopyToClipboard} from '../../utils/hooks';
 
 const CodeVisibilityContext = createContext<[boolean, (arg: boolean) => void]>([
@@ -215,6 +216,7 @@ function Markdown<TFrontMatter, TScope extends Record<string, unknown>>(
         ),
         SideBySide,
         Grid,
+        FeaturedCardGrid,
         YoutubeVideo,
         DoDont,
         StatusBanner,
