@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-migrator': patch
+'@shopify/polaris-migrator': minor
 ---
 
 Added migration for `Button` component
