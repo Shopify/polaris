@@ -58,7 +58,7 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 - Boolean props to `variant` and `tone`
 
-`npx @shopify/polaris-migrator v12-react-update-button-components <path>`
+`npx @shopify/polaris-migrator v12-react-update-button-component <path>`
 
 **ButtonGroup**
 
