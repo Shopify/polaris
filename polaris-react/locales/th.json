@@ -22,9 +22,9 @@
         "new": "ใหม่",
         "critical": "ร้ายแรง",
         "readOnly": "อ่านอย่างเดียว",
-        "enabled": "เปิดใช้แล้ว"
+        "enabled": "เปิดใช้งานแล้ว"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "ปิดการแจ้งเตือน"

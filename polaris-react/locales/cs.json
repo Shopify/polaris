@@ -24,7 +24,7 @@
         "readOnly": "Pouze pro čtení",
         "enabled": "Aktivováno"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel}: {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Zavřít notifikaci"

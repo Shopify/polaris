@@ -24,7 +24,7 @@
         "readOnly": "Vain luku",
         "enabled": "Otettu käyttöön"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Ohita ilmoitus"

@@ -24,7 +24,7 @@
         "readOnly": "Chỉ đọc",
         "enabled": "Đã bật"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Bỏ qua thông báo"
