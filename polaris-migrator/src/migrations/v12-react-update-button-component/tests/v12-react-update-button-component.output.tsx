@@ -7,6 +7,9 @@ declare function CustomButton(
   props: /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   ButtonProps,
 ): JSX.Element;
+declare const Styles: {
+  [className: string]: string;
+};
 
 export function App() {
   const hasFormError = false;
@@ -70,6 +73,7 @@ export function App() {
       </Button>
       <MyButton plain>My Button</MyButton>
       <CustomButton plain />
+      <div className={Styles.Button}>Fake Button</div>
     </>
   );
 }

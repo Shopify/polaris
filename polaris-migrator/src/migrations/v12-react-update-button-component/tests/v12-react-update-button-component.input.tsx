@@ -4,6 +4,9 @@ import {Button} from '@shopify/polaris';
 import {PhoneMajor} from '@shopify/polaris-icons';
 
 declare function CustomButton(props: ButtonProps): JSX.Element;
+declare const Styles: {
+  [className: string]: string;
+};
 
 export function App() {
   const hasFormError = false;
@@ -60,6 +63,7 @@ export function App() {
       </Button>
       <MyButton plain>My Button</MyButton>
       <CustomButton plain />
+      <div className={Styles.Button}>Fake Button</div>
     </>
   );
 }

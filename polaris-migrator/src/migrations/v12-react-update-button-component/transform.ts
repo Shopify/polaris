@@ -313,7 +313,12 @@ export default function transformer(
     .forEach((path) => {
       if (path.node.type !== 'Identifier') return;
 
-      if (path.parent.value.type === 'ImportSpecifier') return;
+      if (
+        path.parent.value.type === 'ImportSpecifier' ||
+        path.parent.value.type === 'MemberExpression'
+      ) {
+        return;
+      }
 
       insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
     });
