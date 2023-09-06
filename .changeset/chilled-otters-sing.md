@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-- Initialized filters focus based on mode state
+- Updated `Filters` query field to initialize with focus based on `mode` state
