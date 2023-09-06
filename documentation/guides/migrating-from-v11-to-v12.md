@@ -62,7 +62,9 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 - connectedDisclosure: [See the updated split example](https://polaris.shopify.com/components/actions/button)
 
-// TODO - Boolean prop to tone, variant migration
+- Boolean props to `variant` and `tone`
+
+`npx @shopify/polaris-migrator v12-react-update-button-component <path>`
 
 **ButtonGroup**
 
